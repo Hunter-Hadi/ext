@@ -1,8 +1,8 @@
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import { Stack } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { GmailChatBox } from '@/features/gmail'
-import { ChatGPTLoaderWrapper } from '@/features/chatgpt'
+import { ChatGPTLoaderWrapper, pingDaemonProcess } from '@/features/chatgpt'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -21,6 +21,9 @@ const NormalChatPage = () => {
     inputValue,
     stopGenerateMessage,
   } = useMessageWithChatGPT('')
+  useEffect(() => {
+    pingDaemonProcess()
+  }, [])
   return (
     <Stack flex={1} height={0} position={'relative'}>
       <ChatGPTLoaderWrapper />

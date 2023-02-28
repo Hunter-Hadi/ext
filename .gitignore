@@ -108,3 +108,5 @@ dist
 
 # Apple Filesystem
 **/.DS_Store
+
+.idea

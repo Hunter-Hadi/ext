@@ -31,7 +31,7 @@
   "icons": {
     "16":  "assets/icons/ezmail_16_normal.png",
     "32":  "assets/icons/ezmail_32_normal.png",
-    "48":  "assets/icons/ezmail_32_normal.png",
-    "128": "assets/icons/ezmail_32_normal.png"
+    "48":  "assets/icons/ezmail_48_normal.png",
+    "128": "assets/icons/ezmail_128_normal.png"
   }
 }

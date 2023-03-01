@@ -8,7 +8,7 @@ import {
   IGmailChatMessage,
   GmailMessageChatInputState,
 } from '../../gmail'
-import { useSendAsyncTask } from '../utils'
+import { pingDaemonProcess, useSendAsyncTask } from '../utils'
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sendAsyncTask = useSendAsyncTask()
@@ -196,8 +196,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             })
           },
           onError: (error: any) => {
-            console.log('!!!!!!', error)
             hasError = true
+            console.log('!!!!!!', error)
             if (writingMessageRef.current?.messageId) {
               pushMessages.push(writingMessageRef.current as IGmailChatMessage)
             }
@@ -311,6 +311,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const stopGenerateMessage = async () => {
     const parentMessageId = writingMessageRef.current?.parentMessageId
     if (parentMessageId || conversation.lastMessageId) {
+      await pingDaemonProcess()
       await sendAsyncTask('DaemonProcess_abortMessage', {
         messageId: parentMessageId || conversation.lastMessageId,
       })

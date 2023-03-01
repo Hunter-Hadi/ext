@@ -1,5 +1,5 @@
 {
-  "name": "EzMail.AI - ChatGPT powered email generator",
+  "name": "EzMail.AI - ChatGPT for Gmail",
   "short_name": "EzMail.AI",
   "description": "Free Gmail tool that generates entire emails, powered by ChatGPT.",
   "manifest_version": 3,
@@ -19,7 +19,7 @@
     "https://mail.google.com/",
     "https://*.openai.com/*"
   ],
-  "permissions": ["activeTab", "scripting", "storage", "management"],
+  "permissions": ["tabs", "scripting", "storage", "management"],
   "action": {
     "default_icon": {
       "16": "assets/icons/ezmail_16_normal.png",

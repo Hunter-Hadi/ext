@@ -67,8 +67,9 @@ const App: FC = () => {
         })
       })
     })
-    if (appRef.current && appRef.current.parentElement) {
-      attrObserver.observe(appRef.current.parentElement, {
+    const rootEl = document.getElementById('EzMail_AI_ROOT')
+    if (appRef.current && rootEl) {
+      attrObserver.observe(rootEl, {
         attributes: true,
         childList: false,
       })
@@ -87,8 +88,28 @@ const App: FC = () => {
     <>
       <ThemeProvider theme={customMuiTheme}>
         <AppInit />
-        <div className={'ezmail-ai-app'} ref={appRef}>
-          <Stack spacing={1} height={'100%'}>
+        <div
+          className={'ezmail-ai-app'}
+          ref={appRef}
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+            borderLeft: '1px solid rgba(0, 0, 0, .1)',
+          }}
+        >
+          <Stack
+            spacing={1}
+            height={'100%'}
+            sx={{
+              '& *': {
+                fontSize: '14px',
+                boxSizing: 'border-box',
+                fontFamily: `"Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif`,
+              },
+            }}
+          >
             <Stack
               flexDirection={'row'}
               flexShrink={0}

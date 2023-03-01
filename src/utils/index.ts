@@ -26,8 +26,15 @@
 //         item.symbol
 //     : '0'
 // }
+
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
     .toFixed(digits)
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+export const getEzMailAppActiveElement = (): HTMLElement | null => {
+  const element = document.querySelector('#EzMail_AI_ROOT')?.shadowRoot
+    ?.activeElement as HTMLDivElement
+  if (element === undefined) return null
+  return element
 }

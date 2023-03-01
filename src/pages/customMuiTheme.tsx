@@ -37,6 +37,7 @@ const customMuiTheme = responsiveFontSizes(
         },
         styleOverrides: {
           root: {
+            fontSize: '14px',
             textTransform: 'none',
           },
         },

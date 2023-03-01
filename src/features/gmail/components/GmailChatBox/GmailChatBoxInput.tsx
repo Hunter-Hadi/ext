@@ -3,6 +3,7 @@ import { Box } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
 import { AppState } from '@/pages/App'
+import { getEzMailAppActiveElement } from '@/utils'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((document.body.offsetHeight * 0.5) / 24) || 5)
@@ -77,10 +78,10 @@ const GmailChatBoxInput: FC<{
     setInputValue(defaultValue || '')
     setTimeout(() => {
       if (textareaRef.current) {
-        if (textareaRef.current?.isSameNode(document.activeElement)) {
+        if (textareaRef.current?.isSameNode(getEzMailAppActiveElement())) {
           throttleAutoSizeTextarea(textareaRef.current)
         } else {
-          console.log(document.activeElement)
+          console.log(getEzMailAppActiveElement())
           focusTextareaAndAutoSize(textareaRef.current)
         }
       }

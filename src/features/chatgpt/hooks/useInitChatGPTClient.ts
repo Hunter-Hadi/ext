@@ -19,7 +19,7 @@ const useInitChatGPTClient = () => {
           {
             console.log('useInitChatGPTClient listener', data.status)
             setChatGPT((prevState) => {
-              if (prevState.status !== data.status) {
+              if (data.status !== 'success') {
                 prevState.aborts.forEach((fn) => fn())
               }
               return {

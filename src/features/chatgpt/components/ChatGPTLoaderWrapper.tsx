@@ -31,7 +31,7 @@ const ChatGPTLoaderWrapper: FC = () => {
       >
         <Paper sx={{ width: '80%', p: 2, py: 4 }}>
           <Stack alignItems={'center'} height={'100%'} spacing={2}>
-            <Typography fontSize={'1.3rem'} fontWeight={700}>
+            <Typography fontSize={'20px'} fontWeight={700}>
               Connecting to ChatGPT...
             </Typography>
           </Stack>
@@ -59,7 +59,7 @@ const ChatGPTLoaderWrapper: FC = () => {
     >
       <Paper sx={{ width: '80%', p: 2, py: 4 }}>
         <Stack alignItems={'center'} height={'100%'} spacing={2}>
-          <Typography fontSize={'1.3rem'} fontWeight={700}>
+          <Typography fontSize={'20px'} fontWeight={700}>
             Please log in to ChatGPT to continue
           </Typography>
           <Button

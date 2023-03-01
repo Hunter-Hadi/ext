@@ -9,6 +9,7 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@inboxsdk/core": "0.2.28-alpha.4",

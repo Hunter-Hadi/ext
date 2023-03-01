@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@emotion/cache': ^11.10.5
   '@emotion/react': ^11.10.6
   '@emotion/styled': ^11.10.6
   '@inboxsdk/core': 0.2.28-alpha.4
@@ -49,6 +50,7 @@ specifiers:
   webextension-polyfill: ^0.7.0
 
 dependencies:
+  '@emotion/cache': registry.npmmirror.com/@emotion/cache/11.10.5
   '@emotion/react': registry.npmmirror.com/@emotion/react/11.10.6_pmekkgnqduwlme35zpnqhenc34
   '@emotion/styled': registry.npmmirror.com/@emotion/styled/11.10.6_oouaibmszuch5k64ms7uxp2aia
   '@inboxsdk/core': registry.npmmirror.com/@inboxsdk/core/0.2.28-alpha.4

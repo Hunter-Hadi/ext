@@ -8,6 +8,9 @@ ClassNameGenerator.configure(
 )
 
 import ChatGPTDaemonProcess from './pages/ChatGPTDaemonProcessPage'
+import createCache from '@emotion/cache'
+import { CacheProvider } from '@emotion/react'
+// import createCache from '@emotion/cache'
 
 if (location.host === 'chat.openai.com') {
   const div = document.createElement('div')
@@ -24,16 +27,45 @@ if (location.host === 'chat.openai.com') {
 } else {
   console.log('init ezmail.ai client')
   // Create web component with target div inside it.
+
+  // document.body.appendChild(container)
+  // const shadowContainer = container.attachShadow({ mode: 'open' })
+  // const emotionRoot = document.createElement('style')
+  // const shadowRootElement = document.createElement('div')
+  // shadowContainer.appendChild(emotionRoot)
+  // shadowContainer.appendChild(shadowRootElement)
+  // const cache = createCache({
+  //   key: 'css',
+  //   container: emotionRoot,
+  // })
   const container = document.createElement('div')
   container.id = 'EzMail_AI_ROOT'
   document.body.appendChild(container)
+  const shadowContainer = container.attachShadow({ mode: 'open' })
+  const emotionRoot = document.createElement('style')
+  const shadowRootElement = document.createElement('div')
+  shadowRootElement.id = 'EzMail_AI_ROOT_Wrapper'
+  shadowRootElement.style.display = 'flex'
+  shadowRootElement.style.flexDirection = 'column'
+  shadowRootElement.style.flex = '1'
+  shadowRootElement.style.height = '100vh'
+  shadowContainer.appendChild(emotionRoot)
+  shadowContainer.appendChild(shadowRootElement)
+  ;(window as any).__EZ_MAIL_AI_ROOT_shadowRoot = shadowContainer
+  const cache = createCache({
+    key: 'ezmail-ai-emotion-cache',
+    prepend: true,
+    container: emotionRoot,
+  })
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const root = createRoot(document.getElementById('EzMail_AI_ROOT'))
-  root.render(
+  createRoot(shadowRootElement).render(
     <React.StrictMode>
       <RecoilRoot>
-        <App />
+        <CacheProvider value={cache}>
+          <App />
+        </CacheProvider>
       </RecoilRoot>
     </React.StrictMode>,
   )

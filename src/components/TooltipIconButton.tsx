@@ -13,7 +13,10 @@ const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
       title={title}
       PopperProps={{
         sx: {
-          zIndex: 9999999,
+          zIndex: 99999998,
+          '& > div': {
+            fontSize: '12px',
+          },
         },
       }}
       {...tooltipProps}

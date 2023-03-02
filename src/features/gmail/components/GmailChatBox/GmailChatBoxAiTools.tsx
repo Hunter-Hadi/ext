@@ -1,14 +1,10 @@
 import React, { FC } from 'react'
 import { Button, Stack } from '@mui/material'
-import TooltipIconButton from '@/components/TooltipIconButton'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import ReplyIcon from '@mui/icons-material/Reply'
 import { IGmailChatMessage } from '../GmailChatBox'
 import { useInboxComposeViews } from '../../hooks'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { hideEzMailBox } from '../../utils'
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 
 const GmailChatBoxAiTools: FC<{
   insertAble?: boolean
@@ -71,18 +67,12 @@ const GmailChatBoxAiTools: FC<{
           Insert
         </Button>
       )}
-      <CopyToClipboard
-        text={message.text}
-        options={{
-          message: 'Copied!',
-          format: 'text/plain',
+      <CopyTooltipIconButton
+        copyText={message.text}
+        onCopy={() => {
+          props.onCopy?.()
         }}
-        onCopy={props.onCopy}
-      >
-        <TooltipIconButton title={'Copy to clipboard'}>
-          <ContentCopyIcon sx={{ fontSize: 16 }} />
-        </TooltipIconButton>
-      </CopyToClipboard>
+      />
     </Stack>
   )
 }

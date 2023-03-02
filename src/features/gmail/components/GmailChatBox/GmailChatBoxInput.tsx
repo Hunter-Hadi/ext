@@ -10,6 +10,40 @@ const MAX_LINE = () => {
 }
 const LINE_HEIGHT = 24
 
+const removeModalEvent = (textareaElement: HTMLTextAreaElement) => {
+  let isMatchElement = false
+  const muiModalElement = document.querySelector(
+    'div[data-testid=sentinelStart][tabindex="0"]',
+  )
+  // mui的modal的判断
+  if (
+    muiModalElement?.nextElementSibling &&
+    muiModalElement.nextElementSibling.getAttribute('tabindex') === '-1'
+  ) {
+    muiModalElement.nextElementSibling.removeAttribute('tabindex')
+    isMatchElement = true
+  }
+  // linkedin的modal的判断
+  if (window.location.host === 'www.linkedin.com') {
+    const linkedinModalElement = document.querySelector(
+      'div[tabindex="-1"][role="dialog"]',
+    ) as HTMLDivElement
+    if (linkedinModalElement) {
+      linkedinModalElement.removeAttribute('tabindex')
+      ;(document.activeElement as HTMLElement)?.blur()
+      isMatchElement = true
+      setTimeout(() => {
+        linkedinModalElement.setAttribute('tabindex', '-1')
+      }, 100)
+    }
+  }
+  if (isMatchElement) {
+    console.log('match need remove modal')
+    focusTextareaAndAutoSize(textareaElement)
+  }
+}
+const afterRemoveModalEvent = (textareaElement: HTMLTextAreaElement) => {}
+
 const autoSizeTextarea = (textareaElement: HTMLTextAreaElement) => {
   const boxElement = textareaElement?.parentElement
   if (textareaElement && boxElement) {
@@ -39,7 +73,6 @@ const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
         findIndex = value.indexOf(str)
         return findIndex > -1
       }) || ''
-    console.log(findIndex, matchString)
     // textareaElement.value = ''
     // textareaElement.value = value
     textareaElement.focus()
@@ -48,7 +81,7 @@ const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
       Math.max(matchString.length + findIndex, 0),
     )
     textareaElement.scrollTo(0, 0)
-  }, 100)
+  }, 0)
 }
 
 const GmailChatBoxInput: FC<{
@@ -160,11 +193,17 @@ const GmailChatBoxInput: FC<{
             event.preventDefault()
           }
         }}
+        onClick={(event) => {
+          removeModalEvent(event.currentTarget)
+        }}
         onInput={(event) => {
           setInputValue(event.currentTarget.value)
           onChange && onChange(event.currentTarget.value)
         }}
-        onBlur={(event) => throttleAutoSizeTextarea(event.currentTarget)}
+        onBlur={(event) => {
+          throttleAutoSizeTextarea(event.currentTarget)
+          afterRemoveModalEvent(event.currentTarget)
+        }}
       />
       {children}
     </Box>

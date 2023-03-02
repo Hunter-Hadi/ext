@@ -27,7 +27,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     return undefined
   }, [status, port, loaded])
   const resetConversation = () => {
-    console.log('resetConversation')
+    console.log('resetConversation', defaultValueRef.current)
     setInputValue(defaultValueRef.current)
     setMessages([])
     writingMessageRef.current = null

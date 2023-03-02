@@ -71,9 +71,12 @@ const useInitInboxSdk = () => {
               composeView.getElement(),
             )
             if (newMessageId) {
-              setInboxEditState({
-                currentDraftId,
-                currentMessageId: newMessageId,
+              setInboxEditState((prevState) => {
+                return {
+                  currentDraftId,
+                  currentMessageId: newMessageId,
+                  step: (prevState.step || 0) + 1,
+                }
               })
             } else {
               setInboxEditState({

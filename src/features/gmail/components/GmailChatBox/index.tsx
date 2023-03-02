@@ -21,6 +21,7 @@ import { useInboxEditValue } from '../../hooks'
 import { numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import { AppState } from '@/pages/App'
+import { InboxEditState } from '@/features/gmail'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system'
   messageId: string
@@ -71,6 +72,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     loading,
   } = props
   const appState = useRecoilValue(AppState)
+  const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
   const { currentMessageId } = useInboxEditValue()
@@ -88,8 +90,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     }
   }, [writingMessage, messages])
   useEffect(() => {
+    console.log('default update', step)
     setInputValue(defaultValue)
-  }, [defaultValue])
+  }, [defaultValue, step])
   return (
     <Stack
       position={'relative'}

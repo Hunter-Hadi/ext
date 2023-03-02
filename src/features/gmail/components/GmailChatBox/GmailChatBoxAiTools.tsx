@@ -52,7 +52,10 @@ const GmailChatBoxAiTools: FC<{
                   div.innerHTML = `${newBodyHTML}<br>`
                   composeViewBodyElement.insertBefore(div, bodyFirstElement)
                 } else {
-                  debugger
+                  const div = document.createElement('div')
+                  div.style.direction = composeViewBodyElement.style.direction
+                  div.innerHTML = `${newBodyHTML}<br>`
+                  composeViewBodyElement.insertBefore(div, bodyFirstElement)
                 }
                 hideEzMailBox()
                 // setTimeout(() => {

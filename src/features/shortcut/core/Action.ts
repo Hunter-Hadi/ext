@@ -1,4 +1,4 @@
-import { IAction } from '@/features/shortcut'
+import { IAction, IShortcutEngineVariableType } from '@/features/shortcut'
 
 class Action implements IAction {
   name: string
@@ -12,8 +12,14 @@ class Action implements IAction {
     this.type = type
     this.status = 'notRunning'
   }
-
-  execute(params: any) {
+  async execute(
+    params: any,
+    setVariable: (
+      key: IShortcutEngineVariableType,
+      value: any,
+      overwrite: boolean,
+    ) => void,
+  ) {
     this.status = 'running'
     this.error = ''
     this.output = ''

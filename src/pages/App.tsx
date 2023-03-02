@@ -77,6 +77,7 @@ const App: FC = () => {
       resetConversation()
     }
   }, [appState])
+  const iframeRef = React.useRef<HTMLIFrameElement>(null)
   return (
     <>
       <AppInit />
@@ -201,6 +202,11 @@ const App: FC = () => {
           >
             {appState.open && appState.env === 'gmail' && <GmailChatPage />}
             {appState.open && appState.env === 'normal' && <NormalChatPage />}
+            <iframe
+              ref={iframeRef}
+              id={'EzMail_AI_TEMPLATE_COMPILE'}
+              src={'http://localhost:3000'}
+            />
           </Stack>
         </Stack>
       </Box>

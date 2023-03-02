@@ -218,6 +218,26 @@ const useDaemonProcess = () => {
                   }
                 }
                 break
+              case 'DaemonProcess_compileTemplate':
+                {
+                  // try {
+                  // const { template, variables } = asyncEventData
+                  //   debugger
+                  //   sendMessageToClient(
+                  //     { success: true, data: result },
+                  //     '',
+                  //     true,
+                  //   )
+                  // } catch (e) {
+                  //   debugger
+                  //   sendMessageToClient(
+                  //     { success: false, data: 'compile error' },
+                  //     '',
+                  //     true,
+                  //   )
+                  // }
+                }
+                break
               default:
                 break
             }

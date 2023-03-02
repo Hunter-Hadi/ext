@@ -1,0 +1,1 @@
+export { useShortCutsParameters } from './useShortCutsParameters'

@@ -48,6 +48,7 @@ export type IChromeExtensionChatGPTDaemonProcessListenTaskEvent =
   | 'DaemonProcess_removeConversation'
   | 'DaemonProcess_sendMessage'
   | 'DaemonProcess_abortMessage'
+  | 'DaemonProcess_compileTemplate'
 // 守护进程发送event
 export type IChromeExtensionChatGPTDaemonProcessSendEvent =
   | 'DaemonProcess_getChatGPTProxyInstance'

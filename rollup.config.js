@@ -13,6 +13,7 @@ import copy from 'rollup-plugin-copy'
 import alias from '@rollup/plugin-alias'
 import dayjs from 'dayjs'
 import app from './package.json'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -65,5 +66,6 @@ export default {
           'YYYY_MM_DD_HH_mm_ss',
         )}.zip`,
       }),
+    nodeResolve(),
   ],
 }

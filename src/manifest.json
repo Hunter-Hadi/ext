@@ -33,5 +33,10 @@
     "32":  "assets/icons/ezmail_32_normal.png",
     "48":  "assets/icons/ezmail_48_normal.png",
     "128": "assets/icons/ezmail_128_normal.png"
+  },
+  "sandbox": {
+    "pages": [
+      "sandbox.html"
+    ]
   }
 }

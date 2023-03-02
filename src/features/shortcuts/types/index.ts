@@ -5,30 +5,25 @@ export type IShortcutEngineBuiltInVariableType =
 export type IShortcutEngineVariableType =
   | IShortcutEngineBuiltInVariableType
   | string
+
 // 定义动作接口
 export interface IAction {
-  name: string
+  id: string
   //动作的类型，比如 "prompt" 或 "openURL"
   type: 'prompt' | 'openURL'
-  execute: (
-    params: any,
-    setVariable: (key: string, value: any, overwrite: boolean) => void,
-  ) => Promise<void>
+  execute: (params: any) => Promise<any>
   error?: string
   output?: any
-}
-
-// 定义捷径接口
-export interface IShortcut {
-  name: string
-  actions: IAction[]
+  parameters?: {
+    [key: string]: any
+  }
 }
 
 // 定义捷径引擎接口
 export interface IShortcutEngine {
   status: 'notRunning' | 'running' | 'stop' | 'complete'
+  actions: IAction[]
   variables: Map<string, any>
-  shortcut: IShortcut
   run: (params: any) => Promise<void>
   stop: () => void
   reset: () => void
@@ -46,4 +41,11 @@ export interface IShortcutEngine {
     }>,
   ) => void
   getVariable: (key?: IShortcutEngineVariableType) => any
+  setActions: (
+    actions: Array<{
+      id: string
+      type: IAction['type']
+      parameters: any
+    }>,
+  ) => void
 }

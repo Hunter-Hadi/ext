@@ -179,6 +179,7 @@ const GmailChatBoxInput: FC<{
       }}
     >
       <textarea
+        id={'EzMailAppChatBoxInput'}
         placeholder={'Enter ChatGPT prompt...'}
         disabled={loading}
         ref={textareaRef}

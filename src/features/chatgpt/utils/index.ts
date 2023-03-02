@@ -43,6 +43,52 @@ export const pingDaemonProcess = () => {
     }, 2000)
   })
 }
+export const sendAsyncTask = async (
+  event: IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
+  data: any,
+) => {
+  await pingDaemonProcess()
+  const taskId = uuidV4()
+  const port = Browser.runtime.connect()
+  if (!port) {
+    return Promise.resolve(false)
+  }
+  return new Promise<any>((resolve) => {
+    const onceListener = (msg: any) => {
+      const { event, data } = msg
+      if (event === `Client_AsyncTaskResponse_${taskId}`) {
+        console.log(data)
+        const { taskId, data: chatGPTDaemenProcessData, done, error } = data
+        console.log(
+          'chatGPTDaemenProcessData',
+          chatGPTDaemenProcessData,
+          taskId,
+        )
+        if (error) {
+          if (done) {
+            Browser?.runtime?.onMessage?.removeListener(onceListener)
+            port?.onMessage?.removeListener(onceListener)
+          }
+        }
+        if (done) {
+          Browser?.runtime?.onMessage?.removeListener(onceListener)
+          port?.onMessage?.removeListener(onceListener)
+          resolve(chatGPTDaemenProcessData || true)
+        }
+      }
+    }
+    port.onMessage.addListener(onceListener)
+    Browser.runtime.onMessage.addListener(onceListener)
+    port.postMessage({
+      event: 'Client_createAsyncTask',
+      data: {
+        taskId,
+        event,
+        data,
+      },
+    })
+  })
+}
 
 export const useSendAsyncTask = () => {
   const [chatGPTClient, setChatGPTClient] = useRecoilState(ChatGPTClientState)

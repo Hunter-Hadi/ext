@@ -38,8 +38,8 @@ export const getEzMailAppActiveElement = (): HTMLElement | null => {
   if (element === undefined) return null
   return element
 }
-// export const getEzMailAppShadowRootElement = (): HTMLDivElement | null => {
-//   return document
-//     .querySelector('#EzMail_AI_ROOT')
-//     ?.shadowRoot?.querySelector('#EzMail_AI_ROOT_Wrapper') as HTMLDivElement
-// }
+export const getEzMailAppRootElement = (): HTMLDivElement | null => {
+  return document
+    .querySelector('#EzMail_AI_ROOT')
+    ?.shadowRoot?.querySelector('#EzMail_AI_ROOT_Wrapper') as HTMLDivElement
+}

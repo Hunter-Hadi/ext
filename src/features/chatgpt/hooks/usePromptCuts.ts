@@ -1,0 +1,2 @@
+const usePromptCuts = () => {}
+export { usePromptCuts }

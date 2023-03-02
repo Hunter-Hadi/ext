@@ -75,13 +75,14 @@ const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
       }) || ''
     // textareaElement.value = ''
     // textareaElement.value = value
+    console.log('focusTextareaAndAutoSize', findIndex)
     textareaElement.focus()
     textareaElement.setSelectionRange(
       Math.max(matchString.length + findIndex, 0),
       Math.max(matchString.length + findIndex, 0),
     )
     textareaElement.scrollTo(0, 0)
-  }, 0)
+  }, 100)
 }
 
 const GmailChatBoxInput: FC<{

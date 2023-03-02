@@ -109,7 +109,7 @@ const GmailChatBoxMessageItem: FC<{
               borderWidth: isEdit ? 1 : 0,
             }}
           >
-            {defaultText}
+            {defaultText.replace(/^\s+/, '')}
           </Stack>
         )}
         {message.type === 'user' && (

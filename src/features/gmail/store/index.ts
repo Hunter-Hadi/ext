@@ -10,6 +10,7 @@ interface IProxyInboxSdkTarget<T> {
 export const InboxEditState = atom<{
   currentMessageId?: string
   currentDraftId?: string
+  step?: number
 }>({
   key: 'InboxEditState',
   default: {},

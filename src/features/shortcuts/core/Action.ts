@@ -9,11 +9,18 @@ class Action implements IAction {
   parameters?: {
     [key: string]: any
   }
-  constructor(id: string, type: 'prompt' | 'openURL', parameters?: any) {
+  autoNext: boolean
+  constructor(
+    id: string,
+    type: 'prompt' | 'openURL',
+    parameters?: any,
+    autoNext?: boolean,
+  ) {
     this.id = id
     this.type = type
     this.status = 'notRunning'
     this.parameters = parameters
+    this.autoNext = autoNext || false
   }
 
   async execute(params: any) {

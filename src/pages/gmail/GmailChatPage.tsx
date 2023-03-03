@@ -1,15 +1,12 @@
-import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
-import { Button, Stack } from '@mui/material'
-import React, { useEffect, useMemo } from 'react'
+import { Button, Stack, TextareaAutosize } from '@mui/material'
+import React, { useEffect, useMemo, useState } from 'react'
 import { GmailChatBox, useCurrentMessageView } from '@/features/gmail'
 import AppLoadingLayout from '@/components/LoadingLayout'
 import { ChatGPTLoaderWrapper } from '@/features/chatgpt'
-import { ShortCutsEngine, useShortCutsParameters } from '@/features/shortcuts'
 import { v4 } from 'uuid'
-const shortCutsEngine = new ShortCutsEngine()
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 
 const GmailChatPage = () => {
-  const getParams = useShortCutsParameters()
   const { loading, messageViewText, currentMessageId } = useCurrentMessageView()
   const defaultInputValue = useMemo(() => {
     if (!currentMessageId) {
@@ -26,7 +23,54 @@ const GmailChatPage = () => {
       }
     }
   }, [currentMessageId, messageViewText])
+  const [inputJson, setInputJson] = useState<string>(
+    JSON.stringify([
+      {
+        id: '6c10205e-bd17-44d1-bb65-963a39ebbf95',
+        type: 'prompt',
+        parameters: {
+          template:
+            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nCan you list 4 reply outlines for replying this email (each within 10 words)?',
+        },
+      },
+      {
+        id: 'cf67ab00-f397-4e13-bcf3-a19825e62fcd',
+        type: 'prompt',
+        parameters: {
+          template:
+            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nFrom now on, we will refer to this outline as [THE_CHOSEE_OUTLINE] in the future: "{{INPUT_VALUE}}". Now, tell me, what facts or decisions do you need to properly draft a reply email following [THE_CHOSEE_OUTLINE]? Give me a list no more than 4 items (each item is within 4 words), and give me example information pre-filled for each item in the same line seperated by colon',
+        },
+      },
+      {
+        id: 'ff54ebac-6323-4784-8f06-7803c680bd70',
+        type: 'prompt',
+        parameters: {
+          template:
+            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nNow, reply to the incomming email following [THE_CHOSEE_OUTLINE], and the following facts and decision:\n{{INPUT_VALUE}}',
+        },
+        autoNext: true,
+      },
+      {
+        id: v4(),
+        type: 'prompt',
+        parameters: {
+          template: 'make it shortly',
+        },
+        autoNext: true,
+      },
+      {
+        id: v4(),
+        type: 'prompt',
+        parameters: {
+          template: 'make it longer',
+        },
+      },
+    ]),
+  )
   const {
+    shortCutsEngineRef,
+    runShortCuts,
+    loading: shortCutsLoading,
     sendQuestion,
     conversation,
     messages,
@@ -35,53 +79,36 @@ const GmailChatPage = () => {
     inputValue,
     setInputValue,
     stopGenerateMessage,
-  } = useMessageWithChatGPT(defaultInputValue || '')
+  } = useShortCutsWithMessageChat(defaultInputValue || '')
   useEffect(() => {
     setInputValue(defaultInputValue || '')
   }, [defaultInputValue, currentMessageId])
-  useEffect(() => {
-    shortCutsEngine.setActions([
-      {
-        id: v4(),
-        type: 'prompt',
-        parameters: {
-          template: `Here is the incomming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\ncan you list 4 reply outlines for replying this email (each within 10 words)?`,
-        },
-      },
-      {
-        id: v4(),
-        type: 'prompt',
-        parameters: {
-          template: `can you list 4 reply outlines for replying this email (each within 10 words)?`,
-        },
-      },
-      {
-        id: v4(),
-        type: 'prompt',
-        parameters: {
-          template: `Given the reply outline to be "{{INPUT_VALUE}}" what facts or decisions do you need to properly draft a reply email? please give a list less than 4 items (each item is within 4 words), and give me example information pre-filled for each item in the same line seperated by colon`,
-        },
-      },
-      {
-        id: v4(),
-        type: 'prompt',
-        parameters: {
-          template: `Now, reply to the incomming email, Given the reply outline to be "Sure, sending image. Use this link instead [insert link].", and the following facts and decision:\n{{INPUT_VALUE}}`,
-        },
-      },
-    ])
-  }, [])
   return (
     <Stack flex={1} height={0} position={'relative'}>
       <ChatGPTLoaderWrapper />
-      <Button
-        onClick={async () => {
-          await shortCutsEngine.run(getParams().parameters)
-        }}
-        variant={'contained'}
-      >
-        run PromptCuts
-      </Button>
+      <TextareaAutosize
+        maxRows={1}
+        onInput={(event) => setInputJson(event.currentTarget.value)}
+        value={inputJson}
+      />
+      <Stack direction={'row'} alignItems={'center'} spacing={1}>
+        <Button
+          variant={'contained'}
+          onClick={() => {
+            shortCutsEngineRef.current?.reset()
+            shortCutsEngineRef.current?.setActions(JSON.parse(inputJson))
+          }}
+        >
+          Set Actions
+        </Button>
+        <Button
+          disabled={shortCutsLoading}
+          onClick={runShortCuts}
+          variant={'contained'}
+        >
+          run PromptCuts
+        </Button>
+      </Stack>
       <AppLoadingLayout loading={loading || defaultInputValue === null}>
         <GmailChatBox
           insertAble

@@ -4,8 +4,13 @@ import { getEzMailAppRootElement } from '@/utils'
 import { v4 } from 'uuid'
 export class PromptAction extends Action {
   static type = 'prompt'
-  constructor(id: string, type: IAction['type'], parameters?: any) {
-    super(id, 'prompt', parameters)
+  constructor(
+    id: string,
+    type: IAction['type'],
+    parameters?: any,
+    autoNext?: boolean,
+  ) {
+    super(id, 'prompt', parameters, autoNext)
   }
   execute(params: any) {
     // const result = await sendAsyncTask('DaemonProcess_compileTemplate', {
@@ -13,7 +18,7 @@ export class PromptAction extends Action {
     //   variables: params,
     // })
     // console.log(result)
-    return new Promise<any>((resolve) => {
+    return new Promise<any>((resolve, reject) => {
       console.log('ShortCutEngine prompt start', this.parameters, params)
       console.log(
         getEzMailAppRootElement()?.querySelector<HTMLIFrameElement>(
@@ -22,10 +27,17 @@ export class PromptAction extends Action {
       )
       const taskId = 'compile_task_' + v4()
       // 定义回调函数
-      function handleChildMessage(data: any) {
-        debugger
-        console.log('Parent received message from child: ' + data)
-        window.removeEventListener('message', handleChildMessage)
+      const handleChildMessage = (originalEvent: any) => {
+        const { event, taskId, data, success, error } = originalEvent.data
+        if (event === 'renderTemplateResponse' && taskId === taskId) {
+          if (success) {
+            this.output = data
+            resolve(data)
+          } else {
+            reject(error)
+          }
+          window.removeEventListener('message', handleChildMessage)
+        }
       }
       window.addEventListener('message', handleChildMessage)
       getEzMailAppRootElement()
@@ -38,7 +50,6 @@ export class PromptAction extends Action {
               template: this.parameters?.template || '',
               variables: params,
             },
-            callback: handleChildMessage,
           },
           '*',
         )

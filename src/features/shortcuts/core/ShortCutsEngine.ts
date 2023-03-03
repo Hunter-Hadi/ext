@@ -21,6 +21,7 @@ class ShortCutsEngine implements IShortcutEngine {
       id: string
       type: IAction['type']
       parameters: any
+      autoNext?: boolean
     }>,
   ) {
     this.actions = []
@@ -35,6 +36,7 @@ class ShortCutsEngine implements IShortcutEngine {
         action.id,
         action.type,
         action.parameters,
+        action.autoNext,
       )
       this.actions.push(ActionInstance)
     })
@@ -49,6 +51,11 @@ class ShortCutsEngine implements IShortcutEngine {
       const stepActionInstance = this.actions[this.stepIndex]
       if (stepActionInstance) {
         await stepActionInstance.execute(this.getVariable())
+        const output = stepActionInstance.output || ''
+        if (output) {
+          this.setVariable('LAST_ACTION_OUTPUT', output, true)
+        }
+        console.log('ShortCutEngine.run: output', output)
         this.stepIndex++
       } else {
         console.log('ShortCutEngine.run: no more actions')
@@ -74,7 +81,7 @@ class ShortCutsEngine implements IShortcutEngine {
     value: any,
     overwrite: boolean,
   ) {
-    console.log('ShortCutEngine.setVariable', key, value, overwrite)
+    // console.log('ShortCutEngine.setVariable', key, value, overwrite)
     if (this.variables.has(key)) {
       if (overwrite) {
         this.variables.set(key, value)
@@ -101,7 +108,14 @@ class ShortCutsEngine implements IShortcutEngine {
     if (key) {
       return this.variables.get(key)
     }
-    return this.variables
+    console.log(
+      'ShortCutEngine.getVariables',
+      Object.fromEntries(this.variables),
+    )
+    return Object.fromEntries(this.variables)
+  }
+  getCurrentAction() {
+    return this.actions[Math.max(this.stepIndex - 1, 0)]
   }
 }
 export { ShortCutsEngine }

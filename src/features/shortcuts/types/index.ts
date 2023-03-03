@@ -1,6 +1,10 @@
 export type IShortcutEngineBuiltInVariableType =
+  // gmail
   | 'GMAIL_MESSAGE_CONTEXT'
   | 'GMAIL_DRAFT_CONTEXT'
+  // system
+  | 'LAST_ACTION_OUTPUT'
+  | 'LAST_CHAT_GPT_ANSWER'
   | 'INPUT_VALUE'
 export type IShortcutEngineVariableType =
   | IShortcutEngineBuiltInVariableType
@@ -17,6 +21,7 @@ export interface IAction {
   parameters?: {
     [key: string]: any
   }
+  autoNext: boolean
 }
 
 // 定义捷径引擎接口
@@ -48,4 +53,5 @@ export interface IShortcutEngine {
       parameters: any
     }>,
   ) => void
+  getCurrentAction: () => IAction
 }

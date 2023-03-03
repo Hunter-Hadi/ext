@@ -93,9 +93,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     question: string,
     messageId?: string,
     parentMessageId?: string,
-  ) => {
+  ): Promise<{ success: boolean; answer: string }> => {
     if (!question || conversation.loading) {
-      return
+      return Promise.resolve({
+        success: false,
+        answer: '',
+      })
     }
     console.log(1)
     const currentMessageId = messageId || uuidV4()
@@ -156,7 +159,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           loading: false,
         }
       })
-      return
+      return Promise.resolve({
+        success: false,
+        answer: '',
+      })
     }
     console.log(3)
     console.log(
@@ -248,9 +254,21 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         writingMessageRef.current?.text
       ) {
         pushMessages.push(writingMessageRef.current as IGmailChatMessage)
+        return Promise.resolve({
+          success: true,
+          answer: writingMessageRef.current?.text || '',
+        })
       }
+      return Promise.resolve({
+        success: false,
+        answer: '',
+      })
     } catch (e) {
       console.error(`send question error`, e)
+      return Promise.resolve({
+        success: false,
+        answer: '',
+      })
     } finally {
       setMessages((prevState) => {
         return [...prevState, ...pushMessages]

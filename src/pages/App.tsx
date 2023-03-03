@@ -203,9 +203,13 @@ const App: FC = () => {
             {appState.open && appState.env === 'gmail' && <GmailChatPage />}
             {appState.open && appState.env === 'normal' && <NormalChatPage />}
             <iframe
+              width={1}
+              height={1}
               ref={iframeRef}
               id={'EzMail_AI_TEMPLATE_COMPILE'}
-              src={'http://localhost:3000'}
+              src={
+                'https://www.ezmail.ai/ezmail-ai-chrome-extension-sandbox.html'
+              }
             />
           </Stack>
         </Stack>

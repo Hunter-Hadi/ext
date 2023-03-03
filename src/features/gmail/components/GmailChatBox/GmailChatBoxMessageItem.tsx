@@ -27,7 +27,7 @@ const GmailChatBoxMessageItem: FC<{
         bgcolor: `rgb(233,233,235)!important`,
       } as SxProps
     }
-    if (message.type === 'user') {
+    if (message.type === 'user' || message.type === 'third') {
       return {
         flexDirection: 'row',
         justifyContent: 'end',

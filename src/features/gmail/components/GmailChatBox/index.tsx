@@ -23,7 +23,7 @@ import { useRecoilValue } from 'recoil'
 import { AppState } from '@/pages/App'
 import { InboxEditState } from '@/features/gmail'
 export interface IGmailChatMessage {
-  type: 'user' | 'ai' | 'system'
+  type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
   parentMessageId?: string
   text: string

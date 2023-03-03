@@ -3,8 +3,8 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { GmailChatBox, useCurrentMessageView } from '@/features/gmail'
 import AppLoadingLayout from '@/components/LoadingLayout'
 import { ChatGPTLoaderWrapper } from '@/features/chatgpt'
-import { v4 } from 'uuid'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import { ISetActionsType } from '@/features/shortcuts'
 
 const GmailChatPage = () => {
   const { loading, messageViewText, currentMessageId } = useCurrentMessageView()
@@ -26,46 +26,53 @@ const GmailChatPage = () => {
   const [inputJson, setInputJson] = useState<string>(
     JSON.stringify([
       {
-        id: '6c10205e-bd17-44d1-bb65-963a39ebbf95',
-        type: 'prompt',
+        type: 'RENDER_CHATGPT_PROMPT',
         parameters: {
           template:
             'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nCan you list 4 reply outlines for replying this email (each within 10 words)?',
         },
       },
       {
-        id: 'cf67ab00-f397-4e13-bcf3-a19825e62fcd',
-        type: 'prompt',
+        type: 'ASK_CHATGPT',
+        parameters: {
+          template: '{{LAST_ACTION_OUTPUT}}',
+        },
+      },
+      {
+        type: 'RENDER_CHATGPT_PROMPT',
         parameters: {
           template:
-            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nFrom now on, we will refer to this outline as [THE_CHOSEE_OUTLINE] in the future: "{{INPUT_VALUE}}". Now, tell me, what facts or decisions do you need to properly draft a reply email following [THE_CHOSEE_OUTLINE]? Give me a list no more than 4 items (each item is within 4 words), and give me example information pre-filled for each item in the same line seperated by colon',
+            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nPick number {{USER_INPUT}} from \n"""\n{{LAST_ACTION_OUTPUT}}\n"""\n and treat it as [THE_CHOSEE_OUTLINE], and stick to this outline in the future. Now, tell me, what facts or decisions do you need to properly draft a reply email following [THE_CHOSEE_OUTLINE]? Give me a list no more than 4 items (each item is within 4 words), and give me example information pre-filled for each item in the same line seperated by colon',
+        },
+        autoExecute: false,
+      },
+      {
+        type: 'ASK_CHATGPT',
+        parameters: {
+          template: '{{LAST_ACTION_OUTPUT}}',
         },
       },
       {
-        id: 'ff54ebac-6323-4784-8f06-7803c680bd70',
-        type: 'prompt',
+        type: 'RENDER_CHATGPT_PROMPT',
         parameters: {
           template:
-            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nNow, reply to the incomming email following [THE_CHOSEE_OUTLINE], and the following facts and decision:\n{{INPUT_VALUE}}',
+            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nNow, reply to the incomming email following [THE_CHOSEE_OUTLINE], and the following facts and decision:\n""""\n{{USER_INPUT}}\n""""\n',
         },
-        autoNext: true,
+        autoExecute: false,
       },
       {
-        id: v4(),
-        type: 'prompt',
+        type: 'ASK_CHATGPT',
         parameters: {
-          template: 'make it shortly',
+          template: '{{LAST_ACTION_OUTPUT}}',
         },
-        autoNext: true,
       },
       {
-        id: v4(),
-        type: 'prompt',
+        type: 'GMAIL_INSERT_REPLY_BOX',
         parameters: {
-          template: 'make it longer',
+          template: 'here is action⬇️:\n{{LAST_ACTION_OUTPUT}}',
         },
       },
-    ]),
+    ] as ISetActionsType),
   )
   const {
     shortCutsEngineRef,

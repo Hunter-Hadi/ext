@@ -4,24 +4,33 @@ export type IShortcutEngineBuiltInVariableType =
   | 'GMAIL_DRAFT_CONTEXT'
   // system
   | 'LAST_ACTION_OUTPUT'
-  | 'LAST_CHAT_GPT_ANSWER'
-  | 'INPUT_VALUE'
+  | 'USER_INPUT'
 export type IShortcutEngineVariableType =
   | IShortcutEngineBuiltInVariableType
   | string
 
+export type IActionType =
+  | 'RENDER_CHATGPT_PROMPT'
+  | 'ASK_CHATGPT'
+  | 'GMAIL_INSERT_REPLY_BOX'
+export type ISetActionsType = Array<{
+  id?: string
+  type: IActionType
+  parameters: any
+  autoExecute?: boolean
+}>
 // 定义动作接口
 export interface IAction {
   id: string
-  //动作的类型，比如 "prompt" 或 "openURL"
-  type: 'prompt' | 'openURL'
-  execute: (params: any) => Promise<any>
+  //动作的类型，比如 "RENDER_CHATGPT_PROMPT" 或 "ASK_CHATGPT"
+  type: IActionType
+  execute: (params: any, engine: any) => Promise<any>
   error?: string
   output?: any
   parameters?: {
     [key: string]: any
   }
-  autoNext: boolean
+  autoExecute: boolean
 }
 
 // 定义捷径引擎接口
@@ -46,12 +55,7 @@ export interface IShortcutEngine {
     }>,
   ) => void
   getVariable: (key?: IShortcutEngineVariableType) => any
-  setActions: (
-    actions: Array<{
-      id: string
-      type: IAction['type']
-      parameters: any
-    }>,
-  ) => void
+  setActions: (actions: ISetActionsType) => void
   getCurrentAction: () => IAction
+  getNextAction: () => IAction
 }

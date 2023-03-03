@@ -13,6 +13,7 @@
     "paths": {
       "@/*": ["src/*"],
     },
+    "experimentalDecorators": true,
     "baseUrl": "./"
   }
 }

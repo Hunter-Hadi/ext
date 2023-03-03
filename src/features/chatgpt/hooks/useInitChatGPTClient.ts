@@ -6,7 +6,7 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect } from 'react'
 import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background'
-import { EzMailBoxIsOpen, hideEzMailBox, showEzMailBox } from '@/features/gmail'
+import { EzMailBoxIsOpen, hideEzMailBox, showEzMailBox } from '@/utils'
 
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)

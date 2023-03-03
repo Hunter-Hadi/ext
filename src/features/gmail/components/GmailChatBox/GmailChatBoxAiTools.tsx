@@ -3,8 +3,9 @@ import { Button, Stack } from '@mui/material'
 import ReplyIcon from '@mui/icons-material/Reply'
 import { IGmailChatMessage } from '../GmailChatBox'
 import { useInboxComposeViews } from '../../hooks'
-import { hideEzMailBox } from '../../utils'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
+import { hideEzMailBox } from '@/utils'
+import { gmailReplyBoxInsertText } from '@/features/gmail'
 
 const GmailChatBoxAiTools: FC<{
   insertAble?: boolean
@@ -25,42 +26,11 @@ const GmailChatBoxAiTools: FC<{
           onClick={() => {
             const composeView =
               currentComposeView && currentComposeView.getInstance?.()
-            console.log(composeView)
             if (composeView) {
               const composeViewBodyElement = composeView.getBodyElement()
-              console.log(composeViewBodyElement)
               if (composeViewBodyElement) {
-                // let quoteHTML = ''
-                // const quoteElement =
-                //   composeViewElement.querySelector('.gmail_quote')
-                // if (quoteElement) {
-                //   quoteHTML = `<br><div class="gmail_quote">${quoteElement.innerHTML}</div>`
-                // }
-                const bodyFirstElement =
-                  composeViewBodyElement.firstElementChild
-                const newBodyHTML = // eslint-disable-next-line no-control-regex
-                  message.text.replace(new RegExp('\r?\n', 'g'), '<br />') +
-                  '<br />'
-                if (bodyFirstElement && bodyFirstElement.tagName === 'DIV') {
-                  bodyFirstElement.innerHTML = newBodyHTML
-                } else if (
-                  bodyFirstElement &&
-                  bodyFirstElement.tagName === 'BR'
-                ) {
-                  const div = document.createElement('div')
-                  div.style.direction = composeViewBodyElement.style.direction
-                  div.innerHTML = `${newBodyHTML}<br>`
-                  composeViewBodyElement.insertBefore(div, bodyFirstElement)
-                } else {
-                  const div = document.createElement('div')
-                  div.style.direction = composeViewBodyElement.style.direction
-                  div.innerHTML = `${newBodyHTML}<br>`
-                  composeViewBodyElement.insertBefore(div, bodyFirstElement)
-                }
+                gmailReplyBoxInsertText(composeViewBodyElement, message.text)
                 hideEzMailBox()
-                // setTimeout(() => {
-                //   composeViewBodyElement.focus()
-                // }, 0)
               } else {
                 composeView.setBodyText(message.text)
               }

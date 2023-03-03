@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import './app.less'
-import { hideEzMailBox, useInitInboxSdk } from '@/features/gmail'
+import { useInitInboxSdk } from '@/features/gmail'
 import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
 
 import {
@@ -12,6 +12,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { hideEzMailBox } from '@/utils'
 
 const getClientEnv = () => {
   if (location.host === 'mail.google.com') {
@@ -77,7 +78,6 @@ const App: FC = () => {
       resetConversation()
     }
   }, [appState])
-  const iframeRef = React.useRef<HTMLIFrameElement>(null)
   return (
     <>
       <AppInit />
@@ -203,9 +203,9 @@ const App: FC = () => {
             {appState.open && appState.env === 'gmail' && <GmailChatPage />}
             {appState.open && appState.env === 'normal' && <NormalChatPage />}
             <iframe
+              style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}
               width={1}
               height={1}
-              ref={iframeRef}
               id={'EzMail_AI_TEMPLATE_COMPILE'}
               src={
                 'https://www.ezmail.ai/ezmail-ai-chrome-extension-sandbox.html'

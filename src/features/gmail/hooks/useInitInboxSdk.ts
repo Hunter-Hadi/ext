@@ -8,10 +8,11 @@ import {
   InboxComposeViewState,
   InboxEditState,
 } from '../store'
-import { getComposeViewMessageId, hideEzMailBox, showEzMailBox } from '../utils'
+import { getComposeViewMessageId } from '../utils'
 import { v4 as uuidV4 } from 'uuid'
 import { GmailToolBarIconBase64Data } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
+import { hideEzMailBox, showEzMailBox } from '@/utils'
 
 const useInitInboxSdk = () => {
   const [inboxSdk, setInboxSdk] = useRecoilState(InboxSdkState)

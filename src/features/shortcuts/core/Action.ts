@@ -1,29 +1,30 @@
-import { IAction } from '@/features/shortcuts'
+import { IAction, IActionType } from '@/features/shortcuts'
 
 class Action implements IAction {
   id: string
-  type: 'prompt' | 'openURL'
+  type: IActionType
   status: 'notRunning' | 'running' | 'complete'
   error?: string
   output?: any
   parameters?: {
+    compliedTemplate?: string
     [key: string]: any
   }
-  autoNext: boolean
+  autoExecute: boolean
   constructor(
     id: string,
-    type: 'prompt' | 'openURL',
-    parameters?: any,
-    autoNext?: boolean,
+    type: IActionType,
+    parameters: any,
+    autoExecute: boolean,
   ) {
     this.id = id
     this.type = type
     this.status = 'notRunning'
-    this.parameters = parameters
-    this.autoNext = autoNext || false
+    this.parameters = parameters || {}
+    this.autoExecute = autoExecute
   }
 
-  async execute(params: any) {
+  async execute(params: any, engine: any) {
     this.status = 'running'
     this.error = ''
     this.output = ''

@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '../store'
 import { useEffect, useMemo, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
@@ -7,11 +7,13 @@ import {
   GmailMessageChatConversationState,
   IGmailChatMessage,
   GmailMessageChatInputState,
+  InboxEditState,
 } from '../../gmail'
 import { pingDaemonProcess, useSendAsyncTask } from '../utils'
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sendAsyncTask = useSendAsyncTask()
+  const updateInboxEditState = useSetRecoilState(InboxEditState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const { status, loaded, port } = useRecoilValue(ChatGPTClientState)
   const [messages, setMessages] = useRecoilState(GmailMessageChatState)
@@ -335,6 +337,24 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       })
     }
   }
+  const pushMessage = (
+    type: 'system' | 'third',
+    text: string,
+    status?: 'success' | 'error',
+  ) => {
+    setMessages((prevState) => {
+      return [
+        ...prevState,
+        {
+          type,
+          status,
+          messageId: uuidV4(),
+          parentMessageId: '',
+          text,
+        },
+      ]
+    })
+  }
   useEffect(() => {
     if (defaultInputValue) {
       defaultValueRef.current = defaultInputValue
@@ -353,7 +373,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     reGenerate: reGenerateMessage,
     inputValue,
     setInputValue,
+    forceUpdateInputValue(text: string) {
+      setInputValue(text)
+      updateInboxEditState((prevState) => ({
+        ...prevState,
+        step: (prevState.step || 0) + 1,
+      }))
+    },
     stopGenerateMessage,
+    pushMessage,
   }
 }
 export { useMessageWithChatGPT }

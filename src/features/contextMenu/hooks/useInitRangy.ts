@@ -2,6 +2,8 @@
 // @ts-ignore
 import rangyLib from 'rangy'
 import { useEffect } from 'react'
+import { contextMenu } from 'react-contexify'
+
 import initRangyPosition from '../lib/rangy-position'
 import { useRangy } from '../hooks'
 import debounce from 'lodash-es/debounce'
@@ -22,18 +24,24 @@ const useInitRangy = () => {
     }
   }, [])
   useEffect(() => {
-    const mouseUpListener = debounce(() => {
+    const mouseUpListener = debounce((event: any) => {
+      console.log('mouse up', show)
       if (show) {
         return
       }
+      console.log('mouse up 2', show)
       if (rangy?.getSelection()?.toString()?.trim()) {
         const { x } = rangy?.getSelection()?.getStartDocumentPos() || {}
         const { y } = rangy?.getSelection()?.getEndDocumentPos() || {}
         console.log('show rangy', x, y, rangy.getSelection())
         showRangy(x, y)
         saveTempSelection(rangy.getSelection().saveRanges())
+        contextMenu.show({
+          id: 'abasbaba',
+          event,
+        })
       }
-    }, 100)
+    }, 200)
 
     if (rangy?.initialized) {
       console.log('init mouse event')

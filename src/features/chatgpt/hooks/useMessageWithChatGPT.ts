@@ -142,12 +142,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       }
     })
     console.log(2)
+    // 创建会话id不一定报错，所以加一个flag防止出现2个错误提示
+    let isSetError = false
     try {
       if (!conversation.conversationId) {
         postConversationId = (await createConversation()) || ''
       }
     } catch (e) {
       console.error(`create Conversation error`, e)
+      isSetError = true
       createSystemMessage(
         currentMessageId,
         `Error detected. Please try again.`,
@@ -155,6 +158,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       )
     }
     if (!postConversationId || !currentPortInstance) {
+      if (!isSetError) {
+        createSystemMessage(
+          currentMessageId,
+          `Error detected. Please try again.`,
+          'error',
+        )
+      }
       setConversation((prevState) => {
         return {
           ...prevState,

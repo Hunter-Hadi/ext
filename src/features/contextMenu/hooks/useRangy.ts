@@ -7,6 +7,7 @@ const useRangy = () => {
   const [rangy, setRangy] = useRecoilState(RangyState)
   const hideRangy = (force = false) => {
     setRangy((prevState) => {
+      console.log('!!!!!!!!!!!! clear', force, prevState.lastSelectionRanges)
       return {
         ...prevState,
         position: {
@@ -50,6 +51,7 @@ const useRangy = () => {
         )
         console.log(selectionInputAble, 'selectionInputAble')
       }
+      console.log('!!!!!!!!!!!! save', temped)
       return {
         ...prevState,
         selectionInputAble,
@@ -94,6 +96,7 @@ const useRangy = () => {
     position: rangy.position,
     lastSelectionRanges: rangy.lastSelectionRanges,
     selectionInputAble: rangy.selectionInputAble,
+    rangyState: rangy,
   }
 }
 export { useRangy }

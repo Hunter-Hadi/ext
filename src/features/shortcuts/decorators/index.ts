@@ -1,5 +1,5 @@
-import { compileTemplate } from '@/features/shortcuts/utils'
-import { Action } from '@/features/shortcuts'
+import { compileTemplate } from '../utils'
+import { Action } from '../core'
 
 export function templateParserDecorator() {
   return function (

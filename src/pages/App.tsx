@@ -13,6 +13,8 @@ import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { hideEzMailBox } from '@/utils'
+import { useInitRangy } from '@/features/contextMenu'
+import { RangyContextMenu } from '@/features/contextMenu'
 
 const getClientEnv = () => {
   if (location.host === 'mail.google.com') {
@@ -42,7 +44,13 @@ const GmailInit = () => {
 const AppInit = () => {
   const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
-  return <>{appState.env === 'gmail' && <GmailInit />}</>
+  useInitRangy()
+  return (
+    <>
+      {appState.env === 'gmail' && <GmailInit />}
+      <RangyContextMenu />
+    </>
+  )
 }
 
 const App: FC = () => {
@@ -207,9 +215,7 @@ const App: FC = () => {
               width={1}
               height={1}
               id={'EzMail_AI_TEMPLATE_COMPILE'}
-              src={
-                'https://www.ezmail.ai/ezmail-ai-chrome-extension-sandbox.html'
-              }
+              src={'https://www.ezmail.ai/crx.html'}
             />
           </Stack>
         </Stack>

@@ -30,3 +30,25 @@ body[dir="rtl"] #EzMail_AI_ROOT{
   right: unset;
   left: 0;
 }
+.ezmail-ai__context-menu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 999999;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    padding: 10px;
+    display: none;
+    &.open{
+        display: block;
+    }
+    .ezmail-ai__context-menu-item{
+        padding: 5px 0;
+        cursor: pointer;
+        &:hover{
+        color: #1890ff;
+        }
+    }
+}

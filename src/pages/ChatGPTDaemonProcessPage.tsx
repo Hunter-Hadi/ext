@@ -25,7 +25,34 @@ const stopDaemonProcessClose = () => {
 const useDaemonProcess = () => {
   const chatGptInstanceRef = useRef<IChatGPTDaemonProcess | null>(null)
   const [showDaemonProcessBar, setShowDaemonProcessBar] = useState(false)
+  const [pageSuccessLoaded, setPageSuccessLoaded] = useState(false)
+  const isPageLoad = () => {
+    const h1Index = document.body
+      .querySelector('h1')
+      ?.innerText.indexOf('ChatGPT')
+    if ((h1Index === undefined ? -1 : h1Index) > -1) {
+      setPageSuccessLoaded(true)
+      return
+    }
+    const navA = document.querySelectorAll('nav a')
+    for (let i = 0; i < navA.length; i++) {
+      if ((navA[i] as HTMLElement)?.innerText === 'Log out') {
+        setPageSuccessLoaded(true)
+        return
+      }
+    }
+    setPageSuccessLoaded(false)
+  }
   useEffect(() => {
+    const timer = setInterval(() => {
+      isPageLoad()
+    }, 1000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+  useEffect(() => {
+    console.log(pageSuccessLoaded, 'pageSuccessLoaded')
     const port = Browser.runtime.connect()
     const listener = async (msg: any) => {
       const { event, data } = msg
@@ -247,41 +274,17 @@ const useDaemonProcess = () => {
           break
       }
     }
-    port.onMessage.addListener(listener)
-    Browser.runtime.onMessage.addListener(listener)
-    console.log('onload')
-    let init = false
-    const isPageLoad = () => {
-      if (
-        (document.body.querySelector('h1')?.innerText.indexOf('ChatGPT') || 0) >
-        -1
-      ) {
-        return true
-      }
-      const navA = document.querySelectorAll('nav a')
-      for (let i = 0; i < navA.length; i++) {
-        if ((navA[i] as HTMLElement)?.innerText === 'Log out') {
-          return true
-        }
-      }
-      return false
-    }
-    const timer = setInterval(() => {
-      if (isPageLoad() && !init) {
-        port.postMessage({ event: 'DaemonProcess_getChatGPTProxyInstance' })
-      }
-    }, 1000)
-    if (isPageLoad()) {
-      init = true
+    if (pageSuccessLoaded) {
+      port.onMessage.addListener(listener)
+      Browser.runtime.onMessage.addListener(listener)
       port.postMessage({ event: 'DaemonProcess_getChatGPTProxyInstance' })
     }
     return () => {
-      clearInterval(timer)
       Browser.runtime?.onMessage?.removeListener(listener)
       port?.onMessage?.removeListener(listener)
       port?.disconnect()
     }
-  }, [])
+  }, [pageSuccessLoaded])
   return {
     showDaemonProcessBar,
   }

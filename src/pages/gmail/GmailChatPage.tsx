@@ -7,12 +7,8 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { ISetActionsType } from '@/features/shortcuts'
 
 const GmailChatPage = () => {
-  const { loading, messageViewText, currentMessageId } = useCurrentMessageView()
+  const { messageViewText, currentMessageId } = useCurrentMessageView()
   const defaultInputValue = useMemo(() => {
-    if (!currentMessageId) {
-      return null
-    }
-    console.log('currentMessageId', currentMessageId)
     if (currentMessageId?.startsWith('newDraft_')) {
       return 'Write an email to...'
     } else {
@@ -116,7 +112,7 @@ const GmailChatPage = () => {
           run PromptCuts
         </Button>
       </Stack>
-      <AppLoadingLayout loading={loading || defaultInputValue === null}>
+      <AppLoadingLayout loading={defaultInputValue === null}>
         <GmailChatBox
           insertAble
           editAble={false}

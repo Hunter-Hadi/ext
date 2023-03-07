@@ -10,7 +10,6 @@ import { ChatGPTLoaderWrapper, pingDaemonProcess } from '@/features/chatgpt'
 //   )?.value
 //   return autoFocusInputValue || 'Enter ChatGPT prompt...'
 // }
-
 const NormalChatPage = () => {
   const {
     sendQuestion,

@@ -1,17 +1,19 @@
 import { useRecoilValue } from 'recoil'
 import { AppState } from '@/pages/App'
 import { useCallback } from 'react'
-import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts'
+import { IShortcutEngineBuiltInVariableType } from '../types'
 import {
   deepCloneGmailMessageElement,
   useCurrentMessageView,
   useInboxComposeViews,
 } from '@/features/gmail'
 import { getEzMailAppRootElement } from '@/utils'
+import { useRangy } from '@/features/contextMenu'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentComposeView } = useInboxComposeViews()
+  const { lastSelectionRanges } = useRangy()
   const { messageViewText } = useCurrentMessageView()
   return useCallback(() => {
     let GMAIL_DRAFT_CONTEXT = ''
@@ -41,6 +43,8 @@ const useShortCutsParameters = () => {
     } = {
       GMAIL_MESSAGE_CONTEXT: messageViewText,
       GMAIL_DRAFT_CONTEXT,
+      USER_SELECTION_HTML: lastSelectionRanges?.ranges?.[0]?.toHtml() || '',
+      USER_SELECTION_VALUE: lastSelectionRanges?.ranges?.[0]?.toString() || '',
       USER_INPUT:
         getEzMailAppRootElement()?.querySelector<HTMLTextAreaElement>(
           '#EzMailAppChatBoxInput',
@@ -67,6 +71,6 @@ const useShortCutsParameters = () => {
       parameters,
       shortCutsParameters: Object.values(parameters),
     }
-  }, [appState.env, currentComposeView, messageViewText])
+  }, [appState.env, currentComposeView, messageViewText, lastSelectionRanges])
 }
 export { useShortCutsParameters }

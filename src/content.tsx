@@ -40,6 +40,9 @@ if (location.host === 'chat.openai.com') {
   //   key: 'css',
   //   container: emotionRoot,
   // })
+  const contextMenu = document.createElement('div')
+  contextMenu.id = 'EzMail_AI_ROOT_Context_Menu'
+  document.body.appendChild(contextMenu)
   const container = document.createElement('div')
   container.id = 'EzMail_AI_ROOT'
   document.body.appendChild(container)

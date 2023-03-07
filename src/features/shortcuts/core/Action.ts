@@ -1,4 +1,4 @@
-import { IAction, IActionType } from '@/features/shortcuts'
+import { IAction, IActionType } from '../types'
 
 class Action implements IAction {
   id: string

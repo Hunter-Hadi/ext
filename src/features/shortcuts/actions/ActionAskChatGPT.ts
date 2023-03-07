@@ -1,8 +1,6 @@
-import {
-  Action,
-  IActionType,
-  templateParserDecorator,
-} from '@/features/shortcuts'
+import { IActionType } from '../types'
+import { Action } from '../core'
+import { templateParserDecorator } from '../decorators'
 export class ActionAskChatGPT extends Action {
   static type = 'ASK_CHATGPT'
   constructor(

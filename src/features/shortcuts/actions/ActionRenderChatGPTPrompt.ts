@@ -1,6 +1,6 @@
-import { Action } from '@/features/shortcuts/core/Action'
-import { clearUserInput, IActionType } from '@/features/shortcuts'
-import { templateParserDecorator } from '@/features/shortcuts/decorators'
+import { Action } from '../core'
+import { IActionType } from '../types'
+import { clearUserInput, templateParserDecorator } from '../decorators'
 export class ActionRenderChatGPTPrompt extends Action {
   static type = 'RENDER_CHATGPT_PROMPT'
   constructor(

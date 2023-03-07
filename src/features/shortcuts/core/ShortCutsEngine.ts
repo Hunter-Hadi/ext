@@ -2,12 +2,12 @@ import {
   IShortcutEngineVariableType,
   IShortcutEngine,
   IActionType,
-} from '@/features/shortcuts'
+} from '../types'
 import {
   ActionAskChatGPT,
   ActionRenderChatGPTPrompt,
   ActionGmailInsertReplyBox,
-} from '@/features/shortcuts/actions'
+} from '../actions'
 import { v4 } from 'uuid'
 
 const ActionClassMap = {
@@ -36,6 +36,7 @@ class ShortCutsEngine implements IShortcutEngine {
     }>,
   ) {
     this.reset()
+    this.actions = []
     actions.map((action) => {
       const CurrentActionClass = ActionClassMap[action.type]
       if (!CurrentActionClass) {

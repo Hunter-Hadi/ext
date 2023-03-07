@@ -3,7 +3,6 @@ export const findParentElementWithAttribute = (
   attributeName: string,
 ) => {
   let parentElement = element.parentElement
-
   let maxLoop = 10
   while (parentElement && maxLoop > 0) {
     const findElement = parentElement.querySelector(`div[${attributeName}]`)

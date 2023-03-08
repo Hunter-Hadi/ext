@@ -1,5 +1,5 @@
 import { Box, Button, Paper, Stack } from '@mui/material'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import {
   Tree,
   getBackendOptions,
@@ -10,26 +10,33 @@ import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
 import ContextMenuEditForm from '@/pages/options/components/ContextMenuEditForm'
 import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
-import defaultContextMenuJson from './defaultContextMenuJson'
 import {
   getEzMailChromeExtensionSettings,
+  IEzMailChromeExtensionSettingsKey,
   setEzMailChromeExtensionSettings,
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
 const rootId = 'root'
 
-const saveTreeData = async (treeData: IContextMenuItem[]) => {
+const saveTreeData = async (
+  key: IEzMailChromeExtensionSettingsKey,
+  treeData: IContextMenuItem[],
+) => {
   try {
     const success = await setEzMailChromeExtensionSettings({
-      contextMenus: treeData,
-    })
+      [key]: treeData,
+    } as any)
     console.log(success)
   } catch (error) {
     console.log(error)
   }
 }
-const ContextMenuSettings = () => {
+const ContextMenuSettings: FC<{
+  settingsKey: IEzMailChromeExtensionSettingsKey
+  defaultContextMenuJson: IContextMenuItem[]
+}> = (props) => {
+  const { settingsKey, defaultContextMenuJson } = props
   const [loading, setLoading] = useState(false)
   const [editId, setEditId] = useState<string | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
@@ -71,7 +78,13 @@ const ContextMenuSettings = () => {
     const getList = async () => {
       const settings = await getEzMailChromeExtensionSettings()
       if (isDestroy) return
-      setTreeData(settings?.contextMenus || defaultContextMenuJson)
+      console.log(settings)
+      console.log(defaultContextMenuJson)
+      if (settings[settingsKey] && (settings[settingsKey] || []).length > 0) {
+        setTreeData(settings[settingsKey] as IContextMenuItem[])
+        return
+      }
+      setTreeData(defaultContextMenuJson)
     }
     getList()
     return () => {
@@ -79,7 +92,7 @@ const ContextMenuSettings = () => {
     }
   }, [])
   useEffect(() => {
-    saveTreeData(treeData)
+    saveTreeData(settingsKey, treeData)
   }, [treeData])
   return (
     <Paper>
@@ -129,7 +142,7 @@ const ContextMenuSettings = () => {
                   setLoading(true)
                   const result = await getEzMailChromeExtensionSettings()
                   console.log(result)
-                  setTreeData(result?.contextMenus || defaultContextMenuJson)
+                  setTreeData(result[settingsKey] || [])
                 } catch (error) {
                   console.log(error)
                 } finally {

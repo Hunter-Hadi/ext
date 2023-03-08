@@ -63,7 +63,7 @@ const useInitRangy = () => {
       if (selectionString) {
         saveHighlightedRangeAndShowContextMenu(event, true)
       } else {
-        contextMenu.hideAll()
+        // contextMenu.hideAll()
       }
     }, 200)
     const keyupListener = debounce((event: KeyboardEvent) => {

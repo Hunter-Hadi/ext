@@ -5,6 +5,9 @@ import { Menu } from 'react-contexify'
 import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 // import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 export const RangyContextMenuId = 'EzMail_AI_ROOT_Context_Menu_ID'
+export const RangyGmailToolBarContextMenuId =
+  'EzMail_AI_ROOT_Gmail_Toolbar_Context_Menu_ID'
+import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 
 const RangyContextMenu = () => {
   // const [dropdownType, setDropdownType] = React.useState<
@@ -36,7 +39,21 @@ const RangyContextMenu = () => {
           {/*    </Stack>*/}
           {/*  </Item>*/}
           {/*)}*/}
-          <ContextMenuList />
+          <ContextMenuList
+            defaultContextMenuJson={defaultContextMenuJson}
+            settingsKey={'contextMenus'}
+          />
+        </Menu>
+        <Menu
+          style={{
+            zIndex: 999998,
+          }}
+          id={RangyGmailToolBarContextMenuId}
+        >
+          <ContextMenuList
+            defaultContextMenuJson={[]}
+            settingsKey={'gmailToolBarContextMenu'}
+          />
         </Menu>
       </Paper>
     </Portal>

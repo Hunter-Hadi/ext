@@ -87,12 +87,15 @@ export const EzMailBoxIsOpen = () => {
   return ezMailAiElement?.classList.contains('open') || false
 }
 
-type EzMailChromeExtensionSettings = {
+type IEzMailChromeExtensionSettings = {
   contextMenus?: IContextMenuItem[]
+  gmailToolBarContextMenu?: IContextMenuItem[]
 }
+export type IEzMailChromeExtensionSettingsKey =
+  keyof IEzMailChromeExtensionSettings
 
 export const getEzMailChromeExtensionSettings =
-  (): Promise<EzMailChromeExtensionSettings> => {
+  (): Promise<IEzMailChromeExtensionSettings> => {
     return new Promise((resolve) => {
       const port = Browser.runtime.connect()
       const listener = (message: any) => {

@@ -1,14 +1,21 @@
 import { Stack, Typography } from '@mui/material'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { IContextMenuItemWithChildren, useRangy } from '@/features/contextMenu'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+  useRangy,
+} from '@/features/contextMenu'
 import { Item, Separator, Submenu } from 'react-contexify'
-import { getEzMailChromeExtensionSettings, showEzMailBox } from '@/utils'
+import {
+  getEzMailChromeExtensionSettings,
+  IEzMailChromeExtensionSettingsKey,
+  showEzMailBox,
+} from '@/utils'
 import {
   checkIsCanInputElement,
   groupByContextMenuItem,
 } from '@/features/contextMenu/utils'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import { pingUntilLogin } from '@/features/chatgpt'
 
 const ShortCutsButtonItem: FC<{
@@ -18,7 +25,7 @@ const ShortCutsButtonItem: FC<{
   const { hideRangy, saveSelection, lastSelectionRanges } = useRangy()
   const [running, setRunning] = useState(false)
   useEffect(() => {
-    if (lastSelectionRanges && running) {
+    if (running) {
       const actions = menuItem.data.actions
       if (actions && actions.length > 0) {
         showEzMailBox()
@@ -109,7 +116,11 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
   return <ShortCutsButtonItem menuItem={menuItem} />
 }
 
-const ContextMenuList: FC = () => {
+const ContextMenuList: FC<{
+  defaultContextMenuJson: IContextMenuItem[]
+  settingsKey: IEzMailChromeExtensionSettingsKey
+}> = (props) => {
+  const { defaultContextMenuJson, settingsKey } = props
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
   const { rangyState } = useRangy()
   useEffect(() => {
@@ -117,10 +128,12 @@ const ContextMenuList: FC = () => {
     const getList = async () => {
       const settings = await getEzMailChromeExtensionSettings()
       if (isDestroy) return
+      console.log(
+        settingsKey,
+        groupByContextMenuItem(settings[settingsKey] || defaultContextMenuJson),
+      )
       setList(
-        groupByContextMenuItem(
-          settings?.contextMenus || defaultContextMenuJson,
-        ),
+        groupByContextMenuItem(settings[settingsKey] || defaultContextMenuJson),
       )
     }
     getList()
@@ -129,6 +142,9 @@ const ContextMenuList: FC = () => {
     }
   }, [])
   const sortByHighlighted = useMemo(() => {
+    if (settingsKey === 'gmailToolBarContextMenu') {
+      return list
+    }
     const editOrReviewSelection = list.find(
       (item) => item.text === 'Edit or review selection',
     )
@@ -147,7 +163,13 @@ const ContextMenuList: FC = () => {
       }
     }
     return []
-  }, [rangyState.tempSelectionRanges, rangyState.lastSelectionRanges, list])
+  }, [
+    rangyState.tempSelectionRanges,
+    rangyState.lastSelectionRanges,
+    list,
+    settingsKey,
+  ])
+  console.log(sortByHighlighted, settingsKey)
   return (
     <>
       {sortByHighlighted.map((menuItem, index) => {

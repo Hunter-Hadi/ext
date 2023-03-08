@@ -22,9 +22,48 @@
     opacity: 0;
   }
 }
-.ezmail-ai__gmail-toolbar-icon{
-  opacity: 1!important;
+.ezmail-ai__gmail-toolbar-button-wrapper--cta {
+  cursor: pointer;
+  height: 36px!important;
+  background: #1D56D7!important;
+  padding: 0 8px!important;
+  border-radius: 4px 0 0 4px!important;
+  width: unset!important;
+  transition: color .1s ease-in-out;
+  //&:before{
+  //  display: none!important;
+  //}
+  .ezmail-ai__gmail-toolbar-button--cta{
+    display: none!important;
+  }
 }
+.ezmail-ai__gmail-toolbar-button-wrapper--cta:before{
+  display: none!important;
+}
+.ezmail-ai__gmail-toolbar-button-wrapper--cta:after {
+  content: "EzMail";
+  color: #fff!important;
+  font-size: 14px!important;
+  font-weight: bold!important;
+}
+.ezmail-ai__gmail-toolbar-button-wrapper--dropdown{
+  cursor: pointer;
+  height: 36px!important;
+  background: #1D56D7!important;
+  padding: 0 2px!important;
+  border-radius: 0 4px 4px 0!important;
+  border-left: 1px solid #091b44!important;
+  margin-left: 0!important;
+  transition: color .1s ease-in-out;
+  & .ezmail-ai__gmail-toolbar-button--dropdown{
+    opacity: 1!important;
+  }
+}
+.ezmail-ai__gmail-toolbar-button-wrapper--dropdown:hover,
+.ezmail-ai__gmail-toolbar-button-wrapper--cta:hover{
+    background: #3671f9 !important;
+}
+
 
 body[dir="rtl"] #EzMail_AI_ROOT{
   right: unset;

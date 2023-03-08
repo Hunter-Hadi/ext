@@ -10,9 +10,36 @@ import {
 } from '../store'
 import { getComposeViewMessageId } from '../utils'
 import { v4 as uuidV4 } from 'uuid'
-import { GmailToolBarIconBase64Data } from '@/components/CustomIcon'
+import {
+  GmailToolBarDropdownIconBase64Data,
+  GmailToolBarIconBase64Data,
+} from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
-import { hideEzMailBox, showEzMailBox } from '@/utils'
+import {
+  getEzMailChromeExtensionSettings,
+  hideEzMailBox,
+  showEzMailBox,
+} from '@/utils'
+import { contextMenu } from 'react-contexify'
+import { RangyGmailToolBarContextMenuId } from '@/features/contextMenu/components/RangyContextMenu'
+import { getContextMenuRenderPosition } from '@/features/contextMenu/utils'
+
+const initComposeViewButtonStyle = (composeView: any) => {
+  document
+    .querySelectorAll('.ezmail-ai__gmail-toolbar-button--cta')
+    .forEach((el) => {
+      el.parentElement?.classList.add(
+        'ezmail-ai__gmail-toolbar-button-wrapper--cta',
+      )
+    })
+  document
+    .querySelectorAll('.ezmail-ai__gmail-toolbar-button--dropdown')
+    .forEach((el) => {
+      el.parentElement?.classList.add(
+        'ezmail-ai__gmail-toolbar-button-wrapper--dropdown',
+      )
+    })
+}
 
 const useInitInboxSdk = () => {
   const [inboxSdk, setInboxSdk] = useRecoilState(InboxSdkState)
@@ -64,8 +91,66 @@ const useInitInboxSdk = () => {
         timeoutRef.current = true
         composeView.addButton({
           title: 'EzMail.AI – AI Email Drafter',
+          iconUrl: GmailToolBarDropdownIconBase64Data,
+          iconClass: 'ezmail-ai__gmail-toolbar-button--dropdown',
+          tooltip:
+            'Click this button to generate an entire email draft in seconds',
+          orderHint: 2,
+          onClick: async (event: ComposeViewButtonOnClickEvent) => {
+            pingDaemonProcess()
+            const newMessageId = getComposeViewMessageId(
+              composeView.getElement(),
+            )
+            if (newMessageId) {
+              setInboxEditState((prevState) => {
+                return {
+                  currentDraftId,
+                  currentMessageId: newMessageId,
+                  step: (prevState.step || 0) + 1,
+                }
+              })
+            } else {
+              setInboxEditState({
+                currentDraftId,
+                currentMessageId: `newDraft_${uuidV4()}`,
+              })
+            }
+            const iconButtonBounce = event?.composeView
+              ?.getElement()
+              ?.querySelector('.ezmail-ai__gmail-toolbar-button--dropdown')
+              ?.getBoundingClientRect()
+            if (iconButtonBounce) {
+              const settings = await getEzMailChromeExtensionSettings()
+              const itemLength = settings.gmailToolBarContextMenu?.length || 0
+              const { x, y } = getContextMenuRenderPosition(
+                {
+                  top: iconButtonBounce.top,
+                  left: iconButtonBounce.left,
+                  bottom: iconButtonBounce.bottom,
+                  right: iconButtonBounce.right,
+                },
+                200,
+                32 * itemLength + 20,
+              )
+              try {
+                contextMenu.show({
+                  id: RangyGmailToolBarContextMenuId,
+                  position: { x, y },
+                  event: new MouseEvent('click'),
+                })
+              } catch (e) {
+                console.log(e)
+              }
+            }
+          },
+        })
+        composeView.addButton({
+          title: 'EzMail.AI – AI Email Drafter',
           iconUrl: GmailToolBarIconBase64Data,
-          iconClass: 'ezmail-ai__gmail-toolbar-icon',
+          iconClass: 'ezmail-ai__gmail-toolbar-button--cta',
+          tooltip:
+            'Click this button to access additional AI drafting options.',
+          orderHint: 1,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
             pingDaemonProcess()
             const newMessageId = getComposeViewMessageId(
@@ -89,6 +174,7 @@ const useInitInboxSdk = () => {
             // event.composeView.insertTextIntoBodyAtCursor('Hello World!')
           },
         })
+        initComposeViewButtonStyle(composeView)
         // currentDraftId = (await composeView.getCurrentDraftID()) || ''
         const proxyComposeView = {
           getInstance: () => {

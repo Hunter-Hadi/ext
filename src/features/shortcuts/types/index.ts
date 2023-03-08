@@ -5,8 +5,8 @@ export type IShortcutEngineBuiltInVariableType =
   // system
   | 'LAST_ACTION_OUTPUT'
   | 'USER_INPUT'
-  | 'USER_SELECTION_VALUE'
-  | 'USER_SELECTION_HTML'
+  | 'HIGHLIGHTED_TEXT'
+  | 'HIGHLIGHTED_HTML'
 export type IShortcutEngineVariableType =
   | IShortcutEngineBuiltInVariableType
   | string

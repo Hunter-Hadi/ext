@@ -61,6 +61,8 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_AsyncTaskResponse'
   | 'Client_ListenPong'
   | 'Client_ListenOpenChatMessageBox'
+  | 'Client_getSettingsResponse'
+  | 'Client_updateSettingsResponse'
 // 客户端发送进程
 export type IChromeExtensionClientSendEvent =
   | 'Client_Ping'
@@ -68,6 +70,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_checkChatGPTStatus'
   | 'Client_openChatGPTDaemonProcess'
   | 'Client_openUrlInNewTab'
+  | 'Client_updateSettings'
+  | 'Client_getSettings'
 // chrome extension 监听event
 export type IChromeExtensionListenEvent =
   | IChromeExtensionChatGPTDaemonProcessSendEvent
@@ -217,6 +221,51 @@ Browser.runtime.onConnect.addListener((port) => {
           await Browser.tabs.create({
             url,
           })
+        }
+        break
+      case 'Client_getSettings':
+        {
+          try {
+            const { CLIENT_SETTINGS = '{}' } = await Browser.storage.local.get(
+              'CLIENT_SETTINGS',
+            )
+            port.postMessage({
+              event: 'Client_getSettingsResponse',
+              data: {
+                settings: JSON.parse(CLIENT_SETTINGS),
+              },
+            })
+          } catch (e) {
+            port.postMessage({
+              event: 'Client_getSettingsResponse',
+              data: {
+                settings: {},
+              },
+            })
+          }
+        }
+        break
+      case 'Client_updateSettings':
+        {
+          const { settings } = msg.data
+          try {
+            await Browser.storage.local.set({
+              CLIENT_SETTINGS: settings,
+            })
+            port.postMessage({
+              event: 'Client_updateSettingsResponse',
+              data: {
+                success: true,
+              },
+            })
+          } catch (e) {
+            port.postMessage({
+              event: 'Client_updateSettingsResponse',
+              data: {
+                success: false,
+              },
+            })
+          }
         }
         break
       case 'DaemonProcess_Pong':

@@ -10,12 +10,13 @@ import { useRangy } from '@/features/contextMenu'
 
 const GmailChatBoxAiTools: FC<{
   insertAble?: boolean
+  replaceAble?: boolean
   message: IGmailChatMessage
   onCopy?: () => void
 }> = (props) => {
   const { currentComposeView } = useInboxComposeViews()
   const { replaceSelectionRangeText, selectionInputAble } = useRangy()
-  const { message, insertAble } = props
+  const { message, insertAble, replaceAble } = props
   const insertAbleMemo = useMemo(() => {
     return currentComposeView && insertAble
   }, [insertAble])
@@ -45,7 +46,7 @@ const GmailChatBoxAiTools: FC<{
           Insert
         </Button>
       )}
-      {!insertAbleMemo && selectionInputAble && (
+      {!insertAbleMemo && selectionInputAble && replaceAble && (
         <Button
           size={'small'}
           variant={'contained'}

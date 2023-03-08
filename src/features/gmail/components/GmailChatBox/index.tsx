@@ -135,6 +135,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           return (
             <GmailChatBoxMessageItem
               insertAble={insertAble}
+              replaceAble={true}
               message={message}
               aiAvatar={aiAvatar}
               editAble={editAble}
@@ -150,6 +151,8 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         })}
         {writingMessage && (
           <GmailChatBoxMessageItem
+            replaceAble={false}
+            insertAble={false}
             message={writingMessage}
             aiAvatar={aiAvatar}
             editAble={false}

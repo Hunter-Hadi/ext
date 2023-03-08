@@ -6,6 +6,7 @@ import GmailChatBoxAiTools from './GmailChatBoxAiTools'
 import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'
 
 const GmailChatBoxMessageItem: FC<{
+  replaceAble?: boolean
   insertAble?: boolean
   editAble?: boolean
   message: IGmailChatMessage
@@ -15,7 +16,15 @@ const GmailChatBoxMessageItem: FC<{
   onCopy?: () => void
   onRetry?: (messageId: string) => void
 }> = (props) => {
-  const { message, editAble, insertAble, onSave, onCopy, onRetry } = props
+  const {
+    message,
+    editAble,
+    insertAble,
+    replaceAble,
+    onSave,
+    onCopy,
+    onRetry,
+  } = props
   const [defaultText, setDefaultText] = useState(message.text || '')
   const [isEdit, setIsEdit] = useState(false)
   const ChatBoxSx = useMemo(() => {
@@ -139,6 +148,7 @@ const GmailChatBoxMessageItem: FC<{
         {message.type === 'ai' && (
           <GmailChatBoxAiTools
             insertAble={insertAble}
+            replaceAble={replaceAble}
             onCopy={onCopy}
             message={message}
           />

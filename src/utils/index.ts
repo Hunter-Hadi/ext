@@ -27,6 +27,9 @@
 //     : '0'
 // }
 
+import Browser from 'webextension-polyfill'
+import { IContextMenuItem } from '@/features/contextMenu'
+
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
     .toFixed(digits)
@@ -82,4 +85,60 @@ export const hideEzMailBox = () => {
 export const EzMailBoxIsOpen = () => {
   const ezMailAiElement = document.getElementById('EzMail_AI_ROOT')
   return ezMailAiElement?.classList.contains('open') || false
+}
+
+type EzMailChromeExtensionSettings = {
+  contextMenus?: IContextMenuItem[]
+}
+
+export const getEzMailChromeExtensionSettings =
+  (): Promise<EzMailChromeExtensionSettings> => {
+    return new Promise((resolve) => {
+      const port = Browser.runtime.connect()
+      const listener = (message: any) => {
+        if (message.event === 'Client_getSettingsResponse') {
+          const {
+            data: { settings },
+          } = message
+          port.onMessage.removeListener(listener)
+          resolve(settings)
+        }
+      }
+      port.onMessage.addListener(listener)
+      port.postMessage({ event: 'Client_getSettings' })
+    })
+  }
+export const setEzMailChromeExtensionSettings = (settings: {
+  contextMenus: IContextMenuItem[]
+}) => {
+  return new Promise((resolve) => {
+    const port = Browser.runtime.connect()
+    const listener = (message: any) => {
+      if (message.event === 'Client_updateSettingsResponse') {
+        const {
+          data: { success },
+        } = message
+        port.onMessage.removeListener(listener)
+        resolve(success)
+      }
+    }
+    port.onMessage.addListener(listener)
+    getEzMailChromeExtensionSettings()
+      .then((oldSettings: any) => {
+        port.postMessage({
+          event: 'Client_updateSettings',
+          data: {
+            settings: JSON.stringify({ ...oldSettings, ...settings }),
+          },
+        })
+      })
+      .catch(() => {
+        port.postMessage({
+          event: 'Client_updateSettings',
+          data: {
+            settings: JSON.stringify({ ...settings }),
+          },
+        })
+      })
+  })
 }

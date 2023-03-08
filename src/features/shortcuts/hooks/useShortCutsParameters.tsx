@@ -43,8 +43,8 @@ const useShortCutsParameters = () => {
     } = {
       GMAIL_MESSAGE_CONTEXT: messageViewText,
       GMAIL_DRAFT_CONTEXT,
-      USER_SELECTION_HTML: lastSelectionRanges?.ranges?.[0]?.toHtml() || '',
-      USER_SELECTION_VALUE: lastSelectionRanges?.ranges?.[0]?.toString() || '',
+      HIGHLIGHTED_HTML: lastSelectionRanges?.ranges?.[0]?.toHtml() || '',
+      HIGHLIGHTED_TEXT: lastSelectionRanges?.ranges?.[0]?.toString() || '',
       USER_INPUT:
         getEzMailAppRootElement()?.querySelector<HTMLTextAreaElement>(
           '#EzMailAppChatBoxInput',

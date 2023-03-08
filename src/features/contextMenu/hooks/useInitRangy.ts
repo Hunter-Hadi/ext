@@ -7,10 +7,13 @@ import { contextMenu } from 'react-contexify'
 import initRangyPosition from '../lib/rangy-position'
 import { useRangy } from '../hooks'
 import debounce from 'lodash-es/debounce'
+import { RangyContextMenuId } from '../components/RangyContextMenu'
+import { getContextMenuRenderPosition } from '@/features/contextMenu/utils'
+
 initRangyPosition(rangyLib)
+
 const useInitRangy = () => {
-  const { initRangyCore, rangy, showRangy, saveTempSelection, show } =
-    useRangy()
+  const { initRangyCore, rangy, showRangy, saveTempSelection } = useRangy()
   useEffect(() => {
     let isDestroyed = false
     const initListener = () => {
@@ -24,34 +27,62 @@ const useInitRangy = () => {
     }
   }, [])
   useEffect(() => {
-    const mouseUpListener = debounce((event: any) => {
-      console.log('mouse up', show)
-      if (show) {
-        return
-      }
-      console.log('mouse up 2', show)
-      if (rangy?.getSelection()?.toString()?.trim()) {
-        const { x } = rangy?.getSelection()?.getStartDocumentPos() || {}
-        const { y } = rangy?.getSelection()?.getEndDocumentPos() || {}
-        console.log('show rangy', x, y, rangy.getSelection())
+    const saveHighlightedRangeAndShowContextMenu = (
+      event: MouseEvent | KeyboardEvent,
+      usingTextPosition = false,
+    ) => {
+      const highlightedBounce = rangy?.getSelection()?.getBoundingDocumentRect()
+      if (highlightedBounce) {
+        const { x, y } = getContextMenuRenderPosition(highlightedBounce)
+        console.log('show rangy', x, y)
         showRangy(x, y)
+        // const marker = document.createElement('div')
+        // marker.style.top = `${x}px`
+        // marker.style.left = `${y}px`
+        // marker.style.width = '10px'
+        // marker.style.height = '10px'
+        // marker.style.backgroundColor = 'red'
+        // marker.style.position = 'fixed'
+        // marker.style.zIndex = '99999999'
+        // document.body.appendChild(marker)
         saveTempSelection(rangy.getSelection().saveRanges())
         contextMenu.show({
-          id: 'abasbaba',
+          id: RangyContextMenuId,
           event,
+          position: usingTextPosition
+            ? {
+                x,
+                y,
+              }
+            : undefined,
         })
       }
+    }
+    const mouseUpListener = debounce((event: MouseEvent) => {
+      const selectionString = rangy?.getSelection()?.toString()?.trim()
+      if (selectionString) {
+        saveHighlightedRangeAndShowContextMenu(event, true)
+      } else {
+        contextMenu.hideAll()
+      }
     }, 200)
-
+    const keyupListener = debounce((event: KeyboardEvent) => {
+      const selectionString = rangy?.getSelection()?.toString()?.trim()
+      if (selectionString) {
+        saveHighlightedRangeAndShowContextMenu(event, true)
+      } else {
+        contextMenu.hideAll()
+      }
+    }, 500)
     if (rangy?.initialized) {
       console.log('init mouse event')
       document.addEventListener('mouseup', mouseUpListener)
-      document.addEventListener('keyup', mouseUpListener)
+      document.addEventListener('keyup', keyupListener)
     }
     return () => {
       document.removeEventListener('mouseup', mouseUpListener)
-      document.removeEventListener('keyup', mouseUpListener)
+      document.removeEventListener('keyup', keyupListener)
     }
-  }, [rangy, show])
+  }, [rangy])
 }
 export { useInitRangy }

@@ -1,161 +1,45 @@
 import { Stack, Typography } from '@mui/material'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { ISetActionsType } from '@/features/shortcuts'
-import { useRangy } from '@/features/contextMenu'
+import { IContextMenuItemWithChildren, useRangy } from '@/features/contextMenu'
 import { Item, Separator, Submenu } from 'react-contexify'
-import { v4 } from 'uuid'
-
-type IMenuItem = {
-  id: string
-  name: string
-  type: 'group' | 'shortcuts'
-  shortCutsId?: string
-  children?: IMenuItem[]
-}
-
-const TEMPLATE_ACTIONS = [
-  [
-    {
-      type: 'RENDER_CHATGPT_PROMPT',
-      parameters: {
-        template: 'Improve writing: \n{{USER_SELECTION_VALUE}}',
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-    },
-  ],
-  [
-    {
-      type: 'RENDER_CHATGPT_PROMPT',
-      parameters: {
-        template: 'Fix spelling & grammar: \n{{USER_SELECTION_VALUE}}',
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-    },
-  ],
-  [
-    {
-      type: 'RENDER_CHATGPT_PROMPT',
-      parameters: {
-        template: 'Make shorter: \n{{USER_SELECTION_VALUE}}',
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-    },
-  ],
-  [
-    {
-      type: 'RENDER_CHATGPT_PROMPT',
-      parameters: {
-        template: 'Make longer: \n{{USER_SELECTION_VALUE}}',
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-    },
-  ],
-  [
-    {
-      type: 'RENDER_CHATGPT_PROMPT',
-      parameters: {
-        template: 'Summarize: \n{{USER_SELECTION_VALUE}}',
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-    },
-  ],
-  [
-    {
-      type: 'RENDER_CHATGPT_PROMPT',
-      parameters: {
-        template: 'Give me a joke',
-      },
-    },
-    {
-      type: 'ASK_CHATGPT',
-    },
-  ],
-] as ISetActionsType[]
-
-const TEMPLATE_MENU_LIST = [
-  {
-    name: 'Edit or review selection',
-    type: 'group',
-    id: v4(),
-    children: [
-      {
-        id: v4(),
-        name: 'Improve writing',
-        type: 'shortcuts',
-        shortCutsId: '0',
-      },
-      {
-        id: v4(),
-        name: 'Fix spelling & grammar',
-        type: 'shortcuts',
-        shortCutsId: '1',
-      },
-      {
-        id: v4(),
-        name: 'Make shorter',
-        type: 'shortcuts',
-        shortCutsId: '2',
-      },
-      {
-        name: 'Make longer',
-        id: v4(),
-        type: 'shortcuts',
-        shortCutsId: '3',
-      },
-      {
-        id: v4(),
-        name: 'Summarize',
-        type: 'shortcuts',
-        shortCutsId: '4',
-      },
-      {
-        id: v4(),
-        name: 'See more',
-        type: 'shortcuts',
-        children: [
-          {
-            id: v4(),
-            name: 'Give me a joke',
-            type: 'shortcuts',
-            shortCutsId: '5',
-          },
-        ],
-      },
-    ],
-  },
-] as IMenuItem[]
+import { getEzMailChromeExtensionSettings, showEzMailBox } from '@/utils'
+import {
+  checkIsCanInputElement,
+  groupByContextMenuItem,
+} from '@/features/contextMenu/utils'
+import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
+import { pingUntilLogin } from '@/features/chatgpt'
 
 const ShortCutsButtonItem: FC<{
-  menuItem: IMenuItem
+  menuItem: IContextMenuItemWithChildren
 }> = ({ menuItem }) => {
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   const { hideRangy, saveSelection, lastSelectionRanges } = useRangy()
   const [running, setRunning] = useState(false)
   useEffect(() => {
     if (lastSelectionRanges && running) {
-      if (menuItem.shortCutsId) {
-        const action = TEMPLATE_ACTIONS[Number(menuItem.shortCutsId)]
-        const isSetSuccess = setShortCuts(action)
-        if (isSetSuccess) {
-          runShortCuts()
-            .then()
-            .catch()
-            .finally(() => {
-              hideRangy(true)
-              setRunning(false)
-            })
-        }
+      const actions = menuItem.data.actions
+      if (actions && actions.length > 0) {
+        showEzMailBox()
+        pingUntilLogin()
+          .then((loginSuccess) => {
+            if (loginSuccess) {
+              const isSetSuccess = setShortCuts(actions)
+              if (isSetSuccess) {
+                runShortCuts()
+                  .then()
+                  .catch()
+                  .finally(() => {
+                    hideRangy()
+                    setRunning(false)
+                  })
+              }
+            }
+          })
+          .catch((err) => {
+            console.log(err)
+          })
       }
     }
   }, [lastSelectionRanges, running])
@@ -164,7 +48,7 @@ const ShortCutsButtonItem: FC<{
       <Submenu
         label={
           <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
-            {menuItem.name}
+            {menuItem.text}
           </Typography>
         }
       >
@@ -189,22 +73,19 @@ const ShortCutsButtonItem: FC<{
       }}
     >
       <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
-        {menuItem.name}
+        {menuItem.text}
       </Typography>
     </Item>
   )
 }
 
-const ShortCutsGroup: FC<{ menuItem: IMenuItem }> = ({ menuItem }) => {
+const ShortCutsGroup: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
+  menuItem,
+}) => {
   return (
     <Stack>
-      <Typography
-        textAlign={'left'}
-        pl={1}
-        fontSize={14}
-        color={'text.secondary'}
-      >
-        {menuItem.name}
+      <Typography textAlign={'left'} fontSize={12} color={'text.secondary'}>
+        {menuItem.text}
       </Typography>
       {menuItem.children?.map((childMenuItem) => {
         return (
@@ -219,17 +100,57 @@ const ShortCutsGroup: FC<{ menuItem: IMenuItem }> = ({ menuItem }) => {
   )
 }
 
-const ListItem: FC<{ menuItem: IMenuItem }> = ({ menuItem }) => {
-  if (menuItem.type === 'group') {
+const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
+  menuItem,
+}) => {
+  if (menuItem.data.type === 'group') {
     return <ShortCutsGroup menuItem={menuItem} />
   }
   return <ShortCutsButtonItem menuItem={menuItem} />
 }
 
 const ContextMenuList: FC = () => {
+  const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
+  const { rangyState } = useRangy()
+  useEffect(() => {
+    let isDestroy = false
+    const getList = async () => {
+      const settings = await getEzMailChromeExtensionSettings()
+      if (isDestroy) return
+      setList(
+        groupByContextMenuItem(
+          settings?.contextMenus || defaultContextMenuJson,
+        ),
+      )
+    }
+    getList()
+    return () => {
+      isDestroy = true
+    }
+  }, [])
+  const sortByHighlighted = useMemo(() => {
+    const editOrReviewSelection = list.find(
+      (item) => item.text === 'Edit or review selection',
+    )
+    const generateFromSelection = list.find(
+      (item) => item.text === 'Generate from selection',
+    )
+    if (editOrReviewSelection && generateFromSelection) {
+      const currentRange =
+        rangyState.lastSelectionRanges || rangyState.tempSelectionRanges
+      const parent = currentRange?.ranges?.[0]?.parentElement?.()
+      const selectionInputAble = checkIsCanInputElement(parent || document.body)
+      if (selectionInputAble) {
+        return [editOrReviewSelection, generateFromSelection]
+      } else {
+        return [generateFromSelection, editOrReviewSelection]
+      }
+    }
+    return []
+  }, [rangyState.tempSelectionRanges, rangyState.lastSelectionRanges, list])
   return (
     <>
-      {TEMPLATE_MENU_LIST.map((menuItem, index) => {
+      {sortByHighlighted.map((menuItem, index) => {
         return <ListItem key={index} menuItem={menuItem} />
       })}
     </>

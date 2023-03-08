@@ -1,5 +1,20 @@
 import { atom } from 'recoil'
+import { ISetActionsType } from '@/features/shortcuts'
 
+export type IContextMenuItem = {
+  id: string | 'root'
+  parent: string
+  droppable: boolean
+  text: string
+  data: {
+    editable: boolean
+    type: 'group' | 'shortcuts'
+    actions?: ISetActionsType
+  }
+}
+export type IContextMenuItemWithChildren = IContextMenuItem & {
+  children: IContextMenuItemWithChildren[]
+}
 export const RangyCoreState = atom<{
   loaded: boolean
   rangy: any | null

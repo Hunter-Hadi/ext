@@ -19,6 +19,11 @@
     "https://mail.google.com/",
     "https://*.openai.com/*"
   ],
+
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "permissions": ["tabs", "scripting", "storage", "management"],
   "action": {
     "default_icon": {
@@ -33,10 +38,5 @@
     "32":  "assets/icons/ezmail_32_normal.png",
     "48":  "assets/icons/ezmail_48_normal.png",
     "128": "assets/icons/ezmail_128_normal.png"
-  },
-  "sandbox": {
-    "pages": [
-      "sandbox.html"
-    ]
   }
 }

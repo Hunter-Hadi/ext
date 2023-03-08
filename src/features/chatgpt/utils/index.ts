@@ -43,6 +43,54 @@ export const pingDaemonProcess = () => {
     }, 2000)
   })
 }
+export const pingUntilLogin = () => {
+  const port = Browser.runtime.connect()
+  if (!port) {
+    return Promise.reject(false)
+  }
+  return new Promise<boolean>((resolve, reject) => {
+    pingDaemonProcess().then((success) => {
+      if (success) {
+        // 直接ping成功了
+        resolve(true)
+      } else {
+        console.log('等待登录成功')
+        let timer: any = 0
+        let maxRetry = 120
+        // 等待登录成功
+        const listener = async (msg: any) => {
+          if (msg.event === 'Client_ChatGPTStatusUpdate') {
+            console.log(msg.data, msg.data.status)
+            if (msg.data.status === 'success') {
+              clearInterval(timer)
+              Browser?.runtime?.onMessage?.removeListener(listener)
+              port?.onMessage?.removeListener(listener)
+              const delay = (ms: number) =>
+                new Promise((resolve) => setTimeout(resolve, ms))
+              await delay(0)
+              resolve(true)
+            }
+          }
+        }
+        port.onMessage.addListener(listener)
+        Browser.runtime.onMessage.addListener(listener)
+        timer = setInterval(() => {
+          port.postMessage({
+            event: 'Client_checkChatGPTStatus',
+            data: {},
+          })
+          maxRetry--
+          if (maxRetry <= 0) {
+            clearInterval(timer)
+            Browser?.runtime?.onMessage?.removeListener(listener)
+            port?.onMessage?.removeListener(listener)
+            reject(false)
+          }
+        }, 1000)
+      }
+    })
+  })
+}
 export const sendAsyncTask = async (
   event: IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
   data: any,
@@ -109,7 +157,7 @@ export const useSendAsyncTask = () => {
             return
           }
           console.log(4)
-          if (chatGPTClient.port && chatGPTClient.status === 'success') {
+          if (chatGPTClient.port && chatGPTClient.loaded) {
             console.log(5)
             const { onMessage, onError } = options || {}
             const taskId = uuidV4()
@@ -176,13 +224,11 @@ export const useSendAsyncTask = () => {
               }
             })
           } else {
-            if (chatGPTClient.status === 'needAuth') {
-              reject('Please login on ChatGPT and pass Cloudflare check.')
-            }
+            reject('Please wait for the daemon process to start.')
           }
         })
       })
     },
-    [chatGPTClient.port, chatGPTClient.status],
+    [chatGPTClient.port, chatGPTClient.loaded],
   )
 }

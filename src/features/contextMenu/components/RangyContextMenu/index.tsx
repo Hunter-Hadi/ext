@@ -1,14 +1,12 @@
 import Portal from '@/components/Portal'
 import React from 'react'
 import { Paper } from '@mui/material'
-import { useRangy } from '../../hooks'
 import { Menu } from 'react-contexify'
 import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 // import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
-const MENU_ID = 'abasbaba'
+export const RangyContextMenuId = 'EzMail_AI_ROOT_Context_Menu_ID'
 
 const RangyContextMenu = () => {
-  const { hideRangy } = useRangy()
   // const [dropdownType, setDropdownType] = React.useState<
   //   'ezMailAI' | 'buttons'
   // >('buttons')
@@ -16,13 +14,10 @@ const RangyContextMenu = () => {
     <Portal containerId={'EzMail_AI_ROOT_Context_Menu'}>
       <Paper elevation={3}>
         <Menu
-          id={MENU_ID}
-          onVisibilityChange={(isVisible) => {
-            if (!isVisible) {
-              hideRangy(false)
-              //   setDropdownType('buttons')
-            }
+          style={{
+            zIndex: 999998,
           }}
+          id={RangyContextMenuId}
         >
           {/*{dropdownType === 'buttons' && (*/}
           {/*  <Item closeOnClick={false}>*/}

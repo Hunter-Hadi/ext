@@ -15,7 +15,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sendAsyncTask = useSendAsyncTask()
   const updateInboxEditState = useSetRecoilState(InboxEditState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
-  const { status, loaded, port } = useRecoilValue(ChatGPTClientState)
+  const { loaded, port } = useRecoilValue(ChatGPTClientState)
   const [messages, setMessages] = useRecoilState(GmailMessageChatState)
   const [inputValue, setInputValue] = useRecoilState(GmailMessageChatInputState)
   const [conversation, setConversation] = useRecoilState(
@@ -23,11 +23,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   )
   const writingMessageRef = useRef<IGmailChatMessage | null>(null)
   const currentPortInstance = useMemo(() => {
-    if (loaded && status === 'success') {
+    if (loaded) {
       return port
     }
     return undefined
-  }, [status, port, loaded])
+  }, [port, loaded])
   const resetConversation = () => {
     console.log('resetConversation', defaultValueRef.current)
     setInputValue(defaultValueRef.current)
@@ -68,6 +68,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         })
         return response.conversationId as string
       } else {
+        console.log('create Conversation error', response)
         return ''
       }
     }

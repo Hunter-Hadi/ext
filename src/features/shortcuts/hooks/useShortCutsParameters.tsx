@@ -44,6 +44,7 @@ const useShortCutsParameters = () => {
     }
     const selectionData = parseRangySelectRangeData(
       lastSelectionRanges?.selectRange,
+      'useShortCutsParameters',
     )
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any

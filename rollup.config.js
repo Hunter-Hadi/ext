@@ -44,7 +44,7 @@ export default [
       resolve(),
       commonjs(),
       typescript(),
-      isProduction && emptyDir(),
+      emptyDir(),
       isProduction &&
         terser({
           compress: {

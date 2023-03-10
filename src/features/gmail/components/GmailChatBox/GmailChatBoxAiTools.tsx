@@ -46,7 +46,8 @@ const GmailChatBoxAiTools: FC<{
           Insert
         </Button>
       )}
-      {!insertAbleMemo && selectionInputAble && replaceAble && (
+      {/*// TODO 边界情况太多了*/}
+      {false && !insertAbleMemo && selectionInputAble && replaceAble && (
         <Button
           size={'small'}
           variant={'contained'}

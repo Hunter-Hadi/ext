@@ -385,3 +385,18 @@ Browser.runtime.onInstalled.addListener(async (object) => {
     })
   }
 })
+
+Browser.commands.onCommand.addListener(async (command) => {
+  if (command == '_execute_action') {
+    const currentTab = await Browser.tabs.query({
+      active: true,
+    })
+    const tab = currentTab[0]
+    if (tab && tab.id) {
+      await Browser.tabs.sendMessage(tab.id, {
+        event: 'Client_ListenOpenChatMessageBox',
+        data: {},
+      })
+    }
+  }
+})

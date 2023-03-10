@@ -4,6 +4,7 @@ specifiers:
   '@emotion/cache': ^11.10.5
   '@emotion/react': ^11.10.6
   '@emotion/styled': ^11.10.6
+  '@floating-ui/react': ^0.20.1
   '@inboxsdk/core': 0.2.28-alpha.4
   '@minoru/react-dnd-treeview': ^3.4.1
   '@mui/icons-material': ^5.11.9
@@ -58,6 +59,7 @@ dependencies:
   '@emotion/cache': registry.npmmirror.com/@emotion/cache/11.10.5
   '@emotion/react': registry.npmmirror.com/@emotion/react/11.10.6_pmekkgnqduwlme35zpnqhenc34
   '@emotion/styled': registry.npmmirror.com/@emotion/styled/11.10.6_oouaibmszuch5k64ms7uxp2aia
+  '@floating-ui/react': registry.npmmirror.com/@floating-ui/react/0.20.1_biqbaboplfbrettd7655fr4n2y
   '@inboxsdk/core': registry.npmmirror.com/@inboxsdk/core/0.2.28-alpha.4
   '@minoru/react-dnd-treeview': registry.npmmirror.com/@minoru/react-dnd-treeview/3.4.1_b57ckgxx77373rey5kttpzfpiu
   '@mui/icons-material': registry.npmmirror.com/@mui/icons-material/5.11.9_ofpk46txu7v2f5mzrtv4xsczka
@@ -371,6 +373,50 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  registry.npmmirror.com/@floating-ui/core/1.2.2:
+    resolution: {integrity: sha512-FaO9KVLFnxknZaGWGmNtjD2CVFuc0u4yeGEofoyXO2wgRA7fLtkngT6UB0vtWQWuhH3iMTZZ/Y89CMeyGfn8pA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/core/-/core-1.2.2.tgz}
+    name: '@floating-ui/core'
+    version: 1.2.2
+    dev: false
+
+  registry.npmmirror.com/@floating-ui/dom/1.2.3:
+    resolution: {integrity: sha512-lK9cZUrHSJLMVAdCvDqs6Ug8gr0wmqksYiaoj/bxj2gweRQkSuhg2/V6Jswz2KiQ0RAULbqw1oQDJIMpQ5GfGA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/dom/-/dom-1.2.3.tgz}
+    name: '@floating-ui/dom'
+    version: 1.2.3
+    dependencies:
+      '@floating-ui/core': registry.npmmirror.com/@floating-ui/core/1.2.2
+    dev: false
+
+  registry.npmmirror.com/@floating-ui/react-dom/1.3.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-htwHm67Ji5E/pROEAr7f8IKFShuiCKHwUC/UY4vC3I5jiSvGFAYnSYiZO5MlGmads+QqvUkR9ANHEguGrDv72g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/react-dom/-/react-dom-1.3.0.tgz}
+    id: registry.npmmirror.com/@floating-ui/react-dom/1.3.0
+    name: '@floating-ui/react-dom'
+    version: 1.3.0
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/dom': registry.npmmirror.com/@floating-ui/dom/1.2.3
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+    dev: false
+
+  registry.npmmirror.com/@floating-ui/react/0.20.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-JHTHJ+/YsIxNFH8uJDFa5OyI6dSUZcle6wAFe0zRTjgWD+rkACfBBoJtx2itTtn7C4a7xAz4jgxdEQcMel194g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@floating-ui/react/-/react-0.20.1.tgz}
+    id: registry.npmmirror.com/@floating-ui/react/0.20.1
+    name: '@floating-ui/react'
+    version: 0.20.1
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/react-dom': registry.npmmirror.com/@floating-ui/react-dom/1.3.0_biqbaboplfbrettd7655fr4n2y
+      aria-hidden: registry.npmmirror.com/aria-hidden/1.2.3
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
+      tabbable: registry.npmmirror.com/tabbable/6.1.1
+    dev: false
 
   registry.npmmirror.com/@humanwhocodes/config-array/0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@humanwhocodes/config-array/-/config-array-0.5.0.tgz}
@@ -1343,6 +1389,15 @@ packages:
     dependencies:
       sprintf-js: registry.npmmirror.com/sprintf-js/1.0.3
     dev: true
+
+  registry.npmmirror.com/aria-hidden/1.2.3:
+    resolution: {integrity: sha512-xcLxITLe2HYa1cnYnwCjkOO1PqUHQpozB8x9AR0OgWN2woOBi5kSDVxKfd0b7sb1hw5qFeJhXm9H1nu3xSfLeQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/aria-hidden/-/aria-hidden-1.2.3.tgz}
+    name: aria-hidden
+    version: 1.2.3
+    engines: {node: '>=10'}
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.5.0
+    dev: false
 
   registry.npmmirror.com/array-flat-polyfill/1.0.1:
     resolution: {integrity: sha512-hfJmKupmQN0lwi0xG6FQ5U8Rd97RnIERplymOv/qpq8AoNKPPAnxJadjFA23FNWm88wykh9HmpLJUUwUtNU/iw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/array-flat-polyfill/-/array-flat-polyfill-1.0.1.tgz}
@@ -5273,6 +5328,12 @@ packages:
     name: symbol-observable
     version: 1.2.0
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  registry.npmmirror.com/tabbable/6.1.1:
+    resolution: {integrity: sha512-4kl5w+nCB44EVRdO0g/UGoOp3vlwgycUVtkk/7DPyeLZUCuNFFKCFG6/t/DgHLrUPHjrZg6s5tNm+56Q2B0xyg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tabbable/-/tabbable-6.1.1.tgz}
+    name: tabbable
+    version: 6.1.1
     dev: false
 
   registry.npmmirror.com/table/6.8.1:

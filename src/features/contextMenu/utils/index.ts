@@ -6,9 +6,9 @@ export const checkIsCanInputElement = (element: HTMLElement) => {
   let maxLoop = 10
   while (parentElement && maxLoop > 0) {
     if (
-      parentElement.tagName === 'INPUT' ||
-      parentElement.tagName === 'TEXTAREA' ||
-      parentElement.getAttribute('contenteditable') === 'true'
+      parentElement?.tagName === 'INPUT' ||
+      parentElement?.tagName === 'TEXTAREA' ||
+      parentElement?.getAttribute?.('contenteditable') === 'true'
     ) {
       return true
     }
@@ -97,9 +97,9 @@ const checkCollision = (rect1: Rect, rect2: Rect, boundary: Rect): boolean => {
 export const getContextMenuRenderPosition = (
   highlightedRect: Rect,
   contextMenuWidth = 220,
-  contextMenuHeight = 440,
+  contextMenuHeight = 400,
   options = {
-    offset: 16,
+    offset: 8,
     directions: ['bottom', 'top', 'right', 'left'],
   },
 ) => {
@@ -111,10 +111,30 @@ export const getContextMenuRenderPosition = (
     top: 0,
     bottom: window.innerHeight,
   }
-  highlightedRect.top -= scrollY
-  highlightedRect.bottom -= scrollY
+  console.log(highlightedRect.top, highlightedRect.left)
+  if (highlightedRect.top - scrollY > 0) {
+    highlightedRect.top -= scrollY
+    highlightedRect.bottom -= scrollY
+  }
   const currentDirections = directions || ['bottom', 'top', 'right', 'left']
   const detectRects: Array<Rect & { direction: string }> = []
+  // render highlightedRect
+  // document.querySelector('#highlightedRectElement')?.remove()
+  // const highlightedRectElement = document.createElement('div')
+  // highlightedRectElement.id = 'highlightedRectElement'
+  // highlightedRectElement.style.position = 'fixed'
+  // highlightedRectElement.style.left = `${highlightedRect.left}px`
+  // highlightedRectElement.style.top = `${highlightedRect.top}px`
+  // highlightedRectElement.style.width = `${
+  //   highlightedRect.right - highlightedRect.left
+  // }px`
+  // highlightedRectElement.style.height = `${
+  //   highlightedRect.bottom - highlightedRect.top
+  // }px`
+  // highlightedRectElement.style.border = '1px solid yellow'
+  // highlightedRectElement.style.zIndex = '9999'
+  // highlightedRectElement.style.pointerEvents = 'none'
+  // document.body.appendChild(highlightedRectElement)
   currentDirections.map((direction) => {
     switch (direction) {
       case 'bottom':

@@ -1,5 +1,42 @@
-import { compileTemplate } from '../utils'
+// import { compileTemplate } from '../utils'
 import { Action } from '../core'
+
+function render(
+  template: string,
+  params: any,
+): {
+  data: string
+  error: string
+} {
+  try {
+    const data = template.replace(
+      /\{\{(.+?)\}\}/g,
+      (match: string, p1: string) => {
+        const parts: string[] = p1.trim().split('.')
+        let val: any = params
+        while (parts.length) {
+          const prop: string = parts.shift()!
+          if (Object.prototype.hasOwnProperty.call(val, prop)) {
+            val = val[prop]
+          } else {
+            val = ''
+            break
+          }
+        }
+        return val
+      },
+    )
+    return {
+      data,
+      error: '',
+    }
+  } catch (e) {
+    return {
+      data: '',
+      error: 'parse template error',
+    }
+  }
+}
 
 export function templateParserDecorator() {
   return function (
@@ -12,7 +49,12 @@ export function templateParserDecorator() {
       const [parameters] = args
       const actionInstance: Action = this as any
       if (actionInstance.parameters?.template) {
-        const result = await compileTemplate(
+        // 现在的业务场景不需要复杂的
+        // const result = await compileTemplate(
+        //   actionInstance.parameters?.template || '',
+        //   parameters,
+        // )
+        const result = render(
           actionInstance.parameters?.template || '',
           parameters,
         )

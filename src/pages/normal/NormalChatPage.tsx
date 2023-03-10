@@ -25,7 +25,6 @@ const NormalChatPage = () => {
   }, [])
   return (
     <Stack flex={1} height={0} position={'relative'}>
-      <span>123</span>
       <ChatGPTLoaderWrapper />
       <GmailChatBox
         editAble={false}

@@ -38,5 +38,16 @@
     "32":  "assets/icons/ezmail_32_normal.png",
     "48":  "assets/icons/ezmail_48_normal.png",
     "128": "assets/icons/ezmail_128_normal.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+J",
+        "windows": "Alt+J",
+        "linux": "Alt+J",
+        "mac": "Command+J"
+      },
+      "description": "Active EzMail.AI"
+    }
   }
 }

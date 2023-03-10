@@ -12,6 +12,7 @@
     "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@floating-ui/react": "^0.20.1",
     "@inboxsdk/core": "0.2.28-alpha.4",
     "@minoru/react-dnd-treeview": "^3.4.1",
     "@mui/icons-material": "^5.11.9",

@@ -8,9 +8,9 @@ const removeMarkers = () => {
   })
 }
 
-const parseRangySelectRangeData = (selectedRange: any) => {
-  const range = selectedRange?.ranges?.[0]
-  if (!range) {
+const parseRangySelectRangeData = (selectedRange: any, source = 'useRangy') => {
+  console.log(selectedRange)
+  if (!selectedRange) {
     return {
       isCanInputElement: false,
       startMarker: null,
@@ -19,8 +19,8 @@ const parseRangySelectRangeData = (selectedRange: any) => {
       text: '',
     }
   }
-  let startMarker = range.startContainer
-  let endMarker = range.endContainer
+  let startMarker = selectedRange.startContainer
+  let endMarker = selectedRange.endContainer
   if (!startMarker) {
     // start marker is not exist, but it is the same as last time
     startMarker = selectedRange?.cache.startMarker
@@ -42,26 +42,37 @@ const parseRangySelectRangeData = (selectedRange: any) => {
   let text = ''
   if (startMarker && endMarker) {
     try {
-      html = range.toHtml()
-      text = range.toString()
+      html = selectedRange.toHtml()
+      text = selectedRange.toString()
     } catch (e) {
       console.log('parseRangySelectRangeData error', e)
     }
   }
   if (!text || !html) {
     // 如果没有获取到内容，就直接用缓存的内容
-    html = selectedRange?.cache.html
-    text = selectedRange?.cache.text
+    html = selectedRange?.cache?.html || ''
+    text = selectedRange?.cache?.text || ''
   }
   console.log(
-    'parseRangySelectRangeData result',
-    selectedRange,
+    `[ContextMenu Module]: parseRangySelectRangeData result[${source}]\n`,
     isCanInputElement,
-    'html',
-    html,
-    'text',
+    '\n',
+    // 'html:\t',
+    // html,
+    '\n',
+    'text: \t',
     text,
   )
+  if (!selectedRange.cache && html && text) {
+    // 如果没有缓存，就缓存一下
+    selectedRange.cache = {
+      isCanInputElement,
+      startMarker,
+      endMarker,
+      html,
+      text,
+    }
+  }
   return {
     isCanInputElement,
     startMarker,
@@ -70,87 +81,122 @@ const parseRangySelectRangeData = (selectedRange: any) => {
     text,
   }
 }
+/**
+ *
+ * @param rangyCore
+ * @param saveSelection - 因为会影响键盘操作，所以在点击按钮的时候才save
+ */
+const rangyGetSelection = (rangyCore: any, saveSelection = false) => {
+  try {
+    return {
+      selection: saveSelection ? rangyCore?.rangy?.saveSelection() : null,
+      selectRange: rangyCore?.rangy
+        ?.getSelection()
+        ?.getRangeAt(0)
+        ?.cloneRange(),
+    }
+  } catch (e) {
+    console.log('rangyGetSelection error', e)
+    return {
+      selection: null,
+      selectRange: null,
+    }
+  }
+}
 
 const useRangy = () => {
   const [rangyCore, setRangyCore] = useRecoilState(RangyCoreState)
   const [rangy, setRangy] = useRecoilState(RangyState)
   const hideRangy = (force = false) => {
     setRangy((prevState) => {
-      console.log('test selection clear', force, prevState.lastSelectionRanges)
+      console.log(
+        '[ContextMenu Module]: clear',
+        force,
+        prevState.lastSelectionRanges,
+      )
+      document.querySelector('#rangeBorderBox')?.remove()
       return {
         ...prevState,
-        position: {
-          x: 0,
-          y: 0,
-        },
         show: false,
         tempSelectionRanges: null,
+        tempSelectRangeRect: null,
         lastSelectionRanges: force ? null : prevState.lastSelectionRanges,
         selectionInputAble: force ? false : prevState.selectionInputAble,
       }
     })
   }
-  const showRangy = (x: number, y: number) => {
+  const showRangy = (rect: any) => {
     setRangy((prevState) => {
       return {
         ...prevState,
-        position: {
-          x,
-          y,
-        },
+        tempSelectRangeRect: rect,
         show: true,
       }
     })
   }
   const saveTempSelection = () => {
+    const saved = rangyGetSelection(rangyCore)
+    const data = parseRangySelectRangeData(saved?.selectRange)
     setRangy((prevState) => {
       if (prevState.tempSelectionRanges?.selection) {
         console.log(
-          'test selection clear old marker',
+          '[ContextMenu Module]: clear old marker',
           document.querySelectorAll('.rangySelectionBoundary').length,
         )
         removeMarkers()
       }
-      const saved = {
-        selection: rangyCore.rangy.saveSelection(),
-        selectRange: rangyCore.rangy.getSelection().saveRanges(),
-      }
-      const data = parseRangySelectRangeData(saved?.selectRange)
-      if (saved?.selectRange) {
-        saved.selectRange.cache = data
-      }
-      console.log(
-        'test selection save temp',
-        saved?.selection?.rangeInfos?.[0]?.startMarkerId,
-        saved?.selection?.rangeInfos?.[0]?.endMarkerId,
-      )
+      console.log('[ContextMenu Module]: save [temp]')
       return {
         ...prevState,
         tempSelectionRanges: saved || null,
         selectionInputAble: data.isCanInputElement,
       }
     })
+    return saved
   }
   const saveSelection = () => {
-    setRangy((prevState) => {
-      const temped = prevState.tempSelectionRanges
-      let selectionInputAble = false
+    const currentRanges = rangyCore?.rangy?.getSelection()?.getAllRanges() || []
+    let selectionInputAble = false
+    if (currentRanges.length > 0 && currentRanges[0].toString()) {
+      const saved = rangyGetSelection(rangyCore, true)
+      const data = parseRangySelectRangeData(saved?.selectRange)
+      console.log(
+        '[ContextMenu Module]: saveSelection using [current]',
+        saved?.selection?.rangeInfos?.[0]?.startMarkerId,
+        saved?.selection?.rangeInfos?.[0]?.endMarkerId,
+      )
+      setRangy((prevState) => {
+        return {
+          ...prevState,
+          selectionInputAble: data.isCanInputElement,
+          tempSelectionRanges: null,
+          lastSelectionRanges: saved || null,
+        }
+      })
+      rangyCore.rangy.contextMenu.show()
+      return saved
+    } else {
+      const temped = rangy.tempSelectionRanges
+      console.log(
+        '[ContextMenu Module]: saveSelection using [temped]',
+        temped?.selection?.rangeInfos?.[0]?.startMarkerId,
+        temped?.selection?.rangeInfos?.[0]?.endMarkerId,
+      )
       if (temped) {
         const selectionData = parseRangySelectRangeData(temped?.selectRange)
         selectionInputAble = selectionData.isCanInputElement
       }
-      console.log(
-        'test selection save last!!!!',
-        temped?.selection?.rangeInfos?.[0]?.startMarkerId,
-        temped?.selection?.rangeInfos?.[0]?.endMarkerId,
-      )
-      return {
-        ...prevState,
-        selectionInputAble,
-        tempSelectionRanges: null,
-        lastSelectionRanges: temped || null,
-      }
-    })
+      setRangy((prevState) => {
+        return {
+          ...prevState,
+          selectionInputAble,
+          tempSelectionRanges: null,
+          lastSelectionRanges: temped || null,
+        }
+      })
+      rangyCore.rangy.contextMenu.show()
+      return temped
+    }
   }
   const initRangyCore = (rangyCore: any) => {
     setRangyCore({
@@ -233,7 +279,8 @@ const useRangy = () => {
     saveTempSelection,
     replaceSelectionRangeText,
     show: rangy.show,
-    position: rangy.position,
+    tempSelectionRanges: rangy.tempSelectionRanges,
+    tempSelectRangeRect: rangy.tempSelectRangeRect,
     lastSelectionRanges: rangy.lastSelectionRanges,
     selectionInputAble: rangy.selectionInputAble,
     rangyState: rangy,

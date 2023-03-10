@@ -12,13 +12,13 @@ import {
   IEzMailChromeExtensionSettingsKey,
 } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+// import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import cloneDeep from 'lodash-es/cloneDeep'
 const ShortCutsButtonItem: FC<{
   menuItem: IContextMenuItemWithChildren
 }> = ({ menuItem }) => {
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
-  const { lastSelectionRanges } = useRangy()
+  const { lastSelectionRanges, rangy } = useRangy()
   const [running, setRunning] = useState(false)
   useEffect(() => {
     if (running) {
@@ -30,6 +30,7 @@ const ShortCutsButtonItem: FC<{
             .then()
             .catch()
             .finally(() => {
+              rangy.contextMenu.close()
               setRunning(false)
             })
       }
@@ -141,11 +142,11 @@ const ContextMenuList: FC<{
       const generateFromSelection = list.find(
         (group) => group.text === 'Generate from selection',
       )
-      if (editOrReviewSelection && generateFromSelection) {
-        const currentRange =
-          rangyState.lastSelectionRanges || rangyState.tempSelectionRanges
+      const currentRange = rangyState.lastSelectionRanges
+      if (editOrReviewSelection && generateFromSelection && currentRange) {
         const selectionData = parseRangySelectRangeData(
           currentRange?.selectRange,
+          'ContextMenuList',
         )
         if (selectionData.isCanInputElement) {
           return [editOrReviewSelection, generateFromSelection]
@@ -155,54 +156,55 @@ const ContextMenuList: FC<{
       }
     }
     return list
-  }, [
-    rangyState.tempSelectionRanges,
-    rangyState.lastSelectionRanges,
-    list,
-    settingsKey,
-  ])
+  }, [rangyState.lastSelectionRanges, list, settingsKey])
   console.log(sortBySettingsKey, settingsKey)
   return (
-    <>
-      {settingsKey === 'gmailToolBarContextMenu' && (
-        <>
-          <CustomizeButton />
-          <Separator />
-        </>
-      )}
+    <Stack
+      sx={
+        {
+          // overflowY: 'hidden',
+        }
+      }
+    >
+      {/*{settingsKey === 'gmailToolBarContextMenu' && (*/}
+      {/*  <>*/}
+      {/*    <CustomizeButton />*/}
+      {/*    <Separator />*/}
+      {/*  </>*/}
+      {/*)}*/}
       {sortBySettingsKey.map((menuItem, index) => {
         return <ListItem key={index} menuItem={menuItem} />
       })}
-      {settingsKey === 'contextMenus' && <CustomizeButton />}
-    </>
+      {/*{settingsKey === 'contextMenus' && <CustomizeButton />}*/}
+    </Stack>
   )
 }
-const CustomizeButton = () => {
-  return (
-    <Item
-      onClick={() => {
-        const port = chrome.runtime.connect()
-        port &&
-          port.postMessage({
-            event: 'Client_openUrlInNewTab',
-            data: {
-              key: 'options',
-            },
-          })
-      }}
-    >
-      <Stack
-        direction={'row'}
-        alignItems={'center'}
-        justifyContent={'space-between'}
-        width={'100%'}
-      >
-        <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
-          {`Customize`}
-        </Typography>
-        <OpenInNewIcon sx={{ fontSize: 16, color: 'inherit' }} />
-      </Stack>
-    </Item>
-  )
-}
+// const CustomizeButton = () => {
+//   return (
+//     <Item
+//       onClick={() => {
+//         const port = chrome.runtime.connect()
+//         port &&
+//           port.postMessage({
+//             event: 'Client_openUrlInNewTab',
+//             data: {
+//               key: 'options',
+//             },
+//           })
+//       }}
+//     >
+//       <Stack
+//         direction={'row'}
+//         alignItems={'center'}
+//         justifyContent={'space-between'}
+//         width={'100%'}
+//       >
+//         <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
+//           {`Customize`}
+//         </Typography>
+//         <OpenInNewIcon sx={{ fontSize: 16, color: 'inherit' }} />
+//       </Stack>
+//     </Item>
+//   )
+// }
 export default ContextMenuList

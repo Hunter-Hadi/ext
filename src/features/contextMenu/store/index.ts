@@ -25,23 +25,29 @@ export const RangyCoreState = atom<{
     rangy: null,
   },
 })
+
+export type IRangyRect = {
+  x: number
+  y: number
+  top: number
+  left: number
+  right: number
+  bottom: number
+  width: number
+  height: number
+}
+
 export const RangyState = atom<{
-  position: {
-    x: number
-    y: number
-  }
   show: boolean
   selectionInputAble: boolean
   lastSelectionRanges: any | null
   tempSelectionRanges: any | null
+  tempSelectRangeRect: IRangyRect | null
 }>({
   key: 'RangyState',
   default: {
-    position: {
-      x: 0,
-      y: 0,
-    },
     show: false,
+    tempSelectRangeRect: null,
     selectionInputAble: false,
     lastSelectionRanges: null,
     tempSelectionRanges: null,

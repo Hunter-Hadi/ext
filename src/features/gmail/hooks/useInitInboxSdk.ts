@@ -134,7 +134,7 @@ const useInitInboxSdk = () => {
                 200,
                 32 * itemLength + 20,
                 {
-                  offset: 16,
+                  offset: 8,
                   directions: ['top', 'right', 'left', 'bottom'],
                 },
               )

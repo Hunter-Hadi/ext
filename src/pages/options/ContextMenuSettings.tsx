@@ -53,7 +53,7 @@ const ContextMenuSettings: FC<{
         id: newEditId,
         parent: rootId,
         droppable: true,
-        text: 'New Menu Item',
+        text: 'New option item',
         data: {
           editable: true,
           type: 'shortcuts',
@@ -140,9 +140,7 @@ const ContextMenuSettings: FC<{
               onClick={async () => {
                 try {
                   setLoading(true)
-                  const result = await getEzMailChromeExtensionSettings()
-                  console.log(result)
-                  setTreeData(result[settingsKey] || [])
+                  setTreeData(defaultContextMenuJson || [])
                 } catch (error) {
                   console.log(error)
                 } finally {
@@ -195,6 +193,7 @@ const ContextMenuSettings: FC<{
         <Stack borderLeft={1} flex={1} width={0} height={800}>
           {editNode && (
             <ContextMenuEditForm
+              settingsKey={settingsKey}
               onSave={async (newNode) => {
                 updateMenuItem(newNode)
                 setEditId(null)

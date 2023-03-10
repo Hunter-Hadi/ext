@@ -59,7 +59,7 @@ export function pushOutputToChat() {
     }
   }
 }
-export function clearUserInput() {
+export function clearUserInput(beforeExecute = true) {
   return function (
     target: Action,
     propertyKey: string,
@@ -68,9 +68,15 @@ export function clearUserInput() {
     const oldFunc = descriptor.value
     descriptor.value = async function (...args: any[]) {
       const [, engine] = args
-      const value = await oldFunc.apply(this, args)
-      engine.getChartGPT()?.forceUpdateInputValue('')
-      return value
+      if (beforeExecute) {
+        engine.getChartGPT()?.setInputValue('')
+        const value = await oldFunc.apply(this, args)
+        return value
+      } else {
+        const value = await oldFunc.apply(this, args)
+        engine.getChartGPT()?.setInputValue('')
+        return value
+      }
     }
   }
 }

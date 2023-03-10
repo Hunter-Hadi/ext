@@ -15,6 +15,7 @@ export type IActionType =
   | 'RENDER_CHATGPT_PROMPT'
   | 'ASK_CHATGPT'
   | 'GMAIL_INSERT_REPLY_BOX'
+  | 'INSERT_USER_INPUT'
 export type ISetActionsType = Array<{
   id?: string
   type: IActionType

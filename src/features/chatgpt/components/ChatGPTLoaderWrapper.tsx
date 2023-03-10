@@ -1,12 +1,27 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Box, Stack, Paper, Typography, Button } from '@mui/material'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+
 const ChatGPTLoaderWrapper: FC = () => {
   const { status } = useRecoilValue(ChatGPTClientState)
   const { port } = useRecoilValue(ChatGPTClientState)
+  const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
+  useEffect(() => {
+    let timer: any | null = null
+    if (status === 'loading' || status === 'complete') {
+      timer = setTimeout(() => {
+        setShowJumpToChatGPT(true)
+      }, 10000)
+    }
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [status])
   if (status === 'success') {
     return null
   }
@@ -34,6 +49,55 @@ const ChatGPTLoaderWrapper: FC = () => {
             <Typography fontSize={'20px'} fontWeight={700}>
               Connecting to ChatGPT...
             </Typography>
+            {showJumpToChatGPT && (
+              <Box
+                sx={{
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                }}
+                onClick={() => {
+                  if (port) {
+                    port?.postMessage({
+                      event: 'Client_openUrlInNewTab',
+                      data: {
+                        key: 'daemon_process',
+                      },
+                    })
+                  }
+                }}
+              >
+                <Typography
+                  component={'span'}
+                  textAlign={'center'}
+                  fontSize={'14px'}
+                  fontWeight={400}
+                >
+                  {`If connection takes more than 10 seconds, check your `}
+                </Typography>
+                <Typography
+                  component={'span'}
+                  textAlign={'center'}
+                  fontSize={'14px'}
+                  fontWeight={400}
+                >
+                  {'ChatGPT page '}
+                </Typography>
+                <OpenInNewIcon
+                  sx={{ fontSize: 14, position: 'relative', top: 3 }}
+                />
+                <Typography
+                  component={'span'}
+                  textAlign={'center'}
+                  fontSize={'14px'}
+                  fontWeight={400}
+                >
+                  {' for issues.'}
+                </Typography>
+              </Box>
+            )}
           </Stack>
         </Paper>
       </Box>

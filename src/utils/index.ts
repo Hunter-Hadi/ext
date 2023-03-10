@@ -29,6 +29,7 @@
 
 import Browser from 'webextension-polyfill'
 import { IContextMenuItem } from '@/features/contextMenu'
+import { useEffect, useState } from 'react'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
@@ -144,4 +145,20 @@ export const setEzMailChromeExtensionSettings = (settings: {
         })
       })
   })
+}
+export const useDebounceValue = <T>(
+  value: T,
+  delay?: number,
+  defaultValue?: undefined,
+): T | undefined => {
+  const [debouncedValue, setDebouncedValue] = useState<T | undefined>(
+    defaultValue,
+  )
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay || 500)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [value, delay])
+  return debouncedValue
 }

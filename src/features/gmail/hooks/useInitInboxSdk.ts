@@ -23,8 +23,8 @@ import {
 import { contextMenu } from 'react-contexify'
 import { RangyGmailToolBarContextMenuId } from '@/features/contextMenu/components/RangyContextMenu'
 import { getContextMenuRenderPosition } from '@/features/contextMenu/utils'
-
-const initComposeViewButtonStyle = (composeView: any) => {
+import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.ezmail-ai__gmail-toolbar-button--cta')
     .forEach((el) => {
@@ -97,16 +97,15 @@ const useInitInboxSdk = () => {
             'Click this button to generate an entire email draft in seconds',
           orderHint: 2,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
-            pingDaemonProcess()
             const newMessageId = getComposeViewMessageId(
               composeView.getElement(),
             )
             if (newMessageId) {
               setInboxEditState((prevState) => {
                 return {
+                  ...prevState,
                   currentDraftId,
                   currentMessageId: newMessageId,
-                  step: (prevState.step || 0) + 1,
                 }
               })
             } else {
@@ -120,8 +119,11 @@ const useInitInboxSdk = () => {
               ?.querySelector('.ezmail-ai__gmail-toolbar-button--dropdown')
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
-              const settings = await getEzMailChromeExtensionSettings()
-              const itemLength = settings.gmailToolBarContextMenu?.length || 0
+              const { gmailToolBarContextMenu } =
+                await getEzMailChromeExtensionSettings()
+              const options =
+                gmailToolBarContextMenu || defaultGmailToolbarContextMenuJson
+              const itemLength = options.length || 0
               const { x, y } = getContextMenuRenderPosition(
                 {
                   top: iconButtonBounce.top,
@@ -131,6 +133,10 @@ const useInitInboxSdk = () => {
                 },
                 200,
                 32 * itemLength + 20,
+                {
+                  offset: 16,
+                  directions: ['top', 'right', 'left', 'bottom'],
+                },
               )
               try {
                 contextMenu.show({
@@ -171,10 +177,9 @@ const useInitInboxSdk = () => {
               })
             }
             showEzMailBox()
-            // event.composeView.insertTextIntoBodyAtCursor('Hello World!')
           },
         })
-        initComposeViewButtonStyle(composeView)
+        initComposeViewButtonStyle()
         // currentDraftId = (await composeView.getCurrentDraftID()) || ''
         const proxyComposeView = {
           getInstance: () => {

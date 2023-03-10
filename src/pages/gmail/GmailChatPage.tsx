@@ -1,24 +1,20 @@
 import { Button, Stack, TextareaAutosize } from '@mui/material'
-import React, { useEffect, useMemo, useState } from 'react'
-import { GmailChatBox, useCurrentMessageView } from '@/features/gmail'
-import AppLoadingLayout from '@/components/LoadingLayout'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  GmailChatBox,
+  InboxEditState,
+  useCurrentMessageView,
+} from '@/features/gmail'
 import { ChatGPTLoaderWrapper } from '@/features/chatgpt'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts'
+import { getEzMailChromeExtensionSettings, useDebounceValue } from '@/utils'
+import { useRecoilValue } from 'recoil'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 
 const GmailChatPage = () => {
-  const { messageViewText, currentMessageId } = useCurrentMessageView()
-  const defaultInputValue = useMemo(() => {
-    if (currentMessageId?.startsWith('newDraft_')) {
-      return 'Write an email to...'
-    } else {
-      if (messageViewText.trim()) {
-        return `Write a reply to this email: \n\n${messageViewText}`
-      } else {
-        return ``
-      }
-    }
-  }, [currentMessageId, messageViewText])
+  const { currentMessageId } = useCurrentMessageView()
+  const { step } = useRecoilValue(InboxEditState)
   const [inputJson, setInputJson] = useState<string>(
     JSON.stringify([
       {
@@ -29,32 +25,7 @@ const GmailChatPage = () => {
         },
       },
       {
-        type: 'ASK_CHATGPT',
-        parameters: {
-          template: '{{LAST_ACTION_OUTPUT}}',
-        },
-      },
-      {
-        type: 'RENDER_CHATGPT_PROMPT',
-        parameters: {
-          template:
-            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nPick number {{USER_INPUT}} from \n"""\n{{LAST_ACTION_OUTPUT}}\n"""\n and treat it as [THE_CHOSEE_OUTLINE], and stick to this outline in the future. Now, tell me, what facts or decisions do you need to properly draft a reply email following [THE_CHOSEE_OUTLINE]? Give me a list no more than 4 items (each item is within 4 words), and give me example information pre-filled for each item in the same line seperated by colon',
-        },
-        autoExecute: false,
-      },
-      {
-        type: 'ASK_CHATGPT',
-        parameters: {
-          template: '{{LAST_ACTION_OUTPUT}}',
-        },
-      },
-      {
-        type: 'RENDER_CHATGPT_PROMPT',
-        parameters: {
-          template:
-            'Here is the incoming email:\n"""\n{{GMAIL_MESSAGE_CONTEXT}}\n""""\nNow, reply to the incomming email following [THE_CHOSEE_OUTLINE], and the following facts and decision:\n""""\n{{USER_INPUT}}\n""""\n',
-        },
-        autoExecute: false,
+        type: 'INSERT_USER_INPUT',
       },
       {
         type: 'ASK_CHATGPT',
@@ -71,7 +42,6 @@ const GmailChatPage = () => {
     ] as ISetActionsType),
   )
   const {
-    shortCutsEngineRef,
     runShortCuts,
     loading: shortCutsLoading,
     sendQuestion,
@@ -80,12 +50,36 @@ const GmailChatPage = () => {
     reGenerate,
     retryMessage,
     inputValue,
-    setInputValue,
+    setShortCuts,
     stopGenerateMessage,
-  } = useShortCutsWithMessageChat(defaultInputValue || '')
+  } = useShortCutsWithMessageChat('')
+  const executeShortCuts = useCallback(async () => {
+    const { gmailToolBarContextMenu } = await getEzMailChromeExtensionSettings()
+    const ctaButtonAction =
+      gmailToolBarContextMenu?.[0] || defaultGmailToolbarContextMenuJson[0]
+    if (ctaButtonAction && ctaButtonAction?.data?.actions) {
+      setShortCuts(ctaButtonAction.data.actions)
+      await runShortCuts()
+    }
+  }, [setShortCuts, runShortCuts])
+  const prefExecuteShortCuts = useRef(executeShortCuts)
+  const prevIdRef = useRef<string | undefined>()
   useEffect(() => {
-    setInputValue(defaultInputValue || '')
-  }, [defaultInputValue, currentMessageId])
+    prefExecuteShortCuts.current = executeShortCuts
+  }, [executeShortCuts])
+  const debounceCurrentMessageId = useDebounceValue(currentMessageId, 200)
+  const memoizedDeps = useMemo(() => {
+    const deps = [prefExecuteShortCuts.current, debounceCurrentMessageId]
+    prevIdRef.current = debounceCurrentMessageId
+    return deps
+  }, [debounceCurrentMessageId, step])
+  useEffect(() => {
+    if (debounceCurrentMessageId) {
+      console.log('init default input value run!')
+      executeShortCuts()
+    }
+  }, memoizedDeps)
+
   return (
     <Stack flex={1} height={0} position={'relative'}>
       <ChatGPTLoaderWrapper />
@@ -98,8 +92,7 @@ const GmailChatPage = () => {
         <Button
           variant={'contained'}
           onClick={() => {
-            shortCutsEngineRef.current?.reset()
-            shortCutsEngineRef.current?.setActions(JSON.parse(inputJson))
+            setShortCuts(JSON.parse(inputJson))
           }}
         >
           Set Actions
@@ -112,21 +105,19 @@ const GmailChatPage = () => {
           run PromptCuts
         </Button>
       </Stack>
-      <AppLoadingLayout loading={defaultInputValue === null}>
-        <GmailChatBox
-          insertAble
-          editAble={false}
-          defaultValue={inputValue}
-          onSendMessage={sendQuestion}
-          writingMessage={conversation.writingMessage}
-          messages={messages}
-          loading={conversation.loading}
-          title={'Chat Draft'}
-          onRetry={retryMessage}
-          onReGenerate={reGenerate}
-          onStopGenerate={stopGenerateMessage}
-        />
-      </AppLoadingLayout>
+      <GmailChatBox
+        insertAble
+        editAble={false}
+        defaultValue={inputValue}
+        onSendMessage={sendQuestion}
+        writingMessage={conversation.writingMessage}
+        messages={messages}
+        loading={conversation.loading}
+        title={'Chat Draft'}
+        onRetry={retryMessage}
+        onReGenerate={reGenerate}
+        onStopGenerate={stopGenerateMessage}
+      />
     </Stack>
   )
 }

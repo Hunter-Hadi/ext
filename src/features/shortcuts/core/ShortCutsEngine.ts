@@ -7,6 +7,7 @@ import {
   ActionAskChatGPT,
   ActionRenderChatGPTPrompt,
   ActionGmailInsertReplyBox,
+  ActionInsertUserInput,
 } from '../actions'
 import { v4 } from 'uuid'
 
@@ -14,6 +15,7 @@ const ActionClassMap = {
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
   [ActionGmailInsertReplyBox.type]: ActionGmailInsertReplyBox,
+  [ActionInsertUserInput.type]: ActionInsertUserInput,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
@@ -36,6 +38,7 @@ class ShortCutsEngine implements IShortcutEngine {
     }>,
   ) {
     this.reset()
+    console.log('ShortCutEngine.setActions', actions)
     this.actions = []
     actions.map((action) => {
       const CurrentActionClass = ActionClassMap[action.type]
@@ -55,13 +58,14 @@ class ShortCutsEngine implements IShortcutEngine {
     try {
       const { engine, parameters } = params
       this.stepIndex += 1
-      console.log(
-        `ShortCutEngine.run action[${this.stepIndex}]`,
-        engine,
-        parameters,
-      )
       if (this.status === 'notRunning' || this.status === 'running') {
         const currentAction = this.getCurrentAction()
+        console.log(
+          `ShortCutEngine.run action[${this.stepIndex}]`,
+          engine,
+          parameters,
+          currentAction,
+        )
         if (currentAction) {
           this.status = 'running'
           if (parameters) {
@@ -81,6 +85,10 @@ class ShortCutsEngine implements IShortcutEngine {
             // TODO 出问题再说
             await delay(0)
             await this.run(params)
+          }
+          if (currentAction.error) {
+            this.reset()
+            return
           }
         } else {
           console.log('ShortCutEngine.run: no more actions')

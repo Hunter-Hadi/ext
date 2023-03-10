@@ -97,12 +97,13 @@ const checkCollision = (rect1: Rect, rect2: Rect, boundary: Rect): boolean => {
 export const getContextMenuRenderPosition = (
   highlightedRect: Rect,
   contextMenuWidth = 220,
-  contextMenuHeight = 420,
+  contextMenuHeight = 440,
   options = {
     offset: 16,
+    directions: ['bottom', 'top', 'right', 'left'],
   },
 ) => {
-  const { offset } = options
+  const { offset = 16, directions } = options
   const scrollY = window.scrollY || 0
   const boundary = {
     left: 0,
@@ -112,164 +113,79 @@ export const getContextMenuRenderPosition = (
   }
   highlightedRect.top -= scrollY
   highlightedRect.bottom -= scrollY
-  // 下方检测
-  let success = false
-  console.log('开始下方检测')
-  console.log(boundary, highlightedRect, {
-    left: highlightedRect.left,
-    right: highlightedRect.left + contextMenuWidth,
-    top: highlightedRect.bottom + offset,
-    bottom: highlightedRect.bottom + offset + contextMenuHeight,
-  })
-  // // draw 3 rect
-  // const rect1 = document.createElement('div')
-  // rect1.style.position = 'absolute'
-  // rect1.style.left = `${boundary.left}px`
-  // rect1.style.top = `${boundary.top}px`
-  // rect1.style.width = `${boundary.right - boundary.left}px`
-  // rect1.style.height = `${boundary.bottom - boundary.top}px`
-  // rect1.style.border = '1px solid red'
-  // document.body.appendChild(rect1)
-  // const rect2 = document.createElement('div')
-  // rect2.style.position = 'absolute'
-  // rect2.style.left = `${highlightedRect.left}px`
-  // rect2.style.top = `${highlightedRect.top}px`
-  // rect2.style.width = `${highlightedRect.right - highlightedRect.left}px`
-  // rect2.style.height = `${highlightedRect.bottom - highlightedRect.top}px`
-  // rect2.style.border = '1px solid green'
-  // document.body.appendChild(rect2)
-  // const rect3 = document.createElement('div')
-  // rect3.style.position = 'absolute'
-  // rect3.style.left = `${highlightedRect.left}px`
-  // rect3.style.top = `${highlightedRect.bottom + offset}px`
-  // rect3.style.width = `${contextMenuWidth}px`
-  // rect3.style.height = `${contextMenuHeight}px`
-  // rect3.style.border = '1px solid yellow'
-  // document.body.appendChild(rect3)
-  success = !checkCollision(
-    highlightedRect,
-    {
-      left: highlightedRect.left,
-      right: highlightedRect.left + contextMenuWidth,
-      top: highlightedRect.bottom + offset,
-      bottom: highlightedRect.bottom + offset + contextMenuHeight,
-    },
-    boundary,
-  )
-  if (success) {
-    return {
-      x: highlightedRect.left,
-      y: highlightedRect.bottom + offset,
-    }
-  } else {
-    // 上方检测
-    console.log('开始上方检测')
-    console.log(boundary, highlightedRect, {
-      left: highlightedRect.left,
-      right: highlightedRect.left + contextMenuWidth,
-      top: highlightedRect.top - offset - contextMenuHeight,
-      bottom: highlightedRect.top - offset,
-    })
-    success = !checkCollision(
-      highlightedRect,
-      {
-        left: highlightedRect.left,
-        right: highlightedRect.left + contextMenuWidth,
-        top: highlightedRect.top - offset - contextMenuHeight,
-        bottom: highlightedRect.top - offset,
-      },
-      boundary,
-    )
-    if (success) {
-      return {
-        x: highlightedRect.left,
-        y: highlightedRect.top - offset - contextMenuHeight,
-      }
-    } else {
-      // 左侧检测
-      console.log('开始左侧检测')
-      success = !checkCollision(
-        highlightedRect,
-        {
+  const currentDirections = directions || ['bottom', 'top', 'right', 'left']
+  const detectRects: Array<Rect & { direction: string }> = []
+  currentDirections.map((direction) => {
+    switch (direction) {
+      case 'bottom':
+        detectRects.push({
+          left: highlightedRect.left,
+          right: highlightedRect.left + contextMenuWidth,
+          top: highlightedRect.bottom + offset,
+          bottom: highlightedRect.bottom + offset + contextMenuHeight,
+          direction,
+        })
+        break
+      case 'top':
+        detectRects.push({
+          left: highlightedRect.left,
+          right: highlightedRect.left + contextMenuWidth,
+          top: highlightedRect.top - offset - contextMenuHeight,
+          bottom: highlightedRect.top - offset,
+          direction,
+        })
+        break
+      case 'left':
+        detectRects.push({
           left: highlightedRect.left - offset - contextMenuWidth,
           right: highlightedRect.left - offset,
           top: highlightedRect.top,
           bottom: highlightedRect.top + contextMenuHeight,
-        },
-        boundary,
-      )
-      if (!success) {
-        // 如果左侧碰撞了top再减多一点
-        console.log('左侧碰撞了top再减多一点')
-        success = !checkCollision(
-          highlightedRect,
-          {
-            left: highlightedRect.left - offset - contextMenuWidth,
-            right: highlightedRect.left - offset,
-            top: boundary.bottom - contextMenuHeight - offset,
-            bottom: boundary.bottom - offset,
-          },
-          boundary,
-        )
-        if (success) {
-          return {
-            x: highlightedRect.left - offset - contextMenuWidth,
-            y: boundary.bottom - contextMenuHeight - offset,
-          }
-        }
-      }
-      if (success) {
-        return {
-          x: highlightedRect.left - offset - contextMenuWidth,
-          y: highlightedRect.top,
-        }
-      } else {
-        // 右侧检测
-        console.log('开始右侧检测')
-        success = !checkCollision(
-          highlightedRect,
-          {
-            left: highlightedRect.right + offset,
-            right: highlightedRect.right + offset + contextMenuWidth,
-            top: highlightedRect.top,
-            bottom: highlightedRect.top + contextMenuHeight,
-          },
-          boundary,
-        )
-        if (!success) {
-          // 如果右侧碰撞了top再减多一点
-          console.log('右侧碰撞了top再减多一点')
-          success = !checkCollision(
-            highlightedRect,
-            {
-              left: highlightedRect.right + offset,
-              right: highlightedRect.right + offset + contextMenuWidth,
-              top: boundary.bottom - contextMenuHeight - offset,
-              bottom: boundary.bottom - offset,
-            },
-            boundary,
-          )
-          if (success) {
-            return {
-              x: highlightedRect.right + offset,
-              y: boundary.bottom - contextMenuHeight - offset,
-            }
-          }
-        }
-        if (success) {
-          return {
-            x: highlightedRect.right + offset,
-            y: highlightedRect.top,
-          }
-        } else {
-          // 默认下方
-          console.log('左上角')
-          return {
-            x: offset,
-            y: offset,
-          }
-        }
-      }
+          direction,
+        })
+        detectRects.push({
+          left: highlightedRect.left - offset - contextMenuWidth,
+          right: highlightedRect.left - offset,
+          top: boundary.bottom - contextMenuHeight - offset,
+          bottom: boundary.bottom - offset,
+          direction,
+        })
+        break
+      case 'right':
+        detectRects.push({
+          left: highlightedRect.right + offset,
+          right: highlightedRect.right + offset + contextMenuWidth,
+          top: highlightedRect.top,
+          bottom: highlightedRect.top + contextMenuHeight,
+          direction,
+        })
+        detectRects.push({
+          left: highlightedRect.right + offset,
+          right: highlightedRect.right + offset + contextMenuWidth,
+          top: boundary.bottom - contextMenuHeight - offset,
+          bottom: boundary.bottom - offset,
+          direction,
+        })
+        break
+      default:
+        break
+    }
+  })
+  console.log('开始碰撞检测detectRects', detectRects)
+  const canRenderContextMenuRect = detectRects.find((rect, index) => {
+    console.log('检测碰撞', rect.direction, 'index', index)
+    return !checkCollision(highlightedRect, rect, boundary)
+  })
+  if (canRenderContextMenuRect) {
+    return {
+      x: canRenderContextMenuRect.left,
+      y: canRenderContextMenuRect.top,
+    }
+  } else {
+    console.log('左上角')
+    return {
+      x: offset,
+      y: offset,
     }
   }
 }

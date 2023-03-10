@@ -13,9 +13,13 @@ import { useRangy } from '@/features/contextMenu'
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentComposeView } = useInboxComposeViews()
-  const { lastSelectionRanges } = useRangy()
-  const { messageViewText } = useCurrentMessageView()
+  const { lastSelectionRanges, parseRangySelectRangeData } = useRangy()
+  const { messageViewText, currentMessageId } = useCurrentMessageView()
   return useCallback(() => {
+    console.log(
+      'init default input value useShortCutsParameters messageViewText',
+      messageViewText,
+    )
     let GMAIL_DRAFT_CONTEXT = ''
     if (appState.env === 'gmail') {
       if (currentComposeView) {
@@ -38,13 +42,16 @@ const useShortCutsParameters = () => {
             .replace(/\n+/g, `\n`) || ''
       }
     }
+    const selectionData = parseRangySelectRangeData(
+      lastSelectionRanges?.selectRange,
+    )
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any
     } = {
       GMAIL_MESSAGE_CONTEXT: messageViewText,
       GMAIL_DRAFT_CONTEXT,
-      HIGHLIGHTED_HTML: lastSelectionRanges?.ranges?.[0]?.toHtml() || '',
-      HIGHLIGHTED_TEXT: lastSelectionRanges?.ranges?.[0]?.toString() || '',
+      HIGHLIGHTED_HTML: selectionData.html || '',
+      HIGHLIGHTED_TEXT: selectionData.text || '',
       USER_INPUT:
         getEzMailAppRootElement()?.querySelector<HTMLTextAreaElement>(
           '#EzMailAppChatBoxInput',
@@ -71,6 +78,12 @@ const useShortCutsParameters = () => {
       parameters,
       shortCutsParameters: Object.values(parameters),
     }
-  }, [appState.env, currentComposeView, messageViewText, lastSelectionRanges])
+  }, [
+    appState.env,
+    currentComposeView,
+    messageViewText,
+    currentMessageId,
+    lastSelectionRanges,
+  ])
 }
 export { useShortCutsParameters }

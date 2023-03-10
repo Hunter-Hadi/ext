@@ -63,7 +63,7 @@ const useCurrentMessageView = () => {
           // .replace(/[\t\n]+/g, ``)
           .trim()
       }
-      console.log(innerText)
+      // console.log(innerText)
       // 附件
       // attachment
       const attachmentFiles =
@@ -107,9 +107,13 @@ const useCurrentMessageView = () => {
       setMessageViewText('')
     }
   }, [currentMessageId, inboxThreadView])
+  const prevMessageId = useRef(currentMessageId)
   useEffect(() => {
     if (currentMessageId) {
-      resetConversation()
+      if (prevMessageId.current !== currentMessageId) {
+        resetConversation()
+      }
+      prevMessageId.current = currentMessageId
       try {
         setLoading(true)
         const innerText = getMessageViewText(

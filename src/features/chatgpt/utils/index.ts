@@ -54,7 +54,7 @@ export const pingUntilLogin = () => {
         // 直接ping成功了
         resolve(true)
       } else {
-        console.log('等待登录成功')
+        console.log('开始等待登录成功')
         let timer: any = 0
         let maxRetry = 120
         // 等待登录成功
@@ -62,6 +62,7 @@ export const pingUntilLogin = () => {
           if (msg.event === 'Client_ChatGPTStatusUpdate') {
             console.log(msg.data, msg.data.status)
             if (msg.data.status === 'success') {
+              console.log('登录成功!!!')
               clearInterval(timer)
               Browser?.runtime?.onMessage?.removeListener(listener)
               port?.onMessage?.removeListener(listener)
@@ -81,6 +82,7 @@ export const pingUntilLogin = () => {
           })
           maxRetry--
           if (maxRetry <= 0) {
+            console.log('登录超时!!!')
             clearInterval(timer)
             Browser?.runtime?.onMessage?.removeListener(listener)
             port?.onMessage?.removeListener(listener)

@@ -1,18 +1,22 @@
 import Portal from '@/components/Portal'
 import React from 'react'
-import { Paper } from '@mui/material'
-import { Menu } from 'react-contexify'
+import { Button, Paper, Stack } from '@mui/material'
+import { Item, Menu } from 'react-contexify'
 import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 // import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 export const RangyContextMenuId = 'EzMail_AI_ROOT_Context_Menu_ID'
 export const RangyGmailToolBarContextMenuId =
   'EzMail_AI_ROOT_Gmail_Toolbar_Context_Menu_ID'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import { useRangy } from '@/features/contextMenu'
+import { EzMailAIIcon } from '@/components/CustomIcon'
 
 const RangyContextMenu = () => {
-  // const [dropdownType, setDropdownType] = React.useState<
-  //   'ezMailAI' | 'buttons'
-  // >('buttons')
+  const { hideRangy, saveSelection } = useRangy()
+  const [dropdownType, setDropdownType] = React.useState<
+    'ezMailAI' | 'buttons'
+  >('buttons')
   return (
     <Portal containerId={'EzMail_AI_ROOT_Context_Menu'}>
       <Paper elevation={3}>
@@ -21,28 +25,40 @@ const RangyContextMenu = () => {
             zIndex: 999998,
           }}
           id={RangyContextMenuId}
+          onVisibilityChange={(isVisible) => {
+            if (!isVisible) {
+              hideRangy()
+              setDropdownType('buttons')
+            }
+          }}
         >
-          {/*{dropdownType === 'buttons' && (*/}
-          {/*  <Item closeOnClick={false}>*/}
-          {/*    <Stack direction={'row'} alignItems={'center'} spacing={1}>*/}
-          {/*      <Button*/}
-          {/*        startIcon={<EzMailAIIcon sx={{ fontSize: 16 }} />}*/}
-          {/*        sx={{ width: 110, height: 32 }}*/}
-          {/*        size={'small'}*/}
-          {/*        onClick={(event) => {*/}
-          {/*          saveSelection()*/}
-          {/*          setDropdownType('ezMailAI')*/}
-          {/*        }}*/}
-          {/*      >*/}
-          {/*        EzMail.AI*/}
-          {/*      </Button>*/}
-          {/*    </Stack>*/}
-          {/*  </Item>*/}
-          {/*)}*/}
-          <ContextMenuList
-            defaultContextMenuJson={defaultContextMenuJson}
-            settingsKey={'contextMenus'}
-          />
+          {dropdownType === 'buttons' && (
+            <Item
+              closeOnClick={false}
+              onClick={({ event }) => {
+                event.stopPropagation()
+                event.preventDefault()
+                saveSelection()
+                setDropdownType('ezMailAI')
+              }}
+            >
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <Button
+                  startIcon={<EzMailAIIcon sx={{ fontSize: 16 }} />}
+                  sx={{ width: 110, height: 32 }}
+                  size={'small'}
+                >
+                  EzMail.AI
+                </Button>
+              </Stack>
+            </Item>
+          )}
+          {dropdownType === 'ezMailAI' && (
+            <ContextMenuList
+              defaultContextMenuJson={defaultContextMenuJson}
+              settingsKey={'contextMenus'}
+            />
+          )}
         </Menu>
         <Menu
           style={{
@@ -51,7 +67,7 @@ const RangyContextMenu = () => {
           id={RangyGmailToolBarContextMenuId}
         >
           <ContextMenuList
-            defaultContextMenuJson={[]}
+            defaultContextMenuJson={defaultGmailToolbarContextMenuJson}
             settingsKey={'gmailToolBarContextMenu'}
           />
         </Menu>

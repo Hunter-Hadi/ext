@@ -371,9 +371,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       defaultValueRef.current = defaultInputValue
     }
   }, [defaultInputValue])
-  useEffect(() => {
-    setInputValue(defaultValueRef.current || '')
-  }, [])
   return {
     sendQuestion,
     writingMessageRef,
@@ -386,10 +383,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     setInputValue,
     forceUpdateInputValue(text: string) {
       setInputValue(text)
-      updateInboxEditState((prevState) => ({
-        ...prevState,
-        step: (prevState.step || 0) + 1,
-      }))
+      setTimeout(() => {
+        updateInboxEditState((prevState) => ({
+          ...prevState,
+          step: (prevState.step || 0) + 1,
+        }))
+      }, 0)
     },
     stopGenerateMessage,
     pushMessage,

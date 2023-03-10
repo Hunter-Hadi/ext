@@ -33,6 +33,8 @@ export const AppState = atom<{
   },
 })
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const GmailInit = () => {
   useInitInboxSdk()
   return (
@@ -211,9 +213,15 @@ const App: FC = () => {
             {appState.open && appState.env === 'gmail' && <GmailChatPage />}
             {appState.open && appState.env === 'normal' && <NormalChatPage />}
             <iframe
-              style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}
-              width={1}
-              height={1}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: isProduction ? -1 : 1,
+                border: isProduction ? 0 : '1px solid red',
+              }}
+              width={isProduction ? 1 : 20}
+              height={isProduction ? 1 : 20}
               id={'EzMail_AI_TEMPLATE_COMPILE'}
               src={'https://www.ezmail.ai/crx.html'}
             />

@@ -217,11 +217,20 @@ Browser.runtime.onConnect.addListener((port) => {
         break
       case 'Client_openUrlInNewTab':
         {
-          const { url } = msg.data
-          await Browser.tabs.create({
-            url,
-          })
+          const { url, key } = msg.data
+          if (url) {
+            await Browser.tabs.create({
+              url,
+            })
+          } else if (key) {
+            if (key === 'options') {
+              await Browser.runtime.openOptionsPage()
+            } else if (key === 'daemon_process') {
+              await createDaemonProcessTab()
+            }
+          }
         }
+
         break
       case 'Client_getSettings':
         {

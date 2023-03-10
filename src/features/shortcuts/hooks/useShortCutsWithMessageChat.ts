@@ -1,5 +1,5 @@
-import { pingDaemonProcess, useMessageWithChatGPT } from '@/features/chatgpt'
-import { useRef, useState } from 'react'
+import { pingUntilLogin, useMessageWithChatGPT } from '@/features/chatgpt'
+import { useCallback, useRef, useState } from 'react'
 import { ShortCutsEngine } from '../core'
 import { useShortCutsParameters } from '../hooks'
 import { useCurrentMessageView, useInboxComposeViews } from '@/features/gmail'
@@ -12,6 +12,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
   const getParams = useShortCutsParameters()
   const shortCutsEngineRef = useRef<ShortCutsEngine | null>(shortCutsEngine)
   const messageWithChatGPT = useMessageWithChatGPT(defaultInputValue || '')
+  const { messageViewText } = useCurrentMessageView()
   const { currentComposeView } = useInboxComposeViews()
   const { currentMessageView } = useCurrentMessageView()
   const setShortCuts = (actions: ISetActionsType) => {
@@ -21,7 +22,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     shortCutsEngineRef.current?.setActions(actions)
     return true
   }
-  const runShortCuts = async () => {
+  const runShortCuts = useCallback(async () => {
     if (!shortCutsEngineRef.current) {
       return
     }
@@ -29,31 +30,39 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
       showEzMailBox()
     }
     try {
-      setLoading(true)
-      await pingDaemonProcess()
-      await shortCutsEngineRef.current.run({
-        parameters: getParams().shortCutsParameters,
-        engine: {
-          getShortCuts: (): ShortCutsEngine | null => {
-            return shortCutsEngineRef.current
+      const isLoginSuccess = await pingUntilLogin()
+      if (isLoginSuccess) {
+        await shortCutsEngineRef.current.run({
+          parameters: getParams().shortCutsParameters,
+          engine: {
+            getShortCuts: (): ShortCutsEngine | null => {
+              return shortCutsEngineRef.current
+            },
+            getChartGPT: () => {
+              return messageWithChatGPT
+            },
+            getInbox: () => {
+              return {
+                currentComposeView,
+                currentMessageView,
+              }
+            },
           },
-          getChartGPT: () => {
-            return messageWithChatGPT
-          },
-          getInbox: () => {
-            return {
-              currentComposeView,
-              currentMessageView,
-            }
-          },
-        },
-      })
+        })
+      }
     } catch (e) {
       console.log('run short cuts error: \t', e)
     } finally {
       setLoading(false)
     }
-  }
+  }, [
+    messageWithChatGPT,
+    currentMessageView,
+    currentComposeView,
+    shortCutsEngineRef,
+    messageViewText,
+    getParams,
+  ])
 
   return {
     ...messageWithChatGPT,

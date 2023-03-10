@@ -1,6 +1,6 @@
 import { IActionType } from '../types'
 import { Action } from '../core'
-import { templateParserDecorator } from '../decorators'
+import { clearUserInput, templateParserDecorator } from '../decorators'
 export class ActionAskChatGPT extends Action {
   static type = 'ASK_CHATGPT'
   constructor(
@@ -12,6 +12,7 @@ export class ActionAskChatGPT extends Action {
     super(id, 'ASK_CHATGPT', parameters, autoExecute)
   }
   @templateParserDecorator()
+  @clearUserInput()
   async execute(params: any, engine: any) {
     try {
       const { success, answer } = await engine

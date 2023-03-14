@@ -47,20 +47,25 @@ const ClickContextMenuButton: FC<{
             left: 0,
             right: window.innerWidth,
             top: 0,
-            bottom: window.innerHeight,
+            bottom: window.innerHeight + window.scrollY,
           }
           if (
             isRectangleCollidingWithBoundary(
               {
                 top: params.y,
                 left: params.x,
-                bottom: params.rects.floating.height + params.y + 50,
+                bottom: params.y + params.rects.floating.height + 50,
                 right: params.rects.floating.width + params.x,
               },
               boundary,
             )
           ) {
-            return -params.rects.floating.height - 16
+            return (
+              params.rects.reference.y -
+              params.y -
+              params.rects.floating.height -
+              8
+            )
           }
           return 8
         } else {

@@ -330,7 +330,7 @@ const ChatGPTDaemonProcessPage: FC = () => {
           height: 40,
           width: '100%',
           bgcolor: process.env.APP_ENV === 'EZ_MAIL_AI' ? '#1D56D7' : '#7601D3',
-          zIndex: 999,
+          zIndex: process.env.APP_ENV === 'EZ_MAIL_AI' ? 999 : 1000,
           color: '#fff',
         }}
         spacing={1}

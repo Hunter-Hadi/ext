@@ -259,11 +259,16 @@ Browser.runtime.onConnect.addListener((port) => {
             const { CLIENT_SETTINGS = '{}' } = await Browser.storage.local.get(
               'CLIENT_SETTINGS',
             )
+            const commands = await Browser.commands.getAll()
+            const localSettings = JSON.parse(CLIENT_SETTINGS)
             port.postMessage({
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'Client_getSettingsResponse',
               data: {
-                settings: JSON.parse(CLIENT_SETTINGS),
+                settings: {
+                  localSettings,
+                  commands,
+                },
               },
             })
           } catch (e) {

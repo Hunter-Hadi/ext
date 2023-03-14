@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import './app.EZ_MAIL_AI.less'
 import './app.USE_CHAT_GPT.less'
 import { useInitInboxSdk } from '@/features/gmail'
@@ -11,17 +11,16 @@ import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
 import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { hideChatBox } from '@/utils'
+import { getChromeExtensionSettings, hideChatBox } from '@/utils'
 import { useInitRangy } from '@/features/contextMenu'
 import { RangyContextMenu } from '@/features/contextMenu'
 import {
   CHROME_EXTENSION_HOMEPAGE_URL,
-  CHROME_EXTENSION_MAIL_TO,
   CHROME_EXTENSION_POST_MESSAGE_ID,
   ROOT_CONTAINER_ID,
 } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
+import Browser from 'webextension-polyfill'
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 const getClientEnv = () => {
   if (isEzMailApp) {
@@ -69,7 +68,7 @@ const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const [appState, setAppState] = useRecoilState(AppState)
   const { resetConversation } = useMessageWithChatGPT()
-  const { port } = useRecoilValue(ChatGPTClientState)
+  const [commandKey, setCommandKey] = useState('click to setup')
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {
       mutations.forEach((mu) => {
@@ -98,6 +97,20 @@ const App: FC = () => {
       resetConversation()
     }
   }, [appState])
+  useEffect(() => {
+    getChromeExtensionSettings()
+      .then((settings) => {
+        if (settings?.commands) {
+          const command = settings.commands.find(
+            (command) => command.name === '_execute_action',
+          )
+          if (command) {
+            setCommandKey(command.shortcut || 'click to setup')
+          }
+        }
+      })
+      .catch()
+  }, [])
   return (
     <>
       <AppInit />
@@ -131,21 +144,14 @@ const App: FC = () => {
             height={44}
             gap={1}
             alignItems={'center'}
+            px={1}
           >
-            <IconButton
-              sx={{ ml: '8px', flexShrink: 0 }}
-              onClick={() => {
-                hideChatBox()
-              }}
-            >
-              <CloseIcon />
-            </IconButton>
             <Link
               sx={{
                 flexShrink: 0,
                 textDecoration: 'none!important',
               }}
-              href={CHROME_EXTENSION_HOMEPAGE_URL}
+              href={CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'}
               target={'_blank'}
             >
               <Stack
@@ -181,7 +187,6 @@ const App: FC = () => {
               spacing={1}
               justifyContent={'end'}
               alignItems={'center'}
-              px={1}
             >
               {!isEzMailApp && (
                 <Typography fontSize={12}>
@@ -192,6 +197,7 @@ const App: FC = () => {
                     target={'_blank'}
                     href={'chrome://extensions/shortcuts'}
                     onClick={() => {
+                      const port = Browser.runtime.connect()
                       port &&
                         port.postMessage({
                           id: CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -200,24 +206,22 @@ const App: FC = () => {
                             url: 'chrome://extensions/shortcuts',
                           },
                         })
+                      port.disconnect()
                     }}
                   >
-                    Shortcut: Cmd/Alt + J
+                    Shortcut: {commandKey}
                   </Link>
                 </Typography>
               )}
-              <Typography fontSize={12}>
-                <Link
-                  color={'text.primary'}
-                  sx={{ cursor: 'pointer' }}
-                  underline={'always'}
-                  target={'_blank'}
-                  href={CHROME_EXTENSION_MAIL_TO}
-                >
-                  Support
-                </Link>
-              </Typography>
             </Stack>
+            <IconButton
+              sx={{ flexShrink: 0 }}
+              onClick={() => {
+                hideChatBox()
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
           </Stack>
           <Stack
             flex={1}
@@ -240,7 +244,7 @@ const App: FC = () => {
               width={1}
               height={1}
               id={'EzMail_AI_TEMPLATE_COMPILE'}
-              src={'https://www.ezmail.ai/crx.html'}
+              src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
             />
           </Stack>
         </Stack>

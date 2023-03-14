@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   CircularProgress,
+  Link,
   Stack,
   SxProps,
   Typography,
@@ -12,16 +13,10 @@ import GmailChatBoxInput from './GmailChatBoxInput'
 import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
 import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
-import {
-  ChatGPTDefaultExampleList,
-  ChatGPTReplyEmailExampleList,
-  ChatGPTSendEmailExampleList,
-} from '@/features/chatgpt'
-import { useInboxEditValue } from '../../hooks'
 import { numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
-import { AppState } from '@/pages/App'
 import { InboxEditState } from '@/features/gmail'
+import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -51,6 +46,7 @@ interface IGmailChatBoxProps {
   onRetry?: (messageId: string) => void
   loading?: boolean
 }
+
 const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
     sx,
@@ -71,11 +67,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onRetry,
     loading,
   } = props
-  const appState = useRecoilValue(AppState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
-  const { currentMessageId } = useInboxEditValue()
   const isGmailChatBoxError = useMemo(() => {
     return inputValue.length > MAX_INPUT_LENGTH
   }, [inputValue])
@@ -271,16 +265,27 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             </Stack>
           </GmailChatBoxInput>
         </Stack>
-        {appState.env === 'gmail' && (
-          <>
-            {currentMessageId?.startsWith('newDraft_') ? (
-              <ChatGPTSendEmailExampleList />
-            ) : (
-              <ChatGPTReplyEmailExampleList />
-            )}
-          </>
-        )}
-        {appState.env === 'normal' && <ChatGPTDefaultExampleList />}
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          sx={{ width: '100%' }}
+          justifyContent={'space-between'}
+        >
+          <Typography fontSize={12}>
+            <Link
+              color={'text.primary'}
+              sx={{ cursor: 'pointer' }}
+              underline={'always'}
+              target={'_blank'}
+              href={CHROME_EXTENSION_MAIL_TO}
+            >
+              Contact us
+            </Link>
+          </Typography>
+          <Typography fontSize={12} color={'text.secondary'} ml={'auto'} mr={0}>
+            Tip: Press Shift+Return for new line
+          </Typography>
+        </Stack>
       </Stack>
     </Stack>
   )

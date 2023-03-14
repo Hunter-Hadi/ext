@@ -72,6 +72,7 @@ const GmailChatBoxMessageItem: FC<{
         '& .chat-message--text': {
           textAlign: 'left',
           fontSize: '16px',
+          lineHeight: '26px',
         },
       }}
       spacing={1}

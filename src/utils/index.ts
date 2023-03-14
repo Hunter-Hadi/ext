@@ -96,10 +96,17 @@ export const ChatBoxIsOpen = () => {
 }
 
 type IChromeExtensionSettings = {
+  commands?: Array<{
+    name: string
+    shortcut: string
+    description: string
+  }>
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
 }
-export type IChromeExtensionSettingsKey = keyof IChromeExtensionSettings
+export type IChromeExtensionSettingsKey =
+  | 'contextMenus'
+  | 'gmailToolBarContextMenu'
 
 export const getChromeExtensionSettings =
   (): Promise<IChromeExtensionSettings> => {
@@ -124,9 +131,9 @@ export const getChromeExtensionSettings =
       })
     })
   }
-export const setChromeExtensionSettings = (settings: {
-  contextMenus: IContextMenuItem[]
-}) => {
+export const setChromeExtensionSettings = (
+  settings: IChromeExtensionSettings,
+) => {
   return new Promise((resolve) => {
     const port = Browser.runtime.connect()
     const listener = (message: any) => {

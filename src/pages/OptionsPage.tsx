@@ -10,7 +10,7 @@ const APP_NAME = process.env.APP_NAME
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const OptionsPage = () => {
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = React.useState(isEzMailApp ? 1 : 0)
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
   }
@@ -32,8 +32,8 @@ const OptionsPage = () => {
           </Typography>
         </Stack>
         <Tabs value={value} onChange={handleChange}>
-          {!isEzMailApp && <Tab label="Edit options" />}
-          {isEzMailApp && <Tab label="Toolbar options" />}
+          {!isEzMailApp && <Tab value={0} label="Edit options" />}
+          {isEzMailApp && <Tab value={1} label="Toolbar options" />}
         </Tabs>
         {value === 0 && (
           <ContextMenuSettings

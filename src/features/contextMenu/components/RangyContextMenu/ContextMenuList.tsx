@@ -2,14 +2,15 @@ import { Stack, Typography } from '@mui/material'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import {
+  ContextMenuIcon,
   IContextMenuItem,
   IContextMenuItemWithChildren,
   useRangy,
 } from '@/features/contextMenu'
 import { Item, Separator, Submenu } from 'react-contexify'
 import {
-  getEzMailChromeExtensionSettings,
-  IEzMailChromeExtensionSettingsKey,
+  getChromeExtensionSettings,
+  IChromeExtensionSettingsKey,
 } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew'
@@ -30,7 +31,8 @@ const ShortCutsButtonItem: FC<{
             .then()
             .catch()
             .finally(() => {
-              rangy.contextMenu.close()
+              rangy?.contextMenu.close()
+              rangy?.contextMenu.resetActiveElement()
               setRunning(false)
             })
       }
@@ -40,9 +42,18 @@ const ShortCutsButtonItem: FC<{
     return (
       <Submenu
         label={
-          <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
-            {menuItem.text}
-          </Typography>
+          <Stack direction={'row'} alignItems={'center'}>
+            {menuItem?.data?.icon && (
+              <ContextMenuIcon
+                size={16}
+                icon={menuItem.data.icon}
+                sx={{ color: 'primary.main', mr: 1 }}
+              />
+            )}
+            <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
+              {menuItem.text}
+            </Typography>
+          </Stack>
         }
       >
         {menuItem.children?.map((childMenuItem) => {
@@ -65,7 +76,18 @@ const ShortCutsButtonItem: FC<{
           setRunning(true)
         }
       }}
+      onMouseUp={(event) => {
+        event.stopPropagation()
+        event.preventDefault()
+      }}
     >
+      {menuItem?.data?.icon && (
+        <ContextMenuIcon
+          size={16}
+          icon={menuItem.data.icon}
+          sx={{ color: 'primary.main', mr: 1 }}
+        />
+      )}
       <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
         {menuItem.text}
       </Typography>
@@ -78,9 +100,18 @@ const ShortCutsGroup: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 }) => {
   return (
     <Stack>
-      <Typography textAlign={'left'} fontSize={12} color={'text.secondary'}>
-        {menuItem.text}
-      </Typography>
+      <Stack direction={'row'} alignItems={'center'}>
+        {menuItem?.data?.icon && (
+          <ContextMenuIcon
+            size={16}
+            icon={menuItem.data.icon}
+            sx={{ color: 'primary.main', mr: 1 }}
+          />
+        )}
+        <Typography textAlign={'left'} fontSize={12} color={'text.secondary'}>
+          {menuItem.text}
+        </Typography>
+      </Stack>
       {menuItem.children?.map((childMenuItem) => {
         return (
           <ShortCutsButtonItem
@@ -105,7 +136,7 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 
 const ContextMenuList: FC<{
   defaultContextMenuJson: IContextMenuItem[]
-  settingsKey: IEzMailChromeExtensionSettingsKey
+  settingsKey: IChromeExtensionSettingsKey
 }> = (props) => {
   const { defaultContextMenuJson, settingsKey } = props
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
@@ -113,7 +144,7 @@ const ContextMenuList: FC<{
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const settings = await getEzMailChromeExtensionSettings()
+      const settings = await getChromeExtensionSettings()
       if (isDestroy) return
       setList(
         groupByContextMenuItem(settings[settingsKey] || defaultContextMenuJson),
@@ -126,7 +157,6 @@ const ContextMenuList: FC<{
   }, [])
   const sortBySettingsKey = useMemo(() => {
     if (settingsKey === 'gmailToolBarContextMenu') {
-      console.log('gmailToolBarContextMenu 6666', list)
       return cloneDeep(list).map((group, index) => {
         if (index === 0) {
           // gmail只有一个group
@@ -143,20 +173,29 @@ const ContextMenuList: FC<{
         (group) => group.text === 'Generate from selection',
       )
       const currentRange = rangyState.lastSelectionRanges
-      if (editOrReviewSelection && generateFromSelection && currentRange) {
-        const selectionData = parseRangySelectRangeData(
-          currentRange?.selectRange,
-          'ContextMenuList',
-        )
-        if (selectionData.isCanInputElement) {
+      if (editOrReviewSelection && generateFromSelection) {
+        if (currentRange) {
+          const selectionData = parseRangySelectRangeData(
+            currentRange?.selectRange,
+            'ContextMenuList',
+          )
+          if (selectionData.isCanInputElement) {
+            return [editOrReviewSelection, generateFromSelection]
+          } else {
+            return [generateFromSelection, editOrReviewSelection]
+          }
+        } else if (rangyState.currentActiveWriteableElement) {
           return [editOrReviewSelection, generateFromSelection]
-        } else {
-          return [generateFromSelection, editOrReviewSelection]
         }
       }
     }
     return list
-  }, [rangyState.lastSelectionRanges, list, settingsKey])
+  }, [
+    rangyState.lastSelectionRanges,
+    rangyState.currentActiveWriteableElement,
+    list,
+    settingsKey,
+  ])
   console.log(sortBySettingsKey, settingsKey)
   return (
     <Stack

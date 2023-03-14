@@ -1,5 +1,5 @@
-import { showEzMailBox } from '@/utils'
+import { showChatBox } from '@/utils'
 
 export function init(): void {
-  showEzMailBox()
+  showChatBox()
 }

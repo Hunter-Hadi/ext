@@ -4,6 +4,7 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
 const ChatGPTLoaderWrapper: FC = () => {
   const { status } = useRecoilValue(ChatGPTClientState)
@@ -61,6 +62,7 @@ const ChatGPTLoaderWrapper: FC = () => {
                 onClick={() => {
                   if (port) {
                     port?.postMessage({
+                      id: CHROME_EXTENSION_POST_MESSAGE_ID,
                       event: 'Client_openUrlInNewTab',
                       data: {
                         key: 'daemon_process',
@@ -129,7 +131,10 @@ const ChatGPTLoaderWrapper: FC = () => {
           <Button
             onClick={() => {
               if (port) {
-                port?.postMessage({ event: 'Client_openChatGPTDaemonProcess' })
+                port?.postMessage({
+                  id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                  event: 'Client_openChatGPTDaemonProcess',
+                })
               } else {
                 window.open('https://chat.openai.com/chat', '_blank')
               }

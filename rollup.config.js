@@ -12,15 +12,38 @@ import replace from '@rollup/plugin-replace'
 import copy from 'rollup-plugin-copy'
 import alias from '@rollup/plugin-alias'
 import dayjs from 'dayjs'
-import app from './package.json'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import html from '@rollup/plugin-html'
 
 const isProduction = process.env.NODE_ENV === 'production'
-
+function getArgs() {
+  const args = {}
+  process.argv.slice(2, process.argv.length).forEach((arg) => {
+    // long arg
+    if (arg.slice(0, 2) === '--') {
+      const longArg = arg.split('=')
+      const longArgFlag = longArg[0].slice(2, longArg[0].length)
+      const longArgValue = longArg.length > 1 ? longArg[1] : true
+      args[longArgFlag] = longArgValue
+    }
+    // flags
+    else if (arg[0] === '-') {
+      const flags = arg.slice(1, arg.length).split('')
+      flags.forEach((flag) => {
+        args[flag] = true
+      })
+    }
+  })
+  return args
+}
+const args = getArgs()
+const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'Use ChatGPT'
+const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const manifest = require(`./src/manifest.${APP_ENV}.json`)
 export default [
   {
-    input: 'src/manifest.json',
+    input: `src/manifest.${APP_ENV}.json`,
     output: {
       dir: 'dist',
       format: 'esm',
@@ -34,6 +57,8 @@ export default [
         'process.env.NODE_ENV': isProduction
           ? JSON.stringify('production')
           : JSON.stringify('development'),
+        'process.env.APP_ENV': JSON.stringify(APP_ENV),
+        'process.env.APP_NAME': JSON.stringify(APP_NAME),
         preventAssignment: true,
       }),
       chromeExtension(),
@@ -55,12 +80,13 @@ export default [
             comments: false,
           },
         }),
-      copy({
-        targets: [
-          { src: 'node_modules/@inboxsdk/core/pageWorld.js', dest: 'dist' },
-        ],
-        hook: 'generateBundle',
-      }),
+      APP_ENV === 'EZ_MAIL_AI' &&
+        copy({
+          targets: [
+            { src: 'node_modules/@inboxsdk/core/pageWorld.js', dest: 'dist' },
+          ],
+          hook: 'generateBundle',
+        }),
       nodeResolve(),
     ],
   },
@@ -79,6 +105,8 @@ export default [
         'process.env.NODE_ENV': isProduction
           ? JSON.stringify('production')
           : JSON.stringify('development'),
+        'process.env.APP_ENV': JSON.stringify(APP_ENV),
+        'process.env.APP_NAME': JSON.stringify(APP_NAME),
         preventAssignment: true,
       }),
       postcss({
@@ -117,9 +145,10 @@ export default [
       }),
       isProduction &&
         zip({
-          file: `../releases/${app.name}_${app.version}_${dayjs().format(
-            'YYYY_MM_DD_HH_mm_ss',
-          )}.zip`,
+          file: `../releases/${manifest.short_name}_${
+            manifest.version
+          }_${dayjs().format('YYYY_MM_DD_HH_mm_ss')}.zip`,
+          isEzMail: APP_ENV === 'EZ_MAIL_AI',
         }),
     ],
   },

@@ -122,10 +122,14 @@ const useRangy = () => {
         tempSelectRangeRect: null,
         lastSelectionRanges: force ? null : prevState.lastSelectionRanges,
         selectionInputAble: force ? false : prevState.selectionInputAble,
+        currentActiveWriteableElement: force
+          ? null
+          : prevState.currentActiveWriteableElement,
       }
     })
   }
   const showRangy = (rect: any) => {
+    console.log('[ContextMenu Module]: show')
     setRangy((prevState) => {
       return {
         ...prevState,
@@ -134,9 +138,10 @@ const useRangy = () => {
       }
     })
   }
-  const saveTempSelection = () => {
-    const saved = rangyGetSelection(rangyCore)
+  const saveTempSelection = (event: MouseEvent | KeyboardEvent) => {
+    const saved: any = rangyGetSelection(rangyCore)
     const data = parseRangySelectRangeData(saved?.selectRange)
+    saved.event = event
     setRangy((prevState) => {
       if (prevState.tempSelectionRanges?.selection) {
         console.log(
@@ -269,6 +274,14 @@ const useRangy = () => {
       hideRangy(true)
     }
   }
+  const setActiveWriteableElement = (element: HTMLElement | null) => {
+    setRangy((prevState) => {
+      return {
+        ...prevState,
+        currentActiveWriteableElement: element,
+      }
+    })
+  }
   return {
     showRangy,
     hideRangy,
@@ -284,6 +297,8 @@ const useRangy = () => {
     lastSelectionRanges: rangy.lastSelectionRanges,
     selectionInputAble: rangy.selectionInputAble,
     rangyState: rangy,
+    currentActiveWriteableElement: rangy.currentActiveWriteableElement,
+    setActiveWriteableElement,
   }
 }
 export { useRangy }

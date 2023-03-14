@@ -1,6 +1,6 @@
 import { IActionType } from '../types'
 import { Action } from '../core'
-import { templateParserDecorator } from '../decorators'
+import { clearUserInput, templateParserDecorator } from '../decorators'
 
 export class ActionInsertUserInput extends Action {
   static type = 'INSERT_USER_INPUT'
@@ -13,6 +13,7 @@ export class ActionInsertUserInput extends Action {
     super(id, 'INSERT_USER_INPUT', parameters, autoExecute)
   }
   @templateParserDecorator()
+  @clearUserInput()
   async execute(params: any, engine: any) {
     try {
       const inputValue =

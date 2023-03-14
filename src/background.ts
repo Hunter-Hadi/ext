@@ -3,25 +3,37 @@
 // To make this function work, set "action" property to {} in manifest
 import Browser from 'webextension-polyfill'
 import debounce from 'lodash-es/debounce'
+import {
+  CHROME_EXTENSION_DOC_URL,
+  CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/types'
 
 // 用来完成两个页面不同的任务通信
 const ClientAsyncTaskMap = new Map<string, number>()
+const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
-Browser.runtime.onMessage.addListener((message, sender, sendResponse: any) => {
-  if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
-    console.log('inboxsdk__injectPageWorld')
-    if (Browser.scripting && sender.tab?.id) {
-      console.log('inboxsdk__injectPageWorld 2')
-      // MV3
-      chrome.scripting.executeScript({
-        target: { tabId: sender.tab.id },
-        world: 'MAIN',
-        files: ['pageWorld.js'],
-      })
-      sendResponse(true)
-    }
-  }
-})
+if (isEzMailApp) {
+  Browser.runtime.onMessage.addListener(
+    (message, sender, sendResponse: any) => {
+      if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+        return
+      }
+      if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
+        console.log('inboxsdk__injectPageWorld')
+        if (Browser.scripting && sender.tab?.id) {
+          console.log('inboxsdk__injectPageWorld 2')
+          // MV3
+          chrome.scripting.executeScript({
+            target: { tabId: sender.tab.id },
+            world: 'MAIN',
+            files: ['pageWorld.js'],
+          })
+          sendResponse(true)
+        }
+      }
+    },
+  )
+}
 
 let chatGPTProxyInstance: undefined | Browser.Tabs.Tab = undefined
 /**
@@ -82,6 +94,7 @@ const sendChatGPTDaemonProcessMessage = (data: any) => {
   if (chatGPTProxyInstance && chatGPTProxyInstance.id) {
     Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
       event: 'DaemonProcess_clientAsyncTask',
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
       data,
     })
   }
@@ -96,6 +109,7 @@ const sendClientMessage = (
   }
   Browser.tabs.query({}).then((tabs) => {
     const message = {
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
       event,
       data,
     }
@@ -112,7 +126,10 @@ Browser.runtime.onConnect.addListener((port) => {
   port.onMessage.addListener(async (msg) => {
     // console.debug('received msg', msg)
     const event: IChromeExtensionListenEvent = msg.event
-    console.log('received event', event)
+    if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+      return
+    }
+    console.log('received event', event, msg.id)
     switch (event) {
       case 'DaemonProcess_getChatGPTProxyInstance':
         {
@@ -124,6 +141,7 @@ Browser.runtime.onConnect.addListener((port) => {
             isInit = true
           }
           port.postMessage({
+            id: CHROME_EXTENSION_POST_MESSAGE_ID,
             event: 'DaemonProcess_getChatGPTProxyInstanceResponse',
             data: {
               isInit,
@@ -161,6 +179,7 @@ Browser.runtime.onConnect.addListener((port) => {
           if (taskId) {
             ClientAsyncTaskMap.set(taskId, port.sender?.tab?.id || 0)
             sendChatGPTDaemonProcessMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event,
               taskId,
               data: DaemonProcessReceiveData,
@@ -184,6 +203,7 @@ Browser.runtime.onConnect.addListener((port) => {
             )
             await Browser.tabs.sendMessage(tabId, {
               event: `Client_AsyncTaskResponse_${taskId}`,
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               data: {
                 taskId,
                 data: ClientReceiveData,
@@ -206,6 +226,7 @@ Browser.runtime.onConnect.addListener((port) => {
           console.log('Client_Ping', msg)
           if (chatGPTProxyInstance && chatGPTProxyInstance.id) {
             await Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'DaemonProcess_listenClientPing',
             })
           } else {
@@ -239,6 +260,7 @@ Browser.runtime.onConnect.addListener((port) => {
               'CLIENT_SETTINGS',
             )
             port.postMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'Client_getSettingsResponse',
               data: {
                 settings: JSON.parse(CLIENT_SETTINGS),
@@ -246,6 +268,7 @@ Browser.runtime.onConnect.addListener((port) => {
             })
           } catch (e) {
             port.postMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'Client_getSettingsResponse',
               data: {
                 settings: {},
@@ -262,6 +285,7 @@ Browser.runtime.onConnect.addListener((port) => {
               CLIENT_SETTINGS: settings,
             })
             port.postMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'Client_updateSettingsResponse',
               data: {
                 success: true,
@@ -269,6 +293,7 @@ Browser.runtime.onConnect.addListener((port) => {
             })
           } catch (e) {
             port.postMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'Client_updateSettingsResponse',
               data: {
                 success: false,
@@ -292,6 +317,7 @@ Browser.runtime.onConnect.addListener((port) => {
 const checkChatGPTDaemonProcess = debounce(() => {
   chatGPTProxyInstance?.id &&
     Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
       event: 'DaemonProcess_getChatGPTProxyInstanceResponse',
       data: {
         isInit: false,
@@ -359,20 +385,27 @@ Browser.tabs.onRemoved.addListener(function listener(tabId) {
     })
   }
 })
-Browser.action.onClicked.addListener(async (tab) => {
-  if (tab && tab.id && tab.active) {
-    if (tab?.url && tab.url.startsWith('https://mail.google.com')) {
+
+if (isEzMailApp) {
+  Browser.action.onClicked.addListener(async (tab) => {
+    if (tab && tab.id && tab.active) {
       await Browser.tabs.create({
-        url: 'https://www.ezmail.ai/chrome-extension#how-to-use',
+        url: CHROME_EXTENSION_DOC_URL,
       })
-      return
     }
-    await Browser.tabs.sendMessage(tab.id, {
-      event: 'Client_ListenOpenChatMessageBox',
-      data: {},
-    })
-  }
-})
+  })
+} else {
+  Browser.action.onClicked.addListener(async (tab) => {
+    if (tab && tab.id && tab.active) {
+      await Browser.tabs.sendMessage(tab.id, {
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'Client_ListenOpenChatMessageBox',
+        data: {},
+      })
+    }
+  })
+}
+
 Browser.management.getAll()
 Browser.storage.onChanged.addListener(() => {
   console.log('storage changed')
@@ -381,22 +414,25 @@ Browser.storage.onChanged.addListener(() => {
 Browser.runtime.onInstalled.addListener(async (object) => {
   if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     await Browser.tabs.create({
-      url: 'https://www.ezmail.ai/chrome-extension#how-to-use',
+      url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
     })
   }
 })
 
-Browser.commands.onCommand.addListener(async (command) => {
-  if (command == '_execute_action') {
-    const currentTab = await Browser.tabs.query({
-      active: true,
-    })
-    const tab = currentTab[0]
-    if (tab && tab.id) {
-      await Browser.tabs.sendMessage(tab.id, {
-        event: 'Client_ListenOpenChatMessageBox',
-        data: {},
+if (!isEzMailApp) {
+  Browser.commands.onCommand.addListener(async (command) => {
+    if (command == '_execute_action') {
+      const currentTab = await Browser.tabs.query({
+        active: true,
       })
+      const tab = currentTab[0]
+      if (tab && tab.id) {
+        await Browser.tabs.sendMessage(tab.id, {
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'Client_ListenOpenChatMessageBox',
+          data: {},
+        })
+      }
     }
-  }
-})
+  })
+}

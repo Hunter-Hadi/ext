@@ -1,50 +1,102 @@
 import { Button, Paper } from '@mui/material'
 import { Menu, useContextMenu } from 'react-contexify'
-import { EzMailAIIcon } from '@/components/CustomIcon'
+import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import React, { FC, useEffect } from 'react'
 import { useRangy } from '../../hooks'
 
-import { RangyContextMenuId } from '@/features/contextMenu/components/RangyContextMenu/types'
 import { flip, offset, shift, useFloating } from '@floating-ui/react'
-import { getContextMenuRenderPosition } from '@/features/contextMenu/utils'
-import { throttle } from 'lodash-es'
+import {
+  cloneRect,
+  computedRectPosition,
+  getContextMenuRenderPosition,
+  isRectangleCollidingWithBoundary,
+} from '@/features/contextMenu/utils'
+import throttle from 'lodash-es/throttle'
+import { ROOT_CONTEXT_MENU_CONTAINER_ID } from '@/types'
 
+const APP_NAME = process.env.APP_NAME
+const APP_ENV = process.env.APP_ENV
+const isProduction = process.env.NODE_ENV === 'production'
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, position: { x: number; y: number }) => void
 }> = (props) => {
-  const { tempSelectionRanges, saveSelection, show, hideRangy } = useRangy()
+  const {
+    tempSelectionRanges,
+    tempSelectRangeRect,
+    currentActiveWriteableElement,
+    saveSelection,
+    show,
+    hideRangy,
+  } = useRangy()
   const { x, y, strategy, refs } = useFloating({
     placement: 'bottom-start',
     middleware: [
       flip({
         fallbackPlacements: ['top-start', 'right', 'left'],
       }),
-      shift(),
-      offset(8),
+      shift({
+        crossAxis: true,
+        padding: 16,
+      }),
+      offset((params) => {
+        console.log('[ContextMenu Module]: [offset]', params)
+        if (params.placement.indexOf('bottom') > -1) {
+          const boundary = {
+            left: 0,
+            right: window.innerWidth,
+            top: 0,
+            bottom: window.innerHeight,
+          }
+          if (
+            isRectangleCollidingWithBoundary(
+              {
+                top: params.y,
+                left: params.x,
+                bottom: params.rects.floating.height + params.y + 50,
+                right: params.rects.floating.width + params.x,
+              },
+              boundary,
+            )
+          ) {
+            return -params.rects.floating.height - 16
+          }
+          return 8
+        } else {
+          return 8
+        }
+      }),
     ],
   })
   useEffect(() => {
-    console.log(`[ContextMenu Module]: [button] [${show}]`)
-  }, [show])
-  useEffect(() => {
     const showContextMenu = () => {
-      const rect = tempSelectionRanges?.selectRange?.getBoundingClientRect?.()
+      let rect = tempSelectionRanges?.selectRange?.getBoundingClientRect?.()
+      if (!rect && currentActiveWriteableElement?.getBoundingClientRect()) {
+        rect = cloneRect(currentActiveWriteableElement?.getBoundingClientRect())
+      }
+      console.log(
+        `[ContextMenu Module]: [button] [${show}]`,
+        rect,
+        tempSelectionRanges?.selectRange,
+      )
       if (show && rect) {
-        // render rect
-        document.querySelector('#rangeBorderBox')?.remove()
-        const div = document.createElement('div')
-        div.id = 'rangeBorderBox'
-        div.style.position = 'absolute'
-        div.style.left = rect.left + 'px'
-        div.style.top = rect.top + window.scrollY + 'px'
-        div.style.width = rect.width + 'px'
-        div.style.height = rect.height + 'px'
-        div.style.border = '1px solid red'
-        div.style.zIndex = '9999'
-        div.style.pointerEvents = 'none'
-        document.body.appendChild(div)
+        rect = computedRectPosition(rect)
+        if (!isProduction) {
+          // render rect
+          document.querySelector('#rangeBorderBox')?.remove()
+          const div = document.createElement('div')
+          div.id = 'rangeBorderBox'
+          div.style.position = 'absolute'
+          div.style.left = rect.left + 'px'
+          div.style.top = rect.top + window.scrollY + 'px'
+          div.style.width = rect.width + 'px'
+          div.style.height = rect.height + 'px'
+          div.style.border = '1px solid red'
+          div.style.zIndex = '9999'
+          div.style.pointerEvents = 'none'
+          document.body.appendChild(div)
+        }
         refs.setPositionReference({
           getBoundingClientRect() {
             return {
@@ -74,7 +126,7 @@ const ClickContextMenuButton: FC<{
       window.removeEventListener('mousewheel', scrollListener)
       window.removeEventListener('DOMMouseScroll', scrollListener)
     }
-  }, [tempSelectionRanges, show])
+  }, [tempSelectionRanges, currentActiveWriteableElement, show])
   return (
     <Paper
       elevation={3}
@@ -93,8 +145,19 @@ const ClickContextMenuButton: FC<{
     >
       <Button
         variant={'text'}
-        startIcon={<EzMailAIIcon sx={{ fontSize: 16, color: 'inherit' }} />}
-        sx={{ width: 110, height: 32, color: 'inherit' }}
+        startIcon={
+          APP_ENV === 'EZ_MAIL_AI' ? (
+            <EzMailAIIcon sx={{ fontSize: 16, color: 'inherit' }} />
+          ) : (
+            <UseChatGptIcon
+              sx={{
+                fontSize: 16,
+                color: 'inherit',
+              }}
+            />
+          )
+        }
+        sx={{ width: 130, height: 32, color: 'inherit' }}
         size={'small'}
         onMouseUp={(event) => {
           event.stopPropagation()
@@ -103,19 +166,61 @@ const ClickContextMenuButton: FC<{
         onClick={(event: any) => {
           if (show) {
             const saved = saveSelection()
+            const activeElementRect =
+              currentActiveWriteableElement?.getBoundingClientRect()
             hideRangy()
-            const savedRangeRect = saved.selectRange?.getBoundingClientRect?.()
+            const savedRangeRect = saved?.selectRange?.getBoundingClientRect?.()
             if (savedRangeRect && props.onClick) {
               props.onClick &&
                 props.onClick(
                   event,
-                  getContextMenuRenderPosition(savedRangeRect, 220, 400),
+                  getContextMenuRenderPosition(
+                    computedRectPosition(savedRangeRect),
+                    220,
+                    400,
+                  ),
                 )
+            } else if (activeElementRect && props.onClick) {
+              console.log(
+                '[ContextMenu Module]: render [button] (no range)',
+                activeElementRect,
+                currentActiveWriteableElement,
+                tempSelectRangeRect,
+              )
+              if (
+                activeElementRect.x +
+                  activeElementRect.y +
+                  activeElementRect.width +
+                  activeElementRect.height ===
+                0
+              ) {
+                if (tempSelectRangeRect) {
+                  props.onClick &&
+                    props.onClick(
+                      event,
+                      getContextMenuRenderPosition(
+                        computedRectPosition(cloneRect(tempSelectRangeRect)),
+                        220,
+                        400,
+                      ),
+                    )
+                }
+              } else {
+                props.onClick &&
+                  props.onClick(
+                    event,
+                    getContextMenuRenderPosition(
+                      computedRectPosition(cloneRect(activeElementRect)),
+                      220,
+                      400,
+                    ),
+                  )
+              }
             }
           }
         }}
       >
-        EzMail.AI
+        {APP_NAME}
       </Button>
     </Paper>
   )
@@ -123,7 +228,7 @@ const ClickContextMenuButton: FC<{
 
 const ClickContextMenu = () => {
   const { show: showContextMenu } = useContextMenu({
-    id: RangyContextMenuId,
+    id: ROOT_CONTEXT_MENU_CONTAINER_ID,
   })
   return (
     <>
@@ -131,34 +236,25 @@ const ClickContextMenu = () => {
         onClick={(event: MouseEvent, position) => {
           console.log('[ContextMenu Module]: render [context menu]')
           showContextMenu({
-            id: RangyContextMenuId,
+            id: ROOT_CONTEXT_MENU_CONTAINER_ID,
             event,
             position,
           })
         }}
       />
-      <Paper
-        elevation={3}
-        sx={{
-          borderRadius: '4px',
+
+      <Menu
+        style={{
+          zIndex: 2147483601,
           border: '1px solid rgb(237,237,236)',
-          p: 1,
-          // height: '320px',
-          // overflowY: 'hidden',
         }}
+        id={ROOT_CONTEXT_MENU_CONTAINER_ID}
       >
-        <Menu
-          style={{
-            zIndex: 2147483601,
-          }}
-          id={RangyContextMenuId}
-        >
-          <ContextMenuList
-            defaultContextMenuJson={defaultContextMenuJson}
-            settingsKey={'contextMenus'}
-          />
-        </Menu>
-      </Paper>
+        <ContextMenuList
+          defaultContextMenuJson={defaultContextMenuJson}
+          settingsKey={'contextMenus'}
+        />
+      </Menu>
     </>
   )
 }

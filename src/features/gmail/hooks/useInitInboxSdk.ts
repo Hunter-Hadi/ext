@@ -15,15 +15,11 @@ import {
   GmailToolBarIconBase64Data,
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
-import {
-  getEzMailChromeExtensionSettings,
-  hideEzMailBox,
-  showEzMailBox,
-} from '@/utils'
+import { getChromeExtensionSettings, hideChatBox, showChatBox } from '@/utils'
 import { contextMenu } from 'react-contexify'
-import { RangyGmailToolBarContextMenuId } from '@/features/contextMenu/components/RangyContextMenu'
 import { getContextMenuRenderPosition } from '@/features/contextMenu/utils'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import { ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID } from '@/types'
 const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.ezmail-ai__gmail-toolbar-button--cta')
@@ -78,7 +74,7 @@ const useInitInboxSdk = () => {
             currentMessageId: undefined,
             currentDraftId: undefined,
           })
-          hideEzMailBox()
+          hideChatBox()
         })
       })
       // 注册输入框生命周期方法
@@ -120,10 +116,10 @@ const useInitInboxSdk = () => {
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
               const { gmailToolBarContextMenu } =
-                await getEzMailChromeExtensionSettings()
+                await getChromeExtensionSettings()
               const options =
                 gmailToolBarContextMenu || defaultGmailToolbarContextMenuJson
-              const itemLength = options.length || 0
+              const itemLength = Math.max((options.length || 0) - 1, 0)
               const { x, y } = getContextMenuRenderPosition(
                 {
                   top: iconButtonBounce.top,
@@ -140,7 +136,7 @@ const useInitInboxSdk = () => {
               )
               try {
                 contextMenu.show({
-                  id: RangyGmailToolBarContextMenuId,
+                  id: ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
                   position: { x, y },
                   event: new MouseEvent('click'),
                 })
@@ -176,7 +172,7 @@ const useInitInboxSdk = () => {
                 currentMessageId: `newDraft_${uuidV4()}`,
               })
             }
-            showEzMailBox()
+            showChatBox()
           },
         })
         initComposeViewButtonStyle()
@@ -283,7 +279,7 @@ const useInitInboxSdk = () => {
               const { [currentDraftId]: discard, ...rest } = prevState
               return rest
             })
-            hideEzMailBox()
+            hideChatBox()
           }, 0)
         })
         // composeView.on('destroy', () => {

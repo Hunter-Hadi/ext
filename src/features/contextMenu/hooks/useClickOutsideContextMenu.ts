@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
+import { ROOT_CONTEXT_MENU_ID, ROOT_CONTEXT_MENU_PORTAL_ID } from '@/types'
 
 export const useClickOutsideContextMenu = () => {
   const [isClickOutside, setIsClickOutside] = useState(false)
   const ref = useRef<HTMLElement | null>(null)
   const handleClickOutside = (event: any) => {
-    const rootEl = document.getElementById('EzMail_AI_ROOT_Context_Menu')
+    const rootEl = document.getElementById(ROOT_CONTEXT_MENU_ID)
     if (
       rootEl &&
       rootEl.shadowRoot &&
-      rootEl.shadowRoot.querySelector(
-        '#EzMail_AI_ROOT_Context_Menu_Portal.visible',
-      )
+      rootEl.shadowRoot.querySelector(`#${ROOT_CONTEXT_MENU_PORTAL_ID}.visible`)
     ) {
       if (rootEl && rootEl.isEqualNode(event.target)) {
         setIsClickOutside(false)

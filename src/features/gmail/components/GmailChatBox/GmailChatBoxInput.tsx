@@ -1,9 +1,10 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { Box } from '@mui/material'
+import { Box, Skeleton } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
 import { AppState } from '@/pages/App'
-import { getEzMailAppActiveElement } from '@/utils'
+import { getAppActiveElement } from '@/utils'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((document.body.offsetHeight * 0.5) / 24) || 5)
@@ -112,10 +113,10 @@ const GmailChatBoxInput: FC<{
     setInputValue(defaultValue || '')
     setTimeout(() => {
       if (textareaRef.current) {
-        if (textareaRef.current?.isSameNode(getEzMailAppActiveElement())) {
+        if (textareaRef.current?.isSameNode(getAppActiveElement())) {
           throttleAutoSizeTextarea(textareaRef.current)
         } else {
-          console.log(getEzMailAppActiveElement())
+          console.log(getAppActiveElement())
           focusTextareaAndAutoSize(textareaRef.current)
         }
       }
@@ -143,6 +144,8 @@ const GmailChatBoxInput: FC<{
   }, [appState, textareaRef])
   return (
     <Box
+      component={'div'}
+      className={loading ? 'chat-box__input--loading' : ''}
       borderRadius={'8px'}
       border={`1px solid ${error ? 'rgb(239, 83, 80)' : '#e0e0e0'}`}
       width={'100%'}
@@ -153,6 +156,30 @@ const GmailChatBoxInput: FC<{
         flexDirection: 'row',
         flexWrap: 'wrap',
         overflow: 'hidden',
+        '& .chat-box__input-skeleton': {
+          opacity: 0,
+          zIndex: -1,
+          position: 'absolute',
+          top: 0,
+          padding: '8px',
+          left: 0,
+          width: '100%',
+          display: 'none',
+        },
+        '&.chat-box__input--loading': {
+          maxHeight: '100.5px',
+          overflow: 'hidden',
+          position: 'relative',
+          '& > textarea': {
+            maxHeight: '30px',
+            opacity: 0,
+          },
+          '& .chat-box__input-skeleton': {
+            opacity: 1,
+            zIndex: 1,
+            display: 'block',
+          },
+        },
         '& > textarea': {
           color: 'rgba(0,0,0,.87)!important',
           p: 1,
@@ -178,9 +205,12 @@ const GmailChatBoxInput: FC<{
         },
       }}
     >
+      <Box component={'div'} className={'chat-box__input-skeleton'}>
+        <Skeleton height={LINE_HEIGHT} />
+      </Box>
       <textarea
-        id={'EzMailAppChatBoxInput'}
-        placeholder={'Enter ChatGPT prompt...'}
+        id={ROOT_CHAT_BOX_INPUT_ID}
+        placeholder={'Ask ChatGPT...'}
         disabled={loading}
         ref={textareaRef}
         value={inputValue}

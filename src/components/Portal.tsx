@@ -5,7 +5,10 @@ import { CacheProvider } from '@emotion/react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactContexifyCss from 'react-contexify/dist/ReactContexify.css'
-
+import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/types'
+const AppNameToClassName = (process.env.APP_ENV || '')
+  .toLowerCase()
+  .replace(/_/g, '-')
 const Portal: FC<{
   containerId?: string
   children: React.ReactNode
@@ -23,7 +26,7 @@ const Portal: FC<{
     const modalRoot = document.getElementById(containerId)
     if (modalRoot) {
       const shadowRootElement = document.createElement('div')
-      shadowRootElement.id = `EzMail_AI_ROOT_Context_Menu_Portal`
+      shadowRootElement.id = ROOT_CONTEXT_MENU_PORTAL_ID
       const emotionRoot = document.createElement('style')
       if (modalRoot.shadowRoot) {
         modalRoot.shadowRoot.appendChild(shadowRootElement)
@@ -34,7 +37,7 @@ const Portal: FC<{
         shadowContainer.appendChild(emotionRoot)
       }
       emotionCacheRef.current = createCache({
-        key: 'ezmail-ai-context-menu',
+        key: `${AppNameToClassName}-context-menu`,
         prepend: true,
         container: emotionRoot,
       })

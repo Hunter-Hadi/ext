@@ -21,7 +21,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const [conversation, setConversation] = useRecoilState(
     GmailMessageChatConversationState,
   )
-  const writingMessageRef = useRef<IGmailChatMessage | null>(null)
   const currentPortInstance = useMemo(() => {
     if (loaded) {
       return port
@@ -32,7 +31,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     console.log('resetConversation', defaultValueRef.current)
     setInputValue(defaultValueRef.current)
     setMessages([])
-    writingMessageRef.current = null
     setConversation((prevState) => {
       if (prevState.conversationId) {
         console.log('remove Conversation', prevState.conversationId)
@@ -187,6 +185,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     const pushMessages: IGmailChatMessage[] = []
     let hasError = false
     try {
+      let currentMessage: any = null
       await sendAsyncTask(
         'DaemonProcess_sendMessage',
         {
@@ -204,7 +203,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               text: (msg.text as string) || '',
               type: 'ai' as const,
             }
-            writingMessageRef.current = writingMessage
+            currentMessage = writingMessage
             setConversation((prevState) => {
               return {
                 ...prevState,
@@ -217,8 +216,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           onError: (error: any) => {
             hasError = true
             console.log('!!!!!!', error)
-            if (writingMessageRef.current?.messageId) {
-              pushMessages.push(writingMessageRef.current as IGmailChatMessage)
+            if (currentMessage?.messageId) {
+              pushMessages.push(currentMessage as IGmailChatMessage)
             }
             if (error === 'Conversation not found') {
               setConversation((prevState) => {
@@ -241,35 +240,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               })
             }
             console.log('onerror', error, pushMessages)
-            // setMessages((prevState) => {
-            //   const pushMessages: IGmailChatMessage[] = []
-            //   if (writingMessageRef.current?.messageId) {
-            //     pushMessages.push(
-            //       writingMessageRef.current as IGmailChatMessage,
-            //     )
-            //   }
-            //   pushMessages.push({
-            //     type: 'system',
-            //     status: 'error',
-            //     messageId: uuidV4(),
-            //     parentMessageId: currentMessageId,
-            //     text: msg || 'Error detected. Please try again.',
-            //   })
-            //   return [...prevState, ...pushMessages]
-            // })
             return
           },
         },
       )
-      if (
-        !hasError &&
-        writingMessageRef.current?.messageId &&
-        writingMessageRef.current?.text
-      ) {
-        pushMessages.push(writingMessageRef.current as IGmailChatMessage)
+      if (!hasError && currentMessage?.messageId && currentMessage?.text) {
+        pushMessages.push(currentMessage as IGmailChatMessage)
         return Promise.resolve({
           success: true,
-          answer: writingMessageRef.current?.text || '',
+          answer: currentMessage?.text || '',
         })
       }
       return Promise.resolve({
@@ -340,7 +319,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     return null
   }
   const stopGenerateMessage = async () => {
-    const parentMessageId = writingMessageRef.current?.parentMessageId
+    const parentMessageId = conversation.writingMessage?.parentMessageId
     if (parentMessageId || conversation.lastMessageId) {
       await pingDaemonProcess()
       await sendAsyncTask('DaemonProcess_abortMessage', {
@@ -373,7 +352,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   }, [defaultInputValue])
   return {
     sendQuestion,
-    writingMessageRef,
     messages,
     resetConversation,
     conversation,

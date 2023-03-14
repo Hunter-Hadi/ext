@@ -3,8 +3,11 @@ import { createRoot } from 'react-dom/client'
 import App from './pages/App'
 import { RecoilRoot } from 'recoil'
 import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/className'
+const AppNameToClassName = (process.env.APP_ENV || '')
+  .toLowerCase()
+  .replace(/_/g, '-')
 ClassNameGenerator.configure(
-  (componentName) => `ezmail-ai-crx--${componentName}`,
+  (componentName) => `${AppNameToClassName}--${componentName}`,
 )
 
 import ChatGPTDaemonProcess from './pages/ChatGPTDaemonProcessPage'
@@ -12,11 +15,19 @@ import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import { ThemeProvider } from '@mui/material'
 import customMuiTheme from '@/pages/customMuiTheme'
+import {
+  ROOT_CONTAINER_ID,
+  ROOT_CONTAINER_WRAPPER_ID,
+  ROOT_CONTEXT_MENU_ID,
+  ROOT_DAEMON_PROCESS_ID,
+} from '@/types'
 // import createCache from '@emotion/cache'
-
+console.log(process.env.NODE_ENV)
+console.log(process.env.APP_ENV)
+console.log(process.env.APP_NAME)
 if (location.host === 'chat.openai.com') {
   const div = document.createElement('div')
-  div.id = 'EzMail_AI_ChatGPT_DaemonProcess_ROOT'
+  div.id = ROOT_DAEMON_PROCESS_ID
   const nav = document.getElementsByTagName('nav')?.[0]
   console.log(nav)
   document.body.appendChild(div)
@@ -27,7 +38,7 @@ if (location.host === 'chat.openai.com') {
     </React.StrictMode>,
   )
 } else {
-  console.log('init ezmail.ai client')
+  console.log('init client')
   // Create web component with target div inside it.
 
   // document.body.appendChild(container)
@@ -41,24 +52,23 @@ if (location.host === 'chat.openai.com') {
   //   container: emotionRoot,
   // })
   const contextMenu = document.createElement('div')
-  contextMenu.id = 'EzMail_AI_ROOT_Context_Menu'
+  contextMenu.id = ROOT_CONTEXT_MENU_ID
   document.body.appendChild(contextMenu)
   const container = document.createElement('div')
-  container.id = 'EzMail_AI_ROOT'
+  container.id = ROOT_CONTAINER_ID
   document.body.appendChild(container)
   const shadowContainer = container.attachShadow({ mode: 'open' })
   const emotionRoot = document.createElement('style')
   const shadowRootElement = document.createElement('div')
-  shadowRootElement.id = 'EzMail_AI_ROOT_Wrapper'
+  shadowRootElement.id = ROOT_CONTAINER_WRAPPER_ID
   shadowRootElement.style.display = 'flex'
   shadowRootElement.style.flexDirection = 'column'
   shadowRootElement.style.flex = '1'
   shadowRootElement.style.height = '100vh'
   shadowContainer.appendChild(emotionRoot)
   shadowContainer.appendChild(shadowRootElement)
-  ;(window as any).__EZ_MAIL_AI_ROOT_shadowRoot = shadowContainer
   const cache = createCache({
-    key: 'ezmail-ai-emotion-cache',
+    key: `${AppNameToClassName}-emotion-cache`,
     prepend: true,
     container: emotionRoot,
   })

@@ -1,0 +1,54 @@
+{
+  "name": "Use ChatGPT - Rephrase or summarize any text",
+  "version": "0.0.1",
+  "short_name": "Use ChatGPT",
+  "description": "Free Chrome extension to rephrase, improve, summarize, translate, or clarify any text on the web using ChatGPT AI.",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.ts"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "js": ["content.tsx"],
+      "run_at": "document_end"
+    }
+  ],
+  "host_permissions": [
+    "https://mail.google.com/",
+    "https://*.openai.com/*"
+  ],
+
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": ["tabs", "scripting", "storage", "management"],
+  "action": {
+    "default_icon": {
+      "16": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png",
+      "24": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png",
+      "32": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png"
+    },
+    "default_title": "Tooltip title"
+  },
+  "icons": {
+    "16":  "assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png",
+    "32":  "assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png",
+    "48":  "assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal.png",
+    "128": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal.png"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+J",
+        "windows": "Alt+J",
+        "linux": "Alt+J",
+        "mac": "Command+J"
+      },
+      "description": "Active Use ChatGPT.AI"
+    }
+  }
+}

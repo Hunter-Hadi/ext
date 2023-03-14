@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { NodeRender } from '@minoru/react-dnd-treeview'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { IContextMenuItem } from '@/features/contextMenu'
+import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'
 
 const ContextMenuItem = (props: {
   node: IContextMenuItem
@@ -43,6 +43,9 @@ const ContextMenuItem = (props: {
             onClick={onToggle}
           />
         ))}
+      {node.data.icon && (
+        <ContextMenuIcon icon={node.data.icon} sx={{ mr: 1 }} />
+      )}
       <Stack
         direction={'row'}
         alignItems={'center'}

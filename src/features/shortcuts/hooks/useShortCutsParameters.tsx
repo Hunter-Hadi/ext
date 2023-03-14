@@ -7,13 +7,14 @@ import {
   useCurrentMessageView,
   useInboxComposeViews,
 } from '@/features/gmail'
-import { getEzMailAppRootElement } from '@/utils'
+import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentComposeView } = useInboxComposeViews()
-  const { lastSelectionRanges, parseRangySelectRangeData } = useRangy()
+  const { lastSelectionRanges, parseRangySelectRangeData, rangy } = useRangy()
   const { messageViewText, currentMessageId } = useCurrentMessageView()
   return useCallback(() => {
     console.log(
@@ -42,20 +43,37 @@ const useShortCutsParameters = () => {
             .replace(/\n+/g, `\n`) || ''
       }
     }
+    let HIGHLIGHTED_HTML = ''
+    let HIGHLIGHTED_TEXT = ''
     const selectionData = parseRangySelectRangeData(
       lastSelectionRanges?.selectRange,
       'useShortCutsParameters',
     )
+    if (selectionData) {
+      HIGHLIGHTED_HTML = selectionData.html || ''
+      HIGHLIGHTED_TEXT = selectionData.text || ''
+    }
+    const activeWriteAbleElement = rangy?.contextMenu?.getActiveElement()
+    if (activeWriteAbleElement) {
+      if (!HIGHLIGHTED_HTML) {
+        HIGHLIGHTED_HTML =
+          activeWriteAbleElement.html || activeWriteAbleElement.getHtml() || ''
+      }
+      if (!HIGHLIGHTED_TEXT) {
+        HIGHLIGHTED_TEXT =
+          activeWriteAbleElement.text || activeWriteAbleElement.getText() || ''
+      }
+    }
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any
     } = {
       GMAIL_MESSAGE_CONTEXT: messageViewText,
       GMAIL_DRAFT_CONTEXT,
-      HIGHLIGHTED_HTML: selectionData.html || '',
-      HIGHLIGHTED_TEXT: selectionData.text || '',
+      HIGHLIGHTED_HTML,
+      HIGHLIGHTED_TEXT,
       USER_INPUT:
-        getEzMailAppRootElement()?.querySelector<HTMLTextAreaElement>(
-          '#EzMailAppChatBoxInput',
+        getAppRootElement()?.querySelector<HTMLTextAreaElement>(
+          `#${ROOT_CHAT_BOX_INPUT_ID}`,
         )?.value || '',
     }
     const parameters: Array<{
@@ -85,6 +103,7 @@ const useShortCutsParameters = () => {
     messageViewText,
     currentMessageId,
     lastSelectionRanges,
+    rangy,
   ])
 }
 export { useShortCutsParameters }

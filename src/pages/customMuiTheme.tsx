@@ -5,6 +5,8 @@ const getIsDarkMode = () => {
   return false
 }
 
+const APP_ENV = process.env.APP_ENV
+
 type CustomColor = {
   main: React.CSSProperties['color']
   lightBackground: React.CSSProperties['color']
@@ -13,7 +15,7 @@ type CustomColor = {
 }
 
 export const customColor = {
-  main: '#1D56D7',
+  main: APP_ENV === 'EZ_MAIL_AI' ? '#1D56D7' : '#7601D3',
   lightBackground: '#f7f9fd',
   darkBackground: '#14162a',
   darkPaperBackground: '#292b42',

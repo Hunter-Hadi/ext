@@ -4,9 +4,11 @@ import ReplyIcon from '@mui/icons-material/Reply'
 import { IGmailChatMessage } from '../GmailChatBox'
 import { useInboxComposeViews } from '../../hooks'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
-import { hideEzMailBox } from '@/utils'
+import { hideChatBox } from '@/utils'
 import { gmailReplyBoxInsertText } from '@/features/gmail'
 import { useRangy } from '@/features/contextMenu'
+
+const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
 const GmailChatBoxAiTools: FC<{
   insertAble?: boolean
@@ -36,7 +38,7 @@ const GmailChatBoxAiTools: FC<{
               const composeViewBodyElement = composeView.getBodyElement()
               if (composeViewBodyElement) {
                 gmailReplyBoxInsertText(composeViewBodyElement, message.text)
-                hideEzMailBox()
+                hideChatBox()
               } else {
                 composeView.setBodyText(message.text)
               }
@@ -53,7 +55,7 @@ const GmailChatBoxAiTools: FC<{
           variant={'contained'}
           onClick={() => {
             replaceSelectionRangeText(message.text)
-            hideEzMailBox()
+            hideChatBox()
           }}
         >
           Replace
@@ -63,6 +65,9 @@ const GmailChatBoxAiTools: FC<{
         copyText={message.text}
         onCopy={() => {
           props.onCopy?.()
+          if (TEMP_CLOSE_HOSTS.includes(window.location.host)) {
+            setTimeout(hideChatBox, 1)
+          }
         }}
       />
     </Stack>

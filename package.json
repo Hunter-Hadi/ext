@@ -4,9 +4,13 @@
   "description": "",
   "author": "",
   "scripts": {
-    "build": "rollup -c",
-    "release": "cross-env NODE_ENV=production rollup -c",
-    "start": "rollup -c -w"
+    "start:ezmail": "rollup -c -w --app=ezmail",
+    "start:usechatgpt": "rollup -c -w --app=usechatgpt",
+    "build:ezmail": "rollup -c --app=ezmail",
+    "build:usechatgpt": "rollup -c --app=usechatgpt",
+    "release": "pnpm run release:ezmail && pnpm run release:usechatgpt",
+    "release:ezmail": "cross-env NODE_ENV=production rollup -c --app=ezmail",
+    "release:usechatgpt": "cross-env NODE_ENV=production rollup -c --app=usechatgpt"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",

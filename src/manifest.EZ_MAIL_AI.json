@@ -1,5 +1,6 @@
 {
   "name": "EzMail.AI - ChatGPT for Gmail",
+  "version": "0.0.2",
   "short_name": "EzMail.AI",
   "description": "Free Gmail tool that generates entire emails, powered by ChatGPT.",
   "manifest_version": 3,
@@ -27,27 +28,16 @@
   "permissions": ["tabs", "scripting", "storage", "management"],
   "action": {
     "default_icon": {
-      "16": "assets/icons/ezmail_16_normal.png",
-      "24": "assets/icons/ezmail_32_normal.png",
-      "32": "assets/icons/ezmail_32_normal.png"
+      "16": "assets/EZ_MAIL_AI/icons/ezmail_16_normal.png",
+      "24": "assets/EZ_MAIL_AI/icons/ezmail_32_normal.png",
+      "32": "assets/EZ_MAIL_AI/icons/ezmail_32_normal.png"
     },
     "default_title": "Tooltip title"
   },
   "icons": {
-    "16":  "assets/icons/ezmail_16_normal.png",
-    "32":  "assets/icons/ezmail_32_normal.png",
-    "48":  "assets/icons/ezmail_48_normal.png",
-    "128": "assets/icons/ezmail_128_normal.png"
-  },
-  "commands": {
-    "_execute_action": {
-      "suggested_key": {
-        "default": "Alt+J",
-        "windows": "Alt+J",
-        "linux": "Alt+J",
-        "mac": "Command+J"
-      },
-      "description": "Active EzMail.AI"
-    }
+    "16":  "assets/EZ_MAIL_AI/icons/ezmail_16_normal.png",
+    "32":  "assets/EZ_MAIL_AI/icons/ezmail_32_normal.png",
+    "48":  "assets/EZ_MAIL_AI/icons/ezmail_48_normal.png",
+    "128": "assets/EZ_MAIL_AI/icons/ezmail_128_normal.png"
   }
 }

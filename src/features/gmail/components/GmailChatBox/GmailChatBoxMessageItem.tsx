@@ -4,6 +4,7 @@ import { Alert, Stack, SxProps } from '@mui/material'
 import GmailChatBoxUserTools from './GmailChatBoxUserTools'
 import GmailChatBoxAiTools from './GmailChatBoxAiTools'
 import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'
+import { ROOT_CONTAINER_ID } from '@/types'
 
 const GmailChatBoxMessageItem: FC<{
   replaceAble?: boolean
@@ -68,9 +69,9 @@ const GmailChatBoxMessageItem: FC<{
         width: '100%',
         p: 1,
         color: 'text.primary',
-        '& .ezmail-ai--gmail-chat-message': {
+        '& .chat-message--text': {
           textAlign: 'left',
-          fontSize: '14px',
+          fontSize: '16px',
         },
       }}
       spacing={1}
@@ -107,8 +108,8 @@ const GmailChatBoxMessageItem: FC<{
           </Alert>
         ) : (
           <Stack
-            className={'ezmail-ai--gmail-chat-message'}
-            id={`ezmail_ai_gmail_chat_message_${message.messageId}`}
+            className={'chat-message--text'}
+            id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
             contentEditable={isEdit}
             whiteSpace={'pre-wrap'}
             sx={{
@@ -127,7 +128,7 @@ const GmailChatBoxMessageItem: FC<{
             onSave={() => {
               setIsEdit(false)
               const messageTextElement = document.getElementById(
-                `ezmail_ai_gmail_chat_message_${message.messageId}`,
+                `${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`,
               )
               onSave &&
                 onSave(messageTextElement?.innerText || message.text || '')
@@ -136,7 +137,7 @@ const GmailChatBoxMessageItem: FC<{
               setIsEdit(true)
               setTimeout(() => {
                 const editElement = document.getElementById(
-                  `ezmail_ai_gmail_chat_message_${message.messageId}`,
+                  `${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`,
                 )
                 if (editElement) {
                   editElement.focus()

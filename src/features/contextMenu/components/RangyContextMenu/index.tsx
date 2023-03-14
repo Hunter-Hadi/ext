@@ -3,21 +3,23 @@ import React from 'react'
 import { Paper } from '@mui/material'
 import { Menu } from 'react-contexify'
 import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
-export const RangyGmailToolBarContextMenuId =
-  'EzMail_AI_ROOT_Gmail_Toolbar_Context_Menu_ID'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import ClickContextMenu from './ClickContextMenu'
+import {
+  ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
+  ROOT_CONTEXT_MENU_ID,
+} from '@/types'
 
 const RangyContextMenu = () => {
   return (
-    <Portal containerId={'EzMail_AI_ROOT_Context_Menu'}>
+    <Portal containerId={ROOT_CONTEXT_MENU_ID}>
       <ClickContextMenu />
       <Paper elevation={3}>
         <Menu
           style={{
             zIndex: 999998,
           }}
-          id={RangyGmailToolBarContextMenuId}
+          id={ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID}
         >
           <ContextMenuList
             defaultContextMenuJson={defaultGmailToolbarContextMenuJson}

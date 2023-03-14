@@ -1,6 +1,17 @@
-import * as fs from 'fs'
-import * as path from 'path'
 import { ZipFile } from 'yazl'
+import fs from 'fs'
+import path from 'path'
+
+function walk(dir) {
+  let files = fs.readdirSync(dir)
+  files = files.map((file) => {
+    const filePath = path.join(dir, file)
+    const stats = fs.statSync(filePath)
+    if (stats.isDirectory()) return walk(filePath)
+    else if (stats.isFile()) return filePath
+  })
+  return files.reduce((all, folderContents) => all.concat(folderContents), [])
+}
 
 const isAsset = (entry) => entry.type === 'asset'
 const zip = (options) => ({
@@ -50,27 +61,15 @@ const zip = (options) => ({
   writeBundle(_options, bundle) {
     return new Promise((resolve) => {
       const distDir = this.cache.get('distdir' /* distdir */)
-      const sourcemapFile = this.cache.get('sourcemapFile' /* sourcemapFile */)
       const zipFile = new ZipFile()
-
-      Object.entries(bundle).forEach(([, entry]) => {
-        if (isAsset(entry)) {
-          const { fileName, source } = entry
-          const buffer = Buffer.from(source)
-          zipFile.addBuffer(buffer, fileName)
-        } else {
-          const { fileName, map } = entry
-          zipFile.addFile(path.resolve(distDir, fileName), fileName)
-          if (map) {
-            const mapFile = fileName + '.map'
-            zipFile.addFile(path.resolve(distDir, mapFile), mapFile)
-          }
+      const files = walk(distDir)
+      files.forEach((filePath) => {
+        const fileName = filePath.replace(/^.*[\\/]/, '')
+        const filters = ['.DS_Store']
+        if (!filters.includes(fileName)) {
+          zipFile.addFile(filePath, filePath.replace(distDir + '/', ''))
         }
       })
-      if (sourcemapFile) {
-        zipFile.addFile(path.resolve(distDir, sourcemapFile), sourcemapFile)
-      }
-      zipFile.addFile(path.resolve(distDir, 'pageWorld.js'), 'pageWorld.js')
       const outFile = this.cache.get('outfile' /* outfile */)
       const writeStream = fs.createWriteStream(outFile)
       zipFile.outputStream.pipe(writeStream)

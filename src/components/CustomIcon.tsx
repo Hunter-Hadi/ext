@@ -42,6 +42,24 @@ const EzMailAIIcon: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
+const UseChatGptIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon viewBox="0 0 24 24" sx={props.sx}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 44 44"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M36 16L33.5 10.5L28 8L33.5 5.5L36 0L38.5 5.5L44 8L38.5 10.5L36 16ZM36 44L33.5 38.5L28 36L33.5 33.5L36 28L38.5 33.5L44 36L38.5 38.5L36 44ZM16 38L11 27L0 22L11 17L16 6L21 17L32 22L21 27L16 38Z"
+          fill="#7601D3"
+        />
+      </svg>
+    </SvgIcon>
+  )
+}
 const ChatGPTIcon: FC<SvgIconProps> = (props) => {
   return (
     <SvgIcon viewBox="0 0 24 24" sx={props.sx}>
@@ -75,6 +93,7 @@ const GmailToolBarDropdownIconBase64Data = `data:image/png;base64,iVBORw0KGgoAAA
 export {
   EzMailAIIcon,
   ChatGPTIcon,
+  UseChatGptIcon,
   GmailToolBarIconBase64Data,
   GmailToolBarDropdownIconBase64Data,
 }

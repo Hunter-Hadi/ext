@@ -8,9 +8,16 @@ import {
   IChromeExtensionChatGPTDaemonProcessListenEvent,
   IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
 } from '@/background'
+import {
+  CHROME_EXTENSION_POST_MESSAGE_ID,
+  ROOT_DAEMON_PROCESS_ID,
+} from '@/types'
+
+const APP_NAME = process.env.APP_NAME
+
 const stopDaemonProcessClose = () => {
   setInterval(() => {
-    document.title = 'EzMail.AI daemon process is running...'
+    document.title = `${APP_NAME} daemon process is running...`
   }, 1000)
   return
   window.onbeforeunload = (event) => {
@@ -56,25 +63,27 @@ const useDaemonProcess = () => {
     const port = Browser.runtime.connect()
     const listener = async (msg: any) => {
       const { event, data } = msg
+      if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+        return
+      }
       switch (event as IChromeExtensionChatGPTDaemonProcessListenEvent) {
         case 'DaemonProcess_getChatGPTProxyInstanceResponse':
           if (data.isInit) {
             console.log('close listen')
-            document
-              .getElementById('EzMail_AI_ChatGPT_DaemonProcess_ROOT')
-              ?.remove()
+            document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
             Browser.runtime?.onMessage?.removeListener(listener)
             port?.onMessage?.removeListener(listener)
             port?.disconnect()
           } else {
-            console.log('init EzMail.AI chatGPT daemon process')
+            console.log(`init ${APP_NAME} chatGPT daemon process`)
             chatGptInstanceRef.current = new ChatGPTDaemonProcess()
             stopDaemonProcessClose()
             const nextRoot = document.getElementById('__next')
             if (nextRoot) {
-              nextRoot.classList.add('ezmail-ai-running')
+              nextRoot.classList.add('use-chat-gpt-ai-running')
             }
             port.postMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'DaemonProcess_initChatGPTProxyInstance',
             })
             setShowDaemonProcessBar(true)
@@ -84,6 +93,7 @@ const useDaemonProcess = () => {
           {
             console.log('DaemonProcess_listenClientPing')
             port.postMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'DaemonProcess_Pong',
             })
           }
@@ -105,6 +115,7 @@ const useDaemonProcess = () => {
               done = true,
             ) => {
               port.postMessage({
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
                 event: 'DaemonProcess_asyncTaskResponse',
                 data: {
                   taskId,
@@ -277,7 +288,10 @@ const useDaemonProcess = () => {
     if (pageSuccessLoaded) {
       port.onMessage.addListener(listener)
       Browser.runtime.onMessage.addListener(listener)
-      port.postMessage({ event: 'DaemonProcess_getChatGPTProxyInstance' })
+      port.postMessage({
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'DaemonProcess_getChatGPTProxyInstance',
+      })
     }
     return () => {
       Browser.runtime?.onMessage?.removeListener(listener)
@@ -310,13 +324,12 @@ const ChatGPTDaemonProcessPage: FC = () => {
       {/*  }}*/}
       {/*/>*/}
       <Stack
-        className={'EzMail-AI-chatgpt-daemon-process-bar'}
         sx={{
           top: 0,
           position: 'absolute',
           height: 40,
           width: '100%',
-          bgcolor: '#1D56D7',
+          bgcolor: process.env.APP_ENV === 'EZ_MAIL_AI' ? '#1D56D7' : '#7601D3',
           zIndex: 999,
           color: '#fff',
         }}
@@ -325,12 +338,12 @@ const ChatGPTDaemonProcessPage: FC = () => {
         alignItems={'center'}
         justifyContent={'center'}
       >
-        <div className={'ezmail-ai-setting-icon'}>
+        <div className={'use-chat-gpt-ai-setting-icon'}>
           <SettingsIcon sx={{ fontSize: 16 }} />
         </div>
         <Typography variant={'body1'} component={'span'}>
-          Please keep this page open to continue using the EzMail.AI Chrome
-          extension.
+          {`Please keep this page open to continue using the ${APP_NAME} Chrome
+          extension.`}
         </Typography>
       </Stack>
     </>

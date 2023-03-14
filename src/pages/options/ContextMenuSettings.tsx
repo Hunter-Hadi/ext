@@ -11,20 +11,20 @@ import { v4 } from 'uuid'
 import ContextMenuEditForm from '@/pages/options/components/ContextMenuEditForm'
 import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
-  getEzMailChromeExtensionSettings,
-  IEzMailChromeExtensionSettingsKey,
-  setEzMailChromeExtensionSettings,
+  getChromeExtensionSettings,
+  IChromeExtensionSettingsKey,
+  setChromeExtensionSettings,
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
 const rootId = 'root'
 
 const saveTreeData = async (
-  key: IEzMailChromeExtensionSettingsKey,
+  key: IChromeExtensionSettingsKey,
   treeData: IContextMenuItem[],
 ) => {
   try {
-    const success = await setEzMailChromeExtensionSettings({
+    const success = await setChromeExtensionSettings({
       [key]: treeData,
     } as any)
     console.log(success)
@@ -33,10 +33,11 @@ const saveTreeData = async (
   }
 }
 const ContextMenuSettings: FC<{
-  settingsKey: IEzMailChromeExtensionSettingsKey
+  iconSetting?: boolean
+  settingsKey: IChromeExtensionSettingsKey
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {
-  const { settingsKey, defaultContextMenuJson } = props
+  const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
   const [loading, setLoading] = useState(false)
   const [editId, setEditId] = useState<string | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
@@ -76,7 +77,7 @@ const ContextMenuSettings: FC<{
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const settings = await getEzMailChromeExtensionSettings()
+      const settings = await getChromeExtensionSettings()
       if (isDestroy) return
       console.log(settings)
       console.log(defaultContextMenuJson)
@@ -161,7 +162,7 @@ const ContextMenuSettings: FC<{
               onDrop={handleDrop}
               sort={false}
               classes={{
-                placeholder: 'ezmail-ai-context-menu--placeholder',
+                placeholder: 'context-menu--placeholder',
               }}
               canDrop={(tree, { dragSource, dropTargetId }) => {
                 return (
@@ -193,6 +194,7 @@ const ContextMenuSettings: FC<{
         <Stack borderLeft={1} flex={1} width={0} height={800}>
           {editNode && (
             <ContextMenuEditForm
+              iconSetting={iconSetting}
               settingsKey={settingsKey}
               onSave={async (newNode) => {
                 updateMenuItem(newNode)

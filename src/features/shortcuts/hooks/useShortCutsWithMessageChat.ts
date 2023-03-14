@@ -4,7 +4,7 @@ import { ShortCutsEngine } from '../core'
 import { useShortCutsParameters } from '../hooks'
 import { useCurrentMessageView, useInboxComposeViews } from '@/features/gmail'
 import { ISetActionsType } from '../types'
-import { EzMailBoxIsOpen, showEzMailBox } from '@/utils'
+import { ChatBoxIsOpen, showChatBox } from '@/utils'
 
 const shortCutsEngine = new ShortCutsEngine()
 const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
@@ -26,8 +26,8 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     if (!shortCutsEngineRef.current) {
       return
     }
-    if (!EzMailBoxIsOpen()) {
-      showEzMailBox()
+    if (!ChatBoxIsOpen()) {
+      showChatBox()
     }
     try {
       const isLoginSuccess = await pingUntilLogin()

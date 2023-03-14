@@ -30,27 +30,34 @@
 import Browser from 'webextension-polyfill'
 import { IContextMenuItem } from '@/features/contextMenu'
 import { useEffect, useState } from 'react'
+import {
+  CHROME_EXTENSION_POST_MESSAGE_ID,
+  ROOT_CONTAINER_ID,
+  ROOT_CONTAINER_WRAPPER_ID,
+} from '@/types'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
     .toFixed(digits)
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
-export const getEzMailAppActiveElement = (): HTMLElement | null => {
-  const element = document.querySelector('#EzMail_AI_ROOT')?.shadowRoot
+export const getAppActiveElement = (): HTMLElement | null => {
+  const element = document.querySelector(`#${ROOT_CONTAINER_ID}`)?.shadowRoot
     ?.activeElement as HTMLDivElement
   if (element === undefined) return null
   return element
 }
-export const getEzMailAppRootElement = (): HTMLDivElement | null => {
+export const getAppRootElement = (): HTMLDivElement | null => {
   return document
-    .querySelector('#EzMail_AI_ROOT')
-    ?.shadowRoot?.querySelector('#EzMail_AI_ROOT_Wrapper') as HTMLDivElement
+    .querySelector(`#${ROOT_CONTAINER_ID}`)
+    ?.shadowRoot?.querySelector(
+      `#${ROOT_CONTAINER_WRAPPER_ID}`,
+    ) as HTMLDivElement
 }
 
-export const showEzMailBox = () => {
+export const showChatBox = () => {
   const htmlElement = document.body.parentElement
-  const ezMailAiElement = document.getElementById('EzMail_AI_ROOT')
+  const ezMailAiElement = document.getElementById(ROOT_CONTAINER_ID)
   if (htmlElement && ezMailAiElement) {
     const clientWidth =
       window.innerWidth ||
@@ -70,9 +77,9 @@ export const showEzMailBox = () => {
   }
 }
 
-export const hideEzMailBox = () => {
+export const hideChatBox = () => {
   const htmlElement = document.body.parentElement
-  const ezMailAiElement = document.getElementById('EzMail_AI_ROOT')
+  const ezMailAiElement = document.getElementById(ROOT_CONTAINER_ID)
   if (htmlElement && ezMailAiElement) {
     htmlElement.style.transition = 'width .3s ease-inout'
     htmlElement.style.width = '100%'
@@ -83,23 +90,25 @@ export const hideEzMailBox = () => {
     }, 300)
   }
 }
-export const EzMailBoxIsOpen = () => {
-  const ezMailAiElement = document.getElementById('EzMail_AI_ROOT')
+export const ChatBoxIsOpen = () => {
+  const ezMailAiElement = document.getElementById(ROOT_CONTAINER_ID)
   return ezMailAiElement?.classList.contains('open') || false
 }
 
-type IEzMailChromeExtensionSettings = {
+type IChromeExtensionSettings = {
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
 }
-export type IEzMailChromeExtensionSettingsKey =
-  keyof IEzMailChromeExtensionSettings
+export type IChromeExtensionSettingsKey = keyof IChromeExtensionSettings
 
-export const getEzMailChromeExtensionSettings =
-  (): Promise<IEzMailChromeExtensionSettings> => {
+export const getChromeExtensionSettings =
+  (): Promise<IChromeExtensionSettings> => {
     return new Promise((resolve) => {
       const port = Browser.runtime.connect()
       const listener = (message: any) => {
+        if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+          return
+        }
         if (message.event === 'Client_getSettingsResponse') {
           const {
             data: { settings },
@@ -109,10 +118,13 @@ export const getEzMailChromeExtensionSettings =
         }
       }
       port.onMessage.addListener(listener)
-      port.postMessage({ event: 'Client_getSettings' })
+      port.postMessage({
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'Client_getSettings',
+      })
     })
   }
-export const setEzMailChromeExtensionSettings = (settings: {
+export const setChromeExtensionSettings = (settings: {
   contextMenus: IContextMenuItem[]
 }) => {
   return new Promise((resolve) => {
@@ -127,9 +139,10 @@ export const setEzMailChromeExtensionSettings = (settings: {
       }
     }
     port.onMessage.addListener(listener)
-    getEzMailChromeExtensionSettings()
+    getChromeExtensionSettings()
       .then((oldSettings: any) => {
         port.postMessage({
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'Client_updateSettings',
           data: {
             settings: JSON.stringify({ ...oldSettings, ...settings }),
@@ -138,6 +151,7 @@ export const setEzMailChromeExtensionSettings = (settings: {
       })
       .catch(() => {
         port.postMessage({
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'Client_updateSettings',
           data: {
             settings: JSON.stringify({ ...settings }),

@@ -9,20 +9,29 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { IContextMenuItem } from '@/features/contextMenu'
-import { IEzMailChromeExtensionSettingsKey } from '@/utils'
+import {
+  CONTEXT_MENU_ICONS,
+  ContextMenuIcon,
+  IContextMenuItem,
+} from '@/features/contextMenu'
+import { IChromeExtensionSettingsKey } from '@/utils'
 import { ISetActionsType } from '@/features/shortcuts'
+import { IContextMenuIconKey } from '@/features/contextMenu/components/ContextMenuIcon'
 
 const ContextMenuEditForm: FC<{
-  settingsKey: IEzMailChromeExtensionSettingsKey
+  iconSetting?: boolean
+  settingsKey: IChromeExtensionSettingsKey
   node: IContextMenuItem
   onSave?: (newNode: IContextMenuItem) => void
   onCancel?: () => void
-}> = ({ node, onSave, onCancel, settingsKey }) => {
+}> = ({ node, onSave, onCancel, settingsKey, iconSetting }) => {
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
   )
   const [template, setTemplate] = useState('')
+  const [selectedIcon, setSelectedIcon] = useState<
+    IContextMenuIconKey | undefined
+  >()
   const [autoAskChatGPT, setAutoAskChatGPT] = useState(() => {
     return editNode.data.actions?.length === 3
   })
@@ -31,6 +40,7 @@ const ContextMenuEditForm: FC<{
     const cloneNode: IContextMenuItem = cloneDeep(node)
     setEditNode(cloneDeep(node))
     setTemplate(cloneNode.data?.actions?.[0]?.parameters?.template || '')
+    setSelectedIcon(cloneNode.data?.icon as any)
     setAutoAskChatGPT(cloneNode.data?.actions?.length === 3)
   }, [node])
   return (
@@ -63,6 +73,42 @@ const ContextMenuEditForm: FC<{
             }}
           />
         )}
+      {iconSetting && (
+        <Stack>
+          <Typography variant={'body1'}>Menu Icon</Typography>
+          <Stack
+            flexWrap={'wrap'}
+            gap={1}
+            direction={'row'}
+            alignItems={'center'}
+          >
+            {CONTEXT_MENU_ICONS.map((icon) => {
+              return (
+                <Button
+                  variant={
+                    icon === (selectedIcon as string) ? 'contained' : 'outlined'
+                  }
+                  key={icon}
+                  onClick={() => {
+                    setSelectedIcon(icon)
+                    setEditNode((prev) => {
+                      return {
+                        ...prev,
+                        data: {
+                          ...prev.data,
+                          icon,
+                        },
+                      }
+                    })
+                  }}
+                >
+                  <ContextMenuIcon icon={icon} />
+                </Button>
+              )
+            })}
+          </Stack>
+        </Stack>
+      )}
       {node.data.type === 'shortcuts' && (
         <>
           <Typography variant={'body1'}>Template</Typography>

@@ -214,7 +214,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
           </Box>
           <GmailChatBoxInput
-            error={isGmailChatBoxError}
+            error={isGmailChatBoxError && !loading}
             loading={loading}
             defaultValue={inputValue}
             onChange={setInputValue}
@@ -241,7 +241,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                   'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'
                 }
               >
-                {numberWithCommas(inputValue.length, 0)}/
+                {loading ? 0 : numberWithCommas(inputValue.length, 0)}/
                 {numberWithCommas(MAX_INPUT_LENGTH, 0)}
               </Typography>
               <Box

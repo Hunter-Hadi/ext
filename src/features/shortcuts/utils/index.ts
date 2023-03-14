@@ -1,5 +1,6 @@
-import { getEzMailAppRootElement } from '@/utils'
+import { getAppRootElement } from '@/utils'
 import { v4 } from 'uuid'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
 export const compileTemplate = (template: string, variables: any) => {
   return new Promise<{
@@ -34,10 +35,11 @@ export const compileTemplate = (template: string, variables: any) => {
       }
     }
     window.addEventListener('message', handleChildMessage)
-    getEzMailAppRootElement()
+    getAppRootElement()
       ?.querySelector<HTMLIFrameElement>('#EzMail_AI_TEMPLATE_COMPILE')
       ?.contentWindow?.postMessage(
         {
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'renderTemplate',
           data: {
             taskId,

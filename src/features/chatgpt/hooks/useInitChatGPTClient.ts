@@ -6,14 +6,20 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect } from 'react'
 import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background'
-import { EzMailBoxIsOpen, hideEzMailBox, showEzMailBox } from '@/utils'
+import { ChatBoxIsOpen, hideChatBox, showChatBox } from '@/utils'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { AppState } from '@/pages/App'
 
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)
+  const setAppState = useSetRecoilState(AppState)
   useEffect(() => {
     const port = Browser.runtime.connect()
     const listener = (msg: any) => {
       const { event, data } = msg
+      if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+        return
+      }
       switch (event as IChromeExtensionClientListenEvent) {
         case 'Client_ChatGPTStatusUpdate':
           {
@@ -33,10 +39,22 @@ const useInitChatGPTClient = () => {
           break
         case 'Client_ListenOpenChatMessageBox':
           {
-            if (EzMailBoxIsOpen()) {
-              hideEzMailBox()
+            if (ChatBoxIsOpen()) {
+              hideChatBox()
+              setAppState((prevState) => {
+                return {
+                  ...prevState,
+                  open: false,
+                }
+              })
             } else {
-              showEzMailBox()
+              showChatBox()
+              setAppState((prevState) => {
+                return {
+                  ...prevState,
+                  open: true,
+                }
+              })
             }
           }
           break
@@ -45,11 +63,18 @@ const useInitChatGPTClient = () => {
       }
     }
     const onFocus = () => {
-      port && port.postMessage({ event: 'Client_checkChatGPTStatus' })
+      port &&
+        port.postMessage({
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'Client_checkChatGPTStatus',
+        })
     }
     port.onMessage.addListener(listener)
     Browser.runtime.onMessage.addListener(listener)
-    port.postMessage({ event: 'Client_checkChatGPTStatus' })
+    port.postMessage({
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      event: 'Client_checkChatGPTStatus',
+    })
     window.addEventListener('focus', onFocus)
     return () => {
       window.removeEventListener('focus', onFocus)

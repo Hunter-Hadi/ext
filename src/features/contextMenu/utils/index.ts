@@ -1,15 +1,29 @@
-import { IContextMenuItem, IContextMenuItemWithChildren } from '../store'
-import { forEach, groupBy } from 'lodash-es'
-
-export const checkIsCanInputElement = (element: HTMLElement) => {
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+  IRangyRect,
+} from '../store'
+import forEach from 'lodash-es/forEach'
+import groupBy from 'lodash-es/groupBy'
+export const checkIsCanInputElement = (
+  element: HTMLElement,
+  defaultMaxLoop = 10,
+) => {
+  if (!element) {
+    return false
+  }
   let parentElement: HTMLElement | null = element
-  let maxLoop = 10
+  let maxLoop = defaultMaxLoop
   while (parentElement && maxLoop > 0) {
     if (
       parentElement?.tagName === 'INPUT' ||
       parentElement?.tagName === 'TEXTAREA' ||
       parentElement?.getAttribute?.('contenteditable') === 'true'
     ) {
+      const type = parentElement.getAttribute('type')
+      if (type && type !== 'text') {
+        return false
+      }
       return true
     }
     parentElement = parentElement.parentElement
@@ -47,7 +61,7 @@ interface Rect {
   top: number
   bottom: number
 }
-const isRectangleCollidingWithBoundary = (
+export const isRectangleCollidingWithBoundary = (
   rect: Rect,
   boundary: Rect,
 ): boolean => {
@@ -104,17 +118,11 @@ export const getContextMenuRenderPosition = (
   },
 ) => {
   const { offset = 16, directions } = options
-  const scrollY = window.scrollY || 0
   const boundary = {
     left: 0,
     right: window.innerWidth,
     top: 0,
     bottom: window.innerHeight,
-  }
-  console.log(highlightedRect.top, highlightedRect.left)
-  if (highlightedRect.top - scrollY > 0) {
-    highlightedRect.top -= scrollY
-    highlightedRect.bottom -= scrollY
   }
   const currentDirections = directions || ['bottom', 'top', 'right', 'left']
   const detectRects: Array<Rect & { direction: string }> = []
@@ -191,7 +199,7 @@ export const getContextMenuRenderPosition = (
         break
     }
   })
-  console.log('开始碰撞检测detectRects', detectRects)
+  console.log('开始碰撞检测detectRects', highlightedRect, detectRects)
   const canRenderContextMenuRect = detectRects.find((rect, index) => {
     console.log('检测碰撞', rect.direction, 'index', index)
     return !checkCollision(highlightedRect, rect, boundary)
@@ -207,5 +215,47 @@ export const getContextMenuRenderPosition = (
       x: offset,
       y: offset,
     }
+  }
+}
+
+export const cloneRect = (rect: IRangyRect): IRangyRect => {
+  return {
+    left: rect.left,
+    right: rect.right,
+    top: rect.top,
+    bottom: rect.bottom,
+    width: rect.width,
+    height: rect.height,
+    x: rect.x,
+    y: rect.y,
+  }
+}
+
+export const computedRectPosition = (rect: IRangyRect, rate = 0.8) => {
+  const { width, height } = rect
+  const boundary = {
+    left: 0,
+    right: window.innerWidth,
+    top: 0,
+    bottom: window.innerHeight,
+    width: window.innerWidth,
+    height: window.innerHeight,
+    x: 0,
+    y: 0,
+  }
+  if (width * height > boundary.width * boundary.height * rate) {
+    // return center position
+    return {
+      x: boundary.width / 2,
+      y: boundary.height / 2,
+      left: boundary.width / 2,
+      right: boundary.width / 2,
+      top: boundary.height / 2,
+      bottom: boundary.height / 2,
+      width: 0,
+      height: 0,
+    }
+  } else {
+    return rect
   }
 }

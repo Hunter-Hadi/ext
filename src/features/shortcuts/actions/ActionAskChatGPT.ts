@@ -12,7 +12,7 @@ export class ActionAskChatGPT extends Action {
     super(id, 'ASK_CHATGPT', parameters, autoExecute)
   }
   @templateParserDecorator()
-  @clearUserInput()
+  @clearUserInput(false)
   async execute(params: any, engine: any) {
     try {
       const { success, answer } = await engine

@@ -344,6 +344,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'Summarize',
     },
   },
   {
@@ -355,6 +356,7 @@ export default [
       editable: true,
       type: 'group',
       actions: [],
+      icon: 'Language',
     },
   },
   {
@@ -378,6 +380,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'Question',
     },
   },
   {
@@ -401,6 +404,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'Bulleted',
     },
   },
   {
@@ -539,6 +543,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'AutoFix',
     },
   },
   {
@@ -562,6 +567,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'Done',
     },
   },
   {
@@ -585,6 +591,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'ShortText',
     },
   },
   {
@@ -608,6 +615,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'LongText',
     },
   },
   {
@@ -619,6 +627,7 @@ export default [
       editable: true,
       type: 'group',
       actions: [],
+      icon: 'Voice',
     },
   },
   {
@@ -642,6 +651,7 @@ export default [
           parameters: {},
         },
       ],
+      icon: 'AutoAwesome',
     },
   },
   {

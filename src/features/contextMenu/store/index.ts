@@ -7,6 +7,7 @@ export type IContextMenuItem = {
   droppable: boolean
   text: string
   data: {
+    icon?: string
     editable: boolean
     type: 'group' | 'shortcuts'
     actions?: ISetActionsType
@@ -43,6 +44,7 @@ export const RangyState = atom<{
   lastSelectionRanges: any | null
   tempSelectionRanges: any | null
   tempSelectRangeRect: IRangyRect | null
+  currentActiveWriteableElement: HTMLElement | null
 }>({
   key: 'RangyState',
   default: {
@@ -51,5 +53,6 @@ export const RangyState = atom<{
     selectionInputAble: false,
     lastSelectionRanges: null,
     tempSelectionRanges: null,
+    currentActiveWriteableElement: null,
   },
 })

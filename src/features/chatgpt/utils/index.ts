@@ -4,6 +4,7 @@ import Browser from 'webextension-polyfill'
 import { useRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useCallback } from 'react'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
 export const pingDaemonProcess = () => {
   const port = Browser.runtime.connect()
@@ -14,6 +15,9 @@ export const pingDaemonProcess = () => {
     let isTimeout = false
     let timer: any = undefined
     const onceListener = (msg: any) => {
+      if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+        return
+      }
       if (msg.event === 'Client_ListenPong' && !isTimeout) {
         clearTimeout(timer as number)
         Browser?.runtime?.onMessage?.removeListener(onceListener)
@@ -24,14 +28,19 @@ export const pingDaemonProcess = () => {
     }
     port.onMessage.addListener(onceListener)
     Browser.runtime.onMessage.addListener(onceListener)
-    port.postMessage({ event: 'Client_checkChatGPTStatus' })
     port.postMessage({
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      event: 'Client_checkChatGPTStatus',
+    })
+    port.postMessage({
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
       event: 'Client_Ping',
       data: {},
     })
     timer = setTimeout(() => {
       isTimeout = true
       port.postMessage({
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
         event: 'Client_openChatGPTDaemonProcess',
         data: {},
       })
@@ -59,6 +68,9 @@ export const pingUntilLogin = () => {
         let maxRetry = 120
         // 等待登录成功
         const listener = async (msg: any) => {
+          if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+            return
+          }
           if (msg.event === 'Client_ChatGPTStatusUpdate') {
             console.log(msg.data, msg.data.status)
             if (msg.data.status === 'success') {
@@ -77,6 +89,7 @@ export const pingUntilLogin = () => {
         Browser.runtime.onMessage.addListener(listener)
         timer = setInterval(() => {
           port.postMessage({
+            id: CHROME_EXTENSION_POST_MESSAGE_ID,
             event: 'Client_checkChatGPTStatus',
             data: {},
           })
@@ -90,52 +103,6 @@ export const pingUntilLogin = () => {
           }
         }, 1000)
       }
-    })
-  })
-}
-export const sendAsyncTask = async (
-  event: IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
-  data: any,
-) => {
-  await pingDaemonProcess()
-  const taskId = uuidV4()
-  const port = Browser.runtime.connect()
-  if (!port) {
-    return Promise.resolve(false)
-  }
-  return new Promise<any>((resolve) => {
-    const onceListener = (msg: any) => {
-      const { event, data } = msg
-      if (event === `Client_AsyncTaskResponse_${taskId}`) {
-        console.log(data)
-        const { taskId, data: chatGPTDaemenProcessData, done, error } = data
-        console.log(
-          'chatGPTDaemenProcessData',
-          chatGPTDaemenProcessData,
-          taskId,
-        )
-        if (error) {
-          if (done) {
-            Browser?.runtime?.onMessage?.removeListener(onceListener)
-            port?.onMessage?.removeListener(onceListener)
-          }
-        }
-        if (done) {
-          Browser?.runtime?.onMessage?.removeListener(onceListener)
-          port?.onMessage?.removeListener(onceListener)
-          resolve(chatGPTDaemenProcessData || true)
-        }
-      }
-    }
-    port.onMessage.addListener(onceListener)
-    Browser.runtime.onMessage.addListener(onceListener)
-    port.postMessage({
-      event: 'Client_createAsyncTask',
-      data: {
-        taskId,
-        event,
-        data,
-      },
     })
   })
 }
@@ -166,6 +133,9 @@ export const useSendAsyncTask = () => {
             let isPromiseFulfilled = false
             const onceListener = (msg: any) => {
               const { event, data } = msg
+              if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+                return
+              }
               if (event === `Client_AsyncTaskResponse_${taskId}`) {
                 console.log(data)
                 const {
@@ -202,6 +172,7 @@ export const useSendAsyncTask = () => {
             chatGPTClient.port.onMessage.addListener(onceListener)
             Browser.runtime.onMessage.addListener(onceListener)
             chatGPTClient.port.postMessage({
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'Client_createAsyncTask',
               data: {
                 taskId,

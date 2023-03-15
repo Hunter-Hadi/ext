@@ -43,7 +43,10 @@ const parseRangySelectRangeData = (selectedRange: any, source = 'useRangy') => {
   if (startMarker && endMarker) {
     try {
       html = selectedRange.toHtml()
-      text = selectedRange.toString()
+      text =
+        window.getSelection()?.toString()?.trim() ||
+        selectedRange?.cache?.text.trim() ||
+        selectedRange.toString()
     } catch (e) {
       console.log('parseRangySelectRangeData error', e)
     }

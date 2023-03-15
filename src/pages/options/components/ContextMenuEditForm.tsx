@@ -81,10 +81,12 @@ const ContextMenuEditForm: FC<{
             gap={1}
             direction={'row'}
             alignItems={'center'}
+            sx={{ maxHeight: '60px', overflowY: 'scroll' }}
           >
             {CONTEXT_MENU_ICONS.map((icon) => {
               return (
                 <Button
+                  sx={{ minWidth: 'unset', px: 1, py: 0.5 }}
                   variant={
                     icon === (selectedIcon as string) ? 'contained' : 'outlined'
                   }

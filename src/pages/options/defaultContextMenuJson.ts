@@ -420,7 +420,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will find action items from it and output them in bullet point format. Identify only the action items that may need the reader to take action. Keep the language the same. Only reply to the bullet points of action items you find, and nothing else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, find action items from the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will find action items from it and output them in bullet point format. Identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Keep the language the same. Only reply to the bullet points of action items you find, and nothing else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, find action items from the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -428,7 +428,7 @@ export default [
           parameters: {},
         },
       ],
-      icon: 'Bulleted',
+      icon: 'ListAlt',
     },
   },
   {
@@ -699,7 +699,7 @@ export default [
           parameters: {},
         },
       ],
-      icon: 'AutoFix',
+      icon: 'Autorenew',
     },
   },
   {

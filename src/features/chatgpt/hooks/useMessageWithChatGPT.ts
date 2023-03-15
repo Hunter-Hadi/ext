@@ -41,6 +41,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           .catch()
       }
       return {
+        model: prevState.model,
         conversationId: '',
         writingMessage: null,
         loading: false,
@@ -49,9 +50,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   }
   const createConversation = async () => {
     if (currentPortInstance) {
+      console.log(conversation.model)
       const response: any = await sendAsyncTask(
         'DaemonProcess_createConversation',
-        {},
+        {
+          model: conversation.model,
+        },
       )
       if (response.conversationId) {
         console.log('create Conversation done', response.conversationId)
@@ -350,6 +354,23 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       defaultValueRef.current = defaultInputValue
     }
   }, [defaultInputValue])
+  useEffect(() => {
+    if (conversation.model) {
+      setConversation((prevState) => {
+        if (prevState.model !== conversation.model) {
+          return {
+            ...prevState,
+            model: conversation.model,
+            conversationId: '',
+          }
+        }
+        return prevState
+      })
+      setTimeout(() => {
+        resetConversation()
+      }, 1)
+    }
+  }, [conversation.model])
   return {
     sendQuestion,
     messages,

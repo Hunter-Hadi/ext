@@ -17,6 +17,7 @@ import { numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import { InboxEditState } from '@/features/gmail/store'
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
+import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -125,6 +126,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           overflowY: 'auto',
         }}
       >
+        <ChatGPTModelsSelector />
         {messages.map((message) => {
           return (
             <GmailChatBoxMessageItem

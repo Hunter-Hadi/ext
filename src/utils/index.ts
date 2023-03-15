@@ -36,6 +36,8 @@ import {
   ROOT_CONTAINER_WRAPPER_ID,
 } from '@/types'
 
+const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
     .toFixed(digits)
@@ -182,4 +184,11 @@ export const useDebounceValue = <T>(
     }
   }, [value, delay])
   return debouncedValue
+}
+
+export const getClientEnv = () => {
+  if (isEzMailApp) {
+    return 'gmail'
+  }
+  return 'normal'
 }

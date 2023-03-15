@@ -1,15 +1,15 @@
 import { useRecoilValue } from 'recoil'
-import { AppState } from '@/pages/App'
 import { useCallback } from 'react'
-import { IShortcutEngineBuiltInVariableType } from '../types'
+import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
 import {
   deepCloneGmailMessageElement,
   useCurrentMessageView,
   useInboxComposeViews,
 } from '@/features/gmail'
 import { getAppRootElement } from '@/utils'
-import { useRangy } from '@/features/contextMenu'
+import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { AppState } from '@/store'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)

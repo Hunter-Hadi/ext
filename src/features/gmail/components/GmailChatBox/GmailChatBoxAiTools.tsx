@@ -1,12 +1,12 @@
 import React, { FC, useMemo } from 'react'
 import { Button, Stack } from '@mui/material'
 import ReplyIcon from '@mui/icons-material/Reply'
-import { IGmailChatMessage } from '../GmailChatBox'
-import { useInboxComposeViews } from '../../hooks'
+import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
+import { useInboxComposeViews } from '@/features/gmail/hooks'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { hideChatBox } from '@/utils'
-import { gmailReplyBoxInsertText } from '@/features/gmail'
-import { useRangy } from '@/features/contextMenu'
+import { gmailReplyBoxInsertText } from '@/features/gmail/utils'
+import { useRangy } from '@/features/contextMenu/hooks'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 

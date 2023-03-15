@@ -1,4 +1,4 @@
-import { IAction, IActionType } from '../types'
+import { IAction, IActionType } from '@/features/shortcuts/types'
 
 class Action implements IAction {
   id: string
@@ -31,4 +31,4 @@ class Action implements IAction {
     this.status = 'complete'
   }
 }
-export { Action }
+export default Action

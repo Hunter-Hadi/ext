@@ -8,7 +8,7 @@ import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background'
 import { ChatBoxIsOpen, hideChatBox, showChatBox } from '@/utils'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
-import { AppState } from '@/pages/App'
+import { AppState } from '@/store'
 
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)

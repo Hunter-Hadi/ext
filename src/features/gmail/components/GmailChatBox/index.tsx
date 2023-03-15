@@ -15,7 +15,7 @@ import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
 import { numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
-import { InboxEditState } from '@/features/gmail'
+import { InboxEditState } from '@/features/gmail/store'
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'

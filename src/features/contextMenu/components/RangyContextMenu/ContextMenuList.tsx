@@ -2,11 +2,15 @@ import { Stack, Typography } from '@mui/material'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import {
+  useRangy,
+} from '@/features/contextMenu/hooks'
+import {
   ContextMenuIcon,
+} from '@/features/contextMenu/components/ContextMenuIcon'
+import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
-  useRangy,
-} from '@/features/contextMenu'
+} from '@/features/contextMenu/store'
 import { Item, Separator, Submenu } from 'react-contexify'
 import {
   getChromeExtensionSettings,

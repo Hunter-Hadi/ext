@@ -3,41 +3,19 @@ import './app.EZ_MAIL_AI.less'
 import './app.USE_CHAT_GPT.less'
 import { useInitInboxSdk } from '@/features/gmail'
 import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
-import {
-  useInitChatGPTClient,
-  useMessageWithChatGPT,
-} from '@/features/chatgpt/hooks'
+import { useInitChatGPTClient, useMessageWithChatGPT } from '@/features/chatgpt'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
-import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
-import { getChromeExtensionSettings, hideChatBox } from '@/utils'
-import { useInitRangy } from '@/features/contextMenu'
-import { RangyContextMenu } from '@/features/contextMenu'
-import {
-  CHROME_EXTENSION_HOMEPAGE_URL,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
-  ROOT_CONTAINER_ID,
-} from '@/types'
+import { getChromeExtensionSettings, getClientEnv, hideChatBox } from '@/utils'
+import { RangyContextMenu, useInitRangy } from '@/features/contextMenu'
+import { CHROME_EXTENSION_HOMEPAGE_URL, CHROME_EXTENSION_POST_MESSAGE_ID, ROOT_CONTAINER_ID } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import Browser from 'webextension-polyfill'
+import { AppState } from '@/store'
+
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
-const getClientEnv = () => {
-  if (isEzMailApp) {
-    return 'gmail'
-  }
-  return 'normal'
-}
-export const AppState = atom<{
-  env: 'gmail' | 'normal'
-  open: boolean
-}>({
-  key: 'AppState',
-  default: {
-    env: getClientEnv(),
-    open: false,
-  },
-})
 
 const GmailInit = () => {
   useInitInboxSdk()

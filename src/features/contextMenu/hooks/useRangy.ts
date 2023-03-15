@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { RangyCoreState, RangyState } from '../store'
+import { RangyCoreState, RangyState } from '@/features/contextMenu/store'
 import { checkIsCanInputElement } from '@/features/contextMenu/utils'
 
 const removeMarkers = () => {

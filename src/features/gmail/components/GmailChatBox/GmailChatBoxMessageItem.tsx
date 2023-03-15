@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
-import { IGmailChatMessage } from '../index'
+import { IGmailChatMessage } from '@/features/gmail/index'
 import { Alert, Stack, SxProps } from '@mui/material'
 import GmailChatBoxUserTools from './GmailChatBoxUserTools'
 import GmailChatBoxAiTools from './GmailChatBoxAiTools'

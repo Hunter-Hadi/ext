@@ -1,10 +1,10 @@
 import { Button, Paper } from '@mui/material'
 import { Menu, useContextMenu } from 'react-contexify'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
+import ContextMenuList from './ContextMenuList'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import React, { FC, useEffect } from 'react'
-import { useRangy } from '../../hooks'
+import { useRangy } from '@/features/contextMenu/hooks'
 
 import { flip, offset, shift, useFloating } from '@floating-ui/react'
 import {

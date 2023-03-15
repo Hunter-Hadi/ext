@@ -2,7 +2,7 @@ import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
   IRangyRect,
-} from '../store'
+} from '@/features/contextMenu/store'
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 export const checkIsCanInputElement = (

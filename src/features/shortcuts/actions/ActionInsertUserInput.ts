@@ -1,6 +1,6 @@
-import { IActionType } from '../types'
-import { Action } from '../core'
-import { clearUserInput, templateParserDecorator } from '../decorators'
+import { IActionType } from '@/features/shortcuts/types'
+import Action from '@/features/shortcuts/core/Action'
+import { clearUserInput, templateParserDecorator } from '@/features/shortcuts/decorators'
 
 export class ActionInsertUserInput extends Action {
   static type = 'INSERT_USER_INPUT'

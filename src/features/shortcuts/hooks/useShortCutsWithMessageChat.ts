@@ -1,9 +1,9 @@
 import { pingUntilLogin, useMessageWithChatGPT } from '@/features/chatgpt'
 import { useCallback, useRef, useState } from 'react'
-import { ShortCutsEngine } from '../core'
-import { useShortCutsParameters } from '../hooks'
+import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
+import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import { useCurrentMessageView, useInboxComposeViews } from '@/features/gmail'
-import { ISetActionsType } from '../types'
+import { ISetActionsType } from '@/features/shortcuts/types'
 import { ChatBoxIsOpen, showChatBox } from '@/utils'
 
 const shortCutsEngine = new ShortCutsEngine()

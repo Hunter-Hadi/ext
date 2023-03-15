@@ -1,6 +1,6 @@
-import { IActionType } from '../types'
-import { Action } from '../core'
-import { pushOutputToChat, templateParserDecorator } from '../decorators'
+import { IActionType } from '@/features/shortcuts/types'
+import Action from '@/features/shortcuts/core/Action'
+import { pushOutputToChat, templateParserDecorator } from '@/features/shortcuts/decorators'
 import { gmailReplyBoxInsertText } from '@/features/gmail'
 
 export class ActionGmailInsertReplyBox extends Action {

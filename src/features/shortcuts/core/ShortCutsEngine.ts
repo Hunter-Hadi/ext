@@ -2,13 +2,13 @@ import {
   IShortcutEngineVariableType,
   IShortcutEngine,
   IActionType,
-} from '../types'
+} from '@/features/shortcuts/types'
 import {
   ActionAskChatGPT,
   ActionRenderChatGPTPrompt,
   ActionGmailInsertReplyBox,
   ActionInsertUserInput,
-} from '../actions'
+} from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 
 const ActionClassMap = {
@@ -163,4 +163,4 @@ class ShortCutsEngine implements IShortcutEngine {
     return this.actions[this.stepIndex + 1] || null
   }
 }
-export { ShortCutsEngine }
+export default ShortCutsEngine

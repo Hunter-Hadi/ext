@@ -1,5 +1,5 @@
 // import { compileTemplate } from '../utils'
-import { Action } from '../core'
+import Action from '@/features/shortcuts/core/Action'
 
 function render(
   template: string,

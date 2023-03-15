@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 import * as InboxSDK from '@inboxsdk/core'
 import { ComposeView } from '@inboxsdk/core'
-import { IGmailChatMessage } from '@/features/gmail'
+import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
 
 interface IProxyInboxSdkTarget<T> {
   getInstance?: () => T

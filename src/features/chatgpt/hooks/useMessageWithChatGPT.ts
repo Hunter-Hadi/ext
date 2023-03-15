@@ -1,15 +1,15 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { ChatGPTClientState } from '../store'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect, useMemo, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
   GmailMessageChatState,
   GmailMessageChatConversationState,
-  IGmailChatMessage,
   GmailMessageChatInputState,
   InboxEditState,
-} from '../../gmail'
-import { pingDaemonProcess, useSendAsyncTask } from '../utils'
+} from '@/features/gmail/store'
+import { pingDaemonProcess, useSendAsyncTask } from '@/features/chatgpt/utils'
+import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sendAsyncTask = useSendAsyncTask()

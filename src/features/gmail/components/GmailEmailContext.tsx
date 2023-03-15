@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Stack, SxProps, TextareaAutosize, Typography } from '@mui/material'
-import { useCurrentMessageView, useInboxEditValue } from '../hooks'
+import { useCurrentMessageView, useInboxEditValue } from '@/features/gmail/hooks'
 
 const GmailEmailContext: FC<{
   sx?: SxProps

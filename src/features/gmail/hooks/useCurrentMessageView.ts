@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil'
 import { useEffect, useRef, useState } from 'react'
 import * as InboxSDK from '@inboxsdk/core'
-import { InboxEditState, InboxThreadViewState } from '../store'
-import { deepCloneGmailMessageElement } from '../utils'
-import { useMessageWithChatGPT } from '@/features/chatgpt'
+import { InboxEditState, InboxThreadViewState } from '@/features/gmail/store'
+import { deepCloneGmailMessageElement } from '@/features/gmail/utils'
+import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 
 const useCurrentMessageView = () => {
   const { resetConversation } = useMessageWithChatGPT()

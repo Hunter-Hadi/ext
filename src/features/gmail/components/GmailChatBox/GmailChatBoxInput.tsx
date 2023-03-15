@@ -2,9 +2,9 @@ import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { Box, Skeleton } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
-import { AppState } from '@/pages/App'
 import { getAppActiveElement } from '@/utils'
 import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { AppState } from '@/store'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((document.body.offsetHeight * 0.5) / 24) || 5)

@@ -11,6 +11,8 @@ import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined'
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline'
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
+import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 import { SxProps } from '@mui/material'
 export const CONTEXT_MENU_ICONS = [
   'AutoFix',
@@ -25,6 +27,8 @@ export const CONTEXT_MENU_ICONS = [
   'Bulleted',
   'More',
   'DefaultIcon',
+  'Autorenew',
+  'ListAlt',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -66,6 +70,10 @@ const ContextMenuIcon: FC<{
       return <MoreHorizIcon sx={sxMemo} />
     case 'DefaultIcon':
       return <DriveFileRenameOutlineIcon sx={sxMemo} />
+    case 'Autorenew':
+      return <AutorenewOutlinedIcon sx={sxMemo} />
+    case 'ListAlt':
+      return <ListAltOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

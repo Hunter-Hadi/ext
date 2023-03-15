@@ -16,16 +16,6 @@ export type IContextMenuItem = {
 export type IContextMenuItemWithChildren = IContextMenuItem & {
   children: IContextMenuItemWithChildren[]
 }
-export const RangyCoreState = atom<{
-  loaded: boolean
-  rangy: any | null
-}>({
-  key: 'RangyCoreState',
-  default: {
-    loaded: false,
-    rangy: null,
-  },
-})
 
 export type IRangyRect = {
   x: number
@@ -37,6 +27,17 @@ export type IRangyRect = {
   width: number
   height: number
 }
+
+export const RangyCoreState = atom<{
+  loaded: boolean
+  rangy: any | null
+}>({
+  key: 'RangyCoreState',
+  default: {
+    loaded: false,
+    rangy: null,
+  },
+})
 
 export const RangyState = atom<{
   show: boolean
@@ -54,5 +55,16 @@ export const RangyState = atom<{
     lastSelectionRanges: null,
     tempSelectionRanges: null,
     currentActiveWriteableElement: null,
+  },
+})
+
+export const FloatingDropdownMenuState = atom<{
+  open: boolean
+  rootRect: IRangyRect | null
+}>({
+  key: 'FloatingDropdownMenuState',
+  default: {
+    open: false,
+    rootRect: null,
   },
 })

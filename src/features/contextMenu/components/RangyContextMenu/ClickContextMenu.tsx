@@ -1,8 +1,5 @@
 import { Button, Paper } from '@mui/material'
-import { Menu, useContextMenu } from 'react-contexify'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import ContextMenuList from './ContextMenuList'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import React, { FC, useEffect } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
 
@@ -10,17 +7,20 @@ import { flip, offset, shift, useFloating } from '@floating-ui/react'
 import {
   cloneRect,
   computedRectPosition,
-  getContextMenuRenderPosition,
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
 import throttle from 'lodash-es/throttle'
-import { ROOT_CONTEXT_MENU_CONTAINER_ID } from '@/types'
+import {
+  FloatingDropdownMenuState,
+  IRangyRect,
+} from '@/features/contextMenu/store'
+import { useSetRecoilState } from 'recoil'
 
 const APP_NAME = process.env.APP_NAME
 const APP_ENV = process.env.APP_ENV
 const isProduction = process.env.NODE_ENV === 'production'
 const ClickContextMenuButton: FC<{
-  onClick?: (event: MouseEvent, position: { x: number; y: number }) => void
+  onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
   const {
     tempSelectionRanges,
@@ -177,14 +177,7 @@ const ClickContextMenuButton: FC<{
             const savedRangeRect = saved?.selectRange?.getBoundingClientRect?.()
             if (savedRangeRect && props.onClick) {
               props.onClick &&
-                props.onClick(
-                  event,
-                  getContextMenuRenderPosition(
-                    computedRectPosition(savedRangeRect),
-                    220,
-                    400,
-                  ),
-                )
+                props.onClick(event, computedRectPosition(savedRangeRect))
             } else if (activeElementRect && props.onClick) {
               console.log(
                 '[ContextMenu Module]: render [button] (no range)',
@@ -203,22 +196,14 @@ const ClickContextMenuButton: FC<{
                   props.onClick &&
                     props.onClick(
                       event,
-                      getContextMenuRenderPosition(
-                        computedRectPosition(cloneRect(tempSelectRangeRect)),
-                        220,
-                        400,
-                      ),
+                      computedRectPosition(cloneRect(tempSelectRangeRect)),
                     )
                 }
               } else {
                 props.onClick &&
                   props.onClick(
                     event,
-                    getContextMenuRenderPosition(
-                      computedRectPosition(cloneRect(activeElementRect)),
-                      220,
-                      400,
-                    ),
+                    computedRectPosition(cloneRect(activeElementRect)),
                   )
               }
             }
@@ -232,34 +217,18 @@ const ClickContextMenuButton: FC<{
 }
 
 const ClickContextMenu = () => {
-  const { show: showContextMenu } = useContextMenu({
-    id: ROOT_CONTEXT_MENU_CONTAINER_ID,
-  })
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   return (
     <>
       <ClickContextMenuButton
-        onClick={(event: MouseEvent, position) => {
-          console.log('[ContextMenu Module]: render [context menu]')
-          showContextMenu({
-            id: ROOT_CONTEXT_MENU_CONTAINER_ID,
-            event,
-            position,
+        onClick={(event: MouseEvent, rect) => {
+          console.log('[ContextMenu Module]: render [context menu]', rect)
+          setFloatingDropdownMenu({
+            open: true,
+            rootRect: rect,
           })
         }}
       />
-
-      <Menu
-        style={{
-          zIndex: 2147483601,
-          border: '1px solid rgb(237,237,236)',
-        }}
-        id={ROOT_CONTEXT_MENU_CONTAINER_ID}
-      >
-        <ContextMenuList
-          defaultContextMenuJson={defaultContextMenuJson}
-          settingsKey={'contextMenus'}
-        />
-      </Menu>
     </>
   )
 }

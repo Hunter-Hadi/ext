@@ -224,10 +224,10 @@ export const cloneRect = (rect: IRangyRect): IRangyRect => {
     right: rect.right,
     top: rect.top,
     bottom: rect.bottom,
-    width: rect.width,
-    height: rect.height,
-    x: rect.x,
-    y: rect.y,
+    width: rect.width || rect.right - rect.left,
+    height: rect.height || rect.bottom - rect.top,
+    x: rect.x || rect.left,
+    y: rect.y || rect.top,
   }
 }
 

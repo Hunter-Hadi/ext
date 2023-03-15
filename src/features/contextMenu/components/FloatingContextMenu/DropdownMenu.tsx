@@ -23,7 +23,6 @@ import {
   FloatingFocusManager,
 } from '@floating-ui/react'
 import { Box } from '@mui/material'
-import { ROOT_CONTEXT_MENU_ID } from '@/types'
 
 interface MenuItemProps {
   label: string
@@ -52,14 +51,21 @@ interface MenuProps {
   label: string
   nested?: boolean
   children?: React.ReactNode
+  root?: HTMLElement
 }
 
 // eslint-disable-next-line react/display-name
 export const MenuComponent = React.forwardRef<
   HTMLButtonElement,
   MenuProps & React.HTMLProps<HTMLButtonElement>
->(({ children, label, ...props }, forwardedRef) => {
-  const [isOpen, setIsOpen] = React.useState(false)
+>(({ children, label, root, ...props }, forwardedRef) => {
+  const tree = useFloatingTree()
+  const nodeId = useFloatingNodeId()
+  const parentId = useFloatingParentNodeId()
+  console.log('[Floating Module] parentId: ', parentId, nodeId)
+  const isNested = parentId != null
+
+  const [isOpen, setIsOpen] = React.useState(isNested ? false : true)
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
   const [allowHover, setAllowHover] = React.useState(false)
 
@@ -69,12 +75,6 @@ export const MenuComponent = React.forwardRef<
       React.isValidElement(child) ? child.props.label : null,
     ) as Array<string | null>,
   )
-
-  const tree = useFloatingTree()
-  const nodeId = useFloatingNodeId()
-  const parentId = useFloatingParentNodeId()
-  const isNested = parentId != null
-
   const { x, y, strategy, refs, context } = useFloating<HTMLButtonElement>({
     nodeId,
     open: isOpen,
@@ -82,7 +82,14 @@ export const MenuComponent = React.forwardRef<
     placement: isNested ? 'right-start' : 'bottom-start',
     middleware: [
       offset({ mainAxis: isNested ? 0 : 4, alignmentAxis: isNested ? -4 : 0 }),
-      flip(),
+      flip({
+        fallbackPlacements: [
+          'bottom-start',
+          'top-start',
+          'right-start',
+          'left-start',
+        ],
+      }),
       shift(),
     ],
     whileElementsMounted: autoUpdate,
@@ -181,29 +188,50 @@ export const MenuComponent = React.forwardRef<
   const referenceRef = useMergeRefs([refs.setReference, forwardedRef])
   return (
     <FloatingNode id={nodeId}>
-      <button
-        ref={referenceRef}
-        data-open={isOpen ? '' : undefined}
-        {...getReferenceProps({
-          ...props,
-          className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
-          onClick(event) {
-            event.stopPropagation()
-          },
-          ...(isNested && {
-            // Indicates this is a nested <Menu /> acting as a <MenuItem />.
-            role: 'menuitem',
-          }),
-        })}
-      >
-        {label}{' '}
-        {isNested && (
-          <span aria-hidden style={{ marginLeft: 10 }}>
-            ➔
-          </span>
-        )}
-      </button>
-      <FloatingPortal>
+      {!isNested ? (
+        <div
+          ref={referenceRef}
+          data-open={isOpen ? '' : undefined}
+          {...getReferenceProps({
+            ...props,
+            className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
+            onClick(event) {
+              event.stopPropagation()
+            },
+            ...(isNested && {
+              // Indicates this is a nested <Menu /> acting as a <MenuItem />.
+              role: 'menuitem',
+            }),
+          })}
+        >
+          我改了 {isOpen ? 'open' : 'closed'}
+        </div>
+      ) : (
+        <button
+          ref={referenceRef}
+          data-open={isOpen ? '' : undefined}
+          {...getReferenceProps({
+            ...props,
+            className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
+            onClick(event) {
+              event.stopPropagation()
+            },
+            ...(isNested && {
+              // Indicates this is a nested <Menu /> acting as a <MenuItem />.
+              role: 'menuitem',
+            }),
+          })}
+        >
+          {label}{' '}
+          {isNested && (
+            <span aria-hidden style={{ marginLeft: 10 }}>
+              ➔
+            </span>
+          )}
+        </button>
+      )}
+
+      <FloatingPortal root={root}>
         {isOpen && (
           <FloatingFocusManager
             context={context}
@@ -217,12 +245,12 @@ export const MenuComponent = React.forwardRef<
             <Box
               sx={{
                 bgcolor: 'background.paper',
-                width: 'max-content',
                 display: 'flex',
                 flexDirection: 'column',
                 borderRadius: 1,
                 boxShadow: 1,
                 p: 1,
+                width: 400,
               }}
               component={'div'}
               ref={refs.setFloating}
@@ -231,7 +259,6 @@ export const MenuComponent = React.forwardRef<
                 position: strategy,
                 top: y ?? 0,
                 left: x ?? 0,
-                width: 'max-content',
               }}
               {...getFloatingProps()}
             >
@@ -274,9 +301,6 @@ export const DropdownMenu = React.forwardRef<
   MenuProps & React.HTMLProps<HTMLButtonElement>
 >((props, ref) => {
   const parentId = useFloatingParentNodeId()
-  const nodeId = useFloatingNodeId()
-  console.log(nodeId)
-  debugger
   if (parentId === null) {
     return (
       <FloatingTree>
@@ -284,6 +308,5 @@ export const DropdownMenu = React.forwardRef<
       </FloatingTree>
     )
   }
-
   return <MenuComponent {...props} ref={ref} />
 })

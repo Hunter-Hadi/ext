@@ -124,7 +124,6 @@ const ChatGPTModelsSelector: FC = () => {
                       <Stack spacing={1} width={'160px'}>
                         <Typography
                           fontSize={'14px'}
-                          fontWeight={'bold'}
                           color={'text.primary'}
                           textAlign={'left'}
                         >
@@ -132,7 +131,6 @@ const ChatGPTModelsSelector: FC = () => {
                         </Typography>
                         <Typography
                           fontSize={'12px'}
-                          fontWeight={'bold'}
                           color={'text.secondary'}
                           textAlign={'left'}
                         >
@@ -147,7 +145,6 @@ const ChatGPTModelsSelector: FC = () => {
                                 return (
                                   <Typography
                                     fontSize={'12px'}
-                                    fontWeight={'bold'}
                                     color={'text.secondary'}
                                     textAlign={'left'}
                                     key={key}

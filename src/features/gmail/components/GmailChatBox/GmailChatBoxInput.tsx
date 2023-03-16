@@ -218,6 +218,7 @@ const GmailChatBoxInput: FC<{
         value={inputValue}
         rows={1}
         onKeyDown={(event) => {
+          event.stopPropagation()
           // detect shift enter
           if (event.key === 'Enter' && event.shiftKey) {
             console.log('shift enter')

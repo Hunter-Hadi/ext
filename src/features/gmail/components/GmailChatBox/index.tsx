@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material'
 import CachedIcon from '@mui/icons-material/Cached'
-import GmailChatBoxInput from './GmailChatBoxInput'
+import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
 import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
@@ -233,7 +233,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               </Button>
             )}
           </Box>
-          <GmailChatBoxInput
+          <AutoHeightTextarea
             error={isGmailChatBoxError && !loading}
             loading={loading}
             defaultValue={inputValue}
@@ -242,6 +242,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               onSendMessage && onSendMessage(value)
               setInputValue('')
             }}
+            childrenHeight={44.5}
           >
             <Stack
               p={1}
@@ -289,7 +290,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 </Button>
               </Box>
             </Stack>
-          </GmailChatBoxInput>
+          </AutoHeightTextarea>
         </Stack>
         <Stack
           direction={'row'}

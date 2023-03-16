@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { Box, Skeleton } from '@mui/material'
+import { Box, Skeleton, SxProps } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
 import { getAppActiveElement } from '@/utils'
@@ -43,9 +43,14 @@ const removeModalEvent = (textareaElement: HTMLTextAreaElement) => {
     focusTextareaAndAutoSize(textareaElement)
   }
 }
-const afterRemoveModalEvent = (textareaElement: HTMLTextAreaElement) => {}
+const afterRemoveModalEvent = (textareaElement: HTMLTextAreaElement) => {
+  console.log('afterRemoveModalEvent')
+}
 
-const autoSizeTextarea = (textareaElement: HTMLTextAreaElement) => {
+const autoSizeTextarea = (
+  textareaElement: HTMLTextAreaElement,
+  childrenHeight = 0,
+) => {
   const boxElement = textareaElement?.parentElement
   if (textareaElement && boxElement) {
     textareaElement.style.cssText = 'height:0px'
@@ -53,8 +58,9 @@ const autoSizeTextarea = (textareaElement: HTMLTextAreaElement) => {
       LINE_HEIGHT * MAX_LINE(),
       textareaElement.scrollHeight,
     )
-    let paddingHeight = 44.5
-    if (textareaElement.scrollHeight > LINE_HEIGHT) {
+    let paddingHeight = childrenHeight
+    console.log(textareaElement.scrollHeight)
+    if (textareaElement.scrollHeight > LINE_HEIGHT && childrenHeight > 0) {
       // padding height
       paddingHeight += 16
     }
@@ -63,8 +69,11 @@ const autoSizeTextarea = (textareaElement: HTMLTextAreaElement) => {
   }
 }
 
-const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
-  autoSizeTextarea(textareaElement)
+const focusTextareaAndAutoSize = (
+  textareaElement: HTMLTextAreaElement,
+  childrenHeight = 0,
+) => {
+  autoSizeTextarea(textareaElement, childrenHeight)
   setTimeout(() => {
     // focus input
     const value = textareaElement.value
@@ -86,13 +95,15 @@ const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
   }, 100)
 }
 
-const GmailChatBoxInput: FC<{
+const AutoHeightTextarea: FC<{
   loading?: boolean
   error?: boolean
   defaultValue?: string
   onChange?: (value: string) => void
   onEnter?: (value: string) => void
   children?: React.ReactNode
+  childrenHeight?: number
+  sx?: SxProps
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const {
@@ -101,7 +112,9 @@ const GmailChatBoxInput: FC<{
     onEnter,
     loading,
     children,
+    childrenHeight = 0,
     error = false,
+    sx,
   } = props
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
@@ -114,7 +127,7 @@ const GmailChatBoxInput: FC<{
     setTimeout(() => {
       if (textareaRef.current) {
         if (textareaRef.current?.isSameNode(getAppActiveElement())) {
-          throttleAutoSizeTextarea(textareaRef.current)
+          throttleAutoSizeTextarea(textareaRef.current, childrenHeight)
         } else {
           console.log(getAppActiveElement())
           focusTextareaAndAutoSize(textareaRef.current)
@@ -123,23 +136,18 @@ const GmailChatBoxInput: FC<{
     }, 100)
   }, [defaultValue, textareaRef])
   useEffect(() => {
-    if (appState.open) {
-      const timer = setInterval(() => {
-        if (textareaRef.current) {
-          throttleAutoSizeTextarea(textareaRef.current)
-        }
-      }, 1000)
-      return () => {
-        clearInterval(timer)
+    const timer = setInterval(() => {
+      if (textareaRef.current) {
+        throttleAutoSizeTextarea(textareaRef.current, childrenHeight)
       }
-    }
+    }, 1000)
     return () => {
-      // do nothing
+      clearInterval(timer)
     }
-  }, [appState])
+  }, [])
   useEffect(() => {
     if (appState.open && textareaRef.current) {
-      focusTextareaAndAutoSize(textareaRef.current)
+      focusTextareaAndAutoSize(textareaRef.current, childrenHeight)
     }
   }, [appState, textareaRef])
   return (
@@ -149,7 +157,7 @@ const GmailChatBoxInput: FC<{
       borderRadius={'8px'}
       border={`1px solid ${error ? 'rgb(239, 83, 80)' : '#e0e0e0'}`}
       width={'100%'}
-      minHeight={44}
+      minHeight={34}
       sx={{
         display: 'flex',
         alignItems: 'center',
@@ -203,6 +211,7 @@ const GmailChatBoxInput: FC<{
             background: 'transparent',
           },
         },
+        ...sx,
       }}
     >
       <Box component={'div'} className={'chat-box__input-skeleton'}>
@@ -233,7 +242,7 @@ const GmailChatBoxInput: FC<{
           onChange && onChange(event.currentTarget.value)
         }}
         onBlur={(event) => {
-          throttleAutoSizeTextarea(event.currentTarget)
+          throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
           afterRemoveModalEvent(event.currentTarget)
         }}
       />
@@ -241,4 +250,4 @@ const GmailChatBoxInput: FC<{
     </Box>
   )
 }
-export default GmailChatBoxInput
+export default AutoHeightTextarea

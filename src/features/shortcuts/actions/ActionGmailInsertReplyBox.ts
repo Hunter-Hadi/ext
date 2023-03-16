@@ -1,7 +1,10 @@
 import { IActionType } from '@/features/shortcuts/types'
 import Action from '@/features/shortcuts/core/Action'
-import { pushOutputToChat, templateParserDecorator } from '@/features/shortcuts/decorators'
-import { gmailReplyBoxInsertText } from '@/features/gmail'
+import {
+  pushOutputToChat,
+  templateParserDecorator,
+} from '@/features/shortcuts/decorators'
+import { gmailReplyBoxInsertText } from '@/features/gmail/utils'
 
 export class ActionGmailInsertReplyBox extends Action {
   static type = 'GMAIL_INSERT_REPLY_BOX'

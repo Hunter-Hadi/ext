@@ -1,21 +1,25 @@
 import {
+  autoUpdate,
   flip,
   FloatingPortal,
   offset,
   shift,
+  size,
+  useClick,
+  useDismiss,
   useFloating,
+  useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect } from 'react'
-import { Autocomplete, Box, Stack, TextareaAutosize } from '@mui/material'
-import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
-import TransitEnterexitIcon from '@mui/icons-material/TransitEnterexit'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { FloatingDropdownMenuState } from '@/features/contextMenu'
+import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import {
   cloneRect,
-  computedRectPosition,
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
+import AutoHeightTextarea from '@/components/AutoHeightTextarea'
+import { ContextMenuIcon } from '@/features/contextMenu'
+import TransitEnterexitIcon from '@mui/icons-material/TransitEnterexit'
 // import {
 //   DropdownMenu,
 //   DropdownMenuItem,
@@ -28,19 +32,23 @@ const FloatingContextMenu: FC<{
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const { x, y, strategy, refs } = useFloating({
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const { x, y, strategy, refs, context } = useFloating({
     open: floatingDropdownMenu.open,
     onOpenChange: (open) => {
-      setFloatingDropdownMenu((prev) => ({
-        ...prev,
-        open,
-      }))
+      setFloatingDropdownMenu((prev) => {
+        return {
+          ...prev,
+          open,
+        }
+      })
     },
     placement: 'bottom-start',
     middleware: [
       flip({
         fallbackPlacements: ['top-start', 'right', 'left'],
       }),
+      size(),
       shift({
         crossAxis: true,
         padding: 16,
@@ -78,7 +86,11 @@ const FloatingContextMenu: FC<{
         }
       }),
     ],
+    whileElementsMounted: autoUpdate,
   })
+  const click = useClick(context)
+  const dismiss = useDismiss(context, {})
+  const { getFloatingProps } = useInteractions([dismiss, click])
   useEffect(() => {
     if (floatingDropdownMenu.rootRect) {
       const rect = cloneRect(floatingDropdownMenu.rootRect)
@@ -103,101 +115,80 @@ const FloatingContextMenu: FC<{
       })
     }
   }, [floatingDropdownMenu.rootRect])
-  console.log('[ContextMenu Module]: [FloatingContextMenu]', x, y, strategy)
+  useEffect(() => {
+    if (floatingDropdownMenu.open && textareaRef.current) {
+      textareaRef.current.focus()
+    }
+  }, [floatingDropdownMenu.open])
+  const [inputValue, setInputValue] = useState('')
   return (
     <FloatingPortal root={root}>
-      <Box
+      <div
         ref={refs.setFloating}
-        component={'div'}
-        sx={{
-          border: '1px solid rgb(237,237,236)',
-          zIndex: floatingDropdownMenu.open ? 2147483600 : -1,
+        {...getFloatingProps()}
+        style={{
           position: strategy,
+          zIndex: floatingDropdownMenu.open ? 2147483601 : -1,
           opacity: floatingDropdownMenu.open ? 1 : 0,
           top: y ?? 0,
           left: x ?? 0,
           width: floatingDropdownMenu.rootRect?.width || 'max-content',
-          borderRadius: '6px',
-          background: 'white',
-          boxShadow:
-            'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
-          overflow: 'hidden',
-          isolation: 'isolate',
-          height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          '& textarea': {
-            flex: 1,
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            outline: 'none',
-            resize: 'none',
-            fontSize: '14px',
-            '&:focus': {
-              outline: 'none',
-            },
-          },
         }}
       >
-        {/*<DropdownMenu root={root} label="Edit">*/}
-        {/*  <DropdownMenuItem label="Undo" onClick={() => console.log('Undo')} />*/}
-        {/*  <DropdownMenuItem label="Redo" disabled />*/}
-        {/*  <DropdownMenuItem label="Cut" />*/}
-        {/*  <DropdownMenu root={root} label="Copy as">*/}
-        {/*    <DropdownMenuItem label="Text" />*/}
-        {/*    <DropdownMenuItem label="Video" />*/}
-        {/*    <DropdownMenu root={root} label="Image">*/}
-        {/*      <DropdownMenuItem label=".png" />*/}
-        {/*      <DropdownMenuItem label=".jpg" />*/}
-        {/*      <DropdownMenuItem label=".svg" />*/}
-        {/*      <DropdownMenuItem label=".gif" />*/}
-        {/*    </DropdownMenu>*/}
-        {/*    <DropdownMenuItem label="Audio" />*/}
-        {/*  </DropdownMenu>*/}
-        {/*  <DropdownMenu root={root} label="Share">*/}
-        {/*    <DropdownMenuItem label="Mail" />*/}
-        {/*    <DropdownMenuItem label="Instagram" />*/}
-        {/*  </DropdownMenu>*/}
-        {/*</DropdownMenu>*/}
-        <Autocomplete
-          onKeyDown={(event) => {
-            event.stopPropagation()
+        <div
+          style={{
+            border: '1px solid rgb(237,237,236)',
+            borderRadius: '6px',
+            background: 'white',
+            boxShadow:
+              'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
+            overflow: 'hidden',
+            isolation: 'isolate',
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'row',
+            gap: '8px',
+            width: '100%',
+            padding: '2px 8px',
           }}
-          onKeyUp={(event) => {
-            event.stopPropagation()
-          }}
-          freeSolo
-          fullWidth
-          placeholder={'Ask ChatGPT to edit or generate...'}
-          renderInput={(params) => (
-            <Stack
-              direction={'row'}
-              spacing={1}
-              alignItems={'center'}
-              sx={{
-                height: 36,
-                p: '2px 12px 2px 8px',
-              }}
-            >
-              <ContextMenuIcon
-                icon={'AutoAwesome'}
-                sx={{ flexShrink: 0, color: 'primary.main' }}
-              />
-              <TextareaAutosize
-                placeholder={'Ask ChatGPT to edit or generate...'}
-                autoFocus
-                maxRows={1}
-                {...params}
-              />
-              <TransitEnterexitIcon
-                sx={{ flexShrink: 0, color: 'text.secondary' }}
-              />
-            </Stack>
-          )}
-          options={[]}
-        />
-      </Box>
+        >
+          <ContextMenuIcon
+            icon={'AutoAwesome'}
+            sx={{ flexShrink: 0, color: 'primary.main' }}
+          />
+          <AutoHeightTextarea
+            sx={{ border: 'none', '& textarea': { p: 0 }, borderRadius: 0 }}
+            defaultValue={''}
+            onChange={setInputValue}
+            onEnter={(value) => {
+              setInputValue('')
+            }}
+          />
+          <TransitEnterexitIcon
+            sx={{ flexShrink: 0, color: 'text.secondary' }}
+          />
+          {/*<DropdownMenu root={root} label="Edit">*/}
+          {/*  <DropdownMenuItem label="Undo" onClick={() => console.log('Undo')} />*/}
+          {/*  <DropdownMenuItem label="Redo" disabled />*/}
+          {/*  <DropdownMenuItem label="Cut" />*/}
+          {/*  <DropdownMenu root={root} label="Copy as">*/}
+          {/*    <DropdownMenuItem label="Text" />*/}
+          {/*    <DropdownMenuItem label="Video" />*/}
+          {/*    <DropdownMenu root={root} label="Image">*/}
+          {/*      <DropdownMenuItem label=".png" />*/}
+          {/*      <DropdownMenuItem label=".jpg" />*/}
+          {/*      <DropdownMenuItem label=".svg" />*/}
+          {/*      <DropdownMenuItem label=".gif" />*/}
+          {/*    </DropdownMenu>*/}
+          {/*    <DropdownMenuItem label="Audio" />*/}
+          {/*  </DropdownMenu>*/}
+          {/*  <DropdownMenu root={root} label="Share">*/}
+          {/*    <DropdownMenuItem label="Mail" />*/}
+          {/*    <DropdownMenuItem label="Instagram" />*/}
+          {/*  </DropdownMenu>*/}
+          {/*</DropdownMenu>*/}
+        </div>
+      </div>
     </FloatingPortal>
   )
 }

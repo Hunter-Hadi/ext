@@ -1,17 +1,13 @@
 import { Stack, Typography } from '@mui/material'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import {
-  useRangy,
-} from '@/features/contextMenu/hooks'
-import {
-  ContextMenuIcon,
-} from '@/features/contextMenu/components/ContextMenuIcon'
+import { useRangy } from '@/features/contextMenu/hooks'
+import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
-import { Item, Separator, Submenu } from 'react-contexify'
+import { Item, Submenu } from 'react-contexify'
 import {
   getChromeExtensionSettings,
   IChromeExtensionSettingsKey,
@@ -19,9 +15,17 @@ import {
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import cloneDeep from 'lodash-es/cloneDeep'
+
+const ContextMenuContext = React.createContext<{
+  staticButton?: boolean
+}>({
+  staticButton: false,
+})
+
 const ShortCutsButtonItem: FC<{
   menuItem: IContextMenuItemWithChildren
 }> = ({ menuItem }) => {
+  const contextMenuContext = useContext(ContextMenuContext)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   const { lastSelectionRanges, rangy } = useRangy()
   const [running, setRunning] = useState(false)
@@ -29,7 +33,27 @@ const ShortCutsButtonItem: FC<{
     if (running) {
       const actions = menuItem.data.actions
       if (actions && actions.length > 0) {
-        const isSetSuccess = setShortCuts(actions)
+        console.log(contextMenuContext)
+        let setActions = cloneDeep(actions)
+        if (contextMenuContext.staticButton) {
+          setActions = setActions.map((action) => {
+            if (action.type === 'RENDER_CHATGPT_PROMPT') {
+              return {
+                ...action,
+                parameters: {
+                  ...action.parameters,
+                  template: (action.parameters?.template || '').replace(
+                    /\{\{HIGHLIGHTED_TEXT\}\}/g,
+                    '{{LAST_MESSAGE_OUTPUT}}',
+                  ),
+                },
+              }
+            }
+            return action
+          })
+        }
+        debugger
+        const isSetSuccess = setShortCuts(setActions)
         isSetSuccess &&
           runShortCuts()
             .then()
@@ -124,7 +148,6 @@ const ShortCutsGroup: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
           />
         )
       })}
-      <Separator />
     </Stack>
   )
 }
@@ -139,6 +162,7 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 }
 
 const ContextMenuList: FC<{
+  staticButton?: boolean
   defaultContextMenuJson: IContextMenuItem[]
   settingsKey: IChromeExtensionSettingsKey
 }> = (props) => {
@@ -209,16 +233,18 @@ const ContextMenuList: FC<{
         }
       }
     >
-      {/*{settingsKey === 'gmailToolBarContextMenu' && (*/}
-      {/*  <>*/}
-      {/*    <CustomizeButton />*/}
-      {/*    <Separator />*/}
-      {/*  </>*/}
-      {/*)}*/}
-      {sortBySettingsKey.map((menuItem, index) => {
-        return <ListItem key={index} menuItem={menuItem} />
-      })}
-      {/*{settingsKey === 'contextMenus' && <CustomizeButton />}*/}
+      <ContextMenuContext.Provider value={{ staticButton: props.staticButton }}>
+        {/*{settingsKey === 'gmailToolBarContextMenu' && (*/}
+        {/*  <>*/}
+        {/*    <CustomizeButton />*/}
+        {/*    <Separator />*/}
+        {/*  </>*/}
+        {/*)}*/}
+        {sortBySettingsKey.map((menuItem, index) => {
+          return <ListItem key={index} menuItem={menuItem} />
+        })}
+        {/*{settingsKey === 'contextMenus' && <CustomizeButton />}*/}
+      </ContextMenuContext.Provider>
     </Stack>
   )
 }

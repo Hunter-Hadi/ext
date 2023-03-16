@@ -7,7 +7,7 @@ import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
 import { AppState } from '@/store'
 
 const MAX_LINE = () => {
-  return Math.max(Math.floor((document.body.offsetHeight * 0.5) / 24) || 5)
+  return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
 }
 const LINE_HEIGHT = 24
 

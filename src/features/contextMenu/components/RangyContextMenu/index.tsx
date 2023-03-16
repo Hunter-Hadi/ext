@@ -6,14 +6,15 @@ import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import ClickContextMenu from './ClickContextMenu'
 import {
+  ROOT_CONTEXT_MENU_CONTAINER_ID,
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
   ROOT_CONTEXT_MENU_ID,
 } from '@/types'
+import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 
 const RangyContextMenu = () => {
   return (
     <Portal containerId={ROOT_CONTEXT_MENU_ID}>
-      <ClickContextMenu />
       <Paper elevation={3}>
         <Menu
           style={{
@@ -27,6 +28,20 @@ const RangyContextMenu = () => {
           />
         </Menu>
       </Paper>
+      <ClickContextMenu />
+      <Menu
+        style={{
+          zIndex: 2147483601,
+          border: '1px solid rgb(237,237,236)',
+        }}
+        id={ROOT_CONTEXT_MENU_CONTAINER_ID + 'StaticButton'}
+      >
+        <ContextMenuList
+          staticButton
+          defaultContextMenuJson={defaultContextMenuJson}
+          settingsKey={'contextMenus'}
+        />
+      </Menu>
     </Portal>
   )
 }

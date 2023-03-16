@@ -60,17 +60,18 @@ class ShortCutsEngine implements IShortcutEngine {
       this.stepIndex += 1
       if (this.status === 'notRunning' || this.status === 'running') {
         const currentAction = this.getCurrentAction()
-        console.log(
-          `ShortCutEngine.run action[${this.stepIndex}]`,
-          engine,
-          parameters,
-          currentAction,
-        )
+
         if (currentAction) {
           this.status = 'running'
           if (parameters) {
             this.setVariables(parameters)
           }
+          console.log(
+            `ShortCutEngine.run action[${this.stepIndex}]`,
+            engine,
+            this.getVariable(),
+            currentAction,
+          )
           await currentAction.execute(this.getVariable(), engine)
           if (currentAction.error) {
             this.stepIndex = Math.max(this.stepIndex - 1, -1)

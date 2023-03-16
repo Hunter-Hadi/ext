@@ -65,6 +65,7 @@ export type IChromeExtensionChatGPTDaemonProcessListenTaskEvent =
 export type IChromeExtensionChatGPTDaemonProcessSendEvent =
   | 'DaemonProcess_getChatGPTProxyInstance'
   | 'DaemonProcess_initChatGPTProxyInstance'
+  | 'DaemonProcess_updateSettings'
   | 'DaemonProcess_asyncTaskResponse'
   | 'DaemonProcess_Pong'
 // 客户端监听进程
@@ -97,6 +98,23 @@ const sendChatGPTDaemonProcessMessage = (data: any) => {
       id: CHROME_EXTENSION_POST_MESSAGE_ID,
       data,
     })
+  }
+}
+const getChromeExtensionLocalSettings = async () => {
+  const { CLIENT_SETTINGS = '{}' } = await Browser.storage.local.get(
+    'CLIENT_SETTINGS',
+  )
+  let localSettings = {}
+  const commands = (await Browser?.commands?.getAll()) || []
+  try {
+    localSettings = JSON.parse(CLIENT_SETTINGS)
+  } catch (e) {
+    console.error(e)
+    localSettings = {}
+  }
+  return {
+    ...localSettings,
+    commands,
   }
 }
 
@@ -256,25 +274,12 @@ Browser.runtime.onConnect.addListener((port) => {
       case 'Client_getSettings':
         {
           try {
-            const { CLIENT_SETTINGS = '{}' } = await Browser.storage.local.get(
-              'CLIENT_SETTINGS',
-            )
-            const commands = await Browser.commands.getAll()
-            let localSettings = {}
-            try {
-              localSettings = JSON.parse(CLIENT_SETTINGS)
-            } catch (e) {
-              console.error(e)
-              localSettings = {}
-            }
+            const settings = await getChromeExtensionLocalSettings()
             port.postMessage({
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'Client_getSettingsResponse',
               data: {
-                settings: {
-                  ...localSettings,
-                  commands,
-                },
+                settings,
               },
             })
           } catch (e) {
@@ -310,6 +315,30 @@ Browser.runtime.onConnect.addListener((port) => {
                 success: false,
               },
             })
+          }
+        }
+        break
+      case 'DaemonProcess_updateSettings':
+        {
+          try {
+            const { key, data } = msg.data
+            if (key && data) {
+              const settings: any = await getChromeExtensionLocalSettings()
+              if (key === 'models' && data?.length) {
+                if (!settings.currentModel) {
+                  settings.currentModel = data?.find(
+                    (model: any) =>
+                      (model?.title?.indexOf('Default') || 0) > -1,
+                  )?.slug
+                }
+              }
+              settings[key] = data
+              await Browser.storage.local.set({
+                CLIENT_SETTINGS: JSON.stringify(settings),
+              })
+            }
+          } catch (e) {
+            console.log(e)
           }
         }
         break

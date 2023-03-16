@@ -38,7 +38,9 @@ export interface IChatGPTConversation {
 export interface IChatGPTDaemonProcess {
   createConversation: (
     conversationId?: string,
+    selectedModel?: string,
   ) => Promise<ChatGPTConversation | undefined>
+  getAllModels: () => Promise<any[]>
   getConversation: (conversationId: string) => ChatGPTConversation | undefined
   getConversations: () => ChatGPTConversation[]
   closeConversation: (conversationId: string) => Promise<void>
@@ -233,19 +235,40 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     )
     return resp.models
   }
-  private async getModelName(token: string): Promise<string> {
+  private async getModelName(
+    token: string,
+    selectModel?: string,
+  ): Promise<string> {
     try {
       const models = await this.fetchModels(token)
-      return models[0].slug
+      if (models?.length > 0) {
+        if (selectModel) {
+          const model = models.find((m) => m.slug === selectModel)
+          if (model) {
+            return model.slug
+          }
+        }
+        return models[0].slug
+      }
+      return 'text-davinci-002-render-sha'
     } catch (err) {
       console.error(err)
-      return 'text-davinci-002-render'
+      return 'text-davinci-002-render-sha'
     }
   }
-  async createConversation(conversationId?: string) {
+  async getAllModels() {
     try {
       const token = await getChatGPTAccessToken()
-      const model = await this.getModelName(token)
+      return this.fetchModels(token)
+    } catch (e) {
+      console.error(e)
+      return []
+    }
+  }
+  async createConversation(conversationId?: string, selectedModel?: string) {
+    try {
+      const token = await getChatGPTAccessToken()
+      const model = await this.getModelName(token, selectedModel)
       const conversationInstance = new ChatGPTConversation({
         token,
         model,

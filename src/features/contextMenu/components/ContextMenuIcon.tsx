@@ -11,6 +11,17 @@ import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined'
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline'
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
+import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
+import StarBorderIcon from '@mui/icons-material/StarBorder'
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined'
+import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined'
+import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
+import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
+
 import { SxProps } from '@mui/material'
 export const CONTEXT_MENU_ICONS = [
   'AutoFix',
@@ -25,6 +36,16 @@ export const CONTEXT_MENU_ICONS = [
   'Bulleted',
   'More',
   'DefaultIcon',
+  'Autorenew',
+  'ListAlt',
+  'StarBorder',
+  'TipsAndUpdates',
+  'ThumbUpAlt',
+  'SentimentSatisfiedAlt',
+  'Campaign',
+  'WbSunny',
+  'School',
+  'SmartToy',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -66,6 +87,26 @@ const ContextMenuIcon: FC<{
       return <MoreHorizIcon sx={sxMemo} />
     case 'DefaultIcon':
       return <DriveFileRenameOutlineIcon sx={sxMemo} />
+    case 'Autorenew':
+      return <AutorenewOutlinedIcon sx={sxMemo} />
+    case 'ListAlt':
+      return <ListAltOutlinedIcon sx={sxMemo} />
+    case 'StarBorder':
+      return <StarBorderIcon sx={sxMemo} />
+    case 'TipsAndUpdates':
+      return <TipsAndUpdatesOutlinedIcon sx={sxMemo} />
+    case 'ThumbUpAlt':
+      return <ThumbUpAltOutlinedIcon sx={sxMemo} />
+    case 'SentimentSatisfiedAlt':
+      return <SentimentSatisfiedAltOutlinedIcon sx={sxMemo} />
+    case 'Campaign':
+      return <CampaignOutlinedIcon sx={sxMemo} />
+    case 'WbSunny':
+      return <WbSunnyOutlinedIcon sx={sxMemo} />
+    case 'School':
+      return <SchoolOutlinedIcon sx={sxMemo} />
+    case 'SmartToy':
+      return <SmartToyOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

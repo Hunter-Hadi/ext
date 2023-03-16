@@ -97,12 +97,26 @@ export const ChatBoxIsOpen = () => {
   return ezMailAiElement?.classList.contains('open') || false
 }
 
+export type IChatGPTModelType = {
+  slug: string
+  max_tokens: number
+  title: string
+  description: string
+  tags?: string[]
+  qualitative_properties?: {
+    reasoning: number[]
+    speed: number[]
+    conciseness: number[]
+  }
+}
 type IChromeExtensionSettings = {
   commands?: Array<{
     name: string
     shortcut: string
     description: string
   }>
+  models?: IChatGPTModelType[]
+  currentModel?: string
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
 }

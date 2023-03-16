@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
 import cloneDeep from 'lodash-es/cloneDeep'
 import {
+  Box,
   Button,
   FormControlLabel,
   Stack,
   Switch,
-  TextareaAutosize,
   TextField,
   Typography,
 } from '@mui/material'
@@ -17,7 +17,48 @@ import {
 import { IChromeExtensionSettingsKey } from '@/utils'
 import { ISetActionsType } from '@/features/shortcuts'
 import { IContextMenuIconKey } from '@/features/contextMenu/components/ContextMenuIcon'
+import AceEditor from 'react-ace'
+import 'ace-builds/src-noconflict/mode-handlebars'
+import 'ace-builds/src-noconflict/theme-monokai'
+import langTools from 'ace-builds/src-noconflict/ext-language_tools'
+const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
+const staticWordCompleter = {
+  getCompletions(
+    editor: any,
+    session: any,
+    pos: number,
+    prefix: string,
+    callback: any,
+  ) {
+    const wordList = isEzMailApp
+      ? [
+          // gmail
+          'GMAIL_MESSAGE_CONTEXT',
+          'GMAIL_DRAFT_CONTEXT',
+          // system
+          'LAST_ACTION_OUTPUT',
+          'USER_INPUT',
+          'HIGHLIGHTED_TEXT',
+        ]
+      : [
+          // system
+          'LAST_ACTION_OUTPUT',
+          'USER_INPUT',
+          'HIGHLIGHTED_TEXT',
+        ]
+    callback(null, [
+      ...wordList.map(function (word) {
+        return {
+          caption: word,
+          value: `{{${word}}}`,
+          meta: 'variable',
+        }
+      }),
+    ])
+  },
+}
+langTools.setCompleters([staticWordCompleter])
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsKey
@@ -81,10 +122,12 @@ const ContextMenuEditForm: FC<{
             gap={1}
             direction={'row'}
             alignItems={'center'}
+            sx={{ maxHeight: '60px', overflowY: 'scroll' }}
           >
             {CONTEXT_MENU_ICONS.map((icon) => {
               return (
                 <Button
+                  sx={{ minWidth: 'unset', px: 1, py: 0.5 }}
                   variant={
                     icon === (selectedIcon as string) ? 'contained' : 'outlined'
                   }
@@ -112,14 +155,35 @@ const ContextMenuEditForm: FC<{
       {node.data.type === 'shortcuts' && (
         <>
           <Typography variant={'body1'}>Template</Typography>
-          <TextareaAutosize
-            disabled={isDisabled}
-            minRows={10}
-            value={template}
-            onInput={(event) => {
-              setTemplate(event.currentTarget.value)
-            }}
-          />
+          <Box position={'relative'} width={'100%'} height={400}>
+            <AceEditor
+              width={'100%'}
+              height={'100%'}
+              value={template}
+              showPrintMargin={true}
+              showGutter={true}
+              fontSize={14}
+              mode={'handlebars'}
+              theme={'monokai'}
+              onChange={(value) => {
+                setTemplate(value)
+              }}
+              name={'editor-with-chrome-extension'}
+              editorProps={{
+                $blockScrolling: true,
+              }}
+              setOptions={{
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: false,
+                showLineNumbers: true,
+                wrap: true,
+                tabSize: 2,
+              }}
+              enableBasicAutocompletion
+              enableLiveAutocompletion
+            />
+          </Box>
         </>
       )}
       <Stack

@@ -60,6 +60,7 @@ export const GmailMessageChatConversationState = atom<{
   writingMessage: IGmailChatMessage | null
   conversationId?: ''
   lastMessageId?: string
+  model: string
   loading: boolean
 }>({
   key: 'GmailMessageChatConversationState',
@@ -67,6 +68,7 @@ export const GmailMessageChatConversationState = atom<{
     writingMessage: null,
     conversationId: '',
     lastMessageId: '',
+    model: '',
     loading: false,
   },
 })

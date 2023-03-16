@@ -1,16 +1,23 @@
 import React, { FC, useEffect, useState } from 'react'
 import './app.EZ_MAIL_AI.less'
 import './app.USE_CHAT_GPT.less'
-import { useInitInboxSdk } from '@/features/gmail'
+import {
+  GmailMessageChatConversationState,
+  useInitInboxSdk,
+} from '@/features/gmail'
 import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
 import { useInitChatGPTClient, useMessageWithChatGPT } from '@/features/chatgpt'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
 import { getChromeExtensionSettings, getClientEnv, hideChatBox } from '@/utils'
 import { RangyContextMenu, useInitRangy } from '@/features/contextMenu'
-import { CHROME_EXTENSION_HOMEPAGE_URL, CHROME_EXTENSION_POST_MESSAGE_ID, ROOT_CONTAINER_ID } from '@/types'
+import {
+  CHROME_EXTENSION_HOMEPAGE_URL,
+  CHROME_EXTENSION_POST_MESSAGE_ID,
+  ROOT_CONTAINER_ID,
+} from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import Browser from 'webextension-polyfill'
 import { AppState } from '@/store'
@@ -29,6 +36,29 @@ const RangyInit = () => {
   useInitRangy()
   return <></>
 }
+const ChatGPTStateInit = () => {
+  const updateConversation = useSetRecoilState(
+    GmailMessageChatConversationState,
+  )
+  useEffect(() => {
+    let isDestroyed = false
+    getChromeExtensionSettings().then((settings) => {
+      if (isDestroyed) return
+      if (settings?.currentModel) {
+        updateConversation((conversation) => {
+          return {
+            ...conversation,
+            model: settings.currentModel || '',
+          }
+        })
+      }
+    })
+    return () => {
+      isDestroyed = true
+    }
+  }, [])
+  return <></>
+}
 
 const AppInit = () => {
   const appState = useRecoilValue(AppState)
@@ -37,6 +67,7 @@ const AppInit = () => {
     <>
       {appState.env === 'gmail' && isEzMailApp && <GmailInit />}
       {!isEzMailApp && <RangyInit />}
+      <ChatGPTStateInit />
       <RangyContextMenu />
     </>
   )

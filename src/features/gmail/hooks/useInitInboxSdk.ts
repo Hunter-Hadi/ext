@@ -44,7 +44,7 @@ const useInitInboxSdk = () => {
   const setInboxEditState = useSetRecoilState(InboxEditState)
   const timeoutRef = useRef(false)
   useEffect(() => {
-    InboxSDK.load(2, 'sdk_test_email_fa89044171', {}).then((sdk) => {
+    InboxSDK.load(2, 'sdk_EzMailAI_bc77e07326', {}).then((sdk) => {
       setInboxSdk({
         sdk,
         loading: false,

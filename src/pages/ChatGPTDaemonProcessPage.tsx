@@ -82,6 +82,21 @@ const useDaemonProcess = () => {
             if (nextRoot) {
               nextRoot.classList.add('use-chat-gpt-ai-running')
             }
+            chatGptInstanceRef.current
+              ?.getAllModels()
+              .then((models) => {
+                if (models.length) {
+                  port.postMessage({
+                    id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                    event: 'DaemonProcess_updateSettings',
+                    data: {
+                      key: 'models',
+                      data: models,
+                    },
+                  })
+                }
+              })
+              .catch()
             port.postMessage({
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'DaemonProcess_initChatGPTProxyInstance',
@@ -128,8 +143,12 @@ const useDaemonProcess = () => {
             switch (asyncEventName) {
               case 'DaemonProcess_createConversation':
                 {
+                  const { model } = asyncEventData
                   const conversation =
-                    await chatGptInstanceRef.current?.createConversation()
+                    await chatGptInstanceRef.current?.createConversation(
+                      '',
+                      model,
+                    )
                   console.log(
                     'DaemonProcess_createConversation created',
                     conversation,

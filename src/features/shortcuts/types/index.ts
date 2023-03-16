@@ -1,12 +1,15 @@
-export type IShortcutEngineBuiltInVariableType =
+export const SHORTCUT_ENGINE_BUILD_IN_VARIABLES = [
   // gmail
-  | 'GMAIL_MESSAGE_CONTEXT'
-  | 'GMAIL_DRAFT_CONTEXT'
+  'GMAIL_MESSAGE_CONTEXT',
+  'GMAIL_DRAFT_CONTEXT',
   // system
-  | 'LAST_ACTION_OUTPUT'
-  | 'USER_INPUT'
-  | 'HIGHLIGHTED_TEXT'
-  | 'HIGHLIGHTED_HTML'
+  'LAST_ACTION_OUTPUT',
+  'USER_INPUT',
+  'HIGHLIGHTED_TEXT',
+  'HIGHLIGHTED_HTML',
+] as const
+export type IShortcutEngineBuiltInVariableType =
+  (typeof SHORTCUT_ENGINE_BUILD_IN_VARIABLES)[number]
 export type IShortcutEngineVariableType =
   | IShortcutEngineBuiltInVariableType
   | string

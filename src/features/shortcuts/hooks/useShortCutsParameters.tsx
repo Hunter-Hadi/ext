@@ -6,6 +6,7 @@ import {
   useCurrentMessageView,
   useInboxComposeViews,
 } from '@/features/gmail'
+import { GmailMessageChatState } from '@/features/gmail/store'
 import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
@@ -16,6 +17,7 @@ const useShortCutsParameters = () => {
   const { currentComposeView } = useInboxComposeViews()
   const { lastSelectionRanges, parseRangySelectRangeData, rangy } = useRangy()
   const { messageViewText, currentMessageId } = useCurrentMessageView()
+  const chatBoxMessages = useRecoilValue(GmailMessageChatState)
   return useCallback(() => {
     console.log(
       'init default input value useShortCutsParameters messageViewText',
@@ -75,6 +77,8 @@ const useShortCutsParameters = () => {
         getAppRootElement()?.querySelector<HTMLTextAreaElement>(
           `#${ROOT_CHAT_BOX_INPUT_ID}`,
         )?.value || '',
+      LAST_MESSAGE_OUTPUT:
+        chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
     }
     const parameters: Array<{
       key: string
@@ -104,6 +108,7 @@ const useShortCutsParameters = () => {
     currentMessageId,
     lastSelectionRanges,
     rangy,
+    chatBoxMessages,
   ])
 }
 export { useShortCutsParameters }

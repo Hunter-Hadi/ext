@@ -450,7 +450,7 @@ Browser.management.getAll()
 Browser.storage.onChanged.addListener(() => {
   console.log('storage changed')
 })
-
+Browser.scripting.getRegisteredContentScripts()
 Browser.runtime.onInstalled.addListener(async (object) => {
   if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     await Browser.tabs.create({

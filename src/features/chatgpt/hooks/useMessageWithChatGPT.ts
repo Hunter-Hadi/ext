@@ -356,19 +356,22 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   }, [defaultInputValue])
   useEffect(() => {
     if (conversation.model) {
+      const resetMessage = () => {
+        setMessages([])
+      }
       setConversation((prevState) => {
         if (prevState.model !== conversation.model) {
+          resetMessage()
           return {
-            ...prevState,
             model: conversation.model,
+            lastMessageId: '',
+            writingMessage: null,
             conversationId: '',
+            loading: false,
           }
         }
         return prevState
       })
-      setTimeout(() => {
-        resetConversation()
-      }, 1)
     }
   }, [conversation.model])
   return {

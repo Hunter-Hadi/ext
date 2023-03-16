@@ -15,9 +15,13 @@ import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
 import { numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
-import { InboxEditState } from '@/features/gmail/store'
+import {
+  GmailMessageChatConversationState,
+  InboxEditState,
+} from '@/features/gmail/store'
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
+import { StaticUseChatGPTButtonContextMenu } from '@/features/contextMenu'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -26,7 +30,9 @@ export interface IGmailChatMessage {
   status?: 'error' | 'success'
 }
 
-const MAX_INPUT_LENGTH = 10000
+const MAX_NORMAL_INPUT_LENGTH = 10000
+const MAX_GPT4_INPUT_LENGTH = 80000
+const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 interface IGmailChatBoxProps {
   sx?: SxProps
@@ -68,12 +74,18 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onRetry,
     loading,
   } = props
+  const conversation = useRecoilValue(GmailMessageChatConversationState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
+  const currentMaxInputLength = useMemo(() => {
+    return conversation.model === 'gpt-4'
+      ? MAX_GPT4_INPUT_LENGTH
+      : MAX_NORMAL_INPUT_LENGTH
+  }, [conversation.model])
   const isGmailChatBoxError = useMemo(() => {
-    return inputValue.length > MAX_INPUT_LENGTH
-  }, [inputValue])
+    return inputValue.length > currentMaxInputLength
+  }, [inputValue, currentMaxInputLength])
   useEffect(() => {
     const timer = setTimeout(() => {
       if (stackRef.current) {
@@ -181,20 +193,31 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             justifyContent={'center'}
             gap={1}
           >
-            {!loading && reGenerateAble && messages.length > 0 && (
-              <Button
-                sx={{ mb: 1 }}
-                disableElevation
-                startIcon={<CachedIcon />}
-                variant={'outlined'}
-                disabled={loading}
-                onClick={() => {
-                  onReGenerate && onReGenerate()
-                  setInputValue('')
-                }}
-              >
-                Regenerate
-              </Button>
+            {!loading && messages.length > 0 && (
+              <>
+                {reGenerateAble && (
+                  <Button
+                    sx={{ mb: 1 }}
+                    disableElevation
+                    startIcon={<CachedIcon />}
+                    variant={'outlined'}
+                    disabled={loading}
+                    onClick={() => {
+                      onReGenerate && onReGenerate()
+                      setInputValue('')
+                    }}
+                  >
+                    Regenerate
+                  </Button>
+                )}
+                {!isEzMailApp && (
+                  <StaticUseChatGPTButtonContextMenu
+                    sx={{ mb: 1 }}
+                    disableElevation
+                    variant={'outlined'}
+                  />
+                )}
+              </>
             )}
             {loading && (
               <Button
@@ -239,7 +262,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 }
               >
                 {loading ? 0 : numberWithCommas(inputValue.length, 0)}/
-                {numberWithCommas(MAX_INPUT_LENGTH, 0)}
+                {numberWithCommas(currentMaxInputLength, 0)}
               </Typography>
               <Box
                 component={'div'}

@@ -14,7 +14,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into English language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into English language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -37,7 +37,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Korean language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Korean language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -60,7 +60,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Chinese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Chinese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -83,7 +83,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Japanese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Japanese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -106,7 +106,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Spanish language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Spanish language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -129,7 +129,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Russian language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Russian language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -152,7 +152,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into French language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into French language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -175,7 +175,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Portuguese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Portuguese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -198,7 +198,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into German language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into German language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -221,7 +221,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Italian language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Italian language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -244,7 +244,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Dutch language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Dutch language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -267,7 +267,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Indonesian language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Indonesian language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -290,7 +290,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Filipino language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Filipino language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -313,7 +313,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Vietnamese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, re-write the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              'Ignore all previous instructions.\n\nI will give you text content, you will rewrite it and translate the text into Vietnamese language. Keep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only reply to the re-written text, and do not write anything else. Do not write explanations. Do not echo my prompt. Do not echo the text I give you. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.\n\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -351,7 +351,7 @@ export default [
     id: '79ce6a91-7bda-4175-b2f9-7f2403fd8dcc',
     parent: '80e6d17b-2cf5-456b-944b-5f645f0e12de',
     droppable: true,
-    text: 'Key takeaways',
+    text: 'List key takeaways',
     data: {
       editable: true,
       type: 'shortcuts',

@@ -52,7 +52,6 @@ const ShortCutsButtonItem: FC<{
             return action
           })
         }
-        debugger
         const isSetSuccess = setShortCuts(setActions)
         isSetSuccess &&
           runShortCuts()

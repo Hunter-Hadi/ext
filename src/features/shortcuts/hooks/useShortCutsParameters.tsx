@@ -2,10 +2,10 @@ import { useRecoilValue } from 'recoil'
 import { useCallback } from 'react'
 import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
 import {
-  deepCloneGmailMessageElement,
   useCurrentMessageView,
   useInboxComposeViews,
-} from '@/features/gmail'
+} from '@/features/gmail/hooks'
+import { deepCloneGmailMessageElement } from '@/features/gmail/utils'
 import { GmailMessageChatState } from '@/features/gmail/store'
 import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'

@@ -1,6 +1,9 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
-import { GmailMessageChatConversationState } from '@/features/gmail/store'
+import {
+  GmailMessageChatConversationState,
+  GmailMessageChatState,
+} from '@/features/gmail/store'
 import {
   getChromeExtensionSettings,
   IChatGPTModelType,
@@ -24,6 +27,9 @@ const ChatGPTModelsSelector: FC = () => {
   )
   const [models, setModels] = React.useState<IChatGPTModelType[]>([])
   const [currentModel, setCurrentModel] = React.useState<string>('')
+  const setConversation = useSetRecoilState(GmailMessageChatConversationState)
+  const setMessages = useSetRecoilState(GmailMessageChatState)
+  const prevModel = useRef<string>('')
   useEffect(() => {
     let isDestroyed = false
     getChromeExtensionSettings().then((settings) => {
@@ -45,6 +51,20 @@ const ChatGPTModelsSelector: FC = () => {
       isDestroyed = true
     }
   }, [])
+  useEffect(() => {
+    if (prevModel.current !== undefined && prevModel.current !== currentModel) {
+      console.log('Value changed from', prevModel.current, 'to', currentModel)
+      setConversation({
+        model: currentModel,
+        lastMessageId: '',
+        writingMessage: null,
+        conversationId: '',
+        loading: false,
+      })
+      setMessages([])
+    }
+    prevModel.current = currentModel
+  }, [currentModel])
   return (
     <>
       {models.length > 1 && (
@@ -53,6 +73,12 @@ const ChatGPTModelsSelector: FC = () => {
             <span style={{ fontSize: '16px' }}>Model</span>
           </InputLabel>
           <Select
+            MenuProps={{
+              elevation: 0,
+              sx: {
+                border: `1px solid rgba(0, 0, 0, 0.23)`,
+              },
+            }}
             labelId={'ChatGPTModelsSelectorLabel'}
             label={'Model'}
             value={currentModel}
@@ -174,7 +200,6 @@ const ChatGPTModelsSelector: FC = () => {
                       noWrap
                       sx={{ padding: '6px 16px' }}
                       fontSize={'14px'}
-                      fontWeight={'bold'}
                       color={'text.primary'}
                     >
                       {model?.title}

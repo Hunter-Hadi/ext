@@ -2,7 +2,7 @@
   "name": "Use ChatGPT - Rephrase or summarize any text",
   "version": "0.0.1",
   "short_name": "Use ChatGPT",
-  "description": "Your ChatGPT copilot on Chrome to write, rephrase, improve, summarize, translate, or clarify any text on any website.",
+  "description": "Your ChatGPT and GPT-4 copilot on Chrome to write, rephrase, summarize, translate, or explain any text on any website.",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.ts"

@@ -354,25 +354,28 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       defaultValueRef.current = defaultInputValue
     }
   }, [defaultInputValue])
+  const prevModel = useRef<string>('')
   useEffect(() => {
-    if (conversation.model) {
-      const resetMessage = () => {
-        setMessages([])
-      }
-      setConversation((prevState) => {
-        if (prevState.model !== conversation.model) {
-          resetMessage()
-          return {
-            model: conversation.model,
-            lastMessageId: '',
-            writingMessage: null,
-            conversationId: '',
-            loading: false,
-          }
-        }
-        return prevState
+    if (
+      prevModel.current !== undefined &&
+      prevModel.current !== conversation.model
+    ) {
+      console.log(
+        'Value changed from',
+        prevModel.current,
+        'to',
+        conversation.model,
+      )
+      setConversation({
+        model: conversation.model,
+        lastMessageId: '',
+        writingMessage: null,
+        conversationId: '',
+        loading: false,
       })
+      setMessages([])
     }
+    prevModel.current = conversation.model
   }, [conversation.model])
   return {
     sendQuestion,

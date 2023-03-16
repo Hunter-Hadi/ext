@@ -123,6 +123,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         flex={1}
         height={0}
         sx={{
+          textAlign: 'left',
           overflowY: 'auto',
         }}
       >

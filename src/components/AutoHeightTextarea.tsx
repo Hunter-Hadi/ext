@@ -195,6 +195,8 @@ const AutoHeightTextarea: FC<{
           fontSize: '16px',
           minHeight: LINE_HEIGHT + 'px',
           lineHeight: LINE_HEIGHT + 'px',
+          background: 'transparent!important',
+          borderColor: 'transparent!important',
           margin: '0!important',
           border: '0!important',
           outline: '0!important',
@@ -248,6 +250,9 @@ const AutoHeightTextarea: FC<{
         onBlur={(event) => {
           throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
           afterRemoveModalEvent(event.currentTarget)
+        }}
+        onKeyUp={(event) => {
+          event.stopPropagation()
         }}
       />
       {children}

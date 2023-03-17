@@ -1,6 +1,9 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
-import { GmailMessageChatConversationState } from '@/features/gmail/store'
+import {
+  GmailMessageChatConversationState,
+  GmailMessageChatState,
+} from '@/features/gmail/store'
 import {
   getChromeExtensionSettings,
   IChatGPTModelType,
@@ -17,6 +20,21 @@ import {
   Typography,
 } from '@mui/material'
 import uniqBy from 'lodash-es/uniqBy'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+
+const ArrowDropDownIconCustom = () => {
+  return (
+    <ArrowDropDownIcon
+      sx={{
+        color: 'rgba(0, 0, 0, 0.54)',
+        fontSize: '16px',
+        position: 'absolute',
+        right: '8px',
+        top: 'calc(50% - 8px)',
+      }}
+    />
+  )
+}
 
 const ChatGPTModelsSelector: FC = () => {
   const updateConversation = useSetRecoilState(
@@ -24,6 +42,9 @@ const ChatGPTModelsSelector: FC = () => {
   )
   const [models, setModels] = React.useState<IChatGPTModelType[]>([])
   const [currentModel, setCurrentModel] = React.useState<string>('')
+  const setConversation = useSetRecoilState(GmailMessageChatConversationState)
+  const setMessages = useSetRecoilState(GmailMessageChatState)
+  const prevModel = useRef<string>('')
   useEffect(() => {
     let isDestroyed = false
     getChromeExtensionSettings().then((settings) => {
@@ -45,14 +66,39 @@ const ChatGPTModelsSelector: FC = () => {
       isDestroyed = true
     }
   }, [])
+  useEffect(() => {
+    if (prevModel.current !== undefined && prevModel.current !== currentModel) {
+      console.log('Value changed from', prevModel.current, 'to', currentModel)
+      setConversation({
+        model: currentModel,
+        lastMessageId: '',
+        writingMessage: null,
+        conversationId: '',
+        loading: false,
+      })
+      setMessages([])
+    }
+    prevModel.current = currentModel
+  }, [currentModel])
   return (
     <>
       {models.length > 1 && (
         <FormControl size="small" sx={{ ml: 1, mt: 2, height: 40 }}>
-          <InputLabel id={'ChatGPTModelsSelectorLabel'}>
+          <InputLabel
+            sx={{ fontSize: '16px' }}
+            id={'ChatGPTModelsSelectorLabel'}
+          >
             <span style={{ fontSize: '16px' }}>Model</span>
           </InputLabel>
           <Select
+            MenuProps={{
+              elevation: 0,
+              sx: {
+                border: `1px solid rgba(0, 0, 0, 0.23)`,
+              },
+            }}
+            sx={{ fontSize: '14px' }}
+            IconComponent={ArrowDropDownIconCustom}
             labelId={'ChatGPTModelsSelectorLabel'}
             label={'Model'}
             value={currentModel}
@@ -98,7 +144,6 @@ const ChatGPTModelsSelector: FC = () => {
                       <Stack spacing={1} width={'160px'}>
                         <Typography
                           fontSize={'14px'}
-                          fontWeight={'bold'}
                           color={'text.primary'}
                           textAlign={'left'}
                         >
@@ -106,7 +151,6 @@ const ChatGPTModelsSelector: FC = () => {
                         </Typography>
                         <Typography
                           fontSize={'12px'}
-                          fontWeight={'bold'}
                           color={'text.secondary'}
                           textAlign={'left'}
                         >
@@ -121,7 +165,6 @@ const ChatGPTModelsSelector: FC = () => {
                                 return (
                                   <Typography
                                     fontSize={'12px'}
-                                    fontWeight={'bold'}
                                     color={'text.secondary'}
                                     textAlign={'left'}
                                     key={key}
@@ -170,11 +213,11 @@ const ChatGPTModelsSelector: FC = () => {
                     }
                   >
                     <Typography
+                      textAlign={'left'}
                       width={160}
                       noWrap
                       sx={{ padding: '6px 16px' }}
                       fontSize={'14px'}
-                      fontWeight={'bold'}
                       color={'text.primary'}
                     >
                       {model?.title}

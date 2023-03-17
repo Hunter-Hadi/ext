@@ -229,7 +229,7 @@ const App: FC = () => {
                 hideChatBox()
               }}
             >
-              <CloseIcon />
+              <CloseIcon sx={{ fontSize: '24px' }} />
             </IconButton>
           </Stack>
           <Stack

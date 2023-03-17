@@ -41,8 +41,8 @@ const GmailChatBoxMessageItem: FC<{
       return {
         flexDirection: 'row',
         justifyContent: 'end',
-        bgcolor: 'rgb(13,121,248)!important',
-        color: 'rgb(230,255,255)!important',
+        bgcolor: '#F1E2FD!important',
+        color: 'rgba(0,0,0,0.87)!important',
         maxWidth: '80%',
         width: 'auto',
         borderRadius: '8px',

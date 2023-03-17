@@ -20,6 +20,21 @@ import {
   Typography,
 } from '@mui/material'
 import uniqBy from 'lodash-es/uniqBy'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+
+const ArrowDropDownIconCustom = () => {
+  return (
+    <ArrowDropDownIcon
+      sx={{
+        color: 'rgba(0, 0, 0, 0.54)',
+        fontSize: '16px',
+        position: 'absolute',
+        right: '8px',
+        top: 'calc(50% - 8px)',
+      }}
+    />
+  )
+}
 
 const ChatGPTModelsSelector: FC = () => {
   const updateConversation = useSetRecoilState(
@@ -69,7 +84,10 @@ const ChatGPTModelsSelector: FC = () => {
     <>
       {models.length > 1 && (
         <FormControl size="small" sx={{ ml: 1, mt: 2, height: 40 }}>
-          <InputLabel id={'ChatGPTModelsSelectorLabel'}>
+          <InputLabel
+            sx={{ fontSize: '16px' }}
+            id={'ChatGPTModelsSelectorLabel'}
+          >
             <span style={{ fontSize: '16px' }}>Model</span>
           </InputLabel>
           <Select
@@ -79,6 +97,8 @@ const ChatGPTModelsSelector: FC = () => {
                 border: `1px solid rgba(0, 0, 0, 0.23)`,
               },
             }}
+            sx={{ fontSize: '14px' }}
+            IconComponent={ArrowDropDownIconCustom}
             labelId={'ChatGPTModelsSelectorLabel'}
             label={'Model'}
             value={currentModel}
@@ -193,6 +213,7 @@ const ChatGPTModelsSelector: FC = () => {
                     }
                   >
                     <Typography
+                      textAlign={'left'}
                       width={160}
                       noWrap
                       sx={{ padding: '6px 16px' }}

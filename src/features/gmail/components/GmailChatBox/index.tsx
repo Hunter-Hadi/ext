@@ -195,6 +195,13 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           >
             {!loading && messages.length > 0 && (
               <>
+                {!isEzMailApp && (
+                  <StaticUseChatGPTButtonContextMenu
+                    sx={{ mb: 1 }}
+                    disableElevation
+                    variant={'outlined'}
+                  />
+                )}
                 {reGenerateAble && (
                   <Button
                     sx={{ mb: 1 }}
@@ -209,13 +216,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                   >
                     Regenerate
                   </Button>
-                )}
-                {!isEzMailApp && (
-                  <StaticUseChatGPTButtonContextMenu
-                    sx={{ mb: 1 }}
-                    disableElevation
-                    variant={'outlined'}
-                  />
                 )}
               </>
             )}
@@ -285,7 +285,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     setInputValue('')
                   }}
                 >
-                  Generate
+                  {loading ? 'Generating' : 'Generate'}
                 </Button>
               </Box>
             </Stack>

@@ -3,8 +3,8 @@ import { Box, Skeleton, SxProps } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
 import { getAppActiveElement } from '@/utils'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
 import { AppState } from '@/store'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -53,14 +53,13 @@ const autoSizeTextarea = (
 ) => {
   const boxElement = textareaElement?.parentElement
   if (textareaElement && boxElement) {
+    const scrollHeight = textareaElement.value
+      ? textareaElement.scrollHeight
+      : LINE_HEIGHT
     textareaElement.style.cssText = 'height:0px'
-    const height = Math.min(
-      LINE_HEIGHT * MAX_LINE(),
-      textareaElement.scrollHeight,
-    )
+    const height = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
     let paddingHeight = childrenHeight
-    console.log(textareaElement.scrollHeight)
-    if (textareaElement.scrollHeight > LINE_HEIGHT && childrenHeight > 0) {
+    if (scrollHeight > LINE_HEIGHT && childrenHeight > 0) {
       // padding height
       paddingHeight += 16
     }
@@ -101,19 +100,27 @@ const AutoHeightTextarea: FC<{
   defaultValue?: string
   onChange?: (value: string) => void
   onEnter?: (value: string) => void
+  onKeydown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
   children?: React.ReactNode
   childrenHeight?: number
   sx?: SxProps
+  InputId?: string
+  stopPropagation?: boolean
+  placeholder?: string
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const {
     defaultValue,
     onChange,
     onEnter,
+    onKeydown,
     loading,
     children,
     childrenHeight = 0,
     error = false,
+    InputId = ROOT_CHAT_BOX_INPUT_ID,
+    stopPropagation = true,
+    placeholder = 'Ask ChatGPT...',
     sx,
   } = props
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
@@ -220,17 +227,26 @@ const AutoHeightTextarea: FC<{
         <Skeleton height={LINE_HEIGHT} />
       </Box>
       <textarea
-        id={ROOT_CHAT_BOX_INPUT_ID}
-        placeholder={'Ask ChatGPT...'}
+        id={InputId}
+        placeholder={placeholder}
         disabled={loading}
         ref={textareaRef}
         value={inputValue}
         rows={1}
         onKeyUp={(event) => {
-          event.stopPropagation()
+          if (stopPropagation) {
+            event.stopPropagation()
+          }
         }}
         onKeyDown={(event) => {
-          event.stopPropagation()
+          debugger
+          console.log(
+            'onKeyDown!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!123',
+            event.key,
+          )
+          if (stopPropagation) {
+            // event.stopPropagation()
+          }
           // detect shift enter
           if (event.key === 'Enter' && event.shiftKey) {
             console.log('shift enter')
@@ -238,12 +254,29 @@ const AutoHeightTextarea: FC<{
             onEnter && onEnter(event.currentTarget.value)
             setInputValue('')
             event.preventDefault()
+          } else if (event.key === ' ') {
+            setInputValue(event.currentTarget.value + ' ')
+            onChange && onChange(event.currentTarget.value + ' ')
+            event.preventDefault()
+          } else if (event.key === 'Tab') {
+            setInputValue(event.currentTarget.value + '  ')
+            onChange && onChange(event.currentTarget.value + '  ')
+            event.preventDefault()
           }
+          // onKeydown && onKeydown(event)
+        }}
+        onBeforeInput={(event) => {
+          debugger
         }}
         onClick={(event) => {
           removeModalEvent(event.currentTarget)
         }}
         onInput={(event) => {
+          debugger
+          console.log(
+            'onInput!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+            event.currentTarget.value,
+          )
           setInputValue(event.currentTarget.value)
           onChange && onChange(event.currentTarget.value)
         }}
@@ -251,12 +284,10 @@ const AutoHeightTextarea: FC<{
           throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
           afterRemoveModalEvent(event.currentTarget)
         }}
-        onKeyUp={(event) => {
-          event.stopPropagation()
-        }}
       />
       {children}
     </Box>
   )
 }
+
 export default AutoHeightTextarea

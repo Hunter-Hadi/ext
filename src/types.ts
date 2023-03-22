@@ -4,6 +4,7 @@ export const ROOT_CONTAINER_ID = `${APP_ROOT_ID}`
 export const ROOT_DAEMON_PROCESS_ID = `${APP_ROOT_ID}_DaemonProcess`
 export const ROOT_CONTAINER_WRAPPER_ID = `${APP_ROOT_ID}_Wrapper`
 export const ROOT_CHAT_BOX_INPUT_ID = `${APP_ROOT_ID}_ChatBox_Input`
+export const ROOT_FLOATING_INPUT_ID = `${APP_ROOT_ID}_Floating_Input`
 
 // context menu
 export const ROOT_CONTEXT_MENU_ID = `${APP_ROOT_ID}_Context_Menu`

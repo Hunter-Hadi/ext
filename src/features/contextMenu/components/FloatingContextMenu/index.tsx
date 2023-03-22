@@ -10,7 +10,7 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import {
@@ -18,12 +18,15 @@ import {
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-import { ContextMenuIcon } from '@/features/contextMenu'
-import TransitEnterexitIcon from '@mui/icons-material/TransitEnterexit'
-// import {
-//   DropdownMenu,
-//   DropdownMenuItem,
-// } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
+import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
+import { IconButton } from '@mui/material'
+import { ROOT_FLOATING_INPUT_ID } from '@/types'
+import { getAppContextMenuElement } from '@/utils'
+import FloatingContextMenuList, {
+  useFloatingContextMenuList,
+} from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 
 const FloatingContextMenu: FC<{
   root: any
@@ -32,7 +35,6 @@ const FloatingContextMenu: FC<{
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const textareaRef = useRef<HTMLTextAreaElement>(null)
   const { x, y, strategy, refs, context } = useFloating({
     open: floatingDropdownMenu.open,
     onOpenChange: (open) => {
@@ -91,6 +93,13 @@ const FloatingContextMenu: FC<{
   const click = useClick(context)
   const dismiss = useDismiss(context, {})
   const { getFloatingProps } = useInteractions([dismiss, click])
+  const [inputValue, setInputValue] = useState('')
+  const haveDraft = inputValue.length > 0
+  const contextMenuList = useFloatingContextMenuList(
+    'contextMenus',
+    defaultContextMenuJson,
+    inputValue,
+  )
   useEffect(() => {
     if (floatingDropdownMenu.rootRect) {
       const rect = cloneRect(floatingDropdownMenu.rootRect)
@@ -116,11 +125,42 @@ const FloatingContextMenu: FC<{
     }
   }, [floatingDropdownMenu.rootRect])
   useEffect(() => {
-    if (floatingDropdownMenu.open && textareaRef.current) {
-      textareaRef.current.focus()
+    // const textarea = document.getElementById(ROOT_FLOATING_INPUT_ID)
+    // debugger
+    if (floatingDropdownMenu.open) {
+      const textareaEl = getAppContextMenuElement()?.querySelector(
+        `#${ROOT_FLOATING_INPUT_ID}`,
+      ) as HTMLTextAreaElement
+      if (textareaEl) {
+        setTimeout(() => {
+          textareaEl?.focus()
+        }, 1)
+      }
     }
   }, [floatingDropdownMenu.open])
-  const [inputValue, setInputValue] = useState('')
+  const focusInput = (event: KeyboardEvent) => {
+    if (floatingDropdownMenu.open) {
+      const textareaEl = getAppContextMenuElement()?.querySelector(
+        `#${ROOT_FLOATING_INPUT_ID}`,
+      ) as HTMLTextAreaElement
+      if (textareaEl) {
+        textareaEl?.focus()
+        setTimeout(() => {
+          textareaEl?.focus()
+          // textareaEl?.dispatchEvent(
+          //   new KeyboardEvent('keydown', {
+          //     key: event.key,
+          //     code: event.code,
+          //     shiftKey: event.shiftKey,
+          //     ctrlKey: event.ctrlKey,
+          //     altKey: event.altKey,
+          //     metaKey: event.metaKey,
+          //   }),
+          // )
+        }, 1)
+      }
+    }
+  }
   return (
     <FloatingPortal root={root}>
       <div
@@ -134,63 +174,90 @@ const FloatingContextMenu: FC<{
           left: x ?? 0,
           width: floatingDropdownMenu.rootRect?.width || 'max-content',
         }}
+        onKeyDown={(event) => {
+          event.stopPropagation()
+          // event.preventDefault()
+          if (event.key.indexOf('Arrow') === -1) {
+            focusInput(event as any)
+          }
+        }}
       >
-        <div
-          style={{
-            border: '1px solid rgb(237,237,236)',
-            borderRadius: '6px',
-            background: 'white',
-            boxShadow:
-              'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
-            overflow: 'hidden',
-            isolation: 'isolate',
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row',
-            gap: '8px',
-            width: '100%',
-            padding: '2px 8px',
-          }}
-        >
-          <ContextMenuIcon
-            icon={'AutoAwesome'}
-            sx={{ flexShrink: 0, color: 'primary.main' }}
-          />
-          <AutoHeightTextarea
-            sx={{ border: 'none', '& textarea': { p: 0 }, borderRadius: 0 }}
-            defaultValue={''}
-            onChange={setInputValue}
-            onEnter={(value) => {
-              setInputValue('')
-            }}
-          />
-          <TransitEnterexitIcon
-            sx={{ flexShrink: 0, color: 'text.secondary' }}
-          />
-          {/*<DropdownMenu root={root} label="Edit">*/}
-          {/*  <DropdownMenuItem label="Undo" onClick={() => console.log('Undo')} />*/}
-          {/*  <DropdownMenuItem label="Redo" disabled />*/}
-          {/*  <DropdownMenuItem label="Cut" />*/}
-          {/*  <DropdownMenu root={root} label="Copy as">*/}
-          {/*    <DropdownMenuItem label="Text" />*/}
-          {/*    <DropdownMenuItem label="Video" />*/}
-          {/*    <DropdownMenu root={root} label="Image">*/}
-          {/*      <DropdownMenuItem label=".png" />*/}
-          {/*      <DropdownMenuItem label=".jpg" />*/}
-          {/*      <DropdownMenuItem label=".svg" />*/}
-          {/*      <DropdownMenuItem label=".gif" />*/}
-          {/*    </DropdownMenu>*/}
-          {/*    <DropdownMenuItem label="Audio" />*/}
-          {/*  </DropdownMenu>*/}
-          {/*  <DropdownMenu root={root} label="Share">*/}
-          {/*    <DropdownMenuItem label="Mail" />*/}
-          {/*    <DropdownMenuItem label="Instagram" />*/}
-          {/*  </DropdownMenu>*/}
-          {/*</DropdownMenu>*/}
-        </div>
+        <FloatingContextMenuList
+          menuList={contextMenuList}
+          referenceElementOpen={floatingDropdownMenu.open}
+          referenceElement={
+            <div
+              style={{
+                border: '1px solid rgb(237,237,236)',
+                background: 'white',
+                borderRadius: '6px',
+                boxShadow:
+                  'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
+                overflow: 'hidden',
+                isolation: 'isolate',
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'row',
+                gap: '8px',
+                width: '100%',
+                padding: '7px 8px',
+              }}
+            >
+              <ContextMenuIcon
+                icon={'AutoAwesome'}
+                sx={{
+                  flexShrink: 0,
+                  color: 'primary.main',
+                  height: '24px',
+                  alignSelf: 'start',
+                }}
+              />
+              <AutoHeightTextarea
+                placeholder={'Ask ChatGPT to edit or generate...'}
+                stopPropagation={false}
+                InputId={ROOT_FLOATING_INPUT_ID}
+                sx={{
+                  border: 'none',
+                  '& textarea': { p: 0 },
+                  borderRadius: 0,
+                  minHeight: '24px',
+                }}
+                defaultValue={''}
+                onChange={(value) => {
+                  setInputValue(value)
+                }}
+                onEnter={(value) => {
+                  setInputValue('')
+                }}
+              />
+              <IconButton
+                sx={{
+                  height: '20px',
+                  width: '20px',
+                  flexShrink: 0,
+                  alignSelf: 'end',
+                  alignItems: 'center',
+                  p: 0,
+                  m: '2px',
+                  bgcolor: haveDraft ? 'primary.main' : 'rgb(219,219,217)',
+                  '&:hover': {
+                    bgcolor: haveDraft ? 'primary.main' : 'rgb(219,219,217)',
+                  },
+                }}
+              >
+                <ArrowUpwardIcon
+                  sx={{
+                    color: '#fff',
+                    fontSize: 16,
+                  }}
+                />
+              </IconButton>
+            </div>
+          }
+          root={root}
+        />
       </div>
     </FloatingPortal>
   )
 }
-
 export default FloatingContextMenu

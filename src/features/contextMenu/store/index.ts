@@ -68,3 +68,13 @@ export const FloatingDropdownMenuState = atom<{
     rootRect: null,
   },
 })
+export const FloatingDropdownMenuSelectedItemState = atom<{
+  hoverId: string | null
+  selectedId: string | null
+}>({
+  key: 'FloatingDropdownMenuSelectedItemState',
+  default: {
+    hoverId: null,
+    selectedId: null,
+  },
+})

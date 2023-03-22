@@ -34,6 +34,8 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
+  ROOT_CONTEXT_MENU_ID,
+  ROOT_CONTEXT_MENU_PORTAL_ID,
 } from '@/types'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
@@ -55,6 +57,14 @@ export const getAppRootElement = (): HTMLDivElement | null => {
     ?.shadowRoot?.querySelector(
       `#${ROOT_CONTAINER_WRAPPER_ID}`,
     ) as HTMLDivElement
+}
+export const getAppContextMenuElement = (): HTMLDivElement | null => {
+  const portals =
+    document
+      .querySelector(`#${ROOT_CONTEXT_MENU_ID}`)
+      ?.shadowRoot?.querySelectorAll(`#${ROOT_CONTEXT_MENU_PORTAL_ID}`) || []
+  const portal = Array.from(portals).find((portal) => portal.innerHTML !== '')
+  return portal as HTMLDivElement
 }
 
 export const showChatBox = () => {

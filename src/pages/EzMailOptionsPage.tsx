@@ -44,6 +44,7 @@ const OptionsPage = () => {
         )}
         {value === 1 && (
           <ContextMenuSettings
+            iconSetting
             defaultContextMenuJson={defaultGmailToolbarContextMenuJson}
             settingsKey={'gmailToolBarContextMenu'}
           />

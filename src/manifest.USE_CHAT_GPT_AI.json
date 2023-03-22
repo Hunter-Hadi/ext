@@ -1,6 +1,6 @@
 {
-  "name": "Use ChatGPT - GPT-4 & ChatGPT Chrome Copilot",
-  "version": "0.0.1",
+  "name": "UseChatGPT.AI: Copilot on Chrome (GPT-4 ✓)",
+  "version": "0.0.2",
   "short_name": "Use ChatGPT",
   "description":"Write, rephrase, summarize, translate, or explain any text on any website without copy-pasting.",
   "manifest_version": 3,

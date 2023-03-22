@@ -43,7 +43,7 @@ const removeModalEvent = (textareaElement: HTMLTextAreaElement) => {
     focusTextareaAndAutoSize(textareaElement)
   }
 }
-const afterRemoveModalEvent = (textareaElement: HTMLTextAreaElement) => {}
+const afterRemoveModalEvent = (textareaElement: HTMLTextAreaElement) => null
 
 const autoSizeTextarea = (textareaElement: HTMLTextAreaElement) => {
   const boxElement = textareaElement?.parentElement
@@ -67,21 +67,21 @@ const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
   autoSizeTextarea(textareaElement)
   setTimeout(() => {
     // focus input
-    const value = textareaElement.value
-    let findIndex = -1
-    const matchString =
-      ['Write a reply to this email: ', 'Write an email to...'].find((str) => {
-        findIndex = value.indexOf(str)
-        return findIndex > -1
-      }) || ''
+    // const value = textareaElement.value
+    // let findIndex = -1
+    // const matchString =
+    //   ['Write a reply to this email: ', 'Write an email to...'].find((str) => {
+    //     findIndex = value.indexOf(str)
+    //     return findIndex > -1
+    //   }) || ''
     // textareaElement.value = ''
     // textareaElement.value = value
-    console.log('focusTextareaAndAutoSize', findIndex)
+    // console.log('focusTextareaAndAutoSize', findIndex)
     textareaElement.focus()
-    textareaElement.setSelectionRange(
-      Math.max(matchString.length + findIndex, 0),
-      Math.max(matchString.length + findIndex, 0),
-    )
+    // textareaElement.setSelectionRange(
+    //   Math.max(matchString.length + findIndex, 0),
+    //   Math.max(matchString.length + findIndex, 0),
+    // )
     textareaElement.scrollTo(0, 0)
   }, 100)
 }

@@ -20,7 +20,7 @@ import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
 import { EZMAIL_NEW_MAIL_GROUP_ID, EZMAIL_REPLY_GROUP_ID } from '@/types'
 import ContextMenuViewSource from './components/ContextMenuViewSource'
-import cloneDeep from 'lodash-es/cloneDeep'
+
 const rootId = 'root'
 
 const saveTreeData = async (

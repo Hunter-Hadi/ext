@@ -23,6 +23,7 @@ import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 import { StaticUseChatGPTButtonContextMenu } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
+import TooltipButton from '@/components/TooltipButton'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -199,25 +200,37 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           >
             {!loading && messages.length > 0 && (
               <>
-                <Button
+                <Box
                   sx={{
-                    mb: 1,
-                    p: '5px',
-                    minWidth: 'unset',
                     position: 'absolute',
                     left: 0,
-                    color: 'primary.main',
-                  }}
-                  disableElevation
-                  variant={'outlined'}
-                  disabled={loading}
-                  onClick={() => {
-                    onReset && onReset()
-                    setInputValue('')
+                    top: 0,
+                    width: 36,
+                    height: 36,
                   }}
                 >
-                  <CleanChatBoxIcon sx={{ color: 'inherit' }} />
-                </Button>
+                  <TooltipButton
+                    title={'New chat'}
+                    sx={{
+                      fontSize: '26px',
+                      p: '5px',
+                      minWidth: 'unset',
+                      borderRadius: '18px',
+                    }}
+                    disableElevation
+                    variant={'contained'}
+                    disabled={loading}
+                    onClick={() => {
+                      onReset && onReset()
+                      setInputValue('')
+                    }}
+                  >
+                    <CleanChatBoxIcon
+                      sx={{ color: 'inherit', fontSize: 'inherit' }}
+                    />
+                  </TooltipButton>
+                </Box>
+
                 {!isEzMailApp && (
                   <StaticUseChatGPTButtonContextMenu
                     sx={{ mb: 1 }}

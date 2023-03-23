@@ -41,8 +41,8 @@ import {
 } from '@/types'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
-import { IInboxMessageType } from '@/features/gmail'
-import { pingDaemonProcess } from '@/features/chatgpt'
+import { IInboxMessageType } from '@/features/gmail/store'
+import { pingDaemonProcess } from '@/features/chatgpt/utils'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -160,16 +160,12 @@ export const getChromeExtensionSettings =
 export const getChromeExtensionContextMenu = async (
   menuType: IChromeExtensionSettingsKey,
 ) => {
-  // const settings = await getChromeExtensionSettings()
-
+  const settings = await getChromeExtensionSettings()
   const defaultMenus = {
     contextMenus: defaultContextMenuJson,
     gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
   }
-
-  // return settings[menuType] ?? defaultMenus[menuType]
-  // debugger
-  return defaultMenus[menuType]
+  return settings[menuType] ?? defaultMenus[menuType]
 }
 
 export const getFilteredTypeGmailToolBarContextMenu = async (

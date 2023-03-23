@@ -13,7 +13,7 @@ import {
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { CurrentInboxMessageTypeSelector } from '@/features/gmail'
+import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
 import { useRecoilValue } from 'recoil'
 import SettingsIcon from '@mui/icons-material/Settings'
 import Browser from 'webextension-polyfill'

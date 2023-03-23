@@ -90,6 +90,9 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
   if (!dropNode) {
     return false
   }
+  if (dropNode?.data?.type !== 'group') {
+    return false
+  }
   let parentNode = treeData.find((item) => item.id === dropNode.parent)
   while (parentNode && parentNode.parentId !== rootId) {
     if (parentNode.id === dragId) {
@@ -97,7 +100,7 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
     }
     parentNode = treeData.find((item) => item.id === parentNode.parentId)
   }
-  return dropNode?.data?.type === 'group'
+  return true
 }
 
 const ContextMenuSettings: FC<{
@@ -118,7 +121,7 @@ const ContextMenuSettings: FC<{
   const editNode = useMemo(() => {
     return treeData.find((item) => item.id === editId) || null
   }, [treeData, editId])
-  const handleDrop = async (newTreeData: any[], dragData: any) => {
+  const handleDrop = async (newTreeData: any[]) => {
     setTreeData(newTreeData)
   }
   const addNewMenuItem = async () => {

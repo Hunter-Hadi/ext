@@ -7,6 +7,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
 const ContextMenuItem = (props: {
   isActive?: boolean
@@ -86,7 +87,11 @@ const ContextMenuItem = (props: {
                 onEdit && onEdit(node.id as string)
               }}
             >
-              <EditIcon sx={{ fontSize: 20 }} />
+              {node.data.editable ? (
+                <EditIcon sx={{ fontSize: 20 }} />
+              ) : (
+                <VisibilityIcon sx={{ fontSize: 20 }} />
+              )}
             </IconButton>
             {node.data.type === 'shortcuts' && node.data.editable && (
               <IconButton

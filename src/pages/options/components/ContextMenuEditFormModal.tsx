@@ -91,7 +91,20 @@ const ContextMenuEditForm: FC<{
   }, [node])
   return (
     <Modal open={open} onClose={onCancel}>
-      <Stack spacing={2} p={4} height={'100%'}>
+      <Stack
+        spacing={2}
+        p={4}
+        sx={{
+          position: 'absolute',
+          top: '40%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          bgcolor: '#fff',
+          width: '80vw',
+          minHeight: '60vh',
+          borderRadius: 2,
+        }}
+      >
         <Typography variant={'h6'}>
           Edit Menu Item{isDisabled ? '(Read only)' : ''}
         </Typography>

@@ -239,13 +239,8 @@ const AutoHeightTextarea: FC<{
           }
         }}
         onKeyDown={(event) => {
-          debugger
-          console.log(
-            'onKeyDown!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!123',
-            event.key,
-          )
           if (stopPropagation) {
-            // event.stopPropagation()
+            event.stopPropagation()
           }
           // detect shift enter
           if (event.key === 'Enter' && event.shiftKey) {
@@ -254,25 +249,13 @@ const AutoHeightTextarea: FC<{
             onEnter && onEnter(event.currentTarget.value)
             setInputValue('')
             event.preventDefault()
-          } else if (event.key === ' ') {
-            setInputValue(event.currentTarget.value + ' ')
-            onChange && onChange(event.currentTarget.value + ' ')
-            event.preventDefault()
-          } else if (event.key === 'Tab') {
-            setInputValue(event.currentTarget.value + '  ')
-            onChange && onChange(event.currentTarget.value + '  ')
-            event.preventDefault()
           }
-          // onKeydown && onKeydown(event)
-        }}
-        onBeforeInput={(event) => {
-          debugger
+          onKeydown && onKeydown(event)
         }}
         onClick={(event) => {
           removeModalEvent(event.currentTarget)
         }}
         onInput={(event) => {
-          debugger
           console.log(
             'onInput!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
             event.currentTarget.value,

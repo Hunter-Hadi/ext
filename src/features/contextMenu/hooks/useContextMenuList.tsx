@@ -2,48 +2,61 @@ import {
   getChromeExtensionSettings,
   IChromeExtensionSettingsKey,
 } from '@/utils'
-import {
-  IContextMenuItem,
-  IContextMenuItemWithChildren,
-} from '@/features/contextMenu/store'
+import { IContextMenuItem } from '@/features/contextMenu/store'
 import { useEffect, useMemo, useState } from 'react'
-import { groupByContextMenuItem } from '@/features/contextMenu/utils'
+import {
+  fuzzySearchContextMenuList,
+  groupByContextMenuItem,
+} from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 
 const useContextMenuList = (
   settingsKey: IChromeExtensionSettingsKey,
   defaultList: IContextMenuItem[],
+  query?: string,
 ) => {
   const { rangyState, parseRangySelectRangeData } = useRangy()
-  const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
+  const [originContextMenuList, setOriginContextMenuList] = useState<
+    IContextMenuItem[]
+  >([])
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
       const settings = await getChromeExtensionSettings()
       if (isDestroy) return
-      setList(groupByContextMenuItem(settings[settingsKey] || defaultList))
+      setOriginContextMenuList(settings[settingsKey] || defaultList)
     }
     getList()
     return () => {
       isDestroy = true
     }
   }, [])
-  const memoList = useMemo(() => {
+  const contextMenuList = useMemo(() => {
+    console.log('useFloatingContextMenuList', query)
+    if (query?.trim()) {
+      return fuzzySearchContextMenuList(
+        groupByContextMenuItem(cloneDeep(originContextMenuList)),
+        query,
+      )
+    }
     if (settingsKey === 'gmailToolBarContextMenu') {
-      return cloneDeep(list).map((group, index) => {
-        if (index === 0) {
-          // gmail只有一个group
-          // group第一个作为cta button
-          group.children = group.children.slice(1)
-        }
-        return group
-      })
+      return groupByContextMenuItem(cloneDeep(originContextMenuList)).map(
+        (group, index) => {
+          if (index === 0) {
+            // gmail只有一个group
+            // group第一个作为cta button
+            group.children = group.children.slice(1)
+          }
+          return group
+        },
+      )
     } else if (settingsKey === 'contextMenus') {
-      const editOrReviewSelection = list.find(
+      const groupList = groupByContextMenuItem(cloneDeep(originContextMenuList))
+      const editOrReviewSelection = groupList.find(
         (group) => group.text === 'Edit or review selection',
       )
-      const generateFromSelection = list.find(
+      const generateFromSelection = groupList.find(
         (group) => group.text === 'Generate from selection',
       )
       const currentRange = rangyState.lastSelectionRanges
@@ -63,15 +76,17 @@ const useContextMenuList = (
         }
       }
     }
-    return list
+    return groupByContextMenuItem(cloneDeep(originContextMenuList))
   }, [
     rangyState.lastSelectionRanges,
     rangyState.currentActiveWriteableElement,
-    list,
+    originContextMenuList,
     settingsKey,
+    query,
   ])
   return {
-    list: memoList,
+    contextMenuList,
+    originContextMenuList,
   }
 }
 export { useContextMenuList }

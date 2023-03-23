@@ -11,7 +11,6 @@ import {
   useRole,
   useClick,
   useDismiss,
-  autoUpdate,
   safePolygon,
   FloatingPortal,
   useFloatingTree,
@@ -21,16 +20,15 @@ import {
   FloatingNode,
   FloatingTree,
   FloatingFocusManager,
+  autoUpdate,
 } from '@floating-ui/react'
 import { Box, Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
-import { useRangy } from '@/features/contextMenu/hooks'
+import { useEffect, useMemo } from 'react'
 import {
+  FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
   IContextMenuItem,
 } from '@/features/contextMenu/store'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import cloneDeep from 'lodash-es/cloneDeep'
 import { ContextMenuIcon } from '@/features/contextMenu'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
@@ -43,37 +41,23 @@ interface MenuItemProps {
 // eslint-disable-next-line react/display-name
 export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
   ({ label, disabled, menuItem, ...props }, ref) => {
-    const { hoverId } = useRecoilValue(FloatingDropdownMenuSelectedItemState)
-    const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
-    const { lastSelectionRanges, rangy } = useRangy()
-    const [running, setRunning] = useState(false)
-    useEffect(() => {
-      if (running) {
-        const actions = menuItem.data.actions
-        if (actions && actions.length > 0) {
-          const setActions = cloneDeep(actions)
-          const isSetSuccess = setShortCuts(setActions)
-          isSetSuccess &&
-            runShortCuts()
-              .then()
-              .catch()
-              .finally(() => {
-                rangy?.contextMenu.close()
-                rangy?.contextMenu.resetActiveElement()
-                setRunning(false)
-              })
-        }
-      }
-    }, [lastSelectionRanges, running])
+    const floatingUiProps: any = props
+    const hoverIds = useRecoilValue(FloatingDropdownMenuItemsSelector)
+    const updateSelectedId = useSetRecoilState(
+      FloatingDropdownMenuSelectedItemState,
+    )
+    const isHover = useMemo(() => {
+      return hoverIds.includes(menuItem.id)
+    }, [hoverIds])
     return (
       <Box
         {...props}
         data-id={menuItem.id}
         // aria-disabled={disabled}
         className={`floating-context-menu-item ${
-          menuItem.id === hoverId ? 'floating-context-menu-item--active' : ''
+          isHover ? 'floating-context-menu-item--active' : ''
         }`}
-        tabIndex={menuItem.id === hoverId ? 0 : -1}
+        tabIndex={isHover ? 0 : -1}
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -106,28 +90,25 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         ref={ref}
         component={'div'}
         role="menuitem"
-        onClick={(event) => {
-          event.stopPropagation()
-          event.preventDefault()
-          if (!running) {
-            setRunning(true)
-          }
-          props?.onClick?.(event)
-        }}
-        onFocus={(event) => {
-          props?.onFocus?.(event)
-        }}
-        onMouseUp={(event) => {
-          event.stopPropagation()
-          event.preventDefault()
-          props?.onMouseUp?.(event)
-        }}
         onKeyDown={(event) => {
-          if (event.key === 'Enter') {
-            event.stopPropagation()
-            event.preventDefault()
+          if (event.code === 'Enter') {
+            updateSelectedId((prevState) => {
+              return {
+                ...prevState,
+                selectedContextMenuId: menuItem.id,
+              }
+            })
           }
-          props?.onKeyDown?.(event)
+          floatingUiProps?.onKeyDown?.(event)
+        }}
+        onClick={(event) => {
+          updateSelectedId((prevState) => {
+            return {
+              ...prevState,
+              selectedContextMenuId: menuItem.id,
+            }
+          })
+          floatingUiProps?.onClick?.(event)
         }}
       >
         {menuItem?.data?.icon && (
@@ -145,7 +126,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           noWrap
           flex={1}
         >
-          {menuItem.text}
+          {menuItem.text} - {isHover ? 'true' : 'false'}
         </Typography>
         <span
           className={
@@ -247,7 +228,7 @@ export const MenuComponent = React.forwardRef<
         }),
         shift(),
       ],
-      whileElementsMounted: !isNested ? autoUpdate : undefined,
+      whileElementsMounted: autoUpdate,
     })
 
     const hover = useHover(context, {
@@ -269,27 +250,52 @@ export const MenuComponent = React.forwardRef<
       listRef: listItemsRef,
       activeIndex,
       nested: isNested,
-      onNavigate: (index) => {
+      onNavigate(index) {
+        if (index === activeIndex) {
+          return
+        }
         if (index === null) {
           updateHoverMenuId((prev) => {
             return {
               ...prev,
-              hoverId: null,
+              hoverContextMenuIdMap: {
+                ...prev.hoverContextMenuIdMap,
+                [nodeId || '']: '',
+              },
             }
           })
-          console.log(nodeId, index, parentId, 'onNavigateonNavigateonNavigate')
+          console.log(
+            nodeId,
+            index,
+            parentId,
+            listNavigation,
+            'onNavigateonNavigateonNavigate',
+          )
+          setActiveIndex(index)
         } else {
-          console.log(nodeId, index, parentId, 'onNavigateonNavigateonNavigate')
+          console.log(
+            nodeId,
+            index,
+            parentId,
+            listNavigation,
+            'onNavigateonNavigateonNavigate',
+          )
           const hoverId =
             listItemsRef.current?.[index]?.getAttribute('data-id') || null
+          if (!hoverId) {
+            return
+          }
           updateHoverMenuId((prev) => {
             return {
               ...prev,
-              hoverId,
+              hoverContextMenuIdMap: {
+                ...prev.hoverContextMenuIdMap,
+                [nodeId || '']: hoverId,
+              },
             }
           })
+          setActiveIndex(index)
         }
-        setActiveIndex(index)
       },
       loop: true,
       // virtual: referenceElement ? true : false,
@@ -300,41 +306,33 @@ export const MenuComponent = React.forwardRef<
       onMatch: isOpen ? setActiveIndex : undefined,
       activeIndex,
     })
-
     const { getReferenceProps, getFloatingProps, getItemProps } =
       useInteractions([hover, click, role, dismiss, listNavigation, typeahead])
-
     // Event emitter allows you to communicate across tree components.
     // This effect closes all menus when an item gets clicked anywhere
     // in the tree.
     React.useEffect(() => {
       if (!tree) return
-
       function handleTreeClick() {
         setIsOpen(false)
       }
-
       function onSubMenuOpen(event: { nodeId: string; parentId: string }) {
         if (event.nodeId !== nodeId && event.parentId === parentId) {
           setIsOpen(false)
         }
       }
-
       tree.events.on('click', handleTreeClick)
       tree.events.on('menuopen', onSubMenuOpen)
-
       return () => {
         tree.events.off('click', handleTreeClick)
         tree.events.off('menuopen', onSubMenuOpen)
       }
     }, [tree, nodeId, parentId])
-
     React.useEffect(() => {
       if (isOpen && tree) {
         tree.events.emit('menuopen', { parentId, nodeId })
       }
     }, [tree, isOpen, nodeId, parentId])
-
     // Determine if "hover" logic can run based on the modality of input. This
     // prevents unwanted focus synchronization as menus open and close with
     // keyboard navigation and the cursor is resting on the menu.
@@ -344,11 +342,9 @@ export const MenuComponent = React.forwardRef<
           setAllowHover(true)
         }
       }
-
       function onKeyDown() {
         setAllowHover(false)
       }
-
       window.addEventListener('pointermove', onPointerMove, {
         once: true,
         capture: true,
@@ -361,14 +357,12 @@ export const MenuComponent = React.forwardRef<
         window.removeEventListener('keydown', onKeyDown, true)
       }
     }, [allowHover])
-    console.log(children)
     const referenceRef = useMergeRefs([refs.setReference, forwardedRef])
     return (
       <FloatingNode id={nodeId}>
         {referenceElement ? (
           React.isValidElement(referenceElement) &&
           React.cloneElement(referenceElement, {
-            ref: referenceRef,
             ...getReferenceProps({
               ...props,
               className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
@@ -383,6 +377,9 @@ export const MenuComponent = React.forwardRef<
                 role: 'menuitem',
               }),
             }),
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            ref: referenceRef,
           })
         ) : (
           <button
@@ -409,7 +406,7 @@ export const MenuComponent = React.forwardRef<
           </button>
         )}
         <FloatingPortal root={root}>
-          {isOpen && (
+          {isOpen && React.Children.count(children) && (
             <FloatingFocusManager
               context={context}
               // Prevent outside content interference.
@@ -466,7 +463,7 @@ export const MenuComponent = React.forwardRef<
                         },
                         // Allow focus synchronization if the cursor did not move.
                         onMouseEnter() {
-                          if (allowHover && isOpen) {
+                          if (allowHover && isOpen && child.props?.menuItem) {
                             setActiveIndex(index)
                           }
                         },

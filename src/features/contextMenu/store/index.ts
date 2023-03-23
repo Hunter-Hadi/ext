@@ -1,4 +1,4 @@
-import { atom } from 'recoil'
+import { atom, selector } from 'recoil'
 import { ISetActionsType } from '@/features/shortcuts'
 
 export type IContextMenuItem = {
@@ -69,12 +69,23 @@ export const FloatingDropdownMenuState = atom<{
   },
 })
 export const FloatingDropdownMenuSelectedItemState = atom<{
-  hoverId: string | null
-  selectedId: string | null
+  hoverContextMenuIdMap: {
+    [key: string]: string
+  }
+  selectedContextMenuId: string | null
 }>({
   key: 'FloatingDropdownMenuSelectedItemState',
   default: {
-    hoverId: null,
-    selectedId: null,
+    hoverContextMenuIdMap: {},
+    selectedContextMenuId: null,
+  },
+})
+export const FloatingDropdownMenuItemsSelector = selector<string[]>({
+  key: 'FloatingDropdownMenuItemsSelector',
+  get: ({ get }) => {
+    const hoverIdMap = get(
+      FloatingDropdownMenuSelectedItemState,
+    ).hoverContextMenuIdMap
+    return Object.values(hoverIdMap).filter((id) => id)
   },
 })

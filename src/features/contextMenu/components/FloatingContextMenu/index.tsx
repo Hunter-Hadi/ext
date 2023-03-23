@@ -12,7 +12,10 @@ import {
 } from '@floating-ui/react'
 import React, { FC, useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
+import {
+  FloatingDropdownMenuSelectedItemState,
+  FloatingDropdownMenuState,
+} from '@/features/contextMenu/store'
 import {
   cloneRect,
   isRectangleCollidingWithBoundary,
@@ -20,13 +23,53 @@ import {
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
-import { IconButton } from '@mui/material'
+import { CircularProgress, IconButton, Typography } from '@mui/material'
 import { ROOT_FLOATING_INPUT_ID } from '@/types'
-import { getAppContextMenuElement } from '@/utils'
-import FloatingContextMenuList, {
-  useFloatingContextMenuList,
-} from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import { getAppContextMenuElement, showChatBox } from '@/utils'
+import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
+import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+
+const FloatingContextMenuMiddleware = [
+  flip({
+    fallbackPlacements: ['top-start', 'right', 'left'],
+  }),
+  size(),
+  shift({
+    crossAxis: true,
+    padding: 16,
+  }),
+  offset((params) => {
+    console.log('[ContextMenu Module]: [offset]', params)
+    if (params.placement.indexOf('bottom') > -1) {
+      const boundary = {
+        left: 0,
+        right: window.innerWidth,
+        top: 0,
+        bottom: window.innerHeight + window.scrollY,
+      }
+      if (
+        isRectangleCollidingWithBoundary(
+          {
+            top: params.y,
+            left: params.x,
+            bottom: params.y + params.rects.floating.height + 50,
+            right: params.rects.floating.width + params.x,
+          },
+          boundary,
+        )
+      ) {
+        return (
+          params.rects.reference.y - params.y - params.rects.floating.height - 8
+        )
+      }
+      return 8
+    } else {
+      return 8
+    }
+  }),
+]
 
 const FloatingContextMenu: FC<{
   root: any
@@ -35,6 +78,10 @@ const FloatingContextMenu: FC<{
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
+  const [
+    floatingDropdownMenuSelectedItem,
+    updateFloatingDropdownMenuSelectedItem,
+  ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
   const { x, y, strategy, refs, context } = useFloating({
     open: floatingDropdownMenu.open,
     onOpenChange: (open) => {
@@ -46,60 +93,13 @@ const FloatingContextMenu: FC<{
       })
     },
     placement: 'bottom-start',
-    middleware: [
-      flip({
-        fallbackPlacements: ['top-start', 'right', 'left'],
-      }),
-      size(),
-      shift({
-        crossAxis: true,
-        padding: 16,
-      }),
-      offset((params) => {
-        console.log('[ContextMenu Module]: [offset]', params)
-        if (params.placement.indexOf('bottom') > -1) {
-          const boundary = {
-            left: 0,
-            right: window.innerWidth,
-            top: 0,
-            bottom: window.innerHeight + window.scrollY,
-          }
-          if (
-            isRectangleCollidingWithBoundary(
-              {
-                top: params.y,
-                left: params.x,
-                bottom: params.y + params.rects.floating.height + 50,
-                right: params.rects.floating.width + params.x,
-              },
-              boundary,
-            )
-          ) {
-            return (
-              params.rects.reference.y -
-              params.y -
-              params.rects.floating.height -
-              8
-            )
-          }
-          return 8
-        } else {
-          return 8
-        }
-      }),
-    ],
+    middleware: FloatingContextMenuMiddleware,
     whileElementsMounted: autoUpdate,
   })
   const click = useClick(context)
   const dismiss = useDismiss(context, {})
   const { getFloatingProps } = useInteractions([dismiss, click])
-  const [inputValue, setInputValue] = useState('')
-  const haveDraft = inputValue.length > 0
-  const contextMenuList = useFloatingContextMenuList(
-    'contextMenus',
-    defaultContextMenuJson,
-    inputValue,
-  )
+  const [running, setRunning] = useState(false)
   useEffect(() => {
     if (floatingDropdownMenu.rootRect) {
       const rect = cloneRect(floatingDropdownMenu.rootRect)
@@ -124,9 +124,15 @@ const FloatingContextMenu: FC<{
       })
     }
   }, [floatingDropdownMenu.rootRect])
+  const [inputValue, setInputValue] = useState('')
+  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
+  const { contextMenuList, originContextMenuList } = useContextMenuList(
+    'contextMenus',
+    defaultContextMenuJson,
+    inputValue,
+  )
+  const haveDraft = inputValue.length > 0
   useEffect(() => {
-    // const textarea = document.getElementById(ROOT_FLOATING_INPUT_ID)
-    // debugger
     if (floatingDropdownMenu.open) {
       const textareaEl = getAppContextMenuElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
@@ -161,6 +167,44 @@ const FloatingContextMenu: FC<{
       }
     }
   }
+  useEffect(() => {
+    if (
+      !running &&
+      floatingDropdownMenuSelectedItem.selectedContextMenuId &&
+      originContextMenuList.length > 0
+    ) {
+      const findContextMenu = originContextMenuList.find(
+        (contextMenu) =>
+          contextMenu.id ===
+          floatingDropdownMenuSelectedItem.selectedContextMenuId,
+      )
+      if (
+        findContextMenu &&
+        findContextMenu.data.actions &&
+        findContextMenu.data.actions.length > 0
+      ) {
+        setRunning(true)
+        setFloatingDropdownMenu({
+          open: false,
+          rootRect: null,
+        })
+        updateFloatingDropdownMenuSelectedItem(() => {
+          return {
+            selectedContextMenuId: null,
+            hoverContextMenuIdMap: {},
+          }
+        })
+        setShortCuts(findContextMenu.data.actions)
+        runShortCuts().then(() => {
+          setRunning(false)
+        })
+      }
+    }
+  }, [
+    floatingDropdownMenuSelectedItem.selectedContextMenuId,
+    running,
+    originContextMenuList,
+  ])
   return (
     <FloatingPortal root={root}>
       <div
@@ -184,7 +228,7 @@ const FloatingContextMenu: FC<{
       >
         <FloatingContextMenuList
           menuList={contextMenuList}
-          referenceElementOpen={floatingDropdownMenu.open}
+          referenceElementOpen={floatingDropdownMenu.open && !running}
           referenceElement={
             <div
               style={{
@@ -212,46 +256,85 @@ const FloatingContextMenu: FC<{
                   alignSelf: 'start',
                 }}
               />
-              <AutoHeightTextarea
-                placeholder={'Ask ChatGPT to edit or generate...'}
-                stopPropagation={false}
-                InputId={ROOT_FLOATING_INPUT_ID}
-                sx={{
-                  border: 'none',
-                  '& textarea': { p: 0 },
-                  borderRadius: 0,
-                  minHeight: '24px',
-                }}
-                defaultValue={''}
-                onChange={(value) => {
-                  setInputValue(value)
-                }}
-                onEnter={(value) => {
-                  setInputValue('')
-                }}
-              />
-              <IconButton
-                sx={{
-                  height: '20px',
-                  width: '20px',
-                  flexShrink: 0,
-                  alignSelf: 'end',
-                  alignItems: 'center',
-                  p: 0,
-                  m: '2px',
-                  bgcolor: haveDraft ? 'primary.main' : 'rgb(219,219,217)',
-                  '&:hover': {
-                    bgcolor: haveDraft ? 'primary.main' : 'rgb(219,219,217)',
-                  },
-                }}
-              >
-                <ArrowUpwardIcon
-                  sx={{
-                    color: '#fff',
-                    fontSize: 16,
-                  }}
-                />
-              </IconButton>
+              {running ? (
+                <>
+                  <Typography fontSize={'16px'} color={'primary.main'}>
+                    AI is writing...
+                  </Typography>
+                  <CircularProgress size={'16px'} />
+                </>
+              ) : (
+                <>
+                  <AutoHeightTextarea
+                    placeholder={'Ask ChatGPT to edit or generate...'}
+                    stopPropagation={false}
+                    InputId={ROOT_FLOATING_INPUT_ID}
+                    sx={{
+                      border: 'none',
+                      '& textarea': { p: 0 },
+                      borderRadius: 0,
+                      minHeight: '24px',
+                    }}
+                    defaultValue={''}
+                    onChange={(value) => {
+                      setInputValue(value)
+                    }}
+                    onEnter={(value) => {
+                      showChatBox()
+                      setFloatingDropdownMenu({
+                        open: false,
+                        rootRect: null,
+                      })
+                      updateFloatingDropdownMenuSelectedItem(() => {
+                        return {
+                          selectedContextMenuId: null,
+                          hoverContextMenuIdMap: {},
+                        }
+                      })
+                      setTimeout(async () => {
+                        setInputValue('')
+                        setShortCuts([
+                          {
+                            type: 'RENDER_CHATGPT_PROMPT',
+                            parameters: {
+                              template: `${value}:\n """\n{{HIGHLIGHTED_TEXT}}\n"""`,
+                            },
+                          },
+                          {
+                            type: 'ASK_CHATGPT',
+                            parameters: {},
+                          },
+                        ])
+                        await runShortCuts()
+                      }, 1)
+                    }}
+                  />
+                  <IconButton
+                    sx={{
+                      height: '20px',
+                      width: '20px',
+                      flexShrink: 0,
+                      alignSelf: 'end',
+                      alignItems: 'center',
+                      p: 0,
+                      m: '2px',
+                      bgcolor: haveDraft ? 'primary.main' : 'rgb(219,219,217)',
+                      '&:hover': {
+                        bgcolor: haveDraft
+                          ? 'primary.main'
+                          : 'rgb(219,219,217)',
+                      },
+                    }}
+                  >
+                    <ArrowUpwardIcon
+                      sx={{
+                        color: '#fff',
+                        fontSize: 16,
+                      }}
+                    />
+                  </IconButton>
+                </>
+              )}
             </div>
           }
           root={root}

@@ -22,6 +22,7 @@ import {
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 import { StaticUseChatGPTButtonContextMenu } from '@/features/contextMenu'
+import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -192,9 +193,27 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             alignItems={'center'}
             justifyContent={'center'}
             gap={1}
+            position={'relative'}
           >
             {!loading && messages.length > 0 && (
               <>
+                <Button
+                  sx={{
+                    mb: 1,
+                    p: '5px',
+                    minWidth: 'unset',
+                    position: 'absolute',
+                    left: 0,
+                  }}
+                  disableElevation
+                  variant={'outlined'}
+                  disabled={loading}
+                  onClick={() => {
+                    setInputValue('')
+                  }}
+                >
+                  <CleaningServicesOutlinedIcon />
+                </Button>
                 {!isEzMailApp && (
                   <StaticUseChatGPTButtonContextMenu
                     sx={{ mb: 1 }}

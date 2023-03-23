@@ -67,7 +67,11 @@ const ChatGPTModelsSelector: FC = () => {
     }
   }, [])
   useEffect(() => {
-    if (prevModel.current !== undefined && prevModel.current !== currentModel) {
+    if (
+      prevModel.current !== undefined &&
+      prevModel.current &&
+      prevModel.current !== currentModel
+    ) {
       console.log('Value changed from', prevModel.current, 'to', currentModel)
       setConversation({
         model: currentModel,

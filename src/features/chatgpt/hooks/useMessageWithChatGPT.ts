@@ -48,7 +48,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       }
     })
   }
+  const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
   const createConversation = async () => {
+    await delay(1)
     if (currentPortInstance) {
       console.log(conversation.model)
       const response: any = await sendAsyncTask(
@@ -105,7 +107,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         answer: '',
       })
     }
-    console.log(1)
+    console.log('[ChatGPT Module] send question step 0 ping')
+    await pingDaemonProcess()
+    console.log('[ChatGPT Module] send question step 1')
     const currentMessageId = messageId || uuidV4()
     let currentParentMessageId = parentMessageId || ''
     if (!currentParentMessageId) {
@@ -144,7 +148,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         loading: true,
       }
     })
-    console.log(2)
+    console.log('[ChatGPT Module] send question step 2')
     // 创建会话id不一定报错，所以加一个flag防止出现2个错误提示
     let isSetError = false
     try {
@@ -179,9 +183,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         answer: '',
       })
     }
-    console.log(3)
     console.log(
-      'useMessageWithChatGPT start',
+      '[ChatGPT Module] send question step 3',
       currentMessageId,
       parentMessageId,
       postConversationId,
@@ -200,7 +203,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         },
         {
           onMessage: (msg) => {
-            console.log('useMessageWithChatGPT onmessage', msg)
+            console.log('[ChatGPT Module] send question onmessage', msg)
             const writingMessage = {
               messageId: (msg.messageId as string) || uuidV4(),
               parentMessageId: (msg.parentMessageId as string) || uuidV4(),
@@ -219,7 +222,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           },
           onError: (error: any) => {
             hasError = true
-            console.log('!!!!!!', error)
+            console.log('[ChatGPT Module] send question onerror', error)
             if (currentMessage?.messageId) {
               pushMessages.push(currentMessage as IGmailChatMessage)
             }

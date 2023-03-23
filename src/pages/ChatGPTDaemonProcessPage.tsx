@@ -30,7 +30,9 @@ const stopDaemonProcessClose = () => {
 }
 
 const useDaemonProcess = () => {
-  const chatGptInstanceRef = useRef<IChatGPTDaemonProcess | null>(null)
+  const chatGptInstanceRef = useRef<IChatGPTDaemonProcess>(
+    new ChatGPTDaemonProcess(),
+  )
   const [showDaemonProcessBar, setShowDaemonProcessBar] = useState(false)
   const [pageSuccessLoaded, setPageSuccessLoaded] = useState(false)
   const isPageLoad = () => {
@@ -76,16 +78,11 @@ const useDaemonProcess = () => {
             port?.disconnect()
           } else {
             console.log(`init ${APP_NAME} chatGPT daemon process`)
-            chatGptInstanceRef.current = new ChatGPTDaemonProcess()
-            stopDaemonProcessClose()
-            const nextRoot = document.getElementById('__next')
-            if (nextRoot) {
-              nextRoot.classList.add('use-chat-gpt-ai-running')
-            }
             chatGptInstanceRef.current
-              ?.getAllModels()
+              .getAllModels()
               .then((models) => {
                 if (models.length) {
+                  const port = Browser.runtime.connect()
                   port.postMessage({
                     id: CHROME_EXTENSION_POST_MESSAGE_ID,
                     event: 'DaemonProcess_updateSettings',
@@ -97,6 +94,11 @@ const useDaemonProcess = () => {
                 }
               })
               .catch()
+            stopDaemonProcessClose()
+            const nextRoot = document.getElementById('__next')
+            if (nextRoot) {
+              nextRoot.classList.add('use-chat-gpt-ai-running')
+            }
             port.postMessage({
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'DaemonProcess_initChatGPTProxyInstance',

@@ -35,6 +35,7 @@ import {
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
 } from '@/types'
+import { pingDaemonProcess } from '@/features/chatgpt'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -75,6 +76,7 @@ export const showChatBox = () => {
     }, 300)
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
+      pingDaemonProcess()
     }, 1000)
   }
 }

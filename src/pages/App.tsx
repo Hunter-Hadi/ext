@@ -6,7 +6,7 @@ import {
   useInitInboxSdk,
 } from '@/features/gmail'
 import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
-import { useInitChatGPTClient, useMessageWithChatGPT } from '@/features/chatgpt'
+import { useInitChatGPTClient } from '@/features/chatgpt'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
@@ -76,7 +76,7 @@ const AppInit = () => {
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const [appState, setAppState] = useRecoilState(AppState)
-  const { resetConversation } = useMessageWithChatGPT()
+  // const { resetConversation } = useMessageWithChatGPT()
   const [commandKey, setCommandKey] = useState('click to setup')
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {
@@ -103,7 +103,7 @@ const App: FC = () => {
   useEffect(() => {
     if (!appState.open) {
       console.log('watch app close reset conversation')
-      resetConversation()
+      // resetConversation()
     }
   }, [appState])
   useEffect(() => {
@@ -240,7 +240,7 @@ const App: FC = () => {
             }}
           >
             {appState.open && appState.env === 'gmail' && <GmailChatPage />}
-            {appState.open && appState.env === 'normal' && <NormalChatPage />}
+            {appState.env === 'normal' && <NormalChatPage />}
             <iframe
               style={{
                 position: 'absolute',

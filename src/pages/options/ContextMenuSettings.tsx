@@ -20,6 +20,7 @@ import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
 import { EZMAIL_NEW_MAIL_GROUP_ID, EZMAIL_REPLY_GROUP_ID } from '@/types'
 import ContextMenuViewSource from './components/ContextMenuViewSource'
+import cloneDeep from 'lodash-es/cloneDeep'
 const rootId = 'root'
 
 const saveTreeData = async (
@@ -81,6 +82,25 @@ const getDefaultActionWithTemplate = (
   }
   return currentActions
 }
+const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
+  if (dragId === dropId) {
+    return false
+  }
+  const dragNode = treeData.find((item) => item.id === dragId)
+  const dropNode = treeData.find((item) => item.id === dropId)
+  if (!dropNode) {
+    return false
+  }
+  let parentNode = treeData.find((item) => item.id === dropNode.parent)
+  while (parentNode && parentNode.parentId !== rootId) {
+    if (parentNode.id === dragId) {
+      return false
+    }
+    parentNode = treeData.find((item) => item.id === parentNode.parentId)
+  }
+  console.log(dragNode.id, dropNode?.parent, dropId)
+  return dropNode?.data?.type === 'group'
+}
 
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
@@ -100,7 +120,7 @@ const ContextMenuSettings: FC<{
   const editNode = useMemo(() => {
     return treeData.find((item) => item.id === editId) || null
   }, [treeData, editId])
-  const handleDrop = async (newTreeData: any[]) => {
+  const handleDrop = async (newTreeData: any[], dragData: any) => {
     setTreeData(newTreeData)
   }
   const addNewMenuItem = async () => {
@@ -208,9 +228,11 @@ const ContextMenuSettings: FC<{
               }}
               canDrag={(node) => !!node?.droppable}
               canDrop={(tree, { dragSource, dropTargetId }) => {
-                return (
-                  tree.find((item) => item.id === dropTargetId)?.data?.type ===
-                  'group'
+                if (!dragSource) return false
+                return isTreeNodeCanDrop(
+                  tree,
+                  String(dragSource.id),
+                  String(dropTargetId),
                 )
               }}
               dropTargetOffset={10}

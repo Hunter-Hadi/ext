@@ -22,7 +22,7 @@ import {
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 import { StaticUseChatGPTButtonContextMenu } from '@/features/contextMenu'
-import CleaningServicesOutlinedIcon from '@mui/icons-material/CleaningServicesOutlined'
+import { CleanChatBoxIcon } from '@/components/CustomIcon'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -46,6 +46,7 @@ interface IGmailChatBoxProps {
   onCopy?: () => void
   onReGenerate?: () => void
   onStopGenerate?: () => void
+  onReset?: () => void
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
   messages: IGmailChatMessage[]
   writingMessage: IGmailChatMessage | null
@@ -73,6 +74,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     writingMessage,
     messages,
     onRetry,
+    onReset,
     loading,
   } = props
   const conversation = useRecoilValue(GmailMessageChatConversationState)
@@ -204,15 +206,17 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     minWidth: 'unset',
                     position: 'absolute',
                     left: 0,
+                    color: 'primary.main',
                   }}
                   disableElevation
                   variant={'outlined'}
                   disabled={loading}
                   onClick={() => {
+                    onReset && onReset()
                     setInputValue('')
                   }}
                 >
-                  <CleaningServicesOutlinedIcon />
+                  <CleanChatBoxIcon sx={{ color: 'inherit' }} />
                 </Button>
                 {!isEzMailApp && (
                   <StaticUseChatGPTButtonContextMenu

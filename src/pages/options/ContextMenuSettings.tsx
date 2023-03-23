@@ -186,76 +186,66 @@ const ContextMenuSettings: FC<{
   return (
     <Stack gap={3}>
       <Paper elevation={0} sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-        <Stack direction={'row'} alignItems={'center'}>
-          <Box
-            height={690}
-            p={2}
-            width={'50%'}
-            flexShrink={0}
-            overflow={'auto'}
-            position={'relative'}
-          >
-            <Stack>
-              <ContextMenuViewSource treeData={treeData} />
-            </Stack>
-            <DndProvider backend={MultiBackend} options={getBackendOptions()}>
-              <Tree
-                tree={treeData}
-                rootId={'root'}
-                onDrop={handleDrop}
-                sort={false}
-                classes={{
-                  placeholder: 'context-menu--placeholder',
-                }}
-                canDrag={(node) => !!node?.droppable}
-                canDrop={(tree, { dragSource, dropTargetId }) => {
-                  return (
-                    tree.find((item) => item.id === dropTargetId)?.data
-                      ?.type === 'group'
-                  )
-                }}
-                dropTargetOffset={10}
-                placeholderRender={(node, params) => (
-                  <ContextMenuPlaceholder node={node} depth={params.depth} />
-                )}
-                insertDroppableFirst={false}
-                render={(node, params) => (
-                  <ContextMenuItem
-                    isActive={editId === node.id}
-                    onEdit={setEditId}
-                    onDelete={(id) => {
-                      setTreeData((prev) => {
-                        const newTree = prev.filter((item) => item.id !== id)
-                        return newTree
-                      })
-                    }}
-                    node={node as any}
-                    params={params}
-                  />
-                )}
-              />
-            </DndProvider>
-          </Box>
-          <Stack
-            borderLeft={1}
-            borderColor={'rgba(0, 0, 0, 0.08)'}
-            flex={1}
-            width={0}
-            height={690}
-          >
-            {editNode && (
-              <ContextMenuEditFormModal
-                open={!!editNode}
-                iconSetting={iconSetting}
-                settingsKey={settingsKey}
-                onSave={handleOnSave}
-                onCancel={() => setEditId(null)}
-                node={editNode}
-              />
-            )}
+        <Box
+          height={690}
+          p={2}
+          width={'50%'}
+          flexShrink={0}
+          overflow={'auto'}
+          position={'relative'}
+        >
+          <Stack>
+            <ContextMenuViewSource treeData={treeData} />
           </Stack>
-        </Stack>
+          <DndProvider backend={MultiBackend} options={getBackendOptions()}>
+            <Tree
+              tree={treeData}
+              rootId={'root'}
+              onDrop={handleDrop}
+              sort={false}
+              classes={{
+                placeholder: 'context-menu--placeholder',
+              }}
+              canDrag={(node) => !!node?.droppable}
+              canDrop={(tree, { dragSource, dropTargetId }) => {
+                return (
+                  tree.find((item) => item.id === dropTargetId)?.data?.type ===
+                  'group'
+                )
+              }}
+              dropTargetOffset={10}
+              placeholderRender={(node, params) => (
+                <ContextMenuPlaceholder node={node} depth={params.depth} />
+              )}
+              insertDroppableFirst={false}
+              render={(node, params) => (
+                <ContextMenuItem
+                  isActive={editId === node.id}
+                  onEdit={setEditId}
+                  onDelete={(id) => {
+                    setTreeData((prev) => {
+                      const newTree = prev.filter((item) => item.id !== id)
+                      return newTree
+                    })
+                  }}
+                  node={node as any}
+                  params={params}
+                />
+              )}
+            />
+          </DndProvider>
+        </Box>
       </Paper>
+      {editNode && (
+        <ContextMenuEditFormModal
+          open={!!editNode}
+          iconSetting={iconSetting}
+          settingsKey={settingsKey}
+          onSave={handleOnSave}
+          onCancel={() => setEditId(null)}
+          node={editNode}
+        />
+      )}
 
       <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
         <Button

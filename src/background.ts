@@ -428,10 +428,14 @@ Browser.tabs.onRemoved.addListener(function listener(tabId) {
 
 if (isEzMailApp) {
   Browser.action.onClicked.addListener(async (tab) => {
-    if (tab && tab.id && tab.active) {
-      await Browser.tabs.create({
-        url: CHROME_EXTENSION_DOC_URL,
-      })
+    if (process.env.NODE_ENV === 'development') {
+      await Browser.runtime.openOptionsPage()
+    } else {
+      if (tab && tab.id && tab.active) {
+        await Browser.tabs.create({
+          url: CHROME_EXTENSION_DOC_URL,
+        })
+      }
     }
   })
 } else {

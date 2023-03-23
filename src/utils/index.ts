@@ -32,9 +32,16 @@ import { IContextMenuItem } from '@/features/contextMenu'
 import { useEffect, useState } from 'react'
 import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
+  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  EZMAIL_NEW_MAIL_GROUP_ID,
+  EZMAIL_REPLY_CTA_BUTTON_ID,
+  EZMAIL_REPLY_GROUP_ID,
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
 } from '@/types'
+import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import { IInboxMessageType } from '@/features/gmail'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -147,6 +154,44 @@ export const getChromeExtensionSettings =
       })
     })
   }
+
+export const getChromeExtensionContextMenu = async (
+  menuType: IChromeExtensionSettingsKey,
+) => {
+  // const settings = await getChromeExtensionSettings()
+
+  const defaultMenus = {
+    contextMenus: defaultContextMenuJson,
+    gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
+  }
+
+  // return settings[menuType] ?? defaultMenus[menuType]
+  // debugger
+  return defaultMenus[menuType]
+}
+
+export const getFilteredTypeGmailToolBarContextMenu = async (
+  messageType: IInboxMessageType,
+  filterCTAButton = false,
+  defaultMenuList?: IContextMenuItem[],
+) => {
+  let menuList =
+    defaultMenuList ||
+    (await getChromeExtensionContextMenu('gmailToolBarContextMenu'))
+  if (filterCTAButton) {
+    menuList = menuList.filter(
+      (item) =>
+        item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+        item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+    )
+  }
+  if (messageType === 'reply') {
+    return menuList.filter((item) => item.id !== EZMAIL_NEW_MAIL_GROUP_ID)
+  } else {
+    return menuList.filter((item) => item.id !== EZMAIL_REPLY_GROUP_ID)
+  }
+}
+
 export const setChromeExtensionSettings = (
   settings: IChromeExtensionSettings,
 ) => {

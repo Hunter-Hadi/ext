@@ -2,7 +2,6 @@ import { Button, Paper } from '@mui/material'
 import { Menu, useContextMenu } from 'react-contexify'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import ContextMenuList from './ContextMenuList'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import React, { FC, useEffect } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
 
@@ -257,10 +256,7 @@ const ClickContextMenu = () => {
         }}
         id={ROOT_CONTEXT_MENU_CONTAINER_ID}
       >
-        <ContextMenuList
-          defaultContextMenuJson={defaultContextMenuJson}
-          settingsKey={'contextMenus'}
-        />
+        <ContextMenuList settingsKey={'contextMenus'} />
       </Menu>
     </>
   )

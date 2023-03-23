@@ -1,5 +1,6 @@
+import { ISetActionsType } from '@/features/shortcuts'
 import { Box, Button, Paper, Stack } from '@mui/material'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   Tree,
   getBackendOptions,
@@ -8,15 +9,17 @@ import {
 import { DndProvider } from 'react-dnd'
 import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
-import ContextMenuEditForm from '@/pages/options/components/ContextMenuEditForm'
-import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
+import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
+// import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
-  getChromeExtensionSettings,
+  getChromeExtensionContextMenu,
   IChromeExtensionSettingsKey,
   setChromeExtensionSettings,
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
+import { EZMAIL_NEW_MAIL_GROUP_ID, EZMAIL_REPLY_GROUP_ID } from '@/types'
+import ContextMenuViewSource from './components/ContextMenuViewSource'
 const rootId = 'root'
 
 const saveTreeData = async (
@@ -32,12 +35,65 @@ const saveTreeData = async (
     console.log(error)
   }
 }
+
+const getDefaultActionWithTemplate = (
+  settingsKey: IChromeExtensionSettingsKey,
+  template: string,
+  autoAskChatGPT: boolean,
+) => {
+  const actions: Record<IChromeExtensionSettingsKey, ISetActionsType> = {
+    gmailToolBarContextMenu: [
+      {
+        type: 'RENDER_CHATGPT_PROMPT',
+        parameters: {
+          template,
+        },
+      },
+      {
+        type: 'INSERT_USER_INPUT',
+        parameters: {
+          template: '{{LAST_ACTION_OUTPUT}}',
+        },
+      },
+    ],
+    contextMenus: [
+      {
+        type: 'RENDER_CHATGPT_PROMPT',
+        parameters: {
+          template,
+        },
+      },
+      {
+        type: 'ASK_CHATGPT',
+        parameters: {},
+      },
+    ],
+  }
+
+  const currentActions = actions[settingsKey]
+  if (settingsKey === 'gmailToolBarContextMenu' && autoAskChatGPT) {
+    currentActions.push({
+      type: 'ASK_CHATGPT',
+      parameters: {
+        template: '{{LAST_ACTION_OUTPUT}}',
+      },
+    })
+  }
+  return currentActions
+}
+
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsKey
+  menuType?: 'reply' | 'new-email'
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {
-  const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
+  const {
+    settingsKey,
+    defaultContextMenuJson,
+    iconSetting = false,
+    menuType,
+  } = props
   const [loading, setLoading] = useState(false)
   const [editId, setEditId] = useState<string | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
@@ -64,6 +120,29 @@ const ContextMenuSettings: FC<{
     )
     setEditId(newEditId)
   }
+
+  const handleOnSave = useCallback(
+    (newNode: IContextMenuItem, template: string, autoAskChatGPT: boolean) => {
+      if (newNode.data.type === 'group') {
+        updateMenuItem(newNode)
+      } else {
+        updateMenuItem({
+          ...newNode,
+          data: {
+            ...newNode.data,
+            actions: getDefaultActionWithTemplate(
+              settingsKey,
+              template,
+              autoAskChatGPT,
+            ),
+          },
+        })
+      }
+      setEditId(null)
+    },
+    [settingsKey],
+  )
+
   const updateMenuItem = (newNode: IContextMenuItem) => {
     setTreeData((prev) =>
       prev.map((item) => {
@@ -77,15 +156,24 @@ const ContextMenuSettings: FC<{
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const settings = await getChromeExtensionSettings()
+      const menuList = await getChromeExtensionContextMenu(settingsKey)
       if (isDestroy) return
-      console.log(settings)
-      console.log(defaultContextMenuJson)
-      if (settings[settingsKey] && (settings[settingsKey] || []).length > 0) {
-        setTreeData(settings[settingsKey] as IContextMenuItem[])
-        return
+      if (settingsKey === 'gmailToolBarContextMenu') {
+        // in ezmail diff reply group and new email group
+        if (menuType === 'reply') {
+          setTreeData(
+            menuList.filter((item) => item.id !== EZMAIL_NEW_MAIL_GROUP_ID),
+          )
+        } else {
+          setTreeData(
+            menuList.filter((item) => item.id !== EZMAIL_REPLY_GROUP_ID),
+          )
+        }
+      } else {
+        setTreeData(menuList)
       }
-      setTreeData(defaultContextMenuJson)
+
+      // setTreeData(defaultContextMenuJson)
     }
     getList()
     return () => {
@@ -96,117 +184,107 @@ const ContextMenuSettings: FC<{
     saveTreeData(settingsKey, treeData)
   }, [treeData])
   return (
-    <Paper>
-      <Stack direction={'row'} alignItems={'center'}>
-        <Box
-          height={800}
-          p={2}
-          width={'50%'}
-          flexShrink={0}
-          overflow={'auto'}
-          position={'relative'}
-        >
-          <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
-            <Button
-              disableElevation
-              variant={'contained'}
-              onClick={addNewMenuItem}
-              disabled={loading}
-            >
-              Add new option
-            </Button>
-            {/*<Button*/}
-            {/*  variant={'outlined'}*/}
-            {/*  disabled={loading}*/}
-            {/*  onClick={async () => {*/}
-            {/*    try {*/}
-            {/*      setLoading(true)*/}
-            {/*      const success = await setEzMailChromeExtensionSettings({*/}
-            {/*        contextMenus: treeData,*/}
-            {/*      })*/}
-            {/*      console.log(success)*/}
-            {/*    } catch (error) {*/}
-            {/*      console.log(error)*/}
-            {/*    } finally {*/}
-            {/*      setLoading(false)*/}
-            {/*    }*/}
-            {/*  }}*/}
-            {/*>*/}
-            {/*  Save Settings*/}
-            {/*</Button>*/}
-            <Button
-              disableElevation
-              variant={'outlined'}
-              disabled={loading}
-              onClick={async () => {
-                try {
-                  setLoading(true)
-                  setTreeData(defaultContextMenuJson || [])
-                } catch (error) {
-                  console.log(error)
-                } finally {
-                  setLoading(false)
-                }
-              }}
-            >
-              Reset options
-            </Button>
+    <Stack gap={3}>
+      <Paper elevation={0} sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}>
+        <Stack direction={'row'} alignItems={'center'}>
+          <Box
+            height={690}
+            p={2}
+            width={'50%'}
+            flexShrink={0}
+            overflow={'auto'}
+            position={'relative'}
+          >
+            <Stack>
+              <ContextMenuViewSource treeData={treeData} />
+            </Stack>
+            <DndProvider backend={MultiBackend} options={getBackendOptions()}>
+              <Tree
+                tree={treeData}
+                rootId={'root'}
+                onDrop={handleDrop}
+                sort={false}
+                classes={{
+                  placeholder: 'context-menu--placeholder',
+                }}
+                canDrag={(node) => !!node?.droppable}
+                canDrop={(tree, { dragSource, dropTargetId }) => {
+                  return (
+                    tree.find((item) => item.id === dropTargetId)?.data
+                      ?.type === 'group'
+                  )
+                }}
+                dropTargetOffset={10}
+                placeholderRender={(node, params) => (
+                  <ContextMenuPlaceholder node={node} depth={params.depth} />
+                )}
+                insertDroppableFirst={false}
+                render={(node, params) => (
+                  <ContextMenuItem
+                    isActive={editId === node.id}
+                    onEdit={setEditId}
+                    onDelete={(id) => {
+                      setTreeData((prev) => {
+                        const newTree = prev.filter((item) => item.id !== id)
+                        return newTree
+                      })
+                    }}
+                    node={node as any}
+                    params={params}
+                  />
+                )}
+              />
+            </DndProvider>
+          </Box>
+          <Stack
+            borderLeft={1}
+            borderColor={'rgba(0, 0, 0, 0.08)'}
+            flex={1}
+            width={0}
+            height={690}
+          >
+            {editNode && (
+              <ContextMenuEditFormModal
+                open={!!editNode}
+                iconSetting={iconSetting}
+                settingsKey={settingsKey}
+                onSave={handleOnSave}
+                onCancel={() => setEditId(null)}
+                node={editNode}
+              />
+            )}
           </Stack>
-          <Stack>
-            <ContextMenuViewSource treeData={treeData} />
-          </Stack>
-          <DndProvider backend={MultiBackend} options={getBackendOptions()}>
-            <Tree
-              tree={treeData}
-              rootId={'root'}
-              onDrop={handleDrop}
-              sort={false}
-              classes={{
-                placeholder: 'context-menu--placeholder',
-              }}
-              canDrop={(tree, { dragSource, dropTargetId }) => {
-                return (
-                  tree.find((item) => item.id === dropTargetId)?.data?.type ===
-                  'group'
-                )
-              }}
-              dropTargetOffset={10}
-              placeholderRender={(node, params) => (
-                <ContextMenuPlaceholder node={node} depth={params.depth} />
-              )}
-              insertDroppableFirst={false}
-              render={(node, params) => (
-                <ContextMenuItem
-                  onEdit={setEditId}
-                  onDelete={(id) => {
-                    setTreeData((prev) => {
-                      const newTree = prev.filter((item) => item.id !== id)
-                      return newTree
-                    })
-                  }}
-                  node={node as any}
-                  params={params}
-                />
-              )}
-            />
-          </DndProvider>
-        </Box>
-        <Stack borderLeft={1} flex={1} width={0} height={800}>
-          {editNode && (
-            <ContextMenuEditForm
-              iconSetting={iconSetting}
-              settingsKey={settingsKey}
-              onSave={async (newNode) => {
-                updateMenuItem(newNode)
-                setEditId(null)
-              }}
-              onCancel={() => setEditId(null)}
-              node={editNode}
-            />
-          )}
         </Stack>
+      </Paper>
+
+      <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
+        <Button
+          disableElevation
+          variant={'contained'}
+          onClick={addNewMenuItem}
+          disabled={loading}
+        >
+          Add new option
+        </Button>
+        <Button
+          disableElevation
+          variant={'outlined'}
+          disabled={loading}
+          onClick={async () => {
+            try {
+              setLoading(true)
+              setTreeData(defaultContextMenuJson || [])
+            } catch (error) {
+              console.log(error)
+            } finally {
+              setLoading(false)
+            }
+          }}
+        >
+          Reset options
+        </Button>
       </Stack>
-    </Paper>
+    </Stack>
   )
 }
 export default ContextMenuSettings

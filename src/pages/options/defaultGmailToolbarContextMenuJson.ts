@@ -1,95 +1,160 @@
 import { IContextMenuItem } from '@/features/contextMenu'
+import {
+  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  EZMAIL_REPLY_CTA_BUTTON_ID,
+  EZMAIL_REPLY_GROUP_ID,
+  EZMAIL_NEW_MAIL_GROUP_ID,
+} from '@/types'
 
 export default [
   {
-    id: 'f6040e1a-9c85-48c5-bff5-c09d4eafb37f',
-    parent: '89fcbb28-cf6f-4629-be3b-a8a5b14e6efe',
+    id: '4e54395c-5e8b-4bbd-a309-b6057a4737d3',
+    parent: EZMAIL_NEW_MAIL_GROUP_ID,
     droppable: true,
-    text: 'EzMail Button Action',
+    text: 'Improve writing',
     data: {
       editable: true,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template: 'Write an email to reply:\n {{GMAIL_MESSAGE_CONTEXT}}',
-          },
-        },
-        {
           type: 'INSERT_USER_INPUT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            template: 'Improve writing',
           },
         },
       ],
+      icon: 'AutoFix',
     },
   },
   {
-    id: '4345a68e-a3c1-4173-ac70-2ab917c82739',
-    parent: '89fcbb28-cf6f-4629-be3b-a8a5b14e6efe',
+    id: '496d1369-941d-49a5-a9ce-68eadd7601de',
+    parent: EZMAIL_NEW_MAIL_GROUP_ID,
     droppable: true,
-    text: 'Ezmail Button Action2',
+    text: 'Fix spelling & grammar',
     data: {
       editable: true,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              'Write an email to reply:\n"""\n {{GMAIL_MESSAGE_CONTEXT}}\n"""',
-          },
-        },
-        {
           type: 'INSERT_USER_INPUT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            template: 'Fix spelling & grammar',
           },
         },
       ],
+      icon: 'Done',
     },
   },
   {
-    id: 'c837d69f-2dd8-4766-87d3-b0ded16ae4f3',
-    parent: '89fcbb28-cf6f-4629-be3b-a8a5b14e6efe',
+    id: '84060107-e962-412b-afa2-f8134e593320',
+    parent: EZMAIL_REPLY_GROUP_ID,
     droppable: true,
-    text: 'Improve writing draft',
+    text: 'Paraphrase',
     data: {
       editable: true,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              'Improve the writing in the following text, do not write explanations:\n{{GMAIL_DRAFT_CONTEXT}}',
-          },
-        },
-        {
           type: 'INSERT_USER_INPUT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            template: 'Paraphrase',
           },
         },
       ],
+      icon: 'Autorenew',
     },
   },
   {
-    id: '89fcbb28-cf6f-4629-be3b-a8a5b14e6efe',
+    id: '6de2edc2-019f-4a6c-9051-a15aa11338a0',
+    parent: EZMAIL_REPLY_GROUP_ID,
+    droppable: true,
+    text: 'Hello word',
+    data: {
+      droppable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: 'Say hello word',
+          },
+        },
+      ],
+      icon: 'Autorenew',
+    },
+  },
+  {
+    id: EZMAIL_REPLY_GROUP_ID,
     parent: 'root',
     droppable: true,
-    text: 'Dropdown list',
+    text: 'Adjust draft',
     data: {
-      editable: false,
+      editable: true,
       type: 'group',
       actions: [],
+    },
+  },
+  {
+    id: EZMAIL_NEW_MAIL_GROUP_ID,
+    parent: 'root',
+    droppable: false,
+    text: 'Adjust new email',
+    data: {
+      editable: true,
+      type: 'group',
+      actions: [],
+    },
+  },
+  {
+    id: EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+    parent: 'root',
+    droppable: false,
+    text: 'EzMail',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      icon: 'EzMail',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              '"""\n{{GMAIL_MESSAGE_CONTEXT}}\n"""\nWrite a reply to the email above: EZMAIL_NEW_EMAIL_CTA_BUTTON_ID',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+    },
+  },
+  {
+    id: EZMAIL_REPLY_CTA_BUTTON_ID,
+    parent: 'root',
+    droppable: false,
+    text: 'EzMail',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      icon: 'EzMail',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              '"""\n{{GMAIL_MESSAGE_CONTEXT}}\n"""\nWrite a reply to the email above: EZMAIL_REPLY_CTA_BUTTON_ID',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
     },
   },
 ] as IContextMenuItem[]

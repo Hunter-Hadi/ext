@@ -1,4 +1,4 @@
-import { atom } from 'recoil'
+import { atom, selector } from 'recoil'
 import * as InboxSDK from '@inboxsdk/core'
 import { ComposeView } from '@inboxsdk/core'
 import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
@@ -70,5 +70,19 @@ export const GmailMessageChatConversationState = atom<{
     lastMessageId: '',
     model: '',
     loading: false,
+  },
+})
+
+export type IInboxMessageType = 'new-email' | 'reply'
+
+export const CurrentInboxMessageTypeSelector = selector<IInboxMessageType>({
+  key: 'CurrentInboxMessageTypeSelector',
+  get: ({ get }) => {
+    const currentMessageId = get(InboxEditState).currentMessageId
+    if (currentMessageId?.includes('newDraft_')) {
+      return 'new-email'
+    } else {
+      return 'reply'
+    }
   },
 })

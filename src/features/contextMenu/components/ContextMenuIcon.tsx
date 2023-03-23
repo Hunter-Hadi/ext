@@ -23,6 +23,7 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
 
 import { SxProps } from '@mui/material'
+import { EzMailAIIcon } from '@/components/CustomIcon'
 export const CONTEXT_MENU_ICONS = [
   'AutoFix',
   'Done',
@@ -107,6 +108,8 @@ const ContextMenuIcon: FC<{
       return <SchoolOutlinedIcon sx={sxMemo} />
     case 'SmartToy':
       return <SmartToyOutlinedIcon sx={sxMemo} />
+    case 'EzMail':
+      return <EzMailAIIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

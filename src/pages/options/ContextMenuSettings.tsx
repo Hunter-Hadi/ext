@@ -12,7 +12,7 @@ import { v4 } from 'uuid'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
-  getChromeExtensionContextMenu,
+  getFilteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
   setChromeExtensionSettings,
 } from '@/utils'
@@ -20,6 +20,9 @@ import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
 import { EZMAIL_NEW_MAIL_GROUP_ID, EZMAIL_REPLY_GROUP_ID } from '@/types'
 import ContextMenuViewSource from './components/ContextMenuViewSource'
+import { useRecoilValue } from 'recoil'
+import { CurrentInboxMessageTypeSelector } from '@/features/gmail'
+
 const rootId = 'root'
 
 const saveTreeData = async (
@@ -97,6 +100,7 @@ const ContextMenuSettings: FC<{
   const [loading, setLoading] = useState(false)
   const [editId, setEditId] = useState<string | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
+  const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   const editNode = useMemo(() => {
     return treeData.find((item) => item.id === editId) || null
   }, [treeData, editId])
@@ -156,7 +160,7 @@ const ContextMenuSettings: FC<{
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const menuList = await getChromeExtensionContextMenu(settingsKey)
+      const menuList = await getFilteredTypeGmailToolBarContextMenu(messageType)
       if (isDestroy) return
       if (settingsKey === 'gmailToolBarContextMenu') {
         // in ezmail diff reply group and new email group
@@ -179,7 +183,7 @@ const ContextMenuSettings: FC<{
     return () => {
       isDestroy = true
     }
-  }, [])
+  }, [messageType])
   useEffect(() => {
     saveTreeData(settingsKey, treeData)
   }, [treeData])

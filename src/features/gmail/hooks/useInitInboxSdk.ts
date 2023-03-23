@@ -16,6 +16,7 @@ import {
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
 import {
+  getChromeExtensionContextMenu,
   getFilteredTypeGmailToolBarContextMenu,
   hideChatBox,
   showChatBox,
@@ -122,9 +123,12 @@ const useInitInboxSdk = () => {
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
               const gmailToolBarContextMenu =
-                await getFilteredTypeGmailToolBarContextMenu(
+                getFilteredTypeGmailToolBarContextMenu(
                   newMessageId ? 'reply' : 'new-email',
                   true,
+                  await getChromeExtensionContextMenu(
+                    'gmailToolBarContextMenu',
+                  ),
                 )
 
               console.log('gmailToolBarContextMenu', gmailToolBarContextMenu)

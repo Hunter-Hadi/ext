@@ -179,7 +179,7 @@ const ContextMenuList: FC<{
       let menuList = await getChromeExtensionContextMenu(settingsKey)
 
       if (settingsKey === 'gmailToolBarContextMenu') {
-        menuList = await getFilteredTypeGmailToolBarContextMenu(
+        menuList = getFilteredTypeGmailToolBarContextMenu(
           messageType,
           true,
           menuList,

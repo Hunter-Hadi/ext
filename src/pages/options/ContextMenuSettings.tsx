@@ -12,16 +12,19 @@ import { v4 } from 'uuid'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
+  getChromeExtensionContextMenu,
   getFilteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
   setChromeExtensionSettings,
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
-import { EZMAIL_NEW_MAIL_GROUP_ID, EZMAIL_REPLY_GROUP_ID } from '@/types'
+import {
+  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  EZMAIL_REPLY_CTA_BUTTON_ID,
+} from '@/types'
 import ContextMenuViewSource from './components/ContextMenuViewSource'
-import { useRecoilValue } from 'recoil'
-import { CurrentInboxMessageTypeSelector } from '@/features/gmail'
+import { IInboxMessageType } from '@/features/gmail'
 
 const rootId = 'root'
 
@@ -30,6 +33,7 @@ const saveTreeData = async (
   treeData: IContextMenuItem[],
 ) => {
   try {
+    console.log('saveTreeData', key, treeData)
     const success = await setChromeExtensionSettings({
       [key]: treeData,
     } as any)
@@ -88,7 +92,7 @@ const getDefaultActionWithTemplate = (
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsKey
-  menuType?: 'reply' | 'new-email'
+  menuType?: IInboxMessageType
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {
   const {
@@ -100,7 +104,6 @@ const ContextMenuSettings: FC<{
   const [loading, setLoading] = useState(false)
   const [editId, setEditId] = useState<string | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
-  const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   const editNode = useMemo(() => {
     return treeData.find((item) => item.id === editId) || null
   }, [treeData, editId])
@@ -160,30 +163,35 @@ const ContextMenuSettings: FC<{
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const menuList = await getFilteredTypeGmailToolBarContextMenu(messageType)
+      const menuList = await getChromeExtensionContextMenu(settingsKey)
       if (isDestroy) return
-      if (settingsKey === 'gmailToolBarContextMenu') {
-        // in ezmail diff reply group and new email group
-        if (menuType === 'reply') {
-          setTreeData(
-            menuList.filter((item) => item.id !== EZMAIL_NEW_MAIL_GROUP_ID),
-          )
-        } else {
-          setTreeData(
-            menuList.filter((item) => item.id !== EZMAIL_REPLY_GROUP_ID),
-          )
-        }
-      } else {
-        setTreeData(menuList)
-      }
-
-      // setTreeData(defaultContextMenuJson)
+      setTreeData(menuList)
     }
     getList()
     return () => {
       isDestroy = true
     }
-  }, [messageType])
+  }, [settingsKey])
+
+  const treeDataFilterByMenuType = useMemo(() => {
+    if (!menuType) return treeData
+    let filterdList = getFilteredTypeGmailToolBarContextMenu(
+      menuType,
+      false,
+      treeData,
+    )
+    if (menuType === 'reply') {
+      filterdList = filterdList.filter(
+        (item) => item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+      )
+    } else {
+      filterdList = filterdList.filter(
+        (item) => item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+      )
+    }
+    return filterdList
+  }, [treeData, menuType])
+
   useEffect(() => {
     saveTreeData(settingsKey, treeData)
   }, [treeData])
@@ -191,7 +199,7 @@ const ContextMenuSettings: FC<{
     <Stack gap={3}>
       <Paper elevation={0} sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}>
         <Box
-          height={690}
+          height={640}
           p={2}
           width={'50%'}
           flexShrink={0}
@@ -203,7 +211,7 @@ const ContextMenuSettings: FC<{
           </Stack>
           <DndProvider backend={MultiBackend} options={getBackendOptions()}>
             <Tree
-              tree={treeData}
+              tree={treeDataFilterByMenuType}
               rootId={'root'}
               onDrop={handleDrop}
               sort={false}

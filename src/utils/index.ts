@@ -159,33 +159,30 @@ export const getChromeExtensionContextMenu = async (
   menuType: IChromeExtensionSettingsKey,
 ) => {
   const settings = await getChromeExtensionSettings()
-
   const defaultMenus = {
     contextMenus: defaultContextMenuJson,
     gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
   }
-
-  return settings[menuType] ?? defaultMenus[menuType]
-  // debugger
-  // return defaultMenus[menuType]
+  const cacheMenus = settings[menuType]
+  if (cacheMenus && cacheMenus.length > 0) {
+    return cacheMenus
+  } else {
+    return defaultMenus[menuType]
+  }
 }
 
-export const getFilteredTypeGmailToolBarContextMenu = async (
+export const getFilteredTypeGmailToolBarContextMenu = (
   messageType: IInboxMessageType,
   filterCTAButton = false,
-  defaultMenuList?: IContextMenuItem[],
+  sourceList: IContextMenuItem[],
 ) => {
-  let menuList =
-    defaultMenuList ||
-    (await getChromeExtensionContextMenu('gmailToolBarContextMenu'))
+  let menuList = sourceList
   if (filterCTAButton) {
-    menuList = menuList.filter((item) => {
-      if (messageType === 'reply') {
-        return item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID
-      } else {
-        return item.id !== EZMAIL_REPLY_CTA_BUTTON_ID
-      }
-    })
+    menuList = menuList.filter(
+      (item) =>
+        item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+        item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+    )
   }
   if (messageType === 'reply') {
     return menuList.filter((item) => item.id !== EZMAIL_NEW_MAIL_GROUP_ID)

@@ -9,6 +9,7 @@ import {
   Switch,
   TextField,
   Typography,
+  Container,
 } from '@mui/material'
 import {
   CONTEXT_MENU_ICONS,
@@ -21,7 +22,9 @@ import AceEditor from 'react-ace'
 import 'ace-builds/src-noconflict/mode-handlebars'
 import 'ace-builds/src-noconflict/theme-monokai'
 import langTools from 'ace-builds/src-noconflict/ext-language_tools'
-const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+import TemplateTooltip from './TemplateTooltip'
+import { templateStaticWords } from '@/features/shortcuts/utils'
+// const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const staticWordCompleter = {
   getCompletions(
@@ -31,22 +34,7 @@ const staticWordCompleter = {
     prefix: string,
     callback: any,
   ) {
-    const wordList = isEzMailApp
-      ? [
-          // gmail
-          'GMAIL_MESSAGE_CONTEXT',
-          'GMAIL_DRAFT_CONTEXT',
-          // system
-          'LAST_ACTION_OUTPUT',
-          'USER_INPUT',
-          'HIGHLIGHTED_TEXT',
-        ]
-      : [
-          // system
-          'LAST_ACTION_OUTPUT',
-          'USER_INPUT',
-          'HIGHLIGHTED_TEXT',
-        ]
+    const wordList = templateStaticWords
     callback(null, [
       ...wordList.map(function (word) {
         return {
@@ -91,152 +79,156 @@ const ContextMenuEditForm: FC<{
   }, [node])
   return (
     <Modal open={open} onClose={onCancel}>
-      <Stack
-        spacing={2}
-        p={4}
+      <Container
+        maxWidth={'lg'}
         sx={{
           position: 'absolute',
           top: '40%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          bgcolor: '#fff',
-          width: '80vw',
-          minHeight: '60vh',
           borderRadius: 2,
+          bgcolor: '#fff',
+          width: '80%',
+          p: 4,
         }}
       >
-        <Typography variant={'h6'}>
-          Edit Menu Item{isDisabled ? '(Read only)' : ''}
-        </Typography>
-        <TextField
-          disabled={isDisabled}
-          size={'small'}
-          value={editNode.text}
-          label={'Menu Name'}
-          onChange={(event) => {
-            setEditNode((prev) => {
-              return {
-                ...prev,
-                text: event.target.value,
-              }
-            })
-          }}
-        />
-        {iconSetting && (
-          <Stack>
-            <Typography variant={'body1'}>Menu Icon</Typography>
-            <Stack
-              flexWrap={'wrap'}
-              gap={1}
-              direction={'row'}
-              alignItems={'center'}
-              sx={{ maxHeight: '60px', overflowY: 'scroll' }}
-            >
-              {CONTEXT_MENU_ICONS.map((icon) => {
-                return (
-                  <Button
-                    disabled={isDisabled}
-                    sx={{ minWidth: 'unset', px: 1, py: 0.5 }}
-                    variant={
-                      icon === (selectedIcon as string)
-                        ? 'contained'
-                        : 'outlined'
-                    }
-                    key={icon}
-                    onClick={() => {
-                      setSelectedIcon(icon)
-                      setEditNode((prev) => {
-                        return {
-                          ...prev,
-                          data: {
-                            ...prev.data,
-                            icon,
-                          },
-                        }
-                      })
-                    }}
-                  >
-                    <ContextMenuIcon icon={icon} />
-                  </Button>
-                )
-              })}
-            </Stack>
-          </Stack>
-        )}
-        {node.data.type === 'shortcuts' && (
-          <>
-            <Typography variant={'body1'}>Template</Typography>
-            <Box position={'relative'} width={'100%'} height={280}>
-              <AceEditor
-                width={'100%'}
-                height={'100%'}
-                value={template}
-                showPrintMargin={true}
-                showGutter={true}
-                fontSize={14}
-                mode={'handlebars'}
-                theme={'monokai'}
-                onChange={(value) => {
-                  setTemplate(value)
-                }}
-                name={'editor-with-chrome-extension'}
-                editorProps={{
-                  $blockScrolling: true,
-                }}
-                setOptions={{
-                  enableBasicAutocompletion: true,
-                  enableLiveAutocompletion: true,
-                  enableSnippets: false,
-                  showLineNumbers: true,
-                  wrap: true,
-                  tabSize: 2,
-                }}
-                enableBasicAutocompletion
-                enableLiveAutocompletion
-              />
-            </Box>
-          </>
-        )}
-
-        {node.data.type === 'shortcuts' &&
-          settingsKey === 'gmailToolBarContextMenu' && (
-            <FormControlLabel
-              control={<Switch checked={autoAskChatGPT} />}
-              label="Auto Ask ChatGPT"
-              value={autoAskChatGPT}
-              disabled={isDisabled}
-              onChange={(event: any) => {
-                setAutoAskChatGPT(event.target.checked)
-              }}
-            />
-          )}
-        <Stack
-          direction={'row'}
-          mt={'auto!important'}
-          mb={0}
-          alignItems={'center'}
-          spacing={1}
-          justifyContent={'center'}
-        >
-          <Button
-            variant={'outlined'}
-            onClick={() => {
-              onCancel?.()
-            }}
-          >
-            Cancel
-          </Button>
-          <Button
+        <Stack spacing={2} minHeight={'60vh'}>
+          <Typography variant={'h6'}>
+            Edit Menu Item{isDisabled ? '(Read only)' : ''}
+          </Typography>
+          <TextField
             disabled={isDisabled}
-            variant={'contained'}
-            onClick={() => {
-              onSave && onSave(editNode, template, autoAskChatGPT)
+            size={'small'}
+            value={editNode.text}
+            label={'Menu Name'}
+            onChange={(event) => {
+              setEditNode((prev) => {
+                return {
+                  ...prev,
+                  text: event.target.value,
+                }
+              })
             }}
+          />
+          {iconSetting && (
+            <Stack>
+              <Typography variant={'body1'}>Menu Icon</Typography>
+              <Stack
+                flexWrap={'wrap'}
+                gap={1}
+                direction={'row'}
+                alignItems={'center'}
+                sx={{ maxHeight: '60px', overflowY: 'scroll' }}
+              >
+                {CONTEXT_MENU_ICONS.map((icon) => {
+                  return (
+                    <Button
+                      disabled={isDisabled}
+                      sx={{ minWidth: 'unset', px: 1, py: 0.5 }}
+                      variant={
+                        icon === (selectedIcon as string)
+                          ? 'contained'
+                          : 'outlined'
+                      }
+                      key={icon}
+                      onClick={() => {
+                        setSelectedIcon(icon)
+                        setEditNode((prev) => {
+                          return {
+                            ...prev,
+                            data: {
+                              ...prev.data,
+                              icon,
+                            },
+                          }
+                        })
+                      }}
+                    >
+                      <ContextMenuIcon icon={icon} />
+                    </Button>
+                  )
+                })}
+              </Stack>
+            </Stack>
+          )}
+          {node.data.type === 'shortcuts' && (
+            <>
+              <Stack direction={'row'} alignItems="center">
+                <Typography variant={'body1'}>Template</Typography>
+                <TemplateTooltip />
+              </Stack>
+              <Box position={'relative'} width={'100%'} height={280}>
+                <AceEditor
+                  width={'100%'}
+                  height={'100%'}
+                  value={template}
+                  showPrintMargin={true}
+                  showGutter={true}
+                  fontSize={14}
+                  mode={'handlebars'}
+                  theme={'monokai'}
+                  onChange={(value) => {
+                    setTemplate(value)
+                  }}
+                  name={'editor-with-chrome-extension'}
+                  editorProps={{
+                    $blockScrolling: true,
+                  }}
+                  setOptions={{
+                    enableBasicAutocompletion: true,
+                    enableLiveAutocompletion: true,
+                    enableSnippets: false,
+                    showLineNumbers: true,
+                    wrap: true,
+                    tabSize: 2,
+                  }}
+                  enableBasicAutocompletion
+                  enableLiveAutocompletion
+                />
+              </Box>
+            </>
+          )}
+
+          {node.data.type === 'shortcuts' &&
+            settingsKey === 'gmailToolBarContextMenu' && (
+              <FormControlLabel
+                control={<Switch checked={autoAskChatGPT} />}
+                label="Auto Ask ChatGPT"
+                value={autoAskChatGPT}
+                disabled={isDisabled}
+                onChange={(event: any) => {
+                  setAutoAskChatGPT(event.target.checked)
+                }}
+              />
+            )}
+          <Stack
+            direction={'row'}
+            mt={'auto!important'}
+            mb={0}
+            alignItems={'center'}
+            spacing={1}
+            justifyContent={'center'}
           >
-            Save
-          </Button>
+            <Button
+              variant={'outlined'}
+              onClick={() => {
+                onCancel?.()
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              disabled={isDisabled}
+              variant={'contained'}
+              onClick={() => {
+                onSave && onSave(editNode, template, autoAskChatGPT)
+              }}
+            >
+              Save
+            </Button>
+          </Stack>
         </Stack>
-      </Stack>
+      </Container>
     </Modal>
   )
 }

@@ -86,7 +86,6 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
   if (dragId === dropId) {
     return false
   }
-  const dragNode = treeData.find((item) => item.id === dragId)
   const dropNode = treeData.find((item) => item.id === dropId)
   if (!dropNode) {
     return false
@@ -98,7 +97,6 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
     }
     parentNode = treeData.find((item) => item.id === parentNode.parentId)
   }
-  console.log(dragNode.id, dropNode?.parent, dropId)
   return dropNode?.data?.type === 'group'
 }
 

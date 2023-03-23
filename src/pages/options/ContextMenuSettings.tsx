@@ -88,6 +88,26 @@ const getDefaultActionWithTemplate = (
   }
   return currentActions
 }
+const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
+  if (dragId === dropId) {
+    return false
+  }
+  const dropNode = treeData.find((item) => item.id === dropId)
+  if (!dropNode) {
+    return false
+  }
+  if (dropNode?.data?.type !== 'group') {
+    return false
+  }
+  let parentNode = treeData.find((item) => item.id === dropNode.parent)
+  while (parentNode && parentNode.parentId !== rootId) {
+    if (parentNode.id === dragId) {
+      return false
+    }
+    parentNode = treeData.find((item) => item.id === parentNode.parentId)
+  }
+  return true
+}
 
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
@@ -220,9 +240,11 @@ const ContextMenuSettings: FC<{
               }}
               canDrag={(node) => !!node?.droppable}
               canDrop={(tree, { dragSource, dropTargetId }) => {
-                return (
-                  tree.find((item) => item.id === dropTargetId)?.data?.type ===
-                  'group'
+                if (!dragSource) return false
+                return isTreeNodeCanDrop(
+                  tree,
+                  String(dragSource.id),
+                  String(dropTargetId),
                 )
               }}
               dropTargetOffset={10}

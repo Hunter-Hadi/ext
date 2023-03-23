@@ -41,7 +41,8 @@ import {
 } from '@/types'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
-import { IInboxMessageType } from '@/features/gmail'
+import { IInboxMessageType } from '@/features/gmail/store'
+import { pingDaemonProcess } from '@/features/chatgpt/utils'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -82,6 +83,7 @@ export const showChatBox = () => {
     }, 300)
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
+      pingDaemonProcess()
     }, 1000)
   }
 }

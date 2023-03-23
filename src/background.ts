@@ -236,6 +236,7 @@ Browser.runtime.onConnect.addListener((port) => {
         {
           chatGPTProxyInstanceStatus = 'loading'
           finallyActiveTabId = port.sender?.tab?.id
+          console.log('createDaemonProcessTab111')
           await createDaemonProcessTab()
         }
         break

@@ -2,6 +2,176 @@ import { IContextMenuItem } from '@/features/contextMenu'
 
 export default [
   {
+    id: '81343baa-2aa4-4435-afd3-f3501f51b708',
+    parent: '575a2d26-a216-4290-88fc-9121c03097a9',
+    droppable: true,
+    text: 'Like',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'Ignore all previous instructions.\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a positive reply to the text above agreeing. Keep response length similar to original. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ],
+      icon: 'ThumbUpAlt',
+    },
+  },
+  {
+    id: '120f9cb1-28c9-4ed2-9752-e13d09cab2fd',
+    parent: '575a2d26-a216-4290-88fc-9121c03097a9',
+    droppable: true,
+    text: 'Dislike',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'Ignore all previous instructions.\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a negative reply to the text above disagreeing. Keep response length similar to original. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ],
+      icon: 'ThumbUpAlt',
+    },
+  },
+  {
+    id: '2423cca6-564a-496d-93da-00ac5ac9bab5',
+    parent: '575a2d26-a216-4290-88fc-9121c03097a9',
+    droppable: true,
+    text: 'Support',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'Ignore all previous instructions.\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a positive reply to the text above supporting it. Keep response length similar to original. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ],
+      icon: 'SentimentSatisfiedAlt',
+    },
+  },
+  {
+    id: 'fec0124d-685c-4285-9dfc-b6c230a9161a',
+    parent: '575a2d26-a216-4290-88fc-9121c03097a9',
+    droppable: true,
+    text: 'Joke',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'Ignore all previous instructions.\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a humorous reply to the text above joking about it in a friendly way. Keep response length similar to original. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ],
+      icon: 'SentimentSatisfiedAlt',
+    },
+  },
+  {
+    id: '0689088d-8eaa-4a1c-b842-0acd6a865066',
+    parent: '575a2d26-a216-4290-88fc-9121c03097a9',
+    droppable: true,
+    text: 'Idea',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'Ignore all previous instructions.\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above with a few suggestive ideas. Keep response length similar to original. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ],
+      icon: 'TipsAndUpdates',
+    },
+  },
+  {
+    id: 'e98d9fe0-4412-4ead-9799-e4a384ad0c77',
+    parent: '575a2d26-a216-4290-88fc-9121c03097a9',
+    droppable: true,
+    text: 'Question',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'Ignore all previous instructions.\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above including a question. Keep response length similar to original. Do not write explanations. Do not echo my prompt. Do not remind me what I asked you for. Do not apologize. Do not self-reference. Do not use generic filler phrases. Get to the point precisely and accurately. Do not explain what and why, just give me your best possible result.',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ],
+      icon: 'Question',
+    },
+  },
+  {
+    id: '80c3e093-99f6-4a31-b7a1-2830772bd8ff',
+    parent: '575a2d26-a216-4290-88fc-9121c03097a9',
+    droppable: true,
+    text: 'Enter prompt',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'Ignore all previous instructions.\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above:',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      icon: 'DefaultIcon',
+    },
+  },
+  {
     id: 'b517f321-5533-41e5-8ed0-64eb6aa4b7bd',
     parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
     droppable: true,
@@ -429,6 +599,18 @@ export default [
         },
       ],
       icon: 'ListAlt',
+    },
+  },
+  {
+    id: '575a2d26-a216-4290-88fc-9121c03097a9',
+    parent: '80e6d17b-2cf5-456b-944b-5f645f0e12de',
+    droppable: true,
+    text: 'Reply to this',
+    data: {
+      editable: true,
+      type: 'group',
+      actions: [],
+      icon: 'DefaultIcon',
     },
   },
   {

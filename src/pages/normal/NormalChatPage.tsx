@@ -19,6 +19,7 @@ const NormalChatPage = () => {
     retryMessage,
     inputValue,
     stopGenerateMessage,
+    resetConversation,
   } = useMessageWithChatGPT('')
   useEffect(() => {
     pingDaemonProcess()
@@ -38,6 +39,7 @@ const NormalChatPage = () => {
         onRetry={retryMessage}
         onReGenerate={reGenerate}
         onStopGenerate={stopGenerateMessage}
+        onReset={resetConversation}
       />
     </Stack>
   )

@@ -30,6 +30,7 @@ const GmailChatPage = () => {
     inputValue,
     setShortCuts,
     stopGenerateMessage,
+    resetConversation,
   } = useShortCutsWithMessageChat('')
 
   useEffect(() => {
@@ -91,6 +92,7 @@ const GmailChatPage = () => {
         onRetry={retryMessage}
         onReGenerate={reGenerate}
         onStopGenerate={stopGenerateMessage}
+        onReset={resetConversation}
       />
     </Stack>
   )

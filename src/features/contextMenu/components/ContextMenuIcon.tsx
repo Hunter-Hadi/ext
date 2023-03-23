@@ -15,7 +15,6 @@ import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
-import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined'
 import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined'
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
@@ -125,8 +124,6 @@ const ContextMenuIcon: FC<{
       return <StarBorderIcon sx={sxMemo} />
     case 'TipsAndUpdates':
       return <TipsAndUpdatesOutlinedIcon sx={sxMemo} />
-    case 'ThumbUpAlt':
-      return <ThumbUpAltOutlinedIcon sx={sxMemo} />
     case 'SentimentSatisfiedAlt':
       return <SentimentSatisfiedAltOutlinedIcon sx={sxMemo} />
     case 'Campaign':

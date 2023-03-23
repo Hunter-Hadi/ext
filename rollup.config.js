@@ -14,6 +14,7 @@ import alias from '@rollup/plugin-alias'
 import dayjs from 'dayjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import html from '@rollup/plugin-html'
+import modifyManifest from './modifyManifest'
 
 const isProduction = process.env.NODE_ENV === 'production'
 function getArgs() {
@@ -88,6 +89,15 @@ export default [
           hook: 'generateBundle',
         }),
       nodeResolve(),
+      // APP_ENV === 'USE_CHAT_GPT_AI' &&
+      //   copy({
+      //     targets: [{ src: 'inject-fetch.js', dest: 'dist' }],
+      //     hook: 'generateBundle',
+      //   }),
+      modifyManifest({
+        env: APP_ENV,
+        isProd: isProduction,
+      }),
     ],
   },
   {

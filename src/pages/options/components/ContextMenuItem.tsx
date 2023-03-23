@@ -6,14 +6,17 @@ import { NodeRender } from '@minoru/react-dnd-treeview'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 
 const ContextMenuItem = (props: {
+  isActive?: boolean
   node: IContextMenuItem
   params: Parameters<NodeRender<IContextMenuItem>>[1]
   onEdit?: (id: string) => void
   onDelete?: (id: string) => void
 }) => {
   const {
+    isActive = false,
     node,
     params: { depth, isOpen, onToggle },
     onEdit,
@@ -26,11 +29,27 @@ const ContextMenuItem = (props: {
       alignItems={'center'}
       height={32}
       sx={{
-        marginLeft: depth * 10 + (node.data.type === 'group' ? 0 : 24) + 'px',
+        position: 'relative',
+        background: isActive
+          ? 'linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)), #FFFFFF'
+          : 'unset',
+        pl: depth * 10 + (node.data.type === 'group' ? 0 : 24) + 'px',
       }}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
+      {node.data.type !== 'group' && node.droppable && isActive && (
+        <DragIndicatorIcon
+          sx={{
+            position: 'absolute',
+            left: 0,
+            fontSize: 24,
+            cursor: 'move',
+            flexShrink: 0,
+            color: '#00000061',
+          }}
+        />
+      )}
       {node.data.type === 'group' &&
         (isOpen ? (
           <ArrowDropDownIcon

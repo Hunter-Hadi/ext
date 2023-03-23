@@ -5,6 +5,15 @@ export const ROOT_DAEMON_PROCESS_ID = `${APP_ROOT_ID}_DaemonProcess`
 export const ROOT_CONTAINER_WRAPPER_ID = `${APP_ROOT_ID}_Wrapper`
 export const ROOT_CHAT_BOX_INPUT_ID = `${APP_ROOT_ID}_ChatBox_Input`
 
+// ezmail reply group
+export const EZMAIL_REPLY_GROUP_ID = `EzMail_Reply_Group`
+// ezmail new email group
+export const EZMAIL_NEW_MAIL_GROUP_ID = `EzMail_New_Mail_Group`
+// ezmail new email cta button
+export const EZMAIL_NEW_EMAIL_CTA_BUTTON_ID = `EzMail_New_Mail_CTA_Button`
+// ezmail reply cta button
+export const EZMAIL_REPLY_CTA_BUTTON_ID = `EzMail_Reply_CTA_Button`
+
 // context menu
 export const ROOT_CONTEXT_MENU_ID = `${APP_ROOT_ID}_Context_Menu`
 export const ROOT_CONTEXT_MENU_PORTAL_ID = `${APP_ROOT_ID}_Context_Menu_Portal`

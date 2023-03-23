@@ -3,18 +3,21 @@ import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useRangy } from '@/features/contextMenu/hooks'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
+import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
+import { Item, Separator, Submenu } from 'react-contexify'
 import {
-  IContextMenuItem,
-  IContextMenuItemWithChildren,
-} from '@/features/contextMenu/store'
-import { Item, Submenu } from 'react-contexify'
-import {
-  getChromeExtensionSettings,
+  getChromeExtensionContextMenu,
+  getFilteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
 } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { CurrentInboxMessageTypeSelector } from '@/features/gmail'
+import { useRecoilValue } from 'recoil'
+import SettingsIcon from '@mui/icons-material/Settings'
+import Browser from 'webextension-polyfill'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
 const ContextMenuContext = React.createContext<{
   staticButton?: boolean
@@ -33,7 +36,7 @@ const ShortCutsButtonItem: FC<{
     if (running) {
       const actions = menuItem.data.actions
       if (actions && actions.length > 0) {
-        console.log(contextMenuContext)
+        console.log('actions', actions)
         let setActions = cloneDeep(actions)
         if (contextMenuContext.staticButton) {
           setActions = setActions.map((action) => {
@@ -94,6 +97,7 @@ const ShortCutsButtonItem: FC<{
       </Submenu>
     )
   }
+
   return (
     <Item
       onClick={({ event }) => {
@@ -162,37 +166,35 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 
 const ContextMenuList: FC<{
   staticButton?: boolean
-  defaultContextMenuJson: IContextMenuItem[]
+  // defaultContextMenuJson: IContextMenuItem[]
   settingsKey: IChromeExtensionSettingsKey
 }> = (props) => {
-  const { defaultContextMenuJson, settingsKey } = props
+  const { settingsKey } = props
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
   const { rangyState, parseRangySelectRangeData } = useRangy()
+  const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const settings = await getChromeExtensionSettings()
+      let menuList = await getChromeExtensionContextMenu(settingsKey)
+
+      if (settingsKey === 'gmailToolBarContextMenu') {
+        menuList = await getFilteredTypeGmailToolBarContextMenu(
+          messageType,
+          true,
+          menuList,
+        )
+      }
       if (isDestroy) return
-      setList(
-        groupByContextMenuItem(settings[settingsKey] || defaultContextMenuJson),
-      )
+      setList(groupByContextMenuItem(menuList))
     }
     getList()
     return () => {
       isDestroy = true
     }
-  }, [])
+  }, [messageType])
   const sortBySettingsKey = useMemo(() => {
-    if (settingsKey === 'gmailToolBarContextMenu') {
-      return cloneDeep(list).map((group, index) => {
-        if (index === 0) {
-          // gmail只有一个group
-          // group第一个作为cta button
-          group.children = group.children.slice(1)
-        }
-        return group
-      })
-    } else if (settingsKey === 'contextMenus') {
+    if (settingsKey === 'contextMenus') {
       const editOrReviewSelection = list.find(
         (group) => group.text === 'Edit or review selection',
       )
@@ -223,22 +225,33 @@ const ContextMenuList: FC<{
     list,
     settingsKey,
   ])
-  console.log(sortBySettingsKey, settingsKey)
+  // console.log('sortBySettingsKey', sortBySettingsKey, settingsKey)
   return (
-    <Stack
-      sx={
-        {
-          // overflowY: 'hidden',
-        }
-      }
-    >
+    <Stack>
       <ContextMenuContext.Provider value={{ staticButton: props.staticButton }}>
-        {/*{settingsKey === 'gmailToolBarContextMenu' && (*/}
-        {/*  <>*/}
-        {/*    <CustomizeButton />*/}
-        {/*    <Separator />*/}
-        {/*  </>*/}
-        {/*)}*/}
+        <Item
+          id="Add new prompt template"
+          onClick={() => {
+            const port = Browser.runtime.connect()
+            port &&
+              port.postMessage({
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                event: 'Client_openUrlInNewTab',
+                data: {
+                  key: 'options',
+                },
+              })
+            port.disconnect()
+          }}
+        >
+          <Stack direction={'row'} alignItems={'center'} gap={1}>
+            <SettingsIcon sx={{ fontSize: 14 }} />
+            <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
+              Add new prompt template
+            </Typography>
+          </Stack>
+        </Item>
+        <Separator />
         {sortBySettingsKey.map((menuItem, index) => {
           return <ListItem key={index} menuItem={menuItem} />
         })}

@@ -19,5 +19,8 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    // disable the rule for all files
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+  },
 }

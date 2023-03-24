@@ -5,6 +5,7 @@ import Browser from 'webextension-polyfill'
 import debounce from 'lodash-es/debounce'
 import {
   CHROME_EXTENSION_DOC_URL,
+  CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/types'
 
@@ -510,4 +511,5 @@ if (!isEzMailApp) {
       }
     }
   })
+  Browser.runtime.setUninstallURL(CHROME_EXTENSION_HOMEPAGE_URL + '/uninstall')
 }

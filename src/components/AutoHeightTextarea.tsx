@@ -75,21 +75,21 @@ const focusTextareaAndAutoSize = (
   autoSizeTextarea(textareaElement, childrenHeight)
   setTimeout(() => {
     // focus input
-    const value = textareaElement.value
-    let findIndex = -1
-    const matchString =
-      ['Write a reply to this email: ', 'Write an email to...'].find((str) => {
-        findIndex = value.indexOf(str)
-        return findIndex > -1
-      }) || ''
+    // const value = textareaElement.value
+    // let findIndex = -1
+    // const matchString =
+    //   ['Write a reply to this email: ', 'Write an email to...'].find((str) => {
+    //     findIndex = value.indexOf(str)
+    //     return findIndex > -1
+    //   }) || ''
     // textareaElement.value = ''
     // textareaElement.value = value
-    console.log('focusTextareaAndAutoSize', findIndex)
+    // console.log('focusTextareaAndAutoSize', findIndex)
     textareaElement.focus()
-    textareaElement.setSelectionRange(
-      Math.max(matchString.length + findIndex, 0),
-      Math.max(matchString.length + findIndex, 0),
-    )
+    // textareaElement.setSelectionRange(
+    //   Math.max(matchString.length + findIndex, 0),
+    //   Math.max(matchString.length + findIndex, 0),
+    // )
     textareaElement.scrollTo(0, 0)
   }, 100)
 }
@@ -156,7 +156,7 @@ const AutoHeightTextarea: FC<{
     if (appState.open && textareaRef.current) {
       focusTextareaAndAutoSize(textareaRef.current, childrenHeight)
     }
-  }, [appState, textareaRef])
+  }, [appState, textareaRef, loading])
   return (
     <Box
       component={'div'}

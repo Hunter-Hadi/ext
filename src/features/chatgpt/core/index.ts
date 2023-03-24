@@ -35,12 +35,20 @@ export interface IChatGPTConversation {
   conversationId?: string
 }
 
+type IModal = {
+  slug: string
+  title: string
+  description: string
+  max_tokens: number
+}
 export interface IChatGPTDaemonProcess {
+  token?: string
+  models: IModal[]
   createConversation: (
     conversationId?: string,
     selectedModel?: string,
   ) => Promise<ChatGPTConversation | undefined>
-  getAllModels: () => Promise<any[]>
+  getAllModels: () => Promise<IModal[]>
   getConversation: (conversationId: string) => ChatGPTConversation | undefined
   getConversations: () => ChatGPTConversation[]
   closeConversation: (conversationId: string) => Promise<void>
@@ -217,22 +225,32 @@ class ChatGPTConversation {
 }
 
 export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
+  token?: string
   conversations: ChatGPTConversation[]
   abortFunctions: {
     [conversationId: string]: () => void
   }
+  models: IModal[]
   constructor() {
     this.conversations = []
     this.abortFunctions = {}
+    this.token = undefined
+    this.models = []
   }
   private async fetchModels(
     token: string,
   ): Promise<
     { slug: string; title: string; description: string; max_tokens: number }[]
   > {
+    if (this.models.length > 0) {
+      return this.models
+    }
     const resp = await chatGptRequest(token, 'GET', '/backend-api/models').then(
       (r) => r.json(),
     )
+    if (resp?.models && resp.models.length > 0) {
+      this.models = resp.models
+    }
     return resp.models
   }
   private async getModelName(
@@ -257,9 +275,15 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     }
   }
   async getAllModels() {
+    if (this.models.length > 0) {
+      return this.models
+    }
     try {
-      const token = await getChatGPTAccessToken()
-      return this.fetchModels(token)
+      const token = this.token || (await getChatGPTAccessToken())
+      if (token) {
+        this.token = token
+      }
+      return await this.fetchModels(token)
     } catch (e) {
       console.error(e)
       return []
@@ -267,7 +291,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   async createConversation(conversationId?: string, selectedModel?: string) {
     try {
-      const token = await getChatGPTAccessToken()
+      const token = this.token || (await getChatGPTAccessToken())
       const model = await this.getModelName(token, selectedModel)
       const conversationInstance = new ChatGPTConversation({
         token,

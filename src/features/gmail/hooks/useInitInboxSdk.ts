@@ -15,10 +15,16 @@ import {
   GmailToolBarIconBase64Data,
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
-import { getChromeExtensionSettings, hideChatBox, showChatBox } from '@/utils'
+import {
+  getFilteredTypeGmailToolBarContextMenu,
+  hideChatBox,
+  showChatBox,
+} from '@/utils'
 import { contextMenu } from 'react-contexify'
-import { getContextMenuRenderPosition } from '@/features/contextMenu/utils'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import {
+  findFirstTierMenuLength,
+  getContextMenuRenderPosition,
+} from '@/features/contextMenu/utils'
 import { ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID } from '@/types'
 const initComposeViewButtonStyle = () => {
   document
@@ -115,11 +121,19 @@ const useInitInboxSdk = () => {
               ?.querySelector('.ezmail-ai__gmail-toolbar-button--dropdown')
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
-              const { gmailToolBarContextMenu } =
-                await getChromeExtensionSettings()
-              const options =
-                gmailToolBarContextMenu || defaultGmailToolbarContextMenuJson
-              const itemLength = Math.max((options.length || 0) - 1, 0)
+              const gmailToolBarContextMenu =
+                await getFilteredTypeGmailToolBarContextMenu(
+                  newMessageId ? 'reply' : 'new-email',
+                  true,
+                )
+
+              console.log('gmailToolBarContextMenu', gmailToolBarContextMenu)
+              const options = gmailToolBarContextMenu
+              const itemLength = Math.max(
+                findFirstTierMenuLength(options) || 0,
+                0,
+              )
+              console.log('itemLength', itemLength)
               const { x, y } = getContextMenuRenderPosition(
                 {
                   top: iconButtonBounce.top,
@@ -173,6 +187,9 @@ const useInitInboxSdk = () => {
               })
             }
             showChatBox()
+            setTimeout(() => {
+              window.dispatchEvent(new Event('ctaButtonClick'))
+            }, 100)
           },
         })
         initComposeViewButtonStyle()

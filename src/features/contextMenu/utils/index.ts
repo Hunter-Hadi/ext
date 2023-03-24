@@ -349,3 +349,20 @@ export const fuzzySearchContextMenuList = (
       return node as IContextMenuItemWithChildren
     })
 }
+
+export const findFirstTierMenuLength = (menuList: IContextMenuItem[] = []) => {
+  let count = 0
+  // find groupid
+  const rootItemIds = menuList
+    .filter((item) => item.parent === 'root')
+    .map((item) => item.id)
+  count += rootItemIds.length
+  for (let i = 0; i < menuList.length; i++) {
+    const menuItem = menuList[i]
+    // not rootItem and parent is rootItem
+    if (menuItem.parent !== 'root' && rootItemIds.includes(menuItem.parent)) {
+      count++
+    }
+  }
+  return count
+}

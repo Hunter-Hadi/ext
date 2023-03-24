@@ -22,6 +22,8 @@ import {
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 import { StaticUseChatGPTButtonContextMenu } from '@/features/contextMenu'
+import { CleanChatBoxIcon } from '@/components/CustomIcon'
+import TooltipButton from '@/components/TooltipButton'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -45,6 +47,7 @@ interface IGmailChatBoxProps {
   onCopy?: () => void
   onReGenerate?: () => void
   onStopGenerate?: () => void
+  onReset?: () => void
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
   messages: IGmailChatMessage[]
   writingMessage: IGmailChatMessage | null
@@ -72,12 +75,17 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     writingMessage,
     messages,
     onRetry,
+    onReset,
     loading,
   } = props
   const conversation = useRecoilValue(GmailMessageChatConversationState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
+  // 为了在消息更新前计算滚动高度
+  const [currentMessages, setCurrentMessages] = useState(messages)
+  const [currentWritingMessage, setCurrentWritingMessage] =
+    useState(writingMessage)
   const currentMaxInputLength = useMemo(() => {
     return conversation.model === 'gpt-4'
       ? MAX_GPT4_INPUT_LENGTH
@@ -87,14 +95,27 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     return inputValue.length > currentMaxInputLength
   }, [inputValue, currentMaxInputLength])
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (stackRef.current) {
-        stackRef.current.scrollTo(0, stackRef.current.scrollHeight)
+    setCurrentWritingMessage(writingMessage)
+    setCurrentMessages(messages)
+    const stackElement = stackRef.current
+    if (!stackElement) {
+      return
+    }
+    let needScrollToBottom = false
+    if (
+      stackElement.clientHeight + stackElement.scrollTop + 5 >=
+      stackElement.scrollHeight
+    ) {
+      console.log('test scroll: writing 需要滚动到底部')
+      needScrollToBottom = true
+    } else {
+      console.log('test scroll: writing 不在底部 不滚动')
+    }
+    setTimeout(() => {
+      if (needScrollToBottom) {
+        stackElement.scrollTo(0, stackElement.scrollHeight)
       }
     }, 100)
-    return () => {
-      clearTimeout(timer)
-    }
   }, [writingMessage, messages])
   useEffect(() => {
     console.log('default update', step)
@@ -140,7 +161,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTModelsSelector />
-        {messages.map((message) => {
+        {currentMessages.map((message) => {
           return (
             <GmailChatBoxMessageItem
               insertAble={insertAble}
@@ -158,11 +179,11 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             />
           )
         })}
-        {writingMessage && (
+        {currentWritingMessage && (
           <GmailChatBoxMessageItem
             replaceAble={false}
             insertAble={false}
-            message={writingMessage}
+            message={currentWritingMessage}
             aiAvatar={aiAvatar}
             editAble={false}
             userAvatar={userAvatar}
@@ -192,9 +213,41 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             alignItems={'center'}
             justifyContent={'center'}
             gap={1}
+            position={'relative'}
           >
             {!loading && messages.length > 0 && (
               <>
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: 36,
+                    height: 36,
+                  }}
+                >
+                  <TooltipButton
+                    title={'New chat'}
+                    sx={{
+                      fontSize: '26px',
+                      p: '5px',
+                      minWidth: 'unset',
+                      borderRadius: '18px',
+                    }}
+                    disableElevation
+                    variant={'contained'}
+                    disabled={loading}
+                    onClick={() => {
+                      onReset && onReset()
+                      setInputValue('')
+                    }}
+                  >
+                    <CleanChatBoxIcon
+                      sx={{ color: 'inherit', fontSize: 'inherit' }}
+                    />
+                  </TooltipButton>
+                </Box>
+
                 {!isEzMailApp && (
                   <StaticUseChatGPTButtonContextMenu
                     sx={{ mb: 1 }}

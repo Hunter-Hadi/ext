@@ -1,49 +1,42 @@
 import React from 'react'
 import './OptionsPage.less'
 import { Container, Stack, Tab, Tabs, Typography } from '@mui/material'
-import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
+import { EzMailAIIcon } from '@/components/CustomIcon'
 import ContextMenuSettings from '@/pages/options/ContextMenuSettings'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 
 const APP_NAME = process.env.APP_NAME
-const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const OptionsPage = () => {
-  const [value, setValue] = React.useState(isEzMailApp ? 1 : 0)
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const [value, setValue] = React.useState('reply')
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
   }
   return (
     <Container maxWidth={'lg'}>
       <Stack spacing={4} my={4}>
         <Stack direction={'row'} alignItems={'center'} spacing={2}>
-          {isEzMailApp ? (
-            <EzMailAIIcon sx={{ fontSize: 32, color: 'inherit' }} />
-          ) : (
-            <UseChatGptIcon
-              sx={{
-                fontSize: 32,
-              }}
-            />
-          )}
+          <EzMailAIIcon sx={{ fontSize: 32, color: 'inherit' }} />
           <Typography fontSize={24} fontWeight={700}>
             {APP_NAME} Settings
           </Typography>
         </Stack>
         <Tabs value={value} onChange={handleChange}>
-          {!isEzMailApp && <Tab value={0} label="Edit options" />}
-          {isEzMailApp && <Tab value={1} label="Toolbar options" />}
+          <Tab value={'reply'} label="Edit menu option (reply)" />
+          <Tab value={'new-email'} label="Edit menu option (new email)" />
         </Tabs>
-        {value === 0 && (
+        {value === 'reply' && (
           <ContextMenuSettings
             iconSetting
-            defaultContextMenuJson={defaultContextMenuJson}
-            settingsKey={'contextMenus'}
+            menuType={'reply'}
+            defaultContextMenuJson={defaultGmailToolbarContextMenuJson}
+            settingsKey={'gmailToolBarContextMenu'}
           />
         )}
-        {value === 1 && (
+        {value === 'new-email' && (
           <ContextMenuSettings
+            iconSetting
+            menuType={'new-email'}
             defaultContextMenuJson={defaultGmailToolbarContextMenuJson}
             settingsKey={'gmailToolBarContextMenu'}
           />

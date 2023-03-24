@@ -210,7 +210,7 @@ const ClickContextMenuButton: FC<{
           }
         }}
       >
-        {APP_NAME}
+        {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
       </Button>
     </Paper>
   )

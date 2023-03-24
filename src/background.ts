@@ -5,6 +5,7 @@ import Browser from 'webextension-polyfill'
 import debounce from 'lodash-es/debounce'
 import {
   CHROME_EXTENSION_DOC_URL,
+  CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/types'
 
@@ -85,6 +86,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_openUrlInNewTab'
   | 'Client_updateSettings'
   | 'Client_getSettings'
+  | 'Client_updateIcon'
 // chrome extension 监听event
 export type IChromeExtensionListenEvent =
   | IChromeExtensionChatGPTDaemonProcessSendEvent
@@ -236,6 +238,7 @@ Browser.runtime.onConnect.addListener((port) => {
         {
           chatGPTProxyInstanceStatus = 'loading'
           finallyActiveTabId = port.sender?.tab?.id
+          console.log('createDaemonProcessTab111')
           await createDaemonProcessTab()
         }
         break
@@ -315,6 +318,35 @@ Browser.runtime.onConnect.addListener((port) => {
                 success: false,
               },
             })
+          }
+        }
+        break
+      case 'Client_updateIcon':
+        {
+          const { mode } = msg.data
+          console.log('Client_updateIcon', mode)
+          if (isEzMailApp) {
+            // don't need to update icon
+          } else {
+            if (mode === 'dark') {
+              await Browser.action.setIcon({
+                path: {
+                  16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
+                  32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
+                  48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
+                  128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
+                },
+              })
+            } else {
+              await Browser.action.setIcon({
+                path: {
+                  16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png',
+                  32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png',
+                  48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal.png',
+                  128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal.png',
+                },
+              })
+            }
           }
         }
         break
@@ -428,10 +460,14 @@ Browser.tabs.onRemoved.addListener(function listener(tabId) {
 
 if (isEzMailApp) {
   Browser.action.onClicked.addListener(async (tab) => {
-    if (tab && tab.id && tab.active) {
-      await Browser.tabs.create({
-        url: CHROME_EXTENSION_DOC_URL,
-      })
+    if (process.env.NODE_ENV === 'development') {
+      await Browser.runtime.openOptionsPage()
+    } else {
+      if (tab && tab.id && tab.active) {
+        await Browser.tabs.create({
+          url: CHROME_EXTENSION_DOC_URL,
+        })
+      }
     }
   })
 } else {
@@ -475,4 +511,5 @@ if (!isEzMailApp) {
       }
     }
   })
+  Browser.runtime.setUninstallURL(CHROME_EXTENSION_HOMEPAGE_URL + '/uninstall')
 }

@@ -45,7 +45,7 @@ const zip = (options) => ({
       } = process.env
       outFile = packageName
       if (packageVersion) {
-        outFile += '-' + packageVersion
+        outFile += packageVersion
       }
       if (
         outDir &&

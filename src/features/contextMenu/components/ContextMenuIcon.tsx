@@ -15,14 +15,29 @@ import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
-import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined'
 import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined'
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
-
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
+import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined'
+import SupportOutlinedIcon from '@mui/icons-material/SupportOutlined'
+import OutletOutlinedIcon from '@mui/icons-material/OutletOutlined'
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined'
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
+import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined'
+import ExtensionOutlinedIcon from '@mui/icons-material/ExtensionOutlined'
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import ReplyIcon from '@mui/icons-material/Reply'
 import { SxProps } from '@mui/material'
+import { EzMailAIIcon } from '@/components/CustomIcon'
 export const CONTEXT_MENU_ICONS = [
   'AutoFix',
   'Done',
@@ -40,12 +55,27 @@ export const CONTEXT_MENU_ICONS = [
   'ListAlt',
   'StarBorder',
   'TipsAndUpdates',
-  'ThumbUpAlt',
   'SentimentSatisfiedAlt',
   'Campaign',
   'WbSunny',
   'School',
   'SmartToy',
+  'ThumbUp',
+  'ThumbDown',
+  'Support',
+  'Outlet',
+  'HelpOutline',
+  'FavoriteBorder',
+  'Label',
+  'Extension',
+  'AccessTime',
+  'DarkMode',
+  'Image',
+  'EmojiEvents',
+  'RemoveRedEye',
+  'Share',
+  'Email',
+  'Reply',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -95,8 +125,6 @@ const ContextMenuIcon: FC<{
       return <StarBorderIcon sx={sxMemo} />
     case 'TipsAndUpdates':
       return <TipsAndUpdatesOutlinedIcon sx={sxMemo} />
-    case 'ThumbUpAlt':
-      return <ThumbUpAltOutlinedIcon sx={sxMemo} />
     case 'SentimentSatisfiedAlt':
       return <SentimentSatisfiedAltOutlinedIcon sx={sxMemo} />
     case 'Campaign':
@@ -107,6 +135,40 @@ const ContextMenuIcon: FC<{
       return <SchoolOutlinedIcon sx={sxMemo} />
     case 'SmartToy':
       return <SmartToyOutlinedIcon sx={sxMemo} />
+    case 'EzMail':
+      return <EzMailAIIcon sx={sxMemo} />
+    case 'ThumbUp':
+      return <ThumbUpOutlinedIcon sx={sxMemo} />
+    case 'ThumbDown':
+      return <ThumbDownOutlinedIcon sx={sxMemo} />
+    case 'Support':
+      return <SupportOutlinedIcon sx={sxMemo} />
+    case 'Outlet':
+      return <OutletOutlinedIcon sx={sxMemo} />
+    case 'HelpOutline':
+      return <HelpOutlineOutlinedIcon sx={sxMemo} />
+    case 'FavoriteBorder':
+      return <FavoriteBorderOutlinedIcon sx={sxMemo} />
+    case 'Label':
+      return <LabelOutlinedIcon sx={sxMemo} />
+    case 'Extension':
+      return <ExtensionOutlinedIcon sx={sxMemo} />
+    case 'AccessTime':
+      return <AccessTimeOutlinedIcon sx={sxMemo} />
+    case 'DarkMode':
+      return <DarkModeOutlinedIcon sx={sxMemo} />
+    case 'Image':
+      return <ImageOutlinedIcon sx={sxMemo} />
+    case 'EmojiEvents':
+      return <EmojiEventsOutlinedIcon sx={sxMemo} />
+    case 'RemoveRedEye':
+      return <RemoveRedEyeOutlinedIcon sx={sxMemo} />
+    case 'Share':
+      return <ShareOutlinedIcon sx={sxMemo} />
+    case 'Email':
+      return <EmailOutlinedIcon sx={sxMemo} />
+    case 'Reply':
+      return <ReplyIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

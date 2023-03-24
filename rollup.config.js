@@ -14,6 +14,7 @@ import alias from '@rollup/plugin-alias'
 import dayjs from 'dayjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import html from '@rollup/plugin-html'
+import modifyManifest from './modifyManifest'
 
 const isProduction = process.env.NODE_ENV === 'production'
 function getArgs() {
@@ -37,7 +38,7 @@ function getArgs() {
   return args
 }
 const args = getArgs()
-const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'Use ChatGPT'
+const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'UseChatGPT.AI'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const manifest = require(`./src/manifest.${APP_ENV}.json`)
@@ -88,6 +89,49 @@ export default [
           hook: 'generateBundle',
         }),
       nodeResolve(),
+      APP_ENV === 'USE_CHAT_GPT_AI' &&
+        copy({
+          targets: [
+            // { src: 'inject-fetch.js', dest: 'dist' }
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+          ],
+          hook: 'generateBundle',
+        }),
+      modifyManifest({
+        env: APP_ENV,
+        isProd: isProduction,
+      }),
     ],
   },
   {
@@ -133,7 +177,7 @@ export default [
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
+<title>Settings | UseChatGPT.AI</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
 </head>
 <body>
@@ -145,7 +189,7 @@ export default [
       }),
       isProduction &&
         zip({
-          file: `../releases/${manifest.short_name}_${
+          file: `../releases/[${manifest.short_name}]_v${
             manifest.version
           }_${dayjs().format('YYYY_MM_DD_HH_mm_ss')}.zip`,
           isEzMail: APP_ENV === 'EZ_MAIL_AI',

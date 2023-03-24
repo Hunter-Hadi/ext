@@ -39,11 +39,11 @@ export const pingDaemonProcess = () => {
     })
     timer = setTimeout(() => {
       isTimeout = true
-      port.postMessage({
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        event: 'Client_openChatGPTDaemonProcess',
-        data: {},
-      })
+      // port.postMessage({
+      //   id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      //   event: 'Client_openChatGPTDaemonProcess',
+      //   data: {},
+      // })
       setTimeout(() => {
         Browser?.runtime?.onMessage?.removeListener(onceListener)
         port.onMessage.removeListener(onceListener)
@@ -119,15 +119,15 @@ export const useSendAsyncTask = () => {
       },
     ) => {
       return new Promise((resolve, reject) => {
+        console.log('[ChatGPT Module] create task step 1')
         pingDaemonProcess().then((isConnectionAlive) => {
           if (isConnectionAlive !== true) {
             console.log('ping error')
             reject('ping error')
             return
           }
-          console.log(4)
           if (chatGPTClient.port && chatGPTClient.loaded) {
-            console.log(5)
+            console.log('[ChatGPT Module] create task step 2')
             const { onMessage, onError } = options || {}
             const taskId = uuidV4()
             let isPromiseFulfilled = false
@@ -150,8 +150,10 @@ export const useSendAsyncTask = () => {
                   taskId,
                 )
                 if (error) {
+                  console.log('[ChatGPT Module] create task [error]', error)
                   onError && onError(error)
                   if (done) {
+                    console.log('[ChatGPT Module] create task [error] done')
                     Browser?.runtime?.onMessage?.removeListener(onceListener)
                     chatGPTClient.port?.onMessage?.removeListener(onceListener)
                     !isPromiseFulfilled && reject(error)
@@ -159,12 +161,17 @@ export const useSendAsyncTask = () => {
                   }
                 }
                 if (done) {
+                  console.log('[ChatGPT Module] create task [success] done')
                   Browser?.runtime?.onMessage?.removeListener(onceListener)
                   chatGPTClient.port?.onMessage?.removeListener(onceListener)
                   !isPromiseFulfilled &&
                     resolve(chatGPTDaemenProcessData || true)
                   isPromiseFulfilled = true
                 } else {
+                  console.log(
+                    '[ChatGPT Module] create task step [success]',
+                    chatGPTDaemenProcessData,
+                  )
                   onMessage && onMessage(chatGPTDaemenProcessData)
                 }
               }
@@ -197,6 +204,10 @@ export const useSendAsyncTask = () => {
               }
             })
           } else {
+            console.log(
+              '[ChatGPT Module] create task [error]',
+              `Please wait for the daemon process to start.`,
+            )
             reject('Please wait for the daemon process to start.')
           }
         })

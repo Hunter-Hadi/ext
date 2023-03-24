@@ -15,7 +15,7 @@ type CustomColor = {
 }
 
 export const customColor = {
-  main: APP_ENV === 'EZ_MAIL_AI' ? '#1D56D7' : '#7601D3',
+  main: APP_ENV === 'EZ_MAIL_AI' ? '#DB4437' : '#7601D3',
   lightBackground: '#f7f9fd',
   darkBackground: '#14162a',
   darkPaperBackground: '#292b42',

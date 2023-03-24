@@ -180,7 +180,7 @@ export default [
           },
         },
       ],
-      icon: 'Reply',
+      icon: 'DefaultIcon',
     },
   },
   {
@@ -622,7 +622,7 @@ export default [
       editable: true,
       type: 'group',
       actions: [],
-      icon: 'DefaultIcon',
+      icon: 'Reply',
     },
   },
   {

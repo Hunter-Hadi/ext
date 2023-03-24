@@ -89,11 +89,45 @@ export default [
           hook: 'generateBundle',
         }),
       nodeResolve(),
-      // APP_ENV === 'USE_CHAT_GPT_AI' &&
-      //   copy({
-      //     targets: [{ src: 'inject-fetch.js', dest: 'dist' }],
-      //     hook: 'generateBundle',
-      //   }),
+      APP_ENV === 'USE_CHAT_GPT_AI' &&
+        copy({
+          targets: [
+            // { src: 'inject-fetch.js', dest: 'dist' }
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_grey_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+            {
+              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
+              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            },
+          ],
+          hook: 'generateBundle',
+        }),
       modifyManifest({
         env: APP_ENV,
         isProd: isProduction,

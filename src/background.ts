@@ -85,6 +85,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_openUrlInNewTab'
   | 'Client_updateSettings'
   | 'Client_getSettings'
+  | 'Client_updateIcon'
 // chrome extension 监听event
 export type IChromeExtensionListenEvent =
   | IChromeExtensionChatGPTDaemonProcessSendEvent
@@ -316,6 +317,35 @@ Browser.runtime.onConnect.addListener((port) => {
                 success: false,
               },
             })
+          }
+        }
+        break
+      case 'Client_updateIcon':
+        {
+          const { mode } = msg.data
+          console.log('Client_updateIcon', mode)
+          if (isEzMailApp) {
+            // don't need to update icon
+          } else {
+            if (mode === 'dark') {
+              await Browser.action.setIcon({
+                path: {
+                  16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
+                  32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
+                  48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
+                  128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
+                },
+              })
+            } else {
+              await Browser.action.setIcon({
+                path: {
+                  16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png',
+                  32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png',
+                  48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal.png',
+                  128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal.png',
+                },
+              })
+            }
           }
         }
         break

@@ -32,7 +32,7 @@ const StaticUseChatGPTButtonContextMenu: FC<ButtonProps> = (props) => {
               cloneRect(event.currentTarget.getBoundingClientRect()),
             ),
             220,
-            450,
+            490,
           )
           showContextMenu({
             event,

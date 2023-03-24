@@ -21,6 +21,7 @@ import AceEditor from 'react-ace'
 import 'ace-builds/src-noconflict/mode-handlebars'
 import 'ace-builds/src-noconflict/theme-monokai'
 import langTools from 'ace-builds/src-noconflict/ext-language_tools'
+import TooltipButton from '@/components/TooltipButton'
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const staticWordCompleter = {
@@ -134,7 +135,8 @@ const ContextMenuEditForm: FC<{
             >
               {CONTEXT_MENU_ICONS.map((icon) => {
                 return (
-                  <Button
+                  <TooltipButton
+                    title={icon}
                     disabled={isDisabled}
                     sx={{ minWidth: 'unset', px: 1, py: 0.5 }}
                     variant={
@@ -157,7 +159,7 @@ const ContextMenuEditForm: FC<{
                     }}
                   >
                     <ContextMenuIcon icon={icon} />
-                  </Button>
+                  </TooltipButton>
                 )
               })}
             </Stack>

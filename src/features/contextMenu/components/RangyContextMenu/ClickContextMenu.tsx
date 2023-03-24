@@ -181,7 +181,7 @@ const ClickContextMenuButton: FC<{
                   getContextMenuRenderPosition(
                     computedRectPosition(savedRangeRect),
                     220,
-                    450,
+                    490,
                   ),
                 )
             } else if (activeElementRect && props.onClick) {
@@ -205,7 +205,7 @@ const ClickContextMenuButton: FC<{
                       getContextMenuRenderPosition(
                         computedRectPosition(cloneRect(tempSelectRangeRect)),
                         220,
-                        450,
+                        490,
                       ),
                     )
                 }
@@ -216,7 +216,7 @@ const ClickContextMenuButton: FC<{
                     getContextMenuRenderPosition(
                       computedRectPosition(cloneRect(activeElementRect)),
                       220,
-                      450,
+                      490,
                     ),
                   )
               }

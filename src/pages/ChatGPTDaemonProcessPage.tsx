@@ -363,8 +363,7 @@ const ChatGPTDaemonProcessPage: FC = () => {
           <SettingsIcon sx={{ fontSize: 16 }} />
         </div>
         <Typography variant={'body1'} component={'span'}>
-          {`Please keep this page open to continue using the ${APP_NAME} Chrome
-          extension.`}
+          {`Please keep this page open to use ${APP_NAME} extension.`}
         </Typography>
       </Stack>
     </>

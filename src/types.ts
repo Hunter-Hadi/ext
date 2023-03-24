@@ -25,7 +25,7 @@ export const CHROME_EXTENSION_POST_MESSAGE_ID = `CHROME_EXTENSION_${process.env.
 // doc
 export const CHROME_EXTENSION_MAIL_TO = isEzMailApp
   ? `mailto:hello@ezmail.ai?subject=I have a question about EzMail.AI Chrome extension`
-  : `mailto:hello@usechatgpt.ai?subject=I have a question about Use ChatGPT Chrome extension`
+  : `mailto:hello@usechatgpt.ai?subject=I have a question about UseChatGPT.AI Chrome extension`
 export const CHROME_EXTENSION_DOC_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
   : 'https://www.usechatgpt.ai'

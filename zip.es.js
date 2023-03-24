@@ -43,9 +43,9 @@ const zip = (options) => ({
         npm_package_name: packageName = 'bundle',
         npm_package_version: packageVersion,
       } = process.env
-      outFile = `[${packageName}]`
+      outFile = packageName
       if (packageVersion) {
-        outFile += '-v' + packageVersion
+        outFile += packageVersion
       }
       if (
         outDir &&

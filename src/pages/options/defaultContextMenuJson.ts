@@ -14,7 +14,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\n"""\n{{HIGHLIGHTED_TEXT}}\n""" \nWrite a positive and agreeing reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n"""\n{{HIGHLIGHTED_TEXT}}\n""" \nWrite a positive and agreeing reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -38,7 +38,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a negative and disagreeing reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a negative and disagreeing reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -62,7 +62,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a positive and supporting reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a positive and supporting reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -86,7 +86,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a humorous reply to the text above joking about it in a friendly way.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a humorous reply to the text above joking about it in a friendly way.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -110,7 +110,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above with a few suggestive ideas.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above with a few suggestive ideas.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -134,7 +134,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above including a question.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above including a question.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -166,7 +166,7 @@ export default [
               '`no apologies`\n' +
               '`no filler`\n' +
               '`just answer`\n' +
-              '`silent`\n' +
+              '' +
               '"""\n' +
               '{{HIGHLIGHTED_TEXT}}\n' +
               '"""\n' +
@@ -196,7 +196,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into English language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into English language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -219,7 +219,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Korean language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Korean language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -242,7 +242,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Chinese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Chinese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -265,7 +265,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Japanese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Japanese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -288,7 +288,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Spanish language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Spanish language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -311,7 +311,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Russian language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Russian language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -334,7 +334,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into French language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into French language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -357,7 +357,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Portuguese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Portuguese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -380,7 +380,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into German language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into German language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -403,7 +403,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Italian language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Italian language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -426,7 +426,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Dutch language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Dutch language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -449,7 +449,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Indonesian language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Indonesian language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -472,7 +472,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Filipino language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Filipino language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -495,7 +495,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and translate the text into Vietnamese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and translate the text into Vietnamese language.\nKeep the meaning the same. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, translate the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -518,7 +518,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and output that in a short summarized version of my text.\nKeep the meaning the same. Ensure that the revised content has significantly fewer characters than the original text, and no more than 100 words, the fewer the better.\nOnly give me the output and nothing else.\nNow, using the concepts above, summarize the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and output that in a short summarized version of my text.\nKeep the meaning the same. Ensure that the revised content has significantly fewer characters than the original text, and no more than 100 words, the fewer the better.\nOnly give me the output and nothing else.\nNow, using the concepts above, summarize the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -542,7 +542,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will analyze it and output the key takeaways in bullet point format.\nKeep the meaning the same. Ensure that the revised content has significantly fewer characters than the original text, and no more than 100 words, the fewer the better.\nOnly give me the output and nothing else.\nNow, using the concepts above, give me the key takeaways from the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will analyze it and output the key takeaways in bullet point format.\nKeep the meaning the same. Ensure that the revised content has significantly fewer characters than the original text, and no more than 100 words, the fewer the better.\nOnly give me the output and nothing else.\nNow, using the concepts above, give me the key takeaways from the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -578,7 +578,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will explain it and output an easy-to-understand explanation. I want you to pretend to explain the text to a middle school student who has no background knowledge or professional knowledge about the text I give you. Your task is to write the highest quality explanation possible, including examples and analogies if necessary.\nOnly give me the output and nothing else.\nNow, using the concepts above, explain the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will explain it and output an easy-to-understand explanation. I want you to pretend to explain the text to a middle school student who has no background knowledge or professional knowledge about the text I give you. Your task is to write the highest quality explanation possible, including examples and analogies if necessary.\nOnly give me the output and nothing else.\nNow, using the concepts above, explain the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -602,7 +602,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will find action items from it and output them in bullet point format. Identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader.\nOnly give me the output and nothing else.\nNow, using the concepts above, find action items from the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will find action items from it and output them in bullet point format. Identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader.\nOnly give me the output and nothing else.\nNow, using the concepts above, find action items from the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -638,7 +638,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nDefinition of "professional tone": "A professional tone is a way of writing that conveys a sense of formality, respect, and competence. A person writing with a professional tone uses language and intonation that is more formal and appropriate for a business or formal setting. A professional tone can be identified by a number of verbal and nonverbal cues, including:\n- Use of formal language and vocabulary \n- Avoidance of slang and colloquial expressions \n- Appropriate use of titles and honorifics \n- Direct and concise statements \n- Maintaining a neutral tone \n- Use of polite language and manners \nOverall, a professional tone communicates a sense of competence and credibility, which can help establish trust and influence in business or formal settings. It is important to note that a professional tone should be tailored to the specific situation and audience, as different contexts may require different levels of formality or informality."\nI will give you text content, you will rewrite it and output that in a "professional tone". \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nDefinition of "professional tone": "A professional tone is a way of writing that conveys a sense of formality, respect, and competence. A person writing with a professional tone uses language and intonation that is more formal and appropriate for a business or formal setting. A professional tone can be identified by a number of verbal and nonverbal cues, including:\n- Use of formal language and vocabulary \n- Avoidance of slang and colloquial expressions \n- Appropriate use of titles and honorifics \n- Direct and concise statements \n- Maintaining a neutral tone \n- Use of polite language and manners \nOverall, a professional tone communicates a sense of competence and credibility, which can help establish trust and influence in business or formal settings. It is important to note that a professional tone should be tailored to the specific situation and audience, as different contexts may require different levels of formality or informality."\nI will give you text content, you will rewrite it and output that in a "professional tone". \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -661,7 +661,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nDefinition of "casual tone": "A casual tone is a way of writing that conveys informality, relaxation, and a sense of ease. A person writing with a casual tone uses language and intonation that is less formal and more relaxed, conveying a sense of familiarity and comfort. A casual tone can be identified by a number of verbal and nonverbal cues, including:\n- Use of informal language and slang\n- Use of contractions \n- Use of humor and anecdotes \n- Intonation and tone that is less formal \nOverall, a casual tone communicates a sense of informality and friendliness, which can help establish a more relaxed and comfortable atmosphere in both personal and professional contexts. It is important to note that while a casual tone can be appropriate in some situations, it may not be suitable for all situations and should be used with discretion."\nI will give you text content, you will rewrite it and output that in a "casual tone". \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nDefinition of "casual tone": "A casual tone is a way of writing that conveys informality, relaxation, and a sense of ease. A person writing with a casual tone uses language and intonation that is less formal and more relaxed, conveying a sense of familiarity and comfort. A casual tone can be identified by a number of verbal and nonverbal cues, including:\n- Use of informal language and slang\n- Use of contractions \n- Use of humor and anecdotes \n- Intonation and tone that is less formal \nOverall, a casual tone communicates a sense of informality and friendliness, which can help establish a more relaxed and comfortable atmosphere in both personal and professional contexts. It is important to note that while a casual tone can be appropriate in some situations, it may not be suitable for all situations and should be used with discretion."\nI will give you text content, you will rewrite it and output that in a "casual tone". \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -684,7 +684,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nDefinition of "straightforward tone": "Being straightforward means writing in a clear and honest manner without any ambiguity, deception, or hidden meanings. It is a way of expressing oneself directly and without any beating around the bush. A straightforward approach to writing involves being clear and concise in what you write, and avoiding the use of unnecessarily complicated or technical language that may be difficult for others to understand. It also involves being honest and transparent in your interactions, and not withholding information or misrepresenting the truth. A straightforward approach can be identified by a number of verbal and nonverbal cues, including:\n- Clear and direct language \n- Avoiding euphemisms or indirect statements \n- Writing plainly and using simple vocabulary\n- Being honest and transparent \nOverall, being straightforward can help build trust and credibility with others, as it demonstrates a commitment to honesty and integrity in all communications."\nI will give you text content, you will rewrite it and output that in a "straightforward tone".\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nDefinition of "straightforward tone": "Being straightforward means writing in a clear and honest manner without any ambiguity, deception, or hidden meanings. It is a way of expressing oneself directly and without any beating around the bush. A straightforward approach to writing involves being clear and concise in what you write, and avoiding the use of unnecessarily complicated or technical language that may be difficult for others to understand. It also involves being honest and transparent in your interactions, and not withholding information or misrepresenting the truth. A straightforward approach can be identified by a number of verbal and nonverbal cues, including:\n- Clear and direct language \n- Avoiding euphemisms or indirect statements \n- Writing plainly and using simple vocabulary\n- Being honest and transparent \nOverall, being straightforward can help build trust and credibility with others, as it demonstrates a commitment to honesty and integrity in all communications."\nI will give you text content, you will rewrite it and output that in a "straightforward tone".\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -707,7 +707,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nDefinition of "confident tone": "A confident tone is a way of writing that conveys self-assurance, certainty, and conviction in one\'s words and ideas. A person writing with a confident tone writes clearly, firmly, and without hesitation, projecting authority and credibility in their message.  A confident tone can be identified by a number of verbal and nonverbal cues, including:\n- Assertive and positive word choices\n- Direct and concise statements\nOverall, a confident tone communicates a sense of self-assuredness and credibility, which can help establish trust and influence in both personal and professional contexts."\nI will give you text content, you will rewrite it and output that in a "confident tone".\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nDefinition of "confident tone": "A confident tone is a way of writing that conveys self-assurance, certainty, and conviction in one\'s words and ideas. A person writing with a confident tone writes clearly, firmly, and without hesitation, projecting authority and credibility in their message.  A confident tone can be identified by a number of verbal and nonverbal cues, including:\n- Assertive and positive word choices\n- Direct and concise statements\nOverall, a confident tone communicates a sense of self-assuredness and credibility, which can help establish trust and influence in both personal and professional contexts."\nI will give you text content, you will rewrite it and output that in a "confident tone".\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -730,7 +730,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nDefinition of "friendly tone": "A friendly tone is a way of writing that conveys warmth, kindness, and approachability. A person writing with a friendly tone uses language and intonation that makes the listener feel welcome, comfortable, and at ease. A friendly tone can be identified by a number of verbal and nonverbal cues, including:\n- Pleasant and upbeat vocabulary\n- Positive and encouraging statements \nOverall, a friendly tone communicates a sense of openness, friendliness, and a willingness to connect, which can help build positive relationships and rapport in both personal and professional contexts."\nI will give you text content, you will rewrite it and output that in a "friendly tone".\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nDefinition of "friendly tone": "A friendly tone is a way of writing that conveys warmth, kindness, and approachability. A person writing with a friendly tone uses language and intonation that makes the listener feel welcome, comfortable, and at ease. A friendly tone can be identified by a number of verbal and nonverbal cues, including:\n- Pleasant and upbeat vocabulary\n- Positive and encouraging statements \nOverall, a friendly tone communicates a sense of openness, friendliness, and a willingness to connect, which can help build positive relationships and rapport in both personal and professional contexts."\nI will give you text content, you will rewrite it and output that in a "friendly tone".\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -753,7 +753,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and output a better version of my text.\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and output a better version of my text.\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -777,7 +777,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will correct the spelling, syntax and grammar of this text. Correct any spelling, syntax, or grammar mistakes in the text I give you without making any improvements or changes to the original meaning or style. In other words, only correct spelling, syntax, or grammar mistakes mistakes, do not make improvements. If the orignal text has no mistake, just output the orignal text and nothing else.\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will correct the spelling, syntax and grammar of this text. Correct any spelling, syntax, or grammar mistakes in the text I give you without making any improvements or changes to the original meaning or style. In other words, only correct spelling, syntax, or grammar mistakes mistakes, do not make improvements. If the orignal text has no mistake, just output the orignal text and nothing else.\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -801,7 +801,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI\'ll give you text. You\'ll rewrite it and output it shorter to be no more than half the number of characters of the original text.\nKeep the meaning the same. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI\'ll give you text. You\'ll rewrite it and output it shorter to be no more than half the number of characters of the original text.\nKeep the meaning the same. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -825,7 +825,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI\'ll give you text. You\'ll rewrite it and output it longer to be more than twice the number of characters of the original text.\nKeep the meaning the same. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI\'ll give you text. You\'ll rewrite it and output it longer to be more than twice the number of characters of the original text.\nKeep the meaning the same. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -861,7 +861,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nDefinition of "simplify language": "Simplifying language means using clear and concise language that is easy for the intended audience to understand. This involves avoiding overly complex sentence structures, technical jargon, or obscure vocabulary, and using familiar words and straightforward expressions. The goal is to make the text more accessible to a wider audience, ensuring that the message is communicated effectively without causing confusion or misunderstanding. Simplifying language can be particularly important when writing for a general audience or when trying to convey complex information or ideas in a more approachable way. It is essential for writers to strike a balance between simplifying language and maintaining the tone and voice of the text, so that it remains engaging and informative while being easy to read and understand."\nI will give you text content, you will rewrite it to "simply language" of it and output that in an easy-to-understand version of my text. \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nDefinition of "simplify language": "Simplifying language means using clear and concise language that is easy for the intended audience to understand. This involves avoiding overly complex sentence structures, technical jargon, or obscure vocabulary, and using familiar words and straightforward expressions. The goal is to make the text more accessible to a wider audience, ensuring that the message is communicated effectively without causing confusion or misunderstanding. Simplifying language can be particularly important when writing for a general audience or when trying to convey complex information or ideas in a more approachable way. It is essential for writers to strike a balance between simplifying language and maintaining the tone and voice of the text, so that it remains engaging and informative while being easy to read and understand."\nI will give you text content, you will rewrite it to "simply language" of it and output that in an easy-to-understand version of my text. \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {
@@ -885,7 +885,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n`silent`\nI will give you text content, you will rewrite it and output that in a re-worded version of my text. Reword the text to convey the same meaning using different words and sentence structures. Avoiding plagiarism, improving the flow and readability of the text, and ensuring that the re-written content is unique and original. Keep the tone the same. \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\nI will give you text content, you will rewrite it and output that in a re-worded version of my text. Reword the text to convey the same meaning using different words and sentence structures. Avoiding plagiarism, improving the flow and readability of the text, and ensuring that the re-written content is unique and original. Keep the tone the same. \nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in the same language variety or dialect of the following text:\n"""\n{{HIGHLIGHTED_TEXT}}\n"""',
           },
         },
         {

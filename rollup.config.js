@@ -38,7 +38,7 @@ function getArgs() {
   return args
 }
 const args = getArgs()
-const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'Use ChatGPT'
+const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'UseChatGPT.AI'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const manifest = require(`./src/manifest.${APP_ENV}.json`)
@@ -189,7 +189,7 @@ export default [
       }),
       isProduction &&
         zip({
-          file: `../releases/${manifest.short_name}_${
+          file: `../releases/[${manifest.short_name}]_v${
             manifest.version
           }_${dayjs().format('YYYY_MM_DD_HH_mm_ss')}.zip`,
           isEzMail: APP_ENV === 'EZ_MAIL_AI',

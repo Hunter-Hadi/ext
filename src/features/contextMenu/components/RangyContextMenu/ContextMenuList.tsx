@@ -4,7 +4,7 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { useRangy } from '@/features/contextMenu/hooks'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
-import { Item, Separator, Submenu } from 'react-contexify'
+import { Item, Submenu } from 'react-contexify'
 import {
   getChromeExtensionContextMenu,
   getFilteredTypeGmailToolBarContextMenu,
@@ -251,7 +251,7 @@ const ContextMenuList: FC<{
         {/*    </Typography>*/}
         {/*  </Stack>*/}
         {/*</Item>*/}
-        <Separator />
+        {/*<Separator />*/}
         {sortBySettingsKey.map((menuItem, index) => {
           return <ListItem key={index} menuItem={menuItem} />
         })}

@@ -141,7 +141,7 @@ const GmailChatBoxInput: FC<{
     if (appState.open && textareaRef.current) {
       focusTextareaAndAutoSize(textareaRef.current)
     }
-  }, [appState, textareaRef])
+  }, [appState, textareaRef, loading])
   return (
     <Box
       component={'div'}

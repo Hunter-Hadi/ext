@@ -511,5 +511,7 @@ if (!isEzMailApp) {
       }
     }
   })
-  Browser.runtime.setUninstallURL(CHROME_EXTENSION_HOMEPAGE_URL + '/uninstall')
+  Browser.runtime.setUninstallURL(
+    CHROME_EXTENSION_HOMEPAGE_URL + '/survey/uninstall',
+  )
 }

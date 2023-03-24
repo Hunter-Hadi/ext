@@ -13,7 +13,7 @@ import GmailChatBoxInput from './GmailChatBoxInput'
 import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
 import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
-import { numberWithCommas } from '@/utils'
+import { elementScrollToBottom, numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
   GmailMessageChatConversationState,
@@ -24,6 +24,8 @@ import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTMode
 import { StaticUseChatGPTButtonContextMenu } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
+import DevContent from '@/components/DevContent'
+import { TestAllActionsButton } from '@/features/shortcuts'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -94,6 +96,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const isGmailChatBoxError = useMemo(() => {
     return inputValue.length > currentMaxInputLength
   }, [inputValue, currentMaxInputLength])
+  const isScrollingToBottomRef = useRef(false)
   useEffect(() => {
     setCurrentWritingMessage(writingMessage)
     setCurrentMessages(messages)
@@ -112,11 +115,27 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       console.log('test scroll: writing 不在底部 不滚动')
     }
     setTimeout(() => {
-      if (needScrollToBottom) {
+      if (needScrollToBottom && !isScrollingToBottomRef.current) {
         stackElement.scrollTo(0, stackElement.scrollHeight)
       }
     }, 100)
   }, [writingMessage, messages])
+  useEffect(() => {
+    const stackElement = stackRef.current
+    if (!stackElement) {
+      return
+    }
+    if (currentMessages[currentMessages.length - 1]?.type === 'ai') {
+      return
+    }
+    console.log('test scroll: messages update')
+    // 新message出现滚动到底部一次
+    isScrollingToBottomRef.current = true
+    elementScrollToBottom(stackElement, 400)
+    setTimeout(() => {
+      isScrollingToBottomRef.current = false
+    }, 400)
+  }, [currentMessages])
   useEffect(() => {
     console.log('default update', step)
     setInputValue(defaultValue)
@@ -326,6 +345,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 justifyContent={'end'}
                 gap={1}
               >
+                <DevContent>
+                  <TestAllActionsButton />
+                </DevContent>
                 <Button
                   disableElevation
                   variant={'contained'}

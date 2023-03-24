@@ -249,3 +249,28 @@ export const getClientEnv = () => {
   }
   return 'normal'
 }
+
+export const elementScrollToBottom = (
+  element: HTMLElement,
+  duration: number,
+) => {
+  const start = element.scrollTop
+  const end = element.scrollHeight - element.clientHeight
+  const distance = end - start
+  const startTime = new Date().getTime()
+  function easeInOutQuad(t: number, b: number, c: number, d: number): number {
+    t /= d / 2
+    if (t < 1) return (c / 2) * t * t + b
+    t--
+    return (-c / 2) * (t * (t - 2) - 1) + b
+  }
+  function scroll() {
+    const elapsed = new Date().getTime() - startTime
+    const position = easeInOutQuad(elapsed, start, distance, duration)
+    element.scrollTop = position
+    if (elapsed < duration) {
+      window.requestAnimationFrame(scroll)
+    }
+  }
+  scroll()
+}

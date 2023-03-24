@@ -23,7 +23,7 @@ import {
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
-import { CircularProgress, IconButton, Typography } from '@mui/material'
+import { CircularProgress, IconButton, Stack, Typography } from '@mui/material'
 import { ROOT_FLOATING_INPUT_ID } from '@/types'
 import { getAppContextMenuElement, showChatBox } from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
@@ -216,7 +216,8 @@ const FloatingContextMenu: FC<{
           opacity: floatingDropdownMenu.open ? 1 : 0,
           top: y ?? 0,
           left: x ?? 0,
-          width: floatingDropdownMenu.rootRect?.width || 'max-content',
+          width: Math.max(floatingDropdownMenu.rootRect?.width || 0, 680),
+          maxWidth: '90%',
         }}
         onKeyDown={(event) => {
           event.stopPropagation()
@@ -224,6 +225,7 @@ const FloatingContextMenu: FC<{
           if (event.key.indexOf('Arrow') === -1) {
             focusInput(event as any)
           }
+          console.log(event.key)
         }}
       >
         <FloatingContextMenuList
@@ -232,6 +234,7 @@ const FloatingContextMenu: FC<{
           referenceElement={
             <div
               style={{
+                boxSizing: 'border-box',
                 border: '1px solid rgb(237,237,236)',
                 background: 'white',
                 borderRadius: '6px',
@@ -256,85 +259,127 @@ const FloatingContextMenu: FC<{
                   alignSelf: 'start',
                 }}
               />
-              {running ? (
-                <>
-                  <Typography fontSize={'16px'} color={'primary.main'}>
-                    AI is writing...
-                  </Typography>
-                  <CircularProgress size={'16px'} />
-                </>
-              ) : (
-                <>
-                  <AutoHeightTextarea
-                    placeholder={'Ask ChatGPT to edit or generate...'}
-                    stopPropagation={false}
-                    InputId={ROOT_FLOATING_INPUT_ID}
-                    sx={{
-                      border: 'none',
-                      '& textarea': { p: 0 },
-                      borderRadius: 0,
-                      minHeight: '24px',
-                    }}
-                    defaultValue={''}
-                    onChange={(value) => {
-                      setInputValue(value)
-                    }}
-                    onEnter={(value) => {
-                      showChatBox()
-                      setFloatingDropdownMenu({
-                        open: false,
-                        rootRect: null,
-                      })
-                      updateFloatingDropdownMenuSelectedItem(() => {
-                        return {
-                          selectedContextMenuId: null,
-                          hoverContextMenuIdMap: {},
-                        }
-                      })
-                      setTimeout(async () => {
-                        setInputValue('')
-                        setShortCuts([
-                          {
-                            type: 'RENDER_CHATGPT_PROMPT',
-                            parameters: {
-                              template: `${value}:\n """\n{{HIGHLIGHTED_TEXT}}\n"""`,
+              <Stack
+                direction={'row'}
+                width={0}
+                flex={1}
+                alignItems={'center'}
+                spacing={1}
+                justifyContent={'left'}
+              >
+                {running ? (
+                  <>
+                    <Typography fontSize={'16px'} color={'primary.main'}>
+                      AI is writing...
+                    </Typography>
+                    <CircularProgress size={'16px'} />
+                  </>
+                ) : (
+                  <>
+                    <AutoHeightTextarea
+                      placeholder={'Ask ChatGPT to edit or generate...'}
+                      stopPropagation={false}
+                      InputId={ROOT_FLOATING_INPUT_ID}
+                      sx={{
+                        border: 'none',
+                        '& textarea': { p: 0 },
+                        borderRadius: 0,
+                        minHeight: '24px',
+                      }}
+                      defaultValue={''}
+                      onChange={(value) => {
+                        setInputValue(value)
+                      }}
+                      onEnter={(value) => {
+                        showChatBox()
+                        setFloatingDropdownMenu({
+                          open: false,
+                          rootRect: null,
+                        })
+                        updateFloatingDropdownMenuSelectedItem(() => {
+                          return {
+                            selectedContextMenuId: null,
+                            hoverContextMenuIdMap: {},
+                          }
+                        })
+                        setTimeout(async () => {
+                          setInputValue('')
+                          setShortCuts([
+                            {
+                              type: 'RENDER_CHATGPT_PROMPT',
+                              parameters: {
+                                template: `${value}:\n """\n{{HIGHLIGHTED_TEXT}}\n"""`,
+                              },
                             },
-                          },
-                          {
-                            type: 'ASK_CHATGPT',
-                            parameters: {},
-                          },
-                        ])
-                        await runShortCuts()
-                      }, 1)
-                    }}
-                  />
-                  <IconButton
-                    sx={{
-                      height: '20px',
-                      width: '20px',
-                      flexShrink: 0,
-                      alignSelf: 'end',
-                      alignItems: 'center',
-                      p: 0,
-                      m: '2px',
-                      bgcolor: haveDraft ? 'primary.main' : 'rgb(219,219,217)',
-                      '&:hover': {
+                            {
+                              type: 'ASK_CHATGPT',
+                              parameters: {},
+                            },
+                          ])
+                          await runShortCuts()
+                        }, 1)
+                      }}
+                    />
+                    <IconButton
+                      sx={{
+                        height: '20px',
+                        width: '20px',
+                        flexShrink: 0,
+                        alignSelf: 'end',
+                        alignItems: 'center',
+                        p: 0,
+                        m: '2px',
+                        cursor: haveDraft ? 'pointer' : 'default',
                         bgcolor: haveDraft
                           ? 'primary.main'
                           : 'rgb(219,219,217)',
-                      },
-                    }}
-                  >
-                    <ArrowUpwardIcon
-                      sx={{
-                        color: '#fff',
-                        fontSize: 16,
+                        '&:hover': {
+                          bgcolor: haveDraft
+                            ? 'primary.main'
+                            : 'rgb(219,219,217)',
+                        },
                       }}
-                    />
-                  </IconButton>
-                </>
-              )}
+                      onClick={() => {
+                        if (!haveDraft) return
+                        showChatBox()
+                        setFloatingDropdownMenu({
+                          open: false,
+                          rootRect: null,
+                        })
+                        updateFloatingDropdownMenuSelectedItem(() => {
+                          return {
+                            selectedContextMenuId: null,
+                            hoverContextMenuIdMap: {},
+                          }
+                        })
+                        setTimeout(async () => {
+                          setInputValue('')
+                          setShortCuts([
+                            {
+                              type: 'RENDER_CHATGPT_PROMPT',
+                              parameters: {
+                                template: `${inputValue}:\n """\n{{HIGHLIGHTED_TEXT}}\n"""`,
+                              },
+                            },
+                            {
+                              type: 'ASK_CHATGPT',
+                              parameters: {},
+                            },
+                          ])
+                          await runShortCuts()
+                        }, 1)
+                      }}
+                    >
+                      <ArrowUpwardIcon
+                        sx={{
+                          color: '#fff',
+                          fontSize: 16,
+                        }}
+                      />
+                    </IconButton>
+                  </>
+                )}
+              </Stack>
             </div>
           }
           root={root}

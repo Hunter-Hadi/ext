@@ -57,9 +57,10 @@ const autoSizeTextarea = (
       ? textareaElement.scrollHeight
       : LINE_HEIGHT
     textareaElement.style.cssText = 'height:0px'
-    const height = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
+    let height = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
+    height = Math.max(childrenHeight, height)
     let paddingHeight = childrenHeight
-    if (scrollHeight > LINE_HEIGHT && childrenHeight > 0) {
+    if (childrenHeight > 0) {
       // padding height
       paddingHeight += 16
     }
@@ -137,7 +138,7 @@ const AutoHeightTextarea: FC<{
           throttleAutoSizeTextarea(textareaRef.current, childrenHeight)
         } else {
           console.log(getAppActiveElement())
-          focusTextareaAndAutoSize(textareaRef.current)
+          focusTextareaAndAutoSize(textareaRef.current, childrenHeight)
         }
       }
     }, 100)
@@ -182,7 +183,7 @@ const AutoHeightTextarea: FC<{
           display: 'none',
         },
         '&.chat-box__input--loading': {
-          maxHeight: '100.5px',
+          maxHeight: '106.5px',
           overflow: 'hidden',
           position: 'relative',
           '& > textarea': {
@@ -196,8 +197,8 @@ const AutoHeightTextarea: FC<{
           },
         },
         '& > textarea': {
-          color: 'rgba(0,0,0,.87)!important',
           p: 1,
+          color: 'rgba(0,0,0,.87)!important',
           my: 1.5,
           fontSize: '16px',
           minHeight: LINE_HEIGHT + 'px',

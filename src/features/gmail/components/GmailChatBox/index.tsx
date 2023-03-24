@@ -295,7 +295,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               onSendMessage && onSendMessage(value)
               setInputValue('')
             }}
-            childrenHeight={44.5}
+            childrenHeight={45}
           >
             <Stack
               p={1}

@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material'
-import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useRangy } from '@/features/contextMenu/hooks'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
@@ -19,16 +19,9 @@ import { useRecoilValue } from 'recoil'
 // import Browser from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
-const ContextMenuContext = React.createContext<{
-  staticButton?: boolean
-}>({
-  staticButton: false,
-})
-
 const ShortCutsButtonItem: FC<{
   menuItem: IContextMenuItemWithChildren
 }> = ({ menuItem }) => {
-  const contextMenuContext = useContext(ContextMenuContext)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   const { lastSelectionRanges, rangy } = useRangy()
   const [running, setRunning] = useState(false)
@@ -37,24 +30,7 @@ const ShortCutsButtonItem: FC<{
       const actions = menuItem.data.actions
       if (actions && actions.length > 0) {
         console.log('actions', actions)
-        let setActions = cloneDeep(actions)
-        if (contextMenuContext.staticButton) {
-          setActions = setActions.map((action) => {
-            if (action.type === 'RENDER_CHATGPT_PROMPT') {
-              return {
-                ...action,
-                parameters: {
-                  ...action.parameters,
-                  template: (action.parameters?.template || '').replace(
-                    /\{\{HIGHLIGHTED_TEXT\}\}/g,
-                    '{{LAST_MESSAGE_OUTPUT}}',
-                  ),
-                },
-              }
-            }
-            return action
-          })
-        }
+        const setActions = cloneDeep(actions)
         const isSetSuccess = setShortCuts(setActions)
         isSetSuccess &&
           runShortCuts()
@@ -165,7 +141,6 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 }
 
 const ContextMenuList: FC<{
-  staticButton?: boolean
   // defaultContextMenuJson: IContextMenuItem[]
   settingsKey: IChromeExtensionSettingsKey
 }> = (props) => {
@@ -228,35 +203,33 @@ const ContextMenuList: FC<{
   // console.log('sortBySettingsKey', sortBySettingsKey, settingsKey)
   return (
     <Stack>
-      <ContextMenuContext.Provider value={{ staticButton: props.staticButton }}>
-        {/*<Item*/}
-        {/*  id="Add new prompt template"*/}
-        {/*  onClick={() => {*/}
-        {/*    const port = Browser.runtime.connect()*/}
-        {/*    port &&*/}
-        {/*      port.postMessage({*/}
-        {/*        id: CHROME_EXTENSION_POST_MESSAGE_ID,*/}
-        {/*        event: 'Client_openUrlInNewTab',*/}
-        {/*        data: {*/}
-        {/*          key: 'options',*/}
-        {/*        },*/}
-        {/*      })*/}
-        {/*    port.disconnect()*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <Stack direction={'row'} alignItems={'center'} gap={1}>*/}
-        {/*    <SettingsIcon sx={{ fontSize: 14 }} />*/}
-        {/*    <Typography fontSize={14} textAlign={'left'} color={'inherit'}>*/}
-        {/*      Add new prompt template*/}
-        {/*    </Typography>*/}
-        {/*  </Stack>*/}
-        {/*</Item>*/}
-        {/*<Separator />*/}
-        {sortBySettingsKey.map((menuItem, index) => {
-          return <ListItem key={index} menuItem={menuItem} />
-        })}
-        {/*{settingsKey === 'contextMenus' && <CustomizeButton />}*/}
-      </ContextMenuContext.Provider>
+      {/*<Item*/}
+      {/*  id="Add new prompt template"*/}
+      {/*  onClick={() => {*/}
+      {/*    const port = Browser.runtime.connect()*/}
+      {/*    port &&*/}
+      {/*      port.postMessage({*/}
+      {/*        id: CHROME_EXTENSION_POST_MESSAGE_ID,*/}
+      {/*        event: 'Client_openUrlInNewTab',*/}
+      {/*        data: {*/}
+      {/*          key: 'options',*/}
+      {/*        },*/}
+      {/*      })*/}
+      {/*    port.disconnect()*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <Stack direction={'row'} alignItems={'center'} gap={1}>*/}
+      {/*    <SettingsIcon sx={{ fontSize: 14 }} />*/}
+      {/*    <Typography fontSize={14} textAlign={'left'} color={'inherit'}>*/}
+      {/*      Add new prompt template*/}
+      {/*    </Typography>*/}
+      {/*  </Stack>*/}
+      {/*</Item>*/}
+      {/*<Separator />*/}
+      {sortBySettingsKey.map((menuItem, index) => {
+        return <ListItem key={index} menuItem={menuItem} />
+      })}
+      {/*{settingsKey === 'contextMenus' && <CustomizeButton />}*/}
     </Stack>
   )
 }

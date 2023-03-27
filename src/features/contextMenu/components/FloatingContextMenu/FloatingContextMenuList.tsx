@@ -65,12 +65,33 @@ const FloatingContextMenuList: FC<
     menuList: IContextMenuItemWithChildren[]
   }
 > = (props) => {
-  const { root, referenceElement, referenceElementOpen, menuList, ...rest } =
-    props
+  const {
+    root,
+    referenceElement,
+    referenceElementOpen,
+    menuList,
+    customOpen,
+    needAutoUpdate,
+    ...rest
+  } = props
   const RenderMenuList = useMemo(() => {
     const nodeList: React.ReactNode[] = []
     menuList.forEach((menuItem, index) => {
       if (menuItem.data.type === 'group') {
+        if (index > 0) {
+          // spector
+          nodeList.push(
+            <Box
+              key={menuItem.id + '_group_spector'}
+              aria-disabled={true}
+              component={'div'}
+              sx={{
+                borderTop: '1px solid rgb(237, 237, 236)',
+                my: 1,
+              }}
+            />,
+          )
+        }
         nodeList.push(
           <Box
             key={menuItem.id + '_group_name'}
@@ -81,7 +102,9 @@ const FloatingContextMenuList: FC<
               justifyContent: 'flex-start',
               alignItems: 'center',
               width: '100%',
+              boxSizing: 'border-box',
               direction: 'row',
+              px: 1,
             }}
           >
             {/*{menuItem?.data?.icon && (*/}
@@ -130,7 +153,8 @@ const FloatingContextMenuList: FC<
       zIndex={2147483601}
       label={''}
       root={root}
-      customOpen
+      customOpen={customOpen}
+      needAutoUpdate={needAutoUpdate}
       referenceElement={referenceElement}
       referenceElementOpen={referenceElementOpen}
     >

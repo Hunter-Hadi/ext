@@ -1,6 +1,9 @@
 import { IActionType } from '@/features/shortcuts/types'
 import Action from '@/features/shortcuts/core/Action'
-import { clearUserInput, templateParserDecorator } from '@/features/shortcuts/decorators'
+import {
+  clearUserInput,
+  templateParserDecorator,
+} from '@/features/shortcuts/decorators'
 export class ActionAskChatGPT extends Action {
   static type = 'ASK_CHATGPT'
   constructor(

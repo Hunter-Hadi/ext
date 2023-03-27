@@ -1,10 +1,6 @@
 import {
   autoUpdate,
-  flip,
   FloatingPortal,
-  offset,
-  shift,
-  size,
   useClick,
   useDismiss,
   useFloating,
@@ -18,7 +14,7 @@ import {
 } from '@/features/contextMenu/store'
 import {
   cloneRect,
-  isRectangleCollidingWithBoundary,
+  FloatingContextMenuMiddleware,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
@@ -30,47 +26,6 @@ import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuL
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-
-const FloatingContextMenuMiddleware = [
-  flip({
-    fallbackPlacements: ['top-start', 'right', 'left'],
-  }),
-  size(),
-  shift({
-    crossAxis: true,
-    padding: 16,
-  }),
-  offset((params) => {
-    console.log('[ContextMenu Module]: [offset]', params)
-    if (params.placement.indexOf('bottom') > -1) {
-      const boundary = {
-        left: 0,
-        right: window.innerWidth,
-        top: 0,
-        bottom: window.innerHeight + window.scrollY,
-      }
-      if (
-        isRectangleCollidingWithBoundary(
-          {
-            top: params.y,
-            left: params.x,
-            bottom: params.y + params.rects.floating.height + 50,
-            right: params.rects.floating.width + params.x,
-          },
-          boundary,
-        )
-      ) {
-        return (
-          params.rects.reference.y - params.y - params.rects.floating.height - 8
-        )
-      }
-      return 8
-    } else {
-      return 8
-    }
-  }),
-]
-
 const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
@@ -153,16 +108,6 @@ const FloatingContextMenu: FC<{
         textareaEl?.focus()
         setTimeout(() => {
           textareaEl?.focus()
-          // textareaEl?.dispatchEvent(
-          //   new KeyboardEvent('keydown', {
-          //     key: event.key,
-          //     code: event.code,
-          //     shiftKey: event.shiftKey,
-          //     ctrlKey: event.ctrlKey,
-          //     altKey: event.altKey,
-          //     metaKey: event.metaKey,
-          //   }),
-          // )
         }, 1)
       }
     }
@@ -229,6 +174,7 @@ const FloatingContextMenu: FC<{
         }}
       >
         <FloatingContextMenuList
+          needAutoUpdate
           menuList={contextMenuList}
           referenceElementOpen={floatingDropdownMenu.open && !running}
           referenceElement={
@@ -382,10 +328,11 @@ const FloatingContextMenu: FC<{
               </Stack>
             </div>
           }
+          customOpen
           root={root}
         />
       </div>
     </FloatingPortal>
   )
 }
-export default FloatingContextMenu
+export { FloatingContextMenu }

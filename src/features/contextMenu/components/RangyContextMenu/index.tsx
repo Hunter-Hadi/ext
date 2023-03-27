@@ -5,7 +5,6 @@ import { Menu } from 'react-contexify'
 import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 import ClickContextMenu from './ClickContextMenu'
 import {
-  ROOT_CONTEXT_MENU_CONTAINER_ID,
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
   ROOT_CONTEXT_MENU_ID,
 } from '@/types'
@@ -24,15 +23,6 @@ const RangyContextMenu = () => {
         </Menu>
       </Paper>
       <ClickContextMenu />
-      <Menu
-        style={{
-          zIndex: 2147483601,
-          border: '1px solid rgb(237,237,236)',
-        }}
-        id={ROOT_CONTEXT_MENU_CONTAINER_ID + 'StaticButton'}
-      >
-        <ContextMenuList staticButton settingsKey={'contextMenus'} />
-      </Menu>
     </Portal>
   )
 }

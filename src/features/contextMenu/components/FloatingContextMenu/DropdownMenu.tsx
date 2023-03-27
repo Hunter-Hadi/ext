@@ -22,16 +22,18 @@ import {
   FloatingFocusManager,
   autoUpdate,
 } from '@floating-ui/react'
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { useEffect, useMemo } from 'react'
 import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
   IContextMenuItem,
 } from '@/features/contextMenu/store'
-import { ContextMenuIcon } from '@/features/contextMenu'
+import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 interface MenuItemProps {
   label: string
   menuItem: IContextMenuItem
@@ -63,6 +65,9 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           alignItems: 'center',
           flexDirection: 'row',
           gap: 1,
+          boxSizing: 'border-box',
+          px: 1,
+          borderRadius: '3px',
           height: '28px',
           fontSize: '14px',
           width: '100%',
@@ -125,6 +130,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           width={0}
           noWrap
           flex={1}
+          lineHeight={'28px'}
         >
           {menuItem.text} - {isHover ? 'true' : 'false'}
         </Typography>
@@ -140,13 +146,11 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
             <KeyboardArrowRightIcon
               sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
             />
-          ) : menuItem?.data?.icon ? (
-            <ContextMenuIcon
-              size={16}
-              icon={menuItem.data.icon}
-              sx={{ color: 'rgba(55, 53, 47, 0.45)' }}
+          ) : (
+            <KeyboardReturnIcon
+              sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
             />
-          ) : null}
+          )}
         </span>
       </Box>
     )
@@ -161,6 +165,7 @@ export interface MenuProps {
   referenceElement?: React.ReactNode
   referenceElementOpen?: boolean
   customOpen?: boolean
+  needAutoUpdate?: boolean
   zIndex?: number
 }
 
@@ -178,6 +183,7 @@ export const MenuComponent = React.forwardRef<
       label,
       root,
       customOpen = false,
+      needAutoUpdate = false,
       ...props
     },
     forwardedRef,
@@ -215,22 +221,21 @@ export const MenuComponent = React.forwardRef<
         }
         setIsOpen(show)
       },
-      placement: isNested ? 'right-start' : 'bottom-start',
+      placement: customOpen ? 'bottom-start' : 'right-start',
       middleware: [
         offset({
-          mainAxis: isNested ? 0 : 4,
-          alignmentAxis: isNested ? -4 : 0,
+          mainAxis: customOpen ? 4 : 0,
+          alignmentAxis: customOpen ? 0 : -4,
         }),
         flip({
-          fallbackPlacements: isNested
-            ? ['right', 'left', 'bottom', 'top']
-            : ['bottom', 'top', 'right', 'left'],
+          fallbackPlacements: customOpen
+            ? ['bottom', 'top', 'right', 'left']
+            : ['right', 'left', 'bottom', 'top'],
         }),
         shift(),
       ],
-      whileElementsMounted: autoUpdate,
+      whileElementsMounted: needAutoUpdate ? autoUpdate : undefined,
     })
-
     const hover = useHover(context, {
       enabled: isNested && allowHover,
       delay: { open: 75 },
@@ -369,22 +374,20 @@ export const MenuComponent = React.forwardRef<
               onClick(event) {
                 event.stopPropagation()
               },
-              onKeyUp(event) {
-                event.stopPropagation()
-              },
               ...(isNested && {
                 // Indicates this is a nested <Menu /> acting as a <MenuItem />.
                 role: 'menuitem',
               }),
+              ref: referenceRef,
             }),
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            ref: referenceRef,
+            // ref: referenceRef,
           })
         ) : (
-          <button
+          <Button
             ref={referenceRef}
-            data-open={isOpen ? '' : undefined}
+            // data-open={isOpen ? '' : undefined}
             {...getReferenceProps({
               ...props,
               className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
@@ -396,14 +399,18 @@ export const MenuComponent = React.forwardRef<
                 role: 'menuitem',
               }),
             })}
+            startIcon={
+              <UseChatGptIcon
+                sx={{
+                  fontSize: 16,
+                  color: 'inherit',
+                }}
+              />
+            }
+            variant={'outlined'}
           >
-            {label}{' '}
-            {isNested && (
-              <span aria-hidden style={{ marginLeft: 10 }}>
-                ➔
-              </span>
-            )}
-          </button>
+            {label || 'Use ChatGPT'}
+          </Button>
         )}
         <FloatingPortal root={root}>
           {isOpen && React.Children.count(children) && (
@@ -422,7 +429,7 @@ export const MenuComponent = React.forwardRef<
                   zIndex: (zIndex || 0) + 1,
                   display: 'flex',
                   flexDirection: 'column',
-                  p: 1,
+                  p: 0.5,
                   outline: 'none!important',
                   width: 400,
                   maxHeight: 320,

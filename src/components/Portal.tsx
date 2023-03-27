@@ -6,7 +6,7 @@ import { CacheProvider } from '@emotion/react'
 // @ts-ignore
 import ReactContexifyCss from 'react-contexify/dist/ReactContexify.css'
 import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/types'
-import FloatingContextMenu from '@/features/contextMenu/components/FloatingContextMenu'
+import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
 
 const AppNameToClassName = (process.env.APP_ENV || '')
   .toLowerCase()

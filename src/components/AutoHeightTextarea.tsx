@@ -263,6 +263,7 @@ const AutoHeightTextarea: FC<{
           )
           setInputValue(event.currentTarget.value)
           onChange && onChange(event.currentTarget.value)
+          throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
         }}
         onBlur={(event) => {
           throttleAutoSizeTextarea(event.currentTarget, childrenHeight)

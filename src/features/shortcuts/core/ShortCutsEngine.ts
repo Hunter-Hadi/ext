@@ -60,7 +60,6 @@ class ShortCutsEngine implements IShortcutEngine {
       this.stepIndex += 1
       if (this.status === 'notRunning' || this.status === 'running') {
         const currentAction = this.getCurrentAction()
-
         if (currentAction) {
           this.status = 'running'
           if (parameters) {
@@ -72,7 +71,9 @@ class ShortCutsEngine implements IShortcutEngine {
             this.getVariable(),
             currentAction,
           )
+          debugger
           await currentAction.execute(this.getVariable(), engine)
+          debugger
           if (currentAction.error) {
             this.stepIndex = Math.max(this.stepIndex - 1, -1)
             return

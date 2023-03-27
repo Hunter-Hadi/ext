@@ -6,6 +6,7 @@ import {
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { flip, offset, shift, size } from '@floating-ui/react'
 export const checkIsCanInputElement = (
   element: HTMLElement,
   defaultMaxLoop = 10,
@@ -366,3 +367,46 @@ export const findFirstTierMenuLength = (menuList: IContextMenuItem[] = []) => {
   }
   return count
 }
+
+/**
+ * @description: floating ui的middleware
+ */
+export const FloatingContextMenuMiddleware = [
+  flip({
+    fallbackPlacements: ['top-start', 'right', 'left'],
+  }),
+  size(),
+  shift({
+    crossAxis: true,
+    padding: 16,
+  }),
+  offset((params) => {
+    console.log('[ContextMenu Module]: [offset]', params)
+    if (params.placement.indexOf('bottom') > -1) {
+      const boundary = {
+        left: 0,
+        right: window.innerWidth,
+        top: 0,
+        bottom: window.innerHeight + window.scrollY,
+      }
+      if (
+        isRectangleCollidingWithBoundary(
+          {
+            top: params.y,
+            left: params.x,
+            bottom: params.y + params.rects.floating.height + 50,
+            right: params.rects.floating.width + params.x,
+          },
+          boundary,
+        )
+      ) {
+        return (
+          params.rects.reference.y - params.y - params.rects.floating.height - 8
+        )
+      }
+      return 8
+    } else {
+      return 8
+    }
+  }),
+]

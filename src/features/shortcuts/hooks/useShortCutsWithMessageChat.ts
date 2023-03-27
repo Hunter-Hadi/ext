@@ -34,7 +34,8 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     }
     try {
       const isLoginSuccess = await pingUntilLogin()
-      if (isLoginSuccess) {
+      // 确保没有在运行
+      if (isLoginSuccess && shortCutsEngineRef.current?.stepIndex === -1) {
         await shortCutsEngineRef.current.run({
           parameters: getParams().shortCutsParameters,
           engine: {

@@ -247,7 +247,7 @@ const ContextMenuList: FC<{
           <Stack direction={'row'} alignItems={'center'} gap={1}>
             <SettingsIcon sx={{ fontSize: 14 }} />
             <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
-              Add new prompt template
+              Edit options
             </Typography>
           </Stack>
         </Item>

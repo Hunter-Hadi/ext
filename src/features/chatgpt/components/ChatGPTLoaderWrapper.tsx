@@ -5,10 +5,10 @@ import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { ContentScriptConnection } from '@/features/chatgpt/utils'
 
 const ChatGPTLoaderWrapper: FC = () => {
   const { status } = useRecoilValue(ChatGPTClientState)
-  const { port } = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
   useEffect(() => {
     let timer: any | null = null
@@ -60,15 +60,12 @@ const ChatGPTLoaderWrapper: FC = () => {
                   },
                 }}
                 onClick={() => {
-                  if (port) {
-                    port?.postMessage({
-                      id: CHROME_EXTENSION_POST_MESSAGE_ID,
-                      event: 'Client_openUrlInNewTab',
-                      data: {
-                        key: 'daemon_process',
-                      },
-                    })
-                  }
+                  const port = new ContentScriptConnection()
+                  port.postMessage({
+                    id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                    event: 'Client_openChatGPTDaemonProcess',
+                  })
+                  port.destroy()
                 }}
               >
                 <Typography
@@ -130,14 +127,12 @@ const ChatGPTLoaderWrapper: FC = () => {
           </Typography>
           <Button
             onClick={() => {
-              if (port) {
-                port?.postMessage({
-                  id: CHROME_EXTENSION_POST_MESSAGE_ID,
-                  event: 'Client_openChatGPTDaemonProcess',
-                })
-              } else {
-                window.open('https://chat.openai.com/chat', '_blank')
-              }
+              const port = new ContentScriptConnection()
+              port.postMessage({
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                event: 'Client_openChatGPTDaemonProcess',
+              })
+              port.destroy()
             }}
             variant={'contained'}
             disableElevation

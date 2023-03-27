@@ -1,10 +1,13 @@
-import { IChromeExtensionChatGPTDaemonProcessListenTaskEvent } from '@/background'
+import {
+  IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
+  IChromeExtensionClientSendEvent,
+} from '@/background'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
-import { useRecoilState } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useCallback } from 'react'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { useSetRecoilState } from 'recoil'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
 
 export const pingDaemonProcess = () => {
   const port = Browser.runtime.connect()
@@ -108,7 +111,7 @@ export const pingUntilLogin = () => {
 }
 
 export const useSendAsyncTask = () => {
-  const [chatGPTClient, setChatGPTClient] = useRecoilState(ChatGPTClientState)
+  const setChatGPTClient = useSetRecoilState(ChatGPTClientState)
   return useCallback(
     (
       event: IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
@@ -119,100 +122,205 @@ export const useSendAsyncTask = () => {
       },
     ) => {
       return new Promise((resolve, reject) => {
+        const port = new ContentScriptConnection()
         console.log('[ChatGPT Module] create task step 1')
-        pingDaemonProcess().then((isConnectionAlive) => {
-          if (isConnectionAlive !== true) {
-            console.log('ping error')
-            reject('ping error')
-            return
-          }
-          if (chatGPTClient.port && chatGPTClient.loaded) {
-            console.log('[ChatGPT Module] create task step 2')
-            const { onMessage, onError } = options || {}
-            const taskId = uuidV4()
-            let isPromiseFulfilled = false
-            const onceListener = (msg: any) => {
-              const { event, data } = msg
-              if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
-                return
-              }
-              if (event === `Client_AsyncTaskResponse_${taskId}`) {
-                console.log(data)
-                const {
-                  taskId,
-                  data: chatGPTDaemenProcessData,
-                  done,
-                  error,
-                } = data
-                console.log(
-                  'chatGPTDaemenProcessData',
-                  chatGPTDaemenProcessData,
-                  taskId,
-                )
-                if (error) {
-                  console.log('[ChatGPT Module] create task [error]', error)
-                  onError && onError(error)
+        pingDaemonProcess()
+          .then((isConnectionAlive) => {
+            if (isConnectionAlive !== true) {
+              console.log('ping error')
+              reject('ping error')
+              return
+            }
+            if (port) {
+              console.log('[ChatGPT Module] create task step 2')
+              const { onMessage, onError } = options || {}
+              const taskId = uuidV4()
+              let isPromiseFulfilled = false
+              const onceListener = (msg: any) => {
+                const { event, data } = msg
+                if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+                  return
+                }
+                if (event === `Client_AsyncTaskResponse_${taskId}`) {
+                  console.log(data)
+                  const {
+                    taskId,
+                    data: chatGPTDaemenProcessData,
+                    done,
+                    error,
+                  } = data
+                  console.log(
+                    'chatGPTDaemenProcessData',
+                    chatGPTDaemenProcessData,
+                    taskId,
+                  )
+                  if (error) {
+                    console.log('[ChatGPT Module] create task [error]', error)
+                    onError && onError(error)
+                    if (done) {
+                      console.log('[ChatGPT Module] create task [error] done')
+                      Browser?.runtime?.onMessage?.removeListener(onceListener)
+                      port.destroy()
+                      !isPromiseFulfilled && reject(error)
+                      isPromiseFulfilled = true
+                    }
+                  }
                   if (done) {
-                    console.log('[ChatGPT Module] create task [error] done')
+                    console.log('[ChatGPT Module] create task [success] done')
                     Browser?.runtime?.onMessage?.removeListener(onceListener)
-                    chatGPTClient.port?.onMessage?.removeListener(onceListener)
-                    !isPromiseFulfilled && reject(error)
+                    port.destroy()
+                    !isPromiseFulfilled &&
+                      resolve(chatGPTDaemenProcessData || true)
                     isPromiseFulfilled = true
+                  } else {
+                    console.log(
+                      '[ChatGPT Module] create task step [success]',
+                      chatGPTDaemenProcessData,
+                    )
+                    onMessage && onMessage(chatGPTDaemenProcessData)
                   }
                 }
-                if (done) {
-                  console.log('[ChatGPT Module] create task [success] done')
-                  Browser?.runtime?.onMessage?.removeListener(onceListener)
-                  chatGPTClient.port?.onMessage?.removeListener(onceListener)
-                  !isPromiseFulfilled &&
-                    resolve(chatGPTDaemenProcessData || true)
-                  isPromiseFulfilled = true
-                } else {
-                  console.log(
-                    '[ChatGPT Module] create task step [success]',
-                    chatGPTDaemenProcessData,
-                  )
-                  onMessage && onMessage(chatGPTDaemenProcessData)
+              }
+              port.onMessage(onceListener)
+              Browser.runtime.onMessage.addListener(onceListener)
+              port.postMessage({
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                event: 'Client_createAsyncTask',
+                data: {
+                  taskId,
+                  event,
+                  data,
+                },
+              })
+              setChatGPTClient((prevState) => {
+                return {
+                  ...prevState,
+                  aborts: prevState.aborts.concat([
+                    () => {
+                      if (isPromiseFulfilled) {
+                        return
+                      }
+                      console.log('abort!!!!!!!!!!!')
+                      isPromiseFulfilled = true
+                      onError && onError(`Error detected. Please try again.`)
+                      reject(`Error detected. Please try again.`)
+                    },
+                  ]),
                 }
-              }
+              })
+            } else {
+              console.log(
+                '[ChatGPT Module] create task [error]',
+                `Please wait for the daemon process to start.`,
+              )
+              reject('Please wait for the daemon process to start.')
             }
-            chatGPTClient.port.onMessage.addListener(onceListener)
-            Browser.runtime.onMessage.addListener(onceListener)
-            chatGPTClient.port.postMessage({
-              id: CHROME_EXTENSION_POST_MESSAGE_ID,
-              event: 'Client_createAsyncTask',
-              data: {
-                taskId,
-                event,
-                data,
-              },
-            })
-            setChatGPTClient((prevState) => {
-              return {
-                ...prevState,
-                aborts: prevState.aborts.concat([
-                  () => {
-                    if (isPromiseFulfilled) {
-                      return
-                    }
-                    console.log('abort!!!!!!!!!!!')
-                    isPromiseFulfilled = true
-                    onError && onError(`Error detected. Please try again.`)
-                    reject(`Error detected. Please try again.`)
-                  },
-                ]),
-              }
-            })
-          } else {
-            console.log(
-              '[ChatGPT Module] create task [error]',
-              `Please wait for the daemon process to start.`,
-            )
+          })
+          .catch((e) => {
+            console.log('ping error', e)
             reject('Please wait for the daemon process to start.')
-          }
-        })
+          })
       })
     },
-    [chatGPTClient.port, chatGPTClient.loaded],
+    [],
   )
+}
+
+type MessageCallback = (message: any) => void
+
+export class ContentScriptConnection {
+  private port: Browser.Runtime.Port
+  private heartbeatTimer: any | null
+  private messageCallbacks: MessageCallback[]
+  private retryCount: number
+  constructor() {
+    console.log('[ContentScriptConnection]: init')
+    // 创建一个与扩展程序后台建立连接的端口对象
+    this.port = Browser.runtime.connect()
+    // 初始化心跳计时器
+    this.heartbeatTimer = null
+    // 初始化消息回调函数列表
+    this.messageCallbacks = []
+    // 监听端口的消息事件
+    this.port.onMessage.addListener(this.handleMessage.bind(this))
+    // 初始化重试次数
+    this.retryCount = 0
+  }
+  postMessage(msg: {
+    id: string
+    event: IChromeExtensionClientSendEvent
+    data?: any
+  }) {
+    try {
+      // TODO - force disconnect
+      if (this.retryCount === 0) {
+        this.port.disconnect()
+      }
+      this.port.postMessage(msg)
+      this.retryCount = 0
+    } catch (e) {
+      console.log('[ContentScriptConnection]: send error', e, '\ndata:\t', msg)
+      if (this.retryCount < 10) {
+        console.log('[ContentScriptConnection]: retry', this.retryCount)
+        this.retryCount++
+        this.port = Browser.runtime.connect()
+        this.postMessage(msg)
+      }
+      return
+    }
+    if (!this.heartbeatTimer) {
+      this.startHeartbeat()
+    }
+  }
+  // 注册一个消息回调函数
+  onMessage(callback: MessageCallback) {
+    this.messageCallbacks.push(callback)
+  }
+  // 处理从扩展程序后台接收到的消息
+  private handleMessage(message: any) {
+    // 如果接收到的消息是心跳消息，则忽略
+    if (message.type === 'heartbeat') {
+      return
+    }
+    // 调用所有注册的消息回调函数
+    this.messageCallbacks.forEach((callback) => {
+      callback(message)
+    })
+  }
+  onDisconnect(callback: () => void) {
+    this.port.onDisconnect.addListener(callback)
+  }
+  private startHeartbeat() {
+    // TODO 先不发送心跳
+    return
+    this.stopHeartbeat()
+    this.heartbeatTimer = setInterval(() => {
+      if (document.hidden) {
+        console.log(
+          '[ContentScriptConnection]: heartbeat jump with document.hidden',
+        )
+        return
+      }
+      console.log('[ContentScriptConnection]: heartbeat start')
+      this.postMessage({
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'Client_Ping',
+      })
+      this.postMessage({
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'Client_checkChatGPTStatus',
+      })
+    }, 1000)
+  }
+  private stopHeartbeat() {
+    console.log('[ContentScriptConnection]: heartbeat stop')
+    if (this.heartbeatTimer) {
+      clearInterval(this.heartbeatTimer)
+      this.heartbeatTimer = null
+    }
+  }
+  destroy() {
+    this.stopHeartbeat()
+    this.port.disconnect()
+  }
 }

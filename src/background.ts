@@ -37,6 +37,22 @@ if (isEzMailApp) {
 }
 
 let chatGPTProxyInstance: undefined | Browser.Tabs.Tab = undefined
+const checkChatGPTProxyInstance = async () => {
+  const chatGPTProxyTabId = chatGPTProxyInstance?.id
+  if (!chatGPTProxyTabId) {
+    return false
+  }
+  try {
+    const chatGPTProxyTab = await Browser.tabs.get(chatGPTProxyTabId)
+    if (!chatGPTProxyTab) {
+      return false
+    }
+  } catch (e) {
+    chatGPTProxyInstance = undefined
+    return false
+  }
+  return true
+}
 /**
  * needAuth: 需要授权
  * loading: 正在加载
@@ -92,10 +108,11 @@ export type IChromeExtensionListenEvent =
   | IChromeExtensionChatGPTDaemonProcessSendEvent
   | IChromeExtensionClientSendEvent
 
-const sendChatGPTDaemonProcessMessage = (data: any) => {
+const sendChatGPTDaemonProcessMessage = async (data: any) => {
   console.log('sendChatGPTDaemonProcessMessage', data)
-  if (chatGPTProxyInstance && chatGPTProxyInstance.id) {
-    Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
+  console.log(chatGPTProxyInstance)
+  if ((await checkChatGPTProxyInstance()) && chatGPTProxyInstance?.id) {
+    await Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
       event: 'DaemonProcess_clientAsyncTask',
       id: CHROME_EXTENSION_POST_MESSAGE_ID,
       data,
@@ -136,7 +153,12 @@ const sendClientMessage = (
     tabs.forEach((tab) => {
       if (tab.id) {
         console.log(tab.id, tab.url, message)
-        Browser.tabs.sendMessage(tab.id, message)
+        if (tab.url?.startsWith('http')) {
+          if (tab.url?.startsWith('https://chat.openai.com')) {
+            return
+          }
+          Browser.tabs.sendMessage(tab.id, message)
+        }
       }
     })
   })
@@ -198,7 +220,7 @@ Browser.runtime.onConnect.addListener((port) => {
           const { data: DaemonProcessReceiveData, event, taskId } = msg.data
           if (taskId) {
             ClientAsyncTaskMap.set(taskId, port.sender?.tab?.id || 0)
-            sendChatGPTDaemonProcessMessage({
+            await sendChatGPTDaemonProcessMessage({
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event,
               taskId,
@@ -245,7 +267,7 @@ Browser.runtime.onConnect.addListener((port) => {
       case 'Client_Ping':
         {
           console.log('Client_Ping', msg)
-          if (chatGPTProxyInstance && chatGPTProxyInstance.id) {
+          if ((await checkChatGPTProxyInstance()) && chatGPTProxyInstance?.id) {
             await Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'DaemonProcess_listenClientPing',

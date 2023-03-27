@@ -2,13 +2,12 @@ import { IconButton, Box, Popover, Stack } from '@mui/material'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import React, { useState } from 'react'
 import Typography from '@mui/material/Typography'
-import {
-  templateWordToDescription,
-  templateStaticWords,
-} from '@/features/shortcuts/utils'
+import { templateWordToDescription } from '@/features/shortcuts/utils'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 
 const PopperId = 'tempalte-description-tooltip'
+
+const TEMPLATE_STATIC_WORDS = ['GMAIL_MESSAGE_CONTEXT', 'GMAIL_DRAFT_CONTEXT']
 
 const WordItem = (props: { word: string }) => {
   const { word } = props
@@ -65,11 +64,11 @@ const TemplateTooltip = () => {
             <br />
             ----
           </Typography>
-          {templateStaticWords.map((word, index) => {
+          {TEMPLATE_STATIC_WORDS.map((word, index) => {
             return (
               <>
                 <WordItem key={word} word={word} />
-                {templateStaticWords.length - 1 !== index ? (
+                {TEMPLATE_STATIC_WORDS.length - 1 !== index ? (
                   <Typography>----</Typography>
                 ) : null}
               </>

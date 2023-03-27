@@ -7,6 +7,57 @@ import {
 
 export default [
   {
+    id: EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+    parent: 'root',
+    droppable: false,
+    text: 'EzMail (New email)',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      icon: 'EzMail',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write an email:',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+    },
+  },
+  {
+    id: EZMAIL_REPLY_CTA_BUTTON_ID,
+    parent: 'root',
+    droppable: false,
+    text: 'EzMail (Reply)',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      icon: 'EzMail',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              '"""\n{{GMAIL_MESSAGE_CONTEXT}}\n"""\nWrite a reply to the email above: ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+    },
+  },
+  {
     id: '496d1369-941d-49a5-a9ce-68eadd7601de',
     parent: EZMAIL_REPLY_GROUP_ID,
     droppable: false,
@@ -342,57 +393,6 @@ export default [
       editable: false,
       type: 'group',
       actions: [],
-    },
-  },
-  {
-    id: EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-    parent: 'root',
-    droppable: false,
-    text: 'EzMail (New email)',
-    data: {
-      editable: false,
-      type: 'shortcuts',
-      icon: 'EzMail',
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template: 'Write an email:',
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
-    },
-  },
-  {
-    id: EZMAIL_REPLY_CTA_BUTTON_ID,
-    parent: 'root',
-    droppable: false,
-    text: 'EzMail (Reply)',
-    data: {
-      editable: false,
-      type: 'shortcuts',
-      icon: 'EzMail',
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              '"""\n{{GMAIL_MESSAGE_CONTEXT}}\n"""\nWrite a reply to the email above: ',
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
     },
   },
 ] as IContextMenuItem[]

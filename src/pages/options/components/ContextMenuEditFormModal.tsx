@@ -94,25 +94,28 @@ const ContextMenuEditForm: FC<{
       >
         <Stack spacing={2} minHeight={'60vh'}>
           <Typography variant={'h6'}>
-            Edit Menu Item{isDisabled ? '(Read only)' : ''}
+            {isDisabled ? `Menu option (Read only)` : 'Edit menu option'}
           </Typography>
-          <TextField
-            disabled={isDisabled}
-            size={'small'}
-            value={editNode.text}
-            label={'Menu Name'}
-            onChange={(event) => {
-              setEditNode((prev) => {
-                return {
-                  ...prev,
-                  text: event.target.value,
-                }
-              })
-            }}
-          />
+
+          <Stack>
+            <Typography variant={'body1'}>Option name</Typography>
+            <TextField
+              disabled={isDisabled}
+              size={'small'}
+              value={editNode.text}
+              onChange={(event) => {
+                setEditNode((prev) => {
+                  return {
+                    ...prev,
+                    text: event.target.value,
+                  }
+                })
+              }}
+            />
+          </Stack>
           {iconSetting && (
             <Stack>
-              <Typography variant={'body1'}>Menu Icon</Typography>
+              <Typography variant={'body1'}>Option icon</Typography>
               <Stack
                 flexWrap={'wrap'}
                 gap={1}
@@ -154,7 +157,9 @@ const ContextMenuEditForm: FC<{
           {node.data.type === 'shortcuts' && (
             <>
               <Stack direction={'row'} alignItems="center">
-                <Typography variant={'body1'}>Template</Typography>
+                <Typography variant={'body1'}>
+                  Prompt template for ChatGPT
+                </Typography>
                 <TemplateTooltip />
               </Stack>
               <Box position={'relative'} width={'100%'} height={280}>
@@ -193,7 +198,7 @@ const ContextMenuEditForm: FC<{
             settingsKey === 'gmailToolBarContextMenu' && (
               <FormControlLabel
                 control={<Switch checked={autoAskChatGPT} />}
-                label="Auto Ask ChatGPT"
+                label="Run prompt automatically"
                 value={autoAskChatGPT}
                 disabled={isDisabled}
                 onChange={(event: any) => {
@@ -210,14 +215,6 @@ const ContextMenuEditForm: FC<{
             justifyContent={'center'}
           >
             <Button
-              variant={'outlined'}
-              onClick={() => {
-                onCancel?.()
-              }}
-            >
-              Cancel
-            </Button>
-            <Button
               disabled={isDisabled}
               variant={'contained'}
               onClick={() => {
@@ -225,6 +222,14 @@ const ContextMenuEditForm: FC<{
               }}
             >
               Save
+            </Button>
+            <Button
+              variant={'outlined'}
+              onClick={() => {
+                onCancel?.()
+              }}
+            >
+              Cancel
             </Button>
           </Stack>
         </Stack>

@@ -78,7 +78,18 @@ const ContextMenuItem = (props: {
           cursor: node.droppable ? 'default' : 'pointer',
         }}
       >
-        <Typography fontSize={14} color={'text.primary'}>
+        <Typography
+          fontSize={14}
+          color={'text.primary'}
+          sx={{
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: 1,
+            WebkitBoxOrient: 'vertical',
+            wordBreak: 'break-word',
+          }}
+        >
           {node.text}
         </Typography>
         {isHover && (

@@ -42,7 +42,7 @@ const useShortCutsParameters = () => {
             .replace(/&amp;/g, '&')
             .replace(/&quot;/g, '"')
             .replace(/&apos;/g, "'")
-            .replace(/\n+/g, `\n`) || ''
+            .replace(/\n{3,}/g, `\n`) || ''
       }
     }
     let HIGHLIGHTED_HTML = ''

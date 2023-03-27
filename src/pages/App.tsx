@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import './app.EZ_MAIL_AI.less'
-import './app.USE_CHAT_GPT.less'
+import './global.less'
 import {
   GmailMessageChatConversationState,
   useInitInboxSdk,

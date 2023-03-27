@@ -51,6 +51,11 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
   if (dragId === dropId) {
     return false
   }
+
+  if (dropId === rootId) {
+    return true
+  }
+
   const dropNode = treeData.find((item) => item.id === dropId)
   if (!dropNode) {
     return false
@@ -126,6 +131,23 @@ const ContextMenuSettings: FC<{
         data: {
           editable: true,
           type: 'shortcuts',
+          actions: [],
+        },
+      }),
+    )
+    setEditId(newEditId)
+  }
+  const addNewMenuGroup = async () => {
+    const newEditId = v4()
+    setTreeData((prev) =>
+      prev.concat({
+        id: newEditId,
+        parent: rootId,
+        droppable: true,
+        text: 'New option group',
+        data: {
+          editable: true,
+          type: 'group',
           actions: [],
         },
       }),
@@ -294,6 +316,14 @@ const ContextMenuSettings: FC<{
           disabled={loading}
         >
           Add new option
+        </Button>
+        <Button
+          disableElevation
+          variant={'contained'}
+          onClick={addNewMenuGroup}
+          disabled={loading}
+        >
+          Add new group
         </Button>
         <Button
           disableElevation

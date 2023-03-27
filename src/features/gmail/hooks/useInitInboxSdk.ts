@@ -152,7 +152,7 @@ const useInitInboxSdk = () => {
                   right: iconButtonBounce.right,
                 },
                 200,
-                32 * itemLength + 20,
+                32 * itemLength + 48,
                 {
                   offset: 8,
                   directions: ['top', 'right', 'left', 'bottom'],

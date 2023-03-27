@@ -131,10 +131,12 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     console.log('test scroll: messages update')
     // 新message出现滚动到底部一次
     isScrollingToBottomRef.current = true
-    elementScrollToBottom(stackElement, 400)
     setTimeout(() => {
-      isScrollingToBottomRef.current = false
-    }, 400)
+      elementScrollToBottom(stackElement, 400)
+      setTimeout(() => {
+        isScrollingToBottomRef.current = false
+      }, 500)
+    }, 100)
   }, [currentMessages])
   useEffect(() => {
     console.log('default update', step)

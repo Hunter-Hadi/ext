@@ -1,4 +1,3 @@
-import { ISetActionsType } from '@/features/shortcuts'
 import { Box, Button, Paper, Stack } from '@mui/material'
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import {
@@ -18,8 +17,11 @@ import {
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
-import { EZMAIL_NEW_MAIL_GROUP_ID, EZMAIL_REPLY_GROUP_ID } from '@/types'
 import ContextMenuViewSource from './components/ContextMenuViewSource'
+import ContextMenuActionConfirmModal, {
+  IConfirmActionType,
+} from './components/ContextMenuActionConfirmModal'
+import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 
 const rootId = 'root'
 
@@ -28,6 +30,7 @@ const saveTreeData = async (
   treeData: IContextMenuItem[],
 ) => {
   try {
+    console.log('saveTreeData', key, treeData)
     const success = await setChromeExtensionSettings({
       [key]: treeData,
     } as any)
@@ -37,51 +40,6 @@ const saveTreeData = async (
   }
 }
 
-const getDefaultActionWithTemplate = (
-  settingsKey: IChromeExtensionSettingsKey,
-  template: string,
-  autoAskChatGPT: boolean,
-) => {
-  const actions: Record<IChromeExtensionSettingsKey, ISetActionsType> = {
-    gmailToolBarContextMenu: [
-      {
-        type: 'RENDER_CHATGPT_PROMPT',
-        parameters: {
-          template,
-        },
-      },
-      {
-        type: 'INSERT_USER_INPUT',
-        parameters: {
-          template: '{{LAST_ACTION_OUTPUT}}',
-        },
-      },
-    ],
-    contextMenus: [
-      {
-        type: 'RENDER_CHATGPT_PROMPT',
-        parameters: {
-          template,
-        },
-      },
-      {
-        type: 'ASK_CHATGPT',
-        parameters: {},
-      },
-    ],
-  }
-
-  const currentActions = actions[settingsKey]
-  if (settingsKey === 'gmailToolBarContextMenu' && autoAskChatGPT) {
-    currentActions.push({
-      type: 'ASK_CHATGPT',
-      parameters: {
-        template: '{{LAST_ACTION_OUTPUT}}',
-      },
-    })
-  }
-  return currentActions
-}
 const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
   if (dragId === dropId) {
     return false
@@ -106,18 +64,17 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsKey
-  menuType?: 'reply' | 'new-email'
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {
-  const {
-    settingsKey,
-    defaultContextMenuJson,
-    iconSetting = false,
-    menuType,
-  } = props
+  const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
   const [loading, setLoading] = useState(false)
   const [editId, setEditId] = useState<string | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const [confirmId, setConfirmId] = useState<string | null>(null)
+  const [confirmType, setconfirmType] = useState<IConfirmActionType | null>(
+    null,
+  )
   const editNode = useMemo(() => {
     return treeData.find((item) => item.id === editId) || null
   }, [treeData, editId])
@@ -174,33 +131,57 @@ const ContextMenuSettings: FC<{
       }),
     )
   }
+
+  const deleteMenuItemById = (id: string) => {
+    setTreeData((prev) => {
+      const newTree = prev.filter((item) => item.id !== id)
+      return newTree
+    })
+  }
+
+  const handleActionConfirmOpen = (type: IConfirmActionType, id?: string) => {
+    setconfirmType(type)
+    if (id) {
+      setConfirmId(id)
+    }
+    setConfirmOpen(true)
+  }
+  const handleActionConfirmClose = () => {
+    setConfirmOpen(false)
+    setconfirmType(null)
+  }
+
+  const handleActionConfirmOnConfirm = (type: IConfirmActionType) => {
+    if (type === 'reset') {
+      try {
+        setLoading(true)
+        setTreeData(defaultContextMenuJson || [])
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    if (type === 'delete' && confirmId) {
+      deleteMenuItemById(confirmId)
+    }
+    setConfirmOpen(false)
+    setconfirmType(null)
+  }
+
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
       const menuList = await getChromeExtensionContextMenu(settingsKey)
       if (isDestroy) return
-      if (settingsKey === 'gmailToolBarContextMenu') {
-        // in ezmail diff reply group and new email group
-        if (menuType === 'reply') {
-          setTreeData(
-            menuList.filter((item) => item.id !== EZMAIL_NEW_MAIL_GROUP_ID),
-          )
-        } else {
-          setTreeData(
-            menuList.filter((item) => item.id !== EZMAIL_REPLY_GROUP_ID),
-          )
-        }
-      } else {
-        setTreeData(menuList)
-      }
-
-      // setTreeData(defaultContextMenuJson)
+      setTreeData(menuList)
     }
     getList()
     return () => {
       isDestroy = true
     }
-  }, [])
+  }, [settingsKey])
+
   useEffect(() => {
     saveTreeData(settingsKey, treeData)
   }, [treeData])
@@ -208,7 +189,7 @@ const ContextMenuSettings: FC<{
     <Stack gap={3}>
       <Paper elevation={0} sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}>
         <Box
-          height={690}
+          height={640}
           p={2}
           width={'50%'}
           flexShrink={0}
@@ -245,12 +226,7 @@ const ContextMenuSettings: FC<{
                 <ContextMenuItem
                   isActive={editId === node.id}
                   onEdit={setEditId}
-                  onDelete={(id) => {
-                    setTreeData((prev) => {
-                      const newTree = prev.filter((item) => item.id !== id)
-                      return newTree
-                    })
-                  }}
+                  onDelete={(id) => handleActionConfirmOpen('delete', id)}
                   node={node as any}
                   params={params}
                 />
@@ -283,20 +259,20 @@ const ContextMenuSettings: FC<{
           disableElevation
           variant={'outlined'}
           disabled={loading}
-          onClick={async () => {
-            try {
-              setLoading(true)
-              setTreeData(defaultContextMenuJson || [])
-            } catch (error) {
-              console.log(error)
-            } finally {
-              setLoading(false)
-            }
-          }}
+          onClick={() => handleActionConfirmOpen('reset')}
         >
           Reset options
         </Button>
       </Stack>
+
+      {confirmOpen && confirmType && (
+        <ContextMenuActionConfirmModal
+          open={confirmOpen}
+          actionType={confirmType}
+          onClose={handleActionConfirmClose}
+          onConfirm={handleActionConfirmOnConfirm}
+        />
+      )}
     </Stack>
   )
 }

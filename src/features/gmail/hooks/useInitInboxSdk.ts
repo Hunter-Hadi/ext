@@ -16,7 +16,7 @@ import {
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
 import {
-  getFilteredTypeGmailToolBarContextMenu,
+  getChromeExtensionContextMenu,
   hideChatBox,
   showChatBox,
 } from '@/utils'
@@ -25,7 +25,11 @@ import {
   findFirstTierMenuLength,
   getContextMenuRenderPosition,
 } from '@/features/contextMenu/utils'
-import { ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID } from '@/types'
+import {
+  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  EZMAIL_REPLY_CTA_BUTTON_ID,
+  ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
+} from '@/types'
 const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.ezmail-ai__gmail-toolbar-button--cta')
@@ -89,14 +93,16 @@ const useInitInboxSdk = () => {
         // draftId和currentDraftId都是在保存后才有
         // 一开始生成的时候只有ThreadID
         const currentDraftId = uuidV4()
+        const isReplyComposeView = getComposeViewMessageId(
+          composeView.getElement(),
+        )
         console.log('currentDraftId', currentDraftId)
         timeoutRef.current = true
         composeView.addButton({
           title: 'EzMail.AI – AI Email Drafter',
           iconUrl: GmailToolBarDropdownIconBase64Data,
           iconClass: 'ezmail-ai__gmail-toolbar-button--dropdown',
-          tooltip:
-            'Click this button to generate an entire email draft in seconds',
+          tooltip: 'More AI assistance options',
           orderHint: 2,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
             const newMessageId = getComposeViewMessageId(
@@ -122,17 +128,21 @@ const useInitInboxSdk = () => {
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
               const gmailToolBarContextMenu =
-                await getFilteredTypeGmailToolBarContextMenu(
-                  newMessageId ? 'reply' : 'new-email',
-                  true,
-                )
+                await getChromeExtensionContextMenu('gmailToolBarContextMenu')
 
-              console.log('gmailToolBarContextMenu', gmailToolBarContextMenu)
-              const options = gmailToolBarContextMenu
+              const options = gmailToolBarContextMenu.filter(
+                (item) =>
+                  item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+                  item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+              )
+
+              console.log('gmailToolBarContextMenu', options)
               const itemLength = Math.max(
                 findFirstTierMenuLength(options) || 0,
                 0,
               )
+              // const itemLength = Math.max((options.length || 0) - 1, 0)
+
               console.log('itemLength', itemLength)
               const { x, y } = getContextMenuRenderPosition(
                 {
@@ -164,8 +174,9 @@ const useInitInboxSdk = () => {
           title: 'EzMail.AI – AI Email Drafter',
           iconUrl: GmailToolBarIconBase64Data,
           iconClass: 'ezmail-ai__gmail-toolbar-button--cta',
-          tooltip:
-            'Click this button to access additional AI drafting options.',
+          tooltip: isReplyComposeView
+            ? 'Click this button to generate email reply.'
+            : 'Click this button to generate an entire email.',
           orderHint: 1,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
             pingDaemonProcess()

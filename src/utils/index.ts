@@ -175,17 +175,20 @@ export const getChromeExtensionContextMenu = async (
     contextMenus: defaultContextMenuJson,
     gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
   }
-  return settings[menuType] ?? defaultMenus[menuType]
+  const cacheMenus = settings[menuType]
+  if (cacheMenus && cacheMenus.length > 0) {
+    return cacheMenus
+  } else {
+    return defaultMenus[menuType]
+  }
 }
 
-export const getFilteredTypeGmailToolBarContextMenu = async (
+export const filteredTypeGmailToolBarContextMenu = (
   messageType: IInboxMessageType,
   filterCTAButton = false,
-  defaultMenuList?: IContextMenuItem[],
+  sourceList: IContextMenuItem[],
 ) => {
-  let menuList =
-    defaultMenuList ||
-    (await getChromeExtensionContextMenu('gmailToolBarContextMenu'))
+  let menuList = sourceList
   if (filterCTAButton) {
     menuList = menuList.filter(
       (item) =>

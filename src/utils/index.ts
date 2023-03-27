@@ -173,7 +173,7 @@ export const getChromeExtensionContextMenu = async (
   }
 }
 
-export const getFilteredTypeGmailToolBarContextMenu = (
+export const filteredTypeGmailToolBarContextMenu = (
   messageType: IInboxMessageType,
   filterCTAButton = false,
   sourceList: IContextMenuItem[],

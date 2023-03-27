@@ -17,7 +17,7 @@ import {
 import { pingDaemonProcess } from '@/features/chatgpt'
 import {
   getChromeExtensionContextMenu,
-  getFilteredTypeGmailToolBarContextMenu,
+  filteredTypeGmailToolBarContextMenu,
   hideChatBox,
   showChatBox,
 } from '@/utils'
@@ -123,7 +123,7 @@ const useInitInboxSdk = () => {
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
               const gmailToolBarContextMenu =
-                getFilteredTypeGmailToolBarContextMenu(
+                filteredTypeGmailToolBarContextMenu(
                   newMessageId ? 'reply' : 'new-email',
                   true,
                   await getChromeExtensionContextMenu(

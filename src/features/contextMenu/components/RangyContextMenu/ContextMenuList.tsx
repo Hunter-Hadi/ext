@@ -7,7 +7,7 @@ import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
 import { Item, Separator, Submenu } from 'react-contexify'
 import {
   getChromeExtensionContextMenu,
-  getFilteredTypeGmailToolBarContextMenu,
+  filteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
 } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
@@ -179,7 +179,7 @@ const ContextMenuList: FC<{
       let menuList = await getChromeExtensionContextMenu(settingsKey)
 
       if (settingsKey === 'gmailToolBarContextMenu') {
-        menuList = getFilteredTypeGmailToolBarContextMenu(
+        menuList = filteredTypeGmailToolBarContextMenu(
           messageType,
           true,
           menuList,

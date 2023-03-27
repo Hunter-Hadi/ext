@@ -13,7 +13,7 @@ import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEdit
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
   getChromeExtensionContextMenu,
-  getFilteredTypeGmailToolBarContextMenu,
+  filteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
   setChromeExtensionSettings,
 } from '@/utils'
@@ -195,7 +195,7 @@ const ContextMenuSettings: FC<{
 
   const treeDataFilterByMenuType = useMemo(() => {
     if (!menuType) return treeData
-    let filterdList = getFilteredTypeGmailToolBarContextMenu(
+    let filterdList = filteredTypeGmailToolBarContextMenu(
       menuType,
       false,
       treeData,

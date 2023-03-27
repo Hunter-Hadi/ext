@@ -83,7 +83,7 @@ const ContextMenuEditForm: FC<{
         maxWidth={'lg'}
         sx={{
           position: 'absolute',
-          top: '40%',
+          top: '42%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           borderRadius: 2,

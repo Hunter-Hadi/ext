@@ -2,7 +2,7 @@ import React from 'react'
 import './OptionsPage.less'
 import { Container, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { EzMailAIIcon } from '@/components/CustomIcon'
-import ContextMenuSettings from '@/pages/options/ContextMenuSettings'
+import ContextMenuSettings from '@/pages/options/EzMailContextMenuSettings'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 
 const APP_NAME = process.env.APP_NAME
@@ -12,6 +12,7 @@ const OptionsPage = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
   }
+
   return (
     <Container maxWidth={'lg'}>
       <Stack spacing={4} my={4}>

@@ -2,7 +2,7 @@ import React from 'react'
 import './OptionsPage.less'
 import { Container, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import ContextMenuSettings from '@/pages/options/ContextMenuSettings'
+import ContextMenuSettings from '@/pages/options/UseChatGPTContextMenuSettings'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 

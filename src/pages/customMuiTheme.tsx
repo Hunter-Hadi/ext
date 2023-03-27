@@ -24,9 +24,11 @@ export const customColor = {
 declare module '@mui/material/styles' {
   interface Palette {
     customColor: CustomColor
+    neutral: Palette['primary']
   }
   interface PaletteOptions {
     customColor: CustomColor
+    neutral: PaletteOptions['primary']
   }
 }
 
@@ -99,6 +101,10 @@ const customMuiTheme = (shadowRootElement?: HTMLElement) => {
           default: getIsDarkMode() ? customColor.darkBackground : '#ffffff',
         },
         customColor: customColor,
+        neutral: {
+          main: 'rgba(0, 0, 0, 0.4)',
+          contrastText: 'rgba(0, 0, 0, 0.6)',
+        },
       },
       breakpoints: {
         values: {

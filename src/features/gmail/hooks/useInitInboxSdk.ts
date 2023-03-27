@@ -90,14 +90,16 @@ const useInitInboxSdk = () => {
         // draftId和currentDraftId都是在保存后才有
         // 一开始生成的时候只有ThreadID
         const currentDraftId = uuidV4()
+        const isReplyComposeView = getComposeViewMessageId(
+          composeView.getElement(),
+        )
         console.log('currentDraftId', currentDraftId)
         timeoutRef.current = true
         composeView.addButton({
           title: 'EzMail.AI – AI Email Drafter',
           iconUrl: GmailToolBarDropdownIconBase64Data,
           iconClass: 'ezmail-ai__gmail-toolbar-button--dropdown',
-          tooltip:
-            'Click this button to generate an entire email draft in seconds',
+          tooltip: 'More AI assistance options',
           orderHint: 2,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
             const newMessageId = getComposeViewMessageId(
@@ -168,8 +170,9 @@ const useInitInboxSdk = () => {
           title: 'EzMail.AI – AI Email Drafter',
           iconUrl: GmailToolBarIconBase64Data,
           iconClass: 'ezmail-ai__gmail-toolbar-button--cta',
-          tooltip:
-            'Click this button to access additional AI drafting options.',
+          tooltip: isReplyComposeView
+            ? 'Click this button to generate email reply.'
+            : 'Click this button to generate an entire email.',
           orderHint: 1,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
             pingDaemonProcess()

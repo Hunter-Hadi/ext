@@ -4,10 +4,10 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { useRangy } from '@/features/contextMenu/hooks'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
-import { Item, Submenu } from 'react-contexify'
+import { Item, Separator, Submenu } from 'react-contexify'
 import {
   getChromeExtensionContextMenu,
-  getFilteredTypeGmailToolBarContextMenu,
+  filteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
 } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
@@ -15,7 +15,9 @@ import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
 import { useRecoilValue } from 'recoil'
-// import SettingsIcon from '@mui/icons-material/Settings'
+import SettingsIcon from '@mui/icons-material/Settings'
+import Browser from 'webextension-polyfill'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 // import Browser from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
@@ -179,7 +181,7 @@ const ContextMenuList: FC<{
       let menuList = await getChromeExtensionContextMenu(settingsKey)
 
       if (settingsKey === 'gmailToolBarContextMenu') {
-        menuList = await getFilteredTypeGmailToolBarContextMenu(
+        menuList = filteredTypeGmailToolBarContextMenu(
           messageType,
           true,
           menuList,
@@ -229,29 +231,29 @@ const ContextMenuList: FC<{
   return (
     <Stack>
       <ContextMenuContext.Provider value={{ staticButton: props.staticButton }}>
-        {/*<Item*/}
-        {/*  id="Add new prompt template"*/}
-        {/*  onClick={() => {*/}
-        {/*    const port = Browser.runtime.connect()*/}
-        {/*    port &&*/}
-        {/*      port.postMessage({*/}
-        {/*        id: CHROME_EXTENSION_POST_MESSAGE_ID,*/}
-        {/*        event: 'Client_openUrlInNewTab',*/}
-        {/*        data: {*/}
-        {/*          key: 'options',*/}
-        {/*        },*/}
-        {/*      })*/}
-        {/*    port.disconnect()*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <Stack direction={'row'} alignItems={'center'} gap={1}>*/}
-        {/*    <SettingsIcon sx={{ fontSize: 14 }} />*/}
-        {/*    <Typography fontSize={14} textAlign={'left'} color={'inherit'}>*/}
-        {/*      Add new prompt template*/}
-        {/*    </Typography>*/}
-        {/*  </Stack>*/}
-        {/*</Item>*/}
-        {/*<Separator />*/}
+        <Item
+          id="Add new prompt template"
+          onClick={() => {
+            const port = Browser.runtime.connect()
+            port &&
+              port.postMessage({
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                event: 'Client_openUrlInNewTab',
+                data: {
+                  key: 'options',
+                },
+              })
+            port.disconnect()
+          }}
+        >
+          <Stack direction={'row'} alignItems={'center'} gap={1}>
+            <SettingsIcon sx={{ fontSize: 14 }} />
+            <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
+              Edit options
+            </Typography>
+          </Stack>
+        </Item>
+        <Separator />
         {sortBySettingsKey.map((menuItem, index) => {
           return <ListItem key={index} menuItem={menuItem} />
         })}

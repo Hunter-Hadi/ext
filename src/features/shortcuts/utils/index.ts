@@ -51,3 +51,38 @@ export const compileTemplate = (template: string, variables: any) => {
       )
   })
 }
+
+export const templateStaticWords =
+  process.env.APP_ENV === 'EZ_MAIL_AI'
+    ? [
+        // gmail
+        'GMAIL_MESSAGE_CONTEXT',
+        'GMAIL_DRAFT_CONTEXT',
+        // system
+        'LAST_ACTION_OUTPUT',
+        'USER_INPUT',
+        // 'HIGHLIGHTED_TEXT',
+      ]
+    : [
+        // system
+        'LAST_ACTION_OUTPUT',
+        'USER_INPUT',
+        'HIGHLIGHTED_TEXT',
+      ]
+
+export const templateWordToDescription = (word: string) => {
+  switch (word) {
+    case 'LAST_ACTION_OUTPUT':
+      return 'The last action output'
+    case 'USER_INPUT':
+      return 'The user input'
+    case 'HIGHLIGHTED_TEXT':
+      return 'The highlighted text'
+    case 'GMAIL_MESSAGE_CONTEXT':
+      return 'When you use this variable in the prompt template for ChatGPT, it will display the incoming email that needs a response.'
+    case 'GMAIL_DRAFT_CONTEXT':
+      return 'When you use this variable in the prompt template for ChatGPT, it will display the current draft present in the Gmail text box.'
+    default:
+      return ''
+  }
+}

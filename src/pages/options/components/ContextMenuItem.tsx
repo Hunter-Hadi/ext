@@ -39,18 +39,20 @@ const ContextMenuItem = (props: {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      {node.data.type !== 'group' && node.droppable && isActive && (
-        <DragIndicatorIcon
-          sx={{
-            position: 'absolute',
-            left: 0,
-            fontSize: 24,
-            cursor: 'move',
-            flexShrink: 0,
-            color: '#00000061',
-          }}
-        />
-      )}
+      {node.data.type !== 'group' &&
+        node.droppable &&
+        (isActive || isHover) && (
+          <DragIndicatorIcon
+            sx={{
+              position: 'absolute',
+              left: 0,
+              fontSize: 24,
+              cursor: 'move',
+              flexShrink: 0,
+              color: '#00000061',
+            }}
+          />
+        )}
       {node.data.type === 'group' &&
         (isOpen ? (
           <ArrowDropDownIcon

@@ -17,7 +17,6 @@ import {
 import { pingDaemonProcess } from '@/features/chatgpt'
 import {
   getChromeExtensionContextMenu,
-  filteredTypeGmailToolBarContextMenu,
   hideChatBox,
   showChatBox,
 } from '@/utils'
@@ -26,7 +25,11 @@ import {
   findFirstTierMenuLength,
   getContextMenuRenderPosition,
 } from '@/features/contextMenu/utils'
-import { ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID } from '@/types'
+import {
+  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  EZMAIL_REPLY_CTA_BUTTON_ID,
+  ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
+} from '@/types'
 const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.ezmail-ai__gmail-toolbar-button--cta')
@@ -125,20 +128,21 @@ const useInitInboxSdk = () => {
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
               const gmailToolBarContextMenu =
-                filteredTypeGmailToolBarContextMenu(
-                  newMessageId ? 'reply' : 'new-email',
-                  true,
-                  await getChromeExtensionContextMenu(
-                    'gmailToolBarContextMenu',
-                  ),
-                )
+                await getChromeExtensionContextMenu('gmailToolBarContextMenu')
 
-              console.log('gmailToolBarContextMenu', gmailToolBarContextMenu)
-              const options = gmailToolBarContextMenu
+              const options = gmailToolBarContextMenu.filter(
+                (item) =>
+                  item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+                  item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+              )
+
+              console.log('gmailToolBarContextMenu', options)
               const itemLength = Math.max(
                 findFirstTierMenuLength(options) || 0,
                 0,
               )
+              // const itemLength = Math.max((options.length || 0) - 1, 0)
+
               console.log('itemLength', itemLength)
               const { x, y } = getContextMenuRenderPosition(
                 {

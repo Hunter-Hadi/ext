@@ -23,25 +23,25 @@ const OptionsPage = () => {
           </Typography>
         </Stack>
         <Tabs value={value} onChange={handleChange}>
-          <Tab value={'reply'} label="Edit menu option (reply)" />
-          <Tab value={'new-email'} label="Edit menu option (new email)" />
+          <Tab value={'reply'} label="Edit menu options" />
+          {/* <Tab value={'new-email'} label="Edit menu option (new email)" /> */}
         </Tabs>
         {value === 'reply' && (
           <ContextMenuSettings
             iconSetting
-            menuType={'reply'}
+            // menuType={'reply'}
             defaultContextMenuJson={defaultGmailToolbarContextMenuJson}
             settingsKey={'gmailToolBarContextMenu'}
           />
         )}
-        {value === 'new-email' && (
+        {/* {value === 'new-email' && (
           <ContextMenuSettings
             iconSetting
             menuType={'new-email'}
             defaultContextMenuJson={defaultGmailToolbarContextMenuJson}
             settingsKey={'gmailToolBarContextMenu'}
           />
-        )}
+        )} */}
       </Stack>
     </Container>
   )

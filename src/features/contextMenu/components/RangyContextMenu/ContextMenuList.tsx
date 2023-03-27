@@ -7,7 +7,6 @@ import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
 import { Item, Separator, Submenu } from 'react-contexify'
 import {
   getChromeExtensionContextMenu,
-  filteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
 } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
@@ -17,7 +16,11 @@ import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
 import { useRecoilValue } from 'recoil'
 import SettingsIcon from '@mui/icons-material/Settings'
 import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import {
+  CHROME_EXTENSION_POST_MESSAGE_ID,
+  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  EZMAIL_REPLY_CTA_BUTTON_ID,
+} from '@/types'
 // import Browser from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
@@ -181,10 +184,10 @@ const ContextMenuList: FC<{
       let menuList = await getChromeExtensionContextMenu(settingsKey)
 
       if (settingsKey === 'gmailToolBarContextMenu') {
-        menuList = filteredTypeGmailToolBarContextMenu(
-          messageType,
-          true,
-          menuList,
+        menuList = menuList.filter(
+          (item) =>
+            item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+            item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
         )
       }
       if (isDestroy) return

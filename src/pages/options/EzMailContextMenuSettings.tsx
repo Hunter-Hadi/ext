@@ -12,22 +12,23 @@ import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEdit
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
   getChromeExtensionContextMenu,
-  filteredTypeGmailToolBarContextMenu,
+  // filteredTypeGmailToolBarContextMenu,
   IChromeExtensionSettingsKey,
   setChromeExtensionSettings,
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
-import {
-  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-  EZMAIL_REPLY_CTA_BUTTON_ID,
-} from '@/types'
+// import {
+//   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+//   EZMAIL_REPLY_CTA_BUTTON_ID,
+// } from '@/types'
 import ContextMenuViewSource from './components/ContextMenuViewSource'
-import { IInboxMessageType } from '@/features/gmail'
+// import { IInboxMessageType } from '@/features/gmail'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from './components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
+// import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 
 const rootId = 'root'
 
@@ -67,17 +68,38 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
   return true
 }
 
+// const getTreeDataFilteredByMenuType = (
+//   menuType: IInboxMessageType,
+//   sourceTreeData?: IContextMenuItem[],
+// ) => {
+//   let filterdList = filteredTypeGmailToolBarContextMenu(
+//     menuType,
+//     false,
+//     sourceTreeData || defaultGmailToolbarContextMenuJson,
+//   )
+//   if (menuType === 'reply') {
+//     filterdList = filterdList.filter(
+//       (item) => item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+//     )
+//   } else {
+//     filterdList = filterdList.filter(
+//       (item) => item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+//     )
+//   }
+//   return filterdList
+// }
+
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsKey
-  menuType?: IInboxMessageType
+  // menuType: IInboxMessageType
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {
   const {
     settingsKey,
     defaultContextMenuJson,
     iconSetting = false,
-    menuType,
+    // menuType,
   } = props
   const [loading, setLoading] = useState(false)
   const [editId, setEditId] = useState<string | null>(null)
@@ -168,6 +190,7 @@ const ContextMenuSettings: FC<{
       try {
         setLoading(true)
         setTreeData(defaultContextMenuJson || [])
+        // treeDataFilterByMenuType()
       } catch (error) {
         console.log(error)
       } finally {
@@ -194,24 +217,10 @@ const ContextMenuSettings: FC<{
     }
   }, [settingsKey])
 
-  const treeDataFilterByMenuType = useMemo(() => {
-    if (!menuType) return treeData
-    let filterdList = filteredTypeGmailToolBarContextMenu(
-      menuType,
-      false,
-      treeData,
-    )
-    if (menuType === 'reply') {
-      filterdList = filterdList.filter(
-        (item) => item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-      )
-    } else {
-      filterdList = filterdList.filter(
-        (item) => item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
-      )
-    }
-    return filterdList
-  }, [treeData, menuType])
+  // const treeDataFilterByMenuType = useMemo(
+  //   () => getTreeDataFilteredByMenuType(menuType, treeData),
+  //   [treeData, menuType],
+  // )
 
   useEffect(() => {
     saveTreeData(settingsKey, treeData)
@@ -232,7 +241,7 @@ const ContextMenuSettings: FC<{
           </Stack>
           <DndProvider backend={MultiBackend} options={getBackendOptions()}>
             <Tree
-              tree={treeDataFilterByMenuType}
+              tree={treeData}
               rootId={'root'}
               onDrop={handleDrop}
               sort={false}

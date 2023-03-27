@@ -21,11 +21,9 @@ if (rootElement) {
   root.render(
     <React.StrictMode>
       <CssBaseline />
-      {/* <RecoilRoot> */}
       <ThemeProvider theme={customMuiTheme()}>
         {isEzMailApp ? <EzMailOptionsPage /> : <UseChatGPTOptionsPage />}
       </ThemeProvider>
-      {/* </RecoilRoot> */}
     </React.StrictMode>,
   )
 }

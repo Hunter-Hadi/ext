@@ -69,7 +69,7 @@ const useShortCutsParameters = () => {
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any
     } = {
-      GMAIL_MESSAGE_CONTEXT: messageViewText,
+      GMAIL_EMAIL_CONTEXT: messageViewText,
       GMAIL_DRAFT_CONTEXT,
       HIGHLIGHTED_HTML,
       HIGHLIGHTED_TEXT,

@@ -74,22 +74,6 @@ const ContextMenuEditForm: FC<{
   })
   const isDisabled = !node.data.editable
 
-  const modalTitle = useMemo(() => {
-    if (editNode.data.type === 'shortcuts') {
-      return isDisabled ? `Menu option (Read only)` : 'Edit menu option'
-    }
-
-    return ''
-  }, [isDisabled, editNode.data.type])
-
-  const handleClose = () => {
-    if (!node.text) {
-      onSave && onSave(node, template, autoAskChatGPT)
-    }
-
-    onCancel && onCancel()
-  }
-
   useEffect(() => {
     const cloneNode: IContextMenuItem = cloneDeep(node)
     setEditNode(cloneDeep(node))
@@ -99,7 +83,7 @@ const ContextMenuEditForm: FC<{
   }, [node])
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal open={open} onClose={onCancel}>
       <Container
         maxWidth={'lg'}
         sx={{
@@ -114,8 +98,6 @@ const ContextMenuEditForm: FC<{
         }}
       >
         <Stack spacing={3} minHeight={'60vh'}>
-          <Typography variant={'h6'}>{modalTitle}</Typography>
-
           <Stack>
             <Typography variant={'body1'}>
               {editNode.data.type === 'shortcuts' ? 'Option name' : 'Name'}
@@ -251,7 +233,7 @@ const ContextMenuEditForm: FC<{
             >
               Save
             </Button>
-            <Button variant={'outlined'} onClick={handleClose}>
+            <Button variant={'outlined'} onClick={onCancel}>
               Cancel
             </Button>
           </Stack>
@@ -260,7 +242,7 @@ const ContextMenuEditForm: FC<{
           <Box
             sx={{
               position: 'absolute',
-              top: 32,
+              top: 24,
               right: 24,
             }}
           >

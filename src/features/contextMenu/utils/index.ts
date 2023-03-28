@@ -206,7 +206,8 @@ export const getContextMenuRenderPosition = (
   })
   if (canRenderContextMenuRect) {
     return {
-      x: canRenderContextMenuRect.left,
+      // 61 cta button width
+      x: canRenderContextMenuRect.left - 62,
       y: canRenderContextMenuRect.top,
     }
   } else {

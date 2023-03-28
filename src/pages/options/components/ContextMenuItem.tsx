@@ -12,7 +12,7 @@ const ContextMenuItem = (props: {
   isActive?: boolean
   node: IContextMenuItem
   params: Parameters<NodeRender<IContextMenuItem>>[1]
-  onEdit?: (id: string) => void
+  onEdit?: (node: IContextMenuItem) => void
   onDelete?: (id: string) => void
 }) => {
   const {
@@ -96,7 +96,7 @@ const ContextMenuItem = (props: {
             <IconButton
               size={'small'}
               onClick={() => {
-                onEdit && onEdit(node.id as string)
+                onEdit && onEdit(node)
               }}
             >
               {node.data.editable ? (

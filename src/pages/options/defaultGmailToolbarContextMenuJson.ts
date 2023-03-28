@@ -45,7 +45,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{GMAIL_MESSAGE_CONTEXT}}\n"""\nWrite a reply to the email above: ',
+              '"""\n{{GMAIL_EMAIL_CONTEXT}}\n"""\nWrite a reply to the email above: ',
           },
         },
         {

@@ -95,7 +95,7 @@ const useInitRangy = () => {
             saveTempSelection(event)
             showRangy(highlightedBounce)
           }
-          if (rangy.contextMenu.isOpen()) {
+          if (rangy.contextMenu.isOpen() && !isMouseEvent) {
             console.log(
               '[ContextMenu Module]:',
               'KeyboardEvent close context menu',

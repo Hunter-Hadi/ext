@@ -7,7 +7,7 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 
 const PopperId = 'tempalte-description-tooltip'
 
-const TEMPLATE_STATIC_WORDS = ['GMAIL_MESSAGE_CONTEXT', 'GMAIL_DRAFT_CONTEXT']
+const TEMPLATE_STATIC_WORDS = ['GMAIL_EMAIL_CONTEXT', 'GMAIL_DRAFT_CONTEXT']
 
 const WordItem = (props: { word: string }) => {
   const { word } = props
@@ -69,7 +69,7 @@ const TemplateTooltip = () => {
               <>
                 <WordItem key={word} word={word} />
                 {TEMPLATE_STATIC_WORDS.length - 1 !== index ? (
-                  <Typography>----</Typography>
+                  <Typography key={`${word}-divider`}>----</Typography>
                 ) : null}
               </>
             )

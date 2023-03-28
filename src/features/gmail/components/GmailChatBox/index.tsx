@@ -83,6 +83,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const conversation = useRecoilValue(ChatGPTConversationState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
+  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
   // 为了在消息更新前计算滚动高度
   const [currentMessages, setCurrentMessages] = useState(messages)
@@ -141,6 +142,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   useEffect(() => {
     console.log('default update', step)
     setInputValue(defaultValue)
+    setTimeout(() => {
+      textareaRef.current && elementScrollToBottom(textareaRef.current, 300)
+    }, 100)
   }, [defaultValue, step])
   return (
     <Stack
@@ -301,6 +305,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
           </Box>
           <AutoHeightTextarea
+            textareaRef={textareaRef}
             error={isGmailChatBoxError && !loading}
             loading={loading}
             defaultValue={inputValue}

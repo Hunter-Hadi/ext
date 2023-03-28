@@ -1,6 +1,6 @@
 {
   "name": "EzMail.AI - ChatGPT for Gmail",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "short_name": "EzMail.AI",
   "description": "Free Gmail tool that generates entire emails, powered by ChatGPT.",
   "manifest_version": 3,

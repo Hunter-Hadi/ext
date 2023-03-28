@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { Paper, Stack } from '@mui/material'
+import { IContextMenuItem } from '@/features/contextMenu'
 
 export type IConfirmActionType = 'reset' | 'delete'
 
@@ -10,18 +11,22 @@ interface IProps {
   open: boolean
   onClose?(): void
   onConfirm?(type: IConfirmActionType): void
+  nodeType?: IContextMenuItem['data']['type']
   actionType?: IConfirmActionType
 }
 
 const ContextMenuActionConfirmModal: FC<IProps> = ({
   open,
+  nodeType = 'shortcuts',
   actionType = 'reset',
   onClose,
   onConfirm,
 }) => {
   const confirmText = useMemo(() => {
     if (actionType === 'delete') {
-      return `Are you sure you want to delete this option? Please note that once you delete it, the action cannot be undone.`
+      return `Are you sure you want to delete this ${
+        nodeType === 'shortcuts' ? 'option' : 'group'
+      }? Please note that once you delete it, the action cannot be undone.`
     }
 
     // default reset type

@@ -77,7 +77,7 @@ const ShortCutsButtonItem: FC<{
     return (
       <Submenu
         label={
-          <Stack direction={'row'} alignItems={'center'}>
+          <Stack direction={'row'} alignItems={'center'} width={'90%'}>
             {menuItem?.data?.icon && (
               <ContextMenuIcon
                 size={16}
@@ -85,7 +85,16 @@ const ShortCutsButtonItem: FC<{
                 sx={{ color: 'primary.main', mr: 1 }}
               />
             )}
-            <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
+            <Typography
+              fontSize={14}
+              textAlign={'left'}
+              color={'inherit'}
+              sx={{
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
               {menuItem.text}
             </Typography>
           </Stack>
@@ -124,7 +133,16 @@ const ShortCutsButtonItem: FC<{
           sx={{ color: 'primary.main', mr: 1 }}
         />
       )}
-      <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
+      <Typography
+        fontSize={14}
+        textAlign={'left'}
+        color={'inherit'}
+        sx={{
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      >
         {menuItem.text}
       </Typography>
     </Item>
@@ -144,7 +162,16 @@ const ShortCutsGroup: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
             sx={{ color: 'primary.main', mr: 1 }}
           />
         )}
-        <Typography textAlign={'left'} fontSize={12} color={'text.secondary'}>
+        <Typography
+          textAlign={'left'}
+          fontSize={12}
+          color={'text.secondary'}
+          sx={{
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+          }}
+        >
           {menuItem.text}
         </Typography>
       </Stack>
@@ -232,7 +259,7 @@ const ContextMenuList: FC<{
   ])
   // console.log('sortBySettingsKey', sortBySettingsKey, settingsKey)
   return (
-    <Stack>
+    <Stack maxWidth={260}>
       <ContextMenuContext.Provider value={{ staticButton: props.staticButton }}>
         <Item
           id="Add new prompt template"

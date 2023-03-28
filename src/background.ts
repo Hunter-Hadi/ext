@@ -511,9 +511,15 @@ Browser.storage.onChanged.addListener(() => {
 Browser.scripting.getRegisteredContentScripts()
 Browser.runtime.onInstalled.addListener(async (object) => {
   if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
-    await Browser.tabs.create({
-      url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
-    })
+    if (isEzMailApp) {
+      await Browser.tabs.create({
+        url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
+      })
+    } else {
+      await Browser.tabs.create({
+        url: CHROME_EXTENSION_DOC_URL + '/extension-installed',
+      })
+    }
   }
 })
 

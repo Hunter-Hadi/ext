@@ -189,8 +189,9 @@ const ContextMenuSettings: FC<{
         const prefixText = searchTextMap[item.parent]
           ? `${searchTextMap[item.parent]} `
           : ''
-        searchTextMap[item.id] = `${prefixText}${item.text}`.toLowerCase()
-        item.data.searchText = searchTextMap[item.id]
+        // 只拼接一层
+        searchTextMap[item.id] = `${item.text}`.toLowerCase()
+        item.data.searchText = prefixText + searchTextMap[item.id].toLowerCase()
         findSearchText(item.id)
       })
     }

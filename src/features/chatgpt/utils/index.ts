@@ -252,10 +252,6 @@ export class ContentScriptConnection {
     data?: any
   }) {
     try {
-      // TODO - force disconnect
-      if (this.retryCount === 0) {
-        this.port.disconnect()
-      }
       this.port.postMessage(msg)
       this.retryCount = 0
     } catch (e) {

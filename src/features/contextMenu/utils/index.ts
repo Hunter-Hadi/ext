@@ -298,17 +298,6 @@ export const fuzzySearchContextMenuList = (
   console.log(filterResult, queryWords)
   // 还原一层的树级结构
   const results: IContextMenuItemWithChildren[] = []
-  const findChildren = (parent: string) => {
-    const newChildren: IContextMenuItem[] = []
-    filterResult.forEach((item) => {
-      if (item.parent === parent) {
-        if (findChildren(item.id).length === 0) {
-          newChildren.push(item)
-        }
-      }
-    })
-    return newChildren
-  }
   const groupByParent = groupBy(filterResult, 'parent')
   console.log(groupByParent)
   Object.keys(groupByParent).forEach((parent) => {

@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './OptionsPage.less'
-import { Container, Stack, Tab, Tabs, Typography } from '@mui/material'
+import { Container, Stack, Typography } from '@mui/material'
+import AppLoadingLayout from '@/components/LoadingLayout'
+import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOptionsSettingPage'
+import UseChatGPTOptionsEditMenuPage from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage'
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import ContextMenuSettings from '@/pages/options/UseChatGPTContextMenuSettings'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
-
-const APP_NAME = process.env.APP_NAME
 
 const OptionsPage = () => {
-  const [value, setValue] = React.useState(0)
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
-  }
+  const [loading, setLoading] = useState(true)
+  const [route, setRoute] = useState('/')
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    console.log(params)
+    if (params.get('route')) {
+      setRoute(params.get('route') || '/')
+    }
+    setLoading(false)
+  }, [])
   return (
     <Container maxWidth={'lg'}>
-      <Stack spacing={4} my={4}>
+      <Stack spacing={8} my={4}>
         <Stack direction={'row'} alignItems={'center'} spacing={2}>
           <UseChatGptIcon
             sx={{
@@ -22,19 +27,14 @@ const OptionsPage = () => {
             }}
           />
           <Typography fontSize={24} fontWeight={700}>
-            {APP_NAME} Settings
+            UseChatGPT.AI
           </Typography>
         </Stack>
-        <Tabs value={value} onChange={handleChange}>
-          {<Tab value={0} label="Edit options" />}
-        </Tabs>
-        {value === 0 && (
-          <ContextMenuSettings
-            iconSetting
-            defaultContextMenuJson={defaultContextMenuJson}
-            settingsKey={'contextMenus'}
-          />
-        )}
+        <AppLoadingLayout loading={loading}>
+          <p>route: {route}</p>
+          {route === '/' && <UseChatGPTOptionsSettingPage />}
+          {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
+        </AppLoadingLayout>
       </Stack>
     </Container>
   )

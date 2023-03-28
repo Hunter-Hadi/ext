@@ -45,6 +45,7 @@ import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import { IInboxMessageType } from '@/features/gmail/store'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
+import { COUNTRIES_MAP } from '@/utils/staticData'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -138,6 +139,9 @@ type IChromeExtensionSettings = {
   currentModel?: string
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
+  userSettings?: {
+    language?: string
+  }
 }
 export type IChromeExtensionSettingsContextMenuKey =
   | 'contextMenus'
@@ -286,4 +290,68 @@ export const elementScrollToBottom = (
     }
   }
   scroll()
+}
+
+export type ICountryIconSizeType =
+  | '16x12'
+  | '20x15'
+  | '24x18'
+  | '28x21'
+  | '32x24'
+  | '36x27'
+  | '40x30'
+  | '48x36'
+  | '56x42'
+  | '60x45'
+  | '64x48'
+  | '72x54'
+  | '80x60'
+  | '84x63'
+  | '96x72'
+  | '108x81'
+  | '112x84'
+  | '120x90'
+  | '128x96'
+  | '144x108'
+  | '160x120'
+  | '192x144'
+  | '224x168'
+  | '256x192'
+
+/**
+ * 返回 对应 国家的 国旗 icon
+ *
+ *
+ * `return` => (`United Arab Emirates`, `size?: CountryIconSize`) => `https://flagcdn.com/{size ? size : '40x30'}/ae.png`
+ *
+ */
+export const countryIcon = (
+  countryName: string | undefined = '',
+  size?: ICountryIconSizeType,
+  strictMode = false,
+): string => {
+  const countryCode =
+    COUNTRIES_MAP.get(countryName) ||
+    COUNTRIES_MAP.get(countryName.toLocaleLowerCase())
+  if (strictMode && !countryCode) {
+    return ''
+  } else {
+    return `https://flagcdn.com/${size ? size : '40x30'}/${
+      countryCode || countryName.toLocaleLowerCase()
+    }.png`
+  }
+}
+
+export const countryOptions = () => {
+  const options: Array<{
+    value: string
+    label: string
+  }> = []
+  COUNTRIES_MAP.forEach((value, key) => {
+    options.push({
+      value,
+      label: key,
+    })
+  })
+  return options
 }

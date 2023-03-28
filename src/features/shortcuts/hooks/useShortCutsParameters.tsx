@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
 import {
   useCurrentMessageView,
@@ -8,9 +8,9 @@ import {
 import { deepCloneGmailMessageElement } from '@/features/gmail/utils'
 
 import { ChatGPTMessageState } from '@/features/gmail/store'
-import { getAppRootElement } from '@/utils'
+import { getAppRootElement, getChromeExtensionSettings } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { DEFAULT_LANGUAGE_VALUE, ROOT_CHAT_BOX_INPUT_ID } from '@/types'
 import { AppState } from '@/store'
 
 const useShortCutsParameters = () => {
@@ -19,6 +19,12 @@ const useShortCutsParameters = () => {
   const { lastSelectionRanges, parseRangySelectRangeData, rangy } = useRangy()
   const { messageViewText, currentMessageId } = useCurrentMessageView()
   const chatBoxMessages = useRecoilValue(ChatGPTMessageState)
+  const [userSettings, setUserSettings] = useState<any>({})
+  useEffect(() => {
+    getChromeExtensionSettings().then((res) => {
+      setUserSettings(res.userSettings || {})
+    })
+  }, [])
   return useCallback(() => {
     console.log(
       'init default input value useShortCutsParameters messageViewText',
@@ -80,6 +86,7 @@ const useShortCutsParameters = () => {
         )?.value || '',
       LAST_MESSAGE_OUTPUT:
         chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
+      DEFAULT_LANGUAGE: userSettings?.language || DEFAULT_LANGUAGE_VALUE,
     }
     const parameters: Array<{
       key: string
@@ -110,6 +117,7 @@ const useShortCutsParameters = () => {
     lastSelectionRanges,
     rangy,
     chatBoxMessages,
+    userSettings,
   ])
 }
 export { useShortCutsParameters }

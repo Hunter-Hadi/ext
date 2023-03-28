@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 import {
-  GmailMessageChatConversationState,
-  GmailMessageChatState,
+  ChatGPTConversationState,
+  ChatGPTMessageState,
 } from '@/features/gmail/store'
 import {
   getChromeExtensionSettings,
@@ -37,13 +37,11 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTModelsSelector: FC = () => {
-  const updateConversation = useSetRecoilState(
-    GmailMessageChatConversationState,
-  )
+  const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const [models, setModels] = React.useState<IChatGPTModelType[]>([])
   const [currentModel, setCurrentModel] = React.useState<string>('')
-  const setConversation = useSetRecoilState(GmailMessageChatConversationState)
-  const setMessages = useSetRecoilState(GmailMessageChatState)
+  const setConversation = useSetRecoilState(ChatGPTConversationState)
+  const setMessages = useSetRecoilState(ChatGPTMessageState)
   const prevModel = useRef<string>('')
   useEffect(() => {
     let isDestroyed = false

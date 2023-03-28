@@ -1,6 +1,9 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
-import { FloatingDropdownMenuSelectedItemState } from '@/features/contextMenu/store'
+import {
+  FloatingDropdownMenuSelectedItemState,
+  FloatingDropdownMenuState,
+} from '@/features/contextMenu/store'
 
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
@@ -10,24 +13,30 @@ import { getAppRootElement } from '@/utils'
 
 const FloatingContextMenuButton: FC = () => {
   const root = getAppRootElement()
-  if (!root) {
-    return null
-  }
+  const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [
     floatingDropdownMenuSelectedItem,
     updateFloatingDropdownMenuSelectedItem,
   ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
-  const [running, setRunning] = useState(false)
-  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
+  const { setShortCuts, runShortCuts, loading } =
+    useShortCutsWithMessageChat('')
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'contextMenus',
     defaultContextMenuJson,
   )
   useEffect(() => {
+    /**
+     * @description
+     * 1. 必须有选中的id
+     * 2. 必须有子菜单
+     * 3. contextMenu必须是关闭状态
+     * 4. 必须不是loading
+     */
     if (
-      !running &&
       floatingDropdownMenuSelectedItem.selectedContextMenuId &&
-      originContextMenuList.length > 0
+      originContextMenuList.length > 0 &&
+      !floatingDropdownMenu.open &&
+      !loading
     ) {
       const findContextMenu = originContextMenuList.find(
         (contextMenu) =>
@@ -39,7 +48,6 @@ const FloatingContextMenuButton: FC = () => {
         findContextMenu.data.actions &&
         findContextMenu.data.actions.length > 0
       ) {
-        setRunning(true)
         updateFloatingDropdownMenuSelectedItem(() => {
           return {
             selectedContextMenuId: null,
@@ -63,16 +71,18 @@ const FloatingContextMenuButton: FC = () => {
             return action
           }),
         )
-        runShortCuts().then(() => {
-          setRunning(false)
-        })
+        runShortCuts().then()
       }
     }
   }, [
     floatingDropdownMenuSelectedItem.selectedContextMenuId,
-    running,
+    floatingDropdownMenu.open,
     originContextMenuList,
+    loading,
   ])
+  if (!root) {
+    return null
+  }
   return <FloatingContextMenuList root={root} menuList={contextMenuList} />
 }
 export { FloatingContextMenuButton }

@@ -96,6 +96,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         component={'div'}
         role="menuitem"
         onKeyDown={(event) => {
+          floatingUiProps?.onKeyDown?.(event)
           if (event.code === 'Enter') {
             updateSelectedId((prevState) => {
               return {
@@ -103,8 +104,8 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
                 selectedContextMenuId: menuItem.id,
               }
             })
+            event.stopPropagation()
           }
-          floatingUiProps?.onKeyDown?.(event)
         }}
         onClick={(event) => {
           updateSelectedId((prevState) => {
@@ -132,7 +133,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           flex={1}
           lineHeight={'28px'}
         >
-          {menuItem.text} - {isHover ? 'true' : 'false'}
+          {menuItem.text}
         </Typography>
         <span
           className={
@@ -211,6 +212,8 @@ export const MenuComponent = React.forwardRef<
         React.isValidElement(child) ? child.props.label : null,
       ) as Array<string | null>,
     )
+    const isFirstDeep = !parentId && zIndex === 2147483601
+    console.log(nodeId, parentId, zIndex, isFirstDeep, children)
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,
       open: isOpen,
@@ -221,15 +224,15 @@ export const MenuComponent = React.forwardRef<
         }
         setIsOpen(show)
       },
-      placement: customOpen ? 'bottom-start' : 'right-start',
+      placement: isFirstDeep ? 'bottom-start' : 'right-start',
       middleware: [
         offset({
-          mainAxis: customOpen ? 4 : 0,
-          alignmentAxis: customOpen ? 0 : -4,
+          mainAxis: isFirstDeep ? 4 : 0,
+          alignmentAxis: isFirstDeep ? 0 : -4,
         }),
         flip({
-          fallbackPlacements: customOpen
-            ? ['bottom', 'top', 'right', 'left']
+          fallbackPlacements: isFirstDeep
+            ? ['bottom-start', 'top-start', 'right']
             : ['right', 'left', 'bottom', 'top'],
         }),
         shift(),

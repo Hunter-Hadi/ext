@@ -139,7 +139,7 @@ type IChromeExtensionSettings = {
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
 }
-export type IChromeExtensionSettingsKey =
+export type IChromeExtensionSettingsContextMenuKey =
   | 'contextMenus'
   | 'gmailToolBarContextMenu'
 
@@ -168,7 +168,7 @@ export const getChromeExtensionSettings =
   }
 
 export const getChromeExtensionContextMenu = async (
-  menuType: IChromeExtensionSettingsKey,
+  menuType: IChromeExtensionSettingsContextMenuKey,
 ) => {
   const settings = await getChromeExtensionSettings()
   const defaultMenus = {

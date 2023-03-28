@@ -2,9 +2,9 @@ import { useRecoilState, useSetRecoilState } from 'recoil'
 import { useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
-  GmailMessageChatState,
-  GmailMessageChatConversationState,
-  GmailMessageChatInputState,
+  ChatGPTMessageState,
+  ChatGPTConversationState,
+  ChatGPTInputState,
   InboxEditState,
 } from '@/features/gmail/store'
 import { pingDaemonProcess, useSendAsyncTask } from '@/features/chatgpt/utils'
@@ -14,10 +14,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sendAsyncTask = useSendAsyncTask()
   const updateInboxEditState = useSetRecoilState(InboxEditState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
-  const [messages, setMessages] = useRecoilState(GmailMessageChatState)
-  const [inputValue, setInputValue] = useRecoilState(GmailMessageChatInputState)
+  const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
+  const [inputValue, setInputValue] = useRecoilState(ChatGPTInputState)
   const [conversation, setConversation] = useRecoilState(
-    GmailMessageChatConversationState,
+    ChatGPTConversationState,
   )
   const resetConversation = () => {
     console.log('resetConversation', defaultValueRef.current)

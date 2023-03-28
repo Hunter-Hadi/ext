@@ -12,7 +12,7 @@ import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEdit
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
   getChromeExtensionContextMenu,
-  IChromeExtensionSettingsKey,
+  IChromeExtensionSettingsContextMenuKey,
   setChromeExtensionSettings,
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
@@ -26,7 +26,7 @@ import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 const rootId = 'root'
 
 const saveTreeData = async (
-  key: IChromeExtensionSettingsKey,
+  key: IChromeExtensionSettingsContextMenuKey,
   treeData: IContextMenuItem[],
 ) => {
   try {
@@ -63,7 +63,7 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
 
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
-  settingsKey: IChromeExtensionSettingsKey
+  settingsKey: IChromeExtensionSettingsContextMenuKey
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {
   const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
@@ -183,6 +183,24 @@ const ContextMenuSettings: FC<{
   }, [settingsKey])
 
   useEffect(() => {
+    const searchTextMap: {
+      [key: string]: string
+    } = {}
+    const findSearchText = (parent: string) => {
+      const children = treeData.filter((item) => item.parent === parent)
+      if (children.length === 0) {
+        return
+      }
+      children.forEach((item) => {
+        const prefixText = searchTextMap[item.parent]
+          ? `${searchTextMap[item.parent]} `
+          : ''
+        searchTextMap[item.id] = `${prefixText}${item.text}`.toLowerCase()
+        item.data.searchText = searchTextMap[item.id]
+        findSearchText(item.id)
+      })
+    }
+    findSearchText(rootId)
     saveTreeData(settingsKey, treeData)
   }, [treeData])
   return (

@@ -177,7 +177,7 @@ const ClickContextMenuButton: FC<{
             const savedRangeRect = saved?.selectRange?.getBoundingClientRect?.()
             if (savedRangeRect && props.onClick) {
               props.onClick &&
-              props.onClick(event, computedRectPosition(savedRangeRect))
+                props.onClick(event, computedRectPosition(savedRangeRect))
             } else if (activeElementRect && props.onClick) {
               console.log(
                 '[ContextMenu Module]: render [button] (no range)',
@@ -187,24 +187,24 @@ const ClickContextMenuButton: FC<{
               )
               if (
                 activeElementRect.x +
-                activeElementRect.y +
-                activeElementRect.width +
-                activeElementRect.height ===
+                  activeElementRect.y +
+                  activeElementRect.width +
+                  activeElementRect.height ===
                 0
               ) {
                 if (tempSelectRangeRect) {
                   props.onClick &&
-                  props.onClick(
-                    event,
-                    computedRectPosition(cloneRect(tempSelectRangeRect)),
-                  )
+                    props.onClick(
+                      event,
+                      computedRectPosition(cloneRect(tempSelectRangeRect)),
+                    )
                 }
               } else {
                 props.onClick &&
-                props.onClick(
-                  event,
-                  computedRectPosition(cloneRect(activeElementRect)),
-                )
+                  props.onClick(
+                    event,
+                    computedRectPosition(cloneRect(activeElementRect)),
+                  )
               }
             }
           }

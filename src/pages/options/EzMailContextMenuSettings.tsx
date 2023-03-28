@@ -13,7 +13,7 @@ import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEdit
 import {
   getChromeExtensionContextMenu,
   // filteredTypeGmailToolBarContextMenu,
-  IChromeExtensionSettingsKey,
+  IChromeExtensionSettingsContextMenuKey,
   setChromeExtensionSettings,
 } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
@@ -33,7 +33,7 @@ import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 const rootId = 'root'
 
 const saveTreeData = async (
-  key: IChromeExtensionSettingsKey,
+  key: IChromeExtensionSettingsContextMenuKey,
   treeData: IContextMenuItem[],
 ) => {
   try {
@@ -91,7 +91,7 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
 
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
-  settingsKey: IChromeExtensionSettingsKey
+  settingsKey: IChromeExtensionSettingsContextMenuKey
   // menuType: IInboxMessageType
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {

@@ -16,7 +16,7 @@ import BlockIcon from '@mui/icons-material/Block'
 import { elementScrollToBottom, numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
-  GmailMessageChatConversationState,
+  ChatGPTConversationState,
   InboxEditState,
 } from '@/features/gmail/store'
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
@@ -80,7 +80,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
-  const conversation = useRecoilValue(GmailMessageChatConversationState)
+  const conversation = useRecoilValue(ChatGPTConversationState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')

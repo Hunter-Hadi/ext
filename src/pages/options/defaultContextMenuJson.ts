@@ -7,7 +7,7 @@ export default [
     droppable: true,
     text: 'Like',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -23,6 +23,7 @@ export default [
         },
       ],
       icon: 'ThumbUp',
+      searchText: 'generate from selection reply to this like',
     },
   },
   {
@@ -31,7 +32,7 @@ export default [
     droppable: true,
     text: 'Dislike',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -47,6 +48,7 @@ export default [
         },
       ],
       icon: 'ThumbDown',
+      searchText: 'generate from selection reply to this dislike',
     },
   },
   {
@@ -55,7 +57,7 @@ export default [
     droppable: true,
     text: 'Support',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -71,6 +73,7 @@ export default [
         },
       ],
       icon: 'FavoriteBorder',
+      searchText: 'generate from selection reply to this support',
     },
   },
   {
@@ -79,7 +82,7 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -95,6 +98,7 @@ export default [
         },
       ],
       icon: 'SentimentSatisfiedAlt',
+      searchText: 'generate from selection reply to this joke',
     },
   },
   {
@@ -103,7 +107,7 @@ export default [
     droppable: true,
     text: 'Idea',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -119,6 +123,7 @@ export default [
         },
       ],
       icon: 'TipsAndUpdates',
+      searchText: 'generate from selection reply to this idea',
     },
   },
   {
@@ -127,7 +132,7 @@ export default [
     droppable: true,
     text: 'Question',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -143,6 +148,7 @@ export default [
         },
       ],
       icon: 'Question',
+      searchText: 'generate from selection reply to this question',
     },
   },
   {
@@ -158,19 +164,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '`reset`\n' +
-              '`no quotes`\n' +
-              '`no explanations`\n' +
-              '`no prompt`\n' +
-              '`no self-reference`\n' +
-              '`no apologies`\n' +
-              '`no filler`\n' +
-              '`just answer`\n' +
-              '' +
-              '"""\n' +
-              '{{HIGHLIGHTED_TEXT}}\n' +
-              '"""\n' +
-              'Write a reply to the text above:',
+              '`reset`\n`no quotes`\n`no explanations`\n`no prompt`\n`no self-reference`\n`no apologies`\n`no filler`\n`just answer`\n"""\n{{HIGHLIGHTED_TEXT}}\n"""\nWrite a reply to the text above:',
           },
         },
         {
@@ -181,6 +175,7 @@ export default [
         },
       ],
       icon: 'DefaultIcon',
+      searchText: 'generate from selection reply to this enter prompt',
     },
   },
   {
@@ -189,7 +184,7 @@ export default [
     droppable: true,
     text: 'English',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -204,6 +199,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate english',
     },
   },
   {
@@ -212,7 +208,7 @@ export default [
     droppable: true,
     text: 'Korean',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -227,6 +223,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate korean',
     },
   },
   {
@@ -235,7 +232,7 @@ export default [
     droppable: true,
     text: 'Chinese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -250,6 +247,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate chinese',
     },
   },
   {
@@ -258,7 +256,7 @@ export default [
     droppable: true,
     text: 'Japanese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -273,6 +271,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate japanese',
     },
   },
   {
@@ -281,7 +280,7 @@ export default [
     droppable: true,
     text: 'Spanish',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -296,6 +295,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate spanish',
     },
   },
   {
@@ -304,7 +304,7 @@ export default [
     droppable: true,
     text: 'Russian',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -319,6 +319,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate russian',
     },
   },
   {
@@ -327,7 +328,7 @@ export default [
     droppable: true,
     text: 'French',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -342,6 +343,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate french',
     },
   },
   {
@@ -350,7 +352,7 @@ export default [
     droppable: true,
     text: 'Portuguese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -365,6 +367,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate portuguese',
     },
   },
   {
@@ -373,7 +376,7 @@ export default [
     droppable: true,
     text: 'German',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -388,6 +391,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate german',
     },
   },
   {
@@ -396,7 +400,7 @@ export default [
     droppable: true,
     text: 'Italian',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -411,6 +415,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate italian',
     },
   },
   {
@@ -419,7 +424,7 @@ export default [
     droppable: true,
     text: 'Dutch',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -434,6 +439,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate dutch',
     },
   },
   {
@@ -442,7 +448,7 @@ export default [
     droppable: true,
     text: 'Indonesian',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -457,6 +463,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate indonesian',
     },
   },
   {
@@ -465,7 +472,7 @@ export default [
     droppable: true,
     text: 'Filipino',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -480,6 +487,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate filipino',
     },
   },
   {
@@ -488,7 +496,7 @@ export default [
     droppable: true,
     text: 'Vietnamese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -503,6 +511,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'generate from selection translate vietnamese',
     },
   },
   {
@@ -511,7 +520,7 @@ export default [
     droppable: true,
     text: 'Summarize',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -527,6 +536,7 @@ export default [
         },
       ],
       icon: 'Summarize',
+      searchText: 'generate from selection summarize',
     },
   },
   {
@@ -535,7 +545,7 @@ export default [
     droppable: true,
     text: 'List key takeaways',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -551,6 +561,7 @@ export default [
         },
       ],
       icon: 'Bulleted',
+      searchText: 'generate from selection list key takeaways',
     },
   },
   {
@@ -559,10 +570,11 @@ export default [
     droppable: true,
     text: 'Translate',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       icon: 'Language',
+      searchText: 'generate from selection translate',
     },
   },
   {
@@ -571,7 +583,7 @@ export default [
     droppable: true,
     text: 'Explain this',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -587,6 +599,7 @@ export default [
         },
       ],
       icon: 'Question',
+      searchText: 'generate from selection explain this',
     },
   },
   {
@@ -595,7 +608,7 @@ export default [
     droppable: true,
     text: 'Find action items',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -611,6 +624,7 @@ export default [
         },
       ],
       icon: 'ListAlt',
+      searchText: 'generate from selection find action items',
     },
   },
   {
@@ -619,10 +633,11 @@ export default [
     droppable: true,
     text: 'Reply to this',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       icon: 'Reply',
+      searchText: 'generate from selection reply to this',
     },
   },
   {
@@ -631,7 +646,7 @@ export default [
     droppable: true,
     text: 'Professional',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -646,6 +661,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'edit or review selection change tone professional',
     },
   },
   {
@@ -654,7 +670,7 @@ export default [
     droppable: true,
     text: 'Casual',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -669,6 +685,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'edit or review selection change tone casual',
     },
   },
   {
@@ -677,7 +694,7 @@ export default [
     droppable: true,
     text: 'Straightforward',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -692,6 +709,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'edit or review selection change tone straightforward',
     },
   },
   {
@@ -700,7 +718,7 @@ export default [
     droppable: true,
     text: 'Confident',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -715,6 +733,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'edit or review selection change tone confident',
     },
   },
   {
@@ -723,7 +742,7 @@ export default [
     droppable: true,
     text: 'Friendly',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -738,6 +757,7 @@ export default [
           parameters: {},
         },
       ],
+      searchText: 'edit or review selection change tone friendly',
     },
   },
   {
@@ -746,7 +766,7 @@ export default [
     droppable: true,
     text: 'Improve writing',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -762,6 +782,7 @@ export default [
         },
       ],
       icon: 'AutoFix',
+      searchText: 'edit or review selection improve writing',
     },
   },
   {
@@ -770,7 +791,7 @@ export default [
     droppable: true,
     text: 'Fix spelling & grammar',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -786,6 +807,7 @@ export default [
         },
       ],
       icon: 'Done',
+      searchText: 'edit or review selection fix spelling & grammar',
     },
   },
   {
@@ -794,7 +816,7 @@ export default [
     droppable: true,
     text: 'Make shorter',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -810,6 +832,7 @@ export default [
         },
       ],
       icon: 'ShortText',
+      searchText: 'edit or review selection make shorter',
     },
   },
   {
@@ -818,7 +841,7 @@ export default [
     droppable: true,
     text: 'Make longer',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -834,6 +857,7 @@ export default [
         },
       ],
       icon: 'LongText',
+      searchText: 'edit or review selection make longer',
     },
   },
   {
@@ -842,10 +866,11 @@ export default [
     droppable: true,
     text: 'Change tone',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       icon: 'Voice',
+      searchText: 'edit or review selection change tone',
     },
   },
   {
@@ -854,7 +879,7 @@ export default [
     droppable: true,
     text: 'Simplify language',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -870,6 +895,7 @@ export default [
         },
       ],
       icon: 'AutoAwesome',
+      searchText: 'edit or review selection simplify language',
     },
   },
   {
@@ -878,7 +904,7 @@ export default [
     droppable: true,
     text: 'Paraphrase',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -894,6 +920,7 @@ export default [
         },
       ],
       icon: 'Autorenew',
+      searchText: 'edit or review selection paraphrase',
     },
   },
   {
@@ -902,9 +929,10 @@ export default [
     droppable: true,
     text: 'Edit or review selection',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
+      searchText: 'edit or review selection',
     },
   },
   {
@@ -913,9 +941,10 @@ export default [
     droppable: true,
     text: 'Generate from selection',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
+      searchText: 'generate from selection',
     },
   },
 ] as IContextMenuItem[]

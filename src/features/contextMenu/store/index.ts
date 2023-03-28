@@ -8,6 +8,7 @@ export type IContextMenuItem = {
   text: string
   data: {
     icon?: string
+    searchText?: string
     editable: boolean
     type: 'group' | 'shortcuts'
     actions?: ISetActionsType

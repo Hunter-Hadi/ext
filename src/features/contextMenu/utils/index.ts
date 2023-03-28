@@ -5,8 +5,8 @@ import {
 } from '@/features/contextMenu/store'
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
-import cloneDeep from 'lodash-es/cloneDeep'
 import { flip, offset, shift, size } from '@floating-ui/react'
+import cloneDeep from 'lodash-es/cloneDeep'
 export const checkIsCanInputElement = (
   element: HTMLElement,
   defaultMaxLoop = 10,
@@ -262,50 +262,43 @@ export const computedRectPosition = (rect: IRangyRect, rate = 0.8) => {
   }
 }
 
-type IContextMenuItemWithChildrenFilterItem = IContextMenuItemWithChildren & {
-  deep: number
-  searchText: string
-  matchedRate: number
-}
-
-// 1. 递归所有节点，生成deep和searchText(拼接每一级的text)
-// 2. 过滤掉不符合的节点
-// 3. 基于过滤后的节点,生成新的children和matchedRate
-// 4. 基于matchedRate进行排序，越符合搜索条件的越靠前
+// 1. 基于queryText生成queryWords
+// 2. 过滤掉不符合queryWords的节点
+// 3. 还原一层的树级结构
 export const fuzzySearchContextMenuList = (
-  data: IContextMenuItemWithChildren[],
+  data: IContextMenuItem[],
   query: string,
 ) => {
-  const queryText = query.replace(/\s/g, '').toLowerCase()
-  const filterList: IContextMenuItemWithChildrenFilterItem[] = []
-  const flattenList: IContextMenuItemWithChildren[] = []
-  const filterData = (
-    data: IContextMenuItemWithChildren[],
-    textPrefix: string,
-    deep = 0,
-  ) => {
-    data.forEach((item: IContextMenuItemWithChildren) => {
-      flattenList.push(item)
-      const filterItem: IContextMenuItemWithChildrenFilterItem = {
-        ...item,
-        searchText: (textPrefix + item.text).replace(/\s/g, '').toLowerCase(),
-        deep,
-        matchedRate: 0,
+  const queryText = query.toLowerCase().trim()
+  const queryWords = queryText.split(/\s+/).filter(Boolean)
+  const filterResult = cloneDeep(
+    data.filter((item) => {
+      const {
+        data: { searchText },
+      } = item
+      if (!searchText) {
+        return false
       }
-      filterList.push(filterItem)
-      if (item.children && item.children.length > 0) {
-        filterData(item.children, item.text, deep + 1)
+      const searchWords = searchText.split(/\s/)
+      let found = true
+      for (const queryWord of queryWords) {
+        const searchWordIndex = searchWords.findIndex((word) =>
+          word.includes(queryWord),
+        )
+        if (searchWordIndex === -1) {
+          found = false
+          break
+        }
+        searchWords.splice(searchWordIndex, 1)
       }
-    })
-  }
-  filterData(cloneDeep(data), '')
-  const filterResult = filterList.filter((item) => {
-    return item.searchText.includes(queryText)
-  })
-  console.log(filterResult)
-  const results: IContextMenuItemWithChildrenFilterItem[] = []
+      return found
+    }),
+  )
+  console.log(filterResult, queryWords)
+  // 还原一层的树级结构
+  const results: IContextMenuItemWithChildren[] = []
   const findChildren = (parent: string) => {
-    const newChildren: IContextMenuItemWithChildren[] = []
+    const newChildren: IContextMenuItem[] = []
     filterResult.forEach((item) => {
       if (item.parent === parent) {
         if (findChildren(item.id).length === 0) {
@@ -315,40 +308,24 @@ export const fuzzySearchContextMenuList = (
     })
     return newChildren
   }
-  filterResult.forEach((item) => {
-    item.children = []
-    item.children = findChildren(item.id)
-    if (item.children.length > 0) {
-      item.matchedRate = queryText.length / item.searchText.length
-      results.push(item)
-    } else {
-      if (results.find((i) => i.id === item.parent)) {
-        return
-      }
-      const parent = cloneDeep(
-        flattenList.find((i) => i.id === item.parent),
-      ) as IContextMenuItemWithChildrenFilterItem
-      if (parent) {
-        parent.searchText = item.text
-        parent.matchedRate = queryText.length / item.text.length
-        parent.deep = 2
-        parent.children = [item]
-        results.push(parent)
+  const groupByParent = groupBy(filterResult, 'parent')
+  console.log(groupByParent)
+  Object.keys(groupByParent).forEach((parent) => {
+    const children = (
+      groupByParent[parent] as IContextMenuItemWithChildren[]
+    ).filter((item) => item.data.type !== 'group')
+    if (children.length > 0) {
+      const parentItem = data.find((item) => item.id === parent)
+      if (parentItem) {
+        results.push({
+          ...parentItem,
+          children,
+        })
       }
     }
   })
-  results.map((item) => {
-    console.log(item.searchText, item.matchedRate)
-  })
+  console.log(results)
   return results
-    .sort((prev, next) => next.matchedRate - prev.matchedRate)
-    .map((item) => {
-      const node: any = cloneDeep(item)
-      delete node.searchText
-      delete node.matchedRate
-      delete node.deep
-      return node as IContextMenuItemWithChildren
-    })
 }
 
 export const findFirstTierMenuLength = (menuList: IContextMenuItem[] = []) => {

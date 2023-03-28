@@ -42,7 +42,7 @@ export interface IAction {
 
 // 定义捷径引擎接口
 export interface IShortcutEngine {
-  status: 'notRunning' | 'running' | 'stop' | 'complete'
+  status: 'idle' | 'running' | 'stop' | 'complete'
   actions: IAction[]
   variables: Map<string, any>
   run: (params: any) => Promise<void>

@@ -65,6 +65,11 @@ if (location.host === 'chat.openai.com') {
   shadowRootElement.style.flexDirection = 'column'
   shadowRootElement.style.flex = '1'
   shadowRootElement.style.height = '100vh'
+  // shadowRootElement.style.width = '100vw'
+  // shadowRootElement.style.position = 'absolute'
+  // shadowRootElement.style.top = '0'
+  // shadowRootElement.style.left = 'calc(-100vw + 100%)'
+  // shadowRootElement.style.pointerEvents = 'none'
   shadowContainer.appendChild(emotionRoot)
   shadowContainer.appendChild(shadowRootElement)
   const cache = createCache({

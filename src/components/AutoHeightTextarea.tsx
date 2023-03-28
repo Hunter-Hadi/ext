@@ -213,6 +213,7 @@ const AutoHeightTextarea: FC<{
           resize: 'none',
           overflow: 'hidden',
           overflowY: 'auto',
+          fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',
           '&::-webkit-scrollbar': {
             width: 0,
             background: 'transparent',
@@ -250,6 +251,9 @@ const AutoHeightTextarea: FC<{
             onEnter && onEnter(event.currentTarget.value)
             setInputValue('')
             event.preventDefault()
+          } else if (event.code === 'Space') {
+            event.stopPropagation()
+            return
           }
           onKeydown && onKeydown(event)
         }}

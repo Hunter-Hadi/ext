@@ -6,11 +6,12 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
+  IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
 import {
   cloneRect,
@@ -26,6 +27,9 @@ import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuL
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+
+const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
+
 const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
@@ -54,7 +58,6 @@ const FloatingContextMenu: FC<{
   const click = useClick(context)
   const dismiss = useDismiss(context, {})
   const { getFloatingProps } = useInteractions([dismiss, click])
-  const [running, setRunning] = useState(false)
   useEffect(() => {
     if (floatingDropdownMenu.rootRect) {
       const rect = cloneRect(floatingDropdownMenu.rootRect)
@@ -80,7 +83,8 @@ const FloatingContextMenu: FC<{
     }
   }, [floatingDropdownMenu.rootRect])
   const [inputValue, setInputValue] = useState('')
-  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
+  const { setShortCuts, runShortCuts, loading } =
+    useShortCutsWithMessageChat('')
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'contextMenus',
     defaultContextMenuJson,
@@ -89,6 +93,7 @@ const FloatingContextMenu: FC<{
   const haveDraft = inputValue.length > 0
   useEffect(() => {
     if (floatingDropdownMenu.open) {
+      setInputValue('')
       const textareaEl = getAppContextMenuElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
@@ -113,10 +118,18 @@ const FloatingContextMenu: FC<{
     }
   }
   useEffect(() => {
+    /**
+     * @description
+     * 1. 必须有选中的id
+     * 2. 必须有子菜单
+     * 3. contextMenu必须是打开状态
+     * 4. 必须不是loading
+     */
     if (
-      !running &&
       floatingDropdownMenuSelectedItem.selectedContextMenuId &&
-      originContextMenuList.length > 0
+      originContextMenuList.length > 0 &&
+      floatingDropdownMenu.open &&
+      !loading
     ) {
       const findContextMenu = originContextMenuList.find(
         (contextMenu) =>
@@ -128,7 +141,6 @@ const FloatingContextMenu: FC<{
         findContextMenu.data.actions &&
         findContextMenu.data.actions.length > 0
       ) {
-        setRunning(true)
         setFloatingDropdownMenu({
           open: false,
           rootRect: null,
@@ -141,15 +153,31 @@ const FloatingContextMenu: FC<{
         })
         setShortCuts(findContextMenu.data.actions)
         runShortCuts().then(() => {
-          setRunning(false)
+          setFloatingDropdownMenu((prevState) => {
+            return {
+              ...prevState,
+              running: false,
+            }
+          })
         })
       }
     }
   }, [
     floatingDropdownMenuSelectedItem.selectedContextMenuId,
-    running,
     originContextMenuList,
+    floatingDropdownMenu.open,
+    loading,
   ])
+  const currentWidth = useMemo(() => {
+    if (floatingDropdownMenu.rootRect) {
+      const minWidth = Math.max(floatingDropdownMenu.rootRect?.width || 0, 680)
+      if (minWidth > 1280) {
+        return 1280
+      }
+      return minWidth
+    }
+    return 680
+  }, [floatingDropdownMenu.rootRect])
   return (
     <FloatingPortal root={root}>
       <div
@@ -161,7 +189,7 @@ const FloatingContextMenu: FC<{
           opacity: floatingDropdownMenu.open ? 1 : 0,
           top: y ?? 0,
           left: x ?? 0,
-          width: Math.max(floatingDropdownMenu.rootRect?.width || 0, 680),
+          width: currentWidth,
           maxWidth: '90%',
         }}
         onKeyDown={(event) => {
@@ -170,13 +198,19 @@ const FloatingContextMenu: FC<{
           if (event.key.indexOf('Arrow') === -1) {
             focusInput(event as any)
           }
+          if (event.key === 'Escape') {
+            setFloatingDropdownMenu({
+              open: false,
+              rootRect: null,
+            })
+          }
           console.log(event.key)
         }}
       >
         <FloatingContextMenuList
           needAutoUpdate
-          menuList={contextMenuList}
-          referenceElementOpen={floatingDropdownMenu.open && !running}
+          menuList={loading ? EMPTY_ARRAY : contextMenuList}
+          referenceElementOpen={floatingDropdownMenu.open}
           referenceElement={
             <div
               style={{
@@ -213,7 +247,7 @@ const FloatingContextMenu: FC<{
                 spacing={1}
                 justifyContent={'left'}
               >
-                {running ? (
+                {loading ? (
                   <>
                     <Typography fontSize={'16px'} color={'primary.main'}>
                       AI is writing...
@@ -223,7 +257,7 @@ const FloatingContextMenu: FC<{
                 ) : (
                   <>
                     <AutoHeightTextarea
-                      placeholder={'Ask ChatGPT to edit or generate...'}
+                      placeholder={'Use ChatGPT to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
                       sx={{
@@ -232,11 +266,12 @@ const FloatingContextMenu: FC<{
                         borderRadius: 0,
                         minHeight: '24px',
                       }}
-                      defaultValue={''}
+                      defaultValue={inputValue}
                       onChange={(value) => {
                         setInputValue(value)
                       }}
                       onEnter={(value) => {
+                        if (!haveDraft) return
                         showChatBox()
                         setFloatingDropdownMenu({
                           open: false,
@@ -254,7 +289,7 @@ const FloatingContextMenu: FC<{
                             {
                               type: 'RENDER_CHATGPT_PROMPT',
                               parameters: {
-                                template: `${value}:\n """\n{{HIGHLIGHTED_TEXT}}\n"""`,
+                                template: `${value}:\n\n{{HIGHLIGHTED_TEXT}}`,
                               },
                             },
                             {

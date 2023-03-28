@@ -1,4 +1,4 @@
-import { atom } from 'recoil'
+import { atom, selector } from 'recoil'
 import { ISetActionsType } from '@/features/shortcuts'
 
 export type IContextMenuItem = {
@@ -8,6 +8,7 @@ export type IContextMenuItem = {
   text: string
   data: {
     icon?: string
+    searchText?: string
     editable: boolean
     type: 'group' | 'shortcuts'
     actions?: ISetActionsType
@@ -16,16 +17,6 @@ export type IContextMenuItem = {
 export type IContextMenuItemWithChildren = IContextMenuItem & {
   children: IContextMenuItemWithChildren[]
 }
-export const RangyCoreState = atom<{
-  loaded: boolean
-  rangy: any | null
-}>({
-  key: 'RangyCoreState',
-  default: {
-    loaded: false,
-    rangy: null,
-  },
-})
 
 export type IRangyRect = {
   x: number
@@ -37,6 +28,17 @@ export type IRangyRect = {
   width: number
   height: number
 }
+
+export const RangyCoreState = atom<{
+  loaded: boolean
+  rangy: any | null
+}>({
+  key: 'RangyCoreState',
+  default: {
+    loaded: false,
+    rangy: null,
+  },
+})
 
 export const RangyState = atom<{
   show: boolean
@@ -54,5 +56,39 @@ export const RangyState = atom<{
     lastSelectionRanges: null,
     tempSelectionRanges: null,
     currentActiveWriteableElement: null,
+  },
+})
+
+export const FloatingDropdownMenuState = atom<{
+  open: boolean
+  rootRect: IRangyRect | null
+}>({
+  key: 'FloatingDropdownMenuState',
+  default: {
+    open: false,
+    rootRect: null,
+  },
+})
+export const FloatingDropdownMenuSelectedItemState = atom<{
+  hoverContextMenuIdMap: {
+    [key: string]: string
+  }
+  lastHoverContextMenuId: string | null
+  selectedContextMenuId: string | null
+}>({
+  key: 'FloatingDropdownMenuSelectedItemState',
+  default: {
+    hoverContextMenuIdMap: {},
+    selectedContextMenuId: null,
+    lastHoverContextMenuId: null,
+  },
+})
+export const FloatingDropdownMenuItemsSelector = selector<string[]>({
+  key: 'FloatingDropdownMenuItemsSelector',
+  get: ({ get }) => {
+    const hoverIdMap = get(
+      FloatingDropdownMenuSelectedItemState,
+    ).hoverContextMenuIdMap
+    return Object.values(hoverIdMap).filter((id) => id)
   },
 })

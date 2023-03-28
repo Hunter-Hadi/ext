@@ -1,5 +1,5 @@
 import { pingUntilLogin, useMessageWithChatGPT } from '@/features/chatgpt'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef } from 'react'
 import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import {
@@ -8,11 +8,17 @@ import {
 } from '@/features/gmail/hooks'
 import { ISetActionsType } from '@/features/shortcuts/types'
 import { ChatBoxIsOpen, showChatBox } from '@/utils'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { ShortCutsState } from '@/features/shortcuts/store'
+import { ChatGPTConversationState } from '@/features/gmail/store'
 
 const shortCutsEngine = new ShortCutsEngine()
 const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
-  const [loading, setLoading] = useState(false)
   const getParams = useShortCutsParameters()
+  const [shortCutsState, setShortsCutsState] = useRecoilState(ShortCutsState)
+  const { loading: chatGPTConversationLoading } = useRecoilValue(
+    ChatGPTConversationState,
+  )
   const shortCutsEngineRef = useRef<ShortCutsEngine | null>(shortCutsEngine)
   const messageWithChatGPT = useMessageWithChatGPT(defaultInputValue || '')
   const { messageViewText } = useCurrentMessageView()
@@ -34,7 +40,11 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     }
     try {
       const isLoginSuccess = await pingUntilLogin()
-      if (isLoginSuccess) {
+      // 确保没有在运行
+      if (isLoginSuccess && shortCutsEngineRef.current?.stepIndex === -1) {
+        setShortsCutsState({
+          status: 'running',
+        })
         await shortCutsEngineRef.current.run({
           parameters: getParams().shortCutsParameters,
           engine: {
@@ -56,7 +66,9 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     } catch (e) {
       console.log('run short cuts error: \t', e)
     } finally {
-      setLoading(false)
+      setShortsCutsState({
+        status: shortCutsEngine.status || 'idle',
+      })
     }
   }, [
     messageWithChatGPT,
@@ -72,7 +84,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     shortCutsEngineRef,
     runShortCuts,
     setShortCuts,
-    loading,
+    loading: shortCutsState.status === 'running' || chatGPTConversationLoading,
   }
 }
 export { useShortCutsWithMessageChat }

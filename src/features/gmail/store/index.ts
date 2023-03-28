@@ -46,24 +46,24 @@ export const InboxComposeViewState = atom<{
   default: {},
 })
 
-export const GmailMessageChatState = atom<IGmailChatMessage[]>({
+export const ChatGPTMessageState = atom<IGmailChatMessage[]>({
   key: 'GmailMessageChatState',
   default: [],
 })
 
-export const GmailMessageChatInputState = atom<string>({
-  key: 'GmailMessageChatInputState',
+export const ChatGPTInputState = atom<string>({
+  key: 'ChatGPTInputState',
   default: '',
 })
 
-export const GmailMessageChatConversationState = atom<{
+export const ChatGPTConversationState = atom<{
   writingMessage: IGmailChatMessage | null
   conversationId?: ''
   lastMessageId?: string
   model: string
   loading: boolean
 }>({
-  key: 'GmailMessageChatConversationState',
+  key: 'ChatGPTConversationState',
   default: {
     writingMessage: null,
     conversationId: '',

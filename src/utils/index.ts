@@ -38,6 +38,8 @@ import {
   EZMAIL_REPLY_GROUP_ID,
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
+  ROOT_CONTEXT_MENU_ID,
+  ROOT_CONTEXT_MENU_PORTAL_ID,
 } from '@/types'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
@@ -63,6 +65,14 @@ export const getAppRootElement = (): HTMLDivElement | null => {
     ?.shadowRoot?.querySelector(
       `#${ROOT_CONTAINER_WRAPPER_ID}`,
     ) as HTMLDivElement
+}
+export const getAppContextMenuElement = (): HTMLDivElement | null => {
+  const portals =
+    document
+      .querySelector(`#${ROOT_CONTEXT_MENU_ID}`)
+      ?.shadowRoot?.querySelectorAll(`#${ROOT_CONTEXT_MENU_PORTAL_ID}`) || []
+  const portal = Array.from(portals).find((portal) => portal.innerHTML !== '')
+  return portal as HTMLDivElement
 }
 
 export const showChatBox = () => {
@@ -129,7 +139,7 @@ type IChromeExtensionSettings = {
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
 }
-export type IChromeExtensionSettingsKey =
+export type IChromeExtensionSettingsContextMenuKey =
   | 'contextMenus'
   | 'gmailToolBarContextMenu'
 
@@ -158,7 +168,7 @@ export const getChromeExtensionSettings =
   }
 
 export const getChromeExtensionContextMenu = async (
-  menuType: IChromeExtensionSettingsKey,
+  menuType: IChromeExtensionSettingsContextMenuKey,
 ) => {
   const settings = await getChromeExtensionSettings()
   const defaultMenus = {

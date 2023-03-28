@@ -21,7 +21,7 @@ const ActionClassMap = {
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
 
 class ShortCutsEngine implements IShortcutEngine {
-  status: IShortcutEngine['status'] = 'notRunning'
+  status: IShortcutEngine['status'] = 'idle'
   variables = new Map<string, any>()
   stepIndex = -1
   actions: IShortcutEngine['actions'] = []
@@ -58,9 +58,8 @@ class ShortCutsEngine implements IShortcutEngine {
     try {
       const { engine, parameters } = params
       this.stepIndex += 1
-      if (this.status === 'notRunning' || this.status === 'running') {
+      if (this.status === 'idle' || this.status === 'running') {
         const currentAction = this.getCurrentAction()
-
         if (currentAction) {
           this.status = 'running'
           if (parameters) {
@@ -105,7 +104,7 @@ class ShortCutsEngine implements IShortcutEngine {
       )
       this.reset()
     } finally {
-      this.status = 'notRunning'
+      this.status = 'idle'
     }
   }
 
@@ -117,7 +116,7 @@ class ShortCutsEngine implements IShortcutEngine {
     console.log('ShortCutEngine.reset')
     this.stepIndex = -1
     this.variables = new Map<string, any>()
-    this.status = 'notRunning'
+    this.status = 'idle'
   }
   setVariable(
     key: IShortcutEngineVariableType,

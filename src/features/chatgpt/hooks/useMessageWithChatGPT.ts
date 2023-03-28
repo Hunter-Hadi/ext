@@ -1,11 +1,10 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { useEffect, useMemo, useRef } from 'react'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
-  GmailMessageChatState,
-  GmailMessageChatConversationState,
-  GmailMessageChatInputState,
+  ChatGPTMessageState,
+  ChatGPTConversationState,
+  ChatGPTInputState,
   InboxEditState,
 } from '@/features/gmail/store'
 import { pingDaemonProcess, useSendAsyncTask } from '@/features/chatgpt/utils'
@@ -15,18 +14,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sendAsyncTask = useSendAsyncTask()
   const updateInboxEditState = useSetRecoilState(InboxEditState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
-  const { loaded, port } = useRecoilValue(ChatGPTClientState)
-  const [messages, setMessages] = useRecoilState(GmailMessageChatState)
-  const [inputValue, setInputValue] = useRecoilState(GmailMessageChatInputState)
+  const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
+  const [inputValue, setInputValue] = useRecoilState(ChatGPTInputState)
   const [conversation, setConversation] = useRecoilState(
-    GmailMessageChatConversationState,
+    ChatGPTConversationState,
   )
-  const currentPortInstance = useMemo(() => {
-    if (loaded) {
-      return port
-    }
-    return undefined
-  }, [port, loaded])
   const resetConversation = () => {
     console.log('resetConversation', defaultValueRef.current)
     setInputValue(defaultValueRef.current)
@@ -48,35 +40,30 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       }
     })
   }
-  const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
   const createConversation = async () => {
-    await delay(1)
-    if (currentPortInstance) {
-      console.log(conversation.model)
-      const response: any = await sendAsyncTask(
-        'DaemonProcess_createConversation',
-        {
-          model: conversation.model,
-        },
-      )
-      if (response.conversationId) {
-        console.log('create Conversation done', response.conversationId)
-        console.log(response.conversationId)
-        setConversation((prevState) => {
-          return {
-            ...prevState,
-            conversationId: response.conversationId,
-            writingMessage: null,
-            lastMessageId: '',
-          }
-        })
-        return response.conversationId as string
-      } else {
-        console.log('create Conversation error', response)
-        return ''
-      }
+    console.log(conversation.model)
+    const response: any = await sendAsyncTask(
+      'DaemonProcess_createConversation',
+      {
+        model: conversation.model,
+      },
+    )
+    if (response.conversationId) {
+      console.log('create Conversation done', response.conversationId)
+      console.log(response.conversationId)
+      setConversation((prevState) => {
+        return {
+          ...prevState,
+          conversationId: response.conversationId,
+          writingMessage: null,
+          lastMessageId: '',
+        }
+      })
+      return response.conversationId as string
+    } else {
+      console.log('create Conversation error', response)
+      return ''
     }
-    return ''
   }
   const createSystemMessage = (
     parentMessageId: string,
@@ -164,7 +151,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         'error',
       )
     }
-    if (!postConversationId || !currentPortInstance) {
+    if (!postConversationId) {
       if (!isSetError) {
         createSystemMessage(
           currentMessageId,

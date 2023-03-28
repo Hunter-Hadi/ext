@@ -17,7 +17,7 @@ import {
   ContextMenuIcon,
   IContextMenuItem,
 } from '@/features/contextMenu'
-import { IChromeExtensionSettingsKey } from '@/utils'
+import { IChromeExtensionSettingsContextMenuKey } from '@/utils'
 import { IContextMenuIconKey } from '@/features/contextMenu/components/ContextMenuIcon'
 import AceEditor from 'react-ace'
 import 'ace-builds/src-noconflict/mode-handlebars'
@@ -51,7 +51,7 @@ const staticWordCompleter = {
 langTools.setCompleters([staticWordCompleter])
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
-  settingsKey: IChromeExtensionSettingsKey
+  settingsKey: IChromeExtensionSettingsContextMenuKey
   node: IContextMenuItem
   onSave?: (
     newNode: IContextMenuItem,

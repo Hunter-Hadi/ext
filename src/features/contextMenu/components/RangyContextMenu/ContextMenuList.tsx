@@ -7,7 +7,7 @@ import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
 import { Item, Separator, Submenu } from 'react-contexify'
 import {
   getChromeExtensionContextMenu,
-  IChromeExtensionSettingsKey,
+  IChromeExtensionSettingsContextMenuKey,
 } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew'
@@ -199,7 +199,7 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 const ContextMenuList: FC<{
   staticButton?: boolean
   // defaultContextMenuJson: IContextMenuItem[]
-  settingsKey: IChromeExtensionSettingsKey
+  settingsKey: IChromeExtensionSettingsContextMenuKey
 }> = (props) => {
   const { settingsKey } = props
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])

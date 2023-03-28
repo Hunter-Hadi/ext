@@ -1,17 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
 import './global.less'
-import {
-  GmailMessageChatConversationState,
-  useInitInboxSdk,
-} from '@/features/gmail'
 import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
-import { useInitChatGPTClient } from '@/features/chatgpt'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
 import { getChromeExtensionSettings, getClientEnv, hideChatBox } from '@/utils'
-import { RangyContextMenu, useInitRangy } from '@/features/contextMenu'
 import {
   CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -20,57 +14,9 @@ import {
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import Browser from 'webextension-polyfill'
 import { AppState } from '@/store'
+import AppInit from '@/utils/AppInit'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
-
-const GmailInit = () => {
-  useInitInboxSdk()
-  return (
-    <>
-      <style>{'.aSt {max-width: calc(100% - 700px)}'}</style>
-    </>
-  )
-}
-const RangyInit = () => {
-  useInitRangy()
-  return <></>
-}
-const ChatGPTStateInit = () => {
-  const updateConversation = useSetRecoilState(
-    GmailMessageChatConversationState,
-  )
-  useEffect(() => {
-    let isDestroyed = false
-    getChromeExtensionSettings().then((settings) => {
-      if (isDestroyed) return
-      if (settings?.currentModel) {
-        updateConversation((conversation) => {
-          return {
-            ...conversation,
-            model: settings.currentModel || '',
-          }
-        })
-      }
-    })
-    return () => {
-      isDestroyed = true
-    }
-  }, [])
-  return <></>
-}
-
-const AppInit = () => {
-  const appState = useRecoilValue(AppState)
-  useInitChatGPTClient()
-  return (
-    <>
-      {appState.env === 'gmail' && isEzMailApp && <GmailInit />}
-      {!isEzMailApp && <RangyInit />}
-      <ChatGPTStateInit />
-      <RangyContextMenu />
-    </>
-  )
-}
 
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
@@ -127,11 +73,15 @@ const App: FC = () => {
         className={isEzMailApp ? 'ezmail-ai-app' : 'use-chat-gpt-ai-app'}
         ref={appRef}
         sx={{
+          // pointerEvents: 'auto',
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
           borderLeft: '1px solid rgba(0, 0, 0, .1)',
+          // position: 'absolute',
+          // right: 0,
+          // width: '25%',
         }}
       >
         <Stack

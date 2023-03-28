@@ -5,6 +5,8 @@ import {
 } from '@/features/contextMenu/store'
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
+import { flip, offset, shift, size } from '@floating-ui/react'
+import cloneDeep from 'lodash-es/cloneDeep'
 export const checkIsCanInputElement = (
   element: HTMLElement,
   defaultMaxLoop = 10,
@@ -225,10 +227,10 @@ export const cloneRect = (rect: IRangyRect): IRangyRect => {
     right: rect.right,
     top: rect.top,
     bottom: rect.bottom,
-    width: rect.width,
-    height: rect.height,
-    x: rect.x,
-    y: rect.y,
+    width: rect.width || rect.right - rect.left,
+    height: rect.height || rect.bottom - rect.top,
+    x: rect.x || rect.left,
+    y: rect.y || rect.top,
   }
 }
 
@@ -259,6 +261,72 @@ export const computedRectPosition = (rect: IRangyRect, rate = 0.8) => {
   } else {
     return rect
   }
+}
+
+// 1. 基于queryText生成queryWords
+// 2. 过滤掉不符合queryWords的节点
+// 3. 还原一层的树级结构
+export const fuzzySearchContextMenuList = (
+  data: IContextMenuItem[],
+  query: string,
+) => {
+  const queryText = query.toLowerCase().trim()
+  const queryWords = queryText.split(/\s+/).filter(Boolean)
+  const filterResult = cloneDeep(
+    data.filter((item) => {
+      const {
+        data: { searchText },
+      } = item
+      if (!searchText) {
+        return false
+      }
+      const searchWords = searchText.split(/\s/)
+      let found = true
+      for (const queryWord of queryWords) {
+        const searchWordIndex = searchWords.findIndex((word) =>
+          word.includes(queryWord),
+        )
+        if (searchWordIndex === -1) {
+          found = false
+          break
+        }
+        searchWords.splice(searchWordIndex, 1)
+      }
+      return found
+    }),
+  )
+  console.log(filterResult, queryWords)
+  // 还原一层的树级结构
+  const results: IContextMenuItemWithChildren[] = []
+  const findChildren = (parent: string) => {
+    const newChildren: IContextMenuItem[] = []
+    filterResult.forEach((item) => {
+      if (item.parent === parent) {
+        if (findChildren(item.id).length === 0) {
+          newChildren.push(item)
+        }
+      }
+    })
+    return newChildren
+  }
+  const groupByParent = groupBy(filterResult, 'parent')
+  console.log(groupByParent)
+  Object.keys(groupByParent).forEach((parent) => {
+    const children = (
+      groupByParent[parent] as IContextMenuItemWithChildren[]
+    ).filter((item) => item.data.type !== 'group')
+    if (children.length > 0) {
+      const parentItem = data.find((item) => item.id === parent)
+      if (parentItem) {
+        results.push({
+          ...parentItem,
+          children,
+        })
+      }
+    }
+  })
+  console.log(results)
+  return results
 }
 
 export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
@@ -292,3 +360,46 @@ export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
 
   return height
 }
+
+/**
+ * @description: floating ui的middleware
+ */
+export const FloatingContextMenuMiddleware = [
+  flip({
+    fallbackPlacements: ['top-start', 'right', 'left'],
+  }),
+  size(),
+  shift({
+    crossAxis: true,
+    padding: 16,
+  }),
+  offset((params) => {
+    console.log('[ContextMenu Module]: [offset]', params)
+    if (params.placement.indexOf('bottom') > -1) {
+      const boundary = {
+        left: 0,
+        right: window.innerWidth,
+        top: 0,
+        bottom: window.innerHeight + window.scrollY,
+      }
+      if (
+        isRectangleCollidingWithBoundary(
+          {
+            top: params.y,
+            left: params.x,
+            bottom: params.y + params.rects.floating.height + 50,
+            right: params.rects.floating.width + params.x,
+          },
+          boundary,
+        )
+      ) {
+        return (
+          params.rects.reference.y - params.y - params.rects.floating.height - 8
+        )
+      }
+      return 8
+    } else {
+      return 8
+    }
+  }),
+]

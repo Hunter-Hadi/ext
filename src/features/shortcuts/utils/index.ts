@@ -1,4 +1,7 @@
-import { getAppRootElement, IChromeExtensionSettingsKey } from '@/utils'
+import {
+  getAppRootElement,
+  IChromeExtensionSettingsContextMenuKey,
+} from '@/utils'
 import { v4 } from 'uuid'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import { ISetActionsType } from '@/features/shortcuts/types'
@@ -54,11 +57,14 @@ export const compileTemplate = (template: string, variables: any) => {
 }
 
 export const getDefaultActionWithTemplate = (
-  settingsKey: IChromeExtensionSettingsKey,
+  settingsKey: IChromeExtensionSettingsContextMenuKey,
   template: string,
   autoAskChatGPT: boolean,
 ) => {
-  const actions: Record<IChromeExtensionSettingsKey, ISetActionsType> = {
+  const actions: Record<
+    IChromeExtensionSettingsContextMenuKey,
+    ISetActionsType
+  > = {
     gmailToolBarContextMenu: [
       {
         type: 'RENDER_CHATGPT_PROMPT',

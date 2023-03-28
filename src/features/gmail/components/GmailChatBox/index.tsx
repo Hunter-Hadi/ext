@@ -9,19 +9,19 @@ import {
   Typography,
 } from '@mui/material'
 import CachedIcon from '@mui/icons-material/Cached'
-import GmailChatBoxInput from './GmailChatBoxInput'
+import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
 import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
 import { elementScrollToBottom, numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
-  GmailMessageChatConversationState,
+  ChatGPTConversationState,
   InboxEditState,
 } from '@/features/gmail/store'
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
-import { StaticUseChatGPTButtonContextMenu } from '@/features/contextMenu'
+import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
 import DevContent from '@/components/DevContent'
@@ -80,7 +80,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
-  const conversation = useRecoilValue(GmailMessageChatConversationState)
+  const conversation = useRecoilValue(ChatGPTConversationState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
@@ -238,6 +238,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             alignItems={'center'}
             justifyContent={'center'}
             gap={1}
+            mb={1}
             position={'relative'}
           >
             {!loading && messages.length > 0 && (
@@ -272,17 +273,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     />
                   </TooltipButton>
                 </Box>
-
-                {!isEzMailApp && (
-                  <StaticUseChatGPTButtonContextMenu
-                    sx={{ mb: 1 }}
-                    disableElevation
-                    variant={'outlined'}
-                  />
-                )}
+                {!isEzMailApp && <FloatingContextMenuButton />}
                 {reGenerateAble && (
                   <Button
-                    sx={{ mb: 1 }}
                     disableElevation
                     startIcon={<CachedIcon />}
                     variant={'outlined'}
@@ -311,7 +304,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               </Button>
             )}
           </Box>
-          <GmailChatBoxInput
+          <AutoHeightTextarea
             textareaRef={textareaRef}
             error={isGmailChatBoxError && !loading}
             loading={loading}
@@ -321,6 +314,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               onSendMessage && onSendMessage(value)
               setInputValue('')
             }}
+            childrenHeight={45}
           >
             <Stack
               p={1}
@@ -371,7 +365,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 </Button>
               </Box>
             </Stack>
-          </GmailChatBoxInput>
+          </AutoHeightTextarea>
         </Stack>
         <Stack
           direction={'row'}

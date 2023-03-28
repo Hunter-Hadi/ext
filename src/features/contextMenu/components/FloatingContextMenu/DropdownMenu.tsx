@@ -222,6 +222,7 @@ export const MenuComponent = React.forwardRef<
         if (customOpen) {
           return
         }
+        debugger
         setIsOpen(show)
       },
       placement: isFirstDeep ? 'bottom-start' : 'right-start',
@@ -435,7 +436,8 @@ export const MenuComponent = React.forwardRef<
                   p: 0.5,
                   outline: 'none!important',
                   width: 400,
-                  maxHeight: 320,
+                  maxHeight: 327,
+                  boxSizing: 'border-box',
                   overflowY: 'auto',
                   border: '1px solid rgb(237,237,236)',
                   background: 'white',

@@ -84,8 +84,13 @@ const FloatingContextMenuList: FC<
             <Box
               key={menuItem.id + '_group_spector'}
               aria-disabled={true}
+              onClick={(event) => {
+                event.stopPropagation()
+                event.preventDefault()
+              }}
               component={'div'}
               sx={{
+                pointerEvents: 'none',
                 borderTop: '1px solid rgb(237, 237, 236)',
                 my: 1,
               }}
@@ -105,6 +110,11 @@ const FloatingContextMenuList: FC<
               boxSizing: 'border-box',
               direction: 'row',
               px: 1,
+              pointerEvents: 'none',
+            }}
+            onClick={(event) => {
+              event.stopPropagation()
+              event.preventDefault()
             }}
           >
             {/*{menuItem?.data?.icon && (*/}

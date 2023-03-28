@@ -29,6 +29,7 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
+const isProduction = process.env.NODE_ENV === 'production'
 
 const FloatingContextMenu: FC<{
   root: any
@@ -62,19 +63,21 @@ const FloatingContextMenu: FC<{
     if (floatingDropdownMenu.rootRect) {
       const rect = cloneRect(floatingDropdownMenu.rootRect)
       console.log('[ContextMenu Module]: [useEffect]', rect)
-      // render rect
-      document.querySelector('#rangeBorderBox')?.remove()
-      const div = document.createElement('div')
-      div.id = 'rangeBorderBox'
-      div.style.position = 'absolute'
-      div.style.left = rect.left + 'px'
-      div.style.top = rect.top + window.scrollY + 'px'
-      div.style.width = rect.width + 'px'
-      div.style.height = rect.height + 'px'
-      div.style.border = '1px solid green'
-      div.style.zIndex = '9999'
-      div.style.pointerEvents = 'none'
-      document.body.appendChild(div)
+      if (!isProduction) {
+        // render rect
+        document.querySelector('#rangeBorderBox')?.remove()
+        const div = document.createElement('div')
+        div.id = 'rangeBorderBox'
+        div.style.position = 'absolute'
+        div.style.left = rect.left + 'px'
+        div.style.top = rect.top + window.scrollY + 'px'
+        div.style.width = rect.width + 'px'
+        div.style.height = rect.height + 'px'
+        div.style.border = '1px solid green'
+        div.style.zIndex = '9999'
+        div.style.pointerEvents = 'none'
+        document.body.appendChild(div)
+      }
       refs.setPositionReference({
         getBoundingClientRect() {
           return rect

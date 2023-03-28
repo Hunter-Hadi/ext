@@ -152,6 +152,7 @@ const FloatingContextMenu: FC<{
           return {
             selectedContextMenuId: null,
             hoverContextMenuIdMap: {},
+            lastHoverContextMenuId: null,
           }
         })
         setShortCuts(findContextMenu.data.actions)
@@ -282,6 +283,7 @@ const FloatingContextMenu: FC<{
                         })
                         updateFloatingDropdownMenuSelectedItem(() => {
                           return {
+                            lastHoverContextMenuId: null,
                             selectedContextMenuId: null,
                             hoverContextMenuIdMap: {},
                           }
@@ -332,6 +334,7 @@ const FloatingContextMenu: FC<{
                         })
                         updateFloatingDropdownMenuSelectedItem(() => {
                           return {
+                            lastHoverContextMenuId: null,
                             selectedContextMenuId: null,
                             hoverContextMenuIdMap: {},
                           }

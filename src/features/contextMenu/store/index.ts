@@ -73,12 +73,14 @@ export const FloatingDropdownMenuSelectedItemState = atom<{
   hoverContextMenuIdMap: {
     [key: string]: string
   }
+  lastHoverContextMenuId: string | null
   selectedContextMenuId: string | null
 }>({
   key: 'FloatingDropdownMenuSelectedItemState',
   default: {
     hoverContextMenuIdMap: {},
     selectedContextMenuId: null,
+    lastHoverContextMenuId: null,
   },
 })
 export const FloatingDropdownMenuItemsSelector = selector<string[]>({

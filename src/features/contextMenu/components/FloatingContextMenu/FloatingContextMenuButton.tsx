@@ -50,6 +50,7 @@ const FloatingContextMenuButton: FC = () => {
       ) {
         updateFloatingDropdownMenuSelectedItem(() => {
           return {
+            lastHoverContextMenuId: null,
             selectedContextMenuId: null,
             hoverContextMenuIdMap: {},
           }

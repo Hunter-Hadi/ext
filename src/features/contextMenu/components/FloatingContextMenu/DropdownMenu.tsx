@@ -32,7 +32,7 @@ import {
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 interface MenuItemProps {
   label: string
@@ -45,12 +45,18 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
   ({ label, disabled, menuItem, ...props }, ref) => {
     const floatingUiProps: any = props
     const hoverIds = useRecoilValue(FloatingDropdownMenuItemsSelector)
-    const updateSelectedId = useSetRecoilState(
+    const [floatingDropdownMenuSelectedItem, updateSelectedId] = useRecoilState(
       FloatingDropdownMenuSelectedItemState,
     )
     const isHover = useMemo(() => {
       return hoverIds.includes(menuItem.id)
     }, [hoverIds])
+    const isLastHover = useMemo(() => {
+      return (
+        floatingDropdownMenuSelectedItem.lastHoverContextMenuId ===
+          menuItem.id && isHover
+      )
+    }, [isHover, floatingDropdownMenuSelectedItem.lastHoverContextMenuId])
     return (
       <Box
         {...props}
@@ -148,9 +154,11 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
               sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
             />
           ) : (
-            <KeyboardReturnIcon
-              sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
-            />
+            isLastHover && (
+              <KeyboardReturnIcon
+                sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
+              />
+            )
           )}
         </span>
       </Box>
@@ -222,7 +230,6 @@ export const MenuComponent = React.forwardRef<
         if (customOpen) {
           return
         }
-        debugger
         setIsOpen(show)
       },
       placement: isFirstDeep ? 'bottom-start' : 'right-start',
@@ -297,6 +304,7 @@ export const MenuComponent = React.forwardRef<
           updateHoverMenuId((prev) => {
             return {
               ...prev,
+              lastHoverContextMenuId: hoverId,
               hoverContextMenuIdMap: {
                 ...prev.hoverContextMenuIdMap,
                 [nodeId || '']: hoverId,

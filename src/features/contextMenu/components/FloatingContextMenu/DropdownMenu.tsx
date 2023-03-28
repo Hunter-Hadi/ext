@@ -49,8 +49,11 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
       FloatingDropdownMenuSelectedItemState,
     )
     const isHover = useMemo(() => {
-      return hoverIds.includes(menuItem.id)
-    }, [hoverIds])
+      return (
+        hoverIds.includes(menuItem.id) ||
+        menuItem.id === floatingDropdownMenuSelectedItem.lastHoverContextMenuId
+      )
+    }, [hoverIds, floatingDropdownMenuSelectedItem.lastHoverContextMenuId])
     const isLastHover = useMemo(() => {
       return (
         floatingDropdownMenuSelectedItem.lastHoverContextMenuId ===
@@ -212,7 +215,10 @@ export const MenuComponent = React.forwardRef<
         setIsOpen(referenceElementOpen)
       }, 1)
     }, [referenceElementOpen])
-    const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
+    const isFirstDeep = !parentId && zIndex === 2147483601
+    const [activeIndex, setActiveIndex] = React.useState<number | null>(
+      isFirstDeep ? 1 : null,
+    )
     const [allowHover, setAllowHover] = React.useState(false)
     const listItemsRef = React.useRef<Array<any | null>>([])
     const listContentRef = React.useRef(
@@ -220,7 +226,7 @@ export const MenuComponent = React.forwardRef<
         React.isValidElement(child) ? child.props.label : null,
       ) as Array<string | null>,
     )
-    const isFirstDeep = !parentId && zIndex === 2147483601
+    console.log('activeIndex', activeIndex)
     console.log(nodeId, parentId, zIndex, isFirstDeep, children)
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,

@@ -94,6 +94,18 @@ const FloatingContextMenu: FC<{
     defaultContextMenuJson,
     inputValue,
   )
+
+  useEffect(() => {
+    if (contextMenuList.length > 0) {
+      updateFloatingDropdownMenuSelectedItem((preState) => {
+        return {
+          ...preState,
+          lastHoverContextMenuId: contextMenuList?.[0].children?.[0].id,
+        }
+      })
+    }
+  }, [contextMenuList])
+
   const haveDraft = inputValue.length > 0
   useEffect(() => {
     if (floatingDropdownMenu.open) {
@@ -277,8 +289,19 @@ const FloatingContextMenu: FC<{
                         setInputValue(value)
                       }}
                       onEnter={(value) => {
-                        if (!haveDraft) return
                         showChatBox()
+                        if (contextMenuList.length > 0) {
+                          updateFloatingDropdownMenuSelectedItem((preState) => {
+                            return {
+                              ...preState,
+                              selectedContextMenuId:
+                                preState.lastHoverContextMenuId,
+                            }
+                          })
+                          return
+                        }
+                        if (!haveDraft) return
+                        // showChatBox()
                         setFloatingDropdownMenu({
                           open: false,
                           rootRect: null,
@@ -328,8 +351,18 @@ const FloatingContextMenu: FC<{
                         },
                       }}
                       onClick={() => {
-                        if (!haveDraft) return
                         showChatBox()
+                        if (contextMenuList.length > 0) {
+                          updateFloatingDropdownMenuSelectedItem((preState) => {
+                            return {
+                              ...preState,
+                              selectedContextMenuId:
+                                preState.lastHoverContextMenuId,
+                            }
+                          })
+                          return
+                        }
+                        if (!haveDraft) return
                         setFloatingDropdownMenu({
                           open: false,
                           rootRect: null,

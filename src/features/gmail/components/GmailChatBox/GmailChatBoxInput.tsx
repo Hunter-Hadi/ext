@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { Box, Skeleton } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
@@ -67,7 +67,7 @@ const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
   autoSizeTextarea(textareaElement)
   setTimeout(() => {
     // focus input
-    // const value = textareaElement.value
+    const value = textareaElement.value
     // let findIndex = -1
     // const matchString =
     //   ['Write a reply to this email: ', 'Write an email to...'].find((str) => {
@@ -77,16 +77,16 @@ const focusTextareaAndAutoSize = (textareaElement: HTMLTextAreaElement) => {
     // textareaElement.value = ''
     // textareaElement.value = value
     // console.log('focusTextareaAndAutoSize', findIndex)
+    // debugger
+    // console.log('textareaElement', textareaElement.scrollHeight)
     textareaElement.focus()
-    // textareaElement.setSelectionRange(
-    //   Math.max(matchString.length + findIndex, 0),
-    //   Math.max(matchString.length + findIndex, 0),
-    // )
-    textareaElement.scrollTo(0, 0)
+    textareaElement.setSelectionRange(value.length - 1, value.length - 1)
+    // textareaElement.scrollTo(0, 0)
   }, 100)
 }
 
 const GmailChatBoxInput: FC<{
+  textareaRef: React.RefObject<HTMLTextAreaElement>
   loading?: boolean
   error?: boolean
   defaultValue?: string
@@ -102,13 +102,15 @@ const GmailChatBoxInput: FC<{
     loading,
     children,
     error = false,
+    textareaRef,
   } = props
-  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
+  // const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
   const throttleAutoSizeTextarea = useMemo(
     () => throttle(autoSizeTextarea, 200),
     [],
   )
+
   useEffect(() => {
     setInputValue(defaultValue || '')
     setTimeout(() => {
@@ -122,6 +124,7 @@ const GmailChatBoxInput: FC<{
       }
     }, 100)
   }, [defaultValue, textareaRef])
+
   useEffect(() => {
     if (appState.open) {
       const timer = setInterval(() => {
@@ -142,6 +145,7 @@ const GmailChatBoxInput: FC<{
       focusTextareaAndAutoSize(textareaRef.current)
     }
   }, [appState, textareaRef, loading])
+
   return (
     <Box
       component={'div'}

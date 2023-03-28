@@ -74,6 +74,18 @@ const ContextMenuEditForm: FC<{
   })
   const isDisabled = !node.data.editable
 
+  const modalTitle = useMemo(() => {
+    if (editNode.text !== '') {
+      if (editNode.data.type === 'group') {
+        return isDisabled ? `Group name (Read only)` : 'Edit group name'
+      } else {
+        return isDisabled ? `Option (Read only)` : 'Edit option'
+      }
+    }
+
+    return ''
+  }, [isDisabled, editNode.data.type])
+
   useEffect(() => {
     const cloneNode: IContextMenuItem = cloneDeep(node)
     setEditNode(cloneDeep(node))
@@ -98,6 +110,8 @@ const ContextMenuEditForm: FC<{
         }}
       >
         <Stack spacing={3} minHeight={'60vh'}>
+          <Typography variant={'h6'}>{modalTitle}</Typography>
+
           <Stack>
             <Typography variant={'body1'}>
               {editNode.data.type === 'shortcuts' ? 'Option name' : 'Name'}

@@ -1,5 +1,5 @@
 import { Box, Button, Paper, Stack } from '@mui/material'
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import {
   Tree,
   getBackendOptions,

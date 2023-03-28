@@ -6,7 +6,7 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
@@ -35,6 +35,7 @@ const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
   const { root } = props
+  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -261,6 +262,7 @@ const FloatingContextMenu: FC<{
                 ) : (
                   <>
                     <AutoHeightTextarea
+                      textareaRef={textareaRef}
                       placeholder={'Use ChatGPT to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}

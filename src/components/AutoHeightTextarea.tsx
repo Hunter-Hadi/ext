@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { Box, Skeleton, SxProps } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
@@ -89,7 +89,7 @@ const focusTextareaAndAutoSize = (
     // debugger
     // console.log('textareaElement', textareaElement.scrollHeight)
     textareaElement.focus()
-    textareaElement.setSelectionRange(value.length - 1, value.length - 1)
+    textareaElement.setSelectionRange(value.length, value.length)
     // textareaElement.scrollTo(0, 0)
   }, 100)
 }

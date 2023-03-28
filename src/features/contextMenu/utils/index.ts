@@ -260,19 +260,34 @@ export const computedRectPosition = (rect: IRangyRect, rate = 0.8) => {
   }
 }
 
-export const findFirstTierMenuLength = (menuList: IContextMenuItem[] = []) => {
-  let count = 0
+export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
+  const OPTION_HEIGHT = 33
+  const GROUP_HEIGHT = 18
+  let height = 0
+  // let itemCount = 0
   // find groupid
   const rootItemIds = menuList
     .filter((item) => item.parent === 'root')
-    .map((item) => item.id)
-  count += rootItemIds.length
+    .map((item) => {
+      if (item.data.type === 'group') {
+        height += GROUP_HEIGHT
+      } else {
+        height += OPTION_HEIGHT
+      }
+      return item.id
+    })
+
   for (let i = 0; i < menuList.length; i++) {
     const menuItem = menuList[i]
     // not rootItem and parent is rootItem
     if (menuItem.parent !== 'root' && rootItemIds.includes(menuItem.parent)) {
-      count++
+      height += OPTION_HEIGHT
+      // itemCount += 1
     }
   }
-  return count
+
+  // console.log('itemCount', itemCount)
+  // console.log('rootItemIds', rootItemIds.length)
+
+  return height
 }

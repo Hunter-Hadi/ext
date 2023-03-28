@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import cloneDeep from 'lodash-es/cloneDeep'
 import {
   Box,
@@ -10,6 +10,7 @@ import {
   TextField,
   Typography,
   Container,
+  IconButton,
 } from '@mui/material'
 import {
   CONTEXT_MENU_ICONS,
@@ -24,6 +25,7 @@ import 'ace-builds/src-noconflict/theme-monokai'
 import langTools from 'ace-builds/src-noconflict/ext-language_tools'
 import TemplateTooltip from './TemplateTooltip'
 import { templateStaticWords } from '@/features/shortcuts/utils'
+import DeleteIcon from '@mui/icons-material/Delete'
 // const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const staticWordCompleter = {
@@ -57,19 +59,37 @@ const ContextMenuEditForm: FC<{
     autoAskChatGPT: boolean,
   ) => void
   onCancel?: () => void
+  onDelete?: (id: string) => void
   open: boolean
-}> = ({ open, node, onSave, onCancel, settingsKey, iconSetting }) => {
+}> = ({ open, node, onSave, onCancel, onDelete, settingsKey, iconSetting }) => {
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
   )
   const [template, setTemplate] = useState('')
-  const [selectedIcon, setSelectedIcon] = useState<
-    IContextMenuIconKey | undefined
-  >()
+  const [selectedIcon, setSelectedIcon] = useState<IContextMenuIconKey | null>(
+    null,
+  )
   const [autoAskChatGPT, setAutoAskChatGPT] = useState(() => {
     return editNode.data.actions?.length === 3
   })
   const isDisabled = !node.data.editable
+
+  const modalTitle = useMemo(() => {
+    if (editNode.data.type === 'shortcuts') {
+      return isDisabled ? `Menu option (Read only)` : 'Edit menu option'
+    }
+
+    return ''
+  }, [isDisabled, editNode.data.type])
+
+  const handleClose = () => {
+    if (!node.text) {
+      onSave && onSave(node, template, autoAskChatGPT)
+    }
+
+    onCancel && onCancel()
+  }
+
   useEffect(() => {
     const cloneNode: IContextMenuItem = cloneDeep(node)
     setEditNode(cloneDeep(node))
@@ -77,13 +97,14 @@ const ContextMenuEditForm: FC<{
     setSelectedIcon(cloneNode.data?.icon as any)
     setAutoAskChatGPT(cloneNode.data?.actions?.length === 3)
   }, [node])
+
   return (
-    <Modal open={open} onClose={onCancel}>
+    <Modal open={open} onClose={handleClose}>
       <Container
         maxWidth={'lg'}
         sx={{
           position: 'absolute',
-          top: '42%',
+          top: '45%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           borderRadius: 2,
@@ -92,17 +113,19 @@ const ContextMenuEditForm: FC<{
           p: 4,
         }}
       >
-        <Stack spacing={2} minHeight={'60vh'}>
-          <Typography variant={'h6'}>
-            {isDisabled ? `Menu option (Read only)` : 'Edit menu option'}
-          </Typography>
+        <Stack spacing={3} minHeight={'60vh'}>
+          <Typography variant={'h6'}>{modalTitle}</Typography>
 
           <Stack>
-            <Typography variant={'body1'}>Option name</Typography>
+            <Typography variant={'body1'}>
+              {editNode.data.type === 'shortcuts' ? 'Option name' : 'Name'}
+            </Typography>
             <TextField
               disabled={isDisabled}
               size={'small'}
+              autoFocus
               value={editNode.text}
+              placeholder={'Enter name'}
               onChange={(event) => {
                 setEditNode((prev) => {
                   return {
@@ -115,7 +138,9 @@ const ContextMenuEditForm: FC<{
           </Stack>
           {iconSetting && (
             <Stack>
-              <Typography variant={'body1'}>Option icon</Typography>
+              <Typography variant={'body1'}>
+                {editNode.data.type === 'shortcuts' ? 'Option icon' : 'Icon'}
+              </Typography>
               <Stack
                 flexWrap={'wrap'}
                 gap={1}
@@ -135,13 +160,15 @@ const ContextMenuEditForm: FC<{
                       }
                       key={icon}
                       onClick={() => {
-                        setSelectedIcon(icon)
+                        setSelectedIcon((preIcon) =>
+                          preIcon === icon ? null : icon,
+                        )
                         setEditNode((prev) => {
                           return {
                             ...prev,
                             data: {
                               ...prev.data,
-                              icon,
+                              icon: prev.data.icon === icon ? undefined : icon,
                             },
                           }
                         })
@@ -155,14 +182,14 @@ const ContextMenuEditForm: FC<{
             </Stack>
           )}
           {node.data.type === 'shortcuts' && (
-            <>
+            <Box>
               <Stack direction={'row'} alignItems="center">
                 <Typography variant={'body1'}>
                   Prompt template for ChatGPT
                 </Typography>
                 <TemplateTooltip />
               </Stack>
-              <Box position={'relative'} width={'100%'} height={280}>
+              <Box position={'relative'} width={'100%'} height={320}>
                 <AceEditor
                   width={'100%'}
                   height={'100%'}
@@ -191,7 +218,7 @@ const ContextMenuEditForm: FC<{
                   enableLiveAutocompletion
                 />
               </Box>
-            </>
+            </Box>
           )}
 
           {node.data.type === 'shortcuts' &&
@@ -206,6 +233,7 @@ const ContextMenuEditForm: FC<{
                 }}
               />
             )}
+
           <Stack
             direction={'row'}
             mt={'auto!important'}
@@ -223,16 +251,29 @@ const ContextMenuEditForm: FC<{
             >
               Save
             </Button>
-            <Button
-              variant={'outlined'}
-              onClick={() => {
-                onCancel?.()
-              }}
-            >
+            <Button variant={'outlined'} onClick={handleClose}>
               Cancel
             </Button>
           </Stack>
         </Stack>
+        {node.data.editable && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 32,
+              right: 24,
+            }}
+          >
+            <IconButton
+              size={'small'}
+              onClick={() => {
+                onDelete && onDelete(node.id as string)
+              }}
+            >
+              <DeleteIcon sx={{ fontSize: 20 }} />
+            </IconButton>
+          </Box>
+        )}
       </Container>
     </Modal>
   )

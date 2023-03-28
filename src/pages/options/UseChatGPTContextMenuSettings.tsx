@@ -242,6 +242,7 @@ const ContextMenuSettings: FC<{
           settingsKey={settingsKey}
           onSave={handleOnSave}
           onCancel={() => setEditId(null)}
+          onDelete={(id) => handleActionConfirmOpen('delete', id)}
           node={editNode}
         />
       )}

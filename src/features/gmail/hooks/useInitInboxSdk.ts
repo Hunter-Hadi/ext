@@ -22,7 +22,7 @@ import {
 } from '@/utils'
 import { contextMenu } from 'react-contexify'
 import {
-  findFirstTierMenuLength,
+  findFirstTierMenuHeight,
   getContextMenuRenderPosition,
 } from '@/features/contextMenu/utils'
 import {
@@ -137,13 +137,12 @@ const useInitInboxSdk = () => {
               )
 
               console.log('gmailToolBarContextMenu', options)
-              const itemLength = Math.max(
-                findFirstTierMenuLength(options) || 0,
+              const itemHeight = Math.max(
+                findFirstTierMenuHeight(options) || 0,
                 0,
               )
-              // const itemLength = Math.max((options.length || 0) - 1, 0)
 
-              console.log('itemLength', itemLength)
+              console.log('itemHeight', itemHeight)
               const { x, y } = getContextMenuRenderPosition(
                 {
                   top: iconButtonBounce.top,
@@ -152,7 +151,8 @@ const useInitInboxSdk = () => {
                   right: iconButtonBounce.right,
                 },
                 200,
-                32 * itemLength + 48,
+                // itemHeight + padding + edit option height + Separator height + offset
+                itemHeight + 12 + 33 + 6 + 6,
                 {
                   offset: 8,
                   directions: ['top', 'right', 'left', 'bottom'],

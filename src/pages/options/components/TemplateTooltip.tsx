@@ -69,7 +69,7 @@ const TemplateTooltip = () => {
               <>
                 <WordItem key={word} word={word} />
                 {TEMPLATE_STATIC_WORDS.length - 1 !== index ? (
-                  <Typography>----</Typography>
+                  <Typography key={`${word}-divider`}>----</Typography>
                 ) : null}
               </>
             )

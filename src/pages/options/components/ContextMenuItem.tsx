@@ -4,7 +4,6 @@ import { IconButton, Stack, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { NodeRender } from '@minoru/react-dnd-treeview'
 import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
 import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -21,7 +20,7 @@ const ContextMenuItem = (props: {
     node,
     params: { depth, isOpen, onToggle },
     onEdit,
-    onDelete,
+    // onDelete,
   } = props
   const [isHover, setIsHover] = useState(false)
   return (
@@ -106,16 +105,6 @@ const ContextMenuItem = (props: {
                 <VisibilityIcon sx={{ fontSize: 20 }} />
               )}
             </IconButton>
-            {node.data.type === 'shortcuts' && node.data.editable && (
-              <IconButton
-                size={'small'}
-                onClick={() => {
-                  onDelete && onDelete(node.id as string)
-                }}
-              >
-                <DeleteIcon sx={{ fontSize: 20 }} />
-              </IconButton>
-            )}
           </>
         )}
       </Stack>

@@ -1,4 +1,6 @@
 import { Box, Button, Paper, Stack } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import {
   Tree,
@@ -127,7 +129,7 @@ const ContextMenuSettings: FC<{
         id: newEditId,
         parent: rootId,
         droppable: true,
-        text: 'New option item',
+        text: '',
         data: {
           editable: true,
           type: 'shortcuts',
@@ -144,7 +146,7 @@ const ContextMenuSettings: FC<{
         id: newEditId,
         parent: rootId,
         droppable: true,
-        text: 'New option group',
+        text: '',
         data: {
           editable: true,
           type: 'group',
@@ -158,10 +160,14 @@ const ContextMenuSettings: FC<{
   const handleOnSave = useCallback(
     (newNode: IContextMenuItem, template: string, autoAskChatGPT: boolean) => {
       if (newNode.data.type === 'group') {
-        updateMenuItem(newNode)
+        updateMenuItem({
+          ...newNode,
+          text: newNode.text ? newNode.text : 'New group',
+        })
       } else {
         updateMenuItem({
           ...newNode,
+          text: newNode.text ? newNode.text : 'New option',
           data: {
             ...newNode.data,
             actions: getDefaultActionWithTemplate(
@@ -189,8 +195,19 @@ const ContextMenuSettings: FC<{
   }
 
   const deleteMenuItemById = (id: string) => {
+    const findDeleteIds = (data: IContextMenuItem[], id: string): string[] => {
+      return data.reduce<string[]>(
+        (acc, item) =>
+          item.parent === id
+            ? [...acc, item.id, ...findDeleteIds(data, item.id)]
+            : acc,
+        [],
+      )
+    }
+
     setTreeData((prev) => {
-      const newTree = prev.filter((item) => item.id !== id)
+      const deleteIds = findDeleteIds(treeData, id).concat([id])
+      const newTree = prev.filter((item) => !deleteIds.includes(item.id))
       return newTree
     })
   }
@@ -304,6 +321,7 @@ const ContextMenuSettings: FC<{
           settingsKey={settingsKey}
           onSave={handleOnSave}
           onCancel={() => setEditId(null)}
+          onDelete={(id) => handleActionConfirmOpen('delete', id)}
           node={editNode}
         />
       )}
@@ -314,22 +332,25 @@ const ContextMenuSettings: FC<{
           variant={'contained'}
           onClick={addNewMenuItem}
           disabled={loading}
+          startIcon={<AddIcon />}
         >
-          Add new option
+          New option
         </Button>
         <Button
           disableElevation
           variant={'contained'}
           onClick={addNewMenuGroup}
           disabled={loading}
+          startIcon={<AddIcon />}
         >
-          Add new group
+          New option group
         </Button>
         <Button
           disableElevation
           variant={'outlined'}
           disabled={loading}
           onClick={() => handleActionConfirmOpen('reset')}
+          startIcon={<RestartAltIcon />}
         >
           Reset options
         </Button>
@@ -338,6 +359,7 @@ const ContextMenuSettings: FC<{
       {confirmOpen && confirmType && (
         <ContextMenuActionConfirmModal
           open={confirmOpen}
+          nodeType={editNode?.data.type}
           actionType={confirmType}
           onClose={handleActionConfirmClose}
           onConfirm={handleActionConfirmOnConfirm}

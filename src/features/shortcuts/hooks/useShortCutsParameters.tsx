@@ -10,7 +10,10 @@ import { deepCloneGmailMessageElement } from '@/features/gmail/utils'
 import { ChatGPTMessageState } from '@/features/gmail/store'
 import { getAppRootElement, getChromeExtensionSettings } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
-import { DEFAULT_LANGUAGE_VALUE, ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+  ROOT_CHAT_BOX_INPUT_ID,
+} from '@/types'
 import { AppState } from '@/store'
 
 const useShortCutsParameters = () => {
@@ -86,7 +89,8 @@ const useShortCutsParameters = () => {
         )?.value || '',
       LAST_MESSAGE_OUTPUT:
         chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
-      DEFAULT_LANGUAGE: userSettings?.language || DEFAULT_LANGUAGE_VALUE,
+      AI_OUTPUT_LANGUAGE:
+        userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
     }
     const parameters: Array<{
       key: string

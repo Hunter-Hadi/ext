@@ -32,7 +32,7 @@ const UseChatGPTOptionsSettingPage = () => {
         }}
       >
         <Typography fontSize={20} fontWeight={700}>
-          Language
+          AI output language
         </Typography>
         <Typography fontSize={14}>
           The language used in ChatGPT response.{' '}

@@ -34,5 +34,5 @@ export const CHROME_EXTENSION_HOMEPAGE_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
   : 'https://www.usechatgpt.ai'
 
-export const DEFAULT_LANGUAGE_VALUE =
+export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
   'the same language variety or dialect of the following text'

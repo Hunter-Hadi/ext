@@ -9,7 +9,7 @@ export const SHORTCUT_ENGINE_BUILD_IN_VARIABLES = [
   'HIGHLIGHTED_TEXT',
   'HIGHLIGHTED_HTML',
   // settings
-  'DEFAULT_LANGUAGE',
+  'AI_OUTPUT_LANGUAGE',
 ] as const
 export type IShortcutEngineBuiltInVariableType =
   (typeof SHORTCUT_ENGINE_BUILD_IN_VARIABLES)[number]

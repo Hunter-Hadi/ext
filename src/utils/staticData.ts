@@ -1,9 +1,9 @@
-import { DEFAULT_LANGUAGE_VALUE } from '@/types'
+import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/types'
 
 export const LANGUAGES_OPTIONS = [
   {
     label: 'Auto',
-    value: DEFAULT_LANGUAGE_VALUE,
+    value: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   },
   {
     label: '简体中文',

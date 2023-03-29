@@ -1,5 +1,12 @@
-import { Box, Button, Paper, Stack } from '@mui/material'
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import { Box, Button, Stack, Typography } from '@mui/material'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import {
   Tree,
   getBackendOptions,
@@ -22,6 +29,8 @@ import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from './components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
+import ContextMenuMockTextarea from '@/pages/options/components/ContextMenuMockTextarea'
+import DevContent from '@/components/DevContent'
 
 const rootId = 'root'
 
@@ -68,16 +77,38 @@ const ContextMenuSettings: FC<{
 }> = (props) => {
   const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
   const [loading, setLoading] = useState(false)
+  const originalTreeMap = useRef<{ [key: string]: IContextMenuItem }>({})
   const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
-  const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
+  const [originalTreeData, setOriginalTreeData] = useState<IContextMenuItem[]>(
+    [],
+  )
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<string | null>(null)
   const [confirmType, setconfirmType] = useState<IConfirmActionType | null>(
     null,
   )
-  const handleDrop = async (newTreeData: any[]) => {
-    setTreeData(newTreeData)
+  const [inputValue, setInputValue] = useState<string>('')
+  const [openIds, setOpenIds] = useState<string[]>([])
+  const currentOpenIds = useMemo(() => {
+    // 恒定展开全部
+    console.log(openIds)
+    return originalTreeData
+      .filter((item) => item.data.type === 'group')
+      .map((item) => item.id)
+    //
+    // if (openIds.length) {
+    //   return openIds
+    // } else {
+    //   return treeData
+    //     .filter((item) => item.data.type === 'group')
+    //     .map((item) => item.id)
+    // }
+  }, [originalTreeData])
+  const defaultTreeDataRef = useRef<null | IContextMenuItem[]>(null)
+  const handleDrop = async (newTreeData: any[], dragDetail: any) => {
+    setOriginalTreeData(newTreeData)
   }
+
   const addNewMenuItem = async () => {
     const newEditId = v4()
     setEditNode({
@@ -92,7 +123,6 @@ const ContextMenuSettings: FC<{
       },
     })
   }
-
   const handleOnSave = useCallback(
     (newNode: IContextMenuItem, template: string, autoAskChatGPT: boolean) => {
       if (newNode.data.type === 'group') {
@@ -116,18 +146,25 @@ const ContextMenuSettings: FC<{
   )
 
   const updateMenuItem = (newNode: IContextMenuItem) => {
-    setTreeData((prev) =>
-      prev.map((item) => {
+    setOriginalTreeData((prev) => {
+      let hasId = false
+      const newTreeData = prev.map((item) => {
         if (item.id === newNode.id) {
+          hasId = true
           return newNode
         }
         return item
-      }),
-    )
+      })
+
+      if (!hasId) {
+        newTreeData.push(newNode)
+      }
+      return newTreeData
+    })
   }
 
   const deleteMenuItemById = (id: string) => {
-    setTreeData((prev) => {
+    setOriginalTreeData((prev) => {
       const newTree = prev.filter((item) => item.id !== id)
       return newTree
     })
@@ -149,7 +186,7 @@ const ContextMenuSettings: FC<{
     if (type === 'reset') {
       try {
         setLoading(true)
-        setTreeData(defaultContextMenuJson || [])
+        setOriginalTreeData(defaultContextMenuJson || [])
       } catch (error) {
         console.log(error)
       } finally {
@@ -168,7 +205,8 @@ const ContextMenuSettings: FC<{
     const getList = async () => {
       const menuList = await getChromeExtensionContextMenu(settingsKey)
       if (isDestroy) return
-      setTreeData(menuList)
+      setOriginalTreeData(menuList)
+      defaultTreeDataRef.current = menuList
     }
     getList()
     return () => {
@@ -180,8 +218,9 @@ const ContextMenuSettings: FC<{
     const searchTextMap: {
       [key: string]: string
     } = {}
+    originalTreeMap.current = {}
     const findSearchText = (parent: string) => {
-      const children = treeData.filter((item) => item.parent === parent)
+      const children = originalTreeData.filter((item) => item.parent === parent)
       if (children.length === 0) {
         return
       }
@@ -192,75 +231,140 @@ const ContextMenuSettings: FC<{
         // 只拼接一层
         searchTextMap[item.id] = `${item.text}`.toLowerCase()
         item.data.searchText = prefixText + searchTextMap[item.id].toLowerCase()
+        originalTreeMap.current[item.id] = item
         findSearchText(item.id)
       })
     }
     findSearchText(rootId)
-    saveTreeData(settingsKey, treeData)
-  }, [treeData])
+    saveTreeData(settingsKey, originalTreeData)
+  }, [originalTreeData])
+  const filteredTreeData = useMemo(() => {
+    if (!inputValue) {
+      return originalTreeData
+    }
+    const searchText = inputValue.toLowerCase()
+    const showIds: string[] = []
+    originalTreeData.forEach((item) => {
+      const itemText = (item.data.searchText || item.text).toLowerCase()
+      if (itemText.includes(searchText) && !showIds.includes(item.id)) {
+        console.log(itemText, searchText)
+        showIds.push(item.id)
+        let temp = item
+        while (originalTreeMap.current[temp.parent]) {
+          temp = originalTreeMap.current[temp.parent]
+          if (!showIds.includes(temp.id)) {
+            showIds.push(temp.id)
+          }
+        }
+      }
+    })
+    console.log(showIds)
+    return originalTreeData.filter((item) => showIds.includes(item.id))
+  }, [originalTreeData, inputValue])
   return (
-    <Stack gap={3}>
-      <Paper elevation={0} sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}>
-        <Box
-          height={640}
-          p={2}
-          width={'50%'}
-          flexShrink={0}
-          overflow={'auto'}
-          position={'relative'}
-        >
-          <Stack>
-            <ContextMenuViewSource treeData={treeData} />
-          </Stack>
-          <DndProvider backend={MultiBackend} options={getBackendOptions()}>
-            <Tree
-              tree={treeData}
-              rootId={'root'}
-              onDrop={handleDrop}
-              sort={false}
-              classes={{
-                placeholder: 'context-menu--placeholder',
-              }}
-              canDrag={(node) => !!node?.droppable}
-              canDrop={(tree, { dragSource, dropTargetId }) => {
-                if (!dragSource) return false
-                return isTreeNodeCanDrop(
-                  tree,
-                  String(dragSource.id),
-                  String(dropTargetId),
-                )
-              }}
-              dropTargetOffset={10}
-              placeholderRender={(node, params) => (
-                <ContextMenuPlaceholder node={node} depth={params.depth} />
-              )}
-              insertDroppableFirst={false}
-              render={(node, params) => (
-                <ContextMenuItem
-                  isActive={editNode?.id === node.id}
-                  onEdit={setEditNode}
-                  onDelete={(id) => handleActionConfirmOpen('delete', id)}
-                  node={node as any}
-                  params={params}
-                />
-              )}
-            />
-          </DndProvider>
-        </Box>
-      </Paper>
-      {editNode && (
-        <ContextMenuEditFormModal
-          open={!!editNode}
-          iconSetting={iconSetting}
-          settingsKey={settingsKey}
-          onSave={handleOnSave}
-          onCancel={() => setEditNode(null)}
-          onDelete={(id) => handleActionConfirmOpen('delete', id)}
-          node={editNode}
-        />
-      )}
-
-      <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
+    <Stack spacing={3} height={'100%'}>
+      <Stack
+        height={0}
+        flex={1}
+        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+      >
+        <Stack height={'100%'}>
+          <DevContent>
+            <Stack>
+              <ContextMenuViewSource treeData={originalTreeData} />
+            </Stack>
+          </DevContent>
+          <Typography fontSize={20} fontWeight={700}>
+            你可以编辑了
+          </Typography>
+          <ContextMenuMockTextarea
+            defaultValue={inputValue}
+            onChange={setInputValue}
+          />
+          <Box
+            sx={{
+              flex: 1,
+              position: 'relative',
+              zIndex: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              p: 0.5,
+              outline: 'none!important',
+              width: 400,
+              maxHeight: '100%',
+              boxSizing: 'border-box',
+              overflowY: 'scroll',
+              border: '1px solid rgb(237,237,236)',
+              background: 'white',
+              borderRadius: '6px',
+              boxShadow:
+                'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
+              '& *': {
+                outline: 'none!important',
+              },
+              '&::-webkit-scrollbar': {
+                '-webkit-appearance': 'none',
+                width: '7px',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                borderRadius: '4px',
+                backgroundColor: 'rgba(0, 0, 0, .5)',
+                boxShadow: '0 0 1px rgba(255, 255, 255, .5)',
+              },
+            }}
+          >
+            <DndProvider backend={MultiBackend} options={getBackendOptions()}>
+              <Tree
+                onChangeOpen={(newOpenIds) => {
+                  console.log('newOpenIds', newOpenIds)
+                  setOpenIds(newOpenIds as string[])
+                }}
+                initialOpen={currentOpenIds}
+                tree={filteredTreeData}
+                rootId={rootId}
+                onDrop={handleDrop}
+                sort={false}
+                classes={{
+                  placeholder: 'context-menu__placeholder',
+                  dropTarget: 'context-menu__drop-target',
+                }}
+                canDrag={(node) => !!node?.droppable}
+                canDrop={(tree, { dragSource, dropTargetId }) => {
+                  if (!dragSource) return false
+                  if (dropTargetId === rootId) return true
+                  return isTreeNodeCanDrop(
+                    tree,
+                    String(dragSource.id),
+                    String(dropTargetId),
+                  )
+                }}
+                dropTargetOffset={10}
+                placeholderRender={(node, params) => (
+                  <ContextMenuPlaceholder node={node} depth={params.depth} />
+                )}
+                insertDroppableFirst={false}
+                render={(node, params) => (
+                  <ContextMenuItem
+                    isActive={editNode?.id === node.id}
+                    onEdit={setEditNode}
+                    onDelete={(id) => handleActionConfirmOpen('delete', id)}
+                    node={node as any}
+                    params={params}
+                    disabledDrag={inputValue !== ''}
+                  />
+                )}
+              />
+            </DndProvider>
+          </Box>
+        </Stack>
+      </Stack>
+      <Stack
+        direction={'row'}
+        alignItems={'center'}
+        mb={2}
+        spacing={2}
+        flexShrink={0}
+      >
         <Button
           disableElevation
           variant={'contained'}
@@ -278,7 +382,17 @@ const ContextMenuSettings: FC<{
           Reset options
         </Button>
       </Stack>
-
+      {editNode && (
+        <ContextMenuEditFormModal
+          open={!!editNode}
+          iconSetting={iconSetting}
+          settingsKey={settingsKey}
+          onSave={handleOnSave}
+          onCancel={() => setEditNode(null)}
+          onDelete={(id) => handleActionConfirmOpen('delete', id)}
+          node={editNode}
+        />
+      )}
       {confirmOpen && confirmType && (
         <ContextMenuActionConfirmModal
           open={confirmOpen}

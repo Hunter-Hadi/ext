@@ -1,7 +1,5 @@
-import React, { FC, useState } from 'react'
-import Select from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
-import { FormControl } from '@mui/material'
+import React, { FC } from 'react'
+import { Autocomplete, TextField } from '@mui/material'
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 
 interface LanguageSelectProps {
@@ -16,23 +14,38 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       console.log(value)
     },
   } = props
-  const [value, setValue] = useState<string>(defaultValue)
+  const [value, setValue] = React.useState<{ label: string; value: string }>(
+    () => {
+      return (
+        LANGUAGES_OPTIONS.find((option) => option.value === defaultValue) ||
+        LANGUAGES_OPTIONS[0]
+      )
+    },
+  )
   return (
-    <FormControl sx={{ m: 1, maxWidth: 160 }} size="small">
-      <Select
-        value={value}
-        onChange={(value) => {
-          setValue(value.target.value as string)
-          onChange(value.target.value as string)
-        }}
-      >
-        {LANGUAGES_OPTIONS.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+    <Autocomplete
+      disableClearable
+      value={value}
+      size={'small'}
+      sx={{ width: 160, my: 2 }}
+      autoHighlight
+      getOptionLabel={(option) => option.label}
+      options={LANGUAGES_OPTIONS}
+      onChange={(event: any, newValue) => {
+        setValue(newValue)
+        onChange(newValue.value)
+      }}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Choose a language"
+          inputProps={{
+            ...params.inputProps,
+            autoComplete: 'new-password', // disable autocomplete and autofill
+          }}
+        />
+      )}
+    ></Autocomplete>
   )
 }
 

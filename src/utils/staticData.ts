@@ -6,6 +6,10 @@ export const LANGUAGES_OPTIONS = [
     value: DEFAULT_LANGUAGE_VALUE,
   },
   {
+    label: '简体中文',
+    value: 'Simplified Chinese',
+  },
+  {
     label: '繁體中文',
     value: 'Traditional Chinese',
   },

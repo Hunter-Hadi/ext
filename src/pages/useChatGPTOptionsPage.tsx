@@ -18,9 +18,15 @@ const OptionsPage = () => {
     setLoading(false)
   }, [])
   return (
-    <Container maxWidth={'lg'}>
-      <Stack spacing={8} my={4}>
-        <Stack direction={'row'} alignItems={'center'} spacing={2}>
+    <Container maxWidth={'lg'} sx={{ height: '100vh', py: 2 }}>
+      <Stack height={'100%'}>
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          spacing={2}
+          flexShrink={0}
+          mb={4}
+        >
           <UseChatGptIcon
             sx={{
               fontSize: 32,
@@ -29,12 +35,14 @@ const OptionsPage = () => {
           <Typography fontSize={24} fontWeight={700}>
             UseChatGPT.AI
           </Typography>
-        </Stack>
-        <AppLoadingLayout loading={loading}>
           <p>route: {route}</p>
-          {route === '/' && <UseChatGPTOptionsSettingPage />}
-          {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
-        </AppLoadingLayout>
+        </Stack>
+        <Stack flex={1} height={0}>
+          <AppLoadingLayout loading={loading}>
+            {route === '/' && <UseChatGPTOptionsSettingPage />}
+            {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
+          </AppLoadingLayout>
+        </Stack>
       </Stack>
     </Container>
   )

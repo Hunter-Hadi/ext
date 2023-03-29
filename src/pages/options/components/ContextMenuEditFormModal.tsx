@@ -75,15 +75,11 @@ const ContextMenuEditForm: FC<{
   const isDisabled = !node.data.editable
 
   const modalTitle = useMemo(() => {
-    if (editNode.text !== '') {
-      if (editNode.data.type === 'group') {
-        return isDisabled ? `Group name (Read only)` : 'Edit group name'
-      } else {
-        return isDisabled ? `Option (Read only)` : 'Edit option'
-      }
+    if (editNode.data.type === 'group') {
+      return isDisabled ? `Group name (Read only)` : 'Edit group name'
+    } else {
+      return isDisabled ? `Option (Read only)` : 'Edit option'
     }
-
-    return ''
   }, [isDisabled, editNode.data.type])
 
   useEffect(() => {
@@ -113,9 +109,7 @@ const ContextMenuEditForm: FC<{
           <Typography variant={'h6'}>{modalTitle}</Typography>
 
           <Stack>
-            <Typography variant={'body1'}>
-              {editNode.data.type === 'shortcuts' ? 'Option name' : 'Name'}
-            </Typography>
+            <Typography variant={'body1'}>Name</Typography>
             <TextField
               disabled={isDisabled}
               size={'small'}
@@ -134,9 +128,7 @@ const ContextMenuEditForm: FC<{
           </Stack>
           {iconSetting && (
             <Stack>
-              <Typography variant={'body1'}>
-                {editNode.data.type === 'shortcuts' ? 'Option icon' : 'Icon'}
-              </Typography>
+              <Typography variant={'body1'}>Icon</Typography>
               <Stack
                 flexWrap={'wrap'}
                 gap={1}
@@ -252,7 +244,7 @@ const ContextMenuEditForm: FC<{
             </Button>
           </Stack>
         </Stack>
-        {node.data.editable && (
+        {node.data.editable && node.text !== '' && (
           <Box
             sx={{
               position: 'absolute',

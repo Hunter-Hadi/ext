@@ -1,20 +1,21 @@
 import React, { FC, useEffect, useState } from 'react'
 import './global.less'
-import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
+import { Box, Button, IconButton, Link, Stack, Typography } from '@mui/material'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
 import { useRecoilState } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
-import { getChromeExtensionSettings, getClientEnv, hideChatBox } from '@/utils'
 import {
-  CHROME_EXTENSION_HOMEPAGE_URL,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
-  ROOT_CONTAINER_ID,
-} from '@/types'
+  chromeExtensionClientOpenPage,
+  getChromeExtensionSettings,
+  getClientEnv,
+  hideChatBox,
+} from '@/utils'
+import { CHROME_EXTENSION_HOMEPAGE_URL, ROOT_CONTAINER_ID } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import Browser from 'webextension-polyfill'
 import { AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
+import SettingsIcon from '@mui/icons-material/Settings'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -136,6 +137,23 @@ const App: FC = () => {
                 >
                   {process.env.APP_NAME}
                 </Typography>
+                <Button
+                  size={'small'}
+                  variant={'text'}
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    color: 'inherit',
+                    minWidth: 'unset',
+                  }}
+                  onClick={() => {
+                    chromeExtensionClientOpenPage({
+                      key: 'options',
+                    })
+                  }}
+                >
+                  <SettingsIcon sx={{ fontSize: 16, color: 'text.primary' }} />
+                </Button>
               </Stack>
             </Link>
             <Stack
@@ -155,16 +173,7 @@ const App: FC = () => {
                     target={'_blank'}
                     href={'chrome://extensions/shortcuts'}
                     onClick={() => {
-                      const port = Browser.runtime.connect()
-                      port &&
-                        port.postMessage({
-                          id: CHROME_EXTENSION_POST_MESSAGE_ID,
-                          event: 'Client_openUrlInNewTab',
-                          data: {
-                            url: 'chrome://extensions/shortcuts',
-                          },
-                        })
-                      port.disconnect()
+                      chromeExtensionClientOpenPage({ key: 'shortcuts' })
                     }}
                   >
                     Shortcut: {commandKey}

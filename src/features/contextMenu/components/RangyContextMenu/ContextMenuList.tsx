@@ -6,6 +6,7 @@ import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIc
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
 import { Item, Separator, Submenu } from 'react-contexify'
 import {
+  chromeExtensionClientOpenPage,
   getChromeExtensionContextMenu,
   IChromeExtensionSettingsContextMenuKey,
 } from '@/utils'
@@ -15,9 +16,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
 import { useRecoilValue } from 'recoil'
 import SettingsIcon from '@mui/icons-material/Settings'
-import Browser from 'webextension-polyfill'
 import {
-  CHROME_EXTENSION_POST_MESSAGE_ID,
   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   EZMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
@@ -264,16 +263,9 @@ const ContextMenuList: FC<{
         <Item
           id="Add new prompt template"
           onClick={() => {
-            const port = Browser.runtime.connect()
-            port &&
-              port.postMessage({
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
-                event: 'Client_openUrlInNewTab',
-                data: {
-                  key: 'options',
-                },
-              })
-            port.disconnect()
+            chromeExtensionClientOpenPage({
+              key: 'options',
+            })
           }}
         >
           <Stack direction={'row'} alignItems={'center'} gap={1}>

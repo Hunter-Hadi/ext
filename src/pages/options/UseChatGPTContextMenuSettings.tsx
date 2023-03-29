@@ -29,7 +29,6 @@ import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from './components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
-import ContextMenuMockTextarea from '@/pages/options/components/ContextMenuMockTextarea'
 import DevContent from '@/components/DevContent'
 
 const rootId = 'root'
@@ -87,7 +86,6 @@ const ContextMenuSettings: FC<{
   const [confirmType, setconfirmType] = useState<IConfirmActionType | null>(
     null,
   )
-  const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
   const currentOpenIds = useMemo(() => {
     // 恒定展开全部
@@ -238,29 +236,6 @@ const ContextMenuSettings: FC<{
     findSearchText(rootId)
     saveTreeData(settingsKey, originalTreeData)
   }, [originalTreeData])
-  const filteredTreeData = useMemo(() => {
-    if (!inputValue) {
-      return originalTreeData
-    }
-    const searchText = inputValue.toLowerCase()
-    const showIds: string[] = []
-    originalTreeData.forEach((item) => {
-      const itemText = (item.data.searchText || item.text).toLowerCase()
-      if (itemText.includes(searchText) && !showIds.includes(item.id)) {
-        console.log(itemText, searchText)
-        showIds.push(item.id)
-        let temp = item
-        while (originalTreeMap.current[temp.parent]) {
-          temp = originalTreeMap.current[temp.parent]
-          if (!showIds.includes(temp.id)) {
-            showIds.push(temp.id)
-          }
-        }
-      }
-    })
-    console.log(showIds)
-    return originalTreeData.filter((item) => showIds.includes(item.id))
-  }, [originalTreeData, inputValue])
   return (
     <Stack spacing={3} height={'100%'}>
       <Stack
@@ -277,10 +252,6 @@ const ContextMenuSettings: FC<{
           <Typography fontSize={20} fontWeight={700}>
             你可以编辑了
           </Typography>
-          <ContextMenuMockTextarea
-            defaultValue={inputValue}
-            onChange={setInputValue}
-          />
           <Box
             sx={{
               flex: 1,
@@ -320,7 +291,7 @@ const ContextMenuSettings: FC<{
                   setOpenIds(newOpenIds as string[])
                 }}
                 initialOpen={currentOpenIds}
-                tree={filteredTreeData}
+                tree={originalTreeData}
                 rootId={rootId}
                 onDrop={handleDrop}
                 sort={false}
@@ -350,7 +321,6 @@ const ContextMenuSettings: FC<{
                     onDelete={(id) => handleActionConfirmOpen('delete', id)}
                     node={node as any}
                     params={params}
-                    disabledDrag={inputValue !== ''}
                   />
                 )}
               />

@@ -35,6 +35,8 @@ import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import SettingsIcon from '@mui/icons-material/Settings'
+
 import ReplyIcon from '@mui/icons-material/Reply'
 import { SxProps } from '@mui/material'
 import { EzMailAIIcon } from '@/components/CustomIcon'
@@ -76,6 +78,7 @@ export const CONTEXT_MENU_ICONS = [
   'Share',
   'Email',
   'Reply',
+  'Settings',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -169,6 +172,8 @@ const ContextMenuIcon: FC<{
       return <EmailOutlinedIcon sx={sxMemo} />
     case 'Reply':
       return <ReplyIcon sx={sxMemo} />
+    case 'Settings':
+      return <SettingsIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

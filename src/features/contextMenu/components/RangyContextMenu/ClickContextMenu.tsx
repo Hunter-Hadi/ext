@@ -1,4 +1,4 @@
-import { Button, Paper } from '@mui/material'
+import { Button, Paper, Stack } from '@mui/material'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import React, { FC, useEffect } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
@@ -15,6 +15,7 @@ import {
   IRangyRect,
 } from '@/features/contextMenu/store'
 import { useSetRecoilState } from 'recoil'
+import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
 
 const APP_NAME = process.env.APP_NAME
 const APP_ENV = process.env.APP_ENV
@@ -148,70 +149,89 @@ const ClickContextMenuButton: FC<{
         width: 'max-content',
       }}
     >
-      <Button
-        variant={'text'}
-        startIcon={
-          APP_ENV === 'EZ_MAIL_AI' ? (
-            <EzMailAIIcon sx={{ fontSize: 16, color: 'inherit' }} />
-          ) : (
-            <UseChatGptIcon
-              sx={{
-                fontSize: 16,
-                color: 'inherit',
-              }}
-            />
-          )
-        }
-        sx={{ width: 130, height: 32, color: 'inherit' }}
-        size={'small'}
-        onMouseUp={(event) => {
-          event.stopPropagation()
-          event.preventDefault()
-        }}
-        onClick={(event: any) => {
-          if (show) {
-            const saved = saveSelection()
-            const activeElementRect =
-              currentActiveWriteableElement?.getBoundingClientRect()
-            hideRangy()
-            const savedRangeRect = saved?.selectRange?.getBoundingClientRect?.()
-            if (savedRangeRect && props.onClick) {
-              props.onClick &&
-                props.onClick(event, computedRectPosition(savedRangeRect))
-            } else if (activeElementRect && props.onClick) {
-              console.log(
-                '[ContextMenu Module]: render [button] (no range)',
-                activeElementRect,
-                currentActiveWriteableElement,
-                tempSelectRangeRect,
-              )
-              if (
-                activeElementRect.x +
-                  activeElementRect.y +
-                  activeElementRect.width +
-                  activeElementRect.height ===
-                0
-              ) {
-                if (tempSelectRangeRect) {
+      <Stack direction={'row'} alignItems={'center'}>
+        <Button
+          size={'small'}
+          variant={'text'}
+          startIcon={
+            APP_ENV === 'EZ_MAIL_AI' ? (
+              <EzMailAIIcon
+                sx={{
+                  fontSize: 16,
+                  color: 'inherit',
+                }}
+              />
+            ) : (
+              <UseChatGptIcon
+                sx={{
+                  fontSize: 16,
+                  color: 'inherit',
+                }}
+              />
+            )
+          }
+          sx={{
+            width: 130,
+            height: 32,
+            color: 'inherit',
+            marginRight: '1px',
+            borderRadius: '4px 0 0 4px',
+            boxShadow: 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+            '&:hover': {
+              boxShadow: 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+            },
+          }}
+          onMouseUp={(event) => {
+            event.stopPropagation()
+            event.preventDefault()
+          }}
+          onClick={(event: any) => {
+            if (show) {
+              const saved = saveSelection()
+              const activeElementRect =
+                currentActiveWriteableElement?.getBoundingClientRect()
+              hideRangy()
+              const savedRangeRect =
+                saved?.selectRange?.getBoundingClientRect?.()
+              if (savedRangeRect && props.onClick) {
+                props.onClick &&
+                  props.onClick(event, computedRectPosition(savedRangeRect))
+              } else if (activeElementRect && props.onClick) {
+                console.log(
+                  '[ContextMenu Module]: render [button] (no range)',
+                  activeElementRect,
+                  currentActiveWriteableElement,
+                  tempSelectRangeRect,
+                )
+                if (
+                  activeElementRect.x +
+                    activeElementRect.y +
+                    activeElementRect.width +
+                    activeElementRect.height ===
+                  0
+                ) {
+                  if (tempSelectRangeRect) {
+                    props.onClick &&
+                      props.onClick(
+                        event,
+                        computedRectPosition(cloneRect(tempSelectRangeRect)),
+                      )
+                  }
+                } else {
                   props.onClick &&
                     props.onClick(
                       event,
-                      computedRectPosition(cloneRect(tempSelectRangeRect)),
+                      computedRectPosition(cloneRect(activeElementRect)),
                     )
                 }
-              } else {
-                props.onClick &&
-                  props.onClick(
-                    event,
-                    computedRectPosition(cloneRect(activeElementRect)),
-                  )
               }
             }
-          }
-        }}
-      >
-        {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
-      </Button>
+          }}
+        >
+          {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
+        </Button>
+        <FloatingContextMenuMoreIconButton />
+      </Stack>
     </Paper>
   )
 }

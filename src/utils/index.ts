@@ -44,7 +44,10 @@ import {
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import { IInboxMessageType } from '@/features/gmail/store'
-import { pingDaemonProcess } from '@/features/chatgpt/utils'
+import {
+  ContentScriptConnection,
+  pingDaemonProcess,
+} from '@/features/chatgpt/utils'
 import { COUNTRIES_MAP } from '@/utils/staticData'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
@@ -354,4 +357,36 @@ export const countryOptions = () => {
     })
   })
   return options
+}
+
+export const chromeExtensionClientOpenPage = (params: {
+  key?: 'shortcuts' | 'options' | 'daemon_process'
+  url?: string
+  query?: string
+}) => {
+  const { key, url, query } = params
+  if (!url && !key) {
+    return
+  }
+  const port = new ContentScriptConnection()
+  if (key) {
+    port.postMessage({
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      event: 'Client_openUrlInNewTab',
+      data: {
+        key,
+        query,
+      },
+    })
+  } else {
+    port.postMessage({
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      event: 'Client_openUrlInNewTab',
+      data: {
+        url,
+        query,
+      },
+    })
+  }
+  port.destroy()
 }

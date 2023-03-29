@@ -34,11 +34,89 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import { UseChatGptIcon } from '@/components/CustomIcon'
+
+interface LiteDropdownMenuItemProps {
+  label: string
+  icon?: string
+  onClick?: (event: React.MouseEvent) => void
+}
+
 interface MenuItemProps {
   label: string
   menuItem: IContextMenuItem
   disabled?: boolean
 }
+
+// eslint-disable-next-line react/display-name
+export const LiteDropdownMenuItem = React.forwardRef<
+  any,
+  LiteDropdownMenuItemProps
+>(({ label, icon, onClick, ...props }, ref) => {
+  const floatingUiProps: any = props
+  return (
+    <Box
+      {...props}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+        gap: 1,
+        boxSizing: 'border-box',
+        px: 1,
+        borderRadius: '3px',
+        height: '28px',
+        fontSize: '14px',
+        width: '100%',
+        cursor: 'pointer',
+        '&.floating-context-menu-item--active': {
+          background: 'rgba(55, 53, 47, 0.08)',
+          '& .floating-context-menu-item__footer-icon': {
+            display: 'flex',
+          },
+        },
+        '& .floating-context-menu-item__footer-icon': {
+          display: 'none',
+          flexShrink: 0,
+        },
+        '& .floating-context-menu-item__footer-icon--active': {
+          display: 'flex',
+        },
+        '&:hover': {
+          background: 'rgba(55, 53, 47, 0.08)',
+          '& .floating-context-menu-item__footer-icon': {
+            display: 'flex',
+          },
+        },
+      }}
+      ref={ref}
+      component={'div'}
+      role="menuitem"
+      onClick={(event) => {
+        onClick?.(event)
+        floatingUiProps?.onClick?.(event)
+      }}
+    >
+      {icon && (
+        <ContextMenuIcon
+          size={16}
+          icon={icon}
+          sx={{ color: 'primary.main', flexShrink: 0 }}
+        />
+      )}
+      <Typography
+        fontSize={14}
+        textAlign={'left'}
+        color={'inherit'}
+        width={0}
+        noWrap
+        flex={1}
+        lineHeight={'28px'}
+      >
+        {label}
+      </Typography>
+    </Box>
+  )
+})
 
 // eslint-disable-next-line react/display-name
 export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(

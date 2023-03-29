@@ -281,14 +281,23 @@ Browser.runtime.onConnect.addListener((port) => {
         break
       case 'Client_openUrlInNewTab':
         {
-          const { url, key } = msg.data
+          const { url, key, query = '' } = msg.data
           if (url) {
             await Browser.tabs.create({
               url,
             })
           } else if (key) {
-            if (key === 'options') {
-              await Browser.runtime.openOptionsPage()
+            if (key === 'shortcuts') {
+              await Browser.tabs.create({
+                url: 'chrome://extensions/shortcuts',
+                active: true,
+              })
+            } else if (key === 'options') {
+              const chromeExtensionId = Browser.runtime.id
+              await Browser.tabs.create({
+                url: `chrome-extension://${chromeExtensionId}/options.html?${query}`,
+                active: true,
+              })
             } else if (key === 'daemon_process') {
               await createDaemonProcessTab()
             }

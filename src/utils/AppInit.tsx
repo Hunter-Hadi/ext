@@ -9,7 +9,7 @@ import {
 } from '@/utils/index'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
-import { AppState } from '@/store'
+import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
@@ -24,27 +24,6 @@ const GmailInit = () => {
 }
 const RangyInit = () => {
   useInitRangy()
-  return <></>
-}
-const ChatGPTStateInit = () => {
-  const updateConversation = useSetRecoilState(ChatGPTConversationState)
-  useEffect(() => {
-    let isDestroyed = false
-    getChromeExtensionSettings().then((settings) => {
-      if (isDestroyed) return
-      if (settings?.currentModel) {
-        updateConversation((conversation) => {
-          return {
-            ...conversation,
-            model: settings.currentModel || '',
-          }
-        })
-      }
-    })
-    return () => {
-      isDestroyed = true
-    }
-  }, [])
   return <></>
 }
 
@@ -87,6 +66,27 @@ const ForceUpdateContextMenuReadOnlyOption = () => {
   return <></>
 }
 
+const AppSettingsInit = () => {
+  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const updateConversation = useSetRecoilState(ChatGPTConversationState)
+  useEffect(() => {
+    getChromeExtensionSettings().then((settings) => {
+      if (settings) {
+        setAppSettings(settings)
+        if (settings?.currentModel) {
+          updateConversation((conversation) => {
+            return {
+              ...conversation,
+              model: settings.currentModel || '',
+            }
+          })
+        }
+      }
+    })
+  }, [])
+  return <></>
+}
+
 const AppInit = () => {
   const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
@@ -94,10 +94,11 @@ const AppInit = () => {
     <>
       {appState.env === 'gmail' && isEzMailApp && <GmailInit />}
       {!isEzMailApp && <RangyInit />}
-      <ChatGPTStateInit />
       <RangyContextMenu />
       <ForceUpdateContextMenuReadOnlyOption />
+      <AppSettingsInit />
     </>
   )
 }
+
 export default AppInit

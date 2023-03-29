@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback } from 'react'
 import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
 import {
   useCurrentMessageView,
@@ -8,13 +8,13 @@ import {
 import { deepCloneGmailMessageElement } from '@/features/gmail/utils'
 
 import { ChatGPTMessageState } from '@/features/gmail/store'
-import { getAppRootElement, getChromeExtensionSettings } from '@/utils'
+import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import {
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   ROOT_CHAT_BOX_INPUT_ID,
 } from '@/types'
-import { AppState } from '@/store'
+import { AppSettingsState, AppState } from '@/store'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
@@ -22,12 +22,7 @@ const useShortCutsParameters = () => {
   const { lastSelectionRanges, parseRangySelectRangeData, rangy } = useRangy()
   const { messageViewText, currentMessageId } = useCurrentMessageView()
   const chatBoxMessages = useRecoilValue(ChatGPTMessageState)
-  const [userSettings, setUserSettings] = useState<any>({})
-  useEffect(() => {
-    getChromeExtensionSettings().then((res) => {
-      setUserSettings(res.userSettings || {})
-    })
-  }, [])
+  const appSettings = useRecoilValue(AppSettingsState)
   return useCallback(() => {
     console.log(
       'init default input value useShortCutsParameters messageViewText',
@@ -90,7 +85,7 @@ const useShortCutsParameters = () => {
       LAST_MESSAGE_OUTPUT:
         chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
       AI_OUTPUT_LANGUAGE:
-        userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+        appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
     }
     const parameters: Array<{
       key: string
@@ -121,7 +116,7 @@ const useShortCutsParameters = () => {
     lastSelectionRanges,
     rangy,
     chatBoxMessages,
-    userSettings,
+    appSettings.userSettings,
   ])
 }
 export { useShortCutsParameters }

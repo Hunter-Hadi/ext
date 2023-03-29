@@ -20,7 +20,7 @@ class Action implements IAction {
     this.id = id
     this.type = type
     this.status = 'notRunning'
-    this.parameters = parameters || {}
+    this.parameters = Object.assign({}, parameters) || {}
     this.autoExecute = autoExecute
   }
 

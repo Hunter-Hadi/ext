@@ -3,17 +3,24 @@
  */
 import { useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background'
 import { ChatBoxIsOpen, hideChatBox, showChatBox } from '@/utils'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
-import { AppState } from '@/store'
+import { AppSettingsState, AppState } from '@/store'
 import { ContentScriptConnection } from '@/features/chatgpt/utils'
+import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)
   const setAppState = useSetRecoilState(AppState)
+  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const { showFloatingContextMenu } = useFloatingContextMenu()
+  const showFloatingContextMenuRef = useRef(showFloatingContextMenu)
+  useEffect(() => {
+    showFloatingContextMenuRef.current = showFloatingContextMenu
+  }, [showFloatingContextMenu])
   useEffect(() => {
     const port = new ContentScriptConnection()
     const listener = (msg: any) => {
@@ -44,23 +51,33 @@ const useInitChatGPTClient = () => {
           break
         case 'Client_ListenOpenChatMessageBox':
           {
-            if (ChatBoxIsOpen()) {
-              hideChatBox()
-              setAppState((prevState) => {
-                return {
-                  ...prevState,
-                  open: false,
-                }
-              })
-            } else {
-              showChatBox()
-              setAppState((prevState) => {
-                return {
-                  ...prevState,
-                  open: true,
-                }
-              })
+            const isShowFloatingContextMenu =
+              showFloatingContextMenuRef.current()
+            // 如果浮动菜单显示，则不处理
+            if (!isShowFloatingContextMenu) {
+              if (ChatBoxIsOpen()) {
+                hideChatBox()
+                setAppState((prevState) => {
+                  return {
+                    ...prevState,
+                    open: false,
+                  }
+                })
+              } else {
+                showChatBox()
+                setAppState((prevState) => {
+                  return {
+                    ...prevState,
+                    open: true,
+                  }
+                })
+              }
             }
+          }
+          break
+        case 'Client_updateAppSettings':
+          {
+            setAppSettings(data)
           }
           break
         default:

@@ -144,6 +144,7 @@ const GmailChatBoxMessageItem: FC<{
                   `${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`,
                 )
                 if (editElement) {
+                  debugger
                   editElement.focus()
                 }
               }, 0)

@@ -4,14 +4,17 @@ import {
   getAppContextMenuElement,
 } from '@/utils'
 import AppLoadingLayout from '@/components/LoadingLayout'
-import { Button } from '@mui/material'
+import { Button, SxProps } from '@mui/material'
 import {
   DropdownMenu,
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 
-const FloatingContextMenuMoreIconButton: FC = () => {
+const FloatingContextMenuMoreIconButton: FC<{
+  sx?: SxProps
+}> = (props) => {
+  const { sx } = props
   const [loading, setLoading] = useState(true)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   useEffect(() => {
@@ -28,6 +31,7 @@ const FloatingContextMenuMoreIconButton: FC = () => {
     <AppLoadingLayout loading={loading}>
       {root && (
         <DropdownMenu
+          zIndex={2147483651}
           label={''}
           root={root}
           referenceElement={
@@ -39,6 +43,7 @@ const FloatingContextMenuMoreIconButton: FC = () => {
                 height: 32,
                 color: 'inherit',
                 minWidth: 'unset',
+                ...sx,
               }}
             >
               <ContextMenuIcon icon={'More'} size={16} />

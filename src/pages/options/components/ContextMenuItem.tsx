@@ -26,7 +26,7 @@ const ContextMenuItem = (props: {
   } = props
   const isFirstDeep = node.parent === 'root'
   const isGroup = node.data.type === 'group'
-  const DRAG_ICON_SIZE = disabledDrag ? -24 : 24
+  const DRAG_ICON_SIZE = 24
   const [isHover, setIsHover] = useState(false)
   const memoPaddingLeft = useMemo(() => {
     return Math.max(0, depth) * 24 + DRAG_ICON_SIZE
@@ -53,7 +53,7 @@ const ContextMenuItem = (props: {
         }
       }}
     >
-      {node.droppable && !disabledDrag && (
+      {node.droppable && (
         <Box
           sx={{
             position: 'absolute',
@@ -61,6 +61,7 @@ const ContextMenuItem = (props: {
             flexShrink: 0,
             height: DRAG_ICON_SIZE,
             width: DRAG_ICON_SIZE,
+            opacity: disabledDrag ? 0 : 1,
           }}
         >
           {/*<span style={{ position: 'absolute', left: 200 }}>*/}

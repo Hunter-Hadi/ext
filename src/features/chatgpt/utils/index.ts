@@ -10,7 +10,7 @@ import { useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 
 export const pingDaemonProcess = () => {
-  const port = Browser.runtime.connect()
+  const port = new ContentScriptConnection()
   if (!port) {
     return Promise.resolve(false)
   }
@@ -24,12 +24,12 @@ export const pingDaemonProcess = () => {
       if (msg.event === 'Client_ListenPong' && !isTimeout) {
         clearTimeout(timer as number)
         Browser?.runtime?.onMessage?.removeListener(onceListener)
-        port?.onMessage?.removeListener(onceListener)
+        port.destroy()
         console.log('ping result', !isTimeout)
         resolve(true)
       }
     }
-    port.onMessage.addListener(onceListener)
+    port.onMessage(onceListener)
     Browser.runtime.onMessage.addListener(onceListener)
     port.postMessage({
       id: CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -49,14 +49,14 @@ export const pingDaemonProcess = () => {
       // })
       setTimeout(() => {
         Browser?.runtime?.onMessage?.removeListener(onceListener)
-        port.onMessage.removeListener(onceListener)
+        port.destroy()
         resolve(false)
       }, 500)
     }, 2000)
   })
 }
 export const pingUntilLogin = () => {
-  const port = Browser.runtime.connect()
+  const port = new ContentScriptConnection()
   if (!port) {
     return Promise.reject(false)
   }
@@ -80,7 +80,7 @@ export const pingUntilLogin = () => {
               console.log('登录成功!!!')
               clearInterval(timer)
               Browser?.runtime?.onMessage?.removeListener(listener)
-              port?.onMessage?.removeListener(listener)
+              port.destroy()
               const delay = (ms: number) =>
                 new Promise((resolve) => setTimeout(resolve, ms))
               await delay(0)
@@ -88,7 +88,7 @@ export const pingUntilLogin = () => {
             }
           }
         }
-        port.onMessage.addListener(listener)
+        port.onMessage(listener)
         Browser.runtime.onMessage.addListener(listener)
         timer = setInterval(() => {
           port.postMessage({
@@ -101,7 +101,7 @@ export const pingUntilLogin = () => {
             console.log('登录超时!!!')
             clearInterval(timer)
             Browser?.runtime?.onMessage?.removeListener(listener)
-            port?.onMessage?.removeListener(listener)
+            port.destroy()
             reject(false)
           }
         }, 1000)

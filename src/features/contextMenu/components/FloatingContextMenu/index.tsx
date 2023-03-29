@@ -24,9 +24,9 @@ import { CircularProgress, IconButton, Stack, Typography } from '@mui/material'
 import { ROOT_FLOATING_INPUT_ID } from '@/types'
 import { getAppContextMenuElement, showChatBox } from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = process.env.NODE_ENV === 'production'
@@ -91,7 +91,6 @@ const FloatingContextMenu: FC<{
     useShortCutsWithMessageChat('')
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'contextMenus',
-    defaultContextMenuJson,
     inputValue,
   )
 
@@ -115,6 +114,7 @@ const FloatingContextMenu: FC<{
       ) as HTMLTextAreaElement
       if (textareaEl) {
         setTimeout(() => {
+          debugger
           textareaEl?.focus()
         }, 1)
       }
@@ -126,8 +126,10 @@ const FloatingContextMenu: FC<{
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
       if (textareaEl) {
+        debugger
         textareaEl?.focus()
         setTimeout(() => {
+          debugger
           textareaEl?.focus()
         }, 1)
       }
@@ -138,7 +140,7 @@ const FloatingContextMenu: FC<{
      * @description
      * 1. 必须有选中的id
      * 2. 必须有子菜单
-     * 3. contextMenu必须是打开状态
+     * 3. contextMenu必须是打开状态asdasdasdasdsadasdaasdasdas
      * 4. 必须不是loading
      */
     if (
@@ -335,11 +337,13 @@ const FloatingContextMenu: FC<{
                       sx={{
                         height: '20px',
                         width: '20px',
+                        position: 'relative',
+                        top: '-1px',
                         flexShrink: 0,
                         alignSelf: 'end',
                         alignItems: 'center',
                         p: 0,
-                        m: '2px',
+                        m: '4px',
                         cursor: haveDraft ? 'pointer' : 'default',
                         bgcolor: haveDraft
                           ? 'primary.main'
@@ -399,6 +403,9 @@ const FloatingContextMenu: FC<{
                         }}
                       />
                     </IconButton>
+                    <FloatingContextMenuMoreIconButton
+                      sx={{ width: 24, height: 24, alignSelf: 'end' }}
+                    />
                   </>
                 )}
               </Stack>

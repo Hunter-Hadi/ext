@@ -106,7 +106,7 @@ export const LiteDropdownMenuItem = React.forwardRef<
       <Typography
         fontSize={14}
         textAlign={'left'}
-        color={'inherit'}
+        color={'text.primary'}
         width={0}
         noWrap
         flex={1}
@@ -214,7 +214,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         <Typography
           fontSize={14}
           textAlign={'left'}
-          color={'inherit'}
+          color={'text.primary'}
           width={0}
           noWrap
           flex={1}

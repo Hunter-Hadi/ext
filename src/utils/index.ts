@@ -50,8 +50,6 @@ import {
 } from '@/features/chatgpt/utils'
 import { COUNTRIES_MAP } from '@/utils/staticData'
 
-const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
-
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
     .toFixed(digits)
@@ -132,7 +130,8 @@ export type IChatGPTModelType = {
     conciseness: number[]
   }
 }
-type IChromeExtensionSettings = {
+
+export type IChromeExtensionSettings = {
   commands?: Array<{
     name: string
     shortcut: string
@@ -143,9 +142,11 @@ type IChromeExtensionSettings = {
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
   userSettings?: {
-    language?: string
+    language: string
+    selectionButtonVisible: boolean
   }
 }
+
 export type IChromeExtensionSettingsContextMenuKey =
   | 'contextMenus'
   | 'gmailToolBarContextMenu'
@@ -261,13 +262,6 @@ export const useDebounceValue = <T>(
     }
   }, [value, delay])
   return debouncedValue
-}
-
-export const getClientEnv = () => {
-  if (isEzMailApp) {
-    return 'gmail'
-  }
-  return 'normal'
 }
 
 export const elementScrollToBottom = (

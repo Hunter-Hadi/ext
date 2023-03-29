@@ -6,7 +6,6 @@ import {
 } from '@/features/contextMenu/store'
 
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { getAppRootElement } from '@/utils'
@@ -20,10 +19,8 @@ const FloatingContextMenuButton: FC = () => {
   ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
   const { setShortCuts, runShortCuts, loading } =
     useShortCutsWithMessageChat('')
-  const { contextMenuList, originContextMenuList } = useContextMenuList(
-    'contextMenus',
-    defaultContextMenuJson,
-  )
+  const { contextMenuList, originContextMenuList } =
+    useContextMenuList('contextMenus')
   useEffect(() => {
     /**
      * @description

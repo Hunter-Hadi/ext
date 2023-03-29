@@ -8,6 +8,7 @@ import {
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
   ROOT_CONTEXT_MENU_ID,
 } from '@/types'
+import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
 
 const RangyContextMenu = () => {
   return (
@@ -23,6 +24,7 @@ const RangyContextMenu = () => {
         </Menu>
       </Paper>
       <ClickContextMenu />
+      <FloatingShortCutsTip />
     </Portal>
   )
 }

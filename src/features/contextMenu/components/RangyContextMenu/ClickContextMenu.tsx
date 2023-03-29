@@ -10,12 +10,11 @@ import {
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
 import throttle from 'lodash-es/throttle'
-import {
-  FloatingDropdownMenuState,
-  IRangyRect,
-} from '@/features/contextMenu/store'
-import { useSetRecoilState } from 'recoil'
+import { IRangyRect } from '@/features/contextMenu/store'
+import { useRecoilValue } from 'recoil'
 import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
+import { AppSettingsState } from '@/store'
+import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 
 const APP_NAME = process.env.APP_NAME
 const APP_ENV = process.env.APP_ENV
@@ -23,14 +22,10 @@ const isProduction = process.env.NODE_ENV === 'production'
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
-  const {
-    tempSelectionRanges,
-    tempSelectRangeRect,
-    currentActiveWriteableElement,
-    saveSelection,
-    show,
-    hideRangy,
-  } = useRangy()
+  const { tempSelectionRanges, currentActiveWriteableElement, show } =
+    useRangy()
+  const appSettings = useRecoilValue(AppSettingsState)
+  const { showFloatingContextMenu } = useFloatingContextMenu()
   const { x, y, strategy, refs } = useFloating({
     placement: 'bottom-start',
     middleware: [
@@ -141,9 +136,13 @@ const ClickContextMenuButton: FC<{
       sx={{
         borderRadius: '4px',
         border: '1px solid rgb(237,237,236)',
-        zIndex: show ? 2147483600 : -1,
+        zIndex:
+          show && appSettings.userSettings?.selectionButtonVisible
+            ? 2147483600
+            : -1,
         position: strategy,
-        opacity: show ? 1 : 0,
+        opacity:
+          show && appSettings.userSettings?.selectionButtonVisible ? 1 : 0,
         top: y ?? 0,
         left: x ?? 0,
         width: 'max-content',
@@ -186,46 +185,7 @@ const ClickContextMenuButton: FC<{
             event.preventDefault()
           }}
           onClick={(event: any) => {
-            if (show) {
-              const saved = saveSelection()
-              const activeElementRect =
-                currentActiveWriteableElement?.getBoundingClientRect()
-              hideRangy()
-              const savedRangeRect =
-                saved?.selectRange?.getBoundingClientRect?.()
-              if (savedRangeRect && props.onClick) {
-                props.onClick &&
-                  props.onClick(event, computedRectPosition(savedRangeRect))
-              } else if (activeElementRect && props.onClick) {
-                console.log(
-                  '[ContextMenu Module]: render [button] (no range)',
-                  activeElementRect,
-                  currentActiveWriteableElement,
-                  tempSelectRangeRect,
-                )
-                if (
-                  activeElementRect.x +
-                    activeElementRect.y +
-                    activeElementRect.width +
-                    activeElementRect.height ===
-                  0
-                ) {
-                  if (tempSelectRangeRect) {
-                    props.onClick &&
-                      props.onClick(
-                        event,
-                        computedRectPosition(cloneRect(tempSelectRangeRect)),
-                      )
-                  }
-                } else {
-                  props.onClick &&
-                    props.onClick(
-                      event,
-                      computedRectPosition(cloneRect(activeElementRect)),
-                    )
-                }
-              }
-            }
+            showFloatingContextMenu()
           }}
         >
           {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
@@ -237,18 +197,9 @@ const ClickContextMenuButton: FC<{
 }
 
 const ClickContextMenu = () => {
-  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   return (
     <>
-      <ClickContextMenuButton
-        onClick={(event: MouseEvent, rect) => {
-          console.log('[ContextMenu Module]: render [context menu]', rect)
-          setFloatingDropdownMenu({
-            open: true,
-            rootRect: rect,
-          })
-        }}
-      />
+      <ClickContextMenuButton />
     </>
   )
 }

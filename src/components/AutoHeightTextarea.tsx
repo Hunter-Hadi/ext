@@ -4,7 +4,7 @@ import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
 import { getAppActiveElement } from '@/utils'
 import { AppState } from '@/store'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { ROOT_CHAT_BOX_INPUT_ID, ROOT_CONTAINER_ID } from '@/types'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -31,6 +31,7 @@ const removeModalEvent = (textareaElement: HTMLTextAreaElement) => {
     ) as HTMLDivElement
     if (linkedinModalElement) {
       linkedinModalElement.removeAttribute('tabindex')
+      debugger
       ;(document.activeElement as HTMLElement)?.blur()
       isMatchElement = true
       setTimeout(() => {
@@ -53,10 +54,10 @@ const autoSizeTextarea = (
 ) => {
   const boxElement = textareaElement?.parentElement
   if (textareaElement && boxElement) {
+    textareaElement.style.cssText = 'height:0px'
     const scrollHeight = textareaElement.value
       ? textareaElement.scrollHeight
       : LINE_HEIGHT
-    textareaElement.style.cssText = 'height:0px'
     let height = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
     height = Math.max(childrenHeight, height)
     let paddingHeight = childrenHeight
@@ -72,7 +73,9 @@ const autoSizeTextarea = (
 const focusTextareaAndAutoSize = (
   textareaElement: HTMLTextAreaElement,
   childrenHeight = 0,
+  from?: string,
 ) => {
+  console.log('focusTextareaAndAutoSize from', from || '')
   autoSizeTextarea(textareaElement, childrenHeight)
   setTimeout(() => {
     // focus input
@@ -88,6 +91,7 @@ const focusTextareaAndAutoSize = (
     // console.log('focusTextareaAndAutoSize', findIndex)
     // debugger
     // console.log('textareaElement', textareaElement.scrollHeight)
+    debugger
     textareaElement.focus()
     textareaElement.setSelectionRange(value.length, value.length)
     // textareaElement.scrollTo(0, 0)
@@ -139,8 +143,16 @@ const AutoHeightTextarea: FC<{
         if (textareaRef.current?.isSameNode(getAppActiveElement())) {
           throttleAutoSizeTextarea(textareaRef.current, childrenHeight)
         } else {
-          console.log(getAppActiveElement())
-          focusTextareaAndAutoSize(textareaRef.current, childrenHeight)
+          const isOpenApp =
+            document
+              .querySelector(`#${ROOT_CONTAINER_ID}`)
+              ?.classList.contains('open') || false
+          isOpenApp &&
+            focusTextareaAndAutoSize(
+              textareaRef.current,
+              childrenHeight,
+              'defaultValue, textareaRef',
+            )
         }
       }
     }, 100)
@@ -158,7 +170,11 @@ const AutoHeightTextarea: FC<{
   }, [])
   useEffect(() => {
     if (appState.open && textareaRef.current) {
-      focusTextareaAndAutoSize(textareaRef.current, childrenHeight)
+      focusTextareaAndAutoSize(
+        textareaRef.current,
+        childrenHeight,
+        'appState, textareaRef, loading',
+      )
     }
   }, [appState, textareaRef, loading])
 

@@ -1,19 +1,14 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import './global.less'
 import { Box, Button, IconButton, Link, Stack, Typography } from '@mui/material'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
-import {
-  chromeExtensionClientOpenPage,
-  getChromeExtensionSettings,
-  getClientEnv,
-  hideChatBox,
-} from '@/utils'
+import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
 import { CHROME_EXTENSION_HOMEPAGE_URL, ROOT_CONTAINER_ID } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import { AppState } from '@/store'
+import { AppSettingsState, AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
 import SettingsIcon from '@mui/icons-material/Settings'
 
@@ -23,13 +18,24 @@ const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const [appState, setAppState] = useRecoilState(AppState)
   // const { resetConversation } = useMessageWithChatGPT()
-  const [commandKey, setCommandKey] = useState('click to setup')
+  const appSettings = useRecoilValue(AppSettingsState)
+  const commandKey = useMemo(() => {
+    if (appSettings?.commands) {
+      const command = appSettings.commands.find(
+        (command) => command.name === '_execute_action',
+      )
+      if (command) {
+        return command.shortcut || 'click to setup'
+      }
+    }
+    return 'click to setup'
+  }, [appSettings])
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {
       mutations.forEach((mu) => {
         if (mu.type !== 'attributes' && mu.attributeName !== 'class') return
         setAppState({
-          env: getClientEnv(),
+          env: isEzMailApp ? 'gmail' : 'normal',
           open:
             (mu.target as HTMLElement)?.classList?.contains('open') || false,
         })
@@ -52,20 +58,6 @@ const App: FC = () => {
       // resetConversation()
     }
   }, [appState])
-  useEffect(() => {
-    getChromeExtensionSettings()
-      .then((settings) => {
-        if (settings?.commands) {
-          const command = settings.commands.find(
-            (command) => command.name === '_execute_action',
-          )
-          if (command) {
-            setCommandKey(command.shortcut || 'click to setup')
-          }
-        }
-      })
-      .catch()
-  }, [])
   return (
     <>
       <AppInit />

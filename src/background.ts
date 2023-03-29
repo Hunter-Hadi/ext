@@ -93,6 +93,7 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_ListenOpenChatMessageBox'
   | 'Client_getSettingsResponse'
   | 'Client_updateSettingsResponse'
+  | 'Client_updateAppSettings'
 // 客户端发送进程
 export type IChromeExtensionClientSendEvent =
   | 'Client_Ping'
@@ -341,6 +342,7 @@ Browser.runtime.onConnect.addListener((port) => {
                 success: true,
               },
             })
+            sendClientMessage('Client_updateAppSettings', JSON.parse(settings))
           } catch (e) {
             port.postMessage({
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -551,4 +553,22 @@ if (!isEzMailApp) {
   Browser.runtime.setUninstallURL(
     CHROME_EXTENSION_HOMEPAGE_URL + '/survey/uninstall',
   )
+  Browser.contextMenus.create({
+    id: 'use-chatgpt-ai-context-menu-button',
+    title: 'Use ChatGPT',
+    contexts: ['all'],
+  })
+  Browser.contextMenus.onClicked.addListener(async (info, tab) => {
+    if (
+      info.menuItemId === 'use-chatgpt-ai-context-menu-button' &&
+      tab &&
+      tab.id
+    ) {
+      await Browser.tabs.sendMessage(tab.id, {
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'Client_ListenOpenChatMessageBox',
+        data: {},
+      })
+    }
+  })
 }

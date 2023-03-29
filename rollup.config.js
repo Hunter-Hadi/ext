@@ -40,6 +40,8 @@ function getArgs() {
 const args = getArgs()
 const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'UseChatGPT.AI'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
+const GLOBAL_LESS =
+  args.app === 'ezmail' ? './app.EZ_MAIL_AI.less' : './app.USE_CHAT_GPT.less'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const manifest = require(`./src/manifest.${APP_ENV}.json`)
 export default [
@@ -60,6 +62,7 @@ export default [
           : JSON.stringify('development'),
         'process.env.APP_ENV': JSON.stringify(APP_ENV),
         'process.env.APP_NAME': JSON.stringify(APP_NAME),
+        'process.env.GLOBAL_LESS': JSON.stringify(GLOBAL_LESS),
         preventAssignment: true,
       }),
       chromeExtension(),

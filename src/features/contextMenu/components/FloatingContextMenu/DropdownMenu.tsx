@@ -32,7 +32,7 @@ import {
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilValue, useRecoilState } from 'recoil'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 interface MenuItemProps {
   label: string
@@ -49,8 +49,11 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
       FloatingDropdownMenuSelectedItemState,
     )
     const isHover = useMemo(() => {
-      return hoverIds.includes(menuItem.id)
-    }, [hoverIds])
+      return (
+        hoverIds.includes(menuItem.id) ||
+        menuItem.id === floatingDropdownMenuSelectedItem.lastHoverContextMenuId
+      )
+    }, [hoverIds, floatingDropdownMenuSelectedItem.lastHoverContextMenuId])
     const isLastHover = useMemo(() => {
       return (
         floatingDropdownMenuSelectedItem.lastHoverContextMenuId ===
@@ -200,9 +203,9 @@ export const MenuComponent = React.forwardRef<
     const tree = useFloatingTree()
     const nodeId = useFloatingNodeId()
     const parentId = useFloatingParentNodeId()
-    const updateHoverMenuId = useSetRecoilState(
-      FloatingDropdownMenuSelectedItemState,
-    )
+    const isFirstDeep = !parentId && zIndex === 2147483601
+    const [floatingDropdownMenuSelectedItem, updateHoverMenuId] =
+      useRecoilState(FloatingDropdownMenuSelectedItemState)
     const isNested = parentId != null
     const [isOpen, setIsOpen] = React.useState(
       customOpen ? referenceElementOpen : false,
@@ -212,7 +215,9 @@ export const MenuComponent = React.forwardRef<
         setIsOpen(referenceElementOpen)
       }, 1)
     }, [referenceElementOpen])
-    const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
+    const [activeIndex, setActiveIndex] = React.useState<number | null>(
+      isFirstDeep ? 1 : null,
+    )
     const [allowHover, setAllowHover] = React.useState(false)
     const listItemsRef = React.useRef<Array<any | null>>([])
     const listContentRef = React.useRef(
@@ -220,7 +225,7 @@ export const MenuComponent = React.forwardRef<
         React.isValidElement(child) ? child.props.label : null,
       ) as Array<string | null>,
     )
-    const isFirstDeep = !parentId && zIndex === 2147483601
+    console.log('activeIndex', activeIndex)
     console.log(nodeId, parentId, zIndex, isFirstDeep, children)
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,
@@ -374,6 +379,42 @@ export const MenuComponent = React.forwardRef<
         window.removeEventListener('keydown', onKeyDown, true)
       }
     }, [allowHover])
+    useEffect(() => {
+      let destroy = false
+      if (
+        isFirstDeep &&
+        floatingDropdownMenuSelectedItem.lastHoverContextMenuId
+      ) {
+        if (children) {
+          setTimeout(() => {
+            if (destroy) {
+              return
+            }
+            setActiveIndex((prevState) => {
+              const lastHoverIndex = (children as any).findIndex(
+                (child: any) =>
+                  child?.key ===
+                  floatingDropdownMenuSelectedItem.lastHoverContextMenuId,
+              )
+              if (lastHoverIndex !== -1 && prevState === null) {
+                console.log(
+                  'findChildrenIndexWithKey',
+                  lastHoverIndex,
+                  prevState,
+                  children,
+                  nodeId,
+                )
+                return lastHoverIndex
+              }
+              return prevState
+            })
+          }, 200)
+        }
+      }
+      return () => {
+        destroy = true
+      }
+    }, [floatingDropdownMenuSelectedItem.lastHoverContextMenuId, children])
     const referenceRef = useMergeRefs([refs.setReference, forwardedRef])
     return (
       <FloatingNode id={nodeId}>

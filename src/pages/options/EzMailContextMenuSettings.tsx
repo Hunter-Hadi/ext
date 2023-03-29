@@ -1,5 +1,7 @@
 import { Box, Button, Paper, Stack } from '@mui/material'
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import AddIcon from '@mui/icons-material/Add'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import {
   Tree,
   getBackendOptions,
@@ -28,7 +30,7 @@ import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from './components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
-// import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 
 const rootId = 'root'
 
@@ -38,8 +40,21 @@ const saveTreeData = async (
 ) => {
   try {
     console.log('saveTreeData', key, treeData)
+    let newTreeData = [...treeData]
+    // overlary cache tree data by default json
+    if (key === 'gmailToolBarContextMenu') {
+      newTreeData = treeData.map((item) => {
+        const defaultItem = defaultGmailToolbarContextMenuJson.find(
+          (defaultItem) => defaultItem.id === item.id,
+        )
+        if (defaultItem && defaultItem.data.editable === false) {
+          return defaultItem
+        }
+        return item
+      })
+    }
     const success = await setChromeExtensionSettings({
-      [key]: treeData,
+      [key]: newTreeData,
     } as any)
     console.log(success)
   } catch (error) {
@@ -51,6 +66,11 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
   if (dragId === dropId) {
     return false
   }
+
+  if (dropId === rootId) {
+    return true
+  }
+
   const dropNode = treeData.find((item) => item.id === dropId)
   if (!dropNode) {
     return false
@@ -102,44 +122,59 @@ const ContextMenuSettings: FC<{
     // menuType,
   } = props
   const [loading, setLoading] = useState(false)
-  const [editId, setEditId] = useState<string | null>(null)
+  const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<string | null>(null)
   const [confirmType, setconfirmType] = useState<IConfirmActionType | null>(
     null,
   )
-  const editNode = useMemo(() => {
-    return treeData.find((item) => item.id === editId) || null
-  }, [treeData, editId])
   const handleDrop = async (newTreeData: any[]) => {
     setTreeData(newTreeData)
   }
   const addNewMenuItem = async () => {
     const newEditId = v4()
-    setTreeData((prev) =>
-      prev.concat({
-        id: newEditId,
-        parent: rootId,
-        droppable: true,
-        text: 'New option item',
-        data: {
-          editable: true,
-          type: 'shortcuts',
-          actions: [],
-        },
-      }),
-    )
-    setEditId(newEditId)
+    setEditNode({
+      id: newEditId,
+      parent: rootId,
+      droppable: true,
+      text: '',
+      data: {
+        editable: true,
+        type: 'shortcuts',
+        actions: [],
+      },
+    })
+  }
+  const addNewMenuGroup = async () => {
+    const newEditId = v4()
+    // setTreeData((prev) =>
+    //   prev.concat(),
+    // )
+    setEditNode({
+      id: newEditId,
+      parent: rootId,
+      droppable: true,
+      text: '',
+      data: {
+        editable: true,
+        type: 'group',
+        actions: [],
+      },
+    })
   }
 
   const handleOnSave = useCallback(
     (newNode: IContextMenuItem, template: string, autoAskChatGPT: boolean) => {
       if (newNode.data.type === 'group') {
-        updateMenuItem(newNode)
+        updateMenuItem({
+          ...newNode,
+          text: newNode.text ? newNode.text : 'New group',
+        })
       } else {
         updateMenuItem({
           ...newNode,
+          text: newNode.text ? newNode.text : 'New option',
           data: {
             ...newNode.data,
             actions: getDefaultActionWithTemplate(
@@ -150,25 +185,43 @@ const ContextMenuSettings: FC<{
           },
         })
       }
-      setEditId(null)
+      setEditNode(null)
     },
     [settingsKey],
   )
 
   const updateMenuItem = (newNode: IContextMenuItem) => {
-    setTreeData((prev) =>
-      prev.map((item) => {
+    setTreeData((prev) => {
+      let hasId = false
+      const newTreeData = prev.map((item) => {
         if (item.id === newNode.id) {
+          hasId = true
           return newNode
         }
         return item
-      }),
-    )
+      })
+
+      if (!hasId) {
+        newTreeData.push(newNode)
+      }
+      return newTreeData
+    })
   }
 
   const deleteMenuItemById = (id: string) => {
+    const findDeleteIds = (data: IContextMenuItem[], id: string): string[] => {
+      return data.reduce<string[]>(
+        (acc, item) =>
+          item.parent === id
+            ? [...acc, item.id, ...findDeleteIds(data, item.id)]
+            : acc,
+        [],
+      )
+    }
+
     setTreeData((prev) => {
-      const newTree = prev.filter((item) => item.id !== id)
+      const deleteIds = findDeleteIds(treeData, id).concat([id])
+      const newTree = prev.filter((item) => !deleteIds.includes(item.id))
       return newTree
     })
   }
@@ -264,8 +317,8 @@ const ContextMenuSettings: FC<{
               insertDroppableFirst={false}
               render={(node, params) => (
                 <ContextMenuItem
-                  isActive={editId === node.id}
-                  onEdit={setEditId}
+                  isActive={editNode?.id === node.id}
+                  onEdit={setEditNode}
                   onDelete={(id) => handleActionConfirmOpen('delete', id)}
                   node={node as any}
                   params={params}
@@ -281,7 +334,8 @@ const ContextMenuSettings: FC<{
           iconSetting={iconSetting}
           settingsKey={settingsKey}
           onSave={handleOnSave}
-          onCancel={() => setEditId(null)}
+          onCancel={() => setEditNode(null)}
+          onDelete={(id) => handleActionConfirmOpen('delete', id)}
           node={editNode}
         />
       )}
@@ -292,14 +346,25 @@ const ContextMenuSettings: FC<{
           variant={'contained'}
           onClick={addNewMenuItem}
           disabled={loading}
+          startIcon={<AddIcon />}
         >
-          Add new option
+          New option
+        </Button>
+        <Button
+          disableElevation
+          variant={'contained'}
+          onClick={addNewMenuGroup}
+          disabled={loading}
+          startIcon={<AddIcon />}
+        >
+          New option group
         </Button>
         <Button
           disableElevation
           variant={'outlined'}
           disabled={loading}
           onClick={() => handleActionConfirmOpen('reset')}
+          startIcon={<RestartAltIcon />}
         >
           Reset options
         </Button>
@@ -308,6 +373,7 @@ const ContextMenuSettings: FC<{
       {confirmOpen && confirmType && (
         <ContextMenuActionConfirmModal
           open={confirmOpen}
+          nodeType={editNode?.data.type}
           actionType={confirmType}
           onClose={handleActionConfirmClose}
           onConfirm={handleActionConfirmOnConfirm}

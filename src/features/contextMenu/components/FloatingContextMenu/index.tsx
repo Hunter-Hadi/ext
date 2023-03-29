@@ -6,7 +6,7 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
@@ -35,6 +35,7 @@ const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
   const { root } = props
+  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -93,6 +94,18 @@ const FloatingContextMenu: FC<{
     defaultContextMenuJson,
     inputValue,
   )
+
+  useEffect(() => {
+    if (contextMenuList.length > 0) {
+      updateFloatingDropdownMenuSelectedItem((preState) => {
+        return {
+          ...preState,
+          lastHoverContextMenuId: contextMenuList?.[0].children?.[0].id,
+        }
+      })
+    }
+  }, [contextMenuList])
+
   const haveDraft = inputValue.length > 0
   useEffect(() => {
     if (floatingDropdownMenu.open) {
@@ -261,6 +274,7 @@ const FloatingContextMenu: FC<{
                 ) : (
                   <>
                     <AutoHeightTextarea
+                      textareaRef={textareaRef}
                       placeholder={'Use ChatGPT to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
@@ -275,8 +289,19 @@ const FloatingContextMenu: FC<{
                         setInputValue(value)
                       }}
                       onEnter={(value) => {
-                        if (!haveDraft) return
                         showChatBox()
+                        if (contextMenuList.length > 0) {
+                          updateFloatingDropdownMenuSelectedItem((preState) => {
+                            return {
+                              ...preState,
+                              selectedContextMenuId:
+                                preState.lastHoverContextMenuId,
+                            }
+                          })
+                          return
+                        }
+                        if (!haveDraft) return
+                        // showChatBox()
                         setFloatingDropdownMenu({
                           open: false,
                           rootRect: null,
@@ -326,8 +351,18 @@ const FloatingContextMenu: FC<{
                         },
                       }}
                       onClick={() => {
-                        if (!haveDraft) return
                         showChatBox()
+                        if (contextMenuList.length > 0) {
+                          updateFloatingDropdownMenuSelectedItem((preState) => {
+                            return {
+                              ...preState,
+                              selectedContextMenuId:
+                                preState.lastHoverContextMenuId,
+                            }
+                          })
+                          return
+                        }
+                        if (!haveDraft) return
                         setFloatingDropdownMenu({
                           open: false,
                           rootRect: null,

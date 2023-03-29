@@ -208,7 +208,8 @@ export const getContextMenuRenderPosition = (
   })
   if (canRenderContextMenuRect) {
     return {
-      x: canRenderContextMenuRect.left,
+      // 61 cta button width
+      x: canRenderContextMenuRect.left - 62,
       y: canRenderContextMenuRect.top,
     }
   } else {
@@ -297,17 +298,6 @@ export const fuzzySearchContextMenuList = (
   console.log(filterResult, queryWords)
   // 还原一层的树级结构
   const results: IContextMenuItemWithChildren[] = []
-  const findChildren = (parent: string) => {
-    const newChildren: IContextMenuItem[] = []
-    filterResult.forEach((item) => {
-      if (item.parent === parent) {
-        if (findChildren(item.id).length === 0) {
-          newChildren.push(item)
-        }
-      }
-    })
-    return newChildren
-  }
   const groupByParent = groupBy(filterResult, 'parent')
   console.log(groupByParent)
   Object.keys(groupByParent).forEach((parent) => {
@@ -328,21 +318,36 @@ export const fuzzySearchContextMenuList = (
   return results
 }
 
-export const findFirstTierMenuLength = (menuList: IContextMenuItem[] = []) => {
-  let count = 0
+export const findFirstTierMenuHeight = (menuList: IContextMenuItem[] = []) => {
+  const OPTION_HEIGHT = 33
+  const GROUP_HEIGHT = 18
+  let height = 0
+  // let itemCount = 0
   // find groupid
   const rootItemIds = menuList
     .filter((item) => item.parent === 'root')
-    .map((item) => item.id)
-  count += rootItemIds.length
+    .map((item) => {
+      if (item.data.type === 'group') {
+        height += GROUP_HEIGHT
+      } else {
+        height += OPTION_HEIGHT
+      }
+      return item.id
+    })
+
   for (let i = 0; i < menuList.length; i++) {
     const menuItem = menuList[i]
     // not rootItem and parent is rootItem
     if (menuItem.parent !== 'root' && rootItemIds.includes(menuItem.parent)) {
-      count++
+      height += OPTION_HEIGHT
+      // itemCount += 1
     }
   }
-  return count
+
+  // console.log('itemCount', itemCount)
+  // console.log('rootItemIds', rootItemIds.length)
+
+  return height
 }
 
 /**

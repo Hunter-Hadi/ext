@@ -23,7 +23,7 @@ export default [
         },
       ],
       icon: 'ThumbUp',
-      searchText: 'generate from selection reply to this like',
+      searchText: 'reply to this like',
     },
   },
   {
@@ -48,7 +48,7 @@ export default [
         },
       ],
       icon: 'ThumbDown',
-      searchText: 'generate from selection reply to this dislike',
+      searchText: 'reply to this dislike',
     },
   },
   {
@@ -73,7 +73,7 @@ export default [
         },
       ],
       icon: 'FavoriteBorder',
-      searchText: 'generate from selection reply to this support',
+      searchText: 'reply to this support',
     },
   },
   {
@@ -98,7 +98,7 @@ export default [
         },
       ],
       icon: 'SentimentSatisfiedAlt',
-      searchText: 'generate from selection reply to this joke',
+      searchText: 'reply to this joke',
     },
   },
   {
@@ -123,7 +123,7 @@ export default [
         },
       ],
       icon: 'TipsAndUpdates',
-      searchText: 'generate from selection reply to this idea',
+      searchText: 'reply to this idea',
     },
   },
   {
@@ -148,7 +148,7 @@ export default [
         },
       ],
       icon: 'Question',
-      searchText: 'generate from selection reply to this question',
+      searchText: 'reply to this question',
     },
   },
   {
@@ -175,7 +175,7 @@ export default [
         },
       ],
       icon: 'DefaultIcon',
-      searchText: 'generate from selection reply to this enter prompt',
+      searchText: 'reply to this enter prompt',
     },
   },
   {
@@ -199,7 +199,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate english',
+      searchText: 'translate english',
     },
   },
   {
@@ -223,7 +223,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate korean',
+      searchText: 'translate korean',
     },
   },
   {
@@ -247,7 +247,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate chinese',
+      searchText: 'translate chinese',
     },
   },
   {
@@ -271,7 +271,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate japanese',
+      searchText: 'translate japanese',
     },
   },
   {
@@ -295,7 +295,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate spanish',
+      searchText: 'translate spanish',
     },
   },
   {
@@ -319,7 +319,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate russian',
+      searchText: 'translate russian',
     },
   },
   {
@@ -343,7 +343,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate french',
+      searchText: 'translate french',
     },
   },
   {
@@ -367,7 +367,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate portuguese',
+      searchText: 'translate portuguese',
     },
   },
   {
@@ -391,7 +391,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate german',
+      searchText: 'translate german',
     },
   },
   {
@@ -415,7 +415,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate italian',
+      searchText: 'translate italian',
     },
   },
   {
@@ -439,7 +439,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate dutch',
+      searchText: 'translate dutch',
     },
   },
   {
@@ -463,7 +463,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate indonesian',
+      searchText: 'translate indonesian',
     },
   },
   {
@@ -487,7 +487,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate filipino',
+      searchText: 'translate filipino',
     },
   },
   {
@@ -511,7 +511,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'generate from selection translate vietnamese',
+      searchText: 'translate vietnamese',
     },
   },
   {
@@ -661,7 +661,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'edit or review selection change tone professional',
+      searchText: 'change tone professional',
     },
   },
   {
@@ -685,7 +685,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'edit or review selection change tone casual',
+      searchText: 'change tone casual',
     },
   },
   {
@@ -709,7 +709,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'edit or review selection change tone straightforward',
+      searchText: 'change tone straightforward',
     },
   },
   {
@@ -733,7 +733,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'edit or review selection change tone confident',
+      searchText: 'change tone confident',
     },
   },
   {
@@ -757,7 +757,7 @@ export default [
           parameters: {},
         },
       ],
-      searchText: 'edit or review selection change tone friendly',
+      searchText: 'change tone friendly',
     },
   },
   {

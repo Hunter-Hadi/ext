@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { Box, Skeleton, SxProps } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
@@ -76,7 +76,7 @@ const focusTextareaAndAutoSize = (
   autoSizeTextarea(textareaElement, childrenHeight)
   setTimeout(() => {
     // focus input
-    // const value = textareaElement.value
+    const value = textareaElement.value
     // let findIndex = -1
     // const matchString =
     //   ['Write a reply to this email: ', 'Write an email to...'].find((str) => {
@@ -86,16 +86,16 @@ const focusTextareaAndAutoSize = (
     // textareaElement.value = ''
     // textareaElement.value = value
     // console.log('focusTextareaAndAutoSize', findIndex)
+    // debugger
+    // console.log('textareaElement', textareaElement.scrollHeight)
     textareaElement.focus()
-    // textareaElement.setSelectionRange(
-    //   Math.max(matchString.length + findIndex, 0),
-    //   Math.max(matchString.length + findIndex, 0),
-    // )
-    textareaElement.scrollTo(0, 0)
+    textareaElement.setSelectionRange(value.length, value.length)
+    // textareaElement.scrollTo(0, 0)
   }, 100)
 }
 
 const AutoHeightTextarea: FC<{
+  textareaRef: React.RefObject<HTMLTextAreaElement>
   loading?: boolean
   error?: boolean
   defaultValue?: string
@@ -119,17 +119,19 @@ const AutoHeightTextarea: FC<{
     children,
     childrenHeight = 0,
     error = false,
+    textareaRef,
     InputId = ROOT_CHAT_BOX_INPUT_ID,
     stopPropagation = true,
     placeholder = 'Ask ChatGPT...',
     sx,
   } = props
-  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
+  // const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
   const throttleAutoSizeTextarea = useMemo(
     () => throttle(autoSizeTextarea, 200),
     [],
   )
+
   useEffect(() => {
     setInputValue(defaultValue || '')
     setTimeout(() => {
@@ -143,6 +145,7 @@ const AutoHeightTextarea: FC<{
       }
     }, 100)
   }, [defaultValue, textareaRef])
+
   useEffect(() => {
     const timer = setInterval(() => {
       if (textareaRef.current) {
@@ -158,6 +161,7 @@ const AutoHeightTextarea: FC<{
       focusTextareaAndAutoSize(textareaRef.current, childrenHeight)
     }
   }, [appState, textareaRef, loading])
+
   return (
     <Box
       component={'div'}

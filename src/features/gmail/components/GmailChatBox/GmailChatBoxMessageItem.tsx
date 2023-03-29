@@ -41,7 +41,10 @@ const GmailChatBoxMessageItem: FC<{
       return {
         flexDirection: 'row',
         justifyContent: 'end',
-        bgcolor: '#F1E2FD!important',
+        bgcolor:
+          process.env.APP_ENV === 'EZ_MAIL_AI'
+            ? '#FEE6E1 !important'
+            : '#F1E2FD !important',
         color: 'rgba(0,0,0,0.87)!important',
         maxWidth: '80%',
         width: 'auto',

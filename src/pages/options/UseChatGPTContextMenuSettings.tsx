@@ -1,5 +1,5 @@
 import { Box, Button, Paper, Stack } from '@mui/material'
-import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import {
   Tree,
   getBackendOptions,
@@ -68,35 +68,29 @@ const ContextMenuSettings: FC<{
 }> = (props) => {
   const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
   const [loading, setLoading] = useState(false)
-  const [editId, setEditId] = useState<string | null>(null)
+  const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
   const [treeData, setTreeData] = useState<IContextMenuItem[]>([])
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<string | null>(null)
   const [confirmType, setconfirmType] = useState<IConfirmActionType | null>(
     null,
   )
-  const editNode = useMemo(() => {
-    return treeData.find((item) => item.id === editId) || null
-  }, [treeData, editId])
   const handleDrop = async (newTreeData: any[]) => {
     setTreeData(newTreeData)
   }
   const addNewMenuItem = async () => {
     const newEditId = v4()
-    setTreeData((prev) =>
-      prev.concat({
-        id: newEditId,
-        parent: rootId,
-        droppable: true,
-        text: 'New option item',
-        data: {
-          editable: true,
-          type: 'shortcuts',
-          actions: [],
-        },
-      }),
-    )
-    setEditId(newEditId)
+    setEditNode({
+      id: newEditId,
+      parent: rootId,
+      droppable: true,
+      text: 'New option item',
+      data: {
+        editable: true,
+        type: 'shortcuts',
+        actions: [],
+      },
+    })
   }
 
   const handleOnSave = useCallback(
@@ -116,7 +110,7 @@ const ContextMenuSettings: FC<{
           },
         })
       }
-      setEditId(null)
+      setEditNode(null)
     },
     [settingsKey],
   )
@@ -195,8 +189,9 @@ const ContextMenuSettings: FC<{
         const prefixText = searchTextMap[item.parent]
           ? `${searchTextMap[item.parent]} `
           : ''
-        searchTextMap[item.id] = `${prefixText}${item.text}`.toLowerCase()
-        item.data.searchText = searchTextMap[item.id]
+        // 只拼接一层
+        searchTextMap[item.id] = `${item.text}`.toLowerCase()
+        item.data.searchText = prefixText + searchTextMap[item.id].toLowerCase()
         findSearchText(item.id)
       })
     }
@@ -242,8 +237,8 @@ const ContextMenuSettings: FC<{
               insertDroppableFirst={false}
               render={(node, params) => (
                 <ContextMenuItem
-                  isActive={editId === node.id}
-                  onEdit={setEditId}
+                  isActive={editNode?.id === node.id}
+                  onEdit={setEditNode}
                   onDelete={(id) => handleActionConfirmOpen('delete', id)}
                   node={node as any}
                   params={params}
@@ -259,7 +254,8 @@ const ContextMenuSettings: FC<{
           iconSetting={iconSetting}
           settingsKey={settingsKey}
           onSave={handleOnSave}
-          onCancel={() => setEditId(null)}
+          onCancel={() => setEditNode(null)}
+          onDelete={(id) => handleActionConfirmOpen('delete', id)}
           node={editNode}
         />
       )}

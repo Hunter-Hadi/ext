@@ -11,13 +11,6 @@ const modifyManifest = ({ env, isProd }) => ({
     //   matches: ['https://chat.openai.com/*'],
     //   run_at: 'document_start',
     // })
-    // TODO - options页面还没暴露给用户
-    if (isProd) {
-      manifestContent.content_scripts[0].matches = ['<all_urls>']
-      if (env === 'USE_CHAT_GPT_AI') {
-        delete manifestContent['options_ui']
-      }
-    }
     manifest.source = JSON.stringify(manifestContent, null, 2)
   },
 })

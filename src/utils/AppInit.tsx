@@ -40,21 +40,14 @@ const ForceUpdateContextMenuReadOnlyOption = () => {
       })
       let updateCount = 0
       const updateMenuList = menuList.map((item) => {
-        // TODO - 因为早版本用户的editable都是true，所以这里先强制更新
-        const defaultItem = defaultJsonMap.get(item.id)
-        if (defaultItem) {
-          updateCount++
-          return defaultItem
+        if (!item.data.editable) {
+          // force update
+          const defaultItem = defaultJsonMap.get(item.id)
+          if (defaultItem) {
+            updateCount++
+            return defaultItem
+          }
         }
-        // TODO - v0.0.5 开放编辑options后启用此处逻辑
-        // if (!item.data.editable) {
-        //   // force update
-        //   const defaultItem = defaultJsonMap.get(item.id)
-        //   if (defaultItem) {
-        //     updateCount++
-        //     return defaultItem
-        //   }
-        // }
         return item
       })
       console.log('force update menu count', updateCount, menuList)

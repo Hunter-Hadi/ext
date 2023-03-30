@@ -22,7 +22,10 @@ import {
   IChromeExtensionSettingsContextMenuKey,
   setChromeExtensionSettings,
 } from '@/utils'
-import { IContextMenuItem } from '@/features/contextMenu'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
 import ContextMenuViewSource from './components/ContextMenuViewSource'
 import ContextMenuActionConfirmModal, {
@@ -31,6 +34,11 @@ import ContextMenuActionConfirmModal, {
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 import ContextMenuMockTextarea from '@/pages/options/components/ContextMenuMockTextarea'
 import DevContent from '@/components/DevContent'
+import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
+import AddIcon from '@mui/icons-material/Add'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
+import groupBy from 'lodash-es/groupBy'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 const rootId = 'root'
 
@@ -77,7 +85,7 @@ const ContextMenuSettings: FC<{
 }> = (props) => {
   const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
   const [loading, setLoading] = useState(false)
-  const originalTreeMap = useRef<{ [key: string]: IContextMenuItem }>({})
+  const originalTreeMapRef = useRef<{ [key: string]: IContextMenuItem }>({})
   const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
   const [originalTreeData, setOriginalTreeData] = useState<IContextMenuItem[]>(
     [],
@@ -123,6 +131,23 @@ const ContextMenuSettings: FC<{
       },
     })
   }
+  const addNewMenuGroup = async () => {
+    const newEditId = v4()
+    // setTreeData((prev) =>
+    //   prev.concat(),
+    // )
+    setEditNode({
+      id: newEditId,
+      parent: rootId,
+      droppable: true,
+      text: '',
+      data: {
+        editable: true,
+        type: 'group',
+        actions: [],
+      },
+    })
+  }
   const handleOnSave = useCallback(
     (newNode: IContextMenuItem, template: string, autoAskChatGPT: boolean) => {
       if (newNode.data.type === 'group') {
@@ -164,8 +189,19 @@ const ContextMenuSettings: FC<{
   }
 
   const deleteMenuItemById = (id: string) => {
+    const groupByParentMap = groupBy(cloneDeep(originalTreeData), 'parent')
+    const deepDeleteIds: string[] = []
+    const deepFindChild = (parentId: string) => {
+      deepDeleteIds.push(parentId)
+      if (groupByParentMap[parentId]) {
+        groupByParentMap[parentId].forEach((item) =>
+          deepFindChild(item.id as string),
+        )
+      }
+    }
+    deepFindChild(id)
     setOriginalTreeData((prev) => {
-      const newTree = prev.filter((item) => item.id !== id)
+      const newTree = prev.filter((item) => !deepDeleteIds.includes(item.id))
       return newTree
     })
   }
@@ -218,7 +254,7 @@ const ContextMenuSettings: FC<{
     const searchTextMap: {
       [key: string]: string
     } = {}
-    originalTreeMap.current = {}
+    originalTreeMapRef.current = {}
     const findSearchText = (parent: string) => {
       const children = originalTreeData.filter((item) => item.parent === parent)
       if (children.length === 0) {
@@ -231,7 +267,7 @@ const ContextMenuSettings: FC<{
         // 只拼接一层
         searchTextMap[item.id] = `${item.text}`.toLowerCase()
         item.data.searchText = prefixText + searchTextMap[item.id].toLowerCase()
-        originalTreeMap.current[item.id] = item
+        originalTreeMapRef.current[item.id] = item
         findSearchText(item.id)
       })
     }
@@ -242,23 +278,15 @@ const ContextMenuSettings: FC<{
     if (!inputValue) {
       return originalTreeData
     }
-    const searchText = inputValue.toLowerCase()
+    const result = fuzzySearchContextMenuList(originalTreeData, inputValue)
     const showIds: string[] = []
-    originalTreeData.forEach((item) => {
-      const itemText = (item.data.searchText || item.text).toLowerCase()
-      if (itemText.includes(searchText) && !showIds.includes(item.id)) {
-        console.log(itemText, searchText)
-        showIds.push(item.id)
-        let temp = item
-        while (originalTreeMap.current[temp.parent]) {
-          temp = originalTreeMap.current[temp.parent]
-          if (!showIds.includes(temp.id)) {
-            showIds.push(temp.id)
-          }
-        }
+    const deepFindId = (item: IContextMenuItemWithChildren) => {
+      showIds.push(item.id)
+      if (item.children && item.children.length > 0) {
+        item.children.forEach(deepFindId)
       }
-    })
-    console.log(showIds)
+    }
+    result.forEach(deepFindId)
     return originalTreeData.filter((item) => showIds.includes(item.id))
   }, [originalTreeData, inputValue])
   return (
@@ -274,9 +302,50 @@ const ContextMenuSettings: FC<{
               <ContextMenuViewSource treeData={originalTreeData} />
             </Stack>
           </DevContent>
-          <Typography fontSize={20} fontWeight={700}>
-            你可以编辑了
+          <Typography fontSize={20} fontWeight={700} flexShrink={0}>
+            Edit menu options
           </Typography>
+          <Stack
+            p={2}
+            bgcolor={'#E2E8F0'}
+            borderRadius={'4px'}
+            mt={1}
+            mb={4}
+            sx={{
+              b: {
+                fontSize: 16,
+                display: 'inline-flex',
+                minWidth: '28px',
+                justifyContent: 'center',
+                paddingRight: 1,
+              },
+            }}
+            flexShrink={0}
+          >
+            <Typography fontSize={14} color={'text.primary'}>
+              {`You can:`}
+            </Typography>
+            <Typography fontSize={14} color={'text.primary'}>
+              <b>· </b>
+              {`Add new options for your own prompt templates.`}
+            </Typography>
+            <Typography fontSize={14} color={'text.primary'}>
+              <b>· </b>
+              {`Create option groups for nested options.`}
+            </Typography>
+            <Typography fontSize={14} color={'text.primary'}>
+              <b>· </b>
+              {`Modify the option's name, icon, and prompt template.`}
+            </Typography>
+            <Typography fontSize={14} color={'text.primary'}>
+              <b>· </b>
+              {`Drag options to reposition them.`}
+            </Typography>
+            <Typography fontSize={14} color={'text.primary'}>
+              <b>📌 </b>
+              {`Please note that options marked as "Read only" cannot be editedor moved.`}
+            </Typography>
+          </Stack>
           <ContextMenuMockTextarea
             defaultValue={inputValue}
             onChange={setInputValue}
@@ -338,7 +407,7 @@ const ContextMenuSettings: FC<{
                     String(dropTargetId),
                   )
                 }}
-                dropTargetOffset={10}
+                dropTargetOffset={5}
                 placeholderRender={(node, params) => (
                   <ContextMenuPlaceholder node={node} depth={params.depth} />
                 )}
@@ -358,30 +427,6 @@ const ContextMenuSettings: FC<{
           </Box>
         </Stack>
       </Stack>
-      <Stack
-        direction={'row'}
-        alignItems={'center'}
-        mb={2}
-        spacing={2}
-        flexShrink={0}
-      >
-        <Button
-          disableElevation
-          variant={'contained'}
-          onClick={addNewMenuItem}
-          disabled={loading}
-        >
-          Add new option
-        </Button>
-        <Button
-          disableElevation
-          variant={'outlined'}
-          disabled={loading}
-          onClick={() => handleActionConfirmOpen('reset')}
-        >
-          Reset options
-        </Button>
-      </Stack>
       {editNode && (
         <ContextMenuEditFormModal
           open={!!editNode}
@@ -389,7 +434,10 @@ const ContextMenuSettings: FC<{
           settingsKey={settingsKey}
           onSave={handleOnSave}
           onCancel={() => setEditNode(null)}
-          onDelete={(id) => handleActionConfirmOpen('delete', id)}
+          onDelete={(id) => {
+            handleActionConfirmOpen('delete', id)
+            setEditNode(null)
+          }}
           node={editNode}
         />
       )}
@@ -401,6 +449,35 @@ const ContextMenuSettings: FC<{
           onConfirm={handleActionConfirmOnConfirm}
         />
       )}
+      <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
+        <Button
+          disableElevation
+          variant={'contained'}
+          onClick={addNewMenuItem}
+          disabled={loading}
+          startIcon={<AddIcon />}
+        >
+          New option
+        </Button>
+        <Button
+          disableElevation
+          variant={'contained'}
+          onClick={addNewMenuGroup}
+          disabled={loading}
+          startIcon={<AddIcon />}
+        >
+          New option group
+        </Button>
+        <Button
+          disableElevation
+          variant={'outlined'}
+          disabled={loading}
+          onClick={() => handleActionConfirmOpen('reset')}
+          startIcon={<RestartAltIcon />}
+        >
+          Restore options
+        </Button>
+      </Stack>
     </Stack>
   )
 }

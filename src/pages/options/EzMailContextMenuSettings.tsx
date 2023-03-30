@@ -366,7 +366,7 @@ const ContextMenuSettings: FC<{
           onClick={() => handleActionConfirmOpen('reset')}
           startIcon={<RestartAltIcon />}
         >
-          Reset options
+          Restore options
         </Button>
       </Stack>
 

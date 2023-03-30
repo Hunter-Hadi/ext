@@ -7,7 +7,7 @@ export default [
     droppable: true,
     text: 'Like',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -32,7 +32,7 @@ export default [
     droppable: true,
     text: 'Dislike',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -57,7 +57,7 @@ export default [
     droppable: true,
     text: 'Support',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -82,7 +82,7 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -107,7 +107,7 @@ export default [
     droppable: true,
     text: 'Idea',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -132,7 +132,7 @@ export default [
     droppable: true,
     text: 'Question',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -157,7 +157,7 @@ export default [
     droppable: true,
     text: 'Enter prompt',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -184,7 +184,7 @@ export default [
     droppable: true,
     text: 'English',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -208,7 +208,7 @@ export default [
     droppable: true,
     text: 'Korean',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -232,7 +232,7 @@ export default [
     droppable: true,
     text: 'Chinese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -256,7 +256,7 @@ export default [
     droppable: true,
     text: 'Japanese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -280,7 +280,7 @@ export default [
     droppable: true,
     text: 'Spanish',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -304,7 +304,7 @@ export default [
     droppable: true,
     text: 'Russian',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -328,7 +328,7 @@ export default [
     droppable: true,
     text: 'French',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -352,7 +352,7 @@ export default [
     droppable: true,
     text: 'Portuguese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -376,7 +376,7 @@ export default [
     droppable: true,
     text: 'German',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -400,7 +400,7 @@ export default [
     droppable: true,
     text: 'Italian',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -424,7 +424,7 @@ export default [
     droppable: true,
     text: 'Dutch',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -448,7 +448,7 @@ export default [
     droppable: true,
     text: 'Indonesian',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -472,7 +472,7 @@ export default [
     droppable: true,
     text: 'Filipino',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -496,7 +496,7 @@ export default [
     droppable: true,
     text: 'Vietnamese',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -520,7 +520,7 @@ export default [
     droppable: true,
     text: 'Summarize',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -545,7 +545,7 @@ export default [
     droppable: true,
     text: 'List key takeaways',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -570,7 +570,7 @@ export default [
     droppable: true,
     text: 'Translate',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       icon: 'Language',
@@ -583,7 +583,7 @@ export default [
     droppable: true,
     text: 'Explain this',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -608,7 +608,7 @@ export default [
     droppable: true,
     text: 'Find action items',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -633,7 +633,7 @@ export default [
     droppable: true,
     text: 'Reply to this',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       icon: 'Reply',
@@ -646,7 +646,7 @@ export default [
     droppable: true,
     text: 'Professional',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -670,7 +670,7 @@ export default [
     droppable: true,
     text: 'Casual',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -694,7 +694,7 @@ export default [
     droppable: true,
     text: 'Straightforward',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -718,7 +718,7 @@ export default [
     droppable: true,
     text: 'Confident',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -742,7 +742,7 @@ export default [
     droppable: true,
     text: 'Friendly',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -766,7 +766,7 @@ export default [
     droppable: true,
     text: 'Improve writing',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -791,7 +791,7 @@ export default [
     droppable: true,
     text: 'Fix spelling & grammar',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -816,7 +816,7 @@ export default [
     droppable: true,
     text: 'Make shorter',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -841,7 +841,7 @@ export default [
     droppable: true,
     text: 'Make longer',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -866,7 +866,7 @@ export default [
     droppable: true,
     text: 'Change tone',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       icon: 'Voice',
@@ -879,7 +879,7 @@ export default [
     droppable: true,
     text: 'Simplify language',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -904,7 +904,7 @@ export default [
     droppable: true,
     text: 'Paraphrase',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -929,7 +929,7 @@ export default [
     droppable: true,
     text: 'Edit or review selection',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       searchText: 'edit or review selection',
@@ -941,7 +941,7 @@ export default [
     droppable: true,
     text: 'Generate from selection',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       searchText: 'generate from selection',

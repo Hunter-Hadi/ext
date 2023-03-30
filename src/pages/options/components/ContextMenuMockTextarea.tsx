@@ -102,7 +102,10 @@ const ContextMenuMockTextarea: FC<{
             value={inputValue}
             rows={1}
             onInput={(event) => {
-              const value = (event.target as HTMLTextAreaElement).value
+              const value = (event.target as HTMLTextAreaElement).value.replace(
+                /\n/g,
+                '',
+              )
               setInputValue(value)
               onChange?.(value)
             }}

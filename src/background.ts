@@ -7,6 +7,7 @@ import {
   CHROME_EXTENSION_DOC_URL,
   CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/types'
 
 // 用来完成两个页面不同的任务通信
@@ -521,6 +522,17 @@ Browser.storage.onChanged.addListener(() => {
 })
 Browser.scripting.getRegisteredContentScripts()
 Browser.runtime.onInstalled.addListener(async (object) => {
+  const config = {
+    userSettings: {
+      language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+      selectionButtonVisible: true,
+    },
+    ...(await getChromeExtensionLocalSettings()),
+  }
+  console.log('onInstalled config', config)
+  await Browser.storage.local.set({
+    CLIENT_SETTINGS: JSON.stringify(config),
+  })
   if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     if (isEzMailApp) {
       await Browser.tabs.create({

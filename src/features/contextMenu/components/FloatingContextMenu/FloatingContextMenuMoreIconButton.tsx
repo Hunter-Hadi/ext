@@ -46,7 +46,11 @@ const FloatingContextMenuMoreIconButton: FC<{
                 ...sx,
               }}
             >
-              <ContextMenuIcon icon={'More'} size={16} />
+              <ContextMenuIcon
+                sx={{ color: 'text.primary' }}
+                icon={'More'}
+                size={16}
+              />
             </Button>
           }
         >

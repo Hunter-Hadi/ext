@@ -20,7 +20,6 @@ const useContextMenuList = (
     return groupByContextMenuItem(cloneDeep(originContextMenuList))
   }, [originContextMenuList])
   const contextMenuList = useMemo(() => {
-    console.log('useFloatingContextMenuList', query)
     if (query?.trim()) {
       return fuzzySearchContextMenuList(originContextMenuListRef.current, query)
     }

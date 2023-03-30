@@ -250,7 +250,6 @@ const useRangy = () => {
               console.log(e)
             }
             setTimeout(function () {
-              debugger
               if (selectionData?.startMarker?.parentElement?.focus) {
                 selectionData?.startMarker?.parentElement?.focus()
               }

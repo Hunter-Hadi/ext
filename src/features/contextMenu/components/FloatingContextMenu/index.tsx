@@ -114,7 +114,6 @@ const FloatingContextMenu: FC<{
       ) as HTMLTextAreaElement
       if (textareaEl) {
         setTimeout(() => {
-          debugger
           textareaEl?.focus()
         }, 1)
       }
@@ -126,10 +125,8 @@ const FloatingContextMenu: FC<{
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
       if (textareaEl) {
-        debugger
         textareaEl?.focus()
         setTimeout(() => {
-          debugger
           textareaEl?.focus()
         }, 1)
       }
@@ -247,6 +244,18 @@ const FloatingContextMenu: FC<{
                 gap: '8px',
                 width: '100%',
                 padding: '7px 8px',
+              }}
+              onKeyDownCapture={(event) => {
+                event.stopPropagation()
+              }}
+              onKeyUpCapture={(event) => {
+                event.stopPropagation()
+              }}
+              onKeyPress={(event) => {
+                event.stopPropagation()
+              }}
+              onKeyPressCapture={(event) => {
+                event.stopPropagation()
               }}
             >
               <ContextMenuIcon

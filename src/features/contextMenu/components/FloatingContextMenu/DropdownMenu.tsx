@@ -303,8 +303,6 @@ export const MenuComponent = React.forwardRef<
         React.isValidElement(child) ? child.props.label : null,
       ) as Array<string | null>,
     )
-    console.log('activeIndex', activeIndex)
-    console.log(nodeId, parentId, zIndex, isFirstDeep, children)
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,
       open: isOpen,

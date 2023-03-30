@@ -31,7 +31,6 @@ const removeModalEvent = (textareaElement: HTMLTextAreaElement) => {
     ) as HTMLDivElement
     if (linkedinModalElement) {
       linkedinModalElement.removeAttribute('tabindex')
-      debugger
       ;(document.activeElement as HTMLElement)?.blur()
       isMatchElement = true
       setTimeout(() => {
@@ -91,7 +90,6 @@ const focusTextareaAndAutoSize = (
     // console.log('focusTextareaAndAutoSize', findIndex)
     // debugger
     // console.log('textareaElement', textareaElement.scrollHeight)
-    debugger
     textareaElement.focus()
     textareaElement.setSelectionRange(value.length, value.length)
     // textareaElement.scrollTo(0, 0)
@@ -176,8 +174,7 @@ const AutoHeightTextarea: FC<{
         'appState, textareaRef, loading',
       )
     }
-  }, [appState, textareaRef, loading])
-
+  }, [appState.open, loading])
   return (
     <Box
       component={'div'}
@@ -255,7 +252,27 @@ const AutoHeightTextarea: FC<{
         ref={textareaRef}
         value={inputValue}
         rows={1}
+        onKeyDownCapture={(event) => {
+          if (stopPropagation) {
+            event.stopPropagation()
+          }
+        }}
+        onKeyUpCapture={(event) => {
+          if (stopPropagation) {
+            event.stopPropagation()
+          }
+        }}
         onKeyUp={(event) => {
+          if (stopPropagation) {
+            event.stopPropagation()
+          }
+        }}
+        onKeyPress={(event) => {
+          if (stopPropagation) {
+            event.stopPropagation()
+          }
+        }}
+        onKeyPressCapture={(event) => {
           if (stopPropagation) {
             event.stopPropagation()
           }

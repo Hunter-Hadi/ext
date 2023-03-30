@@ -305,6 +305,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
           </Box>
           <AutoHeightTextarea
+            stopPropagation
             textareaRef={textareaRef}
             error={isGmailChatBoxError && !loading}
             loading={loading}

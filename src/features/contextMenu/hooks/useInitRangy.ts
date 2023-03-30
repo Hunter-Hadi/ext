@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import rangyLib from 'rangy'
+import rangyLib from '@/lib/rangy/rangy-core'
 import { useCallback, useEffect, useRef } from 'react'
 import { contextMenu } from 'react-contexify'
 
-import initRangyPosition from '@/features/contextMenu/lib/rangy-position'
-import initRangySaveRestore from '@/features/contextMenu/lib/rangy-saverestore'
+import initRangyPosition from '@/lib/rangy/rangy-position'
+import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { useRangy } from './useRangy'
 import debounce from 'lodash-es/debounce'
 import { checkIsCanInputElement } from '@/features/contextMenu/utils'

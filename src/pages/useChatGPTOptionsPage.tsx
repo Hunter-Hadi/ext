@@ -35,7 +35,6 @@ const OptionsPage = () => {
           <Typography fontSize={24} fontWeight={700}>
             UseChatGPT.AI
           </Typography>
-          <p>route: {route}</p>
         </Stack>
         <Stack flex={1} height={0}>
           <AppLoadingLayout loading={loading}>

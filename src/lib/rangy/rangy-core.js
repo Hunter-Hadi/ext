@@ -1,6 +1,24 @@
-const IS_BLACK_LIST_ORIGIN = ['https://www.google.com'].includes(
-  window.location.origin,
-)
+const isFocusWriteAbleElement = () => {
+  const activeElement = document.activeElement
+  if (
+    activeElement?.tagName === 'INPUT' ||
+    activeElement?.tagName === 'TEXTAREA' ||
+    activeElement?.getAttribute?.('contenteditable') === 'true'
+  ) {
+    const type = activeElement.getAttribute('type')
+    if (type && type !== 'text') {
+      return false
+    }
+    return true
+  }
+}
+const IS_BLACK_LIST_ORIGIN =
+  [
+    'https://www.google.com',
+    'https://www.baidu.com',
+    'https://www.naver.com',
+  ].includes(window.location.origin) || isFocusWriteAbleElement()
+console.log('[ContextMenu Module] IS_BLACK_LIST_ORIGIN', IS_BLACK_LIST_ORIGIN)
 /**
  * Rangy, a cross-browser JavaScript range and selection library
  * https://github.com/timdown/rangy
@@ -10,7 +28,6 @@ const IS_BLACK_LIST_ORIGIN = ['https://www.google.com'].includes(
  * Version: 1.3.1
  * Build date: 17 August 2022
  */
-
 ;(function (factory, root) {
   if (typeof define == 'function' && define.amd) {
     // AMD. Register as an anonymous module.

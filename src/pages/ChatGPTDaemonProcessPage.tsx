@@ -3,7 +3,7 @@ import Browser from 'webextension-polyfill'
 import { ChatGPTDaemonProcess, IChatGPTDaemonProcess } from '@/features/chatgpt'
 import './chatGPT.less'
 import SettingsIcon from '@mui/icons-material/Settings'
-import { Stack, Typography } from '@mui/material'
+import { IconButton, Stack, Typography } from '@mui/material'
 import {
   IChromeExtensionChatGPTDaemonProcessListenEvent,
   IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
@@ -12,7 +12,7 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
   ROOT_DAEMON_PROCESS_ID,
 } from '@/types'
-
+import CloseIcon from '@mui/icons-material/Close'
 const APP_NAME = process.env.APP_NAME
 
 const stopDaemonProcessClose = () => {
@@ -27,6 +27,13 @@ const stopDaemonProcessClose = () => {
     }, 0)
     return 'Are you sure you want to close?'
   }
+}
+
+const isDisabledTopBar = () => {
+  return (
+    window.localStorage.getItem('hide_usechatgptai_daemon_process_button') ===
+    'false'
+  )
 }
 
 const useDaemonProcess = () => {
@@ -91,19 +98,19 @@ const useDaemonProcess = () => {
                       data: models,
                     },
                   })
+                  port.postMessage({
+                    id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                    event: 'DaemonProcess_initChatGPTProxyInstance',
+                  })
+                  stopDaemonProcessClose()
+                  const nextRoot = document.getElementById('__next')
+                  if (nextRoot && !isDisabledTopBar()) {
+                    nextRoot.classList.add('use-chat-gpt-ai-running')
+                  }
+                  setShowDaemonProcessBar(true)
                 }
               })
               .catch()
-            stopDaemonProcessClose()
-            const nextRoot = document.getElementById('__next')
-            if (nextRoot) {
-              nextRoot.classList.add('use-chat-gpt-ai-running')
-            }
-            port.postMessage({
-              id: CHROME_EXTENSION_POST_MESSAGE_ID,
-              event: 'DaemonProcess_initChatGPTProxyInstance',
-            })
-            setShowDaemonProcessBar(true)
           }
           break
         case 'DaemonProcess_listenClientPing':
@@ -327,7 +334,10 @@ const useDaemonProcess = () => {
 
 const ChatGPTDaemonProcessPage: FC = () => {
   const { showDaemonProcessBar } = useDaemonProcess()
-  if (!showDaemonProcessBar) {
+  const [close, setClose] = useState(() => {
+    return isDisabledTopBar()
+  })
+  if (!showDaemonProcessBar || close) {
     return null
   }
   return (
@@ -365,6 +375,29 @@ const ChatGPTDaemonProcessPage: FC = () => {
         <Typography variant={'body1'} component={'span'}>
           {`Please keep this page open to use ${APP_NAME} extension.`}
         </Typography>
+        <IconButton
+          sx={{
+            position: 'absolute',
+            right: 16,
+            color: '#fff',
+          }}
+          onClick={() => {
+            const confirm = window.confirm(
+              "Once you click 'OK', the ChatGPT.AI top bar won't show up anymore. But please still keep this ChatGPT tab open so you can keep using the UseChatGPT.AI extension without interruption.",
+            )
+            if (confirm) {
+              window.localStorage.setItem(
+                'hide_usechatgptai_daemon_process_button',
+                JSON.stringify(false),
+              )
+              const nextRoot = document.getElementById('__next')
+              nextRoot && nextRoot.classList.remove('use-chat-gpt-ai-running')
+              setClose(true)
+            }
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
       </Stack>
     </>
   )

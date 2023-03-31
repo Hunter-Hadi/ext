@@ -102,11 +102,8 @@ const TemplateTooltip = () => {
             The prompt template for ChatGPT.
             <br />
             <br />
-            The template can include any number of pre-defined variables, or
-            none at all.
-            <br />
-            <br />
-            Here are the variables that you can use in the prompt template:
+            The template can include any number of the following pre-defined
+            variables, or none at all:
             <br />
             <Divider sx={{ my: 1 }} />
           </Typography>

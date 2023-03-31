@@ -85,14 +85,11 @@ const ContextMenuEditForm: FC<{
     return false
   }, [isDisabled, template, editNode.text])
   const modalTitle = useMemo(() => {
-    if (editNode.text !== '') {
-      if (editNode.data.type === 'group') {
-        return isDisabled ? `Group (Read only)` : 'Edit option group'
-      } else {
-        return isDisabled ? `Option (Read only)` : 'Edit option'
-      }
+    if (editNode.data.type === 'group') {
+      return isDisabled ? `Group (Read only)` : 'Edit option group'
+    } else {
+      return isDisabled ? `Option (Read only)` : 'Edit option'
     }
-
     return ''
   }, [isDisabled, editNode.data.type])
 

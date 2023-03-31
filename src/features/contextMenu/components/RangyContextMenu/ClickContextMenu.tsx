@@ -153,24 +153,8 @@ const ClickContextMenuButton: FC<{
         <Button
           size={'small'}
           variant={'text'}
-          startIcon={
-            APP_ENV === 'EZ_MAIL_AI' ? (
-              <EzMailAIIcon
-                sx={{
-                  fontSize: 16,
-                  color: 'inherit',
-                }}
-              />
-            ) : (
-              <UseChatGptIcon
-                sx={{
-                  fontSize: 16,
-                  color: 'inherit',
-                }}
-              />
-            )
-          }
           sx={{
+            px: '8px!important',
             height: 32,
             color: 'inherit',
             marginRight: '1px',
@@ -188,6 +172,23 @@ const ClickContextMenuButton: FC<{
             showFloatingContextMenu()
           }}
         >
+          {APP_ENV === 'EZ_MAIL_AI' ? (
+            <EzMailAIIcon
+              sx={{
+                pr: 0.5,
+                fontSize: 16,
+                color: 'inherit',
+              }}
+            />
+          ) : (
+            <UseChatGptIcon
+              sx={{
+                pr: 1,
+                fontSize: 16,
+                color: 'inherit',
+              }}
+            />
+          )}
           {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
           {commandKeyMap.shortcutsKey && (
             <Typography

@@ -100,7 +100,7 @@ const useInitRangy = () => {
               '[ContextMenu Module]:',
               'KeyboardEvent close context menu',
             )
-            rangy.contextMenu.close()
+            // rangy.contextMenu.close()
             return
           }
         } else {

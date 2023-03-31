@@ -213,7 +213,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             if (currentMessage?.messageId) {
               pushMessages.push(currentMessage as IGmailChatMessage)
             }
-            if (error === 'Conversation not found') {
+            const is403Error = error?.trim() === '403'
+            if (error === 'Conversation not found' || is403Error) {
               setConversation((prevState) => {
                 return {
                   ...prevState,
@@ -222,15 +223,17 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               })
             }
             if (error !== 'manual aborted request.') {
+              let text =
+                error?.message || error || 'Error detected. Please try again.'
+              if (is403Error) {
+                text = 'Too many requests. Try again in a few seconds.'
+              }
               pushMessages.push({
                 type: 'system',
                 status: 'error',
                 messageId: uuidV4(),
                 parentMessageId: currentMessageId,
-                text:
-                  error?.message ||
-                  error ||
-                  'Error detected. Please try again.',
+                text,
               })
             }
             console.log('onerror', error, pushMessages)

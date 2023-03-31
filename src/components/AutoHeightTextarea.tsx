@@ -146,10 +146,11 @@ const AutoHeightTextarea: FC<{
               .querySelector(`#${ROOT_CONTAINER_ID}`)
               ?.classList.contains('open') || false
           isOpenApp &&
+            InputId === ROOT_CHAT_BOX_INPUT_ID &&
             focusTextareaAndAutoSize(
               textareaRef.current,
               childrenHeight,
-              'defaultValue, textareaRef',
+              'defaultValue, textareaRef' + InputId,
             )
         }
       }
@@ -168,11 +169,13 @@ const AutoHeightTextarea: FC<{
   }, [])
   useEffect(() => {
     if (appState.open && textareaRef.current) {
-      focusTextareaAndAutoSize(
-        textareaRef.current,
-        childrenHeight,
-        'appState, textareaRef, loading',
-      )
+      if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
+        focusTextareaAndAutoSize(
+          textareaRef.current,
+          childrenHeight,
+          'appState, textareaRef, loading' + InputId,
+        )
+      }
     }
   }, [appState.open, loading])
   return (

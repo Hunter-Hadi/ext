@@ -358,23 +358,23 @@ const ContextMenuSettings: FC<{
               </Typography>
               <Typography fontSize={14} color={'text.primary'}>
                 <b>· </b>
-                {`Add new options for your own prompt templates.`}
+                {`Add new options with your own prompt templates.`}
               </Typography>
               <Typography fontSize={14} color={'text.primary'}>
                 <b>· </b>
-                {`Create option groups for nested options.`}
+                {`Create your own option groups for nested options.`}
               </Typography>
               <Typography fontSize={14} color={'text.primary'}>
                 <b>· </b>
-                {`Modify the option's name, icon, and prompt template.`}
+                {`Modify your own option's name, icon, and prompt template.`}
               </Typography>
               <Typography fontSize={14} color={'text.primary'}>
                 <b>· </b>
-                {`Drag options to reposition them.`}
+                {`Drag your own options to reposition them.`}
               </Typography>
               <Typography fontSize={14} color={'text.primary'}>
                 <b>📌 </b>
-                {`Please note that options marked as "Read only" cannot be editedor moved.`}
+                {`Please note that the options marked as "Read only" cannot be edited or moved.`}
               </Typography>
             </Stack>
           </CloseAlert>
@@ -451,7 +451,7 @@ const ContextMenuSettings: FC<{
                     String(dropTargetId),
                   )
                 }}
-                dropTargetOffset={20}
+                dropTargetOffset={5}
                 placeholderRender={(node, params) => (
                   <ContextMenuPlaceholder node={node} depth={params.depth} />
                 )}

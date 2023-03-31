@@ -60,7 +60,7 @@ const UseChatGPTOptionsSettingPage = () => {
               {`Choose the default language for Al response.`}
             </Typography>
             <Typography fontSize={14} color={'text.primary'}>
-              {`Keep in mind that if you select "Auto" the Al will respond in the same language variety or dialect as the selected text.`}
+              {`If you select "Auto", the Al will respond in the same language variety or dialect as the selected text.`}
             </Typography>
           </Stack>
         </CloseAlert>

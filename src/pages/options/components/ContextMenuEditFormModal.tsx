@@ -10,7 +10,6 @@ import {
   TextField,
   Typography,
   Container,
-  IconButton,
 } from '@mui/material'
 import {
   CONTEXT_MENU_ICONS,
@@ -25,7 +24,8 @@ import 'ace-builds/src-noconflict/theme-monokai'
 import langTools from 'ace-builds/src-noconflict/ext-language_tools'
 import TemplateTooltip from './TemplateTooltip'
 import { templateStaticWords } from '@/features/shortcuts/utils'
-import DeleteIcon from '@mui/icons-material/Delete'
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
+import TooltipIconButton from '@/components/TooltipIconButton'
 // const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const staticWordCompleter = {
@@ -73,6 +73,7 @@ const ContextMenuEditForm: FC<{
     return editNode.data.actions?.length === 3
   })
   const isDisabled = !node.data.editable
+  const isGroup = node.data.type === 'group'
   const isDisabledSave = useMemo(() => {
     if (isDisabled) {
       return true
@@ -86,7 +87,7 @@ const ContextMenuEditForm: FC<{
   }, [isDisabled, template, editNode.text])
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {
-      return isDisabled ? `Group (Read only)` : 'Edit option group'
+      return isDisabled ? `Option group (Read only)` : 'Edit option group'
     } else {
       return isDisabled ? `Option (Read only)` : 'Edit option'
     }
@@ -199,7 +200,8 @@ const ContextMenuEditForm: FC<{
               </Stack>
               <Box position={'relative'} width={'100%'} height={320}>
                 <AceEditor
-                  placeholder={`The prompt template for ChatGPT. The template can include any number of the following variables:
+                  placeholder={`The prompt template for ChatGPT.
+The template can include any number of the following variables:
 {{SELECTED_TEXT}}
 {{AI_OUTPUT_LANGUAGE}}`}
                   width={'100%'}
@@ -249,6 +251,8 @@ const ContextMenuEditForm: FC<{
             direction={'row'}
             mt={'auto!important'}
             mb={0}
+            pt={2}
+            flexShrink={0}
             alignItems={'center'}
             spacing={1}
             justifyContent={'center'}
@@ -274,15 +278,16 @@ const ContextMenuEditForm: FC<{
             right: 24,
           }}
         >
-          <IconButton
+          <TooltipIconButton
+            title={`Delete ${isGroup ? 'option group' : 'option'}`}
             disabled={isDisabled}
             size={'small'}
             onClick={() => {
               onDelete && onDelete(node.id as string)
             }}
           >
-            <DeleteIcon sx={{ fontSize: 20 }} />
-          </IconButton>
+            <DeleteOutlinedIcon sx={{ fontSize: 20 }} />
+          </TooltipIconButton>
         </Box>
       </Container>
     </Modal>

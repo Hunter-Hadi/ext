@@ -1,10 +1,10 @@
-import { Box, IconButton, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import { NodeRender } from '@minoru/react-dnd-treeview'
-import EditIcon from '@mui/icons-material/Edit'
 import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
+import TooltipIconButton from '@/components/TooltipIconButton'
 const ContextMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean
@@ -152,7 +152,11 @@ const ContextMenuItem = (props: {
             height: '100%',
           }}
         >
-          <IconButton
+          <TooltipIconButton
+            tooltipProps={{
+              placement: 'right',
+            }}
+            title={node.data.editable ? 'Edit' : 'Read only'}
             size={'small'}
             onClick={(event) => {
               onEdit && onEdit(node)
@@ -160,14 +164,17 @@ const ContextMenuItem = (props: {
             }}
           >
             {node.data.editable ? (
-              <EditIcon sx={{ fontSize: 20 }} />
+              <ContextMenuIcon
+                icon={'DefaultIcon'}
+                sx={{ color: 'rgba(0,0,0,.87)', fontSize: 20 }}
+              />
             ) : (
               <ContextMenuIcon
                 icon={'Lock'}
                 sx={{ color: 'rgba(0,0,0,.38)', fontSize: 20 }}
               />
             )}
-          </IconButton>
+          </TooltipIconButton>
         </Stack>
       </Stack>
     </Stack>

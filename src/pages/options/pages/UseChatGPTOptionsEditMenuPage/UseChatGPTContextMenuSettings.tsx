@@ -232,6 +232,7 @@ const ContextMenuSettings: FC<{
     }
     if (type === 'delete' && confirmId) {
       deleteMenuItemById(confirmId)
+      setEditNode(null)
     }
     setConfirmOpen(false)
     setconfirmType(null)

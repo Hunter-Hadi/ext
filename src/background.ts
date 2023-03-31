@@ -544,6 +544,11 @@ Browser.runtime.onInstalled.addListener(async (object) => {
   await Browser.storage.local.set({
     CLIENT_SETTINGS: JSON.stringify(config),
   })
+  Browser.contextMenus.create({
+    id: 'use-chatgpt-ai-context-menu-button',
+    title: 'Use ChatGPT',
+    contexts: ['all'],
+  })
   if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     if (isEzMailApp) {
       await Browser.tabs.create({
@@ -576,11 +581,7 @@ if (!isEzMailApp) {
   Browser.runtime.setUninstallURL(
     CHROME_EXTENSION_HOMEPAGE_URL + '/survey/uninstall',
   )
-  Browser.contextMenus.create({
-    id: 'use-chatgpt-ai-context-menu-button',
-    title: 'Use ChatGPT',
-    contexts: ['all'],
-  })
+
   Browser.contextMenus.onClicked.addListener(async (info, tab) => {
     if (
       info.menuItemId === 'use-chatgpt-ai-context-menu-button' &&

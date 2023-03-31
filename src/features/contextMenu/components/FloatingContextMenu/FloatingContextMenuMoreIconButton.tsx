@@ -31,6 +31,7 @@ const FloatingContextMenuMoreIconButton: FC<{
     <AppLoadingLayout loading={loading}>
       {root && (
         <DropdownMenu
+          hoverOpen
           zIndex={2147483651}
           label={''}
           root={root}

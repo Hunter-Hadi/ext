@@ -258,6 +258,7 @@ export interface MenuProps {
   needAutoUpdate?: boolean
   zIndex?: number
   menuSx?: SxProps
+  hoverOpen?: boolean
 }
 
 // eslint-disable-next-line react/display-name
@@ -273,6 +274,7 @@ export const MenuComponent = React.forwardRef<
       children,
       label,
       root,
+      hoverOpen = false,
       customOpen = false,
       needAutoUpdate = false,
       menuSx,
@@ -331,7 +333,7 @@ export const MenuComponent = React.forwardRef<
       whileElementsMounted: needAutoUpdate ? autoUpdate : undefined,
     })
     const hover = useHover(context, {
-      enabled: isNested && allowHover,
+      enabled: (isNested || hoverOpen) && allowHover,
       delay: { open: 75 },
       handleClose: safePolygon({
         restMs: 25,

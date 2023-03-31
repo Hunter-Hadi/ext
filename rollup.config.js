@@ -194,7 +194,7 @@ export default [
         zip({
           file: `../releases/[${manifest.short_name}]_v${
             manifest.version
-          }_${dayjs().format('YYYY_MM_DD_HH_mm_ss')}.zip`,
+          }_${dayjs().format('YYYY_MM_DD_HH_mm')}.zip`,
           isEzMail: APP_ENV === 'EZ_MAIL_AI',
         }),
     ],

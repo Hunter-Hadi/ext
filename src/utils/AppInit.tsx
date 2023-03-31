@@ -3,6 +3,7 @@ import { RangyContextMenu, useInitRangy } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import React, { useEffect } from 'react'
 import {
+  chromeExtensionClientOpenPage,
   getChromeExtensionContextMenu,
   getChromeExtensionSettings,
   setChromeExtensionSettings,
@@ -11,6 +12,7 @@ import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailTool
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
+import { Button } from '@mui/material'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -22,6 +24,23 @@ const GmailInit = () => {
     </>
   )
 }
+const UseChatGPTWebPageJumpToShortCuts = () => {
+  if (window.location.host !== 'www.usechatgpt.ai') {
+    return <></>
+  }
+  return (
+    <Button
+      onClick={() => {
+        chromeExtensionClientOpenPage({
+          key: 'shortcuts',
+        })
+      }}
+      id={'usechatgpt-www-to-shortcuts'}
+      sx={{ position: 'absolute', width: 1, height: 1, zIndex: -1, opacity: 0 }}
+    />
+  )
+}
+
 const RangyInit = () => {
   useInitRangy()
   return <></>
@@ -94,6 +113,7 @@ const AppInit = () => {
       <RangyContextMenu />
       <ForceUpdateContextMenuReadOnlyOption />
       <AppSettingsInit />
+      <UseChatGPTWebPageJumpToShortCuts />
     </>
   )
 }

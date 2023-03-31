@@ -4,6 +4,7 @@ const modifyManifest = ({ env, isProd }) => ({
     console.log('modify-manifest')
     const manifest = bundle['manifest.json']
     const manifestContent = JSON.parse(manifest.source)
+    // console.log(manifestContent)
     // TODO - this is a hack to inject the fetch polyfill into the manifest
     // 防止频繁429的保底方案
     // manifestContent.content_scripts.push({
@@ -11,6 +12,26 @@ const modifyManifest = ({ env, isProd }) => ({
     //   matches: ['https://chat.openai.com/*'],
     //   run_at: 'document_start',
     // })
+    if (isProd) {
+      const formatUrl = (arr, editKey) => {
+        return arr.map((item) => {
+          if (item && item[editKey]) {
+            item[editKey] = item[editKey].map((url) => {
+              return url === 'https://*/*' ? '<all_urls>' : url
+            })
+          }
+          return item
+        })
+      }
+      manifestContent.content_scripts = formatUrl(
+        manifestContent.content_scripts,
+        'matches',
+      )
+      manifestContent.web_accessible_resources = formatUrl(
+        manifestContent.web_accessible_resources,
+        'resources',
+      )
+    }
     manifest.source = JSON.stringify(manifestContent, null, 2)
   },
 })

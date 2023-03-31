@@ -481,7 +481,6 @@ const ContextMenuSettings: FC<{
           onCancel={() => setEditNode(null)}
           onDelete={(id) => {
             handleActionConfirmOpen('delete', id)
-            setEditNode(null)
           }}
           node={editNode}
         />

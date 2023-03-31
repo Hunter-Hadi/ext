@@ -118,135 +118,137 @@ const ContextMenuEditForm: FC<{
           p: 4,
         }}
       >
-        <Stack
-          spacing={3}
-          minHeight={'60vh'}
-          maxHeight={'90vh'}
-          sx={{ overflowY: 'auto' }}
-        >
-          <Typography variant={'h6'}>{modalTitle}</Typography>
-          <Stack>
-            <Typography variant={'body1'}>
-              {'Name '}
-              <span style={{ color: 'red' }}>*</span>
-            </Typography>
-            <TextField
-              disabled={isDisabled}
-              size={'small'}
-              autoFocus
-              value={editNode.text}
-              placeholder={'Enter name'}
-              onChange={(event) => {
-                setEditNode((prev) => {
-                  return {
-                    ...prev,
-                    text: event.target.value,
-                  }
-                })
-              }}
-            />
-          </Stack>
-          {iconSetting && (
+        <Stack spacing={3} minHeight={'60vh'} maxHeight={'90vh'}>
+          <Stack
+            spacing={3}
+            sx={{ overflowY: 'auto' }}
+            width={'100%'}
+            flex={1}
+            height={0}
+          >
+            <Typography variant={'h6'}>{modalTitle}</Typography>
             <Stack>
-              <Typography variant={'body1'}>{'Icon'}</Typography>
-              <Stack
-                flexWrap={'wrap'}
-                gap={1}
-                direction={'row'}
-                alignItems={'center'}
-                sx={{ maxHeight: '60px', overflowY: 'scroll' }}
-              >
-                {CONTEXT_MENU_ICONS.map((icon) => {
-                  return (
-                    <Button
-                      disabled={isDisabled}
-                      sx={{ width: 32, minWidth: 'unset', px: 1, py: 0.5 }}
-                      variant={
-                        icon === (selectedIcon as string)
-                          ? 'contained'
-                          : 'outlined'
-                      }
-                      key={icon}
-                      onClick={() => {
-                        setSelectedIcon((preIcon) =>
-                          preIcon === icon ? null : icon,
-                        )
-                        setEditNode((prev) => {
-                          return {
-                            ...prev,
-                            data: {
-                              ...prev.data,
-                              icon: prev.data.icon === icon ? undefined : icon,
-                            },
-                          }
-                        })
-                      }}
-                    >
-                      <ContextMenuIcon icon={icon} />
-                    </Button>
-                  )
-                })}
-              </Stack>
+              <Typography variant={'body1'}>
+                {'Name '}
+                <span style={{ color: 'red' }}>*</span>
+              </Typography>
+              <TextField
+                disabled={isDisabled}
+                size={'small'}
+                autoFocus
+                value={editNode.text}
+                placeholder={'Enter name'}
+                onChange={(event) => {
+                  setEditNode((prev) => {
+                    return {
+                      ...prev,
+                      text: event.target.value,
+                    }
+                  })
+                }}
+              />
             </Stack>
-          )}
-          {node.data.type === 'shortcuts' && (
-            <Box>
-              <Stack direction={'row'} alignItems="center">
-                <Typography variant={'body1'}>
-                  Prompt template for ChatGPT{' '}
-                  <span style={{ color: 'red' }}>*</span>
-                </Typography>
-                <TemplateTooltip />
+            {iconSetting && (
+              <Stack>
+                <Typography variant={'body1'}>{'Icon'}</Typography>
+                <Stack
+                  flexWrap={'wrap'}
+                  gap={1}
+                  direction={'row'}
+                  alignItems={'center'}
+                  sx={{ maxHeight: '60px', overflowY: 'scroll' }}
+                >
+                  {CONTEXT_MENU_ICONS.map((icon) => {
+                    return (
+                      <Button
+                        disabled={isDisabled}
+                        sx={{ width: 32, minWidth: 'unset', px: 1, py: 0.5 }}
+                        variant={
+                          icon === (selectedIcon as string)
+                            ? 'contained'
+                            : 'outlined'
+                        }
+                        key={icon}
+                        onClick={() => {
+                          setSelectedIcon((preIcon) =>
+                            preIcon === icon ? null : icon,
+                          )
+                          setEditNode((prev) => {
+                            return {
+                              ...prev,
+                              data: {
+                                ...prev.data,
+                                icon:
+                                  prev.data.icon === icon ? undefined : icon,
+                              },
+                            }
+                          })
+                        }}
+                      >
+                        <ContextMenuIcon icon={icon} />
+                      </Button>
+                    )
+                  })}
+                </Stack>
               </Stack>
-              <Box position={'relative'} width={'100%'} height={320}>
-                <AceEditor
-                  placeholder={`The prompt template for ChatGPT.
+            )}
+            {node.data.type === 'shortcuts' && (
+              <Box>
+                <Stack direction={'row'} alignItems="center">
+                  <Typography variant={'body1'}>
+                    Prompt template for ChatGPT{' '}
+                    <span style={{ color: 'red' }}>*</span>
+                  </Typography>
+                  <TemplateTooltip />
+                </Stack>
+                <Box position={'relative'} width={'100%'} height={320}>
+                  <AceEditor
+                    placeholder={`The prompt template for ChatGPT.
 The template can include any number of the following variables:
 {{SELECTED_TEXT}}
 {{AI_OUTPUT_LANGUAGE}}`}
-                  width={'100%'}
-                  height={'100%'}
-                  value={template}
-                  showPrintMargin={true}
-                  showGutter={true}
-                  fontSize={14}
-                  mode={'handlebars'}
-                  theme={'monokai'}
-                  onChange={(value) => {
-                    setTemplate(value)
-                  }}
-                  name={'editor-with-chrome-extension'}
-                  editorProps={{
-                    $blockScrolling: true,
-                  }}
-                  setOptions={{
-                    enableBasicAutocompletion: true,
-                    enableLiveAutocompletion: true,
-                    enableSnippets: false,
-                    showLineNumbers: true,
-                    wrap: true,
-                    tabSize: 2,
-                  }}
-                  enableBasicAutocompletion
-                  enableLiveAutocompletion
-                />
+                    width={'100%'}
+                    height={'100%'}
+                    value={template}
+                    showPrintMargin={true}
+                    showGutter={true}
+                    fontSize={14}
+                    mode={'handlebars'}
+                    theme={'monokai'}
+                    onChange={(value) => {
+                      setTemplate(value)
+                    }}
+                    name={'editor-with-chrome-extension'}
+                    editorProps={{
+                      $blockScrolling: true,
+                    }}
+                    setOptions={{
+                      enableBasicAutocompletion: true,
+                      enableLiveAutocompletion: true,
+                      enableSnippets: false,
+                      showLineNumbers: true,
+                      wrap: true,
+                      tabSize: 2,
+                    }}
+                    enableBasicAutocompletion
+                    enableLiveAutocompletion
+                  />
+                </Box>
               </Box>
-            </Box>
-          )}
-
-          {node.data.type === 'shortcuts' &&
-            settingsKey === 'gmailToolBarContextMenu' && (
-              <FormControlLabel
-                control={<Switch checked={autoAskChatGPT} />}
-                label="Run prompt automatically"
-                value={autoAskChatGPT}
-                disabled={isDisabled}
-                onChange={(event: any) => {
-                  setAutoAskChatGPT(event.target.checked)
-                }}
-              />
             )}
-
+            {node.data.type === 'shortcuts' &&
+              settingsKey === 'gmailToolBarContextMenu' && (
+                <FormControlLabel
+                  control={<Switch checked={autoAskChatGPT} />}
+                  label="Run prompt automatically"
+                  value={autoAskChatGPT}
+                  disabled={isDisabled}
+                  onChange={(event: any) => {
+                    setAutoAskChatGPT(event.target.checked)
+                  }}
+                />
+              )}
+          </Stack>
           <Stack
             direction={'row'}
             mt={'auto!important'}

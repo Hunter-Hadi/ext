@@ -10,34 +10,42 @@ import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import CloseAlert from '@/components/CloseAlert'
 
 const UseChatGPTOptionsSettingPage = () => {
-  const [userSettings, setUserSettings] = useState<any>({})
-  const [loading, setLoading] = useState(true)
+  const [userSettings, setUserSettings] = useState<any>({
+    language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+    selectionButtonVisible: true,
+  })
+  const [loaded, setLoaded] = useState(false)
   const [commandKey, setCommandKey] = useState('')
   useEffect(() => {
-    setChromeExtensionSettings({
-      userSettings,
-    })
-  }, [userSettings])
+    if (loaded) {
+      setChromeExtensionSettings({
+        userSettings,
+      })
+    }
+  }, [loaded, userSettings])
   useEffect(() => {
     getChromeExtensionSettings().then((res) => {
-      console.log('settings', res.userSettings)
+      console.log('settings', res.userSettings?.selectionButtonVisible)
+      console.log('settings', res.userSettings?.language)
       const command = res.commands?.find(
         (command) => command.name === '_execute_action',
       )
       if (command) {
         setCommandKey(command.shortcut || '')
       }
-      setUserSettings(
-        res.userSettings || {
-          language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-          selectionButtonVisible: true,
-        },
-      )
-      setLoading(false)
+      setUserSettings((prevState: any) => {
+        return {
+          ...prevState,
+          ...res.userSettings,
+        }
+      })
+      setTimeout(() => {
+        setLoaded(true)
+      }, 1000)
     })
   }, [])
   return (
-    <AppLoadingLayout loading={loading}>
+    <AppLoadingLayout loading={!loaded}>
       <Stack
         sx={{
           width: 600,
@@ -67,7 +75,7 @@ const UseChatGPTOptionsSettingPage = () => {
         <LanguageSelect
           label={'AI output language'}
           defaultValue={userSettings.language}
-          onChange={(newLanguage) => {
+          onChange={async (newLanguage) => {
             setUserSettings({
               ...userSettings,
               language: newLanguage,
@@ -93,7 +101,7 @@ const UseChatGPTOptionsSettingPage = () => {
         <TextSelectPopupSetting
           commandKey={commandKey}
           visible={userSettings.selectionButtonVisible}
-          onChange={(visible) => {
+          onChange={async (visible) => {
             setUserSettings({
               ...userSettings,
               selectionButtonVisible: visible,

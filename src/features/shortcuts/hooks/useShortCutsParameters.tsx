@@ -50,24 +50,24 @@ const useShortCutsParameters = () => {
             .replace(/\n{3,}/g, `\n`) || ''
       }
     }
-    let HIGHLIGHTED_HTML = ''
-    let HIGHLIGHTED_TEXT = ''
+    let SELECTED_HTML = ''
+    let SELECTED_TEXT = ''
     const selectionData = parseRangySelectRangeData(
       lastSelectionRanges?.selectRange,
       'useShortCutsParameters',
     )
     if (selectionData) {
-      HIGHLIGHTED_HTML = selectionData.html || ''
-      HIGHLIGHTED_TEXT = selectionData.text || ''
+      SELECTED_HTML = selectionData.html || ''
+      SELECTED_TEXT = selectionData.text || ''
     }
     const activeWriteAbleElement = rangy?.contextMenu?.getActiveElement()
     if (activeWriteAbleElement) {
-      if (!HIGHLIGHTED_HTML) {
-        HIGHLIGHTED_HTML =
+      if (!SELECTED_HTML) {
+        SELECTED_HTML =
           activeWriteAbleElement.html || activeWriteAbleElement.getHtml() || ''
       }
-      if (!HIGHLIGHTED_TEXT) {
-        HIGHLIGHTED_TEXT =
+      if (!SELECTED_TEXT) {
+        SELECTED_TEXT =
           activeWriteAbleElement.text || activeWriteAbleElement.getText() || ''
       }
     }
@@ -76,14 +76,13 @@ const useShortCutsParameters = () => {
     } = {
       GMAIL_EMAIL_CONTEXT: messageViewText,
       GMAIL_DRAFT_CONTEXT,
-      HIGHLIGHTED_HTML,
-      HIGHLIGHTED_TEXT,
+      SELECTED_HTML,
+      SELECTED_TEXT,
       USER_INPUT:
         getAppRootElement()?.querySelector<HTMLTextAreaElement>(
           `#${ROOT_CHAT_BOX_INPUT_ID}`,
         )?.value || '',
-      LAST_MESSAGE_OUTPUT:
-        chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
+      LAST_AI_OUTPUT: chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
       AI_OUTPUT_LANGUAGE:
         appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
     }

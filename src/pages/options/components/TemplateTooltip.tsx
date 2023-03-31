@@ -1,25 +1,69 @@
-import { IconButton, Box, Popover, Stack } from '@mui/material'
+import { IconButton, Box, Popover, Stack, Divider } from '@mui/material'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import React, { useState } from 'react'
 import Typography from '@mui/material/Typography'
-import { templateWordToDescription } from '@/features/shortcuts/utils'
+import {
+  templateStaticWords,
+  templateWordToExamples,
+} from '@/features/shortcuts/utils'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 
 const PopperId = 'tempalte-description-tooltip'
 
-const TEMPLATE_STATIC_WORDS = ['GMAIL_EMAIL_CONTEXT', 'GMAIL_DRAFT_CONTEXT']
-
 const WordItem = (props: { word: string }) => {
   const { word } = props
+  const { description, examples } = templateWordToExamples(word)
   return (
-    <Stack>
+    <Stack
+      sx={{
+        '.code': {
+          px: '4px',
+          py: '2px',
+          fontWeight: 700,
+          background: 'rgba(118, 1, 211, 0.1)',
+          color: '#7601D3',
+        },
+      }}
+    >
       <Typography
         variant="body2"
         sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
       >
-        {`{{${word}}}`} <CopyTooltipIconButton copyText={`{{${word}}}`} />
+        <span className={'code'}>{`{{${word}}}`}</span>{' '}
+        <CopyTooltipIconButton copyText={`{{${word}}}`} />
       </Typography>
-      <Typography variant="body2">{templateWordToDescription(word)}</Typography>
+      {description && (
+        <Typography variant="body2" whiteSpace={'pre-wrap'}>
+          {description}
+        </Typography>
+      )}
+      {examples && examples.length > 0 && (
+        <Stack mt={2}>
+          <Typography variant="body2" color={'text.secondary'}>
+            Example phrases to use:
+          </Typography>
+          {examples.map((example, index) => (
+            <Typography
+              key={index}
+              fontSize={14}
+              sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+            >
+              <Box
+                component={'span'}
+                sx={{
+                  width: 4,
+                  height: 4,
+                  borderRadius: '50%',
+                  background: 'rgba(118, 1, 211, 0.5)',
+                  mx: 1,
+                }}
+              ></Box>
+              <span className={'code'}>{example}</span>{' '}
+              <CopyTooltipIconButton copyText={example} />
+            </Typography>
+          ))}
+        </Stack>
+      )}
     </Stack>
   )
 }
@@ -53,23 +97,25 @@ const TemplateTooltip = () => {
           horizontal: 'left',
         }}
       >
-        <Box maxWidth={360} maxHeight={420} overflow="auto" p={1}>
+        <Box maxWidth={'60vw'} maxHeight={420} overflow="auto" p={1}>
           <Typography variant="body2">
-            The prompt template will render based on the variables when the menu
-            option is selected and then be input into ChatGPT. The template can
-            include any number of pre-defined variables or none at all.
+            The prompt template for ChatGPT.
+            <br />
+            <br />
+            The template can include any number of pre-defined variables, or
+            none at all.
             <br />
             <br />
             Here are the variables that you can use in the prompt template:
             <br />
-            ----
+            <Divider sx={{ my: 1 }} />
           </Typography>
-          {TEMPLATE_STATIC_WORDS.map((word, index) => {
+          {templateStaticWords.map((word, index) => {
             return (
               <>
                 <WordItem key={word} word={word} />
-                {TEMPLATE_STATIC_WORDS.length - 1 !== index ? (
-                  <Typography key={`${word}-divider`}>----</Typography>
+                {templateStaticWords.length - 1 !== index ? (
+                  <Divider sx={{ my: 1 }} />
                 ) : null}
               </>
             )

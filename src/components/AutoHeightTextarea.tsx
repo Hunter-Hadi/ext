@@ -252,16 +252,16 @@ const AutoHeightTextarea: FC<{
         ref={textareaRef}
         value={inputValue}
         rows={1}
-        onKeyDownCapture={(event) => {
-          if (stopPropagation) {
-            event.stopPropagation()
-          }
-        }}
-        onKeyUpCapture={(event) => {
-          if (stopPropagation) {
-            event.stopPropagation()
-          }
-        }}
+        // onKeyDownCapture={(event) => {
+        //   if (stopPropagation) {
+        //     event.stopPropagation()
+        //   }
+        // }}
+        // onKeyUpCapture={(event) => {
+        //   if (stopPropagation) {
+        //     event.stopPropagation()
+        //   }
+        // }}
         onKeyUp={(event) => {
           if (stopPropagation) {
             event.stopPropagation()
@@ -272,11 +272,11 @@ const AutoHeightTextarea: FC<{
             event.stopPropagation()
           }
         }}
-        onKeyPressCapture={(event) => {
-          if (stopPropagation) {
-            event.stopPropagation()
-          }
-        }}
+        // onKeyPressCapture={(event) => {
+        //   if (stopPropagation) {
+        //     event.stopPropagation()
+        //   }
+        // }}
         onKeyDown={(event) => {
           if (stopPropagation) {
             event.stopPropagation()

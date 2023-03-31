@@ -60,8 +60,8 @@ const FloatingContextMenuButton: FC = () => {
                 parameters: {
                   ...action.parameters,
                   template: (action.parameters?.template || '').replace(
-                    /\{\{HIGHLIGHTED_TEXT\}\}/g,
-                    '{{LAST_MESSAGE_OUTPUT}}',
+                    /\{\{SELECTED_TEXT\}\}/g,
+                    '{{LAST_AI_OUTPUT}}',
                   ),
                 },
               }

@@ -1,4 +1,4 @@
-import { atom } from 'recoil'
+import { atom, selector } from 'recoil'
 import { IChromeExtensionSettings } from '@/utils'
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -16,4 +16,18 @@ export const AppState = atom<{
 export const AppSettingsState = atom<IChromeExtensionSettings>({
   key: 'AppSettingsState',
   default: {},
+})
+export const AppSettingsCommandKeysSelector = selector<{
+  shortcutsKey: string
+}>({
+  key: 'AppSettingsCommandKeysSelector',
+  get: ({ get }) => {
+    const appSettings = get(AppSettingsState)
+    const findCommand = appSettings?.commands?.find(
+      (command) => command.name === '_execute_action',
+    )
+    return {
+      shortcutsKey: findCommand?.shortcut || '',
+    }
+  },
 })

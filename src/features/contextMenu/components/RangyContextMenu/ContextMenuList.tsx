@@ -15,7 +15,7 @@ import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
 import { useRecoilValue } from 'recoil'
-import SettingsIcon from '@mui/icons-material/Settings'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import {
   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   EZMAIL_REPLY_CTA_BUTTON_ID,
@@ -50,8 +50,8 @@ const ShortCutsButtonItem: FC<{
                 parameters: {
                   ...action.parameters,
                   template: (action.parameters?.template || '').replace(
-                    /\{\{HIGHLIGHTED_TEXT\}\}/g,
-                    '{{LAST_MESSAGE_OUTPUT}}',
+                    /\{\{SELECTED_TEXT\}\}/g,
+                    '{{LAST_AI_OUTPUT}}',
                   ),
                 },
               }
@@ -269,7 +269,7 @@ const ContextMenuList: FC<{
           }}
         >
           <Stack direction={'row'} alignItems={'center'} gap={1}>
-            <SettingsIcon sx={{ fontSize: 14 }} />
+            <SettingsOutlinedIcon sx={{ fontSize: 14 }} />
             <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
               Edit options
             </Typography>

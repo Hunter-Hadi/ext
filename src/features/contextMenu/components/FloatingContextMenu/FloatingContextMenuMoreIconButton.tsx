@@ -34,6 +34,9 @@ const FloatingContextMenuMoreIconButton: FC<{
           zIndex={2147483651}
           label={''}
           root={root}
+          menuSx={{
+            width: 180,
+          }}
           referenceElement={
             <Button
               size={'small'}
@@ -58,21 +61,21 @@ const FloatingContextMenuMoreIconButton: FC<{
             onClick={() => {
               chromeExtensionClientOpenPage({
                 key: 'options',
-                query: 'route=menu',
+                query: '#edit-menu-options',
               })
             }}
             label={'Edit options'}
             icon={'DefaultIcon'}
           />
-          <LiteDropdownMenuItem
-            onClick={() => {
-              chromeExtensionClientOpenPage({
-                key: 'options',
-              })
-            }}
-            icon={'Settings'}
-            label={'Settings'}
-          />
+          {/*<LiteDropdownMenuItem*/}
+          {/*  onClick={() => {*/}
+          {/*    chromeExtensionClientOpenPage({*/}
+          {/*      key: 'options',*/}
+          {/*    })*/}
+          {/*  }}*/}
+          {/*  icon={'Settings'}*/}
+          {/*  label={'Settings'}*/}
+          {/*/>*/}
         </DropdownMenu>
       )}
     </AppLoadingLayout>

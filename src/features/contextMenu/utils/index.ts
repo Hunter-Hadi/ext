@@ -305,12 +305,17 @@ export const fuzzySearchContextMenuList = (
       groupByParent[parent] as IContextMenuItemWithChildren[]
     ).filter((item) => item.data.type !== 'group')
     if (children.length > 0) {
-      const parentItem = data.find((item) => item.id === parent)
-      if (parentItem) {
-        results.push({
-          ...parentItem,
-          children,
-        })
+      if (parent === 'root') {
+        results.push(...children)
+        return
+      } else {
+        const parentItem = data.find((item) => item.id === parent)
+        if (parentItem) {
+          results.push({
+            ...parentItem,
+            children,
+          })
+        }
       }
     }
   })

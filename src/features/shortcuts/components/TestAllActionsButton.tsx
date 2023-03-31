@@ -54,7 +54,7 @@ const TestAllActionsButton: FC = () => {
                     parameters: {
                       ...action.parameters,
                       template: (action.parameters?.template || '').replace(
-                        /\{\{HIGHLIGHTED_TEXT\}\}/g,
+                        /\{\{SELECTED_TEXT\}\}/g,
                         inputText,
                       ),
                     },

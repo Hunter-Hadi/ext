@@ -6,22 +6,6 @@ export const LANGUAGES_OPTIONS = [
     value: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   },
   {
-    label: '简体中文',
-    value: 'Simplified Chinese',
-  },
-  {
-    label: '繁體中文',
-    value: 'Traditional Chinese',
-  },
-  {
-    label: '日本語',
-    value: 'Japanese',
-  },
-  {
-    label: '粵語',
-    value: 'Cantonese',
-  },
-  {
     label: 'Acoli',
     value: 'Acoli',
   },
@@ -601,6 +585,22 @@ export const LANGUAGES_OPTIONS = [
   {
     label: '한국어',
     value: 'Korean',
+  },
+  {
+    label: '简体中文',
+    value: 'Simplified Chinese',
+  },
+  {
+    label: '繁體中文',
+    value: 'Traditional Chinese',
+  },
+  {
+    label: '日本語',
+    value: 'Japanese',
+  },
+  {
+    label: '粵語',
+    value: 'Cantonese',
   },
   {
     label: '0|\\\\/|G |-|4xx0|2 !!!!111',

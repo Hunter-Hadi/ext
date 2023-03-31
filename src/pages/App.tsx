@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useMemo } from 'react'
 import './global.less'
-import { Box, Button, IconButton, Link, Stack, Typography } from '@mui/material'
+import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
 import { useRecoilState, useRecoilValue } from 'recoil'
@@ -10,7 +10,8 @@ import { CHROME_EXTENSION_HOMEPAGE_URL, ROOT_CONTAINER_ID } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import { AppSettingsState, AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
-import SettingsIcon from '@mui/icons-material/Settings'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import TooltipButton from '@/components/TooltipButton'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -129,7 +130,8 @@ const App: FC = () => {
                 >
                   {process.env.APP_NAME}
                 </Typography>
-                <Button
+                <TooltipButton
+                  title={'Settings'}
                   size={'small'}
                   variant={'text'}
                   sx={{
@@ -138,14 +140,18 @@ const App: FC = () => {
                     color: 'inherit',
                     minWidth: 'unset',
                   }}
-                  onClick={() => {
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    event.preventDefault()
                     chromeExtensionClientOpenPage({
                       key: 'options',
                     })
                   }}
                 >
-                  <SettingsIcon sx={{ fontSize: 16, color: 'text.primary' }} />
-                </Button>
+                  <SettingsOutlinedIcon
+                    sx={{ fontSize: 16, color: 'text.primary' }}
+                  />
+                </TooltipButton>
               </Stack>
             </Link>
             <Stack

@@ -73,11 +73,21 @@ const ContextMenuEditForm: FC<{
     return editNode.data.actions?.length === 3
   })
   const isDisabled = !node.data.editable
-
+  const isDisabledSave = useMemo(() => {
+    if (isDisabled) {
+      return true
+    }
+    if (editNode.data.type === 'group') {
+      return editNode.text === ''
+    } else if (editNode.data.type === 'shortcuts') {
+      return editNode.text === '' || template === ''
+    }
+    return false
+  }, [isDisabled, template, editNode.text])
   const modalTitle = useMemo(() => {
     if (editNode.text !== '') {
       if (editNode.data.type === 'group') {
-        return isDisabled ? `Group name (Read only)` : 'Edit group name'
+        return isDisabled ? `Group (Read only)` : 'Edit option group'
       } else {
         return isDisabled ? `Option (Read only)` : 'Edit option'
       }
@@ -100,21 +110,27 @@ const ContextMenuEditForm: FC<{
         maxWidth={'lg'}
         sx={{
           position: 'absolute',
-          top: '45%',
+          top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           borderRadius: 2,
           bgcolor: '#fff',
-          width: '80%',
+          minWidth: '60vw',
+          maxWidth: '90vw',
           p: 4,
         }}
       >
-        <Stack spacing={3} minHeight={'60vh'}>
+        <Stack
+          spacing={3}
+          minHeight={'60vh'}
+          maxHeight={'90vh'}
+          sx={{ overflowY: 'auto' }}
+        >
           <Typography variant={'h6'}>{modalTitle}</Typography>
-
           <Stack>
             <Typography variant={'body1'}>
-              {editNode.data.type === 'shortcuts' ? 'Option name' : 'Name'}
+              {'Name '}
+              <span style={{ color: 'red' }}>*</span>
             </Typography>
             <TextField
               disabled={isDisabled}
@@ -134,9 +150,7 @@ const ContextMenuEditForm: FC<{
           </Stack>
           {iconSetting && (
             <Stack>
-              <Typography variant={'body1'}>
-                {editNode.data.type === 'shortcuts' ? 'Option icon' : 'Icon'}
-              </Typography>
+              <Typography variant={'body1'}>{'Icon'}</Typography>
               <Stack
                 flexWrap={'wrap'}
                 gap={1}
@@ -148,7 +162,7 @@ const ContextMenuEditForm: FC<{
                   return (
                     <Button
                       disabled={isDisabled}
-                      sx={{ minWidth: 'unset', px: 1, py: 0.5 }}
+                      sx={{ width: 32, minWidth: 'unset', px: 1, py: 0.5 }}
                       variant={
                         icon === (selectedIcon as string)
                           ? 'contained'
@@ -181,12 +195,16 @@ const ContextMenuEditForm: FC<{
             <Box>
               <Stack direction={'row'} alignItems="center">
                 <Typography variant={'body1'}>
-                  Prompt template for ChatGPT
+                  Prompt template for ChatGPT{' '}
+                  <span style={{ color: 'red' }}>*</span>
                 </Typography>
                 <TemplateTooltip />
               </Stack>
               <Box position={'relative'} width={'100%'} height={320}>
                 <AceEditor
+                  placeholder={`The prompt template for ChatGPT. The template can include any number of the following variables:
+{{SELECTED_TEXT}}
+{{AI_OUTPUT_LANGUAGE}}`}
                   width={'100%'}
                   height={'100%'}
                   value={template}
@@ -239,7 +257,7 @@ const ContextMenuEditForm: FC<{
             justifyContent={'center'}
           >
             <Button
-              disabled={isDisabled}
+              disabled={isDisabledSave}
               variant={'contained'}
               onClick={() => {
                 onSave && onSave(editNode, template, autoAskChatGPT)
@@ -252,24 +270,23 @@ const ContextMenuEditForm: FC<{
             </Button>
           </Stack>
         </Stack>
-        {node.data.editable && (
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 24,
-              right: 24,
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 24,
+            right: 24,
+          }}
+        >
+          <IconButton
+            disabled={isDisabled}
+            size={'small'}
+            onClick={() => {
+              onDelete && onDelete(node.id as string)
             }}
           >
-            <IconButton
-              size={'small'}
-              onClick={() => {
-                onDelete && onDelete(node.id as string)
-              }}
-            >
-              <DeleteIcon sx={{ fontSize: 20 }} />
-            </IconButton>
-          </Box>
-        )}
+            <DeleteIcon sx={{ fontSize: 20 }} />
+          </IconButton>
+        </Box>
       </Container>
     </Modal>
   )

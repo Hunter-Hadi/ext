@@ -22,12 +22,12 @@ import {
   FloatingFocusManager,
   autoUpdate,
 } from '@floating-ui/react'
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, SxProps, Typography } from '@mui/material'
 import { useEffect, useMemo } from 'react'
 import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
-  IContextMenuItem,
+  IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
@@ -43,7 +43,7 @@ interface LiteDropdownMenuItemProps {
 
 interface MenuItemProps {
   label: string
-  menuItem: IContextMenuItem
+  menuItem: IContextMenuItemWithChildren
   disabled?: boolean
 }
 
@@ -257,6 +257,7 @@ export interface MenuProps {
   customOpen?: boolean
   needAutoUpdate?: boolean
   zIndex?: number
+  menuSx?: SxProps
 }
 
 // eslint-disable-next-line react/display-name
@@ -274,6 +275,7 @@ export const MenuComponent = React.forwardRef<
       root,
       customOpen = false,
       needAutoUpdate = false,
+      menuSx,
       ...props
     },
     forwardedRef,
@@ -572,6 +574,7 @@ export const MenuComponent = React.forwardRef<
                   '& *': {
                     outline: 'none!important',
                   },
+                  ...menuSx,
                 }}
                 component={'div'}
                 ref={refs.setFloating}

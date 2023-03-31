@@ -1,18 +1,22 @@
 import React, { FC } from 'react'
-import { Autocomplete, TextField } from '@mui/material'
+import { Autocomplete, SxProps, TextField } from '@mui/material'
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 
 interface LanguageSelectProps {
+  label?: string
   defaultValue?: string
   onChange?: (value: string) => void
+  sx?: SxProps
 }
 
 const LanguageSelect: FC<LanguageSelectProps> = (props) => {
   const {
+    label = 'Choose a language',
     defaultValue = '',
     onChange = (value: string) => {
       console.log(value)
     },
+    sx,
   } = props
   const [value, setValue] = React.useState<{ label: string; value: string }>(
     () => {
@@ -27,7 +31,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       disableClearable
       value={value}
       size={'small'}
-      sx={{ width: 160, my: 2 }}
+      sx={{ width: 160, ...sx }}
       autoHighlight
       getOptionLabel={(option) => option.label}
       options={LANGUAGES_OPTIONS}
@@ -38,7 +42,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Choose a language"
+          label={label}
           inputProps={{
             ...params.inputProps,
             autoComplete: 'new-password', // disable autocomplete and autofill

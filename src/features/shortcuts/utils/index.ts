@@ -112,30 +112,69 @@ export const templateStaticWords =
         'GMAIL_EMAIL_CONTEXT',
         'GMAIL_DRAFT_CONTEXT',
         // system
-        'LAST_ACTION_OUTPUT',
-        'USER_INPUT',
-        // 'HIGHLIGHTED_TEXT',
+        // 'LAST_ACTION_OUTPUT',
+        // 'USER_INPUT',
+        // 'SELECTED_TEXT',
       ]
     : [
         // system
-        'LAST_ACTION_OUTPUT',
-        'USER_INPUT',
-        'HIGHLIGHTED_TEXT',
+        // 'USER_INPUT',
+        // 'LAST_ACTION_OUTPUT',
+        'SELECTED_TEXT',
+        'AI_OUTPUT_LANGUAGE',
+        // 'LAST_AI_OUTPUT',
       ]
 
-export const templateWordToDescription = (word: string) => {
+export const templateWordToExamples = (
+  word: string,
+): {
+  description: string
+  examples: string[]
+} => {
   switch (word) {
     case 'LAST_ACTION_OUTPUT':
-      return 'The last action output'
+      return {
+        description: 'The last action output',
+        examples: [],
+      }
     case 'USER_INPUT':
-      return 'The user input'
-    case 'HIGHLIGHTED_TEXT':
-      return 'The highlighted text'
+      return {
+        description: 'The user input',
+        examples: [],
+      }
+    case 'SELECTED_TEXT':
+      return {
+        description:
+          'This ChatGPT prompt template variable will be replaced with the text you selected on the current page.',
+        examples: [
+          'write a better version of the follow text: {{SELECTED_TEXT}}',
+          'translate the following text to English: {{SELECTED_TEXT}}',
+        ],
+      }
+    case 'AI_OUTPUT_LANGUAGE':
+      return {
+        description: `This ChatGPT prompt template variable will be replaced with the "AI output language" selected on the Settings page.\nIf uncertain of the "Settings" page location, simply click the "Settings" icon found in the top bar within the side bar.`,
+        examples: [
+          `respond in {{AI_OUTPUT_LANGUAGE}}`,
+          `you will reply with ideas in {{AI_OUTPUT_LANGUAGE}}`,
+        ],
+      }
     case 'GMAIL_EMAIL_CONTEXT':
-      return 'When you use this variable in the prompt template for ChatGPT, it will display the incoming email that needs a response.'
+      return {
+        description:
+          'When you use this variable in the prompt template for ChatGPT, it will display the incoming email that needs a response.',
+        examples: [],
+      }
     case 'GMAIL_DRAFT_CONTEXT':
-      return 'When you use this variable in the prompt template for ChatGPT, it will display the current draft present in the Gmail text box.'
+      return {
+        description:
+          'When you use this variable in the prompt template for ChatGPT, it will display the current draft present in the Gmail text box.',
+        examples: [],
+      }
     default:
-      return ''
+      return {
+        description: '',
+        examples: [],
+      }
   }
 }

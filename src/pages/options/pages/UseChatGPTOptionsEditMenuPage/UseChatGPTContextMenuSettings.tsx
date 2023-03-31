@@ -26,11 +26,11 @@ import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu'
-import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
-import ContextMenuViewSource from './components/ContextMenuViewSource'
+import ContextMenuPlaceholder from '@/pages/options/components/ContextMenuPlaceholder'
+import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
-} from './components/ContextMenuActionConfirmModal'
+} from '@/pages/options/components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 import ContextMenuMockTextarea from '@/pages/options/components/ContextMenuMockTextarea'
 import DevContent from '@/components/DevContent'
@@ -39,6 +39,7 @@ import AddIcon from '@mui/icons-material/Add'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import groupBy from 'lodash-es/groupBy'
 import cloneDeep from 'lodash-es/cloneDeep'
+import CloseAlert from '@/components/CloseAlert'
 
 const rootId = 'root'
 
@@ -123,7 +124,7 @@ const ContextMenuSettings: FC<{
       id: newEditId,
       parent: rootId,
       droppable: true,
-      text: 'New option item',
+      text: '',
       data: {
         editable: true,
         type: 'shortcuts',
@@ -280,6 +281,16 @@ const ContextMenuSettings: FC<{
     }
     const result = fuzzySearchContextMenuList(originalTreeData, inputValue)
     const showIds: string[] = []
+    // 返回的结果不一定到root了，需要一直找到root
+    const findUntilRoot = (id: string) => {
+      const item = originalTreeMapRef.current[id]
+      if (item) {
+        showIds.push(item.id)
+        findUntilRoot(item.parent)
+      }
+    }
+    result.forEach((item) => findUntilRoot(item.id))
+    console.log(showIds, originalTreeMapRef.current)
     const deepFindId = (item: IContextMenuItemWithChildren) => {
       showIds.push(item.id)
       if (item.children && item.children.length > 0) {
@@ -289,8 +300,20 @@ const ContextMenuSettings: FC<{
     result.forEach(deepFindId)
     return originalTreeData.filter((item) => showIds.includes(item.id))
   }, [originalTreeData, inputValue])
+  useEffect(() => {
+    const hash = window.location.hash
+    const timer = setTimeout(() => {
+      document.getElementById(hash.replace('#', ''))?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }, 1000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
   return (
-    <Stack spacing={3} height={'100%'}>
+    <Stack spacing={3} height={'100%'} mb={4}>
       <Stack
         height={0}
         flex={1}
@@ -302,50 +325,59 @@ const ContextMenuSettings: FC<{
               <ContextMenuViewSource treeData={originalTreeData} />
             </Stack>
           </DevContent>
-          <Typography fontSize={20} fontWeight={700} flexShrink={0}>
+          <Typography
+            fontSize={20}
+            fontWeight={700}
+            flexShrink={0}
+            id={'edit-menu-options'}
+          >
             Edit menu options
           </Typography>
-          <Stack
-            p={2}
-            bgcolor={'#E2E8F0'}
-            borderRadius={'4px'}
-            mt={1}
-            mb={4}
+          <CloseAlert
+            icon={<></>}
             sx={{
-              b: {
-                fontSize: 16,
-                display: 'inline-flex',
-                minWidth: '28px',
-                justifyContent: 'center',
-                paddingRight: 1,
-              },
+              bgcolor: '#E2E8F0',
+              mt: 1,
+              mb: 2,
             }}
-            flexShrink={0}
           >
-            <Typography fontSize={14} color={'text.primary'}>
-              {`You can:`}
-            </Typography>
-            <Typography fontSize={14} color={'text.primary'}>
-              <b>· </b>
-              {`Add new options for your own prompt templates.`}
-            </Typography>
-            <Typography fontSize={14} color={'text.primary'}>
-              <b>· </b>
-              {`Create option groups for nested options.`}
-            </Typography>
-            <Typography fontSize={14} color={'text.primary'}>
-              <b>· </b>
-              {`Modify the option's name, icon, and prompt template.`}
-            </Typography>
-            <Typography fontSize={14} color={'text.primary'}>
-              <b>· </b>
-              {`Drag options to reposition them.`}
-            </Typography>
-            <Typography fontSize={14} color={'text.primary'}>
-              <b>📌 </b>
-              {`Please note that options marked as "Read only" cannot be editedor moved.`}
-            </Typography>
-          </Stack>
+            <Stack
+              sx={{
+                b: {
+                  fontSize: 16,
+                  display: 'inline-flex',
+                  minWidth: '28px',
+                  justifyContent: 'center',
+                  paddingRight: 1,
+                },
+              }}
+              flexShrink={0}
+            >
+              <Typography fontSize={14} color={'text.primary'}>
+                {`You can:`}
+              </Typography>
+              <Typography fontSize={14} color={'text.primary'}>
+                <b>· </b>
+                {`Add new options for your own prompt templates.`}
+              </Typography>
+              <Typography fontSize={14} color={'text.primary'}>
+                <b>· </b>
+                {`Create option groups for nested options.`}
+              </Typography>
+              <Typography fontSize={14} color={'text.primary'}>
+                <b>· </b>
+                {`Modify the option's name, icon, and prompt template.`}
+              </Typography>
+              <Typography fontSize={14} color={'text.primary'}>
+                <b>· </b>
+                {`Drag options to reposition them.`}
+              </Typography>
+              <Typography fontSize={14} color={'text.primary'}>
+                <b>📌 </b>
+                {`Please note that options marked as "Read only" cannot be editedor moved.`}
+              </Typography>
+            </Stack>
+          </CloseAlert>
           <ContextMenuMockTextarea
             defaultValue={inputValue}
             onChange={setInputValue}
@@ -360,7 +392,8 @@ const ContextMenuSettings: FC<{
               p: 0.5,
               outline: 'none!important',
               width: 400,
-              maxHeight: '100%',
+              minHeight: 600,
+              maxHeight: 600,
               boxSizing: 'border-box',
               overflowY: 'scroll',
               border: '1px solid rgb(237,237,236)',
@@ -368,9 +401,9 @@ const ContextMenuSettings: FC<{
               borderRadius: '6px',
               boxShadow:
                 'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
-              '& *': {
-                outline: 'none!important',
-              },
+              // '& *': {
+              //   outline: 'none!important',
+              // },
               '&::-webkit-scrollbar': {
                 '-webkit-appearance': 'none',
                 width: '7px',
@@ -379,6 +412,16 @@ const ContextMenuSettings: FC<{
                 borderRadius: '4px',
                 backgroundColor: 'rgba(0, 0, 0, .5)',
                 boxShadow: '0 0 1px rgba(255, 255, 255, .5)',
+              },
+              li: {
+                '&:has(> .dragTarget)': {
+                  outline: '3px solid rgba(118, 1, 211, 0.1)',
+                  borderRadius: '4px',
+                  background: 'rgba(118, 1, 211, 0.04)',
+                },
+              },
+              '.context-menu__root': {
+                py: 1,
               },
             }}
           >
@@ -394,6 +437,7 @@ const ContextMenuSettings: FC<{
                 onDrop={handleDrop}
                 sort={false}
                 classes={{
+                  root: 'context-menu__root',
                   placeholder: 'context-menu__placeholder',
                   dropTarget: 'context-menu__drop-target',
                 }}
@@ -407,13 +451,14 @@ const ContextMenuSettings: FC<{
                     String(dropTargetId),
                   )
                 }}
-                dropTargetOffset={5}
+                dropTargetOffset={20}
                 placeholderRender={(node, params) => (
                   <ContextMenuPlaceholder node={node} depth={params.depth} />
                 )}
                 insertDroppableFirst={false}
                 render={(node, params) => (
                   <ContextMenuItem
+                    isDropTarget={params.isDropTarget}
                     isActive={editNode?.id === node.id}
                     onEdit={setEditNode}
                     onDelete={(id) => handleActionConfirmOpen('delete', id)}
@@ -475,7 +520,7 @@ const ContextMenuSettings: FC<{
           onClick={() => handleActionConfirmOpen('reset')}
           startIcon={<RestartAltIcon />}
         >
-          Restore options
+          Restore defaults
         </Button>
       </Stack>
     </Stack>

@@ -1,4 +1,4 @@
-import { Button, Paper, Stack } from '@mui/material'
+import { Button, Paper, Stack, Typography } from '@mui/material'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import React, { FC, useEffect } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
@@ -13,7 +13,7 @@ import throttle from 'lodash-es/throttle'
 import { IRangyRect } from '@/features/contextMenu/store'
 import { useRecoilValue } from 'recoil'
 import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
-import { AppSettingsState } from '@/store'
+import { AppSettingsCommandKeysSelector, AppSettingsState } from '@/store'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 
 const APP_NAME = process.env.APP_NAME
@@ -25,6 +25,7 @@ const ClickContextMenuButton: FC<{
   const { tempSelectionRanges, currentActiveWriteableElement, show } =
     useRangy()
   const appSettings = useRecoilValue(AppSettingsState)
+  const commandKeyMap = useRecoilValue(AppSettingsCommandKeysSelector)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const { x, y, strategy, refs } = useFloating({
     placement: 'bottom-start',
@@ -170,7 +171,6 @@ const ClickContextMenuButton: FC<{
             )
           }
           sx={{
-            width: 130,
             height: 32,
             color: 'inherit',
             marginRight: '1px',
@@ -189,6 +189,18 @@ const ClickContextMenuButton: FC<{
           }}
         >
           {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
+          {commandKeyMap.shortcutsKey && (
+            <Typography
+              component={'span'}
+              sx={{
+                color: 'rgba(55, 53, 47, 0.5)',
+                fontSize: '12px',
+                pl: 1,
+              }}
+            >
+              {commandKeyMap.shortcutsKey}
+            </Typography>
+          )}
         </Button>
         <FloatingContextMenuMoreIconButton />
       </Stack>

@@ -10,7 +10,6 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
 import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined'
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline'
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
@@ -35,9 +34,11 @@ import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
-import SettingsIcon from '@mui/icons-material/Settings'
-
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import ReplyIcon from '@mui/icons-material/Reply'
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
+
 import { SxProps } from '@mui/material'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 export const CONTEXT_MENU_ICONS = [
@@ -79,6 +80,7 @@ export const CONTEXT_MENU_ICONS = [
   'Email',
   'Reply',
   'Settings',
+  'Lock',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -119,7 +121,7 @@ const ContextMenuIcon: FC<{
     case 'More':
       return <MoreHorizIcon sx={sxMemo} />
     case 'DefaultIcon':
-      return <DriveFileRenameOutlineIcon sx={sxMemo} />
+      return <ModeEditOutlinedIcon sx={sxMemo} />
     case 'Autorenew':
       return <AutorenewOutlinedIcon sx={sxMemo} />
     case 'ListAlt':
@@ -173,7 +175,9 @@ const ContextMenuIcon: FC<{
     case 'Reply':
       return <ReplyIcon sx={sxMemo} />
     case 'Settings':
-      return <SettingsIcon sx={sxMemo} />
+      return <SettingsOutlinedIcon sx={sxMemo} />
+    case 'Lock':
+      return <LockOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

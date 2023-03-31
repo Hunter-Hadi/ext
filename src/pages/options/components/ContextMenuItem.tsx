@@ -4,10 +4,7 @@ import { NodeRender } from '@minoru/react-dnd-treeview'
 import EditIcon from '@mui/icons-material/Edit'
 import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-
+import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 const ContextMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean
@@ -15,8 +12,10 @@ const ContextMenuItem = (props: {
   params: Parameters<NodeRender<IContextMenuItem>>[1]
   onEdit?: (node: IContextMenuItem) => void
   onDelete?: (id: string) => void
+  isDropTarget?: boolean
 }) => {
   const {
+    isDropTarget = false,
     disabledDrag = false,
     isActive = false,
     node,
@@ -35,20 +34,19 @@ const ContextMenuItem = (props: {
     <Stack
       direction={'row'}
       alignItems={'center'}
+      className={isDropTarget ? 'dragTarget' : ''}
       height={28}
       sx={{
         position: 'relative',
-        background:
-          isHover || isActive
-            ? 'linear-gradient(0deg, rgba(55, 53, 47, 0.08), rgba(55, 53, 47, 0.08)), #FFFFFF'
-            : 'unset',
+        cursor: isGroup ? 'pointer' : 'default',
+        backgroundColor: isHover || isActive ? 'rgba(0, 0, 0, 0.04)' : 'unset',
         borderRadius: '3px',
         pl: memoPaddingLeft + 'px',
       }}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={() => {
-        if (!isFirstDeep && isGroup) {
+        if (isGroup) {
           onToggle()
         }
       }}
@@ -67,21 +65,42 @@ const ContextMenuItem = (props: {
           {/*<span style={{ position: 'absolute', left: 200 }}>*/}
           {/*  {depth},{memoPaddingLeft},{Math.max(0, memoPaddingLeft - DRAG_ICON_SIZE)}*/}
           {/*</span>*/}
-          <div ref={handleRef}>
+          {node.data.editable ? (
+            <div ref={handleRef}>
+              <DragIndicatorIcon
+                sx={{
+                  fontSize: DRAG_ICON_SIZE,
+                  cursor: 'move',
+                  color: '#00000061',
+                }}
+              />
+            </div>
+          ) : (
             <DragIndicatorIcon
               sx={{
                 fontSize: DRAG_ICON_SIZE,
-                cursor: 'move',
-                color: '#00000061',
+                cursor: 'default',
+                color: 'rgba(0,0,0,0.0)',
               }}
             />
-          </div>
+          )}
         </Box>
+      )}
+      {isGroup && (
+        <ExpandCircleDownIcon
+          sx={{
+            mr: 1,
+            flexShrink: 0,
+            transform: isOpen ? 'rotate(0)' : 'rotate(-90deg)',
+            fontSize: 20,
+            color: 'rgba(0,0,0,.87)',
+          }}
+        />
       )}
       {node.data.icon && (
         <ContextMenuIcon
           icon={node.data.icon}
-          sx={{ mr: 1, color: 'primary.main', fontSize: 16 }}
+          sx={{ mr: 1, flexShrink: 0, color: 'primary.main', fontSize: 16 }}
         />
       )}
       <Stack
@@ -92,7 +111,6 @@ const ContextMenuItem = (props: {
         width={0}
         sx={{
           height: '100%',
-          cursor: isGroup && !isFirstDeep ? 'pointer' : 'default',
         }}
       >
         <Stack
@@ -134,25 +152,6 @@ const ContextMenuItem = (props: {
             height: '100%',
           }}
         >
-          {isGroup &&
-            !isFirstDeep &&
-            (isOpen ? (
-              <KeyboardArrowDownIcon
-                sx={{
-                  color: 'rgba(55, 53, 47, 0.45)',
-                  fontSize: 16,
-                  mr: 2,
-                }}
-              />
-            ) : (
-              <KeyboardArrowRightIcon
-                sx={{
-                  fontSize: 16,
-                  color: 'rgba(55, 53, 47, 0.45)',
-                  mr: 2,
-                }}
-              />
-            ))}
           <IconButton
             size={'small'}
             onClick={(event) => {
@@ -163,7 +162,10 @@ const ContextMenuItem = (props: {
             {node.data.editable ? (
               <EditIcon sx={{ fontSize: 20 }} />
             ) : (
-              <VisibilityIcon sx={{ fontSize: 20 }} />
+              <ContextMenuIcon
+                icon={'Lock'}
+                sx={{ color: 'rgba(0,0,0,.38)', fontSize: 20 }}
+              />
             )}
           </IconButton>
         </Stack>

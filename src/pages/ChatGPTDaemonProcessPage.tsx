@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import Browser from 'webextension-polyfill'
 import { ChatGPTDaemonProcess, IChatGPTDaemonProcess } from '@/features/chatgpt'
 import './chatGPT.less'
-import SettingsIcon from '@mui/icons-material/Settings'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import { IconButton, Stack, Typography } from '@mui/material'
 import {
   IChromeExtensionChatGPTDaemonProcessListenEvent,
@@ -370,7 +370,7 @@ const ChatGPTDaemonProcessPage: FC = () => {
         justifyContent={'center'}
       >
         <div className={'use-chat-gpt-ai-setting-icon'}>
-          <SettingsIcon sx={{ fontSize: 16 }} />
+          <SettingsOutlinedIcon sx={{ fontSize: 16 }} />
         </div>
         <Typography variant={'body1'} component={'span'}>
           {`Please keep this page open to use ${APP_NAME} extension.`}

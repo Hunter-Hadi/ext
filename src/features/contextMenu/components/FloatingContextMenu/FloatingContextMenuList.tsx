@@ -40,7 +40,9 @@ const RenderDropdownItem = forwardRef<
       >
         {menuItem.children.map((childMenuItem, index) => {
           return (
-            <DropdownMenuItem
+            <RenderDropdownItem
+              {...rest}
+              root={root}
               key={childMenuItem.id}
               menuItem={childMenuItem}
               label={childMenuItem.text}
@@ -156,6 +158,7 @@ const FloatingContextMenuList: FC<
         )
       }
     })
+    console.log('RenderMenuList', menuList, nodeList)
     return nodeList
   }, [menuList])
   return (

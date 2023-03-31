@@ -10,14 +10,14 @@ type Props = {
 const ContextMenuPlaceholder: React.FC<Props> = (props) => {
   return (
     <Box
-      id={'1231231231'}
       sx={{
         bgcolor: 'primary.main',
-        height: 2,
+        height: 4,
         position: 'absolute',
         right: 0,
         transform: 'translateY(-50%)',
         top: 0,
+        zIndex: 100,
       }}
       style={{ left: props.depth * 24 }}
     />

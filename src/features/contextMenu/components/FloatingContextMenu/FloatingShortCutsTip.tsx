@@ -9,7 +9,7 @@ const FloatingShortCutsTip: FC = () => {
     useFloatingContextMenu()
   const appSettings = useRecoilValue(AppSettingsState)
   const [chatBoxWidth, setChatBoxWidth] = useState(16)
-  const [buttonShow, setButtonShow] = useState(false)
+  const [buttonShow, setButtonShow] = useState(3)
   const commandKey = useMemo(() => {
     if (appSettings?.commands) {
       const command = appSettings.commands.find(
@@ -34,13 +34,15 @@ const FloatingShortCutsTip: FC = () => {
       } else {
         setChatBoxWidth(16)
       }
-      setButtonShow(true)
+      setButtonShow(1)
     }
   }, [haveSelection, appSettings.userSettings, commandKey])
   useEffect(() => {
-    if (buttonShow) {
+    if (buttonShow === 1) {
+      setButtonShow(2)
+    } else if (buttonShow === 2) {
       const timer = setTimeout(() => {
-        setButtonShow(false)
+        setButtonShow(3)
       }, 2000)
       return () => {
         clearTimeout(timer)
@@ -51,36 +53,34 @@ const FloatingShortCutsTip: FC = () => {
     }
   }, [buttonShow])
   useEffect(() => {
-    setButtonShow(false)
+    setButtonShow(3)
   }, [floatingDropdownMenuOpen])
-  console.log('button show', buttonShow)
   return (
     <Box
       sx={{
         position: 'fixed',
         bottom: 16,
         right: chatBoxWidth,
-        zIndex: buttonShow ? 2147483661 : -1,
+        zIndex: buttonShow !== 3 ? 2147483661 : -1,
         backgroundColor: 'rgba(98,98,105,1)',
         borderRadius: '8px',
         cursor: 'pointer',
-        transition: 'max-width 0.3s ease-in-out',
-        height: 62,
+        transition: 'all 0.3s ease-in-out',
         overflow: 'hidden',
-        maxWidth: buttonShow ? '100%' : 0,
+        maxWidth: buttonShow !== 3 ? '100%' : 0,
         display: 'grid',
       }}
       component={'div'}
       onClick={showFloatingContextMenu}
     >
       <Typography
-        fontSize={'20px'}
+        fontSize={'24px'}
         fontWeight={'bold'}
         color={'#fff'}
         noWrap
-        sx={{ py: 2, px: 3 }}
+        sx={{ px: '10px', py: '4px' }}
       >
-        Press {commandKey}
+        {commandKey}
       </Typography>
     </Box>
   )

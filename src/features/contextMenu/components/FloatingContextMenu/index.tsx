@@ -96,12 +96,30 @@ const FloatingContextMenu: FC<{
 
   useEffect(() => {
     if (contextMenuList.length > 0) {
-      updateFloatingDropdownMenuSelectedItem((preState) => {
-        return {
-          ...preState,
-          lastHoverContextMenuId: contextMenuList?.[0].children?.[0].id,
+      let firstMenuItem: null | IContextMenuItemWithChildren = null
+      contextMenuList.find((menuItem) => {
+        if (menuItem.data.type === 'group') {
+          if (menuItem.children.length > 0) {
+            firstMenuItem =
+              menuItem.children.find(
+                (child) => child.data.type === 'shortcuts',
+              ) || null
+            return firstMenuItem !== null
+          }
+        } else if (menuItem.data.type === 'shortcuts') {
+          firstMenuItem = menuItem
+          return true
         }
+        return false
       })
+      if (firstMenuItem) {
+        updateFloatingDropdownMenuSelectedItem((prev) => {
+          return {
+            ...prev,
+            lastHoverContextMenuId: firstMenuItem?.id || '',
+          }
+        })
+      }
     }
   }, [contextMenuList])
 
@@ -245,16 +263,7 @@ const FloatingContextMenu: FC<{
                 width: '100%',
                 padding: '7px 8px',
               }}
-              onKeyDownCapture={(event) => {
-                event.stopPropagation()
-              }}
-              onKeyUpCapture={(event) => {
-                event.stopPropagation()
-              }}
               onKeyPress={(event) => {
-                event.stopPropagation()
-              }}
-              onKeyPressCapture={(event) => {
                 event.stopPropagation()
               }}
             >
@@ -330,7 +339,7 @@ const FloatingContextMenu: FC<{
                             {
                               type: 'RENDER_CHATGPT_PROMPT',
                               parameters: {
-                                template: `${value}:\n\n{{HIGHLIGHTED_TEXT}}`,
+                                template: `${value}:\n\n{{SELECTED_TEXT}}`,
                               },
                             },
                             {
@@ -393,7 +402,7 @@ const FloatingContextMenu: FC<{
                             {
                               type: 'RENDER_CHATGPT_PROMPT',
                               parameters: {
-                                template: `${inputValue}:\n """\n{{HIGHLIGHTED_TEXT}}\n"""`,
+                                template: `${inputValue}:\n """\n{{SELECTED_TEXT}}\n"""`,
                               },
                             },
                             {

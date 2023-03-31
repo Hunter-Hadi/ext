@@ -296,10 +296,21 @@ Browser.runtime.onConnect.addListener((port) => {
               })
             } else if (key === 'options') {
               const chromeExtensionId = Browser.runtime.id
-              await Browser.tabs.create({
-                url: `chrome-extension://${chromeExtensionId}/options.html?${query}`,
-                active: true,
+              const findOptionPage = await Browser.tabs.query({
+                url: `chrome-extension://${chromeExtensionId}/options.html`,
               })
+              if (findOptionPage && findOptionPage.length > 0) {
+                await Browser.tabs.update(findOptionPage[0].id, {
+                  url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
+                  active: true,
+                })
+                return
+              } else {
+                await Browser.tabs.create({
+                  url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
+                  active: true,
+                })
+              }
             } else if (key === 'daemon_process') {
               await createDaemonProcessTab()
             }

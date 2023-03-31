@@ -45,7 +45,11 @@ const ForceUpdateContextMenuReadOnlyOption = () => {
           const defaultItem = defaultJsonMap.get(item.id)
           if (defaultItem) {
             updateCount++
-            return defaultItem
+            return {
+              ...defaultItem,
+              id: item.id,
+              parent: item.parent,
+            }
           }
         }
         return item

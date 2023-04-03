@@ -61,6 +61,12 @@ export const getAppActiveElement = (): HTMLElement | null => {
   if (element === undefined) return null
   return element
 }
+export const getFloatingContextMenuActiveElement = (): HTMLElement | null => {
+  const element = document.querySelector(`#${ROOT_CONTEXT_MENU_ID}`)?.shadowRoot
+    ?.activeElement as HTMLDivElement
+  if (element === undefined) return null
+  return element
+}
 export const getAppRootElement = (): HTMLDivElement | null => {
   return document
     .querySelector(`#${ROOT_CONTAINER_ID}`)

@@ -2,7 +2,10 @@ import React, { FC, useEffect, useMemo, useState } from 'react'
 import { Box, Skeleton, SxProps } from '@mui/material'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
-import { getAppActiveElement } from '@/utils'
+import {
+  getAppActiveElement,
+  getFloatingContextMenuActiveElement,
+} from '@/utils'
 import { AppState } from '@/store'
 import {
   ROOT_CHAT_BOX_INPUT_ID,
@@ -95,6 +98,12 @@ const autoFocusWithAllWebsite = (
       }, 100)
     }
   }
+  if (
+    textareaElement.isSameNode(getAppActiveElement()) ||
+    textareaElement.isSameNode(getFloatingContextMenuActiveElement())
+  ) {
+    return
+  }
   focusTextareaAndAutoSize(
     textareaElement,
     childrenHeight,
@@ -150,7 +159,10 @@ const AutoHeightTextarea: FC<{
     setInputValue(defaultValue || '')
     setTimeout(() => {
       if (textareaRef.current) {
-        if (textareaRef.current?.isSameNode(getAppActiveElement())) {
+        if (
+          textareaRef.current?.isSameNode(getAppActiveElement()) ||
+          textareaRef.current?.isSameNode(getFloatingContextMenuActiveElement())
+        ) {
           throttleAutoSizeTextarea(textareaRef.current, childrenHeight)
         } else {
           const isOpenApp =

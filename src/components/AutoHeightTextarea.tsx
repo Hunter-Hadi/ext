@@ -4,48 +4,17 @@ import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
 import { getAppActiveElement } from '@/utils'
 import { AppState } from '@/store'
-import { ROOT_CHAT_BOX_INPUT_ID, ROOT_CONTAINER_ID } from '@/types'
+import {
+  ROOT_CHAT_BOX_INPUT_ID,
+  ROOT_CONTAINER_ID,
+  ROOT_FLOATING_INPUT_ID,
+} from '@/types'
+import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
 }
 const LINE_HEIGHT = 24
-
-const removeModalEvent = (textareaElement: HTMLTextAreaElement) => {
-  let isMatchElement = false
-  const muiModalElement = document.querySelector(
-    'div[data-testid=sentinelStart][tabindex="0"]',
-  )
-  // mui的modal的判断
-  if (
-    muiModalElement?.nextElementSibling &&
-    muiModalElement.nextElementSibling.getAttribute('tabindex') === '-1'
-  ) {
-    muiModalElement.nextElementSibling.removeAttribute('tabindex')
-    isMatchElement = true
-  }
-  // linkedin的modal的判断
-  if (window.location.host === 'www.linkedin.com') {
-    const linkedinModalElement = document.querySelector(
-      'div[tabindex="-1"][role="dialog"]',
-    ) as HTMLDivElement
-    if (linkedinModalElement) {
-      linkedinModalElement.removeAttribute('tabindex')
-      ;(document.activeElement as HTMLElement)?.blur()
-      isMatchElement = true
-      setTimeout(() => {
-        linkedinModalElement.setAttribute('tabindex', '-1')
-      }, 100)
-    }
-  }
-  if (isMatchElement) {
-    console.log('match need remove modal')
-    focusTextareaAndAutoSize(textareaElement)
-  }
-}
-const afterRemoveModalEvent = (textareaElement: HTMLTextAreaElement) => {
-  console.log('afterRemoveModalEvent')
-}
 
 const autoSizeTextarea = (
   textareaElement: HTMLTextAreaElement,
@@ -96,6 +65,47 @@ const focusTextareaAndAutoSize = (
   }, 100)
 }
 
+const autoFocusWithAllWebsite = (
+  textareaElement: HTMLTextAreaElement,
+  childrenHeight = 0,
+) => {
+  let matchWebsite = ''
+  const muiModalElement = document.querySelector(
+    'div[data-testid=sentinelStart][tabindex="0"]',
+  )
+  // mui的modal的判断
+  if (
+    muiModalElement?.nextElementSibling &&
+    muiModalElement.nextElementSibling.getAttribute('tabindex') === '-1'
+  ) {
+    matchWebsite = 'mui'
+    muiModalElement.nextElementSibling.removeAttribute('tabindex')
+  }
+  // linkedin的modal的判断
+  if (window.location.host === 'www.linkedin.com') {
+    const linkedinModalElement = document.querySelector(
+      'div[tabindex="-1"][role="dialog"]',
+    ) as HTMLDivElement
+    if (linkedinModalElement) {
+      matchWebsite = 'linkedin'
+      linkedinModalElement.removeAttribute('tabindex')
+      ;(document.activeElement as HTMLElement)?.blur()
+      setTimeout(() => {
+        linkedinModalElement.setAttribute('tabindex', '-1')
+      }, 100)
+    }
+  }
+  focusTextareaAndAutoSize(
+    textareaElement,
+    childrenHeight,
+    `autoFocusWithAllWebsite [${matchWebsite}]`,
+  )
+}
+
+const afterAutoFocusWithAllWebsite = (textareaElement: HTMLTextAreaElement) => {
+  console.log('afterRemoveModalEvent')
+}
+
 const AutoHeightTextarea: FC<{
   textareaRef: React.RefObject<HTMLTextAreaElement>
   loading?: boolean
@@ -112,6 +122,7 @@ const AutoHeightTextarea: FC<{
   placeholder?: string
 }> = (props) => {
   const appState = useRecoilValue(AppState)
+  const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const {
     defaultValue,
     onChange,
@@ -129,6 +140,7 @@ const AutoHeightTextarea: FC<{
   } = props
   // const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
+
   const throttleAutoSizeTextarea = useMemo(
     () => throttle(autoSizeTextarea, 200),
     [],
@@ -155,7 +167,7 @@ const AutoHeightTextarea: FC<{
         }
       }
     }, 100)
-  }, [defaultValue, textareaRef])
+  }, [defaultValue])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -167,15 +179,26 @@ const AutoHeightTextarea: FC<{
       clearInterval(timer)
     }
   }, [])
+  // 浮动dropdown chat input
   useEffect(() => {
-    if (appState.open && textareaRef.current) {
-      if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
-        focusTextareaAndAutoSize(
-          textareaRef.current,
-          childrenHeight,
-          'appState, textareaRef, loading' + InputId,
-        )
-      }
+    if (
+      floatingDropdownMenu.open &&
+      textareaRef.current &&
+      InputId === ROOT_FLOATING_INPUT_ID
+    ) {
+      console.log('focusTextareaAndAutoSize 浮动dropdown chat input', InputId)
+      autoFocusWithAllWebsite(textareaRef.current, childrenHeight)
+    }
+  }, [floatingDropdownMenu.open])
+  // 侧边栏chat input
+  useEffect(() => {
+    if (
+      appState.open &&
+      textareaRef.current &&
+      InputId === ROOT_CHAT_BOX_INPUT_ID
+    ) {
+      console.log('focusTextareaAndAutoSize 侧边栏chat input', InputId)
+      autoFocusWithAllWebsite(textareaRef.current, childrenHeight)
     }
   }, [appState.open, loading])
   return (
@@ -298,7 +321,7 @@ const AutoHeightTextarea: FC<{
           onKeydown && onKeydown(event)
         }}
         onClick={(event) => {
-          removeModalEvent(event.currentTarget)
+          autoFocusWithAllWebsite(event.currentTarget, childrenHeight)
         }}
         onInput={(event) => {
           console.log(
@@ -311,7 +334,7 @@ const AutoHeightTextarea: FC<{
         }}
         onBlur={(event) => {
           throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
-          afterRemoveModalEvent(event.currentTarget)
+          afterAutoFocusWithAllWebsite(event.currentTarget)
         }}
       />
       {children}

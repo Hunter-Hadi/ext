@@ -16,6 +16,7 @@ const GmailChatBoxMessageItem: FC<{
   onSave?: (text: string) => void
   onCopy?: () => void
   onRetry?: (messageId: string) => void
+  className?: string
 }> = (props) => {
   const {
     message,
@@ -25,6 +26,7 @@ const GmailChatBoxMessageItem: FC<{
     onSave,
     onCopy,
     onRetry,
+    className,
   } = props
   const [defaultText, setDefaultText] = useState(message.text || '')
   const [isEdit, setIsEdit] = useState(false)
@@ -68,6 +70,7 @@ const GmailChatBoxMessageItem: FC<{
   }, [message.text])
   return (
     <Stack
+      className={className}
       sx={{
         width: '100%',
         p: 1,

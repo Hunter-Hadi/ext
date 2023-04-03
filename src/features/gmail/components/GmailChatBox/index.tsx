@@ -13,7 +13,7 @@ import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
 import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
-import { elementScrollToBottom, numberWithCommas } from '@/utils'
+import { numberWithCommas } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
   ChatGPTConversationState,
@@ -26,6 +26,7 @@ import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
 import DevContent from '@/components/DevContent'
 import { TestAllActionsButton } from '@/features/shortcuts'
+import throttle from 'lodash-es/throttle'
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -86,9 +87,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [inputValue, setInputValue] = useState(defaultValue || '')
   // 为了在消息更新前计算滚动高度
-  const [currentMessages, setCurrentMessages] = useState(messages)
-  const [currentWritingMessage, setCurrentWritingMessage] =
-    useState(writingMessage)
   const currentMaxInputLength = useMemo(() => {
     return conversation.model === 'gpt-4'
       ? MAX_GPT4_INPUT_LENGTH
@@ -97,54 +95,47 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const isGmailChatBoxError = useMemo(() => {
     return inputValue.length > currentMaxInputLength
   }, [inputValue, currentMaxInputLength])
-  const isScrollingToBottomRef = useRef(false)
+  const scrolledToBottomRef = useRef(true)
   useEffect(() => {
-    setCurrentWritingMessage(writingMessage)
-    setCurrentMessages(messages)
-    const stackElement = stackRef.current
-    if (!stackElement) {
+    const list = stackRef.current
+    if (!list) {
       return
     }
-    let needScrollToBottom = false
-    if (
-      stackElement.clientHeight + stackElement.scrollTop + 5 >=
-      stackElement.scrollHeight
-    ) {
-      console.log('test scroll: writing 需要滚动到底部')
-      needScrollToBottom = true
-    } else {
-      console.log('test scroll: writing 不在底部 不滚动')
-    }
-    setTimeout(() => {
-      if (needScrollToBottom && !isScrollingToBottomRef.current) {
-        stackElement.scrollTo(0, stackElement.scrollHeight)
+    const handleScroll = (event: any) => {
+      if (event.deltaY < 0) {
+        scrolledToBottomRef.current = false
+        return
       }
-    }, 100)
-  }, [writingMessage, messages])
+      const scrollTop = list.scrollTop
+      const scrollHeight = list.scrollHeight
+      const clientHeight = list.clientHeight
+      const isScrolledToButton = clientHeight + scrollTop >= scrollHeight
+      if (isScrolledToButton) {
+        scrolledToBottomRef.current = true
+      }
+    }
+
+    const throttleHandleScroll = throttle(handleScroll, 100)
+    list.addEventListener('wheel', throttleHandleScroll)
+    return () => list.removeEventListener('wheel', throttleHandleScroll)
+  }, [])
   useEffect(() => {
-    const stackElement = stackRef.current
-    if (!stackElement) {
-      return
+    const list = stackRef.current
+    if (scrolledToBottomRef.current && list) {
+      list.scrollTo(0, list.scrollHeight)
     }
-    if (currentMessages[currentMessages.length - 1]?.type === 'ai') {
-      return
+  }, [writingMessage])
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1]
+      if (lastMessage.type === 'user') {
+        scrolledToBottomRef.current = true
+      }
     }
-    console.log('test scroll: messages update')
-    // 新message出现滚动到底部一次
-    isScrollingToBottomRef.current = true
-    setTimeout(() => {
-      elementScrollToBottom(stackElement, 400)
-      setTimeout(() => {
-        isScrollingToBottomRef.current = false
-      }, 500)
-    }, 100)
-  }, [currentMessages])
+  }, [messages])
   useEffect(() => {
     console.log('default update', step)
     setInputValue(defaultValue)
-    setTimeout(() => {
-      textareaRef.current && elementScrollToBottom(textareaRef.current, 300)
-    }, 100)
   }, [defaultValue, step])
   return (
     <Stack
@@ -186,9 +177,10 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTModelsSelector />
-        {currentMessages.map((message) => {
+        {messages.map((message) => {
           return (
             <GmailChatBoxMessageItem
+              className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
               insertAble={insertAble}
               replaceAble={true}
               message={message}
@@ -204,11 +196,12 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             />
           )
         })}
-        {currentWritingMessage && (
+        {writingMessage && (
           <GmailChatBoxMessageItem
+            className={'use-chat-gpt-ai__writing-message-item'}
             replaceAble={false}
             insertAble={false}
-            message={currentWritingMessage}
+            message={writingMessage}
             aiAvatar={aiAvatar}
             editAble={false}
             userAvatar={userAvatar}

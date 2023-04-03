@@ -34,6 +34,8 @@ import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailTool
 
 const rootId = 'root'
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const saveTreeData = async (
   key: IChromeExtensionSettingsContextMenuKey,
   treeData: IContextMenuItem[],
@@ -255,6 +257,7 @@ const ContextMenuSettings: FC<{
     }
     setConfirmOpen(false)
     setconfirmType(null)
+    setEditNode(null)
   }
 
   useEffect(() => {
@@ -289,9 +292,11 @@ const ContextMenuSettings: FC<{
           overflow={'auto'}
           position={'relative'}
         >
-          <Stack>
-            <ContextMenuViewSource treeData={treeData} />
-          </Stack>
+          {!isProduction && (
+            <Stack>
+              <ContextMenuViewSource treeData={treeData} />
+            </Stack>
+          )}
           <DndProvider backend={MultiBackend} options={getBackendOptions()}>
             <Tree
               tree={treeData}

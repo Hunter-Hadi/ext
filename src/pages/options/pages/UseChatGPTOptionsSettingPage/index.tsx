@@ -64,8 +64,8 @@ const UseChatGPTOptionsSettingPage = () => {
         }}
       >
         <Box mb={2}>
-          <Typography fontSize={20} fontWeight={700} mb={2}>
-            Color Schema Mode
+          <Typography fontSize={20} fontWeight={700} mb={1}>
+            Theme Mode
           </Typography>
           <ColorSchemaSelect
             defaultValue={appSettings.colorSchema}
@@ -77,7 +77,7 @@ const UseChatGPTOptionsSettingPage = () => {
             }
           />
         </Box>
-        <Typography fontSize={20} fontWeight={700} mb={1}>
+        <Typography fontSize={20} fontWeight={700} mb={2}>
           AI output language
         </Typography>
         <CloseAlert

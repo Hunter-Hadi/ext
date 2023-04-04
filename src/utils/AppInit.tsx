@@ -96,14 +96,14 @@ export const AppSettingsInit = () => {
           ...settings,
         })
 
-        // if (!settings.colorSchema) {
-        //   setChromeExtensionSettings({
-        //     colorSchema: window.matchMedia('(prefers-color-scheme: dark)')
-        //       .matches
-        //       ? 'dark'
-        //       : 'light',
-        //   })
-        // }
+        if (!settings.colorSchema) {
+          setChromeExtensionSettings({
+            colorSchema: window.matchMedia('(prefers-color-scheme: dark)')
+              .matches
+              ? 'dark'
+              : 'light',
+          })
+        }
 
         if (settings?.currentModel) {
           updateConversation((conversation) => {

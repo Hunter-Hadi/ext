@@ -21,7 +21,7 @@ const WordItem = (props: { word: string }) => {
           py: '2px',
           fontWeight: 700,
           background: 'rgba(118, 1, 211, 0.1)',
-          color: '#7601D3',
+          color: 'customColor.main',
         },
       }}
     >

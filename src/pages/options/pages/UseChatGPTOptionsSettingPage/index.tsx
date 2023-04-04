@@ -10,10 +10,11 @@ import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import CloseAlert from '@/components/CloseAlert'
 import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
 import { AppSettingsState } from '@/store'
-import { useRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 
 const UseChatGPTOptionsSettingPage = () => {
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const appSettings = useRecoilValue(AppSettingsState)
+  const [colorSchema, setColorSchema] = useState(appSettings.colorSchema)
   const [userSettings, setUserSettings] = useState<any>({
     language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
     selectionButtonVisible: true,
@@ -24,10 +25,10 @@ const UseChatGPTOptionsSettingPage = () => {
     if (loaded) {
       setChromeExtensionSettings({
         userSettings,
-        colorSchema: appSettings.colorSchema,
+        colorSchema,
       })
     }
-  }, [loaded, userSettings, appSettings.colorSchema])
+  }, [loaded, userSettings, colorSchema])
   useEffect(() => {
     getChromeExtensionSettings().then((res) => {
       console.log('settings', res.userSettings?.selectionButtonVisible)
@@ -68,13 +69,8 @@ const UseChatGPTOptionsSettingPage = () => {
           Appearance
         </Typography>
         <ColorSchemaSelect
-          defaultValue={appSettings.colorSchema}
-          onChange={(value) =>
-            setAppSettings((preValue) => ({
-              ...preValue,
-              colorSchema: value,
-            }))
-          }
+          defaultValue={colorSchema}
+          onChange={setColorSchema}
         />
         {/* </Box> */}
         <Divider sx={{ my: 4 }} />

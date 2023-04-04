@@ -39,12 +39,12 @@ const GmailChatBoxMessageItem: FC<{
   const ChatBoxSx = useMemo(() => {
     const hoverSx = isHover
       ? {
-          '*': {
-            userSelect: 'auto!important',
+          '& *': {
+            userSelect: 'text!important',
           },
         }
       : {
-          '*': {
+          '& *': {
             userSelect: 'none!important',
           },
         }
@@ -133,12 +133,21 @@ const GmailChatBoxMessageItem: FC<{
         }
         hoverTimer.current = setTimeout(() => {
           setIsHover(false)
+          const currentSelection = window.getSelection()
+          if (
+            currentSelection &&
+            currentSelection.toString().trim() &&
+            currentSelection.focusNode &&
+            currentSelection.focusNode.isSameNode(document.body)
+          ) {
+            // clear
+            currentSelection.removeAllRanges()
+          }
         }, 500)
       }}
       spacing={1}
       key={message.messageId}
     >
-      <p>{isHover ? 'hover!' : 'no hover'}</p>
       {/*<Stack>*/}
       {/*  <p style={{ fontSize: '12px', color: 'red' }}>*/}
       {/*    messageId: {message.messageId}*/}

@@ -95,8 +95,11 @@ const ChatGPTModelsSelector: FC = () => {
           <Select
             MenuProps={{
               elevation: 0,
-              sx: {
-                border: `1px solid rgba(0, 0, 0, 0.23)`,
+              MenuListProps: {
+                sx: {
+                  border: `1px solid`,
+                  borderColor: 'customColor.borderColor',
+                },
               },
             }}
             sx={{ fontSize: '14px' }}
@@ -137,7 +140,7 @@ const ChatGPTModelsSelector: FC = () => {
                       tooltip: {
                         sx: {
                           border: '1px solid rgb(245,245,245)',
-                          backgroundColor: '#fff',
+                          bgcolor: 'background.paper',
                           p: 1,
                         },
                       },

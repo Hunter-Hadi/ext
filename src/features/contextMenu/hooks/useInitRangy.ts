@@ -12,6 +12,7 @@ import {
   computedIframeSelection,
 } from '@/features/contextMenu/utils'
 import { IRangyRect } from '@/features/contextMenu'
+import { ROOT_CONTAINER_ID } from '@/types'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -83,6 +84,10 @@ const useInitRangy = () => {
             return
           }
         } else if (nativeSelection && nativeSelection?.toString().trim()) {
+          if (activeElement.id === ROOT_CONTAINER_ID) {
+            hideRangy()
+            return
+          }
           // 2. rangy没有选区，但是原生有选区
           selectionText = nativeSelection?.toString().trim()
           selectionHtml = nativeSelection?.toString().trim()

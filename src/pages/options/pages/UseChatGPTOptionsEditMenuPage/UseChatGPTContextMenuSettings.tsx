@@ -417,11 +417,14 @@ const ContextMenuSettings: FC<{
               },
               li: {
                 '&:has(> .dragTarget)': {
-                  outline: '3px solid rgba(118, 1, 211, 0.1)',
+                  outline: (t) =>
+                    t.palette.mode === 'dark'
+                      ? `3px solid rgb(216 167 255 / 45%)`
+                      : '3px solid rgba(118, 1, 211, 0.1)',
                   borderRadius: '4px',
                   bgcolor: (t) =>
                     t.palette.mode === 'dark'
-                      ? 'rgba(118,1,211,0.1)'
+                      ? 'rgb(115 61 158 / 10%)'
                       : 'rgba(118, 1, 211, 0.04)',
                 },
               },

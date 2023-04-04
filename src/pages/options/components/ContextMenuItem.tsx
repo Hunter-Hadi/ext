@@ -81,11 +81,14 @@ const ContextMenuItem = (props: {
               />
             </div>
           ) : (
-            <DragIndicatorIcon
-              sx={{
-                fontSize: DRAG_ICON_SIZE,
-                cursor: 'default',
-                color: 'inherit',
+            <div
+              ref={handleRef}
+              style={{
+                zIndex: -1,
+                userSelect: 'none',
+                opacity: 0,
+                width: 1,
+                height: 1,
               }}
             />
           )}

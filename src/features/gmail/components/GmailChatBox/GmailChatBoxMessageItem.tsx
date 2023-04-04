@@ -43,9 +43,15 @@ const GmailChatBoxMessageItem: FC<{
         borderBottomLeftRadius: 0,
         // color: 'rgb(56,56,56)!important',
         // bgcolor: `rgb(233,233,235)!important`,
+
+        color:
+          colorSchema === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)!important',
+        border: '1px solid',
+        borderColor:
+          colorSchema === 'dark' ? 'customColor.borderColor' : 'transparent',
         bgcolor: (t: Theme) =>
           t.palette.mode === 'dark'
-            ? 'background.default'
+            ? 'rgba(255, 255, 255, 0.04);'
             : 'rgb(233,233,235)!important',
       } as SxProps
     }
@@ -53,11 +59,21 @@ const GmailChatBoxMessageItem: FC<{
       return {
         flexDirection: 'row',
         justifyContent: 'end',
-        bgcolor:
-          process.env.APP_ENV === 'EZ_MAIL_AI'
-            ? '#FEE6E1 !important'
-            : '#F1E2FD !important',
-        color: 'rgba(0,0,0,0.87)!important',
+        bgcolor: () => {
+          if (process.env.APP_ENV === 'EZ_MAIL_AI') {
+            return '#FEE6E1 !important'
+          }
+          if (colorSchema === 'dark') {
+            return '#6B23C259 !important'
+          } else {
+            return '#F1E2FD !important'
+          }
+        },
+        border: '1px solid',
+        borderColor:
+          colorSchema === 'dark' ? 'customColor.borderColor' : 'transparent',
+        color:
+          colorSchema === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)!important',
         maxWidth: '80%',
         width: 'auto',
         borderRadius: '8px',

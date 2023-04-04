@@ -112,7 +112,7 @@ const ContextMenuEditForm: FC<{
           left: '50%',
           transform: 'translate(-50%, -50%)',
           borderRadius: 2,
-          bgcolor: '#fff',
+          bgcolor: (t) => (t.palette.mode === 'dark' ? '#3d3d3d' : '#fff'),
           minWidth: '60vw',
           maxWidth: '90vw',
           p: 4,

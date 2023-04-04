@@ -1,11 +1,7 @@
 import { Box, Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
-import {
-  getChromeExtensionSettings,
-  IChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/utils'
+import { getChromeExtensionSettings, setChromeExtensionSettings } from '@/utils'
 import AppLoadingLayout from '@/components/LoadingLayout'
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/types'
 import TextSelectPopupSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/TextSelectPopupSetting'
@@ -14,25 +10,24 @@ import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import CloseAlert from '@/components/CloseAlert'
 import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
 import { AppSettingsState } from '@/store'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 const UseChatGPTOptionsSettingPage = () => {
-  const AppSettings = useRecoilValue(AppSettingsState)
+  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const [userSettings, setUserSettings] = useState<any>({
     language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
     selectionButtonVisible: true,
   })
   const [loaded, setLoaded] = useState(false)
   const [commandKey, setCommandKey] = useState('')
-  const [colorSchema, setColorSchema] = useState(AppSettings.colorSchema)
   useEffect(() => {
     if (loaded) {
       setChromeExtensionSettings({
         userSettings,
-        colorSchema: colorSchema as IChromeExtensionSettings['colorSchema'],
+        colorSchema: appSettings.colorSchema,
       })
     }
-  }, [loaded, userSettings, colorSchema])
+  }, [loaded, userSettings, appSettings.colorSchema])
   useEffect(() => {
     getChromeExtensionSettings().then((res) => {
       console.log('settings', res.userSettings?.selectionButtonVisible)
@@ -44,9 +39,9 @@ const UseChatGPTOptionsSettingPage = () => {
         setCommandKey(command.shortcut || '')
       }
 
-      if (res.colorSchema) {
-        setColorSchema(res.colorSchema)
-      }
+      // if (res.colorSchema) {
+      //   setAppSettings(pre => )
+      // }
 
       setUserSettings((prevState: any) => {
         return {
@@ -59,8 +54,6 @@ const UseChatGPTOptionsSettingPage = () => {
       }, 1000)
     })
   }, [])
-
-  console.log('UseChatGPTOptionsSettingPage colorSchema', colorSchema)
 
   return (
     <AppLoadingLayout loading={!loaded}>
@@ -75,8 +68,13 @@ const UseChatGPTOptionsSettingPage = () => {
             Color Schema Mode
           </Typography>
           <ColorSchemaSelect
-            defaultValue={colorSchema}
-            onChange={setColorSchema}
+            defaultValue={appSettings.colorSchema}
+            onChange={(value) =>
+              setAppSettings((preValue) => ({
+                ...preValue,
+                colorSchema: value,
+              }))
+            }
           />
         </Box>
         <Typography fontSize={20} fontWeight={700} mb={1}>

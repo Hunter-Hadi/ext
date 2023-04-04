@@ -1,17 +1,17 @@
-import CloseIcon from '@mui/icons-material/Close';
-import { Alert, Collapse, IconButton, Stack } from '@mui/material';
-import { AlertProps } from '@mui/material/Alert/Alert';
-import React, { FC, useEffect, useState } from 'react';
+import CloseIcon from '@mui/icons-material/Close'
+import { Alert, Collapse, IconButton, Stack } from '@mui/material'
+import { AlertProps } from '@mui/material/Alert/Alert'
+import React, { FC, useEffect, useState } from 'react'
 
-const CloseAlert: FC<AlertProps> = props => {
-  const { sx, ...rest } = props;
-  const [open, setOpen] = useState(true);
-  const [boxOpen, setBoxOpen] = useState(true);
+const CloseAlert: FC<AlertProps> = (props) => {
+  const { sx, ...rest } = props
+  const [open, setOpen] = useState(true)
+  const [boxOpen, setBoxOpen] = useState(true)
   useEffect(() => {
     if (!open) {
-      setTimeout(() => setBoxOpen(false), 500);
+      setTimeout(() => setBoxOpen(false), 500)
     }
-  }, [open]);
+  }, [open])
   return (
     <Stack
       direction={'row'}
@@ -28,26 +28,27 @@ const CloseAlert: FC<AlertProps> = props => {
       >
         <Alert
           sx={sx}
+          severity="info"
           {...rest}
           action={
             props.action ? (
               props.action
             ) : (
               <IconButton
-                aria-label='close'
-                color='inherit'
-                size='small'
+                aria-label="close"
+                color="inherit"
+                size="small"
                 onClick={() => {
-                  setOpen(false);
+                  setOpen(false)
                 }}
               >
-                <CloseIcon fontSize='inherit' />
+                <CloseIcon fontSize="inherit" />
               </IconButton>
             )
           }
         />
       </Collapse>
     </Stack>
-  );
-};
-export default CloseAlert;
+  )
+}
+export default CloseAlert

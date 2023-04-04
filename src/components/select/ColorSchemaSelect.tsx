@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { FormControl, Stack, Switch, Typography } from '@mui/material'
 
 interface IProps {
@@ -9,10 +9,7 @@ interface IProps {
 type IColorSchemaType = 'dark' | 'light'
 
 const ColorSchemaSelect: FC<IProps> = ({ defaultValue, onChange }) => {
-  const [value, setValue] = useState(defaultValue)
-
   const handleChange = (value: IColorSchemaType) => {
-    setValue(value)
     onChange(value)
   }
 
@@ -21,7 +18,7 @@ const ColorSchemaSelect: FC<IProps> = ({ defaultValue, onChange }) => {
       <Stack direction="row" spacing={1} alignItems="center">
         <Typography>Ligth</Typography>
         <Switch
-          checked={value === 'dark'}
+          checked={defaultValue === 'dark'}
           onChange={(event) => {
             handleChange(event.target.checked ? 'dark' : 'light')
           }}

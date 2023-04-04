@@ -98,29 +98,9 @@ const useInitChatGPTClient = () => {
       event: 'Client_checkChatGPTStatus',
     })
     window.addEventListener('focus', onFocus)
-    const updateIcon = () => {
-      const isDarkModeEnabled =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      console.log('mode', isDarkModeEnabled ? 'dark' : 'light')
-      port.postMessage({
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        event: 'Client_updateIcon',
-        data: {
-          mode: isDarkModeEnabled ? 'dark' : 'light',
-        },
-      })
-    }
-    // theme mode change
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', updateIcon)
-    updateIcon()
+
     return () => {
       window.removeEventListener('focus', onFocus)
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', updateIcon)
       Browser?.runtime?.onMessage?.removeListener(listener)
       port?.destroy()
     }

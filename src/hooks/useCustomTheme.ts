@@ -15,7 +15,7 @@ type CustomColor = {
 
 export const customColor = {
   main: APP_ENV === 'EZ_MAIL_AI' ? '#DB4437' : '#7601D3',
-  darkMain: APP_ENV === 'EZ_MAIL_AI' ? '#DB4437' : '#F1E2FD',
+  darkMain: APP_ENV === 'EZ_MAIL_AI' ? '#DB4437' : '#B273FF',
   // borderColor: getIsDarkMode()
   //   ? 'rgba(255, 255, 255, 0.12)'
   //   : 'rgb(237,237,236)',
@@ -26,9 +26,9 @@ export const customColor = {
   lightBackground: '#fff',
   lightPaperBackground: '#fff',
 
-  darkBorderColor: 'rgba(255, 255, 255, 0.12)',
-  darkBackground: '#14162a',
-  darkPaperBackground: '#292b42',
+  darkBorderColor: 'rgba(255, 255, 255, 0.2)',
+  darkBackground: '#202124',
+  darkPaperBackground: '#2C2C2C',
 }
 
 declare module '@mui/material/styles' {
@@ -86,6 +86,17 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
                 fontSize: '14px',
                 textTransform: 'none',
               },
+              contained: isDarkMode
+                ? {
+                    backgroundColor: '#6B23C2',
+                  }
+                : {},
+              outlined: isDarkMode
+                ? {
+                    color: '#FFFFFF',
+                    borderColor: '#B273FF',
+                  }
+                : {},
             },
           },
           MuiTab: {

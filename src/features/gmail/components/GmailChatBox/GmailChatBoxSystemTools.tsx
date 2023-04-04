@@ -15,6 +15,10 @@ const GmailChatBoxSystemTools: FC<{
           variant={'outlined'}
           color={'error'}
           onClick={onRetry}
+          sx={{
+            border: '1px solid rgba(244, 67, 54, 0.5)',
+            color: '#f44336',
+          }}
         >
           Retry
         </Button>

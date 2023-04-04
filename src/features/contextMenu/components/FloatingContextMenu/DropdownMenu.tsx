@@ -244,12 +244,24 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         >
           {menuItem.data.type === 'group' ? (
             <KeyboardArrowRightIcon
-              sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
+              sx={{
+                color: (t) =>
+                  t.palette.mode === 'dark'
+                    ? '#ffffff85'
+                    : 'rgba(55, 53, 47, 0.45)',
+                fontSize: 16,
+              }}
             />
           ) : (
             isLastHover && (
               <KeyboardReturnIcon
-                sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
+                sx={{
+                  color: (t) =>
+                    t.palette.mode === 'dark'
+                      ? '#ffffff85'
+                      : 'rgba(55, 53, 47, 0.45)',
+                  fontSize: 16,
+                }}
               />
             )
           )}

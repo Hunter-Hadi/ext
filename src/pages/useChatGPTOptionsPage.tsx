@@ -34,7 +34,14 @@ const OptionsPage = () => {
     return ''
   }, [route])
   return (
-    <Container maxWidth={'lg'} sx={{ height: '100vh', py: 2 }}>
+    <Container
+      maxWidth={'lg'}
+      sx={{
+        height: '100vh',
+        py: 2,
+        bgcolor: (t) => (t.palette.mode === 'dark' ? '#202124' : '#fff'),
+      }}
+    >
       <OptionsPageRouteContext.Provider value={{ route, setRoute }}>
         <Stack height={'100%'}>
           <Stack

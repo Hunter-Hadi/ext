@@ -1,7 +1,6 @@
 import { AppSettingsState } from '@/store'
-import { getChromeExtensionSettings, setChromeExtensionSettings } from '@/utils'
 import { createTheme, responsiveFontSizes, Theme } from '@mui/material/styles'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 // import { useTernaryDarkMode } from 'usehooks-ts';
 

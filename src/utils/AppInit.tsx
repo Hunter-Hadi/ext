@@ -89,11 +89,18 @@ export const AppSettingsInit = () => {
     getChromeExtensionSettings().then((settings) => {
       if (settings) {
         setAppSettings({
-          colorSchema: window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light',
           ...settings,
         })
+
+        if (!settings.colorSchema) {
+          setChromeExtensionSettings({
+            colorSchema: window.matchMedia('(prefers-color-scheme: dark)')
+              .matches
+              ? 'dark'
+              : 'light',
+          })
+        }
+
         if (settings?.currentModel) {
           updateConversation((conversation) => {
             return {

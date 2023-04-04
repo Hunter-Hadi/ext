@@ -27,6 +27,7 @@ import TooltipButton from '@/components/TooltipButton'
 import DevContent from '@/components/DevContent'
 import { TestAllActionsButton } from '@/features/shortcuts'
 import throttle from 'lodash-es/throttle'
+
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string

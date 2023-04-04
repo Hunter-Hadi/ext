@@ -290,6 +290,15 @@ const AutoHeightTextarea: FC<{
         ref={textareaRef}
         value={inputValue}
         rows={1}
+        onCopy={(event) => {
+          event.stopPropagation()
+        }}
+        onCut={(event) => {
+          event.stopPropagation()
+        }}
+        onPaste={(event) => {
+          event.stopPropagation()
+        }}
         // onKeyDownCapture={(event) => {
         //   if (stopPropagation) {
         //     event.stopPropagation()

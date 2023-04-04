@@ -28,6 +28,13 @@ export type IRangyRect = {
   width: number
   height: number
 }
+export type ISelection = {
+  selectionText: string
+  selectionHtml: string
+  selectionRect: IRangyRect
+  selectionInputAble: boolean
+  activeElement: HTMLElement
+}
 
 export const RangyCoreState = atom<{
   loaded: boolean
@@ -42,20 +49,14 @@ export const RangyCoreState = atom<{
 
 export const RangyState = atom<{
   show: boolean
-  selectionInputAble: boolean
-  lastSelectionRanges: any | null
-  tempSelectionRanges: any | null
-  tempSelectRangeRect: IRangyRect | null
-  currentActiveWriteableElement: HTMLElement | null
+  tempSelection: ISelection | null
+  currentSelection: ISelection | null
 }>({
   key: 'RangyState',
   default: {
     show: false,
-    tempSelectRangeRect: null,
-    selectionInputAble: false,
-    lastSelectionRanges: null,
-    tempSelectionRanges: null,
-    currentActiveWriteableElement: null,
+    tempSelection: null,
+    currentSelection: null,
   },
 })
 

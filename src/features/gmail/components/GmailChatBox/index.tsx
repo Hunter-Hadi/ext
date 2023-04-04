@@ -128,7 +128,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   useEffect(() => {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1]
-      if (lastMessage.type === 'user') {
+      if (lastMessage.type === 'user' || lastMessage.type === 'system') {
+        const list = stackRef.current
+        list && list.scrollTo(0, list.scrollHeight)
         scrolledToBottomRef.current = true
       }
     }

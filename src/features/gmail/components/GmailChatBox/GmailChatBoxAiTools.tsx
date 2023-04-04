@@ -17,7 +17,7 @@ const GmailChatBoxAiTools: FC<{
   onCopy?: () => void
 }> = (props) => {
   const { currentComposeView } = useInboxComposeViews()
-  const { replaceSelectionRangeText, selectionInputAble } = useRangy()
+  const { replaceSelectionRangeText, currentSelection } = useRangy()
   const { message, insertAble, replaceAble } = props
   const insertAbleMemo = useMemo(() => {
     return currentComposeView && insertAble
@@ -49,18 +49,21 @@ const GmailChatBoxAiTools: FC<{
         </Button>
       )}
       {/*// TODO 边界情况太多了*/}
-      {false && !insertAbleMemo && selectionInputAble && replaceAble && (
-        <Button
-          size={'small'}
-          variant={'contained'}
-          onClick={() => {
-            replaceSelectionRangeText(message.text)
-            hideChatBox()
-          }}
-        >
-          Replace
-        </Button>
-      )}
+      {false &&
+        replaceAble &&
+        !insertAbleMemo &&
+        currentSelection?.selectionInputAble && (
+          <Button
+            size={'small'}
+            variant={'contained'}
+            onClick={() => {
+              replaceSelectionRangeText(message.text)
+              hideChatBox()
+            }}
+          >
+            Replace
+          </Button>
+        )}
       <CopyTooltipIconButton
         copyText={message.text}
         onCopy={() => {

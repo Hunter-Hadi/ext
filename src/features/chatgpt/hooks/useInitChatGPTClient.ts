@@ -53,6 +53,10 @@ const useInitChatGPTClient = () => {
           {
             const isShowFloatingContextMenu =
               showFloatingContextMenuRef.current()
+            // 不支持的网站设置
+            if (data?.type === 'action') {
+              debugger
+            }
             // 如果浮动菜单显示，则不处理
             if (!isShowFloatingContextMenu) {
               if (ChatBoxIsOpen()) {

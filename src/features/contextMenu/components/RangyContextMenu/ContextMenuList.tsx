@@ -1,7 +1,6 @@
 import { Stack, Typography } from '@mui/material'
 import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { useRangy } from '@/features/contextMenu/hooks'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
 import { Item, Separator, Submenu } from 'react-contexify'
@@ -34,7 +33,6 @@ const ShortCutsButtonItem: FC<{
 }> = ({ menuItem }) => {
   const contextMenuContext = useContext(ContextMenuContext)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
-  const { lastSelectionRanges, rangy } = useRangy()
   const [running, setRunning] = useState(false)
   useEffect(() => {
     if (running) {
@@ -65,13 +63,11 @@ const ShortCutsButtonItem: FC<{
             .then()
             .catch()
             .finally(() => {
-              rangy?.contextMenu.close()
-              rangy?.contextMenu.resetActiveElement()
               setRunning(false)
             })
       }
     }
-  }, [lastSelectionRanges, running])
+  }, [runShortCuts, running])
   if (menuItem.children && menuItem.children.length > 0) {
     return (
       <Submenu
@@ -202,7 +198,6 @@ const ContextMenuList: FC<{
 }> = (props) => {
   const { settingsKey } = props
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
-  const { rangyState, parseRangySelectRangeData } = useRangy()
   const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   useEffect(() => {
     let isDestroy = false
@@ -225,37 +220,8 @@ const ContextMenuList: FC<{
     }
   }, [messageType])
   const sortBySettingsKey = useMemo(() => {
-    if (settingsKey === 'contextMenus') {
-      const editOrReviewSelection = list.find(
-        (group) => group.text === 'Edit or review selection',
-      )
-      const generateFromSelection = list.find(
-        (group) => group.text === 'Generate from selection',
-      )
-      const currentRange = rangyState.lastSelectionRanges
-      if (editOrReviewSelection && generateFromSelection) {
-        if (currentRange) {
-          const selectionData = parseRangySelectRangeData(
-            currentRange?.selectRange,
-            'ContextMenuList',
-          )
-          if (selectionData.isCanInputElement) {
-            return [editOrReviewSelection, generateFromSelection]
-          } else {
-            return [generateFromSelection, editOrReviewSelection]
-          }
-        } else if (rangyState.currentActiveWriteableElement) {
-          return [editOrReviewSelection, generateFromSelection]
-        }
-      }
-    }
     return list
-  }, [
-    rangyState.lastSelectionRanges,
-    rangyState.currentActiveWriteableElement,
-    list,
-    settingsKey,
-  ])
+  }, [list, settingsKey])
   // console.log('sortBySettingsKey', sortBySettingsKey, settingsKey)
   return (
     <Stack maxWidth={260}>

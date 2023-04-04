@@ -397,3 +397,59 @@ export const FloatingContextMenuMiddleware = [
     }
   }),
 ]
+export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
+  const frame = iframeElement
+  const frameWindow: any = frame && frame.contentWindow
+  const frameDocument: any = frameWindow && frameWindow.document
+  const frameClientRect = frame.getBoundingClientRect()
+  const computedSelectionString = () => {
+    if (frameDocument) {
+      if (frameDocument.getSelection) {
+        // Most browsers
+        return String(frameDocument.getSelection())
+      } else if (frameDocument.selection) {
+        // Internet Explorer 8 and below
+        return frameDocument.selection.createRange().text
+      } else if (frameWindow.getSelection) {
+        // Safari 3
+        return String(frameWindow.getSelection())
+      }
+    }
+    /* Fall-through. This could happen if this function is called
+         on a frame that doesn't exist or that isn't ready yet. */
+    return ''
+  }
+  const computedSelectionRect = () => {
+    const selection = frameWindow.getSelection()
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0)
+      const rect = range.getBoundingClientRect()
+      return {
+        x: rect.x + frameClientRect.x,
+        y: rect.y + frameClientRect.y,
+        width: rect.width,
+        height: rect.height,
+        top: rect.top + frameClientRect.y,
+        left: rect.left + frameClientRect.x,
+        right: rect.left + frameClientRect.x + rect.width,
+        bottom: rect.top + frameClientRect.y + rect.height,
+      }
+    }
+    return {
+      x: frameClientRect.x,
+      y: frameClientRect.y,
+      width: 0,
+      height: 0,
+      top: frameClientRect.y,
+      left: frameClientRect.x,
+      right: frameClientRect.x + frameClientRect.width,
+      bottom: frameClientRect.y + frameClientRect.height,
+    }
+  }
+  return {
+    iframeSelectionText: computedSelectionString().trim(),
+    iframeSelectionRect: computedSelectionRect(),
+    iframeSelectionHtml: frameDocument.getSelection().toString(),
+    iframeSelectionElement: frameDocument.getSelection().anchorNode,
+  }
+}

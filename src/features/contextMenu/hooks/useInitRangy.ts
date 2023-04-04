@@ -2,69 +2,25 @@
 // @ts-ignore
 import rangyLib from '@/lib/rangy/rangy-core'
 import { useCallback, useEffect, useRef } from 'react'
-import { contextMenu } from 'react-contexify'
 
 import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { useRangy } from './useRangy'
 import debounce from 'lodash-es/debounce'
-import { checkIsCanInputElement } from '@/features/contextMenu/utils'
-import throttle from 'lodash-es/throttle'
+import {
+  checkIsCanInputElement,
+  computedIframeSelection,
+} from '@/features/contextMenu/utils'
+import { IRangyRect } from '@/features/contextMenu'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
-rangyLib.contextMenu = {
-  init() {
-    this.init.show = false
-    console.log('init')
-  },
-  show() {
-    this.init.show = true
-  },
-  close() {
-    console.log('[ContextMenu Module]: hideAll')
-    this.init.show = false
-    try {
-      rangyLib.getSelection().removeAllRanges()
-    } catch (e) {
-      console.log(e)
-    }
-    contextMenu.hideAll()
-  },
-  isOpen() {
-    return this.init.show
-  },
-  saveActiveElement(activeElement: HTMLElement) {
-    this.init.activeElement = {
-      activeElement: activeElement,
-      text: window.getSelection()?.toString(),
-      html: activeElement.innerHTML,
-      getText() {
-        return this.activeElement?.value || this.activeElement?.innerText || ''
-      },
-      getHtml() {
-        return this.activeElement?.innerHTML || ''
-      },
-    }
-  },
-  resetActiveElement() {
-    this.init.activeElement = undefined
-  },
-  getActiveElement() {
-    return this.init.activeElement
-  },
-}
 
 const useInitRangy = () => {
-  const {
-    initRangyCore,
-    rangy,
-    showRangy,
-    hideRangy,
-    saveTempSelection,
-    setActiveWriteableElement,
-  } = useRangy()
+  const { initRangyCore, rangy, showRangy, hideRangy, saveTempSelection } =
+    useRangy()
   const currentActiveWriteableElementRef = useRef<HTMLElement | null>(null)
+  // 初始化rangy npm 包
   useEffect(() => {
     let isDestroyed = false
     const initListener = () => {
@@ -72,63 +28,124 @@ const useInitRangy = () => {
       initRangyCore(rangyLib)
     }
     rangyLib.init()
-    rangyLib.contextMenu.init()
     rangyLib.addInitListener(initListener)
     return () => {
       isDestroyed = true
     }
   }, [])
+  // 保存:
+  // 1. 选中文本
+  // 2. 选中html
+  // 3. 选中rect
+  // 4. active element
   const saveHighlightedRangeAndShowContextMenu = useCallback(
     (event: MouseEvent | KeyboardEvent) => {
       {
-        const selectionString = rangy?.getSelection()?.toString()?.trim()
+        let selectionText = ''
+        let selectionHtml = ''
+        let selectionRect: IRangyRect | null = null
+        const activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
+        const rangySelection = rangy?.getSelection()
+        const nativeSelection = window.getSelection()
+        const isIframeTarget =
+          currentActiveWriteableElementRef.current?.tagName === 'IFRAME'
         console.log(
-          '[ContextMenu Module]:',
+          '[ContextMenu Module]: event',
           isMouseEvent ? 'MouseEvent' : 'KeyboardEvent',
+          activeElement,
         )
-        if (selectionString) {
-          const highlightedBounce = rangy
-            ?.getSelection()
-            ?.getBoundingDocumentRect()
-          if (highlightedBounce) {
-            saveTempSelection(event)
-            showRangy(highlightedBounce)
-          }
-          if (rangy.contextMenu.isOpen() && !isMouseEvent) {
-            console.log(
-              '[ContextMenu Module]:',
-              'KeyboardEvent close context menu',
-            )
-            // rangy.contextMenu.close()
+        // 1. rangy有选区
+        if (rangySelection && rangySelection?.toString()?.trim()) {
+          selectionText =
+            window.getSelection()?.toString() ||
+            rangySelection?.toString().trim()
+          selectionHtml = rangySelection?.toHtml()
+          selectionRect = rangy?.getSelection()?.getBoundingClientRect()
+          console.log(
+            '[ContextMenu Module] [rangy]: selectionString',
+            '\n',
+            selectionText,
+            '\n',
+            selectionHtml,
+            '\n',
+            selectionRect,
+          )
+          if (selectionRect) {
+            saveTempSelection({
+              selectionText,
+              selectionHtml,
+              selectionRect,
+              activeElement,
+              selectionInputAble: checkIsCanInputElement(activeElement),
+            })
+            showRangy()
             return
           }
-        } else {
-          const nativeSelection = window.getSelection()
-          if (
-            nativeSelection?.toString().trim() &&
-            currentActiveWriteableElementRef.current
-          ) {
-            const activeElementRect =
-              currentActiveWriteableElementRef.current?.getBoundingClientRect()
-            // 开始备选逻辑
-            console.log(
-              '[ContextMenu Module]: 备选逻辑',
-              nativeSelection?.toString().trim(),
-              activeElementRect,
-            )
-            if (activeElementRect) {
-              rangy.contextMenu.saveActiveElement(
-                currentActiveWriteableElementRef.current,
-              )
-              showRangy(activeElementRect)
-            }
-          } else {
-            console.log('[ContextMenu Module]: hideRangy')
-            hideRangy()
+        } else if (nativeSelection && nativeSelection?.toString().trim()) {
+          // 2. rangy没有选区，但是原生有选区
+          selectionText = nativeSelection?.toString().trim()
+          selectionHtml = nativeSelection?.toString().trim()
+          selectionRect = activeElement?.getBoundingClientRect()
+          console.log(
+            '[ContextMenu Module] [native]: selectionString',
+            '\n',
+            selectionText,
+            '\n',
+            selectionHtml,
+            '\n',
+            selectionRect,
+          )
+          if (selectionRect) {
+            saveTempSelection({
+              selectionText,
+              selectionHtml,
+              selectionRect,
+              activeElement,
+              selectionInputAble: checkIsCanInputElement(activeElement),
+            })
+            showRangy()
+            return
+          }
+        } else if (isIframeTarget) {
+          // 3. iframe
+          const {
+            iframeSelectionText,
+            iframeSelectionRect,
+            iframeSelectionElement,
+            iframeSelectionHtml,
+          } = computedIframeSelection(
+            currentActiveWriteableElementRef.current as HTMLIFrameElement,
+          )
+          selectionText = iframeSelectionText
+          selectionHtml = iframeSelectionHtml
+          selectionRect = iframeSelectionRect
+          console.log(
+            '[ContextMenu Module] [iframe]: selectionString',
+            '\n',
+            selectionText,
+            '\n',
+            selectionHtml,
+            '\n',
+            selectionRect,
+          )
+          if (selectionRect && selectionText) {
+            saveTempSelection({
+              selectionText,
+              selectionHtml,
+              selectionRect,
+              activeElement: iframeSelectionElement,
+              selectionInputAble: checkIsCanInputElement(
+                iframeSelectionElement,
+              ),
+            })
+            showRangy()
             return
           }
         }
+        console.log('[ContextMenu Module]: hideRangy')
+        hideRangy()
+        return
       }
     },
     [rangy, saveTempSelection, showRangy, hideRangy],
@@ -140,62 +157,61 @@ const useInitRangy = () => {
       200,
     )
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
-    const keydownListener = throttle((event: KeyboardEvent) => {
-      console.log(
-        '[ContextMenu Module]: update writeable element by keydown',
-        event.target,
-      )
-      setActiveWriteableElement(event.target as HTMLElement)
-    }, 500)
-    const mouseDownListener = (event: MouseEvent | KeyboardEvent) => {
+    const mouseDownListener = (event: MouseEvent) => {
       const target = event.target as HTMLElement
-      if (event instanceof KeyboardEvent) {
-        console.log('keyboard geili')
-      }
-      if (checkIsCanInputElement(target)) {
+      const isIframeTarget = target.tagName === 'IFRAME'
+      if (checkIsCanInputElement(target) || isIframeTarget) {
         if (currentActiveWriteableElementRef.current?.isSameNode(target)) {
           return
         }
-
         if (currentActiveWriteableElementRef.current) {
           console.log(
             '[ContextMenu Module]: remove writeable element listener',
             currentActiveWriteableElementRef.current,
           )
-          currentActiveWriteableElementRef.current.removeEventListener(
-            'mouseup',
-            mouseUpListener,
-          )
+          // TODO - iframe适配要独立成tab注入的content_script
+          if (currentActiveWriteableElementRef.current?.tagName === 'IFRAME') {
+            const iframeTarget =
+              currentActiveWriteableElementRef.current as HTMLIFrameElement
+            iframeTarget.contentDocument?.body.removeEventListener(
+              'mouseup',
+              mouseUpListener,
+            )
+          } else {
+            currentActiveWriteableElementRef.current.removeEventListener(
+              'mouseup',
+              mouseUpListener,
+            )
+          }
           currentActiveWriteableElementRef.current.removeEventListener(
             'keyup',
             keyupListener,
           )
-          currentActiveWriteableElementRef.current.removeEventListener(
-            'keydown',
-            keydownListener,
-          )
         }
-        currentActiveWriteableElementRef.current = event.target as HTMLElement
-        setActiveWriteableElement(currentActiveWriteableElementRef.current)
+        currentActiveWriteableElementRef.current = target
         console.log('[ContextMenu Module]: update writeable element', target)
         console.log(
           '[ContextMenu Module]: bind writeable element listener',
-          currentActiveWriteableElementRef.current,
+          target,
         )
-        currentActiveWriteableElementRef.current.addEventListener(
-          'mouseup',
-          mouseUpListener,
-        )
-        currentActiveWriteableElementRef.current.addEventListener(
-          'keyup',
-          keyupListener,
-        )
-        currentActiveWriteableElementRef.current.addEventListener(
-          'keydown',
-          keydownListener,
-        )
+        // TODO - iframe适配要独立成tab注入的content_script
+        if (isIframeTarget) {
+          const iframeTarget = target as HTMLIFrameElement
+          iframeTarget.contentDocument?.body.addEventListener(
+            'mouseup',
+            mouseUpListener,
+          )
+          mouseUpListener(event)
+        } else {
+          target.addEventListener('mouseup', mouseUpListener)
+        }
+        target.addEventListener('keyup', keyupListener)
       } else {
-        console.log('[ContextMenu Module]: update writeable element', null)
+        console.log(
+          '[ContextMenu Module]: remove writeable element',
+          event.target,
+          event.currentTarget,
+        )
         currentActiveWriteableElementRef.current = null
       }
     }

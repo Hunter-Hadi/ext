@@ -76,6 +76,9 @@ const App: FC = () => {
           // position: 'absolute',
           // right: 0,
           // width: '25%',
+          div: {
+            userSelect: 'none',
+          },
         }}
       >
         <Stack

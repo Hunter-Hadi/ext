@@ -9,7 +9,6 @@ import {
   computedRectPosition,
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
-import throttle from 'lodash-es/throttle'
 import { IRangyRect } from '@/features/contextMenu/store'
 import { useRecoilValue } from 'recoil'
 import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
@@ -22,8 +21,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
-  const { tempSelectionRanges, currentActiveWriteableElement, show } =
-    useRangy()
+  const { tempSelection, show } = useRangy()
   const appSettings = useRecoilValue(AppSettingsState)
   const commandKeyMap = useRecoilValue(AppSettingsCommandKeysSelector)
   const { showFloatingContextMenu } = useFloatingContextMenu()
@@ -72,63 +70,42 @@ const ClickContextMenuButton: FC<{
     ],
   })
   useEffect(() => {
-    const showContextMenu = () => {
-      let rect = tempSelectionRanges?.selectRange?.getBoundingClientRect?.()
-      if (!rect && currentActiveWriteableElement?.getBoundingClientRect()) {
-        rect = cloneRect(currentActiveWriteableElement?.getBoundingClientRect())
-      }
-      console.log(
-        `[ContextMenu Module]: [button] [${show}]`,
-        rect,
-        tempSelectionRanges?.selectRange,
-      )
-      if (show && rect) {
-        rect = computedRectPosition(rect)
-        if (!isProduction) {
-          // render rect
-          document.querySelector('#rangeBorderBox')?.remove()
-          const div = document.createElement('div')
-          div.id = 'rangeBorderBox'
-          div.style.position = 'absolute'
-          div.style.left = rect.left + 'px'
-          div.style.top = rect.top + window.scrollY + 'px'
-          div.style.width = rect.width + 'px'
-          div.style.height = rect.height + 'px'
-          div.style.border = '1px solid red'
-          div.style.zIndex = '9999'
-          div.style.pointerEvents = 'none'
-          document.body.appendChild(div)
-        }
-        refs.setPositionReference({
-          getBoundingClientRect() {
-            return {
-              ...rect,
-              x: rect.left,
-              y: rect.top,
-            }
-          },
-        })
-      }
+    if (!tempSelection || !show) {
+      return
     }
-    // scroll listen
-    const scrollListener = throttle(() => {
-      if (show) {
-        showContextMenu()
+    let rect = cloneRect(tempSelection.selectionRect)
+    console.log(
+      `[ContextMenu Module]: [button] [${show}]`,
+      tempSelection.selectionRect,
+    )
+    if (show && rect) {
+      rect = computedRectPosition(rect)
+      if (!isProduction) {
+        // render rect
+        document.querySelector('#rangeBorderBox')?.remove()
+        const div = document.createElement('div')
+        div.id = 'rangeBorderBox'
+        div.style.position = 'absolute'
+        div.style.left = rect.left + 'px'
+        div.style.top = rect.top + window.scrollY + 'px'
+        div.style.width = rect.width + 'px'
+        div.style.height = rect.height + 'px'
+        div.style.border = '1px solid red'
+        div.style.zIndex = '9999'
+        div.style.pointerEvents = 'none'
+        document.body.appendChild(div)
       }
-    }, 1000 / 60)
-    showContextMenu()
-    // 标准事件
-    window.addEventListener('scroll', scrollListener, { passive: true })
-    // WebKit 特定事件
-    window.addEventListener('mousewheel', scrollListener, { passive: true })
-    // Firefox 特定事件
-    window.addEventListener('DOMMouseScroll', scrollListener, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', scrollListener)
-      window.removeEventListener('mousewheel', scrollListener)
-      window.removeEventListener('DOMMouseScroll', scrollListener)
+      refs.setPositionReference({
+        getBoundingClientRect() {
+          return {
+            ...rect,
+            x: rect.left,
+            y: rect.top,
+          }
+        },
+      })
     }
-  }, [tempSelectionRanges, currentActiveWriteableElement, show])
+  }, [tempSelection, show])
   return (
     <Paper
       elevation={3}
@@ -169,7 +146,7 @@ const ClickContextMenuButton: FC<{
             event.preventDefault()
           }}
           onClick={(event: any) => {
-            showFloatingContextMenu()
+            tempSelection && showFloatingContextMenu()
           }}
         >
           {APP_ENV === 'EZ_MAIL_AI' ? (

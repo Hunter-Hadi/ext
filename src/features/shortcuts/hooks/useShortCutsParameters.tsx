@@ -19,7 +19,7 @@ import { AppSettingsState, AppState } from '@/store'
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentComposeView } = useInboxComposeViews()
-  const { lastSelectionRanges, parseRangySelectRangeData, rangy } = useRangy()
+  const { currentSelection } = useRangy()
   const { messageViewText, currentMessageId } = useCurrentMessageView()
   const chatBoxMessages = useRecoilValue(ChatGPTMessageState)
   const appSettings = useRecoilValue(AppSettingsState)
@@ -50,27 +50,8 @@ const useShortCutsParameters = () => {
             .replace(/\n{3,}/g, `\n`) || ''
       }
     }
-    let SELECTED_HTML = ''
-    let SELECTED_TEXT = ''
-    const selectionData = parseRangySelectRangeData(
-      lastSelectionRanges?.selectRange,
-      'useShortCutsParameters',
-    )
-    if (selectionData) {
-      SELECTED_HTML = selectionData.html || ''
-      SELECTED_TEXT = selectionData.text || ''
-    }
-    const activeWriteAbleElement = rangy?.contextMenu?.getActiveElement()
-    if (activeWriteAbleElement) {
-      if (!SELECTED_HTML) {
-        SELECTED_HTML =
-          activeWriteAbleElement.html || activeWriteAbleElement.getHtml() || ''
-      }
-      if (!SELECTED_TEXT) {
-        SELECTED_TEXT =
-          activeWriteAbleElement.text || activeWriteAbleElement.getText() || ''
-      }
-    }
+    const SELECTED_HTML = currentSelection?.selectionHtml || ''
+    const SELECTED_TEXT = currentSelection?.selectionText || ''
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any
     } = {
@@ -112,8 +93,7 @@ const useShortCutsParameters = () => {
     currentComposeView,
     messageViewText,
     currentMessageId,
-    lastSelectionRanges,
-    rangy,
+    currentSelection,
     chatBoxMessages,
     appSettings.userSettings,
   ])

@@ -521,7 +521,9 @@ if (isEzMailApp) {
       await Browser.tabs.sendMessage(tab.id, {
         id: CHROME_EXTENSION_POST_MESSAGE_ID,
         event: 'Client_ListenOpenChatMessageBox',
-        data: {},
+        data: {
+          type: 'action',
+        },
       })
     }
   })
@@ -573,7 +575,9 @@ if (!isEzMailApp) {
         await Browser.tabs.sendMessage(tab.id, {
           id: CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'Client_ListenOpenChatMessageBox',
-          data: {},
+          data: {
+            type: 'shortcut',
+          },
         })
       }
     }

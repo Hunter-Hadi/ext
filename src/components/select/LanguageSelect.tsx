@@ -9,6 +9,15 @@ interface LanguageSelectProps {
   sx?: SxProps
 }
 
+function filterOptions(options: any[], { inputValue }: any) {
+  return options.filter((option) => {
+    const label = option.label.toLowerCase()
+    const value = option.value.toLowerCase()
+    const input = inputValue.toLowerCase()
+    return label.includes(input) || value.includes(input)
+  })
+}
+
 const LanguageSelect: FC<LanguageSelectProps> = (props) => {
   const {
     label = 'Choose a language',
@@ -39,6 +48,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
         setValue(newValue)
         onChange(newValue.value)
       }}
+      filterOptions={filterOptions}
       renderInput={(params) => (
         <TextField
           {...params}

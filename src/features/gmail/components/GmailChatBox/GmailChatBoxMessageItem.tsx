@@ -90,7 +90,7 @@ const GmailChatBoxMessageItem: FC<{
       border: '1px solid rgb(239, 83, 80)!important',
       bgcolor: 'background.paper',
     } as SxProps
-  }, [message.type])
+  }, [message.type, colorSchema])
   useEffect(() => {
     setDefaultText(message.text || '')
   }, [message.text])

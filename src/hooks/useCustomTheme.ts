@@ -60,8 +60,8 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
   // }, [])
 
   const isDarkMode = useMemo(() => {
-    return AppSettings.colorSchema === 'dark'
-  }, [AppSettings.colorSchema])
+    return AppSettings.userSettings?.colorSchema === 'dark'
+  }, [AppSettings.userSettings])
 
   const theme = React.useMemo(() => {
     return responsiveFontSizes(

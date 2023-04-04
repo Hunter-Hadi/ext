@@ -143,12 +143,12 @@ export type IChromeExtensionSettings = {
     shortcut: string
     description: string
   }>
-  colorSchema?: 'light' | 'dark'
   models?: IChatGPTModelType[]
   currentModel?: string
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
   userSettings?: {
+    colorSchema?: 'light' | 'dark'
     language: string
     selectionButtonVisible: boolean
   }

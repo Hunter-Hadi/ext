@@ -274,7 +274,9 @@ const ContextMenuSettings: FC<{
       })
     }
     findSearchText(rootId)
-    saveTreeData(settingsKey, originalTreeData)
+    if (originalTreeData.length > 0) {
+      saveTreeData(settingsKey, originalTreeData)
+    }
   }, [originalTreeData])
   const filteredTreeData = useMemo(() => {
     if (!inputValue) {

@@ -96,12 +96,15 @@ export const AppSettingsInit = () => {
           ...settings,
         })
 
-        if (!settings.colorSchema) {
+        if (settings.userSettings && !settings.userSettings?.colorSchema) {
           setChromeExtensionSettings({
-            colorSchema: window.matchMedia('(prefers-color-scheme: dark)')
-              .matches
-              ? 'dark'
-              : 'light',
+            userSettings: {
+              ...settings.userSettings,
+              colorSchema: window.matchMedia('(prefers-color-scheme: dark)')
+                .matches
+                ? 'dark'
+                : 'light',
+            },
           })
         }
 

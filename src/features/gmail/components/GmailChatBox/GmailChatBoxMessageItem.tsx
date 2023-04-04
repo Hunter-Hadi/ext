@@ -32,7 +32,7 @@ const GmailChatBoxMessageItem: FC<{
     className,
   } = props
   const [defaultText, setDefaultText] = useState(message.text || '')
-  const { colorSchema } = useRecoilValue(AppSettingsState)
+  const { userSettings } = useRecoilValue(AppSettingsState)
   const [isEdit, setIsEdit] = useState(false)
   const [isHover, setIsHover] = useState(false)
   const hoverTimer = useRef<any>(null)
@@ -56,10 +56,14 @@ const GmailChatBoxMessageItem: FC<{
         // bgcolor: `rgb(233,233,235)!important`,
 
         color:
-          colorSchema === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)!important',
+          userSettings?.colorSchema === 'dark'
+            ? '#FFFFFFDE'
+            : 'rgba(0,0,0,0.87)!important',
         border: '1px solid',
         borderColor:
-          colorSchema === 'dark' ? 'customColor.borderColor' : 'transparent',
+          userSettings?.colorSchema === 'dark'
+            ? 'customColor.borderColor'
+            : 'transparent',
         bgcolor: (t: Theme) =>
           t.palette.mode === 'dark'
             ? 'rgba(255, 255, 255, 0.04)'
@@ -75,7 +79,7 @@ const GmailChatBoxMessageItem: FC<{
           if (process.env.APP_ENV === 'EZ_MAIL_AI') {
             return '#FEE6E1 !important'
           }
-          if (colorSchema === 'dark') {
+          if (userSettings?.colorSchema === 'dark') {
             return '#6B23C259 !important'
           } else {
             return '#F1E2FD !important'
@@ -83,9 +87,13 @@ const GmailChatBoxMessageItem: FC<{
         },
         border: '1px solid',
         borderColor:
-          colorSchema === 'dark' ? 'customColor.borderColor' : 'transparent',
+          userSettings?.colorSchema === 'dark'
+            ? 'customColor.borderColor'
+            : 'transparent',
         color:
-          colorSchema === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)!important',
+          userSettings?.colorSchema === 'dark'
+            ? '#FFFFFFDE'
+            : 'rgba(0,0,0,0.87)!important',
         maxWidth: '80%',
         width: 'auto',
         borderRadius: '8px',
@@ -103,7 +111,7 @@ const GmailChatBoxMessageItem: FC<{
       border: '1px solid rgb(239, 83, 80)!important',
       bgcolor: 'background.paper',
     } as SxProps
-  }, [message.type, colorSchema, isHover])
+  }, [message.type, userSettings, isHover])
   useEffect(() => {
     setDefaultText(message.text || '')
   }, [message.text])
@@ -193,7 +201,9 @@ const GmailChatBoxMessageItem: FC<{
             {message.type === 'ai' ? (
               <div
                 className={`markdown-body ${
-                  colorSchema === 'dark' ? 'markdown-body--dark' : ''
+                  userSettings?.colorSchema === 'dark'
+                    ? 'markdown-body--dark'
+                    : ''
                 }`}
               >
                 <Markdown>{defaultText.replace(/^\s+/, '')}</Markdown>

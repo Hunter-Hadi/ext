@@ -1,5 +1,5 @@
 import { Divider, Stack, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import { getChromeExtensionSettings, setChromeExtensionSettings } from '@/utils'
 import AppLoadingLayout from '@/components/LoadingLayout'
@@ -9,26 +9,15 @@ import UseChatGPTContextMenuSettings from '@/pages/options/pages/UseChatGPTOptio
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import CloseAlert from '@/components/CloseAlert'
 import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
+import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
-import { useRecoilValue } from 'recoil'
 
 const UseChatGPTOptionsSettingPage = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
-  const [colorSchema, setColorSchema] = useState(appSettings.colorSchema)
-  const [userSettings, setUserSettings] = useState<any>({
-    language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-    selectionButtonVisible: true,
-  })
+  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const userSettingsRef = useRef<any>({})
   const [loaded, setLoaded] = useState(false)
+  const [saving, setSaving] = useState(false)
   const [commandKey, setCommandKey] = useState('')
-  useEffect(() => {
-    if (loaded) {
-      setChromeExtensionSettings({
-        userSettings,
-        colorSchema,
-      })
-    }
-  }, [loaded, userSettings, colorSchema])
   useEffect(() => {
     getChromeExtensionSettings().then((res) => {
       console.log('settings', res.userSettings?.selectionButtonVisible)
@@ -39,22 +28,32 @@ const UseChatGPTOptionsSettingPage = () => {
       if (command) {
         setCommandKey(command.shortcut || '')
       }
-
-      // if (res.colorSchema) {
-      //   setAppSettings(pre => )
-      // }
-
-      setUserSettings((prevState: any) => {
-        return {
-          ...prevState,
-          ...res.userSettings,
-        }
-      })
-      setTimeout(() => {
-        setLoaded(true)
-      }, 1000)
+      userSettingsRef.current = {
+        language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+        selectionButtonVisible: true,
+        ...res.userSettings,
+      }
+      console.log('!!!!userSettings', userSettingsRef.current)
+      setLoaded(true)
     })
   }, [])
+  const updateChromeExtensionSettings = async (key: string, value: any) => {
+    try {
+      console.log(saving)
+      setSaving(true)
+      userSettingsRef.current = {
+        ...userSettingsRef.current,
+        [key]: value,
+      }
+      await setChromeExtensionSettings({
+        userSettings: userSettingsRef.current,
+      })
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setSaving(false)
+    }
+  }
 
   return (
     <AppLoadingLayout loading={!loaded}>
@@ -69,8 +68,16 @@ const UseChatGPTOptionsSettingPage = () => {
           Appearance
         </Typography>
         <ColorSchemaSelect
-          defaultValue={colorSchema}
-          onChange={setColorSchema}
+          defaultValue={userSettingsRef.current.colorSchema}
+          onChange={async (newTheme) => {
+            await updateChromeExtensionSettings('colorSchema', newTheme)
+            setAppSettings((prevState) => {
+              return {
+                ...prevState,
+                userSettings: userSettingsRef.current,
+              }
+            })
+          }}
         />
         {/* </Box> */}
         <Divider sx={{ my: 4 }} />
@@ -96,12 +103,9 @@ const UseChatGPTOptionsSettingPage = () => {
         </CloseAlert>
         <LanguageSelect
           label={'AI output language'}
-          defaultValue={userSettings.language}
+          defaultValue={userSettingsRef.current.language}
           onChange={async (newLanguage) => {
-            setUserSettings({
-              ...userSettings,
-              language: newLanguage,
-            })
+            await updateChromeExtensionSettings('language', newLanguage)
           }}
         />
         <Divider sx={{ my: 4 }} />
@@ -122,12 +126,12 @@ const UseChatGPTOptionsSettingPage = () => {
         </CloseAlert>
         <TextSelectPopupSetting
           commandKey={commandKey}
-          visible={userSettings.selectionButtonVisible}
+          visible={userSettingsRef.current.selectionButtonVisible}
           onChange={async (visible) => {
-            setUserSettings({
-              ...userSettings,
-              selectionButtonVisible: visible,
-            })
+            await updateChromeExtensionSettings(
+              'selectionButtonVisible',
+              visible,
+            )
           }}
         />
         <Divider sx={{ my: 4 }} />

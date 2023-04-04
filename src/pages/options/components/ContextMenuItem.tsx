@@ -80,15 +80,7 @@ const ContextMenuItem = (props: {
                 }}
               />
             </div>
-          ) : (
-            <DragIndicatorIcon
-              sx={{
-                fontSize: DRAG_ICON_SIZE,
-                cursor: 'default',
-                color: 'inherit',
-              }}
-            />
-          )}
+          ) : null}
         </Box>
       )}
       {isGroup && (

@@ -62,7 +62,7 @@ const GmailChatBoxMessageItem: FC<{
           colorSchema === 'dark' ? 'customColor.borderColor' : 'transparent',
         bgcolor: (t: Theme) =>
           t.palette.mode === 'dark'
-            ? 'rgba(255, 255, 255, 0.04);'
+            ? 'rgba(255, 255, 255, 0.04)'
             : 'rgb(233,233,235)!important',
         ...hoverSx,
       } as SxProps

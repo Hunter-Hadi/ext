@@ -88,7 +88,7 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
               },
               contained: isDarkMode
                 ? {
-                    backgroundColor: '#6B23C2',
+                    backgroundColor: '#6b24c2b3',
                   }
                 : {},
               outlined: isDarkMode

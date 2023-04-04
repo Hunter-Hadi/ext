@@ -9,8 +9,6 @@ import Markdown from 'markdown-to-jsx'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 
-import markdownCss from '@/pages/markdown.less'
-
 const GmailChatBoxMessageItem: FC<{
   replaceAble?: boolean
   insertAble?: boolean
@@ -141,7 +139,6 @@ const GmailChatBoxMessageItem: FC<{
       key={message.messageId}
     >
       <p>{isHover ? 'hover!' : 'no hover'}</p>
-      <style>{markdownCss}</style>
       {/*<Stack>*/}
       {/*  <p style={{ fontSize: '12px', color: 'red' }}>*/}
       {/*    messageId: {message.messageId}*/}
@@ -173,7 +170,7 @@ const GmailChatBoxMessageItem: FC<{
           </Alert>
         ) : (
           <Stack
-            className={'chat-message--text chat-message__markdown'}
+            className={'chat-message--text'}
             id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
             contentEditable={isEdit}
             whiteSpace={'pre-wrap'}

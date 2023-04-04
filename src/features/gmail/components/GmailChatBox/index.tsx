@@ -26,6 +26,7 @@ import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
 import DevContent from '@/components/DevContent'
 import { TestAllActionsButton } from '@/features/shortcuts'
+import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 
 export interface IGmailChatMessage {
@@ -154,6 +155,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         ...sx,
       }}
     >
+      <style>{markdownCss}</style>
       {/*//TODO hide title*/}
       {/*<Stack*/}
       {/*  flexShrink={0}*/}

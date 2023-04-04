@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { IGmailChatMessage } from '@/features/gmail/index'
 import { Alert, Stack, SxProps, Theme } from '@mui/material'
 import GmailChatBoxUserTools from './GmailChatBoxUserTools'
@@ -36,7 +36,20 @@ const GmailChatBoxMessageItem: FC<{
   const [defaultText, setDefaultText] = useState(message.text || '')
   const { colorSchema } = useRecoilValue(AppSettingsState)
   const [isEdit, setIsEdit] = useState(false)
+  const [isHover, setIsHover] = useState(false)
+  const hoverTimer = useRef<any>(null)
   const ChatBoxSx = useMemo(() => {
+    const hoverSx = isHover
+      ? {
+          '*': {
+            userSelect: 'auto!important',
+          },
+        }
+      : {
+          '*': {
+            userSelect: 'none!important',
+          },
+        }
     if (message.type === 'ai') {
       return {
         borderRadius: '8px',
@@ -53,6 +66,7 @@ const GmailChatBoxMessageItem: FC<{
           t.palette.mode === 'dark'
             ? 'rgba(255, 255, 255, 0.04);'
             : 'rgb(233,233,235)!important',
+        ...hoverSx,
       } as SxProps
     }
     if (message.type === 'user' || message.type === 'third') {
@@ -83,6 +97,7 @@ const GmailChatBoxMessageItem: FC<{
         mr: '0',
         overflow: 'hidden',
         p: 1,
+        ...hoverSx,
       } as SxProps
     }
     return {
@@ -90,7 +105,7 @@ const GmailChatBoxMessageItem: FC<{
       border: '1px solid rgb(239, 83, 80)!important',
       bgcolor: 'background.paper',
     } as SxProps
-  }, [message.type, colorSchema])
+  }, [message.type, colorSchema, isHover])
   useEffect(() => {
     setDefaultText(message.text || '')
   }, [message.text])
@@ -108,9 +123,24 @@ const GmailChatBoxMessageItem: FC<{
           lineHeight: '26px',
         },
       }}
+      onMouseEnter={() => {
+        if (hoverTimer.current) {
+          clearTimeout(hoverTimer.current)
+        }
+        setIsHover(true)
+      }}
+      onMouseLeave={() => {
+        if (hoverTimer.current) {
+          clearTimeout(hoverTimer.current)
+        }
+        hoverTimer.current = setTimeout(() => {
+          setIsHover(false)
+        }, 500)
+      }}
       spacing={1}
       key={message.messageId}
     >
+      <p>{isHover ? 'hover!' : 'no hover'}</p>
       <style>{markdownCss}</style>
       {/*<Stack>*/}
       {/*  <p style={{ fontSize: '12px', color: 'red' }}>*/}

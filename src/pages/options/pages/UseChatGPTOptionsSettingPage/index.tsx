@@ -1,4 +1,4 @@
-import { Box, Divider, Stack, Typography } from '@mui/material'
+import { Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import { getChromeExtensionSettings, setChromeExtensionSettings } from '@/utils'
@@ -63,20 +63,21 @@ const UseChatGPTOptionsSettingPage = () => {
           mx: 'auto!important',
         }}
       >
-        <Box mb={2}>
-          <Typography fontSize={20} fontWeight={700} mb={1}>
-            Theme Mode
-          </Typography>
-          <ColorSchemaSelect
-            defaultValue={appSettings.colorSchema}
-            onChange={(value) =>
-              setAppSettings((preValue) => ({
-                ...preValue,
-                colorSchema: value,
-              }))
-            }
-          />
-        </Box>
+        {/* <Box> */}
+        <Typography fontSize={20} fontWeight={700} mb={1}>
+          Appearance
+        </Typography>
+        <ColorSchemaSelect
+          defaultValue={appSettings.colorSchema}
+          onChange={(value) =>
+            setAppSettings((preValue) => ({
+              ...preValue,
+              colorSchema: value,
+            }))
+          }
+        />
+        {/* </Box> */}
+        <Divider sx={{ my: 4 }} />
         <Typography fontSize={20} fontWeight={700} mb={2}>
           AI output language
         </Typography>

@@ -2,23 +2,26 @@ import React from 'react'
 import { createTheme, responsiveFontSizes } from '@mui/material'
 const getIsDarkMode = () => {
   // 20221121 强制 light mode
-  return false
+  console.log('getIsDarkMode')
+  return true
 }
 
 const APP_ENV = process.env.APP_ENV
 
 type CustomColor = {
   main: React.CSSProperties['color']
-  lightBackground: React.CSSProperties['color']
-  darkBackground: React.CSSProperties['color']
-  darkPaperBackground: React.CSSProperties['color']
+  borderColor: React.CSSProperties['color']
+  background: React.CSSProperties['color']
+  paperBackground: React.CSSProperties['color']
 }
 
 export const customColor = {
   main: APP_ENV === 'EZ_MAIL_AI' ? '#DB4437' : '#7601D3',
-  lightBackground: '#f7f9fd',
-  darkBackground: '#14162a',
-  darkPaperBackground: '#292b42',
+  borderColor: getIsDarkMode()
+    ? 'rgba(255, 255, 255, 0.12)'
+    : 'rgb(237,237,236)',
+  background: getIsDarkMode() ? '#14162a' : '#ffffff',
+  paperBackground: getIsDarkMode() ? '#292b42' : '#ffffff',
 }
 
 declare module '@mui/material/styles' {
@@ -36,6 +39,16 @@ const customMuiTheme = (shadowRootElement?: HTMLElement) => {
   return responsiveFontSizes(
     createTheme({
       components: {
+        // MuiCssBaseline: {
+        //   styleOverrides: {
+        //     body: {
+        //       backgroundColor: getIsDarkMode()
+        //         ? customColor.paperBackground
+        //         : '#fff',
+        //       color: getIsDarkMode() ? '#fff' : 'rgba(0, 0, 0, 0.87)',
+        //     },
+        //   },
+        // },
         MuiButton: {
           defaultProps: {
             disableElevation: true,
@@ -97,8 +110,8 @@ const customMuiTheme = (shadowRootElement?: HTMLElement) => {
         },
         mode: getIsDarkMode() ? 'dark' : 'light',
         background: {
-          paper: getIsDarkMode() ? customColor.darkPaperBackground : '#ffffff',
-          default: getIsDarkMode() ? customColor.darkBackground : '#ffffff',
+          paper: customColor.paperBackground,
+          default: customColor.background,
         },
         customColor: customColor,
         neutral: {

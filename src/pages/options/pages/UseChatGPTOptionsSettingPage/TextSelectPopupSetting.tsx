@@ -1,5 +1,13 @@
 import React, { FC, useEffect, useState } from 'react'
-import { Box, Button, Paper, Stack, Switch, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  Paper,
+  Stack,
+  Switch,
+  Typography,
+  useTheme,
+} from '@mui/material'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 
 const TextSelectPopupSetting: FC<{
@@ -9,6 +17,7 @@ const TextSelectPopupSetting: FC<{
 }> = (props) => {
   const { visible, onChange, commandKey } = props
   const [showTooltip, setShowTooltip] = useState(false)
+  const { palette } = useTheme()
   useEffect(() => {
     if (!visible) {
       setShowTooltip(true)
@@ -40,7 +49,8 @@ const TextSelectPopupSetting: FC<{
           p: 2,
           borderRadius: '4px',
           height: '110px',
-          border: '1px solid #e0e0e0',
+          border: '1px solid',
+          borderColor: 'customColor.borderColor',
           position: 'relative',
         }}
       >
@@ -48,7 +58,8 @@ const TextSelectPopupSetting: FC<{
           <p>Wikipedia is hosted by the Wikimedia Foundation, a non-profit</p>
           <span
             style={{
-              backgroundColor: 'rgb(180,215,250)',
+              backgroundColor:
+                palette.mode === 'dark' ? '#5880b1' : 'rgb(180,215,250)',
               height: '21px',
               display: 'inline-block',
             }}
@@ -63,7 +74,8 @@ const TextSelectPopupSetting: FC<{
             sx={{
               mt: 1,
               borderRadius: '4px',
-              border: '1px solid rgb(237,237,236)',
+              border: '1px solid',
+              borderColor: 'customColor.borderColor',
               width: 'max-content',
             }}
           >
@@ -74,7 +86,7 @@ const TextSelectPopupSetting: FC<{
                 <UseChatGptIcon
                   sx={{
                     fontSize: 16,
-                    color: 'inherit',
+                    // color: 'inherit',
                   }}
                 />
               }

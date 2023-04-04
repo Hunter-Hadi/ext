@@ -13,14 +13,13 @@ ClassNameGenerator.configure(
 import ChatGPTDaemonProcess from './pages/ChatGPTDaemonProcessPage'
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
-import { ThemeProvider } from '@mui/material'
-import customMuiTheme from '@/pages/customMuiTheme'
 import {
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
   ROOT_DAEMON_PROCESS_ID,
 } from '@/types'
+import AppThemeProvider from '@/components/AppTheme'
 // import createCache from '@emotion/cache'
 console.log(process.env.NODE_ENV)
 console.log(process.env.APP_ENV)
@@ -84,9 +83,9 @@ if (location.host === 'chat.openai.com') {
     <React.StrictMode>
       <RecoilRoot>
         <CacheProvider value={cache}>
-          <ThemeProvider theme={customMuiTheme(shadowRootElement)}>
+          <AppThemeProvider shadowRootElement={shadowRootElement}>
             <App />
-          </ThemeProvider>
+          </AppThemeProvider>
         </CacheProvider>
       </RecoilRoot>
     </React.StrictMode>,

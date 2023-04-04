@@ -218,7 +218,8 @@ const AutoHeightTextarea: FC<{
       component={'div'}
       className={loading ? 'chat-box__input--loading' : ''}
       borderRadius={'8px'}
-      border={`1px solid ${error ? 'rgb(239, 83, 80)' : '#e0e0e0'}`}
+      border={`1px solid`}
+      borderColor={`${error ? 'rgb(239, 83, 80)' : 'customColor.borderColor'}`}
       width={'100%'}
       minHeight={34}
       sx={{
@@ -253,7 +254,8 @@ const AutoHeightTextarea: FC<{
         },
         '& > textarea': {
           p: 1,
-          color: 'rgba(0,0,0,.87)!important',
+          color: (t) =>
+            t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,.87)!important',
           my: 1.5,
           fontSize: '16px',
           minHeight: LINE_HEIGHT + 'px',

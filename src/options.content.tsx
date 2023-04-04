@@ -3,9 +3,9 @@ import EzMailOptionsPage from '@/pages/EzMailOptionsPage'
 import UseChatGPTOptionsPage from '@/pages/UseChatGPTOptionsPage'
 import CssBaseline from '@mui/material/CssBaseline'
 import { createRoot } from 'react-dom/client'
-import customMuiTheme from '@/pages/customMuiTheme'
-import { ThemeProvider } from '@mui/material'
-// import { RecoilRoot } from 'recoil'
+import AppThemeProvider from './components/AppTheme'
+import { RecoilRoot } from 'recoil'
+import OptionPagesInit from '@/utils/OptionPagesInit'
 
 const rootElement = document.getElementById('Root')
 
@@ -20,10 +20,13 @@ if (rootElement) {
 
   root.render(
     <React.StrictMode>
-      <CssBaseline />
-      <ThemeProvider theme={customMuiTheme()}>
-        {isEzMailApp ? <EzMailOptionsPage /> : <UseChatGPTOptionsPage />}
-      </ThemeProvider>
+      <RecoilRoot>
+        <AppThemeProvider>
+          <OptionPagesInit />
+          <CssBaseline />
+          {isEzMailApp ? <EzMailOptionsPage /> : <UseChatGPTOptionsPage />}
+        </AppThemeProvider>
+      </RecoilRoot>
     </React.StrictMode>,
   )
 }

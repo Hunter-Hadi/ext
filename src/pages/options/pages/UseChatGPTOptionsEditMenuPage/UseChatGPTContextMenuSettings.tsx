@@ -337,7 +337,7 @@ const ContextMenuSettings: FC<{
           <CloseAlert
             icon={<></>}
             sx={{
-              bgcolor: '#E2E8F0',
+              // bgcolor: '#E2E8F0',
               mt: 1,
               mb: 2,
             }}
@@ -397,8 +397,9 @@ const ContextMenuSettings: FC<{
               maxHeight: 600,
               boxSizing: 'border-box',
               overflowY: 'scroll',
-              border: '1px solid rgb(237,237,236)',
-              background: 'white',
+              border: '1px solid',
+              borderColor: 'customColor.borderColor',
+              bgcolor: 'background.paper',
               borderRadius: '6px',
               boxShadow:
                 'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',

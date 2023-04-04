@@ -2,6 +2,7 @@ import { ContextMenuIcon } from '@/features/contextMenu'
 import { Box, IconButton, Stack } from '@mui/material'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import React, { FC, useMemo, useState } from 'react'
+import { useTheme } from '@mui/material/styles'
 
 const ContextMenuMockTextarea: FC<{
   defaultValue?: string
@@ -13,6 +14,7 @@ const ContextMenuMockTextarea: FC<{
     onChange,
     placeholder = 'Use ChatGPT to edit or generate...',
   } = props
+  const { palette } = useTheme()
   const [inputValue, setInputValue] = useState<string>(defaultValue)
   const haveDraft = useMemo(() => {
     return inputValue !== ''
@@ -23,8 +25,9 @@ const ContextMenuMockTextarea: FC<{
         position: 'relative',
         zIndex: 1,
         boxSizing: 'border-box',
-        border: '1px solid rgb(237,237,236)',
-        background: 'white',
+        border: '1px solid',
+        borderColor: palette.customColor.borderColor,
+        background: palette.customColor.paperBackground,
         borderRadius: '6px',
         boxShadow:
           'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
@@ -71,7 +74,11 @@ const ContextMenuMockTextarea: FC<{
             overflow: 'hidden',
             '& > textarea': {
               p: 0,
-              color: 'rgba(0,0,0,.87)!important',
+
+              color: (t) =>
+                t.palette.mode === 'dark'
+                  ? '#fff'
+                  : 'rgba(0,0,0,.87)!important',
               my: 1.5,
               fontSize: '16px',
               minHeight: 24 + 'px',

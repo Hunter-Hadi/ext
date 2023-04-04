@@ -136,7 +136,8 @@ const ClickContextMenuButton: FC<{
       ref={refs.setFloating}
       sx={{
         borderRadius: '4px',
-        border: '1px solid rgb(237,237,236)',
+        border: '1px solid',
+        borderColor: 'customColor.borderColor',
         zIndex:
           show && appSettings.userSettings?.selectionButtonVisible
             ? 2147483600
@@ -177,7 +178,7 @@ const ClickContextMenuButton: FC<{
               sx={{
                 pr: 0.5,
                 fontSize: 16,
-                color: 'inherit',
+                // color: 'inherit',
               }}
             />
           ) : (
@@ -185,7 +186,7 @@ const ClickContextMenuButton: FC<{
               sx={{
                 pr: 1,
                 fontSize: 16,
-                color: 'inherit',
+                // color: 'inherit',
               }}
             />
           )}
@@ -194,7 +195,8 @@ const ClickContextMenuButton: FC<{
             <Typography
               component={'span'}
               sx={{
-                color: 'rgba(55, 53, 47, 0.5)',
+                color: (t) =>
+                  t.palette.mode === 'dark' ? '#999' : 'rgba(55, 53, 47, 0.5)',
                 fontSize: '12px',
                 pl: 1,
               }}

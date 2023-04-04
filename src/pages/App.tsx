@@ -73,6 +73,7 @@ const App: FC = () => {
           flexDirection: 'column',
           height: '100%',
           borderLeft: '1px solid rgba(0, 0, 0, .1)',
+          bgcolor: 'background.paper',
           // position: 'absolute',
           // right: 0,
           // width: '25%',

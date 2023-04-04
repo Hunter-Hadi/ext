@@ -93,7 +93,8 @@ const FloatingContextMenuList: FC<
               component={'div'}
               sx={{
                 pointerEvents: 'none',
-                borderTop: '1px solid rgb(237, 237, 236)',
+                borderTop: '1px solid',
+                borderColor: 'customColor.borderColor',
                 my: 1,
               }}
             />,

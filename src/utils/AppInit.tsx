@@ -82,13 +82,18 @@ const ForceUpdateContextMenuReadOnlyOption = () => {
   return <></>
 }
 
-const AppSettingsInit = () => {
+export const AppSettingsInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   useEffect(() => {
     getChromeExtensionSettings().then((settings) => {
       if (settings) {
-        setAppSettings(settings)
+        setAppSettings({
+          colorSchema: window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light',
+          ...settings,
+        })
         if (settings?.currentModel) {
           updateConversation((conversation) => {
             return {
@@ -100,6 +105,7 @@ const AppSettingsInit = () => {
       }
     })
   }, [])
+
   return <></>
 }
 

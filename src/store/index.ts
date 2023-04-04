@@ -17,6 +17,7 @@ export const AppSettingsState = atom<IChromeExtensionSettings>({
   key: 'AppSettingsState',
   default: {},
 })
+
 export const AppSettingsCommandKeysSelector = selector<{
   shortcutsKey: string
 }>({

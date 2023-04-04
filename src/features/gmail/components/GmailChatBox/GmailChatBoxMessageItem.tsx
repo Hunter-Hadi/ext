@@ -62,7 +62,7 @@ const GmailChatBoxMessageItem: FC<{
     return {
       borderRadius: '8px',
       border: '1px solid rgb(239, 83, 80)!important',
-      bgcolor: '#fff!important',
+      bgcolor: 'background.paper',
     } as SxProps
   }, [message.type])
   useEffect(() => {

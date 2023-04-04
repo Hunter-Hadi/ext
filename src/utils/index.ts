@@ -143,6 +143,7 @@ export type IChromeExtensionSettings = {
     shortcut: string
     description: string
   }>
+  colorSchema?: 'light' | 'dark'
   models?: IChatGPTModelType[]
   currentModel?: string
   contextMenus?: IContextMenuItem[]
@@ -221,17 +222,17 @@ export const setChromeExtensionSettings = (
   settings: IChromeExtensionSettings,
 ) => {
   return new Promise((resolve) => {
-    const port = Browser.runtime.connect()
+    const port = new ContentScriptConnection()
     const listener = (message: any) => {
       if (message.event === 'Client_updateSettingsResponse') {
         const {
           data: { success },
         } = message
-        port.onMessage.removeListener(listener)
+        port.onMessage(listener)
         resolve(success)
       }
     }
-    port.onMessage.addListener(listener)
+    port.onMessage(listener)
     getChromeExtensionSettings()
       .then((oldSettings: any) => {
         port.postMessage({

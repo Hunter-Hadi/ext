@@ -69,7 +69,10 @@ export const LiteDropdownMenuItem = React.forwardRef<
         width: '100%',
         cursor: 'pointer',
         '&.floating-context-menu-item--active': {
-          background: 'rgba(55, 53, 47, 0.08)',
+          bgcolor: (t) =>
+            t.palette.mode === 'dark'
+              ? 'rgba(255, 255, 255, 0.08)'
+              : 'rgba(55, 53, 47, 0.08)',
           '& .floating-context-menu-item__footer-icon': {
             display: 'flex',
           },
@@ -82,7 +85,10 @@ export const LiteDropdownMenuItem = React.forwardRef<
           display: 'flex',
         },
         '&:hover': {
-          background: 'rgba(55, 53, 47, 0.08)',
+          bgcolor: (t) =>
+            t.palette.mode === 'dark'
+              ? 'rgba(255, 255, 255, 0.08)'
+              : 'rgba(55, 53, 47, 0.08)',
           '& .floating-context-menu-item__footer-icon': {
             display: 'flex',
           },
@@ -160,7 +166,10 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           width: '100%',
           cursor: 'pointer',
           '&.floating-context-menu-item--active': {
-            background: 'rgba(55, 53, 47, 0.08)',
+            bgcolor: (t) =>
+              t.palette.mode === 'dark'
+                ? 'rgba(255, 255, 255, 0.08)'
+                : 'rgba(55, 53, 47, 0.08)',
             '& .floating-context-menu-item__footer-icon': {
               display: 'flex',
             },
@@ -173,7 +182,10 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
             display: 'flex',
           },
           '&:hover': {
-            background: 'rgba(55, 53, 47, 0.08)',
+            bgcolor: (t) =>
+              t.palette.mode === 'dark'
+                ? 'rgba(255, 255, 255, 0.08)'
+                : 'rgba(55, 53, 47, 0.08)',
             '& .floating-context-menu-item__footer-icon': {
               display: 'flex',
             },
@@ -232,12 +244,24 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         >
           {menuItem.data.type === 'group' ? (
             <KeyboardArrowRightIcon
-              sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
+              sx={{
+                color: (t) =>
+                  t.palette.mode === 'dark'
+                    ? '#ffffff85'
+                    : 'rgba(55, 53, 47, 0.45)',
+                fontSize: 16,
+              }}
             />
           ) : (
             isLastHover && (
               <KeyboardReturnIcon
-                sx={{ color: 'rgba(55, 53, 47, 0.45)', fontSize: 16 }}
+                sx={{
+                  color: (t) =>
+                    t.palette.mode === 'dark'
+                      ? '#ffffff85'
+                      : 'rgba(55, 53, 47, 0.45)',
+                  fontSize: 16,
+                }}
               />
             )
           )}
@@ -568,8 +592,10 @@ export const MenuComponent = React.forwardRef<
                   maxHeight: 327,
                   boxSizing: 'border-box',
                   overflowY: 'auto',
-                  border: '1px solid rgb(237,237,236)',
-                  background: 'white',
+                  // border: '1px solid rgb(237,237,236)',
+                  border: '1px solid',
+                  borderColor: 'customColor.borderColor',
+                  bgcolor: 'background.paper',
                   borderRadius: '6px',
                   boxShadow:
                     'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',

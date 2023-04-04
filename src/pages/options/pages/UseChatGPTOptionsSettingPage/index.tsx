@@ -1,4 +1,4 @@
-import { Divider, Stack, Typography } from '@mui/material'
+import { Box, Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import { getChromeExtensionSettings, setChromeExtensionSettings } from '@/utils'
@@ -8,8 +8,12 @@ import TextSelectPopupSetting from '@/pages/options/pages/UseChatGPTOptionsSetti
 import UseChatGPTContextMenuSettings from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage/UseChatGPTContextMenuSettings'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import CloseAlert from '@/components/CloseAlert'
+import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
+import { AppSettingsState } from '@/store'
+import { useRecoilState } from 'recoil'
 
 const UseChatGPTOptionsSettingPage = () => {
+  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const [userSettings, setUserSettings] = useState<any>({
     language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
     selectionButtonVisible: true,
@@ -20,9 +24,10 @@ const UseChatGPTOptionsSettingPage = () => {
     if (loaded) {
       setChromeExtensionSettings({
         userSettings,
+        colorSchema: appSettings.colorSchema,
       })
     }
-  }, [loaded, userSettings])
+  }, [loaded, userSettings, appSettings.colorSchema])
   useEffect(() => {
     getChromeExtensionSettings().then((res) => {
       console.log('settings', res.userSettings?.selectionButtonVisible)
@@ -33,6 +38,11 @@ const UseChatGPTOptionsSettingPage = () => {
       if (command) {
         setCommandKey(command.shortcut || '')
       }
+
+      // if (res.colorSchema) {
+      //   setAppSettings(pre => )
+      // }
+
       setUserSettings((prevState: any) => {
         return {
           ...prevState,
@@ -44,6 +54,7 @@ const UseChatGPTOptionsSettingPage = () => {
       }, 1000)
     })
   }, [])
+
   return (
     <AppLoadingLayout loading={!loaded}>
       <Stack
@@ -52,13 +63,27 @@ const UseChatGPTOptionsSettingPage = () => {
           mx: 'auto!important',
         }}
       >
-        <Typography fontSize={20} fontWeight={700}>
+        <Box mb={2}>
+          <Typography fontSize={20} fontWeight={700} mb={1}>
+            Theme Mode
+          </Typography>
+          <ColorSchemaSelect
+            defaultValue={appSettings.colorSchema}
+            onChange={(value) =>
+              setAppSettings((preValue) => ({
+                ...preValue,
+                colorSchema: value,
+              }))
+            }
+          />
+        </Box>
+        <Typography fontSize={20} fontWeight={700} mb={2}>
           AI output language
         </Typography>
         <CloseAlert
           icon={<></>}
           sx={{
-            bgcolor: '#E2E8F0',
+            // bgcolor: '#E2E8F0',
             mt: 1,
             mb: 2,
           }}
@@ -89,7 +114,7 @@ const UseChatGPTOptionsSettingPage = () => {
         <CloseAlert
           icon={<></>}
           sx={{
-            bgcolor: '#E2E8F0',
+            // bgcolor: '#E2E8F0',
             mt: 1,
             mb: 2,
           }}

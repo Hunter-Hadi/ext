@@ -27,6 +27,7 @@ import TooltipButton from '@/components/TooltipButton'
 import DevContent from '@/components/DevContent'
 import { TestAllActionsButton } from '@/features/shortcuts'
 import throttle from 'lodash-es/throttle'
+
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   messageId: string
@@ -142,7 +143,8 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   return (
     <Stack
       position={'relative'}
-      borderTop={'1px solid #e0e0e0'}
+      borderTop={'1px solid'}
+      borderColor="customColor.borderColor"
       sx={{
         height: 0,
         flex: 1,
@@ -221,7 +223,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         spacing={1}
         p={1}
         flexShrink={0}
-        bgcolor={'#fff'}
+        // bgcolor={'#fff'}
       >
         <Stack width={'100%'} alignItems={'center'} justifyContent={'center'}>
           <Box

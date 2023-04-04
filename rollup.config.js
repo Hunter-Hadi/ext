@@ -66,8 +66,10 @@ export default [
         preventAssignment: true,
       }),
       chromeExtension(),
+      // less({}),
       postcss({
         plugins: [],
+        extensions: ['.css', '.less'],
       }),
       simpleReloader(),
       resolve(),

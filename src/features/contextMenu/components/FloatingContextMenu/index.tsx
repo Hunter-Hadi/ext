@@ -27,6 +27,7 @@ import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuL
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
+import { useTheme } from '@mui/material/styles'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = process.env.NODE_ENV === 'production'
@@ -35,6 +36,7 @@ const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
   const { root } = props
+  const { palette } = useTheme()
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
@@ -249,8 +251,9 @@ const FloatingContextMenu: FC<{
             <div
               style={{
                 boxSizing: 'border-box',
-                border: '1px solid rgb(237,237,236)',
-                background: 'white',
+                border: '1px solid',
+                borderColor: palette.customColor.borderColor,
+                background: palette.customColor.paperBackground,
                 borderRadius: '6px',
                 boxShadow:
                   'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',

@@ -154,8 +154,11 @@ const sendClientMessage = (
     }
     tabs.forEach((tab) => {
       if (tab.id) {
-        console.log(tab.id, tab.url, message)
-        if (tab.url?.startsWith('http')) {
+        console.log('sendClientMessage', tab.id, tab.url, message)
+        if (
+          tab.url?.startsWith('http') ||
+          tab.url?.includes(Browser.runtime.id)
+        ) {
           if (tab.url?.startsWith('https://chat.openai.com')) {
             return
           }

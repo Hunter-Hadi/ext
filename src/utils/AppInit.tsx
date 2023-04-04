@@ -13,6 +13,7 @@ import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import { Button } from '@mui/material'
+import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -82,13 +83,28 @@ const ForceUpdateContextMenuReadOnlyOption = () => {
   return <></>
 }
 
-const AppSettingsInit = () => {
+export const AppSettingsInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
+
+  useThemeUpdateListener()
+
   useEffect(() => {
     getChromeExtensionSettings().then((settings) => {
       if (settings) {
-        setAppSettings(settings)
+        setAppSettings({
+          ...settings,
+        })
+
+        if (!settings.colorSchema) {
+          setChromeExtensionSettings({
+            colorSchema: window.matchMedia('(prefers-color-scheme: dark)')
+              .matches
+              ? 'dark'
+              : 'light',
+          })
+        }
+
         if (settings?.currentModel) {
           updateConversation((conversation) => {
             return {
@@ -100,6 +116,7 @@ const AppSettingsInit = () => {
       }
     })
   }, [])
+
   return <></>
 }
 

@@ -1,10 +1,15 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { IGmailChatMessage } from '@/features/gmail/index'
-import { Alert, Stack, SxProps } from '@mui/material'
+import { Alert, Stack, SxProps, Theme } from '@mui/material'
 import GmailChatBoxUserTools from './GmailChatBoxUserTools'
 import GmailChatBoxAiTools from './GmailChatBoxAiTools'
 import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/types'
+import Markdown from 'markdown-to-jsx'
+import { useRecoilValue } from 'recoil'
+import { AppSettingsState } from '@/store'
+
+import markdownCss from '@/pages/markdown.less'
 
 const GmailChatBoxMessageItem: FC<{
   replaceAble?: boolean
@@ -29,25 +34,46 @@ const GmailChatBoxMessageItem: FC<{
     className,
   } = props
   const [defaultText, setDefaultText] = useState(message.text || '')
+  const { colorSchema } = useRecoilValue(AppSettingsState)
   const [isEdit, setIsEdit] = useState(false)
   const ChatBoxSx = useMemo(() => {
     if (message.type === 'ai') {
       return {
         borderRadius: '8px',
         borderBottomLeftRadius: 0,
-        color: 'rgb(56,56,56)!important',
-        bgcolor: `rgb(233,233,235)!important`,
+        // color: 'rgb(56,56,56)!important',
+        // bgcolor: `rgb(233,233,235)!important`,
+
+        color:
+          colorSchema === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)!important',
+        border: '1px solid',
+        borderColor:
+          colorSchema === 'dark' ? 'customColor.borderColor' : 'transparent',
+        bgcolor: (t: Theme) =>
+          t.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, 0.04);'
+            : 'rgb(233,233,235)!important',
       } as SxProps
     }
     if (message.type === 'user' || message.type === 'third') {
       return {
         flexDirection: 'row',
         justifyContent: 'end',
-        bgcolor:
-          process.env.APP_ENV === 'EZ_MAIL_AI'
-            ? '#FEE6E1 !important'
-            : '#F1E2FD !important',
-        color: 'rgba(0,0,0,0.87)!important',
+        bgcolor: () => {
+          if (process.env.APP_ENV === 'EZ_MAIL_AI') {
+            return '#FEE6E1 !important'
+          }
+          if (colorSchema === 'dark') {
+            return '#6B23C259 !important'
+          } else {
+            return '#F1E2FD !important'
+          }
+        },
+        border: '1px solid',
+        borderColor:
+          colorSchema === 'dark' ? 'customColor.borderColor' : 'transparent',
+        color:
+          colorSchema === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)!important',
         maxWidth: '80%',
         width: 'auto',
         borderRadius: '8px',
@@ -62,12 +88,13 @@ const GmailChatBoxMessageItem: FC<{
     return {
       borderRadius: '8px',
       border: '1px solid rgb(239, 83, 80)!important',
-      bgcolor: '#fff!important',
+      bgcolor: 'background.paper',
     } as SxProps
-  }, [message.type])
+  }, [message.type, colorSchema])
   useEffect(() => {
     setDefaultText(message.text || '')
   }, [message.text])
+
   return (
     <Stack
       className={className}
@@ -84,6 +111,7 @@ const GmailChatBoxMessageItem: FC<{
       spacing={1}
       key={message.messageId}
     >
+      <style>{markdownCss}</style>
       {/*<Stack>*/}
       {/*  <p style={{ fontSize: '12px', color: 'red' }}>*/}
       {/*    messageId: {message.messageId}*/}
@@ -115,7 +143,7 @@ const GmailChatBoxMessageItem: FC<{
           </Alert>
         ) : (
           <Stack
-            className={'chat-message--text'}
+            className={'chat-message--text chat-message__markdown'}
             id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
             contentEditable={isEdit}
             whiteSpace={'pre-wrap'}
@@ -126,7 +154,17 @@ const GmailChatBoxMessageItem: FC<{
               borderWidth: isEdit ? 1 : 0,
             }}
           >
-            {defaultText.replace(/^\s+/, '')}
+            {message.type === 'ai' ? (
+              <div
+                className={`markdown-body ${
+                  colorSchema === 'dark' ? 'markdown-body--dark' : ''
+                }`}
+              >
+                <Markdown>{defaultText.replace(/^\s+/, '')}</Markdown>
+              </div>
+            ) : (
+              defaultText.replace(/^\s+/, '')
+            )}
           </Stack>
         )}
         {message.type === 'user' && (

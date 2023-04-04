@@ -68,10 +68,11 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
           <Button
             variant="contained"
             sx={{
-              bgcolor: '#f5f5f5',
-              color: '#626262',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark' ? '#4f4f4f' : '#f5f5f5',
+              color: (t) => (t.palette.mode === 'dark' ? '#f5f5f5' : '#626262'),
               ':hover': {
-                bgcolor: '#f5f5f5',
+                bgcolor: '#666',
               },
             }}
             onClick={handleConfirm}

@@ -39,7 +39,12 @@ const ContextMenuItem = (props: {
       sx={{
         position: 'relative',
         cursor: isGroup ? 'pointer' : 'default',
-        backgroundColor: isHover || isActive ? 'rgba(0, 0, 0, 0.04)' : 'unset',
+        bgcolor: (t) =>
+          isHover || isActive
+            ? t.palette.mode === 'dark'
+              ? 'rgba(255, 255, 255, 0.08)'
+              : 'rgba(55, 53, 47, 0.08)'
+            : 'unset',
         borderRadius: '3px',
         pl: memoPaddingLeft + 'px',
       }}
@@ -71,7 +76,7 @@ const ContextMenuItem = (props: {
                 sx={{
                   fontSize: DRAG_ICON_SIZE,
                   cursor: 'move',
-                  color: '#00000061',
+                  color: 'inherit',
                 }}
               />
             </div>
@@ -80,7 +85,7 @@ const ContextMenuItem = (props: {
               sx={{
                 fontSize: DRAG_ICON_SIZE,
                 cursor: 'default',
-                color: 'rgba(0,0,0,0.0)',
+                color: 'inherit',
               }}
             />
           )}
@@ -93,7 +98,7 @@ const ContextMenuItem = (props: {
             flexShrink: 0,
             transform: isOpen ? 'rotate(0)' : 'rotate(-90deg)',
             fontSize: 20,
-            color: 'rgba(0,0,0,.87)',
+            color: 'inherit',
           }}
         />
       )}
@@ -164,15 +169,9 @@ const ContextMenuItem = (props: {
             }}
           >
             {node.data.editable ? (
-              <ContextMenuIcon
-                icon={'DefaultIcon'}
-                sx={{ color: 'rgba(0,0,0,.87)', fontSize: 20 }}
-              />
+              <ContextMenuIcon icon={'DefaultIcon'} sx={{ fontSize: 20 }} />
             ) : (
-              <ContextMenuIcon
-                icon={'Lock'}
-                sx={{ color: 'rgba(0,0,0,.38)', fontSize: 20 }}
-              />
+              <ContextMenuIcon icon={'Lock'} sx={{ fontSize: 20 }} />
             )}
           </TooltipIconButton>
         </Stack>

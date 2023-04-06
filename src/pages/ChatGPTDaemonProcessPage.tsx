@@ -172,7 +172,6 @@ const useDaemonProcess = () => {
                     sendMessageToClient({
                       conversationId: conversation.id,
                     })
-                    conversation.model = model
                   } else {
                     sendMessageToClient({}, 'create conversation failed')
                   }

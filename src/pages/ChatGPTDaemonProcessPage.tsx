@@ -179,23 +179,25 @@ const useDaemonProcess = () => {
                 break
               case 'DaemonProcess_sendMessage':
                 {
-                  console.log(
-                    'DaemonProcess_sendMessage listen',
-                    asyncEventData,
-                  )
                   const {
-                    conversationId,
+                    CACHE_CONVERSATION_ID: chromeExtensionCacheConversationId,
                     question,
                     messageId,
                     parentMessageId,
                     regenerate,
                   } = asyncEventData
+                  console.log(
+                    '[Daemon Process]: DaemonProcess_createConversation listen',
+                    asyncEventData,
+                  )
                   let conversation =
-                    chatGptInstanceRef.current?.getConversation(conversationId)
+                    chatGptInstanceRef.current?.getConversation(
+                      chromeExtensionCacheConversationId,
+                    )
                   if (!conversation) {
                     conversation =
                       await chatGptInstanceRef.current?.createConversation(
-                        conversationId,
+                        chromeExtensionCacheConversationId,
                       )
                     conversation && (await conversation.fetchHistoryAndConfig())
                   }
@@ -265,10 +267,6 @@ const useDaemonProcess = () => {
                     )
                   } else {
                     sendMessageToClient({}, 'conversationId not find', true)
-                    chatGptInstanceRef.current
-                      ?.closeConversation(conversationId)
-                      .then()
-                      .catch()
                   }
                 }
                 break

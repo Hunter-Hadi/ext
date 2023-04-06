@@ -1,7 +1,7 @@
 const modifyManifest = ({ env, isProd }) => ({
   name: 'modify-manifest',
   generateBundle(_options, bundle) {
-    console.log('modify-manifest')
+    console.log('modify-manifest!!!! isProd', isProd)
     const manifest = bundle['manifest.json']
     const manifestContent = JSON.parse(manifest.source)
     // console.log(manifestContent)
@@ -12,26 +12,24 @@ const modifyManifest = ({ env, isProd }) => ({
     //   matches: ['https://chat.openai.com/*'],
     //   run_at: 'document_start',
     // })
-    if (isProd) {
-      const formatUrl = (arr, editKey) => {
-        return arr.map((item) => {
-          if (item && item[editKey]) {
-            item[editKey] = item[editKey].map((url) => {
-              return url === 'https://*/*' ? '<all_urls>' : url
-            })
-          }
-          return item
-        })
-      }
-      manifestContent.content_scripts = formatUrl(
-        manifestContent.content_scripts,
-        'matches',
-      )
-      manifestContent.web_accessible_resources = formatUrl(
-        manifestContent.web_accessible_resources,
-        'resources',
-      )
+    const formatUrl = (arr, editKey) => {
+      return arr.map((item) => {
+        if (item && item[editKey]) {
+          item[editKey] = item[editKey].map((url) => {
+            return url === 'https://*/*' ? '<all_urls>' : url
+          })
+        }
+        return item
+      })
     }
+    manifestContent.content_scripts = formatUrl(
+      manifestContent.content_scripts,
+      'matches',
+    )
+    manifestContent.web_accessible_resources = formatUrl(
+      manifestContent.web_accessible_resources,
+      'matches',
+    )
     manifest.source = JSON.stringify(manifestContent, null, 2)
   },
 })

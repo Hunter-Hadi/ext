@@ -88,7 +88,7 @@ const useDaemonProcess = () => {
             chatGptInstanceRef.current
               .getAllModels()
               .then((models) => {
-                if (models.length) {
+                if (models.length > 0) {
                   const port = Browser.runtime.connect()
                   port.postMessage({
                     id: CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -152,17 +152,18 @@ const useDaemonProcess = () => {
             switch (asyncEventName) {
               case 'DaemonProcess_createConversation':
                 {
-                  const { model } = asyncEventData
+                  const {
+                    model,
+                    CACHE_CONVERSATION_ID: chromeExtensionCacheConversationId,
+                  } = asyncEventData
+                  console.log(chromeExtensionCacheConversationId)
                   const conversation =
                     await chatGptInstanceRef.current?.createConversation(
-                      '',
+                      chromeExtensionCacheConversationId || '',
                       model,
                     )
-                  console.log(
-                    'DaemonProcess_createConversation created',
-                    conversation,
-                  )
                   if (conversation) {
+                    await conversation.fetchHistoryAndConfig()
                     sendMessageToClient({
                       conversationId: conversation.id,
                     })
@@ -193,6 +194,16 @@ const useDaemonProcess = () => {
                       )
                   }
                   if (conversation) {
+                    // 更新服务器缓存的最后会话ID
+                    if (conversation.conversationId) {
+                      port.postMessage({
+                        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                        event: 'DaemonProcess_updateCacheConversationId',
+                        data: {
+                          conversationId: conversation.conversationId,
+                        },
+                      })
+                    }
                     const controller = new AbortController()
                     const abortFunction = () => {
                       console.log('abort Controller abortFunction', messageId)

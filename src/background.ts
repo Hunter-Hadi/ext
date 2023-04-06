@@ -85,6 +85,7 @@ export type IChromeExtensionChatGPTDaemonProcessSendEvent =
   | 'DaemonProcess_initChatGPTProxyInstance'
   | 'DaemonProcess_updateSettings'
   | 'DaemonProcess_asyncTaskResponse'
+  | 'DaemonProcess_updateCacheConversationId'
   | 'DaemonProcess_Pong'
 // 客户端监听进程
 export type IChromeExtensionClientListenEvent =
@@ -114,10 +115,19 @@ const sendChatGPTDaemonProcessMessage = async (data: any) => {
   console.log('sendChatGPTDaemonProcessMessage', data)
   console.log(chatGPTProxyInstance)
   if ((await checkChatGPTProxyInstance()) && chatGPTProxyInstance?.id) {
+    const { CACHE_CONVERSATION_ID = '' } = await Browser.storage.local.get(
+      'CACHE_CONVERSATION_ID',
+    )
     await Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
       event: 'DaemonProcess_clientAsyncTask',
       id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      data,
+      data: {
+        ...data,
+        data: {
+          ...data.data,
+          CACHE_CONVERSATION_ID,
+        },
+      },
     })
   }
 }
@@ -426,6 +436,16 @@ Browser.runtime.onConnect.addListener((port) => {
         {
           console.log('DaemonProcess_Pong')
           sendClientMessage('Client_ListenPong', {})
+        }
+        break
+      case 'DaemonProcess_updateCacheConversationId':
+        {
+          const { conversationId } = msg.data
+          if (conversationId) {
+            await Browser.storage.local.set({
+              CACHE_CONVERSATION_ID: conversationId,
+            })
+          }
         }
         break
       default:

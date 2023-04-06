@@ -94,6 +94,7 @@ export const showChatBox = () => {
     const ezMailAiElementWidth = Math.max(clientWidth * 0.25, 400)
     htmlElement.style.transition = 'width .3s ease-inout'
     htmlElement.style.width = `calc(100% - ${ezMailAiElementWidth}px)`
+    htmlElement.style.position = 'relative'
     ezMailAiElement.classList.remove('close')
     ezMailAiElement.classList.add('open')
     setTimeout(() => {
@@ -112,6 +113,7 @@ export const hideChatBox = () => {
   if (htmlElement && ezMailAiElement) {
     htmlElement.style.transition = 'width .3s ease-inout'
     htmlElement.style.width = '100%'
+    htmlElement.style.position = ''
     ezMailAiElement.classList.remove('open')
     ezMailAiElement.classList.add('close')
     setTimeout(() => {

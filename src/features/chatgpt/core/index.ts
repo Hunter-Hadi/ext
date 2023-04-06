@@ -1,5 +1,6 @@
 import { v4 as uuidv4, v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
+import { mappingToMessages } from '@/features/chatgpt/core/util'
 
 export interface IChatGPTAnswer {
   text: string
@@ -30,6 +31,48 @@ export interface GenerateAnswerParams {
   onEvent: (event: Event) => void
   signal?: AbortSignal
 }
+export interface IChatGPTConversationRawMappingData {
+  id: string
+  parent: string
+  children: string[]
+  message?: {
+    id: string
+    author: {
+      role: string
+      metadata: {
+        [key: string]: any
+      }
+    }
+    create_time: number
+    content: {
+      content_type: string
+      parts: string[]
+    }
+    end_turn: boolean
+    weight: number
+    metadata: {
+      model_slug: string
+      finish_details: {
+        type: string
+        stop: string
+      }
+    }
+    recipient: string
+  }
+}
+
+export interface IChatGPTConversationRaw {
+  title: string
+  // 当前的node，可以理解为conversation最后的messageId
+  current_node: string
+  mapping: {
+    [key: string]: IChatGPTConversationRawMappingData
+  }
+  moderation_results: any[]
+  create_time: number
+  update_time: number
+}
+
 export interface IChatGPTConversation {
   id: string
   conversationId?: string
@@ -58,6 +101,7 @@ export interface IChatGPTDaemonProcess {
 }
 
 const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
+const CHAT_TITLE = 'UseChatGPT.AI'
 
 const chatGptRequest = (
   token: string,
@@ -108,6 +152,15 @@ class ChatGPTConversation {
   conversationId?: string
   // regenerate last question answer - parent message id
   lastChatGPTAnswerMessageId: string
+  conversationInfo: {
+    title: string
+    messages: Array<{
+      messageId: string
+      parentMessageId: string
+      text: string
+    }>
+    raw?: IChatGPTConversationRaw
+  }
   constructor(props: {
     token: string
     model: string
@@ -118,12 +171,59 @@ class ChatGPTConversation {
     this.lastChatGPTAnswerMessageId = uuidv4()
     this.id = uuidV4()
     this.conversationId = props.conversationId || undefined
+    this.conversationInfo = {
+      title: '',
+      messages: [],
+    }
+  }
+  async updateTitle(title: string) {
+    if (!this.conversationId) {
+      return
+    }
+    await setConversationProperty(this.token, this.conversationId, {
+      title,
+    })
+    this.conversationInfo.title = title
+  }
+  async fetchHistoryAndConfig() {
+    if (!this.conversationId) {
+      return
+    }
+    try {
+      const result = await chatGptRequest(
+        this.token,
+        'GET',
+        `/backend-api/conversation/${this.conversationId}`,
+      )
+      const chatGPTConversationRaw: IChatGPTConversationRaw =
+        await result.json()
+      this.conversationInfo = {
+        title: chatGPTConversationRaw.title,
+        messages: mappingToMessages(
+          chatGPTConversationRaw.current_node,
+          chatGPTConversationRaw.mapping,
+        ),
+        raw: chatGPTConversationRaw,
+      }
+      if (chatGPTConversationRaw.title !== 'CHAT_TITLE') {
+        await this.updateTitle(CHAT_TITLE)
+      }
+      console.log(result)
+      this.lastChatGPTAnswerMessageId = chatGPTConversationRaw.current_node
+    } catch (e) {
+      console.error(e)
+      this.lastChatGPTAnswerMessageId = uuidv4()
+      this.conversationId = undefined
+      this.conversationInfo = {
+        title: '',
+        messages: [],
+      }
+    }
   }
   async generateAnswer(params: GenerateAnswerParams, regenerate = false) {
     const questionId = params.messageId || uuidV4()
     const parentMessageId =
       params.parentMessageId || this.lastChatGPTAnswerMessageId || uuidV4()
-
     console.debug(
       'generateAnswer start',
       this.conversationId,
@@ -290,6 +390,9 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     }
   }
   async createConversation(conversationId?: string, selectedModel?: string) {
+    if (this.conversations.length > 0) {
+      return this.conversations[0]
+    }
     try {
       const token = this.token || (await getChatGPTAccessToken())
       const model = await this.getModelName(token, selectedModel)

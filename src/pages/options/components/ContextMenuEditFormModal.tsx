@@ -193,7 +193,13 @@ const ContextMenuEditForm: FC<{
               </Stack>
             )}
             {node.data.type === 'shortcuts' && (
-              <Box>
+              <Box
+                sx={{
+                  '.ace-tm .ace_comment': {
+                    color: 'rgba(0,0,0,.6)',
+                  },
+                }}
+              >
                 <Stack direction={'row'} alignItems="center">
                   <Typography variant={'body1'}>
                     Prompt template for ChatGPT{' '}
@@ -210,11 +216,12 @@ The template can include any number of the following variables:
                     width={'100%'}
                     height={'100%'}
                     value={template}
-                    showPrintMargin={true}
-                    showGutter={true}
                     fontSize={14}
+                    showPrintMargin={false}
+                    showGutter={false}
+                    highlightActiveLine={false}
                     mode={'handlebars'}
-                    theme={'monokai'}
+                    theme={'textmate'}
                     onChange={(value) => {
                       setTemplate(value)
                     }}
@@ -223,11 +230,11 @@ The template can include any number of the following variables:
                       $blockScrolling: true,
                     }}
                     setOptions={{
+                      wrap: true,
                       enableBasicAutocompletion: true,
                       enableLiveAutocompletion: true,
                       enableSnippets: false,
-                      showLineNumbers: true,
-                      wrap: true,
+                      showLineNumbers: false,
                       tabSize: 2,
                     }}
                     enableBasicAutocompletion

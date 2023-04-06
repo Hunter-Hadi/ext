@@ -1,7 +1,7 @@
 const modifyManifest = ({ env, isProd }) => ({
   name: 'modify-manifest',
   generateBundle(_options, bundle) {
-    console.log('modify-manifest')
+    console.log('modify-manifest!!!!', isProd)
     const manifest = bundle['manifest.json']
     const manifestContent = JSON.parse(manifest.source)
     // console.log(manifestContent)
@@ -29,7 +29,7 @@ const modifyManifest = ({ env, isProd }) => ({
       )
       manifestContent.web_accessible_resources = formatUrl(
         manifestContent.web_accessible_resources,
-        'resources',
+        'matches',
       )
     }
     manifest.source = JSON.stringify(manifestContent, null, 2)

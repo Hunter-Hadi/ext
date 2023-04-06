@@ -40,7 +40,7 @@ const FloatingContextMenuMoreIconButton: FC<{
           label={''}
           root={root}
           menuSx={{
-            width: 180,
+            width: 220,
           }}
           referenceElement={
             <Button
@@ -92,8 +92,8 @@ const FloatingContextMenuMoreIconButton: FC<{
             }
             label={
               appSettings?.userSettings?.selectionButtonVisible
-                ? 'Hide Button'
-                : 'Show Button'
+                ? 'Hide text select popup'
+                : 'Show text select popup'
             }
           />
         </DropdownMenu>

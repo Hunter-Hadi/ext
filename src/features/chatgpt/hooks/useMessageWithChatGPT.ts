@@ -9,6 +9,7 @@ import {
 } from '@/features/gmail/store'
 import { pingDaemonProcess, useSendAsyncTask } from '@/features/chatgpt/utils'
 import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
+import { CHAT_GPT_PROMPT_PREFIX } from '@/types'
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sendAsyncTask = useSendAsyncTask()
@@ -49,7 +50,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       },
     )
     if (response.conversationId) {
-      console.log('create Conversation done', response.conversationId)
+      console.log(
+        '[Daemon Process]: create Conversation done',
+        response.conversationId,
+      )
       console.log(response.conversationId)
       setConversation((prevState) => {
         return {
@@ -98,24 +102,25 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     await pingDaemonProcess()
     console.log('[ChatGPT Module] send question step 1')
     const currentMessageId = messageId || uuidV4()
-    let currentParentMessageId = parentMessageId || ''
-    if (!currentParentMessageId) {
-      // 说明不是retry或者regenerate
-      for (let i = messages.length - 1; i >= 0; i--) {
-        const message = messages[i]
-        if (message.type !== 'system') {
-          if (message.type === 'ai') {
-            currentParentMessageId = message.messageId
-          } else if (message.type === 'user') {
-            currentParentMessageId = message.parentMessageId || uuidV4()
-          }
-          break
-        }
-      }
-      if (!currentParentMessageId) {
-        currentParentMessageId = uuidV4()
-      }
-    }
+    const currentParentMessageId = parentMessageId || ''
+    // @deprecated - 因为我们现在全局只有一个对话，所以不用主动寻找parentMessageId了
+    // if (!currentParentMessageId) {
+    //   // 说明不是retry或者regenerate
+    //   for (let i = messages.length - 1; i >= 0; i--) {
+    //     const message = messages[i]
+    //     if (message.type !== 'system') {
+    //       if (message.type === 'ai') {
+    //         currentParentMessageId = message.messageId
+    //       } else if (message.type === 'user') {
+    //         currentParentMessageId = message.parentMessageId || uuidV4()
+    //       }
+    //       break
+    //     }
+    //   }
+    //   if (!currentParentMessageId) {
+    //     currentParentMessageId = uuidV4()
+    //   }
+    // }
     let postConversationId: string = conversation.conversationId || ''
     setMessages((prevState) => {
       return [
@@ -186,7 +191,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           messageId: currentMessageId,
           parentMessageId: currentParentMessageId,
           conversationId: postConversationId,
-          question,
+          question: CHAT_GPT_PROMPT_PREFIX + question,
         },
         {
           onMessage: (msg) => {

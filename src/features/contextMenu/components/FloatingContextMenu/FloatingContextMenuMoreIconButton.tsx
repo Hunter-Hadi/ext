@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import {
   chromeExtensionClientOpenPage,
   getAppContextMenuElement,
+  setChromeExtensionSettings,
 } from '@/utils'
 import AppLoadingLayout from '@/components/LoadingLayout'
 import { Button, SxProps } from '@mui/material'
@@ -10,12 +11,15 @@ import {
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
+import { useRecoilValue } from 'recoil'
+import { AppSettingsState } from '@/store'
 
 const FloatingContextMenuMoreIconButton: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
   const [loading, setLoading] = useState(true)
+  const appSettings = useRecoilValue(AppSettingsState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   useEffect(() => {
     if (root) {
@@ -68,15 +72,30 @@ const FloatingContextMenuMoreIconButton: FC<{
             label={'Edit options'}
             icon={'DefaultIcon'}
           />
-          {/*<LiteDropdownMenuItem*/}
-          {/*  onClick={() => {*/}
-          {/*    chromeExtensionClientOpenPage({*/}
-          {/*      key: 'options',*/}
-          {/*    })*/}
-          {/*  }}*/}
-          {/*  icon={'Settings'}*/}
-          {/*  label={'Settings'}*/}
-          {/*/>*/}
+          <LiteDropdownMenuItem
+            onClick={async () => {
+              await setChromeExtensionSettings((oldSettings) => {
+                return {
+                  ...oldSettings,
+                  userSettings: {
+                    ...oldSettings.userSettings,
+                    selectionButtonVisible:
+                      !appSettings?.userSettings?.selectionButtonVisible,
+                  },
+                }
+              })
+            }}
+            icon={
+              appSettings?.userSettings?.selectionButtonVisible
+                ? 'VisibilityOff'
+                : 'RemoveRedEye'
+            }
+            label={
+              appSettings?.userSettings?.selectionButtonVisible
+                ? 'Hide Button'
+                : 'Show Button'
+            }
+          />
         </DropdownMenu>
       )}
     </AppLoadingLayout>

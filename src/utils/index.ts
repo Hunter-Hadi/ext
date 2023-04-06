@@ -149,8 +149,8 @@ export type IChromeExtensionSettings = {
   gmailToolBarContextMenu?: IContextMenuItem[]
   userSettings?: {
     colorSchema?: 'light' | 'dark'
-    language: string
-    selectionButtonVisible: boolean
+    language?: string
+    selectionButtonVisible?: boolean
   }
 }
 
@@ -218,8 +218,14 @@ export const filteredTypeGmailToolBarContextMenu = (
   }
 }
 
-export const setChromeExtensionSettings = (
+type IChromeExtensionSettingsUpdateFunction = (
   settings: IChromeExtensionSettings,
+) => IChromeExtensionSettings
+
+export const setChromeExtensionSettings = (
+  settingsOrUpdateFunction:
+    | IChromeExtensionSettings
+    | IChromeExtensionSettingsUpdateFunction,
 ) => {
   return new Promise((resolve) => {
     const port = new ContentScriptConnection()
@@ -235,22 +241,35 @@ export const setChromeExtensionSettings = (
     port.onMessage(listener)
     getChromeExtensionSettings()
       .then((oldSettings: any) => {
-        port.postMessage({
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
-          event: 'Client_updateSettings',
-          data: {
-            settings: JSON.stringify({ ...oldSettings, ...settings }),
-          },
-        })
+        if (settingsOrUpdateFunction instanceof Function) {
+          port.postMessage({
+            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            event: 'Client_updateSettings',
+            data: {
+              settings: JSON.stringify(settingsOrUpdateFunction(oldSettings)),
+            },
+          })
+        } else {
+          port.postMessage({
+            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            event: 'Client_updateSettings',
+            data: {
+              settings: JSON.stringify({
+                ...oldSettings,
+                ...settingsOrUpdateFunction,
+              }),
+            },
+          })
+        }
       })
       .catch(() => {
-        port.postMessage({
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
-          event: 'Client_updateSettings',
-          data: {
-            settings: JSON.stringify({ ...settings }),
-          },
-        })
+        // port.postMessage({
+        //   id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        //   event: 'Client_updateSettings',
+        //   data: {
+        //     settings: JSON.stringify({ ...settings }),
+        //   },
+        // })
       })
   })
 }

@@ -30,6 +30,6 @@ export const mappingToMessages = (
     })
     nodeId = node.parent
   }
-  console.log('[Daemon process]: history messages: ', messages)
+  console.log('[Daemon Process]: history messages: ', messages)
   return messages
 }

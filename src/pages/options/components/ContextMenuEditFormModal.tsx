@@ -193,13 +193,7 @@ const ContextMenuEditForm: FC<{
               </Stack>
             )}
             {node.data.type === 'shortcuts' && (
-              <Box
-                sx={{
-                  '.ace-tm .ace_comment': {
-                    color: 'rgba(0,0,0,.6)',
-                  },
-                }}
-              >
+              <Box>
                 <Stack direction={'row'} alignItems="center">
                   <Typography variant={'body1'}>
                     Prompt template for ChatGPT{' '}
@@ -207,7 +201,21 @@ const ContextMenuEditForm: FC<{
                   </Typography>
                   <TemplateTooltip />
                 </Stack>
-                <Box position={'relative'} width={'100%'} height={320}>
+                <Box
+                  position={'relative'}
+                  width={'100%'}
+                  height={320}
+                  sx={{
+                    p: 1,
+                    boxSizing: 'border-box',
+                    borderRadius: '4px',
+                    border: '1px solid',
+                    borderColor: 'customColor.borderColor',
+                    '.ace-tm .ace_comment': {
+                      color: 'rgba(0,0,0,.6)',
+                    },
+                  }}
+                >
                   <AceEditor
                     placeholder={`The prompt template for ChatGPT.
 The template can include any number of the following variables:

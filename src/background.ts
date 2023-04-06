@@ -441,7 +441,10 @@ Browser.runtime.onConnect.addListener((port) => {
       case 'DaemonProcess_updateCacheConversationId':
         {
           const { conversationId } = msg.data
-          if (conversationId) {
+          if (
+            conversationId instanceof String ||
+            typeof conversationId === 'string'
+          ) {
             await Browser.storage.local.set({
               CACHE_CONVERSATION_ID: conversationId,
             })

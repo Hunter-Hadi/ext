@@ -1,14 +1,6 @@
-import React, { FC, useEffect, useRef } from 'react'
-import { useSetRecoilState } from 'recoil'
-import {
-  ChatGPTConversationState,
-  ChatGPTMessageState,
-} from '@/features/gmail/store'
-import {
-  getChromeExtensionSettings,
-  IChatGPTModelType,
-  setChromeExtensionSettings,
-} from '@/utils'
+import React, { FC, useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
+import { setChromeExtensionSettings } from '@/utils'
 import {
   Box,
   FormControl,
@@ -21,6 +13,8 @@ import {
 } from '@mui/material'
 import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import { AppSettingsState } from '@/store'
+import { useMessageWithChatGPT } from '@/features/chatgpt'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -37,54 +31,17 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTModelsSelector: FC = () => {
-  const updateConversation = useSetRecoilState(ChatGPTConversationState)
-  const [models, setModels] = React.useState<IChatGPTModelType[]>([])
-  const [currentModel, setCurrentModel] = React.useState<string>('')
-  const setConversation = useSetRecoilState(ChatGPTConversationState)
-  const setMessages = useSetRecoilState(ChatGPTMessageState)
-  const prevModel = useRef<string>('')
-  useEffect(() => {
-    let isDestroyed = false
-    getChromeExtensionSettings().then((settings) => {
-      if (isDestroyed) return
-      if (settings.models) {
-        setModels(uniqBy(settings.models, 'slug'))
-      }
-      if (settings?.currentModel) {
-        setCurrentModel(settings.currentModel)
-        updateConversation((conversation) => {
-          return {
-            ...conversation,
-            model: settings.currentModel || '',
-          }
-        })
-      }
-    })
-    return () => {
-      isDestroyed = true
+  const appSettings = useRecoilValue(AppSettingsState)
+  const { resetConversation } = useMessageWithChatGPT('')
+  const memoModels = useMemo(() => {
+    if (appSettings.models && appSettings.models.length > 0) {
+      return uniqBy(appSettings.models, 'slug')
     }
-  }, [])
-  useEffect(() => {
-    if (
-      prevModel.current !== undefined &&
-      prevModel.current &&
-      prevModel.current !== currentModel
-    ) {
-      console.log('Value changed from', prevModel.current, 'to', currentModel)
-      setConversation({
-        model: currentModel,
-        lastMessageId: '',
-        writingMessage: null,
-        conversationId: '',
-        loading: false,
-      })
-      setMessages([])
-    }
-    prevModel.current = currentModel
-  }, [currentModel])
+    return []
+  }, [appSettings.models])
   return (
     <>
-      {models.length > 1 && (
+      {memoModels.length > 1 && (
         <FormControl size="small" sx={{ ml: 1, mt: 2, height: 40 }}>
           <InputLabel
             sx={{ fontSize: '16px' }}
@@ -106,18 +63,12 @@ const ChatGPTModelsSelector: FC = () => {
             IconComponent={ArrowDropDownIconCustom}
             labelId={'ChatGPTModelsSelectorLabel'}
             label={'Model'}
-            value={currentModel}
+            value={appSettings.currentModel || memoModels[0]}
             onChange={async (event) => {
               await setChromeExtensionSettings({
                 currentModel: event.target.value as string,
               })
-              setCurrentModel(event.target.value as string)
-              updateConversation((conversation) => {
-                return {
-                  ...conversation,
-                  model: event.target.value || '',
-                }
-              })
+              await resetConversation()
             }}
             renderValue={(value) => (
               <Typography
@@ -126,12 +77,12 @@ const ChatGPTModelsSelector: FC = () => {
                 width={160}
                 noWrap
               >
-                {models.find((model) => model.slug === value)?.title ||
+                {memoModels.find((model) => model.slug === value)?.title ||
                   'select model'}
               </Typography>
             )}
           >
-            {models.map((model) => {
+            {memoModels.map((model) => {
               return (
                 <MenuItem value={model.slug} key={model?.slug} sx={{ p: 0 }}>
                   <Tooltip

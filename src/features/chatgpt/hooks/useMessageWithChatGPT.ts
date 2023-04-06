@@ -1,4 +1,4 @@
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
@@ -9,9 +9,12 @@ import {
 } from '@/features/gmail/store'
 import { pingDaemonProcess, useSendAsyncTask } from '@/features/chatgpt/utils'
 import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
-import { CHAT_GPT_PROMPT_PREFIX } from '@/types'
+import { CHAT_GPT_MESSAGES_RECOIL_KEY, CHAT_GPT_PROMPT_PREFIX } from '@/types'
+import { AppSettingsState } from '@/store'
+import Browser from 'webextension-polyfill'
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
+  const appSettings = useRecoilValue(AppSettingsState)
   const sendAsyncTask = useSendAsyncTask()
   const updateInboxEditState = useSetRecoilState(InboxEditState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
@@ -20,41 +23,37 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
-  const resetConversation = () => {
-    console.log('resetConversation', defaultValueRef.current)
+  const resetConversation = async () => {
+    console.log(
+      '[ChatGPT]: resetConversation',
+      defaultValueRef.current,
+      appSettings.currentModel,
+    )
     setInputValue(defaultValueRef.current)
     setMessages([])
-    setConversation((prevState) => {
-      if (prevState.conversationId) {
-        console.log('remove Conversation', prevState.conversationId)
-        sendAsyncTask('DaemonProcess_removeConversation', {
-          conversationId: prevState.conversationId,
-        })
-          .then()
-          .catch()
-      }
-      return {
-        model: prevState.model,
-        conversationId: '',
-        writingMessage: null,
-        loading: false,
-      }
+    setConversation({
+      model: appSettings.currentModel || '',
+      conversationId: '',
+      writingMessage: null,
+      loading: false,
+    })
+    await sendAsyncTask('DaemonProcess_removeConversation', {})
+    await Browser.storage.local.set({
+      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
     })
   }
   const createConversation = async () => {
-    console.log(conversation.model)
     const response: any = await sendAsyncTask(
       'DaemonProcess_createConversation',
       {
-        model: conversation.model,
+        model: appSettings.currentModel,
       },
     )
     if (response.conversationId) {
       console.log(
-        '[Daemon Process]: create Conversation done',
+        '[ChatGPT Module]: createConversation',
         response.conversationId,
       )
-      console.log(response.conversationId)
       setConversation((prevState) => {
         return {
           ...prevState,

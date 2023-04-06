@@ -94,7 +94,7 @@ export interface IChatGPTDaemonProcess {
   getAllModels: () => Promise<IModal[]>
   getConversation: (conversationId: string) => ChatGPTConversation | undefined
   getConversations: () => ChatGPTConversation[]
-  closeConversation: (conversationId: string) => Promise<void>
+  closeConversation: (conversationId: string) => Promise<boolean>
   addAbortWithMessageId: (messageId: string, abortFn: () => void) => void
   removeAbortWithMessageId: (messageId: string) => void
   abortWithMessageId: (messageId: string) => void
@@ -205,7 +205,7 @@ class ChatGPTConversation {
         ),
         raw: chatGPTConversationRaw,
       }
-      if (chatGPTConversationRaw.title !== 'CHAT_TITLE') {
+      if (chatGPTConversationRaw.title !== CHAT_TITLE) {
         await this.updateTitle(CHAT_TITLE)
       }
       console.log(result)
@@ -423,12 +423,24 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   async closeConversation(conversationId: string) {
     try {
-      const token = await getChatGPTAccessToken(true)
-      await setConversationProperty(token, conversationId, {
-        is_visible: false,
-      })
+      let conversation = this.getConversation(conversationId)
+      if (!conversation) {
+        const token = this.token || (await getChatGPTAccessToken())
+        const model = await this.getModelName(token, this.models[0].slug)
+        conversation = new ChatGPTConversation({
+          token,
+          model,
+          conversationId,
+        })
+      }
+      await conversation.close()
+      this.conversations = this.conversations.filter(
+        (conversation) => conversation.conversationId !== conversationId,
+      )
+      return true
     } catch (e) {
       console.error(e)
+      return false
     }
   }
   addAbortWithMessageId(messageId: string, abortFunction: () => void) {

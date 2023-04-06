@@ -11,8 +11,9 @@ import {
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
+import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 
 const FloatingContextMenuMoreIconButton: FC<{
   sx?: SxProps
@@ -20,6 +21,7 @@ const FloatingContextMenuMoreIconButton: FC<{
   const { sx } = props
   const [loading, setLoading] = useState(true)
   const appSettings = useRecoilValue(AppSettingsState)
+  const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   useEffect(() => {
     if (root) {
@@ -74,6 +76,10 @@ const FloatingContextMenuMoreIconButton: FC<{
           />
           <LiteDropdownMenuItem
             onClick={async () => {
+              setFloatingDropdownMenu({
+                open: false,
+                rootRect: null,
+              })
               await setChromeExtensionSettings((oldSettings) => {
                 return {
                   ...oldSettings,

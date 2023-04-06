@@ -23,7 +23,7 @@ const stopDaemonProcessClose = () => {
   window.onbeforeunload = (event) => {
     event.returnValue = 'Are you sure you want to close?'
     setTimeout(() => {
-      console.log('not close')
+      console.log('[Daemon Process]: not close')
     }, 0)
     return 'Are you sure you want to close?'
   }
@@ -78,13 +78,15 @@ const useDaemonProcess = () => {
       switch (event as IChromeExtensionChatGPTDaemonProcessListenEvent) {
         case 'DaemonProcess_getChatGPTProxyInstanceResponse':
           if (data.isInit) {
-            console.log('close listen')
+            console.log('[Daemon Process]: close listen')
             document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
             Browser.runtime?.onMessage?.removeListener(listener)
             port?.onMessage?.removeListener(listener)
             port?.disconnect()
           } else {
-            console.log(`init ${APP_NAME} chatGPT daemon process`)
+            console.log(
+              `[Daemon Process]: init ${APP_NAME} chatGPT daemon process`,
+            )
             chatGptInstanceRef.current
               .getAllModels()
               .then((models) => {
@@ -115,7 +117,7 @@ const useDaemonProcess = () => {
           break
         case 'DaemonProcess_listenClientPing':
           {
-            console.log('DaemonProcess_listenClientPing')
+            console.log('[Daemon Process]: DaemonProcess_listenClientPing')
             port.postMessage({
               id: CHROME_EXTENSION_POST_MESSAGE_ID,
               event: 'DaemonProcess_Pong',
@@ -156,7 +158,10 @@ const useDaemonProcess = () => {
                     model,
                     CACHE_CONVERSATION_ID: chromeExtensionCacheConversationId,
                   } = asyncEventData
-                  console.log(chromeExtensionCacheConversationId)
+                  console.log(
+                    '[Daemon Process]: DaemonProcess_createConversation listen',
+                    asyncEventData,
+                  )
                   const conversation =
                     await chatGptInstanceRef.current?.createConversation(
                       chromeExtensionCacheConversationId || '',
@@ -167,6 +172,7 @@ const useDaemonProcess = () => {
                     sendMessageToClient({
                       conversationId: conversation.id,
                     })
+                    conversation.model = model
                   } else {
                     sendMessageToClient({}, 'create conversation failed')
                   }
@@ -192,21 +198,15 @@ const useDaemonProcess = () => {
                       await chatGptInstanceRef.current?.createConversation(
                         conversationId,
                       )
+                    conversation && (await conversation.fetchHistoryAndConfig())
                   }
                   if (conversation) {
-                    // 更新服务器缓存的最后会话ID
-                    if (conversation.conversationId) {
-                      port.postMessage({
-                        id: CHROME_EXTENSION_POST_MESSAGE_ID,
-                        event: 'DaemonProcess_updateCacheConversationId',
-                        data: {
-                          conversationId: conversation.conversationId,
-                        },
-                      })
-                    }
                     const controller = new AbortController()
                     const abortFunction = () => {
-                      console.log('abort Controller abortFunction', messageId)
+                      console.log(
+                        '[Daemon Process]: abort Controller abortFunction',
+                        messageId,
+                      )
                       controller.abort()
                     }
                     chatGptInstanceRef.current?.addAbortWithMessageId(
@@ -221,8 +221,11 @@ const useDaemonProcess = () => {
                         signal: controller.signal,
                         onEvent(event) {
                           if (event.type === 'error') {
-                            console.log('error')
-                            console.log('abort Controller remove', messageId)
+                            console.log('[Daemon Process]: error')
+                            console.log(
+                              '[Daemon Process]: abort Controller remove',
+                              messageId,
+                            )
                             chatGptInstanceRef.current?.removeAbortWithMessageId(
                               messageId,
                             )
@@ -233,8 +236,22 @@ const useDaemonProcess = () => {
                             )
                           }
                           if (event.type === 'done') {
-                            console.log('done')
-                            console.log('abort Controller remove', messageId)
+                            console.log('[Daemon Process]: done')
+                            console.log(
+                              '[Daemon Process]: abort Controller remove',
+                              messageId,
+                            )
+                            // 更新服务器缓存的最后会话ID
+                            if (conversation && conversation.conversationId) {
+                              port.postMessage({
+                                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                                event:
+                                  'DaemonProcess_updateCacheConversationId',
+                                data: {
+                                  conversationId: conversation.conversationId,
+                                },
+                              })
+                            }
                             chatGptInstanceRef.current?.removeAbortWithMessageId(
                               messageId,
                             )
@@ -259,17 +276,26 @@ const useDaemonProcess = () => {
               case 'DaemonProcess_removeConversation':
                 {
                   console.log(
-                    'DaemonProcess_removeConversation listen',
+                    '[Daemon Process]: DaemonProcess_removeConversation listen',
                     asyncEventData,
                   )
-                  const { conversationId } = asyncEventData
-                  if (conversationId) {
-                    const conversation =
-                      chatGptInstanceRef.current?.getConversation(
-                        conversationId,
+                  const {
+                    CACHE_CONVERSATION_ID: chromeExtensionCacheConversationId,
+                  } = asyncEventData
+                  if (chromeExtensionCacheConversationId) {
+                    const isSuccessDeleteConversation =
+                      await chatGptInstanceRef.current.closeConversation(
+                        chromeExtensionCacheConversationId,
                       )
-                    if (conversation) {
-                      await conversation.close()
+                    if (isSuccessDeleteConversation) {
+                      // 清空缓存的会话ID
+                      port.postMessage({
+                        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                        event: 'DaemonProcess_updateCacheConversationId',
+                        data: {
+                          conversationId: '',
+                        },
+                      })
                     }
                   }
                   sendMessageToClient({}, '', true)

@@ -39,3 +39,4 @@ export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
 
 // chat gpt config
 export const CHAT_GPT_PROMPT_PREFIX = `\`reset\`\n\`no quotes\`\n\`no explanations\`\n\`no prompt\`\n\`no self-reference\`\n\`no apologies\`\n\`no filler\`\n\`just answer\`\n`
+export const CHAT_GPT_MESSAGES_RECOIL_KEY = 'CHAT_GPT_MESSAGES_RECOIL_KEY'

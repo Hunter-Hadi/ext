@@ -2,6 +2,8 @@ import { atom, selector } from 'recoil'
 import * as InboxSDK from '@inboxsdk/core'
 import { ComposeView } from '@inboxsdk/core'
 import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
+import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
+import Browser from 'webextension-polyfill'
 
 interface IProxyInboxSdkTarget<T> {
   getInstance?: () => T
@@ -47,8 +49,26 @@ export const InboxComposeViewState = atom<{
 })
 
 export const ChatGPTMessageState = atom<IGmailChatMessage[]>({
-  key: 'GmailMessageChatState',
+  key: CHAT_GPT_MESSAGES_RECOIL_KEY,
   default: [],
+  effects: [
+    ({ onSet }) => {
+      onSet((newValue) => {
+        if (newValue.length > 0) {
+          Browser.storage.local
+            .set({
+              [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify(newValue),
+            })
+            .then(() => {
+              console.log(
+                '[ChatGPT Module] [localstorage] message update:\t',
+                newValue,
+              )
+            })
+        }
+      })
+    },
+  ],
 })
 
 export const ChatGPTInputState = atom<string>({

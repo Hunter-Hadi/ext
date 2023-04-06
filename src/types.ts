@@ -38,4 +38,4 @@ export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
   'the same language variety or dialect of the following text'
 
 // chat gpt config
-export const CHAT_GPT_PROMPT_PREFIX = `reset\nno quotes\nno explanations\nno prompt\nno self-reference\nno apologies\nno filler\njust answer\n`
+export const CHAT_GPT_PROMPT_PREFIX = `\`reset\`\n\`no quotes\`\n\`no explanations\`\n\`no prompt\`\n\`no self-reference\`\n\`no apologies\`\n\`no filler\`\n\`just answer\`\n`

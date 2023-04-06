@@ -10,7 +10,8 @@ import {
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { AppSettingsState } from '@/store'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 
 const FloatingContextMenuMoreIconButton: FC<{
@@ -18,6 +19,7 @@ const FloatingContextMenuMoreIconButton: FC<{
 }> = (props) => {
   const { sx } = props
   const [loading, setLoading] = useState(true)
+  const appSettings = useRecoilValue(AppSettingsState)
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   useEffect(() => {
@@ -82,8 +84,16 @@ const FloatingContextMenuMoreIconButton: FC<{
                 query: '#text-select-popup',
               })
             }}
-            icon={'VisibilityOff'}
-            label={'Hide text select popup'}
+            icon={
+              appSettings?.userSettings?.selectionButtonVisible
+                ? 'VisibilityOff'
+                : 'RemoveRedEye'
+            }
+            label={
+              appSettings?.userSettings?.selectionButtonVisible
+                ? 'Hide text select popup'
+                : 'Show text select popup'
+            }
           />
         </DropdownMenu>
       )}

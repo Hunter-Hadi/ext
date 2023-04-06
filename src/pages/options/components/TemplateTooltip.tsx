@@ -17,10 +17,12 @@ const WordItem = (props: { word: string }) => {
     <Stack
       sx={{
         '.code': {
+          borderRadius: '4px',
           px: '4px',
           py: '2px',
           fontWeight: 700,
-          background: 'rgba(118, 1, 211, 0.1)',
+          bgcolor: (t) =>
+            t.palette.mode === 'dark' ? '#fff' : 'rgba(118, 1, 211, 0.1)',
           color: 'customColor.main',
         },
       }}
@@ -54,7 +56,10 @@ const WordItem = (props: { word: string }) => {
                   width: 4,
                   height: 4,
                   borderRadius: '50%',
-                  background: 'rgba(118, 1, 211, 0.5)',
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? '#fff'
+                      : 'rgba(118, 1, 211, 0.5)',
                   mx: 1,
                 }}
               ></Box>

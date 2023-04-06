@@ -65,6 +65,7 @@ const ContextMenuEditForm: FC<{
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
   )
+  const [focusEditor, setFocusEditor] = useState(false)
   const [template, setTemplate] = useState('')
   const [selectedIcon, setSelectedIcon] = useState<IContextMenuIconKey | null>(
     null,
@@ -203,20 +204,42 @@ const ContextMenuEditForm: FC<{
                 </Stack>
                 <Box
                   position={'relative'}
-                  width={'100%'}
                   height={320}
                   sx={{
+                    ml: '2px',
+                    width: 'calc(100% - 4px)',
                     p: 1,
                     boxSizing: 'border-box',
                     borderRadius: '4px',
                     border: '1px solid',
-                    borderColor: 'customColor.borderColor',
+                    borderColor: (t) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgb(97, 97, 97)'
+                        : 'rgb(208, 208, 208)',
                     '.ace-tm .ace_comment': {
                       color: 'rgba(0,0,0,.6)',
                     },
+                    '&:hover': {
+                      borderColor: (t) =>
+                        t.palette.mode === 'dark' ? '#fff' : 'rgb(0, 0, 0)',
+                    },
+                    ...(focusEditor && {
+                      borderColor: 'transparent!important',
+                      outline: '2px solid',
+                      'outline-color': (t) =>
+                        t.palette.mode === 'dark'
+                          ? t.palette.customColor.main
+                          : t.palette.customColor.main,
+                    }),
                   }}
                 >
                   <AceEditor
+                    onFocus={() => {
+                      setFocusEditor(true)
+                    }}
+                    onBlur={() => {
+                      setFocusEditor(false)
+                    }}
                     placeholder={`The prompt template for ChatGPT.
 The template can include any number of the following variables:
 {{SELECTED_TEXT}}

@@ -109,7 +109,12 @@ const UseChatGPTOptionsSettingPage = () => {
           }}
         />
         <Divider sx={{ my: 4 }} />
-        <Typography fontSize={20} fontWeight={700} color={'text.primary'}>
+        <Typography
+          fontSize={20}
+          fontWeight={700}
+          color={'text.primary'}
+          id={'text-select-popup'}
+        >
           Text select popup
         </Typography>
         <CloseAlert

@@ -33,6 +33,18 @@ const OptionsPage = () => {
     }
     return ''
   }, [route])
+  useEffect(() => {
+    const hash = window.location.hash
+    const timer = setTimeout(() => {
+      document.getElementById(hash.replace('#', ''))?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }, 1000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
   return (
     <Container
       maxWidth={'lg'}

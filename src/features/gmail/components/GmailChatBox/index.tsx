@@ -127,16 +127,40 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       list.scrollTo(0, list.scrollHeight)
     }
   }, [writingMessage])
+  const lastScrollId = useRef('')
   useEffect(() => {
     if (messages.length > 0) {
-      const lastMessage = messages[messages.length - 1]
-      if (lastMessage.type === 'user' || lastMessage.type === 'system') {
-        const list = stackRef.current
-        list && list.scrollTo(0, list.scrollHeight)
-        scrolledToBottomRef.current = true
+      for (let i = messages.length - 1; i >= 0; i--) {
+        const message = messages[i]
+        if (message.type === 'user' || message.type === 'system') {
+          if (
+            lastScrollId.current &&
+            lastScrollId.current !== message.messageId
+          ) {
+            scrolledToBottomRef.current = true
+          } else {
+            scrolledToBottomRef.current = true
+          }
+          lastScrollId.current = message.messageId
+          break
+        }
       }
     }
   }, [messages])
+  useEffect(() => {
+    const focusListener = () => {
+      const list = stackRef.current
+      if (list) {
+        scrolledToBottomRef.current && list.scrollTo(0, list.scrollHeight)
+        setTimeout(() => {
+          scrolledToBottomRef.current && list.scrollTo(0, list.scrollHeight)
+        }, 1000)
+      }
+    }
+    focusListener()
+    window.addEventListener('focus', focusListener)
+    return () => window.removeEventListener('focus', focusListener)
+  }, [])
   useEffect(() => {
     console.log('default update', step)
     setInputValue(defaultValue)

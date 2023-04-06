@@ -303,18 +303,6 @@ const ContextMenuSettings: FC<{
     result.forEach(deepFindId)
     return originalTreeData.filter((item) => showIds.includes(item.id))
   }, [originalTreeData, inputValue])
-  useEffect(() => {
-    const hash = window.location.hash
-    const timer = setTimeout(() => {
-      document.getElementById(hash.replace('#', ''))?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }, 1000)
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [])
   return (
     <Stack spacing={3} height={'100%'} mb={4}>
       <Stack

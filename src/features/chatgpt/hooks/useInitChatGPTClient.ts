@@ -102,7 +102,15 @@ const useInitChatGPTClient = () => {
             result[CHAT_GPT_MESSAGES_RECOIL_KEY],
           )
           if (localMessages && localMessages instanceof Array) {
-            updateMessages(localMessages)
+            updateMessages((prevState) => {
+              const lastMessageId = prevState[prevState.length - 1]?.messageId
+              const newMessageLastId =
+                localMessages[localMessages.length - 1]?.messageId
+              if (lastMessageId === newMessageLastId) {
+                return prevState
+              }
+              return localMessages
+            })
           }
         } catch (e) {
           console.error(e)

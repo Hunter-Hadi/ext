@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from 'react'
 import {
   chromeExtensionClientOpenPage,
   getAppContextMenuElement,
-  setChromeExtensionSettings,
 } from '@/utils'
 import AppLoadingLayout from '@/components/LoadingLayout'
 import { Button, SxProps } from '@mui/material'
@@ -11,8 +10,7 @@ import {
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { useRecoilState } from 'recoil'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 
 const FloatingContextMenuMoreIconButton: FC<{
@@ -20,7 +18,6 @@ const FloatingContextMenuMoreIconButton: FC<{
 }> = (props) => {
   const { sx } = props
   const [loading, setLoading] = useState(true)
-  const appSettings = useRecoilValue(AppSettingsState)
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   useEffect(() => {
@@ -80,27 +77,13 @@ const FloatingContextMenuMoreIconButton: FC<{
                 open: false,
                 rootRect: null,
               })
-              await setChromeExtensionSettings((oldSettings) => {
-                return {
-                  ...oldSettings,
-                  userSettings: {
-                    ...oldSettings.userSettings,
-                    selectionButtonVisible:
-                      !appSettings?.userSettings?.selectionButtonVisible,
-                  },
-                }
+              chromeExtensionClientOpenPage({
+                key: 'options',
+                query: '#text-select-popup',
               })
             }}
-            icon={
-              appSettings?.userSettings?.selectionButtonVisible
-                ? 'VisibilityOff'
-                : 'RemoveRedEye'
-            }
-            label={
-              appSettings?.userSettings?.selectionButtonVisible
-                ? 'Hide text select popup'
-                : 'Show text select popup'
-            }
+            icon={'VisibilityOff'}
+            label={'Hide text select popup'}
           />
         </DropdownMenu>
       )}

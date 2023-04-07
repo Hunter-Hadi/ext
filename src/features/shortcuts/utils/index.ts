@@ -122,6 +122,7 @@ export const templateStaticWords =
         // 'LAST_ACTION_OUTPUT',
         'SELECTED_TEXT',
         'AI_OUTPUT_LANGUAGE',
+        'CURRENT_WEBSITE_DOMAIN',
         // 'LAST_AI_OUTPUT',
       ]
 
@@ -170,6 +171,14 @@ export const templateWordToExamples = (
         description:
           'When you use this variable in the prompt template for ChatGPT, it will display the current draft present in the Gmail text box.',
         examples: [],
+      }
+    case 'CURRENT_WEBSITE_DOMAIN':
+      return {
+        description: `This ChatGPT prompt template variable will be replaced with the current website's domain.`,
+        examples: [
+          `reply to the following text on {{CURRENT_WEBSITE_DOMAIN}}`,
+          `note that the text is from {{CURRENT_WEBSITE_DOMAIN}}`,
+        ],
       }
     default:
       return {

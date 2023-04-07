@@ -133,13 +133,20 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       for (let i = messages.length - 1; i >= 0; i--) {
         const message = messages[i]
         if (message.type === 'user' || message.type === 'system') {
+          const list = stackRef.current
           if (
             lastScrollId.current &&
             lastScrollId.current !== message.messageId
           ) {
             scrolledToBottomRef.current = true
+            setTimeout(() => {
+              list && list.scrollTo(0, list.scrollHeight)
+            }, 0)
           } else {
             scrolledToBottomRef.current = true
+            setTimeout(() => {
+              list && list.scrollTo(0, list.scrollHeight)
+            }, 0)
           }
           lastScrollId.current = message.messageId
           break

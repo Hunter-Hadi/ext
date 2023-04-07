@@ -66,6 +66,8 @@ const useShortCutsParameters = () => {
       LAST_AI_OUTPUT: chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
       AI_OUTPUT_LANGUAGE:
         appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+      CURRENT_WEBSITE_DOMAIN:
+        typeof window !== 'undefined' ? window.location.hostname : '',
     }
     const parameters: Array<{
       key: string

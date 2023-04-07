@@ -8,6 +8,7 @@ export const SHORTCUT_ENGINE_BUILD_IN_VARIABLES = [
   'USER_INPUT',
   'SELECTED_TEXT',
   'SELECTED_HTML',
+  'CURRENT_WEBSITE_DOMAIN',
   // settings
   'AI_OUTPUT_LANGUAGE',
 ] as const

@@ -14,7 +14,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{SELECTED_TEXT}}\n""" \nWrite a positive and agreeing reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '"""\n{{SELECTED_TEXT}}\n""" \nWrite a positive and agreeing reply to the text above (on {{CURRENT_WEBSITE_DOMAIN}}).\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -39,7 +39,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a negative and disagreeing reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a negative and disagreeing reply to the text above (on {{CURRENT_WEBSITE_DOMAIN}}).\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -64,7 +64,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a positive and supporting reply to the text above.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a positive and supporting reply to the text above (on {{CURRENT_WEBSITE_DOMAIN}}).\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -89,7 +89,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a humorous reply to the text above joking about it in a friendly way.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a humorous reply to the text above (on {{CURRENT_WEBSITE_DOMAIN}}) joking about it in a friendly way.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -114,7 +114,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a reply to the text above with a few suggestive ideas.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a reply to the text above (on {{CURRENT_WEBSITE_DOMAIN}}) with a few suggestive ideas.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -139,7 +139,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a reply to the text above including a question.\nKeep response length similar to original. Only give me the output and nothing else.',
+              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a reply to the text above (on {{CURRENT_WEBSITE_DOMAIN}}) including a question.\nKeep response length similar to original. Only give me the output and nothing else.',
           },
         },
         {
@@ -164,7 +164,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a reply to the text above:',
+              '"""\n{{SELECTED_TEXT}}\n"""\nWrite a reply to the text above (on {{CURRENT_WEBSITE_DOMAIN}}):',
           },
         },
         {

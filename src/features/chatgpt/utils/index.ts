@@ -1,5 +1,6 @@
 import {
   IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
+  IChromeExtensionChatGPTDaemonProcessSendEvent,
   IChromeExtensionClientSendEvent,
 } from '@/background'
 import { v4 as uuidV4 } from 'uuid'
@@ -229,11 +230,19 @@ export const useSendAsyncTask = () => {
 type MessageCallback = (message: any) => void
 
 export class ContentScriptConnection {
+  private runtime: 'client' | 'daemon_process'
   private port: Browser.Runtime.Port
   private heartbeatTimer: any | null
+  private heartbeatInterval = 1000
   private messageCallbacks: MessageCallback[]
   private retryCount: number
-  constructor() {
+  constructor(
+    options: {
+      openHeartbeat?: boolean
+      heartbeatInterval?: number
+      runtime?: 'client' | 'daemon_process'
+    } = {},
+  ) {
     console.log('[ContentScriptConnection]: init')
     // 创建一个与扩展程序后台建立连接的端口对象
     this.port = Browser.runtime.connect()
@@ -245,10 +254,20 @@ export class ContentScriptConnection {
     this.port.onMessage.addListener(this.handleMessage.bind(this))
     // 初始化重试次数
     this.retryCount = 0
+    // 初始化运行环境
+    this.runtime = options.runtime || 'client'
+    // 初始化心跳间隔
+    this.heartbeatInterval = options.heartbeatInterval || 1000
+    // 是否开启心跳
+    if (options.openHeartbeat) {
+      this.startHeartbeat()
+    }
   }
   postMessage(msg: {
     id: string
-    event: IChromeExtensionClientSendEvent
+    event:
+      | IChromeExtensionClientSendEvent
+      | IChromeExtensionChatGPTDaemonProcessSendEvent
     data?: any
   }) {
     try {
@@ -265,6 +284,8 @@ export class ContentScriptConnection {
       return
     }
     if (!this.heartbeatTimer) {
+      // TODO 先不发送心跳
+      return
       this.startHeartbeat()
     }
   }
@@ -287,35 +308,43 @@ export class ContentScriptConnection {
     this.port.onDisconnect.addListener(callback)
   }
   private startHeartbeat() {
-    // TODO 先不发送心跳
-    return
+    console.log('[ContentScriptConnection]: heartbeat start')
     this.stopHeartbeat()
     this.heartbeatTimer = setInterval(() => {
-      if (document.hidden) {
-        console.log(
-          '[ContentScriptConnection]: heartbeat jump with document.hidden',
-        )
-        return
+      if (this.runtime === 'daemon_process') {
+        console.log('[ContentScriptConnection]: heartbeat exec')
+        this.postMessage({
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'DaemonProcess_Pong',
+        })
+      } else {
+        if (document.hidden) {
+          console.log(
+            '[ContentScriptConnection]: heartbeat jump with document.hidden',
+          )
+          return
+        }
+        console.log('[ContentScriptConnection]: heartbeat exec')
+        this.postMessage({
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'Client_Ping',
+        })
+        this.postMessage({
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'Client_checkChatGPTStatus',
+        })
       }
-      console.log('[ContentScriptConnection]: heartbeat start')
-      this.postMessage({
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        event: 'Client_Ping',
-      })
-      this.postMessage({
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        event: 'Client_checkChatGPTStatus',
-      })
-    }, 1000)
+    }, this.heartbeatInterval)
   }
   private stopHeartbeat() {
-    console.log('[ContentScriptConnection]: heartbeat stop')
     if (this.heartbeatTimer) {
+      console.log('[ContentScriptConnection]: heartbeat stop')
       clearInterval(this.heartbeatTimer)
       this.heartbeatTimer = null
     }
   }
   destroy() {
+    console.log('[ContentScriptConnection]: heartbeat destroy')
     this.stopHeartbeat()
     this.port.disconnect()
   }

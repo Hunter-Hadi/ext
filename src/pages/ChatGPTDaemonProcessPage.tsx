@@ -1,6 +1,10 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
 import Browser from 'webextension-polyfill'
-import { ChatGPTDaemonProcess, IChatGPTDaemonProcess } from '@/features/chatgpt'
+import {
+  ChatGPTDaemonProcess,
+  ContentScriptConnection,
+  IChatGPTDaemonProcess,
+} from '@/features/chatgpt'
 import './chatGPT.less'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import { IconButton, Stack, Typography } from '@mui/material'
@@ -69,7 +73,9 @@ const useDaemonProcess = () => {
   }, [])
   useEffect(() => {
     console.log(pageSuccessLoaded, 'pageSuccessLoaded')
-    const port = Browser.runtime.connect()
+    const port = new ContentScriptConnection({
+      runtime: 'daemon_process',
+    })
     const listener = async (msg: any) => {
       const { event, data } = msg
       if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
@@ -81,8 +87,8 @@ const useDaemonProcess = () => {
             console.log('[Daemon Process]: close listen')
             document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
             Browser.runtime?.onMessage?.removeListener(listener)
-            port?.onMessage?.removeListener(listener)
-            port?.disconnect()
+            port?.onMessage(listener)
+            port?.destroy()
           } else {
             console.log(
               `[Daemon Process]: init ${APP_NAME} chatGPT daemon process`,
@@ -91,7 +97,6 @@ const useDaemonProcess = () => {
               .getAllModels()
               .then((models) => {
                 if (models.length > 0) {
-                  const port = Browser.runtime.connect()
                   port.postMessage({
                     id: CHROME_EXTENSION_POST_MESSAGE_ID,
                     event: 'DaemonProcess_updateSettings',
@@ -348,7 +353,7 @@ const useDaemonProcess = () => {
       }
     }
     if (pageSuccessLoaded) {
-      port.onMessage.addListener(listener)
+      port.onMessage(listener)
       Browser.runtime.onMessage.addListener(listener)
       port.postMessage({
         id: CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -357,8 +362,8 @@ const useDaemonProcess = () => {
     }
     return () => {
       Browser.runtime?.onMessage?.removeListener(listener)
-      port?.onMessage?.removeListener(listener)
-      port?.disconnect()
+      port?.onMessage(listener)
+      port?.destroy()
     }
   }, [pageSuccessLoaded])
   return {

@@ -435,6 +435,12 @@ Browser.runtime.onConnect.addListener((port) => {
       case 'DaemonProcess_Pong':
         {
           console.log('DaemonProcess_Pong')
+          if (chatGPTProxyInstanceStatus !== 'success') {
+            chatGPTProxyInstanceStatus = 'success'
+            sendClientMessage('Client_ChatGPTStatusUpdate', {
+              status: 'success',
+            })
+          }
           sendClientMessage('Client_ListenPong', {})
         }
         break
@@ -561,23 +567,23 @@ Browser.storage.onChanged.addListener(() => {
 })
 Browser.scripting.getRegisteredContentScripts()
 Browser.runtime.onInstalled.addListener(async (object) => {
-  const config = {
-    userSettings: {
-      language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-      selectionButtonVisible: true,
-    },
-    ...(await getChromeExtensionLocalSettings()),
-  }
-  console.log('onInstalled config', config)
-  await Browser.storage.local.set({
-    CLIENT_SETTINGS: JSON.stringify(config),
-  })
-  Browser.contextMenus.create({
-    id: 'use-chatgpt-ai-context-menu-button',
-    title: 'Use ChatGPT',
-    contexts: ['all'],
-  })
   if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    const config = {
+      userSettings: {
+        language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+        selectionButtonVisible: true,
+      },
+      ...(await getChromeExtensionLocalSettings()),
+    }
+    console.log('onInstalled config', config)
+    await Browser.storage.local.set({
+      CLIENT_SETTINGS: JSON.stringify(config),
+    })
+    Browser.contextMenus.create({
+      id: 'use-chatgpt-ai-context-menu-button',
+      title: 'Use ChatGPT',
+      contexts: ['all'],
+    })
     if (isEzMailApp) {
       await Browser.tabs.create({
         url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
@@ -626,3 +632,18 @@ if (!isEzMailApp) {
     }
   })
 }
+// 守护进程定时发送心跳
+const keepAliveDaemonProcess = async () => {
+  if ((await checkChatGPTProxyInstance()) && chatGPTProxyInstance?.id) {
+    console.log('keepAliveDaemonProcess')
+    await Browser.tabs.sendMessage(chatGPTProxyInstance.id, {
+      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      event: 'DaemonProcess_listenClientPing',
+    })
+  }
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms))
+  await delay(30 * 1000)
+  await keepAliveDaemonProcess()
+}
+keepAliveDaemonProcess()

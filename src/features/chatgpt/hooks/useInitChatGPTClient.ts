@@ -27,7 +27,7 @@ const useInitChatGPTClient = () => {
     showFloatingContextMenuRef.current = showFloatingContextMenu
   }, [showFloatingContextMenu])
   useEffect(() => {
-    const port = new ContentScriptConnection()
+    const port = new ContentScriptConnection({})
     const listener = (msg: any) => {
       const { event, data } = msg
       if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {

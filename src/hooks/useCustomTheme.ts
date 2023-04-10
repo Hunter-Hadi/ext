@@ -186,8 +186,6 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
     )
   }, [isDarkMode, shadowRootElement])
 
-  console.log('useCustomTheme AppSettings', theme, isDarkMode)
-
   return {
     isDarkMode: isDarkMode,
     customTheme: theme,

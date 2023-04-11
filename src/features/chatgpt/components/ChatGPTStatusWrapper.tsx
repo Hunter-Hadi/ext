@@ -5,10 +5,7 @@ import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { CHAT_GPT_PROVIDER, CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
-import {
-  ContentScriptConnection,
-  ContentScriptConnectionV2,
-} from '@/features/chatgpt/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
@@ -33,7 +30,7 @@ const ProviderFeatureItem: FC<{
   )
 }
 
-const ChatGPTLoaderWrapper: FC = () => {
+const ChatGPTStatusWrapper: FC = () => {
   const { status } = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
   useEffect(() => {
@@ -86,10 +83,8 @@ const ChatGPTLoaderWrapper: FC = () => {
                   },
                 }}
                 onClick={() => {
-                  const port = new ContentScriptConnection()
                   port.postMessage({
-                    id: CHROME_EXTENSION_POST_MESSAGE_ID,
-                    event: 'Client_authChatService',
+                    event: 'Client_switchChatGPTProvider',
                     data: {
                       provider: CHAT_GPT_PROVIDER.OPENAI,
                     },
@@ -126,6 +121,52 @@ const ChatGPTLoaderWrapper: FC = () => {
                 </Typography>
               </Box>
             )}
+          </Stack>
+        </Paper>
+      </Box>
+    )
+  }
+  if (status === 'needAuth') {
+    return (
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1000,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          '& + *': {
+            filter: 'blur(5px)',
+          },
+        }}
+      >
+        <Paper sx={{ width: '80%', p: 2, py: 4 }}>
+          <Stack alignItems={'center'} height={'100%'} spacing={2}>
+            <Typography fontSize={'20px'} fontWeight={700}>
+              Please log in to ChatGPT to continue
+            </Typography>
+            <Button
+              onClick={async () => {
+                debugger
+                await port.postMessage({
+                  event: 'Client_authChatGPTProvider',
+                  data: {
+                    provider: CHAT_GPT_PROVIDER.OPENAI,
+                  },
+                })
+              }}
+              variant={'contained'}
+              disableElevation
+              fullWidth
+              endIcon={<OpenInNewIcon />}
+            >
+              Log in to ChatGPT
+            </Button>
           </Stack>
         </Paper>
       </Box>
@@ -190,10 +231,8 @@ const ChatGPTLoaderWrapper: FC = () => {
         <Button
           sx={{ height: 40 }}
           onClick={() => {
-            const port = new ContentScriptConnection()
             port.postMessage({
-              id: CHROME_EXTENSION_POST_MESSAGE_ID,
-              event: 'Client_authChatService',
+              event: 'Client_switchChatGPTProvider',
               data: {
                 provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
               },
@@ -240,13 +279,18 @@ const ChatGPTLoaderWrapper: FC = () => {
           sx={{ height: 40 }}
           onClick={async () => {
             const result = await port.postMessage({
-              event: 'Client_authChatService',
+              event: 'Client_switchChatGPTProvider',
               data: {
                 provider: CHAT_GPT_PROVIDER.OPENAI,
               },
             })
-            console.log(result)
-            debugger
+            if (result.success) {
+              debugger
+              await port.postMessage({
+                event: 'Client_authChatGPTProvider',
+                data: {},
+              })
+            }
           }}
           variant={'outlined'}
           disableElevation
@@ -259,4 +303,4 @@ const ChatGPTLoaderWrapper: FC = () => {
     </Box>
   )
 }
-export { ChatGPTLoaderWrapper }
+export { ChatGPTStatusWrapper }

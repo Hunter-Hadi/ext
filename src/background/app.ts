@@ -4,11 +4,11 @@
 import Browser from 'webextension-polyfill'
 export type {
   IChromeExtensionClientSendEvent,
-  IChromeExtensionChatGPTDaemonProcessSendEvent,
+  IOpenAIChatSendEvent,
   IChromeExtensionClientListenEvent,
   IChromeExtensionListenEvent,
   IChromeExtensionChatGPTDaemonProcessListenEvent,
-  IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
+  IOpenAIChatListenTaskEvent,
 } from './eventType'
 import {
   CHAT_GPT_PROVIDER,
@@ -137,7 +137,7 @@ const initChromeExtensionCommands = () => {
         if (tab && tab.id) {
           await backgroundSendClientMessage(
             tab.id,
-            'Client_ListenOpenChatMessageBox',
+            'Client_listenOpenChatMessageBox',
             {
               type: 'shortcut',
             },
@@ -165,7 +165,7 @@ const initChromeExtensionAction = () => {
       if (tab && tab.id && tab.active) {
         await backgroundSendClientMessage(
           tab.id,
-          'Client_ListenOpenChatMessageBox',
+          'Client_listenOpenChatMessageBox',
           {
             type: 'shortcut',
           },

@@ -7,15 +7,23 @@ import {
   ChatGPTInputState,
   InboxEditState,
 } from '@/features/gmail/store'
-import { pingDaemonProcess, useSendAsyncTask } from '@/features/chatgpt/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY, CHAT_GPT_PROMPT_PREFIX } from '@/types'
 import { AppSettingsState } from '@/store'
 import Browser from 'webextension-polyfill'
+import Log from '@/utils/Log'
+import { askChatGPTQuestion } from '@/background/src/openai/util'
+import { setChromeExtensionSettings } from '@/background/utils'
+
+const port = new ContentScriptConnectionV2({
+  runtime: 'client',
+})
+
+const log = new Log('useMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const appSettings = useRecoilValue(AppSettingsState)
-  const sendAsyncTask = useSendAsyncTask()
   const updateInboxEditState = useSetRecoilState(InboxEditState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
@@ -24,47 +32,53 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     ChatGPTConversationState,
   )
   const resetConversation = async () => {
-    console.log(
+    const result = await port.postMessage({
+      event: 'Client_removeChatGPTConversation',
+      data: {},
+    })
+    log.info(
       '[ChatGPT]: resetConversation',
+      result.data,
       defaultValueRef.current,
       appSettings.currentModel,
     )
-    setInputValue(defaultValueRef.current)
-    setMessages([])
-    setConversation({
-      model: appSettings.currentModel || '',
-      conversationId: '',
-      writingMessage: null,
-      loading: false,
-    })
-    await sendAsyncTask('DaemonProcess_removeConversation', {})
-    await Browser.storage.local.set({
-      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
-    })
+    if (result.success) {
+      setInputValue(defaultValueRef.current)
+      setMessages([])
+      setConversation({
+        model: appSettings.currentModel || '',
+        conversationId: '',
+        writingMessage: null,
+        loading: false,
+      })
+      // 清空本地储存的message
+      await Browser.storage.local.set({
+        [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
+      })
+      // 清空本地储存的conversationId
+      await setChromeExtensionSettings({
+        conversationId: '',
+      })
+    }
   }
+  /**
+   * 创建会话目的是初始化并获取缓存中使用的conversationId, 不会创建conversationId
+   */
   const createConversation = async () => {
-    const response: any = await sendAsyncTask(
-      'DaemonProcess_createConversation',
-      {
-        model: appSettings.currentModel,
-      },
-    )
-    if (response.conversationId) {
-      console.log(
-        '[ChatGPT Module]: createConversation',
-        response.conversationId,
-      )
+    const result = await port.postMessage({
+      event: 'Client_createChatGPTConversation',
+      data: {},
+    })
+    log.info('createConversation', result)
+    if (result.success) {
       setConversation((prevState) => {
         return {
           ...prevState,
-          conversationId: response.conversationId,
-          writingMessage: null,
-          lastMessageId: '',
+          conversationId: result.data.conversationId,
         }
       })
-      return response.conversationId as string
+      return result.data.conversationId
     } else {
-      console.log('create Conversation error', response)
       return ''
     }
   }
@@ -97,30 +111,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         answer: '',
       })
     }
-    console.log('[ChatGPT Module] send question step 0 ping')
-    await pingDaemonProcess()
-    console.log('[ChatGPT Module] send question step 1')
+    log.info('[ChatGPT Module] send question step 0')
+    const postConversationId: string = await createConversation()
+    log.info('[ChatGPT Module] send question step 1')
     const currentMessageId = messageId || uuidV4()
     const currentParentMessageId = parentMessageId || ''
-    // @deprecated - 因为我们现在全局只有一个对话，所以不用主动寻找parentMessageId了
-    // if (!currentParentMessageId) {
-    //   // 说明不是retry或者regenerate
-    //   for (let i = messages.length - 1; i >= 0; i--) {
-    //     const message = messages[i]
-    //     if (message.type !== 'system') {
-    //       if (message.type === 'ai') {
-    //         currentParentMessageId = message.messageId
-    //       } else if (message.type === 'user') {
-    //         currentParentMessageId = message.parentMessageId || uuidV4()
-    //       }
-    //       break
-    //     }
-    //   }
-    //   if (!currentParentMessageId) {
-    //     currentParentMessageId = uuidV4()
-    //   }
-    // }
-    let postConversationId: string = conversation.conversationId || ''
     setMessages((prevState) => {
       return [
         ...prevState,
@@ -139,42 +134,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         loading: true,
       }
     })
-    console.log('[ChatGPT Module] send question step 2')
-    // 创建会话id不一定报错，所以加一个flag防止出现2个错误提示
-    let isSetError = false
-    try {
-      if (!conversation.conversationId) {
-        postConversationId = (await createConversation()) || ''
-      }
-    } catch (e) {
-      console.error(`create Conversation error`, e)
-      isSetError = true
-      createSystemMessage(
-        currentMessageId,
-        `Error detected. Please try again.`,
-        'error',
-      )
-    }
-    if (!postConversationId) {
-      if (!isSetError) {
-        createSystemMessage(
-          currentMessageId,
-          `Error detected. Please try again.`,
-          'error',
-        )
-      }
-      setConversation((prevState) => {
-        return {
-          ...prevState,
-          loading: false,
-        }
-      })
-      return Promise.resolve({
-        success: false,
-        answer: '',
-      })
-    }
-    console.log(
+    log.info('[ChatGPT Module] send question step 2')
+    log.info(
       '[ChatGPT Module] send question step 3',
       currentMessageId,
       parentMessageId,
@@ -184,17 +145,17 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     let hasError = false
     try {
       let currentMessage: any = null
-      await sendAsyncTask(
-        'DaemonProcess_sendMessage',
+      let saveConversationId = ''
+      await askChatGPTQuestion(
         {
-          messageId: currentMessageId,
-          parentMessageId: currentParentMessageId,
           conversationId: postConversationId,
           question: CHAT_GPT_PROMPT_PREFIX + question,
+          messageId: currentMessageId,
+          parentMessageId: currentParentMessageId,
         },
         {
           onMessage: (msg) => {
-            console.log('[ChatGPT Module] send question onmessage', msg)
+            log.info('[ChatGPT Module] send question onmessage', msg)
             const writingMessage = {
               messageId: (msg.messageId as string) || uuidV4(),
               parentMessageId: (msg.parentMessageId as string) || uuidV4(),
@@ -202,10 +163,14 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               type: 'ai' as const,
             }
             currentMessage = writingMessage
+            if (msg.conversationId) {
+              saveConversationId = msg.conversationId
+            }
             setConversation((prevState) => {
               return {
                 ...prevState,
-                conversationId: msg.conversationId || prevState.conversationId,
+                conversationId:
+                  msg.conversationId || prevState.conversationId || '',
                 loading: true,
                 writingMessage,
               }
@@ -213,7 +178,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           },
           onError: (error: any) => {
             hasError = true
-            console.log('[ChatGPT Module] send question onerror', error)
+            log.info('[ChatGPT Module] send question onerror', error)
             if (currentMessage?.messageId) {
               pushMessages.push(currentMessage as IGmailChatMessage)
             }
@@ -240,12 +205,17 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 text,
               })
             }
-            console.log('onerror', error, pushMessages)
+            log.info('onerror', error, pushMessages)
             return
           },
         },
       )
       if (!hasError && currentMessage?.messageId && currentMessage?.text) {
+        if (saveConversationId) {
+          await setChromeExtensionSettings({
+            conversationId: saveConversationId,
+          })
+        }
         pushMessages.push(currentMessage as IGmailChatMessage)
         return Promise.resolve({
           success: true,
@@ -257,7 +227,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         answer: '',
       })
     } catch (e) {
-      console.error(`send question error`, e)
+      log.error(`send question error`, e)
       return Promise.resolve({
         success: false,
         answer: '',
@@ -322,10 +292,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const stopGenerateMessage = async () => {
     const parentMessageId = conversation.writingMessage?.parentMessageId
     if (parentMessageId || conversation.lastMessageId) {
-      await pingDaemonProcess()
-      await sendAsyncTask('DaemonProcess_abortMessage', {
-        messageId: parentMessageId || conversation.lastMessageId,
+      const result = await port.postMessage({
+        event: 'Client_abortAskChatGPTQuestion',
+        data: {
+          messageId: conversation.lastMessageId,
+        },
       })
+      log.info('stopGenerateMessage', result)
     }
   }
   const pushMessage = (

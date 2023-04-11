@@ -1,2 +1,2 @@
-export { ChatGPTLoaderWrapper } from './ChatGPTLoaderWrapper'
+export { ChatGPTStatusWrapper } from './ChatGPTStatusWrapper'
 export * from './ChatGPTExampleList'

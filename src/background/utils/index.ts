@@ -11,6 +11,7 @@ import {
   IChromeExtensionSendEvent,
 } from '@/background/eventType'
 import { useEffect } from 'react'
+import { IChatGPTProviderType } from '@/background/provider/chat'
 
 export type IChatGPTModelType = {
   slug: string
@@ -30,8 +31,10 @@ export type IChromeExtensionSettings = {
     shortcut?: string
     description?: string
   }>
+  chatGPTProvider?: IChatGPTProviderType
   models?: IChatGPTModelType[]
   currentModel?: string
+  conversationId?: string
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
   userSettings?: {
@@ -68,6 +71,7 @@ export const getChromeExtensionSettings =
         commands,
         models: [],
         currentModel: '',
+        conversationId: '',
         contextMenus: defaultContextMenuJson,
         gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
         userSettings: {
@@ -227,7 +231,10 @@ export const createClientMessageListener = (
     sender: Browser.Runtime.MessageSender,
   ) => Promise<{ success: boolean; data?: any; message?: string } | undefined>,
 ) => {
-  Browser.runtime.onMessage.addListener((message, sender) => {
+  const modifyListener = (
+    message: any,
+    sender: Browser.Runtime.MessageSender,
+  ) => {
     const { data, event, id } = message
     if (id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
       return
@@ -239,7 +246,11 @@ export const createClientMessageListener = (
         }
       })
     })
-  })
+  }
+  Browser.runtime.onMessage.addListener(modifyListener)
+  return () => {
+    Browser.runtime.onMessage.removeListener(modifyListener)
+  }
 }
 export const useCreateClientMessageListener = (
   listener: (

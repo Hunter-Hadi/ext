@@ -1,14 +1,13 @@
 import {
-  IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
-  IChromeExtensionChatGPTDaemonProcessSendEvent,
+  IOpenAIChatSendEvent,
   IChromeExtensionClientSendEvent,
 } from '@/background/app'
-import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
-import { useCallback } from 'react'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import { useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { useCallback } from 'react'
+import { v4 as uuidV4 } from 'uuid'
 
 export const pingDaemonProcess = () => {
   const port = new ContentScriptConnection()
@@ -115,7 +114,7 @@ export const useSendAsyncTask = () => {
   const setChatGPTClient = useSetRecoilState(ChatGPTClientState)
   return useCallback(
     (
-      event: IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
+      event: any,
       data: any,
       options?: {
         onMessage?: (data: any) => void
@@ -377,9 +376,7 @@ export class ContentScriptConnectionV2 {
     }
   }
   async postMessage(msg: {
-    event:
-      | IChromeExtensionClientSendEvent
-      | IChromeExtensionChatGPTDaemonProcessSendEvent
+    event: IChromeExtensionClientSendEvent | IOpenAIChatSendEvent
     data?: any
   }): Promise<{
     success: boolean
@@ -404,22 +401,29 @@ export class ContentScriptConnectionV2 {
         '\ndata:\t',
         msg,
       )
-      if (this.retryCount < 10) {
-        console.log('[ContentScriptConnectionV2]: retry', this.retryCount)
-        this.retryCount++
-        return await this.postMessage(msg)
-      }
       return {
         success: false,
-        message: 'retry 10 times',
+        message: (e as any).message,
         data: {},
       }
+      // if (this.retryCount < 10) {
+      //   console.log('[ContentScriptConnectionV2]: retry', this.retryCount)
+      //   this.retryCount++
+      //   return await this.postMessage(msg)
+      // }
+      // return {
+      //   success: false,
+      //   message: 'retry 10 times',
+      //   data: {},
+      // }
     }
   }
   private startHeartbeat() {
     console.log('[ContentScriptConnectionV2]: heartbeat start')
     this.stopHeartbeat()
-    this.heartbeatTimer = setInterval(() => {}, this.heartbeatInterval)
+    this.heartbeatTimer = setInterval(() => {
+      // TODO 先不发送心跳
+    }, this.heartbeatInterval)
   }
   private stopHeartbeat() {
     if (this.heartbeatTimer) {

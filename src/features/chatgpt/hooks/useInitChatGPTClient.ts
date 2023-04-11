@@ -35,7 +35,7 @@ const useInitChatGPTClient = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_ChatGPTStatusUpdate':
         {
-          console.log('useInitChatGPTClient listener', data.status)
+          log.info('useInitChatGPTClient listener', data.status)
           setChatGPT((prevState) => {
             if (data.status !== 'success') {
               prevState.aborts.forEach((fn) => fn())
@@ -58,7 +58,7 @@ const useInitChatGPTClient = () => {
           }
         }
         break
-      case 'Client_ListenOpenChatMessageBox':
+      case 'Client_listenOpenChatMessageBox':
         {
           const isShowFloatingContextMenu = showFloatingContextMenuRef.current()
           if (data?.type === 'action') {
@@ -133,19 +133,39 @@ const useInitChatGPTClient = () => {
         }
       }
     }
+    const checkChatGPTStatus = async () => {
+      const result = await port.postMessage({
+        event: 'Client_checkChatGPTStatus',
+      })
+      if (result.success && result.data.status) {
+        setChatGPT((prevState) => {
+          if (result.data.status !== 'success') {
+            prevState.aborts.forEach((fn) => fn())
+            return {
+              loaded: false,
+              status: result.data.status,
+              aborts: [],
+            }
+          }
+          return {
+            loaded: true,
+            status: result.data.status,
+            aborts: prevState.aborts,
+          }
+        })
+      }
+    }
     const port = new ContentScriptConnectionV2({
       runtime: 'client',
     })
     const onFocus = async () => {
-      port &&
-        port.postMessage({
-          event: 'Client_checkChatGPTStatus',
-        })
+      await checkChatGPTStatus()
       await fetchLocalMessages()
     }
     port.postMessage({
       event: 'Client_checkChatGPTStatus',
     })
+    checkChatGPTStatus()
     fetchLocalMessages()
     window.addEventListener('focus', onFocus)
     return () => {

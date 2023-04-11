@@ -6,7 +6,7 @@ import {
   InboxEditState,
   useCurrentMessageView,
 } from '@/features/gmail'
-import { ChatGPTLoaderWrapper } from '@/features/chatgpt'
+import { ChatGPTStatusWrapper } from '@/features/chatgpt'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'
@@ -80,7 +80,7 @@ const GmailChatPage = () => {
 
   return (
     <Stack flex={1} height={0} position={'relative'}>
-      <ChatGPTLoaderWrapper />
+      <ChatGPTStatusWrapper />
       <GmailChatBox
         insertAble
         editAble={false}

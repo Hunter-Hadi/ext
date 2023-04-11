@@ -78,7 +78,7 @@ export const ChatGPTInputState = atom<string>({
 
 export const ChatGPTConversationState = atom<{
   writingMessage: IGmailChatMessage | null
-  conversationId?: ''
+  conversationId?: string
   lastMessageId?: string
   model: string
   loading: boolean

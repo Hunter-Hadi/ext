@@ -9,7 +9,10 @@ import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
+  getChromeExtensionSettings,
 } from '@/background/utils'
+import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
+import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 
 const log = new Log('OpenAIChat')
 
@@ -17,46 +20,17 @@ class OpenAIChat {
   status: ChatStatus = 'needAuth'
   private active = false
   private chatGPTProxyInstance?: Browser.Tabs.Tab
+  private lastActiveTabId?: number
+  private isAnswering = false
+  private questionSender?: Browser.Runtime.MessageSender
   constructor() {
     this.init()
-  }
-  async auth() {
-    this.active = true
-    this.status = 'loading'
-    await this.updateClientStatus()
-    this.chatGPTProxyInstance = await createDaemonProcessTab()
-    if (this.chatGPTProxyInstance) {
-      this.status = 'complete'
-      this.listenDaemonProcessTab()
-      await this.updateClientStatus()
-      await this.keepAlive()
-    }
-  }
-  async destroy() {
-    this.active = false
-    this.status = 'needAuth'
-    this.chatGPTProxyInstance = undefined
-    this.removeListener()
-  }
-  createConversation(): void {
-    log.info('createConversation')
-  }
-  sendMessage(question: string): Promise<void> {
-    log.info('sendMessage')
-    return Promise.resolve()
-  }
-  async updateClientStatus() {
-    if (this.active) {
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
-    }
   }
   private init() {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
       if (runtime === 'daemon_process' && this.active) {
         switch (event) {
-          case 'DaemonProcess_daemonProcessExist': {
+          case 'OpenAIDaemonProcess_daemonProcessExist': {
             let isExist =
               (this.chatGPTProxyInstance &&
                 (await checkChatGPTProxyInstance(this.chatGPTProxyInstance))) ||
@@ -65,26 +39,33 @@ class OpenAIChat {
               // 如果是同一个tab，不算存在
               isExist = !(sender.tab.id === this.chatGPTProxyInstance?.id)
               log.info(
-                'DaemonProcess_daemonProcessExist',
+                'OpenAIDaemonProcess_daemonProcessExist',
                 '是否同一个tab',
                 sender.tab.id === this.chatGPTProxyInstance?.id,
               )
             }
-            log.info('DaemonProcess_daemonProcessExist', isExist)
+            log.info('OpenAIDaemonProcess_daemonProcessExist', isExist)
             return {
               success: true,
               message: '',
               data: {
-                isExist: isExist,
+                isExist,
               },
             }
           }
-          case 'DaemonProcess_initChatGPTProxyInstance':
+          case 'OpenAIDaemonProcess_setDaemonProcess':
             {
-              log.info('DaemonProcess_initChatGPTProxyInstance')
+              log.info('OpenAIDaemonProcess_setDaemonProcess')
               this.chatGPTProxyInstance = sender.tab
               this.status = 'success'
               await this.updateClientStatus()
+              if (this.lastActiveTabId && this.lastActiveTabId > 0) {
+                // active
+                await Browser.tabs.update(this.lastActiveTabId, {
+                  active: true,
+                })
+                this.lastActiveTabId = undefined
+              }
               return {
                 success: true,
                 message: '',
@@ -92,7 +73,28 @@ class OpenAIChat {
               }
             }
             break
-          case 'DaemonProcess_pong':
+          case 'OpenAIDaemonProcess_taskResponse':
+            {
+              log.info('OpenAIDaemonProcess_taskResponse', data)
+              const { taskId, data: answer, done, error } = data
+              if (this.questionSender && data) {
+                const { tab } = this.questionSender
+                if (tab && tab.id) {
+                  await Browser.tabs.sendMessage(tab.id, {
+                    id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                    event: 'Client_askChatGPTQuestionResponse',
+                    data: {
+                      taskId,
+                      data: answer,
+                      done,
+                      error,
+                    },
+                  })
+                }
+              }
+            }
+            break
+          case 'OpenAIDaemonProcess_pong':
             {
               log.info('DaemonProcess_pong')
             }
@@ -104,6 +106,110 @@ class OpenAIChat {
       return undefined
     })
   }
+  async auth(authTabId: number) {
+    this.lastActiveTabId = authTabId
+    this.active = true
+    this.status = 'loading'
+    await this.updateClientStatus()
+    this.chatGPTProxyInstance = await createDaemonProcessTab()
+    if (this.chatGPTProxyInstance) {
+      this.status = 'complete'
+      this.listenDaemonProcessTab()
+      await this.updateClientStatus()
+      await this.keepAlive()
+    }
+  }
+  async createConversation() {
+    const cache = await getChromeExtensionSettings()
+    const result = await this.sendDaemonProcessTask(
+      'OpenAIDaemonProcess_createConversation',
+      {
+        conversationId: cache.conversationId || '',
+        model: cache.currentModel || '',
+      },
+    )
+    log.info('createConversation', result)
+    if (result.success) {
+      return result.data.conversationId
+    }
+    return ''
+  }
+  async removeConversation(conversationId: string) {
+    log.info('removeConversation', conversationId)
+    const result = await this.sendDaemonProcessTask(
+      'OpenAIDaemonProcess_removeConversation',
+      {
+        conversationId,
+      },
+    )
+    return result.success
+  }
+  sendQuestion: IChatGPTAskQuestionFunctionType = async (
+    taskId,
+    sender,
+    question,
+  ) => {
+    if (!this.isAnswering) {
+      this.questionSender = sender
+      await this.sendDaemonProcessTask(
+        'OpenAIDaemonProcess_askChatGPTQuestion',
+        {
+          taskId,
+          question,
+        },
+      )
+    }
+  }
+  async abortAskQuestion(messageId: string) {
+    const result = await this.sendDaemonProcessTask(
+      'OpenAIDaemonProcess_abortAskChatGPTQuestion',
+      {
+        messageId,
+      },
+    )
+    return result.success
+  }
+  async destroy() {
+    this.active = false
+    this.status = 'needAuth'
+    this.chatGPTProxyInstance = undefined
+    await this.updateClientStatus()
+    this.removeListener()
+  }
+  async sendDaemonProcessTask(event: IOpenAIChatListenTaskEvent, data: any) {
+    if (this.chatGPTProxyInstance) {
+      if (
+        (await checkChatGPTProxyInstance(this.chatGPTProxyInstance)) &&
+        this.chatGPTProxyInstance.id
+      ) {
+        const result = await Browser.tabs.sendMessage(
+          this.chatGPTProxyInstance.id,
+          {
+            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            event,
+            data,
+          },
+        )
+        log.info('sendDaemonProcessTask', result)
+        return result
+      }
+    }
+    // 不存在守护进程，重新创建
+    // TODO: 重新创建守护进程
+    await this.destroy()
+    return {
+      success: false,
+      data: {},
+      message: 'daemon process not exist',
+    }
+  }
+  async updateClientStatus() {
+    if (this.active) {
+      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
+        status: this.status,
+      })
+    }
+  }
   // 守护进程定时发送心跳
   async keepAlive(): Promise<void> {
     if (this.chatGPTProxyInstance) {
@@ -114,7 +220,7 @@ class OpenAIChat {
         log.info('keepAliveDaemonProcess')
         await Browser.tabs.sendMessage(this.chatGPTProxyInstance.id, {
           id: CHROME_EXTENSION_POST_MESSAGE_ID,
-          event: 'DaemonProcess_ping',
+          event: 'OpenAIDaemonProcess_ping',
         })
       }
     }
@@ -123,16 +229,18 @@ class OpenAIChat {
     await delay(20 * 1000)
     await this.keepAlive()
   }
-  tabRemoveListener(tabId: number) {
+  async tabRemoveListener(tabId: number) {
     if (
       this.chatGPTProxyInstance?.id &&
       tabId === this.chatGPTProxyInstance.id
     ) {
       log.info('守护进程关闭')
       this.chatGPTProxyInstance = undefined
+      this.status = 'needAuth'
+      await this.updateClientStatus()
     }
   }
-  tabUpdateListener(
+  async tabUpdateListener(
     tabId: number,
     changeInfo: Browser.Tabs.OnUpdatedChangeInfoType,
   ) {
@@ -144,10 +252,12 @@ class OpenAIChat {
         log.info('守护进程url发生变化，守护进程关闭')
         this.chatGPTProxyInstance = undefined
         this.status = 'needAuth'
+        await this.updateClientStatus()
       }
       if (changeInfo.status === 'loading' || changeInfo.status === 'complete') {
         log.info('守护进程url状态更新', changeInfo.status)
-        this.status = changeInfo.status
+        // this.status = changeInfo.status
+        // await this.updateClientStatus()
       }
     }
   }

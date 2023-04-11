@@ -11,7 +11,7 @@ export const ClientMessageInit = () => {
     if (runtime === 'client') {
       log.info('onMessage', runtime, event, data)
       switch (event as IChromeExtensionClientSendEvent) {
-        case 'Client_Ping': {
+        case 'Client_ping': {
           return {
             data: true,
             success: true,

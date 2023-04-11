@@ -2,10 +2,11 @@ import React, { FC, useEffect } from 'react'
 import { Button, CircularProgress } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import { IContextMenuItem } from '@/features/contextMenu/store'
-import { getAppRootElement, getChromeExtensionContextMenu } from '@/utils'
+import { getAppRootElement } from '@/utils'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { getChromeExtensionContextMenu } from '@/background/utils'
 
 const TestAllActionsButton: FC = () => {
   const [loading, setLoading] = React.useState(false)

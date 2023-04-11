@@ -8,12 +8,13 @@ import {
 } from '@/features/gmail'
 import { ChatGPTLoaderWrapper } from '@/features/chatgpt'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { getChromeExtensionContextMenu, useDebounceValue } from '@/utils'
+import { useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   EZMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
+import { getChromeExtensionContextMenu } from '@/background/utils'
 
 const GmailChatPage = () => {
   const { currentMessageId } = useCurrentMessageView()

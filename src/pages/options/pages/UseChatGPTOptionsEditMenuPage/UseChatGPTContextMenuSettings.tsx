@@ -18,11 +18,6 @@ import { v4 } from 'uuid'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
-  getChromeExtensionContextMenu,
-  IChromeExtensionSettingsContextMenuKey,
-  setChromeExtensionSettings,
-} from '@/utils'
-import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu'
@@ -40,6 +35,11 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import groupBy from 'lodash-es/groupBy'
 import cloneDeep from 'lodash-es/cloneDeep'
 import CloseAlert from '@/components/CloseAlert'
+import {
+  getChromeExtensionContextMenu,
+  IChromeExtensionSettingsContextMenuKey,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 
 const rootId = 'root'
 

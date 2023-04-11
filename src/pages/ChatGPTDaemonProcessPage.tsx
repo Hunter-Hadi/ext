@@ -3,6 +3,7 @@ import Browser from 'webextension-polyfill'
 import {
   ChatGPTDaemonProcess,
   ContentScriptConnection,
+  ContentScriptConnectionV2,
   IChatGPTDaemonProcess,
 } from '@/features/chatgpt'
 import './chatGPT.less'
@@ -11,14 +12,17 @@ import { IconButton, Stack, Typography } from '@mui/material'
 import {
   IChromeExtensionChatGPTDaemonProcessListenEvent,
   IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
-} from '@/background'
+} from '@/background/app'
 import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
   ROOT_DAEMON_PROCESS_ID,
 } from '@/types'
 import CloseIcon from '@mui/icons-material/Close'
-const APP_NAME = process.env.APP_NAME
+import Log from '@/utils/Log'
+import { setChromeExtensionSettings } from '@/background/utils'
 
+const APP_NAME = process.env.APP_NAME
+const log = new Log('ChatGPTDaemonProcessPage')
 const stopDaemonProcessClose = () => {
   setInterval(() => {
     document.title = `${APP_NAME} daemon process is running...`
@@ -71,6 +75,76 @@ const useDaemonProcess = () => {
       clearInterval(timer)
     }
   }, [])
+  useEffect(() => {
+    if (pageSuccessLoaded) {
+      const port = new ContentScriptConnectionV2({
+        runtime: 'daemon_process',
+      })
+      console.log(pageSuccessLoaded, 'pageSuccessLoaded')
+      port
+        .postMessage({
+          event: 'DaemonProcess_daemonProcessExist',
+          data: {},
+        })
+        .then((res) => {
+          log.info(res)
+          // 没有守护进程实例
+          if (res.success && res.data?.isExist === false) {
+            log.info(`init ${APP_NAME} chatGPT daemon process`)
+            // 更新模型列表
+            chatGptInstanceRef.current
+              .getAllModels()
+              .then(async (models) => {
+                if (models.length > 0) {
+                  await setChromeExtensionSettings({
+                    models,
+                  })
+                  await port.postMessage({
+                    event: 'DaemonProcess_initChatGPTProxyInstance',
+                  })
+                  stopDaemonProcessClose()
+                  const nextRoot = document.getElementById('__next')
+                  if (nextRoot && !isDisabledTopBar()) {
+                    nextRoot.classList.add('use-chat-gpt-ai-running')
+                  }
+                  setShowDaemonProcessBar(true)
+                  Browser.runtime.onMessage.addListener(listener)
+                }
+              })
+              .catch()
+          } else {
+            // 有守护进程实例
+            log.info('close listen')
+            document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
+          }
+        })
+      const listener = async (msg: any) => {
+        const { event, data } = msg
+        if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+          return
+        }
+        log.info('onMessage', event, data)
+        switch (event as IChromeExtensionChatGPTDaemonProcessListenEvent) {
+          case 'DaemonProcess_ping':
+            {
+              console.log('[Daemon Process]: DaemonProcess_ping')
+              await port.postMessage({
+                event: 'DaemonProcess_pong',
+              })
+            }
+            break
+          default:
+            break
+        }
+      }
+      return () => {
+        Browser.runtime.onMessage.removeListener(listener)
+      }
+    }
+    return () => {
+      console.log('unmount')
+    }
+  }, [pageSuccessLoaded])
   useEffect(() => {
     console.log(pageSuccessLoaded, 'pageSuccessLoaded')
     const port = new ContentScriptConnection({
@@ -357,7 +431,7 @@ const useDaemonProcess = () => {
       Browser.runtime.onMessage.addListener(listener)
       port.postMessage({
         id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        event: 'DaemonProcess_getChatGPTProxyInstance',
+        event: 'DaemonProcess_daemonProcessExist',
       })
     }
     return () => {

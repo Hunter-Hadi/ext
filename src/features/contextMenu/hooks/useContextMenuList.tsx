@@ -1,4 +1,3 @@
-import { IChromeExtensionSettingsContextMenuKey } from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu/store'
 import { useMemo, useRef } from 'react'
 import {
@@ -7,6 +6,7 @@ import {
 } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useChromeExtensionSettingsContextMenuList } from '@/hooks'
+import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
 
 const useContextMenuList = (
   settingsKey: IChromeExtensionSettingsContextMenuKey,

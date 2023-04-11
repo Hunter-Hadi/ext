@@ -3,7 +3,7 @@ import { AppSettingsState } from '@/store'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import { useMemo } from 'react'
-import { IChromeExtensionSettingsContextMenuKey } from '@/utils'
+import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
 
 export const useChromeExtensionSettingsContextMenuList = (
   menuType: IChromeExtensionSettingsContextMenuKey,

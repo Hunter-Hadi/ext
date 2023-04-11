@@ -1,7 +1,6 @@
 import { Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
-import { getChromeExtensionSettings, setChromeExtensionSettings } from '@/utils'
 import AppLoadingLayout from '@/components/LoadingLayout'
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/types'
 import TextSelectPopupSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/TextSelectPopupSetting'
@@ -11,6 +10,10 @@ import CloseAlert from '@/components/CloseAlert'
 import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
 import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
+import {
+  getChromeExtensionSettings,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)

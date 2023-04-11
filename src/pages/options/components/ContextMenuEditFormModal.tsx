@@ -16,7 +16,6 @@ import {
   ContextMenuIcon,
   IContextMenuItem,
 } from '@/features/contextMenu'
-import { IChromeExtensionSettingsContextMenuKey } from '@/utils'
 import { IContextMenuIconKey } from '@/features/contextMenu/components/ContextMenuIcon'
 import AceEditor from 'react-ace'
 import 'ace-builds/src-noconflict/mode-handlebars'
@@ -26,6 +25,7 @@ import TemplateTooltip from './TemplateTooltip'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
 // const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const staticWordCompleter = {

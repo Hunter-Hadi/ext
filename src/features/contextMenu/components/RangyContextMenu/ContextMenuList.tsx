@@ -4,11 +4,7 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
 import { Item, Separator, Submenu } from 'react-contexify'
-import {
-  chromeExtensionClientOpenPage,
-  getChromeExtensionContextMenu,
-  IChromeExtensionSettingsContextMenuKey,
-} from '@/utils'
+import { chromeExtensionClientOpenPage } from '@/utils'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 // import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -19,6 +15,10 @@ import {
   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   EZMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
+import {
+  getChromeExtensionContextMenu,
+  IChromeExtensionSettingsContextMenuKey,
+} from '@/background/utils'
 // import Browser from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
@@ -257,7 +257,7 @@ const ContextMenuList: FC<{
 //         const port = chrome.runtime.connect()
 //         port &&
 //           port.postMessage({
-//             event: 'Client_openUrlInNewTab',
+//             event: 'Client_openUrl',
 //             data: {
 //               key: 'options',
 //             },

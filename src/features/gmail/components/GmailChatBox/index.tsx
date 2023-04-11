@@ -28,6 +28,7 @@ import DevContent from '@/components/DevContent'
 import { TestAllActionsButton } from '@/features/shortcuts'
 import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
+import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
@@ -213,6 +214,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           overflowY: 'auto',
         }}
       >
+        <ChatGPTAIProviderSelector />
         <ChatGPTModelsSelector />
         {messages.map((message) => {
           return (

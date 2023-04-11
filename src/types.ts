@@ -20,8 +20,10 @@ export const ROOT_CONTEXT_MENU_ID = `${APP_ROOT_ID}_Context_Menu`
 export const ROOT_CONTEXT_MENU_PORTAL_ID = `${APP_ROOT_ID}_Context_Menu_Portal`
 export const ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID = `${APP_ROOT_ID}_Context_Menu_Gmail_Toolbar`
 export const ROOT_CONTEXT_MENU_CONTAINER_ID = `${APP_ROOT_ID}_Context_Menu_Container_ID`
-// chrome extension id
+
+// chrome extension
 export const CHROME_EXTENSION_POST_MESSAGE_ID = `CHROME_EXTENSION_${process.env.APP_ENV}_ID`
+export const CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY = `CHROME_EXTENSION_${process.env.APP_ENV}_CLIENT_SAVE_KEY`
 
 // doc
 export const CHROME_EXTENSION_MAIL_TO = isEzMailApp
@@ -40,3 +42,7 @@ export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
 // chat gpt config
 export const CHAT_GPT_PROMPT_PREFIX = `\`reset\`\n\`no quotes\`\n\`no explanations\`\n\`no prompt\`\n\`no self-reference\`\n\`no apologies\`\n\`no filler\`\n\`just answer\`\n`
 export const CHAT_GPT_MESSAGES_RECOIL_KEY = 'CHAT_GPT_MESSAGES_RECOIL_KEY'
+export const CHAT_GPT_PROVIDER = {
+  OPENAI: 'OPENAI',
+  USE_CHAT_GPT_PLUS: 'USE_CHAT_GPT_PLUS',
+} as const

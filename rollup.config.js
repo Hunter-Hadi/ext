@@ -38,6 +38,9 @@ function getArgs() {
   return args
 }
 const args = getArgs()
+const USE_CHAT_GPT_APP_CHECK_STATUS_ROUTE = isProduction
+  ? 'https://app.usechatgpt.ai/check-login-status'
+  : 'http://localhost:3000/check-login-status'
 const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'UseChatGPT.AI'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 const GLOBAL_LESS =
@@ -63,6 +66,9 @@ export default [
         'process.env.APP_ENV': JSON.stringify(APP_ENV),
         'process.env.APP_NAME': JSON.stringify(APP_NAME),
         'process.env.GLOBAL_LESS': JSON.stringify(GLOBAL_LESS),
+        'process.env.USE_CHAT_GPT_APP_CHECK_STATUS_ROUTE': JSON.stringify(
+          USE_CHAT_GPT_APP_CHECK_STATUS_ROUTE,
+        ),
         preventAssignment: true,
       }),
       chromeExtension(),
@@ -139,66 +145,66 @@ export default [
       }),
     ],
   },
-  {
-    input: 'src/options.content.tsx',
-    output: {
-      dir: 'dist',
-      format: 'esm',
-      chunkFileNames: path.join('chunks', '[name]-[hash].js'),
-    },
-    plugins: [
-      alias({
-        entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
-      }),
-      replace({
-        'process.env.NODE_ENV': isProduction
-          ? JSON.stringify('production')
-          : JSON.stringify('development'),
-        'process.env.APP_ENV': JSON.stringify(APP_ENV),
-        'process.env.APP_NAME': JSON.stringify(APP_NAME),
-        preventAssignment: true,
-      }),
-      postcss({
-        plugins: [],
-      }),
-      resolve(),
-      commonjs(),
-      typescript(),
-      isProduction &&
-        terser({
-          compress: {
-            drop_console: true,
-            drop_debugger: true,
-          },
-          output: {
-            comments: false,
-          },
-        }),
-      nodeResolve(),
-      html({
-        fileName: 'options.html',
-        template: () => {
-          return `<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Settings | UseChatGPT.AI</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
-</head>
-<body>
-<div id="Root"></div>
-<script src='options.content.js' type='module'></script>
-</body></html>
-`
-        },
-      }),
-      isProduction &&
-        zip({
-          file: `../releases/[${manifest.short_name}]_v${
-            manifest.version
-          }_${dayjs().format('YYYY_MM_DD_HH_mm')}.zip`,
-          isEzMail: APP_ENV === 'EZ_MAIL_AI',
-        }),
-    ],
-  },
+  //   {
+  //     input: 'src/options.content.tsx',
+  //     output: {
+  //       dir: 'dist',
+  //       format: 'esm',
+  //       chunkFileNames: path.join('chunks', '[name]-[hash].js'),
+  //     },
+  //     plugins: [
+  //       alias({
+  //         entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+  //       }),
+  //       replace({
+  //         'process.env.NODE_ENV': isProduction
+  //           ? JSON.stringify('production')
+  //           : JSON.stringify('development'),
+  //         'process.env.APP_ENV': JSON.stringify(APP_ENV),
+  //         'process.env.APP_NAME': JSON.stringify(APP_NAME),
+  //         preventAssignment: true,
+  //       }),
+  //       postcss({
+  //         plugins: [],
+  //       }),
+  //       resolve(),
+  //       commonjs(),
+  //       typescript(),
+  //       isProduction &&
+  //         terser({
+  //           compress: {
+  //             drop_console: true,
+  //             drop_debugger: true,
+  //           },
+  //           output: {
+  //             comments: false,
+  //           },
+  //         }),
+  //       nodeResolve(),
+  //       html({
+  //         fileName: 'options.html',
+  //         template: () => {
+  //           return `<!DOCTYPE html><html lang="en"><head>
+  // <meta charset="UTF-8">
+  // <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  // <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  // <title>Settings | UseChatGPT.AI</title>
+  // <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
+  // </head>
+  // <body>
+  // <div id="Root"></div>
+  // <script src='options.content.js' type='module'></script>
+  // </body></html>
+  // `
+  //         },
+  //       }),
+  //       isProduction &&
+  //         zip({
+  //           file: `../releases/[${manifest.short_name}]_v${
+  //             manifest.version
+  //           }_${dayjs().format('YYYY_MM_DD_HH_mm')}.zip`,
+  //           isEzMail: APP_ENV === 'EZ_MAIL_AI',
+  //         }),
+  //     ],
+  //   },
 ]

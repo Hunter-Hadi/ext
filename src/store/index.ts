@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil'
-import { IChromeExtensionSettings } from '@/utils'
+import { IChromeExtensionSettings } from '@/background/utils'
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 export const AppState = atom<{

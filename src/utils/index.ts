@@ -27,7 +27,6 @@
 //     : '0'
 // }
 
-import Browser from 'webextension-polyfill'
 import { IContextMenuItem } from '@/features/contextMenu'
 import { useEffect, useState } from 'react'
 import {
@@ -41,8 +40,6 @@ import {
   ROOT_CONTEXT_MENU_ID,
   ROOT_CONTEXT_MENU_PORTAL_ID,
 } from '@/types'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import { IInboxMessageType } from '@/features/gmail/store'
 import {
   ContentScriptConnection,
@@ -126,80 +123,6 @@ export const ChatBoxIsOpen = () => {
   return ezMailAiElement?.classList.contains('open') || false
 }
 
-export type IChatGPTModelType = {
-  slug: string
-  max_tokens: number
-  title: string
-  description: string
-  tags?: string[]
-  qualitative_properties?: {
-    reasoning: number[]
-    speed: number[]
-    conciseness: number[]
-  }
-}
-
-export type IChromeExtensionSettings = {
-  commands?: Array<{
-    name: string
-    shortcut: string
-    description: string
-  }>
-  models?: IChatGPTModelType[]
-  currentModel?: string
-  contextMenus?: IContextMenuItem[]
-  gmailToolBarContextMenu?: IContextMenuItem[]
-  userSettings?: {
-    colorSchema?: 'light' | 'dark'
-    language?: string
-    selectionButtonVisible?: boolean
-  }
-}
-
-export type IChromeExtensionSettingsContextMenuKey =
-  | 'contextMenus'
-  | 'gmailToolBarContextMenu'
-
-export const getChromeExtensionSettings =
-  (): Promise<IChromeExtensionSettings> => {
-    return new Promise((resolve) => {
-      const port = Browser.runtime.connect()
-      const listener = (message: any) => {
-        if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
-          return
-        }
-        if (message.event === 'Client_getSettingsResponse') {
-          const {
-            data: { settings },
-          } = message
-          port.onMessage.removeListener(listener)
-          resolve(settings)
-        }
-      }
-      port.onMessage.addListener(listener)
-      port.postMessage({
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        event: 'Client_getSettings',
-      })
-    })
-  }
-
-export const getChromeExtensionContextMenu = async (
-  menuType: IChromeExtensionSettingsContextMenuKey,
-) => {
-  const settings = await getChromeExtensionSettings()
-  const defaultMenus = {
-    contextMenus: defaultContextMenuJson,
-    gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
-  }
-  const cacheMenus = settings[menuType]
-  if (cacheMenus && cacheMenus.length > 0) {
-    return cacheMenus
-  } else {
-    return defaultMenus[menuType]
-  }
-}
-
 export const filteredTypeGmailToolBarContextMenu = (
   messageType: IInboxMessageType,
   filterCTAButton = false,
@@ -220,61 +143,6 @@ export const filteredTypeGmailToolBarContextMenu = (
   }
 }
 
-type IChromeExtensionSettingsUpdateFunction = (
-  settings: IChromeExtensionSettings,
-) => IChromeExtensionSettings
-
-export const setChromeExtensionSettings = (
-  settingsOrUpdateFunction:
-    | IChromeExtensionSettings
-    | IChromeExtensionSettingsUpdateFunction,
-) => {
-  return new Promise((resolve) => {
-    const port = new ContentScriptConnection()
-    const listener = (message: any) => {
-      if (message.event === 'Client_updateSettingsResponse') {
-        const {
-          data: { success },
-        } = message
-        port.onMessage(listener)
-        resolve(success)
-      }
-    }
-    port.onMessage(listener)
-    getChromeExtensionSettings()
-      .then((oldSettings: any) => {
-        if (settingsOrUpdateFunction instanceof Function) {
-          port.postMessage({
-            id: CHROME_EXTENSION_POST_MESSAGE_ID,
-            event: 'Client_updateSettings',
-            data: {
-              settings: JSON.stringify(settingsOrUpdateFunction(oldSettings)),
-            },
-          })
-        } else {
-          port.postMessage({
-            id: CHROME_EXTENSION_POST_MESSAGE_ID,
-            event: 'Client_updateSettings',
-            data: {
-              settings: JSON.stringify({
-                ...oldSettings,
-                ...settingsOrUpdateFunction,
-              }),
-            },
-          })
-        }
-      })
-      .catch(() => {
-        // port.postMessage({
-        //   id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        //   event: 'Client_updateSettings',
-        //   data: {
-        //     settings: JSON.stringify({ ...settings }),
-        //   },
-        // })
-      })
-  })
-}
 export const useDebounceValue = <T>(
   value: T,
   delay?: number,
@@ -394,7 +262,7 @@ export const chromeExtensionClientOpenPage = (params: {
   if (key) {
     port.postMessage({
       id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      event: 'Client_openUrlInNewTab',
+      event: 'Client_openUrl',
       data: {
         key,
         query,
@@ -403,7 +271,7 @@ export const chromeExtensionClientOpenPage = (params: {
   } else {
     port.postMessage({
       id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      event: 'Client_openUrlInNewTab',
+      event: 'Client_openUrl',
       data: {
         url,
         query,

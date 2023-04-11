@@ -2,7 +2,7 @@ import {
   IChromeExtensionChatGPTDaemonProcessListenTaskEvent,
   IChromeExtensionChatGPTDaemonProcessSendEvent,
   IChromeExtensionClientSendEvent,
-} from '@/background'
+} from '@/background/app'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 import { useCallback } from 'react'
@@ -45,7 +45,7 @@ export const pingDaemonProcess = () => {
       isTimeout = true
       // port.postMessage({
       //   id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      //   event: 'Client_openChatGPTDaemonProcess',
+      //   event: 'Client_authChatService',
       //   data: {},
       // })
       setTimeout(() => {
@@ -347,5 +347,89 @@ export class ContentScriptConnection {
     console.log('[ContentScriptConnection]: heartbeat destroy')
     this.stopHeartbeat()
     this.port.disconnect()
+  }
+}
+
+export class ContentScriptConnectionV2 {
+  private runtime: 'client' | 'daemon_process'
+  private heartbeatTimer: any | null
+  private heartbeatInterval = 1000
+  private retryCount: number
+  constructor(
+    options: {
+      openHeartbeat?: boolean
+      heartbeatInterval?: number
+      runtime?: 'client' | 'daemon_process'
+    } = {},
+  ) {
+    console.log('[ContentScriptConnectionV2]: init')
+    // 初始化心跳计时器
+    this.heartbeatTimer = null
+    // 初始化重试次数
+    this.retryCount = 0
+    // 初始化运行环境
+    this.runtime = options.runtime || 'client'
+    // 初始化心跳间隔
+    this.heartbeatInterval = options.heartbeatInterval || 1000
+    // 是否开启心跳
+    if (options.openHeartbeat) {
+      this.startHeartbeat()
+    }
+  }
+  async postMessage(msg: {
+    event:
+      | IChromeExtensionClientSendEvent
+      | IChromeExtensionChatGPTDaemonProcessSendEvent
+    data?: any
+  }): Promise<{
+    success: boolean
+    message: string
+    data: any
+  }> {
+    try {
+      const result = await Browser.runtime.sendMessage({
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: msg.event,
+        data: {
+          ...msg.data,
+          _RUNTIME_: this.runtime,
+        },
+      })
+      this.retryCount = 0
+      return result
+    } catch (e) {
+      console.log(
+        '[ContentScriptConnectionV2]: send error',
+        e,
+        '\ndata:\t',
+        msg,
+      )
+      if (this.retryCount < 10) {
+        console.log('[ContentScriptConnectionV2]: retry', this.retryCount)
+        this.retryCount++
+        return await this.postMessage(msg)
+      }
+      return {
+        success: false,
+        message: 'retry 10 times',
+        data: {},
+      }
+    }
+  }
+  private startHeartbeat() {
+    console.log('[ContentScriptConnectionV2]: heartbeat start')
+    this.stopHeartbeat()
+    this.heartbeatTimer = setInterval(() => {}, this.heartbeatInterval)
+  }
+  private stopHeartbeat() {
+    if (this.heartbeatTimer) {
+      console.log('[ContentScriptConnectionV2]: heartbeat stop')
+      clearInterval(this.heartbeatTimer)
+      this.heartbeatTimer = null
+    }
+  }
+  destroy() {
+    console.log('[ContentScriptConnectionV2]: destroy')
+    this.stopHeartbeat()
   }
 }

@@ -15,11 +15,7 @@ import {
   GmailToolBarIconBase64Data,
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
-import {
-  getChromeExtensionContextMenu,
-  hideChatBox,
-  showChatBox,
-} from '@/utils'
+import { hideChatBox, showChatBox } from '@/utils'
 import { contextMenu } from 'react-contexify'
 import {
   findFirstTierMenuHeight,
@@ -30,6 +26,7 @@ import {
   EZMAIL_REPLY_CTA_BUTTON_ID,
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
 } from '@/types'
+import { getChromeExtensionContextMenu } from '@/background/utils'
 const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.ezmail-ai__gmail-toolbar-button--cta')

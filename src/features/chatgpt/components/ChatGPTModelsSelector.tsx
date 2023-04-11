@@ -1,6 +1,5 @@
 import React, { FC, useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
-import { setChromeExtensionSettings } from '@/utils'
 import {
   Box,
   FormControl,
@@ -15,6 +14,7 @@ import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
 import { useMessageWithChatGPT } from '@/features/chatgpt'
+import { setChromeExtensionSettings } from '@/background/utils'
 
 const ArrowDropDownIconCustom = () => {
   return (

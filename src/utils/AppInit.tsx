@@ -2,18 +2,18 @@ import { ChatGPTConversationState, useInitInboxSdk } from '@/features/gmail'
 import { RangyContextMenu, useInitRangy } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import React, { useEffect } from 'react'
-import {
-  chromeExtensionClientOpenPage,
-  getChromeExtensionContextMenu,
-  getChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/utils/index'
+import { chromeExtensionClientOpenPage } from '@/utils/index'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import { Button } from '@mui/material'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
+import {
+  getChromeExtensionContextMenu,
+  getChromeExtensionSettings,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 

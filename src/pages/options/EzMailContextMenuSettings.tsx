@@ -12,12 +12,6 @@ import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
-import {
-  getChromeExtensionContextMenu,
-  // filteredTypeGmailToolBarContextMenu,
-  IChromeExtensionSettingsContextMenuKey,
-  setChromeExtensionSettings,
-} from '@/utils'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
 // import {
@@ -31,6 +25,11 @@ import ContextMenuActionConfirmModal, {
 } from './components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import {
+  getChromeExtensionContextMenu,
+  IChromeExtensionSettingsContextMenuKey,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 
 const rootId = 'root'
 

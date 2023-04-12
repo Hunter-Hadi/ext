@@ -1,36 +1,6 @@
-// export const numberFormatter = (number: number, digits = 1) => {
-//   let isNegativeNumber = false // 是否是负数
-//   if (number < 0) {
-//     isNegativeNumber = true
-//     number = Math.abs(number)
-//   }
-//   if (number < 1) {
-//     return `${isNegativeNumber ? '-' : ''}${number.toFixed(digits)}`
-//   }
-//   const lookup = [
-//     { value: 1, symbol: '' },
-//     { value: 1e3, symbol: 'K' },
-//     { value: 1e6, symbol: 'M' },
-//     { value: 1e9, symbol: 'B' },
-//   ]
-//   const rx = /\.0+$|(\.[0-9]*[1-9])0+$/
-//   const item = lookup
-//     .slice()
-//     .reverse()
-//     .find(function (item) {
-//       return number >= item.value
-//     })
-//   return item
-//     ? (isNegativeNumber ? '-' : '') +
-//         (number / item.value).toFixed(digits).replace(rx, '$1') +
-//         item.symbol
-//     : '0'
-// }
-
 import { IContextMenuItem } from '@/features/contextMenu'
 import { useEffect, useState } from 'react'
 import {
-  CHROME_EXTENSION_POST_MESSAGE_ID,
   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   EZMAIL_NEW_MAIL_GROUP_ID,
   EZMAIL_REPLY_CTA_BUTTON_ID,
@@ -42,7 +12,7 @@ import {
 } from '@/types'
 import { IInboxMessageType } from '@/features/gmail/store'
 import {
-  ContentScriptConnection,
+  ContentScriptConnectionV2,
   pingDaemonProcess,
 } from '@/features/chatgpt/utils'
 import { COUNTRIES_MAP } from '@/utils/staticData'
@@ -249,7 +219,7 @@ export const countryOptions = () => {
   return options
 }
 
-export const chromeExtensionClientOpenPage = (params: {
+export const chromeExtensionClientOpenPage = async (params: {
   key?: 'shortcuts' | 'options' | 'daemon_process'
   url?: string
   query?: string
@@ -258,10 +228,9 @@ export const chromeExtensionClientOpenPage = (params: {
   if (!url && !key) {
     return
   }
-  const port = new ContentScriptConnection()
+  const port = new ContentScriptConnectionV2()
   if (key) {
-    port.postMessage({
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+    await port.postMessage({
       event: 'Client_openUrl',
       data: {
         key,
@@ -269,8 +238,7 @@ export const chromeExtensionClientOpenPage = (params: {
       },
     })
   } else {
-    port.postMessage({
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+    await port.postMessage({
       event: 'Client_openUrl',
       data: {
         url,

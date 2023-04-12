@@ -92,8 +92,21 @@ const useDaemonProcess = () => {
               .getAllModels()
               .then(async (models) => {
                 if (models.length > 0) {
-                  await setChromeExtensionSettings({
-                    models,
+                  await setChromeExtensionSettings((settings) => {
+                    let currentModel = settings.currentModel
+                    if (!currentModel) {
+                      const defaultModel =
+                        models.find((model) =>
+                          model?.title?.includes('Default'),
+                        ) || models[0]
+                      currentModel = defaultModel?.slug
+                      log.info(`set currentModel model`, currentModel)
+                    }
+                    return {
+                      ...settings,
+                      models,
+                      currentModel,
+                    }
                   })
                   await port.postMessage({
                     event: 'OpenAIDaemonProcess_setDaemonProcess',
@@ -225,7 +238,6 @@ const useDaemonProcess = () => {
                           if (event.type === 'done') {
                             log.info('done')
                             log.info('abort Controller remove', messageId)
-                            // TODO -更新服务器缓存的最后会话ID
                             chatGptInstanceRef.current?.removeAbortWithMessageId(
                               messageId,
                             )

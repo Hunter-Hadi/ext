@@ -127,9 +127,9 @@ class ChatSystem implements ChatInterface {
     this.adapters[provider] = adapter
   }
   async switchAdapter(provider: IChatGPTProviderType) {
-    if (this.currentAdapter) {
-      await this.currentAdapter.destroy()
-    }
+    // if (this.currentAdapter) {
+    //   await this.currentAdapter.destroy()
+    // }
     await setChromeExtensionSettings({
       chatGPTProvider: provider,
     })

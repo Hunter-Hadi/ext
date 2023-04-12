@@ -4,226 +4,44 @@ import {
 } from '@/background/app'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
-import { useSetRecoilState } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { useCallback } from 'react'
-import { v4 as uuidV4 } from 'uuid'
+import { IChromeExtensionChatGPTDaemonProcessSendEvent } from '@/background.old'
 
-export const pingDaemonProcess = () => {
-  const port = new ContentScriptConnection()
-  if (!port) {
-    return Promise.resolve(false)
-  }
-  return new Promise<boolean>((resolve) => {
-    let isTimeout = false
-    let timer: any = undefined
-    const onceListener = (msg: any) => {
-      if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
-        return
-      }
-      if (msg.event === 'Client_ListenPong' && !isTimeout) {
-        clearTimeout(timer as number)
-        Browser?.runtime?.onMessage?.removeListener(onceListener)
-        port.destroy()
-        console.log('ping result', !isTimeout)
-        resolve(true)
-      }
-    }
-    port.onMessage(onceListener)
-    Browser.runtime.onMessage.addListener(onceListener)
-    port.postMessage({
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      event: 'Client_checkChatGPTStatus',
-    })
-    port.postMessage({
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      event: 'Client_Ping',
-      data: {},
-    })
-    timer = setTimeout(() => {
-      isTimeout = true
-      // port.postMessage({
-      //   id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      //   event: 'Client_authChatService',
-      //   data: {},
-      // })
-      setTimeout(() => {
-        Browser?.runtime?.onMessage?.removeListener(onceListener)
-        port.destroy()
-        resolve(false)
-      }, 500)
-    }, 2000)
+export const pingDaemonProcess = async () => {
+  const port = new ContentScriptConnectionV2()
+  const result = await port.postMessage({
+    event: 'Client_checkChatGPTStatus',
+    data: {},
   })
+  return result.success
 }
+
 export const pingUntilLogin = () => {
-  const port = new ContentScriptConnection()
-  if (!port) {
-    return Promise.reject(false)
-  }
-  return new Promise<boolean>((resolve, reject) => {
-    pingDaemonProcess().then((success) => {
-      if (success) {
-        // 直接ping成功了
-        resolve(true)
-      } else {
-        console.log('开始等待登录成功')
-        let timer: any = 0
-        let maxRetry = 120
-        // 等待登录成功
-        const listener = async (msg: any) => {
-          if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
-            return
-          }
-          if (msg.event === 'Client_ChatGPTStatusUpdate') {
-            console.log(msg.data, msg.data.status)
-            if (msg.data.status === 'success') {
-              console.log('登录成功!!!')
-              clearInterval(timer)
-              Browser?.runtime?.onMessage?.removeListener(listener)
-              port.destroy()
-              const delay = (ms: number) =>
-                new Promise((resolve) => setTimeout(resolve, ms))
-              await delay(0)
-              resolve(true)
-            }
-          }
-        }
-        port.onMessage(listener)
-        Browser.runtime.onMessage.addListener(listener)
-        timer = setInterval(() => {
-          port.postMessage({
-            id: CHROME_EXTENSION_POST_MESSAGE_ID,
-            event: 'Client_checkChatGPTStatus',
-            data: {},
-          })
+  const port = new ContentScriptConnectionV2()
+  return new Promise<boolean>((resolve) => {
+    console.log('start pingUntilLogin')
+    let maxRetry = 120
+    const delay = (t: number) =>
+      new Promise((resolve) => setTimeout(resolve, t))
+    const checkStatus = async () => {
+      const result = await port.postMessage({
+        event: 'Client_checkChatGPTStatus',
+        data: {},
+      })
+      if (result.success) {
+        if (result?.data?.status !== 'success') {
           maxRetry--
           if (maxRetry <= 0) {
-            console.log('登录超时!!!')
-            clearInterval(timer)
-            Browser?.runtime?.onMessage?.removeListener(listener)
-            port.destroy()
-            reject(false)
+            resolve(false)
           }
-        }, 1000)
+          await delay(1000)
+          await checkStatus()
+        } else {
+          resolve(true)
+        }
       }
-    })
+    }
+    checkStatus()
   })
-}
-
-export const useSendAsyncTask = () => {
-  const setChatGPTClient = useSetRecoilState(ChatGPTClientState)
-  return useCallback(
-    (
-      event: any,
-      data: any,
-      options?: {
-        onMessage?: (data: any) => void
-        onError?: (error: string) => void
-      },
-    ) => {
-      return new Promise((resolve, reject) => {
-        const port = new ContentScriptConnection()
-        console.log('[ChatGPT Module] create task step 1')
-        pingDaemonProcess()
-          .then((isConnectionAlive) => {
-            if (isConnectionAlive !== true) {
-              console.log('ping error')
-              reject('ping error')
-              return
-            }
-            if (port) {
-              console.log('[ChatGPT Module] create task step 2')
-              const { onMessage, onError } = options || {}
-              const taskId = uuidV4()
-              let isPromiseFulfilled = false
-              const onceListener = (msg: any) => {
-                const { event, data } = msg
-                if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
-                  return
-                }
-                if (event === `Client_AsyncTaskResponse_${taskId}`) {
-                  console.log(data)
-                  const {
-                    taskId,
-                    data: chatGPTDaemenProcessData,
-                    done,
-                    error,
-                  } = data
-                  console.log(
-                    'chatGPTDaemenProcessData',
-                    chatGPTDaemenProcessData,
-                    taskId,
-                  )
-                  if (error) {
-                    console.log('[ChatGPT Module] create task [error]', error)
-                    onError && onError(error)
-                    if (done) {
-                      console.log('[ChatGPT Module] create task [error] done')
-                      Browser?.runtime?.onMessage?.removeListener(onceListener)
-                      port.destroy()
-                      !isPromiseFulfilled && reject(error)
-                      isPromiseFulfilled = true
-                    }
-                  }
-                  if (done) {
-                    console.log('[ChatGPT Module] create task [success] done')
-                    Browser?.runtime?.onMessage?.removeListener(onceListener)
-                    port.destroy()
-                    !isPromiseFulfilled &&
-                      resolve(chatGPTDaemenProcessData || true)
-                    isPromiseFulfilled = true
-                  } else {
-                    console.log(
-                      '[ChatGPT Module] create task step [success]',
-                      chatGPTDaemenProcessData,
-                    )
-                    onMessage && onMessage(chatGPTDaemenProcessData)
-                  }
-                }
-              }
-              port.onMessage(onceListener)
-              Browser.runtime.onMessage.addListener(onceListener)
-              port.postMessage({
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
-                event: 'Client_createAsyncTask',
-                data: {
-                  taskId,
-                  event,
-                  data,
-                },
-              })
-              setChatGPTClient((prevState) => {
-                return {
-                  ...prevState,
-                  aborts: prevState.aborts.concat([
-                    () => {
-                      if (isPromiseFulfilled) {
-                        return
-                      }
-                      console.log('abort!!!!!!!!!!!')
-                      isPromiseFulfilled = true
-                      onError && onError(`Error detected. Please try again.`)
-                      reject(`Error detected. Please try again.`)
-                    },
-                  ]),
-                }
-              })
-            } else {
-              console.log(
-                '[ChatGPT Module] create task [error]',
-                `Please wait for the daemon process to start.`,
-              )
-              reject('Please wait for the daemon process to start.')
-            }
-          })
-          .catch((e) => {
-            console.log('ping error', e)
-            reject('Please wait for the daemon process to start.')
-          })
-      })
-    },
-    [],
-  )
 }
 
 type MessageCallback = (message: any) => void

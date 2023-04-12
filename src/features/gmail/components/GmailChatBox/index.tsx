@@ -20,7 +20,6 @@ import {
   InboxEditState,
 } from '@/features/gmail/store'
 import { CHROME_EXTENSION_MAIL_TO } from '@/types'
-import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
@@ -215,7 +214,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTAIProviderSelector />
-        <ChatGPTModelsSelector />
         {messages.map((message) => {
           return (
             <GmailChatBoxMessageItem

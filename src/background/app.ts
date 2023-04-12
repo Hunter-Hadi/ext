@@ -17,8 +17,16 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/types'
-import { ChatSystem, OpenAIChat } from '@/background/src/openai'
-import { ChatAdapter, OpenAIChatProvider } from '@/background/provider/chat'
+import {
+  ChatSystem,
+  OpenAIChat,
+  UseChatGPTPlusChat,
+} from '@/background/src/openai'
+import {
+  ChatAdapter,
+  OpenAIChatProvider,
+  UseChatGPTPlusChatProvider,
+} from '@/background/provider/chat'
 import { ClientMessageInit } from '@/background/src/client'
 import { backgroundSendClientMessage } from '@/background/utils'
 
@@ -108,7 +116,14 @@ const initChromeExtensionMessage = () => {
     const openAIChatAdapter = new ChatAdapter(
       new OpenAIChatProvider(new OpenAIChat()),
     )
+    const useChatGPTPlusAdapter = new ChatAdapter(
+      new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
+    )
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
+    chatSystem.addAdapter(
+      CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+      useChatGPTPlusAdapter,
+    )
   }
 }
 

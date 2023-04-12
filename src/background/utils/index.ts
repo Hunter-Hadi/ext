@@ -75,7 +75,7 @@ export const getChromeExtensionSettings =
         contextMenus: defaultContextMenuJson,
         gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
         userSettings: {
-          colorSchema: 'light',
+          colorSchema: undefined,
           language: 'auto',
           selectionButtonVisible: true,
         },

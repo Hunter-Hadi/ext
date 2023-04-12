@@ -3,12 +3,11 @@
  */
 import { useEffect } from 'react'
 // import { setChromeExtensionSettings } from '@/utils'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
-import { ContentScriptConnection } from '@/features/chatgpt/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 
 const useThemeUpdateListener = () => {
   useEffect(() => {
-    const port = new ContentScriptConnection()
+    const port = new ContentScriptConnectionV2()
     const themeUpdate = () => {
       const isDarkModeEnabled =
         window.matchMedia &&
@@ -18,7 +17,6 @@ const useThemeUpdateListener = () => {
       //   colorSchema: isDarkModeEnabled ? 'dark' : 'light',
       // })
       port.postMessage({
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
         event: 'Client_updateIcon',
         data: {
           mode: isDarkModeEnabled ? 'dark' : 'light',

@@ -42,24 +42,22 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       defaultValueRef.current,
       appSettings.currentModel,
     )
-    if (result.success) {
-      setInputValue(defaultValueRef.current)
-      setMessages([])
-      setConversation({
-        model: appSettings.currentModel || '',
-        conversationId: '',
-        writingMessage: null,
-        loading: false,
-      })
-      // 清空本地储存的message
-      await Browser.storage.local.set({
-        [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
-      })
-      // 清空本地储存的conversationId
-      await setChromeExtensionSettings({
-        conversationId: '',
-      })
-    }
+    setInputValue(defaultValueRef.current)
+    setMessages([])
+    setConversation({
+      model: appSettings.currentModel || '',
+      conversationId: '',
+      writingMessage: null,
+      loading: false,
+    })
+    // 清空本地储存的message
+    await Browser.storage.local.set({
+      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
+    })
+    // 清空本地储存的conversationId
+    await setChromeExtensionSettings({
+      conversationId: '',
+    })
   }
   /**
    * 创建会话目的是初始化并获取缓存中使用的conversationId, 不会创建conversationId

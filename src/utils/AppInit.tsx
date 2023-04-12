@@ -14,8 +14,11 @@ import {
   getChromeExtensionSettings,
   setChromeExtensionSettings,
 } from '@/background/utils'
+import Log from '@/utils/Log'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+
+const log = new Log('AppInit')
 
 const GmailInit = () => {
   useInitInboxSdk()
@@ -86,28 +89,35 @@ const ForceUpdateContextMenuReadOnlyOption = () => {
 export const AppSettingsInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
-
   useThemeUpdateListener()
-
   useEffect(() => {
-    getChromeExtensionSettings().then((settings) => {
+    const updateAppSettings = async () => {
+      const settings = await getChromeExtensionSettings()
       if (settings) {
         setAppSettings({
           ...settings,
         })
-
+        log.info('get settings', settings)
         if (settings.userSettings && !settings.userSettings?.colorSchema) {
-          setChromeExtensionSettings({
+          const defaultColorSchema = window.matchMedia(
+            '(prefers-color-scheme: dark)',
+          ).matches
+            ? 'dark'
+            : 'light'
+          await setChromeExtensionSettings({
             userSettings: {
               ...settings.userSettings,
-              colorSchema: window.matchMedia('(prefers-color-scheme: dark)')
-                .matches
-                ? 'dark'
-                : 'light',
+              colorSchema: defaultColorSchema,
+            },
+          })
+          setAppSettings({
+            ...settings,
+            userSettings: {
+              ...settings.userSettings,
+              colorSchema: defaultColorSchema,
             },
           })
         }
-
         if (settings?.currentModel) {
           updateConversation((conversation) => {
             return {
@@ -117,9 +127,13 @@ export const AppSettingsInit = () => {
           })
         }
       }
-    })
+    }
+    updateAppSettings()
+    window.addEventListener('focus', updateAppSettings)
+    return () => {
+      window.removeEventListener('focus', updateAppSettings)
+    }
   }, [])
-
   return <></>
 }
 

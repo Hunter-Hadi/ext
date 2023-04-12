@@ -4,7 +4,7 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { CHAT_GPT_PROVIDER, CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { CHAT_GPT_PROVIDER } from '@/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
@@ -230,14 +230,19 @@ const ChatGPTStatusWrapper: FC = () => {
         </Paper>
         <Button
           sx={{ height: 40 }}
-          onClick={() => {
-            port.postMessage({
+          onClick={async () => {
+            const result = await port.postMessage({
               event: 'Client_switchChatGPTProvider',
               data: {
                 provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
               },
             })
-            port.destroy()
+            if (result.success) {
+              await port.postMessage({
+                event: 'Client_authChatGPTProvider',
+                data: {},
+              })
+            }
           }}
           variant={'contained'}
           disableElevation
@@ -285,7 +290,6 @@ const ChatGPTStatusWrapper: FC = () => {
               },
             })
             if (result.success) {
-              debugger
               await port.postMessage({
                 event: 'Client_authChatGPTProvider',
                 data: {},

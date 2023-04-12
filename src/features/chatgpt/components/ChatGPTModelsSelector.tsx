@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import {
   Box,
   FormControl,
@@ -31,7 +31,7 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTModelsSelector: FC = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
+  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const { resetConversation } = useMessageWithChatGPT('')
   const memoModels = useMemo(() => {
     if (appSettings.models && appSettings.models.length > 0) {
@@ -42,7 +42,7 @@ const ChatGPTModelsSelector: FC = () => {
   return (
     <>
       {memoModels.length > 1 && (
-        <FormControl size="small" sx={{ ml: 1, mt: 2, height: 40 }}>
+        <FormControl size="small" sx={{ height: 40 }}>
           <InputLabel
             sx={{ fontSize: '16px' }}
             id={'ChatGPTModelsSelectorLabel'}
@@ -65,6 +65,12 @@ const ChatGPTModelsSelector: FC = () => {
             label={'Model'}
             value={appSettings.currentModel || memoModels[0]}
             onChange={async (event) => {
+              setAppSettings((prevState) => {
+                return {
+                  ...prevState,
+                  currentModel: event.target.value as string,
+                }
+              })
               await setChromeExtensionSettings({
                 currentModel: event.target.value as string,
               })

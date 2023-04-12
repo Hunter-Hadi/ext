@@ -24,6 +24,7 @@ export const ROOT_CONTEXT_MENU_CONTAINER_ID = `${APP_ROOT_ID}_Context_Menu_Conta
 // chrome extension
 export const CHROME_EXTENSION_POST_MESSAGE_ID = `CHROME_EXTENSION_${process.env.APP_ENV}_ID`
 export const CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY = `CHROME_EXTENSION_${process.env.APP_ENV}_CLIENT_SAVE_KEY`
+export const CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY = `CHROME_EXTENSION_${process.env.APP_ENV}_APP_USECHATGPTAI_SAVE_KEY`
 
 // doc
 export const CHROME_EXTENSION_MAIL_TO = isEzMailApp
@@ -31,10 +32,13 @@ export const CHROME_EXTENSION_MAIL_TO = isEzMailApp
   : `https://www.usechatgpt.ai/contact-us`
 export const CHROME_EXTENSION_DOC_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
-  : 'https://www.usechatgpt.ai'
+  : 'https://app.usechatgpt.ai'
+
 export const CHROME_EXTENSION_HOMEPAGE_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
   : 'https://www.usechatgpt.ai'
+
+export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST
 
 export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
   'the same language variety or dialect of the following text'

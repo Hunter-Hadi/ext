@@ -2,7 +2,6 @@ import { Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useRef, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import AppLoadingLayout from '@/components/LoadingLayout'
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/types'
 import TextSelectPopupSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/TextSelectPopupSetting'
 import UseChatGPTContextMenuSettings from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage/UseChatGPTContextMenuSettings'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
@@ -14,29 +13,17 @@ import {
   getChromeExtensionSettings,
   setChromeExtensionSettings,
 } from '@/background/utils'
+import useCommands from '@/hooks/useCommands'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
   const userSettingsRef = useRef<any>({})
   const [loaded, setLoaded] = useState(false)
   const [saving, setSaving] = useState(false)
-  const [commandKey, setCommandKey] = useState('')
+  const { shortCutKey } = useCommands()
   useEffect(() => {
     getChromeExtensionSettings().then((res) => {
-      console.log('settings', res.userSettings?.selectionButtonVisible)
-      console.log('settings', res.userSettings?.language)
-      const command = res.commands?.find(
-        (command) => command.name === '_execute_action',
-      )
-      if (command) {
-        setCommandKey(command.shortcut || '')
-      }
-      userSettingsRef.current = {
-        language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-        selectionButtonVisible: true,
-        ...res.userSettings,
-      }
-      console.log('!!!!userSettings', userSettingsRef.current)
+      userSettingsRef.current = res.userSettings
       setLoaded(true)
     })
   }, [])
@@ -133,7 +120,7 @@ const UseChatGPTOptionsSettingPage = () => {
           </Typography>
         </CloseAlert>
         <TextSelectPopupSetting
-          commandKey={commandKey}
+          commandKey={shortCutKey}
           visible={userSettingsRef.current.selectionButtonVisible}
           onChange={async (visible) => {
             await updateChromeExtensionSettings(

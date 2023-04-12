@@ -1,28 +1,19 @@
 import { Box, Typography } from '@mui/material'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { ROOT_CONTAINER_ID } from '@/types'
+import useCommands from '@/hooks/useCommands'
 const FloatingShortCutsTip: FC = () => {
   const { haveSelection, showFloatingContextMenu, floatingDropdownMenuOpen } =
     useFloatingContextMenu()
   const appSettings = useRecoilValue(AppSettingsState)
   const [chatBoxWidth, setChatBoxWidth] = useState(16)
   const [buttonShow, setButtonShow] = useState(3)
-  const commandKey = useMemo(() => {
-    if (appSettings?.commands) {
-      const command = appSettings.commands.find(
-        (command) => command.name === '_execute_action',
-      )
-      if (command) {
-        return command.shortcut || ''
-      }
-    }
-    return ''
-  }, [appSettings.commands])
+  const { shortCutKey } = useCommands()
   useEffect(() => {
-    if (appSettings.userSettings?.selectionButtonVisible || !commandKey) {
+    if (appSettings.userSettings?.selectionButtonVisible || !shortCutKey) {
       return
     }
     if (haveSelection) {
@@ -36,7 +27,7 @@ const FloatingShortCutsTip: FC = () => {
       }
       setButtonShow(1)
     }
-  }, [haveSelection, appSettings.userSettings, commandKey])
+  }, [haveSelection, appSettings.userSettings, shortCutKey])
   useEffect(() => {
     if (buttonShow === 1) {
       setButtonShow(2)
@@ -80,7 +71,7 @@ const FloatingShortCutsTip: FC = () => {
         noWrap
         sx={{ px: '10px', py: '4px' }}
       >
-        {commandKey}
+        {shortCutKey || ''}
       </Typography>
     </Box>
   )

@@ -9,11 +9,11 @@ import {
 } from '@/features/gmail/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY, CHAT_GPT_PROMPT_PREFIX } from '@/types'
+import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 import { AppSettingsState } from '@/store'
 import Browser from 'webextension-polyfill'
 import Log from '@/utils/Log'
-import { askChatGPTQuestion } from '@/background/src/openai/util'
+import { askChatGPTQuestion } from '@/background/src/chatGPT/util'
 import { setChromeExtensionSettings } from '@/background/utils'
 
 const port = new ContentScriptConnectionV2({
@@ -99,10 +99,18 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     })
   }
   const sendQuestion = async (
-    question: string,
-    messageId?: string,
-    parentMessageId?: string,
+    questionInfo: {
+      question: string
+      messageId?: string
+      parentMessageId?: string
+    },
+    options?: {
+      regenerate?: boolean
+      includeHistory?: boolean
+    },
   ): Promise<{ success: boolean; answer: string }> => {
+    const { question, messageId, parentMessageId } = questionInfo
+    const { regenerate = false, includeHistory = false } = options || {}
     if (!question || conversation.loading) {
       return Promise.resolve({
         success: false,
@@ -147,9 +155,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       await askChatGPTQuestion(
         {
           conversationId: postConversationId,
-          question: CHAT_GPT_PROMPT_PREFIX + question,
+          question,
           messageId: currentMessageId,
           parentMessageId: currentParentMessageId,
+        },
+        {
+          includeHistory,
+          regenerate,
         },
         {
           onMessage: (msg) => {
@@ -180,7 +192,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             if (currentMessage?.messageId) {
               pushMessages.push(currentMessage as IGmailChatMessage)
             }
-            const is403Error = error?.trim() === '403'
+            const is403Error =
+              typeof error === 'string' && error?.trim() === '403'
             if (error === 'Conversation not found' || is403Error) {
               setConversation((prevState) => {
                 return {
@@ -258,9 +271,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         new Promise((resolve) => setTimeout(resolve, t))
       await delay(3000)
       await sendQuestion(
-        originMessage.text,
-        uuidV4(),
-        originMessage.parentMessageId,
+        {
+          question: originMessage.text,
+          messageId: uuidV4(),
+          parentMessageId: originMessage.parentMessageId,
+        },
+        {
+          regenerate: false,
+          includeHistory: true,
+        },
       )
     }
   }
@@ -280,9 +299,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         return prevState.slice(0, index)
       })
       return sendQuestion(
-        lastUserMessage.text,
-        lastUserMessage.messageId,
-        lastUserMessage.parentMessageId,
+        {
+          question: lastUserMessage.text,
+          messageId: lastUserMessage.messageId,
+          parentMessageId: lastUserMessage.parentMessageId,
+        },
+        {
+          regenerate: true,
+          includeHistory: true,
+        },
       )
     }
     return null

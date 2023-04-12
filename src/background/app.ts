@@ -15,13 +15,12 @@ import {
   CHROME_EXTENSION_DOC_URL,
   CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
-  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/types'
 import {
   ChatSystem,
   OpenAIChat,
   UseChatGPTPlusChat,
-} from '@/background/src/openai'
+} from '@/background/src/ChatGPT'
 import {
   ChatAdapter,
   OpenAIChatProvider,
@@ -57,16 +56,6 @@ const initChromeExtensionInstalled = () => {
   // 插件安装初始化
   Browser.runtime.onInstalled.addListener(async (object) => {
     if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
-      const config = {
-        userSettings: {
-          language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-          selectionButtonVisible: true,
-        },
-      }
-      console.log('onInstalled config', config)
-      await Browser.storage.local.set({
-        CLIENT_SETTINGS: JSON.stringify(config),
-      })
       if (isEzMailApp) {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '#how-to-use',

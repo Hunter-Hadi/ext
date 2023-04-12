@@ -85,7 +85,17 @@ const GmailChatPage = () => {
         insertAble
         editAble={false}
         defaultValue={inputValue}
-        onSendMessage={sendQuestion}
+        onSendMessage={async (question) => {
+          await sendQuestion(
+            {
+              question,
+            },
+            {
+              regenerate: false,
+              includeHistory: true,
+            },
+          )
+        }}
         writingMessage={conversation.writingMessage}
         messages={messages}
         loading={conversation.loading}

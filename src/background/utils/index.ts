@@ -3,15 +3,18 @@ import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailTool
 import { IContextMenuItem } from '@/features/contextMenu'
 import Browser from 'webextension-polyfill'
 import {
+  CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
   CHROME_EXTENSION_POST_MESSAGE_ID,
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/types'
 import {
   IChromeExtensionListenEvent,
   IChromeExtensionSendEvent,
 } from '@/background/eventType'
 import { useEffect } from 'react'
-import { IChatGPTProviderType } from '@/background/provider/chat'
+import { IChatGPTProviderType } from '@/background/provider/chat/ChatAdapter'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 
 export type IChatGPTModelType = {
   slug: string
@@ -26,11 +29,6 @@ export type IChatGPTModelType = {
   }
 }
 export type IChromeExtensionSettings = {
-  commands?: Array<{
-    name?: string
-    shortcut?: string
-    description?: string
-  }>
   chatGPTProvider?: IChatGPTProviderType
   models?: IChatGPTModelType[]
   currentModel?: string
@@ -53,30 +51,24 @@ export const getChromeExtensionSettings =
     const localData = await Browser.storage.local.get(
       CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
     )
-    const commands = (await Browser?.commands?.getAll()) || []
-    const localStorage = {
-      commands,
-    }
     try {
       const settings = JSON.parse(
         localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY],
       )
-      return {
-        ...localStorage,
-        ...settings,
-      }
+      return settings
     } catch (e) {
       // 说明没有这个字段，应该返回默认的配置
       const defaultConfig = {
-        commands,
+        commands: [],
         models: [],
         currentModel: '',
         conversationId: '',
+        chatGPTProvider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
         contextMenus: defaultContextMenuJson,
         gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
         userSettings: {
           colorSchema: undefined,
-          language: 'auto',
+          language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
           selectionButtonVisible: true,
         },
       } as IChromeExtensionSettings
@@ -284,4 +276,23 @@ export const useCreateClientMessageListener = (
       Browser.runtime.onMessage.removeListener(modifyListener)
     }
   }, [])
+}
+
+export const getChromeExtensionCommands = async (): Promise<
+  Array<{
+    name?: string
+    shortcut?: string
+    description?: string
+  }>
+> => {
+  const port = new ContentScriptConnectionV2()
+  const result = await port.postMessage({
+    event: 'Client_getChromeExtensionCommands',
+    data: {},
+  })
+  if (result.success) {
+    return result.data
+  } else {
+    return []
+  }
 }

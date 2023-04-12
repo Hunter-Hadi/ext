@@ -15,7 +15,7 @@ export type IChromeExtensionClientListenEvent =
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
   | 'Client_ping'
-  | 'Client_createAsyncTask'
+  | 'Client_getChromeExtensionCommands'
   | 'Client_checkChatGPTStatus'
   | 'Client_switchChatGPTProvider'
   | 'Client_authChatGPTProvider'
@@ -25,6 +25,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_abortAskChatGPTQuestion'
   | 'Client_openUrl'
   | 'Client_updateIcon'
+  | 'Client_updateUserInfo'
+  | 'Client_createAsyncTask'
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

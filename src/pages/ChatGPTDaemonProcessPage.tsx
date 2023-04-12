@@ -10,6 +10,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import { IconButton, Stack, Typography } from '@mui/material'
 import { IOpenAIChatListenTaskEvent } from '@/background/app'
 import {
+  CHAT_GPT_PROMPT_PREFIX,
   CHROME_EXTENSION_POST_MESSAGE_ID,
   ROOT_DAEMON_PROCESS_ID,
 } from '@/types'
@@ -178,18 +179,18 @@ const useDaemonProcess = () => {
                 break
               case 'OpenAIDaemonProcess_askChatGPTQuestion':
                 {
-                  const { taskId, question } = data
+                  const { taskId, question, options } = data
                   log.info(
                     'OpenAIDaemonProcess_askChatGPTQuestion',
                     taskId,
                     question,
+                    options,
                   )
                   const {
                     conversationId,
                     messageId,
                     parentMessageId,
                     question: questionText,
-                    regenerate,
                   } = question
                   let conversation =
                     chatGptInstanceRef.current?.getConversation(conversationId)
@@ -214,7 +215,7 @@ const useDaemonProcess = () => {
                       {
                         messageId,
                         parentMessageId,
-                        prompt: questionText,
+                        prompt: CHAT_GPT_PROMPT_PREFIX + questionText,
                         signal: controller.signal,
                         onEvent(event) {
                           if (event.type === 'error') {
@@ -264,7 +265,7 @@ const useDaemonProcess = () => {
                           log.info(event.data)
                         },
                       },
-                      regenerate === true,
+                      options.regenerate === true,
                     )
                   }
                 }

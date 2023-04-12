@@ -2,7 +2,7 @@ import Browser from 'webextension-polyfill'
 import {
   checkChatGPTProxyInstance,
   createDaemonProcessTab,
-} from '@/background/src/openai/util'
+} from '@/background/src/chatGPT/util'
 import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
@@ -14,7 +14,7 @@ import {
 import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 
-const log = new Log('OpenAIChat')
+const log = new Log('ChatGPT/OpenAIChat')
 
 class OpenAIChat {
   status: ChatStatus = 'needAuth'
@@ -148,6 +148,7 @@ class OpenAIChat {
     taskId,
     sender,
     question,
+    options,
   ) => {
     if (!this.isAnswering) {
       this.questionSender = sender
@@ -156,6 +157,7 @@ class OpenAIChat {
         {
           taskId,
           question,
+          options,
         },
       )
     }
@@ -170,10 +172,14 @@ class OpenAIChat {
     return result.success
   }
   async destroy() {
-    this.active = false
+    log.info('destroy')
     this.status = 'needAuth'
+    if (this.chatGPTProxyInstance && this.chatGPTProxyInstance.id) {
+      await Browser.tabs.remove(this.chatGPTProxyInstance.id)
+    }
     this.chatGPTProxyInstance = undefined
     await this.updateClientStatus()
+    this.active = false
     this.removeListener()
   }
   async sendDaemonProcessTask(event: IOpenAIChatListenTaskEvent, data: any) {

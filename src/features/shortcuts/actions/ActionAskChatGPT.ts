@@ -18,11 +18,18 @@ export class ActionAskChatGPT extends Action {
   @clearUserInput(false)
   async execute(params: any, engine: any) {
     try {
-      const { success, answer } = await engine
-        .getChartGPT()
-        ?.sendQuestion(
-          this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT,
-        )
+      const { success, answer } = await engine.getChartGPT()?.sendQuestion(
+        {
+          messageId: '',
+          question:
+            this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT,
+          parentMessageId: '',
+        },
+        {
+          includeHistory: false,
+          regenerate: false,
+        },
+      )
       if (success) {
         this.output = answer
       } else {

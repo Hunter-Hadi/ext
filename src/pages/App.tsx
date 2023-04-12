@@ -1,36 +1,25 @@
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useEffect } from 'react'
 import './global.less'
 import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
 import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
 import { CHROME_EXTENSION_HOMEPAGE_URL, ROOT_CONTAINER_ID } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import { AppSettingsState, AppState } from '@/store'
+import { AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import TooltipButton from '@/components/TooltipButton'
+import useCommands from '@/hooks/useCommands'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const [appState, setAppState] = useRecoilState(AppState)
-  // const { resetConversation } = useMessageWithChatGPT()
-  const appSettings = useRecoilValue(AppSettingsState)
-  const commandKey = useMemo(() => {
-    if (appSettings?.commands) {
-      const command = appSettings.commands.find(
-        (command) => command.name === '_execute_action',
-      )
-      if (command) {
-        return command.shortcut || 'click to setup'
-      }
-    }
-    return 'click to setup'
-  }, [appSettings])
+  const { shortCutKey } = useCommands()
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {
       mutations.forEach((mu) => {
@@ -178,7 +167,7 @@ const App: FC = () => {
                       chromeExtensionClientOpenPage({ key: 'shortcuts' })
                     }}
                   >
-                    Shortcut: {commandKey}
+                    Shortcut: {shortCutKey || 'click to setup'}
                   </Link>
                 </Typography>
               )}

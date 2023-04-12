@@ -13,15 +13,26 @@ import {
 import Log from '@/utils/Log'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 
-const log = new Log('ChatSystem')
+const log = new Log('Background/ChatGPT/ChatSystem')
 
 class ChatSystem implements ChatInterface {
+  currentProvider?: IChatGPTProviderType
   private adapters: {
     [key in IChatGPTProviderType]?: ChatAdapterInterface
   } = {}
-  private currentAdapter?: ChatAdapterInterface
   constructor() {
     this.initChatSystem()
+  }
+  get status(): ChatStatus {
+    if (this.currentAdapter) {
+      return this.currentAdapter.status
+    }
+    return 'needAuth'
+  }
+  get currentAdapter(): ChatAdapterInterface | undefined {
+    return this.currentProvider
+      ? this.adapters[this.currentProvider]
+      : undefined
   }
   private initChatSystem() {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
@@ -80,8 +91,8 @@ class ChatSystem implements ChatInterface {
           }
           case 'Client_askChatGPTQuestion':
             {
-              const { taskId, question } = data
-              await this.sendQuestion(taskId, sender, question)
+              const { taskId, question, options } = data
+              await this.sendQuestion(taskId, sender, question, options)
             }
             break
           case 'Client_removeChatGPTConversation': {
@@ -127,13 +138,18 @@ class ChatSystem implements ChatInterface {
     this.adapters[provider] = adapter
   }
   async switchAdapter(provider: IChatGPTProviderType) {
-    // if (this.currentAdapter) {
-    //   await this.currentAdapter.destroy()
-    // }
+    if (provider === this.currentProvider) {
+      log.info('switchAdapter', 'same provider no need to switch')
+      return
+    }
+    // destroy old adapter
+    if (this.currentAdapter) {
+      await this.currentAdapter.destroy()
+    }
+    this.currentProvider = provider
     await setChromeExtensionSettings({
       chatGPTProvider: provider,
     })
-    this.currentAdapter = this.adapters[provider]
     return this.currentAdapter
   }
   async auth(authTabId: number) {
@@ -141,9 +157,14 @@ class ChatSystem implements ChatInterface {
       await this.currentAdapter.auth(authTabId)
     }
   }
-  sendQuestion: IChatGPTAskQuestionFunctionType = (taskId, sender, data) => {
+  sendQuestion: IChatGPTAskQuestionFunctionType = (
+    taskId,
+    sender,
+    data,
+    options,
+  ) => {
     return (
-      this.currentAdapter?.sendQuestion(taskId, sender, data) ||
+      this.currentAdapter?.sendQuestion(taskId, sender, data, options) ||
       Promise.resolve()
     )
   }
@@ -168,12 +189,6 @@ class ChatSystem implements ChatInterface {
   }
   async destroy() {
     await this.currentAdapter?.destroy()
-  }
-  get status(): ChatStatus {
-    if (this.currentAdapter) {
-      return this.currentAdapter.status
-    }
-    return 'switchProvider'
   }
 }
 export { ChatSystem }

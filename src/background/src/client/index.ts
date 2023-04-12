@@ -52,33 +52,47 @@ export const ClientMessageInit = () => {
             }
           }
           break
-        case 'Client_updateIcon': {
-          const { mode } = data
-          console.log('Client_updateIcon', mode)
-          if (isEzMailApp) {
-            // don't need to update icon
-          } else {
-            if (mode === 'dark') {
-              await Browser.action.setIcon({
-                path: {
-                  16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
-                  32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
-                  48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
-                  128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
-                },
-              })
+        case 'Client_updateIcon':
+          {
+            const { mode } = data
+            console.log('Client_updateIcon', mode)
+            if (isEzMailApp) {
+              // don't need to update icon
             } else {
-              await Browser.action.setIcon({
-                path: {
-                  16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png',
-                  32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png',
-                  48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal.png',
-                  128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal.png',
-                },
-              })
+              if (mode === 'dark') {
+                await Browser.action.setIcon({
+                  path: {
+                    16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
+                    32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
+                    48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
+                    128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
+                  },
+                })
+              } else {
+                await Browser.action.setIcon({
+                  path: {
+                    16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png',
+                    32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png',
+                    48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal.png',
+                    128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal.png',
+                  },
+                })
+              }
             }
           }
-        }
+          break
+        case 'Client_getChromeExtensionCommands':
+          {
+            const commands = (await Browser.commands.getAll()) || []
+            return {
+              data: commands,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
+        default:
+          break
       }
     }
     return undefined

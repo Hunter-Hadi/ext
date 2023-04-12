@@ -1,34 +1,14 @@
 import { FC, useEffect, useState } from 'react'
-import { Box, Stack, Paper, Typography, Button, Divider } from '@mui/material'
+import { Box, Stack, Paper, Typography, Button } from '@mui/material'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { CHAT_GPT_PROVIDER } from '@/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'
-import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
-
+import CheckIcon from '@mui/icons-material/Check'
+import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 const port = new ContentScriptConnectionV2()
-
-const ProviderFeatureItem: FC<{
-  title: string
-  variant: 'contained' | 'outlined'
-}> = ({ title, variant }) => {
-  return (
-    <Stack spacing={1} direction={'row'} alignItems={'center'}>
-      {variant === 'outlined' ? (
-        <CheckCircleOutlineIcon sx={{ fontSize: 20 }} />
-      ) : (
-        <CheckCircleIcon sx={{ fontSize: 20 }} />
-      )}
-      <Typography fontSize={'14px'} fontWeight={400}>
-        {title}
-      </Typography>
-    </Stack>
-  )
-}
 
 const ChatGPTStatusWrapper: FC = () => {
   const { status } = useRecoilValue(ChatGPTClientState)
@@ -126,51 +106,30 @@ const ChatGPTStatusWrapper: FC = () => {
       </Box>
     )
   }
-  if (status === 'needAuth') {
-    return (
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 1000,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          '& + *': {
-            filter: 'blur(5px)',
-          },
-        }}
-      >
-        <Paper sx={{ width: '80%', p: 2, py: 4 }}>
-          <Stack alignItems={'center'} height={'100%'} spacing={2}>
-            <Typography fontSize={'20px'} fontWeight={700}>
-              Please log in to ChatGPT to continue
-            </Typography>
-            <Button
-              onClick={async () => {
-                debugger
-                await port.postMessage({
-                  event: 'Client_authChatGPTProvider',
-                  data: {
-                    provider: CHAT_GPT_PROVIDER.OPENAI,
-                  },
-                })
-              }}
-              variant={'contained'}
-              disableElevation
-              fullWidth
-              endIcon={<OpenInNewIcon />}
-            >
-              Log in to ChatGPT
-            </Button>
-          </Stack>
-        </Paper>
-      </Box>
-    )
+  return <ChatGPTProviderAuthWrapper />
+}
+
+const ChatGPTProviderAuthWrapper: FC = () => {
+  const { updateChatGPTProvider, provider } = useChatGPTProvider()
+  const title =
+    provider === CHAT_GPT_PROVIDER.OPENAI
+      ? 'Continue with own ChatGPT account'
+      : 'Continue with UseChatGPT.AI account'
+  const buttonTitle =
+    provider === CHAT_GPT_PROVIDER.OPENAI
+      ? 'Log in to ChatGPT'
+      : 'Log in to UseChatGPT.AI'
+  const nextProviderText =
+    provider === CHAT_GPT_PROVIDER.OPENAI
+      ? 'Continue with UseChatGPT.AI account'
+      : 'Continue with own ChatGPT account'
+
+  const switchProvider = async () => {
+    const nextProvider =
+      provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS
+        ? CHAT_GPT_PROVIDER.OPENAI
+        : CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS
+    await updateChatGPTProvider(nextProvider)
   }
   return (
     <Box
@@ -180,10 +139,9 @@ const ChatGPTStatusWrapper: FC = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        zIndex: 1,
+        backgroundColor: 'rgba(0,0,0,0.1)',
+        zIndex: 1000,
         display: 'flex',
-        textAlign: 'left',
         justifyContent: 'center',
         alignItems: 'center',
         '& + *': {
@@ -191,118 +149,404 @@ const ChatGPTStatusWrapper: FC = () => {
         },
       }}
     >
-      <Box sx={{ position: 'absolute', top: 0, width: '100%' }}>
-        <ChatGPTAIProviderSelector />
-      </Box>
-      <Stack
-        p={2}
-        sx={{
-          mx: 3,
-          width: '100%',
-          border: '1px solid',
-          borderColor: 'customColor.borderColor',
-        }}
-      >
-        <Typography
-          textAlign={'left'}
-          fontSize={'16px'}
-          fontWeight={700}
-          color={'text.primary'}
-        >
-          UseChatGPT.AI Plus
-        </Typography>
-        <Paper sx={{ p: 0.5, mt: 1, mb: 2 }}>
-          <Stack spacing={1}>
-            <ProviderFeatureItem
-              title={'No OpenAl interruptions'}
+      <Stack spacing={2} width={'calc(100% - 16px)'}>
+        <Paper sx={{ width: '100%', p: 2, bgcolor: 'background.paper' }}>
+          <Stack alignItems={'flex-start'} height={'100%'} spacing={2}>
+            <Typography
+              fontSize={'20px'}
+              fontWeight={700}
+              color={'text.primary'}
+            >
+              {title}
+            </Typography>
+            <Button
+              onClick={async () => {
+                await port.postMessage({
+                  event: 'Client_authChatGPTProvider',
+                  data: {},
+                })
+              }}
               variant={'contained'}
-            />
-            <ProviderFeatureItem title={'99% uptime'} variant={'contained'} />
-            <ProviderFeatureItem
-              title={'2x faster response time'}
-              variant={'contained'}
-            />
-            <ProviderFeatureItem
-              title={'No country restrictions'}
-              variant={'contained'}
-            />
+              disableElevation
+              fullWidth
+              endIcon={<OpenInNewIcon />}
+            >
+              {buttonTitle}
+            </Button>
+            <Typography
+              fontWeight={500}
+              fontSize={'14px'}
+              color={'text.secondary'}
+            >
+              Or{' '}
+              <Typography
+                fontWeight={500}
+                component={'span'}
+                fontSize={'inherit'}
+                color={'inherit'}
+                sx={{ textDecoration: 'underline', cursor: 'pointer' }}
+                onClick={switchProvider}
+              >
+                {nextProviderText}
+              </Typography>
+            </Typography>
           </Stack>
         </Paper>
-        <Button
-          sx={{ height: 40 }}
-          onClick={async () => {
-            const result = await port.postMessage({
-              event: 'Client_switchChatGPTProvider',
-              data: {
-                provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-              },
-            })
-            if (result.success) {
-              await port.postMessage({
-                event: 'Client_authChatGPTProvider',
-                data: {},
-              })
-            }
+        <Stack
+          sx={{
+            width: '100%',
+            borderRadius: '4px',
+            position: 'relative',
           }}
-          variant={'contained'}
-          disableElevation
-          fullWidth
-          endIcon={<OpenInNewIcon />}
         >
-          Continue free
-        </Button>
-        <Divider sx={{ my: 2 }} />
-        <Typography
-          textAlign={'left'}
-          fontSize={'16px'}
-          fontWeight={700}
-          color={'text.primary'}
-        >
-          Your own ChatGPT account
-        </Typography>
-        <Paper sx={{ p: 0.5, mt: 1, mb: 2 }}>
-          <Stack spacing={1}>
-            <ProviderFeatureItem
-              title={'OpenAl account required'}
-              variant={'outlined'}
-            />
-            <ProviderFeatureItem
-              title={'OpenAl login interruptions'}
-              variant={'outlined'}
-            />
-            <ProviderFeatureItem
-              title={'ChatGPT downtimes'}
-              variant={'outlined'}
-            />
-            <ProviderFeatureItem
-              title={'OpenAl country restrictions'}
-              variant={'outlined'}
-            />
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            height={36}
+            sx={{
+              borderRadius: '4px 4px 0 0',
+              borderBottom: '1px solid',
+              borderColor: 'customColor.borderColor',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(61, 61, 61, 1)'
+                  : 'rgba(235, 235, 235, 1)',
+            }}
+          >
+            <Typography
+              component={'div'}
+              fontSize={'14px'}
+              px={0.5}
+              color={'text.primary'}
+              width={0}
+              flex={1}
+            ></Typography>
+            <Typography
+              component={'div'}
+              width={'98px'}
+              flexShrink={0}
+              fontSize={'12px'}
+              textAlign={'center'}
+              fontWeight={500}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              UseChatGPT.AI
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'12px'}
+              textAlign={'center'}
+              color={'text.secondary'}
+              fontWeight={500}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              ChatGPT
+            </Typography>
           </Stack>
-        </Paper>
-        <Button
-          sx={{ height: 40 }}
-          onClick={async () => {
-            const result = await port.postMessage({
-              event: 'Client_switchChatGPTProvider',
-              data: {
-                provider: CHAT_GPT_PROVIDER.OPENAI,
-              },
-            })
-            if (result.success) {
-              await port.postMessage({
-                event: 'Client_authChatGPTProvider',
-                data: {},
-              })
-            }
-          }}
-          variant={'outlined'}
-          disableElevation
-          fullWidth
-          endIcon={<OpenInNewIcon />}
-        >
-          Continue
-        </Button>
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            height={36}
+            sx={{
+              borderBottom: '1px solid',
+              borderColor: 'customColor.borderColor',
+            }}
+            bgcolor={'background.paper'}
+          >
+            <Typography
+              component={'div'}
+              fontSize={'14px'}
+              color={'text.primary'}
+              width={0}
+              flex={1}
+              textAlign={'left'}
+              sx={{ textIndent: '4px' }}
+            >
+              No OpenAI account required
+            </Typography>
+            <Typography
+              component={'div'}
+              width={'98px'}
+              flexShrink={0}
+              fontSize={'14px'}
+              textAlign={'center'}
+              fontWeight={500}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              <CheckIcon sx={{ fontSize: 20, color: '#34A853' }} />
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              -
+            </Typography>
+          </Stack>
+          <Stack
+            direction={'row'}
+            sx={{
+              borderBottom: '1px solid',
+              borderColor: 'customColor.borderColor',
+            }}
+            alignItems={'center'}
+            height={36}
+            bgcolor={'background.paper'}
+          >
+            <Typography
+              component={'div'}
+              textAlign={'left'}
+              fontSize={'14px'}
+              color={'text.primary'}
+              width={0}
+              sx={{ textIndent: '4px' }}
+              flex={1}
+            >
+              No OpenAl interruptions
+            </Typography>
+            <Typography
+              component={'div'}
+              width={'98px'}
+              flexShrink={0}
+              fontSize={'14px'}
+              textAlign={'center'}
+              fontWeight={500}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              <CheckIcon sx={{ fontSize: 20, color: '#34A853' }} />
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              -
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              borderBottom: '1px solid',
+              borderColor: 'customColor.borderColor',
+            }}
+            direction={'row'}
+            alignItems={'center'}
+            height={36}
+            bgcolor={'background.paper'}
+          >
+            <Typography
+              component={'div'}
+              textAlign={'left'}
+              fontSize={'14px'}
+              color={'text.primary'}
+              width={0}
+              sx={{ textIndent: '4px' }}
+              flex={1}
+            >
+              Availability
+            </Typography>
+            <Typography
+              component={'div'}
+              width={'98px'}
+              flexShrink={0}
+              fontSize={'14px'}
+              textAlign={'center'}
+              fontWeight={500}
+              color={'text.primary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              Always
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              Sometimes
+            </Typography>
+          </Stack>
+          <Stack
+            direction={'row'}
+            sx={{
+              borderBottom: '1px solid',
+              borderColor: 'customColor.borderColor',
+            }}
+            alignItems={'center'}
+            height={36}
+            bgcolor={'background.paper'}
+          >
+            <Typography
+              component={'div'}
+              textAlign={'left'}
+              fontSize={'14px'}
+              color={'text.primary'}
+              width={0}
+              sx={{ textIndent: '4px' }}
+              flex={1}
+            >
+              Availability
+            </Typography>
+            <Typography
+              component={'div'}
+              width={'98px'}
+              flexShrink={0}
+              fontSize={'14px'}
+              textAlign={'center'}
+              fontWeight={500}
+              color={'text.primary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              Fast
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              Standard
+            </Typography>
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            height={36}
+            bgcolor={'background.paper'}
+            sx={{
+              borderRadius: '0 0 4px 4px',
+            }}
+          >
+            <Typography
+              component={'div'}
+              textAlign={'left'}
+              fontSize={'14px'}
+              color={'text.primary'}
+              width={0}
+              sx={{ textIndent: '4px' }}
+              flex={1}
+            >
+              No country restrictions
+            </Typography>
+            <Typography
+              component={'div'}
+              width={'98px'}
+              flexShrink={0}
+              fontSize={'14px'}
+              textAlign={'center'}
+              fontWeight={500}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              <CheckIcon sx={{ fontSize: 20, color: '#34A853' }} />
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
+              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              -
+            </Typography>
+          </Stack>
+          {/*// move border*/}
+          <Box
+            sx={{
+              position: 'absolute',
+              width: '98px',
+              height: '100%',
+              borderRadius: '4px',
+              border: '1px solid',
+              right: provider === CHAT_GPT_PROVIDER.OPENAI ? 0 : 98,
+              transition: 'right 0.3s',
+              background: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))'
+                  : 'linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))',
+              borderColor: (t) =>
+                t.palette.mode === 'dark' ? '#fff' : '#7601D3',
+            }}
+          />
+          {/*// arrow delta*/}
+          <Box
+            sx={{
+              width: 0,
+              height: 0,
+              borderStyle: 'solid',
+              border: '6px solid transparent',
+              borderBottom: '6px solid',
+              borderBottomColor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(61, 61, 61, 1)'
+                  : 'rgba(235, 235, 235, 1)',
+              position: 'absolute',
+              top: -12,
+              left: 'calc(50% - 6px)',
+            }}
+          />
+        </Stack>
       </Stack>
     </Box>
   )

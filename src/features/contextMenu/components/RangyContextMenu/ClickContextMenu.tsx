@@ -12,8 +12,9 @@ import {
 import { IRangyRect } from '@/features/contextMenu/store'
 import { useRecoilValue } from 'recoil'
 import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
-import { AppSettingsCommandKeysSelector, AppSettingsState } from '@/store'
+import { AppSettingsState } from '@/store'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
+import useCommands from '@/hooks/useCommands'
 
 const APP_NAME = process.env.APP_NAME
 const APP_ENV = process.env.APP_ENV
@@ -23,7 +24,7 @@ const ClickContextMenuButton: FC<{
 }> = (props) => {
   const { tempSelection, show } = useRangy()
   const appSettings = useRecoilValue(AppSettingsState)
-  const commandKeyMap = useRecoilValue(AppSettingsCommandKeysSelector)
+  const { shortCutKey } = useCommands()
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const { x, y, strategy, refs } = useFloating({
     placement: 'bottom-start',
@@ -168,7 +169,7 @@ const ClickContextMenuButton: FC<{
             />
           )}
           {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
-          {commandKeyMap.shortcutsKey && (
+          {shortCutKey && (
             <Typography
               component={'span'}
               sx={{
@@ -178,7 +179,7 @@ const ClickContextMenuButton: FC<{
                 pl: 1,
               }}
             >
-              {commandKeyMap.shortcutsKey}
+              {shortCutKey}
             </Typography>
           )}
         </Button>

@@ -31,7 +31,17 @@ const NormalChatPage = () => {
         editAble={false}
         insertAble={false}
         defaultValue={inputValue}
-        onSendMessage={sendQuestion}
+        onSendMessage={async (question) => {
+          await sendQuestion(
+            {
+              question,
+            },
+            {
+              regenerate: false,
+              includeHistory: true,
+            },
+          )
+        }}
         writingMessage={conversation.writingMessage}
         messages={messages}
         loading={conversation.loading}

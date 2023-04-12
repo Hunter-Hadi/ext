@@ -1,6 +1,6 @@
 {
   "name": "UseChatGPT.AI: ChatGPT Copilot on Chrome",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "short_name": "UseChatGPT",
   "description": "Rephrase, summarize, translate, or explain text on any website without copy-pasting (GPT-4 ✓).",
   "manifest_version": 3,
@@ -14,6 +14,15 @@
       ],
       "js": ["content.tsx"],
       "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "http://localhost:3000/*",
+        "https://usechatgpt-main.simplysourcing.net/*",
+        "https://app.usechatgpt.ai/*"
+      ],
+      "js": ["checkUseChatGPTAppLoginStatus.ts"],
+      "run_at": "document_start"
     }
   ],
   "host_permissions": [

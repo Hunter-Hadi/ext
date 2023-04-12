@@ -1,7 +1,9 @@
 import Browser from 'webextension-polyfill'
-import { createClientMessageListener } from '@/background/utils'
+import {
+  createClientMessageListener,
+  getChromeExtensionSettings,
+} from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { v4 as uuidV4 } from 'uuid'
 
 /**
  * 创建守护进程的tab
@@ -55,6 +57,10 @@ export const askChatGPTQuestion = async (
     conversationId: string
     question: string
   },
+  options: {
+    regenerate: boolean
+    includeHistory: boolean
+  },
   {
     onMessage,
     onError,
@@ -69,7 +75,7 @@ export const askChatGPTQuestion = async (
   },
 ) => {
   return new Promise((resolve) => {
-    const taskId = uuidV4()
+    const taskId = question.messageId
     const destroyListener = createClientMessageListener(async (event, data) => {
       if (
         event === 'Client_askChatGPTQuestionResponse' &&
@@ -81,10 +87,19 @@ export const askChatGPTQuestion = async (
         if (data.done) {
           resolve(true)
           destroyListener()
-          return
+          return {
+            success: true,
+            message: 'ok',
+            data: {},
+          }
         }
         if (data?.data?.text) {
           onMessage?.(data.data)
+        }
+        return {
+          success: true,
+          message: 'ok',
+          data: {},
         }
       }
       return undefined
@@ -97,7 +112,12 @@ export const askChatGPTQuestion = async (
       data: {
         taskId,
         question,
+        options,
       },
     })
   })
+}
+export const getCacheConversationId = async () => {
+  const settings = await getChromeExtensionSettings()
+  return settings.conversationId || ''
 }

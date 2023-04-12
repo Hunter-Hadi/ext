@@ -2,18 +2,29 @@ import { CHAT_GPT_PROVIDER } from '@/types'
 import Browser from 'webextension-polyfill'
 
 /**
- * switchProvider: 切换服务商
  * needAuth: 需要授权
  * loading: 正在加载
  * complete: 加载完成
  * success: 授权成功
  */
-export type ChatStatus =
-  | 'switchProvider'
-  | 'needAuth'
-  | 'loading'
-  | 'complete'
-  | 'success'
+export type ChatStatus = 'needAuth' | 'loading' | 'complete' | 'success'
+
+export type IAskChatGPTQuestionType = {
+  messageId: string
+  parentMessageId: string
+  conversationId: string
+  question: string
+}
+export type IAskChatGPTAnswerType = {
+  messageId: string
+  parentMessageId: string
+  conversationId: string
+  text: string
+}
+export type IAskChatGPTOptionsType = {
+  regenerate: boolean
+  includeHistory: boolean
+}
 
 export type IChatGPTProviderType =
   (typeof CHAT_GPT_PROVIDER)[keyof typeof CHAT_GPT_PROVIDER]
@@ -21,12 +32,8 @@ export type IChatGPTProviderType =
 export type IChatGPTAskQuestionFunctionType = (
   taskId: string,
   sender: Browser.Runtime.MessageSender,
-  question: {
-    messageId: string
-    parentMessageId: string
-    conversationId: string
-    question: string
-  },
+  question: IAskChatGPTQuestionType,
+  options: IAskChatGPTOptionsType,
 ) => Promise<void>
 
 export interface ChatInterface {
@@ -64,8 +71,9 @@ export class ChatAdapter implements ChatInterface {
     taskId,
     sender,
     question,
+    options,
   ) => {
-    return this.chatAdapter.sendQuestion(taskId, sender, question)
+    return this.chatAdapter.sendQuestion(taskId, sender, question, options)
   }
   async abortAskQuestion(messageId: string) {
     return await this.chatAdapter.abortAskQuestion(messageId)

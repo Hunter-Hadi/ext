@@ -1,7 +1,3 @@
-// 守护进程监听event
-export type IChromeExtensionChatGPTDaemonProcessListenEvent =
-  | 'DaemonProcess_getChatGPTProxyInstanceResponse'
-  | 'DaemonProcess_clientAsyncTask'
 // 客户端监听event
 export type IChromeExtensionClientListenEvent =
   | 'Client_ChatGPTStatusUpdate'
@@ -25,7 +21,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_abortAskChatGPTQuestion'
   | 'Client_openUrl'
   | 'Client_updateIcon'
-  | 'Client_updateUserInfo'
+  | 'Client_updateUseChatGPTAuthInfo'
+  | 'Client_getUseChatGPTUserInfo'
   | 'Client_createAsyncTask'
 
 // chat.openai.com(daemon process) 监听task event
@@ -49,6 +46,4 @@ export type IChromeExtensionListenEvent =
   | IChromeExtensionClientSendEvent
 
 // chrome extension 发送 event
-export type IChromeExtensionSendEvent =
-  | IChromeExtensionChatGPTDaemonProcessListenEvent
-  | IChromeExtensionClientListenEvent
+export type IChromeExtensionSendEvent = IChromeExtensionClientListenEvent

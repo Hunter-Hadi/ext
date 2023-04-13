@@ -37,7 +37,6 @@ class ChatSystem implements ChatInterface {
   private initChatSystem() {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
       if (runtime === 'client') {
-        log.info('message', runtime, event, data)
         switch (event) {
           case 'Client_switchChatGPTProvider':
             {
@@ -150,11 +149,17 @@ class ChatSystem implements ChatInterface {
     await setChromeExtensionSettings({
       chatGPTProvider: provider,
     })
+    await this.preAuth()
     return this.currentAdapter
   }
   async auth(authTabId: number) {
     if (this.currentAdapter) {
       await this.currentAdapter.auth(authTabId)
+    }
+  }
+  async preAuth() {
+    if (this.currentAdapter) {
+      await this.currentAdapter.preAuth()
     }
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = (

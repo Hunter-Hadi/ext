@@ -5,9 +5,9 @@ import GmailChatBoxUserTools from './GmailChatBoxUserTools'
 import GmailChatBoxAiTools from './GmailChatBoxAiTools'
 import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/types'
-import Markdown from 'markdown-to-jsx'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
+import CustomMarkdown from '@/components/CustomMarkdown'
 
 const GmailChatBoxMessageItem: FC<{
   replaceAble?: boolean
@@ -165,10 +165,16 @@ const GmailChatBoxMessageItem: FC<{
       {/*  </p>*/}
       {/*</Stack>*/}
       <Stack
+        className={'chat-message--text'}
+        whiteSpace={'pre-wrap'}
         width={'100%'}
         spacing={1}
         p={1}
         sx={{
+          wordBreak: 'break-word',
+          borderColor: 'primary.main',
+          borderStyle: 'solid',
+          borderWidth: isEdit ? 1 : 0,
           ...ChatBoxSx,
         }}
       >
@@ -183,7 +189,15 @@ const GmailChatBoxMessageItem: FC<{
             }}
             icon={<></>}
           >
-            {defaultText}
+            <div
+              className={`markdown-body ${
+                userSettings?.colorSchema === 'dark'
+                  ? 'markdown-body--dark'
+                  : ''
+              }`}
+            >
+              <CustomMarkdown>{defaultText.replace(/^\s+/, '')}</CustomMarkdown>
+            </div>
           </Alert>
         ) : (
           <Stack
@@ -198,7 +212,7 @@ const GmailChatBoxMessageItem: FC<{
               borderWidth: isEdit ? 1 : 0,
             }}
           >
-            {message.type === 'ai' ? (
+            {message.type !== 'user' ? (
               <div
                 className={`markdown-body ${
                   userSettings?.colorSchema === 'dark'
@@ -206,7 +220,9 @@ const GmailChatBoxMessageItem: FC<{
                     : ''
                 }`}
               >
-                <Markdown>{defaultText.replace(/^\s+/, '')}</Markdown>
+                <CustomMarkdown>
+                  {defaultText.replace(/^\s+/, '')}
+                </CustomMarkdown>
               </div>
             ) : (
               defaultText.replace(/^\s+/, '')

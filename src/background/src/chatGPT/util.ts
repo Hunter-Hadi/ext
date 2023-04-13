@@ -83,6 +83,8 @@ export const askChatGPTQuestion = async (
       ) {
         if (data.error) {
           onError?.(data.error)
+        } else if (data?.data?.text) {
+          onMessage?.(data.data)
         }
         if (data.done) {
           resolve(true)
@@ -92,9 +94,6 @@ export const askChatGPTQuestion = async (
             message: 'ok',
             data: {},
           }
-        }
-        if (data?.data?.text) {
-          onMessage?.(data.data)
         }
         return {
           success: true,

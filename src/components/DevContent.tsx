@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const DevContent: FC<{
   children?: React.ReactNode
 }> = ({ children }) => {
-  if (isProd) {
+  if (isProduction) {
     return null
   }
   return <>{children}</>

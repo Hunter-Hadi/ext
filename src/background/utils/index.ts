@@ -15,6 +15,7 @@ import {
 import { useEffect } from 'react'
 import { IChatGPTProviderType } from '@/background/provider/chat/ChatAdapter'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { IUseChatGPTUserInfo } from '@/background/src/usechatgpt'
 
 export type IChatGPTModelType = {
   slug: string
@@ -40,6 +41,7 @@ export type IChromeExtensionSettings = {
     language?: string
     selectionButtonVisible?: boolean
   }
+  userInfo?: IUseChatGPTUserInfo
 }
 
 export type IChromeExtensionSettingsContextMenuKey =
@@ -71,6 +73,7 @@ export const getChromeExtensionSettings =
           language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
           selectionButtonVisible: true,
         },
+        userInfo: undefined,
       } as IChromeExtensionSettings
       return defaultConfig
     }

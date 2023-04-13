@@ -1,6 +1,6 @@
 import Log from '@/utils/Log'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-const log = new Log('ContentScript/checkIsLogin')
+const log = new Log('ContentScript/CheckIsLogin')
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -37,7 +37,7 @@ const syncIsLogin = async () => {
     if (exp * 1000 > Date.now()) {
       log.info('not expired')
       await port.postMessage({
-        event: 'Client_updateUserInfo',
+        event: 'Client_updateUseChatGPTAuthInfo',
         data: {
           accessToken,
           refreshToken,
@@ -49,7 +49,7 @@ const syncIsLogin = async () => {
     // expired
     log.info('expired')
     await port.postMessage({
-      event: 'Client_updateUserInfo',
+      event: 'Client_updateUseChatGPTAuthInfo',
       data: {},
     })
   }

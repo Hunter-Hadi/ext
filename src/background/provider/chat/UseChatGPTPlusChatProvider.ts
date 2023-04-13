@@ -17,6 +17,9 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   async auth(authTabId: number) {
     await this.useChatGPTPlusChat.auth(authTabId)
   }
+  async preAuth() {
+    await this.useChatGPTPlusChat.preAuth()
+  }
   get status() {
     return this.useChatGPTPlusChat.status
   }
@@ -39,31 +42,22 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       question.question,
       {
         taskId: question.messageId,
+        regenerate: options.regenerate,
         include_history: options.includeHistory,
       },
-      async ({ type, data }) => {
-        console.log('response', type, data)
+      async ({ type, done, error, data }) => {
         if (sender.tab?.id) {
           await this.sendResponseToClient(sender.tab.id, {
             taskId,
             data: {
               text: data.text,
+              parentMessageId: question.messageId,
               conversationId: data.conversationId,
               messageId: uuidV4(),
-              parentMessageId: question.messageId,
             },
-            error: data.error,
-            done: type === 'done',
+            error,
+            done,
           })
-          // 这么写是因为适配客户端
-          if (type !== 'done') {
-            await this.sendResponseToClient(sender.tab.id, {
-              taskId,
-              data: {},
-              error: '',
-              done: true,
-            })
-          }
         }
       },
     )

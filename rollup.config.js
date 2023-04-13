@@ -42,6 +42,10 @@ const APP_USE_CHAT_GPT_HOST = isProduction
   ? 'https://app.usechatgpt.ai'
   : 'https://usechatgpt-main.simplysourcing.net'
 // : 'http://localhost:3000'
+
+const APP_USE_CHAT_GPT_API_HOST = isProduction
+  ? 'https://api.usechatgpt.ai'
+  : 'https://dev.usechatgpt.ai'
 const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'UseChatGPT.AI'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 const GLOBAL_LESS =
@@ -69,6 +73,9 @@ export default [
         'process.env.GLOBAL_LESS': JSON.stringify(GLOBAL_LESS),
         'process.env.APP_USE_CHAT_GPT_HOST': JSON.stringify(
           APP_USE_CHAT_GPT_HOST,
+        ),
+        'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
+          APP_USE_CHAT_GPT_API_HOST,
         ),
         preventAssignment: true,
       }),
@@ -163,6 +170,12 @@ export default [
           : JSON.stringify('development'),
         'process.env.APP_ENV': JSON.stringify(APP_ENV),
         'process.env.APP_NAME': JSON.stringify(APP_NAME),
+        'process.env.APP_USE_CHAT_GPT_HOST': JSON.stringify(
+          APP_USE_CHAT_GPT_HOST,
+        ),
+        'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
+          APP_USE_CHAT_GPT_API_HOST,
+        ),
         preventAssignment: true,
       }),
       postcss({

@@ -1,5 +1,7 @@
-const APP_ROOT_ID = `${process.env.APP_ENV}_ROOT`
+// env
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+// ID
+const APP_ROOT_ID = `${process.env.APP_ENV}_ROOT`
 export const ROOT_CONTAINER_ID = `${APP_ROOT_ID}`
 export const ROOT_DAEMON_PROCESS_ID = `${APP_ROOT_ID}_DaemonProcess`
 export const ROOT_CONTAINER_WRAPPER_ID = `${APP_ROOT_ID}_Wrapper`
@@ -38,8 +40,6 @@ export const CHROME_EXTENSION_HOMEPAGE_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
   : 'https://www.usechatgpt.ai'
 
-export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST
-
 export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
   'the same language variety or dialect of the following text'
 
@@ -50,3 +50,7 @@ export const CHAT_GPT_PROVIDER = {
   OPENAI: 'OPENAI',
   USE_CHAT_GPT_PLUS: 'USE_CHAT_GPT_PLUS',
 } as const
+
+// app.usechatgpt.ai
+export const APP_USE_CHAT_GPT_API_HOST = process.env.APP_USE_CHAT_GPT_API_HOST
+export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST

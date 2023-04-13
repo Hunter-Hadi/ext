@@ -20,7 +20,7 @@ const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 
-const log = new Log('useMessageWithChatGPT')
+const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const appSettings = useRecoilValue(AppSettingsState)
@@ -80,24 +80,24 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       return ''
     }
   }
-  const createSystemMessage = (
-    parentMessageId: string,
-    error: string,
-    status: 'success' | 'error',
-  ) => {
-    setMessages((prevState) => {
-      return [
-        ...prevState,
-        {
-          type: 'system',
-          messageId: uuidV4(),
-          parentMessageId,
-          text: error,
-          status,
-        },
-      ]
-    })
-  }
+  // const createSystemMessage = (
+  //   parentMessageId: string,
+  //   error: string,
+  //   status: 'success' | 'error',
+  // ) => {
+  //   setMessages((prevState) => {
+  //     return [
+  //       ...prevState,
+  //       {
+  //         type: 'system',
+  //         messageId: uuidV4(),
+  //         parentMessageId,
+  //         text: error,
+  //         status,
+  //       },
+  //     ]
+  //   })
+  // }
   const sendQuestion = async (
     questionInfo: {
       question: string

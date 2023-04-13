@@ -1,6 +1,7 @@
 import { v4 as uuidv4, v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
+import { CHAT_GPT_PROVIDER } from '@/types'
 
 export interface IChatGPTAnswer {
   text: string
@@ -231,6 +232,7 @@ class ChatGPTConversation {
       parentMessageId,
     )
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
+      provider: CHAT_GPT_PROVIDER.OPENAI,
       method: 'POST',
       signal: params.signal,
       headers: {
@@ -262,7 +264,7 @@ class ChatGPTConversation {
         ),
       ),
       onMessage: (message: string) => {
-        // console.debug('sse message', message)
+        console.debug('sse message', message)
         if (message === '[DONE]') {
           params.onEvent({ type: 'done' })
           return

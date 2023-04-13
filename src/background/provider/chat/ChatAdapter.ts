@@ -38,6 +38,7 @@ export type IChatGPTAskQuestionFunctionType = (
 
 export interface ChatInterface {
   status: ChatStatus
+  preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
   destroy: () => Promise<void>
   createConversation: () => Promise<string>
@@ -48,6 +49,7 @@ export interface ChatInterface {
 
 export interface ChatAdapterInterface {
   status: ChatStatus
+  preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
   destroy: () => Promise<void>
   createConversation: () => Promise<string>
@@ -60,6 +62,9 @@ export class ChatAdapter implements ChatInterface {
   private chatAdapter: ChatAdapterInterface
   constructor(chatAdapter: ChatAdapterInterface) {
     this.chatAdapter = chatAdapter
+  }
+  async preAuth() {
+    await this.chatAdapter.preAuth()
   }
   async auth(authTabId: number) {
     await this.chatAdapter.auth(authTabId)

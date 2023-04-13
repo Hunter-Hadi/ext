@@ -3,7 +3,7 @@ class Log {
   constructor(modules: string) {
     this.module = modules
       .split('/')
-      .map((module) => `[${module.charAt(0).toUpperCase() + module.slice(1)}]`)
+      .map((module) => `[${module}]`)
       .join('')
   }
   info(...args: any[]): void {
@@ -17,6 +17,10 @@ class Log {
   warn(...args: any[]): void {
     const stack = this.getCallStack()
     console.warn(`${this.module}`, ...args, '\n', stack)
+  }
+  debug(...args: any[]): void {
+    const stack = this.getCallStack()
+    console.debug(`${this.module}`, ...args, '\n', stack)
   }
   getCallStack() {
     const stack = new Error().stack

@@ -2,16 +2,18 @@ import { ChatStatus } from '@/background/provider/chat'
 import Log from '@/utils/Log'
 import Browser from 'webextension-polyfill'
 import {
+  APP_USE_CHAT_GPT_API_HOST,
   APP_USE_CHAT_GPT_HOST,
+  CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
 } from '@/types'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
-  setChromeExtensionSettings,
 } from '@/background/utils'
 import { getCacheConversationId } from '@/background/src/chatGPT/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
+import { backgroundFetchUseChatGPTUserInfo } from '@/background/src/usechatgpt'
 
 const log = new Log('Background/ChatGPT/UseChatGPTPlusChat')
 
@@ -31,11 +33,11 @@ class UseChatGPTPlusChat {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
       if (runtime === 'client') {
         switch (event) {
-          case 'Client_updateUserInfo':
+          case 'Client_updateUseChatGPTAuthInfo':
             {
               const { accessToken, refreshToken, userInfo } = data
               log.info(
-                'Client_updateUserInfo',
+                'Client_updateUseChatGPTAuthInfo',
                 accessToken,
                 refreshToken,
                 userInfo,
@@ -56,12 +58,26 @@ class UseChatGPTPlusChat {
               await this.checkTokenAndUpdateStatus(sender.tab?.id)
             }
             break
+          case 'Client_getUseChatGPTUserInfo':
+            {
+              const userInfo = await this.getUserInfo()
+              return {
+                success: true,
+                data: userInfo,
+                message: 'ok',
+              }
+            }
+            break
           default:
             break
         }
       }
       return undefined
     })
+  }
+  async preAuth() {
+    this.active = true
+    await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
     this.active = true
@@ -107,21 +123,31 @@ class UseChatGPTPlusChat {
     options?: {
       taskId: string
       include_history?: boolean
+      regenerate?: boolean
+      streaming?: boolean
     },
     onMessage?: (message: {
-      type: 'error' | 'message' | 'done'
+      type: 'error' | 'message'
+      done: boolean
+      error: string
       data: {
         text: string
-        error: string
         conversationId: string
       }
     }) => void,
   ) {
     const cacheConversationId = await getCacheConversationId()
-    const { include_history = false, taskId } = options || {}
+    const {
+      include_history = false,
+      taskId,
+      streaming = true,
+      regenerate = false,
+    } = options || {}
     const postBody = Object.assign(
       {
         include_history,
+        regenerate,
+        streaming,
         message_content: question,
       },
       cacheConversationId ? { conversation_id: cacheConversationId } : {},
@@ -131,98 +157,92 @@ class UseChatGPTPlusChat {
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
-    // TODO: ask chatgpt
-    new AbortController()
-    log.info('straming start111')
-    fetchSSE(`https://dev.usechatgpt.ai/gpt/get_chatgpt_response`, {
+    log.info('streaming start', postBody)
+    let messageResult = ''
+    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
+      provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       method: 'POST',
-      signal: controller.signal,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.token}`,
-      },
-      body: JSON.stringify(
-        Object.assign({
-          streaming: true,
-          message_content: 'give me a long story',
-        }),
-      ),
-      onMessage: (message: string) => {
-        log.info(message)
-      },
-    })
-      .then((res) => {
-        log.info('straming end111', res)
-      })
-      .catch((err) => {
-        log.error(err)
-      })
-    fetch(`https://dev.usechatgpt.ai/gpt/get_chatgpt_response`, {
       signal,
-      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
       },
       body: JSON.stringify(postBody),
+      onMessage: (message: string) => {
+        log.debug('streaming message', message)
+        if (message) {
+          messageResult += message
+        }
+        onMessage &&
+          onMessage({
+            type: 'message',
+            done: false,
+            error: '',
+            data: { text: messageResult, conversationId: cacheConversationId },
+          })
+      },
     })
-      .then(async (result) => {
-        const body = await result.json()
-        const { status, text, conversation_id: conversationId } = body
-        if (status === 'OK') {
-          if (conversationId && typeof conversationId === 'string') {
-            await setChromeExtensionSettings({
-              conversationId,
-            })
-          }
-          onMessage &&
-            onMessage({
-              type: 'message',
-              data: {
-                text,
-                error: '',
-                conversationId: cacheConversationId as string,
-              },
-            })
-        } else {
-          log.error('askChatGPT error: \t', body)
-          onMessage &&
-            onMessage({
-              type: 'error',
-              data: {
-                text: '',
-                error: 'Network error',
-                conversationId: cacheConversationId as string,
-              },
-            })
-        }
-        return undefined
+      .then((res) => {
+        log.info('streaming end success', res)
+        onMessage &&
+          onMessage({
+            type: 'message',
+            done: true,
+            error: '',
+            data: { text: '', conversationId: cacheConversationId },
+          })
       })
-      .catch((error) => {
-        if (error.name === 'AbortError') {
-          log.info('abort')
-          onMessage &&
-            onMessage({
-              type: 'error',
-              data: {
-                text: '',
+      .catch((err) => {
+        const error = JSON.parse(err.message || err)
+        log.info('streaming end error', error)
+        try {
+          if (error?.message === 'The user aborted a request.') {
+            onMessage &&
+              onMessage({
+                type: 'error',
                 error: 'manual aborted request.',
-                conversationId: cacheConversationId as string,
-              },
-            })
-        } else {
-          log.error('askChatGPT error: \t', error)
+                done: true,
+                data: { text: '', conversationId: cacheConversationId },
+              })
+            return
+          }
+          if (error?.detail === 'Your premium plan has expired') {
+            onMessage &&
+              onMessage({
+                type: 'error',
+                error: `Your premium plan has expired. [Get free quota](${
+                  APP_USE_CHAT_GPT_HOST + '/account/referral'
+                })`,
+                done: true,
+                data: { text: '', conversationId: cacheConversationId },
+              })
+            return
+          }
+          log.error('sse error', err)
           onMessage &&
             onMessage({
+              done: true,
               type: 'error',
-              data: {
-                text: '',
-                error: 'Network error',
-                conversationId: cacheConversationId as string,
-              },
+              error: error.message || error.detail || 'Network error.',
+              data: { text: '', conversationId: cacheConversationId },
+            })
+        } catch (e) {
+          onMessage &&
+            onMessage({
+              done: true,
+              type: 'error',
+              error: 'Network error.',
+              data: { text: '', conversationId: cacheConversationId },
             })
         }
       })
+  }
+  async getUserInfo() {
+    const token = await this.getToken()
+    if (!token) {
+      return undefined
+    }
+    return await backgroundFetchUseChatGPTUserInfo(token)
   }
   async abortTask(taskId: string) {
     if (this.taskList[taskId]) {
@@ -245,7 +265,7 @@ class UseChatGPTPlusChat {
     if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
       // 应该用accessToken
       return cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
-        ?.refreshToken
+        ?.refreshToken as string
     }
     return ''
   }

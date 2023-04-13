@@ -7,7 +7,6 @@ export type {
   IOpenAIChatSendEvent,
   IChromeExtensionClientListenEvent,
   IChromeExtensionListenEvent,
-  IChromeExtensionChatGPTDaemonProcessListenEvent,
   IOpenAIChatListenTaskEvent,
 } from './eventType'
 import {

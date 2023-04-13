@@ -1,15 +1,14 @@
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
-import Log from '@/utils/Log'
+// import Log from '@/utils/Log'
 import Browser from 'webextension-polyfill'
 import { createBackgroundMessageListener } from '@/background/utils'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
-const log = new Log('background/core/client')
+// const log = new Log('Background/Core/Client')
 export const ClientMessageInit = () => {
   createBackgroundMessageListener(async (runtime, event, data) => {
     if (runtime === 'client') {
-      log.info('onMessage', runtime, event, data)
       switch (event as IChromeExtensionClientSendEvent) {
         case 'Client_ping': {
           return {

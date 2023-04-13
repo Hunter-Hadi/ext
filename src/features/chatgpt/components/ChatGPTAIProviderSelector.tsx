@@ -7,11 +7,13 @@ import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail'
 import UseChatGPTAIQuotaLeft from '@/features/chatgpt/components/UseChatGPTAIQuotaLeft'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
 
 const ChatGPTAIProviderSelector: FC = () => {
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
+  const clientState = useRecoilValue(ChatGPTClientState)
   const { updateChatGPTProvider, provider } = useChatGPTProvider()
   return (
     <Stack sx={{ height: 56, p: 1 }} spacing={2} direction={'row'}>
@@ -36,10 +38,10 @@ const ChatGPTAIProviderSelector: FC = () => {
           <MenuItem value={CHAT_GPT_PROVIDER.OPENAI}>ChatGPT</MenuItem>
         </Select>
       </FormControl>
-      {provider === CHAT_GPT_PROVIDER.OPENAI && <ChatGPTModelsSelector />}
-      {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
-        <UseChatGPTAIQuotaLeft />
-      )}
+      {provider === CHAT_GPT_PROVIDER.OPENAI &&
+        clientState.status === 'success' && <ChatGPTModelsSelector />}
+      {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS &&
+        clientState.status === 'success' && <UseChatGPTAIQuotaLeft />}
     </Stack>
   )
 }

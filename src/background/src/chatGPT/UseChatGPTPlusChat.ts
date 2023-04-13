@@ -11,6 +11,7 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import { getCacheConversationId } from '@/background/src/chatGPT/util'
+import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 
 const log = new Log('Background/ChatGPT/UseChatGPTPlusChat')
 
@@ -130,6 +131,32 @@ class UseChatGPTPlusChat {
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
+    // TODO: ask chatgpt
+    new AbortController()
+    log.info('straming start111')
+    fetchSSE(`https://dev.usechatgpt.ai/gpt/get_chatgpt_response`, {
+      method: 'POST',
+      signal: controller.signal,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`,
+      },
+      body: JSON.stringify(
+        Object.assign({
+          streaming: true,
+          message_content: 'give me a long story',
+        }),
+      ),
+      onMessage: (message: string) => {
+        log.info(message)
+      },
+    })
+      .then((res) => {
+        log.info('straming end111', res)
+      })
+      .catch((err) => {
+        log.error(err)
+      })
     fetch(`https://dev.usechatgpt.ai/gpt/get_chatgpt_response`, {
       signal,
       method: 'POST',
@@ -196,28 +223,6 @@ class UseChatGPTPlusChat {
             })
         }
       })
-    // TODO: ask chatgpt
-    // const controller = new AbortController()
-    // const result = await fetchSSE(`https://dev.usechatgpt.ai/gpt/get_chatgpt_response`, {
-    //   method: 'POST',
-    //   signal: controller.signal,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: `Bearer ${this.token}`,
-    //   },
-    //   body: JSON.stringify(
-    //     Object.assign({
-    //       message_content: 'give me a long story',
-    //     }),
-    //   ),
-    //   onMessage: (message: string) => {
-    //     log.info(message)
-    //   },
-    // })
-    //   .then()
-    //   .catch((err) => {
-    //     log.error(err)
-    //   })
   }
   async abortTask(taskId: string) {
     if (this.taskList[taskId]) {

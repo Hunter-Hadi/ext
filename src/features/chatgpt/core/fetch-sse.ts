@@ -8,6 +8,7 @@ export const fetchSSE = async (
 ) => {
   const { onMessage, ...fetchOptions } = options
   const resp = await fetch(resource, fetchOptions)
+  console.log(resp, 'straming resp')
   if (!resp.ok) {
     const error = await resp.json().catch(() => ({}))
     if (resp.status === 401) {
@@ -25,6 +26,7 @@ export const fetchSSE = async (
   }
   const parser = createParser((event) => {
     if (event.type === 'event') {
+      console.log(event.data, 'straming event')
       onMessage(event.data)
     }
   })

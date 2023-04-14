@@ -13,7 +13,7 @@ import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 import { AppSettingsState } from '@/store'
 import Browser from 'webextension-polyfill'
 import Log from '@/utils/Log'
-import { askChatGPTQuestion } from '@/background/src/chatGPT/util'
+import { askChatGPTQuestion } from '@/background/src/chat/util'
 import { setChromeExtensionSettings } from '@/background/utils'
 
 const port = new ContentScriptConnectionV2({

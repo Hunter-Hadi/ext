@@ -6,16 +6,17 @@ import {
   APP_USE_CHAT_GPT_HOST,
   CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  TEMP_SEND_TEXT_SETTINGS,
 } from '@/types'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
 } from '@/background/utils'
-import { getCacheConversationId } from '@/background/src/chatGPT/util'
+import { getCacheConversationId } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { backgroundFetchUseChatGPTUserInfo } from '@/background/src/usechatgpt'
 
-const log = new Log('Background/ChatGPT/UseChatGPTPlusChat')
+const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
 class UseChatGPTPlusChat {
   status: ChatStatus = 'needAuth'
@@ -158,7 +159,86 @@ class UseChatGPTPlusChat {
       this.taskList[taskId] = () => controller.abort()
     }
     log.info('streaming start', postBody)
+    // 后端会每段每段的给前端返回数据
+    // 前端保持匀速输出内容
     let messageResult = ''
+    let isEnd = false
+    let hasError = false
+    let sentTextLength = 0
+    let conversationId = cacheConversationId
+    const sendTextSettings = await Browser.storage.local.get(
+      TEMP_SEND_TEXT_SETTINGS,
+    )
+    const settings = sendTextSettings[TEMP_SEND_TEXT_SETTINGS] || {}
+    const interval = settings.interval || 100 //每隔(interval)ms输出一次
+    const echoTextRate = settings.rate || 0.3 // 每秒输出待发送文本的(rate * 100)%
+    const delay = (t: number) =>
+      new Promise((resolve) => setTimeout(resolve, t))
+    const throttleEchoText = async () => {
+      if (hasError) {
+        return
+      }
+      if (isEnd && sentTextLength === messageResult.length) {
+        // 在没有错误的情况下真正结束发送文本
+        log.info('streaming end success')
+        onMessage &&
+          onMessage({
+            done: true,
+            type: 'message',
+            error: '',
+            data: { text: '', conversationId },
+          })
+        return
+      }
+      let currentSendTextTextLength = 0
+      // 剩余要发送的文本长度
+      const waitSendTextLength = Math.floor(
+        messageResult.length - sentTextLength,
+      )
+      // 如果没有结束的话
+      if (!isEnd) {
+        // 发送剩余未文本的30%
+        const needSendTextLength = Math.floor(waitSendTextLength * echoTextRate)
+        currentSendTextTextLength = messageResult.slice(
+          sentTextLength,
+          needSendTextLength + sentTextLength,
+        ).length
+      } else {
+        // 如果结束了的话, 1秒钟发完剩下的文本
+        const needSendTextLength = Math.floor(messageResult.length * 0.1)
+        currentSendTextTextLength = messageResult.slice(
+          sentTextLength,
+          needSendTextLength + sentTextLength,
+        ).length
+      }
+      if (currentSendTextTextLength > 0) {
+        log.debug(
+          'streaming echo message',
+          isEnd
+            ? '一秒发送完剩下的文本'
+            : `每${interval}毫秒发送剩余文本的${(echoTextRate * 100).toFixed(
+                0,
+              )}%`,
+          sentTextLength,
+          currentSendTextTextLength,
+          messageResult.length,
+        )
+        sentTextLength += currentSendTextTextLength
+        onMessage &&
+          onMessage({
+            type: 'message',
+            done: false,
+            error: '',
+            data: {
+              text: messageResult.slice(0, sentTextLength),
+              conversationId: conversationId,
+            },
+          })
+      }
+      await delay(isEnd ? 100 : interval)
+      await throttleEchoText()
+    }
+    throttleEchoText()
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
       provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       method: 'POST',
@@ -169,43 +249,38 @@ class UseChatGPTPlusChat {
       },
       body: JSON.stringify(postBody),
       onMessage: (message: string) => {
-        log.debug('streaming message', message)
-        if (message) {
-          messageResult += message
+        try {
+          const messageData = JSON.parse(message as string)
+          log.debug('streaming on message')
+          if (messageData?.conversation_id) {
+            conversationId = messageData.conversation_id
+          }
+          if (messageData?.text) {
+            // 记录到结果里，前端分流输出
+            messageResult += messageData.text
+          }
+        } catch (e) {
+          log.error('parse message.data error: \t', e)
         }
-        onMessage &&
-          onMessage({
-            type: 'message',
-            done: false,
-            error: '',
-            data: { text: messageResult, conversationId: cacheConversationId },
-          })
       },
     })
-      .then((res) => {
-        log.info('streaming end success', res)
-        onMessage &&
-          onMessage({
-            type: 'message',
-            done: true,
-            error: '',
-            data: { text: '', conversationId: cacheConversationId },
-          })
-      })
+      .then()
       .catch((err) => {
-        const error = JSON.parse(err.message || err)
-        log.info('streaming end error', error)
+        log.info('streaming end error', err)
+        isEnd = true
+        hasError = true
+        if (err?.message === 'The user aborted a request.') {
+          onMessage &&
+            onMessage({
+              type: 'error',
+              error: 'manual aborted request.',
+              done: true,
+              data: { text: '', conversationId },
+            })
+          return
+        }
         try {
-          if (error?.message === 'The user aborted a request.') {
-            onMessage &&
-              onMessage({
-                type: 'error',
-                error: 'manual aborted request.',
-                done: true,
-                data: { text: '', conversationId: cacheConversationId },
-              })
-            return
-          }
+          const error = JSON.parse(err.message || err)
           if (error?.detail === 'Your premium plan has expired') {
             onMessage &&
               onMessage({
@@ -214,7 +289,7 @@ class UseChatGPTPlusChat {
                   APP_USE_CHAT_GPT_HOST + '/account/referral'
                 })`,
                 done: true,
-                data: { text: '', conversationId: cacheConversationId },
+                data: { text: '', conversationId },
               })
             return
           }
@@ -224,7 +299,7 @@ class UseChatGPTPlusChat {
               done: true,
               type: 'error',
               error: error.message || error.detail || 'Network error.',
-              data: { text: '', conversationId: cacheConversationId },
+              data: { text: '', conversationId },
             })
         } catch (e) {
           onMessage &&
@@ -232,10 +307,14 @@ class UseChatGPTPlusChat {
               done: true,
               type: 'error',
               error: 'Network error.',
-              data: { text: '', conversationId: cacheConversationId },
+              data: { text: '', conversationId },
             })
         }
       })
+    if (!isEnd) {
+      log.info('streaming end success')
+      isEnd = true
+    }
   }
   async getUserInfo() {
     const token = await this.getToken()

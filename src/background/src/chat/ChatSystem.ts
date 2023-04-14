@@ -13,7 +13,7 @@ import {
 import Log from '@/utils/Log'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 
-const log = new Log('Background/ChatGPT/ChatSystem')
+const log = new Log('Background/Chat/ChatSystem')
 
 class ChatSystem implements ChatInterface {
   currentProvider?: IChatGPTProviderType

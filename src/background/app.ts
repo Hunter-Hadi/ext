@@ -19,7 +19,7 @@ import {
   ChatSystem,
   OpenAIChat,
   UseChatGPTPlusChat,
-} from '@/background/src/ChatGPT'
+} from '@/background/src/chat'
 import {
   ChatAdapter,
   OpenAIChatProvider,
@@ -45,6 +45,7 @@ export const startChromeExtensionBackground = () => {
   initChromeExtensionMessage()
   initChromeExtensionCommands()
   initChromeExtensionAction()
+  initChromeExtensionContextMenu()
   initChromeExtensionUninstalled()
 }
 
@@ -173,6 +174,26 @@ const initChromeExtensionAction = () => {
             type: 'shortcut',
           },
         )
+      }
+    })
+  }
+}
+
+const initChromeExtensionContextMenu = () => {
+  if (isEzMailApp) {
+    // no context menu
+  } else {
+    Browser.contextMenus.onClicked.addListener(async (info, tab) => {
+      if (
+        info.menuItemId === 'use-chatgpt-ai-context-menu-button' &&
+        tab &&
+        tab.id
+      ) {
+        await Browser.tabs.sendMessage(tab.id, {
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'Client_listenOpenChatMessageBox',
+          data: {},
+        })
       }
     })
   }

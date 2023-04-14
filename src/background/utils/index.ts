@@ -17,6 +17,10 @@ import { IChatGPTProviderType } from '@/background/provider/chat/ChatAdapter'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IUseChatGPTUserInfo } from '@/background/src/usechatgpt'
 
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+dayjs.extend(utc)
+
 export type IChatGPTModelType = {
   slug: string
   max_tokens: number
@@ -42,6 +46,7 @@ export type IChromeExtensionSettings = {
     selectionButtonVisible?: boolean
   }
   userInfo?: IUseChatGPTUserInfo
+  lastModified?: number
 }
 
 export type IChromeExtensionSettingsContextMenuKey =
@@ -103,20 +108,28 @@ export const setChromeExtensionSettings = async (
   settingsOrUpdateFunction:
     | IChromeExtensionSettings
     | IChromeExtensionSettingsUpdateFunction,
+  saveLastModified = false,
 ): Promise<boolean> => {
   try {
+    const lastModified = saveLastModified
+      ? {
+          lastModified: dayjs().utc().valueOf(),
+        }
+      : {}
     const oldSettings = await getChromeExtensionSettings()
     if (settingsOrUpdateFunction instanceof Function) {
       await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify(
-          settingsOrUpdateFunction(oldSettings),
-        ),
+        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify({
+          ...settingsOrUpdateFunction(oldSettings),
+          ...lastModified,
+        }),
       })
     } else {
       await Browser.storage.local.set({
         [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify({
           ...oldSettings,
           ...settingsOrUpdateFunction,
+          ...lastModified,
         }),
       })
     }

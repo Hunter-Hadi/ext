@@ -54,3 +54,6 @@ export const CHAT_GPT_PROVIDER = {
 // app.usechatgpt.ai
 export const APP_USE_CHAT_GPT_API_HOST = process.env.APP_USE_CHAT_GPT_API_HOST
 export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST
+
+// 临时
+export const TEMP_SEND_TEXT_SETTINGS = 'TEMP_SEND_TEXT_SETTINGS'

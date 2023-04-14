@@ -5,7 +5,7 @@ import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTMode
 import { IChatGPTProviderType } from '@/background/provider/chat'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/gmail'
+import { ChatGPTConversationState } from '@/features/gmail/store'
 import UseChatGPTAIQuotaLeft from '@/features/chatgpt/components/UseChatGPTAIQuotaLeft'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 

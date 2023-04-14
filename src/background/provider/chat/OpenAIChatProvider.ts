@@ -1,4 +1,4 @@
-import { OpenAIChat } from '@/background/src/chatGPT'
+import { OpenAIChat } from '@/background/src/chat'
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,

@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { useMemo, useState } from 'react'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { setChromeExtensionSettings } from '@/background/utils'
 import Log from '@/utils/Log'
 
@@ -41,7 +41,6 @@ const useUseChatGPTUserInfo = () => {
         event: 'Client_getUseChatGPTUserInfo',
         data: {},
       })
-      debugger
       if (result.success && result.data?.email) {
         await setChromeExtensionSettings({
           userInfo: result.data,

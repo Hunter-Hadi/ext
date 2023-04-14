@@ -5,6 +5,7 @@ import AppLoadingLayout from '@/components/LoadingLayout'
 import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOptionsSettingPage/index'
 import UseChatGPTOptionsEditMenuPage from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage'
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import AutoSync from '@/components/AutoSync'
 
 const OptionsPageRouteContext = React.createContext({
   route: '/',
@@ -103,6 +104,7 @@ const OptionsPage = () => {
             </AppLoadingLayout>
           </Stack>
         </Stack>
+        <AutoSync />
       </OptionsPageRouteContext.Provider>
     </Container>
   )

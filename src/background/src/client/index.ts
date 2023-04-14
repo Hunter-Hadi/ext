@@ -5,7 +5,7 @@ import { createBackgroundMessageListener } from '@/background/utils'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
-// const log = new Log('Background/Core/Client')
+// const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
   createBackgroundMessageListener(async (runtime, event, data) => {
     if (runtime === 'client') {

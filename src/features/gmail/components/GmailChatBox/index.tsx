@@ -6,6 +6,7 @@ import {
   Link,
   Stack,
   SxProps,
+  TextField,
   Typography,
 } from '@mui/material'
 import CachedIcon from '@mui/icons-material/Cached'
@@ -28,6 +29,7 @@ import { TestAllActionsButton } from '@/features/shortcuts'
 import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
+import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevTextSendControl'
 
 export interface IGmailChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
@@ -214,6 +216,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTAIProviderSelector />
+        <DevTextSendControl />
         {messages.map((message) => {
           return (
             <GmailChatBoxMessageItem

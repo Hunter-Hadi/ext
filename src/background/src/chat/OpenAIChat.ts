@@ -2,7 +2,7 @@ import Browser from 'webextension-polyfill'
 import {
   checkChatGPTProxyInstance,
   createDaemonProcessTab,
-} from '@/background/src/chatGPT/util'
+} from '@/background/src/chat/util'
 import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'

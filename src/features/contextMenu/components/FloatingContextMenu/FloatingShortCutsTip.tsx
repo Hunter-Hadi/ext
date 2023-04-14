@@ -1,10 +1,11 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Paper, Typography } from '@mui/material'
 import React, { FC, useEffect, useState } from 'react'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { ROOT_CONTAINER_ID } from '@/types'
 import useCommands from '@/hooks/useCommands'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 const FloatingShortCutsTip: FC = () => {
   const { haveSelection, showFloatingContextMenu, floatingDropdownMenuOpen } =
     useFloatingContextMenu()
@@ -13,7 +14,7 @@ const FloatingShortCutsTip: FC = () => {
   const [buttonShow, setButtonShow] = useState(3)
   const { shortCutKey } = useCommands()
   useEffect(() => {
-    if (appSettings.userSettings?.selectionButtonVisible || !shortCutKey) {
+    if (appSettings.userSettings?.selectionButtonVisible) {
       return
     }
     if (haveSelection) {
@@ -27,7 +28,7 @@ const FloatingShortCutsTip: FC = () => {
       }
       setButtonShow(1)
     }
-  }, [haveSelection, appSettings.userSettings, shortCutKey])
+  }, [haveSelection, appSettings.userSettings])
   useEffect(() => {
     if (buttonShow === 1) {
       setButtonShow(2)
@@ -47,33 +48,58 @@ const FloatingShortCutsTip: FC = () => {
     setButtonShow(3)
   }, [floatingDropdownMenuOpen])
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        bottom: 16,
-        right: chatBoxWidth,
-        zIndex: buttonShow !== 3 ? 2147483661 : -1,
-        backgroundColor: 'rgba(98,98,105,1)',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        transition: 'all 0.3s ease-in-out',
-        overflow: 'hidden',
-        maxWidth: buttonShow !== 3 ? '100%' : 0,
-        display: 'grid',
-      }}
-      component={'div'}
-      onClick={showFloatingContextMenu}
-    >
-      <Typography
-        fontSize={'24px'}
-        fontWeight={'bold'}
-        color={'#fff'}
-        noWrap
-        sx={{ px: '10px', py: '4px' }}
-      >
-        {shortCutKey || ''}
-      </Typography>
-    </Box>
+    <>
+      {shortCutKey ? (
+        <Box
+          sx={{
+            position: 'fixed',
+            bottom: 16,
+            right: chatBoxWidth,
+            zIndex: buttonShow !== 3 ? 2147483661 : -1,
+            backgroundColor: 'rgba(98,98,105,1)',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease-in-out',
+            overflow: 'hidden',
+            maxWidth: buttonShow !== 3 ? '100%' : 0,
+            display: 'grid',
+          }}
+          component={'div'}
+          onClick={showFloatingContextMenu}
+        >
+          <Typography
+            fontSize={'24px'}
+            fontWeight={'bold'}
+            color={'#fff'}
+            noWrap
+            sx={{ px: '10px', py: '4px' }}
+          >
+            {shortCutKey}
+          </Typography>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            position: 'fixed',
+            bottom: 16,
+            right: chatBoxWidth,
+            zIndex: buttonShow !== 3 ? 2147483661 : -1,
+            backgroundColor: '#fff',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease-in-out',
+            maxWidth: buttonShow !== 3 ? '100%' : 0,
+            display: 'grid',
+          }}
+          component={'div'}
+          onClick={showFloatingContextMenu}
+        >
+          <Paper elevation={3} sx={{ padding: '8px 10px' }}>
+            <UseChatGptIcon sx={{ fontSize: 24 }} />
+          </Paper>
+        </Box>
+      )}
+    </>
   )
 }
 export default FloatingShortCutsTip

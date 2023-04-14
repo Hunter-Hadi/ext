@@ -14,6 +14,7 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import useCommands from '@/hooks/useCommands'
+import ManageShortcutHelper from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ManageShortcutHelper'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -53,6 +54,11 @@ const UseChatGPTOptionsSettingPage = () => {
           mx: 'auto!important',
         }}
       >
+        <Typography fontSize={20} fontWeight={700} mb={1}>
+          Manage shortcut for quick access
+        </Typography>
+        <ManageShortcutHelper shortCutKey={shortCutKey} />
+        <Divider sx={{ my: 4 }} />
         {/* <Box> */}
         <Typography fontSize={20} fontWeight={700} mb={1}>
           Appearance

@@ -61,13 +61,20 @@ const initChromeExtensionInstalled = () => {
           url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
         })
       } else {
-        Browser.contextMenus.create({
+        await Browser.tabs.create({
+          url: CHROME_EXTENSION_DOC_URL + '/extension-installed',
+        })
+        try {
+          await Browser.contextMenus.remove(
+            'use-chatgpt-ai-context-menu-button',
+          )
+        } catch (e) {
+          // ignore
+        }
+        await Browser.contextMenus.create({
           id: 'use-chatgpt-ai-context-menu-button',
           title: 'Use ChatGPT',
           contexts: ['all'],
-        })
-        await Browser.tabs.create({
-          url: CHROME_EXTENSION_DOC_URL + '/extension-installed',
         })
       }
     }

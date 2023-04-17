@@ -83,15 +83,18 @@ const OptionsPage = () => {
                 direction={'row'}
                 alignItems={'center'}
                 justifyContent={'space-between'}
+                height={'71px'}
               >
-                <Stack direction={'row'} alignItems={'center'} height={'71px'}>
+                <Stack direction={'row'} alignItems={'center'} spacing={1}>
                   <Box
                     component={'span'}
                     sx={{
                       cursor: 'pointer',
                     }}
                     onClick={() => {
-                      setRoute('/')
+                      if (isLogin) {
+                        setRoute('/')
+                      }
                     }}
                   >
                     <UseChatGptIcon
@@ -107,7 +110,9 @@ const OptionsPage = () => {
                       cursor: 'pointer',
                     }}
                     onClick={() => {
-                      setRoute('/')
+                      if (isLogin) {
+                        setRoute('/')
+                      }
                     }}
                   >
                     UseChatGPT.AI

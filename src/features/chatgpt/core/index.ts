@@ -246,7 +246,9 @@ class ChatGPTConversation {
             messages: [
               {
                 id: questionId,
-                role: 'user',
+                author: {
+                  role: 'user',
+                },
                 content: {
                   content_type: 'text',
                   parts: [params.prompt],
@@ -255,6 +257,7 @@ class ChatGPTConversation {
             ],
             model: this.model,
             parent_message_id: parentMessageId,
+            timezone_offset_min: new Date().getTimezoneOffset(),
           },
           this.conversationId
             ? {

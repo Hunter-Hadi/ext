@@ -3,7 +3,7 @@ import {
   chromeExtensionClientOpenPage,
   getAppContextMenuElement,
 } from '@/utils'
-import AppLoadingLayout from '@/components/LoadingLayout'
+import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { Button, SxProps } from '@mui/material'
 import {
   DropdownMenu,

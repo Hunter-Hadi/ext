@@ -42,6 +42,7 @@ const useUseChatGPTUserInfo = () => {
         data: {},
       })
       if (result.success && result.data?.email) {
+        delete result.data.settings
         await setChromeExtensionSettings({
           userInfo: result.data,
         })

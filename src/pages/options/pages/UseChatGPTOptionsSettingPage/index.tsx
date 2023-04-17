@@ -1,7 +1,7 @@
 import { Divider, Stack, Typography } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
-import AppLoadingLayout from '@/components/LoadingLayout'
+import AppLoadingLayout from '@/components/AppLoadingLayout'
 import TextSelectPopupSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/TextSelectPopupSetting'
 import UseChatGPTContextMenuSettings from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage/UseChatGPTContextMenuSettings'
 import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
@@ -9,35 +9,23 @@ import CloseAlert from '@/components/CloseAlert'
 import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
 import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
-import { setChromeExtensionSettings } from '@/background/utils'
+import {
+  getChromeExtensionSettings,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 import useCommands from '@/hooks/useCommands'
 import ManageShortcutHelper from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ManageShortcutHelper'
-import useAutoSync from '@/pages/options/components/useAutoSync'
+import SyncSettingCheckerWrapper from '@/pages/options/components/SyncSettingCheckerWrapper'
+import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
 import useEffectOnce from '@/hooks/useEffectOnce'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
-  const { syncSettings, checkSync } = useAutoSync()
-  const userSettingsRef = useRef<any>({})
   const [loaded, setLoaded] = useState(false)
+  const userSettingsRef = useRef<any>({})
   const [saving, setSaving] = useState(false)
   const { shortCutKey } = useCommands()
-  useEffectOnce(() => {
-    checkSync().then((settings) => {
-      userSettingsRef.current = settings.userSettings
-      setAppSettings((prevState) => {
-        return {
-          ...prevState,
-          userSettings: userSettingsRef.current,
-        }
-      })
-      setLoaded(true)
-    })
-    // getChromeExtensionSettings().then((res) => {
-    //   userSettingsRef.current = res.userSettings
-    //   setLoaded(true)
-    // })
-  })
+  const { syncLocalToServer } = useSyncSettingsChecker()
   const updateChromeExtensionSettings = async (key: string, value: any) => {
     try {
       console.log(saving)
@@ -46,120 +34,124 @@ const UseChatGPTOptionsSettingPage = () => {
         ...userSettingsRef.current,
         [key]: value,
       }
-      await setChromeExtensionSettings(
-        {
-          userSettings: userSettingsRef.current,
-        },
-        true,
-      )
-      await syncSettings()
+      await setChromeExtensionSettings({
+        userSettings: userSettingsRef.current,
+      })
+      await syncLocalToServer()
     } catch (e) {
       console.error(e)
     } finally {
       setSaving(false)
     }
   }
-
+  useEffectOnce(() => {
+    getChromeExtensionSettings().then((settings) => {
+      userSettingsRef.current = settings.userSettings
+      setLoaded(true)
+    })
+  })
   return (
-    <AppLoadingLayout loading={!loaded}>
-      <Stack
-        sx={{
-          width: 600,
-          mx: 'auto!important',
-        }}
-      >
-        <Typography fontSize={20} fontWeight={700} mb={1}>
-          Manage shortcut for quick access
-        </Typography>
-        <ManageShortcutHelper shortCutKey={shortCutKey} />
-        <Divider sx={{ my: 4 }} />
-        {/* <Box> */}
-        <Typography fontSize={20} fontWeight={700} mb={1}>
-          Appearance
-        </Typography>
-        <ColorSchemaSelect
-          defaultValue={userSettingsRef.current.colorSchema}
-          onChange={async (newTheme) => {
-            await updateChromeExtensionSettings('colorSchema', newTheme)
-            setAppSettings((prevState) => {
-              return {
-                ...prevState,
-                userSettings: userSettingsRef.current,
-              }
-            })
-          }}
-        />
-        {/* </Box> */}
-        <Divider sx={{ my: 4 }} />
-        <Typography fontSize={20} fontWeight={700} mb={2}>
-          AI output language
-        </Typography>
-        <CloseAlert
-          icon={<></>}
+    <SyncSettingCheckerWrapper>
+      <AppLoadingLayout loading={!loaded}>
+        <Stack
           sx={{
-            // bgcolor: '#E2E8F0',
-            mt: 1,
-            mb: 2,
+            width: 600,
+            mx: 'auto!important',
           }}
         >
-          <Stack>
-            <Typography fontSize={14} color={'text.primary'}>
-              {`Choose the default language for Al response.`}
-            </Typography>
-            <Typography fontSize={14} color={'text.primary'}>
-              {`If you select "Auto", the Al will respond in the same language variety or dialect as the selected text.`}
-            </Typography>
-          </Stack>
-        </CloseAlert>
-        <LanguageSelect
-          label={'AI output language'}
-          defaultValue={userSettingsRef.current.language}
-          onChange={async (newLanguage) => {
-            await updateChromeExtensionSettings('language', newLanguage)
-          }}
-        />
-        <Divider sx={{ my: 4 }} />
-        <Typography
-          fontSize={20}
-          fontWeight={700}
-          color={'text.primary'}
-          id={'text-select-popup'}
-        >
-          Text select popup
-        </Typography>
-        <CloseAlert
-          icon={<></>}
-          sx={{
-            // bgcolor: '#E2E8F0',
-            mt: 1,
-            mb: 2,
-          }}
-        >
-          <Typography fontSize={14} color={'text.primary'}>
-            Change visibility
+          <Typography fontSize={20} fontWeight={700} mb={1}>
+            Manage shortcut for quick access
           </Typography>
-        </CloseAlert>
-        <TextSelectPopupSetting
-          commandKey={shortCutKey}
-          visible={userSettingsRef.current.selectionButtonVisible}
-          onChange={async (visible) => {
-            await updateChromeExtensionSettings(
-              'selectionButtonVisible',
-              visible,
-            )
-          }}
-        />
-        <Divider sx={{ my: 4 }} />
-        <UseChatGPTContextMenuSettings
-          iconSetting
-          settingsKey={'contextMenus'}
-          defaultContextMenuJson={defaultContextMenuJson}
-          onUpdated={async () => {
-            await syncSettings()
-          }}
-        />
-      </Stack>
-    </AppLoadingLayout>
+          <ManageShortcutHelper shortCutKey={shortCutKey} />
+          <Divider sx={{ my: 4 }} />
+          {/* <Box> */}
+          <Typography fontSize={20} fontWeight={700} mb={1}>
+            Appearance
+          </Typography>
+          <ColorSchemaSelect
+            defaultValue={userSettingsRef.current.colorSchema}
+            onChange={async (newTheme) => {
+              await updateChromeExtensionSettings('colorSchema', newTheme)
+              setAppSettings((prevState) => {
+                return {
+                  ...prevState,
+                  userSettings: userSettingsRef.current,
+                }
+              })
+            }}
+          />
+          {/* </Box> */}
+          <Divider sx={{ my: 4 }} />
+          <Typography fontSize={20} fontWeight={700} mb={2}>
+            AI output language
+          </Typography>
+          <CloseAlert
+            icon={<></>}
+            sx={{
+              // bgcolor: '#E2E8F0',
+              mt: 1,
+              mb: 2,
+            }}
+          >
+            <Stack>
+              <Typography fontSize={14} color={'text.primary'}>
+                {`Choose the default language for Al response.`}
+              </Typography>
+              <Typography fontSize={14} color={'text.primary'}>
+                {`If you select "Auto", the Al will respond in the same language variety or dialect as the selected text.`}
+              </Typography>
+            </Stack>
+          </CloseAlert>
+          <LanguageSelect
+            label={'AI output language'}
+            defaultValue={userSettingsRef.current.language}
+            onChange={async (newLanguage) => {
+              await updateChromeExtensionSettings('language', newLanguage)
+            }}
+          />
+          <Divider sx={{ my: 4 }} />
+          <Typography
+            fontSize={20}
+            fontWeight={700}
+            color={'text.primary'}
+            id={'text-select-popup'}
+          >
+            Text select popup
+          </Typography>
+          <CloseAlert
+            icon={<></>}
+            sx={{
+              // bgcolor: '#E2E8F0',
+              mt: 1,
+              mb: 2,
+            }}
+          >
+            <Typography fontSize={14} color={'text.primary'}>
+              Change visibility
+            </Typography>
+          </CloseAlert>
+          <TextSelectPopupSetting
+            commandKey={shortCutKey}
+            visible={userSettingsRef.current.selectionButtonVisible}
+            onChange={async (visible) => {
+              await updateChromeExtensionSettings(
+                'selectionButtonVisible',
+                visible,
+              )
+            }}
+          />
+          <Divider sx={{ my: 4 }} />
+          <UseChatGPTContextMenuSettings
+            iconSetting
+            settingsKey={'contextMenus'}
+            defaultContextMenuJson={defaultContextMenuJson}
+            onUpdated={async () => {
+              await syncLocalToServer()
+            }}
+          />
+        </Stack>
+      </AppLoadingLayout>
+    </SyncSettingCheckerWrapper>
   )
 }
 export default UseChatGPTOptionsSettingPage

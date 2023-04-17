@@ -108,28 +108,20 @@ export const setChromeExtensionSettings = async (
   settingsOrUpdateFunction:
     | IChromeExtensionSettings
     | IChromeExtensionSettingsUpdateFunction,
-  saveLastModified = false,
 ): Promise<boolean> => {
   try {
-    const lastModified = saveLastModified
-      ? {
-          lastModified: dayjs().utc().valueOf(),
-        }
-      : {}
     const oldSettings = await getChromeExtensionSettings()
     if (settingsOrUpdateFunction instanceof Function) {
       await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify({
-          ...settingsOrUpdateFunction(oldSettings),
-          ...lastModified,
-        }),
+        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify(
+          settingsOrUpdateFunction(oldSettings),
+        ),
       })
     } else {
       await Browser.storage.local.set({
         [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify({
           ...oldSettings,
           ...settingsOrUpdateFunction,
-          ...lastModified,
         }),
       })
     }

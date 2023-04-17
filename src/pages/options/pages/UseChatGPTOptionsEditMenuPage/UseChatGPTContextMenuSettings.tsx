@@ -49,12 +49,9 @@ const saveTreeData = async (
 ) => {
   try {
     console.log('saveTreeData', key, treeData)
-    const success = await setChromeExtensionSettings(
-      {
-        [key]: treeData,
-      } as any,
-      true,
-    )
+    const success = await setChromeExtensionSettings({
+      [key]: treeData,
+    } as any)
     console.log(success)
   } catch (error) {
     console.log(error)

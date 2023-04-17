@@ -2,17 +2,19 @@ import React, { FC, useEffect } from 'react'
 import DevContent from '@/components/DevContent'
 import { Button, Stack, TextField } from '@mui/material'
 import Browser from 'webextension-polyfill'
-import { TEMP_SEND_TEXT_SETTINGS } from '@/types'
+import { BACKGROUND_SEND_TEXT_SPEED_SETTINGS } from '@/types'
 
 const DevTextSendControl: FC = () => {
   const [interval, setInterval] = React.useState('')
   const [rate, setRate] = React.useState('')
   useEffect(() => {
-    Browser.storage.local.get(TEMP_SEND_TEXT_SETTINGS).then((res) => {
-      const settings = res[TEMP_SEND_TEXT_SETTINGS] || {}
-      setInterval(settings.interval || '100')
-      setRate(settings.rate || '0.3')
-    })
+    Browser.storage.local
+      .get(BACKGROUND_SEND_TEXT_SPEED_SETTINGS)
+      .then((res) => {
+        const settings = res[BACKGROUND_SEND_TEXT_SPEED_SETTINGS] || {}
+        setInterval(settings.interval || '100')
+        setRate(settings.rate || '0.3')
+      })
   }, [])
   return (
     <DevContent>
@@ -32,7 +34,7 @@ const DevTextSendControl: FC = () => {
         <Button
           onClick={async () => {
             await Browser.storage.local.set({
-              [TEMP_SEND_TEXT_SETTINGS]: {
+              [BACKGROUND_SEND_TEXT_SPEED_SETTINGS]: {
                 interval,
                 rate,
               },

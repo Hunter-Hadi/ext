@@ -5,7 +5,7 @@ import AppLoadingLayout from '@/components/LoadingLayout'
 import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOptionsSettingPage/index'
 import UseChatGPTOptionsEditMenuPage from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage'
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import AutoSync from '@/components/AutoSync'
+import { SnackbarProvider } from 'notistack'
 
 const OptionsPageRouteContext = React.createContext({
   route: '/',
@@ -55,57 +55,58 @@ const OptionsPage = () => {
         bgcolor: (t) => (t.palette.mode === 'dark' ? '#202124' : '#fff'),
       }}
     >
-      <OptionsPageRouteContext.Provider value={{ route, setRoute }}>
-        <Stack height={'100%'}>
-          <Stack
-            direction={'row'}
-            alignItems={'center'}
-            spacing={2}
-            flexShrink={0}
-            mb={4}
-          >
-            <Box
-              component={'span'}
-              sx={{
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                setRoute('/')
-              }}
+      <SnackbarProvider maxSnack={3}>
+        <OptionsPageRouteContext.Provider value={{ route, setRoute }}>
+          <Stack height={'100%'}>
+            <Stack
+              direction={'row'}
+              alignItems={'center'}
+              spacing={2}
+              flexShrink={0}
+              mb={4}
             >
-              <UseChatGptIcon
+              <Box
+                component={'span'}
                 sx={{
-                  fontSize: 32,
+                  cursor: 'pointer',
                 }}
-              />
-            </Box>
-            <Typography
-              fontSize={24}
-              fontWeight={700}
-              sx={{
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                setRoute('/')
-              }}
-            >
-              UseChatGPT.AI
-            </Typography>
-            {crumbsText && (
-              <Typography fontSize={24} fontWeight={700}>
-                {crumbsText}
+                onClick={() => {
+                  setRoute('/')
+                }}
+              >
+                <UseChatGptIcon
+                  sx={{
+                    fontSize: 32,
+                  }}
+                />
+              </Box>
+              <Typography
+                fontSize={24}
+                fontWeight={700}
+                sx={{
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  setRoute('/')
+                }}
+              >
+                UseChatGPT.AI
               </Typography>
-            )}
+              {crumbsText && (
+                <Typography fontSize={24} fontWeight={700}>
+                  {crumbsText}
+                </Typography>
+              )}
+            </Stack>
+            <Stack flex={1} height={0}>
+              <AppLoadingLayout loading={loading}>
+                {route === '/' && <UseChatGPTOptionsSettingPage />}
+                {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
+              </AppLoadingLayout>
+            </Stack>
           </Stack>
-          <Stack flex={1} height={0}>
-            <AppLoadingLayout loading={loading}>
-              {route === '/' && <UseChatGPTOptionsSettingPage />}
-              {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
-            </AppLoadingLayout>
-          </Stack>
-        </Stack>
-        <AutoSync />
-      </OptionsPageRouteContext.Provider>
+        </OptionsPageRouteContext.Provider>
+      </SnackbarProvider>
     </Container>
   )
 }

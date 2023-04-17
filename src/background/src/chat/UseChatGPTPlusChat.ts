@@ -6,7 +6,7 @@ import {
   APP_USE_CHAT_GPT_HOST,
   CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-  TEMP_SEND_TEXT_SETTINGS,
+  BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
 } from '@/types'
 import {
   backgroundSendAllClientMessage,
@@ -167,11 +167,11 @@ class UseChatGPTPlusChat {
     let sentTextLength = 0
     let conversationId = cacheConversationId
     const sendTextSettings = await Browser.storage.local.get(
-      TEMP_SEND_TEXT_SETTINGS,
+      BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
     )
-    const settings = sendTextSettings[TEMP_SEND_TEXT_SETTINGS] || {}
-    const interval = settings.interval || 100 //每隔(interval)ms输出一次
-    const echoTextRate = settings.rate || 0.3 // 每秒输出待发送文本的(rate * 100)%
+    const settings = sendTextSettings[BACKGROUND_SEND_TEXT_SPEED_SETTINGS] || {}
+    const interval = settings.interval || 50 //每隔(interval)ms输出一次
+    const echoTextRate = settings.rate || 0.5 // 每秒输出待发送文本的(rate * 100)%
     const delay = (t: number) =>
       new Promise((resolve) => setTimeout(resolve, t))
     const throttleEchoText = async () => {

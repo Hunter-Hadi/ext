@@ -49,9 +49,12 @@ const saveTreeData = async (
 ) => {
   try {
     console.log('saveTreeData', key, treeData)
-    const success = await setChromeExtensionSettings({
-      [key]: treeData,
-    } as any)
+    const success = await setChromeExtensionSettings(
+      {
+        [key]: treeData,
+      } as any,
+      true,
+    )
     console.log(success)
   } catch (error) {
     console.log(error)
@@ -83,8 +86,14 @@ const ContextMenuSettings: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsContextMenuKey
   defaultContextMenuJson: IContextMenuItem[]
+  onUpdated?: () => void
 }> = (props) => {
-  const { settingsKey, defaultContextMenuJson, iconSetting = false } = props
+  const {
+    settingsKey,
+    defaultContextMenuJson,
+    iconSetting = false,
+    onUpdated,
+  } = props
   const [loading, setLoading] = useState(false)
   const originalTreeMapRef = useRef<{ [key: string]: IContextMenuItem }>({})
   const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
@@ -275,7 +284,7 @@ const ContextMenuSettings: FC<{
     }
     findSearchText(rootId)
     if (originalTreeData.length > 0) {
-      saveTreeData(settingsKey, originalTreeData)
+      saveTreeData(settingsKey, originalTreeData).then(onUpdated)
     }
   }, [originalTreeData])
   const filteredTreeData = useMemo(() => {
@@ -397,7 +406,7 @@ const ContextMenuSettings: FC<{
               //   outline: 'none!important',
               // },
               '&::-webkit-scrollbar': {
-                '-webkit-appearance': 'none',
+                webkitAppearance: 'none',
                 width: '7px',
               },
               '&::-webkit-scrollbar-thumb': {

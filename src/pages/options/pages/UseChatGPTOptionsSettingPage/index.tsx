@@ -1,5 +1,5 @@
 import { Divider, Stack, Typography } from '@mui/material'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import AppLoadingLayout from '@/components/LoadingLayout'
 import TextSelectPopupSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/TextSelectPopupSetting'
@@ -9,25 +9,35 @@ import CloseAlert from '@/components/CloseAlert'
 import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
 import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
-import {
-  getChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/background/utils'
+import { setChromeExtensionSettings } from '@/background/utils'
 import useCommands from '@/hooks/useCommands'
 import ManageShortcutHelper from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ManageShortcutHelper'
+import useAutoSync from '@/pages/options/components/useAutoSync'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
+  const { syncSettings, checkSync } = useAutoSync()
   const userSettingsRef = useRef<any>({})
   const [loaded, setLoaded] = useState(false)
   const [saving, setSaving] = useState(false)
   const { shortCutKey } = useCommands()
-  useEffect(() => {
-    getChromeExtensionSettings().then((res) => {
-      userSettingsRef.current = res.userSettings
+  useEffectOnce(() => {
+    checkSync().then((settings) => {
+      userSettingsRef.current = settings.userSettings
+      setAppSettings((prevState) => {
+        return {
+          ...prevState,
+          userSettings: userSettingsRef.current,
+        }
+      })
       setLoaded(true)
     })
-  }, [])
+    // getChromeExtensionSettings().then((res) => {
+    //   userSettingsRef.current = res.userSettings
+    //   setLoaded(true)
+    // })
+  })
   const updateChromeExtensionSettings = async (key: string, value: any) => {
     try {
       console.log(saving)
@@ -36,9 +46,13 @@ const UseChatGPTOptionsSettingPage = () => {
         ...userSettingsRef.current,
         [key]: value,
       }
-      await setChromeExtensionSettings({
-        userSettings: userSettingsRef.current,
-      })
+      await setChromeExtensionSettings(
+        {
+          userSettings: userSettingsRef.current,
+        },
+        true,
+      )
+      await syncSettings()
     } catch (e) {
       console.error(e)
     } finally {
@@ -140,6 +154,9 @@ const UseChatGPTOptionsSettingPage = () => {
           iconSetting
           settingsKey={'contextMenus'}
           defaultContextMenuJson={defaultContextMenuJson}
+          onUpdated={async () => {
+            await syncSettings()
+          }}
         />
       </Stack>
     </AppLoadingLayout>

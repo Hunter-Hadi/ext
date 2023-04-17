@@ -38,6 +38,7 @@ function getArgs() {
   return args
 }
 const args = getArgs()
+
 const APP_USE_CHAT_GPT_HOST = isProduction
   ? 'https://app.usechatgpt.ai'
   : 'https://usechatgpt-main.simplysourcing.net'
@@ -52,153 +53,64 @@ const GLOBAL_LESS =
   args.app === 'ezmail' ? './app.EZ_MAIL_AI.less' : './app.USE_CHAT_GPT.less'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const manifest = require(`./src/manifest.${APP_ENV}.json`)
-export default [
-  {
-    input: `src/manifest.${APP_ENV}.json`,
-    output: {
-      dir: 'dist',
-      format: 'esm',
-      chunkFileNames: path.join('chunks', '[name]-[hash].js'),
-    },
-    plugins: [
-      alias({
-        entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
-      }),
-      replace({
-        'process.env.NODE_ENV': isProduction
-          ? JSON.stringify('production')
-          : JSON.stringify('development'),
-        'process.env.APP_ENV': JSON.stringify(APP_ENV),
-        'process.env.APP_NAME': JSON.stringify(APP_NAME),
-        'process.env.GLOBAL_LESS': JSON.stringify(GLOBAL_LESS),
-        'process.env.APP_USE_CHAT_GPT_HOST': JSON.stringify(
-          APP_USE_CHAT_GPT_HOST,
-        ),
-        'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
-          APP_USE_CHAT_GPT_API_HOST,
-        ),
-        preventAssignment: true,
-      }),
-      chromeExtension(),
-      // less({}),
-      postcss({
-        plugins: [],
-        extensions: ['.css', '.less'],
-      }),
-      simpleReloader(),
-      resolve(),
-      commonjs(),
-      typescript(),
-      emptyDir(),
-      isProduction &&
-        terser({
-          compress: {
-            drop_console: true,
-            drop_debugger: true,
-          },
-          output: {
-            comments: false,
-          },
-        }),
-      APP_ENV === 'EZ_MAIL_AI' &&
-        copy({
-          targets: [
-            { src: 'node_modules/@inboxsdk/core/pageWorld.js', dest: 'dist' },
-          ],
-          hook: 'generateBundle',
-        }),
-      nodeResolve(),
-      APP_ENV === 'USE_CHAT_GPT_AI' &&
-        copy({
-          targets: [
-            // { src: 'inject-fetch.js', dest: 'dist' }
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_grey_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_grey_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_grey_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_grey_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-            {
-              src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
-              dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-            },
-          ],
-          hook: 'generateBundle',
-        }),
-      modifyManifest({
-        env: APP_ENV,
-        isProd: isProduction,
-      }),
-    ],
+
+let startOptionsPage = true
+let startChromeExtension = true
+if (args.only) {
+  if (args.only === 'options') {
+    startChromeExtension = false
+  }
+  if (args.only === 'extension') {
+    startOptionsPage = false
+  }
+}
+
+const optionsPageConfig = {
+  input: 'src/options.content.tsx',
+  output: {
+    dir: 'dist',
+    format: 'esm',
+    chunkFileNames: path.join('chunks', '[name]-[hash].js'),
   },
-  {
-    input: 'src/options.content.tsx',
-    output: {
-      dir: 'dist',
-      format: 'esm',
-      chunkFileNames: path.join('chunks', '[name]-[hash].js'),
-    },
-    plugins: [
-      alias({
-        entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+  plugins: [
+    alias({
+      entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    }),
+    replace({
+      'process.env.NODE_ENV': isProduction
+        ? JSON.stringify('production')
+        : JSON.stringify('development'),
+      'process.env.APP_ENV': JSON.stringify(APP_ENV),
+      'process.env.APP_NAME': JSON.stringify(APP_NAME),
+      'process.env.APP_USE_CHAT_GPT_HOST': JSON.stringify(
+        APP_USE_CHAT_GPT_HOST,
+      ),
+      'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
+        APP_USE_CHAT_GPT_API_HOST,
+      ),
+      preventAssignment: true,
+    }),
+    postcss({
+      plugins: [],
+    }),
+    resolve(),
+    commonjs(),
+    typescript(),
+    isProduction &&
+      terser({
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+        output: {
+          comments: false,
+        },
       }),
-      replace({
-        'process.env.NODE_ENV': isProduction
-          ? JSON.stringify('production')
-          : JSON.stringify('development'),
-        'process.env.APP_ENV': JSON.stringify(APP_ENV),
-        'process.env.APP_NAME': JSON.stringify(APP_NAME),
-        'process.env.APP_USE_CHAT_GPT_HOST': JSON.stringify(
-          APP_USE_CHAT_GPT_HOST,
-        ),
-        'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
-          APP_USE_CHAT_GPT_API_HOST,
-        ),
-        preventAssignment: true,
-      }),
-      postcss({
-        plugins: [],
-      }),
-      resolve(),
-      commonjs(),
-      typescript(),
-      isProduction &&
-        terser({
-          compress: {
-            drop_console: true,
-            drop_debugger: true,
-          },
-          output: {
-            comments: false,
-          },
-        }),
-      nodeResolve(),
-      html({
-        fileName: 'options.html',
-        template: () => {
-          return `<!DOCTYPE html><html lang="en"><head>
+    nodeResolve(),
+    html({
+      fileName: 'options.html',
+      template: () => {
+        return `<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -210,15 +122,120 @@ export default [
   <script src='options.content.js' type='module'></script>
   </body></html>
   `
+      },
+    }),
+    isProduction &&
+      zip({
+        file: `../releases/[${manifest.short_name}]_v${
+          manifest.version
+        }_${dayjs().format('YYYY_MM_DD_HH_mm')}.zip`,
+        isEzMail: APP_ENV === 'EZ_MAIL_AI',
+      }),
+  ],
+}
+
+const chromeExtensionConfig = {
+  input: `src/manifest.${APP_ENV}.json`,
+  output: {
+    dir: 'dist',
+    format: 'esm',
+    chunkFileNames: path.join('chunks', '[name]-[hash].js'),
+  },
+  plugins: [
+    alias({
+      entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    }),
+    replace({
+      'process.env.NODE_ENV': isProduction
+        ? JSON.stringify('production')
+        : JSON.stringify('development'),
+      'process.env.APP_ENV': JSON.stringify(APP_ENV),
+      'process.env.APP_NAME': JSON.stringify(APP_NAME),
+      'process.env.GLOBAL_LESS': JSON.stringify(GLOBAL_LESS),
+      'process.env.APP_USE_CHAT_GPT_HOST': JSON.stringify(
+        APP_USE_CHAT_GPT_HOST,
+      ),
+      'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
+        APP_USE_CHAT_GPT_API_HOST,
+      ),
+      preventAssignment: true,
+    }),
+    chromeExtension(),
+    // less({}),
+    postcss({
+      plugins: [],
+      extensions: ['.css', '.less'],
+    }),
+    simpleReloader(),
+    resolve(),
+    commonjs(),
+    typescript(),
+    emptyDir(),
+    isProduction &&
+      terser({
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+        output: {
+          comments: false,
         },
       }),
-      isProduction &&
-        zip({
-          file: `../releases/[${manifest.short_name}]_v${
-            manifest.version
-          }_${dayjs().format('YYYY_MM_DD_HH_mm')}.zip`,
-          isEzMail: APP_ENV === 'EZ_MAIL_AI',
-        }),
-    ],
-  },
-]
+    APP_ENV === 'EZ_MAIL_AI' &&
+      copy({
+        targets: [
+          { src: 'node_modules/@inboxsdk/core/pageWorld.js', dest: 'dist' },
+        ],
+        hook: 'generateBundle',
+      }),
+    nodeResolve(),
+    APP_ENV === 'USE_CHAT_GPT_AI' &&
+      copy({
+        targets: [
+          // { src: 'inject-fetch.js', dest: 'dist' }
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_grey_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_grey_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_grey_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_grey_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+          {
+            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+          },
+        ],
+        hook: 'generateBundle',
+      }),
+    modifyManifest({
+      env: APP_ENV,
+      isProd: isProduction,
+    }),
+  ],
+}
+
+export default [
+  startOptionsPage ? optionsPageConfig : null,
+  startChromeExtension ? chromeExtensionConfig : null,
+].filter(Boolean)

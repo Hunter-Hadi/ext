@@ -38,6 +38,7 @@ class UseChatGPTPlusChat {
         switch (event) {
           case 'Client_updateUseChatGPTAuthInfo':
             {
+              const preToken = await this.getToken()
               const { accessToken, refreshToken, userInfo } = data
               log.info(
                 'Client_updateUseChatGPTAuthInfo',
@@ -64,6 +65,9 @@ class UseChatGPTPlusChat {
                 )
               }
               await this.checkTokenAndUpdateStatus(sender.tab?.id)
+              if (!preToken && accessToken) {
+                await createChromeExtensionOptionsPage('', false)
+              }
             }
             break
           case 'Client_getUseChatGPTUserInfo':
@@ -102,7 +106,6 @@ class UseChatGPTPlusChat {
   }
   private async checkTokenAndUpdateStatus(authTabId?: number) {
     const prevStatus = this.status
-    const prevToken = this.token
     this.token = await this.getToken()
     this.status = this.token ? 'success' : 'needAuth'
     if (prevStatus !== this.status) {
@@ -110,9 +113,6 @@ class UseChatGPTPlusChat {
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
       await this.updateClientStatus()
-      if (this.status === 'success' && prevToken !== this.token) {
-        await createChromeExtensionOptionsPage('', false)
-      }
       if (authTabId) {
         // 因为会打开新的optionsTab，所以需要再切换回去
         await Browser.tabs.update(authTabId, {

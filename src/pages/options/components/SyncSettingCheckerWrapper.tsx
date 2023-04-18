@@ -26,14 +26,14 @@ const SyncSettingCheckerWrapper: FC<{
     // 1. 缓存用户当前的设置到ref
     // 2. 直接同步服务器数据到本地，
     // 3. 阻止页面关闭，弹出提示框，让用户选择是否同步本地数据到服务器
-    alert('special case')
     await chromeExtensionClientOpenPage({
       key: 'current_page',
     })
     await syncServerToLocal()
     window.onbeforeunload = (event) => {
-      event.returnValue = `Be aware that after selecting, the other can't be recovered.`
-      return `Be aware that after selecting, the other can't be recovered.`
+      event.preventDefault()
+      event.returnValue = `Be aware that you will lose your local browser settings permanently by keeping your online account settings and cannot be undone.`
+      return `Be aware that you will lose your local browser settings permanently by keeping your online account settings and cannot be undone.`
     }
   }, [])
 
@@ -62,8 +62,8 @@ const SyncSettingCheckerWrapper: FC<{
           }}
         >
           <Alert severity="error">
-            Something went wrong when getting your latest settings. Please try
-            again by refreshing the page.
+            Something went wrong when getting your online account settings.
+            Please try again by refreshing the page.
           </Alert>
           <Button variant={'contained'} color={'primary'}>
             Refresh page
@@ -81,23 +81,32 @@ const SyncSettingCheckerWrapper: FC<{
           }}
         >
           <Alert severity="error">
-            {`We found different settings (including your custom prompts if any)
-            on your local browser and online account. Please choose one to keep.
-            Be aware that after selecting, the other can't be recovered.`}
+            {`We found different settings (including your custom prompts if any) on your local browser and online account. Your online account settings have overridden your local browser settings. If you prefer to keep your local browser settings instead, click the "Keep local browser settings" button now.`}
           </Alert>
-          <Stack
-            direction={'row'}
-            justifyContent={'center'}
-            alignItems={'center'}
-            spacing={2}
-          >
+          <Stack alignItems={'center'} spacing={2}>
             <Button
+              sx={{ width: 400, height: 56, fontSize: 20 }}
+              disabled={isSyncing}
+              variant={'contained'}
+              color={'primary'}
+              onClick={async () => {
+                const isConfirmed = window.confirm(
+                  `Be aware that you will lose your local browser settings permanently by keeping your online account settings and cannot be undone.`,
+                )
+                if (!isConfirmed) return
+                await checkSync()
+              }}
+            >
+              Continue to Settings
+            </Button>
+            <Button
+              sx={{ width: 400, height: 56, fontSize: 20 }}
               disabled={isSyncing}
               variant={'outlined'}
               color={'primary'}
               onClick={async () => {
                 const isConfirmed = window.confirm(
-                  `Be aware that after selecting, the other can't be recovered.`,
+                  `Are you sure you want to replace your online account settings with your local browser settings (including your custom prompts if any)? Doing so will undo your online account settings permanently and cannot be undone.`,
                 )
                 if (!isConfirmed) return
                 const success = await syncLocalToServer(
@@ -106,23 +115,7 @@ const SyncSettingCheckerWrapper: FC<{
                 success && (await checkSync())
               }}
             >
-              Keep my local browser settings
-            </Button>
-
-            <Button
-              disabled={isSyncing}
-              variant={'contained'}
-              color={'primary'}
-              onClick={async () => {
-                const isConfirmed = window.confirm(
-                  `Be aware that after selecting, the other can't be recovered.`,
-                )
-                if (!isConfirmed) return
-                const success = await syncServerToLocal()
-                success && (await checkSync())
-              }}
-            >
-              Keep my online account settings
+              Keep local browser settings instead
             </Button>
           </Stack>
         </Stack>

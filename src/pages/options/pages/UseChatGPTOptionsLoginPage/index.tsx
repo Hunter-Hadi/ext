@@ -35,7 +35,7 @@ const UseChatGPTOptionsLoginPage: FC = () => {
           startIcon={<OpenInNewIcon />}
           variant={'outlined'}
           sx={{
-            width: 400,
+            width: 600,
             height: 56,
             color: 'text.primary',
             fontSize: 24,

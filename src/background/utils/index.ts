@@ -15,7 +15,6 @@ import {
 import { useEffect } from 'react'
 import { IChatGPTProviderType } from '@/background/provider/chat/ChatAdapter'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { IUseChatGPTUserInfo } from '@/background/src/usechatgpt'
 
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -45,7 +44,6 @@ export type IChromeExtensionSettings = {
     language?: string
     selectionButtonVisible?: boolean
   }
-  userInfo?: IUseChatGPTUserInfo
   lastModified?: number
 }
 
@@ -78,7 +76,6 @@ export const getChromeExtensionSettings =
           language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
           selectionButtonVisible: true,
         },
-        userInfo: undefined,
       } as IChromeExtensionSettings
       return defaultConfig
     }
@@ -302,5 +299,26 @@ export const getChromeExtensionCommands = async (): Promise<
     return result.data
   } else {
     return []
+  }
+}
+export const createChromeExtensionOptionsPage = async (
+  query = '',
+  autoFocus = true,
+) => {
+  const chromeExtensionId = Browser.runtime.id
+  const findOptionPage = await Browser.tabs.query({
+    url: `chrome-extension://${chromeExtensionId}/options.html`,
+  })
+  if (findOptionPage && findOptionPage.length > 0) {
+    await Browser.tabs.update(findOptionPage[0].id, {
+      url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
+      active: autoFocus,
+    })
+    return
+  } else {
+    await Browser.tabs.create({
+      url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
+      active: autoFocus,
+    })
   }
 }

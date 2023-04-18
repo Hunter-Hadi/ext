@@ -220,7 +220,7 @@ export const countryOptions = () => {
 }
 
 export const chromeExtensionClientOpenPage = async (params: {
-  key?: 'shortcuts' | 'options' | 'daemon_process'
+  key?: 'shortcuts' | 'options' | 'daemon_process' | 'current_page'
   url?: string
   query?: string
 }) => {

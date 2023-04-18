@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { useSnackbar } from 'notistack'
 import { get, post } from '@/utils/request'
 import {
@@ -17,6 +17,9 @@ const useSyncSettingsChecker = () => {
   const [isChecking, setIsChecking] = useState(false)
   const [showErrorAlert, setShowErrorAlert] = useState(false)
   const [showCheckAlert, setShowCheckAlert] = useState(false)
+  const localSettingsCacheRef = useRef<IChromeExtensionSettings | undefined>(
+    undefined,
+  )
   const syncServerToLocal = useCallback(async () => {
     try {
       console.log('同步服务器设置到本地')
@@ -50,43 +53,53 @@ const useSyncSettingsChecker = () => {
       setIsSyncing(false)
     }
   }, [])
-  const syncLocalToServer = useCallback(async () => {
-    try {
-      console.log('同步本地设置到服务器')
-      setIsSyncing(true)
-      const lastModified = dayjs().utc().valueOf()
-      // 更新本地设置的最后修改时间
-      await setChromeExtensionSettings({
-        lastModified,
-      })
-      // enqueueSnackbar('Syncing your settings...', {
-      //   variant: 'info',
-      //   autoHideDuration: 1000,
-      // })
-      const result = await post<{
-        status: 'OK' | 'ERROR'
-      }>('/user/save_user_settings', {
-        settings: await getChromeExtensionSettings(),
-      })
-      if (result?.status === 'OK') {
-        // enqueueSnackbar('Sync successful!', {
-        //   variant: 'success',
+  const syncLocalToServer = useCallback(
+    async (saveSettings?: IChromeExtensionSettings) => {
+      try {
+        console.log('同步本地设置到服务器')
+        setIsSyncing(true)
+        const lastModified = dayjs().utc().valueOf()
+        // 更新本地设置的最后修改时间
+        if (saveSettings) {
+          await setChromeExtensionSettings({
+            ...saveSettings,
+            lastModified,
+          })
+        } else {
+          await setChromeExtensionSettings({
+            lastModified,
+          })
+        }
+        // enqueueSnackbar('Syncing your settings...', {
+        //   variant: 'info',
         //   autoHideDuration: 1000,
         // })
-        return true
+        const result = await post<{
+          status: 'OK' | 'ERROR'
+        }>('/user/save_user_settings', {
+          settings: await getChromeExtensionSettings(),
+        })
+        if (result?.status === 'OK') {
+          // enqueueSnackbar('Sync successful!', {
+          //   variant: 'success',
+          //   autoHideDuration: 1000,
+          // })
+          return true
+        }
+        return false
+      } catch (e) {
+        enqueueSnackbar('Sync failed!', {
+          variant: 'error',
+          autoHideDuration: 1000,
+        })
+        console.error(e)
+        return false
+      } finally {
+        setIsSyncing(false)
       }
-      return false
-    } catch (e) {
-      enqueueSnackbar('Sync failed!', {
-        variant: 'error',
-        autoHideDuration: 1000,
-      })
-      console.error(e)
-      return false
-    } finally {
-      setIsSyncing(false)
-    }
-  }, [])
+    },
+    [],
+  )
   const checkSync = async (): Promise<{
     success: boolean
     status: 'ok' | 'needSync' | 'error'
@@ -96,6 +109,7 @@ const useSyncSettingsChecker = () => {
       const localSettings = await getChromeExtensionSettings()
       setShowErrorAlert(false)
       setShowCheckAlert(false)
+      localSettingsCacheRef.current = undefined
       setIsChecking(true)
       const result = await get<{
         settings: IChromeExtensionSettings
@@ -118,6 +132,7 @@ const useSyncSettingsChecker = () => {
                 // 本地有自定义prompt, 询问是否同步
                 console.log('本地有自定义prompt, 询问是否同步')
                 setShowCheckAlert(true)
+                localSettingsCacheRef.current = localSettings
                 return {
                   success: false,
                   status: 'needSync',
@@ -193,6 +208,7 @@ const useSyncSettingsChecker = () => {
     checkSync,
     syncLocalToServer,
     syncServerToLocal,
+    localSettingsCacheRef,
   }
 }
 

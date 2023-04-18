@@ -1,19 +1,19 @@
-import { useRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
 import { useMemo, useState } from 'react'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { setChromeExtensionSettings } from '@/background/utils'
 import Log from '@/utils/Log'
+import { IUseChatGPTUserInfo } from '@/background/src/usechatgpt'
 
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/ChatGPT/UseChatGPTPlusChat')
 
 const useUseChatGPTUserInfo = () => {
+  const [userInfo, setUserInfo] = useState<IUseChatGPTUserInfo | undefined>(
+    undefined,
+  )
   const [loading, setLoading] = useState(false)
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const quotaLeftText = useMemo(() => {
-    if (appSettings.userInfo?.chatgpt_expires_at) {
-      const expiresAt = new Date(appSettings.userInfo.chatgpt_expires_at)
+    if (userInfo?.chatgpt_expires_at) {
+      const expiresAt = new Date(userInfo.chatgpt_expires_at)
       const now = new Date()
       const diff = expiresAt.getTime() - now.getTime()
       const days = Math.floor(diff / (1000 * 3600 * 24))
@@ -33,7 +33,7 @@ const useUseChatGPTUserInfo = () => {
       return `${weeks}weeks`
     }
     return 0
-  }, [appSettings])
+  }, [userInfo])
   const syncUserInfo = async () => {
     try {
       setLoading(true)
@@ -42,16 +42,7 @@ const useUseChatGPTUserInfo = () => {
         data: {},
       })
       if (result.success && result.data?.email) {
-        delete result.data.settings
-        await setChromeExtensionSettings({
-          userInfo: result.data,
-        })
-        setAppSettings((prevState) => {
-          return {
-            ...prevState,
-            userInfo: result.data,
-          }
-        })
+        setUserInfo(result.data)
         return true
       }
       return false
@@ -64,7 +55,7 @@ const useUseChatGPTUserInfo = () => {
   }
   return {
     quotaLeftText,
-    userInfo: appSettings.userInfo,
+    userInfo,
     syncUserInfo,
     loading,
   }

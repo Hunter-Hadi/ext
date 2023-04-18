@@ -10,11 +10,11 @@ import {
 } from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
-import { useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { useUseChatGPTUserInfo } from '@/features/chatgpt'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 const AccountMenu: FC = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
+  const { syncUserInfo, userInfo } = useUseChatGPTUserInfo()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -23,6 +23,9 @@ const AccountMenu: FC = () => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+  useEffectOnce(() => {
+    syncUserInfo()
+  })
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -73,7 +76,7 @@ const AccountMenu: FC = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem disabled>{appSettings?.userInfo?.email}</MenuItem>
+        <MenuItem disabled>{userInfo?.email}</MenuItem>
         <MenuItem
           component={'a'}
           target={'_blank'}

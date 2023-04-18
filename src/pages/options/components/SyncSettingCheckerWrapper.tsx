@@ -1,8 +1,10 @@
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
-import React, { FC } from 'react'
+import React, { FC, useCallback, useRef } from 'react'
 import { Alert, Button, Stack } from '@mui/material'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import { chromeExtensionClientOpenPage } from '@/utils'
+import { useFocus } from '@/hooks/useFocus'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
@@ -15,10 +17,39 @@ const SyncSettingCheckerWrapper: FC<{
     checkSync,
     syncServerToLocal,
     syncLocalToServer,
+    localSettingsCacheRef,
   } = useSyncSettingsChecker()
+  const isSpecialCaseRef = useRef(true)
+  const onlyOnceTimesSaveLocalSettings = useCallback(async () => {
+    // 特殊情况处理:
+    // 0. focus到这个页面
+    // 1. 缓存用户当前的设置到ref
+    // 2. 直接同步服务器数据到本地，
+    // 3. 阻止页面关闭，弹出提示框，让用户选择是否同步本地数据到服务器
+    alert('special case')
+    await chromeExtensionClientOpenPage({
+      key: 'current_page',
+    })
+    await syncServerToLocal()
+    window.onbeforeunload = (event) => {
+      event.returnValue = `Be aware that after selecting, the other can't be recovered.`
+      return `Be aware that after selecting, the other can't be recovered.`
+    }
+  }, [])
+
   useEffectOnce(() => {
     console.log('SyncSettingCheckerWrapper')
-    checkSync()
+    checkSync().then((result) => {
+      if (result.status === 'needSync' && !result.success) {
+        onlyOnceTimesSaveLocalSettings().then()
+      } else {
+        isSpecialCaseRef.current = false
+      }
+    })
+  })
+  useFocus(() => {
+    if (isSpecialCaseRef.current) return
+    checkSync().then()
   })
   if (!isChecking) {
     if (showErrorAlert) {
@@ -69,7 +100,9 @@ const SyncSettingCheckerWrapper: FC<{
                   `Be aware that after selecting, the other can't be recovered.`,
                 )
                 if (!isConfirmed) return
-                const success = await syncLocalToServer()
+                const success = await syncLocalToServer(
+                  localSettingsCacheRef.current,
+                )
                 success && (await checkSync())
               }}
             >

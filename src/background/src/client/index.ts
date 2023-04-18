@@ -1,13 +1,16 @@
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 // import Log from '@/utils/Log'
 import Browser from 'webextension-polyfill'
-import { createBackgroundMessageListener } from '@/background/utils'
+import {
+  createBackgroundMessageListener,
+  createChromeExtensionOptionsPage,
+} from '@/background/utils'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
 // const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
-  createBackgroundMessageListener(async (runtime, event, data) => {
+  createBackgroundMessageListener(async (runtime, event, data, sender) => {
     if (runtime === 'client') {
       switch (event as IChromeExtensionClientSendEvent) {
         case 'Client_ping': {
@@ -25,28 +28,29 @@ export const ClientMessageInit = () => {
                 url,
               })
             } else if (key) {
-              if (key === 'shortcuts') {
+              if (key === 'current_page') {
+                if (sender.tab?.id) {
+                  await Browser.tabs.update(sender.tab.id, {
+                    active: true,
+                  })
+                }
+                return {
+                  data: true,
+                  success: true,
+                  message: 'ok',
+                }
+              } else if (key === 'shortcuts') {
                 await Browser.tabs.create({
                   url: 'chrome://extensions/shortcuts',
                   active: true,
                 })
               } else if (key === 'options') {
-                const chromeExtensionId = Browser.runtime.id
-                const findOptionPage = await Browser.tabs.query({
-                  url: `chrome-extension://${chromeExtensionId}/options.html`,
-                })
-                if (findOptionPage && findOptionPage.length > 0) {
-                  await Browser.tabs.update(findOptionPage[0].id, {
-                    url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
-                    active: true,
-                  })
-                  return
-                } else {
-                  await Browser.tabs.create({
-                    url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
-                    active: true,
-                  })
-                }
+                await createChromeExtensionOptionsPage(query)
+              }
+              return {
+                data: true,
+                success: true,
+                message: 'ok',
               }
             }
           }

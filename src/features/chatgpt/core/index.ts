@@ -119,6 +119,30 @@ const chatGptRequest = (
     body: data === undefined ? undefined : JSON.stringify(data),
   })
 }
+
+export const sendModerationRequest = async ({
+  token,
+  conversationId,
+  messageId,
+  input,
+}: {
+  token: string
+  conversationId: string
+  messageId: string
+  input: string
+}) => {
+  try {
+    await chatGptRequest(token, 'POST', '/backend-api/moderations', {
+      conversation_id: conversationId,
+      message_id: messageId,
+      input,
+      model: 'text-moderation-playground',
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 export const setConversationProperty = async (
   token: string,
   conversationId: string,
@@ -231,6 +255,9 @@ class ChatGPTConversation {
       questionId,
       parentMessageId,
     )
+    let isSend = false
+    let resultText = ''
+    let resultMessageId = ''
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: CHAT_GPT_PROVIDER.OPENAI,
       method: 'POST',
@@ -258,6 +285,7 @@ class ChatGPTConversation {
             model: this.model,
             parent_message_id: parentMessageId,
             timezone_offset_min: new Date().getTimezoneOffset(),
+            variant_purpose: 'none',
           },
           this.conversationId
             ? {
@@ -269,6 +297,14 @@ class ChatGPTConversation {
       onMessage: (message: string) => {
         console.debug('sse message', message)
         if (message === '[DONE]') {
+          if (resultText && this.conversationId && resultMessageId) {
+            sendModerationRequest({
+              token: this.token,
+              conversationId: this.conversationId,
+              messageId: resultMessageId,
+              input: resultText,
+            })
+          }
           params.onEvent({ type: 'done' })
           return
         }
@@ -282,8 +318,19 @@ class ChatGPTConversation {
         const text = data.message?.content?.parts?.[0]
         if (text) {
           console.log('generateAnswer on text', data)
+          resultText = text
+          resultMessageId = data.message.id
           this.conversationId = data.conversation_id
           this.lastChatGPTAnswerMessageId = data.message.id
+          if (this.conversationId && !isSend) {
+            isSend = true
+            sendModerationRequest({
+              token: this.token,
+              conversationId: this.conversationId,
+              messageId: questionId,
+              input: params.prompt,
+            })
+          }
           params.onEvent({
             type: 'answer',
             data: {

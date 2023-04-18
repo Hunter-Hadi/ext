@@ -1,5 +1,5 @@
 import React from 'react'
-import './OptionsPage.less'
+import '../../OptionsPage.less'
 import { Container, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import ContextMenuSettings from '@/pages/options/EzMailContextMenuSettings'
@@ -7,7 +7,7 @@ import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailTool
 
 const APP_NAME = process.env.APP_NAME
 
-const OptionsPage = () => {
+const EzMailOptionsPage = () => {
   const [value, setValue] = React.useState('reply')
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
@@ -47,4 +47,4 @@ const OptionsPage = () => {
   )
 }
 
-export default OptionsPage
+export default EzMailOptionsPage

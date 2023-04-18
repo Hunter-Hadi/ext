@@ -1,8 +1,9 @@
 {
-  "name": "UseChatGPT.AI: ChatGPT Copilot on Chrome",
+  "name": "__MSG_name__",
   "version": "0.0.10",
-  "short_name": "UseChatGPT",
-  "description": "Rephrase, summarize, translate, or explain text on any website without copy-pasting (GPT-4 ✓).",
+  "short_name": "__MSG_sn__",
+  "description": "__MSG_desc__",
+  "default_locale": "en",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.ts"

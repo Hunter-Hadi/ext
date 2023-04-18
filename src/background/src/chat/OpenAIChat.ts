@@ -178,7 +178,7 @@ class OpenAIChat {
       await Browser.tabs.remove(this.chatGPTProxyInstance.id)
     }
     this.chatGPTProxyInstance = undefined
-    await this.updateClientStatus()
+    // await this.updateClientStatus()
     this.active = false
     this.removeListener()
   }

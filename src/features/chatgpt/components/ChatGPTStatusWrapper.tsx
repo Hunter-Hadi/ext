@@ -121,8 +121,8 @@ const ChatGPTProviderAuthWrapper: FC = () => {
       : 'Log in to UseChatGPT.AI'
   const nextProviderText =
     provider === CHAT_GPT_PROVIDER.OPENAI
-      ? 'Continue with UseChatGPT.AI account'
-      : 'Continue with own ChatGPT account'
+      ? 'continue with UseChatGPT.AI account'
+      : 'continue with own ChatGPT account'
 
   const switchProvider = async () => {
     const nextProvider =
@@ -150,7 +150,15 @@ const ChatGPTProviderAuthWrapper: FC = () => {
       }}
     >
       <Stack spacing={2} width={'calc(100% - 16px)'}>
-        <Paper sx={{ width: '100%', p: 2, bgcolor: 'background.paper' }}>
+        <Paper
+          sx={{
+            maxWidth: '400px',
+            mx: 'auto!important',
+            width: '100%',
+            p: 2,
+            bgcolor: 'background.paper',
+          }}
+        >
           <Stack alignItems={'flex-start'} height={'100%'} spacing={2}>
             <Typography
               fontSize={'20px'}
@@ -197,6 +205,8 @@ const ChatGPTProviderAuthWrapper: FC = () => {
             width: '100%',
             borderRadius: '4px',
             position: 'relative',
+            mx: 'auto!important',
+            maxWidth: 384,
           }}
         >
           <Stack
@@ -427,7 +437,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               sx={{ textIndent: '4px' }}
               flex={1}
             >
-              Availability
+              Response speed
             </Typography>
             <Typography
               component={'div'}
@@ -516,10 +526,11 @@ const ChatGPTProviderAuthWrapper: FC = () => {
             sx={{
               position: 'absolute',
               width: '98px',
-              height: '100%',
+              height: 'calc(100% - 2px)',
               borderRadius: '4px',
-              border: '1px solid',
-              right: provider === CHAT_GPT_PROVIDER.OPENAI ? 0 : 98,
+              border: '2px solid',
+              top: 1,
+              right: provider === CHAT_GPT_PROVIDER.OPENAI ? 1 : 98,
               transition: 'right 0.3s',
               background: (t) =>
                 t.palette.mode === 'dark'

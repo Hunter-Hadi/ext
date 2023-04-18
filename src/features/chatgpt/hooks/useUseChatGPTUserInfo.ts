@@ -19,18 +19,18 @@ const useUseChatGPTUserInfo = () => {
       const days = Math.floor(diff / (1000 * 3600 * 24))
       const weeks = Math.floor(days / 7)
       if (weeks < 1) {
-        if (days === 0) {
+        if (days <= 0) {
           return 0
         }
         if (days < 2) {
-          return `${days}day`
+          return `${days} day`
         }
-        return `${days}days`
+        return `${days} days`
       }
       if (weeks < 2) {
-        return `${weeks}week`
+        return `${weeks} week`
       }
-      return `${weeks}weeks`
+      return `${weeks} weeks`
     }
     return 0
   }, [userInfo])

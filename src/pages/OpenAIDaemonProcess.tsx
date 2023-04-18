@@ -343,7 +343,7 @@ const useDaemonProcess = () => {
   }
 }
 
-const ChatGPTDaemonProcessPage: FC = () => {
+const OpenAIDaemonProcess: FC = () => {
   const { showDaemonProcessBar } = useDaemonProcess()
   const [close, setClose] = useState(() => {
     return isDisabledTopBar()
@@ -414,4 +414,4 @@ const ChatGPTDaemonProcessPage: FC = () => {
   )
 }
 
-export default ChatGPTDaemonProcessPage
+export default OpenAIDaemonProcess

@@ -1,6 +1,6 @@
 import React from 'react'
-import EzMailOptionsPage from '@/pages/EzMailOptionsPage'
-import UseChatGPTOptionsPage from '@/pages/UseChatGPTOptionsPage'
+import EzMailOptionsPage from '@/pages/options/pages/EzMailOptionsPage'
+import UseChatGPTOptionsPage from '@/pages/options/pages/UseChatGPTOptionsPage'
 import CssBaseline from '@mui/material/CssBaseline'
 import { createRoot } from 'react-dom/client'
 import AppThemeProvider from './components/AppTheme'

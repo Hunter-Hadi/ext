@@ -4,6 +4,7 @@ import { APP_USE_CHAT_GPT_HOST } from '@/types'
 import { GiftIcon } from '@/components/CustomIcon'
 import { RefreshOutlined } from '@mui/icons-material'
 import { useUseChatGPTUserInfo } from '@/features/chatgpt'
+import Tooltip from '@mui/material/Tooltip'
 
 const UseChatGPTAIQuotaLeft: FC = () => {
   const { loading, quotaLeftText, syncUserInfo } = useUseChatGPTUserInfo()
@@ -23,10 +24,12 @@ const UseChatGPTAIQuotaLeft: FC = () => {
         {loading ? (
           <CircularProgress size={12} sx={{ color: 'text.primary' }} />
         ) : (
-          <RefreshOutlined
-            onClick={syncUserInfo}
-            sx={{ fontSize: 16, color: 'text.primary', cursor: 'pointer' }}
-          />
+          <Tooltip title={'Refresh quota status'} placement={'top'}>
+            <RefreshOutlined
+              onClick={syncUserInfo}
+              sx={{ fontSize: 16, color: 'text.primary', cursor: 'pointer' }}
+            />
+          </Tooltip>
         )}
       </Stack>
       <Link

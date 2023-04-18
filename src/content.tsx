@@ -10,7 +10,7 @@ ClassNameGenerator.configure(
   (componentName) => `${AppNameToClassName}--${componentName}`,
 )
 
-import ChatGPTDaemonProcess from './pages/ChatGPTDaemonProcessPage'
+import OpenAIDaemonProcess from './pages/OpenAIDaemonProcess'
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import {
@@ -33,7 +33,7 @@ if (location.host === 'chat.openai.com') {
   const root = createRoot(div)
   root.render(
     <React.StrictMode>
-      <ChatGPTDaemonProcess />
+      <OpenAIDaemonProcess />
     </React.StrictMode>,
   )
 } else {

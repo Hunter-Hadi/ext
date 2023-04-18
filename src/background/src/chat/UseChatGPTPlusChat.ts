@@ -102,6 +102,7 @@ class UseChatGPTPlusChat {
   }
   private async checkTokenAndUpdateStatus(authTabId?: number) {
     const prevStatus = this.status
+    const prevToken = this.token
     this.token = await this.getToken()
     this.status = this.token ? 'success' : 'needAuth'
     if (prevStatus !== this.status) {
@@ -109,7 +110,7 @@ class UseChatGPTPlusChat {
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
       await this.updateClientStatus()
-      if (this.status === 'success') {
+      if (this.status === 'success' && prevToken !== this.token) {
         await createChromeExtensionOptionsPage('', false)
       }
       if (authTabId) {

@@ -172,9 +172,6 @@ const GmailChatBoxMessageItem: FC<{
         p={1}
         sx={{
           wordBreak: 'break-word',
-          borderColor: 'primary.main',
-          borderStyle: 'solid',
-          borderWidth: isEdit ? 1 : 0,
           ...ChatBoxSx,
         }}
       >

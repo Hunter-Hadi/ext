@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import './OptionsPage.less'
+import '../../OptionsPage.less'
 import { Box, Container, Stack, Typography } from '@mui/material'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
-import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOptionsSettingPage/index'
+import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOptionsSettingPage'
 import UseChatGPTOptionsEditMenuPage from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { SnackbarProvider } from 'notistack'
@@ -17,7 +17,7 @@ const OptionsPageRouteContext = React.createContext({
   },
 })
 
-const OptionsPage = () => {
+const UseChatGPTOptionsPage = () => {
   const { loaded, isLogin, loading } = useAuthLogin()
   const [route, setRoute] = useState('')
   useEffect(() => {
@@ -35,16 +35,17 @@ const OptionsPage = () => {
     }
   }, [isLogin, loaded])
   const crumbsText = useMemo(() => {
-    if (route === '/login') {
-      return 'Login'
-    }
-    if (route === '/') {
-      return 'Settings'
-    }
-    if (route === 'menu') {
-      return 'Edit Menu'
-    }
-    return ''
+    return 'Settings'
+    // if (route === '/login') {
+    //   return 'Settings'
+    // }
+    // if (route === '/') {
+    //   return 'Settings'
+    // }
+    // if (route === 'menu') {
+    //   return 'Edit Menu'
+    // }
+    // return ''
   }, [route])
   useEffect(() => {
     const hash = window.location.hash
@@ -141,4 +142,4 @@ const OptionsPage = () => {
   )
 }
 
-export default OptionsPage
+export default UseChatGPTOptionsPage

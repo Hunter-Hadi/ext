@@ -15,6 +15,7 @@ import dayjs from 'dayjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import html from '@rollup/plugin-html'
 import modifyManifest from './modifyManifest'
+import localesCreator from './localesCreator'
 
 const isProduction = process.env.NODE_ENV === 'production'
 function getArgs() {
@@ -232,6 +233,7 @@ const chromeExtensionConfig = {
       env: APP_ENV,
       isProd: isProduction,
     }),
+    localesCreator(),
   ],
 }
 

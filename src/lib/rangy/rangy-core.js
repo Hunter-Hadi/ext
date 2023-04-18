@@ -14,10 +14,15 @@ const isFocusWriteAbleElement = () => {
 }
 const IS_BLACK_LIST_ORIGIN =
   [
-    'https://www.google.com',
+    /https:\/\/www.google.*/,
     'https://www.baidu.com',
     'https://www.naver.com',
-  ].includes(window.location.origin) || isFocusWriteAbleElement()
+  ].some((match) =>
+    typeof match === 'string'
+      ? match === window.location.origin
+      : match.test(window.location.origin),
+  ) || isFocusWriteAbleElement()
+
 console.log('[ContextMenu Module] IS_BLACK_LIST_ORIGIN', IS_BLACK_LIST_ORIGIN)
 /**
  * Rangy, a cross-browser JavaScript range and selection library

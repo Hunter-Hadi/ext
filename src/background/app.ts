@@ -54,31 +54,33 @@ export const startChromeExtensionBackground = () => {
  */
 const initChromeExtensionInstalled = () => {
   // 插件安装初始化
-  Browser.runtime.onInstalled.addListener(async (object) => {
-    if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
-      if (isEzMailApp) {
+  if (isEzMailApp) {
+    Browser.runtime.onInstalled.addListener(async (object) => {
+      if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
         })
-      } else {
+      }
+    })
+  } else {
+    Browser.runtime.onInstalled.addListener(async (object) => {
+      if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '/extension-installed',
         })
-        try {
-          await Browser.contextMenus.remove(
-            'use-chatgpt-ai-context-menu-button',
-          )
-        } catch (e) {
-          // ignore
-        }
-        await Browser.contextMenus.create({
-          id: 'use-chatgpt-ai-context-menu-button',
-          title: 'Use ChatGPT',
-          contexts: ['all'],
-        })
       }
-    }
-  })
+      try {
+        await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')
+      } catch (e) {
+        // ignore
+      }
+      await Browser.contextMenus.create({
+        id: 'use-chatgpt-ai-context-menu-button',
+        title: 'Use ChatGPT',
+        contexts: ['all'],
+      })
+    })
+  }
 }
 
 /**

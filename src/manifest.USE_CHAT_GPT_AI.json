@@ -21,7 +21,7 @@
         "https://usechatgpt-main.simplysourcing.net/*",
         "https://app.usechatgpt.ai/*"
       ],
-      "js": ["checkUseChatGPTAppLoginStatus.ts"],
+      "js": ["check_status.ts"],
       "run_at": "document_start"
     }
   ],

@@ -74,7 +74,7 @@ const GmailChatBoxMessageItem: FC<{
     if (message.type === 'user' || message.type === 'third') {
       return {
         flexDirection: 'row',
-        justifyContent: 'end',
+        justifyContent: 'flex-start',
         bgcolor: () => {
           if (process.env.APP_ENV === 'EZ_MAIL_AI') {
             return '#FEE6E1 !important'
@@ -232,6 +232,8 @@ const GmailChatBoxMessageItem: FC<{
         {message.type === 'user' && (
           <GmailChatBoxUserTools
             editAble={editAble}
+            onCopy={onCopy}
+            message={message}
             onSave={() => {
               setIsEdit(false)
               const messageTextElement = document.getElementById(

@@ -3,7 +3,7 @@ import {
   createClientMessageListener,
   getChromeExtensionSettings,
 } from '@/background/utils'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 
 /**
  * 创建守护进程的tab

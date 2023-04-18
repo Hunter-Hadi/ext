@@ -62,6 +62,11 @@ export const showChatBox = () => {
     htmlElement.style.transition = 'width .3s ease-inout'
     htmlElement.style.width = `calc(100% - ${ezMailAiElementWidth}px)`
     htmlElement.style.position = 'relative'
+
+    if (location.hostname === 'outlook.live.com') {
+      htmlElement.style.minHeight = '100vh'
+    }
+
     ezMailAiElement.classList.remove('close')
     ezMailAiElement.classList.add('open')
     setTimeout(() => {
@@ -81,6 +86,10 @@ export const hideChatBox = () => {
     htmlElement.style.transition = 'width .3s ease-inout'
     htmlElement.style.width = '100%'
     htmlElement.style.position = ''
+    if (location.hostname === 'outlook.live.com') {
+      htmlElement.style.minHeight = ''
+    }
+
     ezMailAiElement.classList.remove('open')
     ezMailAiElement.classList.add('close')
     setTimeout(() => {

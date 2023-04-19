@@ -116,7 +116,7 @@ const UseChatGPTOptionsSettingPage = () => {
             color={'text.primary'}
             id={'text-select-popup'}
           >
-            Text select popup
+            Text-select-popup
           </Typography>
           <CloseAlert
             icon={<></>}

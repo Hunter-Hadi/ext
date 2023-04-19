@@ -39,6 +39,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import ReplyIcon from '@mui/icons-material/Reply'
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 
 import { SxProps } from '@mui/material'
 import { EzMailAIIcon } from '@/components/CustomIcon'
@@ -83,6 +84,7 @@ export const CONTEXT_MENU_ICONS = [
   'Settings',
   'Lock',
   'VisibilityOff',
+  'Close',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -182,6 +184,8 @@ const ContextMenuIcon: FC<{
       return <LockOutlinedIcon sx={sxMemo} />
     case 'VisibilityOff':
       return <VisibilityOffOutlinedIcon sx={sxMemo} />
+    case 'Close':
+      return <CloseOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

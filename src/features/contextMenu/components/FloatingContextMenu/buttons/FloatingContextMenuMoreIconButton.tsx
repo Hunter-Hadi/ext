@@ -11,13 +11,14 @@ import {
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
+import { AppSettingsState } from '@/store'
 
 const FloatingContextMenuMoreIconButton: FC<{
   sx?: SxProps
+  showCloseButton?: boolean
 }> = (props) => {
-  const { sx } = props
+  const { sx, showCloseButton = true } = props
   const [loading, setLoading] = useState(true)
   const appSettings = useRecoilValue(AppSettingsState)
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
@@ -36,12 +37,14 @@ const FloatingContextMenuMoreIconButton: FC<{
     <AppLoadingLayout loading={loading}>
       {root && (
         <DropdownMenu
+          defaultPlacement={'bottom-start'}
+          defaultFallbackPlacements={['top-start']}
           hoverOpen
           zIndex={2147483651}
           label={''}
           root={root}
           menuSx={{
-            width: 220,
+            width: 320,
           }}
           referenceElement={
             <Button
@@ -73,28 +76,30 @@ const FloatingContextMenuMoreIconButton: FC<{
             label={'Edit options'}
             icon={'DefaultIcon'}
           />
-          <LiteDropdownMenuItem
-            onClick={async () => {
-              setFloatingDropdownMenu({
-                open: false,
-                rootRect: null,
-              })
-              chromeExtensionClientOpenPage({
-                key: 'options',
-                query: '#text-select-popup',
-              })
-            }}
-            icon={
-              appSettings?.userSettings?.selectionButtonVisible
-                ? 'VisibilityOff'
-                : 'RemoveRedEye'
-            }
-            label={
-              appSettings?.userSettings?.selectionButtonVisible
-                ? 'Hide text select popup'
-                : 'Show text select popup'
-            }
-          />
+          {showCloseButton && (
+            <LiteDropdownMenuItem
+              onClick={async () => {
+                setFloatingDropdownMenu({
+                  open: false,
+                  rootRect: null,
+                })
+                chromeExtensionClientOpenPage({
+                  key: 'options',
+                  query: '#text-select-popup',
+                })
+              }}
+              icon={
+                appSettings?.userSettings?.selectionButtonVisible
+                  ? 'VisibilityOff'
+                  : 'RemoveRedEye'
+              }
+              label={
+                appSettings?.userSettings?.selectionButtonVisible
+                  ? 'Hide text-select-popup on all sites'
+                  : 'Show text-select-popup on all sites'
+              }
+            />
+          )}
         </DropdownMenu>
       )}
     </AppLoadingLayout>

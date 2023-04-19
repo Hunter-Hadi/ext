@@ -1,6 +1,6 @@
 import { Button, Paper, Stack, Typography } from '@mui/material'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
 
 import { flip, offset, shift, useFloating } from '@floating-ui/react'
@@ -9,11 +9,17 @@ import {
   computedRectPosition,
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
-import { IRangyRect } from '@/features/contextMenu/store'
+import {
+  ContextMenuSettingsState,
+  IRangyRect,
+} from '@/features/contextMenu/store'
 import { useRecoilValue } from 'recoil'
-import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
 import { AppSettingsState } from '@/store'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
+import {
+  FloatingContextMenuCloseIconButton,
+  FloatingContextMenuMoreIconButton,
+} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
 
 const APP_NAME = process.env.APP_NAME
@@ -25,7 +31,15 @@ const ClickContextMenuButton: FC<{
   const { tempSelection, show } = useRangy()
   const appSettings = useRecoilValue(AppSettingsState)
   const { shortCutKey } = useCommands()
+  const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
+  const memoShow = useMemo(() => {
+    return (
+      show &&
+      appSettings.userSettings?.selectionButtonVisible &&
+      !closeBeforeRefresh
+    )
+  }, [closeBeforeRefresh, show, appSettings.userSettings])
   const { x, y, strategy, refs } = useFloating({
     placement: 'bottom-start',
     middleware: [
@@ -116,13 +130,9 @@ const ClickContextMenuButton: FC<{
         borderRadius: '4px',
         border: '1px solid',
         borderColor: 'customColor.borderColor',
-        zIndex:
-          show && appSettings.userSettings?.selectionButtonVisible
-            ? 2147483600
-            : -1,
+        zIndex: memoShow ? 2147483600 : -1,
         position: strategy,
-        opacity:
-          show && appSettings.userSettings?.selectionButtonVisible ? 1 : 0,
+        opacity: memoShow ? 1 : 0,
         top: y ?? 0,
         left: x ?? 0,
         width: 'max-content',
@@ -183,7 +193,8 @@ const ClickContextMenuButton: FC<{
             </Typography>
           )}
         </Button>
-        <FloatingContextMenuMoreIconButton />
+        <FloatingContextMenuMoreIconButton showCloseButton={false} />
+        <FloatingContextMenuCloseIconButton />
       </Stack>
     </Paper>
   )

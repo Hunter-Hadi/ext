@@ -26,8 +26,8 @@ import { getAppContextMenuElement, showChatBox } from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuMoreIconButton'
 import { useTheme } from '@mui/material/styles'
+import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = process.env.NODE_ENV === 'production'

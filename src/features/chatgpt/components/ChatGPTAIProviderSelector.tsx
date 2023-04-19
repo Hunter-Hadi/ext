@@ -1,5 +1,12 @@
 import React, { FC } from 'react'
-import { FormControl, Stack, InputLabel, Select, MenuItem } from '@mui/material'
+import {
+  FormControl,
+  Stack,
+  InputLabel,
+  Select,
+  MenuItem,
+  Typography,
+} from '@mui/material'
 import { CHAT_GPT_PROVIDER } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 import { IChatGPTProviderType } from '@/background/provider/chat'
@@ -8,6 +15,21 @@ import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail/store'
 import UseChatGPTAIQuotaLeft from '@/features/chatgpt/components/UseChatGPTAIQuotaLeft'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+
+const ArrowDropDownIconCustom = () => {
+  return (
+    <ArrowDropDownIcon
+      sx={{
+        color: 'text.secondary',
+        fontSize: '16px',
+        position: 'absolute',
+        right: '8px',
+        top: 'calc(50% - 8px)',
+      }}
+    />
+  )
+}
 
 const ChatGPTAIProviderSelector: FC = () => {
   const { loading: chatGPTConversationLoading } = useRecoilValue(
@@ -22,6 +44,7 @@ const ChatGPTAIProviderSelector: FC = () => {
           AI Provider
         </InputLabel>
         <Select
+          IconComponent={ArrowDropDownIconCustom}
           disabled={chatGPTConversationLoading}
           sx={{ fontSize: '14px' }}
           labelId="chatGPT-ai-provider-select"
@@ -33,9 +56,23 @@ const ChatGPTAIProviderSelector: FC = () => {
           }}
         >
           <MenuItem value={CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS}>
-            UseChatGPT.AI
+            <Typography
+              fontSize={'14px'}
+              color={'text.primary'}
+              textAlign={'left'}
+            >
+              UseChatGPT.AI
+            </Typography>
           </MenuItem>
-          <MenuItem value={CHAT_GPT_PROVIDER.OPENAI}>ChatGPT</MenuItem>
+          <MenuItem value={CHAT_GPT_PROVIDER.OPENAI}>
+            <Typography
+              fontSize={'14px'}
+              color={'text.primary'}
+              textAlign={'left'}
+            >
+              ChatGPT
+            </Typography>
+          </MenuItem>
         </Select>
       </FormControl>
       {provider === CHAT_GPT_PROVIDER.OPENAI &&

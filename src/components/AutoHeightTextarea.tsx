@@ -220,6 +220,15 @@ const AutoHeightTextarea: FC<{
       autoFocusWithAllWebsite(textareaRef.current, childrenHeight)
     }
   }, [appState.open, loading])
+  useEffect(() => {
+    // 结束loading后清空input
+    if (!loading) {
+      if (textareaRef.current?.value) {
+        setInputValue('')
+      }
+    }
+  }, [loading])
+  console.log(defaultValue, inputValue, 'cscscs')
   return (
     <Box
       component={'div'}
@@ -342,7 +351,6 @@ const AutoHeightTextarea: FC<{
             console.log('shift enter')
           } else if (event.key === 'Enter') {
             onEnter && onEnter(event.currentTarget.value)
-            setInputValue('')
             event.preventDefault()
           } else if (event.code === 'Space') {
             event.stopPropagation()

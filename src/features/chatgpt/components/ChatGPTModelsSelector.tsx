@@ -21,7 +21,7 @@ const ArrowDropDownIconCustom = () => {
   return (
     <ArrowDropDownIcon
       sx={{
-        color: 'rgba(0, 0, 0, 0.54)',
+        color: 'text.secondary',
         fontSize: '16px',
         position: 'absolute',
         right: '8px',

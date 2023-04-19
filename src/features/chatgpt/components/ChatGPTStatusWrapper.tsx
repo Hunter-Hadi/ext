@@ -167,7 +167,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               </Typography>
               {provider === CHAT_GPT_PROVIDER.OPENAI ? (
                 <>
-                  <ChatGPTIcon sx={{ mx: 1 }} />
+                  <ChatGPTIcon sx={{ mx: 1, fontSize: 20 }} />
                   <Typography
                     fontSize={'20px'}
                     fontWeight={700}
@@ -180,6 +180,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
                 <>
                   <UseChatGptIcon
                     sx={{
+                      fontSize: 20,
                       mx: 1,
                       borderRadius: '4px',
                       bgcolor: (t) =>

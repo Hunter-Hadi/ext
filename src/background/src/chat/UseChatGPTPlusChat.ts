@@ -112,7 +112,6 @@ class UseChatGPTPlusChat {
       log.info('checkTokenAndUpdateStatus', this.status, this.lastActiveTabId)
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
-      await this.updateClientStatus()
       if (authTabId) {
         // 因为会打开新的optionsTab，所以需要再切换回去
         await Browser.tabs.update(authTabId, {
@@ -120,6 +119,7 @@ class UseChatGPTPlusChat {
         })
       }
     }
+    await this.updateClientStatus()
   }
 
   /**

@@ -8,6 +8,7 @@ import { CHAT_GPT_PROVIDER } from '@/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import CheckIcon from '@mui/icons-material/Check'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
+import { ChatGPTIcon, UseChatGptIcon } from '@/components/CustomIcon'
 const port = new ContentScriptConnectionV2()
 
 const ChatGPTStatusWrapper: FC = () => {
@@ -111,10 +112,6 @@ const ChatGPTStatusWrapper: FC = () => {
 
 const ChatGPTProviderAuthWrapper: FC = () => {
   const { updateChatGPTProvider, provider } = useChatGPTProvider()
-  const title =
-    provider === CHAT_GPT_PROVIDER.OPENAI
-      ? 'Continue with own ChatGPT account'
-      : 'Continue with UseChatGPT.AI account'
   const buttonTitle =
     provider === CHAT_GPT_PROVIDER.OPENAI
       ? 'Log in to ChatGPT'
@@ -122,7 +119,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
   const nextProviderText =
     provider === CHAT_GPT_PROVIDER.OPENAI
       ? 'continue with UseChatGPT.AI account'
-      : 'continue with own ChatGPT account'
+      : 'continue with your own ChatGPT account'
 
   const switchProvider = async () => {
     const nextProvider =
@@ -160,13 +157,48 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           }}
         >
           <Stack alignItems={'flex-start'} height={'100%'} spacing={2}>
-            <Typography
-              fontSize={'20px'}
-              fontWeight={700}
-              color={'text.primary'}
-            >
-              {title}
-            </Typography>
+            <Stack direction={'row'} alignItems={'center'}>
+              <Typography
+                fontSize={'20px'}
+                fontWeight={700}
+                color={'text.primary'}
+              >
+                AI provider:
+              </Typography>
+              {provider === CHAT_GPT_PROVIDER.OPENAI ? (
+                <>
+                  <ChatGPTIcon sx={{ mx: 1 }} />
+                  <Typography
+                    fontSize={'20px'}
+                    fontWeight={700}
+                    color={'text.primary'}
+                  >
+                    ChatGPT
+                  </Typography>
+                </>
+              ) : (
+                <>
+                  <UseChatGptIcon
+                    sx={{
+                      mx: 1,
+                      borderRadius: '4px',
+                      bgcolor: (t) =>
+                        t.palette.mode === 'light'
+                          ? 'transparent'
+                          : 'rgba(235, 235, 235, 1)',
+                      p: '2px',
+                    }}
+                  />
+                  <Typography
+                    fontSize={'20px'}
+                    fontWeight={700}
+                    color={'text.primary'}
+                  >
+                    UseChatGPT.AI
+                  </Typography>
+                </>
+              )}
+            </Stack>
             <Button
               onClick={async () => {
                 await port.postMessage({

@@ -32,7 +32,7 @@ const UseChatGPTOptionsLoginPage: FC = () => {
       </Stack>
       <Link href={APP_USE_CHAT_GPT_HOST + '/login'} target={'_blank'}>
         <Button
-          startIcon={<OpenInNewIcon />}
+          endIcon={<OpenInNewIcon />}
           variant={'outlined'}
           sx={{
             width: 600,
@@ -41,7 +41,7 @@ const UseChatGPTOptionsLoginPage: FC = () => {
             fontSize: 24,
           }}
         >
-          Continue
+          Log in to UseChatGPT.AI
         </Button>
       </Link>
     </Stack>

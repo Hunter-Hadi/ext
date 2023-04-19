@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import {
   Box,
   FormControl,
@@ -15,6 +15,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
 import { useMessageWithChatGPT } from '@/features/chatgpt'
 import { setChromeExtensionSettings } from '@/background/utils'
+import { ChatGPTConversationState } from '@/features/gmail'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -31,6 +32,9 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTModelsSelector: FC = () => {
+  const { loading: chatGPTConversationLoading } = useRecoilValue(
+    ChatGPTConversationState,
+  )
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const { resetConversation } = useMessageWithChatGPT('')
   const memoModels = useMemo(() => {
@@ -50,6 +54,7 @@ const ChatGPTModelsSelector: FC = () => {
             <span style={{ fontSize: '16px' }}>Model</span>
           </InputLabel>
           <Select
+            disabled={chatGPTConversationLoading}
             MenuProps={{
               elevation: 0,
               MenuListProps: {

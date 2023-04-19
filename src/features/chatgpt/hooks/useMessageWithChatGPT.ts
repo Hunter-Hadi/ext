@@ -206,7 +206,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               let text =
                 error?.message || error || 'Error detected. Please try again.'
               if (is403Error) {
-                text = 'Too many requests. Try again in a few seconds.'
+                text =
+                  'Log in to ChatGPT (pass Cloudflare check) and try again.'
               }
               pushMessages.push({
                 type: 'system',

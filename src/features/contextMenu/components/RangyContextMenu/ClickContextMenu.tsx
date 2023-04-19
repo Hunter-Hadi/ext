@@ -11,9 +11,10 @@ import {
 } from '@/features/contextMenu/utils'
 import {
   ContextMenuSettingsState,
+  FloatingDropdownMenuState,
   IRangyRect,
 } from '@/features/contextMenu/store'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import {
@@ -33,13 +34,15 @@ const ClickContextMenuButton: FC<{
   const { shortCutKey } = useCommands()
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
+  const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const memoShow = useMemo(() => {
     return (
       show &&
       appSettings.userSettings?.selectionButtonVisible &&
-      !closeBeforeRefresh
+      !closeBeforeRefresh &&
+      !floatingDropdownMenu.open
     )
-  }, [closeBeforeRefresh, show, appSettings.userSettings])
+  }, [closeBeforeRefresh, show, appSettings.userSettings, floatingDropdownMenu])
   const { x, y, strategy, refs } = useFloating({
     placement: 'bottom-start',
     middleware: [
@@ -85,15 +88,15 @@ const ClickContextMenuButton: FC<{
     ],
   })
   useEffect(() => {
-    if (!tempSelection || !show) {
+    if (!tempSelection || !memoShow) {
       return
     }
     let rect = cloneRect(tempSelection.selectionRect)
     console.log(
-      `[ContextMenu Module]: [button] [${show}]`,
+      `[ContextMenu Module]: [button] [${memoShow}]`,
       tempSelection.selectionRect,
     )
-    if (show && rect) {
+    if (memoShow && rect) {
       rect = computedRectPosition(rect)
       if (!isProduction) {
         // render rect
@@ -120,7 +123,7 @@ const ClickContextMenuButton: FC<{
         },
       })
     }
-  }, [tempSelection, show])
+  }, [tempSelection, memoShow])
   return (
     <Paper
       elevation={3}

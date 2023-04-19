@@ -59,6 +59,28 @@ const UseChatGPTOptionsSettingPage = () => {
             mx: 'auto!important',
           }}
         >
+          <CloseAlert
+            icon={<></>}
+            sx={{
+              // bgcolor: '#E2E8F0',
+              mt: 1,
+              mb: 2,
+            }}
+          >
+            <Stack spacing={1}>
+              <Typography fontSize={14} color={'text.primary'}>
+                You can always find this Settings page by clicking the Settings
+                icon at the top of the sidebar.
+              </Typography>
+              <img
+                src={`https://www.usechatgpt.ai/assets/chrome-extension/settings-entry.png`}
+                alt="settings-entry"
+                width={466}
+                height={121}
+              />
+            </Stack>
+          </CloseAlert>
+          <Divider sx={{ my: 4 }} />
           <Typography fontSize={20} fontWeight={700} mb={1}>
             Manage shortcut for quick access
           </Typography>

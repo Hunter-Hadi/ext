@@ -130,6 +130,7 @@ const AutoHeightTextarea: FC<{
   InputId?: string
   stopPropagation?: boolean
   placeholder?: string
+  debounceOnChange?: boolean
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
@@ -146,6 +147,7 @@ const AutoHeightTextarea: FC<{
     InputId = ROOT_CHAT_BOX_INPUT_ID,
     stopPropagation = true,
     placeholder = 'Ask ChatGPT...',
+    debounceOnChange = false,
     sx,
   } = props
   // const textareaRef = useRef<null | HTMLTextAreaElement>(null)
@@ -155,7 +157,7 @@ const AutoHeightTextarea: FC<{
     () => throttle(autoSizeTextarea, 200),
     [],
   )
-  const debounceOnChange = useMemo(
+  const debounceOnChangeHandle = useMemo(
     () =>
       debounce((value: string) => {
         onChange?.(value)
@@ -228,7 +230,6 @@ const AutoHeightTextarea: FC<{
       }
     }
   }, [loading])
-  console.log(defaultValue, inputValue, 'cscscs')
   return (
     <Box
       component={'div'}
@@ -367,7 +368,11 @@ const AutoHeightTextarea: FC<{
             event.currentTarget.value,
           )
           setInputValue(event.currentTarget.value)
-          debounceOnChange(event.currentTarget.value)
+          if (debounceOnChange) {
+            debounceOnChangeHandle(event.currentTarget.value)
+          } else {
+            onChange && onChange(event.currentTarget.value)
+          }
           throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
         }}
         onBlur={(event) => {

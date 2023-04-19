@@ -45,7 +45,7 @@ const ChatGPTModelsSelector: FC = () => {
   }, [appSettings.models])
   return (
     <>
-      {memoModels.length > 1 && (
+      {memoModels.length > 1 ? (
         <FormControl size="small" sx={{ height: 40 }}>
           <InputLabel
             sx={{ fontSize: '16px' }}
@@ -195,6 +195,10 @@ const ChatGPTModelsSelector: FC = () => {
             })}
           </Select>
         </FormControl>
+      ) : (
+        <Typography fontSize={12} color={'text.secondary'}>
+          GPT-4 is only available in ChatGPT Plus
+        </Typography>
       )}
     </>
   )

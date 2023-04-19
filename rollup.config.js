@@ -127,9 +127,9 @@ const optionsPageConfig = {
     }),
     isProduction &&
       zip({
-        file: `../releases/[${manifest.short_name}]_v${
-          manifest.version
-        }_${dayjs().format('YYYY_MM_DD_HH_mm')}.zip`,
+        file: `../releases/[${APP_NAME}]_v${manifest.version}_${dayjs().format(
+          'YYYY_MM_DD_HH_mm',
+        )}.zip`,
         isEzMail: APP_ENV === 'EZ_MAIL_AI',
       }),
   ],
@@ -238,6 +238,6 @@ const chromeExtensionConfig = {
 }
 
 export default [
-  startOptionsPage ? optionsPageConfig : null,
   startChromeExtension ? chromeExtensionConfig : null,
+  startOptionsPage ? optionsPageConfig : null,
 ].filter(Boolean)

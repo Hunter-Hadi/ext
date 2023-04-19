@@ -30,6 +30,16 @@ const modifyManifest = ({ env, isProd }) => ({
       manifestContent.web_accessible_resources,
       'matches',
     )
+    if (isProd) {
+      manifestContent.content_scripts = manifestContent.content_scripts.map(
+        (contentScript) => {
+          if (contentScript.js[0] === 'check_status.js') {
+            contentScript.matches = ['https://app.usechatgpt.ai/*']
+          }
+          return contentScript
+        },
+      )
+    }
     manifest.source = JSON.stringify(manifestContent, null, 2)
   },
 })

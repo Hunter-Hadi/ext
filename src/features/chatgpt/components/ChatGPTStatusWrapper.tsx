@@ -152,7 +152,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
       <Stack spacing={2} width={'calc(100% - 16px)'}>
         <Paper
           sx={{
-            maxWidth: '400px',
+            maxWidth: '414px',
             mx: 'auto!important',
             width: '100%',
             p: 2,

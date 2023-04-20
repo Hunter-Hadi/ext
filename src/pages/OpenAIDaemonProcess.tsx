@@ -22,6 +22,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import { useInterval } from 'usehooks-ts'
 import dayjs from 'dayjs'
 import CloseAlert from '@/components/CloseAlert'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 const APP_NAME = process.env.APP_NAME
 const log = new Log('ChatGPTDaemonProcessPage')
@@ -584,14 +585,30 @@ const KeepChatAliveDaemonProcess: FC = () => {
               // '& *': {
               //   color: '#fff',
               // },
+              p: '16px!important',
               bgcolor: '#fff',
               border: '1px solid #7601D3',
+              '& > div': {
+                '&:first-child': {
+                  display: 'none',
+                },
+                '&:nth-child(2)': {
+                  padding: '0!important',
+                },
+                '&:last-child': {
+                  margin: '0!important',
+                  padding: '0!important',
+                  position: 'absolute',
+                  top: 4,
+                  right: 4,
+                },
+              },
               '& *': {
                 color: '#7601D3',
               },
             }}
           >
-            <Stack py={2} spacing={1}>
+            <Stack spacing={1}>
               <Typography variant={'body1'} fontSize={16} fontWeight={700}>
                 Stable Mode is enabled
               </Typography>
@@ -607,15 +624,16 @@ const KeepChatAliveDaemonProcess: FC = () => {
                   '&:hover': {
                     bgcolor: '#7601D3',
                   },
+                  textTransform: 'none',
                 }}
                 onClick={async () => {
-                  await Browser.storage.local.remove(
-                    CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
-                  )
-                  setStopAlertShow(false)
+                  await chromeExtensionClientOpenPage({
+                    key: 'options',
+                    query: '#keep-chat-alive',
+                  })
                 }}
               >
-                Disable Stable Mode now
+                Disable now
               </Button>
             </Stack>
           </CloseAlert>

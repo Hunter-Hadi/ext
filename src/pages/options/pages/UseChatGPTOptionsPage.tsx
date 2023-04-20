@@ -50,10 +50,17 @@ const UseChatGPTOptionsPage = () => {
   useEffect(() => {
     const hash = window.location.hash
     const timer = setTimeout(() => {
-      document.getElementById(hash.replace('#', ''))?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
+      const element = document.getElementById(hash.replace('#', ''))
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        const offset = window.pageYOffset || document.documentElement.scrollTop
+        const top = rect.top + offset - 72 - 16
+        window.scrollTo({
+          top,
+          behavior: 'smooth',
+        })
+        return
+      }
     }, 1000)
     return () => {
       clearTimeout(timer)

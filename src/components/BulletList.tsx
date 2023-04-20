@@ -12,12 +12,7 @@ const BulletList: FC<{
     <Stack spacing={1}>
       {textList.map((text, index) => {
         return (
-          <Stack
-            key={index}
-            direction={'row'}
-            spacing={1}
-            alignItems={'baseline'}
-          >
+          <Stack key={index} direction={'row'} alignItems={'baseline'}>
             <Box
               sx={{
                 top: -2,
@@ -26,7 +21,7 @@ const BulletList: FC<{
                 height: 4,
                 borderRadius: '50%',
                 backgroundColor: 'text.primary',
-                mr: 1,
+                mx: 1,
                 flexShrink: 0,
                 ...pointProps,
               }}

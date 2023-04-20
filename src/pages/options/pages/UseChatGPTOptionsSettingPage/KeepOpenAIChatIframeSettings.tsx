@@ -8,6 +8,7 @@ import {
   FormControl,
   Stack,
   Switch,
+  Chip,
 } from '@mui/material'
 import CloseAlert from '@/components/CloseAlert'
 import Browser from 'webextension-polyfill'
@@ -169,8 +170,15 @@ const KeepOpenAIChatIframeSettings: FC = () => {
         mb={2}
       >
         ChatGPT stable mode
+        <Chip
+          sx={{ ml: 1 }}
+          label="Beta"
+          color="primary"
+          size={'small'}
+          variant={'outlined'}
+        />
       </Typography>
-      <CloseAlert severity={'info'}>
+      <CloseAlert icon={<></>} severity={'info'}>
         <Stack spacing={1}>
           <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
             Benefits:
@@ -184,10 +192,11 @@ const KeepOpenAIChatIframeSettings: FC = () => {
               'Reduced webpage refreshes',
             ]}
           />
-          <Typography fontSize={16} fontWeight={700} color={'text.primary'}>
+          <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
             Caveats:
           </Typography>
           <BulletList
+            textProps={{ fontSize: 14 }}
             textList={[
               `This is a beta feature, so please use it with caution`,
               `We suggest only enabling it when you are experiencing frequent OpenAI interruptions or network errors`,
@@ -324,7 +333,7 @@ const MinutesSlider: FC<{
       valueLabelDisplay="auto"
       step={30}
       marks={marks}
-      min={0}
+      min={30}
       max={480}
     />
   )

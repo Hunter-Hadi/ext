@@ -27,6 +27,7 @@ const BulletList: FC<{
                 borderRadius: '50%',
                 backgroundColor: 'text.primary',
                 mr: 1,
+                flexShrink: 0,
                 ...pointProps,
               }}
             />

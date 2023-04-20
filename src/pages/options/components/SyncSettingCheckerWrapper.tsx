@@ -1,7 +1,13 @@
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
 import React, { FC, useCallback, useContext, useRef } from 'react'
-import { Alert, Button, Stack } from '@mui/material'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
+import {
+  Alert,
+  Backdrop,
+  Button,
+  CircularProgress,
+  Stack,
+  Typography,
+} from '@mui/material'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
@@ -127,6 +133,30 @@ const SyncSettingCheckerWrapper: FC<{
       )
     }
   }
-  return <AppLoadingLayout loading={isChecking}>{children}</AppLoadingLayout>
+  return (
+    <>
+      <Backdrop
+        sx={{
+          color: '#fff',
+          zIndex: 9999999,
+        }}
+        open={isChecking}
+      >
+        <Stack alignItems={'center'} spacing={2}>
+          <CircularProgress size={16} color="inherit" />
+          <Typography
+            mt={1.5}
+            variant="body2"
+            fontWeight={400}
+            fontSize={16}
+            lineHeight={1.25}
+          >
+            Data syncing...
+          </Typography>
+        </Stack>
+      </Backdrop>
+      {children}
+    </>
+  )
 }
 export default SyncSettingCheckerWrapper

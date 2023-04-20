@@ -40,6 +40,7 @@ import ReplyIcon from '@mui/icons-material/Reply'
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined'
 
 import { SxProps } from '@mui/material'
 import { EzMailAIIcon } from '@/components/CustomIcon'
@@ -85,6 +86,7 @@ export const CONTEXT_MENU_ICONS = [
   'Lock',
   'VisibilityOff',
   'Close',
+  'PlayArrow',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -186,6 +188,8 @@ const ContextMenuIcon: FC<{
       return <VisibilityOffOutlinedIcon sx={sxMemo} />
     case 'Close':
       return <CloseOutlinedIcon sx={sxMemo} />
+    case 'PlayArrow':
+      return <PlayArrowOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

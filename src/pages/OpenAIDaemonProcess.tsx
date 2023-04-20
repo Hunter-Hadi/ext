@@ -7,7 +7,7 @@ import {
 } from '@/features/chatgpt'
 import './chatGPT.less'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import { Box, IconButton, Stack, Typography } from '@mui/material'
+import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
 import { IOpenAIChatListenTaskEvent } from '@/background/app'
 import {
   CHAT_GPT_PROMPT_PREFIX,
@@ -21,6 +21,7 @@ import Log from '@/utils/Log'
 import { setChromeExtensionSettings } from '@/background/utils'
 import { useInterval } from 'usehooks-ts'
 import dayjs from 'dayjs'
+import CloseAlert from '@/components/CloseAlert'
 
 const APP_NAME = process.env.APP_NAME
 const log = new Log('ChatGPTDaemonProcessPage')
@@ -503,11 +504,8 @@ const fetchAuthSession = (authUrl = '/api/auth/session') => {
 
 const KeepChatAliveDaemonProcess: FC = () => {
   const isOpenKeepChatAliveRef = useRef(false)
-  const [switchBoxShow, setSwitchBoxShow] = useState(false)
-  const [boxStyle, setBoxStyle] = useState({
-    x: 0,
-    y: 0,
-  })
+  const [StopAlertShow, setStopAlertShow] = useState(false)
+  const [showTimeText, setShowTimeText] = useState('')
   useInterval(() => {
     const getSettings = async () => {
       try {
@@ -522,19 +520,42 @@ const KeepChatAliveDaemonProcess: FC = () => {
         if (stopKeepChatIframeSettings) {
           const { end } = JSON.parse(stopKeepChatIframeSettings)
           const now = dayjs().utc()
-          if (dayjs(end).utc().diff(now, 'seconds') > 30) {
+          const diffSeconds = dayjs(end).utc().diff(now, 'seconds')
+          let timeText = ''
+          if (diffSeconds < 60) {
+            timeText = `1 minute`
+          } else if (diffSeconds < 60 * 60) {
+            timeText = `${Math.floor(diffSeconds / 60)} minutes`
+          } else if (diffSeconds < 60 * 60 * 24) {
+            if (diffSeconds < 60 * 60 * 2) {
+              timeText = `1 hour`
+            } else {
+              timeText = `${Math.floor(diffSeconds / 60 / 60)} hours`
+            }
+          }
+          setShowTimeText(timeText)
+          if (diffSeconds > 30) {
             // 当前距离结束时间超过30秒
             // 开启keep alive iframe
             isOpenKeepChatAliveRef.current = true
-            // 创建switch
+            setStopAlertShow(true)
+            console.log(
+              '[KeepChatAliveDaemonProcess]: getSettings',
+              isOpenKeepChatAliveRef.current,
+            )
             return
           }
         }
+        setStopAlertShow(false)
         isOpenKeepChatAliveRef.current = false
       } catch (e) {
         console.error(e)
         isOpenKeepChatAliveRef.current = false
       }
+      console.log(
+        '[KeepChatAliveDaemonProcess]: getSettings',
+        isOpenKeepChatAliveRef.current,
+      )
     }
     getSettings()
   }, 1000 * 3)
@@ -546,7 +567,62 @@ const KeepChatAliveDaemonProcess: FC = () => {
       console.log('[KeepChatAliveDaemonProcess]: stop keep chat alive')
     }
   }, 1000 * 30)
-  return <>{<Stack direction={'row'}></Stack>}</>
+  return (
+    <>
+      {StopAlertShow && (
+        <Box position={'absolute'} right={8} top={8} zIndex={10000}>
+          <CloseAlert
+            icon={<></>}
+            sx={{
+              // bgcolor: '#7601D3',
+              // '& .MuiAlert-icon': {
+              //   display: 'none',
+              // },
+              // '& .MuiAlert-message': {
+              //   p: '0!important',
+              // },
+              // '& *': {
+              //   color: '#fff',
+              // },
+              bgcolor: '#fff',
+              border: '1px solid #7601D3',
+              '& *': {
+                color: '#7601D3',
+              },
+            }}
+          >
+            <Stack py={2} spacing={1}>
+              <Typography variant={'body1'} fontSize={16} fontWeight={700}>
+                Stable Mode is enabled
+              </Typography>
+              <Typography variant={'body1'} fontSize={16}>
+                Will be disabled automatically in {showTimeText}
+              </Typography>
+              <Button
+                disableElevation
+                variant={'contained'}
+                sx={{
+                  bgcolor: '#7601D3',
+                  color: '#fff',
+                  '&:hover': {
+                    bgcolor: '#7601D3',
+                  },
+                }}
+                onClick={async () => {
+                  await Browser.storage.local.remove(
+                    CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
+                  )
+                  setStopAlertShow(false)
+                }}
+              >
+                Disable Stable Mode now
+              </Button>
+            </Stack>
+          </CloseAlert>
+        </Box>
+      )}
+    </>
+  )
 }
 
 export default OpenAIDaemonProcess

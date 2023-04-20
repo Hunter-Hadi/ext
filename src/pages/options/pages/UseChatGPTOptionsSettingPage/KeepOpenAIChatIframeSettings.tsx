@@ -1,17 +1,21 @@
 import React, { FC, useEffect, useState } from 'react'
 import {
-  Button,
   Box,
   LinearProgress,
   LinearProgressProps,
   Slider,
   Typography,
+  FormControl,
+  Stack,
+  Switch,
 } from '@mui/material'
 import CloseAlert from '@/components/CloseAlert'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY } from '@/types'
 import dayjs from 'dayjs'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import BulletList from '@/components/BulletList'
+import { useFocus } from '@/hooks/useFocus'
 
 const useCountDown = (duration: number) => {
   const [timeLeft, setTimeLeft] = useState(duration)
@@ -39,11 +43,17 @@ const useCountDown = (duration: number) => {
   const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
     .toString()
     .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
-
+  const showHoursOrMinutes =
+    hours > 0
+      ? `${hours} hour${hours > 1 ? 's' : ''}`
+      : minutes > 0
+      ? `${minutes} minute${minutes > 1 ? 's' : ''}`
+      : '0'
   return {
     formattedTime,
     timeLeft,
     isRunning: timeLeft > 0,
+    showHoursOrMinutes,
   }
 }
 
@@ -68,10 +78,10 @@ const KeepOpenAIChatIframeSettings: FC = () => {
   const [value, setValue] = useState(30) // 分钟
   const [leftDuration, setLeftDuration] = useState(0) // 毫秒
   const [duration, setDuration] = useState(0) // 毫秒
-  const { isRunning, formattedTime, timeLeft } = useCountDown(leftDuration)
+  const { isRunning, formattedTime, timeLeft, showHoursOrMinutes } =
+    useCountDown(leftDuration)
   const setStopTime = async () => {
-    // const setValue = value
-    const setValue = 2
+    const setValue = value
     await Browser.storage.local.set({
       [CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY]:
         JSON.stringify({
@@ -124,22 +134,93 @@ const KeepOpenAIChatIframeSettings: FC = () => {
     }
     getCacheTime()
   })
+  useFocus(() => {
+    const update = async () => {
+      try {
+        const cache =
+          (await Browser.storage.local.get(
+            CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
+          )) || {}
+        const cacheTime =
+          cache[
+            CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY
+          ]
+        if (!cacheTime) {
+          await Browser.storage.local.remove(
+            CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
+          )
+          setValue(30)
+          setLeftDuration(0)
+          setDuration(0)
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    update()
+  })
   return (
     <>
       <Typography
         fontSize={20}
         fontWeight={700}
         color={'text.primary'}
-        id={'text-select-popup'}
+        id={'keep-chat-alive'}
         mb={2}
       >
-        Keep iframe Chat Settings
+        Stable Mode is enabled
       </Typography>
-      <CloseAlert severity={'warning'}>
-        <Typography fontSize={14} color={'text.primary'}>
-          {`If you select "Auto", the Al will respond in the same language variety or dialect as the selected text.`}
-        </Typography>
+      <CloseAlert severity={'info'}>
+        <Stack spacing={1}>
+          <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
+            Benefits:
+          </Typography>
+          <BulletList
+            textProps={{ fontSize: 14 }}
+            textList={[
+              'Infrequent re-login to ChatGPT',
+              'Reduced OpenAI interruptions',
+              'Reduced network errors',
+              'Reduced webpage refreshes',
+            ]}
+          />
+          <Typography fontSize={16} fontWeight={700} color={'text.primary'}>
+            Caveats:
+          </Typography>
+          <BulletList
+            textList={[
+              `This is a beta feature, so please use it with caution`,
+              `We suggest only enabling it when you are experiencing frequent OpenAI interruptions or network errors`,
+            ]}
+          />
+        </Stack>
       </CloseAlert>
+      <FormControl size="small" sx={{ my: 2 }}>
+        <Stack direction="row" spacing={1} alignItems="center">
+          <Typography>Disabled</Typography>
+          <Switch
+            checked={isRunning}
+            onChange={async (event) => {
+              if (event.target.checked) {
+                await setStopTime()
+              } else {
+                await stop()
+              }
+            }}
+          />
+          <Typography>Enabled</Typography>
+        </Stack>
+      </FormControl>
+      {isRunning ? (
+        <Typography fontSize={14} color={'text.primary'}>
+          Stable Mode will be disabled in {showHoursOrMinutes}.
+        </Typography>
+      ) : (
+        <Typography fontSize={14} color={'text.primary'}>
+          Adjust the duration of automatic disabling for Stable Mode after it
+          has been enabled.
+        </Typography>
+      )}
       {isRunning ? (
         <LinearProgressWithLabel
           value={(timeLeft / duration) * 100}
@@ -147,31 +228,6 @@ const KeepOpenAIChatIframeSettings: FC = () => {
         />
       ) : (
         <MinutesSlider defaultValue={30} onChange={setValue} />
-      )}
-      <p>
-        {timeLeft} / {duration}
-      </p>
-      <p>{formattedTime}</p>
-      {isRunning ? (
-        <Button
-          disabled={value === 0}
-          variant={'contained'}
-          color={'primary'}
-          sx={{ mt: 2, width: 160 }}
-          onClick={stop}
-        >
-          Stop Keep Chat
-        </Button>
-      ) : (
-        <Button
-          disabled={value === 0}
-          variant={'outlined'}
-          color={'primary'}
-          sx={{ mt: 2, width: 160 }}
-          onClick={setStopTime}
-        >
-          Keep Chat Open
-        </Button>
       )}
     </>
   )

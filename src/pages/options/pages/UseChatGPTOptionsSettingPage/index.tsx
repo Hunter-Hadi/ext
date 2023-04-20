@@ -86,9 +86,6 @@ const UseChatGPTOptionsSettingPage = () => {
               })
             }}
           />
-          {/* </Box> */}
-          <Divider sx={{ my: 4 }} />
-          <KeepOpenAIChatIframeSettings />
           <Divider sx={{ my: 4 }} />
           <Typography fontSize={20} fontWeight={700} mb={2}>
             AI output language
@@ -117,6 +114,8 @@ const UseChatGPTOptionsSettingPage = () => {
               await updateChromeExtensionSettings('language', newLanguage)
             }}
           />
+          <Divider sx={{ my: 4 }} />
+          <KeepOpenAIChatIframeSettings />
           <Divider sx={{ my: 4 }} />
           <Typography
             fontSize={20}

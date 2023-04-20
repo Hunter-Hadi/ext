@@ -40,6 +40,7 @@ import {
   IChromeExtensionSettingsContextMenuKey,
   setChromeExtensionSettings,
 } from '@/background/utils'
+import BulletList from '@/components/BulletList'
 
 const rootId = 'root'
 
@@ -353,22 +354,21 @@ const ContextMenuSettings: FC<{
               <Typography fontSize={14} color={'text.primary'}>
                 {`You can:`}
               </Typography>
-              <Typography fontSize={14} color={'text.primary'}>
-                <b>· </b>
-                {`Add new options with your own prompt templates.`}
-              </Typography>
-              <Typography fontSize={14} color={'text.primary'}>
-                <b>· </b>
-                {`Create your own option groups for nested options.`}
-              </Typography>
-              <Typography fontSize={14} color={'text.primary'}>
-                <b>· </b>
-                {`Modify your own option's name, icon, and prompt template.`}
-              </Typography>
-              <Typography fontSize={14} color={'text.primary'}>
-                <b>· </b>
-                {`Drag your own options to reposition them.`}
-              </Typography>
+              <BulletList
+                textProps={{
+                  fontSize: 14,
+                  color: 'text.primary',
+                }}
+                pointProps={{
+                  mr: 2,
+                }}
+                textList={[
+                  'Add new options with your own prompt templates.',
+                  'Create your own option groups for nested options.',
+                  'Modify your own option’s name, icon, and prompt template.',
+                  'Drag your own options to reposition them.',
+                ]}
+              />
               <Typography fontSize={14} color={'text.primary'}>
                 <b>📌 </b>
                 {`Please note that the options marked as "Read only" cannot be edited or moved.`}

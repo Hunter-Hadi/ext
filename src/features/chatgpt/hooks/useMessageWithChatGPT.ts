@@ -15,6 +15,10 @@ import Browser from 'webextension-polyfill'
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
 import { setChromeExtensionSettings } from '@/background/utils'
+import {
+  saveChatGPTErrorRecord,
+  setChatGPTNormalTime,
+} from '@/features/chatgpt/utils/403Recorder'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -206,6 +210,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               let text =
                 error?.message || error || 'Error detected. Please try again.'
               if (is403Error) {
+                saveChatGPTErrorRecord()
                 text = 'Too many requests. Try again in a few seconds.'
               }
               pushMessages.push({
@@ -222,6 +227,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         },
       )
       if (!hasError && currentMessage?.messageId && currentMessage?.text) {
+        setChatGPTNormalTime(Date.now())
         if (saveConversationId) {
           await setChromeExtensionSettings({
             conversationId: saveConversationId,

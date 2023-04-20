@@ -641,6 +641,30 @@ export default [
     },
   },
   {
+    id: 'c93afaf2-080c-4646-a4dc-5e638f9a0cdb',
+    parent: '80e6d17b-2cf5-456b-944b-5f645f0e12de',
+    droppable: true,
+    text: 'Run this prompt',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Prompt template for ChatGPT:\n{{SELECTED_TEXT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ],
+      icon: 'PlayArrow',
+      searchText: 'generate from selection run this prompt',
+    },
+  },
+  {
     id: '202a7ddd-bea5-46b3-b32c-a0300c7ac1ee',
     parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
     droppable: true,

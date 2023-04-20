@@ -168,7 +168,7 @@ const KeepOpenAIChatIframeSettings: FC = () => {
         id={'keep-chat-alive'}
         mb={2}
       >
-        Stable Mode is enabled
+        ChatGPT stable mode
       </Typography>
       <CloseAlert severity={'info'}>
         <Stack spacing={1}>

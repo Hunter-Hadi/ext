@@ -1,14 +1,5 @@
 import React, { FC } from 'react'
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  ListItemIcon,
-} from '@mui/material'
-import LogoutIcon from '@mui/icons-material/Logout'
+import { Avatar, Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
 import { useUseChatGPTUserInfo } from '@/features/chatgpt'
 import useEffectOnce from '@/hooks/useEffectOnce'
@@ -91,9 +82,6 @@ const AccountMenu: FC = () => {
             handleClose()
           }}
         >
-          <ListItemIcon>
-            <LogoutIcon fontSize="small" />
-          </ListItemIcon>
           Logout
         </MenuItem>
       </Menu>

@@ -15,7 +15,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
 import { useMessageWithChatGPT } from '@/features/chatgpt'
 import { setChromeExtensionSettings } from '@/background/utils'
-import { ChatGPTConversationState } from '@/features/gmail'
+import { ChatGPTConversationState } from '@/features/gmail/store'
 
 const ArrowDropDownIconCustom = () => {
   return (

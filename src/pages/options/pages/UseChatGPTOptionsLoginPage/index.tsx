@@ -37,7 +37,7 @@ const UseChatGPTOptionsLoginPage: FC = () => {
           sx={{
             width: 600,
             height: 56,
-            color: 'text.primary',
+            color: 'primary.main',
             fontSize: 24,
           }}
         >

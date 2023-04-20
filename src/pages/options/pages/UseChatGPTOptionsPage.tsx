@@ -6,11 +6,11 @@ import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOption
 import UseChatGPTOptionsEditMenuPage from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { SnackbarProvider } from 'notistack'
-import { useAuthLogin } from '@/features/auth'
+import { useAuthLogin } from '@/features/auth/hooks'
 import UseChatGPTOptionsLoginPage from '@/pages/options/pages/UseChatGPTOptionsLoginPage'
 import AccountMenu from '@/pages/options/components/AccountMenu'
 
-const OptionsPageRouteContext = React.createContext({
+export const OptionsPageRouteContext = React.createContext({
   route: '/',
   setRoute: (route: string) => {
     console.log('setRoute', route)

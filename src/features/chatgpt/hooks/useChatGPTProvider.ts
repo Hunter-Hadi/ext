@@ -12,27 +12,29 @@ const useChatGPTProvider = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const [, setChatGPTMessages] = useRecoilState(ChatGPTMessageState)
   const updateChatGPTProvider = async (provider: IChatGPTProviderType) => {
-    setAppSettings((prevState) => {
-      return {
-        ...prevState,
-        chatGPTProvider: provider,
-      }
-    })
-    setChatGPTMessages([])
-    // 清空本地储存的message
-    await Browser.storage.local.set({
-      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
-    })
-    // 清空本地储存的conversationId
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
-    await port.postMessage({
+    const result = await port.postMessage({
       event: 'Client_switchChatGPTProvider',
       data: {
         provider: provider,
       },
     })
+    if (result.success) {
+      setAppSettings((prevState) => {
+        return {
+          ...prevState,
+          chatGPTProvider: provider,
+        }
+      })
+      setChatGPTMessages([])
+      // 清空本地储存的message
+      await Browser.storage.local.set({
+        [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
+      })
+      // 清空本地储存的conversationId
+      await setChromeExtensionSettings({
+        conversationId: '',
+      })
+    }
   }
   return {
     provider: appSettings.chatGPTProvider,

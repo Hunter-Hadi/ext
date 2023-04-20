@@ -7,10 +7,10 @@ import {
   CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
-  CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
 } from '@/types'
 import {
   backgroundSendAllClientMessage,
+  chromeExtensionLogout,
   createBackgroundMessageListener,
   createChromeExtensionOptionsPage,
 } from '@/background/utils'
@@ -55,14 +55,7 @@ class UseChatGPTPlusChat {
                   },
                 })
               } else {
-                // 清空用户token
-                await Browser.storage.local.remove(
-                  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-                )
-                // 清空用户设置
-                await Browser.storage.local.remove(
-                  CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
-                )
+                await chromeExtensionLogout()
               }
               await this.checkTokenAndUpdateStatus(sender.tab?.id)
               if (!preToken && accessToken) {
@@ -215,8 +208,11 @@ class UseChatGPTPlusChat {
           needSendTextLength + sentTextLength,
         ).length
       } else {
-        // 如果结束了的话, 1秒钟发完剩下的文本
-        const needSendTextLength = Math.floor(messageResult.length * 0.1)
+        // 如果结束了的话, 1秒钟发完剩下的文本, 至少发送10个字符
+        const needSendTextLength = Math.max(
+          Math.floor(messageResult.length * 0.1),
+          10,
+        )
         currentSendTextTextLength = messageResult.slice(
           sentTextLength,
           needSendTextLength + sentTextLength,
@@ -297,7 +293,7 @@ class UseChatGPTPlusChat {
               onMessage({
                 type: 'error',
                 error: `Your premium plan has expired. [Get free quota](${
-                  APP_USE_CHAT_GPT_HOST + '/account/referral'
+                  APP_USE_CHAT_GPT_HOST + '/referral'
                 })`,
                 done: true,
                 data: { text: '', conversationId },

@@ -7,16 +7,20 @@ import {
 } from '@/features/chatgpt'
 import './chatGPT.less'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import { IconButton, Stack, Typography } from '@mui/material'
+import { Box, IconButton, Stack, Typography } from '@mui/material'
 import { IOpenAIChatListenTaskEvent } from '@/background/app'
 import {
   CHAT_GPT_PROMPT_PREFIX,
   CHROME_EXTENSION_POST_MESSAGE_ID,
+  CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
   ROOT_DAEMON_PROCESS_ID,
+  OPENAI_IFRAME_ID,
 } from '@/types'
 import CloseIcon from '@mui/icons-material/Close'
 import Log from '@/utils/Log'
 import { setChromeExtensionSettings } from '@/background/utils'
+import { useInterval } from 'usehooks-ts'
+import dayjs from 'dayjs'
 
 const APP_NAME = process.env.APP_NAME
 const log = new Log('ChatGPTDaemonProcessPage')
@@ -348,8 +352,15 @@ const OpenAIDaemonProcess: FC = () => {
   const [close, setClose] = useState(() => {
     return isDisabledTopBar()
   })
-  if (!showDaemonProcessBar || close) {
+  if (!showDaemonProcessBar) {
     return null
+  }
+  if (close) {
+    return (
+      <>
+        <KeepChatAliveDaemonProcess />
+      </>
+    )
   }
   return (
     <>
@@ -410,8 +421,132 @@ const OpenAIDaemonProcess: FC = () => {
           <CloseIcon />
         </IconButton>
       </Stack>
+      <KeepChatAliveDaemonProcess />
     </>
   )
+}
+
+const openIframe = (path: string) => {
+  const iframeInstance = document.getElementById(
+    OPENAI_IFRAME_ID,
+  ) as HTMLIFrameElement
+  if (iframeInstance) {
+    iframeInstance.src = path
+  } else {
+    const iframe = document.createElement('iframe')
+    iframe.id = OPENAI_IFRAME_ID
+    iframe.style.cssText = `height: 0px; width: 100%;`
+    iframe.src = path
+    iframe.onload = function () {
+      const iframeText =
+        (iframe.contentWindow &&
+          iframe.contentWindow.document.documentElement.innerText) ||
+        '{}'
+      try {
+        const iframeJson = JSON.parse(iframeText)
+        if (iframeJson.expires) {
+          console.log(
+            `[KeepChatAliveDaemonProcess] iframe: Expire date: ${iframeJson.expires}`,
+          )
+        } else if (
+          iframeText.match(
+            /Please stand by|while we are checking your browser|Please turn JavaScript on|Please enable Cookies|reload the page/,
+          )
+        ) {
+          console.log(`[KeepChatAliveDaemonProcess] iframe: BypassCF`)
+        }
+      } catch (e) {
+        console.log(`[KeepChatAliveDaemonProcess] iframe: ${e}`)
+      }
+    }
+    const main = document.querySelector('main')
+    main && main.lastElementChild && main.lastElementChild.appendChild(iframe)
+  }
+}
+
+const fetchAuthSession = (authUrl = '/api/auth/session') => {
+  return new Promise((resolve) => {
+    fetch(authUrl).then((response) => {
+      response.text().then((data) => {
+        try {
+          const contentType = response.headers.get('Content-Type')
+          if (
+            contentType &&
+            contentType.indexOf('application/json') > -1 &&
+            response.status !== 403 &&
+            data.indexOf(`"expires":"`) > -1
+          ) {
+            const iframe = document.getElementById(
+              OPENAI_IFRAME_ID,
+            ) as HTMLIFrameElement
+            if (iframe && iframe.contentWindow) {
+              iframe.contentWindow.document.documentElement.innerHTML = data
+            } else {
+              openIframe(authUrl)
+            }
+            resolve(true)
+          } else {
+            openIframe(authUrl)
+            resolve(false)
+          }
+        } catch (e) {
+          console.log(
+            `[KeepChatAliveDaemonProcess] error: ${e},\nERROR RESPONSE:\n${data}`,
+          )
+          openIframe(authUrl)
+          resolve(false)
+        }
+      })
+    })
+  })
+}
+
+const KeepChatAliveDaemonProcess: FC = () => {
+  const isOpenKeepChatAliveRef = useRef(false)
+  const [switchBoxShow, setSwitchBoxShow] = useState(false)
+  const [boxStyle, setBoxStyle] = useState({
+    x: 0,
+    y: 0,
+  })
+  useInterval(() => {
+    const getSettings = async () => {
+      try {
+        const setting =
+          (await Browser.storage.local.get(
+            CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
+          )) || {}
+        const stopKeepChatIframeSettings =
+          setting[
+            CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY
+          ]
+        if (stopKeepChatIframeSettings) {
+          const { end } = JSON.parse(stopKeepChatIframeSettings)
+          const now = dayjs().utc()
+          if (dayjs(end).utc().diff(now, 'seconds') > 30) {
+            // 当前距离结束时间超过30秒
+            // 开启keep alive iframe
+            isOpenKeepChatAliveRef.current = true
+            // 创建switch
+            return
+          }
+        }
+        isOpenKeepChatAliveRef.current = false
+      } catch (e) {
+        console.error(e)
+        isOpenKeepChatAliveRef.current = false
+      }
+    }
+    getSettings()
+  }, 1000 * 3)
+  useInterval(() => {
+    if (isOpenKeepChatAliveRef.current) {
+      console.log('[KeepChatAliveDaemonProcess]: keep chat alive')
+      fetchAuthSession()
+    } else {
+      console.log('[KeepChatAliveDaemonProcess]: stop keep chat alive')
+    }
+  }, 1000 * 30)
+  return <>{<Stack direction={'row'}></Stack>}</>
 }
 
 export default OpenAIDaemonProcess

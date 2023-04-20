@@ -3,6 +3,7 @@ import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
 } from '@/types'
+import { chromeExtensionLogout } from '@/background/utils'
 
 export const getAccessToken = async () => {
   const cache = await Browser.storage.local.get(
@@ -22,52 +23,76 @@ interface IResponse<T> {
   msg?: string
 }
 
-export const post = async <T>(
+export const post = <T>(
   pathname: string,
   data: any,
   options?: RequestInit,
 ): Promise<IResponse<T>> => {
-  const accessToken = await getAccessToken()
-  return fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify(data),
-    ...options,
+  return new Promise((resolve, reject) => {
+    getAccessToken().then((accessToken) => {
+      fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(data),
+        ...options,
+      })
+        .then((response) => {
+          if (response.ok) {
+            resolve(response.json())
+          } else {
+            if (response.status === 401) {
+              // token过期
+              chromeExtensionLogout()
+            }
+            reject(response)
+          }
+          return undefined
+        })
+        .catch((e) => {
+          console.error(e)
+          return undefined
+        })
+    })
   })
-    .then((response) => {
-      if (response.ok) {
-        return response.json()
-      }
-      return undefined
-    })
-    .catch((e) => {
-      console.error(e)
-      return undefined
-    })
 }
-export const get = async <T>(
+
+export const get = <T>(
   pathname: string,
   options?: RequestInit,
 ): Promise<IResponse<T>> => {
-  const accessToken = await getAccessToken()
-  return fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
-    ...options,
+  return new Promise((resolve, reject) => {
+    try {
+      getAccessToken().then((accessToken) => {
+        fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+          ...options,
+        })
+          .then((response) => {
+            if (response.ok) {
+              resolve(response.json())
+            } else {
+              if (response.status === 401) {
+                // token过期
+                chromeExtensionLogout()
+              }
+              reject(response)
+            }
+            return undefined
+          })
+          .catch((e) => {
+            console.error(e)
+            reject(e)
+            return undefined
+          })
+      })
+    } catch (e) {
+      reject(e)
+    }
   })
-    .then((response) => {
-      if (response.ok) {
-        return response.json()
-      }
-      return undefined
-    })
-    .catch((e) => {
-      console.error(e)
-      return undefined
-    })
 }

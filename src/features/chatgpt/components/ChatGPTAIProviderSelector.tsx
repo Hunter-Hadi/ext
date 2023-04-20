@@ -38,7 +38,12 @@ const ChatGPTAIProviderSelector: FC = () => {
   const clientState = useRecoilValue(ChatGPTClientState)
   const { updateChatGPTProvider, provider } = useChatGPTProvider()
   return (
-    <Stack sx={{ height: 56, p: 1 }} spacing={2} direction={'row'}>
+    <Stack
+      sx={{ height: 56, p: 1 }}
+      spacing={2}
+      direction={'row'}
+      alignItems={'center'}
+    >
       <FormControl size={'small'} sx={{ width: 224, height: 40 }}>
         <InputLabel sx={{ fontSize: '16px' }} id="chatGPT-ai-provider-select">
           AI Provider

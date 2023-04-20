@@ -1,10 +1,11 @@
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
-import React, { FC, useCallback, useRef } from 'react'
+import React, { FC, useCallback, useContext, useRef } from 'react'
 import { Alert, Button, Stack } from '@mui/material'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
+import { OptionsPageRouteContext } from '@/pages/options/pages/UseChatGPTOptionsPage'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
@@ -19,6 +20,7 @@ const SyncSettingCheckerWrapper: FC<{
     syncLocalToServer,
     localSettingsCacheRef,
   } = useSyncSettingsChecker()
+  const routerContext = useContext(OptionsPageRouteContext)
   const isSpecialCaseRef = useRef(true)
   const onlyOnceTimesSaveLocalSettings = useCallback(async () => {
     // 特殊情况处理:
@@ -43,6 +45,9 @@ const SyncSettingCheckerWrapper: FC<{
       if (result.status === 'needSync' && !result.success) {
         onlyOnceTimesSaveLocalSettings().then()
       } else {
+        if (result.status === 'needLogin') {
+          routerContext.setRoute('/login')
+        }
         isSpecialCaseRef.current = false
       }
     })

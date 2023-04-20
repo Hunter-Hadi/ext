@@ -14,7 +14,7 @@ import { useUseChatGPTUserInfo } from '@/features/chatgpt'
 import useEffectOnce from '@/hooks/useEffectOnce'
 
 const AccountMenu: FC = () => {
-  const { syncUserInfo, userInfo } = useUseChatGPTUserInfo()
+  const { syncUserInfo, userInfo, loading } = useUseChatGPTUserInfo()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -37,7 +37,13 @@ const AccountMenu: FC = () => {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            {!loading && (
+              <Avatar
+                sx={{ width: 32, height: 32, textTransform: 'capitalize' }}
+              >
+                {userInfo?.email?.[0] || 'M'}
+              </Avatar>
+            )}
           </IconButton>
         </Tooltip>
       </Box>

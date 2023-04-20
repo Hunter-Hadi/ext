@@ -66,7 +66,7 @@ const UseChatGPTOptionsSettingPage = () => {
           <ReferralInviteCard />
           <Divider sx={{ my: 4 }} />
           <Typography fontSize={20} fontWeight={700} mb={1}>
-            Manage shortcut for quick access
+            Shortcut for quick access
           </Typography>
           <ManageShortcutHelper shortCutKey={shortCutKey} />
           <Divider sx={{ my: 4 }} />

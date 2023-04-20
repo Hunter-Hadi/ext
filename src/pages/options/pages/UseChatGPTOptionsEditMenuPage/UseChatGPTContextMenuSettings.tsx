@@ -329,7 +329,7 @@ const ContextMenuSettings: FC<{
             flexShrink={0}
             id={'edit-menu-options'}
           >
-            Edit menu options
+            Menu options
           </Typography>
           <CloseAlert
             icon={<></>}

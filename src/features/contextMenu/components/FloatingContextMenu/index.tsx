@@ -297,7 +297,6 @@ const FloatingContextMenu: FC<{
                 ) : (
                   <>
                     <AutoHeightTextarea
-                      debounceOnChange={false}
                       textareaRef={textareaRef}
                       placeholder={'Use ChatGPT to edit or generate...'}
                       stopPropagation={false}

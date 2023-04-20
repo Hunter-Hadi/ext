@@ -13,7 +13,6 @@ import {
   ROOT_FLOATING_INPUT_ID,
 } from '@/types'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
-import debounce from 'lodash-es/debounce'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -147,7 +146,6 @@ const AutoHeightTextarea: FC<{
     InputId = ROOT_CHAT_BOX_INPUT_ID,
     stopPropagation = true,
     placeholder = 'Ask ChatGPT...',
-    debounceOnChange = false,
     sx,
   } = props
   // const textareaRef = useRef<null | HTMLTextAreaElement>(null)
@@ -156,13 +154,6 @@ const AutoHeightTextarea: FC<{
   const throttleAutoSizeTextarea = useMemo(
     () => throttle(autoSizeTextarea, 200),
     [],
-  )
-  const debounceOnChangeHandle = useMemo(
-    () =>
-      debounce((value: string) => {
-        onChange?.(value)
-      }, 100),
-    [onChange],
   )
   useEffect(() => {
     setInputValue(defaultValue || '')
@@ -368,11 +359,7 @@ const AutoHeightTextarea: FC<{
             event.currentTarget.value,
           )
           setInputValue(event.currentTarget.value)
-          if (debounceOnChange) {
-            debounceOnChangeHandle(event.currentTarget.value)
-          } else {
-            onChange && onChange(event.currentTarget.value)
-          }
+          onChange && onChange(event.currentTarget.value)
           throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
         }}
         onBlur={(event) => {

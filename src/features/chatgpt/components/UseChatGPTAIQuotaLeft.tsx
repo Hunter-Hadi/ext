@@ -33,7 +33,7 @@ const UseChatGPTAIQuotaLeft: FC = () => {
         )}
       </Stack>
       <Link
-        href={APP_USE_CHAT_GPT_HOST + '/account/referral'}
+        href={APP_USE_CHAT_GPT_HOST + '/referral'}
         target={'_blank'}
         rel="noreferrer"
       >

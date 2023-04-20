@@ -21,6 +21,7 @@ import {
   FloatingTree,
   FloatingFocusManager,
   autoUpdate,
+  Placement,
 } from '@floating-ui/react'
 import { Box, Button, SxProps, Typography } from '@mui/material'
 import { useEffect, useMemo } from 'react'
@@ -283,6 +284,8 @@ export interface MenuProps {
   zIndex?: number
   menuSx?: SxProps
   hoverOpen?: boolean
+  defaultPlacement?: Placement
+  defaultFallbackPlacements?: Placement[]
 }
 
 // eslint-disable-next-line react/display-name
@@ -302,6 +305,8 @@ export const MenuComponent = React.forwardRef<
       customOpen = false,
       needAutoUpdate = false,
       menuSx,
+      defaultPlacement,
+      defaultFallbackPlacements,
       ...props
     },
     forwardedRef,
@@ -331,6 +336,13 @@ export const MenuComponent = React.forwardRef<
         React.isValidElement(child) ? child.props.label : null,
       ) as Array<string | null>,
     )
+    const currentPlacement =
+      defaultPlacement || isFirstDeep ? 'bottom-start' : 'right-start'
+    const currentFallbackPlacements =
+      defaultFallbackPlacements ||
+      (isFirstDeep
+        ? ['bottom-start', 'top-start', 'right']
+        : ['right', 'left', 'bottom', 'top'])
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,
       open: isOpen,
@@ -341,16 +353,14 @@ export const MenuComponent = React.forwardRef<
         }
         setIsOpen(show)
       },
-      placement: isFirstDeep ? 'bottom-start' : 'right-start',
+      placement: currentPlacement,
       middleware: [
         offset({
           mainAxis: isFirstDeep ? 4 : 0,
           alignmentAxis: isFirstDeep ? 0 : -4,
         }),
         flip({
-          fallbackPlacements: isFirstDeep
-            ? ['bottom-start', 'top-start', 'right']
-            : ['right', 'left', 'bottom', 'top'],
+          fallbackPlacements: currentFallbackPlacements,
         }),
         shift(),
       ],

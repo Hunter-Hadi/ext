@@ -66,7 +66,7 @@ const initChromeExtensionInstalled = () => {
     Browser.runtime.onInstalled.addListener(async (object) => {
       if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
         await Browser.tabs.create({
-          url: CHROME_EXTENSION_DOC_URL + '/extension-installed',
+          url: CHROME_EXTENSION_DOC_URL + '/get-started',
         })
       }
       try {

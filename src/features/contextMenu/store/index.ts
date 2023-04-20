@@ -36,6 +36,16 @@ export type ISelection = {
   activeElement: HTMLElement
 }
 
+export const ContextMenuSettingsState = atom<{
+  closeBeforeRefresh: boolean
+}>({
+  key: 'ContextMenuSettingsState',
+  default: {
+    // 在重新开启网页之前都不展示popup button
+    closeBeforeRefresh: false,
+  },
+})
+
 export const RangyCoreState = atom<{
   loaded: boolean
   rangy: any | null

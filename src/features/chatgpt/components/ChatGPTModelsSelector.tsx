@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import {
   Box,
   FormControl,
@@ -15,12 +15,13 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
 import { useMessageWithChatGPT } from '@/features/chatgpt'
 import { setChromeExtensionSettings } from '@/background/utils'
+import { ChatGPTConversationState } from '@/features/gmail/store'
 
 const ArrowDropDownIconCustom = () => {
   return (
     <ArrowDropDownIcon
       sx={{
-        color: 'rgba(0, 0, 0, 0.54)',
+        color: 'text.secondary',
         fontSize: '16px',
         position: 'absolute',
         right: '8px',
@@ -31,6 +32,9 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTModelsSelector: FC = () => {
+  const { loading: chatGPTConversationLoading } = useRecoilValue(
+    ChatGPTConversationState,
+  )
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const { resetConversation } = useMessageWithChatGPT('')
   const memoModels = useMemo(() => {
@@ -41,7 +45,7 @@ const ChatGPTModelsSelector: FC = () => {
   }, [appSettings.models])
   return (
     <>
-      {memoModels.length > 1 && (
+      {memoModels.length > 1 ? (
         <FormControl size="small" sx={{ height: 40 }}>
           <InputLabel
             sx={{ fontSize: '16px' }}
@@ -50,6 +54,7 @@ const ChatGPTModelsSelector: FC = () => {
             <span style={{ fontSize: '16px' }}>Model</span>
           </InputLabel>
           <Select
+            disabled={chatGPTConversationLoading}
             MenuProps={{
               elevation: 0,
               MenuListProps: {
@@ -190,6 +195,10 @@ const ChatGPTModelsSelector: FC = () => {
             })}
           </Select>
         </FormControl>
+      ) : (
+        <Typography fontSize={12} color={'text.secondary'}>
+          GPT-4 is only available in ChatGPT Plus
+        </Typography>
       )}
     </>
   )

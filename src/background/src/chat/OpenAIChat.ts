@@ -251,10 +251,11 @@ class OpenAIChat {
     changeInfo: Browser.Tabs.OnUpdatedChangeInfoType,
   ) {
     if (tabId === this.chatGPTProxyInstance?.id) {
-      if (
-        changeInfo.url &&
-        changeInfo.url.indexOf('https://chat.openai.com/chat') !== 0
-      ) {
+      const isNotOpenAI = !changeInfo.url?.includes('https://chat.openai.com')
+      const isUrlInOpenAIAuth = changeInfo.url?.includes(
+        'https://chat.openai.com/auth',
+      )
+      if (changeInfo.url && (isNotOpenAI || isUrlInOpenAIAuth)) {
         log.info('守护进程url发生变化，守护进程关闭')
         this.chatGPTProxyInstance = undefined
         this.status = 'needAuth'

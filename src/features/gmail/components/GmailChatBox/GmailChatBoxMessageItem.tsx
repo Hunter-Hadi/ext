@@ -94,7 +94,7 @@ const GmailChatBoxMessageItem: FC<{
           userSettings?.colorSchema === 'dark'
             ? '#FFFFFFDE'
             : 'rgba(0,0,0,0.87)!important',
-        maxWidth: '80%',
+        maxWidth: '100%',
         width: 'auto',
         borderRadius: '8px',
         borderBottomRightRadius: 0,

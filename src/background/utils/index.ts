@@ -4,6 +4,7 @@ import { IContextMenuItem } from '@/features/contextMenu'
 import Browser from 'webextension-polyfill'
 import {
   CHAT_GPT_PROVIDER,
+  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
   CHROME_EXTENSION_POST_MESSAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
@@ -321,4 +322,14 @@ export const createChromeExtensionOptionsPage = async (
       active: autoFocus,
     })
   }
+}
+export const chromeExtensionLogout = async () => {
+  // 清空用户token
+  await Browser.storage.local.remove(
+    CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  )
+  // 清空用户设置
+  await Browser.storage.local.remove(
+    CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
+  )
 }

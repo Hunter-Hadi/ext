@@ -6,7 +6,9 @@ import { AppSettingsState } from '@/store'
 import { ROOT_CONTAINER_ID } from '@/types'
 import useCommands from '@/hooks/useCommands'
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import { ContextMenuSettingsState } from '@/features/contextMenu/store'
 const FloatingShortCutsTip: FC = () => {
+  const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { haveSelection, showFloatingContextMenu, floatingDropdownMenuOpen } =
     useFloatingContextMenu()
   const appSettings = useRecoilValue(AppSettingsState)
@@ -14,7 +16,10 @@ const FloatingShortCutsTip: FC = () => {
   const [buttonShow, setButtonShow] = useState(3)
   const { shortCutKey } = useCommands()
   useEffect(() => {
-    if (appSettings.userSettings?.selectionButtonVisible) {
+    if (
+      appSettings.userSettings?.selectionButtonVisible &&
+      !closeBeforeRefresh
+    ) {
       return
     }
     if (haveSelection) {
@@ -28,7 +33,7 @@ const FloatingShortCutsTip: FC = () => {
       }
       setButtonShow(1)
     }
-  }, [haveSelection, appSettings.userSettings])
+  }, [haveSelection, appSettings.userSettings, closeBeforeRefresh])
   useEffect(() => {
     if (buttonShow === 1) {
       setButtonShow(2)

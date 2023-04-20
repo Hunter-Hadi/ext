@@ -102,7 +102,7 @@ const useSyncSettingsChecker = () => {
   )
   const checkSync = async (): Promise<{
     success: boolean
-    status: 'ok' | 'needSync' | 'error'
+    status: 'ok' | 'needSync' | 'error' | 'needLogin'
   }> => {
     try {
       console.log('检测本地设置和服务器设置')
@@ -189,8 +189,15 @@ const useSyncSettingsChecker = () => {
         success: false,
         status: 'error',
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error('对比设置异常: \t', e)
+      if (e.status === 401) {
+        // 未登录
+        return {
+          success: false,
+          status: 'needLogin',
+        }
+      }
       setShowErrorAlert(true)
       return {
         success: false,

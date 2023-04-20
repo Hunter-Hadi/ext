@@ -18,6 +18,9 @@ import ManageShortcutHelper from '@/pages/options/pages/UseChatGPTOptionsSetting
 import SyncSettingCheckerWrapper from '@/pages/options/components/SyncSettingCheckerWrapper'
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import HowToFindSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
+import ReferralInviteCard from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ReferralInviteCard'
+import KeepOpenAIChatIframeSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/KeepOpenAIChatIframeSettings'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -59,6 +62,9 @@ const UseChatGPTOptionsSettingPage = () => {
             mx: 'auto!important',
           }}
         >
+          <HowToFindSettings />
+          <ReferralInviteCard />
+          <Divider sx={{ my: 4 }} />
           <Typography fontSize={20} fontWeight={700} mb={1}>
             Manage shortcut for quick access
           </Typography>
@@ -81,6 +87,8 @@ const UseChatGPTOptionsSettingPage = () => {
             }}
           />
           {/* </Box> */}
+          <Divider sx={{ my: 4 }} />
+          <KeepOpenAIChatIframeSettings />
           <Divider sx={{ my: 4 }} />
           <Typography fontSize={20} fontWeight={700} mb={2}>
             AI output language
@@ -116,7 +124,7 @@ const UseChatGPTOptionsSettingPage = () => {
             color={'text.primary'}
             id={'text-select-popup'}
           >
-            Text select popup
+            Text-select-popup
           </Typography>
           <CloseAlert
             icon={<></>}

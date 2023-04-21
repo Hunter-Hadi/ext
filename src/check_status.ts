@@ -52,6 +52,10 @@ const syncIsLogin = async () => {
       event: 'Client_updateUseChatGPTAuthInfo',
       data: {},
     })
+    await port.postMessage({
+      event: 'Client_destroyWithLogout',
+      data: {},
+    })
   }
 }
 

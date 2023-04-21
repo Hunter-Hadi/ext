@@ -39,6 +39,7 @@ export type IOpenAIChatSendEvent =
   | 'OpenAIDaemonProcess_setDaemonProcess'
   | 'OpenAIDaemonProcess_taskResponse'
   | 'OpenAIDaemonProcess_pong'
+  | 'Client_destroyWithLogout'
 
 // chrome extension 监听event
 export type IChromeExtensionListenEvent =

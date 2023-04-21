@@ -12,6 +12,8 @@ import {
 } from '@/background/utils'
 import Log from '@/utils/Log'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
+import Browser from 'webextension-polyfill'
+import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 
 const log = new Log('Background/Chat/ChatSystem')
 
@@ -52,6 +54,8 @@ class ChatSystem implements ChatInterface {
             }
             break
           case 'Client_authChatGPTProvider': {
+            const { provider } = data
+            await this.switchAdapter(provider)
             await this.auth(sender.tab?.id || 0)
             return {
               success: true,
@@ -115,6 +119,14 @@ class ChatSystem implements ChatInterface {
           case 'Client_abortAskChatGPTQuestion': {
             const { messageId } = data
             await this.abortAskQuestion(messageId)
+            return {
+              success: true,
+              data: {},
+              message: '',
+            }
+          }
+          case 'Client_destroyWithLogout': {
+            await this.destroy()
             return {
               success: true,
               data: {},
@@ -193,6 +205,14 @@ class ChatSystem implements ChatInterface {
     return result
   }
   async destroy() {
+    // 清空本地储存的message
+    await Browser.storage.local.set({
+      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
+    })
+    // 清空本地储存的conversationId
+    await setChromeExtensionSettings({
+      conversationId: '',
+    })
     await this.currentAdapter?.destroy()
   }
 }

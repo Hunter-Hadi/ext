@@ -82,7 +82,7 @@ const AccountMenu: FC = () => {
             handleClose()
           }}
         >
-          Logout
+          Log out
         </MenuItem>
       </Menu>
     </>

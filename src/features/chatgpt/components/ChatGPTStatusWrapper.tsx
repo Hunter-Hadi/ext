@@ -63,14 +63,21 @@ const ChatGPTStatusWrapper: FC = () => {
             }}
           >
             <Stack alignItems={'flex-start'} height={'100%'} spacing={2}>
-              <Stack direction={'row'} alignItems={'center'}>
+              <Stack
+                direction={'row'}
+                alignItems={'center'}
+                justifyContent={'center'}
+                width={'100%'}
+                spacing={1}
+              >
+                <UseChatGptIcon sx={{ fontSize: 20 }} />
                 <Typography
                   fontSize={'20px'}
                   fontWeight={700}
                   color={'text.primary'}
                   textAlign={'center'}
                 >
-                  Log in to continue
+                  Please sign in to continue
                 </Typography>
               </Stack>
               <Link
@@ -94,7 +101,7 @@ const ChatGPTStatusWrapper: FC = () => {
                     },
                   }}
                 >
-                  Log in with Google
+                  Sign in with Google
                 </Button>
               </Link>
             </Stack>
@@ -279,7 +286,9 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               onClick={async () => {
                 await port.postMessage({
                   event: 'Client_authChatGPTProvider',
-                  data: {},
+                  data: {
+                    provider,
+                  },
                 })
               }}
               variant={'contained'}

@@ -27,7 +27,7 @@ const UseChatGPTOptionsLoginPage: FC = () => {
         {/*  />*/}
         {/*</Box>*/}
         <Typography fontSize={24} fontWeight={700}>
-          Log in to manage your settings and create custom prompts
+          Please sign in to manage your settings and create custom prompts
         </Typography>
       </Stack>
       <Link
@@ -51,7 +51,7 @@ const UseChatGPTOptionsLoginPage: FC = () => {
             },
           }}
         >
-          Log in with Google
+          Sign in with Google
         </Button>
       </Link>
     </Stack>

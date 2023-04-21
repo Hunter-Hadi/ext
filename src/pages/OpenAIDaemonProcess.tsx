@@ -149,7 +149,6 @@ const useDaemonProcess = () => {
                   await port.postMessage({
                     event: 'OpenAIDaemonProcess_pong',
                   })
-                  debugger
                   return {
                     success: true,
                     data: {},

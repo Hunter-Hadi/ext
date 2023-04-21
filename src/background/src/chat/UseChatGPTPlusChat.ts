@@ -63,6 +63,11 @@ class UseChatGPTPlusChat {
               if (!preToken && accessToken) {
                 await createChromeExtensionOptionsPage('', false)
               }
+              return {
+                success: true,
+                message: 'ok',
+                data: {},
+              }
             }
             break
           case 'Client_getUseChatGPTUserInfo':

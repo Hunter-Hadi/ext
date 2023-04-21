@@ -1,5 +1,5 @@
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
-import React, { FC, useCallback, useContext, useRef } from 'react'
+import React, { FC, useCallback, useContext, useRef, useState } from 'react'
 import {
   Alert,
   Backdrop,
@@ -12,6 +12,7 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
 import { OptionsPageRouteContext } from '@/pages/options/pages/UseChatGPTOptionsPage'
+import AppLoadingLayout from '@/components/AppLoadingLayout'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
@@ -26,6 +27,7 @@ const SyncSettingCheckerWrapper: FC<{
     syncLocalToServer,
     localSettingsCacheRef,
   } = useSyncSettingsChecker()
+  const [loaded, setLoaded] = useState(false)
   const routerContext = useContext(OptionsPageRouteContext)
   const isSpecialCaseRef = useRef(true)
   const onlyOnceTimesSaveLocalSettings = useCallback(async () => {
@@ -47,16 +49,21 @@ const SyncSettingCheckerWrapper: FC<{
 
   useEffectOnce(() => {
     console.log('SyncSettingCheckerWrapper')
-    checkSync().then((result) => {
-      if (result.status === 'needSync' && !result.success) {
-        onlyOnceTimesSaveLocalSettings().then()
-      } else {
-        if (result.status === 'needLogin') {
-          routerContext.setRoute('/login')
+    checkSync()
+      .then((result) => {
+        if (result.status === 'needSync' && !result.success) {
+          onlyOnceTimesSaveLocalSettings().then()
+        } else {
+          if (result.status === 'needLogin') {
+            routerContext.setRoute('/login')
+          }
+          isSpecialCaseRef.current = false
         }
-        isSpecialCaseRef.current = false
-      }
-    })
+      })
+      .catch()
+      .finally(() => {
+        setLoaded(true)
+      })
   })
   useFocus(() => {
     if (isSpecialCaseRef.current) return
@@ -73,7 +80,7 @@ const SyncSettingCheckerWrapper: FC<{
           }}
         >
           <Alert severity="error">
-            Something went wrong when getting your online account settings.
+            Something went wrong when syncing your online account settings.
             Please try again by refreshing the page.
           </Alert>
           <Button variant={'contained'} color={'primary'}>
@@ -134,7 +141,7 @@ const SyncSettingCheckerWrapper: FC<{
     }
   }
   return (
-    <>
+    <AppLoadingLayout loading={!loaded}>
       <Backdrop
         sx={{
           color: '#fff',
@@ -151,12 +158,12 @@ const SyncSettingCheckerWrapper: FC<{
             fontSize={16}
             lineHeight={1.25}
           >
-            Data syncing...
+            Syncing...
           </Typography>
         </Stack>
       </Backdrop>
       {children}
-    </>
+    </AppLoadingLayout>
   )
 }
 export default SyncSettingCheckerWrapper

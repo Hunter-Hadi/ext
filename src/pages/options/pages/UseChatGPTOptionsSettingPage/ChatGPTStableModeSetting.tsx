@@ -17,6 +17,7 @@ import dayjs from 'dayjs'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import BulletList from '@/components/BulletList'
 import { useFocus } from '@/hooks/useFocus'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 const useCountDown = (duration: number) => {
   const [timeLeft, setTimeLeft] = useState(duration)
@@ -47,9 +48,9 @@ const useCountDown = (duration: number) => {
   const showHoursOrMinutes =
     hours > 0
       ? `${hours} hour${hours > 1 ? 's' : ''}`
-      : minutes > 0
-      ? `${minutes} minute${minutes > 1 ? 's' : ''}`
-      : '0'
+      : minutes > 1
+      ? `${minutes} minutes`
+      : '1 minute'
   return {
     formattedTime,
     timeLeft,
@@ -75,8 +76,11 @@ function LinearProgressWithLabel(
   )
 }
 
-const KeepOpenAIChatIframeSettings: FC = () => {
-  const [value, setValue] = useState(30) // 分钟
+const ChatGPTStableModeSetting: FC<{
+  defaultValue?: number
+  onChange?: (value: number) => void
+}> = ({ defaultValue, onChange }) => {
+  const [value, setValue] = useState(defaultValue || 30) // 分钟
   const [leftDuration, setLeftDuration] = useState(0) // 毫秒
   const [duration, setDuration] = useState(0) // 毫秒
   const { isRunning, formattedTime, timeLeft, showHoursOrMinutes } =
@@ -92,12 +96,12 @@ const KeepOpenAIChatIframeSettings: FC = () => {
     })
     setDuration(setValue * 60 * 1000)
     setLeftDuration(setValue * 60 * 1000)
+    onChange && onChange(setValue)
   }
   const stop = async () => {
     await Browser.storage.local.remove(
       CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
     )
-    setValue(30)
     setLeftDuration(0)
     setDuration(0)
   }
@@ -150,7 +154,6 @@ const KeepOpenAIChatIframeSettings: FC = () => {
           await Browser.storage.local.remove(
             CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
           )
-          setValue(30)
           setLeftDuration(0)
           setDuration(0)
         }
@@ -186,10 +189,10 @@ const KeepOpenAIChatIframeSettings: FC = () => {
           <BulletList
             textProps={{ fontSize: 14 }}
             textList={[
-              'Infrequent re-login to ChatGPT',
-              'Reduced OpenAI interruptions',
-              'Reduced network errors',
-              'Reduced webpage refreshes',
+              'Reduced ChatGPT login interruptions',
+              'Reduced ChatGPT network errors',
+              'Reduced ChatGPT Cloudflare checks',
+              'Reduced ChatGPT webpage refreshes',
             ]}
           />
           <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
@@ -199,7 +202,7 @@ const KeepOpenAIChatIframeSettings: FC = () => {
             textProps={{ fontSize: 14 }}
             textList={[
               `This is a beta feature, so please use it with caution`,
-              `We suggest only enabling it when you are experiencing frequent OpenAI interruptions or network errors`,
+              `We recommend enabling it only when you're experiencing frequent ChatGPT interruptions or network errors`,
             ]}
           />
         </Stack>
@@ -212,6 +215,11 @@ const KeepOpenAIChatIframeSettings: FC = () => {
             onChange={async (event) => {
               if (event.target.checked) {
                 await setStopTime()
+                sendLarkBotMessage(
+                  'Stable Mode Enabled',
+                  `duration: ${value}`,
+                  { uuid: 'dd385931-45f4-4de1-8e48-8145561b0f9d' },
+                )
               } else {
                 await stop()
               }
@@ -236,7 +244,7 @@ const KeepOpenAIChatIframeSettings: FC = () => {
           label={formattedTime}
         />
       ) : (
-        <MinutesSlider defaultValue={30} onChange={setValue} />
+        <MinutesSlider defaultValue={value} onChange={setValue} />
       )}
     </>
   )
@@ -338,4 +346,4 @@ const MinutesSlider: FC<{
     />
   )
 }
-export default KeepOpenAIChatIframeSettings
+export default ChatGPTStableModeSetting

@@ -97,6 +97,11 @@ class OpenAIChat {
           case 'OpenAIDaemonProcess_pong':
             {
               log.info('DaemonProcess_pong')
+              return {
+                success: true,
+                message: '',
+                data: {},
+              }
             }
             break
           default:
@@ -202,6 +207,7 @@ class OpenAIChat {
     }
     // 不存在守护进程，重新创建
     // TODO: 重新创建守护进程
+    debugger
     await this.destroy()
     return {
       success: false,
@@ -224,7 +230,7 @@ class OpenAIChat {
         this.chatGPTProxyInstance.id
       ) {
         log.info('keepAliveDaemonProcess')
-        await Browser.tabs.sendMessage(this.chatGPTProxyInstance.id, {
+        Browser.tabs.sendMessage(this.chatGPTProxyInstance.id, {
           id: CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'OpenAIDaemonProcess_ping',
         })
@@ -241,6 +247,7 @@ class OpenAIChat {
       tabId === this.chatGPTProxyInstance.id
     ) {
       log.info('守护进程关闭')
+      debugger
       this.chatGPTProxyInstance = undefined
       this.status = 'needAuth'
       await this.updateClientStatus()
@@ -256,6 +263,7 @@ class OpenAIChat {
         'https://chat.openai.com/auth',
       )
       if (changeInfo.url && (isNotOpenAI || isUrlInOpenAIAuth)) {
+        debugger
         log.info('守护进程url发生变化，守护进程关闭')
         this.chatGPTProxyInstance = undefined
         this.status = 'needAuth'

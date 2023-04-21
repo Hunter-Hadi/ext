@@ -15,6 +15,7 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import Log from '@/utils/Log'
+import { useAuthLogin } from '@/features/auth'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -140,6 +141,7 @@ export const AppSettingsInit = () => {
 const AppInit = () => {
   const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
+  useAuthLogin()
   return (
     <>
       {appState.env === 'gmail' && isEzMailApp && <GmailInit />}

@@ -20,7 +20,7 @@ import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker
 import useEffectOnce from '@/hooks/useEffectOnce'
 import HowToFindSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
 import ReferralInviteCard from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ReferralInviteCard'
-import KeepOpenAIChatIframeSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/KeepOpenAIChatIframeSettings'
+import ChatGPTStableModeSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTStableModeSetting'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -115,7 +115,15 @@ const UseChatGPTOptionsSettingPage = () => {
             }}
           />
           <Divider sx={{ my: 4 }} />
-          <KeepOpenAIChatIframeSettings />
+          <ChatGPTStableModeSetting
+            defaultValue={userSettingsRef.current.chatGPTStableModeDuration}
+            onChange={async (newDuration) => {
+              await updateChromeExtensionSettings(
+                'chatGPTStableModeDuration',
+                newDuration,
+              )
+            }}
+          />
           <Divider sx={{ my: 4 }} />
           <Typography
             fontSize={20}

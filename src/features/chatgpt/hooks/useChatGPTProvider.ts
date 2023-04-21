@@ -19,11 +19,15 @@ const useChatGPTProvider = () => {
       },
     })
     if (result.success) {
+      console.log('updateChatGPTProvider switch new provider', provider)
       setAppSettings((prevState) => {
         return {
           ...prevState,
           chatGPTProvider: provider,
         }
+      })
+      await setChromeExtensionSettings({
+        chatGPTProvider: provider,
       })
       setChatGPTMessages([])
       // 清空本地储存的message

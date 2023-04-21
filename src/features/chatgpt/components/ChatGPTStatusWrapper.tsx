@@ -1,17 +1,23 @@
 import { FC, useEffect, useState } from 'react'
-import { Box, Stack, Paper, Typography, Button } from '@mui/material'
+import { Box, Stack, Paper, Typography, Button, Link } from '@mui/material'
 import React from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { CHAT_GPT_PROVIDER } from '@/types'
+import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import CheckIcon from '@mui/icons-material/Check'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
-import { ChatGPTIcon, UseChatGptIcon } from '@/components/CustomIcon'
+import {
+  ChatGPTIcon,
+  GoogleIcon,
+  UseChatGptIcon,
+} from '@/components/CustomIcon'
+import { AuthState } from '@/features/auth/store'
 const port = new ContentScriptConnectionV2()
 
 const ChatGPTStatusWrapper: FC = () => {
+  const [authLogin] = useRecoilState(AuthState)
   const { status } = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
   useEffect(() => {
@@ -27,6 +33,76 @@ const ChatGPTStatusWrapper: FC = () => {
       }
     }
   }, [status])
+  if (!authLogin.isLogin) {
+    return (
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1000,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          '& + *': {
+            filter: 'blur(5px)',
+          },
+        }}
+      >
+        <Stack spacing={2} width={'calc(100% - 16px)'}>
+          <Paper
+            sx={{
+              maxWidth: '414px',
+              mx: 'auto!important',
+              width: '100%',
+              p: 2,
+              bgcolor: 'background.paper',
+            }}
+          >
+            <Stack alignItems={'flex-start'} height={'100%'} spacing={2}>
+              <Stack direction={'row'} alignItems={'center'}>
+                <Typography
+                  fontSize={'20px'}
+                  fontWeight={700}
+                  color={'text.primary'}
+                  textAlign={'center'}
+                >
+                  Log in to continue
+                </Typography>
+              </Stack>
+              <Link
+                href={APP_USE_CHAT_GPT_HOST + '/login?auto=true'}
+                target={'_blank'}
+                sx={{ width: '100%' }}
+              >
+                <Button
+                  fullWidth
+                  startIcon={<GoogleIcon />}
+                  disableElevation
+                  variant={'outlined'}
+                  sx={{
+                    height: 40,
+                    borderColor: 'customColor.borderColor',
+                    color: 'text.secondary',
+                    textIndent: '16px',
+                    fontSize: 14,
+                    '&:hover': {
+                      color: 'text.primary',
+                    },
+                  }}
+                >
+                  Log in with Google
+                </Button>
+              </Link>
+            </Stack>
+          </Paper>
+        </Stack>
+      </Box>
+    )
+  }
   if (status === 'success') {
     return null
   }
@@ -115,12 +191,11 @@ const ChatGPTProviderAuthWrapper: FC = () => {
   const buttonTitle =
     provider === CHAT_GPT_PROVIDER.OPENAI
       ? 'Log in to ChatGPT'
-      : 'Log in to UseChatGPT.AI'
+      : 'Continue with UseChatGPT.AI'
   const nextProviderText =
     provider === CHAT_GPT_PROVIDER.OPENAI
       ? 'continue with UseChatGPT.AI account'
       : 'continue with your own ChatGPT account'
-
   const switchProvider = async () => {
     const nextProvider =
       provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS
@@ -210,7 +285,11 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               variant={'contained'}
               disableElevation
               fullWidth
-              endIcon={<OpenInNewIcon />}
+              endIcon={
+                provider !== CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
+                  <OpenInNewIcon />
+                )
+              }
             >
               {buttonTitle}
             </Button>

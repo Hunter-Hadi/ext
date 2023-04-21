@@ -1,8 +1,8 @@
 import { Button, Link, Stack, Typography } from '@mui/material'
 import React, { FC } from 'react'
 // import { UseChatGptIcon } from '@/components/CustomIcon'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import { GoogleIcon } from '@/components/CustomIcon'
 const UseChatGPTOptionsLoginPage: FC = () => {
   return (
     <Stack
@@ -30,18 +30,28 @@ const UseChatGPTOptionsLoginPage: FC = () => {
           Log in to manage your settings and create custom prompts
         </Typography>
       </Stack>
-      <Link href={APP_USE_CHAT_GPT_HOST + '/login'} target={'_blank'}>
+      <Link
+        href={APP_USE_CHAT_GPT_HOST + '/login?auto=true'}
+        target={'_blank'}
+        sx={{ width: '100%' }}
+      >
         <Button
-          endIcon={<OpenInNewIcon />}
+          fullWidth
+          startIcon={<GoogleIcon />}
+          disableElevation
           variant={'outlined'}
           sx={{
-            width: 600,
-            height: 56,
-            color: 'primary.main',
-            fontSize: 24,
+            height: 40,
+            borderColor: 'customColor.borderColor',
+            color: 'text.secondary',
+            textIndent: '16px',
+            fontSize: 14,
+            '&:hover': {
+              color: 'text.primary',
+            },
           }}
         >
-          Log in to UseChatGPT.AI
+          Log in with Google
         </Button>
       </Link>
     </Stack>

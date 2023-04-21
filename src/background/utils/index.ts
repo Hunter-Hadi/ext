@@ -44,6 +44,7 @@ export type IChromeExtensionSettings = {
     colorSchema?: 'light' | 'dark'
     language?: string
     selectionButtonVisible?: boolean
+    chatGPTStableModeDuration?: number
   }
   lastModified?: number
 }
@@ -54,30 +55,39 @@ export type IChromeExtensionSettingsContextMenuKey =
 
 export const getChromeExtensionSettings =
   async (): Promise<IChromeExtensionSettings> => {
+    const defaultConfig = {
+      commands: [],
+      models: [],
+      currentModel: '',
+      conversationId: '',
+      chatGPTProvider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+      contextMenus: defaultContextMenuJson,
+      gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
+      userSettings: {
+        chatGPTStableModeDuration: 30,
+        colorSchema: undefined,
+        language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+        selectionButtonVisible: true,
+      },
+    } as IChromeExtensionSettings
     const localData = await Browser.storage.local.get(
       CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
     )
     try {
-      const settings = JSON.parse(
-        localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY],
-      )
-      return settings
+      if (localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]) {
+        const settings = {
+          // 因为每次版本更新都可能会有新字段，用本地的覆盖默认的就行
+          ...defaultConfig,
+          ...JSON.parse(
+            localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY],
+          ),
+        }
+        return settings
+      } else {
+        return defaultConfig
+      }
     } catch (e) {
       // 说明没有这个字段，应该返回默认的配置
-      const defaultConfig = {
-        commands: [],
-        models: [],
-        currentModel: '',
-        conversationId: '',
-        chatGPTProvider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-        contextMenus: defaultContextMenuJson,
-        gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
-        userSettings: {
-          colorSchema: undefined,
-          language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-          selectionButtonVisible: true,
-        },
-      } as IChromeExtensionSettings
       return defaultConfig
     }
   }

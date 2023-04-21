@@ -23,6 +23,7 @@ import { useInterval } from 'usehooks-ts'
 import dayjs from 'dayjs'
 import CloseAlert from '@/components/CloseAlert'
 import { chromeExtensionClientOpenPage } from '@/utils'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 
 const APP_NAME = process.env.APP_NAME
 const log = new Log('ChatGPTDaemonProcessPage')
@@ -148,6 +149,12 @@ const useDaemonProcess = () => {
                   await port.postMessage({
                     event: 'OpenAIDaemonProcess_pong',
                   })
+                  debugger
+                  return {
+                    success: true,
+                    data: {},
+                    message: 'ok',
+                  }
                 }
                 break
               case 'OpenAIDaemonProcess_createConversation':
@@ -589,13 +596,13 @@ const KeepChatAliveDaemonProcess: FC = () => {
               bgcolor: '#fff',
               border: '1px solid #7601D3',
               '& > div': {
-                '&:first-child': {
+                '&:first-of-type': {
                   display: 'none',
                 },
-                '&:nth-child(2)': {
+                '&:nth-of-type(2)': {
                   padding: '0!important',
                 },
-                '&:last-child': {
+                '&:last-of-type': {
                   margin: '0!important',
                   padding: '0!important',
                   position: 'absolute',
@@ -609,9 +616,12 @@ const KeepChatAliveDaemonProcess: FC = () => {
             }}
           >
             <Stack spacing={1}>
-              <Typography variant={'body1'} fontSize={16} fontWeight={700}>
-                Stable Mode is enabled
-              </Typography>
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <UseChatGptIcon sx={{ fontSize: 16 }} />
+                <Typography variant={'body1'} fontSize={16} fontWeight={700}>
+                  Stable Mode is enabled
+                </Typography>
+              </Stack>
               <Typography variant={'body1'} fontSize={16}>
                 Will be disabled automatically in {showTimeText}
               </Typography>

@@ -196,7 +196,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             if (currentMessage?.messageId) {
               pushMessages.push(currentMessage as IGmailChatMessage)
             }
-            error = '403'
             const is403Error =
               typeof error === 'string' && error?.trim() === '403'
             if (error === 'Conversation not found' || is403Error) {

@@ -196,6 +196,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             if (currentMessage?.messageId) {
               pushMessages.push(currentMessage as IGmailChatMessage)
             }
+            error = '403'
             const is403Error =
               typeof error === 'string' && error?.trim() === '403'
             if (error === 'Conversation not found' || is403Error) {
@@ -211,8 +212,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 error?.message || error || 'Error detected. Please try again.'
               if (is403Error) {
                 saveChatGPTErrorRecord()
-                text =
-                  'Log in to ChatGPT (pass Cloudflare check) and try again.'
+                text = `Log in to ChatGPT and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
               }
               pushMessages.push({
                 type: 'system',

@@ -652,7 +652,7 @@ export default [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
-            template: 'Prompt template for ChatGPT:\n{{SELECTED_TEXT}}',
+            template: '{{SELECTED_TEXT}}',
           },
         },
         {

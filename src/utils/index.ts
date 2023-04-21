@@ -228,8 +228,15 @@ export const countryOptions = () => {
   return options
 }
 
+export const CLIENT_OPEN_PAGE_KEYS = [
+  'shortcuts',
+  'options',
+  'daemon_process',
+  'current_page',
+] as const
+
 export const chromeExtensionClientOpenPage = async (params: {
-  key?: 'shortcuts' | 'options' | 'daemon_process' | 'current_page'
+  key?: (typeof CLIENT_OPEN_PAGE_KEYS)[number]
   url?: string
   query?: string
 }) => {

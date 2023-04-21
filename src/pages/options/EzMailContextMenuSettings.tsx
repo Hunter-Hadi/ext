@@ -24,7 +24,7 @@ import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from './components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 import {
   getChromeExtensionContextMenu,
   IChromeExtensionSettingsContextMenuKey,

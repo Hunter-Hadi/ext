@@ -1,5 +1,5 @@
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 import { IContextMenuItem } from '@/features/contextMenu'
 import Browser from 'webextension-polyfill'
 import {

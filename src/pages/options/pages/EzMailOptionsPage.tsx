@@ -3,7 +3,7 @@ import '../../OptionsPage.less'
 import { Container, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import ContextMenuSettings from '@/pages/options/EzMailContextMenuSettings'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 
 const APP_NAME = process.env.APP_NAME
 

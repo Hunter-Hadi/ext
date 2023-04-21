@@ -629,7 +629,7 @@ const KeepChatAliveDaemonProcess: FC = () => {
                 onClick={async () => {
                   await chromeExtensionClientOpenPage({
                     key: 'options',
-                    query: '#keep-chat-alive',
+                    query: '#chatgpt-stable-mode',
                   })
                 }}
               >

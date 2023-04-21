@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
-import defaultContextMenuJson from '@/pages/options/defaultContextMenuJson'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/defaultGmailToolbarContextMenuJson'
+import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 import { useMemo } from 'react'
 import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
 

@@ -166,7 +166,7 @@ const KeepOpenAIChatIframeSettings: FC = () => {
         fontSize={20}
         fontWeight={700}
         color={'text.primary'}
-        id={'keep-chat-alive'}
+        id={'chatgpt-stable-mode'}
         mb={2}
       >
         ChatGPT stable mode

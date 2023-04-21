@@ -17,11 +17,11 @@ export const createDaemonProcessTab = async () => {
   if (pinedTabs.length > 0 && pinedTabs[0].id) {
     tab = await Browser.tabs.update(pinedTabs[0].id, {
       active: true,
-      url: 'https://chat.openai.com/chat',
+      url: 'https://chat.openai.com',
     })
   } else {
     tab = await Browser.tabs.create({
-      url: 'https://chat.openai.com/chat',
+      url: 'https://chat.openai.com',
       pinned: true,
     })
   }

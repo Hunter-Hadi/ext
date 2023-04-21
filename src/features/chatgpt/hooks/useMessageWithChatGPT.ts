@@ -9,9 +9,7 @@ import {
 } from '@/features/gmail/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 import { AppSettingsState } from '@/store'
-import Browser from 'webextension-polyfill'
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
 import { setChromeExtensionSettings } from '@/background/utils'
@@ -19,6 +17,7 @@ import {
   saveChatGPTErrorRecord,
   setChatGPTNormalTime,
 } from '@/features/chatgpt/utils/403Recorder'
+import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -35,33 +34,23 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
+  const { cleanChatGPT } = useCleanChatGPT()
   const resetConversation = async () => {
-    const result = await port.postMessage({
-      event: 'Client_removeChatGPTConversation',
-      data: {},
-    })
-    log.info(
-      '[ChatGPT]: resetConversation',
-      result.data,
-      defaultValueRef.current,
-      appSettings.currentModel,
-    )
+    port
+      .postMessage({
+        event: 'Client_removeChatGPTConversation',
+        data: {},
+      })
+      .then((result) => {
+        log.info(
+          '[ChatGPT]: resetConversation',
+          result.data,
+          defaultValueRef.current,
+          appSettings.currentModel,
+        )
+      })
     setInputValue(defaultValueRef.current)
-    setMessages([])
-    setConversation({
-      model: appSettings.currentModel || '',
-      conversationId: '',
-      writingMessage: null,
-      loading: false,
-    })
-    // 清空本地储存的message
-    await Browser.storage.local.set({
-      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
-    })
-    // 清空本地储存的conversationId
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
+    await cleanChatGPT()
   }
   /**
    * 创建会话目的是初始化并获取缓存中使用的conversationId, 不会创建conversationId

@@ -69,6 +69,13 @@ const useDaemonProcess = () => {
         return
       }
     }
+    const newChatA = document.querySelectorAll('a')
+    for (let i = 0; i < newChatA.length; i++) {
+      if ((navA[i] as HTMLElement)?.innerText === 'New chat') {
+        setPageSuccessLoaded(true)
+        return
+      }
+    }
     setPageSuccessLoaded(false)
   }
   useEffect(() => {
@@ -136,6 +143,11 @@ const useDaemonProcess = () => {
           }
         })
       const listener = async (msg: any) => {
+        setInterval(() => {
+          port.postMessage({
+            event: 'OpenAIDaemonProcess_pong',
+          })
+        }, 1000)
         const { event, data } = msg
         if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
           return

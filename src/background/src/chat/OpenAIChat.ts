@@ -268,8 +268,36 @@ class OpenAIChat {
       }
       if (changeInfo.status === 'loading' || changeInfo.status === 'complete') {
         log.info('守护进程url状态更新', changeInfo.status)
-        // this.status = changeInfo.status
-        // await this.updateClientStatus()
+        this.status = changeInfo.status
+        await this.updateClientStatus()
+        await this.pingAwaitSuccess()
+      }
+    }
+  }
+  async pingAwaitSuccess() {
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms))
+    if (this.chatGPTProxyInstance?.id && this.active) {
+      log.info('start ping await success')
+      let isOk = false
+      for (let i = 0; i < 20; i++) {
+        if (isOk) {
+          break
+        }
+        Browser.tabs
+          .sendMessage(this.chatGPTProxyInstance.id, {
+            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            event: 'OpenAIDaemonProcess_ping',
+          })
+          .then((result) => {
+            if (result.success) {
+              log.info('ping await success')
+              this.status = 'success'
+              this.updateClientStatus()
+              isOk = true
+            }
+          })
+        await delay(1000)
       }
     }
   }

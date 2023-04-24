@@ -1,19 +1,19 @@
 import React, { FC, useMemo } from 'react'
 import { Button, Stack } from '@mui/material'
 import ReplyIcon from '@mui/icons-material/Reply'
-import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
 import { useInboxComposeViews } from '@/features/gmail/hooks'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { hideChatBox } from '@/utils'
 import { gmailReplyBoxInsertText } from '@/features/gmail/utils'
 import { useRangy } from '@/features/contextMenu/hooks'
+import { IChatMessage } from '@/features/chatgpt/types'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
 const GmailChatBoxAiTools: FC<{
   insertAble?: boolean
   replaceAble?: boolean
-  message: IGmailChatMessage
+  message: IChatMessage
   onCopy?: () => void
 }> = (props) => {
   const { currentComposeView } = useInboxComposeViews()
@@ -48,7 +48,7 @@ const GmailChatBoxAiTools: FC<{
           Insert
         </Button>
       )}
-      {/*// TODO 边界情况太多了*/}
+      {/*// FIXME: 边界情况太多了*/}
       {false &&
         replaceAble &&
         !insertAbleMemo &&

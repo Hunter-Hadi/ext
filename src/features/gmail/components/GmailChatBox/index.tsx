@@ -29,14 +29,7 @@ import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevTextSendControl'
-
-export interface IGmailChatMessage {
-  type: 'user' | 'ai' | 'system' | 'third'
-  messageId: string
-  parentMessageId?: string
-  text: string
-  status?: 'error' | 'success'
-}
+import { IChatMessage } from '@/features/chatgpt/types'
 
 const MAX_NORMAL_INPUT_LENGTH = 10000
 const MAX_GPT4_INPUT_LENGTH = 80000
@@ -55,8 +48,8 @@ interface IGmailChatBoxProps {
   onStopGenerate?: () => void
   onReset?: () => void
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
-  messages: IGmailChatMessage[]
-  writingMessage: IGmailChatMessage | null
+  messages: IChatMessage[]
+  writingMessage: IChatMessage | null
   onSendMessage?: (text: string) => void
   defaultValue?: string
   onRetry?: (messageId: string) => void
@@ -91,6 +84,8 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [inputValue, setInputValue] = useState(defaultValue || '')
   // 为了在消息更新前计算滚动高度
   const currentMaxInputLength = useMemo(() => {
+    // NOTE: GPT-4 最大输入长度为 80000，GPT-3 最大输入长度为 10000, 我们后端最多6000，所以这里写死4000
+    return 4000
     return conversation.model === 'gpt-4'
       ? MAX_GPT4_INPUT_LENGTH
       : MAX_NORMAL_INPUT_LENGTH
@@ -188,7 +183,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       }}
     >
       <style>{markdownCss}</style>
-      {/*//TODO hide title*/}
+      {/*//NOTE: hide title*/}
       {/*<Stack*/}
       {/*  flexShrink={0}*/}
       {/*  height={56}*/}

@@ -4,6 +4,7 @@ import {
   getChromeExtensionSettings,
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
 
 /**
  * 创建守护进程的tab
@@ -57,10 +58,7 @@ export const askChatGPTQuestion = async (
     conversationId: string
     question: string
   },
-  options: {
-    regenerate: boolean
-    includeHistory: boolean
-  },
+  options: IUserSendMessageExtraType,
   {
     onMessage,
     onError,

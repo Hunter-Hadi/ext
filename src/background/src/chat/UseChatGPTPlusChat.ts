@@ -141,6 +141,7 @@ class UseChatGPTPlusChat {
       include_history?: boolean
       regenerate?: boolean
       streaming?: boolean
+      max_history_message_cnt?: number
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -152,12 +153,14 @@ class UseChatGPTPlusChat {
       }
     }) => void,
   ) {
+    debugger
     const cacheConversationId = await getCacheConversationId()
     const {
       include_history = false,
       taskId,
       streaming = true,
       regenerate = false,
+      max_history_message_cnt = 0,
     } = options || {}
     const postBody = Object.assign(
       {
@@ -165,6 +168,7 @@ class UseChatGPTPlusChat {
         regenerate,
         streaming,
         message_content: question,
+        max_history_message_cnt,
       },
       cacheConversationId ? { conversation_id: cacheConversationId } : {},
     )

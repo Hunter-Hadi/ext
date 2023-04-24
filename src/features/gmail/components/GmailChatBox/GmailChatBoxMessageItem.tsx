@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { IGmailChatMessage } from '@/features/gmail/index'
 import { Alert, Stack, SxProps, Theme } from '@mui/material'
 import GmailChatBoxUserTools from './GmailChatBoxUserTools'
 import GmailChatBoxAiTools from './GmailChatBoxAiTools'
@@ -8,12 +7,13 @@ import { ROOT_CONTAINER_ID } from '@/types'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import CustomMarkdown from '@/components/CustomMarkdown'
+import { IChatMessage } from '@/features/chatgpt/types'
 
 const GmailChatBoxMessageItem: FC<{
   replaceAble?: boolean
   insertAble?: boolean
   editAble?: boolean
-  message: IGmailChatMessage
+  message: IChatMessage
   userAvatar?: string | React.ReactNode
   aiAvatar?: string | React.ReactNode
   onSave?: (text: string) => void
@@ -175,7 +175,7 @@ const GmailChatBoxMessageItem: FC<{
           ...ChatBoxSx,
         }}
       >
-        {message?.status === 'error' ? (
+        {message?.extra?.status === 'error' ? (
           <Alert
             severity={'error'}
             sx={{

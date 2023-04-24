@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { Button, Stack } from '@mui/material'
-import { IGmailChatMessage } from './index'
+import { IChatMessage } from '@/features/chatgpt/types'
 
 const GmailChatBoxSystemTools: FC<{
   onRetry: () => void
-  message: IGmailChatMessage
+  message: IChatMessage
 }> = (props) => {
   const { onRetry, message } = props
   return (

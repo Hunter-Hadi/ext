@@ -8,7 +8,6 @@ import {
   InboxEditState,
 } from '@/features/gmail/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
 import { AppSettingsState } from '@/store'
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
@@ -18,6 +17,13 @@ import {
   setChatGPTNormalTime,
 } from '@/features/chatgpt/utils/403Recorder'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+  ISystemMessage,
+  IUserSendMessage,
+  IUserSendMessageExtraType,
+} from '@/features/chatgpt/types'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -97,24 +103,48 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       messageId?: string
       parentMessageId?: string
     },
-    options?: {
-      regenerate?: boolean
-      includeHistory?: boolean
-    },
+    options?: IUserSendMessageExtraType,
   ): Promise<{ success: boolean; answer: string }> => {
     const { question, messageId, parentMessageId } = questionInfo
-    const { regenerate = false, includeHistory = false } = options || {}
+    const {
+      regenerate = false,
+      includeHistory = false,
+      maxHistoryMessageCnt = 0,
+    } = options || {}
     if (!question || conversation.loading) {
       return Promise.resolve({
         success: false,
         answer: '',
       })
     }
-    log.info('[ChatGPT Module] send question step 0')
     const postConversationId: string = await createConversation()
-    log.info('[ChatGPT Module] send question step 1')
+    log.info(
+      `[ChatGPT Module] send question step 0, init ConversationId=[${postConversationId}]`,
+    )
+    let currentMaxHistoryMessageCnt = maxHistoryMessageCnt
+    // 如果没有传入指定的历史会话长度，并且includeHistory===true,计算历史会话条数
+    if (!maxHistoryMessageCnt && includeHistory) {
+      let historyCnt = 0
+      for (let i = messages.length - 1; i >= 0; i--) {
+        const msg = messages[i] as IUserSendMessage
+        if (msg.type === 'user' && msg.extra?.includeHistory === false) {
+          historyCnt++
+          break
+        }
+        historyCnt++
+      }
+      currentMaxHistoryMessageCnt = historyCnt
+      console.log(
+        '[ChatGPT Module] currentMaxHistoryMessageCnt',
+        currentMaxHistoryMessageCnt,
+      )
+    }
     const currentMessageId = messageId || uuidV4()
     const currentParentMessageId = parentMessageId || ''
+    log.info(
+      `[ChatGPT Module] send question step 1\n maxHistoryMessageCnt=[${currentMaxHistoryMessageCnt}]\n messageId=[${currentMessageId}]\n parentMessageId=[${currentParentMessageId}]`,
+    )
+    log.info('[ChatGPT Module] send question step 2, push user message')
     setMessages((prevState) => {
       return [
         ...prevState,
@@ -123,7 +153,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           messageId: currentMessageId,
           parentMessageId: currentParentMessageId,
           text: question,
-        } as IGmailChatMessage,
+          extra: {
+            includeHistory,
+            regenerate,
+            maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
+          },
+        } as IUserSendMessage,
       ]
     })
     setConversation((prevState) => {
@@ -133,17 +168,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         loading: true,
       }
     })
-    log.info('[ChatGPT Module] send question step 2')
-    log.info(
-      '[ChatGPT Module] send question step 3',
-      currentMessageId,
-      parentMessageId,
-      postConversationId,
-    )
-    const pushMessages: IGmailChatMessage[] = []
+    log.info('[ChatGPT Module] send question step 3 ask question')
+    const pushMessages: IChatMessage[] = []
     let hasError = false
     try {
-      let currentMessage: any = null
+      // ai 正在输出的消息
+      let aiRespondingMessage: any = null
       let saveConversationId = ''
       await askChatGPTQuestion(
         {
@@ -155,17 +185,18 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         {
           includeHistory,
           regenerate,
+          maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
         },
         {
           onMessage: (msg) => {
             log.info('[ChatGPT Module] send question onmessage', msg)
-            const writingMessage = {
+            const writingMessage: IAIResponseMessage = {
               messageId: (msg.messageId as string) || uuidV4(),
               parentMessageId: (msg.parentMessageId as string) || uuidV4(),
               text: (msg.text as string) || '',
               type: 'ai' as const,
             }
-            currentMessage = writingMessage
+            aiRespondingMessage = writingMessage
             if (msg.conversationId) {
               saveConversationId = msg.conversationId
             }
@@ -182,8 +213,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           onError: (error: any) => {
             hasError = true
             log.info('[ChatGPT Module] send question onerror', error)
-            if (currentMessage?.messageId) {
-              pushMessages.push(currentMessage as IGmailChatMessage)
+            if (aiRespondingMessage?.messageId) {
+              pushMessages.push(aiRespondingMessage)
             }
             const is403Error =
               typeof error === 'string' && error?.trim() === '403'
@@ -208,28 +239,35 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               }
               pushMessages.push({
                 type: 'system',
-                status: 'error',
                 messageId: uuidV4(),
                 parentMessageId: currentMessageId,
                 text,
-              })
+                extra: {
+                  status: 'error',
+                },
+              } as ISystemMessage)
             }
             log.info('onerror', error, pushMessages)
             return
           },
         },
       )
-      if (!hasError && currentMessage?.messageId && currentMessage?.text) {
+      if (
+        !hasError &&
+        aiRespondingMessage &&
+        aiRespondingMessage?.messageId &&
+        aiRespondingMessage?.text
+      ) {
         setChatGPTNormalTime(Date.now())
         if (saveConversationId) {
           await setChromeExtensionSettings({
             conversationId: saveConversationId,
           })
         }
-        pushMessages.push(currentMessage as IGmailChatMessage)
+        pushMessages.push(aiRespondingMessage as IAIResponseMessage)
         return Promise.resolve({
           success: true,
-          answer: currentMessage?.text || '',
+          answer: aiRespondingMessage?.text || '',
         })
       }
       return Promise.resolve({
@@ -283,11 +321,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     }
   }
   const reGenerateMessage = () => {
-    let lastUserMessage: IGmailChatMessage | null = null
+    let lastUserMessage: IUserSendMessage | null = null
     for (let i = messages.length - 1; i >= 0; i--) {
       const message = messages[i]
       if (message.type === 'user') {
-        lastUserMessage = message
+        lastUserMessage = message as IUserSendMessage
         break
       }
     }

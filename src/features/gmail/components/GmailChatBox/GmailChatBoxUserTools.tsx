@@ -4,13 +4,13 @@ import TooltipIconButton from '@/components/TooltipIconButton'
 import EditIcon from '@mui/icons-material/Edit'
 import DoneIcon from '@mui/icons-material/Done'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
-import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
 import { hideChatBox } from '@/utils'
+import { IChatMessage } from '@/features/chatgpt/types'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
 const GmailChatBoxUserTools: FC<{
-  message: IGmailChatMessage
+  message: IChatMessage
   editAble?: boolean
   onEdit: () => void
   onSave: () => void

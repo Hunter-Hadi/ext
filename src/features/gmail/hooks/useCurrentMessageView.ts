@@ -120,7 +120,7 @@ const useCurrentMessageView = () => {
           currentMessageView?.getBodyElement(),
         )
         if (innerText === '') {
-          // TODO 把匹配不到message的html发送到后台
+          // TODO: 把匹配不到message的html发送到后台
           // alert('没有匹配到message!')
           setMessageViewText('')
         } else {

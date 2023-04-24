@@ -44,6 +44,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         taskId: question.messageId,
         regenerate: options.regenerate,
         include_history: options.includeHistory,
+        max_history_message_cnt: options.maxHistoryMessageCnt,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

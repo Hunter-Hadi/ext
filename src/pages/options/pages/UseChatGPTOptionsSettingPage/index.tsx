@@ -169,4 +169,5 @@ const UseChatGPTOptionsSettingPage = () => {
     </SyncSettingCheckerWrapper>
   )
 }
+
 export default UseChatGPTOptionsSettingPage

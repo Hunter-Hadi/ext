@@ -6,7 +6,7 @@ export const mappingToMessages = (
     [key: string]: IChatGPTConversationRawMappingData
   },
 ) => {
-  // TODO - 基于目前的需求，只需要一层结构的Messages
+  // NOTE: 基于目前的需求，只需要一层结构的Messages
   // 从current_node节点找到root就行
   const messages: Array<{
     messageId: string

@@ -96,7 +96,6 @@ const ChatGPTStableModeSetting: FC<{
     })
     setDuration(setValue * 60 * 1000)
     setLeftDuration(setValue * 60 * 1000)
-    onChange && onChange(setValue)
   }
   const stop = async () => {
     await Browser.storage.local.remove(
@@ -244,7 +243,14 @@ const ChatGPTStableModeSetting: FC<{
           label={formattedTime}
         />
       ) : (
-        <MinutesSlider defaultValue={value} onChange={setValue} />
+        <MinutesSlider
+          defaultValue={value}
+          onChange={(newValue) => {
+            setValue(newValue)
+            debugger
+            onChange && onChange(newValue)
+          }}
+        />
       )}
     </>
   )

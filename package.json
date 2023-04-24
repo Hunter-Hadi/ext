@@ -21,7 +21,7 @@
     "@minoru/react-dnd-treeview": "^3.4.1",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
-    "@rajesh896/broprint.js": "^2.1.1",
+    "@fingerprintjs/fingerprintjs": "^3.4.1",
     "ace-builds": "^1.15.3",
     "dayjs": "^1.11.7",
     "eventsource-parser": "^0.1.0",

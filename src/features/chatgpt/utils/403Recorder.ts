@@ -1,5 +1,5 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/types'
-import { getCurrentBrowserFingerPrint } from '@rajesh896/broprint.js'
+import { getFingerPrint } from '@/utils/fingerPrint'
 import dayjs from 'dayjs'
 import Browser from 'webextension-polyfill'
 
@@ -26,7 +26,7 @@ export const getChatGPTNormalTime = async () => {
 
 export const saveChatGPTErrorRecord = async () => {
   try {
-    const fingerprint = await getCurrentBrowserFingerPrint()
+    const fingerprint = await getFingerPrint()
     const time = await getChatGPTNormalTime()
     const intervalTime = dayjs().diff(time, 'second')
     fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/save_gpt_error_record`, {

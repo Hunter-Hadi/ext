@@ -10,6 +10,9 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.10.6
     version: registry.npmmirror.com/@emotion/styled@11.10.6(@emotion/react@11.10.6)(@types/react@18.0.28)(react@18.2.0)
+  '@fingerprintjs/fingerprintjs':
+    specifier: ^3.4.1
+    version: 3.4.1
   '@floating-ui/react':
     specifier: ^0.20.1
     version: registry.npmmirror.com/@floating-ui/react@0.20.1(react-dom@18.2.0)(react@18.2.0)
@@ -25,9 +28,6 @@ dependencies:
   '@mui/material':
     specifier: ^5.11.9
     version: registry.npmmirror.com/@mui/material@5.11.9(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0)
-  '@rajesh896/broprint.js':
-    specifier: ^2.1.1
-    version: 2.1.1
   ace-builds:
     specifier: ^1.15.3
     version: registry.npmmirror.com/ace-builds@1.15.3
@@ -209,9 +209,10 @@ packages:
     dev: true
     optional: true
 
-  /@rajesh896/broprint.js@2.1.1:
-    resolution: {integrity: sha512-34L0SFrOLHWAhF4ZU7QS32zItGOKdu3BY0DmMwoW6zekLuJWSuCIK07Xzgyy2AqCCUByd2VHMr2wbHousid+qg==}
-    hasBin: true
+  /@fingerprintjs/fingerprintjs@3.4.1:
+    resolution: {integrity: sha512-i3TqlaIdF+4qDHP6OStMtLXCnvnoo2C156rNPm9/kIglUtnLAF45+sGkZZmVQB+58dDF0mNpaiqvKHNSR8J1Hg==}
+    dependencies:
+      tslib: 2.5.0
     dev: false
 
   /@types/less@3.0.3:
@@ -478,7 +479,7 @@ packages:
     resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
     requiresBuild: true
     dependencies:
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
     optional: true
 
@@ -488,6 +489,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /tslib@2.5.0:
+    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
+    dev: false
 
   /usehooks-ts@2.9.1(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-2FAuSIGHlY+apM9FVlj8/oNhd+1y+Uwv5QNkMQz1oSfdHk4PXo1qoCw9I5M7j0vpH8CSWFJwXbVPeYDjLCx9PA==}
@@ -897,7 +902,7 @@ packages:
       '@motionone/easing': registry.npmmirror.com/@motionone/easing@10.15.1
       '@motionone/types': registry.npmmirror.com/@motionone/types@10.15.1
       '@motionone/utils': registry.npmmirror.com/@motionone/utils@10.15.1
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/@motionone/dom@10.12.0:
@@ -910,7 +915,7 @@ packages:
       '@motionone/types': registry.npmmirror.com/@motionone/types@10.15.1
       '@motionone/utils': registry.npmmirror.com/@motionone/utils@10.15.1
       hey-listen: registry.npmmirror.com/hey-listen@1.0.8
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/@motionone/easing@10.15.1:
@@ -919,7 +924,7 @@ packages:
     version: 10.15.1
     dependencies:
       '@motionone/utils': registry.npmmirror.com/@motionone/utils@10.15.1
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/@motionone/generators@10.15.1:
@@ -929,7 +934,7 @@ packages:
     dependencies:
       '@motionone/types': registry.npmmirror.com/@motionone/types@10.15.1
       '@motionone/utils': registry.npmmirror.com/@motionone/utils@10.15.1
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/@motionone/types@10.15.1:
@@ -945,7 +950,7 @@ packages:
     dependencies:
       '@motionone/types': registry.npmmirror.com/@motionone/types@10.15.1
       hey-listen: registry.npmmirror.com/hey-listen@1.0.8
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/@mui/base@5.0.0-alpha.118(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0):
@@ -3015,7 +3020,7 @@ packages:
     name: framesync
     version: 6.0.1
     dependencies:
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/fs-extra@7.0.1:
@@ -4255,7 +4260,7 @@ packages:
       framesync: registry.npmmirror.com/framesync@6.0.1
       hey-listen: registry.npmmirror.com/hey-listen@1.0.8
       style-value-types: registry.npmmirror.com/style-value-types@5.0.0
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/postcss-calc@8.2.4(postcss@8.4.21):
@@ -5493,7 +5498,7 @@ packages:
     version: 5.0.0
     dependencies:
       hey-listen: registry.npmmirror.com/hey-listen@1.0.8
-      tslib: registry.npmmirror.com/tslib@2.5.0
+      tslib: 2.5.0
     dev: false
 
   registry.npmmirror.com/stylehacks@5.1.1(postcss@8.4.21):

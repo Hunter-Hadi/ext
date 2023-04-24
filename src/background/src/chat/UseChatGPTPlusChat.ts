@@ -25,7 +25,7 @@ class UseChatGPTPlusChat {
   private active = false
   private lastActiveTabId?: number
   private token?: string
-  private oncePreCheck = true
+  private oncePreCheck = false
   private taskList: {
     [key in string]: any
   } = {}

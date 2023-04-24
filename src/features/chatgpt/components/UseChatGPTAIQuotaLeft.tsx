@@ -1,20 +1,17 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { CircularProgress, Link, Stack, Typography } from '@mui/material'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
 import { GiftIcon } from '@/components/CustomIcon'
 import { RefreshOutlined } from '@mui/icons-material'
 import { useUseChatGPTUserInfo } from '@/features/chatgpt'
 import Tooltip from '@mui/material/Tooltip'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 const UseChatGPTAIQuotaLeft: FC = () => {
   const { loading, quotaLeftText, syncUserInfo } = useUseChatGPTUserInfo()
-  const onceTimes = React.useRef(0)
-  useEffect(() => {
-    if (onceTimes.current === 0) {
-      syncUserInfo()
-      onceTimes.current += 1
-    }
-  }, [])
+  useEffectOnce(() => {
+    syncUserInfo()
+  })
   return (
     <Stack spacing={0.5}>
       <Stack direction={'row'} alignItems={'center'} spacing={1}>

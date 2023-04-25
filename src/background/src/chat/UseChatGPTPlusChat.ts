@@ -132,6 +132,9 @@ class UseChatGPTPlusChat {
    * @param options
    * @param onMessage 回调
    * @param options.include_history 是否包含历史记录
+   * @param options.regenerate 是否重新生成
+   * @param options.streaming 是否流式
+   * @param options.max_history_message_cnt 最大历史记录数
    * @param options.taskId 任务id
    */
   async askChatGPT(
@@ -153,7 +156,6 @@ class UseChatGPTPlusChat {
       }
     }) => void,
   ) {
-    debugger
     const cacheConversationId = await getCacheConversationId()
     const {
       include_history = false,

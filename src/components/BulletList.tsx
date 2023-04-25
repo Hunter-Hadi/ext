@@ -5,7 +5,7 @@ const BulletList: FC<{
   textProps?: TypographyProps
   pointProps?: SxProps
   spacing?: number
-  textList: string[]
+  textList: React.ReactNode[]
 }> = (props) => {
   const { textProps, pointProps, textList } = props
   return (
@@ -26,7 +26,11 @@ const BulletList: FC<{
                 ...pointProps,
               }}
             />
-            <Typography {...(textProps as any)}>{text}</Typography>
+            {typeof text === 'string' ? (
+              <Typography {...(textProps as any)}>{text}</Typography>
+            ) : (
+              text
+            )}
           </Stack>
         )
       })}

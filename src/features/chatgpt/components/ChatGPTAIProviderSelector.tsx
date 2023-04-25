@@ -78,6 +78,15 @@ const ChatGPTAIProviderSelector: FC = () => {
               ChatGPT
             </Typography>
           </MenuItem>
+          <MenuItem value={CHAT_GPT_PROVIDER.OPENAI_API}>
+            <Typography
+              fontSize={'14px'}
+              color={'text.primary'}
+              textAlign={'left'}
+            >
+              ChatGPT API
+            </Typography>
+          </MenuItem>
         </Select>
       </FormControl>
       {provider === CHAT_GPT_PROVIDER.OPENAI &&

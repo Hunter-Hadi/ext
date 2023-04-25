@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { Box, Stack, Paper, Typography, Button, Link } from '@mui/material'
 import React from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
@@ -14,6 +14,7 @@ import {
   UseChatGptIcon,
 } from '@/components/CustomIcon'
 import { AuthState } from '@/features/auth/store'
+import { IChatGPTProviderType } from '@/background/provider/chat'
 const port = new ContentScriptConnectionV2()
 
 const ChatGPTStatusWrapper: FC = () => {
@@ -193,23 +194,53 @@ const ChatGPTStatusWrapper: FC = () => {
   return <ChatGPTProviderAuthWrapper />
 }
 
+// NOTE: 这是个临时组件，后面会改界面
 const ChatGPTProviderAuthWrapper: FC = () => {
   const { updateChatGPTProvider, provider } = useChatGPTProvider()
-  const buttonTitle =
-    provider === CHAT_GPT_PROVIDER.OPENAI
-      ? 'Log in to ChatGPT'
-      : 'Continue with UseChatGPT.AI'
-  const nextProviderText =
-    provider === CHAT_GPT_PROVIDER.OPENAI
-      ? 'continue with UseChatGPT.AI account'
-      : 'continue with your own ChatGPT account'
+  const buttonTitle = useMemo(() => {
+    if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
+      return 'Continue with UseChatGPT.AI'
+    } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
+      return 'Log in to ChatGPT'
+    } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
+      return 'Continue setting with ChatGPT API'
+    }
+    return ''
+  }, [provider])
+
+  const nextProviderText = useMemo(() => {
+    if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
+      return 'continue with your own ChatGPT account'
+    } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
+      return 'continue with your own ChatGPT/OpenAI API Key'
+    } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
+      return 'continue with UseChatGPT.AI account'
+    }
+    return ''
+  }, [provider])
   const switchProvider = async () => {
-    const nextProvider =
-      provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS
-        ? CHAT_GPT_PROVIDER.OPENAI
-        : CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS
+    let nextProvider: IChatGPTProviderType | undefined = undefined
+    if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
+      nextProvider = CHAT_GPT_PROVIDER.OPENAI
+    } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
+      nextProvider = CHAT_GPT_PROVIDER.OPENAI_API
+    } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
+      nextProvider = CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS
+    }
+    if (!nextProvider) {
+      return
+    }
     await updateChatGPTProvider(nextProvider)
   }
+  const borderRight = useMemo(() => {
+    if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
+      return 196
+    } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
+      return 98
+    } else {
+      return 1
+    }
+  }, [provider])
   return (
     <Box
       sx={{
@@ -247,18 +278,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               >
                 AI provider:
               </Typography>
-              {provider === CHAT_GPT_PROVIDER.OPENAI ? (
-                <>
-                  <ChatGPTIcon sx={{ mx: 1, fontSize: 20 }} />
-                  <Typography
-                    fontSize={'20px'}
-                    fontWeight={700}
-                    color={'text.primary'}
-                  >
-                    ChatGPT
-                  </Typography>
-                </>
-              ) : (
+              {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
                 <>
                   <UseChatGptIcon
                     sx={{
@@ -278,6 +298,30 @@ const ChatGPTProviderAuthWrapper: FC = () => {
                     color={'text.primary'}
                   >
                     UseChatGPT.AI
+                  </Typography>
+                </>
+              )}
+              {provider === CHAT_GPT_PROVIDER.OPENAI && (
+                <>
+                  <ChatGPTIcon sx={{ mx: 1, fontSize: 20 }} />
+                  <Typography
+                    fontSize={'20px'}
+                    fontWeight={700}
+                    color={'text.primary'}
+                  >
+                    ChatGPT
+                  </Typography>
+                </>
+              )}
+              {provider === CHAT_GPT_PROVIDER.OPENAI_API && (
+                <>
+                  <ChatGPTIcon sx={{ mx: 1, fontSize: 20 }} />
+                  <Typography
+                    fontSize={'20px'}
+                    fontWeight={700}
+                    color={'text.primary'}
+                  >
+                    ChatGPT API
                   </Typography>
                 </>
               )}
@@ -333,8 +377,8 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           <Stack
             direction={'row'}
             alignItems={'center'}
-            height={36}
             sx={{
+              minHeight: 36,
               borderRadius: '4px 4px 0 0',
               borderBottom: '1px solid',
               borderColor: 'customColor.borderColor',
@@ -360,7 +404,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               textAlign={'center'}
               fontWeight={500}
               color={'text.secondary'}
-              height={36}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -375,19 +418,32 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               textAlign={'center'}
               color={'text.secondary'}
               fontWeight={500}
-              height={36}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
             >
               ChatGPT
             </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'12px'}
+              textAlign={'center'}
+              color={'text.secondary'}
+              fontWeight={500}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              ChatGPT API
+            </Typography>
           </Stack>
           <Stack
             direction={'row'}
             alignItems={'center'}
-            height={36}
             sx={{
+              minHeight: 36,
               borderBottom: '1px solid',
               borderColor: 'customColor.borderColor',
             }}
@@ -412,7 +468,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               textAlign={'center'}
               fontWeight={500}
               color={'text.secondary'}
-              height={36}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -427,7 +482,20 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               fontWeight={500}
               textAlign={'center'}
               color={'text.secondary'}
-              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              -
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -438,11 +506,11 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           <Stack
             direction={'row'}
             sx={{
+              minHeight: 36,
               borderBottom: '1px solid',
               borderColor: 'customColor.borderColor',
             }}
             alignItems={'center'}
-            height={36}
             bgcolor={'background.paper'}
           >
             <Typography
@@ -464,7 +532,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               textAlign={'center'}
               fontWeight={500}
               color={'text.secondary'}
-              height={36}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -479,7 +546,20 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               fontWeight={500}
               textAlign={'center'}
               color={'text.secondary'}
-              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              -
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -489,12 +569,12 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           </Stack>
           <Stack
             sx={{
+              minHeight: 36,
               borderBottom: '1px solid',
               borderColor: 'customColor.borderColor',
             }}
             direction={'row'}
             alignItems={'center'}
-            height={36}
             bgcolor={'background.paper'}
           >
             <Typography
@@ -516,7 +596,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               textAlign={'center'}
               fontWeight={500}
               color={'text.primary'}
-              height={36}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -531,7 +610,20 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               fontWeight={500}
               textAlign={'center'}
               color={'text.secondary'}
-              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              Sometimes
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -542,11 +634,11 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           <Stack
             direction={'row'}
             sx={{
+              minHeight: 36,
               borderBottom: '1px solid',
               borderColor: 'customColor.borderColor',
             }}
             alignItems={'center'}
-            height={36}
             bgcolor={'background.paper'}
           >
             <Typography
@@ -568,7 +660,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               textAlign={'center'}
               fontWeight={500}
               color={'text.primary'}
-              height={36}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -583,7 +674,20 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               fontWeight={500}
               textAlign={'center'}
               color={'text.secondary'}
-              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              Standard
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -594,9 +698,9 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           <Stack
             direction={'row'}
             alignItems={'center'}
-            height={36}
             bgcolor={'background.paper'}
             sx={{
+              minHeight: 36,
               borderRadius: '0 0 4px 4px',
             }}
           >
@@ -619,7 +723,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               textAlign={'center'}
               fontWeight={500}
               color={'text.secondary'}
-              height={36}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -634,7 +737,20 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               fontWeight={500}
               textAlign={'center'}
               color={'text.secondary'}
-              height={36}
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+            >
+              -
+            </Typography>
+            <Typography
+              flexShrink={0}
+              component={'div'}
+              width={'98px'}
+              fontSize={'14px'}
+              fontWeight={500}
+              textAlign={'center'}
+              color={'text.secondary'}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
@@ -651,7 +767,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
               borderRadius: '4px',
               border: '2px solid',
               top: 1,
-              right: provider === CHAT_GPT_PROVIDER.OPENAI ? 1 : 98,
+              right: borderRight,
               transition: 'right 0.3s',
               background: (t) =>
                 t.palette.mode === 'dark'

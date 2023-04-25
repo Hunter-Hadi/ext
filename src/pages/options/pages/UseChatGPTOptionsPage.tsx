@@ -9,6 +9,7 @@ import { SnackbarProvider } from 'notistack'
 import { useAuthLogin } from '@/features/auth/hooks'
 import UseChatGPTOptionsLoginPage from '@/pages/options/pages/UseChatGPTOptionsLoginPage'
 import AccountMenu from '@/pages/options/components/AccountMenu'
+import { useFocus } from '@/hooks/useFocus'
 
 export const OptionsPageRouteContext = React.createContext({
   route: '/',
@@ -20,6 +21,7 @@ export const OptionsPageRouteContext = React.createContext({
 const UseChatGPTOptionsPage = () => {
   const { loaded, isLogin, loading } = useAuthLogin()
   const [route, setRoute] = useState('')
+  const prefHashRef = React.useRef('')
   useEffect(() => {
     if (loaded) {
       const params = new URLSearchParams(window.location.search)
@@ -47,7 +49,10 @@ const UseChatGPTOptionsPage = () => {
     // }
     // return ''
   }, [route])
-  useEffect(() => {
+  const scrollToHash = () => {
+    if (prefHashRef.current === window.location.hash) {
+      return
+    }
     const hash = window.location.hash
     const timer = setTimeout(() => {
       const element = document.getElementById(hash.replace('#', ''))
@@ -59,13 +64,20 @@ const UseChatGPTOptionsPage = () => {
           top,
           behavior: 'smooth',
         })
+        prefHashRef.current = hash
         return
       }
     }, 1000)
     return () => {
       clearTimeout(timer)
     }
+  }
+  useEffect(() => {
+    scrollToHash()
   }, [])
+  useFocus(() => {
+    scrollToHash()
+  })
   return (
     <Stack
       sx={{

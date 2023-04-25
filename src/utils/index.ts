@@ -16,6 +16,7 @@ import {
   pingDaemonProcess,
 } from '@/features/chatgpt/utils'
 import { COUNTRIES_MAP } from '@/utils/staticData'
+import size from 'lodash-es/size'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
@@ -263,4 +264,39 @@ export const chromeExtensionClientOpenPage = async (params: {
     })
   }
   port.destroy()
+}
+/**
+ * 判断是否有数据
+ *
+ * `(data: any)`
+ *
+ * `return` => ({}) => `false`
+ *
+ */
+export const hasData = (data: any): boolean => {
+  const dataType = typeof data
+  switch (dataType) {
+    case 'object':
+      if (size(data) > 0) {
+        return true
+      }
+      return false
+    case 'string':
+      if (size(data) > 0 && data !== 'N/A') {
+        return true
+      }
+      return false
+    case 'number':
+      if (data === 0) {
+        return true
+      }
+      if (isNaN(data)) {
+        return false
+      }
+      return true
+    case 'undefined':
+      return false
+    default:
+      return false
+  }
 }

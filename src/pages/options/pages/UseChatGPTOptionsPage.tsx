@@ -10,13 +10,7 @@ import { useAuthLogin } from '@/features/auth/hooks'
 import UseChatGPTOptionsLoginPage from '@/pages/options/pages/UseChatGPTOptionsLoginPage'
 import AccountMenu from '@/pages/options/components/AccountMenu'
 import { useFocus } from '@/hooks/useFocus'
-
-export const OptionsPageRouteContext = React.createContext({
-  route: '/',
-  setRoute: (route: string) => {
-    console.log('setRoute', route)
-  },
-})
+import { OptionsPageRouteContext } from '@/pages/options/context'
 
 const UseChatGPTOptionsPage = () => {
   const { loaded, isLogin, loading } = useAuthLogin()

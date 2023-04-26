@@ -19,7 +19,11 @@ import {
   ChatGPTConversationState,
   InboxEditState,
 } from '@/features/gmail/store'
-import { CHROME_EXTENSION_MAIL_TO } from '@/types'
+import {
+  APP_USE_CHAT_GPT_HOST,
+  CHAT_GPT_PROVIDER,
+  CHROME_EXTENSION_MAIL_TO,
+} from '@/types'
 import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
@@ -30,6 +34,7 @@ import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevTextSendControl'
 import { IChatMessage } from '@/features/chatgpt/types'
+import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 
 const MAX_NORMAL_INPUT_LENGTH = 10000
 const MAX_GPT4_INPUT_LENGTH = 80000
@@ -77,6 +82,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
+  const { provider } = useChatGPTProvider()
   const conversation = useRecoilValue(ChatGPTConversationState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
@@ -210,7 +216,52 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTAIProviderSelector />
-        <DevTextSendControl />
+        {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
+          <Link
+            href={APP_USE_CHAT_GPT_HOST + '/referral'}
+            target={'_blank'}
+            underline={'none'}
+          >
+            <Stack
+              spacing={1}
+              p={1}
+              mx={1}
+              my={2}
+              textAlign={'center'}
+              sx={{
+                bgcolor: 'rgb(229,246,253)',
+              }}
+            >
+              <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
+                Get up to 24 weeks of UseChatGPT.AI quota for free!
+              </Typography>
+              <Typography fontSize={14} color={'text.primary'}>
+                {`Invite your friends to join UseChatGPT.AI, and for each one who signs
+          up and installs UseChatGPT.AI extension we'll give you both 1 week of
+          quota for free!`}
+              </Typography>
+              <img
+                src={`https://app.usechatgpt.ai/assets/images/referral/invite-your-friends-light.png`}
+                alt="invite your friends"
+                width={360}
+                height={98}
+              />
+              <Button
+                variant={'contained'}
+                color={'primary'}
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                }}
+              >
+                Invite your friends
+              </Button>
+            </Stack>
+          </Link>
+        )}
+        {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
+          <DevTextSendControl />
+        )}
         {messages.map((message) => {
           return (
             <GmailChatBoxMessageItem

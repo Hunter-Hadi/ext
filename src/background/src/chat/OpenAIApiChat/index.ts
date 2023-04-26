@@ -200,7 +200,7 @@ class OpenAiApiChat {
             onMessage &&
               onMessage({
                 type: 'error',
-                error: `${error?.message}\n[Switch other model](key=options&query=#chatgpt-api-settings)`,
+                error: `${error?.message}\n[Change model](key=options&query=#chatgpt-api-settings)`,
                 done: true,
                 data: { text: '', conversationId },
               })
@@ -229,7 +229,7 @@ class OpenAiApiChat {
   }
   async checkApiKey() {
     const settings = await getOpenAIApiSettings()
-    if (!settings?.apiKey) {
+    if (!settings?.apiKey || !settings.apiHost) {
       this.status = 'needAuth'
       await this.updateClientStatus()
       return false

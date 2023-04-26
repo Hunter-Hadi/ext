@@ -11,8 +11,8 @@ import {
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
-import { OptionsPageRouteContext } from '@/pages/options/pages/UseChatGPTOptionsPage'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
+import { OptionsPageRouteContext } from '@/pages/options/context'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode

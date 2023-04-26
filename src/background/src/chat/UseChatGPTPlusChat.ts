@@ -25,7 +25,6 @@ class UseChatGPTPlusChat {
   private active = false
   private lastActiveTabId?: number
   private token?: string
-  private oncePreCheck = false
   private taskList: {
     [key in string]: any
   } = {}
@@ -57,7 +56,6 @@ class UseChatGPTPlusChat {
                 })
               } else {
                 await chromeExtensionLogout()
-                this.oncePreCheck = true
               }
               await this.checkTokenAndUpdateStatus(sender.tab?.id)
               if (!preToken && accessToken) {
@@ -94,7 +92,6 @@ class UseChatGPTPlusChat {
   async auth(authTabId: number) {
     this.active = true
     this.lastActiveTabId = authTabId
-    this.oncePreCheck = false
     await this.checkTokenAndUpdateStatus()
     if (this.status === 'needAuth') {
       // 引导去登陆
@@ -119,9 +116,6 @@ class UseChatGPTPlusChat {
           active: true,
         })
       }
-    }
-    if (this.status === 'success' && this.oncePreCheck) {
-      this.status = 'needAuth'
     }
     await this.updateClientStatus()
   }

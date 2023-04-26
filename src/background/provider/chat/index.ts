@@ -1,6 +1,6 @@
 export { OpenAIChatProvider } from './OpenAIChatProvider'
 export { ChatAdapter } from './ChatAdapter'
-export { OpenAiApiChatProvider } from './OpenAiApiChatProvider'
+export { OpenAIApiChatProvider } from './OpenAiApiChatProvider'
 export { UseChatGPTPlusChatProvider } from './UseChatGPTPlusChatProvider'
 export type {
   ChatStatus,

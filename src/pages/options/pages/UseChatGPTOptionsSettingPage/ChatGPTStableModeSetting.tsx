@@ -247,7 +247,6 @@ const ChatGPTStableModeSetting: FC<{
           defaultValue={value}
           onChange={(newValue) => {
             setValue(newValue)
-            debugger
             onChange && onChange(newValue)
           }}
         />

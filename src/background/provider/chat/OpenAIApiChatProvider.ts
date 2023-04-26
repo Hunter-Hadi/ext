@@ -8,7 +8,7 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import { v4 as uuidV4 } from 'uuid'
 
-class OpenAiApiChatProvider implements ChatAdapterInterface {
+class OpenAIApiChatProvider implements ChatAdapterInterface {
   private openAiApiChat: OpenAiApiChat
 
   constructor(openAiApiChat: OpenAiApiChat) {
@@ -21,6 +21,8 @@ class OpenAiApiChatProvider implements ChatAdapterInterface {
     await this.openAiApiChat.preAuth()
   }
   get status() {
+    // NOTE: This is a hack to make sure the status is updated
+    this.openAiApiChat.checkApiKey()
     return this.openAiApiChat.status
   }
   async createConversation() {
@@ -78,4 +80,4 @@ class OpenAiApiChatProvider implements ChatAdapterInterface {
     })
   }
 }
-export { OpenAiApiChatProvider }
+export { OpenAIApiChatProvider }

@@ -23,7 +23,7 @@ import {
 } from '@/background/src/chat'
 import {
   ChatAdapter,
-  OpenAiApiChatProvider,
+  OpenAIApiChatProvider,
   OpenAIChatProvider,
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
@@ -120,7 +120,7 @@ const initChromeExtensionMessage = () => {
       new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
     )
     const newOpenAIApiChatAdapter = new ChatAdapter(
-      new OpenAiApiChatProvider(new OpenAiApiChat()),
+      new OpenAIApiChatProvider(new OpenAiApiChat()),
     )
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)

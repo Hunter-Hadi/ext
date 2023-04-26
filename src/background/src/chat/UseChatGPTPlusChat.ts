@@ -257,6 +257,7 @@ class UseChatGPTPlusChat {
       await throttleEchoText()
     }
     throttleEchoText()
+    let isTokenExpired = false
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
       provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       method: 'POST',
@@ -299,17 +300,8 @@ class UseChatGPTPlusChat {
         }
         try {
           const error = JSON.parse(err.message || err)
-          if (error?.detail === 'Your premium plan has expired') {
-            onMessage &&
-              onMessage({
-                type: 'error',
-                error: `Your premium plan has expired. [Get free quota](${
-                  APP_USE_CHAT_GPT_HOST + '/referral'
-                })`,
-                done: true,
-                data: { text: '', conversationId },
-              })
-            return
+          if (error?.code === 401) {
+            isTokenExpired = true
           }
           log.error('sse error', err)
           onMessage &&
@@ -332,6 +324,12 @@ class UseChatGPTPlusChat {
     if (!isEnd) {
       log.info('streaming end success')
       isEnd = true
+    }
+    if (isTokenExpired) {
+      log.info('user token expired')
+      this.status = 'needAuth'
+      await chromeExtensionLogout()
+      await this.updateClientStatus()
     }
   }
   async getUserInfo() {

@@ -7,6 +7,7 @@ import {
   MenuItem,
   Typography,
   Tooltip,
+  CircularProgress,
 } from '@mui/material'
 import { CHAT_GPT_PROVIDER } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
@@ -40,7 +41,7 @@ const ArrowDropDownIconCustom = () => {
 
 const providerOptions = [
   {
-    label: 'UseChatGPT.AI',
+    label: 'Free usage',
     value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
     description: 'Our premium AI powered by ChatGPT turbo. Use it for free.',
     features: [
@@ -106,7 +107,11 @@ const ChatGPTAIProviderSelector: FC = () => {
     ChatGPTConversationState,
   )
   const clientState = useRecoilValue(ChatGPTClientState)
-  const { updateChatGPTProvider, provider } = useChatGPTProvider()
+  const {
+    updateChatGPTProvider,
+    provider,
+    loading: switchProviderLoading,
+  } = useChatGPTProvider()
   return (
     <Stack
       sx={{ height: 56, p: 1 }}
@@ -120,7 +125,7 @@ const ChatGPTAIProviderSelector: FC = () => {
         </InputLabel>
         <Select
           IconComponent={ArrowDropDownIconCustom}
-          disabled={chatGPTConversationLoading}
+          disabled={chatGPTConversationLoading || switchProviderLoading}
           sx={{ fontSize: '14px' }}
           MenuProps={{
             elevation: 0,
@@ -162,7 +167,11 @@ const ChatGPTAIProviderSelector: FC = () => {
                 alignItems={'center'}
                 spacing={1}
               >
-                {provider.icon}
+                {switchProviderLoading ? (
+                  <CircularProgress size={16} />
+                ) : (
+                  provider.icon
+                )}
                 <Typography
                   width={0}
                   flex={1}

@@ -65,7 +65,7 @@ const ChatGPTApiSettings: FC = () => {
               fontSize: 14,
             }}
             textList={[
-              `The official OpenAI API is more stable than ChatGPT free plan. However, charges based on usage do apply.`,
+              `The official OpenAI API is more stable than the ChatGPT free plan. However, charges based on usage do apply.`,
               `Your API Key is saved locally on your browser and not transmitted anywhere else.`,
               <Typography
                 fontSize={14}
@@ -113,9 +113,40 @@ const ChatGPTApiSettings: FC = () => {
               {` to sign up.`}
             </Typography>
           </Stack>
-          <Typography fontSize={14} component={'span'}>
-            {`2. Visit the OpenAI API keys page.`}
-          </Typography>
+          <Typography fontSize={14} component={'span'}></Typography>
+          <Stack sx={{ display: 'inline' }}>
+            <Typography fontSize={14} component={'span'}>
+              {`2. Visit the `}
+            </Typography>
+            <Link
+              fontSize={14}
+              target={'_blank'}
+              rel={`noreferrer noopener nofollow`}
+              href={'https://platform.openai.com/account/api-keys'}
+            >{`OpenAI API keys page`}</Link>
+            <Typography fontSize={14} component={'span'}>
+              {`.`}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              bgcolor: 'background.paper',
+              px: 2,
+              py: 4,
+              borderRadius: '4px',
+            }}
+          >
+            <img
+              src={
+                'https://www.usechatgpt.ai/assets/chrome-extension/open-key-create.png'
+              }
+              alt={'open-key-create'}
+              width={'460'}
+              height={'auto'}
+            />
+          </Stack>
           <Typography fontSize={14} component={'span'}>
             {`3. Create a new secret key and copy & paste it into the "API key" input field below.👇`}
           </Typography>

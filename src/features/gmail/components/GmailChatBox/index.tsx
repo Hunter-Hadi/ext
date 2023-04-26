@@ -19,11 +19,7 @@ import {
   ChatGPTConversationState,
   InboxEditState,
 } from '@/features/gmail/store'
-import {
-  APP_USE_CHAT_GPT_HOST,
-  CHAT_GPT_PROVIDER,
-  CHROME_EXTENSION_MAIL_TO,
-} from '@/types'
+import { CHAT_GPT_PROVIDER, CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
@@ -217,47 +213,41 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       >
         <ChatGPTAIProviderSelector />
         {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
-          <Link
-            href={APP_USE_CHAT_GPT_HOST + '/referral'}
-            target={'_blank'}
-            underline={'none'}
+          <Stack
+            spacing={1}
+            p={1}
+            mx={1}
+            my={2}
+            textAlign={'center'}
+            sx={{
+              borderRadius: '4px',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark' ? 'rgb(3,19,11)' : 'rgb(229,246,253)',
+            }}
           >
-            <Stack
-              spacing={1}
-              p={1}
-              mx={1}
-              my={2}
-              textAlign={'center'}
+            <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
+              Get up to 24 weeks of free usage!
+            </Typography>
+            <Typography fontSize={14} color={'text.primary'}>
+              {`Invite your friends to join UseChatGPT.AI! For anyone who signs up using your referral link and installs UseChatGPT.AI extension, we'll give you both 1 week of free usage!`}
+            </Typography>
+            <img
+              src={`https://app.usechatgpt.ai/assets/images/referral/invite-your-friends-light.png`}
+              alt="invite your friends"
+              width={360}
+              height={98}
+            />
+            <Button
+              variant={'contained'}
+              color={'primary'}
               sx={{
-                bgcolor: 'rgb(229,246,253)',
+                fontSize: 16,
+                fontWeight: 700,
               }}
             >
-              <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
-                Get up to 24 weeks of UseChatGPT.AI quota for free!
-              </Typography>
-              <Typography fontSize={14} color={'text.primary'}>
-                {`Invite your friends to join UseChatGPT.AI, and for each one who signs
-          up and installs UseChatGPT.AI extension we'll give you both 1 week of
-          quota for free!`}
-              </Typography>
-              <img
-                src={`https://app.usechatgpt.ai/assets/images/referral/invite-your-friends-light.png`}
-                alt="invite your friends"
-                width={360}
-                height={98}
-              />
-              <Button
-                variant={'contained'}
-                color={'primary'}
-                sx={{
-                  fontSize: 16,
-                  fontWeight: 700,
-                }}
-              >
-                Invite your friends
-              </Button>
-            </Stack>
-          </Link>
+              Invite your friends
+            </Button>
+          </Stack>
         )}
         {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
           <DevTextSendControl />

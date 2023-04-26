@@ -230,7 +230,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
     if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
       return 'Continue with UseChatGPT.AI'
     } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
-      return 'Log in to your own ChatGPT'
+      return 'Log into your own ChatGPT'
     } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
       return 'Add your own OpenAI API key'
     }

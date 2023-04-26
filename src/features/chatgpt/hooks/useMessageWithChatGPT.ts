@@ -231,7 +231,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 error?.message || error || 'Error detected. Please try again.'
               if (is403Error) {
                 saveChatGPTErrorRecord()
-                text = `Log in to ChatGPT and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
+                text = `Log into ChatGPT and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
               }
               if (text.startsWith('Too many requests in 1 hour')) {
                 text = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "UseChatGPT.AI" from the AI Provider options at the top of the sidebar.

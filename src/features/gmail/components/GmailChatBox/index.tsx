@@ -220,6 +220,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             my={2}
             textAlign={'center'}
             sx={{
+              alignItems: 'center',
               borderRadius: '4px',
               bgcolor: (t) =>
                 t.palette.mode === 'dark' ? 'rgb(3,19,11)' : 'rgb(229,246,253)',
@@ -244,6 +245,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 fontSize: 16,
                 fontWeight: 700,
               }}
+              fullWidth
             >
               Invite your friends
             </Button>

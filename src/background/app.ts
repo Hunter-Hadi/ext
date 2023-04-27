@@ -17,12 +17,15 @@ import {
 } from '@/types'
 import {
   BardChat,
+  BingChat,
   ChatSystem,
   OpenAiApiChat,
   OpenAIChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
 import {
+  BardChatProvider,
+  BingChatProvider,
   ChatAdapter,
   OpenAIApiChatProvider,
   OpenAIChatProvider,
@@ -30,9 +33,8 @@ import {
 } from '@/background/provider/chat'
 import { ClientMessageInit } from '@/background/src/client'
 import { backgroundSendClientMessage } from '@/background/utils'
-import { BardChatProvider } from '@/background/provider/chat/BardChatProvider'
 
-const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 /**
  * background.js 入口
@@ -127,12 +129,16 @@ const initChromeExtensionMessage = () => {
     const bardChatAdapter = new ChatAdapter(
       new BardChatProvider(new BardChat()),
     )
+    const bingChatAdapter = new ChatAdapter(
+      new BingChatProvider(new BingChat()),
+    )
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)
     chatSystem.addAdapter(
       CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       useChatGPTPlusAdapter,
     )
+    chatSystem.addAdapter(CHAT_GPT_PROVIDER.BING, bingChatAdapter)
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.BARD, bardChatAdapter)
   }
 }

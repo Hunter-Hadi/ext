@@ -26,7 +26,7 @@ import { templateStaticWords } from '@/features/shortcuts/utils'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
-// const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+// const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 const staticWordCompleter = {
   getCompletions(

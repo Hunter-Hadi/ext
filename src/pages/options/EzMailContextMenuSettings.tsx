@@ -33,7 +33,7 @@ import {
 
 const rootId = 'root'
 
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const saveTreeData = async (
   key: IChromeExtensionSettingsContextMenuKey,

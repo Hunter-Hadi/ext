@@ -30,7 +30,7 @@ import { useTheme } from '@mui/material/styles'
 import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const FloatingContextMenu: FC<{
   root: any

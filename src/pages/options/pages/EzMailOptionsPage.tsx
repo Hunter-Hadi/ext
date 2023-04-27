@@ -5,7 +5,7 @@ import { EzMailAIIcon } from '@/components/CustomIcon'
 import ContextMenuSettings from '@/pages/options/EzMailContextMenuSettings'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 
-const APP_NAME = process.env.APP_NAME
+const APP_NAME = String(process.env.APP_NAME)
 
 const EzMailOptionsPage = () => {
   const [value, setValue] = React.useState('reply')

@@ -8,7 +8,7 @@ import ReactContexifyCss from 'react-contexify/dist/ReactContexify.css'
 import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/types'
 import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
 
-const AppNameToClassName = (process.env.APP_ENV || '')
+const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
   .replace(/_/g, '-')
 const Portal: FC<{

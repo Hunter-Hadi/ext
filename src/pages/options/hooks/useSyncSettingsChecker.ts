@@ -7,6 +7,7 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import dayjs from 'dayjs'
+import debounce from 'lodash-es/debounce'
 
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
@@ -19,6 +20,16 @@ const useSyncSettingsChecker = () => {
   const [showCheckAlert, setShowCheckAlert] = useState(false)
   const localSettingsCacheRef = useRef<IChromeExtensionSettings | undefined>(
     undefined,
+  )
+  const debounceEnqueueSnackbar = useCallback(
+    debounce((message: string, options?: any) => {
+      enqueueSnackbar(message, {
+        variant: 'info',
+        autoHideDuration: 1000,
+        ...options,
+      })
+    }, 2000),
+    [enqueueSnackbar],
   )
   const syncServerToLocal = useCallback(async () => {
     try {
@@ -39,10 +50,10 @@ const useSyncSettingsChecker = () => {
             delete serverSettings.conversationId
           }
           await setChromeExtensionSettings(serverSettings)
-          // enqueueSnackbar('Sync successful!', {
-          //   variant: 'success',
-          //   autoHideDuration: 1000,
-          // })
+          debounceEnqueueSnackbar('Settings updated', {
+            variant: 'success',
+            autoHideDuration: 1000,
+          })
         }
       }
       return true
@@ -84,10 +95,10 @@ const useSyncSettingsChecker = () => {
           settings: await getChromeExtensionSettings(),
         })
         if (result?.status === 'OK') {
-          // enqueueSnackbar('Sync successful!', {
-          //   variant: 'success',
-          //   autoHideDuration: 1000,
-          // })
+          debounceEnqueueSnackbar('Settings updated', {
+            variant: 'success',
+            autoHideDuration: 1000,
+          })
           return true
         }
         return false

@@ -104,7 +104,7 @@ export const getDefaultActionWithTemplate = (
 }
 
 export const templateStaticWords =
-  process.env.APP_ENV === 'EZ_MAIL_AI'
+  String(process.env.APP_ENV) === 'EZ_MAIL_AI'
     ? [
         // gmail
         'GMAIL_EMAIL_CONTEXT',

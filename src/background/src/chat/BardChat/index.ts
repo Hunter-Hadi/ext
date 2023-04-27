@@ -23,6 +23,7 @@ class BardChat extends BaseChat {
     this.token = undefined
   }
   async checkAuth() {
+    this.active = true
     if (this.token) {
       await this.updateClientStatus('success')
     } else {
@@ -82,66 +83,86 @@ class BardChat extends BaseChat {
     }
     const controller = new AbortController()
     const signal = controller.signal
+    let isAbort = false
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
-    const result = await ofetch(
-      'https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate',
-      {
-        method: 'POST',
-        signal: signal,
-        query: {
-          bl: this.token.blValue,
-          _reqid: generateReqId(),
-          rt: 'c',
+    try {
+      const result = await ofetch(
+        'https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate',
+        {
+          method: 'POST',
+          signal: signal,
+          query: {
+            bl: this.token.blValue,
+            _reqid: generateReqId(),
+            rt: 'c',
+          },
+          body: new URLSearchParams({
+            at: this.token.atValue,
+            'f.req': JSON.stringify([
+              null,
+              `[[${JSON.stringify(question)}],null,${JSON.stringify(
+                this.contextIds,
+              )}]`,
+            ]),
+          }),
+          parseResponse: (txt) => txt,
         },
-        body: new URLSearchParams({
-          at: this.token.atValue,
-          'f.req': JSON.stringify([
-            null,
-            `[[${JSON.stringify(question)}],null,${JSON.stringify(
-              this.contextIds,
-            )}]`,
-          ]),
-        }),
-        parseResponse: (txt) => txt,
-      },
-    )
-    const { text, ids } = parseBardResponse(result)
-    this.log.debug('result', result, text, ids)
-    if (text && ids) {
-      onMessage &&
-        onMessage({
-          type: 'message',
-          done: false,
-          error: '',
-          data: {
-            text,
-            conversationId: this.conversationId,
-          },
-        })
-      onMessage &&
-        onMessage({
-          type: 'message',
-          done: true,
-          error: '',
-          data: {
-            text,
-            conversationId: this.conversationId,
-          },
-        })
-      this.contextIds = ids
-    } else {
-      onMessage &&
-        onMessage({
-          type: 'error',
-          done: true,
-          error: 'BardChat: Unknown Error',
-          data: {
-            text: '',
-            conversationId: this.conversationId,
-          },
-        })
+      ).catch((err) => {
+        if (err?.message.includes('The user aborted a request.')) {
+          isAbort = true
+          onMessage &&
+            onMessage({
+              type: 'error',
+              error: 'manual aborted request.',
+              done: true,
+              data: { text: '', conversationId: '' },
+            })
+          return
+        }
+      })
+      const { text, ids } = parseBardResponse(result)
+      this.log.debug('result', result, text, ids)
+      if (text && ids) {
+        if (isAbort) {
+          return
+        }
+        onMessage &&
+          onMessage({
+            type: 'message',
+            done: false,
+            error: '',
+            data: {
+              text,
+              conversationId: this.conversationId,
+            },
+          })
+        onMessage &&
+          onMessage({
+            type: 'message',
+            done: true,
+            error: '',
+            data: {
+              text,
+              conversationId: this.conversationId,
+            },
+          })
+        this.contextIds = ids
+      } else {
+        onMessage &&
+          onMessage({
+            type: 'error',
+            done: true,
+            error: 'BardChat: Unknown Error',
+            data: {
+              text: '',
+              conversationId: this.conversationId,
+            },
+          })
+      }
+    } catch (e) {
+      this.log.error(e)
     }
   }
   async syncBardToken() {

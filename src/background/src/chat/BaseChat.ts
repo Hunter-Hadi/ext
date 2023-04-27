@@ -14,8 +14,10 @@ class BaseChat {
   }
   async auth() {
     this.active = true
+    await this.updateClientStatus('success')
   }
   async destroy() {
+    await this.updateClientStatus('needAuth')
     this.active = false
   }
   async updateClientStatus(status: ChatStatus) {

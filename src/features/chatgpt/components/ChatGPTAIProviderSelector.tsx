@@ -8,6 +8,7 @@ import {
   Typography,
   Tooltip,
   CircularProgress,
+  Chip,
 } from '@mui/material'
 import { CHAT_GPT_PROVIDER } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
@@ -20,6 +21,7 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import {
   BardIcon,
+  BingIcon,
   ChatGPTIcon,
   OpenAIIcon,
   UseChatGptIcon,
@@ -42,11 +44,13 @@ const ArrowDropDownIconCustom = () => {
 
 const providerOptions = [
   {
-    label: 'Free usage',
+    beta: false,
+    label: 'Free AI',
     value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-    description: 'Our premium AI powered by ChatGPT turbo. Use it for free.',
+    description:
+      'We are providing Free AI using GPT-3.5-turbo to power the extension. To get more Free AI, all you need to do is share your referral link and invite your friends to join us. You can find your referral link by clicking the "Get more Free AI!" link above.👆',
     features: [
-      `😊 Free to use`,
+      `👍 Free to use`,
       `✅ No OpenAI account required`,
       `✅ No country restrictions`,
       `✅ No ChatGPT interruptions`,
@@ -57,29 +61,31 @@ const providerOptions = [
     icon: <UseChatGptIcon sx={{ fontSize: 20 }} />,
   },
   {
+    beta: false,
     label: 'ChatGPT',
     value: CHAT_GPT_PROVIDER.OPENAI,
     icon: <ChatGPTIcon sx={{ fontSize: 20 }} />,
-    description: `Use your own ChatGPT to power the extension.`,
+    description: `Use your own ChatGPT to power the extension. You need to log into your own ChatGPT account, and keep the pinned ChatGPT website tab open to power the extension without interruption.`,
     features: [
-      `👎 OpenAI account required`,
-      `👎 Country restrictions apply`,
-      `👎 ChatGPT interruptions`,
+      `🔒 OpenAI account required`,
+      `🔒 Country restrictions apply`,
+      `😔 ChatGPT interruptions`,
       '',
       `For ChatGPT free plan:`,
-      `😊 Free to use`,
-      `👎 Not always available`,
-      `👎 Standard response speed`,
+      `👍 Free to use`,
+      `❌ Not always available`,
+      `😔 Standard response speed`,
       `❌ GPT-4 unavailable`,
       '',
       `For ChatGPT Plus:`,
-      `😞 Pay $20/mo to OpenAI`,
+      `💰 Pay $20/mo to OpenAI`,
       `✅ Always available`,
       `✅ Fast response speed`,
       `✅ GPT-4 available`,
     ],
   },
   {
+    beta: false,
     label: 'OpenAI API',
     value: CHAT_GPT_PROVIDER.OPENAI_API,
     icon: (
@@ -90,11 +96,11 @@ const providerOptions = [
         }}
       />
     ),
-    description: `Use your own OpenAI API to power the extension.`,
+    description: `Use your own OpenAI API key to power the extension. Most are unaware that all ChatGPT users can easily obtain their own API key for free trial usage from OpenAI. To create your OpenAI API key, refer to the instructions provided on our Settings page.`,
     features: [
-      `😞 Pay $ as you go to OpenAI`,
-      `👎 OpenAI account required`,
-      `👎 Country restrictions apply`,
+      `💰 Pay $ as you go to OpenAI`,
+      `🔒 OpenAI account required`,
+      `🔒 Country restrictions apply`,
       `✅ No ChatGPT interruptions`,
       `✅ Always available`,
       `✅ Fast response speed`,
@@ -102,6 +108,29 @@ const providerOptions = [
     ],
   },
   {
+    beta: true,
+    label: 'Bing',
+    value: CHAT_GPT_PROVIDER.BING,
+    icon: (
+      <BingIcon
+        sx={{
+          fontSize: 20,
+        }}
+      />
+    ),
+    description: `Use your own New Bing Chat to power the extension. You need to log into your own Microsoft account that has access to the New Bing Chat. If your Microsoft account does not have access to the New Bing Chat, you can join the waitlist at bing.com/chat.`,
+    features: [
+      `👍 Free to use`,
+      `✅ No OpenAI account required`,
+      `✅ No country restrictions`,
+      `🔒 New Bing Chat access required`,
+      `❌ Not always available`,
+      `😔 Standard response speed`,
+      `✅  GPT-4 unavailable`,
+    ],
+  },
+  {
+    beta: true,
     label: 'Bard',
     value: CHAT_GPT_PROVIDER.BARD,
     icon: (
@@ -111,8 +140,16 @@ const providerOptions = [
         }}
       />
     ),
-    description: `Google Bard`,
-    features: [`😞 Pay $ as you go to OpenAI`],
+    description: `Use your own Bard to power the extension. You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can join the waitlist at bard.google.com.`,
+    features: [
+      `👍 Free to use`,
+      `✅ No OpenAI account required`,
+      `🔒 Country restrictions apply`,
+      `🔒 Bard access required`,
+      `❌ Not always available`,
+      `😔 Standard response speed`,
+      `✅  Bard AI by Google available`,
+    ],
   },
 ]
 
@@ -268,6 +305,15 @@ const ChatGPTAIProviderSelector: FC = () => {
                     >
                       {provider.label}
                     </Typography>
+                    {provider.beta && (
+                      <Chip
+                        sx={{ ml: 1 }}
+                        label="Beta"
+                        color="primary"
+                        size={'small'}
+                        variant={'outlined'}
+                      />
+                    )}
                   </Stack>
                 </Tooltip>
               </MenuItem>

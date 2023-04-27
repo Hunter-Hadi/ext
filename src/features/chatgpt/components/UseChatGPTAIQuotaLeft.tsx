@@ -16,12 +16,12 @@ const UseChatGPTAIQuotaLeft: FC = () => {
     <Stack spacing={0.5}>
       <Stack direction={'row'} alignItems={'center'} spacing={1}>
         <Typography fontSize={'12px'} color={'text.primary'}>
-          {`Usage left: ${quotaLeftText}`}
+          {`Free AI left: ${quotaLeftText}`}
         </Typography>
         {loading ? (
           <CircularProgress size={12} sx={{ color: 'text.primary' }} />
         ) : (
-          <Tooltip title={'Refresh usage status'} placement={'top'}>
+          <Tooltip title={'Refresh Free AI status'} placement={'top'}>
             <RefreshOutlined
               onClick={syncUserInfo}
               sx={{ fontSize: 16, color: 'text.primary', cursor: 'pointer' }}

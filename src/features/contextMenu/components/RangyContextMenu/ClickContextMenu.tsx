@@ -23,9 +23,9 @@ import {
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
 
-const APP_NAME = process.env.APP_NAME
-const APP_ENV = process.env.APP_ENV
-const isProduction = process.env.NODE_ENV === 'production'
+const APP_NAME = String(process.env.APP_NAME)
+const APP_ENV = String(process.env.APP_ENV)
+const isProduction = String(process.env.NODE_ENV) === 'production'
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {

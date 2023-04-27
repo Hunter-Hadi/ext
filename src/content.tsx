@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './pages/App'
 import { RecoilRoot } from 'recoil'
 import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/className'
-const AppNameToClassName = (process.env.APP_ENV || '')
+const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
   .replace(/_/g, '-')
 ClassNameGenerator.configure(
@@ -21,9 +21,6 @@ import {
 } from '@/types'
 import AppThemeProvider from '@/components/AppTheme'
 // import createCache from '@emotion/cache'
-console.log(process.env.NODE_ENV)
-console.log(process.env.APP_ENV)
-console.log(process.env.APP_NAME)
 if (location.host === 'chat.openai.com') {
   const div = document.createElement('div')
   div.id = ROOT_DAEMON_PROCESS_ID

@@ -19,6 +19,8 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
+
 dayjs.extend(utc)
 
 export type IChatGPTModelType = {
@@ -33,7 +35,26 @@ export type IChatGPTModelType = {
     conciseness: number[]
   }
 }
-export type IChromeExtensionSettings = {
+
+type IThirdProviderSettings = {
+  [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]?: {
+    [key in string]: any
+  }
+  [CHAT_GPT_PROVIDER.OPENAI]?: {
+    [key in string]: any
+  }
+  [CHAT_GPT_PROVIDER.OPENAI_API]?: {
+    [key in string]: any
+  }
+  [CHAT_GPT_PROVIDER.BING]?: {
+    conversationStyle: BingConversationStyle
+  }
+  [CHAT_GPT_PROVIDER.BARD]?: {
+    [key in string]: any
+  }
+}
+
+export interface IChromeExtensionSettings {
   chatGPTProvider?: IChatGPTProviderType
   models?: IChatGPTModelType[]
   currentModel?: string
@@ -45,6 +66,9 @@ export type IChromeExtensionSettings = {
     language?: string
     selectionButtonVisible?: boolean
     chatGPTStableModeDuration?: number
+  }
+  thirdProviderSettings?: {
+    [P in IChatGPTProviderType]?: IThirdProviderSettings[P]
   }
   lastModified?: number
 }
@@ -68,6 +92,11 @@ export const getChromeExtensionSettings =
         colorSchema: undefined,
         language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
         selectionButtonVisible: true,
+      },
+      thirdProviderSettings: {
+        [CHAT_GPT_PROVIDER.BING]: {
+          conversationStyle: BingConversationStyle.Balanced,
+        },
       },
     } as IChromeExtensionSettings
     const localData = await Browser.storage.local.get(
@@ -317,21 +346,21 @@ export const createChromeExtensionOptionsPage = async (
   autoFocus = true,
 ) => {
   const chromeExtensionId = Browser.runtime.id
-  const findOptionPage = await Browser.tabs.query({
+  const findOptionPages = await Browser.tabs.query({
     url: `chrome-extension://${chromeExtensionId}/options.html`,
   })
-  if (findOptionPage && findOptionPage.length > 0) {
-    await Browser.tabs.update(findOptionPage[0].id, {
-      url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
-      active: autoFocus,
-    })
-    return
-  } else {
-    await Browser.tabs.create({
-      url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
-      active: autoFocus,
-    })
-  }
+  // close old pages
+  await Promise.all(
+    findOptionPages.map(async (page) => {
+      if (page.id) {
+        await Browser.tabs.remove(page.id)
+      }
+    }),
+  )
+  await Browser.tabs.create({
+    url: `chrome-extension://${chromeExtensionId}/options.html${query}`,
+    active: autoFocus,
+  })
 }
 export const chromeExtensionLogout = async () => {
   // 清空用户token

@@ -2,7 +2,8 @@ import path from 'path'
 
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import typescript from '@rollup/plugin-typescript'
+// import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-ts'
 import postcss from 'rollup-plugin-postcss'
 import { chromeExtension, simpleReloader } from 'rollup-plugin-chrome-extension'
 import terser from '@rollup/plugin-terser'
@@ -17,7 +18,7 @@ import html from '@rollup/plugin-html'
 import modifyManifest from './modifyManifest'
 import localesCreator from './localesCreator'
 
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = String(process.env.NODE_ENV) === 'production'
 function getArgs() {
   const args = {}
   process.argv.slice(2, process.argv.length).forEach((arg) => {

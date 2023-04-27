@@ -1,5 +1,5 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/types'
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = String(process.env.NODE_ENV) === 'production'
 
 export type botUuid = 'dd385931-45f4-4de1-8e48-8145561b0f9d' // use chatgpt cmd + j not working larkbot
 export const sendLarkBotMessage = (

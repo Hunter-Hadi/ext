@@ -9,7 +9,7 @@ import OptionPagesInit from '@/utils/OptionPagesInit'
 
 const rootElement = document.getElementById('Root')
 
-const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 if (rootElement) {
   const root = createRoot(rootElement)

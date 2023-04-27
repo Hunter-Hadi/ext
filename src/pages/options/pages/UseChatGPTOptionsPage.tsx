@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import '../../OptionsPage.less'
 import { Box, Container, Link, Stack, Typography } from '@mui/material'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
@@ -9,14 +9,13 @@ import { SnackbarProvider } from 'notistack'
 import { useAuthLogin } from '@/features/auth/hooks'
 import UseChatGPTOptionsLoginPage from '@/pages/options/pages/UseChatGPTOptionsLoginPage'
 import AccountMenu from '@/pages/options/components/AccountMenu'
-import { useFocus } from '@/hooks/useFocus'
 import { OptionsPageRouteContext } from '@/pages/options/context'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
 
 const UseChatGPTOptionsPage = () => {
   const { loaded, isLogin, loading } = useAuthLogin()
   const [route, setRoute] = useState('')
-  const prefHashRef = React.useRef('')
+  const onceScorllRef = React.useRef(false)
   useEffect(() => {
     if (loaded) {
       const params = new URLSearchParams(window.location.search)
@@ -45,32 +44,32 @@ const UseChatGPTOptionsPage = () => {
     // return ''
   }, [route])
   const scrollToHash = () => {
-    if (prefHashRef.current === window.location.hash) {
+    if (onceScorllRef.current) {
       return
     }
     const hash = window.location.hash
-    const timer = setTimeout(() => {
+    // timeout for wait for dom render
+    const timeout = 3000
+    const timer = setInterval(() => {
       const element = document.getElementById(hash.replace('#', ''))
-      if (element) {
-        const rect = element.getBoundingClientRect()
-        const offset = window.pageYOffset || document.documentElement.scrollTop
-        const top = rect.top + offset - 72 - 16
+      const rect = element?.getBoundingClientRect()
+      const offset = window.pageYOffset || document.documentElement.scrollTop
+      if (rect && rect.top > 0 && !onceScorllRef.current) {
+        onceScorllRef.current = true
+        const top = rect.top + offset - 72 - 24
         window.scrollTo({
           top,
           behavior: 'smooth',
         })
-        prefHashRef.current = hash
+        clearInterval(timer)
         return
       }
-    }, 1000)
-    return () => {
-      clearTimeout(timer)
-    }
+    }, 100)
+    setTimeout(() => {
+      timer && clearTimeout(timer)
+    }, timeout)
   }
-  useEffect(() => {
-    scrollToHash()
-  }, [])
-  useFocus(() => {
+  useLayoutEffect(() => {
     scrollToHash()
   })
   return (

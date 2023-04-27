@@ -236,6 +236,8 @@ const ChatGPTProviderAuthWrapper: FC = () => {
       return 'Add your own OpenAI API key'
     } else if (provider === CHAT_GPT_PROVIDER.BARD) {
       return 'Log into your own Google Bard'
+    } else if (provider === CHAT_GPT_PROVIDER.BING) {
+      return 'Log into your own Microsoft Bing'
     }
     return ''
   }, [provider])

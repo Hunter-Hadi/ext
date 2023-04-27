@@ -2,32 +2,32 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { BardChat } from '@/background/src/chat'
+import { BingChat } from '@/background/src/chat'
 import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import { v4 as uuidV4 } from 'uuid'
 
-class BardChatProvider implements ChatAdapterInterface {
-  private bardChat: BardChat
+class BingChatProvider implements ChatAdapterInterface {
+  private bindChat: BingChat
 
-  constructor(bardChat: BardChat) {
-    this.bardChat = bardChat
+  constructor(bindChat: BingChat) {
+    this.bindChat = bindChat
   }
   async auth(authTabId: number) {
-    await this.bardChat.auth()
+    await this.bindChat.auth()
   }
   async preAuth() {
-    await this.bardChat.checkAuth()
+    // 进入聊天界面再进行认证
+    await this.bindChat.auth()
   }
   get status() {
-    return this.bardChat.status
+    return this.bindChat.status
   }
   async createConversation() {
     return Promise.resolve('')
   }
   async removeConversation(conversationId: string) {
-    await this.bardChat.reset()
     await setChromeExtensionSettings({
       conversationId: '',
     })
@@ -39,7 +39,7 @@ class BardChatProvider implements ChatAdapterInterface {
     question,
     options,
   ) => {
-    await this.bardChat.askChatGPT(
+    await this.bindChat.askChatGPT(
       question.question,
       {
         taskId: question.messageId,
@@ -65,10 +65,10 @@ class BardChatProvider implements ChatAdapterInterface {
     )
   }
   async abortAskQuestion(messageId: string) {
-    return await this.bardChat.abortTask(messageId)
+    return await this.bindChat.abortTask(messageId)
   }
   async destroy() {
-    await this.bardChat.destroy()
+    await this.bindChat.destroy()
   }
   private async sendResponseToClient(tabId: number, data: any) {
     await Browser.tabs.sendMessage(tabId, {
@@ -78,4 +78,4 @@ class BardChatProvider implements ChatAdapterInterface {
     })
   }
 }
-export { BardChatProvider }
+export { BingChatProvider }

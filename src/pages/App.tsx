@@ -18,7 +18,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import TooltipButton from '@/components/TooltipButton'
 import useCommands from '@/hooks/useCommands'
 
-const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
@@ -28,10 +28,13 @@ const App: FC = () => {
     const attrObserver = new MutationObserver((mutations) => {
       mutations.forEach((mu) => {
         if (mu.type !== 'attributes' && mu.attributeName !== 'class') return
-        setAppState({
-          env: isEzMailApp ? 'gmail' : 'normal',
-          open:
-            (mu.target as HTMLElement)?.classList?.contains('open') || false,
+        setAppState((prev) => {
+          return {
+            ...prev,
+            env: isEzMailApp ? 'gmail' : 'normal',
+            open:
+              (mu.target as HTMLElement)?.classList?.contains('open') || false,
+          }
         })
       })
     })
@@ -129,7 +132,7 @@ const App: FC = () => {
                   fontSize={20}
                   fontWeight={800}
                 >
-                  {process.env.APP_NAME}
+                  {String(process.env.APP_NAME)}
                 </Typography>
                 <TooltipButton
                   title={'Settings'}

@@ -74,6 +74,7 @@
     "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-empty-dir": "^1.0.5",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-ts": "^3.2.0",
     "rollup-plugin-visualizer": "^5.9.0",
     "rollup-plugin-zip": "^1.0.3",
     "tslib": "^2.0.3",

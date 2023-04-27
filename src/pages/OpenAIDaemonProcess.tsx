@@ -25,7 +25,7 @@ import CloseAlert from '@/components/CloseAlert'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 
-const APP_NAME = process.env.APP_NAME
+const APP_NAME = String(process.env.APP_NAME)
 const log = new Log('ChatGPTDaemonProcessPage')
 const stopDaemonProcessClose = () => {
   setInterval(() => {
@@ -402,8 +402,11 @@ const OpenAIDaemonProcess: FC = () => {
           position: 'absolute',
           height: 40,
           width: '100%',
-          bgcolor: process.env.APP_ENV === 'EZ_MAIL_AI' ? '#1D56D7' : '#7601D3',
-          zIndex: process.env.APP_ENV === 'EZ_MAIL_AI' ? 999 : 1000,
+          bgcolor:
+            String(process.env.APP_ENV) === 'EZ_MAIL_AI'
+              ? '#1D56D7'
+              : '#7601D3',
+          zIndex: String(process.env.APP_ENV) === 'EZ_MAIL_AI' ? 999 : 1000,
           color: '#fff',
         }}
         spacing={1}

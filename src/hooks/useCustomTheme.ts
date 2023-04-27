@@ -4,7 +4,7 @@ import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 // import { useTernaryDarkMode } from 'usehooks-ts';
 
-const APP_ENV = process.env.APP_ENV
+const APP_ENV = String(process.env.APP_ENV)
 
 type CustomColor = {
   main: React.CSSProperties['color']

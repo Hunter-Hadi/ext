@@ -1,4 +1,4 @@
-import { v4 as uuidv4, v4 as uuidV4 } from 'uuid'
+import { v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 import { CHAT_GPT_PROVIDER } from '@/types'
@@ -193,7 +193,7 @@ class ChatGPTConversation {
   }) {
     this.token = props.token
     this.model = props.model
-    this.lastChatGPTAnswerMessageId = uuidv4()
+    this.lastChatGPTAnswerMessageId = uuidV4()
     this.id = uuidV4()
     this.conversationId = props.conversationId || undefined
     this.conversationInfo = {
@@ -237,7 +237,7 @@ class ChatGPTConversation {
       this.lastChatGPTAnswerMessageId = chatGPTConversationRaw.current_node
     } catch (e) {
       console.error(e)
-      this.lastChatGPTAnswerMessageId = uuidv4()
+      this.lastChatGPTAnswerMessageId = uuidV4()
       this.conversationId = undefined
       this.conversationInfo = {
         title: '',

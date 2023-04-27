@@ -17,7 +17,7 @@ import {
 import Log from '@/utils/Log'
 import { useAuthLogin } from '@/features/auth'
 
-const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
+const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 const log = new Log('AppInit')
 

@@ -76,7 +76,7 @@ const GmailChatBoxMessageItem: FC<{
         flexDirection: 'row',
         justifyContent: 'flex-start',
         bgcolor: () => {
-          if (process.env.APP_ENV === 'EZ_MAIL_AI') {
+          if (String(process.env.APP_ENV) === 'EZ_MAIL_AI') {
             return '#FEE6E1 !important'
           }
           if (userSettings?.colorSchema === 'dark') {

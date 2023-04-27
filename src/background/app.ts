@@ -16,6 +16,7 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/types'
 import {
+  BardChat,
   ChatSystem,
   OpenAiApiChat,
   OpenAIChat,
@@ -29,6 +30,7 @@ import {
 } from '@/background/provider/chat'
 import { ClientMessageInit } from '@/background/src/client'
 import { backgroundSendClientMessage } from '@/background/utils'
+import { BardChatProvider } from '@/background/provider/chat/BardChatProvider'
 
 const isEzMailApp = process.env.APP_ENV === 'EZ_MAIL_AI'
 
@@ -122,12 +124,16 @@ const initChromeExtensionMessage = () => {
     const newOpenAIApiChatAdapter = new ChatAdapter(
       new OpenAIApiChatProvider(new OpenAiApiChat()),
     )
+    const bardChatAdapter = new ChatAdapter(
+      new BardChatProvider(new BardChat()),
+    )
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)
     chatSystem.addAdapter(
       CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       useChatGPTPlusAdapter,
     )
+    chatSystem.addAdapter(CHAT_GPT_PROVIDER.BARD, bardChatAdapter)
   }
 }
 

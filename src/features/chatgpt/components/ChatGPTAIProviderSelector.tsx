@@ -19,6 +19,7 @@ import UseChatGPTAIQuotaLeft from '@/features/chatgpt/components/UseChatGPTAIQuo
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import {
+  BardIcon,
   ChatGPTIcon,
   OpenAIIcon,
   UseChatGptIcon,
@@ -99,6 +100,19 @@ const providerOptions = [
       `✅ Fast response speed`,
       `🤔 GPT-4 may be available`,
     ],
+  },
+  {
+    label: 'Bard',
+    value: CHAT_GPT_PROVIDER.BARD,
+    icon: (
+      <BardIcon
+        sx={{
+          fontSize: 20,
+        }}
+      />
+    ),
+    description: `Google Bard`,
+    features: [`😞 Pay $ as you go to OpenAI`],
   },
 ]
 

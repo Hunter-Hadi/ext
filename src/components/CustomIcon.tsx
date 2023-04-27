@@ -118,6 +118,66 @@ const GiftIcon = (props: SvgIconProps) => {
     </SvgIcon>
   )
 }
+
+const BardIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_1_2)">
+          <path
+            d="M11.4464 16.1294L10.489 18.3223C10.121 19.1652 8.95452 19.1652 8.5865 18.3223L7.62905 16.1294C6.77701 14.1779 5.24338 12.6245 3.33038 11.7754L0.695048 10.6056C-0.142816 10.2337 -0.142815 9.01477 0.695048 8.64286L3.24807 7.50959C5.21027 6.63859 6.77141 5.02764 7.6089 3.00957L8.57874 0.672646C8.93863 -0.194591 10.1369 -0.194593 10.4968 0.672643L11.4666 3.00959C12.3041 5.02764 13.8652 6.63859 15.8274 7.50959L18.3805 8.64286C19.2183 9.01477 19.2183 10.2337 18.3805 10.6056L15.7451 11.7754C13.8321 12.6245 12.2985 14.1779 11.4464 16.1294Z"
+            fill="url(#paint0_radial_1_2)"
+          />
+          <path
+            d="M20.3441 23.044L20.0748 23.6611C19.8778 24.1129 19.2522 24.1129 19.0552 23.6611L18.7859 23.044C18.3059 21.9437 17.4414 21.0676 16.3626 20.5883L15.5331 20.2198C15.0845 20.0205 15.0845 19.3684 15.5331 19.1691L16.3163 18.8211C17.4228 18.3295 18.3028 17.421 18.7745 16.2833L19.051 15.6165C19.2437 15.1517 19.8863 15.1517 20.079 15.6165L20.3555 16.2833C20.8273 17.421 21.7073 18.3295 22.8138 18.8211L23.5969 19.1691C24.0456 19.3684 24.0456 20.0205 23.5969 20.2198L22.7674 20.5883C21.6886 21.0676 20.8241 21.9437 20.3441 23.044Z"
+            fill="url(#paint1_radial_1_2)"
+          />
+        </g>
+        <defs>
+          <radialGradient
+            id="paint0_radial_1_2"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(14.8988 10.5335) rotate(78.858) scale(14.7889 14.7961)"
+          >
+            <stop stopColor="#1BA1E3" />
+            <stop offset="0.0001" stopColor="#1BA1E3" />
+            <stop offset="0.300221" stopColor="#5489D6" />
+            <stop offset="0.545524" stopColor="#9B72CB" />
+            <stop offset="0.825372" stopColor="#D96570" />
+            <stop offset="1" stopColor="#F49C46" />
+          </radialGradient>
+          <radialGradient
+            id="paint1_radial_1_2"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(14.8988 10.5335) rotate(78.858) scale(14.7889 14.7961)"
+          >
+            <stop stopColor="#1BA1E3" />
+            <stop offset="0.0001" stopColor="#1BA1E3" />
+            <stop offset="0.300221" stopColor="#5489D6" />
+            <stop offset="0.545524" stopColor="#9B72CB" />
+            <stop offset="0.825372" stopColor="#D96570" />
+            <stop offset="1" stopColor="#F49C46" />
+          </radialGradient>
+          <clipPath id="clip0_1_2">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </SvgIcon>
+  )
+}
 const GoogleIcon: FC<SvgIconProps> = (props) => {
   return (
     <SvgIcon {...props}>
@@ -142,6 +202,7 @@ const GoogleIcon: FC<SvgIconProps> = (props) => {
 }
 
 export {
+  BardIcon,
   GoogleIcon,
   EzMailAIIcon,
   ChatGPTIcon,

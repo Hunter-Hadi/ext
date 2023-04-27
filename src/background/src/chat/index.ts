@@ -1,4 +1,5 @@
 export { OpenAIChat } from './OpenAIChat'
 export { OpenAiApiChat } from './OpenAiApiChat'
 export { UseChatGPTPlusChat } from './UseChatGPTPlusChat'
+export { BardChat } from './BardChat'
 export { ChatSystem } from './ChatSystem'

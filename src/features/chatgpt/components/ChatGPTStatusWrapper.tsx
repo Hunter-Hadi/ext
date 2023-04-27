@@ -9,6 +9,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import CheckIcon from '@mui/icons-material/Check'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import {
+  BardIcon,
   ChatGPTIcon,
   GoogleIcon,
   OpenAIIcon,
@@ -233,6 +234,8 @@ const ChatGPTProviderAuthWrapper: FC = () => {
       return 'Log into your own ChatGPT'
     } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
       return 'Add your own OpenAI API key'
+    } else if (provider === CHAT_GPT_PROVIDER.BARD) {
+      return 'Log into your own Google Bard'
     }
     return ''
   }, [provider])
@@ -350,6 +353,23 @@ const ChatGPTProviderAuthWrapper: FC = () => {
                   color={'text.primary'}
                 >
                   OpenAI API
+                </Typography>
+              </>
+            )}
+            {provider === CHAT_GPT_PROVIDER.BARD && (
+              <>
+                <BardIcon
+                  sx={{
+                    mx: 1,
+                    fontSize: 20,
+                  }}
+                />
+                <Typography
+                  fontSize={'20px'}
+                  fontWeight={700}
+                  color={'text.primary'}
+                >
+                  Bard
                 </Typography>
               </>
             )}

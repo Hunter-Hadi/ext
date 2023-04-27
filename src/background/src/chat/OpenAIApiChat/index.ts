@@ -120,7 +120,7 @@ class OpenAiApiChat {
     const conversationId = uuidV4()
     const result: IOpenAIApiChatMessage = { role: 'assistant', content: '' }
     await fetchSSE(`${chatGPTApiSettings.apiHost}/v1/chat/completions`, {
-      provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+      provider: CHAT_GPT_PROVIDER.OPENAI_API,
       method: 'POST',
       signal,
       headers: {

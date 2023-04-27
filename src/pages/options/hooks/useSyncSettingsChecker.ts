@@ -34,6 +34,10 @@ const useSyncSettingsChecker = () => {
       if (result?.status === 'OK') {
         const serverSettings = result.data?.settings
         if (serverSettings) {
+          // HACK: remove conversationId
+          if (serverSettings?.conversationId) {
+            delete serverSettings.conversationId
+          }
           await setChromeExtensionSettings(serverSettings)
           // enqueueSnackbar('Sync successful!', {
           //   variant: 'success',

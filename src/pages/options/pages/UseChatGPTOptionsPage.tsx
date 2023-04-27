@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import '../../OptionsPage.less'
-import { Box, Container, Stack, Typography } from '@mui/material'
+import { Box, Container, Link, Stack, Typography } from '@mui/material'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOptionsSettingPage'
 import UseChatGPTOptionsEditMenuPage from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage'
@@ -9,17 +9,14 @@ import { SnackbarProvider } from 'notistack'
 import { useAuthLogin } from '@/features/auth/hooks'
 import UseChatGPTOptionsLoginPage from '@/pages/options/pages/UseChatGPTOptionsLoginPage'
 import AccountMenu from '@/pages/options/components/AccountMenu'
-
-export const OptionsPageRouteContext = React.createContext({
-  route: '/',
-  setRoute: (route: string) => {
-    console.log('setRoute', route)
-  },
-})
+import { useFocus } from '@/hooks/useFocus'
+import { OptionsPageRouteContext } from '@/pages/options/context'
+import { APP_USE_CHAT_GPT_HOST } from '@/types'
 
 const UseChatGPTOptionsPage = () => {
   const { loaded, isLogin, loading } = useAuthLogin()
   const [route, setRoute] = useState('')
+  const prefHashRef = React.useRef('')
   useEffect(() => {
     if (loaded) {
       const params = new URLSearchParams(window.location.search)
@@ -47,7 +44,10 @@ const UseChatGPTOptionsPage = () => {
     // }
     // return ''
   }, [route])
-  useEffect(() => {
+  const scrollToHash = () => {
+    if (prefHashRef.current === window.location.hash) {
+      return
+    }
     const hash = window.location.hash
     const timer = setTimeout(() => {
       const element = document.getElementById(hash.replace('#', ''))
@@ -59,13 +59,20 @@ const UseChatGPTOptionsPage = () => {
           top,
           behavior: 'smooth',
         })
+        prefHashRef.current = hash
         return
       }
     }, 1000)
     return () => {
       clearTimeout(timer)
     }
+  }
+  useEffect(() => {
+    scrollToHash()
   }, [])
+  useFocus(() => {
+    scrollToHash()
+  })
   return (
     <Stack
       sx={{
@@ -94,44 +101,50 @@ const UseChatGPTOptionsPage = () => {
                 justifyContent={'space-between'}
                 height={'71px'}
               >
-                <Stack direction={'row'} alignItems={'center'} spacing={1}>
-                  <Box
-                    component={'span'}
-                    sx={{
-                      cursor: 'pointer',
-                    }}
-                    onClick={() => {
-                      if (isLogin) {
-                        setRoute('/')
-                      }
-                    }}
-                  >
-                    <UseChatGptIcon
+                <Link
+                  href={APP_USE_CHAT_GPT_HOST}
+                  target={'_blank'}
+                  underline={'none'}
+                >
+                  <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                    <Box
+                      component={'span'}
                       sx={{
-                        fontSize: 32,
+                        cursor: 'pointer',
                       }}
-                    />
-                  </Box>
-                  <Typography
-                    fontSize={24}
-                    fontWeight={700}
-                    sx={{
-                      cursor: 'pointer',
-                    }}
-                    onClick={() => {
-                      if (isLogin) {
-                        setRoute('/')
-                      }
-                    }}
-                  >
-                    UseChatGPT.AI
-                  </Typography>
-                  {crumbsText && (
-                    <Typography fontSize={24} fontWeight={700}>
-                      {crumbsText}
+                      onClick={() => {
+                        if (isLogin) {
+                          setRoute('/')
+                        }
+                      }}
+                    >
+                      <UseChatGptIcon
+                        sx={{
+                          fontSize: 32,
+                        }}
+                      />
+                    </Box>
+                    <Typography
+                      fontSize={24}
+                      fontWeight={700}
+                      sx={{
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => {
+                        if (isLogin) {
+                          setRoute('/')
+                        }
+                      }}
+                    >
+                      UseChatGPT.AI
                     </Typography>
-                  )}
-                </Stack>
+                    {crumbsText && (
+                      <Typography fontSize={24} fontWeight={700}>
+                        {crumbsText}
+                      </Typography>
+                    )}
+                  </Stack>
+                </Link>
                 {isLogin && <AccountMenu />}
               </Stack>
             </Container>

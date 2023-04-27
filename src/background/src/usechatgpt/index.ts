@@ -22,6 +22,10 @@ export const backgroundFetchUseChatGPTUserInfo = async (
     if (response.ok) {
       const result = await response.json()
       if (result.status === 'OK' && result?.data?.email) {
+        // HACK: remove conversationId
+        if (result.data?.conversationId) {
+          delete result.data.conversationId
+        }
         return result.data as IUseChatGPTUserInfo
       }
     }

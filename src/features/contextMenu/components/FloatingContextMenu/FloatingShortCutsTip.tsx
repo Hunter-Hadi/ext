@@ -56,6 +56,7 @@ const FloatingShortCutsTip: FC = () => {
     <>
       {shortCutKey ? (
         <Box
+          className={'usechatgpt-ai__context-menu--handle-button'}
           sx={{
             position: 'fixed',
             bottom: 16,

@@ -174,7 +174,7 @@ const useInitRangy = () => {
             '[ContextMenu Module]: remove writeable element listener',
             currentActiveWriteableElementRef.current,
           )
-          // TODO - iframe适配要独立成tab注入的content_script
+          // TODO: iframe适配要独立成tab注入的content_script
           if (currentActiveWriteableElementRef.current?.tagName === 'IFRAME') {
             const iframeTarget =
               currentActiveWriteableElementRef.current as HTMLIFrameElement
@@ -199,7 +199,7 @@ const useInitRangy = () => {
           '[ContextMenu Module]: bind writeable element listener',
           target,
         )
-        // TODO - iframe适配要独立成tab注入的content_script
+        // TODO: iframe适配要独立成tab注入的content_script
         if (isIframeTarget) {
           const iframeTarget = target as HTMLIFrameElement
           iframeTarget.contentDocument?.body.addEventListener(

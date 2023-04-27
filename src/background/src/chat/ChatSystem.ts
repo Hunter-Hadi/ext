@@ -141,6 +141,7 @@ class ChatSystem implements ChatInterface {
     })
     getChromeExtensionSettings().then(async (settings) => {
       if (settings.chatGPTProvider) {
+        console.log('settings.chatGPTProvider', settings.chatGPTProvider)
         await this.switchAdapter(settings.chatGPTProvider)
       }
     })

@@ -143,6 +143,7 @@ const ClickContextMenuButton: FC<{
     >
       <Stack direction={'row'} alignItems={'center'}>
         <Button
+          className={'usechatgpt-ai__context-menu--handle-button'}
           size={'small'}
           variant={'text'}
           sx={{

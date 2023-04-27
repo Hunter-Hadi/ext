@@ -25,7 +25,6 @@ class UseChatGPTPlusChat {
   private active = false
   private lastActiveTabId?: number
   private token?: string
-  private oncePreCheck = true
   private taskList: {
     [key in string]: any
   } = {}
@@ -57,7 +56,6 @@ class UseChatGPTPlusChat {
                 })
               } else {
                 await chromeExtensionLogout()
-                this.oncePreCheck = true
               }
               await this.checkTokenAndUpdateStatus(sender.tab?.id)
               if (!preToken && accessToken) {
@@ -94,7 +92,6 @@ class UseChatGPTPlusChat {
   async auth(authTabId: number) {
     this.active = true
     this.lastActiveTabId = authTabId
-    this.oncePreCheck = false
     await this.checkTokenAndUpdateStatus()
     if (this.status === 'needAuth') {
       // 引导去登陆
@@ -120,9 +117,6 @@ class UseChatGPTPlusChat {
         })
       }
     }
-    if (this.status === 'success' && this.oncePreCheck) {
-      this.status = 'needAuth'
-    }
     await this.updateClientStatus()
   }
 
@@ -132,6 +126,9 @@ class UseChatGPTPlusChat {
    * @param options
    * @param onMessage 回调
    * @param options.include_history 是否包含历史记录
+   * @param options.regenerate 是否重新生成
+   * @param options.streaming 是否流式
+   * @param options.max_history_message_cnt 最大历史记录数
    * @param options.taskId 任务id
    */
   async askChatGPT(
@@ -141,6 +138,7 @@ class UseChatGPTPlusChat {
       include_history?: boolean
       regenerate?: boolean
       streaming?: boolean
+      max_history_message_cnt?: number
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -158,6 +156,7 @@ class UseChatGPTPlusChat {
       taskId,
       streaming = true,
       regenerate = false,
+      max_history_message_cnt = 0,
     } = options || {}
     const postBody = Object.assign(
       {
@@ -165,6 +164,7 @@ class UseChatGPTPlusChat {
         regenerate,
         streaming,
         message_content: question,
+        max_history_message_cnt,
       },
       cacheConversationId ? { conversation_id: cacheConversationId } : {},
     )
@@ -257,6 +257,7 @@ class UseChatGPTPlusChat {
       await throttleEchoText()
     }
     throttleEchoText()
+    let isTokenExpired = false
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
       provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       method: 'POST',
@@ -299,17 +300,8 @@ class UseChatGPTPlusChat {
         }
         try {
           const error = JSON.parse(err.message || err)
-          if (error?.detail === 'Your premium plan has expired') {
-            onMessage &&
-              onMessage({
-                type: 'error',
-                error: `Your premium plan has expired. [Get free quota](${
-                  APP_USE_CHAT_GPT_HOST + '/referral'
-                })`,
-                done: true,
-                data: { text: '', conversationId },
-              })
-            return
+          if (error?.code === 401) {
+            isTokenExpired = true
           }
           log.error('sse error', err)
           onMessage &&
@@ -332,6 +324,12 @@ class UseChatGPTPlusChat {
     if (!isEnd) {
       log.info('streaming end success')
       isEnd = true
+    }
+    if (isTokenExpired) {
+      log.info('user token expired')
+      this.status = 'needAuth'
+      await chromeExtensionLogout()
+      await this.updateClientStatus()
     }
   }
   async getUserInfo() {

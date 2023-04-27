@@ -19,7 +19,7 @@ import {
   ChatGPTConversationState,
   InboxEditState,
 } from '@/features/gmail/store'
-import { CHROME_EXTENSION_MAIL_TO } from '@/types'
+import { CHAT_GPT_PROVIDER, CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
@@ -29,14 +29,8 @@ import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevTextSendControl'
-
-export interface IGmailChatMessage {
-  type: 'user' | 'ai' | 'system' | 'third'
-  messageId: string
-  parentMessageId?: string
-  text: string
-  status?: 'error' | 'success'
-}
+import { IChatMessage } from '@/features/chatgpt/types'
+import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 
 const MAX_NORMAL_INPUT_LENGTH = 10000
 const MAX_GPT4_INPUT_LENGTH = 80000
@@ -55,8 +49,8 @@ interface IGmailChatBoxProps {
   onStopGenerate?: () => void
   onReset?: () => void
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
-  messages: IGmailChatMessage[]
-  writingMessage: IGmailChatMessage | null
+  messages: IChatMessage[]
+  writingMessage: IChatMessage | null
   onSendMessage?: (text: string) => void
   defaultValue?: string
   onRetry?: (messageId: string) => void
@@ -84,6 +78,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
+  const { provider } = useChatGPTProvider()
   const conversation = useRecoilValue(ChatGPTConversationState)
   const { step } = useRecoilValue(InboxEditState)
   const stackRef = useRef<HTMLElement | null>(null)
@@ -91,6 +86,8 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [inputValue, setInputValue] = useState(defaultValue || '')
   // 为了在消息更新前计算滚动高度
   const currentMaxInputLength = useMemo(() => {
+    // NOTE: GPT-4 最大输入长度为 80000，GPT-3 最大输入长度为 10000, 我们后端最多6000，所以这里写死4000
+    return 4000
     return conversation.model === 'gpt-4'
       ? MAX_GPT4_INPUT_LENGTH
       : MAX_NORMAL_INPUT_LENGTH
@@ -188,7 +185,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       }}
     >
       <style>{markdownCss}</style>
-      {/*//TODO hide title*/}
+      {/*//NOTE: hide title*/}
       {/*<Stack*/}
       {/*  flexShrink={0}*/}
       {/*  height={56}*/}
@@ -215,7 +212,48 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTAIProviderSelector />
-        <DevTextSendControl />
+        {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
+          <Stack
+            spacing={1}
+            p={1}
+            mx={1}
+            my={2}
+            textAlign={'center'}
+            sx={{
+              alignItems: 'center',
+              borderRadius: '4px',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark' ? 'rgb(3,19,11)' : 'rgb(229,246,253)',
+            }}
+          >
+            <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
+              Get up to 24 weeks of free usage!
+            </Typography>
+            <Typography fontSize={14} color={'text.primary'}>
+              {`Invite your friends to join UseChatGPT.AI! For anyone who signs up using your referral link and installs UseChatGPT.AI extension, we'll give you both 1 week of free usage!`}
+            </Typography>
+            <img
+              src={`https://app.usechatgpt.ai/assets/images/referral/invite-your-friends-light.png`}
+              alt="invite your friends"
+              width={360}
+              height={98}
+            />
+            <Button
+              variant={'contained'}
+              color={'primary'}
+              sx={{
+                fontSize: 16,
+                fontWeight: 700,
+              }}
+              fullWidth
+            >
+              Invite your friends
+            </Button>
+          </Stack>
+        )}
+        {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
+          <DevTextSendControl />
+        )}
         {messages.map((message) => {
           return (
             <GmailChatBoxMessageItem

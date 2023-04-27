@@ -21,6 +21,7 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import HowToFindSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
 import ReferralInviteCard from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ReferralInviteCard'
 import ChatGPTStableModeSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTStableModeSetting'
+import ChatGPTApiSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTApiSettings'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -125,6 +126,8 @@ const UseChatGPTOptionsSettingPage = () => {
             }}
           />
           <Divider sx={{ my: 4 }} />
+          <ChatGPTApiSettings />
+          <Divider sx={{ my: 4 }} />
           <Typography
             fontSize={20}
             fontWeight={700}
@@ -169,4 +172,5 @@ const UseChatGPTOptionsSettingPage = () => {
     </SyncSettingCheckerWrapper>
   )
 }
+
 export default UseChatGPTOptionsSettingPage

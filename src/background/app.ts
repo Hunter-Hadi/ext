@@ -17,11 +17,13 @@ import {
 } from '@/types'
 import {
   ChatSystem,
+  OpenAiApiChat,
   OpenAIChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
 import {
   ChatAdapter,
+  OpenAIApiChatProvider,
   OpenAIChatProvider,
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
@@ -117,7 +119,11 @@ const initChromeExtensionMessage = () => {
     const useChatGPTPlusAdapter = new ChatAdapter(
       new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
     )
+    const newOpenAIApiChatAdapter = new ChatAdapter(
+      new OpenAIApiChatProvider(new OpenAiApiChat()),
+    )
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
+    chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)
     chatSystem.addAdapter(
       CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       useChatGPTPlusAdapter,

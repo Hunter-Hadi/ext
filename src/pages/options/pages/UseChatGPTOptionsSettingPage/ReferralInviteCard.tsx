@@ -20,12 +20,10 @@ const ReferralInviteCard: FC = () => {
       >
         <Stack spacing={1} textAlign={'center'}>
           <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
-            Get up to 24 weeks of UseChatGPT.AI quota for free!
+            Get up to 24 weeks of free usage!
           </Typography>
           <Typography fontSize={14} color={'text.primary'}>
-            {`Invite your friends to join UseChatGPT.AI, and for each one who signs
-          up and installs UseChatGPT.AI extension we'll give you both 1 week of
-          quota for free!`}
+            {`Invite your friends to join UseChatGPT.AI! For anyone who signs up using your referral link and installs UseChatGPT.AI extension, we'll give you both 1 week of free usage!`}
           </Typography>
           <img
             src={`https://app.usechatgpt.ai/assets/images/referral/invite-your-friends-light.png`}

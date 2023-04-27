@@ -2,26 +2,28 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { UseChatGPTPlusChat } from '@/background/src/chat'
+import { OpenAiApiChat } from '@/background/src/chat'
 import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import { v4 as uuidV4 } from 'uuid'
 
-class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
-  private useChatGPTPlusChat: UseChatGPTPlusChat
+class OpenAIApiChatProvider implements ChatAdapterInterface {
+  private openAiApiChat: OpenAiApiChat
 
-  constructor(useChatGPTPlusChat: UseChatGPTPlusChat) {
-    this.useChatGPTPlusChat = useChatGPTPlusChat
+  constructor(openAiApiChat: OpenAiApiChat) {
+    this.openAiApiChat = openAiApiChat
   }
   async auth(authTabId: number) {
-    await this.useChatGPTPlusChat.auth(authTabId)
+    await this.openAiApiChat.auth()
   }
   async preAuth() {
-    await this.useChatGPTPlusChat.preAuth()
+    await this.openAiApiChat.preAuth()
   }
   get status() {
-    return this.useChatGPTPlusChat.status
+    // NOTE: This is a hack to make sure the status is updated
+    this.openAiApiChat.checkApiKey()
+    return this.openAiApiChat.status
   }
   async createConversation() {
     return Promise.resolve('')
@@ -30,6 +32,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     await setChromeExtensionSettings({
       conversationId: '',
     })
+    await this.openAiApiChat.resetMessagesContext()
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (
@@ -38,7 +41,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     question,
     options,
   ) => {
-    await this.useChatGPTPlusChat.askChatGPT(
+    await this.openAiApiChat.askChatGPT(
       question.question,
       {
         taskId: question.messageId,
@@ -64,10 +67,10 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     )
   }
   async abortAskQuestion(messageId: string) {
-    return await this.useChatGPTPlusChat.abortTask(messageId)
+    return await this.openAiApiChat.abortTask(messageId)
   }
   async destroy() {
-    await this.useChatGPTPlusChat.destroy()
+    await this.openAiApiChat.destroy()
   }
   private async sendResponseToClient(tabId: number, data: any) {
     await Browser.tabs.sendMessage(tabId, {
@@ -77,4 +80,4 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     })
   }
 }
-export { UseChatGPTPlusChatProvider }
+export { OpenAIApiChatProvider }

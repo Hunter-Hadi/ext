@@ -6,7 +6,11 @@ import CloseIcon from '@mui/icons-material/Close'
 import { useRecoilState } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
 import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
-import { CHROME_EXTENSION_HOMEPAGE_URL, ROOT_CONTAINER_ID } from '@/types'
+import {
+  APP_USE_CHAT_GPT_HOST,
+  CHROME_EXTENSION_HOMEPAGE_URL,
+  ROOT_CONTAINER_ID,
+} from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import { AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
@@ -96,7 +100,11 @@ const App: FC = () => {
                 flexShrink: 0,
                 textDecoration: 'none!important',
               }}
-              href={CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'}
+              href={
+                isEzMailApp
+                  ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
+                  : APP_USE_CHAT_GPT_HOST
+              }
               target={'_blank'}
             >
               <Stack

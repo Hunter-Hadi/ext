@@ -1,9 +1,9 @@
 import { atom, selector } from 'recoil'
 import * as InboxSDK from '@inboxsdk/core'
 import { ComposeView } from '@inboxsdk/core'
-import { IGmailChatMessage } from '@/features/gmail/components/GmailChatBox'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 import Browser from 'webextension-polyfill'
+import { IChatMessage } from '@/features/chatgpt/types'
 
 interface IProxyInboxSdkTarget<T> {
   getInstance?: () => T
@@ -48,7 +48,7 @@ export const InboxComposeViewState = atom<{
   default: {},
 })
 
-export const ChatGPTMessageState = atom<IGmailChatMessage[]>({
+export const ChatGPTMessageState = atom<IChatMessage[]>({
   key: CHAT_GPT_MESSAGES_RECOIL_KEY,
   default: [],
   effects: [
@@ -77,7 +77,7 @@ export const ChatGPTInputState = atom<string>({
 })
 
 export const ChatGPTConversationState = atom<{
-  writingMessage: IGmailChatMessage | null
+  writingMessage: IChatMessage | null
   conversationId?: string
   lastMessageId?: string
   model: string

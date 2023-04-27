@@ -5,7 +5,7 @@ const modifyManifest = ({ env, isProd }) => ({
     const manifest = bundle['manifest.json']
     const manifestContent = JSON.parse(manifest.source)
     // console.log(manifestContent)
-    // TODO - this is a hack to inject the fetch polyfill into the manifest
+    // HACK: this is a hack to inject the fetch polyfill into the manifest
     // 防止频繁429的保底方案
     // manifestContent.content_scripts.push({
     //   js: ['inject-fetch.min.js'],

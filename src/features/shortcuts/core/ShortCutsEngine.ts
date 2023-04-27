@@ -82,7 +82,7 @@ class ShortCutsEngine implements IShortcutEngine {
           const nextAction = this.getNextAction()
           if (nextAction?.autoExecute && !currentAction.error) {
             console.log('ShortCutEngine.run: auto run next')
-            // TODO 出问题再说
+            // HACK: 出问题再说
             await delay(0)
             await this.run(params)
           }

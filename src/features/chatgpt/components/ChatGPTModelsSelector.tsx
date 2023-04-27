@@ -13,7 +13,7 @@ import {
 import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
-import { useMessageWithChatGPT } from '@/features/chatgpt'
+import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import { setChromeExtensionSettings } from '@/background/utils'
 import { ChatGPTConversationState } from '@/features/gmail/store'
 
@@ -85,11 +85,12 @@ const ChatGPTModelsSelector: FC = () => {
               <Typography
                 fontSize={14}
                 color={'text.primary'}
+                textAlign={'left'}
                 width={160}
                 noWrap
               >
                 {memoModels.find((model) => model.slug === value)?.title ||
-                  'select model'}
+                  'Select model'}
               </Typography>
             )}
           >

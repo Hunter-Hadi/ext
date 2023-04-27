@@ -51,6 +51,7 @@ export const CHAT_GPT_MESSAGES_RECOIL_KEY = 'CHAT_GPT_MESSAGES_RECOIL_KEY'
 export const CHAT_GPT_PROVIDER = {
   OPENAI: 'OPENAI',
   USE_CHAT_GPT_PLUS: 'USE_CHAT_GPT_PLUS',
+  OPENAI_API: 'OPENAI_API',
 } as const
 
 // app.usechatgpt.ai
@@ -62,3 +63,5 @@ export const BACKGROUND_SEND_TEXT_SPEED_SETTINGS =
 
 // openai
 export const OPENAI_IFRAME_ID = `${process.env.APP_ENV}_OPENAI_IFRAME_ID`
+export const OPENAI_API_MODELS = ['gpt-3.5-turbo', 'gpt-4', 'gpt-4-32k']
+export const OPENAI_LOCAL_STORAGE_OPENAI_API_SETTINGS_SAVE_KEY = `CHROME_EXTENSION_${process.env.APP_ENV}_OPENAI_API_SETTINGS_SAVE_KEY`

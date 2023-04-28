@@ -79,7 +79,7 @@ const FloatingContextMenuCloseIconButton: FC<{
               }))
             }}
             icon={'Close'}
-            label={`Hide text-select-popup temporarily`}
+            label={`Hide text-select-popup until page refresh`}
           />
           <LiteDropdownMenuItem
             onClick={async () => {

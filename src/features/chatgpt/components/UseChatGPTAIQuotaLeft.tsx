@@ -52,7 +52,7 @@ const UseChatGPTAIQuotaLeft: FC = () => {
             }}
           />
           <Typography fontSize={'12px'} fontWeight={500} color={'primary.main'}>
-            Get more usage!
+            Get more Free AI!
           </Typography>
         </Stack>
       </Link>

@@ -2,6 +2,11 @@ import { v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 import { CHAT_GPT_PROVIDER } from '@/types'
+import {
+  getChromeExtensionSettings,
+  IChatGPTModelType,
+  IChatGPTPluginType,
+} from '@/background/utils'
 
 export interface IChatGPTAnswer {
   text: string
@@ -79,20 +84,16 @@ export interface IChatGPTConversation {
   conversationId?: string
 }
 
-type IModal = {
-  slug: string
-  title: string
-  description: string
-  max_tokens: number
-}
 export interface IChatGPTDaemonProcess {
   token?: string
-  models: IModal[]
+  models: IChatGPTModelType[]
+  plugins: IChatGPTPluginType[]
   createConversation: (
     conversationId?: string,
     selectedModel?: string,
   ) => Promise<ChatGPTConversation | undefined>
-  getAllModels: () => Promise<IModal[]>
+  getAllModels: () => Promise<IChatGPTModelType[]>
+  getAllPlugins: () => Promise<IChatGPTPluginType[]>
   getConversation: (conversationId: string) => ChatGPTConversation | undefined
   getConversations: () => ChatGPTConversation[]
   closeConversation: (conversationId: string) => Promise<boolean>
@@ -258,6 +259,7 @@ class ChatGPTConversation {
     let isSend = false
     let resultText = ''
     let resultMessageId = ''
+    const settings = await getChromeExtensionSettings()
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: CHAT_GPT_PROVIDER.OPENAI,
       method: 'POST',
@@ -285,11 +287,19 @@ class ChatGPTConversation {
             model: this.model,
             parent_message_id: parentMessageId,
             timezone_offset_min: new Date().getTimezoneOffset(),
-            variant_purpose: 'none',
+            history_and_training_disabled: false,
           },
           this.conversationId
             ? {
                 conversation_id: this.conversationId,
+              }
+            : {},
+          settings.currentPlugins &&
+            !this.conversationId &&
+            this.model === 'text-davinci-002-plugins'
+            ? {
+                // NOTE: 只有创建新的对话时才需要传入插件
+                plugin_ids: settings.currentPlugins,
               }
             : {},
         ),
@@ -382,18 +392,16 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   abortFunctions: {
     [conversationId: string]: () => void
   }
-  models: IModal[]
+  models: IChatGPTModelType[]
+  plugins: IChatGPTPluginType[]
   constructor() {
     this.conversations = []
     this.abortFunctions = {}
+    this.plugins = []
     this.token = undefined
     this.models = []
   }
-  private async fetchModels(
-    token: string,
-  ): Promise<
-    { slug: string; title: string; description: string; max_tokens: number }[]
-  > {
+  private async fetchModels(token: string): Promise<IChatGPTModelType[]> {
     if (this.models.length > 0) {
       return this.models
     }
@@ -404,6 +412,20 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
       this.models = resp.models
     }
     return resp.models
+  }
+  private async fetchPlugins(token: string): Promise<IChatGPTPluginType[]> {
+    if (this.plugins.length > 0) {
+      return this.plugins
+    }
+    const resp = await chatGptRequest(
+      token,
+      'GET',
+      '/backend-api/aip/p?offset=0&limit=100&statuses=approved',
+    ).then((r) => r.json())
+    if (resp?.items && resp.items.length > 0) {
+      this.plugins = resp.items
+    }
+    return resp.items
   }
   private async getModelName(
     token: string,
@@ -436,6 +458,21 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
         this.token = token
       }
       return await this.fetchModels(token)
+    } catch (e) {
+      console.error(e)
+      return []
+    }
+  }
+  async getAllPlugins() {
+    if (this.plugins.length > 0) {
+      return this.plugins
+    }
+    try {
+      const token = this.token || (await getChatGPTAccessToken())
+      if (token) {
+        this.token = token
+      }
+      return await this.fetchPlugins(token)
     } catch (e) {
       console.error(e)
       return []

@@ -5,6 +5,7 @@ import {
   createBackgroundMessageListener,
   createChromeExtensionOptionsPage,
 } from '@/background/utils'
+import { createDaemonProcessTab } from '@/background/src/chat/util'
 
 const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
@@ -46,6 +47,8 @@ export const ClientMessageInit = () => {
                 })
               } else if (key === 'options') {
                 await createChromeExtensionOptionsPage(query)
+              } else if (key === 'chatgpt') {
+                await createDaemonProcessTab()
               }
               return {
                 data: true,

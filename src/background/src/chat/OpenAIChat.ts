@@ -269,6 +269,7 @@ class OpenAIChat {
       if (changeInfo.status === 'loading' || changeInfo.status === 'complete') {
         log.info('守护进程url状态更新', changeInfo.status)
         this.status = changeInfo.status
+        console.log('怎么回事')
         await this.updateClientStatus()
         await this.pingAwaitSuccess()
       }
@@ -284,6 +285,7 @@ class OpenAIChat {
         if (isOk) {
           break
         }
+        console.log('怎么回事2', i)
         Browser.tabs
           .sendMessage(this.chatGPTProxyInstance.id, {
             id: CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -295,6 +297,7 @@ class OpenAIChat {
               this.status = 'success'
               this.updateClientStatus()
               isOk = true
+              console.log('怎么回事3', i)
             }
           })
         await delay(1000)

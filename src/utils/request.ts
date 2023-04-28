@@ -30,6 +30,11 @@ export const post = <T>(
 ): Promise<IResponse<T>> => {
   return new Promise((resolve, reject) => {
     getAccessToken().then((accessToken) => {
+      if (!accessToken) {
+        reject(new Error('no accessToken'))
+        chromeExtensionLogout()
+        return
+      }
       fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
         method: 'POST',
         headers: {
@@ -66,6 +71,11 @@ export const get = <T>(
   return new Promise((resolve, reject) => {
     try {
       getAccessToken().then((accessToken) => {
+        if (!accessToken) {
+          reject(new Error('no accessToken'))
+          chromeExtensionLogout()
+          return
+        }
         fetch(APP_USE_CHAT_GPT_API_HOST + pathname, {
           headers: {
             'Content-Type': 'application/json',

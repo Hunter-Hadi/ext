@@ -15,7 +15,7 @@ import {
   ContextMenuSettingsState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import CloseIcon from '@mui/icons-material/Close'
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 
 const FloatingContextMenuCloseIconButton: FC<{
   sx?: SxProps
@@ -61,7 +61,9 @@ const FloatingContextMenuCloseIconButton: FC<{
                 ...sx,
               }}
             >
-              <CloseIcon sx={{ color: 'text.primary', fontSize: 16 }} />
+              <CancelOutlinedIcon
+                sx={{ color: 'text.primary', fontSize: 16 }}
+              />
             </Button>
           }
         >

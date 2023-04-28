@@ -27,6 +27,7 @@ import {
   UseChatGptIcon,
 } from '@/components/CustomIcon'
 import BulletList from '@/components/BulletList'
+import TextIcon from '@/components/TextIcon'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -45,50 +46,34 @@ const ArrowDropDownIconCustom = () => {
 const providerOptions = [
   {
     beta: false,
-    label: 'Free AI',
-    value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-    description:
-      'We are providing Free AI using GPT-3.5-turbo to power the extension. To get more Free AI, all you need to do is share your referral link and invite your friends to join us. You can find your referral link by clicking the "Get more Free AI!" link above.👆',
-    features: [
-      `👍 Free to use`,
-      `✅ No OpenAI account required`,
-      `✅ No country restrictions`,
-      `✅ No ChatGPT interruptions`,
-      `✅ Always available`,
-      `✅ Fast response speed`,
-      `❌ GPT-4 unavailable`,
-    ],
-    icon: <UseChatGptIcon sx={{ fontSize: 20 }} />,
-  },
-  {
-    beta: false,
     label: 'ChatGPT',
     value: CHAT_GPT_PROVIDER.OPENAI,
-    icon: <ChatGPTIcon sx={{ fontSize: 20 }} />,
-    description: `Use your own ChatGPT to power the extension. You need to log into your own ChatGPT account, and keep the pinned ChatGPT website tab open to power the extension without interruption.`,
+    logo: <ChatGPTIcon sx={{ fontSize: 20 }} />,
+    shortDescription: `Use your own ChatGPT to power the extension.`,
+    description: `You need to log into your own ChatGPT account, and keep the pinned ChatGPT website tab open to power the extension.`,
     features: [
-      `🔒 OpenAI account required`,
-      `🔒 Country restrictions apply`,
-      `😔 ChatGPT interruptions`,
+      `[Lock] OpenAI account required`,
+      `[Lock] Country restrictions apply`,
+      `[Unhappy] ChatGPT interruptions`,
       '',
       `For ChatGPT free plan:`,
-      `👍 Free to use`,
-      `❌ Not always available`,
-      `😔 Standard response speed`,
-      `❌ GPT-4 unavailable`,
+      `[ThumbUp] Free to use`,
+      `[Incorrect] Not always available`,
+      `[Unhappy] Standard response speed`,
+      `[Incorrect] GPT-4 unavailable`,
       '',
       `For ChatGPT Plus:`,
-      `💰 Pay $20/mo to OpenAI`,
-      `✅ Always available`,
-      `✅ Fast response speed`,
-      `✅ GPT-4 available`,
+      `[Database] Pay $20/mo to OpenAI`,
+      `[Done] Always available`,
+      `[Done] Fast response speed`,
+      `[Done] GPT-4 available`,
     ],
   },
   {
     beta: false,
     label: 'OpenAI API',
     value: CHAT_GPT_PROVIDER.OPENAI_API,
-    icon: (
+    logo: (
       <OpenAIIcon
         sx={{
           fontSize: 20,
@@ -96,59 +81,79 @@ const providerOptions = [
         }}
       />
     ),
-    description: `Use your own OpenAI API key to power the extension. Most are unaware that all ChatGPT users can easily obtain their own API key for free trial usage from OpenAI. To create your OpenAI API key, refer to the instructions provided on our Settings page.`,
+    shortDescription: `Use your own OpenAI API key to power the extension.`,
+    description: `Most are unaware that all ChatGPT users can easily obtain their own API key for free trial usage from OpenAI. To create your OpenAI API key, refer to the instructions provided on our Settings page.`,
     features: [
-      `💰 Pay $ as you go to OpenAI`,
-      `🔒 OpenAI account required`,
-      `🔒 Country restrictions apply`,
-      `✅ No ChatGPT interruptions`,
-      `✅ Always available`,
-      `✅ Fast response speed`,
-      `🤔 GPT-4 may be available`,
+      `[Database] Pay $ as you go to OpenAI`,
+      `[Lock] OpenAI account required`,
+      `[Lock] Country restrictions apply`,
+      `[Done] No ChatGPT interruptions`,
+      `[Done] Always available`,
+      `[Done] Fast response speed`,
+      `[QuestionMark] GPT-4 may be available`,
     ],
+  },
+  {
+    beta: false,
+    label: 'Free AI',
+    value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+    shortDescription: `Use our OpenAI API key (GPT-3.5-turbo) for free behind the scenes to power the extension.`,
+    description: `To get more Free AI, all you need to do is share your referral link and invite your friends to join us.`,
+    features: [
+      `[ThumbUp] Free to use`,
+      `[Done] No OpenAI account required`,
+      `[Done] No country restrictions`,
+      `[Done] No ChatGPT interruptions`,
+      `[Done] Always available`,
+      `[Done] Fast response speed`,
+      `[Incorrect] GPT-4 unavailable`,
+    ],
+    logo: <UseChatGptIcon sx={{ fontSize: 20 }} />,
   },
   {
     beta: true,
     label: 'Bing',
     value: CHAT_GPT_PROVIDER.BING,
-    icon: (
+    logo: (
       <BingIcon
         sx={{
           fontSize: 20,
         }}
       />
     ),
+    shortDescription: `Use your own New Bing Chat to power the extension.`,
     description: `Use your own New Bing Chat to power the extension. You need to log into your own Microsoft account that has access to the New Bing Chat. If your Microsoft account does not have access to the New Bing Chat, you can join the waitlist at bing.com/chat.`,
     features: [
-      `👍 Free to use`,
-      `✅ No OpenAI account required`,
-      `✅ No country restrictions`,
-      `🔒 New Bing Chat access required`,
-      `❌ Not always available`,
-      `😔 Standard response speed`,
-      `✅  GPT-4 unavailable`,
+      `[ThumbUp] Free to use`,
+      `[Done] No OpenAI account required`,
+      `[Done] No country restrictions`,
+      `[Lock] New Bing Chat access required`,
+      `[Incorrect] Not always available`,
+      `[Unhappy] Standard response speed`,
+      `[Done]  GPT-4 unavailable`,
     ],
   },
   {
     beta: true,
     label: 'Bard',
     value: CHAT_GPT_PROVIDER.BARD,
-    icon: (
+    logo: (
       <BardIcon
         sx={{
           fontSize: 20,
         }}
       />
     ),
+    shortDescription: `Use your own Bard to power the extension.`,
     description: `Use your own Bard to power the extension. You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can join the waitlist at bard.google.com.`,
     features: [
-      `👍 Free to use`,
-      `✅ No OpenAI account required`,
-      `🔒 Country restrictions apply`,
-      `🔒 Bard access required`,
-      `❌ Not always available`,
-      `😔 Standard response speed`,
-      `✅  Bard AI by Google available`,
+      `[ThumbUp] Free to use`,
+      `[Done] No OpenAI account required`,
+      `[Lock] Country restrictions apply`,
+      `[Lock] Bard access required`,
+      `[Incorrect] Not always available`,
+      `[Unhappy] Standard response speed`,
+      `[Done]  Bard AI by Google available`,
     ],
   },
 ]
@@ -221,7 +226,7 @@ const ChatGPTAIProviderSelector: FC = () => {
                 {switchProviderLoading ? (
                   <CircularProgress size={16} />
                 ) : (
-                  provider.icon
+                  provider.logo
                 )}
                 <Typography
                   width={0}
@@ -257,17 +262,43 @@ const ChatGPTAIProviderSelector: FC = () => {
                   }}
                   title={
                     <Stack width={'160px'}>
+                      <Stack
+                        width={'100%'}
+                        direction={'row'}
+                        alignItems={'center'}
+                        spacing={1}
+                        mb={1}
+                      >
+                        {provider.logo}
+                        <Typography
+                          fontSize={'14px'}
+                          color={'text.primary'}
+                          textAlign={'left'}
+                        >
+                          {provider.label}
+                        </Typography>
+                        {provider.beta && (
+                          <Chip
+                            sx={{ ml: 1 }}
+                            label="Beta"
+                            color="primary"
+                            size={'small'}
+                            variant={'outlined'}
+                          />
+                        )}
+                      </Stack>
                       <Typography
                         fontSize={'14px'}
                         color={'text.primary'}
                         textAlign={'left'}
-                        mb={1}
+                        fontWeight={700}
+                        mb={2}
                       >
-                        {provider.label}
+                        {provider.shortDescription}
                       </Typography>
                       <Typography
                         fontSize={'12px'}
-                        color={'text.secondary'}
+                        color={'text.primary'}
                         textAlign={'left'}
                         mb={2}
                       >
@@ -282,7 +313,41 @@ const ChatGPTAIProviderSelector: FC = () => {
                           color: 'text.primary',
                           textAlign: 'left',
                         }}
-                        textList={provider.features}
+                        textList={provider.features.map((feature) => {
+                          // feature text:
+                          // [ThumbUp] Free to use
+                          // match: [icon]
+                          const match = feature.match(/\[(.*?)\]/)
+                          const icon = match ? match[1] : ''
+                          const text = feature.replace(/\[(.*?)\]/, '')
+                          return (
+                            <Stack
+                              key={feature}
+                              width={'100%'}
+                              direction={'row'}
+                              spacing={1}
+                              alignItems={'start'}
+                            >
+                              {icon && (
+                                <TextIcon
+                                  sx={{
+                                    position: 'relative',
+                                    fontSize: 14,
+                                    top: 2,
+                                  }}
+                                  icon={icon as any}
+                                />
+                              )}
+                              <Typography
+                                fontSize={'12px'}
+                                color={'text.primary'}
+                                textAlign={'left'}
+                              >
+                                {text}
+                              </Typography>
+                            </Stack>
+                          )
+                        })}
                       />
                     </Stack>
                   }
@@ -294,10 +359,8 @@ const ChatGPTAIProviderSelector: FC = () => {
                     alignItems={'center'}
                     spacing={1}
                   >
-                    {provider.icon}
+                    {provider.logo}
                     <Typography
-                      width={0}
-                      flex={1}
                       textAlign={'left'}
                       noWrap
                       fontSize={'14px'}

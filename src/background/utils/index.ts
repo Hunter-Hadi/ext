@@ -29,10 +29,40 @@ export type IChatGPTModelType = {
   title: string
   description: string
   tags?: string[]
+  enabled_tools?: string[]
   qualitative_properties?: {
     reasoning: number[]
     speed: number[]
     conciseness: number[]
+  }
+}
+export type IChatGPTPluginType = {
+  id: string
+  domain: string
+  categories: unknown[]
+  manifest?: {
+    api: {
+      type: string
+      url: string
+    }
+    auth: {
+      type: string
+    }
+    contact_email: string
+    description_for_human: string
+    description_for_model: string
+    legal_info_url: string
+    logo_url: string
+    name_for_human: string
+    name_for_model: string
+    schema_version: string
+  }
+  namespace: string
+  oauth_client_id: string
+  status: 'approved'
+  user_settings: {
+    is_installed: boolean
+    is_authenticated: boolean
   }
 }
 
@@ -57,7 +87,9 @@ type IThirdProviderSettings = {
 export interface IChromeExtensionSettings {
   chatGPTProvider?: IChatGPTProviderType
   models?: IChatGPTModelType[]
+  plugins?: IChatGPTPluginType[]
   currentModel?: string
+  currentPlugins?: string[]
   conversationId?: string
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
@@ -83,8 +115,10 @@ export const getChromeExtensionSettings =
       commands: [],
       models: [],
       currentModel: '',
+      currentPlugins: [],
+      plugins: [],
       conversationId: '',
-      chatGPTProvider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+      chatGPTProvider: CHAT_GPT_PROVIDER.OPENAI,
       contextMenus: defaultContextMenuJson,
       gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
       userSettings: {

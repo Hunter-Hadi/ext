@@ -2,6 +2,7 @@ import React, { FC, useMemo } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import {
   Box,
+  Chip,
   FormControl,
   InputLabel,
   MenuItem,
@@ -81,18 +82,43 @@ const ChatGPTModelsSelector: FC = () => {
               })
               await resetConversation()
             }}
-            renderValue={(value) => (
-              <Typography
-                fontSize={14}
-                color={'text.primary'}
-                textAlign={'left'}
-                width={160}
-                noWrap
-              >
-                {memoModels.find((model) => model.slug === value)?.title ||
-                  'Select model'}
-              </Typography>
-            )}
+            renderValue={(value) => {
+              const findModal = memoModels.find((model) => model.slug === value)
+              return (
+                <Stack
+                  direction={'row'}
+                  width={160}
+                  alignItems={'center'}
+                  spacing={1}
+                >
+                  <Typography
+                    component={'span'}
+                    fontSize={14}
+                    color={'text.primary'}
+                    textAlign={'left'}
+                    noWrap
+                  >
+                    {findModal?.title || 'Select model'}
+                  </Typography>
+                  {findModal?.tags?.map((tag) => {
+                    return (
+                      <Chip
+                        key={tag}
+                        sx={{
+                          ml: 1,
+                          textTransform: 'capitalize',
+                          flexShrink: 0,
+                        }}
+                        label={tag}
+                        color="primary"
+                        size={'small'}
+                        variant={'outlined'}
+                      />
+                    )
+                  })}
+                </Stack>
+              )
+            }}
           >
             {memoModels.map((model) => {
               return (
@@ -110,16 +136,39 @@ const ChatGPTModelsSelector: FC = () => {
                     }}
                     title={
                       <Stack spacing={1} width={'160px'}>
-                        <Typography
-                          fontSize={'14px'}
-                          color={'text.primary'}
-                          textAlign={'left'}
+                        <Stack
+                          direction={'row'}
+                          width={'100%'}
+                          alignItems={'center'}
+                          spacing={1}
                         >
-                          {model?.title}
-                        </Typography>
+                          <Typography
+                            fontSize={'14px'}
+                            color={'text.primary'}
+                            textAlign={'left'}
+                          >
+                            {model?.title}
+                          </Typography>
+                          {model?.tags?.map((tag) => {
+                            return (
+                              <Chip
+                                sx={{
+                                  ml: 1,
+                                  textTransform: 'capitalize',
+                                  flexShrink: 0,
+                                }}
+                                key={tag}
+                                label={tag}
+                                color="primary"
+                                size={'small'}
+                                variant={'outlined'}
+                              />
+                            )
+                          })}
+                        </Stack>
                         <Typography
                           fontSize={'12px'}
-                          color={'text.secondary'}
+                          color={'text.primary'}
                           textAlign={'left'}
                         >
                           {model?.description}
@@ -180,16 +229,39 @@ const ChatGPTModelsSelector: FC = () => {
                       </Stack>
                     }
                   >
-                    <Typography
-                      textAlign={'left'}
+                    <Stack
                       width={160}
-                      noWrap
                       sx={{ padding: '6px 16px' }}
-                      fontSize={'14px'}
-                      color={'text.primary'}
+                      direction={'row'}
+                      alignItems={'center'}
+                      spacing={1}
                     >
-                      {model?.title}
-                    </Typography>
+                      <Typography
+                        component={'span'}
+                        fontSize={14}
+                        color={'text.primary'}
+                        textAlign={'left'}
+                        noWrap
+                      >
+                        {model?.title || 'Select model'}
+                      </Typography>
+                      {model?.tags?.map((tag) => {
+                        return (
+                          <Chip
+                            sx={{
+                              ml: 1,
+                              textTransform: 'capitalize',
+                              flexShrink: 0,
+                            }}
+                            key={tag}
+                            label={tag}
+                            color="primary"
+                            size={'small'}
+                            variant={'outlined'}
+                          />
+                        )
+                      })}
+                    </Stack>
                   </Tooltip>
                 </MenuItem>
               )

@@ -97,45 +97,49 @@ const useDaemonProcess = () => {
           event: 'OpenAIDaemonProcess_daemonProcessExist',
           data: {},
         })
-        .then((res) => {
+        .then(async (res) => {
           log.info(res)
           // 没有守护进程实例
           if (res.success && res.data?.isExist === false) {
             log.info(`init ${APP_NAME} chatGPT daemon process`)
             // 更新模型列表
-            chatGptInstanceRef.current
-              .getAllModels()
-              .then(async (models) => {
-                if (models.length > 0) {
-                  await setChromeExtensionSettings((settings) => {
-                    let currentModel = settings.currentModel
-                    if (!currentModel) {
-                      const defaultModel =
-                        models.find((model) =>
-                          model?.title?.includes('Default'),
-                        ) || models[0]
-                      currentModel = defaultModel?.slug
-                      log.info(`set currentModel model`, currentModel)
-                    }
-                    return {
-                      ...settings,
-                      models,
-                      currentModel,
-                    }
-                  })
-                  await port.postMessage({
-                    event: 'OpenAIDaemonProcess_setDaemonProcess',
-                  })
-                  stopDaemonProcessClose()
-                  const nextRoot = document.getElementById('__next')
-                  if (nextRoot && !isDisabledTopBar()) {
-                    nextRoot.classList.add('use-chat-gpt-ai-running')
+            try {
+              const [models = [], plugins = []] = await Promise.all([
+                chatGptInstanceRef.current.getAllModels(),
+                chatGptInstanceRef.current.getAllPlugins(),
+              ])
+              if (models.length > 0) {
+                await setChromeExtensionSettings((settings) => {
+                  let currentModel = settings.currentModel
+                  if (!currentModel) {
+                    const defaultModel =
+                      models.find((model) =>
+                        model?.title?.includes('Default'),
+                      ) || models[0]
+                    currentModel = defaultModel?.slug
+                    log.info(`set currentModel model`, currentModel)
                   }
-                  setShowDaemonProcessBar(true)
-                  Browser.runtime.onMessage.addListener(listener)
+                  return {
+                    ...settings,
+                    models,
+                    currentModel,
+                    plugins,
+                  }
+                })
+                await port.postMessage({
+                  event: 'OpenAIDaemonProcess_setDaemonProcess',
+                })
+                stopDaemonProcessClose()
+                const nextRoot = document.getElementById('__next')
+                if (nextRoot && !isDisabledTopBar()) {
+                  nextRoot.classList.add('use-chat-gpt-ai-running')
                 }
-              })
-              .catch()
+                setShowDaemonProcessBar(true)
+                Browser.runtime.onMessage.addListener(listener)
+              }
+            } catch (e) {
+              log.error(e)
+            }
           } else {
             // 有守护进程实例
             log.info('close listen')
@@ -143,11 +147,6 @@ const useDaemonProcess = () => {
           }
         })
       const listener = async (msg: any) => {
-        setInterval(() => {
-          port.postMessage({
-            event: 'OpenAIDaemonProcess_pong',
-          })
-        }, 1000)
         const { event, data } = msg
         if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
           return

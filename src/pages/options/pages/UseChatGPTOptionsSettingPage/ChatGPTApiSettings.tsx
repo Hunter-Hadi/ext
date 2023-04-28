@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import {
   Typography,
   Stack,
@@ -23,14 +23,27 @@ import BulletList from '@/components/BulletList'
 import { BaseSelect } from '@/components/select'
 import { OPENAI_API_MODELS } from '@/types'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
+import { useSnackbar } from 'notistack'
+import debounce from 'lodash-es/debounce'
 
 const models = list2Options(OPENAI_API_MODELS)
 
 const ChatGPTApiSettings: FC = () => {
+  const { enqueueSnackbar } = useSnackbar()
   const [settings, setSettings] = useState<IOpenAIApiSettingsType>({})
   const [loaded, setLoaded] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
+  const debounceEnqueueSnackbar = useCallback(
+    debounce((message: string, options?: any) => {
+      enqueueSnackbar(message, {
+        variant: 'info',
+        autoHideDuration: 1000,
+        ...options,
+      })
+    }, 2000),
+    [enqueueSnackbar],
+  )
   useEffectOnce(() => {
     setLoaded(false)
     getOpenAIApiSettings().then((settings) => {
@@ -40,7 +53,12 @@ const ChatGPTApiSettings: FC = () => {
   })
   useEffect(() => {
     if (loaded) {
-      setOpenAIApiSettings(settings)
+      setOpenAIApiSettings(settings).then(() => {
+        debounceEnqueueSnackbar('Settings updated', {
+          variant: 'success',
+          autoHideDuration: 1000,
+        })
+      })
     }
   }, [settings, loaded])
   return (

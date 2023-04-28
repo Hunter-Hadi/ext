@@ -1,12 +1,19 @@
 import { FC, useEffect, useMemo, useState } from 'react'
-import { Box, Stack, Paper, Typography, Button, Link } from '@mui/material'
+import {
+  Box,
+  Stack,
+  Paper,
+  Typography,
+  Button,
+  Link,
+  Alert,
+} from '@mui/material'
 import React from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import CheckIcon from '@mui/icons-material/Check'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import {
   BardIcon,
@@ -17,6 +24,7 @@ import {
 } from '@/components/CustomIcon'
 import { AuthState } from '@/features/auth/store'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
+import { chromeExtensionClientOpenPage } from '@/utils'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 const port = new ContentScriptConnectionV2()
 
@@ -229,7 +237,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
   const { provider } = useChatGPTProvider()
   const buttonTitle = useMemo(() => {
     if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
-      return 'Continue with UseChatGPT.AI'
+      return 'Continue with Free AI'
     } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
       return 'Log into your own ChatGPT'
     } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
@@ -240,29 +248,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
       return 'Log into your own Microsoft Bing'
     }
     return ''
-  }, [provider])
-  // const switchProvider = async () => {
-  //   let nextProvider: IChatGPTProviderType | undefined = undefined
-  //   if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
-  //     nextProvider = CHAT_GPT_PROVIDER.OPENAI
-  //   } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
-  //     nextProvider = CHAT_GPT_PROVIDER.OPENAI_API
-  //   } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
-  //     nextProvider = CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS
-  //   }
-  //   if (!nextProvider) {
-  //     return
-  //   }
-  //   await updateChatGPTProvider(nextProvider)
-  // }
-  const borderRight = useMemo(() => {
-    if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
-      return 196
-    } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
-      return 98
-    } else {
-      return 1
-    }
   }, [provider])
   return (
     <Box
@@ -323,7 +308,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
                   fontWeight={700}
                   color={'text.primary'}
                 >
-                  UseChatGPT.AI
+                  Free AI
                 </Typography>
               </>
             )}
@@ -396,438 +381,43 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           >
             {buttonTitle}
           </Button>
-        </Stack>
-        <Stack
-          sx={{
-            px: 1,
-            display: 'none',
-            width: '100%',
-            borderRadius: '4px',
-            position: 'relative',
-            mx: 'auto!important',
-            maxWidth: 384,
-          }}
-        >
-          <Stack
-            direction={'row'}
-            alignItems={'center'}
-            sx={{
-              minHeight: 36,
-              borderRadius: '4px 4px 0 0',
-              borderBottom: '1px solid',
-              borderColor: 'customColor.borderColor',
-              bgcolor: (t) =>
-                t.palette.mode === 'dark'
-                  ? 'rgba(61, 61, 61, 1)'
-                  : 'rgba(235, 235, 235, 1)',
-            }}
-          >
-            <Typography
-              component={'div'}
-              fontSize={'14px'}
-              px={0.5}
-              color={'text.primary'}
-              width={0}
-              flex={1}
-            ></Typography>
-            <Typography
-              component={'div'}
-              width={'98px'}
-              flexShrink={0}
-              fontSize={'12px'}
-              textAlign={'center'}
-              fontWeight={500}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              UseChatGPT.AI
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'12px'}
-              textAlign={'center'}
-              color={'text.secondary'}
-              fontWeight={500}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              ChatGPT
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'12px'}
-              textAlign={'center'}
-              color={'text.secondary'}
-              fontWeight={500}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              ChatGPT API
-            </Typography>
-          </Stack>
-          <Stack
-            direction={'row'}
-            alignItems={'center'}
-            sx={{
-              minHeight: 36,
-              borderBottom: '1px solid',
-              borderColor: 'customColor.borderColor',
-            }}
-            bgcolor={'background.paper'}
-          >
-            <Typography
-              component={'div'}
-              fontSize={'14px'}
-              color={'text.primary'}
-              width={0}
-              flex={1}
-              textAlign={'left'}
-              sx={{ textIndent: '4px' }}
-            >
-              No OpenAI account required
-            </Typography>
-            <Typography
-              component={'div'}
-              width={'98px'}
-              flexShrink={0}
-              fontSize={'14px'}
-              textAlign={'center'}
-              fontWeight={500}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              <CheckIcon sx={{ fontSize: 20, color: '#34A853' }} />
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              -
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              -
-            </Typography>
-          </Stack>
-          <Stack
-            direction={'row'}
-            sx={{
-              minHeight: 36,
-              borderBottom: '1px solid',
-              borderColor: 'customColor.borderColor',
-            }}
-            alignItems={'center'}
-            bgcolor={'background.paper'}
-          >
-            <Typography
-              component={'div'}
-              textAlign={'left'}
-              fontSize={'14px'}
-              color={'text.primary'}
-              width={0}
-              sx={{ textIndent: '4px' }}
-              flex={1}
-            >
-              No OpenAl interruptions
-            </Typography>
-            <Typography
-              component={'div'}
-              width={'98px'}
-              flexShrink={0}
-              fontSize={'14px'}
-              textAlign={'center'}
-              fontWeight={500}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              <CheckIcon sx={{ fontSize: 20, color: '#34A853' }} />
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              -
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              -
-            </Typography>
-          </Stack>
-          <Stack
-            sx={{
-              minHeight: 36,
-              borderBottom: '1px solid',
-              borderColor: 'customColor.borderColor',
-            }}
-            direction={'row'}
-            alignItems={'center'}
-            bgcolor={'background.paper'}
-          >
-            <Typography
-              component={'div'}
-              textAlign={'left'}
-              fontSize={'14px'}
-              color={'text.primary'}
-              width={0}
-              sx={{ textIndent: '4px' }}
-              flex={1}
-            >
-              Availability
-            </Typography>
-            <Typography
-              component={'div'}
-              width={'98px'}
-              flexShrink={0}
-              fontSize={'14px'}
-              textAlign={'center'}
-              fontWeight={500}
-              color={'text.primary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              Always
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              Sometimes
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              Sometimes
-            </Typography>
-          </Stack>
-          <Stack
-            direction={'row'}
-            sx={{
-              minHeight: 36,
-              borderBottom: '1px solid',
-              borderColor: 'customColor.borderColor',
-            }}
-            alignItems={'center'}
-            bgcolor={'background.paper'}
-          >
-            <Typography
-              component={'div'}
-              textAlign={'left'}
-              fontSize={'14px'}
-              color={'text.primary'}
-              width={0}
-              sx={{ textIndent: '4px' }}
-              flex={1}
-            >
-              Response speed
-            </Typography>
-            <Typography
-              component={'div'}
-              width={'98px'}
-              flexShrink={0}
-              fontSize={'14px'}
-              textAlign={'center'}
-              fontWeight={500}
-              color={'text.primary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              Fast
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              Standard
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              Standard
-            </Typography>
-          </Stack>
-          <Stack
-            direction={'row'}
-            alignItems={'center'}
-            bgcolor={'background.paper'}
-            sx={{
-              minHeight: 36,
-              borderRadius: '0 0 4px 4px',
-            }}
-          >
-            <Typography
-              component={'div'}
-              textAlign={'left'}
-              fontSize={'14px'}
-              color={'text.primary'}
-              width={0}
-              sx={{ textIndent: '4px' }}
-              flex={1}
-            >
-              No country restrictions
-            </Typography>
-            <Typography
-              component={'div'}
-              width={'98px'}
-              flexShrink={0}
-              fontSize={'14px'}
-              textAlign={'center'}
-              fontWeight={500}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              <CheckIcon sx={{ fontSize: 20, color: '#34A853' }} />
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              -
-            </Typography>
-            <Typography
-              flexShrink={0}
-              component={'div'}
-              width={'98px'}
-              fontSize={'14px'}
-              fontWeight={500}
-              textAlign={'center'}
-              color={'text.secondary'}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              -
-            </Typography>
-          </Stack>
-          {/*// move border*/}
-          <Box
-            sx={{
-              position: 'absolute',
-              width: '98px',
-              height: 'calc(100% - 2px)',
-              borderRadius: '4px',
-              border: '2px solid',
-              top: 1,
-              right: borderRight,
-              transition: 'right 0.3s',
-              background: (t) =>
-                t.palette.mode === 'dark'
-                  ? 'linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))'
-                  : 'linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))',
-              borderColor: (t) =>
-                t.palette.mode === 'dark' ? '#fff' : '#7601D3',
-            }}
-          />
-          {/*// arrow delta*/}
-          <Box
-            sx={{
-              width: 0,
-              height: 0,
-              borderStyle: 'solid',
-              border: '6px solid transparent',
-              borderBottom: '6px solid',
-              borderBottomColor: (t) =>
-                t.palette.mode === 'dark'
-                  ? 'rgba(61, 61, 61, 1)'
-                  : 'rgba(235, 235, 235, 1)',
-              position: 'absolute',
-              top: -12,
-              left: 'calc(50% - 6px)',
-            }}
-          />
+          {provider === CHAT_GPT_PROVIDER.OPENAI && (
+            <Alert severity={'info'}>
+              <Box sx={{ display: 'inline' }}>
+                <Typography
+                  component={'span'}
+                  fontSize={14}
+                  color={'text.primary'}
+                  textAlign={'left'}
+                >
+                  {`Log into ChatGPT and pass Cloudflare check. We recommend enabling
+              our new `}
+                </Typography>
+                <Link
+                  fontSize={14}
+                  color={'primary.main'}
+                  href={'#'}
+                  onClick={async () => {
+                    await chromeExtensionClientOpenPage({
+                      key: 'options',
+                      query: '#chatgpt-stable-mode',
+                    })
+                  }}
+                >
+                  ChatGPT Stable Mode
+                </Link>
+                <Typography
+                  component={'span'}
+                  fontSize={14}
+                  color={'text.primary'}
+                  textAlign={'left'}
+                >
+                  {` to avoid frequent interruptions and network
+              errors.`}
+                </Typography>
+              </Box>
+            </Alert>
+          )}
         </Stack>
       </Paper>
     </Box>

@@ -35,6 +35,7 @@ import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPT
 import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevTextSendControl'
 import { IChatMessage } from '@/features/chatgpt/types'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
+import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/ChatGPTPluginsSelector'
 
 const MAX_NORMAL_INPUT_LENGTH = 10000
 const MAX_GPT4_INPUT_LENGTH = 80000
@@ -267,6 +268,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
           <DevTextSendControl />
         )}
+        {provider === CHAT_GPT_PROVIDER.OPENAI && <ChatGPTPluginsSelector />}
         {messages.map((message) => {
           return (
             <GmailChatBoxMessageItem

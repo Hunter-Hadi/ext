@@ -183,9 +183,6 @@ devDependencies:
   rollup:
     specifier: ^2.56.3
     version: registry.npmmirror.com/rollup@2.79.1
-  rollup-plugin-analyzer:
-    specifier: ^4.0.0
-    version: registry.npmmirror.com/rollup-plugin-analyzer@4.0.0
   rollup-plugin-chrome-extension:
     specifier: ^3.6.8
     version: registry.npmmirror.com/rollup-plugin-chrome-extension@3.6.10
@@ -198,9 +195,6 @@ devDependencies:
   rollup-plugin-empty-dir:
     specifier: ^1.0.5
     version: registry.npmmirror.com/rollup-plugin-empty-dir@1.0.5(rollup@2.79.1)
-  rollup-plugin-peer-deps-external:
-    specifier: ^2.2.4
-    version: registry.npmmirror.com/rollup-plugin-peer-deps-external@2.2.4(rollup@2.79.1)
   rollup-plugin-postcss:
     specifier: ^4.0.2
     version: registry.npmmirror.com/rollup-plugin-postcss@4.0.2(postcss@8.4.21)
@@ -6968,13 +6962,6 @@ packages:
       glob: registry.npmmirror.com/glob@7.2.3
     dev: true
 
-  registry.npmmirror.com/rollup-plugin-analyzer@4.0.0:
-    resolution: {integrity: sha512-LL9GEt3bkXp6Wa19SNR5MWcvHNMvuTFYg+eYBZN2OIFhSWN+pEJUQXEKu5BsOeABob3x9PDaLKW7w5iOJnsESQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rollup-plugin-analyzer/-/rollup-plugin-analyzer-4.0.0.tgz}
-    name: rollup-plugin-analyzer
-    version: 4.0.0
-    engines: {node: '>=8.0.0'}
-    dev: true
-
   registry.npmmirror.com/rollup-plugin-chrome-extension@3.6.10:
     resolution: {integrity: sha512-dmJYqhxVov2n9uMF68Q+5am+5WsCYDrpNkSFD2/+YEV7K5wpryOJ34U+Fs9D1DdaCWo/f70OCpi3mX/qV8f2PQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/rollup-plugin-chrome-extension/-/rollup-plugin-chrome-extension-3.6.10.tgz}
     name: rollup-plugin-chrome-extension
@@ -7035,17 +7022,6 @@ packages:
       rollup: ^1.6.0 || ^2.0.0
     dependencies:
       fs-extra: registry.npmmirror.com/fs-extra@7.0.1
-      rollup: registry.npmmirror.com/rollup@2.79.1
-    dev: true
-
-  registry.npmmirror.com/rollup-plugin-peer-deps-external@2.2.4(rollup@2.79.1):
-    resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rollup-plugin-peer-deps-external/-/rollup-plugin-peer-deps-external-2.2.4.tgz}
-    id: registry.npmmirror.com/rollup-plugin-peer-deps-external/2.2.4
-    name: rollup-plugin-peer-deps-external
-    version: 2.2.4
-    peerDependencies:
-      rollup: '*'
-    dependencies:
       rollup: registry.npmmirror.com/rollup@2.79.1
     dev: true
 

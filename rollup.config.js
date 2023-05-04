@@ -18,8 +18,6 @@ import html from '@rollup/plugin-html'
 import modifyManifest from './modifyManifest'
 import localesCreator from './localesCreator'
 import visualizer from 'rollup-plugin-visualizer'
-import analyze from 'rollup-plugin-analyzer'
-import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 function getArgs() {
@@ -149,6 +147,10 @@ const chromeExtensionConfig = {
     chunkFileNames: path.join('chunks', '[name]-[hash].js'),
   },
   plugins: [
+    visualizer({
+      emitFile: true,
+      filename: 'crx.html',
+    }),
     alias({
       entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
     }),
@@ -179,9 +181,6 @@ const chromeExtensionConfig = {
     typescript({
       transpiler: 'babel',
       exclude: isProduction ? [] : ['node_modules/**/*.*'],
-    }),
-    visualizer({
-      filename: 'crx.html',
     }),
     emptyDir(),
     isProduction &&
@@ -246,11 +245,8 @@ const chromeExtensionConfig = {
       isProd: isProduction,
     }),
     localesCreator(),
-    analyze(),
-    peerDepsExternal({}),
   ],
-  treeshake: true,
-  dynamicImportFunction: '__import__',
+  treeshake: isProduction,
 }
 
 export default [

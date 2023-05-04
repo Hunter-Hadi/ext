@@ -2,7 +2,11 @@ import mergeRollupConfig from './rollup.config.base'
 import path from 'path'
 import visualizer from 'rollup-plugin-visualizer'
 import html from '@rollup/plugin-html'
-const isProduction = String(process.env.NODE_ENV) === 'production'
+import zip from '../zip.es'
+import { env, isProduction } from './env'
+import dayjs from 'dayjs'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { version } = require(`../src/manifest.${env.APP_ENV}.json`)
 export default mergeRollupConfig(isProduction, {
   input: 'src/options.content.tsx',
   output: {
@@ -32,5 +36,12 @@ export default mergeRollupConfig(isProduction, {
   `
       },
     }),
+    isProduction &&
+      zip({
+        file: `../releases/[${env.APP_NAME}]_v${version}_${dayjs().format(
+          'YYYY_MM_DD_HH_mm',
+        )}.zip`,
+        isEzMail: env.APP_ENV === 'EZ_MAIL_AI',
+      }),
   ],
 })

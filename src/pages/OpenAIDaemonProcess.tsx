@@ -14,7 +14,6 @@ import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { IOpenAIChatListenTaskEvent } from '@/background/app'
 import {
-  CHAT_GPT_PROMPT_PREFIX,
   CHROME_EXTENSION_POST_MESSAGE_ID,
   CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
   ROOT_DAEMON_PROCESS_ID,
@@ -242,7 +241,7 @@ const useDaemonProcess = () => {
                       {
                         messageId,
                         parentMessageId,
-                        prompt: CHAT_GPT_PROMPT_PREFIX + questionText,
+                        prompt: questionText,
                         signal: controller.signal,
                         onEvent(event) {
                           if (event.type === 'error') {

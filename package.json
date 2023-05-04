@@ -4,13 +4,10 @@
   "description": "",
   "author": "",
   "scripts": {
-    "start:ezmail": "rollup -c -w --app=ezmail",
-    "start:usechatgpt": "rollup -c -w --app=usechatgpt --max-old-space-size=8192",
-    "release": "pnpm run release:ezmail && pnpm run release:usechatgpt",
-    "release:ezmail": "cross-env NODE_ENV=production rollup -c --app=ezmail",
-    "release:usechatgpt": "cross-env NODE_ENV=production rollup -c --app=usechatgpt",
     "crx": "rollup -c ./build/crx.rollup.config.js -w --app=usechatgpt",
-    "options": "rollup -c ./build/options.rollup.config.js -w --app=usechatgpt"
+    "options": "rollup -c ./build/options.rollup.config.js -w --app=usechatgpt",
+    "start:usechatgpt": "pnpm run crx & pnpm run options",
+    "release:usechatgpt": "cross-env NODE_ENV=production rollup -c ./build/crx.rollup.config.js --app=usechatgpt && cross-env NODE_ENV=production rollup -c ./build/options.rollup.config.js --app=usechatgpt"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -85,7 +82,8 @@
     "rollup-plugin-zip": "^1.0.3",
     "tslib": "^2.0.3",
     "typescript": "^4.6.0",
-    "webextension-polyfill": "^0.10.0"
+    "webextension-polyfill": "^0.10.0",
+    "yazl": "^2.5.1"
   },
   "engines": {
     "npm": ">=7.0.0",

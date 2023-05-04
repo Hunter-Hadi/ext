@@ -1,4 +1,10 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+  Suspense,
+} from 'react'
 import '../../OptionsPage.less'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -160,11 +166,15 @@ const UseChatGPTOptionsPage = () => {
             </Container>
           </Box>
           <Container maxWidth={'lg'} sx={{ mt: 13 }}>
-            <AppLoadingLayout loading={loading}>
-              {route === '/login' && <UseChatGPTOptionsLoginPage />}
-              {route === '/' && <UseChatGPTOptionsSettingPage />}
-              {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
-            </AppLoadingLayout>
+            <Suspense
+              fallback={<AppLoadingLayout loading={loading} size={16} />}
+            >
+              <AppLoadingLayout loading={loading}>
+                {route === '/login' && <UseChatGPTOptionsLoginPage />}
+                {route === '/' && <UseChatGPTOptionsSettingPage />}
+                {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
+              </AppLoadingLayout>
+            </Suspense>
           </Container>
         </OptionsPageRouteContext.Provider>
       </SnackbarProvider>

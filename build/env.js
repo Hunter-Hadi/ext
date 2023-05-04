@@ -58,4 +58,4 @@ const getReplaceEnv = () => {
   })
   return replaceEnv
 }
-export { getReplaceEnv, env }
+export { getReplaceEnv, env, isProduction }

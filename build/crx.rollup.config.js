@@ -6,8 +6,8 @@ import { emptyDir } from 'rollup-plugin-empty-dir'
 import copy from 'rollup-plugin-copy'
 import modifyManifest from '../modifyManifest'
 import localesCreator from '../localesCreator'
-import { env } from './env'
-const isProduction = String(process.env.NODE_ENV) === 'production'
+import { env, isProduction } from './env'
+
 export default mergeRollupConfig(isProduction, {
   input: `src/manifest.${env.APP_ENV}.json`,
   output: {

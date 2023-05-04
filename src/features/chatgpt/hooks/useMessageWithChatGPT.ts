@@ -24,6 +24,7 @@ import {
   IUserSendMessage,
   IUserSendMessageExtraType,
 } from '@/features/chatgpt/types'
+import { CHAT_GPT_PROMPT_PREFIX } from '@/types'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -178,7 +179,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       await askChatGPTQuestion(
         {
           conversationId: postConversationId,
-          question,
+          question: includeHistory
+            ? question
+            : CHAT_GPT_PROMPT_PREFIX + question,
           messageId: currentMessageId,
           parentMessageId: currentParentMessageId,
         },

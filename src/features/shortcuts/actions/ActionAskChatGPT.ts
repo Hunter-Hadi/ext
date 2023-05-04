@@ -4,7 +4,6 @@ import {
   clearUserInput,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
-import { CHAT_GPT_PROMPT_PREFIX } from '@/types'
 export class ActionAskChatGPT extends Action {
   static type = 'ASK_CHATGPT'
   constructor(
@@ -23,8 +22,7 @@ export class ActionAskChatGPT extends Action {
         {
           messageId: '',
           question:
-            CHAT_GPT_PROMPT_PREFIX +
-            (this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT),
+            this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT,
           parentMessageId: '',
         },
         {

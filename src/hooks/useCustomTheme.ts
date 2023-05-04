@@ -2,7 +2,6 @@ import { AppSettingsState } from '@/store'
 import { createTheme, responsiveFontSizes, Theme } from '@mui/material/styles'
 import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
-// import { useTernaryDarkMode } from 'usehooks-ts';
 
 const APP_ENV = String(process.env.APP_ENV)
 

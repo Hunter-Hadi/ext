@@ -17,7 +17,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import html from '@rollup/plugin-html'
 import modifyManifest from './modifyManifest'
 import localesCreator from './localesCreator'
-
+import visualizer from 'rollup-plugin-visualizer'
 const isProduction = String(process.env.NODE_ENV) === 'production'
 function getArgs() {
   const args = {}
@@ -235,7 +235,12 @@ const chromeExtensionConfig = {
       isProd: isProduction,
     }),
     localesCreator(),
+    visualizer({
+      emitFile: true,
+      filename: 'crx.html',
+    }),
   ],
+  treeshake: true,
 }
 
 export default [

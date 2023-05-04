@@ -19,11 +19,11 @@ import {
 import CloseIcon from '@mui/icons-material/Close'
 import Log from '@/utils/Log'
 import { setChromeExtensionSettings } from '@/background/utils'
-import { useInterval } from 'usehooks-ts'
 import dayjs from 'dayjs'
 import CloseAlert from '@/components/CloseAlert'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import useInterval from '@/hooks/useInterval'
 
 const APP_NAME = String(process.env.APP_NAME)
 const log = new Log('ChatGPTDaemonProcessPage')

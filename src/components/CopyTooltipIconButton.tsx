@@ -1,4 +1,4 @@
-import { IconButtonProps } from '@mui/material'
+import { IconButtonProps, SxProps } from '@mui/material'
 import React, { FC, useState } from 'react'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
@@ -8,9 +8,11 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 interface ITooltipIconButton extends IconButtonProps {
   copyText: string
   onCopy?: () => void
+  children?: React.ReactNode
+  sx?: SxProps
 }
 const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
-  const { copyText, onCopy } = props
+  const { copyText, onCopy, sx } = props
   const [title, setTitle] = useState('Copy to clipboard')
   return (
     <CopyToClipboard
@@ -27,8 +29,9 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
         }, 1000)
       }}
     >
-      <TooltipIconButton title={title}>
+      <TooltipIconButton title={title} sx={sx}>
         <ContentCopyIcon sx={{ fontSize: 16 }} />
+        {props.children}
       </TooltipIconButton>
     </CopyToClipboard>
   )

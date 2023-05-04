@@ -1,5 +1,8 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { Alert, Stack, SxProps, Theme } from '@mui/material'
+import Alert from '@mui/material/Alert'
+import Stack from '@mui/material/Stack'
+import { Theme, SxProps } from '@mui/material/styles'
+
 import GmailChatBoxUserTools from './GmailChatBoxUserTools'
 import GmailChatBoxAiTools from './GmailChatBoxAiTools'
 import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'

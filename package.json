@@ -9,8 +9,8 @@
     "release": "pnpm run release:ezmail && pnpm run release:usechatgpt",
     "release:ezmail": "cross-env NODE_ENV=production rollup -c --app=ezmail",
     "release:usechatgpt": "cross-env NODE_ENV=production rollup -c --app=usechatgpt",
-    "crx": "rollup -c -w --app=usechatgpt --max-old-space-size=8192 --only=extension",
-    "options": "rollup -c -w --app=usechatgpt --max-old-space-size=8192 --only=options"
+    "crx": "rollup -c ./build/crx.rollup.config.js -w --app=usechatgpt",
+    "options": "rollup -c ./build/options.rollup.config.js -w --app=usechatgpt"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",

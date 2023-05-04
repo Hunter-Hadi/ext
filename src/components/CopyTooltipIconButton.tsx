@@ -1,4 +1,4 @@
-import { IconButtonProps } from '@mui/material'
+import { IconButtonProps } from '@mui/material/IconButton'
 import React, { FC, useState } from 'react'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'

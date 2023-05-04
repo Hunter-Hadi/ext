@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react'
-import { Button, CircularProgress } from '@mui/material'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
 import { IContextMenuItem } from '@/features/contextMenu/store'
 import { getAppRootElement } from '@/utils'

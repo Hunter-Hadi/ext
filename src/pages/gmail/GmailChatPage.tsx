@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import Stack from '@mui/material/Stack'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   CurrentInboxMessageTypeSelector,
@@ -6,7 +6,7 @@ import {
   InboxEditState,
   useCurrentMessageView,
 } from '@/features/gmail'
-import { ChatGPTStatusWrapper } from '@/features/chatgpt'
+import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'

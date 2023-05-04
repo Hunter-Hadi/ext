@@ -1,5 +1,8 @@
 import React, { FC } from 'react'
-import { Autocomplete, SxProps, TextField } from '@mui/material'
+import Autocomplete from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
+import { SxProps } from '@mui/material/styles'
+
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 
 interface LanguageSelectProps {

@@ -54,6 +54,10 @@ const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'UseChatGPT.AI'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 const GLOBAL_LESS =
   args.app === 'ezmail' ? './app.EZ_MAIL_AI.less' : './app.USE_CHAT_GPT.less'
+const inboxSDK =
+  args.app === 'ezmail'
+    ? '../features/gmail/hooks/useInitInboxSdk.ts'
+    : '../../src/empty.ts'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const manifest = require(`./src/manifest.${APP_ENV}.json`)
 
@@ -76,6 +80,10 @@ const optionsPageConfig = {
     chunkFileNames: path.join('chunks', '[name]-[hash].js'),
   },
   plugins: [
+    visualizer({
+      emitFile: true,
+      filename: 'opt.html',
+    }),
     alias({
       entries: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
     }),
@@ -91,6 +99,7 @@ const optionsPageConfig = {
       'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
         APP_USE_CHAT_GPT_API_HOST,
       ),
+      'process.env.INBOX_SDK_PATH': JSON.stringify(inboxSDK),
       preventAssignment: true,
     }),
     postcss({
@@ -100,7 +109,10 @@ const optionsPageConfig = {
     commonjs({
       sourceMap: false,
     }),
-    // typescript(),
+    typescript({
+      transpiler: 'babel',
+      exclude: isProduction ? [] : ['node_modules/**/*.*'],
+    }),
     isProduction &&
       terser({
         compress: {
@@ -129,14 +141,16 @@ const optionsPageConfig = {
   `
       },
     }),
-    isProduction &&
-      zip({
-        file: `../releases/[${APP_NAME}]_v${manifest.version}_${dayjs().format(
-          'YYYY_MM_DD_HH_mm',
-        )}.zip`,
-        isEzMail: APP_ENV === 'EZ_MAIL_AI',
-      }),
+    // isProduction &&
+    //   zip({
+    //     file: `../releases/[${APP_NAME}]_v${manifest.version}_${dayjs().format(
+    //       'YYYY_MM_DD_HH_mm',
+    //     )}.zip`,
+    //     isEzMail: APP_ENV === 'EZ_MAIL_AI',
+    //   }),
   ],
+  treeshake: isProduction,
+  cache: !isProduction,
 }
 
 const chromeExtensionConfig = {
@@ -167,6 +181,7 @@ const chromeExtensionConfig = {
       'process.env.APP_USE_CHAT_GPT_API_HOST': JSON.stringify(
         APP_USE_CHAT_GPT_API_HOST,
       ),
+      'process.env.INBOX_SDK_PATH': JSON.stringify(inboxSDK),
       preventAssignment: true,
     }),
     chromeExtension(),
@@ -193,6 +208,7 @@ const chromeExtensionConfig = {
           comments: false,
         },
       }),
+    nodeResolve(),
     APP_ENV === 'EZ_MAIL_AI' &&
       copy({
         targets: [
@@ -200,7 +216,6 @@ const chromeExtensionConfig = {
         ],
         hook: 'generateBundle',
       }),
-    nodeResolve(),
     APP_ENV === 'USE_CHAT_GPT_AI' &&
       copy({
         targets: [
@@ -247,6 +262,7 @@ const chromeExtensionConfig = {
     localesCreator(),
   ],
   treeshake: isProduction,
+  cache: !isProduction,
 }
 
 export default [

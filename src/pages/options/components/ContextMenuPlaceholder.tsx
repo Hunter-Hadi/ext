@@ -1,6 +1,6 @@
 import React from 'react'
 import { NodeModel } from '@minoru/react-dnd-treeview'
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 
 type Props = {
   node: NodeModel

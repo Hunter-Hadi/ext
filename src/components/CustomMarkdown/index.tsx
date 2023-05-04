@@ -1,6 +1,6 @@
 import Markdown from 'markdown-to-jsx'
 import React, { FC } from 'react'
-import { Link } from '@mui/material'
+import Link from '@mui/material/Link'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 
 const OverrideAnchor: FC<HTMLAnchorElement> = (props) => {

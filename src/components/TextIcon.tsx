@@ -1,5 +1,4 @@
-import { SxProps } from '@mui/material'
-import { Theme } from '@mui/material/styles'
+import { SxProps, Theme } from '@mui/material/styles'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 import React, { FC } from 'react'
 

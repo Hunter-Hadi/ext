@@ -1,5 +1,9 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Alert, Collapse, IconButton, Stack } from '@mui/material'
+import Alert from '@mui/material/Alert'
+import IconButton from '@mui/material/IconButton'
+import Collapse from '@mui/material/Collapse'
+import Stack from '@mui/material/Stack'
+
 import { AlertProps } from '@mui/material/Alert/Alert'
 import React, { FC, useEffect, useState } from 'react'
 

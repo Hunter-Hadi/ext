@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
-import { FormControl, Stack, Switch, Typography } from '@mui/material'
-
+import FormControl from '@mui/material/FormControl'
+import Stack from '@mui/material/Stack'
+import Switch from '@mui/material/Switch'
+import Typography from '@mui/material/Typography'
 interface IProps {
   defaultValue?: string
   onChange(value: IColorSchemaType): void

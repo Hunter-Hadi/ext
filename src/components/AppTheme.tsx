@@ -1,5 +1,5 @@
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { ThemeProvider } from '@mui/material'
+import ThemeProvider from '@mui/material/styles/ThemeProvider'
 import React, { FC, PropsWithChildren } from 'react'
 
 interface IProps {

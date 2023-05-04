@@ -1,4 +1,7 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, {
   FC,
   useCallback,
@@ -15,7 +18,6 @@ import {
 import { DndProvider } from 'react-dnd'
 import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
-import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import {
   IContextMenuItem,
@@ -43,7 +45,9 @@ import {
 import BulletList from '@/components/BulletList'
 
 const rootId = 'root'
-
+const ContextMenuEditFormModal = React.lazy(
+  () => import('@/pages/options/components/ContextMenuEditFormModal'),
+)
 const saveTreeData = async (
   key: IChromeExtensionSettingsContextMenuKey,
   treeData: IContextMenuItem[],

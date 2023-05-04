@@ -1,5 +1,8 @@
 import React, { FC, useMemo, useState } from 'react'
-import { Box, Button, Collapse, Stack } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Collapse from '@mui/material/Collapse'
+import Stack from '@mui/material/Stack'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu'
 

@@ -1,6 +1,6 @@
 import Portal from '@/components/Portal'
 import React from 'react'
-import { Paper } from '@mui/material'
+import Paper from '@mui/material/Paper'
 import { Menu } from 'react-contexify'
 import ContextMenuList from '@/features/contextMenu/components/RangyContextMenu/ContextMenuList'
 import ClickContextMenu from './ClickContextMenu'

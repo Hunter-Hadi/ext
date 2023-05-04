@@ -1,9 +1,10 @@
-import SearchIcon from '@mui/icons-material/Search';
-import { Stack, Typography } from '@mui/material';
-import React, { FC } from 'react';
+import SearchIcon from '@mui/icons-material/Search'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
 
 const EmptyContent: FC<{
-  emptyText?: string;
+  emptyText?: string
 }> = ({ emptyText = 'No Results Found' }) => {
   return (
     <Stack alignItems={'center'}>
@@ -14,7 +15,7 @@ const EmptyContent: FC<{
         alignItems={'center'}
         borderRadius={4}
         sx={{
-          bgcolor: t =>
+          bgcolor: (t) =>
             t.palette.mode === 'dark'
               ? 'rgba(255, 255, 255, .04)'
               : 'rgba(0, 0, 0, .04)',
@@ -24,6 +25,6 @@ const EmptyContent: FC<{
       </Stack>
       <Typography variant={'body1'}>{emptyText}</Typography>
     </Stack>
-  );
-};
-export default EmptyContent;
+  )
+}
+export default EmptyContent

@@ -13,6 +13,7 @@ import {
 } from '@/features/contextMenu/utils'
 import { IRangyRect } from '@/features/contextMenu'
 import { ROOT_CONTAINER_ID } from '@/types'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -22,18 +23,29 @@ const useInitRangy = () => {
     useRangy()
   const currentActiveWriteableElementRef = useRef<HTMLElement | null>(null)
   // 初始化rangy npm 包
-  useEffect(() => {
-    let isDestroyed = false
-    const initListener = () => {
-      if (isDestroyed) return
-      initRangyCore(rangyLib)
-    }
-    rangyLib.init()
-    rangyLib.addInitListener(initListener)
-    return () => {
-      isDestroyed = true
-    }
-  }, [])
+  useEffectOnce(() => {
+    Promise.all([
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      import('@/lib/rangy/rangy-core'),
+      import('@/lib/rangy/rangy-position'),
+      import('@/lib/rangy/rangy-saverestore'),
+    ]).then(
+      ([
+        { default: rangyLib },
+        { default: initRangyPosition },
+        { default: initRangySaveRestore },
+      ]) => {
+        const initListener = () => {
+          initRangyCore(rangyLib)
+        }
+        initRangyPosition(rangyLib)
+        initRangySaveRestore(rangyLib)
+        rangyLib.init()
+        rangyLib.addInitListener(initListener)
+      },
+    )
+  })
   // 保存:
   // 1. 选中文本
   // 2. 选中html
@@ -243,4 +255,4 @@ const useInitRangy = () => {
     }
   }, [rangy])
 }
-export { useInitRangy }
+export default useInitRangy

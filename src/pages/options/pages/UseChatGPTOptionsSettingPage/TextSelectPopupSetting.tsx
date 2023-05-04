@@ -1,13 +1,12 @@
 import React, { FC, useEffect, useState } from 'react'
-import {
-  Box,
-  Button,
-  Paper,
-  Stack,
-  Switch,
-  Typography,
-  useTheme,
-} from '@mui/material'
+
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
+import Switch from '@mui/material/Switch'
+import Typography from '@mui/material/Typography'
+import useTheme from '@mui/material/styles/useTheme'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 
 const TextSelectPopupSetting: FC<{

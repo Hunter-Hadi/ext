@@ -14,6 +14,7 @@ import {
   CHROME_EXTENSION_DOC_URL,
   CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
+  isEzMailApp,
 } from '@/types'
 import {
   BardChat,
@@ -33,8 +34,6 @@ import {
 } from '@/background/provider/chat'
 import { ClientMessageInit } from '@/background/src/client'
 import { backgroundSendClientMessage } from '@/background/utils'
-
-const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 /**
  * background.js 入口

@@ -2,9 +2,8 @@ import { AppSettingsState } from '@/store'
 import { createTheme, responsiveFontSizes, Theme } from '@mui/material/styles'
 import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
+import { APP_ENV } from '@/types'
 // import { useTernaryDarkMode } from 'usehooks-ts';
-
-const APP_ENV = String(process.env.APP_ENV)
 
 type CustomColor = {
   main: React.CSSProperties['color']

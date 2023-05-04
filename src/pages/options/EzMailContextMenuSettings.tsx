@@ -1,4 +1,7 @@
-import { Box, Button, Paper, Stack } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
 import AddIcon from '@mui/icons-material/Add'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import React, { FC, useCallback, useEffect, useState } from 'react'
@@ -10,7 +13,6 @@ import {
 import { DndProvider } from 'react-dnd'
 import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
-import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
@@ -32,6 +34,10 @@ import {
 } from '@/background/utils'
 
 const rootId = 'root'
+
+const ContextMenuEditFormModal = React.lazy(
+  () => import('@/pages/options/components/ContextMenuEditFormModal'),
+)
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 

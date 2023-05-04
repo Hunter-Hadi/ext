@@ -6,7 +6,8 @@ import {
   DropdownMenuItem,
   MenuProps,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
-import { Box, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 // import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
 
 // eslint-disable-next-line react/display-name

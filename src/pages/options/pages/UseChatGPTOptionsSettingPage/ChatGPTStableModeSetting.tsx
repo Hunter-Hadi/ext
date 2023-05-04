@@ -1,15 +1,14 @@
 import React, { FC, useEffect, useState } from 'react'
-import {
-  Box,
-  LinearProgress,
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Slider from '@mui/material/Slider'
+import FormControl from '@mui/material/FormControl'
+import Stack from '@mui/material/Stack'
+import Switch from '@mui/material/Switch'
+import Chip from '@mui/material/Chip'
+import LinearProgress, {
   LinearProgressProps,
-  Slider,
-  Typography,
-  FormControl,
-  Stack,
-  Switch,
-  Chip,
-} from '@mui/material'
+} from '@mui/material/LinearProgress'
 import CloseAlert from '@/components/CloseAlert'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY } from '@/types'

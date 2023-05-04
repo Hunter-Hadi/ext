@@ -1,4 +1,4 @@
-import { random } from 'lodash-es'
+import random from 'lodash-es/random'
 import { ofetch } from 'ofetch'
 import { v4 as uuidV4 } from 'uuid'
 import { ConversationResponse } from './types'

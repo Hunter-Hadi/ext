@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@mui/material'
+import Button, { ButtonProps } from '@mui/material/Button'
 import React, { FC } from 'react'
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
 interface ITooltipButton extends ButtonProps {

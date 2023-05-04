@@ -7,7 +7,11 @@ import {
 } from '@/features/chatgpt'
 import './chatGPT.less'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
 import { IOpenAIChatListenTaskEvent } from '@/background/app'
 import {
   CHAT_GPT_PROMPT_PREFIX,

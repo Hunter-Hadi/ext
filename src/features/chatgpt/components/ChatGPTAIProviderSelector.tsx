@@ -1,15 +1,14 @@
 import React, { FC } from 'react'
-import {
-  FormControl,
-  Stack,
-  InputLabel,
-  Select,
-  MenuItem,
-  Typography,
-  Tooltip,
-  CircularProgress,
-  Chip,
-} from '@mui/material'
+import FormControl from '@mui/material/FormControl'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import InputLabel from '@mui/material/InputLabel'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import Tooltip from '@mui/material/Tooltip'
+import CircularProgress from '@mui/material/CircularProgress'
+import Chip from '@mui/material/Chip'
+
 import { CHAT_GPT_PROVIDER } from '@/types'
 import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
 import { IChatGPTProviderType } from '@/background/provider/chat'

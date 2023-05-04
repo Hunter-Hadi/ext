@@ -1,14 +1,13 @@
 import React, { FC, useCallback, useEffect, useState } from 'react'
-import {
-  Typography,
-  Stack,
-  Link,
-  TextField,
-  Paper,
-  InputAdornment,
-  IconButton,
-  Slider,
-} from '@mui/material'
+import Typography from '@mui/material/Typography'
+import Slider from '@mui/material/Slider'
+import Stack from '@mui/material/Stack'
+import Link from '@mui/material/Link'
+import TextField from '@mui/material/TextField'
+import Paper from '@mui/material/Paper'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
+
 import CloseAlert from '@/components/CloseAlert'
 import { IOpenAIApiSettingsType } from '@/background/src/chat/OpenAiApiChat/types'
 import useEffectOnce from '@/hooks/useEffectOnce'

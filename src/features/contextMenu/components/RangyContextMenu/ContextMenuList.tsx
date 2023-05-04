@@ -1,4 +1,5 @@
-import { Stack, Typography } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'

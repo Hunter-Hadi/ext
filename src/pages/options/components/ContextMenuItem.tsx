@@ -1,4 +1,6 @@
-import { Box, Stack, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { useMemo, useState } from 'react'
 import { NodeRender } from '@minoru/react-dnd-treeview'
 import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'

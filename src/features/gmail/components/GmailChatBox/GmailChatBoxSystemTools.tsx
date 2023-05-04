@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { Button, Stack } from '@mui/material'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
 import { IChatMessage } from '@/features/chatgpt/types'
 
 const GmailChatBoxSystemTools: FC<{

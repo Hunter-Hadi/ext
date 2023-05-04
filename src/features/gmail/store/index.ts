@@ -1,6 +1,5 @@
 import { atom, selector } from 'recoil'
-import * as InboxSDK from '@inboxsdk/core'
-import { ComposeView } from '@inboxsdk/core'
+import { ComposeView, InboxSDK, ThreadView } from '@inboxsdk/core'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 import Browser from 'webextension-polyfill'
 import { IChatMessage } from '@/features/chatgpt/types'
@@ -19,7 +18,7 @@ export const InboxEditState = atom<{
 })
 
 export const InboxSdkState = atom<{
-  sdk: InboxSDK.InboxSDK | null
+  sdk: InboxSDK | null
   loading: boolean
   initialized: boolean
 }>({
@@ -32,7 +31,7 @@ export const InboxSdkState = atom<{
 })
 
 export const InboxThreadViewState = atom<
-  IProxyInboxSdkTarget<InboxSDK.ThreadView> & { currentThreadId?: string }
+  IProxyInboxSdkTarget<ThreadView> & { currentThreadId?: string }
 >({
   key: 'InboxThreadViewState',
   default: {

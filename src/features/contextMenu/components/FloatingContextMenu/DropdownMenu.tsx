@@ -23,7 +23,11 @@ import {
   autoUpdate,
   Placement,
 } from '@floating-ui/react'
-import { Box, Button, SxProps, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import { SxProps } from '@mui/material/styles'
+
 import { useEffect, useMemo } from 'react'
 import {
   FloatingDropdownMenuItemsSelector,

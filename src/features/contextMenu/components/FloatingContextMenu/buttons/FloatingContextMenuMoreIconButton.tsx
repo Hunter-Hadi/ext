@@ -4,7 +4,9 @@ import {
   getAppContextMenuElement,
 } from '@/utils'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
-import { Button, SxProps } from '@mui/material'
+import Button from '@mui/material/Button'
+import { SxProps } from '@mui/material/styles'
+
 import {
   DropdownMenu,
   LiteDropdownMenuItem,

@@ -1,6 +1,8 @@
-import { Box, CircularProgress, SxProps, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
-
+import { SxProps } from '@mui/material/styles'
 const AppLoadingLayout: FC<{
   loading: boolean
   loadingText?: string

@@ -1,9 +1,13 @@
 import React, { FC } from 'react'
-import { CircularProgress, Link, Stack, Typography } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress'
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
 import { GiftIcon } from '@/components/CustomIcon'
 import RefreshOutlined from '@mui/icons-material/RefreshOutlined'
-import { useUseChatGPTUserInfo } from '@/features/chatgpt'
+import { useUseChatGPTUserInfo } from '@/features/chatgpt/hooks'
 import Tooltip from '@mui/material/Tooltip'
 import useEffectOnce from '@/hooks/useEffectOnce'
 

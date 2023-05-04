@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react'
-import { Button, Stack } from '@mui/material'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
 import ReplyIcon from '@mui/icons-material/Reply'
 import { useInboxComposeViews } from '@/features/gmail/hooks'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'

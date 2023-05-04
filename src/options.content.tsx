@@ -6,10 +6,9 @@ import { createRoot } from 'react-dom/client'
 import AppThemeProvider from './components/AppTheme'
 import { RecoilRoot } from 'recoil'
 import OptionPagesInit from '@/utils/OptionPagesInit'
+import { isEzMailApp } from '@/types'
 
 const rootElement = document.getElementById('Root')
-
-const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 if (rootElement) {
   const root = createRoot(rootElement)

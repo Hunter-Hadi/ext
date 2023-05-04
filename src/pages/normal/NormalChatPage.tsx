@@ -1,8 +1,9 @@
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
-import { Stack } from '@mui/material'
+import Stack from '@mui/material/Stack'
 import React, { useEffect } from 'react'
 import { GmailChatBox } from '@/features/gmail'
-import { ChatGPTStatusWrapper, pingDaemonProcess } from '@/features/chatgpt'
+import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
+import { pingDaemonProcess } from '@/features/chatgpt/utils'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (

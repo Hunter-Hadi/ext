@@ -1,4 +1,6 @@
-import { Box, Paper, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Paper from '@mui/material/Paper'
 import React, { FC, useEffect, useState } from 'react'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import { useRecoilValue } from 'recoil'

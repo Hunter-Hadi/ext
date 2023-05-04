@@ -1,6 +1,11 @@
 import React, { FC, useEffect } from 'react'
 import './global.less'
-import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+
 import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import CloseIcon from '@mui/icons-material/Close'
 import { useRecoilState } from 'recoil'
@@ -9,6 +14,7 @@ import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
 import {
   APP_USE_CHAT_GPT_HOST,
   CHROME_EXTENSION_HOMEPAGE_URL,
+  isEzMailApp,
   ROOT_CONTAINER_ID,
 } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
@@ -17,8 +23,6 @@ import AppInit from '@/utils/AppInit'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import TooltipButton from '@/components/TooltipButton'
 import useCommands from '@/hooks/useCommands'
-
-const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)

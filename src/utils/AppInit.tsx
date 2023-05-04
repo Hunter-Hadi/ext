@@ -1,5 +1,5 @@
-import { ChatGPTConversationState, useInitInboxSdk } from '@/features/gmail'
-import { RangyContextMenu, useInitRangy } from '@/features/contextMenu'
+import { ChatGPTConversationState } from '@/features/gmail/store'
+import { RangyContextMenu } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import React, { useEffect } from 'react'
 import { chromeExtensionClientOpenPage } from '@/utils/index'
@@ -7,7 +7,7 @@ import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmai
 import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
-import { Button } from '@mui/material'
+import Button from '@mui/material/Button'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
 import {
   getChromeExtensionContextMenu,
@@ -16,13 +16,17 @@ import {
 } from '@/background/utils'
 import Log from '@/utils/Log'
 import { useAuthLogin } from '@/features/auth'
-
-const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
+import { isEzMailApp } from '@/types'
+import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
 
 const log = new Log('AppInit')
 
 const GmailInit = () => {
-  useInitInboxSdk()
+  if (isEzMailApp) {
+    import(String(process.env.INBOX_SDK_PATH)).then((module) => {
+      module.default()
+    })
+  }
   return (
     <>
       <style>{'.aSt {max-width: calc(100% - 700px)}'}</style>

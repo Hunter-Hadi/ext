@@ -1,13 +1,13 @@
 import { FC, useEffect, useMemo, useState } from 'react'
-import {
-  Box,
-  Stack,
-  Paper,
-  Typography,
-  Button,
-  Link,
-  Alert,
-} from '@mui/material'
+
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import Link from '@mui/material/Link'
+import Alert from '@mui/material/Alert'
+
 import React from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'

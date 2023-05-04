@@ -2,13 +2,13 @@ import { mkdirpSync } from 'mkdirp'
 import fs from 'fs'
 import path from 'path'
 
-const i18nDir = path.join(__dirname, './src/i18n/')
+const i18nDir = path.join(__dirname, '../src/i18n/')
 
 const localesCreator = () => ({
   name: 'locales-creator',
   writeBundle: () => {
     console.log('localesCreator!!!!')
-    const localesDir = path.join(process.cwd(), './dist/_locales')
+    const localesDir = path.join(__dirname, '../dist/_locales')
     mkdirpSync(localesDir)
     fs.readdir(i18nDir, { withFileTypes: true }, (err, files) => {
       if (err) {
@@ -23,7 +23,7 @@ const localesCreator = () => ({
           // eslint-disable-next-line @typescript-eslint/no-var-requires
           const currentLang = require(path.join(
             __dirname,
-            `./src/i18n/${directories[i]}/index.json`,
+            `../src/i18n/${directories[i]}/index.json`,
           ))
 
           const messageJsonTemplate = {

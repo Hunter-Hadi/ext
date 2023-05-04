@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import CloseAlert from '@/components/CloseAlert'
-import { Stack, Typography } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 
 const HowToFindSettings: FC = () => {
   return (

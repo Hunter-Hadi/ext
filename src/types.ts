@@ -1,8 +1,10 @@
 // env
-const APP_ENV = String(process.env.APP_ENV)
-const isEzMailApp = String(APP_ENV) === 'EZ_MAIL_AI'
+export const APP_ENV = String(process.env.APP_ENV)
+export const APP_NAME = String(process.env.APP_NAME)
+export const isEzMailApp = String(APP_ENV) === 'EZ_MAIL_AI'
+export const isProduction = String(process.env.NODE_ENV) === 'production'
 // ID
-const APP_ROOT_ID = `${APP_ENV}_ROOT`
+export const APP_ROOT_ID = `${APP_ENV}_ROOT`
 export const ROOT_CONTAINER_ID = `${APP_ROOT_ID}`
 export const ROOT_DAEMON_PROCESS_ID = `${APP_ROOT_ID}_DaemonProcess`
 export const ROOT_CONTAINER_WRAPPER_ID = `${APP_ROOT_ID}_Wrapper`

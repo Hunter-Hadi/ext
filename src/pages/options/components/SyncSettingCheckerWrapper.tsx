@@ -1,13 +1,13 @@
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
 import React, { FC, useCallback, useContext, useRef, useState } from 'react'
-import {
-  Alert,
-  Backdrop,
-  Button,
-  CircularProgress,
-  Stack,
-  Typography,
-} from '@mui/material'
+
+import Alert from '@mui/material/Alert'
+import Backdrop from '@mui/material/Backdrop'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'

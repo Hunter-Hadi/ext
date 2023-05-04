@@ -1,4 +1,7 @@
-import { Button, Paper, Stack, Typography } from '@mui/material'
+import Button from '@mui/material/Button'
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import React, { FC, useEffect, useMemo } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
@@ -22,10 +25,8 @@ import {
   FloatingContextMenuMoreIconButton,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
+import { APP_ENV, APP_NAME, isProduction } from '@/types'
 
-const APP_NAME = String(process.env.APP_NAME)
-const APP_ENV = String(process.env.APP_ENV)
-const isProduction = String(process.env.NODE_ENV) === 'production'
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
@@ -182,7 +183,7 @@ const ClickContextMenuButton: FC<{
               }}
             />
           )}
-          {APP_NAME === 'EzMail.AI' ? 'EzMail.AI' : 'Use ChatGPT'}
+          {APP_NAME}
           {shortCutKey && (
             <Typography
               component={'span'}

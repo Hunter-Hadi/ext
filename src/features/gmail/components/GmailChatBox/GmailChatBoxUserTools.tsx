@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Stack } from '@mui/material'
+import Stack from '@mui/material/Stack'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import EditIcon from '@mui/icons-material/Edit'
 import DoneIcon from '@mui/icons-material/Done'

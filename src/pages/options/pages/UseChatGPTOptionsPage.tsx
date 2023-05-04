@@ -1,16 +1,33 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+  Suspense,
+} from 'react'
 import '../../OptionsPage.less'
-import { Box, Container, Link, Stack, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import Stack from '@mui/material/Stack'
+import Link from '@mui/material/Link'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
-import UseChatGPTOptionsSettingPage from '@/pages/options/pages/UseChatGPTOptionsSettingPage'
-import UseChatGPTOptionsEditMenuPage from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { SnackbarProvider } from 'notistack'
 import { useAuthLogin } from '@/features/auth/hooks'
-import UseChatGPTOptionsLoginPage from '@/pages/options/pages/UseChatGPTOptionsLoginPage'
 import AccountMenu from '@/pages/options/components/AccountMenu'
 import { OptionsPageRouteContext } from '@/pages/options/context'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
+
+const UseChatGPTOptionsLoginPage = React.lazy(
+  () => import('@/pages/options/pages/UseChatGPTOptionsLoginPage'),
+)
+const UseChatGPTOptionsSettingPage = React.lazy(
+  () => import('@/pages/options/pages/UseChatGPTOptionsSettingPage'),
+)
+const UseChatGPTOptionsEditMenuPage = React.lazy(
+  () => import('@/pages/options/pages/UseChatGPTOptionsEditMenuPage'),
+)
 
 const UseChatGPTOptionsPage = () => {
   const { loaded, isLogin, loading } = useAuthLogin()
@@ -149,11 +166,15 @@ const UseChatGPTOptionsPage = () => {
             </Container>
           </Box>
           <Container maxWidth={'lg'} sx={{ mt: 13 }}>
-            <AppLoadingLayout loading={loading}>
-              {route === '/login' && <UseChatGPTOptionsLoginPage />}
-              {route === '/' && <UseChatGPTOptionsSettingPage />}
-              {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
-            </AppLoadingLayout>
+            <Suspense
+              fallback={<AppLoadingLayout loading={loading} size={16} />}
+            >
+              <AppLoadingLayout loading={loading}>
+                {route === '/login' && <UseChatGPTOptionsLoginPage />}
+                {route === '/' && <UseChatGPTOptionsSettingPage />}
+                {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
+              </AppLoadingLayout>
+            </Suspense>
           </Container>
         </OptionsPageRouteContext.Provider>
       </SnackbarProvider>

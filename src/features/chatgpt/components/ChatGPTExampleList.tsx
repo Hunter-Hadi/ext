@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Typography, Collapse, Stack } from '@mui/material'
+import Typography from '@mui/material/Typography'
+import Collapse from '@mui/material/Collapse'
+import Stack from '@mui/material/Stack'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 interface TextListProps {

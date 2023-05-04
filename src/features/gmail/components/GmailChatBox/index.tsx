@@ -1,13 +1,11 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Link,
-  Stack,
-  SxProps,
-  Typography,
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { SxProps } from '@mui/material/styles'
 import CachedIcon from '@mui/icons-material/Cached'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
@@ -23,6 +21,7 @@ import {
   APP_USE_CHAT_GPT_HOST,
   CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_MAIL_TO,
+  isEzMailApp,
 } from '@/types'
 import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
@@ -39,7 +38,6 @@ import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/ChatGPTPlu
 
 const MAX_NORMAL_INPUT_LENGTH = 10000
 const MAX_GPT4_INPUT_LENGTH = 80000
-const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 interface IGmailChatBoxProps {
   sx?: SxProps

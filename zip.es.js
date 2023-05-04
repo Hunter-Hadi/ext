@@ -3,17 +3,24 @@ import fs from 'fs'
 import path from 'path'
 
 function walk(dir) {
-  let files = fs.readdirSync(dir)
-  files = files.map((file) => {
-    const filePath = path.join(dir, file)
-    const stats = fs.statSync(filePath)
-    if (stats.isDirectory()) return walk(filePath)
-    else if (stats.isFile()) return filePath
+  let results = []
+  const list = fs.readdirSync(dir)
+  list.forEach((file) => {
+    file = dir + '/' + file
+    const stat = fs.statSync(file)
+    if (stat && stat.isDirectory()) {
+      /* Recurse into a subdirectory */
+      results = results.concat(walk(file))
+    } else {
+      /* Is a file */
+      results.push(file)
+    }
   })
-  return files.reduce((all, folderContents) => all.concat(folderContents), [])
+  return results
 }
 
 const isAsset = (entry) => entry.type === 'asset'
+let outFilePath = ''
 const zip = (options) => ({
   name: 'zip',
   generateBundle({ dir, sourcemap, sourcemapFile }) {
@@ -57,10 +64,12 @@ const zip = (options) => ({
     }
     // Save the output file path
     this.cache.set('outfile' /* outfile */, outFile)
+    outFilePath = outFile
+    console.log(outFilePath, 'outFilePath1')
   },
   writeBundle(_options, bundle) {
     return new Promise((resolve) => {
-      const distDir = this.cache.get('distdir' /* distdir */)
+      let distDir = path.resolve(__dirname, '../dist')
       const zipFile = new ZipFile()
       const files = walk(distDir)
       files.forEach((filePath) => {
@@ -70,8 +79,7 @@ const zip = (options) => ({
           zipFile.addFile(filePath, filePath.replace(distDir + '/', ''))
         }
       })
-      const outFile = this.cache.get('outfile' /* outfile */)
-      const writeStream = fs.createWriteStream(outFile)
+      const writeStream = fs.createWriteStream(outFilePath)
       zipFile.outputStream.pipe(writeStream)
       zipFile.end()
       writeStream.on('close', resolve)

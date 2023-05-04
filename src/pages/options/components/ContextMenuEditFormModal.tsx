@@ -1,16 +1,14 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import cloneDeep from 'lodash-es/cloneDeep'
-import {
-  Box,
-  Button,
-  FormControlLabel,
-  Modal,
-  Stack,
-  Switch,
-  TextField,
-  Typography,
-  Container,
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Modal from '@mui/material/Modal'
+import Stack from '@mui/material/Stack'
+import Switch from '@mui/material/Switch'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
 import {
   CONTEXT_MENU_ICONS,
   ContextMenuIcon,
@@ -26,7 +24,6 @@ import { templateStaticWords } from '@/features/shortcuts/utils'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
-// const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 
 const staticWordCompleter = {
   getCompletions(

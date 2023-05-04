@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 import { IChromeExtensionSettings } from '@/background/utils'
-const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
+import { isEzMailApp } from '@/types'
 
 export const AppState = atom<{
   env: 'gmail' | 'normal'

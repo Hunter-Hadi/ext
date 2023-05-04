@@ -1,16 +1,15 @@
 import React, { FC, useMemo } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import {
-  Box,
-  Chip,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  Tooltip,
-  Typography,
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import Chip from '@mui/material/Chip'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
+import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+
 import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'

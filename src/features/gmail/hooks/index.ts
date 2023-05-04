@@ -8,7 +8,6 @@ import {
 import { useMemo } from 'react'
 
 export { useCurrentMessageView } from './useCurrentMessageView'
-export { useInitInboxSdk } from './useInitInboxSdk'
 
 export const useInboxSdk = () => {
   const { loading, initialized, sdk } = useRecoilValue(InboxSdkState)

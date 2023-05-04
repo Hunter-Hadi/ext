@@ -1,7 +1,6 @@
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { useEffect, useRef } from 'react'
-import * as InboxSDK from '@inboxsdk/core'
-import { ComposeViewButtonOnClickEvent } from '@inboxsdk/core'
+import { load, ComposeViewButtonOnClickEvent } from '@inboxsdk/core'
 import {
   InboxSdkState,
   InboxThreadViewState,
@@ -51,7 +50,7 @@ const useInitInboxSdk = () => {
   const setInboxEditState = useSetRecoilState(InboxEditState)
   const timeoutRef = useRef(false)
   useEffect(() => {
-    InboxSDK.load(2, 'sdk_EzMailAI_bc77e07326', {}).then((sdk) => {
+    load(2, 'sdk_EzMailAI_bc77e07326', {}).then((sdk) => {
       setInboxSdk({
         sdk,
         loading: false,
@@ -351,4 +350,4 @@ const useInitInboxSdk = () => {
     }
   }, [inboxSdk])
 }
-export { useInitInboxSdk }
+export default useInitInboxSdk

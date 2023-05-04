@@ -29,6 +29,7 @@ export const getAppActiveElement = (): HTMLElement | null => {
   if (element === undefined) return null
   return element
 }
+
 export const getFloatingContextMenuActiveElement = (): HTMLElement | null => {
   const element = document.querySelector(`#${ROOT_CONTEXT_MENU_ID}`)?.shadowRoot
     ?.activeElement as HTMLDivElement

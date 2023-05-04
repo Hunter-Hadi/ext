@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
-import { Box, Skeleton, SxProps } from '@mui/material'
+import Box from '@mui/material/Box'
+import Skeleton from '@mui/material/Skeleton'
+import { SxProps } from '@mui/material/styles'
 import { throttle } from '@/utils/useThrottle'
 import { useRecoilValue } from 'recoil'
 import {

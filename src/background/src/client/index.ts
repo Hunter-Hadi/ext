@@ -6,8 +6,7 @@ import {
   createChromeExtensionOptionsPage,
 } from '@/background/utils'
 import { createDaemonProcessTab } from '@/background/src/chat/util'
-
-const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
+import { isEzMailApp } from '@/types'
 
 // const log = new Log('Background/Client')
 export const ClientMessageInit = () => {

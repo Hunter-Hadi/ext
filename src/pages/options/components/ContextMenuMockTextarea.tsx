@@ -1,8 +1,10 @@
 import { ContextMenuIcon } from '@/features/contextMenu'
-import { Box, IconButton, Stack } from '@mui/material'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import React, { FC, useMemo, useState } from 'react'
-import { useTheme } from '@mui/material/styles'
+import useTheme from '@mui/material/styles/useTheme'
 
 const ContextMenuMockTextarea: FC<{
   defaultValue?: string

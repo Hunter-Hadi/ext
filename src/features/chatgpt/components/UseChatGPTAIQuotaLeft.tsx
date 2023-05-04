@@ -3,7 +3,7 @@ import { CircularProgress, Link, Stack, Typography } from '@mui/material'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
 import { GiftIcon } from '@/components/CustomIcon'
 import RefreshOutlined from '@mui/icons-material/RefreshOutlined'
-import { useUseChatGPTUserInfo } from '@/features/chatgpt'
+import { useUseChatGPTUserInfo } from '@/features/chatgpt/hooks'
 import Tooltip from '@mui/material/Tooltip'
 import useEffectOnce from '@/hooks/useEffectOnce'
 

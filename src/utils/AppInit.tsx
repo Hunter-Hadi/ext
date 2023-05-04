@@ -1,4 +1,4 @@
-import { ChatGPTConversationState, useInitInboxSdk } from '@/features/gmail'
+import { ChatGPTConversationState } from '@/features/gmail/store'
 import { RangyContextMenu, useInitRangy } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import React, { useEffect } from 'react'
@@ -22,7 +22,9 @@ const isEzMailApp = String(process.env.APP_ENV) === 'EZ_MAIL_AI'
 const log = new Log('AppInit')
 
 const GmailInit = () => {
-  useInitInboxSdk()
+  import('@/features/gmail/hooks/useInitInboxSdk').then((module) => {
+    module.default()
+  })
   return (
     <>
       <style>{'.aSt {max-width: calc(100% - 700px)}'}</style>

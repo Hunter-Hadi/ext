@@ -1,17 +1,17 @@
 import { useRecoilValue } from 'recoil'
 import { useEffect, useRef, useState } from 'react'
-import * as InboxSDK from '@inboxsdk/core'
 import { InboxEditState, InboxThreadViewState } from '@/features/gmail/store'
 import { deepCloneGmailMessageElement } from '@/features/gmail/utils'
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
+import { MessageView } from '@inboxsdk/core'
 
 const useCurrentMessageView = () => {
   const { resetConversation } = useMessageWithChatGPT()
   const { currentMessageId } = useRecoilValue(InboxEditState)
   const inboxThreadView = useRecoilValue(InboxThreadViewState)
-  const currentMessageViewRef = useRef<InboxSDK.MessageView | null>(null)
+  const currentMessageViewRef = useRef<MessageView | null>(null)
   const [currentMessageView, setCurrentMessageView] = useState<
-    InboxSDK.MessageView | undefined
+    MessageView | undefined
   >(undefined)
   const [messageViewText, setMessageViewText] = useState<string>('')
   const [loading, setLoading] = useState(false)
@@ -93,7 +93,7 @@ const useCurrentMessageView = () => {
       if (inboxThreadView.getInstance) {
         const inboxThreadViewInstance = inboxThreadView.getInstance()
         for (const messageView of inboxThreadViewInstance.getMessageViews()) {
-          messageView.getMessageIDAsync().then((messageId) => {
+          messageView.getMessageIDAsync().then((messageId: any) => {
             if (messageId && messageId === currentMessageId) {
               setCurrentMessageView(messageView)
               currentMessageViewRef.current = messageView

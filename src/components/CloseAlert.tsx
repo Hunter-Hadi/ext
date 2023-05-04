@@ -1,9 +1,9 @@
 import CloseIcon from '@mui/icons-material/Close'
 import { Alert, Collapse, IconButton, Stack } from '@mui/material'
 import { AlertProps } from '@mui/material/Alert/Alert'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState, PropsWithChildren } from 'react'
 
-const CloseAlert: FC<AlertProps> = (props) => {
+const CloseAlert: FC<PropsWithChildren<AlertProps>> = (props) => {
   const { sx, ...rest } = props
   const [open, setOpen] = useState(true)
   const [boxOpen, setBoxOpen] = useState(true)

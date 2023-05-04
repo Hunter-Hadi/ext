@@ -1,4 +1,5 @@
-import { SvgIcon, SvgIconProps } from '@mui/material'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+
 import React, { FC } from 'react'
 const EzMailAIIcon: FC<SvgIconProps> = (props) => {
   return (

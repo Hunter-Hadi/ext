@@ -1,5 +1,5 @@
-import Markdown, { Options } from 'markdown-to-jsx'
-import React, { FC } from 'react'
+import Markdown from 'markdown-to-jsx'
+import React, { FC, createElement } from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
@@ -33,41 +33,52 @@ const OverrideAnchor: FC<HTMLAnchorElement> = (props) => {
 }
 
 const OverrideCode: FC<HTMLElement> = (props) => {
-  return (
-    <Stack
-      bgcolor="#000"
-      sx={{
-        borderRadius: '6px',
-        mb: 2,
-        overflow: 'hidden',
-      }}
-    >
+  const children = props.children as any
+  if (typeof children === 'string' && children.includes('\n')) {
+    return (
       <Stack
-        justifyContent="flex-end"
-        itemsAlign="center"
-        direction="row"
-        px={2}
-        py={0.5}
+        bgcolor="#000"
         sx={{
-          bgcolor: 'rgba(52,53,65,1)',
-          color: 'rgb(217,217,227)',
+          borderRadius: '6px',
+          mb: 2,
+          overflow: 'hidden',
         }}
       >
-        <CopyTooltipIconButton
-          copyText={props.children as any}
+        <Stack
+          justifyContent="space-between"
+          alignItems={'center'}
+          direction="row"
+          component="div"
           sx={{
-            borderRadius: '6px',
-            px: '8px !important',
+            px: 2,
+            py: 0.5,
+            bgcolor: 'rgba(52,53,65,1)',
+            color: 'rgb(217,217,227)',
           }}
         >
-          <span style={{ marginLeft: '4px', fontSize: '12px' }}>Copy code</span>
-        </CopyTooltipIconButton>
+          <Typography component="span" fontSize={12}>
+            Code
+          </Typography>
+          <CopyTooltipIconButton
+            copyText={props.children as any}
+            sx={{
+              borderRadius: '6px',
+              px: '8px !important',
+            }}
+          >
+            <span style={{ marginLeft: '4px', fontSize: '12px' }}>
+              Copy code
+            </span>
+          </CopyTooltipIconButton>
+        </Stack>
+        <Box p={2} color="#FFFFFFDE" fontSize={14}>
+          {children}
+        </Box>
       </Stack>
-      <Box p={2} color="#FFFFFFDE">
-        {props.children as any}
-      </Box>
-    </Stack>
-  )
+    )
+  }
+
+  return createElement('code', {}, children)
 }
 
 const CustomMarkdown: FC<{

@@ -80,7 +80,7 @@ const App: FC = () => {
           height={'100%'}
           sx={{
             '& *': {
-              fontSize: '14px',
+              // fontSize: '14px',
               boxSizing: 'border-box',
               fontFamily: `"Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif`,
             },

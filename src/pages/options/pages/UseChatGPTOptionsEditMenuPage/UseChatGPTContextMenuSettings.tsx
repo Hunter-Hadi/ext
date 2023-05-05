@@ -110,6 +110,11 @@ const ContextMenuSettings: FC<{
   )
   const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
+  const memoAllGroupIds = useMemo(() => {
+    return originalTreeData
+      .filter((item) => item.data.type === 'group')
+      .map((item) => item.id)
+  }, [originalTreeData])
   useEffect(() => {
     // NOTE: 2023-05-05之前: 恒定展开全部
     if (openIds.length === 0) {
@@ -445,10 +450,13 @@ const ContextMenuSettings: FC<{
             <DndProvider backend={MultiBackend} options={getBackendOptions()}>
               <Tree
                 onChangeOpen={(newOpenIds) => {
+                  if (inputValue.trim()) {
+                    return
+                  }
                   console.log('newOpenIds', newOpenIds)
                   setOpenIds(newOpenIds as string[])
                 }}
-                initialOpen={openIds}
+                initialOpen={inputValue.trim() ? memoAllGroupIds : openIds}
                 tree={filteredTreeData}
                 rootId={rootId}
                 onDrop={handleDrop}

@@ -15,9 +15,13 @@ const modifyManifest = ({ env, isProd }) => ({
     const formatUrl = (arr, editKey) => {
       return arr.map((item) => {
         if (item && item[editKey]) {
-          item[editKey] = item[editKey].map((url) => {
-            return url === 'https://*/*' ? '<all_urls>' : url
-          })
+          if (isProd) {
+            item[editKey] = ['<all_urls>']
+          } else {
+            item[editKey] = item[editKey].map((url) => {
+              return url === 'https://*/*' ? '<all_urls>' : url
+            })
+          }
         }
         return item
       })

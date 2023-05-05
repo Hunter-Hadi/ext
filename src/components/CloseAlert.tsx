@@ -5,9 +5,9 @@ import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
 
 import { AlertProps } from '@mui/material/Alert/Alert'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState, PropsWithChildren } from 'react'
 
-const CloseAlert: FC<AlertProps> = (props) => {
+const CloseAlert: FC<PropsWithChildren<AlertProps>> = (props) => {
   const { sx, ...rest } = props
   const [open, setOpen] = useState(true)
   const [boxOpen, setBoxOpen] = useState(true)

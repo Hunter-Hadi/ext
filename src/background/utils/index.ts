@@ -16,7 +16,6 @@ import {
 import { useEffect } from 'react'
 import { IChatGPTProviderType } from '@/background/provider/chat/ChatAdapter'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'

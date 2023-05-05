@@ -4,10 +4,7 @@
   .markdown-body {
     /* FONTS */
     font-size: 16px;
-
-    * {
-      font-size: 16px;
-    }
+    color: var(--tw-prose-body);
 
     @font-face {
       font-family: 'Inter';
@@ -46,8 +43,8 @@
     /* Tailwind variables */
     --tw-primary: #62bbf3;
 
-    --tw-prose-body: var(--theme-700);
-    --tw-prose-headings: var(--theme-900);
+    --tw-prose-body: #374151;
+    --tw-prose-headings: #111827;
     --tw-prose-lead: var(--theme-600);
     --tw-prose-links: var(--theme-900);
     --tw-prose-bold: var(--theme-900);
@@ -66,7 +63,7 @@
     --tw-prose-meta: var(--theme-500);
     --tw-prose-meta-bg: var(--theme-100);
 
-    --tw-prose-invert-body: var(--theme-300);
+    --tw-prose-invert-body: #d1d5db;
     --tw-prose-invert-headings: var(--theme-0);
     --tw-prose-invert-lead: var(--theme-400);
     --tw-prose-invert-links: var(--theme-0);
@@ -490,8 +487,8 @@
       font-size: 1.5em;
       font-weight: 700;
       line-height: 1.3333333;
-      margin-bottom: 1em;
-      margin-top: 2em;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
     }
 
     h2 strong {
@@ -503,8 +500,8 @@
       font-size: 1.25em;
       font-weight: 600;
       line-height: 1.6;
-      margin-bottom: 0.6em;
-      margin-top: 1.6em;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
     }
 
     h3 strong {
@@ -515,8 +512,8 @@
       color: var(--tw-prose-headings);
       font-weight: 600;
       line-height: 1.5;
-      margin-bottom: 0.5em;
-      margin-top: 1.5em;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
     }
 
     h4 strong {
@@ -531,17 +528,17 @@
       font-size: 0.9em;
     }
 
-    h2 + * {
-      margin-top: 0;
-    }
+    // h2 + * {
+    //   margin-top: 0;
+    // }
 
-    h3 + * {
-      margin-top: 0;
-    }
+    // h3 + * {
+    //   margin-top: 0;
+    // }
 
-    h4 + * {
-      margin-top: 0;
-    }
+    // h4 + * {
+    //   margin-top: 0;
+    // }
 
     h5 {
       font-weight: 500;
@@ -650,14 +647,16 @@
       padding-left: 1.6em;
     }
 
-    li {
-      margin-top: 0.6em;
-      margin-bottom: 0.6em;
-    }
+    // li {
+    // margin-top: 0.6em;
+    // margin-bottom: 0.6em;
+    // }
 
     ul {
       list-style-type: disc;
       padding-left: 1.6em;
+      margin-bottom: 1.25em;
+      margin-top: 1.25em;
     }
 
     #write ul.task-list {
@@ -730,7 +729,7 @@
       font-weight: 500;
       font-style: italic;
       color: var(--tw-prose-quotes);
-      border-left-width: 0.25rem;
+      border-left-width: 2px;
       border-left-color: rgba(142, 142, 160, 1);
       quotes: '\201C''\201D''\2018''\2019';
       margin-top: 1.6em;
@@ -1294,5 +1293,78 @@
     --md-grid-header-active: var(--md-grid-header-active-inverted);
     --md-grid-active: var(--md-grid-active-inverted);
     --md-grid-border-color: var(--md-grid-border-color-inverted);
+  }
+
+  // code hightligh css
+  pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+  }
+  code.hljs {
+    padding: 3px 5px;
+  }
+  .hljs {
+    color: #abb2bf;
+    background: #282c34;
+  }
+  .hljs-comment,
+  .hljs-quote {
+    color: #5c6370;
+    font-style: italic;
+  }
+  .hljs-doctag,
+  .hljs-formula,
+  .hljs-keyword {
+    color: #c678dd;
+  }
+  .hljs-deletion,
+  .hljs-name,
+  .hljs-section,
+  .hljs-selector-tag,
+  .hljs-subst {
+    color: #e06c75;
+  }
+  .hljs-literal {
+    color: #56b6c2;
+  }
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-meta .hljs-string,
+  .hljs-regexp,
+  .hljs-string {
+    color: #98c379;
+  }
+  .hljs-attr,
+  .hljs-number,
+  .hljs-selector-attr,
+  .hljs-selector-class,
+  .hljs-selector-pseudo,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-variable {
+    color: #d19a66;
+  }
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-meta,
+  .hljs-selector-id,
+  .hljs-symbol,
+  .hljs-title {
+    color: #61aeee;
+  }
+  .hljs-built_in,
+  .hljs-class .hljs-title,
+  .hljs-title.class_ {
+    color: #e6c07b;
+  }
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  .hljs-strong {
+    font-weight: 700;
+  }
+  .hljs-link {
+    text-decoration: underline;
   }
 }

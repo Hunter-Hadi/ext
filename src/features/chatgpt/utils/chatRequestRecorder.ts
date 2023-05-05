@@ -55,6 +55,14 @@ export const increaseChatGPTRequetCount = async (type: 'error' | 'normal') => {
     [CHATGPT_REQUEST_COUNT_RECORD]: cacheData,
   })
   const dateRequestCount = omit(cacheData, 'errorCount')
+
+  // debugger
+  // 用于测试 如果 dateRequestCount 某一个value 超过10 就触发 fetch
+  // console.log('increaseChatGPTRequetCount dateRequestCount', cacheData)
+  // if (Object.values(dateRequestCount).some((v) => v > 10)) {
+  //   fetchChatGPTErrorRecord()
+  // }
+
   if (Object.keys(dateRequestCount).length >= RECORD_DAY_LIMIT) {
     fetchChatGPTErrorRecord()
   }
@@ -70,7 +78,7 @@ const fetchChatGPTErrorRecord = async () => {
     const accessToken = await getAccessToken()
     if (startRecordTime && info && accessToken) {
       const { errorCount, ...countInfo } = info
-
+      // debugger
       fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/save_gpt_error_records`, {
         method: 'POST',
         body: JSON.stringify({

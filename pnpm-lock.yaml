@@ -76,6 +76,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+  react-highlight:
+    specifier: ^0.15.0
+    version: registry.npmmirror.com/react-highlight@0.15.0
   react-scroll:
     specifier: ^1.8.9
     version: registry.npmmirror.com/react-scroll@1.8.9(react-dom@18.2.0)(react@18.2.0)
@@ -150,6 +153,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.0.11
     version: registry.npmmirror.com/@types/react-dom@18.0.11
+  '@types/react-highlight':
+    specifier: ^0.12.5
+    version: registry.npmmirror.com/@types/react-highlight@0.12.5
   '@types/react-scroll':
     specifier: ^1.8.7
     version: registry.npmmirror.com/@types/react-scroll@1.8.7
@@ -2841,6 +2847,14 @@ packages:
       '@types/react': registry.npmmirror.com/@types/react@18.0.28
     dev: true
 
+  registry.npmmirror.com/@types/react-highlight@0.12.5:
+    resolution: {integrity: sha512-P8+mTxltxDdQ+99l+pjn40clziSbNrZy5d5zmvG+j3jKzokAhCoCZlIRmmnFgETTYubuqwKjvXSlvesBZcTfvQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-highlight/-/react-highlight-0.12.5.tgz}
+    name: '@types/react-highlight'
+    version: 0.12.5
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react@18.0.28
+    dev: true
+
   registry.npmmirror.com/@types/react-is@17.0.3:
     resolution: {integrity: sha512-aBTIWg1emtu95bLTLx0cpkxwGW3ueZv71nE2YFBpL8k/z5czEW8yYpOo8Dp+UUAFAtKwNaOsh/ioSeQnWlZcfw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/react-is/-/react-is-17.0.3.tgz}
     name: '@types/react-is'
@@ -5019,6 +5033,12 @@ packages:
     version: 1.0.8
     dev: false
 
+  registry.npmmirror.com/highlight.js@10.7.3:
+    resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/-/highlight.js-10.7.3.tgz}
+    name: highlight.js
+    version: 10.7.3
+    dev: false
+
   registry.npmmirror.com/hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz}
     name: hoist-non-react-statics
@@ -6772,6 +6792,14 @@ packages:
       loose-envify: registry.npmmirror.com/loose-envify@1.4.0
       react: registry.npmmirror.com/react@18.2.0
       scheduler: registry.npmmirror.com/scheduler@0.23.0
+    dev: false
+
+  registry.npmmirror.com/react-highlight@0.15.0:
+    resolution: {integrity: sha512-5uV/b/N4Z421GSVVe05fz+OfTsJtFzx/fJBdafZyw4LS70XjIZwgEx3Lrkfc01W/RzZ2Dtfb0DApoaJFAIKBtA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-highlight/-/react-highlight-0.15.0.tgz}
+    name: react-highlight
+    version: 0.15.0
+    dependencies:
+      highlight.js: registry.npmmirror.com/highlight.js@10.7.3
     dev: false
 
   registry.npmmirror.com/react-is@16.13.1:

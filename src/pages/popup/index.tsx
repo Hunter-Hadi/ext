@@ -11,11 +11,12 @@ import Link from '@mui/material/Link'
 import { RecoilRoot } from 'recoil'
 import AppThemeProvider from '@/components/AppTheme'
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import Browser from 'webextension-polyfill'
 import Box from '@mui/material/Box'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import { backgroundSendClientMessage } from '@/background/utils'
+// import { backgroundSendClientMessage } from '@/background/utils'
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
 const App: FC = () => {
@@ -49,12 +50,10 @@ const App: FC = () => {
     init()
   })
   return (
-    <Stack minWidth={400}>
-      <p>{isSpecialPage}</p>
+    <Stack minWidth={400} spacing={1}>
       <Stack
         boxSizing={'border-box'}
         direction={'row'}
-        p={1}
         width={'100%'}
         alignItems={'center'}
         justifyContent={'space-between'}
@@ -109,10 +108,18 @@ const App: FC = () => {
         <Typography fontSize={18} fontWeight={600} color={'text.primary'}>
           Welcome to UseChatGPT.AI!
         </Typography>
-        <Typography fontSize={14} color={'text.primary'}>
-          Refresh this page to activate the extension and the Cmd/Alt+J shortcut
-          on this page.
-        </Typography>
+        {isSpecialPage ? (
+          <Typography fontSize={14} color={'text.primary'}>
+            {`For security reasons, the extension only works on real websites. So
+            it won't work on new tabs without loaded websites, Chrome pages, or
+            Chrome Web Store pages.`}
+          </Typography>
+        ) : (
+          <Typography fontSize={14} color={'text.primary'}>
+            {`Refresh this page to activate the extension and the Cmd/Alt+J
+            shortcut on this page.`}
+          </Typography>
+        )}
         <Button
           fullWidth
           color={'primary'}
@@ -121,16 +128,16 @@ const App: FC = () => {
           onClick={async () => {
             if (currentTabId) {
               await Browser.tabs.reload(currentTabId)
+              window.close()
             }
           }}
         >
           Refresh this page
         </Button>
       </Stack>
-      <Divider sx={{ my: 1 }} />
-      <Stack p={1}>
+      <Stack>
         <Typography fontSize={14} color={'text.secondary'}>
-          <span>{`Tips: Press `}</span>
+          <span>{`Press `}</span>
           <Box
             sx={{
               p: '0 4px',
@@ -146,29 +153,59 @@ const App: FC = () => {
           >
             {shortCutKey}
           </Box>
-          <span>
-            {` to activate Monica faster. Keyboard shortcut can be changed `}
-          </span>
+          <span>{` to toggle the extension sidebar. You can also `}</span>
           <Link
             href={'#'}
             onClick={async () => {
               await chromeExtensionClientOpenPage({ key: 'shortcuts' })
             }}
           >
-            here
+            change shortcut
           </Link>
-          <span>{`.`}</span>
+          <span>{` anytime.`}</span>
         </Typography>
       </Stack>
     </Stack>
   )
 }
-root.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <AppThemeProvider>
-        <App />
-      </AppThemeProvider>
-    </RecoilRoot>
-  </React.StrictMode>,
-)
+
+const init = async () => {
+  // hide popup
+  const currentTab = await Browser.tabs.query({
+    active: true,
+    currentWindow: true,
+  })
+  setTimeout(async () => {
+    try {
+      const tabId = currentTab && currentTab[0] && currentTab[0].id
+      if (tabId) {
+        await Browser.tabs.sendMessage(tabId, {})
+        const result = await backgroundSendClientMessage(
+          tabId,
+          'Client_listenOpenChatMessageBox',
+          {
+            type: 'shortcut',
+          },
+        )
+        if (result) {
+          Browser.action.setPopup({
+            popup: '',
+          })
+          window.close()
+        }
+      }
+    } catch (e) {
+      console.log(e)
+      root.render(
+        <React.StrictMode>
+          <RecoilRoot>
+            <AppThemeProvider>
+              <App />
+            </AppThemeProvider>
+          </RecoilRoot>
+        </React.StrictMode>,
+      )
+    }
+  }, 100)
+}
+init()

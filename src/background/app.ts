@@ -51,6 +51,7 @@ export const startChromeExtensionBackground = () => {
   initChromeExtensionCommands()
   initChromeExtensionAction()
   initChromeExtensionContextMenu()
+  initChromeExtensionDisabled()
   initChromeExtensionUninstalled()
 }
 
@@ -191,18 +192,73 @@ const initChromeExtensionAction = () => {
       }
     })
   } else {
-    Browser.action.onClicked.addListener(async function (tab) {
+    // HACK: 在任何页面onActivated的时候都会试图通信，如果通信成功触发关闭Popup，强制进入onClicked事件，monica应该也是这种写法，我看交互一模一样
+    // NOTE: 之所以这么写是因为当popup.html存在的时候，是无法进入action.onClicked的监听事件
+    const checkTabStatus = async (tab: Browser.Tabs.Tab) => {
+      try {
+        const currentTab = tab
+        if (currentTab && currentTab.id) {
+          await Browser.tabs.sendMessage(currentTab.id, {})
+          if (
+            currentTab?.url?.startsWith('chrome') ||
+            currentTab?.url?.startsWith('https://chrome.google.com/webstore')
+          ) {
+            await Browser.action.setPopup({
+              popup: 'pages/popup/index.html',
+            })
+          } else {
+            // 阻止默认的popup
+            await Browser.action.setPopup({
+              popup: '',
+            })
+          }
+        }
+      } catch (e) {
+        console.error(e)
+        await Browser.action.setPopup({
+          popup: 'pages/popup/index.html',
+        })
+      }
+    }
+    Browser.tabs.onActivated.addListener(async ({ tabId }) => {
+      await checkTabStatus(await Browser.tabs.get(tabId))
+    })
+    Browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+      // tab loaded
+      if (changeInfo.status === 'complete') {
+        if (tab.active) {
+          await checkTabStatus(tab)
+        }
+      }
+    })
+    Browser.action.onClicked.addListener(async (tab) => {
       if (tab && tab.id && tab.active) {
-        // need block popup
-        await backgroundSendClientMessage(
+        const result = await backgroundSendClientMessage(
           tab.id,
           'Client_listenOpenChatMessageBox',
           {
             type: 'shortcut',
           },
         )
-        await Browser.action.setPopup({
-          popup: '',
+        if (!result) {
+          await Browser.action.setPopup({
+            popup: 'pages/popup/index.html',
+          })
+        }
+      }
+    })
+  }
+}
+
+const initChromeExtensionDisabled = () => {
+  if (isEzMailApp) {
+    // no popup
+  } else {
+    chrome.management.onDisabled.addListener(function (extensionInfo) {
+      if (extensionInfo.id === chrome.runtime.id) {
+        console.log('Extension disabled')
+        Browser.action.setPopup({
+          popup: 'pages/popup/index.html',
         })
       }
     })

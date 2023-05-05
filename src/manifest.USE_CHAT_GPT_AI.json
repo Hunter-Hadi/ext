@@ -32,14 +32,15 @@
     "page": "options.html",
     "open_in_tab": true
   },
-  "permissions": ["tabs", "scripting", "storage", "management", "contextMenus"],
+  "permissions": ["tabs", "scripting", "storage", "management", "contextMenus", "activeTab"],
   "action": {
     "default_icon": {
       "16": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png",
       "24": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png",
       "32": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png"
     },
-    "default_title": "UseChatGPT.AI"
+    "default_title": "UseChatGPT.AI",
+    "default_popup": "pages/popup/index.html"
   },
   "icons": {
     "16":  "assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png",

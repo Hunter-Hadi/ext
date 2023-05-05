@@ -191,8 +191,9 @@ const initChromeExtensionAction = () => {
       }
     })
   } else {
-    Browser.action.onClicked.addListener(async (tab) => {
+    Browser.action.onClicked.addListener(async function (tab) {
       if (tab && tab.id && tab.active) {
+        // need block popup
         await backgroundSendClientMessage(
           tab.id,
           'Client_listenOpenChatMessageBox',
@@ -200,6 +201,9 @@ const initChromeExtensionAction = () => {
             type: 'shortcut',
           },
         )
+        await Browser.action.setPopup({
+          popup: '',
+        })
       }
     })
   }

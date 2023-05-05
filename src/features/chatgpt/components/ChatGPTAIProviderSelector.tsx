@@ -15,7 +15,7 @@ import { IChatGPTProviderType } from '@/background/provider/chat'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail/store'
-import UseChatGPTAIQuotaLeft from '@/features/chatgpt/components/UseChatGPTAIQuotaLeft'
+// import UseChatGPTAIQuotaLeft from '@/features/chatgpt/components/UseChatGPTAIQuotaLeft'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import {
@@ -263,8 +263,8 @@ const ChatGPTAIProviderSelector: FC = () => {
       </FormControl>
       {provider === CHAT_GPT_PROVIDER.OPENAI &&
         clientState.status === 'success' && <ChatGPTModelsSelector />}
-      {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS &&
-        clientState.status === 'success' && <UseChatGPTAIQuotaLeft />}
+      {/* {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS &&
+        clientState.status === 'success' && <UseChatGPTAIQuotaLeft />} */}
     </Stack>
   )
 }

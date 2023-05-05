@@ -16,6 +16,9 @@ import {
 import { useEffect } from 'react'
 import { IChatGPTProviderType } from '@/background/provider/chat/ChatAdapter'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+dayjs.extend(utc)
 
 export type IChatGPTModelType = {
   slug: string

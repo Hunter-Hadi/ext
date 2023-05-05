@@ -1,11 +1,9 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
   ChatGPTMessageState,
   ChatGPTConversationState,
-  ChatGPTInputState,
-  InboxEditState,
 } from '@/features/gmail/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { AppSettingsState } from '@/store'
@@ -25,6 +23,7 @@ import {
   IUserSendMessageExtraType,
 } from '@/features/chatgpt/types'
 import { CHAT_GPT_PROMPT_PREFIX } from '@/types'
+import { getMediator } from '@/store/mediator'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -34,10 +33,8 @@ const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const appSettings = useRecoilValue(AppSettingsState)
-  const updateInboxEditState = useSetRecoilState(InboxEditState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
-  const [inputValue, setInputValue] = useRecoilState(ChatGPTInputState)
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
@@ -56,7 +53,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           appSettings.currentModel,
         )
       })
-    setInputValue(defaultValueRef.current)
+    // 清空输入框
+    updateChatInputValue('')
     await cleanChatGPT()
   }
   /**
@@ -284,9 +282,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         answer: '',
       })
     } finally {
+      // 清空输入框
+      updateChatInputValue('')
+      // 更新消息
       setMessages((prevState) => {
         return [...prevState, ...pushMessages]
       })
+      // 清空writingMessage
       setConversation((prevState) => {
         return {
           ...prevState,
@@ -323,7 +325,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       )
     }
   }
-  const reGenerateMessage = () => {
+  const reGenerate = () => {
     let lastUserMessage: IUserSendMessage | null = null
     for (let i = messages.length - 1; i >= 0; i--) {
       const message = messages[i]
@@ -382,6 +384,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       ]
     })
   }
+  const updateChatInputValue = (value: string) => {
+    getMediator('chatBoxInputMediator').updateInputValue(value)
+  }
   useEffect(() => {
     if (defaultInputValue) {
       defaultValueRef.current = defaultInputValue
@@ -393,18 +398,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     resetConversation,
     conversation,
     retryMessage,
-    reGenerate: reGenerateMessage,
-    inputValue,
-    setInputValue,
-    forceUpdateInputValue(text: string) {
-      setInputValue(text)
-      setTimeout(() => {
-        updateInboxEditState((prevState) => ({
-          ...prevState,
-          step: (prevState.step || 0) + 1,
-        }))
-      }, 0)
-    },
+    reGenerate,
     stopGenerateMessage,
     pushMessage,
   }

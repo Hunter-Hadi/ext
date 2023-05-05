@@ -96,6 +96,7 @@ const ContextMenuSettings: FC<{
     iconSetting = false,
     onUpdated,
   } = props
+  const once = useRef(true)
   const [loading, setLoading] = useState(false)
   const originalTreeMapRef = useRef<{ [key: string]: IContextMenuItem }>({})
   const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
@@ -109,20 +110,20 @@ const ContextMenuSettings: FC<{
   )
   const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
-  const currentOpenIds = useMemo(() => {
-    // 恒定展开全部
-    console.log(openIds)
-    return originalTreeData
-      .filter((item) => item.data.type === 'group')
-      .map((item) => item.id)
-    //
-    // if (openIds.length) {
-    //   return openIds
-    // } else {
-    //   return treeData
-    //     .filter((item) => item.data.type === 'group')
-    //     .map((item) => item.id)
-    // }
+  useEffect(() => {
+    // NOTE: 2023-05-05之前: 恒定展开全部
+    if (openIds.length === 0) {
+      // 展开第一个组
+      const firstGroupId = originalTreeData
+        .filter((item) => item.data.type === 'group' && item.parent === rootId)
+        .find((item) => item.id)?.id
+      if (firstGroupId) {
+        setOpenIds([firstGroupId])
+      }
+    }
+    return () => {
+      // do nothing
+    }
   }, [originalTreeData])
   const defaultTreeDataRef = useRef<null | IContextMenuItem[]>(null)
   const handleDrop = async (newTreeData: any[], dragDetail: any) => {
@@ -286,7 +287,14 @@ const ContextMenuSettings: FC<{
     }
     findSearchText(rootId)
     if (originalTreeData.length > 0) {
-      saveTreeData(settingsKey, originalTreeData).then(onUpdated)
+      saveTreeData(settingsKey, originalTreeData).then(() => {
+        console.log('saveTreeData success')
+        if (once.current) {
+          once.current = false
+          return
+        }
+        onUpdated && onUpdated()
+      })
     }
   }, [originalTreeData])
   const filteredTreeData = useMemo(() => {
@@ -331,6 +339,7 @@ const ContextMenuSettings: FC<{
             fontSize={20}
             fontWeight={700}
             flexShrink={0}
+            component={'h2'}
             id={'edit-menu-options'}
           >
             Menu options
@@ -439,7 +448,7 @@ const ContextMenuSettings: FC<{
                   console.log('newOpenIds', newOpenIds)
                   setOpenIds(newOpenIds as string[])
                 }}
-                initialOpen={currentOpenIds}
+                initialOpen={openIds}
                 tree={filteredTreeData}
                 rootId={rootId}
                 onDrop={handleDrop}

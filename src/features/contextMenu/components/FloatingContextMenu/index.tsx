@@ -6,7 +6,7 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
@@ -31,6 +31,7 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
 import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import { getMediator } from '@/store/mediator'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -40,7 +41,6 @@ const FloatingContextMenu: FC<{
 }> = (props) => {
   const { root } = props
   const { palette } = useTheme()
-  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -131,7 +131,7 @@ const FloatingContextMenu: FC<{
   const haveDraft = inputValue.length > 0
   useEffect(() => {
     if (floatingDropdownMenu.open) {
-      setInputValue('')
+      getMediator('floatingMenuInputMediator').updateInputValue('')
       const textareaEl = getAppContextMenuElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
@@ -160,7 +160,7 @@ const FloatingContextMenu: FC<{
      * @description
      * 1. 必须有选中的id
      * 2. 必须有子菜单
-     * 3. contextMenu必须是打开状态asdasdasdasdsadasdaasdasdas
+     * 3. contextMenu必须是打开状态
      * 4. 必须不是loading
      */
     if (
@@ -217,6 +217,12 @@ const FloatingContextMenu: FC<{
     }
     return 680
   }, [floatingDropdownMenu.rootRect])
+  useEffect(() => {
+    getMediator('floatingMenuInputMediator').subscribe(setInputValue)
+    return () => {
+      getMediator('floatingMenuInputMediator').unsubscribe(setInputValue)
+    }
+  }, [])
   return (
     <FloatingPortal root={root}>
       <div
@@ -300,7 +306,6 @@ const FloatingContextMenu: FC<{
                 ) : (
                   <>
                     <AutoHeightTextarea
-                      textareaRef={textareaRef}
                       placeholder={'Use ChatGPT to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
@@ -309,10 +314,6 @@ const FloatingContextMenu: FC<{
                         '& textarea': { p: 0 },
                         borderRadius: 0,
                         minHeight: '24px',
-                      }}
-                      defaultValue={inputValue}
-                      onChange={(value) => {
-                        setInputValue(value)
                       }}
                       onEnter={(value) => {
                         showChatBox()
@@ -340,7 +341,6 @@ const FloatingContextMenu: FC<{
                           }
                         })
                         setTimeout(async () => {
-                          setInputValue('')
                           setShortCuts([
                             {
                               type: 'RENDER_CHATGPT_PROMPT',
@@ -403,7 +403,6 @@ const FloatingContextMenu: FC<{
                           }
                         })
                         setTimeout(async () => {
-                          setInputValue('')
                           setShortCuts([
                             {
                               type: 'RENDER_CHATGPT_PROMPT',

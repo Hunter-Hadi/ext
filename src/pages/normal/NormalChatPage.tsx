@@ -18,7 +18,6 @@ const NormalChatPage = () => {
     messages,
     reGenerate,
     retryMessage,
-    inputValue,
     stopGenerateMessage,
     resetConversation,
   } = useMessageWithChatGPT('')
@@ -31,7 +30,6 @@ const NormalChatPage = () => {
       <GmailChatBox
         editAble={false}
         insertAble={false}
-        defaultValue={inputValue}
         onSendMessage={async (question) => {
           await sendQuestion(
             {

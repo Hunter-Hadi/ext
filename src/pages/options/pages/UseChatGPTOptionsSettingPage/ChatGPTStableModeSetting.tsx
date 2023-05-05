@@ -169,9 +169,11 @@ const ChatGPTStableModeSetting: FC<{
         color={'text.primary'}
         id={'chatgpt-stable-mode'}
         mb={2}
+        component={'h2'}
       >
         ChatGPT stable mode
         <Chip
+          component={'span'}
           sx={{ ml: 1 }}
           label="Beta"
           color="primary"

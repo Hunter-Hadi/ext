@@ -16,6 +16,7 @@ import {
 } from '@/types'
 import { getChromeExtensionContextMenu } from '@/background/utils'
 
+// FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailChatPage = () => {
   const { currentMessageId } = useCurrentMessageView()
   const { step } = useRecoilValue(InboxEditState)
@@ -28,7 +29,6 @@ const GmailChatPage = () => {
     messages,
     reGenerate,
     retryMessage,
-    inputValue,
     setShortCuts,
     stopGenerateMessage,
     resetConversation,
@@ -84,7 +84,6 @@ const GmailChatPage = () => {
       <GmailChatBox
         insertAble
         editAble={false}
-        defaultValue={inputValue}
         onSendMessage={async (question) => {
           await sendQuestion(
             {

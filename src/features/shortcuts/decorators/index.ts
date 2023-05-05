@@ -1,5 +1,6 @@
 // import { compileTemplate } from '../utils'
 import Action from '@/features/shortcuts/core/Action'
+import { getMediator } from '@/store/mediator'
 
 function render(
   template: string,
@@ -109,14 +110,13 @@ export function clearUserInput(beforeExecute = true) {
   ) {
     const oldFunc = descriptor.value
     descriptor.value = async function (...args: any[]) {
-      const [, engine] = args
       if (beforeExecute) {
-        engine.getChartGPT()?.setInputValue('')
+        getMediator('chatBoxInputMediator').updateInputValue('')
         const value = await oldFunc.apply(this, args)
         return value
       } else {
         const value = await oldFunc.apply(this, args)
-        engine.getChartGPT()?.setInputValue('')
+        getMediator('chatBoxInputMediator').updateInputValue('')
         return value
       }
     }

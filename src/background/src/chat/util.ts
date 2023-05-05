@@ -12,21 +12,25 @@ import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
 export const createDaemonProcessTab = async () => {
   const pinedTabs = await Browser.tabs.query({
     pinned: true,
-    url: 'https://chat.openai.com/*',
   })
-  let tab: Browser.Tabs.Tab | null = null
-  if (pinedTabs.length > 0 && pinedTabs[0].id) {
-    tab = await Browser.tabs.update(pinedTabs[0].id, {
+  let currentPinnedTab: Browser.Tabs.Tab | undefined = pinedTabs.find(
+    (tab) => tab.url?.indexOf('chat.openai.com') !== -1 && tab.id,
+  )
+  // 如果有pinned的chatGPT tab并且tab id存在
+  if (currentPinnedTab) {
+    // 刷新网页并且active
+    currentPinnedTab = await Browser.tabs.update(currentPinnedTab.id, {
       active: true,
       url: 'https://chat.openai.com',
     })
   } else {
-    tab = await Browser.tabs.create({
+    // 创建一个新的tab
+    currentPinnedTab = await Browser.tabs.create({
       url: 'https://chat.openai.com',
       pinned: true,
     })
   }
-  return tab
+  return currentPinnedTab
 }
 
 /**

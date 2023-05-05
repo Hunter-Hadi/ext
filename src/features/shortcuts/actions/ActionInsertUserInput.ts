@@ -1,6 +1,10 @@
 import { IActionType } from '@/features/shortcuts/types'
 import Action from '@/features/shortcuts/core/Action'
-import { clearUserInput, templateParserDecorator } from '@/features/shortcuts/decorators'
+import {
+  clearUserInput,
+  templateParserDecorator,
+} from '@/features/shortcuts/decorators'
+import { getMediator } from '@/store/mediator'
 
 export class ActionInsertUserInput extends Action {
   static type = 'INSERT_USER_INPUT'
@@ -19,7 +23,7 @@ export class ActionInsertUserInput extends Action {
       const inputValue =
         this.parameters?.compliedTemplate || params?.LAST_ACTION_OUTPUT || ''
       const bodyElement = engine
-      engine.getChartGPT().setInputValue(inputValue)
+      getMediator('chatBoxInputMediator').updateInputValue(inputValue)
       if (bodyElement) {
         this.output = inputValue
       } else {

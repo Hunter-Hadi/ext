@@ -50,10 +50,10 @@ const useSyncSettingsChecker = () => {
             delete serverSettings.conversationId
           }
           await setChromeExtensionSettings(serverSettings)
-          debounceEnqueueSnackbar('Settings updated', {
-            variant: 'success',
-            autoHideDuration: 1000,
-          })
+          // debounceEnqueueSnackbar('Settings updated', {
+          //   variant: 'success',
+          //   autoHideDuration: 1000,
+          // })
         }
       }
       return true

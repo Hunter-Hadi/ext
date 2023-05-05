@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import Typography from '@mui/material/Typography'
 import Slider from '@mui/material/Slider'
 import Stack from '@mui/material/Stack'
@@ -31,6 +31,7 @@ const ChatGPTApiSettings: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
   const [settings, setSettings] = useState<IOpenAIApiSettingsType>({})
   const [loaded, setLoaded] = useState(false)
+  const once = useRef(true)
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
   const debounceEnqueueSnackbar = useCallback(
@@ -53,6 +54,10 @@ const ChatGPTApiSettings: FC = () => {
   useEffect(() => {
     if (loaded) {
       setOpenAIApiSettings(settings).then(() => {
+        if (once.current) {
+          once.current = false
+          return
+        }
         debounceEnqueueSnackbar('Settings updated', {
           variant: 'success',
           autoHideDuration: 1000,
@@ -68,6 +73,7 @@ const ChatGPTApiSettings: FC = () => {
         color={'text.primary'}
         id={'chatgpt-api-settings'}
         mb={1}
+        component={'h2'}
       >
         ChatGPT API key
       </Typography>

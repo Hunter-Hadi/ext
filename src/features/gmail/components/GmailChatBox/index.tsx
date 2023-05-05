@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import CircularProgress from '@mui/material/CircularProgress'
+// import CircularProgress from '@mui/material/CircularProgress'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -9,14 +9,11 @@ import { SxProps } from '@mui/material/styles'
 import CachedIcon from '@mui/icons-material/Cached'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
-import SendIcon from '@mui/icons-material/Send'
+// import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
-import { numberWithCommas } from '@/utils'
-import { useRecoilValue } from 'recoil'
-import {
-  ChatGPTConversationState,
-  InboxEditState,
-} from '@/features/gmail/store'
+// import { numberWithCommas } from '@/utils'
+// import { useRecoilValue } from 'recoil'
+// import { ChatGPTConversationState } from '@/features/gmail/store'
 import {
   APP_USE_CHAT_GPT_HOST,
   CHAT_GPT_PROVIDER,
@@ -26,8 +23,8 @@ import {
 import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
-import DevContent from '@/components/DevContent'
-import { TestAllActionsButton } from '@/features/shortcuts'
+// import DevContent from '@/components/DevContent'
+// import { TestAllActionsButton } from '@/features/shortcuts'
 import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
@@ -35,9 +32,11 @@ import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevText
 import { IChatMessage } from '@/features/chatgpt/types'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/ChatGPTPluginsSelector'
+import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
+// import { getMediator } from '@/store/mediator'
 
-const MAX_NORMAL_INPUT_LENGTH = 10000
-const MAX_GPT4_INPUT_LENGTH = 80000
+// const MAX_NORMAL_INPUT_LENGTH = 10000
+// const MAX_GPT4_INPUT_LENGTH = 80000
 
 interface IGmailChatBoxProps {
   sx?: SxProps
@@ -55,7 +54,6 @@ interface IGmailChatBoxProps {
   messages: IChatMessage[]
   writingMessage: IChatMessage | null
   onSendMessage?: (text: string) => void
-  defaultValue?: string
   onRetry?: (messageId: string) => void
   loading?: boolean
 }
@@ -74,7 +72,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onStopGenerate,
     onSendMessage,
     // title = 'Chat',
-    defaultValue = '',
     writingMessage,
     messages,
     onRetry,
@@ -82,22 +79,20 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     loading,
   } = props
   const { provider } = useChatGPTProvider()
-  const conversation = useRecoilValue(ChatGPTConversationState)
-  const { step } = useRecoilValue(InboxEditState)
+  // const conversation = useRecoilValue(ChatGPTConversationState)
   const stackRef = useRef<HTMLElement | null>(null)
-  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
-  const [inputValue, setInputValue] = useState(defaultValue || '')
+  // const [inputValue, setInputValue] = useState('')
   // 为了在消息更新前计算滚动高度
-  const currentMaxInputLength = useMemo(() => {
-    // NOTE: GPT-4 最大输入长度为 80000，GPT-3 最大输入长度为 10000, 我们后端最多6000，所以这里写死4000
-    return 4000
-    return conversation.model === 'gpt-4'
-      ? MAX_GPT4_INPUT_LENGTH
-      : MAX_NORMAL_INPUT_LENGTH
-  }, [conversation.model])
-  const isGmailChatBoxError = useMemo(() => {
-    return inputValue.length > currentMaxInputLength
-  }, [inputValue, currentMaxInputLength])
+  // const currentMaxInputLength = useMemo(() => {
+  //   // NOTE: GPT-4 最大输入长度为 80000，GPT-3 最大输入长度为 10000, 我们后端最多6000，所以这里写死4000
+  //   return 4000
+  //   return conversation.model === 'gpt-4'
+  //     ? MAX_GPT4_INPUT_LENGTH
+  //     : MAX_NORMAL_INPUT_LENGTH
+  // }, [conversation.model])
+  // const isGmailChatBoxError = useMemo(() => {
+  //   return inputValue.length > currentMaxInputLength
+  // }, [inputValue, currentMaxInputLength])
   const scrolledToBottomRef = useRef(true)
   useEffect(() => {
     const list = stackRef.current
@@ -170,9 +165,11 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     return () => window.removeEventListener('focus', focusListener)
   }, [])
   useEffect(() => {
-    console.log('default update', step)
-    setInputValue(defaultValue)
-  }, [defaultValue, step])
+    // getMediator('chatBoxInputMediator').subscribe(setInputValue)
+    return () => {
+      // getMediator('chatBoxInputMediator').unsubscribe(setInputValue)
+    }
+  }, [])
   return (
     <Stack
       position={'relative'}
@@ -348,7 +345,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     disabled={loading}
                     onClick={() => {
                       onReset && onReset()
-                      setInputValue('')
                     }}
                   >
                     <CleanChatBoxIcon
@@ -365,7 +361,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     disabled={loading}
                     onClick={() => {
                       onReGenerate && onReGenerate()
-                      setInputValue('')
                     }}
                   >
                     Regenerate
@@ -389,66 +384,12 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           </Box>
           <AutoHeightTextarea
             stopPropagation
-            textareaRef={textareaRef}
-            error={isGmailChatBoxError && !loading}
             loading={loading}
-            defaultValue={inputValue}
-            onChange={setInputValue}
             onEnter={(value) => {
               onSendMessage && onSendMessage(value)
-              setInputValue('')
             }}
-            childrenHeight={45}
           >
-            <Stack
-              p={1}
-              direction={'row'}
-              alignItems={'center'}
-              spacing={1}
-              width={'100%'}
-            >
-              <Typography
-                component={'span'}
-                color={
-                  isGmailChatBoxError ? 'rgb(239, 83, 80)' : 'text.secondary'
-                }
-                fontSize={12}
-                // 用等宽字体，不然会左右闪烁宽度
-                fontFamily={
-                  'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'
-                }
-              >
-                {loading ? 0 : numberWithCommas(inputValue.length, 0)}/
-                {numberWithCommas(currentMaxInputLength, 0)}
-              </Typography>
-              <Box
-                component={'div'}
-                display={'flex'}
-                width={0}
-                flex={1}
-                alignItems={'center'}
-                justifyContent={'end'}
-                gap={1}
-              >
-                <DevContent>
-                  <TestAllActionsButton />
-                </DevContent>
-                <Button
-                  disableElevation
-                  variant={'contained'}
-                  disabled={loading}
-                  startIcon={
-                    loading ? <CircularProgress size={16} /> : <SendIcon />
-                  }
-                  onClick={() => {
-                    onSendMessage && onSendMessage(inputValue)
-                    setInputValue('')
-                  }}
-                >
-                  {loading ? 'Generating' : 'Generate'}
-                </Button>
-              </Box>
-            </Stack>
+            <GmailChatBoxInputActions onSendMessage={onSendMessage} />
           </AutoHeightTextarea>
         </Stack>
         <Stack

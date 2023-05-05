@@ -1,4 +1,11 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import Box from '@mui/material/Box'
 import Skeleton from '@mui/material/Skeleton'
 import { SxProps } from '@mui/material/styles'
@@ -9,11 +16,9 @@ import {
   getFloatingContextMenuActiveElement,
 } from '@/utils'
 import { AppState } from '@/store'
-import {
-  ROOT_CHAT_BOX_INPUT_ID,
-  ROOT_CONTAINER_ID,
-  ROOT_FLOATING_INPUT_ID,
-} from '@/types'
+import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/types'
+import { getMediator } from '@/store/mediator'
+import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 
 const MAX_LINE = () => {
@@ -118,7 +123,6 @@ const afterAutoFocusWithAllWebsite = (textareaElement: HTMLTextAreaElement) => {
 }
 
 const AutoHeightTextarea: FC<{
-  textareaRef: React.RefObject<HTMLTextAreaElement>
   loading?: boolean
   error?: boolean
   defaultValue?: string
@@ -126,7 +130,6 @@ const AutoHeightTextarea: FC<{
   onEnter?: (value: string) => void
   onKeydown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
   children?: React.ReactNode
-  childrenHeight?: number
   sx?: SxProps
   InputId?: string
   stopPropagation?: boolean
@@ -142,55 +145,88 @@ const AutoHeightTextarea: FC<{
     onKeydown,
     loading,
     children,
-    childrenHeight = 0,
     error = false,
-    textareaRef,
     InputId = ROOT_CHAT_BOX_INPUT_ID,
     stopPropagation = true,
     placeholder = 'Ask ChatGPT...',
     sx,
   } = props
-  // const textareaRef = useRef<null | HTMLTextAreaElement>(null)
+  const textareaRef = useRef<null | HTMLTextAreaElement>(null)
+  const onCompositionRef = useRef(false)
   const [inputValue, setInputValue] = useState(defaultValue || '')
-
+  const childrenHeightRef = useRef(0)
+  const childrenRef = useRef<HTMLDivElement>(null)
   const throttleAutoSizeTextarea = useMemo(
     () => throttle(autoSizeTextarea, 200),
     [],
   )
+  const isError = useMemo(() => {
+    return inputValue.length > 4000
+  }, [inputValue])
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const value = e.target.value
+      if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
+        getMediator('chatBoxInputMediator').updateInputValue(value)
+      } else if (InputId === ROOT_FLOATING_INPUT_ID) {
+        getMediator('floatingMenuInputMediator').updateInputValue(value)
+      } else {
+        setInputValue(value)
+      }
+      if (onChange) {
+        onChange(value)
+      }
+    },
+    [onChange],
+  )
   useEffect(() => {
-    setInputValue(defaultValue || '')
-    setTimeout(() => {
-      if (textareaRef.current) {
-        if (
-          textareaRef.current?.isSameNode(getAppActiveElement()) ||
-          textareaRef.current?.isSameNode(getFloatingContextMenuActiveElement())
-        ) {
-          throttleAutoSizeTextarea(textareaRef.current, childrenHeight)
-        } else {
-          const isOpenApp =
-            document
-              .querySelector(`#${ROOT_CONTAINER_ID}`)
-              ?.classList.contains('open') || false
-          isOpenApp &&
-            InputId === ROOT_CHAT_BOX_INPUT_ID &&
-            focusTextareaAndAutoSize(
-              textareaRef.current,
-              childrenHeight,
-              'defaultValue, textareaRef' + InputId,
-            )
+    if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
+      const handleInputUpdate = (newInputValue: string) => {
+        setInputValue(newInputValue)
+      }
+      getMediator('chatBoxInputMediator').subscribe(handleInputUpdate)
+      return () => {
+        getMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
+      }
+    }
+    if (InputId === ROOT_FLOATING_INPUT_ID) {
+      const handleInputUpdate = (newInputValue: string) => {
+        setInputValue(newInputValue)
+      }
+      getMediator('floatingMenuInputMediator').subscribe(handleInputUpdate)
+      return () => {
+        getMediator('floatingMenuInputMediator').unsubscribe(handleInputUpdate)
+      }
+    }
+    return () => {
+      // do nothing
+    }
+  }, [])
+  // 更新input高度
+  useEffect(() => {
+    if (textareaRef.current) {
+      throttleAutoSizeTextarea(textareaRef.current, childrenHeightRef.current)
+    }
+  }, [inputValue])
+  // 计算children的高度
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        console.log('Child size:', entry.contentRect)
+        childrenHeightRef.current = entry.contentRect.height || 0
+        if (textareaRef.current) {
+          throttleAutoSizeTextarea(
+            textareaRef.current,
+            entry.contentRect.height,
+          )
         }
       }
-    }, 100)
-  }, [defaultValue])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (textareaRef.current) {
-        throttleAutoSizeTextarea(textareaRef.current, childrenHeight)
-      }
-    }, 1000)
+    })
+    if (childrenRef.current) {
+      observer.observe(childrenRef.current)
+    }
     return () => {
-      clearInterval(timer)
+      observer.disconnect()
     }
   }, [])
   // 浮动dropdown chat input
@@ -201,7 +237,7 @@ const AutoHeightTextarea: FC<{
       InputId === ROOT_FLOATING_INPUT_ID
     ) {
       console.log('focusTextareaAndAutoSize 浮动dropdown chat input', InputId)
-      autoFocusWithAllWebsite(textareaRef.current, childrenHeight)
+      autoFocusWithAllWebsite(textareaRef.current, childrenHeightRef.current)
     }
   }, [floatingDropdownMenu.open])
   // 侧边栏chat input
@@ -212,24 +248,18 @@ const AutoHeightTextarea: FC<{
       InputId === ROOT_CHAT_BOX_INPUT_ID
     ) {
       console.log('focusTextareaAndAutoSize 侧边栏chat input', InputId)
-      autoFocusWithAllWebsite(textareaRef.current, childrenHeight)
+      autoFocusWithAllWebsite(textareaRef.current, childrenHeightRef.current)
     }
   }, [appState.open, loading])
-  useEffect(() => {
-    // 结束loading后清空input
-    if (!loading) {
-      if (textareaRef.current?.value) {
-        setInputValue('')
-      }
-    }
-  }, [loading])
   return (
     <Box
       component={'div'}
       className={loading ? 'chat-box__input--loading' : ''}
       borderRadius={'8px'}
       border={`1px solid`}
-      borderColor={`${error ? 'rgb(239, 83, 80)' : 'customColor.borderColor'}`}
+      borderColor={`${
+        isError || error ? 'rgb(239, 83, 80)' : 'customColor.borderColor'
+      }`}
       width={'100%'}
       minHeight={34}
       sx={{
@@ -340,6 +370,9 @@ const AutoHeightTextarea: FC<{
           if (stopPropagation) {
             event.stopPropagation()
           }
+          if (onCompositionRef.current) {
+            return
+          }
           // detect shift enter
           if (event.key === 'Enter' && event.shiftKey) {
             console.log('shift enter')
@@ -353,23 +386,35 @@ const AutoHeightTextarea: FC<{
           onKeydown && onKeydown(event)
         }}
         onClick={(event) => {
-          autoFocusWithAllWebsite(event.currentTarget, childrenHeight)
-        }}
-        onInput={(event) => {
-          console.log(
-            'onInput!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
-            event.currentTarget.value,
+          autoFocusWithAllWebsite(
+            event.currentTarget,
+            childrenHeightRef.current,
           )
-          setInputValue(event.currentTarget.value)
-          onChange && onChange(event.currentTarget.value)
-          throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
         }}
+        onCompositionStart={(event) => {
+          if (stopPropagation) {
+            event.stopPropagation()
+          }
+          onCompositionRef.current = true
+        }}
+        onCompositionEnd={(event) => {
+          if (stopPropagation) {
+            event.stopPropagation()
+          }
+          onCompositionRef.current = false
+        }}
+        onInput={handleChange}
         onBlur={(event) => {
-          throttleAutoSizeTextarea(event.currentTarget, childrenHeight)
+          throttleAutoSizeTextarea(
+            event.currentTarget,
+            childrenHeightRef.current,
+          )
           afterAutoFocusWithAllWebsite(event.currentTarget)
         }}
       />
-      {children}
+      <Stack ref={childrenRef} width={'100%'}>
+        {children}
+      </Stack>
     </Box>
   )
 }

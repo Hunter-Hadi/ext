@@ -70,11 +70,6 @@ export const ChatGPTMessageState = atom<IChatMessage[]>({
   ],
 })
 
-export const ChatGPTInputState = atom<string>({
-  key: 'ChatGPTInputState',
-  default: '',
-})
-
 export const ChatGPTConversationState = atom<{
   writingMessage: IChatMessage | null
   conversationId?: string

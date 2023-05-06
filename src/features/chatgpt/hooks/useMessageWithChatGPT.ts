@@ -345,7 +345,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         },
         {
           regenerate: true,
-          includeHistory: true,
+          includeHistory: lastUserMessage.extra.includeHistory || true,
         },
       )
     }

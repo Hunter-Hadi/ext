@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef, Suspense } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 // import CircularProgress from '@mui/material/CircularProgress'
@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/material/styles'
 import CachedIcon from '@mui/icons-material/Cached'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-import GmailChatBoxMessageItem from './GmailChatBoxMessageItem'
 // import SendIcon from '@mui/icons-material/Send'
 import BlockIcon from '@mui/icons-material/Block'
 // import { numberWithCommas } from '@/utils'
@@ -33,6 +32,7 @@ import { IChatMessage } from '@/features/chatgpt/types'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/ChatGPTPluginsSelector'
 import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
+import AppLoadingLayout from '@/components/AppLoadingLayout'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -57,6 +57,11 @@ interface IGmailChatBoxProps {
   onRetry?: (messageId: string) => void
   loading?: boolean
 }
+
+const GmailChatBoxMessageItem = React.lazy(
+  () =>
+    import('@/features/gmail/components/GmailChatBox/GmailChatBoxMessageItem'),
+)
 
 const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
@@ -264,36 +269,38 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           <DevTextSendControl />
         )}
         {provider === CHAT_GPT_PROVIDER.OPENAI && <ChatGPTPluginsSelector />}
-        {messages.map((message) => {
-          return (
+        <Suspense fallback={<AppLoadingLayout loading={true} size={16} />}>
+          {messages.map((message) => {
+            return (
+              <GmailChatBoxMessageItem
+                className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
+                insertAble={insertAble}
+                replaceAble={true}
+                message={message}
+                aiAvatar={aiAvatar}
+                editAble={editAble}
+                userAvatar={userAvatar}
+                key={message.messageId}
+                onSave={(value) => {
+                  onQuestionUpdate && onQuestionUpdate(message.messageId, value)
+                }}
+                onRetry={onRetry}
+                onCopy={onCopy}
+              />
+            )
+          })}
+          {writingMessage && (
             <GmailChatBoxMessageItem
-              className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-              insertAble={insertAble}
-              replaceAble={true}
-              message={message}
+              className={'use-chat-gpt-ai__writing-message-item'}
+              replaceAble={false}
+              insertAble={false}
+              message={writingMessage}
               aiAvatar={aiAvatar}
-              editAble={editAble}
+              editAble={false}
               userAvatar={userAvatar}
-              key={message.messageId}
-              onSave={(value) => {
-                onQuestionUpdate && onQuestionUpdate(message.messageId, value)
-              }}
-              onRetry={onRetry}
-              onCopy={onCopy}
             />
-          )
-        })}
-        {writingMessage && (
-          <GmailChatBoxMessageItem
-            className={'use-chat-gpt-ai__writing-message-item'}
-            replaceAble={false}
-            insertAble={false}
-            message={writingMessage}
-            aiAvatar={aiAvatar}
-            editAble={false}
-            userAvatar={userAvatar}
-          />
-        )}
+          )}
+        </Suspense>
       </Box>
       {/*// input height*/}
       <Box height={8} flexShrink={0} />

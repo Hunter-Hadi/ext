@@ -1,3 +1,5 @@
+import { isProduction } from '@/types'
+
 class Log {
   module: string
   constructor(modules: string) {
@@ -7,18 +9,22 @@ class Log {
       .join('')
   }
   info(...args: any[]): void {
+    if (isProduction) return
     const stack = this.getCallStack()
     console.log(`${this.module}`, ...args, '\n', stack)
   }
   error(...args: any[]): void {
+    if (isProduction) return
     const stack = this.getCallStack()
     console.error(`${this.module}`, ...args, '\n', stack)
   }
   warn(...args: any[]): void {
+    if (isProduction) return
     const stack = this.getCallStack()
     console.warn(`${this.module}`, ...args, '\n', stack)
   }
   debug(...args: any[]): void {
+    if (isProduction) return
     const stack = this.getCallStack()
     console.debug(`${this.module}`, ...args, '\n', stack)
   }

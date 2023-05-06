@@ -34,7 +34,6 @@ const UseChatGPTOptionsSettingPage = () => {
   const { shortCutKey } = useCommands()
   const { syncLocalToServer } = useSyncSettingsChecker()
   const updateChromeExtensionSettings = async (key: string, value: any) => {
-    debugger
     try {
       console.log(saving)
       setSaving(true)

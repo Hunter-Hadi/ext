@@ -12,7 +12,7 @@ export default function mergeRollupConfig(
   { plugins = [], input, output },
 ) {
   const replaceEnv = getReplaceEnv()
-  console.log(replaceEnv)
+  console.log(replaceEnv, isProduction)
   return {
     input,
     output,

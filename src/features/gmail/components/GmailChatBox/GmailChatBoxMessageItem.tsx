@@ -1,4 +1,11 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  FC,
+  Suspense,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import Alert from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
 import { Theme, SxProps } from '@mui/material/styles'
@@ -9,8 +16,10 @@ import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/types'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
-import CustomMarkdown from '@/components/CustomMarkdown'
 import { IChatMessage } from '@/features/chatgpt/types'
+import AppLoadingLayout from '@/components/AppLoadingLayout'
+
+const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const GmailChatBoxMessageItem: FC<{
   replaceAble?: boolean
@@ -220,9 +229,13 @@ const GmailChatBoxMessageItem: FC<{
                     : ''
                 }`}
               >
-                <CustomMarkdown>
-                  {defaultText.replace(/^\s+/, '')}
-                </CustomMarkdown>
+                <Suspense
+                  fallback={<AppLoadingLayout loading={true} size={16} />}
+                >
+                  <CustomMarkdown>
+                    {defaultText.replace(/^\s+/, '')}
+                  </CustomMarkdown>
+                </Suspense>
               </div>
             ) : (
               defaultText.replace(/^\s+/, '')

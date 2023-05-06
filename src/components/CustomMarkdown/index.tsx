@@ -1,12 +1,14 @@
 import Markdown from 'markdown-to-jsx'
-import React, { FC,createElement } from 'react'
+import React, { FC, Suspense, createElement, useMemo } from 'react'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
-import Highlight from 'react-highlight'
+import AppLoadingLayout from '../AppLoadingLayout'
+
+const Highlight = React.lazy(() => import('react-highlight'))
 
 const OverrideAnchor: FC<HTMLAnchorElement> = (props) => {
   if (props.href?.startsWith('key=')) {
@@ -122,7 +124,9 @@ const OverrideCode: FC<HTMLElement> = (props) => {
           </CopyTooltipIconButton>
         </Stack>
         <Box fontSize={14}>
-          <Highlight className={lang}>{children}</Highlight>
+          <Suspense fallback={<AppLoadingLayout loading={true} size={16} />}>
+            <Highlight className={lang}>{children}</Highlight>
+          </Suspense>
         </Box>
       </Stack>
     )
@@ -134,18 +138,21 @@ const OverrideCode: FC<HTMLElement> = (props) => {
 const CustomMarkdown: FC<{
   children: string
 }> = (props) => {
-  return (
-    <Markdown
-      options={{
-        overrides: {
-          a: OverrideAnchor,
-          // h1: OverrideH1,
-          code: OverrideCode,
-        },
-      }}
-    >
-      {props.children}
-    </Markdown>
+  return useMemo(
+    () => (
+      <Markdown
+        options={{
+          overrides: {
+            a: OverrideAnchor,
+            // h1: OverrideH1,
+            code: OverrideCode,
+          },
+        }}
+      >
+        {props.children}
+      </Markdown>
+    ),
+    [props.children],
   )
 }
 export default CustomMarkdown

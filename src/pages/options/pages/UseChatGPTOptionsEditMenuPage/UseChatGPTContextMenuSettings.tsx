@@ -118,12 +118,12 @@ const ContextMenuSettings: FC<{
   useEffect(() => {
     // NOTE: 2023-05-05之前: 恒定展开全部
     if (openIds.length === 0) {
-      // 展开第一个组
-      const firstGroupId = originalTreeData
+      // 展开第一层组
+      const firstDeepGroupIds = originalTreeData
         .filter((item) => item.data.type === 'group' && item.parent === rootId)
-        .find((item) => item.id)?.id
-      if (firstGroupId) {
-        setOpenIds([firstGroupId])
+        .map((item) => item.id)
+      if (firstDeepGroupIds.length > 0) {
+        setOpenIds(firstDeepGroupIds)
       }
     }
     return () => {

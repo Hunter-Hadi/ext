@@ -45,7 +45,7 @@ const App: FC<{
     init()
   })
   return (
-    <Stack minWidth={400} spacing={2}>
+    <Stack minWidth={400} spacing={2} p={1}>
       <Stack
         boxSizing={'border-box'}
         direction={'row'}

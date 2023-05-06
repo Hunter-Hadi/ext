@@ -79,7 +79,7 @@ const App: FC = () => {
               fontSize={20}
               fontWeight={800}
             >
-              {String(process.env.APP_NAME)}
+              Welcome to UseChatGPT.AI!
             </Typography>
           </Stack>
         </Link>
@@ -105,9 +105,6 @@ const App: FC = () => {
         </TooltipButton>
       </Stack>
       <Stack spacing={1}>
-        <Typography fontSize={18} fontWeight={600} color={'text.primary'}>
-          Welcome to UseChatGPT.AI!
-        </Typography>
         {isSpecialPage ? (
           <Typography fontSize={14} color={'text.primary'}>
             {`For security reasons, the extension only works on real websites. So
@@ -115,25 +112,28 @@ const App: FC = () => {
             Chrome Web Store pages.`}
           </Typography>
         ) : (
-          <Typography fontSize={14} color={'text.primary'}>
-            {`Refresh this page to activate the extension and the Cmd/Alt+J
-            shortcut on this page.`}
-          </Typography>
+          <>
+            <Typography fontSize={14} color={'text.primary'}>
+              {`Refresh this page to activate the extension on this page.`}
+            </Typography>
+            <Button
+              fullWidth
+              color={'primary'}
+              variant={'contained'}
+              startIcon={
+                <RefreshIcon sx={{ fontSize: 16, color: 'inherit' }} />
+              }
+              onClick={async () => {
+                if (currentTabId) {
+                  await Browser.tabs.reload(currentTabId)
+                  window.close()
+                }
+              }}
+            >
+              Refresh this page
+            </Button>
+          </>
         )}
-        <Button
-          fullWidth
-          color={'primary'}
-          variant={'contained'}
-          startIcon={<RefreshIcon sx={{ fontSize: 16, color: 'inherit' }} />}
-          onClick={async () => {
-            if (currentTabId) {
-              await Browser.tabs.reload(currentTabId)
-              window.close()
-            }
-          }}
-        >
-          Refresh this page
-        </Button>
       </Stack>
       <Stack>
         <Typography fontSize={14} color={'text.secondary'}>
@@ -160,7 +160,7 @@ const App: FC = () => {
               await chromeExtensionClientOpenPage({ key: 'shortcuts' })
             }}
           >
-            change shortcut
+            change the shortcut
           </Link>
           <span>{` anytime.`}</span>
         </Typography>

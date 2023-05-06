@@ -6,7 +6,7 @@ const i18nDir = path.join(__dirname, '../src/i18n/')
 
 const localesCreator = () => ({
   name: 'locales-creator',
-  writeBundle: () => {
+  generateBundle: () => {
     console.log('localesCreator!!!!')
     const localesDir = path.join(__dirname, '../dist/_locales')
     mkdirpSync(localesDir)

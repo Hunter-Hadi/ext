@@ -75,7 +75,7 @@ const ChatGPTApiSettings: FC = () => {
         mb={1}
         component={'h2'}
       >
-        ChatGPT API key
+        OpenAI API key
       </Typography>
 
       <CloseAlert icon={<></>} severity={'info'}>

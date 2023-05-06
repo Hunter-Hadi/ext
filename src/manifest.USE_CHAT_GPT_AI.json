@@ -29,7 +29,7 @@
     "https://*.openai.com/*"
   ],
   "options_ui": {
-    "page": "options.html",
+    "page": "pages/options/index.html",
     "open_in_tab": true
   },
   "permissions": ["tabs", "scripting", "storage", "management", "contextMenus"],

@@ -15,15 +15,24 @@ import {
   IContextMenuItem,
 } from '@/features/contextMenu'
 import { IContextMenuIconKey } from '@/features/contextMenu/components/ContextMenuIcon'
-import AceEditor from 'react-ace'
-import 'ace-builds/src-noconflict/mode-handlebars'
-import 'ace-builds/src-noconflict/theme-monokai'
-import langTools from 'ace-builds/src-noconflict/ext-language_tools'
 import TemplateTooltip from './TemplateTooltip'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+
+const AceEditor = React.lazy(() => {
+  return Promise.all([
+    import('react-ace'),
+    import('ace-builds/src-noconflict/ext-language_tools'),
+    import('ace-builds/src-noconflict/mode-handlebars'),
+    import('ace-builds/src-noconflict/theme-monokai'),
+  ]).then(([ace, langTools]) => {
+    langTools.setCompleters([staticWordCompleter])
+    return ace
+  })
+})
 
 const staticWordCompleter = {
   getCompletions(
@@ -45,7 +54,6 @@ const staticWordCompleter = {
     ])
   },
 }
-langTools.setCompleters([staticWordCompleter])
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsContextMenuKey
@@ -230,45 +238,47 @@ const ContextMenuEditForm: FC<{
                     }),
                   }}
                 >
-                  <AceEditor
-                    onFocus={() => {
-                      setFocusEditor(true)
-                    }}
-                    onBlur={() => {
-                      setFocusEditor(false)
-                    }}
-                    placeholder={`The prompt template for ChatGPT.
+                  <AppSuspenseLoadingLayout>
+                    <AceEditor
+                      onFocus={() => {
+                        setFocusEditor(true)
+                      }}
+                      onBlur={() => {
+                        setFocusEditor(false)
+                      }}
+                      placeholder={`The prompt template for ChatGPT.
 The template can include any number of the following variables:
 {{SELECTED_TEXT}}
 {{AI_OUTPUT_LANGUAGE}}
 {{CURRENT_WEBSITE_DOMAIN}}`}
-                    width={'100%'}
-                    height={'100%'}
-                    value={template}
-                    fontSize={14}
-                    showPrintMargin={false}
-                    showGutter={false}
-                    highlightActiveLine={false}
-                    mode={'handlebars'}
-                    theme={'textmate'}
-                    onChange={(value) => {
-                      setTemplate(value)
-                    }}
-                    name={'editor-with-chrome-extension'}
-                    editorProps={{
-                      $blockScrolling: true,
-                    }}
-                    setOptions={{
-                      wrap: true,
-                      enableBasicAutocompletion: true,
-                      enableLiveAutocompletion: true,
-                      enableSnippets: false,
-                      showLineNumbers: false,
-                      tabSize: 2,
-                    }}
-                    enableBasicAutocompletion
-                    enableLiveAutocompletion
-                  />
+                      width={'100%'}
+                      height={'100%'}
+                      value={template}
+                      fontSize={14}
+                      showPrintMargin={false}
+                      showGutter={false}
+                      highlightActiveLine={false}
+                      mode={'handlebars'}
+                      theme={'textmate'}
+                      onChange={(value) => {
+                        setTemplate(value)
+                      }}
+                      name={'editor-with-chrome-extension'}
+                      editorProps={{
+                        $blockScrolling: true,
+                      }}
+                      setOptions={{
+                        wrap: true,
+                        enableBasicAutocompletion: true,
+                        enableLiveAutocompletion: true,
+                        enableSnippets: false,
+                        showLineNumbers: false,
+                        tabSize: 2,
+                      }}
+                      enableBasicAutocompletion
+                      enableLiveAutocompletion
+                    />
+                  </AppSuspenseLoadingLayout>
                 </Box>
               </Box>
             )}

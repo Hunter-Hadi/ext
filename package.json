@@ -4,10 +4,8 @@
   "description": "",
   "author": "",
   "scripts": {
-    "crx": "rollup -c ./build/crx.rollup.config.js -w --app=usechatgpt",
-    "options": "rollup -c ./build/options.rollup.config.js -w --app=usechatgpt",
-    "start:usechatgpt": "pnpm run crx & pnpm run options",
-    "release:usechatgpt": "cross-env NODE_ENV=production rollup -c ./build/crx.rollup.config.js --app=usechatgpt && cross-env NODE_ENV=production rollup -c ./build/options.rollup.config.js --app=usechatgpt"
+    "usechatgpt": "rollup -c ./build/rollup.config.js -w --app=usechatgpt",
+    "release:usechatgpt": "cross-env NODE_ENV=production rollup -c ./build/rollup.config.js --app=usechatgpt"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",

@@ -34,6 +34,10 @@ const OptionsPageDirectory: React.FC<Props> = ({ containerId }) => {
               newActiveIndex = i
               break
             }
+            if (headingRect.top < 0 && i === headings.length - 1) {
+              newActiveIndex = i
+              break
+            }
           }
         }
         setActiveIndex(newActiveIndex)
@@ -55,7 +59,8 @@ const OptionsPageDirectory: React.FC<Props> = ({ containerId }) => {
           document.querySelectorAll(`#${containerId} h1, #${containerId} h2`),
         ).map((heading) => ({
           id: heading.id,
-          text: heading.textContent || '',
+          text:
+            heading.childNodes?.[0]?.textContent || heading.textContent || '',
         }))
         setHeadings(headings)
         times--
@@ -84,6 +89,10 @@ const OptionsPageDirectory: React.FC<Props> = ({ containerId }) => {
             to={headings[index].id}
             smooth={true}
             duration={500}
+            onClick={() => {
+              // set url hash
+              window.location.hash = headings[index].id
+            }}
           >
             <ListItemButton selected={activeIndex === index}>
               <ListItemText primary={heading.text} />

@@ -345,7 +345,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         },
         {
           regenerate: true,
-          includeHistory: lastUserMessage.extra.includeHistory || true,
+          includeHistory: Object.prototype.hasOwnProperty.call(
+            lastUserMessage.extra,
+            'includeHistory',
+          )
+            ? lastUserMessage.extra.includeHistory
+            : true,
         },
       )
     }

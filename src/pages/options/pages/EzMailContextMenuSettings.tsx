@@ -15,16 +15,16 @@ import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import { IContextMenuItem } from '@/features/contextMenu'
-import ContextMenuPlaceholder from './components/ContextMenuPlaceholder'
+import ContextMenuPlaceholder from '../components/ContextMenuPlaceholder'
 // import {
 //   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
 //   EZMAIL_REPLY_CTA_BUTTON_ID,
 // } from '@/types'
-import ContextMenuViewSource from './components/ContextMenuViewSource'
+import ContextMenuViewSource from '../components/ContextMenuViewSource'
 // import { IInboxMessageType } from '@/features/gmail'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
-} from './components/ContextMenuActionConfirmModal'
+} from '../components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 import {
@@ -32,12 +32,9 @@ import {
   IChromeExtensionSettingsContextMenuKey,
   setChromeExtensionSettings,
 } from '@/background/utils'
+import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 
 const rootId = 'root'
-
-const ContextMenuEditFormModal = React.lazy(
-  () => import('@/pages/options/components/ContextMenuEditFormModal'),
-)
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 

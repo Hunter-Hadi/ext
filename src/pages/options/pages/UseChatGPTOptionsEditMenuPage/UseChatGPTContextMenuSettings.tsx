@@ -43,11 +43,10 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import BulletList from '@/components/BulletList'
+import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 
 const rootId = 'root'
-const ContextMenuEditFormModal = React.lazy(
-  () => import('@/pages/options/components/ContextMenuEditFormModal'),
-)
+
 const saveTreeData = async (
   key: IChromeExtensionSettingsContextMenuKey,
   treeData: IContextMenuItem[],

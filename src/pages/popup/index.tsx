@@ -16,41 +16,36 @@ import Browser from 'webextension-polyfill'
 import Box from '@mui/material/Box'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { backgroundSendClientMessage } from '@/background/utils'
+import Alert from '@mui/material/Alert'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
-const App: FC = () => {
+const App: FC<{
+  isSpecialPage: boolean
+}> = (props) => {
+  const { isSpecialPage } = props
   const [shortCutKey, setShorCutKey] = useState('')
   const [currentTabId, setCurrentTabId] = useState<number | undefined>()
-  const [isSpecialPage, setIsSpecialPage] = useState(false)
-  useEffectOnce(() => {
-    async function init() {
-      const commands = (await Browser.commands.getAll()) || []
-      setShorCutKey(
-        commands.find((command) => command.name === '_execute_action')
-          ?.shortcut || 'unset',
-      )
-      const tabs = await Browser.tabs.query({
-        active: true,
-        currentWindow: true,
-      })
+  const init = async () => {
+    const commands = (await Browser.commands.getAll()) || []
+    setShorCutKey(
+      commands.find((command) => command.name === '_execute_action')
+        ?.shortcut || 'unset',
+    )
+    const tabs = await Browser.tabs.query({
+      active: true,
+      currentWindow: true,
+    })
 
-      if (tabs && tabs[0]) {
-        const url = tabs[0].url || 'chrome://'
-        if (
-          url.startsWith('chrome') ||
-          url.startsWith('https://chrome.google.com/webstore')
-        ) {
-          setIsSpecialPage(true)
-          return
-        }
-        setCurrentTabId(tabs[0].id)
-      }
+    if (tabs && tabs[0]) {
+      setCurrentTabId(tabs[0].id)
     }
+  }
+  useEffectOnce(() => {
     init()
   })
   return (
-    <Stack minWidth={400} spacing={1}>
+    <Stack minWidth={400} spacing={2}>
       <Stack
         boxSizing={'border-box'}
         direction={'row'}
@@ -104,37 +99,37 @@ const App: FC = () => {
           <SettingsOutlinedIcon sx={{ fontSize: 16, color: 'text.primary' }} />
         </TooltipButton>
       </Stack>
-      <Stack spacing={1}>
-        {isSpecialPage ? (
+      {isSpecialPage ? (
+        <Alert severity={'info'}>
           <Typography fontSize={14} color={'text.primary'}>
             {`For security reasons, the extension only works on real websites. So
             it won't work on new tabs without loaded websites, Chrome pages, or
             Chrome Web Store pages.`}
           </Typography>
-        ) : (
-          <>
-            <Typography fontSize={14} color={'text.primary'}>
-              {`Refresh this page to activate the extension on this page.`}
-            </Typography>
-            <Button
-              fullWidth
-              color={'primary'}
-              variant={'contained'}
-              startIcon={
-                <RefreshIcon sx={{ fontSize: 16, color: 'inherit' }} />
-              }
-              onClick={async () => {
-                if (currentTabId) {
-                  await Browser.tabs.reload(currentTabId)
-                  window.close()
-                }
-              }}
-            >
-              Refresh this page
-            </Button>
-          </>
-        )}
-      </Stack>
+        </Alert>
+      ) : (
+        <Alert severity={'info'}>
+          <Typography fontSize={14} color={'text.primary'}>
+            {`Refresh this page to activate the extension on this page.`}
+          </Typography>
+        </Alert>
+      )}
+      {!isSpecialPage && (
+        <Button
+          fullWidth
+          color={'primary'}
+          variant={'contained'}
+          startIcon={<RefreshIcon sx={{ fontSize: 16, color: 'inherit' }} />}
+          onClick={async () => {
+            if (currentTabId) {
+              await Browser.tabs.reload(currentTabId)
+              window.close()
+            }
+          }}
+        >
+          Refresh this page
+        </Button>
+      )}
       <Stack>
         <Typography fontSize={14} color={'text.secondary'}>
           <span>{`Press `}</span>
@@ -175,9 +170,16 @@ const init = async () => {
     active: true,
     currentWindow: true,
   })
+
   setTimeout(async () => {
+    let isSpecialPage = false
     try {
       const tabId = currentTab && currentTab[0] && currentTab[0].id
+      const tabUrl =
+        (currentTab && currentTab[0] && currentTab[0].url) || 'chrome://'
+      isSpecialPage =
+        tabUrl.startsWith('chrome') ||
+        tabUrl.startsWith('https://chrome.google.com/webstore')
       if (tabId) {
         await Browser.tabs.sendMessage(tabId, {})
         const result = await backgroundSendClientMessage(
@@ -200,7 +202,7 @@ const init = async () => {
         <React.StrictMode>
           <RecoilRoot>
             <AppThemeProvider>
-              <App />
+              <App isSpecialPage={isSpecialPage} />
             </AppThemeProvider>
           </RecoilRoot>
         </React.StrictMode>,

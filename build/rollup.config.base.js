@@ -6,7 +6,6 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-ts'
 import terser from '@rollup/plugin-terser'
 import replace from '@rollup/plugin-replace'
-import json from '@rollup/plugin-json'
 import { env, getReplaceEnv } from './env'
 export default function mergeRollupConfig(
   isProduction,
@@ -36,7 +35,6 @@ export default function mergeRollupConfig(
         transpiler: 'babel',
         exclude: isProduction ? [] : ['node_modules/**/*.*'],
       }),
-      json(),
       isProduction &&
         terser({
           compress: {

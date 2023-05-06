@@ -91,7 +91,9 @@ const OptionsPageDirectory: React.FC<Props> = ({ containerId }) => {
             duration={500}
             onClick={() => {
               // set url hash
-              window.location.hash = headings[index].id
+              setTimeout(() => {
+                window.location.hash = headings[index].id
+              }, 500)
             }}
           >
             <ListItemButton selected={activeIndex === index}>

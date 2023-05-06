@@ -25,7 +25,7 @@ import {
   FloatingContextMenuMoreIconButton,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
-import { APP_ENV, APP_NAME, isProduction } from '@/types'
+import { APP_ENV, isProduction } from '@/types'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -183,7 +183,7 @@ const ClickContextMenuButton: FC<{
               }}
             />
           )}
-          {APP_NAME}
+          {APP_ENV === 'EZ_MAIL_AI' ? 'EzMail' : 'Use ChatGPT'}
           {shortCutKey && (
             <Typography
               component={'span'}

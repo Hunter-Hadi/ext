@@ -123,7 +123,7 @@ const OverrideCode: FC<HTMLElement> = (props) => {
             </span>
           </CopyTooltipIconButton>
         </Stack>
-        <Box fontSize={14}>
+        <Box fontSize={14} bgcolor="#000" color={'#fff'}>
           <Suspense fallback={<AppLoadingLayout loading={true} size={16} />}>
             <Highlight className={lang}>{children}</Highlight>
           </Suspense>

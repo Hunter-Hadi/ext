@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
 import AppLoadingLayout from '../AppLoadingLayout'
+import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
 
 const Highlight = React.lazy(() => import('react-highlight'))
 
@@ -38,49 +39,38 @@ const OverrideAnchor: FC<HTMLAnchorElement> = (props) => {
   )
 }
 // TODO: add more overrides
-// const OverrideH1: FC<HTMLHeadingElement> = (props) => {
-//   debugger
-//   return (
-//     <>
-//       {React.Children.map(props.children, (child) => {
-//         console.log(child)
-//         const html: string = child as any
-//         if (typeof child === 'string' && html[0] !== ' ') {
-//           // twitter tag
-//           // child: 'apple #apple #banana'
-//           const tags = html
-//             .split(' ')
-//             .map((item) => (item.startsWith('#') ? item : `#${item}`))
-//           return (
-//             <p>
-//               {tags.map((tag) => (
-//                 <Typography
-//                   key={tag}
-//                   variant={'body1'}
-//                   component={'span'}
-//                   color={'text.primary'}
-//                 >
-//                   {tag}{' '}
-//                 </Typography>
-//               ))}
-//             </p>
-//           )
-//         }
-//         return (
-//           <Typography
-//             component={'h1'}
-//             variant={'h1'}
-//             style={{
-//               color: 'text.primary',
-//             }}
-//           >
-//             {child as any}
-//           </Typography>
-//         )
-//       })}
-//     </>
-//   )
-// }
+type IHeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+const OverrideHeading: FC<HTMLHeadingElement & { heading: IHeadingType }> = (
+  props,
+) => {
+  // console.log('OverrideHeading props', props)
+  return (
+    <>
+      {React.Children.map(props.children, (child) => {
+        // console.log(child)
+        const html: string = child as any
+        if (isTagLabelListCheck(props.heading === 'h1' ? `#${html}` : html)) {
+          const tags = html
+            .split(' ')
+            .map((item) => (item.startsWith('#') ? item : `#${item}`))
+          return <TagLabelList tags={tags} />
+        }
+        return (
+          <Typography
+            component={props.heading}
+            variant={props.heading}
+            style={{
+              color: 'text.primary',
+            }}
+          >
+            {child as any}
+          </Typography>
+        )
+      })}
+    </>
+  )
+}
 
 const OverrideCode: FC<HTMLElement> = (props) => {
   console.log('OverrideCode props', props)
@@ -144,7 +134,12 @@ const CustomMarkdown: FC<{
         options={{
           overrides: {
             a: OverrideAnchor,
-            // h1: OverrideH1,
+            h1: (props) => <OverrideHeading heading="h1" {...props} />,
+            h2: (props) => <OverrideHeading heading="h2" {...props} />,
+            h3: (props) => <OverrideHeading heading="h3" {...props} />,
+            h4: (props) => <OverrideHeading heading="h4" {...props} />,
+            h5: (props) => <OverrideHeading heading="h5" {...props} />,
+            h6: (props) => <OverrideHeading heading="h6" {...props} />,
             code: OverrideCode,
           },
         }}

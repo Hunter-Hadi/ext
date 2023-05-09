@@ -7,6 +7,7 @@ import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 import { flip, offset, shift, size } from '@floating-ui/react'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { IVirtualIframeElement } from '@/iframe'
 export const checkIsCanInputElement = (
   element: HTMLElement,
   defaultMaxLoop = 10,
@@ -397,7 +398,19 @@ export const FloatingContextMenuMiddleware = [
     }
   }),
 ]
-export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
+
+export const computedIframeSelection = (
+  iframeElement: HTMLIFrameElement & { virtual?: boolean },
+) => {
+  if (iframeElement.virtual) {
+    const virtualElement: IVirtualIframeElement = iframeElement as any
+    return {
+      iframeSelectionText: virtualElement.iframeSelectionString,
+      iframeSelectionRect: virtualElement.iframeSelectionRect,
+      iframeSelectionHtml: virtualElement.iframeSelectionString,
+      iframeSelectionElement: '',
+    }
+  }
   const frame = iframeElement
   const frameWindow: any = frame && frame.contentWindow
   const frameDocument: any = frameWindow && frameWindow.document

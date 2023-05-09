@@ -12,8 +12,10 @@ import {
   computedIframeSelection,
 } from '@/features/contextMenu/utils'
 import { IRangyRect } from '@/features/contextMenu'
-import { CHROME_EXTENSION_POST_MESSAGE_ID, ROOT_CONTAINER_ID } from '@/types'
+import { ROOT_CONTAINER_ID } from '@/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import { listenIframeMessage } from '@/iframe'
+import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -156,8 +158,10 @@ const useInitRangy = () => {
                 iframeSelectionElement,
               ),
             })
-            showRangy()
-            return
+            if (selectionText.trim()) {
+              showRangy()
+              return
+            }
           }
         }
         console.log('[ContextMenu Module]: hideRangy')
@@ -244,49 +248,45 @@ const useInitRangy = () => {
     )
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
     // 和注入iframe的content script通信
-    const listenIframePostMessage = (event: MessageEvent) => {
-      if (event.data && event.data.id === CHROME_EXTENSION_POST_MESSAGE_ID) {
-        console.log('listenIframePostMessage', event.data)
-        if (event.data?.target?.iframeId) {
-          const iframeId = event.data.target.iframeId
-          const allIframes = Array.from(document.querySelectorAll('iframe'))
-          const targetIframe = allIframes.find((iframe) => {
-            if (
-              iframe.contentDocument?.documentElement.getAttribute(
-                'data-usechatgpt-iframe-id',
-              ) === iframeId
-            ) {
-              return true
-            }
-            return false
-          })
-          if (targetIframe) {
-            currentActiveWriteableElementRef.current = targetIframe
-            if (event.data?.type === 'mouseup') {
-              mouseUpListener({
-                target: currentActiveWriteableElementRef.current,
-                markerId: event.data?.target?.markerId,
-              } as any)
-            } else {
-              keyupListener({
-                target: currentActiveWriteableElementRef.current,
-                markerId: event.data?.target?.markerId,
-              } as any)
-            }
-          }
-        }
-      }
+    let clearListener: any = () => {
+      // nothing
     }
     if (rangy?.initialized) {
       console.log('init mouse event')
-      window.addEventListener('message', listenIframePostMessage)
       document.addEventListener('mouseup', mouseUpListener)
       document.addEventListener('keyup', keyupListener)
+      clearListener = listenIframeMessage((iframeSelectionData) => {
+        console.log(iframeSelectionData)
+        // Virtual Elements
+        const virtualTarget = {
+          virtual: true,
+          ...iframeSelectionData,
+          tagName: 'IFRAME',
+        } as any
+        currentActiveWriteableElementRef.current = virtualTarget
+        if (iframeSelectionData.eventType === 'mouseup') {
+          mouseUpListener({
+            target: currentActiveWriteableElementRef.current,
+          } as any)
+        } else {
+          keyupListener({
+            target: currentActiveWriteableElementRef.current,
+          } as any)
+        }
+        if (
+          iframeSelectionData.isEmbedPage &&
+          iframeSelectionData.iframeSelectionString &&
+          iframeSelectionData.tagName === 'BUTTON'
+        ) {
+          // try to run shortcuts
+          runEmbedShortCuts()
+        }
+      })
     }
     return () => {
       document.removeEventListener('mouseup', mouseUpListener)
       document.removeEventListener('keyup', keyupListener)
-      window.removeEventListener('message', listenIframePostMessage)
+      clearListener()
     }
   }, [rangy])
 }

@@ -32,9 +32,20 @@ const useChatGPTProvider = () => {
           }
         })
         const lastModified = dayjs().utc().valueOf()
-        await setChromeExtensionSettings({
-          chatGPTProvider: provider,
-          lastModified,
+        await setChromeExtensionSettings((settings) => {
+          if (settings.lastModified) {
+            // 说明已经登陆了，更新最后修改时间
+            return {
+              ...settings,
+              chatGPTProvider: provider,
+              lastModified,
+            }
+          } else {
+            return {
+              ...settings,
+              chatGPTProvider: provider,
+            }
+          }
         })
         await checkSync()
         await cleanChatGPT()

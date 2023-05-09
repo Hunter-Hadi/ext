@@ -1,6 +1,7 @@
 import { IContextMenuItem } from '@/features/contextMenu'
 import { useEffect, useState } from 'react'
 import {
+  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   EZMAIL_NEW_MAIL_GROUP_ID,
   EZMAIL_REPLY_CTA_BUTTON_ID,
@@ -54,23 +55,19 @@ export const getAppContextMenuElement = (): HTMLDivElement | null => {
 
 export const showChatBox = () => {
   const htmlElement = document.body.parentElement
-  const ezMailAiElement = document.getElementById(ROOT_CONTAINER_ID)
-  if (htmlElement && ezMailAiElement) {
-    const clientWidth =
-      window.innerWidth ||
-      document.documentElement.clientWidth ||
-      document.body.clientWidth
-    const ezMailAiElementWidth = Math.max(clientWidth * 0.25, 400)
-    htmlElement.style.transition = 'width .3s ease-inout'
-    htmlElement.style.width = `calc(100% - ${ezMailAiElementWidth}px)`
+  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  if (htmlElement && chatBoxElement) {
+    const chatBoxElementWidth =
+      chatBoxElement.offsetWidth ||
+      CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
+    htmlElement.style.transition = 'width .1s ease-inout'
+    htmlElement.style.width = `calc(100% - ${chatBoxElementWidth}px)`
     htmlElement.style.position = 'relative'
-
     if (location.hostname === 'outlook.live.com') {
       htmlElement.style.minHeight = '100vh'
     }
-
-    ezMailAiElement.classList.remove('close')
-    ezMailAiElement.classList.add('open')
+    chatBoxElement.classList.remove('close')
+    chatBoxElement.classList.add('open')
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
     }, 300)
@@ -83,25 +80,24 @@ export const showChatBox = () => {
 
 export const hideChatBox = () => {
   const htmlElement = document.body.parentElement
-  const ezMailAiElement = document.getElementById(ROOT_CONTAINER_ID)
-  if (htmlElement && ezMailAiElement) {
-    htmlElement.style.transition = 'width .3s ease-inout'
+  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  if (htmlElement && chatBoxElement) {
+    htmlElement.style.transition = 'width .1s ease-inout'
     htmlElement.style.width = '100%'
     htmlElement.style.position = ''
     if (location.hostname === 'outlook.live.com') {
       htmlElement.style.minHeight = ''
     }
-
-    ezMailAiElement.classList.remove('open')
-    ezMailAiElement.classList.add('close')
+    chatBoxElement.classList.remove('open')
+    chatBoxElement.classList.add('close')
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
     }, 300)
   }
 }
-export const ChatBoxIsOpen = () => {
-  const ezMailAiElement = document.getElementById(ROOT_CONTAINER_ID)
-  return ezMailAiElement?.classList.contains('open') || false
+export const isShowChatBox = () => {
+  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  return chatBoxElement?.classList.contains('open') || false
 }
 
 export const filteredTypeGmailToolBarContextMenu = (

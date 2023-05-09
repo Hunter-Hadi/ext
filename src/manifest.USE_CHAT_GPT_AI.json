@@ -23,6 +23,15 @@
       ],
       "js": ["check_status.ts"],
       "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "match_about_blank": true,
+      "all_frames": true,
+      "js": ["iframe.tsx"],
+      "run_at": "document_end"
     }
   ],
   "host_permissions": [

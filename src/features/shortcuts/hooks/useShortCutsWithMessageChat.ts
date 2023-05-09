@@ -7,7 +7,7 @@ import {
   useInboxComposeViews,
 } from '@/features/gmail/hooks'
 import { ISetActionsType } from '@/features/shortcuts/types'
-import { ChatBoxIsOpen, showChatBox } from '@/utils'
+import { isShowChatBox, showChatBox } from '@/utils'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ShortCutsState } from '@/features/shortcuts/store'
 import { ChatGPTConversationState } from '@/features/gmail/store'
@@ -35,7 +35,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     if (!shortCutsEngineRef.current) {
       return
     }
-    if (!ChatBoxIsOpen()) {
+    if (!isShowChatBox()) {
       showChatBox()
     }
     try {

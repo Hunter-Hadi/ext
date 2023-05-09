@@ -197,22 +197,25 @@ const initChromeExtensionAction = () => {
     const checkTabStatus = async (tab: Browser.Tabs.Tab) => {
       try {
         const currentTab = tab
-        if (currentTab && currentTab.id) {
-          await Browser.tabs.sendMessage(currentTab.id, {})
-          if (
-            currentTab?.url?.startsWith('chrome') ||
-            currentTab?.url?.startsWith('https://chrome.google.com/webstore')
-          ) {
-            await Browser.action.setPopup({
-              popup: 'pages/popup/index.html',
-            })
-          } else {
-            // 阻止默认的popup
-            await Browser.action.setPopup({
-              popup: '',
-            })
+        const currentTabUrl = currentTab?.url || ''
+        let popup = ''
+        // chrome相关的页面展示popup
+        if (
+          currentTab?.url?.startsWith('chrome') ||
+          currentTab?.url?.startsWith('https://chrome.google.com/webstore')
+        ) {
+          // NOTE: extensions shortcuts的设置页面不应该弹出来阻止用户设置快捷键
+          if (!currentTabUrl.startsWith('chrome://extensions/shortcuts')) {
+            popup = 'pages/popup/index.html'
           }
+        } else if (currentTab && currentTab.id) {
+          await Browser.tabs.sendMessage(currentTab.id, {})
+          // 能和网页通信, 阻止默认的popup
+          popup = ''
         }
+        await Browser.action.setPopup({
+          popup,
+        })
       } catch (e) {
         console.error(e)
         await Browser.action.setPopup({
@@ -233,6 +236,9 @@ const initChromeExtensionAction = () => {
     })
     Browser.action.onClicked.addListener(async (tab) => {
       if (tab && tab.id && tab.active) {
+        if (tab.url === 'chrome://extensions/shortcuts') {
+          return
+        }
         const result = await backgroundSendClientMessage(
           tab.id,
           'Client_listenOpenChatMessageBox',

@@ -6,7 +6,7 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect, useRef } from 'react'
 import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background/app'
-import { ChatBoxIsOpen, hideChatBox, showChatBox } from '@/utils'
+import { isShowChatBox, hideChatBox, showChatBox } from '@/utils'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 import { AppSettingsState, AppState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -66,7 +66,7 @@ const useInitChatGPTClient = () => {
           }
           // 如果浮动菜单显示，则不处理
           if (!isShowFloatingContextMenu) {
-            if (ChatBoxIsOpen()) {
+            if (isShowChatBox()) {
               hideChatBox()
               setAppState((prevState) => {
                 return {

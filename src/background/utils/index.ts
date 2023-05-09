@@ -7,6 +7,7 @@ import {
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
   CHROME_EXTENSION_POST_MESSAGE_ID,
+  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/types'
 import {
@@ -93,6 +94,7 @@ export interface IChromeExtensionSettings {
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
   userSettings?: {
+    chatBoxWidth?: number
     colorSchema?: 'light' | 'dark'
     language?: string
     selectionButtonVisible?: boolean
@@ -121,6 +123,7 @@ export const getChromeExtensionSettings =
       contextMenus: defaultContextMenuJson,
       gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
       userSettings: {
+        chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
         chatGPTStableModeDuration: 30,
         colorSchema: undefined,
         language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,

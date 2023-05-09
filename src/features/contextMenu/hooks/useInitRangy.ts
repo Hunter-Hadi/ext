@@ -12,7 +12,7 @@ import {
   computedIframeSelection,
 } from '@/features/contextMenu/utils'
 import { IRangyRect } from '@/features/contextMenu'
-import { ROOT_CONTAINER_ID } from '@/types'
+import { CHROME_EXTENSION_POST_MESSAGE_ID, ROOT_CONTAINER_ID } from '@/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
 
 initRangyPosition(rangyLib)
@@ -186,7 +186,6 @@ const useInitRangy = () => {
             '[ContextMenu Module]: remove writeable element listener',
             currentActiveWriteableElementRef.current,
           )
-          // TODO: iframe适配要独立成tab注入的content_script
           if (currentActiveWriteableElementRef.current?.tagName === 'IFRAME') {
             const iframeTarget =
               currentActiveWriteableElementRef.current as HTMLIFrameElement
@@ -211,7 +210,6 @@ const useInitRangy = () => {
           '[ContextMenu Module]: bind writeable element listener',
           target,
         )
-        // TODO: iframe适配要独立成tab注入的content_script
         if (isIframeTarget) {
           const iframeTarget = target as HTMLIFrameElement
           iframeTarget.contentDocument?.body.addEventListener(
@@ -232,6 +230,7 @@ const useInitRangy = () => {
         currentActiveWriteableElementRef.current = null
       }
     }
+
     document.addEventListener('mousedown', mouseDownListener)
     return () => {
       document.removeEventListener('mousedown', mouseDownListener)
@@ -244,14 +243,50 @@ const useInitRangy = () => {
       200,
     )
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
+    // 和注入iframe的content script通信
+    const listenIframePostMessage = (event: MessageEvent) => {
+      if (event.data && event.data.id === CHROME_EXTENSION_POST_MESSAGE_ID) {
+        console.log('listenIframePostMessage', event.data)
+        if (event.data?.target?.iframeId) {
+          const iframeId = event.data.target.iframeId
+          const allIframes = Array.from(document.querySelectorAll('iframe'))
+          const targetIframe = allIframes.find((iframe) => {
+            if (
+              iframe.contentDocument?.documentElement.getAttribute(
+                'data-usechatgpt-iframe-id',
+              ) === iframeId
+            ) {
+              return true
+            }
+            return false
+          })
+          if (targetIframe) {
+            currentActiveWriteableElementRef.current = targetIframe
+            if (event.data?.type === 'mouseup') {
+              mouseUpListener({
+                target: currentActiveWriteableElementRef.current,
+                markerId: event.data?.target?.markerId,
+              } as any)
+            } else {
+              keyupListener({
+                target: currentActiveWriteableElementRef.current,
+                markerId: event.data?.target?.markerId,
+              } as any)
+            }
+          }
+        }
+      }
+    }
     if (rangy?.initialized) {
       console.log('init mouse event')
+      window.addEventListener('message', listenIframePostMessage)
       document.addEventListener('mouseup', mouseUpListener)
       document.addEventListener('keyup', keyupListener)
     }
     return () => {
       document.removeEventListener('mouseup', mouseUpListener)
       document.removeEventListener('keyup', keyupListener)
+      window.removeEventListener('message', listenIframePostMessage)
     }
   }, [rangy])
 }

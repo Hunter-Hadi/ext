@@ -359,7 +359,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     />
                   </TooltipButton>
                 </Box>
-                {!isEzMailApp && <FloatingContextMenuButton />}
+                {!isEzMailApp && (
+                  <FloatingContextMenuButton buttonText={'Use Prompt'} />
+                )}
                 {reGenerateAble && (
                   <Button
                     disableElevation

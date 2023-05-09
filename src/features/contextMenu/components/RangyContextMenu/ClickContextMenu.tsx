@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import React, { FC, useEffect, useMemo } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
@@ -183,20 +182,7 @@ const ClickContextMenuButton: FC<{
               }}
             />
           )}
-          {APP_ENV === 'EZ_MAIL_AI' ? 'EzMail' : 'Use ChatGPT'}
-          {shortCutKey && (
-            <Typography
-              component={'span'}
-              sx={{
-                color: (t) =>
-                  t.palette.mode === 'dark' ? '#999' : 'rgba(55, 53, 47, 0.5)',
-                fontSize: '12px',
-                pl: 1,
-              }}
-            >
-              {shortCutKey}
-            </Typography>
-          )}
+          {shortCutKey || (APP_ENV === 'EZ_MAIL_AI' ? 'EzMail' : 'Use ChatGPT')}
         </Button>
         <FloatingContextMenuMoreIconButton showCloseButton={false} />
         <FloatingContextMenuCloseIconButton />

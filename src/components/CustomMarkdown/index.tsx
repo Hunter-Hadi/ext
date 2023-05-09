@@ -73,7 +73,6 @@ const OverrideHeading: FC<HTMLHeadingElement & { heading: IHeadingType }> = (
 }
 
 const OverrideCode: FC<HTMLElement> = (props) => {
-  console.log('OverrideCode props', props)
   const children = props.children as any
   if (typeof children === 'string' && children.includes('\n')) {
     const lang = props.className?.replace('lang-', '') || 'code'

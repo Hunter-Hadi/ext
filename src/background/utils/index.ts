@@ -110,6 +110,16 @@ export type IChromeExtensionSettingsContextMenuKey =
   | 'contextMenus'
   | 'gmailToolBarContextMenu'
 
+export const FILTER_SAVE_KEYS = [
+  'currentModel',
+  'currentPlugins',
+  'plugins',
+  'conversationId',
+  'chatGPTProvider',
+  'commands',
+  'models',
+] as Array<keyof IChromeExtensionSettings>
+
 export const getChromeExtensionSettings =
   async (): Promise<IChromeExtensionSettings> => {
     const defaultConfig = {

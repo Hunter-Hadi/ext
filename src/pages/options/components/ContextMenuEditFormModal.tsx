@@ -22,6 +22,44 @@ import TooltipIconButton from '@/components/TooltipIconButton'
 import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
+function replaceString(str: string, startIndex = 0) {
+  const matches = templateStaticWords
+  let offset = -1
+  let match = ''
+  for (let i = 0; i < matches.length; i++) {
+    const index = str.slice(startIndex).indexOf(matches[i])
+    if (index > -1 && (index < offset || offset === -1)) {
+      match = matches[i]
+      offset = index
+    }
+  }
+  console.log(offset)
+  if (offset === -1) {
+    return { text: str, p: startIndex, end: true }
+  }
+  let start = offset + startIndex
+  let end = start + match.length
+  while (start > startIndex && str[start - 1] === '{') {
+    start--
+  }
+  while (end < str.length && str[end] === '}') {
+    end++
+  }
+  console.log(start, end)
+  return {
+    text: str.slice(0, start) + `{{${match}}}` + str.slice(end),
+    p: end - (end - start - match.length - 4),
+  }
+}
+function processReplaceString(origin: string) {
+  let p = 0
+  let res = replaceString(origin, p)
+  while (!res.end) {
+    p = res.p
+    res = replaceString(res.text, p)
+  }
+  return res.text
+}
 const AceEditor = React.lazy(() => {
   return Promise.all([
     import('react-ace'),
@@ -309,7 +347,12 @@ The template can include any number of the following variables:
               disabled={isDisabledSave}
               variant={'contained'}
               onClick={() => {
-                onSave && onSave(editNode, template, autoAskChatGPT)
+                onSave &&
+                  onSave(
+                    editNode,
+                    processReplaceString(template),
+                    autoAskChatGPT,
+                  )
               }}
             >
               Save

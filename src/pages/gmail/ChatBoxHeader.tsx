@@ -107,7 +107,7 @@ const ChatBoxHeader: FC = () => {
                 chromeExtensionClientOpenPage({ key: 'shortcuts' })
               }}
             >
-              Shortcut: {shortCutKey || 'Set up shortcut'}
+              {shortCutKey ? `Shortcut: ${shortCutKey}` : `Set up shortcut`}
             </Link>
           </Typography>
         )}

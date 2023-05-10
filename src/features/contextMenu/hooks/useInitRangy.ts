@@ -11,11 +11,12 @@ import {
   checkIsCanInputElement,
   computedIframeSelection,
 } from '@/features/contextMenu/utils'
-import { IRangyRect } from '@/features/contextMenu'
+import { FloatingDropdownMenuState, IRangyRect } from '@/features/contextMenu'
 import { ROOT_CONTAINER_ID } from '@/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { listenIframeMessage } from '@/iframe'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
+import { useSetRecoilState } from 'recoil'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -23,6 +24,7 @@ initRangySaveRestore(rangyLib)
 const useInitRangy = () => {
   const { initRangyCore, rangy, showRangy, hideRangy, saveTempSelection } =
     useRangy()
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   const currentActiveWriteableElementRef = useRef<HTMLElement | null>(null)
   // 初始化rangy npm 包
   useEffectOnce(() => {
@@ -280,6 +282,14 @@ const useInitRangy = () => {
         ) {
           // try to run shortcuts
           runEmbedShortCuts()
+        }
+        if (!iframeSelectionData.iframeSelectionString) {
+          setFloatingDropdownMenu((prev) => {
+            return {
+              ...prev,
+              open: false,
+            }
+          })
         }
       })
     }

@@ -65,6 +65,7 @@ const UseChatGPTOptionsSettingPage = () => {
           justifyContent={'center'}
           spacing={2}
           mx={'auto'}
+          pb={10}
         >
           <OptionsPageDirectory containerId={'optionsPageSettingsPage'} />
           <Stack

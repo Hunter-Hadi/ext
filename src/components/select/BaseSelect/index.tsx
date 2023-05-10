@@ -114,8 +114,11 @@ const BaseSelect: FC<IBaseSelectProps> = ({
           lineHeight: '40px',
           padding: '8px 12px',
           height: 40,
-          '& > .MuiSelect-select': {
+          '& > .use-chat-gpt-ai--MuiSelect-select': {
             padding: 0,
+            '& > div': {
+              margin: 0,
+            },
           },
           ...sx,
         }}

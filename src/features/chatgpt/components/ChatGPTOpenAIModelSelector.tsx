@@ -31,7 +31,7 @@ const ArrowDropDownIconCustom = () => {
   )
 }
 
-const ChatGPTModelsSelector: FC = () => {
+const ChatGPTOpenAIModelSelector: FC = () => {
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
@@ -275,4 +275,4 @@ const ChatGPTModelsSelector: FC = () => {
     </>
   )
 }
-export { ChatGPTModelsSelector }
+export { ChatGPTOpenAIModelSelector }

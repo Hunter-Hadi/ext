@@ -200,7 +200,7 @@ class OpenAiApiChat {
             onMessage &&
               onMessage({
                 type: 'error',
-                error: `${error?.message}\n[Change model](key=options&query=#chatgpt-api-settings)`,
+                error: `${error?.message}\nChange model at the top of the sidebar ☝️`,
                 done: true,
                 data: { text: '', conversationId },
               })

@@ -113,6 +113,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         answer: '',
       })
     }
+    setConversation((prevState) => {
+      return {
+        ...prevState,
+        loading: true,
+      }
+    })
     const postConversationId: string = await createConversation()
     log.info(
       `[ChatGPT Module] send question step 0, init ConversationId=[${postConversationId}]`,

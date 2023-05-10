@@ -6,7 +6,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-ts'
 import terser from '@rollup/plugin-terser'
 import replace from '@rollup/plugin-replace'
-import { env, getReplaceEnv } from './env'
+import { getReplaceEnv } from './env'
 export default function mergeRollupConfig(
   isProduction,
   { plugins = [], input, output },

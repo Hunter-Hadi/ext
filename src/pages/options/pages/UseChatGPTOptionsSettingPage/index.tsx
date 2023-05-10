@@ -79,7 +79,7 @@ const UseChatGPTOptionsSettingPage = () => {
             <HowToFindSettings />
             <YoutubePlayerBox
               borderRadius={8}
-              youtubeLink={'https://www.youtube.com/embed/p4NeMrslGg8'}
+              youtubeLink={'https://www.youtube.com/embed/geMZcwl3Lso'}
             />
             <ReferralInviteCard />
             <Divider sx={{ my: 4 }} />

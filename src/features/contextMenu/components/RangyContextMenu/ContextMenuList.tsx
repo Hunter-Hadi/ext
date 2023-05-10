@@ -232,13 +232,14 @@ const ContextMenuList: FC<{
           onClick={() => {
             chromeExtensionClientOpenPage({
               key: 'options',
+              query: '#custom-prompts',
             })
           }}
         >
           <Stack direction={'row'} alignItems={'center'} gap={1}>
             <SettingsOutlinedIcon sx={{ fontSize: 14 }} />
             <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
-              Edit options
+              Edit custom prompts
             </Typography>
           </Stack>
         </Item>

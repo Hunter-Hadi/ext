@@ -10,7 +10,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Chip from '@mui/material/Chip'
 
 import { CHAT_GPT_PROVIDER } from '@/types'
-import { ChatGPTModelsSelector } from '@/features/chatgpt/components/ChatGPTModelsSelector'
+import { ChatGPTOpenAIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIModelSelector'
 import { IChatGPTProviderType } from '@/background/provider/chat'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import { useRecoilValue } from 'recoil'
@@ -27,6 +27,7 @@ import {
 } from '@/components/CustomIcon'
 import BulletList from '@/components/BulletList'
 import TextIcon from '@/components/TextIcon'
+import { ChatGPTOpenAIAPIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -384,9 +385,9 @@ const ChatGPTAIProviderSelector: FC = () => {
         </Select>
       </FormControl>
       {provider === CHAT_GPT_PROVIDER.OPENAI &&
-        clientState.status === 'success' && <ChatGPTModelsSelector />}
-      {/* {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS &&
-        clientState.status === 'success' && <UseChatGPTAIQuotaLeft />} */}
+        clientState.status === 'success' && <ChatGPTOpenAIModelSelector />}
+      {provider === CHAT_GPT_PROVIDER.OPENAI_API &&
+        clientState.status === 'success' && <ChatGPTOpenAIAPIModelSelector />}
     </Stack>
   )
 }

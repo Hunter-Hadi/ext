@@ -13,12 +13,7 @@ import BlockIcon from '@mui/icons-material/Block'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/gmail/store'
-import {
-  APP_USE_CHAT_GPT_HOST,
-  CHAT_GPT_PROVIDER,
-  CHROME_EXTENSION_MAIL_TO,
-  isEzMailApp,
-} from '@/types'
+import { CHROME_EXTENSION_MAIL_TO, isEzMailApp } from '@/types'
 import { FloatingContextMenuButton } from '@/features/contextMenu'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
@@ -27,12 +22,10 @@ import TooltipButton from '@/components/TooltipButton'
 import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
-import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevTextSendControl'
 import { IChatMessage } from '@/features/chatgpt/types'
-import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
-import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/ChatGPTPluginsSelector'
 import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
+import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -83,7 +76,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
-  const { provider } = useChatGPTProvider()
   // const conversation = useRecoilValue(ChatGPTConversationState)
   const stackRef = useRef<HTMLElement | null>(null)
   // const [inputValue, setInputValue] = useState('')
@@ -217,58 +209,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTAIProviderSelector />
-        {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
-          <Link
-            width={'100%'}
-            href={APP_USE_CHAT_GPT_HOST + '/referral'}
-            target={'_blank'}
-            underline={'none'}
-          >
-            <Stack
-              spacing={1}
-              p={1}
-              mx={1}
-              my={2}
-              textAlign={'center'}
-              sx={{
-                alignItems: 'center',
-                borderRadius: '4px',
-                bgcolor: (t) =>
-                  t.palette.mode === 'dark'
-                    ? 'rgb(3,19,11)'
-                    : 'rgb(229,246,253)',
-              }}
-            >
-              <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
-                Get up to 24 weeks of Free AI!
-              </Typography>
-              <Typography fontSize={14} color={'text.primary'}>
-                {`Invite your friends to join UseChatGPT.AI! For anyone who signs up using your referral link and installs UseChatGPT.AI extension, we'll give you both 1 week of Free AI!`}
-              </Typography>
-              <img
-                src={`https://app.usechatgpt.ai/assets/images/referral/invite-your-friends-light.png`}
-                alt="invite your friends"
-                width={360}
-                height={98}
-              />
-              <Button
-                variant={'contained'}
-                color={'primary'}
-                sx={{
-                  fontSize: 16,
-                  fontWeight: 700,
-                }}
-                fullWidth
-              >
-                Invite your friends
-              </Button>
-            </Stack>
-          </Link>
-        )}
-        {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
-          <DevTextSendControl />
-        )}
-        {provider === CHAT_GPT_PROVIDER.OPENAI && <ChatGPTPluginsSelector />}
+        <GmailChatBoxProviderComponents />
         <Suspense fallback={<AppLoadingLayout loading={true} size={16} />}>
           {messages.map((message) => {
             return (
@@ -359,7 +300,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     />
                   </TooltipButton>
                 </Box>
-                {!isEzMailApp && <FloatingContextMenuButton />}
+                {!isEzMailApp && (
+                  <FloatingContextMenuButton buttonText={'Use Prompt'} />
+                )}
                 {reGenerateAble && (
                   <Button
                     disableElevation

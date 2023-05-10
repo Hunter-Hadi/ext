@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from 'react'
 import { useSnackbar } from 'notistack'
 import { get, post } from '@/utils/request'
 import {
+  FILTER_SAVE_KEYS,
   getChromeExtensionSettings,
   IChromeExtensionSettings,
   setChromeExtensionSettings,
@@ -49,7 +50,10 @@ const useSyncSettingsChecker = () => {
           if (serverSettings?.conversationId) {
             delete serverSettings.conversationId
           }
-          await setChromeExtensionSettings(serverSettings)
+          await setChromeExtensionSettings((settings) => ({
+            ...settings,
+            ...serverSettings,
+          }))
           // debounceEnqueueSnackbar('Settings updated', {
           //   variant: 'success',
           //   autoHideDuration: 1000,
@@ -89,10 +93,14 @@ const useSyncSettingsChecker = () => {
         //   variant: 'info',
         //   autoHideDuration: 1000,
         // })
+        const localSettings = await getChromeExtensionSettings()
+        FILTER_SAVE_KEYS.forEach((deleteKey) => {
+          delete localSettings[deleteKey]
+        })
         const result = await post<{
           status: 'OK' | 'ERROR'
         }>('/user/save_user_settings', {
-          settings: await getChromeExtensionSettings(),
+          settings: localSettings,
         })
         if (result?.status === 'OK') {
           debounceEnqueueSnackbar('Settings updated', {
@@ -154,7 +162,10 @@ const useSyncSettingsChecker = () => {
                 }
               } else {
                 console.log('本地没有自定义prompt, 同步服务器的设置到本地')
-                await setChromeExtensionSettings(serverSettings)
+                await setChromeExtensionSettings((settings) => ({
+                  ...settings,
+                  ...serverSettings,
+                }))
                 return {
                   success: true,
                   status: 'ok',
@@ -172,7 +183,10 @@ const useSyncSettingsChecker = () => {
             if (localLastModified < serverLastModified) {
               // 本地设置过期, 同步服务器的设置到本地
               console.log('本地设置过期, 同步服务器的设置到本地')
-              await setChromeExtensionSettings(serverSettings)
+              await setChromeExtensionSettings((settings) => ({
+                ...settings,
+                ...serverSettings,
+              }))
               return {
                 success: true,
                 status: 'ok',

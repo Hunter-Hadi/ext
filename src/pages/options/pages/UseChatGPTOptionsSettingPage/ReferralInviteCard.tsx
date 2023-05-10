@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
 
 const ReferralInviteCard: FC = () => {
+  return null
   return (
     <CloseAlert
       icon={<></>}

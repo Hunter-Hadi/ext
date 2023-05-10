@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -23,6 +23,15 @@
       ],
       "js": ["check_status.ts"],
       "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "match_about_blank": true,
+      "all_frames": true,
+      "js": ["iframe.tsx"],
+      "run_at": "document_end"
     }
   ],
   "host_permissions": [

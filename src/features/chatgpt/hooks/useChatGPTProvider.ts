@@ -4,13 +4,10 @@ import { IChatGPTProviderType } from '@/background/provider/chat'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { setChromeExtensionSettings } from '@/background/utils'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
-import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
-import dayjs from 'dayjs'
 import { useState } from 'react'
 
 const port = new ContentScriptConnectionV2()
 const useChatGPTProvider = () => {
-  const { checkSync } = useSyncSettingsChecker()
   const { cleanChatGPT } = useCleanChatGPT()
   const [loading, setLoading] = useState(false)
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
@@ -31,12 +28,9 @@ const useChatGPTProvider = () => {
             chatGPTProvider: provider,
           }
         })
-        const lastModified = dayjs().utc().valueOf()
         await setChromeExtensionSettings({
           chatGPTProvider: provider,
-          lastModified,
         })
-        await checkSync()
         await cleanChatGPT()
       }
     } catch (e) {

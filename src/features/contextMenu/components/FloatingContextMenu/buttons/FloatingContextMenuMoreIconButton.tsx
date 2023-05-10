@@ -72,10 +72,10 @@ const FloatingContextMenuMoreIconButton: FC<{
             onClick={() => {
               chromeExtensionClientOpenPage({
                 key: 'options',
-                query: '#edit-menu-options',
+                query: '#custom-prompts',
               })
             }}
-            label={'Edit options'}
+            label={'Edit custom prompts'}
             icon={'DefaultIcon'}
           />
           {showCloseButton && (

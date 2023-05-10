@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import Typography from '@mui/material/Typography'
-import Slider from '@mui/material/Slider'
 import Stack from '@mui/material/Stack'
 import Link from '@mui/material/Link'
 import TextField from '@mui/material/TextField'
@@ -19,13 +18,8 @@ import AppLoadingLayout from '@/components/AppLoadingLayout'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import BulletList from '@/components/BulletList'
-import { BaseSelect } from '@/components/select'
-import { OPENAI_API_MODELS } from '@/types'
-import { list2Options } from '@/utils/dataHelper/arrayHelper'
 import { useSnackbar } from 'notistack'
 import debounce from 'lodash-es/debounce'
-
-const models = list2Options(OPENAI_API_MODELS)
 
 const ChatGPTApiSettings: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
@@ -271,58 +265,58 @@ const ChatGPTApiSettings: FC = () => {
                 ),
               }}
             />
-            <BaseSelect
-              label={'Model'}
-              options={models}
-              value={settings.apiModel}
-              onChange={(value) => {
-                setSettings((prevState) => {
-                  return {
-                    ...prevState,
-                    apiModel: value as string,
-                  }
-                })
-              }}
-            />
-            <Stack>
-              <Typography fontSize={14} fontWeight={700}>
-                {`Temperature (conversation style): `}
-                {settings.temperature}
-              </Typography>
-              <Slider
-                marks={[
-                  {
-                    value: 0,
-                    label: 'Precise',
-                  },
-                  {
-                    value: 1,
-                    label: 'Balanced',
-                  },
-                  {
-                    value: 2,
-                    label: 'Creative',
-                  },
-                ]}
-                min={0}
-                max={2}
-                step={0.1}
-                value={settings.temperature}
-                onChange={(e, value) => {
-                  setSettings((prevState) => {
-                    return {
-                      ...prevState,
-                      temperature: value as number,
-                    }
-                  })
-                }}
-                sx={{
-                  width: 'calc(100% - 40px)',
-                  ml: 2,
-                  mr: 2,
-                }}
-              />
-            </Stack>
+            {/*<BaseSelect*/}
+            {/*  label={'Model'}*/}
+            {/*  options={models}*/}
+            {/*  value={settings.apiModel}*/}
+            {/*  onChange={(value) => {*/}
+            {/*    setSettings((prevState) => {*/}
+            {/*      return {*/}
+            {/*        ...prevState,*/}
+            {/*        apiModel: value as string,*/}
+            {/*      }*/}
+            {/*    })*/}
+            {/*  }}*/}
+            {/*/>*/}
+            {/*<Stack>*/}
+            {/*  <Typography fontSize={14} fontWeight={700}>*/}
+            {/*    {`Temperature (conversation style): `}*/}
+            {/*    {settings.temperature}*/}
+            {/*  </Typography>*/}
+            {/*  <Slider*/}
+            {/*    marks={[*/}
+            {/*      {*/}
+            {/*        value: 0,*/}
+            {/*        label: 'Precise',*/}
+            {/*      },*/}
+            {/*      {*/}
+            {/*        value: 1,*/}
+            {/*        label: 'Balanced',*/}
+            {/*      },*/}
+            {/*      {*/}
+            {/*        value: 2,*/}
+            {/*        label: 'Creative',*/}
+            {/*      },*/}
+            {/*    ]}*/}
+            {/*    min={0}*/}
+            {/*    max={2}*/}
+            {/*    step={0.1}*/}
+            {/*    value={settings.temperature}*/}
+            {/*    onChange={(e, value) => {*/}
+            {/*      setSettings((prevState) => {*/}
+            {/*        return {*/}
+            {/*          ...prevState,*/}
+            {/*          temperature: value as number,*/}
+            {/*        }*/}
+            {/*      })*/}
+            {/*    }}*/}
+            {/*    sx={{*/}
+            {/*      width: 'calc(100% - 40px)',*/}
+            {/*      ml: 2,*/}
+            {/*      mr: 2,*/}
+            {/*    }}*/}
+            {/*  />*/}
+            {/*</Stack>*/}
           </Stack>
         </Paper>
       </AppLoadingLayout>

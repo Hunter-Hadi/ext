@@ -9,8 +9,12 @@ import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuL
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { getAppRootElement } from '@/utils'
+import Button from '@mui/material/Button'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 
-const FloatingContextMenuButton: FC = () => {
+const FloatingContextMenuButton: FC<{
+  buttonText?: string
+}> = ({ buttonText }) => {
   const root = getAppRootElement()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [
@@ -81,6 +85,26 @@ const FloatingContextMenuButton: FC = () => {
   if (!root) {
     return null
   }
-  return <FloatingContextMenuList root={root} menuList={contextMenuList} />
+  return (
+    <FloatingContextMenuList
+      referenceElement={
+        <Button
+          startIcon={
+            <UseChatGptIcon
+              sx={{
+                fontSize: 16,
+                color: 'inherit',
+              }}
+            />
+          }
+          variant={'outlined'}
+        >
+          {buttonText || 'Use ChatGPT'}
+        </Button>
+      }
+      root={root}
+      menuList={contextMenuList}
+    />
+  )
 }
 export { FloatingContextMenuButton }

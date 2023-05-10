@@ -11,9 +11,12 @@ import {
   checkIsCanInputElement,
   computedIframeSelection,
 } from '@/features/contextMenu/utils'
-import { IRangyRect } from '@/features/contextMenu'
+import { FloatingDropdownMenuState, IRangyRect } from '@/features/contextMenu'
 import { ROOT_CONTAINER_ID } from '@/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import { listenIframeMessage } from '@/iframe'
+import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
+import { useSetRecoilState } from 'recoil'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -21,6 +24,7 @@ initRangySaveRestore(rangyLib)
 const useInitRangy = () => {
   const { initRangyCore, rangy, showRangy, hideRangy, saveTempSelection } =
     useRangy()
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   const currentActiveWriteableElementRef = useRef<HTMLElement | null>(null)
   // 初始化rangy npm 包
   useEffectOnce(() => {
@@ -156,8 +160,10 @@ const useInitRangy = () => {
                 iframeSelectionElement,
               ),
             })
-            showRangy()
-            return
+            if (selectionText.trim()) {
+              showRangy()
+              return
+            }
           }
         }
         console.log('[ContextMenu Module]: hideRangy')
@@ -186,7 +192,6 @@ const useInitRangy = () => {
             '[ContextMenu Module]: remove writeable element listener',
             currentActiveWriteableElementRef.current,
           )
-          // TODO: iframe适配要独立成tab注入的content_script
           if (currentActiveWriteableElementRef.current?.tagName === 'IFRAME') {
             const iframeTarget =
               currentActiveWriteableElementRef.current as HTMLIFrameElement
@@ -211,7 +216,6 @@ const useInitRangy = () => {
           '[ContextMenu Module]: bind writeable element listener',
           target,
         )
-        // TODO: iframe适配要独立成tab注入的content_script
         if (isIframeTarget) {
           const iframeTarget = target as HTMLIFrameElement
           iframeTarget.contentDocument?.body.addEventListener(
@@ -232,6 +236,7 @@ const useInitRangy = () => {
         currentActiveWriteableElementRef.current = null
       }
     }
+
     document.addEventListener('mousedown', mouseDownListener)
     return () => {
       document.removeEventListener('mousedown', mouseDownListener)
@@ -244,14 +249,54 @@ const useInitRangy = () => {
       200,
     )
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
+    // 和注入iframe的content script通信
+    let clearListener: any = () => {
+      // nothing
+    }
     if (rangy?.initialized) {
       console.log('init mouse event')
       document.addEventListener('mouseup', mouseUpListener)
       document.addEventListener('keyup', keyupListener)
+      clearListener = listenIframeMessage((iframeSelectionData) => {
+        console.log(iframeSelectionData)
+        // Virtual Elements
+        const virtualTarget = {
+          virtual: true,
+          ...iframeSelectionData,
+          tagName: 'IFRAME',
+        } as any
+        currentActiveWriteableElementRef.current = virtualTarget
+        if (iframeSelectionData.eventType === 'mouseup') {
+          mouseUpListener({
+            target: currentActiveWriteableElementRef.current,
+          } as any)
+        } else {
+          keyupListener({
+            target: currentActiveWriteableElementRef.current,
+          } as any)
+        }
+        if (
+          iframeSelectionData.isEmbedPage &&
+          iframeSelectionData.iframeSelectionString &&
+          iframeSelectionData.tagName === 'BUTTON'
+        ) {
+          // try to run shortcuts
+          runEmbedShortCuts()
+        }
+        if (!iframeSelectionData.iframeSelectionString) {
+          setFloatingDropdownMenu((prev) => {
+            return {
+              ...prev,
+              open: false,
+            }
+          })
+        }
+      })
     }
     return () => {
       document.removeEventListener('mouseup', mouseUpListener)
       document.removeEventListener('keyup', keyupListener)
+      clearListener()
     }
   }, [rangy])
 }

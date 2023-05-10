@@ -39,7 +39,7 @@ const ChatGPTOpenAIAPITemperatureSlider: FC = () => {
   }
   return (
     <Stack mb={3} px={1}>
-      <Typography fontSize={14} color={'text.primary'}>
+      <Typography fontSize={'14px'} color={'text.primary'}>
         {`Temperature (conversation style): `}
         {settings.temperature}
       </Typography>
@@ -70,9 +70,9 @@ const ChatGPTOpenAIAPITemperatureSlider: FC = () => {
         sx={{
           width: 'calc(100% - 60px)',
           mx: 'auto',
-          '& .MuiSlider-markLabel': {
+          '& .use-chat-gpt-ai--MuiSlider-markLabel': {
             color: 'text.primary',
-            fontSize: 14,
+            fontSize: '14px',
           },
         }}
       />

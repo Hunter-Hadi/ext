@@ -15,7 +15,9 @@ const GmailChatBoxProviderComponents = () => {
     <Stack
       width={'100%'}
       sx={{
-        maxWidth: 414,
+        maxWidth: 400,
+        width: '100%',
+        mx: 'auto',
       }}
     >
       {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (

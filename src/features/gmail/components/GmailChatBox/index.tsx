@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, Suspense } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 // import CircularProgress from '@mui/material/CircularProgress'
@@ -24,8 +24,8 @@ import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import { IChatMessage } from '@/features/chatgpt/types'
 import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
 import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -210,7 +210,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       >
         <ChatGPTAIProviderSelector />
         <GmailChatBoxProviderComponents />
-        <Suspense fallback={<AppLoadingLayout loading={true} size={16} />}>
+        <AppSuspenseLoadingLayout>
           {messages.map((message) => {
             return (
               <GmailChatBoxMessageItem
@@ -241,7 +241,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               userAvatar={userAvatar}
             />
           )}
-        </Suspense>
+        </AppSuspenseLoadingLayout>
       </Box>
       {/*// input height*/}
       <Box height={8} flexShrink={0} />

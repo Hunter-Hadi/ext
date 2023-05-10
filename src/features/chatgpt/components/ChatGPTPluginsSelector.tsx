@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import Box from '@mui/material/Box'
@@ -45,11 +45,22 @@ const ChatGPTPluginsSelector: FC = () => {
       appSettings.plugins &&
       appSettings.currentModel === 'text-davinci-002-plugins'
     ) {
-      return uniqBy(appSettings.plugins, 'id')
+      return uniqBy(appSettings.plugins, 'id').filter(
+        (plugin) => plugin.user_settings.is_installed,
+      )
     } else {
       return []
     }
   }, [appSettings.plugins, appSettings.currentModel])
+  useEffect(() => {
+    // 过滤掉不存在的
+    const filterIds = enabledPlugins.filter((id) => {
+      return plugins.find((plugin) => plugin.id === id)
+    })
+    setChromeExtensionSettings({
+      currentPlugins: filterIds,
+    })
+  }, [plugins, enabledPlugins])
   const handleError = () => {
     // set error 1s
     setError(true)
@@ -62,7 +73,7 @@ const ChatGPTPluginsSelector: FC = () => {
       {plugins.length > 0 ? (
         <FormControl
           size="small"
-          sx={{ height: 40, px: 1, maxWidth: 414 }}
+          sx={{ height: 40, px: 1, maxWidth: 400 }}
           fullWidth
         >
           <InputLabel
@@ -74,6 +85,10 @@ const ChatGPTPluginsSelector: FC = () => {
             </span>
           </InputLabel>
           <Select
+            sx={{
+              height: 40,
+              p: 0,
+            }}
             value={appSettings.currentPlugins || []}
             multiple
             disabled={messages.length > 0}
@@ -164,7 +179,6 @@ const ChatGPTPluginsSelector: FC = () => {
                 </Stack>
               )
             }}
-            sx={{ fontSize: '14px' }}
             IconComponent={ArrowDropDownIconCustom}
             labelId={'ChatGPTPluginsSelectorLabel'}
             label={'Model'}
@@ -291,15 +305,6 @@ const ChatGPTPluginsSelector: FC = () => {
               onClick={(event) => {
                 event.preventDefault()
                 event.stopPropagation()
-                setAppSettings((appSettings) => {
-                  return {
-                    ...appSettings,
-                    currentPlugins: [],
-                  }
-                })
-                setChromeExtensionSettings({
-                  currentPlugins: [],
-                })
               }}
               sx={{ p: '0!important' }}
             >
@@ -327,7 +332,9 @@ const ChatGPTPluginsSelector: FC = () => {
                 >
                   Plugin store
                 </Typography>
-                <OpenInNewIcon sx={{ color: 'text.primary', fontSize: 16 }} />
+                <OpenInNewIcon
+                  sx={{ color: 'text.primary', fontSize: '16px' }}
+                />
               </Stack>
             </MenuItem>
           </Select>

@@ -111,7 +111,7 @@ const providerOptions = [
     logo: <UseChatGptIcon sx={{ fontSize: 20 }} />,
   },
   {
-    beta: true,
+    beta: false,
     label: 'Bing',
     value: CHAT_GPT_PROVIDER.BING,
     logo: (
@@ -134,7 +134,7 @@ const providerOptions = [
     ],
   },
   {
-    beta: true,
+    beta: false,
     label: 'Bard',
     value: CHAT_GPT_PROVIDER.BARD,
     logo: (
@@ -170,7 +170,7 @@ const ChatGPTAIProviderSelector: FC = () => {
   } = useChatGPTProvider()
   return (
     <Stack
-      sx={{ height: 56, p: 1 }}
+      sx={{ height: 56, p: 1, maxWidth: 400, mx: 'auto', width: '100%' }}
       spacing={2}
       direction={'row'}
       alignItems={'center'}

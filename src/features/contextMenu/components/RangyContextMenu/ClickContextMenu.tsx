@@ -141,7 +141,28 @@ const ClickContextMenuButton: FC<{
         width: 'max-content',
       }}
     >
-      <Stack direction={'row'} alignItems={'center'}>
+      <Stack
+        direction={'row'}
+        alignItems={'center'}
+        sx={{
+          '& > button': {
+            '&:not(:last-child)': {
+              marginRight: '1px',
+              borderRadius: '4px 0 0 4px',
+              boxShadow: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
+                  : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+              '&:hover': {
+                boxShadow: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
+                    : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+              },
+            },
+          },
+        }}
+      >
         <Button
           className={'usechatgpt-ai__context-menu--handle-button'}
           size={'small'}
@@ -150,12 +171,6 @@ const ClickContextMenuButton: FC<{
             px: '8px!important',
             height: 32,
             color: 'inherit',
-            marginRight: '1px',
-            borderRadius: '4px 0 0 4px',
-            boxShadow: 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
-            '&:hover': {
-              boxShadow: 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
-            },
           }}
           onMouseUp={(event) => {
             event.stopPropagation()
@@ -182,7 +197,7 @@ const ClickContextMenuButton: FC<{
               }}
             />
           )}
-          {shortCutKey || (APP_ENV === 'EZ_MAIL_AI' ? 'EzMail' : 'Use ChatGPT')}
+          {shortCutKey || (APP_ENV === 'EZ_MAIL_AI' ? 'EzMail' : 'Ask AI')}
         </Button>
         <FloatingContextMenuMoreIconButton showCloseButton={false} />
         <FloatingContextMenuCloseIconButton />

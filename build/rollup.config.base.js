@@ -1,7 +1,7 @@
 import alias from '@rollup/plugin-alias'
 import path from 'path'
 import postcss from 'rollup-plugin-postcss'
-import resolve from '@rollup/plugin-node-resolve'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-ts'
 import terser from '@rollup/plugin-terser'
@@ -23,11 +23,11 @@ export default function mergeRollupConfig(
         ],
       }),
       replace(replaceEnv),
+      nodeResolve(),
       postcss({
         plugins: [],
         extensions: ['.css', '.less'],
       }),
-      resolve(),
       commonjs({
         sourceMap: false,
       }),

@@ -10,6 +10,7 @@ import React, { FC, useEffect, useMemo, useState } from 'react'
 import EmptyContent from '@/components/select/EmptyContent'
 import { hasData } from '@/utils'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
+import Typography from '@mui/material/Typography'
 
 type IOptionValueType = string | number
 export type IOptionType = {
@@ -79,7 +80,19 @@ const BaseSelect: FC<IBaseSelectProps> = ({
     if (renderLabel) {
       return renderLabel(value, option || {}, index)
     }
-    return <ListItemText primary={option.label} />
+    return (
+      <ListItemText sx={{ fontSize: '14px', color: 'text.primary' }}>
+        <Typography
+          sx={{
+            fontSize: '14px',
+            color: 'text.primary',
+          }}
+          component={'span'}
+        >
+          {option.label}
+        </Typography>
+      </ListItemText>
+    )
   }
   useEffect(() => {
     if (!selectValue && defaultValue) {
@@ -105,7 +118,14 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   }, [options, selectValue, renderDom])
   return (
     <FormControl>
-      {label && <InputLabel id="demo-simple-select-label">{label}</InputLabel>}
+      {label && (
+        <InputLabel
+          id="demo-simple-select-label"
+          sx={{ fontSize: '14px', color: 'text.primary' }}
+        >
+          {label}
+        </InputLabel>
+      )}
       <Select
         label={label}
         sx={{
@@ -114,6 +134,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
           lineHeight: '40px',
           padding: '8px 12px',
           height: 40,
+          fontSize: '14px',
           '& > .use-chat-gpt-ai--MuiSelect-select': {
             padding: 0,
             '& > div': {

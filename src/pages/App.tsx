@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import './global.less'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
@@ -9,26 +9,19 @@ import { useRecoilState } from 'recoil'
 import NormalChatPage from '@/pages/normal/NormalChatPage'
 import {
   CHROME_EXTENSION_HOMEPAGE_URL,
-  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   isEzMailApp,
   ROOT_CONTAINER_ID,
 } from '@/types'
 import { AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
 import ChatBoxHeader from '@/pages/gmail/ChatBoxHeader'
-import { isShowChatBox, showChatBox } from '@/utils'
-import {
-  getChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/background/utils'
-import useEffectOnce from '@/hooks/useEffectOnce'
+import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
+  const { visibleWidth, maxWidth, minWidth, setLocalWidth, resizeEnable } =
+    useChatBoxWidth()
   const [appState, setAppState] = useRecoilState(AppState)
-  const [chatBoxWidth, setChatBoxWidth] = useState(
-    CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  )
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {
       mutations.forEach((mu) => {
@@ -54,44 +47,19 @@ const App: FC = () => {
       attrObserver.disconnect()
     }
   }, [])
-  useEffect(() => {
-    if (isShowChatBox()) {
-      showChatBox()
-    }
-    setChromeExtensionSettings((settings) => {
-      if (settings.userSettings) {
-        settings.userSettings.chatBoxWidth = chatBoxWidth
-      }
-      return settings
-    })
-  }, [chatBoxWidth])
-  useEffectOnce(() => {
-    getChromeExtensionSettings().then((settings) => {
-      if (settings.userSettings?.chatBoxWidth) {
-        setChatBoxWidth(settings.userSettings?.chatBoxWidth)
-      }
-    })
-  })
+
   return (
     <>
       <Resizable
         size={{
-          width: chatBoxWidth,
+          width: visibleWidth,
           height: '100%',
         }}
-        enable={{
-          top: false,
-          right: false,
-          bottom: false,
-          left: true,
-          topRight: false,
-          bottomRight: false,
-          bottomLeft: false,
-          topLeft: false,
-        }}
-        minWidth={400}
-        onResizeStop={(e, direction, ref, d) => {
-          setChatBoxWidth(chatBoxWidth + d.width)
+        enable={resizeEnable}
+        maxWidth={maxWidth}
+        minWidth={minWidth}
+        onResizeStop={async (e, direction, ref, d) => {
+          await setLocalWidth(visibleWidth + d.width)
         }}
       >
         <Box

@@ -14,7 +14,7 @@ const ContextMenuMockTextarea: FC<{
   const {
     defaultValue = '',
     onChange,
-    placeholder = 'Use ChatGPT to edit or generate...',
+    placeholder = 'Ask AI to edit or generate...',
   } = props
   const { palette } = useTheme()
   const [inputValue, setInputValue] = useState<string>(defaultValue)

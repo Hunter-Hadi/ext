@@ -82,7 +82,7 @@ const initChromeExtensionInstalled = () => {
       }
       await Browser.contextMenus.create({
         id: 'use-chatgpt-ai-context-menu-button',
-        title: 'Use ChatGPT',
+        title: 'UseChatGPT.AI',
         contexts: ['all'],
       })
     })
@@ -202,7 +202,8 @@ const initChromeExtensionAction = () => {
         // chrome相关的页面展示popup
         if (
           currentTab?.url?.startsWith('chrome') ||
-          currentTab?.url?.startsWith('https://chrome.google.com/webstore')
+          currentTab?.url?.startsWith('https://chrome.google.com/webstore') ||
+          currentTab?.url?.startsWith('https://chat.openai.com')
         ) {
           // NOTE: extensions shortcuts的设置页面不应该弹出来阻止用户设置快捷键
           if (!currentTabUrl.startsWith('chrome://extensions/shortcuts')) {

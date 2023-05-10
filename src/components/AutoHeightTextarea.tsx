@@ -148,7 +148,7 @@ const AutoHeightTextarea: FC<{
     error = false,
     InputId = ROOT_CHAT_BOX_INPUT_ID,
     stopPropagation = true,
-    placeholder = 'Ask ChatGPT...',
+    placeholder = 'Ask AI...',
     sx,
   } = props
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)

@@ -306,7 +306,7 @@ const FloatingContextMenu: FC<{
                 ) : (
                   <>
                     <AutoHeightTextarea
-                      placeholder={'Use ChatGPT to edit or generate...'}
+                      placeholder={'Ask AI to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
                       sx={{

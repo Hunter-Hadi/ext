@@ -66,8 +66,10 @@ export const showChatBox = () => {
     if (location.hostname === 'outlook.live.com') {
       htmlElement.style.minHeight = '100vh'
     }
-    chatBoxElement.classList.remove('close')
-    chatBoxElement.classList.add('open')
+    if (!chatBoxElement.classList.contains('open')) {
+      chatBoxElement.classList.remove('close')
+      chatBoxElement.classList.add('open')
+    }
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
     }, 300)

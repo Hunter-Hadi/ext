@@ -25,6 +25,7 @@ import ReferralInviteCard from '@/pages/options/pages/UseChatGPTOptionsSettingPa
 import ChatGPTStableModeSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTStableModeSetting'
 import ChatGPTApiSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTApiSettings'
 import OptionsPageDirectory from '@/pages/options/components/OptionsPageDirectory'
+import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -76,6 +77,10 @@ const UseChatGPTOptionsSettingPage = () => {
             }}
           >
             <HowToFindSettings />
+            <YoutubePlayerBox
+              borderRadius={8}
+              youtubeLink={'https://www.youtube.com/embed/p4NeMrslGg8'}
+            />
             <ReferralInviteCard />
             <Divider sx={{ my: 4 }} />
             <Typography

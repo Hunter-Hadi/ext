@@ -107,6 +107,7 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                           ml: 1,
                           textTransform: 'capitalize',
                           flexShrink: 0,
+                          fontSize: '14px',
                         }}
                         label={tag}
                         color="primary"
@@ -250,6 +251,7 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                             sx={{
                               ml: 1,
                               textTransform: 'capitalize',
+                              fontSize: '14px',
                               flexShrink: 0,
                             }}
                             key={tag}

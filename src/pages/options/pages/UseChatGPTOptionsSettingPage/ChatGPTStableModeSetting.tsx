@@ -5,7 +5,6 @@ import Slider from '@mui/material/Slider'
 import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
 import Switch from '@mui/material/Switch'
-import Chip from '@mui/material/Chip'
 import LinearProgress, {
   LinearProgressProps,
 } from '@mui/material/LinearProgress'
@@ -172,14 +171,6 @@ const ChatGPTStableModeSetting: FC<{
         component={'h2'}
       >
         ChatGPT stable mode
-        <Chip
-          component={'span'}
-          sx={{ ml: 1 }}
-          label="Beta"
-          color="primary"
-          size={'small'}
-          variant={'outlined'}
-        />
       </Typography>
       <CloseAlert icon={<></>} severity={'info'}>
         <Stack spacing={1}>
@@ -201,7 +192,6 @@ const ChatGPTStableModeSetting: FC<{
           <BulletList
             textProps={{ fontSize: 14 }}
             textList={[
-              `This is a beta feature, so please use it with caution`,
               `We recommend enabling it only when you're experiencing frequent ChatGPT interruptions or network errors`,
             ]}
           />

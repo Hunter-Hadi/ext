@@ -17,6 +17,7 @@ import Box from '@mui/material/Box'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { backgroundSendClientMessage } from '@/background/utils'
 import Alert from '@mui/material/Alert'
+import BulletList from '../../components/BulletList'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
@@ -101,11 +102,20 @@ const App: FC<{
       </Stack>
       {isSpecialPage ? (
         <Alert severity={'info'}>
-          <Typography fontSize={14} color={'text.primary'}>
-            {`For security reasons, the extension only works on real websites. So
-            it won't work on new tabs without loaded websites, Chrome pages, or
-            Chrome Web Store pages.`}
+          <Typography fontSize={14} color={'text.primary'} mb={1}>
+            {`For security reasons, the extension only works on actual websites, excluding ChatGPT's webpage. So it won't work on`}
           </Typography>
+          <BulletList
+            textProps={{
+              fontSize: 14,
+            }}
+            textList={[
+              `New tabs without loaded websites`,
+              'Chrome pages',
+              'Chrome Web Store pages',
+              'chat.openai.com',
+            ]}
+          />
         </Alert>
       ) : (
         <Alert severity={'info'}>
@@ -179,7 +189,8 @@ const init = async () => {
         (currentTab && currentTab[0] && currentTab[0].url) || 'chrome://'
       isSpecialPage =
         tabUrl.startsWith('chrome') ||
-        tabUrl.startsWith('https://chrome.google.com/webstore')
+        tabUrl.startsWith('https://chrome.google.com/webstore') ||
+        tabUrl.startsWith('https://chat.openai.com')
       if (tabId) {
         await Browser.tabs.sendMessage(tabId, {})
         const result = await backgroundSendClientMessage(

@@ -48,10 +48,15 @@ if (location.host === 'chat.openai.com') {
     //   key: 'css',
     //   container: emotionRoot,
     // })
-    const contextMenu = document.createElement('div')
+    const isSupportWebComponent = 'customElements' in window
+    const contextMenu = document.createElement(
+      isSupportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
+    )
     contextMenu.id = ROOT_CONTEXT_MENU_ID
     document.body.appendChild(contextMenu)
-    const container = document.createElement('div')
+    const container = document.createElement(
+      isSupportWebComponent ? 'use-chat-gpt-ai' : 'div',
+    )
     container.id = ROOT_CONTAINER_ID
     document.body.appendChild(container)
     const shadowContainer = container.attachShadow({ mode: 'open' })

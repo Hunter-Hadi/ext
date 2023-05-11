@@ -60,16 +60,19 @@ function processReplaceString(origin: string) {
   }
   return res.text
 }
-const AceEditor = React.lazy(() => {
-  return Promise.all([
-    import('react-ace'),
+const AceEditor = React.lazy(async () => {
+  const ace = await import('react-ace')
+  if (!ace) {
+    return (<></>) as any
+  }
+  await Promise.all([
     import('ace-builds/src-noconflict/ext-language_tools'),
     import('ace-builds/src-noconflict/mode-handlebars'),
     import('ace-builds/src-noconflict/theme-monokai'),
-  ]).then(([ace, langTools]) => {
+  ]).then(([langTools]) => {
     langTools.setCompleters([staticWordCompleter])
-    return ace
   })
+  return ace
 })
 
 const staticWordCompleter = {
@@ -298,7 +301,7 @@ The template can include any number of the following variables:
                       highlightActiveLine={false}
                       mode={'handlebars'}
                       theme={'textmate'}
-                      onChange={(value) => {
+                      onChange={(value: string) => {
                         setTemplate(value)
                       }}
                       name={'editor-with-chrome-extension'}

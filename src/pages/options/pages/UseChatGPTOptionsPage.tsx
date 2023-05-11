@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useState,
-  Suspense,
-} from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import '../../OptionsPage.less'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -18,6 +12,7 @@ import { useAuthLogin } from '@/features/auth/hooks'
 import AccountMenu from '@/pages/options/components/AccountMenu'
 import { OptionsPageRouteContext } from '@/pages/options/context'
 import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
 const UseChatGPTOptionsLoginPage = React.lazy(
   () => import('@/pages/options/pages/UseChatGPTOptionsLoginPage'),
@@ -166,15 +161,13 @@ const UseChatGPTOptionsPage = () => {
             </Container>
           </Box>
           <Container maxWidth={'lg'} sx={{ mt: 13 }}>
-            <Suspense
-              fallback={<AppLoadingLayout loading={loading} size={16} />}
-            >
+            <AppSuspenseLoadingLayout>
               <AppLoadingLayout loading={loading}>
                 {route === '/login' && <UseChatGPTOptionsLoginPage />}
                 {route === '/' && <UseChatGPTOptionsSettingPage />}
                 {route === 'menu' && <UseChatGPTOptionsEditMenuPage />}
               </AppLoadingLayout>
-            </Suspense>
+            </AppSuspenseLoadingLayout>
           </Container>
         </OptionsPageRouteContext.Provider>
       </SnackbarProvider>

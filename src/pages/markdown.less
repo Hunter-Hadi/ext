@@ -31,7 +31,7 @@
     --tw-prose-bold: var(--theme-900);
     --tw-prose-counters: var(--theme-500);
     --tw-prose-bullets: var(--theme-300);
-    --tw-prose-hr: var(--theme-200);
+    --tw-prose-hr: #ddd;
     --tw-prose-quotes: var(--theme-900);
     --tw-prose-quote-borders: var(--theme-200);
     --tw-prose-captions: var(--theme-500);
@@ -51,7 +51,7 @@
     --tw-prose-invert-bold: var(--theme-0);
     --tw-prose-invert-counters: var(--theme-400);
     --tw-prose-invert-bullets: var(--theme-600);
-    --tw-prose-invert-hr: var(--theme-700);
+    --tw-prose-invert-hr: #666;
     --tw-prose-invert-quotes: var(--theme-100);
     --tw-prose-invert-quote-borders: var(--theme-700);
     --tw-prose-invert-captions: var(--theme-400);
@@ -389,6 +389,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      white-space: normal;
     }
 
     /*
@@ -455,7 +456,7 @@
       font-size: 2.25em;
       font-weight: 800;
       line-height: 1.1111111;
-      margin-bottom: 0.8888889em;
+      margin-bottom: 0.22em;
       margin-top: 0;
     }
 
@@ -468,7 +469,7 @@
       font-size: 1.5em;
       font-weight: 700;
       line-height: 1.3333333;
-      margin-bottom: 1rem;
+      margin-bottom: 0.22em;
       margin-top: 2rem;
     }
 
@@ -481,7 +482,7 @@
       font-size: 1.25em;
       font-weight: 600;
       line-height: 1.6;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.22em;
       margin-top: 1rem;
     }
 
@@ -493,7 +494,7 @@
       color: var(--tw-prose-headings);
       font-weight: 600;
       line-height: 1.5;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.22em;
       margin-top: 1rem;
     }
 
@@ -508,18 +509,6 @@
     h3 code {
       font-size: 0.9em;
     }
-
-    // h2 + * {
-    //   margin-top: 0;
-    // }
-
-    // h3 + * {
-    //   margin-top: 0;
-    // }
-
-    // h4 + * {
-    //   margin-top: 0;
-    // }
 
     h5 {
       font-weight: 500;
@@ -626,6 +615,8 @@
     ol {
       list-style-type: decimal;
       padding-left: 1.6em;
+      margin-bottom: 1.25em;
+      margin-top: 1.25em;
     }
 
     // li {
@@ -733,13 +724,13 @@
     }
 
     [mdtype='hr'] {
-      margin-top: 2.8em;
-      margin-bottom: 2.8em;
+      margin-top: 1.8em;
+      margin-bottom: 1.8em;
     }
 
     p {
-      margin-top: 1.2em;
-      margin-bottom: 1.2em;
+      margin-top: 1em;
+      margin-bottom: 0.22em;
     }
 
     /* diagram panel */
@@ -1216,6 +1207,17 @@
 
     .btn-default {
       background-color: var(--button-bg);
+    }
+
+    h1 + *,
+    h2 + *,
+    h3 + *,
+    h4 + *,
+    ol + *,
+    ul + *,
+    pre + *,
+    p + * {
+      margin-top: 0;
     }
   }
 

@@ -138,7 +138,7 @@ const GmailChatBoxMessageItem: FC<{
         '& .chat-message--text': {
           textAlign: 'left',
           fontSize: '16px',
-          lineHeight: '26px',
+          lineHeight: 1.4,
         },
       }}
       onMouseEnter={() => {
@@ -213,7 +213,7 @@ const GmailChatBoxMessageItem: FC<{
             className={'chat-message--text'}
             id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
             contentEditable={isEdit}
-            whiteSpace={'normal'}
+            whiteSpace={'pre-wrap'}
             sx={{
               wordBreak: 'break-word',
               borderColor: 'primary.main',

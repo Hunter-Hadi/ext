@@ -6,6 +6,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from 'rollup-plugin-ts'
 import terser from '@rollup/plugin-terser'
 import replace from '@rollup/plugin-replace'
+
 import { getReplaceEnv } from './env'
 export default function mergeRollupConfig(
   isProduction,
@@ -23,7 +24,9 @@ export default function mergeRollupConfig(
         ],
       }),
       replace(replaceEnv),
-      nodeResolve(),
+      nodeResolve({
+        browser: true,
+      }),
       postcss({
         plugins: [],
         extensions: ['.css', '.less'],
@@ -32,8 +35,15 @@ export default function mergeRollupConfig(
         sourceMap: false,
       }),
       typescript({
-        transpiler: 'babel',
-        exclude: isProduction ? [] : ['node_modules/**/*.*'],
+        transpiler: 'swc',
+        swcConfig: {
+          jsc: {
+            parser: {
+              decorators: true,
+            },
+          },
+        },
+        exclude: isProduction ? [] : ['node_modules/**'],
       }),
       isProduction &&
         terser({

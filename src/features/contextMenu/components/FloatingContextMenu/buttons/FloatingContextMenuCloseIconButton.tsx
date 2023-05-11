@@ -48,7 +48,7 @@ const FloatingContextMenuCloseIconButton: FC<{
           label={''}
           root={root}
           menuSx={{
-            width: 360,
+            width: 240,
           }}
           referenceElement={
             <Button
@@ -80,7 +80,7 @@ const FloatingContextMenuCloseIconButton: FC<{
               }))
             }}
             icon={'Close'}
-            label={`Hide text-select-popup until page refresh`}
+            label={`Hide until page refresh`}
           />
           <LiteDropdownMenuItem
             onClick={async () => {
@@ -100,8 +100,8 @@ const FloatingContextMenuCloseIconButton: FC<{
             }
             label={
               appSettings?.userSettings?.selectionButtonVisible
-                ? 'Hide text-select-popup on all sites indefinitely'
-                : 'Show text-select-popup on all sites indefinitely'
+                ? 'Hide on all sites indefinitely'
+                : 'Show on all sites indefinitely'
             }
           />
         </DropdownMenu>

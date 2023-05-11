@@ -1,17 +1,27 @@
-import Markdown from 'markdown-to-jsx'
-import React, { FC, Suspense, createElement, useMemo } from 'react'
+import ReactMarkdown from 'react-markdown'
+import React, { FC, useMemo } from 'react'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
-import AppLoadingLayout from '../AppLoadingLayout'
 import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
-
+import reactNodeToString from 'react-node-to-string'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeKatex from 'rehype-katex'
+import remarkGfm from 'remark-gfm'
+import remarkBreaks from 'remark-breaks'
+import remarkMath from 'remark-math'
+import supersub from 'remark-supersub'
 const Highlight = React.lazy(() => import('react-highlight'))
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
-const OverrideAnchor: FC<HTMLAnchorElement> = (props) => {
+const OverrideAnchor: FC<{
+  children: React.ReactNode
+  href?: string
+  title?: string
+}> = (props) => {
   if (props.href?.startsWith('key=')) {
     const params = new URLSearchParams(props.href)
     const key: any = params.get('key') || ''
@@ -19,6 +29,7 @@ const OverrideAnchor: FC<HTMLAnchorElement> = (props) => {
       const query = params.get('query') || ''
       return (
         <Link
+          title={props.title}
           sx={{ cursor: 'pointer' }}
           onClick={async () => {
             await chromeExtensionClientOpenPage({
@@ -27,14 +38,14 @@ const OverrideAnchor: FC<HTMLAnchorElement> = (props) => {
             })
           }}
         >
-          {props.children as any}
+          {props.children}
         </Link>
       )
     }
   }
   return (
     <Link sx={{ cursor: 'pointer' }} href={props.href} target={'_blank'}>
-      {props.children as any}
+      {props.children}
     </Link>
   )
 }
@@ -72,81 +83,111 @@ const OverrideHeading: FC<HTMLHeadingElement & { heading: IHeadingType }> = (
   )
 }
 
-const OverrideCode: FC<HTMLElement> = (props) => {
-  const children = props.children as any
-  if (typeof children === 'string' && children.includes('\n')) {
-    const lang = props.className?.replace('lang-', '') || 'code'
-    return (
+const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
+  props,
+) => {
+  const { children, className } = props
+  const code = useMemo(
+    () => reactNodeToString(props.children),
+    [props.children],
+  )
+  const lang = props.className?.match(/language-(\w+)/)?.[1] || 'code'
+  return (
+    <Stack
+      bgcolor="#000"
+      sx={{
+        borderRadius: '6px',
+        mb: 2,
+        overflow: 'hidden',
+      }}
+    >
       <Stack
-        bgcolor="#000"
+        justifyContent="space-between"
+        alignItems={'center'}
+        direction="row"
+        component="div"
         sx={{
-          borderRadius: '6px',
-          mb: 2,
-          overflow: 'hidden',
+          px: 2,
+          py: 0.5,
+          bgcolor: 'rgba(52,53,65,1)',
+          color: 'rgb(217,217,227)',
         }}
       >
-        <Stack
-          justifyContent="space-between"
-          alignItems={'center'}
-          direction="row"
-          component="div"
+        <Typography component="span" fontSize={12}>
+          {lang}
+        </Typography>
+        <CopyTooltipIconButton
+          copyText={code}
           sx={{
-            px: 2,
-            py: 0.5,
-            bgcolor: 'rgba(52,53,65,1)',
-            color: 'rgb(217,217,227)',
+            borderRadius: '6px',
+            px: '8px !important',
           }}
         >
-          <Typography component="span" fontSize={12}>
-            {lang}
-          </Typography>
-          <CopyTooltipIconButton
-            copyText={props.children as any}
-            sx={{
-              borderRadius: '6px',
-              px: '8px !important',
-            }}
-          >
-            <span style={{ marginLeft: '4px', fontSize: '12px' }}>
-              Copy code
-            </span>
-          </CopyTooltipIconButton>
-        </Stack>
-        <Box fontSize={14} bgcolor="#000" color={'#fff'}>
-          <Suspense fallback={<AppLoadingLayout loading={true} size={16} />}>
-            <Highlight className={lang}>{children}</Highlight>
-          </Suspense>
-        </Box>
+          <span style={{ marginLeft: '4px', fontSize: '12px' }}>Copy code</span>
+        </CopyTooltipIconButton>
       </Stack>
-    )
-  }
-
-  return createElement('code', {}, children)
+      <Box fontSize={14} bgcolor="#000" color={'#fff'}>
+        <AppSuspenseLoadingLayout>
+          <Highlight className={lang + ' ' + className}>{children}</Highlight>
+        </AppSuspenseLoadingLayout>
+      </Box>
+    </Stack>
+  )
 }
 
 const CustomMarkdown: FC<{
   children: string
 }> = (props) => {
-  return useMemo(
-    () => (
-      <Markdown
-        options={{
-          overrides: {
-            a: OverrideAnchor,
-            h1: (props) => <OverrideHeading heading="h1" {...props} />,
-            h2: (props) => <OverrideHeading heading="h2" {...props} />,
-            h3: (props) => <OverrideHeading heading="h3" {...props} />,
-            h4: (props) => <OverrideHeading heading="h4" {...props} />,
-            h5: (props) => <OverrideHeading heading="h5" {...props} />,
-            h6: (props) => <OverrideHeading heading="h6" {...props} />,
-            code: OverrideCode,
+  return (
+    <>
+      <ReactMarkdown
+        remarkPlugins={[remarkMath, supersub, remarkBreaks, remarkGfm]}
+        rehypePlugins={[
+          rehypeKatex,
+          [rehypeHighlight, { detect: true, ignoreMissing: true }],
+        ]}
+        components={{
+          h1: (props: any) => {
+            return <OverrideHeading {...props} heading={'h1'} />
+          },
+          h2: (props: any) => {
+            return <OverrideHeading {...props} heading={'h2'} />
+          },
+          h3: (props: any) => {
+            return <OverrideHeading {...props} heading={'h3'} />
+          },
+          h4: (props: any) => {
+            return <OverrideHeading {...props} heading={'h4'} />
+          },
+          h5: (props: any) => {
+            return <OverrideHeading {...props} heading={'h5'} />
+          },
+          h6: (props: any) => {
+            return <OverrideHeading {...props} heading={'h6'} />
+          },
+          a: ({ node, ...props }) => {
+            return (
+              // eslint-disable-next-line react/prop-types
+              <OverrideAnchor href={props.href} title={props.title}>
+                {props.children}
+              </OverrideAnchor>
+            )
+          },
+          code: ({ node, inline, className, children, ...props }) => {
+            if (inline) {
+              return (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              )
+            }
+            return <OverrideCode className={className}>{children}</OverrideCode>
           },
         }}
       >
         {props.children}
-      </Markdown>
-    ),
-    [props.children],
+      </ReactMarkdown>
+    </>
   )
 }
 export default CustomMarkdown

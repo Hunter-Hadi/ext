@@ -138,56 +138,68 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
 const CustomMarkdown: FC<{
   children: string
 }> = (props) => {
-  return (
-    <>
-      <ReactMarkdown
-        remarkPlugins={[remarkMath, supersub, remarkBreaks, remarkGfm]}
-        rehypePlugins={[
-          rehypeKatex,
-          [rehypeHighlight, { detect: true, ignoreMissing: true }],
-        ]}
-        components={{
-          h1: (props: any) => {
-            return <OverrideHeading {...props} heading={'h1'} />
-          },
-          h2: (props: any) => {
-            return <OverrideHeading {...props} heading={'h2'} />
-          },
-          h3: (props: any) => {
-            return <OverrideHeading {...props} heading={'h3'} />
-          },
-          h4: (props: any) => {
-            return <OverrideHeading {...props} heading={'h4'} />
-          },
-          h5: (props: any) => {
-            return <OverrideHeading {...props} heading={'h5'} />
-          },
-          h6: (props: any) => {
-            return <OverrideHeading {...props} heading={'h6'} />
-          },
-          a: ({ node, ...props }) => {
-            return (
-              // eslint-disable-next-line react/prop-types
-              <OverrideAnchor href={props.href} title={props.title}>
-                {props.children}
-              </OverrideAnchor>
-            )
-          },
-          code: ({ node, inline, className, children, ...props }) => {
-            if (inline) {
+  return useMemo(
+    () => (
+      <>
+        <ReactMarkdown
+          remarkPlugins={[remarkMath, supersub, remarkBreaks, remarkGfm]}
+          rehypePlugins={[
+            rehypeKatex,
+            [rehypeHighlight, { detect: true, ignoreMissing: true }],
+          ]}
+          components={{
+            h1: (props: any) => {
+              return <OverrideHeading {...props} heading={'h1'} />
+            },
+            h2: (props: any) => {
+              return <OverrideHeading {...props} heading={'h2'} />
+            },
+            h3: (props: any) => {
+              return <OverrideHeading {...props} heading={'h3'} />
+            },
+            h4: (props: any) => {
+              return <OverrideHeading {...props} heading={'h4'} />
+            },
+            h5: (props: any) => {
+              return <OverrideHeading {...props} heading={'h5'} />
+            },
+            h6: (props: any) => {
+              return <OverrideHeading {...props} heading={'h6'} />
+            },
+            a: ({ node, ...props }) => {
               return (
-                <code className={className} {...props}>
-                  {children}
-                </code>
+                // eslint-disable-next-line react/prop-types
+                <OverrideAnchor href={props.href} title={props.title}>
+                  {props.children}
+                </OverrideAnchor>
               )
-            }
-            return <OverrideCode className={className}>{children}</OverrideCode>
-          },
-        }}
-      >
-        {props.children}
-      </ReactMarkdown>
-    </>
+            },
+            code: ({ node, inline, className, children, ...props }) => {
+              console.log('{ node, inline, className, children, ...props }', {
+                node,
+                inline,
+                className,
+                children,
+                ...props,
+              })
+              if (inline) {
+                return (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
+              }
+              return (
+                <OverrideCode className={className}>{children}</OverrideCode>
+              )
+            },
+          }}
+        >
+          {props.children}
+        </ReactMarkdown>
+      </>
+    ),
+    [props.children],
   )
 }
 export default CustomMarkdown

@@ -31,8 +31,9 @@ const AppLoadingLayout: FC<{
             mt={1.5}
             variant="body2"
             fontWeight={400}
-            fontSize={16}
+            fontSize={'16px'}
             lineHeight={1.25}
+            color={'text.primary'}
           >
             {loadingText}
           </Typography>

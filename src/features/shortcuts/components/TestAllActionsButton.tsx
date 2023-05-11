@@ -75,7 +75,7 @@ const TestAllActionsButton: FC = () => {
         }
       }}
     >
-      {loading ? 'Stop' : 'Run All'}
+      {loading ? 'Stop' : 'All'}
     </Button>
   )
 }

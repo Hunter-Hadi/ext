@@ -13,8 +13,7 @@ import BlockIcon from '@mui/icons-material/Block'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/gmail/store'
-import { CHROME_EXTENSION_MAIL_TO, isEzMailApp } from '@/types'
-import { FloatingContextMenuButton } from '@/features/contextMenu'
+import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
 // import DevContent from '@/components/DevContent'
@@ -223,6 +222,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
                 insertAble={insertAble}
                 replaceAble={true}
+                useChatGPTAble={true}
                 message={message}
                 aiAvatar={aiAvatar}
                 editAble={editAble}
@@ -241,6 +241,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               className={'use-chat-gpt-ai__writing-message-item'}
               replaceAble={false}
               insertAble={false}
+              useChatGPTAble={false}
               message={writingMessage}
               aiAvatar={aiAvatar}
               editAble={false}
@@ -252,6 +253,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       {/*// input height*/}
       <Box height={8} flexShrink={0} />
       <Stack
+        className={'use-chat-gpt-ai__chat-box__input-box'}
         position={'relative'}
         mt={'auto'}
         justifyContent={'center'}
@@ -306,9 +308,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     />
                   </TooltipButton>
                 </Box>
-                {!isEzMailApp && (
-                  <FloatingContextMenuButton buttonText={'Use Prompt'} />
-                )}
                 {reGenerateAble && (
                   <Button
                     disableElevation
@@ -339,6 +338,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
           </Box>
           <AutoHeightTextarea
+            sx={{
+              minHeight: 121,
+            }}
             stopPropagation
             loading={loading}
             onEnter={(value) => {

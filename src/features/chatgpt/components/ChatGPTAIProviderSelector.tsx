@@ -170,7 +170,7 @@ const ChatGPTAIProviderSelector: FC = () => {
   } = useChatGPTProvider()
   return (
     <Stack
-      sx={{ height: 56, p: 1, maxWidth: 400, mx: 'auto', width: '100%' }}
+      sx={{ height: 56, p: 1, mt: 1, maxWidth: 400, mx: 'auto', width: '100%' }}
       spacing={2}
       direction={'row'}
       alignItems={'center'}

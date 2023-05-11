@@ -25,6 +25,7 @@ const GmailChatBoxMessageItem: FC<{
   replaceAble?: boolean
   insertAble?: boolean
   editAble?: boolean
+  useChatGPTAble?: boolean
   message: IChatMessage
   userAvatar?: string | React.ReactNode
   aiAvatar?: string | React.ReactNode
@@ -38,6 +39,7 @@ const GmailChatBoxMessageItem: FC<{
     editAble,
     insertAble,
     replaceAble,
+    useChatGPTAble,
     onSave,
     onCopy,
     onRetry,
@@ -272,6 +274,7 @@ const GmailChatBoxMessageItem: FC<{
           <GmailChatBoxAiTools
             insertAble={insertAble}
             replaceAble={replaceAble}
+            useChatGPTAble={useChatGPTAble}
             onCopy={onCopy}
             message={message}
           />

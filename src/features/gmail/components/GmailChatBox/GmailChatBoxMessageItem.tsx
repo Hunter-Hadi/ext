@@ -213,7 +213,7 @@ const GmailChatBoxMessageItem: FC<{
             className={'chat-message--text'}
             id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
             contentEditable={isEdit}
-            whiteSpace={'pre-wrap'}
+            whiteSpace={'normal'}
             sx={{
               wordBreak: 'break-word',
               borderColor: 'primary.main',

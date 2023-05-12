@@ -1,11 +1,4 @@
-import React, {
-  FC,
-  Suspense,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import Alert from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
 import { Theme, SxProps } from '@mui/material/styles'
@@ -17,7 +10,7 @@ import { ROOT_CONTAINER_ID } from '@/types'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IChatMessage } from '@/features/chatgpt/types'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -189,41 +182,18 @@ const GmailChatBoxMessageItem: FC<{
           ...ChatBoxSx,
         }}
       >
-        {message?.extra?.status === 'error' ? (
-          <Alert
-            severity={'error'}
-            sx={{
-              p: 1,
-              '& .MuiAlert-message': {
-                p: 0,
-              },
-            }}
-            icon={<></>}
-          >
-            <div
-              className={`markdown-body ${
-                userSettings?.colorSchema === 'dark'
-                  ? 'markdown-body--dark'
-                  : ''
-              }`}
+        <AppSuspenseLoadingLayout>
+          {message?.extra?.status === 'error' ? (
+            <Alert
+              severity={'error'}
+              sx={{
+                p: 1,
+                '& .MuiAlert-message': {
+                  p: 0,
+                },
+              }}
+              icon={<></>}
             >
-              <CustomMarkdown>{defaultText.replace(/^\s+/, '')}</CustomMarkdown>
-            </div>
-          </Alert>
-        ) : (
-          <Stack
-            className={'chat-message--text'}
-            id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
-            contentEditable={isEdit}
-            whiteSpace={'pre-wrap'}
-            sx={{
-              wordBreak: 'break-word',
-              borderColor: 'primary.main',
-              borderStyle: 'solid',
-              borderWidth: isEdit ? 1 : 0,
-            }}
-          >
-            {message.type !== 'user' ? (
               <div
                 className={`markdown-body ${
                   userSettings?.colorSchema === 'dark'
@@ -231,19 +201,42 @@ const GmailChatBoxMessageItem: FC<{
                     : ''
                 }`}
               >
-                <Suspense
-                  fallback={<AppLoadingLayout loading={true} size={16} />}
+                <CustomMarkdown>
+                  {defaultText.replace(/^\s+/, '')}
+                </CustomMarkdown>
+              </div>
+            </Alert>
+          ) : (
+            <Stack
+              className={'chat-message--text'}
+              id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
+              contentEditable={isEdit}
+              whiteSpace={'pre-wrap'}
+              sx={{
+                wordBreak: 'break-word',
+                borderColor: 'primary.main',
+                borderStyle: 'solid',
+                borderWidth: isEdit ? 1 : 0,
+              }}
+            >
+              {message.type !== 'user' ? (
+                <div
+                  className={`markdown-body ${
+                    userSettings?.colorSchema === 'dark'
+                      ? 'markdown-body--dark'
+                      : ''
+                  }`}
                 >
                   <CustomMarkdown>
                     {defaultText.replace(/^\s+/, '')}
                   </CustomMarkdown>
-                </Suspense>
-              </div>
-            ) : (
-              defaultText.replace(/^\s+/, '')
-            )}
-          </Stack>
-        )}
+                </div>
+              ) : (
+                defaultText.replace(/^\s+/, '')
+              )}
+            </Stack>
+          )}
+        </AppSuspenseLoadingLayout>
         {message.type === 'user' && (
           <GmailChatBoxUserTools
             editAble={editAble}

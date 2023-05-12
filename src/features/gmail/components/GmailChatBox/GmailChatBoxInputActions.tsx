@@ -71,7 +71,7 @@ const GmailChatBoxInputActions: FC<{
         {/*</DevContent>*/}
         {!isEzMailApp && (
           <FloatingInputButton
-            buttonText={'Use Prompt'}
+            buttonText={'Use prompt'}
             onBeforeShowContextMenu={() => {
               return {
                 template: inputValue,

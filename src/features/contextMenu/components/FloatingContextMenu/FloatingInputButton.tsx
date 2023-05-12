@@ -41,7 +41,7 @@ const FloatingInputButton: FC<{
   }
   if (iconButton) {
     return (
-      <TooltipIconButton title={'Use Prompt'} onClick={handleClick}>
+      <TooltipIconButton title={'Use prompt'} onClick={handleClick}>
         <UseChatGptIcon
           sx={{
             fontSize: 16,

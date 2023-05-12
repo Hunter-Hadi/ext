@@ -98,7 +98,7 @@ const providerOptions = [
     label: 'Free AI',
     value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
     shortDescription: `Use our OpenAI API key (GPT-3.5-turbo) for free behind the scenes to power the extension.`,
-    description: `To get more Free AI, all you need to do is share your referral link and invite your friends to join us.`,
+    description: `To get more Free AI without a daily limit, all you need to do is share your referral link and invite your friends to join us.`,
     features: [
       `[ThumbUp] Free to use`,
       `[Done] No OpenAI account required`,
@@ -145,7 +145,7 @@ const providerOptions = [
       />
     ),
     shortDescription: `Use your own Bard to power the extension.`,
-    description: `Use your own Bard to power the extension. You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can join the waitlist at bard.google.com.`,
+    description: `You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can enable it instantly at bard.google.com.`,
     features: [
       `[ThumbUp] Free to use`,
       `[Done] No OpenAI account required`,

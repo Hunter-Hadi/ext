@@ -41,10 +41,12 @@ const GmailChatBoxProviderComponents = () => {
             }}
           >
             <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
-              Get up to 24 weeks of Free AI!
+              Get up to 24 weeks of Free AI without a daily limit!
             </Typography>
             <Typography fontSize={14} color={'text.primary'}>
-              {`Invite your friends to join UseChatGPT.AI! For anyone who signs up using your referral link and installs UseChatGPT.AI extension, we'll give you both 1 week of Free AI!`}
+              {`Invite your friends to join UseChatGPT.AI! For anyone who signs up
+              using your referral link and installs UseChatGPT.AI extension,
+              we'll give you both 1 week of Free AI without a daily limit!`}
             </Typography>
             <img
               src={`https://app.usechatgpt.ai/assets/images/referral/invite-your-friends-light.png`}

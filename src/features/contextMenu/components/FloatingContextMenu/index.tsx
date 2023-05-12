@@ -24,7 +24,10 @@ import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { ROOT_FLOATING_INPUT_ID } from '@/types'
+import {
+  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+  ROOT_FLOATING_INPUT_ID,
+} from '@/types'
 import { getAppContextMenuElement, showChatBox } from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
@@ -209,13 +212,16 @@ const FloatingContextMenu: FC<{
   ])
   const currentWidth = useMemo(() => {
     if (floatingDropdownMenu.rootRect) {
-      const minWidth = Math.max(floatingDropdownMenu.rootRect?.width || 0, 680)
+      const minWidth = Math.max(
+        floatingDropdownMenu.rootRect?.width || 0,
+        CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH - 32,
+      )
       if (minWidth > 1280) {
         return 1280
       }
       return minWidth
     }
-    return 680
+    return CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH - 32
   }, [floatingDropdownMenu.rootRect])
   useEffect(() => {
     getMediator('floatingMenuInputMediator').subscribe(setInputValue)
@@ -235,7 +241,7 @@ const FloatingContextMenu: FC<{
           top: y ?? 0,
           left: x ?? 0,
           width: currentWidth,
-          maxWidth: '90%',
+          maxWidth: '90vw',
         }}
         onKeyDown={(event) => {
           event.stopPropagation()

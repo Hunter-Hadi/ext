@@ -160,7 +160,7 @@ const FloatingContextMenuButton: FC<{
         referenceElement={
           <Box>
             <TooltipIconButton
-              title={'Use Prompt'}
+              title={'Use prompt'}
               onClick={updateCurrentFloatingContextMenuButtonId}
             >
               <UseChatGptIcon

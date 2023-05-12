@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useCallback, useEffect, useRef } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 // import CircularProgress from '@mui/material/CircularProgress'
@@ -25,6 +25,7 @@ import { IChatMessage } from '@/features/chatgpt/types'
 import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
 import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import useSliceMessageList from '../../hooks/useSliceMessageList'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -77,6 +78,11 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   } = props
   // const conversation = useRecoilValue(ChatGPTConversationState)
   const stackRef = useRef<HTMLElement | null>(null)
+  const messageListContainerList = useRef<HTMLElement | null>(null)
+  const { slicedMessageList, changePageNumber } = useSliceMessageList(
+    messageListContainerList.current,
+    messages,
+  )
   // const [inputValue, setInputValue] = useState('')
   // 为了在消息更新前计算滚动高度
   // const currentMaxInputLength = useMemo(() => {
@@ -90,6 +96,15 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   //   return inputValue.length > currentMaxInputLength
   // }, [inputValue, currentMaxInputLength])
   const scrolledToBottomRef = useRef(true)
+
+  const handleSendMessage = useCallback(
+    (value: string) => {
+      changePageNumber(1)
+      onSendMessage && onSendMessage(value)
+    },
+    [onSendMessage, changePageNumber],
+  )
+
   useEffect(() => {
     const list = stackRef.current
     if (!list) {
@@ -121,9 +136,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [writingMessage])
   const lastScrollId = useRef('')
   useEffect(() => {
-    if (messages.length > 0) {
-      for (let i = messages.length - 1; i >= 0; i--) {
-        const message = messages[i]
+    if (slicedMessageList.length > 0) {
+      for (let i = slicedMessageList.length - 1; i >= 0; i--) {
+        const message = slicedMessageList[i]
         if (message.type === 'user' || message.type === 'system') {
           const list = stackRef.current
           if (
@@ -145,7 +160,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }
       }
     }
-  }, [messages])
+  }, [slicedMessageList])
   useEffect(() => {
     const focusListener = () => {
       const list = stackRef.current
@@ -156,8 +171,10 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }, 1000)
       }
     }
+
     focusListener()
     window.addEventListener('focus', focusListener)
+
     return () => window.removeEventListener('focus', focusListener)
   }, [])
   useEffect(() => {
@@ -166,6 +183,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       // getMediator('chatBoxInputMediator').unsubscribe(setInputValue)
     }
   }, [])
+
   return (
     <Stack
       position={'relative'}
@@ -216,38 +234,41 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         <ChatGPTAIProviderSelector />
         <GmailChatBoxProviderComponents />
         <AppSuspenseLoadingLayout>
-          {messages.map((message) => {
-            return (
+          <Box ref={messageListContainerList}>
+            {slicedMessageList.map((message) => {
+              return (
+                <GmailChatBoxMessageItem
+                  className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
+                  insertAble={insertAble}
+                  replaceAble={true}
+                  message={message}
+                  aiAvatar={aiAvatar}
+                  editAble={editAble}
+                  userAvatar={userAvatar}
+                  useChatGPTAble={true}
+                  key={message.messageId}
+                  onSave={(value) => {
+                    onQuestionUpdate &&
+                      onQuestionUpdate(message.messageId, value)
+                  }}
+                  onRetry={onRetry}
+                  onCopy={onCopy}
+                />
+              )
+            })}
+            {writingMessage && (
               <GmailChatBoxMessageItem
-                className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-                insertAble={insertAble}
-                replaceAble={true}
-                useChatGPTAble={true}
-                message={message}
+                className={'use-chat-gpt-ai__writing-message-item'}
+                replaceAble={false}
+                insertAble={false}
+                message={writingMessage}
+                useChatGPTAble={false}
                 aiAvatar={aiAvatar}
-                editAble={editAble}
+                editAble={false}
                 userAvatar={userAvatar}
-                key={message.messageId}
-                onSave={(value) => {
-                  onQuestionUpdate && onQuestionUpdate(message.messageId, value)
-                }}
-                onRetry={onRetry}
-                onCopy={onCopy}
               />
-            )
-          })}
-          {writingMessage && (
-            <GmailChatBoxMessageItem
-              className={'use-chat-gpt-ai__writing-message-item'}
-              replaceAble={false}
-              insertAble={false}
-              useChatGPTAble={false}
-              message={writingMessage}
-              aiAvatar={aiAvatar}
-              editAble={false}
-              userAvatar={userAvatar}
-            />
-          )}
+            )}
+          </Box>
         </AppSuspenseLoadingLayout>
       </Box>
       {/*// input height*/}
@@ -277,7 +298,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             mb={1}
             position={'relative'}
           >
-            {!loading && messages.length > 0 && (
+            {!loading && slicedMessageList.length > 0 && (
               <>
                 <Box
                   sx={{
@@ -343,11 +364,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             }}
             stopPropagation
             loading={loading}
-            onEnter={(value) => {
-              onSendMessage && onSendMessage(value)
-            }}
+            onEnter={handleSendMessage}
           >
-            <GmailChatBoxInputActions onSendMessage={onSendMessage} />
+            <GmailChatBoxInputActions onSendMessage={handleSendMessage} />
           </AutoHeightTextarea>
         </Stack>
         <Stack

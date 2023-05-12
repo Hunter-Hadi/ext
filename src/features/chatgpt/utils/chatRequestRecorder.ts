@@ -17,7 +17,7 @@ interface IChatRequestCountRecordType {
 const CHATGPT_REQUEST_TIME_RECORD = 'chatgpt-request-time-record'
 const CHATGPT_REQUEST_COUNT_RECORD = 'chatgpt-request-count-record'
 
-const RECORD_DAY_LIMIT = 3
+const RECORD_DAY_LIMIT = 2
 
 const getStorageDataKeyByKey = async (key: string) => {
   const res = await Browser.storage.local.get(key)

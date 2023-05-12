@@ -1,12 +1,5 @@
 import { IChatMessage } from '@/features/chatgpt/types'
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 interface ISliceMessageOptions {
   // 每页大小
@@ -16,7 +9,7 @@ interface ISliceMessageOptions {
 }
 
 const useSliceMessageList = (
-  containerList: HTMLElement | null,
+  containerListRef: React.MutableRefObject<HTMLElement | null>,
   list: IChatMessage[],
   coverOptions?: ISliceMessageOptions,
 ) => {
@@ -27,30 +20,43 @@ const useSliceMessageList = (
   const buffer = coverOptions?.buffer || 0
 
   const startMonitor = useCallback(() => {
-    // debugger
     if (observer.current) {
       observer.current.disconnect()
     }
-    if (containerList) {
-      const target = containerList.children[buffer]
-      if (target) {
-        const observerCallback = (entries: IntersectionObserverEntry[]) => {
-          // 因为只监听某个item 所以只有一个
-          const monitorEl = entries[0]
-          if (monitorEl.isIntersecting) {
-            console.log('trigger loadMore', target)
-            loadMore()
-          }
+    if (containerListRef.current) {
+      const containerList = containerListRef.current
+      let timer: number | null = null
+      const tryObserve = () => {
+        if (timer) {
+          window.clearTimeout(timer)
         }
-        observer.current = new IntersectionObserver(observerCallback)
-        console.log('start observe', target)
-        currentObserverTarget.current = target
-        observer.current.observe(target)
+        const target = containerList.children[buffer]
+        if (target) {
+          const observerCallback = (entries: IntersectionObserverEntry[]) => {
+            // 因为只监听某个item 所以只有一个
+            const monitorEl = entries[0]
+            if (monitorEl.isIntersecting) {
+              console.log('trigger loadMore', target)
+              loadMore()
+            }
+          }
+          observer.current = new IntersectionObserver(observerCallback)
+          console.log('start observe', target)
+          currentObserverTarget.current = target
+          observer.current.observe(target)
+        } else {
+          timer = window.setTimeout(() => {
+            tryObserve()
+          }, 1000)
+        }
       }
+
+      tryObserve()
     }
-  }, [containerList])
+  }, [buffer])
 
   const refreshMonitor = useCallback(() => {
+    const containerList = containerListRef.current
     if (observer.current && containerList) {
       if (currentObserverTarget.current) {
         observer.current.unobserve(currentObserverTarget.current)
@@ -61,7 +67,7 @@ const useSliceMessageList = (
         observer.current.observe(target)
       }
     }
-  }, [containerList, buffer])
+  }, [containerListRef, buffer])
 
   const loadMore = useCallback(() => {
     setPageNum((pre) => ++pre)
@@ -76,14 +82,14 @@ const useSliceMessageList = (
     refreshMonitor()
   }, [slicedMessageList])
 
-  useLayoutEffect(() => {
-    if (list.length > pageSize) {
+  useEffect(() => {
+    if (list.length > pageSize && containerListRef.current) {
       startMonitor()
     }
     return () => {
       observer.current && observer.current.disconnect()
     }
-  }, [startMonitor, list, pageSize])
+  }, [startMonitor, list, pageSize, containerListRef])
 
   return {
     slicedMessageList,

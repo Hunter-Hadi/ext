@@ -1,5 +1,4 @@
 import { IContextMenuItem } from '@/features/contextMenu'
-
 export default [
   {
     id: '81343baa-2aa4-4435-afd3-f3501f51b708',
@@ -797,7 +796,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'I will give you text content, you will rewrite it and output a better version of my text.\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in {{AI_OUTPUT_LANGUAGE}}:\n"""\n{{SELECTED_TEXT}}\n"""',
+              'I will give you text content, you will rewrite it and output a better version of my text.\nKeep the meaning the same. Make sure the re-written content\'s number of characters is the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in {{AI_OUTPUT_LANGUAGE}}:\n"""\n{{SELECTED_TEXT}}\n"""',
           },
         },
         {
@@ -822,7 +821,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'I will give you text content, you will correct the spelling, syntax and grammar of this text. Correct any spelling, syntax, or grammar mistakes in the text I give you without making any improvements or changes to the original meaning or style. In other words, only correct spelling, syntax, or grammar mistakes mistakes, do not make improvements. If the orignal text has no mistake, just output the orignal text and nothing else.\nKeep the meaning the same. Make sure the re-written content\'s number of characters is exactly the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in {{AI_OUTPUT_LANGUAGE}}:\n"""\n{{SELECTED_TEXT}}\n"""',
+              'I will give you text content, you will correct the spelling, syntax and grammar of this text. Correct any spelling, syntax, or grammar mistakes in the text I give you without making any improvements or changes to the original meaning or style. In other words, only correct spelling, syntax, or grammar mistakes, do not make improvements. If the original text has no mistake, just output the original text and nothing else.\nKeep the meaning the same. Make sure the re-written content\'s number of words is the same as the original text\'s number of characters. Do not alter the original structure and formatting outlined in any way. Only give me the output and nothing else.\nNow, using the concepts above, re-write the following text. Respond in {{AI_OUTPUT_LANGUAGE}}:\n"""\n{{SELECTED_TEXT}}\n"""',
           },
         },
         {

@@ -3,7 +3,7 @@ import { ComposeView, InboxSDK, ThreadView } from '@inboxsdk/core'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
 import Browser from 'webextension-polyfill'
 import { IChatMessage } from '@/features/chatgpt/types'
-import { v4 as uuidV4 } from 'uuid'
+// import { v4 as uuidV4 } from 'uuid'
 
 interface IProxyInboxSdkTarget<T> {
   getInstance?: () => T

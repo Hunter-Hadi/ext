@@ -17,11 +17,10 @@ export const parseBardResponse = (resp: string) => {
   const data = JSON.parse(resp.split('\n')[3])
   const payload = JSON.parse(data[0][2])
   if (!payload) {
-    debugger
     // FIXME: 需要测试所有场景
     // throw new ChatError('Failed to access Bard', ErrorCode.BARD_EMPTY_RESPONSE)
     return {
-      text: 'Failed to access Bard',
+      text: 'Failed to access Bard\nTry again, or visit [bard.google.com](https://bard.google.com) for more information.',
       ids: ['', '', ''] as [string, string, string],
     }
   }

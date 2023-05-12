@@ -112,6 +112,29 @@ const providerOptions = [
   },
   {
     beta: false,
+    label: 'Bard',
+    value: CHAT_GPT_PROVIDER.BARD,
+    logo: (
+      <BardIcon
+        sx={{
+          fontSize: 20,
+        }}
+      />
+    ),
+    shortDescription: `Use your own Bard to power the extension.`,
+    description: `You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can enable it instantly on bard.google.com.`,
+    features: [
+      `[ThumbUp] Free to use`,
+      `[Done] No OpenAI account required`,
+      `[Lock] Country restrictions apply`,
+      `[Lock] Bard access required`,
+      `[Incorrect] Not always available`,
+      `[Unhappy] Standard response speed`,
+      `[Done]  Bard AI by Google available`,
+    ],
+  },
+  {
+    beta: false,
     label: 'Bing',
     value: CHAT_GPT_PROVIDER.BING,
     logo: (
@@ -131,29 +154,6 @@ const providerOptions = [
       `[Incorrect] Not always available`,
       `[Unhappy] Standard response speed`,
       `[Done]  GPT-4 unavailable`,
-    ],
-  },
-  {
-    beta: false,
-    label: 'Bard',
-    value: CHAT_GPT_PROVIDER.BARD,
-    logo: (
-      <BardIcon
-        sx={{
-          fontSize: 20,
-        }}
-      />
-    ),
-    shortDescription: `Use your own Bard to power the extension.`,
-    description: `You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can enable it instantly at bard.google.com.`,
-    features: [
-      `[ThumbUp] Free to use`,
-      `[Done] No OpenAI account required`,
-      `[Lock] Country restrictions apply`,
-      `[Lock] Bard access required`,
-      `[Incorrect] Not always available`,
-      `[Unhappy] Standard response speed`,
-      `[Done]  Bard AI by Google available`,
     ],
   },
 ]

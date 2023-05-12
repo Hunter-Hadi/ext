@@ -43,8 +43,10 @@ const ChatGPTOpenAIModelSelector: FC = () => {
     }
     return []
   }, [appSettings.models])
+  console.log(appSettings.currentModel)
   return (
     <>
+      <p>{appSettings.currentModel}</p>
       {memoModels.length > 1 ? (
         <FormControl size="small" sx={{ height: 40 }}>
           <InputLabel
@@ -68,7 +70,7 @@ const ChatGPTOpenAIModelSelector: FC = () => {
             IconComponent={ArrowDropDownIconCustom}
             labelId={'ChatGPTModelsSelectorLabel'}
             label={'Model'}
-            value={appSettings.currentModel || memoModels[0]}
+            value={appSettings.currentModel || memoModels[0].slug}
             onChange={async (event) => {
               setAppSettings((prevState) => {
                 return {

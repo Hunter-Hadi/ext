@@ -296,7 +296,7 @@ class ChatGPTConversation {
             : {},
           settings.currentPlugins &&
             !this.conversationId &&
-            this.model === 'text-davinci-002-plugins'
+            this.model === 'gpt-4-plugins'
             ? {
                 // NOTE: 只有创建新的对话时才需要传入插件
                 plugin_ids: settings.currentPlugins,

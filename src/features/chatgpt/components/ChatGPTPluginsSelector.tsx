@@ -41,10 +41,7 @@ const ChatGPTPluginsSelector: FC = () => {
     return appSettings.currentPlugins || []
   }, [appSettings.currentPlugins])
   const plugins = useMemo(() => {
-    if (
-      appSettings.plugins &&
-      appSettings.currentModel === 'text-davinci-002-plugins'
-    ) {
+    if (appSettings.plugins && appSettings.currentModel === 'gpt-4-plugins') {
       return uniqBy(appSettings.plugins, 'id').filter(
         (plugin) => plugin.user_settings.is_installed,
       )

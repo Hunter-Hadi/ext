@@ -16,6 +16,7 @@ import {
 import {
   cloneRect,
   FloatingContextMenuMiddleware,
+  getContextMenuRenderPosition,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
@@ -51,6 +52,46 @@ const FloatingContextMenu: FC<{
     floatingDropdownMenuSelectedItem,
     updateFloatingDropdownMenuSelectedItem,
   ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
+  const currentWidth = useMemo(() => {
+    if (floatingDropdownMenu.rootRect) {
+      const minWidth = Math.max(
+        floatingDropdownMenu.rootRect?.width || 0,
+        CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH - 32,
+      )
+      if (minWidth > 1280) {
+        return 1280
+      }
+      return minWidth
+    }
+    return CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH - 32
+  }, [floatingDropdownMenu.rootRect])
+  const safePlacement = useMemo(() => {
+    // 为了防止input+contextMenu出现遮挡了原本选中的字体，所以这里的方向其实要算input+contextMenu的高度
+    // 1. 基于高亮块矩形计算出实际渲染input矩形的初始点xy位置
+    // 2. 基于高亮块和input的y值判断input的渲染方向和contextMenu的渲染方向
+    if (floatingDropdownMenu.rootRect && currentWidth) {
+      const position = getContextMenuRenderPosition(
+        floatingDropdownMenu.rootRect,
+        currentWidth,
+        400,
+      )
+      console.log(
+        '[ContextMenu Module]: [safePlacement]',
+        position.x,
+        '\n',
+        floatingDropdownMenu.rootRect.top,
+        position.y,
+        floatingDropdownMenu.rootRect.y,
+      )
+      if (position.y > floatingDropdownMenu.rootRect.top) {
+        // 说明渲染在下方
+        return 'bottom-start'
+      } else {
+        return 'top-start'
+      }
+    }
+    return 'bottom'
+  }, [floatingDropdownMenu.rootRect, currentWidth])
   const { x, y, strategy, refs, context } = useFloating({
     open: floatingDropdownMenu.open,
     onOpenChange: (open) => {
@@ -61,7 +102,7 @@ const FloatingContextMenu: FC<{
         }
       })
     },
-    placement: 'bottom-start',
+    placement: safePlacement,
     middleware: FloatingContextMenuMiddleware,
     whileElementsMounted: autoUpdate,
   })
@@ -210,19 +251,6 @@ const FloatingContextMenu: FC<{
     floatingDropdownMenu.open,
     loading,
   ])
-  const currentWidth = useMemo(() => {
-    if (floatingDropdownMenu.rootRect) {
-      const minWidth = Math.max(
-        floatingDropdownMenu.rootRect?.width || 0,
-        CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH - 32,
-      )
-      if (minWidth > 1280) {
-        return 1280
-      }
-      return minWidth
-    }
-    return CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH - 32
-  }, [floatingDropdownMenu.rootRect])
   useEffect(() => {
     getMediator('floatingMenuInputMediator').subscribe(setInputValue)
     return () => {
@@ -259,6 +287,7 @@ const FloatingContextMenu: FC<{
         }}
       >
         <FloatingContextMenuList
+          defaultPlacement={safePlacement}
           needAutoUpdate
           menuList={loading ? EMPTY_ARRAY : contextMenuList}
           referenceElementOpen={floatingDropdownMenu.open}

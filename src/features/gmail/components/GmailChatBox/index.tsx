@@ -13,8 +13,7 @@ import BlockIcon from '@mui/icons-material/Block'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/gmail/store'
-import { CHROME_EXTENSION_MAIL_TO, isEzMailApp } from '@/types'
-import { FloatingContextMenuButton } from '@/features/contextMenu'
+import { CHROME_EXTENSION_MAIL_TO } from '@/types'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
 // import DevContent from '@/components/DevContent'
@@ -199,12 +198,12 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         ...sx,
       }}
     >
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
-        integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
-        crossOrigin="anonymous"
-      ></link>
+      {/*<link*/}
+      {/*  rel="stylesheet"*/}
+      {/*  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"*/}
+      {/*  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"*/}
+      {/*  crossOrigin="anonymous"*/}
+      {/*></link>*/}
       <style>{markdownCss}</style>
       {/*//NOTE: hide title*/}
       {/*<Stack*/}
@@ -246,6 +245,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                   aiAvatar={aiAvatar}
                   editAble={editAble}
                   userAvatar={userAvatar}
+                  useChatGPTAble={true}
                   key={message.messageId}
                   onSave={(value) => {
                     onQuestionUpdate &&
@@ -262,6 +262,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 replaceAble={false}
                 insertAble={false}
                 message={writingMessage}
+                useChatGPTAble={false}
                 aiAvatar={aiAvatar}
                 editAble={false}
                 userAvatar={userAvatar}
@@ -273,6 +274,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       {/*// input height*/}
       <Box height={8} flexShrink={0} />
       <Stack
+        className={'use-chat-gpt-ai__chat-box__input-box'}
         position={'relative'}
         mt={'auto'}
         justifyContent={'center'}
@@ -327,9 +329,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     />
                   </TooltipButton>
                 </Box>
-                {!isEzMailApp && (
-                  <FloatingContextMenuButton buttonText={'Use Prompt'} />
-                )}
                 {reGenerateAble && (
                   <Button
                     disableElevation
@@ -360,6 +359,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
           </Box>
           <AutoHeightTextarea
+            sx={{
+              minHeight: 121,
+            }}
             stopPropagation
             loading={loading}
             onEnter={handleSendMessage}

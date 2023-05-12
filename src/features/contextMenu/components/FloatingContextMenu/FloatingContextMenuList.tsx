@@ -75,6 +75,8 @@ const FloatingContextMenuList: FC<
     menuList,
     customOpen,
     needAutoUpdate,
+    defaultPlacement,
+    defaultFallbackPlacements,
     ...rest
   } = props
   const RenderMenuList = useMemo(() => {
@@ -163,6 +165,7 @@ const FloatingContextMenuList: FC<
     console.log('RenderMenuList', menuList, nodeList)
     return nodeList
   }, [menuList])
+  console.log('FloatingContextMenuList', defaultPlacement)
   return (
     <DropdownMenu
       zIndex={2147483601}
@@ -172,6 +175,8 @@ const FloatingContextMenuList: FC<
       needAutoUpdate={needAutoUpdate}
       referenceElement={referenceElement}
       referenceElementOpen={referenceElementOpen}
+      defaultPlacement={defaultPlacement}
+      defaultFallbackPlacements={defaultFallbackPlacements}
     >
       {RenderMenuList}
     </DropdownMenu>

@@ -8,8 +8,8 @@ import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
 import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
 import reactNodeToString from 'react-node-to-string'
-import rehypeHighlight from 'rehype-highlight'
-import rehypeKatex from 'rehype-katex'
+// import rehypeHighlight from 'rehype-highlight'
+// import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkBreaks from 'remark-breaks'
 import remarkMath from 'remark-math'
@@ -143,10 +143,11 @@ const CustomMarkdown: FC<{
       <>
         <ReactMarkdown
           remarkPlugins={[remarkMath, supersub, remarkBreaks, remarkGfm]}
-          rehypePlugins={[
-            rehypeKatex,
-            [rehypeHighlight, { detect: true, ignoreMissing: true }],
-          ]}
+          // FIXME: rehypePlugins not working with rollup-plugin-tarser
+          // rehypePlugins={[
+          //   rehypeKatex,
+          //   [rehypeHighlight, { detect: true, ignoreMissing: true }],
+          // ]}
           components={{
             h1: (props: any) => {
               return <OverrideHeading {...props} heading={'h1'} />
@@ -175,13 +176,6 @@ const CustomMarkdown: FC<{
               )
             },
             code: ({ node, inline, className, children, ...props }) => {
-              console.log('{ node, inline, className, children, ...props }', {
-                node,
-                inline,
-                className,
-                children,
-                ...props,
-              })
               if (inline) {
                 return (
                   <code className={className} {...props}>

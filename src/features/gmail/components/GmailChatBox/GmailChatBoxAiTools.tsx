@@ -8,12 +8,14 @@ import { hideChatBox } from '@/utils'
 import { gmailReplyBoxInsertText } from '@/features/gmail/utils'
 import { useRangy } from '@/features/contextMenu/hooks'
 import { IChatMessage } from '@/features/chatgpt/types'
+import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
 const GmailChatBoxAiTools: FC<{
   insertAble?: boolean
   replaceAble?: boolean
+  useChatGPTAble?: boolean
   message: IChatMessage
   onCopy?: () => void
 }> = (props) => {
@@ -23,8 +25,14 @@ const GmailChatBoxAiTools: FC<{
   const insertAbleMemo = useMemo(() => {
     return currentComposeView && insertAble
   }, [insertAble])
+  const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
   return (
-    <Stack direction={'row'} alignItems={'center'} spacing={1}>
+    <Stack
+      direction={'row'}
+      alignItems={'center'}
+      spacing={1}
+      ref={gmailChatBoxAiToolsRef}
+    >
       {insertAbleMemo && (
         <Button
           disableElevation
@@ -74,6 +82,18 @@ const GmailChatBoxAiTools: FC<{
           }
         }}
       />
+      {props.useChatGPTAble && (
+        <FloatingInputButton
+          iconButton
+          onBeforeShowContextMenu={() => {
+            return {
+              template: message.text,
+              target: gmailChatBoxAiToolsRef.current
+                ?.parentElement as HTMLElement,
+            }
+          }}
+        />
+      )}
     </Stack>
   )
 }

@@ -341,7 +341,7 @@ export const MenuComponent = React.forwardRef<
       ) as Array<string | null>,
     )
     const currentPlacement =
-      defaultPlacement || isFirstDeep ? 'bottom-start' : 'right-start'
+      defaultPlacement || (isFirstDeep ? 'bottom-start' : 'right-start')
     const currentFallbackPlacements =
       defaultFallbackPlacements ||
       (isFirstDeep

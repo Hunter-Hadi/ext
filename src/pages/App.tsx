@@ -4,9 +4,7 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { Resizable } from 're-resizable'
 
-import GmailChatPage from '@/pages/gmail/GmailChatPage'
 import { useRecoilState } from 'recoil'
-import NormalChatPage from '@/pages/normal/NormalChatPage'
 import {
   CHROME_EXTENSION_HOMEPAGE_URL,
   isEzMailApp,
@@ -16,12 +14,18 @@ import { AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
 import ChatBoxHeader from '@/pages/gmail/ChatBoxHeader'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
+import { isShowChatBox } from '@/utils'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+
+const GmailChatPage = React.lazy(() => import('@/pages/gmail/GmailChatPage'))
+const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const { visibleWidth, maxWidth, minWidth, setLocalWidth, resizeEnable } =
     useChatBoxWidth()
   const [appState, setAppState] = useRecoilState(AppState)
+  const [isOpened, setIsOpened] = React.useState(false)
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {
       mutations.forEach((mu) => {
@@ -47,7 +51,26 @@ const App: FC = () => {
       attrObserver.disconnect()
     }
   }, [])
-
+  useEffect(() => {
+    if (appState.open) {
+      setIsOpened(true)
+    }
+  }, [appState.open])
+  useEffect(() => {
+    if (!isOpened) {
+      const timer = setInterval(() => {
+        if (isShowChatBox()) {
+          setIsOpened(true)
+        }
+      }, 1000)
+      return () => {
+        clearInterval(timer)
+      }
+    }
+    return () => {
+      // do nothing
+    }
+  }, [isOpened])
   return (
     <>
       <Resizable
@@ -95,30 +118,30 @@ const App: FC = () => {
           >
             <AppInit />
             <ChatBoxHeader />
-            <Stack
-              flex={1}
-              height={0}
-              sx={{
-                overflowY: 'auto',
-              }}
-            >
-              {appState.open && appState.env === 'gmail' && <GmailChatPage />}
-              {appState.env === 'normal' && <NormalChatPage />}
-              <iframe
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  zIndex: -1,
-                  border: 0,
-                  opacity: 0,
-                }}
-                width={1}
-                height={1}
-                id={'EzMail_AI_TEMPLATE_COMPILE'}
-                src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
-              />
-            </Stack>
+            {isOpened && (
+              <Stack flex={1} height={0}>
+                <AppSuspenseLoadingLayout>
+                  {appState.open && appState.env === 'gmail' && (
+                    <GmailChatPage />
+                  )}
+                  {appState.env === 'normal' && <NormalChatPage />}
+                </AppSuspenseLoadingLayout>
+                <iframe
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    zIndex: -1,
+                    border: 0,
+                    opacity: 0,
+                  }}
+                  width={1}
+                  height={1}
+                  id={'EzMail_AI_TEMPLATE_COMPILE'}
+                  src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
+                />
+              </Stack>
+            )}
           </Stack>
         </Box>
       </Resizable>

@@ -80,7 +80,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const stackRef = useRef<HTMLElement | null>(null)
   const messageListContainerList = useRef<HTMLElement | null>(null)
   const { slicedMessageList, changePageNumber } = useSliceMessageList(
-    messageListContainerList.current,
+    messageListContainerList,
     messages,
   )
   // const [inputValue, setInputValue] = useState('')
@@ -233,8 +233,8 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       >
         <ChatGPTAIProviderSelector />
         <GmailChatBoxProviderComponents />
-        <AppSuspenseLoadingLayout>
-          <Box ref={messageListContainerList}>
+        <Box ref={messageListContainerList}>
+          <AppSuspenseLoadingLayout>
             {slicedMessageList.map((message) => {
               return (
                 <GmailChatBoxMessageItem
@@ -268,8 +268,8 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                 userAvatar={userAvatar}
               />
             )}
-          </Box>
-        </AppSuspenseLoadingLayout>
+          </AppSuspenseLoadingLayout>
+        </Box>
       </Box>
       {/*// input height*/}
       <Box height={8} flexShrink={0} />

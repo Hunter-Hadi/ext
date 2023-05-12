@@ -236,7 +236,7 @@ const initIframe = async () => {
   // 注入keyup事件并且透传到父页面
   document.addEventListener('keyup', handleClickOrKeyUp)
   // embed页面初始化
-  if (window.location.href.indexOf('usechatgpt.ai/embed')) {
+  if (window.location.href.indexOf('usechatgpt.ai/embed') > -1) {
     const inVisibleDiv = document.createElement('div')
     inVisibleDiv.id = 'USE_CHAT_GPT_AI_ROOT'
     inVisibleDiv.style.display = 'none'
@@ -249,7 +249,7 @@ const initIframe = async () => {
     inVisibleDiv.style.overflow = 'hidden'
     inVisibleDiv.style.opacity = '0'
     inVisibleDiv.style.pointerEvents = 'none'
-    inVisibleDiv.innerText = `usechatgpt init success`
+    // inVisibleDiv.innerText = `usechatgpt init success`
     document.body.appendChild(inVisibleDiv)
     isEmbedPage = true
   }

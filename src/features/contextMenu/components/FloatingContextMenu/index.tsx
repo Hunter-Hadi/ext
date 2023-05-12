@@ -78,11 +78,19 @@ const FloatingContextMenu: FC<{
       console.log(
         '[ContextMenu Module]: [safePlacement]',
         position.x,
+        floatingDropdownMenu.rootRect.left,
         '\n',
-        floatingDropdownMenu.rootRect.top,
         position.y,
         floatingDropdownMenu.rootRect.y,
       )
+      if (position.x > floatingDropdownMenu.rootRect.left + 300) {
+        // 说明渲染在右方 300是因为input宽度至少为450
+        return 'right-start'
+      }
+      if (position.x < floatingDropdownMenu.rootRect.left - 300) {
+        // 说明渲染在左方 300是因为input宽度至少为450
+        return 'left-start'
+      }
       if (position.y > floatingDropdownMenu.rootRect.top) {
         // 说明渲染在下方
         return 'bottom-start'

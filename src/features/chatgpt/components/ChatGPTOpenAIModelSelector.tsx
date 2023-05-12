@@ -43,10 +43,8 @@ const ChatGPTOpenAIModelSelector: FC = () => {
     }
     return []
   }, [appSettings.models])
-  console.log(appSettings.currentModel)
   return (
     <>
-      <p>{appSettings.currentModel}</p>
       {memoModels.length > 1 ? (
         <FormControl size="small" sx={{ height: 40 }}>
           <InputLabel

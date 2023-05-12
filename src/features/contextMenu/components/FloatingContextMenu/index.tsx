@@ -1,6 +1,7 @@
 import {
   autoUpdate,
   FloatingPortal,
+  Placement,
   useClick,
   useDismiss,
   useFloating,
@@ -69,6 +70,8 @@ const FloatingContextMenu: FC<{
     // 为了防止input+contextMenu出现遮挡了原本选中的字体，所以这里的方向其实要算input+contextMenu的高度
     // 1. 基于高亮块矩形计算出实际渲染input矩形的初始点xy位置
     // 2. 基于高亮块和input的y值判断input的渲染方向和contextMenu的渲染方向
+    let inputPlacement: Placement = 'bottom-start'
+    let contextMenuPlacement: Placement = 'bottom-start'
     if (floatingDropdownMenu.rootRect && currentWidth) {
       const position = getContextMenuRenderPosition(
         floatingDropdownMenu.rootRect,
@@ -83,22 +86,28 @@ const FloatingContextMenu: FC<{
         position.y,
         floatingDropdownMenu.rootRect.y,
       )
-      if (position.x > floatingDropdownMenu.rootRect.left + 300) {
-        // 说明渲染在右方 300是因为input宽度至少为450
-        return 'right-start'
-      }
-      if (position.x < floatingDropdownMenu.rootRect.left - 300) {
-        // 说明渲染在左方 300是因为input宽度至少为450
-        return 'left-start'
-      }
+      // 先看渲染在上方还是下方
       if (position.y > floatingDropdownMenu.rootRect.top) {
         // 说明渲染在下方
-        return 'bottom-start'
-      } else {
-        return 'top-start'
+        inputPlacement = 'bottom-start'
+        contextMenuPlacement = 'bottom-start'
+      } else if (position.y < floatingDropdownMenu.rootRect.top) {
+        inputPlacement = 'top-start'
+        contextMenuPlacement = 'top-start'
+      }
+      // 再看渲染在左方还是右方
+      if (position.x > floatingDropdownMenu.rootRect.left + 300) {
+        // 说明渲染在右方 300是因为input宽度至少为450
+        inputPlacement = 'right-start'
+      } else if (position.x < floatingDropdownMenu.rootRect.left - 300) {
+        // 说明渲染在左方 300是因为input宽度至少为450
+        inputPlacement = 'left-start'
       }
     }
-    return 'bottom'
+    return {
+      inputPlacement,
+      contextMenuPlacement,
+    }
   }, [floatingDropdownMenu.rootRect, currentWidth])
   const { x, y, strategy, refs, context } = useFloating({
     open: floatingDropdownMenu.open,
@@ -110,7 +119,7 @@ const FloatingContextMenu: FC<{
         }
       })
     },
-    placement: safePlacement,
+    placement: safePlacement.inputPlacement,
     middleware: FloatingContextMenuMiddleware,
     whileElementsMounted: autoUpdate,
   })
@@ -295,7 +304,7 @@ const FloatingContextMenu: FC<{
         }}
       >
         <FloatingContextMenuList
-          defaultPlacement={safePlacement}
+          defaultPlacement={safePlacement.contextMenuPlacement}
           needAutoUpdate
           menuList={loading ? EMPTY_ARRAY : contextMenuList}
           referenceElementOpen={floatingDropdownMenu.open}

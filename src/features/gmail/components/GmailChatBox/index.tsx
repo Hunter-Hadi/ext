@@ -136,9 +136,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [writingMessage])
   const lastScrollId = useRef('')
   useEffect(() => {
-    if (slicedMessageList.length > 0) {
-      for (let i = slicedMessageList.length - 1; i >= 0; i--) {
-        const message = slicedMessageList[i]
+    if (messages.length > 0) {
+      for (let i = messages.length - 1; i >= 0; i--) {
+        const message = messages[i]
         if (message.type === 'user' || message.type === 'system') {
           const list = stackRef.current
           if (
@@ -160,7 +160,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }
       }
     }
-  }, [slicedMessageList])
+  }, [messages])
   useEffect(() => {
     const focusListener = () => {
       const list = stackRef.current

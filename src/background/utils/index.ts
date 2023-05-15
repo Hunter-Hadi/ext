@@ -148,6 +148,7 @@ export const getChromeExtensionSettings =
     const localData = await Browser.storage.local.get(
       CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
     )
+    console.log('localData', localData)
     try {
       if (localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]) {
         const settings = {
@@ -208,6 +209,8 @@ export const setChromeExtensionSettings = async (
         }),
       })
     }
+    console.log('save', settingsOrUpdateFunction)
+    console.log('get', await getChromeExtensionSettings())
     return true
   } catch (e) {
     return false

@@ -6,6 +6,7 @@ import {
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
 
+let lastBrowserWindowId: number | undefined = undefined
 /**
  * 创建守护进程的tab
  */
@@ -24,10 +25,26 @@ export const createDaemonProcessTab = async () => {
       url: 'https://chat.openai.com',
     })
   } else {
+    let window: Browser.Windows.Window | undefined = undefined
+    if (lastBrowserWindowId) {
+      try {
+        window = await Browser.windows.get(lastBrowserWindowId)
+      } catch (e) {
+        lastBrowserWindowId = undefined
+      }
+    }
+    if (!window) {
+      // create a special windows for chatGPT
+      const window = await Browser.windows.create({
+        state: 'minimized',
+      })
+      lastBrowserWindowId = window.id
+    }
     // 创建一个新的tab
     currentPinnedTab = await Browser.tabs.create({
       url: 'https://chat.openai.com',
       pinned: true,
+      windowId: window?.id,
     })
   }
   return currentPinnedTab

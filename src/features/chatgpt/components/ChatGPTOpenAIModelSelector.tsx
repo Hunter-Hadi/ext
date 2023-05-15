@@ -68,7 +68,7 @@ const ChatGPTOpenAIModelSelector: FC = () => {
             IconComponent={ArrowDropDownIconCustom}
             labelId={'ChatGPTModelsSelectorLabel'}
             label={'Model'}
-            value={appSettings.currentModel || memoModels[0].slug}
+            value={appSettings.currentModel}
             onChange={async (event) => {
               setAppSettings((prevState) => {
                 return {

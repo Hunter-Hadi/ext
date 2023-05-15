@@ -50,14 +50,18 @@ const ChatGPTPluginsSelector: FC = () => {
     }
   }, [appSettings.plugins, appSettings.currentModel])
   useEffect(() => {
-    // 过滤掉不存在的
-    const filterIds = enabledPlugins.filter((id) => {
-      return plugins.find((plugin) => plugin.id === id)
-    })
-    setChromeExtensionSettings({
-      currentPlugins: filterIds,
-    })
-  }, [plugins, enabledPlugins])
+    if (appSettings.currentModel === 'gpt-4-plugins') {
+      // 过滤掉不存在的
+      const filterIds = enabledPlugins.filter((id) => {
+        return plugins.find((plugin) => plugin.id === id)
+      })
+      if (filterIds.length !== enabledPlugins.length) {
+        setChromeExtensionSettings({
+          currentPlugins: filterIds,
+        })
+      }
+    }
+  }, [plugins, enabledPlugins, appSettings.currentModel])
   const handleError = () => {
     // set error 1s
     setError(true)

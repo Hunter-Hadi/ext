@@ -114,17 +114,21 @@ const useDaemonProcess = () => {
               if (models.length > 0) {
                 await setChromeExtensionSettings((settings) => {
                   let currentModel = settings.currentModel
+                  const defaultModel =
+                    models.find((model) => model?.title?.includes('Default')) ||
+                    models[0]
+                  currentModel = defaultModel?.slug
                   if (currentModel) {
+                    // 确认当前模型是否存在
                     const findModel = models.find(
                       (model) => model?.slug === currentModel,
                     )
                     if (!findModel) {
-                      const defaultModel =
-                        models.find((model) =>
-                          model?.title?.includes('Default'),
-                        ) || models[0]
                       currentModel = defaultModel?.slug
                     }
+                  } else {
+                    // 设置默认模型
+                    currentModel = defaultModel?.slug
                   }
                   log.info(`set currentModel model`, currentModel)
                   return {

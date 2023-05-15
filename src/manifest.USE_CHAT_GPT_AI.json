@@ -35,14 +35,13 @@
     }
   ],
   "host_permissions": [
-    "https://*/*",
     "https://*.openai.com/*"
   ],
   "options_ui": {
     "page": "pages/options/index.html",
     "open_in_tab": true
   },
-  "permissions": ["tabs", "scripting", "storage", "management", "contextMenus","declarativeNetRequest"],
+  "permissions": ["tabs", "scripting", "storage", "management", "contextMenus"],
   "optional_permissions": [
     "clipboardRead",
     "clipboardWrite",

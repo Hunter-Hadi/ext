@@ -14,8 +14,8 @@ if (!shell.which('git')) {
 }
 
 const cacheDir = 'pdf'
-const repoRoot = 'pdf'
-const publicPDFRoot = path.join(__dirname, '../assets/pdf')
+const repoRoot = '../pdf/pdfjs-3.6.172-dist'
+const publicPDFRoot = path.join(__dirname, '../pdf/pdf_build/')
 const pdfFiles = [
   'build/pdf.js',
   'build/pdf.worker.js',
@@ -65,26 +65,13 @@ async function modifyViewrJS() {
   const viewerPath = path.join(__dirname, repoRoot, 'web/viewer.js')
   let file = await fs.readFile(viewerPath, 'utf8')
 
-  file = '/* saladict */ window.__SALADICT_PDF_PAGE__ = true;\n' + file
-
-  // change default pdf
-  const defaultPDFTester =
-    /defaultUrl = {[\s\S]*?value: (['"]\S+?.pdf['"]),[\s\S]*?kind: OptionKind\.VIEWER/
-  if (!defaultPDFTester.test(file)) {
-    shell.echo('Could not locate default pdf in viewer.js')
-    shell.exit(1)
-  }
-  file = file.replace(defaultPDFTester, (m, p1) =>
-    m.replace(p1, "/* saladict */'/assets/default.pdf'"),
-  )
-
   // disable url check
   const validateTester = /validateFileURL\(file\);/
   if (!validateTester.test(file)) {
     shell.echo('Could not locate validateFileURL in viewer.js')
     shell.exit(1)
   }
-  file = file.replace(validateTester, '/* saladict */')
+  file = file.replace(validateTester, '/* usechatgpt */')
 
   // force dark mode
   const viewCssTester = /"viewerCssTheme": 0,/
@@ -92,7 +79,7 @@ async function modifyViewrJS() {
     shell.echo('Could not locate viewerCssTheme config in viewer.js')
     shell.exit(1)
   }
-  file = file.replace(viewCssTester, '"viewerCssTheme": 2, /* saladict */')
+  file = file.replace(viewCssTester, '"viewerCssTheme": 2, /* usechatgpt */')
 
   await fs.writeFile(viewerPath, file)
 }
@@ -110,10 +97,8 @@ async function modifyViewerHTML() {
   file = file.replace(
     `</body>`,
     `
-    <!-- Saladict -->
-    <script src="/assets/browser-polyfill.min.js"></script>
-    <script src="/assets/inject-dict-panel.js"></script>
-    <script src="/assets/vimium-c-injector.js"></script>
+    <!-- UseChatGPT -->
+    <script src="/content.js" type='module'></script>
   </body>
 `,
   )

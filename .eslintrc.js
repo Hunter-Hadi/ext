@@ -23,5 +23,5 @@ module.exports = {
     // disable the rule for all files
     '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
-  ignorePatterns: ['src/lib/**/*.js'],
+  ignorePatterns: ['src/lib/**/*.js', 'pdf/**/*.js'],
 }

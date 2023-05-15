@@ -71,6 +71,7 @@ export default mergeRollupConfig(isProduction, {
             src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
             dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
           },
+          { src: 'assets/pdf/*', dest: 'dist/pages/pdf' },
         ],
         hook: 'generateBundle',
       }),

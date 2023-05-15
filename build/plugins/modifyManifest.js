@@ -34,26 +34,14 @@ const modifyManifest = ({ env, isProd }) => ({
       manifestContent.web_accessible_resources,
       'matches',
     )
-    if (!isProd) {
-      // "web_accessible_resources": [
-      //   {
-      //     "resources": [
-      //       "chunks/*-*.js",
-      //       "content.js"
-      //     ],
-      //     "matches": [
-      //       "<all_urls>",
-      //       "https://*.openai.com/*"
-      //     ]
-      //   }
-      // ]
-      manifestContent.web_accessible_resources[0] = {
-        resources: [
-          ...manifestContent.web_accessible_resources[0].resources,
-          'chunks/content.js',
-        ],
-        matches: manifestContent.web_accessible_resources[0].matches,
-      }
+    manifestContent.host_permissions[0] = '<all_urls>'
+    manifestContent.web_accessible_resources[0] = {
+      resources: [
+        ...manifestContent.web_accessible_resources[0].resources,
+        'chunks/content.js',
+        'pages/pdf/*',
+      ],
+      matches: manifestContent.web_accessible_resources[0].matches,
     }
     if (isProd) {
       manifestContent.content_scripts = manifestContent.content_scripts.map(

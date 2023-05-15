@@ -35,13 +35,19 @@
     }
   ],
   "host_permissions": [
+    "https://*/*",
     "https://*.openai.com/*"
   ],
   "options_ui": {
     "page": "pages/options/index.html",
     "open_in_tab": true
   },
-  "permissions": ["tabs", "scripting", "storage", "management", "contextMenus"],
+  "permissions": ["tabs", "scripting", "storage", "management", "contextMenus","declarativeNetRequest"],
+  "optional_permissions": [
+    "clipboardRead",
+    "clipboardWrite",
+    "background"
+  ],
   "action": {
     "default_icon": {
       "16": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png",

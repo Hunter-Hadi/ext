@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "regexSubstitution": "http://www.newsite.com?url=\\0"
+      }
+    },
+    "condition": {
+      "regexFilter": "^(ftp|file)://*/*.(pdf|PDF)$",
+      "resourceTypes": ["main_frame", "sub_frame"]
+    }
+  }
+]

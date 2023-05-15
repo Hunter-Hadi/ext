@@ -34,6 +34,7 @@ import {
 } from '@/background/provider/chat'
 import { ClientMessageInit } from '@/background/src/client'
 import { backgroundSendClientMessage } from '@/background/utils'
+import { pdfSnifferStartListener } from '@/background/src/pdf'
 
 /**
  * background.js 入口
@@ -46,6 +47,7 @@ export const startChromeExtensionBackground = () => {
     console.log('storage changed')
   })
   Browser.scripting.getRegisteredContentScripts()
+  // lifecycle
   initChromeExtensionInstalled()
   initChromeExtensionMessage()
   initChromeExtensionCommands()
@@ -53,6 +55,7 @@ export const startChromeExtensionBackground = () => {
   initChromeExtensionContextMenu()
   initChromeExtensionDisabled()
   initChromeExtensionUninstalled()
+  // feature
 }
 
 /**
@@ -85,6 +88,8 @@ const initChromeExtensionInstalled = () => {
         title: 'UseChatGPT.AI',
         contexts: ['all'],
       })
+      // pdf feature
+      await pdfSnifferStartListener()
     })
   }
 }

@@ -22,12 +22,14 @@ import {
   BardIcon,
   BingIcon,
   ChatGPTIcon,
+  ClaudeIcon,
   OpenAIIcon,
   UseChatGptIcon,
 } from '@/components/CustomIcon'
 import BulletList from '@/components/BulletList'
 import TextIcon from '@/components/TextIcon'
 import { ChatGPTOpenAIAPIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
+import { ChatGPTClaudeModelSelector } from '@/features/chatgpt/components/ChatGPTClaudeModelSelector'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -61,12 +63,14 @@ const providerOptions = [
       `[Incorrect] Not always available`,
       `[Unhappy] Standard response speed`,
       `[Incorrect] GPT-4 unavailable`,
+      `[Incorrect] Plugins unavailable`,
       '',
       `For ChatGPT Plus:`,
       `[Database] Pay $20/mo to OpenAI`,
       `[Done] Always available`,
       `[Done] Fast response speed`,
       `[Done] GPT-4 available`,
+      `[Done] Plugins unavailable`,
     ],
   },
   {
@@ -91,6 +95,7 @@ const providerOptions = [
       `[Done] Always available`,
       `[Done] Fast response speed`,
       `[QuestionMark] GPT-4 may be available`,
+      '[Done] GPT-4 availability depends on your account',
     ],
   },
   {
@@ -125,12 +130,11 @@ const providerOptions = [
     description: `You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can enable it instantly on bard.google.com.`,
     features: [
       `[ThumbUp] Free to use`,
-      `[Done] No OpenAI account required`,
-      `[Lock] Country restrictions apply`,
       `[Lock] Bard access required`,
+      `[Done] Always available`,
       `[Incorrect] Not always available`,
       `[Unhappy] Standard response speed`,
-      `[Done]  Bard AI by Google available`,
+      `[Done] Internet access and Bard AI & tools available`,
     ],
   },
   {
@@ -145,15 +149,36 @@ const providerOptions = [
       />
     ),
     shortDescription: `Use your own New Bing Chat to power the extension.`,
-    description: `Use your own New Bing Chat to power the extension. You need to log into your own Microsoft account that has access to the New Bing Chat. If your Microsoft account does not have access to the New Bing Chat, you can join the waitlist at bing.com/chat.`,
+    description: `You need to log into your own Microsoft account that has access to the New Bing Chat. If your Microsoft account does not have access to the New Bing Chat, you can enable it instantly on bing.com/chat.`,
     features: [
       `[ThumbUp] Free to use`,
-      `[Done] No OpenAI account required`,
-      `[Done] No country restrictions`,
       `[Lock] New Bing Chat access required`,
-      `[Incorrect] Not always available`,
+      `[Done] No country restrictions`,
+      `[Done] Always available`,
       `[Unhappy] Standard response speed`,
-      `[Done]  GPT-4 unavailable`,
+      `[Done] Internet access and GPT-4 available`,
+    ],
+  },
+  {
+    beta: false,
+    label: 'Claude',
+    value: CHAT_GPT_PROVIDER.CLAUDE,
+    logo: (
+      <ClaudeIcon
+        sx={{
+          fontSize: 20,
+        }}
+      />
+    ),
+    shortDescription: `Use your own Claude (operated by Poe) to power the extension.`,
+    description: `You need to log into your own Poe account that has access to Claude-instant, Claude-instant-100k, Claude+. If you don't have a Poe account yet, you can easily get one for free on poe.com.`,
+    features: [
+      `[ThumbUp] Free to use`,
+      `[Lock] Poe access required`,
+      `[Lock] Country restrictions apply`,
+      `[Done] Always available`,
+      `[Unhappy] Standard response speed`,
+      `[Done] Limited access to Claude-instant-100k and Claude+`,
     ],
   },
 ]
@@ -388,6 +413,8 @@ const ChatGPTAIProviderSelector: FC = () => {
         clientState.status === 'success' && <ChatGPTOpenAIModelSelector />}
       {provider === CHAT_GPT_PROVIDER.OPENAI_API &&
         clientState.status === 'success' && <ChatGPTOpenAIAPIModelSelector />}
+      {provider === CHAT_GPT_PROVIDER.CLAUDE &&
+        clientState.status === 'success' && <ChatGPTClaudeModelSelector />}
     </Stack>
   )
 }

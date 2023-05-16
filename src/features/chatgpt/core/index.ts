@@ -325,7 +325,16 @@ class ChatGPTConversation {
           console.error(err)
           return
         }
-        const text = data.message?.content?.parts?.[0]
+        // web browsing object
+        // {"message": {"id": "a1bad9ad-29b0-4ab3-8603-a9f6b4399fbb", "author": {"role": "assistant", "name": null, "metadata": {}}, "create_time": 1684210390.537254, "update_time": null, "content": {"content_type": "code", "language": "unknown", "text": "# To find out today's news, I'll perform a search.\nsearch(\"2023\u5e745\u670816\u65e5"}, "status": "in_progress", "end_turn": null, "weight": 1.0, "metadata": {"message_type": "next", "model_slug": "gpt-4-browsing"}, "recipient": "browser"}, "conversation_id": "3eade3ec-a3b7-4d04-941b-52347d533c80", "error": null}
+        const text =
+          data.message?.content?.parts?.[0] || data.message?.content?.text
+        // console.log(
+        //   'generateAnswer on content',
+        //   data?.message?.content?.content_type,
+        //   data?.message?.content?.language,
+        //   data?.message,
+        // )
         if (text) {
           console.log('generateAnswer on text', data)
           resultText = text

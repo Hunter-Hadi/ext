@@ -8,6 +8,7 @@ import terser from '@rollup/plugin-terser'
 import replace from '@rollup/plugin-replace'
 
 import { getReplaceEnv } from './env'
+import { string } from 'rollup-plugin-string'
 export default function mergeRollupConfig(
   isProduction,
   { plugins = [], input, output },
@@ -27,6 +28,10 @@ export default function mergeRollupConfig(
       nodeResolve({
         browser: true,
       }),
+      string({
+        // Required to be specified
+        include: '**/*.graphql',
+      }),
       postcss({
         plugins: [],
         extensions: ['.css', '.less'],
@@ -43,7 +48,9 @@ export default function mergeRollupConfig(
             },
           },
         },
-        exclude: isProduction ? [] : ['node_modules/**'],
+        exclude: isProduction
+          ? ['src/chat/PoeChat/poe/graphql/**']
+          : ['src/chat/PoeChat/poe/graphql/**', 'node_modules/**'],
       }),
       isProduction &&
         terser({

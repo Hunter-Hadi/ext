@@ -283,6 +283,49 @@ const BardIcon: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
+const ClaudeIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 256 256"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="256" height="256" fill="#D19974" />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M155.465 174L118.721 82H98.2052L61.4609 174H80.0968L87.4259 155.282H129.5L136.829 174H155.465ZM122.791 138.147H94.1348L108.433 101.479L122.791 138.147Z"
+          fill="#1E1E1C"
+        />
+        <path
+          d="M193.635 174L156.439 82H138.449L174.999 174H193.635Z"
+          fill="#1E1E1C"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M94.1504 138.147L108.449 101.479L122.807 138.147H94.1504ZM95.6133 137.147L108.451 104.226L121.342 137.147H95.6133Z"
+          fill="black"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M119.666 81.6289L119.414 81H97.543L97.293 81.6289L60 175H80.7949L88.123 156.282H128.834L136.162 175H156.957L119.666 81.6289ZM129.516 155.282H87.4414L80.1133 174H61.4766L98.2207 82H118.736L155.48 174H136.846L129.516 155.282Z"
+          fill="black"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M157.295 81.625L157.043 81H138.174C138.174 81 137.996 81 137.891 81C137.785 81 137.607 81 137.607 81H136.977L174.336 175H195.135L157.295 81.625ZM156.369 82H138.449L175.016 174H193.65L156.369 82Z"
+          fill="black"
+        />
+      </svg>
+    </SvgIcon>
+  )
+}
 const GoogleIcon: FC<SvgIconProps> = (props) => {
   return (
     <SvgIcon {...props}>
@@ -317,5 +360,6 @@ export {
   CleanChatBoxIcon,
   GiftIcon,
   OpenAIIcon,
+  ClaudeIcon,
   BingIcon,
 }

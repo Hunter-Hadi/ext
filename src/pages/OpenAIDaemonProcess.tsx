@@ -117,7 +117,6 @@ const useDaemonProcess = () => {
                   const defaultModel =
                     models.find((model) => model?.title?.includes('Default')) ||
                     models[0]
-                  currentModel = defaultModel?.slug
                   if (currentModel) {
                     // 确认当前模型是否存在
                     const findModel = models.find(

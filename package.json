@@ -4,7 +4,7 @@
   "description": "",
   "author": "",
   "scripts": {
-    "pdf":  "node ./build/pdf.js",
+    "pdf": "node ./build/pdf.js",
     "usechatgpt": "rollup -c ./build/rollup.config.js -w --app=usechatgpt",
     "release:usechatgpt": "cross-env NODE_ENV=production rollup -c ./build/rollup.config.js --app=usechatgpt"
   },
@@ -24,6 +24,7 @@
     "expiry-map": "^2.0.0",
     "lodash-es": "^4.17.21",
     "markdown-to-jsx": "^7.2.0",
+    "md5": "^2.3.0",
     "mkdirp": "^3.0.0",
     "notistack": "^3.0.1",
     "ofetch": "^1.0.1",
@@ -70,6 +71,7 @@
     "@types/firefox-webext-browser": "^82.0.0",
     "@types/less": "^3.0.3",
     "@types/lodash-es": "^4.17.6",
+    "@types/md5": "^2.3.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-highlight": "^0.12.5",
@@ -93,6 +95,7 @@
     "rollup-plugin-empty-dir": "^1.0.5",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-string": "^3.0.0",
     "rollup-plugin-ts": "^3.2.0",
     "rollup-plugin-visualizer": "^5.9.0",
     "rollup-plugin-zip": "^1.0.3",

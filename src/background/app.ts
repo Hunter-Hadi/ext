@@ -22,6 +22,7 @@ import {
   ChatSystem,
   OpenAiApiChat,
   OpenAIChat,
+  PoeChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
 import {
@@ -30,6 +31,7 @@ import {
   ChatAdapter,
   OpenAIApiChatProvider,
   OpenAIChatProvider,
+  PoeChatProvider,
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
 import { ClientMessageInit } from '@/background/src/client'
@@ -137,6 +139,7 @@ const initChromeExtensionMessage = () => {
     const bingChatAdapter = new ChatAdapter(
       new BingChatProvider(new BingChat()),
     )
+    const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)
     chatSystem.addAdapter(
@@ -145,6 +148,7 @@ const initChromeExtensionMessage = () => {
     )
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.BING, bingChatAdapter)
     chatSystem.addAdapter(CHAT_GPT_PROVIDER.BARD, bardChatAdapter)
+    chatSystem.addAdapter(CHAT_GPT_PROVIDER.CLAUDE, poeChatAdapter)
   }
 }
 

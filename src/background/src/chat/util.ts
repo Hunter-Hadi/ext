@@ -19,11 +19,16 @@ export const createDaemonProcessTab = async () => {
   )
   // 如果有pinned的chatGPT tab并且tab id存在
   if (currentPinnedTab) {
-    // 刷新网页并且active
+    // 展示window, 刷新网页并且active
     currentPinnedTab = await Browser.tabs.update(currentPinnedTab.id, {
       active: true,
       url: 'https://chat.openai.com',
     })
+    if (currentPinnedTab.windowId) {
+      await Browser.windows.update(currentPinnedTab.windowId, {
+        state: 'normal',
+      })
+    }
   } else {
     let window: Browser.Windows.Window | undefined = undefined
     if (lastBrowserWindowId) {
@@ -36,7 +41,7 @@ export const createDaemonProcessTab = async () => {
     if (!window) {
       // create a special windows for chatGPT
       const window = await Browser.windows.create({
-        state: 'minimized',
+        state: 'normal',
       })
       lastBrowserWindowId = window.id
     }

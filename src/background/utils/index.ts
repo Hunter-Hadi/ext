@@ -20,6 +20,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
+import { PoeModel } from '@/background/src/chat/PoeChat/type'
 
 dayjs.extend(utc)
 
@@ -82,6 +83,9 @@ type IThirdProviderSettings = {
   [CHAT_GPT_PROVIDER.BARD]?: {
     [key in string]: any
   }
+  [CHAT_GPT_PROVIDER.CLAUDE]?: {
+    model?: string
+  }
 }
 
 export interface IChromeExtensionSettings {
@@ -142,6 +146,9 @@ export const getChromeExtensionSettings =
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {
           conversationStyle: BingConversationStyle.Balanced,
+        },
+        [CHAT_GPT_PROVIDER.CLAUDE]: {
+          model: PoeModel.ClaudeInstant,
         },
       },
     } as IChromeExtensionSettings

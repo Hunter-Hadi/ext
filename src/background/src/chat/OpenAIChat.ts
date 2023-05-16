@@ -65,6 +65,7 @@ class OpenAIChat {
                   active: true,
                 })
                 this.lastActiveTabId = undefined
+                await this.minimizedDaemonProcessWindow()
               }
               return {
                 success: true,
@@ -269,7 +270,6 @@ class OpenAIChat {
       if (changeInfo.status === 'loading' || changeInfo.status === 'complete') {
         log.info('守护进程url状态更新', changeInfo.status)
         this.status = changeInfo.status
-        console.log('怎么回事')
         await this.updateClientStatus()
         await this.pingAwaitSuccess()
       }
@@ -311,6 +311,13 @@ class OpenAIChat {
   removeListener() {
     Browser.tabs.onRemoved.removeListener(this.tabRemoveListener.bind(this))
     Browser.tabs.onUpdated.removeListener(this.tabUpdateListener.bind(this))
+  }
+  async minimizedDaemonProcessWindow() {
+    if (this.chatGPTProxyInstance?.windowId) {
+      await Browser.windows.update(this.chatGPTProxyInstance.windowId, {
+        state: 'minimized',
+      })
+    }
   }
 }
 

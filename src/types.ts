@@ -57,6 +57,7 @@ export const CHAT_GPT_PROVIDER = {
   OPENAI_API: 'OPENAI_API',
   BARD: 'BARD',
   BING: 'BING',
+  CLAUDE: 'CLAUDE',
 } as const
 
 // app.usechatgpt.ai

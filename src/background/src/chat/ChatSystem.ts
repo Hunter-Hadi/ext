@@ -100,20 +100,13 @@ class ChatSystem implements ChatInterface {
             break
           case 'Client_removeChatGPTConversation': {
             const cache = await getChromeExtensionSettings()
-            if (cache.conversationId) {
-              const success = await this.removeConversation(
-                cache.conversationId,
-              )
-              return {
-                success,
-                data: {},
-                message: '',
-              }
-            }
+            const success = await this.removeConversation(
+              cache.conversationId || '',
+            )
             return {
-              success: false,
+              success,
               data: {},
-              message: 'no conversationId',
+              message: '',
             }
           }
           case 'Client_abortAskChatGPTQuestion': {

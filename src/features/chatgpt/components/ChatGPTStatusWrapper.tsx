@@ -42,6 +42,7 @@ const ChatGPTStatusWrapper: FC = () => {
     }
     return () => {
       if (timer) {
+        setShowJumpToChatGPT(false)
         clearTimeout(timer)
       }
     }
@@ -153,7 +154,6 @@ const ChatGPTStatusWrapper: FC = () => {
                     provider: CHAT_GPT_PROVIDER.OPENAI,
                   },
                 })
-                port.destroy()
               }}
             >
               <Typography

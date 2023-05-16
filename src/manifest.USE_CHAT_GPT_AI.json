@@ -42,11 +42,6 @@
     "open_in_tab": true
   },
   "permissions": ["tabs", "scripting", "storage", "management", "contextMenus"],
-  "optional_permissions": [
-    "clipboardRead",
-    "clipboardWrite",
-    "background"
-  ],
   "action": {
     "default_icon": {
       "16": "assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png",

@@ -26,6 +26,7 @@ import ChatGPTStableModeSetting from '@/pages/options/pages/UseChatGPTOptionsSet
 import ChatGPTApiSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTApiSettings'
 import OptionsPageDirectory from '@/pages/options/components/OptionsPageDirectory'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import PDFSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/PDFSettings'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -158,6 +159,15 @@ const UseChatGPTOptionsSettingPage = () => {
                   'chatGPTStableModeDuration',
                   newDuration,
                 )
+              }}
+            />
+            <Divider sx={{ my: 4 }} />
+            <PDFSettings
+              defaultValue={userSettingsRef.current.pdf}
+              onChange={async (enabled: boolean) => {
+                await updateChromeExtensionSettings('pdf', {
+                  enabled,
+                })
               }}
             />
             <Divider sx={{ my: 4 }} />

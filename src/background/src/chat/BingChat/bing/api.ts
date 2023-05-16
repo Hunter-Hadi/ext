@@ -38,11 +38,11 @@ export async function createConversation(): Promise<ConversationResponse> {
     let message = `${resp.result.value}: ${resp.result.message}`
     if (resp.result.value === 'UnauthorizedRequest') {
       // TODO: 没登陆处理
-      message += '\n[Login at bing.com](https://www.bing.com/)'
+      message += '\n[Log into bing.com to continue.](https://www.bing.com/)'
     }
     if (resp.result.value === 'Forbidden') {
       // TODO: 403处理
-      message += '\n[Login at bing.com](https://www.bing.com/)'
+      message += '\n[Log into bing.com to continue.](https://www.bing.com/)'
     }
     throw new Error(message)
   }

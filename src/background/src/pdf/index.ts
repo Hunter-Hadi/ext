@@ -1,5 +1,6 @@
 import Browser from 'webextension-polyfill'
 import Log from '@/utils/Log'
+import { getChromeExtensionSettings } from '@/background/utils'
 // NOTE: 2023-05-15
 /**
  * NOTE: 2023-05-15
@@ -39,14 +40,17 @@ export const pdfSnifferStartListener = async () => {
       if (tab.status === 'loading') {
         const url = tab.url || tab.pendingUrl
         if (url?.startsWith('file://') || url?.startsWith('ftp://')) {
-          if (url.endsWith('.pdf')) {
-            const redirectUrl = `chrome-extension://${
-              Browser.runtime.id
-            }/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`
-            log.info('pdfSnifferStartListener success', url, redirectUrl)
-            await Browser.tabs.update(tabId, {
-              url: redirectUrl,
-            })
+          if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
+            const settings = await getChromeExtensionSettings()
+            if (settings.userSettings?.pdf?.enabled) {
+              const redirectUrl = `chrome-extension://${
+                Browser.runtime.id
+              }/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`
+              log.info('pdfSnifferStartListener success', url, redirectUrl)
+              await Browser.tabs.update(tabId, {
+                url: redirectUrl,
+              })
+            }
           }
         }
       }

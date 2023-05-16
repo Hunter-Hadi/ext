@@ -105,7 +105,7 @@ export async function getChatId(
 ): Promise<number> {
   const resp = await gqlRequest('ChatViewQuery', { bot }, poeSettings)
   if (!resp.data) {
-    throw new Error('You need to login to [Poe](https://www.poe.com) first.')
+    throw new Error('[Log into poe.com to continue.](https://www.poe.com)')
   }
   return resp.data.chatOfBot.chatId
 }

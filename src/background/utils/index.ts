@@ -103,6 +103,9 @@ export interface IChromeExtensionSettings {
     language?: string
     selectionButtonVisible?: boolean
     chatGPTStableModeDuration?: number
+    pdf?: {
+      enabled?: boolean
+    }
   }
   thirdProviderSettings?: {
     [P in IChatGPTProviderType]?: IThirdProviderSettings[P]
@@ -142,6 +145,9 @@ export const getChromeExtensionSettings =
         colorSchema: undefined,
         language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
         selectionButtonVisible: true,
+        pdf: {
+          enabled: true,
+        },
       },
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {
@@ -231,12 +237,7 @@ export const backgroundSendAllClientMessage = async (
   const tabs = await Browser.tabs.query({})
   await Promise.all(
     tabs.map(async (tab) => {
-      if (
-        tab.id &&
-        tab.url &&
-        tab.url.startsWith('http') &&
-        !tab.url.startsWith('https://chat.openai.com')
-      ) {
+      if (tab.id && tab.url) {
         try {
           await Browser.tabs.sendMessage(tab.id, {
             id: CHROME_EXTENSION_POST_MESSAGE_ID,

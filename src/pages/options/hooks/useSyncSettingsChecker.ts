@@ -50,10 +50,28 @@ const useSyncSettingsChecker = () => {
           if (serverSettings?.conversationId) {
             delete serverSettings.conversationId
           }
-          await setChromeExtensionSettings((settings) => ({
-            ...settings,
-            ...serverSettings,
-          }))
+          await setChromeExtensionSettings((settings) => {
+            debugger
+            // userSettings处理一下
+            if (serverSettings?.userSettings) {
+              serverSettings.userSettings = {
+                ...settings.userSettings,
+                ...serverSettings.userSettings,
+              }
+            }
+            // thirdProviderSettings处理一下
+            if (serverSettings?.thirdProviderSettings) {
+              serverSettings.thirdProviderSettings = {
+                ...settings.thirdProviderSettings,
+                ...serverSettings.thirdProviderSettings,
+              }
+            }
+            console.log('同步服务器设置到本地', serverSettings)
+            return {
+              ...settings,
+              ...serverSettings,
+            }
+          })
           // debounceEnqueueSnackbar('Settings updated', {
           //   variant: 'success',
           //   autoHideDuration: 1000,
@@ -162,10 +180,7 @@ const useSyncSettingsChecker = () => {
                 }
               } else {
                 console.log('本地没有自定义prompt, 同步服务器的设置到本地')
-                await setChromeExtensionSettings((settings) => ({
-                  ...settings,
-                  ...serverSettings,
-                }))
+                await syncServerToLocal()
                 return {
                   success: true,
                   status: 'ok',

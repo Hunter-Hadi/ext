@@ -18,6 +18,14 @@ import Log from '@/utils/Log'
 import { useAuthLogin } from '@/features/auth'
 import { isEzMailApp } from '@/types'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
+import CloseAlert from '@/components/CloseAlert'
+import Stack from '@mui/material/Stack'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import { render } from 'react-dom'
+import Link from '@mui/material/Link'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 const log = new Log('AppInit')
 
@@ -142,10 +150,125 @@ export const AppSettingsInit = () => {
   return <></>
 }
 
+/**
+ * 关闭PDF预览功能，实际上是跳转到settings里
+ * @constructor
+ */
+const disabledPDFViewer = () => {
+  console.log(window.location.href)
+  if (window.location.href.startsWith('chrome-extension://')) {
+    if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
+      if (document.body.querySelector('#usechatgpt-disabled-pdf')) {
+        return
+      }
+      if (
+        window.localStorage.getItem('hide_usechatgptai_pdf_alert') === 'true'
+      ) {
+        return
+      }
+      const DisableTooltip = (
+        <Box
+          position={'fixed'}
+          right={8}
+          top={40}
+          zIndex={10000}
+          id={'usechatgpt-disabled-pdf'}
+        >
+          <CloseAlert
+            icon={<></>}
+            action={<></>}
+            sx={{
+              p: '8px!important',
+              bgcolor: '#fff',
+              border: '1px solid #7601D3',
+              '& > div': {
+                '&:first-of-type': {
+                  display: 'none',
+                },
+                '&:nth-of-type(2)': {
+                  padding: '0!important',
+                },
+                '&:last-of-type': {
+                  margin: '0!important',
+                  padding: '0!important',
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                },
+              },
+              '& *': {
+                color: '#7601D3',
+              },
+            }}
+          >
+            <Stack spacing={1} maxWidth={320}>
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <UseChatGptIcon sx={{ fontSize: 14 }} />
+                <Typography variant={'body1'} fontSize={14} fontWeight={700}>
+                  PDF AI viewer
+                </Typography>
+              </Stack>
+              <Typography fontSize={14}>
+                {`PDF AI viewer lets you select text in any PDF files and use
+                prompts on them. You can turn it off at any time on the
+                extension's `}
+                <Link
+                  href={'#'}
+                  onClick={async (event) => {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    await chromeExtensionClientOpenPage({
+                      key: 'options',
+                      query: '#pdf',
+                    })
+                  }}
+                >
+                  Settings page
+                </Link>
+                {` .`}
+              </Typography>
+              <Button
+                size={'small'}
+                disableElevation
+                sx={{
+                  bgcolor: '#7601D3',
+                  color: '#fff',
+                  '&:hover': {
+                    bgcolor: '#7601D3',
+                  },
+                  textTransform: 'none',
+                }}
+                onClick={async () => {
+                  window.localStorage.setItem(
+                    'hide_usechatgptai_pdf_alert',
+                    JSON.stringify(true),
+                  )
+                  document.body
+                    .querySelector('#usechatgpt-disabled-pdf')
+                    ?.remove()
+                }}
+              >
+                Got it
+              </Button>
+            </Stack>
+          </CloseAlert>
+        </Box>
+      )
+      // append to body
+      const root = document.createElement('div')
+      document.body.appendChild(root)
+      render(DisableTooltip, root)
+    }
+  }
+}
+
 const AppInit = () => {
   const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
   useAuthLogin()
+  useEffectOnce(() => {
+    disabledPDFViewer()
+  })
   return (
     <>
       {appState.env === 'gmail' && isEzMailApp && <GmailInit />}

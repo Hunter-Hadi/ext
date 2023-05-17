@@ -11,6 +11,7 @@ import {
   templateWordToExamples,
 } from '@/features/shortcuts/utils'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
+import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 
 const PopperId = 'tempalte-description-tooltip'
 
@@ -132,4 +133,58 @@ const TemplateTooltip = () => {
   )
 }
 
-export default TemplateTooltip
+const RunPromptTooltip = () => {
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'run-prompt-tooltip' : undefined
+  return (
+    <Box>
+      <IconButton aria-describedby={'run-prompt-tooltip'} onClick={handleClick}>
+        <HelpOutlineIcon fontSize="small" />
+      </IconButton>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <Box maxWidth={'600px'} maxHeight={420} overflow="auto" p={1}>
+          <Typography variant="body2">
+            <b>If this option is enabled</b>
+          </Typography>
+          <Typography variant="body2">
+            {`The prompt will be sent to AI chat directly, which is the default "normal behavior". All prompt templates will have this option enabled by default.`}
+          </Typography>
+          <Divider sx={{ my: 1 }} />
+          <Typography variant="body2">
+            <b>If this option is disabled</b>
+          </Typography>
+          <Typography variant="body2">
+            {`The prompt goes to the input box first,
+            so you can modify or add additional information before sending it to
+            AI chat.GPT.`}
+          </Typography>
+          <YoutubePlayerBox
+            borderRadius={8}
+            youtubeLink={'https://www.youtube.com/embed/cS75N6V5pWk'}
+          />
+        </Box>
+      </Popover>
+    </Box>
+  )
+}
+
+export { TemplateTooltip, RunPromptTooltip }

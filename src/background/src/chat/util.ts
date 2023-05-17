@@ -18,7 +18,7 @@ export const createDaemonProcessTab = async () => {
     (tab) => tab.url?.indexOf('chat.openai.com') !== -1 && tab.id,
   )
   // 如果有pinned的chatGPT tab并且tab id存在
-  if (currentPinnedTab) {
+  if (currentPinnedTab && currentPinnedTab.windowId === lastBrowserWindowId) {
     // 展示window, 刷新网页并且active
     currentPinnedTab = await Browser.tabs.update(currentPinnedTab.id, {
       active: true,
@@ -40,6 +40,11 @@ export const createDaemonProcessTab = async () => {
       }
     }
     if (!window) {
+      if (currentPinnedTab && currentPinnedTab.id) {
+        // 如果有pinned的chatGPT tab并且没有window，说明不是我们创建的pinned tab
+        // 需要关闭
+        await Browser.tabs.remove(currentPinnedTab.id)
+      }
       // create a special windows for chatGPT
       const window = await Browser.windows.create({
         focused: true,
@@ -53,6 +58,24 @@ export const createDaemonProcessTab = async () => {
       pinned: true,
       windowId: window?.id,
     })
+    // 移除空的tab
+    if (lastBrowserWindowId) {
+      const tabs = await Browser.tabs.query({
+        windowId: lastBrowserWindowId,
+        pinned: false,
+      })
+      console.log('tabs移除空的tab', tabs)
+      for (const tab of tabs) {
+        if (
+          tab.id &&
+          (tab.pendingUrl === `chrome://newtab/` ||
+            tab.pendingUrl === `about:blank` ||
+            tab.url === '')
+        ) {
+          await Browser.tabs.remove(tab.id)
+        }
+      }
+    }
   }
   return currentPinnedTab
 }

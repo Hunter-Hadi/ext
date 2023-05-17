@@ -15,7 +15,7 @@ import {
   IContextMenuItem,
 } from '@/features/contextMenu'
 import { IContextMenuIconKey } from '@/features/contextMenu/components/ContextMenuIcon'
-import TemplateTooltip from './TemplateTooltip'
+import { RunPromptTooltip, TemplateTooltip } from './Tooltips'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import TooltipIconButton from '@/components/TooltipIconButton'
@@ -100,11 +100,12 @@ const staticWordCompleter = {
  * @param actions
  */
 const isAutoAskChatGPT = (actions?: IContextMenuItem['data']['actions']) => {
-  if (!actions) {
+  if (actions && actions.length > 0) {
+    return actions.find((item) => item.type === 'ASK_CHATGPT') !== undefined
+  } else {
     // 默认是自动运行的
     return true
   }
-  return actions.find((item) => item.type === 'ASK_CHATGPT') !== undefined
 }
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
@@ -337,7 +338,14 @@ The template can include any number of the following variables:
             {node.data.type === 'shortcuts' && (
               <FormControlLabel
                 control={<Switch checked={autoAskChatGPT} />}
-                label="Run prompt automatically"
+                label={
+                  <Stack direction={'row'} alignItems="center">
+                    <Typography variant={'body1'}>
+                      Run prompt automatically Prompt
+                    </Typography>
+                    <RunPromptTooltip />
+                  </Stack>
+                }
                 value={autoAskChatGPT}
                 disabled={isDisabled}
                 onChange={(event: any) => {

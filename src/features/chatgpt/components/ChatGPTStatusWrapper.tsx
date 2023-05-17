@@ -9,7 +9,7 @@ import Link from '@mui/material/Link'
 import Alert from '@mui/material/Alert'
 
 import React from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/types'
@@ -25,12 +25,16 @@ import {
 import { AuthState } from '@/features/auth/store'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import { chromeExtensionClientOpenPage } from '@/utils'
+import { AppSettingsState } from '@/store'
+import { getChromeExtensionSettings } from '@/background/utils'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 const port = new ContentScriptConnectionV2()
 
 const ChatGPTStatusWrapper: FC = () => {
   const [authLogin] = useRecoilState(AuthState)
+  const updateAppSetting = useSetRecoilState(AppSettingsState)
   const { status } = useRecoilValue(ChatGPTClientState)
+  const [prevStatus, setPrevStatus] = useState(status)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
   const { provider } = useChatGPTProvider()
   useEffect(() => {
@@ -46,6 +50,14 @@ const ChatGPTStatusWrapper: FC = () => {
         clearTimeout(timer)
       }
     }
+  }, [status])
+  useEffect(() => {
+    if (prevStatus !== status && status === 'success') {
+      // get latest settings
+      console.log('get latest settings')
+      getChromeExtensionSettings().then(updateAppSetting)
+    }
+    setPrevStatus(status)
   }, [status])
   if (!authLogin.isLogin) {
     return (

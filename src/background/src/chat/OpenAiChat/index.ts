@@ -65,7 +65,7 @@ class OpenAIChat {
                   active: true,
                 })
                 this.lastActiveTabId = undefined
-                await this.minimizedDaemonProcessWindow()
+                // await this.minimizedDaemonProcessWindow()
               }
               return {
                 success: true,

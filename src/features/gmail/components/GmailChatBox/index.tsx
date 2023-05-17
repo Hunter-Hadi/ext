@@ -160,7 +160,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }
       }
     }
-    console.log('messages', messages)
   }, [messages])
   useEffect(() => {
     const focusListener = () => {

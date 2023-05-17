@@ -300,3 +300,23 @@ export const hasData = (data: any): boolean => {
       return false
   }
 }
+
+export const promiseRetry = async <T>(
+  fn: () => Promise<T>,
+  retryCount = 3,
+  delay = 1000,
+): Promise<T | undefined> => {
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms))
+  try {
+    const result = await fn()
+    return result
+  } catch (error) {
+    if (retryCount <= 0) {
+      // throw error
+      return undefined
+    }
+    await sleep(delay)
+    return promiseRetry(fn, retryCount - 1, delay)
+  }
+}

@@ -110,7 +110,18 @@ export class PoeWebBot {
     }
 
     wsp.onUnpackedMessage.addListener(onUnpackedMessageListener)
-    await wsp.open()
+    try {
+      await wsp.open()
+    } catch (e) {
+      wsp.removeAllListeners()
+      wsp.close()
+      params.onEvent({
+        type: 'ERROR',
+        error:
+          "Please ensure [you've logged into poe.com](https://www.poe.com) and retry.",
+      })
+      return
+    }
 
     try {
       await this.sendMessageRequest(params.prompt)

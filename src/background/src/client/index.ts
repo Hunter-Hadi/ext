@@ -27,17 +27,17 @@ export const ClientMessageInit = () => {
               await Browser.tabs.create({
                 url,
               })
+              return {
+                data: true,
+                success: true,
+                message: 'ok',
+              }
             } else if (key) {
               if (key === 'current_page') {
                 if (sender.tab?.id) {
                   await Browser.tabs.update(sender.tab.id, {
                     active: true,
                   })
-                }
-                return {
-                  data: true,
-                  success: true,
-                  message: 'ok',
                 }
               } else if (key === 'shortcuts') {
                 await Browser.tabs.create({
@@ -63,6 +63,11 @@ export const ClientMessageInit = () => {
             console.log('Client_updateIcon', mode)
             if (isEzMailApp) {
               // don't need to update icon
+              return {
+                data: false,
+                success: false,
+                message: 'ok',
+              }
             } else {
               if (mode === 'dark') {
                 await Browser.action.setIcon({
@@ -83,6 +88,11 @@ export const ClientMessageInit = () => {
                   },
                 })
               }
+              return {
+                data: true,
+                success: true,
+                message: 'ok',
+              }
             }
           }
           break
@@ -91,6 +101,30 @@ export const ClientMessageInit = () => {
             const commands = (await Browser.commands.getAll()) || []
             return {
               data: commands,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_updateTabVisible':
+          {
+            const { visible, windowVisible, windowFocus } = data || {}
+            if (sender.tab?.id) {
+              const tab = await Browser.tabs.update(sender.tab.id, {
+                active: visible,
+              })
+              if (tab.windowId) {
+                const window = await Browser.windows.get(tab.windowId)
+                if (window.id && window.id !== Browser.windows.WINDOW_ID_NONE) {
+                  await Browser.windows.update(window.id, {
+                    focused: windowFocus,
+                    state: windowVisible ? 'normal' : 'minimized',
+                  })
+                }
+              }
+            }
+            return {
+              data: true,
               success: true,
               message: 'ok',
             }

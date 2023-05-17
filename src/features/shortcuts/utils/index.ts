@@ -70,12 +70,6 @@ export const getDefaultActionWithTemplate = (
           template,
         },
       },
-      {
-        type: 'INSERT_USER_INPUT',
-        parameters: {
-          template: '{{LAST_ACTION_OUTPUT}}',
-        },
-      },
     ],
     contextMenus: [
       {
@@ -84,17 +78,26 @@ export const getDefaultActionWithTemplate = (
           template,
         },
       },
-      {
-        type: 'ASK_CHATGPT',
-        parameters: {},
-      },
     ],
   }
 
   const currentActions = actions[settingsKey]
-  if (settingsKey === 'gmailToolBarContextMenu' && autoAskChatGPT) {
+  if (autoAskChatGPT) {
+    currentActions.push({
+      type: 'INSERT_USER_INPUT',
+      parameters: {
+        template: '{{LAST_ACTION_OUTPUT}}',
+      },
+    })
     currentActions.push({
       type: 'ASK_CHATGPT',
+      parameters: {
+        template: '{{LAST_ACTION_OUTPUT}}',
+      },
+    })
+  } else {
+    currentActions.push({
+      type: 'INSERT_USER_INPUT',
       parameters: {
         template: '{{LAST_ACTION_OUTPUT}}',
       },

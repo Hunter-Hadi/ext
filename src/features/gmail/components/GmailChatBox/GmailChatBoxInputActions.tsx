@@ -74,7 +74,7 @@ const GmailChatBoxInputActions: FC<{
             buttonText={'Use prompt'}
             onBeforeShowContextMenu={() => {
               return {
-                template: inputValue,
+                template: inputValue || ' ',
                 target:
                   getAppRootElement()?.querySelector(
                     `#${ROOT_CHAT_BOX_INPUT_ID}`,

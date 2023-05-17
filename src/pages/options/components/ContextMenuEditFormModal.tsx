@@ -95,6 +95,17 @@ const staticWordCompleter = {
     ])
   },
 }
+/**
+ * 用户当前的动作是否是自动运行的
+ * @param actions
+ */
+const isAutoAskChatGPT = (actions?: IContextMenuItem['data']['actions']) => {
+  if (!actions) {
+    // 默认是自动运行的
+    return true
+  }
+  return actions.find((item) => item.type === 'ASK_CHATGPT') !== undefined
+}
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionSettingsContextMenuKey
@@ -117,7 +128,7 @@ const ContextMenuEditForm: FC<{
     null,
   )
   const [autoAskChatGPT, setAutoAskChatGPT] = useState(() => {
-    return editNode.data.actions?.length === 3
+    return isAutoAskChatGPT(node.data.actions)
   })
   const isDisabled = !node.data.editable
   const isGroup = node.data.type === 'group'
@@ -146,7 +157,7 @@ const ContextMenuEditForm: FC<{
     setEditNode(cloneDeep(node))
     setTemplate(cloneNode.data?.actions?.[0]?.parameters?.template || '')
     setSelectedIcon(cloneNode.data?.icon as any)
-    setAutoAskChatGPT(cloneNode.data?.actions?.length === 3)
+    setAutoAskChatGPT(isAutoAskChatGPT(node.data.actions))
   }, [node])
 
   return (
@@ -323,18 +334,17 @@ The template can include any number of the following variables:
                 </Box>
               </Box>
             )}
-            {node.data.type === 'shortcuts' &&
-              settingsKey === 'gmailToolBarContextMenu' && (
-                <FormControlLabel
-                  control={<Switch checked={autoAskChatGPT} />}
-                  label="Run prompt automatically"
-                  value={autoAskChatGPT}
-                  disabled={isDisabled}
-                  onChange={(event: any) => {
-                    setAutoAskChatGPT(event.target.checked)
-                  }}
-                />
-              )}
+            {node.data.type === 'shortcuts' && (
+              <FormControlLabel
+                control={<Switch checked={autoAskChatGPT} />}
+                label="Run prompt automatically"
+                value={autoAskChatGPT}
+                disabled={isDisabled}
+                onChange={(event: any) => {
+                  setAutoAskChatGPT(event.target.checked)
+                }}
+              />
+            )}
           </Stack>
           <Stack
             direction={'row'}

@@ -94,7 +94,6 @@ const providerOptions = [
       `[Done] No ChatGPT interruptions`,
       `[Done] Always available`,
       `[Done] Fast response speed`,
-      `[QuestionMark] GPT-4 may be available`,
       '[Done] GPT-4 availability depends on your account',
     ],
   },
@@ -131,8 +130,8 @@ const providerOptions = [
     features: [
       `[ThumbUp] Free to use`,
       `[Lock] Bard access required`,
+      `[Lock] Country restrictions`,
       `[Done] Always available`,
-      `[Incorrect] Not always available`,
       `[Unhappy] Standard response speed`,
       `[Done] Internet access and Bard AI & tools available`,
     ],

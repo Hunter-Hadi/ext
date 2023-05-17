@@ -91,6 +91,9 @@ const useDaemonProcess = () => {
   }, [])
   useEffect(() => {
     if (pageSuccessLoaded) {
+      const clientPort = new ContentScriptConnectionV2({
+        runtime: 'client',
+      })
       const port = new ContentScriptConnectionV2({
         runtime: 'daemon_process',
       })
@@ -107,6 +110,14 @@ const useDaemonProcess = () => {
             log.info(`init ${APP_NAME} chatGPT daemon process`)
             // 更新模型列表
             try {
+              await clientPort.postMessage({
+                event: 'Client_updateTabVisible',
+                data: {
+                  visible: false,
+                  windowVisible: false,
+                  windowFocus: false,
+                },
+              })
               const [models = [], plugins = []] = await Promise.all([
                 chatGptInstanceRef.current.getAllModels(),
                 chatGptInstanceRef.current.getAllPlugins(),
@@ -143,13 +154,25 @@ const useDaemonProcess = () => {
                 stopDaemonProcessClose()
                 const nextRoot = document.getElementById('__next')
                 if (nextRoot && !isDisabledTopBar()) {
-                  nextRoot.classList.add('use-chat-gpt-ai-running')
+                  nextRoot?.classList.add('use-chat-gpt-ai-running')
                 }
                 setShowDaemonProcessBar(true)
                 Browser.runtime.onMessage.addListener(listener)
               }
             } catch (e) {
+              await clientPort.postMessage({
+                event: 'Client_updateTabVisible',
+                data: {
+                  visible: true,
+                  windowVisible: true,
+                  windowFocus: true,
+                },
+              })
               log.error(e)
+              // 重载页面
+              setTimeout(() => {
+                window.location.reload()
+              }, 1000)
             }
           } else {
             // 有守护进程实例
@@ -192,7 +215,6 @@ const useDaemonProcess = () => {
                       model,
                     )
                   if (conversation) {
-                    await conversation.fetchHistoryAndConfig()
                     return {
                       success: true,
                       data: {

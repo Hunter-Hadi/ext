@@ -56,6 +56,7 @@ const focusTextareaAndAutoSize = (
   console.log('focusTextareaAndAutoSize from', from || '')
   autoSizeTextarea(textareaElement, childrenHeight)
   setTimeout(() => {
+    autoSizeTextarea(textareaElement, childrenHeight)
     // focus input
     const value = textareaElement.value
     // let findIndex = -1
@@ -75,7 +76,7 @@ const focusTextareaAndAutoSize = (
   }, 100)
 }
 
-const autoFocusWithAllWebsite = (
+export const autoFocusWithAllWebsite = (
   textareaElement: HTMLTextAreaElement,
   childrenHeight = 0,
 ) => {

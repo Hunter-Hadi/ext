@@ -1,6 +1,6 @@
 export { OpenAIChat } from './OpenAIChat'
 export { OpenAiApiChat } from './OpenAiApiChat'
-export { UseChatGPTPlusChat } from './UseChatGPTPlusChat'
+export { UseChatGPTPlusChat } from './UseChatGPTChat'
 export { BardChat } from './BardChat'
 export { BingChat } from './BingChat'
 export { PoeChat } from './PoeChat'

@@ -5,9 +5,7 @@ import { getChromeExtensionSettings } from '@/background/utils'
 /**
  * NOTE: 2023-05-15
  * @description: 用这个方式支持本地插件需要新的权限，所以先用检测url的方式
- * 1. host_permissions: [<all_urls>]
- * 2. permissions: ["declarativeNetRequest", "declarativeNetRequestFeedback"]
- * 3. rollup需要copy assets/pdf -> dist/pages/pdf
+ * 1. permissions: ["declarativeNetRequest", "declarativeNetRequestFeedback"]
  */
 // const declarativeNetRequestRuleIds = [1, 2]
 // export const pdfSnifferStartListener = async () => {

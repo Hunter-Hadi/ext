@@ -27,6 +27,7 @@ export const createDaemonProcessTab = async () => {
     if (currentPinnedTab.windowId) {
       await Browser.windows.update(currentPinnedTab.windowId, {
         state: 'normal',
+        focused: true,
       })
     }
   } else {
@@ -41,6 +42,7 @@ export const createDaemonProcessTab = async () => {
     if (!window) {
       // create a special windows for chatGPT
       const window = await Browser.windows.create({
+        focused: true,
         state: 'normal',
       })
       lastBrowserWindowId = window.id

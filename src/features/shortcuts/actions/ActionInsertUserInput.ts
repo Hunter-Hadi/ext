@@ -5,6 +5,9 @@ import {
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
 import { getMediator } from '@/store/mediator'
+import { getAppRootElement, promiseRetry } from '@/utils'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { autoFocusWithAllWebsite } from '@/components/AutoHeightTextarea'
 
 export class ActionInsertUserInput extends Action {
   static type = 'INSERT_USER_INPUT'
@@ -23,7 +26,24 @@ export class ActionInsertUserInput extends Action {
       const inputValue =
         this.parameters?.compliedTemplate || params?.LAST_ACTION_OUTPUT || ''
       const bodyElement = engine
-      getMediator('chatBoxInputMediator').updateInputValue(inputValue)
+      const chatBoxInput = await promiseRetry<HTMLTextAreaElement>(
+        () => {
+          const input = getAppRootElement()?.querySelector(
+            `#${ROOT_CHAT_BOX_INPUT_ID}`,
+          ) as HTMLTextAreaElement
+          if (input) {
+            return Promise.resolve(input)
+          }
+          return Promise.reject('not found')
+        },
+        30,
+        100,
+      )
+      if (chatBoxInput) {
+        getMediator('chatBoxInputMediator').updateInputValue(inputValue)
+        // focus on input
+        autoFocusWithAllWebsite(chatBoxInput, 52.5)
+      }
       if (bodyElement) {
         this.output = inputValue
       } else {

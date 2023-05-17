@@ -24,6 +24,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_updateUseChatGPTAuthInfo'
   | 'Client_getUseChatGPTUserInfo'
   | 'Client_createAsyncTask'
+  | 'Client_updateTabVisible'
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

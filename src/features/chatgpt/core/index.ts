@@ -100,6 +100,7 @@ export interface IChatGPTDaemonProcess {
   addAbortWithMessageId: (messageId: string, abortFn: () => void) => void
   removeAbortWithMessageId: (messageId: string) => void
   abortWithMessageId: (messageId: string) => void
+  removeCacheConversation: () => Promise<void>
 }
 
 const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
@@ -119,6 +120,25 @@ const chatGptRequest = (
     },
     body: data === undefined ? undefined : JSON.stringify(data),
   })
+}
+export const getConversationList = async (params: {
+  token: string
+  offset?: number
+  limit?: number
+  order?: string
+}) => {
+  try {
+    const { token, offset = 0, limit = 100, order = 'updated' } = params
+    const resp = await chatGptRequest(
+      token,
+      'GET',
+      `/backend-api/conversations?offset=${offset}&limit=${limit}&order=${order}`,
+    )
+    const data = await resp.json()
+    return data?.items || []
+  } catch (e) {
+    return []
+  }
 }
 
 export const sendModerationRequest = async ({
@@ -187,6 +207,8 @@ class ChatGPTConversation {
     }>
     raw?: IChatGPTConversationRaw
   }
+  // 是否在删除历史会话
+  isCleaningCache = false
   constructor(props: {
     token: string
     model: string
@@ -203,7 +225,7 @@ class ChatGPTConversation {
     }
   }
   async updateTitle(title: string) {
-    if (!this.conversationId) {
+    if (!this.conversationId || this.conversationInfo.title === title) {
       return
     }
     await setConversationProperty(this.token, this.conversationId, {
@@ -308,6 +330,7 @@ class ChatGPTConversation {
         console.debug('sse message', message)
         if (message === '[DONE]') {
           if (resultText && this.conversationId && resultMessageId) {
+            this.updateTitle(CHAT_TITLE)
             sendModerationRequest({
               token: this.token,
               conversationId: this.conversationId,
@@ -391,6 +414,52 @@ class ChatGPTConversation {
       await setConversationProperty(this.token, this.conversationId, {
         is_visible: false,
       })
+      this.conversationInfo = {
+        title: '',
+        messages: [],
+      }
+    }
+  }
+  async removeCacheConversation() {
+    if (this.isCleaningCache) {
+      console.log('isCleaningCache!!!')
+      return
+    }
+    if (this.token) {
+      const conversations = await getConversationList({
+        token: this.token,
+      })
+      const cacheConversations = conversations.filter(
+        (conversation: { id: string; title: string }) => {
+          return (
+            conversation.title === CHAT_TITLE &&
+            conversation.id !== this.conversationId
+          )
+        },
+      )
+      console.log('start removeCacheConversation', cacheConversations.length)
+      if (cacheConversations.length === 0) {
+        return
+      }
+      this.isCleaningCache = true
+      const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
+      for (let i = 0; i < cacheConversations.length; i++) {
+        try {
+          console.log(
+            'removeCacheConversation',
+            cacheConversations[i].id,
+            cacheConversations[i].title,
+          )
+          await setConversationProperty(this.token, cacheConversations[i].id, {
+            is_visible: false,
+          })
+          await delay(3000)
+        } catch (e) {
+          console.error(e)
+        }
+      }
+      this.isCleaningCache = false
+      console.log('end removeCacheConversation')
     }
   }
 }
@@ -500,6 +569,8 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
         conversationId,
       })
       this.conversations.push(conversationInstance)
+      conversationInstance.removeCacheConversation()
+      await conversationInstance.fetchHistoryAndConfig()
       console.log(conversationInstance)
       return conversationInstance
     } catch (error) {
@@ -521,20 +592,13 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   async closeConversation(conversationId: string) {
     try {
-      let conversation = this.getConversation(conversationId)
-      if (!conversation) {
-        const token = this.token || (await getChatGPTAccessToken())
-        const model = await this.getModelName(token, this.models[0].slug)
-        conversation = new ChatGPTConversation({
-          token,
-          model,
-          conversationId,
-        })
+      const conversation = this.getConversation(conversationId)
+      if (conversation) {
+        await conversation.close()
+        this.conversations = this.conversations.filter(
+          (conversation) => conversation.conversationId !== conversationId,
+        )
       }
-      await conversation.close()
-      this.conversations = this.conversations.filter(
-        (conversation) => conversation.conversationId !== conversationId,
-      )
       return true
     } catch (e) {
       console.error(e)
@@ -559,5 +623,8 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     } catch (e) {
       console.error('abortWithMessageId error', e)
     }
+  }
+  removeCacheConversation() {
+    return this.conversations?.[0]?.removeCacheConversation()
   }
 }

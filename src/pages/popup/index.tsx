@@ -103,7 +103,7 @@ const App: FC<{
       {isSpecialPage ? (
         <Alert severity={'info'}>
           <Typography fontSize={14} color={'text.primary'} mb={1}>
-            {`For security reasons, the extension only works on actual websites, excluding ChatGPT's webpage. So it won't work on`}
+            {`For security reasons, the extension only works on actual websites and PDF files, excluding ChatGPT's webpage. So it won't work on`}
           </Typography>
           <BulletList
             textProps={{

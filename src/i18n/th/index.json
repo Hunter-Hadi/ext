@@ -1,5 +1,5 @@
 {
-  "description": "ใช้ ChatGPT (ปลั๊กอิน & GPT-4), Bard และ Bing Chat บนเว็บไซต์ใดๆ โดยไม่ต้องคัดลอกและวาง",
+  "description": "ใช้ ChatGPT (ปลั๊กอินและ GPT-4), Bard, Bing และ Claude บนเว็บไซต์ใดก็ได้โดยไม่ต้องคัดลอกและวาง",
   "name": "UseChatGPT.AI: ChatGPT AI Copilot for the Web",
   "shortName": "UseChatGPT"
 }

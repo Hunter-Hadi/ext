@@ -30,14 +30,15 @@ const NormalChatPage = () => {
       <GmailChatBox
         editAble={false}
         insertAble={false}
-        onSendMessage={async (question) => {
+        onSendMessage={async (question, options) => {
+          console.log('NormalChatPage onSendMessage', options)
           await sendQuestion(
             {
               question,
             },
             {
               regenerate: false,
-              includeHistory: true,
+              includeHistory: options.includeHistory === true,
             },
           )
         }}

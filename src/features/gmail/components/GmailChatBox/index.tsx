@@ -21,7 +21,10 @@ import TooltipButton from '@/components/TooltipButton'
 import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
-import { IChatMessage } from '@/features/chatgpt/types'
+import {
+  IChatMessage,
+  IUserSendMessageExtraType,
+} from '@/features/chatgpt/types'
 import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
 import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -46,7 +49,7 @@ interface IGmailChatBoxProps {
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
   messages: IChatMessage[]
   writingMessage: IChatMessage | null
-  onSendMessage?: (text: string) => void
+  onSendMessage?: (text: string, options: IUserSendMessageExtraType) => void
   onRetry?: (messageId: string) => void
   loading?: boolean
 }
@@ -98,9 +101,9 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const scrolledToBottomRef = useRef(true)
 
   const handleSendMessage = useCallback(
-    (value: string) => {
+    (value: string, options: IUserSendMessageExtraType) => {
       changePageNumber(1)
-      onSendMessage && onSendMessage(value)
+      onSendMessage && onSendMessage(value, options)
     },
     [onSendMessage, changePageNumber],
   )

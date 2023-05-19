@@ -70,7 +70,18 @@ export function templateParserDecorator() {
     }
   }
 }
-export function pushOutputToChat() {
+export function pushOutputToChat(
+  {
+    onlySuccess,
+    onlyError,
+  }: {
+    onlySuccess?: boolean
+    onlyError?: boolean
+  } = {
+    onlySuccess: false,
+    onlyError: false,
+  },
+) {
   return function (
     target: Action,
     propertyKey: string,
@@ -81,22 +92,29 @@ export function pushOutputToChat() {
       const [, engine] = args
       const actionInstance: Action = this as any
       const value = await oldFunc.apply(this, args)
-      if (actionInstance.error) {
+      // NOTE: Action还没有对外暴露，所以不能显示Action的名称和类型
+      if (actionInstance.error && !onlySuccess) {
+        // engine
+        //   .getChartGPT()
+        //   ?.pushMessage(
+        //     'system',
+        //     `Action [${actionInstance.type}]: ${actionInstance.error}`,
+        //     'error',
+        //   )
         engine
           .getChartGPT()
-          ?.pushMessage(
-            'system',
-            `Action [${actionInstance.type}]: ${actionInstance.error}`,
-            'error',
-          )
-      } else if (actionInstance.output) {
+          ?.pushMessage('system', `${actionInstance.error}`, 'error')
+      } else if (actionInstance.output && !onlyError) {
+        // engine
+        //   .getChartGPT()
+        //   ?.pushMessage(
+        //     'third',
+        //     `Action [${actionInstance.type}]: ${actionInstance.output}`,
+        //     'success',
+        //   )
         engine
           .getChartGPT()
-          ?.pushMessage(
-            'third',
-            `Action [${actionInstance.type}]: ${actionInstance.output}`,
-            'success',
-          )
+          ?.pushMessage('third', `${actionInstance.output}`, 'success')
       }
       return value
     }

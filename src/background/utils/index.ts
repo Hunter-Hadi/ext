@@ -284,12 +284,12 @@ export const backgroundSendClientMessage = async (
 }
 
 /**
- * background监听client、daemon_process的发送消息
+ * background监听client、daemon_process、shortcut的发送消息
  * @param listener
  */
 export const createBackgroundMessageListener = (
   listener: (
-    runtime: 'client' | 'daemon_process',
+    runtime: 'client' | 'daemon_process' | 'shortcut',
     event: IChromeExtensionListenEvent,
     data: any,
     sender: Browser.Runtime.MessageSender,

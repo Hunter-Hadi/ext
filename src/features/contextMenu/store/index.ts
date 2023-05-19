@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil'
-import { ISetActionsType } from '@/features/shortcuts'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 export type IContextMenuItem = {
   id: string | 'root'

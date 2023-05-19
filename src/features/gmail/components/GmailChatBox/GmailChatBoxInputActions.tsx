@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useMemo } from 'react'
+import React, { FC, useEffect, useState, useMemo, useRef } from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
@@ -11,17 +11,19 @@ import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
 import { isEzMailApp, ROOT_CHAT_BOX_INPUT_ID } from '@/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
+import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
 // const MAX_GPT4_INPUT_LENGTH = 80000
 
 const GmailChatBoxInputActions: FC<{
-  onSendMessage?: (message: string) => void
+  onSendMessage?: (message: string, options: IUserSendMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
   const [inputValue, setInputValue] = useState('')
   const conversation = useRecoilValue(ChatGPTConversationState)
   const ref = React.useRef<HTMLElement>(null)
+  const nextMessageIsActionRef = useRef(false)
   const currentMaxInputLength = useMemo(() => {
     // NOTE: GPT-4 最大输入长度为 80000，GPT-3 最大输入长度为 10000, 我们后端最多6000，所以这里写死4000
     return 4000
@@ -33,9 +35,18 @@ const GmailChatBoxInputActions: FC<{
     return inputValue.length > currentMaxInputLength
   }, [inputValue, currentMaxInputLength])
   useEffect(() => {
-    getMediator('chatBoxInputMediator').subscribe(setInputValue)
+    const handleInputUpdate = (newInputValue: string) => {
+      if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
+        newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
+        nextMessageIsActionRef.current = true
+      } else {
+        nextMessageIsActionRef.current = false
+      }
+      setInputValue(newInputValue)
+    }
+    getMediator('chatBoxInputMediator').subscribe(handleInputUpdate)
     return () => {
-      getMediator('chatBoxInputMediator').unsubscribe(setInputValue)
+      getMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
     }
   }, [])
   return (
@@ -91,7 +102,10 @@ const GmailChatBoxInputActions: FC<{
             conversation.loading ? <CircularProgress size={16} /> : <SendIcon />
           }
           onClick={() => {
-            onSendMessage && onSendMessage(inputValue)
+            onSendMessage &&
+              onSendMessage(inputValue, {
+                includeHistory: !nextMessageIsActionRef.current,
+              })
           }}
         >
           {conversation.loading ? 'Generating' : 'Generate'}

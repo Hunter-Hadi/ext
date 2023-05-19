@@ -42,10 +42,14 @@ export type IOpenAIChatSendEvent =
   | 'OpenAIDaemonProcess_pong'
   | 'Client_destroyWithLogout'
 
+// shortcuts配合运行需要的event
+export type IShortCutsSendEvent = 'ShortCuts_getContentOfURL'
+
 // chrome extension 监听event
 export type IChromeExtensionListenEvent =
   | IOpenAIChatSendEvent
   | IChromeExtensionClientSendEvent
+  | IShortCutsSendEvent
 
 // chrome extension 发送 event
 export type IChromeExtensionSendEvent = IChromeExtensionClientListenEvent

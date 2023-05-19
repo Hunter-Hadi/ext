@@ -1,21 +1,30 @@
 import {
   IShortcutEngineVariableType,
   IShortcutEngine,
-  IActionType,
 } from '@/features/shortcuts/types'
 import {
   ActionAskChatGPT,
   ActionRenderChatGPTPrompt,
   ActionGmailInsertReplyBox,
   ActionInsertUserInput,
+  ActionGetContentsOfWebPage,
+  ActionSetVariable,
+  ActionURL,
+  ActionGetContentsOfURL,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 const ActionClassMap = {
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
   [ActionGmailInsertReplyBox.type]: ActionGmailInsertReplyBox,
   [ActionInsertUserInput.type]: ActionInsertUserInput,
+  [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
+  [ActionSetVariable.type]: ActionSetVariable,
+  [ActionURL.type]: ActionURL,
+  [ActionGetContentsOfURL.type]: ActionGetContentsOfURL,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
@@ -32,8 +41,8 @@ class ShortCutsEngine implements IShortcutEngine {
   setActions(
     actions: Array<{
       id?: string
-      type: IActionType
-      parameters: any
+      type: ActionIdentifier
+      parameters: ActionParameters
       autoExecute?: boolean
     }>,
   ) {
@@ -69,7 +78,8 @@ class ShortCutsEngine implements IShortcutEngine {
             `ShortCutEngine.run action[${this.stepIndex}]`,
             engine,
             this.getVariable(),
-            currentAction,
+            currentAction.type,
+            currentAction.parameters,
           )
           await currentAction.execute(this.getVariable(), engine)
           if (currentAction.error) {
@@ -124,14 +134,14 @@ class ShortCutsEngine implements IShortcutEngine {
     overwrite: boolean,
   ) {
     // console.log('ShortCutEngine.setVariable', key, value, overwrite)
-    if (this.variables.has(key)) {
+    if (this.variables.has(key as string)) {
       if (overwrite) {
-        this.variables.set(key, value)
+        this.variables.set(key as string, value)
       } else {
         console.log('ShortCutEngine.setVariable: key already exists')
       }
     } else {
-      this.variables.set(key, value)
+      this.variables.set(key as string, value)
     }
   }
   setVariables(
@@ -148,7 +158,7 @@ class ShortCutsEngine implements IShortcutEngine {
   }
   getVariable(key?: IShortcutEngineVariableType) {
     if (key) {
-      return this.variables.get(key)
+      return this.variables.get(key as string)
     }
     console.log(
       'ShortCutEngine.getVariables',

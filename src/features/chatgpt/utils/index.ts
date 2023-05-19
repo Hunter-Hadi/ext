@@ -1,6 +1,7 @@
 import {
   IOpenAIChatSendEvent,
   IChromeExtensionClientSendEvent,
+  IShortCutsSendEvent,
 } from '@/background/eventType'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
@@ -44,12 +45,12 @@ export const pingUntilLogin = () => {
 }
 
 export class ContentScriptConnectionV2 {
-  private readonly runtime: 'client' | 'daemon_process'
+  private readonly runtime: 'client' | 'daemon_process' | 'shortcut'
   constructor(
     options: {
       openHeartbeat?: boolean
       heartbeatInterval?: number
-      runtime?: 'client' | 'daemon_process'
+      runtime?: 'client' | 'daemon_process' | 'shortcut'
     } = {},
   ) {
     console.log('[ContentScriptConnectionV2]: init')
@@ -57,7 +58,10 @@ export class ContentScriptConnectionV2 {
     this.runtime = options.runtime || 'client'
   }
   async postMessage(msg: {
-    event: IChromeExtensionClientSendEvent | IOpenAIChatSendEvent
+    event:
+      | IChromeExtensionClientSendEvent
+      | IOpenAIChatSendEvent
+      | IShortCutsSendEvent
     data?: any
   }): Promise<{
     success: boolean

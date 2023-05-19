@@ -1,22 +1,23 @@
-import { IActionType } from '@/features/shortcuts/types'
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 export class ActionAskChatGPT extends Action {
   static type = 'ASK_CHATGPT'
   constructor(
     id: string,
-    type: IActionType,
-    parameters: any,
+    type: ActionIdentifier,
+    parameters: ActionParameters,
     autoExecute: boolean,
   ) {
     super(id, 'ASK_CHATGPT', parameters, autoExecute)
   }
   @templateParserDecorator()
   @clearUserInput(false)
-  async execute(params: any, engine: any) {
+  async execute(params: ActionParameters, engine: any) {
     try {
       const { success, answer } = await engine.getChartGPT()?.sendQuestion(
         {

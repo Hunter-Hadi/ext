@@ -57,34 +57,127 @@ const descriptionJson = `
 }
 `
 
+const EMPTY_DATA = {
+  description: '',
+  name: '',
+  shortName: '',
+}
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 const folder = path.join(__dirname, 'src/i18n')
-const updateDescription = (updateKey) => {
+const updateI18nJson = (jsonSources, updateFn) => {
   // get folder lang folders
   const langFolders = fs
     .readdirSync(folder)
     .filter((file) => !file.startsWith('.'))
-  console.log('need update lang', langFolders.length)
-  if (updateKey === 'description') {
-    const description = JSON.parse(descriptionJson)
-    const keys = Object.keys(description)
-    if (keys.length !== langFolders.length) {
-      throw new Error(
-        'need update description, cause langFolders.length !== keys.length',
+  const jsonSourceData = JSON.parse(jsonSources)
+  const keys = Object.keys(jsonSourceData)
+  if (keys.length < langFolders.length) {
+    langFolders
+      .filter((lang) => !keys.includes(lang))
+      .forEach((lang) => {
+        console.log('need update description', lang)
+      })
+    throw new Error(
+      'need update description, cause langFolders.length !== keys.length',
+    )
+  }
+  console.log('need update lang', keys.length)
+  keys.forEach((key) => {
+    const value = jsonSourceData[key]
+    // create no exist folder
+    if (!fs.existsSync(path.join(folder, key))) {
+      fs.mkdirSync(path.join(folder, key))
+      // create default messages.json
+      fs.writeFileSync(
+        path.join(folder, `${key}/index.json`),
+        JSON.stringify(EMPTY_DATA, null, 2),
+        'utf-8',
       )
     }
-    keys.forEach((key) => {
-      const value = description[key]
-      const filePath = path.join(folder, `${key}/index.json`)
-      const fileJson = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
-      fileJson.description = value
-      fs.writeFileSync(filePath, JSON.stringify(fileJson, null, 2), 'utf-8')
-    })
-    console.log('update description success')
-  }
+    const filePath = path.join(folder, `${key}/index.json`)
+    let jsonData = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+    jsonData = updateFn(value, jsonData)
+    fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 2), 'utf-8')
+  })
+  console.log('update description success')
 }
 
-updateDescription('description')
+updateI18nJson(descriptionJson, (updateText, jsonData) => {
+  return {
+    ...jsonData,
+    description: updateText,
+  }
+})
+
+// prompt
+const sendPrompt = `
+I need you to help me complete my i18n JSON text with the sentence "[Doc]"
+If you understand, I will send you the JSON text for you to update with the following conditions:
+1. The structure cannot be changed.
+2. The semantics cannot be changed.
+`
+const emptyPrompt = `
+{
+"en":"",
+"en_GB":"",
+"en_US":"",
+"zh_CN":"",
+"zh_TW":"",
+"am":"",
+"ar":"",
+"bg":"",
+"bn":"",
+"ca":"",
+"cs":"",
+"da":"",
+"de":"",
+"el":"",
+"es":"",
+"es_419":"",
+"et":"",
+"fa":"",
+"fi":"",
+"fil":"",
+"fr":"",
+"gu":"",
+"he":"",
+"hi":"",
+"hr":"",
+"hu":"",
+"id":"",
+"it":"",
+"ja":"",
+"kn":"",
+"ko":"",
+"lt":"",
+"lv":"",
+"ml":"",
+"mr":"",
+"ms":"",
+"nl":"",
+"no":"",
+"pl":"",
+"pt_BR":"",
+"pt_PT":"",
+"ro":"",
+"ru":"",
+"sk":"",
+"sl":"",
+"sr":"",
+"sv":"",
+"sw":"",
+"ta":"",
+"te":"",
+"th":"",
+"tr":"",
+"uk":"",
+"vi":"",
+"he_IL":"",
+"in":"",
+"ua":""
+}
+`

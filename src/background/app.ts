@@ -37,6 +37,7 @@ import {
 import { ClientMessageInit } from '@/background/src/client'
 import { backgroundSendClientMessage } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
+import { ShortcutMessageInit } from '@/background/src/shortcut'
 
 /**
  * background.js 入口
@@ -101,6 +102,7 @@ const initChromeExtensionInstalled = () => {
  */
 const initChromeExtensionMessage = () => {
   ClientMessageInit()
+  ShortcutMessageInit()
   if (isEzMailApp) {
     Browser.runtime.onMessage.addListener(
       (message, sender, sendResponse: any) => {

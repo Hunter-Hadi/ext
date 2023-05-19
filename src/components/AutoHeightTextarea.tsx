@@ -20,6 +20,7 @@ import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/types'
 import { getMediator } from '@/store/mediator'
 import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
+import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -127,8 +128,8 @@ const AutoHeightTextarea: FC<{
   loading?: boolean
   error?: boolean
   defaultValue?: string
-  onChange?: (value: string) => void
-  onEnter?: (value: string) => void
+  onChange?: (value: string, options: IUserSendMessageExtraType) => void
+  onEnter?: (value: string, options: IUserSendMessageExtraType) => void
   onKeydown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
   children?: React.ReactNode
   sx?: SxProps
@@ -154,6 +155,7 @@ const AutoHeightTextarea: FC<{
   } = props
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const onCompositionRef = useRef(false)
+  const nextMessageIsActionRef = useRef(false)
   const [inputValue, setInputValue] = useState(defaultValue || '')
   const childrenHeightRef = useRef(0)
   const childrenRef = useRef<HTMLDivElement>(null)
@@ -175,7 +177,9 @@ const AutoHeightTextarea: FC<{
         setInputValue(value)
       }
       if (onChange) {
-        onChange(value)
+        onChange(value, {
+          includeHistory: !nextMessageIsActionRef.current,
+        })
       }
     },
     [onChange],
@@ -183,6 +187,12 @@ const AutoHeightTextarea: FC<{
   useEffect(() => {
     if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
       const handleInputUpdate = (newInputValue: string) => {
+        if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
+          newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
+          nextMessageIsActionRef.current = true
+        } else {
+          nextMessageIsActionRef.current = false
+        }
         setInputValue(newInputValue)
       }
       getMediator('chatBoxInputMediator').subscribe(handleInputUpdate)
@@ -378,7 +388,10 @@ const AutoHeightTextarea: FC<{
           if (event.key === 'Enter' && event.shiftKey) {
             console.log('shift enter')
           } else if (event.key === 'Enter') {
-            onEnter && onEnter(event.currentTarget.value)
+            onEnter &&
+              onEnter(event.currentTarget.value, {
+                includeHistory: !nextMessageIsActionRef.current,
+              })
             event.preventDefault()
           } else if (event.code === 'Space') {
             event.stopPropagation()

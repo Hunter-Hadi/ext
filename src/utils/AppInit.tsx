@@ -26,6 +26,7 @@ import Box from '@mui/material/Box'
 import { render } from 'react-dom'
 import Link from '@mui/material/Link'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 
 const log = new Log('AppInit')
 
@@ -269,6 +270,7 @@ const AppInit = () => {
   useEffectOnce(() => {
     disabledPDFViewer()
   })
+  useInjectShortCutsRunTime()
   return (
     <>
       {appState.env === 'gmail' && isEzMailApp && <GmailInit />}

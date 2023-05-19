@@ -28,6 +28,7 @@ export const createDaemonProcessTab = async () => {
       await Browser.windows.update(currentPinnedTab.windowId, {
         state: 'normal',
         focused: true,
+        width: 1280,
       })
     }
   } else {
@@ -49,6 +50,7 @@ export const createDaemonProcessTab = async () => {
       const window = await Browser.windows.create({
         focused: true,
         state: 'normal',
+        width: 1280,
       })
       lastBrowserWindowId = window.id
     }

@@ -1,8 +1,8 @@
 import { getAppRootElement } from '@/utils'
 import { v4 } from 'uuid'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
-import { ISetActionsType } from '@/features/shortcuts/types'
 import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 export const compileTemplate = (template: string, variables: any) => {
   return new Promise<{

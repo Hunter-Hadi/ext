@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
-import React, { FC } from 'react';
+import Box from '@mui/material/Box'
+import React, { FC } from 'react'
 
 const YoutubePlayerBox: FC<{ youtubeLink: string; borderRadius?: number }> = ({
   youtubeLink,
@@ -7,7 +7,7 @@ const YoutubePlayerBox: FC<{ youtubeLink: string; borderRadius?: number }> = ({
 }) => {
   return (
     <Box
-      className='video-container'
+      className="video-container"
       sx={{
         '&.video-container': {
           position: 'relative',
@@ -25,15 +25,15 @@ const YoutubePlayerBox: FC<{ youtubeLink: string; borderRadius?: number }> = ({
       }}
     >
       <iframe
-        title='YouTube video player'
-        width='560'
-        height='315'
+        title="YouTube video player"
+        width="560"
+        height="315"
         src={youtubeLink}
-        frameBorder='0'
-        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
     </Box>
-  );
-};
-export default YoutubePlayerBox;
+  )
+}
+export default YoutubePlayerBox

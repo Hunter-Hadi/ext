@@ -1,3 +1,6 @@
+import { readFileSync } from 'fs'
+import { join } from 'path'
+
 const getArgs = () => {
   const args = {}
   process.argv.slice(2, process.argv.length).forEach((arg) => {
@@ -50,7 +53,14 @@ const env = {
   inboxSDK,
 }
 const getReplaceEnv = () => {
+  const pkg = JSON.parse(
+    readFileSync(
+      join(__dirname, '../src/', `manifest.${APP_ENV}.json`),
+      'utf8',
+    ),
+  )
   const replaceEnv = {
+    [`process.env.APP_VERSION`]: JSON.stringify(pkg.version),
     preventAssignment: true,
   }
   Object.keys(env).forEach((key) => {

@@ -29,6 +29,8 @@ import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/G
 import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import useSliceMessageList from '../../hooks/useSliceMessageList'
+import GmailChatBoxReleaseLog from '@/features/gmail/components/GmailChatBox/GmailChatBoxReleaseLog'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -82,6 +84,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   // const conversation = useRecoilValue(ChatGPTConversationState)
   const stackRef = useRef<HTMLElement | null>(null)
   const messageListContainerList = useRef<HTMLElement | null>(null)
+  const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
   const { slicedMessageList, changePageNumber } = useSliceMessageList(
     messageListContainerList,
     messages,
@@ -140,6 +143,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const lastScrollId = useRef('')
   useEffect(() => {
     if (messages.length > 0) {
+      setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
       for (let i = messages.length - 1; i >= 0; i--) {
         const message = messages[i]
         if (message.type === 'user' || message.type === 'system') {
@@ -180,13 +184,6 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
 
     return () => window.removeEventListener('focus', focusListener)
   }, [])
-  useEffect(() => {
-    // getMediator('chatBoxInputMediator').subscribe(setInputValue)
-    return () => {
-      // getMediator('chatBoxInputMediator').unsubscribe(setInputValue)
-    }
-  }, [])
-
   return (
     <Stack
       position={'relative'}
@@ -345,6 +342,23 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
                     Regenerate
                   </Button>
                 )}
+                {isShowContinueButton && (
+                  <Button
+                    disableElevation
+                    startIcon={<ContextMenuIcon icon={'FastForward'} />}
+                    variant={'outlined'}
+                    disabled={loading}
+                    onClick={() => {
+                      handleSendMessage &&
+                        handleSendMessage('Continue', {
+                          includeHistory: true,
+                          regenerate: false,
+                        })
+                    }}
+                  >
+                    Continue
+                  </Button>
+                )}
               </>
             )}
             {loading && (
@@ -376,9 +390,10 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           direction={'row'}
           alignItems={'center'}
           sx={{ width: '100%' }}
+          spacing={2}
           justifyContent={'space-between'}
         >
-          <Typography fontSize={12}>
+          <Typography sx={{ flexShrink: 0 }} fontSize={12}>
             <Link
               color={'text.primary'}
               sx={{ cursor: 'pointer' }}
@@ -389,9 +404,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               Contact us
             </Link>
           </Typography>
-          <Typography fontSize={12} color={'text.secondary'} ml={'auto'} mr={0}>
-            Tip: Press Shift+Return for new line
-          </Typography>
+          <GmailChatBoxReleaseLog />
         </Stack>
       </Stack>
     </Stack>

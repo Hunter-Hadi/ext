@@ -14,7 +14,7 @@ import {
   ContextMenuIcon,
   IContextMenuItem,
 } from '@/features/contextMenu'
-import { IContextMenuIconKey } from '@/features/contextMenu/components/ContextMenuIcon'
+import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import { RunPromptTooltip, TemplateTooltip } from './Tooltips'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'

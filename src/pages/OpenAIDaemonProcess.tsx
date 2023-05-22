@@ -58,12 +58,16 @@ const useDaemonProcess = () => {
   const [showDaemonProcessBar, setShowDaemonProcessBar] = useState(false)
   const [pageSuccessLoaded, setPageSuccessLoaded] = useState(false)
   const isPageLoad = () => {
-    const h1Index = document.body
-      .querySelector('h1')
-      ?.innerText.indexOf('ChatGPT')
-    if ((h1Index === undefined ? -1 : h1Index) > -1) {
-      setPageSuccessLoaded(true)
-      return
+    const h1Elements = document.body.querySelectorAll('h1')
+    for (let i = 0; i < h1Elements.length; i++) {
+      const innerText = (h1Elements[i] as HTMLElement)?.innerText || ''
+      if (
+        innerText.indexOf('ChatGPT') > -1 ||
+        innerText.indexOf('New chat') > -1
+      ) {
+        setPageSuccessLoaded(true)
+        return
+      }
     }
     const navA = document.querySelectorAll('nav a')
     for (let i = 0; i < navA.length; i++) {

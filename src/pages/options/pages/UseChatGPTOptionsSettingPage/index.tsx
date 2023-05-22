@@ -19,7 +19,6 @@ import useCommands from '@/hooks/useCommands'
 import ManageShortcutHelper from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ManageShortcutHelper'
 import SyncSettingCheckerWrapper from '@/pages/options/components/SyncSettingCheckerWrapper'
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
-import useEffectOnce from '@/hooks/useEffectOnce'
 import HowToFindSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
 import ReferralInviteCard from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ReferralInviteCard'
 import ChatGPTStableModeSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTStableModeSetting'
@@ -53,14 +52,13 @@ const UseChatGPTOptionsSettingPage = () => {
       setSaving(false)
     }
   }
-  useEffectOnce(() => {
-    getChromeExtensionSettings().then((settings) => {
-      userSettingsRef.current = settings.userSettings
-      setLoaded(true)
-    })
-  })
+  const initUserSettings = async () => {
+    const settings = await getChromeExtensionSettings()
+    userSettingsRef.current = settings.userSettings
+    setLoaded(true)
+  }
   return (
-    <SyncSettingCheckerWrapper>
+    <SyncSettingCheckerWrapper onLoad={initUserSettings}>
       <AppLoadingLayout loading={!loaded}>
         <Stack
           direction={'row'}

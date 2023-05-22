@@ -1,6 +1,7 @@
 // env
 export const APP_ENV = String(process.env.APP_ENV)
 export const APP_NAME = String(process.env.APP_NAME)
+export const APP_VERSION = String(process.env.APP_VERSION)
 export const isEzMailApp = String(APP_ENV) === 'EZ_MAIL_AI'
 export const isProduction = String(process.env.NODE_ENV) === 'production'
 // ID

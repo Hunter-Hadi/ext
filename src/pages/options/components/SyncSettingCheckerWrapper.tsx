@@ -16,7 +16,8 @@ import { OptionsPageRouteContext } from '@/pages/options/context'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
-}> = ({ children }) => {
+  onLoad?: () => void
+}> = ({ children, onLoad }) => {
   const {
     isSyncing,
     isChecking,
@@ -63,6 +64,7 @@ const SyncSettingCheckerWrapper: FC<{
       .catch()
       .finally(() => {
         setLoaded(true)
+        onLoad?.()
       })
   })
   useFocus(() => {

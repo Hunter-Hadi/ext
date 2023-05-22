@@ -20,7 +20,7 @@ import {
   getContextMenuRenderPosition,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'

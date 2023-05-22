@@ -11,7 +11,7 @@ import {
   DropdownMenu,
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
-import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { AppSettingsState } from '@/store'

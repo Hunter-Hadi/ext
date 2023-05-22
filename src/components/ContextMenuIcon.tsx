@@ -41,7 +41,7 @@ import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined'
-
+import FastForwardOutlinedIcon from '@mui/icons-material/FastForwardOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 export const CONTEXT_MENU_ICONS = [
@@ -87,6 +87,7 @@ export const CONTEXT_MENU_ICONS = [
   'VisibilityOff',
   'Close',
   'PlayArrow',
+  'FastForward',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -190,6 +191,8 @@ const ContextMenuIcon: FC<{
       return <CloseOutlinedIcon sx={sxMemo} />
     case 'PlayArrow':
       return <PlayArrowOutlinedIcon sx={sxMemo} />
+    case 'FastForward':
+      return <FastForwardOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

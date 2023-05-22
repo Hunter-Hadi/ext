@@ -8,7 +8,7 @@ import {
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-// import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
+// import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 // eslint-disable-next-line react/display-name
 const RenderDropdownItem = forwardRef<

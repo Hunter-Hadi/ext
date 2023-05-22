@@ -51,7 +51,6 @@ const useSyncSettingsChecker = () => {
             delete serverSettings.conversationId
           }
           await setChromeExtensionSettings((settings) => {
-            debugger
             // userSettings处理一下
             if (serverSettings?.userSettings) {
               serverSettings.userSettings = {

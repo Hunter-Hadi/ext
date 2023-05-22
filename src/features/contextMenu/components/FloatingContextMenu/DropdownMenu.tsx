@@ -34,7 +34,7 @@ import {
   FloatingDropdownMenuSelectedItemState,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
-import { ContextMenuIcon } from '@/features/contextMenu/components/ContextMenuIcon'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import { useRecoilValue, useRecoilState } from 'recoil'

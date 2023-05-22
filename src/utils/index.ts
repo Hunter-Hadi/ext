@@ -234,6 +234,7 @@ export const CLIENT_OPEN_PAGE_KEYS = [
   'daemon_process',
   'current_page',
   'chatgpt',
+  'manage_extension',
 ] as const
 
 export const chromeExtensionClientOpenPage = async (params: {

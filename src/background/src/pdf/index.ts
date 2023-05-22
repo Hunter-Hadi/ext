@@ -35,20 +35,18 @@ const log = new Log('PDF')
 export const pdfSnifferStartListener = async () => {
   Browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (tab.active) {
-      if (tab.status === 'loading') {
-        const url = tab.url || tab.pendingUrl
-        if (url?.startsWith('file://') || url?.startsWith('ftp://')) {
-          if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
-            const settings = await getChromeExtensionSettings()
-            if (settings.userSettings?.pdf?.enabled) {
-              const redirectUrl = `chrome-extension://${
-                Browser.runtime.id
-              }/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`
-              log.info('pdfSnifferStartListener success', url, redirectUrl)
-              await Browser.tabs.update(tabId, {
-                url: redirectUrl,
-              })
-            }
+      const url = tab.url || tab.pendingUrl
+      if (url?.startsWith('file://') || url?.startsWith('ftp://')) {
+        if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
+          const settings = await getChromeExtensionSettings()
+          if (settings.userSettings?.pdf?.enabled) {
+            const redirectUrl = `chrome-extension://${
+              Browser.runtime.id
+            }/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`
+            log.info('pdfSnifferStartListener success', url, redirectUrl)
+            await Browser.tabs.update(tabId, {
+              url: redirectUrl,
+            })
           }
         }
       }

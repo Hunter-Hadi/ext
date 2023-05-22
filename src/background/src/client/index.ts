@@ -48,6 +48,11 @@ export const ClientMessageInit = () => {
                 await createChromeExtensionOptionsPage(query)
               } else if (key === 'chatgpt') {
                 await createDaemonProcessTab()
+              } else if (key === 'manage_extension') {
+                await Browser.tabs.create({
+                  url: `chrome://extensions/?id=${Browser.runtime.id}`,
+                  active: true,
+                })
               }
               return {
                 data: true,

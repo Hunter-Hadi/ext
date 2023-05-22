@@ -155,14 +155,25 @@ export const AppSettingsInit = () => {
 const useHandlePDFViewerError = () => {
   const [delay, setDelay] = React.useState<number | null>(null)
   const initRef = React.useRef(false)
+  useEffectOnce(() => {
+    if (window.location.href.startsWith('chrome-extension://')) {
+      if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
+        setDelay(100)
+      }
+    }
+  })
   useInterval(() => {
     const root = document.body.querySelector('#usechatgptPDFViewerErrorAlert')
     if (root) {
+      if (initRef.current) {
+        return
+      }
       console.log('PDFViewerError', delay, initRef.current)
       initRef.current = true
       setDelay(null)
+      const dataUrl = root.getAttribute('data-url')
       render(
-        <Stack spacing={1} p={2}>
+        <Stack spacing={1} p={2} width={'100%'}>
           <Stack alignItems={'center'} direction={'row'} spacing={2}>
             <img
               style={{ flexShrink: 0 }}
@@ -172,24 +183,70 @@ const useHandlePDFViewerError = () => {
                 '/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png'
               }
             />
-            <Typography width={0} flex={1}>
-              Click on "Allow access to file URLs" at chrome://extensions to
-              view file:///Users/yangger/Downloads/2304.03442.pdf
+            <Typography
+              width={0}
+              flex={1}
+              color={'rgba(255,255,255,0.85)'}
+              fontSize={'14px'}
+            >
+              {`Click on "Allow access to file URLs" at `}
+              <Link
+                color={'rgba(255,255,255,1)'}
+                href={'#'}
+                onClick={async (event) => {
+                  event.preventDefault()
+                  await chromeExtensionClientOpenPage({
+                    key: 'manage_extension',
+                  })
+                  window.close()
+                }}
+              >
+                {`chrome://extensions`}
+              </Link>
+              {` to view ${dataUrl}`}
             </Typography>
           </Stack>
+          <Typography
+            component={'div'}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
+            }}
+            color={'rgba(255,255,255,0.85)'}
+            fontSize={'12px'}
+          >
+            <span> {`or select the file again:`}</span>
+            <Button
+              disableElevation
+              size={'small'}
+              variant={'contained'}
+              onClick={(event) => {
+                event.preventDefault()
+                ;(
+                  document.querySelector('#openFile') as HTMLButtonElement
+                )?.click()
+              }}
+              sx={{
+                height: '24px',
+                backgroundColor: '#fff',
+                color: 'rgba(0,0,0,0.87)',
+                fontSize: '14px',
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: 'rgba(0,0,0,0.87)',
+                },
+              }}
+            >
+              Choose file
+            </Button>
+          </Typography>
         </Stack>,
         root,
       )
       return
     }
   }, delay)
-  useEffect(() => {
-    if (window.location.href.startsWith('chrome-extension://')) {
-      if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
-        setDelay(1000)
-      }
-    }
-  }, [])
 }
 /**
  * 关闭PDF预览功能，实际上是跳转到settings里

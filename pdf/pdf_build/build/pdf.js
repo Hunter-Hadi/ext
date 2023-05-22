@@ -9523,7 +9523,7 @@ class NetworkManager {
             errorAlert.id = 'usechatgptPDFViewerErrorAlert'
             errorAlert.setAttribute('data-url', url)
             errorAlert.style =
-              'border: 1px solid hsla(0,0%,0%,.5);border-radius: 4px;box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);position: absolute; top: 50%; left: 50%;transform: translate(-50%, -50%); width: 500px; height: 120px; background-color: #717171; z-index: 9999999; display: flex; justify-content: center; align-items: center;'
+              'border: 1px solid hsla(0,0%,0%,.5);border-radius: 4px;box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);position: absolute; top: 50%; left: 50%;transform: translate(-50%, -50%); width: 500px; background-color: #474747; z-index: 9999999; display: flex; justify-content: center; align-items: center;'
             document.body.appendChild(errorAlert)
           }
         }
@@ -9690,6 +9690,8 @@ class PDFNetworkStreamFullRequestReader {
     this._headersReceivedCapability.resolve();
   }
   _onDone(data) {
+    const errorAlert = document.querySelector('#usechatgptPDFViewerErrorAlert');
+    errorAlert && errorAlert.remove();
     if (data) {
       if (this._requests.length > 0) {
         const requestCapability = this._requests.shift();
@@ -9801,6 +9803,8 @@ class PDFNetworkStreamRangeRequestReader {
     this.onClosed?.(this);
   }
   _onDone(data) {
+    const errorAlert = document.querySelector('#usechatgptPDFViewerErrorAlert');
+    errorAlert && errorAlert.remove();
     const chunk = data.chunk;
     if (this._requests.length > 0) {
       const requestCapability = this._requests.shift();

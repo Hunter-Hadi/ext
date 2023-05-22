@@ -27,6 +27,7 @@ import { render } from 'react-dom'
 import Link from '@mui/material/Link'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
+import useInterval from '@/hooks/useInterval'
 
 const log = new Log('AppInit')
 
@@ -151,6 +152,45 @@ export const AppSettingsInit = () => {
   return <></>
 }
 
+const useHandlePDFViewerError = () => {
+  const [delay, setDelay] = React.useState<number | null>(null)
+  const initRef = React.useRef(false)
+  useInterval(() => {
+    const root = document.body.querySelector('#usechatgptPDFViewerErrorAlert')
+    if (root) {
+      console.log('PDFViewerError', delay, initRef.current)
+      initRef.current = true
+      setDelay(null)
+      render(
+        <Stack spacing={1} p={2}>
+          <Stack alignItems={'center'} direction={'row'} spacing={2}>
+            <img
+              style={{ flexShrink: 0 }}
+              height={48}
+              width={48}
+              src={
+                '/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png'
+              }
+            />
+            <Typography width={0} flex={1}>
+              Click on "Allow access to file URLs" at chrome://extensions to
+              view file:///Users/yangger/Downloads/2304.03442.pdf
+            </Typography>
+          </Stack>
+        </Stack>,
+        root,
+      )
+      return
+    }
+  }, delay)
+  useEffect(() => {
+    if (window.location.href.startsWith('chrome-extension://')) {
+      if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
+        setDelay(1000)
+      }
+    }
+  }, [])
+}
 /**
  * 关闭PDF预览功能，实际上是跳转到settings里
  * @constructor
@@ -271,6 +311,7 @@ const AppInit = () => {
     disabledPDFViewer()
   })
   useInjectShortCutsRunTime()
+  useHandlePDFViewerError()
   return (
     <>
       {appState.env === 'gmail' && isEzMailApp && <GmailInit />}

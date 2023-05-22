@@ -9511,9 +9511,23 @@ class NetworkManager {
     }
     xhr.responseType = "arraybuffer";
     if (args.onError) {
+      const url = this.url
       xhr.onerror = function (evt) {
-        args.onError(xhr.status);
-      };
+        args.onError(xhr.status)
+        if (
+          url &&
+          (url.startsWith('file://') || url.startsWith('ftp://'))
+        ) {
+          if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
+            const errorAlert = document.createElement('div')
+            errorAlert.id = 'usechatgptPDFViewerErrorAlert'
+            errorAlert.setAttribute('data-url', url)
+            errorAlert.style =
+              'border: 1px solid hsla(0,0%,0%,.5);border-radius: 4px;box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);position: absolute; top: 50%; left: 50%;transform: translate(-50%, -50%); width: 500px; height: 120px; background-color: #717171; z-index: 9999999; display: flex; justify-content: center; align-items: center;'
+            document.body.appendChild(errorAlert)
+          }
+        }
+      }
     }
     xhr.onreadystatechange = this.onStateChange.bind(this, xhrId);
     xhr.onprogress = this.onProgress.bind(this, xhrId);
@@ -15724,7 +15738,7 @@ exports.SVGGraphics = SVGGraphics;
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __w_pdfjs_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -15738,14 +15752,14 @@ exports.SVGGraphics = SVGGraphics;
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __w_pdfjs_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.

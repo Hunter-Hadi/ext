@@ -99,23 +99,25 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                   >
                     {findModal?.title || 'Select model'}
                   </Typography>
-                  {findModal?.tags?.map((tag) => {
-                    return (
-                      <Chip
-                        key={tag}
-                        sx={{
-                          ml: 1,
-                          textTransform: 'capitalize',
-                          flexShrink: 0,
-                          fontSize: '14px',
-                        }}
-                        label={tag}
-                        color="primary"
-                        size={'small'}
-                        variant={'outlined'}
-                      />
-                    )
-                  })}
+                  {findModal?.tags
+                    ?.filter((t) => t === 'beta')
+                    ?.map((tag) => {
+                      return (
+                        <Chip
+                          key={tag}
+                          sx={{
+                            ml: 1,
+                            textTransform: 'capitalize',
+                            flexShrink: 0,
+                            fontSize: '14px',
+                          }}
+                          label={tag}
+                          color="primary"
+                          size={'small'}
+                          variant={'outlined'}
+                        />
+                      )
+                    })}
                 </Stack>
               )
             }}
@@ -136,12 +138,7 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                     }}
                     title={
                       <Stack spacing={1} width={'160px'}>
-                        <Stack
-                          direction={'row'}
-                          width={'100%'}
-                          alignItems={'center'}
-                          spacing={1}
-                        >
+                        <Stack textAlign={'left'} width={'100%'} spacing={1}>
                           <Typography
                             fontSize={'14px'}
                             color={'text.primary'}
@@ -149,22 +146,32 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                           >
                             {model?.title}
                           </Typography>
-                          {model?.tags?.map((tag) => {
-                            return (
-                              <Chip
-                                sx={{
-                                  ml: 1,
-                                  textTransform: 'capitalize',
-                                  flexShrink: 0,
-                                }}
-                                key={tag}
-                                label={tag}
-                                color="primary"
-                                size={'small'}
-                                variant={'outlined'}
-                              />
-                            )
-                          })}
+                          <Stack
+                            direction={'row'}
+                            flexWrap={'wrap'}
+                            gap={'4px'}
+                          >
+                            {model?.tags?.map((tag) => {
+                              return (
+                                <Chip
+                                  sx={{
+                                    fontSize: '12px',
+                                    height: '18px',
+                                    textTransform: 'capitalize',
+                                    flexShrink: 0,
+                                    '& > span': {
+                                      px: '6px',
+                                    },
+                                  }}
+                                  key={tag}
+                                  label={tag}
+                                  color="primary"
+                                  size={'small'}
+                                  variant={'outlined'}
+                                />
+                              )
+                            })}
+                          </Stack>
                         </Stack>
                         <Typography
                           fontSize={'12px'}
@@ -245,23 +252,25 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                       >
                         {model?.title || 'Select model'}
                       </Typography>
-                      {model?.tags?.map((tag) => {
-                        return (
-                          <Chip
-                            sx={{
-                              ml: 1,
-                              textTransform: 'capitalize',
-                              fontSize: '14px',
-                              flexShrink: 0,
-                            }}
-                            key={tag}
-                            label={tag}
-                            color="primary"
-                            size={'small'}
-                            variant={'outlined'}
-                          />
-                        )
-                      })}
+                      {model?.tags
+                        ?.filter((t) => t === 'beta')
+                        ?.map((tag) => {
+                          return (
+                            <Chip
+                              sx={{
+                                ml: 1,
+                                textTransform: 'capitalize',
+                                fontSize: '14px',
+                                flexShrink: 0,
+                              }}
+                              key={tag}
+                              label={tag}
+                              color="primary"
+                              size={'small'}
+                              variant={'outlined'}
+                            />
+                          )
+                        })}
                     </Stack>
                   </Tooltip>
                 </MenuItem>

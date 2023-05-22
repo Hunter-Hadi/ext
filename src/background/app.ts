@@ -59,6 +59,8 @@ export const startChromeExtensionBackground = () => {
   initChromeExtensionDisabled()
   initChromeExtensionUninstalled()
   // feature
+  // pdf feature
+  pdfSnifferStartListener().then().catch()
 }
 
 /**
@@ -91,8 +93,6 @@ const initChromeExtensionInstalled = () => {
         title: 'UseChatGPT.AI',
         contexts: ['all'],
       })
-      // pdf feature
-      await pdfSnifferStartListener()
     })
   }
 }

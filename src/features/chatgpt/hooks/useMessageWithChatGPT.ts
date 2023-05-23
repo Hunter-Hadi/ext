@@ -10,7 +10,7 @@ import { AppSettingsState } from '@/store'
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
 import { setChromeExtensionSettings } from '@/background/utils'
-import { increaseChatGPTRequetCount } from '@/features/chatgpt/utils/chatRequestRecorder'
+import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import {
   IAIResponseMessage,
@@ -174,6 +174,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     const pushMessages: IChatMessage[] = []
     let hasError = false
     try {
+      // 发消息之前记录
+      increaseChatGPTRequestCount('normal')
       // ai 正在输出的消息
       let aiRespondingMessage: any = null
       let saveConversationId = ''
@@ -234,7 +236,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               let text =
                 error?.message || error || 'Error detected. Please try again.'
               if (is403Error) {
-                increaseChatGPTRequetCount('error')
+                increaseChatGPTRequestCount('error')
                 text = `Log into ChatGPT and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
               }
               if (text.startsWith('Too many requests in 1 hour')) {
@@ -262,7 +264,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         aiRespondingMessage?.messageId &&
         aiRespondingMessage?.text
       ) {
-        increaseChatGPTRequetCount('normal')
         if (saveConversationId) {
           await setChromeExtensionSettings({
             conversationId: saveConversationId,

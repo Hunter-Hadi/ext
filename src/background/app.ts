@@ -35,7 +35,10 @@ import {
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
 import { ClientMessageInit } from '@/background/src/client'
-import { backgroundSendClientMessage } from '@/background/utils'
+import {
+  backgroundSendClientMessage,
+  resetChromeExtensionOnBoardingData,
+} from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageInit } from '@/background/src/shortcut'
 
@@ -74,6 +77,8 @@ const initChromeExtensionInstalled = () => {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
         })
+        // 重置插件引导数据
+        await resetChromeExtensionOnBoardingData()
       }
     })
   } else {

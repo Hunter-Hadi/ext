@@ -11,6 +11,8 @@ import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IChatMessage } from '@/features/chatgpt/types'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import DevMessageSourceData from '@/features/gmail/components/GmailChatBox/DevMessageSourceData'
+import DevContent from '@/components/DevContent'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -130,6 +132,7 @@ const GmailChatBoxMessageItem: FC<{
         width: '100%',
         p: 1,
         color: 'text.primary',
+        position: 'relative',
         '& .chat-message--text': {
           textAlign: 'left',
           fontSize: '16px',
@@ -163,6 +166,9 @@ const GmailChatBoxMessageItem: FC<{
       spacing={1}
       key={message.messageId}
     >
+      <DevContent>
+        <DevMessageSourceData message={message} />
+      </DevContent>
       {/*<Stack>*/}
       {/*  <p style={{ fontSize: '12px', color: 'red' }}>*/}
       {/*    messageId: {message.messageId}*/}

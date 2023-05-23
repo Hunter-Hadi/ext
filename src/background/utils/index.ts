@@ -22,6 +22,12 @@ import utc from 'dayjs/plugin/utc'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { PoeModel } from '@/background/src/chat/PoeChat/type'
 
+export {
+  resetChromeExtensionOnBoardingData,
+  setChromeExtensionOnBoardingData,
+  getChromeExtensionOnBoardingData,
+} from './onboardingStorage'
+
 dayjs.extend(utc)
 
 export type IChatGPTModelType = {

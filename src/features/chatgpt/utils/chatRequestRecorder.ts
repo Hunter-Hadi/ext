@@ -4,6 +4,11 @@ import dayjs from 'dayjs'
 import Browser from 'webextension-polyfill'
 import omit from 'lodash-es/omit'
 import { getAccessToken } from '@/utils/request'
+import debounce from 'lodash-es/debounce'
+import {
+  getChromeExtensionOnBoardingData,
+  setChromeExtensionOnBoardingData,
+} from '@/background/utils'
 
 interface IChatRequestCountRecordType {
   // 在从start_timestamp到end_timestamp期间内，一共发生过多少次403 errro/chatgpt断连error
@@ -14,10 +19,12 @@ interface IChatRequestCountRecordType {
   [key: string]: number
 }
 
+// TODO 放到types.ts里面
 const CHATGPT_REQUEST_TIME_RECORD = 'chatgpt-request-time-record'
 const CHATGPT_REQUEST_COUNT_RECORD = 'chatgpt-request-count-record'
 
 const RECORD_DAY_LIMIT = 2
+const RECORD_DEBOUNCE_TIME = 1000 * 60 * 5 // 5分钟
 
 const getStorageDataKeyByKey = async (key: string) => {
   const res = await Browser.storage.local.get(key)
@@ -37,20 +44,19 @@ const setChatGPTRequetTime = async (time = Date.now(), force = false) => {
   })
 }
 
-export const increaseChatGPTRequetCount = async (type: 'error' | 'normal') => {
+export const increaseChatGPTRequestCount = async (type: 'error' | 'normal') => {
   const cacheData: IChatRequestCountRecordType = (await getStorageDataKeyByKey(
     CHATGPT_REQUEST_COUNT_RECORD,
   )) || { errorCount: 0 }
   const currentDay = dayjs().format('YYYY-MM-DD')
 
   if (type === 'error') {
+    // 报错的 chat request 不算chat request count
     cacheData.errorCount += 1
+  } else {
+    cacheData[currentDay] = (cacheData[currentDay] || 0) + 1
   }
-  // 报错的 chat request 也算一次 chat request count
-  cacheData[currentDay] = (cacheData[currentDay] || 0) + 1
-
   setChatGPTRequetTime(Date.now())
-
   await Browser.storage.local.set({
     [CHATGPT_REQUEST_COUNT_RECORD]: cacheData,
   })
@@ -62,11 +68,24 @@ export const increaseChatGPTRequetCount = async (type: 'error' | 'normal') => {
   // if (Object.values(dateRequestCount).some((v) => v > 10)) {
   //   fetchChatGPTErrorRecord()
   // }
-
-  if (Object.keys(dateRequestCount).length >= RECORD_DAY_LIMIT) {
+  const { ON_BOARDING_RECORD_FIRST_MESSAGE } =
+    await getChromeExtensionOnBoardingData()
+  if (!ON_BOARDING_RECORD_FIRST_MESSAGE) {
+    // 用户第一次使用需要发送数据
     fetchChatGPTErrorRecord()
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_RECORD_FIRST_MESSAGE',
+      true,
+    )
+  } else if (Object.keys(dateRequestCount).length >= RECORD_DAY_LIMIT) {
+    fetchChatGPTErrorRecord()
+  } else {
+    debounceFetchChatGPTErrorRecord()
   }
 }
+const debounceFetchChatGPTErrorRecord = debounce(() => {
+  fetchChatGPTErrorRecord()
+}, RECORD_DEBOUNCE_TIME)
 
 const fetchChatGPTErrorRecord = async () => {
   try {
@@ -92,9 +111,10 @@ const fetchChatGPTErrorRecord = async () => {
           Authorization: `Bearer ${accessToken}`,
           fp: `${fingerprint}`,
         },
+      }).then(() => {
+        clearStorageDataKeyByKey(CHATGPT_REQUEST_TIME_RECORD)
+        clearStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
       })
-      clearStorageDataKeyByKey(CHATGPT_REQUEST_TIME_RECORD)
-      clearStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
     }
   } catch (error) {
     console.log('fetchChatGPTErrorRecord error', error)

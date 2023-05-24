@@ -20,6 +20,7 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
     "ace-builds": "^1.15.3",
+    "cheerio": "1.0.0-rc.12",
     "dayjs": "^1.11.7",
     "eventsource-parser": "^0.1.0",
     "expiry-map": "^2.0.0",

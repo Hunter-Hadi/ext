@@ -40,7 +40,7 @@ import {
   resetChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
-import { ShortcutMessageInit } from '@/background/src/shortcut'
+import { ShortcutMessageInit } from '@/features/shortcuts/background'
 
 /**
  * background.js 入口

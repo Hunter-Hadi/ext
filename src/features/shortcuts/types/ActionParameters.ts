@@ -29,6 +29,7 @@ import WFStatisticsOperation from './IOS_WF/WFStatisticsOperation'
 import WFTimeFormatStyle from './IOS_WF/WFTimeFormatStyle'
 import WFTimeUntilReferenceDate from './IOS_WF/WFTimeUntilReferenceDate'
 import WFTimeUntilUnit from './IOS_WF/WFTimeUntilUnit'
+import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -145,6 +146,10 @@ interface ActionParameters {
   WFTimeUntilReferenceDate?: WFTimeUntilReferenceDate
   WFTimeUntilUnit?: WFSerialization | WFTimeUntilUnit
   URLActionURL?: string
+  URLSearchEngine?: URLSearchEngine | string
+  URLSearchEngineParams?: {
+    [key in string]: string
+  }
   Variable?: WFSerialization | string
   VariableName?: string
   WFVolume?: number

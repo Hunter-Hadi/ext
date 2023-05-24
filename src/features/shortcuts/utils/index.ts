@@ -188,3 +188,44 @@ export const templateWordToExamples = (
       }
   }
 }
+export const limitedPromiseAll = <T>(
+  promises: Promise<T>[],
+  limit: number,
+): Promise<T[]> => {
+  const results: T[] = []
+  let runningPromises = 0
+  let currentIndex = 0
+
+  return new Promise((resolve, reject) => {
+    function runNextPromise() {
+      if (currentIndex === promises.length) {
+        resolve(results)
+        return
+      }
+
+      const currentPromiseIndex = currentIndex
+      currentIndex++
+
+      const currentPromise = promises[currentPromiseIndex]
+      runningPromises++
+
+      currentPromise
+        .then((result) => {
+          results[currentPromiseIndex] = result
+        })
+        .catch((error) => {
+          reject(error)
+        })
+        .finally(() => {
+          runningPromises--
+          runNextPromise()
+        })
+
+      if (runningPromises < limit) {
+        runNextPromise()
+      }
+    }
+
+    runNextPromise()
+  })
+}

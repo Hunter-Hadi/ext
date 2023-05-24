@@ -11,6 +11,8 @@ import {
   ActionSetVariable,
   ActionURL,
   ActionGetContentsOfURL,
+  ActionGetContentsOfSearchEngine,
+  ActionWebGPTSearchResultsExpand,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -25,6 +27,9 @@ const ActionClassMap = {
   [ActionSetVariable.type]: ActionSetVariable,
   [ActionURL.type]: ActionURL,
   [ActionGetContentsOfURL.type]: ActionGetContentsOfURL,
+  [ActionGetContentsOfSearchEngine.type]: ActionGetContentsOfSearchEngine,
+  // webgpt
+  [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))

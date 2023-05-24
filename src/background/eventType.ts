@@ -1,4 +1,6 @@
 // 客户端监听event
+import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+
 export type IChromeExtensionClientListenEvent =
   | 'Client_ChatGPTStatusUpdate'
   | 'Client_AsyncTaskResponse'
@@ -41,9 +43,6 @@ export type IOpenAIChatSendEvent =
   | 'OpenAIDaemonProcess_taskResponse'
   | 'OpenAIDaemonProcess_pong'
   | 'Client_destroyWithLogout'
-
-// shortcuts配合运行需要的event
-export type IShortCutsSendEvent = 'ShortCuts_getContentOfURL'
 
 // chrome extension 监听event
 export type IChromeExtensionListenEvent =

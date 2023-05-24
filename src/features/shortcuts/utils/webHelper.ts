@@ -80,3 +80,26 @@ export async function getWebpageTitleAndText(
     ...result,
   }
 }
+export const getWebpageUrlContent = async (url: string) => {
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch: ${response.status} ${response.statusText}`,
+      )
+    }
+    return {
+      status: response.status,
+      html: await response.text(),
+      url: response.url,
+      success: true,
+    }
+  } catch (e) {
+    return {
+      status: 404,
+      html: `Could not fetch the page: ${e}.\nMake sure the URL is correct.`,
+      url,
+      success: false,
+    }
+  }
+}

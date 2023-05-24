@@ -188,6 +188,9 @@ const useHandlePDFViewerError = () => {
               flex={1}
               color={'rgba(255,255,255,0.85)'}
               fontSize={'14px'}
+              sx={{
+                overflowWrap: 'break-word',
+              }}
             >
               {`Click on "Allow access to file URLs" at `}
               <Link

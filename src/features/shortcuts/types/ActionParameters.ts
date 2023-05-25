@@ -74,10 +74,10 @@ interface ActionParameters {
   WFConditionalActionString?: string
   WFControlFlowMode?: number
   WFCountType?: WFCountType
-  WFDateActionDate?: WFSerialization | string
-  WFDateActionMode?: WFSerialization | WFDateActionMode
-  WFDateFormat?: WFSerialization | string
-  WFDateFormatStyle?: WFSerialization | WFDateFormatStyle
+  DateActionDate?: WFSerialization | string
+  DateActionMode?: WFSerialization | WFDateActionMode
+  DateFormat?: WFSerialization | string
+  DateFormatStyle?: WFSerialization | WFDateFormatStyle
   WFDelayTime?: number
   WFDeviceDetail?: WFSerialization | WFDeviceDetail
   WFDictionaryKey?: string

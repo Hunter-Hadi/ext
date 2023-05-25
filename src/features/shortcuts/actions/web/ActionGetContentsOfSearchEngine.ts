@@ -39,7 +39,6 @@ export class ActionGetContentsOfSearchEngine extends Action {
         this.parameters?.URLSearchEngineParams?.q ||
         this.parameters?.URLSearchEngineParams?.query ||
         ''
-      debugger
       const backgroundConversation = engine.getBackgroundConversation()
       if (query && backgroundConversation) {
         this.pushMessageToChat(

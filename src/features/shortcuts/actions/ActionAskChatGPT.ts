@@ -5,6 +5,7 @@ import {
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+
 export class ActionAskChatGPT extends Action {
   static type = 'ASK_CHATGPT'
   constructor(
@@ -35,7 +36,7 @@ export class ActionAskChatGPT extends Action {
         this.output = answer
       } else {
         this.output = ''
-        this.error = 'ask chatgpt error'
+        this.error = answer || 'ask chatgpt error'
       }
     } catch (e) {
       this.error = (e as any).toString()

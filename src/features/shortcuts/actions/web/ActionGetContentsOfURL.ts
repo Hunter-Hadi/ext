@@ -2,7 +2,7 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
-import { IShortCutsSendEvent } from '@/background/eventType'
+import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
 export class ActionGetContentsOfURL extends Action {
   static type = 'GET_CONTENTS_OF_URL'
   constructor(

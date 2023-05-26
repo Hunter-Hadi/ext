@@ -7,15 +7,15 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IChatMessage } from '@/features/chatgpt/types'
 
-export class ActionAskChatGPT extends Action {
-  static type = 'ASK_CHATGPT'
+export class ActionWebGPTAskChatGPT extends Action {
+  static type = 'WEBGPT_ASK_CHATGPT'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'ASK_CHATGPT', parameters, autoExecute)
+    super(id, 'WEBGPT_ASK_CHATGPT', parameters, autoExecute)
   }
   private question?: string
   private message?: IChatMessage
@@ -24,8 +24,19 @@ export class ActionAskChatGPT extends Action {
   async execute(params: ActionParameters, engine: any) {
     try {
       const askChatGPTType =
-        this.parameters.AskChatGPTActionType || 'ask_chatgpt'
+        this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       this.question = params.LAST_ACTION_OUTPUT
+      const isReplacement = askChatGPTType === 'ASK_CHAT_GPT_REPLACEMENT'
+      let replaceMessage: IChatMessage | undefined
+      if (isReplacement) {
+        engine.getShortCutsEngine()?.actions.find((action: any) => {
+          if (action.message?.messageId) {
+            replaceMessage = (action as any).message
+            return true
+          }
+          return false
+        })
+      }
       const { success, answer, message } = (await engine
         .getChartGPT()
         ?.sendQuestion(
@@ -39,6 +50,7 @@ export class ActionAskChatGPT extends Action {
             includeHistory: false,
             regenerate: false,
             hiddenInChat: askChatGPTType === 'ASK_CHAT_GPT_HIDDEN',
+            replaceMessage,
           },
         )) || { success: false, answer: '' }
       if (success) {

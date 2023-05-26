@@ -15,6 +15,7 @@ export interface IAction {
   //动作的类型，比如 "RENDER_CHATGPT_PROMPT" 或 "ASK_CHATGPT"
   type: ActionIdentifier
   execute: (params: any, engine: any) => Promise<any>
+  reset: () => void
   error?: string
   output?: any
   parameters: ActionParameters

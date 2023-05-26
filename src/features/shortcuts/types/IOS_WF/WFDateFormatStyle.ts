@@ -1,5 +1,5 @@
-type WFDateFormatStyle = (
-  'None'
+type WFDateFormatStyle =
+  | 'None'
   | 'Short'
   | 'Medium'
   | 'Long'
@@ -8,6 +8,6 @@ type WFDateFormatStyle = (
   | 'ISO 8601'
   | 'Custom'
   | 'How Long Ago/Until' // only in as Date aggrandizement
-);
+  | string
 
-export default WFDateFormatStyle;
+export default WFDateFormatStyle

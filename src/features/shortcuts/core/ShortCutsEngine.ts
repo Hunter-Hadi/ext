@@ -17,6 +17,9 @@ import {
   ActionWebGPTSearchResultsExpand,
   ActionDate,
   ActionDateFormat,
+  ActionSummarizeOfText,
+  ActionWebGPTAskChatGPT,
+  ActionSliceOfText,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -42,6 +45,10 @@ const ActionClassMap = {
   [ActionDateFormat.type]: ActionDateFormat,
   // webgpt插件
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
+  [ActionWebGPTAskChatGPT.type]: ActionWebGPTAskChatGPT,
+  // documents
+  [ActionSummarizeOfText.type]: ActionSummarizeOfText,
+  [ActionSliceOfText.type]: ActionSliceOfText,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
@@ -115,8 +122,7 @@ class ShortCutsEngine implements IShortcutEngine {
     try {
       console.log('ShortCutEngine.executeAction', action)
       // reset action
-      action.error = ''
-      action.output = ''
+      action.reset()
       // execute action
       action.status = 'running'
       this.emit('action', action)

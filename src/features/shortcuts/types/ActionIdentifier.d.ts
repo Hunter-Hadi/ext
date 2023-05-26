@@ -11,8 +11,12 @@ type ActionIdentifier =
   | 'GET_CONTENTS_OF_SEARCH_ENGINE'
   | 'DATE'
   | 'DATE_FORMAT'
+  | 'SUMMARIZE_OF_TEXT'
+  | 'SLICE_OF_TEXT'
 
 // webgpt action identifiers
-type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'
+type WebGPTActionIdentifier =
+  | 'WEBGPT_SEARCH_RESULTS_EXPAND'
+  | 'WEBGPT_ASK_CHATGPT'
 
 export default ActionIdentifier

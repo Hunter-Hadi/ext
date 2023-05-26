@@ -4,8 +4,13 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { SearchResult } from '@/features/shortcuts/actions/web/ActionGetContentsOfSearchEngine'
 import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
-import { fakeLangChainSummarization } from '@/features/shortcuts/langchain/chains/sumarization'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import {
+  createSummarizeOfTextRunActions,
+  SUMMARIZE_MAX_CHARACTERS,
+} from '@/features/shortcuts/actions/documents/ActionSummarizeOfText'
+import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
+import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
 
 // MARK: 这只是为了webget的业务实现的，不具备通用性
 export class ActionWebGPTSearchResultsExpand extends Action {
@@ -30,6 +35,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         return
       }
       const searchResults: SearchResult[] = JSON.parse(searchResultJson)
+      const summarizeType = this.parameters.SummarizeActionType || 'stuff'
       const expandResults = await Promise.all<SearchResult>(
         searchResults.map(async (searchResult) => {
           try {
@@ -54,67 +60,43 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       const addActions: ISetActionsType = []
       for (let i = 0; i < expandResults.length; i++) {
         const searchResult = expandResults[i]
-        const { docs } = await fakeLangChainSummarization(searchResult.body)
-        // docs 代表有0-10个part
-        let partTemplate = ''
-        docs.forEach(({ pageContent }, partIndex) => {
-          const part = pageContent || ''
-          if (!part) {
-            return
-          }
+        if (summarizeType === 'stuff') {
+          // TODO: 临时处理，因为stuff其实是要summarize的，这次发版本为了不影响用户的体验，先只拆分不总结
           addActions.push({
-            type: 'ASK_CHATGPT',
+            type: 'RENDER_CHATGPT_PROMPT',
             parameters: {
-              template: `
-Disregard any previous instructions.
-
-I will give you text content (potentially just a portion of an article), you will write a concise summary of the text content. Keep the meaning the same. The summary must be 200 characters (characters, not words) or less.
- 
-In your response, do not remind me of what I asked, do not explain, do not self reference, do not apologize, do not use variables or placeholders, do not include any generic filler phrases, do not quote your response, just output the summary be and nothing else.
-
-Now, using the concepts above, summarize the following text in the same language variety or dialect as the original text:
-"""
-${part}
-"""`,
+              template: searchResult.body,
+            },
+          })
+          addActions.push({
+            type: 'SLICE_OF_TEXT',
+            parameters: {
+              SliceTextActionLength: Math.ceil(
+                SLICE_MAX_CHARACTERS / expandResults.length,
+              ),
             },
           })
           addActions.push({
             type: 'SET_VARIABLE',
             parameters: {
-              VariableName: `PAGE_SUMMARIZE_${i}_PART_${partIndex}`,
+              VariableName: `SLICE_OF_TEXT_${i}`,
             },
           })
-          partTemplate += `[${
-            partIndex + 1
-          }] {{PAGE_SUMMARIZE_${i}_PART_${partIndex}}}\n`
-        })
-        // 总结所有的part变成`PAGE_SUMMARIZE_${i}`
-        addActions.push({
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: `
-Disregard any previous instructions.
-
-I will give you text content (probably an article), you will write a concise summary of the text content. Keep the meaning the same. The summary must be 200 characters (characters, not words) or less.
- 
-In your response, do not remind me of what I asked, do not explain, do not self reference, do not apologize, do not use variables or placeholders, do not include any generic filler phrases, do not quote your response, just output the summary be and nothing else.
-
-Now, using the concepts above, summarize the following text in the same language variety or dialect as the original text:
-"""
-${partTemplate}
-"""`,
-          },
-        })
-        addActions.push({
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: `PAGE_SUMMARIZE_${i}`,
-          },
-        })
-        template += `[${i + 1}] Title: ${
-          searchResult.title
-        }\nContent: {{PAGE_SUMMARIZE_${i}}}\nURL: ${searchResult.url}\n\n`
-        console.log(docs, i)
+          template += `[${i + 1}] Title: ${
+            searchResult.title
+          }\nContent: {{SLICE_OF_TEXT_${i}}}\nURL: ${searchResult.url}\n\n`
+        } else {
+          const { actions: summarizeActions, variableName } =
+            await createSummarizeOfTextRunActions(
+              searchResult.body,
+              summarizeType as SummarizeActionType,
+              Math.ceil(SUMMARIZE_MAX_CHARACTERS / expandResults.length),
+            )
+          addActions.push(...summarizeActions)
+          template += `[${i + 1}] Title: ${
+            searchResult.title
+          }\nContent: {{${variableName}}}\nURL: ${searchResult.url}\n\n`
+        }
       }
       addActions.push({
         type: 'RENDER_CHATGPT_PROMPT',
@@ -123,7 +105,18 @@ ${partTemplate}
         },
       })
       if (engine.getShortCutsEngine()) {
-        engine.getShortCutsEngine()?.pushActions(addActions, 'after')
+        engine.getShortCutsEngine()?.pushActions(
+          addActions.map((action) => {
+            return {
+              ...action,
+              parameters: {
+                ...action.parameters,
+                AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              },
+            }
+          }),
+          'after',
+        )
       } else {
         this.error = 'no shortCutsEngine'
         return

@@ -96,7 +96,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
     const cloneParams = { ...params }
     delete cloneParams.limit
     const searchParams = new URLSearchParams({
-      ...params,
+      ...cloneParams,
       q: query,
     })
     return `${searchURL}?${searchParams.toString()}`

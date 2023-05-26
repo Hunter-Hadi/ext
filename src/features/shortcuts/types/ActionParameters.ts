@@ -30,6 +30,8 @@ import WFTimeFormatStyle from './IOS_WF/WFTimeFormatStyle'
 import WFTimeUntilReferenceDate from './IOS_WF/WFTimeUntilReferenceDate'
 import WFTimeUntilUnit from './IOS_WF/WFTimeUntilUnit'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
+import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -155,6 +157,10 @@ interface ActionParameters {
   WFVolume?: number
   WFWorkflowName?: string
   WFZIPName?: WFSerialization | string
+  // Extra
+  SummarizeActionType?: SummarizeActionType | string
+  SliceTextActionLength?: number
+  AskChatGPTActionType?: AskChatGPTActionType
 }
 
 export default ActionParameters

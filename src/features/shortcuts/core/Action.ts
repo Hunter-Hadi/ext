@@ -37,5 +37,10 @@ class Action implements IAction {
         ?.pushMessage(message.type as 'third', message.text, 'success')
     }
   }
+  reset() {
+    this.status = 'idle'
+    this.error = ''
+    this.output = ''
+  }
 }
 export default Action

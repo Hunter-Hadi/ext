@@ -350,7 +350,7 @@ class UseChatGPTPlusChat {
   async destroy() {
     log.info('destroy')
     this.status = 'needAuth'
-    await this.updateClientStatus()
+    // await this.updateClientStatus()
     this.active = false
   }
   private async getToken() {

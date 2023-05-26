@@ -29,20 +29,24 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import useInterval from '@/hooks/useInterval'
 
 const APP_NAME = String(process.env.APP_NAME)
-const log = new Log('ChatGPTDaemonProcessPage')
-const stopDaemonProcessClose = () => {
+
+const setDeamonProcessTabTitle = () => {
   setInterval(() => {
     document.title = `${APP_NAME} daemon process is running...`
   }, 1000)
   return
-  window.onbeforeunload = (event) => {
-    event.returnValue = 'Are you sure you want to close?'
-    setTimeout(() => {
-      console.log('[Daemon Process]: not close')
-    }, 0)
-    return 'Are you sure you want to close?'
-  }
 }
+
+const log = new Log('ChatGPTDaemonProcessPage')
+// const stopDaemonProcessClose = () => {
+//   window.onbeforeunload = (event) => {
+//     event.returnValue = 'Are you sure you want to close?'
+//     setTimeout(() => {
+//       console.log('[Daemon Process]: not close')
+//     }, 0)
+//     return 'Are you sure you want to close?'
+//   }
+// }
 
 const isDisabledTopBar = () => {
   return (
@@ -57,6 +61,13 @@ const useDaemonProcess = () => {
   )
   const [showDaemonProcessBar, setShowDaemonProcessBar] = useState(false)
   const [pageSuccessLoaded, setPageSuccessLoaded] = useState(false)
+
+  const startDaemonProcess = async (
+    clientPort: ContentScriptConnectionV2,
+    port: ContentScriptConnectionV2,
+    listener: (msg: any) => Promise<any>,
+  ) => {}
+
   const isPageLoad = () => {
     const h1Elements = document.body.querySelectorAll('h1')
     for (let i = 0; i < h1Elements.length; i++) {
@@ -101,7 +112,6 @@ const useDaemonProcess = () => {
       const port = new ContentScriptConnectionV2({
         runtime: 'daemon_process',
       })
-      console.log(pageSuccessLoaded, 'pageSuccessLoaded')
       port
         .postMessage({
           event: 'OpenAIDaemonProcess_daemonProcessExist',
@@ -109,8 +119,8 @@ const useDaemonProcess = () => {
         })
         .then(async (res) => {
           log.info(res)
-          // 没有守护进程实例
           if (res.success && res.data?.isExist === false) {
+            // 有守护进程实例
             log.info(`init ${APP_NAME} chatGPT daemon process`)
             // 更新模型列表
             try {
@@ -155,7 +165,7 @@ const useDaemonProcess = () => {
                 await port.postMessage({
                   event: 'OpenAIDaemonProcess_setDaemonProcess',
                 })
-                stopDaemonProcessClose()
+                setDeamonProcessTabTitle()
                 const nextRoot = document.getElementById('__next')
                 if (nextRoot && !isDisabledTopBar()) {
                   nextRoot?.classList.add('use-chat-gpt-ai-running')
@@ -179,7 +189,7 @@ const useDaemonProcess = () => {
               }, 1000)
             }
           } else {
-            // 有守护进程实例
+            // 没有守护进程实例
             log.info('close listen')
             document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
           }

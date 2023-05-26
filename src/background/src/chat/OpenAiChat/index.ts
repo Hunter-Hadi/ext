@@ -143,8 +143,9 @@ class OpenAIChat {
           this.status = 'needAuth'
         }
       }
+    } else {
+      this.status = 'needAuth'
     }
-
     await this.updateClientStatus()
   }
   async auth(authTabId: number) {
@@ -156,20 +157,23 @@ class OpenAIChat {
       this.chatGPTProxyInstance = this.cacheLastTimeChatGPTProxyInstance
         ? this.cacheLastTimeChatGPTProxyInstance
         : await createDaemonProcessTab()
-      if (this.cacheLastTimeChatGPTProxyInstance) {
-        const windowId = this.chatGPTProxyInstance.windowId
-        if (windowId) {
+    }
+    if (this.chatGPTProxyInstance) {
+      const windowId = this.chatGPTProxyInstance.windowId
+      if (windowId) {
+        try {
           await Browser.windows.update(windowId, {
             focused: true,
           })
+        } catch (error) {
+          console.log('error', error)
         }
-        await Browser.tabs.update(this.chatGPTProxyInstance.id, {
-          active: true,
-        })
-        await Browser.tabs.reload(this.chatGPTProxyInstance.id)
       }
-    }
-    if (this.chatGPTProxyInstance) {
+      await Browser.tabs.update(this.chatGPTProxyInstance.id, {
+        active: true,
+      })
+      await Browser.tabs.reload(this.chatGPTProxyInstance.id)
+
       this.status = 'complete'
       this.listenDaemonProcessTab()
       await this.updateClientStatus()

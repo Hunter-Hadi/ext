@@ -62,12 +62,6 @@ const useDaemonProcess = () => {
   const [showDaemonProcessBar, setShowDaemonProcessBar] = useState(false)
   const [pageSuccessLoaded, setPageSuccessLoaded] = useState(false)
 
-  const startDaemonProcess = async (
-    clientPort: ContentScriptConnectionV2,
-    port: ContentScriptConnectionV2,
-    listener: (msg: any) => Promise<any>,
-  ) => {}
-
   const isPageLoad = () => {
     const h1Elements = document.body.querySelectorAll('h1')
     for (let i = 0; i < h1Elements.length; i++) {

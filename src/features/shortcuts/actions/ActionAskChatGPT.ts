@@ -17,7 +17,11 @@ export class ActionAskChatGPT extends Action {
   ) {
     super(id, 'ASK_CHATGPT', parameters, autoExecute)
   }
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   private question?: string
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   private message?: IChatMessage
   @templateParserDecorator()
   @clearUserInput(false)

@@ -182,12 +182,26 @@ const useHandlePDFViewerError = () => {
             boxSizing: 'border-box',
           }}
         >
-          <img
-            style={{ flexShrink: 0, alignSelf: 'center' }}
-            height={48}
-            width={48}
-            src={'/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png'}
-          />
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent="center"
+            spacing={1.4}
+            color="#fff"
+          >
+            <img
+              style={{ flexShrink: 0, alignSelf: 'center' }}
+              height={48}
+              width={48}
+              src={
+                '/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png'
+              }
+            />
+            {/* <UseChatGptIcon sx={{ fontSize: 48 }} /> */}
+            <Typography variant={'body1'} fontSize={18} fontWeight={700}>
+              PDF AI viewer
+            </Typography>
+          </Stack>
           <Stack alignItems={'center'} spacing={0}>
             <Typography
               flex={1}
@@ -197,7 +211,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`Click on "Allow access to file URLs" at `}
+              {`PDF AI viewer lets you select text in any PDF files and use prompts on them. Click on "Allow access to file URLs" at `}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}
@@ -214,7 +228,6 @@ const useHandlePDFViewerError = () => {
               {` to `}
             </Typography>
             <Typography
-              width={0}
               flex={1}
               color={'rgba(255,255,255,0.85)'}
               fontSize={'14px'}

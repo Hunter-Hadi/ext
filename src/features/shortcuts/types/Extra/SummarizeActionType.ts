@@ -2,6 +2,6 @@
  * 参考LangChain的定义
  * @doc - https://js.langchain.com/docs/modules/chains/index_related_chains/document_qa
  */
-type SummarizeActionType = 'stuff' | 'map_reduce' | 'refine'
+type SummarizeActionType = 'STUFF' | 'MAP_REDUCE' | 'REFINE'
 
 export default SummarizeActionType

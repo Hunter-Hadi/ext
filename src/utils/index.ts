@@ -66,6 +66,10 @@ export const showChatBox = () => {
     if (location.hostname === 'outlook.live.com') {
       htmlElement.style.minHeight = '100vh'
     }
+    // 浏览器自带的pdf文件阅读器
+    if (document.querySelector('embed[type="application/pdf"]')) {
+      document.body.style.height = '100vh'
+    }
     if (!chatBoxElement.classList.contains('open')) {
       chatBoxElement.classList.remove('close')
       chatBoxElement.classList.add('open')
@@ -89,6 +93,10 @@ export const hideChatBox = () => {
     htmlElement.style.position = ''
     if (location.hostname === 'outlook.live.com') {
       htmlElement.style.minHeight = ''
+    }
+    // 浏览器自带的pdf文件阅读器
+    if (document.querySelector('embed[type="application/pdf"]')) {
+      document.body.style.height = '100%'
     }
     chatBoxElement.classList.remove('open')
     chatBoxElement.classList.add('close')

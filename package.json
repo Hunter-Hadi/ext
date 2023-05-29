@@ -51,6 +51,7 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "remark-supersub": "^1.0.0",
+    "ua-parser-js": "^1.0.35",
     "uuid": "^9.0.0",
     "websocket-as-promised": "^2.0.1"
   },
@@ -81,6 +82,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-highlight": "^0.12.5",
     "@types/react-scroll": "^1.8.7",
+    "@types/ua-parser-js": "^0.7.36",
     "@types/uuid": "^9.0.0",
     "@types/webextension-polyfill": "^0.10.0",
     "@typescript-eslint/eslint-plugin": "^4.10.0",

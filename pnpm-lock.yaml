@@ -127,6 +127,9 @@ dependencies:
   remark-supersub:
     specifier: ^1.0.0
     version: registry.npmmirror.com/remark-supersub@1.0.0
+  ua-parser-js:
+    specifier: ^1.0.35
+    version: registry.npmmirror.com/ua-parser-js@1.0.35
   uuid:
     specifier: ^9.0.0
     version: registry.npmmirror.com/uuid@9.0.0
@@ -213,6 +216,9 @@ devDependencies:
   '@types/react-scroll':
     specifier: ^1.8.7
     version: registry.npmmirror.com/@types/react-scroll@1.8.7
+  '@types/ua-parser-js':
+    specifier: ^0.7.36
+    version: registry.npmmirror.com/@types/ua-parser-js@0.7.36
   '@types/uuid':
     specifier: ^9.0.0
     version: registry.npmmirror.com/@types/uuid@9.0.0
@@ -3214,7 +3220,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/@types/ua-parser-js@0.7.36:
-    resolution: {integrity: sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/ua-parser-js/-/ua-parser-js-0.7.36.tgz}
+    resolution: {integrity: sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/ua-parser-js/-/ua-parser-js-0.7.36.tgz}
     name: '@types/ua-parser-js'
     version: 0.7.36
     dev: true
@@ -10154,10 +10160,9 @@ packages:
     dev: true
 
   registry.npmmirror.com/ua-parser-js@1.0.35:
-    resolution: {integrity: sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/ua-parser-js/-/ua-parser-js-1.0.35.tgz}
+    resolution: {integrity: sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ua-parser-js/-/ua-parser-js-1.0.35.tgz}
     name: ua-parser-js
     version: 1.0.35
-    dev: true
 
   registry.npmmirror.com/ufo@1.1.1:
     resolution: {integrity: sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/ufo/-/ufo-1.1.1.tgz}

@@ -1,7 +1,9 @@
 import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/types'
 import Browser from 'webextension-polyfill'
 
-type OnBoardingKeyType = 'ON_BOARDING_RECORD_FIRST_MESSAGE'
+type OnBoardingKeyType =
+  | 'ON_BOARDING_RECORD_FIRST_MESSAGE'
+  | 'ON_BOARDING_RECORD_BROWSER_VERSION'
 
 type OnBoardingMapType = {
   [key in OnBoardingKeyType]?: boolean | string | number
@@ -9,6 +11,7 @@ type OnBoardingMapType = {
 const defaultOnBoardingMap: OnBoardingMapType = {
   // 记录用户第一次发送的message
   ON_BOARDING_RECORD_FIRST_MESSAGE: false,
+  ON_BOARDING_RECORD_BROWSER_VERSION: false,
 }
 
 /**

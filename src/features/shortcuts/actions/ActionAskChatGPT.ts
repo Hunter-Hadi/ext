@@ -53,8 +53,11 @@ export class ActionAskChatGPT extends Action {
     }
   }
   reset() {
+    console.log('reset')
     super.reset()
     this.question = ''
     this.message = undefined
+    console.log(this.question)
+    console.log(this.message)
   }
 }

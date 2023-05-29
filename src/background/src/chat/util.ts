@@ -30,7 +30,6 @@ export const createDaemonProcessTab = async () => {
       await Browser.windows.update(currentPinnedTab.windowId, {
         state: 'normal',
         focused: true,
-        width: 1280,
       })
     }
   } else {

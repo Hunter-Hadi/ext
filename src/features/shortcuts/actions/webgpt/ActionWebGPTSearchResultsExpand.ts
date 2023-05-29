@@ -35,7 +35,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         return
       }
       const searchResults: SearchResult[] = JSON.parse(searchResultJson)
-      const summarizeType = this.parameters.SummarizeActionType || 'stuff'
+      const summarizeType = this.parameters.SummarizeActionType || 'STUFF'
       const expandResults = await Promise.all<SearchResult>(
         searchResults.map(async (searchResult) => {
           try {
@@ -60,8 +60,8 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       const addActions: ISetActionsType = []
       for (let i = 0; i < expandResults.length; i++) {
         const searchResult = expandResults[i]
-        if (summarizeType === 'stuff') {
-          // TODO: 临时处理，因为stuff其实是要summarize的，这次发版本为了不影响用户的体验，先只拆分不总结
+        // MARK: 特殊处理 给webgppt用的
+        if (summarizeType === 'NO_SUMMARIZE') {
           addActions.push({
             type: 'RENDER_CHATGPT_PROMPT',
             parameters: {
@@ -82,9 +82,9 @@ export class ActionWebGPTSearchResultsExpand extends Action {
               VariableName: `SLICE_OF_TEXT_${i}`,
             },
           })
-          template += `[${i + 1}] Title: ${
+          template += `NUMBER:${i + 1}\nURL: ${searchResult.url}\nTITLE: ${
             searchResult.title
-          }\nContent: {{SLICE_OF_TEXT_${i}}}\nURL: ${searchResult.url}\n\n`
+          }\nCONTENT: {{SLICE_OF_TEXT_${i}}}\n\n`
         } else {
           const { actions: summarizeActions, variableName } =
             await createSummarizeOfTextRunActions(
@@ -93,9 +93,9 @@ export class ActionWebGPTSearchResultsExpand extends Action {
               Math.ceil(SUMMARIZE_MAX_CHARACTERS / expandResults.length),
             )
           addActions.push(...summarizeActions)
-          template += `[${i + 1}] Title: ${
+          template += `NUMBER:${i + 1}\nURL: ${searchResult.url}\nTITLE: ${
             searchResult.title
-          }\nContent: {{${variableName}}}\nURL: ${searchResult.url}\n\n`
+          }\nCONTENT: {{${variableName}}}\n\n`
         }
       }
       addActions.push({

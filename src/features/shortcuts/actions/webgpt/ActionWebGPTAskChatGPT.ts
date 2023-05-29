@@ -68,5 +68,7 @@ export class ActionWebGPTAskChatGPT extends Action {
     super.reset()
     this.question = ''
     this.message = undefined
+    console.log(this.question)
+    console.log(this.message)
   }
 }

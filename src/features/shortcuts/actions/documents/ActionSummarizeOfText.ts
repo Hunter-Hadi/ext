@@ -19,7 +19,7 @@ export const createSummarizeOfTextRunActions = async (
     needSummarizeText,
     SUMMARIZE_MAX_CHARACTERS,
   )
-  if (type === 'stuff' || type === 'refine') {
+  if (type === 'STUFF' || type === 'REFINE') {
     // stuff/refine
     // TODO refine 还没做，所以逻辑和stuff一样
     // 截取除了第一个以外的doc
@@ -125,7 +125,7 @@ export class ActionSummarizeOfText extends Action {
   async execute(params: ActionParameters, engine: any) {
     try {
       const needSummarizeText = params.LAST_ACTION_OUTPUT || ''
-      const summarizeType = this.parameters.SummarizeActionType || 'stuff'
+      const summarizeType = this.parameters.SummarizeActionType || 'STUFF'
       if (!needSummarizeText) {
         this.error = 'No text to summarize'
         return

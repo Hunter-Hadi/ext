@@ -114,7 +114,7 @@ const useDaemonProcess = () => {
         .then(async (res) => {
           log.info(res)
           if (res.success && res.data?.isExist === false) {
-            // 有守护进程实例
+            // 没有守护进程实例
             log.info(`init ${APP_NAME} chatGPT daemon process`)
             // 更新模型列表
             try {
@@ -183,7 +183,7 @@ const useDaemonProcess = () => {
               }, 1000)
             }
           } else {
-            // 没有守护进程实例
+            // 有守护进程实例
             log.info('close listen')
             document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
           }

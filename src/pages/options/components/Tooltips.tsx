@@ -179,7 +179,7 @@ const RunPromptTooltip = () => {
           </Typography>
           <YoutubePlayerBox
             borderRadius={8}
-            youtubeLink={'https://www.youtube.com/embed/cS75N6V5pWk'}
+            youtubeLink={'https://www.youtube.com/embed/URUQea_AfM4'}
           />
         </Box>
       </Popover>

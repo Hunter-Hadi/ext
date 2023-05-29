@@ -211,7 +211,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`PDF AI viewer lets you Select text in any PDF files and use prompts on them. Click on "Allow access to file URLs" at `}
+              {`PDF AI viewer lets you select any text in local PDF files and use prompts on them. Click on "Allow access to file URLs" at `}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}
@@ -410,7 +410,7 @@ const disabledPDFViewer = () => {
                 </Typography>
               </Stack>
               <Typography fontSize={14}>
-                {`PDF AI viewer lets you Select text in any PDF files and use
+                {`PDF AI viewer lets you select any text in local PDF files and use
                 prompts on them. You can turn it off at any time on the
                 extension's `}
                 <Link

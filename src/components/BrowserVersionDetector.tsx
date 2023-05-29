@@ -32,7 +32,7 @@ const BrowserVersionDetector: FC<{
       return 'edge://settings/help'
     }
     if (browserName === 'Chromium') {
-      return 'chrome://settings/help'
+      return 'https://download-chromium.appspot.com/'
     }
     if (browserName === 'Opera') {
       return 'opera://about'
@@ -97,7 +97,7 @@ const BrowserVersionDetector: FC<{
       spacing={2}
     >
       <BrowserIcon sx={{ color: 'text.primary', fontSize: '88px' }} />
-      <Typography fontSize={'28px'} fontWeight={800} color={'text.primary'}>
+      <Typography fontSize={'26px'} fontWeight={800} color={'text.primary'}>
         {`Update your ${browserName} browser`}
       </Typography>
       <Typography

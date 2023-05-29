@@ -28,6 +28,7 @@ import Link from '@mui/material/Link'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import useInterval from '@/hooks/useInterval'
+import { Divider } from '@mui/material'
 
 const log = new Log('AppInit')
 
@@ -173,18 +174,36 @@ const useHandlePDFViewerError = () => {
       setDelay(null)
       const dataUrl = root.getAttribute('data-url')
       render(
-        <Stack spacing={1} p={2} width={'100%'}>
-          <Stack alignItems={'center'} direction={'row'} spacing={2}>
+        <Stack
+          spacing={3}
+          p={2}
+          width={'100%'}
+          sx={{
+            boxSizing: 'border-box',
+          }}
+        >
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            justifyContent="center"
+            spacing={1.4}
+            color="#fff"
+          >
             <img
-              style={{ flexShrink: 0 }}
+              style={{ flexShrink: 0, alignSelf: 'center' }}
               height={48}
               width={48}
               src={
                 '/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png'
               }
             />
+            {/* <UseChatGptIcon sx={{ fontSize: 48 }} /> */}
+            <Typography variant={'body1'} fontSize={18} fontWeight={700}>
+              PDF AI viewer
+            </Typography>
+          </Stack>
+          <Stack alignItems={'center'} spacing={0}>
             <Typography
-              width={0}
               flex={1}
               color={'rgba(255,255,255,0.85)'}
               fontSize={'14px'}
@@ -192,7 +211,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`Click on "Allow access to file URLs" at `}
+              {`PDF AI viewer lets you select text in any PDF files and use prompts on them. Click on "Allow access to file URLs" at `}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}
@@ -206,9 +225,57 @@ const useHandlePDFViewerError = () => {
               >
                 {`chrome://extensions`}
               </Link>
-              {` to view ${dataUrl}`}
+              {` to `}
             </Typography>
+            <Typography
+              flex={1}
+              color={'rgba(255,255,255,0.85)'}
+              fontSize={'14px'}
+              sx={{
+                // overflowWrap: 'break-word',
+                width: '100%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {` view ${dataUrl}`}
+            </Typography>
+            <Button
+              disableElevation
+              size={'small'}
+              variant={'contained'}
+              onClick={async (event) => {
+                event.preventDefault()
+                await chromeExtensionClientOpenPage({
+                  key: 'manage_extension',
+                })
+                window.close()
+              }}
+              sx={{
+                height: '48px',
+                backgroundColor: '#fff',
+                color: '#7602d3',
+                fontSize: '14px',
+                mt: '12px !important',
+                textTransform: 'none',
+                px: 3,
+                '&:hover': {
+                  backgroundColor: '#fff',
+                  color: '#7602d3',
+                },
+              }}
+            >
+              Allow access to file URLs
+            </Button>
           </Stack>
+          <Divider
+            sx={{
+              color: '#fff',
+            }}
+          >
+            OR
+          </Divider>
           <Typography
             component={'div'}
             sx={{
@@ -219,7 +286,7 @@ const useHandlePDFViewerError = () => {
             color={'rgba(255,255,255,0.85)'}
             fontSize={'12px'}
           >
-            <span> {`or select the file again:`}</span>
+            <span> {`select the file again:`}</span>
             <Button
               disableElevation
               size={'small'}
@@ -232,17 +299,50 @@ const useHandlePDFViewerError = () => {
               }}
               sx={{
                 height: '24px',
-                backgroundColor: '#fff',
-                color: 'rgba(0,0,0,0.87)',
+                backgroundColor: '#636363',
+                color: 'rgba(255,255,255,0.87)',
                 fontSize: '14px',
+                textTransform: 'none',
                 '&:hover': {
-                  backgroundColor: '#fff',
-                  color: 'rgba(0,0,0,0.87)',
+                  backgroundColor: '#636363',
+                  color: 'rgba(255,255,255,0.87)',
                 },
               }}
             >
               Choose file
             </Button>
+          </Typography>
+          <Divider
+            sx={{
+              color: '#fff',
+            }}
+          >
+            OR
+          </Divider>
+          <Typography
+            flex={1}
+            color={'rgba(255,255,255,0.85)'}
+            fontSize={'14px'}
+            sx={{
+              overflowWrap: 'break-word',
+            }}
+          >
+            {`Turn off "PDF AI viewer" at any time on the extension's `}
+            <Link
+              color={'rgba(255,255,255,1)'}
+              href={'#'}
+              onClick={async (event) => {
+                event.preventDefault()
+                event.stopPropagation()
+                await chromeExtensionClientOpenPage({
+                  key: 'options',
+                  query: '#pdf',
+                })
+              }}
+            >
+              Settings page
+            </Link>
+            {'.'}
           </Typography>
         </Stack>,
         root,
@@ -326,7 +426,7 @@ const disabledPDFViewer = () => {
                 >
                   Settings page
                 </Link>
-                {` .`}
+                {`.`}
               </Typography>
               <Button
                 size={'small'}

@@ -33,7 +33,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
   })
   async execute(params: ActionParameters, engine: any) {
     try {
-      const query =
+      let query =
         params.compliedTemplate ||
         params.LAST_ACTION_OUTPUT ||
         this.parameters?.URLSearchEngineParams?.q ||
@@ -48,6 +48,10 @@ export class ActionGetContentsOfSearchEngine extends Action {
           },
           engine,
         )
+        // remove head end quote
+        if (query.startsWith('"') && query.endsWith('"')) {
+          query = query.slice(1, -1)
+        }
         const searchEngine = this.parameters.URLSearchEngine || 'yahoo'
         const searchParams = this.parameters.URLSearchEngineParams || {}
         const fullSearchURL = this.getFullSearchURL(
@@ -70,6 +74,8 @@ export class ActionGetContentsOfSearchEngine extends Action {
                 limit: Number(searchParams?.limit || 3),
                 searchEngine,
               }),
+              null,
+              2,
             )
             return
           }

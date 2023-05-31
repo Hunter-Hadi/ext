@@ -16,6 +16,7 @@ import ChatBoxHeader from '@/pages/gmail/ChatBoxHeader'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import { isShowChatBox } from '@/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 
 const GmailChatPage = React.lazy(() => import('@/pages/gmail/GmailChatPage'))
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
@@ -120,26 +121,28 @@ const App: FC = () => {
             <ChatBoxHeader />
             {isOpened && (
               <Stack flex={1} height={0}>
-                <AppSuspenseLoadingLayout>
-                  {appState.open && appState.env === 'gmail' && (
-                    <GmailChatPage />
-                  )}
-                  {appState.env === 'normal' && <NormalChatPage />}
-                </AppSuspenseLoadingLayout>
-                <iframe
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    zIndex: -1,
-                    border: 0,
-                    opacity: 0,
-                  }}
-                  width={1}
-                  height={1}
-                  id={'EzMail_AI_TEMPLATE_COMPILE'}
-                  src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
-                />
+                <BrowserVersionDetector>
+                  <AppSuspenseLoadingLayout>
+                    {appState.open && appState.env === 'gmail' && (
+                      <GmailChatPage />
+                    )}
+                    {appState.env === 'normal' && <NormalChatPage />}
+                  </AppSuspenseLoadingLayout>
+                  <iframe
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      zIndex: -1,
+                      border: 0,
+                      opacity: 0,
+                    }}
+                    width={1}
+                    height={1}
+                    id={'EzMail_AI_TEMPLATE_COMPILE'}
+                    src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
+                  />
+                </BrowserVersionDetector>
               </Stack>
             )}
           </Stack>

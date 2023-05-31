@@ -29,6 +29,9 @@ import WFStatisticsOperation from './IOS_WF/WFStatisticsOperation'
 import WFTimeFormatStyle from './IOS_WF/WFTimeFormatStyle'
 import WFTimeUntilReferenceDate from './IOS_WF/WFTimeUntilReferenceDate'
 import WFTimeUntilUnit from './IOS_WF/WFTimeUntilUnit'
+import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
+import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -73,10 +76,10 @@ interface ActionParameters {
   WFConditionalActionString?: string
   WFControlFlowMode?: number
   WFCountType?: WFCountType
-  WFDateActionDate?: WFSerialization | string
-  WFDateActionMode?: WFSerialization | WFDateActionMode
-  WFDateFormat?: WFSerialization | string
-  WFDateFormatStyle?: WFSerialization | WFDateFormatStyle
+  DateActionDate?: WFSerialization | string
+  DateActionMode?: WFSerialization | WFDateActionMode
+  DateFormat?: WFSerialization | string
+  DateFormatStyle?: WFSerialization | WFDateFormatStyle
   WFDelayTime?: number
   WFDeviceDetail?: WFSerialization | WFDeviceDetail
   WFDictionaryKey?: string
@@ -145,11 +148,19 @@ interface ActionParameters {
   WFTimeUntilReferenceDate?: WFTimeUntilReferenceDate
   WFTimeUntilUnit?: WFSerialization | WFTimeUntilUnit
   URLActionURL?: string
+  URLSearchEngine?: URLSearchEngine | string
+  URLSearchEngineParams?: {
+    [key in string]: string
+  }
   Variable?: WFSerialization | string
   VariableName?: string
   WFVolume?: number
   WFWorkflowName?: string
   WFZIPName?: WFSerialization | string
+  // Extra
+  SummarizeActionType?: SummarizeActionType | string
+  SliceTextActionLength?: number
+  AskChatGPTActionType?: AskChatGPTActionType
 }
 
 export default ActionParameters

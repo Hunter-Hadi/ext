@@ -2,9 +2,10 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
+export const SLICE_MAX_CHARACTERS = 8000
 
-export class ActionSetVariable extends Action {
-  static type: ActionIdentifier = 'SET_VARIABLE'
+export class ActionSliceOfText extends Action {
+  static type: ActionIdentifier = 'SLICE_OF_TEXT'
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -18,20 +19,14 @@ export class ActionSetVariable extends Action {
   })
   async execute(params: ActionParameters, engine: any) {
     try {
-      const VariableName =
-        this.parameters.VariableName || this.parameters.Variable || ''
-      if (!VariableName) {
-        this.error = 'Action no variable name!'
+      const needSplitText = params.LAST_ACTION_OUTPUT || ''
+      const sliceLength =
+        this.parameters.SliceTextActionLength || SLICE_MAX_CHARACTERS
+      if (!needSplitText) {
+        this.error = 'No text to split'
         return
       }
-      const shortCutsEngine = engine.getShortCutsEngine()
-      if (shortCutsEngine && shortCutsEngine.setVariable) {
-        shortCutsEngine.setVariable(
-          VariableName,
-          params.LAST_ACTION_OUTPUT || '',
-        )
-        this.output = params.LAST_ACTION_OUTPUT || ''
-      }
+      this.output = needSplitText.slice(0, sliceLength)
     } catch (e) {
       this.error = (e as any).toString()
     }

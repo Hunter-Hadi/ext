@@ -10,7 +10,7 @@ class OpenAIChatProvider implements ChatAdapterInterface {
     this.openAIChat = openAIChat
   }
   async preAuth() {
-    return Promise.resolve()
+    return this.openAIChat.preAuth()
   }
   auth(authTabId: number) {
     return this.openAIChat.auth(authTabId)

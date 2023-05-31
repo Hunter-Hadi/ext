@@ -56,8 +56,20 @@ export interface IShortCut {
   actions: IAction[]
 }
 
+export type IShortcutEngineListenerEventType =
+  | 'action'
+  | 'beforeRunAction'
+  | 'afterRunAction'
+  | 'status'
+
+export type IShortcutEngineListenerType = (
+  event: IShortcutEngineListenerEventType,
+  data: any,
+) => void
+
 // 定义捷径引擎接口
 export interface IShortcutEngine {
+  // 基础
   status: 'idle' | 'running' | 'stop' | 'complete'
   actions: IAction[]
   variables: Map<string, any>
@@ -81,4 +93,11 @@ export interface IShortcutEngine {
   setActions: (actions: ISetActionsType) => void
   getCurrentAction: () => IAction
   getNextAction: () => IAction
+  progress: number
+  // 事件监听
+  listeners: IShortcutEngineListenerType[]
+  emit: (event: IShortcutEngineListenerEventType, data: any) => void
+  addListener: (listener: IShortcutEngineListenerType) => void
+  removeListener: (listener: IShortcutEngineListenerType) => void
+  removeAllListeners: () => void
 }

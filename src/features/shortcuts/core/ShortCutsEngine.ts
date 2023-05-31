@@ -1,6 +1,8 @@
 import {
   IShortcutEngineVariableType,
   IShortcutEngine,
+  IShortcutEngineListenerEventType,
+  IShortcutEngineListenerType,
 } from '@/features/shortcuts/types'
 import {
   ActionAskChatGPT,
@@ -11,20 +13,42 @@ import {
   ActionSetVariable,
   ActionURL,
   ActionGetContentsOfURL,
+  ActionGetContentsOfSearchEngine,
+  ActionWebGPTSearchResultsExpand,
+  ActionDate,
+  ActionDateFormat,
+  ActionSummarizeOfText,
+  ActionWebGPTAskChatGPT,
+  ActionSliceOfText,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { IAction } from '@/features/shortcuts/types/Action'
 
 const ActionClassMap = {
+  // 即将废弃
+  [ActionGmailInsertReplyBox.type]: ActionGmailInsertReplyBox,
+  // chatgpt
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
-  [ActionGmailInsertReplyBox.type]: ActionGmailInsertReplyBox,
+  // scripts
   [ActionInsertUserInput.type]: ActionInsertUserInput,
-  [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
   [ActionSetVariable.type]: ActionSetVariable,
+  // web
   [ActionURL.type]: ActionURL,
+  [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
   [ActionGetContentsOfURL.type]: ActionGetContentsOfURL,
+  [ActionGetContentsOfSearchEngine.type]: ActionGetContentsOfSearchEngine,
+  //calendar
+  [ActionDate.type]: ActionDate,
+  [ActionDateFormat.type]: ActionDateFormat,
+  // webgpt插件
+  [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
+  [ActionWebGPTAskChatGPT.type]: ActionWebGPTAskChatGPT,
+  // documents
+  [ActionSummarizeOfText.type]: ActionSummarizeOfText,
+  [ActionSliceOfText.type]: ActionSliceOfText,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
@@ -34,6 +58,7 @@ class ShortCutsEngine implements IShortcutEngine {
   variables = new Map<string, any>()
   stepIndex = -1
   actions: IShortcutEngine['actions'] = []
+  listeners: IShortcutEngine['listeners'] = []
   constructor() {
     console.log('ShortCutEngine.constructor')
   }
@@ -63,46 +88,120 @@ class ShortCutsEngine implements IShortcutEngine {
       this.actions.push(ActionInstance)
     })
   }
+  pushActions(
+    actions: Array<{
+      id?: string
+      type: ActionIdentifier
+      parameters: ActionParameters
+      autoExecute?: boolean
+    }>,
+    position: 'after' | 'last',
+  ) {
+    console.log('ShortCutEngine.pushActions', actions)
+    const newActions: any[] = []
+    actions.map((action) => {
+      const CurrentActionClass = ActionClassMap[action.type]
+      if (!CurrentActionClass) {
+        throw new Error(`Action type ${action.type} not found`)
+      }
+      const ActionInstance = new CurrentActionClass(
+        action.id || v4(),
+        action.type,
+        action.parameters || {},
+        typeof action.autoExecute === 'boolean' ? action.autoExecute : true,
+      )
+      newActions.push(ActionInstance)
+    })
+    if (position === 'after') {
+      this.actions.splice(this.stepIndex + 1, 0, ...newActions)
+    } else {
+      this.actions.push(...newActions)
+    }
+  }
+  private async executeAction(action: IAction, engine: any) {
+    try {
+      console.log('ShortCutEngine.executeAction', action)
+      // reset action
+      action.reset()
+      // execute action
+      action.status = 'running'
+      this.emit('action', action)
+      await action.execute(this.getVariable(), engine)
+      if (action.error) {
+        action.status = 'error'
+        this.emit('action', action)
+        return
+      }
+      action.status = 'complete'
+      this.emit('action', action)
+    } catch (error) {
+      console.log('ShortCutEngine.executeAction error', error)
+      action.status = 'error'
+      this.emit('action', action)
+    }
+  }
   async run(params?: any) {
     try {
       const { engine, parameters } = params
-      this.stepIndex += 1
-      if (this.status === 'idle' || this.status === 'running') {
-        const currentAction = this.getCurrentAction()
-        if (currentAction) {
-          this.status = 'running'
+      if (this.status === 'idle' || this.status === 'stop') {
+        this.status = 'running'
+        this.emit('status', this)
+        while (this.status === 'running') {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          if (this.status === 'stop') {
+            console.log('ShortCutEngine.run: stop')
+            break
+          }
+          this.stepIndex += 1
+          if (this.stepIndex >= this.actions.length) {
+            console.log('ShortCutEngine.run: no more actions')
+            this.status = 'complete'
+            this.emit('status', this)
+            this.reset()
+            break
+          }
           if (parameters) {
             this.setVariables(parameters)
           }
+          const currentAction = this.getCurrentAction()
           console.log(
-            `ShortCutEngine.run action[${this.stepIndex}]`,
-            engine,
-            this.getVariable(),
-            currentAction.type,
-            currentAction.parameters,
+            `ShortCutEngine.run action [${this.stepIndex}] progress: \t`,
+            this.progress,
           )
-          await currentAction.execute(this.getVariable(), engine)
-          if (currentAction.error) {
-            this.stepIndex = Math.max(this.stepIndex - 1, -1)
-            return
+          if (currentAction) {
+            this.emit('beforeRunAction', {
+              ShortcutsEngine: this,
+              action: currentAction,
+              progress: this.progress,
+            })
+            await this.executeAction(currentAction, engine)
+            this.emit('afterRunAction', {
+              ShortcutsEngine: this,
+              action: currentAction,
+              progress: this.progress,
+            })
+            console.log(
+              'ShortCutEngine.run: executeAction',
+              currentAction,
+              currentAction.status,
+            )
+            if (currentAction.error) {
+              console.log('ShortCutEngine.run: error', currentAction.error)
+              this.status = 'stop'
+              this.emit('status', this)
+              this.stepIndex = this.stepIndex - 1
+              break
+            }
+            const output = currentAction.output || ''
+            this.setVariable('LAST_ACTION_OUTPUT', output, true)
+            console.log('ShortCutEngine.run: output', output)
+            const nextAction = this.getNextAction()
+            if (nextAction?.autoExecute && !currentAction.error) {
+              continue
+            }
           }
-          const output = currentAction.output || ''
-          this.setVariable('LAST_ACTION_OUTPUT', output, true)
-          console.log('ShortCutEngine.run: output', output)
-          const nextAction = this.getNextAction()
-          if (nextAction?.autoExecute && !currentAction.error) {
-            console.log('ShortCutEngine.run: auto run next')
-            // HACK: 出问题再说
-            await delay(0)
-            await this.run(params)
-          }
-          if (currentAction.error) {
-            this.reset()
-            return
-          }
-        } else {
-          console.log('ShortCutEngine.run: no more actions')
-          this.stepIndex = -1
+          await delay(100)
         }
       } else {
         console.log('ShortCutEngine.run: already running')
@@ -112,14 +211,14 @@ class ShortCutsEngine implements IShortcutEngine {
         `ShortCutEngine.run error in action[${this.stepIndex}] error: \t`,
         e,
       )
-      this.reset()
-    } finally {
-      this.status = 'idle'
+      this.status = 'stop'
+      this.emit('status', this)
     }
   }
 
   stop() {
     console.log('ShortCutEngine.stop')
+    this.status = 'stop'
   }
 
   reset() {
@@ -171,6 +270,29 @@ class ShortCutsEngine implements IShortcutEngine {
   }
   getNextAction() {
     return this.actions[this.stepIndex + 1] || null
+  }
+  get progress() {
+    return Number(
+      (Math.max(this.stepIndex, 0) / this.actions.length).toFixed(2),
+    )
+  }
+  // 事件监听
+  addListener(listener: IShortcutEngineListenerType) {
+    this.listeners.push(listener)
+  }
+  removeListener(listener: IShortcutEngineListenerType) {
+    const index = this.listeners.indexOf(listener)
+    if (index > -1) {
+      this.listeners.splice(index, 1)
+    }
+  }
+  removeAllListeners() {
+    this.listeners = []
+  }
+  emit(event: IShortcutEngineListenerEventType, data?: any) {
+    this.listeners.forEach((listener) => {
+      listener(event, data)
+    })
   }
 }
 export default ShortCutsEngine

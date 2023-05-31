@@ -1,4 +1,4 @@
-#USE_CHAT_GPT_AI_ROOT{
+#USE_CHAT_GPT_AI_ROOT {
   //overflow: hidden;
   position: fixed;
   top: 0;
@@ -9,9 +9,9 @@
   // background: #fff;
   flex-direction: column;
   opacity: 0;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   z-index: -1;
-  &.open{
+  &.open {
     min-width: 400px;
     //width: 100%;
     opacity: 1;
@@ -23,13 +23,17 @@
   }
 }
 
-body[dir="rtl"] #USE_CHAT_GPT_AI_ROOT{
+body[dir='rtl'] #USE_CHAT_GPT_AI_ROOT {
   right: unset;
   left: 0;
 }
-:root{
-  --contexify-item-color: rgba(0,0,0,.87)!important;
-  --contexify-activeItem-color: rgba(0,0,0,.87)!important;
-  --contexify-activeArrow-color: rgba(0,0,0,.87)!important;
+:root {
+  --contexify-item-color: rgba(0, 0, 0, 0.87) !important;
+  --contexify-activeItem-color: rgba(0, 0, 0, 0.87) !important;
+  --contexify-activeArrow-color: rgba(0, 0, 0, 0.87) !important;
   --contexify-activeItem-bgColor: rgba(118, 1, 211, 0.04) !important;
+}
+
+.google-s-ad {
+  display: none !important;
 }

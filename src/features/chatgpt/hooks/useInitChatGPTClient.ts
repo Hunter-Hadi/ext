@@ -160,7 +160,10 @@ const useInitChatGPTClient = () => {
     })
     const onFocus = async () => {
       await checkChatGPTStatus()
-      await fetchLocalMessages()
+      // 由于多处地方会更新 message storage cache，所以在这里延迟一下确保 获取到的 storage cache 是最新的
+      setTimeout(async () => {
+        await fetchLocalMessages()
+      }, 100)
     }
     port.postMessage({
       event: 'Client_checkChatGPTStatus',

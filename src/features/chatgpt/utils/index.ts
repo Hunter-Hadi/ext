@@ -1,10 +1,10 @@
 import {
   IOpenAIChatSendEvent,
   IChromeExtensionClientSendEvent,
-  IShortCutsSendEvent,
 } from '@/background/eventType'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
 
 export const pingDaemonProcess = async () => {
   const port = new ContentScriptConnectionV2()

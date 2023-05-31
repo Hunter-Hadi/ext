@@ -6,7 +6,7 @@ import { IChatMessage } from '@/features/chatgpt/types'
 class Action implements IAction {
   id: string
   type: ActionIdentifier
-  status: 'notRunning' | 'running' | 'complete'
+  status: 'idle' | 'running' | 'complete'
   error?: string
   output?: any
   parameters: ActionParameters
@@ -19,7 +19,7 @@ class Action implements IAction {
   ) {
     this.id = id
     this.type = type
-    this.status = 'notRunning'
+    this.status = 'idle'
     this.parameters = Object.assign({}, parameters) || {}
     this.autoExecute = autoExecute
   }
@@ -36,6 +36,11 @@ class Action implements IAction {
         .getChartGPT()
         ?.pushMessage(message.type as 'third', message.text, 'success')
     }
+  }
+  reset() {
+    this.status = 'idle'
+    this.error = ''
+    this.output = ''
   }
 }
 export default Action

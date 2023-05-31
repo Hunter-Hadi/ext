@@ -2,9 +2,10 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
+import dayjs from 'dayjs'
 
-export class ActionSetVariable extends Action {
-  static type: ActionIdentifier = 'SET_VARIABLE'
+export class ActionDateFormat extends Action {
+  static type: ActionIdentifier = 'DATE_FORMAT'
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -18,20 +19,12 @@ export class ActionSetVariable extends Action {
   })
   async execute(params: ActionParameters, engine: any) {
     try {
-      const VariableName =
-        this.parameters.VariableName || this.parameters.Variable || ''
-      if (!VariableName) {
-        this.error = 'Action no variable name!'
-        return
-      }
-      const shortCutsEngine = engine.getShortCutsEngine()
-      if (shortCutsEngine && shortCutsEngine.setVariable) {
-        shortCutsEngine.setVariable(
-          VariableName,
-          params.LAST_ACTION_OUTPUT || '',
-        )
-        this.output = params.LAST_ACTION_OUTPUT || ''
-      }
+      const formatStyle =
+        typeof this.parameters.DateFormatStyle === 'string'
+          ? this.parameters.DateFormatStyle
+          : 'YYYY-MM-DD'
+      const date = params.LAST_ACTION_OUTPUT || dayjs().format()
+      this.output = dayjs(date).format(formatStyle)
     } catch (e) {
       this.error = (e as any).toString()
     }

@@ -48,7 +48,11 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     try {
       const isLoginSuccess = await pingUntilLogin()
       // 确保没有在运行
-      if (isLoginSuccess && shortCutsEngineRef.current?.stepIndex === -1) {
+      if (
+        isLoginSuccess &&
+        (shortCutsEngineRef.current?.stepIndex === -1 ||
+          shortCutsEngineRef.current.status === 'stop')
+      ) {
         setShortsCutsState({
           status: 'running',
         })
@@ -88,6 +92,25 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     messageViewText,
     getParams,
   ])
+  const stopShortCuts = useCallback(() => {
+    if (!shortCutsEngineRef.current) {
+      return
+    }
+    shortCutsEngineRef.current.stop()
+    setShortsCutsState({
+      status: shortCutsEngine.status || 'idle',
+    })
+  }, [shortCutsEngineRef])
+
+  const resetShortCuts = useCallback(() => {
+    if (!shortCutsEngineRef.current) {
+      return
+    }
+    shortCutsEngineRef.current.reset()
+    setShortsCutsState({
+      status: shortCutsEngine.status || 'idle',
+    })
+  }, [])
 
   return {
     ...messageWithChatGPT,
@@ -95,6 +118,9 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     runShortCuts,
     setShortCuts,
     loading: shortCutsState.status === 'running' || chatGPTConversationLoading,
+    status: shortCutsState.status,
+    stopShortCuts,
+    resetShortCuts,
   }
 }
 export { useShortCutsWithMessageChat }

@@ -5,7 +5,10 @@ import {
   createBackgroundMessageListener,
   createChromeExtensionOptionsPage,
 } from '@/background/utils'
-import { createDaemonProcessTab } from '@/background/src/chat/util'
+import {
+  createDaemonProcessTab,
+  getWindowIdOfChatGPTTab,
+} from '@/background/src/chat/util'
 import { isEzMailApp } from '@/types'
 
 // const log = new Log('Background/Client')
@@ -121,9 +124,16 @@ export const ClientMessageInit = () => {
               if (tab.windowId) {
                 const window = await Browser.windows.get(tab.windowId)
                 if (window.id && window.id !== Browser.windows.WINDOW_ID_NONE) {
+                  const lastWindowIdOfChatGPTTab =
+                    await getWindowIdOfChatGPTTab()
+                  // 如果 sender 的 windowid 不是创建的 chatgpt tab 时的 windowid，就不最小化
+                  const state =
+                    lastWindowIdOfChatGPTTab !== window.id || windowVisible
+                      ? 'normal'
+                      : 'minimized'
                   await Browser.windows.update(window.id, {
                     focused: windowFocus,
-                    state: windowVisible ? 'normal' : 'minimized',
+                    state,
                   })
                 }
               }

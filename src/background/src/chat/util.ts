@@ -5,12 +5,14 @@ import {
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
+import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/types'
 
-let lastBrowserWindowId: number | undefined = undefined
+// let lastBrowserWindowId: number | undefined = undefined
 /**
  * 创建守护进程的tab
  */
 export const createDaemonProcessTab = async () => {
+  let lastBrowserWindowId = await getWindowIdOfChatGPTTab()
   const pinedTabs = await Browser.tabs.query({
     pinned: true,
   })
@@ -28,7 +30,6 @@ export const createDaemonProcessTab = async () => {
       await Browser.windows.update(currentPinnedTab.windowId, {
         state: 'normal',
         focused: true,
-        width: 1280,
       })
     }
   } else {
@@ -79,6 +80,8 @@ export const createDaemonProcessTab = async () => {
       }
     }
   }
+
+  await setWindowIdOfChatGPTTab(lastBrowserWindowId)
   return currentPinnedTab
 }
 
@@ -170,4 +173,21 @@ export const askChatGPTQuestion = async (
 export const getCacheConversationId = async () => {
   const settings = await getChromeExtensionSettings()
   return settings.conversationId || ''
+}
+
+export const getWindowIdOfChatGPTTab = async () => {
+  const result = await Browser.storage.local.get(
+    CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB,
+  )
+  if (result[CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB]) {
+    return result[CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB]
+  } else {
+    return undefined
+  }
+}
+
+export const setWindowIdOfChatGPTTab = async (windowId: number) => {
+  await Browser.storage.local.set({
+    [CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB]: windowId,
+  })
 }

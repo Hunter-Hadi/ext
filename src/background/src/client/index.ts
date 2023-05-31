@@ -129,7 +129,7 @@ export const ClientMessageInit = () => {
                   // 如果 sender 的 windowid 不是创建的 chatgpt tab 时的 windowid，就不最小化
                   const state =
                     lastWindowIdOfChatGPTTab !== window.id || windowVisible
-                      ? 'normal'
+                      ? undefined // 由于设置成 normal 会 在当前窗口只有一个tab时导致窗口缩小, 所以设置为 undefined (不改变state)
                       : 'minimized'
                   await Browser.windows.update(window.id, {
                     focused: windowFocus,

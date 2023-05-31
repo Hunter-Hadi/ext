@@ -12,7 +12,7 @@ import reactNodeToString from 'react-node-to-string'
 // import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkBreaks from 'remark-breaks'
-import remarkMath from 'remark-math'
+// import remarkMath from 'remark-math'
 import supersub from 'remark-supersub'
 const Highlight = React.lazy(() => import('react-highlight'))
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -142,7 +142,7 @@ const CustomMarkdown: FC<{
     () => (
       <>
         <ReactMarkdown
-          remarkPlugins={[remarkMath, supersub, remarkBreaks, remarkGfm]}
+          remarkPlugins={[supersub, remarkBreaks, remarkGfm]}
           // FIXME: rehypePlugins not working with rollup-plugin-tarser
           // rehypePlugins={[
           //   rehypeKatex,

@@ -4,7 +4,7 @@ import { APP_VERSION } from '@/types'
 // import Link from '@mui/material/Link'
 
 const GmailChatBoxReleaseLog: FC = () => {
-  const ReleaseLogText = `Claude AI Provider is now available.`
+  const ReleaseLogText = `Now works on local PDF files.`
   return (
     <Typography
       width={'100%'}

@@ -16,7 +16,7 @@ import {
   ContextMenuSettingsState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 const FloatingContextMenuCloseIconButton: FC<{
   sx?: SxProps
@@ -62,7 +62,8 @@ const FloatingContextMenuCloseIconButton: FC<{
                 ...sx,
               }}
             >
-              <CancelOutlinedIcon
+              <ContextMenuIcon
+                icon={'Settings'}
                 sx={{ color: 'text.primary', fontSize: 16 }}
               />
             </Button>
@@ -103,6 +104,16 @@ const FloatingContextMenuCloseIconButton: FC<{
                 ? 'Hide on all sites indefinitely'
                 : 'Show on all sites indefinitely'
             }
+          />
+          <LiteDropdownMenuItem
+            onClick={() => {
+              chromeExtensionClientOpenPage({
+                key: 'options',
+                query: '#custom-prompts',
+              })
+            }}
+            label={'Edit custom prompts'}
+            icon={'DefaultIcon'}
           />
         </DropdownMenu>
       )}

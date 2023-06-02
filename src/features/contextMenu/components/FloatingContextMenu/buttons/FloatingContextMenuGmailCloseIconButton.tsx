@@ -54,7 +54,7 @@ const FloatingContextMenuGmailCloseIconButton: FC<{
               }}
             >
               <ContextMenuIcon
-                icon={'VisibilityOff'}
+                icon={'Settings'}
                 sx={{ color: 'rgba(0,0,0,.87)!important', fontSize: 16 }}
               />
             </Button>

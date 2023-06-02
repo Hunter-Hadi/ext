@@ -4,7 +4,7 @@ import { APP_VERSION } from '@/types'
 // import Link from '@mui/material/Link'
 
 const GmailChatBoxReleaseLog: FC = () => {
-  const ReleaseLogText = `Now works on local PDF files.`
+  const ReleaseLogText = `One-click reply with 'Gmail assistant'.`
   return (
     <Typography
       width={'100%'}

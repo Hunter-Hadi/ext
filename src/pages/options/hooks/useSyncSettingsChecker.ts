@@ -9,6 +9,7 @@ import {
 } from '@/background/utils'
 import dayjs from 'dayjs'
 import debounce from 'lodash-es/debounce'
+import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
   // Sync successful!
@@ -85,6 +86,8 @@ const useSyncSettingsChecker = () => {
       console.error(e)
       return false
     } finally {
+      // 更新的时候要强制更新contextMenu
+      await forceUpdateContextMenuReadOnlyOption()
       setIsSyncing(false)
     }
   }, [])
@@ -93,6 +96,8 @@ const useSyncSettingsChecker = () => {
       try {
         console.log('同步本地设置到服务器')
         setIsSyncing(true)
+        // 更新的时候要强制更新contextMenu
+        await forceUpdateContextMenuReadOnlyOption()
         const lastModified = dayjs().utc().valueOf()
         // 更新本地设置的最后修改时间
         if (saveSettings) {
@@ -246,6 +251,8 @@ const useSyncSettingsChecker = () => {
         status: 'error',
       }
     } finally {
+      // 更新的时候要强制更新contextMenu
+      await forceUpdateContextMenuReadOnlyOption()
       setIsChecking(false)
     }
   }

@@ -18,9 +18,8 @@ import { AppSettingsState } from '@/store'
 
 const FloatingContextMenuMoreIconButton: FC<{
   sx?: SxProps
-  showCloseButton?: boolean
 }> = (props) => {
-  const { sx, showCloseButton = true } = props
+  const { sx } = props
   const [loading, setLoading] = useState(true)
   const appSettings = useRecoilValue(AppSettingsState)
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
@@ -62,7 +61,7 @@ const FloatingContextMenuMoreIconButton: FC<{
             >
               <ContextMenuIcon
                 sx={{ color: 'text.primary' }}
-                icon={'More'}
+                icon={'Settings'}
                 size={16}
               />
             </Button>
@@ -78,30 +77,28 @@ const FloatingContextMenuMoreIconButton: FC<{
             label={'Edit custom prompts'}
             icon={'DefaultIcon'}
           />
-          {showCloseButton && (
-            <LiteDropdownMenuItem
-              onClick={async () => {
-                setFloatingDropdownMenu({
-                  open: false,
-                  rootRect: null,
-                })
-                chromeExtensionClientOpenPage({
-                  key: 'options',
-                  query: '#text-select-popup',
-                })
-              }}
-              icon={
-                appSettings?.userSettings?.selectionButtonVisible
-                  ? 'VisibilityOff'
-                  : 'RemoveRedEye'
-              }
-              label={
-                appSettings?.userSettings?.selectionButtonVisible
-                  ? 'Hide text-select-popup on all sites indefinitely'
-                  : 'Show text-select-popup on all sites indefinitely'
-              }
-            />
-          )}
+          <LiteDropdownMenuItem
+            onClick={async () => {
+              setFloatingDropdownMenu({
+                open: false,
+                rootRect: null,
+              })
+              chromeExtensionClientOpenPage({
+                key: 'options',
+                query: '#text-select-popup',
+              })
+            }}
+            icon={
+              appSettings?.userSettings?.selectionButtonVisible
+                ? 'VisibilityOff'
+                : 'RemoveRedEye'
+            }
+            label={
+              appSettings?.userSettings?.selectionButtonVisible
+                ? 'Hide text-select-popup on all sites indefinitely'
+                : 'Show text-select-popup on all sites indefinitely'
+            }
+          />
         </DropdownMenu>
       )}
     </AppLoadingLayout>

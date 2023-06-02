@@ -8,6 +8,7 @@ import Switch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
 import useTheme from '@mui/material/styles/useTheme'
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 const TextSelectPopupSetting: FC<{
   commandKey?: string
@@ -78,25 +79,58 @@ const TextSelectPopupSetting: FC<{
               width: 'max-content',
             }}
           >
-            <Button
-              size={'small'}
-              variant={'text'}
-              startIcon={
-                <UseChatGptIcon
-                  sx={{
-                    fontSize: 16,
-                    // color: 'inherit',
-                  }}
-                />
-              }
+            <Stack
+              direction={'row'}
+              alignItems={'center'}
               sx={{
-                width: 130,
-                height: 32,
-                color: 'inherit',
+                '& > button': {
+                  '&:not(:last-child)': {
+                    marginRight: '1px',
+                    borderRadius: '4px 0 0 4px',
+                    boxShadow: (t) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
+                        : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+                    '&:hover': {
+                      boxShadow: (t) =>
+                        t.palette.mode === 'dark'
+                          ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
+                          : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+                    },
+                  },
+                },
               }}
             >
-              Use ChatGPT
-            </Button>
+              <Button
+                size={'small'}
+                variant={'text'}
+                startIcon={
+                  <UseChatGptIcon
+                    sx={{
+                      fontSize: 16,
+                      // color: 'inherit',
+                    }}
+                  />
+                }
+                sx={{
+                  px: '8px!important',
+                  height: 32,
+                  color: 'inherit',
+                }}
+              >
+                {commandKey || 'Ask AI'}
+              </Button>
+              <Button
+                sx={{
+                  minWidth: 'unset',
+                }}
+              >
+                <ContextMenuIcon
+                  sx={{ color: 'text.primary' }}
+                  icon={'Settings'}
+                />
+              </Button>
+            </Stack>
           </Paper>
         )}
         {!visible && (

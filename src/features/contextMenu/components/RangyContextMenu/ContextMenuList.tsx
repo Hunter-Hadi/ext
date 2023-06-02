@@ -4,7 +4,7 @@ import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
-import { Item, Submenu, Separator } from 'react-contexify'
+import { Item, Submenu } from 'react-contexify'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
@@ -243,7 +243,7 @@ const ContextMenuList: FC<{
         <Stack direction={'row'} alignItems={'center'} justifyContent={'end'}>
           <FloatingContextMenuGmailCloseIconButton />
         </Stack>
-        <Separator />
+        {/*<Separator />*/}
         {sortBySettingsKey.map((menuItem, index) => {
           return <ListItem key={index} menuItem={menuItem} />
         })}

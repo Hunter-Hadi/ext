@@ -75,6 +75,7 @@ const useInitInboxSdk = () => {
       gmailAssistantRef.current = settings.userSettings?.gmailAssistant || false
       if (gmailAssistantRef.current) {
         load(2, 'sdk_UseChatGPT_AI_e063b66682', {}).then(async (sdk) => {
+          console.log('inbox sdk loaded!')
           setInboxSdk({
             sdk,
             loading: false,
@@ -127,7 +128,7 @@ const useInitInboxSdk = () => {
           title: 'UseChatGPT.AI',
           iconUrl: GmailToolBarDropdownIconBase64Data,
           iconClass: 'usechatgpt-ai__gmail-toolbar-button--dropdown',
-          tooltip: 'More AI assistance options',
+          tooltip: 'More Gmail assistant options',
           orderHint: 2,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
             const newMessageId = getComposeViewMessageId(
@@ -200,8 +201,8 @@ const useInitInboxSdk = () => {
           iconUrl: GmailToolBarIconBase64Data,
           iconClass: 'usechatgpt-ai__gmail-toolbar-button--cta',
           tooltip: isReplyComposeView
-            ? 'Click this button to generate email reply.'
-            : 'Click this button to generate an entire email.',
+            ? 'Click this button to generate email reply'
+            : 'Click this button to generate an entire email',
           orderHint: 1,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
             pingDaemonProcess()

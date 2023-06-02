@@ -26,6 +26,7 @@ import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShort
 import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
 import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
+import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 
 const log = new Log('AppInit')
 
@@ -426,6 +427,7 @@ const AppInit = () => {
   useAuthLogin()
   useEffectOnce(() => {
     disabledPDFViewer()
+    forceUpdateContextMenuReadOnlyOption().then().catch()
   })
   useInjectShortCutsRunTime()
   useHandlePDFViewerError()

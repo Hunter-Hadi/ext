@@ -24,7 +24,6 @@ const GmailActionRunner = () => {
 
   useEffect(() => {
     const ctaButtonAction = () => {
-      debugger
       setRun(true)
     }
     window.addEventListener('ctaButtonClick', ctaButtonAction)

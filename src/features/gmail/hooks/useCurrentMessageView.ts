@@ -40,6 +40,10 @@ const useCurrentMessageView = () => {
         .replace(/&amp;/g, '&')
         .replace(/&quot;/g, '"')
         .replace(/&apos;/g, "'")
+        .replace(
+          /data:image\/(png|jpeg|gif);base64,\s?[A-Za-z0-9+/]+={0,2}/g,
+          '',
+        )
         .replace(/\n{3,}/g, `\n`)
         // .replace(/\t+/g, '	')
         // .replace(/[\n\t]+/g, ``)
@@ -57,6 +61,10 @@ const useCurrentMessageView = () => {
           .replace(/&amp;/g, '&')
           .replace(/&quot;/g, '"')
           .replace(/&apos;/g, "'")
+          .replace(
+            /data:image\/(png|jpeg|gif);base64,\s?[A-Za-z0-9+/]+={0,2}/g,
+            '',
+          )
           .replace(/\n{3,}/g, `\n`)
           // .replace(/\t+/g, '	')
           // .replace(/[\n\t]+/g, ``)

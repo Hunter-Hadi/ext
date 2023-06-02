@@ -205,13 +205,6 @@ const UseChatGPTOptionsSettingPage = () => {
               }}
             />
             <Divider sx={{ my: 4 }} />
-            <ChatGPTGmailAssistantSetting
-              defaultValue={userSettingsRef.current.gmailAssistant}
-              onChange={async (enabled: boolean) => {
-                await updateChromeExtensionSettings('gmailAssistant', enabled)
-              }}
-            />
-            <Divider sx={{ my: 4 }} />
             <UseChatGPTContextMenuSettings
               iconSetting
               settingsKey={'contextMenus'}
@@ -220,6 +213,14 @@ const UseChatGPTOptionsSettingPage = () => {
                 await syncLocalToServer()
               }}
             />
+            <Divider sx={{ my: 4 }} />
+            <ChatGPTGmailAssistantSetting
+              defaultValue={userSettingsRef.current.gmailAssistant}
+              onChange={async (enabled: boolean) => {
+                await updateChromeExtensionSettings('gmailAssistant', enabled)
+              }}
+            />
+            <Stack mb={25}></Stack>
           </Stack>
         </Stack>
       </AppLoadingLayout>

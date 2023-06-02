@@ -121,30 +121,30 @@ const App: FC = () => {
           >
             <AppInit />
             <ChatBoxHeader />
-            {appState.env === 'gmail' && <GmailActionRunner />}
-            {isOpened && (
-              <Stack flex={1} height={0}>
-                <BrowserVersionDetector>
-                  <AppSuspenseLoadingLayout>
+            <BrowserVersionDetector>
+              <AppSuspenseLoadingLayout>
+                {appState.env === 'gmail' && <GmailActionRunner />}
+                {isOpened && (
+                  <Stack flex={1} height={0}>
                     <NormalChatPage />
-                  </AppSuspenseLoadingLayout>
-                  <iframe
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      zIndex: -1,
-                      border: 0,
-                      opacity: 0,
-                    }}
-                    width={1}
-                    height={1}
-                    id={'EzMail_AI_TEMPLATE_COMPILE'}
-                    src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
-                  />
-                </BrowserVersionDetector>
-              </Stack>
-            )}
+                    <iframe
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        zIndex: -1,
+                        border: 0,
+                        opacity: 0,
+                      }}
+                      width={1}
+                      height={1}
+                      id={'EzMail_AI_TEMPLATE_COMPILE'}
+                      src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
+                    />
+                  </Stack>
+                )}
+              </AppSuspenseLoadingLayout>
+            </BrowserVersionDetector>
           </Stack>
         </Box>
       </Resizable>

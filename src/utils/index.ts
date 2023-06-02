@@ -2,9 +2,9 @@ import { IContextMenuItem } from '@/features/contextMenu'
 import { useEffect, useState } from 'react'
 import {
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   EZMAIL_NEW_MAIL_GROUP_ID,
-  EZMAIL_REPLY_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
   EZMAIL_REPLY_GROUP_ID,
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
@@ -119,8 +119,8 @@ export const filteredTypeGmailToolBarContextMenu = (
   if (filterCTAButton) {
     menuList = menuList.filter(
       (item) =>
-        item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
-        item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+        item.id !== USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+        item.id !== USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
     )
   }
   if (messageType === 'reply') {

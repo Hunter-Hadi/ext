@@ -112,6 +112,8 @@ export interface IChromeExtensionSettings {
     pdf?: {
       enabled?: boolean
     }
+    // TODO remove this
+    gmailAssistant?: boolean
   }
   thirdProviderSettings?: {
     [P in IChatGPTProviderType]?: IThirdProviderSettings[P]
@@ -154,6 +156,7 @@ export const getChromeExtensionSettings =
         pdf: {
           enabled: true,
         },
+        gmailAssistant: true,
       },
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {

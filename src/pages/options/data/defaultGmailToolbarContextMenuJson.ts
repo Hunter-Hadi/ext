@@ -1,20 +1,20 @@
 import { IContextMenuItem } from '@/features/contextMenu'
 import {
-  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-  EZMAIL_REPLY_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
   EZMAIL_REPLY_GROUP_ID,
 } from '@/types'
 
 export default [
   {
-    id: EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+    id: USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
     parent: 'root',
     droppable: false,
-    text: 'EzMail (New email)',
+    text: 'Gmail (New email)',
     data: {
       editable: false,
       type: 'shortcuts',
-      icon: 'EzMail',
+      icon: 'Email',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
@@ -32,14 +32,14 @@ export default [
     },
   },
   {
-    id: EZMAIL_REPLY_CTA_BUTTON_ID,
+    id: USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
     parent: 'root',
     droppable: false,
-    text: 'EzMail (Reply)',
+    text: 'Gmail (Reply)',
     data: {
       editable: false,
       type: 'shortcuts',
-      icon: 'EzMail',
+      icon: 'Email',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
@@ -388,7 +388,7 @@ export default [
     id: EZMAIL_REPLY_GROUP_ID,
     parent: 'root',
     droppable: false,
-    text: 'Adjust draft',
+    text: 'Edit or review draft',
     data: {
       editable: false,
       type: 'group',

@@ -39,7 +39,9 @@ const modifyManifest = ({ env, isProd }) => ({
       resources: [
         ...manifestContent.web_accessible_resources[0].resources,
         'chunks/content.js',
+        'pageWorld.js',
         'pages/pdf/*',
+        'assets/*',
       ],
       matches: manifestContent.web_accessible_resources[0].matches,
     }

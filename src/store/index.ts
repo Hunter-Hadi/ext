@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 import { IChromeExtensionSettings } from '@/background/utils'
-import { isEzMailApp } from '@/types'
+import { getEnv } from '@/utils/AppEnv'
 
 export const AppState = atom<{
   env: 'gmail' | 'normal'
@@ -9,7 +9,7 @@ export const AppState = atom<{
 }>({
   key: 'AppState',
   default: {
-    env: isEzMailApp ? 'gmail' : 'normal',
+    env: getEnv(),
     open: false,
     loading: false,
   },

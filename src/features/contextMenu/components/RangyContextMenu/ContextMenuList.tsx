@@ -4,23 +4,21 @@ import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
-import { Item, Separator, Submenu } from 'react-contexify'
-import { chromeExtensionClientOpenPage } from '@/utils'
+import { Item, Submenu, Separator } from 'react-contexify'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
-// import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
 import { useRecoilValue } from 'recoil'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import {
-  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-  EZMAIL_REPLY_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
 import {
   getChromeExtensionContextMenu,
   IChromeExtensionSettingsContextMenuKey,
 } from '@/background/utils'
-// import Browser from 'webextension-polyfill'
+import { FloatingContextMenuGmailCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+// import Browser  from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
 const ContextMenuContext = React.createContext<{
@@ -161,8 +159,8 @@ const ShortCutsGroup: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
         <Typography
           textAlign={'left'}
           fontSize={12}
-          color={'text.secondary'}
           sx={{
+            color: 'rgba(0, 0, 0, 0.6)',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
@@ -204,12 +202,11 @@ const ContextMenuList: FC<{
     let isDestroy = false
     const getList = async () => {
       let menuList = await getChromeExtensionContextMenu(settingsKey)
-
       if (settingsKey === 'gmailToolBarContextMenu') {
         menuList = menuList.filter(
           (item) =>
-            item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
-            item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+            item.id !== USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+            item.id !== USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
         )
       }
       if (isDestroy) return
@@ -227,22 +224,25 @@ const ContextMenuList: FC<{
   return (
     <Stack maxWidth={260}>
       <ContextMenuContext.Provider value={{ staticButton: props.staticButton }}>
-        <Item
-          id="Add new prompt template"
-          onClick={() => {
-            chromeExtensionClientOpenPage({
-              key: 'options',
-              query: '#custom-prompts',
-            })
-          }}
-        >
-          <Stack direction={'row'} alignItems={'center'} gap={1}>
-            <SettingsOutlinedIcon sx={{ fontSize: 14 }} />
-            <Typography fontSize={14} textAlign={'left'} color={'inherit'}>
-              Edit custom prompts
-            </Typography>
-          </Stack>
-        </Item>
+        {/*<Item*/}
+        {/*  id="Add new prompt template"*/}
+        {/*  onClick={() => {*/}
+        {/*    chromeExtensionClientOpenPage({*/}
+        {/*      key: 'options',*/}
+        {/*      query: '#custom-prompts',*/}
+        {/*    })*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <Stack direction={'row'} alignItems={'center'} gap={1}>*/}
+        {/*    <SettingsOutlinedIcon sx={{ fontSize: 14 }} />*/}
+        {/*    <Typography fontSize={14} textAlign={'left'} color={'inherit'}>*/}
+        {/*      Edit custom prompts*/}
+        {/*    </Typography>*/}
+        {/*  </Stack>*/}
+        {/*</Item>*/}
+        <Stack direction={'row'} alignItems={'center'} justifyContent={'end'}>
+          <FloatingContextMenuGmailCloseIconButton />
+        </Stack>
         <Separator />
         {sortBySettingsKey.map((menuItem, index) => {
           return <ListItem key={index} menuItem={menuItem} />

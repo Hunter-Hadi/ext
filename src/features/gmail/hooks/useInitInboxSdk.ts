@@ -21,24 +21,29 @@ import {
   getContextMenuRenderPosition,
 } from '@/features/contextMenu/utils'
 import {
-  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-  EZMAIL_REPLY_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
 } from '@/types'
-import { getChromeExtensionContextMenu } from '@/background/utils'
+import {
+  getChromeExtensionContextMenu,
+  getChromeExtensionSettings,
+} from '@/background/utils'
+import { useFocus } from '@/hooks/useFocus'
+import useEffectOnce from '@/hooks/useEffectOnce'
 const initComposeViewButtonStyle = () => {
   document
-    .querySelectorAll('.ezmail-ai__gmail-toolbar-button--cta')
+    .querySelectorAll('.usechatgpt-ai__gmail-toolbar-button--cta')
     .forEach((el) => {
       el.parentElement?.classList.add(
-        'ezmail-ai__gmail-toolbar-button-wrapper--cta',
+        'usechatgpt-ai__gmail-toolbar-button-wrapper--cta',
       )
     })
   document
-    .querySelectorAll('.ezmail-ai__gmail-toolbar-button--dropdown')
+    .querySelectorAll('.usechatgpt-ai__gmail-toolbar-button--dropdown')
     .forEach((el) => {
       el.parentElement?.classList.add(
-        'ezmail-ai__gmail-toolbar-button-wrapper--dropdown',
+        'usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown',
       )
     })
 }
@@ -48,16 +53,37 @@ const useInitInboxSdk = () => {
   const setInboxThreadView = useSetRecoilState(InboxThreadViewState)
   const setComposeView = useSetRecoilState(InboxComposeViewState)
   const setInboxEditState = useSetRecoilState(InboxEditState)
+  const gmailAssistantRef = useRef(false)
+  useFocus(async () => {
+    const settings = await getChromeExtensionSettings()
+    const newValue = settings.userSettings?.gmailAssistant || false
+    const showRefreshConfirm = newValue !== gmailAssistantRef.current
+    gmailAssistantRef.current = newValue
+    // 如果设置了显示按钮，但是当前没有加载，那么刷新加载
+    if (showRefreshConfirm) {
+      window.confirm(
+        "UseChatGPT.AI - Refresh this page to activate the updated settings for the 'Gmail assistant' button.",
+      )
+      // if (isConfirm) {
+      //   window.location.reload()
+      // }
+    }
+  })
   const timeoutRef = useRef(false)
-  useEffect(() => {
-    load(2, 'sdk_EzMailAI_bc77e07326', {}).then((sdk) => {
-      setInboxSdk({
-        sdk,
-        loading: false,
-        initialized: false,
-      })
+  useEffectOnce(() => {
+    getChromeExtensionSettings().then((settings) => {
+      gmailAssistantRef.current = settings.userSettings?.gmailAssistant || false
+      if (gmailAssistantRef.current) {
+        load(2, 'sdk_UseChatGPT_AI_e063b66682', {}).then(async (sdk) => {
+          setInboxSdk({
+            sdk,
+            loading: false,
+            initialized: false,
+          })
+        })
+      }
     })
-  }, [])
+  })
   useEffect(() => {
     if (!inboxSdk.initialized && !inboxSdk.loading && inboxSdk.sdk) {
       // 注册单个邮件对话列表生命周期
@@ -86,6 +112,9 @@ const useInitInboxSdk = () => {
       // 注册输入框生命周期方法
       inboxSdk.sdk.Compose.registerComposeViewHandler(async (composeView) => {
         console.log('registerComposeViewHandler', composeView)
+        if (!gmailAssistantRef.current) {
+          return
+        }
         // draftId和currentDraftId都是在保存后才有
         // 一开始生成的时候只有ThreadID
         const currentDraftId = uuidV4()
@@ -95,9 +124,9 @@ const useInitInboxSdk = () => {
         console.log('currentDraftId', currentDraftId)
         timeoutRef.current = true
         composeView.addButton({
-          title: 'EzMail.AI – AI Email Drafter',
+          title: 'UseChatGPT.AI',
           iconUrl: GmailToolBarDropdownIconBase64Data,
-          iconClass: 'ezmail-ai__gmail-toolbar-button--dropdown',
+          iconClass: 'usechatgpt-ai__gmail-toolbar-button--dropdown',
           tooltip: 'More AI assistance options',
           orderHint: 2,
           onClick: async (event: ComposeViewButtonOnClickEvent) => {
@@ -120,7 +149,7 @@ const useInitInboxSdk = () => {
             }
             const iconButtonBounce = event?.composeView
               ?.getElement()
-              ?.querySelector('.ezmail-ai__gmail-toolbar-button--dropdown')
+              ?.querySelector('.usechatgpt-ai__gmail-toolbar-button--dropdown')
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
               const gmailToolBarContextMenu =
@@ -128,8 +157,8 @@ const useInitInboxSdk = () => {
 
               const options = gmailToolBarContextMenu.filter(
                 (item) =>
-                  item.id !== EZMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
-                  item.id !== EZMAIL_REPLY_CTA_BUTTON_ID,
+                  item.id !== USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
+                  item.id !== USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
               )
 
               console.log('gmailToolBarContextMenu', options)
@@ -167,9 +196,9 @@ const useInitInboxSdk = () => {
           },
         })
         composeView.addButton({
-          title: 'EzMail.AI – AI Email Drafter',
+          title: 'UseChatGPT.AI',
           iconUrl: GmailToolBarIconBase64Data,
-          iconClass: 'ezmail-ai__gmail-toolbar-button--cta',
+          iconClass: 'usechatgpt-ai__gmail-toolbar-button--cta',
           tooltip: isReplyComposeView
             ? 'Click this button to generate email reply.'
             : 'Click this button to generate an entire email.',

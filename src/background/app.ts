@@ -10,6 +10,7 @@ export type {
   IOpenAIChatListenTaskEvent,
 } from './eventType'
 import {
+  APP_VERSION,
   CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_DOC_URL,
   CHROME_EXTENSION_HOMEPAGE_URL,
@@ -41,6 +42,7 @@ import {
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageInit } from '@/features/shortcuts/background'
+import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 
 /**
  * background.js 入口
@@ -88,6 +90,8 @@ const initChromeExtensionInstalled = () => {
           url: CHROME_EXTENSION_DOC_URL + '/get-started',
         })
       }
+      // 更新的时候要强制更新contextMenu
+      await forceUpdateContextMenuReadOnlyOption()
       try {
         await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')
       } catch (e) {
@@ -108,55 +112,48 @@ const initChromeExtensionInstalled = () => {
 const initChromeExtensionMessage = () => {
   ClientMessageInit()
   ShortcutMessageInit()
-  if (isEzMailApp) {
-    Browser.runtime.onMessage.addListener(
-      (message, sender, sendResponse: any) => {
-        if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
-          return
+  Browser.runtime.onMessage.addListener(
+    (message, sender, sendResponse: any) => {
+      if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+        return
+      }
+      if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
+        console.log('inboxsdk__injectPageWorld')
+        if (Browser.scripting && sender.tab?.id) {
+          console.log('inboxsdk__injectPageWorld 2')
+          // MV3
+          chrome.scripting.executeScript({
+            target: { tabId: sender.tab.id },
+            world: 'MAIN',
+            files: ['pageWorld.js'],
+          })
+          sendResponse(true)
         }
-        if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
-          console.log('inboxsdk__injectPageWorld')
-          if (Browser.scripting && sender.tab?.id) {
-            console.log('inboxsdk__injectPageWorld 2')
-            // MV3
-            chrome.scripting.executeScript({
-              target: { tabId: sender.tab.id },
-              world: 'MAIN',
-              files: ['pageWorld.js'],
-            })
-            sendResponse(true)
-          }
-        }
-      },
-    )
-  } else {
-    const chatSystem = new ChatSystem()
-    const openAIChatAdapter = new ChatAdapter(
-      new OpenAIChatProvider(new OpenAIChat()),
-    )
-    const useChatGPTPlusAdapter = new ChatAdapter(
-      new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
-    )
-    const newOpenAIApiChatAdapter = new ChatAdapter(
-      new OpenAIApiChatProvider(new OpenAiApiChat()),
-    )
-    const bardChatAdapter = new ChatAdapter(
-      new BardChatProvider(new BardChat()),
-    )
-    const bingChatAdapter = new ChatAdapter(
-      new BingChatProvider(new BingChat()),
-    )
-    const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
-    chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
-    chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)
-    chatSystem.addAdapter(
-      CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-      useChatGPTPlusAdapter,
-    )
-    chatSystem.addAdapter(CHAT_GPT_PROVIDER.BING, bingChatAdapter)
-    chatSystem.addAdapter(CHAT_GPT_PROVIDER.BARD, bardChatAdapter)
-    chatSystem.addAdapter(CHAT_GPT_PROVIDER.CLAUDE, poeChatAdapter)
-  }
+      }
+    },
+  )
+  const chatSystem = new ChatSystem()
+  const openAIChatAdapter = new ChatAdapter(
+    new OpenAIChatProvider(new OpenAIChat()),
+  )
+  const useChatGPTPlusAdapter = new ChatAdapter(
+    new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
+  )
+  const newOpenAIApiChatAdapter = new ChatAdapter(
+    new OpenAIApiChatProvider(new OpenAiApiChat()),
+  )
+  const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
+  const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
+  const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
+  chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
+  chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)
+  chatSystem.addAdapter(
+    CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+    useChatGPTPlusAdapter,
+  )
+  chatSystem.addAdapter(CHAT_GPT_PROVIDER.BING, bingChatAdapter)
+  chatSystem.addAdapter(CHAT_GPT_PROVIDER.BARD, bardChatAdapter)
+  chatSystem.addAdapter(CHAT_GPT_PROVIDER.CLAUDE, poeChatAdapter)
 }
 
 /**
@@ -165,7 +162,7 @@ const initChromeExtensionMessage = () => {
 const initChromeExtensionUninstalled = () => {
   if (!isEzMailApp) {
     Browser.runtime.setUninstallURL(
-      CHROME_EXTENSION_HOMEPAGE_URL + '/survey/uninstall',
+      `${CHROME_EXTENSION_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
     )
   }
 }

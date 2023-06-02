@@ -26,6 +26,7 @@ import ChatGPTApiSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPa
 import OptionsPageDirectory from '@/pages/options/components/OptionsPageDirectory'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import PDFSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/PDFSettings'
+import ChatGPTGmailAssistantSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTGmailAssistantSetting'
 
 const UseChatGPTOptionsSettingPage = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -168,6 +169,7 @@ const UseChatGPTOptionsSettingPage = () => {
                 })
               }}
             />
+
             <Divider sx={{ my: 4 }} />
             <ChatGPTApiSettings />
             <Divider sx={{ my: 4 }} />
@@ -200,6 +202,13 @@ const UseChatGPTOptionsSettingPage = () => {
                   'selectionButtonVisible',
                   visible,
                 )
+              }}
+            />
+            <Divider sx={{ my: 4 }} />
+            <ChatGPTGmailAssistantSetting
+              defaultValue={userSettingsRef.current.gmailAssistant}
+              onChange={async (enabled: boolean) => {
+                await updateChromeExtensionSettings('gmailAssistant', enabled)
               }}
             />
             <Divider sx={{ my: 4 }} />

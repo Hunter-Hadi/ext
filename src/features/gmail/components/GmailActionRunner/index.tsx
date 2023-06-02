@@ -1,41 +1,30 @@
-import Stack from '@mui/material/Stack'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   CurrentInboxMessageTypeSelector,
-  GmailChatBox,
   InboxEditState,
-  useCurrentMessageView,
-} from '@/features/gmail'
-import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
+} from '@/features/gmail/store'
+
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
-  EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-  EZMAIL_REPLY_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+  USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
 import { getChromeExtensionContextMenu } from '@/background/utils'
+import { useCurrentMessageView } from '@/features/gmail/hooks'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
-const GmailChatPage = () => {
+const GmailActionRunner = () => {
   const { currentMessageId } = useCurrentMessageView()
   const { step } = useRecoilValue(InboxEditState)
   const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   const [run, setRun] = useState(false)
-  const {
-    runShortCuts,
-    sendQuestion,
-    conversation,
-    messages,
-    reGenerate,
-    retryMessage,
-    setShortCuts,
-    stopGenerateMessage,
-    resetConversation,
-  } = useShortCutsWithMessageChat('')
+  const { runShortCuts, setShortCuts } = useShortCutsWithMessageChat('')
 
   useEffect(() => {
     const ctaButtonAction = () => {
+      debugger
       setRun(true)
     }
     window.addEventListener('ctaButtonClick', ctaButtonAction)
@@ -50,8 +39,8 @@ const GmailChatPage = () => {
     )
     const ctaButtonAction = gmailToolBarContextMenu.find((item) =>
       messageType === 'reply'
-        ? item.id === EZMAIL_REPLY_CTA_BUTTON_ID
-        : item.id === EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+        ? item.id === USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID
+        : item.id === USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
     )
     if (ctaButtonAction && ctaButtonAction?.data?.actions) {
       setShortCuts(ctaButtonAction.data.actions)
@@ -78,33 +67,6 @@ const GmailChatPage = () => {
     }
   }, memoizedDeps)
 
-  return (
-    <Stack flex={1} height={0} position={'relative'}>
-      <ChatGPTStatusWrapper />
-      <GmailChatBox
-        insertAble
-        editAble={false}
-        onSendMessage={async (question) => {
-          await sendQuestion(
-            {
-              question,
-            },
-            {
-              regenerate: false,
-              includeHistory: true,
-            },
-          )
-        }}
-        writingMessage={conversation.writingMessage}
-        messages={messages}
-        loading={conversation.loading}
-        title={'Chat Draft'}
-        onRetry={retryMessage}
-        onReGenerate={reGenerate}
-        onStopGenerate={stopGenerateMessage}
-        onReset={resetConversation}
-      />
-    </Stack>
-  )
+  return <></>
 }
-export default GmailChatPage
+export default GmailActionRunner

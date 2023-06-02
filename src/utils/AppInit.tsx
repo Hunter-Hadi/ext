@@ -3,20 +3,16 @@ import { RangyContextMenu } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import React, { useEffect } from 'react'
 import { chromeExtensionClientOpenPage } from '@/utils/index'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
-import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import Button from '@mui/material/Button'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
 import {
-  getChromeExtensionContextMenu,
   getChromeExtensionSettings,
   setChromeExtensionSettings,
 } from '@/background/utils'
 import Log from '@/utils/Log'
 import { useAuthLogin } from '@/features/auth'
-import { isEzMailApp } from '@/types'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
 import CloseAlert from '@/components/CloseAlert'
 import Stack from '@mui/material/Stack'
@@ -29,15 +25,12 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
+import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
 
 const log = new Log('AppInit')
 
 const GmailInit = () => {
-  if (isEzMailApp) {
-    import(String(process.env.INBOX_SDK_PATH)).then((module) => {
-      module.default()
-    })
-  }
+  useInitInboxSdk()
   return (
     <>
       <style>{'.aSt {max-width: calc(100% - 700px)}'}</style>
@@ -63,42 +56,6 @@ const UseChatGPTWebPageJumpToShortCuts = () => {
 
 const RangyInit = () => {
   useInitRangy()
-  return <></>
-}
-
-const ForceUpdateContextMenuReadOnlyOption = () => {
-  useEffect(() => {
-    const menuType = isEzMailApp ? 'gmailToolBarContextMenu' : 'contextMenus'
-    const defaultJsonData = isEzMailApp
-      ? defaultGmailToolbarContextMenuJson
-      : defaultContextMenuJson
-    getChromeExtensionContextMenu(menuType).then(async (menuList) => {
-      const defaultJsonMap = new Map()
-      defaultJsonData.forEach((item) => {
-        defaultJsonMap.set(item.id, item)
-      })
-      let updateCount = 0
-      const updateMenuList = menuList.map((item) => {
-        if (!item.data.editable) {
-          // force update
-          const defaultItem = defaultJsonMap.get(item.id)
-          if (defaultItem) {
-            updateCount++
-            return {
-              ...defaultItem,
-              id: item.id,
-              parent: item.parent,
-            }
-          }
-        }
-        return item
-      })
-      console.log('force update menu count', updateCount, menuList)
-      await setChromeExtensionSettings({
-        [menuType]: updateMenuList,
-      })
-    })
-  }, [])
   return <></>
 }
 
@@ -474,10 +431,9 @@ const AppInit = () => {
   useHandlePDFViewerError()
   return (
     <>
-      {appState.env === 'gmail' && isEzMailApp && <GmailInit />}
-      {!isEzMailApp && <RangyInit />}
+      {appState.env === 'gmail' && <GmailInit />}
+      <RangyInit />
       <RangyContextMenu />
-      <ForceUpdateContextMenuReadOnlyOption />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />
     </>

@@ -9,7 +9,6 @@ import {
 } from '@/background/utils'
 import dayjs from 'dayjs'
 import debounce from 'lodash-es/debounce'
-
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
   // Sync successful!

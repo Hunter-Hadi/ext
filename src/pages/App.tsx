@@ -17,10 +17,12 @@ import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import { isShowChatBox } from '@/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
+import { getEnv } from '@/utils/AppEnv'
 
-const GmailChatPage = React.lazy(() => import('@/pages/gmail/GmailChatPage'))
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
-
+const GmailActionRunner = React.lazy(
+  () => import('@/features/gmail/components/GmailActionRunner'),
+)
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const { visibleWidth, maxWidth, minWidth, setLocalWidth, resizeEnable } =
@@ -34,7 +36,7 @@ const App: FC = () => {
         setAppState((prev) => {
           return {
             ...prev,
-            env: isEzMailApp ? 'gmail' : 'normal',
+            env: getEnv(),
             open:
               (mu.target as HTMLElement)?.classList?.contains('open') || false,
           }
@@ -119,14 +121,12 @@ const App: FC = () => {
           >
             <AppInit />
             <ChatBoxHeader />
+            {appState.env === 'gmail' && <GmailActionRunner />}
             {isOpened && (
               <Stack flex={1} height={0}>
                 <BrowserVersionDetector>
                   <AppSuspenseLoadingLayout>
-                    {appState.open && appState.env === 'gmail' && (
-                      <GmailChatPage />
-                    )}
-                    {appState.env === 'normal' && <NormalChatPage />}
+                    <NormalChatPage />
                   </AppSuspenseLoadingLayout>
                   <iframe
                     style={{

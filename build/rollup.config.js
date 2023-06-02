@@ -18,7 +18,7 @@ export default mergeRollupConfig(isProduction, {
   output: {
     dir: 'dist',
     format: 'esm',
-    chunkFileNames: path.join('chunks', '[name]-[hash].js'),
+    chunkFileNames: path.join('chunks', '[hash].js'),
   },
   plugins: [
     visualizer({
@@ -28,48 +28,19 @@ export default mergeRollupConfig(isProduction, {
     chromeExtension(),
     simpleReloader(),
     emptyDir(),
-    env.APP_ENV === 'EZ_MAIL_AI' &&
-      copy({
-        targets: [
-          { src: 'node_modules/@inboxsdk/core/pageWorld.js', dest: 'dist' },
-        ],
-        hook: 'generateBundle',
-      }),
+    copy({
+      targets: [
+        { src: 'node_modules/@inboxsdk/core/pageWorld.js', dest: 'dist' },
+      ],
+      hook: 'generateBundle',
+    }),
     env.APP_ENV === 'USE_CHAT_GPT_AI' &&
       copy({
         targets: [
           // { src: 'inject-fetch.js', dest: 'dist' }
           {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_grey_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-          },
-          {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-          },
-          {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_grey_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-          },
-          {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-          },
-          {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_grey_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-          },
-          {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-          },
-          {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_grey_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
-          },
-          {
-            src: 'src/assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
-            dest: 'dist/assets/USE_CHAT_GPT_AI/icons',
+            src: 'src/assets/USE_CHAT_GPT_AI/*',
+            dest: 'dist/assets/USE_CHAT_GPT_AI/',
           },
           { src: 'pdf/pdf_build/*', dest: 'dist/pages/pdf' },
         ],

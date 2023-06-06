@@ -159,7 +159,6 @@ export const getChromeExtensionSettings =
           enabled: true,
         },
         gmailAssistant: true,
-        _a: 1,
       },
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {

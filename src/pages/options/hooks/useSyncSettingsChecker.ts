@@ -110,10 +110,6 @@ const useSyncSettingsChecker = () => {
             lastModified,
           })
         }
-        // enqueueSnackbar('Syncing your settings...', {
-        //   variant: 'info',
-        //   autoHideDuration: 1000,
-        // })
         const localSettings = await getChromeExtensionSettings()
         FILTER_SAVE_KEYS.forEach((deleteKey) => {
           delete localSettings[deleteKey]
@@ -121,7 +117,10 @@ const useSyncSettingsChecker = () => {
         const result = await post<{
           status: 'OK' | 'ERROR'
         }>('/user/save_user_settings', {
-          settings: localSettings,
+          settings: {
+            ...localSettings,
+            lastModified,
+          },
         })
         if (result?.status === 'OK') {
           debounceEnqueueSnackbar('Settings updated', {

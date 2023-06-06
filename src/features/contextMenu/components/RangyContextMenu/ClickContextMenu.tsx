@@ -19,7 +19,10 @@ import {
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
-import { FloatingContextMenuCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import {
+  FloatingContextMenuCloseIconButton,
+  FloatingContextMenuTemporaryIconButton,
+} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
 import { APP_ENV, isProduction } from '@/types'
 
@@ -196,7 +199,8 @@ const ClickContextMenuButton: FC<{
           )}
           {shortCutKey || (APP_ENV === 'EZ_MAIL_AI' ? 'EzMail' : 'Ask AI')}
         </Button>
-        <FloatingContextMenuCloseIconButton />
+        <FloatingContextMenuCloseIconButton useInButton />
+        <FloatingContextMenuTemporaryIconButton />
       </Stack>
     </Paper>
   )

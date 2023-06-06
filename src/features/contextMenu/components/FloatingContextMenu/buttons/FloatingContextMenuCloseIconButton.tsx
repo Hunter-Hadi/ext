@@ -10,23 +10,20 @@ import {
   DropdownMenu,
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
-import {
-  ContextMenuSettingsState,
-  FloatingDropdownMenuState,
-} from '@/features/contextMenu/store'
+import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 const FloatingContextMenuCloseIconButton: FC<{
   sx?: SxProps
+  useInButton?: boolean
 }> = (props) => {
-  const { sx } = props
+  const { sx, useInButton = false } = props
   const [loading, setLoading] = useState(true)
   const appSettings = useRecoilValue(AppSettingsState)
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
-  const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   useEffect(() => {
     if (root) {
       return
@@ -48,7 +45,7 @@ const FloatingContextMenuCloseIconButton: FC<{
           label={''}
           root={root}
           menuSx={{
-            width: 240,
+            width: useInButton ? 240 : 360,
           }}
           referenceElement={
             <Button
@@ -75,20 +72,6 @@ const FloatingContextMenuCloseIconButton: FC<{
                 open: false,
                 rootRect: null,
               })
-              setContextMenuSettings((prevSettings) => ({
-                ...prevSettings,
-                closeBeforeRefresh: true,
-              }))
-            }}
-            icon={'Close'}
-            label={`Hide until page refresh`}
-          />
-          <LiteDropdownMenuItem
-            onClick={async () => {
-              setFloatingDropdownMenu({
-                open: false,
-                rootRect: null,
-              })
               chromeExtensionClientOpenPage({
                 key: 'options',
                 query: '#text-select-popup',
@@ -101,8 +84,12 @@ const FloatingContextMenuCloseIconButton: FC<{
             }
             label={
               appSettings?.userSettings?.selectionButtonVisible
-                ? 'Hide on all sites indefinitely'
-                : 'Show on all sites indefinitely'
+                ? useInButton
+                  ? 'Hide on all sites indefinitely'
+                  : 'Hide text-select-popup on all sites indefinitely'
+                : useInButton
+                ? 'Show on all sites indefinitely'
+                : 'Show text-select-popup on all sites indefinitely'
             }
           />
           <LiteDropdownMenuItem

@@ -66,7 +66,6 @@ const UseChatGPTOptionsSettingPage = () => {
           justifyContent={'center'}
           spacing={2}
           mx={'auto'}
-          pb={10}
         >
           <OptionsPageDirectory containerId={'optionsPageSettingsPage'} />
           <Stack
@@ -220,7 +219,7 @@ const UseChatGPTOptionsSettingPage = () => {
                 await updateChromeExtensionSettings('gmailAssistant', enabled)
               }}
             />
-            <Stack mb={25}></Stack>
+            <Stack mb={'80vh'}></Stack>
           </Stack>
         </Stack>
       </AppLoadingLayout>

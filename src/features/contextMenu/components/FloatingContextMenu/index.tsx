@@ -35,7 +35,7 @@ import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuL
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
-import { FloatingContextMenuMoreIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import { FloatingContextMenuCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { getMediator } from '@/store/mediator'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
@@ -478,7 +478,8 @@ const FloatingContextMenu: FC<{
                         }}
                       />
                     </IconButton>
-                    <FloatingContextMenuMoreIconButton
+                    <FloatingContextMenuCloseIconButton
+                      useInButton={false}
                       sx={{ width: 24, height: 24, alignSelf: 'end' }}
                     />
                   </>

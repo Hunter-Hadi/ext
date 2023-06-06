@@ -159,7 +159,7 @@ const useSyncSettingsChecker = () => {
       }>('/user/get_user_info')
       if (result?.status === 'OK') {
         const serverSettings = result.data?.settings
-        if (serverSettings) {
+        if (serverSettings && serverSettings.lastModified) {
           const serverLastModified = serverSettings.lastModified // timestamp
           const localLastModified = localSettings.lastModified // timestamp
           if (serverLastModified) {

@@ -9,11 +9,14 @@ import Link from '@mui/material/Link'
 import Alert from '@mui/material/Alert'
 
 import React from 'react'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/types'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import {
+  ContentScriptConnectionV2,
+  pingDaemonProcess,
+} from '@/features/chatgpt/utils'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import {
   BardIcon,
@@ -27,13 +30,17 @@ import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPT
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { AppSettingsState } from '@/store'
 import { getChromeExtensionSettings } from '@/background/utils'
+import { useFocus } from '@/hooks/useFocus'
+import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 const port = new ContentScriptConnectionV2()
 
 const ChatGPTStatusWrapper: FC = () => {
   const [authLogin] = useRecoilState(AuthState)
   const updateAppSetting = useSetRecoilState(AppSettingsState)
-  const { status } = useRecoilValue(ChatGPTClientState)
+  const [chatGPTClientState, setChatGPTClientState] =
+    useRecoilState(ChatGPTClientState)
+  const { status } = chatGPTClientState
   const [prevStatus, setPrevStatus] = useState(status)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
   const { provider } = useChatGPTProvider()
@@ -59,6 +66,56 @@ const ChatGPTStatusWrapper: FC = () => {
     }
     setPrevStatus(status)
   }, [status])
+
+  useFocus(() => {
+    console.log('gmain chatgpt onFocus')
+    pingDaemonProcess().then((res) => {
+      console.log('gmain chatgpt onFocus: pingDaemonProcess', res)
+      // 如果没有连接上，就需要重新加载
+      if (!res) {
+        setChatGPTClientState((s) => ({
+          ...s,
+          status: 'needReload',
+        }))
+      }
+    })
+  })
+
+  if (status === 'needReload') {
+    return (
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1000,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          '& + *': {
+            filter: 'blur(5px)',
+          },
+        }}
+      >
+        <Stack spacing={2} width={'calc(100% - 16px)'}>
+          <Paper
+            sx={{
+              maxWidth: '414px',
+              mx: 'auto!important',
+              width: '100%',
+              bgcolor: 'background.paper',
+            }}
+          >
+            <ChatGPTRefreshPageTips />
+          </Paper>
+        </Stack>
+      </Box>
+    )
+  }
+
   if (!authLogin.isLogin) {
     return (
       <Box

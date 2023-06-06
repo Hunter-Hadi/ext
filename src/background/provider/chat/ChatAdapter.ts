@@ -8,7 +8,12 @@ import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
  * complete: 加载完成
  * success: 授权成功
  */
-export type ChatStatus = 'needAuth' | 'loading' | 'complete' | 'success'
+export type ChatStatus =
+  | 'needAuth'
+  | 'loading'
+  | 'complete'
+  | 'success'
+  | 'needReload'
 
 export type IAskChatGPTQuestionType = {
   messageId: string

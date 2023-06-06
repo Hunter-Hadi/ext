@@ -37,7 +37,7 @@ const FloatingContextMenuTemporaryIconButton: FC<{
       }}
     >
       <ContextMenuIcon
-        icon={'CloseCircled'}
+        icon={'Close'}
         sx={{ color: 'text.primary', fontSize: 16 }}
       />
     </Button>

@@ -64,18 +64,20 @@ const UseChatGPTOptionsPage = () => {
     const timeout = 3000
     const timer = setInterval(() => {
       const element = document.getElementById(hash.replace('#', ''))
-      const rect = element?.getBoundingClientRect()
-      const offset = window.pageYOffset || document.documentElement.scrollTop
-      if (rect && rect.top > 0 && !onceScorllRef.current) {
-        onceScorllRef.current = true
-        const top = rect.top + offset - 72 - 24
-        window.scrollTo({
-          top,
-          behavior: 'smooth',
-        })
-        clearInterval(timer)
-        return
-      }
+      setTimeout(() => {
+        const rect = element?.getBoundingClientRect()
+        const offset = window.pageYOffset || document.documentElement.scrollTop
+        if (rect && rect.top > 0 && !onceScorllRef.current) {
+          onceScorllRef.current = true
+          const top = rect.top + offset - 104
+          window.scrollTo({
+            top,
+            behavior: 'smooth',
+          })
+          clearInterval(timer)
+          return
+        }
+      }, 3000)
     }, 100)
     setTimeout(() => {
       timer && clearTimeout(timer)

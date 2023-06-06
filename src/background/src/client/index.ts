@@ -131,10 +131,17 @@ export const ClientMessageInit = () => {
                     lastWindowIdOfChatGPTTab !== window.id || windowVisible
                       ? undefined // 由于设置成 normal 会 在当前窗口只有一个tab时导致窗口缩小, 所以设置为 undefined (不改变state)
                       : 'minimized'
-                  await Browser.windows.update(window.id, {
-                    focused: windowFocus,
-                    state,
+                  // get window all tabs
+                  const tabs = await Browser.tabs.query({
+                    windowId: window.id,
                   })
+                  debugger
+                  if (tabs.length === 1) {
+                    await Browser.windows.update(window.id, {
+                      focused: windowFocus,
+                      state,
+                    })
+                  }
                 }
               }
             }

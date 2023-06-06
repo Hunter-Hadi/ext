@@ -135,7 +135,6 @@ export const ClientMessageInit = () => {
                   const tabs = await Browser.tabs.query({
                     windowId: window.id,
                   })
-                  debugger
                   if (tabs.length === 1) {
                     await Browser.windows.update(window.id, {
                       focused: windowFocus,

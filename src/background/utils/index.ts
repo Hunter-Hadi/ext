@@ -21,6 +21,8 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { PoeModel } from '@/background/src/chat/PoeChat/type'
+import merge from 'lodash-es/merge'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -157,6 +159,7 @@ export const getChromeExtensionSettings =
           enabled: true,
         },
         gmailAssistant: true,
+        _a: 1,
       },
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {
@@ -170,17 +173,30 @@ export const getChromeExtensionSettings =
     const localData = await Browser.storage.local.get(
       CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
     )
-    console.log('localData', localData)
     try {
       if (localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]) {
-        const settings = {
-          // 因为每次版本更新都可能会有新字段，用本地的覆盖默认的就行
-          ...defaultConfig,
-          ...JSON.parse(
-            localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY],
-          ),
-        }
-        return settings
+        const localSettings = JSON.parse(
+          localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY],
+        )
+        const cloneDefaultConfig = cloneDeep(defaultConfig)
+        const cloneLocalSettings = cloneDeep(localSettings)
+        // 为了提高merge的性能，先把contextMenus和gmailToolBarContextMenu的字段拿出来
+        const contextMenus = cloneDeep(
+          cloneLocalSettings.contextMenus || cloneDefaultConfig.contextMenus,
+        )
+        const gmailToolBarContextMenu = cloneDeep(
+          cloneLocalSettings.gmailToolBarContextMenu ||
+            cloneDefaultConfig.gmailToolBarContextMenu,
+        )
+        delete cloneDefaultConfig.contextMenus
+        delete cloneDefaultConfig.gmailToolBarContextMenu
+        delete cloneLocalSettings.contextMenus
+        delete cloneLocalSettings.gmailToolBarContextMenu
+        // 因为每次版本更新都可能会有新字段，用本地的覆盖默认的就行
+        return merge(cloneDefaultConfig, cloneLocalSettings, {
+          contextMenus,
+          gmailToolBarContextMenu,
+        })
       } else {
         return defaultConfig
       }

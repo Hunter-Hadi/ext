@@ -42,7 +42,10 @@ import {
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageInit } from '@/features/shortcuts/background'
-import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
+import {
+  checkSettingsSync,
+  syncLocalSettingsToServerSettings,
+} from '@/background/utils/syncSettings'
 
 /**
  * background.js 入口
@@ -89,9 +92,13 @@ const initChromeExtensionInstalled = () => {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '/get-started',
         })
+      } else {
+        const result = await checkSettingsSync()
+        debugger
+        if (result.success) {
+          await syncLocalSettingsToServerSettings()
+        }
       }
-      // 更新的时候要强制更新contextMenu
-      await forceUpdateContextMenuReadOnlyOption()
       try {
         await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')
       } catch (e) {

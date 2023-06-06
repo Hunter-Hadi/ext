@@ -1,15 +1,15 @@
 import { useCallback, useRef, useState } from 'react'
 import { useSnackbar } from 'notistack'
-import { get, post } from '@/utils/request'
 import {
-  FILTER_SAVE_KEYS,
-  getChromeExtensionSettings,
   IChromeExtensionSettings,
   setChromeExtensionSettings,
 } from '@/background/utils'
-import dayjs from 'dayjs'
 import debounce from 'lodash-es/debounce'
-import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
+import {
+  checkSettingsSync,
+  syncLocalSettingsToServerSettings,
+  syncServerSettingsToLocalSettings,
+} from '@/background/utils/syncSettings'
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
   // Sync successful!
@@ -34,50 +34,8 @@ const useSyncSettingsChecker = () => {
   )
   const syncServerToLocal = useCallback(async () => {
     try {
-      console.log('同步服务器设置到本地')
       setIsSyncing(true)
-      // enqueueSnackbar('Syncing your settings...', {
-      //   variant: 'info',
-      //   autoHideDuration: 1000,
-      // })
-      const result = await get<{
-        settings: IChromeExtensionSettings
-      }>('/user/get_user_info')
-      if (result?.status === 'OK') {
-        const serverSettings = result.data?.settings
-        if (serverSettings) {
-          // HACK: remove conversationId
-          if (serverSettings?.conversationId) {
-            delete serverSettings.conversationId
-          }
-          await setChromeExtensionSettings((settings) => {
-            // userSettings处理一下
-            if (serverSettings?.userSettings) {
-              serverSettings.userSettings = {
-                ...settings.userSettings,
-                ...serverSettings.userSettings,
-              }
-            }
-            // thirdProviderSettings处理一下
-            if (serverSettings?.thirdProviderSettings) {
-              serverSettings.thirdProviderSettings = {
-                ...settings.thirdProviderSettings,
-                ...serverSettings.thirdProviderSettings,
-              }
-            }
-            console.log('同步服务器设置到本地', serverSettings)
-            return {
-              ...settings,
-              ...serverSettings,
-            }
-          })
-          // debounceEnqueueSnackbar('Settings updated', {
-          //   variant: 'success',
-          //   autoHideDuration: 1000,
-          // })
-        }
-      }
-      return true
+      return await syncServerSettingsToLocalSettings()
     } catch (e) {
       enqueueSnackbar('Sync failed!', {
         variant: 'error',
@@ -86,8 +44,6 @@ const useSyncSettingsChecker = () => {
       console.error(e)
       return false
     } finally {
-      // 更新的时候要强制更新contextMenu
-      await forceUpdateContextMenuReadOnlyOption()
       setIsSyncing(false)
     }
   }, [])
@@ -96,40 +52,17 @@ const useSyncSettingsChecker = () => {
       try {
         console.log('同步本地设置到服务器')
         setIsSyncing(true)
-        // 更新的时候要强制更新contextMenu
-        await forceUpdateContextMenuReadOnlyOption()
-        const lastModified = dayjs().utc().valueOf()
-        // 更新本地设置的最后修改时间
         if (saveSettings) {
-          await setChromeExtensionSettings({
-            ...saveSettings,
-            lastModified,
-          })
-        } else {
-          await setChromeExtensionSettings({
-            lastModified,
-          })
+          await setChromeExtensionSettings(saveSettings)
         }
-        const localSettings = await getChromeExtensionSettings()
-        FILTER_SAVE_KEYS.forEach((deleteKey) => {
-          delete localSettings[deleteKey]
-        })
-        const result = await post<{
-          status: 'OK' | 'ERROR'
-        }>('/user/save_user_settings', {
-          settings: {
-            ...localSettings,
-            lastModified,
-          },
-        })
-        if (result?.status === 'OK') {
+        const success = await syncLocalSettingsToServerSettings()
+        if (success) {
           debounceEnqueueSnackbar('Settings updated', {
             variant: 'success',
             autoHideDuration: 1000,
           })
-          return true
         }
-        return false
+        return success
       } catch (e) {
         enqueueSnackbar('Sync failed!', {
           variant: 'error',
@@ -149,109 +82,28 @@ const useSyncSettingsChecker = () => {
   }> => {
     try {
       console.log('检测本地设置和服务器设置')
-      const localSettings = await getChromeExtensionSettings()
       setShowErrorAlert(false)
       setShowCheckAlert(false)
       localSettingsCacheRef.current = undefined
       setIsChecking(true)
-      const result = await get<{
-        settings: IChromeExtensionSettings
-      }>('/user/get_user_info')
-      if (result?.status === 'OK') {
-        const serverSettings = result.data?.settings
-        if (serverSettings && serverSettings.lastModified) {
-          const serverLastModified = serverSettings.lastModified // timestamp
-          const localLastModified = localSettings.lastModified // timestamp
-          if (serverLastModified) {
-            // 服务器已经有设置
-            console.log('服务器已经有设置')
-            if (!localLastModified) {
-              // 本地没有设置, 判断是否有自定义prompt
-              if (
-                localSettings.contextMenus?.find(
-                  (menuItem) => menuItem.data.editable,
-                )
-              ) {
-                // 本地有自定义prompt, 询问是否同步
-                console.log('本地有自定义prompt, 询问是否同步')
-                setShowCheckAlert(true)
-                localSettingsCacheRef.current = localSettings
-                return {
-                  success: false,
-                  status: 'needSync',
-                }
-              } else {
-                console.log('本地没有自定义prompt, 同步服务器的设置到本地')
-                await syncServerToLocal()
-                return {
-                  success: true,
-                  status: 'ok',
-                }
-              }
-            }
-            if (localLastModified === serverLastModified) {
-              // 本地和服务器设置一致
-              console.log('本地和服务器设置一致')
-              return {
-                success: true,
-                status: 'ok',
-              }
-            }
-            if (localLastModified < serverLastModified) {
-              // 本地设置过期, 同步服务器的设置到本地
-              console.log('本地设置过期, 同步服务器的设置到本地')
-              await setChromeExtensionSettings((settings) => ({
-                ...settings,
-                ...serverSettings,
-              }))
-              return {
-                success: true,
-                status: 'ok',
-              }
-            }
-            if (localLastModified > serverLastModified) {
-              // 本地设置更新, 同步到云端
-              console.log('本地设置更新, 同步到云端')
-              await syncLocalToServer()
-              return {
-                success: true,
-                status: 'ok',
-              }
-            }
-          }
-        } else {
-          // 服务器返回status为OK, 没有获取到服务器设置
-          // 本地设置保存到服务器
-          await syncLocalToServer()
-          return {
-            success: true,
-            status: 'ok',
-          }
+      const result = await checkSettingsSync()
+      if (result.status === 'error') {
+        setShowErrorAlert(true)
+        return {
+          success: false,
+          status: 'error',
         }
-      }
-      // 接口调用失败
-      setShowErrorAlert(true)
-      return {
-        success: false,
-        status: 'error',
+      } else {
+        return result
       }
     } catch (e: any) {
       console.error('对比设置异常: \t', e)
-      if (e.status === 401) {
-        // 未登录
-        return {
-          success: false,
-          status: 'needLogin',
-        }
-      }
       setShowErrorAlert(true)
       return {
         success: false,
         status: 'error',
       }
     } finally {
-      // 更新的时候要强制更新contextMenu
-      await forceUpdateContextMenuReadOnlyOption()
       setIsChecking(false)
     }
   }

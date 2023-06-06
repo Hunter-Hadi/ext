@@ -61,23 +61,26 @@ const UseChatGPTOptionsPage = () => {
     }
     const hash = window.location.hash
     // timeout for wait for dom render
-    const timeout = 3000
+    const timeout = 5000
     const timer = setInterval(() => {
       const element = document.getElementById(hash.replace('#', ''))
-      setTimeout(() => {
-        const rect = element?.getBoundingClientRect()
-        const offset = window.pageYOffset || document.documentElement.scrollTop
-        if (rect && rect.top > 0 && !onceScorllRef.current) {
-          onceScorllRef.current = true
-          const top = rect.top + offset - 104
-          window.scrollTo({
-            top,
-            behavior: 'smooth',
-          })
-          clearInterval(timer)
-          return
-        }
-      }, 3000)
+      if (element) {
+        clearInterval(timer)
+        setTimeout(() => {
+          const rect = element?.getBoundingClientRect()
+          const offset =
+            window.pageYOffset || document.documentElement.scrollTop
+          if (rect && rect.top > 0 && !onceScorllRef.current) {
+            onceScorllRef.current = true
+            const top = rect.top + offset - 104
+            window.scrollTo({
+              top,
+              behavior: 'smooth',
+            })
+            return
+          }
+        }, 500)
+      }
     }, 100)
     setTimeout(() => {
       timer && clearTimeout(timer)

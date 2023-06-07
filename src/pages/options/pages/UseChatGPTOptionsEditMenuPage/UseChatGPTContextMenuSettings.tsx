@@ -53,13 +53,18 @@ const saveTreeData = async (
 ) => {
   try {
     console.log('saveTreeData', key, treeData)
-    const success = await setChromeExtensionSettings({
-      buttonSettings: {
-        [key]: {
-          contextMenu: treeData,
+    const success = await setChromeExtensionSettings((settings) => {
+      return {
+        ...settings,
+        buttonSettings: {
+          ...settings.buttonSettings,
+          [key]: {
+            ...settings.buttonSettings?.[key],
+            contextMenu: treeData,
+          },
         },
-      },
-    } as any)
+      } as any
+    })
     console.log(success)
   } catch (error) {
     console.log(error)
@@ -149,6 +154,11 @@ const ContextMenuSettings: FC<{
         editable: true,
         type: 'shortcuts',
         actions: [],
+        visibility: {
+          whitelist: [],
+          blacklist: [],
+          isWhitelistMode: false,
+        },
       },
     })
   }

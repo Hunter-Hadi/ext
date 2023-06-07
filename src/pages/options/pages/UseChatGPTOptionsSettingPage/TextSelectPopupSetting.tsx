@@ -9,12 +9,17 @@ import Typography from '@mui/material/Typography'
 import useTheme from '@mui/material/styles/useTheme'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import VisibilitySettingCard from '@/components/VisibilitySettingCard'
+import CloseAlert from '@/components/CloseAlert'
+import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 
 const TextSelectPopupSetting: FC<{
   commandKey?: string
   visible: boolean
   onChange: (visible: boolean) => void
 }> = (props) => {
+  const { buttonSettings, updateButtonSettings } =
+    useChromeExtensionButtonSettings()
   const { visible, onChange, commandKey } = props
   const [showTooltip, setShowTooltip] = useState(false)
   const { palette } = useTheme()
@@ -34,6 +39,27 @@ const TextSelectPopupSetting: FC<{
   }, [visible])
   return (
     <Stack>
+      <Typography
+        fontSize={20}
+        fontWeight={700}
+        color={'text.primary'}
+        component={'h2'}
+        id={'text-select-popup'}
+      >
+        Text-select-popup
+      </Typography>
+      <CloseAlert
+        icon={<></>}
+        sx={{
+          // bgcolor: '#E2E8F0',
+          mt: 1,
+          mb: 2,
+        }}
+      >
+        <Typography fontSize={14} color={'text.primary'}>
+          Change visibility
+        </Typography>
+      </CloseAlert>
       <Stack direction={'row'} alignItems={'center'} mb={2}>
         <Typography fontSize={14}>Hidden</Typography>
         <Switch
@@ -162,6 +188,18 @@ const TextSelectPopupSetting: FC<{
           </Box>
         )}
       </Box>
+      {buttonSettings?.textSelectPopupButton && visible && (
+        <VisibilitySettingCard
+          sx={{ mt: 2 }}
+          defaultValue={buttonSettings.textSelectPopupButton.visibility}
+          onChange={async (newVisibilitySetting) => {
+            await updateButtonSettings('textSelectPopupButton', {
+              ...buttonSettings?.textSelectPopupButton,
+              visibility: newVisibilitySetting,
+            })
+          }}
+        />
+      )}
     </Stack>
   )
 }

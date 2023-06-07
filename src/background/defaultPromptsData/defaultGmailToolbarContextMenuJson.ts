@@ -12,6 +12,11 @@ export default [
     text: 'Gmail (New email)',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       icon: 'Email',
       actions: [
@@ -37,6 +42,11 @@ export default [
     text: 'Gmail (Reply)',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       icon: 'Email',
       actions: [
@@ -63,6 +73,11 @@ export default [
     text: 'Professional',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -87,6 +102,11 @@ export default [
     text: 'Casual',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -111,6 +131,11 @@ export default [
     text: 'Straightforward',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -135,6 +160,11 @@ export default [
     text: 'Confident',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -159,6 +189,11 @@ export default [
     text: 'Friendly',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -183,6 +218,11 @@ export default [
     text: 'Improve writing',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -208,6 +248,11 @@ export default [
     text: 'Fix spelling & grammar',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -233,6 +278,11 @@ export default [
     text: 'Make shorter',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -258,6 +308,11 @@ export default [
     text: 'Make longer',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -283,6 +338,11 @@ export default [
     text: 'Change tone',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'group',
       actions: [],
       icon: 'Voice',
@@ -296,6 +356,11 @@ export default [
     text: 'Simplify language',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -321,6 +386,11 @@ export default [
     text: 'Paraphrase',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -346,6 +416,11 @@ export default [
     text: 'Edit or review draft',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'group',
       actions: [],
     },

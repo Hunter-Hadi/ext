@@ -5,10 +5,10 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils/index'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
-import merge from 'lodash-es/merge'
 import dayjs from 'dayjs'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { IChromeExtensionSettings } from '@/background/types/Settings'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export const syncServerSettingsToLocalSettings = async () => {
   try {
@@ -43,9 +43,13 @@ export const syncServerSettingsToLocalSettings = async () => {
           serverSettings.gmailToolBarContextMenu = []
         }
         await setChromeExtensionSettings((localSettings) => {
-          return merge(localSettings, serverSettings, {
-            buttonSettings,
-          })
+          return mergeWithObject([
+            localSettings,
+            serverSettings,
+            {
+              buttonSettings,
+            },
+          ]) as IChromeExtensionSettings
         })
       }
     }

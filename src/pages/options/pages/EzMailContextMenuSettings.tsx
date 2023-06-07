@@ -26,7 +26,7 @@ import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from '../components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import {
   getChromeExtensionButtonContextMenu,
   setChromeExtensionSettings,
@@ -57,13 +57,18 @@ const saveTreeData = async (
         return item
       })
     }
-    const success = await setChromeExtensionSettings({
-      buttonSettings: {
-        [key]: {
-          contextMenu: newTreeData,
+    const success = await setChromeExtensionSettings((settings) => {
+      return {
+        ...settings,
+        buttonSettings: {
+          ...settings.buttonSettings,
+          [key]: {
+            ...settings.buttonSettings?.[key],
+            contextMenu: newTreeData,
+          },
         },
-      },
-    } as any)
+      } as any
+    })
     console.log(success)
   } catch (error) {
     console.log(error)

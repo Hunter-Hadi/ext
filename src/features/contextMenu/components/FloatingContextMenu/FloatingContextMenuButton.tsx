@@ -46,6 +46,7 @@ const EMPTY_CONTEXT_MENU_ARRAY = [
       icon: 'ThumbUp',
       searchText: 'Loading...',
     },
+    children: [],
   },
 ] as IContextMenuItemWithChildren[]
 

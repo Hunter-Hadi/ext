@@ -43,6 +43,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined'
 import FastForwardOutlinedIcon from '@mui/icons-material/FastForwardOutlined'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 export const CONTEXT_MENU_ICONS = [
@@ -90,6 +91,7 @@ export const CONTEXT_MENU_ICONS = [
   'CloseCircled',
   'PlayArrow',
   'FastForward',
+  'Delete',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -197,6 +199,8 @@ const ContextMenuIcon: FC<{
       return <FastForwardOutlinedIcon sx={sxMemo} />
     case 'CloseCircled':
       return <CancelOutlinedIcon sx={sxMemo} />
+    case 'Delete':
+      return <DeleteOutlineOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

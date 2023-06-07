@@ -329,3 +329,6 @@ export const promiseRetry = async <T>(
     return promiseRetry(fn, retryCount - 1, delay)
   }
 }
+export const domain2Favicon = (domain: string) => {
+  return `https://www.google.com/s2/favicons?domain=${domain}`
+}

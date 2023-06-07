@@ -37,7 +37,7 @@ const port = new ContentScriptConnectionV2()
 
 const ChatGPTStatusWrapper: FC = () => {
   const [authLogin] = useRecoilState(AuthState)
-  const updateAppSetting = useSetRecoilState(AppSettingsState)
+  const setAppSettings = useSetRecoilState(AppSettingsState)
   const [chatGPTClientState, setChatGPTClientState] =
     useRecoilState(ChatGPTClientState)
   const { status } = chatGPTClientState
@@ -62,7 +62,7 @@ const ChatGPTStatusWrapper: FC = () => {
     if (prevStatus !== status && status === 'success') {
       // get latest settings
       console.log('get latest settings')
-      getChromeExtensionSettings().then(updateAppSetting)
+      getChromeExtensionSettings().then(setAppSettings)
     }
     setPrevStatus(status)
   }, [status])

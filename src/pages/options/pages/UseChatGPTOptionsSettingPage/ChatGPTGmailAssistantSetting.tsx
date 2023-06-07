@@ -1,11 +1,12 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import FormControl from '@mui/material/FormControl'
 import Switch from '@mui/material/Switch'
 import CloseAlert from '@/components/CloseAlert'
 import Box from '@mui/material/Box'
 import Browser from 'webextension-polyfill'
+import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 
 const hideImageUrl = Browser.runtime.getURL(
   `/assets/USE_CHAT_GPT_AI/images/gmail/gmail-assistant-hidden.png`,
@@ -13,11 +14,15 @@ const hideImageUrl = Browser.runtime.getURL(
 const showImageUrl = Browser.runtime.getURL(
   `/assets/USE_CHAT_GPT_AI/images/gmail/gmail-assistant-visible.png`,
 )
-const ChatGPTGmailAssistantSetting: FC<{
-  defaultValue?: boolean
-  onChange?: (value: boolean) => void
-}> = ({ defaultValue, onChange }) => {
-  const [checked, setChecked] = React.useState(defaultValue)
+const ChatGPTGmailAssistantSetting: FC = () => {
+  const { buttonSettings, updateButtonSettings } =
+    useChromeExtensionButtonSettings()
+  const [checked, setChecked] = useState<boolean | undefined>(undefined)
+  useEffect(() => {
+    if (buttonSettings?.gmailButton) {
+      setChecked(buttonSettings.gmailButton.visibility.whitelist.length > 0)
+    }
+  }, [buttonSettings])
   return (
     <Stack spacing={2}>
       <Typography
@@ -36,19 +41,32 @@ const ChatGPTGmailAssistantSetting: FC<{
           </Typography>
         </Stack>
       </CloseAlert>
-      <FormControl size="small">
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>Hidden</Typography>
-          <Switch
-            defaultChecked={checked}
-            onChange={(event) => {
-              setChecked(event.target.checked)
-              onChange && onChange(event.target.checked)
-            }}
-          />
-          <Typography>Visible</Typography>
-        </Stack>
-      </FormControl>
+      {typeof checked !== 'undefined' && (
+        <FormControl size="small">
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Typography>Hidden</Typography>
+            <Switch
+              defaultChecked={checked}
+              onChange={async (event) => {
+                if (buttonSettings?.gmailButton) {
+                  await updateButtonSettings('gmailButton', {
+                    visibility: {
+                      isWhitelistMode: true,
+                      whitelist: event.target.checked
+                        ? ['mail.google.com']
+                        : [],
+                      blacklist: [],
+                    },
+                    contextMenu: buttonSettings.gmailButton.contextMenu,
+                  })
+                  setChecked(event.target.checked)
+                }
+              }}
+            />
+            <Typography>Visible</Typography>
+          </Stack>
+        </FormControl>
+      )}
       <Box
         sx={{
           p: 2,

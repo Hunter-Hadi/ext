@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack'
 import React from 'react'
 import UseChatGPTContextMenuSettings from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage/UseChatGPTContextMenuSettings'
-import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
+import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 
 const UseChatGPTOptionsEditMenuPage = () => {
   return (

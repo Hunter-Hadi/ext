@@ -1,5 +1,5 @@
-import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
-import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
+import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 import {
   getChromeExtensionButtonContextMenu,
   setChromeExtensionSettings,
@@ -10,7 +10,7 @@ import {
 } from '@/types'
 import uniqBy from 'lodash-es/uniqBy'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
-import merge from 'lodash-es/merge'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 const forceUpdateContextMenuReadOnlyOption = async () => {
   const updateContextButtonKeys: IChromeExtensionButtonSettingKey[] = [
@@ -69,11 +69,14 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
     await setChromeExtensionSettings((settings) => {
       return {
         ...settings,
-        buttonSettings: merge(settings.buttonSettings, {
-          [buttonKey]: {
-            contextMenu: updateMenuList,
+        buttonSettings: mergeWithObject([
+          settings.buttonSettings,
+          {
+            [buttonKey]: {
+              contextMenu: updateMenuList,
+            },
           },
-        }),
+        ]) as any,
       }
     })
   }

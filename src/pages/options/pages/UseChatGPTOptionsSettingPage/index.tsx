@@ -6,10 +6,10 @@ import LanguageSelect from '@/components/select/LanguageSelect'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import TextSelectPopupSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/TextSelectPopupSetting'
 import UseChatGPTContextMenuSettings from '@/pages/options/pages/UseChatGPTOptionsEditMenuPage/UseChatGPTContextMenuSettings'
-import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
+import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 import CloseAlert from '@/components/CloseAlert'
 import ColorSchemaSelect from '@/components/select/ColorSchemaSelect'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import {
   getChromeExtensionSettings,
@@ -29,7 +29,7 @@ import PDFSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/PDFS
 import ChatGPTGmailAssistantSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTGmailAssistantSetting'
 
 const UseChatGPTOptionsSettingPage = () => {
-  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const [, setAppSettings] = useRecoilState(AppSettingsState)
   const [loaded, setLoaded] = useState(false)
   const userSettingsRef = useRef<any>({})
   const [saving, setSaving] = useState(false)
@@ -168,31 +168,9 @@ const UseChatGPTOptionsSettingPage = () => {
                 })
               }}
             />
-
             <Divider sx={{ my: 4 }} />
             <ChatGPTApiSettings />
             <Divider sx={{ my: 4 }} />
-            <Typography
-              fontSize={20}
-              fontWeight={700}
-              color={'text.primary'}
-              component={'h2'}
-              id={'text-select-popup'}
-            >
-              Text-select-popup
-            </Typography>
-            <CloseAlert
-              icon={<></>}
-              sx={{
-                // bgcolor: '#E2E8F0',
-                mt: 1,
-                mb: 2,
-              }}
-            >
-              <Typography fontSize={14} color={'text.primary'}>
-                Change visibility
-              </Typography>
-            </CloseAlert>
             <TextSelectPopupSetting
               commandKey={shortCutKey}
               visible={userSettingsRef.current.selectionButtonVisible}
@@ -213,12 +191,7 @@ const UseChatGPTOptionsSettingPage = () => {
               }}
             />
             <Divider sx={{ my: 4 }} />
-            <ChatGPTGmailAssistantSetting
-              defaultValue={userSettingsRef.current.gmailAssistant}
-              onChange={async (enabled: boolean) => {
-                await updateChromeExtensionSettings('gmailAssistant', enabled)
-              }}
-            />
+            <ChatGPTGmailAssistantSetting />
             <Stack mb={'80vh'}></Stack>
           </Stack>
         </Stack>

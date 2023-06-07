@@ -7,6 +7,11 @@ export default [
     text: 'Like',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -32,6 +37,11 @@ export default [
     text: 'Dislike',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -57,6 +67,11 @@ export default [
     text: 'Support',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -82,6 +97,11 @@ export default [
     text: 'Joke',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -107,6 +127,11 @@ export default [
     text: 'Idea',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -132,6 +157,11 @@ export default [
     text: 'Question',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -157,6 +187,11 @@ export default [
     text: 'Enter prompt',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -184,6 +219,11 @@ export default [
     text: 'English',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -208,6 +248,11 @@ export default [
     text: 'Korean',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -232,6 +277,11 @@ export default [
     text: 'Chinese',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -256,6 +306,11 @@ export default [
     text: 'Japanese',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -280,6 +335,11 @@ export default [
     text: 'Spanish',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -304,6 +364,11 @@ export default [
     text: 'Russian',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -328,6 +393,11 @@ export default [
     text: 'French',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -352,6 +422,11 @@ export default [
     text: 'Portuguese',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -376,6 +451,11 @@ export default [
     text: 'German',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -400,6 +480,11 @@ export default [
     text: 'Italian',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -424,6 +509,11 @@ export default [
     text: 'Dutch',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -448,6 +538,11 @@ export default [
     text: 'Indonesian',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -472,6 +567,11 @@ export default [
     text: 'Filipino',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -496,6 +596,11 @@ export default [
     text: 'Vietnamese',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -520,6 +625,11 @@ export default [
     text: 'Summarize',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -545,6 +655,11 @@ export default [
     text: 'List key takeaways',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -570,6 +685,11 @@ export default [
     text: 'Translate',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'group',
       actions: [],
       icon: 'Language',
@@ -583,6 +703,11 @@ export default [
     text: 'Explain this',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -608,6 +733,11 @@ export default [
     text: 'Find action items',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -633,6 +763,11 @@ export default [
     text: 'Reply to this',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'group',
       actions: [],
       icon: 'Reply',
@@ -646,6 +781,11 @@ export default [
     text: 'Run this prompt',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -670,6 +810,11 @@ export default [
     text: 'Professional',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -694,6 +839,11 @@ export default [
     text: 'Casual',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -718,6 +868,11 @@ export default [
     text: 'Straightforward',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -742,6 +897,11 @@ export default [
     text: 'Confident',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -766,6 +926,11 @@ export default [
     text: 'Friendly',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -790,6 +955,11 @@ export default [
     text: 'Improve writing',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -815,6 +985,11 @@ export default [
     text: 'Fix spelling & grammar',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -840,6 +1015,11 @@ export default [
     text: 'Make shorter',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -865,6 +1045,11 @@ export default [
     text: 'Make longer',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -890,6 +1075,11 @@ export default [
     text: 'Change tone',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'group',
       actions: [],
       icon: 'Voice',
@@ -903,6 +1093,11 @@ export default [
     text: 'Simplify language',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -928,6 +1123,11 @@ export default [
     text: 'Paraphrase',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'shortcuts',
       actions: [
         {
@@ -953,6 +1153,11 @@ export default [
     text: 'Edit or review selection',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'group',
       actions: [],
       searchText: 'edit or review selection',
@@ -965,6 +1170,11 @@ export default [
     text: 'Generate from selection',
     data: {
       editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       type: 'group',
       actions: [],
       searchText: 'generate from selection',

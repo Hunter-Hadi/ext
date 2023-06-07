@@ -69,11 +69,15 @@ export type IChromeExtensionButtonSettingKey =
   | 'gmailButton'
   | 'textSelectPopupButton'
 
-export interface IChromeExtensionButtonSetting {
+export interface IVisibilitySetting {
   isWhitelistMode: boolean
   whitelist: string[]
   blacklist: string[]
+}
+
+export interface IChromeExtensionButtonSetting {
   contextMenu: IContextMenuItem[]
+  visibility: IVisibilitySetting
 }
 
 export interface IChromeExtensionSettings {

@@ -4,24 +4,22 @@ import Paper from '@mui/material/Paper'
 import React, { FC, useEffect, useState } from 'react'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import { useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
 import { ROOT_CONTAINER_ID } from '@/types'
 import useCommands from '@/hooks/useCommands'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { ContextMenuSettingsState } from '@/features/contextMenu/store'
+import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 const FloatingShortCutsTip: FC = () => {
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { haveSelection, showFloatingContextMenu, floatingDropdownMenuOpen } =
     useFloatingContextMenu()
-  const appSettings = useRecoilValue(AppSettingsState)
+  const textSelectPopupButtonSettings =
+    useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const [chatBoxWidth, setChatBoxWidth] = useState(16)
   const [buttonShow, setButtonShow] = useState(3)
   const { shortCutKey } = useCommands()
   useEffect(() => {
-    if (
-      appSettings.userSettings?.selectionButtonVisible &&
-      !closeBeforeRefresh
-    ) {
+    if (textSelectPopupButtonSettings?.buttonVisible && !closeBeforeRefresh) {
       return
     }
     if (haveSelection) {
@@ -35,7 +33,7 @@ const FloatingShortCutsTip: FC = () => {
       }
       setButtonShow(1)
     }
-  }, [haveSelection, appSettings.userSettings, closeBeforeRefresh])
+  }, [haveSelection, textSelectPopupButtonSettings, closeBeforeRefresh])
   useEffect(() => {
     if (buttonShow === 1) {
       setButtonShow(2)

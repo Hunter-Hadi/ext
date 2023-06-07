@@ -7,7 +7,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import ContextMenuSettings from '@/pages/options/pages/EzMailContextMenuSettings'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 
 const APP_NAME = String(process.env.APP_NAME)
 

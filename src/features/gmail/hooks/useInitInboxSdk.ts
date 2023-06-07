@@ -25,12 +25,10 @@ import {
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
 } from '@/types'
-import {
-  getChromeExtensionButtonContextMenu,
-  getChromeExtensionSettings,
-} from '@/background/utils'
+import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { useFocus } from '@/hooks/useFocus'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.usechatgpt-ai__gmail-toolbar-button--cta')
@@ -55,8 +53,12 @@ const useInitInboxSdk = () => {
   const setInboxEditState = useSetRecoilState(InboxEditState)
   const gmailAssistantRef = useRef(false)
   useFocus(async () => {
-    const settings = await getChromeExtensionSettings()
-    const newValue = settings.userSettings?.gmailAssistant || false
+    const gmailButtonSettings = await getChromeExtensionButtonSettings(
+      'gmailButton',
+    )
+    const newValue =
+      gmailButtonSettings?.visibility.whitelist.includes('mail.google.com') ||
+      false
     const showRefreshConfirm = newValue !== gmailAssistantRef.current
     gmailAssistantRef.current = newValue
     // 如果设置了显示按钮，但是当前没有加载，那么刷新加载
@@ -71,19 +73,25 @@ const useInitInboxSdk = () => {
   })
   const timeoutRef = useRef(false)
   useEffectOnce(() => {
-    getChromeExtensionSettings().then((settings) => {
-      gmailAssistantRef.current = settings.userSettings?.gmailAssistant || false
-      if (gmailAssistantRef.current) {
-        load(2, 'sdk_UseChatGPT_AI_e063b66682', {}).then(async (sdk) => {
-          console.log('inbox sdk loaded!')
-          setInboxSdk({
-            sdk,
-            loading: false,
-            initialized: false,
+    getChromeExtensionButtonSettings('gmailButton').then(
+      (gmailButtonSettings) => {
+        const gmailAssistant =
+          gmailButtonSettings?.visibility.whitelist.includes(
+            'mail.google.com',
+          ) || false
+        gmailAssistantRef.current = gmailAssistant
+        if (gmailAssistantRef.current) {
+          load(2, 'sdk_UseChatGPT_AI_e063b66682', {}).then(async (sdk) => {
+            console.log('inbox sdk loaded!')
+            setInboxSdk({
+              sdk,
+              loading: false,
+              initialized: false,
+            })
           })
-        })
-      }
-    })
+        }
+      },
+    )
   })
   useEffect(() => {
     if (!inboxSdk.initialized && !inboxSdk.loading && inboxSdk.sdk) {

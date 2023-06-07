@@ -1,5 +1,5 @@
-import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
-import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
+import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
+import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import Browser from 'webextension-polyfill'
 import {
   CHAT_GPT_PROVIDER,
@@ -19,7 +19,6 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { PoeModel } from '@/background/src/chat/PoeChat/type'
-import merge from 'lodash-es/merge'
 import cloneDeep from 'lodash-es/cloneDeep'
 import {
   IChromeExtensionButtonSetting,
@@ -27,6 +26,7 @@ import {
   IChromeExtensionButtonSettingKey,
   IChromeExtensionSettingsUpdateFunction,
 } from '@/background/types/Settings'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -74,15 +74,19 @@ export const getChromeExtensionSettings =
       },
       buttonSettings: {
         gmailButton: {
-          isWhitelistMode: false,
-          whitelist: [],
-          blacklist: [],
+          visibility: {
+            isWhitelistMode: true,
+            whitelist: ['mail.google.com'],
+            blacklist: [],
+          },
           contextMenu: defaultGmailToolbarContextMenuJson,
         },
         textSelectPopupButton: {
-          isWhitelistMode: false,
-          whitelist: [],
-          blacklist: [],
+          visibility: {
+            isWhitelistMode: false,
+            whitelist: [],
+            blacklist: [],
+          },
           contextMenu: defaultContextMenuJson,
         },
       },
@@ -170,7 +174,7 @@ export const getChromeExtensionSettings =
         })
         // 为了提高merge的性能，先把contextMenu字段拿出来 -- 结束
         // 因为每次版本更新都可能会有新字段，用本地的覆盖默认的就行
-        const mergedSettings = merge(
+        const mergedSettings = mergeWithObject([
           cloneDefaultConfig,
           cloneLocalSettings,
           {
@@ -182,7 +186,8 @@ export const getChromeExtensionSettings =
           {
             buttonSettings: currentButtonContentMenuSettings,
           },
-        )
+        ]) as IChromeExtensionSettings
+        console.log('mergedSettings', mergedSettings)
         return mergedSettings
       } else {
         return defaultConfig
@@ -224,9 +229,10 @@ export const setChromeExtensionSettings = async (
       })
     } else {
       await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify(
-          merge(oldSettings, settingsOrUpdateFunction),
-        ),
+        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify({
+          ...oldSettings,
+          ...settingsOrUpdateFunction,
+        }),
       })
     }
     return true

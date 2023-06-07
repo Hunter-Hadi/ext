@@ -155,6 +155,14 @@ const ContextMenuEditForm: FC<{
 
   useEffect(() => {
     const cloneNode: IContextMenuItem = cloneDeep(node)
+    // 兼容旧版本，设置默认值
+    if (!cloneNode.data.visibility) {
+      cloneNode.data.visibility = {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      }
+    }
     setEditNode(cloneDeep(node))
     setTemplate(cloneNode.data?.actions?.[0]?.parameters?.template || '')
     setSelectedIcon(cloneNode.data?.icon as any)

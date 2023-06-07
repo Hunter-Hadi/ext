@@ -17,7 +17,6 @@ import {
   IRangyRect,
 } from '@/features/contextMenu/store'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import {
   FloatingContextMenuCloseIconButton,
@@ -25,24 +24,31 @@ import {
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
 import { APP_ENV, isProduction } from '@/types'
+import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
   const { tempSelection, show } = useRangy()
-  const appSettings = useRecoilValue(AppSettingsState)
   const { shortCutKey } = useCommands()
+  const textSelectPopupButtonSettings =
+    useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const memoShow = useMemo(() => {
     return (
       show &&
-      appSettings.userSettings?.selectionButtonVisible &&
+      textSelectPopupButtonSettings?.buttonVisible &&
       !closeBeforeRefresh &&
       !floatingDropdownMenu.open
     )
-  }, [closeBeforeRefresh, show, appSettings.userSettings, floatingDropdownMenu])
+  }, [
+    closeBeforeRefresh,
+    show,
+    textSelectPopupButtonSettings,
+    floatingDropdownMenu,
+  ])
   const { x, y, strategy, refs } = useFloating({
     placement: 'bottom-start',
     middleware: [

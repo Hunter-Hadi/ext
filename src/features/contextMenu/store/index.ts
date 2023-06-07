@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { IVisibilitySetting } from '@/background/types/Settings'
 
 export type IContextMenuItem = {
   id: string | 'root'
@@ -13,9 +14,7 @@ export type IContextMenuItem = {
     type: 'group' | 'shortcuts'
     actions?: ISetActionsType
     // TODO - 之前的版本没有这个字段, 为了兼容老版本, 先不加required
-    isWhitelistMode?: boolean
-    whitelist?: string[]
-    blacklist?: string[]
+    visibility?: IVisibilitySetting
   }
 }
 export type IContextMenuItemWithChildren = IContextMenuItem & {

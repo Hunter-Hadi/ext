@@ -1,7 +1,7 @@
 import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
 import {
-  getChromeExtensionContextMenu,
+  getChromeExtensionButtonContextMenu,
   setChromeExtensionSettings,
 } from '@/background/utils'
 import {
@@ -9,17 +9,22 @@ import {
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
 import uniqBy from 'lodash-es/uniqBy'
+import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
+import merge from 'lodash-es/merge'
 
 const forceUpdateContextMenuReadOnlyOption = async () => {
-  const updateContextMenuKeys = ['contextMenus', 'gmailToolBarContextMenu']
-  const updateContextMenu = async (
-    menuType: 'gmailToolBarContextMenu' | 'contextMenus',
+  const updateContextButtonKeys: IChromeExtensionButtonSettingKey[] = [
+    'gmailButton',
+    'textSelectPopupButton',
+  ]
+  const updateButtonContextMenu = async (
+    buttonKey: IChromeExtensionButtonSettingKey,
   ) => {
     const defaultJsonData =
-      menuType === 'gmailToolBarContextMenu'
+      buttonKey === 'gmailButton'
         ? defaultGmailToolbarContextMenuJson
         : defaultContextMenuJson
-    const menuList = await getChromeExtensionContextMenu(menuType)
+    const menuList = await getChromeExtensionButtonContextMenu(buttonKey)
     const defaultJsonMap = new Map()
     defaultJsonData.forEach((item) => {
       defaultJsonMap.set(item.id, item)
@@ -61,12 +66,21 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
     })
     updateMenuList = uniqBy(updateMenuList, 'id')
     console.log('force update menu count', updateCount, updateMenuList)
-    await setChromeExtensionSettings({
-      [menuType]: updateMenuList,
+    await setChromeExtensionSettings((settings) => {
+      return {
+        ...settings,
+        buttonSettings: merge(settings.buttonSettings, {
+          [buttonKey]: {
+            contextMenu: updateMenuList,
+          },
+        }),
+      }
     })
   }
   await Promise.all(
-    updateContextMenuKeys.map((menuKey) => updateContextMenu(menuKey as any)),
+    updateContextButtonKeys.map(
+      async (buttonKey) => await updateButtonContextMenu(buttonKey),
+    ),
   )
 }
 export default forceUpdateContextMenuReadOnlyOption

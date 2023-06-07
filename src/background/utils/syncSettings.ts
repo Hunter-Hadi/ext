@@ -2,13 +2,13 @@ import { get, post } from '@/utils/request'
 import {
   FILTER_SAVE_KEYS,
   getChromeExtensionSettings,
-  IChromeExtensionSettings,
   setChromeExtensionSettings,
 } from '@/background/utils/index'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import merge from 'lodash-es/merge'
 import dayjs from 'dayjs'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { IChromeExtensionSettings } from '@/background/types/Settings'
 
 export const syncServerSettingsToLocalSettings = async () => {
   try {
@@ -23,8 +23,29 @@ export const syncServerSettingsToLocalSettings = async () => {
         if (serverSettings?.conversationId) {
           delete serverSettings.conversationId
         }
+        const buttonSettings: any = {}
+        if (
+          serverSettings.contextMenus &&
+          serverSettings.contextMenus?.length > 0
+        ) {
+          buttonSettings.textSelectPopupButton = {
+            contextMenu: cloneDeep(serverSettings.contextMenus),
+          }
+          serverSettings.contextMenus = []
+        }
+        if (
+          serverSettings.gmailToolBarContextMenu &&
+          serverSettings.gmailToolBarContextMenu?.length > 0
+        ) {
+          buttonSettings.gmailButton = {
+            contextMenu: cloneDeep(serverSettings.gmailToolBarContextMenu),
+          }
+          serverSettings.gmailToolBarContextMenu = []
+        }
         await setChromeExtensionSettings((localSettings) => {
-          return merge(localSettings, serverSettings)
+          return merge(localSettings, serverSettings, {
+            buttonSettings,
+          })
         })
       }
     }
@@ -121,9 +142,7 @@ export const checkSettingsSync = async (): Promise<{
           if (localLastModified < serverLastModified) {
             // 本地设置过期, 同步服务器的设置到本地
             console.log('本地设置过期, 同步服务器的设置到本地')
-            await setChromeExtensionSettings((localSettings) => {
-              return merge(localSettings, serverSettings)
-            })
+            await syncServerSettingsToLocalSettings()
             return {
               success: true,
               status: 'ok',

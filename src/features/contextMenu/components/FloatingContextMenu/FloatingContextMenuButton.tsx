@@ -75,8 +75,9 @@ const FloatingContextMenuButton: FC<{
   ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
   const { setShortCuts, runShortCuts, loading } =
     useShortCutsWithMessageChat('')
-  const { contextMenuList, originContextMenuList } =
-    useContextMenuList('contextMenus')
+  const { contextMenuList, originContextMenuList } = useContextMenuList(
+    'textSelectPopupButton',
+  )
   const buttonId = useMemo(() => uuidV4(), [])
   const [isVisited, setIsVisited] = React.useState(false)
   const updateCurrentFloatingContextMenuButtonId = useCallback(() => {

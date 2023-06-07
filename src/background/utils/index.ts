@@ -1,6 +1,5 @@
 import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
-import { IContextMenuItem } from '@/features/contextMenu'
 import Browser from 'webextension-polyfill'
 import {
   CHAT_GPT_PROVIDER,
@@ -15,7 +14,6 @@ import {
   IChromeExtensionSendEvent,
 } from '@/background/eventType'
 import { useEffect } from 'react'
-import { IChatGPTProviderType } from '@/background/provider/chat/ChatAdapter'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -23,6 +21,12 @@ import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types
 import { PoeModel } from '@/background/src/chat/PoeChat/type'
 import merge from 'lodash-es/merge'
 import cloneDeep from 'lodash-es/cloneDeep'
+import {
+  IChromeExtensionButtonSetting,
+  IChromeExtensionSettings,
+  IChromeExtensionButtonSettingKey,
+  IChromeExtensionSettingsUpdateFunction,
+} from '@/background/types/Settings'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -31,101 +35,6 @@ export {
 } from './onboardingStorage'
 
 dayjs.extend(utc)
-
-export type IChatGPTModelType = {
-  slug: string
-  max_tokens: number
-  title: string
-  description: string
-  tags?: string[]
-  enabled_tools?: string[]
-  qualitative_properties?: {
-    reasoning: number[]
-    speed: number[]
-    conciseness: number[]
-  }
-}
-export type IChatGPTPluginType = {
-  id: string
-  domain: string
-  categories: unknown[]
-  manifest?: {
-    api: {
-      type: string
-      url: string
-    }
-    auth: {
-      type: string
-    }
-    contact_email: string
-    description_for_human: string
-    description_for_model: string
-    legal_info_url: string
-    logo_url: string
-    name_for_human: string
-    name_for_model: string
-    schema_version: string
-  }
-  namespace: string
-  oauth_client_id: string
-  status: 'approved'
-  user_settings: {
-    is_installed: boolean
-    is_authenticated: boolean
-  }
-}
-
-type IThirdProviderSettings = {
-  [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]?: {
-    [key in string]: any
-  }
-  [CHAT_GPT_PROVIDER.OPENAI]?: {
-    [key in string]: any
-  }
-  [CHAT_GPT_PROVIDER.OPENAI_API]?: {
-    [key in string]: any
-  }
-  [CHAT_GPT_PROVIDER.BING]?: {
-    conversationStyle: BingConversationStyle
-  }
-  [CHAT_GPT_PROVIDER.BARD]?: {
-    [key in string]: any
-  }
-  [CHAT_GPT_PROVIDER.CLAUDE]?: {
-    model?: string
-  }
-}
-
-export interface IChromeExtensionSettings {
-  chatGPTProvider?: IChatGPTProviderType
-  models?: IChatGPTModelType[]
-  plugins?: IChatGPTPluginType[]
-  currentModel?: string
-  currentPlugins?: string[]
-  conversationId?: string
-  contextMenus?: IContextMenuItem[]
-  gmailToolBarContextMenu?: IContextMenuItem[]
-  userSettings?: {
-    chatBoxWidth?: number
-    colorSchema?: 'light' | 'dark'
-    language?: string
-    selectionButtonVisible?: boolean
-    chatGPTStableModeDuration?: number
-    pdf?: {
-      enabled?: boolean
-    }
-    // TODO remove this
-    gmailAssistant?: boolean
-  }
-  thirdProviderSettings?: {
-    [P in IChatGPTProviderType]?: IThirdProviderSettings[P]
-  }
-  lastModified?: number
-}
-
-export type IChromeExtensionSettingsContextMenuKey =
-  | 'contextMenus'
-  | 'gmailToolBarContextMenu'
 
 export const FILTER_SAVE_KEYS = [
   'currentModel',
@@ -147,8 +56,10 @@ export const getChromeExtensionSettings =
       plugins: [],
       conversationId: '',
       chatGPTProvider: CHAT_GPT_PROVIDER.OPENAI,
-      contextMenus: defaultContextMenuJson,
-      gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
+      /** @deprecated **/
+      contextMenus: [],
+      /** @deprecated **/
+      gmailToolBarContextMenu: [],
       userSettings: {
         chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
         chatGPTStableModeDuration: 30,
@@ -158,7 +69,22 @@ export const getChromeExtensionSettings =
         pdf: {
           enabled: true,
         },
+        /** @deprecated **/
         gmailAssistant: true,
+      },
+      buttonSettings: {
+        gmailButton: {
+          isWhitelistMode: false,
+          whitelist: [],
+          blacklist: [],
+          contextMenu: defaultGmailToolbarContextMenuJson,
+        },
+        textSelectPopupButton: {
+          isWhitelistMode: false,
+          whitelist: [],
+          blacklist: [],
+          contextMenu: defaultContextMenuJson,
+        },
       },
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {
@@ -179,23 +105,85 @@ export const getChromeExtensionSettings =
         )
         const cloneDefaultConfig = cloneDeep(defaultConfig)
         const cloneLocalSettings = cloneDeep(localSettings)
-        // 为了提高merge的性能，先把contextMenus和gmailToolBarContextMenu的字段拿出来
-        const contextMenus = cloneDeep(
-          cloneLocalSettings.contextMenus || cloneDefaultConfig.contextMenus,
+        // 为了提高merge的性能，先把contextMenu字段拿出来 -- 开始
+        const buttonMap = new Map()
+        // 默认的buttonSettings
+        const defaultButtonSettings = cloneDeep(
+          cloneDefaultConfig.buttonSettings,
         )
-        const gmailToolBarContextMenu = cloneDeep(
-          cloneLocalSettings.gmailToolBarContextMenu ||
-            cloneDefaultConfig.gmailToolBarContextMenu,
-        )
-        delete cloneDefaultConfig.contextMenus
-        delete cloneDefaultConfig.gmailToolBarContextMenu
-        delete cloneLocalSettings.contextMenus
-        delete cloneLocalSettings.gmailToolBarContextMenu
-        // 因为每次版本更新都可能会有新字段，用本地的覆盖默认的就行
-        return merge(cloneDefaultConfig, cloneLocalSettings, {
-          contextMenus,
-          gmailToolBarContextMenu,
+        if (defaultButtonSettings) {
+          Object.keys(defaultButtonSettings).forEach((buttonKey) => {
+            if (
+              defaultButtonSettings[
+                buttonKey as IChromeExtensionButtonSettingKey
+              ].contextMenu?.length > 0
+            ) {
+              buttonMap.set(
+                buttonKey,
+                cloneDeep(
+                  defaultButtonSettings[
+                    buttonKey as IChromeExtensionButtonSettingKey
+                  ].contextMenu,
+                ),
+              )
+              defaultButtonSettings[
+                buttonKey as IChromeExtensionButtonSettingKey
+              ].contextMenu = []
+            }
+          })
+        }
+        // 本地的buttonSettings
+        const localButtonSettings = cloneDeep(cloneLocalSettings.buttonSettings)
+        if (localButtonSettings) {
+          if (localSettings.contextMenus?.length > 0) {
+            localButtonSettings.textSelectPopupButton.contextMenu =
+              localSettings.contextMenus
+            localSettings.contextMenus = []
+          }
+          if (localSettings.gmailToolBarContextMenu?.length > 0) {
+            localButtonSettings.gmailButton.contextMenu =
+              localSettings.gmailToolBarContextMenu
+            localSettings.gmailToolBarContextMenu = []
+          }
+          Object.keys(localButtonSettings).forEach((buttonKey) => {
+            if (localButtonSettings[buttonKey].contextMenu?.length > 0) {
+              buttonMap.set(
+                buttonKey,
+                cloneDeep(localButtonSettings[buttonKey].contextMenu),
+              )
+              localButtonSettings[buttonKey].contextMenu = []
+            }
+          })
+        }
+        const currentButtonContentMenuSettings: {
+          [key in IChromeExtensionButtonSettingKey]: Partial<IChromeExtensionButtonSetting>
+        } = {
+          gmailButton: {},
+          textSelectPopupButton: {},
+        }
+        Object.keys(currentButtonContentMenuSettings).forEach((buttonKey) => {
+          if (buttonMap.has(buttonKey)) {
+            currentButtonContentMenuSettings[
+              buttonKey as IChromeExtensionButtonSettingKey
+            ].contextMenu = buttonMap.get(buttonKey)
+          }
         })
+        // 为了提高merge的性能，先把contextMenu字段拿出来 -- 结束
+        // 因为每次版本更新都可能会有新字段，用本地的覆盖默认的就行
+        const mergedSettings = merge(
+          cloneDefaultConfig,
+          cloneLocalSettings,
+          {
+            buttonSettings: defaultButtonSettings,
+          },
+          {
+            buttonSettings: localButtonSettings,
+          },
+          {
+            buttonSettings: currentButtonContentMenuSettings,
+          },
+        )
+        return mergedSettings
       } else {
         return defaultConfig
       }
@@ -205,25 +193,21 @@ export const getChromeExtensionSettings =
     }
   }
 
-export const getChromeExtensionContextMenu = async (
-  menuType: IChromeExtensionSettingsContextMenuKey,
+export const getChromeExtensionButtonContextMenu = async (
+  buttonKey: IChromeExtensionButtonSettingKey,
 ) => {
   const settings = await getChromeExtensionSettings()
   const defaultMenus = {
-    contextMenus: defaultContextMenuJson,
-    gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
+    gmailButton: defaultContextMenuJson,
+    textSelectPopupButton: defaultGmailToolbarContextMenuJson,
   }
-  const cacheMenus = settings[menuType]
+  const cacheMenus = settings.buttonSettings?.[buttonKey].contextMenu
   if (cacheMenus && cacheMenus.length > 0) {
     return cacheMenus
   } else {
-    return defaultMenus[menuType]
+    return defaultMenus[buttonKey]
   }
 }
-
-type IChromeExtensionSettingsUpdateFunction = (
-  settings: IChromeExtensionSettings,
-) => IChromeExtensionSettings
 
 export const setChromeExtensionSettings = async (
   settingsOrUpdateFunction:
@@ -240,14 +224,11 @@ export const setChromeExtensionSettings = async (
       })
     } else {
       await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify({
-          ...oldSettings,
-          ...settingsOrUpdateFunction,
-        }),
+        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify(
+          merge(oldSettings, settingsOrUpdateFunction),
+        ),
       })
     }
-    console.log('save', settingsOrUpdateFunction)
-    console.log('get', await getChromeExtensionSettings())
     return true
   } catch (e) {
     return false

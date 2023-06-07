@@ -6,14 +6,14 @@ import {
 } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useChromeExtensionSettingsContextMenuList } from '@/hooks'
-import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
+import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 
 const useContextMenuList = (
-  settingsKey: IChromeExtensionSettingsContextMenuKey,
+  buttonKey: IChromeExtensionButtonSettingKey,
   query?: string,
 ) => {
   const originContextMenuList =
-    useChromeExtensionSettingsContextMenuList(settingsKey)
+    useChromeExtensionSettingsContextMenuList(buttonKey)
   const originContextMenuListRef = useRef<IContextMenuItem[]>([])
   const groupByContextMenuList = useMemo(() => {
     originContextMenuListRef.current = originContextMenuList
@@ -23,7 +23,7 @@ const useContextMenuList = (
     if (query?.trim()) {
       return fuzzySearchContextMenuList(originContextMenuListRef.current, query)
     }
-    if (settingsKey === 'gmailToolBarContextMenu') {
+    if (buttonKey === 'gmailButton') {
       return groupByContextMenuList.map((group, index) => {
         if (index === 0) {
           // gmail只有一个group
@@ -34,7 +34,7 @@ const useContextMenuList = (
       })
     }
     return groupByContextMenuList
-  }, [groupByContextMenuList, settingsKey, query])
+  }, [groupByContextMenuList, buttonKey, query])
   return {
     contextMenuList,
     originContextMenuList,

@@ -11,7 +11,7 @@ import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
-import { getChromeExtensionContextMenu } from '@/background/utils'
+import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { useCurrentMessageView } from '@/features/gmail/hooks'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
@@ -33,8 +33,8 @@ const GmailActionRunner = () => {
   }, [])
 
   const executeShortCuts = useCallback(async () => {
-    const gmailToolBarContextMenu = await getChromeExtensionContextMenu(
-      'gmailToolBarContextMenu',
+    const gmailToolBarContextMenu = await getChromeExtensionButtonContextMenu(
+      'gmailButton',
     )
     const ctaButtonAction = gmailToolBarContextMenu.find((item) =>
       messageType === 'reply'

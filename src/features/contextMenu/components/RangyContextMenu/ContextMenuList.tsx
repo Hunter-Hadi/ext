@@ -13,11 +13,9 @@ import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
-import {
-  getChromeExtensionContextMenu,
-  IChromeExtensionSettingsContextMenuKey,
-} from '@/background/utils'
+import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { FloatingContextMenuGmailCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 // import Browser  from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
@@ -193,16 +191,16 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 const ContextMenuList: FC<{
   staticButton?: boolean
   // defaultContextMenuJson: IContextMenuItem[]
-  settingsKey: IChromeExtensionSettingsContextMenuKey
+  buttonKey: IChromeExtensionButtonSettingKey
 }> = (props) => {
-  const { settingsKey } = props
+  const { buttonKey } = props
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
   const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      let menuList = await getChromeExtensionContextMenu(settingsKey)
-      if (settingsKey === 'gmailToolBarContextMenu') {
+      let menuList = await getChromeExtensionButtonContextMenu(buttonKey)
+      if (buttonKey === 'gmailButton') {
         menuList = menuList.filter(
           (item) =>
             item.id !== USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
@@ -219,7 +217,7 @@ const ContextMenuList: FC<{
   }, [messageType])
   const sortBySettingsKey = useMemo(() => {
     return list
-  }, [list, settingsKey])
+  }, [list, buttonKey])
   // console.log('sortBySettingsKey', sortBySettingsKey, settingsKey)
   return (
     <Stack maxWidth={260}>

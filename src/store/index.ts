@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
-import { IChromeExtensionSettings } from '@/background/utils'
 import { getEnv } from '@/utils/AppEnv'
+import { IChromeExtensionSettings } from '@/background/types/Settings'
 
 export const AppState = atom<{
   env: 'gmail' | 'normal'

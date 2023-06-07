@@ -14,7 +14,7 @@ const UseChatGPTOptionsEditMenuPage = () => {
     >
       <UseChatGPTContextMenuSettings
         iconSetting
-        settingsKey={'contextMenus'}
+        buttonKey={'textSelectPopupButton'}
         defaultContextMenuJson={defaultContextMenuJson}
       />
     </Stack>

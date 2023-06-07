@@ -3,17 +3,21 @@ import { AppSettingsState } from '@/store'
 import defaultContextMenuJson from '@/pages/options/data/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 import { useMemo } from 'react'
-import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
+import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 
 export const useChromeExtensionSettingsContextMenuList = (
-  menuType: IChromeExtensionSettingsContextMenuKey,
+  buttonKey: IChromeExtensionButtonSettingKey,
 ) => {
   const appSettings = useRecoilValue(AppSettingsState)
   const defaultMenus = {
-    contextMenus: defaultContextMenuJson,
-    gmailToolBarContextMenu: defaultGmailToolbarContextMenuJson,
+    textSelectPopupButton: defaultContextMenuJson,
+    gmailButton: defaultGmailToolbarContextMenuJson,
   }
   return useMemo(() => {
-    return appSettings[menuType] || defaultMenus[menuType] || []
-  }, [appSettings, menuType])
+    return (
+      appSettings.buttonSettings?.[buttonKey].contextMenu ||
+      defaultMenus[buttonKey] ||
+      []
+    )
+  }, [appSettings, buttonKey])
 }

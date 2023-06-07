@@ -26,7 +26,7 @@ import {
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
 } from '@/types'
 import {
-  getChromeExtensionContextMenu,
+  getChromeExtensionButtonContextMenu,
   getChromeExtensionSettings,
 } from '@/background/utils'
 import { useFocus } from '@/hooks/useFocus'
@@ -154,7 +154,7 @@ const useInitInboxSdk = () => {
               ?.getBoundingClientRect()
             if (iconButtonBounce) {
               const gmailToolBarContextMenu =
-                await getChromeExtensionContextMenu('gmailToolBarContextMenu')
+                await getChromeExtensionButtonContextMenu('gmailButton')
 
               const options = gmailToolBarContextMenu.filter(
                 (item) =>
@@ -162,7 +162,7 @@ const useInitInboxSdk = () => {
                   item.id !== USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
               )
 
-              console.log('gmailToolBarContextMenu', options)
+              console.log('gmailButton', options)
               const itemHeight = Math.max(
                 findFirstTierMenuHeight(options) || 0,
                 0,

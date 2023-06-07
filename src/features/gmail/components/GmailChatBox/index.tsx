@@ -18,6 +18,8 @@ import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
 // import DevContent from '@/components/DevContent'
 // import { TestAllActionsButton } from '@/features/shortcuts'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import markdownCss from '@/pages/markdown.less'
 import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'

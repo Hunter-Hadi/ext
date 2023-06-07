@@ -28,25 +28,25 @@ import ContextMenuActionConfirmModal, {
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 import defaultGmailToolbarContextMenuJson from '@/pages/options/data/defaultGmailToolbarContextMenuJson'
 import {
-  getChromeExtensionContextMenu,
-  IChromeExtensionSettingsContextMenuKey,
+  getChromeExtensionButtonContextMenu,
   setChromeExtensionSettings,
 } from '@/background/utils'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
+import { IChromeExtensionButtonSettingKey } from '../../../background/types/Settings'
 
 const rootId = 'root'
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const saveTreeData = async (
-  key: IChromeExtensionSettingsContextMenuKey,
+  key: IChromeExtensionButtonSettingKey,
   treeData: IContextMenuItem[],
 ) => {
   try {
     console.log('saveTreeData', key, treeData)
     let newTreeData = [...treeData]
     // overlary cache tree data by default json
-    if (key === 'gmailToolBarContextMenu') {
+    if (key === 'gmailButton') {
       newTreeData = treeData.map((item) => {
         const defaultItem = defaultGmailToolbarContextMenuJson.find(
           (defaultItem) => defaultItem.id === item.id,
@@ -58,7 +58,11 @@ const saveTreeData = async (
       })
     }
     const success = await setChromeExtensionSettings({
-      [key]: newTreeData,
+      buttonSettings: {
+        [key]: {
+          contextMenu: newTreeData,
+        },
+      },
     } as any)
     console.log(success)
   } catch (error) {
@@ -115,12 +119,12 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
 
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
-  settingsKey: IChromeExtensionSettingsContextMenuKey
+  buttonKey: IChromeExtensionButtonSettingKey
   // menuType: IInboxMessageType
   defaultContextMenuJson: IContextMenuItem[]
 }> = (props) => {
   const {
-    settingsKey,
+    buttonKey,
     defaultContextMenuJson,
     iconSetting = false,
     // menuType,
@@ -182,7 +186,7 @@ const ContextMenuSettings: FC<{
           data: {
             ...newNode.data,
             actions: getDefaultActionWithTemplate(
-              settingsKey,
+              buttonKey,
               template,
               autoAskChatGPT,
             ),
@@ -191,7 +195,7 @@ const ContextMenuSettings: FC<{
       }
       setEditNode(null)
     },
-    [settingsKey],
+    [buttonKey],
   )
 
   const updateMenuItem = (newNode: IContextMenuItem) => {
@@ -265,7 +269,7 @@ const ContextMenuSettings: FC<{
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const menuList = await getChromeExtensionContextMenu(settingsKey)
+      const menuList = await getChromeExtensionButtonContextMenu(buttonKey)
       if (isDestroy) return
       setTreeData(menuList)
     }
@@ -273,7 +277,7 @@ const ContextMenuSettings: FC<{
     return () => {
       isDestroy = true
     }
-  }, [settingsKey])
+  }, [buttonKey])
 
   // const treeDataFilterByMenuType = useMemo(
   //   () => getTreeDataFilteredByMenuType(menuType, treeData),
@@ -281,7 +285,7 @@ const ContextMenuSettings: FC<{
   // )
 
   useEffect(() => {
-    saveTreeData(settingsKey, treeData)
+    saveTreeData(buttonKey, treeData)
   }, [treeData])
   return (
     <Stack gap={3}>
@@ -339,7 +343,7 @@ const ContextMenuSettings: FC<{
         <ContextMenuEditFormModal
           open={!!editNode}
           iconSetting={iconSetting}
-          settingsKey={settingsKey}
+          settingsKey={buttonKey}
           onSave={handleOnSave}
           onCancel={() => setEditNode(null)}
           onDelete={(id) => handleActionConfirmOpen('delete', id)}

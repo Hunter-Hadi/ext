@@ -12,6 +12,10 @@ export type IContextMenuItem = {
     editable: boolean
     type: 'group' | 'shortcuts'
     actions?: ISetActionsType
+    // TODO - 之前的版本没有这个字段, 为了兼容老版本, 先不加required
+    isWhitelistMode?: boolean
+    whitelist?: string[]
+    blacklist?: string[]
   }
 }
 export type IContextMenuItemWithChildren = IContextMenuItem & {

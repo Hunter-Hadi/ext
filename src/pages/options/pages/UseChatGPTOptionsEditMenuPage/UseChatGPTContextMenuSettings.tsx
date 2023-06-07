@@ -38,23 +38,27 @@ import groupBy from 'lodash-es/groupBy'
 import cloneDeep from 'lodash-es/cloneDeep'
 import CloseAlert from '@/components/CloseAlert'
 import {
-  getChromeExtensionContextMenu,
-  IChromeExtensionSettingsContextMenuKey,
+  getChromeExtensionButtonContextMenu,
   setChromeExtensionSettings,
 } from '@/background/utils'
 import BulletList from '@/components/BulletList'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
+import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 
 const rootId = 'root'
 
 const saveTreeData = async (
-  key: IChromeExtensionSettingsContextMenuKey,
+  key: IChromeExtensionButtonSettingKey,
   treeData: IContextMenuItem[],
 ) => {
   try {
     console.log('saveTreeData', key, treeData)
     const success = await setChromeExtensionSettings({
-      [key]: treeData,
+      buttonSettings: {
+        [key]: {
+          contextMenu: treeData,
+        },
+      },
     } as any)
     console.log(success)
   } catch (error) {
@@ -85,12 +89,12 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
 
 const ContextMenuSettings: FC<{
   iconSetting?: boolean
-  settingsKey: IChromeExtensionSettingsContextMenuKey
+  buttonKey: IChromeExtensionButtonSettingKey
   defaultContextMenuJson: IContextMenuItem[]
   onUpdated?: () => void
 }> = (props) => {
   const {
-    settingsKey,
+    buttonKey,
     defaultContextMenuJson,
     iconSetting = false,
     onUpdated,
@@ -175,7 +179,7 @@ const ContextMenuSettings: FC<{
           data: {
             ...newNode.data,
             actions: getDefaultActionWithTemplate(
-              settingsKey,
+              buttonKey,
               template,
               autoAskChatGPT,
             ),
@@ -184,7 +188,7 @@ const ContextMenuSettings: FC<{
       }
       setEditNode(null)
     },
-    [settingsKey],
+    [buttonKey],
   )
 
   const updateMenuItem = (newNode: IContextMenuItem) => {
@@ -257,16 +261,16 @@ const ContextMenuSettings: FC<{
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      const menuList = await getChromeExtensionContextMenu(settingsKey)
+      const contextMenu = await getChromeExtensionButtonContextMenu(buttonKey)
       if (isDestroy) return
-      setOriginalTreeData(menuList)
-      defaultTreeDataRef.current = menuList
+      setOriginalTreeData(contextMenu)
+      defaultTreeDataRef.current = contextMenu
     }
     getList()
     return () => {
       isDestroy = true
     }
-  }, [settingsKey])
+  }, [buttonKey])
 
   useEffect(() => {
     const searchTextMap: {
@@ -291,7 +295,7 @@ const ContextMenuSettings: FC<{
     }
     findSearchText(rootId)
     if (originalTreeData.length > 0) {
-      saveTreeData(settingsKey, originalTreeData).then(() => {
+      saveTreeData(buttonKey, originalTreeData).then(() => {
         console.log('saveTreeData success')
         if (once.current) {
           once.current = false
@@ -500,7 +504,7 @@ const ContextMenuSettings: FC<{
         <ContextMenuEditFormModal
           open={!!editNode}
           iconSetting={iconSetting}
-          settingsKey={settingsKey}
+          settingsKey={buttonKey}
           onSave={handleOnSave}
           onCancel={() => setEditNode(null)}
           onDelete={(id) => {

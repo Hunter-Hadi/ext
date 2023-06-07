@@ -206,7 +206,7 @@ const UseChatGPTOptionsSettingPage = () => {
             <Divider sx={{ my: 4 }} />
             <UseChatGPTContextMenuSettings
               iconSetting
-              settingsKey={'contextMenus'}
+              buttonKey={'textSelectPopupButton'}
               defaultContextMenuJson={defaultContextMenuJson}
               onUpdated={async () => {
                 await syncLocalToServer()

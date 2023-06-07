@@ -156,7 +156,7 @@ const FloatingContextMenu: FC<{
   const { setShortCuts, runShortCuts, loading } =
     useShortCutsWithMessageChat('')
   const { contextMenuList, originContextMenuList } = useContextMenuList(
-    'contextMenus',
+    'textSelectPopupButton',
     inputValue,
   )
 

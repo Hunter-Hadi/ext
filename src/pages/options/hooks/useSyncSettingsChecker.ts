@@ -1,15 +1,13 @@
 import { useCallback, useRef, useState } from 'react'
 import { useSnackbar } from 'notistack'
-import {
-  IChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/background/utils'
+import { setChromeExtensionSettings } from '@/background/utils'
 import debounce from 'lodash-es/debounce'
 import {
   checkSettingsSync,
   syncLocalSettingsToServerSettings,
   syncServerSettingsToLocalSettings,
 } from '@/background/utils/syncSettings'
+import { IChromeExtensionSettings } from '@/background/types/Settings'
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
   // Sync successful!

@@ -19,8 +19,8 @@ import { RunPromptTooltip, TemplateTooltip } from './Tooltips'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import TooltipIconButton from '@/components/TooltipIconButton'
-import { IChromeExtensionSettingsContextMenuKey } from '@/background/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 
 function replaceString(str: string, startIndex = 0) {
   const matches = templateStaticWords
@@ -109,7 +109,7 @@ const isAutoAskChatGPT = (actions?: IContextMenuItem['data']['actions']) => {
 }
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
-  settingsKey: IChromeExtensionSettingsContextMenuKey
+  settingsKey: IChromeExtensionButtonSettingKey
   node: IContextMenuItem
   onSave?: (
     newNode: IContextMenuItem,

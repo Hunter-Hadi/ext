@@ -94,7 +94,6 @@ const initChromeExtensionInstalled = () => {
         })
       } else {
         const result = await checkSettingsSync()
-        debugger
         if (result.success) {
           await syncLocalSettingsToServerSettings()
         }

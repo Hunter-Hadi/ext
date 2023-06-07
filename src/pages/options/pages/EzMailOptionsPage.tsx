@@ -35,7 +35,7 @@ const EzMailOptionsPage = () => {
             iconSetting
             // menuType={'reply'}
             defaultContextMenuJson={defaultGmailToolbarContextMenuJson}
-            settingsKey={'gmailToolBarContextMenu'}
+            buttonKey={'gmailButton'}
           />
         )}
         {/* {value === 'new-email' && (

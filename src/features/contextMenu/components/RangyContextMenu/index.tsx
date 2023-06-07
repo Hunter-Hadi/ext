@@ -20,7 +20,7 @@ const RangyContextMenu = () => {
           }}
           id={ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID}
         >
-          <ContextMenuList settingsKey={'gmailToolBarContextMenu'} />
+          <ContextMenuList buttonKey={'gmailButton'} />
         </Menu>
       </Paper>
       <ClickContextMenu />

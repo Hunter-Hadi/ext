@@ -7,7 +7,7 @@ import { getAppRootElement } from '@/utils'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
-import { getChromeExtensionContextMenu } from '@/background/utils'
+import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 
 const TestAllActionsButton: FC = () => {
   const [loading, setLoading] = React.useState(false)
@@ -15,9 +15,11 @@ const TestAllActionsButton: FC = () => {
   const isStopRef = React.useRef(false)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   useEffect(() => {
-    getChromeExtensionContextMenu('contextMenus').then((shortcuts) => {
-      setAllShortcuts(shortcuts.filter((s) => s?.data?.type === 'shortcuts'))
-    })
+    getChromeExtensionButtonContextMenu('textSelectPopupButton').then(
+      (shortcuts) => {
+        setAllShortcuts(shortcuts.filter((s) => s?.data?.type === 'shortcuts'))
+      },
+    )
   }, [])
   return (
     <Button

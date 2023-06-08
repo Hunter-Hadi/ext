@@ -21,6 +21,7 @@ import {
 } from '@/features/chatgpt/types'
 import { CHAT_GPT_PROMPT_PREFIX } from '@/types'
 import { getMediator } from '@/store/mediator'
+import { getCurrentDomainHost } from '@/utils'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -175,10 +176,17 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     let hasError = false
     try {
       // 发消息之前记录
-      increaseChatGPTRequestCount('normal')
+      await increaseChatGPTRequestCount('total')
       // ai 正在输出的消息
       let aiRespondingMessage: any = null
       let saveConversationId = ''
+      if (includeHistory) {
+        await increaseChatGPTRequestCount('prompt', {
+          id: 'chat',
+          name: 'chat',
+          host: getCurrentDomainHost(),
+        })
+      }
       await askChatGPTQuestion(
         {
           conversationId: postConversationId,
@@ -264,6 +272,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         aiRespondingMessage?.messageId &&
         aiRespondingMessage?.text
       ) {
+        increaseChatGPTRequestCount('success')
         if (saveConversationId) {
           await setChromeExtensionSettings({
             conversationId: saveConversationId,

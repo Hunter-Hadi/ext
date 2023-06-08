@@ -30,13 +30,18 @@ import {
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   ROOT_FLOATING_INPUT_ID,
 } from '@/types'
-import { getAppContextMenuElement, showChatBox } from '@/utils'
+import {
+  getAppContextMenuElement,
+  getCurrentDomainHost,
+  showChatBox,
+} from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
 import { FloatingContextMenuCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { getMediator } from '@/store/mediator'
+import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -250,6 +255,11 @@ const FloatingContextMenu: FC<{
             hoverContextMenuIdMap: {},
             lastHoverContextMenuId: null,
           }
+        })
+        increaseChatGPTRequestCount('prompt', {
+          id: findContextMenu.id,
+          name: findContextMenu.text,
+          host: getCurrentDomainHost(),
         })
         setShortCuts(findContextMenu.data.actions)
         runShortCuts().then(() => {

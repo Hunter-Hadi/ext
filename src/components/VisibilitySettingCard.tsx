@@ -14,6 +14,7 @@ import { SxProps } from '@mui/material/styles'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useFocus } from '@/hooks/useFocus'
 import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import isEqual from 'lodash-es/isEqual'
 
 const VisibilitySettingCardItem: FC<{
   label: string
@@ -71,11 +72,13 @@ const VisibilitySettingCard: FC<{
         onChange(visibilitySetting)
       } else {
         if (visibilitySetting.isWhitelistMode) {
-          if (prevSetting.current.whitelist !== visibilitySetting.whitelist) {
+          if (
+            !isEqual(prevSetting.current.whitelist, visibilitySetting.whitelist)
+          ) {
             onChange(visibilitySetting)
           }
         } else if (
-          prevSetting.current.blacklist !== visibilitySetting.blacklist
+          !isEqual(prevSetting.current.blacklist, visibilitySetting.blacklist)
         ) {
           onChange(visibilitySetting)
         }

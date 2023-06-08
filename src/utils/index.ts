@@ -332,3 +332,11 @@ export const promiseRetry = async <T>(
 export const domain2Favicon = (domain: string) => {
   return `https://www.google.com/s2/favicons?domain=${domain}`
 }
+
+export const getCurrentDomainHost = () => {
+  try {
+    return window.location.host || location.host
+  } catch (e) {
+    return ''
+  }
+}

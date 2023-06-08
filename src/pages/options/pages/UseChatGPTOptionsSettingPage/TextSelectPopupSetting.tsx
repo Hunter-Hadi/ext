@@ -57,7 +57,7 @@ const TextSelectPopupSetting: FC<{
         }}
       >
         <Typography fontSize={14} color={'text.primary'}>
-          Change visibility
+          Change visibility on all websites
         </Typography>
       </CloseAlert>
       <Stack direction={'row'} alignItems={'center'} mb={2}>
@@ -189,28 +189,30 @@ const TextSelectPopupSetting: FC<{
           </Box>
         )}
       </Box>
-      <CloseAlert
-        icon={<></>}
-        sx={{
-          // bgcolor: '#E2E8F0',
-          mt: 2,
-        }}
-      >
-        <Typography fontSize={14} color={'text.primary'}>
-          Change visibility on specified websites
-        </Typography>
-      </CloseAlert>
       {buttonSettings?.textSelectPopupButton && visible && (
-        <VisibilitySettingCard
-          sx={{ mt: 2 }}
-          defaultValue={buttonSettings.textSelectPopupButton.visibility}
-          onChange={async (newVisibilitySetting) => {
-            await updateButtonSettings('textSelectPopupButton', {
-              ...buttonSettings?.textSelectPopupButton,
-              visibility: newVisibilitySetting,
-            })
-          }}
-        />
+        <>
+          <CloseAlert
+            icon={<></>}
+            sx={{
+              // bgcolor: '#E2E8F0',
+              mt: 2,
+            }}
+          >
+            <Typography fontSize={14} color={'text.primary'}>
+              Change visibility on selected websites
+            </Typography>
+          </CloseAlert>
+          <VisibilitySettingCard
+            sx={{ mt: 2 }}
+            defaultValue={buttonSettings.textSelectPopupButton.visibility}
+            onChange={async (newVisibilitySetting) => {
+              await updateButtonSettings('textSelectPopupButton', {
+                ...buttonSettings?.textSelectPopupButton,
+                visibility: newVisibilitySetting,
+              })
+            }}
+          />
+        </>
       )}
     </Stack>
   )

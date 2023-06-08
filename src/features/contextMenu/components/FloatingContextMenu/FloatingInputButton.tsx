@@ -4,6 +4,9 @@ import Button from '@mui/material/Button'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useFloatingContextMenu } from '@/features/contextMenu'
+import { getCurrentDomainHost } from '@/utils'
+
+const NO_SUPPORT_HOST = ['teams.live.com']
 
 /**
  * 输入框呼出按钮
@@ -38,6 +41,9 @@ const FloatingInputButton: FC<{
       }
       showFloatingContextMenuWithVirtualSelection(target, template)
     }
+  }
+  if (NO_SUPPORT_HOST.includes(getCurrentDomainHost())) {
+    return null
   }
   if (iconButton) {
     return (

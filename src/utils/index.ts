@@ -66,6 +66,16 @@ export const showChatBox = () => {
     if (location.hostname === 'outlook.live.com') {
       htmlElement.style.minHeight = '100vh'
     }
+    if (location.hostname === 'teams.live.com') {
+      document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
+        element.style.width = `calc(100% - ${chatBoxElementWidth}px)`
+        element.childNodes.forEach((child: any) => {
+          if (child.tagName === 'IFRAME') {
+            child.style.width = '100%'
+          }
+        })
+      })
+    }
     // 浏览器自带的pdf文件阅读器
     if (document.querySelector('embed[type="application/pdf"]')) {
       document.body.style.height = '100vh'
@@ -93,6 +103,16 @@ export const hideChatBox = () => {
     htmlElement.style.position = ''
     if (location.hostname === 'outlook.live.com') {
       htmlElement.style.minHeight = ''
+    }
+    if (location.hostname === 'teams.live.com') {
+      document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
+        element.style.width = `100%`
+        element.childNodes.forEach((child: any) => {
+          if (child.tagName === 'IFRAME') {
+            child.style.width = '100vw'
+          }
+        })
+      })
     }
     // 浏览器自带的pdf文件阅读器
     if (document.querySelector('embed[type="application/pdf"]')) {

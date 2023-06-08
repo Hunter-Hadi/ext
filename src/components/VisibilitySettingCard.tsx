@@ -114,11 +114,11 @@ const VisibilitySettingCard: FC<{
               }}
               aria-label="Platform"
             >
-              <ToggleButton sx={{ width: 220 }} value="whiteList">
-                Enable on these websites
-              </ToggleButton>
               <ToggleButton sx={{ width: 220 }} value="blackList">
-                Disable on these websites
+                Disable on selected websites
+              </ToggleButton>
+              <ToggleButton sx={{ width: 220 }} value="whiteList">
+                Enable on selected websites
               </ToggleButton>
             </ToggleButtonGroup>
           </VisibilitySettingCardItem>

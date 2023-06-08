@@ -10,7 +10,7 @@ import { v4 as uuidV4 } from 'uuid'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { getAppRootElement } from '@/utils'
+import { getAppRootElement, getCurrentDomainHost } from '@/utils'
 import Button from '@mui/material/Button'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
@@ -22,6 +22,8 @@ const CurrentFloatingContextMenuButtonState = atom({
     id: '',
   },
 })
+
+const NO_SUPPORT_HOST = ['teams.live.com']
 
 /**
  * @description 空的contextMenuList 用于loading, 初次渲染的时候不占用太多资源
@@ -153,7 +155,7 @@ const FloatingContextMenuButton: FC<{
     buttonId,
     currentFloatingContextMenuButton.id,
   ])
-  if (!root) {
+  if (!root || NO_SUPPORT_HOST.includes(getCurrentDomainHost())) {
     return null
   }
   if (iconButton) {

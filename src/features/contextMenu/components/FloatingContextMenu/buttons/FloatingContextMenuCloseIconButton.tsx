@@ -18,6 +18,7 @@ import {
   useComputedChromeExtensionButtonSettings,
 } from '@/background/utils/buttonSettings'
 import uniq from 'lodash-es/uniq'
+import { AppSettingsState } from '@/store'
 
 const FloatingContextMenuCloseIconButton: FC<{
   sx?: SxProps
@@ -31,6 +32,7 @@ const FloatingContextMenuCloseIconButton: FC<{
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
+  const [appSetting] = useRecoilState(AppSettingsState)
   useEffect(() => {
     if (root) {
       return
@@ -74,94 +76,106 @@ const FloatingContextMenuCloseIconButton: FC<{
           }
         >
           <LiteDropdownMenuItem
-            onClick={async () => {
-              if (textSelectPopupButtonSettings) {
-                if (textSelectPopupButtonSettings?.buttonVisible) {
-                  // 需要隐藏
-                  if (buttonSettings?.textSelectPopupButton.visibility) {
-                    const { isWhitelistMode, whitelist, blacklist } =
-                      buttonSettings.textSelectPopupButton.visibility
-                    if (isWhitelistMode) {
-                      await updateButtonSettings('textSelectPopupButton', {
-                        visibility: {
-                          ...buttonSettings.textSelectPopupButton.visibility,
-                          whitelist: whitelist.filter(
-                            (item) =>
-                              item !== textSelectPopupButtonSettings.host,
-                          ),
-                        },
-                        contextMenu:
-                          buttonSettings.textSelectPopupButton.contextMenu,
-                      })
-                    } else {
-                      await updateButtonSettings('textSelectPopupButton', {
-                        visibility: {
-                          ...buttonSettings.textSelectPopupButton.visibility,
-                          blacklist: uniq(
-                            blacklist.concat([
-                              textSelectPopupButtonSettings.host,
-                            ]),
-                          ),
-                        },
-                        contextMenu:
-                          buttonSettings.textSelectPopupButton.contextMenu,
-                      })
-                    }
-                  }
-                } else {
-                  // 需要显示
-                  if (buttonSettings?.textSelectPopupButton.visibility) {
-                    const { isWhitelistMode, whitelist, blacklist } =
-                      buttonSettings.textSelectPopupButton.visibility
-                    if (isWhitelistMode) {
-                      await updateButtonSettings('textSelectPopupButton', {
-                        visibility: {
-                          ...buttonSettings.textSelectPopupButton.visibility,
-                          whitelist: uniq(
-                            whitelist.concat([
-                              textSelectPopupButtonSettings.host,
-                            ]),
-                          ),
-                        },
-                        contextMenu:
-                          buttonSettings.textSelectPopupButton.contextMenu,
-                      })
-                    } else {
-                      await updateButtonSettings('textSelectPopupButton', {
-                        visibility: {
-                          ...buttonSettings.textSelectPopupButton.visibility,
-                          blacklist: blacklist.filter(
-                            (item) =>
-                              item !== textSelectPopupButtonSettings.host,
-                          ),
-                        },
-                        contextMenu:
-                          buttonSettings.textSelectPopupButton.contextMenu,
-                      })
-                    }
-                  }
-                }
-                setFloatingDropdownMenu({
-                  open: false,
-                  rootRect: null,
-                })
-              }
+            onClick={() => {
+              chromeExtensionClientOpenPage({
+                key: 'options',
+                query: '#custom-prompts',
+              })
             }}
-            icon={
-              textSelectPopupButtonSettings?.buttonVisible
-                ? 'VisibilityOff'
-                : 'RemoveRedEye'
-            }
-            label={
-              textSelectPopupButtonSettings?.buttonVisible
-                ? useInButton
-                  ? 'Hide on this page'
-                  : 'Hide text-select-popup on this page'
-                : useInButton
-                ? 'Show on this page'
-                : 'Show text-select-popup on this page'
-            }
+            label={'Edit custom prompts'}
+            icon={'DefaultIcon'}
           />
+          {appSetting.userSettings?.selectionButtonVisible && (
+            <LiteDropdownMenuItem
+              onClick={async () => {
+                if (textSelectPopupButtonSettings) {
+                  if (textSelectPopupButtonSettings?.buttonVisible) {
+                    // 需要隐藏
+                    if (buttonSettings?.textSelectPopupButton.visibility) {
+                      const { isWhitelistMode, whitelist, blacklist } =
+                        buttonSettings.textSelectPopupButton.visibility
+                      if (isWhitelistMode) {
+                        await updateButtonSettings('textSelectPopupButton', {
+                          visibility: {
+                            ...buttonSettings.textSelectPopupButton.visibility,
+                            whitelist: whitelist.filter(
+                              (item) =>
+                                item !== textSelectPopupButtonSettings.host,
+                            ),
+                          },
+                          contextMenu:
+                            buttonSettings.textSelectPopupButton.contextMenu,
+                        })
+                      } else {
+                        await updateButtonSettings('textSelectPopupButton', {
+                          visibility: {
+                            ...buttonSettings.textSelectPopupButton.visibility,
+                            blacklist: uniq(
+                              blacklist.concat([
+                                textSelectPopupButtonSettings.host,
+                              ]),
+                            ),
+                          },
+                          contextMenu:
+                            buttonSettings.textSelectPopupButton.contextMenu,
+                        })
+                      }
+                    }
+                  } else {
+                    // 需要显示
+                    if (buttonSettings?.textSelectPopupButton.visibility) {
+                      const { isWhitelistMode, whitelist, blacklist } =
+                        buttonSettings.textSelectPopupButton.visibility
+                      if (isWhitelistMode) {
+                        await updateButtonSettings('textSelectPopupButton', {
+                          visibility: {
+                            ...buttonSettings.textSelectPopupButton.visibility,
+                            whitelist: uniq(
+                              whitelist.concat([
+                                textSelectPopupButtonSettings.host,
+                              ]),
+                            ),
+                          },
+                          contextMenu:
+                            buttonSettings.textSelectPopupButton.contextMenu,
+                        })
+                      } else {
+                        await updateButtonSettings('textSelectPopupButton', {
+                          visibility: {
+                            ...buttonSettings.textSelectPopupButton.visibility,
+                            blacklist: blacklist.filter(
+                              (item) =>
+                                item !== textSelectPopupButtonSettings.host,
+                            ),
+                          },
+                          contextMenu:
+                            buttonSettings.textSelectPopupButton.contextMenu,
+                        })
+                      }
+                    }
+                  }
+                  setFloatingDropdownMenu({
+                    open: false,
+                    rootRect: null,
+                  })
+                }
+              }}
+              icon={
+                textSelectPopupButtonSettings?.buttonVisible
+                  ? 'VisibilityOff'
+                  : 'RemoveRedEye'
+              }
+              label={
+                textSelectPopupButtonSettings?.buttonVisible
+                  ? useInButton
+                    ? 'Hide on this site'
+                    : 'Hide text-select-popup on this site'
+                  : useInButton
+                  ? 'Show on this site'
+                  : 'Show text-select-popup on this site'
+              }
+            />
+          )}
           <LiteDropdownMenuItem
             onClick={async () => {
               setFloatingDropdownMenu({
@@ -181,22 +195,12 @@ const FloatingContextMenuCloseIconButton: FC<{
             label={
               textSelectPopupButtonSettings?.buttonVisible
                 ? useInButton
-                  ? 'Hide on all sites indefinitely'
-                  : 'Hide text-select-popup on all sites indefinitely'
+                  ? 'Hide on all sites'
+                  : 'Hide text-select-popup on all sites'
                 : useInButton
-                ? 'Show on all sites indefinitely'
-                : 'Show text-select-popup on all sites indefinitely'
+                ? 'Show on all sites'
+                : 'Show text-select-popup on all sites'
             }
-          />
-          <LiteDropdownMenuItem
-            onClick={() => {
-              chromeExtensionClientOpenPage({
-                key: 'options',
-                query: '#custom-prompts',
-              })
-            }}
-            label={'Edit custom prompts'}
-            icon={'DefaultIcon'}
           />
         </DropdownMenu>
       )}

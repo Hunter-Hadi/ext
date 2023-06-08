@@ -91,6 +91,7 @@ const VisibilitySettingCard: FC<{
       <Box
         sx={{
           p: 1,
+          bgcolor: 'background.paper',
           borderRadius: '4px',
           border: '1px solid',
           borderColor: 'customColor.borderColor',
@@ -200,7 +201,8 @@ const DomainDeleteItem: FC<{
       spacing={1}
       width={'100%'}
       sx={{
-        p: 0.5,
+        py: 0.5,
+        px: 1,
         m: 0.5,
         borderRadius: '4px',
         bgcolor: (t) =>

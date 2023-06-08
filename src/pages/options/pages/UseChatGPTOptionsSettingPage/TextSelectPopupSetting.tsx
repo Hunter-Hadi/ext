@@ -76,6 +76,7 @@ const TextSelectPopupSetting: FC<{
           borderRadius: '4px',
           height: '110px',
           border: '1px solid',
+          bgcolor: 'background.paper',
           borderColor: 'customColor.borderColor',
           position: 'relative',
         }}

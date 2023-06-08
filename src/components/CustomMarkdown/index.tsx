@@ -148,6 +148,7 @@ const CustomMarkdown: FC<{
           //   rehypeKatex,
           //   [rehypeHighlight, { detect: true, ignoreMissing: true }],
           // ]}
+          disallowedElements={['br']}
           components={{
             h1: (props: any) => {
               return <OverrideHeading {...props} heading={'h1'} />

@@ -335,7 +335,9 @@ export const domain2Favicon = (domain: string) => {
 
 export const getCurrentDomainHost = () => {
   try {
-    return window.location.host || location.host
+    return (window.location.host || location.host)
+      .replace(/^www\./, '')
+      .replace(/:\d+$/, '')
   } catch (e) {
     return ''
   }

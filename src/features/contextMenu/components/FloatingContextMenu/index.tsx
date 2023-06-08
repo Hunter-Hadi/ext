@@ -256,18 +256,20 @@ const FloatingContextMenu: FC<{
             lastHoverContextMenuId: null,
           }
         })
+        const runActions = findContextMenu.data.actions
         increaseChatGPTRequestCount('prompt', {
           id: findContextMenu.id,
           name: findContextMenu.text,
           host: getCurrentDomainHost(),
-        })
-        setShortCuts(findContextMenu.data.actions)
-        runShortCuts().then(() => {
-          setFloatingDropdownMenu((prevState) => {
-            return {
-              ...prevState,
-              running: false,
-            }
+        }).then(() => {
+          setShortCuts(runActions)
+          runShortCuts().then(() => {
+            setFloatingDropdownMenu((prevState) => {
+              return {
+                ...prevState,
+                running: false,
+              }
+            })
           })
         })
       }

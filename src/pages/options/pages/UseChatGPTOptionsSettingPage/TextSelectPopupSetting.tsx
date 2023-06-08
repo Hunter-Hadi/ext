@@ -188,6 +188,17 @@ const TextSelectPopupSetting: FC<{
           </Box>
         )}
       </Box>
+      <CloseAlert
+        icon={<></>}
+        sx={{
+          // bgcolor: '#E2E8F0',
+          mt: 2,
+        }}
+      >
+        <Typography fontSize={14} color={'text.primary'}>
+          Change visibility on specified websites
+        </Typography>
+      </CloseAlert>
       {buttonSettings?.textSelectPopupButton && visible && (
         <VisibilitySettingCard
           sx={{ mt: 2 }}

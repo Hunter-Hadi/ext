@@ -21,15 +21,25 @@ function filterOptions(options: any[], { inputValue }: any) {
     const input = inputValue.toLowerCase()
     return label.includes(input) || value.includes(input)
   })
-  if (inputValue.split('.').length > 1) {
+  if (inputValue.length > 2) {
+    if (!inputValue.split('.')[1]) {
+      if (inputValue.endsWith('.')) {
+        inputValue += 'com'
+      } else {
+        inputValue += '.com'
+      }
+    }
     try {
       const domain = new URL(
         /^http[s]?/.test(inputValue) ? inputValue : `https://${inputValue}`,
       ).hostname
         .replace(/^www\./, '')
         .replace(/:\d+$/, '')
+      if (searchOptions.find((option) => option.value === domain)) {
+        return searchOptions
+      }
       searchOptions.push({
-        label: `Add ${domain}`,
+        label: domain,
         value: domain,
         origin: {
           inputValue,
@@ -43,8 +53,9 @@ function filterOptions(options: any[], { inputValue }: any) {
 }
 
 const DomainSelect: FC<LanguageSelectProps> = (props) => {
+  const [open, setOpen] = React.useState(false)
   const {
-    label = 'Choose a domain',
+    label = 'Enter website URL',
     onChange = (value: string) => {
       console.log(value)
     },
@@ -52,6 +63,16 @@ const DomainSelect: FC<LanguageSelectProps> = (props) => {
   } = props
   return (
     <Autocomplete
+      open={open}
+      onInputChange={(_, value) => {
+        if (value.length === 0) {
+          if (open) setOpen(false)
+        } else {
+          if (!open) setOpen(true)
+        }
+      }}
+      onClose={() => setOpen(false)}
+      freeSolo
       disableClearable
       value={null}
       clearOnBlur

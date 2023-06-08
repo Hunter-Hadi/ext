@@ -3,7 +3,6 @@ import { IVisibilitySetting } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup/ToggleButtonGroup'
 import ToggleButton from '@mui/material/ToggleButton'
-import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import DomainSelect from '@/components/select/DomainSelect'
 import uniq from 'lodash-es/uniq'
@@ -15,6 +14,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useFocus } from '@/hooks/useFocus'
 import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import isEqual from 'lodash-es/isEqual'
+import Box from '@mui/material/Box'
 
 const VisibilitySettingCardItem: FC<{
   label: string
@@ -88,7 +88,14 @@ const VisibilitySettingCard: FC<{
   }, [visibilitySetting])
   return (
     <Stack sx={{ ...props.sx }}>
-      <Card variant="outlined">
+      <Box
+        sx={{
+          p: 1,
+          borderRadius: '4px',
+          border: '1px solid',
+          borderColor: 'customColor.borderColor',
+        }}
+      >
         <Stack spacing={2} p={2}>
           <VisibilitySettingCardItem label={'Mode'}>
             <ToggleButtonGroup
@@ -106,15 +113,15 @@ const VisibilitySettingCard: FC<{
               }}
               aria-label="Platform"
             >
-              <ToggleButton sx={{ width: 120 }} value="whiteList">
-                White list
+              <ToggleButton sx={{ width: 220 }} value="whiteList">
+                Enable on these websites
               </ToggleButton>
-              <ToggleButton sx={{ width: 120 }} value="blackList">
-                Black list
+              <ToggleButton sx={{ width: 220 }} value="blackList">
+                Disable on these websites
               </ToggleButton>
             </ToggleButtonGroup>
           </VisibilitySettingCardItem>
-          <VisibilitySettingCardItem label={'Host'}>
+          <VisibilitySettingCardItem label={'Websites'}>
             <Stack sx={{ width: '100%' }} spacing={2}>
               <DomainSelect
                 sx={{
@@ -177,7 +184,7 @@ const VisibilitySettingCard: FC<{
             </Stack>
           </VisibilitySettingCardItem>
         </Stack>
-      </Card>
+      </Box>
     </Stack>
   )
 }
@@ -190,7 +197,7 @@ const DomainDeleteItem: FC<{
     <Stack
       direction={'row'}
       alignItems={'center'}
-      spacing={2}
+      spacing={1}
       width={'100%'}
       sx={{
         p: 0.5,

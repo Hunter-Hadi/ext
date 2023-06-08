@@ -28,7 +28,6 @@ import { useCallback, useMemo, useState } from 'react'
 import {
   IChromeExtensionButtonSetting,
   IChromeExtensionButtonSettingKey,
-  IChromeExtensionSettings,
 } from '../types/Settings'
 import useEffectOnce from '../../hooks/useEffectOnce'
 import { getChromeExtensionSettings, setChromeExtensionSettings } from './index'
@@ -36,31 +35,16 @@ import { default as lodashSet } from 'lodash-es/set'
 import debounce from 'lodash-es/debounce'
 import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useFocus } from '@/hooks/useFocus'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 
 export const useChromeExtensionButtonSettings = () => {
-  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const { syncLocalToServer } = useSyncSettingsChecker()
   const debounceSyncLocalToServer = useCallback(
     debounce(syncLocalToServer, 1000),
     [syncLocalToServer],
   )
-  const [loaded, setLoaded] = useState(false)
-  const [buttonSettings, setButtonSettings] =
-    useState<IChromeExtensionSettings['buttonSettings']>(undefined)
-  useEffectOnce(() => {
-    getChromeExtensionSettings().then((settings) => {
-      setButtonSettings(settings.buttonSettings)
-      setLoaded(true)
-    })
-  })
-  useFocus(() => {
-    getChromeExtensionSettings().then((settings) => {
-      setButtonSettings(settings.buttonSettings)
-    })
-  })
   const updateButtonSettings = async (
     buttonKey: IChromeExtensionButtonSettingKey,
     newSettings: IChromeExtensionButtonSetting,
@@ -72,14 +56,13 @@ export const useChromeExtensionButtonSettings = () => {
     })
     const settings = await getChromeExtensionSettings()
     setAppSettings(settings)
-    setButtonSettings(settings.buttonSettings)
     if (saveToServer) {
       await debounceSyncLocalToServer()
     }
   }
   return {
-    loaded,
-    buttonSettings,
+    loaded: !!appSettings.buttonSettings,
+    buttonSettings: appSettings.buttonSettings,
     updateButtonSettings,
   }
 }
@@ -130,21 +113,14 @@ export const useComputedChromeExtensionButtonSettings = (
       }
       console.log(
         'computedButtonSettings',
-        host,
-        computedButtonSettings.buttonVisible,
+        `[host=${host}]`,
+        `[buttonVisible=${computedButtonSettings.buttonVisible}]`,
         computedButtonSettings.visibility,
       )
       return computedButtonSettings
     }
     return undefined
-  }, [
-    loaded,
-    buttonSettings,
-    host,
-    buttonKey,
-    appSettings.buttonSettings,
-    appSettings.userSettings,
-  ])
+  }, [loaded, buttonSettings, host, buttonKey, appSettings.userSettings])
 }
 
 export const getChromeExtensionButtonSettings = async (

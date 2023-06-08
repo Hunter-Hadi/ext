@@ -12,6 +12,8 @@ import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { SxProps } from '@mui/material/styles'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { useFocus } from '@/hooks/useFocus'
+import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 
 const VisibilitySettingCardItem: FC<{
   label: string
@@ -52,6 +54,14 @@ const VisibilitySettingCard: FC<{
       ? visibilitySetting.whitelist
       : visibilitySetting.blacklist
   }, [visibilitySetting])
+  useFocus(() => {
+    getChromeExtensionButtonSettings('textSelectPopupButton').then(
+      (textSelectPopupSetting) => {
+        textSelectPopupSetting &&
+          setVisibilitySetting(textSelectPopupSetting.visibility)
+      },
+    )
+  })
   useEffect(() => {
     if (prevSetting.current) {
       if (

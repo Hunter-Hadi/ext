@@ -48,7 +48,7 @@ export const ContextMenuSettingsState = atom<{
     closeBeforeRefresh: false,
   },
 })
-
+// rangy lib
 export const RangyCoreState = atom<{
   loaded: boolean
   rangy: any | null
@@ -59,7 +59,7 @@ export const RangyCoreState = atom<{
     rangy: null,
   },
 })
-
+// 悬浮按钮菜单
 export const RangyState = atom<{
   show: boolean
   tempSelection: ISelection | null
@@ -73,6 +73,7 @@ export const RangyState = atom<{
   },
 })
 
+// ai input dropdown menu
 export const FloatingDropdownMenuState = atom<{
   open: boolean
   rootRect: IRangyRect | null
@@ -83,6 +84,20 @@ export const FloatingDropdownMenuState = atom<{
     rootRect: null,
   },
 })
+
+// AI input dropdown menu system items
+export const FloatingDropdownMenuSystemItemsState = atom<{
+  selectContextMenuId: string | null
+  lastOutput: string
+}>({
+  key: 'FloatingDropdownMenuSystemItemsState',
+  default: {
+    selectContextMenuId: null,
+    lastOutput: '',
+  },
+})
+
+// AI inout down menu items
 export const FloatingDropdownMenuSelectedItemState = atom<{
   hoverContextMenuIdMap: {
     [key: string]: string

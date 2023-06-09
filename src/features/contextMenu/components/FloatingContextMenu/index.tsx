@@ -12,6 +12,7 @@ import { useRecoilState } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
+  FloatingDropdownMenuSystemItemsState,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
 import {
@@ -33,7 +34,7 @@ import {
 import {
   getAppContextMenuElement,
   getCurrentDomainHost,
-  showChatBox,
+  // showChatBox,
 } from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
@@ -42,8 +43,66 @@ import { useTheme } from '@mui/material/styles'
 import { FloatingContextMenuCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { getMediator } from '@/store/mediator'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
+import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
+const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
+  {
+    id: 'Replace selection',
+    text: 'Replace selection',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+    },
+    children: [],
+  },
+  {
+    id: 'Insert below',
+    text: 'Insert below',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+    },
+    children: [],
+  },
+  {
+    id: 'Continue writing',
+    text: 'Continue writing',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+    },
+    children: [],
+  },
+  {
+    id: 'Try again',
+    text: 'Try again',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+    },
+    children: [],
+  },
+  {
+    id: 'Discard',
+    text: 'Discard',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+    },
+    children: [],
+  },
+]
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const FloatingContextMenu: FC<{
@@ -54,6 +113,11 @@ const FloatingContextMenu: FC<{
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
+  // ai输出后，系统系统的建议菜单状态
+  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
+    useRecoilState(FloatingDropdownMenuSystemItemsState)
+  // 是否有上下文，决定contextMenu展示的内容
+  const [haveContext, setHaveContext] = useState(false)
   const [
     floatingDropdownMenuSelectedItem,
     updateFloatingDropdownMenuSelectedItem,
@@ -118,6 +182,9 @@ const FloatingContextMenu: FC<{
     open: floatingDropdownMenu.open,
     onOpenChange: (open) => {
       setFloatingDropdownMenu((prev) => {
+        if (!open) {
+          setHaveContext(false)
+        }
         return {
           ...prev,
           open,
@@ -235,6 +302,19 @@ const FloatingContextMenu: FC<{
       floatingDropdownMenu.open &&
       !loading
     ) {
+      const continueContextMenu = CONTINUE_ARRAY.find(
+        (item) =>
+          item.id === floatingDropdownMenuSelectedItem.selectedContextMenuId,
+      )
+      if (continueContextMenu) {
+        setFloatingDropdownMenuSystemItems((prev) => {
+          return {
+            ...prev,
+            selectContextMenuId: continueContextMenu.id,
+          }
+        })
+        return
+      }
       const findContextMenu = originContextMenuList.find(
         (contextMenu) =>
           contextMenu.id ===
@@ -245,10 +325,10 @@ const FloatingContextMenu: FC<{
         findContextMenu.data.actions &&
         findContextMenu.data.actions.length > 0
       ) {
-        setFloatingDropdownMenu({
-          open: false,
-          rootRect: null,
-        })
+        // setFloatingDropdownMenu({
+        //   open: false,
+        //   rootRect: null,
+        // })
         updateFloatingDropdownMenuSelectedItem(() => {
           return {
             selectedContextMenuId: null,
@@ -264,6 +344,7 @@ const FloatingContextMenu: FC<{
         }).then(() => {
           setShortCuts(runActions)
           runShortCuts().then(() => {
+            setHaveContext(true)
             setFloatingDropdownMenu((prevState) => {
               return {
                 ...prevState,
@@ -286,6 +367,19 @@ const FloatingContextMenu: FC<{
       getMediator('floatingMenuInputMediator').unsubscribe(setInputValue)
     }
   }, [])
+  useEffect(() => {
+    if (
+      floatingDropdownMenuSystemItems.selectContextMenuId &&
+      ['Replace selection', 'Insert below', 'Discard'].includes(
+        floatingDropdownMenuSystemItems.selectContextMenuId,
+      )
+    ) {
+      setFloatingDropdownMenu({
+        open: false,
+        rootRect: null,
+      })
+    }
+  }, [floatingDropdownMenuSystemItems.selectContextMenuId])
   return (
     <FloatingPortal root={root}>
       <div
@@ -307,6 +401,7 @@ const FloatingContextMenu: FC<{
             focusInput(event as any)
           }
           if (event.key === 'Escape') {
+            setHaveContext(false)
             setFloatingDropdownMenu({
               open: false,
               rootRect: null,
@@ -318,7 +413,13 @@ const FloatingContextMenu: FC<{
         <FloatingContextMenuList
           defaultPlacement={safePlacement.contextMenuPlacement}
           needAutoUpdate
-          menuList={loading ? EMPTY_ARRAY : contextMenuList}
+          menuList={
+            loading
+              ? EMPTY_ARRAY
+              : haveContext
+              ? CONTINUE_ARRAY
+              : contextMenuList
+          }
           referenceElementOpen={floatingDropdownMenu.open}
           referenceElement={
             <div
@@ -333,9 +434,7 @@ const FloatingContextMenu: FC<{
                 overflow: 'hidden',
                 isolation: 'isolate',
                 display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: '8px',
+                flexDirection: 'column',
                 width: '100%',
                 padding: '7px 8px',
               }}
@@ -343,159 +442,171 @@ const FloatingContextMenu: FC<{
                 event.stopPropagation()
               }}
             >
-              <ContextMenuIcon
-                icon={'AutoAwesome'}
-                sx={{
-                  flexShrink: 0,
-                  color: 'primary.main',
-                  height: '24px',
-                  alignSelf: 'start',
-                }}
-              />
+              <WritingMessageBox />
               <Stack
+                width={'100%'}
                 direction={'row'}
-                width={0}
-                flex={1}
                 alignItems={'center'}
-                spacing={1}
-                justifyContent={'left'}
+                gap={1}
               >
-                {loading ? (
-                  <>
-                    <Typography fontSize={'16px'} color={'primary.main'}>
-                      AI is writing...
-                    </Typography>
-                    <CircularProgress size={'16px'} />
-                  </>
-                ) : (
-                  <>
-                    <AutoHeightTextarea
-                      placeholder={'Ask AI to edit or generate...'}
-                      stopPropagation={false}
-                      InputId={ROOT_FLOATING_INPUT_ID}
-                      sx={{
-                        border: 'none',
-                        '& textarea': { p: 0 },
-                        borderRadius: 0,
-                        minHeight: '24px',
-                      }}
-                      onEnter={(value) => {
-                        showChatBox()
-                        if (contextMenuList.length > 0) {
-                          updateFloatingDropdownMenuSelectedItem((preState) => {
+                <ContextMenuIcon
+                  icon={'AutoAwesome'}
+                  sx={{
+                    flexShrink: 0,
+                    color: 'primary.main',
+                    height: '24px',
+                    alignSelf: 'start',
+                  }}
+                />
+                <Stack
+                  direction={'row'}
+                  width={0}
+                  flex={1}
+                  alignItems={'center'}
+                  spacing={1}
+                  justifyContent={'left'}
+                >
+                  {loading ? (
+                    <>
+                      <Typography fontSize={'16px'} color={'primary.main'}>
+                        AI is writing...
+                      </Typography>
+                      <CircularProgress size={'16px'} />
+                    </>
+                  ) : (
+                    <>
+                      <AutoHeightTextarea
+                        placeholder={'Ask AI to edit or generate...'}
+                        stopPropagation={false}
+                        InputId={ROOT_FLOATING_INPUT_ID}
+                        sx={{
+                          border: 'none',
+                          '& textarea': { p: 0 },
+                          borderRadius: 0,
+                          minHeight: '24px',
+                        }}
+                        onEnter={(value) => {
+                          // showChatBox()
+                          if (contextMenuList.length > 0) {
+                            updateFloatingDropdownMenuSelectedItem(
+                              (preState) => {
+                                return {
+                                  ...preState,
+                                  selectedContextMenuId:
+                                    preState.lastHoverContextMenuId,
+                                }
+                              },
+                            )
+                            return
+                          }
+                          if (!haveDraft) return
+                          // showChatBox()
+                          setFloatingDropdownMenu({
+                            open: false,
+                            rootRect: null,
+                          })
+                          updateFloatingDropdownMenuSelectedItem(() => {
                             return {
-                              ...preState,
-                              selectedContextMenuId:
-                                preState.lastHoverContextMenuId,
+                              lastHoverContextMenuId: null,
+                              selectedContextMenuId: null,
+                              hoverContextMenuIdMap: {},
                             }
                           })
-                          return
-                        }
-                        if (!haveDraft) return
-                        // showChatBox()
-                        setFloatingDropdownMenu({
-                          open: false,
-                          rootRect: null,
-                        })
-                        updateFloatingDropdownMenuSelectedItem(() => {
-                          return {
-                            lastHoverContextMenuId: null,
-                            selectedContextMenuId: null,
-                            hoverContextMenuIdMap: {},
-                          }
-                        })
-                        setTimeout(async () => {
-                          setShortCuts([
-                            {
-                              type: 'RENDER_CHATGPT_PROMPT',
-                              parameters: {
-                                template: `${value}:\n\n{{SELECTED_TEXT}}`,
+                          setTimeout(async () => {
+                            setShortCuts([
+                              {
+                                type: 'RENDER_CHATGPT_PROMPT',
+                                parameters: {
+                                  template: `${value}:\n\n{{SELECTED_TEXT}}`,
+                                },
                               },
-                            },
-                            {
-                              type: 'ASK_CHATGPT',
-                              parameters: {},
-                            },
-                          ])
-                          await runShortCuts()
-                        }, 1)
-                      }}
-                    />
-                    <IconButton
-                      sx={{
-                        height: '20px',
-                        width: '20px',
-                        position: 'relative',
-                        top: '-1px',
-                        flexShrink: 0,
-                        alignSelf: 'end',
-                        alignItems: 'center',
-                        p: 0,
-                        m: '4px',
-                        cursor: haveDraft ? 'pointer' : 'default',
-                        bgcolor: haveDraft
-                          ? 'primary.main'
-                          : 'rgb(219,219,217)',
-                        '&:hover': {
+                              {
+                                type: 'ASK_CHATGPT',
+                                parameters: {},
+                              },
+                            ])
+                            await runShortCuts()
+                          }, 1)
+                        }}
+                      />
+                      <IconButton
+                        sx={{
+                          height: '20px',
+                          width: '20px',
+                          position: 'relative',
+                          top: '-1px',
+                          flexShrink: 0,
+                          alignSelf: 'end',
+                          alignItems: 'center',
+                          p: 0,
+                          m: '4px',
+                          cursor: haveDraft ? 'pointer' : 'default',
                           bgcolor: haveDraft
                             ? 'primary.main'
                             : 'rgb(219,219,217)',
-                        },
-                      }}
-                      onClick={() => {
-                        showChatBox()
-                        if (contextMenuList.length > 0) {
-                          updateFloatingDropdownMenuSelectedItem((preState) => {
+                          '&:hover': {
+                            bgcolor: haveDraft
+                              ? 'primary.main'
+                              : 'rgb(219,219,217)',
+                          },
+                        }}
+                        onClick={() => {
+                          // showChatBox()
+                          if (contextMenuList.length > 0) {
+                            updateFloatingDropdownMenuSelectedItem(
+                              (preState) => {
+                                return {
+                                  ...preState,
+                                  selectedContextMenuId:
+                                    preState.lastHoverContextMenuId,
+                                }
+                              },
+                            )
+                            return
+                          }
+                          if (!haveDraft) return
+                          setFloatingDropdownMenu({
+                            open: false,
+                            rootRect: null,
+                          })
+                          updateFloatingDropdownMenuSelectedItem(() => {
                             return {
-                              ...preState,
-                              selectedContextMenuId:
-                                preState.lastHoverContextMenuId,
+                              lastHoverContextMenuId: null,
+                              selectedContextMenuId: null,
+                              hoverContextMenuIdMap: {},
                             }
                           })
-                          return
-                        }
-                        if (!haveDraft) return
-                        setFloatingDropdownMenu({
-                          open: false,
-                          rootRect: null,
-                        })
-                        updateFloatingDropdownMenuSelectedItem(() => {
-                          return {
-                            lastHoverContextMenuId: null,
-                            selectedContextMenuId: null,
-                            hoverContextMenuIdMap: {},
-                          }
-                        })
-                        setTimeout(async () => {
-                          setShortCuts([
-                            {
-                              type: 'RENDER_CHATGPT_PROMPT',
-                              parameters: {
-                                template: `${inputValue}:\n """\n{{SELECTED_TEXT}}\n"""`,
+                          setTimeout(async () => {
+                            setShortCuts([
+                              {
+                                type: 'RENDER_CHATGPT_PROMPT',
+                                parameters: {
+                                  template: `${inputValue}:\n """\n{{SELECTED_TEXT}}\n"""`,
+                                },
                               },
-                            },
-                            {
-                              type: 'ASK_CHATGPT',
-                              parameters: {},
-                            },
-                          ])
-                          await runShortCuts()
-                        }, 1)
-                      }}
-                    >
-                      <ArrowUpwardIcon
-                        sx={{
-                          color: '#fff',
-                          fontSize: 16,
+                              {
+                                type: 'ASK_CHATGPT',
+                                parameters: {},
+                              },
+                            ])
+                            await runShortCuts()
+                          }, 1)
                         }}
+                      >
+                        <ArrowUpwardIcon
+                          sx={{
+                            color: '#fff',
+                            fontSize: 16,
+                          }}
+                        />
+                      </IconButton>
+                      <FloatingContextMenuCloseIconButton
+                        useInButton={false}
+                        sx={{ width: 24, height: 24, alignSelf: 'end' }}
                       />
-                    </IconButton>
-                    <FloatingContextMenuCloseIconButton
-                      useInButton={false}
-                      sx={{ width: 24, height: 24, alignSelf: 'end' }}
-                    />
-                  </>
-                )}
+                    </>
+                  )}
+                </Stack>
               </Stack>
             </div>
           }

@@ -10,6 +10,8 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_getSettingsResponse'
   | 'Client_updateSettingsResponse'
   | 'Client_updateAppSettings'
+  | 'Client_listenUpdateIframeInput'
+
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
   | 'Client_ping'
@@ -27,6 +29,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getUseChatGPTUserInfo'
   | 'Client_createAsyncTask'
   | 'Client_updateTabVisible'
+  | 'Client_updateIframeInput'
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

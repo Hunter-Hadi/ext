@@ -151,6 +151,21 @@ export const ClientMessageInit = () => {
             }
           }
           break
+        case 'Client_updateIframeInput':
+          {
+            if (sender.tab?.id) {
+              await Browser.tabs.sendMessage(sender.tab.id, {
+                event: 'Client_listenUpdateIframeInput',
+                data,
+              })
+            }
+            return {
+              data: true,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
         default:
           break
       }

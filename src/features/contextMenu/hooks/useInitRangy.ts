@@ -13,6 +13,7 @@ import {
 } from '@/features/contextMenu/utils'
 import {
   FloatingDropdownMenuState,
+  FloatingDropdownMenuSystemItemsState,
   IRangyRect,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
@@ -20,21 +21,30 @@ import { ROOT_CONTAINER_ID } from '@/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { IVirtualIframeElement, listenIframeMessage } from '@/iframe'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import Log from '@/utils/Log'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
 
 const AiInputLog = new Log('Rangy/AiInput')
-
+const port = new ContentScriptConnectionV2({
+  runtime: 'client',
+})
 const useInitRangy = () => {
   const { initRangyCore, rangy, showRangy, hideRangy, saveTempSelection } =
     useRangy()
   const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
+  const floatingDropdownMenuSystemItems = useRecoilValue(
+    FloatingDropdownMenuSystemItemsState,
+  )
   const currentActiveWriteableElementRef = useRef<HTMLElement | null>(null)
+  const currentIframeActiveWriteableElementRef = useRef<HTMLElement | null>(
+    null,
+  )
   // 在inputAble元素直接打开ai input
   const { showFloatingContextMenuWithVirtualSelection } =
     useFloatingContextMenu()
@@ -240,6 +250,14 @@ const useInitRangy = () => {
         }
         target.addEventListener('keyup', keyupListener)
       } else {
+        // 如果是iframe的selectionRect，不移除
+        if (
+          (
+            currentActiveWriteableElementRef.current as any as IVirtualIframeElement
+          ).iframeSelectionRect
+        ) {
+          return
+        }
         console.log(
           '[ContextMenu Module]: remove writeable element',
           event.target,
@@ -278,6 +296,7 @@ const useInitRangy = () => {
           tagName: 'IFRAME',
         } as any
         currentActiveWriteableElementRef.current = virtualTarget
+        currentIframeActiveWriteableElementRef.current = virtualTarget
         if (iframeSelectionData.eventType === 'mouseup') {
           mouseUpListener({
             target: currentActiveWriteableElementRef.current,
@@ -342,6 +361,48 @@ const useInitRangy = () => {
     }
     return undefined
   })
+  const lastOutputRef = useRef('')
+  useEffect(() => {
+    lastOutputRef.current = floatingDropdownMenuSystemItems.lastOutput
+  }, [floatingDropdownMenuSystemItems.lastOutput])
+  useEffect(() => {
+    const target: IVirtualIframeElement =
+      (currentIframeActiveWriteableElementRef.current as any) ||
+      (currentActiveWriteableElementRef.current as any)
+    if (
+      floatingDropdownMenuSystemItems.selectContextMenuId === 'Insert below'
+    ) {
+      if (target) {
+        port.postMessage({
+          event: 'Client_updateIframeInput',
+          data: {
+            value: lastOutputRef.current,
+            type: 'insert_blow',
+            startMarkerId: target.startMarkerId,
+            endMarkerId: target.endMarkerId,
+            caretOffset: target.caretOffset,
+          },
+        })
+      }
+    }
+    if (
+      floatingDropdownMenuSystemItems.selectContextMenuId ===
+      'Replace selection'
+    ) {
+      if (target) {
+        port.postMessage({
+          event: 'Client_updateIframeInput',
+          data: {
+            value: lastOutputRef.current,
+            type: 'replace',
+            startMarkerId: target.startMarkerId,
+            endMarkerId: target.endMarkerId,
+            caretOffset: target.caretOffset,
+          },
+        })
+      }
+    }
+  }, [floatingDropdownMenuSystemItems.selectContextMenuId])
 }
 
 export default useInitRangy

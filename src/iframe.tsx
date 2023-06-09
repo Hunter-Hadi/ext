@@ -1,5 +1,13 @@
 import Log from '@/utils/Log'
 import { CHROME_EXTENSION_POST_MESSAGE_ID, isProduction } from '@/types'
+import {
+  createSelectionMarker,
+  getCaretCharacterOffsetWithin,
+  replaceMarkerContent,
+} from '@/features/contextMenu/utils/selectionHelper'
+import Browser from 'webextension-polyfill'
+import { v4 } from 'uuid'
+const iframeId = v4()
 
 type IRangyRect = {
   x: number
@@ -19,18 +27,22 @@ export type IVirtualIframeElement = {
   targetRect: IRangyRect
   selectionRect: IRangyRect
   iframeSelectionRect: IRangyRect
+  caretOffset: number
   iframeSelectionString?: string
   iframeInputElementString?: string
   iframePosition: number[]
   eventType: 'mouseup' | 'keyup'
   isEmbedPage: boolean
   isInputElement: boolean
+  startMarkerId: string
+  endMarkerId: string
 }
 const getInputElementContext = (element: HTMLElement, defaultMaxLoop = 10) => {
   if (!element) {
     return {
       value: '',
       isInputElement: false,
+      inputElement: null,
     }
   }
   let parentElement: HTMLElement | null = element
@@ -56,11 +68,13 @@ const getInputElementContext = (element: HTMLElement, defaultMaxLoop = 10) => {
     return {
       value: inputElement.value || inputElement.innerText,
       isInputElement: true,
+      inputElement,
     }
   }
   return {
     value: '',
     isInputElement: false,
+    inputElement: null,
   }
 }
 
@@ -117,9 +131,20 @@ const initIframe = async () => {
     try {
       const target = mouseDownElement || (event.target as HTMLElement)
       const iframeSelectionString = computedSelectionString()
-      const { value: iframeInputElementString, isInputElement } =
-        getInputElementContext(target)
-      console.log(target.tagName)
+      const {
+        value: iframeInputElementString,
+        isInputElement,
+        inputElement,
+      } = getInputElementContext(target)
+      let startMarkerId = ''
+      let endMarkerId = ''
+      let caretOffset = 0
+      if (isInputElement && inputElement) {
+        caretOffset = getCaretCharacterOffsetWithin(inputElement)
+        const selectionMarker = createSelectionMarker(inputElement)
+        startMarkerId = selectionMarker.startMarkerId
+        endMarkerId = selectionMarker.endMarkerId
+      }
       if (!iframeSelectionString && isEmbedPage) {
         if (target.tagName === 'BUTTON' && times < 10) {
           setTimeout(() => {
@@ -142,7 +167,7 @@ const initIframe = async () => {
       // log.info('iframe iframeSelectionString: ', iframeSelectionString)
       // log.info('iframe screen', window.screenLeft, window.screenTop)
       let iframeSelectionRect: IRangyRect | null = null
-      console.log(iframeSelectionString)
+      console.log(iframeId, iframeSelectionString)
       if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         const minLeft = Math.max(targetRect.left, 0)
         const minTop = Math.max(targetRect.top, 0)
@@ -257,6 +282,9 @@ const initIframe = async () => {
             isEmbedPage,
             iframeInputElementString,
             isInputElement,
+            caretOffset,
+            startMarkerId,
+            endMarkerId,
           } as IVirtualIframeElement,
         },
         '*',
@@ -296,6 +324,22 @@ const initIframe = async () => {
     document.body.appendChild(inVisibleDiv)
     isEmbedPage = true
   }
+  Browser.runtime.onMessage.addListener((message, sender) => {
+    if (sender.id === Browser.runtime.id) {
+      if (message.event === 'Client_listenUpdateIframeInput') {
+        const data = message.data
+        console.log(iframeId, 'Client_listenUpdateIframeInput', data)
+        if (data.startMarkerId && data.endMarkerId) {
+          replaceMarkerContent(
+            data.startMarkerId,
+            data.endMarkerId,
+            data.value,
+            data.type,
+          )
+        }
+      }
+    }
+  })
 }
 
 type IframeMessageType = (event: IVirtualIframeElement) => void
@@ -392,4 +436,5 @@ export const listenIframeMessage = (onMessage?: IframeMessageType) => {
     window.removeEventListener('message', listener)
   }
 }
+
 initIframe()

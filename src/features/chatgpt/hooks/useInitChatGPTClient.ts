@@ -61,6 +61,7 @@ const useInitChatGPTClient = () => {
       case 'Client_listenOpenChatMessageBox':
         {
           const isShowFloatingContextMenu = showFloatingContextMenuRef.current()
+          return
           if (data?.type === 'action') {
             // 不支持的网站设置
           }

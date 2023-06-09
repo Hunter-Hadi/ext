@@ -20,9 +20,48 @@ export type IVirtualIframeElement = {
   selectionRect: IRangyRect
   iframeSelectionRect: IRangyRect
   iframeSelectionString?: string
+  iframeInputElementString?: string
   iframePosition: number[]
   eventType: 'mouseup' | 'keyup'
   isEmbedPage: boolean
+  isInputElement: boolean
+}
+const getInputElementContext = (element: HTMLElement, defaultMaxLoop = 10) => {
+  if (!element) {
+    return {
+      value: '',
+      isInputElement: false,
+    }
+  }
+  let parentElement: HTMLElement | null = element
+  let inputElement: HTMLInputElement | null = null
+  let maxLoop = defaultMaxLoop
+  while (parentElement && maxLoop > 0) {
+    if (
+      parentElement?.tagName === 'INPUT' ||
+      parentElement?.tagName === 'TEXTAREA' ||
+      parentElement?.getAttribute?.('contenteditable') === 'true'
+    ) {
+      const type = parentElement.getAttribute('type')
+      if (type && type !== 'text') {
+        break
+      }
+      inputElement = parentElement as any
+      break
+    }
+    parentElement = parentElement.parentElement
+    maxLoop--
+  }
+  if (inputElement) {
+    return {
+      value: inputElement.value || inputElement.innerText,
+      isInputElement: true,
+    }
+  }
+  return {
+    value: '',
+    isInputElement: false,
+  }
 }
 
 const cloneRect = (rect: IRangyRect): IRangyRect => {
@@ -78,6 +117,8 @@ const initIframe = async () => {
     try {
       const target = mouseDownElement || (event.target as HTMLElement)
       const iframeSelectionString = computedSelectionString()
+      const { value: iframeInputElementString, isInputElement } =
+        getInputElementContext(target)
       console.log(target.tagName)
       if (!iframeSelectionString && isEmbedPage) {
         if (target.tagName === 'BUTTON' && times < 10) {
@@ -214,6 +255,8 @@ const initIframe = async () => {
             iframeSelectionString,
             eventType: event instanceof MouseEvent ? 'mouseup' : 'keyup',
             isEmbedPage,
+            iframeInputElementString,
+            isInputElement,
           } as IVirtualIframeElement,
         },
         '*',

@@ -11,21 +11,33 @@ import {
   checkIsCanInputElement,
   computedIframeSelection,
 } from '@/features/contextMenu/utils'
-import { FloatingDropdownMenuState, IRangyRect } from '@/features/contextMenu'
+import {
+  FloatingDropdownMenuState,
+  IRangyRect,
+  useFloatingContextMenu,
+} from '@/features/contextMenu'
 import { ROOT_CONTAINER_ID } from '@/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import { listenIframeMessage } from '@/iframe'
+import { IVirtualIframeElement, listenIframeMessage } from '@/iframe'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
 import { useSetRecoilState } from 'recoil'
+import { useCreateClientMessageListener } from '@/background/utils'
+import { IChromeExtensionClientListenEvent } from '@/background/eventType'
+import Log from '@/utils/Log'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
+
+const AiInputLog = new Log('Rangy/AiInput')
 
 const useInitRangy = () => {
   const { initRangyCore, rangy, showRangy, hideRangy, saveTempSelection } =
     useRangy()
   const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   const currentActiveWriteableElementRef = useRef<HTMLElement | null>(null)
+  // 在inputAble元素直接打开ai input
+  const { showFloatingContextMenuWithVirtualSelection } =
+    useFloatingContextMenu()
   // 初始化rangy npm 包
   useEffectOnce(() => {
     Promise.all([
@@ -299,5 +311,37 @@ const useInitRangy = () => {
       clearListener()
     }
   }, [rangy])
+  useCreateClientMessageListener(async (event, data, sender) => {
+    switch (event as IChromeExtensionClientListenEvent) {
+      case 'Client_listenOpenChatMessageBox':
+        {
+          AiInputLog.info('listen message')
+          if (currentActiveWriteableElementRef.current) {
+            const target: IVirtualIframeElement =
+              currentActiveWriteableElementRef.current as any
+            if (target.isInputElement) {
+              // 1. 打开ai input
+              // 2. 阻止打开chatBox
+              AiInputLog.info('open', target)
+              showFloatingContextMenuWithVirtualSelection({
+                selectionText: target.iframeInputElementString || '',
+                selectionHtml: target.iframeInputElementString || '',
+                selectionRect: target.iframeSelectionRect,
+                activeElement: document.activeElement as HTMLElement,
+                selectionInputAble: target.isInputElement,
+              })
+            }
+            return {
+              success: true,
+              data: {},
+              message: '',
+            }
+          }
+        }
+        break
+    }
+    return undefined
+  })
 }
+
 export default useInitRangy

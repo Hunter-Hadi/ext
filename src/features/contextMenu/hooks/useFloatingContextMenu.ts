@@ -1,14 +1,37 @@
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { cloneRect, computedRectPosition } from '@/features/contextMenu/utils'
 import { useRecoilState } from 'recoil'
-import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
+import {
+  FloatingDropdownMenuState,
+  IRangyRect,
+} from '@/features/contextMenu/store'
 
 const useFloatingContextMenu = () => {
   const { saveCurrentSelection, show, hideRangy, tempSelection } = useRangy()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const showFloatingContextMenuWithVirtualSelection = (
+
+  const showFloatingContextMenuWithVirtualSelection = (virtualSelection: {
+    selectionText: string
+    selectionHtml: string
+    selectionRect: IRangyRect
+    selectionInputAble: boolean
+    activeElement: HTMLElement
+  }) => {
+    saveCurrentSelection(virtualSelection)
+    hideRangy()
+    console.log(
+      '[ContextMenu Module]: render [context menu]',
+      computedRectPosition(virtualSelection.selectionRect),
+    )
+    setFloatingDropdownMenu({
+      open: true,
+      rootRect: computedRectPosition(virtualSelection.selectionRect),
+    })
+  }
+
+  const showFloatingContextMenuWithElement = (
     element: HTMLElement,
     text: string,
   ) => {
@@ -60,6 +83,7 @@ const useFloatingContextMenu = () => {
     hideFloatingContextMenu,
     haveSelection: show,
     floatingDropdownMenuOpen: floatingDropdownMenu.open,
+    showFloatingContextMenuWithElement,
     showFloatingContextMenuWithVirtualSelection,
   }
 }

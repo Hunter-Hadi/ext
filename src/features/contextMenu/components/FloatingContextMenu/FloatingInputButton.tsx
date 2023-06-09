@@ -28,8 +28,7 @@ const FloatingInputButton: FC<{
     target: HTMLElement
   }
 }> = ({ buttonText, templateText, onBeforeShowContextMenu, iconButton }) => {
-  const { showFloatingContextMenuWithVirtualSelection } =
-    useFloatingContextMenu()
+  const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
   const handleClick = (event: any) => {
     if (event.currentTarget) {
       let target = event.currentTarget
@@ -39,7 +38,7 @@ const FloatingInputButton: FC<{
         target = result.target || target
         template = result.template || template
       }
-      showFloatingContextMenuWithVirtualSelection(target, template)
+      showFloatingContextMenuWithElement(target, template)
     }
   }
   if (NO_SUPPORT_HOST.includes(getCurrentDomainHost())) {

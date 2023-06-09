@@ -10,7 +10,7 @@ import {
   useCurrentMessageView,
   useInboxComposeViews,
 } from '@/features/gmail/hooks'
-import { isShowChatBox, showChatBox } from '@/utils'
+// import { isShowChatBox, showChatBox } from '@/utils'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ShortCutsState } from '@/features/shortcuts/store'
 import { ChatGPTConversationState } from '@/features/gmail/store'

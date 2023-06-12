@@ -27,8 +27,16 @@ import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
 import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
+import Browser from 'webextension-polyfill'
 
 const log = new Log('AppInit')
+
+const PdfGuideImageUrl1 = Browser.runtime.getURL(
+  `/assets/USE_CHAT_GPT_AI/images/pdf/guide1.gif`,
+)
+const PdfGuideImageUrl2 = Browser.runtime.getURL(
+  `/assets/USE_CHAT_GPT_AI/images/pdf/guide2.gif`,
+)
 
 const GmailInit = () => {
   useInitInboxSdk()
@@ -133,7 +141,7 @@ const useHandlePDFViewerError = () => {
       const dataUrl = root.getAttribute('data-url')
       render(
         <Stack
-          spacing={3}
+          spacing={2}
           p={2}
           width={'100%'}
           sx={{
@@ -169,7 +177,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`PDF AI viewer lets you select any text in local PDF files and use prompts on them. Click on "Allow access to file URLs" at `}
+              {`PDF Al viewer lets you select any text in local PDF files and use prompts on them. Click on "Allow access to file URLs" at `}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}
@@ -195,10 +203,19 @@ const useHandlePDFViewerError = () => {
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
+                mb: 2,
               }}
             >
-              {` view ${dataUrl}`}
+              {`view ${dataUrl}`}
             </Typography>
+            <Box mb={2}>
+              <img
+                style={{ flexShrink: 0, alignSelf: 'center' }}
+                height={156}
+                width={468}
+                src={PdfGuideImageUrl1}
+              />
+            </Box>
             <Button
               disableElevation
               size={'small'}
@@ -215,7 +232,6 @@ const useHandlePDFViewerError = () => {
                 backgroundColor: '#fff',
                 color: '#7602d3',
                 fontSize: '14px',
-                mt: '12px !important',
                 textTransform: 'none',
                 px: 3,
                 '&:hover': {
@@ -234,74 +250,40 @@ const useHandlePDFViewerError = () => {
           >
             OR
           </Divider>
-          <Typography
-            component={'div'}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1,
-            }}
-            color={'rgba(255,255,255,0.85)'}
-            fontSize={'14px'}
-          >
-            <span> {`Select the file again:`}</span>
-            <Button
-              disableElevation
-              size={'small'}
-              variant={'contained'}
-              onClick={(event) => {
-                event.preventDefault()
-                ;(
-                  document.querySelector('#openFile') as HTMLButtonElement
-                )?.click()
-              }}
+          <Stack spacing={2}>
+            <Typography
+              flex={1}
+              color={'rgba(255,255,255,0.85)'}
+              fontSize={'14px'}
               sx={{
-                height: '24px',
-                backgroundColor: '#636363',
-                color: 'rgba(255,255,255,0.87)',
-                fontSize: '14px',
-                textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: '#636363',
-                  color: 'rgba(255,255,255,0.87)',
-                },
+                overflowWrap: 'break-word',
               }}
             >
-              Choose file
-            </Button>
-          </Typography>
-          <Divider
-            sx={{
-              color: '#fff',
-            }}
-          >
-            OR
-          </Divider>
-          <Typography
-            flex={1}
-            color={'rgba(255,255,255,0.85)'}
-            fontSize={'14px'}
-            sx={{
-              overflowWrap: 'break-word',
-            }}
-          >
-            {`Turn off "PDF AI viewer" at any time on the extension's `}
-            <Link
-              color={'rgba(255,255,255,1)'}
-              href={'#'}
-              onClick={async (event) => {
-                event.preventDefault()
-                event.stopPropagation()
-                await chromeExtensionClientOpenPage({
-                  key: 'options',
-                  query: '#pdf',
-                })
-              }}
-            >
-              Settings page
-            </Link>
-            {'.'}
-          </Typography>
+              {`Turn off "PDF AI viewer" at any time on the extension's `}
+              <Link
+                color={'rgba(255,255,255,1)'}
+                href={'#'}
+                onClick={async (event) => {
+                  event.preventDefault()
+                  event.stopPropagation()
+                  await chromeExtensionClientOpenPage({
+                    key: 'options',
+                    query: '#pdf',
+                  })
+                  window.close()
+                }}
+              >
+                Settings page
+              </Link>
+              {'.'}
+            </Typography>
+            <img
+              style={{ flexShrink: 0, alignSelf: 'center' }}
+              height={156}
+              width={468}
+              src={PdfGuideImageUrl2}
+            />
+          </Stack>
         </Stack>,
         root,
       )

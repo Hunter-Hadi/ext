@@ -1,7 +1,7 @@
 import { IChatGPTProviderType } from '@/background/provider/chat'
-import { IContextMenuItem } from '@/features/contextMenu/store'
 import { CHAT_GPT_PROVIDER } from '@/types'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export type IChatGPTModelType = {
   slug: string

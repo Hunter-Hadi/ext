@@ -9,42 +9,58 @@ import { useRangy } from './useRangy'
 import debounce from 'lodash-es/debounce'
 import {
   checkIsCanInputElement,
-  computedIframeSelection,
+  computedRectPosition,
 } from '@/features/contextMenu/utils'
 import {
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
-  IRangyRect,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
-import { ROOT_CONTAINER_ID } from '@/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import { IVirtualIframeElement, listenIframeMessage } from '@/iframe'
+import { listenIframeMessage } from '@/iframe'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import Log from '@/utils/Log'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
+import { AppState } from '@/store'
+import {
+  ISelectionElement,
+  IVirtualIframeSelectionElement,
+} from '@/features/contextMenu/types'
+import { createSelectionElement } from '@/features/contextMenu/utils/selectionHelper'
+import { ROOT_CONTAINER_ID } from '@/types'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
 
-const AiInputLog = new Log('Rangy/AiInput')
+const AIInputLog = new Log('ContextMenu/Rangy/AIInput')
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useInitRangy = () => {
-  const { initRangyCore, rangy, showRangy, hideRangy, saveTempSelection } =
-    useRangy()
-  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
-  const floatingDropdownMenuSystemItems = useRecoilValue(
-    FloatingDropdownMenuSystemItemsState,
+  const {
+    initRangyCore,
+    rangy,
+    showRangy,
+    hideRangy,
+    saveTempSelection,
+    saveCurrentSelection,
+    tempSelection,
+    show,
+  } = useRangy()
+  const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
+    FloatingDropdownMenuState,
   )
-  const currentActiveWriteableElementRef = useRef<HTMLElement | null>(null)
-  const currentIframeActiveWriteableElementRef = useRef<HTMLElement | null>(
-    null,
-  )
+  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
+    useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const setAppState = useSetRecoilState(AppState)
+  const targetElementRef = useRef<HTMLElement | null>(null)
+  const selectionElementRef = useRef<
+    ISelectionElement | IVirtualIframeSelectionElement | null
+  >(null)
   // 在inputAble元素直接打开ai input
   const { showFloatingContextMenuWithVirtualSelection } =
     useFloatingContextMenu()
@@ -72,125 +88,183 @@ const useInitRangy = () => {
       },
     )
   })
-  // 保存:
-  // 1. 选中文本
-  // 2. 选中html
-  // 3. 选中rect
-  // 4. active element
+  // 呼出floating button:
+  // 1. 获取选中文本
+  // 2. 获取选中html
+  // 3. 获取选中rect
+  // 4. 获取active element
+  // 5. 保存选中状态
+  // 6. 显示floating button
   const saveHighlightedRangeAndShowContextMenu = useCallback(
     (event: MouseEvent | KeyboardEvent) => {
       {
-        let selectionText = ''
-        let selectionHtml = ''
-        let selectionRect: IRangyRect | null = null
         const activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
         const rangySelection = rangy?.getSelection()
         const nativeSelection = window.getSelection()
-        const isIframeTarget =
-          currentActiveWriteableElementRef.current?.tagName === 'IFRAME'
         console.log(
           '[ContextMenu Module]: event',
           isMouseEvent ? 'MouseEvent' : 'KeyboardEvent',
           activeElement,
         )
-        // 1. rangy有选区
-        if (rangySelection && rangySelection?.toString()?.trim()) {
-          selectionText =
-            window.getSelection()?.toString() ||
-            rangySelection?.toString().trim()
-          selectionHtml = rangySelection?.toHtml()
-          selectionRect = rangy?.getSelection()?.getBoundingClientRect()
-          console.log(
-            '[ContextMenu Module] [rangy]: selectionString',
-            '\n',
-            selectionText,
-            '\n',
-            selectionHtml,
-            '\n',
-            selectionRect,
-          )
-          if (selectionRect) {
-            saveTempSelection({
-              selectionText,
-              selectionHtml,
-              selectionRect,
+        if (!selectionElementRef.current && activeElement) {
+          /**
+           * @description 进来这个if有以下几种情况
+           * 1. rangy有选区
+           * 2. rangy没有选区，但是原生有选区
+           * 3. rangy和原生都没有选区, 但是iframe有mousedown事件
+           */
+          // 1. rangy有选区
+          if (rangySelection && rangySelection?.toString()?.trim()) {
+            selectionElementRef.current = createSelectionElement(
               activeElement,
-              selectionInputAble: checkIsCanInputElement(activeElement),
-            })
-            showRangy()
-            return
-          }
-        } else if (nativeSelection && nativeSelection?.toString().trim()) {
-          if (activeElement.id === ROOT_CONTAINER_ID) {
-            hideRangy()
-            return
-          }
-          // 2. rangy没有选区，但是原生有选区
-          selectionText = nativeSelection?.toString().trim()
-          selectionHtml = nativeSelection?.toString().trim()
-          selectionRect = activeElement?.getBoundingClientRect()
-          console.log(
-            '[ContextMenu Module] [native]: selectionString',
-            '\n',
-            selectionText,
-            '\n',
-            selectionHtml,
-            '\n',
-            selectionRect,
-          )
-          if (selectionRect) {
-            saveTempSelection({
-              selectionText,
-              selectionHtml,
-              selectionRect,
-              activeElement,
-              selectionInputAble: checkIsCanInputElement(activeElement),
-            })
-            showRangy()
-            return
-          }
-        } else if (isIframeTarget) {
-          // 3. iframe
-          const {
-            iframeSelectionText,
-            iframeSelectionRect,
-            iframeSelectionElement,
-            iframeSelectionHtml,
-          } = computedIframeSelection(
-            currentActiveWriteableElementRef.current as HTMLIFrameElement,
-          )
-          selectionText = iframeSelectionText
-          selectionHtml = iframeSelectionHtml
-          selectionRect = iframeSelectionRect
-          console.log(
-            '[ContextMenu Module] [iframe]: selectionString',
-            '\n',
-            selectionText,
-            '\n',
-            selectionHtml,
-            '\n',
-            selectionRect,
-          )
-          if (selectionRect && selectionText) {
-            saveTempSelection({
-              selectionText,
-              selectionHtml,
-              selectionRect,
-              activeElement: iframeSelectionElement,
-              selectionInputAble: checkIsCanInputElement(
-                iframeSelectionElement,
-              ),
-            })
-            if (selectionText.trim()) {
-              showRangy()
-              return
+              {
+                selectionText: rangySelection?.toString()?.trim(),
+                selectionHTML: rangySelection?.toHtml(),
+                selectionRect: rangy?.getSelection()?.getBoundingClientRect(),
+                target: activeElement,
+              },
+            )
+          } else if (nativeSelection && nativeSelection?.toString()?.trim()) {
+            // 2. rangy没有选区，但是原生有选区, 并且选取不在sidebar上
+            if (activeElement.id !== ROOT_CONTAINER_ID) {
+              selectionElementRef.current = createSelectionElement(
+                activeElement,
+                {
+                  selectionText: nativeSelection?.toString()?.trim(),
+                  selectionHTML: nativeSelection?.toString()?.trim(),
+                  selectionRect: nativeSelection
+                    ?.getRangeAt(0)
+                    ?.getBoundingClientRect(),
+                  target: activeElement,
+                },
+              )
             }
           }
         }
-        console.log('[ContextMenu Module]: hideRangy')
-        hideRangy()
-        return
+        if (selectionElementRef.current) {
+          saveTempSelection({
+            selectionText:
+              selectionElementRef.current?.editableElementSelectionText ||
+              selectionElementRef.current.selectionText,
+            selectionHTML:
+              selectionElementRef.current?.editableElementSelectionText ||
+              selectionElementRef.current.selectionHTML,
+            selectionRect: selectionElementRef.current.selectionRect,
+            activeElement: selectionElementRef.current.target as HTMLElement,
+            selectionInputAble: selectionElementRef.current?.isEditableElement,
+          })
+          console.log(
+            '[ContextMenu Module] [iframe]: selectionString',
+            '\n',
+            selectionElementRef.current.selectionText,
+            '\n',
+            selectionElementRef.current.selectionHTML,
+            '\n',
+            selectionElementRef.current.selectionRect,
+          )
+          showRangy()
+        } else {
+          console.log('[ContextMenu Module]: hideRangy')
+          hideRangy()
+        }
+        // // 1. rangy有选区
+        // if (rangySelection && rangySelection?.toString()?.trim()) {
+        //   selectionText =
+        //     window.getSelection()?.toString() ||
+        //     rangySelection?.toString().trim()
+        //   selectionHtml = rangySelection?.toHtml()
+        //   selectionRect = rangy?.getSelection()?.getBoundingClientRect()
+        //   console.log(
+        //     '[ContextMenu Module] [rangy]: selectionString',
+        //     '\n',
+        //     selectionText,
+        //     '\n',
+        //     selectionHtml,
+        //     '\n',
+        //     selectionRect,
+        //   )
+        //   if (selectionRect) {
+        //     saveTempSelection({
+        //       selectionText,
+        //       selectionHtml,
+        //       selectionRect,
+        //       activeElement,
+        //       selectionInputAble: checkIsCanInputElement(activeElement),
+        //     })
+        //     showRangy()
+        //     return
+        //   }
+        // } else if (nativeSelection && nativeSelection?.toString().trim()) {
+        //   if (activeElement.id === ROOT_CONTAINER_ID) {
+        //     hideRangy()
+        //     return
+        //   }
+        //   // 2. rangy没有选区，但是原生有选区
+        //   selectionText = nativeSelection?.toString().trim()
+        //   selectionHtml = nativeSelection?.toString().trim()
+        //   selectionRect = activeElement?.getBoundingClientRect()
+        //   console.log(
+        //     '[ContextMenu Module] [native]: selectionString',
+        //     '\n',
+        //     selectionText,
+        //     '\n',
+        //     selectionHtml,
+        //     '\n',
+        //     selectionRect,
+        //   )
+        //   if (selectionRect) {
+        //     saveTempSelection({
+        //       selectionText,
+        //       selectionHtml,
+        //       selectionRect,
+        //       activeElement,
+        //       selectionInputAble: checkIsCanInputElement(activeElement),
+        //     })
+        //     showRangy()
+        //     return
+        //   }
+        // } else if (isIframeTarget) {
+        //   // 3. iframe
+        //   const {
+        //     iframeSelectionText,
+        //     iframeSelectionRect,
+        //     iframeSelectionElement,
+        //     iframeSelectionHtml,
+        //   } = computedIframeSelection(
+        //     targetElementRef.current as HTMLIFrameElement,
+        //   )
+        //   selectionText = iframeSelectionText
+        //   selectionHtml = iframeSelectionHtml
+        //   selectionRect = iframeSelectionRect
+        //   console.log(
+        //     '[ContextMenu Module] [iframe]: selectionString',
+        //     '\n',
+        //     selectionText,
+        //     '\n',
+        //     selectionHtml,
+        //     '\n',
+        //     selectionRect,
+        //   )
+        //   if (selectionRect && selectionText) {
+        //     saveTempSelection({
+        //       selectionText,
+        //       selectionHtml,
+        //       selectionRect,
+        //       activeElement: iframeSelectionElement,
+        //       selectionInputAble: checkIsCanInputElement(
+        //         iframeSelectionElement,
+        //       ),
+        //     })
+        //     if (selectionText.trim()) {
+        //       showRangy()
+        //       return
+        //     }
+        //   }
+        // }
+        // console.log('[ContextMenu Module]: hideRangy')
+        // hideRangy()
+        // return
       }
     },
     [rangy, saveTempSelection, showRangy, hideRangy],
@@ -204,69 +278,57 @@ const useInitRangy = () => {
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
     const mouseDownListener = (event: MouseEvent) => {
       const target = event.target as HTMLElement
-      const isIframeTarget = target.tagName === 'IFRAME'
+      const isIframeTarget = target?.tagName === 'IFRAME'
       if (checkIsCanInputElement(target) || isIframeTarget) {
-        if (currentActiveWriteableElementRef.current?.isSameNode(target)) {
+        if (targetElementRef.current?.isSameNode(target)) {
           return
         }
-        if (currentActiveWriteableElementRef.current) {
+        if (targetElementRef.current) {
           console.log(
-            '[ContextMenu Module]: remove writeable element listener',
-            currentActiveWriteableElementRef.current,
+            '[ContextMenu Module]: remove editable element listener',
+            targetElementRef.current,
           )
-          if (currentActiveWriteableElementRef.current?.tagName === 'IFRAME') {
-            const iframeTarget =
-              currentActiveWriteableElementRef.current as HTMLIFrameElement
+          if (targetElementRef.current?.tagName === 'IFRAME') {
+            const iframeTarget = targetElementRef.current as HTMLIFrameElement
             iframeTarget.contentDocument?.body.removeEventListener(
               'mouseup',
               mouseUpListener,
             )
           } else {
-            currentActiveWriteableElementRef.current.removeEventListener(
+            targetElementRef.current.removeEventListener(
               'mouseup',
               mouseUpListener,
             )
           }
-          currentActiveWriteableElementRef.current.removeEventListener(
-            'keyup',
-            keyupListener,
-          )
+          targetElementRef.current.removeEventListener('keyup', keyupListener)
         }
-        currentActiveWriteableElementRef.current = target
-        console.log('[ContextMenu Module]: update writeable element', target)
+        targetElementRef.current = target
+        console.log('[ContextMenu Module]: update editable element', target)
         console.log(
-          '[ContextMenu Module]: bind writeable element listener',
+          '[ContextMenu Module]: bind editable element listener',
           target,
         )
         if (isIframeTarget) {
-          const iframeTarget = target as HTMLIFrameElement
-          iframeTarget.contentDocument?.body.addEventListener(
-            'mouseup',
-            mouseUpListener,
-          )
-          mouseUpListener(event)
+          // const iframeTarget = target as HTMLIFrameElement
+          // iframeTarget.contentDocument?.body.addEventListener(
+          //   'mouseup',
+          //   mouseUpListener,
+          // )
+          // mouseUpListener(event)
         } else {
           target.addEventListener('mouseup', mouseUpListener)
         }
         target.addEventListener('keyup', keyupListener)
       } else {
-        // 如果是iframe的selectionRect，不移除
-        if (
-          (
-            currentActiveWriteableElementRef.current as any as IVirtualIframeElement
-          ).iframeSelectionRect
-        ) {
-          return
-        }
         console.log(
-          '[ContextMenu Module]: remove writeable element',
+          '[ContextMenu Module]: remove editable element',
           event.target,
           event.currentTarget,
         )
-        currentActiveWriteableElementRef.current = null
+        AIInputLog.info('remove editable element')
+        targetElementRef.current = null
       }
     }
-
     document.addEventListener('mousedown', mouseDownListener)
     return () => {
       document.removeEventListener('mousedown', mouseDownListener)
@@ -288,33 +350,41 @@ const useInitRangy = () => {
       document.addEventListener('mouseup', mouseUpListener)
       document.addEventListener('keyup', keyupListener)
       clearListener = listenIframeMessage((iframeSelectionData) => {
-        console.log(iframeSelectionData)
+        // AIInputLog.info('iframe message', iframeSelectionData)
         // Virtual Elements
-        const virtualTarget = {
-          virtual: true,
-          ...iframeSelectionData,
-          tagName: 'IFRAME',
-        } as any
-        currentActiveWriteableElementRef.current = virtualTarget
-        currentIframeActiveWriteableElementRef.current = virtualTarget
-        if (iframeSelectionData.eventType === 'mouseup') {
-          mouseUpListener({
-            target: currentActiveWriteableElementRef.current,
-          } as any)
-        } else {
-          keyupListener({
-            target: currentActiveWriteableElementRef.current,
-          } as any)
+        //  如果既不是可编辑元素，也没有选中的文本，不处理
+        if (!iframeSelectionData.selectionText) {
+          // 因为触发了iframe的点击，页面本身的元素肯定失焦了，所以隐藏
+          hideRangy()
+          if (!iframeSelectionData.isEditableElement) {
+            AIInputLog.info('remove editable element')
+            selectionElementRef.current = null
+            return
+          }
+        }
+        // AIInputLog.info('set editable element', virtualTarget)
+        selectionElementRef.current = iframeSelectionData
+        // show floating button
+        if (iframeSelectionData.selectionText) {
+          if (iframeSelectionData.eventType === 'mouseup') {
+            mouseUpListener({
+              target: selectionElementRef.current,
+            } as any)
+          } else {
+            keyupListener({
+              target: selectionElementRef.current,
+            } as any)
+          }
         }
         if (
           iframeSelectionData.isEmbedPage &&
-          iframeSelectionData.iframeSelectionString &&
-          iframeSelectionData.tagName === 'BUTTON'
+          iframeSelectionData.selectionText &&
+          iframeSelectionData?.tagName === 'BUTTON'
         ) {
           // try to run shortcuts
           runEmbedShortCuts()
         }
-        if (!iframeSelectionData.iframeSelectionString) {
+        if (!iframeSelectionData.selectionText) {
           setFloatingDropdownMenu((prev) => {
             return {
               ...prev,
@@ -334,41 +404,105 @@ const useInitRangy = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
-          AiInputLog.info('listen message')
-          if (currentActiveWriteableElementRef.current) {
-            const target: IVirtualIframeElement =
-              currentActiveWriteableElementRef.current as any
-            if (target.isInputElement) {
+          AIInputLog.info('listen message')
+          /**
+           * floating menu 展开逻辑:
+           * 1. 如果当前在input中，展开
+           * 2. 如果当前有选中的文本，展开
+           * 3. 如果都不符合，展开chat box
+           */
+          if (selectionElementRef.current) {
+            // 如果当前在input中，展开
+            const target: IVirtualIframeSelectionElement =
+              selectionElementRef.current as any
+            if (target.isEditableElement) {
               // 1. 打开ai input
               // 2. 阻止打开chatBox
-              AiInputLog.info('open', target)
+              AIInputLog.info('open', target)
               showFloatingContextMenuWithVirtualSelection({
-                selectionText: target.iframeInputElementString || '',
-                selectionHtml: target.iframeInputElementString || '',
+                selectionText:
+                  target.editableElementSelectionText ||
+                  target.selectionText ||
+                  '',
+                selectionHtml:
+                  target.editableElementSelectionText ||
+                  target.selectionText ||
+                  '',
                 selectionRect: target.iframeSelectionRect,
                 activeElement: document.activeElement as HTMLElement,
-                selectionInputAble: target.isInputElement,
+                selectionInputAble: target.isEditableElement,
               })
             }
-            return {
-              success: true,
-              data: {},
-              message: '',
+          } else if (show && floatingDropdownMenu.open && tempSelection) {
+            // 如果当前有选中的文本，展开
+            saveCurrentSelection(tempSelection)
+            hideRangy()
+            const savedRangeRect = tempSelection.selectionRect
+            console.log(
+              '[ContextMenu Module]: render [context menu]',
+              computedRectPosition(savedRangeRect),
+            )
+            setFloatingDropdownMenu({
+              open: true,
+              rootRect: computedRectPosition(savedRangeRect),
+            })
+          } else {
+            // 如果都不符合，展开chat box
+            if (isShowChatBox()) {
+              hideChatBox()
+              setAppState((prevState) => {
+                return {
+                  ...prevState,
+                  open: false,
+                }
+              })
+            } else {
+              showChatBox()
+              setAppState((prevState) => {
+                return {
+                  ...prevState,
+                  open: true,
+                }
+              })
             }
+          }
+          return {
+            success: true,
+            data: {},
+            message: '',
           }
         }
         break
     }
     return undefined
   })
+  /**
+   * @description - 保存AI最后的输出, 用于用户选择插入/替换时通知插件, 让插件更新输入框
+   */
+  // 保存ai最后的输出
   const lastOutputRef = useRef('')
   useEffect(() => {
     lastOutputRef.current = floatingDropdownMenuSystemItems.lastOutput
   }, [floatingDropdownMenuSystemItems.lastOutput])
+  // 在用户选择插入/替换时通知插件，让插件更新输入框
   useEffect(() => {
-    const target: IVirtualIframeElement =
-      (currentIframeActiveWriteableElementRef.current as any) ||
-      (currentActiveWriteableElementRef.current as any)
+    const target = selectionElementRef.current
+    if (
+      floatingDropdownMenuSystemItems.selectContextMenuId &&
+      ['Replace selection', 'Insert below', 'Discard'].includes(
+        floatingDropdownMenuSystemItems.selectContextMenuId,
+      )
+    ) {
+      setFloatingDropdownMenu({
+        open: false,
+        rootRect: null,
+      })
+      setFloatingDropdownMenuSystemItems({
+        selectContextMenuId: '',
+        lastOutput: '',
+      })
+      hideRangy()
+    }
     if (
       floatingDropdownMenuSystemItems.selectContextMenuId === 'Insert below'
     ) {

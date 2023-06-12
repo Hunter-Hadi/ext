@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail'
 import Stack from '@mui/material/Stack'
 import React, { useEffect, useState } from 'react'
@@ -10,44 +10,34 @@ import {
 } from '@/features/contextMenu'
 
 const WritingMessageBox = () => {
-  const { open } = useRecoilValue(FloatingDropdownMenuState)
+  const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const { userSettings } = useRecoilValue(AppSettingsState)
   const conversation = useRecoilValue(ChatGPTConversationState)
-  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
-    useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const setFloatingDropdownMenuSystemItems = useSetRecoilState(
+    FloatingDropdownMenuSystemItemsState,
+  )
   const [lastWritingMessage, setLastWritingMessage] = useState('')
   useEffect(() => {
-    if (conversation.loading || !open) {
+    if (!floatingDropdownMenu.open) {
+      console.log('AIInput writingMessage remove: ', floatingDropdownMenu.open)
       setLastWritingMessage('')
     }
-  }, [
-    conversation.loading,
-    open,
-    floatingDropdownMenuSystemItems.selectContextMenuId,
-  ])
-  useEffect(() => {
-    if (
-      floatingDropdownMenuSystemItems.selectContextMenuId &&
-      floatingDropdownMenuSystemItems.selectContextMenuId !== 'Continue writing'
-    ) {
-      setLastWritingMessage('')
-    }
-  }, [floatingDropdownMenuSystemItems.selectContextMenuId])
+  }, [floatingDropdownMenu.open])
   useEffect(() => {
     if (conversation.writingMessage?.text) {
+      console.log('AIInput writingMessage update: ', lastWritingMessage)
       setLastWritingMessage(conversation.writingMessage.text)
     }
   }, [conversation.writingMessage])
   useEffect(() => {
-    if (!conversation.loading) {
-      setFloatingDropdownMenuSystemItems((prev) => {
-        return {
-          ...prev,
-          lastOutput: lastWritingMessage,
-        }
-      })
-    }
-  }, [conversation.loading, lastWritingMessage])
+    console.log('AIInput update: ', lastWritingMessage)
+    setFloatingDropdownMenuSystemItems((prev) => {
+      return {
+        ...prev,
+        lastOutput: lastWritingMessage,
+      }
+    })
+  }, [lastWritingMessage])
   return (
     <Stack>
       <div

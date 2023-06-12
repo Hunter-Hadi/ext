@@ -1,13 +1,13 @@
-import {
-  IContextMenuItem,
-  IContextMenuItemWithChildren,
-  IRangyRect,
-} from '@/features/contextMenu/store'
 import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 import { flip, offset, shift, size } from '@floating-ui/react'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { IVirtualIframeElement } from '@/iframe'
+import { ROOT_FLOATING_REFERENCE_ELEMENT_ID } from '@/types'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+  IRangyRect,
+} from '@/features/contextMenu/types'
 export const checkIsCanInputElement = (
   element: HTMLElement,
   defaultMaxLoop = 10,
@@ -399,18 +399,7 @@ export const FloatingContextMenuMiddleware = [
   }),
 ]
 
-export const computedIframeSelection = (
-  iframeElement: HTMLIFrameElement & { virtual?: boolean },
-) => {
-  if (iframeElement.virtual) {
-    const virtualElement: IVirtualIframeElement = iframeElement as any
-    return {
-      iframeSelectionText: virtualElement.iframeSelectionString,
-      iframeSelectionRect: virtualElement.iframeSelectionRect,
-      iframeSelectionHtml: virtualElement.iframeSelectionString,
-      iframeSelectionElement: '',
-    }
-  }
+export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
   const frame = iframeElement
   const frameWindow: any = frame && frame.contentWindow
   const frameDocument: any = frameWindow && frameWindow.document
@@ -465,4 +454,11 @@ export const computedIframeSelection = (
     iframeSelectionHtml: frameDocument.getSelection().toString(),
     iframeSelectionElement: frameDocument.getSelection().anchorNode,
   }
+}
+
+export const isFloatingMenuVisible = () => {
+  const floatingMenu = document.querySelector(
+    `#${ROOT_FLOATING_REFERENCE_ELEMENT_ID}`,
+  )
+  return floatingMenu && floatingMenu.getAttribute('aria-hidden') === 'false'
 }

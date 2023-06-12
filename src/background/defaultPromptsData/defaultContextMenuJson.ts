@@ -1,4 +1,4 @@
-import { IContextMenuItem } from '@/features/contextMenu'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 export default [
   {
     id: '81343baa-2aa4-4435-afd3-f3501f51b708',

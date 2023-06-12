@@ -54,7 +54,7 @@ const useShortCutsParameters = () => {
             .replace(/\n{3,}/g, `\n`) || ''
       }
     }
-    const SELECTED_HTML = currentSelection?.selectionHtml || ''
+    const SELECTED_HTML = currentSelection?.selectionHTML || ''
     const SELECTED_TEXT = currentSelection?.selectionText || ''
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any

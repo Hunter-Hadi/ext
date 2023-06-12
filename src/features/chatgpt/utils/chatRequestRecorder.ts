@@ -82,9 +82,13 @@ export const increaseChatGPTRequestCount = async (
         }
       }
       if (!cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host]) {
-        cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host] = 1
+        cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host] = {
+          total_cnt: 1,
+        }
       } else {
-        cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host] += 1
+        cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host][
+          'total_cnt'
+        ] += 1
       }
       if (provider) {
         if (

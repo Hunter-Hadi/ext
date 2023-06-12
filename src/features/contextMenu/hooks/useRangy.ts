@@ -1,9 +1,6 @@
 import { useRecoilState } from 'recoil'
-import {
-  ISelection,
-  RangyCoreState,
-  RangyState,
-} from '@/features/contextMenu/store'
+import { RangyCoreState, RangyState } from '@/features/contextMenu/store'
+import { ISelection } from '@/features/contextMenu/types'
 
 const useRangy = () => {
   const [rangyCore, setRangyCore] = useRecoilState(RangyCoreState)

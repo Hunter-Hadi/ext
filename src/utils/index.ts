@@ -1,4 +1,3 @@
-import { IContextMenuItem } from '@/features/contextMenu'
 import { useEffect, useState } from 'react'
 import {
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
@@ -18,6 +17,7 @@ import {
 } from '@/features/chatgpt/utils'
 import { COUNTRIES_MAP } from '@/utils/staticData'
 import size from 'lodash-es/size'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)

@@ -6,23 +6,21 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect, useRef } from 'react'
 import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background/app'
-import { isShowChatBox, hideChatBox, showChatBox } from '@/utils'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
-import { AppSettingsState, AppState } from '@/store'
+import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import { ChatGPTMessageState } from '@/features/gmail/store'
 import {
   getChromeExtensionSettings,
   useCreateClientMessageListener,
 } from '@/background/utils'
 import Log from '@/utils/Log'
+import { useFloatingContextMenu } from '@/features/contextMenu'
 
 const log = new Log('InitChatGPT')
 
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)
-  const setAppState = useSetRecoilState(AppState)
   const setAppSettings = useSetRecoilState(AppSettingsState)
   const updateMessages = useSetRecoilState(ChatGPTMessageState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
@@ -60,36 +58,44 @@ const useInitChatGPTClient = () => {
         break
       case 'Client_listenOpenChatMessageBox':
         {
-          const isShowFloatingContextMenu = showFloatingContextMenuRef.current()
-          return
-          if (data?.type === 'action') {
-            // 不支持的网站设置
-          }
-          // 如果浮动菜单显示，则不处理
-          if (!isShowFloatingContextMenu) {
-            if (isShowChatBox()) {
-              hideChatBox()
-              setAppState((prevState) => {
-                return {
-                  ...prevState,
-                  open: false,
-                }
-              })
-            } else {
-              showChatBox()
-              setAppState((prevState) => {
-                return {
-                  ...prevState,
-                  open: true,
-                }
-              })
-            }
-          }
-          return {
-            success: true,
-            data: {},
-            message: '',
-          }
+          // const delay = (t: number) =>
+          //   new Promise((resolve) => setTimeout(resolve, t))
+          // await delay(100)
+          // if (data?.type === 'action') {
+          //   // 不支持的网站设置
+          // }
+          // // 1. 获取floating menu 是否展示
+          // // 2. 尝试展示floating menu
+          // // 3. 如果展示成功，则不处理
+          // // 4. 如果展示失败，则展示chatbox
+          // const floatingMenuVisible =
+          //   isFloatingMenuVisible() || showFloatingContextMenu()
+          // // 如果浮动菜单显示，则不处理
+          // if (floatingMenuVisible) {
+          //   return
+          // }
+          // if (isShowChatBox()) {
+          //   hideChatBox()
+          //   setAppState((prevState) => {
+          //     return {
+          //       ...prevState,
+          //       open: false,
+          //     }
+          //   })
+          // } else {
+          //   showChatBox()
+          //   setAppState((prevState) => {
+          //     return {
+          //       ...prevState,
+          //       open: true,
+          //     }
+          //   })
+          // }
+          // return {
+          //   success: true,
+          //   data: {},
+          //   message: '',
+          // }
         }
         break
       case 'Client_updateAppSettings':

@@ -32,13 +32,13 @@ import { useEffect, useMemo } from 'react'
 import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
-  IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 
 interface LiteDropdownMenuItemProps {
   label: string

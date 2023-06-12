@@ -8,12 +8,11 @@ import {
   useInteractions,
 } from '@floating-ui/react'
 import React, { FC, useEffect, useMemo, useState } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
-  IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
 import {
   cloneRect,
@@ -30,6 +29,7 @@ import Typography from '@mui/material/Typography'
 import {
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   ROOT_FLOATING_INPUT_ID,
+  ROOT_FLOATING_REFERENCE_ELEMENT_ID,
 } from '@/types'
 import {
   getAppContextMenuElement,
@@ -44,6 +44,7 @@ import { FloatingContextMenuCloseIconButton } from '@/features/contextMenu/compo
 import { getMediator } from '@/store/mediator'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
+import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
@@ -114,8 +115,9 @@ const FloatingContextMenu: FC<{
     FloatingDropdownMenuState,
   )
   // ai输出后，系统系统的建议菜单状态
-  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
-    useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const setFloatingDropdownMenuSystemItems = useSetRecoilState(
+    FloatingDropdownMenuSystemItemsState,
+  )
   // 是否有上下文，决定contextMenu展示的内容
   const [haveContext, setHaveContext] = useState(false)
   const [
@@ -198,6 +200,15 @@ const FloatingContextMenu: FC<{
   const click = useClick(context)
   const dismiss = useDismiss(context, {})
   const { getFloatingProps } = useInteractions([dismiss, click])
+  const [inputValue, setInputValue] = useState('')
+  const { setShortCuts, runShortCuts, loading } =
+    useShortCutsWithMessageChat('')
+  const { contextMenuList, originContextMenuList } = useContextMenuList(
+    'textSelectPopupButton',
+    inputValue,
+  )
+  const haveDraft = inputValue.length > 0
+  // 选中区域高亮
   useEffect(() => {
     if (floatingDropdownMenu.rootRect) {
       const rect = cloneRect(floatingDropdownMenu.rootRect)
@@ -224,14 +235,7 @@ const FloatingContextMenu: FC<{
       })
     }
   }, [floatingDropdownMenu.rootRect])
-  const [inputValue, setInputValue] = useState('')
-  const { setShortCuts, runShortCuts, loading } =
-    useShortCutsWithMessageChat('')
-  const { contextMenuList, originContextMenuList } = useContextMenuList(
-    'textSelectPopupButton',
-    inputValue,
-  )
-
+  // 更新最后hover的contextMenuId
   useEffect(() => {
     if (contextMenuList.length > 0) {
       let firstMenuItem: null | IContextMenuItemWithChildren = null
@@ -260,8 +264,11 @@ const FloatingContextMenu: FC<{
       }
     }
   }, [contextMenuList])
-
-  const haveDraft = inputValue.length > 0
+  /**
+   * @description - 打开/关闭floating dropdown menu:
+   * 1. 自动focus
+   * 2. 清空最后一次的输出
+   */
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getMediator('floatingMenuInputMediator').updateInputValue('')
@@ -274,6 +281,8 @@ const FloatingContextMenu: FC<{
         }, 1)
       }
     }
+    console.log('AIInput remove', floatingDropdownMenu.open)
+    setHaveContext(false)
   }, [floatingDropdownMenu.open])
   const focusInput = (event: KeyboardEvent) => {
     if (floatingDropdownMenu.open) {
@@ -290,7 +299,7 @@ const FloatingContextMenu: FC<{
   }
   useEffect(() => {
     /**
-     * @description
+     * @description - 运行快捷指令
      * 1. 必须有选中的id
      * 2. 必须有子菜单
      * 3. contextMenu必须是打开状态
@@ -311,6 +320,13 @@ const FloatingContextMenu: FC<{
           return {
             ...prev,
             selectContextMenuId: continueContextMenu.id,
+          }
+        })
+        updateFloatingDropdownMenuSelectedItem(() => {
+          return {
+            selectedContextMenuId: null,
+            hoverContextMenuIdMap: {},
+            lastHoverContextMenuId: null,
           }
         })
         return
@@ -345,12 +361,6 @@ const FloatingContextMenu: FC<{
           setShortCuts(runActions)
           runShortCuts().then(() => {
             setHaveContext(true)
-            setFloatingDropdownMenu((prevState) => {
-              return {
-                ...prevState,
-                running: false,
-              }
-            })
           })
         })
       }
@@ -367,19 +377,6 @@ const FloatingContextMenu: FC<{
       getMediator('floatingMenuInputMediator').unsubscribe(setInputValue)
     }
   }, [])
-  useEffect(() => {
-    if (
-      floatingDropdownMenuSystemItems.selectContextMenuId &&
-      ['Replace selection', 'Insert below', 'Discard'].includes(
-        floatingDropdownMenuSystemItems.selectContextMenuId,
-      )
-    ) {
-      setFloatingDropdownMenu({
-        open: false,
-        rootRect: null,
-      })
-    }
-  }, [floatingDropdownMenuSystemItems.selectContextMenuId])
   return (
     <FloatingPortal root={root}>
       <div
@@ -423,6 +420,8 @@ const FloatingContextMenu: FC<{
           referenceElementOpen={floatingDropdownMenu.open}
           referenceElement={
             <div
+              id={ROOT_FLOATING_REFERENCE_ELEMENT_ID}
+              aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
               style={{
                 boxSizing: 'border-box',
                 border: '1px solid',

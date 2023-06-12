@@ -19,10 +19,6 @@ import { DndProvider } from 'react-dnd'
 import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
-import {
-  IContextMenuItem,
-  IContextMenuItemWithChildren,
-} from '@/features/contextMenu'
 import ContextMenuPlaceholder from '@/pages/options/components/ContextMenuPlaceholder'
 import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
 import ContextMenuActionConfirmModal, {
@@ -44,6 +40,10 @@ import {
 import BulletList from '@/components/BulletList'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu/types'
 
 const rootId = 'root'
 

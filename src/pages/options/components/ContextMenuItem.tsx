@@ -3,10 +3,11 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { useMemo, useState } from 'react'
 import { NodeRender } from '@minoru/react-dnd-treeview'
-import { ContextMenuIcon, IContextMenuItem } from '@/features/contextMenu'
+import { ContextMenuIcon } from '@/features/contextMenu'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 const ContextMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean

@@ -9,11 +9,7 @@ import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import {
-  CONTEXT_MENU_ICONS,
-  ContextMenuIcon,
-  IContextMenuItem,
-} from '@/features/contextMenu'
+import { CONTEXT_MENU_ICONS, ContextMenuIcon } from '@/features/contextMenu'
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import { RunPromptTooltip, TemplateTooltip } from './Tooltips'
 import { templateStaticWords } from '@/features/shortcuts/utils'
@@ -21,6 +17,7 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 function replaceString(str: string, startIndex = 0) {
   const matches = templateStaticWords

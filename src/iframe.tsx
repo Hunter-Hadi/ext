@@ -7,46 +7,24 @@ import {
 } from '@/features/contextMenu/utils/selectionHelper'
 import Browser from 'webextension-polyfill'
 import { v4 } from 'uuid'
+import {
+  IRangyRect,
+  IVirtualIframeSelectionElement,
+} from '@/features/contextMenu/types'
 const iframeId = v4()
 
-type IRangyRect = {
-  x: number
-  y: number
-  top: number
-  left: number
-  right: number
-  bottom: number
-  width: number
-  height: number
-}
-export type IVirtualIframeElement = {
-  tagName: string
-  id?: string
-  className?: string
-  windowRect: IRangyRect
-  targetRect: IRangyRect
-  selectionRect: IRangyRect
-  iframeSelectionRect: IRangyRect
-  caretOffset: number
-  iframeSelectionString?: string
-  iframeInputElementString?: string
-  iframePosition: number[]
-  eventType: 'mouseup' | 'keyup'
-  isEmbedPage: boolean
-  isInputElement: boolean
-  startMarkerId: string
-  endMarkerId: string
-}
-const getInputElementContext = (element: HTMLElement, defaultMaxLoop = 10) => {
+const getEditableElementContext = (
+  element: HTMLElement,
+  defaultMaxLoop = 10,
+) => {
   if (!element) {
     return {
-      value: '',
-      isInputElement: false,
-      inputElement: null,
+      isEditableElement: false,
+      editableElement: null,
     }
   }
   let parentElement: HTMLElement | null = element
-  let inputElement: HTMLInputElement | null = null
+  let editableElement: HTMLInputElement | null = null
   let maxLoop = defaultMaxLoop
   while (parentElement && maxLoop > 0) {
     if (
@@ -58,23 +36,21 @@ const getInputElementContext = (element: HTMLElement, defaultMaxLoop = 10) => {
       if (type && type !== 'text') {
         break
       }
-      inputElement = parentElement as any
+      editableElement = parentElement as any
       break
     }
     parentElement = parentElement.parentElement
     maxLoop--
   }
-  if (inputElement) {
+  if (editableElement) {
     return {
-      value: inputElement.value || inputElement.innerText,
-      isInputElement: true,
-      inputElement,
+      isEditableElement: true,
+      editableElement,
     }
   }
   return {
-    value: '',
-    isInputElement: false,
-    inputElement: null,
+    isEditableElement: false,
+    editableElement: null,
   }
 }
 
@@ -131,19 +107,22 @@ const initIframe = async () => {
     try {
       const target = mouseDownElement || (event.target as HTMLElement)
       const iframeSelectionString = computedSelectionString()
-      const {
-        value: iframeInputElementString,
-        isInputElement,
-        inputElement,
-      } = getInputElementContext(target)
+      let editableElementSelectionString = ''
+      const { isEditableElement, editableElement } =
+        getEditableElementContext(target)
       let startMarkerId = ''
       let endMarkerId = ''
       let caretOffset = 0
-      if (isInputElement && inputElement) {
-        caretOffset = getCaretCharacterOffsetWithin(inputElement)
-        const selectionMarker = createSelectionMarker(inputElement)
+      if (isEditableElement && editableElement) {
+        caretOffset = getCaretCharacterOffsetWithin(editableElement)
+        const selectionMarker = createSelectionMarker(editableElement)
         startMarkerId = selectionMarker.startMarkerId
         endMarkerId = selectionMarker.endMarkerId
+        // 如果是输入框，则获取输入框选中的文本的值，否则用输入框的内容
+        if (selectionMarker.selectionString) {
+          console.log('AIInput marker string', selectionMarker.selectionString)
+          editableElementSelectionString = selectionMarker.selectionString
+        }
       }
       if (!iframeSelectionString && isEmbedPage) {
         if (target.tagName === 'BUTTON' && times < 10) {
@@ -269,6 +248,8 @@ const initIframe = async () => {
           id: CHROME_EXTENSION_POST_MESSAGE_ID,
           type: 'iframeSelection',
           data: {
+            virtual: true,
+            iframeId,
             tagName: target.tagName,
             id: target.id,
             className: target.className,
@@ -277,15 +258,16 @@ const initIframe = async () => {
             selectionRect,
             iframeSelectionRect,
             iframePosition,
-            iframeSelectionString,
+            selectionText: iframeSelectionString || '',
+            selectionHTML: iframeSelectionString || '',
+            editableElementSelectionText: editableElementSelectionString,
             eventType: event instanceof MouseEvent ? 'mouseup' : 'keyup',
             isEmbedPage,
-            iframeInputElementString,
-            isInputElement,
+            isEditableElement,
             caretOffset,
             startMarkerId,
             endMarkerId,
-          } as IVirtualIframeElement,
+          } as IVirtualIframeSelectionElement,
         },
         '*',
       )
@@ -342,15 +324,15 @@ const initIframe = async () => {
   })
 }
 
-type IframeMessageType = (event: IVirtualIframeElement) => void
+type IframeMessageType = (event: IVirtualIframeSelectionElement) => void
 
 export const listenIframeMessage = (onMessage?: IframeMessageType) => {
   const listener = (event: MessageEvent) => {
     const { id, type, data } = event.data
     if (id === CHROME_EXTENSION_POST_MESSAGE_ID) {
       if (type === 'iframeSelection') {
-        const { iframeSelectionString, iframeSelectionRect, iframePosition } =
-          data as IVirtualIframeElement
+        const { selectionText, iframeSelectionRect, iframePosition } =
+          data as IVirtualIframeSelectionElement
         if (isInIframe()) {
           // TODO
           // 如果是iframe，需要继续透传
@@ -397,12 +379,12 @@ export const listenIframeMessage = (onMessage?: IframeMessageType) => {
             log.info(
               'currentSelection',
               senderIframe,
-              iframeSelectionString,
+              selectionText,
               currentPosition,
               currentSelectionRect,
             )
             if (currentSelectionRect) {
-              if (iframeSelectionString && !isProduction) {
+              if (selectionText && !isProduction) {
                 // draw box
                 const old = document.getElementById('a')
                 old && old.remove()

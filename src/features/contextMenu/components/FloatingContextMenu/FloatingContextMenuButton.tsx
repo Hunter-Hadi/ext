@@ -3,7 +3,6 @@ import { atom, useRecoilState } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
-  IContextMenuItemWithChildren,
 } from '@/features/contextMenu/store'
 import { v4 as uuidV4 } from 'uuid'
 
@@ -15,6 +14,7 @@ import Button from '@mui/material/Button'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import Box from '@mui/material/Box'
+import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 
 const CurrentFloatingContextMenuButtonState = atom({
   key: 'CurrentFloatingContextMenuButtonState',

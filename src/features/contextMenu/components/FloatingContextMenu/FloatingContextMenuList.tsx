@@ -1,6 +1,5 @@
 import React, { FC, forwardRef, useMemo } from 'react'
 
-import { IContextMenuItemWithChildren } from '@/features/contextMenu/store'
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -8,6 +7,7 @@ import {
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 // import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 // eslint-disable-next-line react/display-name

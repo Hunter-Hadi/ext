@@ -5,12 +5,17 @@ import {
   FloatingDropdownMenuState,
   IRangyRect,
 } from '@/features/contextMenu/store'
+import { useMemo } from 'react'
 
 const useFloatingContextMenu = () => {
   const { saveCurrentSelection, show, hideRangy, tempSelection } = useRangy()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
+
+  const memoIsFloatingMenuVisible = useMemo(() => {
+    return floatingDropdownMenu.open
+  }, [floatingDropdownMenu.open])
 
   const showFloatingContextMenuWithVirtualSelection = (virtualSelection: {
     selectionText: string
@@ -79,6 +84,7 @@ const useFloatingContextMenu = () => {
     })
   }
   return {
+    isFloatingMenuVisible: memoIsFloatingMenuVisible,
     showFloatingContextMenu,
     hideFloatingContextMenu,
     haveSelection: show,

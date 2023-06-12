@@ -14,7 +14,6 @@ import { DndProvider } from 'react-dnd'
 import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
 import { v4 } from 'uuid'
 // import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
-import { IContextMenuItem } from '@/features/contextMenu'
 import ContextMenuPlaceholder from '../components/ContextMenuPlaceholder'
 // import {
 //   EZMAIL_NEW_EMAIL_CTA_BUTTON_ID,
@@ -33,6 +32,7 @@ import {
 } from '@/background/utils'
 import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
 import { IChromeExtensionButtonSettingKey } from '../../../background/types/Settings'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 const rootId = 'root'
 

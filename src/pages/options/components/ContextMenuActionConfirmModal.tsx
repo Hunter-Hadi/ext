@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import { IContextMenuItem } from '@/features/contextMenu'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export type IConfirmActionType = 'reset' | 'delete'
 

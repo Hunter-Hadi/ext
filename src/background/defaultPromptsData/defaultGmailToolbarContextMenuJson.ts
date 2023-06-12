@@ -1,8 +1,8 @@
-import { IContextMenuItem } from '@/features/contextMenu'
 import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/types'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export default [
   {

@@ -221,10 +221,10 @@ const useHandlePDFViewerError = () => {
                 window.close()
               }}
               sx={{
-                height: '48px',
+                height: '56px',
                 backgroundColor: '#7601D3',
                 color: '#fff',
-                fontSize: '14px',
+                fontSize: '18px',
                 textTransform: 'none',
                 px: 3,
                 '&:hover': {

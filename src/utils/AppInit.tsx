@@ -134,7 +134,7 @@ const useHandlePDFViewerError = () => {
       const dataUrl = root.getAttribute('data-url')
       render(
         <Stack
-          spacing={2}
+          spacing={3}
           p={2}
           width={'100%'}
           sx={{
@@ -222,14 +222,14 @@ const useHandlePDFViewerError = () => {
               }}
               sx={{
                 height: '48px',
-                backgroundColor: '#fff',
-                color: '#7602d3',
+                backgroundColor: '#7601D3',
+                color: '#fff',
                 fontSize: '14px',
                 textTransform: 'none',
                 px: 3,
                 '&:hover': {
-                  backgroundColor: '#fff',
-                  color: '#7602d3',
+                  backgroundColor: '#7601D3',
+                  color: '#fff',
                 },
               }}
             >
@@ -252,7 +252,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`Turn off "PDF AI viewer" at any time on the extension's `}
+              {`You can turn off "PDF AI viewer" at any time on the extension's `}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}

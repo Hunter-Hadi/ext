@@ -27,17 +27,9 @@ import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
 import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
-import Browser from 'webextension-polyfill'
 import { RESOURCES_URL } from '@/constant'
 
 const log = new Log('AppInit')
-
-const PdfGuideImageUrl1 = Browser.runtime.getURL(
-  `${RESOURCES_URL}/extension/pdf/guide1.gif`,
-)
-const PdfGuideImageUrl2 = Browser.runtime.getURL(
-  `${RESOURCES_URL}/extension/pdf/guide2.gif`,
-)
 
 const GmailInit = () => {
   useInitInboxSdk()
@@ -214,7 +206,7 @@ const useHandlePDFViewerError = () => {
                 style={{ flexShrink: 0, alignSelf: 'center' }}
                 height={156}
                 width={468}
-                src={PdfGuideImageUrl1}
+                src={`${RESOURCES_URL}/extension/pdf/guide1.gif`}
               />
             </Box>
             <Button
@@ -282,7 +274,7 @@ const useHandlePDFViewerError = () => {
               style={{ flexShrink: 0, alignSelf: 'center' }}
               height={156}
               width={468}
-              src={PdfGuideImageUrl2}
+              src={`${RESOURCES_URL}/extension/pdf/guide2.gif`}
             />
           </Stack>
         </Stack>,

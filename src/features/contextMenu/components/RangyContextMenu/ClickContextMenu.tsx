@@ -14,7 +14,6 @@ import {
 import {
   ContextMenuSettingsState,
   FloatingDropdownMenuState,
-  IRangyRect,
 } from '@/features/contextMenu/store'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
@@ -25,6 +24,7 @@ import {
 import useCommands from '@/hooks/useCommands'
 import { APP_ENV, isProduction } from '@/types'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import { IRangyRect } from '@/features/contextMenu/types'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void

@@ -16,6 +16,7 @@ import {
 } from '@/background/utils'
 import Log from '@/utils/Log'
 import { useFloatingContextMenu } from '@/features/contextMenu'
+import { replaceMarkerContent } from '@/features/contextMenu/utils/selectionHelper'
 
 const log = new Log('InitChatGPT')
 
@@ -102,6 +103,24 @@ const useInitChatGPTClient = () => {
         {
           const newSettings = await getChromeExtensionSettings()
           setAppSettings(newSettings)
+          return {
+            success: true,
+            data: {},
+            message: '',
+          }
+        }
+        break
+      case 'Client_listenUpdateIframeInput':
+        {
+          console.log('Client_listenUpdateIframeInput', data)
+          if (data.startMarkerId && data.endMarkerId) {
+            replaceMarkerContent(
+              data.startMarkerId,
+              data.endMarkerId,
+              data.value,
+              data.type,
+            )
+          }
           return {
             success: true,
             data: {},

@@ -66,4 +66,5 @@ export type ISelection = {
   selectionRect: IRangyRect
   selectionInputAble: boolean
   activeElement: HTMLElement
+  selectionElement?: ISelectionElement
 }

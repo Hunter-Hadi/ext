@@ -1,6 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 import isNumber from 'lodash-es/isNumber'
-import { ISelectionElement } from '@/features/contextMenu/types'
+import { IRangyRect, ISelectionElement } from '@/features/contextMenu/types'
+import { cloneRect } from '@/features/contextMenu/utils/index'
 /**
  * @description 获取光标位置
  * @param element
@@ -69,13 +70,37 @@ export const getInputSelection = (element: HTMLInputElement) => {
       }
     }
   }
-
   return {
     start: start,
     end: end,
   }
 }
 
+/**
+ * 计算选区的字符串
+ */
+export const computedSelectionString = () => {
+  if (document) {
+    if (document.getSelection) {
+      // Most browsers
+      return String(document.getSelection())
+    } else if ((document as any).selection) {
+      // Internet Explorer 8 and below
+      return (document as any).selection.createRange().text
+    } else if (window.getSelection) {
+      // Safari 3
+      return String(window.getSelection())
+    }
+  }
+  /* Fall-through. This could happen if this function is called
+       on a frame that doesn't exist or that isn't ready yet. */
+  return ''
+}
+
+/**
+ * 创建选区标记
+ * @param element
+ */
 export const createSelectionMarker = (element: HTMLElement) => {
   try {
     if (element) {
@@ -271,7 +296,127 @@ export const removeAllSelectionMarker = () => {
   })
 }
 
+/**
+ * @description - 获取可编辑的元素
+ * @param element
+ * @param defaultMaxLoop
+ */
+export const getEditableElement = (
+  element: HTMLElement,
+  defaultMaxLoop = 10,
+) => {
+  if (!element) {
+    return {
+      isEditableElement: false,
+      editableElement: null,
+    }
+  }
+  let parentElement: HTMLElement | null = element
+  let editableElement: HTMLInputElement | null = null
+  let maxLoop = defaultMaxLoop
+  while (parentElement && maxLoop > 0) {
+    if (
+      parentElement?.tagName === 'INPUT' ||
+      parentElement?.tagName === 'TEXTAREA' ||
+      parentElement?.getAttribute?.('contenteditable') === 'true'
+    ) {
+      const type = parentElement.getAttribute('type')
+      if (type && type !== 'text') {
+        break
+      }
+      editableElement = parentElement as any
+      break
+    }
+    parentElement = parentElement.parentElement
+    maxLoop--
+  }
+  if (editableElement) {
+    return {
+      isEditableElement: true,
+      editableElement,
+    }
+  }
+  return {
+    isEditableElement: false,
+    editableElement: null,
+  }
+}
+
 export const createSelectionElement = (
   element: HTMLElement,
   overwrite?: Partial<ISelectionElement>,
-): ISelectionElement => {}
+): ISelectionElement => {
+  const target = element
+  const selectionString = computedSelectionString()
+  let editableElementSelectionString = ''
+  const { isEditableElement, editableElement } = getEditableElement(target)
+  let startMarkerId = ''
+  let endMarkerId = ''
+  let caretOffset = 0
+  if (isEditableElement && editableElement) {
+    caretOffset = getCaretCharacterOffsetWithin(editableElement)
+    const selectionMarker = createSelectionMarker(editableElement)
+    startMarkerId = selectionMarker.startMarkerId
+    endMarkerId = selectionMarker.endMarkerId
+    // 如果是输入框，则获取输入框选中的文本的值，否则用输入框的内容
+    if (selectionMarker.selectionString) {
+      console.log('AIInput marker string', selectionMarker.selectionString)
+      editableElementSelectionString = selectionMarker.selectionString
+    }
+  }
+  const targetRect = cloneRect(target.getBoundingClientRect())
+  let selectionRect: IRangyRect | null = null
+  const windowRange = window
+    .getSelection()
+    ?.getRangeAt(0)
+    ?.getBoundingClientRect()
+  if (windowRange) {
+    selectionRect = cloneRect(windowRange)
+    if (isEditableElement && windowRange.width + windowRange.height === 0) {
+      selectionRect = cloneRect(element.getBoundingClientRect())
+    }
+  }
+  if (!selectionRect) {
+    const boundary = {
+      left: 0,
+      right: window.innerWidth,
+      top: 0,
+      bottom: window.innerHeight,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      x: 0,
+      y: 0,
+    }
+    const centerRect = {
+      x: boundary.width / 2,
+      y: boundary.height / 2,
+      left: boundary.width / 2,
+      right: boundary.width / 2,
+      top: boundary.height / 2,
+      bottom: boundary.height / 2,
+      width: 0,
+      height: 0,
+    }
+    selectionRect = centerRect
+  }
+  const selectionElement: ISelectionElement = {
+    isEmbedPage: false,
+    virtual: false,
+    tagName: target.tagName,
+    // overwrite 会覆盖掉默认的值
+    eventType: 'mouseup',
+    target,
+    isEditableElement,
+    selectionText: selectionString,
+    selectionHTML: selectionString,
+    selectionRect,
+    caretOffset,
+    startMarkerId,
+    endMarkerId,
+    editableElementSelectionText: editableElementSelectionString,
+    editableElementSelectionHTML: editableElementSelectionString,
+    targetRect,
+    ...overwrite,
+  }
+  return selectionElement
+}

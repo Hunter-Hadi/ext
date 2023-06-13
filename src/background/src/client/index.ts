@@ -9,7 +9,7 @@ import {
   createDaemonProcessTab,
   getWindowIdOfChatGPTTab,
 } from '@/background/src/chat/util'
-import { isEzMailApp } from '@/types'
+import { CHROME_EXTENSION_POST_MESSAGE_ID, isEzMailApp } from '@/types'
 
 // const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -157,6 +157,7 @@ export const ClientMessageInit = () => {
               await Browser.tabs.sendMessage(sender.tab.id, {
                 event: 'Client_listenUpdateIframeInput',
                 data,
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
               })
             }
             return {

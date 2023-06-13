@@ -8,6 +8,7 @@ import {
   IContextMenuItemWithChildren,
   IRangyRect,
 } from '@/features/contextMenu/types'
+
 export const checkIsCanInputElement = (
   element: HTMLElement,
   defaultMaxLoop = 10,

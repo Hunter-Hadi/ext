@@ -1,8 +1,10 @@
 import Log from '@/utils/Log'
 import { CHROME_EXTENSION_POST_MESSAGE_ID, isProduction } from '@/types'
 import {
+  computedSelectionString,
   createSelectionMarker,
   getCaretCharacterOffsetWithin,
+  getEditableElement,
   replaceMarkerContent,
 } from '@/features/contextMenu/utils/selectionHelper'
 import Browser from 'webextension-polyfill'
@@ -12,47 +14,6 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 const iframeId = v4()
-
-const getEditableElementContext = (
-  element: HTMLElement,
-  defaultMaxLoop = 10,
-) => {
-  if (!element) {
-    return {
-      isEditableElement: false,
-      editableElement: null,
-    }
-  }
-  let parentElement: HTMLElement | null = element
-  let editableElement: HTMLInputElement | null = null
-  let maxLoop = defaultMaxLoop
-  while (parentElement && maxLoop > 0) {
-    if (
-      parentElement?.tagName === 'INPUT' ||
-      parentElement?.tagName === 'TEXTAREA' ||
-      parentElement?.getAttribute?.('contenteditable') === 'true'
-    ) {
-      const type = parentElement.getAttribute('type')
-      if (type && type !== 'text') {
-        break
-      }
-      editableElement = parentElement as any
-      break
-    }
-    parentElement = parentElement.parentElement
-    maxLoop--
-  }
-  if (editableElement) {
-    return {
-      isEditableElement: true,
-      editableElement,
-    }
-  }
-  return {
-    isEditableElement: false,
-    editableElement: null,
-  }
-}
 
 const cloneRect = (rect: IRangyRect): IRangyRect => {
   return {
@@ -75,23 +36,6 @@ const isInIframe = () => {
     return true
   }
 }
-const computedSelectionString = () => {
-  if (document) {
-    if (document.getSelection) {
-      // Most browsers
-      return String(document.getSelection())
-    } else if ((document as any).selection) {
-      // Internet Explorer 8 and below
-      return (document as any).selection.createRange().text
-    } else if (window.getSelection) {
-      // Safari 3
-      return String(window.getSelection())
-    }
-  }
-  /* Fall-through. This could happen if this function is called
-       on a frame that doesn't exist or that isn't ready yet. */
-  return ''
-}
 
 const log = new Log('Iframe')
 
@@ -108,8 +52,7 @@ const initIframe = async () => {
       const target = mouseDownElement || (event.target as HTMLElement)
       const iframeSelectionString = computedSelectionString()
       let editableElementSelectionString = ''
-      const { isEditableElement, editableElement } =
-        getEditableElementContext(target)
+      const { isEditableElement, editableElement } = getEditableElement(target)
       let startMarkerId = ''
       let endMarkerId = ''
       let caretOffset = 0

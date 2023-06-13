@@ -21,10 +21,11 @@ export default mergeRollupConfig(isProduction, {
     chunkFileNames: path.join('chunks', '[hash].js'),
   },
   plugins: [
-    visualizer({
-      emitFile: true,
-      filename: 'crx.html',
-    }),
+    !isProduction &&
+      visualizer({
+        emitFile: true,
+        filename: 'crx.html',
+      }),
     chromeExtension(),
     simpleReloader(),
     emptyDir(),

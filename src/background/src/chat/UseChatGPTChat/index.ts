@@ -150,6 +150,20 @@ class UseChatGPTPlusChat {
       }
     }) => void,
   ) {
+    await this.checkTokenAndUpdateStatus()
+    if (this.status !== 'success') {
+      onMessage &&
+        onMessage({
+          type: 'error',
+          done: true,
+          error: 'Your session has expired. Please log in.',
+          data: {
+            text: '',
+            conversationId: '',
+          },
+        })
+      return
+    }
     const cacheConversationId = await getCacheConversationId()
     const {
       include_history = false,

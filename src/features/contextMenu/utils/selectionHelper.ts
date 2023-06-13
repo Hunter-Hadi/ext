@@ -116,8 +116,6 @@ export const createSelectionMarker = (element: HTMLElement) => {
         sel = win.getSelection()
         if (sel.rangeCount > 0) {
           const range = win.getSelection().getRangeAt(0)
-          let boundaryRange = range.cloneRange()
-          boundaryRange.collapse(true)
           if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
             const inputElement = element as HTMLInputElement
             // input or textarea
@@ -132,12 +130,27 @@ export const createSelectionMarker = (element: HTMLElement) => {
               startMarkerId,
             )
             element.setAttribute('data-usechatgpt-end-marker-id', endMarkerId)
+            /**
+             * 选区内容优先级
+             * 1. 选区内容
+             * 2. 输入框的从[0 - 光标位置]的内容
+             * 3. 输入框的内容
+             */
             const selectionString =
-              inputElement.value.substring(start, end) ||
-              inputElement.value ||
+              inputElement.value.substring(start, end).trim() ||
+              inputElement.value.substring(0, start).trim() ||
+              inputElement.value.trim() ||
               ''
             return { startMarkerId, endMarkerId, selectionString }
           } else {
+            const partOfRangeSelected = range.cloneRange()
+            partOfRangeSelected.selectNodeContents(element)
+            partOfRangeSelected.setEnd(range.endContainer, range.endOffset)
+            const partOfRangeSelectedText = partOfRangeSelected
+              .toString()
+              .trim()
+            let boundaryRange = range.cloneRange()
+            boundaryRange.collapse(true)
             const startMarker = doc.createElement('span')
             startMarker.id = startMarkerId
             startMarker.style.lineHeight = '0'
@@ -168,7 +181,17 @@ export const createSelectionMarker = (element: HTMLElement) => {
             )
             endMarker.setAttribute('data-usechatgpt-end-marker-id', endMarkerId)
             boundaryRange.insertNode(endMarker)
-            const selectionString = range.toString()
+            /**
+             * 选区内容优先级
+             * 1. 选区内容
+             * 2. 选区的innerText从[0 - 光标位置]的内容
+             * 3. 选区的innerText内容
+             */
+            const selectionString =
+              range.toString().trim() ||
+              partOfRangeSelectedText ||
+              element.innerText.trim() ||
+              ''
             return { startMarkerId, endMarkerId, selectionString }
           }
         }

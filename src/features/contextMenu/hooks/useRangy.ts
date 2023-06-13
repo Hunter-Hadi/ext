@@ -1,6 +1,7 @@
 import { useRecoilState } from 'recoil'
 import { RangyCoreState, RangyState } from '@/features/contextMenu/store'
 import { ISelection } from '@/features/contextMenu/types'
+import { useEffect, useRef } from 'react'
 
 const useRangy = () => {
   const [rangyCore, setRangyCore] = useRecoilState(RangyCoreState)
@@ -113,6 +114,14 @@ const useRangy = () => {
     //   hideRangy(true)
     // }
   }
+  const tempSelectionRef = useRef<ISelection | null>(rangy.tempSelection)
+  useEffect(() => {
+    tempSelectionRef.current = rangy.tempSelection
+  }, [rangy.tempSelection])
+  const currentSelectionRef = useRef<ISelection | null>(rangy.currentSelection)
+  useEffect(() => {
+    currentSelectionRef.current = rangy.currentSelection
+  }, [rangy.currentSelection])
   return {
     showRangy,
     hideRangy,
@@ -124,6 +133,8 @@ const useRangy = () => {
     show: rangy.show,
     tempSelection: rangy.tempSelection,
     currentSelection: rangy.currentSelection,
+    tempSelectionRef,
+    currentSelectionRef,
   }
 }
 export { useRangy }

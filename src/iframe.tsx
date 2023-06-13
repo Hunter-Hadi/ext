@@ -170,17 +170,17 @@ const initIframe = async () => {
         positions[1] - window.screenTop,
       ]
       // console.log('iframe currentRect', currentRect, iframePosition)
-      // if (currentRect) {
+      // if (selectionRect) {
       //   // draw box
       //   const old = document.getElementById('a')
       //   old && old.remove()
       //   const div = document.createElement('div')
       //   div.id = 'a'
       //   div.style.position = 'fixed'
-      //   div.style.top = currentRect.top + 'px'
-      //   div.style.left = currentRect.left + 'px'
-      //   div.style.width = currentRect.width - 2 + 'px'
-      //   div.style.height = currentRect.height - 2 + 'px'
+      //   div.style.top = selectionRect.top + 'px'
+      //   div.style.left = selectionRect.left + 'px'
+      //   div.style.width = selectionRect.width - 2 + 'px'
+      //   div.style.height = selectionRect.height - 2 + 'px'
       //   div.style.border = '1px solid red'
       //   div.style.pointerEvents = 'none'
       //   document.body.appendChild(div)
@@ -345,6 +345,7 @@ export const listenIframeMessage = (onMessage?: IframeMessageType) => {
               onMessage({
                 ...data,
                 iframeSelectionRect: currentSelectionRect,
+                selectionRect: currentSelectionRect,
                 iframePosition: currentPosition,
                 isEmbedPage:
                   event.origin.indexOf('usechatgpt.ai') > -1 &&

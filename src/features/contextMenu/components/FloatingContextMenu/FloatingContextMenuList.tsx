@@ -162,10 +162,10 @@ const FloatingContextMenuList: FC<
         )
       }
     })
-    console.log('RenderMenuList', menuList, nodeList)
+    // console.log('RenderMenuList', menuList, nodeList)
     return nodeList
   }, [menuList])
-  console.log('FloatingContextMenuList', defaultPlacement)
+  // console.log('FloatingContextMenuList', defaultPlacement)
   return (
     <DropdownMenu
       zIndex={2147483601}

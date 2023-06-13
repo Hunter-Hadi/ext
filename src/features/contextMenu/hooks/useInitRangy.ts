@@ -7,10 +7,7 @@ import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { useRangy } from './useRangy'
 import debounce from 'lodash-es/debounce'
-import {
-  checkIsCanInputElement,
-  computedRectPosition,
-} from '@/features/contextMenu/utils'
+import { checkIsCanInputElement } from '@/features/contextMenu/utils'
 import {
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -31,7 +28,7 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { createSelectionElement } from '@/features/contextMenu/utils/selectionHelper'
-import { ROOT_CONTAINER_ID } from '@/types'
+import { ROOT_CONTAINER_ID, ROOT_CONTEXT_MENU_ID } from '@/types'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -47,14 +44,9 @@ const useInitRangy = () => {
     showRangy,
     hideRangy,
     saveTempSelection,
-    saveCurrentSelection,
     currentSelection,
-    tempSelection,
-    show,
   } = useRangy()
-  const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
-    FloatingDropdownMenuState,
-  )
+  const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
     useRecoilState(FloatingDropdownMenuSystemItemsState)
   const setAppState = useSetRecoilState(AppState)
@@ -127,8 +119,11 @@ const useInitRangy = () => {
               },
             )
           } else {
-            // 2. rangy没有选区, 并且选取不在sidebar上
-            if (activeElement.id !== ROOT_CONTAINER_ID) {
+            // 2. rangy没有选区, 并且选取不在sidebar/contextMenu上
+            if (
+              activeElement.id !== ROOT_CONTAINER_ID &&
+              activeElement.id !== ROOT_CONTEXT_MENU_ID
+            ) {
               selectionElementRef.current = createSelectionElement(
                 activeElement,
                 {
@@ -315,44 +310,30 @@ const useInitRangy = () => {
            * 2. 如果当前有选中的文本，展开
            * 3. 如果都不符合，展开chat box
            */
-          if (selectionElementRef.current) {
+          if (
+            selectionElementRef.current &&
+            (selectionElementRef.current?.selectionText ||
+              selectionElementRef.current?.isEditableElement)
+          ) {
             // 如果当前在input中，展开
             const virtualSelectionElement: IVirtualIframeSelectionElement =
               selectionElementRef.current as any
-            if (virtualSelectionElement.isEditableElement) {
-              // 1. 打开ai input
-              // 2. 阻止打开chatBox
-              AIInputLog.info('open', virtualSelectionElement)
-              showFloatingContextMenuWithVirtualSelection({
-                selectionText:
-                  virtualSelectionElement.editableElementSelectionText ||
-                  virtualSelectionElement.selectionText ||
-                  '',
-                selectionHTML:
-                  virtualSelectionElement.editableElementSelectionText ||
-                  virtualSelectionElement.selectionText ||
-                  '',
-                selectionRect: virtualSelectionElement.selectionRect,
-                activeElement:
-                  (virtualSelectionElement.target as HTMLElement) ||
-                  document.activeElement,
-                selectionInputAble: virtualSelectionElement.isEditableElement,
-                selectionElement:
-                  virtualSelectionElement.target as any as ISelectionElement,
-              })
-            }
-          } else if (show && floatingDropdownMenu.open && tempSelection) {
-            // 如果当前有选中的文本，展开
-            saveCurrentSelection(tempSelection)
-            hideRangy()
-            const savedRangeRect = tempSelection.selectionRect
-            console.log(
-              '[ContextMenu Module]: render [context menu]',
-              computedRectPosition(savedRangeRect),
-            )
-            setFloatingDropdownMenu({
-              open: true,
-              rootRect: computedRectPosition(savedRangeRect),
+            // 1. 打开ai input
+            // 2. 阻止打开chatBox
+            AIInputLog.info('open', virtualSelectionElement)
+            showFloatingContextMenuWithVirtualSelection({
+              selectionText:
+                virtualSelectionElement.editableElementSelectionText ||
+                virtualSelectionElement.selectionText ||
+                '',
+              selectionHTML:
+                virtualSelectionElement.editableElementSelectionText ||
+                virtualSelectionElement.selectionText ||
+                '',
+              selectionRect: virtualSelectionElement.selectionRect,
+              activeElement: virtualSelectionElement.target as HTMLElement,
+              selectionInputAble: virtualSelectionElement.isEditableElement,
+              selectionElement: virtualSelectionElement,
             })
           } else {
             // 如果都不符合，展开chat box
@@ -393,21 +374,21 @@ const useInitRangy = () => {
     lastOutputRef.current = floatingDropdownMenuSystemItems.lastOutput
   }, [floatingDropdownMenuSystemItems.lastOutput])
   // 在用户选择插入/替换时通知插件，让插件更新输入框
-  const currentSelectionRef = useRef<ISelectionElement | undefined>(
+  const currentSelectionRefElement = useRef<ISelectionElement | undefined>(
     currentSelection?.selectionElement,
   )
   useEffect(() => {
-    currentSelectionRef.current = currentSelection?.selectionElement
+    currentSelectionRefElement.current = currentSelection?.selectionElement
   }, [currentSelection])
   useEffect(() => {
-    const target = currentSelectionRef.current || selectionElementRef.current
+    const target =
+      currentSelectionRefElement.current || selectionElementRef.current
     if (
       floatingDropdownMenuSystemItems.selectContextMenuId &&
       ['Replace selection', 'Insert below', 'Discard'].includes(
         floatingDropdownMenuSystemItems.selectContextMenuId,
       )
     ) {
-      currentSelectionRef.current = undefined
       setFloatingDropdownMenu({
         open: false,
         rootRect: null,

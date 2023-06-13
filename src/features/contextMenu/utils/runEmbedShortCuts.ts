@@ -1,3 +1,5 @@
+import { ROOT_CONTEXT_MENU_ID } from '@/types'
+
 export const intervalFindHtmlElement = (
   root: HTMLElement | ShadowRoot,
   selection: string,
@@ -75,9 +77,8 @@ const runEmbedShortCuts = () => {
     }
     try {
       // set selection
-      const shadowRoot = document.getElementById(
-        'USE_CHAT_GPT_AI_ROOT_Context_Menu',
-      )?.shadowRoot
+      const shadowRoot =
+        document.getElementById(ROOT_CONTEXT_MENU_ID)?.shadowRoot
       // find contextMenu click button in 2000ms
       if (shadowRoot) {
         const contextMenuButton = await intervalFindAllHtmlElement(

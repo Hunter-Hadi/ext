@@ -1,7 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail'
 import Stack from '@mui/material/Stack'
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { AppSettingsState } from '@/store'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import {
@@ -9,13 +9,17 @@ import {
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu'
 
-const WritingMessageBox = () => {
+const WritingMessageBox: FC<{
+  onChange?: (value: string) => void
+}> = (props) => {
+  const { onChange } = props
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const { userSettings } = useRecoilValue(AppSettingsState)
   const conversation = useRecoilValue(ChatGPTConversationState)
   const setFloatingDropdownMenuSystemItems = useSetRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
+  const messagesRef = useRef<string[]>([])
   const [lastWritingMessage, setLastWritingMessage] = useState('')
   useEffect(() => {
     if (!floatingDropdownMenu.open) {
@@ -26,7 +30,17 @@ const WritingMessageBox = () => {
   useEffect(() => {
     if (conversation.writingMessage?.text) {
       console.log('AIInput writingMessage update: ', lastWritingMessage)
-      setLastWritingMessage(conversation.writingMessage.text)
+      const text = conversation.writingMessage.text
+      const lastMessageIndex = Math.max(messagesRef.current.length - 1, 0)
+      const lastMessage = messagesRef.current[lastMessageIndex] || ''
+      if (text.length < lastMessage.length) {
+        // 说明新增了一行
+        messagesRef.current.push(text)
+      } else {
+        messagesRef.current[lastMessageIndex] = text
+      }
+      console.log(messagesRef.current, 'Context menu')
+      setLastWritingMessage(messagesRef.current.join('\n'))
     }
   }, [conversation.writingMessage])
   useEffect(() => {
@@ -37,6 +51,7 @@ const WritingMessageBox = () => {
         lastOutput: lastWritingMessage,
       }
     })
+    onChange?.(lastWritingMessage)
   }, [lastWritingMessage])
   return (
     <Stack>

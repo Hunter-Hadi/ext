@@ -400,6 +400,10 @@ export const FloatingContextMenuMiddleware = [
   }),
 ]
 
+/**
+ * @deprecated
+ * @param iframeElement
+ */
 export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
   const frame = iframeElement
   const frameWindow: any = frame && frame.contentWindow

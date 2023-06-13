@@ -8,7 +8,7 @@ import {
   useInteractions,
 } from '@floating-ui/react'
 import React, { FC, useEffect, useMemo, useState } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
@@ -34,6 +34,7 @@ import {
 import {
   getAppContextMenuElement,
   getCurrentDomainHost,
+  showChatBox,
   // showChatBox,
 } from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
@@ -44,7 +45,13 @@ import { FloatingContextMenuCloseIconButton } from '@/features/contextMenu/compo
 import { getMediator } from '@/store/mediator'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
-import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu/types'
+import { useRangy } from '@/features/contextMenu'
+import { useAuthLogin } from '@/features/auth'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
@@ -78,6 +85,21 @@ const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
     data: {
       type: 'shortcuts',
       editable: false,
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'I have an unfinished text that I would like you to continue. Please continue the text from the following point that match the original tone, writing style, structure, intended audience, and the direction the text should take for my text.\nWrite in {{AI_OUTPUT_LANGUAGE}}.\nHere is the text:\n"""\n{{LAST_AI_OUTPUT}}\n"""',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
     },
     children: [],
   },
@@ -111,15 +133,20 @@ const FloatingContextMenu: FC<{
 }> = (props) => {
   const { root } = props
   const { palette } = useTheme()
+  const { currentSelectionRef } = useRangy()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
+  const { isLogin } = useAuthLogin()
+  const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
-  const setFloatingDropdownMenuSystemItems = useSetRecoilState(
-    FloatingDropdownMenuSystemItemsState,
-  )
+  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
+    useRecoilState(FloatingDropdownMenuSystemItemsState)
   // 是否有上下文，决定contextMenu展示的内容
-  const [haveContext, setHaveContext] = useState(false)
+  const haveContext = useMemo(
+    () => floatingDropdownMenuSystemItems.lastOutput,
+    [floatingDropdownMenuSystemItems.lastOutput],
+  )
   const [
     floatingDropdownMenuSelectedItem,
     updateFloatingDropdownMenuSelectedItem,
@@ -184,9 +211,6 @@ const FloatingContextMenu: FC<{
     open: floatingDropdownMenu.open,
     onOpenChange: (open) => {
       setFloatingDropdownMenu((prev) => {
-        if (!open) {
-          setHaveContext(false)
-        }
         return {
           ...prev,
           open,
@@ -244,7 +268,8 @@ const FloatingContextMenu: FC<{
           if (menuItem.children.length > 0) {
             firstMenuItem =
               menuItem.children.find(
-                (child) => child.data.type === 'shortcuts',
+                (child: IContextMenuItemWithChildren) =>
+                  child.data.type === 'shortcuts',
               ) || null
             return firstMenuItem !== null
           }
@@ -282,7 +307,6 @@ const FloatingContextMenu: FC<{
       }
     }
     console.log('AIInput remove', floatingDropdownMenu.open)
-    setHaveContext(false)
   }, [floatingDropdownMenu.open])
   const focusInput = (event: KeyboardEvent) => {
     if (floatingDropdownMenu.open) {
@@ -311,58 +335,77 @@ const FloatingContextMenu: FC<{
       floatingDropdownMenu.open &&
       !loading
     ) {
+      // 是否为可编辑的元素
+      const isEditableElement =
+        currentSelectionRef.current?.selectionElement?.isEditableElement
+      // 判断是否可以运行
+      let needOpenChatBox = false
+      // 是否为[继续]菜单的动作
+      let isContinueAction = false
+      let currentContextMenu: IContextMenuItem | null = null
+      if (!isLogin || chatGPTClient.status !== 'success') {
+        needOpenChatBox = true
+      }
+      // 先从[继续]菜单中查找
       const continueContextMenu = CONTINUE_ARRAY.find(
         (item) =>
           item.id === floatingDropdownMenuSelectedItem.selectedContextMenuId,
       )
       if (continueContextMenu) {
-        setFloatingDropdownMenuSystemItems((prev) => {
-          return {
-            ...prev,
-            selectContextMenuId: continueContextMenu.id,
-          }
-        })
-        updateFloatingDropdownMenuSelectedItem(() => {
-          return {
-            selectedContextMenuId: null,
-            hoverContextMenuIdMap: {},
-            lastHoverContextMenuId: null,
-          }
-        })
-        return
+        currentContextMenu = continueContextMenu
+        isContinueAction = true
       }
-      const findContextMenu = originContextMenuList.find(
-        (contextMenu) =>
-          contextMenu.id ===
-          floatingDropdownMenuSelectedItem.selectedContextMenuId,
-      )
-      if (
-        findContextMenu &&
-        findContextMenu.data.actions &&
-        findContextMenu.data.actions.length > 0
-      ) {
-        // setFloatingDropdownMenu({
-        //   open: false,
-        //   rootRect: null,
-        // })
-        updateFloatingDropdownMenuSelectedItem(() => {
-          return {
-            selectedContextMenuId: null,
-            hoverContextMenuIdMap: {},
-            lastHoverContextMenuId: null,
-          }
-        })
-        const runActions = findContextMenu.data.actions
-        increaseChatGPTRequestCount('prompt', {
-          id: findContextMenu.id,
-          name: findContextMenu.text,
-          host: getCurrentDomainHost(),
-        }).then(() => {
-          setShortCuts(runActions)
-          runShortCuts().then(() => {
-            setHaveContext(true)
+      // 如果不是[继续]菜单的动作，则从原始菜单中查找
+      if (!currentContextMenu) {
+        currentContextMenu =
+          originContextMenuList.find(
+            (contextMenu) =>
+              contextMenu.id ===
+              floatingDropdownMenuSelectedItem.selectedContextMenuId,
+          ) || null
+      }
+      if (currentContextMenu && currentContextMenu.id) {
+        if (
+          currentContextMenu.data.actions &&
+          currentContextMenu.data.actions.length > 0
+        ) {
+          updateFloatingDropdownMenuSelectedItem(() => {
+            return {
+              selectedContextMenuId: null,
+              hoverContextMenuIdMap: {},
+              lastHoverContextMenuId: null,
+            }
           })
-        })
+          if (!isEditableElement || needOpenChatBox) {
+            showChatBox()
+            setFloatingDropdownMenu({
+              open: false,
+              rootRect: null,
+            })
+          }
+          const runActions = currentContextMenu.data.actions
+          if (runActions && runActions.length > 0) {
+            increaseChatGPTRequestCount('prompt', {
+              id: currentContextMenu.id,
+              name: currentContextMenu.text,
+              host: getCurrentDomainHost(),
+            }).then(() => {
+              setShortCuts(runActions)
+              runShortCuts().then(() => {
+                // done
+              })
+            })
+          } else {
+            if (isContinueAction && !needOpenChatBox) {
+              setFloatingDropdownMenuSystemItems((prev) => {
+                return {
+                  ...prev,
+                  selectContextMenuId: currentContextMenu?.id || null,
+                }
+              })
+            }
+          }
+        }
       }
     }
   }, [
@@ -370,6 +413,8 @@ const FloatingContextMenu: FC<{
     originContextMenuList,
     floatingDropdownMenu.open,
     loading,
+    chatGPTClient,
+    isLogin,
   ])
   useEffect(() => {
     getMediator('floatingMenuInputMediator').subscribe(setInputValue)
@@ -398,7 +443,6 @@ const FloatingContextMenu: FC<{
             focusInput(event as any)
           }
           if (event.key === 'Escape') {
-            setHaveContext(false)
             setFloatingDropdownMenu({
               open: false,
               rootRect: null,

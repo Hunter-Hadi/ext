@@ -81,6 +81,7 @@ const FloatingContextMenuList: FC<
   } = props
   const RenderMenuList = useMemo(() => {
     const nodeList: React.ReactNode[] = []
+    console.log('Context Menu List Render', menuList)
     menuList.forEach((menuItem, index) => {
       if (menuItem.data.type === 'group') {
         if (index > 0) {

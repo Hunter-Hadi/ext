@@ -38,7 +38,9 @@ const WritingMessageBox: FC<{
         messagesRef.current[lastMessageIndex] = text
       }
       console.log(messagesRef.current, 'Context menu')
-      setLastWritingMessage(messagesRef.current.join('\n'))
+      setLastWritingMessage(
+        messagesRef.current.join('\n\n').replace(/\n{2,}/, '\n\n'),
+      )
     }
   }, [conversation.writingMessage])
   useEffect(() => {

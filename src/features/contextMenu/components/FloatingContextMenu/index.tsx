@@ -234,6 +234,19 @@ const FloatingContextMenu: FC<{
     'textSelectPopupButton',
     inputValue,
   )
+  // 渲染的菜单列表
+  const memoMenuList = useMemo(() => {
+    if (loading) {
+      return EMPTY_ARRAY
+    }
+    if (haveContext) {
+      return CONTINUE_ARRAY
+    }
+    return contextMenuList
+  }, [loading, contextMenuList, haveContext])
+  useEffect(() => {
+    console.log('Context Menu List', memoMenuList)
+  }, [memoMenuList])
   const haveDraft = inputValue.length > 0
   // 选中区域高亮
   useEffect(() => {
@@ -499,13 +512,7 @@ const FloatingContextMenu: FC<{
         <FloatingContextMenuList
           defaultPlacement={safePlacement.contextMenuPlacement}
           needAutoUpdate
-          menuList={
-            loading
-              ? EMPTY_ARRAY
-              : haveContext
-              ? CONTINUE_ARRAY
-              : contextMenuList
-          }
+          menuList={memoMenuList}
           referenceElementOpen={floatingDropdownMenu.open}
           referenceElement={
             <div

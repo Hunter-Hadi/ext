@@ -134,6 +134,9 @@ const useInitRangy = () => {
             }
           }
         }
+        if (!selectionElementRef.current?.isEditableElement) {
+          debugger
+        }
         if (
           selectionElementRef.current &&
           selectionElementRef.current?.selectionText

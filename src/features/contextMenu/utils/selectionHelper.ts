@@ -2,6 +2,7 @@ import { v4 as uuidV4 } from 'uuid'
 import isNumber from 'lodash-es/isNumber'
 import { IRangyRect, ISelectionElement } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
+import { getCurrentDomainHost } from '@/utils'
 /**
  * @description 获取光标位置
  * @param element
@@ -299,13 +300,31 @@ export const replaceMarkerContent = (
       range.deleteContents()
       range.insertNode(document.createTextNode(value))
     }
-    startMarker.focus()
-    startMarker.remove()
-    endMarker.remove()
-    setTimeout(() => {
+    /**
+     * @description - 高亮选中内容处理, 在不同网站下，高亮选中内容的处理不一样
+     *
+     */
+    const defaultHighlight = () => {
+      startMarker.focus()
+      startMarker.remove()
+      endMarker.remove()
       window.getSelection()?.removeAllRanges()
       window.getSelection()?.addRange(range)
-    }, 0)
+    }
+    if (getCurrentDomainHost() === 'mail.google.com') {
+      const { editableElement } = getEditableElement(
+        startMarker as HTMLSpanElement,
+      )
+      if (editableElement) {
+        editableElement.focus()
+        editableElement.click()
+      }
+      setTimeout(() => {
+        defaultHighlight()
+      }, 100)
+    } else {
+      defaultHighlight()
+    }
   }
   removeAllSelectionMarker()
 }
@@ -377,6 +396,11 @@ export const getEditableElement = (
   }
 }
 
+/**
+ * @description - 创建一个selectionElement
+ * @param element
+ * @param overwrite
+ */
 export const createSelectionElement = (
   element: HTMLElement,
   overwrite?: Partial<ISelectionElement>,
@@ -454,4 +478,51 @@ export const createSelectionElement = (
     ...overwrite,
   }
   return selectionElement
+}
+
+/**
+ * @description - 获取当前的selection的实际元素
+ * @param startContainer
+ */
+export const getSelectionBoundaryElement = (startContainer = true) => {
+  let range, container
+  if ((document as any).selection) {
+    range = (document as any).selection.createRange()
+    range.collapse(startContainer)
+    return range.parentElement()
+  } else {
+    const selection = window.getSelection()
+    if (selection?.getRangeAt) {
+      if (selection?.rangeCount > 0) {
+        range = selection.getRangeAt(0)
+      }
+    } else {
+      // Old WebKit
+      range = document.createRange()
+      range.setStart(
+        (selection as any)?.anchorNode,
+        (selection as any)?.anchorOffset,
+      )
+      range.setEnd(
+        (selection as any)?.focusNode,
+        (selection as any)?.focusOffset,
+      )
+      // Handle the case when the selection was selected backwards (from the end to the start in the document)
+      if (range.collapsed !== selection?.isCollapsed) {
+        range.setStart(
+          (selection as any)?.focusNode,
+          (selection as any)?.focusOffset,
+        )
+        range.setEnd(
+          (selection as any)?.anchorNode,
+          (selection as any)?.anchorOffset,
+        )
+      }
+    }
+    if (range) {
+      container = range[startContainer ? 'startContainer' : 'endContainer']
+      // Check if the container is a text node and return its parent if so
+      return container.nodeType === 3 ? container.parentNode : container
+    }
+  }
 }

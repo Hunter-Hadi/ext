@@ -27,16 +27,9 @@ import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
 import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
-import Browser from 'webextension-polyfill'
+import { RESOURCES_URL } from '@/constant'
 
 const log = new Log('AppInit')
-
-const PdfGuideImageUrl1 = Browser.runtime.getURL(
-  `/assets/USE_CHAT_GPT_AI/images/pdf/guide1.gif`,
-)
-const PdfGuideImageUrl2 = Browser.runtime.getURL(
-  `/assets/USE_CHAT_GPT_AI/images/pdf/guide2.gif`,
-)
 
 const GmailInit = () => {
   useInitInboxSdk()
@@ -213,7 +206,7 @@ const useHandlePDFViewerError = () => {
                 style={{ flexShrink: 0, alignSelf: 'center' }}
                 height={156}
                 width={468}
-                src={PdfGuideImageUrl1}
+                src={`${RESOURCES_URL}/extension/pdf/guide1.gif`}
               />
             </Box>
             <Button
@@ -228,15 +221,15 @@ const useHandlePDFViewerError = () => {
                 window.close()
               }}
               sx={{
-                height: '48px',
-                backgroundColor: '#fff',
-                color: '#7602d3',
-                fontSize: '14px',
+                height: '56px',
+                backgroundColor: '#7601D3',
+                color: '#fff',
+                fontSize: '18px',
                 textTransform: 'none',
                 px: 3,
                 '&:hover': {
-                  backgroundColor: '#fff',
-                  color: '#7602d3',
+                  backgroundColor: '#7601D3',
+                  color: '#fff',
                 },
               }}
             >
@@ -259,7 +252,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`Turn off "PDF AI viewer" at any time on the extension's `}
+              {`You can turn off "PDF AI viewer" at any time on the extension's `}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}
@@ -281,7 +274,7 @@ const useHandlePDFViewerError = () => {
               style={{ flexShrink: 0, alignSelf: 'center' }}
               height={156}
               width={468}
-              src={PdfGuideImageUrl2}
+              src={`${RESOURCES_URL}/extension/pdf/guide2.gif`}
             />
           </Stack>
         </Stack>,

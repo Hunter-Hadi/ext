@@ -53,11 +53,16 @@ export const increaseChatGPTRequestCount = async (
     const cacheData: IChatRequestCountRecordType =
       (await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)) || {}
     const settings = await getChromeExtensionSettings()
-    const provider = settings.chatGPTProvider
+    const provider = settings.chatGPTProvider || 'UNKNOWN_PROVIDER'
     const currentDay = dayjs().format('YYYY-MM-DD')
     if (
       !cacheData[currentDay] ||
-      !Object.prototype.hasOwnProperty.call(cacheData[currentDay], 'total_cnt')
+      !Object.prototype.hasOwnProperty.call(
+        cacheData[currentDay],
+        'total_cnt',
+      ) ||
+      // TODO - 因为上个版本有domain_cnt，这个版本不需要了，直接重新来
+      Object.prototype.hasOwnProperty.call(cacheData[currentDay], 'domain_cnt')
     ) {
       cacheData[currentDay] = {
         error_cnt: 0,
@@ -78,30 +83,29 @@ export const increaseChatGPTRequestCount = async (
         cacheData[currentDay]['prompt_cnt'][id] = {
           name: name,
           ai_provider_cnt: {},
-          domain_cnt: {},
         }
-      }
-      if (!cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host]) {
-        cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host] = {
-          total_cnt: 1,
-        }
-      } else {
-        cacheData[currentDay]['prompt_cnt'][id]['domain_cnt'][host][
-          'total_cnt'
-        ] += 1
       }
       if (provider) {
         if (
           !cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider]
         ) {
-          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][
-            provider
-          ] = 1
-        } else {
-          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][
-            provider
-          ] += 1
+          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider] =
+            {}
         }
+        if (
+          !cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider][
+            host
+          ]
+        ) {
+          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider][
+            host
+          ] = {
+            total_cnt: 0,
+          }
+        }
+        cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider][
+          host
+        ]['total_cnt'] += 1
       }
     }
     setChatGPTRequestTime(Date.now())

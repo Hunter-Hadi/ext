@@ -13,7 +13,11 @@ import {
 import Log from '@/utils/Log'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import Browser from 'webextension-polyfill'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
+import {
+  APP_VERSION,
+  CHAT_GPT_MESSAGES_RECOIL_KEY,
+  CHROME_EXTENSION_HOMEPAGE_URL,
+} from '@/types'
 
 const log = new Log('Background/Chat/ChatSystem')
 
@@ -156,6 +160,13 @@ class ChatSystem implements ChatInterface {
       chatGPTProvider: provider,
     })
     await this.preAuth()
+    try {
+      Browser.runtime.setUninstallURL(
+        `${CHROME_EXTENSION_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}&provider=${provider}`,
+      )
+    } catch (e) {
+      log.error('switchAdapter', 'setUninstallURL', e)
+    }
     return this.currentAdapter
   }
   async auth(authTabId: number) {

@@ -79,7 +79,6 @@ const useSyncSettingsChecker = () => {
     status: 'ok' | 'needSync' | 'error' | 'needLogin'
   }> => {
     try {
-      console.log('检测本地设置和服务器设置')
       setShowErrorAlert(false)
       setShowCheckAlert(false)
       localSettingsCacheRef.current = undefined

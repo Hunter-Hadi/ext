@@ -145,7 +145,7 @@ export const checkSettingsSync = async (): Promise<{
           }
           if (localLastModified < serverLastModified) {
             // 本地设置过期, 同步服务器的设置到本地
-            console.log('本地设置过期, 同步服务器的设置到本地')
+            console.log('本地设置过期, 同步服务器设置到本地')
             await syncServerSettingsToLocalSettings()
             return {
               success: true,
@@ -154,7 +154,7 @@ export const checkSettingsSync = async (): Promise<{
           }
           if (localLastModified > serverLastModified) {
             // 本地设置更新, 同步到云端
-            console.log('本地设置更新, 同步到云端')
+            console.log('本地设置比服务器新, 同步到服务器')
             await syncLocalSettingsToServerSettings()
             return {
               success: true,

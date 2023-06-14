@@ -123,14 +123,17 @@ export const createSelectionMarker = (element: HTMLElement) => {
             // get start offset
             // get end offset
             const { start, end } = getInputSelection(inputElement)
-            element.setAttribute('data-usechatgpt-start', start.toString())
-            element.setAttribute('data-usechatgpt-end', end.toString())
+            element.setAttribute(
+              'data-usechatgpt-start-offset',
+              start.toString(),
+            )
+            element.setAttribute('data-usechatgpt-end-offset', end.toString())
             element.setAttribute('data-usechatgpt-marker', 'usechatgpt-marker')
             element.setAttribute(
-              'data-usechatgpt-start-marker-id',
+              'data-usechatgpt-marker-start-id',
               startMarkerId,
             )
-            element.setAttribute('data-usechatgpt-end-marker-id', endMarkerId)
+            element.setAttribute('data-usechatgpt-marker-end-id', endMarkerId)
             /**
              * 选区内容优先级
              * 1. 选区内容
@@ -163,7 +166,7 @@ export const createSelectionMarker = (element: HTMLElement) => {
             )
             startMarker.setAttribute('contenteditable', 'false')
             startMarker.setAttribute(
-              'data-usechatgpt-start-marker-id',
+              'data-usechatgpt-marker-start-id',
               startMarkerId,
             )
             boundaryRange.insertNode(startMarker)
@@ -179,7 +182,7 @@ export const createSelectionMarker = (element: HTMLElement) => {
               'usechatgpt-marker',
             )
             endMarker.setAttribute('contenteditable', 'false')
-            endMarker.setAttribute('data-usechatgpt-end-marker-id', endMarkerId)
+            endMarker.setAttribute('data-usechatgpt-marker-end-id', endMarkerId)
             boundaryRange.insertNode(endMarker)
             /**
              * 选区内容优先级
@@ -259,15 +262,17 @@ export const replaceMarkerContent = (
   type: 'insert_blow' | 'insert_above' | 'replace',
 ) => {
   const startMarker = document.querySelector(
-    `[data-usechatgpt-start-marker-id="${startMarkerId}"`,
+    `[data-usechatgpt-marker-start-id="${startMarkerId}"`,
   ) as HTMLElement
   const endMarker = document.querySelector(
-    `[data-usechatgpt-end-marker-id="${endMarkerId}"`,
+    `[data-usechatgpt-marker-end-id="${endMarkerId}"`,
   )
   if (startMarker.tagName === 'INPUT' || startMarker.tagName === 'TEXTAREA') {
     const inputElement = startMarker as HTMLInputElement
-    const start = Number(inputElement.getAttribute('data-usechatgpt-start'))
-    const end = Number(inputElement.getAttribute('data-usechatgpt-end'))
+    const start = Number(
+      inputElement.getAttribute('data-usechatgpt-start-offset'),
+    )
+    const end = Number(inputElement.getAttribute('data-usechatgpt-end-offset'))
     if (isNumber(start) && isNumber(end)) {
       if (type === 'replace') {
         const newValue =
@@ -277,7 +282,9 @@ export const replaceMarkerContent = (
         inputElement.value = newValue
       } else if (type === 'insert_blow') {
         if (inputElement.tagName === 'TEXTAREA') {
-          value = '\n' + value
+          value = ('\n\n' + value).replace(/^\n{2,}/, '\n\n')
+        } else {
+          value = (' ' + value).replace(/^\s+/, ' ')
         }
         const newValue =
           inputElement.value.substring(0, start) +
@@ -290,26 +297,26 @@ export const replaceMarkerContent = (
   } else if (startMarker && endMarker) {
     const range = document.createRange()
     if (type === 'insert_blow') {
-      value = '\n' + value
+      value = ('\n\n' + value).replace(/^\n{2,}/, '\n\n')
       range.setStartAfter(endMarker)
       range.setEndAfter(endMarker)
-      range.insertNode(document.createTextNode(value))
     } else if (type === 'replace') {
       range.setStartAfter(startMarker)
       range.setEndBefore(endMarker)
       range.deleteContents()
-      range.insertNode(document.createTextNode(value))
     }
     /**
-     * @description - 高亮选中内容处理, 在不同网站下，高亮选中内容的处理不一样
+     * @description - 默认的修改内容和高亮选中内容处理, 在不同网站下，高亮选中内容的处理不一样
      *
      */
-    const defaultHighlight = () => {
+    const defaultHandleChangeValueAndHighlight = (insertValue?: string) => {
+      if (insertValue) {
+        range.insertNode(document.createTextNode(insertValue))
+      }
       startMarker.focus()
-      startMarker.remove()
-      endMarker.remove()
       window.getSelection()?.removeAllRanges()
       window.getSelection()?.addRange(range)
+      removeAllSelectionMarker()
     }
     if (getCurrentDomainHost() === 'mail.google.com') {
       const { editableElement } = getEditableElement(
@@ -320,10 +327,22 @@ export const replaceMarkerContent = (
         editableElement.click()
       }
       setTimeout(() => {
-        defaultHighlight()
+        /**
+         * 反转数组是因为插入的内容是从底部插入的
+         */
+        value
+          .split('\n\n')
+          .reverse()
+          .forEach((partOfText) => {
+            const div = document.createElement('div')
+            div.style.cssText = 'white-space: pre-wrap;'
+            div.innerText = partOfText
+            range.insertNode(div)
+          })
+        defaultHandleChangeValueAndHighlight()
       }, 100)
     } else {
-      defaultHighlight()
+      defaultHandleChangeValueAndHighlight(value)
     }
   }
   removeAllSelectionMarker()
@@ -338,15 +357,15 @@ export const removeAllSelectionMarker = () => {
   }
   document.querySelectorAll('[data-usechatgpt-marker]').forEach((marker) => {
     // remove span marker
-    if (marker.tagName === 'SPAN') {
+    if (marker.tagName === 'SPAN' || marker?.id.includes('usechatgpt-marker')) {
       marker.remove()
       return
     }
     marker.removeAttribute('data-usechatgpt-marker')
-    marker.removeAttribute('data-usechatgpt-start')
-    marker.removeAttribute('data-usechatgpt-end')
-    marker.removeAttribute('data-usechatgpt-start-marker-id')
-    marker.removeAttribute('data-usechatgpt-end-marker-id')
+    marker.removeAttribute('data-usechatgpt-start-offset')
+    marker.removeAttribute('data-usechatgpt-end-offset')
+    marker.removeAttribute('data-usechatgpt-marker-start-id')
+    marker.removeAttribute('data-usechatgpt-marker-end-id')
   })
 }
 
@@ -407,21 +426,24 @@ export const createSelectionElement = (
 ): ISelectionElement => {
   const target = element
   const selectionString = computedSelectionString()
-  let editableElementSelectionString = ''
+  const editableElementSelectionString = ''
   const { isEditableElement, editableElement } = getEditableElement(target)
-  let startMarkerId = ''
-  let endMarkerId = ''
+  const startMarkerId = ''
+  const endMarkerId = ''
   let caretOffset = 0
   if (isEditableElement && editableElement) {
     caretOffset = getCaretCharacterOffsetWithin(editableElement)
-    const selectionMarker = createSelectionMarker(editableElement)
-    startMarkerId = selectionMarker.startMarkerId
-    endMarkerId = selectionMarker.endMarkerId
-    // 如果是输入框，则获取输入框选中的文本的值，否则用输入框的内容
-    if (selectionMarker.selectionString) {
-      console.log('AIInput marker string', selectionMarker.selectionString)
-      editableElementSelectionString = selectionMarker.selectionString
-    }
+    /**
+     * @description - 2023/06/14 - 由于插入marker会改变editableElement的内容，所以这里先不插入marker，在展示floating menu的时候才插入marker
+     */
+    // const selectionMarker = createSelectionMarker(editableElement)
+    // startMarkerId = selectionMarker.startMarkerId
+    // endMarkerId = selectionMarker.endMarkerId
+    // // 如果是输入框，则获取输入框选中的文本的值，否则用输入框的内容
+    // if (selectionMarker.selectionString) {
+    //   console.log('AIInput marker string', selectionMarker.selectionString)
+    //   editableElementSelectionString = selectionMarker.selectionString
+    // }
   }
   const targetRect = cloneRect(target.getBoundingClientRect())
   let selectionRect: IRangyRect | null = null

@@ -370,7 +370,7 @@ export const FloatingContextMenuMiddleware = [
     padding: 16,
   }),
   offset((params) => {
-    console.log('[ContextMenu Module]: [offset]', params)
+    // console.log('[ContextMenu Module]: [offset]', params)
     if (params.placement.indexOf('bottom') > -1) {
       const boundary = {
         left: 0,

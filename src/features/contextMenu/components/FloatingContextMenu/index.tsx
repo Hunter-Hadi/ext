@@ -91,7 +91,7 @@ const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'I have an unfinished text that I would like you to continue. Please continue the text from the following point that match the original tone, writing style, structure, intended audience, and the direction the text should take for my text.\nWrite in {{AI_OUTPUT_LANGUAGE}}.\nHere is the text:\n"""\n{{LAST_AI_OUTPUT}}\n"""',
+              'I have an unfinished text and I hope you can help me continue with the next paragraph. You don\'t need to complete all the content. Please continue the text from the following points that match the tone, writing style, structure, target audience, and direction that my text should take.\nWrite in {{AI_OUTPUT_LANGUAGE}}.\nHere is the text:\n"""\n{{LAST_AI_OUTPUT}}\n"""',
           },
         },
         {

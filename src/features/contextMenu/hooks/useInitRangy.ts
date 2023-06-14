@@ -27,8 +27,13 @@ import {
   ISelectionElement,
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
-import { createSelectionElement } from '@/features/contextMenu/utils/selectionHelper'
+import {
+  createSelectionElement,
+  createSelectionMarker,
+  getSelectionBoundaryElement,
+} from '@/features/contextMenu/utils/selectionHelper'
 import { ROOT_CONTAINER_ID, ROOT_CONTEXT_MENU_ID } from '@/types'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -39,6 +44,7 @@ const port = new ContentScriptConnectionV2({
 })
 const useInitRangy = () => {
   const {
+    show,
     initRangyCore,
     rangy,
     showRangy,
@@ -88,18 +94,34 @@ const useInitRangy = () => {
   // 4. 获取active element
   // 5. 保存选中状态
   // 6. 显示floating button
+  const floatingButtonIsShowRef = useRef(show)
+  useEffect(() => {
+    floatingButtonIsShowRef.current = show
+  }, [show])
   const saveHighlightedRangeAndShowContextMenu = useCallback(
     (event: MouseEvent | KeyboardEvent) => {
       {
-        const activeElement: HTMLElement | null = event.target as HTMLElement
+        if (floatingButtonIsShowRef.current) {
+          // check is Escape
+          if (event instanceof KeyboardEvent && event.key === 'Escape') {
+            console.log('[ContextMenu Module]: Escape close floating button')
+            hideRangy()
+            return
+          }
+        }
+        let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
         const rangySelection = rangy?.getSelection()
-        console.log(
-          '[ContextMenu Module]: event',
-          isMouseEvent ? 'MouseEvent' : 'KeyboardEvent',
-          activeElement,
-        )
-        if (activeElement) {
+        const nativeSelectionElement = getSelectionBoundaryElement()
+        if (nativeSelectionElement) {
+          activeElement = nativeSelectionElement as HTMLElement
+        }
+        // 有activeElement(iframe传递的是没有activeElement的), 且选区不在sidebar/contextMenu上
+        if (
+          activeElement &&
+          activeElement.id !== ROOT_CONTAINER_ID &&
+          activeElement.id !== ROOT_CONTEXT_MENU_ID
+        ) {
           /**
            * @description 进来这个if有以下几种情况
            * 1. rangy有选区
@@ -108,6 +130,7 @@ const useInitRangy = () => {
            */
           // 1. rangy有选区
           if (rangySelection && rangySelection?.toString()?.trim()) {
+            console.log('[ContextMenu Module]: RANGY')
             selectionElementRef.current = createSelectionElement(
               activeElement,
               {
@@ -119,28 +142,26 @@ const useInitRangy = () => {
               },
             )
           } else {
-            // 2. rangy没有选区, 并且选取不在sidebar/contextMenu上
-            if (
-              activeElement.id !== ROOT_CONTAINER_ID &&
-              activeElement.id !== ROOT_CONTEXT_MENU_ID
-            ) {
-              selectionElementRef.current = createSelectionElement(
-                activeElement,
-                {
-                  target: activeElement,
-                  eventType: isMouseEvent ? 'mouseup' : 'keyup',
-                },
-              )
-            }
+            // 2. rangy没有选区
+            console.log('[ContextMenu Module]: NATIVE')
+            selectionElementRef.current = createSelectionElement(
+              activeElement,
+              {
+                target: activeElement,
+                eventType: isMouseEvent ? 'mouseup' : 'keyup',
+              },
+            )
           }
-        }
-        if (!selectionElementRef.current?.isEditableElement) {
-          debugger
         }
         if (
           selectionElementRef.current &&
           selectionElementRef.current?.selectionText
         ) {
+          console.log(
+            '[ContextMenu Module]: event',
+            isMouseEvent ? 'MouseEvent' : 'KeyboardEvent',
+            activeElement,
+          )
           saveTempSelection({
             selectionText:
               selectionElementRef.current?.editableElementSelectionText ||
@@ -225,7 +246,7 @@ const useInitRangy = () => {
     return () => {
       document.removeEventListener('mousedown', mouseDownListener)
     }
-  }, [rangy])
+  }, [rangy, saveHighlightedRangeAndShowContextMenu])
   // selection事件
   useEffect(() => {
     const mouseUpListener = debounce(
@@ -291,63 +312,92 @@ const useInitRangy = () => {
       document.removeEventListener('keyup', keyupListener)
       clearListener()
     }
-  }, [rangy])
+  }, [rangy, saveHighlightedRangeAndShowContextMenu, runEmbedShortCuts])
+  const openFloatingMenu = useCallback(() => {
+    AIInputLog.info('listen message')
+    /**
+     * floating menu 展开逻辑:
+     * 1. 如果当前在input中，展开
+     * 2. 如果当前有选中的文本，展开
+     * 3. 如果都不符合，展开chat box
+     */
+    if (
+      selectionElementRef.current &&
+      (selectionElementRef.current?.selectionText ||
+        selectionElementRef.current?.isEditableElement)
+    ) {
+      // 如果当前在input中，展开
+      let virtualSelectionElement: IVirtualIframeSelectionElement =
+        selectionElementRef.current as any
+      // 1. 打开ai input
+      // 2. 阻止打开chatBox
+      AIInputLog.info('open', virtualSelectionElement)
+      if (
+        selectionElementRef.current &&
+        selectionElementRef.current?.isEditableElement &&
+        selectionElementRef.current?.target
+      ) {
+        const selectionMarkerData = createSelectionMarker(
+          selectionElementRef.current?.target,
+        )
+        if (selectionMarkerData) {
+          const cloneSelectionElement = cloneDeep(selectionElementRef.current)
+          cloneSelectionElement.startMarkerId =
+            selectionMarkerData.startMarkerId
+          cloneSelectionElement.endMarkerId = selectionMarkerData.endMarkerId
+          cloneSelectionElement.editableElementSelectionText =
+            selectionMarkerData.selectionString
+          cloneSelectionElement.editableElementSelectionHTML =
+            selectionMarkerData.selectionString
+          selectionElementRef.current = cloneSelectionElement
+          virtualSelectionElement =
+            cloneSelectionElement as IVirtualIframeSelectionElement
+          console.log(
+            '[ContextMenu Module]: selectionMarkerData',
+            selectionMarkerData,
+          )
+        }
+      }
+      showFloatingContextMenuWithVirtualSelection({
+        selectionText:
+          virtualSelectionElement.editableElementSelectionText ||
+          virtualSelectionElement.selectionText ||
+          '',
+        selectionHTML:
+          virtualSelectionElement.editableElementSelectionText ||
+          virtualSelectionElement.selectionText ||
+          '',
+        selectionRect: virtualSelectionElement.selectionRect,
+        activeElement: virtualSelectionElement.target as HTMLElement,
+        selectionInputAble: virtualSelectionElement.isEditableElement,
+        selectionElement: virtualSelectionElement,
+      })
+    } else {
+      // 如果都不符合，展开chat box
+      if (isShowChatBox()) {
+        hideChatBox()
+        setAppState((prevState) => {
+          return {
+            ...prevState,
+            open: false,
+          }
+        })
+      } else {
+        showChatBox()
+        setAppState((prevState) => {
+          return {
+            ...prevState,
+            open: true,
+          }
+        })
+      }
+    }
+  }, [])
   useCreateClientMessageListener(async (event, data, sender) => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
-          AIInputLog.info('listen message')
-          /**
-           * floating menu 展开逻辑:
-           * 1. 如果当前在input中，展开
-           * 2. 如果当前有选中的文本，展开
-           * 3. 如果都不符合，展开chat box
-           */
-          if (
-            selectionElementRef.current &&
-            (selectionElementRef.current?.selectionText ||
-              selectionElementRef.current?.isEditableElement)
-          ) {
-            // 如果当前在input中，展开
-            const virtualSelectionElement: IVirtualIframeSelectionElement =
-              selectionElementRef.current as any
-            // 1. 打开ai input
-            // 2. 阻止打开chatBox
-            AIInputLog.info('open', virtualSelectionElement)
-            showFloatingContextMenuWithVirtualSelection({
-              selectionText:
-                virtualSelectionElement.editableElementSelectionText ||
-                virtualSelectionElement.selectionText ||
-                '',
-              selectionHTML:
-                virtualSelectionElement.editableElementSelectionText ||
-                virtualSelectionElement.selectionText ||
-                '',
-              selectionRect: virtualSelectionElement.selectionRect,
-              activeElement: virtualSelectionElement.target as HTMLElement,
-              selectionInputAble: virtualSelectionElement.isEditableElement,
-              selectionElement: virtualSelectionElement,
-            })
-          } else {
-            // 如果都不符合，展开chat box
-            if (isShowChatBox()) {
-              hideChatBox()
-              setAppState((prevState) => {
-                return {
-                  ...prevState,
-                  open: false,
-                }
-              })
-            } else {
-              showChatBox()
-              setAppState((prevState) => {
-                return {
-                  ...prevState,
-                  open: true,
-                }
-              })
-            }
-          }
+          openFloatingMenu()
           return {
             success: true,
             data: {},

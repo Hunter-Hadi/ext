@@ -7,7 +7,7 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import {
   FloatingDropdownMenuSelectedItemState,
@@ -52,6 +52,7 @@ import {
 import { useRangy } from '@/features/contextMenu'
 import { useAuthLogin } from '@/features/auth'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
@@ -151,6 +152,8 @@ const FloatingContextMenu: FC<{
     floatingDropdownMenuSelectedItem,
     updateFloatingDropdownMenuSelectedItem,
   ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
+  const [actions, setActions] = useState<ISetActionsType>([])
+  const prefActions = useRef<ISetActionsType>([])
   const currentWidth = useMemo(() => {
     if (floatingDropdownMenu.rootRect) {
       const minWidth = Math.max(
@@ -225,7 +228,7 @@ const FloatingContextMenu: FC<{
   const dismiss = useDismiss(context, {})
   const { getFloatingProps } = useInteractions([dismiss, click])
   const [inputValue, setInputValue] = useState('')
-  const { setShortCuts, runShortCuts, loading } =
+  const { setShortCuts, runShortCuts, loading, reGenerate } =
     useShortCutsWithMessageChat('')
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
@@ -321,11 +324,26 @@ const FloatingContextMenu: FC<{
       }
     }
   }
+  const askChatGPT = async (inputValue: string) => {
+    setActions([
+      {
+        type: 'RENDER_CHATGPT_PROMPT',
+        parameters: {
+          template: `${inputValue}:\n\n{{SELECTED_TEXT}}`,
+        },
+      },
+      {
+        type: 'ASK_CHATGPT',
+        parameters: {},
+      },
+    ])
+    // await increaseChatGPTRequestCount('prompt', )
+  }
   useEffect(() => {
     /**
      * @description - 运行快捷指令
      * 1. 必须有选中的id
-     * 2. 必须有子菜单
+     * 2. 必须有菜单列表
      * 3. contextMenu必须是打开状态
      * 4. 必须不是loading
      */
@@ -335,9 +353,6 @@ const FloatingContextMenu: FC<{
       floatingDropdownMenu.open &&
       !loading
     ) {
-      // 是否为可编辑的元素
-      const isEditableElement =
-        currentSelectionRef.current?.selectionElement?.isEditableElement
       // 判断是否可以运行
       let needOpenChatBox = false
       // 是否为[继续]菜单的动作
@@ -365,45 +380,49 @@ const FloatingContextMenu: FC<{
           ) || null
       }
       if (currentContextMenu && currentContextMenu.id) {
-        if (
-          currentContextMenu.data.actions &&
-          currentContextMenu.data.actions.length > 0
-        ) {
-          updateFloatingDropdownMenuSelectedItem(() => {
-            return {
-              selectedContextMenuId: null,
-              hoverContextMenuIdMap: {},
-              lastHoverContextMenuId: null,
-            }
-          })
-          if (!isEditableElement || needOpenChatBox) {
-            showChatBox()
-            setFloatingDropdownMenu({
-              open: false,
-              rootRect: null,
-            })
+        updateFloatingDropdownMenuSelectedItem(() => {
+          return {
+            selectedContextMenuId: null,
+            hoverContextMenuIdMap: {},
+            lastHoverContextMenuId: null,
           }
-          const runActions = currentContextMenu.data.actions
-          if (runActions && runActions.length > 0) {
-            increaseChatGPTRequestCount('prompt', {
-              id: currentContextMenu.id,
-              name: currentContextMenu.text,
-              host: getCurrentDomainHost(),
-            }).then(() => {
-              setShortCuts(runActions)
-              runShortCuts().then(() => {
-                // done
+        })
+        const runActions = currentContextMenu.data.actions || []
+        if (runActions.length > 0) {
+          increaseChatGPTRequestCount('prompt', {
+            id: currentContextMenu.id,
+            name: currentContextMenu.text,
+            host: getCurrentDomainHost(),
+          }).then(() => {
+            setActions(runActions)
+          })
+        } else {
+          if (isContinueAction) {
+            if (needOpenChatBox) {
+              showChatBox()
+              setFloatingDropdownMenu({
+                open: false,
+                rootRect: null,
               })
+              return
+            }
+            setFloatingDropdownMenuSystemItems((prev) => {
+              return {
+                ...prev,
+                selectContextMenuId: currentContextMenu?.id || null,
+              }
             })
-          } else {
-            if (isContinueAction && !needOpenChatBox) {
+            if (continueContextMenu?.id === 'Try again') {
+              reGenerate()
+            }
+            setTimeout(() => {
               setFloatingDropdownMenuSystemItems((prev) => {
                 return {
                   ...prev,
-                  selectContextMenuId: currentContextMenu?.id || null,
+                  selectContextMenuId: null,
                 }
               })
-            }
+            }, 100)
           }
         }
       }
@@ -415,7 +434,33 @@ const FloatingContextMenu: FC<{
     loading,
     chatGPTClient,
     isLogin,
+    reGenerate,
   ])
+  useEffect(() => {
+    if (!loading && actions.length > 0) {
+      setShortCuts(actions)
+      setActions([])
+      prefActions.current = actions
+      // 是否为可编辑的元素
+      const isEditableElement =
+        currentSelectionRef.current?.selectionElement?.isEditableElement
+      // 判断是否可以运行
+      let needOpenChatBox = false
+      if (!isLogin || chatGPTClient.status !== 'success') {
+        needOpenChatBox = true
+      }
+      if (!isEditableElement || needOpenChatBox) {
+        showChatBox()
+        setFloatingDropdownMenu({
+          open: false,
+          rootRect: null,
+        })
+      }
+      runShortCuts().then(() => {
+        // done
+      })
+    }
+  }, [actions, loading, isLogin])
   useEffect(() => {
     getMediator('floatingMenuInputMediator').subscribe(setInputValue)
     return () => {
@@ -529,7 +574,6 @@ const FloatingContextMenu: FC<{
                           minHeight: '24px',
                         }}
                         onEnter={(value) => {
-                          // showChatBox()
                           if (contextMenuList.length > 0) {
                             updateFloatingDropdownMenuSelectedItem(
                               (preState) => {
@@ -543,35 +587,10 @@ const FloatingContextMenu: FC<{
                             return
                           }
                           if (!haveDraft) return
-                          // showChatBox()
-                          setFloatingDropdownMenu({
-                            open: false,
-                            rootRect: null,
-                          })
-                          updateFloatingDropdownMenuSelectedItem(() => {
-                            return {
-                              lastHoverContextMenuId: null,
-                              selectedContextMenuId: null,
-                              hoverContextMenuIdMap: {},
-                            }
-                          })
-                          setTimeout(async () => {
-                            setShortCuts([
-                              {
-                                type: 'RENDER_CHATGPT_PROMPT',
-                                parameters: {
-                                  template: `${value}:\n\n{{SELECTED_TEXT}}`,
-                                },
-                              },
-                              {
-                                type: 'ASK_CHATGPT',
-                                parameters: {},
-                              },
-                            ])
-                            await runShortCuts()
-                          }, 1)
+                          askChatGPT(value)
                         }}
                       />
+                      <span>{loading ? 1 : haveContext ? 2 : 3}</span>
                       <IconButton
                         sx={{
                           height: '20px',
@@ -594,7 +613,6 @@ const FloatingContextMenu: FC<{
                           },
                         }}
                         onClick={() => {
-                          // showChatBox()
                           if (contextMenuList.length > 0) {
                             updateFloatingDropdownMenuSelectedItem(
                               (preState) => {
@@ -608,32 +626,7 @@ const FloatingContextMenu: FC<{
                             return
                           }
                           if (!haveDraft) return
-                          setFloatingDropdownMenu({
-                            open: false,
-                            rootRect: null,
-                          })
-                          updateFloatingDropdownMenuSelectedItem(() => {
-                            return {
-                              lastHoverContextMenuId: null,
-                              selectedContextMenuId: null,
-                              hoverContextMenuIdMap: {},
-                            }
-                          })
-                          setTimeout(async () => {
-                            setShortCuts([
-                              {
-                                type: 'RENDER_CHATGPT_PROMPT',
-                                parameters: {
-                                  template: `${inputValue}:\n """\n{{SELECTED_TEXT}}\n"""`,
-                                },
-                              },
-                              {
-                                type: 'ASK_CHATGPT',
-                                parameters: {},
-                              },
-                            ])
-                            await runShortCuts()
-                          }, 1)
+                          askChatGPT(inputValue)
                         }}
                       >
                         <ArrowUpwardIcon

@@ -1,4 +1,4 @@
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail'
 import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useRef, useState } from 'react'
@@ -16,16 +16,14 @@ const WritingMessageBox: FC<{
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const { userSettings } = useRecoilValue(AppSettingsState)
   const conversation = useRecoilValue(ChatGPTConversationState)
-  const setFloatingDropdownMenuSystemItems = useSetRecoilState(
-    FloatingDropdownMenuSystemItemsState,
-  )
+  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
+    useRecoilState(FloatingDropdownMenuSystemItemsState)
   const messagesRef = useRef<string[]>([])
   const [lastWritingMessage, setLastWritingMessage] = useState('')
   useEffect(() => {
-    if (!floatingDropdownMenu.open) {
-      console.log('AIInput writingMessage remove: ', floatingDropdownMenu.open)
-      setLastWritingMessage('')
-    }
+    console.log('AIInput writingMessage remove: ', floatingDropdownMenu.open)
+    setLastWritingMessage('')
+    messagesRef.current = []
   }, [floatingDropdownMenu.open])
   useEffect(() => {
     if (conversation.writingMessage?.text) {
@@ -53,6 +51,18 @@ const WritingMessageBox: FC<{
     })
     onChange?.(lastWritingMessage)
   }, [lastWritingMessage])
+  useEffect(() => {
+    if (floatingDropdownMenuSystemItems.selectContextMenuId === 'Try again') {
+      if (messagesRef.current.length > 0) {
+        messagesRef.current = messagesRef.current.slice(
+          0,
+          messagesRef.current.length - 1,
+        )
+        console.log('Context menu try again: ', messagesRef.current)
+        setLastWritingMessage(messagesRef.current.join('\n'))
+      }
+    }
+  }, [floatingDropdownMenuSystemItems.selectContextMenuId])
   return (
     <Stack>
       <div

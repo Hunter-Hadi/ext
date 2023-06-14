@@ -42,6 +42,7 @@ const useRangy = () => {
   }
 
   const saveCurrentSelection = (selection: ISelection) => {
+    console.log('[ContextMenu Module]: saveCurrentSelection', selection)
     setRangy((prevState) => {
       return {
         ...prevState,

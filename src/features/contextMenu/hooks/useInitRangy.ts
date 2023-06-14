@@ -151,13 +151,13 @@ const useInitRangy = () => {
             selectionElement: selectionElementRef.current,
           })
           console.log(
-            '[ContextMenu Module]: selectionString',
+            `[ContextMenu Module] [${selectionElementRef.current?.isEditableElement}]: selectionString`,
             '\n',
             selectionElementRef.current.selectionText,
-            '\n',
-            selectionElementRef.current.selectionHTML,
-            '\n',
-            selectionElementRef.current.selectionRect,
+            // '\n',
+            // selectionElementRef.current.selectionHTML,
+            // '\n',
+            // selectionElementRef.current.selectionRect,
           )
           showRangy()
         } else {
@@ -177,8 +177,7 @@ const useInitRangy = () => {
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
     const mouseDownListener = (event: MouseEvent) => {
       const target = event.target as HTMLElement
-      const isIframeTarget = target?.tagName === 'IFRAME'
-      if (checkIsCanInputElement(target) || isIframeTarget) {
+      if (checkIsCanInputElement(target)) {
         if (targetElementRef.current?.isSameNode(target)) {
           return
         }
@@ -207,16 +206,7 @@ const useInitRangy = () => {
           '[ContextMenu Module]: bind editable element listener',
           target,
         )
-        if (isIframeTarget) {
-          // const iframeTarget = target as HTMLIFrameElement
-          // iframeTarget.contentDocument?.body.addEventListener(
-          //   'mouseup',
-          //   mouseUpListener,
-          // )
-          // mouseUpListener(event)
-        } else {
-          target.addEventListener('mouseup', mouseUpListener)
-        }
+        target.addEventListener('mouseup', mouseUpListener)
         target.addEventListener('keyup', keyupListener)
       } else {
         console.log(

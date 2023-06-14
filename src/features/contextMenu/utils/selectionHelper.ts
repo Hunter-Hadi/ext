@@ -173,12 +173,11 @@ export const createSelectionMarker = (element: HTMLElement) => {
             endMarker.style.lineHeight = '0'
             endMarker.style.display = 'none'
             endMarker.textContent = markerTextChar
-            endMarker.setAttribute('data-type', 'usechatgpt-marker')
-            endMarker.setAttribute('contenteditable', 'false')
             endMarker.setAttribute(
               'data-usechatgpt-marker',
               'usechatgpt-marker',
             )
+            endMarker.setAttribute('contenteditable', 'false')
             endMarker.setAttribute('data-usechatgpt-end-marker-id', endMarkerId)
             boundaryRange.insertNode(endMarker)
             /**
@@ -241,7 +240,11 @@ export const inputSetSelectionAndScrollTo = (
  * 1. input/textarea
  *  1.1 基于startMarker和endMarker的offset，替换或添加到底部在input/textarea的value
  *  1.2 选中替换/插入的内容
- * 2. 其他元素
+ *  1.3 滚动到光标位置并且设置高亮
+ * 2. editable元素
+ *  2.1 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
+ *  2.2 选中替换/插入的内容
+ *  2.3 设置高亮
  * 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
  * @param startMarkerId
  * @param endMarkerId
@@ -285,15 +288,24 @@ export const replaceMarkerContent = (
     }
   } else if (startMarker && endMarker) {
     const range = document.createRange()
-    range.setStartAfter(startMarker)
-    range.setEndBefore(endMarker)
-    range.deleteContents()
     if (type === 'insert_blow') {
       value = '\n' + value
+      range.setStartAfter(endMarker)
+      range.setEndAfter(endMarker)
+      range.insertNode(document.createTextNode(value))
+    } else if (type === 'replace') {
+      range.setStartAfter(startMarker)
+      range.setEndBefore(endMarker)
+      range.deleteContents()
+      range.insertNode(document.createTextNode(value))
     }
-    range.insertNode(document.createTextNode(value))
+    startMarker.focus()
     startMarker.remove()
     endMarker.remove()
+    setTimeout(() => {
+      window.getSelection()?.removeAllRanges()
+      window.getSelection()?.addRange(range)
+    }, 0)
   }
   removeAllSelectionMarker()
 }

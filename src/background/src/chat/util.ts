@@ -5,7 +5,7 @@ import {
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
-import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/types'
+import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**

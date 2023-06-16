@@ -1,5 +1,5 @@
 import Log from '@/utils/Log'
-import { CHROME_EXTENSION_POST_MESSAGE_ID, isProduction } from '@/types'
+import { CHROME_EXTENSION_POST_MESSAGE_ID, isProduction } from '@/constants'
 import {
   computedSelectionString,
   createSelectionMarker,

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ROOT_CONTEXT_MENU_ID, ROOT_CONTEXT_MENU_PORTAL_ID } from '@/types'
+import { ROOT_CONTEXT_MENU_ID, ROOT_CONTEXT_MENU_PORTAL_ID } from '@/constants'
 
 export const useClickOutsideContextMenu = () => {
   const [isClickOutside, setIsClickOutside] = useState(false)

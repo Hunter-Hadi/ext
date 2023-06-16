@@ -5,7 +5,7 @@ import SendIcon from '@mui/icons-material/Send'
 import { getAppRootElement } from '@/utils'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 

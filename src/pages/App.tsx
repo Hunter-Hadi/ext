@@ -9,7 +9,7 @@ import {
   CHROME_EXTENSION_HOMEPAGE_URL,
   isEzMailApp,
   ROOT_CONTAINER_ID,
-} from '@/types'
+} from '@/constants'
 import { AppState } from '@/store'
 import AppInit from '@/utils/AppInit'
 import ChatBoxHeader from '@/pages/gmail/ChatBoxHeader'

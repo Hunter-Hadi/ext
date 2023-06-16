@@ -5,7 +5,7 @@ import {
 } from '@/features/shortcuts/decorators'
 import { getMediator } from '@/store/mediator'
 import { getAppRootElement, promiseRetry } from '@/utils'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import { autoFocusWithAllWebsite } from '@/components/AutoHeightTextarea'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'

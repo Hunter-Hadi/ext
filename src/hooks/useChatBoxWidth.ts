@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/types'
+import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import {
   getChromeExtensionSettings,
   setChromeExtensionSettings,

@@ -1,4 +1,4 @@
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/types'
+import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 
 export const LANGUAGES_OPTIONS = [
   {

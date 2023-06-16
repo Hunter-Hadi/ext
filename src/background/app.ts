@@ -16,7 +16,7 @@ import {
   CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
   isEzMailApp,
-} from '@/types'
+} from '@/constants'
 import {
   BardChat,
   BingChat,

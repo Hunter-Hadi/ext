@@ -1,4 +1,4 @@
-import { CHAT_GPT_PROVIDER } from '@/types'
+import { CHAT_GPT_PROVIDER } from '@/constants'
 import Browser from 'webextension-polyfill'
 import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
 

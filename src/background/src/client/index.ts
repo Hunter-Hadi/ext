@@ -9,7 +9,7 @@ import {
   createDaemonProcessTab,
   getWindowIdOfChatGPTTab,
 } from '@/background/src/chat/util'
-import { CHROME_EXTENSION_POST_MESSAGE_ID, isEzMailApp } from '@/types'
+import { CHROME_EXTENSION_POST_MESSAGE_ID, isEzMailApp } from '@/constants'
 
 // const log = new Log('Background/Client')
 export const ClientMessageInit = () => {

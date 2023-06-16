@@ -9,7 +9,7 @@ import { getAppRootElement, numberWithCommas } from '@/utils'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
-import { isEzMailApp, ROOT_CHAT_BOX_INPUT_ID } from '@/types'
+import { isEzMailApp, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
 

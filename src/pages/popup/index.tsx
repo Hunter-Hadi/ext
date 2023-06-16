@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import React, { FC, useState } from 'react'
 import Stack from '@mui/material/Stack'
-import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
 import TooltipButton from '@/components/TooltipButton'

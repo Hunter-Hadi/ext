@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
-import { CHAT_GPT_PROVIDER } from '@/types'
+import { CHAT_GPT_PROVIDER } from '@/constants'
 import { getChromeExtensionSettings } from '@/background/utils'
 import {
   IChatGPTModelType,

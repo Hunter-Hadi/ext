@@ -18,7 +18,7 @@ import {
   CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
   ROOT_DAEMON_PROCESS_ID,
   OPENAI_IFRAME_ID,
-} from '@/types'
+} from '@/constants'
 import CloseIcon from '@mui/icons-material/Close'
 import Log from '@/utils/Log'
 import { setChromeExtensionSettings } from '@/background/utils'

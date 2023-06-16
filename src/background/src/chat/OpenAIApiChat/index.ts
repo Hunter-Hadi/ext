@@ -1,6 +1,6 @@
 import { ChatStatus } from '@/background/provider/chat'
 import Log from '@/utils/Log'
-import { CHAT_GPT_PROVIDER } from '@/types'
+import { CHAT_GPT_PROVIDER } from '@/constants'
 import {
   backgroundSendAllClientMessage,
   createChromeExtensionOptionsPage,

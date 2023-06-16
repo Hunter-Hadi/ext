@@ -1,4 +1,4 @@
-import { ROOT_CONTEXT_MENU_ID } from '@/types'
+import { ROOT_CONTEXT_MENU_ID } from '@/constants'
 
 export const intervalFindHtmlElement = (
   root: HTMLElement | ShadowRoot,

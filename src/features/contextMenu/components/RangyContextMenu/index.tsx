@@ -7,7 +7,7 @@ import ClickContextMenu from './ClickContextMenu'
 import {
   ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID,
   ROOT_CONTEXT_MENU_ID,
-} from '@/types'
+} from '@/constants'
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

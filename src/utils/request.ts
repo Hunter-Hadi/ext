@@ -2,7 +2,7 @@ import Browser from 'webextension-polyfill'
 import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-} from '@/types'
+} from '@/constants'
 import { chromeExtensionLogout } from '@/background/utils'
 
 export const getAccessToken = async () => {

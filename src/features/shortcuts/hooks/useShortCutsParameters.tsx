@@ -13,7 +13,7 @@ import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import {
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   ROOT_CHAT_BOX_INPUT_ID,
-} from '@/types'
+} from '@/constants'
 import { AppSettingsState, AppState } from '@/store'
 
 const useShortCutsParameters = () => {

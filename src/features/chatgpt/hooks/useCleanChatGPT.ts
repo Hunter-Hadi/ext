@@ -5,7 +5,7 @@ import {
 } from '@/features/gmail/store'
 import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
+import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
 import { AppSettingsState } from '@/store'
 
 const useCleanChatGPT = () => {

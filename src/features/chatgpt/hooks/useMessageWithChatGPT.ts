@@ -19,7 +19,7 @@ import {
   IUserSendMessage,
   IUserSendMessageExtraType,
 } from '@/features/chatgpt/types'
-import { CHAT_GPT_PROMPT_PREFIX } from '@/types'
+import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 import { getMediator } from '@/store/mediator'
 import { getCurrentDomainHost } from '@/utils'
 
@@ -76,24 +76,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       return ''
     }
   }
-  // const createSystemMessage = (
-  //   parentMessageId: string,
-  //   error: string,
-  //   status: 'success' | 'error',
-  // ) => {
-  //   setMessages((prevState) => {
-  //     return [
-  //       ...prevState,
-  //       {
-  //         type: 'system',
-  //         messageId: uuidV4(),
-  //         parentMessageId,
-  //         text: error,
-  //         status,
-  //       },
-  //     ]
-  //   })
-  // }
   const sendQuestion = async (
     questionInfo: {
       question: string

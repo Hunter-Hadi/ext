@@ -1,6 +1,6 @@
 import { getAppRootElement } from '@/utils'
 import { v4 } from 'uuid'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 

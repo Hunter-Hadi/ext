@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Browser from 'webextension-polyfill'
-import { BACKGROUND_SEND_TEXT_SPEED_SETTINGS } from '@/types'
+import { BACKGROUND_SEND_TEXT_SPEED_SETTINGS } from '@/constants'
 
 const DevTextSendControl: FC = () => {
   const [interval, setInterval] = React.useState('')

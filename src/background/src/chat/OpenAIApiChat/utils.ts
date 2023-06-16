@@ -1,7 +1,7 @@
 import {
   OPENAI_API_MODELS,
   OPENAI_LOCAL_STORAGE_OPENAI_API_SETTINGS_SAVE_KEY,
-} from '@/types'
+} from '@/constants'
 import Browser from 'webextension-polyfill'
 import { IOpenAIApiSettingsType } from '@/background/src/chat/OpenAiApiChat/types'
 

@@ -18,8 +18,9 @@ const WritingMessageBox: FC<{
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const { userSettings } = useRecoilValue(AppSettingsState)
   const conversation = useRecoilValue(ChatGPTConversationState)
-  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
-    useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
+    FloatingDropdownMenuSystemItemsState,
+  )
   const [floatingContextMenuDraft, setFloatingContextMenuDraft] =
     useRecoilState(FloatingContextMenuDraftState)
   useEffect(() => {
@@ -54,24 +55,6 @@ const WritingMessageBox: FC<{
       })
     }
   }, [conversation.writingMessage])
-  /**
-   * 当用户选择Try again
-   */
-  useEffect(() => {
-    if (floatingDropdownMenuSystemItems.selectContextMenuId === 'Try again') {
-      setFloatingContextMenuDraft((prevState) => {
-        if (prevState.draftList.length === 0) {
-          return prevState
-        }
-        const copyDraftList = cloneDeep(prevState.draftList)
-        copyDraftList.pop()
-        return {
-          draft: copyDraftList.join('\n\n').replace(/\n{2,}/, '\n\n'),
-          draftList: copyDraftList,
-        }
-      })
-    }
-  }, [floatingDropdownMenuSystemItems.selectContextMenuId])
   useEffect(() => {
     console.log('AIInput update: ', floatingContextMenuDraft.draft)
     setFloatingDropdownMenuSystemItems((prev) => {

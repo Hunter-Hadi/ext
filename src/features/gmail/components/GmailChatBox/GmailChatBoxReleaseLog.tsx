@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Typography from '@mui/material/Typography'
-import { APP_VERSION } from '@/types'
+import { APP_VERSION } from '@/constants'
 // import Link from '@mui/material/Link'
 
 const GmailChatBoxReleaseLog: FC = () => {

@@ -27,7 +27,7 @@ import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
 import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
-import { RESOURCES_URL } from '@/constant'
+import { RESOURCES_URL } from '@/constants'
 
 const log = new Log('AppInit')
 

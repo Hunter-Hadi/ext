@@ -1,6 +1,6 @@
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import Stack from '@mui/material/Stack'
-import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/types'
+import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/constants'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'

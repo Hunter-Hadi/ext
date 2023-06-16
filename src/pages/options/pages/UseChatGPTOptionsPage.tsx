@@ -11,7 +11,7 @@ import { SnackbarProvider } from 'notistack'
 import { useAuthLogin } from '@/features/auth/hooks'
 import AccountMenu from '@/pages/options/components/AccountMenu'
 import { OptionsPageRouteContext } from '@/pages/options/context'
-import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
 const UseChatGPTOptionsLoginPage = React.lazy(

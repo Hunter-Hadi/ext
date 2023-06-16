@@ -12,7 +12,7 @@ import React from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/types'
+import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/constants'
 import {
   ContentScriptConnectionV2,
   pingDaemonProcess,

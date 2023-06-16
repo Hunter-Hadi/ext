@@ -10,7 +10,7 @@ import LinearProgress, {
 } from '@mui/material/LinearProgress'
 import CloseAlert from '@/components/CloseAlert'
 import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY } from '@/types'
+import { CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY } from '@/constants'
 import dayjs from 'dayjs'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import BulletList from '@/components/BulletList'

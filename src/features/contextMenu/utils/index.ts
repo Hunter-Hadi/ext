@@ -2,39 +2,19 @@ import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 import { flip, offset, shift, size } from '@floating-ui/react'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { ROOT_FLOATING_REFERENCE_ELEMENT_ID } from '@/types'
+import { ROOT_FLOATING_REFERENCE_ELEMENT_ID } from '@/constants'
 import {
+  ContextMenuDraftType,
   IContextMenuItem,
   IContextMenuItemWithChildren,
   IRangyRect,
 } from '@/features/contextMenu/types'
+import {
+  CONTEXT_MENU_DRAFT_LIST,
+  CONTEXT_MENU_DRAFT_TYPES,
+} from '@/features/constants'
+import { getAppContextMenuElement } from '@/utils'
 
-export const checkIsCanInputElement = (
-  element: HTMLElement,
-  defaultMaxLoop = 10,
-) => {
-  if (!element) {
-    return false
-  }
-  let parentElement: HTMLElement | null = element
-  let maxLoop = defaultMaxLoop
-  while (parentElement && maxLoop > 0) {
-    if (
-      parentElement?.tagName === 'INPUT' ||
-      parentElement?.tagName === 'TEXTAREA' ||
-      parentElement?.getAttribute?.('contenteditable') === 'true'
-    ) {
-      const type = parentElement.getAttribute('type')
-      if (type && type !== 'text') {
-        return false
-      }
-      return true
-    }
-    parentElement = parentElement.parentElement
-    maxLoop--
-  }
-  return false
-}
 export const groupByContextMenuItem = (
   items: IContextMenuItem[],
 ): IContextMenuItemWithChildren[] => {
@@ -461,9 +441,40 @@ export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
   }
 }
 
-export const isFloatingMenuVisible = () => {
-  const floatingMenu = document.querySelector(
+export const isFloatingContextMenuVisible = () => {
+  const floatingMenu = getAppContextMenuElement()?.querySelector(
     `#${ROOT_FLOATING_REFERENCE_ELEMENT_ID}`,
   )
   return floatingMenu && floatingMenu.getAttribute('aria-hidden') === 'false'
+}
+
+/**
+ * 确认是否是草稿的contextMenuId
+ * @param id
+ */
+export const checkIsDraftContextMenuId = (id: string) => {
+  return (
+    Object.values(CONTEXT_MENU_DRAFT_TYPES).find((item) => item === id) !==
+    undefined
+  )
+}
+/**
+ * 根据id找到对应的草稿contextMenu
+ * @param id
+ */
+export const findDraftContextMenuById = (id: string) => {
+  return Object.values(CONTEXT_MENU_DRAFT_LIST).find(
+    (contextMenu) => contextMenu.id === id,
+  )
+}
+export const getDraftContextMenuTypeById = (
+  id: string,
+): ContextMenuDraftType | undefined => {
+  let typeName: ContextMenuDraftType | undefined = undefined
+  Object.keys(CONTEXT_MENU_DRAFT_TYPES).forEach((key) => {
+    if ((CONTEXT_MENU_DRAFT_TYPES as any)[key] === id) {
+      typeName = key as ContextMenuDraftType
+    }
+  })
+  return typeName
 }

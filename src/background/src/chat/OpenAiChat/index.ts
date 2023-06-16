@@ -5,7 +5,7 @@ import {
 } from '@/background/src/chat/util'
 import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,

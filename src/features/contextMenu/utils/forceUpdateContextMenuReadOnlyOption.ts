@@ -7,7 +7,7 @@ import {
 import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
-} from '@/types'
+} from '@/constants'
 import uniqBy from 'lodash-es/uniqBy'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'

@@ -1,5 +1,5 @@
 import { IChatGPTProviderType } from '@/background/provider/chat'
-import { CHAT_GPT_PROVIDER } from '@/types'
+import { CHAT_GPT_PROVIDER } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 

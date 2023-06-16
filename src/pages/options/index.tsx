@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client'
 import AppThemeProvider from '@/components/AppTheme'
 import { RecoilRoot } from 'recoil'
 import OptionPagesInit from '@/utils/OptionPagesInit'
-import { isEzMailApp } from '@/types'
+import { isEzMailApp } from '@/constants'
 
 const rootElement = document.getElementById('root')
 

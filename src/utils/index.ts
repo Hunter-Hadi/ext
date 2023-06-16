@@ -9,7 +9,7 @@ import {
   ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
   ROOT_CONTEXT_MENU_PORTAL_ID,
-} from '@/types'
+} from '@/constants'
 import { IInboxMessageType } from '@/features/gmail/store'
 import {
   ContentScriptConnectionV2,
@@ -63,10 +63,11 @@ export const showChatBox = () => {
     htmlElement.style.transition = 'width .1s ease-inout'
     htmlElement.style.width = `calc(100% - ${chatBoxElementWidth}px)`
     htmlElement.style.position = 'relative'
-    if (location.hostname === 'outlook.live.com') {
+    const host = getCurrentDomainHost()
+    if (host === 'outlook.live.com' || host === 'onedrive.live.com') {
       htmlElement.style.minHeight = '100vh'
     }
-    if (location.hostname === 'teams.live.com') {
+    if (host === 'teams.live.com') {
       document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
         element.style.width = `calc(100% - ${chatBoxElementWidth}px)`
         element.childNodes.forEach((child: any) => {
@@ -101,10 +102,11 @@ export const hideChatBox = () => {
     htmlElement.style.transition = 'width .1s ease-inout'
     htmlElement.style.width = '100%'
     htmlElement.style.position = ''
-    if (location.hostname === 'outlook.live.com') {
+    const host = getCurrentDomainHost()
+    if (host === 'outlook.live.com' || host === 'onedrive.live.com') {
       htmlElement.style.minHeight = ''
     }
-    if (location.hostname === 'teams.live.com') {
+    if (host === 'teams.live.com') {
       document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
         element.style.width = `100%`
         element.childNodes.forEach((child: any) => {

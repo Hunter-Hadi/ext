@@ -7,8 +7,12 @@ import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { useRangy } from './useRangy'
 import debounce from 'lodash-es/debounce'
-import { checkIsCanInputElement } from '@/features/contextMenu/utils'
 import {
+  getDraftContextMenuTypeById,
+  isFloatingContextMenuVisible,
+} from '@/features/contextMenu/utils'
+import {
+  FloatingContextMenuDraftState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
   useFloatingContextMenu,
@@ -24,6 +28,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
 import { AppState } from '@/store'
 import {
+  ContextMenuDraftType,
   ISelectionElement,
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
@@ -33,9 +38,14 @@ import {
   getEditableElement,
   getEditableElementSelectionTextOnSpecialHost,
   getSelectionBoundaryElement,
+  removeAllRange,
+  removeAllSelectionMarker,
+  removeEditableElementPlaceholder,
+  updateEditableElementPlaceholder,
 } from '@/features/contextMenu/utils/selectionHelper'
-import { ROOT_CONTAINER_ID, ROOT_CONTEXT_MENU_ID } from '@/types'
+import { ROOT_CONTAINER_ID, ROOT_CONTEXT_MENU_ID } from '@/constants'
 import cloneDeep from 'lodash-es/cloneDeep'
+import useCommands from '@/hooks/useCommands'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -54,7 +64,11 @@ const useInitRangy = () => {
     saveTempSelection,
     currentSelection,
   } = useRangy()
+  const { shortCutKey } = useCommands()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
+  const [, setFloatingContextMenuDraft] = useRecoilState(
+    FloatingContextMenuDraftState,
+  )
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
     useRecoilState(FloatingDropdownMenuSystemItemsState)
   const setAppState = useSetRecoilState(AppState)
@@ -108,19 +122,14 @@ const useInitRangy = () => {
           if (event instanceof KeyboardEvent && event.key === 'Escape') {
             console.log('[ContextMenu Module]: Escape close floating button')
             hideRangy()
+            removeAllSelectionMarker()
+            removeAllRange()
             return
           }
         }
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
         const rangySelection = rangy?.getSelection()
-        const nativeSelectionElement = getSelectionBoundaryElement()
-        if (nativeSelectionElement) {
-          const { editableElement } = getEditableElement(nativeSelectionElement)
-          activeElement =
-            (editableElement as HTMLElement) ||
-            (nativeSelectionElement as HTMLElement)
-        }
         // 有activeElement(iframe传递的是没有activeElement的), 且选区不在sidebar/contextMenu上
         if (
           activeElement &&
@@ -135,7 +144,6 @@ const useInitRangy = () => {
            */
           // 1. rangy有选区
           if (rangySelection && rangySelection?.toString()?.trim()) {
-            console.log('[ContextMenu Module]: RANGY')
             selectionElementRef.current = createSelectionElement(
               activeElement,
               {
@@ -146,15 +154,39 @@ const useInitRangy = () => {
                 eventType: isMouseEvent ? 'mouseup' : 'keyup',
               },
             )
+            console.log(
+              '[ContextMenu Module]: RANGY',
+              selectionElementRef.current,
+            )
           } else {
             // 2. rangy没有选区
-            console.log('[ContextMenu Module]: NATIVE')
+            // 这里是mousedown记录的editable element, 如果有的话替换mouseup阶段的activeElement
+            if (targetElementRef.current) {
+              activeElement = targetElementRef.current
+            }
+            const nativeSelectionElement = getSelectionBoundaryElement()
+            if (
+              nativeSelectionElement &&
+              activeElement.tagName !== 'INPUT' &&
+              activeElement.tagName !== 'TEXTAREA'
+            ) {
+              const { editableElement } = getEditableElement(
+                nativeSelectionElement,
+              )
+              activeElement =
+                (editableElement as HTMLElement) ||
+                (nativeSelectionElement as HTMLElement)
+            }
             selectionElementRef.current = createSelectionElement(
               activeElement,
               {
                 target: activeElement,
                 eventType: isMouseEvent ? 'mouseup' : 'keyup',
               },
+            )
+            console.log(
+              '[ContextMenu Module]: NATIVE',
+              selectionElementRef.current,
             )
           }
         }
@@ -197,7 +229,7 @@ const useInitRangy = () => {
     },
     [rangy, saveTempSelection, showRangy, hideRangy],
   )
-  // focus事件
+  // 页面editElement点击事件，因为window.getSelection()其实无法准确定位到textarea/input的位置,所以要在mousedown的时候保存一下
   useEffect(() => {
     const mouseUpListener = debounce(
       saveHighlightedRangeAndShowContextMenu,
@@ -205,9 +237,11 @@ const useInitRangy = () => {
     )
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
     const mouseDownListener = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
-      if (checkIsCanInputElement(target)) {
-        if (targetElementRef.current?.isSameNode(target)) {
+      const mouseTarget = event.target as HTMLElement
+      const { isEditableElement, editableElement } =
+        getEditableElement(mouseTarget)
+      if (isEditableElement && editableElement) {
+        if (targetElementRef.current?.isSameNode(editableElement)) {
           return
         }
         if (targetElementRef.current) {
@@ -229,14 +263,22 @@ const useInitRangy = () => {
           }
           targetElementRef.current.removeEventListener('keyup', keyupListener)
         }
-        targetElementRef.current = target
-        console.log('[ContextMenu Module]: update editable element', target)
+        targetElementRef.current = editableElement
+        shortCutKey &&
+          updateEditableElementPlaceholder(
+            editableElement,
+            `Press '${shortCutKey}' for AI`,
+          )
+        console.log(
+          '[ContextMenu Module]: update editable element',
+          editableElement,
+        )
         console.log(
           '[ContextMenu Module]: bind editable element listener',
-          target,
+          editableElement,
         )
-        target.addEventListener('mouseup', mouseUpListener)
-        target.addEventListener('keyup', keyupListener)
+        editableElement.addEventListener('mouseup', mouseUpListener)
+        editableElement.addEventListener('keyup', keyupListener)
       } else {
         console.log(
           '[ContextMenu Module]: remove editable element',
@@ -245,13 +287,15 @@ const useInitRangy = () => {
         )
         AIInputLog.info('remove editable element')
         targetElementRef.current = null
+        shortCutKey &&
+          removeEditableElementPlaceholder(`Press '${shortCutKey}' for AI`)
       }
     }
     document.addEventListener('mousedown', mouseDownListener)
     return () => {
       document.removeEventListener('mousedown', mouseDownListener)
     }
-  }, [rangy, saveHighlightedRangeAndShowContextMenu])
+  }, [rangy, saveHighlightedRangeAndShowContextMenu, shortCutKey])
   // selection事件
   useEffect(() => {
     const mouseUpListener = debounce(
@@ -327,6 +371,7 @@ const useInitRangy = () => {
      * 3. 如果都不符合，展开chat box
      */
     if (
+      !isFloatingContextMenuVisible() &&
       selectionElementRef.current &&
       (selectionElementRef.current?.selectionText ||
         selectionElementRef.current?.isEditableElement)
@@ -444,12 +489,24 @@ const useInitRangy = () => {
   useEffect(() => {
     const target =
       currentSelectionRefElement.current || selectionElementRef.current
-    if (
-      floatingDropdownMenuSystemItems.selectContextMenuId &&
-      ['Replace selection', 'Insert below', 'Discard'].includes(
-        floatingDropdownMenuSystemItems.selectContextMenuId,
+    /**
+     * 点击后需要关闭floating context menu的context menu
+     */
+    const needCloseFloatingContextMenus: ContextMenuDraftType[] = [
+      'REPLACE_SELECTION',
+      'INSERT_BELOW',
+      'DISCARD',
+    ]
+    const selectedDraftContextMenuType = getDraftContextMenuTypeById(
+      floatingDropdownMenuSystemItems.selectContextMenuId || '',
+    )
+    if (!selectedDraftContextMenuType) {
+      console.log(
+        '[ContextMenu Module]: selectedDraftContextMenuType cannot find',
       )
-    ) {
+      return
+    }
+    if (needCloseFloatingContextMenus.includes(selectedDraftContextMenuType)) {
       setFloatingDropdownMenu({
         open: false,
         rootRect: null,
@@ -459,39 +516,58 @@ const useInitRangy = () => {
         lastOutput: '',
       })
       hideRangy()
+      selectionElementRef.current = null
     }
-    if (
-      floatingDropdownMenuSystemItems.selectContextMenuId === 'Insert below'
-    ) {
-      if (target) {
-        port.postMessage({
-          event: 'Client_updateIframeInput',
-          data: {
-            value: lastOutputRef.current,
-            type: 'insert_blow',
-            startMarkerId: target.startMarkerId,
-            endMarkerId: target.endMarkerId,
-            caretOffset: target.caretOffset,
-          },
-        })
-      }
-    }
-    if (
-      floatingDropdownMenuSystemItems.selectContextMenuId ===
-      'Replace selection'
-    ) {
-      if (target) {
-        port.postMessage({
-          event: 'Client_updateIframeInput',
-          data: {
-            value: lastOutputRef.current,
-            type: 'replace',
-            startMarkerId: target.startMarkerId,
-            endMarkerId: target.endMarkerId,
-            caretOffset: target.caretOffset,
-          },
-        })
-      }
+    switch (selectedDraftContextMenuType) {
+      case 'INSERT_BELOW':
+        {
+          if (target) {
+            port.postMessage({
+              event: 'Client_updateIframeInput',
+              data: {
+                value: lastOutputRef.current,
+                type: 'insert_blow',
+                startMarkerId: target.startMarkerId,
+                endMarkerId: target.endMarkerId,
+                caretOffset: target.caretOffset,
+              },
+            })
+          }
+        }
+        break
+      case 'REPLACE_SELECTION':
+        {
+          if (target) {
+            port.postMessage({
+              event: 'Client_updateIframeInput',
+              data: {
+                value: lastOutputRef.current,
+                type: 'replace',
+                startMarkerId: target.startMarkerId,
+                endMarkerId: target.endMarkerId,
+                caretOffset: target.caretOffset,
+              },
+            })
+          }
+        }
+        break
+      case 'TRY_AGAIN':
+        {
+          setFloatingContextMenuDraft((prevState) => {
+            if (prevState.draftList.length === 0) {
+              return prevState
+            }
+            const copyDraftList = cloneDeep(prevState.draftList)
+            copyDraftList.pop()
+            return {
+              draft: copyDraftList.join('\n\n').replace(/\n{2,}/, '\n\n'),
+              draftList: copyDraftList,
+            }
+          })
+        }
+        break
+      default:
+        break
     }
   }, [floatingDropdownMenuSystemItems.selectContextMenuId])
 }

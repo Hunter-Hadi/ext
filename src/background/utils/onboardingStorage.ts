@@ -1,4 +1,4 @@
-import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/types'
+import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/constants'
 import Browser from 'webextension-polyfill'
 
 type OnBoardingKeyType =

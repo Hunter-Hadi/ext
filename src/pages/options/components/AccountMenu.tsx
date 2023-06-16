@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
-import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useUseChatGPTUserInfo } from '@/features/chatgpt'
 import useEffectOnce from '@/hooks/useEffectOnce'
 

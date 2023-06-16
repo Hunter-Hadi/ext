@@ -16,7 +16,7 @@ import {
   ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
   ROOT_DAEMON_PROCESS_ID,
-} from '@/types'
+} from '@/constants'
 import AppThemeProvider from '@/components/AppTheme'
 // import createCache from '@emotion/cache'
 if (location.host === 'chat.openai.com') {

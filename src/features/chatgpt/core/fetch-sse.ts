@@ -2,7 +2,7 @@ import { createParser } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
 import { streamAsyncIterable } from './stream-async-inerable'
 import { IChatGPTProviderType } from '@/background/provider/chat'
-import { CHAT_GPT_PROVIDER } from '@/types'
+import { CHAT_GPT_PROVIDER } from '@/constants'
 
 export const fetchSSE = async (
   resource: string,

@@ -16,9 +16,12 @@ import {
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
 import {
+  checkIsDraftContextMenuId,
   cloneRect,
+  findDraftContextMenuById,
   FloatingContextMenuMiddleware,
   getContextMenuRenderPosition,
+  getDraftContextMenuTypeById,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -31,7 +34,7 @@ import {
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   ROOT_FLOATING_INPUT_ID,
   ROOT_FLOATING_REFERENCE_ELEMENT_ID,
-} from '@/types'
+} from '@/constants'
 import {
   getAppContextMenuElement,
   getCurrentDomainHost,
@@ -60,80 +63,9 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import Button from '@mui/material/Button'
 import useCommands from '@/hooks/useCommands'
+import { CONTEXT_MENU_DRAFT_LIST } from '@/features/constants'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
-const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
-  {
-    id: 'Replace selection',
-    text: 'Replace selection',
-    parent: 'root',
-    droppable: false,
-    data: {
-      type: 'shortcuts',
-      editable: false,
-    },
-    children: [],
-  },
-  {
-    id: 'Insert below',
-    text: 'Insert below',
-    parent: 'root',
-    droppable: false,
-    data: {
-      type: 'shortcuts',
-      editable: false,
-    },
-    children: [],
-  },
-  {
-    id: 'Continue writing',
-    text: 'Continue writing',
-    parent: 'root',
-    droppable: false,
-    data: {
-      type: 'shortcuts',
-      editable: false,
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              'I have an unfinished text and I hope you can help me continue with the next paragraph. You don\'t need to complete all the content. Please continue the text from the following points that match the tone, writing style, structure, target audience, and direction that my text should take.\nWrite in {{AI_OUTPUT_LANGUAGE}}.\nHere is the text:\n"""\n{{LAST_AI_OUTPUT}}\n"""',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
-    },
-    children: [],
-  },
-  {
-    id: 'Try again',
-    text: 'Try again',
-    parent: 'root',
-    droppable: false,
-    data: {
-      type: 'shortcuts',
-      editable: false,
-    },
-    children: [],
-  },
-  {
-    id: 'Discard',
-    text: 'Discard',
-    parent: 'root',
-    droppable: false,
-    data: {
-      type: 'shortcuts',
-      editable: false,
-    },
-    children: [],
-  },
-]
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const FloatingContextMenu: FC<{
@@ -255,7 +187,7 @@ const FloatingContextMenu: FC<{
       return EMPTY_ARRAY
     }
     if (haveContext) {
-      return CONTINUE_ARRAY
+      return CONTEXT_MENU_DRAFT_LIST
     }
     return contextMenuList
   }, [loading, contextMenuList, haveContext])
@@ -362,7 +294,7 @@ const FloatingContextMenu: FC<{
       {
         type: 'RENDER_CHATGPT_PROMPT',
         parameters: {
-          template: `${inputValue}:\n\n{{${draft}}`,
+          template: `${inputValue}:\n\n${draft}`,
         },
       },
       {
@@ -388,23 +320,24 @@ const FloatingContextMenu: FC<{
     ) {
       // 判断是否可以运行
       let needOpenChatBox = false
-      // 是否为[继续]菜单的动作
-      let isContinueAction = false
+      // 是否为[草稿]菜单的动作
+      const isDraftContextMenu = checkIsDraftContextMenuId(
+        floatingDropdownMenuSelectedItem.selectedContextMenuId,
+      )
       let currentContextMenu: IContextMenuItem | null = null
       if (!isLogin || chatGPTClient.status !== 'success') {
         needOpenChatBox = true
       }
-      // 先从[继续]菜单中查找
-      const continueContextMenu = CONTINUE_ARRAY.find(
-        (item) =>
-          item.id === floatingDropdownMenuSelectedItem.selectedContextMenuId,
-      )
-      if (continueContextMenu) {
-        currentContextMenu = continueContextMenu
-        isContinueAction = true
-      }
-      // 如果不是[继续]菜单的动作，则从原始菜单中查找
-      if (!currentContextMenu) {
+      // 先从[草稿]菜单中查找
+      if (isDraftContextMenu) {
+        const draftContextMenu = findDraftContextMenuById(
+          floatingDropdownMenuSelectedItem.selectedContextMenuId,
+        )
+        if (draftContextMenu) {
+          currentContextMenu = draftContextMenu
+        }
+      } else {
+        // 如果不是[草稿]菜单的动作，则从原始菜单中查找
         currentContextMenu =
           originContextMenuList.find(
             (contextMenu) =>
@@ -413,6 +346,7 @@ const FloatingContextMenu: FC<{
           ) || null
       }
       if (currentContextMenu && currentContextMenu.id) {
+        const currentContextMenuId = currentContextMenu.id
         updateFloatingDropdownMenuSelectedItem(() => {
           return {
             selectedContextMenuId: null,
@@ -423,14 +357,14 @@ const FloatingContextMenu: FC<{
         const runActions = currentContextMenu.data.actions || []
         if (runActions.length > 0) {
           increaseChatGPTRequestCount('prompt', {
-            id: currentContextMenu.id,
+            id: currentContextMenuId,
             name: currentContextMenu.text,
             host: getCurrentDomainHost(),
           }).then(() => {
             setActions(runActions)
           })
         } else {
-          if (isContinueAction) {
+          if (isDraftContextMenu) {
             if (needOpenChatBox) {
               showChatBox()
               setFloatingDropdownMenu({
@@ -445,7 +379,9 @@ const FloatingContextMenu: FC<{
                 selectContextMenuId: currentContextMenu?.id || null,
               }
             })
-            if (continueContextMenu?.id === 'Try again') {
+            if (
+              getDraftContextMenuTypeById(currentContextMenuId) === 'TRY_AGAIN'
+            ) {
               reGenerate()
             }
             setTimeout(() => {
@@ -538,6 +474,8 @@ const FloatingContextMenu: FC<{
           }
           console.log(event.key)
         }}
+        id={ROOT_FLOATING_REFERENCE_ELEMENT_ID}
+        aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
       >
         <FloatingContextMenuList
           defaultPlacement={safePlacement.contextMenuPlacement}
@@ -546,8 +484,6 @@ const FloatingContextMenu: FC<{
           referenceElementOpen={floatingDropdownMenu.open}
           referenceElement={
             <div
-              id={ROOT_FLOATING_REFERENCE_ELEMENT_ID}
-              aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
               style={{
                 boxSizing: 'border-box',
                 border: '1px solid',

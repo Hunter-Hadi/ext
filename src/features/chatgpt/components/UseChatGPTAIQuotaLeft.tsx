@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 
-import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { GiftIcon } from '@/components/CustomIcon'
 import RefreshOutlined from '@mui/icons-material/RefreshOutlined'
 import { useUseChatGPTUserInfo } from '@/features/chatgpt/hooks'

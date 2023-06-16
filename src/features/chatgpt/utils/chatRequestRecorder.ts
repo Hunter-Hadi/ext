@@ -1,4 +1,4 @@
-import { APP_USE_CHAT_GPT_API_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import dayjs from 'dayjs'
 import Browser from 'webextension-polyfill'

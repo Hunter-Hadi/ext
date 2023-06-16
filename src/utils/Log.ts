@@ -1,4 +1,4 @@
-import { isProduction } from '@/types'
+import { isProduction } from '@/constants'
 
 class Log {
   module: string

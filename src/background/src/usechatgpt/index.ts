@@ -1,4 +1,4 @@
-import { APP_USE_CHAT_GPT_API_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 
 export type IUseChatGPTUserInfo = {
   chatgpt_expires_at: string

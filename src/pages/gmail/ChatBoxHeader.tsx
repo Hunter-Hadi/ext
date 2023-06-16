@@ -4,7 +4,7 @@ import {
   APP_USE_CHAT_GPT_HOST,
   CHROME_EXTENSION_HOMEPAGE_URL,
   isEzMailApp,
-} from '@/types'
+} from '@/constants'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
 import TooltipButton from '@/components/TooltipButton'

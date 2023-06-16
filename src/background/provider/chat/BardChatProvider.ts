@@ -5,7 +5,7 @@ import {
 import { BardChat } from '@/background/src/chat'
 import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 
 class BardChatProvider implements ChatAdapterInterface {

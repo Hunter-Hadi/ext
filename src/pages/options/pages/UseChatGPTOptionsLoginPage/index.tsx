@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 // import { UseChatGptIcon } from '@/components/CustomIcon'
-import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { GoogleIcon } from '@/components/CustomIcon'
 const UseChatGPTOptionsLoginPage: FC = () => {
   return (

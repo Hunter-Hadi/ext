@@ -8,7 +8,7 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-} from '@/types'
+} from '@/constants'
 import {
   IChromeExtensionListenEvent,
   IChromeExtensionSendEvent,

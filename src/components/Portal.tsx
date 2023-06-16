@@ -5,7 +5,7 @@ import { CacheProvider } from '@emotion/react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactContexifyCss from 'react-contexify/dist/ReactContexify.css'
-import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/types'
+import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/constants'
 import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
 
 const AppNameToClassName = String(process.env.APP_ENV || '')

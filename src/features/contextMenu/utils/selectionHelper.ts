@@ -3,6 +3,7 @@ import isNumber from 'lodash-es/isNumber'
 import { IRangyRect, ISelectionElement } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
 import { getCurrentDomainHost } from '@/utils'
+import sum from 'lodash-es/sum'
 /**
  * @description 获取光标位置
  * @param element
@@ -274,15 +275,40 @@ export const inputSetSelectionAndScrollTo = (
   editableElement.setSelectionRange(start, end)
   if (editableElement.tagName === 'TEXTAREA') {
     const textArea = editableElement as HTMLTextAreaElement
-    // We need the number of characters in a row
-    const charsPerRow = textArea.cols
-    // We need to know at which row our selection starts
-    const selectionRow = (end - (end % charsPerRow)) / charsPerRow
-    // We need to scroll to this row but scrolls are in pixels,
-    // so we need to know a row's height, in pixels
+    const style = getComputedStyle(textArea)
+    // get font info
+    const char = textArea.value.match(/\w/)?.[0] || 'M'
+    const fontSize = style.fontSize
+    const fontFamily = style.fontFamily
+    // 创建一个临时的 span 元素，并设置其样式为与字体相同的样式
+    const tempSpan = document.createElement('span')
+    tempSpan.style.fontSize = fontSize
+    tempSpan.style.fontFamily = fontFamily
+    tempSpan.style.position = 'absolute'
+    tempSpan.style.top = '-9999px'
+    tempSpan.style.left = '-9999px'
+    tempSpan.innerText = char
+    document.body.appendChild(tempSpan)
+    const charWidth = tempSpan.offsetWidth
+    tempSpan.remove()
+    // 获取每行有多少个字符
+    const charsPerRow =
+      Math.floor(textArea.getBoundingClientRect().width / charWidth) || 30
+    // 获取直到选中的内容
+    const untilEndText = textArea.value.substring(0, end)
+    const untilEndRowCount = sum(
+      untilEndText.split(/\n/).map((partOfText) => {
+        // 这一段文本占用的行数
+        const textUsingRowLength = Math.ceil(partOfText.length / charsPerRow)
+        return Math.max(textUsingRowLength, 1)
+      }),
+    )
     const lineHeight = textArea.clientHeight / textArea.rows
     // Scroll!!
-    textArea.scrollTop = lineHeight * selectionRow
+    textArea.scrollTop = lineHeight * untilEndRowCount
+  } else if (editableElement.tagName === 'INPUT') {
+    const input = editableElement as HTMLInputElement
+    input.scrollLeft = input.scrollWidth
   }
 }
 
@@ -297,6 +323,7 @@ export const inputSetSelectionAndScrollTo = (
  *  2.1 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
  *  2.2 选中替换/插入的内容
  *  2.3 设置高亮
+ * 3. 触发keyup事件
  * 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
  * @param startMarkerId
  * @param endMarkerId
@@ -309,6 +336,7 @@ export const replaceMarkerContent = (
   value: string,
   type: 'insert_blow' | 'insert_above' | 'replace',
 ) => {
+  let originalEditableElement: HTMLElement | null = null
   const startMarker = document.querySelector(
     `[data-usechatgpt-marker-start-id="${startMarkerId}"`,
   ) as HTMLElement
@@ -317,30 +345,44 @@ export const replaceMarkerContent = (
   )
   if (startMarker.tagName === 'INPUT' || startMarker.tagName === 'TEXTAREA') {
     const inputElement = startMarker as HTMLInputElement
+    originalEditableElement = inputElement
     const start = Number(
       inputElement.getAttribute('data-usechatgpt-start-offset'),
     )
     const end = Number(inputElement.getAttribute('data-usechatgpt-end-offset'))
     if (isNumber(start) && isNumber(end)) {
-      if (type === 'replace') {
-        const newValue =
-          inputElement.value.substring(0, start) +
-          value +
-          inputElement.value.substring(end, inputElement.value.length)
-        inputElement.value = newValue
-      } else if (type === 'insert_blow') {
-        if (inputElement.tagName === 'TEXTAREA') {
-          value = ('\n\n' + value).replace(/^\n{2,}/, '\n\n')
-        } else {
-          value = (' ' + value).replace(/^\s+/, ' ')
-        }
-        const newValue =
-          inputElement.value.substring(0, start) +
-          value +
-          inputElement.value.substring(start, inputElement.value.length)
-        inputElement.value = newValue
+      // 因为textarea/input不需要这么多换行符和空格
+      if (inputElement.tagName === 'TEXTAREA') {
+        value = value.replace(/\n+/, '\n')
+      } else {
+        value = value.replace(/\n+/, ' ')
+        value = value.replace(/\s+/, ' ')
       }
-      inputSetSelectionAndScrollTo(inputElement, start, start + value.length)
+      let newValue = ''
+      let beforeText = ''
+      let afterText = ''
+      if (type === 'replace') {
+        beforeText = inputElement.value.substring(0, start)
+        afterText = inputElement.value.substring(end, inputElement.value.length)
+      } else if (type === 'insert_blow') {
+        beforeText = inputElement.value.substring(0, end)
+        afterText = inputElement.value.substring(end, inputElement.value.length)
+        if (!beforeText.endsWith('\n') && inputElement.tagName === 'TEXTAREA') {
+          value = '\n' + value
+        } else if (
+          !beforeText.endsWith(' ') &&
+          inputElement.tagName === 'INPUT'
+        ) {
+          value = ' ' + value
+        }
+      }
+      newValue = beforeText + value + afterText
+      inputElement.value = newValue
+      inputSetSelectionAndScrollTo(
+        inputElement,
+        beforeText.length,
+        beforeText.length + value.length,
+      )
     }
   } else if (startMarker && endMarker) {
     const range = document.createRange()
@@ -371,6 +413,7 @@ export const replaceMarkerContent = (
       const { editableElement } = getEditableElement(
         startMarker as HTMLSpanElement,
       )
+      originalEditableElement = editableElement
       if (editableElement) {
         editableElement.focus()
         editableElement.click()
@@ -434,6 +477,14 @@ export const replaceMarkerContent = (
     }
   }
   removeAllSelectionMarker()
+  // dispatch keyup event with original target
+  if (originalEditableElement) {
+    const event = new KeyboardEvent('keyup', {
+      bubbles: true,
+      cancelable: true,
+    })
+    startMarker.dispatchEvent(event)
+  }
 }
 
 /**
@@ -455,6 +506,13 @@ export const removeAllSelectionMarker = () => {
     marker.removeAttribute('data-usechatgpt-marker-start-id')
     marker.removeAttribute('data-usechatgpt-marker-end-id')
   })
+}
+
+export const removeAllRange = () => {
+  if (typeof document === 'undefined') {
+    return
+  }
+  window.getSelection()?.removeAllRanges()
 }
 
 /**
@@ -535,15 +593,19 @@ export const createSelectionElement = (
   }
   const targetRect = cloneRect(target.getBoundingClientRect())
   let selectionRect: IRangyRect | null = null
-  const windowRange = window
-    .getSelection()
-    ?.getRangeAt(0)
-    ?.getBoundingClientRect()
-  if (windowRange) {
-    selectionRect = cloneRect(windowRange)
-    if (isEditableElement && windowRange.width + windowRange.height === 0) {
-      selectionRect = cloneRect(element.getBoundingClientRect())
+  try {
+    const windowRange = window
+      .getSelection()
+      ?.getRangeAt(0)
+      ?.getBoundingClientRect()
+    if (windowRange) {
+      selectionRect = cloneRect(windowRange)
+      if (isEditableElement && windowRange.width + windowRange.height === 0) {
+        selectionRect = cloneRect(element.getBoundingClientRect())
+      }
     }
+  } catch (e) {
+    console.log('createSelectionElement get range error: \t', e)
   }
   if (!selectionRect) {
     const boundary = {
@@ -633,6 +695,47 @@ export const getSelectionBoundaryElement = (startContainer = true) => {
       container = range[startContainer ? 'startContainer' : 'endContainer']
       // Check if the container is a text node and return its parent if so
       return container.nodeType === 3 ? container.parentNode : container
+    }
+  }
+}
+
+/**
+ * 移除修改过placeholder的元素
+ * @param placeholderText
+ */
+export const removeEditableElementPlaceholder = (placeholderText: string) => {
+  if (typeof document === 'undefined') {
+    return
+  }
+  const nodes: Array<HTMLInputElement | HTMLTextAreaElement> = []
+  document.querySelectorAll('input').forEach((input) => nodes.push(input))
+  document
+    .querySelectorAll('textarea')
+    .forEach((textarea) => nodes.push(textarea))
+  nodes.forEach((node) => {
+    if (node.placeholder === placeholderText) {
+      node.placeholder = ''
+    }
+  })
+}
+
+/**
+ * 更新没有placeholder的元素
+ * @param element
+ * @param placeholderText
+ */
+export const updateEditableElementPlaceholder = (
+  element: HTMLElement,
+  placeholderText: string,
+) => {
+  if (typeof document === 'undefined') {
+    return
+  }
+  removeEditableElementPlaceholder(placeholderText)
+  if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+    const inputElement = element as HTMLInputElement
+    if (!inputElement.placeholder) {
+      inputElement.placeholder = placeholderText
     }
   }
 }

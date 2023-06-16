@@ -22,7 +22,7 @@ import {
   FloatingContextMenuTemporaryIconButton,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
-import { APP_ENV, isProduction } from '@/types'
+import { APP_ENV, isProduction } from '@/constants'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import { IRangyRect } from '@/features/contextMenu/types'
 

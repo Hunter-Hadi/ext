@@ -17,7 +17,7 @@ import {
   APP_VERSION,
   CHAT_GPT_MESSAGES_RECOIL_KEY,
   CHROME_EXTENSION_HOMEPAGE_URL,
-} from '@/types'
+} from '@/constants'
 
 const log = new Log('Background/Chat/ChatSystem')
 

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
-import { APP_USE_CHAT_GPT_HOST } from '@/types'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'

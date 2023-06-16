@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil'
 import { ComposeView, InboxSDK, ThreadView } from '@inboxsdk/core'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/types'
+import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
 import Browser from 'webextension-polyfill'
 import { IChatMessage } from '@/features/chatgpt/types'
 // import { v4 as uuidV4 } from 'uuid'

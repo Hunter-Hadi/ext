@@ -16,7 +16,7 @@ import {
   getFloatingContextMenuActiveElement,
 } from '@/utils'
 import { AppState } from '@/store'
-import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/types'
+import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
 import { getMediator } from '@/store/mediator'
 import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'

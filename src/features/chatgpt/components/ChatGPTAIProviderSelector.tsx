@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Chip from '@mui/material/Chip'
 
-import { CHAT_GPT_PROVIDER } from '@/types'
+import { CHAT_GPT_PROVIDER } from '@/constants'
 import { ChatGPTOpenAIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIModelSelector'
 import { IChatGPTProviderType } from '@/background/provider/chat'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'

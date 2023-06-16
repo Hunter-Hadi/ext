@@ -1,3 +1,5 @@
+// s3
+export const RESOURCES_URL = 'https://resources.usechatgpt.ai'
 // env
 export const APP_ENV = String(process.env.APP_ENV)
 export const APP_NAME = String(process.env.APP_NAME)

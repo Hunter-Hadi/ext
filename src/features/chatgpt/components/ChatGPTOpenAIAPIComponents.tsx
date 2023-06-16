@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { BaseSelect } from '@/components/select'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
-import { OPENAI_API_MODELS } from '@/types'
+import { OPENAI_API_MODELS } from '@/constants'
 import useChatGPTApiSettings from '@/features/chatgpt/hooks/useChatGPTApiSettings'
 import Slider from '@mui/material/Slider'
 import Typography from '@mui/material/Typography'

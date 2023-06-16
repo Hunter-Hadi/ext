@@ -7,7 +7,7 @@ import {
   CHAT_GPT_PROVIDER,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
-} from '@/types'
+} from '@/constants'
 import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,

@@ -10,6 +10,7 @@ import {
   getChromeExtensionSettings,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
+// import AES from 'crypto-js/aes'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况
@@ -55,11 +56,24 @@ export const increaseChatGPTRequestCount = async (
     const settings = await getChromeExtensionSettings()
     const provider = settings.chatGPTProvider || 'UNKNOWN_PROVIDER'
     const currentDay = dayjs().format('YYYY-MM-DD')
+    // MARK - 清理过期的数据
+    Object.keys(cacheData).forEach((cacheDay) => {
+      if (
+        !Object.prototype.hasOwnProperty.call(
+          cacheData[cacheDay],
+          'prompt_cnt',
+        ) ||
+        // TODO - 因为上个版本有domain_cnt，这个版本不需要了，直接重新来
+        Object.prototype.hasOwnProperty.call(cacheData[cacheDay], 'domain_cnt')
+      ) {
+        delete cacheData[cacheDay]
+      }
+    })
     if (
       !cacheData[currentDay] ||
       !Object.prototype.hasOwnProperty.call(
         cacheData[currentDay],
-        'total_cnt',
+        'prompt_cnt',
       ) ||
       // TODO - 因为上个版本有domain_cnt，这个版本不需要了，直接重新来
       Object.prototype.hasOwnProperty.call(cacheData[currentDay], 'domain_cnt')
@@ -130,6 +144,9 @@ export const increaseChatGPTRequestCount = async (
     }
   } catch (e) {
     console.log('increaseChatGPTRequestCount error', e)
+    // 如果出错了，就清理掉
+    clearStorageDataKeyByKey(CHATGPT_REQUEST_TIME_RECORD)
+    clearStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
   }
 }
 const debounceFetchChatGPTErrorRecord = debounce(() => {
@@ -138,13 +155,34 @@ const debounceFetchChatGPTErrorRecord = debounce(() => {
 
 const fetchChatGPTErrorRecord = async () => {
   try {
+    // 如果document不可见，就不发送
+    if (document.hidden) {
+      return
+    }
     const fingerprint = await getFingerPrint()
     const startRecordTime = await getStorageDataKeyByKey(
       CHATGPT_REQUEST_TIME_RECORD,
     )
     const info = await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
+    if (!info) {
+      return
+    }
+    let dayCount = 0
+    let totalCount = 0
+    Object.keys(info).forEach((key) => {
+      if (info[key].total_cnt > 0) {
+        dayCount += 1
+        totalCount += info[key].total_cnt
+      }
+    })
+    // 如果没有数据，就不发送
+    if (dayCount === 0 || totalCount === 0) {
+      return
+    }
     const accessToken = await getAccessToken()
     if (startRecordTime && info && accessToken) {
+      // TODO - 换成加密字符串
+      // const text = AES.encrypt(JSON.stringify(info), 'MaxAI').toString()
       fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/log`, {
         method: 'POST',
         body: JSON.stringify({

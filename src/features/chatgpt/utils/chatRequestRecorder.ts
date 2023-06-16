@@ -21,7 +21,7 @@ const CHATGPT_REQUEST_TIME_RECORD = 'chatgpt-request-time-record'
 const CHATGPT_REQUEST_COUNT_RECORD = 'chatgpt-request-count-record'
 
 const RECORD_DAY_LIMIT = 2
-const RECORD_DEBOUNCE_TIME = 1000 * 60 * 5 // 5分钟
+const RECORD_DEBOUNCE_TIME = 1000 * 60 * 1 // 5分钟
 
 const getStorageDataKeyByKey = async (key: string) => {
   const res = await Browser.storage.local.get(key)
@@ -138,11 +138,15 @@ const debounceFetchChatGPTErrorRecord = debounce(() => {
 
 const fetchChatGPTErrorRecord = async () => {
   try {
+    if (document.hidden) {
+      return
+    }
     const fingerprint = await getFingerPrint()
     const startRecordTime = await getStorageDataKeyByKey(
       CHATGPT_REQUEST_TIME_RECORD,
     )
     const info = await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
+    debugger
     const accessToken = await getAccessToken()
     if (startRecordTime && info && accessToken) {
       fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/log`, {

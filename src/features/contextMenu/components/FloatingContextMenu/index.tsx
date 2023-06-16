@@ -10,6 +10,7 @@ import {
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import {
+  FloatingContextMenuDraftState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -34,14 +35,18 @@ import {
 import {
   getAppContextMenuElement,
   getCurrentDomainHost,
+  hideChatBox,
+  isShowChatBox,
   showChatBox,
-  // showChatBox,
 } from '@/utils'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
-import { FloatingContextMenuCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import {
+  FloatingContextMenuCloseIconButton,
+  FloatingContextMenuShortcutButtonGroup,
+} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { getMediator } from '@/store/mediator'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
@@ -53,6 +58,8 @@ import { useRangy } from '@/features/contextMenu'
 import { useAuthLogin } from '@/features/auth'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import Button from '@mui/material/Button'
+import useCommands from '@/hooks/useCommands'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const CONTINUE_ARRAY: IContextMenuItemWithChildren[] = [
@@ -135,9 +142,12 @@ const FloatingContextMenu: FC<{
   const { root } = props
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
+  const { shortCutKey } = useCommands()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
+  const [floatingContextMenuDraft, setFloatingContextMenuDraft] =
+    useRecoilState(FloatingContextMenuDraftState)
   const { isLogin } = useAuthLogin()
   const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
@@ -228,8 +238,13 @@ const FloatingContextMenu: FC<{
   const dismiss = useDismiss(context, {})
   const { getFloatingProps } = useInteractions([dismiss, click])
   const [inputValue, setInputValue] = useState('')
-  const { setShortCuts, runShortCuts, loading, reGenerate } =
-    useShortCutsWithMessageChat('')
+  const {
+    setShortCuts,
+    runShortCuts,
+    loading,
+    reGenerate,
+    shortCutsEngineRef,
+  } = useShortCutsWithMessageChat('')
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,
@@ -338,11 +353,16 @@ const FloatingContextMenu: FC<{
     }
   }
   const askChatGPT = async (inputValue: string) => {
+    const draft = floatingContextMenuDraft.draft || ''
+    setFloatingContextMenuDraft({
+      draft: '',
+      draftList: [],
+    })
     setActions([
       {
         type: 'RENDER_CHATGPT_PROMPT',
         parameters: {
-          template: `${inputValue}:\n\n{{SELECTED_TEXT}}`,
+          template: `${inputValue}:\n\n{{${draft}}`,
         },
       },
       {
@@ -463,14 +483,24 @@ const FloatingContextMenu: FC<{
         needOpenChatBox = true
       }
       if (!isEditableElement || needOpenChatBox) {
-        showChatBox()
         setFloatingDropdownMenu({
           open: false,
           rootRect: null,
         })
+        showChatBox()
       }
       runShortCuts().then(() => {
         // done
+        const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
+        if (error) {
+          console.log('[ContextMenu Module] error', error)
+          setFloatingDropdownMenu({
+            open: false,
+            rootRect: null,
+          })
+          // 如果出错了，则打开聊天框
+          showChatBox()
+        }
       })
     }
   }, [actions, loading, isLogin])
@@ -581,23 +611,25 @@ const FloatingContextMenu: FC<{
                           minHeight: '24px',
                         }}
                         onEnter={(value) => {
-                          if (contextMenuList.length > 0) {
-                            updateFloatingDropdownMenuSelectedItem(
-                              (preState) => {
-                                return {
-                                  ...preState,
-                                  selectedContextMenuId:
-                                    preState.lastHoverContextMenuId,
-                                }
-                              },
-                            )
-                            return
+                          if (haveContext) {
+                            if (!haveDraft) return
+                            askChatGPT(value)
+                          } else {
+                            if (contextMenuList.length > 0) {
+                              updateFloatingDropdownMenuSelectedItem(
+                                (preState) => {
+                                  return {
+                                    ...preState,
+                                    selectedContextMenuId:
+                                      preState.lastHoverContextMenuId,
+                                  }
+                                },
+                              )
+                              return
+                            }
                           }
-                          if (!haveDraft) return
-                          askChatGPT(value)
                         }}
                       />
-                      <span>{loading ? 1 : haveContext ? 2 : 3}</span>
                       <IconButton
                         sx={{
                           height: '20px',
@@ -620,20 +652,23 @@ const FloatingContextMenu: FC<{
                           },
                         }}
                         onClick={() => {
-                          if (contextMenuList.length > 0) {
-                            updateFloatingDropdownMenuSelectedItem(
-                              (preState) => {
-                                return {
-                                  ...preState,
-                                  selectedContextMenuId:
-                                    preState.lastHoverContextMenuId,
-                                }
-                              },
-                            )
-                            return
+                          if (haveContext) {
+                            if (!haveDraft) return
+                            askChatGPT(inputValue)
+                          } else {
+                            if (contextMenuList.length > 0) {
+                              updateFloatingDropdownMenuSelectedItem(
+                                (preState) => {
+                                  return {
+                                    ...preState,
+                                    selectedContextMenuId:
+                                      preState.lastHoverContextMenuId,
+                                  }
+                                },
+                              )
+                              return
+                            }
                           }
-                          if (!haveDraft) return
-                          askChatGPT(inputValue)
                         }}
                       >
                         <ArrowUpwardIcon
@@ -647,8 +682,43 @@ const FloatingContextMenu: FC<{
                         useInButton={false}
                         sx={{ width: 24, height: 24, alignSelf: 'end' }}
                       />
+                      <Button
+                        sx={{
+                          ml: 1,
+                          height: '24px',
+                          flexShrink: 0,
+                        }}
+                        variant="text"
+                        onClick={() => {
+                          if (isShowChatBox()) {
+                            hideChatBox()
+                          } else {
+                            showChatBox()
+                          }
+                        }}
+                      >
+                        <Typography
+                          component={'span'}
+                          fontSize={'14px'}
+                          color={'primary.main'}
+                        >
+                          {'Sidebar'}
+                          {/*{appState.open ? 'Hide chat' : 'Show chat'}*/}
+                          <span
+                            style={{
+                              color: 'inherit',
+                              fontSize: '12px',
+                              marginLeft: '4px',
+                            }}
+                          >
+                            {shortCutKey}
+                          </span>
+                        </Typography>
+                      </Button>
                     </>
                   )}
+                  {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
+                  <FloatingContextMenuShortcutButtonGroup />
                 </Stack>
               </Stack>
             </div>

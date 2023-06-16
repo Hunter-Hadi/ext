@@ -454,7 +454,9 @@ export const MenuComponent = React.forwardRef<
     React.useEffect(() => {
       if (!tree) return
       function handleTreeClick() {
-        setIsOpen(false)
+        if (!customOpen) {
+          setIsOpen(false)
+        }
       }
       function onSubMenuOpen(event: { nodeId: string; parentId: string }) {
         if (event.nodeId !== nodeId && event.parentId === parentId) {
@@ -467,7 +469,7 @@ export const MenuComponent = React.forwardRef<
         tree.events.off('click', handleTreeClick)
         tree.events.off('menuopen', onSubMenuOpen)
       }
-    }, [tree, nodeId, parentId])
+    }, [tree, nodeId, parentId, customOpen])
     React.useEffect(() => {
       if (isOpen && tree) {
         tree.events.emit('menuopen', { parentId, nodeId })

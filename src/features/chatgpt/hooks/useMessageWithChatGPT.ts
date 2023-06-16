@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
   ChatGPTMessageState,
@@ -101,7 +101,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       parentMessageId?: string
     },
     options?: IUserSendMessageExtraType,
-  ): Promise<{ success: boolean; answer: string }> => {
+  ): Promise<{ success: boolean; answer: string; error: string }> => {
     const { question, messageId, parentMessageId } = questionInfo
     const {
       regenerate = false,
@@ -112,6 +112,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       return Promise.resolve({
         success: false,
         answer: '',
+        error: '',
       })
     }
     setConversation((prevState) => {
@@ -173,7 +174,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     })
     log.info('[ChatGPT Module] send question step 3 ask question')
     const pushMessages: IChatMessage[] = []
+    let isManualStop = false
     let hasError = false
+    let errorMessage = ''
     try {
       // 发消息之前记录
       await increaseChatGPTRequestCount('total')
@@ -240,23 +243,25 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 }
               })
             }
-            if (error !== 'manual aborted request.') {
+            errorMessage =
+              error?.message || error || 'Error detected. Please try again.'
+            if (error === 'manual aborted request.') {
+              isManualStop = true
               // 手动取消的请求不计入错误
+            } else {
               increaseChatGPTRequestCount('error')
-              let text =
-                error?.message || error || 'Error detected. Please try again.'
               if (is403Error) {
-                text = `Log into ChatGPT and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
+                errorMessage = `Log into ChatGPT and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
               }
-              if (text.startsWith('Too many requests in 1 hour')) {
-                text = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "UseChatGPT.AI" from the AI Provider options at the top of the sidebar.
+              if (errorMessage.startsWith('Too many requests in 1 hour')) {
+                errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "UseChatGPT.AI" from the AI Provider options at the top of the sidebar.
                 ![switch-provider](https://www.usechatgpt.ai/assets/chrome-extension/switch-provider.png)`
               }
               pushMessages.push({
                 type: 'system',
                 messageId: uuidV4(),
                 parentMessageId: currentMessageId,
-                text,
+                text: errorMessage,
                 extra: {
                   status: 'error',
                 },
@@ -283,17 +288,20 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         return Promise.resolve({
           success: true,
           answer: aiRespondingMessage?.text || '',
+          error: '',
         })
       }
       return Promise.resolve({
-        success: false,
-        answer: '',
+        success: isManualStop,
+        answer: aiRespondingMessage?.text || '',
+        error: errorMessage,
       })
     } catch (e) {
       log.error(`send question error`, e)
       return Promise.resolve({
         success: false,
         answer: '',
+        error: (e as any).message || e,
       })
     } finally {
       // 清空输入框
@@ -339,7 +347,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       )
     }
   }
-  const reGenerate = () => {
+  const reGenerate = useCallback(() => {
     let lastUserMessage: IUserSendMessage | null = null
     for (let i = messages.length - 1; i >= 0; i--) {
       const message = messages[i]
@@ -348,12 +356,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         break
       }
     }
+    console.log('handleShortCut regenerate run !', lastUserMessage)
     if (lastUserMessage) {
       // remove after last user message
       const index = messages.indexOf(lastUserMessage)
-      setMessages((prevState) => {
-        return prevState.slice(0, index)
-      })
+      setMessages(messages.slice(0, index))
       return sendQuestion(
         {
           question: lastUserMessage.text,
@@ -372,7 +379,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       )
     }
     return null
-  }
+  }, [messages, sendQuestion])
   const stopGenerateMessage = async () => {
     const parentMessageId = conversation.writingMessage?.parentMessageId
     if (parentMessageId || conversation.lastMessageId) {

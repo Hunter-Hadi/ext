@@ -30,6 +30,7 @@ import {
 import {
   createSelectionElement,
   createSelectionMarker,
+  getEditableElement,
   getSelectionBoundaryElement,
 } from '@/features/contextMenu/utils/selectionHelper'
 import { ROOT_CONTAINER_ID, ROOT_CONTEXT_MENU_ID } from '@/types'
@@ -114,7 +115,10 @@ const useInitRangy = () => {
         const rangySelection = rangy?.getSelection()
         const nativeSelectionElement = getSelectionBoundaryElement()
         if (nativeSelectionElement) {
-          activeElement = nativeSelectionElement as HTMLElement
+          const { editableElement } = getEditableElement(nativeSelectionElement)
+          activeElement =
+            (editableElement as HTMLElement) ||
+            (nativeSelectionElement as HTMLElement)
         }
         // 有activeElement(iframe传递的是没有activeElement的), 且选区不在sidebar/contextMenu上
         if (

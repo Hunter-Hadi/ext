@@ -47,6 +47,7 @@ export const FloatingDropdownMenuState = atom<{
   },
 })
 
+// AI input下拉菜单的继续操作内容选项
 // AI input dropdown menu system items
 export const FloatingDropdownMenuSystemItemsState = atom<{
   selectContextMenuId: string | null
@@ -59,7 +60,8 @@ export const FloatingDropdownMenuSystemItemsState = atom<{
   },
 })
 
-// AI inout down menu items
+// AI input的下拉菜单选项
+// AI input down menu items
 export const FloatingDropdownMenuSelectedItemState = atom<{
   hoverContextMenuIdMap: {
     [key: string]: string
@@ -81,5 +83,18 @@ export const FloatingDropdownMenuItemsSelector = selector<string[]>({
       FloatingDropdownMenuSelectedItemState,
     ).hoverContextMenuIdMap
     return Object.values(hoverIdMap).filter((id) => id)
+  },
+})
+/**
+ * AI持续生成的草稿
+ */
+export const FloatingContextMenuDraftState = atom<{
+  draft: string
+  draftList: string[]
+}>({
+  key: 'FloatingContextMenuDraftState',
+  default: {
+    draft: '',
+    draftList: [],
   },
 })

@@ -30,7 +30,7 @@ export class ActionAskChatGPT extends Action {
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ask_chatgpt'
       this.question = params.LAST_ACTION_OUTPUT
-      const { success, answer, message } = (await engine
+      const { success, answer, message, error } = (await engine
         .getChartGPT()
         ?.sendQuestion(
           {
@@ -44,13 +44,13 @@ export class ActionAskChatGPT extends Action {
             regenerate: false,
             hiddenInChat: askChatGPTType === 'ASK_CHAT_GPT_HIDDEN',
           },
-        )) || { success: false, answer: '' }
+        )) || { success: false, answer: '', error: '' }
       if (success) {
         this.output = answer
         this.message = message
       } else {
         this.output = ''
-        this.error = answer || 'ask chatgpt error'
+        this.error = error || answer || 'ask chatgpt error'
       }
     } catch (e) {
       this.error = (e as any).toString()

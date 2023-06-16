@@ -318,7 +318,8 @@ export const replaceMarkerContent = (
       window.getSelection()?.addRange(range)
       removeAllSelectionMarker()
     }
-    if (getCurrentDomainHost() === 'mail.google.com') {
+    // 选中的可编辑元素focus
+    const focusEditableElement = () => {
       const { editableElement } = getEditableElement(
         startMarker as HTMLSpanElement,
       )
@@ -326,23 +327,57 @@ export const replaceMarkerContent = (
         editableElement.focus()
         editableElement.click()
       }
-      setTimeout(() => {
-        /**
-         * 反转数组是因为插入的内容是从底部插入的
-         */
-        value
-          .split('\n\n')
-          .reverse()
-          .forEach((partOfText) => {
-            const div = document.createElement('div')
-            div.style.cssText = 'white-space: pre-wrap;'
-            div.innerText = partOfText
-            range.insertNode(div)
+    }
+    // 文本转换成富文本插件节点
+    const insertValueToWithRichText = (
+      insertValue: string,
+      options?: {
+        separator?: string
+        tagName?: string
+        className?: string
+        cssText?: string
+      },
+    ) => {
+      const {
+        separator = '\n\n',
+        tagName = 'div',
+        className = '',
+        cssText = '',
+      } = options || {}
+      insertValue
+        .split(separator)
+        .reverse() // 反转数组是因为插入的内容是从底部插入的
+        .forEach((partOfText) => {
+          const div = document.createElement(tagName)
+          className && (div.className = className)
+          cssText && (div.style.cssText = cssText)
+          div.innerText = partOfText
+          range.insertNode(div)
+        })
+    }
+    const host = getCurrentDomainHost()
+    switch (host) {
+      case 'mail.google.com':
+        {
+          focusEditableElement()
+          insertValueToWithRichText(value, {
+            cssText: 'white-space: pre-wrap;',
           })
-        defaultHandleChangeValueAndHighlight()
-      }, 100)
-    } else {
-      defaultHandleChangeValueAndHighlight(value)
+          defaultHandleChangeValueAndHighlight()
+        }
+        break
+      case 'outlook.live.com':
+        {
+          focusEditableElement()
+          insertValueToWithRichText(value, {
+            className: 'elementToProof ContentPasted0',
+          })
+          defaultHandleChangeValueAndHighlight()
+        }
+        break
+      default: {
+        defaultHandleChangeValueAndHighlight(value)
+      }
     }
   }
   removeAllSelectionMarker()

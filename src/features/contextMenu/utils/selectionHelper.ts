@@ -211,6 +211,54 @@ export const createSelectionMarker = (element: HTMLElement) => {
 }
 
 /**
+ * 特殊的host获取选中文本，在无法获取到selectionString的情况下使用
+ * @param element
+ * @returns {selectionString}
+ */
+export const getEditableElementSelectionTextOnSpecialHost = (
+  element: HTMLElement,
+): string => {
+  const host = getCurrentDomainHost()
+  try {
+    if (element) {
+      const doc = element.ownerDocument || (element as any).document
+      // remove all markers
+      removeAllSelectionMarker()
+      const win = doc.defaultView || (doc as any).parentWindow
+      let sel
+      if (typeof win.getSelection != 'undefined') {
+        sel = win.getSelection()
+        if (sel.rangeCount > 0) {
+          const range = win.getSelection().getRangeAt(0)
+          switch (host) {
+            case 'notion.so':
+              {
+                const pageContentRoot =
+                  document.querySelector('.notion-page-content') ||
+                  document.querySelector('[data-content-editable-root="true"]')
+                if (pageContentRoot) {
+                  const boundaryRange = range.cloneRange()
+                  boundaryRange.selectNode(pageContentRoot)
+                  boundaryRange.setEnd(range.endContainer, range.endOffset)
+                  const selectionString = boundaryRange?.toString()?.trim()
+                  return selectionString || ''
+                }
+              }
+              break
+            default: {
+              return "Sorry, we're unable to correctly retrieve the context on this website. Please try again by selecting the text."
+            }
+          }
+        }
+      }
+    }
+  } catch (e) {
+    console.error(e)
+  }
+  return ''
+}
+
+/**
  * @description input设置高亮并且滚动
  * @param editableElement
  * @param start
@@ -373,6 +421,11 @@ export const replaceMarkerContent = (
             className: 'elementToProof ContentPasted0',
           })
           defaultHandleChangeValueAndHighlight()
+        }
+        break
+      case 'notion.so':
+        {
+          debugger
         }
         break
       default: {

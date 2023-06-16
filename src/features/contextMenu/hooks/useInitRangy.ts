@@ -31,6 +31,7 @@ import {
   createSelectionElement,
   createSelectionMarker,
   getEditableElement,
+  getEditableElementSelectionTextOnSpecialHost,
   getSelectionBoundaryElement,
 } from '@/features/contextMenu/utils/selectionHelper'
 import { ROOT_CONTAINER_ID, ROOT_CONTEXT_MENU_ID } from '@/types'
@@ -321,7 +322,7 @@ const useInitRangy = () => {
     AIInputLog.info('listen message')
     /**
      * floating menu 展开逻辑:
-     * 1. 如果当前在input中，展开
+     * 1. 如果当前在editable element中，展开
      * 2. 如果当前有选中的文本，展开
      * 3. 如果都不符合，展开chat box
      */
@@ -330,12 +331,10 @@ const useInitRangy = () => {
       (selectionElementRef.current?.selectionText ||
         selectionElementRef.current?.isEditableElement)
     ) {
-      // 如果当前在input中，展开
       let virtualSelectionElement: IVirtualIframeSelectionElement =
         selectionElementRef.current as any
-      // 1. 打开ai input
-      // 2. 阻止打开chatBox
       AIInputLog.info('open', virtualSelectionElement)
+      // 1. 如果是可编辑元素，设置marker和获取实际的selection text
       if (
         selectionElementRef.current &&
         selectionElementRef.current?.isEditableElement &&
@@ -344,6 +343,20 @@ const useInitRangy = () => {
         const selectionMarkerData = createSelectionMarker(
           selectionElementRef.current?.target,
         )
+        AIInputLog.info(
+          'Selection text: \n',
+          selectionMarkerData.selectionString,
+        )
+        if (!selectionMarkerData.selectionString) {
+          selectionMarkerData.selectionString =
+            getEditableElementSelectionTextOnSpecialHost(
+              selectionElementRef.current?.target,
+            )
+          AIInputLog.info(
+            'Get special host selection text: \n',
+            selectionMarkerData.selectionString,
+          )
+        }
         if (selectionMarkerData) {
           const cloneSelectionElement = cloneDeep(selectionElementRef.current)
           cloneSelectionElement.startMarkerId =
@@ -362,6 +375,7 @@ const useInitRangy = () => {
           )
         }
       }
+      // 2. 展示floating menu
       showFloatingContextMenuWithVirtualSelection({
         selectionText:
           virtualSelectionElement.editableElementSelectionText ||

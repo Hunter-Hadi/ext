@@ -138,6 +138,7 @@ const debounceFetchChatGPTErrorRecord = debounce(() => {
 
 const fetchChatGPTErrorRecord = async () => {
   try {
+    // 如果document不可见，就不发送
     if (document.hidden) {
       return
     }
@@ -146,7 +147,18 @@ const fetchChatGPTErrorRecord = async () => {
       CHATGPT_REQUEST_TIME_RECORD,
     )
     const info = await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
-    debugger
+    let dayCount = 0
+    let totalCount = 0
+    Object.keys(info).forEach((key) => {
+      if (info[key].total_cnt > 0) {
+        dayCount += 1
+        totalCount += info[key].total_cnt
+      }
+    })
+    // 如果没有数据，就不发送
+    if (dayCount === 0 || totalCount === 0) {
+      return
+    }
     const accessToken = await getAccessToken()
     if (startRecordTime && info && accessToken) {
       fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/log`, {

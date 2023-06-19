@@ -107,8 +107,6 @@ export const createSelectionMarker = (element: HTMLElement) => {
   try {
     if (element) {
       const doc = element.ownerDocument || (element as any).document
-      // remove all markers
-      removeAllSelectionMarker()
       const win = doc.defaultView || (doc as any).parentWindow
       let sel
       const startMarkerId = `usechatgpt-start-marker-${uuidV4()}`
@@ -117,6 +115,8 @@ export const createSelectionMarker = (element: HTMLElement) => {
       if (typeof win.getSelection != 'undefined') {
         sel = win.getSelection()
         if (sel.rangeCount > 0) {
+          // remove old marker
+          removeAllSelectionMarker()
           const range = win.getSelection().getRangeAt(0)
           if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
             const inputElement = element as HTMLInputElement
@@ -223,8 +223,6 @@ export const getEditableElementSelectionTextOnSpecialHost = (
   try {
     if (element) {
       const doc = element.ownerDocument || (element as any).document
-      // remove all markers
-      removeAllSelectionMarker()
       const win = doc.defaultView || (doc as any).parentWindow
       let sel
       if (typeof win.getSelection != 'undefined') {
@@ -330,20 +328,33 @@ export const inputSetSelectionAndScrollTo = (
  * @param value
  * @param type
  */
-export const replaceMarkerContent = (
+export const replaceMarkerContent = async (
   startMarkerId: string,
   endMarkerId: string,
   value: string,
   type: 'insert_blow' | 'insert_above' | 'replace',
 ) => {
   let originalEditableElement: HTMLElement | null = null
-  const startMarker = document.querySelector(
+  let startMarker = document.querySelector(
     `[data-usechatgpt-marker-start-id="${startMarkerId}"`,
   ) as HTMLElement
-  const endMarker = document.querySelector(
+  let endMarker = document.querySelector(
     `[data-usechatgpt-marker-end-id="${endMarkerId}"`,
   )
-  if (startMarker.tagName === 'INPUT' || startMarker.tagName === 'TEXTAREA') {
+  if (!startMarker && !endMarker) {
+    // 说明marker丢失了
+    const editableElements = document.querySelectorAll(
+      `[contenteditable="true"]`,
+    )
+    if (editableElements.length > 0) {
+      startMarker = editableElements[editableElements.length - 1] as HTMLElement
+      endMarker = editableElements[editableElements.length - 1] as HTMLElement
+    }
+  }
+  if (
+    startMarker &&
+    (startMarker.tagName === 'INPUT' || startMarker.tagName === 'TEXTAREA')
+  ) {
     const inputElement = startMarker as HTMLInputElement
     originalEditableElement = inputElement
     const start = Number(
@@ -385,38 +396,79 @@ export const replaceMarkerContent = (
       )
     }
   } else if (startMarker && endMarker) {
+    const { editableElement } = getEditableElement(
+      startMarker as HTMLSpanElement,
+    )
+    if (!editableElement) {
+      return
+    }
+    originalEditableElement = editableElement
     const range = document.createRange()
+    range.selectNode(editableElement)
     if (type === 'insert_blow') {
-      value = ('\n\n' + value).replace(/^\n{2,}/, '\n\n')
-      range.setStartAfter(endMarker)
-      range.setEndAfter(endMarker)
+      value = ('\n' + value).replace(/^\n+/, '\n')
+      range.setStartAfter(startMarker)
+      range.setEndBefore(endMarker)
     } else if (type === 'replace') {
       range.setStartAfter(startMarker)
       range.setEndBefore(endMarker)
-      range.deleteContents()
+    }
+    // 判断是否为纯文本节点，还原纯文本节点
+    if (
+      startMarker.parentElement &&
+      endMarker.parentElement &&
+      startMarker.parentElement.isSameNode(endMarker.parentElement)
+    ) {
+      const parentElement = startMarker.parentElement
+      startMarker.remove()
+      endMarker.remove()
+      let isPureText = true
+      for (let i = 0; i < parentElement.childNodes.length; i++) {
+        const childNode = parentElement.childNodes[i]
+        if (childNode.nodeType !== Node.TEXT_NODE) {
+          isPureText = false
+          break
+        }
+      }
+      if (isPureText) {
+        const selectedText = range.toString()
+        // 还原纯文本节点
+        parentElement.innerHTML = parentElement.innerText
+        const startIndex = parentElement.innerText.indexOf(selectedText)
+        const endIndex = startIndex + selectedText.length
+        range.setStart(parentElement.childNodes[0], startIndex)
+        range.setEnd(parentElement.childNodes[0], endIndex)
+      }
     }
     /**
      * @description - 默认的修改内容和高亮选中内容处理, 在不同网站下，高亮选中内容的处理不一样
-     *
      */
-    const defaultHandleChangeValueAndHighlight = (insertValue?: string) => {
-      if (insertValue) {
-        range.insertNode(document.createTextNode(insertValue))
+    const defaultPasteValue = async () => {
+      try {
+        const oldClipboardValue = await navigator.clipboard.readText()
+        await navigator.clipboard.writeText(value)
+        document.execCommand('paste', false, '')
+        await navigator.clipboard.writeText(oldClipboardValue)
+      } catch (e) {
+        console.error('defaultPasteValue error: \t', e)
       }
-      startMarker.focus()
+    }
+    // 高亮
+    const highlightSelection = () => {
       window.getSelection()?.removeAllRanges()
       window.getSelection()?.addRange(range)
-      removeAllSelectionMarker()
+      if (type === 'insert_blow') {
+        window.getSelection()?.collapseToEnd()
+      } else if (type === 'insert_above') {
+        window.getSelection()?.collapseToStart()
+      }
+      // 移除所有的marker
+      // removeAllSelectionMarker()
     }
     // 选中的可编辑元素focus
     const focusEditableElement = () => {
-      const { editableElement } = getEditableElement(
-        startMarker as HTMLSpanElement,
-      )
-      originalEditableElement = editableElement
       if (editableElement) {
         editableElement.focus()
-        editableElement.click()
       }
     }
     // 文本转换成富文本插件节点
@@ -429,6 +481,7 @@ export const replaceMarkerContent = (
         cssText?: string
       },
     ) => {
+      range.deleteContents()
       const {
         separator = '\n\n',
         tagName = 'div',
@@ -454,7 +507,7 @@ export const replaceMarkerContent = (
           insertValueToWithRichText(value, {
             cssText: 'white-space: pre-wrap;',
           })
-          defaultHandleChangeValueAndHighlight()
+          highlightSelection()
         }
         break
       case 'outlook.live.com':
@@ -463,20 +516,17 @@ export const replaceMarkerContent = (
           insertValueToWithRichText(value, {
             className: 'elementToProof ContentPasted0',
           })
-          defaultHandleChangeValueAndHighlight()
-        }
-        break
-      case 'notion.so':
-        {
-          debugger
+          highlightSelection()
         }
         break
       default: {
-        defaultHandleChangeValueAndHighlight(value)
+        console.log('default paste value', value, startMarker, endMarker)
+        focusEditableElement()
+        highlightSelection()
+        await defaultPasteValue()
       }
     }
   }
-  removeAllSelectionMarker()
   // dispatch keyup event with original target
   if (originalEditableElement) {
     const event = new KeyboardEvent('keyup', {

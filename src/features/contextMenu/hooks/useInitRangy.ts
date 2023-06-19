@@ -7,10 +7,7 @@ import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
 import { useRangy } from './useRangy'
 import debounce from 'lodash-es/debounce'
-import {
-  getDraftContextMenuTypeById,
-  isFloatingContextMenuVisible,
-} from '@/features/contextMenu/utils'
+import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
 import {
   FloatingContextMenuDraftState,
   FloatingDropdownMenuState,
@@ -20,13 +17,11 @@ import {
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { listenIframeMessage } from '@/iframe'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import Log from '@/utils/Log'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
-import { AppState } from '@/store'
 import {
   ContextMenuDraftType,
   ISelectionElement,
@@ -34,9 +29,7 @@ import {
 } from '@/features/contextMenu/types'
 import {
   createSelectionElement,
-  createSelectionMarker,
   getEditableElement,
-  getEditableElementSelectionTextOnSpecialHost,
   getSelectionBoundaryElement,
   removeAllRange,
   removeAllSelectionMarker,
@@ -71,14 +64,12 @@ const useInitRangy = () => {
   )
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
     useRecoilState(FloatingDropdownMenuSystemItemsState)
-  const setAppState = useSetRecoilState(AppState)
   const targetElementRef = useRef<HTMLElement | null>(null)
   const selectionElementRef = useRef<
     ISelectionElement | IVirtualIframeSelectionElement | null
   >(null)
   // 在inputAble元素直接打开ai input
-  const { showFloatingContextMenuWithVirtualSelection } =
-    useFloatingContextMenu()
+  const { showFloatingContextMenuWithVirtualElement } = useFloatingContextMenu()
   // 初始化rangy npm 包
   useEffectOnce(() => {
     Promise.all([
@@ -130,6 +121,10 @@ const useInitRangy = () => {
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
         const rangySelection = rangy?.getSelection()
+        // 这里是mousedown记录的editable element, 如果有的话替换mouseup阶段的activeElement
+        if (targetElementRef.current) {
+          activeElement = targetElementRef.current
+        }
         // 有activeElement(iframe传递的是没有activeElement的), 且选区不在sidebar/contextMenu上
         if (
           activeElement &&
@@ -160,10 +155,6 @@ const useInitRangy = () => {
             )
           } else {
             // 2. rangy没有选区
-            // 这里是mousedown记录的editable element, 如果有的话替换mouseup阶段的activeElement
-            if (targetElementRef.current) {
-              activeElement = targetElementRef.current
-            }
             const nativeSelectionElement = getSelectionBoundaryElement()
             if (
               nativeSelectionElement &&
@@ -249,18 +240,10 @@ const useInitRangy = () => {
             '[ContextMenu Module]: remove editable element listener',
             targetElementRef.current,
           )
-          if (targetElementRef.current?.tagName === 'IFRAME') {
-            const iframeTarget = targetElementRef.current as HTMLIFrameElement
-            iframeTarget.contentDocument?.body.removeEventListener(
-              'mouseup',
-              mouseUpListener,
-            )
-          } else {
-            targetElementRef.current.removeEventListener(
-              'mouseup',
-              mouseUpListener,
-            )
-          }
+          targetElementRef.current.removeEventListener(
+            'mouseup',
+            mouseUpListener,
+          )
           targetElementRef.current.removeEventListener('keyup', keyupListener)
         }
         targetElementRef.current = editableElement
@@ -362,105 +345,16 @@ const useInitRangy = () => {
       clearListener()
     }
   }, [rangy, saveHighlightedRangeAndShowContextMenu, runEmbedShortCuts])
-  const openFloatingMenu = useCallback(() => {
-    AIInputLog.info('listen message')
-    /**
-     * floating menu 展开逻辑:
-     * 1. 如果当前在editable element中，展开
-     * 2. 如果当前有选中的文本，展开
-     * 3. 如果都不符合，展开chat box
-     */
-    if (
-      !isFloatingContextMenuVisible() &&
-      selectionElementRef.current &&
-      (selectionElementRef.current?.selectionText ||
-        selectionElementRef.current?.isEditableElement)
-    ) {
-      let virtualSelectionElement: IVirtualIframeSelectionElement =
-        selectionElementRef.current as any
-      AIInputLog.info('open', virtualSelectionElement)
-      // 1. 如果是可编辑元素，设置marker和获取实际的selection text
-      if (
-        selectionElementRef.current &&
-        selectionElementRef.current?.isEditableElement &&
-        selectionElementRef.current?.target
-      ) {
-        const selectionMarkerData = createSelectionMarker(
-          selectionElementRef.current?.target,
-        )
-        AIInputLog.info(
-          'Selection text: \n',
-          selectionMarkerData.selectionString,
-        )
-        if (!selectionMarkerData.selectionString) {
-          selectionMarkerData.selectionString =
-            getEditableElementSelectionTextOnSpecialHost(
-              selectionElementRef.current?.target,
-            )
-          AIInputLog.info(
-            'Get special host selection text: \n',
-            selectionMarkerData.selectionString,
-          )
-        }
-        if (selectionMarkerData) {
-          const cloneSelectionElement = cloneDeep(selectionElementRef.current)
-          cloneSelectionElement.startMarkerId =
-            selectionMarkerData.startMarkerId
-          cloneSelectionElement.endMarkerId = selectionMarkerData.endMarkerId
-          cloneSelectionElement.editableElementSelectionText =
-            selectionMarkerData.selectionString
-          cloneSelectionElement.editableElementSelectionHTML =
-            selectionMarkerData.selectionString
-          selectionElementRef.current = cloneSelectionElement
-          virtualSelectionElement =
-            cloneSelectionElement as IVirtualIframeSelectionElement
-          console.log(
-            '[ContextMenu Module]: selectionMarkerData',
-            selectionMarkerData,
-          )
-        }
-      }
-      // 2. 展示floating menu
-      showFloatingContextMenuWithVirtualSelection({
-        selectionText:
-          virtualSelectionElement.editableElementSelectionText ||
-          virtualSelectionElement.selectionText ||
-          '',
-        selectionHTML:
-          virtualSelectionElement.editableElementSelectionText ||
-          virtualSelectionElement.selectionText ||
-          '',
-        selectionRect: virtualSelectionElement.selectionRect,
-        activeElement: virtualSelectionElement.target as HTMLElement,
-        selectionInputAble: virtualSelectionElement.isEditableElement,
-        selectionElement: virtualSelectionElement,
-      })
-    } else {
-      // 如果都不符合，展开chat box
-      if (isShowChatBox()) {
-        hideChatBox()
-        setAppState((prevState) => {
-          return {
-            ...prevState,
-            open: false,
-          }
-        })
-      } else {
-        showChatBox()
-        setAppState((prevState) => {
-          return {
-            ...prevState,
-            open: true,
-          }
-        })
-      }
-    }
-  }, [])
   useCreateClientMessageListener(async (event, data, sender) => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
-          openFloatingMenu()
+          if (selectionElementRef.current) {
+            showFloatingContextMenuWithVirtualElement(
+              selectionElementRef.current as IVirtualIframeSelectionElement,
+            )
+            selectionElementRef.current = null
+          }
           return {
             success: true,
             data: {},

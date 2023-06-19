@@ -114,7 +114,7 @@ const useInitChatGPTClient = () => {
         {
           console.log('Client_listenUpdateIframeInput', data)
           if (data.startMarkerId && data.endMarkerId) {
-            replaceMarkerContent(
+            await replaceMarkerContent(
               data.startMarkerId,
               data.endMarkerId,
               data.value,

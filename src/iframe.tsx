@@ -40,6 +40,15 @@ const isInIframe = () => {
 const log = new Log('Iframe')
 
 const initIframe = async () => {
+  const hoverButton = document.createElement('button')
+  hoverButton.innerText = 'Hover'
+  hoverButton.style.cssText =
+    'position: fixed; top: 88px; right: 16px; z-index: 9999;'
+  document.body.appendChild(hoverButton)
+  hoverButton.addEventListener('mouseenter', async () => {
+    await navigator.clipboard.writeText('hi!\nmy name is jerry\ntkx')
+    document.execCommand('paste', false, '')
+  })
   if (!isInIframe()) {
     return
   }

@@ -64,8 +64,10 @@ window.onload = () => {
     let parent = startMarker.parentElement
     startMarker.remove()
     endMarker.remove()
-    parent.innerHTML = parent.innerText
-    const startIndex = parent.innerText.indexOf(selectedText)
+    const textNode = document.createTextNode(selectedText)
+    parent.innerHTML = ''
+    parent.appendChild(textNode)
+    const startIndex = Math.max(parent.innerText.indexOf(selectedText), 0)
     const endIndex = startIndex + selectedText.length
     range.setStart(parent.firstChild, startIndex)
     range.setEnd(parent.firstChild, endIndex)

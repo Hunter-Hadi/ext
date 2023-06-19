@@ -526,8 +526,13 @@ export const replaceMarkerContent = async (
       if (isPureText) {
         const selectedText = range.toString()
         // 还原纯文本节点
-        parentElement.innerHTML = parentElement.innerText
-        const startIndex = parentElement.innerText.indexOf(selectedText)
+        const textNode = document.createTextNode(parentElement.innerText)
+        parentElement.innerHTML = ''
+        parentElement.appendChild(textNode)
+        const startIndex = Math.max(
+          parentElement.innerText.indexOf(selectedText),
+          0,
+        )
         const endIndex = startIndex + selectedText.length
         range.setStart(parentElement.childNodes[0], startIndex)
         range.setEnd(parentElement.childNodes[0], endIndex)
@@ -591,8 +596,8 @@ export const replaceMarkerContent = async (
       insertValue
         .split(separator)
         .reverse() // 反转数组是因为插入的内容是从底部插入的
-        .forEach((partOfText) => {
-          if (onSeparator) {
+        .forEach((partOfText, index, arr) => {
+          if (onSeparator && arr[index + 1]) {
             const node = onSeparator(partOfText)
             newRange.insertNode(node)
             console.log('insertValueToWithRichText partOfNode', node)

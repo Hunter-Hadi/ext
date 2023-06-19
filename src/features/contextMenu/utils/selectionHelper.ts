@@ -440,6 +440,12 @@ export const replaceMarkerContent = async (
         range.setEnd(parentElement.childNodes[0], endIndex)
       }
     }
+    // 移动光标
+    if (type === 'insert_blow') {
+      window.getSelection()?.collapseToEnd()
+    } else if (type === 'insert_above') {
+      window.getSelection()?.collapseToStart()
+    }
     /**
      * @description - 默认的修改内容和高亮选中内容处理, 在不同网站下，高亮选中内容的处理不一样
      */
@@ -457,13 +463,6 @@ export const replaceMarkerContent = async (
     const highlightSelection = () => {
       window.getSelection()?.removeAllRanges()
       window.getSelection()?.addRange(range)
-      if (type === 'insert_blow') {
-        window.getSelection()?.collapseToEnd()
-      } else if (type === 'insert_above') {
-        window.getSelection()?.collapseToStart()
-      }
-      // 移除所有的marker
-      // removeAllSelectionMarker()
     }
     // 选中的可编辑元素focus
     const focusEditableElement = () => {
@@ -527,6 +526,8 @@ export const replaceMarkerContent = async (
       }
     }
   }
+  // 移除所有的marker
+  removeAllSelectionMarker()
   // dispatch keyup event with original target
   if (originalEditableElement) {
     const event = new KeyboardEvent('keyup', {

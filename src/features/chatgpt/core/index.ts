@@ -7,6 +7,7 @@ import {
   IChatGPTModelType,
   IChatGPTPluginType,
 } from '@/background/types/Settings'
+import random from 'lodash-es/random'
 
 export interface IChatGPTAnswer {
   text: string
@@ -300,6 +301,12 @@ class ChatGPTConversation {
     let resultText = ''
     let resultMessageId = ''
     const settings = await getChromeExtensionSettings()
+    const WHITE_LIST_MODELS = [
+      'gpt-4-mobile',
+      'text-davinci-002-render-sha-mobile',
+      'text-davinci-002-render-sha',
+    ]
+    const needArkoseToken = !WHITE_LIST_MODELS.includes(this.model)
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: CHAT_GPT_PROVIDER.OPENAI,
       method: 'POST',
@@ -325,7 +332,7 @@ class ChatGPTConversation {
               },
             ],
             model: this.model,
-            arkose_token: generateArkoseToken(),
+            arkose_token: needArkoseToken ? generateArkoseToken() : undefined,
             parent_message_id: parentMessageId,
             timezone_offset_min: new Date().getTimezoneOffset(),
             history_and_training_disabled: false,

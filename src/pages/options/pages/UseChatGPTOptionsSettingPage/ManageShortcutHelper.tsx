@@ -45,7 +45,7 @@ const ManageShortcutHelper: FC<{
           <Stack spacing={1}>
             <Typography fontSize={14}>
               If the settings page for shortcuts indicates that the Cmd/Alt+J
-              shortcut has already been set for UseChatGPT.AI extension, please
+              shortcut has already been set for MaxAI.me extension, please
               perform a force reconfiguration of the Cmd/Alt+J shortcut as
               instructed in the video.
             </Typography>
@@ -62,7 +62,7 @@ const ManageShortcutHelper: FC<{
                 muted
                 loop
                 autoPlay
-                src={`https://www.usechatgpt.ai/assets/installed/reconfigure.mp4`}
+                src={`https://www.maxai.me/assets/installed/reconfigure.mp4`}
               />
             </Box>
           </Stack>

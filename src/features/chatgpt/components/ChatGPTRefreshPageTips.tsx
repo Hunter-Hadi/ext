@@ -40,7 +40,7 @@ const ChatGPTRefreshPageTips: FC = () => {
               fontSize={20}
               fontWeight={800}
             >
-              UseChatGPT.AI!
+              MaxAI.me!
             </Typography>
           </Stack>
         </Link>

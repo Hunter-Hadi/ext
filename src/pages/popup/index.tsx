@@ -75,7 +75,7 @@ const App: FC<{
               fontSize={20}
               fontWeight={800}
             >
-              Welcome to UseChatGPT.AI!
+              Welcome to MaxAI.me!
             </Typography>
           </Stack>
         </Link>

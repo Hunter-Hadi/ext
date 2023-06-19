@@ -105,7 +105,7 @@ const initChromeExtensionInstalled = () => {
       }
       await Browser.contextMenus.create({
         id: 'use-chatgpt-ai-context-menu-button',
-        title: 'UseChatGPT.AI',
+        title: 'MaxAI.me',
         contexts: ['all'],
       })
     })

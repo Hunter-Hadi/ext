@@ -468,7 +468,7 @@ const OpenAIDaemonProcess: FC = () => {
           }}
           onClick={() => {
             const confirm = window.confirm(
-              "Once you click 'OK', the ChatGPT.AI top bar won't show up anymore. But please still keep this ChatGPT tab open so you can keep using the UseChatGPT.AI extension without interruption.",
+              "Once you click 'OK', the ChatGPT.AI top bar won't show up anymore. But please still keep this ChatGPT tab open so you can keep using the MaxAI.me extension without interruption.",
             )
             if (confirm) {
               window.localStorage.setItem(

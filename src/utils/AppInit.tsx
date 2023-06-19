@@ -27,7 +27,7 @@ import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
 import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
-import { RESOURCES_URL } from '@/constant'
+import { RESOURCES_URL } from '@/types'
 
 const log = new Log('AppInit')
 
@@ -40,7 +40,10 @@ const GmailInit = () => {
   )
 }
 const UseChatGPTWebPageJumpToShortCuts = () => {
-  if (window.location.host !== 'www.usechatgpt.ai') {
+  if (
+    window.location.host !== 'www.usechatgpt.ai' &&
+    window.location.host !== 'www.maxai.me'
+  ) {
     return <></>
   }
   return (
@@ -152,9 +155,7 @@ const useHandlePDFViewerError = () => {
               style={{ flexShrink: 0, alignSelf: 'center' }}
               height={48}
               width={48}
-              src={
-                '/assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png'
-              }
+              src={'/assets/USE_CHAT_GPT_AI/icons/maxai_48_normal_dark.png'}
             />
             {/* <UseChatGptIcon sx={{ fontSize: 48 }} /> */}
             <Typography variant={'body1'} fontSize={18} fontWeight={700}>

@@ -13,9 +13,7 @@ const rootElement = document.getElementById('root')
 if (rootElement) {
   const root = createRoot(rootElement)
 
-  document.title = isEzMailApp
-    ? `Settings | EzMail.AI`
-    : `Settings | UseChatGPT.AI`
+  document.title = isEzMailApp ? `Settings | EzMail.AI` : `Settings | MaxAI.me`
 
   root.render(
     <React.StrictMode>

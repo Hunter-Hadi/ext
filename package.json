@@ -5,6 +5,7 @@
   "author": "",
   "scripts": {
     "pdf": "node ./build/pdf.js",
+    "dev": "rollup -c ./build/rollup.config.js -w --app=usechatgpt",
     "usechatgpt": "rollup -c ./build/rollup.config.js -w --app=usechatgpt",
     "release:usechatgpt": "cross-env NODE_ENV=production rollup -c ./build/rollup.config.js --app=usechatgpt"
   },

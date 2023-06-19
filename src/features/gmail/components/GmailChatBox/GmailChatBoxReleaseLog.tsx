@@ -25,7 +25,7 @@ const GmailChatBoxReleaseLog: FC = () => {
         textAlign={'right'}
         noWrap
       >
-        {`UseChatGPT.AI v${APP_VERSION} - ${ReleaseLogText}`}
+        {`MaxAI.me v${APP_VERSION} - ${ReleaseLogText}`}
       </Typography>
       {/*<Link*/}
       {/*  sx={{*/}

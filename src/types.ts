@@ -40,14 +40,14 @@ export const CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB = `CHROME_EXTENSIO
 // doc
 export const CHROME_EXTENSION_MAIL_TO = isEzMailApp
   ? `mailto:hello@ezmail.ai?subject=I have a question about EzMail.AI Chrome extension`
-  : `https://www.usechatgpt.ai/contact-us`
+  : `https://www.maxai.me/contact-us`
 export const CHROME_EXTENSION_DOC_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
-  : 'https://app.usechatgpt.ai'
+  : 'https://app.maxai.me'
 
 export const CHROME_EXTENSION_HOMEPAGE_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
-  : 'https://www.usechatgpt.ai'
+  : 'https://www.maxai.me'
 
 export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
   'the same language variety or dialect of the following text'
@@ -64,7 +64,7 @@ export const CHAT_GPT_PROVIDER = {
   CLAUDE: 'CLAUDE',
 } as const
 
-// app.usechatgpt.ai
+// app.maxai.me
 export const APP_USE_CHAT_GPT_API_HOST = process.env.APP_USE_CHAT_GPT_API_HOST
 export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST
 // AI 回答速度设置
@@ -78,3 +78,6 @@ export const OPENAI_LOCAL_STORAGE_OPENAI_API_SETTINGS_SAVE_KEY = `CHROME_EXTENSI
 
 // user settings
 export const CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH = 450
+
+// s3
+export const RESOURCES_URL = 'https://resources.usechatgpt.ai'

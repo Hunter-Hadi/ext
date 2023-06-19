@@ -80,19 +80,19 @@ export const ClientMessageInit = () => {
               if (mode === 'dark') {
                 await Browser.action.setIcon({
                   path: {
-                    16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal_dark.png',
-                    32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal_dark.png',
-                    48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal_dark.png',
-                    128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal_dark.png',
+                    16: 'assets/USE_CHAT_GPT_AI/icons/maxai_16_normal_dark.png',
+                    32: 'assets/USE_CHAT_GPT_AI/icons/maxai_32_normal_dark.png',
+                    48: 'assets/USE_CHAT_GPT_AI/icons/maxai_48_normal_dark.png',
+                    128: 'assets/USE_CHAT_GPT_AI/icons/maxai_128_normal_dark.png',
                   },
                 })
               } else {
                 await Browser.action.setIcon({
                   path: {
-                    16: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_16_normal.png',
-                    32: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_32_normal.png',
-                    48: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_48_normal.png',
-                    128: 'assets/USE_CHAT_GPT_AI/icons/usechatGPT_128_normal.png',
+                    16: 'assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png',
+                    32: 'assets/USE_CHAT_GPT_AI/icons/maxai_32_normal.png',
+                    48: 'assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png',
+                    128: 'assets/USE_CHAT_GPT_AI/icons/maxai_128_normal.png',
                   },
                 })
               }

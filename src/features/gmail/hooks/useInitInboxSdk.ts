@@ -64,7 +64,7 @@ const useInitInboxSdk = () => {
     // 如果设置了显示按钮，但是当前没有加载，那么刷新加载
     if (showRefreshConfirm) {
       window.confirm(
-        "UseChatGPT.AI - Refresh this page to activate the updated settings for the 'Gmail assistant' button.",
+        "MaxAI.me - Refresh this page to activate the updated settings for the 'Gmail assistant' button.",
       )
       // if (isConfirm) {
       //   window.location.reload()
@@ -133,7 +133,7 @@ const useInitInboxSdk = () => {
         console.log('currentDraftId', currentDraftId)
         timeoutRef.current = true
         composeView.addButton({
-          title: 'UseChatGPT.AI',
+          title: 'MaxAI.me',
           iconUrl: GmailToolBarDropdownIconBase64Data,
           iconClass: 'usechatgpt-ai__gmail-toolbar-button--dropdown',
           tooltip: 'More Gmail assistant options',
@@ -205,7 +205,7 @@ const useInitInboxSdk = () => {
           },
         })
         composeView.addButton({
-          title: 'UseChatGPT.AI',
+          title: 'MaxAI.me',
           iconUrl: GmailToolBarIconBase64Data,
           iconClass: 'usechatgpt-ai__gmail-toolbar-button--cta',
           tooltip: isReplyComposeView

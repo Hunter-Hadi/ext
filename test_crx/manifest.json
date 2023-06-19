@@ -13,6 +13,7 @@
       "js": [
         "content-js.js"
       ],
+      "all_frames": true,
       "matches": [
         "<all_urls>"
       ],

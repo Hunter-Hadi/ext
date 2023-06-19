@@ -35,8 +35,9 @@ const useFloatingContextMenu = () => {
    * @param element
    */
   const showFloatingContextMenuWithVirtualElement = useCallback(
-    (element: IVirtualIframeSelectionElement) => {
-      let virtualSelectionElement: IVirtualIframeSelectionElement = element
+    (element?: IVirtualIframeSelectionElement) => {
+      let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
+        element
       /**
        * floating menu 展开逻辑:
        * 1. 如果当前在editable element中，展开
@@ -156,20 +157,9 @@ const useFloatingContextMenu = () => {
   }
   const showFloatingContextMenu = () => {
     if (show && !floatingDropdownMenu.open && tempSelection) {
-      saveCurrentSelection(tempSelection)
-      hideRangy()
-      const savedRangeRect = tempSelection.selectionRect
-      console.log(
-        '[ContextMenu Module]: render [context menu]',
-        computedRectPosition(savedRangeRect),
+      showFloatingContextMenuWithVirtualElement(
+        tempSelection.selectionElement as IVirtualIframeSelectionElement,
       )
-      setFloatingDropdownMenu({
-        open: true,
-        rootRect: computedRectPosition(savedRangeRect),
-      })
-      return true
-    } else {
-      return false
     }
   }
   const hideFloatingContextMenu = () => {

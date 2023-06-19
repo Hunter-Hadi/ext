@@ -138,7 +138,11 @@ const useInitRangy = () => {
            * 3. rangy和原生都没有选区, 但是iframe有mousedown事件
            */
           // 1. rangy有选区
-          if (rangySelection && rangySelection?.toString()?.trim()) {
+          if (
+            activeElement &&
+            rangySelection &&
+            rangySelection?.toString()?.trim()
+          ) {
             selectionElementRef.current = createSelectionElement(
               activeElement,
               {
@@ -158,8 +162,11 @@ const useInitRangy = () => {
             const nativeSelectionElement = getSelectionBoundaryElement()
             if (
               nativeSelectionElement &&
+              document.activeElement?.tagName !== 'IFRAME' &&
+              activeElement &&
               activeElement.tagName !== 'INPUT' &&
-              activeElement.tagName !== 'TEXTAREA'
+              activeElement.tagName !== 'TEXTAREA' &&
+              activeElement.tagName !== 'IFRAME'
             ) {
               const { editableElement } = getEditableElement(
                 nativeSelectionElement,
@@ -349,12 +356,9 @@ const useInitRangy = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
-          if (selectionElementRef.current) {
-            showFloatingContextMenuWithVirtualElement(
-              selectionElementRef.current as IVirtualIframeSelectionElement,
-            )
-            selectionElementRef.current = null
-          }
+          showFloatingContextMenuWithVirtualElement(
+            selectionElementRef.current as IVirtualIframeSelectionElement,
+          )
           return {
             success: true,
             data: {},

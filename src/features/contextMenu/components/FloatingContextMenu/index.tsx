@@ -284,25 +284,31 @@ const FloatingContextMenu: FC<{
       }
     }
   }
-  const askChatGPT = async (inputValue: string) => {
-    const draft = floatingContextMenuDraft.draft || ''
-    setFloatingContextMenuDraft({
-      draft: '',
-      draftList: [],
-    })
-    setActions([
-      {
-        type: 'RENDER_CHATGPT_PROMPT',
-        parameters: {
-          template: `${inputValue}:\n\n${draft}`,
+  const askChatGPT = (inputValue: string) => {
+    if (inputValue.trim()) {
+      const draft = floatingContextMenuDraft.draft || '{{SELECTED_TEXT}}'
+      setFloatingContextMenuDraft({
+        draft: '',
+        draftList: [],
+      })
+      let template = `${inputValue}`
+      if (draft) {
+        template += `:\n"""\n${draft}\n"""`
+      }
+      setActions([
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template,
+          },
         },
-      },
-      {
-        type: 'ASK_CHATGPT',
-        parameters: {},
-      },
-    ])
-    // await increaseChatGPTRequestCount('prompt', )
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {},
+        },
+      ])
+      // await increaseChatGPTRequestCount('prompt', )
+    }
   }
   useEffect(() => {
     /**
@@ -535,37 +541,33 @@ const FloatingContextMenu: FC<{
                       <CircularProgress size={'16px'} />
                     </>
                   ) : (
-                    <>
-                      <AutoHeightTextarea
-                        placeholder={'Ask AI to edit or generate...'}
-                        stopPropagation={false}
-                        InputId={ROOT_FLOATING_INPUT_ID}
-                        sx={{
-                          border: 'none',
-                          '& textarea': { p: 0 },
-                          borderRadius: 0,
-                          minHeight: '24px',
-                        }}
-                        onEnter={(value) => {
-                          if (haveContext) {
-                            if (!haveDraft) return
-                            askChatGPT(value)
-                          } else {
-                            if (contextMenuList.length > 0) {
-                              updateFloatingDropdownMenuSelectedItem(
-                                (preState) => {
-                                  return {
-                                    ...preState,
-                                    selectedContextMenuId:
-                                      preState.lastHoverContextMenuId,
-                                  }
-                                },
-                              )
-                              return
+                    <AutoHeightTextarea
+                      placeholder={'Ask AI to edit or generate...'}
+                      stopPropagation={false}
+                      InputId={ROOT_FLOATING_INPUT_ID}
+                      sx={{
+                        border: 'none',
+                        '& textarea': { p: 0 },
+                        borderRadius: 0,
+                        minHeight: '24px',
+                      }}
+                      onEnter={(value) => {
+                        if (contextMenuList.length > 0) {
+                          updateFloatingDropdownMenuSelectedItem((preState) => {
+                            return {
+                              ...preState,
+                              selectedContextMenuId:
+                                preState.lastHoverContextMenuId,
                             }
-                          }
-                        }}
-                      />
+                          })
+                          return
+                        }
+                        askChatGPT(value)
+                      }}
+                    />
+                  )}
+                  {!loading && (
+                    <>
                       <IconButton
                         sx={{
                           height: '20px',
@@ -589,7 +591,6 @@ const FloatingContextMenu: FC<{
                         }}
                         onClick={() => {
                           if (haveContext) {
-                            if (!haveDraft) return
                             askChatGPT(inputValue)
                           } else {
                             if (contextMenuList.length > 0) {
@@ -623,6 +624,7 @@ const FloatingContextMenu: FC<{
                           ml: 1,
                           height: '24px',
                           flexShrink: 0,
+                          alignSelf: 'end',
                         }}
                         variant="text"
                         onClick={() => {

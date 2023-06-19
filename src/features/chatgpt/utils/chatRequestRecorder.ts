@@ -10,6 +10,7 @@ import {
   getChromeExtensionSettings,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
+// import AES from 'crypto-js/aes'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况
@@ -21,7 +22,7 @@ const CHATGPT_REQUEST_TIME_RECORD = 'chatgpt-request-time-record'
 const CHATGPT_REQUEST_COUNT_RECORD = 'chatgpt-request-count-record'
 
 const RECORD_DAY_LIMIT = 2
-const RECORD_DEBOUNCE_TIME = 1000 * 60 * 1 // 5分钟
+const RECORD_DEBOUNCE_TIME = 1000 * 60 * 5 // 5分钟
 
 const getStorageDataKeyByKey = async (key: string) => {
   const res = await Browser.storage.local.get(key)
@@ -55,11 +56,24 @@ export const increaseChatGPTRequestCount = async (
     const settings = await getChromeExtensionSettings()
     const provider = settings.chatGPTProvider || 'UNKNOWN_PROVIDER'
     const currentDay = dayjs().format('YYYY-MM-DD')
+    // MARK - 清理过期的数据
+    Object.keys(cacheData).forEach((cacheDay) => {
+      if (
+        !Object.prototype.hasOwnProperty.call(
+          cacheData[cacheDay],
+          'prompt_cnt',
+        ) ||
+        // TODO - 因为上个版本有domain_cnt，这个版本不需要了，直接重新来
+        Object.prototype.hasOwnProperty.call(cacheData[cacheDay], 'domain_cnt')
+      ) {
+        delete cacheData[cacheDay]
+      }
+    })
     if (
       !cacheData[currentDay] ||
       !Object.prototype.hasOwnProperty.call(
         cacheData[currentDay],
-        'total_cnt',
+        'prompt_cnt',
       ) ||
       // TODO - 因为上个版本有domain_cnt，这个版本不需要了，直接重新来
       Object.prototype.hasOwnProperty.call(cacheData[currentDay], 'domain_cnt')
@@ -130,6 +144,9 @@ export const increaseChatGPTRequestCount = async (
     }
   } catch (e) {
     console.log('increaseChatGPTRequestCount error', e)
+    // 如果出错了，就清理掉
+    clearStorageDataKeyByKey(CHATGPT_REQUEST_TIME_RECORD)
+    clearStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
   }
 }
 const debounceFetchChatGPTErrorRecord = debounce(() => {
@@ -147,6 +164,9 @@ const fetchChatGPTErrorRecord = async () => {
       CHATGPT_REQUEST_TIME_RECORD,
     )
     const info = await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)
+    if (!info) {
+      return
+    }
     let dayCount = 0
     let totalCount = 0
     Object.keys(info).forEach((key) => {
@@ -161,6 +181,8 @@ const fetchChatGPTErrorRecord = async () => {
     }
     const accessToken = await getAccessToken()
     if (startRecordTime && info && accessToken) {
+      // TODO - 换成加密字符串
+      // const text = AES.encrypt(JSON.stringify(info), 'MaxAI').toString()
       fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/log`, {
         method: 'POST',
         body: JSON.stringify({

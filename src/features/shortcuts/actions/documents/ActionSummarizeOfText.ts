@@ -6,7 +6,7 @@ import { fakeLangChainSummarization } from '@/features/shortcuts/langchain/chain
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
 import { v4 as uuidV4 } from 'uuid'
-export const SUMMARIZE_MAX_CHARACTERS = 8000
+export const SUMMARIZE_MAX_CHARACTERS = 6000
 
 export const createSummarizeOfTextRunActions = async (
   needSummarizeText: string,
@@ -17,7 +17,7 @@ export const createSummarizeOfTextRunActions = async (
   const addActions: ISetActionsType = []
   const { docs } = await fakeLangChainSummarization(
     needSummarizeText,
-    SUMMARIZE_MAX_CHARACTERS,
+    maxCharacters,
   )
   if (type === 'STUFF' || type === 'REFINE') {
     // stuff/refine
@@ -27,7 +27,7 @@ export const createSummarizeOfTextRunActions = async (
   }
   // 原理是分割成多个part，然后每个part都进行summarize，最后合并
   let partTemplate = ''
-  const partCount = Math.ceil(SUMMARIZE_MAX_CHARACTERS / docs.length)
+  const partCount = Math.ceil(maxCharacters / docs.length)
   // docs 代表有n个part
   if (docs.length === 1) {
     // 只有一个part，结果设置为SUMMARIZE_TEXT_ID_${id}就行
@@ -133,7 +133,7 @@ export class ActionSummarizeOfText extends Action {
       const { actions } = await createSummarizeOfTextRunActions(
         needSummarizeText,
         summarizeType as SummarizeActionType,
-        8000,
+        this.parameters.SliceTextActionLength || SUMMARIZE_MAX_CHARACTERS,
       )
       if (engine.getShortCutsEngine()) {
         engine.getShortCutsEngine()?.pushActions(

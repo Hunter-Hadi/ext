@@ -2,7 +2,7 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
-export const SLICE_MAX_CHARACTERS = 8000
+export const SLICE_MAX_CHARACTERS = 6000
 
 export class ActionSliceOfText extends Action {
   static type: ActionIdentifier = 'SLICE_OF_TEXT'

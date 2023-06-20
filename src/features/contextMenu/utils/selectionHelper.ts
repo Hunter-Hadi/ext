@@ -7,7 +7,11 @@ import sum from 'lodash-es/sum'
 /**
  * 以下网站不支持植入标记，直接返回选区内容并把选区存入cache
  */
-const CREATE_SELECTION_MARKER_BLOCK_HOST_LIST = ['evernote.com']
+const CREATE_SELECTION_MARKER_BLOCK_HOST_LIST = [
+  'evernote.com',
+  'app.slack.com',
+  'web.whatsapp.com',
+]
 
 class IframeSelectionRange {
   private static rangeMap = new Map<string, Range>()
@@ -194,8 +198,14 @@ export const createSelectionMarker = (element: HTMLElement) => {
             const partOfRangeSelectedText = partOfRangeSelected
               .toString()
               .trim()
+              .replace(/\u200B/g, '')
             const host = getCurrentDomainHost()
             if (CREATE_SELECTION_MARKER_BLOCK_HOST_LIST.includes(host)) {
+              console.log(
+                'createSelectionMarker block host',
+                host,
+                partOfRangeSelectedText,
+              )
               const selectionString = partOfRangeSelectedText
               setIframeSelectionRange(
                 startMarkerId,
@@ -413,8 +423,10 @@ export const inputSetSelectionAndScrollTo = (
  *  2.1 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
  *  2.2 选中替换/插入的内容
  *  2.3 设置高亮
+ * 3. cacheRange
+ *  3.1 如果没有startMarker和endMarker，那么使用cacheRange
+ *  3.2 选中替换/插入的内容
  * 3. 触发keyup事件
- * 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
  * @param startMarkerId
  * @param endMarkerId
  * @param value

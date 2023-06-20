@@ -7,36 +7,35 @@ import sum from 'lodash-es/sum'
 /**
  * 以下网站不支持植入标记，直接返回选区内容并把选区存入cache
  */
-const CREATE_SELECTION_MARKER_BLOCK_HOST_LIST = [
-  'evernote.com',
-  'app.slack.com',
-  'web.whatsapp.com',
-]
+const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = [
+  'mail.google.com',
+  'outlook.live.com',
+] as const
 
-class IframeSelectionRange {
+class CacheSelectionRange {
   private static rangeMap = new Map<string, Range>()
   public static setRange(uuid: string, range: Range | null) {
     if (range) {
-      IframeSelectionRange.rangeMap.set(uuid, range)
+      CacheSelectionRange.rangeMap.set(uuid, range)
     }
   }
   public static getRange(uuid: string) {
-    return IframeSelectionRange.rangeMap.get(uuid)
+    return CacheSelectionRange.rangeMap.get(uuid)
   }
   public static removeAllRange() {
-    IframeSelectionRange.rangeMap.clear()
+    CacheSelectionRange.rangeMap.clear()
   }
 }
 
-export const setIframeSelectionRange = (uuid: string, range: Range | null) => {
-  IframeSelectionRange.setRange(uuid, range)
+export const setCacheSelectionRange = (uuid: string, range: Range | null) => {
+  CacheSelectionRange.setRange(uuid, range)
 }
 
-export const getIframeSelectionRange = (uuid: string) => {
-  return IframeSelectionRange.getRange(uuid) || null
+export const getCacheSelectionRange = (uuid: string) => {
+  return CacheSelectionRange.getRange(uuid) || null
 }
-export const removeAllIframeSelectionRange = () => {
-  IframeSelectionRange.removeAllRange()
+export const removeAllCacheSelectionRange = () => {
+  CacheSelectionRange.removeAllRange()
 }
 
 /**
@@ -200,23 +199,29 @@ export const createSelectionMarker = (element: HTMLElement) => {
               .trim()
               .replace(/\u200B/g, '')
             const host = getCurrentDomainHost()
-            if (CREATE_SELECTION_MARKER_BLOCK_HOST_LIST.includes(host)) {
+            /**
+             * 如果不在白名单中，就不创建span标记，缓存用户选区就行
+             */
+            if (
+              !CREATE_SELECTION_MARKER_WHITE_LIST_HOST.includes(host as any)
+            ) {
               console.log(
                 'createSelectionMarker block host',
                 host,
                 partOfRangeSelectedText,
               )
               const selectionString = partOfRangeSelectedText
-              setIframeSelectionRange(
+              setCacheSelectionRange(
                 startMarkerId,
                 partOfRangeSelected.cloneRange(),
               )
-              setIframeSelectionRange(
+              setCacheSelectionRange(
                 endMarkerId,
                 partOfRangeSelected.cloneRange(),
               )
               return { startMarkerId, endMarkerId, selectionString }
             }
+            // 下面是创建选区的逻辑
             let boundaryRange = range.cloneRange()
             boundaryRange.collapse(true)
             const startMarker = doc.createElement('span')
@@ -414,19 +419,19 @@ export const inputSetSelectionAndScrollTo = (
 
 /**
  * 替换marker内容
- * @description - 替换分两种情况
+ * @description - 替换分三种情况
  * 1. input/textarea
  *  1.1 基于startMarker和endMarker的offset，替换或添加到底部在input/textarea的value
  *  1.2 选中替换/插入的内容
  *  1.3 滚动到光标位置并且设置高亮
- * 2. editable元素
- *  2.1 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
+ * 2. cacheRange
+ *  2.1 focus和还原range
  *  2.2 选中替换/插入的内容
- *  2.3 设置高亮
- * 3. cacheRange
- *  3.1 如果没有startMarker和endMarker，那么使用cacheRange
+ * 3. marker元素
+ *  3.1 基于startMarker和endMarker的offset，替换或添加到底部在元素的innerHTML
  *  3.2 选中替换/插入的内容
- * 3. 触发keyup事件
+ *  3.3 设置高亮
+ * 4. 触发keyup事件
  * @param startMarkerId
  * @param endMarkerId
  * @param value
@@ -449,8 +454,8 @@ export const replaceMarkerContent = async (
   let cacheRange: Range | null = null
   if (!startMarker && !endMarker) {
     cacheRange =
-      getIframeSelectionRange(startMarkerId) ||
-      getIframeSelectionRange(endMarkerId)
+      getCacheSelectionRange(startMarkerId) ||
+      getCacheSelectionRange(endMarkerId)
     // 说明marker丢失了
     if (!cacheRange) {
       return
@@ -499,6 +504,43 @@ export const replaceMarkerContent = async (
         beforeText.length,
         beforeText.length + value.length,
       )
+    }
+  } else if (cacheRange) {
+    const doc =
+      cacheRange.startContainer?.ownerDocument ||
+      cacheRange.endContainer?.ownerDocument ||
+      document
+    doc.body.focus()
+    const input = document.createElement('input')
+    doc.body.appendChild(input)
+    input.focus()
+    input.remove()
+    const { editableElement } = getEditableElement(
+      (cacheRange?.startContainer ||
+        cacheRange?.endContainer ||
+        doc.querySelector(`[contenteditable="true"]`)) as HTMLElement,
+    )
+    console.log('[ContextMenu Module] cacheRange', cacheRange, doc.hasFocus())
+    if (editableElement) {
+      originalEditableElement = editableElement
+      editableElement.focus?.()
+    }
+    window.getSelection()?.removeAllRanges()
+    window.getSelection()?.addRange(cacheRange)
+    if (type === 'replace') {
+      // nothing
+    } else if (type === 'insert_blow') {
+      window.getSelection()?.collapseToEnd()
+    } else if (type === 'insert_above') {
+      window.getSelection()?.collapseToStart()
+    }
+    try {
+      const oldClipboardValue = await navigator.clipboard.readText()
+      await navigator.clipboard.writeText(value)
+      doc.execCommand('paste', false, '')
+      await navigator.clipboard.writeText(oldClipboardValue)
+    } catch (e) {
+      console.error('defaultPasteValue error: \t', e)
     }
   } else if (startMarker && endMarker) {
     const { editableElement } = getEditableElement(
@@ -624,7 +666,8 @@ export const replaceMarkerContent = async (
       window.getSelection()?.removeAllRanges()
       window.getSelection()?.addRange(newRange)
     }
-    const host = getCurrentDomainHost()
+    const host =
+      getCurrentDomainHost() as (typeof CREATE_SELECTION_MARKER_WHITE_LIST_HOST)[number]
     switch (host) {
       case 'mail.google.com':
         {
@@ -664,39 +707,11 @@ export const replaceMarkerContent = async (
         await defaultPasteValue()
       }
     }
-  } else if (cacheRange) {
-    const doc =
-      cacheRange.startContainer?.ownerDocument ||
-      cacheRange.endContainer?.ownerDocument ||
-      document
-    doc.body.focus()
-    const input = document.createElement('input')
-    doc.body.appendChild(input)
-    input.focus()
-    input.remove()
-    console.log('[ContextMenu Module] cacheRange', cacheRange, doc.hasFocus())
-    window.getSelection()?.removeAllRanges()
-    window.getSelection()?.addRange(cacheRange)
-    if (type === 'replace') {
-      // nothing
-    } else if (type === 'insert_blow') {
-      window.getSelection()?.collapseToEnd()
-    } else if (type === 'insert_above') {
-      window.getSelection()?.collapseToStart()
-    }
-    try {
-      const oldClipboardValue = await navigator.clipboard.readText()
-      await navigator.clipboard.writeText(value)
-      doc.execCommand('paste', false, '')
-      await navigator.clipboard.writeText(oldClipboardValue)
-    } catch (e) {
-      console.error('defaultPasteValue error: \t', e)
-    }
   }
   // 移除所有的marker
   removeAllSelectionMarker()
   // 移除cacheRange
-  removeAllIframeSelectionRange()
+  removeAllCacheSelectionRange()
   // dispatch keyup event with original target
   if (originalEditableElement) {
     const event = new KeyboardEvent('keyup', {

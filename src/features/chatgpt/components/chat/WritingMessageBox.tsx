@@ -1,7 +1,7 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail/store'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { AppSettingsState } from '@/store'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import {
@@ -10,6 +10,9 @@ import {
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { useRangy } from '@/features/contextMenu'
+import Typography from '@mui/material/Typography'
+import isEmpty from 'lodash-es/isEmpty'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -93,6 +96,7 @@ const WritingMessageBox: FC<{
         },
       }}
     >
+      {isEmpty(floatingContextMenuDraft.draft) ? <ContextText /> : null}
       <div
         ref={boxRef}
         className={`markdown-body ${
@@ -104,6 +108,65 @@ const WritingMessageBox: FC<{
         </CustomMarkdown>
       </div>
     </Stack>
+  )
+}
+
+const ContextText: FC = () => {
+  const { currentSelection } = useRangy()
+  const splitCenterText = useMemo(() => {
+    if (currentSelection?.selectionElement?.selectionText) {
+      const context = currentSelection.selectionElement.selectionText
+        .trim()
+        .replace(/\u200B/g, '')
+      const truncateString = (string: string, count: number) => {
+        if (string.length <= count) {
+          return {
+            start: string,
+            end: '',
+          }
+        }
+        const end = string.substring(string.length - count)
+        const start = string.substring(0, string.length - count)
+        return {
+          start,
+          end,
+        }
+      }
+      return truncateString(context, 30)
+    }
+    return {
+      start: '',
+      end: '',
+    }
+  }, [currentSelection])
+  if (!currentSelection?.selectionElement?.selectionText) {
+    return null
+  }
+  return (
+    <Typography
+      sx={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+      }}
+      fontSize={'14px'}
+      color={'text.secondary'}
+    >
+      <span style={{ flexShrink: 0 }}>Context: </span>
+      <span
+        style={{
+          flex: 1,
+          width: 0,
+          display: 'inline-block',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+        }}
+      >
+        {splitCenterText.start}
+      </span>
+      <span style={{ flexShrink: 0 }}>{splitCenterText.end}</span>
+    </Typography>
   )
 }
 export default WritingMessageBox

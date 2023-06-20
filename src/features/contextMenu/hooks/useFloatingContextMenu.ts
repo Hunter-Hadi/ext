@@ -56,37 +56,45 @@ const useFloatingContextMenu = () => {
           virtualSelectionElement.isEditableElement &&
           virtualSelectionElement.target
         ) {
+          // 这里是基于editable element创建选区
           const selectionMarkerData = createSelectionMarker(
             virtualSelectionElement.target,
           )
-          log.info('Selection text: \n', selectionMarkerData.selectionString)
-          if (!selectionMarkerData.selectionString) {
-            selectionMarkerData.selectionString =
+          const cloneSelectionElement = cloneDeep(virtualSelectionElement)
+          // 这里就是看看editable element是否有选中的文本
+          cloneSelectionElement.editableElementSelectionText =
+            selectionMarkerData.editableElementSelectionText
+          cloneSelectionElement.editableElementSelectionHTML =
+            selectionMarkerData.editableElementSelectionText
+          cloneSelectionElement.selectionText =
+            selectionMarkerData.selectionText
+          // 如果没有选中的文本，就试图获取整个editable element的上下文，并且区分host
+          if (
+            !cloneSelectionElement.editableElementSelectionText &&
+            !cloneSelectionElement.selectionText
+          ) {
+            selectionMarkerData.selectionText =
               getEditableElementSelectionTextOnSpecialHost(
                 virtualSelectionElement.target,
               )
             log.info(
               'Get special host selection text: \n',
-              selectionMarkerData.selectionString,
+              selectionMarkerData.selectionText,
             )
           }
           if (selectionMarkerData) {
-            const cloneSelectionElement = cloneDeep(virtualSelectionElement)
             cloneSelectionElement.startMarkerId =
               selectionMarkerData.startMarkerId
             cloneSelectionElement.endMarkerId = selectionMarkerData.endMarkerId
-            cloneSelectionElement.editableElementSelectionText =
-              selectionMarkerData.selectionString
-            cloneSelectionElement.editableElementSelectionHTML =
-              selectionMarkerData.selectionString
+            cloneSelectionElement.selectionText =
+              selectionMarkerData.selectionText
             // 更新selection rect
             virtualSelectionElement = cloneSelectionElement
-            console.log(
-              '[ContextMenu Module]: selectionMarkerData',
-              selectionMarkerData,
-            )
           }
         }
+        console.log(
+          `[ContextMenu Module]: \n[editableElementSelectionText]:${virtualSelectionElement.editableElementSelectionText}\n[selectionText]:${virtualSelectionElement.selectionText}`,
+        )
         // 2. 展示floating menu
         saveCurrentSelection({
           selectionText:

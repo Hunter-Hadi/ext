@@ -6,7 +6,9 @@ window.onload = () => {
   markButton.style =
     'position: fixed; top: 20px; right: 16px; z-index: 9999;cursor: pointer;user-select: auto;'
   document.body.appendChild(markButton)
-  markButton.addEventListener('click', () => {
+  markButton.addEventListener('click', (event) => {
+    event.stopPropagation()
+    event.preventDefault()
     const selection = window.getSelection()
     if (selection.rangeCount) {
       const range = selection.getRangeAt(0)
@@ -49,7 +51,9 @@ window.onload = () => {
   makeSelectionButton3.style =
     'position: fixed; top: 40px; right: 16px; z-index: 9999;cursor: pointer;user-select: auto;'
   document.body.appendChild(makeSelectionButton3)
-  makeSelectionButton3.addEventListener('click', async () => {
+  makeSelectionButton3.addEventListener('click', async (event) => {
+    event.stopPropagation()
+    event.preventDefault()
     const startMarker = document.querySelector(
       'span[data-usechatgpt-marker-start-id]',
     )
@@ -94,12 +98,14 @@ window.onload = () => {
       tempSelectedText = partOfRangeSelected.toString()
     }
   })
-  const makeSelectionButton = document.createElement('button')
-  makeSelectionButton.innerText = 'Make selection2'
-  makeSelectionButton.style =
+  const pasteInsertButton = document.createElement('button')
+  pasteInsertButton.innerText = 'paste insert'
+  pasteInsertButton.style =
     'position: fixed; top: 80px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
-  document.body.appendChild(makeSelectionButton)
-  makeSelectionButton.addEventListener('click', async () => {
+  document.body.appendChild(pasteInsertButton)
+  pasteInsertButton.addEventListener('click', async (event) => {
+    event.stopPropagation()
+    event.preventDefault()
     if (tempRange) {
       const selection = window.getSelection()
       // let parent = tempRange.startContainer.parentElement
@@ -111,6 +117,34 @@ window.onload = () => {
       // const selection = window.getSelection()
       selection.removeAllRanges()
       selection.addRange(tempRange)
+      selection.collapseToEnd()
+      await navigator.clipboard.writeText('Hi\nWorld\nJerry!!!')
+      document.execCommand('paste', false, '')
+    }
+  })
+  const pasteReplaceButton = document.createElement('button')
+  pasteReplaceButton.innerText = 'paste replace'
+  pasteReplaceButton.style =
+    'position: fixed; top: 100px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
+  document.body.appendChild(pasteReplaceButton)
+  pasteReplaceButton.addEventListener('click', async (event) => {
+    event.stopPropagation()
+    event.preventDefault()
+    if (!tempRange) {
+      tempRange = window.getSelection().getRangeAt(0).cloneRange()
+    }
+    if (tempRange) {
+      const selection = window.getSelection()
+      // let parent = tempRange.startContainer.parentElement
+      // const range = document.createRange()
+      // const startIndex = parent.innerText.indexOf(tempSelectedText)
+      // const endIndex = startIndex + tempSelectedText.length
+      // range.setStart(parent.firstChild, startIndex)
+      // range.setEnd(parent.firstChild, endIndex)
+      // const selection = window.getSelection()
+      selection.removeAllRanges()
+      selection.addRange(tempRange)
+      document.execCommand('Delete')
       await navigator.clipboard.writeText('Hi\nWorld\nJerry!!!')
       document.execCommand('paste', false, '')
     }
@@ -118,9 +152,14 @@ window.onload = () => {
   const inserSelectionButton = document.createElement('button')
   inserSelectionButton.innerText = 'Insert selection'
   inserSelectionButton.style =
-    'position: fixed; top: 100px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
+    'position: fixed; top: 120px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
   document.body.appendChild(inserSelectionButton)
-  inserSelectionButton.addEventListener('click', async () => {
+  inserSelectionButton.addEventListener('click', async (event) => {
+    event.stopPropagation()
+    event.preventDefault()
+    if (!tempRange) {
+      tempRange = window.getSelection().getRangeAt(0).cloneRange()
+    }
     if (tempRange) {
       const selection = window.getSelection()
       // let parent = tempRange.startContainer.parentElement
@@ -140,9 +179,11 @@ window.onload = () => {
   const replaceSelection = document.createElement('button')
   replaceSelection.innerText = 'Replace selection'
   replaceSelection.style =
-    'position: fixed; top: 120px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
+    'position: fixed; top: 140px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
   document.body.appendChild(replaceSelection)
-  replaceSelection.addEventListener('click', async () => {
+  replaceSelection.addEventListener('click', async (event) => {
+    event.stopPropagation()
+    event.preventDefault()
     if (tempRange) {
       const selection = window.getSelection()
       // let parent = tempRange.startContainer.parentElement
@@ -157,7 +198,41 @@ window.onload = () => {
       // delete
       // document.execCommand('delete', false, '')
       // await navigator.clipboard.writeText('Hi\nWorld\nJerry!!!')
+      document.execCommand('Delete')
       document.execCommand('insertText', false, `Hi\nWorld\nJerry!!!`)
     }
   })
+  const replaceWithWriteSelection = document.createElement('button')
+  replaceWithWriteSelection.innerText = 'Replace selection permission'
+  replaceWithWriteSelection.style =
+    'position: fixed; top: 160px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
+  document.body.appendChild(replaceWithWriteSelection)
+  replaceWithWriteSelection.addEventListener('click', async (event) => {
+    event.stopPropagation()
+    event.preventDefault()
+    if (tempRange) {
+      const selection = window.getSelection()
+      // let parent = tempRange.startContainer.parentElement
+      // const range = document.createRange()
+      // const startIndex = parent.innerText.indexOf(tempSelectedText)
+      // const endIndex = startIndex + tempSelectedText.length
+      // range.setStart(parent.firstChild, startIndex)
+      // range.setEnd(parent.firstChild, endIndex)
+      // const selection = window.getSelection()
+      selection.removeAllRanges()
+      selection.addRange(tempRange)
+      // delete
+      const permission = await navigator.permissions.query({
+        name: 'clipboard-write',
+      })
+      console.log('permission.state', permission.state)
+      document.execCommand('delete', false, '')
+      await navigator.clipboard.writeText('Hi\nWorld\nJerry!!!')
+      document.execCommand('paste', false, '')
+    }
+  })
+
+  const script = document.createElement('script')
+  script.src = chrome.runtime.getURL('aa.js')
+  document.head.appendChild(script)
 }

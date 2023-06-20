@@ -190,7 +190,9 @@ const useInitRangy = () => {
         }
         if (
           selectionElementRef.current &&
-          selectionElementRef.current?.selectionText
+          selectionElementRef.current?.selectionText &&
+          activeElement.id !== ROOT_CONTAINER_ID &&
+          activeElement.id !== ROOT_CONTEXT_MENU_ID
         ) {
           console.log(
             '[ContextMenu Module]: event',

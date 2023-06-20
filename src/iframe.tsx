@@ -50,7 +50,7 @@ const initIframe = async () => {
   const handleClickOrKeyUp = (event: MouseEvent | KeyboardEvent, times = 0) => {
     try {
       const target = mouseDownElement || (event.target as HTMLElement)
-      const iframeSelectionString = computedSelectionString()
+      let selectionText = computedSelectionString()
       let editableElementSelectionString = ''
       const { isEditableElement, editableElement } = getEditableElement(target)
       let startMarkerId = ''
@@ -61,13 +61,11 @@ const initIframe = async () => {
         const selectionMarker = createSelectionMarker(editableElement)
         startMarkerId = selectionMarker.startMarkerId
         endMarkerId = selectionMarker.endMarkerId
-        // 如果是输入框，则获取输入框选中的文本的值，否则用输入框的内容
-        if (selectionMarker.selectionString) {
-          console.log('AIInput marker string', selectionMarker.selectionString)
-          editableElementSelectionString = selectionMarker.selectionString
-        }
+        selectionText = selectionMarker.selectionText
+        editableElementSelectionString =
+          selectionMarker.editableElementSelectionText
       }
-      if (!iframeSelectionString && isEmbedPage) {
+      if (!selectionText && isEmbedPage) {
         if (target.tagName === 'BUTTON' && times < 10) {
           setTimeout(() => {
             handleClickOrKeyUp(event, times + 1)
@@ -89,7 +87,7 @@ const initIframe = async () => {
       // log.info('iframe iframeSelectionString: ', iframeSelectionString)
       // log.info('iframe screen', window.screenLeft, window.screenTop)
       let iframeSelectionRect: IRangyRect | null = null
-      console.log(iframeId, iframeSelectionString)
+      console.log(iframeId, selectionText)
       if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         const minLeft = Math.max(targetRect.left, 0)
         const minTop = Math.max(targetRect.top, 0)
@@ -201,9 +199,10 @@ const initIframe = async () => {
             selectionRect,
             iframeSelectionRect,
             iframePosition,
-            selectionText: iframeSelectionString || '',
-            selectionHTML: iframeSelectionString || '',
+            selectionText: selectionText || '',
+            selectionHTML: selectionText || '',
             editableElementSelectionText: editableElementSelectionString,
+            editableElementSelectionHTML: editableElementSelectionString,
             eventType: event instanceof MouseEvent ? 'mouseup' : 'keyup',
             isEmbedPage,
             isEditableElement,

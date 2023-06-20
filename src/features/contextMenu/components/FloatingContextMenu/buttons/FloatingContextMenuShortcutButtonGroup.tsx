@@ -9,6 +9,7 @@ import { ChatGPTConversationState } from '@/features/gmail/store'
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import { FloatingContextMenuDraftState } from '@/features/contextMenu'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 
 type FloatingContextMenuShortcutKey = 's' | 'r' | 'o' | 'c'
 
@@ -74,7 +75,10 @@ const FloatingContextMenuShortcutButtonGroup: FC = () => {
     }
     const keydownHandler = async (keyboardEvent: KeyboardEvent) => {
       const key = keyboardEvent.key
-      if (['r', 's', 'o', 'c'].includes(key)) {
+      if (
+        isFloatingContextMenuVisible() &&
+        ['r', 's', 'o', 'c'].includes(key)
+      ) {
         keyboardEvent.preventDefault()
         keyboardEvent.stopPropagation()
         await handleShortCut(key as FloatingContextMenuShortcutKey)

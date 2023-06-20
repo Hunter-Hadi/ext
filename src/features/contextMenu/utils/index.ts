@@ -12,7 +12,7 @@ import {
 import {
   CONTEXT_MENU_DRAFT_LIST,
   CONTEXT_MENU_DRAFT_TYPES,
-} from '@/features/constants'
+} from '@/features/contextMenu/constants'
 import { getAppContextMenuElement } from '@/utils'
 
 export const groupByContextMenuItem = (

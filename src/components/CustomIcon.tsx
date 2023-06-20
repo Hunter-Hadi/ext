@@ -387,6 +387,31 @@ const BrowserIcon: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
+const SidePanelIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <mask maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+          <rect width="24" height="24" fill="black" />
+        </mask>
+        <g mask="url(#mask0_2797_41925)">
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M21 3H3V21H21V3ZM14.5 5.5H5.5V18.5H14.5V5.5Z"
+            fill="currentColor"
+          />
+        </g>
+      </svg>
+    </SvgIcon>
+  )
+}
 
 export {
   BardIcon,
@@ -402,4 +427,5 @@ export {
   ClaudeIcon,
   BingIcon,
   BrowserIcon,
+  SidePanelIcon,
 }

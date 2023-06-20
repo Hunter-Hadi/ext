@@ -182,7 +182,13 @@ const ClickContextMenuButton: FC<{
             event.stopPropagation()
             event.preventDefault()
           }}
+          onMouseDown={(event) => {
+            event.stopPropagation()
+            event.preventDefault()
+          }}
           onClick={(event: any) => {
+            event.stopPropagation()
+            event.preventDefault()
             tempSelection && showFloatingContextMenu()
           }}
         >

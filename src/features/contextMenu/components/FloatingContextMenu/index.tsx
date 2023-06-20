@@ -42,7 +42,6 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/utils'
-import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
@@ -57,13 +56,17 @@ import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
-import { useRangy } from '@/features/contextMenu'
+import {
+  useRangy,
+  useContextMenuList,
+  useDraftContextMenuList,
+} from '@/features/contextMenu/hooks'
 import { useAuthLogin } from '@/features/auth'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import Button from '@mui/material/Button'
 import useCommands from '@/hooks/useCommands'
-import { CONTEXT_MENU_DRAFT_LIST } from '@/features/constants'
+import { SidePanelIcon } from '@/components/CustomIcon'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -181,16 +184,17 @@ const FloatingContextMenu: FC<{
     'textSelectPopupButton',
     inputValue,
   )
+  const draftContextMenuList = useDraftContextMenuList()
   // 渲染的菜单列表
   const memoMenuList = useMemo(() => {
     if (loading) {
       return EMPTY_ARRAY
     }
     if (haveContext) {
-      return CONTEXT_MENU_DRAFT_LIST
+      return draftContextMenuList
     }
     return contextMenuList
-  }, [loading, contextMenuList, haveContext])
+  }, [loading, contextMenuList, haveContext, draftContextMenuList])
   useEffect(() => {
     console.log('Context Menu List', memoMenuList)
   }, [memoMenuList])
@@ -503,7 +507,7 @@ const FloatingContextMenu: FC<{
                 display: 'flex',
                 flexDirection: 'column',
                 width: '100%',
-                padding: '7px 8px',
+                padding: '7px 12px',
               }}
               onKeyPress={(event) => {
                 event.stopPropagation()
@@ -621,10 +625,12 @@ const FloatingContextMenu: FC<{
                       />
                       <Button
                         sx={{
-                          ml: 1,
+                          ml: '0px!important',
                           height: '24px',
                           flexShrink: 0,
                           alignSelf: 'end',
+                          minWidth: 'unset',
+                          padding: '6px 5px',
                         }}
                         variant="text"
                         onClick={() => {
@@ -635,13 +641,17 @@ const FloatingContextMenu: FC<{
                           }
                         }}
                       >
+                        <SidePanelIcon
+                          sx={{
+                            fontSize: '16px',
+                            color: 'text.primary',
+                          }}
+                        />
                         <Typography
                           component={'span'}
                           fontSize={'14px'}
-                          color={'primary.main'}
+                          color={'text.primary'}
                         >
-                          {'Sidebar'}
-                          {/*{appState.open ? 'Hide chat' : 'Show chat'}*/}
                           <span
                             style={{
                               color: 'inherit',

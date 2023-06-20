@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "js": [
-        "content-js.js"
+        "pure_test.js"
       ],
       "all_frames": true,
       "matches": [
@@ -31,5 +31,17 @@
     "contextMenus",
     "clipboardRead",
     "clipboardWrite"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "aa.js",
+        "pure_test_a.js",
+        "pure_test_b.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
   ]
 }

@@ -4,6 +4,7 @@ import { IRangyRect, ISelectionElement } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
 import { getCurrentDomainHost } from '@/utils'
 import sum from 'lodash-es/sum'
+import TurnDownService from 'turndown'
 /**
  * 以下网站不支持植入标记，直接返回选区内容并把选区存入cache
  */
@@ -36,6 +37,13 @@ export const getCacheSelectionRange = (uuid: string) => {
 }
 export const removeAllCacheSelectionRange = () => {
   CacheSelectionRange.removeAllRange()
+}
+
+export const getClipboardPermission = async (): Promise<boolean> => {
+  const permission = await navigator.permissions.query({
+    name: 'clipboard-write' as any,
+  })
+  return permission.state === 'granted'
 }
 
 /**
@@ -139,7 +147,14 @@ export const computedSelectionString = () => {
  * 创建选区标记
  * @param element
  */
-export const createSelectionMarker = (element: HTMLElement) => {
+export const createSelectionMarker = (
+  element: HTMLElement,
+): {
+  startMarkerId: string
+  endMarkerId: string
+  selectionText: string
+  editableElementSelectionText: string
+} => {
   try {
     if (element) {
       const doc = element.ownerDocument || (element as any).document
@@ -150,8 +165,8 @@ export const createSelectionMarker = (element: HTMLElement) => {
       // MARK - 会导致一些问题
       // const markerTextChar = '\ufeff'
       const markerTextChar = ''
-      if (typeof win.getSelection != 'undefined') {
-        sel = win.getSelection()
+      if (typeof doc.getSelection != 'undefined') {
+        sel = doc.getSelection() || win.getSelection()
         if (sel.rangeCount > 0) {
           // remove old marker
           removeAllSelectionMarker()
@@ -173,31 +188,52 @@ export const createSelectionMarker = (element: HTMLElement) => {
               startMarkerId,
             )
             element.setAttribute('data-usechatgpt-marker-end-id', endMarkerId)
+            const selectionText = inputElement.value
+              .substring(start, end)
+              .trim()
+              .replace(/\u200B/g, '')
             /**
-             * 选区内容优先级
+             * 上下文内容优先级
              * 1. 选区内容
              * 2. 输入框的从[0 - 光标位置]的内容
              * 3. 输入框的内容
              */
-            const selectionString = (
-              inputElement.value.substring(start, end).trim() ||
+            const contextText = (
+              selectionText ||
               inputElement.value.substring(0, start).trim() ||
               inputElement.value.trim() ||
               ''
             ).replace(/\u200B/g, '')
-            return { startMarkerId, endMarkerId, selectionString }
+            return {
+              startMarkerId,
+              endMarkerId,
+              selectionText: contextText,
+              editableElementSelectionText: selectionText,
+            }
           } else {
-            const partOfRangeSelected = range.cloneRange()
-            partOfRangeSelected.selectNodeContents(element)
-            partOfRangeSelected.setStart(
-              range.startContainer,
-              range.startOffset,
-            )
-            partOfRangeSelected.setEnd(range.endContainer, range.endOffset)
-            const partOfRangeSelectedText = partOfRangeSelected
+            /**
+             * 上下文内容优先级
+             * 1. 选区内容
+             * 2. 选区的innerText从[0 - 光标位置]的内容
+             * 3. 选区的innerText内容
+             */
+            const selectionText = (sel.toString() || range.toString())
+              .trim()
+              .replace(/\u200B/g, '')
+            // 计算元素从头到光标的位置
+            const partOfStartToCaret = range.cloneRange()
+            partOfStartToCaret.selectNodeContents(element)
+            partOfStartToCaret.setEnd(range.endContainer, range.endOffset)
+            const partOfStartToCaretText = partOfStartToCaret
               .toString()
               .trim()
               .replace(/\u200B/g, '')
+            const contextText = (
+              selectionText ||
+              partOfStartToCaretText ||
+              element.innerText.trim() ||
+              ''
+            ).replace(/\u200B/g, '')
             const host = getCurrentDomainHost()
             /**
              * 如果不在白名单中，就不创建span标记，缓存用户选区就行
@@ -208,18 +244,16 @@ export const createSelectionMarker = (element: HTMLElement) => {
               console.log(
                 'createSelectionMarker block host',
                 host,
-                partOfRangeSelectedText,
+                partOfStartToCaretText,
               )
-              const selectionString = partOfRangeSelectedText
-              setCacheSelectionRange(
+              setCacheSelectionRange(startMarkerId, range.cloneRange())
+              setCacheSelectionRange(endMarkerId, range.cloneRange())
+              return {
                 startMarkerId,
-                partOfRangeSelected.cloneRange(),
-              )
-              setCacheSelectionRange(
                 endMarkerId,
-                partOfRangeSelected.cloneRange(),
-              )
-              return { startMarkerId, endMarkerId, selectionString }
+                selectionText: contextText,
+                editableElementSelectionText: selectionText,
+              }
             }
             // 下面是创建选区的逻辑
             let boundaryRange = range.cloneRange()
@@ -253,19 +287,12 @@ export const createSelectionMarker = (element: HTMLElement) => {
             endMarker.setAttribute('contenteditable', 'false')
             endMarker.setAttribute('data-usechatgpt-marker-end-id', endMarkerId)
             boundaryRange.insertNode(endMarker)
-            /**
-             * 选区内容优先级
-             * 1. 选区内容
-             * 2. 选区的innerText从[0 - 光标位置]的内容
-             * 3. 选区的innerText内容
-             */
-            const selectionString = (
-              range.toString().trim() ||
-              partOfRangeSelectedText ||
-              element.innerText.trim() ||
-              ''
-            ).replace(/\u200B/g, '')
-            return { startMarkerId, endMarkerId, selectionString }
+            return {
+              startMarkerId,
+              endMarkerId,
+              selectionText: contextText,
+              editableElementSelectionText: selectionText,
+            }
           }
         }
       }
@@ -276,7 +303,8 @@ export const createSelectionMarker = (element: HTMLElement) => {
   return {
     startMarkerId: '',
     endMarkerId: '',
-    selectionString: '',
+    selectionText: '',
+    editableElementSelectionText: '',
   }
 }
 
@@ -303,16 +331,16 @@ export const getEditableElementSelectionTextOnSpecialHost = (
             case 'notion.so':
               {
                 pageContentRoot =
-                  document.querySelector('.notion-page-content') ||
-                  document.querySelector('[data-content-editable-root="true"]')
+                  doc.querySelector('.notion-page-content') ||
+                  doc.querySelector('[data-content-editable-root="true"]')
               }
               break
             case 'larksuite.com':
               {
                 pageContentRoot =
-                  document.querySelector('.page-block-children') ||
-                  document.querySelector('.page-block') ||
-                  document.querySelector('.root-block')
+                  doc.querySelector('.page-block-children') ||
+                  doc.querySelector('.page-block') ||
+                  doc.querySelector('.root-block')
               }
               break
             default:
@@ -375,6 +403,7 @@ export const inputSetSelectionAndScrollTo = (
   start: number,
   end: number,
 ) => {
+  const doc = editableElement.ownerDocument || document
   editableElement.focus()
   // Define selection
   editableElement.setSelectionRange(start, end)
@@ -386,14 +415,14 @@ export const inputSetSelectionAndScrollTo = (
     const fontSize = style.fontSize
     const fontFamily = style.fontFamily
     // 创建一个临时的 span 元素，并设置其样式为与字体相同的样式
-    const tempSpan = document.createElement('span')
+    const tempSpan = doc.createElement('span')
     tempSpan.style.fontSize = fontSize
     tempSpan.style.fontFamily = fontFamily
     tempSpan.style.position = 'absolute'
     tempSpan.style.top = '-9999px'
     tempSpan.style.left = '-9999px'
     tempSpan.innerText = char
-    document.body.appendChild(tempSpan)
+    doc.body.appendChild(tempSpan)
     const charWidth = tempSpan.offsetWidth
     tempSpan.remove()
     // 获取每行有多少个字符
@@ -509,6 +538,13 @@ export const replaceMarkerContent = async (
       )
     }
   } else if (cacheRange) {
+    if (type === 'insert_blow') {
+      value = ('\n' + value).replace(/^\n+/, '\n')
+    } else if (type === 'insert_above') {
+      value = (value + '\n').replace(/\n+$/, '\n')
+    } else if (type === 'replace') {
+      // nothing
+    }
     const doc =
       cacheRange.startContainer?.ownerDocument ||
       cacheRange.endContainer?.ownerDocument ||
@@ -518,31 +554,24 @@ export const replaceMarkerContent = async (
     doc.body.appendChild(input)
     input.focus()
     input.remove()
-    const { editableElement } = getEditableElement(
-      (cacheRange?.startContainer ||
-        cacheRange?.endContainer ||
-        doc.querySelector(`[contenteditable="true"]`)) as HTMLElement,
-    )
     console.log('[ContextMenu Module] cacheRange', cacheRange, doc.hasFocus())
-    if (editableElement) {
-      originalEditableElement = editableElement
-      editableElement.focus?.()
-    }
-    window.getSelection()?.removeAllRanges()
-    window.getSelection()?.addRange(cacheRange)
-    if (type === 'replace') {
-      // nothing
-    } else if (type === 'insert_blow') {
-      window.getSelection()?.collapseToEnd()
-    } else if (type === 'insert_above') {
-      window.getSelection()?.collapseToStart()
-    }
+    doc.getSelection()?.removeAllRanges()
+    doc.getSelection()?.addRange(cacheRange)
     try {
-      // const oldClipboardValue = await navigator.clipboard.readText()
-      // await navigator.clipboard.writeText(value)
-      // doc.execCommand('paste', false, '')
-      // await navigator.clipboard.writeText(oldClipboardValue)
-      doc.execCommand('insertText', false, value)
+      console.log(
+        'paste origin editableElementSelectionText',
+        cacheRange,
+        cacheRange.toString(),
+      )
+      if (type === 'replace') {
+        doc.execCommand('Delete')
+      } else if (type === 'insert_blow') {
+        cacheRange.collapse(false)
+      } else if (type === 'insert_above') {
+        cacheRange.collapse(true)
+      }
+      await replaceWithClipboard(cacheRange, value)
+      console.log('paste editableElementSelectionText', value)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
     }
@@ -557,13 +586,14 @@ export const replaceMarkerContent = async (
     const doc = editableElement.ownerDocument || document
     const range = doc.createRange()
     range.selectNode(editableElement)
+    range.setStartAfter(startMarker)
+    range.setEndBefore(endMarker)
     if (type === 'insert_blow') {
       value = ('\n' + value).replace(/^\n+/, '\n')
-      range.setStartAfter(startMarker)
-      range.setEndBefore(endMarker)
+    } else if (type === 'insert_above') {
+      value = (value + '\n').replace(/\n+$/, '\n')
     } else if (type === 'replace') {
-      range.setStartAfter(startMarker)
-      range.setEndBefore(endMarker)
+      // nothing
     }
     // 判断是否为纯文本节点，还原纯文本节点
     if (
@@ -597,29 +627,15 @@ export const replaceMarkerContent = async (
         range.setEnd(parentElement.childNodes[0], endIndex)
       }
     }
-    /**
-     * @description - 默认的修改内容和高亮选中内容处理, 在不同网站下，高亮选中内容的处理不一样
-     */
-    const defaultPasteValue = async () => {
-      try {
-        // const oldClipboardValue = await navigator.clipboard.readText()
-        // await navigator.clipboard.writeText(value)
-        // document.execCommand('paste', false, '')
-        // await navigator.clipboard.writeText(oldClipboardValue)
-        doc.execCommand('insertText', false, value)
-      } catch (e) {
-        // console.error('defaultPasteValue error: \t', e)
-      }
-    }
     // 高亮
     const highlightSelection = () => {
-      window.getSelection()?.removeAllRanges()
-      window.getSelection()?.addRange(range)
+      doc.getSelection()?.removeAllRanges()
+      doc.getSelection()?.addRange(range)
       // 移动光标
       if (type === 'insert_blow') {
-        window.getSelection()?.collapseToEnd()
+        doc.getSelection()?.collapseToEnd()
       } else if (type === 'insert_above') {
-        window.getSelection()?.collapseToStart()
+        doc.getSelection()?.collapseToStart()
       }
     }
     // 选中的可编辑元素focus
@@ -669,8 +685,8 @@ export const replaceMarkerContent = async (
           div.innerText = partOfText
           newRange.insertNode(div)
         })
-      window.getSelection()?.removeAllRanges()
-      window.getSelection()?.addRange(newRange)
+      doc.getSelection()?.removeAllRanges()
+      doc.getSelection()?.addRange(newRange)
     }
     const host =
       getCurrentDomainHost() as (typeof CREATE_SELECTION_MARKER_WHITE_LIST_HOST)[number]
@@ -710,22 +726,22 @@ export const replaceMarkerContent = async (
         console.log('default paste value', value, startMarker, endMarker)
         focusEditableElement()
         highlightSelection()
-        await defaultPasteValue()
+        await replaceWithClipboard(range, value)
       }
+    }
+    // dispatch keyup event with original target
+    if (originalEditableElement) {
+      const event = new KeyboardEvent('keyup', {
+        bubbles: true,
+        cancelable: true,
+      })
+      startMarker.dispatchEvent(event)
     }
   }
   // 移除所有的marker
   removeAllSelectionMarker()
   // 移除cacheRange
   removeAllCacheSelectionRange()
-  // dispatch keyup event with original target
-  if (originalEditableElement) {
-    const event = new KeyboardEvent('keyup', {
-      bubbles: true,
-      cancelable: true,
-    })
-    startMarker.dispatchEvent(event)
-  }
 }
 
 /**
@@ -753,7 +769,7 @@ export const removeAllRange = () => {
   if (typeof document === 'undefined') {
     return
   }
-  window.getSelection()?.removeAllRanges()
+  document.getSelection()?.removeAllRanges()
 }
 
 /**
@@ -823,14 +839,6 @@ export const createSelectionElement = (
     /**
      * @description - 2023/06/14 - 由于插入marker会改变editableElement的内容，所以这里先不插入marker，在展示floating menu的时候才插入marker
      */
-    // const selectionMarker = createSelectionMarker(editableElement)
-    // startMarkerId = selectionMarker.startMarkerId
-    // endMarkerId = selectionMarker.endMarkerId
-    // // 如果是输入框，则获取输入框选中的文本的值，否则用输入框的内容
-    // if (selectionMarker.selectionString) {
-    //   console.log('AIInput marker string', selectionMarker.selectionString)
-    //   editableElementSelectionString = selectionMarker.selectionString
-    // }
   }
   const targetRect = cloneRect(target.getBoundingClientRect())
   let selectionRect: IRangyRect | null = null
@@ -977,6 +985,112 @@ export const updateEditableElementPlaceholder = (
     const inputElement = element as HTMLInputElement
     if (!inputElement.placeholder) {
       inputElement.placeholder = placeholderText
+    }
+  }
+}
+
+/**
+ * 使用粘贴板粘贴【文本】在选区
+ * 1. 创建可编辑的div
+ * 2. 保存原始粘贴板的富文本html内容
+ * 3. 删除可编辑的div
+ * 4. 定位到原始的选区
+ * 5. 粘贴【文本】
+ * 6. 还原内容回粘贴板
+ *  6.1 尝试调用copy
+ *  6.2 如果失败, 还原粘贴板的富文本html为markdown
+ *  6.3 还原markdown到粘贴板
+ *  7. 还原最初选区
+ * @param range
+ * @param value
+ */
+export const replaceWithClipboard = async (range: Range, value: string) => {
+  const originalRange = range.cloneRange()
+  const doc =
+    (range.startContainer || range.endContainer)?.ownerDocument || document
+  if (!doc) {
+    return
+  }
+  try {
+    const selection = doc.getSelection()
+    // save rich text from clipboard
+    const div = doc.createElement('div')
+    div.setAttribute('contenteditable', 'true')
+    div.style.cssText =
+      'width: 1px;height: 1px;position: fixed;top: 0px;left:0px;overflow: hidden; z-index: -1;'
+    doc.body.appendChild(div)
+    div.addEventListener(
+      'paste',
+      (event) => {
+        event.stopPropagation()
+        console.log('replaceWithClipboard addEventListener paste div')
+      },
+      true,
+    )
+    div.addEventListener(
+      'copy',
+      (event) => {
+        event.stopPropagation()
+        console.log('replaceWithClipboard addEventListener copy div')
+      },
+      true,
+    )
+    div.focus() // 将光标定位到div中
+    const divRange = doc.createRange()
+    divRange.selectNodeContents(div)
+    selection?.removeAllRanges()
+    selection?.addRange(divRange)
+    div.focus()
+    if (!['evernote.com'].includes(getCurrentDomainHost())) {
+      doc.execCommand('paste', false, '')
+    }
+    // restore rich text to clipboard
+    selection?.removeAllRanges()
+    selection?.addRange(range)
+    if (await getClipboardPermission()) {
+      await navigator.clipboard.writeText(value)
+      doc.execCommand('paste', false, '')
+    } else {
+      doc.execCommand('insertText', false, value)
+    }
+    try {
+      // select all from div
+      const divRange2 = doc.createRange()
+      divRange2.selectNodeContents(div)
+      selection?.removeAllRanges()
+      selection?.addRange(divRange2)
+      div.focus()
+      doc.execCommand('copy', false, '')
+      console.log('replaceWithClipboard copy success')
+    } catch (e) {
+      console.log('replaceWithClipboard copy error: \t', e)
+      const richText = div.innerText.trim()
+      try {
+        const turnDownService = new TurnDownService()
+        turnDownService.addRule('pre', {
+          filter: 'pre',
+          replacement: function (content: string, node: any) {
+            // Note this is not bulletproof, see below.
+            return '```\n' + node.textContent + '\n```'
+          },
+        })
+        const markdown = turnDownService.turndown(div)
+        console.log('replaceWithClipboard markdown: \t', markdown)
+        await navigator.clipboard.writeText(markdown || richText)
+      } catch (e) {
+        await navigator.clipboard.writeText(richText)
+        console.log('replaceWithClipboard convert to markdown error: \t', e)
+      }
+    } finally {
+      div.remove()
+    }
+  } catch (e) {
+    console.log('replaceWithClipboard error: \t', e)
+  } finally {
+    const selection = doc.getSelection()
+    if (selection) {
+      selection.removeAllRanges()
+      selection.addRange(originalRange)
     }
   }
 }

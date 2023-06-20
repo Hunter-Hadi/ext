@@ -39,6 +39,7 @@ export interface IBaseSelectProps
   loading?: boolean
   renderHeader?: React.ReactNode
   renderFooter?: React.ReactNode
+  labelSx?: SxProps
 }
 
 const findCurrentOption = (options: IOptionType[], value: IOptionValueType) => {
@@ -66,6 +67,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   renderFooter,
   renderHeader,
   label,
+  labelSx,
   ...props
 }) => {
   const [selectValue, setSelectValue] = useState(defaultValue || '')
@@ -121,7 +123,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
       {label && (
         <InputLabel
           id="demo-simple-select-label"
-          sx={{ fontSize: '14px', color: 'text.primary' }}
+          sx={{ fontSize: '14px', color: 'text.primary', ...labelSx }}
         >
           {label}
         </InputLabel>

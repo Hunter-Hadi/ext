@@ -22,6 +22,9 @@ const ChatGPTOpenAIAPIModelSelector: FC = () => {
       size={'small'}
       loading={loading}
       label={'Model'}
+      labelSx={{
+        fontSize: 16,
+      }}
       options={models}
       value={settings.apiModel}
       onChange={async (value) => {

@@ -467,6 +467,7 @@ export const replaceMarkerContent = async (
   ) {
     const inputElement = startMarker as HTMLInputElement
     originalEditableElement = inputElement
+    const doc = inputElement?.ownerDocument || document
     const start = Number(
       inputElement.getAttribute('data-usechatgpt-start-offset'),
     )
@@ -498,7 +499,9 @@ export const replaceMarkerContent = async (
         }
       }
       newValue = beforeText + value + afterText
-      inputElement.value = newValue
+      // inputElement.value = newValue
+      inputElement.select()
+      doc.execCommand('insertText', false, newValue)
       inputSetSelectionAndScrollTo(
         inputElement,
         beforeText.length,
@@ -511,7 +514,7 @@ export const replaceMarkerContent = async (
       cacheRange.endContainer?.ownerDocument ||
       document
     doc.body.focus()
-    const input = document.createElement('input')
+    const input = doc.createElement('input')
     doc.body.appendChild(input)
     input.focus()
     input.remove()
@@ -535,10 +538,11 @@ export const replaceMarkerContent = async (
       window.getSelection()?.collapseToStart()
     }
     try {
-      const oldClipboardValue = await navigator.clipboard.readText()
-      await navigator.clipboard.writeText(value)
-      doc.execCommand('paste', false, '')
-      await navigator.clipboard.writeText(oldClipboardValue)
+      // const oldClipboardValue = await navigator.clipboard.readText()
+      // await navigator.clipboard.writeText(value)
+      // doc.execCommand('paste', false, '')
+      // await navigator.clipboard.writeText(oldClipboardValue)
+      doc.execCommand('insertText', false, value)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
     }
@@ -550,7 +554,8 @@ export const replaceMarkerContent = async (
       return
     }
     originalEditableElement = editableElement
-    const range = document.createRange()
+    const doc = editableElement.ownerDocument || document
+    const range = doc.createRange()
     range.selectNode(editableElement)
     if (type === 'insert_blow') {
       value = ('\n' + value).replace(/^\n+/, '\n')
@@ -580,7 +585,7 @@ export const replaceMarkerContent = async (
       if (isPureText) {
         const selectedText = range.toString()
         // 还原纯文本节点
-        const textNode = document.createTextNode(parentElement.innerText)
+        const textNode = doc.createTextNode(parentElement.innerText)
         parentElement.innerHTML = ''
         parentElement.appendChild(textNode)
         const startIndex = Math.max(
@@ -597,12 +602,13 @@ export const replaceMarkerContent = async (
      */
     const defaultPasteValue = async () => {
       try {
-        const oldClipboardValue = await navigator.clipboard.readText()
-        await navigator.clipboard.writeText(value)
-        document.execCommand('paste', false, '')
-        await navigator.clipboard.writeText(oldClipboardValue)
+        // const oldClipboardValue = await navigator.clipboard.readText()
+        // await navigator.clipboard.writeText(value)
+        // document.execCommand('paste', false, '')
+        // await navigator.clipboard.writeText(oldClipboardValue)
+        doc.execCommand('insertText', false, value)
       } catch (e) {
-        console.error('defaultPasteValue error: \t', e)
+        // console.error('defaultPasteValue error: \t', e)
       }
     }
     // 高亮
@@ -657,7 +663,7 @@ export const replaceMarkerContent = async (
             console.log('insertValueToWithRichText partOfNode', node)
           }
           console.log('insertValueToWithRichText partOfText', partOfText)
-          const div = document.createElement(tagName)
+          const div = doc.createElement(tagName)
           className && (div.className = className)
           cssText && (div.style.cssText = cssText)
           div.innerText = partOfText
@@ -676,8 +682,8 @@ export const replaceMarkerContent = async (
           insertValueToWithRichText(value, {
             cssText: 'white-space: pre-wrap;',
             onSeparator: () => {
-              const div = document.createElement('div')
-              const br = document.createElement('br')
+              const div = doc.createElement('div')
+              const br = doc.createElement('br')
               div.appendChild(br)
               return div
             },
@@ -691,9 +697,9 @@ export const replaceMarkerContent = async (
           insertValueToWithRichText(value, {
             className: 'elementToProof ContentPasted0',
             onSeparator: () => {
-              const div = document.createElement('div')
+              const div = doc.createElement('div')
               div.className = 'elementToProof ContentPasted0'
-              const br = document.createElement('br')
+              const br = doc.createElement('br')
               div.appendChild(br)
               return div
             },

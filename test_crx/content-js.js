@@ -115,4 +115,49 @@ window.onload = () => {
       document.execCommand('paste', false, '')
     }
   })
+  const inserSelectionButton = document.createElement('button')
+  inserSelectionButton.innerText = 'Insert selection'
+  inserSelectionButton.style =
+    'position: fixed; top: 100px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
+  document.body.appendChild(inserSelectionButton)
+  inserSelectionButton.addEventListener('click', async () => {
+    if (tempRange) {
+      const selection = window.getSelection()
+      // let parent = tempRange.startContainer.parentElement
+      // const range = document.createRange()
+      // const startIndex = parent.innerText.indexOf(tempSelectedText)
+      // const endIndex = startIndex + tempSelectedText.length
+      // range.setStart(parent.firstChild, startIndex)
+      // range.setEnd(parent.firstChild, endIndex)
+      // const selection = window.getSelection()
+      selection.removeAllRanges()
+      selection.addRange(tempRange)
+      selection.collapseToEnd()
+      // await navigator.clipboard.writeText('Hi\nWorld\nJerry!!!')
+      document.execCommand('insertText', false, `Hi\nWorld\nJerry!!!`)
+    }
+  })
+  const replaceSelection = document.createElement('button')
+  replaceSelection.innerText = 'Replace selection'
+  replaceSelection.style =
+    'position: fixed; top: 120px; right: 96px; z-index: 9999;cursor: pointer;user-select: auto;'
+  document.body.appendChild(replaceSelection)
+  replaceSelection.addEventListener('click', async () => {
+    if (tempRange) {
+      const selection = window.getSelection()
+      // let parent = tempRange.startContainer.parentElement
+      // const range = document.createRange()
+      // const startIndex = parent.innerText.indexOf(tempSelectedText)
+      // const endIndex = startIndex + tempSelectedText.length
+      // range.setStart(parent.firstChild, startIndex)
+      // range.setEnd(parent.firstChild, endIndex)
+      // const selection = window.getSelection()
+      selection.removeAllRanges()
+      selection.addRange(tempRange)
+      // delete
+      // document.execCommand('delete', false, '')
+      // await navigator.clipboard.writeText('Hi\nWorld\nJerry!!!')
+      document.execCommand('insertText', false, `Hi\nWorld\nJerry!!!`)
+    }
+  })
 }

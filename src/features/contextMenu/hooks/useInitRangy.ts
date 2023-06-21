@@ -383,6 +383,7 @@ const useInitRangy = () => {
       'REPLACE_SELECTION',
       'INSERT_BELOW',
       'DISCARD',
+      'COPY',
     ]
     const selectedDraftContextMenuType = getDraftContextMenuTypeById(
       floatingDropdownMenuSystemItems.selectContextMenuId || '',
@@ -451,6 +452,32 @@ const useInitRangy = () => {
               draftList: copyDraftList,
             }
           })
+        }
+        break
+      case 'COPY':
+        {
+          try {
+            const textarea = document.createElement('textarea')
+            textarea.style.cssText = `
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 1px;
+              height: 1px;
+              padding: 0;
+              border: none;
+              outline: none;
+              boxShadow: none;
+              background: transparent;
+              z-index: -1;
+            `
+            textarea.value = lastOutputRef.current
+            document.body.appendChild(textarea)
+            textarea.select()
+            document.execCommand('copy', false, '')
+          } catch (e) {
+            console.error(e)
+          }
         }
         break
       default:

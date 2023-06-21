@@ -44,6 +44,10 @@ import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined'
 import FastForwardOutlinedIcon from '@mui/icons-material/FastForwardOutlined'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined'
+import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined'
+import FormatAlignLeftOutlinedIcon from '@mui/icons-material/FormatAlignLeftOutlined'
+
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 export const CONTEXT_MENU_ICONS = [
@@ -92,6 +96,9 @@ export const CONTEXT_MENU_ICONS = [
   'PlayArrow',
   'FastForward',
   'Delete',
+  'Copy',
+  'Replay',
+  'FormatAlignLeft',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -201,6 +208,12 @@ const ContextMenuIcon: FC<{
       return <CancelOutlinedIcon sx={sxMemo} />
     case 'Delete':
       return <DeleteOutlineOutlinedIcon sx={sxMemo} />
+    case 'Copy':
+      return <ContentCopyOutlinedIcon sx={sxMemo} />
+    case 'Replay':
+      return <ReplayOutlinedIcon sx={sxMemo} />
+    case 'FormatAlignLeft':
+      return <FormatAlignLeftOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

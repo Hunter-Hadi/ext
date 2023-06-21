@@ -59,7 +59,7 @@ export default [
         isWhitelistMode: false,
       },
       icon: 'DefaultIcon',
-      searchText: 'see more to-do list...',
+      searchText: 'see more to-do list todo list...',
     },
   },
   {

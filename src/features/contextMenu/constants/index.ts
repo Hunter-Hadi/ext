@@ -12,6 +12,7 @@ export const CONTEXT_MENU_DRAFT_TYPES = {
   DISCARD: '82dc6fe3-da3d-437c-aa0e-268e4f602787',
   MAKE_LONGER: '2bd23d4b-6f6b-491c-a42f-f6c24a3b075d',
   MAKE_SHORTER: '44ea14bf-e81d-4e24-9627-b2ce9b1546dd',
+  COPY: '8fcccd1e-eb6e-419e-8c79-d8bc7c10e72c',
 }
 
 export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
@@ -23,6 +24,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     data: {
       type: 'shortcuts',
       editable: false,
+      icon: 'Done',
     },
     children: [],
   },
@@ -34,6 +36,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     data: {
       type: 'shortcuts',
       editable: false,
+      icon: 'FormatAlignLeft',
     },
     children: [],
   },
@@ -45,6 +48,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     data: {
       type: 'shortcuts',
       editable: false,
+      icon: 'DefaultIcon',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
@@ -64,11 +68,24 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     children: [],
   },
   {
+    id: CONTEXT_MENU_DRAFT_TYPES.COPY,
+    text: 'Copy',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+      icon: 'Copy',
+    },
+    children: [],
+  },
+  {
     id: CONTEXT_MENU_DRAFT_TYPES.TRY_AGAIN,
     text: 'Try again',
     parent: 'root',
     droppable: false,
     data: {
+      icon: 'Replay',
       type: 'shortcuts',
       editable: false,
     },
@@ -80,6 +97,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     parent: 'root',
     droppable: false,
     data: {
+      icon: 'Delete',
       type: 'shortcuts',
       editable: false,
     },

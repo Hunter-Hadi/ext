@@ -98,6 +98,10 @@ class OpenAIChat {
                       error,
                     },
                   })
+                  if (done) {
+                    this.isAnswering = false
+                    this.currentTaskId = undefined
+                  }
                 }
               }
             }
@@ -227,6 +231,7 @@ class OpenAIChat {
   ) => {
     if (!this.isAnswering) {
       this.questionSender = sender
+      this.isAnswering = true
       await this.sendDaemonProcessTask(
         'OpenAIDaemonProcess_askChatGPTQuestion',
         {
@@ -321,7 +326,7 @@ class OpenAIChat {
     ) {
       log.info('守护进程关闭')
       // 如果问答中需要 手动停止
-      if (this.questionSender) {
+      if (this.questionSender && this.isAnswering) {
         const { tab } = this.questionSender
         if (tab && tab.id && this.currentTaskId) {
           await Browser.tabs.sendMessage(tab.id, {

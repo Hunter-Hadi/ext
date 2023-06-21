@@ -56,7 +56,7 @@ const ShortCutsButtonItem: FC<{
         }
         const isSetSuccess = setShortCuts(setActions)
         isSetSuccess &&
-          runShortCuts()
+          runShortCuts(true)
             .then()
             .catch()
             .finally(() => {

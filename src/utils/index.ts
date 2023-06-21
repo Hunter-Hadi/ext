@@ -54,8 +54,6 @@ export const getAppContextMenuElement = (): HTMLDivElement | null => {
 }
 
 export const showChatBox = () => {
-  console.error('aaaa')
-  debugger
   const htmlElement = document.body.parentElement
   const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
   if (htmlElement && chatBoxElement) {

@@ -13,6 +13,9 @@ import {
 } from '@/constants'
 import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { useCurrentMessageView } from '@/features/gmail/hooks'
+import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
+import { createSelectionElement } from '@/features/contextMenu/utils/selectionHelper'
+import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {
@@ -21,10 +24,35 @@ const GmailActionRunner = () => {
   const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   const [run, setRun] = useState(false)
   const { runShortCuts, setShortCuts } = useShortCutsWithMessageChat('')
+  const { showFloatingContextMenuWithVirtualElement } = useFloatingContextMenu()
+  const showFloatingContextMenuRef = useRef(
+    showFloatingContextMenuWithVirtualElement,
+  )
+  useEffect(() => {
+    showFloatingContextMenuRef.current =
+      showFloatingContextMenuWithVirtualElement
+  }, [showFloatingContextMenuWithVirtualElement])
 
   useEffect(() => {
-    const ctaButtonAction = () => {
-      setRun(true)
+    const ctaButtonAction = (event: any) => {
+      console.log(event.detail)
+      const { emailElement, range } = event.detail || {}
+      if (emailElement) {
+        emailElement.focus()
+        if (range) {
+          const selection = window.getSelection()
+          if (selection) {
+            selection.removeAllRanges()
+            selection.addRange(range)
+          }
+        }
+        showFloatingContextMenuRef.current(
+          createSelectionElement(
+            event.detail.emailElement,
+          ) as IVirtualIframeSelectionElement,
+        )
+        setRun(true)
+      }
     }
     window.addEventListener('ctaButtonClick', ctaButtonAction)
     return () => {
@@ -42,6 +70,7 @@ const GmailActionRunner = () => {
         : item.id === USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
     )
     if (ctaButtonAction && ctaButtonAction?.data?.actions) {
+      console.log(messageType)
       setShortCuts(ctaButtonAction.data.actions)
       await runShortCuts()
     }

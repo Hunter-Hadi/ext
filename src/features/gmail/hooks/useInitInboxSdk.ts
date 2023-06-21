@@ -14,7 +14,7 @@ import {
   GmailToolBarIconBase64Data,
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
-import { hideChatBox, showChatBox } from '@/utils'
+import { hideChatBox } from '@/utils'
 import { contextMenu } from 'react-contexify'
 import {
   findFirstTierMenuHeight,
@@ -231,9 +231,21 @@ const useInitInboxSdk = () => {
                 currentMessageId: `newDraft_${uuidV4()}`,
               })
             }
-            showChatBox()
+            const composeViewElement = composeView.getElement()
+            const emailElement = composeViewElement.querySelector(
+              '[contenteditable="true"]',
+            ) as HTMLDivElement
+            const range = document.createRange()
+            range.selectNodeContents(emailElement)
             setTimeout(() => {
-              window.dispatchEvent(new Event('ctaButtonClick'))
+              window.dispatchEvent(
+                new CustomEvent('ctaButtonClick', {
+                  detail: {
+                    range: range.cloneRange(),
+                    emailElement,
+                  },
+                }),
+              )
             }, 100)
           },
         })

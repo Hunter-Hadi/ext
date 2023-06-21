@@ -54,9 +54,14 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
           (shortCutsEngineRef.current?.stepIndex === -1 ||
             shortCutsEngineRef.current.status === 'stop')
         ) {
-          setShortsCutsState({
-            status: 'running',
-          })
+          const needLoading = shortCutsEngineRef.current?.actions.find(
+            (action) => action.type === 'ASK_CHATGPT',
+          )
+          if (needLoading) {
+            setShortsCutsState({
+              status: 'running',
+            })
+          }
           await shortCutsEngineRef.current.run({
             parameters: getParams().shortCutsParameters,
             engine: {

@@ -43,7 +43,7 @@ import useCommands from '@/hooks/useCommands'
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
 
-const AIInputLog = new Log('ContextMenu/Rangy/AIInput')
+const RangyLog = new Log('ContextMenu/Rangy')
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -111,7 +111,7 @@ const useInitRangy = () => {
         if (floatingButtonIsShowRef.current) {
           // check is Escape
           if (event instanceof KeyboardEvent && event.key === 'Escape') {
-            console.log('[ContextMenu Module]: Escape close floating button')
+            RangyLog.info('Escape close floating button')
             hideRangy()
             removeAllSelectionMarker()
             removeAllRange()
@@ -120,110 +120,100 @@ const useInitRangy = () => {
         }
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
-        const rangySelection = rangy?.getSelection()
-        // 这里是mousedown记录的editable element, 如果有的话替换mouseup阶段的activeElement
-        if (targetElementRef.current) {
-          activeElement = targetElementRef.current
-        }
-        // 有activeElement(iframe传递的是没有activeElement的), 且选区不在sidebar/contextMenu上
-        if (
-          activeElement &&
-          activeElement.id !== ROOT_CONTAINER_ID &&
-          activeElement.id !== ROOT_CONTEXT_MENU_ID
-        ) {
-          /**
-           * @description 进来这个if有以下几种情况
-           * 1. rangy有选区
-           * 2. rangy没有选区，但是原生有选区
-           * 3. rangy和原生都没有选区, 但是iframe有mousedown事件
-           */
-          // 1. rangy有选区
+        const nativeSelectionElement = getSelectionBoundaryElement()
+        const defaultSelectionText =
+          rangy.getSelection().toString() ||
+          document?.getSelection()?.toString() ||
+          ''
+        if (activeElement) {
           if (
-            activeElement &&
-            rangySelection &&
-            rangySelection?.toString()?.trim()
+            (activeElement && activeElement.id === ROOT_CONTAINER_ID) ||
+            activeElement.id === ROOT_CONTEXT_MENU_ID
           ) {
-            selectionElementRef.current = createSelectionElement(
-              activeElement,
-              {
-                selectionText: rangySelection?.toString()?.trim(),
-                selectionHTML: rangySelection?.toHtml(),
-                selectionRect: rangy?.getSelection()?.getBoundingClientRect(),
-                target: activeElement,
-                eventType: isMouseEvent ? 'mouseup' : 'keyup',
-              },
-            )
-            console.log(
-              '[ContextMenu Module]: RANGY',
-              selectionElementRef.current,
-            )
-          } else {
-            // 2. rangy没有选区
-            const nativeSelectionElement = getSelectionBoundaryElement()
-            if (
-              nativeSelectionElement &&
-              document.activeElement?.tagName !== 'IFRAME' &&
-              activeElement &&
-              activeElement.tagName !== 'INPUT' &&
-              activeElement.tagName !== 'TEXTAREA' &&
-              activeElement.tagName !== 'IFRAME'
-            ) {
-              const { editableElement } = getEditableElement(
-                nativeSelectionElement,
-              )
-              activeElement =
-                (editableElement as HTMLElement) ||
-                (nativeSelectionElement as HTMLElement)
-            }
-            selectionElementRef.current = createSelectionElement(
-              activeElement,
-              {
-                target: activeElement,
-                eventType: isMouseEvent ? 'mouseup' : 'keyup',
-              },
-            )
-            console.log(
-              '[ContextMenu Module]: NATIVE',
-              selectionElementRef.current,
-            )
+            return
           }
-        }
-        if (
-          selectionElementRef.current &&
-          selectionElementRef.current?.selectionText &&
-          activeElement.id !== ROOT_CONTAINER_ID &&
-          activeElement.id !== ROOT_CONTEXT_MENU_ID
-        ) {
-          console.log(
-            '[ContextMenu Module]: event',
-            isMouseEvent ? 'MouseEvent' : 'KeyboardEvent',
+          // 这里是mousedown记录的editable element, 如果有的话替换mouseup阶段的activeElement
+          if (targetElementRef.current) {
+            activeElement = targetElementRef.current
+          }
+          // 因为mouse up的target元素优先级特别低, 所以先尝试用nativeSelectionElement
+          if (nativeSelectionElement) {
+            const nativeSelectionElementData = getEditableElement(
+              nativeSelectionElement,
+            )
+            if (nativeSelectionElementData.isEditableElement) {
+              activeElement = nativeSelectionElementData.editableElement
+            }
+          }
+          if (!activeElement) {
+            return
+          }
+          const { editableElement } = getEditableElement(activeElement)
+          if (editableElement) {
+            activeElement = editableElement
+          }
+          if (!editableElement && !defaultSelectionText) {
+            return
+          }
+          selectionElementRef.current = createSelectionElement(activeElement, {
+            target: activeElement,
+            eventType: isMouseEvent ? 'mouseup' : 'keyup',
+          })
+          RangyLog.info(
+            `native selection [${isMouseEvent ? 'mouse' : 'keyboard'}]: \t`,
+            selectionElementRef.current,
             activeElement,
           )
-          saveTempSelection({
-            selectionText:
+        }
+        let saveSelection = false
+        let openFloatingButton = false
+        if (selectionElementRef.current) {
+          // 如果是[可编辑的元素]需要有[可编辑元素选中的文本]才保存状态
+          if (selectionElementRef.current?.isEditableElement) {
+            saveSelection = true
+            // 因为这个阶段editableElementSelectionText有值只能是iframe传的，所以这里有两个判断
+            if (
               selectionElementRef.current?.editableElementSelectionText ||
-              selectionElementRef.current.selectionText,
-            selectionHTML:
-              selectionElementRef.current?.editableElementSelectionText ||
-              selectionElementRef.current.selectionHTML,
-            selectionRect: selectionElementRef.current.selectionRect,
-            activeElement: selectionElementRef.current.target as HTMLElement,
-            selectionInputAble: selectionElementRef.current?.isEditableElement,
-            selectionElement: selectionElementRef.current,
-          })
-          console.log(
-            `[ContextMenu Module] [${selectionElementRef.current?.isEditableElement}]: selectionString`,
-            '\n',
-            selectionElementRef.current.selectionText,
-            // '\n',
-            // selectionElementRef.current.selectionHTML,
-            // '\n',
-            // selectionElementRef.current.selectionRect,
-          )
-          showRangy()
-        } else {
-          console.log('[ContextMenu Module]: hideRangy')
-          hideRangy()
+              rangy.getSelection()?.toString() ||
+              document.getSelection()?.toString()
+            ) {
+              openFloatingButton = true
+            }
+          } else if (selectionElementRef.current?.selectionText) {
+            // 如果不是[可编辑的元素]需要有[选中的文本]才保存状态
+            saveSelection = true
+            openFloatingButton = true
+          }
+          if (saveSelection) {
+            saveTempSelection({
+              selectionText:
+                selectionElementRef.current?.editableElementSelectionText ||
+                selectionElementRef.current.selectionText,
+              selectionHTML:
+                selectionElementRef.current?.editableElementSelectionText ||
+                selectionElementRef.current.selectionHTML,
+              selectionRect: selectionElementRef.current.selectionRect,
+              activeElement: selectionElementRef.current.target as HTMLElement,
+              selectionInputAble:
+                selectionElementRef.current?.isEditableElement,
+              selectionElement: selectionElementRef.current,
+            })
+            RangyLog.info(
+              'save selection temp data',
+              selectionElementRef.current?.isEditableElement,
+              '\n',
+              selectionElementRef.current?.editableElementSelectionText,
+              '\n',
+              selectionElementRef.current?.selectionText,
+            )
+          }
+          if (openFloatingButton) {
+            RangyLog.info('show floating button')
+            showRangy()
+          } else {
+            RangyLog.info('hide floating button')
+            hideRangy()
+          }
         }
       }
     },
@@ -238,46 +228,31 @@ const useInitRangy = () => {
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
     const mouseDownListener = (event: MouseEvent) => {
       const mouseTarget = event.target as HTMLElement
-      const { isEditableElement, editableElement } =
-        getEditableElement(mouseTarget)
+      const isEditableElement =
+        mouseTarget.tagName === 'TEXTAREA' || mouseTarget.tagName === 'INPUT'
+      const editableElement = isEditableElement ? mouseTarget : null
       if (isEditableElement && editableElement) {
         if (targetElementRef.current?.isSameNode(editableElement)) {
           return
         }
         if (targetElementRef.current) {
-          console.log(
-            '[ContextMenu Module]: remove editable element listener',
-            targetElementRef.current,
-          )
           targetElementRef.current.removeEventListener(
             'mouseup',
             mouseUpListener,
           )
           targetElementRef.current.removeEventListener('keyup', keyupListener)
         }
+        RangyLog.info('save targetElement ref', editableElement)
         targetElementRef.current = editableElement
         shortCutKey &&
           updateEditableElementPlaceholder(
             editableElement,
             `Press '${shortCutKey}' for AI`,
           )
-        console.log(
-          '[ContextMenu Module]: update editable element',
-          editableElement,
-        )
-        console.log(
-          '[ContextMenu Module]: bind editable element listener',
-          editableElement,
-        )
         editableElement.addEventListener('mouseup', mouseUpListener)
         editableElement.addEventListener('keyup', keyupListener)
       } else {
-        console.log(
-          '[ContextMenu Module]: remove editable element',
-          event.target,
-          event.currentTarget,
-        )
-        AIInputLog.info('remove editable element')
+        RangyLog.info('clear targetElement ref')
         targetElementRef.current = null
         shortCutKey &&
           removeEditableElementPlaceholder(`Press '${shortCutKey}' for AI`)
@@ -286,6 +261,10 @@ const useInitRangy = () => {
     document.addEventListener('mousedown', mouseDownListener)
     return () => {
       document.removeEventListener('mousedown', mouseDownListener)
+      if (targetElementRef.current) {
+        targetElementRef.current.removeEventListener('mouseup', mouseUpListener)
+        targetElementRef.current.removeEventListener('keyup', keyupListener)
+      }
     }
   }, [rangy, saveHighlightedRangeAndShowContextMenu, shortCutKey])
   // selection事件
@@ -311,7 +290,6 @@ const useInitRangy = () => {
           // 因为触发了iframe的点击，页面本身的元素肯定失焦了，所以隐藏
           hideRangy()
           if (!iframeSelectionData.isEditableElement) {
-            AIInputLog.info('remove editable element')
             selectionElementRef.current = null
             return
           }
@@ -358,9 +336,18 @@ const useInitRangy = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
+          RangyLog.info(
+            'Client_listenOpenChatMessageBox',
+            selectionElementRef.current?.isEditableElement,
+            selectionElementRef.current?.selectionText,
+          )
           showFloatingContextMenuWithVirtualElement(
             selectionElementRef.current as IVirtualIframeSelectionElement,
           )
+          if (selectionElementRef.current) {
+            // 因为已经打开了，所以释放掉这个ref
+            selectionElementRef.current = null
+          }
           return {
             success: true,
             data: {},

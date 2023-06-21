@@ -797,7 +797,20 @@ export const getEditableElement = (
       parentElement?.getAttribute?.('contenteditable') === 'true'
     ) {
       const type = parentElement.getAttribute('type')
-      if (type && type !== 'text') {
+      if (
+        type &&
+        [
+          'password',
+          'file',
+          'checkbox',
+          'radio',
+          'submit',
+          'reset',
+          'button',
+          'image',
+          'hidden',
+        ].includes(type)
+      ) {
         break
       }
       editableElement = parentElement as any

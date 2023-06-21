@@ -4,8 +4,8 @@ import {
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
 import { getMediator } from '@/store/mediator'
-import { getAppRootElement, promiseRetry } from '@/utils'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
+import { getAppContextMenuElement, promiseRetry } from '@/utils'
+import { ROOT_FLOATING_INPUT_ID } from '@/constants'
 import { autoFocusWithAllWebsite } from '@/components/AutoHeightTextarea'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -29,8 +29,8 @@ export class ActionInsertUserInput extends Action {
       const bodyElement = engine
       const chatBoxInput = await promiseRetry<HTMLTextAreaElement>(
         () => {
-          const input = getAppRootElement()?.querySelector(
-            `#${ROOT_CHAT_BOX_INPUT_ID}`,
+          const input = getAppContextMenuElement()?.querySelector(
+            `#${ROOT_FLOATING_INPUT_ID}`,
           ) as HTMLTextAreaElement
           if (input) {
             return Promise.resolve(input)
@@ -43,11 +43,11 @@ export class ActionInsertUserInput extends Action {
       if (chatBoxInput) {
         // HACK: 为了标记是shortcut运行的，而不是用户输入的，会加上一个前缀"``NO_HISTORY_&#``\n"
         // 让input监测到这个特殊的前缀，替换成系统常量的CHAT_GPT_PROMPT_PREFIX
-        getMediator('chatBoxInputMediator').updateInputValue(
+        getMediator('floatingMenuInputMediator').updateInputValue(
           '``NO_HISTORY_&#``\n' + inputValue,
         )
         // focus on input
-        autoFocusWithAllWebsite(chatBoxInput, 52.5)
+        autoFocusWithAllWebsite(chatBoxInput, 0)
       }
       if (bodyElement) {
         this.output = inputValue

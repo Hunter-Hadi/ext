@@ -290,7 +290,20 @@ const FloatingContextMenu: FC<{
   }
   const askChatGPT = (inputValue: string) => {
     if (inputValue.trim()) {
-      const draft = floatingContextMenuDraft.draft || '{{SELECTED_TEXT}}'
+      let draft = floatingContextMenuDraft.draft
+      const selectionElement = currentSelectionRef.current?.selectionElement
+      if (selectionElement) {
+        // 如果选中元素是可编辑元素，且没有选中文本，则清空草稿
+        if (
+          selectionElement.isEditableElement &&
+          !selectionElement.editableElementSelectionText
+        ) {
+          draft = ''
+        } else if (selectionElement.selectionText) {
+          // 如果选中元素不是可编辑元素，且有选中文本，则使用选中文本作为草稿
+          draft = '{{SELECTED_TEXT}}'
+        }
+      }
       setFloatingContextMenuDraft({
         draft: '',
         draftList: [],

@@ -55,6 +55,14 @@
   <textarea  name='' id='' cols='30' rows='10' placeholder='placeholder'></textarea>
   <textarea  name='' id='' cols='30' rows='10' placeholder=''></textarea>
 </div>
+<div>
+  <section style='display: flex;flex-direction: row;width: 100px;border: 1px solid;height: 20px;'>
+    <span style='max-width: 100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden'></span>
+    <span style='flex-shrink: 0'></span>
+  </section>
+  <textarea  name='' id='textAA' cols='30' rows='10'>有一天，小红帽的妈妈让她给外婆送食物。</textarea>
+  <button onclick='aa()'>generate</button>
+</div>
 <!--<iframe src='/text.html' frameborder='0'></iframe>-->
 <!--<iframe src='/text.html' frameborder='0'></iframe>-->
 <!--<iframe src='/text.html' frameborder='0'></iframe>-->
@@ -74,5 +82,28 @@
 <!--&gt;</iframe>-->
 <!--<iframe src='https://www.usechatgpt.ai/embed/prompt/94f0d67b13d595dfe21fc12af00e69b14bc8a7b2' frameborder='0'></iframe>-->
 <!--<iframe src='https://research-princeton.icims.com/jobs/16996/research-specialist-i/job?hub=15&mobile=false&width=1050&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240&in_iframe=1' ></iframe>-->
+<script>
+  function aa () {
+    const text = document.getElementById('textAA').value
+    const truncateString = (string, count) => {
+      if (string.length <= count) {
+        return {
+          start: string,
+          end: '',
+        }
+      }
+      const end = string.substring(string.length - count)
+      const start = string.substring(0, string.length - count)
+      return {
+        start,
+        end,
+      }
+    }
+    const {start,end} = truncateString(text, 3)
+    const spans = document.querySelectorAll('span')
+    spans[0].innerText = start || ''
+    spans[1].innerText = end ||''
+  }
+</script>
 </body>
 </html>

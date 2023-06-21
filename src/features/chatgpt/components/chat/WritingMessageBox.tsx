@@ -13,6 +13,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useRangy } from '@/features/contextMenu'
 import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
+import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -36,6 +37,15 @@ const WritingMessageBox: FC<{
   useEffect(() => {
     if (conversation.writingMessage?.text) {
       const writingMessageText = conversation.writingMessage.text
+      // ChatGPT 有可能第一个回答会返回之前的问题，所以删掉
+      if (writingMessageText.includes(CHAT_GPT_PROMPT_PREFIX)) {
+        setFloatingContextMenuDraft((prevState) => {
+          console.log(prevState.draftList)
+          debugger
+          return prevState
+        })
+        return
+      }
       setFloatingContextMenuDraft((prevState) => {
         const copyDraftList = cloneDeep(prevState.draftList)
         const lastMessageIndex = Math.max(copyDraftList.length - 1, 0)
@@ -132,14 +142,14 @@ const ContextText: FC = () => {
           end,
         }
       }
-      return truncateString(context, 30)
+      return truncateString(context, 15)
     }
     return {
       start: '',
       end: '',
     }
   }, [currentSelection])
-  if (!currentSelection?.selectionElement?.selectionText) {
+  if (!splitCenterText.start && !splitCenterText.end) {
     return null
   }
   return (
@@ -149,23 +159,25 @@ const ContextText: FC = () => {
         display: 'flex',
         flexDirection: 'row',
       }}
-      fontSize={'14px'}
+      fontSize={'12px'}
+      fontWeight={400}
       color={'text.secondary'}
     >
       <span style={{ flexShrink: 0 }}>Context: </span>
       <span
         style={{
-          flex: 1,
-          width: 0,
           display: 'inline-block',
+          overflow: 'hidden',
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
-          overflow: 'hidden',
+          maxWidth: '100%',
         }}
       >
         {splitCenterText.start}
       </span>
-      <span style={{ flexShrink: 0 }}>{splitCenterText.end}</span>
+      <span style={{ flexShrink: 0, whiteSpace: 'nowrap' }}>
+        {splitCenterText.end}
+      </span>
     </Typography>
   )
 }

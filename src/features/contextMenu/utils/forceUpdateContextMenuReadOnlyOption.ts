@@ -62,7 +62,8 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
     defaultJsonMap.forEach((item) => {
       console.log('add new system prompt', item)
       updateCount++
-      updateMenuList.unshift(item)
+      // push是因为新增group可以拖动位置
+      updateMenuList.push(item)
     })
     updateMenuList = uniqBy(updateMenuList, 'id')
     console.log('force update menu count', updateCount, updateMenuList)

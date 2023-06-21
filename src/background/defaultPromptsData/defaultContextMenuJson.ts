@@ -1,6 +1,490 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
 export default [
   {
+    id: 'd0176963-2376-4dd8-acfc-95af778195b9',
+    parent: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    droppable: true,
+    text: 'Poem...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a poem about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'see more poem...',
+    },
+  },
+  {
+    id: '642854aa-71ce-4d67-9a08-f32c483c2626',
+    parent: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    droppable: true,
+    text: 'To-do list...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a todo list about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'see more to-do list...',
+    },
+  },
+  {
+    id: '61ef6871-364e-40eb-9735-6fcae8da7008',
+    parent: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    droppable: true,
+    text: 'Meeting agenda...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a meeting agenda about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'see more meeting agenda...',
+    },
+  },
+  {
+    id: 'e23325bf-68b3-4a27-ab3f-b015b751e752',
+    parent: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    droppable: true,
+    text: 'Pros and cons list...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a pros and cons list about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'see more pros and cons list...',
+    },
+  },
+  {
+    id: '8faaca24-8a22-47c4-bb9c-eef161471465',
+    parent: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    droppable: true,
+    text: 'Job description...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a job description about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'see more job description...',
+    },
+  },
+  {
+    id: '5a87719c-4e07-4f74-ba99-d48e1fc4cbfb',
+    parent: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    droppable: true,
+    text: 'Sales email...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a sales email about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'see more sales email...',
+    },
+  },
+  {
+    id: 'c8d5e44b-f311-43aa-b39d-a11a6c9216b1',
+    parent: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    droppable: true,
+    text: 'Recruiting email...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a recruiting email about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'see more recruiting email...',
+    },
+  },
+  {
+    id: 'd0d199ea-82b9-4272-bcb4-76774d90e12d',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Brainstorm ideas...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Brainstorm ideas on ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'draft with ai brainstorm ideas...',
+    },
+  },
+  {
+    id: '2d2bebea-3f18-48e7-b676-de813bc4782b',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Blog post...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a blog post about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'draft with ai blog post...',
+    },
+  },
+  {
+    id: '091011cc-9336-4ed1-b1e5-1fdc49021e19',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Outline...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write an outline about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'draft with ai outline...',
+      icon: 'DefaultIcon',
+    },
+  },
+  {
+    id: 'bc291995-b444-4dad-af8a-bc772b20efe1',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Social media post...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a social media post about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'draft with ai social media post...',
+    },
+  },
+  {
+    id: '11794df6-834f-4c22-9580-c8c523d24d09',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Press release...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a press release about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'draft with ai press release...',
+    },
+  },
+  {
+    id: '0c6623a5-3fda-4245-9789-7a0ce9d09dfa',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Creative story',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write a creative story about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'draft with ai creative story',
+    },
+  },
+  {
+    id: '37d449f8-1f5d-49ef-8647-ad8e4f9d49d9',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Essay',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write an essay about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'draft with ai essay',
+    },
+  },
+  {
+    id: 'e1495485-48ae-46d6-b8fa-a7fe6eb813cb',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'See more',
+    data: {
+      editable: false,
+      type: 'group',
+      actions: [],
+      searchText: 'draft with ai see more',
+    },
+  },
+  {
+    id: 'c0f7a642-9e34-4b1f-a2ee-1c4c5e93fa23',
+    parent: '3cc70e82-29db-45a0-8136-7ba4cf90bf8e',
+    droppable: true,
+    text: 'Continue writing',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              'I have an unfinished text that I would like you to continue. Please continue the text from the following point that match the original tone, writing style, structure, intended audience, and the direction the text should take for my text.\n\nWrite in {{AI_OUTPUT_LANGUAGE}}.\n\nHere is the text:\n"""\n{{SELECTED_TEXT}}\n"""',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'write with ai continue writing',
+    },
+  },
+  {
     id: '81343baa-2aa4-4435-afd3-f3501f51b708',
     parent: '575a2d26-a216-4290-88fc-9121c03097a9',
     droppable: true,
@@ -1178,6 +1662,30 @@ export default [
       type: 'group',
       actions: [],
       searchText: 'generate from selection',
+    },
+  },
+  {
+    id: '3cc70e82-29db-45a0-8136-7ba4cf90bf8e',
+    parent: 'root',
+    droppable: true,
+    text: 'Write with AI',
+    data: {
+      editable: false,
+      type: 'group',
+      actions: [],
+      searchText: 'write with ai',
+    },
+  },
+  {
+    id: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    parent: 'root',
+    droppable: true,
+    text: 'Draft with AI',
+    data: {
+      editable: false,
+      type: 'group',
+      actions: [],
+      searchText: 'draft with ai',
     },
   },
 ] as IContextMenuItem[]

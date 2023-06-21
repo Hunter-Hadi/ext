@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
@@ -31,14 +31,11 @@ const ArrowDropDownIconCustom = () => {
   )
 }
 
-/**
- * @deprecated 不再需要禁用模型
- */
-// const WHITE_LIST_MODELS = [
-//   'gpt-4-mobile',
-//   'text-davinci-002-render-sha-mobile',
-//   'text-davinci-002-render-sha',
-// ]
+const WHITE_LIST_MODELS = [
+  'gpt-4-mobile',
+  'text-davinci-002-render-sha-mobile',
+  'text-davinci-002-render-sha',
+]
 
 const ChatGPTOpenAIModelSelector: FC = () => {
   const { loading: chatGPTConversationLoading } = useRecoilValue(
@@ -52,25 +49,25 @@ const ChatGPTOpenAIModelSelector: FC = () => {
     }
     return []
   }, [appSettings.models])
-  // const updateNewModel = async (model: string) => {
-  //   setAppSettings((prevState) => {
-  //     return {
-  //       ...prevState,
-  //       currentModel: model,
-  //     }
-  //   })
-  //   await setChromeExtensionSettings({
-  //     currentModel: model,
-  //   })
-  //   await resetConversation()
-  // }
-  // useEffect(() => {
-  //   if (appSettings.currentModel) {
-  //     if (!WHITE_LIST_MODELS.includes(appSettings.currentModel)) {
-  //       updateNewModel('text-davinci-002-render-sha')
-  //     }
-  //   }
-  // }, [appSettings.currentModel])
+  const updateNewModel = async (model: string) => {
+    setAppSettings((prevState) => {
+      return {
+        ...prevState,
+        currentModel: model,
+      }
+    })
+    await setChromeExtensionSettings({
+      currentModel: model,
+    })
+    await resetConversation()
+  }
+  useEffect(() => {
+    if (appSettings.currentModel) {
+      if (!WHITE_LIST_MODELS.includes(appSettings.currentModel)) {
+        updateNewModel('text-davinci-002-render-sha')
+      }
+    }
+  }, [appSettings.currentModel])
   return (
     <>
       {memoModels.length > 1 ? (
@@ -151,10 +148,10 @@ const ChatGPTOpenAIModelSelector: FC = () => {
             }}
           >
             {memoModels.map((model) => {
-              // const isDisabled = !WHITE_LIST_MODELS.includes(model.slug)
+              const isDisabled = !WHITE_LIST_MODELS.includes(model.slug)
               return (
                 <MenuItem
-                  // disabled={isDisabled}
+                  disabled={isDisabled}
                   value={model.slug}
                   key={model?.slug}
                   sx={{
@@ -176,6 +173,15 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                     title={
                       <Stack spacing={1} width={'160px'}>
                         <Stack textAlign={'left'} width={'100%'} spacing={1}>
+                          <Typography
+                            fontSize={'14px'}
+                            color={'text.primary'}
+                            textAlign={'left'}
+                            fontWeight={700}
+                          >
+                            Model disabled in extension for upgrade. Please try
+                            later.
+                          </Typography>
                           <Typography
                             fontSize={'14px'}
                             color={'text.primary'}

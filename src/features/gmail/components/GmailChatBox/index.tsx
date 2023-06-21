@@ -289,7 +289,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
       >
         <Stack width={'100%'} alignItems={'center'} justifyContent={'center'}>
           <Box
-            sx={{ width: '100%', minHeight: 36 }}
+            sx={{ width: '100%' }}
             component={'div'}
             display={'flex'}
             width={0}
@@ -300,38 +300,36 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             mb={1}
             position={'relative'}
           >
-            {
-              <Box
-                sx={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  width: 36,
-                  height: 36,
-                }}
-              >
-                <TooltipButton
-                  title={'New chat'}
-                  sx={{
-                    fontSize: '26px',
-                    p: '5px',
-                    minWidth: 'unset',
-                    borderRadius: '18px',
-                  }}
-                  disableElevation
-                  variant={'contained'}
-                  onClick={() => {
-                    onReset && onReset()
-                  }}
-                >
-                  <CleanChatBoxIcon
-                    sx={{ color: 'inherit', fontSize: 'inherit' }}
-                  />
-                </TooltipButton>
-              </Box>
-            }
             {!loading && slicedMessageList.length > 0 && (
               <>
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: 36,
+                    height: 36,
+                  }}
+                >
+                  <TooltipButton
+                    title={'New chat'}
+                    sx={{
+                      fontSize: '26px',
+                      p: '5px',
+                      minWidth: 'unset',
+                      borderRadius: '18px',
+                    }}
+                    disableElevation
+                    variant={'contained'}
+                    onClick={() => {
+                      onReset && onReset()
+                    }}
+                  >
+                    <CleanChatBoxIcon
+                      sx={{ color: 'inherit', fontSize: 'inherit' }}
+                    />
+                  </TooltipButton>
+                </Box>
                 {reGenerateAble && (
                   <Button
                     disableElevation

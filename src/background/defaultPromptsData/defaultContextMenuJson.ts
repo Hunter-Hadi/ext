@@ -342,6 +342,37 @@ export default [
     },
   },
   {
+    id: 'd9ee098d-c793-448b-b031-2fc6234b97b3',
+    parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
+    droppable: true,
+    text: 'Code...',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template: 'Write code about ',
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'DefaultIcon',
+      searchText: 'draft with ai code...',
+    },
+  },
+  {
     id: '11794df6-834f-4c22-9580-c8c523d24d09',
     parent: '0995b46f-00b0-41c5-8e18-7eac85af8119',
     droppable: true,
@@ -444,6 +475,7 @@ export default [
       type: 'group',
       actions: [],
       searchText: 'draft with ai see more',
+      icon: 'More',
     },
   },
   {

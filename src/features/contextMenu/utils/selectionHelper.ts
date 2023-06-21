@@ -170,7 +170,8 @@ export const createSelectionMarker = (
         if (sel.rangeCount > 0) {
           // remove old marker
           removeAllSelectionMarker()
-          const range = win.getSelection().getRangeAt(0)
+          const range = win.getSelection().getRangeAt(0).cloneRange()
+          console.log('[ContextMenu][Rangy] range: \t', range)
           if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
             const inputElement = element as HTMLInputElement
             // input or textarea
@@ -1018,7 +1019,7 @@ export const updateEditableElementPlaceholder = (
  * @param value
  */
 export const replaceWithClipboard = async (range: Range, value: string) => {
-  const originalRange = range.cloneRange()
+  let originalRange: Range | null = range.cloneRange()
   const doc =
     (range.startContainer || range.endContainer)?.ownerDocument || document
   if (!doc) {
@@ -1057,6 +1058,10 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
     if (!['evernote.com'].includes(getCurrentDomainHost())) {
       doc.execCommand('paste', false, '')
     }
+    const { editableElement } = getEditableElement(
+      (range.startContainer || range.endContainer) as HTMLElement,
+    )
+    editableElement && editableElement.focus()
     // restore rich text to clipboard
     selection?.removeAllRanges()
     selection?.addRange(range)
@@ -1065,6 +1070,14 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       doc.execCommand('paste', false, '')
     } else {
       doc.execCommand('insertText', false, value)
+    }
+    // 保存粘贴或者插入后的选区位置
+    // 1. 如果是粘贴, 选区会变成粘贴的内容
+    // 2. 如果是插入, 选区会变成插入的内容
+    if (selection && selection?.rangeCount > 0) {
+      originalRange = selection?.getRangeAt(0).cloneRange() || originalRange
+    } else {
+      originalRange = null
     }
     try {
       // select all from div
@@ -1101,9 +1114,11 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
     console.log('replaceWithClipboard error: \t', e)
   } finally {
     const selection = doc.getSelection()
-    if (selection) {
+    if (selection && originalRange) {
       selection.removeAllRanges()
       selection.addRange(originalRange)
+      originalRange.collapse(false)
+      selection.collapseToEnd()
     }
   }
 }

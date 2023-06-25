@@ -80,7 +80,7 @@ const GmailChatBoxInputActions: FC<{
         {/*<DevContent>*/}
         {/*  <TestAllActionsButton />*/}
         {/*</DevContent>*/}
-        {!isEzMailApp && (
+        {!isEzMailApp && !conversation.loading && (
           <FloatingInputButton
             buttonText={'Use prompt'}
             onBeforeShowContextMenu={() => {

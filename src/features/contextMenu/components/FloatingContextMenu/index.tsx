@@ -440,7 +440,6 @@ const FloatingContextMenu: FC<{
             }, 100)
           }
         }
-        setInputValue('')
       }
     }
   }, [
@@ -472,6 +471,7 @@ const FloatingContextMenu: FC<{
         })
         showChatBox()
       }
+      setInputValue('')
       runShortCuts().then(() => {
         // done
         const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
@@ -488,11 +488,15 @@ const FloatingContextMenu: FC<{
     }
   }, [actions, loading, isLogin])
   useEffect(() => {
-    getMediator('floatingMenuInputMediator').subscribe(setInputValue)
-    return () => {
-      getMediator('floatingMenuInputMediator').unsubscribe(setInputValue)
+    const updateInputValue = (value: string) => {
+      console.log('[ContextMenu Module] updateInputValue', value)
+      setInputValue(value)
     }
-  }, [])
+    getMediator('floatingMenuInputMediator').subscribe(updateInputValue)
+    return () => {
+      getMediator('floatingMenuInputMediator').unsubscribe(updateInputValue)
+    }
+  }, [setInputValue])
   return (
     <FloatingPortal root={root}>
       <div

@@ -1,2 +1,0 @@
-// NOTE: dynamic import()
-export {}

@@ -18,8 +18,7 @@
     },
     {
       "matches": [
-        "http://localhost:3000/*",
-        "https://usechatgpt-main.simplysourcing.net/*"
+        "https://app.maxai.me/*"
       ],
       "js": ["check_status.ts"],
       "run_at": "document_start"

@@ -28,21 +28,19 @@ const isProduction = String(process.env.NODE_ENV) === 'production'
 const APP_USE_CHAT_GPT_HOST = isProduction
   ? 'https://app.maxai.me'
   : 'https://app.maxai.me'
-// maxai.app 暂时还没有main环境先用正式环境
+// TODO maxai.app 暂时还没有main环境先用正式环境
 // : 'https://maxai-main.simplysourcing.net'
 // : 'http://localhost:3000'
 
 const APP_USE_CHAT_GPT_API_HOST = isProduction
   ? 'https://api.maxai.me'
-  : 'https://dev.maxai.me'
+  : // TODO maxai.app 暂时还没有main环境先用正式环境
+    // : 'https://dev.maxai.me'
+    'https://api.maxai.me'
 const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'MaxAI.me'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 const GLOBAL_LESS =
   args.app === 'ezmail' ? './app.EZ_MAIL_AI.less' : './app.USE_CHAT_GPT.less'
-const inboxSDK =
-  args.app === 'ezmail'
-    ? '../features/gmail/hooks/useInitInboxSdk.ts'
-    : '../../src/empty.ts'
 const NODE_ENV = isProduction ? 'production' : 'development'
 
 const env = {
@@ -52,7 +50,6 @@ const env = {
   APP_USE_CHAT_GPT_API_HOST,
   APP_NAME,
   GLOBAL_LESS,
-  inboxSDK,
 }
 const getReplaceEnv = () => {
   const pkg = JSON.parse(

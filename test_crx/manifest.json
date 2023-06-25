@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "js": [
-        "pure_test.js"
+        "content.js"
       ],
       "all_frames": true,
       "matches": [
@@ -34,11 +34,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": [
-        "aa.js",
-        "pure_test_a.js",
-        "pure_test_b.js"
-      ],
+      "resources": [],
       "matches": [
         "<all_urls>"
       ]

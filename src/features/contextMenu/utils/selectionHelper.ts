@@ -1,10 +1,15 @@
 import { v4 as uuidV4 } from 'uuid'
 import isNumber from 'lodash-es/isNumber'
-import { IRangyRect, ISelectionElement } from '@/features/contextMenu/types'
+import {
+  ContextMenuDraftType,
+  IRangyRect,
+  ISelectionElement,
+} from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
 import { getCurrentDomainHost } from '@/utils'
 import sum from 'lodash-es/sum'
 import TurnDownService from 'turndown'
+import { ROOT_CLIPBOARD_ID } from '@/constants'
 /**
  * 以下网站不支持植入标记，直接返回选区内容并把选区存入cache
  */
@@ -471,7 +476,7 @@ export const replaceMarkerContent = async (
   startMarkerId: string,
   endMarkerId: string,
   value: string,
-  type: 'insert_blow' | 'insert_above' | 'replace',
+  type: ContextMenuDraftType,
 ) => {
   console.log('replaceMarkerContent', value)
   let originalEditableElement: HTMLElement | null = null
@@ -513,10 +518,10 @@ export const replaceMarkerContent = async (
       let newValue = ''
       let beforeText = ''
       let afterText = ''
-      if (type === 'replace') {
+      if (type === 'REPLACE_SELECTION') {
         beforeText = inputElement.value.substring(0, start)
         afterText = inputElement.value.substring(end, inputElement.value.length)
-      } else if (type === 'insert_blow') {
+      } else if (type === 'INSERT_BELOW') {
         beforeText = inputElement.value.substring(0, end)
         afterText = inputElement.value.substring(end, inputElement.value.length)
         if (!beforeText.endsWith('\n') && inputElement.tagName === 'TEXTAREA') {
@@ -527,11 +532,43 @@ export const replaceMarkerContent = async (
         ) {
           value = ' ' + value
         }
+      } else if (type === 'INSERT_ABOVE') {
+        beforeText = inputElement.value.substring(0, start)
+        afterText = inputElement.value.substring(
+          start,
+          inputElement.value.length,
+        )
+        if (
+          !afterText.startsWith('\n') &&
+          inputElement.tagName === 'TEXTAREA'
+        ) {
+          value = value + '\n'
+        } else if (
+          !afterText.startsWith(' ') &&
+          inputElement.tagName === 'INPUT'
+        ) {
+          value = value + ' '
+        }
+      } else if (type === 'INSERT') {
+        beforeText = inputElement.value.substring(0, end)
+        afterText = inputElement.value.substring(end, inputElement.value.length)
       }
       newValue = beforeText + value + afterText
       // inputElement.value = newValue
+      inputElement.focus()
       inputElement.select()
-      doc.execCommand('insertText', false, newValue)
+      try {
+        if (await getClipboardPermission()) {
+          await navigator.clipboard.writeText(newValue)
+          doc.execCommand('paste', false, '')
+        } else {
+          doc.execCommand('insertText', false, newValue)
+        }
+      } catch (e) {
+        inputElement.focus()
+        inputElement.select()
+        doc.execCommand('insertText', false, newValue)
+      }
       inputSetSelectionAndScrollTo(
         inputElement,
         beforeText.length,
@@ -539,36 +576,26 @@ export const replaceMarkerContent = async (
       )
     }
   } else if (cacheRange) {
-    if (type === 'insert_blow') {
+    if (type === 'INSERT_BELOW') {
       value = ('\n' + value).replace(/^\n+/, '\n')
-    } else if (type === 'insert_above') {
+    } else if (type === 'INSERT_ABOVE') {
       value = (value + '\n').replace(/\n+$/, '\n')
-    } else if (type === 'replace') {
+    } else if (type === 'REPLACE_SELECTION') {
+      // nothing
+    } else if (type === 'INSERT') {
       // nothing
     }
-    const doc =
-      cacheRange.startContainer?.ownerDocument ||
-      cacheRange.endContainer?.ownerDocument ||
-      document
-    doc.body.focus()
-    const input = doc.createElement('input')
-    doc.body.appendChild(input)
-    input.focus()
-    input.remove()
-    console.log('[ContextMenu Module] cacheRange', cacheRange, doc.hasFocus())
-    doc.getSelection()?.removeAllRanges()
-    doc.getSelection()?.addRange(cacheRange)
     try {
       console.log(
         'paste origin editableElementSelectionText',
         cacheRange,
         cacheRange.toString(),
       )
-      if (type === 'replace') {
-        doc.execCommand('Delete')
-      } else if (type === 'insert_blow') {
+      if (type === 'REPLACE_SELECTION') {
+        // doc.execCommand('Delete')
+      } else if (type === 'INSERT' || type === 'INSERT_BELOW') {
         cacheRange.collapse(false)
-      } else if (type === 'insert_above') {
+      } else if (type === 'INSERT_ABOVE') {
         cacheRange.collapse(true)
       }
       await replaceWithClipboard(cacheRange, value)
@@ -589,11 +616,13 @@ export const replaceMarkerContent = async (
     range.selectNode(editableElement)
     range.setStartAfter(startMarker)
     range.setEndBefore(endMarker)
-    if (type === 'insert_blow') {
+    if (type === 'INSERT_BELOW') {
       value = ('\n' + value).replace(/^\n+/, '\n')
-    } else if (type === 'insert_above') {
+    } else if (type === 'INSERT_ABOVE') {
       value = (value + '\n').replace(/\n+$/, '\n')
-    } else if (type === 'replace') {
+    } else if (type === 'REPLACE_SELECTION') {
+      // nothing
+    } else if (type === 'INSERT') {
       // nothing
     }
     // 判断是否为纯文本节点，还原纯文本节点
@@ -633,9 +662,9 @@ export const replaceMarkerContent = async (
       doc.getSelection()?.removeAllRanges()
       doc.getSelection()?.addRange(range)
       // 移动光标
-      if (type === 'insert_blow') {
+      if (type === 'INSERT_BELOW' || type === 'INSERT') {
         doc.getSelection()?.collapseToEnd()
-      } else if (type === 'insert_above') {
+      } else if (type === 'INSERT_ABOVE') {
         doc.getSelection()?.collapseToStart()
       }
     }
@@ -657,7 +686,7 @@ export const replaceMarkerContent = async (
       },
     ) => {
       const newRange = range.cloneRange()
-      if (type === 'replace') {
+      if (type === 'REPLACE_SELECTION') {
         newRange.deleteContents()
       } else {
         newRange.setStart(range.endContainer, range.endOffset)
@@ -1029,6 +1058,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
     const selection = doc.getSelection()
     // save rich text from clipboard
     const div = doc.createElement('div')
+    div.id = ROOT_CLIPBOARD_ID
     div.setAttribute('contenteditable', 'true')
     div.style.cssText =
       'width: 1px;height: 1px;position: fixed;top: 0px;left:0px;overflow: hidden; z-index: -1;'
@@ -1059,23 +1089,29 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       doc.execCommand('paste', false, '')
     }
     const { editableElement } = getEditableElement(
-      (range.startContainer || range.endContainer) as HTMLElement,
+      (originalRange.startContainer ||
+        originalRange.endContainer) as HTMLElement,
     )
     editableElement && editableElement.focus()
     // restore rich text to clipboard
     selection?.removeAllRanges()
-    selection?.addRange(range)
+    selection?.addRange(originalRange)
     if (await getClipboardPermission()) {
       await navigator.clipboard.writeText(value)
       doc.execCommand('paste', false, '')
     } else {
       doc.execCommand('insertText', false, value)
     }
+    // 利用setTimeout来等待粘贴完成, 否则会在whatsapp中粘贴失败
+    const delay = () => new Promise((resolve) => setTimeout(resolve, 0))
+    await delay()
     // 保存粘贴或者插入后的选区位置
     // 1. 如果是粘贴, 选区会变成粘贴的内容
     // 2. 如果是插入, 选区会变成插入的内容
-    if (selection && selection?.rangeCount > 0) {
-      originalRange = selection?.getRangeAt(0).cloneRange() || originalRange
+    const currentSelection = doc.getSelection()
+    if (currentSelection && currentSelection?.rangeCount > 0) {
+      originalRange =
+        currentSelection?.getRangeAt(0).cloneRange() || originalRange
     } else {
       originalRange = null
     }

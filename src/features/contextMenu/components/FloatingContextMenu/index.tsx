@@ -304,9 +304,11 @@ const FloatingContextMenu: FC<{
           draft = '{{SELECTED_TEXT}}'
         }
       }
-      setFloatingContextMenuDraft({
-        draft: '',
-        draftList: [],
+      setFloatingContextMenuDraft((prev) => {
+        return {
+          draft: '',
+          draftList: [],
+        }
       })
       let template = `${inputValue}`
       if (draft) {
@@ -569,7 +571,7 @@ const FloatingContextMenu: FC<{
                         minHeight: '24px',
                       }}
                       onEnter={(value) => {
-                        if (contextMenuList.length > 0) {
+                        if (!haveContext && contextMenuList.length > 0) {
                           updateFloatingDropdownMenuSelectedItem((preState) => {
                             return {
                               ...preState,
@@ -607,22 +609,19 @@ const FloatingContextMenu: FC<{
                           },
                         }}
                         onClick={() => {
-                          if (haveContext) {
-                            askChatGPT(inputValue)
-                          } else {
-                            if (contextMenuList.length > 0) {
-                              updateFloatingDropdownMenuSelectedItem(
-                                (preState) => {
-                                  return {
-                                    ...preState,
-                                    selectedContextMenuId:
-                                      preState.lastHoverContextMenuId,
-                                  }
-                                },
-                              )
-                              return
-                            }
+                          if (!haveContext && contextMenuList.length > 0) {
+                            updateFloatingDropdownMenuSelectedItem(
+                              (preState) => {
+                                return {
+                                  ...preState,
+                                  selectedContextMenuId:
+                                    preState.lastHoverContextMenuId,
+                                }
+                              },
+                            )
+                            return
                           }
+                          askChatGPT(inputValue)
                         }}
                       >
                         <ArrowUpwardIcon

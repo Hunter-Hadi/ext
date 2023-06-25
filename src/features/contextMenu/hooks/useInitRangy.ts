@@ -36,7 +36,11 @@ import {
   removeEditableElementPlaceholder,
   updateEditableElementPlaceholder,
 } from '@/features/contextMenu/utils/selectionHelper'
-import { ROOT_CONTAINER_ID, ROOT_CONTEXT_MENU_ID } from '@/constants'
+import {
+  ROOT_CLIPBOARD_ID,
+  ROOT_CONTAINER_ID,
+  ROOT_CONTEXT_MENU_ID,
+} from '@/constants'
 import cloneDeep from 'lodash-es/cloneDeep'
 import useCommands from '@/hooks/useCommands'
 
@@ -127,8 +131,10 @@ const useInitRangy = () => {
           ''
         if (activeElement) {
           if (
-            (activeElement && activeElement.id === ROOT_CONTAINER_ID) ||
-            activeElement.id === ROOT_CONTEXT_MENU_ID
+            activeElement &&
+            (activeElement.id === ROOT_CONTAINER_ID ||
+              activeElement.id === ROOT_CONTEXT_MENU_ID ||
+              activeElement.id === ROOT_CLIPBOARD_ID)
           ) {
             return
           }
@@ -336,6 +342,22 @@ const useInitRangy = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
+          // 如果没有selectionElementRef，有可能用户打开了一个自动focus的modal进行输入并且直接按下了快捷键
+          // 例如: linkedin的消息输入框
+          if (!selectionElementRef.current) {
+            const element = getSelectionBoundaryElement()
+            const { editableElement, isEditableElement } =
+              getEditableElement(element)
+            if (isEditableElement && editableElement) {
+              selectionElementRef.current = createSelectionElement(
+                editableElement,
+                {
+                  target: editableElement,
+                  eventType: 'keyup',
+                },
+              )
+            }
+          }
           RangyLog.info(
             'Client_listenOpenChatMessageBox',
             selectionElementRef.current?.isEditableElement,
@@ -382,6 +404,8 @@ const useInitRangy = () => {
     const needCloseFloatingContextMenus: ContextMenuDraftType[] = [
       'REPLACE_SELECTION',
       'INSERT_BELOW',
+      'INSERT',
+      'INSERT_ABOVE',
       'DISCARD',
       'COPY',
     ]
@@ -408,21 +432,8 @@ const useInitRangy = () => {
     }
     switch (selectedDraftContextMenuType) {
       case 'INSERT_BELOW':
-        {
-          if (target) {
-            port.postMessage({
-              event: 'Client_updateIframeInput',
-              data: {
-                value: lastOutputRef.current,
-                type: 'insert_blow',
-                startMarkerId: target.startMarkerId,
-                endMarkerId: target.endMarkerId,
-                caretOffset: target.caretOffset,
-              },
-            })
-          }
-        }
-        break
+      case 'INSERT':
+      case 'INSERT_ABOVE':
       case 'REPLACE_SELECTION':
         {
           if (target) {
@@ -430,7 +441,7 @@ const useInitRangy = () => {
               event: 'Client_updateIframeInput',
               data: {
                 value: lastOutputRef.current,
-                type: 'replace',
+                type: selectedDraftContextMenuType,
                 startMarkerId: target.startMarkerId,
                 endMarkerId: target.endMarkerId,
                 caretOffset: target.caretOffset,

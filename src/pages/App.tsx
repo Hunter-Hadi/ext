@@ -115,7 +115,7 @@ const App: FC = () => {
               '& *': {
                 // fontSize: '14px',
                 boxSizing: 'border-box',
-                fontFamily: `"Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif`,
+                fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',
               },
             }}
           >

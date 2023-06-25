@@ -100,6 +100,9 @@ const WritingMessageBox: FC<{
         '& .markdown-body': {
           maxHeight: 'min(40vh, 320px)',
           overflowY: 'auto',
+          '*': {
+            fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',
+          },
           '& p:last-child': {
             mb: '1em',
           },

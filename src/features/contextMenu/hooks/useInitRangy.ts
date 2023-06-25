@@ -159,6 +159,8 @@ const useInitRangy = () => {
             activeElement = editableElement
           }
           if (!editableElement && !defaultSelectionText) {
+            hideRangy()
+            selectionElementRef.current = null
             return
           }
           selectionElementRef.current = createSelectionElement(activeElement, {

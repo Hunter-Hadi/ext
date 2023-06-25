@@ -593,14 +593,19 @@ export const replaceMarkerContent = async (
         cacheRange,
         cacheRange.toString(),
       )
+      const cloneRange = cacheRange.cloneRange()
       if (type === 'REPLACE_SELECTION') {
         // doc.execCommand('Delete')
       } else if (type === 'INSERT' || type === 'INSERT_BELOW') {
-        cacheRange.collapse(false)
+        // set range to end
+        cloneRange.setStart(cacheRange.endContainer, cacheRange.endOffset)
+        cloneRange.setEnd(cacheRange.endContainer, cacheRange.endOffset)
       } else if (type === 'INSERT_ABOVE') {
-        cacheRange.collapse(true)
+        // set range to start
+        cloneRange.setStart(cacheRange.startContainer, cacheRange.startOffset)
+        cloneRange.setEnd(cacheRange.startContainer, cacheRange.startOffset)
       }
-      await replaceWithClipboard(cacheRange, value)
+      await replaceWithClipboard(cloneRange, value)
       console.log('paste editableElementSelectionText', value)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
@@ -1094,12 +1099,16 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       (originalRange.startContainer ||
         originalRange.endContainer) as HTMLElement,
     )
+    // 利用setTimeout来等待粘贴完成, 否则会在whatsapp中粘贴失败
+    const delay = (t: number) =>
+      new Promise((resolve) => setTimeout(resolve, t))
     if (await getClipboardPermission()) {
       await navigator.clipboard.writeText(value)
       editableElement && editableElement.focus()
       // restore rich text to clipboard
       selection?.removeAllRanges()
       selection?.addRange(originalRange)
+      await delay(0)
       doc.execCommand('paste', false, '')
     } else {
       editableElement && editableElement.focus()
@@ -1108,9 +1117,6 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       selection?.addRange(originalRange)
       doc.execCommand('insertText', false, value)
     }
-    // 利用setTimeout来等待粘贴完成, 否则会在whatsapp中粘贴失败
-    const delay = (t: number) =>
-      new Promise((resolve) => setTimeout(resolve, t))
     await delay(0)
     // 保存粘贴或者插入后的选区位置
     // 1. 如果是粘贴, 选区会变成粘贴的内容

@@ -37,7 +37,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     data: {
       type: 'shortcuts',
       editable: false,
-      icon: 'NoteDown',
+      icon: 'NoteRight',
     },
     children: [],
   },

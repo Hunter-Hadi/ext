@@ -102,6 +102,7 @@ export const CONTEXT_MENU_ICONS = [
   'FormatAlignLeft',
   'NoteUp',
   'NoteDown',
+  'NoteRight',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -221,6 +222,8 @@ const ContextMenuIcon: FC<{
       return <NoteUp sx={sxMemo} />
     case 'NoteDown':
       return <NoteDown sx={sxMemo} />
+    case 'NoteRight':
+      return <NoteRight sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (
@@ -289,6 +292,44 @@ const NoteDown: FC<SvgIconProps> = (props) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <mask
+          id="mask0_3002_30691"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="24"
+          height="24"
+        >
+          <rect width="24" height="24" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_3002_30691)">
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M4 3.25C3.44772 3.25 3 3.69772 3 4.25V9.25C3 9.80228 3.44772 10.25 4 10.25H20C20.5523 10.25 21 9.80228 21 9.25V4.25C21 3.69772 20.5523 3.25 20 3.25H4ZM5 5.25V8.25H19V5.25H5Z"
+            fill="currentColor"
+          />
+          <path d="M21 12.25H11V14.25H21V12.25Z" fill="currentColor" />
+          <path d="M21 16.25H13V18.25H21V16.25Z" fill="currentColor" />
+          <path
+            d="M5 16.25V12.25H3V17.25C3 17.5333 3.09583 17.7708 3.2875 17.9625C3.47917 18.1542 3.71667 18.25 4 18.25H7.5V20.75L11 17.25L7.5 13.75V16.25H5Z"
+            fill="currentColor"
+          />
+        </g>
+      </svg>
+    </SvgIcon>
+  )
+}
+const NoteRight: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <mask
           id="mask0_3005_30893"
           maskUnits="userSpaceOnUse"
           x="0"
@@ -326,5 +367,4 @@ const NoteDown: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
-
 export { ContextMenuIcon }

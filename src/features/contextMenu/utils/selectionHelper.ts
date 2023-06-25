@@ -555,13 +555,15 @@ export const replaceMarkerContent = async (
       }
       newValue = beforeText + value + afterText
       // inputElement.value = newValue
-      inputElement.focus()
-      inputElement.select()
       try {
         if (await getClipboardPermission()) {
           await navigator.clipboard.writeText(newValue)
+          inputElement.focus()
+          inputElement.select()
           doc.execCommand('paste', false, '')
         } else {
+          inputElement.focus()
+          inputElement.select()
           doc.execCommand('insertText', false, newValue)
         }
       } catch (e) {
@@ -1103,8 +1105,9 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       doc.execCommand('insertText', false, value)
     }
     // 利用setTimeout来等待粘贴完成, 否则会在whatsapp中粘贴失败
-    const delay = () => new Promise((resolve) => setTimeout(resolve, 0))
-    await delay()
+    const delay = (t: number) =>
+      new Promise((resolve) => setTimeout(resolve, t))
+    await delay(0)
     // 保存粘贴或者插入后的选区位置
     // 1. 如果是粘贴, 选区会变成粘贴的内容
     // 2. 如果是插入, 选区会变成插入的内容

@@ -198,7 +198,9 @@ const FloatingContextMenu: FC<{
   useEffect(() => {
     console.log('Context Menu List', memoMenuList)
   }, [memoMenuList])
-  const haveDraft = inputValue.length > 0
+  const haveDraft = useMemo(() => {
+    return inputValue.length > 0
+  }, [inputValue])
   // 选中区域高亮
   useEffect(() => {
     if (floatingDropdownMenu.rootRect) {
@@ -290,18 +292,37 @@ const FloatingContextMenu: FC<{
   }
   const askChatGPT = (inputValue: string) => {
     if (inputValue.trim()) {
-      let draft = floatingContextMenuDraft.draft
+      const draft = floatingContextMenuDraft.draft
+      let currentDraft = ''
       const selectionElement = currentSelectionRef.current?.selectionElement
+      // 如果是可编辑元素
+      // 1. 如果有可编辑元素, 有选中文本，且没有草稿, 则使用{{SELECTED_TEXT}}作为草稿
+      // 2. 如果有可编辑元素, 有选中文本，且有草稿, 则使用草稿
+      // 3. 如果有可编辑元素, 没有选中文本，且没有草稿, 则使用空草稿
+      // 4. 如果有可编辑元素, 没有选中文本，且有草稿, 则使用草稿
+      // 5. 如果不是可编辑元素，则不会有草稿，直接使用{{SELECTED_TEXT}}
       if (selectionElement) {
-        // 如果选中元素是可编辑元素，且没有选中文本，则清空草稿
-        if (
-          selectionElement.isEditableElement &&
-          !selectionElement.editableElementSelectionText
-        ) {
-          draft = ''
-        } else if (selectionElement.selectionText) {
-          // 如果选中元素不是可编辑元素，且有选中文本，则使用选中文本作为草稿
-          draft = '{{SELECTED_TEXT}}'
+        if (selectionElement.isEditableElement) {
+          if (selectionElement.editableElementSelectionText) {
+            if (!draft) {
+              // 1.
+              currentDraft = '{{SELECTED_TEXT}}'
+            } else {
+              // 2.
+              currentDraft = draft
+            }
+          } else {
+            if (!draft) {
+              // 3.
+              currentDraft = ''
+            } else {
+              // 4.
+              currentDraft = draft
+            }
+          }
+        } else {
+          // 5.
+          currentDraft = '{{SELECTED_TEXT}}'
         }
       }
       setFloatingContextMenuDraft((prev) => {
@@ -311,8 +332,8 @@ const FloatingContextMenu: FC<{
         }
       })
       let template = `${inputValue}`
-      if (draft) {
-        template += `:\n"""\n${draft}\n"""`
+      if (currentDraft) {
+        template += `:\n"""\n${currentDraft}\n"""`
       }
       setActions([
         {
@@ -419,6 +440,7 @@ const FloatingContextMenu: FC<{
             }, 100)
           }
         }
+        setInputValue('')
       }
     }
   }, [

@@ -1094,14 +1094,18 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       (originalRange.startContainer ||
         originalRange.endContainer) as HTMLElement,
     )
-    editableElement && editableElement.focus()
-    // restore rich text to clipboard
-    selection?.removeAllRanges()
-    selection?.addRange(originalRange)
     if (await getClipboardPermission()) {
       await navigator.clipboard.writeText(value)
+      editableElement && editableElement.focus()
+      // restore rich text to clipboard
+      selection?.removeAllRanges()
+      selection?.addRange(originalRange)
       doc.execCommand('paste', false, '')
     } else {
+      editableElement && editableElement.focus()
+      // restore rich text to clipboard
+      selection?.removeAllRanges()
+      selection?.addRange(originalRange)
       doc.execCommand('insertText', false, value)
     }
     // 利用setTimeout来等待粘贴完成, 否则会在whatsapp中粘贴失败

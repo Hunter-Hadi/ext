@@ -157,7 +157,7 @@ const ChatGPTApiSettings: FC = () => {
           >
             <img
               src={
-                'https://www.usechatgpt.ai/assets/chrome-extension/open-key-create.png'
+                'https://www.maxai.me/assets/chrome-extension/open-key-create.png'
               }
               alt={'open-key-create'}
               width={'460'}

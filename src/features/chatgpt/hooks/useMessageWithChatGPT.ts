@@ -235,9 +235,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               if (is403Error) {
                 errorMessage = `Log into ChatGPT and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
               }
-              if (errorMessage.startsWith('Too many requests in 1 hour')) {
-                errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "UseChatGPT.AI" from the AI Provider options at the top of the sidebar.
-                ![switch-provider](https://www.usechatgpt.ai/assets/chrome-extension/switch-provider.png)`
+              if (text.startsWith('Too many requests in 1 hour')) {
+                text = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "MaxAI.me" from the AI Provider options at the top of the sidebar.
+                ![switch-provider](https://www.maxai.me/assets/chrome-extension/switch-provider.png)`
               }
               pushMessages.push({
                 type: 'system',

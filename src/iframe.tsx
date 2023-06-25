@@ -231,7 +231,7 @@ const initIframe = async () => {
   // 注入keyup事件并且透传到父页面
   document.addEventListener('keyup', handleClickOrKeyUp)
   // embed页面初始化
-  if (window.location.href.indexOf('usechatgpt.ai/embed') > -1) {
+  if (window.location.href.indexOf('maxai.me/embed') > -1) {
     const inVisibleDiv = document.createElement('div')
     inVisibleDiv.id = 'USE_CHAT_GPT_AI_ROOT'
     inVisibleDiv.style.display = 'none'
@@ -347,8 +347,7 @@ export const listenIframeMessage = (onMessage?: IframeMessageType) => {
                 selectionRect: currentSelectionRect,
                 iframePosition: currentPosition,
                 isEmbedPage:
-                  event.origin.indexOf('usechatgpt.ai') > -1 &&
-                  data.isEmbedPage,
+                  event.origin.indexOf('maxai.me') > -1 && data.isEmbedPage,
               })
             }
           }

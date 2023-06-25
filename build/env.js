@@ -26,14 +26,16 @@ const args = getArgs()
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const APP_USE_CHAT_GPT_HOST = isProduction
-  ? 'https://app.usechatgpt.ai'
-  : 'https://usechatgpt-main.simplysourcing.net'
+  ? 'https://app.maxai.me'
+  : 'https://app.maxai.me'
+// maxai.app 暂时还没有main环境先用正式环境
+// : 'https://maxai-main.simplysourcing.net'
 // : 'http://localhost:3000'
 
 const APP_USE_CHAT_GPT_API_HOST = isProduction
-  ? 'https://api.usechatgpt.ai'
-  : 'https://dev.usechatgpt.ai'
-const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'UseChatGPT.AI'
+  ? 'https://api.maxai.me'
+  : 'https://dev.maxai.me'
+const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'MaxAI.me'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 const GLOBAL_LESS =
   args.app === 'ezmail' ? './app.EZ_MAIL_AI.less' : './app.USE_CHAT_GPT.less'

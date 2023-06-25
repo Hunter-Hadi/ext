@@ -14,7 +14,7 @@ export const sendLarkBotMessage = (
     },
     body: JSON.stringify({
       env: isProduction ? 'prod' : 'dev',
-      title: `UseChatGPT: ${title}`,
+      title: `MaxAI: ${title}`,
       message,
       ...attr,
     }),

@@ -125,10 +125,13 @@ const useInitRangy = () => {
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
         const nativeSelectionElement = getSelectionBoundaryElement()
-        const defaultSelectionText =
+        const defaultSelectionText = (
           rangy.getSelection().toString() ||
           document?.getSelection()?.toString() ||
           ''
+        )
+          .trim()
+          .replace(/\u200B/g, '')
         if (activeElement) {
           if (
             activeElement &&

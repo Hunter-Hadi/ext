@@ -7,13 +7,17 @@ import {
 } from '@/types'
 import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
-import TooltipButton from '@/components/TooltipButton'
 import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import React, { FC } from 'react'
+import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
+import {
+  ChatGPTAIProviderMiniSelector,
+  triggetFixedAIProvider,
+} from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 
 const ChatBoxHeader: FC = () => {
   const { shortCutKey } = useCommands()
@@ -60,31 +64,15 @@ const ChatBoxHeader: FC = () => {
             component="h1"
             fontSize={20}
             fontWeight={800}
+            onMouseEnter={() => {
+              triggetFixedAIProvider(true)
+            }}
+            onMouseLeave={() => {
+              triggetFixedAIProvider(false)
+            }}
           >
             {String(process.env.APP_NAME)}
           </Typography>
-          <TooltipButton
-            title={'Settings'}
-            size={'small'}
-            variant={'text'}
-            sx={{
-              width: 32,
-              height: 32,
-              color: 'inherit',
-              minWidth: 'unset',
-            }}
-            onClick={(event) => {
-              event.stopPropagation()
-              event.preventDefault()
-              chromeExtensionClientOpenPage({
-                key: 'options',
-              })
-            }}
-          >
-            <SettingsOutlinedIcon
-              sx={{ fontSize: 16, color: 'text.primary' }}
-            />
-          </TooltipButton>
         </Stack>
       </Link>
       <Stack
@@ -95,6 +83,7 @@ const ChatBoxHeader: FC = () => {
         justifyContent={'end'}
         alignItems={'center'}
       >
+        <ChatGPTAIProviderMiniSelector />
         {!isEzMailApp && (
           <Typography fontSize={12}>
             <Link
@@ -111,15 +100,27 @@ const ChatBoxHeader: FC = () => {
             </Link>
           </Typography>
         )}
+        <IconButton
+          sx={{ flexShrink: 0 }}
+          onClick={() => {
+            chromeExtensionClientOpenPage({
+              key: 'options',
+            })
+          }}
+        >
+          <Tooltip title="Settings">
+            <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
+          </Tooltip>
+        </IconButton>
+        <IconButton
+          sx={{ flexShrink: 0, ml: '4px !important' }}
+          onClick={() => {
+            hideChatBox()
+          }}
+        >
+          <CloseIcon sx={{ fontSize: '24px' }} />
+        </IconButton>
       </Stack>
-      <IconButton
-        sx={{ flexShrink: 0 }}
-        onClick={() => {
-          hideChatBox()
-        }}
-      >
-        <CloseIcon sx={{ fontSize: '24px' }} />
-      </IconButton>
     </Stack>
   )
 }

@@ -248,7 +248,12 @@ export const backgroundSendAllClientMessage = async (
   const tabs = await Browser.tabs.query({})
   await Promise.all(
     tabs.map(async (tab) => {
-      if (tab.id && tab.url && !tab.url.startsWith('https://chat.openai.com')) {
+      if (
+        tab.id &&
+        tab.url &&
+        tab.status === 'complete' &&
+        !tab.url.startsWith('https://chat.openai.com')
+      ) {
         try {
           await Browser.tabs.sendMessage(tab.id, {
             id: CHROME_EXTENSION_POST_MESSAGE_ID,

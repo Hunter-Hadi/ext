@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Typography from '@mui/material/Typography'
-import { APP_VERSION } from '@/types'
-// import Link from '@mui/material/Link'
+import { APP_VERSION, RELEASE_LOG_URL } from '@/types'
+import Link from '@mui/material/Link'
 
 const GmailChatBoxReleaseLog: FC = () => {
   const ReleaseLogText = `One-click reply with 'Gmail assistant'.`
@@ -25,7 +25,17 @@ const GmailChatBoxReleaseLog: FC = () => {
         textAlign={'right'}
         noWrap
       >
-        {`MaxAI.me v${APP_VERSION} - ${ReleaseLogText}`}
+        <Link
+          fontSize={'inherit'}
+          color={'inherit'}
+          href={RELEASE_LOG_URL}
+          target="_blank"
+          sx={{
+            textDecoration: 'underline!important',
+          }}
+        >
+          {`MaxAI.me v${APP_VERSION} - ${ReleaseLogText}`}
+        </Link>
       </Typography>
       {/*<Link*/}
       {/*  sx={{*/}

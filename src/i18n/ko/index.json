@@ -1,5 +1,5 @@
 {
-  "description": "복사 붙여넣기 없이 ChatGPT (플러그인 및 GPT-4), Bard, Bing, 그리고 Claude를 모든 웹사이트에서 사용하세요.",
+  "description": "웹을 위한 AI 구동 코파일럿입니다. ChatGPT (플러그인 & GPT-4), Bard, Bing, Claude를 어떤 웹사이트에서든 복사 붙여넣기 없이 사용하세요.",
   "name": "MaxAI.me: ChatGPT AI Copilot (UseChatGPT.AI)",
   "shortName": "MaxAI.me"
 }

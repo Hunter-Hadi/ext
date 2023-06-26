@@ -1,7 +1,4 @@
-import {
-  CHROME_EXTENSION_HOMEPAGE_URL,
-  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-} from '@/types'
+import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
@@ -34,14 +31,6 @@ const Announcement = () => {
       .then((result) => {
         setHide(result[REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY])
         setLoaded(true)
-      })
-    Browser.storage.local
-      .get(CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY)
-      .then((result) => {
-        console.log(
-          'CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY',
-          result,
-        )
       })
   })
 

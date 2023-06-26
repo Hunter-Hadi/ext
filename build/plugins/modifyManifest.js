@@ -49,7 +49,10 @@ const modifyManifest = ({ env, isProd }) => ({
       manifestContent.content_scripts = manifestContent.content_scripts.map(
         (contentScript) => {
           if (contentScript.js[0].includes('check_status.js')) {
-            contentScript.matches = ['https://app.usechatgpt.ai/*']
+            contentScript.matches = [
+              'https://app.usechatgpt.ai/*',
+              'https://app.maxai.me/*',
+            ]
           }
           return contentScript
         },

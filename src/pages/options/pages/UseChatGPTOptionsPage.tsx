@@ -152,7 +152,7 @@ const UseChatGPTOptionsPage = () => {
                         }
                       }}
                     >
-                      UseChatGPT.AI
+                      MaxAI.me
                     </Typography>
                     {crumbsText && (
                       <Typography fontSize={24} fontWeight={700}>

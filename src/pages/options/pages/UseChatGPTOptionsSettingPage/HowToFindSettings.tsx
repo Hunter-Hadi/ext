@@ -19,7 +19,7 @@ const HowToFindSettings: FC = () => {
           at the top of the sidebar.
         </Typography>
         <img
-          src={`https://www.usechatgpt.ai/assets/chrome-extension/settings-entry.png`}
+          src={`https://www.maxai.me/assets/chrome-extension/settings-entry.png`}
           alt="settings-entry"
           width={466}
           height={121}

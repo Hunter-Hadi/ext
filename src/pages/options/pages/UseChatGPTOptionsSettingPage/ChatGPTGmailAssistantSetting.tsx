@@ -32,7 +32,7 @@ const ChatGPTGmailAssistantSetting: FC = () => {
         component={'h2'}
         id={'gmail-assistant'}
       >
-        Gmail Assistant
+        Gmail assistant
       </Typography>
       <CloseAlert icon={<></>} severity={'info'}>
         <Stack spacing={1}>

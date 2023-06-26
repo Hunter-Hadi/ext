@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
+import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
@@ -30,6 +31,8 @@ import BulletList from '@/components/BulletList'
 import TextIcon from '@/components/TextIcon'
 import { ChatGPTOpenAIAPIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
 import { ChatGPTClaudeModelSelector } from '@/features/chatgpt/components/ChatGPTClaudeModelSelector'
+
+const FIXED_AI_PROVIDER = 'FIXED_AI_PROVIDER'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -192,12 +195,57 @@ const ChatGPTAIProviderSelector: FC = () => {
     provider,
     loading: switchProviderLoading,
   } = useChatGPTProvider()
-  return (
+
+  const [fixedMode, setFixedMode] = useState(false)
+  const isHover = useRef(false)
+  const fixedSwitchTimer = useRef<any | null>(null)
+
+  useEffect(() => {
+    const listener = (e: any) => {
+      if (e.detail) {
+        window.clearTimeout(fixedSwitchTimer.current)
+        const { status } = e.detail
+        if (status) {
+          // 打开
+          fixedSwitchTimer.current = setTimeout(() => {
+            setFixedMode(true)
+          }, 200)
+        } else {
+          // 关闭需要延迟一下，否则会出现闪烁
+          fixedSwitchTimer.current = setTimeout(() => {
+            if (!isHover.current) {
+              setFixedMode(false)
+            }
+          }, 500)
+        }
+      }
+    }
+    window.addEventListener(FIXED_AI_PROVIDER, listener)
+    return () => {
+      window.removeEventListener(FIXED_AI_PROVIDER, listener)
+    }
+  }, [])
+
+  const providerSelector = (
     <Stack
-      sx={{ height: 56, p: 1, mt: 1, maxWidth: 400, mx: 'auto', width: '100%' }}
+      sx={{
+        height: 56,
+        p: 1,
+        pt: 2,
+        maxWidth: 400,
+        mx: 'auto',
+        width: '100%',
+      }}
       spacing={2}
       direction={'row'}
       alignItems={'center'}
+      onMouseEnter={() => (isHover.current = true)}
+      onMouseLeave={() => {
+        isHover.current = false
+        if (fixedMode) {
+          triggetFixedAIProvider(false)
+        }
+      }}
     >
       <FormControl size={'small'} sx={{ height: 40 }}>
         <InputLabel sx={{ fontSize: '16px' }} id="chatGPT-ai-provider-select">
@@ -222,6 +270,12 @@ const ChatGPTAIProviderSelector: FC = () => {
           onChange={async (event) => {
             const { value } = event.target
             await updateChatGPTProvider(value as IChatGPTProviderType)
+          }}
+          onClose={() => {
+            isHover.current = false
+            if (fixedMode) {
+              triggetFixedAIProvider(false)
+            }
           }}
           renderValue={(value) => {
             const provider = providerOptions.find(
@@ -416,5 +470,98 @@ const ChatGPTAIProviderSelector: FC = () => {
         clientState.status === 'success' && <ChatGPTClaudeModelSelector />}
     </Stack>
   )
+
+  return (
+    <>
+      {providerSelector}
+      {fixedMode && (
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bgcolor: 'background.paper',
+            // borderBottom: '1px solid #9393933d',
+            zIndex: 1,
+            pb: 1,
+          }}
+        >
+          {providerSelector}
+        </Box>
+      )}
+    </>
+  )
 }
+
+export const ChatGPTAIProviderMiniSelector: FC = () => {
+  const { provider } = useChatGPTProvider()
+  return (
+    <Box
+      onMouseEnter={() => {
+        triggetFixedAIProvider(true)
+      }}
+      onMouseLeave={() => {
+        triggetFixedAIProvider(false)
+      }}
+    >
+      <Select
+        IconComponent={ArrowDropDownIconCustom}
+        disabled
+        sx={{
+          fontSize: '14px',
+          cursor: 'pointer !important',
+          '& > div[role=button]': {
+            cursor: 'pointer !important',
+            padding: 1,
+          },
+        }}
+        MenuProps={{
+          elevation: 0,
+          MenuListProps: {
+            sx: {
+              border: `1px solid`,
+              borderColor: 'customColor.borderColor',
+            },
+          },
+        }}
+        labelId="chatGPT-ai-provider-select"
+        value={provider || ''}
+        label=""
+        renderValue={(value) => {
+          const provider = providerOptions.find(
+            (provider) => provider.value === value,
+          )
+          if (!provider) {
+            return (
+              <Typography
+                fontSize={14}
+                color={'text.primary'}
+                textAlign={'left'}
+                noWrap
+              >
+                -
+              </Typography>
+            )
+          }
+          return (
+            <Stack direction={'row'} alignItems={'center'} spacing={1}>
+              {provider.logo}
+            </Stack>
+          )
+        }}
+      ></Select>
+    </Box>
+  )
+}
+
+export const triggetFixedAIProvider = (status: boolean) => {
+  const event = new CustomEvent(FIXED_AI_PROVIDER, {
+    detail: {
+      status,
+    },
+  })
+  window.dispatchEvent(event)
+}
+
 export { ChatGPTAIProviderSelector }

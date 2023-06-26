@@ -1,5 +1,5 @@
 {
-  "description": "コピー＆ペーストなしで、どのウェブサイトでもChatGPT（プラグイン＆GPT-4）、Bard、Bing、Claudeを使用できます。",
-  "name": "UseChatGPT.AI: ChatGPT AI Copilot for the Web",
-  "shortName": "UseChatGPT"
+  "description": "あなたのAIパワードのWebコパイロット。ChatGPT（プラグイン＆GPT-4）、Bard、Bing、Claudeを任意のウェブサイトでコピーペーストなしで使用します。",
+  "name": "MaxAI.me: ChatGPT AI Copilot (UseChatGPT.AI)",
+  "shortName": "MaxAI.me"
 }

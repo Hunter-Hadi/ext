@@ -104,7 +104,7 @@ export interface IChatGPTDaemonProcess {
 }
 
 const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
-const CHAT_TITLE = 'UseChatGPT.AI'
+const CHAT_TITLE = 'MaxAI.me'
 
 const chatGptRequest = (
   token: string,

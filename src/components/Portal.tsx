@@ -4,7 +4,6 @@ import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import ReactContexifyCss from '../lib/react-contexify/ReactContexify.css'
 import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/constants'
 import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
 

@@ -6,35 +6,35 @@
   "default_locale": "en",
   "manifest_version": 3,
   "background": {
-    "service_worker": "background.ts"
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
       "matches": [
-        "https://*/*"
+        "<all_urls>"
       ],
-      "js": ["content.tsx"],
+      "js": ["content.js"],
       "run_at": "document_end"
     },
     {
       "matches": [
         "https://app.maxai.me/*"
       ],
-      "js": ["check_status.ts"],
-      "run_at": "document_start"
+      "js": ["check_status.js"],
+      "run_at": "document_end"
     },
     {
       "matches": [
-        "https://*/*"
+        "<all_urls>"
       ],
       "match_about_blank": true,
       "all_frames": true,
-      "js": ["iframe.tsx"],
+      "js": ["iframe.js"],
       "run_at": "document_end"
     }
   ],
   "host_permissions": [
-    "https://*.openai.com/*"
+    "<all_urls>"
   ],
   "options_ui": {
     "page": "pages/options/index.html",
@@ -66,5 +66,22 @@
       },
       "description": "Active MaxAI.me"
     }
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content.js",
+        "content.css",
+        "content_style.css",
+        "chunks/*.js",
+        "chunks/content.js",
+        "pageWorld.js",
+        "pages/pdf/*",
+        "assets/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
 }

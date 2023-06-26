@@ -26,7 +26,7 @@ const getArgs = () => {
 }
 const args = getArgs()
 
-const isProduction = String(process.env.NODE_ENV) === 'production'
+const isProduction = args.production ? true : false
 
 const APP_USE_CHAT_GPT_HOST = isProduction
   ? 'https://app.maxai.me'
@@ -40,10 +40,8 @@ const APP_USE_CHAT_GPT_API_HOST = isProduction
   : // TODO maxai.app 暂时还没有main环境先用正式环境
     // : 'https://dev.maxai.me'
     'https://api.maxai.me'
-const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'MaxAI.me'
-const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
-const GLOBAL_LESS =
-  args.app === 'ezmail' ? './app.EZ_MAIL_AI.less' : './app.USE_CHAT_GPT.less'
+const APP_NAME = 'MaxAI.me'
+const APP_ENV = 'USE_CHAT_GPT_AI'
 const NODE_ENV = isProduction ? 'production' : 'development'
 
 const env = {
@@ -52,12 +50,11 @@ const env = {
   APP_USE_CHAT_GPT_HOST,
   APP_USE_CHAT_GPT_API_HOST,
   APP_NAME,
-  GLOBAL_LESS,
 }
 const getReplaceEnv = () => {
   const pkg = JSON.parse(
     readFileSync(
-      join(__dirname, '../src/', `manifest.${APP_ENV}.json`),
+      join(__dirname, '../src/', `manifest.json`),
       'utf8',
     ),
   )

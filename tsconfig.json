@@ -15,6 +15,9 @@
       "@/*": ["src/*"],
     },
     "experimentalDecorators": true,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "types": [
+      "esbuild-style-plugin"
+    ]
   }
 }

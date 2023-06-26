@@ -11,12 +11,10 @@ import {
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import markdownCss from '@/pages/markdown.less'
 
 const RangyContextMenu = () => {
   return (
     <Portal containerId={ROOT_CONTEXT_MENU_ID}>
-      <style>{markdownCss}</style>
       <Paper elevation={3}>
         <Menu
           style={{

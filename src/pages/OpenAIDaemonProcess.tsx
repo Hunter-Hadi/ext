@@ -5,7 +5,6 @@ import {
   ContentScriptConnectionV2,
   IChatGPTDaemonProcess,
 } from '@/features/chatgpt'
-import './chatGPT.less'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'

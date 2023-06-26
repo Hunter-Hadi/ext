@@ -78,7 +78,9 @@ const initChromeExtensionInstalled = () => {
   // 插件安装初始化
   if (isEzMailApp) {
     Browser.runtime.onInstalled.addListener(async (object) => {
-      if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+      if (
+        object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL
+      ) {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
         })
@@ -88,7 +90,9 @@ const initChromeExtensionInstalled = () => {
     })
   } else {
     Browser.runtime.onInstalled.addListener(async (object) => {
-      if (object.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+      if (
+        object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL
+      ) {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '/get-started',
         })
@@ -128,8 +132,10 @@ const initChromeExtensionMessage = () => {
         if (Browser.scripting && sender.tab?.id) {
           console.log('inboxsdk__injectPageWorld 2')
           // MV3
-          chrome.scripting.executeScript({
+          Browser.scripting.executeScript({
             target: { tabId: sender.tab.id },
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             world: 'MAIN',
             files: ['pageWorld.js'],
           })
@@ -280,8 +286,8 @@ const initChromeExtensionDisabled = () => {
   if (isEzMailApp) {
     // no popup
   } else {
-    chrome.management.onDisabled.addListener(function (extensionInfo) {
-      if (extensionInfo.id === chrome.runtime.id) {
+    Browser.management.onDisabled.addListener(function (extensionInfo) {
+      if (extensionInfo.id === Browser.runtime.id) {
         console.log('Extension disabled')
         Browser.action.setPopup({
           popup: 'pages/popup/index.html',
@@ -310,3 +316,16 @@ const initChromeExtensionContextMenu = () => {
     })
   }
 }
+const ws = new WebSocket('ws://localhost:8181')
+ws.addEventListener('message', (event) => {
+  if (event.data === 'hot_reload_message') {
+    Browser.tabs.query({ active: true }).then((tabIds) => {
+      Browser.runtime.reload()
+      tabIds.forEach((tab) => {
+        if (tab.id) {
+          Browser.tabs.reload(tab.id)
+        }
+      })
+    })
+  }
+})

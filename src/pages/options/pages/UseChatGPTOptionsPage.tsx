@@ -1,5 +1,4 @@
 import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import '../../OptionsPage.less'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'

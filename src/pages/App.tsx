@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react'
-import './global.less'
+import './app.USE_CHAT_GPT.less'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { Resizable } from 're-resizable'

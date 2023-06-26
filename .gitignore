@@ -78,10 +78,10 @@ typings/
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
-# Next.js build output
+# Next.js esbuildConfig output
 .next
 
-# Nuxt.js build / generate output
+# Nuxt.js esbuildConfig / generate output
 .nuxt
 dist
 
@@ -91,7 +91,7 @@ dist
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
 
-# vuepress build output
+# vuepress esbuildConfig output
 .vuepress/dist
 
 # Serverless directories

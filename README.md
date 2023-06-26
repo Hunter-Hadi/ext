@@ -40,7 +40,7 @@ with a little customization to this starter. The approach can be
 [seen on my extension Link Roamer](https://github.com/rossmoody/link-roamer/blob/main/rollup.config.js).
 
 The premise is pretty simple: hook into a specific string value throughout your
-app and programmatically fire v2 or v3 API methods depending on the build
+app and programmatically fire v2 or v3 API methods depending on the esbuildConfig
 environment.
 
 In this way,
@@ -80,7 +80,7 @@ reload automatically.
 
 ## Production
 
-When it's time to publish your Chrome extension, make a production build to
+When it's time to publish your Chrome extension, make a production esbuildConfig to
 submit to the Chrome Web Store. This boilerplate will use the version in
 `package.json`, unless you add a version to `src/manifest.json`.
 
@@ -90,7 +90,7 @@ submit to the Chrome Web Store. This boilerplate will use the version in
 Run the following line:
 
 ```sh
-yarn build
+yarn esbuildConfig
 ```
 
 This will create a ZIP file with your package name and version in the `releases`

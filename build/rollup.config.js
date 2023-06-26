@@ -6,7 +6,7 @@ import { emptyDir } from 'rollup-plugin-empty-dir'
 import copy from 'rollup-plugin-copy'
 import modifyManifest from './plugins/modifyManifest'
 import localesCreator from './plugins/localesCreator'
-import { env, isProduction } from './env'
+import { env, isProduction } from './env.mjs'
 import zip from './plugins/zip.es'
 import dayjs from 'dayjs'
 

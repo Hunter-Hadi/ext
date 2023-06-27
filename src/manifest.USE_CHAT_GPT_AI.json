@@ -19,8 +19,8 @@
     {
       "matches": [
         "http://localhost:3000/*",
-        "https://usechatgpt-main.simplysourcing.net/*",
-        "https://app.maxai.me/*"
+        "https://app.maxai.me/*",
+        "https://usechatgpt-main.simplysourcing.net/*"
       ],
       "js": ["check_status.ts"],
       "run_at": "document_start"

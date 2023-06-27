@@ -11,7 +11,7 @@ import Browser from 'webextension-polyfill'
 
 const TWEET_URL = 'https://twitter.com/MaxAI_HQ'
 
-const REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY =
+export const REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY =
   'REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY_1444'
 
 const Announcement = () => {

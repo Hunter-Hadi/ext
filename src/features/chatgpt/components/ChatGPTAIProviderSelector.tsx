@@ -241,7 +241,7 @@ const ChatGPTAIProviderSelector: FC = () => {
             await updateChatGPTProvider(value as IChatGPTProviderType)
           }}
           onClose={() => {
-            triggetFixedAIProvider(false)
+            triggerFixedAIProvider(false)
           }}
           renderValue={(value) => {
             const provider = providerOptions.find(
@@ -529,7 +529,7 @@ export const ChatGPTAIProviderFixedSelector: FC = () => {
           onClose={() => {
             isHover.current = false
             if (fixedMode) {
-              triggetFixedAIProvider(false)
+              triggerFixedAIProvider(false)
             }
           }}
           renderValue={(value) => {
@@ -745,7 +745,7 @@ export const ChatGPTAIProviderFixedSelector: FC = () => {
       onMouseLeave={() => {
         isHover.current = false
         if (fixedMode) {
-          triggetFixedAIProvider(false)
+          triggerFixedAIProvider(false)
         }
       }}
     >
@@ -768,10 +768,10 @@ export const ChatGPTAIProviderMiniSelector: FC = () => {
   return (
     <Box
       onMouseEnter={() => {
-        triggetFixedAIProvider(true)
+        triggerFixedAIProvider(true)
       }}
       onMouseLeave={() => {
-        triggetFixedAIProvider(false)
+        triggerFixedAIProvider(false)
       }}
       sx={{
         p: 1.5,
@@ -789,7 +789,7 @@ export const ChatGPTAIProviderMiniSelector: FC = () => {
   )
 }
 
-export const triggetFixedAIProvider = (status: boolean) => {
+export const triggerFixedAIProvider = (status: boolean) => {
   const event = new CustomEvent(FIXED_AI_PROVIDER, {
     detail: {
       status,

@@ -50,6 +50,12 @@ const GmailActionRunner = () => {
           createSelectionElement(
             event.detail.emailElement,
           ) as IVirtualIframeSelectionElement,
+          {
+            editableElementSelectionHTML: '',
+            editableElementSelectionText: '',
+            selectionText: '',
+            selectionHTML: '',
+          },
         )
         setRun(true)
       }

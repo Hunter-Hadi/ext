@@ -22,6 +22,16 @@
     opacity: 0;
   }
 }
+.usechatgpt-ai__gmail-toolbar-button-group{
+  transition: all 0.1s ease-in-out;
+}
+.usechatgpt-ai__gmail-toolbar-button-group:hover {
+  box-shadow: 0 1px 2px 0 rgb(138 51 210 / 30%), 0 1px 3px 1px rgb(138 51 210 / 30%);
+  border-radius: 4px;
+}
+.usechatgpt-ai__gmail-toolbar-button-group:hover .usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown {
+  background: #9134DC !important;
+}
 
 .usechatgpt-ai__gmail-toolbar-button-wrapper--cta {
   cursor: pointer;
@@ -31,9 +41,9 @@
   border-radius: 4px 0 0 4px!important;
   width: unset!important;
   transition: color .1s ease-in-out;
-  //&:before{
-  //  display: none!important;
-  //}
+  &:before{
+    display: none!important;
+  }
   .usechatgpt-ai__gmail-toolbar-button--cta.inboxsdk__button_icon{
     opacity: .87;
   }
@@ -57,6 +67,9 @@
   border-left: 1px solid rgba(0, 0, 0, 0.87) !important;
   margin-left: 0!important;
   transition: color .1s ease-in-out;
+  &:before{
+    display: none!important;
+  }
   & .usechatgpt-ai__gmail-toolbar-button--dropdown{
     opacity: 1!important;
   }
@@ -64,7 +77,7 @@
 
 .usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown:hover,
 .usechatgpt-ai__gmail-toolbar-button-wrapper--cta:hover{
-  background: #7601D3 !important;
+  background: #9134DC !important;
 }
 
 body[dir='rtl'] #USE_CHAT_GPT_AI_ROOT {

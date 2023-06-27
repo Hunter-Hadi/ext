@@ -36,6 +36,11 @@ const initComposeViewButtonStyle = () => {
       el.parentElement?.classList.add(
         'usechatgpt-ai__gmail-toolbar-button-wrapper--cta',
       )
+      if (el?.parentElement?.parentElement) {
+        el.parentElement.parentElement.classList.add(
+          'usechatgpt-ai__gmail-toolbar-button-group',
+        )
+      }
     })
   document
     .querySelectorAll('.usechatgpt-ai__gmail-toolbar-button--dropdown')

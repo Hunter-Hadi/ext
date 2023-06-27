@@ -41,7 +41,6 @@ const WritingMessageBox: FC<{
       if (writingMessageText.includes(CHAT_GPT_PROMPT_PREFIX)) {
         setFloatingContextMenuDraft((prevState) => {
           console.log(prevState.draftList)
-          debugger
           return prevState
         })
         return

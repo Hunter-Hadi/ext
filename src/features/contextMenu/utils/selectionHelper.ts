@@ -630,7 +630,7 @@ export const replaceMarkerContent = async (
     } else if (type === 'REPLACE_SELECTION') {
       // nothing
     } else if (type === 'INSERT') {
-      // nothing
+      value = value.replace(/^\n+/, '')
     }
     // 判断是否为纯文本节点，还原纯文本节点
     if (
@@ -667,13 +667,15 @@ export const replaceMarkerContent = async (
     // 高亮
     const highlightSelection = () => {
       doc.getSelection()?.removeAllRanges()
-      doc.getSelection()?.addRange(range)
       // 移动光标
       if (type === 'INSERT_BELOW' || type === 'INSERT') {
-        doc.getSelection()?.collapseToEnd()
+        range.setStart(range.endContainer, range.endOffset)
+        range.setEnd(range.endContainer, range.endOffset)
       } else if (type === 'INSERT_ABOVE') {
-        doc.getSelection()?.collapseToStart()
+        range.setStart(range.startContainer, range.startOffset)
+        range.setEnd(range.startContainer, range.startOffset)
       }
+      doc.getSelection()?.addRange(range)
     }
     // 选中的可编辑元素focus
     const focusEditableElement = () => {
@@ -710,17 +712,21 @@ export const replaceMarkerContent = async (
         .split(separator)
         .reverse() // 反转数组是因为插入的内容是从底部插入的
         .forEach((partOfText, index, arr) => {
-          if (onSeparator && arr[index + 1]) {
-            const node = onSeparator(partOfText)
-            newRange.insertNode(node)
-            console.log('insertValueToWithRichText partOfNode', node)
-          }
+          // 理论上流程是
+          // 1. "\n1\n\n2" => ["\n1", "2"]
+          // 2. ["\n1", "2"] => ["2", "\n1"]
+          // 3. ["2", "\n1"] => Range insertNode => ["<div>2</div>", <div><br></div> , "<div>\n1</div>"]
           console.log('insertValueToWithRichText partOfText', partOfText)
           const div = doc.createElement(tagName)
           className && (div.className = className)
           cssText && (div.style.cssText = cssText)
           div.innerText = partOfText
           newRange.insertNode(div)
+          if (onSeparator && arr[index + 1]) {
+            const node = onSeparator(partOfText)
+            newRange.insertNode(node)
+            console.log('insertValueToWithRichText partOfNode', node)
+          }
         })
       doc.getSelection()?.removeAllRanges()
       doc.getSelection()?.addRange(newRange)

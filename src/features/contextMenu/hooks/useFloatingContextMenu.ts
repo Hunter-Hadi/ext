@@ -35,7 +35,10 @@ const useFloatingContextMenu = () => {
    * @param element
    */
   const showFloatingContextMenuWithVirtualElement = useCallback(
-    (element?: IVirtualIframeSelectionElement) => {
+    (
+      element?: IVirtualIframeSelectionElement,
+      overwriteSelectionElement?: Partial<IVirtualIframeSelectionElement>,
+    ) => {
       let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
         element
       /**
@@ -95,6 +98,12 @@ const useFloatingContextMenu = () => {
         console.log(
           `[ContextMenu Module]: \n[editableElementSelectionText]:${virtualSelectionElement.editableElementSelectionText}\n[selectionText]:${virtualSelectionElement.selectionText}`,
         )
+        if (overwriteSelectionElement) {
+          virtualSelectionElement = {
+            ...virtualSelectionElement,
+            ...overwriteSelectionElement,
+          }
+        }
         // 2. 展示floating menu
         saveCurrentSelection({
           selectionText:

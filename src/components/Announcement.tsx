@@ -12,7 +12,7 @@ import Browser from 'webextension-polyfill'
 const TWEET_URL = 'https://twitter.com/MaxAI_HQ'
 
 const REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY =
-  'REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY_1952'
+  'REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY_1444'
 
 const Announcement = () => {
   const [loaded, setLoaded] = useState(false)
@@ -40,54 +40,63 @@ const Announcement = () => {
     <Stack
       direction="row"
       bgcolor="#DDB1FF"
+      color="rgba(0,0,0,0.87)"
       p={1}
       alignItems="center"
-      fontSize={16}
-      color="rgba(0,0,0,0.87)"
     >
-      <Link
-        sx={{
-          color: 'inherit',
-          textDecoration: 'underline!important',
-          mr: 0.5,
-        }}
-        href={'https://www.usechatgpt.ai'}
-        target={'_blank'}
+      <Stack
+        direction="row"
+        flex={1}
+        fontSize={16}
+        alignItems="center"
+        justifyContent="center"
+        maxWidth={460}
+        ml={'auto'}
       >
-        <Typography variant="caption" fontSize={16} fontWeight={500}>
-          UseChatGPT.AI
-        </Typography>
-      </Link>
-      is now
-      <Link
-        sx={{
-          color: 'inherit',
-          textDecoration: 'underline!important',
-          ml: 0.5,
-        }}
-        href={CHROME_EXTENSION_HOMEPAGE_URL}
-        target={'_blank'}
-      >
-        <Typography variant="caption" fontSize={16} fontWeight={500}>
-          MaxAI.me
-        </Typography>
-      </Link>
-      . 🎉
-      <Button
-        variant="outlined"
-        color="inherit"
-        href={TWEET_URL}
-        target={'_blank'}
-        sx={{
-          ml: 'auto !important',
-          color: 'inherit',
-          borderColor: 'inherit',
-        }}
-      >
-        Read More
-      </Button>
+        <Link
+          sx={{
+            color: 'inherit',
+            textDecoration: 'underline!important',
+            mr: 0.5,
+          }}
+          href={'https://www.usechatgpt.ai'}
+          target={'_blank'}
+        >
+          <Typography variant="caption" fontSize={16} fontWeight={500}>
+            UseChatGPT.AI
+          </Typography>
+        </Link>
+        is now
+        <Link
+          sx={{
+            color: 'inherit',
+            textDecoration: 'underline!important',
+            ml: 0.5,
+          }}
+          href={CHROME_EXTENSION_HOMEPAGE_URL}
+          target={'_blank'}
+        >
+          <Typography variant="caption" fontSize={16} fontWeight={500}>
+            MaxAI.me
+          </Typography>
+        </Link>
+        . 🎉
+        <Button
+          variant="outlined"
+          color="inherit"
+          href={TWEET_URL}
+          target={'_blank'}
+          sx={{
+            ml: 'auto !important',
+            color: 'inherit',
+            borderColor: 'inherit',
+          }}
+        >
+          Read More
+        </Button>
+      </Stack>
       <IconButton
-        sx={{ flexShrink: 0, ml: 1, color: 'inherit' }}
+        sx={{ flexShrink: 0, ml: 'auto', color: 'inherit' }}
         onClick={() => updateFlag(true)}
       >
         <CloseIcon sx={{ fontSize: '24px' }} />

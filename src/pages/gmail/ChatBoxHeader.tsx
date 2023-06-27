@@ -75,6 +75,18 @@ const ChatBoxHeader: FC = () => {
         alignItems={'center'}
       >
         <ChatGPTAIProviderMiniSelector />
+        <IconButton
+          sx={{ flexShrink: 0 }}
+          onClick={() => {
+            chromeExtensionClientOpenPage({
+              key: 'options',
+            })
+          }}
+        >
+          <Tooltip title="Settings">
+            <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
+          </Tooltip>
+        </IconButton>
         {!isEzMailApp && (
           <Typography fontSize={12}>
             <Link
@@ -91,18 +103,6 @@ const ChatBoxHeader: FC = () => {
             </Link>
           </Typography>
         )}
-        <IconButton
-          sx={{ flexShrink: 0 }}
-          onClick={() => {
-            chromeExtensionClientOpenPage({
-              key: 'options',
-            })
-          }}
-        >
-          <Tooltip title="Settings">
-            <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
-          </Tooltip>
-        </IconButton>
         <IconButton
           sx={{ flexShrink: 0, ml: '4px !important' }}
           onClick={() => {

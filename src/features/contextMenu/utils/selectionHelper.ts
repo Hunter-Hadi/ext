@@ -625,12 +625,15 @@ export const replaceMarkerContent = async (
     range.setEndBefore(endMarker)
     if (type === 'INSERT_BELOW') {
       value = ('\n' + value).replace(/^\n+/, '\n')
+      range.setStart(range.endContainer, range.endOffset)
     } else if (type === 'INSERT_ABOVE') {
       value = (value + '\n').replace(/\n+$/, '\n')
+      range.setEnd(range.startContainer, range.startOffset)
     } else if (type === 'REPLACE_SELECTION') {
       // nothing
     } else if (type === 'INSERT') {
       value = value.replace(/^\n+/, '')
+      range.setStart(range.endContainer, range.endOffset)
     }
     // 判断是否为纯文本节点，还原纯文本节点
     if (
@@ -638,6 +641,8 @@ export const replaceMarkerContent = async (
       endMarker.parentElement &&
       startMarker.parentElement.isSameNode(endMarker.parentElement)
     ) {
+      const originRangeStartOffset = range.startOffset
+      const originRangeEndOffset = range.endOffset
       const parentElement = startMarker.parentElement
       startMarker.remove()
       endMarker.remove()
@@ -655,20 +660,47 @@ export const replaceMarkerContent = async (
         const textNode = doc.createTextNode(parentElement.innerText)
         parentElement.innerHTML = ''
         parentElement.appendChild(textNode)
-        const startIndex = Math.max(
-          parentElement.innerText.indexOf(selectedText),
-          0,
-        )
-        const endIndex = startIndex + selectedText.length
-        range.setStart(parentElement.childNodes[0], startIndex)
-        range.setEnd(parentElement.childNodes[0], endIndex)
+        // 如果选中的文本有值，还原选中文本的range位置
+        if (selectedText.length > 0) {
+          const startIndex = Math.max(
+            parentElement.innerText.indexOf(selectedText),
+            0,
+          )
+          const endIndex = startIndex + selectedText.length
+          range.setStart(parentElement.childNodes[0], startIndex)
+          range.setEnd(parentElement.childNodes[0], endIndex)
+        } else if (originRangeStartOffset === originRangeEndOffset) {
+          const textNode = parentElement.childNodes[0] as Node
+          if (!textNode) {
+            return
+          }
+          if (originRangeEndOffset === 0) {
+            // 移动到开头
+            range.setStart(textNode, 0)
+            range.setEnd(textNode, 0)
+          } else {
+            // 移动到结尾
+            range.setStart(textNode, textNode.nodeValue?.length || 0)
+            range.setEnd(textNode, textNode.nodeValue?.length || 0)
+          }
+        }
       }
+      console.log(
+        'insertValueToWithRichText pure text',
+        range.startOffset,
+        range.endOffset,
+      )
     }
     // 高亮
     const highlightSelection = () => {
       doc.getSelection()?.removeAllRanges()
       // 移动光标
       if (type === 'INSERT_BELOW' || type === 'INSERT') {
+        console.log(
+          'insertValueToWithRichText highlightSelection',
+          range.startOffset,
+          range.endOffset,
+        )
         range.setStart(range.endContainer, range.endOffset)
         range.setEnd(range.endContainer, range.endOffset)
       } else if (type === 'INSERT_ABOVE') {
@@ -697,10 +729,15 @@ export const replaceMarkerContent = async (
       const newRange = range.cloneRange()
       if (type === 'REPLACE_SELECTION') {
         newRange.deleteContents()
-      } else {
-        newRange.setStart(range.endContainer, range.endOffset)
-        newRange.setEnd(range.endContainer, range.endOffset)
       }
+      doc.getSelection()?.removeAllRanges()
+      doc.getSelection()?.addRange(newRange)
+      console.log(
+        'insertValueToWithRichText insertValue',
+        newRange.startOffset,
+        newRange.endOffset,
+        insertValue,
+      )
       const {
         separator = '\n\n',
         tagName = 'div',

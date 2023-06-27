@@ -6,27 +6,23 @@ import Switch from '@mui/material/Switch'
 import CloseAlert from '@/components/CloseAlert'
 import Box from '@mui/material/Box'
 import Browser from 'webextension-polyfill'
-import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import useCommands from '@/hooks/useCommands'
+import { newShortcutHint } from '@/features/contextMenu/utils/selectionHelper'
 
-const hideImageUrl = Browser.runtime.getURL(
-  `/assets/USE_CHAT_GPT_AI/images/gmail/gmail-assistant-hidden.png`,
-)
-const showImageUrl = Browser.runtime.getURL(
-  `/assets/USE_CHAT_GPT_AI/images/gmail/gmail-assistant-visible.png`,
+const ImageUrl = Browser.runtime.getURL(
+  `/assets/USE_CHAT_GPT_AI/images/settings/shortcut-hint-example.png`,
 )
 
 const ChatGPTGmailAssistantSetting: FC<{
   defaultValue?: boolean
   onChange?: (value: boolean) => void
-}> = () => {
-  const { buttonSettings, updateButtonSettings } =
-    useChromeExtensionButtonSettings()
-  const [checked, setChecked] = useState<boolean | undefined>(undefined)
+}> = ({ defaultValue, onChange }) => {
+  const { shortCutKey } = useCommands()
+  const shortHint = newShortcutHint(shortCutKey || '⌘J')
+  const [checked, setChecked] = useState<boolean>(defaultValue ?? true)
   useEffect(() => {
-    if (buttonSettings?.gmailButton) {
-      setChecked(buttonSettings.gmailButton.visibility.whitelist.length > 0)
-    }
-  }, [buttonSettings])
+    onChange && onChange(checked)
+  }, [checked, onChange])
   return (
     <Stack spacing={2}>
       <Typography
@@ -45,46 +41,38 @@ const ChatGPTGmailAssistantSetting: FC<{
           </Typography>
         </Stack>
       </CloseAlert>
-      {typeof checked !== 'undefined' && (
-        <FormControl size="small">
-          <Stack direction="row" spacing={1} alignItems="center">
-            <Typography>Hidden</Typography>
-            <Switch
-              defaultChecked={checked}
-              onChange={async (event) => {
-                if (buttonSettings?.gmailButton) {
-                  await updateButtonSettings('gmailButton', {
-                    visibility: {
-                      isWhitelistMode: true,
-                      whitelist: event.target.checked
-                        ? ['mail.google.com']
-                        : [],
-                      blacklist: [],
-                    },
-                    contextMenu: buttonSettings.gmailButton.contextMenu,
-                  })
-                  setChecked(event.target.checked)
-                }
-              }}
-            />
-            <Typography>Visible</Typography>
-          </Stack>
-        </FormControl>
-      )}
+      <FormControl size="small">
+        <Stack direction="row" spacing={1} alignItems="center">
+          <Typography>Hidden</Typography>
+          <Switch
+            defaultChecked={checked}
+            onChange={(event) => {
+              setChecked(event.target.checked)
+            }}
+          />
+          <Typography>Visible</Typography>
+        </Stack>
+      </FormControl>
       <Box
         sx={{
-          p: 2,
-          borderRadius: '4px',
-          border: '1px solid',
-          borderColor: 'customColor.borderColor',
           position: 'relative',
         }}
       >
+        {checked && (
+          <Typography
+            color={'rgba(0,0,0,0.6)'}
+            position="absolute"
+            left={42}
+            top={10}
+          >
+            {shortHint}
+          </Typography>
+        )}
         <img
           style={{
             width: '100%',
           }}
-          src={checked ? showImageUrl : hideImageUrl}
+          src={ImageUrl}
           alt={'Gmail Assistant'}
         />
       </Box>

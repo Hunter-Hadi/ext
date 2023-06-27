@@ -43,6 +43,7 @@ const Announcement = () => {
       p={1}
       alignItems="center"
       fontSize={16}
+      color="rgba(0,0,0,0.87)"
     >
       <Link
         sx={{

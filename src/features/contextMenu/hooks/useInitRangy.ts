@@ -17,7 +17,7 @@ import {
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { listenIframeMessage } from '@/iframe'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import Log from '@/utils/Log'
@@ -31,6 +31,7 @@ import {
   createSelectionElement,
   getEditableElement,
   getSelectionBoundaryElement,
+  newShortcutHint,
   removeAllRange,
   removeAllSelectionMarker,
   removeEditableElementPlaceholder,
@@ -43,6 +44,7 @@ import {
 } from '@/constants'
 import cloneDeep from 'lodash-es/cloneDeep'
 import useCommands from '@/hooks/useCommands'
+import { AppSettingsState } from '@/store'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -61,6 +63,8 @@ const useInitRangy = () => {
     saveTempSelection,
     currentSelection,
   } = useRangy()
+  const appSettings = useRecoilValue(AppSettingsState)
+  const userSettings = appSettings.userSettings
   const { shortCutKey } = useCommands()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [, setFloatingContextMenuDraft] = useRecoilState(
@@ -255,18 +259,20 @@ const useInitRangy = () => {
         }
         RangyLog.info('save targetElement ref', editableElement)
         targetElementRef.current = editableElement
-        shortCutKey &&
-          updateEditableElementPlaceholder(
-            editableElement,
-            `Press '${shortCutKey}' for AI`,
-          )
+        if (userSettings?.shortcutHintEnable && shortCutKey) {
+          shortCutKey &&
+            updateEditableElementPlaceholder(
+              editableElement,
+              newShortcutHint(shortCutKey),
+            )
+        }
         editableElement.addEventListener('mouseup', mouseUpListener)
         editableElement.addEventListener('keyup', keyupListener)
       } else {
         RangyLog.info('clear targetElement ref')
         targetElementRef.current = null
         shortCutKey &&
-          removeEditableElementPlaceholder(`Press '${shortCutKey}' for AI`)
+          removeEditableElementPlaceholder(newShortcutHint(shortCutKey))
       }
     }
     document.addEventListener('mousedown', mouseDownListener)
@@ -277,7 +283,19 @@ const useInitRangy = () => {
         targetElementRef.current.removeEventListener('keyup', keyupListener)
       }
     }
-  }, [rangy, saveHighlightedRangeAndShowContextMenu, shortCutKey])
+  }, [
+    rangy,
+    saveHighlightedRangeAndShowContextMenu,
+    shortCutKey,
+    userSettings?.shortcutHintEnable,
+  ])
+
+  useEffect(() => {
+    if (userSettings?.shortcutHintEnable === false && shortCutKey) {
+      removeEditableElementPlaceholder(newShortcutHint(shortCutKey))
+    }
+  }, [userSettings?.shortcutHintEnable, shortCutKey])
+
   // selection事件
   useEffect(() => {
     const mouseUpListener = debounce(

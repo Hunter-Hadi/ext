@@ -16,6 +16,7 @@ import { isShowChatBox } from '@/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { getEnv } from '@/utils/AppEnv'
+import Announcement from '@/components/Announcement'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const GmailActionRunner = React.lazy(
@@ -119,6 +120,7 @@ const App: FC = () => {
             }}
           >
             <AppInit />
+            <Announcement />
             <ChatBoxHeader />
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>

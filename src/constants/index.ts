@@ -82,3 +82,5 @@ export const OPENAI_LOCAL_STORAGE_OPENAI_API_SETTINGS_SAVE_KEY = `CHROME_EXTENSI
 
 // user settings
 export const CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH = 450
+
+export const RELEASE_LOG_URL = 'https://twitter.com/MaxAI_HQ'

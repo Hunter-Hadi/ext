@@ -100,6 +100,8 @@ export interface IChromeExtensionSettings {
     }
     // TODO remove this
     gmailAssistant?: boolean
+    // shortcut hint
+    shortcutHintEnable?: boolean
   }
   buttonSettings?: {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting

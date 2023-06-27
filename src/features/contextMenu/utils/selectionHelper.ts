@@ -1171,3 +1171,6 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
     }
   }
 }
+
+export const newShortcutHint = (shortCutKey: string) =>
+  `Press '${shortCutKey}' for AI`

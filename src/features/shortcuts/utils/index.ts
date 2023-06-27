@@ -226,3 +226,19 @@ export const limitedPromiseAll = <T>(
     runNextPromise()
   })
 }
+
+// chatgpt 官方 接口报错 拦截器
+export const chatGPTCommonErrorInterceptor = (errorMsg?: string) => {
+  let newErrorMsg = errorMsg
+  // chatgpt api timeout
+  if (newErrorMsg?.includes('524')) {
+    newErrorMsg = 'Network error: 524'
+  }
+
+  // chatgpt api bad away error
+  if (newErrorMsg?.includes('502')) {
+    newErrorMsg = 'Network error: 502'
+  }
+
+  return newErrorMsg
+}

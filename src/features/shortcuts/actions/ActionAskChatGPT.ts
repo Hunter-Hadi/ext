@@ -6,6 +6,7 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IChatMessage } from '@/features/chatgpt/types'
+import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 
 export class ActionAskChatGPT extends Action {
   static type = 'ASK_CHATGPT'
@@ -50,10 +51,12 @@ export class ActionAskChatGPT extends Action {
         this.message = message
       } else {
         this.output = ''
-        this.error = error || answer || 'ask chatgpt error'
+        this.error = this.error = chatGPTCommonErrorInterceptor(
+          error || answer || 'ask chatgpt error',
+        )
       }
     } catch (e) {
-      this.error = (e as any).toString()
+      this.error = chatGPTCommonErrorInterceptor((e as any).toString())
     }
   }
   reset() {

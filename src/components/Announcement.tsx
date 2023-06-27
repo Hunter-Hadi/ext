@@ -50,8 +50,8 @@ const Announcement = () => {
         fontSize={16}
         alignItems="center"
         justifyContent="center"
-        maxWidth={460}
-        ml={'auto'}
+        maxWidth={395}
+        mx={'auto'}
       >
         <Link
           sx={{
@@ -96,7 +96,7 @@ const Announcement = () => {
         </Button>
       </Stack>
       <IconButton
-        sx={{ flexShrink: 0, ml: 'auto', color: 'inherit' }}
+        sx={{ flexShrink: 0, ml: 0.5, color: 'inherit' }}
         onClick={() => updateFlag(true)}
       >
         <CloseIcon sx={{ fontSize: '24px' }} />

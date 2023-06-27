@@ -24,9 +24,9 @@ const getArgs = () => {
   })
   return args
 }
-const args = getArgs()
+// const args = getArgs()
 
-const isProduction = args.production ? true : false
+const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const APP_USE_CHAT_GPT_HOST = isProduction
   ? 'https://app.maxai.me'

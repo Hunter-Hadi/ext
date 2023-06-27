@@ -72,6 +72,7 @@ const App: FC = () => {
       // do nothing
     }
   }, [isOpened])
+
   return (
     <>
       <Resizable

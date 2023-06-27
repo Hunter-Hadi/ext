@@ -19,7 +19,6 @@ const AppNameToClassName = String(process.env.APP_ENV || '')
 ClassNameGenerator.configure(
   (componentName) => `${AppNameToClassName}--${componentName}`,
 )
-
 if (location.host === 'chat.openai.com') {
   import('./pages/OpenAIDaemonProcess').then((module) => {
     const { default: OpenAIDaemonProcess } = module

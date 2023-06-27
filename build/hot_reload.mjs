@@ -11,14 +11,14 @@ wss.on('close', () => {
   console.log('hot reload server closed.')
 })
 wss.on('connection', (ws) => {
-  console.log('hot reload server connected.')
+  // console.log('hot reload server connected.')
   const watcher = chokidar.watch(directoryPath, {
     ignoreInitial: true,
   })
   watcher.on(
     'all',
     debounce((_, path) => {
-      console.log(`File change detected. Path: ${path}`)
+      // console.log(`File change detected. Path: ${path}`)
       ws.send('hot_reload_message')
     }, 1000),
   )
@@ -26,3 +26,4 @@ wss.on('connection', (ws) => {
     watcher.close()
   })
 })
+console.log('hot reload server started.')

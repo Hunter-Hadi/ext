@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
@@ -14,7 +14,7 @@ import { CHAT_GPT_PROVIDER } from '@/constants'
 import { ChatGPTOpenAIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIModelSelector'
 import { IChatGPTProviderType } from '@/background/provider/chat'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
-import { useRecoilValue } from 'recoil'
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail/store'
 // import UseChatGPTAIQuotaLeft from '@/features/chatgpt/components/UseChatGPTAIQuotaLeft'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
@@ -31,8 +31,14 @@ import BulletList from '@/components/BulletList'
 import TextIcon from '@/components/TextIcon'
 import { ChatGPTOpenAIAPIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
 import { ChatGPTClaudeModelSelector } from '@/features/chatgpt/components/ChatGPTClaudeModelSelector'
+import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
 
 const FIXED_AI_PROVIDER = 'FIXED_AI_PROVIDER'
+
+const AIProviderSelectorFixedMode = atom({
+  key: 'AIProviderSelectorFixedMode',
+  default: false,
+})
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -196,14 +202,262 @@ const ChatGPTAIProviderSelector: FC = () => {
     loading: switchProviderLoading,
   } = useChatGPTProvider()
 
-  const [fixedMode, setFixedMode] = useState(false)
+  return (
+    <Stack
+      sx={{
+        height: 56,
+        p: 1,
+        pt: 2,
+        maxWidth: 400,
+        mx: 'auto',
+        width: '100%',
+      }}
+      spacing={2}
+      direction={'row'}
+      alignItems={'center'}
+    >
+      <FormControl size={'small'} sx={{ height: 40 }}>
+        <InputLabel sx={{ fontSize: '16px' }} id="chatGPT-ai-provider-select">
+          AI Provider
+        </InputLabel>
+        <Select
+          IconComponent={ArrowDropDownIconCustom}
+          disabled={chatGPTConversationLoading || switchProviderLoading}
+          sx={{ fontSize: '14px' }}
+          MenuProps={{
+            elevation: 0,
+            MenuListProps: {
+              sx: {
+                border: `1px solid`,
+                borderColor: 'customColor.borderColor',
+              },
+            },
+          }}
+          labelId="chatGPT-ai-provider-select"
+          value={provider || ''}
+          label="AI Provider"
+          onChange={async (event) => {
+            const { value } = event.target
+            await updateChatGPTProvider(value as IChatGPTProviderType)
+          }}
+          onClose={() => {
+            triggetFixedAIProvider(false)
+          }}
+          renderValue={(value) => {
+            const provider = providerOptions.find(
+              (provider) => provider.value === value,
+            )
+            if (!provider) {
+              return (
+                <Typography
+                  fontSize={14}
+                  color={'text.primary'}
+                  textAlign={'left'}
+                  width={130}
+                  noWrap
+                >
+                  Select provider
+                </Typography>
+              )
+            }
+            return (
+              <Stack
+                width={130}
+                direction={'row'}
+                alignItems={'center'}
+                spacing={1}
+              >
+                {switchProviderLoading ? (
+                  <CircularProgress size={16} />
+                ) : (
+                  provider.logo
+                )}
+                <Typography
+                  width={0}
+                  flex={1}
+                  textAlign={'left'}
+                  noWrap
+                  fontSize={'14px'}
+                  color={'text.primary'}
+                >
+                  {provider.label}
+                </Typography>
+              </Stack>
+            )
+          }}
+        >
+          {providerOptions.map((provider) => {
+            return (
+              <MenuItem
+                key={provider.value}
+                value={provider.value}
+                sx={{ p: 0 }}
+              >
+                <Tooltip
+                  placement={'right-start'}
+                  componentsProps={{
+                    tooltip: {
+                      sx: {
+                        border: '1px solid rgb(245,245,245)',
+                        bgcolor: 'background.paper',
+                        p: 1,
+                      },
+                    },
+                  }}
+                  title={
+                    <Stack width={'160px'}>
+                      <Stack
+                        width={'100%'}
+                        direction={'row'}
+                        alignItems={'center'}
+                        spacing={1}
+                        mb={1}
+                      >
+                        {provider.logo}
+                        <Typography
+                          fontSize={'14px'}
+                          color={'text.primary'}
+                          textAlign={'left'}
+                        >
+                          {provider.label}
+                        </Typography>
+                        {provider.beta && (
+                          <Chip
+                            sx={{ ml: 1 }}
+                            label="Beta"
+                            color="primary"
+                            size={'small'}
+                            variant={'outlined'}
+                          />
+                        )}
+                      </Stack>
+                      <Typography
+                        fontSize={'14px'}
+                        color={'text.primary'}
+                        textAlign={'left'}
+                        fontWeight={700}
+                        mb={2}
+                      >
+                        {provider.shortDescription}
+                      </Typography>
+                      <Typography
+                        fontSize={'12px'}
+                        color={'text.primary'}
+                        textAlign={'left'}
+                        mb={2}
+                      >
+                        {provider.description}
+                      </Typography>
+                      <BulletList
+                        pointProps={{
+                          display: 'none',
+                        }}
+                        textProps={{
+                          fontSize: '12px',
+                          color: 'text.primary',
+                          textAlign: 'left',
+                        }}
+                        textList={provider.features.map((feature) => {
+                          // feature text:
+                          // [ThumbUp] Free to use
+                          // match: [icon]
+                          const match = feature.match(/\[(.*?)\]/)
+                          const icon = match ? match[1] : ''
+                          const text = feature.replace(/\[(.*?)\]/, '')
+                          return (
+                            <Stack
+                              key={feature}
+                              width={'100%'}
+                              direction={'row'}
+                              spacing={1}
+                              alignItems={'start'}
+                            >
+                              {icon && (
+                                <TextIcon
+                                  sx={{
+                                    position: 'relative',
+                                    fontSize: 14,
+                                    top: 2,
+                                  }}
+                                  icon={icon as any}
+                                />
+                              )}
+                              <Typography
+                                fontSize={'12px'}
+                                color={'text.primary'}
+                                textAlign={'left'}
+                              >
+                                {text}
+                              </Typography>
+                            </Stack>
+                          )
+                        })}
+                      />
+                    </Stack>
+                  }
+                >
+                  <Stack
+                    width={160}
+                    sx={{ padding: '6px 16px' }}
+                    direction={'row'}
+                    alignItems={'center'}
+                    spacing={1}
+                  >
+                    {provider.logo}
+                    <Typography
+                      textAlign={'left'}
+                      noWrap
+                      fontSize={'14px'}
+                      color={'text.primary'}
+                    >
+                      {provider.label}
+                    </Typography>
+                    {provider.beta && (
+                      <Chip
+                        sx={{ ml: 1 }}
+                        label="Beta"
+                        color="primary"
+                        size={'small'}
+                        variant={'outlined'}
+                      />
+                    )}
+                  </Stack>
+                </Tooltip>
+              </MenuItem>
+            )
+          })}
+        </Select>
+      </FormControl>
+      {provider === CHAT_GPT_PROVIDER.OPENAI &&
+        clientState.status === 'success' && <ChatGPTOpenAIModelSelector />}
+      {provider === CHAT_GPT_PROVIDER.OPENAI_API &&
+        clientState.status === 'success' && <ChatGPTOpenAIAPIModelSelector />}
+      {provider === CHAT_GPT_PROVIDER.CLAUDE &&
+        clientState.status === 'success' && <ChatGPTClaudeModelSelector />}
+    </Stack>
+  )
+}
+export const ChatGPTAIProviderFixedSelector: FC = () => {
+  const { loading: chatGPTConversationLoading } = useRecoilValue(
+    ChatGPTConversationState,
+  )
+  const clientState = useRecoilValue(ChatGPTClientState)
+  const {
+    updateChatGPTProvider,
+    provider,
+    loading: switchProviderLoading,
+  } = useChatGPTProvider()
+
+  const [fixedMode, setFixedMode] = useRecoilState(AIProviderSelectorFixedMode)
   const isHover = useRef(false)
   const fixedSwitchTimer = useRef<any | null>(null)
 
   useEffect(() => {
     const listener = (e: any) => {
       if (e.detail) {
-        window.clearTimeout(fixedSwitchTimer.current)
+        if (fixedSwitchTimer.current) {
+          window.clearTimeout(fixedSwitchTimer.current)
+        }
         const { status } = e.detail
         if (status) {
           // 打开
@@ -213,6 +467,7 @@ const ChatGPTAIProviderSelector: FC = () => {
         } else {
           // 关闭需要延迟一下，否则会出现闪烁
           fixedSwitchTimer.current = setTimeout(() => {
+            console.log('isHover.current', isHover.current)
             if (!isHover.current) {
               setFixedMode(false)
             }
@@ -225,6 +480,10 @@ const ChatGPTAIProviderSelector: FC = () => {
       window.removeEventListener(FIXED_AI_PROVIDER, listener)
     }
   }, [])
+
+  if (!fixedMode) {
+    return null
+  }
 
   const providerSelector = (
     <Stack
@@ -239,12 +498,8 @@ const ChatGPTAIProviderSelector: FC = () => {
       spacing={2}
       direction={'row'}
       alignItems={'center'}
-      onMouseEnter={() => (isHover.current = true)}
-      onMouseLeave={() => {
-        isHover.current = false
-        if (fixedMode) {
-          triggetFixedAIProvider(false)
-        }
+      onMouseEnter={() => {
+        isHover.current = true
       }}
     >
       <FormControl size={'small'} sx={{ height: 40 }}>
@@ -472,30 +727,44 @@ const ChatGPTAIProviderSelector: FC = () => {
   )
 
   return (
-    <>
+    <Box
+      sx={{
+        position: 'absolute',
+        top: -12,
+        left: 0,
+        right: 0,
+        bgcolor: (t) => (t.palette.mode === 'dark' ? '#454545' : '#f5f5f5'),
+        borderBottom: '1px solid #9393933d',
+        zIndex: 1001,
+        pb: 1,
+        pt: '13px',
+      }}
+      onMouseEnter={() => {
+        isHover.current = true
+      }}
+      onMouseLeave={() => {
+        isHover.current = false
+        if (fixedMode) {
+          triggetFixedAIProvider(false)
+        }
+      }}
+    >
       {providerSelector}
-      {fixedMode && (
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bgcolor: 'background.paper',
-            // borderBottom: '1px solid #9393933d',
-            zIndex: 1,
-            pb: 1,
-          }}
-        >
-          {providerSelector}
-        </Box>
-      )}
-    </>
+      <GmailChatBoxProviderComponents />
+    </Box>
   )
 }
 
 export const ChatGPTAIProviderMiniSelector: FC = () => {
   const { provider } = useChatGPTProvider()
+  const fixedMode = useRecoilValue(AIProviderSelectorFixedMode)
+
+  const currentProvider = providerOptions.find(
+    (providerOption) => providerOption.value === provider,
+  )
+  if (!currentProvider) {
+    return null
+  }
   return (
     <Box
       onMouseEnter={() => {
@@ -504,53 +773,18 @@ export const ChatGPTAIProviderMiniSelector: FC = () => {
       onMouseLeave={() => {
         triggetFixedAIProvider(false)
       }}
+      sx={{
+        p: 1.5,
+        borderRadius: 1,
+        cursor: 'pointer',
+        bgcolor: fixedMode
+          ? (t) => (t.palette.mode === 'dark' ? '#454545' : '#f5f5f5')
+          : 'transparent',
+      }}
     >
-      <Select
-        IconComponent={ArrowDropDownIconCustom}
-        disabled
-        sx={{
-          fontSize: '14px',
-          cursor: 'pointer !important',
-          '& > div[role=button]': {
-            cursor: 'pointer !important',
-            padding: 1,
-          },
-        }}
-        MenuProps={{
-          elevation: 0,
-          MenuListProps: {
-            sx: {
-              border: `1px solid`,
-              borderColor: 'customColor.borderColor',
-            },
-          },
-        }}
-        labelId="chatGPT-ai-provider-select"
-        value={provider || ''}
-        label=""
-        renderValue={(value) => {
-          const provider = providerOptions.find(
-            (provider) => provider.value === value,
-          )
-          if (!provider) {
-            return (
-              <Typography
-                fontSize={14}
-                color={'text.primary'}
-                textAlign={'left'}
-                noWrap
-              >
-                -
-              </Typography>
-            )
-          }
-          return (
-            <Stack direction={'row'} alignItems={'center'} spacing={1}>
-              {provider.logo}
-            </Stack>
-          )
-        }}
-      ></Select>
+      <Stack direction={'row'} alignItems={'center'} spacing={1}>
+        {currentProvider.logo}
+      </Stack>
     </Box>
   )
 }

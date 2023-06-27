@@ -65,7 +65,6 @@ const useInitRangy = () => {
   } = useRangy()
   const appSettings = useRecoilValue(AppSettingsState)
   const userSettings = appSettings.userSettings
-  console.log('appSettings', appSettings)
   const { shortCutKey } = useCommands()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [, setFloatingContextMenuDraft] = useRecoilState(

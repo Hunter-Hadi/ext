@@ -14,10 +14,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import React, { FC } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
-import {
-  ChatGPTAIProviderMiniSelector,
-  triggetFixedAIProvider,
-} from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
+import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 
 const ChatBoxHeader: FC = () => {
   const { shortCutKey } = useCommands()
@@ -64,12 +61,6 @@ const ChatBoxHeader: FC = () => {
             component="h1"
             fontSize={20}
             fontWeight={800}
-            onMouseEnter={() => {
-              triggetFixedAIProvider(true)
-            }}
-            onMouseLeave={() => {
-              triggetFixedAIProvider(false)
-            }}
           >
             {String(process.env.APP_NAME)}
           </Typography>

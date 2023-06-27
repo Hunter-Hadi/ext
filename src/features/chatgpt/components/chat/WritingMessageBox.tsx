@@ -14,7 +14,6 @@ import { useRangy } from '@/features/contextMenu'
 import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
 import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
-import markdownCss from '@/pages/markdown.module.less'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -42,7 +41,6 @@ const WritingMessageBox: FC<{
       if (writingMessageText.includes(CHAT_GPT_PROMPT_PREFIX)) {
         setFloatingContextMenuDraft((prevState) => {
           console.log(prevState.draftList)
-          debugger
           return prevState
         })
         return
@@ -88,7 +86,7 @@ const WritingMessageBox: FC<{
   }, [floatingContextMenuDraft.draft])
   return (
     <Stack
-      className={'chat-message--text ' + markdownCss.chatMessageText}
+      className={'chat-message--text'}
       whiteSpace={'pre-wrap'}
       width={'100%'}
       sx={{
@@ -113,10 +111,8 @@ const WritingMessageBox: FC<{
       {isEmpty(floatingContextMenuDraft.draft) ? <ContextText /> : null}
       <div
         ref={boxRef}
-        className={`markdown-body ${markdownCss.markdownBody} ${
-          userSettings?.colorSchema === 'dark'
-            ? markdownCss.markdownBodyDark
-            : ''
+        className={`markdown-body ${
+          userSettings?.colorSchema === 'dark' ? 'markdown-body-dark' : ''
         }`}
       >
         <CustomMarkdown>

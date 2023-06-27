@@ -6,6 +6,7 @@ import { CacheProvider } from '@emotion/react'
 // @ts-ignore
 import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/constants'
 import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
+import Browser from 'webextension-polyfill'
 
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
@@ -29,13 +30,18 @@ const Portal: FC<{
       const shadowRootElement = document.createElement('div')
       shadowRootElement.id = ROOT_CONTEXT_MENU_PORTAL_ID
       const emotionRoot = document.createElement('style')
+      const contentStyle = document.createElement('link')
+      contentStyle.rel = 'stylesheet'
+      contentStyle.href = Browser.runtime.getURL('content_style.css')
       if (modalRoot.shadowRoot) {
         modalRoot.shadowRoot.appendChild(shadowRootElement)
         modalRoot.shadowRoot.appendChild(emotionRoot)
+        modalRoot.shadowRoot.appendChild(contentStyle)
       } else {
         const shadowContainer = modalRoot.attachShadow({ mode: 'open' })
         shadowContainer.appendChild(shadowRootElement)
         shadowContainer.appendChild(emotionRoot)
+        shadowContainer.appendChild(contentStyle)
       }
       emotionCacheRef.current = createCache({
         key: `${AppNameToClassName}-context-menu`,

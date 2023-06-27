@@ -14,7 +14,7 @@ import remarkGfm from 'remark-gfm'
 import remarkBreaks from 'remark-breaks'
 // import remarkMath from 'remark-math'
 import supersub from 'remark-supersub'
-const Highlight = React.lazy(() => import('react-highlight'))
+import Highlight from 'react-highlight'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
 const OverrideAnchor: FC<{
@@ -143,7 +143,6 @@ const CustomMarkdown: FC<{
       <>
         <ReactMarkdown
           remarkPlugins={[supersub, remarkBreaks, remarkGfm]}
-          // FIXME: rehypePlugins not working with rollup-plugin-tarser
           // rehypePlugins={[
           //   rehypeKatex,
           //   [rehypeHighlight, { detect: true, ignoreMissing: true }],

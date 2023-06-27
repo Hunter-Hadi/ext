@@ -55,14 +55,19 @@ async function esbuildConfig() {
     splitting: true,
     chunkNames: 'chunks/[hash]',
     define: replaceEnv,
-    loader:{},
+    loader:{
+      '.woff': 'dataurl',
+      '.woff2': 'dataurl',
+      '.eot': 'dataurl',
+      '.ttf': 'dataurl',
+      '.graphql': 'text',
+    },
     plugins: [
       postcssPlugin({
         postcss: {
           plugins: [autoprefixer],
         }
       }),
-      graphqlLoaderPlugin.default(),
       copyStaticFilesPlugin({
         source: ['src/manifest.json', 'src/content.css'],
         target: buildDir,

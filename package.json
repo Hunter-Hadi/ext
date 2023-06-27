@@ -26,6 +26,7 @@
     "dayjs": "^1.11.7",
     "eventsource-parser": "^0.1.0",
     "expiry-map": "^2.0.0",
+    "katex": "^0.16.8",
     "langchain": "^0.0.82",
     "linkedom": "^0.14.26",
     "lodash-es": "^4.17.21",

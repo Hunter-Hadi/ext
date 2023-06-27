@@ -13,7 +13,6 @@ import { IChatMessage } from '@/features/chatgpt/types'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevMessageSourceData from '@/features/gmail/components/GmailChatBox/DevMessageSourceData'
 import DevContent from '@/components/DevContent'
-import markdownCss from '@/pages/markdown.module.less'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const GmailChatBoxMessageItem: FC<{
@@ -178,7 +177,7 @@ const GmailChatBoxMessageItem: FC<{
       {/*  </p>*/}
       {/*</Stack>*/}
       <Stack
-        className={'chat-message--text ' + markdownCss.chatMessageText}
+        className={'chat-message--text'}
         whiteSpace={'pre-wrap'}
         width={'100%'}
         spacing={1}
@@ -201,9 +200,9 @@ const GmailChatBoxMessageItem: FC<{
               icon={<></>}
             >
               <div
-                className={`${markdownCss.markdownBody} ${
+                className={`markdown-body ${
                   userSettings?.colorSchema === 'dark'
-                    ? markdownCss.markdownBodyDark
+                    ? 'markdown-body-dark'
                     : ''
                 }`}
               >
@@ -214,7 +213,7 @@ const GmailChatBoxMessageItem: FC<{
             </Alert>
           ) : (
             <Stack
-              className={'chat-message--text ' + markdownCss.chatMessageText}
+              className={'chat-message--text'}
               id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
               contentEditable={isEdit}
               whiteSpace={'pre-wrap'}
@@ -227,9 +226,9 @@ const GmailChatBoxMessageItem: FC<{
             >
               {message.type !== 'user' ? (
                 <div
-                  className={`${markdownCss.markdownBody} ${
+                  className={`markdown-body ${
                     userSettings?.colorSchema === 'dark'
-                      ? markdownCss.markdownBodyDark
+                      ? 'markdown-body-dark'
                       : ''
                   }`}
                 >

@@ -27,14 +27,14 @@ const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const APP_USE_CHAT_GPT_HOST = isProduction
   ? 'https://app.maxai.me'
-  : 'https://app.maxai.me'
-// maxai.app 暂时还没有main环境先用正式环境
-// : 'https://maxai-main.simplysourcing.net'
-// : 'http://localhost:3000'
+  : // : 'https://app.maxai.me'
+    // maxai.app 暂时还没有main环境先用正式环境
+    // : 'https://maxai-main.simplysourcing.net'
+    'http://localhost:3000'
 
 const APP_USE_CHAT_GPT_API_HOST = isProduction
   ? 'https://api.maxai.me'
-  : 'https://dev.maxai.me'
+  : 'https://api.maxai.me'
 const APP_NAME = args.app === 'ezmail' ? 'EzMail.AI' : 'MaxAI.me'
 const APP_ENV = args.app === 'ezmail' ? 'EZ_MAIL_AI' : 'USE_CHAT_GPT_AI'
 const GLOBAL_LESS =

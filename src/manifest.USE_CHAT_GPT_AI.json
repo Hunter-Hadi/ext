@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",

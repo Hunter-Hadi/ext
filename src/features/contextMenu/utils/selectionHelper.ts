@@ -868,32 +868,11 @@ export const getEditableElement = (
     }
   }
   let parentElement: HTMLElement | null = element
-  let editableElement: HTMLInputElement | null = null
+  let editableElement: HTMLElement | null = null
   let maxLoop = defaultMaxLoop
   while (parentElement && maxLoop > 0) {
-    if (
-      parentElement?.tagName === 'INPUT' ||
-      parentElement?.tagName === 'TEXTAREA' ||
-      parentElement?.getAttribute?.('contenteditable') === 'true'
-    ) {
-      const type = parentElement.getAttribute('type')
-      if (
-        type &&
-        [
-          'password',
-          'file',
-          'checkbox',
-          'radio',
-          'submit',
-          'reset',
-          'button',
-          'image',
-          'hidden',
-        ].includes(type)
-      ) {
-        break
-      }
-      editableElement = parentElement as any
+    if (isElementCanEditable(parentElement)) {
+      editableElement = parentElement
       break
     }
     parentElement = parentElement.parentElement
@@ -1074,12 +1053,54 @@ export const updateEditableElementPlaceholder = (
     return
   }
   removeEditableElementPlaceholder(placeholderText)
-  if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+  if (isElementCanEditable(element)) {
     const inputElement = element as HTMLInputElement
     if (!inputElement.placeholder) {
       inputElement.placeholder = placeholderText
     }
   }
+}
+export const isElementCanEditable = (element: HTMLElement) => {
+  if (!element?.tagName) {
+    return false
+  }
+  if (
+    element.tagName === 'INPUT' ||
+    element.tagName === 'TEXTAREA' ||
+    element.getAttribute?.('contenteditable') === 'true'
+  ) {
+    // check input type
+    const type = element.getAttribute('type')
+    // check readonly/disabled
+    const readonly = element.getAttribute('readonly')
+    const disabled = element.getAttribute('disabled')
+    if (
+      type &&
+      [
+        'password',
+        'file',
+        'checkbox',
+        'radio',
+        'submit',
+        'reset',
+        'button',
+        'image',
+        'hidden',
+      ].includes(type)
+    ) {
+      return false
+    }
+    if (
+      readonly === 'true' ||
+      disabled === 'true' ||
+      readonly === '' ||
+      disabled === ''
+    ) {
+      return false
+    }
+    return true
+  }
+  return false
 }
 
 /**

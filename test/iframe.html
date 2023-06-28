@@ -37,7 +37,7 @@
         box-sizing: border-box;
     }
     textarea {
-        min-height: 150px;
+        min-height: 30px;
     }
   </style>
 </head>
@@ -62,6 +62,14 @@
   </section>
   <textarea  name='' id='textAA' cols='30' rows='10'>有一天，小红帽的妈妈让她给外婆送食物。</textarea>
   <button onclick='aa()'>generate</button>
+</div>
+<div>
+  <input type='password' value='aa'>
+  <input readonly type='text' value=''>
+  <input disabled type='text' value=''>
+  <textarea  name='' id='' cols='30' rows='10' inputmode='none'></textarea>
+  <textarea  name='' id='' cols='30' rows='10' inputmode='text'></textarea>
+  <textarea  name='' id='' cols='30' rows='10' inputmode='decimal'></textarea>
 </div>
 <!--<iframe src='/text.html' frameborder='0'></iframe>-->
 <!--<iframe src='/text.html' frameborder='0'></iframe>-->
@@ -107,3 +115,9 @@
 </script>
 </body>
 </html>
+<script>
+  import Text from './text.html'
+  export default {
+    components: { Text }
+  }
+</script>

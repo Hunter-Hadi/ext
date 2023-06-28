@@ -18,6 +18,8 @@ import TooltipIconButton from '@/components/TooltipIconButton'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import CloseAlert from '@/components/CloseAlert'
+import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 
 function replaceString(str: string, startIndex = 0) {
   const matches = templateStaticWords
@@ -67,9 +69,9 @@ const AceEditor = React.lazy(async () => {
     import('ace-builds/src-noconflict/mode-handlebars'),
     import('ace-builds/src-noconflict/theme-monokai'),
   ]).then(([langTools]) => {
-    langTools.setCompleters([staticWordCompleter])
+    langTools.default.setCompleters([staticWordCompleter])
   })
-  return ace
+  return ace.default
 })
 
 const staticWordCompleter = {
@@ -182,7 +184,7 @@ const ContextMenuEditForm: FC<{
           p: 4,
         }}
       >
-        <Stack spacing={3} minHeight={'60vh'} maxHeight={'90vh'}>
+        <Stack spacing={2} minHeight={'60vh'} maxHeight={'90vh'}>
           <Stack
             spacing={3}
             sx={{ overflowY: 'auto' }}
@@ -358,6 +360,32 @@ The template can include any number of the following variables:
                 }}
               />
             )}
+            <Stack>
+              {node.data.visibility && (
+                <>
+                  <CloseAlert icon={<></>} sx={{}}>
+                    <Typography fontSize={14} color={'text.primary'}>
+                      Change visibility on selected websites
+                    </Typography>
+                  </CloseAlert>
+                  <VisibilitySettingCard
+                    sx={{ mt: 2 }}
+                    defaultValue={node.data.visibility}
+                    onChange={async (newVisibilitySetting) => {
+                      // setEditNode((prev) => {
+                      //   return {
+                      //     ...prev,
+                      //     data: {
+                      //       ...prev.data,
+                      //       visibility: newVisibilitySetting,
+                      //     },
+                      //   }
+                      // })
+                    }}
+                  />
+                </>
+              )}
+            </Stack>
           </Stack>
           <Stack
             direction={'row'}

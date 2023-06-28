@@ -39,6 +39,7 @@ import {
 import { ClientMessageInit } from '@/background/src/client'
 import {
   backgroundSendClientMessage,
+  createChromeExtensionOptionsPage,
   resetChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
@@ -338,6 +339,8 @@ const developmentHotReload = () => {
             }
           })
         })
+        //
+        createChromeExtensionOptionsPage()
       }
     })
   }

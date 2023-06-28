@@ -6,6 +6,7 @@ import { fakeLangChainSummarization } from '@/features/shortcuts/langchain/chain
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
 import { v4 as uuidV4 } from 'uuid'
+import { getSliceEnd } from '@/features/shortcuts/utils/tokenizer'
 export const SUMMARIZE_MAX_CHARACTERS = 6000
 
 export const createSummarizeOfTextRunActions = async (
@@ -133,7 +134,12 @@ export class ActionSummarizeOfText extends Action {
       const { actions } = await createSummarizeOfTextRunActions(
         needSummarizeText,
         summarizeType as SummarizeActionType,
-        this.parameters.SliceTextActionLength || SUMMARIZE_MAX_CHARACTERS,
+        this.parameters.SliceTextActionType === 'TOKENS'
+          ? await getSliceEnd(
+              needSummarizeText,
+              this.parameters.SliceTextActionTokens,
+            )
+          : this.parameters.SliceTextActionLength || SUMMARIZE_MAX_CHARACTERS,
       )
       if (engine.getShortCutsEngine()) {
         engine.getShortCutsEngine()?.pushActions(

@@ -7,10 +7,15 @@ import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import {
   createSummarizeOfTextRunActions,
-  SUMMARIZE_MAX_CHARACTERS,
+  // SUMMARIZE_MAX_CHARACTERS,
 } from '@/features/shortcuts/actions/documents/ActionSummarizeOfText'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
-import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
+import {
+  getSliceEnd,
+  MAX_CHARACTERS_TOKENS,
+  SLICE_BUFFER,
+} from '@/features/shortcuts/utils/tokenizer'
+// import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
 
 // MARK: 这只是为了webget的业务实现的，不具备通用性
 export class ActionWebGPTSearchResultsExpand extends Action {
@@ -47,7 +52,8 @@ export class ActionWebGPTSearchResultsExpand extends Action {
             })
             return {
               ...searchResult,
-              body: response?.data?.body || '',
+              body: response?.data?.body || searchResult.body || '',
+              title: response?.data?.title || searchResult.title || '',
             }
           } catch (e) {
             return {
@@ -71,9 +77,13 @@ export class ActionWebGPTSearchResultsExpand extends Action {
           addActions.push({
             type: 'SLICE_OF_TEXT',
             parameters: {
-              SliceTextActionLength: Math.ceil(
-                SLICE_MAX_CHARACTERS / expandResults.length,
+              SliceTextActionType: 'TOKENS',
+              SliceTextActionTokens: Math.ceil(
+                (MAX_CHARACTERS_TOKENS * SLICE_BUFFER) / expandResults.length,
               ),
+              // SliceTextActionLength: Math.ceil(
+              //   SLICE_MAX_CHARACTERS / expandResults.length,
+              // ),
             },
           })
           addActions.push({
@@ -86,11 +96,16 @@ export class ActionWebGPTSearchResultsExpand extends Action {
             searchResult.title
           }\nCONTENT: {{SLICE_OF_TEXT_${i}}}\n\n`
         } else {
+          const currentResultTextLength = await getSliceEnd(
+            searchResult.body,
+            MAX_CHARACTERS_TOKENS / expandResults.length,
+          )
           const { actions: summarizeActions, variableName } =
             await createSummarizeOfTextRunActions(
               searchResult.body,
               summarizeType as SummarizeActionType,
-              Math.ceil(SUMMARIZE_MAX_CHARACTERS / expandResults.length),
+              // Math.ceil(SUMMARIZE_MAX_CHARACTERS / expandResults.length),
+              currentResultTextLength,
             )
           addActions.push(...summarizeActions)
           template += `NUMBER:${i + 1}\nURL: ${searchResult.url}\nTITLE: ${

@@ -32,6 +32,7 @@ import WFTimeUntilUnit from './IOS_WF/WFTimeUntilUnit'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
 import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
+import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -160,6 +161,8 @@ interface ActionParameters {
   // Extra
   SummarizeActionType?: SummarizeActionType | string
   SliceTextActionLength?: number
+  SliceTextActionTokens?: number
+  SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
 }
 

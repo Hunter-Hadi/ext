@@ -2,7 +2,7 @@ import { readFileSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const getArgs = () => {
   const args = {}
@@ -29,17 +29,16 @@ const getArgs = () => {
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 const APP_USE_CHAT_GPT_HOST = isProduction
-  ? 'https://app.maxai.me'
-  : 'https://app.maxai.me'
-// TODO maxai.app 暂时还没有main环境先用正式环境
-// : 'https://maxai-main.simplysourcing.net'
+  ? // TODO maxai.app 暂时还没有main环境先用正式环境
+    'https://app.maxai.me'
+  : // : 'https://dev.maxai.me'
+    'https://main.d3bohqvl407i44.amplifyapp.com'
 // : 'http://localhost:3000'
 
 const APP_USE_CHAT_GPT_API_HOST = isProduction
   ? 'https://api.maxai.me'
-  : // TODO maxai.app 暂时还没有main环境先用正式环境
-    // : 'https://dev.maxai.me'
-    'https://api.maxai.me'
+  : 'https://dev.maxai.me'
+
 const APP_NAME = 'MaxAI.me'
 const APP_ENV = 'USE_CHAT_GPT_AI'
 const NODE_ENV = isProduction ? 'production' : 'development'
@@ -53,10 +52,7 @@ const env = {
 }
 const getReplaceEnv = () => {
   const pkg = JSON.parse(
-    readFileSync(
-      join(__dirname, '../src/', `manifest.json`),
-      'utf8',
-    ),
+    readFileSync(join(__dirname, '../src/', `manifest.json`), 'utf8'),
   )
   const replaceEnv = {
     [`process.env.APP_VERSION`]: JSON.stringify(pkg.version),

@@ -20,9 +20,15 @@ const ChatGPTGmailAssistantSetting: FC<{
   const { shortCutKey } = useCommands()
   const shortHint = newShortcutHint(shortCutKey || '⌘J')
   const [checked, setChecked] = useState<boolean>(defaultValue ?? true)
+  const onceRef = React.useRef<number>(0)
   useEffect(() => {
+    // skip first render
+    if (onceRef.current < 2) {
+      onceRef.current = onceRef.current + 1
+      return
+    }
     onChange && onChange(checked)
-  }, [checked, onChange])
+  }, [checked])
   return (
     <Stack spacing={2}>
       <Typography

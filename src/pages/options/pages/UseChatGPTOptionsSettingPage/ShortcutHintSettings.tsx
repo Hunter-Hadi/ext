@@ -8,7 +8,7 @@ import Box from '@mui/material/Box'
 import Browser from 'webextension-polyfill'
 import useCommands from '@/hooks/useCommands'
 import { newShortcutHint } from '@/features/contextMenu/utils/selectionHelper'
-import { usePrevious } from '@/hooks/usePrevState'
+import { usePrevious } from '@/hooks/usePrevious'
 
 const ImageUrl = Browser.runtime.getURL(
   `/assets/USE_CHAT_GPT_AI/images/settings/shortcut-hint-example.png`,

@@ -4,21 +4,21 @@ import {
   groupByContextMenuItem,
 } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useChromeExtensionSettingsContextMenuList } from '@/hooks'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 
 const useContextMenuList = (
   buttonKey: IChromeExtensionButtonSettingKey,
   query?: string,
 ) => {
-  const originContextMenuList =
-    useChromeExtensionSettingsContextMenuList(buttonKey)
+  const buttonSettings = useComputedChromeExtensionButtonSettings(buttonKey)
   const originContextMenuListRef = useRef<IContextMenuItem[]>([])
   const groupByContextMenuList = useMemo(() => {
+    const originContextMenuList = buttonSettings?.contextMenu || []
     originContextMenuListRef.current = originContextMenuList
     return groupByContextMenuItem(cloneDeep(originContextMenuList))
-  }, [originContextMenuList])
+  }, [buttonSettings])
   const contextMenuList = useMemo(() => {
     if (query?.trim()) {
       return fuzzySearchContextMenuList(originContextMenuListRef.current, query)
@@ -37,7 +37,7 @@ const useContextMenuList = (
   }, [groupByContextMenuList, buttonKey, query])
   return {
     contextMenuList,
-    originContextMenuList,
+    originContextMenuList: buttonSettings?.contextMenu || [],
   }
 }
 export { useContextMenuList }

@@ -9,7 +9,7 @@ import React, {
 import Box from '@mui/material/Box'
 import Skeleton from '@mui/material/Skeleton'
 import { SxProps } from '@mui/material/styles'
-import { throttle } from '@/utils/useThrottle'
+import { throttle } from '@/hooks/useThrottle'
 import { useRecoilValue } from 'recoil'
 import {
   getAppActiveElement,

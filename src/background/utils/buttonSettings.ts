@@ -28,6 +28,7 @@ import { useCallback, useMemo, useState } from 'react'
 import {
   IChromeExtensionButtonSetting,
   IChromeExtensionButtonSettingKey,
+  IVisibilitySetting,
 } from '../types/Settings'
 import useEffectOnce from '../../hooks/useEffectOnce'
 import { getChromeExtensionSettings, setChromeExtensionSettings } from './index'
@@ -79,23 +80,15 @@ export const useComputedChromeExtensionButtonSettings = (
   return useMemo(() => {
     if (loaded && host && buttonSettings?.[buttonKey]) {
       const originalButtonSettings = cloneDeep(buttonSettings[buttonKey])
-      let buttonVisible = false
-      if (originalButtonSettings.visibility.isWhitelistMode) {
-        buttonVisible =
-          originalButtonSettings.visibility.whitelist.includes(host)
-      } else {
-        buttonVisible =
-          !originalButtonSettings.visibility.blacklist.includes(host)
-      }
+      const buttonVisible = checkButtonSettingsIsVisible(
+        host,
+        originalButtonSettings.visibility,
+      )
       const computedButtonSettings = {
         ...originalButtonSettings,
         contextMenu: originalButtonSettings.contextMenu.filter((prompt) => {
           if (prompt.data.visibility) {
-            if (prompt.data.visibility.isWhitelistMode) {
-              return prompt.data.visibility.whitelist.includes(host)
-            } else {
-              return !prompt.data.visibility.blacklist.includes(host)
-            }
+            return checkButtonSettingsIsVisible(host, prompt.data.visibility)
           }
           return true
         }),
@@ -114,6 +107,13 @@ export const useComputedChromeExtensionButtonSettings = (
       console.log(
         'computedButtonSettings',
         `[host=${host}]`,
+        `[originPromptLength=${originalButtonSettings.contextMenu.length}]`,
+        `[promptLength=${computedButtonSettings.contextMenu.length}]`,
+        computedButtonSettings.contextMenu,
+      )
+      console.log(
+        'computedButtonSettings',
+        `[host=${host}]`,
         `[buttonVisible=${computedButtonSettings.buttonVisible}]`,
         computedButtonSettings.visibility,
       )
@@ -121,6 +121,17 @@ export const useComputedChromeExtensionButtonSettings = (
     }
     return undefined
   }, [loaded, buttonSettings, host, buttonKey, appSettings.userSettings])
+}
+
+export const checkButtonSettingsIsVisible = (
+  host: string,
+  visibility: IVisibilitySetting,
+) => {
+  if (visibility.isWhitelistMode) {
+    return visibility.whitelist.includes(host)
+  } else {
+    return !visibility.blacklist.includes(host)
+  }
 }
 
 export const getChromeExtensionButtonSettings = async (

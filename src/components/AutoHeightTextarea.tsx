@@ -187,6 +187,12 @@ const AutoHeightTextarea: FC<{
   useEffect(() => {
     if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
       const handleInputUpdate = (newInputValue: string) => {
+        if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
+          newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
+          nextMessageIsActionRef.current = true
+        } else {
+          nextMessageIsActionRef.current = false
+        }
         setInputValue(newInputValue)
       }
       getMediator('chatBoxInputMediator').subscribe(handleInputUpdate)

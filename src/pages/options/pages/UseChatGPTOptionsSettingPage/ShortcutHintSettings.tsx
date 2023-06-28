@@ -8,6 +8,7 @@ import Box from '@mui/material/Box'
 import Browser from 'webextension-polyfill'
 import useCommands from '@/hooks/useCommands'
 import { newShortcutHint } from '@/features/contextMenu/utils/selectionHelper'
+import { usePrevious } from '@/hooks/usePrevious'
 
 const ImageUrl = Browser.runtime.getURL(
   `/assets/USE_CHAT_GPT_AI/images/settings/shortcut-hint-example.png`,
@@ -20,11 +21,10 @@ const ChatGPTGmailAssistantSetting: FC<{
   const { shortCutKey } = useCommands()
   const shortHint = newShortcutHint(shortCutKey || '⌘J')
   const [checked, setChecked] = useState<boolean>(defaultValue ?? true)
-  const onceRef = React.useRef<number>(0)
+  const prevChecked = usePrevious(checked)
   useEffect(() => {
     // skip first render
-    if (onceRef.current < 2) {
-      onceRef.current = onceRef.current + 1
+    if (prevChecked === undefined || prevChecked === checked) {
       return
     }
     onChange && onChange(checked)

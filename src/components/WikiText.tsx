@@ -31,7 +31,7 @@ const WikiText: FC<IWikiTextProps> = (props) => {
   return (
     <LightTooltip
       sx={{ zIndex: '9999!important' }}
-      placement={'top'}
+      placement={'right'}
       title={
         typeof wiki === 'string' ? (
           <Typography variant={'body1'} fontSize={14}>

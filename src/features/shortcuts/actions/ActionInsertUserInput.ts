@@ -69,7 +69,8 @@ export class ActionInsertUserInput extends Action {
           autoFocusWithAllWebsite(chatBoxInput, 52.5)
         }
       }
-      if (chatBoxInput) {
+      // chatBoxInput不一定存在，FloatingMenu因为会进入到loading状态
+      if (chatBoxInput || isInsertToFloatingMenuInput) {
         this.output = inputValue
       } else {
         this.error = ``

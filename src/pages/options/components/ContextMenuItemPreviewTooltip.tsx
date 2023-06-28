@@ -4,6 +4,8 @@ import WikiText from '@/components/WikiText'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { domain2Favicon } from '@/utils'
+import Tooltip from '@mui/material/Tooltip'
+import Button from '@mui/material/Button'
 
 const ContextMenuItemPreviewTooltip: FC<{
   item: IContextMenuItem
@@ -36,7 +38,12 @@ const ContextMenuItemPreviewTooltip: FC<{
         item.data.visibility.isWhitelistMode
           ? item.data.visibility.whitelist
           : item.data.visibility.blacklist
-      ).map((domain) => domain2Favicon(domain))
+      ).map((domain) => {
+        return {
+          domain,
+          icon: domain2Favicon(domain),
+        }
+      })
       return {
         title,
         domainFavicons,
@@ -44,6 +51,17 @@ const ContextMenuItemPreviewTooltip: FC<{
     }
     return null
   }, [item.data.visibility])
+  const promptText = useMemo(() => {
+    if (item.data?.actions && item.data.actions.length > 0) {
+      const prompt = item.data.actions.find(
+        (action) => action.type === 'RENDER_CHATGPT_PROMPT',
+      )
+      if (prompt) {
+        return prompt.parameters.template
+      }
+    }
+    return ''
+  }, [item.data])
   return (
     <WikiText
       text={item.text}
@@ -67,20 +85,62 @@ const ContextMenuItemPreviewTooltip: FC<{
               </Typography>
               <Stack direction={'row'} spacing={1}>
                 {visibilitySetting.domainFavicons.map((favicon) => (
-                  <img
-                    key={favicon}
-                    src={favicon}
-                    alt={favicon}
-                    style={{
-                      width: 16,
-                      height: 16,
-                      flexShrink: 0,
+                  <Tooltip
+                    placement={'top'}
+                    arrow
+                    title={favicon.domain}
+                    key={favicon.domain}
+                    PopperProps={{
+                      style: {
+                        zIndex: 9999,
+                      },
                     }}
-                  />
+                  >
+                    <img
+                      src={favicon.icon}
+                      alt={favicon.domain}
+                      style={{
+                        width: 16,
+                        height: 16,
+                        flexShrink: 0,
+                      }}
+                    />
+                  </Tooltip>
                 ))}
               </Stack>
             </Stack>
           )}
+          {!isGroup && (
+            <Stack>
+              <Typography fontSize={14} color={'text.secondary'}>
+                Prompt:
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: 'vertical',
+                  wordBreak: 'break-word',
+                  color: 'text.primary',
+                }}
+              >
+                {promptText || 'No prompt is set for this item.'}
+              </Typography>
+            </Stack>
+          )}
+          <Stack>
+            <Typography fontSize={14} color={'text.secondary'}>
+              Learn more:
+            </Typography>
+            <Stack direction={'row'} spacing={1}>
+              <Button size={'small'} color={'primary'} variant={'contained'}>
+                Edit
+              </Button>
+            </Stack>
+          </Stack>
         </Stack>
       }
       textProps={fontSx}

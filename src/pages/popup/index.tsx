@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import React, { FC, useState } from 'react'
 import Stack from '@mui/material/Stack'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { APP_USE_CHAT_GPT_HOST, ROOT_CONTAINER_ID } from '@/constants'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
 import TooltipButton from '@/components/TooltipButton'
@@ -191,6 +191,15 @@ const init = async () => {
         tabUrl.startsWith('chrome') ||
         tabUrl.startsWith('https://chrome.google.com/webstore') ||
         tabUrl.startsWith('https://chat.openai.com')
+      if (isSpecialPage) {
+        throw new Error('isSpecialPage')
+      }
+      const appRoot = document.querySelector(
+        `#${ROOT_CONTAINER_ID}`,
+      ) as HTMLDivElement
+      if (!appRoot) {
+        throw new Error('no appRoot')
+      }
       if (tabId) {
         await Browser.tabs.sendMessage(tabId, {})
         const result = await backgroundSendClientMessage(
@@ -205,6 +214,8 @@ const init = async () => {
             popup: '',
           })
           window.close()
+        } else {
+          throw new Error('no result')
         }
       }
     } catch (e) {

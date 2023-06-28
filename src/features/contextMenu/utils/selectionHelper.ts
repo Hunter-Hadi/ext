@@ -9,7 +9,11 @@ import { cloneRect } from '@/features/contextMenu/utils/index'
 import { getCurrentDomainHost } from '@/utils'
 import sum from 'lodash-es/sum'
 import TurnDownService from 'turndown'
-import { ROOT_CLIPBOARD_ID } from '@/constants'
+import {
+  ROOT_CHAT_BOX_INPUT_ID,
+  ROOT_CLIPBOARD_ID,
+  ROOT_FLOATING_INPUT_ID,
+} from '@/constants'
 /**
  * 以下网站不支持植入标记，直接返回选区内容并把选区存入cache
  */
@@ -868,32 +872,11 @@ export const getEditableElement = (
     }
   }
   let parentElement: HTMLElement | null = element
-  let editableElement: HTMLInputElement | null = null
+  let editableElement: HTMLElement | null = null
   let maxLoop = defaultMaxLoop
   while (parentElement && maxLoop > 0) {
-    if (
-      parentElement?.tagName === 'INPUT' ||
-      parentElement?.tagName === 'TEXTAREA' ||
-      parentElement?.getAttribute?.('contenteditable') === 'true'
-    ) {
-      const type = parentElement.getAttribute('type')
-      if (
-        type &&
-        [
-          'password',
-          'file',
-          'checkbox',
-          'radio',
-          'submit',
-          'reset',
-          'button',
-          'image',
-          'hidden',
-        ].includes(type)
-      ) {
-        break
-      }
-      editableElement = parentElement as any
+    if (isElementCanEditable(parentElement)) {
+      editableElement = parentElement
       break
     }
     parentElement = parentElement.parentElement
@@ -1036,7 +1019,34 @@ export const getSelectionBoundaryElement = (startContainer = true) => {
     if (range) {
       container = range[startContainer ? 'startContainer' : 'endContainer']
       // Check if the container is a text node and return its parent if so
-      return container.nodeType === 3 ? container.parentNode : container
+      const element = (
+        container.nodeType === 3 ? container.parentNode : container
+      ) as HTMLElement
+      if (
+        element.tagName === 'BODY' ||
+        element.tagName === 'HTML' ||
+        element.tagName === 'IFRAME'
+      ) {
+        return false
+      }
+      if (isElementCanEditable(element)) {
+        return element
+      } else if (element.querySelector) {
+        const editableDiv = element.querySelector(
+          '[contenteditable="true"]',
+        ) as HTMLElement
+        if (editableDiv && isElementCanEditable(editableDiv)) {
+          return editableDiv
+        }
+        const inputOrTextarea = element.querySelector(
+          'input,textarea',
+        ) as HTMLElement
+        if (inputOrTextarea && isElementCanEditable(inputOrTextarea)) {
+          return inputOrTextarea
+        }
+      } else {
+        return element
+      }
     }
   }
 }
@@ -1074,12 +1084,65 @@ export const updateEditableElementPlaceholder = (
     return
   }
   removeEditableElementPlaceholder(placeholderText)
-  if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+  if (isElementCanEditable(element)) {
     const inputElement = element as HTMLInputElement
     if (!inputElement.placeholder) {
       inputElement.placeholder = placeholderText
     }
   }
+}
+export const isElementCanEditable = (element: HTMLElement) => {
+  if (!element?.tagName) {
+    return false
+  }
+  if (
+    element.tagName === 'INPUT' ||
+    element.tagName === 'TEXTAREA' ||
+    element.getAttribute?.('contenteditable') === 'true'
+  ) {
+    // check input type
+    const type = element.getAttribute('type')
+    // check readonly/disabled
+    // NOTE: 可能某些网站还是会有潜在问题导致检测异常
+    const readonly = element.getAttribute('readonly')
+    const ariaReadonly = element.getAttribute('aria-readonly')
+    const disabled = element.getAttribute('disabled')
+    const ariaDisabled = element.getAttribute('aria-disabled')
+    if (
+      type &&
+      [
+        'password',
+        'file',
+        'checkbox',
+        'radio',
+        'submit',
+        'reset',
+        'button',
+        'image',
+        'hidden',
+      ].includes(type)
+    ) {
+      return false
+    }
+    if (
+      readonly === 'true' ||
+      disabled === 'true' ||
+      ariaReadonly === 'true' ||
+      ariaDisabled === 'true' ||
+      readonly === '' ||
+      disabled === ''
+    ) {
+      return false
+    }
+    if (
+      element.id === ROOT_CHAT_BOX_INPUT_ID ||
+      element.id === ROOT_FLOATING_INPUT_ID
+    ) {
+      return false
+    }
+    return true
+  }
+  return false
 }
 
 /**

@@ -31,6 +31,7 @@ import {
   createSelectionElement,
   getEditableElement,
   getSelectionBoundaryElement,
+  isElementCanEditable,
   newShortcutHint,
   removeAllRange,
   removeAllSelectionMarker,
@@ -246,7 +247,11 @@ const useInitRangy = () => {
       const isEditableElement =
         mouseTarget.tagName === 'TEXTAREA' || mouseTarget.tagName === 'INPUT'
       const editableElement = isEditableElement ? mouseTarget : null
-      if (isEditableElement && editableElement) {
+      if (
+        isEditableElement &&
+        editableElement &&
+        isElementCanEditable(editableElement)
+      ) {
         if (targetElementRef.current?.isSameNode(editableElement)) {
           return
         }
@@ -509,6 +514,7 @@ const useInitRangy = () => {
             document.body.appendChild(textarea)
             textarea.select()
             document.execCommand('copy', false, '')
+            textarea.remove()
           } catch (e) {
             console.error(e)
           }

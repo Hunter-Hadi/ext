@@ -111,6 +111,12 @@ async function updateManifest() {
   let addWebAccessibleResources = []
   manifest.content_scripts.map(contentScript => {
     const contentScriptPath = contentScript.js[0]
+    if (!isProduction) {
+      if (contentScriptPath === 'check_status.js') {
+        // 修改登陆check_status的matches
+        contentScript.matches.push('https://main.d3bohqvl407i44.amplifyapp.com/*')
+      }
+    }
     addWebAccessibleResources.push(contentScriptPath)
     contentScript.js[0] = `import_${contentScriptPath}`
     // write a new js file
@@ -123,6 +129,7 @@ async function updateManifest() {
   addWebAccessibleResources.forEach(resource => {
     manifest.web_accessible_resources[0].resources.push(resource)
   })
+
   fs.writeJsonSync(`${buildDir}/manifest.json`, manifest, { spaces: 2 })
 }
 async function buildFiles () {

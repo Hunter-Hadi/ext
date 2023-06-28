@@ -128,10 +128,10 @@ const ContextMenuEditForm: FC<{
     null,
   )
   const [autoAskChatGPT, setAutoAskChatGPT] = useState(() => {
-    return isAutoAskChatGPT(node.data.actions)
+    return isAutoAskChatGPT(editNode.data.actions)
   })
-  const isDisabled = !node.data.editable
-  const isGroup = node.data.type === 'group'
+  const isDisabled = !editNode.data.editable
+  const isGroup = editNode.data.type === 'group'
   const isDisabledSave = useMemo(() => {
     if (isDisabled) {
       return true
@@ -162,10 +162,10 @@ const ContextMenuEditForm: FC<{
         isWhitelistMode: false,
       }
     }
-    setEditNode(cloneDeep(node))
+    setEditNode(cloneNode)
     setTemplate(cloneNode.data?.actions?.[0]?.parameters?.template || '')
     setSelectedIcon(cloneNode.data?.icon as any)
-    setAutoAskChatGPT(isAutoAskChatGPT(node.data.actions))
+    setAutoAskChatGPT(isAutoAskChatGPT(cloneNode.data.actions))
   }, [node])
 
   return (
@@ -258,7 +258,7 @@ const ContextMenuEditForm: FC<{
                 </Stack>
               </Stack>
             )}
-            {node.data.type === 'shortcuts' && (
+            {editNode.data.type === 'shortcuts' && (
               <Box>
                 <Stack direction={'row'} alignItems="center">
                   <Typography variant={'body1'}>
@@ -342,7 +342,7 @@ The template can include any number of the following variables:
                 </Box>
               </Box>
             )}
-            {node.data.type === 'shortcuts' && (
+            {editNode.data.type === 'shortcuts' && (
               <FormControlLabel
                 control={<Switch checked={autoAskChatGPT} />}
                 label={
@@ -360,8 +360,9 @@ The template can include any number of the following variables:
                 }}
               />
             )}
+            <Stack></Stack>
             <Stack>
-              {node.data.visibility && (
+              {editNode.data.visibility && (
                 <>
                   <CloseAlert icon={<></>} sx={{}}>
                     <Typography fontSize={14} color={'text.primary'}>
@@ -370,17 +371,17 @@ The template can include any number of the following variables:
                   </CloseAlert>
                   <VisibilitySettingCard
                     sx={{ mt: 2 }}
-                    defaultValue={node.data.visibility}
+                    defaultValue={editNode.data.visibility}
                     onChange={async (newVisibilitySetting) => {
-                      // setEditNode((prev) => {
-                      //   return {
-                      //     ...prev,
-                      //     data: {
-                      //       ...prev.data,
-                      //       visibility: newVisibilitySetting,
-                      //     },
-                      //   }
-                      // })
+                      setEditNode((prev) => {
+                        return {
+                          ...prev,
+                          data: {
+                            ...prev.data,
+                            visibility: newVisibilitySetting,
+                          },
+                        }
+                      })
                     }}
                   />
                 </>
@@ -428,7 +429,7 @@ The template can include any number of the following variables:
             disabled={isDisabled}
             size={'small'}
             onClick={() => {
-              onDelete && onDelete(node.id as string)
+              onDelete && onDelete(editNode.id as string)
             }}
           >
             <DeleteOutlinedIcon sx={{ fontSize: 20 }} />

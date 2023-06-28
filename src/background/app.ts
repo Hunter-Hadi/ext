@@ -46,6 +46,7 @@ import {
   checkSettingsSync,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
+import { REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY } from '@/components/Announcement'
 
 /**
  * background.js 入口
@@ -69,6 +70,11 @@ export const startChromeExtensionBackground = () => {
   // feature
   // pdf feature
   pdfSnifferStartListener().then().catch()
+
+  // delete when rebrand Announcement
+  Browser.storage.local.set({
+    [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
+  })
 }
 
 /**

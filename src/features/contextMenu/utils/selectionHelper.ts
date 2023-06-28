@@ -625,12 +625,15 @@ export const replaceMarkerContent = async (
     range.setEndBefore(endMarker)
     if (type === 'INSERT_BELOW') {
       value = ('\n' + value).replace(/^\n+/, '\n')
+      range.setStart(range.endContainer, range.endOffset)
     } else if (type === 'INSERT_ABOVE') {
       value = (value + '\n').replace(/\n+$/, '\n')
+      range.setEnd(range.startContainer, range.startOffset)
     } else if (type === 'REPLACE_SELECTION') {
       // nothing
     } else if (type === 'INSERT') {
-      // nothing
+      value = value.replace(/^\n+/, '')
+      range.setStart(range.endContainer, range.endOffset)
     }
     // 判断是否为纯文本节点，还原纯文本节点
     if (
@@ -638,6 +641,8 @@ export const replaceMarkerContent = async (
       endMarker.parentElement &&
       startMarker.parentElement.isSameNode(endMarker.parentElement)
     ) {
+      const originRangeStartOffset = range.startOffset
+      const originRangeEndOffset = range.endOffset
       const parentElement = startMarker.parentElement
       startMarker.remove()
       endMarker.remove()
@@ -655,25 +660,54 @@ export const replaceMarkerContent = async (
         const textNode = doc.createTextNode(parentElement.innerText)
         parentElement.innerHTML = ''
         parentElement.appendChild(textNode)
-        const startIndex = Math.max(
-          parentElement.innerText.indexOf(selectedText),
-          0,
-        )
-        const endIndex = startIndex + selectedText.length
-        range.setStart(parentElement.childNodes[0], startIndex)
-        range.setEnd(parentElement.childNodes[0], endIndex)
+        // 如果选中的文本有值，还原选中文本的range位置
+        if (selectedText.length > 0) {
+          const startIndex = Math.max(
+            parentElement.innerText.indexOf(selectedText),
+            0,
+          )
+          const endIndex = startIndex + selectedText.length
+          range.setStart(parentElement.childNodes[0], startIndex)
+          range.setEnd(parentElement.childNodes[0], endIndex)
+        } else if (originRangeStartOffset === originRangeEndOffset) {
+          const textNode = parentElement.childNodes[0] as Node
+          if (!textNode) {
+            return
+          }
+          if (originRangeEndOffset === 0) {
+            // 移动到开头
+            range.setStart(textNode, 0)
+            range.setEnd(textNode, 0)
+          } else {
+            // 移动到结尾
+            range.setStart(textNode, textNode.nodeValue?.length || 0)
+            range.setEnd(textNode, textNode.nodeValue?.length || 0)
+          }
+        }
       }
+      console.log(
+        'insertValueToWithRichText pure text',
+        range.startOffset,
+        range.endOffset,
+      )
     }
     // 高亮
     const highlightSelection = () => {
       doc.getSelection()?.removeAllRanges()
-      doc.getSelection()?.addRange(range)
       // 移动光标
       if (type === 'INSERT_BELOW' || type === 'INSERT') {
-        doc.getSelection()?.collapseToEnd()
+        console.log(
+          'insertValueToWithRichText highlightSelection',
+          range.startOffset,
+          range.endOffset,
+        )
+        range.setStart(range.endContainer, range.endOffset)
+        range.setEnd(range.endContainer, range.endOffset)
       } else if (type === 'INSERT_ABOVE') {
-        doc.getSelection()?.collapseToStart()
+        range.setStart(range.startContainer, range.startOffset)
+        range.setEnd(range.startContainer, range.startOffset)
       }
+      doc.getSelection()?.addRange(range)
     }
     // 选中的可编辑元素focus
     const focusEditableElement = () => {
@@ -695,10 +729,15 @@ export const replaceMarkerContent = async (
       const newRange = range.cloneRange()
       if (type === 'REPLACE_SELECTION') {
         newRange.deleteContents()
-      } else {
-        newRange.setStart(range.endContainer, range.endOffset)
-        newRange.setEnd(range.endContainer, range.endOffset)
       }
+      doc.getSelection()?.removeAllRanges()
+      doc.getSelection()?.addRange(newRange)
+      console.log(
+        'insertValueToWithRichText insertValue',
+        newRange.startOffset,
+        newRange.endOffset,
+        insertValue,
+      )
       const {
         separator = '\n\n',
         tagName = 'div',
@@ -710,17 +749,21 @@ export const replaceMarkerContent = async (
         .split(separator)
         .reverse() // 反转数组是因为插入的内容是从底部插入的
         .forEach((partOfText, index, arr) => {
-          if (onSeparator && arr[index + 1]) {
-            const node = onSeparator(partOfText)
-            newRange.insertNode(node)
-            console.log('insertValueToWithRichText partOfNode', node)
-          }
+          // 理论上流程是
+          // 1. "\n1\n\n2" => ["\n1", "2"]
+          // 2. ["\n1", "2"] => ["2", "\n1"]
+          // 3. ["2", "\n1"] => Range insertNode => ["<div>2</div>", <div><br></div> , "<div>\n1</div>"]
           console.log('insertValueToWithRichText partOfText', partOfText)
           const div = doc.createElement(tagName)
           className && (div.className = className)
           cssText && (div.style.cssText = cssText)
           div.innerText = partOfText
           newRange.insertNode(div)
+          if (onSeparator && arr[index + 1]) {
+            const node = onSeparator(partOfText)
+            newRange.insertNode(node)
+            console.log('insertValueToWithRichText partOfNode', node)
+          }
         })
       doc.getSelection()?.removeAllRanges()
       doc.getSelection()?.addRange(newRange)

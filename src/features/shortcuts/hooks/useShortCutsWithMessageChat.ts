@@ -15,12 +15,14 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { ShortCutsState } from '@/features/shortcuts/store'
 import { ChatGPTConversationState } from '@/features/gmail/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { useAuthLogin } from '@/features/auth'
 
 const shortCutsEngine = new ShortCutsEngine()
 const port = new ContentScriptConnectionV2({
   runtime: 'shortcut',
 })
 const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
+  const { isLogin } = useAuthLogin()
   const getParams = useShortCutsParameters()
   const [shortCutsState, setShortsCutsState] = useRecoilState(ShortCutsState)
   const { loading: chatGPTConversationLoading } = useRecoilValue(
@@ -43,7 +45,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
       if (!shortCutsEngineRef.current) {
         return
       }
-      if (needShowChatBox && !isShowChatBox()) {
+      if (!isLogin || (needShowChatBox && !isShowChatBox())) {
         showChatBox()
       }
       try {
@@ -98,6 +100,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
       shortCutsEngineRef,
       messageViewText,
       getParams,
+      isLogin,
     ],
   )
   const stopShortCuts = useCallback(() => {

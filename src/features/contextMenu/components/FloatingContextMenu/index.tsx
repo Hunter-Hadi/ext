@@ -296,11 +296,11 @@ const FloatingContextMenu: FC<{
       let currentDraft = ''
       const selectionElement = currentSelectionRef.current?.selectionElement
       // 如果是可编辑元素
-      // 1. 如果有可编辑元素, 有选中文本，且没有草稿, 则使用{{SELECTED_TEXT}}作为草稿
-      // 2. 如果有可编辑元素, 有选中文本，且有草稿, 则使用草稿
-      // 3. 如果有可编辑元素, 没有选中文本，且没有草稿, 则使用空草稿
-      // 4. 如果有可编辑元素, 没有选中文本，且有草稿, 则使用草稿
-      // 5. 如果不是可编辑元素，则不会有草稿，直接使用{{SELECTED_TEXT}}
+      // 1. 如果有可编辑元素, 有选中文本，且没有草稿, 则使用{{SELECTED_TEXT}}作为上下文
+      // 2. 如果有可编辑元素, 有选中文本，且有草稿, 则使用草稿作为上下文
+      // 3. 如果有可编辑元素, 没有选中文本，且没有草稿, 则使用空作为上下文
+      // 4. 如果有可编辑元素, 没有选中文本，且有草稿, 则使用草稿作为上下文
+      // 5. 如果不是可编辑元素，则不会有草稿，直接使用{{SELECTED_TEXT}}作为上下文
       if (selectionElement) {
         if (selectionElement.isEditableElement) {
           if (selectionElement.editableElementSelectionText) {

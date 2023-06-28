@@ -16,6 +16,7 @@ import {
   CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
   isEzMailApp,
+  isProduction,
 } from '@/constants'
 import {
   BardChat,
@@ -70,11 +71,12 @@ export const startChromeExtensionBackground = () => {
   // feature
   // pdf feature
   pdfSnifferStartListener().then().catch()
-
   // delete when rebrand Announcement
   Browser.storage.local.set({
     [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
   })
+  // hot reload
+  developmentHotReload()
 }
 
 /**
@@ -322,16 +324,21 @@ const initChromeExtensionContextMenu = () => {
     })
   }
 }
-const ws = new WebSocket('ws://localhost:8181')
-ws.addEventListener('message', (event) => {
-  if (event.data === 'hot_reload_message') {
-    Browser.tabs.query({ active: true }).then((tabIds) => {
-      Browser.runtime.reload()
-      tabIds.forEach((tab) => {
-        if (tab.id) {
-          Browser.tabs.reload(tab.id)
-        }
-      })
+
+const developmentHotReload = () => {
+  if (!isProduction) {
+    const ws = new WebSocket('ws://localhost:8181')
+    ws.addEventListener('message', (event) => {
+      if (event.data === 'hot_reload_message') {
+        Browser.tabs.query({ active: true }).then((tabIds) => {
+          Browser.runtime.reload()
+          tabIds.forEach((tab) => {
+            if (tab.id) {
+              Browser.tabs.reload(tab.id)
+            }
+          })
+        })
+      }
     })
   }
-})
+}

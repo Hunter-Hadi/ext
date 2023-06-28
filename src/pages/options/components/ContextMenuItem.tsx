@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import React, { useMemo, useState } from 'react'
 import { NodeRender } from '@minoru/react-dnd-treeview'
 import { ContextMenuIcon } from '@/features/contextMenu'
@@ -8,6 +7,7 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import ContextMenuItemPreviewTooltip from '@/pages/options/components/ContextMenuItemPreviewTooltip'
 const ContextMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean
@@ -133,26 +133,10 @@ const ContextMenuItem = (props: {
           height={'100%'}
           sx={{}}
         >
-          {isGroup && isFirstDeep ? (
-            <Typography fontSize={12} color={'text.secondary'}>
-              {node.text}
-            </Typography>
-          ) : (
-            <Typography
-              fontSize={14}
-              color={'text.primary'}
-              sx={{
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                display: '-webkit-box',
-                WebkitLineClamp: 1,
-                WebkitBoxOrient: 'vertical',
-                wordBreak: 'break-word',
-              }}
-            >
-              {node.text}
-            </Typography>
-          )}
+          <ContextMenuItemPreviewTooltip
+            item={node}
+            isGroup={isGroup && isFirstDeep}
+          />
         </Stack>
         <Stack
           direction={'row'}

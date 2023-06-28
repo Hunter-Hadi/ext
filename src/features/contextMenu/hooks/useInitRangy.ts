@@ -31,7 +31,6 @@ import {
   createSelectionElement,
   getEditableElement,
   getSelectionBoundaryElement,
-  isElementCanEditable,
   newShortcutHint,
   removeAllRange,
   removeAllSelectionMarker,
@@ -244,14 +243,9 @@ const useInitRangy = () => {
     const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
     const mouseDownListener = (event: MouseEvent) => {
       const mouseTarget = event.target as HTMLElement
-      const isEditableElement =
-        mouseTarget.tagName === 'TEXTAREA' || mouseTarget.tagName === 'INPUT'
-      const editableElement = isEditableElement ? mouseTarget : null
-      if (
-        isEditableElement &&
-        editableElement &&
-        isElementCanEditable(editableElement)
-      ) {
+      const { isEditableElement, editableElement } =
+        getEditableElement(mouseTarget)
+      if (isEditableElement && editableElement) {
         if (targetElementRef.current?.isSameNode(editableElement)) {
           return
         }

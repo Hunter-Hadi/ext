@@ -19,7 +19,8 @@
     },
     {
       "matches": [
-        "https://app.maxai.me/*"
+        "https://app.maxai.me/*",
+        "https://main.d3bohqvl407i44.amplifyapp.com/*"
       ],
       "js": ["check_status.js"],
       "run_at": "document_end"

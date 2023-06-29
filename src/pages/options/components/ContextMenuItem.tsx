@@ -167,7 +167,8 @@ const ContextMenuItem = (props: {
           >
             <TooltipIconButton
               tooltipProps={{
-                placement: 'right',
+                placement: 'left',
+                arrow: true,
               }}
               title={node.data.editable ? 'Edit' : 'Read only'}
               size={'small'}

@@ -360,8 +360,11 @@ The template can include any number of the following variables:
                 }}
               />
             )}
-            <Stack></Stack>
             <Stack>
+              <Stack direction={'row'} alignItems="center">
+                <Typography variant={'body1'}>Visibility</Typography>
+                <TemplateTooltip />
+              </Stack>
               {editNode.data.visibility && (
                 <>
                   <CloseAlert icon={<></>} sx={{}}>
@@ -388,6 +391,7 @@ The template can include any number of the following variables:
               )}
             </Stack>
           </Stack>
+          <Stack></Stack>
           <Stack
             direction={'row'}
             mt={'auto!important'}

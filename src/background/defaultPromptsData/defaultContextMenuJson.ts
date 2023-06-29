@@ -1702,6 +1702,11 @@ export default [
     droppable: true,
     text: 'Write with AI',
     data: {
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       editable: false,
       type: 'group',
       actions: [],
@@ -1714,6 +1719,11 @@ export default [
     droppable: true,
     text: 'Draft with AI',
     data: {
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
       editable: false,
       type: 'group',
       actions: [],

@@ -26,7 +26,7 @@ const VisibilitySettingCardItem: FC<{
       <Stack
         direction={'row'}
         alignItems={'center'}
-        sx={{ width: 100, flexShrink: 0, minHeight: 40 }}
+        sx={{ width: 130, flexShrink: 0, minHeight: 40 }}
       >
         <Typography color={'text.primary'} fontSize={14} fontWeight={500}>
           {label}
@@ -122,7 +122,7 @@ const VisibilitySettingCard: FC<{
               </ToggleButton>
             </ToggleButtonGroup>
           </VisibilitySettingCardItem>
-          <VisibilitySettingCardItem label={'Websites'}>
+          <VisibilitySettingCardItem label={'Selected websites'}>
             <Stack sx={{ width: '100%' }} spacing={2}>
               <DomainSelect
                 sx={{

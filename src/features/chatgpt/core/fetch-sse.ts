@@ -37,8 +37,9 @@ export const fetchSSE = async (
       onMessage(event.data)
     }
   })
+  const decoder = new TextDecoder()
   for await (const chunk of streamAsyncIterable(resp.body!)) {
-    const str = new TextDecoder().decode(chunk)
+    const str = decoder.decode(chunk)
     parser.feed(str)
   }
 }

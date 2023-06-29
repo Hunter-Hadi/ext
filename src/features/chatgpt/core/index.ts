@@ -1,12 +1,17 @@
 import { v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import {
+  CHAT_GPT_GPT4_ARKOSE_TOKEN,
+  CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY,
+  CHAT_GPT_PROVIDER,
+} from '@/constants'
 import { getChromeExtensionSettings } from '@/background/utils'
 import {
   IChatGPTModelType,
   IChatGPTPluginType,
 } from '@/background/types/Settings'
+import Browser from 'webextension-polyfill'
 
 export interface IChatGPTAnswer {
   text: string
@@ -191,6 +196,110 @@ export const getChatGPTAccessToken = async (
   return data?.accessToken || ''
 }
 
+const getLocalArkoseToken = async () => {
+  const cache = await Browser.storage.local.get(CHAT_GPT_GPT4_ARKOSE_TOKEN)
+  const data = JSON.parse(cache[CHAT_GPT_GPT4_ARKOSE_TOKEN] || '{}')
+  if (data.token) {
+    return data as {
+      token: string
+      date: number
+    }
+  } else {
+    return undefined
+  }
+}
+export const waitArkoseTokenIframeLoaded = async () => {
+  const key = CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY
+  // find script
+  const scripts = document.querySelectorAll('script')
+  const script = Array.from(scripts).find((script) => {
+    return script.src.includes(key)
+  })
+  if (!script) {
+    // not found
+    // 'https://chat.openai.com/?model=gpt-4'
+    location.href = 'https://chat.openai.com/?model=gpt-4'
+    return undefined
+  }
+  // max wait 10s
+  const timeout = 10000
+  const start = Date.now()
+  let count = 0
+  while (Date.now() - start < timeout) {
+    const iframes = document.querySelectorAll('iframe')
+    const iframe = Array.from(iframes).find((iframe) => {
+      return iframe.src.includes(key)
+    })
+    if (iframe) {
+      if (count > 0) {
+        console.log('waitArkoseTokenIframeLoaded', count)
+        // 说明不是第一次就找到，给点时间让content script加载
+        await new Promise((resolve) => {
+          setTimeout(resolve, 2000)
+        })
+      }
+      return iframe
+    }
+    await new Promise((resolve) => {
+      setTimeout(resolve, 100)
+    })
+    count++
+  }
+  return undefined
+}
+export const mockSendPostMessage = () => {
+  const iframes = document.querySelectorAll('iframe')
+  for (let i = 0; i < iframes.length; i++) {
+    const frame = iframes[i]
+    const data = {
+      data: undefined,
+      key: CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY,
+      message: 'show enforcement',
+      type: 'emit',
+    }
+    // post message
+    if (frame.contentWindow && frame.contentWindow.postMessage) {
+      frame.contentWindow.postMessage(JSON.stringify(data), '*')
+    }
+  }
+}
+
+export const generateArkoseToken = async (model: string) => {
+  const needArkoseToken = [
+    // 'text-davinci-002-render-sha',
+    // 'text-davinci-002-render-sha-mobile',
+    'gpt-4',
+    'gpt-4-browsing',
+    'gpt-4-plugins',
+    'gpt-4-mobile',
+  ].includes(model)
+  if (!needArkoseToken) {
+    return ''
+  }
+  console.log('wait generateArkose Iframe loaded')
+  await waitArkoseTokenIframeLoaded()
+  console.log('generateArkoseToken', model)
+  const currentToken = await getLocalArkoseToken()
+  mockSendPostMessage()
+  return new Promise((resolve) => {
+    const intervalDelay = 100
+    const maxLoop = (10 * 1000) / intervalDelay
+    let loop = 0
+    const timer = setInterval(async () => {
+      const newToken = await getLocalArkoseToken()
+      if (newToken && newToken.token !== currentToken?.token) {
+        clearInterval(timer)
+        resolve(newToken.token)
+      }
+      if (loop > maxLoop) {
+        clearInterval(timer)
+        resolve('')
+      }
+      loop++
+    }, intervalDelay)
+  })
+}
+
 class ChatGPTConversation {
   id: string
   token: string
@@ -282,6 +391,7 @@ class ChatGPTConversation {
     let resultText = ''
     let resultMessageId = ''
     const settings = await getChromeExtensionSettings()
+    const arkoseToken = await generateArkoseToken(this.model)
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: CHAT_GPT_PROVIDER.OPENAI,
       method: 'POST',
@@ -322,6 +432,11 @@ class ChatGPTConversation {
             ? {
                 // NOTE: 只有创建新的对话时才需要传入插件
                 plugin_ids: settings.currentPlugins,
+              }
+            : {},
+          arkoseToken
+            ? {
+                arkose_token: arkoseToken,
               }
             : {},
         ),

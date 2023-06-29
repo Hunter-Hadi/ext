@@ -1,34 +1,17 @@
 import React, { FC, useMemo } from 'react'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import WikiText from '@/components/WikiText'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { domain2Favicon } from '@/utils'
 import Tooltip from '@mui/material/Tooltip'
-import Button from '@mui/material/Button'
+// import Button from '@mui/material/Button'
 
 const ContextMenuItemPreviewTooltip: FC<{
   item: IContextMenuItem
-  isGroup?: boolean
+  children: React.ReactNode
 }> = (props) => {
-  const { item, isGroup } = props
-  const fontSx = useMemo(() => {
-    return isGroup
-      ? {
-          fontSize: 12,
-          color: 'text.secondary',
-        }
-      : {
-          fontSize: 14,
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          display: '-webkit-box',
-          WebkitLineClamp: 1,
-          WebkitBoxOrient: 'vertical',
-          wordBreak: 'break-word',
-          color: 'text.primary',
-        }
-  }, [isGroup])
+  const { item, children } = props
+  // const isGroup = item.data.type === 'group'
   const visibilitySetting = useMemo(() => {
     if (item.data.visibility) {
       const title = item.data.visibility.isWhitelistMode
@@ -51,24 +34,24 @@ const ContextMenuItemPreviewTooltip: FC<{
     }
     return null
   }, [item.data.visibility])
-  const promptText = useMemo(() => {
-    if (item.data?.actions && item.data.actions.length > 0) {
-      const prompt = item.data.actions.find(
-        (action) => action.type === 'RENDER_CHATGPT_PROMPT',
-      )
-      if (prompt) {
-        return prompt.parameters.template
-      }
-    }
-    return ''
-  }, [item.data])
+  // const promptText = useMemo(() => {
+  //   if (item.data?.actions && item.data.actions.length > 0) {
+  //     const prompt = item.data.actions.find(
+  //       (action) => action.type === 'RENDER_CHATGPT_PROMPT',
+  //     )
+  //     if (prompt) {
+  //       return prompt.parameters.template
+  //     }
+  //   }
+  //   return ''
+  // }, [item.data])
   return (
-    <WikiText
-      text={item.text}
-      wiki={
+    <Tooltip
+      placement={'right'}
+      arrow
+      title={
         <Stack
-          width={416}
-          spacing={2}
+          width={200}
           component={'div'}
           onClick={(event) => {
             event.stopPropagation()
@@ -110,41 +93,42 @@ const ContextMenuItemPreviewTooltip: FC<{
               </Stack>
             </Stack>
           )}
-          {!isGroup && (
-            <Stack>
-              <Typography fontSize={14} color={'text.secondary'}>
-                Prompt:
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 14,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  display: '-webkit-box',
-                  WebkitLineClamp: 2,
-                  WebkitBoxOrient: 'vertical',
-                  wordBreak: 'break-word',
-                  color: 'text.primary',
-                }}
-              >
-                {promptText || 'No prompt is set for this item.'}
-              </Typography>
-            </Stack>
-          )}
-          <Stack>
-            <Typography fontSize={14} color={'text.secondary'}>
-              Learn more:
-            </Typography>
-            <Stack direction={'row'} spacing={1}>
-              <Button size={'small'} color={'primary'} variant={'contained'}>
-                Edit
-              </Button>
-            </Stack>
-          </Stack>
+          {/*{!isGroup && (*/}
+          {/*  <Stack>*/}
+          {/*    <Typography fontSize={14} color={'text.secondary'}>*/}
+          {/*      Prompt:*/}
+          {/*    </Typography>*/}
+          {/*    <Typography*/}
+          {/*      sx={{*/}
+          {/*        fontSize: 14,*/}
+          {/*        overflow: 'hidden',*/}
+          {/*        textOverflow: 'ellipsis',*/}
+          {/*        display: '-webkit-box',*/}
+          {/*        WebkitLineClamp: 2,*/}
+          {/*        WebkitBoxOrient: 'vertical',*/}
+          {/*        wordBreak: 'break-word',*/}
+          {/*        color: 'text.primary',*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      {promptText || 'No prompt is set for this item.'}*/}
+          {/*    </Typography>*/}
+          {/*  </Stack>*/}
+          {/*)}*/}
+          {/*<Stack>*/}
+          {/*  <Typography fontSize={14} color={'text.secondary'}>*/}
+          {/*    Learn more:*/}
+          {/*  </Typography>*/}
+          {/*  <Stack direction={'row'} spacing={1}>*/}
+          {/*    <Button size={'small'} color={'primary'} variant={'contained'}>*/}
+          {/*      Edit*/}
+          {/*    </Button>*/}
+          {/*  </Stack>*/}
+          {/*</Stack>*/}
         </Stack>
       }
-      textProps={fontSx}
-    />
+    >
+      {children as any}
+    </Tooltip>
   )
 }
 export default ContextMenuItemPreviewTooltip

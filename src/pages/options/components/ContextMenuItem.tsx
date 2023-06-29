@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { useMemo, useState } from 'react'
 import { NodeRender } from '@minoru/react-dnd-treeview'
 import { ContextMenuIcon } from '@/features/contextMenu'
@@ -34,139 +35,157 @@ const ContextMenuItem = (props: {
     return Math.max(0, depth) * 24 + DRAG_ICON_SIZE
   }, [DRAG_ICON_SIZE])
   return (
-    <Stack
-      direction={'row'}
-      alignItems={'center'}
-      className={isDropTarget ? 'dragTarget' : ''}
-      height={28}
-      sx={{
-        position: 'relative',
-        cursor: isGroup ? 'pointer' : 'default',
-        bgcolor: (t) =>
-          isHover || isActive
-            ? t.palette.mode === 'dark'
-              ? 'rgba(255, 255, 255, 0.08)'
-              : 'rgba(55, 53, 47, 0.08)'
-            : 'unset',
-        borderRadius: '3px',
-        pl: memoPaddingLeft + 'px',
-      }}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      onClick={() => {
-        if (isGroup) {
-          onToggle()
-        }
-      }}
-    >
-      {node.droppable && (
-        <Box
-          sx={{
-            position: 'absolute',
-            left: Math.max(0, memoPaddingLeft - DRAG_ICON_SIZE) + 'px',
-            flexShrink: 0,
-            height: DRAG_ICON_SIZE,
-            width: DRAG_ICON_SIZE,
-            opacity: disabledDrag ? 0 : 1,
-          }}
-        >
-          {/*<span style={{ position: 'absolute', left: 200 }}>*/}
-          {/*  {depth},{memoPaddingLeft},{Math.max(0, memoPaddingLeft - DRAG_ICON_SIZE)}*/}
-          {/*</span>*/}
-          {node.data.editable ? (
-            <div ref={handleRef}>
-              <DragIndicatorIcon
-                sx={{
-                  fontSize: DRAG_ICON_SIZE,
-                  cursor: 'move',
-                  color: 'inherit',
-                }}
-              />
-            </div>
-          ) : (
-            <div
-              ref={handleRef}
-              style={{
-                zIndex: -1,
-                userSelect: 'none',
-                opacity: 0,
-                width: 1,
-                height: 1,
-              }}
-            />
-          )}
-        </Box>
-      )}
-      {isGroup && (
-        <ExpandCircleDownIcon
-          sx={{
-            mr: 1,
-            flexShrink: 0,
-            transform: isOpen ? 'rotate(0)' : 'rotate(-90deg)',
-            fontSize: 20,
-            color: 'inherit',
-          }}
-        />
-      )}
-      {node.data.icon && (
-        <ContextMenuIcon
-          icon={node.data.icon}
-          sx={{ mr: 1, flexShrink: 0, color: 'primary.main', fontSize: 16 }}
-        />
-      )}
+    <ContextMenuItemPreviewTooltip item={node}>
       <Stack
         direction={'row'}
         alignItems={'center'}
-        spacing={1}
-        flex={1}
-        width={0}
+        className={isDropTarget ? 'dragTarget' : ''}
+        height={28}
         sx={{
-          height: '100%',
+          position: 'relative',
+          cursor: isGroup ? 'pointer' : 'default',
+          bgcolor: (t) =>
+            isHover || isActive
+              ? t.palette.mode === 'dark'
+                ? 'rgba(255, 255, 255, 0.08)'
+                : 'rgba(55, 53, 47, 0.08)'
+              : 'unset',
+          borderRadius: '3px',
+          pl: memoPaddingLeft + 'px',
+        }}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        onClick={() => {
+          if (isGroup) {
+            onToggle()
+          }
         }}
       >
+        {node.droppable && (
+          <Box
+            sx={{
+              position: 'absolute',
+              left: Math.max(0, memoPaddingLeft - DRAG_ICON_SIZE) + 'px',
+              flexShrink: 0,
+              height: DRAG_ICON_SIZE,
+              width: DRAG_ICON_SIZE,
+              opacity: disabledDrag ? 0 : 1,
+            }}
+          >
+            {/*<span style={{ position: 'absolute', left: 200 }}>*/}
+            {/*  {depth},{memoPaddingLeft},{Math.max(0, memoPaddingLeft - DRAG_ICON_SIZE)}*/}
+            {/*</span>*/}
+            {node.data.editable ? (
+              <div ref={handleRef}>
+                <DragIndicatorIcon
+                  sx={{
+                    fontSize: DRAG_ICON_SIZE,
+                    cursor: 'move',
+                    color: 'inherit',
+                  }}
+                />
+              </div>
+            ) : (
+              <div
+                ref={handleRef}
+                style={{
+                  zIndex: -1,
+                  userSelect: 'none',
+                  opacity: 0,
+                  width: 1,
+                  height: 1,
+                }}
+              />
+            )}
+          </Box>
+        )}
+        {isGroup && (
+          <ExpandCircleDownIcon
+            sx={{
+              mr: 1,
+              flexShrink: 0,
+              transform: isOpen ? 'rotate(0)' : 'rotate(-90deg)',
+              fontSize: 20,
+              color: 'inherit',
+            }}
+          />
+        )}
+        {node.data.icon && (
+          <ContextMenuIcon
+            icon={node.data.icon}
+            sx={{ mr: 1, flexShrink: 0, color: 'primary.main', fontSize: 16 }}
+          />
+        )}
         <Stack
-          flex={1}
-          width={0}
           direction={'row'}
           alignItems={'center'}
           spacing={1}
-          height={'100%'}
-          sx={{}}
-        >
-          <ContextMenuItemPreviewTooltip
-            item={node}
-            isGroup={isGroup && isFirstDeep}
-          />
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          flexShrink={0}
+          flex={1}
+          width={0}
           sx={{
-            pl: 2,
             height: '100%',
           }}
         >
-          <TooltipIconButton
-            tooltipProps={{
-              placement: 'right',
-            }}
-            title={node.data.editable ? 'Edit' : 'Read only'}
-            size={'small'}
-            onClick={(event) => {
-              onEdit && onEdit(node)
-              event.stopPropagation()
+          <Stack
+            flex={1}
+            width={0}
+            direction={'row'}
+            alignItems={'center'}
+            spacing={1}
+            height={'100%'}
+            sx={{}}
+          >
+            {isGroup && isFirstDeep ? (
+              <Typography fontSize={12} color={'text.secondary'}>
+                {node.text}
+              </Typography>
+            ) : (
+              <Typography
+                fontSize={14}
+                color={'text.primary'}
+                sx={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 1,
+                  WebkitBoxOrient: 'vertical',
+                  wordBreak: 'break-word',
+                }}
+              >
+                {node.text}
+              </Typography>
+            )}
+          </Stack>
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            flexShrink={0}
+            sx={{
+              pl: 2,
+              height: '100%',
             }}
           >
-            {node.data.editable ? (
-              <ContextMenuIcon icon={'DefaultIcon'} sx={{ fontSize: 20 }} />
-            ) : (
-              <ContextMenuIcon icon={'Lock'} sx={{ fontSize: 20 }} />
-            )}
-          </TooltipIconButton>
+            <TooltipIconButton
+              tooltipProps={{
+                placement: 'right',
+              }}
+              title={node.data.editable ? 'Edit' : 'Read only'}
+              size={'small'}
+              onClick={(event) => {
+                onEdit && onEdit(node)
+                event.stopPropagation()
+              }}
+            >
+              {node.data.editable ? (
+                <ContextMenuIcon icon={'DefaultIcon'} sx={{ fontSize: 20 }} />
+              ) : (
+                <ContextMenuIcon icon={'Lock'} sx={{ fontSize: 20 }} />
+              )}
+            </TooltipIconButton>
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
+    </ContextMenuItemPreviewTooltip>
   )
 }
 export default ContextMenuItem

@@ -133,16 +133,20 @@ async function updateManifest() {
   fs.writeJsonSync(`${buildDir}/manifest.json`, manifest, { spaces: 2 })
 }
 async function buildFiles () {
-  const startTimestamp = Date.now()
-  console.log('env -> ', isProduction ? 'production' : 'development')
-  await cleanBuildDir()
-  await esbuildConfig()
-  await updateManifest()
-  // TODO 不参与每次构建，只有在需要时才构建
-  await localesCreator()
-  // computed time with seconds
-  const time = ((Date.now() - startTimestamp) / 1000).toFixed(2)
-  console.info(`Build finished in ${time}s`)
+  try {
+    const startTimestamp = Date.now()
+    console.log('env -> ', isProduction ? 'production' : 'development')
+    await cleanBuildDir()
+    await esbuildConfig()
+    await updateManifest()
+    // TODO 不参与每次构建，只有在需要时才构建
+    await localesCreator()
+    // computed time with seconds
+    const time = ((Date.now() - startTimestamp) / 1000).toFixed(2)
+    console.info(`Build finished in ${time}s`)
+  } catch (e) {
+    console.error(e.message || e)
+  }
 }
 
 async function release() {

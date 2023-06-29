@@ -40,7 +40,7 @@ const useInjectShortCutsRunTime = () => {
               )
             } else {
               await setShortCuts(actions)
-              await runShortCuts()
+              await runShortCuts(true)
               window.postMessage(
                 {
                   id: 'USECHATGPT_WEB_INJECT_RESPONSE',

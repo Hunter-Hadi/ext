@@ -30,14 +30,17 @@ const ContextMenuItemPreviewTooltip: FC<{
   const { item, children } = props
   // const isGroup = item.data.type === 'group'
   const visibilitySetting = useMemo(() => {
-    if (item.data.visibility) {
-      const selectedModeText = item.data.visibility.isWhitelistMode
+    const settings = item?.data?.visibility || {
+      isWhitelistMode: false,
+      whitelist: [],
+      blacklist: [],
+    }
+    if (settings) {
+      const selectedModeText = settings.isWhitelistMode
         ? 'Enable on selected websites:'
         : 'Disable on selected websites:'
       const domains = (
-        item.data.visibility.isWhitelistMode
-          ? item.data.visibility.whitelist
-          : item.data.visibility.blacklist
+        settings.isWhitelistMode ? settings.whitelist : settings.blacklist
       ).map((domain) => {
         return {
           domain,
@@ -45,7 +48,7 @@ const ContextMenuItemPreviewTooltip: FC<{
         }
       })
       let isEmpty = false
-      const emptyText = item.data.visibility.isWhitelistMode
+      const emptyText = settings.isWhitelistMode
         ? '❌ Disabled on all websites'
         : '✅ Enabled on all websites'
       if (domains.length === 0) {
@@ -59,7 +62,7 @@ const ContextMenuItemPreviewTooltip: FC<{
       }
     }
     return null
-  }, [item.data.visibility])
+  }, [item])
   // const promptText = useMemo(() => {
   //   if (item.data?.actions && item.data.actions.length > 0) {
   //     const prompt = item.data.actions.find(
@@ -92,7 +95,7 @@ const ContextMenuItemPreviewTooltip: FC<{
           {visibilitySetting && visibilitySetting.isEmpty && (
             <Stack spacing={0.5}>
               <Typography fontSize={14} color={'text.secondary'}>
-                Mode:
+                Visibility:
               </Typography>
               <Typography fontSize={14} color={'text.primary'}>
                 {visibilitySetting.emptyText}

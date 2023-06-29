@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
@@ -14,8 +14,13 @@ import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
-import { setChromeExtensionSettings } from '@/background/utils'
+import {
+  backgroundGetUrlContent,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 import { ChatGPTConversationState } from '@/features/gmail/store'
+import useEffectOnce from '@/hooks/useEffectOnce'
+import Browser from 'webextension-polyfill'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -31,17 +36,12 @@ const ArrowDropDownIconCustom = () => {
   )
 }
 
-const WHITE_LIST_MODELS = [
-  'gpt-4-mobile',
-  'text-davinci-002-render-sha-mobile',
-  'text-davinci-002-render-sha',
-]
-
 const ChatGPTOpenAIModelSelector: FC = () => {
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   const { resetConversation } = useMessageWithChatGPT('')
   const memoModels = useMemo(() => {
     if (appSettings.models && appSettings.models.length > 0) {
@@ -63,11 +63,35 @@ const ChatGPTOpenAIModelSelector: FC = () => {
   }
   useEffect(() => {
     if (appSettings.currentModel) {
-      if (!WHITE_LIST_MODELS.includes(appSettings.currentModel)) {
+      if (!whiteListModels.includes(appSettings.currentModel)) {
         updateNewModel('text-davinci-002-render-sha')
       }
     }
-  }, [appSettings.currentModel])
+  }, [appSettings.currentModel, whiteListModels])
+  useEffectOnce(() => {
+    Browser.storage.local.get('CHAT_GPT_WHITE_LIST_MODELS').then((result) => {
+      const cacheModels = JSON.parse(result.CHAT_GPT_WHITE_LIST_MODELS || '[]')
+      setWhiteListModels(cacheModels)
+      backgroundGetUrlContent(
+        'https://www.phtracker.com/crx/info/provider',
+      ).then((result) => {
+        if (result.success && result.data && result.data.body) {
+          try {
+            const data = JSON.parse(result.data.body)
+            if (data.models) {
+              // set to local storage
+              Browser.storage.local.set({
+                CHAT_GPT_WHITE_LIST_MODELS: JSON.stringify(data.models),
+              })
+              setWhiteListModels(data.models)
+            }
+          } catch (e) {
+            console.log(e)
+          }
+        }
+      })
+    })
+  })
   return (
     <>
       {memoModels.length > 1 ? (
@@ -148,7 +172,7 @@ const ChatGPTOpenAIModelSelector: FC = () => {
             }}
           >
             {memoModels.map((model) => {
-              const isDisabled = !WHITE_LIST_MODELS.includes(model.slug)
+              const isDisabled = !whiteListModels.includes(model.slug)
               return (
                 <MenuItem
                   disabled={isDisabled}
@@ -173,15 +197,17 @@ const ChatGPTOpenAIModelSelector: FC = () => {
                     title={
                       <Stack spacing={1} width={'160px'}>
                         <Stack textAlign={'left'} width={'100%'} spacing={1}>
-                          <Typography
-                            fontSize={'14px'}
-                            color={'text.primary'}
-                            textAlign={'left'}
-                            fontWeight={700}
-                          >
-                            Model disabled in extension for upgrade. Please try
-                            later.
-                          </Typography>
+                          {isDisabled && (
+                            <Typography
+                              fontSize={'14px'}
+                              color={'text.primary'}
+                              textAlign={'left'}
+                              fontWeight={700}
+                            >
+                              Model disabled in extension for upgrade. Please
+                              try later.
+                            </Typography>
+                          )}
                           <Typography
                             fontSize={'14px'}
                             color={'text.primary'}

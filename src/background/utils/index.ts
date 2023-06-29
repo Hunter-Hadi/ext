@@ -27,6 +27,7 @@ import {
   IChromeExtensionSettingsUpdateFunction,
 } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -444,4 +445,42 @@ export const chromeExtensionLogout = async () => {
   await Browser.storage.local.remove(
     CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
   )
+}
+
+export const backgroundGetUrlContent = async (
+  url: string,
+  maxWaitTime = 15 * 1000,
+): Promise<{
+  success: boolean
+  data: {
+    success: boolean
+    title?: string
+    body?: string
+    url?: string
+  }
+  message?: string
+}> => {
+  const backgroundConversation = new ContentScriptConnectionV2({
+    runtime: 'shortcut',
+  })
+  const fallback = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          success: false,
+          message: 'timeout',
+          data: undefined,
+        })
+      }, maxWaitTime)
+    })
+  }
+  const response = backgroundConversation.postMessage({
+    event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
+    data: {
+      URL: url,
+    },
+  }) as any
+  return Promise.race([response, fallback()]).then((result) => {
+    return result
+  })
 }

@@ -219,7 +219,7 @@ export const waitArkoseTokenIframeLoaded = async () => {
     // not found
     // 'https://chat.openai.com/?model=gpt-4'
     location.href = 'https://chat.openai.com/?model=gpt-4'
-    return undefined
+    throw new Error('Network error.')
   }
   // max wait 10s
   const timeout = 10000
@@ -235,7 +235,7 @@ export const waitArkoseTokenIframeLoaded = async () => {
         console.log('waitArkoseTokenIframeLoaded', count)
         // 说明不是第一次就找到，给点时间让content script加载
         await new Promise((resolve) => {
-          setTimeout(resolve, 2000)
+          setTimeout(resolve, 3000)
         })
       }
       return iframe
@@ -391,7 +391,15 @@ class ChatGPTConversation {
     let resultText = ''
     let resultMessageId = ''
     const settings = await getChromeExtensionSettings()
-    const arkoseToken = await generateArkoseToken(this.model)
+    let arkoseToken = undefined
+    try {
+      arkoseToken = await generateArkoseToken(this.model)
+    } catch (e) {
+      params.onEvent({
+        type: 'error',
+        data: { message: (e as any).message || 'Network error.', detail: '' },
+      })
+    }
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: CHAT_GPT_PROVIDER.OPENAI,
       method: 'POST',

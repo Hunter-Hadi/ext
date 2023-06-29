@@ -29,9 +29,9 @@ import useInterval from '@/hooks/useInterval'
 
 const APP_NAME = String(process.env.APP_NAME)
 
-const setDeamonProcessTabTitle = () => {
+const setDaemonProcessTabTitle = () => {
   setInterval(() => {
-    document.title = `${APP_NAME} daemon process is running...`
+    document.title = `${APP_NAME} - AI Copilot for the Web`
   }, 1000)
   return
 }
@@ -60,7 +60,7 @@ const useDaemonProcess = () => {
   )
   const [showDaemonProcessBar, setShowDaemonProcessBar] = useState(false)
   const [pageSuccessLoaded, setPageSuccessLoaded] = useState(false)
-
+  const isInitRef = useRef(false)
   const isPageLoad = () => {
     const h1Elements = document.body.querySelectorAll('h1')
     for (let i = 0; i < h1Elements.length; i++) {
@@ -69,6 +69,13 @@ const useDaemonProcess = () => {
         innerText.indexOf('ChatGPT') > -1 ||
         innerText.indexOf('New chat') > -1
       ) {
+        setPageSuccessLoaded(true)
+        return
+      }
+    }
+    const textareaElements = document.body.querySelectorAll('textarea')
+    for (let i = 0; i < textareaElements.length; i++) {
+      if (textareaElements[i] instanceof HTMLTextAreaElement) {
         setPageSuccessLoaded(true)
         return
       }
@@ -82,7 +89,7 @@ const useDaemonProcess = () => {
     }
     const newChatA = document.querySelectorAll('a')
     for (let i = 0; i < newChatA.length; i++) {
-      if ((navA[i] as HTMLElement)?.innerText === 'New chat') {
+      if ((newChatA[i] as HTMLElement)?.innerText === 'New chat') {
         setPageSuccessLoaded(true)
         return
       }
@@ -91,6 +98,10 @@ const useDaemonProcess = () => {
   }
   useEffect(() => {
     const timer = setInterval(() => {
+      if (isInitRef.current) {
+        clearInterval(timer)
+        return
+      }
       isPageLoad()
     }, 1000)
     return () => {
@@ -99,6 +110,7 @@ const useDaemonProcess = () => {
   }, [])
   useEffect(() => {
     if (pageSuccessLoaded) {
+      isInitRef.current = true
       const clientPort = new ContentScriptConnectionV2({
         runtime: 'client',
       })
@@ -158,7 +170,7 @@ const useDaemonProcess = () => {
                 await port.postMessage({
                   event: 'OpenAIDaemonProcess_setDaemonProcess',
                 })
-                setDeamonProcessTabTitle()
+                setDaemonProcessTabTitle()
                 const nextRoot = document.getElementById('__next')
                 if (nextRoot && !isDisabledTopBar()) {
                   nextRoot?.classList.add('use-chat-gpt-ai-running')

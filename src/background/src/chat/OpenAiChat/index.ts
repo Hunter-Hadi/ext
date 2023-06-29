@@ -34,6 +34,7 @@ class OpenAIChat {
       if (runtime === 'daemon_process') {
         switch (event) {
           case 'OpenAIDaemonProcess_daemonProcessExist': {
+            if (!this.active) break
             let isExist =
               (this.chatGPTProxyInstance &&
                 (await checkChatGPTProxyInstance(this.chatGPTProxyInstance))) ||

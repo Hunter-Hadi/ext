@@ -55,6 +55,14 @@ const VisibilitySettingCard: FC<{
       ? visibilitySetting.whitelist
       : visibilitySetting.blacklist
   }, [visibilitySetting])
+  const emptyText = useMemo(() => {
+    if (memoDomains.length > 0) {
+      return ''
+    }
+    return visibilitySetting.isWhitelistMode
+      ? '❌ Disabled on all websites'
+      : '✅ Enabled on all websites'
+  }, [memoDomains, visibilitySetting.isWhitelistMode])
   useFocus(() => {
     getChromeExtensionButtonSettings('textSelectPopupButton').then(
       (textSelectPopupSetting) => {
@@ -124,27 +132,35 @@ const VisibilitySettingCard: FC<{
           </VisibilitySettingCardItem>
           <VisibilitySettingCardItem label={'Selected websites'}>
             <Stack sx={{ width: '100%' }} spacing={2}>
-              <DomainSelect
-                sx={{
-                  width: 220,
-                }}
-                onChange={async (value) => {
-                  if (!value) {
-                    return
-                  }
-                  if (visibilitySetting.isWhitelistMode) {
-                    setVisibilitySetting({
-                      ...visibilitySetting,
-                      whitelist: uniq([value, ...visibilitySetting.whitelist]),
-                    })
-                  } else {
-                    setVisibilitySetting({
-                      ...visibilitySetting,
-                      blacklist: uniq([value, ...visibilitySetting.blacklist]),
-                    })
-                  }
-                }}
-              />
+              <Stack direction={'row'} spacing={2} alignItems={'center'}>
+                <DomainSelect
+                  sx={{
+                    width: 220,
+                  }}
+                  onChange={async (value) => {
+                    if (!value) {
+                      return
+                    }
+                    if (visibilitySetting.isWhitelistMode) {
+                      setVisibilitySetting({
+                        ...visibilitySetting,
+                        whitelist: uniq([
+                          value,
+                          ...visibilitySetting.whitelist,
+                        ]),
+                      })
+                    } else {
+                      setVisibilitySetting({
+                        ...visibilitySetting,
+                        blacklist: uniq([
+                          value,
+                          ...visibilitySetting.blacklist,
+                        ]),
+                      })
+                    }
+                  }}
+                />
+              </Stack>
               <Stack
                 direction={'row'}
                 flexWrap={'wrap'}
@@ -155,6 +171,9 @@ const VisibilitySettingCard: FC<{
                   maxHeight: 144,
                 }}
               >
+                <Typography fontSize={14} color={'text.primary'}>
+                  {emptyText}
+                </Typography>
                 {memoDomains.map((domain) => (
                   <DomainDeleteItem
                     key={domain}

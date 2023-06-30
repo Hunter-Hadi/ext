@@ -63,7 +63,10 @@ const ChatGPTOpenAIModelSelector: FC = () => {
   }
   useEffect(() => {
     if (appSettings.currentModel) {
-      if (!whiteListModels.includes(appSettings.currentModel)) {
+      if (
+        whiteListModels.length > 0 &&
+        !whiteListModels.includes(appSettings.currentModel)
+      ) {
         updateNewModel('text-davinci-002-render-sha')
       }
     }

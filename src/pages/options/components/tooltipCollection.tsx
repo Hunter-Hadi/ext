@@ -186,5 +186,69 @@ const RunPromptTooltip = () => {
     </Box>
   )
 }
+const PDFTooltip = () => {
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
 
-export { TemplateTooltip, RunPromptTooltip }
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const open = Boolean(anchorEl)
+  const id = open ? 'run-prompt-tooltip' : undefined
+  return (
+    <Box>
+      <IconButton aria-describedby={'run-prompt-tooltip'} onClick={handleClick}>
+        <HelpOutlineIcon fontSize="small" />
+      </IconButton>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <Stack
+          spacing={2}
+          maxWidth={'600px'}
+          maxHeight={420}
+          overflow="auto"
+          p={1}
+        >
+          <Typography variant="body2">
+            <b>How to activate the extension on PDF file</b>
+          </Typography>
+          <Stack>
+            <Typography variant="body2">
+              {`Step 1: Open PDF file in browser`}
+            </Typography>
+            <Typography variant="body2">
+              {`Step 2: Enable "PDF AI viewer" in extension settings`}
+            </Typography>
+            <Typography variant="body2">
+              {`Step 3: Enable "Allow access to file URLs" in Chrome settings`}
+            </Typography>
+            <Typography variant="body2">
+              {`Step 4: Re-open PDF in browser to use prompt on selected text`}
+            </Typography>
+          </Stack>
+          <Typography variant="body2">
+            {`Protip: Make sure to enable both "PDF AI viewer" and "Allow access to file URLs" to activate the extension on PDF file`}
+          </Typography>
+          <YoutubePlayerBox
+            borderRadius={8}
+            youtubeLink={'https://www.youtube.com/embed/Gvp3chuxzCk'}
+          />
+        </Stack>
+      </Popover>
+    </Box>
+  )
+}
+
+export { TemplateTooltip, RunPromptTooltip, PDFTooltip }

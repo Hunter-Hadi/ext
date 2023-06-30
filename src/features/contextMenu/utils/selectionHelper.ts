@@ -1027,7 +1027,7 @@ export const getSelectionBoundaryElement = (startContainer = true) => {
         element.tagName === 'HTML' ||
         element.tagName === 'IFRAME'
       ) {
-        return false
+        return undefined
       }
       if (isElementCanEditable(element)) {
         return element
@@ -1044,9 +1044,12 @@ export const getSelectionBoundaryElement = (startContainer = true) => {
         if (inputOrTextarea && isElementCanEditable(inputOrTextarea)) {
           return inputOrTextarea
         }
-      } else {
-        return element
       }
+      const { editableElement, isEditableElement } = getEditableElement(element)
+      if (isEditableElement) {
+        return editableElement
+      }
+      return undefined
     }
   }
 }

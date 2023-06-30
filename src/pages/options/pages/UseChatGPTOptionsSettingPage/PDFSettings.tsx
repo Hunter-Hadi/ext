@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl'
 import Switch from '@mui/material/Switch'
 import BulletList from '@/components/BulletList'
 import CloseAlert from '@/components/CloseAlert'
+import { PDFTooltip } from '@/pages/options/components/tooltipCollection'
 
 const PDFSettings: FC<{
   defaultValue?: {
@@ -14,15 +15,18 @@ const PDFSettings: FC<{
 }> = ({ defaultValue, onChange }) => {
   return (
     <Stack spacing={2}>
-      <Typography
-        fontSize={20}
-        fontWeight={700}
-        color={'text.primary'}
-        component={'h2'}
-        id={'pdf'}
-      >
-        PDF AI viewer
-      </Typography>
+      <Stack direction={'row'} alignItems="center">
+        <Typography
+          fontSize={20}
+          fontWeight={700}
+          color={'text.primary'}
+          component={'h2'}
+          id={'pdf'}
+        >
+          PDF AI viewer
+        </Typography>
+        <PDFTooltip />
+      </Stack>
       <CloseAlert icon={<></>} severity={'info'}>
         <Stack spacing={1}>
           <Typography fontSize={14} fontWeight={700} color={'text.primary'}>

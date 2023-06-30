@@ -360,9 +360,11 @@ export const getCurrentDomainHost = () => {
     const host = (window.location.host || location.host)
       .replace(/^www\./, '')
       .replace(/:\d+$/, '')
+    // lark doc的子域名是动态的，所以需要特殊处理
     if (host.includes('larksuite.com')) {
       return 'larksuite.com'
     }
+    // outlook的邮件才需要特殊处理
     return host
   } catch (e) {
     return ''

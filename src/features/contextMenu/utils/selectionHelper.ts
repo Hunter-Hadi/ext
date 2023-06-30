@@ -14,13 +14,30 @@ import {
   ROOT_CLIPBOARD_ID,
   ROOT_FLOATING_INPUT_ID,
 } from '@/constants'
-/**
- * 以下网站不支持植入标记，直接返回选区内容并把选区存入cache
- */
+
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = [
   'mail.google.com',
   'outlook.live.com',
 ] as const
+
+/**
+ * 判断是否需要创建selection marker
+ * 一般来说就是处理后的网站，例如gmail和outlook.com/mail
+ */
+const isDomainNeedCreateSelectionMarker = () => {
+  const fullPath = window.location.href
+  const host = getCurrentDomainHost()
+  if (host) {
+    if (host === 'mail.google.com') {
+      return true
+    }
+    if (host === 'outlook.live.com') {
+      // 便签页面不需要创建selection marker
+      return !/mail\/\d+\/notes/.test(fullPath)
+    }
+  }
+  return false
+}
 
 class CacheSelectionRange {
   private static rangeMap = new Map<string, Range>()
@@ -248,9 +265,7 @@ export const createSelectionMarker = (
             /**
              * 如果不在白名单中，就不创建span标记，缓存用户选区就行
              */
-            if (
-              !CREATE_SELECTION_MARKER_WHITE_LIST_HOST.includes(host as any)
-            ) {
+            if (!isDomainNeedCreateSelectionMarker()) {
               console.log(
                 'createSelectionMarker block host',
                 host,

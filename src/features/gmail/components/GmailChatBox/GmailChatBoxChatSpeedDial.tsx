@@ -81,7 +81,7 @@ const GmailChatBoxChatSpeedDial: FC<{
               <ContextMenuIcon icon={'Restart'} />
             </IconButton>
           }
-          tooltipTitle={'Restart app'}
+          tooltipTitle={'Restart extension'}
         />
       </SpeedDial>
       {/*restart app dialog*/}
@@ -94,16 +94,19 @@ const GmailChatBoxChatSpeedDial: FC<{
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+          {`Restart MaxAI.me extension`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
+            {`A quick extension restart can clear all existing glitches.`}
+            <br />
+            {`Don't forget to reload all pages to activate the extension afterwards.`}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button
+            sx={{}}
+            variant={'outlined'}
             onClick={() => {
               handleCloseRestartAppDialog()
             }}
@@ -111,6 +114,8 @@ const GmailChatBoxChatSpeedDial: FC<{
             Disagree
           </Button>
           <Button
+            color={'primary'}
+            variant={'contained'}
             onClick={() => {
               onClick && onClick('restart')
               handleCloseRestartAppDialog()

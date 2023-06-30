@@ -10,6 +10,8 @@ import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 import dayjs from 'dayjs'
+import Alert from '@mui/material/Alert'
+import Link from '@mui/material/Link'
 
 const models = list2Options(OPENAI_API_MODELS)
 
@@ -69,6 +71,35 @@ const ChatGPTOpenAIAPIModelSelector: FC = () => {
             title={
               <Stack spacing={1} width={'160px'}>
                 <Stack textAlign={'left'} width={'100%'} spacing={2}>
+                  <Alert
+                    sx={{
+                      px: 1,
+                      py: 0,
+                      '& > :first-child': {
+                        display: 'none',
+                      },
+                    }}
+                    severity={'info'}
+                    icon={<></>}
+                  >
+                    <Typography
+                      fontSize={'12px'}
+                      color={'text.primary'}
+                      textAlign={'left'}
+                    >
+                      <span>{`Protip: `}</span>
+                      <b>{`"Model"`}</b>
+                      <span>{` selector on `}</span>
+                      <Link
+                        target={'_blank'}
+                        href="https://platform.openai.com/playground?mode=chat"
+                        rel="noreferrer"
+                      >
+                        {`OpenAI Playground`}
+                      </Link>
+                      <span>{` shows your active models.`}</span>
+                    </Typography>
+                  </Alert>
                   <Typography
                     fontSize={'14px'}
                     color={'text.primary'}

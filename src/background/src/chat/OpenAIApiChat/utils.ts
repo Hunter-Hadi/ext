@@ -13,7 +13,7 @@ export const getOpenAIApiSettings =
     const defaultConfig = {
       apiKey: '',
       apiHost: 'https://api.openai.com',
-      apiModel: OPENAI_API_MODELS[0],
+      apiModel: OPENAI_API_MODELS[0].value,
       temperature: 1,
     }
     try {

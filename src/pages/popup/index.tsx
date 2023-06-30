@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import React, { FC, useState } from 'react'
 import Stack from '@mui/material/Stack'
-import { APP_USE_CHAT_GPT_HOST, ROOT_CONTAINER_ID } from '@/constants'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
 import TooltipButton from '@/components/TooltipButton'
@@ -192,13 +192,14 @@ const init = async () => {
         tabUrl.startsWith('https://chrome.google.com/webstore') ||
         tabUrl.startsWith('https://chat.openai.com')
       if (isSpecialPage) {
-        throw new Error('isSpecialPage')
-      }
-      const appRoot = document.querySelector(
-        `#${ROOT_CONTAINER_ID}`,
-      ) as HTMLDivElement
-      if (!appRoot) {
-        throw new Error('no appRoot')
+        if (
+          tabUrl.includes('pages/pdf/web') &&
+          tabUrl.includes(Browser.runtime.id)
+        ) {
+          // pdf page
+        } else {
+          throw new Error('isSpecialPage')
+        }
       }
       if (tabId) {
         await Browser.tabs.sendMessage(tabId, {})

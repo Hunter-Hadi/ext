@@ -41,9 +41,11 @@
 .usechatgpt-ai__gmail-toolbar-button-wrapper--cta:before {
   display: none!important;
 }
-.usechatgpt-ai__gmail-toolbar-button-wrapper--cta .usechatgpt-ai__gmail-toolbar-button--cta.inboxsdk__button_icon{
-  opacity: .87;
+.usechatgpt-ai__gmail-toolbar-button-wrapper--cta .usechatgpt-ai__gmail-toolbar-button--cta.inboxsdk__button_icon,
+.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown .usechatgpt-ai__gmail-toolbar-button--dropdown.inboxsdk__button_icon{
+  opacity: 1;
 }
+
 
 .usechatgpt-ai__gmail-app-button.inboxsdk__button_icon{
   margin: 0;

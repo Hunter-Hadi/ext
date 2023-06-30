@@ -20,6 +20,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import BulletList from '@/components/BulletList'
 import { useSnackbar } from 'notistack'
 import debounce from 'lodash-es/debounce'
+import Tooltip from '@mui/material/Tooltip'
 
 const ChatGPTApiSettings: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
@@ -114,6 +115,67 @@ const ChatGPTApiSettings: FC = () => {
       <CloseAlert icon={<></>} severity={'info'} sx={{ mt: 2 }}>
         <Stack spacing={1}>
           <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
+            Identify your active API key models
+          </Typography>
+          <Stack sx={{ display: 'inline' }}>
+            <Typography fontSize={14} component={'span'}>
+              {`1. Visit the `}
+            </Typography>
+            <Tooltip
+              PopperProps={{
+                sx: {
+                  '& > div': {
+                    backgroundColor: 'transparent',
+                    maxWidth: 'none',
+                  },
+                },
+                style: {},
+              }}
+              title={
+                <Stack
+                  width={500}
+                  sx={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    bgcolor: 'background.paper',
+                    px: 2,
+                    py: 4,
+                    borderRadius: '4px',
+                  }}
+                >
+                  <img
+                    src={
+                      'https://www.maxai.me/assets/chrome-extension/openai-api-chat-playground.png'
+                    }
+                    alt={'open-key-create'}
+                    width={'460'}
+                    height={'auto'}
+                  />
+                </Stack>
+              }
+            >
+              <Link
+                fontSize={14}
+                target={'_blank'}
+                rel={`noreferrer noopener nofollow`}
+                href={'https://platform.openai.com/playground?mode=chat'}
+              >{`OpenAI Playground page`}</Link>
+            </Tooltip>
+            <Typography fontSize={14} component={'span'}>
+              {`.`}
+            </Typography>
+          </Stack>
+          <Typography fontSize={14} component={'span'}>
+            {`2. Select "Chat" mode.`}
+          </Typography>
+          <Typography fontSize={14} component={'span'}>
+            {`3. Click "Model" to view all models activated for your API key.`}
+          </Typography>
+        </Stack>
+      </CloseAlert>
+      <CloseAlert icon={<></>} severity={'info'} sx={{ mt: 2 }}>
+        <Stack spacing={1}>
+          <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
             How to obtain your OpenAI API key:
           </Typography>
           <Stack sx={{ display: 'inline' }}>
@@ -169,6 +231,7 @@ const ChatGPTApiSettings: FC = () => {
           </Typography>
         </Stack>
       </CloseAlert>
+
       <AppLoadingLayout loading={!loaded}>
         <Paper
           sx={{

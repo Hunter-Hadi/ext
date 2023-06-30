@@ -111,7 +111,7 @@ const GmailChatBoxChatSpeedDial: FC<{
               handleCloseRestartAppDialog()
             }}
           >
-            Disagree
+            Cancel
           </Button>
           <Button
             color={'primary'}
@@ -122,7 +122,7 @@ const GmailChatBoxChatSpeedDial: FC<{
             }}
             autoFocus
           >
-            Agree
+            Restart
           </Button>
         </DialogActions>
       </Dialog>

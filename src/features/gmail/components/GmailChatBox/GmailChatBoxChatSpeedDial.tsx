@@ -1,10 +1,17 @@
 import { SpeedDial } from '@mui/material'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import SpeedDialAction from '@mui/material/SpeedDialAction'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogActions from '@mui/material/DialogActions'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import Box from '@mui/material/Box'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const GmailChatBoxChatSpeedDial: FC<{
@@ -12,6 +19,13 @@ const GmailChatBoxChatSpeedDial: FC<{
   onClick?: (type: ChatSpeedDialType) => void
 }> = (props) => {
   const { onClick, disabledMainButton } = props
+  const [restartAppDialogVisible, setRestartAppDialogVisible] = useState(false)
+  const handleCloseRestartAppDialog = () => {
+    setRestartAppDialogVisible(false)
+    setTimeout(() => {
+      onClick && onClick('focus')
+    }, 100)
+  }
   return (
     <Box
       sx={{
@@ -50,22 +64,63 @@ const GmailChatBoxChatSpeedDial: FC<{
               onClick && onClick('new')
             }}
             placement={'left'}
-            title={'New Chat'}
-            sx={{}}
+            title={'New chat'}
           >
             <CleanChatBoxIcon sx={{ color: '#fff' }} />
           </TooltipIconButton>
         }
       >
         <SpeedDialAction
-          icon={<ContextMenuIcon icon={'Restart'} />}
+          icon={
+            <IconButton
+              onClick={() => {
+                console.log('restart dialog')
+                setRestartAppDialogVisible(true)
+              }}
+            >
+              <ContextMenuIcon icon={'Restart'} />
+            </IconButton>
+          }
           tooltipTitle={'Restart app'}
-          onClick={() => {
-            console.log('restart')
-            onClick && onClick('restart')
-          }}
         />
       </SpeedDial>
+      {/*restart app dialog*/}
+      <Dialog
+        open={restartAppDialogVisible}
+        onClose={() => {
+          handleCloseRestartAppDialog()
+        }}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              handleCloseRestartAppDialog()
+            }}
+          >
+            Disagree
+          </Button>
+          <Button
+            onClick={() => {
+              onClick && onClick('restart')
+              handleCloseRestartAppDialog()
+            }}
+            autoFocus
+          >
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   )
 }

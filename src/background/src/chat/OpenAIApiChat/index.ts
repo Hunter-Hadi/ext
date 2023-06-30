@@ -24,7 +24,10 @@ const SYSTEM_MESSAGE: IOpenAIApiChatMessage = {
   role: 'system',
   content: CHATGPT_SYSTEM_MESSAGE,
 }
-const CONTEXT_SIZE = 10
+/**
+ * @deprecated - 用include_history代替
+ */
+// const CONTEXT_SIZE = 10
 
 class OpenAiApiChat {
   status: ChatStatus = 'needAuth'
@@ -42,10 +45,14 @@ class OpenAiApiChat {
       messages: [],
     }
   }
-  private buildMessages(): IOpenAIApiChatMessage[] {
+  private buildMessages(historyMessageCount: number): IOpenAIApiChatMessage[] {
+    // return [
+    //   SYSTEM_MESSAGE,
+    //   ...this.conversationContext!.messages.slice(-(CONTEXT_SIZE + 1)),
+    // ]
     return [
       SYSTEM_MESSAGE,
-      ...this.conversationContext!.messages.slice(-(CONTEXT_SIZE + 1)),
+      ...this.conversationContext!.messages.slice(-(historyMessageCount + 1)),
     ]
   }
   async preAuth() {
@@ -83,7 +90,7 @@ class OpenAiApiChat {
       // include_history = false,
       // streaming = true,
       regenerate = false,
-      // max_history_message_cnt = 0,
+      max_history_message_cnt = 0,
     } = options || {}
     const chatGPTApiSettings = await this.getChatGPTAPISettings()
     if (!chatGPTApiSettings) {
@@ -129,7 +136,7 @@ class OpenAiApiChat {
       },
       body: JSON.stringify({
         model: chatGPTApiSettings.apiModel,
-        messages: this.buildMessages(),
+        messages: this.buildMessages(max_history_message_cnt),
         temperature: chatGPTApiSettings.temperature,
         stream: true,
       }),

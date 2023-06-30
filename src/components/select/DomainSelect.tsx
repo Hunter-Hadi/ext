@@ -7,9 +7,10 @@ import { TOP_DOMAINS } from '@/utils/staticData'
 import Typography from '@mui/material/Typography'
 import { domain2Favicon } from '@/utils'
 
-interface LanguageSelectProps {
+interface DomainSelectProps {
   label?: string
   defaultValue?: string
+  disabled?: boolean
   onChange?: (value: string) => void
   sx?: SxProps
 }
@@ -52,17 +53,19 @@ function filterOptions(options: any[], { inputValue }: any) {
   return searchOptions
 }
 
-const DomainSelect: FC<LanguageSelectProps> = (props) => {
+const DomainSelect: FC<DomainSelectProps> = (props) => {
   const [open, setOpen] = React.useState(false)
   const {
     label = 'Enter website URL',
     onChange = (value: string) => {
       console.log(value)
     },
+    disabled,
     sx,
   } = props
   return (
     <Autocomplete
+      disabled={disabled}
       open={open}
       onInputChange={(_, value) => {
         if (value.length === 0) {

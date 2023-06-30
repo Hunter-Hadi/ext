@@ -101,7 +101,7 @@ const UseChatGPTOptionsPage = () => {
             sx={{
               width: '100%',
               position: 'fixed',
-              zIndex: 10000,
+              zIndex: 1100,
               top: 0,
               height: 72,
               borderBottom: '1px solid',

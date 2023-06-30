@@ -484,3 +484,19 @@ export const backgroundGetUrlContent = async (
     return result
   })
 }
+export const backgroundRestartChromeExtension = async () => {
+  try {
+    const tabIds = await Browser.tabs.query({
+      active: true,
+      currentWindow: true,
+    })
+    await Browser.runtime.reload()
+    tabIds.forEach((tab) => {
+      if (tab.id) {
+        Browser.tabs.reload(tab.id)
+      }
+    })
+  } catch (e) {
+    console.error('reStartChromeExtension: \t', e)
+  }
+}

@@ -368,3 +368,17 @@ export const getCurrentDomainHost = () => {
     return ''
   }
 }
+export const clientRestartChromeExtension = async () => {
+  try {
+    const port = new ContentScriptConnectionV2({
+      runtime: 'client',
+    })
+    await port.postMessage({
+      event: 'Client_restartApp',
+      data: {},
+    }) // 重启
+    return true
+  } catch (e) {
+    return false
+  }
+}

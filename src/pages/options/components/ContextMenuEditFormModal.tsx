@@ -13,8 +13,6 @@ import { CONTEXT_MENU_ICONS, ContextMenuIcon } from '@/features/contextMenu'
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import { RunPromptTooltip, TemplateTooltip } from './tooltipCollection'
 import { templateStaticWords } from '@/features/shortcuts/utils'
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
-import TooltipIconButton from '@/components/TooltipIconButton'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
@@ -131,7 +129,6 @@ const ContextMenuEditForm: FC<{
     return isAutoAskChatGPT(editNode.data.actions)
   })
   const isDisabled = !editNode.data.editable
-  const isGroup = editNode.data.type === 'group'
   const isDisabledSave = useMemo(() => {
     if (isDisabled) {
       return true
@@ -373,6 +370,7 @@ The template can include any number of the following variables:
                     </Typography>
                   </CloseAlert>
                   <VisibilitySettingCard
+                    disabled={isDisabled}
                     sx={{ mt: 2 }}
                     defaultValue={editNode.data.visibility}
                     onChange={async (newVisibilitySetting) => {
@@ -419,26 +417,18 @@ The template can include any number of the following variables:
             <Button variant={'outlined'} onClick={onCancel}>
               Cancel
             </Button>
+            <Button
+              color={'error'}
+              disabled={isDisabled}
+              variant={'outlined'}
+              onClick={() => {
+                onDelete && onDelete(editNode.id as string)
+              }}
+            >
+              Delete
+            </Button>
           </Stack>
         </Stack>
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 24,
-            right: 24,
-          }}
-        >
-          <TooltipIconButton
-            title={`Delete ${isGroup ? 'option group' : 'option'}`}
-            disabled={isDisabled}
-            size={'small'}
-            onClick={() => {
-              onDelete && onDelete(editNode.id as string)
-            }}
-          >
-            <DeleteOutlinedIcon sx={{ fontSize: 20 }} />
-          </TooltipIconButton>
-        </Box>
       </Container>
     </Modal>
   )

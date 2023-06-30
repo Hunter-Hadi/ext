@@ -39,8 +39,8 @@ import {
 import { ClientMessageInit } from '@/background/src/client'
 import {
   backgroundSendClientMessage,
-  createChromeExtensionOptionsPage,
   resetChromeExtensionOnBoardingData,
+  backgroundRestartChromeExtension,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageInit } from '@/features/shortcuts/background'
@@ -331,16 +331,9 @@ const developmentHotReload = () => {
     const ws = new WebSocket('ws://localhost:8181')
     ws.addEventListener('message', (event) => {
       if (event.data === 'hot_reload_message') {
-        Browser.tabs.query({ active: true }).then((tabIds) => {
-          Browser.runtime.reload()
-          tabIds.forEach((tab) => {
-            if (tab.id) {
-              Browser.tabs.reload(tab.id)
-            }
-          })
+        backgroundRestartChromeExtension().then(() => {
+          // createChromeExtensionOptionsPage()
         })
-        //
-        createChromeExtensionOptionsPage()
       }
     })
   }

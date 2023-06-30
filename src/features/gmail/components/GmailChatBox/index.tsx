@@ -13,9 +13,7 @@ import BlockIcon from '@mui/icons-material/Block'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/gmail/store'
-import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
-import { CleanChatBoxIcon } from '@/components/CustomIcon'
-import TooltipButton from '@/components/TooltipButton'
+import { CHROME_EXTENSION_MAIL_TO, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 // import DevContent from '@/components/DevContent'
 // import { TestAllActionsButton } from '@/features/shortcuts'
 import throttle from 'lodash-es/throttle'
@@ -30,6 +28,8 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import useSliceMessageList from '../../hooks/useSliceMessageList'
 import GmailChatBoxReleaseLog from '@/features/gmail/components/GmailChatBox/GmailChatBoxReleaseLog'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import GmailChatBoxChatSpeedDial from '@/features/gmail/components/GmailChatBox/GmailChatBoxChatSpeedDial'
+import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -296,36 +296,41 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             mb={1}
             position={'relative'}
           >
+            <GmailChatBoxChatSpeedDial
+              disabledMainButton={loading || slicedMessageList.length === 0}
+              onClick={async (type) => {
+                if (type === 'focus') {
+                  const chatInput = getAppRootElement()?.querySelector(
+                    `#${ROOT_CHAT_BOX_INPUT_ID}`,
+                  ) as HTMLTextAreaElement
+                  chatInput && chatInput.focus()
+                } else if (type === 'new') {
+                  onReset && onReset()
+                } else if (type === 'restart') {
+                  await clientRestartChromeExtension()
+                }
+              }}
+            />
             {!loading && slicedMessageList.length > 0 && (
               <>
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    left: 0,
-                    top: 0,
-                    width: 36,
-                    height: 36,
-                  }}
-                >
-                  <TooltipButton
-                    title={'New chat'}
-                    sx={{
-                      fontSize: '26px',
-                      p: '5px',
-                      minWidth: 'unset',
-                      borderRadius: '18px',
-                    }}
-                    disableElevation
-                    variant={'contained'}
-                    onClick={() => {
-                      onReset && onReset()
-                    }}
-                  >
-                    <CleanChatBoxIcon
-                      sx={{ color: 'inherit', fontSize: 'inherit' }}
-                    />
-                  </TooltipButton>
-                </Box>
+                {/*<TooltipButton*/}
+                {/*  title={'New chat'}*/}
+                {/*  sx={{*/}
+                {/*    fontSize: '26px',*/}
+                {/*    p: '5px',*/}
+                {/*    minWidth: 'unset',*/}
+                {/*    borderRadius: '18px',*/}
+                {/*  }}*/}
+                {/*  disableElevation*/}
+                {/*  variant={'contained'}*/}
+                {/*  onClick={() => {*/}
+                {/*    onReset && onReset()*/}
+                {/*  }}*/}
+                {/*>*/}
+                {/*  <CleanChatBoxIcon*/}
+                {/*    sx={{ color: 'inherit', fontSize: 'inherit' }}*/}
+                {/*  />*/}
+                {/*</TooltipButton>*/}
                 {reGenerateAble && (
                   <Button
                     disableElevation

@@ -7,6 +7,9 @@ import useChatGPTApiSettings from '@/features/chatgpt/hooks/useChatGPTApiSetting
 import Slider from '@mui/material/Slider'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
+import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
+import dayjs from 'dayjs'
 
 const models = list2Options(OPENAI_API_MODELS)
 
@@ -18,6 +21,15 @@ const ChatGPTOpenAIAPIModelSelector: FC = () => {
   }
   return (
     <BaseSelect
+      MenuProps={{
+        elevation: 0,
+        MenuListProps: {
+          sx: {
+            border: `1px solid`,
+            borderColor: 'customColor.borderColor',
+          },
+        },
+      }}
       sx={{ width: 196 }}
       size={'small'}
       loading={loading}
@@ -30,6 +42,114 @@ const ChatGPTOpenAIAPIModelSelector: FC = () => {
       onChange={async (value) => {
         await updateSettings('apiModel', value)
         await cleanChatGPT()
+      }}
+      labelProp={{
+        p: 0,
+        pointerEvents: 'auto!important',
+      }}
+      renderLabel={(value, option) => {
+        // description
+        // label
+        // maxTokens
+        // trainingDate
+        // value
+        const original = option.origin
+        return (
+          <Tooltip
+            placement={'left-start'}
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  border: '1px solid rgb(245,245,245)',
+                  bgcolor: 'background.paper',
+                  p: 1,
+                },
+              },
+            }}
+            title={
+              <Stack spacing={1} width={'160px'}>
+                <Stack textAlign={'left'} width={'100%'} spacing={2}>
+                  <Typography
+                    fontSize={'14px'}
+                    color={'text.primary'}
+                    textAlign={'left'}
+                    fontWeight={'bold'}
+                  >
+                    {original?.label}
+                  </Typography>
+                </Stack>
+                <Stack spacing={0.5}>
+                  <Typography
+                    fontSize={'12px'}
+                    color={'text.secondary'}
+                    textAlign={'left'}
+                  >
+                    Max tokens:
+                  </Typography>
+                  <Typography
+                    fontSize={'12px'}
+                    color={'text.primary'}
+                    textAlign={'left'}
+                  >
+                    {numberWithCommas(original?.maxTokens || 0, 0)} tokens
+                  </Typography>
+                </Stack>
+                <Stack spacing={0.5}>
+                  <Typography
+                    fontSize={'12px'}
+                    color={'text.secondary'}
+                    textAlign={'left'}
+                  >
+                    Description:
+                  </Typography>
+                  <Typography
+                    fontSize={'12px'}
+                    color={'text.primary'}
+                    textAlign={'left'}
+                  >
+                    {original?.description}
+                  </Typography>
+                </Stack>
+                <Stack spacing={0.5}>
+                  <Typography
+                    fontSize={'12px'}
+                    color={'text.secondary'}
+                    textAlign={'left'}
+                  >
+                    Training date:
+                  </Typography>
+                  <Typography
+                    fontSize={'12px'}
+                    color={'text.primary'}
+                    textAlign={'left'}
+                  >
+                    {`Up to ${dayjs(original?.trainingDate).format(
+                      'MMM YYYY',
+                    )}`}
+                  </Typography>
+                </Stack>
+              </Stack>
+            }
+          >
+            <Stack
+              sx={{ padding: '6px 16px' }}
+              width={160}
+              direction={'row'}
+              alignItems={'center'}
+              spacing={1}
+            >
+              <Typography
+                component={'span'}
+                fontSize={14}
+                color={'text.primary'}
+                textAlign={'left'}
+                noWrap
+              >
+                {original.label || 'Select model'}
+              </Typography>
+            </Stack>
+          </Tooltip>
+        )
       }}
     />
   )

@@ -4,6 +4,7 @@ import Browser from 'webextension-polyfill'
 import {
   createBackgroundMessageListener,
   createChromeExtensionOptionsPage,
+  backgroundRestartChromeExtension,
 } from '@/background/utils'
 import {
   createDaemonProcessTab,
@@ -160,6 +161,16 @@ export const ClientMessageInit = () => {
                 id: CHROME_EXTENSION_POST_MESSAGE_ID,
               })
             }
+            return {
+              data: true,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_restartApp':
+          {
+            await backgroundRestartChromeExtension()
             return {
               data: true,
               success: true,

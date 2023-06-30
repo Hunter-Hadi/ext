@@ -30,6 +30,7 @@ export interface IBaseSelectProps
   emptyText?: string
   options: IOptionType[]
   renderLabel?: renderLabelFunctionType
+  labelProp?: SxProps
   sx?: SxProps
   onChange?: (
     value: string | number,
@@ -59,6 +60,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   emptyText,
   options,
   renderLabel,
+  labelProp,
   MenuProps,
   sx,
   placeholder,
@@ -113,7 +115,13 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   }, [options, selectValue, loading])
   const optionsRenderCache = useMemo(() => {
     return options.map((option, index) => (
-      <MenuItem key={index} value={option.value}>
+      <MenuItem
+        sx={{
+          ...labelProp,
+        }}
+        key={index}
+        value={option.value}
+      >
         {renderDom(option.value, option, index)}
       </MenuItem>
     ))

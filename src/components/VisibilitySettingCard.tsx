@@ -43,8 +43,9 @@ const VisibilitySettingCard: FC<{
   sx?: SxProps
   defaultValue: IVisibilitySetting
   onChange: (value: IVisibilitySetting) => void
+  disabled?: boolean
 }> = (props) => {
-  const { defaultValue, onChange } = props
+  const { defaultValue, onChange, disabled } = props
   const [visibilitySetting, setVisibilitySetting] =
     useState<IVisibilitySetting>(() => {
       return cloneDeep(defaultValue)
@@ -108,6 +109,7 @@ const VisibilitySettingCard: FC<{
         <Stack spacing={2} p={2}>
           <VisibilitySettingCardItem label={'Mode'}>
             <ToggleButtonGroup
+              disabled={disabled}
               size={'small'}
               color="primary"
               value={
@@ -137,6 +139,7 @@ const VisibilitySettingCard: FC<{
                   sx={{
                     width: 220,
                   }}
+                  disabled={disabled}
                   onChange={async (value) => {
                     if (!value) {
                       return

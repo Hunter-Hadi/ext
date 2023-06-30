@@ -36,7 +36,7 @@ const ChatGPTGmailAssistantSetting: FC<{
         fontWeight={700}
         color={'text.primary'}
         component={'h2'}
-        id={'gmail-assistant'}
+        id={'shortcut-hint'}
       >
         Shortcut hint
       </Typography>

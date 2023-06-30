@@ -203,7 +203,7 @@ const UseChatGPTOptionsSettingPage = () => {
             />
             <Divider sx={{ my: 4 }} />
             <ChatGPTGmailAssistantSetting />
-            <Stack mb={'80vh'}></Stack>
+            <Stack mb={'40vh'}></Stack>
           </Stack>
         </Stack>
       </AppLoadingLayout>

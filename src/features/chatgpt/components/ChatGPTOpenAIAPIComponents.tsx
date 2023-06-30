@@ -49,6 +49,28 @@ const ChatGPTOpenAIAPIModelSelector: FC = () => {
         p: 0,
         pointerEvents: 'auto!important',
       }}
+      renderValue={(value) => {
+        const option = models.find((item) => item.value === value)
+        return (
+          <Stack
+            sx={{ padding: '6px 0' }}
+            width={160}
+            direction={'row'}
+            alignItems={'center'}
+            spacing={1}
+          >
+            <Typography
+              component={'span'}
+              fontSize={14}
+              color={'text.primary'}
+              textAlign={'left'}
+              noWrap
+            >
+              {option.label || 'Select model'}
+            </Typography>
+          </Stack>
+        )
+      }}
       renderLabel={(value, option) => {
         // description
         // label

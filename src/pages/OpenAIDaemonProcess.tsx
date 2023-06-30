@@ -26,6 +26,7 @@ import CloseAlert from '@/components/CloseAlert'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import useInterval from '@/hooks/useInterval'
+import useDaemonBrokenListener from '@/features/chatgpt/hooks/useDaemonBrokenListener'
 
 const APP_NAME = String(process.env.APP_NAME)
 
@@ -60,6 +61,8 @@ const useDaemonProcess = () => {
   )
   const [showDaemonProcessBar, setShowDaemonProcessBar] = useState(false)
   const [pageSuccessLoaded, setPageSuccessLoaded] = useState(false)
+
+  useDaemonBrokenListener()
 
   const isPageLoad = () => {
     const h1Elements = document.body.querySelectorAll('h1')

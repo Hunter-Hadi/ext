@@ -106,6 +106,17 @@ class OpenAIChat {
               }
             }
             break
+          case 'OpenAIDaemonProcess_daemonProcessSessionExpired': {
+            log.info('OpenAIDaemonProcess_daemonProcessSessionExpired')
+            this.status = 'needAuth'
+            await this.updateClientStatus()
+            return {
+              success: true,
+              message: '',
+              data: {},
+            }
+            break
+          }
           case 'OpenAIDaemonProcess_pong':
             {
               log.info('DaemonProcess_pong', this.chatGPTProxyInstance)
@@ -358,6 +369,7 @@ class OpenAIChat {
       )
       if (changeInfo.url && (isNotOpenAI || isUrlInOpenAIAuth)) {
         log.info('守护进程url发生变化，守护进程关闭')
+        this.cacheLastTimeChatGPTProxyInstance = this.chatGPTProxyInstance
         this.chatGPTProxyInstance = undefined
         this.status = 'needAuth'
         await this.updateClientStatus()
@@ -375,6 +387,7 @@ class OpenAIChat {
           await this.pingAwaitSuccess()
         }
       } else {
+        this.cacheLastTimeChatGPTProxyInstance = this.chatGPTProxyInstance
         this.chatGPTProxyInstance = undefined
         this.status = 'needAuth'
         await this.updateClientStatus()

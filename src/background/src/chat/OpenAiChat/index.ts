@@ -143,7 +143,7 @@ class OpenAIChat {
           id: CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'OpenAIDaemonProcess_ping',
         })
-        if (result.success) {
+        if (result && result.success) {
           this.chatGPTProxyInstance = cacheLastTimeTab
           this.status = 'success'
         } else {
@@ -397,7 +397,7 @@ class OpenAIChat {
             event: 'OpenAIDaemonProcess_ping',
           })
           .then((result) => {
-            if (result.success) {
+            if (result && result.success) {
               log.info('ping await success')
               this.status = 'success'
               this.updateClientStatus()

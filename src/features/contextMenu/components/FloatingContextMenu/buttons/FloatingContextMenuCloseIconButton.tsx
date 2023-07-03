@@ -19,6 +19,7 @@ import {
 } from '@/background/utils/buttonSettings'
 import uniq from 'lodash-es/uniq'
 import { AppSettingsState } from '@/store'
+import Box from '@mui/material/Box'
 
 const FloatingContextMenuCloseIconButton: FC<{
   sx?: SxProps
@@ -57,32 +58,39 @@ const FloatingContextMenuCloseIconButton: FC<{
             width: useInButton ? 240 : 360,
           }}
           referenceElement={
-            <Button
-              size={'small'}
-              variant={'text'}
-              sx={{
-                width: 32,
-                height: 32,
-                color: 'inherit',
-                minWidth: 'unset',
-                ...sx,
-              }}
-            >
-              <ContextMenuIcon
-                icon={'Settings'}
-                sx={{ color: 'text.primary', fontSize: 16 }}
-              />
-            </Button>
+            <Box>
+              <Button
+                size={'small'}
+                variant={'text'}
+                sx={{
+                  width: 32,
+                  height: 32,
+                  color: 'inherit',
+                  minWidth: 'unset',
+                  ...sx,
+                }}
+                onClick={(e) => {
+                  chromeExtensionClientOpenPage({
+                    key: 'options',
+                  })
+                }}
+              >
+                <ContextMenuIcon
+                  icon={'Settings'}
+                  sx={{ color: 'text.primary', fontSize: 16 }}
+                />
+              </Button>
+            </Box>
           }
         >
           <LiteDropdownMenuItem
             onClick={() => {
               chromeExtensionClientOpenPage({
                 key: 'options',
-                query: '#custom-prompts',
+                query: '#your-own-prompts',
               })
             }}
-            label={'Edit custom prompts'}
+            label={'Manage your own prompts'}
             icon={'DefaultIcon'}
           />
           {appSetting.userSettings?.selectionButtonVisible && (

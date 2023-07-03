@@ -227,7 +227,7 @@ const ContextMenuList: FC<{
         {/*  onClick={() => {*/}
         {/*    chromeExtensionClientOpenPage({*/}
         {/*      key: 'options',*/}
-        {/*      query: '#custom-prompts',*/}
+        {/*      query: '#your-own-prompts',*/}
         {/*    })*/}
         {/*  }}*/}
         {/*>*/}

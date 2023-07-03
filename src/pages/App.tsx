@@ -9,7 +9,7 @@ import {
   ROOT_CONTAINER_ID,
 } from '@/constants'
 import { AppState } from '@/store'
-import AppInit from '@/utils/AppInit'
+import AppInit from '@/components/AppInit'
 import ChatBoxHeader from '@/pages/gmail/ChatBoxHeader'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import { isShowChatBox } from '@/utils'

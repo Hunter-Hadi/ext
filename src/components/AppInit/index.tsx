@@ -2,7 +2,7 @@ import { ChatGPTConversationState } from '@/features/gmail/store'
 import { RangyContextMenu } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import React, { useEffect } from 'react'
-import { chromeExtensionClientOpenPage } from '@/utils/index'
+import { chromeExtensionClientOpenPage } from '@/utils'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import Button from '@mui/material/Button'
@@ -25,20 +25,12 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import useInterval from '@/hooks/useInterval'
 import { Divider } from '@mui/material'
-import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import { RESOURCES_URL } from '@/constants'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
 const log = new Log('AppInit')
 
-const GmailInit = () => {
-  useInitInboxSdk()
-  return (
-    <>
-      <style>{'.aSt {max-width: calc(100% - 700px)}'}</style>
-    </>
-  )
-}
 const UseChatGPTWebPageJumpToShortCuts = () => {
   if (
     window.location.host !== 'www.usechatgpt.ai' &&
@@ -397,6 +389,7 @@ const disabledPDFViewer = () => {
   }
 }
 
+const GmailInit = React.lazy(() => import('@/components/AppInit/GmailInit'))
 const AppInit = () => {
   const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
@@ -409,7 +402,9 @@ const AppInit = () => {
   useHandlePDFViewerError()
   return (
     <>
-      {appState.env === 'gmail' && <GmailInit />}
+      <AppSuspenseLoadingLayout>
+        {appState.env === 'gmail' && <GmailInit />}
+      </AppSuspenseLoadingLayout>
       <RangyInit />
       <RangyContextMenu />
       <AppSettingsInit />

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { AppSettingsInit } from '@/utils/AppInit'
+import { AppSettingsInit } from '@/components/AppInit'
 import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { getChromeExtensionSettings } from '@/background/utils'

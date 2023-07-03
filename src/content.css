@@ -94,6 +94,7 @@ use-chat-gpt-ai,
   visibility: visible!important;
 }
 
+/*react contexify css ⬇️*/
 :root {
   --contexify-zIndex: 666;
   --contexify-menu-minWidth: 220px;

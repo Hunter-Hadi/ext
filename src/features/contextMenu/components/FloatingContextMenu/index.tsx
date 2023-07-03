@@ -347,7 +347,11 @@ const FloatingContextMenu: FC<{
           parameters: {},
         },
       ])
-      // await increaseChatGPTRequestCount('prompt', )
+      increaseChatGPTRequestCount('prompt', {
+        id: 'chat',
+        name: 'chat',
+        host: getCurrentDomainHost(),
+      })
     }
   }
   useEffect(() => {
@@ -393,6 +397,7 @@ const FloatingContextMenu: FC<{
       }
       if (currentContextMenu && currentContextMenu.id) {
         const currentContextMenuId = currentContextMenu.id
+        const runActions = currentContextMenu.data.actions || []
         updateFloatingDropdownMenuSelectedItem(() => {
           return {
             selectedContextMenuId: null,
@@ -400,46 +405,46 @@ const FloatingContextMenu: FC<{
             lastHoverContextMenuId: null,
           }
         })
-        const runActions = currentContextMenu.data.actions || []
-        if (runActions.length > 0) {
-          increaseChatGPTRequestCount('prompt', {
-            id: currentContextMenuId,
-            name: currentContextMenu.text,
-            host: getCurrentDomainHost(),
-          }).then(() => {
+        increaseChatGPTRequestCount('prompt', {
+          id: currentContextMenuId,
+          name: currentContextMenu.text,
+          host: getCurrentDomainHost(),
+        }).then(() => {
+          if (runActions.length > 0) {
             setActions(runActions)
-          })
-        } else {
-          if (isDraftContextMenu) {
-            if (needOpenChatBox) {
-              showChatBox()
-              setFloatingDropdownMenu({
-                open: false,
-                rootRect: null,
-              })
-              return
-            }
-            setFloatingDropdownMenuSystemItems((prev) => {
-              return {
-                ...prev,
-                selectContextMenuId: currentContextMenu?.id || null,
+          } else {
+            if (isDraftContextMenu) {
+              if (needOpenChatBox) {
+                showChatBox()
+                setFloatingDropdownMenu({
+                  open: false,
+                  rootRect: null,
+                })
+                return
               }
-            })
-            if (
-              getDraftContextMenuTypeById(currentContextMenuId) === 'TRY_AGAIN'
-            ) {
-              reGenerate()
-            }
-            setTimeout(() => {
               setFloatingDropdownMenuSystemItems((prev) => {
                 return {
                   ...prev,
-                  selectContextMenuId: null,
+                  selectContextMenuId: currentContextMenu?.id || null,
                 }
               })
-            }, 100)
+              if (
+                getDraftContextMenuTypeById(currentContextMenuId) ===
+                'TRY_AGAIN'
+              ) {
+                reGenerate()
+              }
+              setTimeout(() => {
+                setFloatingDropdownMenuSystemItems((prev) => {
+                  return {
+                    ...prev,
+                    selectContextMenuId: null,
+                  }
+                })
+              }, 100)
+            }
           }
-        }
+        })
       }
     }
   }, [

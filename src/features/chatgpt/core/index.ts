@@ -621,7 +621,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     const resp = await chatGptRequest(
       token,
       'GET',
-      '/backend-api/aip/p?offset=0&limit=100&statuses=approved',
+      '/backend-api/aip/p?offset=0&limit=100&is_installed=true',
     ).then((r) => r.json())
     if (resp?.items && resp.items.length > 0) {
       this.plugins = resp.items

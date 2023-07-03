@@ -242,3 +242,9 @@ export const chatGPTCommonErrorInterceptor = (errorMsg?: string) => {
 
   return newErrorMsg
 }
+
+export const actionContainsAskChatGPT = (actions: ISetActionsType) => {
+  return actions.some((action) => {
+    return action.type === 'ASK_CHATGPT' || action.type === 'WEBGPT_ASK_CHATGPT'
+  })
+}

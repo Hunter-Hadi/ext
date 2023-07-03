@@ -72,10 +72,6 @@ export const startChromeExtensionBackground = () => {
   // feature
   // pdf feature
   pdfSnifferStartListener().then().catch()
-  // delete when rebrand Announcement
-  Browser.storage.local.set({
-    [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
-  })
   // hot reload
   developmentHotReload()
 }
@@ -110,6 +106,10 @@ const initChromeExtensionInstalled = () => {
         if (result.success) {
           await syncLocalSettingsToServerSettings()
         }
+        // delete when rebrand Announcement
+        await Browser.storage.local.set({
+          [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
+        })
       }
       try {
         await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')

@@ -46,6 +46,7 @@ import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageInit } from '@/features/shortcuts/background'
 import {
   checkSettingsSync,
+  isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import { REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY } from '@/components/Announcement'
@@ -102,9 +103,11 @@ const initChromeExtensionInstalled = () => {
           url: CHROME_EXTENSION_DOC_URL + '/get-started',
         })
       } else {
-        const result = await checkSettingsSync()
-        if (result.success) {
-          await syncLocalSettingsToServerSettings()
+        if (!(await isSettingsLastModifiedEqual())) {
+          const result = await checkSettingsSync()
+          if (result.success) {
+            await syncLocalSettingsToServerSettings()
+          }
         }
         // delete when rebrand Announcement
         await Browser.storage.local.set({

@@ -13,7 +13,6 @@ import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { OptionsPageRouteContext } from '@/pages/options/context'
-import { isProduction } from '@/constants'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
@@ -70,9 +69,7 @@ const SyncSettingCheckerWrapper: FC<{
   })
   useFocus(() => {
     if (isSpecialCaseRef.current) return
-    if (isProduction) {
-      checkSync().then()
-    }
+    checkSync().then()
   })
   if (!isChecking) {
     if (showErrorAlert) {

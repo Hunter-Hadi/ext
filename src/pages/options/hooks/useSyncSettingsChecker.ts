@@ -4,6 +4,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import debounce from 'lodash-es/debounce'
 import {
   checkSettingsSync,
+  isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
   syncServerSettingsToLocalSettings,
 } from '@/background/utils/syncSettings'
@@ -82,6 +83,12 @@ const useSyncSettingsChecker = () => {
       setShowErrorAlert(false)
       setShowCheckAlert(false)
       localSettingsCacheRef.current = undefined
+      if (await isSettingsLastModifiedEqual()) {
+        return {
+          success: true,
+          status: 'ok',
+        }
+      }
       setIsChecking(true)
       const result = await checkSettingsSync()
       if (result.status === 'error') {

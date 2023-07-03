@@ -90,6 +90,32 @@ export const syncLocalSettingsToServerSettings = async () => {
     return false
   }
 }
+export const isSettingsLastModifiedEqual = async (): Promise<boolean> => {
+  try {
+    console.log('检测本地设置和服务器设置时间是否一致')
+    const result = await get<{
+      settings: IChromeExtensionSettings
+    }>('/user/get_user_settings_last_modified')
+    if (result?.status === 'OK') {
+      const localSettings = await getChromeExtensionSettings()
+      const serverLastModified = String(result.data) // timestamp
+      const localLastModified = String(localSettings.lastModified) // timestamp
+      if (serverLastModified && localLastModified) {
+        // 服务器已经有设置
+        const isLastModifiedEqual = serverLastModified === localLastModified
+        console.log('本地设置和服务器设置时间是否一致', isLastModifiedEqual)
+        return isLastModifiedEqual
+      }
+      console.log('本地设置和服务器设置时间不一致')
+      return false
+    }
+    console.log('本地设置和服务器设置时间不一致')
+    return false
+  } catch (e) {
+    console.log('本地设置和服务器设置时间不一致')
+    return false
+  }
+}
 
 export const checkSettingsSync = async (): Promise<{
   success: boolean

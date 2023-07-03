@@ -88,7 +88,13 @@ const SyncSettingCheckerWrapper: FC<{
             Something went wrong when syncing your online account settings.
             Please try again by refreshing the page.
           </Alert>
-          <Button variant={'contained'} color={'primary'}>
+          <Button
+            variant={'contained'}
+            color={'primary'}
+            onClick={() => {
+              window.location.reload()
+            }}
+          >
             Refresh page
           </Button>
         </Stack>

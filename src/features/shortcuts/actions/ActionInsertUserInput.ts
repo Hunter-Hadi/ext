@@ -31,6 +31,7 @@ export class ActionInsertUserInput extends Action {
     try {
       const inputValue =
         this.parameters?.compliedTemplate || params?.LAST_ACTION_OUTPUT || ''
+      const AskChatGPTMetaData = this.parameters.AskChatGPTActionMeta
       const isInsertToFloatingMenuInput = isFloatingContextMenuVisible()
       const chatBoxInput = await promiseRetry<HTMLTextAreaElement>(
         () => {
@@ -58,12 +59,14 @@ export class ActionInsertUserInput extends Action {
         if (isInsertToFloatingMenuInput) {
           getMediator('floatingMenuInputMediator').updateInputValue(
             '``NO_HISTORY_&#``\n' + inputValue,
+            AskChatGPTMetaData,
           )
           // focus on input
           autoFocusWithAllWebsite(chatBoxInput, 0)
         } else {
           getMediator('chatBoxInputMediator').updateInputValue(
             '``NO_HISTORY_&#``\n' + inputValue,
+            AskChatGPTMetaData,
           )
           // focus on input
           autoFocusWithAllWebsite(chatBoxInput, 52.5)

@@ -11,13 +11,13 @@ import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
 import { isEzMailApp, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
-import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
+import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
 // const MAX_GPT4_INPUT_LENGTH = 80000
 
 const GmailChatBoxInputActions: FC<{
-  onSendMessage?: (message: string, options: IUserSendMessageExtraType) => void
+  onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
   const [inputValue, setInputValue] = useState('')
@@ -34,13 +34,16 @@ const GmailChatBoxInputActions: FC<{
   const isGmailChatBoxError = useMemo(() => {
     return inputValue.length > currentMaxInputLength
   }, [inputValue, currentMaxInputLength])
+  const metaDataRef = useRef<any>({})
   useEffect(() => {
-    const handleInputUpdate = (newInputValue: string) => {
+    const handleInputUpdate = (newInputValue: string, metaData: any) => {
+      console.log(metaData)
+      if (metaData) {
+        metaDataRef.current = metaData
+      }
       if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
         newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
         nextMessageIsActionRef.current = true
-      } else {
-        nextMessageIsActionRef.current = false
       }
       setInputValue(newInputValue)
     }
@@ -49,6 +52,10 @@ const GmailChatBoxInputActions: FC<{
       getMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
     }
   }, [])
+  useEffect(() => {
+    nextMessageIsActionRef.current = false
+    metaDataRef.current = {}
+  }, [conversation.loading])
   return (
     <Stack
       ref={ref}
@@ -105,7 +112,10 @@ const GmailChatBoxInputActions: FC<{
             onSendMessage &&
               onSendMessage(inputValue, {
                 includeHistory: !nextMessageIsActionRef.current,
+                meta: metaDataRef.current,
               })
+            metaDataRef.current = {}
+            nextMessageIsActionRef.current = false
           }}
         >
           {conversation.loading ? 'Generating' : 'Generate'}

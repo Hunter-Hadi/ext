@@ -1,18 +1,28 @@
 import { IChromeExtensionClientSendEvent } from '@/background/eventType'
-// import Log from '@/utils/Log'
 import Browser from 'webextension-polyfill'
 import {
   createBackgroundMessageListener,
   createChromeExtensionOptionsPage,
   backgroundRestartChromeExtension,
+  chromeExtensionLogout,
 } from '@/background/utils'
 import {
   createDaemonProcessTab,
   getWindowIdOfChatGPTTab,
 } from '@/background/src/chat/util'
-import { CHROME_EXTENSION_POST_MESSAGE_ID, isEzMailApp } from '@/constants'
+import {
+  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  CHROME_EXTENSION_POST_MESSAGE_ID,
+  isEzMailApp,
+} from '@/constants'
+import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
+import Log from '@/utils/Log'
+import {
+  fetchUserInfo,
+  getChromeExtensionAccessToken,
+} from '@/features/auth/utils'
 
-// const log = new Log('Background/Client')
+const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
   createBackgroundMessageListener(async (runtime, event, data, sender) => {
     if (runtime === 'client') {
@@ -174,6 +184,61 @@ export const ClientMessageInit = () => {
             return {
               data: true,
               success: true,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_logCallApiRequest':
+          {
+            const result = await logAndConfirmDailyUsageLimit(data)
+            return {
+              data: result,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_updateUseChatGPTAuthInfo':
+          {
+            const prevToken = await getChromeExtensionAccessToken()
+            const { accessToken, refreshToken, userInfo } = data
+            log.info(
+              'Client_updateUseChatGPTAuthInfo',
+              accessToken,
+              refreshToken,
+              userInfo,
+            )
+            if (accessToken && refreshToken) {
+              await Browser.storage.local.set({
+                [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
+                  accessToken,
+                  refreshToken,
+                  userInfo,
+                },
+              })
+            } else {
+              await chromeExtensionLogout()
+            }
+            if (!prevToken && accessToken) {
+              await createChromeExtensionOptionsPage('', false)
+            }
+            // 因为会打开新的optionsTab，所以需要再切换回去
+            await Browser.tabs.update(sender.tab?.id, {
+              active: true,
+            })
+            return {
+              data: true,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_getUseChatGPTUserInfo':
+          {
+            const userInfo = await fetchUserInfo()
+            return {
+              success: true,
+              data: userInfo,
               message: 'ok',
             }
           }

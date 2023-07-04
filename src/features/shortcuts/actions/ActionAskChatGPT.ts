@@ -44,6 +44,9 @@ export class ActionAskChatGPT extends Action {
             includeHistory: false,
             regenerate: false,
             hiddenInChat: askChatGPTType === 'ASK_CHAT_GPT_HIDDEN',
+            meta: {
+              ...this.parameters.AskChatGPTActionMeta,
+            },
           },
         )) || { success: false, answer: '', error: '' }
       if (success) {

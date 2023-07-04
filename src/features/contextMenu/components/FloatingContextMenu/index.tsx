@@ -37,7 +37,6 @@ import {
 } from '@/constants'
 import {
   getAppContextMenuElement,
-  getCurrentDomainHost,
   hideChatBox,
   isShowChatBox,
   showChatBox,
@@ -50,7 +49,6 @@ import {
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { getMediator } from '@/store/mediator'
-import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import {
   IContextMenuItem,
@@ -67,6 +65,7 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import Button from '@mui/material/Button'
 import useCommands from '@/hooks/useCommands'
 import { SidePanelIcon } from '@/components/CustomIcon'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -98,7 +97,6 @@ const FloatingContextMenu: FC<{
     updateFloatingDropdownMenuSelectedItem,
   ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
   const [actions, setActions] = useState<ISetActionsType>([])
-  const prefActions = useRef<ISetActionsType>([])
   const currentWidth = useMemo(() => {
     if (floatingDropdownMenu.rootRect) {
       const minWidth = Math.max(
@@ -173,6 +171,8 @@ const FloatingContextMenu: FC<{
   const dismiss = useDismiss(context, {})
   const { getFloatingProps } = useInteractions([dismiss, click])
   const [inputValue, setInputValue] = useState('')
+  // 记录最后选择的contextMenu并发送log
+  const lastRecordContextMenuRef = useRef<IContextMenuItem | null>(null)
   const {
     setShortCuts,
     runShortCuts,
@@ -347,11 +347,6 @@ const FloatingContextMenu: FC<{
           parameters: {},
         },
       ])
-      increaseChatGPTRequestCount('prompt', {
-        id: 'chat',
-        name: 'chat',
-        host: getCurrentDomainHost(),
-      })
     }
   }
   useEffect(() => {
@@ -396,6 +391,7 @@ const FloatingContextMenu: FC<{
           ) || null
       }
       if (currentContextMenu && currentContextMenu.id) {
+        lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
         const runActions = currentContextMenu.data.actions || []
         updateFloatingDropdownMenuSelectedItem(() => {
@@ -405,46 +401,39 @@ const FloatingContextMenu: FC<{
             lastHoverContextMenuId: null,
           }
         })
-        increaseChatGPTRequestCount('prompt', {
-          id: currentContextMenuId,
-          name: currentContextMenu.text,
-          host: getCurrentDomainHost(),
-        }).then(() => {
-          if (runActions.length > 0) {
-            setActions(runActions)
-          } else {
-            if (isDraftContextMenu) {
-              if (needOpenChatBox) {
-                showChatBox()
-                setFloatingDropdownMenu({
-                  open: false,
-                  rootRect: null,
-                })
-                return
+        if (runActions.length > 0) {
+          setActions(runActions)
+        } else {
+          if (isDraftContextMenu) {
+            if (needOpenChatBox) {
+              showChatBox()
+              setFloatingDropdownMenu({
+                open: false,
+                rootRect: null,
+              })
+              return
+            }
+            setFloatingDropdownMenuSystemItems((prev) => {
+              return {
+                ...prev,
+                selectContextMenuId: currentContextMenu?.id || null,
               }
+            })
+            if (
+              getDraftContextMenuTypeById(currentContextMenuId) === 'TRY_AGAIN'
+            ) {
+              reGenerate()
+            }
+            setTimeout(() => {
               setFloatingDropdownMenuSystemItems((prev) => {
                 return {
                   ...prev,
-                  selectContextMenuId: currentContextMenu?.id || null,
+                  selectContextMenuId: null,
                 }
               })
-              if (
-                getDraftContextMenuTypeById(currentContextMenuId) ===
-                'TRY_AGAIN'
-              ) {
-                reGenerate()
-              }
-              setTimeout(() => {
-                setFloatingDropdownMenuSystemItems((prev) => {
-                  return {
-                    ...prev,
-                    selectContextMenuId: null,
-                  }
-                })
-              }, 100)
-            }
+            }, 100)
           }
-        })
+        }
       }
     }
   }, [
@@ -457,10 +446,37 @@ const FloatingContextMenu: FC<{
     reGenerate,
   ])
   useEffect(() => {
+    let runActions = cloneDeep(actions)
     if (!loading && actions.length > 0) {
-      setShortCuts(actions)
+      const lastRecordContextMenu = lastRecordContextMenuRef.current
+      if (lastRecordContextMenu) {
+        // 更新action的askChatGPT的参数
+        runActions = runActions.map((action) => {
+          // HACK: 这里的写法特别蠢，但是得记录正确的api和prompt，只能这么写
+          if (action.type === 'INSERT_USER_INPUT') {
+            if (!action.parameters.AskChatGPTActionMeta) {
+              action.parameters.AskChatGPTActionMeta = {}
+            }
+            action.parameters.AskChatGPTActionMeta.contextMenu =
+              lastRecordContextMenu
+          }
+          if (
+            action.type === 'ASK_CHATGPT' ||
+            action.type === 'WEBGPT_ASK_CHATGPT'
+          ) {
+            if (!action.parameters.AskChatGPTActionMeta) {
+              action.parameters.AskChatGPTActionMeta = {}
+            }
+            action.parameters.AskChatGPTActionMeta.contextMenu =
+              lastRecordContextMenu
+            // 要在找到askChatGPT之后，才能清空，例如code或者enter prompt的场景
+            lastRecordContextMenuRef.current = null
+          }
+          return action
+        })
+      }
+      setShortCuts(runActions)
       setActions([])
-      prefActions.current = actions
       // 是否为可编辑的元素
       const isEditableElement =
         currentSelectionRef.current?.selectionElement?.isEditableElement

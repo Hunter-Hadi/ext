@@ -1,4 +1,6 @@
 // 基础的聊天消息类型
+import { IContextMenuItem } from '@/features/contextMenu/types'
+
 export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   text: string
@@ -11,7 +13,7 @@ export interface IChatMessage {
 }
 
 // 用户发送的消息
-export interface IUserSendMessage extends IChatMessage {
+export interface IUserChatMessage extends IChatMessage {
   type: 'user'
   text: string
   messageId: string
@@ -23,9 +25,16 @@ export interface IUserSendMessage extends IChatMessage {
     regenerate?: boolean
     // 告诉Provider最大的历史消息数量
     maxHistoryMessageCnt?: number
+    // 额外数据
+    meta?: IChatMessageExtraMetaType
   }
 }
-export type IUserSendMessageExtraType = IUserSendMessage['extra']
+
+export type IChatMessageExtraMetaType = {
+  contextMenu?: IContextMenuItem
+}
+
+export type IUserChatMessageExtraType = IUserChatMessage['extra']
 
 // AI返回的消息
 export interface IAIResponseMessage extends IChatMessage {
@@ -36,18 +45,19 @@ export interface IAIResponseMessage extends IChatMessage {
 }
 
 // 系统消息
-export interface ISystemMessage extends IChatMessage {
+export interface ISystemChatMessage extends IChatMessage {
   type: 'system'
   text: string
   messageId: string
   parentMessageId?: string
   extra: {
     status?: 'error' | 'success'
+    systemMessageType?: 'dailyUsageLimited'
   }
 }
 
 // 第三方消息
-export interface IThirdMessage extends IChatMessage {
+export interface IThirdChatMessage extends IChatMessage {
   type: 'third'
   text: string
   messageId: string

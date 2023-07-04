@@ -7,12 +7,12 @@ import Stack from '@mui/material/Stack'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { GiftIcon } from '@/components/CustomIcon'
 import RefreshOutlined from '@mui/icons-material/RefreshOutlined'
-import { useUseChatGPTUserInfo } from '@/features/chatgpt/hooks'
+import { useUserInfo } from '@/features/chatgpt/hooks'
 import Tooltip from '@mui/material/Tooltip'
 import useEffectOnce from '@/hooks/useEffectOnce'
 
 const UseChatGPTAIQuotaLeft: FC = () => {
-  const { loading, quotaLeftText, syncUserInfo } = useUseChatGPTUserInfo()
+  const { loading, quotaLeftText, syncUserInfo } = useUserInfo()
   useEffectOnce(() => {
     syncUserInfo()
   })

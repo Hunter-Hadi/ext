@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import Log from '@/utils/Log'
-import { IUseChatGPTUserInfo } from '@/background/src/usechatgpt'
+import { IUseChatGPTUserInfo } from '@/features/auth/types'
 
 const port = new ContentScriptConnectionV2()
-const log = new Log('Features/ChatGPT/UseChatGPTPlusChat')
+const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
-const useUseChatGPTUserInfo = () => {
+const useUserInfo = () => {
   const [userInfo, setUserInfo] = useState<IUseChatGPTUserInfo | undefined>(
     undefined,
   )
@@ -69,4 +69,4 @@ const useUseChatGPTUserInfo = () => {
     loading,
   }
 }
-export { useUseChatGPTUserInfo }
+export { useUserInfo }

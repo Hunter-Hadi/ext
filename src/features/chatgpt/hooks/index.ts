@@ -1,3 +1,3 @@
 export { useInitChatGPTClient } from './useInitChatGPTClient'
 export { useMessageWithChatGPT } from './useMessageWithChatGPT'
-export { useUseChatGPTUserInfo } from './useUseChatGPTUserInfo'
+export { useUserInfo } from '../../auth/hooks/useUserInfo'

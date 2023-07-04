@@ -6,11 +6,11 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { useUseChatGPTUserInfo } from '@/features/chatgpt'
+import { useUserInfo } from '@/features/chatgpt'
 import useEffectOnce from '@/hooks/useEffectOnce'
 
 const AccountMenu: FC = () => {
-  const { syncUserInfo, userInfo, loading } = useUseChatGPTUserInfo()
+  const { syncUserInfo, userInfo, loading } = useUserInfo()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

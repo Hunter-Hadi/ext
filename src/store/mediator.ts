@@ -3,11 +3,11 @@ import Log from '@/utils/Log'
 interface Mediator {
   subscribe(subscriber: Subscriber): void
   unsubscribe(subscriber: Subscriber): void
-  updateInputValue(newValue: string): void
+  updateInputValue(newValue: string, extraData?: any): void
   getInputValue(): string
 }
 
-type Subscriber = (value: string) => void
+type Subscriber = (value: string, extraData: any) => void
 
 const log = new Log('ChatBoxInputMediator')
 
@@ -23,18 +23,18 @@ class ChatBoxInputMediator implements Mediator {
       (existingSubscriber) => existingSubscriber !== subscriber,
     )
   }
-  updateInputValue(newValue: string): void {
+  updateInputValue(newValue: string, extraData?: any): void {
     log.info('updateInputValue', newValue)
     this.inputValue = newValue
-    this.notifySubscribers()
+    this.notifySubscribers(extraData)
   }
   getInputValue(): string {
     return this.inputValue
   }
 
-  private notifySubscribers(): void {
+  private notifySubscribers(extraData?: any): void {
     this.subscribers.forEach((subscriber) => {
-      subscriber(this.inputValue)
+      subscriber(this.inputValue, extraData)
     })
   }
 }
@@ -51,18 +51,18 @@ class FloatingMenuInputMediator implements Mediator {
       (existingSubscriber) => existingSubscriber !== subscriber,
     )
   }
-  updateInputValue(newValue: string): void {
+  updateInputValue(newValue: string, extraData?: any): void {
     log.info('updateInputValue', newValue)
     this.inputValue = newValue
-    this.notifySubscribers()
+    this.notifySubscribers(extraData)
   }
   getInputValue(): string {
     return this.inputValue
   }
 
-  private notifySubscribers(): void {
+  private notifySubscribers(extraData: any): void {
     this.subscribers.forEach((subscriber) => {
-      subscriber(this.inputValue)
+      subscriber(this.inputValue, extraData)
     })
   }
 }

@@ -14,7 +14,7 @@ const DevMessageSourceData: FC<{
   }, [message])
   return (
     <DevContent>
-      <Box position={'absolute'} top={16} right={16}>
+      <Box position={'absolute'} top={16} left={16}>
         <Tooltip
           title={
             <Stack>

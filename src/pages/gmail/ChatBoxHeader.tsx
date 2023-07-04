@@ -15,6 +15,7 @@ import React, { FC } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
 import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
+import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 
 const ChatBoxHeader: FC = () => {
   const { shortCutKey } = useCommands()
@@ -28,44 +29,54 @@ const ChatBoxHeader: FC = () => {
       alignItems={'center'}
       px={1}
     >
-      <Link
+      <Stack
         sx={{
           flexShrink: 0,
-          textDecoration: 'none!important',
         }}
-        href={
-          isEzMailApp
-            ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
-            : APP_USE_CHAT_GPT_HOST
-        }
-        target={'_blank'}
+        direction={'row'}
+        alignItems={'center'}
+        gap={1}
+        justifyContent={'center'}
       >
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          gap={1}
-          justifyContent={'center'}
+        <Link
+          sx={{
+            textDecoration: 'none!important',
+          }}
+          href={
+            isEzMailApp
+              ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
+              : APP_USE_CHAT_GPT_HOST
+          }
+          target={'_blank'}
         >
-          {isEzMailApp ? (
-            <EzMailAIIcon sx={{ fontSize: 28, color: 'inherit' }} />
-          ) : (
-            <UseChatGptIcon
-              sx={{
-                fontSize: 28,
-                color: 'inherit',
-              }}
-            />
-          )}
-          <Typography
-            color="text.primary"
-            component="h1"
-            fontSize={20}
-            fontWeight={800}
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            gap={1}
+            justifyContent={'center'}
           >
-            {String(process.env.APP_NAME)}
-          </Typography>
-        </Stack>
-      </Link>
+            {isEzMailApp ? (
+              <EzMailAIIcon sx={{ fontSize: 28, color: 'inherit' }} />
+            ) : (
+              <UseChatGptIcon
+                sx={{
+                  fontSize: 28,
+                  color: 'inherit',
+                }}
+              />
+            )}
+            <Typography
+              color="text.primary"
+              component="h1"
+              fontSize={20}
+              fontWeight={800}
+            >
+              {String(process.env.APP_NAME)}
+            </Typography>
+          </Stack>
+        </Link>
+        <AuthUserRoleIconDropdown />
+      </Stack>
       <Stack
         direction={'row'}
         flex={1}

@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 import { GmailChatBox } from '@/features/gmail'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
-import { ChatGPTAIProviderFixedSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -27,7 +26,6 @@ const NormalChatPage = () => {
   }, [])
   return (
     <Stack flex={1} height={0} position={'relative'}>
-      <ChatGPTAIProviderFixedSelector />
       <ChatGPTStatusWrapper />
       <GmailChatBox
         editAble={false}
@@ -39,6 +37,7 @@ const NormalChatPage = () => {
               question,
             },
             {
+              ...options,
               regenerate: false,
               includeHistory: options.includeHistory === true,
             },

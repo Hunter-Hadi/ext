@@ -15,14 +15,17 @@ import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import {
   IAIResponseMessage,
   IChatMessage,
-  ISystemMessage,
-  IUserSendMessage,
-  IUserSendMessageExtraType,
+  ISystemChatMessage,
+  IUserChatMessage,
+  IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
+import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 import { getMediator } from '@/store/mediator'
 import { getCurrentDomainHost } from '@/utils'
-
+import { getDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -82,7 +85,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       messageId?: string
       parentMessageId?: string
     },
-    options?: IUserSendMessageExtraType,
+    options?: IUserChatMessageExtraType,
   ): Promise<{ success: boolean; answer: string; error: string }> => {
     const { question, messageId, parentMessageId } = questionInfo
     const {
@@ -112,7 +115,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     if (!maxHistoryMessageCnt && includeHistory) {
       let historyCnt = 0
       for (let i = messages.length - 1; i >= 0; i--) {
-        const msg = messages[i] as IUserSendMessage
+        const msg = messages[i] as IUserChatMessage
         if (msg.type === 'user' && msg.extra?.includeHistory === false) {
           historyCnt++
           break
@@ -143,8 +146,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             includeHistory,
             regenerate,
             maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
+            meta: {
+              contextMenu: options?.meta?.contextMenu,
+            },
           },
-        } as IUserSendMessage,
+        } as IUserChatMessage,
       ]
     })
     setConversation((prevState) => {
@@ -160,18 +166,49 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     let hasError = false
     let errorMessage = ''
     try {
-      // 发消息之前记录
+      const host = getCurrentDomainHost()
+      const contextMenu = options?.meta?.contextMenu
+      // 判断是否触达dailyUsageLimited
+      const { data: isDailyUsageLimit } = await port.postMessage({
+        event: 'Client_logCallApiRequest',
+        data: {
+          name: contextMenu?.text || 'chat',
+          id: contextMenu?.id || 'chat',
+          host,
+        },
+      })
+      if (isDailyUsageLimit) {
+        const { next_reset_timestamp } = await getDailyUsageLimitData()
+        pushMessages.push({
+          type: 'system',
+          messageId: uuidV4(),
+          parentMessageId: currentMessageId,
+          text: `You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${dayjs().from(
+            dayjs(next_reset_timestamp * 1000),
+            true,
+          )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)`,
+          extra: {
+            status: 'error',
+            systemMessageType: 'dailyUsageLimited',
+          },
+        } as ISystemChatMessage)
+        return {
+          success: false,
+          answer: '',
+          error: 'dailyUsageLimited',
+        }
+      }
+      // 发消息之前记录总数
       await increaseChatGPTRequestCount('total')
+      // 发消息之前记录prompt/chat
+      await increaseChatGPTRequestCount('prompt', {
+        name: contextMenu?.text || 'chat',
+        id: contextMenu?.id || 'chat',
+        host,
+      })
       // ai 正在输出的消息
       let aiRespondingMessage: any = null
       let saveConversationId = ''
-      if (includeHistory) {
-        await increaseChatGPTRequestCount('prompt', {
-          id: 'chat',
-          name: 'chat',
-          host: getCurrentDomainHost(),
-        })
-      }
       await askChatGPTQuestion(
         {
           conversationId: postConversationId,
@@ -247,7 +284,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 extra: {
                   status: 'error',
                 },
-              } as ISystemMessage)
+              } as ISystemChatMessage)
             }
             log.info('onerror', error, pushMessages)
             return
@@ -330,11 +367,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     }
   }
   const reGenerate = useCallback(() => {
-    let lastUserMessage: IUserSendMessage | null = null
+    let lastUserMessage: IUserChatMessage | null = null
     for (let i = messages.length - 1; i >= 0; i--) {
       const message = messages[i]
       if (message.type === 'user') {
-        lastUserMessage = message as IUserSendMessage
+        lastUserMessage = message as IUserChatMessage
         break
       }
     }
@@ -357,6 +394,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           )
             ? lastUserMessage.extra.includeHistory
             : true,
+          meta: lastUserMessage.extra.meta,
         },
       )
     }

@@ -33,6 +33,7 @@ import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
 import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
 import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
+import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -164,6 +165,7 @@ interface ActionParameters {
   SliceTextActionTokens?: number
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
+  AskChatGPTActionMeta?: IChatMessageExtraMetaType
 }
 
 export default ActionParameters

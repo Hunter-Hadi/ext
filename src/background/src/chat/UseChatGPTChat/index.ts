@@ -5,18 +5,15 @@ import {
   APP_USE_CHAT_GPT_API_HOST,
   APP_USE_CHAT_GPT_HOST,
   CHAT_GPT_PROVIDER,
-  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
 } from '@/constants'
 import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,
-  createBackgroundMessageListener,
-  createChromeExtensionOptionsPage,
 } from '@/background/utils'
 import { getCacheConversationId } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { backgroundFetchUseChatGPTUserInfo } from '@/background/src/usechatgpt'
+import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
@@ -33,57 +30,6 @@ class UseChatGPTPlusChat {
   }
   private init() {
     log.info('init')
-    createBackgroundMessageListener(async (runtime, event, data, sender) => {
-      if (runtime === 'client') {
-        switch (event) {
-          case 'Client_updateUseChatGPTAuthInfo':
-            {
-              const preToken = await this.getToken()
-              const { accessToken, refreshToken, userInfo } = data
-              log.info(
-                'Client_updateUseChatGPTAuthInfo',
-                accessToken,
-                refreshToken,
-                userInfo,
-              )
-              if (accessToken && refreshToken) {
-                await Browser.storage.local.set({
-                  [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
-                    accessToken,
-                    refreshToken,
-                    userInfo,
-                  },
-                })
-              } else {
-                await chromeExtensionLogout()
-              }
-              await this.checkTokenAndUpdateStatus(sender.tab?.id)
-              if (!preToken && accessToken) {
-                await createChromeExtensionOptionsPage('', false)
-              }
-              return {
-                success: true,
-                message: 'ok',
-                data: {},
-              }
-            }
-            break
-          case 'Client_getUseChatGPTUserInfo':
-            {
-              const userInfo = await this.getUserInfo()
-              return {
-                success: true,
-                data: userInfo,
-                message: 'ok',
-              }
-            }
-            break
-          default:
-            break
-        }
-      }
-      return undefined
-    })
   }
   async preAuth() {
     this.active = true
@@ -102,7 +48,7 @@ class UseChatGPTPlusChat {
     }
     await this.updateClientStatus()
   }
-  private async checkTokenAndUpdateStatus(authTabId?: number) {
+  private async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
     this.token = await this.getToken()
     this.status = this.token ? 'success' : 'needAuth'
@@ -110,12 +56,6 @@ class UseChatGPTPlusChat {
       log.info('checkTokenAndUpdateStatus', this.status, this.lastActiveTabId)
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
-      if (authTabId) {
-        // 因为会打开新的optionsTab，所以需要再切换回去
-        await Browser.tabs.update(authTabId, {
-          active: true,
-        })
-      }
     }
     await this.updateClientStatus()
   }
@@ -346,13 +286,6 @@ class UseChatGPTPlusChat {
       await this.updateClientStatus()
     }
   }
-  async getUserInfo() {
-    const token = await this.getToken()
-    if (!token) {
-      return undefined
-    }
-    return await backgroundFetchUseChatGPTUserInfo(token)
-  }
   async abortTask(taskId: string) {
     if (this.taskList[taskId]) {
       this.taskList[taskId]()
@@ -368,15 +301,7 @@ class UseChatGPTPlusChat {
     this.active = false
   }
   private async getToken() {
-    const cache = await Browser.storage.local.get(
-      CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-    )
-    if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
-      // 应该用accessToken
-      return cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
-        ?.refreshToken as string
-    }
-    return ''
+    return await getChromeExtensionAccessToken()
   }
   async updateClientStatus() {
     if (this.active) {

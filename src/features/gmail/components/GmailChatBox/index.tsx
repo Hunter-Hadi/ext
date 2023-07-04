@@ -20,7 +20,7 @@ import throttle from 'lodash-es/throttle'
 import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import {
   IChatMessage,
-  IUserSendMessageExtraType,
+  IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
 import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
@@ -50,7 +50,7 @@ interface IGmailChatBoxProps {
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
   messages: IChatMessage[]
   writingMessage: IChatMessage | null
-  onSendMessage?: (text: string, options: IUserSendMessageExtraType) => void
+  onSendMessage?: (text: string, options: IUserChatMessageExtraType) => void
   onRetry?: (messageId: string) => void
   loading?: boolean
 }
@@ -103,7 +103,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
   const scrolledToBottomRef = useRef(true)
 
   const handleSendMessage = useCallback(
-    (value: string, options: IUserSendMessageExtraType) => {
+    (value: string, options: IUserChatMessageExtraType) => {
       changePageNumber(1)
       onSendMessage && onSendMessage(value, options)
     },

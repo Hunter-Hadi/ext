@@ -31,6 +31,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_updateTabVisible'
   | 'Client_updateIframeInput'
   | 'Client_restartApp'
+  | 'Client_logCallApiRequest'
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

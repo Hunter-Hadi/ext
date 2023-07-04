@@ -1,16 +1,18 @@
 import React, { FC } from 'react'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { IChatMessage } from '@/features/chatgpt/types'
+import { ISystemChatMessage } from '@/features/chatgpt/types'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 
 const GmailChatBoxSystemTools: FC<{
   onRetry: () => void
-  message: IChatMessage
+  message: ISystemChatMessage
 }> = (props) => {
   const { onRetry, message } = props
+  const chatMessageType = message.extra.systemMessageType || 'normal'
   return (
     <Stack direction={'row'} alignItems={'center'}>
-      {message.parentMessageId && (
+      {chatMessageType === 'normal' && message.parentMessageId && (
         <Button
           size={'small'}
           variant={'outlined'}
@@ -22,6 +24,16 @@ const GmailChatBoxSystemTools: FC<{
           }}
         >
           Retry
+        </Button>
+      )}
+      {chatMessageType === 'dailyUsageLimited' && (
+        <Button
+          variant={'contained'}
+          color={'primary'}
+          target={'_blank'}
+          href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+        >
+          Upgrade to Pro
         </Button>
       )}
     </Stack>

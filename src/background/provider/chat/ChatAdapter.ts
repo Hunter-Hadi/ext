@@ -1,6 +1,6 @@
 import { CHAT_GPT_PROVIDER } from '@/constants'
 import Browser from 'webextension-polyfill'
-import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
+import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 
 /**
  * needAuth: 需要授权
@@ -35,7 +35,7 @@ export type IChatGPTAskQuestionFunctionType = (
   taskId: string,
   sender: Browser.Runtime.MessageSender,
   question: IAskChatGPTQuestionType,
-  options: IUserSendMessageExtraType,
+  options: IUserChatMessageExtraType,
 ) => Promise<void>
 
 export interface ChatInterface {

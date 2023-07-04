@@ -20,7 +20,8 @@ import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
 import { getMediator } from '@/store/mediator'
 import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
-import { IUserSendMessageExtraType } from '@/features/chatgpt/types'
+import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+import { ChatGPTConversationState } from '@/features/gmail'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -128,8 +129,8 @@ const AutoHeightTextarea: FC<{
   loading?: boolean
   error?: boolean
   defaultValue?: string
-  onChange?: (value: string, options: IUserSendMessageExtraType) => void
-  onEnter?: (value: string, options: IUserSendMessageExtraType) => void
+  onChange?: (value: string, options: IUserChatMessageExtraType) => void
+  onEnter?: (value: string, options: IUserChatMessageExtraType) => void
   onKeydown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
   children?: React.ReactNode
   sx?: SxProps
@@ -140,6 +141,7 @@ const AutoHeightTextarea: FC<{
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
+  const conversation = useRecoilValue(ChatGPTConversationState)
   const {
     defaultValue,
     onChange,
@@ -184,14 +186,17 @@ const AutoHeightTextarea: FC<{
     },
     [onChange],
   )
+  const metaDataRef = useRef<any>({})
   useEffect(() => {
     if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
-      const handleInputUpdate = (newInputValue: string) => {
+      const handleInputUpdate = (newInputValue: string, metaData: any) => {
+        console.log(metaData)
+        if (metaData) {
+          metaDataRef.current = metaData
+        }
         if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
           newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
           nextMessageIsActionRef.current = true
-        } else {
-          nextMessageIsActionRef.current = false
         }
         setInputValue(newInputValue)
       }
@@ -205,8 +210,6 @@ const AutoHeightTextarea: FC<{
         if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
           newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
           nextMessageIsActionRef.current = true
-        } else {
-          nextMessageIsActionRef.current = false
         }
         setInputValue(newInputValue)
       }
@@ -219,6 +222,10 @@ const AutoHeightTextarea: FC<{
       // do nothing
     }
   }, [])
+  useEffect(() => {
+    nextMessageIsActionRef.current = false
+    metaDataRef.current = {}
+  }, [conversation.loading])
   // 更新input高度
   useEffect(() => {
     if (textareaRef.current) {
@@ -397,7 +404,10 @@ const AutoHeightTextarea: FC<{
             onEnter &&
               onEnter(event.currentTarget.value, {
                 includeHistory: !nextMessageIsActionRef.current,
+                meta: metaDataRef.current,
               })
+            nextMessageIsActionRef.current = false
+            metaDataRef.current = {}
             event.preventDefault()
           } else if (event.code === 'Space') {
             event.stopPropagation()

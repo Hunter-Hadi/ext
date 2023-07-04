@@ -14,7 +14,8 @@ import LoginLayout from '@/features/auth/components/LoginLayout'
 import { useFocus } from '@/hooks/useFocus'
 
 const AuthUserRoleIconDropdown: FC = () => {
-  const { userInfo, syncUserInfo, loading } = useUserInfo()
+  const { userInfo, syncUserInfo, loading, syncUserSubscriptionInfo } =
+    useUserInfo()
   useEffectOnce(() => {
     syncUserInfo().then()
   })
@@ -29,7 +30,7 @@ const AuthUserRoleIconDropdown: FC = () => {
   }, [userInfo])
   useFocus(() => {
     if (userRoleRef.current === 'free') {
-      syncUserInfo().then()
+      syncUserSubscriptionInfo().then()
     }
   })
   const MemoIcon = useMemo(() => {

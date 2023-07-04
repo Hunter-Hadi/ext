@@ -9,7 +9,7 @@ import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/constants'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
-import { IChatMessage } from '@/features/chatgpt/types'
+import { IChatMessage, ISystemChatMessage } from '@/features/chatgpt/types'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevMessageSourceData from '@/features/gmail/components/GmailChatBox/DevMessageSourceData'
 import DevContent from '@/components/DevContent'
@@ -116,7 +116,10 @@ const GmailChatBoxMessageItem: FC<{
     }
     return {
       borderRadius: '8px',
-      border: '1px solid rgb(239, 83, 80)!important',
+      border:
+        message?.extra?.status === 'error'
+          ? '1px solid rgb(239, 83, 80)!important'
+          : '1px solid #34A853!important',
       bgcolor: 'background.paper',
     } as SxProps
   }, [message.type, userSettings, isHover])
@@ -188,9 +191,11 @@ const GmailChatBoxMessageItem: FC<{
         }}
       >
         <AppSuspenseLoadingLayout>
-          {message?.extra?.status === 'error' ? (
+          {message.type === 'system' ? (
             <Alert
-              severity={'error'}
+              severity={
+                message?.extra?.status === 'error' ? 'error' : 'success'
+              }
               sx={{
                 p: 1,
                 '& .MuiAlert-message': {
@@ -284,7 +289,7 @@ const GmailChatBoxMessageItem: FC<{
                 onRetry && onRetry(message.parentMessageId)
               }
             }}
-            message={message}
+            message={message as ISystemChatMessage}
           />
         )}
       </Stack>

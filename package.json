@@ -93,6 +93,7 @@
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.54",
     "esbuild-copy-files-plugin": "^1.1.0",
+    "esbuild-plugin-eslint": "^0.3.6",
     "esbuild-plugin-less": "^1.2.0",
     "esbuild-style-plugin": "^1.6.2",
     "eslint": "^7.16.0",

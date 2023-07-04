@@ -19,6 +19,7 @@ import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndCon
 import Log from '@/utils/Log'
 import {
   fetchUserInfo,
+  fetchUserSubscriptionInfo,
   getChromeExtensionAccessToken,
 } from '@/features/auth/utils'
 
@@ -239,6 +240,16 @@ export const ClientMessageInit = () => {
             return {
               success: true,
               data: userInfo,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_getUseChatGPTUserSubscriptionInfo':
+          {
+            const role = await fetchUserSubscriptionInfo()
+            return {
+              success: true,
+              data: role,
               message: 'ok',
             }
           }

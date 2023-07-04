@@ -11,6 +11,7 @@ import chokidar from 'chokidar'
 import path from 'path'
 import archiver from 'archiver'
 import dayjs from 'dayjs'
+// import eslint from 'esbuild-plugin-eslint';
 
 const replaceEnv = buildEnv.getReplaceEnv()
 const isProduction = buildEnv.isProduction
@@ -63,6 +64,7 @@ async function esbuildConfig() {
       '.graphql': 'text',
     },
     plugins: [
+      // eslint({ /* config */ }),
       postcssPlugin({
         postcss: {
           plugins: [autoprefixer],

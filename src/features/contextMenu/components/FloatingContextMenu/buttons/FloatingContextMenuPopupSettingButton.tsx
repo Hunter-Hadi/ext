@@ -21,7 +21,7 @@ import uniq from 'lodash-es/uniq'
 import { AppSettingsState } from '@/store'
 import Box from '@mui/material/Box'
 
-const FloatingContextMenuCloseIconButton: FC<{
+const FloatingContextMenuPopupSettingButton: FC<{
   sx?: SxProps
   useInButton?: boolean
 }> = (props) => {
@@ -58,7 +58,11 @@ const FloatingContextMenuCloseIconButton: FC<{
             width: useInButton ? 240 : 360,
           }}
           referenceElement={
-            <Box>
+            <Box
+              sx={{
+                alignSelf: 'end',
+              }}
+            >
               <Button
                 size={'small'}
                 variant={'text'}
@@ -83,17 +87,19 @@ const FloatingContextMenuCloseIconButton: FC<{
             </Box>
           }
         >
-          <LiteDropdownMenuItem
-            onClick={() => {
-              chromeExtensionClientOpenPage({
-                key: 'options',
-                query: '#your-own-prompts',
-              })
-            }}
-            label={'Manage your own prompts'}
-            icon={'DefaultIcon'}
-          />
-          {appSetting.userSettings?.selectionButtonVisible && (
+          {!useInButton && (
+            <LiteDropdownMenuItem
+              onClick={() => {
+                chromeExtensionClientOpenPage({
+                  key: 'options',
+                  query: '#your-own-prompts',
+                })
+              }}
+              label={'Manage your own prompts'}
+              icon={'DefaultIcon'}
+            />
+          )}
+          {useInButton && appSetting.userSettings?.selectionButtonVisible && (
             <LiteDropdownMenuItem
               onClick={async () => {
                 if (textSelectPopupButtonSettings) {
@@ -184,35 +190,25 @@ const FloatingContextMenuCloseIconButton: FC<{
               }
             />
           )}
-          <LiteDropdownMenuItem
-            onClick={async () => {
-              setFloatingDropdownMenu({
-                open: false,
-                rootRect: null,
-              })
-              chromeExtensionClientOpenPage({
-                key: 'options',
-                query: '#text-select-popup',
-              })
-            }}
-            icon={
-              textSelectPopupButtonSettings?.buttonVisible
-                ? 'VisibilityOff'
-                : 'RemoveRedEye'
-            }
-            label={
-              textSelectPopupButtonSettings?.buttonVisible
-                ? useInButton
-                  ? 'Hide on all sites'
-                  : 'Hide text-select-popup on all sites'
-                : useInButton
-                ? 'Show on all sites'
-                : 'Show text-select-popup on all sites'
-            }
-          />
+          {useInButton && (
+            <LiteDropdownMenuItem
+              onClick={async () => {
+                setFloatingDropdownMenu({
+                  open: false,
+                  rootRect: null,
+                })
+                chromeExtensionClientOpenPage({
+                  key: 'options',
+                  query: '#text-select-popup',
+                })
+              }}
+              icon={'DefaultIcon'}
+              label={'Manage visibility'}
+            />
+          )}
         </DropdownMenu>
       )}
     </AppLoadingLayout>
   )
 }
-export { FloatingContextMenuCloseIconButton }
+export { FloatingContextMenuPopupSettingButton }

@@ -130,15 +130,28 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
             defaultProps: {
               container: shadowRootElement || document.body,
             },
+            styleOverrides: {
+              root: {
+                zIndex: '2147483620',
+              },
+            },
           },
           MuiPopper: {
             defaultProps: {
+              sx: {
+                zIndex: '2147483620',
+              },
               container: shadowRootElement || document.body,
             },
           },
           MuiModal: {
             defaultProps: {
               container: shadowRootElement || document.body,
+            },
+            styleOverrides: {
+              root: {
+                zIndex: '`2147483620`',
+              },
             },
           },
         },

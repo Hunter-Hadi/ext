@@ -16,6 +16,8 @@ import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
 import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import TooltipIconButton from '@/components/TooltipIconButton'
 
 const ChatBoxHeader: FC = () => {
   const { shortCutKey } = useCommands()
@@ -49,31 +51,33 @@ const ChatBoxHeader: FC = () => {
           }
           target={'_blank'}
         >
-          <Stack
-            direction={'row'}
-            alignItems={'center'}
-            gap={1}
-            justifyContent={'center'}
-          >
-            {isEzMailApp ? (
-              <EzMailAIIcon sx={{ fontSize: 28, color: 'inherit' }} />
-            ) : (
-              <UseChatGptIcon
-                sx={{
-                  fontSize: 28,
-                  color: 'inherit',
-                }}
-              />
-            )}
-            <Typography
-              color="text.primary"
-              component="h1"
-              fontSize={20}
-              fontWeight={800}
+          <TextOnlyTooltip title={'My account'}>
+            <Stack
+              direction={'row'}
+              alignItems={'center'}
+              gap={1}
+              justifyContent={'center'}
             >
-              {String(process.env.APP_NAME)}
-            </Typography>
-          </Stack>
+              {isEzMailApp ? (
+                <EzMailAIIcon sx={{ fontSize: 28, color: 'inherit' }} />
+              ) : (
+                <UseChatGptIcon
+                  sx={{
+                    fontSize: 28,
+                    color: 'inherit',
+                  }}
+                />
+              )}
+              <Typography
+                color="text.primary"
+                component="h1"
+                fontSize={20}
+                fontWeight={800}
+              >
+                {String(process.env.APP_NAME)}
+              </Typography>
+            </Stack>
+          </TextOnlyTooltip>
         </Link>
         <AuthUserRoleIconDropdown />
       </Stack>
@@ -98,7 +102,7 @@ const ChatBoxHeader: FC = () => {
             <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
           </Tooltip>
         </IconButton>
-        {!isEzMailApp && (
+        {!isEzMailApp && !shortCutKey && (
           <Typography fontSize={12}>
             <Link
               color={'text.primary'}
@@ -110,18 +114,20 @@ const ChatBoxHeader: FC = () => {
                 chromeExtensionClientOpenPage({ key: 'shortcuts' })
               }}
             >
-              {shortCutKey ? `Shortcut: ${shortCutKey}` : `Set up shortcut`}
+              {`Set up shortcut`}
             </Link>
           </Typography>
         )}
-        <IconButton
+        <TooltipIconButton
+          placement={'bottom'}
+          title={shortCutKey ? `Shortcut: ${shortCutKey}` : ``}
           sx={{ flexShrink: 0, ml: '4px !important' }}
           onClick={() => {
             hideChatBox()
           }}
         >
           <CloseIcon sx={{ fontSize: '24px' }} />
-        </IconButton>
+        </TooltipIconButton>
       </Stack>
     </Stack>
   )

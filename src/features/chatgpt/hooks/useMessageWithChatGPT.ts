@@ -179,13 +179,23 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       })
       if (isDailyUsageLimit) {
         const { next_reset_timestamp } = await getDailyUsageLimitData()
+        const formatTimeStampToHoursAndMinutes = (timestamp: number) => {
+          const currentTime = new Date().getTime()
+          let nextTime = timestamp
+          if (!nextTime) {
+            nextTime = dayjs().utc().add(1, 'days').unix()
+          }
+          const diff = nextTime * 1000 - currentTime
+          const hours = Math.floor(diff / (1000 * 60 * 60))
+          const minutes = Math.floor((diff / (1000 * 60)) % 60)
+          return `${hours} hours and ${minutes} minutes`
+        }
         pushMessages.push({
           type: 'system',
           messageId: uuidV4(),
           parentMessageId: currentMessageId,
-          text: `You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${dayjs().from(
-            dayjs(next_reset_timestamp * 1000),
-            true,
+          text: `You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${formatTimeStampToHoursAndMinutes(
+            next_reset_timestamp,
           )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)`,
           extra: {
             status: 'error',

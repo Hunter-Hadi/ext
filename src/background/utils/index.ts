@@ -56,7 +56,7 @@ export const getChromeExtensionSettings =
       currentPlugins: [],
       plugins: [],
       conversationId: '',
-      chatGPTProvider: CHAT_GPT_PROVIDER.OPENAI,
+      chatGPTProvider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
       /** @deprecated **/
       contextMenus: [],
       /** @deprecated **/

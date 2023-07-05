@@ -24,10 +24,8 @@ const SYSTEM_MESSAGE: IOpenAIApiChatMessage = {
   role: 'system',
   content: CHATGPT_SYSTEM_MESSAGE,
 }
-/**
- * @deprecated - 用include_history代替
- */
-// const CONTEXT_SIZE = 10
+
+const MAX_CONTEXT_SIZE = 10
 
 class OpenAiApiChat {
   status: ChatStatus = 'needAuth'
@@ -50,9 +48,15 @@ class OpenAiApiChat {
     //   SYSTEM_MESSAGE,
     //   ...this.conversationContext!.messages.slice(-(CONTEXT_SIZE + 1)),
     // ]
+    const maxHistoryMessageCount = Math.min(
+      historyMessageCount,
+      MAX_CONTEXT_SIZE,
+    )
     return [
       SYSTEM_MESSAGE,
-      ...this.conversationContext!.messages.slice(-(historyMessageCount + 1)),
+      ...this.conversationContext!.messages.slice(
+        -(maxHistoryMessageCount + 1),
+      ),
     ]
   }
   async preAuth() {
@@ -208,6 +212,17 @@ class OpenAiApiChat {
               onMessage({
                 type: 'error',
                 error: `${error?.message}\nChange model at the top of the sidebar ☝️`,
+                done: true,
+                data: { text: '', conversationId },
+              })
+            return
+          }
+          // '这通常意味着您需要在OpenAI账户中添加付款方式，请查看：'
+          if (err.message.includes('insufficient_quota')) {
+            onMessage &&
+              onMessage({
+                type: 'error',
+                error: `You exceeded your current OpenAI quota, please check your [OpenAI plan and billing details](https://platform.openai.com/account/usage).`,
                 done: true,
                 data: { text: '', conversationId },
               })

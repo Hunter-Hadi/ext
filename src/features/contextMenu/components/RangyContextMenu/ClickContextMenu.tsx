@@ -1,7 +1,6 @@
-import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 import React, { FC, useEffect, useMemo } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
 
@@ -18,13 +17,14 @@ import {
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import {
-  FloatingContextMenuCloseIconButton,
+  FloatingContextMenuPopupSettingButton,
   FloatingContextMenuTemporaryIconButton,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
-import { APP_ENV, isProduction } from '@/constants'
+import { isProduction } from '@/constants'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import { IRangyRect } from '@/features/contextMenu/types'
+import TooltipButton from '@/components/TooltipButton'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -169,7 +169,9 @@ const ClickContextMenuButton: FC<{
           },
         }}
       >
-        <Button
+        <TooltipButton
+          tooltipProps={{ floatingMenuTooltip: true }}
+          title={shortCutKey || ''}
           className={'usechatgpt-ai__context-menu--handle-button'}
           size={'small'}
           variant={'text'}
@@ -192,26 +194,16 @@ const ClickContextMenuButton: FC<{
             tempSelection && showFloatingContextMenu()
           }}
         >
-          {APP_ENV === 'EZ_MAIL_AI' ? (
-            <EzMailAIIcon
-              sx={{
-                pr: 0.5,
-                fontSize: 16,
-                // color: 'inherit',
-              }}
-            />
-          ) : (
-            <UseChatGptIcon
-              sx={{
-                pr: 1,
-                fontSize: 16,
-                // color: 'inherit',
-              }}
-            />
-          )}
-          {shortCutKey || (APP_ENV === 'EZ_MAIL_AI' ? 'EzMail' : 'Ask AI')}
-        </Button>
-        <FloatingContextMenuCloseIconButton useInButton />
+          <UseChatGptIcon
+            sx={{
+              pr: 1,
+              fontSize: 16,
+              // color: 'inherit',
+            }}
+          />
+          {'Ask AI'}
+        </TooltipButton>
+        <FloatingContextMenuPopupSettingButton useInButton />
         <FloatingContextMenuTemporaryIconButton />
       </Stack>
     </Paper>

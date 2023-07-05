@@ -50,7 +50,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       // has_reached_limit:false
       // next_reset_timestamp:1688515200
       if (body.data && body.status === 'OK') {
-        console.log('logApiAndConfirmIsLimited result', body.data)
+        console.log('logApiAndConfirmIsLimited api result', body.data)
         // save to local storage
         await Browser.storage.local.set({
           [CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY]: JSON.stringify(

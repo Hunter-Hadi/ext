@@ -45,7 +45,7 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
 import {
-  FloatingContextMenuCloseIconButton,
+  FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { getMediator } from '@/store/mediator'
@@ -66,6 +66,7 @@ import Button from '@mui/material/Button'
 import useCommands from '@/hooks/useCommands'
 import { SidePanelIcon } from '@/components/CustomIcon'
 import cloneDeep from 'lodash-es/cloneDeep'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -678,50 +679,41 @@ const FloatingContextMenu: FC<{
                           }}
                         />
                       </IconButton>
-                      <FloatingContextMenuCloseIconButton
+                      <FloatingContextMenuPopupSettingButton
                         useInButton={false}
                         sx={{ width: 24, height: 24, alignSelf: 'end' }}
                       />
-                      <Button
-                        sx={{
-                          ml: '0px!important',
-                          height: '24px',
-                          flexShrink: 0,
-                          alignSelf: 'end',
-                          minWidth: 'unset',
-                          padding: '6px 5px',
-                        }}
-                        variant="text"
-                        onClick={() => {
-                          if (isShowChatBox()) {
-                            hideChatBox()
-                          } else {
-                            showChatBox()
-                          }
-                        }}
+                      <TextOnlyTooltip
+                        floatingMenuTooltip
+                        title={shortCutKey}
+                        placement={'top'}
                       >
-                        <SidePanelIcon
+                        <Button
                           sx={{
-                            fontSize: '16px',
-                            color: 'text.primary',
+                            ml: '0px!important',
+                            height: '24px',
+                            flexShrink: 0,
+                            alignSelf: 'end',
+                            minWidth: 'unset',
+                            padding: '6px 5px',
                           }}
-                        />
-                        <Typography
-                          component={'span'}
-                          fontSize={'14px'}
-                          color={'text.primary'}
+                          variant="text"
+                          onClick={() => {
+                            if (isShowChatBox()) {
+                              hideChatBox()
+                            } else {
+                              showChatBox()
+                            }
+                          }}
                         >
-                          <span
-                            style={{
-                              color: 'inherit',
-                              fontSize: '12px',
-                              marginLeft: '4px',
+                          <SidePanelIcon
+                            sx={{
+                              fontSize: '16px',
+                              color: 'text.primary',
                             }}
-                          >
-                            {shortCutKey}
-                          </span>
-                        </Typography>
-                      </Button>
+                          />
+                        </Button>
+                      </TextOnlyTooltip>
                     </>
                   )}
                   {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}

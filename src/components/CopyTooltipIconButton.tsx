@@ -5,7 +5,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import {SxProps} from '@mui/material/styles'
+import { SxProps } from '@mui/material/styles'
 
 interface ITooltipIconButton extends IconButtonProps {
   copyText: string

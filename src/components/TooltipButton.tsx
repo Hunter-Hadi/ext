@@ -1,14 +1,16 @@
 import Button, { ButtonProps } from '@mui/material/Button'
 import React, { FC } from 'react'
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
+import TextOnlyTooltip, {
+  TextOnlyTooltipProps,
+} from '@/components/TextOnlyTooltip'
 interface ITooltipButton extends ButtonProps {
   title: string
-  tooltipProps?: Omit<TooltipProps, 'children' | 'title'>
+  tooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
 }
 const TooltipButton: FC<ITooltipButton> = (props) => {
   const { title, tooltipProps, ...iconButtonProps } = props
   return (
-    <Tooltip
+    <TextOnlyTooltip
       placement={'top'}
       title={title}
       PopperProps={{
@@ -24,7 +26,7 @@ const TooltipButton: FC<ITooltipButton> = (props) => {
       <div>
         <Button {...iconButtonProps} />
       </div>
-    </Tooltip>
+    </TextOnlyTooltip>
   )
 }
 export default TooltipButton

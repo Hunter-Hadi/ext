@@ -9,9 +9,9 @@ import DialogActions from '@mui/material/DialogActions'
 import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import Box from '@mui/material/Box'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import TooltipIconButton from '@/components/TooltipIconButton'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
+import Stack from '@mui/material/Stack'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const GmailChatBoxChatSpeedDial: FC<{
@@ -53,7 +53,8 @@ const GmailChatBoxChatSpeedDial: FC<{
           },
         }}
         icon={
-          <TooltipIconButton
+          <Box
+            component={'div'}
             onClick={() => {
               if (disabledMainButton) {
                 console.log('focus')
@@ -63,25 +64,42 @@ const GmailChatBoxChatSpeedDial: FC<{
               console.log('new')
               onClick && onClick('new')
             }}
-            placement={'left'}
-            title={'New chat'}
           >
-            <CleanChatBoxIcon sx={{ color: '#fff' }} />
-          </TooltipIconButton>
+            <Tooltip placement={'left'} title={'New chat'}>
+              <Stack
+                p={1}
+                alignItems={'center'}
+                justifyContent={'center'}
+                component={'div'}
+              >
+                <CleanChatBoxIcon sx={{ color: '#fff' }} />
+              </Stack>
+            </Tooltip>
+          </Box>
         }
       >
         <SpeedDialAction
           icon={
-            <IconButton
+            <Box
+              component={'div'}
               onClick={() => {
                 console.log('restart dialog')
                 setRestartAppDialogVisible(true)
               }}
             >
-              <ContextMenuIcon icon={'Restart'} />
-            </IconButton>
+              <Tooltip placement={'left'} title={'Restart extension'}>
+                <Stack
+                  p={1}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  component={'div'}
+                >
+                  <ContextMenuIcon icon={'Restart'} />
+                </Stack>
+              </Tooltip>
+            </Box>
           }
-          tooltipTitle={'Restart extension'}
+          tooltipTitle={''}
         />
       </SpeedDial>
       {/*restart app dialog*/}

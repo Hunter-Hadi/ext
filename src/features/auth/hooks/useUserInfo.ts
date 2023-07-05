@@ -6,6 +6,7 @@ import { useSetRecoilState } from 'recoil'
 import { ChatGPTMessageState } from '@/features/gmail'
 import { v4 as uuidV4 } from 'uuid'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
@@ -70,6 +71,19 @@ const useUserInfo = () => {
   const syncUserSubscriptionInfo = async () => {
     try {
       setLoading(true)
+      let currentUserInfo = cloneDeep(userInfo)
+      if (!currentUserInfo) {
+        const result = await port.postMessage({
+          event: 'Client_getUseChatGPTUserInfo',
+          data: {},
+        })
+        if (result.success && result.data?.email) {
+          currentUserInfo = result.data
+        }
+      }
+      if (!currentUserInfo) {
+        return false
+      }
       const result = await port.postMessage({
         event: 'Client_getUseChatGPTUserSubscriptionInfo',
         data: {},
@@ -78,12 +92,16 @@ const useUserInfo = () => {
         const newRole = result.data
         if (newRole) {
           setUserInfo((prevState) => {
-            if (!prevState) {
+            let newUserInfo = cloneDeep(prevState)
+            if (!newUserInfo) {
+              newUserInfo = cloneDeep(currentUserInfo)
+            }
+            if (!newUserInfo) {
               return undefined
             }
             if (
-              prevState.role?.name &&
-              prevState.role.name !== newRole.name &&
+              newUserInfo.role?.name &&
+              newUserInfo.role.name !== newRole.name &&
               newRole.name !== 'free'
             ) {
               // 角色发生变化
@@ -100,7 +118,7 @@ const useUserInfo = () => {
               })
             }
             return {
-              ...prevState,
+              ...newUserInfo,
               role: newRole,
             }
           })

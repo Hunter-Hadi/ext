@@ -3,20 +3,17 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { Resizable } from 're-resizable'
 import { useRecoilState } from 'recoil'
-import {
-  CHROME_EXTENSION_HOMEPAGE_URL,
-  isEzMailApp,
-  ROOT_CONTAINER_ID,
-} from '@/constants'
+import { isEzMailApp, ROOT_CONTAINER_ID } from '@/constants'
 import { AppState } from '@/store'
 import AppInit from '@/components/AppInit'
-import ChatBoxHeader from '@/pages/gmail/ChatBoxHeader'
+import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import { isShowChatBox } from '@/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { getEnv } from '@/utils/AppEnv'
 import Announcement from '@/components/Announcement'
+import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const GmailActionRunner = React.lazy(
@@ -73,7 +70,6 @@ const App: FC = () => {
       // do nothing
     }
   }, [isOpened])
-
   return (
     <>
       <Resizable
@@ -128,22 +124,9 @@ const App: FC = () => {
                 {isOpened && (
                   <Stack flex={1} height={0}>
                     <NormalChatPage />
-                    <iframe
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        zIndex: -1,
-                        border: 0,
-                        opacity: 0,
-                      }}
-                      width={1}
-                      height={1}
-                      id={'EzMail_AI_TEMPLATE_COMPILE'}
-                      src={`${CHROME_EXTENSION_HOMEPAGE_URL}/crx.html`}
-                    />
                   </Stack>
                 )}
+                <GAPageLoader />
               </AppSuspenseLoadingLayout>
             </BrowserVersionDetector>
           </Stack>

@@ -209,7 +209,7 @@ const ChatGPTOpenAIAPIModelSelector: FC = () => {
 }
 
 const ChatGPTOpenAIAPITemperatureSlider: FC = () => {
-  const { settings, updateSettings, loaded, loading } = useChatGPTApiSettings()
+  const { settings, updateSettings, loaded } = useChatGPTApiSettings()
   if (!loaded) {
     return null
   }
@@ -220,7 +220,6 @@ const ChatGPTOpenAIAPITemperatureSlider: FC = () => {
         {settings.temperature}
       </Typography>
       <Slider
-        disabled={loading}
         size={'small'}
         marks={[
           {

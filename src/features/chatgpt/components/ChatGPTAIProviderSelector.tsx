@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Chip from '@mui/material/Chip'
 
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/constants'
 import { ChatGPTOpenAIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIModelSelector'
 import { IChatGPTProviderType } from '@/background/provider/chat'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
@@ -26,12 +26,13 @@ import {
   OpenAIIcon,
   UseChatGptIcon,
 } from '@/components/CustomIcon'
-import BulletList from '@/components/BulletList'
-import TextIcon from '@/components/TextIcon'
+// import BulletList from '@/components/BulletList'
+// import TextIcon from '@/components/TextIcon'
 import { ChatGPTOpenAIAPIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
 import { ChatGPTClaudeModelSelector } from '@/features/chatgpt/components/ChatGPTClaudeModelSelector'
 import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
 import IconDropdown from '@/components/IconDropdown'
+import Link from '@mui/material/Link'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -48,6 +49,23 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const providerOptions = [
+  {
+    beta: false,
+    label: 'Free AI',
+    value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+    shortDescription: `Use our OpenAI API key (GPT-3.5-turbo) for free behind the scenes to power the extension.`,
+    description: `To get more Free AI without a daily limit, all you need to do is share your referral link and invite your friends to join us.`,
+    features: [
+      `[ThumbUp] Free to use`,
+      `[Done] No OpenAI account required`,
+      `[Done] No country restrictions`,
+      `[Done] No ChatGPT interruptions`,
+      `[Done] Always available`,
+      `[Done] Fast response speed`,
+      `[Incorrect] GPT-4 unavailable`,
+    ],
+    logo: <UseChatGptIcon sx={{ fontSize: 20 }} />,
+  },
   {
     beta: false,
     label: 'ChatGPT',
@@ -98,23 +116,6 @@ const providerOptions = [
       `[Done] Fast response speed`,
       '[Done] GPT-4 availability depends on your account',
     ],
-  },
-  {
-    beta: false,
-    label: 'Free AI',
-    value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-    shortDescription: `Use our OpenAI API key (GPT-3.5-turbo) for free behind the scenes to power the extension.`,
-    description: `To get more Free AI without a daily limit, all you need to do is share your referral link and invite your friends to join us.`,
-    features: [
-      `[ThumbUp] Free to use`,
-      `[Done] No OpenAI account required`,
-      `[Done] No country restrictions`,
-      `[Done] No ChatGPT interruptions`,
-      `[Done] Always available`,
-      `[Done] Fast response speed`,
-      `[Incorrect] GPT-4 unavailable`,
-    ],
-    logo: <UseChatGptIcon sx={{ fontSize: 20 }} />,
   },
   {
     beta: false,
@@ -194,7 +195,6 @@ const ChatGPTAIProviderSelector: FC = () => {
     provider,
     loading: switchProviderLoading,
   } = useChatGPTProvider()
-
   return (
     <Stack
       sx={{
@@ -284,6 +284,11 @@ const ChatGPTAIProviderSelector: FC = () => {
                 sx={{ p: 0 }}
               >
                 <Tooltip
+                  PopperProps={{
+                    sx: {
+                      zIndex: 2147483620,
+                    },
+                  }}
                   placement={'right-start'}
                   componentsProps={{
                     tooltip: {
@@ -295,7 +300,7 @@ const ChatGPTAIProviderSelector: FC = () => {
                     },
                   }}
                   title={
-                    <Stack width={'160px'}>
+                    <Stack width={'160px'} component={'div'}>
                       <Stack
                         width={'100%'}
                         direction={'row'}
@@ -338,51 +343,63 @@ const ChatGPTAIProviderSelector: FC = () => {
                       >
                         {provider.description}
                       </Typography>
-                      <BulletList
-                        pointProps={{
-                          display: 'none',
-                        }}
-                        textProps={{
-                          fontSize: '12px',
-                          color: 'text.primary',
-                          textAlign: 'left',
-                        }}
-                        textList={provider.features.map((feature) => {
-                          // feature text:
-                          // [ThumbUp] Free to use
-                          // match: [icon]
-                          const match = feature.match(/\[(.*?)\]/)
-                          const icon = match ? match[1] : ''
-                          const text = feature.replace(/\[(.*?)\]/, '')
-                          return (
-                            <Stack
-                              key={feature}
-                              width={'100%'}
-                              direction={'row'}
-                              spacing={1}
-                              alignItems={'start'}
-                            >
-                              {icon && (
-                                <TextIcon
-                                  sx={{
-                                    position: 'relative',
-                                    fontSize: 14,
-                                    top: 2,
-                                  }}
-                                  icon={icon as any}
-                                />
-                              )}
-                              <Typography
-                                fontSize={'12px'}
-                                color={'text.primary'}
-                                textAlign={'left'}
-                              >
-                                {text}
-                              </Typography>
-                            </Stack>
-                          )
-                        })}
-                      />
+                      <Link
+                        href={`${APP_USE_CHAT_GPT_HOST}/get-started#ai-provider`}
+                        target={'_blank'}
+                      >
+                        <Typography
+                          fontSize={'12px'}
+                          color={'text.primary'}
+                          textAlign={'left'}
+                        >
+                          Learn more
+                        </Typography>
+                      </Link>
+                      {/*<BulletList*/}
+                      {/*  pointProps={{*/}
+                      {/*    display: 'none',*/}
+                      {/*  }}*/}
+                      {/*  textProps={{*/}
+                      {/*    fontSize: '12px',*/}
+                      {/*    color: 'text.primary',*/}
+                      {/*    textAlign: 'left',*/}
+                      {/*  }}*/}
+                      {/*  textList={provider.features.map((feature) => {*/}
+                      {/*    // feature text:*/}
+                      {/*    // [ThumbUp] Free to use*/}
+                      {/*    // match: [icon]*/}
+                      {/*    const match = feature.match(/\[(.*?)\]/)*/}
+                      {/*    const icon = match ? match[1] : ''*/}
+                      {/*    const text = feature.replace(/\[(.*?)\]/, '')*/}
+                      {/*    return (*/}
+                      {/*      <Stack*/}
+                      {/*        key={feature}*/}
+                      {/*        width={'100%'}*/}
+                      {/*        direction={'row'}*/}
+                      {/*        spacing={1}*/}
+                      {/*        alignItems={'start'}*/}
+                      {/*      >*/}
+                      {/*        {icon && (*/}
+                      {/*          <TextIcon*/}
+                      {/*            sx={{*/}
+                      {/*              position: 'relative',*/}
+                      {/*              fontSize: 14,*/}
+                      {/*              top: 2,*/}
+                      {/*            }}*/}
+                      {/*            icon={icon as any}*/}
+                      {/*          />*/}
+                      {/*        )}*/}
+                      {/*        <Typography*/}
+                      {/*          fontSize={'12px'}*/}
+                      {/*          color={'text.primary'}*/}
+                      {/*          textAlign={'left'}*/}
+                      {/*        >*/}
+                      {/*          {text}*/}
+                      {/*        </Typography>*/}
+                      {/*      </Stack>*/}
+                      {/*    )*/}
+                      {/*  })}*/}
+                      {/*/>*/}
                     </Stack>
                   }
                 >

@@ -3,6 +3,24 @@ export enum BingConversationStyle {
   Balanced = 'balanced',
   Precise = 'precise',
 }
+export const BING_CONVERSATION_STYLES = [
+  {
+    label: 'Creative',
+    description: `Clear your conversation and start an original imaginative chat.`,
+    value: BingConversationStyle.Creative,
+  },
+  {
+    label: 'Balanced',
+    description: `Clear your conversation and start an informative and friendly chat.`,
+    value: BingConversationStyle.Balanced,
+  },
+  {
+    label: 'Precise',
+    description: `Clear your conversation and start a concise and straightforward chat.`,
+    value: BingConversationStyle.Precise,
+  },
+]
+
 export type Event =
   | {
       type: 'UPDATE_ANSWER'

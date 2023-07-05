@@ -33,6 +33,7 @@ import { ChatGPTClaudeModelSelector } from '@/features/chatgpt/components/ChatGP
 import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
 import IconDropdown from '@/components/IconDropdown'
 import Link from '@mui/material/Link'
+import { ChatGPTBingConversationStyleSelector } from '@/features/chatgpt/components/ChatGPTBingConversationStyleSelector'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -441,6 +442,10 @@ const ChatGPTAIProviderSelector: FC = () => {
         clientState.status === 'success' && <ChatGPTOpenAIAPIModelSelector />}
       {provider === CHAT_GPT_PROVIDER.CLAUDE &&
         clientState.status === 'success' && <ChatGPTClaudeModelSelector />}
+      {provider === CHAT_GPT_PROVIDER.BING &&
+        clientState.status === 'success' && (
+          <ChatGPTBingConversationStyleSelector />
+        )}
     </Stack>
   )
 }

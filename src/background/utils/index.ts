@@ -363,6 +363,10 @@ export const createClientMessageListener = (
     Browser.runtime.onMessage.removeListener(modifyListener)
   }
 }
+/**
+ *
+ * @param client、daemon_process监听background的发送消息
+ */
 export const useCreateClientMessageListener = (
   listener: (
     event: IChromeExtensionSendEvent,
@@ -397,6 +401,9 @@ export const useCreateClientMessageListener = (
   }, [])
 }
 
+/**
+ * 获取插件快捷键
+ */
 export const getChromeExtensionCommands = async (): Promise<
   Array<{
     name?: string
@@ -415,6 +422,11 @@ export const getChromeExtensionCommands = async (): Promise<
     return []
   }
 }
+/**
+ * 创建settings页面
+ * @param query
+ * @param autoFocus
+ */
 export const createChromeExtensionOptionsPage = async (
   query = '',
   autoFocus = true,
@@ -436,6 +448,10 @@ export const createChromeExtensionOptionsPage = async (
     active: autoFocus,
   })
 }
+
+/**
+ * 登出
+ */
 export const chromeExtensionLogout = async () => {
   // 清空用户token
   await Browser.storage.local.remove(
@@ -447,6 +463,11 @@ export const chromeExtensionLogout = async () => {
   )
 }
 
+/**
+ * 获取网页内容
+ * @param url
+ * @param maxWaitTime
+ */
 export const backgroundGetUrlContent = async (
   url: string,
   maxWaitTime = 15 * 1000,
@@ -484,6 +505,9 @@ export const backgroundGetUrlContent = async (
     return result
   })
 }
+/**
+ * 重启插件
+ */
 export const backgroundRestartChromeExtension = async () => {
   try {
     const tabIds = await Browser.tabs.query({

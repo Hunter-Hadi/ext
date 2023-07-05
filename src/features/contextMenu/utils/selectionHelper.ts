@@ -244,6 +244,7 @@ export const createSelectionMarker = (
              * 2. 选区的innerText从[0 - 光标位置]的内容
              * 3. 选区的innerText内容
              */
+
             const selectionText = (sel.toString() || range.toString())
               .trim()
               .replace(/\u200B/g, '')
@@ -255,12 +256,21 @@ export const createSelectionMarker = (
               .toString()
               .trim()
               .replace(/\u200B/g, '')
-            const contextText = (
+
+            let contextText = (
               selectionText ||
               partOfStartToCaretText ||
               element.innerText.trim() ||
               ''
             ).replace(/\u200B/g, '')
+            if (
+              document.activeElement?.tagName !== 'IFRAME' &&
+              range.startContainer?.tagName === 'BODY' &&
+              range.startContainer?.isSameNode(range.endContainer)
+            ) {
+              // ！！！！如果是body标签，选区内容,光标内容,元素内容都是无效的
+              contextText = ''
+            }
             const host = getCurrentDomainHost()
             /**
              * 如果不在白名单中，就不创建span标记，缓存用户选区就行
@@ -350,7 +360,6 @@ export const getEditableElementSelectionTextOnSpecialHost = (
       if (typeof win.getSelection != 'undefined') {
         sel = win.getSelection()
         if (sel.rangeCount > 0) {
-          const range = win.getSelection().getRangeAt(0)
           let pageContentRoot: HTMLElement | null = null
           switch (host) {
             case 'notion.so':
@@ -390,10 +399,14 @@ export const getEditableElementSelectionTextOnSpecialHost = (
               break
           }
           if (pageContentRoot) {
-            const boundaryRange = range.cloneRange()
+            const boundaryRange = document.createRange()
             boundaryRange.selectNode(pageContentRoot)
-            boundaryRange.setEnd(range.endContainer, range.endOffset)
-            const selectionString = boundaryRange?.toString()?.trim()
+            const selectionString =
+              win
+                .getSelection()
+                ?.toString()
+                .trim()
+                .replace(/\u200B/g, '') || pageContentRoot.innerText
             console.log(
               'getEditableElementSelectionTextOnSpecialHost : \t',
               selectionString,

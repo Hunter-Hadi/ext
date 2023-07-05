@@ -2,10 +2,18 @@ import Browser from 'webextension-polyfill'
 import {
   createClientMessageListener,
   getChromeExtensionSettings,
+  setChromeExtensionSettings,
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
+import { IThirdProviderSettings } from '@/background/types/Settings'
+import { IChatGPTProviderType } from '@/background/provider/chat'
+import {
+  checkSettingsSync,
+  isSettingsLastModifiedEqual,
+  syncLocalSettingsToServerSettings,
+} from '@/background/utils/syncSettings'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**
@@ -189,4 +197,57 @@ export const setWindowIdOfChatGPTTab = async (windowId: number) => {
   await Browser.storage.local.set({
     [CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB]: windowId,
   })
+}
+
+/**
+ * 获取第三方AI Provider的设置
+ * @param thirdProviderKey
+ */
+export const getThirdProviderSettings = async <T extends IChatGPTProviderType>(
+  thirdProviderKey: T,
+) => {
+  try {
+    const settings = await getChromeExtensionSettings()
+    const thirdProviderSetting = settings.thirdProviderSettings
+    if (thirdProviderSetting && thirdProviderSetting[thirdProviderKey]) {
+      return thirdProviderSetting[thirdProviderKey] as IThirdProviderSettings[T]
+    }
+    return undefined
+  } catch (e) {
+    return undefined
+  }
+}
+
+/**
+ * 设置第三方AI Provider的设置
+ * @param thirdProviderKey
+ * @param settings
+ * @param syncToServer - 是否同步到服务器
+ */
+export const setThirdProviderSettings = async <T extends IChatGPTProviderType>(
+  thirdProviderKey: T,
+  settings: Partial<IThirdProviderSettings[T]>,
+  syncToServer: boolean,
+) => {
+  try {
+    const chromeExtensionSettings = await getChromeExtensionSettings()
+    chromeExtensionSettings.thirdProviderSettings = {
+      ...chromeExtensionSettings.thirdProviderSettings,
+      [thirdProviderKey]: {
+        ...chromeExtensionSettings.thirdProviderSettings?.[thirdProviderKey],
+        ...settings,
+      },
+    }
+    await setChromeExtensionSettings(chromeExtensionSettings)
+    if (syncToServer) {
+      if (await isSettingsLastModifiedEqual()) {
+        await syncLocalSettingsToServerSettings()
+      } else {
+        await checkSettingsSync()
+      }
+    }
+    return true
+  } catch (e) {
+    return false
+  }
 }

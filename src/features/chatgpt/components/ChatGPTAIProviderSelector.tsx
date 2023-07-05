@@ -24,7 +24,6 @@ import {
   ChatGPTIcon,
   ClaudeIcon,
   OpenAIIcon,
-  UseChatGptIcon,
 } from '@/components/CustomIcon'
 // import BulletList from '@/components/BulletList'
 // import TextIcon from '@/components/TextIcon'
@@ -52,10 +51,10 @@ const ArrowDropDownIconCustom = () => {
 const providerOptions = [
   {
     beta: false,
-    label: 'Free AI',
+    label: 'ChatGPT',
     value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-    shortDescription: `Use our OpenAI API key (GPT-3.5-turbo) for free behind the scenes to power the extension.`,
-    description: `To get more Free AI without a daily limit, all you need to do is share your referral link and invite your friends to join us.`,
+    shortDescription: `Use our OpenAI API key to power the extension.`,
+    description: `Powered by gpt-3.5-turbo.`,
     features: [
       `[ThumbUp] Free to use`,
       `[Done] No OpenAI account required`,
@@ -65,34 +64,7 @@ const providerOptions = [
       `[Done] Fast response speed`,
       `[Incorrect] GPT-4 unavailable`,
     ],
-    logo: <UseChatGptIcon sx={{ fontSize: 20 }} />,
-  },
-  {
-    beta: false,
-    label: 'ChatGPT',
-    value: CHAT_GPT_PROVIDER.OPENAI,
     logo: <ChatGPTIcon sx={{ fontSize: 20 }} />,
-    shortDescription: `Use your own ChatGPT to power the extension.`,
-    description: `You need to log into your own ChatGPT account, and keep the pinned ChatGPT website tab open to power the extension.`,
-    features: [
-      `[Lock] OpenAI account required`,
-      `[Lock] Country restrictions apply`,
-      `[Unhappy] ChatGPT interruptions`,
-      '',
-      `For ChatGPT free plan:`,
-      `[ThumbUp] Free to use`,
-      `[Incorrect] Not always available`,
-      `[Unhappy] Standard response speed`,
-      `[Incorrect] GPT-4 unavailable`,
-      `[Incorrect] Plugins unavailable`,
-      '',
-      `For ChatGPT Plus:`,
-      `[Database] Pay $20/mo to OpenAI`,
-      `[Done] Always available`,
-      `[Done] Fast response speed`,
-      `[Done] GPT-4 available`,
-      `[Done] Plugins unavailable`,
-    ],
   },
   {
     beta: false,
@@ -120,6 +92,40 @@ const providerOptions = [
   },
   {
     beta: false,
+    label: 'ChatGPT web app',
+    value: CHAT_GPT_PROVIDER.OPENAI,
+    logo: (
+      <OpenAIIcon
+        sx={{
+          fontSize: 20,
+          color: (t) => (t.palette.mode === 'dark' ? '#16f6c0' : '#10A37F'),
+        }}
+      />
+    ),
+    shortDescription: `Use your own ChatGPT web app to power the extension.`,
+    description: `You need to log into your own ChatGPT account, and keep the pinned ChatGPT website tab open to power the extension.`,
+    features: [
+      `[Lock] OpenAI account required`,
+      `[Lock] Country restrictions apply`,
+      `[Unhappy] ChatGPT interruptions`,
+      '',
+      `For ChatGPT free plan:`,
+      `[ThumbUp] Free to use`,
+      `[Incorrect] Not always available`,
+      `[Unhappy] Standard response speed`,
+      `[Incorrect] GPT-4 unavailable`,
+      `[Incorrect] Plugins unavailable`,
+      '',
+      `For ChatGPT Plus:`,
+      `[Database] Pay $20/mo to OpenAI`,
+      `[Done] Always available`,
+      `[Done] Fast response speed`,
+      `[Done] GPT-4 available`,
+      `[Done] Plugins unavailable`,
+    ],
+  },
+  {
+    beta: false,
     label: 'Bard',
     value: CHAT_GPT_PROVIDER.BARD,
     logo: (
@@ -130,7 +136,7 @@ const providerOptions = [
       />
     ),
     shortDescription: `Use your own Bard to power the extension.`,
-    description: `You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can enable it instantly on bard.google.com.`,
+    description: `You need to log into your own Google account that has access to Bard. If your Google account does not have access to Bard, you can join the waitlist at bard.google.com.`,
     features: [
       `[ThumbUp] Free to use`,
       `[Lock] Bard access required`,
@@ -151,8 +157,8 @@ const providerOptions = [
         }}
       />
     ),
-    shortDescription: `Use your own New Bing Chat to power the extension.`,
-    description: `You need to log into your own Microsoft account that has access to the New Bing Chat. If your Microsoft account does not have access to the New Bing Chat, you can enable it instantly on bing.com/chat.`,
+    shortDescription: `Use your own Bing AI to power the extension.`,
+    description: `You need to log into your own Microsoft account that has access to the New Bing Chat. If your Microsoft account does not have access to the New Bing Chat, you can join the waitlist at bing.com/chat.`,
     features: [
       `[ThumbUp] Free to use`,
       `[Lock] New Bing Chat access required`,
@@ -186,7 +192,10 @@ const providerOptions = [
   },
 ]
 
-const ChatGPTAIProviderSelector: FC = () => {
+const ChatGPTAIProviderSelector: FC<{
+  menuItemWidth?: number
+}> = (props) => {
+  const { menuItemWidth = 160 } = props
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
@@ -244,7 +253,7 @@ const ChatGPTAIProviderSelector: FC = () => {
                   fontSize={14}
                   color={'text.primary'}
                   textAlign={'left'}
-                  width={130}
+                  width={menuItemWidth - 30}
                   noWrap
                 >
                   Select provider
@@ -253,7 +262,7 @@ const ChatGPTAIProviderSelector: FC = () => {
             }
             return (
               <Stack
-                width={130}
+                width={menuItemWidth - 30}
                 direction={'row'}
                 alignItems={'center'}
                 spacing={1}
@@ -271,7 +280,9 @@ const ChatGPTAIProviderSelector: FC = () => {
                   fontSize={'14px'}
                   color={'text.primary'}
                 >
-                  {provider.label}
+                  {menuItemWidth === 160
+                    ? provider.label.replace('ChatGPT web app', 'ChatGPT app')
+                    : provider.label}
                 </Typography>
               </Stack>
             )
@@ -301,7 +312,7 @@ const ChatGPTAIProviderSelector: FC = () => {
                     },
                   }}
                   title={
-                    <Stack width={'160px'} component={'div'}>
+                    <Stack width={menuItemWidth} component={'div'}>
                       <Stack
                         width={'100%'}
                         direction={'row'}
@@ -405,7 +416,7 @@ const ChatGPTAIProviderSelector: FC = () => {
                   }
                 >
                   <Stack
-                    width={160}
+                    width={menuItemWidth}
                     sx={{ padding: '6px 16px' }}
                     direction={'row'}
                     alignItems={'center'}

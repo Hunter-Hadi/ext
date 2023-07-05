@@ -306,9 +306,9 @@ const ChatGPTProviderAuthWrapper: FC = () => {
   const { provider } = useChatGPTProvider()
   const buttonTitle = useMemo(() => {
     if (provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS) {
-      return 'Continue with Free AI'
+      return 'Continue with ChatGPT'
     } else if (provider === CHAT_GPT_PROVIDER.OPENAI) {
-      return 'Log into your own ChatGPT'
+      return 'Log into your own ChatGPT web app'
     } else if (provider === CHAT_GPT_PROVIDER.OPENAI_API) {
       return 'Add your own OpenAI API key'
     } else if (provider === CHAT_GPT_PROVIDER.BARD) {
@@ -348,7 +348,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
           mt: 2,
         }}
       >
-        <ChatGPTAIProviderSelector />
+        <ChatGPTAIProviderSelector menuItemWidth={220} />
         <Stack px={1} alignItems={'flex-start'} height={'100%'} spacing={2}>
           <Stack direction={'row'} alignItems={'center'}>
             <Typography
@@ -360,29 +360,6 @@ const ChatGPTProviderAuthWrapper: FC = () => {
             </Typography>
             {provider === CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS && (
               <>
-                <UseChatGptIcon
-                  sx={{
-                    fontSize: 20,
-                    mx: 1,
-                    borderRadius: '4px',
-                    bgcolor: (t) =>
-                      t.palette.mode === 'light'
-                        ? 'transparent'
-                        : 'rgba(235, 235, 235, 1)',
-                    p: '2px',
-                  }}
-                />
-                <Typography
-                  fontSize={'20px'}
-                  fontWeight={700}
-                  color={'text.primary'}
-                >
-                  Free AI
-                </Typography>
-              </>
-            )}
-            {provider === CHAT_GPT_PROVIDER.OPENAI && (
-              <>
                 <ChatGPTIcon sx={{ mx: 1, fontSize: 20 }} />
                 <Typography
                   fontSize={'20px'}
@@ -390,6 +367,25 @@ const ChatGPTProviderAuthWrapper: FC = () => {
                   color={'text.primary'}
                 >
                   ChatGPT
+                </Typography>
+              </>
+            )}
+            {provider === CHAT_GPT_PROVIDER.OPENAI && (
+              <>
+                <OpenAIIcon
+                  sx={{
+                    mx: 1,
+                    fontSize: 20,
+                    color: (t) =>
+                      t.palette.mode === 'dark' ? '#16f6c0' : '#10A37F',
+                  }}
+                />
+                <Typography
+                  fontSize={'20px'}
+                  fontWeight={700}
+                  color={'text.primary'}
+                >
+                  ChatGPT web app
                 </Typography>
               </>
             )}
@@ -459,7 +455,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
                   color={'text.primary'}
                   textAlign={'left'}
                 >
-                  {`Log into ChatGPT and pass Cloudflare check. We recommend enabling
+                  {`Log into ChatGPT web app and pass Cloudflare check. We recommend enabling
               our new `}
                 </Typography>
                 <Link

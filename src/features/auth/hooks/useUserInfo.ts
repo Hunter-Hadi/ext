@@ -110,7 +110,7 @@ const useUserInfo = () => {
                   messageId: uuidV4(),
                   type: 'system',
                   parentMessageId: undefined,
-                  text: `Your role has been changed to ${newRole.name}`,
+                  text: `You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!`,
                   extra: {
                     status: 'success',
                   },

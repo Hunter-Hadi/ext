@@ -48,6 +48,7 @@ import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined'
 import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined'
 import FormatAlignLeftOutlinedIcon from '@mui/icons-material/FormatAlignLeftOutlined'
 import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined'
+import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -104,6 +105,7 @@ export const CONTEXT_MENU_ICONS = [
   'NoteDown',
   'NoteRight',
   'Restart',
+  'Translate',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -227,6 +229,8 @@ const ContextMenuIcon: FC<{
       return <NoteRight sx={sxMemo} />
     case 'Restart':
       return <RestartAltOutlinedIcon sx={sxMemo} />
+    case 'Translate':
+      return <TranslateOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

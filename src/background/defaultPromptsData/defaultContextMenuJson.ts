@@ -1208,7 +1208,7 @@ export default [
       },
       type: 'group',
       actions: [],
-      icon: 'Language',
+      icon: 'Translate',
       searchText: 'generate from selection translate',
     },
   },

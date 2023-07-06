@@ -35,7 +35,7 @@ const FloatingContextMenuGmailCloseIconButton: FC<{
           defaultPlacement={'bottom-start'}
           defaultFallbackPlacements={['top-start']}
           hoverOpen
-          zIndex={2147483651}
+          zIndex={2147483610}
           label={''}
           root={root}
           menuSx={{

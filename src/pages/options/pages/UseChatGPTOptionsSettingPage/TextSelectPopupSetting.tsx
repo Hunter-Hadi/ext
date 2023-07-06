@@ -145,7 +145,7 @@ const TextSelectPopupSetting: FC<{
                   color: 'inherit',
                 }}
               >
-                {commandKey || 'Ask AI'}
+                {'Ask AI'}
               </Button>
               <Button
                 sx={{

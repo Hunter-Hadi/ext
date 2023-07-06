@@ -224,7 +224,6 @@ class UseChatGPTPlusChat {
       onMessage: (message: string) => {
         try {
           const messageData = JSON.parse(message as string)
-          log.debug('streaming on message')
           if (messageData?.conversation_id) {
             conversationId = messageData.conversation_id
           }
@@ -232,6 +231,7 @@ class UseChatGPTPlusChat {
             // 记录到结果里，前端分流输出
             messageResult += messageData.text
           }
+          log.debug('streaming on message', messageResult)
         } catch (e) {
           log.error('parse message.data error: \t', e)
         }

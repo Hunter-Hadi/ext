@@ -39,6 +39,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { getCurrentDomainHost } from '@/utils'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
@@ -76,7 +77,7 @@ export const useComputedChromeExtensionButtonSettings = (
   const [host, setHost] = useState<string>('')
   const { loaded, buttonSettings } = useChromeExtensionButtonSettings()
   useEffectOnce(() => {
-    setHost(window.location.host.replace(/^www\./, '').replace(/:\d+$/, ''))
+    setHost(getCurrentDomainHost())
   })
   return useMemo(() => {
     if (loaded && host && buttonSettings?.[buttonKey]) {

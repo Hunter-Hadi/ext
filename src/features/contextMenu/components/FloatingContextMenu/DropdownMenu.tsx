@@ -39,10 +39,12 @@ import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import Stack from '@mui/material/Stack'
 
 interface LiteDropdownMenuItemProps {
-  label: string
+  label?: string
   icon?: string
+  CustomRenderNode?: React.ReactNode
   onClick?: (event: React.MouseEvent) => void
 }
 
@@ -56,18 +58,13 @@ interface MenuItemProps {
 export const LiteDropdownMenuItem = React.forwardRef<
   any,
   LiteDropdownMenuItemProps
->(({ label, icon, onClick, ...props }, ref) => {
+>(({ label, icon, CustomRenderNode, onClick, ...props }, ref) => {
   const floatingUiProps: any = props
   return (
     <Box
       {...props}
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'row',
-        gap: 1,
         boxSizing: 'border-box',
-        px: 1,
         borderRadius: '3px',
         height: '28px',
         fontSize: '14px',
@@ -107,24 +104,30 @@ export const LiteDropdownMenuItem = React.forwardRef<
         floatingUiProps?.onClick?.(event)
       }}
     >
-      {icon && (
-        <ContextMenuIcon
-          size={16}
-          icon={icon}
-          sx={{ color: 'primary.main', flexShrink: 0 }}
-        />
-      )}
-      <Typography
-        fontSize={14}
-        textAlign={'left'}
-        color={'text.primary'}
-        width={0}
-        noWrap
-        flex={1}
-        lineHeight={'28px'}
-      >
-        {label}
-      </Typography>
+      <Box>
+        {CustomRenderNode || (
+          <Stack direction={'row'} spacing={1} px={1} alignItems={'center'}>
+            {icon && (
+              <ContextMenuIcon
+                size={16}
+                icon={icon}
+                sx={{ color: 'primary.main', flexShrink: 0 }}
+              />
+            )}
+            <Typography
+              fontSize={14}
+              textAlign={'left'}
+              color={'text.primary'}
+              width={0}
+              noWrap
+              flex={1}
+              lineHeight={'28px'}
+            >
+              {label}
+            </Typography>
+          </Stack>
+        )}
+      </Box>
     </Box>
   )
 })
@@ -617,6 +620,9 @@ export const MenuComponent = React.forwardRef<
                     'rgb(15 15 15 / 5%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 3px 6px, rgb(15 15 15 / 20%) 0px 9px 24px',
                   '& *': {
                     outline: 'none!important',
+                  },
+                  '&:has(.max-ai--popper-wrapper)': {
+                    overflowY: 'unset',
                   },
                   ...menuSx,
                 }}

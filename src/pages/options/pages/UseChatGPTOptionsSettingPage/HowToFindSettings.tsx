@@ -25,16 +25,16 @@ const HowToFindSettings: FC<{
             overflow: 'hidden',
           }}
         >
-          <Stack spacing={1}>
+          <Stack spacing={1} alignItems={'center'}>
             <Typography fontSize={14} color={'text.primary'}>
               You can always re-enable it in Settings by clicking the Settings
               icon at the top of the sidebar.
             </Typography>
             <img
-              src={`https://www.maxai.me/assets/chrome-extension/settings-entry.png`}
+              src={`https://www.maxai.me/assets/chrome-extension/settings-entry-small.png`}
               alt="settings-entry"
-              width={466}
-              height={121}
+              width={200}
+              height={80}
             />
           </Stack>
         </Box>

@@ -6,6 +6,7 @@ import {
   APP_USE_CHAT_GPT_HOST,
   CHAT_GPT_PROVIDER,
   BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
+  APP_VERSION,
 } from '@/constants'
 import {
   backgroundSendAllClientMessage,
@@ -119,6 +120,7 @@ class UseChatGPTPlusChat {
         streaming,
         message_content: question,
         max_history_message_cnt,
+        chrome_extension_version: APP_VERSION,
       },
       cacheConversationId ? { conversation_id: cacheConversationId } : {},
     )

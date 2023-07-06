@@ -54,8 +54,8 @@ const providerOptions = [
     beta: false,
     label: 'ChatGPT',
     value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
-    shortDescription: `Use our OpenAI API key to power the extension.`,
-    description: `Powered by gpt-3.5-turbo.`,
+    shortDescription: `Use ChatGPT to power the extension.`,
+    description: `As fast as ChatGPT Plus. No country restrictions. Powered by gpt-3.5-turbo.`,
     features: [
       `[ThumbUp] Free to use`,
       `[Done] No OpenAI account required`,

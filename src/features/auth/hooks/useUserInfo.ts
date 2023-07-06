@@ -11,6 +11,9 @@ import cloneDeep from 'lodash-es/cloneDeep'
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
+const upgradeText =
+  'You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!'
+
 const useUserInfo = () => {
   const [userInfo, setUserInfo] = useState<IUseChatGPTUserInfo | undefined>(
     undefined,
@@ -106,11 +109,20 @@ const useUserInfo = () => {
             ) {
               // 角色发生变化
               updateMessage((prevState) => {
+                // 避免重复添加
+                for (let i = prevState.length - 1; i >= 0; i--) {
+                  const message = prevState[i]
+                  if (message.type === 'system') {
+                    if (message.text === upgradeText) {
+                      return prevState
+                    }
+                  }
+                }
                 return prevState.concat({
                   messageId: uuidV4(),
                   type: 'system',
                   parentMessageId: undefined,
-                  text: `You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!`,
+                  text: upgradeText,
                   extra: {
                     status: 'success',
                   },

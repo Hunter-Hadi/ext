@@ -20,6 +20,7 @@ import {
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import {
   BardIcon,
+  ChatGPTBlackIcon,
   ChatGPTIcon,
   GoogleIcon,
   OpenAIIcon,
@@ -391,14 +392,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
             )}
             {provider === CHAT_GPT_PROVIDER.OPENAI_API && (
               <>
-                <OpenAIIcon
-                  sx={{
-                    mx: 1,
-                    fontSize: 20,
-                    color: (t) =>
-                      t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
-                  }}
-                />
+                <ChatGPTBlackIcon sx={{ mx: 1, fontSize: 20 }} />
                 <Typography
                   fontSize={'20px'}
                   fontWeight={700}

@@ -21,6 +21,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import {
   BardIcon,
   BingIcon,
+  ChatGPTBlackIcon,
   ChatGPTIcon,
   ClaudeIcon,
   OpenAIIcon,
@@ -95,10 +96,9 @@ const providerOptions = [
     label: 'ChatGPT web app',
     value: CHAT_GPT_PROVIDER.OPENAI,
     logo: (
-      <OpenAIIcon
+      <ChatGPTBlackIcon
         sx={{
           fontSize: 20,
-          color: (t) => (t.palette.mode === 'dark' ? '#16f6c0' : '#10A37F'),
         }}
       />
     ),

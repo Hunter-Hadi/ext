@@ -281,7 +281,7 @@ const ChatGPTAIProviderSelector: FC<{
                   color={'text.primary'}
                 >
                   {menuItemWidth === 160
-                    ? provider.label.replace('ChatGPT web app', 'ChatGPT app')
+                    ? provider.label.replace('ChatGPT web app', 'ChatGPT web')
                     : provider.label}
                 </Typography>
               </Stack>

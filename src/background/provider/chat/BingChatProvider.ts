@@ -31,6 +31,7 @@ class BingChatProvider implements ChatAdapterInterface {
     await setChromeExtensionSettings({
       conversationId: '',
     })
+    await this.bindChat.removeConversation(conversationId)
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (

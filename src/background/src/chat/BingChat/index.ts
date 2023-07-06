@@ -81,5 +81,12 @@ class BingChat extends BaseChat {
       },
     })
   }
+  async removeConversation(conversationId: string) {
+    this.bingLib.resetConversation()
+    return Promise.resolve(true)
+  }
+  async destroy(): Promise<void> {
+    this.bingLib.resetConversation()
+  }
 }
 export { BingChat }

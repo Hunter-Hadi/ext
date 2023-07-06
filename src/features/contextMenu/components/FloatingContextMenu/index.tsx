@@ -686,7 +686,7 @@ const FloatingContextMenu: FC<{
                       <TextOnlyTooltip
                         floatingMenuTooltip
                         title={shortCutKey}
-                        placement={'top'}
+                        placement={'bottom'}
                       >
                         <Button
                           sx={{

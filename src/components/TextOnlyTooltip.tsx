@@ -16,6 +16,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
       {...props}
       PopperProps={{
         container,
+        ...props.PopperProps,
         style: {
           ...(floatingMenuTooltip
             ? {}
@@ -32,7 +33,21 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
           ...props.style,
           zIndex: 2147483620,
         },
-        ...props.PopperProps,
+        sx: {
+          '&[data-popper-placement*="bottom"] > div': {
+            marginTop: '4px!important',
+          },
+          '&[data-popper-placement*="top"] > div': {
+            marginBottom: '4px!important',
+          },
+          '&[data-popper-placement*="right"] > div': {
+            marginLeft: '4px!important',
+          },
+          '&[data-popper-placement*="left"] > div': {
+            marginRight: '4px!important',
+          },
+          ...props.PopperProps?.sx,
+        },
       }}
     />
   )

@@ -55,7 +55,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
           label={''}
           root={root}
           menuSx={{
-            width: useInButton ? 240 : 360,
+            width: useInButton ? 160 : 240,
           }}
           referenceElement={
             <Box

@@ -38,7 +38,6 @@ const AuthUserRoleIconDropdown: FC = () => {
       return (
         <Box
           sx={{
-            ml: 1,
             borderRadius: '4px',
             bgcolor: (t) =>
               t.palette.mode === 'dark'

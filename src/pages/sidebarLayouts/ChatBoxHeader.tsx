@@ -16,8 +16,6 @@ import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
 import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import TooltipIconButton from '@/components/TooltipIconButton'
 
 const ChatBoxHeader: FC = () => {
   const { shortCutKey } = useCommands()
@@ -51,7 +49,7 @@ const ChatBoxHeader: FC = () => {
           }
           target={'_blank'}
         >
-          <TextOnlyTooltip title={'My account'}>
+          <Tooltip title={'My account'}>
             <Stack
               direction={'row'}
               alignItems={'center'}
@@ -77,7 +75,7 @@ const ChatBoxHeader: FC = () => {
                 {String(process.env.APP_NAME)}
               </Typography>
             </Stack>
-          </TextOnlyTooltip>
+          </Tooltip>
         </Link>
         <AuthUserRoleIconDropdown />
       </Stack>
@@ -85,7 +83,6 @@ const ChatBoxHeader: FC = () => {
         direction={'row'}
         flex={1}
         width={0}
-        spacing={1}
         justifyContent={'end'}
         alignItems={'center'}
       >
@@ -118,16 +115,20 @@ const ChatBoxHeader: FC = () => {
             </Link>
           </Typography>
         )}
-        <TooltipIconButton
-          placement={'bottom'}
-          title={shortCutKey ? `Shortcut: ${shortCutKey}` : ``}
-          sx={{ flexShrink: 0, ml: '4px !important' }}
+
+        <IconButton
+          sx={{ flexShrink: 0 }}
           onClick={() => {
             hideChatBox()
           }}
         >
-          <CloseIcon sx={{ fontSize: '24px' }} />
-        </TooltipIconButton>
+          <Tooltip
+            placement={'bottom'}
+            title={shortCutKey ? `Shortcut: ${shortCutKey}` : ``}
+          >
+            <CloseIcon sx={{ fontSize: '24px' }} />
+          </Tooltip>
+        </IconButton>
       </Stack>
     </Stack>
   )

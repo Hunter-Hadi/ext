@@ -60,8 +60,11 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
   const { resetConversation } = useMessageWithChatGPT('')
   return (
     <FormControl size="small" sx={{ height: 40 }}>
-      <InputLabel sx={{ fontSize: '16px' }} id={'ChatGPTModelsSelectorLabel'}>
-        <span style={{ fontSize: '16px' }}>Model</span>
+      <InputLabel
+        sx={{ fontSize: '16px' }}
+        id={'BingConversationStyleSelectorLabel'}
+      >
+        <span style={{ fontSize: '16px' }}>Conversation Style</span>
       </InputLabel>
       <Select
         disabled={chatGPTConversationLoading}
@@ -76,8 +79,8 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
         }}
         sx={{ fontSize: '14px' }}
         IconComponent={ArrowDropDownIconCustom}
-        labelId={'ChatGPTModelsSelectorLabel'}
-        label={'Model'}
+        labelId={'BingConversationStyleSelectorLabel'}
+        label={'Conversation Style'}
         value={bingConversationStyle}
         onChange={async (event) => {
           try {

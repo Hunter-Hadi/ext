@@ -25,6 +25,7 @@ import { isProduction } from '@/constants'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
+import Typography from '@mui/material/Typography'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -49,7 +50,7 @@ const ClickContextMenuButton: FC<{
     textSelectPopupButtonSettings,
     floatingDropdownMenu,
   ])
-  const { x, y, strategy, refs } = useFloating({
+  const { x, y, strategy, refs, placement } = useFloating({
     placement: 'bottom-start',
     middleware: [
       flip({
@@ -114,7 +115,7 @@ const ClickContextMenuButton: FC<{
         div.style.top = rect.top + window.scrollY + 'px'
         div.style.width = rect.width + 'px'
         div.style.height = rect.height + 'px'
-        div.style.border = '1px solid red'
+        div.style.border = '2px solid red'
         div.style.zIndex = '9999'
         div.style.pointerEvents = 'none'
         document.body.appendChild(div)
@@ -151,7 +152,7 @@ const ClickContextMenuButton: FC<{
         direction={'row'}
         alignItems={'center'}
         sx={{
-          '& > button': {
+          '& > button,div': {
             '&:not(:last-child)': {
               marginRight: '1px',
               borderRadius: '4px 0 0 4px',
@@ -170,7 +171,7 @@ const ClickContextMenuButton: FC<{
         }}
       >
         <TooltipButton
-          tooltipProps={{ floatingMenuTooltip: true }}
+          tooltipProps={{ floatingMenuTooltip: true, placement }}
           title={shortCutKey || ''}
           className={'usechatgpt-ai__context-menu--handle-button'}
           size={'small'}
@@ -201,10 +202,16 @@ const ClickContextMenuButton: FC<{
               // color: 'inherit',
             }}
           />
-          {'Ask AI'}
+          <Typography
+            component={'span'}
+            fontSize={14}
+            sx={{ color: 'primary.main' }}
+          >
+            {'Ask AI'}
+          </Typography>
         </TooltipButton>
         <FloatingContextMenuPopupSettingButton useInButton />
-        <FloatingContextMenuTemporaryIconButton />
+        <FloatingContextMenuTemporaryIconButton placement={placement} />
       </Stack>
     </Paper>
   )

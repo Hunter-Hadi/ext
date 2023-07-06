@@ -205,6 +205,7 @@ const ClickContextMenuButton: FC<{
           <Typography
             component={'span'}
             fontSize={14}
+            fontWeight={600}
             sx={{ color: 'primary.main' }}
           >
             {'Ask AI'}

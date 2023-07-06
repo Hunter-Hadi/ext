@@ -118,7 +118,14 @@ const FloatingContextMenuPopupSettingButton: FC<{
                     event.preventDefault()
                   }}
                   content={
-                    <Card sx={{ p: 3, width: 288, boxSizing: 'border-box' }}>
+                    <Card
+                      sx={{
+                        p: 3,
+                        width: 288,
+                        boxSizing: 'border-box',
+                        cursor: 'auto',
+                      }}
+                    >
                       <Stack spacing={1}>
                         <Typography
                           fontSize={'16px'}

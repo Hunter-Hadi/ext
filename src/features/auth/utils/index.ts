@@ -5,6 +5,7 @@ import {
 import Browser from 'webextension-polyfill'
 import { IUseChatGPTUserInfo, IUserRole } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
+import isArray from 'lodash-es/isArray'
 
 export const getChromeExtensionAccessToken = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
@@ -42,14 +43,16 @@ export const fetchUserSubscriptionInfo = async (): Promise<
         // next_reset_timestamp:1688515200
         // roles:[]
         // usage:19
-        if (result?.data?.roles) {
+        if (result?.data?.roles && isArray(result.data.roles)) {
           await setDailyUsageLimitData({
             has_reached_limit: result.data.has_reached_limit,
             limit_value: result.data.limit_value,
             next_reset_timestamp: result.data.next_reset_timestamp,
             usage: result.data.usage,
           })
-          const role = result.data.roles?.[0] || {
+          const role = result.data.roles.find(
+            (role: { name: string; exp_time: number }) => role.name === 'pro',
+          ) || {
             name: 'free',
             exp_time: 0,
           }

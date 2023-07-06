@@ -4,7 +4,6 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import IconDropdown from '@/components/IconDropdown'
 import { ColorGiftIcon } from '@/components/CustomIcon'
 import Stack from '@mui/material/Stack'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -14,8 +13,7 @@ import LoginLayout from '@/features/auth/components/LoginLayout'
 import { useFocus } from '@/hooks/useFocus'
 
 const AuthUserRoleIconDropdown: FC = () => {
-  const { userInfo, syncUserInfo, loading, syncUserSubscriptionInfo } =
-    useUserInfo()
+  const { userInfo, syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
   useEffectOnce(() => {
     syncUserInfo().then()
   })
@@ -59,67 +57,74 @@ const AuthUserRoleIconDropdown: FC = () => {
   }, [userRole])
   return (
     <LoginLayout>
-      <AppLoadingLayout loadingText={''} loading={loading} size={16}>
-        {userRole === 'pro' && MemoIcon}
-        {userRole === 'free' && (
-          <IconDropdown icon={MemoIcon}>
-            <Stack maxWidth={400}>
-              <Link
-                width={'100%'}
-                href={APP_USE_CHAT_GPT_HOST + '/referral'}
-                target={'_blank'}
-                underline={'none'}
+      {userRole === 'pro' && MemoIcon}
+      {userRole === 'free' && (
+        <IconDropdown icon={MemoIcon}>
+          <Stack maxWidth={400}>
+            <Link
+              width={'100%'}
+              href={APP_USE_CHAT_GPT_HOST + '/referral'}
+              target={'_blank'}
+              underline={'none'}
+            >
+              <Stack
+                spacing={1}
+                p={1}
+                mx={1}
+                my={2}
+                textAlign={'center'}
+                sx={{
+                  alignItems: 'center',
+                  borderRadius: '4px',
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgb(3,19,11)'
+                      : 'rgb(229,246,253)',
+                }}
               >
-                <Stack
-                  spacing={1}
-                  p={1}
-                  mx={1}
-                  my={2}
-                  textAlign={'center'}
+                <img
+                  src={`https://app.maxai.me/assets/images/referral/invite-your-friends-light.png`}
+                  alt="invite your friends"
+                  width={360}
+                  height={98}
+                />
+                <Typography
+                  fontSize={20}
+                  color={'text.primary'}
+                  fontWeight={700}
+                >
+                  Get up to 24 weeks of MaxAI Pro for free!
+                </Typography>
+                <Typography fontSize={14} color={'text.primary'}>
+                  <span>
+                    {`Invite your friends to join MaxAI.me! For anyone who signs up using your referral link and installs MaxAI.me extension, we'll give you both one week of Pro for free! To extend your Pro access further, `}
+                  </span>
+                  <Link
+                    onClick={(e) => {
+                      e.stopPropagation()
+                    }}
+                    href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+                    target={'_blank'}
+                  >
+                    {'upgrade your account'}
+                  </Link>
+                  <span>{`.`}</span>
+                </Typography>
+                <Button
+                  variant={'contained'}
+                  color={'primary'}
                   sx={{
-                    alignItems: 'center',
-                    borderRadius: '4px',
-                    bgcolor: (t) =>
-                      t.palette.mode === 'dark'
-                        ? 'rgb(3,19,11)'
-                        : 'rgb(229,246,253)',
+                    fontSize: 16,
+                    fontWeight: 700,
                   }}
                 >
-                  <Typography
-                    fontSize={20}
-                    color={'text.primary'}
-                    fontWeight={700}
-                  >
-                    Get up to 24 weeks of Free AI without a daily limit!
-                  </Typography>
-                  <Typography fontSize={14} color={'text.primary'}>
-                    {`Invite your friends to join MaxAI.me! For anyone who signs up
-              using your referral link and installs MaxAI.me extension,
-              we'll give you both 1 week of Free AI without a daily limit!`}
-                  </Typography>
-                  <img
-                    src={`https://app.maxai.me/assets/images/referral/invite-your-friends-light.png`}
-                    alt="invite your friends"
-                    width={360}
-                    height={98}
-                  />
-                  <Button
-                    variant={'contained'}
-                    color={'primary'}
-                    sx={{
-                      fontSize: 16,
-                      fontWeight: 700,
-                    }}
-                    fullWidth
-                  >
-                    Invite your friends
-                  </Button>
-                </Stack>
-              </Link>
-            </Stack>
-          </IconDropdown>
-        )}
-      </AppLoadingLayout>
+                  Invite your friends
+                </Button>
+              </Stack>
+            </Link>
+          </Stack>
+        </IconDropdown>
+      )}
     </LoginLayout>
   )
 }

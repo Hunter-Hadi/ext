@@ -373,14 +373,7 @@ const ChatGPTProviderAuthWrapper: FC = () => {
             )}
             {provider === CHAT_GPT_PROVIDER.OPENAI && (
               <>
-                <OpenAIIcon
-                  sx={{
-                    mx: 1,
-                    fontSize: 20,
-                    color: (t) =>
-                      t.palette.mode === 'dark' ? '#16f6c0' : '#10A37F',
-                  }}
-                />
+                <ChatGPTBlackIcon sx={{ mx: 1, fontSize: 20 }} />
                 <Typography
                   fontSize={'20px'}
                   fontWeight={700}
@@ -392,7 +385,14 @@ const ChatGPTProviderAuthWrapper: FC = () => {
             )}
             {provider === CHAT_GPT_PROVIDER.OPENAI_API && (
               <>
-                <ChatGPTBlackIcon sx={{ mx: 1, fontSize: 20 }} />
+                <OpenAIIcon
+                  sx={{
+                    mx: 1,
+                    fontSize: 20,
+                    color: (t) =>
+                      t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
+                  }}
+                />
                 <Typography
                   fontSize={'20px'}
                   fontWeight={700}

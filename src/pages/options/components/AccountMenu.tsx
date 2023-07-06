@@ -82,6 +82,16 @@ const AccountMenu: FC = () => {
         <MenuItem
           component={'a'}
           target={'_blank'}
+          href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
+          onClick={() => {
+            handleClose()
+          }}
+        >
+          My account
+        </MenuItem>
+        <MenuItem
+          component={'a'}
+          target={'_blank'}
           href={`${APP_USE_CHAT_GPT_HOST}/logout`}
           onClick={() => {
             handleClose()

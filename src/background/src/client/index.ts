@@ -18,9 +18,8 @@ import {
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import Log from '@/utils/Log'
 import {
-  fetchUserInfo,
-  fetchUserSubscriptionInfo,
   getChromeExtensionAccessToken,
+  getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
 
 const log = new Log('Background/Client')
@@ -210,11 +209,18 @@ export const ClientMessageInit = () => {
               userInfo,
             )
             if (accessToken && refreshToken) {
+              const cache = await Browser.storage.local.get(
+                CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+              )
               await Browser.storage.local.set({
                 [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
                   accessToken,
                   refreshToken,
                   userInfo,
+                  userData:
+                    cache[
+                      CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY
+                    ]?.userData,
                 },
               })
             } else {
@@ -236,7 +242,7 @@ export const ClientMessageInit = () => {
           break
         case 'Client_getUseChatGPTUserInfo':
           {
-            const userInfo = await fetchUserInfo()
+            const userInfo = await getChromeExtensionUserInfo(false)
             return {
               success: true,
               data: userInfo,
@@ -246,10 +252,10 @@ export const ClientMessageInit = () => {
           break
         case 'Client_getUseChatGPTUserSubscriptionInfo':
           {
-            const role = await fetchUserSubscriptionInfo()
+            const userInfo = await getChromeExtensionUserInfo(true)
             return {
               success: true,
-              data: role,
+              data: userInfo?.role,
               message: 'ok',
             }
           }

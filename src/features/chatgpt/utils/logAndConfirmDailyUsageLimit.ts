@@ -6,7 +6,10 @@ import { getFingerPrint } from '@/utils/fingerPrint'
 import Browser from 'webextension-polyfill'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { fetchUserSubscriptionInfo } from '@/features/auth/utils'
+import {
+  fetchUserSubscriptionInfo,
+  getChromeExtensionUserInfo,
+} from '@/features/auth/utils'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -57,6 +60,10 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
             body.data,
           ),
         })
+        // 更新用户的SubscriptionInfo
+        if (body.data.has_reached_limit) {
+          getChromeExtensionUserInfo(true).then().catch()
+        }
         // 如果没有达到限制，就返回true
         return body.data.has_reached_limit
       }
@@ -83,14 +90,15 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
           resolve(false)
         } else {
           // 说明达到限制了
-          // 调用userSubscription api更新缓存
-          await fetchUserSubscriptionInfo()
-          cache = await getDailyUsageLimitData()
-          if (cache.has_reached_limit) {
-            // 说明还是达到限制了
-            resolve(true)
-            return
-          }
+          resolve(true)
+          // // 调用userSubscription api更新缓存
+          // await fetchUserSubscriptionInfo()
+          // cache = await getDailyUsageLimitData()
+          // if (cache.has_reached_limit) {
+          //   // 说明还是达到限制了
+          //   resolve(true)
+          //   return
+          // }
         }
       } else {
         // 理论上不可能走到这里

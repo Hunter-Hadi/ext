@@ -102,6 +102,10 @@ const initChromeExtensionInstalled = () => {
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '/get-started',
         })
+        // delete when rebrand Announcement
+        await Browser.storage.local.set({
+          [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
+        })
       } else {
         if (!(await isSettingsLastModifiedEqual())) {
           const result = await checkSettingsSync()
@@ -109,10 +113,6 @@ const initChromeExtensionInstalled = () => {
             await syncLocalSettingsToServerSettings()
           }
         }
-        // delete when rebrand Announcement
-        await Browser.storage.local.set({
-          [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
-        })
       }
       try {
         await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')

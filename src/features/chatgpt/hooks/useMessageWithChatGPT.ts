@@ -20,7 +20,7 @@ import {
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROMPT_PREFIX } from '@/constants'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
 import { getCurrentDomainHost } from '@/utils'
 import { getDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import dayjs from 'dayjs'

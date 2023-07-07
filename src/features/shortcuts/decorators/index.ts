@@ -1,6 +1,6 @@
 // import { compileTemplate } from '../utils'
 import Action from '@/features/shortcuts/core/Action'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
 
 function render(
   template: string,

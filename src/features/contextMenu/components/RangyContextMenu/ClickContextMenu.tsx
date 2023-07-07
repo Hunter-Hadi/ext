@@ -26,6 +26,7 @@ import { useComputedChromeExtensionButtonSettings } from '@/background/utils/but
 import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
 import Typography from '@mui/material/Typography'
+import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -152,7 +153,7 @@ const ClickContextMenuButton: FC<{
         direction={'row'}
         alignItems={'center'}
         sx={{
-          '& > button,div': {
+          '& > button, > div': {
             '&:not(:last-child)': {
               marginRight: '1px',
               borderRadius: '4px 0 0 4px',
@@ -211,6 +212,10 @@ const ClickContextMenuButton: FC<{
             {'Ask AI'}
           </Typography>
         </TooltipButton>
+        <FavoriteContextMenuGroup
+          placement={placement}
+          buttonSettingKey={'textSelectPopupButton'}
+        />
         <FloatingContextMenuPopupSettingButton useInButton />
         <FloatingContextMenuTemporaryIconButton placement={placement} />
       </Stack>

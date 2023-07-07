@@ -48,7 +48,7 @@ import {
   FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import {
   IContextMenuItem,
@@ -67,6 +67,7 @@ import useCommands from '@/hooks/useCommands'
 import { SidePanelIcon } from '@/components/CustomIcon'
 import cloneDeep from 'lodash-es/cloneDeep'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -392,6 +393,9 @@ const FloatingContextMenu: FC<{
           ) || null
       }
       if (currentContextMenu && currentContextMenu.id) {
+        FavoriteMediatorFactory.getMediator(
+          'textSelectPopupButton',
+        ).setFavorite(currentContextMenu)
         lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
         const runActions = currentContextMenu.data.actions || []

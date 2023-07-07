@@ -14,13 +14,14 @@
  *         whitelist: ['*'],
  *         blacklist: [],
  *       }
- *     ]
+ *     ],
  *   },
  *   gmailButton: {
  *     visibility: {
  *         whitelist: ['mail.google.com'],
  *         blacklist: []
- *     }
+ *     },
+ *     ...
  *   }
  * }
  */

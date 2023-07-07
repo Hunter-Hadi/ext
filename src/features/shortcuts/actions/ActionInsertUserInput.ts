@@ -3,7 +3,7 @@ import {
   clearUserInput,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
 import {
   getAppContextMenuElement,
   getAppRootElement,

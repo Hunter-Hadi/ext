@@ -17,7 +17,7 @@ import {
 } from '@/utils'
 import { AppState } from '@/store'
 import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
 import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'

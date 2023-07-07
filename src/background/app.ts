@@ -41,6 +41,7 @@ import {
   backgroundSendClientMessage,
   resetChromeExtensionOnBoardingData,
   backgroundRestartChromeExtension,
+  setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageInit } from '@/features/shortcuts/background'
@@ -99,6 +100,8 @@ const initChromeExtensionInstalled = () => {
       if (
         object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL
       ) {
+        // 重置插件引导数据
+        await resetChromeExtensionOnBoardingData()
         await Browser.tabs.create({
           url: CHROME_EXTENSION_DOC_URL + '/get-started',
         })
@@ -107,12 +110,18 @@ const initChromeExtensionInstalled = () => {
           [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
         })
       } else {
+        // 更新插件
         if (!(await isSettingsLastModifiedEqual())) {
           const result = await checkSettingsSync()
           if (result.success) {
             await syncLocalSettingsToServerSettings()
           }
         }
+        // TODO: 临时的方案，2.0.0的线上bug在更新后需要强制出发一次/user/subscriptions接口
+        await setChromeExtensionOnBoardingData(
+          'ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO',
+          false,
+        )
       }
       try {
         await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')

@@ -1,4 +1,8 @@
-import { getChromeExtensionSettings } from '@/background/utils'
+import {
+  getChromeExtensionOnBoardingData,
+  getChromeExtensionSettings,
+  setChromeExtensionOnBoardingData,
+} from '@/background/utils'
 import { getAccessToken } from '@/utils/request'
 import AES from 'crypto-js/aes'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
@@ -6,10 +10,7 @@ import { getFingerPrint } from '@/utils/fingerPrint'
 import Browser from 'webextension-polyfill'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import {
-  fetchUserSubscriptionInfo,
-  getChromeExtensionUserInfo,
-} from '@/features/auth/utils'
+import { getChromeExtensionUserInfo } from '@/features/auth/utils'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -60,6 +61,20 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
             body.data,
           ),
         })
+        // 更新用户的SubscriptionInfo, 用户安装插件后的第一次调用
+        const onBoardingData = await getChromeExtensionOnBoardingData()
+        if (!onBoardingData.ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO) {
+          getChromeExtensionUserInfo(true)
+            .then(async (userInfo) => {
+              if (userInfo) {
+                await setChromeExtensionOnBoardingData(
+                  'ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO',
+                  true,
+                )
+              }
+            })
+            .catch()
+        }
         // 更新用户的SubscriptionInfo
         if (body.data.has_reached_limit) {
           getChromeExtensionUserInfo(true).then().catch()
@@ -76,13 +91,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve) => {
     try {
-      let cache = await getDailyUsageLimitData()
-      // 说明没有缓存
-      if (cache.next_reset_timestamp === 0) {
-        // 调用userSubscription api更新缓存
-        await fetchUserSubscriptionInfo()
-        cache = await getDailyUsageLimitData()
-      }
+      const cache = await getDailyUsageLimitData()
       if (cache) {
         // 说明没有达到限制，可以继续调用
         if (!cache.has_reached_limit) {

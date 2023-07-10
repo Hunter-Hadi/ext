@@ -19,7 +19,7 @@ const FloatingContextMenuTemporaryIconButton: FC<{
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   return (
     <TextOnlyTooltip
-      title={'Hide until next visit'}
+      title={'Hide menu until next visit'}
       floatingMenuTooltip
       placement={placement}
     >

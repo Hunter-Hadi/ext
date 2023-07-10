@@ -64,10 +64,67 @@ export const useChromeExtensionButtonSettings = () => {
       await debounceSyncLocalToServer()
     }
   }
+
+  const toggleButtonSettings = async (
+    buttonKey: IChromeExtensionButtonSettingKey,
+    show: boolean,
+  ): Promise<boolean> => {
+    const buttonSetting = appSettings.buttonSettings?.[
+      buttonKey
+    ] as IChromeExtensionButtonSetting
+    if (buttonSetting) {
+      const newSettings = cloneDeep(buttonSetting)
+      if (show) {
+        newSettings.visibility.isWhitelistMode = false
+      } else {
+        newSettings.visibility.isWhitelistMode = true
+        newSettings.visibility.whitelist = []
+      }
+      await updateButtonSettings(buttonKey, newSettings)
+      return true
+    }
+    return false
+  }
+  const updateButtonSettingsWithDomain = async (
+    buttonKey: IChromeExtensionButtonSettingKey,
+  ) => {
+    const domain = getCurrentDomainHost()
+    const buttonSetting = appSettings.buttonSettings?.[
+      buttonKey
+    ] as IChromeExtensionButtonSetting
+    if (buttonSetting) {
+      const newSettings = cloneDeep(buttonSetting)
+      // 如果是白名单模式
+      if (newSettings.visibility.isWhitelistMode) {
+        // 如果白名单中已经存在了这个域名, 则删除
+        if (newSettings.visibility.whitelist.includes(domain)) {
+          newSettings.visibility.whitelist =
+            newSettings.visibility.whitelist.filter((item) => item !== domain)
+        } else {
+          // 如果白名单中不存在这个域名, 则添加
+          newSettings.visibility.whitelist.push(domain)
+        }
+      } else {
+        // 如果是黑名单模式
+        // 如果黑名单中已经存在了这个域名, 则删除
+        if (newSettings.visibility.blacklist.includes(domain)) {
+          newSettings.visibility.blacklist =
+            newSettings.visibility.blacklist.filter((item) => item !== domain)
+        } else {
+          // 如果黑名单中不存在这个域名, 则添加
+          newSettings.visibility.blacklist.push(domain)
+        }
+      }
+      await updateButtonSettings(buttonKey, newSettings)
+    }
+    return false
+  }
   return {
     loaded: !!appSettings.buttonSettings,
     buttonSettings: appSettings.buttonSettings,
     updateButtonSettings,
+    toggleButtonSettings,
+    updateButtonSettingsWithDomain,
   }
 }
 
@@ -106,12 +163,6 @@ export const useComputedChromeExtensionButtonSettings = (
       } as IChromeExtensionButtonSetting & {
         buttonVisible: boolean
         host: string
-      }
-      // TODO 临时处理, 后续需要移除这个字段
-      if (buttonKey === 'textSelectPopupButton') {
-        if (!appSettings.userSettings?.selectionButtonVisible) {
-          computedButtonSettings.buttonVisible = false
-        }
       }
       console.log(
         'computedButtonSettings',

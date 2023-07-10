@@ -182,16 +182,7 @@ const UseChatGPTOptionsSettingPage = () => {
             <Divider sx={{ my: 4 }} />
             <ChatGPTApiSettings />
             <Divider sx={{ my: 4 }} />
-            <TextSelectPopupSetting
-              commandKey={shortCutKey}
-              visible={userSettingsRef.current.selectionButtonVisible}
-              onChange={async (visible) => {
-                await updateChromeExtensionSettings(
-                  'selectionButtonVisible',
-                  visible,
-                )
-              }}
-            />
+            <TextSelectPopupSetting commandKey={shortCutKey} />
             <Divider sx={{ my: 4 }} />
             <UseChatGPTContextMenuSettings
               iconSetting

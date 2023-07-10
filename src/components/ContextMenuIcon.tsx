@@ -52,6 +52,7 @@ import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+import Box from '@mui/material/Box'
 export const CONTEXT_MENU_ICONS = [
   'AutoFix',
   'Done',
@@ -106,6 +107,7 @@ export const CONTEXT_MENU_ICONS = [
   'NoteRight',
   'Restart',
   'Translate',
+  'Empty',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -231,6 +233,16 @@ const ContextMenuIcon: FC<{
       return <RestartAltOutlinedIcon sx={sxMemo} />
     case 'Translate':
       return <TranslateOutlinedIcon sx={sxMemo} />
+    case 'Empty':
+      return (
+        <Box
+          sx={{
+            display: 'inline-box',
+            width: `${size}px`,
+            height: `${size}px`,
+          }}
+        ></Box>
+      )
     default:
       if (icon.toString().startsWith('http')) {
         return (

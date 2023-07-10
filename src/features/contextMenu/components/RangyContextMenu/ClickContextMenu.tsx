@@ -17,7 +17,7 @@ import {
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import {
-  FloatingContextMenuPopupSettingButton,
+  FloatingContextMenuMiniMenuMoreButton,
   FloatingContextMenuTemporaryIconButton,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
@@ -39,6 +39,11 @@ const ClickContextMenuButton: FC<{
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const memoShow = useMemo(() => {
+    console.log(
+      show,
+      textSelectPopupButtonSettings?.buttonVisible,
+      'textSelectPopupButtonSettings',
+    )
     return (
       show &&
       textSelectPopupButtonSettings?.buttonVisible &&
@@ -216,7 +221,7 @@ const ClickContextMenuButton: FC<{
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}
         />
-        <FloatingContextMenuPopupSettingButton useInButton />
+        <FloatingContextMenuMiniMenuMoreButton />
         <FloatingContextMenuTemporaryIconButton placement={placement} />
       </Stack>
     </Paper>

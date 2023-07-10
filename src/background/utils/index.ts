@@ -66,7 +66,6 @@ export const getChromeExtensionSettings =
         chatGPTStableModeDuration: 30,
         colorSchema: undefined,
         language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-        selectionButtonVisible: true,
         pdf: {
           enabled: true,
         },
@@ -189,6 +188,28 @@ export const getChromeExtensionSettings =
           },
         ]) as IChromeExtensionSettings
         console.log('mergedSettings', mergedSettings)
+        // 废弃字段处理
+        // 1. 去掉selectionButtonVisible字段控制 - v2.0.2 - 20230710
+        if (
+          Object.prototype.hasOwnProperty.call(
+            mergedSettings.userSettings as any,
+            'selectionButtonVisible',
+          )
+        ) {
+          // 说明用户打开了textSelectPopupButton
+          if ((mergedSettings.userSettings as any).selectionButtonVisible) {
+            // 需要把textSelectPopupButton的visibility的黑名单模式打开
+            mergedSettings.buttonSettings!.textSelectPopupButton.visibility.isWhitelistMode =
+              false
+          } else {
+            // 需要把textSelectPopupButton的visibility的白名单模式打开
+            mergedSettings.buttonSettings!.textSelectPopupButton.visibility.isWhitelistMode =
+              true
+            mergedSettings.buttonSettings!.textSelectPopupButton.visibility.whitelist =
+              []
+          }
+          delete (mergedSettings.userSettings as any).selectionButtonVisible
+        }
         return mergedSettings
       } else {
         return defaultConfig

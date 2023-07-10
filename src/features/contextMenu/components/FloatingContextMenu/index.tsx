@@ -60,6 +60,11 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import cloneDeep from 'lodash-es/cloneDeep'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
+import {
+  contextMenuIsFavoriteContextMenu,
+  contextMenuToFavoriteContextMenu,
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -356,21 +361,27 @@ const FloatingContextMenu: FC<{
       floatingDropdownMenu.open &&
       !loading
     ) {
+      let currentSelectedId =
+        floatingDropdownMenuSelectedItem.selectedContextMenuId
+      let isSuggestedContextMenu = false
+      if (contextMenuIsFavoriteContextMenu(currentSelectedId)) {
+        currentSelectedId = currentSelectedId.replace(
+          FAVORITE_CONTEXT_MENU_GROUP_ID,
+          '',
+        )
+        isSuggestedContextMenu = true
+      }
       // 判断是否可以运行
       let needOpenChatBox = false
       // 是否为[草稿]菜单的动作
-      const isDraftContextMenu = checkIsDraftContextMenuId(
-        floatingDropdownMenuSelectedItem.selectedContextMenuId,
-      )
+      const isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
       let currentContextMenu: IContextMenuItem | null = null
       if (!isLogin || chatGPTClient.status !== 'success') {
         needOpenChatBox = true
       }
       // 先从[草稿]菜单中查找
       if (isDraftContextMenu) {
-        const draftContextMenu = findDraftContextMenuById(
-          floatingDropdownMenuSelectedItem.selectedContextMenuId,
-        )
+        const draftContextMenu = findDraftContextMenuById(currentSelectedId)
         if (draftContextMenu) {
           currentContextMenu = draftContextMenu
         }
@@ -378,13 +389,10 @@ const FloatingContextMenu: FC<{
         // 如果不是[草稿]菜单的动作，则从原始菜单中查找
         currentContextMenu =
           originContextMenuList.find(
-            (contextMenu) =>
-              contextMenu.id ===
-              floatingDropdownMenuSelectedItem.selectedContextMenuId,
+            (contextMenu) => contextMenu.id === currentSelectedId,
           ) || null
         // [草稿]菜单的action不计入favorite
         if (currentContextMenu && currentContextMenu.id) {
-          lastRecordContextMenuRef.current = currentContextMenu
           FavoriteMediatorFactory.getMediator('textSelectPopupButton')
             .favoriteContextMenu(currentContextMenu)
             .then()
@@ -392,6 +400,10 @@ const FloatingContextMenu: FC<{
         }
       }
       if (currentContextMenu && currentContextMenu.id) {
+        if (isSuggestedContextMenu) {
+          currentContextMenu =
+            contextMenuToFavoriteContextMenu(currentContextMenu)
+        }
         lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
         const runActions = currentContextMenu.data.actions || []

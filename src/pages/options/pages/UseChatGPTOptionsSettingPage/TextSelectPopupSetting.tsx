@@ -55,7 +55,7 @@ const TextSelectPopupSetting: FC<{
         component={'h2'}
         id={'mini-menu-on-text-selection'}
       >
-        Mini menu on text selection
+        {`Mini menu on text selection`}
       </Typography>
       <CloseAlert
         icon={<></>}

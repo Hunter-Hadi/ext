@@ -7,26 +7,44 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { useFocus } from '@/hooks/useFocus'
+import cloneDeep from 'lodash-es/cloneDeep'
+
+export const FAVORITE_CONTEXT_MENU_GROUP_ID = 'SUGGESTE'
+
+export const contextMenuIsFavoriteContextMenu = (contextMenuId: string) => {
+  return contextMenuId.startsWith(FAVORITE_CONTEXT_MENU_GROUP_ID)
+}
+
+export const contextMenuToFavoriteContextMenu = (
+  contextMenu: IContextMenuItem,
+) => {
+  const contextMenuItem = cloneDeep(contextMenu)
+  return {
+    ...contextMenuItem,
+    id: FAVORITE_CONTEXT_MENU_GROUP_ID + contextMenuItem.id,
+    parent: FAVORITE_CONTEXT_MENU_GROUP_ID,
+  } as IContextMenuItem
+}
 
 const useFavoriteContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,
 ) => {
-  const [favoriteContextMenuList, setFavoriteContextMenus] =
-    useState<IContextMenuItem[]>()
+  const [favoriteContextMenuList, setFavoriteContextMenus] = useState<
+    IContextMenuItem[]
+  >([])
+  const currentMenuList = useMemo(() => {
+    return cloneDeep(favoriteContextMenuList).map(
+      contextMenuToFavoriteContextMenu,
+    )
+  }, [favoriteContextMenuList])
   const favoriteContextMenuGroup = useMemo(() => {
     if (!favoriteContextMenuList?.length) {
       return undefined
     }
     const group = {
-      id: 'favorite_suggested',
+      id: FAVORITE_CONTEXT_MENU_GROUP_ID,
       text: 'Suggested',
-      children: (favoriteContextMenuList || []).map((contextMenuItem) => {
-        return {
-          ...contextMenuItem,
-          parent: 'favorite_suggested',
-          children: [],
-        }
-      }),
+      children: currentMenuList as IContextMenuItemWithChildren[],
       parent: 'root',
       droppable: false,
       data: {
@@ -43,7 +61,7 @@ const useFavoriteContextMenuList = (
       },
     } as IContextMenuItemWithChildren
     return group
-  }, [favoriteContextMenuList])
+  }, [currentMenuList])
   useFocus(() => {
     FavoriteMediatorFactory.getMediator(
       buttonSettingKey,
@@ -58,7 +76,7 @@ const useFavoriteContextMenuList = (
     ).restoreCacheFromLocalStorage()
   })
   return {
-    favoriteContextMenuList,
+    favoriteContextMenuList: currentMenuList,
     favoriteContextMenuGroup,
   }
 }

@@ -28,6 +28,7 @@ import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
 import Typography from '@mui/material/Typography'
 import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
+import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -38,6 +39,9 @@ const ClickContextMenuButton: FC<{
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
+  )
+  const { favoriteContextMenuList } = useFavoriteContextMenuList(
+    'textSelectPopupButton',
   )
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
@@ -208,6 +212,7 @@ const ClickContextMenuButton: FC<{
           size={'small'}
           variant={'text'}
           sx={{
+            minWidth: 'unset',
             px: '8px!important',
             height: 32,
             color: 'inherit',
@@ -228,19 +233,20 @@ const ClickContextMenuButton: FC<{
         >
           <UseChatGptIcon
             sx={{
-              pr: 1,
-              fontSize: 16,
+              fontSize: '16px',
               // color: 'inherit',
             }}
           />
-          <Typography
-            component={'span'}
-            fontSize={14}
-            fontWeight={600}
-            sx={{ color: 'primary.main' }}
-          >
-            {'Ask AI'}
-          </Typography>
+          {favoriteContextMenuList.length <= 1 && (
+            <Typography
+              component={'span'}
+              fontSize={'14px'}
+              fontWeight={600}
+              sx={{ pl: 1, color: 'primary.main' }}
+            >
+              {'Ask AI'}
+            </Typography>
+          )}
         </TooltipButton>
         <FavoriteContextMenuGroup
           placement={placement}

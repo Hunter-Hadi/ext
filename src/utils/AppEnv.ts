@@ -1,5 +1,5 @@
 export const getEnv = () => {
-  const host = window.location.host
+  const host = typeof window !== 'undefined' ? window.location.host : ''
   if (host === 'mail.google.com') {
     return 'gmail'
   }

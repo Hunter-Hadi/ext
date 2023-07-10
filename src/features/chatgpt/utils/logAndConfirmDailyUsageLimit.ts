@@ -11,6 +11,10 @@ import Browser from 'webextension-polyfill'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { getChromeExtensionUserInfo } from '@/features/auth/utils'
+import {
+  contextMenuIsFavoriteContextMenu,
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -33,6 +37,12 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         domain: promptDetail.host,
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,
+      }
+      if (contextMenuIsFavoriteContextMenu(info_object.prompt_id)) {
+        info_object.prompt_id =
+          FAVORITE_CONTEXT_MENU_GROUP_ID +
+          info_object.prompt_id.slice(FAVORITE_CONTEXT_MENU_GROUP_ID.length + 8)
+        info_object.prompt_name = `[Suggested] ${info_object.prompt_name}`
       }
       console.log('logApiAndConfirmIsLimited', info_object)
       const accessToken = await getAccessToken()

@@ -81,11 +81,6 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                   minWidth: 'unset',
                   ...sx,
                 }}
-                onClick={(e) => {
-                  chromeExtensionClientOpenPage({
-                    key: 'options',
-                  })
-                }}
               >
                 <ContextMenuIcon
                   icon={'More'}

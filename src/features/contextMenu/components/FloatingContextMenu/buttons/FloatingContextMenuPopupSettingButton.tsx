@@ -130,7 +130,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
                         <Typography
                           fontSize={'16px'}
                           color={'text.primary'}
-                        >{`Hide 'Text-Select-Popup' on this website?`}</Typography>
+                        >{`Hide 'Mini menu' on this website?`}</Typography>
                         <HowToFindSettings liteMode />
                         <Box />
                         <Button
@@ -313,7 +313,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
                 })
                 chromeExtensionClientOpenPage({
                   key: 'options',
-                  query: '#text-select-popup',
+                  query: '#mini-menu',
                 })
               }}
               icon={'DefaultIcon'}

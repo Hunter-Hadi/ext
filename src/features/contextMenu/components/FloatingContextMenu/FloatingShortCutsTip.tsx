@@ -52,7 +52,7 @@ const FloatingShortCutsTip: FC = () => {
   useEffect(() => {
     setButtonShow(3)
   }, [floatingDropdownMenuOpen])
-  // 当text-select-popup被hidden的时候，不再显示右下角的Cmd+J label 2023-07-10
+  // 当mini menu被hidden的时候，不再显示右下角的Cmd+J label 2023-07-10
   return null
   return (
     <>

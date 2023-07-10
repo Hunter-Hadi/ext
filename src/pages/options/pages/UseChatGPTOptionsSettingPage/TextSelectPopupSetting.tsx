@@ -24,9 +24,9 @@ const TextSelectPopupSetting: FC<{
   const [showTooltip, setShowTooltip] = useState(false)
   const { palette } = useTheme()
   useEffect(() => {
-    if (!visible) {
-      // 当text-select-popup被hidden的时候，不再显示右下角的Cmd+J label 2023-07-10
-      return
+    // mini menu被hidden的时候，不再显示右下角的Cmd+J label 2023-07-10
+    // eslint-disable-next-line no-constant-condition
+    if (!visible && false) {
       setShowTooltip(true)
       const timer = setTimeout(() => {
         setShowTooltip(false)
@@ -46,9 +46,9 @@ const TextSelectPopupSetting: FC<{
         fontWeight={700}
         color={'text.primary'}
         component={'h2'}
-        id={'text-select-popup'}
+        id={'mini-menu'}
       >
-        Text-select-popup
+        Mini menu on text selection
       </Typography>
       <CloseAlert
         icon={<></>}

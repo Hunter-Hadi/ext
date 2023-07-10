@@ -3,7 +3,7 @@ class LFUCache<K, V> {
   private cache: Map<K, [V, number[]]> // Key-value pair with frequency
   private frequencies: Map<number, Set<K>> // Frequency with set of keys
   private timeWindow: number = 1000 * 60 * 60 * 24 * 7 // 7 days
-  // private timeWindow: number = 1000 * 60 * 2 // 2mins
+  // private timeWindow: number = 1000 * 60 * 2 // 2 min
   constructor(capacity: number) {
     this.capacity = capacity
     this.cache = new Map()

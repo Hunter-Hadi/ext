@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
-import { getAppContextMenuElement } from '@/utils'
+import { getAppContextMenuElement, getAppRootElement } from '@/utils'
 
 export interface TextOnlyTooltipProps extends TooltipProps {
   floatingMenuTooltip?: boolean
@@ -10,7 +10,9 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   floatingMenuTooltip = false,
   ...props
 }) => {
-  const container = getAppContextMenuElement() || document.body
+  const container =
+    (floatingMenuTooltip ? getAppContextMenuElement() : getAppRootElement()) ||
+    document.body
   return (
     <Tooltip
       {...props}
@@ -34,18 +36,6 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
           '&[data-popper-placement*="left"] > div': {
             marginRight: props.arrow ? '8px!important' : '4px!important',
           },
-          '& > div': floatingMenuTooltip
-            ? {}
-            : {
-                backgroundColor: 'rgba(97, 97, 97, 0.92)',
-                borderRadius: '4px',
-                color: '#fff',
-                padding: '4px 8px',
-                fontSize: '12px',
-                margin: '2px',
-                fontWeight: 500,
-                wordWrap: 'break-word',
-              },
           ...props.PopperProps?.sx,
         },
       }}

@@ -25,6 +25,8 @@ const TextSelectPopupSetting: FC<{
   const { palette } = useTheme()
   useEffect(() => {
     if (!visible) {
+      // 当text-select-popup被hidden的时候，不再显示右下角的Cmd+J label 2023-07-10
+      return
       setShowTooltip(true)
       const timer = setTimeout(() => {
         setShowTooltip(false)

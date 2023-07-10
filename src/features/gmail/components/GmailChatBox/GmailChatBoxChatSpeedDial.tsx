@@ -10,8 +10,8 @@ import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import Box from '@mui/material/Box'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Button from '@mui/material/Button'
-import Tooltip from '@mui/material/Tooltip'
 import Stack from '@mui/material/Stack'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const GmailChatBoxChatSpeedDial: FC<{
@@ -65,16 +65,16 @@ const GmailChatBoxChatSpeedDial: FC<{
               onClick && onClick('new')
             }}
           >
-            <Tooltip placement={'left'} title={'New chat'}>
+            <TextOnlyTooltip placement={'left'} title={'New chat'}>
               <Stack
                 p={1}
                 alignItems={'center'}
                 justifyContent={'center'}
                 component={'div'}
               >
-                <CleanChatBoxIcon sx={{ color: '#fff' }} />
+                <CleanChatBoxIcon sx={{ color: '#fff', fontSize: '24px' }} />
               </Stack>
-            </Tooltip>
+            </TextOnlyTooltip>
           </Box>
         }
       >
@@ -87,7 +87,7 @@ const GmailChatBoxChatSpeedDial: FC<{
                 setRestartAppDialogVisible(true)
               }}
             >
-              <Tooltip placement={'left'} title={'Restart extension'}>
+              <TextOnlyTooltip placement={'left'} title={'Restart extension'}>
                 <Stack
                   p={1}
                   alignItems={'center'}
@@ -96,7 +96,7 @@ const GmailChatBoxChatSpeedDial: FC<{
                 >
                   <ContextMenuIcon icon={'Restart'} />
                 </Stack>
-              </Tooltip>
+              </TextOnlyTooltip>
             </Box>
           }
           tooltipTitle={''}

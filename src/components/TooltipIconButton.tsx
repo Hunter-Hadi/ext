@@ -3,8 +3,8 @@ import React, { FC } from 'react'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
-interface ITooltipIconButton extends IconButtonProps {
-  title: string
+interface ITooltipIconButton extends Omit<IconButtonProps, 'title'> {
+  title: React.ReactNode | string
   placement?: TextOnlyTooltipProps['placement']
   tooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
 }

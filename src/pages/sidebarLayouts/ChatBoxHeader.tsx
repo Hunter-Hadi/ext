@@ -16,6 +16,7 @@ import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
 import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const ChatBoxHeader: FC = () => {
   const { shortCutKey } = useCommands()
@@ -49,7 +50,7 @@ const ChatBoxHeader: FC = () => {
           }
           target={'_blank'}
         >
-          <Tooltip title={'My account'}>
+          <TextOnlyTooltip title={'My account'}>
             <Stack
               direction={'row'}
               alignItems={'center'}
@@ -75,7 +76,7 @@ const ChatBoxHeader: FC = () => {
                 {String(process.env.APP_NAME)}
               </Typography>
             </Stack>
-          </Tooltip>
+          </TextOnlyTooltip>
         </Link>
         <AuthUserRoleIconDropdown />
       </Stack>
@@ -124,7 +125,28 @@ const ChatBoxHeader: FC = () => {
         >
           <Tooltip
             placement={'bottom'}
-            title={shortCutKey ? `Shortcut: ${shortCutKey}` : ``}
+            title={
+              shortCutKey ? (
+                <Stack>
+                  <Typography
+                    fontSize={'14px'}
+                    textAlign={'left'}
+                    color="rgba(255,255,255,.87)"
+                  >
+                    Close sidebar
+                  </Typography>
+                  <Typography
+                    fontSize={'12px'}
+                    textAlign={'left'}
+                    color="rgba(255,255,255,.6)"
+                  >
+                    {shortCutKey}
+                  </Typography>
+                </Stack>
+              ) : (
+                ``
+              )
+            }
           >
             <CloseIcon sx={{ fontSize: '24px' }} />
           </Tooltip>

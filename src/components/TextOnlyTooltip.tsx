@@ -36,6 +36,11 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
           '&[data-popper-placement*="left"] > div': {
             marginRight: props.arrow ? '8px!important' : '4px!important',
           },
+          '& > div': {
+            fontWeight: 400,
+            color: 'rgba(255,255,255,1)',
+            fontSize: '12px',
+          },
           ...props.PopperProps?.sx,
         },
       }}

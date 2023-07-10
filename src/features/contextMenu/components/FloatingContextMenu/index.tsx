@@ -35,16 +35,12 @@ import {
   ROOT_FLOATING_INPUT_ID,
   ROOT_FLOATING_REFERENCE_ELEMENT_ID,
 } from '@/constants'
-import {
-  getAppContextMenuElement,
-  hideChatBox,
-  isShowChatBox,
-  showChatBox,
-} from '@/utils'
+import { getAppContextMenuElement, showChatBox } from '@/utils'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
 import {
+  FloatingContextMenuOpenSidebarButton,
   FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
@@ -62,11 +58,7 @@ import {
 import { useAuthLogin } from '@/features/auth'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import Button from '@mui/material/Button'
-import useCommands from '@/hooks/useCommands'
-import { SidePanelIcon } from '@/components/CustomIcon'
 import cloneDeep from 'lodash-es/cloneDeep'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
@@ -78,7 +70,6 @@ const FloatingContextMenu: FC<{
   const { root } = props
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
-  const { shortCutKey } = useCommands()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -684,40 +675,9 @@ const FloatingContextMenu: FC<{
                         />
                       </IconButton>
                       <FloatingContextMenuPopupSettingButton
-                        useInButton={false}
                         sx={{ width: 24, height: 24, alignSelf: 'end' }}
                       />
-                      <TextOnlyTooltip
-                        floatingMenuTooltip
-                        title={shortCutKey}
-                        placement={'bottom'}
-                      >
-                        <Button
-                          sx={{
-                            ml: '0px!important',
-                            height: '24px',
-                            flexShrink: 0,
-                            alignSelf: 'end',
-                            minWidth: 'unset',
-                            padding: '6px 5px',
-                          }}
-                          variant="text"
-                          onClick={() => {
-                            if (isShowChatBox()) {
-                              hideChatBox()
-                            } else {
-                              showChatBox()
-                            }
-                          }}
-                        >
-                          <SidePanelIcon
-                            sx={{
-                              fontSize: '16px',
-                              color: 'text.primary',
-                            }}
-                          />
-                        </Button>
-                      </TextOnlyTooltip>
+                      <FloatingContextMenuOpenSidebarButton />
                     </>
                   )}
                   {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}

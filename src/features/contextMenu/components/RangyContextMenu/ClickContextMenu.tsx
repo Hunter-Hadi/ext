@@ -178,7 +178,28 @@ const ClickContextMenuButton: FC<{
       >
         <TooltipButton
           tooltipProps={{ floatingMenuTooltip: true, placement }}
-          title={shortCutKey || ''}
+          title={
+            shortCutKey ? (
+              <Stack>
+                <Typography
+                  fontSize={'14px'}
+                  textAlign={'left'}
+                  color="rgba(255,255,255,.87)"
+                >
+                  Ask AI to help edit, review, or generate text
+                </Typography>
+                <Typography
+                  fontSize={'12px'}
+                  textAlign={'left'}
+                  color="rgba(255,255,255,.6)"
+                >
+                  {shortCutKey}
+                </Typography>
+              </Stack>
+            ) : (
+              ''
+            )
+          }
           className={'usechatgpt-ai__context-menu--handle-button'}
           size={'small'}
           variant={'text'}

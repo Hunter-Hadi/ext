@@ -510,8 +510,12 @@ const FloatingContextMenu: FC<{
     }
   }, [actions, loading, isLogin])
   useEffect(() => {
-    const updateInputValue = (value: string) => {
+    const updateInputValue = (value: string, data: any) => {
       console.log('[ContextMenu Module] updateInputValue', value)
+      // gmail的action触发了insertUserInput携带的参数需要正确的记录
+      if (data && data?.contextMenu) {
+        lastRecordContextMenuRef.current = data.contextMenu
+      }
       setInputValue(value)
     }
     getMediator('floatingMenuInputMediator').subscribe(updateInputValue)

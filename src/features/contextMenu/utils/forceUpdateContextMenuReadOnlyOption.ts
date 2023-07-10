@@ -32,10 +32,10 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
     let updateCount = 0
     let updateMenuList = menuList
       .map((item) => {
-        if (item.id === 'EzMail_Reply_CTA_Button') {
+        if (item.id.includes('Reply_CTA_Button')) {
           item.id = USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID
         }
-        if (item.id === 'EzMail_New_Mail_CTA_Button') {
+        if (item.id.includes('New_Mail_CTA_Button')) {
           item.id = USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID
         }
         // 如果不能编辑，强制更新
@@ -66,25 +66,29 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
       updateMenuList.push(item)
     })
     updateMenuList = uniqBy(updateMenuList, 'id')
-    console.log('force update menu count', updateCount, updateMenuList)
     await setChromeExtensionSettings((settings) => {
+      const newButtonSettings = mergeWithObject([
+        settings.buttonSettings,
+        {
+          [buttonKey]: {
+            contextMenu: updateMenuList,
+          },
+        },
+      ]) as any
+      console.log(
+        `force update menu count button: [${buttonKey}]`,
+        updateCount,
+        updateMenuList,
+        newButtonSettings,
+      )
       return {
         ...settings,
-        buttonSettings: mergeWithObject([
-          settings.buttonSettings,
-          {
-            [buttonKey]: {
-              contextMenu: updateMenuList,
-            },
-          },
-        ]) as any,
+        buttonSettings: newButtonSettings,
       }
     })
   }
-  await Promise.all(
-    updateContextButtonKeys.map(
-      async (buttonKey) => await updateButtonContextMenu(buttonKey),
-    ),
-  )
+  for (const buttonKey of updateContextButtonKeys) {
+    await updateButtonContextMenu(buttonKey)
+  }
 }
 export default forceUpdateContextMenuReadOnlyOption

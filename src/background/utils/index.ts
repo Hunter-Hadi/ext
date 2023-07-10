@@ -225,8 +225,8 @@ export const getChromeExtensionButtonContextMenu = async (
 ) => {
   const settings = await getChromeExtensionSettings()
   const defaultMenus = {
-    gmailButton: defaultContextMenuJson,
-    textSelectPopupButton: defaultGmailToolbarContextMenuJson,
+    gmailButton: defaultGmailToolbarContextMenuJson,
+    textSelectPopupButton: defaultContextMenuJson,
   }
   const cacheMenus = settings.buttonSettings?.[buttonKey].contextMenu
   if (cacheMenus && cacheMenus.length > 0) {

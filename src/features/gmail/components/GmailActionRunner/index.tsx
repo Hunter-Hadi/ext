@@ -16,6 +16,7 @@ import { useCurrentMessageView } from '@/features/gmail/hooks'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import { createSelectionElement } from '@/features/contextMenu/utils/selectionHelper'
 import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {
@@ -77,7 +78,24 @@ const GmailActionRunner = () => {
     )
     if (ctaButtonAction && ctaButtonAction?.data?.actions) {
       console.log(messageType)
-      setShortCuts(ctaButtonAction.data.actions)
+      // 更新action的askChatGPT的参数
+      const runActions = cloneDeep(ctaButtonAction.data.actions).map(
+        (action) => {
+          // HACK: 这里的写法特别蠢，但是得记录正确的api和prompt，只能这么写
+          if (
+            action.type === 'INSERT_USER_INPUT' ||
+            action.type === 'ASK_CHATGPT' ||
+            action.type === 'WEBGPT_ASK_CHATGPT'
+          ) {
+            if (!action.parameters.AskChatGPTActionMeta) {
+              action.parameters.AskChatGPTActionMeta = {}
+            }
+            action.parameters.AskChatGPTActionMeta.contextMenu = ctaButtonAction
+          }
+          return action
+        },
+      )
+      setShortCuts(runActions)
       await runShortCuts()
     }
   }, [setShortCuts, runShortCuts, messageType])

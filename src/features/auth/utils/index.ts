@@ -19,6 +19,41 @@ export const getChromeExtensionAccessToken = async (): Promise<string> => {
   return ''
 }
 
+/**
+ * 获取用户信息
+ * @param forceUpdate - 当用户更新plan的时候需要强制更新
+ */
+export const getChromeExtensionUserInfo = async (
+  forceUpdate: boolean,
+): Promise<IUseChatGPTUserInfo | undefined> => {
+  const cache = await Browser.storage.local.get(
+    CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  )
+  if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+    let userData =
+      cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]?.userData
+    let isUpdated = false
+    if (!userData) {
+      userData = await fetchUserInfo()
+      isUpdated = true
+    }
+    if (forceUpdate) {
+      userData.role = await fetchUserSubscriptionInfo()
+      isUpdated = true
+    }
+    if (isUpdated) {
+      await Browser.storage.local.set({
+        [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
+          ...cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY],
+          userData,
+        },
+      })
+    }
+    return userData
+  }
+  return undefined
+}
+
 export const fetchUserSubscriptionInfo = async (): Promise<
   IUserRole | undefined
 > => {

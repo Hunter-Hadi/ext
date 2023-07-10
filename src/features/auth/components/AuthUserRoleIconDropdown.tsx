@@ -10,11 +10,25 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 import LoginLayout from '@/features/auth/components/LoginLayout'
+import { getCurrentDomainHost } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
 
 const AuthUserRoleIconDropdown: FC = () => {
   const { userInfo, syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
   useEffectOnce(() => {
+    syncUserInfo().then()
+    if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
+      const pathname = window.location.pathname
+      if (
+        ['/my-plan', '/pricing', '/payment/error', '/payment/success'].includes(
+          pathname,
+        )
+      ) {
+        syncUserSubscriptionInfo().then()
+      }
+    }
+  })
+  useFocus(() => {
     syncUserInfo().then()
   })
   const userRoleRef = useRef('')
@@ -26,11 +40,6 @@ const AuthUserRoleIconDropdown: FC = () => {
     userRoleRef.current = role
     return role
   }, [userInfo])
-  useFocus(() => {
-    if (userRoleRef.current === 'free') {
-      syncUserSubscriptionInfo().then()
-    }
-  })
   const MemoIcon = useMemo(() => {
     if (userRole === 'pro') {
       return (

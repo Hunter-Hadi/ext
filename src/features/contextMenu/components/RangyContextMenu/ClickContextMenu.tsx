@@ -12,9 +12,10 @@ import {
 } from '@/features/contextMenu/utils'
 import {
   ContextMenuSettingsState,
+  FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import {
   FloatingContextMenuMiniMenuMoreButton,
@@ -35,6 +36,9 @@ const ClickContextMenuButton: FC<{
   const { shortCutKey } = useCommands()
   const textSelectPopupButtonSettings =
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
+  const updateSelectedId = useSetRecoilState(
+    FloatingDropdownMenuSelectedItemState,
+  )
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
@@ -241,6 +245,19 @@ const ClickContextMenuButton: FC<{
         <FavoriteContextMenuGroup
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}
+          onClick={(event, favoriteContextMenu) => {
+            event.stopPropagation()
+            event.preventDefault()
+            tempSelection && showFloatingContextMenu()
+            setTimeout(() => {
+              updateSelectedId((prevState) => {
+                return {
+                  ...prevState,
+                  selectedContextMenuId: favoriteContextMenu.id,
+                }
+              })
+            }, 100)
+          }}
         />
         <FloatingContextMenuMiniMenuMoreButton />
         <FloatingContextMenuTemporaryIconButton placement={placement} />

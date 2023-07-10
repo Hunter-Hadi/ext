@@ -382,11 +382,16 @@ const FloatingContextMenu: FC<{
               contextMenu.id ===
               floatingDropdownMenuSelectedItem.selectedContextMenuId,
           ) || null
+        // [草稿]菜单的action不计入favorite
+        if (currentContextMenu && currentContextMenu.id) {
+          lastRecordContextMenuRef.current = currentContextMenu
+          FavoriteMediatorFactory.getMediator('textSelectPopupButton')
+            .favoriteContextMenu(currentContextMenu)
+            .then()
+            .catch()
+        }
       }
       if (currentContextMenu && currentContextMenu.id) {
-        FavoriteMediatorFactory.getMediator(
-          'textSelectPopupButton',
-        ).setFavorite(currentContextMenu)
         lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
         const runActions = currentContextMenu.data.actions || []

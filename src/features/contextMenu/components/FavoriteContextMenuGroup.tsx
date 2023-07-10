@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
-import useFavoriteContextMenu from '@/features/contextMenu/hooks/useFavoriteContextMenu'
+import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { TooltipProps } from '@mui/material/Tooltip'
@@ -11,10 +11,14 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 const FavoriteContextMenuGroup: FC<{
   buttonSettingKey: IChromeExtensionButtonSettingKey
   placement?: TooltipProps['placement']
-  onClick?: (contextMenuItem: IContextMenuItem) => void
+  onClick?: (
+    event: React.MouseEvent<HTMLElement>,
+    contextMenuItem: IContextMenuItem,
+  ) => void
 }> = (props) => {
   const { buttonSettingKey, placement, onClick } = props
-  const favoriteContextMenu = useFavoriteContextMenu(buttonSettingKey)
+  const { favoriteContextMenuList } =
+    useFavoriteContextMenuList(buttonSettingKey)
   return (
     <Stack
       direction={'row'}
@@ -40,20 +44,23 @@ const FavoriteContextMenuGroup: FC<{
         }
       }
     >
-      {favoriteContextMenu?.map((item) => {
+      {favoriteContextMenuList?.map((item) => {
         const isTextButton = !item.data.icon
         const shortTitle =
           String(item.text[0] || '').toUpperCase() + String(item.text[1] || '')
         return (
           <TooltipIconButton
+            tooltipProps={{
+              floatingMenuTooltip: true,
+            }}
             placement={placement || 'bottom'}
             title={item.text}
             key={item.id}
             sx={{
               p: isTextButton ? '6px!important' : '8px!important',
             }}
-            onClick={() => {
-              onClick && onClick(item)
+            onClick={(event) => {
+              onClick && onClick(event, item)
             }}
           >
             {!isTextButton ? (

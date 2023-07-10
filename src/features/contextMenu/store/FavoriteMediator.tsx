@@ -161,21 +161,28 @@ class FavoriteMediator {
     )
     return favorites
   }
-  public async useFavorite(contextMenuItem: IContextMenuItem) {
+  public async favoriteContextMenu(contextMenuItem: IContextMenuItem) {
+    if (this.lfuCache.getCache().get(contextMenuItem.id)) {
+      await this.useFavorite(contextMenuItem)
+    } else {
+      await this.setFavorite(contextMenuItem)
+    }
+  }
+  public subscribe(listener: FavoriteMediatorListener) {
+    this.ubSubscribe(listener)
+    this.listeners.push(listener)
+  }
+  private async useFavorite(contextMenuItem: IContextMenuItem) {
     favoriteMediatorLog.info('FavoriteMediator useFavorite', contextMenuItem)
     this.lfuCache.get(contextMenuItem.id)
     this.notify()
     await this.saveCacheToLocalStorage()
   }
-  public async setFavorite(contextMenuItem: IContextMenuItem) {
+  private async setFavorite(contextMenuItem: IContextMenuItem) {
     favoriteMediatorLog.info('FavoriteMediator setFavorite', contextMenuItem)
     this.lfuCache.set(contextMenuItem.id, contextMenuItem)
     this.notify()
     await this.saveCacheToLocalStorage()
-  }
-  public subscribe(listener: FavoriteMediatorListener) {
-    this.ubSubscribe(listener)
-    this.listeners.push(listener)
   }
   private async saveCacheToLocalStorage() {
     const cacheItems: [IContextMenuItem, number[]][] = []

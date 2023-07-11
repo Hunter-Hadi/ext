@@ -17,10 +17,7 @@ import {
 } from '@/features/contextMenu/store'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
-import {
-  FloatingContextMenuMiniMenuMoreButton,
-  FloatingContextMenuTemporaryIconButton,
-} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import { FloatingContextMenuMiniMenuMoreButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
 import { isProduction } from '@/constants'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
@@ -249,8 +246,7 @@ const ClickContextMenuButton: FC<{
             }, 100)
           }}
         />
-        <FloatingContextMenuMiniMenuMoreButton />
-        <FloatingContextMenuTemporaryIconButton placement={placement} />
+        <FloatingContextMenuMiniMenuMoreButton placement={placement} />
       </Stack>
     </Paper>
   )

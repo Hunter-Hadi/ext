@@ -90,12 +90,16 @@ export const setFavoriteContextMenuToLocalStorage = async (cache: {
 /**
  * 重置全部网站的收藏菜单
  */
-export const resetFavoriteContextMenuToLocalStorage = async () => {
+export const resetFavoriteContextMenuToLocalStorage = async (
+  resetCapacity: boolean,
+) => {
   try {
     await Browser.storage.local.remove(FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY)
-    await Browser.storage.local.remove(
-      FAVORITE_CONTEXT_MENU_CAPACITY_LOCAL_STORAGE_KEY,
-    )
+    if (resetCapacity) {
+      await Browser.storage.local.remove(
+        FAVORITE_CONTEXT_MENU_CAPACITY_LOCAL_STORAGE_KEY,
+      )
+    }
     return true
   } catch (e) {
     console.error(e)
@@ -130,7 +134,6 @@ export const setFavoriteContextMenuFromLocalStorageByHost = async (
   try {
     const allCache = await getFavoriteContextMenuFromLocalStorage()
     allCache[host] = cache
-    debugger
     await setFavoriteContextMenuToLocalStorage(allCache)
     return true
   } catch (e) {
@@ -183,14 +186,13 @@ class FavoriteMediator {
     if (favoritesCache.length) {
       // 确保缓存的菜单项在当前按钮设置中存在
       favoritesCache.forEach(([contextMenuItem, timeFrequency]) => {
-        if (
-          buttonSettings?.contextMenu.some(
-            (item) => item.id === contextMenuItem.id,
-          )
-        ) {
+        const currentContextMenuItem = (buttonSettings?.contextMenu || []).find(
+          (item) => item.id === contextMenuItem.id,
+        )
+        if (currentContextMenuItem) {
           this.lfuCache
             .getCache()
-            .set(contextMenuItem.id, [contextMenuItem, timeFrequency])
+            .set(contextMenuItem.id, [currentContextMenuItem, timeFrequency])
         }
       })
       // refresh cache
@@ -248,6 +250,11 @@ class FavoriteMediator {
 
   public async clearCache() {
     await resetFavoriteContextMenuToLocalStorageByHost(this.host)
+    await this.restoreCacheFromLocalStorage()
+  }
+
+  public async clearAllHostCache() {
+    await resetFavoriteContextMenuToLocalStorage(false)
     await this.restoreCacheFromLocalStorage()
   }
 

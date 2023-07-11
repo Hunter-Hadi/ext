@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import {
   chromeExtensionClientOpenPage,
   getAppContextMenuElement,
@@ -27,11 +27,15 @@ import {
   useRangy,
 } from '@/features/contextMenu'
 import { useRecoilState, useSetRecoilState } from 'recoil'
+import { FloatingContextMenuTemporaryIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuTemporaryIconButton'
+import { TooltipProps } from '@mui/material/Tooltip'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 
 const FloatingContextMenuMiniMenuMoreButton: FC<{
+  placement?: TooltipProps['placement']
   sx?: SxProps
 }> = (props) => {
-  const { sx } = props
+  const { sx, placement } = props
   const [loading, setLoading] = useState(true)
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   const { updateButtonSettingsWithDomain, toggleButtonSettings } =
@@ -42,6 +46,8 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
+  const [hover, setHover] = useState(false)
+  const timerRef = useRef<any>(0)
   useEffect(() => {
     if (root) {
       return
@@ -63,7 +69,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
           label={''}
           root={root}
           menuSx={{
-            width: 160,
+            width: 200,
           }}
           referenceElement={
             <Box
@@ -72,6 +78,15 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               }}
             >
               <Button
+                onMouseEnter={() => {
+                  clearTimeout(timerRef.current)
+                  setHover(true)
+                }}
+                onMouseLeave={() => {
+                  timerRef.current = setTimeout(() => {
+                    setHover(false)
+                  }, 700)
+                }}
                 size={'small'}
                 variant={'text'}
                 sx={{
@@ -102,7 +117,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               />
             }
             menuSx={{
-              width: 220,
+              width: 210,
             }}
             hoverOpen
             zIndex={2147483611}
@@ -309,6 +324,41 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               }}
             ></LiteDropdownMenuItem>
           </DropdownMenu>
+          <DropdownMenu
+            defaultPlacement={'right-start'}
+            defaultFallbackPlacements={['right', 'left', 'bottom', 'top']}
+            root={root}
+            referenceElement={
+              <LiteDropdownMenuItem
+                isGroup
+                icon={'Delete'}
+                label={'Clear suggested'}
+              />
+            }
+            menuSx={{
+              width: 320,
+            }}
+            hoverOpen
+            zIndex={2147483611}
+            label={''}
+          >
+            <LiteDropdownMenuItem
+              label={'Clear suggested prompts for this site'}
+              onClick={async () => {
+                await FavoriteMediatorFactory.getMediator(
+                  'textSelectPopupButton',
+                ).clearCache()
+              }}
+            ></LiteDropdownMenuItem>
+            <LiteDropdownMenuItem
+              label={'Clear suggested prompts for all sites'}
+              onClick={async () => {
+                await FavoriteMediatorFactory.getMediator(
+                  'textSelectPopupButton',
+                ).clearAllHostCache()
+              }}
+            ></LiteDropdownMenuItem>
+          </DropdownMenu>
           <LiteDropdownMenuItem
             onClick={() => {
               chromeExtensionClientOpenPage({
@@ -319,6 +369,22 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
             icon={'Settings'}
           />
         </DropdownMenu>
+      )}
+      {hover && (
+        <FloatingContextMenuTemporaryIconButton
+          ButtonProps={{
+            onMouseEnter: () => {
+              clearTimeout(timerRef.current)
+              setHover(true)
+            },
+            onMouseLeave: () => {
+              timerRef.current = setTimeout(() => {
+                setHover(false)
+              }, 700)
+            },
+          }}
+          placement={placement}
+        />
       )}
     </AppLoadingLayout>
   )

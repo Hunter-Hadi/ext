@@ -12,6 +12,7 @@ import {
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Box from '@mui/material/Box'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 
 const FloatingContextMenuPopupSettingButton: FC<{
   sx?: SxProps
@@ -77,6 +78,41 @@ const FloatingContextMenuPopupSettingButton: FC<{
             label={'Manage my own prompts'}
             icon={'DefaultIcon'}
           />
+          <DropdownMenu
+            defaultPlacement={'right-start'}
+            defaultFallbackPlacements={['right', 'left', 'bottom', 'top']}
+            root={root}
+            referenceElement={
+              <LiteDropdownMenuItem
+                isGroup
+                icon={'Delete'}
+                label={'Clear suggested'}
+              />
+            }
+            menuSx={{
+              width: 320,
+            }}
+            hoverOpen
+            zIndex={2147483611}
+            label={''}
+          >
+            <LiteDropdownMenuItem
+              label={'Clear suggested prompts for this site'}
+              onClick={async () => {
+                await FavoriteMediatorFactory.getMediator(
+                  'textSelectPopupButton',
+                ).clearCache()
+              }}
+            ></LiteDropdownMenuItem>
+            <LiteDropdownMenuItem
+              label={'Clear suggested prompts for all sites'}
+              onClick={async () => {
+                await FavoriteMediatorFactory.getMediator(
+                  'textSelectPopupButton',
+                ).clearAllHostCache()
+              }}
+            ></LiteDropdownMenuItem>
+          </DropdownMenu>
           <LiteDropdownMenuItem
             onClick={() => {
               chromeExtensionClientOpenPage({

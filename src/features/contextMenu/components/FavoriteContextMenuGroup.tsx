@@ -72,7 +72,12 @@ const FavoriteContextMenuGroup: FC<{
             }}
           >
             {!isTextButton ? (
-              <ContextMenuIcon icon={item.data.icon!} />
+              <ContextMenuIcon
+                icon={item.data.icon!}
+                sx={{
+                  color: 'text.primary',
+                }}
+              />
             ) : (
               <Stack
                 alignItems={'center'}

@@ -4,6 +4,7 @@ import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSetti
 import Log from '@/utils/Log'
 import LFUCache from '@/utils/cache/LFUCache'
 import Browser from 'webextension-polyfill'
+import { getCurrentDomainHost } from '@/utils'
 
 const favoriteMediatorLog = new Log('Store/FavoriteMediator')
 
@@ -48,23 +49,33 @@ export const setFavoriteContextMenuCapacity = async (capacity: number) => {
   }
 }
 
-export const getFavoriteContextMenuFromLocalStorage = async (): Promise<
-  [IContextMenuItem, number[]][]
-> => {
+/**
+ * 获取全部网站的收藏菜单
+ */
+export const getFavoriteContextMenuFromLocalStorage = async (): Promise<{
+  [key in string]: [IContextMenuItem, number[]][]
+}> => {
   try {
     const localStorageData = await Browser.storage.local.get(
       FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY,
     )
-    return JSON.parse(
-      localStorageData[FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY] || '[]',
+    return (
+      JSON.parse(
+        localStorageData[FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY] || '{}',
+      ) || {}
     )
   } catch (e) {
-    return []
+    return {}
   }
 }
-export const setFavoriteContextMenuToLocalStorage = async (
-  cache: [IContextMenuItem, number[]][],
-) => {
+
+/**
+ * 设置全部网站的收藏菜单
+ * @param cache
+ */
+export const setFavoriteContextMenuToLocalStorage = async (cache: {
+  [key in string]: [IContextMenuItem, number[]][]
+}) => {
   try {
     await Browser.storage.local.set({
       [FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY]: JSON.stringify(cache),
@@ -76,6 +87,9 @@ export const setFavoriteContextMenuToLocalStorage = async (
   }
 }
 
+/**
+ * 重置全部网站的收藏菜单
+ */
 export const resetFavoriteContextMenuToLocalStorage = async () => {
   try {
     await Browser.storage.local.remove(FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY)
@@ -89,24 +103,83 @@ export const resetFavoriteContextMenuToLocalStorage = async () => {
   }
 }
 
+/**
+ * 获取指定网站的收藏菜单
+ * @param host
+ */
+export const getFavoriteContextMenuFromLocalStorageByHost = async (
+  host: string,
+): Promise<[IContextMenuItem, number[]][]> => {
+  try {
+    const cache = await getFavoriteContextMenuFromLocalStorage()
+    return cache[host] || []
+  } catch (e) {
+    return []
+  }
+}
+/**
+ * 设置指定网站的收藏菜单
+ * @param host
+ * @param cache
+ */
+
+export const setFavoriteContextMenuFromLocalStorageByHost = async (
+  host: string,
+  cache: [IContextMenuItem, number[]][],
+): Promise<boolean> => {
+  try {
+    const allCache = await getFavoriteContextMenuFromLocalStorage()
+    allCache[host] = cache
+    debugger
+    await setFavoriteContextMenuToLocalStorage(allCache)
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
+/**
+ * 重置指定网站的收藏菜单
+ * @param host
+ */
+
+export const resetFavoriteContextMenuToLocalStorageByHost = async (
+  host: string,
+) => {
+  try {
+    await setFavoriteContextMenuFromLocalStorageByHost(host, [])
+    return true
+  } catch (e) {
+    console.error(e)
+    return false
+  }
+}
+
 type FavoriteMediatorListener = (favorites: IContextMenuItem[]) => void
 
 class FavoriteMediator {
+  private host: string = getCurrentDomainHost()
   buttonSettingKey: IChromeExtensionButtonSettingKey
   lfuCache: LFUCache<string, IContextMenuItem>
   listeners: FavoriteMediatorListener[] = []
   constructor(buttonSettingKey: IChromeExtensionButtonSettingKey) {
     this.buttonSettingKey = buttonSettingKey
     this.lfuCache = new LFUCache<string, IContextMenuItem>(DEFAULT_CAPACITY)
-    favoriteMediatorLog.info('FavoriteMediator init', this.buttonSettingKey)
+    favoriteMediatorLog.info(
+      'FavoriteMediator init',
+      this.buttonSettingKey,
+      this.host,
+    )
   }
   async restoreCacheFromLocalStorage() {
     const buttonSettings = await getChromeExtensionButtonSettings(
       this.buttonSettingKey,
     )
-    const favoritesCache = await getFavoriteContextMenuFromLocalStorage()
+    const favoritesCache = await getFavoriteContextMenuFromLocalStorageByHost(
+      this.host,
+    )
     const capacity = await getFavoriteContextMenuCapacity()
-    this.lfuCache.updateCapacity(capacity)
+    this.lfuCache = new LFUCache(capacity)
     if (favoritesCache.length) {
       // 确保缓存的菜单项在当前按钮设置中存在
       favoritesCache.forEach(([contextMenuItem, timeFrequency]) => {
@@ -172,6 +245,12 @@ class FavoriteMediator {
     this.ubSubscribe(listener)
     this.listeners.push(listener)
   }
+
+  public async clearCache() {
+    await resetFavoriteContextMenuToLocalStorageByHost(this.host)
+    await this.restoreCacheFromLocalStorage()
+  }
+
   private async useFavorite(contextMenuItem: IContextMenuItem) {
     favoriteMediatorLog.info('FavoriteMediator useFavorite', contextMenuItem)
     this.lfuCache.get(contextMenuItem.id)
@@ -184,6 +263,7 @@ class FavoriteMediator {
     this.notify()
     await this.saveCacheToLocalStorage()
   }
+
   private async saveCacheToLocalStorage() {
     const cacheItems: [IContextMenuItem, number[]][] = []
     this.lfuCache.getCache().forEach((cacheItem) => {
@@ -192,9 +272,12 @@ class FavoriteMediator {
     favoriteMediatorLog.info(
       'FavoriteMediator saveCacheToLocalStorage',
       this.buttonSettingKey,
+      this.host,
+      cacheItems,
     )
-    await setFavoriteContextMenuToLocalStorage(cacheItems)
+    await setFavoriteContextMenuFromLocalStorageByHost(this.host, cacheItems)
   }
+
   private notify() {
     const favorites = this.getFavorites()
     this.listeners.forEach((listener) => {

@@ -24,7 +24,6 @@ import {
   getDraftContextMenuTypeById,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
@@ -65,6 +64,7 @@ import {
   contextMenuToFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -609,12 +609,13 @@ const FloatingContextMenu: FC<{
                 alignItems={'center'}
                 gap={1}
               >
-                <ContextMenuIcon
-                  icon={'AutoAwesome'}
+                <UseChatGptIcon
                   sx={{
                     flexShrink: 0,
                     color: 'primary.main',
-                    height: '24px',
+                    height: '16px',
+                    width: '16px',
+                    p: '4px',
                     alignSelf: 'start',
                   }}
                 />

@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import CancelIcon from '@mui/icons-material/Cancel'
+import CircularProgress from '@mui/material/CircularProgress'
 const ChatIconFileUpload: FC<{
   accept?: string
   maxFileSize?: number
@@ -102,6 +102,7 @@ const ChatIconFileUpload: FC<{
     >
       {files.map((file, index) => {
         const iconSize = size === 'small' ? 16 : size === 'medium' ? 24 : 32
+        const isHover = hoverId === file.id
         return (
           <Stack
             key={file.id}
@@ -125,6 +126,7 @@ const ChatIconFileUpload: FC<{
               alignItems={'center'}
               flexShrink={0}
               sx={{
+                overflow: 'hidden',
                 borderRadius: '4px 0 0 4px',
               }}
             >
@@ -158,27 +160,30 @@ const ChatIconFileUpload: FC<{
                   width={boxHeight}
                   height={boxHeight}
                   alt={file.fileName}
-                  style={{
-                    objectFit: 'cover',
-                  }}
+                  style={
+                    {
+                      // objectFit: 'cover',
+                    }
+                  }
                   src={file.icon}
                 />
               )}
             </Stack>
-            <Stack
-              sx={{
-                borderRadius: '0 4px 4px 0',
-                bgcolor: (t) =>
-                  t.palette.mode === 'dark'
-                    ? 'rgb(247, 247, 248)'
-                    : 'rgb(247, 247, 248)',
-              }}
-              flex={1}
-              width={0}
-              alignItems={'center'}
-              direction={'row'}
-            >
-              <TextOnlyTooltip placement={'top'} title={file.fileName}>
+            <TextOnlyTooltip placement={'top'} title={error || file.fileName}>
+              <Stack
+                sx={{
+                  overflow: 'hidden',
+                  borderRadius: '0 4px 4px 0',
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgb(247, 247, 248)'
+                      : 'rgb(247, 247, 248)',
+                }}
+                flex={1}
+                width={0}
+                alignItems={'center'}
+                direction={'row'}
+              >
                 <Typography
                   px={1}
                   noWrap
@@ -195,24 +200,53 @@ const ChatIconFileUpload: FC<{
                 >
                   {file.fileName}
                 </Typography>
-              </TextOnlyTooltip>
-            </Stack>
-            {hoverId !== file.id && (
+              </Stack>
+            </TextOnlyTooltip>
+            {!isHover && file.uploadStatus === 'uploading' && (
+              <Stack
+                top={-8}
+                right={-8}
+                position={'absolute'}
+                width={20}
+                height={20}
+                alignItems={'center'}
+                justifyContent={'center'}
+                borderRadius={'10px'}
+                sx={{
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgb(44, 44, 44)'
+                      : 'rgb(255, 255, 255)',
+                }}
+              >
+                <CircularProgress
+                  sx={{
+                    color: 'primary.main',
+                  }}
+                  thickness={4}
+                  variant="determinate"
+                  value={file.uploadProgress}
+                  size={16}
+                />
+              </Stack>
+            )}
+            {isHover && (
               <Box top={-8} right={-8} position={'absolute'}>
                 <TextOnlyTooltip placement={'top'} arrow title={'Remove file'}>
                   <Button
                     sx={{
                       minWidth: 'unset',
                       p: 0,
-                      color: (t) =>
-                        t.palette.mode === 'dark'
-                          ? 'rgba(142,142,159, 1)'
-                          : 'rgba(0, 0, 0, 0.87)',
+                      color: 'rgba(142,142,159, 1)',
+                      '&:hover': {
+                        color: 'primary.main',
+                      },
                     }}
-                    onClick={() => {}}
                   >
-                    <CancelIcon
+                    <ContextMenuIcon
+                      icon={'CloseCircled'}
                       sx={{
+                        fontSize: '20px',
                         color: 'inherit',
                       }}
                     />

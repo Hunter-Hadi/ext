@@ -7,6 +7,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -75,6 +76,24 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })
+  }
+  get chatFiles() {
+    return this.useChatGPTPlusChat.chatFiles
+  }
+  async uploadFile(file: IChatUploadFile) {
+    return await this.useChatGPTPlusChat.uploadFile(file)
+  }
+  async removeFile(fileId: string) {
+    return await this.useChatGPTPlusChat.removeFile(fileId)
+  }
+  async getFiles() {
+    return await this.useChatGPTPlusChat.getFiles()
+  }
+  async abortUploadFile(fileId: string) {
+    return await this.useChatGPTPlusChat.abortUploadFile(fileId)
+  }
+  async clearFiles() {
+    return await this.useChatGPTPlusChat.clearFiles()
   }
 }
 export { UseChatGPTPlusChatProvider }

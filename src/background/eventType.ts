@@ -33,6 +33,11 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_updateIframeInput'
   | 'Client_restartApp'
   | 'Client_logCallApiRequest'
+  | 'Client_chatUploadFile'
+  | 'Client_chatRemoveFile'
+  | 'Client_chatClearFiles'
+  | 'Client_chatAbortUploadFile'
+  | 'Client_chatGetFiles'
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

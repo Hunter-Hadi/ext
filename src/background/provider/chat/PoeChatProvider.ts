@@ -7,6 +7,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class PoeChatProvider implements ChatAdapterInterface {
   private poeChat: PoeChat
@@ -77,6 +78,24 @@ class PoeChatProvider implements ChatAdapterInterface {
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })
+  }
+  get chatFiles() {
+    return this.poeChat.chatFiles
+  }
+  async uploadFile(file: IChatUploadFile) {
+    return await this.poeChat.uploadFile(file)
+  }
+  async removeFile(fileId: string) {
+    return await this.poeChat.removeFile(fileId)
+  }
+  async getFiles() {
+    return await this.poeChat.getFiles()
+  }
+  async abortUploadFile(fileId: string) {
+    return await this.poeChat.abortUploadFile(fileId)
+  }
+  async clearFiles() {
+    return await this.poeChat.clearFiles()
   }
 }
 export { PoeChatProvider }

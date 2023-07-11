@@ -1,6 +1,9 @@
 import { CHAT_GPT_PROVIDER } from '@/constants'
 import Browser from 'webextension-polyfill'
-import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+import {
+  IChatUploadFile,
+  IUserChatMessageExtraType,
+} from '@/features/chatgpt/types'
 
 /**
  * needAuth: 需要授权
@@ -38,7 +41,8 @@ export type IChatGPTAskQuestionFunctionType = (
   options: IUserChatMessageExtraType,
 ) => Promise<void>
 
-export interface ChatInterface {
+export interface ChatSystemInterface {
+  chatFiles: IChatUploadFile[]
   status: ChatStatus
   preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
@@ -47,9 +51,16 @@ export interface ChatInterface {
   removeConversation: (conversationId: string) => Promise<boolean>
   sendQuestion: IChatGPTAskQuestionFunctionType
   abortAskQuestion: (messageId: string) => Promise<boolean>
+  // 上传文件
+  getFiles: () => Promise<IChatUploadFile[]>
+  uploadFile: (file: IChatUploadFile) => Promise<void>
+  abortUploadFile: (fileId: string) => Promise<boolean>
+  removeFile: (fileId: string) => Promise<boolean>
+  clearFiles: () => Promise<boolean>
 }
 
 export interface ChatAdapterInterface {
+  chatFiles: IChatUploadFile[]
   status: ChatStatus
   preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
@@ -58,9 +69,15 @@ export interface ChatAdapterInterface {
   removeConversation: (conversationId: string) => Promise<boolean>
   sendQuestion: IChatGPTAskQuestionFunctionType
   abortAskQuestion: (messageId: string) => Promise<boolean>
+  // 上传文件
+  getFiles: () => Promise<IChatUploadFile[]>
+  uploadFile: (file: IChatUploadFile) => Promise<void>
+  abortUploadFile: (fileId: string) => Promise<boolean>
+  removeFile: (fileId: string) => Promise<boolean>
+  clearFiles: () => Promise<boolean>
 }
 
-export class ChatAdapter implements ChatInterface {
+export class ChatAdapter implements ChatSystemInterface {
   private chatAdapter: ChatAdapterInterface
   constructor(chatAdapter: ChatAdapterInterface) {
     this.chatAdapter = chatAdapter
@@ -93,5 +110,23 @@ export class ChatAdapter implements ChatInterface {
   }
   async removeConversation(conversationId: string) {
     return await this.chatAdapter.removeConversation(conversationId)
+  }
+  get chatFiles() {
+    return this.chatAdapter.chatFiles
+  }
+  async uploadFile(file: IChatUploadFile) {
+    return await this.chatAdapter.uploadFile(file)
+  }
+  async abortUploadFile(fileId: string) {
+    return await this.chatAdapter.abortUploadFile(fileId)
+  }
+  async removeFile(fileId: string) {
+    return await this.chatAdapter.removeFile(fileId)
+  }
+  async getFiles() {
+    return await this.chatAdapter.getFiles()
+  }
+  async clearFiles() {
+    return await this.chatAdapter.clearFiles()
   }
 }

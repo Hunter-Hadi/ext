@@ -15,18 +15,16 @@ import {
 import { getCacheConversationId } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import BaseChat from '@/background/src/chat/BaseChat'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
-class UseChatGPTPlusChat {
+class UseChatGPTPlusChat extends BaseChat {
   status: ChatStatus = 'needAuth'
-  private active = false
   private lastActiveTabId?: number
   private token?: string
-  private taskList: {
-    [key in string]: any
-  } = {}
   constructor() {
+    super('UseChatGPTPlusChat')
     this.init()
   }
   private init() {

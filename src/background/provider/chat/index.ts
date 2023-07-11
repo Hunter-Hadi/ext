@@ -10,5 +10,5 @@ export type {
   ChatStatus,
   IChatGPTProviderType,
   ChatAdapterInterface,
-  ChatInterface,
+  ChatSystemInterface,
 } from './ChatAdapter'

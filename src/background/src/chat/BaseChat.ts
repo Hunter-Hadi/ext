@@ -1,8 +1,10 @@
 import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
 import { backgroundSendAllClientMessage } from '@/background/utils'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class BaseChat {
+  chatFiles: IChatUploadFile[]
   log: Log
   status: ChatStatus = 'needAuth'
   active = false
@@ -10,9 +12,10 @@ class BaseChat {
     [key in string]: any
   } = {}
   constructor(name: string) {
+    this.chatFiles = []
     this.log = new Log('Background/Chat/' + name)
   }
-  async auth() {
+  async auth(tabId: number) {
     this.active = true
     await this.updateClientStatus('success')
   }
@@ -35,6 +38,40 @@ class BaseChat {
       delete this.taskList[taskId]
       return true
     }
+    return true
+  }
+  async uploadFile(file: IChatUploadFile) {
+    file.uploadStatus = 'success'
+    file.uploadProgress = 100
+    this.chatFiles.push(file)
+  }
+  async abortUploadFile(fileId: string) {
+    let isAbort = false
+    this.chatFiles = this.chatFiles.filter((file) => {
+      if (file.id === fileId) {
+        isAbort = true
+        return false
+      }
+      return true
+    })
+    return isAbort
+  }
+  async removeFile(fileId: string) {
+    let isRemove = false
+    this.chatFiles = this.chatFiles.filter((file) => {
+      if (file.id === fileId) {
+        isRemove = true
+        return false
+      }
+      return true
+    })
+    return isRemove
+  }
+  async getFiles() {
+    return this.chatFiles
+  }
+  async clearFiles() {
+    this.chatFiles = []
     return true
   }
 }

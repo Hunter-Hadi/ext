@@ -7,6 +7,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class BingChatProvider implements ChatAdapterInterface {
   private bindChat: BingChat
@@ -77,6 +78,24 @@ class BingChatProvider implements ChatAdapterInterface {
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })
+  }
+  get chatFiles() {
+    return this.bindChat.chatFiles
+  }
+  async uploadFile(file: IChatUploadFile) {
+    return await this.bindChat.uploadFile(file)
+  }
+  async removeFile(fileId: string) {
+    return await this.bindChat.removeFile(fileId)
+  }
+  async getFiles() {
+    return await this.bindChat.getFiles()
+  }
+  async abortUploadFile(fileId: string) {
+    return await this.bindChat.abortUploadFile(fileId)
+  }
+  async clearFiles() {
+    return await this.bindChat.clearFiles()
   }
 }
 export { BingChatProvider }

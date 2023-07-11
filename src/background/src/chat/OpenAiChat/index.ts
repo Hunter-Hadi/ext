@@ -13,12 +13,12 @@ import {
 } from '@/background/utils'
 import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
+import BaseChat from '@/background/src/chat/BaseChat'
 
 const log = new Log('ChatGPT/OpenAIChat')
 
-class OpenAIChat {
+class OpenAIChat extends BaseChat {
   status: ChatStatus = 'needAuth'
-  private active = false
   private cacheLastTimeChatGPTProxyInstance?: Browser.Tabs.Tab
   private chatGPTProxyInstance?: Browser.Tabs.Tab
   private lastActiveTabId?: number
@@ -27,6 +27,7 @@ class OpenAIChat {
   private currentTaskId?: string
   private questionSender?: Browser.Runtime.MessageSender
   constructor() {
+    super('OpenAIChat')
     this.init()
   }
   private init() {

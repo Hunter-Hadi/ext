@@ -2,7 +2,8 @@ import React, { FC, useMemo } from 'react'
 import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined'
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
 import DoneIcon from '@mui/icons-material/Done'
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
+// import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
+import AutoFixNormalOutlinedIcon from '@mui/icons-material/AutoFixNormalOutlined'
 import ShortTextIcon from '@mui/icons-material/ShortText'
 import SubjectIcon from '@mui/icons-material/Subject'
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined'
@@ -136,7 +137,7 @@ const ContextMenuIcon: FC<{
     case 'ShortText':
       return <ShortTextIcon sx={sxMemo} />
     case 'AutoAwesome':
-      return <AutoAwesomeIcon sx={sxMemo} />
+      return <AutoFixNormalOutlinedIcon sx={sxMemo} />
     case 'Summarize':
       return <SummarizeOutlinedIcon sx={sxMemo} />
     case 'Language':

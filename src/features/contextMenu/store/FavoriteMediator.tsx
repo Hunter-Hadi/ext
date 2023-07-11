@@ -161,10 +161,11 @@ export const resetFavoriteContextMenuToLocalStorageByHost = async (
 type FavoriteMediatorListener = (favorites: IContextMenuItem[]) => void
 
 class FavoriteMediator {
-  private host: string = getCurrentDomainHost()
   buttonSettingKey: IChromeExtensionButtonSettingKey
-  lfuCache: LFUCache<string, IContextMenuItem>
-  listeners: FavoriteMediatorListener[] = []
+  private lfuCache: LFUCache<string, IContextMenuItem>
+  private host: string = getCurrentDomainHost()
+  private listeners: FavoriteMediatorListener[] = []
+  private capacity: number = DEFAULT_CAPACITY
   constructor(buttonSettingKey: IChromeExtensionButtonSettingKey) {
     this.buttonSettingKey = buttonSettingKey
     this.lfuCache = new LFUCache<string, IContextMenuItem>(DEFAULT_CAPACITY)
@@ -181,8 +182,8 @@ class FavoriteMediator {
     const favoritesCache = await getFavoriteContextMenuFromLocalStorageByHost(
       this.host,
     )
-    const capacity = await getFavoriteContextMenuCapacity()
-    this.lfuCache = new LFUCache(capacity)
+    this.capacity = await getFavoriteContextMenuCapacity()
+    this.lfuCache = new LFUCache(this.capacity)
     if (favoritesCache.length) {
       // 确保缓存的菜单项在当前按钮设置中存在
       favoritesCache.forEach(([contextMenuItem, timeFrequency]) => {
@@ -229,6 +230,7 @@ class FavoriteMediator {
         return nextTimeFrequency.length - prevTimeFrequency.length
       })
       .map(([contextMenuItem]) => contextMenuItem)
+      .slice(0, this.capacity)
     favoriteMediatorLog.info(
       'FavoriteMediator getFavorites',
       cacheItems,

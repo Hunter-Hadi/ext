@@ -60,7 +60,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
                 }}
               >
                 <ContextMenuIcon
-                  icon={'Settings'}
+                  icon={'More'}
                   sx={{ color: 'text.primary', fontSize: 16 }}
                 />
               </Button>

@@ -142,6 +142,8 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                     >
                       <Stack spacing={1}>
                         <Typography
+                          textAlign={'center'}
+                          fontWeight={'600'}
                           fontSize={'16px'}
                           color={'text.primary'}
                         >{`Hide 'Mini menu' for this website?`}</Typography>
@@ -232,6 +234,8 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                         <Typography
                           fontSize={'16px'}
                           color={'text.primary'}
+                          textAlign={'center'}
+                          fontWeight={'600'}
                         >{`Always hide 'Mini menu'?`}</Typography>
                         <HowToFindSettings liteMode />
                         <Box />

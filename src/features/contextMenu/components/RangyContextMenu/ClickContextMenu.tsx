@@ -28,7 +28,6 @@ import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
 import Typography from '@mui/material/Typography'
 import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
-import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -39,9 +38,6 @@ const ClickContextMenuButton: FC<{
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
-  )
-  const { favoriteContextMenuList } = useFavoriteContextMenuList(
-    'textSelectPopupButton',
   )
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
@@ -237,23 +233,11 @@ const ClickContextMenuButton: FC<{
               // color: 'inherit',
             }}
           />
-          {favoriteContextMenuList.length <= 1 && (
-            <Typography
-              component={'span'}
-              fontSize={'14px'}
-              fontWeight={600}
-              sx={{ pl: 1, color: 'primary.main' }}
-            >
-              {'Ask AI'}
-            </Typography>
-          )}
         </TooltipButton>
         <FavoriteContextMenuGroup
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}
-          onClick={(event, favoriteContextMenu) => {
-            event.stopPropagation()
-            event.preventDefault()
+          onClick={(favoriteContextMenu) => {
             tempSelection && showFloatingContextMenu()
             setTimeout(() => {
               updateSelectedId((prevState) => {

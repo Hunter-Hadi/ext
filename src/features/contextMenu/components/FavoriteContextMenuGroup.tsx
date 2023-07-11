@@ -2,19 +2,16 @@ import React, { FC } from 'react'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
 import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import TooltipIconButton from '@/components/TooltipIconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import TooltipButton from '@/components/TooltipButton'
 
 const FavoriteContextMenuGroup: FC<{
   buttonSettingKey: IChromeExtensionButtonSettingKey
   placement?: TooltipProps['placement']
-  onClick?: (
-    event: React.MouseEvent<HTMLElement>,
-    contextMenuItem: IContextMenuItem,
-  ) => void
+  onClick?: (contextMenuItem: IContextMenuItem) => void
 }> = (props) => {
   const { buttonSettingKey, placement, onClick } = props
   const { favoriteContextMenuList } =
@@ -49,18 +46,29 @@ const FavoriteContextMenuGroup: FC<{
         const shortTitle =
           String(item.text[0] || '').toUpperCase() + String(item.text[1] || '')
         return (
-          <TooltipIconButton
+          <TooltipButton
             tooltipProps={{
               floatingMenuTooltip: true,
+              placement: placement || 'bottom',
             }}
-            placement={placement || 'bottom'}
             title={item.text}
             key={item.id}
             sx={{
+              minWidth: 'unset',
               p: isTextButton ? '6px!important' : '8px!important',
             }}
+            onMouseUp={(event) => {
+              event.stopPropagation()
+              event.preventDefault()
+            }}
+            onMouseDown={(event) => {
+              event.stopPropagation()
+              event.preventDefault()
+            }}
             onClick={(event) => {
-              onClick && onClick(event, item)
+              event.stopPropagation()
+              event.preventDefault()
+              onClick && onClick(item)
             }}
           >
             {!isTextButton ? (
@@ -92,7 +100,7 @@ const FavoriteContextMenuGroup: FC<{
                 </Typography>
               </Stack>
             )}
-          </TooltipIconButton>
+          </TooltipButton>
         )
       })}
     </Stack>

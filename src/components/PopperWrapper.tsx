@@ -12,12 +12,25 @@ const PopperWrapper: FC<{
   onClick?: (event: React.MouseEvent<HTMLElement>) => void
   PopperProps?: Omit<PopperProps, 'open'>
   hoverOpen?: boolean
+  stopEvent?: boolean
 }> = (props) => {
   const container = getAppContextMenuElement() || document.body
-  const { children, content, boxSx, onClick, PopperProps, hoverOpen } = props
+  const {
+    children,
+    content,
+    boxSx,
+    onClick,
+    PopperProps,
+    hoverOpen,
+    stopEvent = true,
+  } = props
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const idRef = useRef(v4())
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (stopEvent) {
+      event.stopPropagation()
+      event.preventDefault()
+    }
     setAnchorEl(anchorEl ? null : event.currentTarget)
     onClick?.(event)
   }
@@ -40,6 +53,18 @@ const PopperWrapper: FC<{
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
+        onMouseDown={(event) => {
+          if (stopEvent) {
+            event.stopPropagation()
+            event.preventDefault()
+          }
+        }}
+        onMouseUp={(event) => {
+          if (stopEvent) {
+            event.stopPropagation()
+            event.preventDefault()
+          }
+        }}
         sx={{
           ...boxSx,
         }}

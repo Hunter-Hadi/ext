@@ -2,6 +2,7 @@ import React, { FC, useMemo } from 'react'
 import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined'
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
 import DoneIcon from '@mui/icons-material/Done'
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 // import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import AutoFixNormalOutlinedIcon from '@mui/icons-material/AutoFixNormalOutlined'
 import ShortTextIcon from '@mui/icons-material/ShortText'
@@ -50,6 +51,7 @@ import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined'
 import FormatAlignLeftOutlinedIcon from '@mui/icons-material/FormatAlignLeftOutlined'
 import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined'
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -109,6 +111,8 @@ export const CONTEXT_MENU_ICONS = [
   'Restart',
   'Translate',
   'Empty',
+  'AddCircle',
+  'InsertDriveFile',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -234,6 +238,10 @@ const ContextMenuIcon: FC<{
       return <RestartAltOutlinedIcon sx={sxMemo} />
     case 'Translate':
       return <TranslateOutlinedIcon sx={sxMemo} />
+    case 'AddCircle':
+      return <AddCircleOutlineOutlinedIcon sx={sxMemo} />
+    case 'InsertDriveFile':
+      return <InsertDriveFileOutlinedIcon sx={sxMemo} />
     case 'Empty':
       return (
         <Box

@@ -32,7 +32,7 @@ const autoSizeTextarea = (
   textareaElement: HTMLTextAreaElement,
   childrenHeight = 0,
 ) => {
-  const boxElement = textareaElement?.parentElement
+  const boxElement = textareaElement?.parentElement?.parentElement
   if (textareaElement && boxElement) {
     textareaElement.style.cssText = 'height:0px'
     const scrollHeight = textareaElement.value
@@ -138,6 +138,7 @@ const AutoHeightTextarea: FC<{
   stopPropagation?: boolean
   placeholder?: string
   debounceOnChange?: boolean
+  expandNode?: React.ReactNode
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
@@ -153,6 +154,7 @@ const AutoHeightTextarea: FC<{
     InputId = ROOT_CHAT_BOX_INPUT_ID,
     stopPropagation = true,
     placeholder = 'Ask AI...',
+    expandNode,
     sx,
   } = props
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
@@ -306,7 +308,7 @@ const AutoHeightTextarea: FC<{
           maxHeight: '106.5px',
           overflow: 'hidden',
           position: 'relative',
-          '& > textarea': {
+          '& textarea': {
             maxHeight: '30px',
             opacity: 0,
           },
@@ -316,132 +318,145 @@ const AutoHeightTextarea: FC<{
             display: 'block',
           },
         },
-        '& > textarea': {
-          p: 1,
-          color: (t) =>
-            t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,.87)!important',
-          my: 1.5,
-          fontSize: '16px',
-          minHeight: LINE_HEIGHT + 'px',
-          lineHeight: LINE_HEIGHT + 'px',
-          background: 'transparent!important',
-          borderColor: 'transparent!important',
-          margin: '0!important',
-          border: '0!important',
-          outline: '0!important',
-          boxShadow: 'none!important',
-          width: '100%',
-          resize: 'none',
-          overflow: 'hidden',
-          overflowY: 'auto',
-          fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',
-          '&::-webkit-scrollbar': {
-            width: 0,
-            background: 'transparent',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: 'transparent',
-          },
-        },
         ...sx,
       }}
     >
       <Box component={'div'} className={'chat-box__input-skeleton'}>
         <Skeleton height={LINE_HEIGHT} />
       </Box>
-      <textarea
-        id={InputId}
-        placeholder={placeholder}
-        disabled={loading}
-        ref={textareaRef}
-        value={inputValue}
-        rows={1}
-        onCopy={(event) => {
-          event.stopPropagation()
+      <Stack
+        alignItems={'start'}
+        width={'100%'}
+        direction={'row'}
+        sx={{
+          '& > textarea': {
+            p: 1,
+            color: (t) =>
+              t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,.87)!important',
+            my: 1.5,
+            fontSize: '16px',
+            minHeight: LINE_HEIGHT + 'px',
+            lineHeight: LINE_HEIGHT + 'px',
+            background: 'transparent!important',
+            borderColor: 'transparent!important',
+            margin: '0!important',
+            border: '0!important',
+            outline: '0!important',
+            boxShadow: 'none!important',
+            width: '100%',
+            resize: 'none',
+            overflow: 'hidden',
+            overflowY: 'auto',
+            fontFamily: '"Roboto","Helvetica","Arial",sans-serif!important',
+            '&::-webkit-scrollbar': {
+              width: 0,
+              background: 'transparent',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: 'transparent',
+            },
+          },
         }}
-        onCut={(event) => {
-          event.stopPropagation()
-        }}
-        onPaste={(event) => {
-          event.stopPropagation()
-        }}
-        // onKeyDownCapture={(event) => {
-        //   if (stopPropagation) {
-        //     event.stopPropagation()
-        //   }
-        // }}
-        // onKeyUpCapture={(event) => {
-        //   if (stopPropagation) {
-        //     event.stopPropagation()
-        //   }
-        // }}
-        onKeyUp={(event) => {
-          if (stopPropagation) {
+      >
+        {expandNode && (
+          <Stack py={1} pl={1}>
+            {expandNode}
+          </Stack>
+        )}
+        <textarea
+          id={InputId}
+          placeholder={placeholder}
+          disabled={loading}
+          ref={textareaRef}
+          value={inputValue}
+          rows={1}
+          onCopy={(event) => {
             event.stopPropagation()
-          }
-        }}
-        onKeyPress={(event) => {
-          if (stopPropagation) {
+          }}
+          onCut={(event) => {
             event.stopPropagation()
-          }
-        }}
-        // onKeyPressCapture={(event) => {
-        //   if (stopPropagation) {
-        //     event.stopPropagation()
-        //   }
-        // }}
-        onKeyDown={(event) => {
-          if (stopPropagation) {
+          }}
+          onPaste={(event) => {
             event.stopPropagation()
-          }
-          if (onCompositionRef.current) {
-            return
-          }
-          // detect shift enter
-          if (event.key === 'Enter' && event.shiftKey) {
-            console.log('shift enter')
-          } else if (event.key === 'Enter') {
-            onEnter &&
-              onEnter(event.currentTarget.value, {
-                includeHistory: !nextMessageIsActionRef.current,
-                meta: metaDataRef.current,
-              })
-            nextMessageIsActionRef.current = false
-            metaDataRef.current = {}
-            event.preventDefault()
-          } else if (event.code === 'Space') {
-            event.stopPropagation()
-            return
-          }
-          onKeydown && onKeydown(event)
-        }}
-        onClick={(event) => {
-          autoFocusWithAllWebsite(
-            event.currentTarget,
-            childrenHeightRef.current,
-          )
-        }}
-        onCompositionStart={(event) => {
-          if (stopPropagation) {
-            event.stopPropagation()
-          }
-          onCompositionRef.current = true
-        }}
-        onCompositionEnd={(event) => {
-          if (stopPropagation) {
-            event.stopPropagation()
-          }
-          onCompositionRef.current = false
-        }}
-        onInput={handleChange}
-        onBlur={(event) => {
-          throttleAutoSizeTextarea(
-            event.currentTarget,
-            childrenHeightRef.current,
-          )
-          afterAutoFocusWithAllWebsite(event.currentTarget)
-        }}
-      />
+          }}
+          // onKeyDownCapture={(event) => {
+          //   if (stopPropagation) {
+          //     event.stopPropagation()
+          //   }
+          // }}
+          // onKeyUpCapture={(event) => {
+          //   if (stopPropagation) {
+          //     event.stopPropagation()
+          //   }
+          // }}
+          onKeyUp={(event) => {
+            if (stopPropagation) {
+              event.stopPropagation()
+            }
+          }}
+          onKeyPress={(event) => {
+            if (stopPropagation) {
+              event.stopPropagation()
+            }
+          }}
+          // onKeyPressCapture={(event) => {
+          //   if (stopPropagation) {
+          //     event.stopPropagation()
+          //   }
+          // }}
+          onKeyDown={(event) => {
+            if (stopPropagation) {
+              event.stopPropagation()
+            }
+            if (onCompositionRef.current) {
+              return
+            }
+            // detect shift enter
+            if (event.key === 'Enter' && event.shiftKey) {
+              console.log('shift enter')
+            } else if (event.key === 'Enter') {
+              onEnter &&
+                onEnter(event.currentTarget.value, {
+                  includeHistory: !nextMessageIsActionRef.current,
+                  meta: metaDataRef.current,
+                })
+              nextMessageIsActionRef.current = false
+              metaDataRef.current = {}
+              event.preventDefault()
+            } else if (event.code === 'Space') {
+              event.stopPropagation()
+              return
+            }
+            onKeydown && onKeydown(event)
+          }}
+          onClick={(event) => {
+            autoFocusWithAllWebsite(
+              event.currentTarget,
+              childrenHeightRef.current,
+            )
+          }}
+          onCompositionStart={(event) => {
+            if (stopPropagation) {
+              event.stopPropagation()
+            }
+            onCompositionRef.current = true
+          }}
+          onCompositionEnd={(event) => {
+            if (stopPropagation) {
+              event.stopPropagation()
+            }
+            onCompositionRef.current = false
+          }}
+          onInput={handleChange}
+          onBlur={(event) => {
+            throttleAutoSizeTextarea(
+              event.currentTarget,
+              childrenHeightRef.current,
+            )
+            afterAutoFocusWithAllWebsite(event.currentTarget)
+          }}
+        />
+      </Stack>
       <Stack ref={childrenRef} width={'100%'}>
         {children}
       </Stack>

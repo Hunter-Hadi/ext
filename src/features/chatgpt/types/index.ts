@@ -63,3 +63,16 @@ export interface IThirdChatMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
 }
+
+export interface IChatUploadFile {
+  id: string
+  fileName: string
+  fileSize: number
+  fileType: string
+  fileUrl?: string
+  icon?: string
+  file?: File
+  uploadProgress?: number
+  uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
+  uploadErrorMessage?: string
+}

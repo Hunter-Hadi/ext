@@ -640,7 +640,10 @@ const FloatingContextMenu: FC<{
                       InputId={ROOT_FLOATING_INPUT_ID}
                       sx={{
                         border: 'none',
-                        '& textarea': { p: 0 },
+                        '& > div': {
+                          '& > div': { p: 0 },
+                          '& > textarea': { p: 0 },
+                        },
                         borderRadius: 0,
                         minHeight: '24px',
                       }}

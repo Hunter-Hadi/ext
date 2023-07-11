@@ -30,6 +30,7 @@ import GmailChatBoxReleaseLog from '@/features/gmail/components/GmailChatBox/Gma
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import GmailChatBoxChatSpeedDial from '@/features/gmail/components/GmailChatBox/GmailChatBoxChatSpeedDial'
 import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
+import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -383,6 +384,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             }}
             stopPropagation
             loading={loading}
+            expandNode={<ChatIconFileUpload size={'small'} />}
             onEnter={handleSendMessage}
           >
             <GmailChatBoxInputActions onSendMessage={handleSendMessage} />

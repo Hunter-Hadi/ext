@@ -30,16 +30,16 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
         },
         sx: {
           '&[data-popper-placement*="bottom"] > div': {
-            marginTop: props.arrow ? '8px!important' : '4px!important',
+            marginTop: props.arrow ? '12px!important' : '4px!important',
           },
           '&[data-popper-placement*="top"] > div': {
-            marginBottom: props.arrow ? '8px!important' : '4px!important',
+            marginBottom: props.arrow ? '12px!important' : '4px!important',
           },
           '&[data-popper-placement*="right"] > div': {
-            marginLeft: props.arrow ? '8px!important' : '4px!important',
+            marginLeft: props.arrow ? '12px!important' : '4px!important',
           },
           '&[data-popper-placement*="left"] > div': {
-            marginRight: props.arrow ? '8px!important' : '4px!important',
+            marginRight: props.arrow ? '12px!important' : '4px!important',
           },
           '& > div': {
             fontWeight: 400,

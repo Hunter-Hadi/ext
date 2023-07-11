@@ -363,7 +363,15 @@ const FloatingContextMenu: FC<{
     ) {
       let currentSelectedId =
         floatingDropdownMenuSelectedItem.selectedContextMenuId
+      // 是否为[推荐]菜单的动作
       let isSuggestedContextMenu = false
+      // 判断是否可以运行
+      let needOpenChatBox = false
+      // 是否为[草稿]菜单的动作
+      let isDraftContextMenu = false
+      // 当前选中的contextMenu
+      let currentContextMenu: IContextMenuItem | null = null
+      // 如果是[推荐]菜单的动作，则需要去掉前缀
       if (contextMenuIsFavoriteContextMenu(currentSelectedId)) {
         currentSelectedId = currentSelectedId.replace(
           FAVORITE_CONTEXT_MENU_GROUP_ID,
@@ -371,14 +379,11 @@ const FloatingContextMenu: FC<{
         )
         isSuggestedContextMenu = true
       }
-      // 判断是否可以运行
-      let needOpenChatBox = false
-      // 是否为[草稿]菜单的动作
-      const isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
-      let currentContextMenu: IContextMenuItem | null = null
+      // 如果没登录，或者chatGPTClient没有成功初始化，则需要打开chatbox
       if (!isLogin || chatGPTClient.status !== 'success') {
         needOpenChatBox = true
       }
+      isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
       // 先从[草稿]菜单中查找
       if (isDraftContextMenu) {
         const draftContextMenu = findDraftContextMenuById(currentSelectedId)
@@ -391,15 +396,20 @@ const FloatingContextMenu: FC<{
           originContextMenuList.find(
             (contextMenu) => contextMenu.id === currentSelectedId,
           ) || null
+      }
+      if (currentContextMenu && currentContextMenu.id) {
+        if (currentContextMenu.data.type === 'group') {
+          // 如果是group菜单，则不运行
+          return
+        }
         // [草稿]菜单的action不计入favorite
-        if (currentContextMenu && currentContextMenu.id) {
+        if (!isDraftContextMenu) {
           FavoriteMediatorFactory.getMediator('textSelectPopupButton')
             .favoriteContextMenu(currentContextMenu)
             .then()
             .catch()
         }
-      }
-      if (currentContextMenu && currentContextMenu.id) {
+        // 如果是[推荐]菜单的动作，则需要转换为[草稿]菜单的动作
         if (isSuggestedContextMenu) {
           currentContextMenu =
             contextMenuToFavoriteContextMenu(currentContextMenu)

@@ -130,11 +130,22 @@ const useFloatingContextMenu = () => {
         // - 点击button（或者按⌘J）的效果是从当前popup转移到sidebar里
         // - 也就是打开sidebar，并且关闭当前popup
         // - 如果当前sidebar本来就是打开的，就保持打开状态就行
+        const isFloatingContextMenuOpen = isFloatingContextMenuVisible()
         hideRangy()
         setFloatingDropdownMenu({
           open: false,
           rootRect: null,
         })
+        if (isFloatingContextMenuOpen) {
+          showChatBox()
+          setAppState((prevState) => {
+            return {
+              ...prevState,
+              open: true,
+            }
+          })
+          return
+        }
         // 如果都不符合，展开chat box
         if (isShowChatBox()) {
           hideChatBox()

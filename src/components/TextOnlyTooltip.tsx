@@ -39,7 +39,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
           '& > div': {
             fontWeight: 400,
             color: 'rgba(255,255,255,1)',
-            fontSize: '12px',
+            fontSize: '14px',
           },
           ...props.PopperProps?.sx,
         },

@@ -96,9 +96,9 @@ const ChatBoxHeader: FC = () => {
             })
           }}
         >
-          <Tooltip title="Settings">
+          <TextOnlyTooltip title="Settings">
             <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
-          </Tooltip>
+          </TextOnlyTooltip>
         </IconButton>
         {!isEzMailApp && !shortCutKey && (
           <Typography fontSize={12}>

@@ -76,6 +76,9 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
           //     },
           //   },
           // },
+          MuiTooltip: {
+            defaultProps: {},
+          },
           MuiButton: {
             defaultProps: {
               disableElevation: true,
@@ -129,6 +132,9 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
           MuiPopover: {
             defaultProps: {
               container: shadowRootElement || document.body,
+              sx: {
+                fontSize: '14px',
+              },
             },
             styleOverrides: {
               root: {

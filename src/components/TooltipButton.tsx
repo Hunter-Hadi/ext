@@ -17,9 +17,6 @@ const TooltipButton: FC<ITooltipButton> = (props) => {
       PopperProps={{
         sx: {
           zIndex: 9999999,
-          '& > div': {
-            fontSize: '12px',
-          },
         },
       }}
       {...tooltipProps}

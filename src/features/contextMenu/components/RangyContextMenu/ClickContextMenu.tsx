@@ -23,7 +23,6 @@ import { isProduction } from '@/constants'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
-import Typography from '@mui/material/Typography'
 import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
 
 const ClickContextMenuButton: FC<{

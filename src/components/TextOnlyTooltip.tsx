@@ -1,12 +1,17 @@
 import React, { FC } from 'react'
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
 import { getAppContextMenuElement, getAppRootElement } from '@/utils'
+import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
 
 export interface TextOnlyTooltipProps extends TooltipProps {
+  description?: React.ReactNode
   floatingMenuTooltip?: boolean
 }
 
 const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
+  title,
+  description,
   floatingMenuTooltip = false,
   ...props
 }) => {
@@ -38,12 +43,36 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
           },
           '& > div': {
             fontWeight: 400,
-            color: 'rgba(255,255,255,1)',
+            color: 'rgba(255,255,255,0.87)',
             fontSize: '14px',
           },
           ...props.PopperProps?.sx,
         },
       }}
+      title={
+        title ? (
+          <Stack>
+            <Typography
+              fontSize={'14px'}
+              textAlign={'left'}
+              color="rgba(255,255,255,.87)"
+            >
+              {title}
+            </Typography>
+            {description && (
+              <Typography
+                fontSize={'12px'}
+                textAlign={'left'}
+                color="rgba(255,255,255,.6)"
+              >
+                {description}
+              </Typography>
+            )}
+          </Stack>
+        ) : (
+          ''
+        )
+      }
     />
   )
 }

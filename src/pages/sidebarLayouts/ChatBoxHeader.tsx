@@ -12,7 +12,6 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import React, { FC } from 'react'
-import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
 import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
@@ -123,33 +122,13 @@ const ChatBoxHeader: FC = () => {
             hideChatBox()
           }}
         >
-          <Tooltip
+          <TextOnlyTooltip
             placement={'bottom'}
-            title={
-              shortCutKey ? (
-                <Stack>
-                  <Typography
-                    fontSize={'14px'}
-                    textAlign={'left'}
-                    color="rgba(255,255,255,.87)"
-                  >
-                    Close sidebar
-                  </Typography>
-                  <Typography
-                    fontSize={'12px'}
-                    textAlign={'left'}
-                    color="rgba(255,255,255,.6)"
-                  >
-                    {shortCutKey}
-                  </Typography>
-                </Stack>
-              ) : (
-                ``
-              )
-            }
+            title={'Close sidebar'}
+            description={shortCutKey}
           >
             <CloseIcon sx={{ fontSize: '24px' }} />
-          </Tooltip>
+          </TextOnlyTooltip>
         </IconButton>
       </Stack>
     </Stack>

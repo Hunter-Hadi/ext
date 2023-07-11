@@ -6,10 +6,10 @@ import TextOnlyTooltip, {
 interface ITooltipIconButton extends Omit<IconButtonProps, 'title'> {
   title: React.ReactNode | string
   placement?: TextOnlyTooltipProps['placement']
-  tooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
+  TooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
 }
 const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
-  const { title, placement, tooltipProps, ...iconButtonProps } = props
+  const { title, placement, TooltipProps, ...iconButtonProps } = props
   return (
     <TextOnlyTooltip
       placement={placement || 'top'}
@@ -17,7 +17,7 @@ const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
       PopperProps={{
         sx: {},
       }}
-      {...tooltipProps}
+      {...TooltipProps}
     >
       <div>
         <IconButton {...iconButtonProps} />

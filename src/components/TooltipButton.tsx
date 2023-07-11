@@ -6,10 +6,10 @@ import TextOnlyTooltip, {
 
 interface ITooltipButton extends Omit<ButtonProps, 'title'> {
   title: React.ReactNode | string
-  tooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
+  TooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
 }
 const TooltipButton: FC<ITooltipButton> = (props) => {
-  const { title, tooltipProps, ...iconButtonProps } = props
+  const { title, TooltipProps, ...iconButtonProps } = props
   return (
     <TextOnlyTooltip
       placement={'top'}
@@ -19,7 +19,7 @@ const TooltipButton: FC<ITooltipButton> = (props) => {
           zIndex: 9999999,
         },
       }}
-      {...tooltipProps}
+      {...TooltipProps}
     >
       <div>
         <Button {...iconButtonProps} />

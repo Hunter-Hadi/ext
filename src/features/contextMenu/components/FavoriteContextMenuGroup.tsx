@@ -47,7 +47,7 @@ const FavoriteContextMenuGroup: FC<{
           String(item.text[0] || '').toUpperCase() + String(item.text[1] || '')
         return (
           <TooltipButton
-            tooltipProps={{
+            TooltipProps={{
               floatingMenuTooltip: true,
               placement: placement || 'bottom',
             }}

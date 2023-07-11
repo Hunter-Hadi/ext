@@ -2,8 +2,6 @@ import React, { FC } from 'react'
 import { isShowChatBox, showChatBox } from '@/utils'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import { SidePanelIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useCommands from '@/hooks/useCommands'
@@ -19,28 +17,8 @@ const FloatingContextMenuOpenSidebarButton: FC<{
   return (
     <TextOnlyTooltip
       floatingMenuTooltip
-      title={
-        shortCutKey ? (
-          <Stack>
-            <Typography
-              fontSize={'14px'}
-              textAlign={'left'}
-              color="rgba(255,255,255,.87)"
-            >
-              Switch to sidebar
-            </Typography>
-            <Typography
-              fontSize={'12px'}
-              textAlign={'left'}
-              color="rgba(255,255,255,.6)"
-            >
-              {shortCutKey}
-            </Typography>
-          </Stack>
-        ) : (
-          ''
-        )
-      }
+      description={shortCutKey}
+      title={'Switch to sidebar'}
       placement={'bottom'}
     >
       <Button

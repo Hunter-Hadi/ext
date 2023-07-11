@@ -196,7 +196,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           parentMessageId: currentMessageId,
           text: `You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${formatTimeStampToHoursAndMinutes(
             next_reset_timestamp,
-          )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)`,
+          )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)\n\nIf you've already upgraded, reload the [My Plan](${APP_USE_CHAT_GPT_HOST}/my-plan) page to activate your membership.`,
           extra: {
             status: 'error',
             systemMessageType: 'dailyUsageLimited',

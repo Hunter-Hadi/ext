@@ -197,13 +197,108 @@ const createButton = (buttonText, top, listener, handleClick) => {
     await navigator.clipboard.writeText('Hi!\n\nJerry!\nThanks.')
     doc.execCommand('paste', false, '')
   })
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.style.cssText = 'position: fixed;top: 0px;left:0px;overflow: hidden; z-index: -1;'
+  input.addEventListener('change', async (event) => {
+    const files = event.target.files
+    if (!files || files.length === 0) {
+      return
+    }
+    const file = files[0]
+    // 通过 FileReader API 读取二进制文件内容
+    var reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.onload = function() {
+      var fileContent = reader.result;
+      // 创建 Blob 对象
+      var blob = new Blob([fileContent], { type: file.type });
+      var blobUrl = URL.createObjectURL(blob);
+      var fileInfo = {
+        name: file.name,
+        type: file.type,
+        url: blobUrl,
+        lastModified: file.lastModified
+      };
+      chrome.runtime.sendMessage({
+        data: fileInfo
+      })
+    };
 
+  })
+  document.body.appendChild(input)
+  createButton('input file', 280, 'click', async () => {
+    input.click()
+  })
+  let free= false
+  let cacheFile = null
+  // 监听来自 A 页面的消息，并下载 Blob 对象
+  chrome.runtime.onMessage.addListener(function(fileInfo, sender, sendResponse) {
+    if (free) {
+      return
+    }
+    free = true
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', fileInfo.url, true);
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+      if (this.status === 200) {
+        var fileContent = this.response;
+        var filename = fileInfo.name;
+        // 创建 Blob 对象
+        var blob = new Blob([fileContent], { type: fileInfo.type });
+        // 创建 File 对象
+        var newFile = new File([blob], fileInfo.name, {
+          type: fileInfo.type,
+          lastModified: fileInfo.lastModified
+        });
+        let list = new DataTransfer();
+        list.items.add(newFile);
+        let myFileList = list.files;
+        document.querySelector('input[type="file"]').files = myFileList
+        var event = new Event('change', { bubbles: true });
+        document.querySelector('input[type="file"]').dispatchEvent(event);
+        // 如果是视频文件，则创建播放器播放视频
+        if (newFile.type.indexOf('video/') === 0) {
+          var video = document.createElement('video');
+          video.src = URL.createObjectURL(blob);
+          video.controls = true;
+          video.style.cssText= `    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index: 1;`
+          document.body.appendChild(video);
+        }
+        // 如果是图片文件，则插入图片
+        if (newFile.type.indexOf('image/') === 0) {
+          var img = document.createElement('img');
+          img.src = URL.createObjectURL(blob);
+          img.style.cssText= `    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index: 1;`
+          document.body.appendChild(img);
+        }
+      }
+    };
+    xhr.send();
+  });
 
-
-
-
-
-
+  window.addEventListener('message', event => {
+      // 显示接收到的消息
+      console.log('message', event.data, event)
+    if (event.source === window && event.data.type === 'fetch_api_response') {
+      const data = event.data.data
+      console.log('fetch_api_response', data)
+      if (data) {
+        const {progress,result,done} = data
+        console.log('上传文件步骤', done ? '完成' : '未完成', progress, result)
+        if (done) {
+          // document.querySelector('button span[data-state="closed"]').parentElement.click()
+        }
+      }
+    }
+  })
 
   const getEditableElement = (element, defaultMaxLoop = 10) => {
     var _a;

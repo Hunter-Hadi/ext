@@ -76,7 +76,8 @@
         "content_style.css",
         "chunks/*.js",
         "pageWorld.js",
-        "assets/*"
+        "assets/*",
+        "pages/chatgpt/codeInterpreter.js"
       ],
       "matches": [
         "<all_urls>"

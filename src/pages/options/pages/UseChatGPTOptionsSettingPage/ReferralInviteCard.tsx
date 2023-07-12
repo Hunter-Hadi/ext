@@ -30,7 +30,7 @@ const ReferralInviteCard: FC = () => {
             height={133.3}
           />
           <Typography fontSize={20} color={'text.primary'} fontWeight={700}>
-            Get up to 24 weeks of MaxAI Pro for free!
+            Get up to 24 free weeks of MaxAI Pro!
           </Typography>
           <Typography fontSize={14} color={'text.primary'}>
             <span>

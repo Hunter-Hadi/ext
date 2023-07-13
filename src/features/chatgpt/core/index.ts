@@ -127,6 +127,44 @@ const chatGptRequest = (
     body: data === undefined ? undefined : JSON.stringify(data),
   })
 }
+export const getConversationFileUrl = async (params: {
+  conversationId: string
+  message_id: string
+  sandbox_path: string
+}) => {
+  const { conversationId, message_id, sandbox_path } = params
+  const fallbackUrl = `https://chat.openai.com/c/${conversationId}`
+  // https://chat.openai.com/backend-api/conversation/647c720d-9eeb-4986-8b89-112098f107b6/interpreter/download?message_id=895986d6-bd39-404e-a485-923cdb5c7476&sandbox_path=%2Fmnt%2Fdata%2Fclip_3s.mp4
+  try {
+    const token = await getChatGPTAccessToken()
+    const resp = await chatGptRequest(
+      token,
+      'GET',
+      `/backend-api/conversation/${conversationId}/interpreter/download?message_id=${message_id}&sandbox_path=${sandbox_path}`,
+    )
+    const data = await resp.json()
+    // error_code:"ace_pod_expired"
+    // status:"error"
+    if (data?.status === 'error') {
+      return {
+        success: false,
+        data: fallbackUrl,
+        error: 'File Expired',
+      }
+    }
+    return {
+      success: true,
+      data: data?.download_url || fallbackUrl,
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      success: false,
+      data: fallbackUrl,
+      error: 'Network Error',
+    }
+  }
+}
 export const getConversationList = async (params: {
   token: string
   offset?: number
@@ -461,7 +499,72 @@ class ChatGPTConversation {
               input: resultText,
             })
           }
-          params.onEvent({ type: 'done' })
+          let newResultText = resultText
+          // 解析resultText中的markdown链接
+          const markdownLinks = newResultText.match(/\[.*?\]\(.*?\)/g)
+          if (
+            this.conversationId &&
+            markdownLinks &&
+            markdownLinks.length > 0
+          ) {
+            Promise.all(
+              markdownLinks.map(async (markdownLink) => {
+                // "[Download the clipped video](sandbox:/mnt/data/clip_3s.mp4)"
+                // split by "]("
+                const parts = markdownLink.split('](')
+                if (parts.length !== 2) {
+                  return undefined
+                }
+                const text = parts[0].slice(1)
+                const url = parts[1].slice(0, -1)
+                if (!url.startsWith('sandbox:')) {
+                  return undefined
+                }
+                const downloadFile = await getConversationFileUrl({
+                  conversationId: this.conversationId!,
+                  message_id: resultMessageId,
+                  sandbox_path: url.replace('sandbox:', ''),
+                })
+                return {
+                  original: markdownLink,
+                  new: `[${text}](${downloadFile.data})`,
+                } as {
+                  original: string
+                  new: string
+                }
+              }),
+            )
+              .then((replaceDataList) => {
+                if (replaceDataList) {
+                  replaceDataList.forEach((replaceData) => {
+                    if (replaceData) {
+                      newResultText = newResultText.replace(
+                        replaceData.original,
+                        replaceData.new,
+                      )
+                    }
+                  })
+                }
+                params.onEvent({
+                  type: 'answer',
+                  data: {
+                    text: newResultText,
+                    messageId: resultMessageId,
+                    conversationId: this.conversationId!,
+                    parentMessageId: questionId,
+                  },
+                })
+                setTimeout(() => {
+                  params.onEvent({ type: 'done' })
+                }, 100)
+              })
+              .catch((e) => {
+                console.error(e)
+                params.onEvent({ type: 'done' })
+              })
+          } else {
+            params.onEvent({ type: 'done' })
+          }
           return
         }
         let data

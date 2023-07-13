@@ -52,7 +52,7 @@ export interface ISystemChatMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   extra: {
-    status?: 'error' | 'success'
+    status?: 'error' | 'success' | 'info'
     systemMessageType?: 'dailyUsageLimited'
   }
 }

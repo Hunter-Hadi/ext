@@ -76,13 +76,11 @@ const ChatGPTOpenAIModelSelector: FC = () => {
       const cacheModels = JSON.parse(result.CHAT_GPT_WHITE_LIST_MODELS || '[]')
       setWhiteListModels(cacheModels)
       backgroundGetUrlContent(
-        'https://www.phtracker.com/crx/info/provider',
+        'https://www.phtracker.com/crx/info/provider/v1',
       ).then((result) => {
         if (result.success && result.data && result.data.body) {
           try {
             const data = JSON.parse(result.data.body)
-            // TODO: remove this line after next publish
-            data.models.push('gpt-4-code-interpreter')
             if (data.models) {
               // set to local storage
               Browser.storage.local.set({

@@ -114,13 +114,17 @@ const GmailChatBoxMessageItem: FC<{
         ...hoverSx,
       } as SxProps
     }
+    const border =
+      {
+        info: '1px solid #03a9f4!important',
+        error: '1px solid rgb(239, 83, 80)!important',
+        success: '1px solid #34A853!important',
+      }[message?.extra?.status as 'info'] || '1px solid #03a9f4!important'
     return {
       borderRadius: '8px',
-      border:
-        message?.extra?.status === 'error'
-          ? '1px solid rgb(239, 83, 80)!important'
-          : '1px solid #34A853!important',
+      border,
       bgcolor: 'background.paper',
+      ...hoverSx,
     } as SxProps
   }, [message.type, userSettings, isHover])
   useEffect(() => {
@@ -193,9 +197,7 @@ const GmailChatBoxMessageItem: FC<{
         <AppSuspenseLoadingLayout>
           {message.type === 'system' ? (
             <Alert
-              severity={
-                message?.extra?.status === 'error' ? 'error' : 'success'
-              }
+              severity={message?.extra?.status || 'info'}
               sx={{
                 p: 1,
                 '& .MuiAlert-message': {

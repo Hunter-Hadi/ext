@@ -473,7 +473,7 @@ class OpenAIChat extends BaseChat {
     if (!result.success) {
       this.chatFiles = this.chatFiles.map((file) => {
         file.uploadStatus = 'error'
-        file.uploadErrorMessage = 'please open the code_interpreter page.'
+        file.uploadErrorMessage = `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
         return file
       })
       const processTabId = this.chatGPTProxyInstance?.id

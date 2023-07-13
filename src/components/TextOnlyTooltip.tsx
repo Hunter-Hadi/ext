@@ -45,6 +45,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
             fontWeight: 400,
             color: 'rgba(255,255,255,0.87)',
             fontSize: '14px',
+            maxWidth: (props as any)?.sx?.maxWidth || '300px',
           },
           ...props.PopperProps?.sx,
         },

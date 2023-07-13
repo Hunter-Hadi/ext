@@ -181,6 +181,9 @@ const ClickContextMenuButton: FC<{
             floatingMenuTooltip: true,
             placement,
             description: shortCutKey,
+            sx: {
+              maxWidth: 360,
+            },
           }}
           title={'Ask AI to edit, summarize, explain, or generate text'}
           className={'usechatgpt-ai__context-menu--handle-button'}

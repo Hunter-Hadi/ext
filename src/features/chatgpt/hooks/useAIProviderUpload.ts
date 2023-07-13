@@ -94,6 +94,17 @@ const useAIProviderUpload = () => {
     },
     [AIProviderConfig],
   )
+  const aiProviderUploadingTooltip = useMemo(() => {
+    if (AIProviderConfig.isSupportedUpload) {
+      switch (AIProviderConfig.chatGPTProvider) {
+        case 'OPENAI':
+          return 'File uploading. Please send your message once upload completes.'
+        default:
+          return 'File uploading. Please send your message once upload completes.'
+      }
+    }
+    return ''
+  }, [AIProviderConfig])
   useEffect(() => {
     const errorItem = files.find((item) => item.uploadStatus === 'error')
     if (errorItem) {
@@ -108,14 +119,19 @@ const useAIProviderUpload = () => {
         if (isContainsError) {
           return old
         }
+
         return old.concat({
           messageId: errorItem.id,
           text:
             errorItem.uploadErrorMessage ||
-            `${errorItem.fileName} upload error`,
+            `File ${errorItem.fileName} upload error.`,
           type: 'system',
           extra: {
-            status: 'error',
+            status:
+              errorItem.uploadErrorMessage ===
+              `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
+                ? 'info'
+                : 'error',
           },
         } as ISystemChatMessage)
       })
@@ -159,6 +175,7 @@ const useAIProviderUpload = () => {
     return undefined
   })
   return {
+    aiProviderUploadingTooltip,
     AIProviderConfig,
     aiProviderUploadFiles,
     aiProviderRemoveFiles,

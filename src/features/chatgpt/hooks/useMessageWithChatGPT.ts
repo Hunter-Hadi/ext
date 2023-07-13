@@ -16,6 +16,7 @@ import {
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
+  IThirdChatMessage,
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
@@ -422,22 +423,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       log.info('stopGenerateMessage', result)
     }
   }
-  const pushMessage = (
-    type: 'system' | 'third',
-    text: string,
-    status?: 'success' | 'error',
-  ) => {
+  const pushMessage = (newMessage: ISystemChatMessage | IThirdChatMessage) => {
     setMessages((prevState) => {
-      return [
-        ...prevState,
-        {
-          type,
-          status,
-          messageId: uuidV4(),
-          parentMessageId: '',
-          text,
-        },
-      ]
+      return [...prevState, newMessage]
     })
   }
   const updateChatInputValue = (value: string) => {

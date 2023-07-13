@@ -48,9 +48,9 @@ const ContextMenuMockTextarea: FC<{
         sx={{
           flexShrink: 0,
           color: 'primary.main',
-          height: '16px',
-          width: '16px',
-          p: '4px',
+          height: '20px',
+          width: '20px',
+          m: '4px',
           alignSelf: 'start',
         }}
       />

@@ -155,6 +155,7 @@ const ChatIconFileUpload: FC<{
             key={file.id}
           >
             <Stack
+              className={'max-ai-chat__icon-file-upload'}
               direction={'row'}
               position={'relative'}
               sx={{

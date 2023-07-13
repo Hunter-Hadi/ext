@@ -651,7 +651,9 @@ const FloatingContextMenu: FC<{
                           '& > div': { p: 0 },
                           '& > textarea': { p: 0 },
                           '& > .max-ai-user-input__expand': {
-                            pr: 1,
+                            '&:has(> div)': {
+                              pr: 1,
+                            },
                           },
                         },
                         borderRadius: 0,

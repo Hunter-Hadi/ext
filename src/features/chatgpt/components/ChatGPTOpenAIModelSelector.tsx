@@ -81,6 +81,8 @@ const ChatGPTOpenAIModelSelector: FC = () => {
         if (result.success && result.data && result.data.body) {
           try {
             const data = JSON.parse(result.data.body)
+            // TODO: remove this line after next publish
+            data.models.push('gpt-4-code-interpreter')
             if (data.models) {
               // set to local storage
               Browser.storage.local.set({

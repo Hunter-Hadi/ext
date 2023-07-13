@@ -82,17 +82,20 @@ class PoeChatProvider implements ChatAdapterInterface {
   get chatFiles() {
     return this.poeChat.chatFiles
   }
-  async uploadFile(file: IChatUploadFile) {
-    return await this.poeChat.uploadFile(file)
+  async uploadFiles(files: IChatUploadFile[]) {
+    return await this.poeChat.uploadFiles(files)
   }
-  async removeFile(fileId: string) {
-    return await this.poeChat.removeFile(fileId)
+  async updateFiles(files: IChatUploadFile[]) {
+    return await this.poeChat.updateFiles(files)
+  }
+  async removeFiles(fileIds: string[]) {
+    return await this.poeChat.removeFiles(fileIds)
   }
   async getFiles() {
     return await this.poeChat.getFiles()
   }
-  async abortUploadFile(fileId: string) {
-    return await this.poeChat.abortUploadFile(fileId)
+  async abortUploadFiles(fileIds: string[]) {
+    return await this.poeChat.abortUploadFiles(fileIds)
   }
   async clearFiles() {
     return await this.poeChat.clearFiles()

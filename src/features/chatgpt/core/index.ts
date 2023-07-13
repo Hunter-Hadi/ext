@@ -41,6 +41,7 @@ export interface GenerateAnswerParams {
   prompt: string
   onEvent: (event: Event) => void
   signal?: AbortSignal
+  meta?: any
 }
 export interface IChatGPTConversationRawMappingData {
   id: string
@@ -269,6 +270,7 @@ export const generateArkoseToken = async (model: string) => {
     // 'text-davinci-002-render-sha',
     // 'text-davinci-002-render-sha-mobile',
     'gpt-4',
+    'gpt-4-code-interpreter',
     'gpt-4-browsing',
     'gpt-4-plugins',
     'gpt-4-mobile',
@@ -400,6 +402,44 @@ class ChatGPTConversation {
         data: { message: (e as any).message || 'Network error.', detail: '' },
       })
     }
+    const postMessage = {
+      action: regenerate ? 'variant' : 'next',
+      messages: [
+        {
+          id: questionId,
+          author: {
+            role: 'user',
+          },
+          content: {
+            content_type: 'text',
+            parts: [params.prompt],
+          },
+        },
+      ],
+      model: this.model,
+      parent_message_id: parentMessageId,
+      timezone_offset_min: new Date().getTimezoneOffset(),
+      history_and_training_disabled: false,
+    } as any
+    if (this.conversationId) {
+      postMessage.conversation_id = this.conversationId
+    }
+    if (arkoseToken) {
+      // NOTE: 只有gpt-4相关的模型需要传入arkoseToken
+      postMessage.arkose_token = arkoseToken
+    }
+    if (params.meta) {
+      // NOTE: 目前只用在了gpt-4-code-interpreter
+      postMessage.messages[0].metadata = params.meta
+    }
+    if (
+      settings.currentPlugins &&
+      !this.conversationId &&
+      this.model === 'gpt-4-plugins'
+    ) {
+      // NOTE: 只有创建新的对话时才需要传入插件
+      postMessage.plugin_ids = settings.currentPlugins
+    }
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: CHAT_GPT_PROVIDER.OPENAI,
       method: 'POST',
@@ -408,47 +448,7 @@ class ChatGPTConversation {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
       },
-      body: JSON.stringify(
-        Object.assign(
-          {
-            action: regenerate ? 'variant' : 'next',
-            messages: [
-              {
-                id: questionId,
-                author: {
-                  role: 'user',
-                },
-                content: {
-                  content_type: 'text',
-                  parts: [params.prompt],
-                },
-              },
-            ],
-            model: this.model,
-            parent_message_id: parentMessageId,
-            timezone_offset_min: new Date().getTimezoneOffset(),
-            history_and_training_disabled: false,
-          },
-          this.conversationId
-            ? {
-                conversation_id: this.conversationId,
-              }
-            : {},
-          settings.currentPlugins &&
-            !this.conversationId &&
-            this.model === 'gpt-4-plugins'
-            ? {
-                // NOTE: 只有创建新的对话时才需要传入插件
-                plugin_ids: settings.currentPlugins,
-              }
-            : {},
-          arkoseToken
-            ? {
-                arkose_token: arkoseToken,
-              }
-            : {},
-        ),
-      ),
+      body: JSON.stringify(Object.assign(postMessage)),
       onMessage: (message: string) => {
         console.debug('sse message', message)
         if (message === '[DONE]') {

@@ -8,6 +8,12 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
+import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
+import { v4 as uuidV4 } from 'uuid'
+import { useRecoilValue } from 'recoil'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { ChatGPTConversationState } from '@/features/gmail/store'
+
 const ChatIconFileUpload: FC<{
   accept?: string
   maxFileSize?: number
@@ -17,7 +23,7 @@ const ChatIconFileUpload: FC<{
   direction?: 'row' | 'column'
   onUpload?: (files: IChatUploadFile[]) => void
   onDone?: (files: IChatUploadFile[]) => void
-  size?: 'small' | 'medium' | 'large'
+  size?: 'tiny' | 'small' | 'medium' | 'large'
   sx?: SxProps
 }> = (props) => {
   const {
@@ -29,11 +35,23 @@ const ChatIconFileUpload: FC<{
     size = 'medium',
     sx,
   } = props
+  const {
+    files,
+    AIProviderConfig,
+    aiProviderUploadFiles,
+    aiProviderRemoveFiles,
+  } = useAIProviderUpload()
+  const clientState = useRecoilValue(ChatGPTClientState)
+  const conversation = useRecoilValue(ChatGPTConversationState)
   const inputRef = useRef<HTMLInputElement>(null)
-  const [files, setFiles] = useState<IChatUploadFile[]>([])
   const [error, setError] = useState<string | null>(null)
   const [hoverId, setHoverId] = useState<string>('')
-  const boxHeight = size === 'small' ? 24 : size === 'medium' ? 32 : 40
+  const boxHeight = {
+    tiny: 24,
+    small: 24,
+    medium: 32,
+    large: 40,
+  }[size]
   const isMaxFiles = useMemo(() => {
     return files.length >= maxFiles
   }, [files])
@@ -62,36 +80,47 @@ const ChatIconFileUpload: FC<{
     }
     // upload
     const uploadFiles = filesArray.map((file) => {
-      // fileName: string
-      // fileSize: number
-      // fileType: string
-      // fileUrl?: string
-      // file?: File
-      // uploadProgress?: number
-      // uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
-      // uploadErrorMessage?: string
       let icon = 'file'
       // image, svg, gif
       if (file.type.includes('image')) {
         icon = URL.createObjectURL(file)
       }
+      // id: string
+      // fileName: string
+      // fileSize: number
+      // fileType: string
+      // blobUrl?: string
+      // icon?: string
+      // file?: File
+      // uploadProgress?: number
+      // uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
+      // uploadErrorMessage?: string
+      // uploadedUrl?: string
       return {
-        id: file.name + file.size,
+        id: uuidV4(),
         file,
         fileName: file.name,
         fileSize: file.size,
         fileType: file.type,
+        blobUrl: URL.createObjectURL(file),
         uploadStatus: 'idle',
-        error: null,
-        progress: 0,
+        uploadErrorMessage: '',
+        uploadProgress: 0,
         icon,
       } as IChatUploadFile
     })
-    setFiles((prev) => [...prev, ...uploadFiles])
+    await aiProviderUploadFiles(uploadFiles)
   }
   // const hasFileUploading = useMemo(() => {
   //   return files.some((file) => file.uploadStatus === 'uploading')
   // }, [files])
+  if (
+    !AIProviderConfig.isSupportedUpload ||
+    clientState.status !== 'success' ||
+    conversation.loading
+  ) {
+    return <></>
+  }
   return (
     <Stack
       direction={direction}
@@ -101,7 +130,14 @@ const ChatIconFileUpload: FC<{
       spacing={1}
     >
       {files.map((file, index) => {
-        const iconSize = size === 'small' ? 16 : size === 'medium' ? 24 : 32
+        const iconSize = {
+          tiny: 16,
+          small: 16,
+          medium: 24,
+          large: 32,
+        }[size]
+        const top = size === 'tiny' ? 2 : -8
+        const right = size === 'tiny' ? 2 : -8
         const isHover = hoverId === file.id
         return (
           <Stack
@@ -204,8 +240,8 @@ const ChatIconFileUpload: FC<{
             </TextOnlyTooltip>
             {!isHover && file.uploadStatus === 'uploading' && (
               <Stack
-                top={-8}
-                right={-8}
+                top={top}
+                right={right}
                 position={'absolute'}
                 width={20}
                 height={20}
@@ -231,7 +267,7 @@ const ChatIconFileUpload: FC<{
               </Stack>
             )}
             {isHover && (
-              <Box top={-8} right={-8} position={'absolute'}>
+              <Box top={top} right={right} position={'absolute'}>
                 <TextOnlyTooltip placement={'top'} arrow title={'Remove file'}>
                   <Button
                     sx={{
@@ -241,6 +277,9 @@ const ChatIconFileUpload: FC<{
                       '&:hover': {
                         color: 'primary.main',
                       },
+                    }}
+                    onClick={async () => {
+                      await aiProviderRemoveFiles([file])
                     }}
                   >
                     <ContextMenuIcon
@@ -276,17 +315,6 @@ const ChatIconFileUpload: FC<{
               }
             }}
           >
-            <input
-              multiple={maxFiles > 1}
-              onChange={handleUpload}
-              ref={inputRef}
-              accept={accept || ''}
-              hidden
-              style={{
-                display: 'none',
-              }}
-              type={'file'}
-            />
             <ContextMenuIcon
               icon={'AddCircle'}
               sx={{
@@ -296,6 +324,17 @@ const ChatIconFileUpload: FC<{
           </Button>
         </TextOnlyTooltip>
       )}
+      <input
+        multiple={maxFiles > 1}
+        onChange={handleUpload}
+        ref={inputRef}
+        accept={accept || ''}
+        hidden
+        style={{
+          display: 'none',
+        }}
+        type={'file'}
+      />
     </Stack>
   )
 }

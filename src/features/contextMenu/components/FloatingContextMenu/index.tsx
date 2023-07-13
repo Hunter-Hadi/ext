@@ -65,6 +65,7 @@ import {
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -636,6 +637,7 @@ const FloatingContextMenu: FC<{
                     </>
                   ) : (
                     <AutoHeightTextarea
+                      expandNode={<ChatIconFileUpload size={'tiny'} />}
                       placeholder={'Ask AI to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
@@ -644,6 +646,9 @@ const FloatingContextMenu: FC<{
                         '& > div': {
                           '& > div': { p: 0 },
                           '& > textarea': { p: 0 },
+                          '& > .max-ai-user-input__expand': {
+                            pr: 1,
+                          },
                         },
                         borderRadius: 0,
                         minHeight: '24px',

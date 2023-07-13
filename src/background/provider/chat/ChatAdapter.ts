@@ -53,9 +53,10 @@ export interface ChatSystemInterface {
   abortAskQuestion: (messageId: string) => Promise<boolean>
   // 上传文件
   getFiles: () => Promise<IChatUploadFile[]>
-  uploadFile: (file: IChatUploadFile) => Promise<void>
-  abortUploadFile: (fileId: string) => Promise<boolean>
-  removeFile: (fileId: string) => Promise<boolean>
+  updateFiles: (updateFiles: IChatUploadFile[]) => Promise<void>
+  uploadFiles: (file: IChatUploadFile[]) => Promise<void>
+  abortUploadFiles: (fileIds: string[]) => Promise<boolean>
+  removeFiles: (fileIds: string[]) => Promise<boolean>
   clearFiles: () => Promise<boolean>
 }
 
@@ -71,9 +72,10 @@ export interface ChatAdapterInterface {
   abortAskQuestion: (messageId: string) => Promise<boolean>
   // 上传文件
   getFiles: () => Promise<IChatUploadFile[]>
-  uploadFile: (file: IChatUploadFile) => Promise<void>
-  abortUploadFile: (fileId: string) => Promise<boolean>
-  removeFile: (fileId: string) => Promise<boolean>
+  updateFiles: (updateFiles: IChatUploadFile[]) => Promise<void>
+  uploadFiles: (file: IChatUploadFile[]) => Promise<void>
+  abortUploadFiles: (fileIds: string[]) => Promise<boolean>
+  removeFiles: (fileIds: string[]) => Promise<boolean>
   clearFiles: () => Promise<boolean>
 }
 
@@ -114,14 +116,17 @@ export class ChatAdapter implements ChatSystemInterface {
   get chatFiles() {
     return this.chatAdapter.chatFiles
   }
-  async uploadFile(file: IChatUploadFile) {
-    return await this.chatAdapter.uploadFile(file)
+  async updateFiles(updateFiles: IChatUploadFile[]) {
+    await this.chatAdapter.updateFiles(updateFiles)
   }
-  async abortUploadFile(fileId: string) {
-    return await this.chatAdapter.abortUploadFile(fileId)
+  async uploadFiles(files: IChatUploadFile[]) {
+    return await this.chatAdapter.uploadFiles(files)
   }
-  async removeFile(fileId: string) {
-    return await this.chatAdapter.removeFile(fileId)
+  async abortUploadFiles(fileIds: string[]) {
+    return await this.chatAdapter.abortUploadFiles(fileIds)
+  }
+  async removeFiles(fileIds: string[]) {
+    return await this.chatAdapter.removeFiles(fileIds)
   }
   async getFiles() {
     return await this.chatAdapter.getFiles()

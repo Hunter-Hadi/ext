@@ -10,20 +10,20 @@ import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class BingChatProvider implements ChatAdapterInterface {
-  private bindChat: BingChat
+  private bingChat: BingChat
 
-  constructor(bindChat: BingChat) {
-    this.bindChat = bindChat
+  constructor(bingChat: BingChat) {
+    this.bingChat = bingChat
   }
   async auth(authTabId: number) {
-    await this.bindChat.auth()
+    await this.bingChat.auth()
   }
   async preAuth() {
     // 进入聊天界面再进行认证
-    await this.bindChat.auth()
+    await this.bingChat.auth()
   }
   get status() {
-    return this.bindChat.status
+    return this.bingChat.status
   }
   async createConversation() {
     return Promise.resolve('')
@@ -32,7 +32,7 @@ class BingChatProvider implements ChatAdapterInterface {
     await setChromeExtensionSettings({
       conversationId: '',
     })
-    await this.bindChat.removeConversation(conversationId)
+    await this.bingChat.removeConversation(conversationId)
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (
@@ -41,7 +41,7 @@ class BingChatProvider implements ChatAdapterInterface {
     question,
     options,
   ) => {
-    await this.bindChat.askChatGPT(
+    await this.bingChat.askChatGPT(
       question.question,
       {
         taskId: question.messageId,
@@ -67,10 +67,10 @@ class BingChatProvider implements ChatAdapterInterface {
     )
   }
   async abortAskQuestion(messageId: string) {
-    return await this.bindChat.abortTask(messageId)
+    return await this.bingChat.abortTask(messageId)
   }
   async destroy() {
-    await this.bindChat.destroy()
+    await this.bingChat.destroy()
   }
   private async sendResponseToClient(tabId: number, data: any) {
     await Browser.tabs.sendMessage(tabId, {
@@ -80,22 +80,25 @@ class BingChatProvider implements ChatAdapterInterface {
     })
   }
   get chatFiles() {
-    return this.bindChat.chatFiles
+    return this.bingChat.chatFiles
   }
-  async uploadFile(file: IChatUploadFile) {
-    return await this.bindChat.uploadFile(file)
+  async updateFiles(files: IChatUploadFile[]) {
+    return await this.bingChat.updateFiles(files)
   }
-  async removeFile(fileId: string) {
-    return await this.bindChat.removeFile(fileId)
+  async uploadFiles(files: IChatUploadFile[]) {
+    return await this.bingChat.uploadFiles(files)
+  }
+  async removeFiles(fileIds: string[]) {
+    return await this.bingChat.removeFiles(fileIds)
   }
   async getFiles() {
-    return await this.bindChat.getFiles()
+    return await this.bingChat.getFiles()
   }
-  async abortUploadFile(fileId: string) {
-    return await this.bindChat.abortUploadFile(fileId)
+  async abortUploadFiles(fileIds: string[]) {
+    return await this.bingChat.abortUploadFiles(fileIds)
   }
   async clearFiles() {
-    return await this.bindChat.clearFiles()
+    return await this.bingChat.clearFiles()
   }
 }
 export { BingChatProvider }

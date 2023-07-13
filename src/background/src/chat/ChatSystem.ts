@@ -6,6 +6,7 @@ import {
   IChatGPTProviderType,
 } from '@/background/provider/chat'
 import {
+  backgroundSendAllClientMessage,
   createBackgroundMessageListener,
   getChromeExtensionSettings,
   setChromeExtensionSettings,
@@ -104,6 +105,7 @@ class ChatSystem implements ChatSystemInterface {
             {
               const { taskId, question, options } = data
               await this.sendQuestion(taskId, sender, question, options)
+              this.updateClientFiles()
             }
             break
           case 'Client_removeChatGPTConversation': {
@@ -143,10 +145,11 @@ class ChatSystem implements ChatSystemInterface {
               }
             }
             break
-          case 'Client_chatUploadFile':
+          case 'Client_chatUploadFiles':
             {
-              const { file } = data
-              await this.uploadFile(file)
+              const { files } = data
+              await this.uploadFiles(files)
+              this.updateClientFiles()
               return {
                 success: true,
                 data: this.chatFiles,
@@ -154,10 +157,12 @@ class ChatSystem implements ChatSystemInterface {
               }
             }
             break
-          case 'Client_chatAbortUploadFile':
+          case 'Client_chatAbortUploadFiles':
             {
-              const { file } = data
-              const success = await this.abortUploadFile(file.id)
+              const { files } = data
+              const success = await this.abortUploadFiles(
+                files.map((file: IChatUploadFile) => file.id),
+              )
               return {
                 success,
                 data: this.chatFiles,
@@ -165,10 +170,12 @@ class ChatSystem implements ChatSystemInterface {
               }
             }
             break
-          case 'Client_chatRemoveFile':
+          case 'Client_chatRemoveFiles':
             {
-              const { file } = data
-              const success = await this.removeFile(file.id)
+              const { files } = data
+              const success = await this.removeFiles(
+                files.map((file: IChatUploadFile) => file.id),
+              )
               return {
                 success,
                 data: this.chatFiles,
@@ -183,6 +190,18 @@ class ChatSystem implements ChatSystemInterface {
                 success,
                 data: this.chatFiles,
                 message: '',
+              }
+            }
+            break
+          case 'Client_chatUploadFilesChange':
+            {
+              const { files } = data
+              await this.updateFiles(files)
+              await this.updateClientFiles()
+              return {
+                success: true,
+                data: {},
+                message: 'ok',
               }
             }
             break
@@ -277,23 +296,29 @@ class ChatSystem implements ChatSystemInterface {
     await this.currentAdapter?.destroy()
     await this.currentAdapter?.clearFiles()
   }
-  async uploadFile(file: IChatUploadFile) {
+  async uploadFiles(files: IChatUploadFile[]) {
     if (!this.currentAdapter) {
       return undefined
     }
-    return await this.currentAdapter.uploadFile(file)
+    return await this.currentAdapter.uploadFiles(files)
   }
-  async abortUploadFile(fileId: string) {
+  async updateFiles(files: IChatUploadFile[]) {
+    if (!this.currentAdapter) {
+      return undefined
+    }
+    return await this.currentAdapter.updateFiles(files)
+  }
+  async abortUploadFiles(fileIds: string[]) {
     if (!this.currentAdapter) {
       return false
     }
-    return await this.currentAdapter.abortUploadFile(fileId)
+    return await this.currentAdapter.abortUploadFiles(fileIds)
   }
-  async removeFile(fileId: string) {
+  async removeFiles(fileIds: string[]) {
     if (!this.currentAdapter) {
       return false
     }
-    return await this.currentAdapter.removeFile(fileId)
+    return await this.currentAdapter.removeFiles(fileIds)
   }
   async getFiles() {
     return this.chatFiles
@@ -303,6 +328,12 @@ class ChatSystem implements ChatSystemInterface {
       return false
     }
     return await this.currentAdapter.clearFiles()
+  }
+  async updateClientFiles() {
+    console.log('Client_chatUploadFilesChange', this.chatFiles)
+    backgroundSendAllClientMessage('Client_listenUploadFilesChange', {
+      files: this.chatFiles,
+    })
   }
 }
 export { ChatSystem }

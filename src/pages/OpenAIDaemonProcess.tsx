@@ -27,6 +27,11 @@ import { chromeExtensionClientOpenPage } from '@/utils'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import useInterval from '@/hooks/useInterval'
 import useDaemonBrokenListener from '@/features/chatgpt/hooks/useDaemonBrokenListener'
+import {
+  listenChatGPTFileUploadChange,
+  pingChatGPTFileUploadServer,
+  startMockChatGPTUploadFile,
+} from '@/pages/chatgpt/fileUploadContentScriptHelper'
 
 const APP_NAME = String(process.env.APP_NAME)
 
@@ -201,6 +206,15 @@ const useDaemonProcess = () => {
             document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
           }
         })
+      const stopFileUploadListen = listenChatGPTFileUploadChange((files) => {
+        console.log('chatGPTUploadFileChangeListener', files)
+        clientPort.postMessage({
+          event: 'Client_chatUploadFilesChange',
+          data: {
+            files,
+          },
+        }) // 通知background
+      })
       const listener = async (msg: any) => {
         const { event, data } = msg
         if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
@@ -290,6 +304,7 @@ const useDaemonProcess = () => {
                     )
                     await conversation.generateAnswer(
                       {
+                        meta: options.meta,
                         messageId,
                         parentMessageId,
                         prompt: questionText,
@@ -395,6 +410,27 @@ const useDaemonProcess = () => {
                   }
                 }
                 break
+              case 'OpenAIDaemonProcess_pingFilesUpload':
+                {
+                  const success = await pingChatGPTFileUploadServer()
+                  return {
+                    success,
+                    data: {},
+                    message: 'ok',
+                  }
+                }
+                break
+              case 'OpenAIDaemonProcess_filesUpload':
+                {
+                  const { files } = data
+                  const success = await startMockChatGPTUploadFile(files)
+                  return {
+                    success,
+                    data: {},
+                    message: 'ok',
+                  }
+                }
+                break
               default:
                 break
             }
@@ -408,6 +444,7 @@ const useDaemonProcess = () => {
         })
       }
       return () => {
+        stopFileUploadListen()
         Browser.runtime.onMessage.removeListener(listener)
       }
     }

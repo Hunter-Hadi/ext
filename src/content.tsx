@@ -21,7 +21,8 @@ ClassNameGenerator.configure(
 )
 if (location.host === 'chat.openai.com') {
   const script = document.createElement('script')
-  script.src = Browser.runtime.getURL('/pages/chatgpt/codeInterpreter.js')
+  script.type = 'module'
+  script.src = Browser.runtime.getURL('/pages/chatgpt/fileUploadServer.js')
   ;(document.head || document.documentElement).append(script)
   import('./pages/OpenAIDaemonProcess').then((module) => {
     const { default: OpenAIDaemonProcess } = module

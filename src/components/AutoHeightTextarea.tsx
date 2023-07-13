@@ -359,7 +359,7 @@ const AutoHeightTextarea: FC<{
         }}
       >
         {expandNode && (
-          <Stack py={1} pl={1}>
+          <Stack className={'max-ai-user-input__expand'} py={1} pl={1}>
             {expandNode}
           </Stack>
         )}

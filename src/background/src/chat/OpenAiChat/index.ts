@@ -14,6 +14,7 @@ import {
 import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import BaseChat from '@/background/src/chat/BaseChat'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 const log = new Log('ChatGPT/OpenAIChat')
 
@@ -245,6 +246,28 @@ class OpenAIChat extends BaseChat {
     if (!this.isAnswering) {
       this.questionSender = sender
       this.isAnswering = true
+      const settings = await getChromeExtensionSettings()
+      if (settings.currentModel === 'gpt-4-code-interpreter') {
+        const successFile = this.chatFiles.find(
+          (file) => file.uploadStatus === 'success',
+        )
+        if (successFile && successFile.uploadedUrl) {
+          if (!options.meta) {
+            options.meta = {}
+          }
+          options.meta.attachments = [
+            {
+              name: successFile.fileName,
+              url: successFile.uploadedUrl,
+            },
+          ]
+          this.chatFiles = []
+          console.log('Client_chatUploadFilesChange', this.chatFiles)
+          backgroundSendAllClientMessage('Client_listenUploadFilesChange', {
+            files: this.chatFiles,
+          })
+        }
+      }
       await this.sendDaemonProcessTask(
         'OpenAIDaemonProcess_askChatGPTQuestion',
         {
@@ -437,6 +460,61 @@ class OpenAIChat extends BaseChat {
         state: 'minimized',
       })
     }
+  }
+  async uploadFiles(files: IChatUploadFile[]) {
+    this.chatFiles = files
+    // 这里主要有几个步骤，因为chatgpt的上传文件走的是arkose
+    // 1. 确保/pages/chatgpt/codeinterpreter.js被注入到页面中，且页面是codeInterpreter页面
+    // 2. 发送文件上传请求
+    const result = await this.sendDaemonProcessTask(
+      'OpenAIDaemonProcess_pingFilesUpload',
+      {},
+    )
+    if (!result.success) {
+      this.chatFiles = this.chatFiles.map((file) => {
+        file.uploadStatus = 'error'
+        file.uploadErrorMessage = 'please open the code_interpreter page.'
+        return file
+      })
+      const processTabId = this.chatGPTProxyInstance?.id
+      if (processTabId) {
+        // 说明ping失败了，需要重新打开一个code_interpreter页面
+        const settings = await getChromeExtensionSettings()
+        if (
+          settings.models?.find(
+            (model) => model.slug === 'gpt-4-code-interpreter',
+          )
+        ) {
+          // 说明用户有权限
+          Browser.tabs.get(processTabId).then((tab) => {
+            if (tab) {
+              Browser.tabs.update(tab.id, {
+                url: 'https://chat.openai.com/?model=gpt-4-code-interpreter',
+              })
+            }
+          })
+        } else {
+          // 说明用户没有权限
+          Browser.tabs.get(processTabId).then((tab) => {
+            if (tab) {
+              Browser.tabs.update(tab.id, {
+                url: 'https://chat.openai.com/?model=gpt-4',
+              })
+            }
+          })
+        }
+      }
+      return
+    }
+    this.chatFiles = this.chatFiles.map((file) => {
+      file.uploadStatus = 'uploading'
+      return file
+    })
+    // 说明ping成功了，且当前页面在code_interpreter页面
+    // 发送文件上传请求
+    await this.sendDaemonProcessTask('OpenAIDaemonProcess_filesUpload', {
+      files,
+    })
   }
 }
 

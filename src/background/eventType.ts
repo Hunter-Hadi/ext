@@ -11,6 +11,7 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_updateSettingsResponse'
   | 'Client_updateAppSettings'
   | 'Client_listenUpdateIframeInput'
+  | 'Client_listenUploadFilesChange'
 
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
@@ -33,10 +34,12 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_updateIframeInput'
   | 'Client_restartApp'
   | 'Client_logCallApiRequest'
-  | 'Client_chatUploadFile'
-  | 'Client_chatRemoveFile'
+  // 上传文件相关
+  | 'Client_chatUploadFiles'
+  | 'Client_chatUploadFilesChange'
+  | 'Client_chatRemoveFiles'
   | 'Client_chatClearFiles'
-  | 'Client_chatAbortUploadFile'
+  | 'Client_chatAbortUploadFiles'
   | 'Client_chatGetFiles'
 
 // chat.openai.com(daemon process) 监听task event
@@ -47,6 +50,9 @@ export type IOpenAIChatListenTaskEvent =
   | 'OpenAIDaemonProcess_askChatGPTQuestion'
   | 'OpenAIDaemonProcess_abortAskChatGPTQuestion'
   | 'OpenAIDaemonProcess_compileTemplate'
+  | 'OpenAIDaemonProcess_pingFilesUpload'
+  | 'OpenAIDaemonProcess_filesUpload'
+
 // chat.openai.com(daemon process) 发送event
 export type IOpenAIChatSendEvent =
   | 'OpenAIDaemonProcess_daemonProcessExist'
@@ -55,6 +61,8 @@ export type IOpenAIChatSendEvent =
   | 'OpenAIDaemonProcess_pong'
   | 'OpenAIDaemonProcess_daemonProcessSessionExpired'
   | 'Client_destroyWithLogout'
+  | 'OpenAIDaemonProcess_pongFilesUpload'
+  | 'OpenAIDaemonProcess_filesUploadResponse'
 
 // chrome extension 监听event
 export type IChromeExtensionListenEvent =

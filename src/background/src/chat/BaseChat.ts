@@ -40,15 +40,17 @@ class BaseChat {
     }
     return true
   }
-  async uploadFile(file: IChatUploadFile) {
-    file.uploadStatus = 'success'
-    file.uploadProgress = 100
-    this.chatFiles.push(file)
+  async uploadFiles(files: IChatUploadFile[]) {
+    files.map((file) => {
+      file.uploadStatus = 'success'
+      file.uploadProgress = 100
+      this.chatFiles.push(file)
+    })
   }
-  async abortUploadFile(fileId: string) {
+  async abortUploadFiles(fileIds: string[]) {
     let isAbort = false
     this.chatFiles = this.chatFiles.filter((file) => {
-      if (file.id === fileId) {
+      if (fileIds.includes(file.id)) {
         isAbort = true
         return false
       }
@@ -56,10 +58,10 @@ class BaseChat {
     })
     return isAbort
   }
-  async removeFile(fileId: string) {
+  async removeFiles(fileIds: string[]) {
     let isRemove = false
     this.chatFiles = this.chatFiles.filter((file) => {
-      if (file.id === fileId) {
+      if (fileIds.includes(file.id)) {
         isRemove = true
         return false
       }
@@ -69,6 +71,17 @@ class BaseChat {
   }
   async getFiles() {
     return this.chatFiles
+  }
+  async updateFiles(updateFiles: IChatUploadFile[]) {
+    this.chatFiles = this.chatFiles.map((file) => {
+      const updateFile = updateFiles.find(
+        (updateFile) => updateFile.id === file.id,
+      )
+      if (updateFile) {
+        return updateFile
+      }
+      return file
+    })
   }
   async clearFiles() {
     this.chatFiles = []

@@ -145,6 +145,19 @@ const GmailChatBoxMessageItem: FC<{
           lineHeight: 1.4,
         },
       }}
+      onCopy={(event) => {
+        // save plain text to clipboard
+        event.preventDefault()
+        event.stopPropagation()
+        // get plain text
+        const currentSelection = window.getSelection()
+        if (currentSelection && currentSelection.toString().trim()) {
+          const plainText = currentSelection.toString().trim()
+          if (plainText) {
+            navigator.clipboard.writeText(plainText)
+          }
+        }
+      }}
       onMouseEnter={() => {
         if (hoverTimer.current) {
           clearTimeout(hoverTimer.current)

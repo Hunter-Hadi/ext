@@ -38,15 +38,12 @@ const autoSizeTextarea = (
     const scrollHeight = textareaElement.value
       ? textareaElement.scrollHeight
       : LINE_HEIGHT
-    let height = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
-    height = Math.max(childrenHeight, height)
-    let paddingHeight = childrenHeight
-    if (childrenHeight > 0) {
-      // padding height
-      paddingHeight += 16
-    }
-    boxElement.style.cssText = `height: ${height + paddingHeight}px`
-    textareaElement.style.cssText = `height: ${height}px`
+    let textAreaHeight = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
+    const minTextAreaHeight = LINE_HEIGHT + (childrenHeight > 0 ? 16 : 0)
+    textAreaHeight = Math.max(minTextAreaHeight, textAreaHeight)
+    textareaElement.style.cssText = `height: ${textAreaHeight}px`
+    const boxHeight = textAreaHeight + childrenHeight
+    boxElement.style.cssText = `height: ${boxHeight}px`
   }
 }
 
@@ -70,7 +67,6 @@ const focusTextareaAndAutoSize = (
     // textareaElement.value = ''
     // textareaElement.value = value
     // console.log('focusTextareaAndAutoSize', findIndex)
-    // debugger
     // console.log('textareaElement', textareaElement.scrollHeight)
     textareaElement.focus()
     textareaElement.setSelectionRange(value.length, value.length)
@@ -359,7 +355,12 @@ const AutoHeightTextarea: FC<{
         }}
       >
         {expandNode && (
-          <Stack className={'max-ai-user-input__expand'} py={1} pl={1}>
+          <Stack
+            className={'max-ai-user-input__expand'}
+            sx={{
+              '&:has(> div)': { py: 1, pl: 1 },
+            }}
+          >
             {expandNode}
           </Stack>
         )}

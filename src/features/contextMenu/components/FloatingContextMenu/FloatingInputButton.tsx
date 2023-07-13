@@ -5,6 +5,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { getCurrentDomainHost } from '@/utils'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const NO_SUPPORT_HOST = ['teams.live.com']
 
@@ -57,20 +58,22 @@ const FloatingInputButton: FC<{
     )
   }
   return (
-    <Button
-      startIcon={
+    <TextOnlyTooltip placement={'top'} title={'Use prompt'}>
+      <Button
+        sx={{
+          minWidth: 'unset',
+        }}
+        variant={'outlined'}
+        onClick={handleClick}
+      >
         <UseChatGptIcon
           sx={{
-            fontSize: 16,
+            fontSize: 24,
             color: 'inherit',
           }}
         />
-      }
-      variant={'outlined'}
-      onClick={handleClick}
-    >
-      {buttonText || 'Use ChatGPT'}
-    </Button>
+      </Button>
+    </TextOnlyTooltip>
   )
 }
 export { FloatingInputButton }

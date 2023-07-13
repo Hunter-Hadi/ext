@@ -380,7 +380,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
           </Box>
           <AutoHeightTextarea
             sx={{
-              minHeight: 121,
+              minHeight: 84.5,
             }}
             stopPropagation
             loading={loading}

@@ -24,7 +24,6 @@ import {
   getDraftContextMenuTypeById,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
@@ -66,6 +65,8 @@ import {
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import SendIcon from '@mui/icons-material/Send'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -676,50 +677,50 @@ const FloatingContextMenu: FC<{
                   )}
                   {!loading && (
                     <>
-                      <IconButton
-                        sx={{
-                          height: '20px',
-                          width: '20px',
-                          position: 'relative',
-                          top: '-1px',
-                          flexShrink: 0,
-                          alignSelf: 'end',
-                          alignItems: 'center',
-                          p: 0,
-                          m: '4px',
-                          cursor: haveDraft ? 'pointer' : 'default',
-                          bgcolor: haveDraft
-                            ? 'primary.main'
-                            : 'rgb(219,219,217)',
-                          '&:hover': {
+                      <TextOnlyTooltip
+                        floatingMenuTooltip
+                        title={'Send to AI'}
+                        placement={safePlacement.contextMenuPlacement}
+                      >
+                        <IconButton
+                          sx={{
+                            height: '24px',
+                            width: '24px',
+                            borderRadius: '4px',
+                            flexShrink: 0,
+                            alignSelf: 'end',
+                            alignItems: 'center',
+                            p: 0,
+                            m: 0,
+                            cursor: haveDraft ? 'pointer' : 'default',
                             bgcolor: haveDraft
                               ? 'primary.main'
                               : 'rgb(219,219,217)',
-                          },
-                        }}
-                        onClick={() => {
-                          if (!haveContext && contextMenuList.length > 0) {
-                            updateFloatingDropdownMenuSelectedItem(
-                              (preState) => {
-                                return {
-                                  ...preState,
-                                  selectedContextMenuId:
-                                    preState.lastHoverContextMenuId,
-                                }
-                              },
-                            )
-                            return
-                          }
-                          askChatGPT(inputValue)
-                        }}
-                      >
-                        <ArrowUpwardIcon
-                          sx={{
-                            color: '#fff',
-                            fontSize: 16,
+                            '&:hover': {
+                              bgcolor: haveDraft
+                                ? 'primary.main'
+                                : 'rgb(219,219,217)',
+                            },
                           }}
-                        />
-                      </IconButton>
+                          onClick={() => {
+                            if (!haveContext && contextMenuList.length > 0) {
+                              updateFloatingDropdownMenuSelectedItem(
+                                (preState) => {
+                                  return {
+                                    ...preState,
+                                    selectedContextMenuId:
+                                      preState.lastHoverContextMenuId,
+                                  }
+                                },
+                              )
+                              return
+                            }
+                            askChatGPT(inputValue)
+                          }}
+                        >
+                          <SendIcon sx={{ color: '#fff', fontSize: 16 }} />
+                        </IconButton>
+                      </TextOnlyTooltip>
                       <FloatingContextMenuPopupSettingButton
                         sx={{ width: 24, height: 24, alignSelf: 'end' }}
                       />

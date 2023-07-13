@@ -6,12 +6,12 @@ import { getMediator } from '@/store/InputMediator'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail/store'
 import { getAppRootElement, numberWithCommas } from '@/utils'
-import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
 import { isEzMailApp, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+import TooltipButton from '@/components/TooltipButton'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
 // const MAX_GPT4_INPUT_LENGTH = 80000
@@ -60,6 +60,7 @@ const GmailChatBoxInputActions: FC<{
     <Stack
       ref={ref}
       p={1}
+      pt={0}
       direction={'row'}
       alignItems={'center'}
       spacing={1}
@@ -89,7 +90,6 @@ const GmailChatBoxInputActions: FC<{
         {/*</DevContent>*/}
         {!isEzMailApp && !conversation.loading && (
           <FloatingInputButton
-            buttonText={'Use prompt'}
             onBeforeShowContextMenu={() => {
               return {
                 template: inputValue || ' ',
@@ -101,13 +101,12 @@ const GmailChatBoxInputActions: FC<{
             }}
           />
         )}
-        <Button
+        <TooltipButton
+          title={'Send to AI'}
+          sx={{ minWidth: 'unset' }}
           disableElevation
           variant={'contained'}
           disabled={conversation.loading}
-          startIcon={
-            conversation.loading ? <CircularProgress size={16} /> : <SendIcon />
-          }
           onClick={() => {
             onSendMessage &&
               onSendMessage(inputValue, {
@@ -118,8 +117,8 @@ const GmailChatBoxInputActions: FC<{
             nextMessageIsActionRef.current = false
           }}
         >
-          {conversation.loading ? 'Generating' : 'Generate'}
-        </Button>
+          {conversation.loading ? <CircularProgress size={24} /> : <SendIcon />}
+        </TooltipButton>
       </Box>
     </Stack>
   )

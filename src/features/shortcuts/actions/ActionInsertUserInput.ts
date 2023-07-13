@@ -69,7 +69,7 @@ export class ActionInsertUserInput extends Action {
             AskChatGPTMetaData,
           )
           // focus on input
-          autoFocusWithAllWebsite(chatBoxInput, 52.5)
+          autoFocusWithAllWebsite(chatBoxInput, 44.5)
         }
       }
       // chatBoxInput不一定存在，FloatingMenu因为会进入到loading状态

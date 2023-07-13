@@ -166,7 +166,7 @@ const ContextMenuItem = (props: {
             }}
           >
             <TooltipIconButton
-              tooltipProps={{
+              TooltipProps={{
                 placement: 'left',
                 arrow: true,
               }}

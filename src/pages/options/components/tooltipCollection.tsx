@@ -109,7 +109,7 @@ const TemplateTooltip = () => {
       >
         <Box maxWidth={'60vw'} maxHeight={420} overflow="auto" p={1}>
           <Typography variant="body2">
-            The prompt template for ChatGPT.
+            The prompt template.
             <br />
             <br />
             The template can include any number of the following pre-defined

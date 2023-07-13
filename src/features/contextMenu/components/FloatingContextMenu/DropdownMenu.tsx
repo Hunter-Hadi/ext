@@ -33,7 +33,10 @@ import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
 } from '@/features/contextMenu/store'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import {
+  ContextMenuIcon,
+  IContextMenuIconKey,
+} from '@/components/ContextMenuIcon'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import { useRecoilValue, useRecoilState } from 'recoil'
@@ -43,8 +46,9 @@ import Stack from '@mui/material/Stack'
 
 interface LiteDropdownMenuItemProps {
   label?: string
-  icon?: string
+  icon?: IContextMenuIconKey | string
   CustomRenderNode?: React.ReactNode
+  isGroup?: boolean
   onClick?: (event: React.MouseEvent) => void
 }
 
@@ -58,7 +62,7 @@ interface MenuItemProps {
 export const LiteDropdownMenuItem = React.forwardRef<
   any,
   LiteDropdownMenuItemProps
->(({ label, icon, CustomRenderNode, onClick, ...props }, ref) => {
+>(({ label, icon, CustomRenderNode, onClick, isGroup, ...props }, ref) => {
   const floatingUiProps: any = props
   return (
     <Box
@@ -107,13 +111,11 @@ export const LiteDropdownMenuItem = React.forwardRef<
       <Box>
         {CustomRenderNode || (
           <Stack direction={'row'} spacing={1} px={1} alignItems={'center'}>
-            {icon && (
-              <ContextMenuIcon
-                size={16}
-                icon={icon}
-                sx={{ color: 'primary.main', flexShrink: 0 }}
-              />
-            )}
+            <ContextMenuIcon
+              size={16}
+              icon={icon || 'Empty'}
+              sx={{ color: 'primary.main', flexShrink: 0 }}
+            />
             <Typography
               fontSize={14}
               textAlign={'left'}
@@ -125,6 +127,20 @@ export const LiteDropdownMenuItem = React.forwardRef<
             >
               {label}
             </Typography>
+            {isGroup && (
+              <KeyboardArrowRightIcon
+                sx={{
+                  ml: 'auto',
+                  mr: 0,
+                  flexShrink: 0,
+                  color: (t) =>
+                    t.palette.mode === 'dark'
+                      ? '#ffffff85'
+                      : 'rgba(55, 53, 47, 0.45)',
+                  fontSize: 16,
+                }}
+              />
+            )}
           </Stack>
         )}
       </Box>

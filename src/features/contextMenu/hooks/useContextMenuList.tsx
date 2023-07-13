@@ -7,23 +7,33 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 
 const useContextMenuList = (
-  buttonKey: IChromeExtensionButtonSettingKey,
+  buttonSettingKey: IChromeExtensionButtonSettingKey,
   query?: string,
 ) => {
-  const buttonSettings = useComputedChromeExtensionButtonSettings(buttonKey)
+  const buttonSettings =
+    useComputedChromeExtensionButtonSettings(buttonSettingKey)
+  const { favoriteContextMenuGroup } =
+    useFavoriteContextMenuList(buttonSettingKey)
   const originContextMenuListRef = useRef<IContextMenuItem[]>([])
   const groupByContextMenuList = useMemo(() => {
     const originContextMenuList = buttonSettings?.contextMenu || []
     originContextMenuListRef.current = originContextMenuList
-    return groupByContextMenuItem(cloneDeep(originContextMenuList))
-  }, [buttonSettings])
+    const groupByContextMenuList = groupByContextMenuItem(
+      cloneDeep(originContextMenuList),
+    )
+    if (favoriteContextMenuGroup) {
+      groupByContextMenuList.unshift(favoriteContextMenuGroup)
+    }
+    return groupByContextMenuList
+  }, [buttonSettings, favoriteContextMenuGroup])
   const contextMenuList = useMemo(() => {
     if (query?.trim()) {
       return fuzzySearchContextMenuList(originContextMenuListRef.current, query)
     }
-    if (buttonKey === 'gmailButton') {
+    if (buttonSettingKey === 'gmailButton') {
       return groupByContextMenuList.map((group, index) => {
         if (index === 0) {
           // gmail只有一个group
@@ -34,7 +44,7 @@ const useContextMenuList = (
       })
     }
     return groupByContextMenuList
-  }, [groupByContextMenuList, buttonKey, query])
+  }, [groupByContextMenuList, buttonSettingKey, query])
   return {
     contextMenuList,
     originContextMenuList: buttonSettings?.contextMenu || [],

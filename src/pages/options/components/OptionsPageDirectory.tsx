@@ -57,11 +57,17 @@ const OptionsPageDirectory: React.FC<Props> = ({ containerId }) => {
         ) as HTMLDivElement
         const headings = Array.from(
           document.querySelectorAll(`#${containerId} h1, #${containerId} h2`),
-        ).map((heading) => ({
-          id: heading.id,
-          text:
-            heading.childNodes?.[0]?.textContent || heading.textContent || '',
-        }))
+        ).map((heading) => {
+          let text =
+            heading.childNodes?.[0]?.textContent || heading.textContent || ''
+          if (text === 'Mini menu on text selection') {
+            text = 'Mini menu'
+          }
+          return {
+            id: heading.id,
+            text,
+          }
+        })
         setHeadings(headings)
         times--
       } else {

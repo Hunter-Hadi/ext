@@ -5,6 +5,7 @@ import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import cheerio from 'cheerio'
+import { v4 as uuidV4 } from 'uuid'
 
 export interface SearchResult {
   title: string
@@ -43,8 +44,12 @@ export class ActionGetContentsOfSearchEngine extends Action {
       if (query && backgroundConversation) {
         this.pushMessageToChat(
           {
-            type: 'third',
+            type: 'system',
             text: `MaxAI.me extension is crawling this page: ${query}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
+            messageId: uuidV4(),
+            extra: {
+              status: 'info',
+            },
           },
           engine,
         )

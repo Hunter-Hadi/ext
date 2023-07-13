@@ -12,20 +12,18 @@ import {
 } from '@/features/contextMenu/utils'
 import {
   ContextMenuSettingsState,
+  FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
-import {
-  FloatingContextMenuPopupSettingButton,
-  FloatingContextMenuTemporaryIconButton,
-} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import { FloatingContextMenuMiniMenuMoreButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
 import { isProduction } from '@/constants'
 import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
-import Typography from '@mui/material/Typography'
+import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -34,10 +32,18 @@ const ClickContextMenuButton: FC<{
   const { shortCutKey } = useCommands()
   const textSelectPopupButtonSettings =
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
+  const updateSelectedId = useSetRecoilState(
+    FloatingDropdownMenuSelectedItemState,
+  )
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const memoShow = useMemo(() => {
+    console.log(
+      show,
+      textSelectPopupButtonSettings?.buttonVisible,
+      'textSelectPopupButtonSettings',
+    )
     return (
       show &&
       textSelectPopupButtonSettings?.buttonVisible &&
@@ -152,7 +158,7 @@ const ClickContextMenuButton: FC<{
         direction={'row'}
         alignItems={'center'}
         sx={{
-          '& > button,div': {
+          '& > button, > div': {
             '&:not(:last-child)': {
               marginRight: '1px',
               borderRadius: '4px 0 0 4px',
@@ -171,12 +177,20 @@ const ClickContextMenuButton: FC<{
         }}
       >
         <TooltipButton
-          tooltipProps={{ floatingMenuTooltip: true, placement }}
-          title={shortCutKey || ''}
+          TooltipProps={{
+            floatingMenuTooltip: true,
+            placement,
+            description: shortCutKey,
+            sx: {
+              maxWidth: 360,
+            },
+          }}
+          title={'Ask AI to edit, summarize, explain, or generate text'}
           className={'usechatgpt-ai__context-menu--handle-button'}
           size={'small'}
           variant={'text'}
           sx={{
+            minWidth: 'unset',
             px: '8px!important',
             height: 32,
             color: 'inherit',
@@ -197,22 +211,27 @@ const ClickContextMenuButton: FC<{
         >
           <UseChatGptIcon
             sx={{
-              pr: 1,
-              fontSize: 16,
+              fontSize: '16px',
               // color: 'inherit',
             }}
           />
-          <Typography
-            component={'span'}
-            fontSize={14}
-            fontWeight={600}
-            sx={{ color: 'primary.main' }}
-          >
-            {'Ask AI'}
-          </Typography>
         </TooltipButton>
-        <FloatingContextMenuPopupSettingButton useInButton />
-        <FloatingContextMenuTemporaryIconButton placement={placement} />
+        <FavoriteContextMenuGroup
+          placement={placement}
+          buttonSettingKey={'textSelectPopupButton'}
+          onClick={(favoriteContextMenu) => {
+            tempSelection && showFloatingContextMenu()
+            setTimeout(() => {
+              updateSelectedId((prevState) => {
+                return {
+                  ...prevState,
+                  selectedContextMenuId: favoriteContextMenu.id,
+                }
+              })
+            }, 100)
+          }}
+        />
+        <FloatingContextMenuMiniMenuMoreButton placement={placement} />
       </Stack>
     </Paper>
   )

@@ -16,11 +16,12 @@ import {
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
+  IThirdChatMessage,
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROMPT_PREFIX } from '@/constants'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
 import { getCurrentDomainHost } from '@/utils'
 import { getDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import dayjs from 'dayjs'
@@ -196,7 +197,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           parentMessageId: currentMessageId,
           text: `You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${formatTimeStampToHoursAndMinutes(
             next_reset_timestamp,
-          )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)`,
+          )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)\n\nIf you've already upgraded, reload the [My Plan](${APP_USE_CHAT_GPT_HOST}/my-plan) page to activate your membership.`,
           extra: {
             status: 'error',
             systemMessageType: 'dailyUsageLimited',
@@ -422,22 +423,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       log.info('stopGenerateMessage', result)
     }
   }
-  const pushMessage = (
-    type: 'system' | 'third',
-    text: string,
-    status?: 'success' | 'error',
-  ) => {
+  const pushMessage = (newMessage: ISystemChatMessage | IThirdChatMessage) => {
     setMessages((prevState) => {
-      return [
-        ...prevState,
-        {
-          type,
-          status,
-          messageId: uuidV4(),
-          parentMessageId: '',
-          text,
-        },
-      ]
+      return [...prevState, newMessage]
     })
   }
   const updateChatInputValue = (value: string) => {

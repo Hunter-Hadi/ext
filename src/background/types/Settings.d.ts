@@ -93,7 +93,10 @@ export interface IChromeExtensionSettings {
     chatBoxWidth?: number
     colorSchema?: 'light' | 'dark'
     language?: string
-    selectionButtonVisible?: boolean
+    /**
+     * @deprecated
+     */
+    // selectionButtonVisible?: boolean
     chatGPTStableModeDuration?: number
     pdf?: {
       enabled?: boolean

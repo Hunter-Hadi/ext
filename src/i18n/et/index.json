@@ -1,5 +1,5 @@
 {
-  "description": "Kiireim viis kasutada ChatGPT-d (GPT-4 ja lisandmoodulid), Bard, Bing AI ja Claude'i kõikjal veebis. Sinu AI-toega kaassõitja veebis.",
-  "name": "MaxAI.me: ChatGPT AI Copilot (UseChatGPT.AI)",
+  "description": "Kiireim viis kasutada ChatGPT, Bard, Bing, Claude'it kõikjal veebis. Toetab GPT-4, koodi tõlk, veebilehitseja, pistikprogramme.",
+  "name": "MaxAI.me: Kasutage ChatGPT AI-d veebis kõikjal",
   "shortName": "MaxAI.me"
 }

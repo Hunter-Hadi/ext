@@ -12,10 +12,10 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import React, { FC } from 'react'
-import Tooltip from '@mui/material/Tooltip'
 import useCommands from '@/hooks/useCommands'
 import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const ChatBoxHeader: FC = () => {
   const { shortCutKey } = useCommands()
@@ -49,7 +49,7 @@ const ChatBoxHeader: FC = () => {
           }
           target={'_blank'}
         >
-          <Tooltip title={'My account'}>
+          <TextOnlyTooltip title={'My account'}>
             <Stack
               direction={'row'}
               alignItems={'center'}
@@ -75,7 +75,7 @@ const ChatBoxHeader: FC = () => {
                 {String(process.env.APP_NAME)}
               </Typography>
             </Stack>
-          </Tooltip>
+          </TextOnlyTooltip>
         </Link>
         <AuthUserRoleIconDropdown />
       </Stack>
@@ -87,18 +87,18 @@ const ChatBoxHeader: FC = () => {
         alignItems={'center'}
       >
         <ChatGPTAIProviderMiniSelector />
-        <IconButton
-          sx={{ flexShrink: 0 }}
-          onClick={() => {
-            chromeExtensionClientOpenPage({
-              key: 'options',
-            })
-          }}
-        >
-          <Tooltip title="Settings">
+        <TextOnlyTooltip title="Settings">
+          <IconButton
+            sx={{ flexShrink: 0 }}
+            onClick={() => {
+              chromeExtensionClientOpenPage({
+                key: 'options',
+              })
+            }}
+          >
             <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
-          </Tooltip>
-        </IconButton>
+          </IconButton>
+        </TextOnlyTooltip>
         {!isEzMailApp && !shortCutKey && (
           <Typography fontSize={12}>
             <Link
@@ -115,20 +115,20 @@ const ChatBoxHeader: FC = () => {
             </Link>
           </Typography>
         )}
-
-        <IconButton
-          sx={{ flexShrink: 0 }}
-          onClick={() => {
-            hideChatBox()
-          }}
+        <TextOnlyTooltip
+          placement={'bottom'}
+          title={'Close sidebar'}
+          description={shortCutKey}
         >
-          <Tooltip
-            placement={'bottom'}
-            title={shortCutKey ? `Shortcut: ${shortCutKey}` : ``}
+          <IconButton
+            sx={{ flexShrink: 0 }}
+            onClick={() => {
+              hideChatBox()
+            }}
           >
             <CloseIcon sx={{ fontSize: '24px' }} />
-          </Tooltip>
-        </IconButton>
+          </IconButton>
+        </TextOnlyTooltip>
       </Stack>
     </Stack>
   )

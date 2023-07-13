@@ -8,34 +8,74 @@ import {
 } from './types'
 import { convertMessageToMarkdown, websocketUtils } from './utils'
 import WebSocketAsPromised from 'websocket-as-promised'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 
 const styleOptionMap: Record<BingConversationStyle, string> = {
-  [BingConversationStyle.Balanced]: 'harmonyv3',
+  [BingConversationStyle.Balanced]: '',
   [BingConversationStyle.Creative]: 'h3imaginative',
   [BingConversationStyle.Precise]: 'h3precise',
 }
+
+const OPTIONS_SETS = [
+  'nlu_direct_response_filter',
+  'deepleo',
+  'disable_emoji_spoken_text',
+  'responsible_ai_policy_235',
+  'enablemm',
+  'iycapbing',
+  'iyxapbing',
+  'objopinion',
+  'rweasgv2',
+  'dagslnv1',
+  'dv3sugg',
+  'autosave',
+  'iyoloxap',
+  'iyoloneutral',
+  'clgalileo',
+  'gencontentv3',
+]
 
 export class BingWebBot {
   private conversationContext?: ConversationInfo
 
   private buildChatRequest(conversation: ConversationInfo, message: string) {
     const styleOption = styleOptionMap[conversation.conversationStyle]
+    const optionsSets = OPTIONS_SETS.concat(styleOption || [])
     return {
       arguments: [
         {
           source: 'cib',
-          optionsSets: [
-            'deepleo',
-            'nlu_direct_response_filter',
-            'disable_emoji_spoken_text',
-            'responsible_ai_policy_235',
-            'enablemm',
-            'dtappid',
-            'rai253',
-            'dv3sugg',
-            styleOption,
+          optionsSets,
+          allowedMessageTypes: [
+            'Chat',
+            'InternalSearchQuery',
+            'Disengaged',
+            'InternalLoaderMessage',
+            'SemanticSerp',
+            'GenerateContentQuery',
+            'SearchQuery',
           ],
-          allowedMessageTypes: ['Chat', 'InternalSearchQuery'],
+          sliceIds: [
+            'winmuid1tf',
+            'anssupfor_c',
+            'imgchatgptv2',
+            'tts2cf',
+            'contansperf',
+            'mlchatpc8500w',
+            'mlchatpc2',
+            'ctrlworkpay',
+            'winshortmsgtf',
+            'cibctrl',
+            'sydtransctrl',
+            'sydconfigoptc',
+            '0705trt4',
+            '517opinion',
+            '628ajcopus0',
+            '330uaugs0',
+            '529rwea',
+            '0626snptrcs0',
+            '424dagslnv1',
+          ],
           isStartOfSession: conversation.invocationId === 0,
           message: {
             author: 'user',
@@ -58,13 +98,14 @@ export class BingWebBot {
     if (!this.conversationContext) {
       try {
         const conversation = await createConversation()
-        const bingConversationStyle = BingConversationStyle.Balanced
+        const bingSettings = await getThirdProviderSettings('BING')
         this.conversationContext = {
           conversationId: conversation.conversationId,
           conversationSignature: conversation.conversationSignature,
           clientId: conversation.clientId,
           invocationId: 0,
-          conversationStyle: bingConversationStyle,
+          conversationStyle:
+            bingSettings?.conversationStyle || BingConversationStyle.Balanced,
         }
       } catch (e) {
         params.onEvent({
@@ -101,7 +142,8 @@ export class BingWebBot {
           wsp.removeAllListeners()
           wsp.close()
         } else if (event.type === 1) {
-          const text = convertMessageToMarkdown(event.arguments[0]?.messages[0])
+          const message = event.arguments[0]?.messages?.[0]
+          const text = message ? convertMessageToMarkdown(message) : ''
           if (text) {
             params.onEvent({
               type: 'UPDATE_ANSWER',

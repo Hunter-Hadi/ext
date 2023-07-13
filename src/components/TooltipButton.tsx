@@ -3,12 +3,13 @@ import React, { FC } from 'react'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
-interface ITooltipButton extends ButtonProps {
-  title: string
-  tooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
+
+interface ITooltipButton extends Omit<ButtonProps, 'title'> {
+  title: React.ReactNode | string
+  TooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
 }
 const TooltipButton: FC<ITooltipButton> = (props) => {
-  const { title, tooltipProps, ...iconButtonProps } = props
+  const { title, TooltipProps, ...iconButtonProps } = props
   return (
     <TextOnlyTooltip
       placement={'top'}
@@ -16,12 +17,9 @@ const TooltipButton: FC<ITooltipButton> = (props) => {
       PopperProps={{
         sx: {
           zIndex: 9999999,
-          '& > div': {
-            fontSize: '12px',
-          },
         },
       }}
-      {...tooltipProps}
+      {...TooltipProps}
     >
       <div>
         <Button {...iconButtonProps} />

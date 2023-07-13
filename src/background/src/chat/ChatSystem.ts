@@ -1,11 +1,12 @@
 import {
   ChatAdapter,
   ChatAdapterInterface,
-  ChatInterface,
+  ChatSystemInterface,
   ChatStatus,
   IChatGPTProviderType,
 } from '@/background/provider/chat'
 import {
+  backgroundSendAllClientMessage,
   createBackgroundMessageListener,
   getChromeExtensionSettings,
   setChromeExtensionSettings,
@@ -18,10 +19,11 @@ import {
   CHAT_GPT_MESSAGES_RECOIL_KEY,
   CHROME_EXTENSION_HOMEPAGE_URL,
 } from '@/constants'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 const log = new Log('Background/Chat/ChatSystem')
 
-class ChatSystem implements ChatInterface {
+class ChatSystem implements ChatSystemInterface {
   currentProvider?: IChatGPTProviderType
   private adapters: {
     [key in IChatGPTProviderType]?: ChatAdapterInterface
@@ -39,6 +41,9 @@ class ChatSystem implements ChatInterface {
     return this.currentProvider
       ? this.adapters[this.currentProvider]
       : undefined
+  }
+  get chatFiles() {
+    return this.currentAdapter?.chatFiles || []
   }
   private initChatSystem() {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
@@ -100,6 +105,7 @@ class ChatSystem implements ChatInterface {
             {
               const { taskId, question, options } = data
               await this.sendQuestion(taskId, sender, question, options)
+              this.updateClientFiles()
             }
             break
           case 'Client_removeChatGPTConversation': {
@@ -130,6 +136,78 @@ class ChatSystem implements ChatInterface {
               message: '',
             }
           }
+          case 'Client_chatGetFiles':
+            {
+              return {
+                success: true,
+                data: this.chatFiles,
+                message: '',
+              }
+            }
+            break
+          case 'Client_chatUploadFiles':
+            {
+              const { files } = data
+              await this.uploadFiles(files)
+              this.updateClientFiles()
+              return {
+                success: true,
+                data: this.chatFiles,
+                message: '',
+              }
+            }
+            break
+          case 'Client_chatAbortUploadFiles':
+            {
+              const { files } = data
+              const success = await this.abortUploadFiles(
+                files.map((file: IChatUploadFile) => file.id),
+              )
+              this.updateClientFiles()
+              return {
+                success,
+                data: this.chatFiles,
+                message: '',
+              }
+            }
+            break
+          case 'Client_chatRemoveFiles':
+            {
+              const { files } = data
+              const success = await this.removeFiles(
+                files.map((file: IChatUploadFile) => file.id),
+              )
+              this.updateClientFiles()
+              return {
+                success,
+                data: this.chatFiles,
+                message: '',
+              }
+            }
+            break
+          case 'Client_chatClearFiles':
+            {
+              const success = await this.clearFiles()
+              this.updateClientFiles()
+              return {
+                success,
+                data: this.chatFiles,
+                message: '',
+              }
+            }
+            break
+          case 'Client_chatUploadFilesChange':
+            {
+              const { files } = data
+              await this.updateFiles(files)
+              await this.updateClientFiles()
+              return {
+                success: true,
+                data: {},
+                message: 'ok',
+              }
+            }
+            break
           default:
             break
         }
@@ -219,6 +297,46 @@ class ChatSystem implements ChatInterface {
       conversationId: '',
     })
     await this.currentAdapter?.destroy()
+    await this.currentAdapter?.clearFiles()
+  }
+  async uploadFiles(files: IChatUploadFile[]) {
+    if (!this.currentAdapter) {
+      return undefined
+    }
+    return await this.currentAdapter.uploadFiles(files)
+  }
+  async updateFiles(files: IChatUploadFile[]) {
+    if (!this.currentAdapter) {
+      return undefined
+    }
+    return await this.currentAdapter.updateFiles(files)
+  }
+  async abortUploadFiles(fileIds: string[]) {
+    if (!this.currentAdapter) {
+      return false
+    }
+    return await this.currentAdapter.abortUploadFiles(fileIds)
+  }
+  async removeFiles(fileIds: string[]) {
+    if (!this.currentAdapter) {
+      return false
+    }
+    return await this.currentAdapter.removeFiles(fileIds)
+  }
+  async getFiles() {
+    return this.chatFiles
+  }
+  async clearFiles() {
+    if (!this.currentAdapter) {
+      return false
+    }
+    return await this.currentAdapter.clearFiles()
+  }
+  async updateClientFiles() {
+    console.log('Client_chatUploadFilesChange', this.chatFiles)
+    backgroundSendAllClientMessage('Client_listenUploadFilesChange', {
+      files: this.chatFiles,
+    })
   }
 }
 export { ChatSystem }

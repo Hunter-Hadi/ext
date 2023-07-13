@@ -44,8 +44,11 @@ const VisibilitySettingCard: FC<{
   defaultValue: IVisibilitySetting
   onChange: (value: IVisibilitySetting) => void
   disabled?: boolean
+  onlyBlacklist?: boolean
+  onlyWhitelist?: boolean
 }> = (props) => {
-  const { defaultValue, onChange, disabled } = props
+  const { defaultValue, onChange, disabled, onlyWhitelist, onlyBlacklist } =
+    props
   const [visibilitySetting, setVisibilitySetting] =
     useState<IVisibilitySetting>(() => {
       return cloneDeep(defaultValue)
@@ -124,12 +127,16 @@ const VisibilitySettingCard: FC<{
               }}
               aria-label="Platform"
             >
-              <ToggleButton sx={{ width: 220 }} value="blackList">
-                Disable on selected websites
-              </ToggleButton>
-              <ToggleButton sx={{ width: 220 }} value="whiteList">
-                Enable on selected websites
-              </ToggleButton>
+              {!onlyWhitelist && (
+                <ToggleButton sx={{ width: 220 }} value="blackList">
+                  Disable on selected websites
+                </ToggleButton>
+              )}
+              {!onlyBlacklist && (
+                <ToggleButton sx={{ width: 220 }} value="whiteList">
+                  Enable on selected websites
+                </ToggleButton>
+              )}
             </ToggleButtonGroup>
           </VisibilitySettingCardItem>
           <VisibilitySettingCardItem label={'Selected websites'}>

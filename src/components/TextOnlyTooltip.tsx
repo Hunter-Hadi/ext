@@ -1,16 +1,23 @@
 import React, { FC } from 'react'
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
-import { getAppContextMenuElement } from '@/utils'
+import { getAppContextMenuElement, getAppRootElement } from '@/utils'
+import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
 
 export interface TextOnlyTooltipProps extends TooltipProps {
+  description?: React.ReactNode
   floatingMenuTooltip?: boolean
 }
 
 const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
+  title,
+  description,
   floatingMenuTooltip = false,
   ...props
 }) => {
-  const container = getAppContextMenuElement() || document.body
+  const container =
+    (floatingMenuTooltip ? getAppContextMenuElement() : getAppRootElement()) ||
+    document.body
   return (
     <Tooltip
       {...props}
@@ -18,37 +25,55 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
         container,
         ...props.PopperProps,
         style: {
-          ...(floatingMenuTooltip
-            ? {}
-            : {
-                backgroundColor: 'rgba(97, 97, 97, 0.92)',
-                borderRadius: '4px',
-                color: '#fff',
-                padding: '4px 8px',
-                fontSize: '12px',
-                margin: '2px',
-                fontWeight: 500,
-                wordWrap: 'break-word',
-              }),
           ...props.style,
           zIndex: 2147483620,
         },
         sx: {
           '&[data-popper-placement*="bottom"] > div': {
-            marginTop: '4px!important',
+            marginTop: props.arrow ? '12px!important' : '4px!important',
           },
           '&[data-popper-placement*="top"] > div': {
-            marginBottom: '4px!important',
+            marginBottom: props.arrow ? '12px!important' : '4px!important',
           },
           '&[data-popper-placement*="right"] > div': {
-            marginLeft: '4px!important',
+            marginLeft: props.arrow ? '12px!important' : '4px!important',
           },
           '&[data-popper-placement*="left"] > div': {
-            marginRight: '4px!important',
+            marginRight: props.arrow ? '12px!important' : '4px!important',
+          },
+          '& > div': {
+            fontWeight: 400,
+            color: 'rgba(255,255,255,0.87)',
+            fontSize: '14px',
+            maxWidth: (props as any)?.sx?.maxWidth || '300px',
           },
           ...props.PopperProps?.sx,
         },
       }}
+      title={
+        title ? (
+          <Stack>
+            <Typography
+              fontSize={'14px'}
+              textAlign={'left'}
+              color="rgba(255,255,255,.87)"
+            >
+              {title}
+            </Typography>
+            {description && (
+              <Typography
+                fontSize={'12px'}
+                textAlign={'left'}
+                color="rgba(255,255,255,.6)"
+              >
+                {description}
+              </Typography>
+            )}
+          </Stack>
+        ) : (
+          ''
+        )
+      }
     />
   )
 }

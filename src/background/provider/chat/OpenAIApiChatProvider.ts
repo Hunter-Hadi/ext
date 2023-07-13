@@ -7,6 +7,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class OpenAIApiChatProvider implements ChatAdapterInterface {
   private openAiApiChat: OpenAiApiChat
@@ -78,6 +79,27 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })
+  }
+  get chatFiles() {
+    return this.openAiApiChat.chatFiles
+  }
+  async uploadFiles(files: IChatUploadFile[]) {
+    return await this.openAiApiChat.uploadFiles(files)
+  }
+  async updateFiles(files: IChatUploadFile[]) {
+    return await this.openAiApiChat.updateFiles(files)
+  }
+  async removeFiles(fileIds: string[]) {
+    return await this.openAiApiChat.removeFiles(fileIds)
+  }
+  async getFiles() {
+    return await this.openAiApiChat.getFiles()
+  }
+  async abortUploadFiles(fileIds: string[]) {
+    return await this.openAiApiChat.abortUploadFiles(fileIds)
+  }
+  async clearFiles() {
+    return await this.openAiApiChat.clearFiles()
   }
 }
 export { OpenAIApiChatProvider }

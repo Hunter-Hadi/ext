@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import Button from '@mui/material/Button'
+import Button, { ButtonProps } from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import {
@@ -13,13 +13,14 @@ import { TooltipProps } from '@mui/material/Tooltip'
 const FloatingContextMenuTemporaryIconButton: FC<{
   sx?: SxProps
   placement?: TooltipProps['placement']
+  ButtonProps?: Partial<ButtonProps>
 }> = (props) => {
-  const { sx, placement } = props
+  const { sx, placement, ButtonProps } = props
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   return (
     <TextOnlyTooltip
-      title={'Hide until next visit'}
+      title={'Hide menu until next visit'}
       floatingMenuTooltip
       placement={placement}
     >
@@ -43,6 +44,7 @@ const FloatingContextMenuTemporaryIconButton: FC<{
             closeBeforeRefresh: true,
           }))
         }}
+        {...ButtonProps}
       >
         <ContextMenuIcon
           icon={'Close'}

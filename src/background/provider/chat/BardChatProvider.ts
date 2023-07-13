@@ -7,6 +7,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class BardChatProvider implements ChatAdapterInterface {
   private bardChat: BardChat
@@ -76,6 +77,27 @@ class BardChatProvider implements ChatAdapterInterface {
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })
+  }
+  get chatFiles() {
+    return this.bardChat.chatFiles
+  }
+  async updateFiles(files: IChatUploadFile[]) {
+    return await this.bardChat.updateFiles(files)
+  }
+  async uploadFiles(files: IChatUploadFile[]) {
+    return await this.bardChat.uploadFiles(files)
+  }
+  async removeFiles(fileIds: string[]) {
+    return await this.bardChat.removeFiles(fileIds)
+  }
+  async getFiles() {
+    return await this.bardChat.getFiles()
+  }
+  async abortUploadFiles(fileIds: string[]) {
+    return await this.bardChat.abortUploadFiles(fileIds)
+  }
+  async clearFiles() {
+    return await this.bardChat.clearFiles()
   }
 }
 export { BardChatProvider }

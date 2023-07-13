@@ -24,7 +24,6 @@ import {
   getDraftContextMenuTypeById,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
@@ -35,20 +34,16 @@ import {
   ROOT_FLOATING_INPUT_ID,
   ROOT_FLOATING_REFERENCE_ELEMENT_ID,
 } from '@/constants'
-import {
-  getAppContextMenuElement,
-  hideChatBox,
-  isShowChatBox,
-  showChatBox,
-} from '@/utils'
+import { getAppContextMenuElement, showChatBox } from '@/utils'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
 import {
+  FloatingContextMenuOpenSidebarButton,
   FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import {
   IContextMenuItem,
@@ -62,11 +57,15 @@ import {
 import { useAuthLogin } from '@/features/auth'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import Button from '@mui/material/Button'
-import useCommands from '@/hooks/useCommands'
-import { SidePanelIcon } from '@/components/CustomIcon'
 import cloneDeep from 'lodash-es/cloneDeep'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
+import {
+  contextMenuIsFavoriteContextMenu,
+  contextMenuToFavoriteContextMenu,
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -77,7 +76,6 @@ const FloatingContextMenu: FC<{
   const { root } = props
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
-  const { shortCutKey } = useCommands()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -364,21 +362,32 @@ const FloatingContextMenu: FC<{
       floatingDropdownMenu.open &&
       !loading
     ) {
+      let currentSelectedId =
+        floatingDropdownMenuSelectedItem.selectedContextMenuId
+      // 是否为[推荐]菜单的动作
+      let isSuggestedContextMenu = false
       // 判断是否可以运行
       let needOpenChatBox = false
       // 是否为[草稿]菜单的动作
-      const isDraftContextMenu = checkIsDraftContextMenuId(
-        floatingDropdownMenuSelectedItem.selectedContextMenuId,
-      )
+      let isDraftContextMenu = false
+      // 当前选中的contextMenu
       let currentContextMenu: IContextMenuItem | null = null
+      // 如果是[推荐]菜单的动作，则需要去掉前缀
+      if (contextMenuIsFavoriteContextMenu(currentSelectedId)) {
+        currentSelectedId = currentSelectedId.replace(
+          FAVORITE_CONTEXT_MENU_GROUP_ID,
+          '',
+        )
+        isSuggestedContextMenu = true
+      }
+      // 如果没登录，或者chatGPTClient没有成功初始化，则需要打开chatbox
       if (!isLogin || chatGPTClient.status !== 'success') {
         needOpenChatBox = true
       }
+      isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
       // 先从[草稿]菜单中查找
       if (isDraftContextMenu) {
-        const draftContextMenu = findDraftContextMenuById(
-          floatingDropdownMenuSelectedItem.selectedContextMenuId,
-        )
+        const draftContextMenu = findDraftContextMenuById(currentSelectedId)
         if (draftContextMenu) {
           currentContextMenu = draftContextMenu
         }
@@ -386,12 +395,26 @@ const FloatingContextMenu: FC<{
         // 如果不是[草稿]菜单的动作，则从原始菜单中查找
         currentContextMenu =
           originContextMenuList.find(
-            (contextMenu) =>
-              contextMenu.id ===
-              floatingDropdownMenuSelectedItem.selectedContextMenuId,
+            (contextMenu) => contextMenu.id === currentSelectedId,
           ) || null
       }
       if (currentContextMenu && currentContextMenu.id) {
+        if (currentContextMenu.data.type === 'group') {
+          // 如果是group菜单，则不运行
+          return
+        }
+        // [草稿]菜单的action不计入favorite
+        if (!isDraftContextMenu) {
+          FavoriteMediatorFactory.getMediator('textSelectPopupButton')
+            .favoriteContextMenu(currentContextMenu)
+            .then()
+            .catch()
+        }
+        // 如果是[推荐]菜单的动作，则需要转换为[草稿]菜单的动作
+        if (isSuggestedContextMenu) {
+          currentContextMenu =
+            contextMenuToFavoriteContextMenu(currentContextMenu)
+        }
         lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
         const runActions = currentContextMenu.data.actions || []
@@ -510,8 +533,12 @@ const FloatingContextMenu: FC<{
     }
   }, [actions, loading, isLogin])
   useEffect(() => {
-    const updateInputValue = (value: string) => {
+    const updateInputValue = (value: string, data: any) => {
       console.log('[ContextMenu Module] updateInputValue', value)
+      // gmail的action触发了insertUserInput携带的参数需要正确的记录
+      if (data && data?.contextMenu) {
+        lastRecordContextMenuRef.current = data.contextMenu
+      }
       setInputValue(value)
     }
     getMediator('floatingMenuInputMediator').subscribe(updateInputValue)
@@ -583,12 +610,13 @@ const FloatingContextMenu: FC<{
                 alignItems={'center'}
                 gap={1}
               >
-                <ContextMenuIcon
-                  icon={'AutoAwesome'}
+                <UseChatGptIcon
                   sx={{
                     flexShrink: 0,
                     color: 'primary.main',
-                    height: '24px',
+                    height: '16px',
+                    width: '16px',
+                    p: '4px',
                     alignSelf: 'start',
                   }}
                 />
@@ -609,12 +637,25 @@ const FloatingContextMenu: FC<{
                     </>
                   ) : (
                     <AutoHeightTextarea
+                      expandNode={
+                        floatingDropdownMenu.open && (
+                          <ChatIconFileUpload size={'tiny'} />
+                        )
+                      }
                       placeholder={'Ask AI to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
                       sx={{
                         border: 'none',
-                        '& textarea': { p: 0 },
+                        '& > div': {
+                          '& > div': { p: 0 },
+                          '& > textarea': { p: 0 },
+                          '& > .max-ai-user-input__expand': {
+                            '&:has(> div)': {
+                              pr: 1,
+                            },
+                          },
+                        },
                         borderRadius: 0,
                         minHeight: '24px',
                       }}
@@ -680,40 +721,9 @@ const FloatingContextMenu: FC<{
                         />
                       </IconButton>
                       <FloatingContextMenuPopupSettingButton
-                        useInButton={false}
                         sx={{ width: 24, height: 24, alignSelf: 'end' }}
                       />
-                      <TextOnlyTooltip
-                        floatingMenuTooltip
-                        title={shortCutKey}
-                        placement={'bottom'}
-                      >
-                        <Button
-                          sx={{
-                            ml: '0px!important',
-                            height: '24px',
-                            flexShrink: 0,
-                            alignSelf: 'end',
-                            minWidth: 'unset',
-                            padding: '6px 5px',
-                          }}
-                          variant="text"
-                          onClick={() => {
-                            if (isShowChatBox()) {
-                              hideChatBox()
-                            } else {
-                              showChatBox()
-                            }
-                          }}
-                        >
-                          <SidePanelIcon
-                            sx={{
-                              fontSize: '16px',
-                              color: 'text.primary',
-                            }}
-                          />
-                        </Button>
-                      </TextOnlyTooltip>
+                      <FloatingContextMenuOpenSidebarButton />
                     </>
                   )}
                   {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}

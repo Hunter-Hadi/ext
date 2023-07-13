@@ -3,6 +3,7 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat
@@ -38,6 +39,27 @@ class OpenAIChatProvider implements ChatAdapterInterface {
   }
   destroy() {
     return this.openAIChat.destroy()
+  }
+  get chatFiles() {
+    return this.openAIChat.chatFiles
+  }
+  async uploadFiles(files: IChatUploadFile[]) {
+    return await this.openAIChat.uploadFiles(files)
+  }
+  async updateFiles(files: IChatUploadFile[]) {
+    return await this.openAIChat.updateFiles(files)
+  }
+  async removeFiles(fileIds: string[]) {
+    return await this.openAIChat.removeFiles(fileIds)
+  }
+  async getFiles() {
+    return await this.openAIChat.getFiles()
+  }
+  async abortUploadFiles(fileIds: string[]) {
+    return await this.openAIChat.abortUploadFiles(fileIds)
+  }
+  async clearFiles() {
+    return await this.openAIChat.clearFiles()
   }
 }
 export { OpenAIChatProvider }

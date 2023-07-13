@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "js": [
-        "content.js"
+        "import_content.js"
       ],
       "all_frames": true,
       "matches": [
@@ -34,7 +34,12 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": [],
+      "resources": [
+        "content.js",
+        "modifyFetch.js",
+        "modifyFetch1.js",
+        "modifyFetch2.js"
+      ],
       "matches": [
         "<all_urls>"
       ]

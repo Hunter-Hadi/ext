@@ -6,6 +6,7 @@ import Browser from 'webextension-polyfill'
 import { IUseChatGPTUserInfo, IUserRole } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import isArray from 'lodash-es/isArray'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 export const getChromeExtensionAccessToken = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
@@ -26,32 +27,37 @@ export const getChromeExtensionAccessToken = async (): Promise<string> => {
 export const getChromeExtensionUserInfo = async (
   forceUpdate: boolean,
 ): Promise<IUseChatGPTUserInfo | undefined> => {
-  const cache = await Browser.storage.local.get(
-    CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-  )
-  if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
-    let userData =
-      cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]?.userData
-    let isUpdated = false
-    if (!userData) {
-      userData = await fetchUserInfo()
-      isUpdated = true
+  try {
+    const cache = await Browser.storage.local.get(
+      CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+    )
+    if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+      let userData =
+        cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]?.userData
+      let isUpdated = false
+      if (!userData) {
+        userData = await fetchUserInfo()
+        isUpdated = true
+      }
+      if (forceUpdate) {
+        userData.role = await fetchUserSubscriptionInfo()
+        isUpdated = true
+      }
+      if (isUpdated) {
+        await Browser.storage.local.set({
+          [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
+            ...cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY],
+            userData,
+          },
+        })
+      }
+      return userData
     }
-    if (forceUpdate) {
-      userData.role = await fetchUserSubscriptionInfo()
-      isUpdated = true
-    }
-    if (isUpdated) {
-      await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
-          ...cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY],
-          userData,
-        },
-      })
-    }
-    return userData
+    return undefined
+  } catch (e) {
+    // get chrome extension user info error
+    return undefined
   }
-  return undefined
 }
 
 export const fetchUserSubscriptionInfo = async (): Promise<
@@ -90,6 +96,17 @@ export const fetchUserSubscriptionInfo = async (): Promise<
           ) || {
             name: 'free',
             exp_time: 0,
+          }
+          if (role.name === 'pro' && result.data.has_reached_limit) {
+            sendLarkBotMessage(
+              `[Pricing] Pro [subscription_info] has reached the limit`,
+              `Pro token [${token}] call api has reached the limit.\n${JSON.stringify(
+                result?.data,
+              )}`,
+              {
+                uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+              },
+            )
           }
           return {
             name: role.name,

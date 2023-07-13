@@ -1,8 +1,10 @@
 import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
 import { backgroundSendAllClientMessage } from '@/background/utils'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class BaseChat {
+  chatFiles: IChatUploadFile[]
   log: Log
   status: ChatStatus = 'needAuth'
   active = false
@@ -10,9 +12,10 @@ class BaseChat {
     [key in string]: any
   } = {}
   constructor(name: string) {
+    this.chatFiles = []
     this.log = new Log('Background/Chat/' + name)
   }
-  async auth() {
+  async auth(tabId: number) {
     this.active = true
     await this.updateClientStatus('success')
   }
@@ -35,6 +38,53 @@ class BaseChat {
       delete this.taskList[taskId]
       return true
     }
+    return true
+  }
+  async uploadFiles(files: IChatUploadFile[]) {
+    files.map((file) => {
+      file.uploadStatus = 'success'
+      file.uploadProgress = 100
+      this.chatFiles.push(file)
+    })
+  }
+  async abortUploadFiles(fileIds: string[]) {
+    let isAbort = false
+    this.chatFiles = this.chatFiles.filter((file) => {
+      if (fileIds.includes(file.id)) {
+        isAbort = true
+        return false
+      }
+      return true
+    })
+    return isAbort
+  }
+  async removeFiles(fileIds: string[]) {
+    let isRemove = false
+    this.chatFiles = this.chatFiles.filter((file) => {
+      if (fileIds.includes(file.id)) {
+        isRemove = true
+        return false
+      }
+      return true
+    })
+    return isRemove
+  }
+  async getFiles() {
+    return this.chatFiles
+  }
+  async updateFiles(updateFiles: IChatUploadFile[]) {
+    this.chatFiles = this.chatFiles.map((file) => {
+      const updateFile = updateFiles.find(
+        (updateFile) => updateFile.id === file.id,
+      )
+      if (updateFile) {
+        return updateFile
+      }
+      return file
+    })
+  }
+  async clearFiles() {
+    this.chatFiles = []
     return true
   }
 }

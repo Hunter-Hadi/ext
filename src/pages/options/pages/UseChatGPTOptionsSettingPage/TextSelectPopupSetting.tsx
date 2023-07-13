@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -11,20 +11,29 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import CloseAlert from '@/components/CloseAlert'
-import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import {
+  useChromeExtensionButtonSettings,
+  useComputedChromeExtensionButtonSettings,
+} from '@/background/utils/buttonSettings'
 
 const TextSelectPopupSetting: FC<{
   commandKey?: string
-  visible: boolean
-  onChange: (visible: boolean) => void
 }> = (props) => {
-  const { buttonSettings, updateButtonSettings } =
+  const { updateButtonSettings, toggleButtonSettings } =
     useChromeExtensionButtonSettings()
-  const { visible, onChange, commandKey } = props
+  const buttonSettings = useComputedChromeExtensionButtonSettings(
+    'textSelectPopupButton',
+  )
+  const visible = useMemo(() => {
+    return buttonSettings?.visibility.isWhitelistMode !== true
+  }, [buttonSettings?.visibility])
+  const { commandKey } = props
   const [showTooltip, setShowTooltip] = useState(false)
   const { palette } = useTheme()
   useEffect(() => {
-    if (!visible) {
+    // mini menu被hidden的时候，不再显示右下角的Cmd+J label 2023-07-10
+    // eslint-disable-next-line no-constant-condition
+    if (!visible && false) {
       setShowTooltip(true)
       const timer = setTimeout(() => {
         setShowTooltip(false)
@@ -44,9 +53,9 @@ const TextSelectPopupSetting: FC<{
         fontWeight={700}
         color={'text.primary'}
         component={'h2'}
-        id={'text-select-popup'}
+        id={'mini-menu-on-text-selection'}
       >
-        Text-select-popup
+        {`Mini menu on text selection`}
       </Typography>
       <CloseAlert
         icon={<></>}
@@ -64,8 +73,14 @@ const TextSelectPopupSetting: FC<{
         <Typography fontSize={14}>Hidden</Typography>
         <Switch
           checked={visible}
-          onChange={(event) => {
-            onChange(event.target.checked)
+          onChange={async (event) => {
+            if (event.target.checked) {
+              // 从白名单模式切换到黑名单模式
+              await toggleButtonSettings('textSelectPopupButton', true)
+            } else {
+              // 从黑名单模式切换到白名单模式
+              await toggleButtonSettings('textSelectPopupButton', false)
+            }
           }}
         />
         <Typography fontSize={14}>Visible</Typography>
@@ -189,7 +204,7 @@ const TextSelectPopupSetting: FC<{
           </Box>
         )}
       </Box>
-      {buttonSettings?.textSelectPopupButton && visible && (
+      {buttonSettings && visible && (
         <>
           <CloseAlert
             icon={<></>}
@@ -204,10 +219,11 @@ const TextSelectPopupSetting: FC<{
           </CloseAlert>
           <VisibilitySettingCard
             sx={{ mt: 2 }}
-            defaultValue={buttonSettings.textSelectPopupButton.visibility}
+            onlyBlacklist
+            defaultValue={buttonSettings.visibility}
             onChange={async (newVisibilitySetting) => {
               await updateButtonSettings('textSelectPopupButton', {
-                ...buttonSettings?.textSelectPopupButton,
+                ...buttonSettings,
                 visibility: newVisibilitySetting,
               })
             }}

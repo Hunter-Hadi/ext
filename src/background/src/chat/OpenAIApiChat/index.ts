@@ -13,6 +13,7 @@ import {
   IOpenAIApiChatMessage,
 } from '@/background/src/chat/OpenAiApiChat/types'
 import { getOpenAIApiSettings } from '@/background/src/chat/OpenAiApiChat/utils'
+import BaseChat from '@/background/src/chat/BaseChat'
 
 const log = new Log('Background/Chat/OpenAiApiChat')
 
@@ -27,14 +28,11 @@ const SYSTEM_MESSAGE: IOpenAIApiChatMessage = {
 
 const MAX_CONTEXT_SIZE = 10
 
-class OpenAiApiChat {
+class OpenAiApiChat extends BaseChat {
   status: ChatStatus = 'needAuth'
-  private active = false
   private conversationContext?: ConversationContext
-  private taskList: {
-    [key in string]: any
-  } = {}
   constructor() {
+    super('OpenAiApiChat')
     this.init()
   }
   private init() {

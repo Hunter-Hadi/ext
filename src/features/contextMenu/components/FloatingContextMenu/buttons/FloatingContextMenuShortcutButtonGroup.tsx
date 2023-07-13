@@ -10,6 +10,7 @@ import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import { FloatingContextMenuDraftState } from '@/features/contextMenu'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { FloatingContextMenuOpenSidebarButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuOpenSidebarButton'
 
 type FloatingContextMenuShortcutKey = 's' | 'r' | 'o' | 'c'
 
@@ -181,6 +182,7 @@ const FloatingContextMenuShortcutButtonGroup: FC = () => {
           </span>
         </Typography>
       </Button>
+      <FloatingContextMenuOpenSidebarButton />
     </Stack>
   )
 }

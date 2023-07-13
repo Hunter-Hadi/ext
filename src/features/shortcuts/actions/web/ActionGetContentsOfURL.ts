@@ -3,6 +3,8 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { v4 as uuidV4 } from 'uuid'
+
 export class ActionGetContentsOfURL extends Action {
   static type = 'GET_CONTENTS_OF_URL'
   constructor(
@@ -26,8 +28,12 @@ export class ActionGetContentsOfURL extends Action {
       if (currentUrl && backgroundConversation) {
         this.pushMessageToChat(
           {
-            type: 'third',
+            type: 'system',
             text: `MaxAI.me extension is crawling this page: ${currentUrl}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
+            messageId: uuidV4(),
+            extra: {
+              status: 'info',
+            },
           },
           engine,
         )

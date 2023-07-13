@@ -2,3 +2,5 @@ export { FloatingContextMenuPopupSettingButton } from './FloatingContextMenuPopu
 export { FloatingContextMenuGmailCloseIconButton } from './FloatingContextMenuGmailCloseIconButton'
 export { FloatingContextMenuTemporaryIconButton } from './FloatingContextMenuTemporaryIconButton'
 export { FloatingContextMenuShortcutButtonGroup } from './FloatingContextMenuShortcutButtonGroup'
+export { FloatingContextMenuMiniMenuMoreButton } from './FloatingContextMenuMiniMenuMoreButton'
+export { FloatingContextMenuOpenSidebarButton } from './FloatingContextMenuOpenSidebarButton'

@@ -1,6 +1,6 @@
 import Log from '@/utils/Log'
 
-interface Mediator {
+interface InputMediator {
   subscribe(subscriber: Subscriber): void
   unsubscribe(subscriber: Subscriber): void
   updateInputValue(newValue: string, extraData?: any): void
@@ -11,7 +11,7 @@ type Subscriber = (value: string, extraData: any) => void
 
 const log = new Log('ChatBoxInputMediator')
 
-class ChatBoxInputMediator implements Mediator {
+class ChatBoxInputMediator implements InputMediator {
   private inputValue = ''
   private subscribers: Subscriber[] = []
 
@@ -39,7 +39,7 @@ class ChatBoxInputMediator implements Mediator {
   }
 }
 
-class FloatingMenuInputMediator implements Mediator {
+class FloatingMenuInputMediator implements InputMediator {
   private inputValue = ''
   private subscribers: Subscriber[] = []
 
@@ -70,11 +70,13 @@ class FloatingMenuInputMediator implements Mediator {
 export type MediatorName = 'chatBoxInputMediator' | 'floatingMenuInputMediator'
 
 class MediatorFactory {
-  private static mediators: Record<MediatorName, Mediator> = {
+  private static mediators: Record<MediatorName, InputMediator> = {
     chatBoxInputMediator: new ChatBoxInputMediator(),
     floatingMenuInputMediator: new FloatingMenuInputMediator(),
   }
-  public static getMediator(mediatorName: 'chatBoxInputMediator'): Mediator {
+  public static getMediator(
+    mediatorName: 'chatBoxInputMediator',
+  ): InputMediator {
     return MediatorFactory.mediators[mediatorName]
   }
 }

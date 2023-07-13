@@ -358,9 +358,9 @@ const ContextMenuSettings: FC<{
             fontWeight={700}
             flexShrink={0}
             component={'h2'}
-            id={'your-own-prompts'}
+            id={'my-own-prompts'}
           >
-            Your own prompts
+            My own prompts
           </Typography>
           <CloseAlert
             icon={<></>}

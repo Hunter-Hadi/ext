@@ -1,6 +1,7 @@
 // import { compileTemplate } from '../utils'
 import Action from '@/features/shortcuts/core/Action'
-import { getMediator } from '@/store/mediator'
+import { getMediator } from '@/store/InputMediator'
+import { v4 as uuidV4 } from 'uuid'
 
 function render(
   template: string,
@@ -94,27 +95,23 @@ export function pushOutputToChat(
       const value = await oldFunc.apply(this, args)
       // NOTE: Action还没有对外暴露，所以不能显示Action的名称和类型
       if (actionInstance.error && !onlySuccess) {
-        // engine
-        //   .getChartGPT()
-        //   ?.pushMessage(
-        //     'system',
-        //     `Action [${actionInstance.type}]: ${actionInstance.error}`,
-        //     'error',
-        //   )
-        engine
-          .getChartGPT()
-          ?.pushMessage('system', `${actionInstance.error}`, 'error')
+        engine.getChartGPT()?.pushMessage({
+          type: 'system',
+          text: actionInstance.error,
+          messageId: uuidV4(),
+          extra: {
+            status: 'error',
+          },
+        })
       } else if (actionInstance.output && !onlyError) {
-        // engine
-        //   .getChartGPT()
-        //   ?.pushMessage(
-        //     'third',
-        //     `Action [${actionInstance.type}]: ${actionInstance.output}`,
-        //     'success',
-        //   )
-        engine
-          .getChartGPT()
-          ?.pushMessage('third', `${actionInstance.output}`, 'success')
+        engine.getChartGPT()?.pushMessage({
+          type: 'system',
+          text: actionInstance.output,
+          messageId: uuidV4(),
+          extra: {
+            status: 'success',
+          },
+        })
       }
       return value
     }

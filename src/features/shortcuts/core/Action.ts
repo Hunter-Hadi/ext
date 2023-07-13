@@ -1,7 +1,7 @@
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IAction } from '@/features/shortcuts/types/Action'
-import { IChatMessage } from '@/features/chatgpt/types'
+import { ISystemChatMessage } from '@/features/chatgpt/types'
 
 class Action implements IAction {
   id: string
@@ -30,11 +30,9 @@ class Action implements IAction {
     this.output = ''
     this.status = 'complete'
   }
-  pushMessageToChat(message: Partial<IChatMessage>, engine: any) {
+  pushMessageToChat(message: ISystemChatMessage, engine: any) {
     if (engine && engine.getChartGPT()?.pushMessage) {
-      engine
-        .getChartGPT()
-        ?.pushMessage(message.type as 'third', message.text, 'success')
+      engine.getChartGPT()?.pushMessage(message)
     }
   }
   reset() {

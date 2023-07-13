@@ -32,6 +32,7 @@ export interface IUserChatMessage extends IChatMessage {
 
 export type IChatMessageExtraMetaType = {
   contextMenu?: IContextMenuItem
+  [key: string]: any
 }
 
 export type IUserChatMessageExtraType = IUserChatMessage['extra']
@@ -51,7 +52,7 @@ export interface ISystemChatMessage extends IChatMessage {
   messageId: string
   parentMessageId?: string
   extra: {
-    status?: 'error' | 'success'
+    status?: 'error' | 'success' | 'info'
     systemMessageType?: 'dailyUsageLimited'
   }
 }
@@ -62,4 +63,18 @@ export interface IThirdChatMessage extends IChatMessage {
   text: string
   messageId: string
   parentMessageId?: string
+}
+
+export interface IChatUploadFile {
+  id: string
+  fileName: string
+  fileSize: number
+  fileType: string
+  blobUrl?: string
+  icon?: string
+  file?: File
+  uploadProgress?: number
+  uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
+  uploadErrorMessage?: string
+  uploadedUrl?: string
 }

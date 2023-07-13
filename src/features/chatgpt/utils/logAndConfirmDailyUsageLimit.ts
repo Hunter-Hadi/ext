@@ -11,6 +11,11 @@ import Browser from 'webextension-polyfill'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { getChromeExtensionUserInfo } from '@/features/auth/utils'
+import {
+  contextMenuIsFavoriteContextMenu,
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -33,6 +38,12 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         domain: promptDetail.host,
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,
+      }
+      if (contextMenuIsFavoriteContextMenu(info_object.prompt_id)) {
+        info_object.prompt_id =
+          FAVORITE_CONTEXT_MENU_GROUP_ID +
+          info_object.prompt_id.slice(FAVORITE_CONTEXT_MENU_GROUP_ID.length + 8)
+        info_object.prompt_name = `[Suggested] ${info_object.prompt_name}`
       }
       console.log('logApiAndConfirmIsLimited', info_object)
       const accessToken = await getAccessToken()
@@ -98,7 +109,25 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
           logApiAndConfirmIsLimited().then().catch()
           resolve(false)
         } else {
+          // TODO 校验身份 pro不拦截，但是发larkbot
           // 说明达到限制了
+          const userInfo = await getChromeExtensionUserInfo(false)
+          if (userInfo?.role?.name === 'pro') {
+            // pro用户不拦截
+            sendLarkBotMessage(
+              `[Pricing] Pro [cache] has reached the limit`,
+              `Pro user ${
+                userInfo?.email
+              } use has reached the limit.\n${JSON.stringify({
+                role: userInfo?.role,
+              })}`,
+              {
+                uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+              },
+            )
+            resolve(false)
+            return
+          }
           resolve(true)
           // // 调用userSubscription api更新缓存
           // await fetchUserSubscriptionInfo()

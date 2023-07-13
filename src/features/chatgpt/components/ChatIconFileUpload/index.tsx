@@ -110,6 +110,10 @@ const ChatIconFileUpload: FC<{
       } as IChatUploadFile
     })
     await aiProviderUploadFiles(uploadFiles)
+    // clear input
+    if (inputRef.current) {
+      inputRef.current.value = ''
+    }
   }
   // const hasFileUploading = useMemo(() => {
   //   return files.some((file) => file.uploadStatus === 'uploading')

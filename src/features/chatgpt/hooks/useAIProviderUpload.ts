@@ -86,10 +86,8 @@ const useAIProviderUpload = () => {
           },
         })
         console.log('useAIProviderUpload [Client_chatRemoveFiles]', result.data)
-        if (result.success) {
-          setFiles(result.data || [])
-          return true
-        }
+        setFiles(result.data || [])
+        return result.success
         return false
       }
       return false
@@ -121,6 +119,7 @@ const useAIProviderUpload = () => {
           },
         } as ISystemChatMessage)
       })
+      aiProviderRemoveFiles([errorItem])
     }
   }, [files])
   useFocus(() => {

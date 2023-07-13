@@ -6,6 +6,7 @@ import Browser from 'webextension-polyfill'
 import { IUseChatGPTUserInfo, IUserRole } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import isArray from 'lodash-es/isArray'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 export const getChromeExtensionAccessToken = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
@@ -90,6 +91,17 @@ export const fetchUserSubscriptionInfo = async (): Promise<
           ) || {
             name: 'free',
             exp_time: 0,
+          }
+          if (role.name === 'pro' && result.data.has_reached_limit) {
+            sendLarkBotMessage(
+              `[Pricing] Pro [subscription_info] has reached the limit`,
+              `Pro token [${token}] call api has reached the limit.\n${JSON.stringify(
+                result?.data,
+              )}`,
+              {
+                uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+              },
+            )
           }
           return {
             name: role.name,

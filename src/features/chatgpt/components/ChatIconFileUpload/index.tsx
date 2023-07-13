@@ -147,6 +147,7 @@ const ChatIconFileUpload: FC<{
         const isHover = hoverId === file.id
         return (
           <TextOnlyTooltip
+            arrow
             floatingMenuTooltip={size === 'tiny'}
             placement={'top'}
             open={isUploading}
@@ -217,7 +218,11 @@ const ChatIconFileUpload: FC<{
                   />
                 )}
               </Stack>
-              <TextOnlyTooltip placement={'top'} title={error || file.fileName}>
+              <TextOnlyTooltip
+                floatingMenuTooltip={size === 'tiny'}
+                placement={'top'}
+                title={error || file.fileName}
+              >
                 <Stack
                   sx={{
                     overflow: 'hidden',

@@ -637,7 +637,11 @@ const FloatingContextMenu: FC<{
                     </>
                   ) : (
                     <AutoHeightTextarea
-                      expandNode={<ChatIconFileUpload size={'tiny'} />}
+                      expandNode={
+                        floatingDropdownMenu.open && (
+                          <ChatIconFileUpload size={'tiny'} />
+                        )
+                      }
                       placeholder={'Ask AI to edit or generate...'}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}

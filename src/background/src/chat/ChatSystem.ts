@@ -163,6 +163,7 @@ class ChatSystem implements ChatSystemInterface {
               const success = await this.abortUploadFiles(
                 files.map((file: IChatUploadFile) => file.id),
               )
+              this.updateClientFiles()
               return {
                 success,
                 data: this.chatFiles,
@@ -176,6 +177,7 @@ class ChatSystem implements ChatSystemInterface {
               const success = await this.removeFiles(
                 files.map((file: IChatUploadFile) => file.id),
               )
+              this.updateClientFiles()
               return {
                 success,
                 data: this.chatFiles,
@@ -186,6 +188,7 @@ class ChatSystem implements ChatSystemInterface {
           case 'Client_chatClearFiles':
             {
               const success = await this.clearFiles()
+              this.updateClientFiles()
               return {
                 success,
                 data: this.chatFiles,

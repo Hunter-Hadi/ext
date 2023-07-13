@@ -200,7 +200,6 @@ const GmailChatBoxMessageItem: FC<{
               severity={message?.extra?.status || 'info'}
               sx={{
                 p: 1,
-                bgcolor: 'red',
                 '& .MuiAlert-message': {
                   p: 0,
                 },

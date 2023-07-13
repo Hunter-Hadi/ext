@@ -144,7 +144,7 @@ export const templateWordToExamples = (
     case 'SELECTED_TEXT':
       return {
         description:
-          'This ChatGPT prompt template variable will be replaced with the text you selected on the current page.',
+          'This prompt template variable will be replaced with the text you selected on the current page.',
         examples: [
           'write a better version of the follow text: {{SELECTED_TEXT}}',
           'translate the following text to English: {{SELECTED_TEXT}}',
@@ -152,7 +152,7 @@ export const templateWordToExamples = (
       }
     case 'AI_OUTPUT_LANGUAGE':
       return {
-        description: `This ChatGPT prompt template variable will be replaced with the "AI output language" selected on the Settings page.\nIf uncertain of the "Settings" page location, simply click the "Settings" icon found in the top bar within the side bar.`,
+        description: `This prompt template variable will be replaced with the "AI output language" selected on the Settings page.\nIf uncertain of the "Settings" page location, simply click the "Settings" icon found in the top bar within the side bar.`,
         examples: [
           `respond in {{AI_OUTPUT_LANGUAGE}}`,
           `you will reply with ideas in {{AI_OUTPUT_LANGUAGE}}`,
@@ -161,18 +161,18 @@ export const templateWordToExamples = (
     case 'GMAIL_EMAIL_CONTEXT':
       return {
         description:
-          'When you use this variable in the prompt template for ChatGPT, it will display the incoming email that needs a response.',
+          'When you use this variable in the prompt template, it will display the incoming email that needs a response.',
         examples: [],
       }
     case 'GMAIL_DRAFT_CONTEXT':
       return {
         description:
-          'When you use this variable in the prompt template for ChatGPT, it will display the current draft present in the Gmail text box.',
+          'When you use this variable in the prompt template, it will display the current draft present in the Gmail text box.',
         examples: [],
       }
     case 'CURRENT_WEBSITE_DOMAIN':
       return {
-        description: `This ChatGPT prompt template variable will be replaced with the current website's domain.`,
+        description: `This prompt template variable will be replaced with the current website's domain.`,
         examples: [
           `reply to the following text on {{CURRENT_WEBSITE_DOMAIN}}`,
           `note that the text is from {{CURRENT_WEBSITE_DOMAIN}}`,

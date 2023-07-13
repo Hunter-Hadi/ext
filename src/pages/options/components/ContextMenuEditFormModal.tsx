@@ -221,37 +221,39 @@ const ContextMenuEditForm: FC<{
                   alignItems={'center'}
                   sx={{ maxHeight: '60px', overflowY: 'scroll' }}
                 >
-                  {CONTEXT_MENU_ICONS.map((icon) => {
-                    return (
-                      <Button
-                        disabled={isDisabled}
-                        sx={{ width: 32, minWidth: 'unset', px: 1, py: 0.5 }}
-                        variant={
-                          icon === (selectedIcon as string)
-                            ? 'contained'
-                            : 'outlined'
-                        }
-                        key={icon}
-                        onClick={() => {
-                          setSelectedIcon((preIcon) =>
-                            preIcon === icon ? null : icon,
-                          )
-                          setEditNode((prev) => {
-                            return {
-                              ...prev,
-                              data: {
-                                ...prev.data,
-                                icon:
-                                  prev.data.icon === icon ? undefined : icon,
-                              },
-                            }
-                          })
-                        }}
-                      >
-                        <ContextMenuIcon icon={icon} />
-                      </Button>
-                    )
-                  })}
+                  {CONTEXT_MENU_ICONS.filter((icon) => icon !== 'Empty').map(
+                    (icon) => {
+                      return (
+                        <Button
+                          disabled={isDisabled}
+                          sx={{ width: 32, minWidth: 'unset', px: 1, py: 0.5 }}
+                          variant={
+                            icon === (selectedIcon as string)
+                              ? 'contained'
+                              : 'outlined'
+                          }
+                          key={icon}
+                          onClick={() => {
+                            setSelectedIcon((preIcon) =>
+                              preIcon === icon ? null : icon,
+                            )
+                            setEditNode((prev) => {
+                              return {
+                                ...prev,
+                                data: {
+                                  ...prev.data,
+                                  icon:
+                                    prev.data.icon === icon ? undefined : icon,
+                                },
+                              }
+                            })
+                          }}
+                        >
+                          <ContextMenuIcon icon={icon} />
+                        </Button>
+                      )
+                    },
+                  )}
                 </Stack>
               </Stack>
             )}
@@ -259,8 +261,7 @@ const ContextMenuEditForm: FC<{
               <Box>
                 <Stack direction={'row'} alignItems="center">
                   <Typography variant={'body1'}>
-                    Prompt template for ChatGPT{' '}
-                    <span style={{ color: 'red' }}>*</span>
+                    Prompt template <span style={{ color: 'red' }}>*</span>
                   </Typography>
                   <TemplateTooltip />
                 </Stack>

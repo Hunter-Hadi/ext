@@ -102,7 +102,7 @@ const AuthUserRoleIconDropdown: FC = () => {
                   color={'text.primary'}
                   fontWeight={700}
                 >
-                  Get up to 24 weeks of MaxAI Pro for free!
+                  Get up to 24 free weeks of MaxAI Pro!
                 </Typography>
                 <Typography fontSize={14} color={'text.primary'}>
                   <span>

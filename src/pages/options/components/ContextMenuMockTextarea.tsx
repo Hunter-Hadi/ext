@@ -1,10 +1,10 @@
-import { ContextMenuIcon } from '@/features/contextMenu'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import React, { FC, useMemo, useState } from 'react'
 import useTheme from '@mui/material/styles/useTheme'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 
 const ContextMenuMockTextarea: FC<{
   defaultValue?: string
@@ -44,12 +44,13 @@ const ContextMenuMockTextarea: FC<{
         marginBottom: '4px',
       }}
     >
-      <ContextMenuIcon
-        icon={'AutoAwesome'}
+      <UseChatGptIcon
         sx={{
           flexShrink: 0,
           color: 'primary.main',
-          height: '24px',
+          height: '16px',
+          width: '16px',
+          p: '4px',
           alignSelf: 'start',
         }}
       />
@@ -76,7 +77,6 @@ const ContextMenuMockTextarea: FC<{
             overflow: 'hidden',
             '& > textarea': {
               p: 0,
-
               color: (t) =>
                 t.palette.mode === 'dark'
                   ? '#fff'

@@ -112,7 +112,7 @@ const GmailChatBoxChatSpeedDial: FC<{
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {`Restart MaxAI.me extension`}
+          {`Restart MaxAI.me extension?`}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">

@@ -182,7 +182,7 @@ const ClickContextMenuButton: FC<{
             placement,
             description: shortCutKey,
           }}
-          title={'Ask AI to help edit, review, or generate text'}
+          title={'Ask AI to edit, summarize, explain, or generate text'}
           className={'usechatgpt-ai__context-menu--handle-button'}
           size={'small'}
           variant={'text'}

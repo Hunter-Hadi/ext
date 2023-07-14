@@ -61,6 +61,7 @@ const FloatingInputButton: FC<{
     <TextOnlyTooltip placement={'top'} title={'Use prompt'}>
       <Button
         sx={{
+          p: '7px',
           minWidth: 'unset',
         }}
         variant={'outlined'}
@@ -68,7 +69,7 @@ const FloatingInputButton: FC<{
       >
         <UseChatGptIcon
           sx={{
-            fontSize: 24,
+            fontSize: 16,
             color: 'inherit',
           }}
         />

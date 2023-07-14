@@ -103,7 +103,7 @@ const GmailChatBoxInputActions: FC<{
         )}
         <TooltipButton
           title={'Send to AI'}
-          sx={{ minWidth: 'unset' }}
+          sx={{ minWidth: 'unset', p: 1 }}
           disableElevation
           variant={'contained'}
           disabled={conversation.loading}
@@ -117,7 +117,11 @@ const GmailChatBoxInputActions: FC<{
             nextMessageIsActionRef.current = false
           }}
         >
-          {conversation.loading ? <CircularProgress size={24} /> : <SendIcon />}
+          {conversation.loading ? (
+            <CircularProgress size={16} />
+          ) : (
+            <SendIcon sx={{ fontSize: '16px' }} />
+          )}
         </TooltipButton>
       </Box>
     </Stack>

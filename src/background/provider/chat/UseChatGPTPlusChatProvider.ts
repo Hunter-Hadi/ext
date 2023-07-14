@@ -39,6 +39,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     question,
     options,
   ) => {
+    const messageId = uuidV4()
     await this.useChatGPTPlusChat.askChatGPT(
       question.question,
       {
@@ -55,7 +56,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId: uuidV4(),
+              messageId,
             },
             error,
             done,

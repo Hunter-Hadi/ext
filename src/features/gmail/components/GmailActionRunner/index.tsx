@@ -5,7 +5,7 @@ import {
 } from '@/features/gmail/store'
 
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { useDebounceValue } from '@/utils'
+import { showChatBox, useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
@@ -14,8 +14,6 @@ import {
 import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { useCurrentMessageView } from '@/features/gmail/hooks'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
-import { createSelectionElement } from '@/features/contextMenu/utils/selectionHelper'
-import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
 import cloneDeep from 'lodash-es/cloneDeep'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
@@ -37,29 +35,31 @@ const GmailActionRunner = () => {
   useEffect(() => {
     const ctaButtonAction = (event: any) => {
       console.log(event.detail)
-      const { emailElement, range } = event.detail || {}
-      if (emailElement) {
-        emailElement.focus()
-        if (range) {
-          const selection = window.getSelection()
-          if (selection) {
-            selection.removeAllRanges()
-            selection.addRange(range)
-          }
-        }
-        showFloatingContextMenuRef.current(
-          createSelectionElement(
-            event.detail.emailElement,
-          ) as IVirtualIframeSelectionElement,
-          {
-            editableElementSelectionHTML: '',
-            editableElementSelectionText: '',
-            selectionText: '',
-            selectionHTML: '',
-          },
-        )
-        setRun(true)
-      }
+      // const { emailElement, range } = event.detail || {}
+      // if (emailElement) {
+      //   emailElement.focus()
+      //   if (range) {
+      //     const selection = window.getSelection()
+      //     if (selection) {
+      //       selection.removeAllRanges()
+      //       selection.addRange(range)
+      //     }
+      //   }
+      //   showFloatingContextMenuRef.current(
+      //     createSelectionElement(
+      //       event.detail.emailElement,
+      //     ) as IVirtualIframeSelectionElement,
+      //     {
+      //       editableElementSelectionHTML: '',
+      //       editableElementSelectionText: '',
+      //       selectionText: '',
+      //       selectionHTML: '',
+      //     },
+      //   )
+      //   setRun(true)
+      // }
+      showChatBox()
+      setRun(true)
     }
     window.addEventListener('ctaButtonClick', ctaButtonAction)
     return () => {

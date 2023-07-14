@@ -1,7 +1,7 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/gmail/store'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { AppSettingsState } from '@/store'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import {
@@ -22,6 +22,7 @@ const WritingMessageBox: FC<{
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const { userSettings } = useRecoilValue(AppSettingsState)
   const conversation = useRecoilValue(ChatGPTConversationState)
+  const prevMessageIdRef = useRef<string | null>(null)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
@@ -35,30 +36,39 @@ const WritingMessageBox: FC<{
     })
   }, [floatingDropdownMenu.open])
   useEffect(() => {
-    if (conversation.writingMessage?.text) {
-      const writingMessageText = conversation.writingMessage.text
-      // ChatGPT 有可能第一个回答会返回之前的问题，所以删掉
+    const writingMessageText = conversation.writingMessage?.text
+    const writingMessageId = conversation.writingMessage?.messageId
+    if (writingMessageId && writingMessageText) {
+      let isSameMessage = true
+      if (
+        prevMessageIdRef.current &&
+        prevMessageIdRef.current !== writingMessageId
+      ) {
+        console.log(
+          'AIInput writingMessage reset: ',
+          conversation.writingMessage,
+        )
+        isSameMessage = false
+      }
+      prevMessageIdRef.current = writingMessageId
+      // ChatGPT 有可能第一个回答会返回之前的问题
       if (writingMessageText.includes(CHAT_GPT_PROMPT_PREFIX)) {
-        setFloatingContextMenuDraft((prevState) => {
-          console.log(prevState.draftList)
-          return prevState
-        })
         return
       }
       setFloatingContextMenuDraft((prevState) => {
         const copyDraftList = cloneDeep(prevState.draftList)
-        const lastMessageIndex = Math.max(copyDraftList.length - 1, 0)
-        const lastMessage = copyDraftList[lastMessageIndex] || ''
-        if (writingMessageText.length < lastMessage.length) {
+        if (isSameMessage) {
+          console.log('AIInput writingMessage update: ', writingMessageText)
+          // 更新最后一行
+          copyDraftList.pop()
+          copyDraftList.push(writingMessageText)
+        } else {
           // 说明新增了一行
+          copyDraftList.push(writingMessageText)
           console.log(
             'AIInput writingMessage update new line: ',
             writingMessageText,
           )
-          copyDraftList.push(writingMessageText)
-        } else {
-          console.log('AIInput writingMessage update: ', writingMessageText)
-          copyDraftList[lastMessageIndex] = writingMessageText
         }
         return {
           draft: copyDraftList.join('\n\n').replace(/\n{2,}/, '\n\n'),
@@ -84,6 +94,29 @@ const WritingMessageBox: FC<{
       top: boxRef.current.scrollHeight,
     })
   }, [floatingContextMenuDraft.draft])
+  useEffect(() => {
+    const keydownHandler = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey) {
+        e.stopPropagation()
+        if (e.key === 'C' || e.key === 'c' || e.key === 'x' || e.key === 'X') {
+          // save to clipboard
+          const selection = window.getSelection()
+          if (selection) {
+            const range = selection.getRangeAt(0)
+            const text = range.toString()
+            if (text) {
+              e.preventDefault()
+              navigator.clipboard.writeText(text)
+            }
+          }
+        }
+      }
+    }
+    boxRef.current?.addEventListener('keydown', keydownHandler)
+    return () => {
+      boxRef.current?.removeEventListener('keydown', keydownHandler)
+    }
+  }, [])
   return (
     <Stack
       className={'chat-message--text'}
@@ -107,10 +140,15 @@ const WritingMessageBox: FC<{
           },
         },
       }}
+      component={'div'}
     >
       {isEmpty(floatingContextMenuDraft.draft) ? <ContextText /> : null}
       <div
+        tabIndex={-1}
         ref={boxRef}
+        style={{
+          textAlign: 'left',
+        }}
         className={`markdown-body ${
           userSettings?.colorSchema === 'dark' ? 'markdown-body-dark' : ''
         }`}

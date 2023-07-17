@@ -246,7 +246,6 @@ export const createSelectionMarker = (
              * 2. 选区的innerText从[0 - 光标位置]的内容
              * 3. 选区的innerText内容
              */
-
             const selectionText = (sel.toString() || range.toString())
               .trim()
               .replace(/\u200B/g, '')
@@ -348,12 +347,16 @@ export const createSelectionMarker = (
 /**
  * 特殊的host获取选中文本，在无法获取到selectionString的情况下使用
  * @param element
- * @returns {selectionString}
  */
 export const getEditableElementSelectionTextOnSpecialHost = (
   element: HTMLElement,
-): string => {
+): {
+  editableElementSelectionText: string
+  selectionText: string
+} => {
   const host = getCurrentDomainHost()
+  let editableElementSelectionText = ''
+  let selectionText = ''
   try {
     if (element) {
       const doc = element.ownerDocument || (element as any).document
@@ -377,6 +380,67 @@ export const getEditableElementSelectionTextOnSpecialHost = (
                   doc.querySelector('.page-block-children') ||
                   doc.querySelector('.page-block') ||
                   doc.querySelector('.root-block')
+              }
+              break
+            case 'writer.zoho.com':
+              {
+                pageContentRoot = document.querySelector('#editorpane')
+                if (pageContentRoot) {
+                  // zoho的选取内容是基于overlay的，所以需要获取overlay的内容
+                  const overlays = pageContentRoot.querySelectorAll('.overlay')
+                  const lineContentElements: HTMLElement[] = []
+                  if (overlays.length > 0) {
+                    overlays.forEach((overlay) => {
+                      const overlayPrevLineContent =
+                        overlay.parentElement?.querySelector('.zw-line-content')
+                      if (overlayPrevLineContent) {
+                        if (
+                          lineContentElements.find(
+                            (item) => item === overlayPrevLineContent,
+                          )
+                        ) {
+                          // do nothing
+                        } else {
+                          lineContentElements.push(
+                            overlayPrevLineContent as HTMLElement,
+                          )
+                        }
+                      }
+                    })
+                    const lineContentText = lineContentElements
+                      .map((lineContentElement) => lineContentElement.innerText)
+                      .join('')
+                      .trim()
+                      .replace(/\u200B/g, '')
+                    if (lineContentText) {
+                      editableElementSelectionText = lineContentText
+                    }
+                  } else {
+                    // 说明没有overlay，直接获取光标所在的内容
+                    const zohoCursor = pageContentRoot.querySelector('.cursor')
+                    if (zohoCursor) {
+                      // 计算元素从头到光标的位置
+                      const boundaryRange = document.createRange()
+                      boundaryRange.selectNode(pageContentRoot)
+                      const partOfStartToCaret = boundaryRange.cloneRange()
+                      partOfStartToCaret.setEndBefore(zohoCursor)
+                      win.getSelection()?.removeAllRanges()
+                      win.getSelection()?.addRange(partOfStartToCaret)
+                      const partOfStartToCaretText = win
+                        .getSelection()
+                        ?.toString()
+                        .trim()
+                        .replace(/\u200B/g, '')
+                      if (partOfStartToCaretText) {
+                        selectionText = partOfStartToCaretText
+                        return {
+                          editableElementSelectionText,
+                          selectionText,
+                        }
+                      }
+                    }
+                  }
+                }
               }
               break
             default:
@@ -403,7 +467,7 @@ export const getEditableElementSelectionTextOnSpecialHost = (
           if (pageContentRoot) {
             const boundaryRange = document.createRange()
             boundaryRange.selectNode(pageContentRoot)
-            const selectionString =
+            selectionText =
               win
                 .getSelection()
                 ?.toString()
@@ -411,9 +475,12 @@ export const getEditableElementSelectionTextOnSpecialHost = (
                 .replace(/\u200B/g, '') || pageContentRoot.innerText
             console.log(
               'getEditableElementSelectionTextOnSpecialHost : \t',
-              selectionString,
+              selectionText,
             )
-            return selectionString || ''
+            return {
+              selectionText,
+              editableElementSelectionText,
+            }
           } else {
             // TODO - 如果返回报错内容，可能被用户的prompt影响，所以返回空字符串
             console.log(
@@ -421,7 +488,10 @@ export const getEditableElementSelectionTextOnSpecialHost = (
               host,
             )
             // return "Sorry, we're unable to correctly retrieve the context on this website. Please try again by selecting the text."
-            return ''
+            return {
+              selectionText,
+              editableElementSelectionText,
+            }
           }
         }
       }
@@ -429,7 +499,10 @@ export const getEditableElementSelectionTextOnSpecialHost = (
   } catch (e) {
     console.error('getEditableElementSelectionTextOnSpecialHost error: \t', e)
   }
-  return ''
+  return {
+    selectionText,
+    editableElementSelectionText,
+  }
 }
 
 /**

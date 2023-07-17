@@ -164,10 +164,15 @@ const WritingMessageBox: FC<{
 const ContextText: FC = () => {
   const { currentSelection } = useRangy()
   const splitCenterText = useMemo(() => {
-    if (currentSelection?.selectionElement?.selectionText) {
-      const context = currentSelection.selectionElement.selectionText
-        .trim()
-        .replace(/\u200B/g, '')
+    if (
+      currentSelection?.selectionElement?.editableElementSelectionText ||
+      currentSelection?.selectionElement?.selectionText
+    ) {
+      const context =
+        currentSelection?.selectionElement?.editableElementSelectionText ||
+        currentSelection?.selectionElement?.selectionText
+          .trim()
+          .replace(/\u200B/g, '')
       const truncateString = (string: string, count: number) => {
         if (string.length <= count) {
           return {

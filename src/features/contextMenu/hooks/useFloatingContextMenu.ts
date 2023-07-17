@@ -69,36 +69,40 @@ const useFloatingContextMenu = () => {
           const selectionMarkerData = createSelectionMarker(
             virtualSelectionElement.target,
           )
-          const cloneSelectionElement = cloneDeep(virtualSelectionElement)
+          const saveSelectionData = cloneDeep(virtualSelectionElement)
           // 这里就是看看editable element是否有选中的文本
-          cloneSelectionElement.editableElementSelectionText =
+          saveSelectionData.editableElementSelectionText =
             selectionMarkerData.editableElementSelectionText
-          cloneSelectionElement.editableElementSelectionHTML =
+          saveSelectionData.editableElementSelectionHTML =
             selectionMarkerData.editableElementSelectionText
-          cloneSelectionElement.selectionText =
-            selectionMarkerData.selectionText
-          // 如果没有选中的文本，就试图获取整个editable element的上下文，并且区分host
+          saveSelectionData.selectionText = selectionMarkerData.selectionText
+          // 如果没有选中的文本，则看看是不是特殊处理的host
           if (
-            !cloneSelectionElement.editableElementSelectionText &&
-            !cloneSelectionElement.selectionText
+            !saveSelectionData.editableElementSelectionText &&
+            !saveSelectionData.selectionText
           ) {
-            selectionMarkerData.selectionText =
+            const specialHostSelectionData =
               getEditableElementSelectionTextOnSpecialHost(
                 virtualSelectionElement.target,
               )
+            selectionMarkerData.selectionText =
+              specialHostSelectionData.selectionText
+            selectionMarkerData.editableElementSelectionText =
+              specialHostSelectionData.editableElementSelectionText
             log.info(
               'Get special host selection text: \n',
-              selectionMarkerData.selectionText,
+              specialHostSelectionData.editableElementSelectionText ||
+                specialHostSelectionData.selectionText,
             )
           }
           if (selectionMarkerData) {
-            cloneSelectionElement.startMarkerId =
-              selectionMarkerData.startMarkerId
-            cloneSelectionElement.endMarkerId = selectionMarkerData.endMarkerId
-            cloneSelectionElement.selectionText =
-              selectionMarkerData.selectionText
+            saveSelectionData.startMarkerId = selectionMarkerData.startMarkerId
+            saveSelectionData.endMarkerId = selectionMarkerData.endMarkerId
+            saveSelectionData.selectionText = selectionMarkerData.selectionText
+            saveSelectionData.editableElementSelectionText =
+              selectionMarkerData.editableElementSelectionText
             // 更新selection rect
-            virtualSelectionElement = cloneSelectionElement
+            virtualSelectionElement = saveSelectionData
           }
         }
         console.log(

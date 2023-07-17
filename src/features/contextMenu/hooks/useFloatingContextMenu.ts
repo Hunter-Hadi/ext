@@ -115,8 +115,11 @@ const useFloatingContextMenu = () => {
             ...overwriteSelectionElement,
           }
         }
-        // 2. 如果当前有选中文本在可编辑元素上或者按下command + i, 则展开
+        debugger
+        // 2. 如果当前有选中文本在不可编辑元素上或者可编辑元素上有真正的选中文本在或者按下command + i, 则展开
         if (
+          (!virtualSelectionElement?.isEditableElement &&
+            virtualSelectionElement.selectionText) ||
           virtualSelectionElement?.editableElementSelectionText ||
           isCommandInsert
         ) {

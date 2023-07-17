@@ -1464,39 +1464,40 @@ export const getRichTextEditorLineText = (
           break
         case 'mail.google.com':
           {
-            let isNewLine = false
-            let editableElement = rangeElement
-            if (rangeElementTagName === 'div') {
-              if (rangeElement.childNodes.length === 1) {
-                if (
-                  rangeElement.childNodes[0].nodeName.toLowerCase() === 'br'
-                ) {
-                  isNewLine = true
-                  editableElement = rangeElement.parentElement as HTMLElement
-                }
-              }
-              if (editableElement.parentElement?.id) {
-                editableElement = editableElement.parentElement
-              }
-            }
-            if (rangeElementTagName === 'br') {
-              isNewLine = true
-              if (editableElement.parentElement?.id) {
-                editableElement = editableElement.parentElement
-              } else if (editableElement.parentElement?.parentElement?.id) {
-                editableElement = editableElement.parentElement.parentElement
-              }
-            }
-            const role = editableElement.getAttribute('role')
-            const editable = editableElement.getAttribute('g_editable')
-            if (role === 'textbox' && editable === 'true') {
-              // 如果是空行,直接返回空字符串
-              if (isNewLine) {
-                lineText = ''
-              } else {
-                lineText = rangeElement.innerText
-              }
-            }
+            // TODO 先不考虑gmail
+            // let isNewLine = false
+            // let editableElement = rangeElement
+            // if (rangeElementTagName === 'div') {
+            //   if (rangeElement.childNodes.length === 1) {
+            //     if (
+            //       rangeElement.childNodes[0].nodeName.toLowerCase() === 'br'
+            //     ) {
+            //       isNewLine = true
+            //       editableElement = rangeElement.parentElement as HTMLElement
+            //     }
+            //   }
+            //   if (editableElement.parentElement?.id) {
+            //     editableElement = editableElement.parentElement
+            //   }
+            // }
+            // if (rangeElementTagName === 'br') {
+            //   isNewLine = true
+            //   if (editableElement.parentElement?.id) {
+            //     editableElement = editableElement.parentElement
+            //   } else if (editableElement.parentElement?.parentElement?.id) {
+            //     editableElement = editableElement.parentElement.parentElement
+            //   }
+            // }
+            // const role = editableElement.getAttribute('role')
+            // const editable = editableElement.getAttribute('g_editable')
+            // if (role === 'textbox' && editable === 'true') {
+            //   // 如果是空行,直接返回空字符串
+            //   if (isNewLine) {
+            //     lineText = ''
+            //   } else {
+            //     lineText = rangeElement.innerText
+            //   }
+            // }
           }
           break
         case 'outlook.live.com':

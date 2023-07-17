@@ -1542,6 +1542,21 @@ export const getRichTextEditorLineText = (
             }
           }
           break
+        case 'writer.zoho.com':
+          {
+            const zohoCursor = document
+              .querySelector('#editorpane')
+              ?.querySelector('.cursor')
+            if (!zohoCursor) {
+              break
+            }
+            rangeElement = zohoCursor.parentElement as HTMLElement
+            if (zohoCursor?.previousElementSibling) {
+              rangeElement = zohoCursor.previousElementSibling as HTMLElement
+              lineText = rangeElement.innerText
+            }
+          }
+          break
         default:
           break
       }
@@ -1597,11 +1612,28 @@ export const showRichEditorLineTextPlaceholder = (
   placeholder.style.position = 'relative'
   placeholder.style.display = 'inline'
   placeholder.style.whiteSpace = 'nowrap'
+  placeholder.setAttribute('data-placeholder', placeholderText)
   const host = getCurrentDomainHost()
   if (host === 'larksuite.com') {
     placeholder.style.lineHeight = '18px'
+  } else if (host === 'writer.zoho.com') {
+    const fontConfig =
+      richTextEditorLineElement?.parentElement?.parentElement?.getAttribute(
+        'data-textformat',
+      )
+    try {
+      const size = JSON.parse(fontConfig || '{}').size || 12
+      placeholder.style.fontSize = `${Number(size)}pt`
+    } catch (e) {
+      placeholder.style.fontSize = '12pt'
+    }
+    // insert to first
+    richTextEditorLineElement.insertBefore(
+      placeholder,
+      richTextEditorLineElement.firstChild,
+    )
+    return
   }
-  placeholder.setAttribute('data-placeholder', placeholderText)
   if (richTextEditorLineElement.tagName.toLowerCase() === 'br') {
     // insert before
     richTextEditorLineElement.parentElement?.insertBefore(

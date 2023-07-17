@@ -120,6 +120,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
                 userInfo?.email
               } use has reached the limit.\n${JSON.stringify({
                 role: userInfo?.role,
+                usage: cache.usage,
               })}`,
               {
                 uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',

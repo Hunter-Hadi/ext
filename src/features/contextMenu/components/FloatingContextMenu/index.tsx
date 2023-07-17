@@ -696,6 +696,7 @@ const FloatingContextMenu: FC<{
                       <TextOnlyTooltip
                         floatingMenuTooltip
                         title={'Send to AI'}
+                        description={'⏎'}
                         placement={safePlacement.contextMenuPlacement}
                       >
                         <IconButton

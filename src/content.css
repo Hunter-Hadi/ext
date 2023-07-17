@@ -44,9 +44,9 @@
 /* max-ai placeholder end */
 
 /*notion start*/
-.notion-html [placeholder="Press ‘space’ for AI, ‘/’ for commands…"]:empty:after{
-  content: " ";
-}
+/*.notion-html [placeholder="Press ‘space’ for AI, ‘/’ for commands…"]:empty:after{*/
+/*  content: " ";*/
+/*}*/
 /*notion end*/
 
 /*gmail start */

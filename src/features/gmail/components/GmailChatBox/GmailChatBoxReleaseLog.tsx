@@ -5,7 +5,7 @@ import { APP_VERSION, RELEASE_LOG_URL } from '@/constants'
 import Link from '@mui/material/Link'
 
 const GmailChatBoxReleaseLog: FC = () => {
-  const ReleaseLogText = `Write & Draft with AI in any doc or text box.`
+  const ReleaseLogText = `Use Code Interpreter via ChatGPT Plus.`
   return (
     <Typography
       width={'100%'}

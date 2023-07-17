@@ -103,6 +103,9 @@ const GmailChatBoxInputActions: FC<{
         )}
         <TooltipButton
           title={'Send to AI'}
+          TooltipProps={{
+            description: '⏎',
+          }}
           sx={{ minWidth: 'unset', p: 1 }}
           disableElevation
           variant={'contained'}

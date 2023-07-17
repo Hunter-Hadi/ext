@@ -154,7 +154,7 @@ const UseChatGPTOptionsSettingPage = () => {
               </Stack>
             </CloseAlert>
             <LanguageSelect
-              label={'AI output language'}
+              label={'AI response language'}
               defaultValue={userSettingsRef.current.language}
               onChange={async (newLanguage) => {
                 await updateChromeExtensionSettings('language', newLanguage)

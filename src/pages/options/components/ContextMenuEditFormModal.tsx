@@ -361,7 +361,6 @@ The template can include any number of the following variables:
             <Stack>
               <Stack direction={'row'} alignItems="center">
                 <Typography variant={'body1'}>Visibility</Typography>
-                <TemplateTooltip />
               </Stack>
               {editNode.data.visibility && (
                 <>

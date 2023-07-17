@@ -365,13 +365,16 @@ const useInitRangy = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
-          const lastFocusRange = window
-            .getSelection()
-            ?.getRangeAt(0)
-            .cloneRange()
-          setFloatingDropdownMenuLastFocusRange({
-            range: lastFocusRange || null,
-          })
+          const selectionCount = window.getSelection()?.rangeCount
+          if (selectionCount && selectionCount > 0) {
+            const lastFocusRange = window
+              .getSelection()
+              ?.getRangeAt(0)
+              ?.cloneRange()
+            setFloatingDropdownMenuLastFocusRange({
+              range: lastFocusRange || null,
+            })
+          }
           const { command } = data
           const isPressCommandI = command === 'show-floating-menu'
           // 如果没有selectionElementRef，有可能用户打开了一个自动focus的modal进行输入并且直接按下了快捷键

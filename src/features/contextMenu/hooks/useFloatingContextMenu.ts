@@ -217,6 +217,8 @@ const useFloatingContextMenu = () => {
     if (show && !floatingDropdownMenu.open && tempSelection) {
       showFloatingContextMenuWithVirtualElement(
         tempSelection.selectionElement as IVirtualIframeSelectionElement,
+        {},
+        true,
       )
     }
   }

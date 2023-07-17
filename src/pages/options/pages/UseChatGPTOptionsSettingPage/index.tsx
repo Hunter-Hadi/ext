@@ -132,9 +132,9 @@ const UseChatGPTOptionsSettingPage = () => {
               fontWeight={700}
               mb={2}
               component={'h2'}
-              id={'ai-output-language'}
+              id={'ai-response-language'}
             >
-              AI output language
+              AI response language
             </Typography>
             <CloseAlert
               icon={<></>}

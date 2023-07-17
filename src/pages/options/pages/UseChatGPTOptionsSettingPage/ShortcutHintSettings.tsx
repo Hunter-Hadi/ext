@@ -4,22 +4,17 @@ import React, { FC, useEffect, useState } from 'react'
 import FormControl from '@mui/material/FormControl'
 import Switch from '@mui/material/Switch'
 import CloseAlert from '@/components/CloseAlert'
-import Box from '@mui/material/Box'
-import Browser from 'webextension-polyfill'
 import useCommands from '@/hooks/useCommands'
 import { newShortcutHint } from '@/features/contextMenu/utils/selectionHelper'
 import { usePrevious } from '@/hooks/usePrevious'
-
-const ImageUrl = Browser.runtime.getURL(
-  `/assets/USE_CHAT_GPT_AI/images/settings/shortcut-hint-example.png`,
-)
+import { Card } from '@mui/material'
 
 const ShortcutHintSettings: FC<{
   defaultValue?: boolean
   onChange?: (value: boolean) => void
 }> = ({ defaultValue, onChange }) => {
-  const { chatBoxShortCutKey } = useCommands()
-  const shortHint = newShortcutHint(chatBoxShortCutKey || '⌘J')
+  const { floatingMenuShortCutKey } = useCommands()
+  const shortHint = newShortcutHint(floatingMenuShortCutKey || '⌘I')
   const [checked, setChecked] = useState<boolean>(defaultValue ?? true)
   const prevChecked = usePrevious(checked)
   useEffect(() => {
@@ -59,29 +54,22 @@ const ShortcutHintSettings: FC<{
           <Typography>Visible</Typography>
         </Stack>
       </FormControl>
-      <Box
+      <Card
+        elevation={0}
         sx={{
-          position: 'relative',
+          boxShadow: `0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)`,
+          borderRadius: '4px',
+          px: 2,
+          py: 1,
+          height: '100px',
         }}
       >
         {checked && (
-          <Typography
-            color={'rgba(0,0,0,0.6)'}
-            position="absolute"
-            left={42}
-            top={10}
-          >
+          <Typography color={'text.secondary'} fontSize={'14px'}>
             {shortHint}
           </Typography>
         )}
-        <img
-          style={{
-            width: '100%',
-          }}
-          src={ImageUrl}
-          alt={'Gmail Assistant'}
-        />
-      </Box>
+      </Card>
     </Stack>
   )
 }

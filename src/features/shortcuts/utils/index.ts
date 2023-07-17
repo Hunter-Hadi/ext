@@ -119,7 +119,7 @@ export const templateStaticWords =
         // 'USER_INPUT',
         // 'LAST_ACTION_OUTPUT',
         'SELECTED_TEXT',
-        'AI_OUTPUT_LANGUAGE',
+        'AI_RESPONSE_LANGUAGE',
         'CURRENT_WEBSITE_DOMAIN',
         // 'LAST_AI_OUTPUT',
       ]
@@ -150,12 +150,12 @@ export const templateWordToExamples = (
           'translate the following text to English: {{SELECTED_TEXT}}',
         ],
       }
-    case 'AI_OUTPUT_LANGUAGE':
+    case 'AI_RESPONSE_LANGUAGE':
       return {
         description: `This prompt template variable will be replaced with the "AI output language" selected on the Settings page.\nIf uncertain of the "Settings" page location, simply click the "Settings" icon found in the top bar within the side bar.`,
         examples: [
-          `respond in {{AI_OUTPUT_LANGUAGE}}`,
-          `you will reply with ideas in {{AI_OUTPUT_LANGUAGE}}`,
+          `respond in {{AI_RESPONSE_LANGUAGE}}`,
+          `you will reply with ideas in {{AI_RESPONSE_LANGUAGE}}`,
         ],
       }
     case 'GMAIL_EMAIL_CONTEXT':

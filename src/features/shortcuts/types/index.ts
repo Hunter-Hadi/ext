@@ -14,6 +14,7 @@ export const SHORTCUT_ENGINE_BUILD_IN_VARIABLES = [
   'CURRENT_WEBSITE_DOMAIN',
   // settings
   'AI_OUTPUT_LANGUAGE',
+  'AI_RESPONSE_LANGUAGE',
 ] as const
 export type IShortcutEngineBuiltInVariableType =
   (typeof SHORTCUT_ENGINE_BUILD_IN_VARIABLES)[number]

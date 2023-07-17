@@ -307,7 +307,7 @@ const ContextMenuEditForm: FC<{
                       placeholder={`The prompt template for ChatGPT.
 The template can include any number of the following variables:
 {{SELECTED_TEXT}}
-{{AI_OUTPUT_LANGUAGE}}
+{{AI_RESPONSE_LANGUAGE}}
 {{CURRENT_WEBSITE_DOMAIN}}`}
                       width={'100%'}
                       height={'100%'}

@@ -68,6 +68,8 @@ const useShortCutsParameters = () => {
           `#${ROOT_CHAT_BOX_INPUT_ID}`,
         )?.value || '',
       LAST_AI_OUTPUT: chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
+      AI_RESPONSE_LANGUAGE:
+        appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
       AI_OUTPUT_LANGUAGE:
         appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
       CURRENT_WEBSITE_DOMAIN:

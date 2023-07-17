@@ -47,6 +47,15 @@ export const FloatingDropdownMenuState = atom<{
   },
 })
 
+export const FloatingDropdownMenuLastFocusRangeState = atom<{
+  range: Range | null
+}>({
+  key: 'FloatingDropdownMenuLastFocusRangeState',
+  default: {
+    range: null,
+  },
+})
+
 // AI input下拉菜单的继续操作内容选项
 // AI input dropdown menu system items
 export const FloatingDropdownMenuSystemItemsState = atom<{

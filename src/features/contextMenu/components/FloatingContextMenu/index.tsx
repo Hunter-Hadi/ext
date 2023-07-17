@@ -8,9 +8,10 @@ import {
   useInteractions,
 } from '@floating-ui/react'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import {
   FloatingContextMenuDraftState,
+  FloatingDropdownMenuLastFocusRangeState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -79,6 +80,10 @@ const FloatingContextMenu: FC<{
   const { currentSelectionRef } = useRangy()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
+  )
+  // 打开floatingMenu前最后的选区
+  const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
+    FloatingDropdownMenuLastFocusRangeState,
   )
   const [floatingContextMenuDraft, setFloatingContextMenuDraft] =
     useRecoilState(FloatingContextMenuDraftState)
@@ -571,6 +576,17 @@ const FloatingContextMenu: FC<{
             setFloatingDropdownMenu({
               open: false,
               rootRect: null,
+            })
+            setFloatingDropdownMenuLastFocusRange((prevState) => {
+              if (prevState.range) {
+                setTimeout(() => {
+                  window.getSelection()?.removeAllRanges()
+                  window.getSelection()?.addRange(prevState.range!)
+                }, 100)
+              }
+              return {
+                range: null,
+              }
             })
           }
           console.log(event.key)

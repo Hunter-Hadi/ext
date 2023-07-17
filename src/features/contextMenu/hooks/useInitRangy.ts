@@ -10,6 +10,7 @@ import debounce from 'lodash-es/debounce'
 import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
 import {
   FloatingContextMenuDraftState,
+  FloatingDropdownMenuLastFocusRangeState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
   useFloatingContextMenu,
@@ -17,7 +18,7 @@ import {
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { listenIframeMessage } from '@/iframe'
 import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import Log from '@/utils/Log'
@@ -68,6 +69,11 @@ const useInitRangy = () => {
   const [, setFloatingContextMenuDraft] = useRecoilState(
     FloatingContextMenuDraftState,
   )
+  // 保存打开floatingMenu前最后的选区
+  const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
+    FloatingDropdownMenuLastFocusRangeState,
+  )
+  // 绑定点击或者按键的placeholder事件
   useBindRichTextEditorLineTextPlaceholder()
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
     useRecoilState(FloatingDropdownMenuSystemItemsState)
@@ -122,6 +128,17 @@ const useInitRangy = () => {
             hideRangy()
             removeAllSelectionMarker()
             removeAllRange()
+            setFloatingDropdownMenuLastFocusRange((prevState) => {
+              if (prevState.range) {
+                setTimeout(() => {
+                  window.getSelection()?.removeAllRanges()
+                  window.getSelection()?.addRange(prevState.range!)
+                }, 100)
+              }
+              return {
+                range: null,
+              }
+            })
             return
           }
         }
@@ -348,6 +365,13 @@ const useInitRangy = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
+          const lastFocusRange = window
+            .getSelection()
+            ?.getRangeAt(0)
+            .cloneRange()
+          setFloatingDropdownMenuLastFocusRange({
+            range: lastFocusRange || null,
+          })
           const { command } = data
           const isPressCommandI = command === 'show-floating-menu'
           // 如果没有selectionElementRef，有可能用户打开了一个自动focus的modal进行输入并且直接按下了快捷键

@@ -2,7 +2,10 @@ import forEach from 'lodash-es/forEach'
 import groupBy from 'lodash-es/groupBy'
 import { flip, offset, shift, size } from '@floating-ui/react'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { ROOT_FLOATING_REFERENCE_ELEMENT_ID } from '@/constants'
+import {
+  ROOT_CHAT_BOX_INPUT_ID,
+  ROOT_FLOATING_REFERENCE_ELEMENT_ID,
+} from '@/constants'
 import {
   ContextMenuDraftType,
   IContextMenuItem,
@@ -13,7 +16,8 @@ import {
   CONTEXT_MENU_DRAFT_LIST,
   CONTEXT_MENU_DRAFT_TYPES,
 } from '@/features/contextMenu/constants'
-import { getAppContextMenuElement } from '@/utils'
+import { getAppContextMenuElement, getAppRootElement } from '@/utils'
+import { getMediator } from '@/store/InputMediator'
 
 export const groupByContextMenuItem = (
   items: IContextMenuItem[],
@@ -477,4 +481,32 @@ export const getDraftContextMenuTypeById = (
     }
   })
   return typeName
+}
+
+export const floatingContextMenuSaveDraftToChatBox = () => {
+  const floatingContextMenuDraft = getMediator(
+    'floatingMenuInputMediator',
+  ).getInputValue()
+  if (!floatingContextMenuDraft) {
+    return
+  }
+  const maxTime = 3 * 1000
+  const timer = setInterval(() => {
+    const appRootElement = getAppRootElement()
+    const chatBoxInput = appRootElement?.querySelector(
+      `#${ROOT_CHAT_BOX_INPUT_ID}`,
+    ) as HTMLInputElement
+    if (chatBoxInput) {
+      clearInterval(timer)
+      getMediator('chatBoxInputMediator').updateInputValue(
+        floatingContextMenuDraft,
+      )
+      setTimeout(() => {
+        chatBoxInput?.focus()
+      }, 100)
+    }
+  }, 50)
+  setTimeout(() => {
+    clearInterval(timer)
+  }, maxTime)
 }

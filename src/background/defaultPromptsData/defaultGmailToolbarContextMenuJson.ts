@@ -259,7 +259,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'I will give you text content, you will correct the spelling and grammar mistakes of this text. \nKeep the meaning the same. Make sure the re-written content\'s number of words is as close to the original text\'s number of words as possible. Do not alter the original structure and formatting outlined in any way.\nIf the original text has spelling or grammar mistakes, only correct any spelling or grammar mistakes if necessary, and do not make any unnecessary improvements.\nIf the original text has no spelling or grammar mistakes, just echo the original text.\nNow, using the concepts above, fix spelling or grammar mistakes (if any) for the following text. Only give me the output and nothing else. Respond in {{AI_RESPONSE_LANGUAGE}}:\n"""\n{{AI_RESPONSE_LANGUAGE}}\n"""',
+              'I will give you text content, you will correct the spelling and grammar mistakes of this text. \nKeep the meaning the same. Make sure the re-written content\'s number of words is as close to the original text\'s number of words as possible. Do not alter the original structure and formatting outlined in any way.\nIf the original text has spelling or grammar mistakes, only correct any spelling or grammar mistakes if necessary, and do not make any unnecessary improvements.\nIf the original text has no spelling or grammar mistakes, just echo the original text.\nNow, using the concepts above, fix spelling or grammar mistakes (if any) for the following text. Only give me the output and nothing else. Respond in {{AI_RESPONSE_LANGUAGE}}:\n"""\n{{GMAIL_DRAFT_CONTEXT}}\n"""',
           },
         },
         {

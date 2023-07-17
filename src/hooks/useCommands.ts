@@ -4,7 +4,18 @@ import isArray from 'lodash-es/isArray'
 
 const useCommands = () => {
   const [loaded, setLoaded] = useState<boolean>(false)
-  const [shortCutKey, setShortCutKey] = useState<undefined | string>(undefined)
+  const [chatBoxShortCutKey, setChatBoxShortCutKey] = useState<
+    undefined | string
+  >(undefined)
+  const [floatingMenuShortCutKey, setFloatingMenuShortCutKey] = useState<
+    undefined | string
+  >(undefined)
+  const [commands, setCommands] = useState<
+    Array<{
+      name: string
+      shortcut: string
+    }>
+  >([])
   useEffect(() => {
     let destroyed = false
     const updateCommandKey = async () => {
@@ -12,16 +23,22 @@ const useCommands = () => {
         return
       }
       const commands = await getChromeExtensionCommands()
+      let shortCutKey: string | undefined = undefined
+      let floatingMenuShortCutKey: string | undefined = undefined
       if (isArray(commands) && commands.length > 0) {
-        const shortCutCommand = commands.find((command) => {
-          return command.name === '_execute_action'
+        commands.forEach((command) => {
+          if (command.name === '_execute_action') {
+            shortCutKey = command.shortcut
+          } else if (command.name === 'show-floating-menu') {
+            floatingMenuShortCutKey = command.shortcut
+          }
         })
-        if (shortCutCommand) {
-          setShortCutKey(shortCutCommand?.shortcut)
-        }
+        setCommands(commands as any)
       } else {
-        setShortCutKey(undefined)
+        setCommands([])
       }
+      setChatBoxShortCutKey(shortCutKey)
+      setFloatingMenuShortCutKey(floatingMenuShortCutKey)
     }
     window.addEventListener('focus', updateCommandKey)
     updateCommandKey().then(() => {
@@ -37,7 +54,9 @@ const useCommands = () => {
   }, [])
   return {
     loaded,
-    shortCutKey,
+    chatBoxShortCutKey,
+    floatingMenuShortCutKey,
+    commands,
   }
 }
 export default useCommands

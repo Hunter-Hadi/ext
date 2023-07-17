@@ -31,11 +31,9 @@ import {
   createSelectionElement,
   getEditableElement,
   getSelectionBoundaryElement,
-  newShortcutHint,
   removeAllRange,
   removeAllSelectionMarker,
-  removeEditableElementPlaceholder,
-  updateEditableElementPlaceholder,
+  useBindRichTextEditorLineTextPlaceholder,
 } from '@/features/contextMenu/utils/selectionHelper'
 import {
   ROOT_CLIPBOARD_ID,
@@ -65,11 +63,12 @@ const useInitRangy = () => {
   } = useRangy()
   const appSettings = useRecoilValue(AppSettingsState)
   const userSettings = appSettings.userSettings
-  const { shortCutKey } = useCommands()
+  const { chatBoxShortCutKey } = useCommands()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [, setFloatingContextMenuDraft] = useRecoilState(
     FloatingContextMenuDraftState,
   )
+  useBindRichTextEditorLineTextPlaceholder()
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
     useRecoilState(FloatingDropdownMenuSystemItemsState)
   const targetElementRef = useRef<HTMLElement | null>(null)
@@ -258,20 +257,11 @@ const useInitRangy = () => {
         }
         RangyLog.info('save targetElement ref', editableElement)
         targetElementRef.current = editableElement
-        if (userSettings?.shortcutHintEnable && shortCutKey) {
-          shortCutKey &&
-            updateEditableElementPlaceholder(
-              editableElement,
-              newShortcutHint(shortCutKey),
-            )
-        }
         editableElement.addEventListener('mouseup', mouseUpListener)
         editableElement.addEventListener('keyup', keyupListener)
       } else {
         RangyLog.info('clear targetElement ref')
         targetElementRef.current = null
-        shortCutKey &&
-          removeEditableElementPlaceholder(newShortcutHint(shortCutKey))
       }
     }
     document.addEventListener('mousedown', mouseDownListener)
@@ -285,15 +275,9 @@ const useInitRangy = () => {
   }, [
     rangy,
     saveHighlightedRangeAndShowContextMenu,
-    shortCutKey,
+    chatBoxShortCutKey,
     userSettings?.shortcutHintEnable,
   ])
-
-  useEffect(() => {
-    if (userSettings?.shortcutHintEnable === false && shortCutKey) {
-      removeEditableElementPlaceholder(newShortcutHint(shortCutKey))
-    }
-  }, [userSettings?.shortcutHintEnable, shortCutKey])
 
   // selection事件
   useEffect(() => {
@@ -364,6 +348,8 @@ const useInitRangy = () => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':
         {
+          const { command } = data
+          const isPressCommandI = command === 'show-floating-menu'
           // 如果没有selectionElementRef，有可能用户打开了一个自动focus的modal进行输入并且直接按下了快捷键
           // 例如: linkedin的消息输入框
           if (!selectionElementRef.current) {
@@ -387,6 +373,8 @@ const useInitRangy = () => {
           )
           showFloatingContextMenuWithVirtualElement(
             selectionElementRef.current as IVirtualIframeSelectionElement,
+            {},
+            isPressCommandI,
           )
           if (selectionElementRef.current) {
             // 因为已经打开了，所以释放掉这个ref

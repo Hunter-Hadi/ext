@@ -14,6 +14,8 @@ import {
   ROOT_CLIPBOARD_ID,
   ROOT_FLOATING_INPUT_ID,
 } from '@/constants'
+import { useEffect } from 'react'
+import useCommands from '@/hooks/useCommands'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = [
   'mail.google.com',
@@ -1085,6 +1087,7 @@ export const getSelectionBoundaryElement = (startContainer = true) => {
 /**
  * 移除修改过placeholder的元素
  * @param placeholderText
+ * @deprecated
  */
 export const removeEditableElementPlaceholder = (placeholderText: string) => {
   if (typeof document === 'undefined') {
@@ -1106,6 +1109,7 @@ export const removeEditableElementPlaceholder = (placeholderText: string) => {
  * 更新没有placeholder的元素
  * @param element
  * @param placeholderText
+ * @deprecated
  */
 export const updateEditableElementPlaceholder = (
   element: HTMLElement,
@@ -1307,6 +1311,275 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       selection.collapseToEnd()
     }
   }
+}
+
+/**
+ * 获取富文本编辑器光标所在的行的文本
+ *
+ */
+export const getRichTextEditorLineText = (
+  event: MouseEvent | KeyboardEvent,
+) => {
+  try {
+    const element = event.target as HTMLElement
+    const doc = element.ownerDocument || (element as any).document
+    const selection = doc.getSelection()
+    if (selection && selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0)
+      let rangeElement: HTMLElement = (range.startContainer ||
+        range.endContainer) as HTMLElement
+      // check is text node
+      if (rangeElement && rangeElement.nodeType === 3) {
+        rangeElement = rangeElement.parentNode as HTMLElement
+      } else if (
+        rangeElement.childNodes.length > 0 &&
+        range.startOffset === range.endOffset &&
+        range.startOffset >= 0
+      ) {
+        // 不是text node, 说明是选中的元素
+        // 选取的元素的子元素
+        const startContainer = range.startContainer
+        const startOffset = range.startOffset
+        const startNode = startContainer.childNodes[startOffset]
+        if (
+          startNode.isSameNode(
+            document.getElementById('max-ai-rich-text-editor-placeholder'),
+          )
+        ) {
+          if (startNode.nextSibling) {
+            rangeElement = (startNode as HTMLElement).nextSibling as HTMLElement
+          }
+        } else if (startNode) {
+          rangeElement = startNode as HTMLElement
+        }
+      }
+      console.log('lineText rangeElement: \t', rangeElement)
+      const rangeElementTagName = rangeElement?.tagName?.toLowerCase()
+      const host = getCurrentDomainHost()
+      let lineText = '1'
+      // 白名单模式来做
+      switch (host) {
+        case 'notion.so': {
+          // TODO 先不考虑notion
+          // if (
+          //   rangeElement.classList.contains('notranslate') &&
+          //   rangeElement.getAttribute('placeholder')?.includes('Press')
+          // ) {
+          //   lineText = rangeElement.innerText
+          // }
+          break
+        }
+        case 'larksuite.com':
+          {
+            if (
+              rangeElementTagName === 'span' &&
+              rangeElement.getAttribute('data-string') === 'true'
+            ) {
+              // h1-h6不需要
+              if (
+                rangeElement?.parentElement?.parentElement?.getAttribute(
+                  'data-placeholder',
+                )
+              ) {
+                break
+              }
+              lineText = rangeElement.innerText
+            }
+          }
+          break
+        case 'mail.google.com':
+          {
+            let isNewLine = false
+            let editableElement = rangeElement
+            if (rangeElementTagName === 'div') {
+              if (rangeElement.childNodes.length === 1) {
+                if (
+                  rangeElement.childNodes[0].nodeName.toLowerCase() === 'br'
+                ) {
+                  isNewLine = true
+                  editableElement = rangeElement.parentElement as HTMLElement
+                }
+              }
+              if (editableElement.parentElement?.id) {
+                editableElement = editableElement.parentElement
+              }
+            }
+            if (rangeElementTagName === 'br') {
+              isNewLine = true
+              if (editableElement.parentElement?.id) {
+                editableElement = editableElement.parentElement
+              } else if (editableElement.parentElement?.parentElement?.id) {
+                editableElement = editableElement.parentElement.parentElement
+              }
+            }
+            const role = editableElement.getAttribute('role')
+            const editable = editableElement.getAttribute('g_editable')
+            if (role === 'textbox' && editable === 'true') {
+              // 如果是空行,直接返回空字符串
+              if (isNewLine) {
+                lineText = ''
+              } else {
+                lineText = rangeElement.innerText
+              }
+            }
+          }
+          break
+        case 'outlook.live.com':
+          {
+            let isNewLine = false
+            let editableElement = rangeElement
+            if (location.href.startsWith('https://outlook.live.com/mail/')) {
+              console.log(
+                'lineText outlook.live.com rangeElement: \t',
+                rangeElement,
+              )
+              if (rangeElementTagName === 'br') {
+                isNewLine = true
+                if (rangeElement?.parentElement?.parentElement) {
+                  editableElement = rangeElement.parentElement
+                    .parentElement as HTMLElement
+                }
+              }
+              if (
+                rangeElementTagName === 'span' ||
+                rangeElementTagName === 'div'
+              ) {
+                if (rangeElement.childNodes.length === 1) {
+                  if (
+                    rangeElement.childNodes[0].nodeName.toLowerCase() === 'br'
+                  ) {
+                    isNewLine = true
+                    editableElement = rangeElement.parentElement as HTMLElement
+                  }
+                }
+              }
+              const role = editableElement.getAttribute('role')
+              const contenteditable =
+                editableElement.getAttribute('contenteditable')
+              if (role === 'textbox' && contenteditable === 'true') {
+                // 如果是空行,直接返回空字符串
+                if (isNewLine) {
+                  lineText = ''
+                } else {
+                  lineText = rangeElement.innerText
+                }
+              }
+            }
+          }
+          break
+        default:
+          break
+      }
+      return {
+        richTextEditorLineText: lineText.trim().replace(/\u200B/g, ''),
+        richTextEditorLineTextElement: rangeElement,
+      }
+    }
+    return {
+      richTextEditorLineText: '1',
+      richTextEditorLineTextElement: null,
+    }
+  } catch (e) {
+    console.log('getSelectionLineText error: \t', e)
+    return {
+      richTextEditorLineText: '1',
+      richTextEditorLineTextElement: null,
+    }
+  }
+}
+export const showRichEditorLineTextPlaceholder = (
+  richTextEditorLineElement: HTMLElement,
+  placeholderText: string,
+) => {
+  const computedStyle = window.getComputedStyle(richTextEditorLineElement)
+  // const position = computedStyle.getPropertyValue('position')
+  // get font size, background color, color
+  // get font family
+  // get font weight
+  const fontSize = computedStyle.getPropertyValue('font-size')
+  // const backgroundColor = computedStyle.getPropertyValue('background-color')
+  const color = computedStyle.getPropertyValue('color')
+  const fontFamily = computedStyle.getPropertyValue('font-family')
+  const fontWeight = computedStyle.getPropertyValue('font-weight')
+  const fontStyle = computedStyle.getPropertyValue('font-style')
+  // const lineHeight = computedStyle.getPropertyValue('lineHeight')
+  hideRichEditorLineTextPlaceholder()
+  // create absolute placeholder
+  const placeholder = document.createElement('span')
+  placeholder.id = 'max-ai-rich-text-editor-placeholder'
+  placeholder.style.fontSize = fontSize
+  placeholder.style.color = color
+  placeholder.style.fontFamily = fontFamily
+  placeholder.style.fontWeight = fontWeight
+  placeholder.style.fontStyle = fontStyle
+  placeholder.style.zIndex = '999999999'
+  placeholder.style.pointerEvents = 'none'
+  placeholder.style.opacity = '0.7'
+  placeholder.style.position = 'relative'
+  placeholder.style.display = 'inline'
+  placeholder.style.whiteSpace = 'nowrap'
+  const host = getCurrentDomainHost()
+  if (host === 'larksuite.com') {
+    placeholder.style.lineHeight = '18px'
+  }
+  placeholder.setAttribute('data-placeholder', placeholderText)
+  if (richTextEditorLineElement.tagName.toLowerCase() === 'br') {
+    // insert before
+    richTextEditorLineElement.parentElement?.insertBefore(
+      placeholder,
+      richTextEditorLineElement,
+    )
+  } else {
+    richTextEditorLineElement.appendChild(placeholder)
+  }
+}
+
+export const hideRichEditorLineTextPlaceholder = () => {
+  document.getElementById('max-ai-rich-text-editor-placeholder')?.remove()
+}
+
+export const useBindRichTextEditorLineTextPlaceholder = () => {
+  const { chatBoxShortCutKey, floatingMenuShortCutKey } = useCommands()
+  useEffect(() => {
+    const richTextEditorHandle = (event: MouseEvent | KeyboardEvent) => {
+      console.log('lineText', event)
+      const { richTextEditorLineText, richTextEditorLineTextElement } =
+        getRichTextEditorLineText(event)
+      if (!richTextEditorLineText && richTextEditorLineTextElement) {
+        console.log('lineText show placeholder', richTextEditorLineTextElement)
+        const placeholderText = `Press '${chatBoxShortCutKey}' for AI, '${floatingMenuShortCutKey}' for compose...`
+        showRichEditorLineTextPlaceholder(
+          richTextEditorLineTextElement,
+          placeholderText,
+        )
+      } else {
+        console.log('lineText hide placeholder')
+        hideRichEditorLineTextPlaceholder()
+      }
+    }
+    const placeholderKeyUp = (event: KeyboardEvent) => {
+      richTextEditorHandle(event)
+    }
+    const placeholderKeyDown = (event: KeyboardEvent) => {
+      //
+    }
+    const placeholderMouseUp = (event: MouseEvent) => {
+      richTextEditorHandle(event)
+    }
+    const placeholderFocus = (event: FocusEvent) => {
+      richTextEditorHandle(event as any)
+    }
+    document.addEventListener('focus', placeholderFocus, true)
+    document.addEventListener('keyup', placeholderKeyUp, true)
+    document.addEventListener('keydown', placeholderKeyDown, true)
+    document.addEventListener('mouseup', placeholderMouseUp, true)
+    return () => {
+      document.removeEventListener('focus', placeholderFocus, true)
+      document.removeEventListener('keyup', placeholderKeyUp, true)
+      document.removeEventListener('keydown', placeholderKeyDown, true)
+      document.removeEventListener('mouseup', placeholderMouseUp, true)
+    }
+  }, [chatBoxShortCutKey, floatingMenuShortCutKey])
 }
 
 export const newShortcutHint = (shortCutKey: string) =>

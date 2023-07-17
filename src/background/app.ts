@@ -217,6 +217,22 @@ const initChromeExtensionCommands = () => {
             'Client_listenOpenChatMessageBox',
             {
               type: 'shortcut',
+              command,
+            },
+          )
+        }
+      } else if (command === 'show-floating-menu') {
+        const currentTab = await Browser.tabs.query({
+          active: true,
+        })
+        const tab = currentTab[0]
+        if (tab && tab.id) {
+          await backgroundSendClientMessage(
+            tab.id,
+            'Client_listenOpenChatMessageBox',
+            {
+              type: 'shortcut',
+              command,
             },
           )
         }

@@ -18,8 +18,8 @@ const ChatGPTGmailAssistantSetting: FC<{
   defaultValue?: boolean
   onChange?: (value: boolean) => void
 }> = ({ defaultValue, onChange }) => {
-  const { shortCutKey } = useCommands()
-  const shortHint = newShortcutHint(shortCutKey || '⌘J')
+  const { chatBoxShortCutKey } = useCommands()
+  const shortHint = newShortcutHint(chatBoxShortCutKey || '⌘J')
   const [checked, setChecked] = useState<boolean>(defaultValue ?? true)
   const prevChecked = usePrevious(checked)
   useEffect(() => {

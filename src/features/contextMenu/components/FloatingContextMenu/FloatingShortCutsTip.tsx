@@ -17,7 +17,7 @@ const FloatingShortCutsTip: FC = () => {
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const [chatBoxWidth, setChatBoxWidth] = useState(16)
   const [buttonShow, setButtonShow] = useState(3)
-  const { shortCutKey } = useCommands()
+  const { chatBoxShortCutKey } = useCommands()
   useEffect(() => {
     if (textSelectPopupButtonSettings?.buttonVisible && !closeBeforeRefresh) {
       return
@@ -56,7 +56,7 @@ const FloatingShortCutsTip: FC = () => {
   return null
   return (
     <>
-      {shortCutKey ? (
+      {chatBoxShortCutKey ? (
         <Box
           className={'usechatgpt-ai__context-menu--handle-button'}
           sx={{
@@ -82,7 +82,7 @@ const FloatingShortCutsTip: FC = () => {
             noWrap
             sx={{ px: '10px', py: '4px' }}
           >
-            {shortCutKey}
+            {chatBoxShortCutKey}
           </Typography>
         </Box>
       ) : (

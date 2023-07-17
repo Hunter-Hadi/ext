@@ -29,7 +29,7 @@ const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
   const { tempSelection, show } = useRangy()
-  const { shortCutKey } = useCommands()
+  const { chatBoxShortCutKey } = useCommands()
   const textSelectPopupButtonSettings =
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const updateSelectedId = useSetRecoilState(
@@ -180,7 +180,7 @@ const ClickContextMenuButton: FC<{
           TooltipProps={{
             floatingMenuTooltip: true,
             placement,
-            description: shortCutKey,
+            description: chatBoxShortCutKey,
             sx: {
               maxWidth: 360,
             },

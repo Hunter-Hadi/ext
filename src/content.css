@@ -18,6 +18,38 @@
 #USE_CHAT_GPT_AI_ROOT.close {
   opacity: 0;
 }
+
+/* max-ai placeholder */
+#max-ai-rich-text-editor-placeholder {
+  user-select: none;
+}
+#max-ai-rich-text-editor-placeholder:before {
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 2px;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  text-indent: 0;
+}
+/* max-ai placeholder end */
+
+/*notion start*/
+.notion-html [placeholder="Press ‘space’ for AI, ‘/’ for commands…"]:empty:after{
+  content: " ";
+}
+/*notion end*/
+
+/*gmail start */
 .usechatgpt-ai__gmail-toolbar-button-group{
   transition: all 0.1s ease-in-out;
 }
@@ -93,6 +125,9 @@ use-chat-gpt-ai,
 #USE_CHAT_GPT_AI_ROOT_Wrapper{
   visibility: visible!important;
 }
+
+/*gmail end*/
+
 
 /*react contexify css ⬇️*/
 :root {

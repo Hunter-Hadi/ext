@@ -13,11 +13,11 @@ const FloatingContextMenuOpenSidebarButton: FC<{
 }> = (props) => {
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
-  const { shortCutKey } = useCommands()
+  const { chatBoxShortCutKey } = useCommands()
   return (
     <TextOnlyTooltip
       floatingMenuTooltip
-      description={shortCutKey}
+      description={chatBoxShortCutKey}
       title={'Switch to sidebar'}
       placement={'bottom'}
     >

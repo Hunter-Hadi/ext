@@ -33,11 +33,17 @@ const useFloatingContextMenu = () => {
   /**
    * 展示floating menu 基于virtual selection
    * @param element
+   * @since 2023-06-19
+   * @version 1.1.0
+   * @changelog
+   * - 1.0.0: chat box和floating menu的展开逻辑共用插件的快捷键
+   * - 1.1.0: floating menu只会在有选中文本的可编辑元素上或者按下command + i展开，其余情况展开chat box
    */
   const showFloatingContextMenuWithVirtualElement = useCallback(
     (
       element?: IVirtualIframeSelectionElement,
       overwriteSelectionElement?: Partial<IVirtualIframeSelectionElement>,
+      isCommandInsert?: boolean,
     ) => {
       let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
         element
@@ -104,27 +110,53 @@ const useFloatingContextMenu = () => {
             ...overwriteSelectionElement,
           }
         }
-        // 2. 展示floating menu
-        saveCurrentSelection({
-          selectionText:
-            virtualSelectionElement.editableElementSelectionText ||
-            virtualSelectionElement.selectionText ||
-            '',
-          selectionHTML:
-            virtualSelectionElement.editableElementSelectionText ||
-            virtualSelectionElement.selectionText ||
-            '',
-          selectionRect: virtualSelectionElement.selectionRect,
-          activeElement: virtualSelectionElement.target as HTMLElement,
-          selectionInputAble: virtualSelectionElement.isEditableElement,
-          selectionElement: virtualSelectionElement,
-        })
-        // 3. 隐藏rangy
-        hideRangy()
-        setFloatingDropdownMenu({
-          open: true,
-          rootRect: computedRectPosition(virtualSelectionElement.selectionRect),
-        })
+        // 2. 如果当前有选中文本在可编辑元素上或者按下command + i, 则展开
+        if (
+          virtualSelectionElement?.editableElementSelectionText ||
+          isCommandInsert
+        ) {
+          saveCurrentSelection({
+            selectionText:
+              virtualSelectionElement.editableElementSelectionText ||
+              virtualSelectionElement.selectionText ||
+              '',
+            selectionHTML:
+              virtualSelectionElement.editableElementSelectionText ||
+              virtualSelectionElement.selectionText ||
+              '',
+            selectionRect: virtualSelectionElement.selectionRect,
+            activeElement: virtualSelectionElement.target as HTMLElement,
+            selectionInputAble: virtualSelectionElement.isEditableElement,
+            selectionElement: virtualSelectionElement,
+          })
+          // 3. 隐藏rangy
+          hideRangy()
+          setFloatingDropdownMenu({
+            open: true,
+            rootRect: computedRectPosition(
+              virtualSelectionElement.selectionRect,
+            ),
+          })
+        } else {
+          // 如果都不符合，展开chat box
+          if (isShowChatBox()) {
+            hideChatBox()
+            setAppState((prevState) => {
+              return {
+                ...prevState,
+                open: false,
+              }
+            })
+          } else {
+            showChatBox()
+            setAppState((prevState) => {
+              return {
+                ...prevState,
+                open: true,
+              }
+            })
+          }
+        }
       } else {
         // 2023-07-10 @huangsong
         // - 点击button（或者按⌘J）的效果是从当前popup转移到sidebar里

@@ -18,7 +18,7 @@ import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIco
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const ChatBoxHeader: FC = () => {
-  const { shortCutKey } = useCommands()
+  const { chatBoxShortCutKey } = useCommands()
   return (
     <Stack
       flexDirection={'row'}
@@ -99,7 +99,7 @@ const ChatBoxHeader: FC = () => {
             <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
           </IconButton>
         </TextOnlyTooltip>
-        {!isEzMailApp && !shortCutKey && (
+        {!isEzMailApp && !chatBoxShortCutKey && (
           <Typography fontSize={12}>
             <Link
               color={'text.primary'}
@@ -118,7 +118,7 @@ const ChatBoxHeader: FC = () => {
         <TextOnlyTooltip
           placement={'bottom'}
           title={'Close sidebar'}
-          description={shortCutKey}
+          description={chatBoxShortCutKey}
         >
           <IconButton
             sx={{ flexShrink: 0 }}

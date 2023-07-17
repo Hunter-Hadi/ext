@@ -34,7 +34,7 @@ const UseChatGPTOptionsSettingPage = () => {
   const [loaded, setLoaded] = useState(false)
   const userSettingsRef = useRef<any>({})
   const [saving, setSaving] = useState(false)
-  const { shortCutKey } = useCommands()
+  const { chatBoxShortCutKey } = useCommands()
   const { syncLocalToServer } = useSyncSettingsChecker()
   const updateChromeExtensionSettings = async (key: string, value: any) => {
     try {
@@ -92,7 +92,7 @@ const UseChatGPTOptionsSettingPage = () => {
             >
               Shortcut for quick access
             </Typography>
-            <ManageShortcutHelper shortCutKey={shortCutKey} />
+            <ManageShortcutHelper shortCutKey={chatBoxShortCutKey} />
             <Divider sx={{ my: 4 }} />
             <ShortcutHintSettings
               defaultValue={userSettingsRef.current.shortcutHintEnable}
@@ -182,7 +182,7 @@ const UseChatGPTOptionsSettingPage = () => {
             <Divider sx={{ my: 4 }} />
             <ChatGPTApiSettings />
             <Divider sx={{ my: 4 }} />
-            <TextSelectPopupSetting commandKey={shortCutKey} />
+            <TextSelectPopupSetting commandKey={chatBoxShortCutKey} />
             <Divider sx={{ my: 4 }} />
             <UseChatGPTContextMenuSettings
               iconSetting

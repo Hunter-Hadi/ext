@@ -16,6 +16,8 @@ import {
 } from '@/constants'
 import { useEffect } from 'react'
 import useCommands from '@/hooks/useCommands'
+import { useRecoilState } from 'recoil'
+import { AppSettingsState } from '@/store'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = [
   'mail.google.com',
@@ -1564,6 +1566,10 @@ export const showRichEditorLineTextPlaceholder = (
   richTextEditorLineElement: HTMLElement,
   placeholderText: string,
 ) => {
+  if (!placeholderText) {
+    hideRichEditorLineTextPlaceholder()
+    return
+  }
   const computedStyle = window.getComputedStyle(richTextEditorLineElement)
   // const position = computedStyle.getPropertyValue('position')
   // get font size, background color, color
@@ -1613,14 +1619,23 @@ export const hideRichEditorLineTextPlaceholder = () => {
 
 export const useBindRichTextEditorLineTextPlaceholder = () => {
   const { chatBoxShortCutKey, floatingMenuShortCutKey } = useCommands()
+  const [appSettings] = useRecoilState(AppSettingsState)
   useEffect(() => {
     const richTextEditorHandle = (event: MouseEvent | KeyboardEvent) => {
       console.log('lineText', event)
       const { richTextEditorLineText, richTextEditorLineTextElement } =
         getRichTextEditorLineText(event)
       if (!richTextEditorLineText && richTextEditorLineTextElement) {
-        console.log('lineText show placeholder', richTextEditorLineTextElement)
-        const placeholderText = `Press '${chatBoxShortCutKey}' for AI, '${floatingMenuShortCutKey}' for compose...`
+        const placeholderText =
+          floatingMenuShortCutKey &&
+          appSettings.userSettings?.shortcutHintEnable
+            ? `Press '${floatingMenuShortCutKey}' for AI`
+            : ''
+        console.log(
+          'lineText show placeholder',
+          richTextEditorLineTextElement,
+          placeholderText,
+        )
         showRichEditorLineTextPlaceholder(
           richTextEditorLineTextElement,
           placeholderText,
@@ -1652,7 +1667,11 @@ export const useBindRichTextEditorLineTextPlaceholder = () => {
       document.removeEventListener('keydown', placeholderKeyDown, true)
       document.removeEventListener('mouseup', placeholderMouseUp, true)
     }
-  }, [chatBoxShortCutKey, floatingMenuShortCutKey])
+  }, [
+    chatBoxShortCutKey,
+    floatingMenuShortCutKey,
+    appSettings.userSettings?.shortcutHintEnable,
+  ])
 }
 
 export const newShortcutHint = (shortCutKey: string) =>

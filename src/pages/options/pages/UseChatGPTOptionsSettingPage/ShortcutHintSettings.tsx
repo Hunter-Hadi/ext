@@ -14,7 +14,7 @@ const ImageUrl = Browser.runtime.getURL(
   `/assets/USE_CHAT_GPT_AI/images/settings/shortcut-hint-example.png`,
 )
 
-const ChatGPTGmailAssistantSetting: FC<{
+const ShortcutHintSettings: FC<{
   defaultValue?: boolean
   onChange?: (value: boolean) => void
 }> = ({ defaultValue, onChange }) => {
@@ -85,4 +85,4 @@ const ChatGPTGmailAssistantSetting: FC<{
     </Stack>
   )
 }
-export default ChatGPTGmailAssistantSetting
+export default ShortcutHintSettings

@@ -1430,7 +1430,9 @@ export const getRichTextEditorLineText = (
       }
       console.log('lineText rangeElement: \t', rangeElement)
       const rangeElementTagName = rangeElement?.tagName?.toLowerCase()
-      const host = getCurrentDomainHost()
+      let host = getCurrentDomainHost()
+      // TODO: 先禁用placeholder hint
+      host = ''
       let lineText = '1'
       // 白名单模式来做
       switch (host) {

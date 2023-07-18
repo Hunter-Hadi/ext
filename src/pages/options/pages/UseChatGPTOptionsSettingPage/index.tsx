@@ -27,7 +27,7 @@ import OptionsPageDirectory from '@/pages/options/components/OptionsPageDirector
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import PDFSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/PDFSettings'
 import ChatGPTGmailAssistantSetting from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ChatGPTGmailAssistantSetting'
-import ShortcutHintSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ShortcutHintSettings'
+// import ShortcutHintSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/ShortcutHintSettings'
 
 const UseChatGPTOptionsSettingPage = () => {
   const [, setAppSettings] = useRecoilState(AppSettingsState)
@@ -93,16 +93,17 @@ const UseChatGPTOptionsSettingPage = () => {
               Shortcut for quick access
             </Typography>
             <ManageShortcutHelper shortCutKey={chatBoxShortCutKey} />
-            <Divider sx={{ my: 4 }} />
-            <ShortcutHintSettings
-              defaultValue={userSettingsRef.current.shortcutHintEnable}
-              onChange={async (enable: boolean) => {
-                await updateChromeExtensionSettings(
-                  'shortcutHintEnable',
-                  enable,
-                )
-              }}
-            />
+            {/*TODO: 临时禁用placeholder hint*/}
+            {/*<Divider sx={{ my: 4 }} />*/}
+            {/*<ShortcutHintSettings*/}
+            {/*  defaultValue={userSettingsRef.current.shortcutHintEnable}*/}
+            {/*  onChange={async (enable: boolean) => {*/}
+            {/*    await updateChromeExtensionSettings(*/}
+            {/*      'shortcutHintEnable',*/}
+            {/*      enable,*/}
+            {/*    )*/}
+            {/*  }}*/}
+            {/*/>*/}
             <Divider sx={{ my: 4 }} />
             {/* <Box> */}
             <Typography

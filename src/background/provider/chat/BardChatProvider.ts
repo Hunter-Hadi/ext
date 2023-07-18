@@ -40,6 +40,7 @@ class BardChatProvider implements ChatAdapterInterface {
     question,
     options,
   ) => {
+    const messageId = uuidV4()
     await this.bardChat.askChatGPT(
       question.question,
       {
@@ -56,7 +57,7 @@ class BardChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId: uuidV4(),
+              messageId,
             },
             error,
             done,

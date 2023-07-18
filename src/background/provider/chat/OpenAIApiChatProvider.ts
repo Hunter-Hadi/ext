@@ -42,6 +42,7 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
     question,
     options,
   ) => {
+    const messageId = uuidV4()
     await this.openAiApiChat.askChatGPT(
       question.question,
       {
@@ -58,7 +59,7 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId: uuidV4(),
+              messageId,
             },
             error,
             done,

@@ -41,6 +41,7 @@ class PoeChatProvider implements ChatAdapterInterface {
     question,
     options,
   ) => {
+    const messageId = uuidV4()
     await this.poeChat.askChatGPT(
       question.question,
       {
@@ -57,7 +58,7 @@ class PoeChatProvider implements ChatAdapterInterface {
               text: data.text,
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
-              messageId: uuidV4(),
+              messageId,
             },
             error,
             done,

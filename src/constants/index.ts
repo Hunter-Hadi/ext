@@ -69,6 +69,7 @@ export const CHAT_GPT_PROVIDER = {
   BARD: 'BARD',
   BING: 'BING',
   CLAUDE: 'CLAUDE',
+  POE: 'POE',
 } as const
 
 // app.maxai.me

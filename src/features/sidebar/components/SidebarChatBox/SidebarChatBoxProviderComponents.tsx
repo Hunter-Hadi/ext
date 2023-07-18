@@ -4,7 +4,6 @@ import { CHAT_GPT_PROVIDER } from '@/constants'
 import DevTextSendControl from '@/features/sidebar/components/SidebarChatBox/DevTextSendControl'
 import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/ChatGPTPluginsSelector'
 import React from 'react'
-import { ChatGPTOpenAIAPITemperatureSlider } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
 
 const SidebarChatBoxProviderComponents = () => {
   const { provider } = useChatGPTProvider()
@@ -21,9 +20,6 @@ const SidebarChatBoxProviderComponents = () => {
         <DevTextSendControl />
       )}
       {provider === CHAT_GPT_PROVIDER.OPENAI && <ChatGPTPluginsSelector />}
-      {provider === CHAT_GPT_PROVIDER.OPENAI_API && (
-        <ChatGPTOpenAIAPITemperatureSlider />
-      )}
     </Stack>
   )
 }

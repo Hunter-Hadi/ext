@@ -1,5 +1,5 @@
 import { IChatGPTProviderType } from '@/background/provider/chat'
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { CHAT_GPT_PROVIDER, OPENAI_API_MODELS } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
@@ -45,26 +45,35 @@ export type IChatGPTPluginType = {
     is_authenticated: boolean
   }
 }
+
 type IThirdProviderSettings = {
   [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]?: {
-    [key in string]: any
+    model?: string
   }
   [CHAT_GPT_PROVIDER.OPENAI]?: {
-    [key in string]: any
+    model?: string
   }
   [CHAT_GPT_PROVIDER.OPENAI_API]?: {
-    [key in string]: any
+    temperature?: number
+    model?: string
+    apiKey?: string
+    apiHost?: string
   }
   [CHAT_GPT_PROVIDER.BING]?: {
-    conversationStyle: BingConversationStyle
+    model?: string
+    conversationStyle?: BingConversationStyle
   }
   [CHAT_GPT_PROVIDER.BARD]?: {
-    [key in string]: any
+    model?: string
   }
   [CHAT_GPT_PROVIDER.CLAUDE]?: {
     model?: string
   }
+  [CHAT_GPT_PROVIDER.POE]: {
+    model?: string
+  }
 }
+
 export type IChromeExtensionButtonSettingKey =
   | 'gmailButton'
   | 'textSelectPopupButton'

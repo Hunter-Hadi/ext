@@ -28,7 +28,6 @@ import {
 } from '@/components/CustomIcon'
 // import BulletList from '@/components/BulletList'
 // import TextIcon from '@/components/TextIcon'
-import { ChatGPTOpenAIAPIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
 import { ChatGPTClaudeModelSelector } from '@/features/chatgpt/components/ChatGPTClaudeModelSelector'
 import GmailChatBoxProviderComponents from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxProviderComponents'
 import IconDropdown from '@/components/IconDropdown'
@@ -449,8 +448,6 @@ const ChatGPTAIProviderSelector: FC<{
       </FormControl>
       {provider === CHAT_GPT_PROVIDER.OPENAI &&
         clientState.status === 'success' && <ChatGPTOpenAIModelSelector />}
-      {provider === CHAT_GPT_PROVIDER.OPENAI_API &&
-        clientState.status === 'success' && <ChatGPTOpenAIAPIModelSelector />}
       {provider === CHAT_GPT_PROVIDER.CLAUDE &&
         clientState.status === 'success' && <ChatGPTClaudeModelSelector />}
       {provider === CHAT_GPT_PROVIDER.BING &&

@@ -8,6 +8,7 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+  OPENAI_API_MODELS,
 } from '@/constants'
 import {
   IChromeExtensionListenEvent,
@@ -93,9 +94,29 @@ export const getChromeExtensionSettings =
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {
           conversationStyle: BingConversationStyle.Balanced,
+          model: 'gpt-4',
         },
         [CHAT_GPT_PROVIDER.CLAUDE]: {
           model: PoeModel.ClaudeInstant,
+        },
+        [CHAT_GPT_PROVIDER.BARD]: {
+          model: 'gpt-4',
+        },
+        [CHAT_GPT_PROVIDER.OPENAI]: {
+          // unused
+          model: '',
+        },
+        [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]: {
+          model: 'gpt-3.5-turbo',
+        },
+        [CHAT_GPT_PROVIDER.OPENAI_API]: {
+          model: OPENAI_API_MODELS[0].value,
+          temperature: 1,
+          apiKey: '',
+          apiHost: 'https://api.openai.com',
+        },
+        [CHAT_GPT_PROVIDER.POE]: {
+          model: '',
         },
       },
     } as IChromeExtensionSettings

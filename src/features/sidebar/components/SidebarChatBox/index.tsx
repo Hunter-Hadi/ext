@@ -31,6 +31,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelector'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -232,6 +233,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           overflowY: 'auto',
         }}
       >
+        <AIProviderSelector />
         <ChatGPTAIProviderSelector />
         <SidebarChatBoxProviderComponents />
         <Box ref={messageListContainerList}>

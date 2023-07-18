@@ -78,3 +78,17 @@ export interface IChatUploadFile {
   uploadErrorMessage?: string
   uploadedUrl?: string
 }
+
+export type IAIProviderModelDescriptionType = {
+  label: string
+  value: string
+}
+
+export interface IAIProviderModel {
+  title: string
+  titleTag: string
+  value: string
+  tags: string[]
+  maxTokens: number
+  descriptions: IAIProviderModelDescriptionType[]
+}

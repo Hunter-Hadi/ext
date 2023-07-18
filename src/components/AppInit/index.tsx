@@ -1,4 +1,4 @@
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { RangyContextMenu } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import React, { useEffect } from 'react'

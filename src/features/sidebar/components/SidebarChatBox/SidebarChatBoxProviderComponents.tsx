@@ -1,12 +1,12 @@
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import Stack from '@mui/material/Stack'
 import { CHAT_GPT_PROVIDER } from '@/constants'
-import DevTextSendControl from '@/features/gmail/components/GmailChatBox/DevTextSendControl'
+import DevTextSendControl from '@/features/sidebar/components/SidebarChatBox/DevTextSendControl'
 import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/ChatGPTPluginsSelector'
 import React from 'react'
 import { ChatGPTOpenAIAPITemperatureSlider } from '@/features/chatgpt/components/ChatGPTOpenAIAPIComponents'
 
-const GmailChatBoxProviderComponents = () => {
+const SidebarChatBoxProviderComponents = () => {
   const { provider } = useChatGPTProvider()
   return (
     <Stack
@@ -27,4 +27,4 @@ const GmailChatBoxProviderComponents = () => {
     </Stack>
   )
 }
-export default GmailChatBoxProviderComponents
+export default SidebarChatBoxProviderComponents

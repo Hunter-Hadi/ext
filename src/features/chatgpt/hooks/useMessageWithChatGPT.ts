@@ -4,7 +4,7 @@ import { v4 as uuidV4 } from 'uuid'
 import {
   ChatGPTMessageState,
   ChatGPTConversationState,
-} from '@/features/gmail/store'
+} from '@/features/sidebar/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { AppSettingsState } from '@/store'
 import Log from '@/utils/Log'

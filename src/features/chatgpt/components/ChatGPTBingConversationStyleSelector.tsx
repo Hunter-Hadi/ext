@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography'
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   BING_CONVERSATION_STYLES,
   BingConversationStyle,

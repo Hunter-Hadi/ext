@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { AppSettingsState } from '@/store'

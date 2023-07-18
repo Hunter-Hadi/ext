@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 
-const GmailChatBoxSystemTools: FC<{
+const SidebarChatBoxSystemTools: FC<{
   onRetry: () => void
   message: ISystemChatMessage
 }> = (props) => {
@@ -39,4 +39,4 @@ const GmailChatBoxSystemTools: FC<{
     </Stack>
   )
 }
-export default GmailChatBoxSystemTools
+export default SidebarChatBoxSystemTools

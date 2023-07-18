@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil'
 import {
   ChatGPTConversationState,
   ChatGPTMessageState,
-} from '@/features/gmail/store'
+} from '@/features/sidebar/store'
 import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'

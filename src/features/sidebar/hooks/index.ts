@@ -4,7 +4,7 @@ import {
   InboxComposeViewState,
   InboxEditState,
   InboxThreadViewState,
-} from '@/features/gmail/store'
+} from '@/features/sidebar/store'
 import { useMemo } from 'react'
 
 export { useCurrentMessageView } from './useCurrentMessageView'

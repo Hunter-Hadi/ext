@@ -17,7 +17,7 @@ import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const GmailActionRunner = React.lazy(
-  () => import('@/features/gmail/components/GmailActionRunner'),
+  () => import('@/features/sidebar/components/GmailActionRunner'),
 )
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)

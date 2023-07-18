@@ -9,7 +9,7 @@ import { IChatMessage } from '@/features/chatgpt/types'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
-const GmailChatBoxUserTools: FC<{
+const SidebarChatBoxUserTools: FC<{
   message: IChatMessage
   editAble?: boolean
   onEdit: () => void
@@ -59,4 +59,4 @@ const GmailChatBoxUserTools: FC<{
     </Stack>
   )
 }
-export default GmailChatBoxUserTools
+export default SidebarChatBoxUserTools

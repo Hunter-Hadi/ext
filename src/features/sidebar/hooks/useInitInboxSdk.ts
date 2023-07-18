@@ -6,8 +6,8 @@ import {
   InboxThreadViewState,
   InboxComposeViewState,
   InboxEditState,
-} from '@/features/gmail/store'
-import { getComposeViewMessageId } from '@/features/gmail/utils'
+} from '@/features/sidebar/store'
+import { getComposeViewMessageId } from '@/features/sidebar/utils'
 import { v4 as uuidV4 } from 'uuid'
 import {
   GmailToolBarDropdownIconBase64Data,

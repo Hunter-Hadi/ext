@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import { getMediator } from '@/store/InputMediator'
 import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { getAppRootElement, numberWithCommas } from '@/utils'
 import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
@@ -16,7 +16,7 @@ import TooltipButton from '@/components/TooltipButton'
 // const MAX_NORMAL_INPUT_LENGTH = 10000
 // const MAX_GPT4_INPUT_LENGTH = 80000
 
-const GmailChatBoxInputActions: FC<{
+const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
@@ -130,4 +130,4 @@ const GmailChatBoxInputActions: FC<{
     </Stack>
   )
 }
-export default GmailChatBoxInputActions
+export default SidebarChatBoxInputActions

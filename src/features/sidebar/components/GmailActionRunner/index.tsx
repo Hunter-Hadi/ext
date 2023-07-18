@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   CurrentInboxMessageTypeSelector,
   InboxEditState,
-} from '@/features/gmail/store'
+} from '@/features/sidebar/store'
 
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { showChatBox, useDebounceValue } from '@/utils'
@@ -12,7 +12,7 @@ import {
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
 import { getChromeExtensionButtonContextMenu } from '@/background/utils'
-import { useCurrentMessageView } from '@/features/gmail/hooks'
+import { useCurrentMessageView } from '@/features/sidebar/hooks'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import cloneDeep from 'lodash-es/cloneDeep'
 

@@ -12,7 +12,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import { setChromeExtensionSettings } from '@/background/utils'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { POE_MODELS, PoeModel } from '@/background/src/chat/PoeChat/type'
 
 const ArrowDropDownIconCustom = () => {

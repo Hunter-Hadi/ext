@@ -4,10 +4,10 @@ import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
 import {
   useCurrentMessageView,
   useInboxComposeViews,
-} from '@/features/gmail/hooks'
-import { deepCloneGmailMessageElement } from '@/features/gmail/utils'
+} from '@/features/sidebar/hooks'
+import { deepCloneGmailMessageElement } from '@/features/sidebar/utils'
 
-import { ChatGPTMessageState } from '@/features/gmail/store'
+import { ChatGPTMessageState } from '@/features/sidebar/store'
 import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import {

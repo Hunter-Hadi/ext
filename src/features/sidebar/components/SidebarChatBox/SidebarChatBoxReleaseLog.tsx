@@ -4,7 +4,7 @@ import { APP_VERSION, RELEASE_LOG_URL } from '@/constants'
 // import Link from '@mui/material/Link'
 import Link from '@mui/material/Link'
 
-const GmailChatBoxReleaseLog: FC = () => {
+const SidebarChatBoxReleaseLog: FC = () => {
   const ReleaseLogText = `Use Code Interpreter via ChatGPT Plus.`
   return (
     <Typography
@@ -59,4 +59,4 @@ const GmailChatBoxReleaseLog: FC = () => {
     </Typography>
   )
 }
-export default GmailChatBoxReleaseLog
+export default SidebarChatBoxReleaseLog

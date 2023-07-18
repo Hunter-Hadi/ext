@@ -14,7 +14,7 @@ import Stack from '@mui/material/Stack'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
-const GmailChatBoxChatSpeedDial: FC<{
+const SidebarChatBoxChatSpeedDial: FC<{
   disabledMainButton?: boolean
   onClick?: (type: ChatSpeedDialType) => void
 }> = (props) => {
@@ -147,4 +147,4 @@ const GmailChatBoxChatSpeedDial: FC<{
     </Box>
   )
 }
-export default GmailChatBoxChatSpeedDial
+export default SidebarChatBoxChatSpeedDial

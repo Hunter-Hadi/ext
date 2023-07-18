@@ -2,17 +2,17 @@ import React, { FC, useMemo } from 'react'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import ReplyIcon from '@mui/icons-material/Reply'
-import { useInboxComposeViews } from '@/features/gmail/hooks'
+import { useInboxComposeViews } from '@/features/sidebar/hooks'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { hideChatBox } from '@/utils'
-import { gmailReplyBoxInsertText } from '@/features/gmail/utils'
+import { gmailReplyBoxInsertText } from '@/features/sidebar/utils'
 import { useRangy } from '@/features/contextMenu/hooks'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
-const GmailChatBoxAiTools: FC<{
+const SidebarChatBoxAiTools: FC<{
   insertAble?: boolean
   replaceAble?: boolean
   useChatGPTAble?: boolean
@@ -97,4 +97,4 @@ const GmailChatBoxAiTools: FC<{
     </Stack>
   )
 }
-export default GmailChatBoxAiTools
+export default SidebarChatBoxAiTools

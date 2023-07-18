@@ -3,19 +3,19 @@ import Alert from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
 import { Theme, SxProps } from '@mui/material/styles'
 
-import GmailChatBoxUserTools from './GmailChatBoxUserTools'
-import GmailChatBoxAiTools from './GmailChatBoxAiTools'
-import GmailChatBoxSystemTools from './GmailChatBoxSystemTools'
+import SidebarChatBoxUserTools from './SidebarChatBoxUserTools'
+import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
+import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/constants'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IChatMessage, ISystemChatMessage } from '@/features/chatgpt/types'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import DevMessageSourceData from '@/features/gmail/components/GmailChatBox/DevMessageSourceData'
+import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
 import DevContent from '@/components/DevContent'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
-const GmailChatBoxMessageItem: FC<{
+const SidebarChatBoxMessageItem: FC<{
   replaceAble?: boolean
   insertAble?: boolean
   editAble?: boolean
@@ -271,7 +271,7 @@ const GmailChatBoxMessageItem: FC<{
           )}
         </AppSuspenseLoadingLayout>
         {message.type === 'user' && (
-          <GmailChatBoxUserTools
+          <SidebarChatBoxUserTools
             editAble={editAble}
             onCopy={onCopy}
             message={message}
@@ -297,7 +297,7 @@ const GmailChatBoxMessageItem: FC<{
           />
         )}
         {message.type === 'ai' && (
-          <GmailChatBoxAiTools
+          <SidebarChatBoxAiTools
             insertAble={insertAble}
             replaceAble={replaceAble}
             useChatGPTAble={useChatGPTAble}
@@ -306,7 +306,7 @@ const GmailChatBoxMessageItem: FC<{
           />
         )}
         {message.type === 'system' && (
-          <GmailChatBoxSystemTools
+          <SidebarChatBoxSystemTools
             onRetry={() => {
               if (message.parentMessageId) {
                 onRetry && onRetry(message.parentMessageId)
@@ -319,4 +319,4 @@ const GmailChatBoxMessageItem: FC<{
     </Stack>
   )
 }
-export default GmailChatBoxMessageItem
+export default SidebarChatBoxMessageItem

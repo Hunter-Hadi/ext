@@ -12,7 +12,7 @@ import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import BlockIcon from '@mui/icons-material/Block'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
-// import { ChatGPTConversationState } from '@/features/gmail/store'
+// import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { CHROME_EXTENSION_MAIL_TO, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 // import DevContent from '@/components/DevContent'
 // import { TestAllActionsButton } from '@/features/shortcuts'
@@ -22,13 +22,13 @@ import {
   IChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import GmailChatBoxInputActions from '@/features/gmail/components/GmailChatBox/GmailChatBoxInputActions'
-import GmailChatBoxProviderComponents from '@/features/gmail/components/GmailChatBox/GmailChatBoxProviderComponents'
+import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
+import SidebarChatBoxProviderComponents from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxProviderComponents'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import useSliceMessageList from '../../hooks/useSliceMessageList'
-import GmailChatBoxReleaseLog from '@/features/gmail/components/GmailChatBox/GmailChatBoxReleaseLog'
+import SidebarChatBoxReleaseLog from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxReleaseLog'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import GmailChatBoxChatSpeedDial from '@/features/gmail/components/GmailChatBox/GmailChatBoxChatSpeedDial'
+import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 // import { getMediator } from '@/store/mediator'
@@ -56,12 +56,14 @@ interface IGmailChatBoxProps {
   loading?: boolean
 }
 
-const GmailChatBoxMessageItem = React.lazy(
+const SidebarChatBoxMessageItem = React.lazy(
   () =>
-    import('@/features/gmail/components/GmailChatBox/GmailChatBoxMessageItem'),
+    import(
+      '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
+    ),
 )
 
-const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
+const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
     sx,
     aiAvatar,
@@ -231,12 +233,12 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <ChatGPTAIProviderSelector />
-        <GmailChatBoxProviderComponents />
+        <SidebarChatBoxProviderComponents />
         <Box ref={messageListContainerList}>
           <AppSuspenseLoadingLayout>
             {slicedMessageList.map((message) => {
               return (
-                <GmailChatBoxMessageItem
+                <SidebarChatBoxMessageItem
                   className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
                   insertAble={insertAble}
                   replaceAble={true}
@@ -256,7 +258,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               )
             })}
             {writingMessage && (
-              <GmailChatBoxMessageItem
+              <SidebarChatBoxMessageItem
                 className={'use-chat-gpt-ai__writing-message-item'}
                 replaceAble={false}
                 insertAble={false}
@@ -297,7 +299,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             mb={1}
             position={'relative'}
           >
-            <GmailChatBoxChatSpeedDial
+            <SidebarChatBoxChatSpeedDial
               disabledMainButton={loading || slicedMessageList.length === 0}
               onClick={async (type) => {
                 if (type === 'focus') {
@@ -387,7 +389,7 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
             expandNode={<ChatIconFileUpload size={'small'} />}
             onEnter={handleSendMessage}
           >
-            <GmailChatBoxInputActions onSendMessage={handleSendMessage} />
+            <SidebarChatBoxInputActions onSendMessage={handleSendMessage} />
           </AutoHeightTextarea>
         </Stack>
         <Stack
@@ -408,11 +410,11 @@ const GmailChatBox: FC<IGmailChatBoxProps> = (props) => {
               Contact us
             </Link>
           </Typography>
-          <GmailChatBoxReleaseLog />
+          <SidebarChatBoxReleaseLog />
         </Stack>
       </Stack>
     </Stack>
   )
 }
 
-export { GmailChatBox }
+export default SidebarChatBox

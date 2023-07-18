@@ -21,7 +21,7 @@ import { getMediator } from '@/store/InputMediator'
 import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
-import { ChatGPTConversationState } from '@/features/gmail'
+import { ChatGPTConversationState } from '@/features/sidebar'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)

@@ -186,7 +186,7 @@ const initChromeExtensionMessage = () => {
   )
   chatSystem.addAdapter(CHAT_GPT_PROVIDER.BING, bingChatAdapter)
   chatSystem.addAdapter(CHAT_GPT_PROVIDER.BARD, bardChatAdapter)
-  chatSystem.addAdapter(CHAT_GPT_PROVIDER.CLAUDE, poeChatAdapter)
+  chatSystem.addAdapter(CHAT_GPT_PROVIDER.POE, poeChatAdapter)
 }
 
 /**

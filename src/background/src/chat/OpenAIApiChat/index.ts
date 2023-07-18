@@ -12,8 +12,8 @@ import {
   CHATGPT_SYSTEM_MESSAGE,
   IOpenAIApiChatMessage,
 } from '@/background/src/chat/OpenAiApiChat/types'
-import { getOpenAIApiSettings } from '@/background/src/chat/OpenAiApiChat/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 
 const log = new Log('Background/Chat/OpenAiApiChat')
 
@@ -137,7 +137,7 @@ class OpenAiApiChat extends BaseChat {
         Authorization: `Bearer ${chatGPTApiSettings.apiKey}`,
       },
       body: JSON.stringify({
-        model: chatGPTApiSettings.apiModel,
+        model: chatGPTApiSettings.model,
         messages: this.buildMessages(max_history_message_cnt),
         temperature: chatGPTApiSettings.temperature,
         stream: true,
@@ -248,7 +248,7 @@ class OpenAiApiChat extends BaseChat {
     this.conversationContext!.messages = []
   }
   async checkApiKey() {
-    const settings = await getOpenAIApiSettings()
+    const settings = await getThirdProviderSettings('OPENAI_API')
     if (!settings?.apiKey || !settings.apiHost) {
       this.status = 'needAuth'
       await this.updateClientStatus()
@@ -260,7 +260,7 @@ class OpenAiApiChat extends BaseChat {
     }
   }
   async getChatGPTAPISettings() {
-    const settings = await getOpenAIApiSettings()
+    const settings = await getThirdProviderSettings('OPENAI_API')
     return settings?.apiKey && settings.apiHost ? settings : false
   }
   async abortTask(taskId: string) {
@@ -286,3 +286,4 @@ class OpenAiApiChat extends BaseChat {
   }
 }
 export { OpenAiApiChat }
+export { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat/types'

@@ -10,10 +10,6 @@ import IconButton from '@mui/material/IconButton'
 import CloseAlert from '@/components/CloseAlert'
 import { IOpenAIApiSettingsType } from '@/background/src/chat/OpenAiApiChat/types'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import {
-  getOpenAIApiSettings,
-  setOpenAIApiSettings,
-} from '@/background/src/chat/OpenAiApiChat/utils'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
@@ -21,6 +17,10 @@ import BulletList from '@/components/BulletList'
 import { useSnackbar } from 'notistack'
 import debounce from 'lodash-es/debounce'
 import Tooltip from '@mui/material/Tooltip'
+import {
+  getThirdProviderSettings,
+  setThirdProviderSettings,
+} from '@/background/src/chat/util'
 
 const ChatGPTApiSettings: FC = () => {
   const { enqueueSnackbar } = useSnackbar()
@@ -41,14 +41,14 @@ const ChatGPTApiSettings: FC = () => {
   )
   useEffectOnce(() => {
     setLoaded(false)
-    getOpenAIApiSettings().then((settings) => {
-      setSettings(settings)
+    getThirdProviderSettings('OPENAI_API').then((settings) => {
+      setSettings(settings as any)
       setLoaded(true)
     })
   })
   useEffect(() => {
     if (loaded) {
-      setOpenAIApiSettings(settings).then(() => {
+      setThirdProviderSettings('OPENAI_API', settings, true).then(() => {
         if (once.current) {
           once.current = false
           return

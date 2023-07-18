@@ -8,7 +8,6 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-  OPENAI_API_MODELS,
 } from '@/constants'
 import {
   IChromeExtensionListenEvent,
@@ -18,7 +17,10 @@ import { useEffect } from 'react'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
+import {
+  BING_MODELS,
+  BingConversationStyle,
+} from '@/background/src/chat/BingChat/bing/types'
 import { PoeModel } from '@/background/src/chat/PoeChat/type'
 import cloneDeep from 'lodash-es/cloneDeep'
 import {
@@ -29,6 +31,9 @@ import {
 } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -94,20 +99,19 @@ export const getChromeExtensionSettings =
       thirdProviderSettings: {
         [CHAT_GPT_PROVIDER.BING]: {
           conversationStyle: BingConversationStyle.Balanced,
-          model: 'gpt-4',
+          model: BING_MODELS[0].value,
         },
         [CHAT_GPT_PROVIDER.CLAUDE]: {
           model: PoeModel.ClaudeInstant,
         },
         [CHAT_GPT_PROVIDER.BARD]: {
-          model: 'gpt-4',
+          model: BARD_MODELS[0].value,
         },
         [CHAT_GPT_PROVIDER.OPENAI]: {
-          // unused
-          model: '',
+          model: 'text-davinci-002-render-sha',
         },
         [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]: {
-          model: 'gpt-3.5-turbo',
+          model: USE_CHAT_GPT_PLUS_MODELS[0].value,
         },
         [CHAT_GPT_PROVIDER.OPENAI_API]: {
           model: OPENAI_API_MODELS[0].value,
@@ -116,7 +120,7 @@ export const getChromeExtensionSettings =
           apiHost: 'https://api.openai.com',
         },
         [CHAT_GPT_PROVIDER.POE]: {
-          model: '',
+          model: PoeModel.ClaudeInstant,
         },
       },
     } as IChromeExtensionSettings

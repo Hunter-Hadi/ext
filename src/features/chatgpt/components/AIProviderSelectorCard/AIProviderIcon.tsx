@@ -7,6 +7,7 @@ import {
   ChatGPTIcon,
   ClaudeIcon,
   OpenAIIcon,
+  PoeIcon,
 } from '@/components/CustomIcon'
 
 export const AIProviderIcon: FC<{
@@ -51,6 +52,13 @@ export const AIProviderIcon: FC<{
       )}
       {aiProviderType === 'CLAUDE' && (
         <ClaudeIcon
+          sx={{
+            fontSize: size,
+          }}
+        />
+      )}
+      {aiProviderType === 'POE' && (
+        <PoeIcon
           sx={{
             fontSize: size,
           }}

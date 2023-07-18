@@ -3,9 +3,12 @@ import { AppSettingsState } from '@/store'
 import { useCallback, useMemo, useState } from 'react'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
-import { OPENAI_API_MODELS } from '@/constants'
-import dayjs from 'dayjs'
 import useThirdProviderSetting from '@/features/chatgpt/hooks/useThirdProviderSetting'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
+import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -51,51 +54,32 @@ const useAIProviderModels = () => {
         break
       case 'USE_CHAT_GPT_PLUS':
         {
-          currentModels = [
-            {
-              title: 'gpt-3.5-turbo',
-              titleTag: '',
-              value: 'gpt-3.5-turbo',
-              maxTokens: 4096,
-              tags: [],
-              descriptions: [
-                {
-                  label: 'Max tokens',
-                  value: generateMaxTokenText(4096),
-                },
-                {
-                  label: 'Description',
-                  value:
-                    'Most capable GPT-3.5 model and optimized for chat at 1/10th the cost of text-davinci-003. Will be updated with our latest model iteration 2 weeks after it is released.',
-                },
-              ],
-            },
-          ]
+          currentModels = USE_CHAT_GPT_PLUS_MODELS
+        }
+        break
+      case 'BARD':
+        {
+          currentModels = BARD_MODELS
+        }
+        break
+      case 'BING':
+        {
+          currentModels = BING_MODELS
         }
         break
       case 'OPENAI_API':
         {
-          currentModels = OPENAI_API_MODELS.map((item) => {
-            const providerModel: IAIProviderModel = {
-              title: item.label,
-              value: item.value,
-              titleTag: '',
-              maxTokens: item.maxTokens,
-              tags: [],
-              descriptions: [
-                {
-                  label: 'Max tokens',
-                  value: generateMaxTokenText(item.maxTokens),
-                },
-                { label: 'Description', value: item.description },
-                {
-                  label: 'Training date',
-                  value: `Up to ${dayjs(item.trainingDate).format('MMM YYYY')}`,
-                },
-              ],
-            }
-            return providerModel
-          })
+          currentModels = OPENAI_API_MODELS
+        }
+        break
+      case 'CLAUDE':
+        {
+          currentModels = POE_MODELS
+        }
+        break
+      case 'POE':
+        {
+          currentModels = POE_MODELS
         }
         break
       default:

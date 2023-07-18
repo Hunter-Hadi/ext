@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
-import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelector/AIProviderOptions'
-import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelector/AIProviderInfoCard'
+import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { CHAT_GPT_PROVIDER } from '@/constants'

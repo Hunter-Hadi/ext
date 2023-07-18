@@ -1,7 +1,8 @@
 import { IChatGPTProviderType } from '@/background/provider/chat'
-import { CHAT_GPT_PROVIDER, OPENAI_API_MODELS } from '@/constants'
+import { CHAT_GPT_PROVIDER } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 
 export type IChatGPTModelType = {
   slug: string

@@ -18,7 +18,7 @@ import { AppSettingsState } from '@/store'
 import { getChromeExtensionSettings } from '@/background/utils'
 import { useFocus } from '@/hooks/useFocus'
 import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
-import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelector'
+import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {

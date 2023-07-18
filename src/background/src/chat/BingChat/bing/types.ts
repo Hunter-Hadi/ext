@@ -1,3 +1,6 @@
+import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
+import { IAIProviderModel } from '@/features/chatgpt/types'
+
 export enum BingConversationStyle {
   Creative = 'creative',
   Balanced = 'balanced',
@@ -18,6 +21,26 @@ export const BING_CONVERSATION_STYLES = [
     label: 'Precise',
     description: `Clear your conversation and start a concise and straightforward chat.`,
     value: BingConversationStyle.Precise,
+  },
+]
+
+export const BING_MODELS: IAIProviderModel[] = [
+  {
+    title: 'gpt-4',
+    titleTag: '',
+    value: 'gpt-4',
+    maxTokens: 8192,
+    tags: [],
+    descriptions: [
+      {
+        label: 'Max tokens',
+        value: `${numberWithCommas(8192, 0)} tokens`,
+      },
+      {
+        label: 'Description',
+        value: `Most capable GPT-3.5 model and optimized for chat at 1/10th the cost of text-davinci-003. Will be updated with our latest model iteration 2 weeks after it is released.`,
+      },
+    ],
   },
 ]
 

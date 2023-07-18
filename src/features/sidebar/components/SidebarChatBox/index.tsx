@@ -31,7 +31,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
-import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelector'
+import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000

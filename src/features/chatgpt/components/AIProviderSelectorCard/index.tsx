@@ -4,21 +4,21 @@ import { SxProps } from '@mui/material/styles'
 import Stack from '@mui/material/Stack'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
-import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelector/AIProviderOptions'
+import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelector/AIProviderIcon'
-import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelector/AIProviderAuthCard'
-import Index from '@/features/chatgpt/components/AIProviderSelector/AIProviderCard'
+import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
+import Index from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
 
-interface AIProviderSelectorProps {
+interface AIProviderSelectorCardProps {
   sx?: SxProps
   iconSize?: number
 }
-const AIProviderSelector: FC<AIProviderSelectorProps> = (props) => {
+const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
   const { sx, iconSize = 20 } = props
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
@@ -108,4 +108,4 @@ const AIProviderSelector: FC<AIProviderSelectorProps> = (props) => {
     </Box>
   )
 }
-export default AIProviderSelector
+export default AIProviderSelectorCard

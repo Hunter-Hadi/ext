@@ -76,6 +76,10 @@ export const syncLocalSettingsToServerSettings = async () => {
     FILTER_SAVE_KEYS.forEach((deleteKey) => {
       delete localSettings[deleteKey]
     })
+    // 不上传用户的openai api key
+    if (localSettings.thirdProviderSettings?.OPENAI_API) {
+      localSettings.thirdProviderSettings.OPENAI_API.apiKey = ''
+    }
     const result = await post<{
       status: 'OK' | 'ERROR'
     }>('/user/save_user_settings', {

@@ -263,10 +263,12 @@ const FloatingContextMenu: FC<{
       }
     }
   }, [contextMenuList])
-  /**
-   * @description - 打开/关闭floating dropdown menu:
-   * 1. 自动focus
-   * 2. 清空最后一次的输出
+  /** 打开/关闭floating dropdown menu
+   * @version 1.0 - 打开 dropdown menu:
+   *    1. 自动focus
+   *    2. 清空最后一次的输出
+   * @version 2.0 - 关闭 dropdown menu
+   *    1. 将用户输入的内容同步到sidebar chat box
    */
   useEffect(() => {
     if (floatingDropdownMenu.open) {
@@ -278,6 +280,14 @@ const FloatingContextMenu: FC<{
         setTimeout(() => {
           textareaEl?.focus()
         }, 1)
+      }
+    } else {
+      const textareaEl = getAppContextMenuElement()?.querySelector(
+        `#${ROOT_FLOATING_INPUT_ID}`,
+      ) as HTMLTextAreaElement
+      const userInputDraft = textareaEl?.value
+      if (userInputDraft) {
+        getMediator('chatBoxInputMediator').updateInputValue(userInputDraft)
       }
     }
     console.log('AIInput remove', floatingDropdownMenu.open)

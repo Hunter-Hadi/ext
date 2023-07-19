@@ -3,21 +3,14 @@ import { BaseSelect } from '@/components/select'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Tooltip from '@mui/material/Tooltip'
-import Alert from '@mui/material/Alert'
-import Link from '@mui/material/Link'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import Chip from '@mui/material/Chip'
 
 const AIProviderModelSelector: FC = () => {
-  const {
-    aiProvider,
-    aiProviderModel,
-    aiProviderModels,
-    loading,
-    updateAIProviderModel,
-  } = useAIProviderModels()
+  const { aiProviderModel, aiProviderModels, loading, updateAIProviderModel } =
+    useAIProviderModels()
   const aiProviderModelsOptions = useMemo(
     () =>
       list2Options(aiProviderModels, {
@@ -37,7 +30,7 @@ const AIProviderModelSelector: FC = () => {
           },
         },
       }}
-      sx={{ width: 196 }}
+      sx={{ width: '100%' }}
       size={'small'}
       loading={loading}
       label={'Model'}
@@ -60,7 +53,6 @@ const AIProviderModelSelector: FC = () => {
         return (
           <Stack
             sx={{ padding: '6px 0' }}
-            width={160}
             direction={'row'}
             alignItems={'center'}
             spacing={1}
@@ -82,6 +74,11 @@ const AIProviderModelSelector: FC = () => {
         return (
           <Tooltip
             placement={'right-end'}
+            PopperProps={{
+              sx: {
+                zIndex: 2147483620,
+              },
+            }}
             componentsProps={{
               tooltip: {
                 sx: {
@@ -94,37 +91,6 @@ const AIProviderModelSelector: FC = () => {
             title={
               <Stack spacing={1} width={'160px'}>
                 <Stack textAlign={'left'} width={'100%'} spacing={2}>
-                  {aiProvider === 'OPENAI_API' && (
-                    <Alert
-                      sx={{
-                        px: 1,
-                        py: 0,
-                        '& > :first-child': {
-                          display: 'none',
-                        },
-                      }}
-                      severity={'info'}
-                      icon={<></>}
-                    >
-                      <Typography
-                        fontSize={'12px'}
-                        color={'text.primary'}
-                        textAlign={'left'}
-                      >
-                        <span>{`Protip: `}</span>
-                        <b>{`"Model"`}</b>
-                        <span>{` selector on `}</span>
-                        <Link
-                          target={'_blank'}
-                          href="https://platform.openai.com/playground?mode=chat"
-                          rel="noreferrer"
-                        >
-                          {`OpenAI Playground`}
-                        </Link>
-                        <span>{` shows your active models.`}</span>
-                      </Typography>
-                    </Alert>
-                  )}
                   <Typography
                     fontSize={'14px'}
                     color={'text.primary'}
@@ -183,7 +149,7 @@ const AIProviderModelSelector: FC = () => {
           >
             <Stack
               sx={{ padding: '6px 16px' }}
-              width={160}
+              width={'100%'}
               direction={'row'}
               alignItems={'center'}
               spacing={1}

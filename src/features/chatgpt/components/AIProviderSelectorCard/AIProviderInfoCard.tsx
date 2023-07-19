@@ -56,7 +56,12 @@ const AIProviderInfoCard: FC<{
           target={'_blank'}
           underline={'always'}
         >
-          <Typography fontSize={'14px'} color={'text.primary'} fontWeight={400}>
+          <Typography
+            fontSize={'14px'}
+            color={'text.primary'}
+            fontWeight={400}
+            component={'span'}
+          >
             Learn more
           </Typography>
         </Link>

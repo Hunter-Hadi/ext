@@ -1,4 +1,4 @@
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { useCallback, useMemo, useState } from 'react'
 import { IAIProviderModel } from '@/features/chatgpt/types'
@@ -9,6 +9,10 @@ import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/t
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
+import {
+  getChromeExtensionSettings,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -17,7 +21,7 @@ import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
  */
 
 const useAIProviderModels = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
+  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const currentProvider = appSettings.chatGPTProvider
   const [loading, setLoading] = useState(false)
   const { currentThirdProviderSettings, saveThirdProviderSettings } =
@@ -96,7 +100,13 @@ const useAIProviderModels = () => {
   const updateAIProviderModel = useCallback(
     async (model: string) => {
       try {
-        if (
+        // TODO 以后统一处理，现在先用之前的逻辑
+        if (currentProvider && currentProvider === 'OPENAI') {
+          await setChromeExtensionSettings({
+            currentModel: model,
+          })
+          setAppSettings(await getChromeExtensionSettings())
+        } else if (
           currentProvider &&
           aiProviderModels.find((item) => item.value === model)
         ) {

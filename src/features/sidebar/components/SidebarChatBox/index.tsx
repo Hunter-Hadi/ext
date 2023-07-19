@@ -17,13 +17,11 @@ import { CHROME_EXTENSION_MAIL_TO, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 // import DevContent from '@/components/DevContent'
 // import { TestAllActionsButton } from '@/features/shortcuts'
 import throttle from 'lodash-es/throttle'
-import { ChatGPTAIProviderSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import {
   IChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
-import SidebarChatBoxProviderComponents from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxProviderComponents'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import useSliceMessageList from '../../hooks/useSliceMessageList'
 import SidebarChatBoxReleaseLog from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxReleaseLog'
@@ -31,7 +29,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
-import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
+import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -233,9 +231,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           overflowY: 'auto',
         }}
       >
-        <AIProviderSelector />
-        <ChatGPTAIProviderSelector />
-        <SidebarChatBoxProviderComponents />
         <Box ref={messageListContainerList}>
           <AppSuspenseLoadingLayout>
             {slicedMessageList.map((message) => {
@@ -314,6 +309,13 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 } else if (type === 'restart') {
                   await clientRestartChromeExtension()
                 }
+              }}
+            />
+            <AIProviderSelectorFloatingButton
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
               }}
             />
             {!loading && slicedMessageList.length > 0 && (

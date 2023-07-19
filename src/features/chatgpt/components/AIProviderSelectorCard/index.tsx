@@ -13,13 +13,17 @@ import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
 import Index from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import AppLoadingLayout from '@/components/AppLoadingLayout'
 
 interface AIProviderSelectorCardProps {
   sx?: SxProps
   iconSize?: number
+  closeAble?: boolean
+  onClose?: () => void
 }
 const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
-  const { sx, iconSize = 20 } = props
+  const { sx, iconSize = 20, closeAble, onClose } = props
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
@@ -59,14 +63,17 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
           flexShrink: 0,
           borderRight: '1px solid #EBEBEB',
           alignItems: 'stretch',
+          boxSizing: 'border-box',
         }}
       >
-        {currentProviderOption && clientState.status !== 'success' && (
-          <AIProviderAuthCard aiProviderOption={currentProviderOption} />
-        )}
-        {currentProviderOption && clientState.status === 'success' && (
-          <Index aiProviderOption={currentProviderOption} />
-        )}
+        <AppLoadingLayout loading={isLoadingMemo} size={24} sx={{ width: 254 }}>
+          {currentProviderOption && clientState.status !== 'success' && (
+            <AIProviderAuthCard aiProviderOption={currentProviderOption} />
+          )}
+          {currentProviderOption && clientState.status === 'success' && (
+            <Index aiProviderOption={currentProviderOption} />
+          )}
+        </AppLoadingLayout>
       </Stack>
       <Stack
         sx={{
@@ -103,6 +110,24 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
               </ListItemButton>
             )
           })}
+          {closeAble && (
+            <ListItemButton onClick={onClose}>
+              <Stack
+                width={'100%'}
+                spacing={1}
+                alignItems={'center'}
+                direction={'row'}
+                justifyContent={'end'}
+              >
+                <ContextMenuIcon
+                  icon={'Close'}
+                  sx={{
+                    fontSize: `24px`,
+                  }}
+                />
+              </Stack>
+            </ListItemButton>
+          )}
         </List>
       </Stack>
     </Box>

@@ -1,11 +1,13 @@
 import { CHAT_GPT_PROVIDER } from '@/constants'
 import { IChatGPTProviderType } from '@/background/provider/chat'
+import Link from '@mui/material/Link'
+import React from 'react'
 
 export type AIProviderOptionType = {
   beta: boolean
   label: string
   value: IChatGPTProviderType
-  shortDescription: string
+  shortDescription: React.ReactNode
   description: string
   authDescription: string
   authButtonText: string
@@ -66,8 +68,21 @@ const AIProviderOptions: AIProviderOptionType[] = [
     beta: false,
     label: 'OpenAI API',
     value: CHAT_GPT_PROVIDER.OPENAI_API,
-    authDescription: 'Use ChatGPT to power the extension.',
-    shortDescription: `Use your own OpenAI API key to power the extension.`,
+    authDescription: 'Use your own OpenAl API key to power the extension.',
+    shortDescription: (
+      <span>
+        Explore your active models on{' '}
+        <Link
+          target={'_blank'}
+          href="https://platform.openai.com/playground?mode=chat"
+          rel="noreferrer noopener nofollow"
+          sx={{ color: 'inherit' }}
+        >
+          OpenAI Playground
+        </Link>
+        .
+      </span>
+    ),
     description: `Most are unaware that all ChatGPT users can easily obtain their own API key for free trial usage from OpenAI. To create your OpenAI API key, refer to the instructions provided on our Settings page.`,
     authButtonText: 'Add your OpenAI API key',
     authOpenInNew: true,

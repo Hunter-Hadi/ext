@@ -1,3 +1,7 @@
+/**
+ * @deprecated - use AIProviderSelector instead it
+ * @see src/features/chatgpt/components/AIProviderSelector/index.tsx
+ */
 import React, { FC } from 'react'
 import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
@@ -28,7 +32,6 @@ import {
 } from '@/components/CustomIcon'
 // import BulletList from '@/components/BulletList'
 // import TextIcon from '@/components/TextIcon'
-import GmailChatBoxProviderComponents from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxProviderComponents'
 import IconDropdown from '@/components/IconDropdown'
 import Link from '@mui/material/Link'
 import { ChatGPTBingConversationStyleSelector } from '@/features/chatgpt/components/ChatGPTBingConversationStyleSelector'
@@ -470,7 +473,6 @@ export const ChatGPTAIProviderMiniSelector: FC = () => {
       }}
     >
       <ChatGPTAIProviderSelector />
-      <GmailChatBoxProviderComponents />
     </IconDropdown>
   )
 }

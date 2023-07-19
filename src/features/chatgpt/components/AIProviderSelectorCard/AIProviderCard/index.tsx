@@ -3,6 +3,7 @@ import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSe
 import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
 import AIProviderModelSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderModelSelector'
 import OpenAIAPITemperatureSlider from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/OpenAIAPITemperatureSlider'
+import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/ChatGPTPluginsSelector'
 
 const AIProviderCard: FC<{
   aiProviderOption: AIProviderOptionType
@@ -12,12 +13,17 @@ const AIProviderCard: FC<{
     <AIProviderInfoCard
       aiProviderOption={aiProviderOption}
       boxSx={{
-        p: 0,
+        gap: '8px',
+        '& > .use-chat-gpt-ai--MuiFormControl-root + .use-chat-gpt-ai--MuiFormControl-root':
+          {
+            mt: '8px',
+          },
       }}
     >
       {aiProviderOption.value === 'OPENAI_API' && (
         <OpenAIAPITemperatureSlider />
       )}
+      {aiProviderOption.value === 'OPENAI' && <ChatGPTPluginsSelector />}
       <AIProviderModelSelector />
     </AIProviderInfoCard>
   )

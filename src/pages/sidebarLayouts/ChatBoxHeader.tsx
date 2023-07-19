@@ -13,7 +13,6 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import React, { FC } from 'react'
 import useCommands from '@/hooks/useCommands'
-import { ChatGPTAIProviderMiniSelector } from '@/features/chatgpt/components/ChatGPTAIProviderSelector'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
@@ -86,7 +85,6 @@ const ChatBoxHeader: FC = () => {
         justifyContent={'end'}
         alignItems={'center'}
       >
-        <ChatGPTAIProviderMiniSelector />
         <TextOnlyTooltip title="Settings">
           <IconButton
             sx={{ flexShrink: 0 }}

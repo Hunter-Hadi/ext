@@ -13,6 +13,9 @@ const AIProviderSelectorFloatingButton: FC<{
   const { sx } = props
   const appSettings = useRecoilValue(AppSettingsState)
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
+  // 用户打开之后，锁定关闭700ms
+  const lockTimerRef = useRef<any>(null)
+  const lockCloseRef = useRef(false)
   // 当用户手动点击了，在移开按钮之后，才能打开 popover
   const waitResetRef = useRef(false)
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -46,7 +49,16 @@ const AIProviderSelectorFloatingButton: FC<{
       }}
       aria-owns={open ? 'mouse-over-popover' : undefined}
       aria-haspopup="true"
-      onMouseEnter={handlePopoverOpen}
+      onMouseEnter={(event) => {
+        if (lockTimerRef.current) {
+          clearTimeout(lockTimerRef.current)
+        }
+        lockCloseRef.current = true
+        lockTimerRef.current = setTimeout(() => {
+          lockCloseRef.current = false
+        }, 700)
+        handlePopoverOpen(event)
+      }}
       onMouseLeave={() => {
         handlePopoverClose()
         waitResetRef.current = false
@@ -77,6 +89,9 @@ const AIProviderSelectorFloatingButton: FC<{
           <AIProviderSelector
             closeAble
             onClose={() => {
+              if (lockCloseRef.current) {
+                return
+              }
               waitResetRef.current = true
               handlePopoverClose()
             }}

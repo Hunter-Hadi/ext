@@ -109,10 +109,8 @@ class ChatSystem implements ChatSystemInterface {
             }
             break
           case 'Client_removeChatGPTConversation': {
-            const cache = await getChromeExtensionSettings()
-            const success = await this.removeConversation(
-              cache.conversationId || '',
-            )
+            const { conversationId } = data
+            const success = await this.removeConversation(conversationId || '')
             return {
               success,
               data: {},

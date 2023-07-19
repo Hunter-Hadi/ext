@@ -3,7 +3,10 @@ import {
   ChatGPTConversationState,
   ChatGPTMessageState,
 } from '@/features/sidebar/store'
-import { setChromeExtensionSettings } from '@/background/utils'
+import {
+  getChromeExtensionSettings,
+  setChromeExtensionSettings,
+} from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
 import { AppSettingsState } from '@/store'
@@ -16,10 +19,26 @@ const useCleanChatGPT = () => {
   const [, setChatGPTMessages] = useRecoilState(ChatGPTMessageState)
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
   const cleanChatGPT = async () => {
+    const cache = await getChromeExtensionSettings()
+    if (cache.conversationId) {
+      port
+        .postMessage({
+          event: 'Client_removeChatGPTConversation',
+          data: {
+            conversationId: cache.conversationId,
+          },
+        })
+        .then()
+        .catch()
+    }
     setChatGPTMessages([])
     // 清空本地储存的message
     await Browser.storage.local.set({
       [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
+    })
+    // 清空本地储存的conversationId
+    await setChromeExtensionSettings({
+      conversationId: '',
     })
     setConversation({
       model: appSettings.currentModel || '',
@@ -27,19 +46,6 @@ const useCleanChatGPT = () => {
       writingMessage: null,
       loading: false,
     })
-    port
-      .postMessage({
-        event: 'Client_removeChatGPTConversation',
-        data: {},
-      })
-      .then()
-      .catch()
-      .finally(async () => {
-        // 清空本地储存的conversationId
-        await setChromeExtensionSettings({
-          conversationId: '',
-        })
-      })
   }
   return {
     cleanChatGPT,

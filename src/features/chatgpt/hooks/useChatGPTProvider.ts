@@ -14,6 +14,7 @@ const useChatGPTProvider = () => {
   const updateChatGPTProvider = async (provider: IChatGPTProviderType) => {
     try {
       setLoading(true)
+      await cleanChatGPT()
       const result = await port.postMessage({
         event: 'Client_switchChatGPTProvider',
         data: {
@@ -31,7 +32,6 @@ const useChatGPTProvider = () => {
         await setChromeExtensionSettings({
           chatGPTProvider: provider,
         })
-        await cleanChatGPT()
       }
     } catch (e) {
       console.error(e)

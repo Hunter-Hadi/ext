@@ -91,4 +91,5 @@ export interface IAIProviderModel {
   tags: string[]
   maxTokens: number
   descriptions: IAIProviderModelDescriptionType[]
+  disabled?: boolean
 }

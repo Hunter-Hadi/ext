@@ -66,7 +66,14 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
           boxSizing: 'border-box',
         }}
       >
-        <AppLoadingLayout loading={isLoadingMemo} size={24} sx={{ width: 254 }}>
+        <AppLoadingLayout
+          loadingText={
+            chatGPTConversationLoading ? 'Wait AI response...' : 'Loading...'
+          }
+          loading={isLoadingMemo}
+          size={24}
+          sx={{ width: 254 }}
+        >
           {currentProviderOption && clientState.status !== 'success' && (
             <AIProviderAuthCard aiProviderOption={currentProviderOption} />
           )}

@@ -44,16 +44,17 @@ const AIProviderOptions: AIProviderOptionType[] = [
     authButtonText: 'Log into your own Bard account',
     authOpenInNew: true,
   },
-  {
-    beta: false,
-    label: 'Claude',
-    value: CHAT_GPT_PROVIDER.CLAUDE,
-    authDescription: 'Use your own Claude to power the extension.',
-    shortDescription: `100K context window. Chat with multiple documents.`,
-    description: '100K context window. Chat with multiple documents.',
-    authButtonText: 'Log into your Claude account',
-    authOpenInNew: true,
-  },
+  // TODO - claude还没开放
+  // {
+  //   beta: false,
+  //   label: 'Claude',
+  //   value: CHAT_GPT_PROVIDER.CLAUDE,
+  //   authDescription: 'Use your own Claude to power the extension.',
+  //   shortDescription: `100K context window. Chat with multiple documents.`,
+  //   description: '100K context window. Chat with multiple documents.',
+  //   authButtonText: 'Log into your Claude account',
+  //   authOpenInNew: true,
+  // },
   {
     beta: false,
     label: 'ChatGPT web app',

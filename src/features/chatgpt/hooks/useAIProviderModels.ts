@@ -10,9 +10,13 @@ import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import {
+  backgroundGetUrlContent,
   getChromeExtensionSettings,
   setChromeExtensionSettings,
 } from '@/background/utils'
+import useEffectOnce from '@/hooks/useEffectOnce'
+import Browser from 'webextension-polyfill'
+import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -26,6 +30,34 @@ const useAIProviderModels = () => {
   const [loading, setLoading] = useState(false)
   const { currentThirdProviderSettings, saveThirdProviderSettings } =
     useThirdProviderSetting()
+  const { cleanChatGPT } = useCleanChatGPT()
+  // ===chatgpt 特殊处理开始===
+  const [whiteListModels, setWhiteListModels] = useState<string[]>([])
+  useEffectOnce(() => {
+    Browser.storage.local.get('CHAT_GPT_WHITE_LIST_MODELS').then((result) => {
+      const cacheModels = JSON.parse(result.CHAT_GPT_WHITE_LIST_MODELS || '[]')
+      setWhiteListModels(cacheModels)
+      backgroundGetUrlContent(
+        'https://www.phtracker.com/crx/info/provider/v1',
+      ).then((result) => {
+        if (result.success && result.data && result.data.body) {
+          try {
+            const data = JSON.parse(result.data.body)
+            if (data.models) {
+              // set to local storage
+              Browser.storage.local.set({
+                CHAT_GPT_WHITE_LIST_MODELS: JSON.stringify(data.models),
+              })
+              setWhiteListModels(data.models)
+            }
+          } catch (e) {
+            console.log(e)
+          }
+        }
+      })
+    })
+  })
+  // ===chatgpt 特殊处理结束===
   const aiProviderModels = useMemo<IAIProviderModel[]>(() => {
     let currentModels: IAIProviderModel[] = []
     if (!currentProvider) {
@@ -41,6 +73,9 @@ const useAIProviderModels = () => {
               value: item.slug,
               titleTag:
                 item.tags?.find((tag) => tag.toLowerCase().includes('beta')) ||
+                item.tags?.find((tag) =>
+                  tag.toLowerCase().includes('mobile'),
+                ) ||
                 '',
               maxTokens: item.max_tokens,
               tags: item.tags || [],
@@ -51,6 +86,7 @@ const useAIProviderModels = () => {
                 },
                 { label: 'Description', value: item.description },
               ],
+              disabled: !whiteListModels.includes(item.slug),
             }
             return providerModel
           })
@@ -90,7 +126,7 @@ const useAIProviderModels = () => {
         break
     }
     return currentModels
-  }, [currentProvider, appSettings.models])
+  }, [currentProvider, appSettings.models, whiteListModels])
   const currentAIProviderModel = useMemo(() => {
     if (currentProvider === 'OPENAI') {
       return appSettings.currentModel
@@ -115,6 +151,7 @@ const useAIProviderModels = () => {
             model,
           })
         }
+        await cleanChatGPT()
       } catch (e) {
         console.log(e)
       } finally {

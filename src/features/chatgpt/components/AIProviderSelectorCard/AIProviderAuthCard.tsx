@@ -112,6 +112,9 @@ const AIProviderAuthCard: FC<{
                 justifyContent={'center'}
                 alignItems={'center'}
                 height={'100%'}
+                sx={{
+                  height: '40px',
+                }}
               >
                 <Typography fontSize={'18px'} fontWeight={700}>
                   Connecting to ChatGPT...

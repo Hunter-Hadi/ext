@@ -91,6 +91,16 @@ const AIProviderModelSelector: FC = () => {
             title={
               <Stack spacing={1} width={'160px'}>
                 <Stack textAlign={'left'} width={'100%'} spacing={2}>
+                  {original.disabled && (
+                    <Typography
+                      fontSize={'14px'}
+                      color={'text.primary'}
+                      textAlign={'left'}
+                      fontWeight={700}
+                    >
+                      Model disabled in extension for upgrade. Please try later.
+                    </Typography>
+                  )}
                   <Typography
                     fontSize={'14px'}
                     color={'text.primary'}
@@ -153,6 +163,12 @@ const AIProviderModelSelector: FC = () => {
               direction={'row'}
               alignItems={'center'}
               spacing={1}
+              onClick={(event) => {
+                if (original.disabled) {
+                  event.stopPropagation()
+                  event.preventDefault()
+                }
+              }}
             >
               <Typography
                 component={'span'}

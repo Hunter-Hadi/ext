@@ -6,6 +6,7 @@ import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { IAIProviderType } from '@/background/provider/chat'
 
 const AIProviderInfoCard: FC<{
   aiProviderOption: AIProviderOptionType
@@ -15,6 +16,17 @@ const AIProviderInfoCard: FC<{
   boxSx?: SxProps
 }> = (props) => {
   const { aiProviderOption, children, sx, boxSx, authMode } = props
+  const beautyQueryMap: {
+    [key in IAIProviderType]: string
+  } = {
+    USE_CHAT_GPT_PLUS: 'chatgpt',
+    OPENAI: 'chatgpt_web_app',
+    OPENAI_API: 'chatgpt_api',
+    BARD: 'bard',
+    BING: 'bing',
+    POE: 'poe',
+    CLAUDE: 'claude',
+  }
   return (
     <Stack
       alignItems={'center'}
@@ -52,7 +64,9 @@ const AIProviderInfoCard: FC<{
           {aiProviderOption.shortDescription}
         </Typography>
         <Link
-          href={`${APP_USE_CHAT_GPT_HOST}/get-started?provider=${aiProviderOption.value}#ai-provider`}
+          href={`${APP_USE_CHAT_GPT_HOST}/get-started?provider=${
+            beautyQueryMap[aiProviderOption.value]
+          }#ai-provider`}
           target={'_blank'}
           underline={'always'}
         >

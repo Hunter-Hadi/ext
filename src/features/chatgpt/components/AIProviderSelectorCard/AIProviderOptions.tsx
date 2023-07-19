@@ -59,7 +59,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     label: 'ChatGPT web app',
     description: '',
     value: AI_PROVIDER_MAP.OPENAI,
-    authDescription: 'Use your own ChatGPT to power the extension.',
+    authDescription: 'Use your own ChatGPT web app to power the extension.',
     shortDescription: `GPT-4, Web Browsing, Code Interpreter, and Plugins via ChatGPT Plus.`,
     authButtonText: 'Log into ChatGPT web app',
     authOpenInNew: true,
@@ -77,7 +77,20 @@ const AIProviderOptions: AIProviderOptionType[] = [
           target={'_blank'}
           href="https://platform.openai.com/playground?mode=chat"
           rel="noreferrer noopener nofollow"
-          sx={{ color: 'inherit' }}
+          sx={{
+            color: 'inherit',
+            display: 'inline-flex',
+            textDecorationColor: (t) =>
+              t.palette.mode === 'dark'
+                ? 'rgba(255,255,255,0.4)'
+                : 'rgba(0,0,0,0.4)',
+            '&:hover': {
+              textDecorationColor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(255,255,255,0.6)'
+                  : 'rgba(0,0,0,0.6)',
+            },
+          }}
         >
           OpenAI Playground
         </Link>

@@ -6,6 +6,8 @@ import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard
 import { SxProps } from '@mui/material/styles'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
 import Popover from '@mui/material/Popover'
+import { ClickAwayListener } from '@mui/material'
+import { getAppRootElement } from '@/utils'
 
 const AIProviderSelectorFloatingButton: FC<{
   sx?: SxProps
@@ -85,18 +87,44 @@ const AIProviderSelectorFloatingButton: FC<{
           },
         }}
       >
-        <Box onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
-          <AIProviderSelector
-            closeAble
-            onClose={() => {
-              if (lockCloseRef.current) {
+        <ClickAwayListener
+          onClickAway={(event) => {
+            const aiProviderCard = getAppRootElement()?.querySelector(
+              '#MaxAIProviderSelectorCard',
+            ) as HTMLElement
+            if (aiProviderCard) {
+              const rect = aiProviderCard.getBoundingClientRect()
+              const x = (event as MouseEvent).clientX
+              const y = (event as MouseEvent).clientY
+              if (
+                x > rect.left &&
+                x < rect.right &&
+                y > rect.top &&
+                y < rect.bottom
+              ) {
+                // 点击在卡片内部
                 return
               }
-              waitResetRef.current = true
               handlePopoverClose()
-            }}
-          />
-        </Box>
+            }
+          }}
+        >
+          <Box
+            onMouseEnter={handlePopoverOpen}
+            onMouseLeave={handlePopoverClose}
+          >
+            <AIProviderSelector
+              closeAble
+              onClose={() => {
+                if (lockCloseRef.current) {
+                  return
+                }
+                waitResetRef.current = true
+                handlePopoverClose()
+              }}
+            />
+          </Box>
+        </ClickAwayListener>
       </Popover>
     </Box>
   )

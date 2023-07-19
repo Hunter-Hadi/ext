@@ -187,6 +187,7 @@ const initChromeExtensionCommands = () => {
       if (command == '_execute_action') {
         const currentTab = await Browser.tabs.query({
           active: true,
+          currentWindow: true,
         })
         const tab = currentTab[0]
         if (tab && tab.id) {
@@ -202,6 +203,7 @@ const initChromeExtensionCommands = () => {
       } else if (command === 'show-floating-menu') {
         const currentTab = await Browser.tabs.query({
           active: true,
+          currentWindow: true,
         })
         const tab = currentTab[0]
         if (tab && tab.id) {

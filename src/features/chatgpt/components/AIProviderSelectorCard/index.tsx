@@ -43,6 +43,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
   }, [provider])
   return (
     <Box
+      id={closeAble ? 'MaxAIProviderSelectorCard' : ''}
       component={'div'}
       sx={{
         borderRadius: '4px',
@@ -68,7 +69,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
       >
         <AppLoadingLayout
           loadingText={
-            chatGPTConversationLoading ? 'Wait AI response...' : 'Loading...'
+            chatGPTConversationLoading ? 'AI is writing...' : 'Loading...'
           }
           loading={isLoadingMemo}
           size={24}

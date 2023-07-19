@@ -69,10 +69,23 @@ const AIProviderInfoCard: FC<{
           }#ai-provider`}
           target={'_blank'}
           underline={'always'}
+          sx={{
+            display: 'inline-flex',
+            textDecorationColor: (t) =>
+              t.palette.mode === 'dark'
+                ? 'rgba(255,255,255,0.4)'
+                : 'rgba(0,0,0,0.4)',
+            '&:hover': {
+              textDecorationColor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(255,255,255,0.6)'
+                  : 'rgba(0,0,0,0.6)',
+            },
+          }}
         >
           <Typography
             fontSize={'14px'}
-            color={'text.primary'}
+            color={'text.secondary'}
             fontWeight={400}
             component={'span'}
           >

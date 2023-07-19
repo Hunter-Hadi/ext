@@ -346,7 +346,7 @@ The template can include any number of the following variables:
                 label={
                   <Stack direction={'row'} alignItems="center">
                     <Typography variant={'body1'}>
-                      Run prompt automatically
+                      Send to AI directly
                     </Typography>
                     <RunPromptTooltip />
                   </Stack>

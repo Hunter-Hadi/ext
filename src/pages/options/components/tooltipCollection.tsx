@@ -163,19 +163,17 @@ const RunPromptTooltip = () => {
       >
         <Box maxWidth={'600px'} maxHeight={420} overflow="auto" p={1}>
           <Typography variant="body2">
-            <b>If this option is enabled</b>
+            <b>When enabled</b>
           </Typography>
           <Typography variant="body2">
-            {`The prompt will be sent to AI chat directly, which is the default "normal behavior". All prompt templates will have this option enabled by default.`}
+            {`The prompt will be directly sent to AI, which is the default "normal behavior". All prompt templates will have this option enabled by default.`}
           </Typography>
           <Divider sx={{ my: 1 }} />
           <Typography variant="body2">
-            <b>If this option is disabled</b>
+            <b>When disabled</b>
           </Typography>
           <Typography variant="body2">
-            {`The prompt goes to the input box first,
-            so you can modify or add additional information before sending it to
-            AI chat.GPT.`}
+            {`The prompt first goes to the input box, allowing you to modify or add additional information before sending it to AI.`}
           </Typography>
           <YoutubePlayerBox
             borderRadius={8}

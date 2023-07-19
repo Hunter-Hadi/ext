@@ -209,7 +209,7 @@ class OpenAIChat extends BaseChat {
       this.status = 'complete'
       this.listenDaemonProcessTab()
       await this.updateClientStatus()
-      await this.keepAlive()
+      this.keepAlive()
     }
   }
   async createConversation() {
@@ -353,7 +353,9 @@ class OpenAIChat extends BaseChat {
     const delay = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms))
     await delay(20 * 1000)
-    await this.keepAlive()
+    if (this.active) {
+      await this.keepAlive()
+    }
   }
   async tabRemoveListener(tabId: number) {
     if (

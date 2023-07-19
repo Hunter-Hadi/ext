@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { useMemo } from 'react'
-import { IChatGPTProviderType } from '@/background/provider/chat'
+import { IAIProviderType } from '@/background/provider/chat'
 import {
   getThirdProviderSettings,
   setThirdProviderSettings,
@@ -22,7 +22,7 @@ const useThirdProviderSetting = () => {
     }
     return undefined
   }, [currentProvider, appSettings.thirdProviderSettings])
-  const fetchThirdProviderSettings = async <T extends IChatGPTProviderType>(
+  const fetchThirdProviderSettings = async <T extends IAIProviderType>(
     providerKey: T,
   ) => {
     try {
@@ -32,7 +32,7 @@ const useThirdProviderSetting = () => {
       return undefined
     }
   }
-  const saveThirdProviderSettings = async <T extends IChatGPTProviderType>(
+  const saveThirdProviderSettings = async <T extends IAIProviderType>(
     providerKey: T,
     settings: Partial<IThirdProviderSettings[T]>,
   ) => {

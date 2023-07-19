@@ -2,7 +2,7 @@ import defaultContextMenuJson from '@/background/defaultPromptsData/defaultConte
 import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import Browser from 'webextension-polyfill'
 import {
-  CHAT_GPT_PROVIDER,
+  AI_PROVIDER_MAP,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
   CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -21,7 +21,7 @@ import {
   BING_MODELS,
   BingConversationStyle,
 } from '@/background/src/chat/BingChat/bing/types'
-import { PoeModel } from '@/background/src/chat/PoeChat/type'
+import { POE_MODELS, PoeModel } from '@/background/src/chat/PoeChat/type'
 import cloneDeep from 'lodash-es/cloneDeep'
 import {
   IChromeExtensionButtonSetting,
@@ -62,7 +62,7 @@ export const getChromeExtensionSettings =
       currentPlugins: [],
       plugins: [],
       conversationId: '',
-      chatGPTProvider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+      chatGPTProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       /** @deprecated **/
       contextMenus: [],
       /** @deprecated **/
@@ -97,30 +97,30 @@ export const getChromeExtensionSettings =
         },
       },
       thirdProviderSettings: {
-        [CHAT_GPT_PROVIDER.BING]: {
+        [AI_PROVIDER_MAP.BING]: {
           conversationStyle: BingConversationStyle.Balanced,
           model: BING_MODELS[0].value,
         },
-        [CHAT_GPT_PROVIDER.CLAUDE]: {
+        [AI_PROVIDER_MAP.CLAUDE]: {
           model: PoeModel.ClaudeInstant,
         },
-        [CHAT_GPT_PROVIDER.BARD]: {
+        [AI_PROVIDER_MAP.BARD]: {
           model: BARD_MODELS[0].value,
         },
-        [CHAT_GPT_PROVIDER.OPENAI]: {
+        [AI_PROVIDER_MAP.OPENAI]: {
           model: 'text-davinci-002-render-sha',
         },
-        [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]: {
+        [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: {
           model: USE_CHAT_GPT_PLUS_MODELS[0].value,
         },
-        [CHAT_GPT_PROVIDER.OPENAI_API]: {
+        [AI_PROVIDER_MAP.OPENAI_API]: {
           model: OPENAI_API_MODELS[0].value,
           temperature: 1,
           apiKey: '',
           apiHost: 'https://api.openai.com',
         },
-        [CHAT_GPT_PROVIDER.POE]: {
-          model: PoeModel.ClaudeInstant,
+        [AI_PROVIDER_MAP.POE]: {
+          model: POE_MODELS[0].value,
         },
       },
     } as IChromeExtensionSettings

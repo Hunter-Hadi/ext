@@ -3,7 +3,7 @@ import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSe
 import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { AI_PROVIDER_MAP } from '@/constants'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
@@ -50,7 +50,7 @@ const AIProviderAuthCard: FC<{
       {(chatGPTClientState.status === 'loading' ||
         chatGPTClientState.status === 'complete') && (
         <Stack>
-          {aiProviderOption.value === CHAT_GPT_PROVIDER.OPENAI && (
+          {aiProviderOption.value === AI_PROVIDER_MAP.OPENAI && (
             <TextOnlyTooltip
               placement={'bottom'}
               arrow
@@ -69,7 +69,7 @@ const AIProviderAuthCard: FC<{
                       port.postMessage({
                         event: 'Client_authChatGPTProvider',
                         data: {
-                          provider: CHAT_GPT_PROVIDER.OPENAI,
+                          provider: AI_PROVIDER_MAP.OPENAI,
                         },
                       })
                     }}
@@ -140,7 +140,7 @@ const AIProviderAuthCard: FC<{
               height: '40px',
             }}
             title={
-              aiProviderOption.value === CHAT_GPT_PROVIDER.OPENAI && (
+              aiProviderOption.value === AI_PROVIDER_MAP.OPENAI && (
                 <Box sx={{ display: 'inline' }}>
                   <Typography
                     component={'span'}

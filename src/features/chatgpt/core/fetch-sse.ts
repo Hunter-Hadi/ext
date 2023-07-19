@@ -1,14 +1,14 @@
 import { createParser } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
 import { streamAsyncIterable } from './stream-async-inerable'
-import { IChatGPTProviderType } from '@/background/provider/chat'
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { IAIProviderType } from '@/background/provider/chat'
+import { AI_PROVIDER_MAP } from '@/constants'
 
 export const fetchSSE = async (
   resource: string,
   options: RequestInit & {
     onMessage: (message: string) => void
-    provider: IChatGPTProviderType
+    provider: IAIProviderType
   },
 ) => {
   const { onMessage, ...fetchOptions } = options
@@ -16,7 +16,7 @@ export const fetchSSE = async (
   console.log(resp, 'straming resp')
   if (!resp.ok) {
     const error = await resp.json().catch(() => ({}))
-    if (fetchOptions.provider === CHAT_GPT_PROVIDER.OPENAI) {
+    if (fetchOptions.provider === AI_PROVIDER_MAP.OPENAI) {
       if (resp.status === 401) {
         location.href = 'https://chat.openai.com/auth/login'
       } else if (resp.status === 403) {

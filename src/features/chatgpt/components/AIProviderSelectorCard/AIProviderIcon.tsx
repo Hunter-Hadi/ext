@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { IChatGPTProviderType } from '@/background/provider/chat'
+import { IAIProviderType } from '@/background/provider/chat'
 import {
   BardIcon,
   BingIcon,
@@ -11,7 +11,7 @@ import {
 } from '@/components/CustomIcon'
 
 export const AIProviderIcon: FC<{
-  aiProviderType: IChatGPTProviderType
+  aiProviderType: IAIProviderType
   size?: number
 }> = (props) => {
   const { aiProviderType, size = 20 } = props

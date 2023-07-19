@@ -117,24 +117,25 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
               </ListItemButton>
             )
           })}
-          {closeAble && (
-            <ListItemButton onClick={onClose}>
-              <Stack
-                width={'100%'}
-                spacing={1}
-                alignItems={'center'}
-                direction={'row'}
-                justifyContent={'end'}
-              >
+          <ListItemButton disabled={!closeAble} onClick={onClose}>
+            <Stack
+              sx={{ minHeight: '28px' }}
+              width={'100%'}
+              spacing={1}
+              alignItems={'center'}
+              direction={'row'}
+              justifyContent={'end'}
+            >
+              {closeAble && (
                 <ContextMenuIcon
                   icon={'Close'}
                   sx={{
                     fontSize: `24px`,
                   }}
                 />
-              </Stack>
-            </ListItemButton>
-          )}
+              )}
+            </Stack>
+          </ListItemButton>
         </List>
       </Stack>
     </Box>

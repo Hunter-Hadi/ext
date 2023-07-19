@@ -3,12 +3,14 @@ import {
   ChatAdapterInterface,
   ChatSystemInterface,
   ChatStatus,
-  IChatGPTProviderType,
+  IAIProviderType,
 } from '@/background/provider/chat'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
+  getChromeExtensionOnBoardingData,
   getChromeExtensionSettings,
+  setChromeExtensionOnBoardingData,
   setChromeExtensionSettings,
 } from '@/background/utils'
 import Log from '@/utils/Log'
@@ -20,13 +22,14 @@ import {
   CHROME_EXTENSION_HOMEPAGE_URL,
 } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { OnBoardingKeyType } from '@/background/utils/onboardingStorage'
 
 const log = new Log('Background/Chat/ChatSystem')
 
 class ChatSystem implements ChatSystemInterface {
-  currentProvider?: IChatGPTProviderType
+  currentProvider?: IAIProviderType
   private adapters: {
-    [key in IChatGPTProviderType]?: ChatAdapterInterface
+    [key in IAIProviderType]?: ChatAdapterInterface
   } = {}
   constructor() {
     this.initChatSystem()
@@ -219,10 +222,10 @@ class ChatSystem implements ChatSystemInterface {
       }
     })
   }
-  addAdapter(provider: IChatGPTProviderType, adapter: ChatAdapter): void {
+  addAdapter(provider: IAIProviderType, adapter: ChatAdapter): void {
     this.adapters[provider] = adapter
   }
-  async switchAdapter(provider: IChatGPTProviderType) {
+  async switchAdapter(provider: IAIProviderType) {
     if (provider === this.currentProvider) {
       log.info('switchAdapter', 'same provider no need to switch')
       return
@@ -248,11 +251,40 @@ class ChatSystem implements ChatSystemInterface {
   async auth(authTabId: number) {
     if (this.currentAdapter) {
       await this.currentAdapter.auth(authTabId)
+      const onBoardingData = await getChromeExtensionOnBoardingData()
+      const onBoardingDataKey = `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${this.currentProvider}`
+      // 如果onBoardingData里面有这个key, 才保存
+      if (
+        Object.prototype.hasOwnProperty.call(onBoardingData, onBoardingDataKey)
+      ) {
+        await setChromeExtensionOnBoardingData(
+          onBoardingDataKey as OnBoardingKeyType,
+          true,
+        )
+      }
     }
   }
   async preAuth() {
     if (this.currentAdapter) {
-      await this.currentAdapter.preAuth()
+      // 判断是否auth过，如果从来没有auth过，就不需要preAuth
+      const onBoardingData = await getChromeExtensionOnBoardingData()
+      const onBoardingDataKey = `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${this.currentProvider}`
+      // 如果onBoardingData里面有这个key, 并且为true, 才执行preAuth
+      if (
+        Object.prototype.hasOwnProperty.call(onBoardingData, onBoardingDataKey)
+      ) {
+        if (onBoardingData[onBoardingDataKey as OnBoardingKeyType]) {
+          await this.currentAdapter.preAuth()
+        } else {
+          // 说明没有onBoarding过
+          await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
+            status: 'needAuth',
+          })
+        }
+      } else {
+        // 如果onBoardingData里面没有这个key, 按理说不可能没有, 但是为了保险起见, 正常执行preAuth
+        await this.currentAdapter.preAuth()
+      }
     }
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = (

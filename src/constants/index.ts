@@ -62,7 +62,7 @@ export const CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY =
   '35536E1E-65B4-4D96-9D97-6ADB7EFF8147'
 export const CHAT_GPT_PROMPT_PREFIX = `\`reset\`\n\`no quotes\`\n\`no explanations\`\n\`no prompt\`\n\`no self-reference\`\n\`no apologies\`\n\`no filler\`\n\`just answer\`\n`
 export const CHAT_GPT_MESSAGES_RECOIL_KEY = 'CHAT_GPT_MESSAGES_RECOIL_KEY'
-export const CHAT_GPT_PROVIDER = {
+export const AI_PROVIDER_MAP = {
   OPENAI: 'OPENAI',
   USE_CHAT_GPT_PLUS: 'USE_CHAT_GPT_PLUS',
   OPENAI_API: 'OPENAI_API',

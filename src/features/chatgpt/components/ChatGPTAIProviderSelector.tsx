@@ -13,9 +13,9 @@ import Tooltip from '@mui/material/Tooltip'
 import CircularProgress from '@mui/material/CircularProgress'
 import Chip from '@mui/material/Chip'
 
-import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROVIDER } from '@/constants'
+import { APP_USE_CHAT_GPT_HOST, AI_PROVIDER_MAP } from '@/constants'
 import { ChatGPTOpenAIModelSelector } from '@/features/chatgpt/components/ChatGPTOpenAIModelSelector'
-import { IChatGPTProviderType } from '@/background/provider/chat'
+import { IAIProviderType } from '@/background/provider/chat'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
@@ -54,7 +54,7 @@ const providerOptions = [
   {
     beta: false,
     label: 'ChatGPT',
-    value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+    value: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
     shortDescription: `Use ChatGPT to power the extension.`,
     description: `As fast as ChatGPT Plus. No country restrictions. Powered by gpt-3.5-turbo.`,
     features: [
@@ -71,7 +71,7 @@ const providerOptions = [
   {
     beta: false,
     label: 'OpenAI API',
-    value: CHAT_GPT_PROVIDER.OPENAI_API,
+    value: AI_PROVIDER_MAP.OPENAI_API,
     logo: (
       <OpenAIIcon
         sx={{
@@ -95,7 +95,7 @@ const providerOptions = [
   {
     beta: false,
     label: 'ChatGPT web app',
-    value: CHAT_GPT_PROVIDER.OPENAI,
+    value: AI_PROVIDER_MAP.OPENAI,
     logo: (
       <ChatGPTBlackIcon
         sx={{
@@ -128,7 +128,7 @@ const providerOptions = [
   {
     beta: false,
     label: 'Bard',
-    value: CHAT_GPT_PROVIDER.BARD,
+    value: AI_PROVIDER_MAP.BARD,
     logo: (
       <BardIcon
         sx={{
@@ -150,7 +150,7 @@ const providerOptions = [
   {
     beta: false,
     label: 'Bing',
-    value: CHAT_GPT_PROVIDER.BING,
+    value: AI_PROVIDER_MAP.BING,
     logo: (
       <BingIcon
         sx={{
@@ -172,7 +172,7 @@ const providerOptions = [
   {
     beta: false,
     label: 'Claude',
-    value: CHAT_GPT_PROVIDER.CLAUDE,
+    value: AI_PROVIDER_MAP.CLAUDE,
     logo: (
       <ClaudeIcon
         sx={{
@@ -242,7 +242,7 @@ const ChatGPTAIProviderSelector: FC<{
           label="AI Provider"
           onChange={async (event) => {
             const { value } = event.target
-            await updateChatGPTProvider(value as IChatGPTProviderType)
+            await updateChatGPTProvider(value as IAIProviderType)
           }}
           renderValue={(value) => {
             const provider = providerOptions.find(
@@ -448,9 +448,9 @@ const ChatGPTAIProviderSelector: FC<{
           })}
         </Select>
       </FormControl>
-      {provider === CHAT_GPT_PROVIDER.OPENAI &&
+      {provider === AI_PROVIDER_MAP.OPENAI &&
         clientState.status === 'success' && <ChatGPTOpenAIModelSelector />}
-      {provider === CHAT_GPT_PROVIDER.BING &&
+      {provider === AI_PROVIDER_MAP.BING &&
         clientState.status === 'success' && (
           <ChatGPTBingConversationStyleSelector />
         )}

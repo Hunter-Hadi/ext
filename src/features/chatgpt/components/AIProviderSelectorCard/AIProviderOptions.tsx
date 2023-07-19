@@ -1,12 +1,12 @@
-import { CHAT_GPT_PROVIDER } from '@/constants'
-import { IChatGPTProviderType } from '@/background/provider/chat'
+import { AI_PROVIDER_MAP } from '@/constants'
+import { IAIProviderType } from '@/background/provider/chat'
 import Link from '@mui/material/Link'
 import React from 'react'
 
 export type AIProviderOptionType = {
   beta: boolean
   label: string
-  value: IChatGPTProviderType
+  value: IAIProviderType
   shortDescription: React.ReactNode
   description: string
   authDescription: string
@@ -18,7 +18,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     beta: false,
     label: 'Claude via Poe',
     description: '',
-    value: CHAT_GPT_PROVIDER.POE,
+    value: AI_PROVIDER_MAP.POE,
     authDescription: 'Use your own Poe to power the extension.',
     shortDescription: `Access Claude beyond the US and UK.`,
     authButtonText: 'Log into your Poe account',
@@ -28,7 +28,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     beta: false,
     label: 'Bing',
     description: '',
-    value: CHAT_GPT_PROVIDER.BING,
+    value: AI_PROVIDER_MAP.BING,
     authDescription: 'Use your own Bing AI to power the extension.',
     shortDescription: `Enhanced with Bing Search.`,
     authButtonText: 'Log into your Bing account',
@@ -38,7 +38,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     beta: false,
     label: 'Bard',
     description: '',
-    value: CHAT_GPT_PROVIDER.BARD,
+    value: AI_PROVIDER_MAP.BARD,
     authDescription: 'Use your own Google Bard to power the extension.',
     shortDescription: `Enhanced with Google Search.`,
     authButtonText: 'Log into your Bard account',
@@ -58,7 +58,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     beta: false,
     label: 'ChatGPT web app',
     description: '',
-    value: CHAT_GPT_PROVIDER.OPENAI,
+    value: AI_PROVIDER_MAP.OPENAI,
     authDescription: 'Use your own ChatGPT to power the extension.',
     shortDescription: `GPT-4, Web Browsing, Code Interpreter, and Plugins via ChatGPT Plus.`,
     authButtonText: 'Log into ChatGPT web app',
@@ -68,7 +68,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     beta: false,
     label: 'OpenAI API',
     description: '',
-    value: CHAT_GPT_PROVIDER.OPENAI_API,
+    value: AI_PROVIDER_MAP.OPENAI_API,
     authDescription: 'Use your own OpenAl API key to power the extension.',
     shortDescription: (
       <span>
@@ -92,7 +92,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     description: '',
     label: 'ChatGPT',
     authDescription: 'Use ChatGPT to power the extension.',
-    value: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+    value: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
     shortDescription: `As fast as ChatGPT Plus.`,
     authButtonText: 'Continue with ChatGPT',
     authOpenInNew: false,

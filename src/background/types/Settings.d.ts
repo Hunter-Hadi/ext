@@ -1,5 +1,5 @@
-import { IChatGPTProviderType } from '@/background/provider/chat'
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { IAIProviderType } from '@/background/provider/chat'
+import { AI_PROVIDER_MAP } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
@@ -48,29 +48,29 @@ export type IChatGPTPluginType = {
 }
 
 type IThirdProviderSettings = {
-  [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]?: {
+  [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]?: {
     model?: string
   }
-  [CHAT_GPT_PROVIDER.OPENAI]?: {
+  [AI_PROVIDER_MAP.OPENAI]?: {
     model?: string
   }
-  [CHAT_GPT_PROVIDER.OPENAI_API]?: {
+  [AI_PROVIDER_MAP.OPENAI_API]?: {
     temperature?: number
     model?: string
     apiKey?: string
     apiHost?: string
   }
-  [CHAT_GPT_PROVIDER.BING]?: {
+  [AI_PROVIDER_MAP.BING]?: {
     model?: string
     conversationStyle?: BingConversationStyle
   }
-  [CHAT_GPT_PROVIDER.BARD]?: {
+  [AI_PROVIDER_MAP.BARD]?: {
     model?: string
   }
-  [CHAT_GPT_PROVIDER.CLAUDE]?: {
+  [AI_PROVIDER_MAP.CLAUDE]?: {
     model?: string
   }
-  [CHAT_GPT_PROVIDER.POE]: {
+  [AI_PROVIDER_MAP.POE]: {
     model?: string
   }
 }
@@ -91,7 +91,7 @@ export interface IChromeExtensionButtonSetting {
 }
 
 export interface IChromeExtensionSettings {
-  chatGPTProvider?: IChatGPTProviderType
+  chatGPTProvider?: IAIProviderType
   models?: IChatGPTModelType[]
   plugins?: IChatGPTPluginType[]
   currentModel?: string
@@ -120,7 +120,7 @@ export interface IChromeExtensionSettings {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting
   }
   thirdProviderSettings?: {
-    [P in IChatGPTProviderType]?: IThirdProviderSettings[P]
+    [P in IAIProviderType]?: IThirdProviderSettings[P]
   }
   lastModified?: number
 }

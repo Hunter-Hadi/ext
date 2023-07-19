@@ -1,6 +1,6 @@
 import { ChatStatus } from '@/background/provider/chat'
 import Log from '@/utils/Log'
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { AI_PROVIDER_MAP } from '@/constants'
 import {
   backgroundSendAllClientMessage,
   createChromeExtensionOptionsPage,
@@ -129,7 +129,7 @@ class OpenAiApiChat extends BaseChat {
     const conversationId = uuidV4()
     const result: IOpenAIApiChatMessage = { role: 'assistant', content: '' }
     await fetchSSE(`${chatGPTApiSettings.apiHost}/v1/chat/completions`, {
-      provider: CHAT_GPT_PROVIDER.OPENAI_API,
+      provider: AI_PROVIDER_MAP.OPENAI_API,
       method: 'POST',
       signal,
       headers: {

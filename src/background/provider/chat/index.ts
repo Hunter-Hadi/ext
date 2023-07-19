@@ -8,7 +8,7 @@ export { PoeChatProvider } from './PoeChatProvider'
 
 export type {
   ChatStatus,
-  IChatGPTProviderType,
+  IAIProviderType,
   ChatAdapterInterface,
   ChatSystemInterface,
 } from './ChatAdapter'

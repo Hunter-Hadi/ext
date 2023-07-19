@@ -4,7 +4,7 @@ import Browser from 'webextension-polyfill'
 import {
   APP_USE_CHAT_GPT_API_HOST,
   APP_USE_CHAT_GPT_HOST,
-  CHAT_GPT_PROVIDER,
+  AI_PROVIDER_MAP,
   BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
   APP_VERSION,
 } from '@/constants'
@@ -213,7 +213,7 @@ class UseChatGPTPlusChat extends BaseChat {
     throttleEchoText()
     let isTokenExpired = false
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
-      provider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+      provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       method: 'POST',
       signal,
       headers: {

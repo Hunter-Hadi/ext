@@ -517,6 +517,10 @@ const FloatingContextMenu: FC<{
       }
       setShortCuts(runActions)
       setActions([])
+      if (!lastRecordContextMenuRef.current) {
+        // 如果没有lastRecordContextMenuRef， 说明本次运行了ask chatgpt，清空input
+        getMediator('floatingMenuInputMediator').updateInputValue('')
+      }
       // 是否为可编辑的元素
       const isEditableElement =
         currentSelectionRef.current?.selectionElement?.isEditableElement

@@ -24,12 +24,12 @@ const AIProviderModelSelector: FC = () => {
       MenuProps={{
         elevation: 0,
         anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'right',
+          vertical: 'top',
+          horizontal: 'left',
         },
         transformOrigin: {
           vertical: 'bottom',
-          horizontal: 'right',
+          horizontal: 'left',
         },
         MenuListProps: {
           sx: {
@@ -81,7 +81,7 @@ const AIProviderModelSelector: FC = () => {
         const original = option.origin as IAIProviderModel
         return (
           <Tooltip
-            placement={'right'}
+            placement={'left'}
             PopperProps={{
               sx: {
                 zIndex: 2147483620,

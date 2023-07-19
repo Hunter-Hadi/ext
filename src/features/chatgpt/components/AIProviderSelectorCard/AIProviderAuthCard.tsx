@@ -55,6 +55,12 @@ const AIProviderAuthCard: FC<{
               placement={'bottom'}
               arrow
               open
+              PopperProps={{
+                sx: {
+                  maxWidth: '237px',
+                  zIndex: '2147483632!important',
+                },
+              }}
               title={
                 showJumpToChatGPT && (
                   <Box
@@ -130,6 +136,12 @@ const AIProviderAuthCard: FC<{
             TooltipProps={{
               arrow: true,
               placement: 'bottom',
+              PopperProps: {
+                sx: {
+                  maxWidth: '237px',
+                  zIndex: '2147483632!important',
+                },
+              },
             }}
             sx={{
               fontSize: '14px',

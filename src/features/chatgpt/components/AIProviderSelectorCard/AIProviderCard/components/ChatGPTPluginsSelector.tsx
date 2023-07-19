@@ -91,12 +91,12 @@ const ChatGPTPluginsSelector: FC = () => {
             disabled={messages.length > 0}
             MenuProps={{
               anchorOrigin: {
-                vertical: 'bottom',
-                horizontal: 'right',
+                vertical: 'top',
+                horizontal: 'left',
               },
               transformOrigin: {
                 vertical: 'bottom',
-                horizontal: 'right',
+                horizontal: 'left',
               },
               elevation: 0,
               MenuListProps: {

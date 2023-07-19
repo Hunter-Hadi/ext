@@ -200,20 +200,15 @@ const useFloatingContextMenu = () => {
     const virtualSelection = {
       selectionText: text,
       selectionHTML: text,
-      selectionRect: rect,
-      selectionInputAble: false,
-      activeElement: document.activeElement as HTMLElement,
+      selectionRect: computedRectPosition(rect),
+      isEditableElement: false,
+      target: element,
+      editableElementSelectionText: '',
+      editableElementSelectionHTML: '',
     }
-    saveCurrentSelection(virtualSelection)
-    hideRangy()
-    console.log(
-      '[ContextMenu Module]: render [context menu]',
-      computedRectPosition(virtualSelection.selectionRect),
+    showFloatingContextMenuWithVirtualElement(
+      virtualSelection as IVirtualIframeSelectionElement,
     )
-    setFloatingDropdownMenu({
-      open: true,
-      rootRect: computedRectPosition(virtualSelection.selectionRect),
-    })
   }
   const showFloatingContextMenu = () => {
     if (show && !floatingDropdownMenu.open && tempSelection) {

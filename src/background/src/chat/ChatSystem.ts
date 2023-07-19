@@ -66,6 +66,7 @@ class ChatSystem implements ChatSystemInterface {
             }
             break
           case 'Client_authChatGPTProvider': {
+            debugger
             const { provider } = data
             await this.switchAdapter(provider)
             await this.auth(sender.tab?.id || 0)

@@ -1,6 +1,7 @@
 import BaseChat from '@/background/src/chat/BaseChat'
 import { BingWebBot } from '@/background/src/chat/BingChat/bing'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
+import { getChromeExtensionOnBoardingData } from '@/background/utils'
 
 class BingChat extends BaseChat {
   private bingLib: BingWebBot
@@ -8,9 +9,16 @@ class BingChat extends BaseChat {
     super('BingChat')
     this.bingLib = new BingWebBot()
     this.status = 'success'
+    this.init()
   }
   async init() {
     this.log.info('init')
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    if (onBoardingData) {
+      this.status = onBoardingData.ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_BING
+        ? 'success'
+        : 'needAuth'
+    }
   }
   async auth() {
     this.active = true

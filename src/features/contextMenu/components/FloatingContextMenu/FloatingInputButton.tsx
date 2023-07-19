@@ -39,6 +39,7 @@ const FloatingInputButton: FC<{
         target = result.target || target
         template = result.template || template
       }
+      debugger
       showFloatingContextMenuWithElement(target, template)
     }
   }

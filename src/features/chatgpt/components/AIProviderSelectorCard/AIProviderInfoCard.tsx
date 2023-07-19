@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { IAIProviderType } from '@/background/provider/chat'
+import Box from '@mui/material/Box'
 
 const AIProviderInfoCard: FC<{
   aiProviderOption: AIProviderOptionType
@@ -63,35 +64,37 @@ const AIProviderInfoCard: FC<{
         <Typography fontSize={'14px'} color={'text.secondary'} fontWeight={400}>
           {aiProviderOption.shortDescription}
         </Typography>
-        <Link
-          href={`${APP_USE_CHAT_GPT_HOST}/get-started?provider=${
-            beautyQueryMap[aiProviderOption.value]
-          }#ai-provider`}
-          target={'_blank'}
-          underline={'always'}
-          sx={{
-            display: 'inline-flex',
-            textDecorationColor: (t) =>
-              t.palette.mode === 'dark'
-                ? 'rgba(255,255,255,0.4)'
-                : 'rgba(0,0,0,0.4)',
-            '&:hover': {
+        <Box display={'flex'}>
+          <Link
+            href={`${APP_USE_CHAT_GPT_HOST}/get-started?provider=${
+              beautyQueryMap[aiProviderOption.value]
+            }#ai-provider`}
+            target={'_blank'}
+            underline={'always'}
+            sx={{
+              display: 'inline-flex',
               textDecorationColor: (t) =>
                 t.palette.mode === 'dark'
-                  ? 'rgba(255,255,255,0.6)'
-                  : 'rgba(0,0,0,0.6)',
-            },
-          }}
-        >
-          <Typography
-            fontSize={'14px'}
-            color={'text.secondary'}
-            fontWeight={400}
-            component={'span'}
+                  ? 'rgba(255,255,255,0.4)'
+                  : 'rgba(0,0,0,0.4)',
+              '&:hover': {
+                textDecorationColor: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgba(255,255,255,0.6)'
+                    : 'rgba(0,0,0,0.6)',
+              },
+            }}
           >
-            Learn more
-          </Typography>
-        </Link>
+            <Typography
+              fontSize={'14px'}
+              color={'text.secondary'}
+              fontWeight={400}
+              component={'span'}
+            >
+              Learn more
+            </Typography>
+          </Link>
+        </Box>
       </Stack>
       <Stack
         sx={{

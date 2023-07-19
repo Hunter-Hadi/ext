@@ -34,7 +34,7 @@ import {
 // import TextIcon from '@/components/TextIcon'
 import IconDropdown from '@/components/IconDropdown'
 import Link from '@mui/material/Link'
-import { ChatGPTBingConversationStyleSelector } from '@/features/chatgpt/components/ChatGPTBingConversationStyleSelector'
+import { ChatGPTBingConversationStyleSelector } from '@/features/chatgpt/components/BingConversationStyleSelector'
 
 const ArrowDropDownIconCustom = () => {
   return (

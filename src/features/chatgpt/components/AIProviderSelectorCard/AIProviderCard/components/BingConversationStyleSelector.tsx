@@ -9,7 +9,6 @@ import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   BING_CONVERSATION_STYLES,
@@ -21,6 +20,7 @@ import {
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
 import { useFocus } from '@/hooks/useFocus'
+import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -36,7 +36,8 @@ const ArrowDropDownIconCustom = () => {
   )
 }
 
-const ChatGPTBingConversationStyleSelector: FC = () => {
+const BingConversationStyleSelector: FC = () => {
+  const { cleanChatGPT } = useCleanChatGPT()
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
@@ -57,7 +58,6 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
       }
     })
   })
-  const { resetConversation } = useMessageWithChatGPT('')
   return (
     <FormControl
       size="small"
@@ -71,12 +71,20 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
         }}
         id={'BingConversationStyleSelectorLabel'}
       >
-        <span style={{ fontSize: '16px' }}>{'Conversation Style'}</span>
+        <span style={{ fontSize: '16px' }}>{'Conversation style'}</span>
       </InputLabel>
       <Select
         disabled={chatGPTConversationLoading}
         MenuProps={{
           elevation: 0,
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'left',
+          },
+          transformOrigin: {
+            vertical: 'bottom',
+            horizontal: 'left',
+          },
           MenuListProps: {
             sx: {
               border: `1px solid`,
@@ -96,7 +104,7 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
         }}
         IconComponent={ArrowDropDownIconCustom}
         labelId={'BingConversationStyleSelectorLabel'}
-        label={'Conversation Style'}
+        label={'Conversation style'}
         value={bingConversationStyle}
         onChange={async (event) => {
           try {
@@ -107,7 +115,7 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
               },
               false,
             )
-            await resetConversation()
+            await cleanChatGPT()
             setBingConversationStyle(
               event.target.value as BingConversationStyle,
             )
@@ -143,7 +151,7 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
           return (
             <MenuItem value={model.value} key={model?.value} sx={{ p: 0 }}>
               <Tooltip
-                placement={'right-start'}
+                placement={'left'}
                 componentsProps={{
                   tooltip: {
                     sx: {
@@ -204,4 +212,4 @@ const ChatGPTBingConversationStyleSelector: FC = () => {
     </FormControl>
   )
 }
-export { ChatGPTBingConversationStyleSelector }
+export default BingConversationStyleSelector

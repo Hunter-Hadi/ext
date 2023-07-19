@@ -21,8 +21,8 @@ const AIProviderOptions: AIProviderOptionType[] = [
     value: AI_PROVIDER_MAP.POE,
     authDescription: 'Use your own Poe to power the extension.',
     shortDescription: `Access Claude beyond the US and UK.`,
-    authButtonText: 'Log into your Poe account',
-    authOpenInNew: true,
+    authButtonText: 'Continue with Poe',
+    authOpenInNew: false,
   },
   {
     beta: false,
@@ -31,8 +31,8 @@ const AIProviderOptions: AIProviderOptionType[] = [
     value: AI_PROVIDER_MAP.BING,
     authDescription: 'Use your own Bing AI to power the extension.',
     shortDescription: `Enhanced with Bing Search.`,
-    authButtonText: 'Log into your Bing account',
-    authOpenInNew: true,
+    authButtonText: 'Continue with Bing',
+    authOpenInNew: false,
   },
   {
     beta: false,
@@ -41,8 +41,8 @@ const AIProviderOptions: AIProviderOptionType[] = [
     value: AI_PROVIDER_MAP.BARD,
     authDescription: 'Use your own Google Bard to power the extension.',
     shortDescription: `Enhanced with Google Search.`,
-    authButtonText: 'Log into your Bard account',
-    authOpenInNew: true,
+    authButtonText: 'Continue with Bard',
+    authOpenInNew: false,
   },
   // TODO - claude还没开放
   // {

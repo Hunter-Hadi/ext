@@ -20,17 +20,15 @@ const useCleanChatGPT = () => {
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
   const cleanChatGPT = async () => {
     const cache = await getChromeExtensionSettings()
-    if (cache.conversationId) {
-      port
-        .postMessage({
-          event: 'Client_removeChatGPTConversation',
-          data: {
-            conversationId: cache.conversationId,
-          },
-        })
-        .then()
-        .catch()
-    }
+    port
+      .postMessage({
+        event: 'Client_removeChatGPTConversation',
+        data: {
+          conversationId: cache.conversationId,
+        },
+      })
+      .then()
+      .catch()
     setChatGPTMessages([])
     // 清空本地储存的message
     await Browser.storage.local.set({

@@ -228,6 +228,9 @@ class OpenAIChat extends BaseChat {
     return ''
   }
   async removeConversation(conversationId: string) {
+    if (!conversationId) {
+      return true
+    }
     log.info('removeConversation', conversationId)
     const result = await this.sendDaemonProcessTask(
       'OpenAIDaemonProcess_removeConversation',

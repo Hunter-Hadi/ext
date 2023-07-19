@@ -17,6 +17,8 @@ import {
 import useEffectOnce from '@/hooks/useEffectOnce'
 import Browser from 'webextension-polyfill'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
+import reverse from 'lodash-es/reverse'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -109,7 +111,7 @@ const useAIProviderModels = () => {
         break
       case 'OPENAI_API':
         {
-          currentModels = OPENAI_API_MODELS
+          currentModels = reverse(cloneDeep(OPENAI_API_MODELS))
         }
         break
       case 'CLAUDE':

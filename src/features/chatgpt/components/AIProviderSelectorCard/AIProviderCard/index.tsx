@@ -4,6 +4,7 @@ import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelector
 import AIProviderModelSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderModelSelector'
 import OpenAIAPITemperatureSlider from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/OpenAIAPITemperatureSlider'
 import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/ChatGPTPluginsSelector'
+import BingConversationStyleSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/BingConversationStyleSelector'
 
 const AIProviderCard: FC<{
   aiProviderOption: AIProviderOptionType
@@ -24,6 +25,7 @@ const AIProviderCard: FC<{
         <OpenAIAPITemperatureSlider />
       )}
       {aiProviderOption.value === 'OPENAI' && <ChatGPTPluginsSelector />}
+      {aiProviderOption.value === 'BING' && <BingConversationStyleSelector />}
       <AIProviderModelSelector />
     </AIProviderInfoCard>
   )

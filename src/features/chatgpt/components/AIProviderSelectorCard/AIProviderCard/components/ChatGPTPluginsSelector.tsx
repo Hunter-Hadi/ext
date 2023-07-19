@@ -222,7 +222,7 @@ const ChatGPTPluginsSelector: FC = () => {
               return (
                 <MenuItem key={plugin.id} value={plugin.id} sx={{ p: 0 }}>
                   <Tooltip
-                    placement={'right-start'}
+                    placement={'left'}
                     componentsProps={{
                       tooltip: {
                         sx: {

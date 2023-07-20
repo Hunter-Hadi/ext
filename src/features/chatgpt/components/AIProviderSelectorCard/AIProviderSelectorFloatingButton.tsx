@@ -32,6 +32,7 @@ const AIProviderSelectorFloatingButton: FC<{
   const open = Boolean(anchorEl)
   return (
     <Box
+      id={'max-ai__ai-provider-floating-button'}
       sx={{
         width: '44px',
         height: '44px',

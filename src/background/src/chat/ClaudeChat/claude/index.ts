@@ -1,15 +1,22 @@
-import { ClaudeConversation } from './types'
+import { ClaudeAttachment, ClaudeConversation } from './types'
 import {
   createClaudeConversation,
   deleteClaudeConversation,
   getCaludeOrganizationId,
+  uploadClaudeAttachment,
 } from './api'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
+import { v4 as uuidV4 } from 'uuid'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 export class Claude {
-  private organizationId?: string
   private conversation: ClaudeConversation | undefined
   private abortController?: AbortController
+  organizationId?: string
+  attachments: ClaudeAttachment[] = []
+  get conversationId() {
+    return this.conversation?.uuid
+  }
   async createConversation(name?: string) {
     if (!this.organizationId) {
       this.organizationId = await getCaludeOrganizationId()
@@ -52,7 +59,11 @@ export class Claude {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        attchments: [],
+        attchments: this.attachments.map((attachment) => {
+          const originalAttachment = cloneDeep(attachment)
+          delete originalAttachment.id
+          return originalAttachment
+        }),
         completion: {
           incremental: true,
           model: 'claude-2',
@@ -68,6 +79,7 @@ export class Claude {
         debugger
       },
     })
+    this.resetAttachments()
   }
   abortSendMessage() {
     this.abortController?.abort()
@@ -80,6 +92,55 @@ export class Claude {
       )
     }
     this.conversation = undefined
+    return true
+  }
+  async uploadAttachment(file: File) {
+    if (!this.organizationId) {
+      this.organizationId = await getCaludeOrganizationId()
+      if (!this.organizationId) {
+        return {
+          success: false,
+          error: 'organization id not found',
+          data: undefined,
+        }
+      }
+    }
+    // max file size 10MB
+    if (file.size > 10 * 1024 * 1024) {
+      return {
+        success: false,
+        error: 'file size too large',
+        data: undefined,
+      }
+    }
+    const attachment = await uploadClaudeAttachment(this.organizationId, file)
+    if (attachment) {
+      attachment.id = uuidV4()
+      this.attachments.push(attachment)
+      return {
+        success: true,
+        error: undefined,
+        data: attachment,
+      }
+    } else {
+      return {
+        success: false,
+        error: 'upload failed',
+        data: undefined,
+      }
+    }
+  }
+  resetAttachments() {
+    this.attachments = []
+    return true
+  }
+  removeAttachment(attachmentId: string) {
+    const index = this.attachments.findIndex(
+      (attachment) => attachment.id === attachmentId,
+    )
+    if (index > -1) {
+      this.attachments.splice(index, 1)
+    }
     return true
   }
 }

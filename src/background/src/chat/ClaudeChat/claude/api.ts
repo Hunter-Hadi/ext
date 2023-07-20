@@ -1,4 +1,4 @@
-import { ClaudeConversation } from '@/background/src/chat/Claude/claude/types'
+import { ClaudeAttachment, ClaudeConversation } from './types'
 import { v4 as uuidV4 } from 'uuid'
 
 /**
@@ -77,4 +77,24 @@ export const deleteClaudeConversation = async (
   } catch (e) {
     return false
   }
+}
+
+export const uploadClaudeAttachment = async (
+  organizationId: string,
+  file: File,
+): Promise<ClaudeAttachment | undefined> => {
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('orgUuid', organizationId)
+  const response = await fetch('https://claude.ai/api/convert_document', {
+    method: 'POST',
+    body: formData,
+  })
+  if (response.status === 200) {
+    const body = await response.json()
+    if (body.extracted_content) {
+      return body as ClaudeAttachment
+    }
+  }
+  return undefined
 }

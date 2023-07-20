@@ -6,7 +6,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { Item, Submenu } from 'react-contexify'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { CurrentInboxMessageTypeSelector } from '@/features/gmail/store'
+import { CurrentInboxMessageTypeSelector } from '@/features/sidebar/store'
 import { useRecoilValue } from 'recoil'
 import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,

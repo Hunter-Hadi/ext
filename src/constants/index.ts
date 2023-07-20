@@ -62,13 +62,14 @@ export const CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY =
   '35536E1E-65B4-4D96-9D97-6ADB7EFF8147'
 export const CHAT_GPT_PROMPT_PREFIX = `\`reset\`\n\`no quotes\`\n\`no explanations\`\n\`no prompt\`\n\`no self-reference\`\n\`no apologies\`\n\`no filler\`\n\`just answer\`\n`
 export const CHAT_GPT_MESSAGES_RECOIL_KEY = 'CHAT_GPT_MESSAGES_RECOIL_KEY'
-export const CHAT_GPT_PROVIDER = {
+export const AI_PROVIDER_MAP = {
   OPENAI: 'OPENAI',
   USE_CHAT_GPT_PLUS: 'USE_CHAT_GPT_PLUS',
   OPENAI_API: 'OPENAI_API',
   BARD: 'BARD',
   BING: 'BING',
   CLAUDE: 'CLAUDE',
+  POE: 'POE',
 } as const
 
 // app.maxai.me
@@ -80,66 +81,6 @@ export const BACKGROUND_SEND_TEXT_SPEED_SETTINGS =
 
 // openai
 export const OPENAI_IFRAME_ID = `${APP_ENV}_OPENAI_IFRAME_ID`
-// @docs - https://platform.openai.com/docs/models/gpt-4
-export const OPENAI_API_MODELS = [
-  {
-    label: 'gpt-3.5-turbo',
-    value: 'gpt-3.5-turbo',
-    description: `Most capable GPT-3.5 model and optimized for chat at 1/10th the cost of text-davinci-003. Will be updated with our latest model iteration 2 weeks after it is released.\t`,
-    maxTokens: 4096,
-    trainingDate: '2021-09-01',
-  },
-  {
-    label: 'gpt-3.5-turbo-16k',
-    value: 'gpt-3.5-turbo-16k',
-    description: `Same capabilities as the standard gpt-3.5-turbo model but with 4 times the context.\t`,
-    maxTokens: 16384,
-    trainingDate: '2021-09-01',
-  },
-  {
-    label: 'gpt-4',
-    value: 'gpt-4',
-    description:
-      'Most capable GPT-3.5 model and optimized for chat at 1/10th the cost of text-davinci-003. Will be updated with our latest model iteration 2 weeks after it is released.',
-    maxTokens: 8192,
-    trainingDate: '2021-09-01',
-  },
-  {
-    label: 'gpt-4-32k',
-    value: 'gpt-4-32k',
-    description: `Same capabilities as the base gpt-4 mode but with 4x the context length. Will be updated with our latest model iteration.\t`,
-    maxTokens: 32768,
-    trainingDate: '2021-09-01',
-  },
-  {
-    label: 'gpt-3.5-turbo-0613',
-    value: 'gpt-3.5-turbo-0613',
-    description: `Snapshot of gpt-3.5-turbo from June 13th 2023 with function calling data. Unlike gpt-3.5-turbo, this model will not receive updates, and will be deprecated 3 months after a new version is released.\t`,
-    maxTokens: 4096,
-    trainingDate: '2021-06-13',
-  },
-  {
-    label: 'gpt-3.5-turbo-16k-0613',
-    value: 'gpt-3.5-turbo-16k-0613',
-    description: `Snapshot of gpt-3.5-turbo-16k from June 13th 2023. Unlike gpt-3.5-turbo-16k, this model will not receive updates, and will be deprecated 3 months after a new version is released.\t`,
-    maxTokens: 16384,
-    trainingDate: '2021-06-13',
-  },
-  {
-    label: 'gpt-4-0613',
-    value: 'gpt-4-0613',
-    description: `Snapshot of gpt-4 from June 13th 2023 with function calling data. Unlike gpt-4, this model will not receive updates, and will be deprecated 3 months after a new version is released.`,
-    maxTokens: 8192,
-    trainingDate: '2021-06-13',
-  },
-  {
-    label: 'gpt-4-32k-0613',
-    value: 'gpt-4-32k-0613',
-    description: `Snapshot of gpt-4-32 from June 13th 2023. Unlike gpt-4-32k, this model will not receive updates, and will be deprecated 3 months after a new version is released.\t`,
-    maxTokens: 32768,
-  },
-]
-export const OPENAI_LOCAL_STORAGE_OPENAI_API_SETTINGS_SAVE_KEY = `CHROME_EXTENSION_${APP_ENV}_OPENAI_API_SETTINGS_SAVE_KEY`
 
 // user settings
 export const CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH = 450

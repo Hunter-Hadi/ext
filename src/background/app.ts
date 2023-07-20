@@ -11,7 +11,7 @@ export type {
 } from './eventType'
 import {
   APP_VERSION,
-  CHAT_GPT_PROVIDER,
+  AI_PROVIDER_MAP,
   CHROME_EXTENSION_DOC_URL,
   CHROME_EXTENSION_HOMEPAGE_URL,
   CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -41,7 +41,6 @@ import {
   backgroundSendClientMessage,
   resetChromeExtensionOnBoardingData,
   backgroundRestartChromeExtension,
-  setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageInit } from '@/features/shortcuts/background'
@@ -83,58 +82,37 @@ export const startChromeExtensionBackground = () => {
  */
 const initChromeExtensionInstalled = () => {
   // 插件安装初始化
-  if (isEzMailApp) {
-    Browser.runtime.onInstalled.addListener(async (object) => {
-      if (
-        object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL
-      ) {
-        await Browser.tabs.create({
-          url: CHROME_EXTENSION_DOC_URL + '#how-to-use',
-        })
-        // 重置插件引导数据
-        await resetChromeExtensionOnBoardingData()
-      }
-    })
-  } else {
-    Browser.runtime.onInstalled.addListener(async (object) => {
-      if (
-        object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL
-      ) {
-        // 重置插件引导数据
-        await resetChromeExtensionOnBoardingData()
-        await Browser.tabs.create({
-          url: CHROME_EXTENSION_DOC_URL + '/get-started',
-        })
-        // delete when rebrand Announcement
-        await Browser.storage.local.set({
-          [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
-        })
-      } else {
-        // 更新插件
-        if (!(await isSettingsLastModifiedEqual())) {
-          const result = await checkSettingsSync()
-          if (result.success) {
-            await syncLocalSettingsToServerSettings()
-          }
-        }
-        // TODO: 临时的方案，2.0.0的线上bug在更新后需要强制出发一次/user/subscriptions接口
-        await setChromeExtensionOnBoardingData(
-          'ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO',
-          false,
-        )
-      }
-      try {
-        await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')
-      } catch (e) {
-        // ignore
-      }
-      await Browser.contextMenus.create({
-        id: 'use-chatgpt-ai-context-menu-button',
-        title: 'MaxAI.me',
-        contexts: ['all'],
+  Browser.runtime.onInstalled.addListener(async (object) => {
+    if (object.reason === (Browser as any).runtime.OnInstalledReason.INSTALL) {
+      // 重置插件引导数据
+      await resetChromeExtensionOnBoardingData()
+      await Browser.tabs.create({
+        url: CHROME_EXTENSION_DOC_URL + '/get-started',
       })
+      // delete when rebrand Announcement
+      await Browser.storage.local.set({
+        [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
+      })
+    } else {
+      // 更新插件
+      if (!(await isSettingsLastModifiedEqual())) {
+        const result = await checkSettingsSync()
+        if (result.success) {
+          await syncLocalSettingsToServerSettings()
+        }
+      }
+    }
+    try {
+      await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')
+    } catch (e) {
+      // ignore
+    }
+    await Browser.contextMenus.create({
+      id: 'use-chatgpt-ai-context-menu-button',
+      title: 'MaxAI.me',
+      contexts: ['all'],
     })
-  }
+  })
 }
 
 /**
@@ -178,15 +156,15 @@ const initChromeExtensionMessage = () => {
   const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
   const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
   const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
-  chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI, openAIChatAdapter)
-  chatSystem.addAdapter(CHAT_GPT_PROVIDER.OPENAI_API, newOpenAIApiChatAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
   chatSystem.addAdapter(
-    CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+    AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
     useChatGPTPlusAdapter,
   )
-  chatSystem.addAdapter(CHAT_GPT_PROVIDER.BING, bingChatAdapter)
-  chatSystem.addAdapter(CHAT_GPT_PROVIDER.BARD, bardChatAdapter)
-  chatSystem.addAdapter(CHAT_GPT_PROVIDER.CLAUDE, poeChatAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.BING, bingChatAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.BARD, bardChatAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
 }
 
 /**
@@ -209,6 +187,7 @@ const initChromeExtensionCommands = () => {
       if (command == '_execute_action') {
         const currentTab = await Browser.tabs.query({
           active: true,
+          currentWindow: true,
         })
         const tab = currentTab[0]
         if (tab && tab.id) {
@@ -224,6 +203,7 @@ const initChromeExtensionCommands = () => {
       } else if (command === 'show-floating-menu') {
         const currentTab = await Browser.tabs.query({
           active: true,
+          currentWindow: true,
         })
         const tab = currentTab[0]
         if (tab && tab.id) {

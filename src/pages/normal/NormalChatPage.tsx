@@ -1,7 +1,7 @@
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import Stack from '@mui/material/Stack'
 import React, { useEffect } from 'react'
-import { GmailChatBox } from '@/features/gmail'
+import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 
@@ -27,7 +27,7 @@ const NormalChatPage = () => {
   return (
     <Stack flex={1} height={0} position={'relative'}>
       <ChatGPTStatusWrapper />
-      <GmailChatBox
+      <SidebarChatBox
         editAble={false}
         insertAble={false}
         onSendMessage={async (question, options) => {

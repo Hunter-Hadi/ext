@@ -1,8 +1,4 @@
-import {
-  getChromeExtensionOnBoardingData,
-  getChromeExtensionSettings,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
+import { getChromeExtensionSettings } from '@/background/utils'
 import { getAccessToken } from '@/utils/request'
 import AES from 'crypto-js/aes'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
@@ -72,20 +68,6 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
             body.data,
           ),
         })
-        // 更新用户的SubscriptionInfo, 用户安装插件后的第一次调用
-        const onBoardingData = await getChromeExtensionOnBoardingData()
-        if (!onBoardingData.ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO) {
-          getChromeExtensionUserInfo(true)
-            .then(async (userInfo) => {
-              if (userInfo) {
-                await setChromeExtensionOnBoardingData(
-                  'ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO',
-                  true,
-                )
-              }
-            })
-            .catch()
-        }
         // 更新用户的SubscriptionInfo
         if (body.data.has_reached_limit) {
           getChromeExtensionUserInfo(true).then().catch()

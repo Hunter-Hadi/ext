@@ -1,4 +1,4 @@
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { AI_PROVIDER_MAP } from '@/constants'
 import Browser from 'webextension-polyfill'
 import {
   IChatUploadFile,
@@ -31,8 +31,8 @@ export type IAskChatGPTAnswerType = {
   text: string
 }
 
-export type IChatGPTProviderType =
-  (typeof CHAT_GPT_PROVIDER)[keyof typeof CHAT_GPT_PROVIDER]
+export type IAIProviderType =
+  (typeof AI_PROVIDER_MAP)[keyof typeof AI_PROVIDER_MAP]
 
 export type IChatGPTAskQuestionFunctionType = (
   taskId: string,

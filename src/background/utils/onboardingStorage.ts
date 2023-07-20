@@ -1,19 +1,32 @@
-import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/constants'
+import {
+  AI_PROVIDER_MAP,
+  CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
+} from '@/constants'
 import Browser from 'webextension-polyfill'
+import { IAIProviderType } from '@/background/provider/chat'
 
-type OnBoardingKeyType =
+export type OnBoardingKeyType =
   | 'ON_BOARDING_RECORD_FIRST_MESSAGE'
   | 'ON_BOARDING_RECORD_BROWSER_VERSION'
-  | 'ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO'
+  | `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${IAIProviderType}`
 
-type OnBoardingMapType = {
+export type OnBoardingMapType = {
   [key in OnBoardingKeyType]?: boolean | string | number
 }
-const defaultOnBoardingMap: OnBoardingMapType = {
-  // 记录用户第一次发送的message
-  ON_BOARDING_RECORD_FIRST_MESSAGE: false,
-  ON_BOARDING_RECORD_BROWSER_VERSION: false,
-  ON_BOARDING_UPDATE_ONCE_SUBSCRIPTION_INFO: false,
+const getDefaultOnBoardingMap = (): OnBoardingMapType => {
+  const onBoardingMap: OnBoardingMapType = {
+    // 记录用户第一次发送的message
+    ON_BOARDING_RECORD_FIRST_MESSAGE: false,
+    // 记录用户浏览器版本号太旧
+    ON_BOARDING_RECORD_BROWSER_VERSION: false,
+  }
+  // 记录每个AI Provider至少auth过一次
+  Object.keys(AI_PROVIDER_MAP).forEach((AI_PROVIDER) => {
+    onBoardingMap[
+      `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${AI_PROVIDER}` as OnBoardingKeyType
+    ] = false
+  })
+  return onBoardingMap
 }
 
 /**
@@ -45,15 +58,16 @@ export const getChromeExtensionOnBoardingData =
     if (data[CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]) {
       // 因为更新的时候有可能会增加新的Key，所以需要合并
       return {
-        ...defaultOnBoardingMap,
+        ...getDefaultOnBoardingMap(),
         ...JSON.parse(data[CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]),
       }
     } else {
       await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]:
-          JSON.stringify(defaultOnBoardingMap),
+        [CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]: JSON.stringify(
+          getDefaultOnBoardingMap(),
+        ),
       })
-      return defaultOnBoardingMap
+      return getDefaultOnBoardingMap()
     }
   }
 
@@ -62,7 +76,8 @@ export const getChromeExtensionOnBoardingData =
  */
 export const resetChromeExtensionOnBoardingData = async (): Promise<void> => {
   await Browser.storage.local.set({
-    [CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]:
-      JSON.stringify(defaultOnBoardingMap),
+    [CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]: JSON.stringify(
+      getDefaultOnBoardingMap(),
+    ),
   })
 }

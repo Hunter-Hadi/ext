@@ -9,7 +9,7 @@ import { IChromeExtensionClientListenEvent } from '@/background/app'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { ChatGPTMessageState } from '@/features/gmail/store'
+import { ChatGPTMessageState } from '@/features/sidebar/store'
 import {
   getChromeExtensionSettings,
   useCreateClientMessageListener,

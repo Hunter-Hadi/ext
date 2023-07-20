@@ -2,7 +2,7 @@ import defaultContextMenuJson from '@/background/defaultPromptsData/defaultConte
 import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import Browser from 'webextension-polyfill'
 import {
-  CHAT_GPT_PROVIDER,
+  AI_PROVIDER_MAP,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
   CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -17,8 +17,11 @@ import { useEffect } from 'react'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
-import { PoeModel } from '@/background/src/chat/PoeChat/type'
+import {
+  BING_MODELS,
+  BingConversationStyle,
+} from '@/background/src/chat/BingChat/bing/types'
+import { POE_MODELS, PoeModel } from '@/background/src/chat/PoeChat/type'
 import cloneDeep from 'lodash-es/cloneDeep'
 import {
   IChromeExtensionButtonSetting,
@@ -28,6 +31,9 @@ import {
 } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -56,7 +62,7 @@ export const getChromeExtensionSettings =
       currentPlugins: [],
       plugins: [],
       conversationId: '',
-      chatGPTProvider: CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS,
+      chatGPTProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       /** @deprecated **/
       contextMenus: [],
       /** @deprecated **/
@@ -91,11 +97,30 @@ export const getChromeExtensionSettings =
         },
       },
       thirdProviderSettings: {
-        [CHAT_GPT_PROVIDER.BING]: {
+        [AI_PROVIDER_MAP.BING]: {
           conversationStyle: BingConversationStyle.Balanced,
+          model: BING_MODELS[0].value,
         },
-        [CHAT_GPT_PROVIDER.CLAUDE]: {
+        [AI_PROVIDER_MAP.CLAUDE]: {
           model: PoeModel.ClaudeInstant,
+        },
+        [AI_PROVIDER_MAP.BARD]: {
+          model: BARD_MODELS[0].value,
+        },
+        [AI_PROVIDER_MAP.OPENAI]: {
+          model: 'text-davinci-002-render-sha',
+        },
+        [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: {
+          model: USE_CHAT_GPT_PLUS_MODELS[0].value,
+        },
+        [AI_PROVIDER_MAP.OPENAI_API]: {
+          model: OPENAI_API_MODELS[0].value,
+          temperature: 1,
+          apiKey: '',
+          apiHost: 'https://api.openai.com',
+        },
+        [AI_PROVIDER_MAP.POE]: {
+          model: POE_MODELS[0].value,
         },
       },
     } as IChromeExtensionSettings

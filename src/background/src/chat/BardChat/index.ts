@@ -6,6 +6,7 @@ import {
 import { ofetch } from 'ofetch'
 import Browser from 'webextension-polyfill'
 import { v4 as uuidV4 } from 'uuid'
+import { getChromeExtensionOnBoardingData } from '@/background/utils'
 
 function generateReqId() {
   return Math.floor(Math.random() * 900000) + 100000
@@ -21,6 +22,15 @@ class BardChat extends BaseChat {
   constructor() {
     super('BardChat')
     this.token = undefined
+    this.init()
+  }
+  async init() {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    if (onBoardingData) {
+      this.status = onBoardingData.ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_BARD
+        ? 'success'
+        : 'needAuth'
+    }
   }
   async checkAuth() {
     this.active = true

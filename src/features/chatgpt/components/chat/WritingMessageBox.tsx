@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { AppSettingsState } from '@/store'
@@ -101,9 +101,9 @@ const WritingMessageBox: FC<{
         if (e.key === 'C' || e.key === 'c' || e.key === 'x' || e.key === 'X') {
           // save to clipboard
           const selection = window.getSelection()
-          if (selection) {
+          if (selection && selection.rangeCount > 0) {
             const range = selection.getRangeAt(0)
-            const text = range.toString()
+            const text = range.toString() || selection.toString()
             if (text) {
               e.preventDefault()
               navigator.clipboard.writeText(text)
@@ -112,9 +112,9 @@ const WritingMessageBox: FC<{
         }
       }
     }
-    boxRef.current?.addEventListener('keydown', keydownHandler)
+    boxRef.current?.addEventListener('keydown', keydownHandler, true)
     return () => {
-      boxRef.current?.removeEventListener('keydown', keydownHandler)
+      boxRef.current?.removeEventListener('keydown', keydownHandler, true)
     }
   }, [])
   return (

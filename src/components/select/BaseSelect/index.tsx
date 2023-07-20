@@ -120,7 +120,14 @@ const BaseSelect: FC<IBaseSelectProps> = ({
           ...labelProp,
         }}
         key={index}
+        disabled={option.origin.disabled}
         value={option.value}
+        onClick={(event) => {
+          if (option.origin.disabled) {
+            event.stopPropagation()
+            event.preventDefault()
+          }
+        }}
       >
         {renderDom(option.value, option, index)}
       </MenuItem>
@@ -154,7 +161,10 @@ const BaseSelect: FC<IBaseSelectProps> = ({
           ...sx,
         }}
         value={selectValue}
-        onChange={(event) => {
+        onChange={(event, optionNode) => {
+          if ((optionNode as any).props.disabled) {
+            return
+          }
           setSelectValue(event.target.value as string)
           onChange &&
             onChange(

@@ -151,7 +151,9 @@ export class BingWebBot {
             })
           }
         } else if (event.type === 2) {
-          const messages = event.item.messages as ChatResponseMessage[]
+          const messages =
+            (event?.item?.messages as ChatResponseMessage[]) || []
+          const errorMessage = event?.item?.result?.error
           const limited = messages.some(
             (message) => message.contentOrigin === 'TurnLimiter',
           )
@@ -159,6 +161,13 @@ export class BingWebBot {
             params.onEvent({
               type: 'ERROR',
               error: `Sorry, you have reached chat turns limit in this conversation.`,
+            })
+          }
+          // 触发微软验证码了
+          if (errorMessage === 'User needs to solve CAPTCHA to continue.') {
+            params.onEvent({
+              type: 'ERROR',
+              error: errorMessage,
             })
           }
         }

@@ -1,5 +1,5 @@
 import React from 'react'
-import useInitInboxSdk from '@/features/gmail/hooks/useInitInboxSdk'
+import useInitInboxSdk from '@/features/sidebar/hooks/useInitInboxSdk'
 
 const GmailInit = () => {
   useInitInboxSdk()

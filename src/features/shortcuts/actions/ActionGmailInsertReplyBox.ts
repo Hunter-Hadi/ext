@@ -3,7 +3,7 @@ import {
   pushOutputToChat,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
-import { gmailReplyBoxInsertText } from '@/features/gmail/utils'
+import { gmailReplyBoxInsertText } from '@/features/sidebar/utils'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 

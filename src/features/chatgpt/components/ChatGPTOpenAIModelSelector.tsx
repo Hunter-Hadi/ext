@@ -18,7 +18,7 @@ import {
   backgroundGetUrlContent,
   setChromeExtensionSettings,
 } from '@/background/utils'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import Browser from 'webextension-polyfill'
 

@@ -31,7 +31,9 @@ export async function createConversation(): Promise<ConversationResponse> {
       redirect: 'error',
     })
     if (!resp) {
-      throw new Error(`Failed to fetch (${API_ENDPOINT})`)
+      throw new Error(
+        `Please sign in to [bing.com](http://bing.com/), complete any required verifications, then try again.`,
+      )
     }
   }
   if (resp.result.value !== 'Success') {

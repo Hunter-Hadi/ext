@@ -159,8 +159,7 @@ const AIProviderAuthCard: FC<{
                     fontSize={14}
                     textAlign={'left'}
                   >
-                    {`We recommend enabling
-              our new `}
+                    {`If experiencing frequent interruptions and network errors, try `}
                   </Typography>
                   <Link
                     fontSize={14}
@@ -183,8 +182,7 @@ const AIProviderAuthCard: FC<{
                     fontSize={14}
                     textAlign={'left'}
                   >
-                    {` to avoid frequent interruptions and network
-              errors.`}
+                    {`.`}
                   </Typography>
                 </Box>
               )

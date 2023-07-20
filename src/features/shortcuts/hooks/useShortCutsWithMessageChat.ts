@@ -9,11 +9,11 @@ import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import {
   useCurrentMessageView,
   useInboxComposeViews,
-} from '@/features/gmail/hooks'
+} from '@/features/sidebar/hooks'
 import { isShowChatBox, showChatBox } from '@/utils'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ShortCutsState } from '@/features/shortcuts/store'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { useAuthLogin } from '@/features/auth'
 

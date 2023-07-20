@@ -10,7 +10,7 @@ import {
   ROOT_CONTEXT_MENU_ID,
   ROOT_CONTEXT_MENU_PORTAL_ID,
 } from '@/constants'
-import { IInboxMessageType } from '@/features/gmail/store'
+import { IInboxMessageType } from '@/features/sidebar/store'
 import {
   ContentScriptConnectionV2,
   pingDaemonProcess,

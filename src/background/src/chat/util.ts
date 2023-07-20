@@ -8,7 +8,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
 import { IThirdProviderSettings } from '@/background/types/Settings'
-import { IChatGPTProviderType } from '@/background/provider/chat'
+import { IAIProviderType } from '@/background/provider/chat'
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
@@ -203,7 +203,7 @@ export const setWindowIdOfChatGPTTab = async (windowId: number) => {
  * 获取第三方AI Provider的设置
  * @param thirdProviderKey
  */
-export const getThirdProviderSettings = async <T extends IChatGPTProviderType>(
+export const getThirdProviderSettings = async <T extends IAIProviderType>(
   thirdProviderKey: T,
 ) => {
   try {
@@ -224,7 +224,7 @@ export const getThirdProviderSettings = async <T extends IChatGPTProviderType>(
  * @param settings
  * @param syncToServer - 是否同步到服务器
  */
-export const setThirdProviderSettings = async <T extends IChatGPTProviderType>(
+export const setThirdProviderSettings = async <T extends IAIProviderType>(
   thirdProviderKey: T,
   settings: Partial<IThirdProviderSettings[T]>,
   syncToServer: boolean,

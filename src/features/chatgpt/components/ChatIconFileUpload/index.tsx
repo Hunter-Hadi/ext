@@ -12,7 +12,7 @@ import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { v4 as uuidV4 } from 'uuid'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { ChatGPTConversationState } from '@/features/gmail/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 const ChatIconFileUpload: FC<{
   accept?: string

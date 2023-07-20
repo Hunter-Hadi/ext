@@ -1,7 +1,8 @@
-import { IChatGPTProviderType } from '@/background/provider/chat'
-import { CHAT_GPT_PROVIDER } from '@/constants'
+import { IAIProviderType } from '@/background/provider/chat'
+import { AI_PROVIDER_MAP } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 
 export type IChatGPTModelType = {
   slug: string
@@ -45,26 +46,35 @@ export type IChatGPTPluginType = {
     is_authenticated: boolean
   }
 }
+
 type IThirdProviderSettings = {
-  [CHAT_GPT_PROVIDER.USE_CHAT_GPT_PLUS]?: {
-    [key in string]: any
+  [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]?: {
+    model?: string
   }
-  [CHAT_GPT_PROVIDER.OPENAI]?: {
-    [key in string]: any
+  [AI_PROVIDER_MAP.OPENAI]?: {
+    model?: string
   }
-  [CHAT_GPT_PROVIDER.OPENAI_API]?: {
-    [key in string]: any
+  [AI_PROVIDER_MAP.OPENAI_API]?: {
+    temperature?: number
+    model?: string
+    apiKey?: string
+    apiHost?: string
   }
-  [CHAT_GPT_PROVIDER.BING]?: {
-    conversationStyle: BingConversationStyle
+  [AI_PROVIDER_MAP.BING]?: {
+    model?: string
+    conversationStyle?: BingConversationStyle
   }
-  [CHAT_GPT_PROVIDER.BARD]?: {
-    [key in string]: any
+  [AI_PROVIDER_MAP.BARD]?: {
+    model?: string
   }
-  [CHAT_GPT_PROVIDER.CLAUDE]?: {
+  [AI_PROVIDER_MAP.CLAUDE]?: {
+    model?: string
+  }
+  [AI_PROVIDER_MAP.POE]: {
     model?: string
   }
 }
+
 export type IChromeExtensionButtonSettingKey =
   | 'gmailButton'
   | 'textSelectPopupButton'
@@ -81,7 +91,7 @@ export interface IChromeExtensionButtonSetting {
 }
 
 export interface IChromeExtensionSettings {
-  chatGPTProvider?: IChatGPTProviderType
+  chatGPTProvider?: IAIProviderType
   models?: IChatGPTModelType[]
   plugins?: IChatGPTPluginType[]
   currentModel?: string
@@ -110,7 +120,7 @@ export interface IChromeExtensionSettings {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting
   }
   thirdProviderSettings?: {
-    [P in IChatGPTProviderType]?: IThirdProviderSettings[P]
+    [P in IAIProviderType]?: IThirdProviderSettings[P]
   }
   lastModified?: number
 }

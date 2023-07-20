@@ -1,12 +1,11 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
   ChatGPTMessageState,
   ChatGPTConversationState,
-} from '@/features/gmail/store'
+} from '@/features/sidebar/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { AppSettingsState } from '@/store'
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
 import { setChromeExtensionSettings } from '@/background/utils'
@@ -34,7 +33,6 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
-  const appSettings = useRecoilValue(AppSettingsState)
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
   const [conversation, setConversation] = useRecoilState(
@@ -42,19 +40,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   )
   const { cleanChatGPT } = useCleanChatGPT()
   const resetConversation = async () => {
-    port
-      .postMessage({
-        event: 'Client_removeChatGPTConversation',
-        data: {},
-      })
-      .then((result) => {
-        log.info(
-          '[ChatGPT]: resetConversation',
-          result.data,
-          defaultValueRef.current,
-          appSettings.currentModel,
-        )
-      })
     // 清空输入框
     updateChatInputValue('')
     await cleanChatGPT()

@@ -1,6 +1,7 @@
 import BaseChat from '@/background/src/chat/BaseChat'
 import { PoeWebBot } from '@/background/src/chat/PoeChat/poe'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
+import { getChromeExtensionOnBoardingData } from '@/background/utils'
 
 class PoeChat extends BaseChat {
   private poeLib: PoeWebBot
@@ -8,9 +9,16 @@ class PoeChat extends BaseChat {
     super('PoeChat')
     this.poeLib = new PoeWebBot()
     this.status = 'success'
+    this.init()
   }
   async init() {
     this.log.info('init')
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    if (onBoardingData) {
+      this.status = onBoardingData.ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_POE
+        ? 'success'
+        : 'needAuth'
+    }
   }
   async auth() {
     this.active = true

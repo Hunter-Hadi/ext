@@ -1,3 +1,7 @@
+import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
+import { IAIProviderModel } from '@/features/chatgpt/types'
+import dayjs from 'dayjs'
+
 export enum BingConversationStyle {
   Creative = 'creative',
   Balanced = 'balanced',
@@ -18,6 +22,30 @@ export const BING_CONVERSATION_STYLES = [
     label: 'Precise',
     description: `Clear your conversation and start a concise and straightforward chat.`,
     value: BingConversationStyle.Precise,
+  },
+]
+
+export const BING_MODELS: IAIProviderModel[] = [
+  {
+    title: 'gpt-4',
+    titleTag: '',
+    value: 'gpt-4',
+    maxTokens: 8192,
+    tags: [],
+    descriptions: [
+      {
+        label: 'Max tokens',
+        value: `${numberWithCommas(8192, 0)} tokens`,
+      },
+      {
+        label: 'Description',
+        value: `More capable than any GPT-3.5 model, able to do more complex tasks, and optimized for chat. Will be updated with OpenAI's latest model iteration 2 weeks after it is released.`,
+      },
+      {
+        label: 'Training date',
+        value: `Up to ${dayjs('2021-09-01').format('MMM YYYY')}`,
+      },
+    ],
   },
 ]
 

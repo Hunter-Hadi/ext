@@ -500,6 +500,41 @@ const SidePanelIcon: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
+const PoeIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_5011_61147)">
+          <path
+            d="M20 0H4C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0Z"
+            fill="#5D5CDD"
+          />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M14.4 16.7992L11.1166 7.19922H9.28339L6 16.7992H7.66526L8.32018 14.846H12.0798L12.7347 16.7992H14.4ZM11.4803 13.058H8.91967L10.1973 9.23181L11.4803 13.058Z"
+            fill="white"
+          />
+          <path
+            d="M18 16.7992L14.7647 7.19922H13.2L16.379 16.7992H18Z"
+            fill="white"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_5011_61147">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </SvgIcon>
+  )
+}
 
 export {
   BardIcon,
@@ -518,4 +553,5 @@ export {
   BrowserIcon,
   SidePanelIcon,
   ColorGiftIcon,
+  PoeIcon,
 }

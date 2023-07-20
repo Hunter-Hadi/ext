@@ -20,7 +20,7 @@ import ContextMenuPlaceholder from '../components/ContextMenuPlaceholder'
 //   EZMAIL_REPLY_CTA_BUTTON_ID,
 // } from '@/types'
 import ContextMenuViewSource from '../components/ContextMenuViewSource'
-// import { IInboxMessageType } from '@/features/gmail'
+// import { IInboxMessageType } from '@/features/sidebar'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from '../components/ContextMenuActionConfirmModal'

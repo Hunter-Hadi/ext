@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
-import { IChatGPTProviderType } from '@/background/provider/chat'
+import { IAIProviderType } from '@/background/provider/chat'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { setChromeExtensionSettings } from '@/background/utils'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
@@ -11,9 +11,10 @@ const useChatGPTProvider = () => {
   const { cleanChatGPT } = useCleanChatGPT()
   const [loading, setLoading] = useState(false)
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
-  const updateChatGPTProvider = async (provider: IChatGPTProviderType) => {
+  const updateChatGPTProvider = async (provider: IAIProviderType) => {
     try {
       setLoading(true)
+      await cleanChatGPT()
       const result = await port.postMessage({
         event: 'Client_switchChatGPTProvider',
         data: {
@@ -31,7 +32,6 @@ const useChatGPTProvider = () => {
         await setChromeExtensionSettings({
           chatGPTProvider: provider,
         })
-        await cleanChatGPT()
       }
     } catch (e) {
       console.error(e)

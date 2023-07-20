@@ -1,5 +1,6 @@
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 import { IAIProviderModel } from '@/features/chatgpt/types'
+import dayjs from 'dayjs'
 
 export enum BingConversationStyle {
   Creative = 'creative',
@@ -38,7 +39,11 @@ export const BING_MODELS: IAIProviderModel[] = [
       },
       {
         label: 'Description',
-        value: `Most capable GPT-3.5 model and optimized for chat at 1/10th the cost of text-davinci-003. Will be updated with our latest model iteration 2 weeks after it is released.`,
+        value: `More capable than any GPT-3.5 model, able to do more complex tasks, and optimized for chat. Will be updated with OpenAI's latest model iteration 2 weeks after it is released.`,
+      },
+      {
+        label: 'Training date',
+        value: `Up to ${dayjs('2021-09-01').format('MMM YYYY')}`,
       },
     ],
   },

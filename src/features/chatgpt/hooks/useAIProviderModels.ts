@@ -69,29 +69,33 @@ const useAIProviderModels = () => {
       case 'OPENAI':
         {
           // 转换数据结构
-          currentModels = (appSettings.models || []).map((item) => {
-            const providerModel: IAIProviderModel = {
-              title: item.title,
-              value: item.slug,
-              titleTag:
-                item.tags?.find((tag) => tag.toLowerCase().includes('beta')) ||
-                item.tags?.find((tag) =>
-                  tag.toLowerCase().includes('mobile'),
-                ) ||
-                '',
-              maxTokens: item.max_tokens,
-              tags: item.tags || [],
-              descriptions: [
-                {
-                  label: 'Max tokens',
-                  value: generateMaxTokenText(item.max_tokens),
-                },
-                { label: 'Description', value: item.description },
-              ],
-              disabled: !whiteListModels.includes(item.slug),
-            }
-            return providerModel
-          })
+          currentModels = (appSettings.models || [])
+            .map((item) => {
+              const providerModel: IAIProviderModel = {
+                title: item.title,
+                value: item.slug,
+                titleTag:
+                  item.tags?.find((tag) =>
+                    tag.toLowerCase().includes('beta'),
+                  ) ||
+                  item.tags?.find((tag) =>
+                    tag.toLowerCase().includes('mobile'),
+                  ) ||
+                  '',
+                maxTokens: item.max_tokens,
+                tags: item.tags || [],
+                descriptions: [
+                  {
+                    label: 'Max tokens',
+                    value: generateMaxTokenText(item.max_tokens),
+                  },
+                  { label: 'Description', value: item.description },
+                ],
+                disabled: !whiteListModels.includes(item.slug),
+              }
+              return providerModel
+            })
+            .reverse()
         }
         break
       case 'USE_CHAT_GPT_PLUS':

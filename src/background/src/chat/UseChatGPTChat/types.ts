@@ -1,6 +1,7 @@
 // @docs - https://platform.openai.com/docs/models/gpt-4
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
+import dayjs from 'dayjs'
 
 export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   {
@@ -16,8 +17,11 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       },
       {
         label: 'Description',
-        value:
-          'Most capable GPT-3.5 model and optimized for chat at 1/10th the cost of text-davinci-003. Will be updated with our latest model iteration 2 weeks after it is released.',
+        value: `OpenAI's most capable GPT-3.5 model and fastest model, great for everyday tasks.  Will be updated with OpenAI's latest model iteration 2 weeks after it is released.`,
+      },
+      {
+        label: 'Training date',
+        value: `Up to ${dayjs('2021-09-01').format('MMM YYYY')}`,
       },
     ],
   },

@@ -37,7 +37,7 @@ export async function createConversation(): Promise<ConversationResponse> {
     }
   }
   if (resp.result.value !== 'Success') {
-    let message = `${resp.result.value}: ${resp.result.message}`
+    let message = `${resp.result.value}: ${resp.result.message}\n\nPlease sign in to [bing.com](http://bing.com/), complete any required verifications, then try again.`
     if (resp.result.value === 'UnauthorizedRequest') {
       // TODO: 没登陆处理
       message += '\n[Log into bing.com to continue.](https://www.bing.com/)'

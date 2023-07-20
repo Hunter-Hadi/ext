@@ -19,6 +19,7 @@ import Browser from 'webextension-polyfill'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import reverse from 'lodash-es/reverse'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -120,7 +121,7 @@ const useAIProviderModels = () => {
         break
       case 'CLAUDE':
         {
-          currentModels = POE_MODELS
+          currentModels = CLAUDE_MODELS
         }
         break
       case 'POE':

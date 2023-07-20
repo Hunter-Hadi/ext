@@ -4,7 +4,7 @@ import { v4 as uuidV4 } from 'uuid'
 /**
  * claude.ai api都是基于organizationId的，所以需要先获取organizationId
  */
-export const getCaludeOrganizationId = async () => {
+export const getClaudeOrganizationId = async () => {
   // get https://claude.ai/chats html content
   const chatsHtml = await fetch('https://claude.ai/chats')
   const content = await chatsHtml.text()
@@ -41,7 +41,7 @@ export const createClaudeConversation = async (
         }),
       },
     )
-    if (response.status === 200) {
+    if (response.status === 201 || response.status === 200) {
       const body = await response.json()
       if (body.uuid) {
         return body as ClaudeConversation
@@ -57,6 +57,59 @@ export const createClaudeConversation = async (
   }
 }
 
+export const getAllClaudeConversations = async (organizationId: string) => {
+  // https://claude.ai/api/organizations/bc0adc4b-2a47-47f6-a476-ff6217ae950d/chat_conversations
+  try {
+    const response = await fetch(
+      `https://claude.ai/api/organizations/${organizationId}/chat_conversations`,
+      {
+        method: 'GET',
+      },
+    )
+    if (response.status === 200) {
+      const body = await response.json()
+      if (body.length) {
+        return body as ClaudeConversation[]
+      }
+      return []
+    }
+    return []
+  } catch (e) {
+    console.log('get all claude conversations error', e)
+    return []
+  }
+}
+
+/**
+ * 用来批量删除创建的conversation
+ * @param organizationId
+ * @param conversationName
+ */
+export const removeAllCacheClaudeConversation = async (
+  organizationId: string,
+  conversationName: string,
+) => {
+  let allClaudeConversations = await getAllClaudeConversations(organizationId)
+  allClaudeConversations = allClaudeConversations.filter(
+    (conversation) => conversation.name === conversationName,
+  )
+  console.log('allClaudeConversations', allClaudeConversations)
+  // promise.all 5个一组 延迟5s
+  let deleteConversationIdGroup: string[] = []
+  while (allClaudeConversations.length) {
+    deleteConversationIdGroup = allClaudeConversations
+      .splice(0, 5)
+      .map((conversation) => conversation.uuid)
+    await Promise.all(
+      deleteConversationIdGroup.map((conversationId) =>
+        deleteClaudeConversation(organizationId, conversationId),
+      ),
+    )
+    await new Promise((resolve) => setTimeout(resolve, 5000))
+  }
+  console.log('delete all cache Conversation end')
+}
+
 export const deleteClaudeConversation = async (
   organizationId: string,
   conversationId: string,
@@ -70,7 +123,7 @@ export const deleteClaudeConversation = async (
         method: 'DELETE',
       },
     )
-    if (response.status === 200) {
+    if (response.status === 204 || response.status === 200) {
       return true
     }
     return false

@@ -31,6 +31,7 @@ import {
   BardChatProvider,
   BingChatProvider,
   ChatAdapter,
+  ClaudeChatProvider,
   OpenAIApiChatProvider,
   OpenAIChatProvider,
   PoeChatProvider,
@@ -50,6 +51,7 @@ import {
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import { REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY } from '@/components/Announcement'
+import { ClaudeChat } from '@/background/src/chat/ClaudeChat'
 
 /**
  * background.js 入口
@@ -156,6 +158,9 @@ const initChromeExtensionMessage = () => {
   const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
   const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
   const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
+  const claudeChatAdapter = new ChatAdapter(
+    new ClaudeChatProvider(new ClaudeChat()),
+  )
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
   chatSystem.addAdapter(
@@ -165,6 +170,7 @@ const initChromeExtensionMessage = () => {
   chatSystem.addAdapter(AI_PROVIDER_MAP.BING, bingChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.BARD, bardChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
 }
 
 /**

@@ -92,4 +92,10 @@ export interface IAIProviderModel {
   maxTokens: number
   descriptions: IAIProviderModelDescriptionType[]
   disabled?: boolean
+  uploadFileConfig?: {
+    accept: string
+    acceptTooltip: string
+    maxFileSize: number
+    maxCount: number
+  }
 }

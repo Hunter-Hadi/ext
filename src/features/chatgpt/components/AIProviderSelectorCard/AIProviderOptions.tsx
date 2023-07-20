@@ -45,15 +45,16 @@ const AIProviderOptions: AIProviderOptionType[] = [
     authOpenInNew: false,
   },
   // TODO - claude还没开放
-  // {
-  //   beta: false,
-  //   label: 'Claude',
-  //   value: CHAT_GPT_PROVIDER.CLAUDE,
-  //   authDescription: 'Use your own Claude to power the extension.',
-  //   shortDescription: `100K context window. Chat with multiple documents.`,
-  //   authButtonText: 'Log into your Claude account',
-  //   authOpenInNew: true,
-  // },
+  {
+    beta: false,
+    label: 'Claude',
+    value: AI_PROVIDER_MAP.CLAUDE,
+    description: '',
+    authDescription: 'Use your own Claude to power the extension.',
+    shortDescription: `100K context window. Chat with multiple documents.`,
+    authButtonText: 'Log into your Claude account',
+    authOpenInNew: true,
+  },
   {
     beta: false,
     label: 'ChatGPT web app',

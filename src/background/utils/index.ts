@@ -21,7 +21,7 @@ import {
   BING_MODELS,
   BingConversationStyle,
 } from '@/background/src/chat/BingChat/bing/types'
-import { POE_MODELS, PoeModel } from '@/background/src/chat/PoeChat/type'
+import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import cloneDeep from 'lodash-es/cloneDeep'
 import {
   IChromeExtensionButtonSetting,
@@ -34,6 +34,7 @@ import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -102,7 +103,7 @@ export const getChromeExtensionSettings =
           model: BING_MODELS[0].value,
         },
         [AI_PROVIDER_MAP.CLAUDE]: {
-          model: PoeModel.ClaudeInstant,
+          model: CLAUDE_MODELS[0].value,
         },
         [AI_PROVIDER_MAP.BARD]: {
           model: BARD_MODELS[0].value,

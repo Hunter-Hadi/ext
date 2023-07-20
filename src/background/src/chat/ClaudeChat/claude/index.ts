@@ -1,8 +1,8 @@
-import { ClaudeAttachment, ClaudeConversation } from './types'
+import { ClaudeAttachment, ClaudeConversation, ClaudeMessage } from './types'
 import {
   createClaudeConversation,
   deleteClaudeConversation,
-  getCaludeOrganizationId,
+  getClaudeOrganizationId,
   uploadClaudeAttachment,
 } from './api'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
@@ -14,12 +14,16 @@ export class Claude {
   private abortController?: AbortController
   organizationId?: string
   attachments: ClaudeAttachment[] = []
+
+  constructor(organizationId?: string) {
+    this.organizationId = organizationId
+  }
   get conversationId() {
     return this.conversation?.uuid
   }
   async createConversation(name?: string) {
     if (!this.organizationId) {
-      this.organizationId = await getCaludeOrganizationId()
+      this.organizationId = await getClaudeOrganizationId()
     }
     if (this.organizationId) {
       this.conversation = await createClaudeConversation(
@@ -33,9 +37,10 @@ export class Claude {
     text: string,
     options?: {
       regenerate?: boolean
+      onMessage?: (message: ClaudeMessage) => void
     },
   ) {
-    const { regenerate = false } = options || {}
+    const { regenerate = false, onMessage } = options || {}
     let conversationId = this.conversation?.uuid
     if (!conversationId || !this.organizationId) {
       // 创建一个conversation
@@ -51,6 +56,10 @@ export class Claude {
     const apiHost = regenerate
       ? 'https://claude.ai/api/retry_message'
       : 'https://claude.ai/api/append_message'
+    // claude api 的设计是，如果是regenerate用户发送的消息必须是空的
+    if (regenerate) {
+      text = ''
+    }
     await fetchSSE(apiHost, {
       signal,
       method: 'POST',
@@ -76,9 +85,60 @@ export class Claude {
       }),
       onMessage: (message: string) => {
         console.debug('claude sse message', message)
-        debugger
+        try {
+          const data = JSON.parse(message) as ClaudeMessage
+          if (data.log_id) {
+            onMessage?.(data)
+          }
+        } catch (e) {
+          console.error('claude sse message parse error', e)
+        }
       },
     })
+      .then(() => {
+        // do nothing
+      })
+      .catch((err) => {
+        if (err?.message.includes('The user aborted a request.')) {
+          onMessage?.({
+            completion: '',
+            log_id: '',
+            messageLimit: {
+              type: 'within_limit',
+            },
+            model: '',
+            stop: true,
+            stop_reason: 'The user aborted a request.',
+          } as ClaudeMessage)
+          return
+        }
+        try {
+          const errorData = JSON.parse(err.message)
+          const errorMessage =
+            errorData?.error?.message || errorData?.message || 'Network Error'
+          onMessage?.({
+            completion: '',
+            log_id: '',
+            messageLimit: {
+              type: 'within_limit',
+            },
+            model: '',
+            stop: true,
+            stop_reason: errorMessage,
+          })
+        } catch (e) {
+          onMessage?.({
+            completion: '',
+            log_id: '',
+            messageLimit: {
+              type: 'within_limit',
+            },
+            model: '',
+            stop: true,
+            stop_reason: 'Network Error',
+          })
+        }
+      })
     this.resetAttachments()
   }
   abortSendMessage() {
@@ -86,17 +146,18 @@ export class Claude {
   }
   async resetConversation() {
     if (this.conversation?.uuid && this.organizationId) {
-      await deleteClaudeConversation(
+      const result = await deleteClaudeConversation(
         this.organizationId,
         this.conversation.uuid,
       )
+      console.log('deleteClaudeConversation', result)
     }
     this.conversation = undefined
     return true
   }
   async uploadAttachment(file: File) {
     if (!this.organizationId) {
-      this.organizationId = await getCaludeOrganizationId()
+      this.organizationId = await getClaudeOrganizationId()
       if (!this.organizationId) {
         return {
           success: false,

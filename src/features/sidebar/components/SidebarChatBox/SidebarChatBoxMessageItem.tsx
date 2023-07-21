@@ -135,7 +135,16 @@ const SidebarChatBoxMessageItem: FC<{
   useEffect(() => {
     setDefaultText(message.text || '')
   }, [message.text])
-
+  const attachments = useMemo(() => {
+    if (message.type === 'user') {
+      const attachments = (message as IUserChatMessage)?.extra?.meta
+        ?.attachments
+      if (attachments && attachments.length) {
+        return attachments.filter((item) => item.uploadStatus === 'success')
+      }
+    }
+    return []
+  }, [message])
   return (
     <Stack
       className={className}
@@ -257,19 +266,15 @@ const SidebarChatBoxMessageItem: FC<{
                 borderWidth: isEdit ? 1 : 0,
               }}
             >
-              {message.type === 'user' &&
-                (message as IUserChatMessage)?.extra?.meta?.attachments && (
-                  <ChatIconFileList
-                    size={'small'}
-                    direction={'row'}
-                    disabledRemove
-                    sx={{ mb: 1 }}
-                    files={
-                      (message as IUserChatMessage).extra.meta!.attachments ||
-                      []
-                    }
-                  />
-                )}
+              {message.type === 'user' && attachments.length > 0 && (
+                <ChatIconFileList
+                  size={'small'}
+                  direction={'row'}
+                  disabledRemove
+                  sx={{ mb: 1 }}
+                  files={attachments}
+                />
+              )}
               {message.type !== 'user' ? (
                 <div
                   className={`markdown-body ${

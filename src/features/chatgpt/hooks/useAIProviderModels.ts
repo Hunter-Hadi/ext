@@ -133,7 +133,7 @@ const useAIProviderModels = () => {
     if (currentProvider === 'OPENAI') {
       return appSettings.currentModel
     }
-    return currentThirdProviderSettings?.model || ''
+    return  currentThirdProviderSettings?.model || ''
   }, [currentProvider, appSettings.currentModel, currentThirdProviderSettings])
   const currentAIProviderDetail = useMemo(() => {
     return AIProviderOptions.find((item) => item.value === currentProvider)

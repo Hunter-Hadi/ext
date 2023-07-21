@@ -40,7 +40,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     description: '',
     value: AI_PROVIDER_MAP.BARD,
     authDescription: 'Use your own Google Bard account to power the extension.',
-    shortDescription: `Enhanced with Google Search.`,
+    shortDescription: `Enhanced with Google Lens.`,
     authButtonText: 'Continue with Bard web app',
     authOpenInNew: false,
   },

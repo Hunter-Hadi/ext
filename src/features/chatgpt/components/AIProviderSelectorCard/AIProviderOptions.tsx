@@ -14,16 +14,16 @@ export type AIProviderOptionType = {
   authOpenInNew: boolean
 }
 const AIProviderOptions: AIProviderOptionType[] = [
-  {
-    beta: false,
-    label: 'Claude (Poe)',
-    description: '',
-    value: AI_PROVIDER_MAP.POE,
-    authDescription: 'Use your own Poe to power the extension.',
-    shortDescription: `Access Claude beyond the US and UK.`,
-    authButtonText: 'Continue with Poe web app',
-    authOpenInNew: false,
-  },
+  // {
+  //   beta: false,
+  //   label: 'Claude (Poe)',
+  //   description: '',
+  //   value: AI_PROVIDER_MAP.POE,
+  //   authDescription: 'Use your own Poe to power the extension.',
+  //   shortDescription: `Access Claude beyond the US and UK.`,
+  //   authButtonText: 'Continue with Poe web app',
+  //   authOpenInNew: false,
+  // },
   {
     beta: false,
     label: 'Bing web app',
@@ -51,7 +51,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     description: '',
     authDescription: 'Use your own Claude to power the extension.',
     shortDescription: '100K context window. Chat with multiple documents.',
-    authButtonText: 'Log into your Claude web app',
+    authButtonText: 'Log into Claude web app',
     authOpenInNew: true,
   },
   {

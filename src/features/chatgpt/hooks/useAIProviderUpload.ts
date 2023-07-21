@@ -57,9 +57,9 @@ const useAIProviderUpload = () => {
             })
           }
           break
-        case 'CLAUDE':
+        default:
           {
-            // 本地上传
+            // file转换unit8Array
             const newFiles = await Promise.all(
               newUploadFiles.map(async (item) => {
                 const data = await serializeUploadFile(item.file!)
@@ -75,8 +75,6 @@ const useAIProviderUpload = () => {
               },
             })
           }
-          break
-        default:
           break
       }
       setTimeout(() => {

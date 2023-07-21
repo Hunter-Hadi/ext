@@ -24,5 +24,11 @@ export const BARD_MODELS: IAIProviderModel[] = [
         value: 'Reasoning, multilingual translation, coding, and more.',
       },
     ],
+    uploadFileConfig: {
+      maxFileSize: 25 * 1024 * 1024, // 25MB
+      accept: '.jpg,.jpeg,.png,.webp',
+      acceptTooltip: 'Upload file JEPEG, PNG, WEBP',
+      maxCount: 1,
+    },
   },
 ]

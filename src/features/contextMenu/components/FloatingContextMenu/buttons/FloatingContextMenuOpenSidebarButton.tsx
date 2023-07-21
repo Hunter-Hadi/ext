@@ -3,7 +3,9 @@ import { isShowChatBox, showChatBox } from '@/utils'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
 import { SidePanelIcon } from '@/components/CustomIcon'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import TextOnlyTooltip, {
+  TextOnlyTooltipProps,
+} from '@/components/TextOnlyTooltip'
 import useCommands from '@/hooks/useCommands'
 import { FloatingDropdownMenuState, useRangy } from '@/features/contextMenu'
 import { useRecoilState } from 'recoil'
@@ -11,16 +13,17 @@ import { floatingContextMenuSaveDraftToChatBox } from '@/features/contextMenu/ut
 
 const FloatingContextMenuOpenSidebarButton: FC<{
   sx?: SxProps
+  TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
 }> = (props) => {
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const { chatBoxShortCutKey } = useCommands()
   return (
     <TextOnlyTooltip
-      floatingMenuTooltip
       description={chatBoxShortCutKey}
       title={'Switch to sidebar'}
       placement={'bottom'}
+      {...props.TooltipProps}
     >
       <Button
         sx={{

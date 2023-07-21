@@ -9,20 +9,29 @@ import {
   OpenAIIcon,
   PoeIcon,
 } from '@/components/CustomIcon'
+import { SxProps } from '@mui/material/styles'
 
-export const AIProviderIcon: FC<{
+export interface AIProviderIconProps {
   aiProviderType: IAIProviderType
   size?: number
-}> = (props) => {
-  const { aiProviderType, size = 20 } = props
+  sx?: SxProps
+}
+const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
+  const { aiProviderType, size = 20, sx } = props
   return (
     <>
       {aiProviderType === 'USE_CHAT_GPT_PLUS' && (
-        <ChatGPTIcon sx={{ fontSize: size }} />
+        <ChatGPTIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+          }}
+        />
       )}
       {aiProviderType === 'OPENAI_API' && (
         <OpenAIIcon
           sx={{
+            ...sx,
             fontSize: size,
             color: (t) =>
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
@@ -32,6 +41,7 @@ export const AIProviderIcon: FC<{
       {aiProviderType === 'OPENAI' && (
         <ChatGPTBlackIcon
           sx={{
+            ...sx,
             fontSize: size,
           }}
         />
@@ -39,6 +49,7 @@ export const AIProviderIcon: FC<{
       {aiProviderType === 'BARD' && (
         <BardIcon
           sx={{
+            ...sx,
             fontSize: size,
           }}
         />
@@ -46,6 +57,7 @@ export const AIProviderIcon: FC<{
       {aiProviderType === 'BING' && (
         <BingIcon
           sx={{
+            ...sx,
             fontSize: size,
           }}
         />
@@ -53,6 +65,7 @@ export const AIProviderIcon: FC<{
       {aiProviderType === 'CLAUDE' && (
         <ClaudeIcon
           sx={{
+            ...sx,
             fontSize: size,
           }}
         />
@@ -60,6 +73,7 @@ export const AIProviderIcon: FC<{
       {aiProviderType === 'POE' && (
         <PoeIcon
           sx={{
+            ...sx,
             fontSize: size,
           }}
         />

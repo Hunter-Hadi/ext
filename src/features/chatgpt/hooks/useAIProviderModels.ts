@@ -20,6 +20,7 @@ import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import reverse from 'lodash-es/reverse'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
+import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -149,6 +150,9 @@ const useAIProviderModels = () => {
     }
     return currentThirdProviderSettings?.model || ''
   }, [currentProvider, appSettings.currentModel, currentThirdProviderSettings])
+  const currentAIProviderDetail = useMemo(() => {
+    return AIProviderOptions.find((item) => item.value === currentProvider)
+  }, [currentProvider])
   const currentAIProviderModelDetail = useMemo(() => {
     return aiProviderModels.find(
       (item) => item.value === currentAIProviderModel,
@@ -191,6 +195,7 @@ const useAIProviderModels = () => {
   return {
     aiProvider: appSettings.chatGPTProvider,
     aiProviderModel: currentAIProviderModel,
+    currentAIProviderDetail,
     currentAIProviderModelDetail,
     aiProviderModels,
     updateAIProviderModel,

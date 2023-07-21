@@ -44,14 +44,13 @@ const AIProviderOptions: AIProviderOptionType[] = [
     authButtonText: 'Continue with Bard web app',
     authOpenInNew: false,
   },
-  // TODO - claude还没开放
   {
     beta: false,
     label: 'Claude web app',
     value: AI_PROVIDER_MAP.CLAUDE,
     description: '',
     authDescription: 'Use your own Claude to power the extension.',
-    shortDescription: `100K context window. Chat with multiple documents.`,
+    shortDescription: '100K context window. Chat with multiple documents.',
     authButtonText: 'Log into your Claude web app',
     authOpenInNew: true,
   },

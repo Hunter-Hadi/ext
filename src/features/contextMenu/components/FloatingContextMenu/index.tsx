@@ -64,10 +64,10 @@ import {
   contextMenuToFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import { UseChatGptIcon } from '@/components/CustomIcon'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import SendIcon from '@mui/icons-material/Send'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -641,12 +641,14 @@ const FloatingContextMenu: FC<{
                 alignItems={'center'}
                 gap={1}
               >
-                <UseChatGptIcon
+                <AIProviderIconWithTooltip
+                  TooltipProps={{
+                    placement: safePlacement.contextMenuPlacement,
+                    floatingMenuTooltip: true,
+                  }}
+                  size={16}
                   sx={{
                     flexShrink: 0,
-                    color: 'primary.main',
-                    height: '16px',
-                    width: '16px',
                     p: '4px',
                     alignSelf: 'start',
                   }}
@@ -671,6 +673,10 @@ const FloatingContextMenu: FC<{
                       expandNode={
                         floatingDropdownMenu.open && (
                           <ChatIconFileUpload
+                            TooltipProps={{
+                              placement: safePlacement.contextMenuPlacement,
+                              floatingMenuTooltip: true,
+                            }}
                             direction={'column'}
                             size={'tiny'}
                           />
@@ -758,7 +764,12 @@ const FloatingContextMenu: FC<{
                       <FloatingContextMenuPopupSettingButton
                         sx={{ width: 24, height: 24, alignSelf: 'end' }}
                       />
-                      <FloatingContextMenuOpenSidebarButton />
+                      <FloatingContextMenuOpenSidebarButton
+                        TooltipProps={{
+                          placement: safePlacement.contextMenuPlacement,
+                          floatingMenuTooltip: true,
+                        }}
+                      />
                     </>
                   )}
                   {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}

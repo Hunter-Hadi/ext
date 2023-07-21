@@ -2,7 +2,9 @@ import React, { FC, useMemo, useRef, useState } from 'react'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { SxProps } from '@mui/material/styles'
 import Stack from '@mui/material/Stack'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import TextOnlyTooltip, {
+  TextOnlyTooltipProps,
+} from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Typography from '@mui/material/Typography'
@@ -21,9 +23,16 @@ const ChatIconFileUpload: FC<{
   onUpload?: (files: IChatUploadFile[]) => void
   onDone?: (files: IChatUploadFile[]) => void
   size?: 'tiny' | 'small' | 'medium' | 'large'
+  TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
   sx?: SxProps
 }> = (props) => {
-  const { disabled = false, direction = 'row', size = 'medium', sx } = props
+  const {
+    disabled = false,
+    direction = 'row',
+    size = 'medium',
+    sx,
+    TooltipProps,
+  } = props
   const {
     files,
     AIProviderConfig,
@@ -137,14 +146,13 @@ const ChatIconFileUpload: FC<{
         const isHover = hoverId === file.id
         return (
           <TextOnlyTooltip
-            arrow
-            floatingMenuTooltip={size === 'tiny'}
             placement={'top'}
             open={isUploading}
             title={
               hasFileUploading && fileIndex === 0 && aiProviderUploadingTooltip
             }
             key={file.id}
+            {...TooltipProps}
           >
             <Stack
               className={'max-ai-chat__icon-file-upload'}
@@ -212,9 +220,9 @@ const ChatIconFileUpload: FC<{
                 )}
               </Stack>
               <TextOnlyTooltip
-                floatingMenuTooltip={size === 'tiny'}
                 placement={'top'}
                 title={file.uploadErrorMessage || file.fileName}
+                {...TooltipProps}
               >
                 <Stack
                   sx={{
@@ -278,12 +286,7 @@ const ChatIconFileUpload: FC<{
               )}
               {isHover && (
                 <Box top={top} right={right} position={'absolute'}>
-                  <TextOnlyTooltip
-                    floatingMenuTooltip={size === 'tiny'}
-                    placement={'top'}
-                    arrow
-                    title={'Remove file'}
-                  >
+                  <TextOnlyTooltip placement={'top'} title={'Remove file'}>
                     <Button
                       sx={{
                         minWidth: 'unset',
@@ -314,10 +317,9 @@ const ChatIconFileUpload: FC<{
       })}
       {!isMaxFiles && (
         <TextOnlyTooltip
-          floatingMenuTooltip={size === 'tiny'}
           placement={'top'}
-          arrow
           title={AIProviderConfig.acceptTooltip || 'Upload file'}
+          {...TooltipProps}
         >
           <Button
             disabled={disabled}

@@ -133,16 +133,17 @@ const useAIProviderModels = () => {
     if (currentProvider === 'OPENAI') {
       return appSettings.currentModel
     }
+    return currentThirdProviderSettings?.model || ''
+  }, [currentProvider, appSettings.currentModel, currentThirdProviderSettings])
+  useEffect(() => {
     // TODO 历史遗留问题
     if (
       currentProvider === 'CLAUDE' &&
       currentThirdProviderSettings?.model === 'a2'
     ) {
       updateAIProviderModel(CLAUDE_MODELS[0].value)
-      return CLAUDE_MODELS[0].value
     }
-    return currentThirdProviderSettings?.model || ''
-  }, [currentProvider, appSettings.currentModel, currentThirdProviderSettings])
+  }, [currentAIProviderModel, currentProvider])
   const currentAIProviderDetail = useMemo(() => {
     return AIProviderOptions.find((item) => item.value === currentProvider)
   }, [currentProvider])

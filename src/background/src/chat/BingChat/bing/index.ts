@@ -38,7 +38,11 @@ const OPTIONS_SETS = [
 export class BingWebBot {
   private conversationContext?: ConversationInfo
 
-  private buildChatRequest(conversation: ConversationInfo, message: string) {
+  private buildChatRequest(
+    conversation: ConversationInfo,
+    message: string,
+    imageUrl?: string,
+  ) {
     const styleOption = styleOptionMap[conversation.conversationStyle]
     const optionsSets = OPTIONS_SETS.concat(styleOption || [])
     return {
@@ -81,6 +85,7 @@ export class BingWebBot {
             author: 'user',
             inputMethod: 'Keyboard',
             text: message,
+            imageUrl,
             messageType: 'Chat',
           },
           conversationId: conversation.conversationId,
@@ -128,7 +133,9 @@ export class BingWebBot {
       for (const event of events) {
         if (JSON.stringify(event) === '{}') {
           wsp.sendPacked({ type: 6 })
-          wsp.sendPacked(this.buildChatRequest(conversation, params.prompt))
+          wsp.sendPacked(
+            this.buildChatRequest(conversation, params.prompt, params.imageUrl),
+          )
           conversation.invocationId += 1
         } else if (event.type === 6) {
           wsp.sendPacked({ type: 6 })

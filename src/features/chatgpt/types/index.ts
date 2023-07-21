@@ -73,6 +73,7 @@ export interface IChatUploadFile {
   blobUrl?: string
   icon?: string
   file?: File
+  base64Data?: string
   uploadProgress?: number
   uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
   uploadErrorMessage?: string

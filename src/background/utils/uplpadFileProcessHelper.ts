@@ -28,3 +28,22 @@ export const deserializeUploadFile = ([base64, type, wasBlob]: [
   }
   return [arr, type] as [Uint8Array, string]
 }
+
+export const file2base64 = async (file: File): Promise<string | undefined> => {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const base64String = reader.result as string
+      resolve(base64String)
+    }
+    reader.onerror = () => {
+      resolve(undefined)
+    }
+    reader.readAsDataURL(file)
+  })
+}
+
+export const checkFileTypeIsImage = (file: File): boolean => {
+  const type = file.type
+  return type.startsWith('image/')
+}

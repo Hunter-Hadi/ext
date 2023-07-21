@@ -2,6 +2,8 @@ import BaseChat from '@/background/src/chat/BaseChat'
 import { BingWebBot } from '@/background/src/chat/BingChat/bing'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
 import { getChromeExtensionOnBoardingData } from '@/background/utils'
+import { IChatUploadFile } from '@/features/chatgpt/types'
+import { ofetch } from 'ofetch'
 
 class BingChat extends BaseChat {
   private bingLib: BingWebBot
@@ -50,8 +52,10 @@ class BingChat extends BaseChat {
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
+    const file = this.chatFiles?.[0]
     await this.bingLib.doSendMessage({
       prompt: question,
+      imageUrl: file?.uploadedUrl,
       signal,
       onEvent(event: Event) {
         console.log(event)
@@ -89,12 +93,58 @@ class BingChat extends BaseChat {
       },
     })
   }
+  async uploadFiles(files: IChatUploadFile[]) {
+    this.chatFiles = files
+    this.chatFiles = await Promise.all(
+      files.map(async (file) => {
+        if (file.uploadStatus !== 'success' && file.base64Data) {
+          const formData = new FormData()
+          formData.append(
+            'knowledgeRequest',
+            JSON.stringify({
+              imageInfo: {},
+              knowledgeRequest: {
+                invokedSkills: ['ImageById'],
+                subscriptionId: 'Bing.Chat.Multimodal',
+                invokedSkillsRequestData: { enableFaceBlur: false },
+                convoData: { convoid: '', convotone: 'Balanced' },
+              },
+            }),
+          )
+          formData.append(
+            'imageBase64',
+            file.base64Data.replace('data:', '').replace(/^.+,/, ''),
+          )
+          const response = await ofetch<{ blobId: string }>(
+            'https://www.bing.com/images/kblob',
+            {
+              method: 'POST',
+              body: formData,
+            },
+          )
+          debugger
+          if (response?.blobId) {
+            file.uploadedUrl = `https://www.bing.com/images/blob?bcid=${response.blobId}`
+            file.uploadStatus = 'success'
+          } else {
+            file.uploadStatus = 'error'
+            file.uploadErrorMessage = `Failed to upload image`
+          }
+          this.log.info('uploadFiles', file)
+          return file
+        }
+        return file
+      }),
+    )
+  }
+
   async removeConversation(conversationId: string) {
     this.bingLib.resetConversation()
     return Promise.resolve(true)
   }
   async destroy(): Promise<void> {
     this.bingLib.resetConversation()
+    await this.clearFiles()
   }
 }
 export { BingChat }

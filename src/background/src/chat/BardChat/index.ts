@@ -262,6 +262,11 @@ class BardChat extends BaseChat {
       }),
     )
   }
+  async destroy() {
+    await this.clearFiles()
+    await this.updateClientStatus('needAuth')
+    this.active = false
+  }
 }
 
 export { BardChat }

@@ -46,6 +46,12 @@ export const BING_MODELS: IAIProviderModel[] = [
         value: `Up to ${dayjs('2021-09-01').format('MMM YYYY')}`,
       },
     ],
+    uploadFileConfig: {
+      accept: 'image/gif, image/jpeg, image/png, image/webp',
+      acceptTooltip: 'Add an image',
+      maxFileSize: 5 * 1024 * 1024,
+      maxCount: 1,
+    },
   },
 ]
 
@@ -70,6 +76,7 @@ export type Event =
 
 export interface SendMessageParams {
   prompt: string
+  imageUrl?: string
   onEvent: (event: Event) => void
   signal?: AbortSignal
 }

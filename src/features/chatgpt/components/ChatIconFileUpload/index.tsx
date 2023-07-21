@@ -15,6 +15,10 @@ import { v4 as uuidV4 } from 'uuid'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
+import {
+  checkFileTypeIsImage,
+  file2base64,
+} from '@/background/utils/uplpadFileProcessHelper'
 
 const ChatIconFileUpload: FC<{
   disabled?: boolean
@@ -68,46 +72,52 @@ const ChatIconFileUpload: FC<{
       return
     }
     // upload
-    const newUploadFiles = filesArray.map((file) => {
-      let icon = 'file'
-      // image, svg, gif
-      if (file.type.includes('image')) {
-        icon = URL.createObjectURL(file)
-      }
-      // id: string
-      // fileName: string
-      // fileSize: number
-      // fileType: string
-      // blobUrl?: string
-      // icon?: string
-      // file?: File
-      // uploadProgress?: number
-      // uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
-      // uploadErrorMessage?: string
-      // uploadedUrl?: string
-      const uploadFile = {
-        id: uuidV4(),
-        file,
-        fileName: file.name,
-        fileSize: file.size,
-        fileType: file.type,
-        blobUrl: URL.createObjectURL(file),
-        uploadStatus: 'idle',
-        uploadErrorMessage: '',
-        uploadProgress: 0,
-        icon,
-      } as IChatUploadFile
-      // check file size
-      if (maxFileSize > 0 && uploadFile.fileSize > maxFileSize) {
-        uploadFile.uploadStatus = 'error'
-        uploadFile.uploadErrorMessage = `Upload failed: ${
-          uploadFile.fileName
-        } exceeds the ${(maxFileSize / 1024 / 1024).toFixed(
-          0,
-        )}MB limit. Please select a smaller file.`
-      }
-      return uploadFile
-    })
+    const newUploadFiles = await Promise.all(
+      filesArray.map(async (file) => {
+        const isImageFile = checkFileTypeIsImage(file)
+        let icon = 'file'
+        let base64Data = ''
+        // image, svg, gif
+        if (isImageFile) {
+          icon = 'image'
+          base64Data = (await file2base64(file)) || ''
+        }
+        // id: string
+        // fileName: string
+        // fileSize: number
+        // fileType: string
+        // blobUrl?: string
+        // icon?: string
+        // file?: File
+        // uploadProgress?: number
+        // uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
+        // uploadErrorMessage?: string
+        // uploadedUrl?: string
+        const uploadFile = {
+          id: uuidV4(),
+          file,
+          fileName: file.name,
+          fileSize: file.size,
+          fileType: file.type,
+          base64Data,
+          blobUrl: URL.createObjectURL(file),
+          uploadStatus: 'idle',
+          uploadErrorMessage: '',
+          uploadProgress: 0,
+          icon,
+        } as IChatUploadFile
+        // check file size
+        if (maxFileSize > 0 && uploadFile.fileSize > maxFileSize) {
+          uploadFile.uploadStatus = 'error'
+          uploadFile.uploadErrorMessage = `Upload failed: ${
+            uploadFile.fileName
+          } exceeds the ${(maxFileSize / 1024 / 1024).toFixed(
+            0,
+          )}MB limit. Please select a smaller file.`
+        }
+        return uploadFile
+      }),
+    )
     await aiProviderUploadFiles(files.concat(newUploadFiles))
     // clear input
     if (inputRef.current) {
@@ -215,7 +225,7 @@ const ChatIconFileUpload: FC<{
                         // objectFit: 'cover',
                       }
                     }
-                    src={file.icon}
+                    src={file.base64Data || file.blobUrl}
                   />
                 )}
               </Stack>

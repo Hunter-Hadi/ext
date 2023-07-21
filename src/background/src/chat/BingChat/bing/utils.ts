@@ -4,6 +4,9 @@ export function convertMessageToMarkdown(message: ChatResponseMessage): string {
   if (message.messageType === 'InternalSearchQuery') {
     return message.text
   }
+  if (message.messageType === 'InternalLoaderMessage') {
+    return `_${message.text}_`
+  }
   for (const card of message.adaptiveCards) {
     for (const block of card.body) {
       if (block.type === 'TextBlock') {

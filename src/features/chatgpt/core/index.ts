@@ -761,8 +761,8 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
       'GET',
       '/backend-api/settings/beta_features',
     )
-      .then((r) => {
-        const permission: any = r.json()
+      .then(async (r) => {
+        const permission: any = await r.json()
         return {
           browsing: permission?.browsing || false,
           chat_preferences: permission?.chat_preferences || false,
@@ -794,7 +794,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
         return true
       })
     }
-    return resp.models
+    return this.models
   }
   private async fetchPlugins(token: string): Promise<IChatGPTPluginType[]> {
     if (this.plugins.length > 0) {

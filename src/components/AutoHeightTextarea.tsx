@@ -31,31 +31,52 @@ const LINE_HEIGHT = 24
 const autoSizeTextarea = (
   textareaElement: HTMLTextAreaElement,
   childrenHeight = 0,
+  minHeight = 0,
 ) => {
   const boxElement = textareaElement?.parentElement?.parentElement
   if (textareaElement && boxElement) {
+    const style = window.getComputedStyle(textareaElement)
+    const paddingLength =
+      parseInt(style.paddingTop, 10) + parseInt(style.paddingBottom, 10)
     textareaElement.style.cssText = 'height:0px'
     const scrollHeight = textareaElement.value
       ? textareaElement.scrollHeight
-      : LINE_HEIGHT
+      : LINE_HEIGHT + paddingLength // 最小高度
     let textAreaHeight = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
-    const minTextAreaHeight = LINE_HEIGHT + (childrenHeight > 0 ? 16 : 0)
+    if (minHeight === 0) {
+      minHeight =
+        (textareaElement?.previousElementSibling as HTMLElement)
+          ?.offsetHeight || 0
+    }
+    const minTextAreaHeight = Math.max(LINE_HEIGHT, minHeight || 0)
     textAreaHeight = Math.max(minTextAreaHeight, textAreaHeight)
     textareaElement.style.cssText = `height: ${textAreaHeight}px`
     const boxHeight = textAreaHeight + childrenHeight
     boxElement.style.cssText = `height: ${boxHeight}px`
+    console.log(
+      '修复高度',
+      JSON.stringify(
+        {
+          paddingLength: paddingLength,
+          textAreaHeight: textAreaHeight,
+          childrenHeight: childrenHeight,
+          boxHeight,
+        },
+        null,
+        4,
+      ),
+    )
   }
 }
 
 const focusTextareaAndAutoSize = (
   textareaElement: HTMLTextAreaElement,
   childrenHeight = 0,
-  from?: string,
+  minHeight = 0,
 ) => {
-  console.log('focusTextareaAndAutoSize from', from || '')
-  autoSizeTextarea(textareaElement, childrenHeight)
+  autoSizeTextarea(textareaElement, childrenHeight, minHeight)
   setTimeout(() => {
-    autoSizeTextarea(textareaElement, childrenHeight)
+    autoSizeTextarea(textareaElement, childrenHeight, minHeight)
     // focus input
     const value = textareaElement.value
     // let findIndex = -1
@@ -77,6 +98,7 @@ const focusTextareaAndAutoSize = (
 export const autoFocusWithAllWebsite = (
   textareaElement: HTMLTextAreaElement,
   childrenHeight = 0,
+  minHeight = 0,
 ) => {
   let matchWebsite = ''
   const muiModalElement = document.querySelector(
@@ -110,11 +132,8 @@ export const autoFocusWithAllWebsite = (
   ) {
     return
   }
-  focusTextareaAndAutoSize(
-    textareaElement,
-    childrenHeight,
-    `autoFocusWithAllWebsite [${matchWebsite}]`,
-  )
+  console.log('matchWebsite', matchWebsite)
+  focusTextareaAndAutoSize(textareaElement, childrenHeight, minHeight)
 }
 
 const afterAutoFocusWithAllWebsite = (textareaElement: HTMLTextAreaElement) => {
@@ -165,34 +184,16 @@ const AutoHeightTextarea: FC<{
     () => throttle(autoSizeTextarea, 200),
     [],
   )
-  const computedChildrenHeight = () => {
-    if (
-      textareaRef?.current?.offsetHeight &&
-      expandRef.current?.offsetHeight &&
-      textareaRef.current.offsetHeight >= expandRef.current.offsetHeight
-    ) {
-      if (InputId === ROOT_FLOATING_INPUT_ID) {
-        console.log(
-          'computedChildrenHeight 111',
-          childrenHeightRef.current,
-          expandHeightRef.current,
-          textareaRef.current.offsetHeight,
-        )
-      }
-      return childrenHeightRef.current
-    } else {
-      if (InputId === ROOT_FLOATING_INPUT_ID) {
-        console.log(
-          'computedChildrenHeight 222',
-          childrenHeightRef.current + expandHeightRef.current,
-        )
-      }
-      return (
-        childrenHeightRef.current +
-        expandHeightRef.current -
-        (textareaRef.current?.offsetHeight || 0)
-      )
-    }
+  const computedChildrenHeight = (source: string) => {
+    console.log(
+      `修复高度${source}`,
+      JSON.stringify({
+        图片高度: expandHeightRef.current,
+        children高度: childrenHeightRef.current,
+        textarea高度: textareaRef.current?.offsetHeight,
+      }),
+    )
+    return [childrenHeightRef.current, expandHeightRef.current]
   }
   const isError = useMemo(() => {
     return inputValue.length > 4000
@@ -257,9 +258,16 @@ const AutoHeightTextarea: FC<{
   }, [conversation.loading])
   // 更新input高度
   useEffect(() => {
+    throttleAutoSizeTextarea(
+      textareaRef.current!,
+      ...computedChildrenHeight('inputValue1'),
+    )
     setTimeout(() => {
       if (textareaRef.current) {
-        autoSizeTextarea(textareaRef.current, computedChildrenHeight())
+        autoSizeTextarea(
+          textareaRef.current,
+          ...computedChildrenHeight('inputValue2'),
+        )
       }
     }, 0)
   }, [inputValue])
@@ -271,7 +279,10 @@ const AutoHeightTextarea: FC<{
           childrenHeightRef.current =
             (entry.target as HTMLElement)?.offsetHeight || 0
           if (textareaRef.current) {
-            autoSizeTextarea(textareaRef.current, computedChildrenHeight())
+            autoSizeTextarea(
+              textareaRef.current,
+              ...computedChildrenHeight('children'),
+            )
           }
         }, 100)
       }
@@ -282,7 +293,10 @@ const AutoHeightTextarea: FC<{
           expandHeightRef.current =
             (entry.target as HTMLElement)?.offsetHeight || 0
           if (textareaRef.current) {
-            autoSizeTextarea(textareaRef.current, computedChildrenHeight())
+            autoSizeTextarea(
+              textareaRef.current,
+              ...computedChildrenHeight('expand'),
+            )
           }
         }, 100)
       }
@@ -306,7 +320,10 @@ const AutoHeightTextarea: FC<{
       InputId === ROOT_FLOATING_INPUT_ID
     ) {
       console.log('focusTextareaAndAutoSize 浮动dropdown chat input', InputId)
-      autoFocusWithAllWebsite(textareaRef.current, computedChildrenHeight())
+      autoFocusWithAllWebsite(
+        textareaRef.current,
+        ...computedChildrenHeight('floatingDropdownMenu'),
+      )
     }
   }, [floatingDropdownMenu.open])
   // 侧边栏chat input
@@ -317,7 +334,10 @@ const AutoHeightTextarea: FC<{
       InputId === ROOT_CHAT_BOX_INPUT_ID
     ) {
       console.log('focusTextareaAndAutoSize 侧边栏chat input', InputId)
-      autoFocusWithAllWebsite(textareaRef.current, computedChildrenHeight())
+      autoFocusWithAllWebsite(
+        textareaRef.current,
+        ...computedChildrenHeight('appState'),
+      )
     }
   }, [appState.open, loading])
   return (
@@ -406,6 +426,7 @@ const AutoHeightTextarea: FC<{
           className={'max-ai-user-input__expand'}
           sx={{
             '&:has(> div)': { py: 1, pl: 1 },
+            alignSelf: 'end',
           }}
         >
           {expandNode}
@@ -479,7 +500,7 @@ const AutoHeightTextarea: FC<{
           onClick={(event) => {
             autoFocusWithAllWebsite(
               event.currentTarget,
-              computedChildrenHeight(),
+              ...computedChildrenHeight('click'),
             )
           }}
           onCompositionStart={(event) => {
@@ -498,7 +519,7 @@ const AutoHeightTextarea: FC<{
           onBlur={(event) => {
             throttleAutoSizeTextarea(
               event.currentTarget,
-              computedChildrenHeight(),
+              ...computedChildrenHeight('blur'),
             )
             afterAutoFocusWithAllWebsite(event.currentTarget)
           }}

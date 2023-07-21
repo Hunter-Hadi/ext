@@ -150,17 +150,14 @@ const ChatIconFileUpload: FC<{
           medium: 24,
           large: 32,
         }[size]
-        const isUploading = file.uploadStatus === 'uploading'
         const top = size === 'tiny' ? 2 : -8
         const right = size === 'tiny' ? 2 : -8
         const isHover = hoverId === file.id
         return (
           <TextOnlyTooltip
             placement={'top'}
-            open={isUploading}
-            title={
-              hasFileUploading && fileIndex === 0 && aiProviderUploadingTooltip
-            }
+            open={hasFileUploading && fileIndex === 0}
+            title={aiProviderUploadingTooltip}
             key={file.id}
             {...TooltipProps}
           >

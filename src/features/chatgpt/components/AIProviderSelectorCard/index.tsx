@@ -94,7 +94,9 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
             return (
               <ListItemButton
                 onClick={async () => {
-                  await updateChatGPTProvider(providerOption.value)
+                  if (providerOption.value !== provider) {
+                    await updateChatGPTProvider(providerOption.value)
+                  }
                 }}
                 selected={providerOption.value === provider}
                 disabled={isLoadingMemo}

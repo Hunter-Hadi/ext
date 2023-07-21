@@ -1,5 +1,6 @@
 .chat-message--text .markdown-body {
     font-size: 16px;
+    font-weight: 400;
     color: var(--tw-prose-body);
     --theme-0: #fff;
     --theme-50: #f8fafc;

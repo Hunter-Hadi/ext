@@ -174,7 +174,9 @@ export class BingWebBot {
           if (errorMessage === 'User needs to solve CAPTCHA to continue.') {
             params.onEvent({
               type: 'ERROR',
-              error: errorMessage,
+              error:
+                errorMessage +
+                `\n\nPlease sign in to [bing.com](http://bing.com/), complete any required verifications, then try again.`,
             })
           }
         }

@@ -9,8 +9,12 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import cloneDeep from 'lodash-es/cloneDeep'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import { serializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
+import {
+  checkFileTypeIsImage,
+  serializeUploadFile,
+} from '@/background/utils/uplpadFileProcessHelper'
 import useEffectOnce from '@/hooks/useEffectOnce'
+import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
 
 /**
  * AI Provider的上传文件处理
@@ -53,6 +57,28 @@ const useAIProviderUpload = () => {
               event: 'Client_chatUploadFiles',
               data: {
                 files: uploadingFiles,
+              },
+            })
+          }
+          break
+        case 'BING':
+          {
+            const newFiles = await Promise.all(
+              newUploadFiles.map(async (item) => {
+                if (item.file && checkFileTypeIsImage(item.file)) {
+                  const bingCompressBase64Data =
+                    await bingCompressedImageDataAsync(item.file)
+                  if (bingCompressBase64Data) {
+                    item.base64Data = bingCompressBase64Data
+                  }
+                }
+                return item
+              }),
+            )
+            await port.postMessage({
+              event: 'Client_chatUploadFiles',
+              data: {
+                files: newFiles,
               },
             })
           }

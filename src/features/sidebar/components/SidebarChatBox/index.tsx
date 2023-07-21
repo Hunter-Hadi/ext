@@ -386,7 +386,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           </Box>
           <AutoHeightTextarea
             sx={{
-              minHeight: 84.5,
+              minHeight: 80,
             }}
             stopPropagation
             loading={loading}

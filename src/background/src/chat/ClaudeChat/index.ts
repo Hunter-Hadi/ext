@@ -143,6 +143,7 @@ class ClaudeChat extends BaseChat {
         }
       },
     })
+    debugger
     await this.clearFiles()
   }
   async abortTask(taskId: string) {
@@ -209,6 +210,7 @@ class ClaudeChat extends BaseChat {
     return true
   }
   async destroy() {
+    debugger
     await this.clearFiles()
     this.claude.resetAttachments()
     this.status = 'needAuth'

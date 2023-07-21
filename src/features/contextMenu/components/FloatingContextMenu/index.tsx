@@ -677,6 +677,9 @@ const FloatingContextMenu: FC<{
                               placement: safePlacement.contextMenuPlacement,
                               floatingMenuTooltip: true,
                             }}
+                            sx={{
+                              alignSelf: 'end',
+                            }}
                             direction={'column'}
                             size={'tiny'}
                           />

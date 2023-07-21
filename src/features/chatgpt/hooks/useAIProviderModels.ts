@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 import useThirdProviderSetting from '@/features/chatgpt/hooks/useThirdProviderSetting'
@@ -10,17 +10,15 @@ import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import {
-  backgroundGetUrlContent,
   getChromeExtensionSettings,
   setChromeExtensionSettings,
 } from '@/background/utils'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import Browser from 'webextension-polyfill'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import reverse from 'lodash-es/reverse'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -37,30 +35,13 @@ const useAIProviderModels = () => {
   const { cleanChatGPT } = useCleanChatGPT()
   // ===chatgpt 特殊处理开始===
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
-  useEffectOnce(() => {
-    Browser.storage.local.get('CHAT_GPT_WHITE_LIST_MODELS').then((result) => {
-      const cacheModels = JSON.parse(result.CHAT_GPT_WHITE_LIST_MODELS || '[]')
-      setWhiteListModels(cacheModels)
-      backgroundGetUrlContent(
-        'https://www.phtracker.com/crx/info/provider/v1',
-      ).then((result) => {
-        if (result.success && result.data && result.data.body) {
-          try {
-            const data = JSON.parse(result.data.body)
-            if (data.models) {
-              // set to local storage
-              Browser.storage.local.set({
-                CHAT_GPT_WHITE_LIST_MODELS: JSON.stringify(data.models),
-              })
-              setWhiteListModels(data.models)
-            }
-          } catch (e) {
-            console.log(e)
-          }
-        }
+  useEffect(() => {
+    if (currentProvider === 'OPENAI') {
+      getChatGPTWhiteListModelAsync().then((data) => {
+        setWhiteListModels(data)
       })
-    })
-  })
+    }
+  }, [currentProvider])
   // ===chatgpt 特殊处理结束===
   const aiProviderModels = useMemo<IAIProviderModel[]>(() => {
     let currentModels: IAIProviderModel[] = []
@@ -94,7 +75,11 @@ const useAIProviderModels = () => {
                   },
                   { label: 'Description', value: item.description },
                 ],
-                disabled: !whiteListModels.includes(item.slug),
+                disabled:
+                  // 白名单有值才判断
+                  whiteListModels.length > 0
+                    ? !whiteListModels.includes(item.slug)
+                    : false,
                 uploadFileConfig: isCodeInterpreter
                   ? {
                       accept: '',

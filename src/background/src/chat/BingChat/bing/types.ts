@@ -46,12 +46,13 @@ export const BING_MODELS: IAIProviderModel[] = [
         value: `Up to ${dayjs('2021-09-01').format('MMM YYYY')}`,
       },
     ],
-    uploadFileConfig: {
-      accept: 'image/gif, image/jpeg, image/png, image/webp',
-      acceptTooltip: 'Add an image',
-      maxFileSize: 5 * 1024 * 1024,
-      maxCount: 1,
-    },
+    // TODO - bing的文件上传需要校验origin和referrer，需要新的chrome extension permission, 目前搁置
+    // uploadFileConfig: {
+    //   accept: 'image/gif, image/jpeg, image/png, image/webp',
+    //   acceptTooltip: 'Add an image',
+    //   maxFileSize: 5 * 1024 * 1024,
+    //   maxCount: 1,
+    // },
   },
 ]
 

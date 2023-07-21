@@ -15,6 +15,7 @@ import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 
 const log = new Log('ChatGPT/OpenAIChat')
 
@@ -247,6 +248,8 @@ class OpenAIChat extends BaseChat {
     options,
   ) => {
     if (!this.isAnswering) {
+      // 获取model的白名单，因为要动态禁用一些model
+      updateChatGPTWhiteListModelAsync().then().catch()
       this.questionSender = sender
       this.isAnswering = true
       const settings = await getChromeExtensionSettings()

@@ -105,8 +105,8 @@ class BingChat extends BaseChat {
               imageInfo: {},
               knowledgeRequest: {
                 invokedSkills: ['ImageById'],
-                subscriptionId: 'Bing.Chat.Multimodal',
-                invokedSkillsRequestData: { enableFaceBlur: false },
+                subscriptionId: 'Bing.Chat.Multimodal.Underside',
+                invokedSkillsRequestData: { enableFaceBlur: true },
                 convoData: { convoid: '', convotone: 'Balanced' },
               },
             }),
@@ -122,7 +122,6 @@ class BingChat extends BaseChat {
               body: formData,
             },
           )
-          debugger
           if (response?.blobId) {
             file.uploadedUrl = `https://www.bing.com/images/blob?bcid=${response.blobId}`
             file.uploadStatus = 'success'

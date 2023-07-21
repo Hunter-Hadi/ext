@@ -24,7 +24,14 @@ const AIProviderIconWithTooltip: FC<AIProviderIconWithTooltipProps> = ({
       {...TooltipProps}
       title={`${currentAIProviderDetail?.label} (${currentAIProviderModelDetail?.title})`}
     >
-      <Box>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          alignSelf: 'end',
+        }}
+      >
         {currentAIProviderDetail?.value ? (
           <AIProviderIcon
             aiProviderType={currentAIProviderDetail.value}

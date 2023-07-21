@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { BaseSelect } from '@/components/select'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -19,6 +19,25 @@ const AIProviderModelSelector: FC = () => {
       }),
     [aiProviderModels],
   )
+  useEffect(() => {
+    if (aiProviderModel && aiProviderModels.length > 0) {
+      const modelIsNotFind = aiProviderModels.every(
+        (item) => item.value !== aiProviderModel,
+      )
+      const modelIsDisabled = aiProviderModels.find(
+        (model) => model.value === aiProviderModel,
+      )?.disabled
+      // 如果当前选中的model不在列表中或者被禁用了，就选中第一个，但是因为我们的列表是从下往上排的，所以要选最后一个不是禁用的
+      if (modelIsNotFind || modelIsDisabled) {
+        for (let i = aiProviderModels.length - 1; i >= 0; i--) {
+          if (!aiProviderModels[i].disabled) {
+            updateAIProviderModel(aiProviderModels[i].value).then().catch()
+            break
+          }
+        }
+      }
+    }
+  }, [aiProviderModels, aiProviderModel])
   return (
     <BaseSelect
       MenuProps={{

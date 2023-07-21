@@ -22,11 +22,11 @@ const AIProviderInfoCard: FC<{
   } = {
     USE_CHAT_GPT_PLUS: 'chatgpt',
     OPENAI: 'chatgpt_web_app',
-    OPENAI_API: 'chatgpt_api',
-    BARD: 'bard',
-    BING: 'bing',
+    OPENAI_API: 'openai_api',
+    BARD: 'bard_web_app',
+    BING: 'bing_web_app',
     POE: 'poe',
-    CLAUDE: 'claude',
+    CLAUDE: 'claude_web_app',
   }
   return (
     <Stack

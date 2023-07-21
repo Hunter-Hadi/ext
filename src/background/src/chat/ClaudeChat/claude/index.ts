@@ -56,7 +56,7 @@ export class Claude {
           model: '',
           stop: true,
           stop_reason:
-            'Failed to access Claude.ai\nTry again, or visit [claude.ai](https://claude.ai/chats) for more information.',
+            'Please log into [Claude.ai](https://claude.ai/chats) and try again.',
         } as ClaudeMessage)
         return
       }

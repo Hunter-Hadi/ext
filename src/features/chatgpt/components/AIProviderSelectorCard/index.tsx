@@ -89,7 +89,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
           flex: 1,
         }}
       >
-        <List component={'nav'} sx={{ py: 0 }}>
+        <List component={'nav'} sx={{ py: 0, pt: 1 }}>
           {AIProviderOptions.map((providerOption) => {
             return (
               <ListItemButton

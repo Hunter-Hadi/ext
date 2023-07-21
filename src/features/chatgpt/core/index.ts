@@ -756,11 +756,43 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     if (this.models.length > 0) {
       return this.models
     }
+    const permissionResult = await chatGptRequest(
+      token,
+      'GET',
+      '/backend-api/settings/beta_features',
+    )
+      .then((r) => {
+        const permission: any = r.json()
+        return {
+          browsing: permission?.browsing || false,
+          chat_preferences: permission?.chat_preferences || false,
+          code_interpreter: permission?.code_interpreter || false,
+          plugins: permission?.plugins || false,
+        }
+      })
+      .catch(() => {
+        return {
+          browsing: false,
+          chat_preferences: false,
+          code_interpreter: false,
+          plugins: false,
+        }
+      })
     const resp = await chatGptRequest(token, 'GET', '/backend-api/models').then(
       (r) => r.json(),
     )
     if (resp?.models && resp.models.length > 0) {
-      this.models = resp.models
+      this.models = resp.models.filter((model: any) => {
+        // TODO 因为不知道chat_preferences对应的slug，所以暂时不处理
+        if (model.slug === 'gpt-4-code-interpreter') {
+          return permissionResult.code_interpreter
+        } else if (model.slug === 'gpt-4-browsing') {
+          return permissionResult.browsing
+        } else if (model.slug === 'gpt-4-plugins') {
+          return permissionResult.plugins
+        }
+        return true
+      })
     }
     return resp.models
   }

@@ -9,10 +9,15 @@ import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/constants'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
-import { IChatMessage, ISystemChatMessage } from '@/features/chatgpt/types'
+import {
+  IChatMessage,
+  ISystemChatMessage,
+  IUserChatMessage,
+} from '@/features/chatgpt/types'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
 import DevContent from '@/components/DevContent'
+import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const SidebarChatBoxMessageItem: FC<{
@@ -252,6 +257,19 @@ const SidebarChatBoxMessageItem: FC<{
                 borderWidth: isEdit ? 1 : 0,
               }}
             >
+              {message.type === 'user' &&
+                (message as IUserChatMessage)?.extra?.meta?.attachments && (
+                  <ChatIconFileList
+                    size={'small'}
+                    direction={'row'}
+                    disabledRemove
+                    sx={{ mb: 1 }}
+                    files={
+                      (message as IUserChatMessage).extra.meta!.attachments ||
+                      []
+                    }
+                  />
+                )}
               {message.type !== 'user' ? (
                 <div
                   className={`markdown-body ${

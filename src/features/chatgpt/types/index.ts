@@ -32,6 +32,7 @@ export interface IUserChatMessage extends IChatMessage {
 
 export type IChatMessageExtraMetaType = {
   contextMenu?: IContextMenuItem
+  attachments?: IChatUploadFile[]
   [key: string]: any
 }
 

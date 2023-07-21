@@ -7,6 +7,8 @@ import {
 } from '@/background/src/chat/ClaudeChat/claude/api'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
+import { v4 as uuidV4 } from 'uuid'
+import { ClaudeAttachment } from '@/background/src/chat/ClaudeChat/claude/types'
 
 // 为了减少请求claude.ai网页，设置一个本地的token key
 const cacheTokenKey = 'CHROME_EXTENSION_LOCAL_STORAGE_CLAUDE_TOKEN_KEY'
@@ -143,7 +145,6 @@ class ClaudeChat extends BaseChat {
         }
       },
     })
-    debugger
     await this.clearFiles()
   }
   async abortTask(taskId: string) {
@@ -176,25 +177,46 @@ class ClaudeChat extends BaseChat {
         if (file.uploadStatus !== 'success') {
           const [fileUnit8Array, type] = deserializeUploadFile(file.file as any)
           const blob = new Blob([fileUnit8Array], { type })
-          const attachmentResult = await this.claude.uploadAttachment(
-            blob,
-            file.fileName,
-          )
-          if (attachmentResult.success && attachmentResult.data) {
+          if (type.includes('pdf')) {
+            const attachmentResult = await this.claude.uploadAttachment(
+              blob,
+              file.fileName,
+            )
+            if (attachmentResult.success && attachmentResult.data) {
+              return {
+                ...file,
+                id: attachmentResult.data.id,
+                file: undefined, // 释放内存
+                uploadStatus: 'success',
+                uploadProgress: 100,
+              } as IChatUploadFile
+            } else {
+              return {
+                ...file,
+                file: undefined, // 释放内存
+                uploadStatus: 'error',
+                uploadProgress: 0,
+                uploadErrorMessage: attachmentResult.error,
+              } as IChatUploadFile
+            }
+          } else {
+            // 其他文件类型直接读取文本
+            const text = await blob.text()
+            const textAttachments = {
+              id: uuidV4(),
+              extracted_content: text,
+              file_name: file.fileName,
+              file_size: file.fileSize,
+              file_type: type,
+              totalPages: 1,
+            } as ClaudeAttachment
+            this.claude.attachments.push(textAttachments)
             return {
               ...file,
-              id: attachmentResult.data.id,
+              id: textAttachments.id,
               file: undefined, // 释放内存
               uploadStatus: 'success',
               uploadProgress: 100,
-            } as IChatUploadFile
-          } else {
-            return {
-              ...file,
-              file: undefined, // 释放内存
-              uploadStatus: 'error',
-              uploadProgress: 0,
-              uploadErrorMessage: attachmentResult.error,
             } as IChatUploadFile
           }
         }
@@ -210,7 +232,6 @@ class ClaudeChat extends BaseChat {
     return true
   }
   async destroy() {
-    debugger
     await this.clearFiles()
     this.claude.resetAttachments()
     this.status = 'needAuth'

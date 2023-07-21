@@ -5,6 +5,8 @@ import {
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { IChatUploadFile } from '@/features/chatgpt/types'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 export const pingDaemonProcess = async () => {
   const port = new ContentScriptConnectionV2()
@@ -93,5 +95,27 @@ export class ContentScriptConnectionV2 {
   }
   destroy() {
     console.log('[ContentScriptConnectionV2]: destroy')
+  }
+}
+
+export const getAIProviderSampleFiles = async (): Promise<
+  IChatUploadFile[]
+> => {
+  const port = new ContentScriptConnectionV2({
+    runtime: 'client',
+  })
+  const data = await port.postMessage({
+    event: 'Client_chatGetFiles',
+    data: {},
+  })
+  if (data.success) {
+    return data.data.map((file: IChatUploadFile) => {
+      const cloneFile = cloneDeep(file)
+      // 减少数据量
+      delete cloneFile.file
+      return cloneFile
+    })
+  } else {
+    return []
   }
 }

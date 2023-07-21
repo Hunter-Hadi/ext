@@ -1,42 +1,28 @@
-import React, { FC, useMemo, useRef, useState } from 'react'
+import React, { FC, useMemo, useRef } from 'react'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { SxProps } from '@mui/material/styles'
-import Stack from '@mui/material/Stack'
-import TextOnlyTooltip, {
-  TextOnlyTooltipProps,
-} from '@/components/TextOnlyTooltip'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import CircularProgress from '@mui/material/CircularProgress'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { v4 as uuidV4 } from 'uuid'
-import { useRecoilValue } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   checkFileTypeIsImage,
   file2base64,
 } from '@/background/utils/uplpadFileProcessHelper'
+import ChatIconFileList, {
+  ChatIconFileListProps,
+} from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
+import { useRecoilValue } from 'recoil'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
-const ChatIconFileUpload: FC<{
+interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
-  children?: React.ReactNode
-  direction?: 'row' | 'column'
   onUpload?: (files: IChatUploadFile[]) => void
   onDone?: (files: IChatUploadFile[]) => void
-  size?: 'tiny' | 'small' | 'medium' | 'large'
-  TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
-  sx?: SxProps
-}> = (props) => {
-  const {
-    disabled = false,
-    direction = 'row',
-    size = 'medium',
-    sx,
-    TooltipProps,
-  } = props
+}
+const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
+  const { disabled = false, TooltipProps, onUpload, onDone, ...rest } = props
   const {
     files,
     AIProviderConfig,
@@ -47,13 +33,6 @@ const ChatIconFileUpload: FC<{
   const clientState = useRecoilValue(ChatGPTClientState)
   const conversation = useRecoilValue(ChatGPTConversationState)
   const inputRef = useRef<HTMLInputElement>(null)
-  const [hoverId, setHoverId] = useState<string>('')
-  const boxHeight = {
-    tiny: 24,
-    small: 24,
-    medium: 32,
-    large: 40,
-  }[size]
   const maxFiles = AIProviderConfig?.maxCount || 1
   const maxFileSize = AIProviderConfig?.maxFileSize || 5 * 1024 * 1024 // 5MB
   const isMaxFiles = useMemo(() => {
@@ -124,9 +103,6 @@ const ChatIconFileUpload: FC<{
       inputRef.current.value = ''
     }
   }
-  const hasFileUploading = useMemo(() => {
-    return files.some((file) => file.uploadStatus === 'uploading')
-  }, [files])
   if (
     !AIProviderConfig ||
     clientState.status !== 'success' ||
@@ -134,198 +110,20 @@ const ChatIconFileUpload: FC<{
   ) {
     return <></>
   }
-
   return (
-    <Stack
-      direction={direction}
-      sx={{
-        gap: 1,
-        ...sx,
+    <ChatIconFileList
+      files={files}
+      loadingTooltipTitle={aiProviderUploadingTooltip}
+      onRemove={async (file) => {
+        await aiProviderRemoveFiles([file])
       }}
+      TooltipProps={TooltipProps}
+      {...rest}
     >
-      {files.map((file, fileIndex) => {
-        const iconSize = {
-          tiny: 16,
-          small: 16,
-          medium: 24,
-          large: 32,
-        }[size]
-        const top = size === 'tiny' ? 2 : -8
-        const right = size === 'tiny' ? 2 : -8
-        const isHover = hoverId === file.id
-        return (
-          <TextOnlyTooltip
-            placement={'top'}
-            open={hasFileUploading && fileIndex === 0}
-            title={aiProviderUploadingTooltip}
-            key={file.id}
-            {...TooltipProps}
-          >
-            <Stack
-              className={'max-ai-chat__icon-file-upload'}
-              direction={'row'}
-              position={'relative'}
-              sx={{
-                width: 2.5 * boxHeight,
-                maxWidth: 2.5 * boxHeight,
-              }}
-              onMouseEnter={() => {
-                setHoverId(file.id)
-              }}
-              onMouseLeave={() => {
-                setHoverId('')
-              }}
-            >
-              <Stack
-                width={boxHeight}
-                height={boxHeight}
-                justifyContent={'center'}
-                alignItems={'center'}
-                flexShrink={0}
-                sx={{
-                  overflow: 'hidden',
-                  borderRadius: '4px 0 0 4px',
-                }}
-              >
-                {file.icon === 'file' ? (
-                  <Stack
-                    alignItems={'center'}
-                    justifyContent={'center'}
-                    width={'100%'}
-                    height={'100%'}
-                    sx={{
-                      bgcolor: (t) =>
-                        t.palette.mode === 'dark'
-                          ? 'rgb(142, 142, 159)'
-                          : 'rgb(142, 142, 159)',
-                      color: (t) =>
-                        t.palette.mode === 'dark'
-                          ? 'rgba(255, 255, 255, 0.87)'
-                          : 'rgba(255, 255, 255, 0.87)',
-                    }}
-                  >
-                    <ContextMenuIcon
-                      icon={'InsertDriveFile'}
-                      sx={{
-                        color: 'inherit',
-                        fontSize: `${iconSize}px`,
-                      }}
-                    />
-                  </Stack>
-                ) : (
-                  <img
-                    width={boxHeight}
-                    height={boxHeight}
-                    alt={file.fileName}
-                    style={
-                      {
-                        // objectFit: 'cover',
-                      }
-                    }
-                    src={file.base64Data || file.blobUrl}
-                  />
-                )}
-              </Stack>
-              <TextOnlyTooltip
-                placement={'top'}
-                title={file.uploadErrorMessage || file.fileName}
-                {...TooltipProps}
-              >
-                <Stack
-                  sx={{
-                    overflow: 'hidden',
-                    borderRadius: '0 4px 4px 0',
-                    bgcolor: (t) =>
-                      t.palette.mode === 'dark'
-                        ? 'rgb(247, 247, 248)'
-                        : 'rgb(247, 247, 248)',
-                  }}
-                  flex={1}
-                  width={0}
-                  alignItems={'center'}
-                  direction={'row'}
-                >
-                  <Typography
-                    px={1}
-                    noWrap
-                    fontSize={'12px'}
-                    width={'100%'}
-                    fontWeight={600}
-                    textAlign={'left'}
-                    sx={{
-                      color: (t) =>
-                        t.palette.mode === 'dark'
-                          ? 'rgba(0, 0, 0, 0.87)'
-                          : 'rgba(0, 0, 0, 0.87)',
-                    }}
-                  >
-                    {file.fileName}
-                  </Typography>
-                </Stack>
-              </TextOnlyTooltip>
-              {!isHover && file.uploadStatus === 'uploading' && (
-                <Stack
-                  top={top}
-                  right={right}
-                  position={'absolute'}
-                  width={20}
-                  height={20}
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                  borderRadius={'10px'}
-                  sx={{
-                    bgcolor: (t) =>
-                      t.palette.mode === 'dark'
-                        ? 'rgb(44, 44, 44)'
-                        : 'rgb(255, 255, 255)',
-                  }}
-                >
-                  <CircularProgress
-                    sx={{
-                      color: 'primary.main',
-                    }}
-                    thickness={4}
-                    variant="determinate"
-                    value={file.uploadProgress}
-                    size={16}
-                  />
-                </Stack>
-              )}
-              {isHover && (
-                <Box top={top} right={right} position={'absolute'}>
-                  <TextOnlyTooltip placement={'top'} title={'Remove file'}>
-                    <Button
-                      sx={{
-                        minWidth: 'unset',
-                        p: 0,
-                        color: 'rgba(142,142,159, 1)',
-                        '&:hover': {
-                          color: 'primary.main',
-                        },
-                      }}
-                      onClick={async () => {
-                        await aiProviderRemoveFiles([file])
-                      }}
-                    >
-                      <ContextMenuIcon
-                        icon={'CloseCircled'}
-                        sx={{
-                          fontSize: '20px',
-                          color: 'inherit',
-                        }}
-                      />
-                    </Button>
-                  </TextOnlyTooltip>
-                </Box>
-              )}
-            </Stack>
-          </TextOnlyTooltip>
-        )
-      })}
       {!isMaxFiles && (
         <TextOnlyTooltip
           placement={'top'}
-          title={AIProviderConfig.acceptTooltip || 'Upload file'}
+          title={AIProviderConfig?.acceptTooltip || 'Upload file'}
           {...TooltipProps}
         >
           <Button
@@ -358,14 +156,14 @@ const ChatIconFileUpload: FC<{
         multiple={maxFiles > 1}
         onChange={handleUpload}
         ref={inputRef}
-        accept={AIProviderConfig.accept || ''}
+        accept={AIProviderConfig?.accept || ''}
         hidden
         style={{
           display: 'none',
         }}
         type={'file'}
       />
-    </Stack>
+    </ChatIconFileList>
   )
 }
 

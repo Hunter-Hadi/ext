@@ -5,7 +5,10 @@ import {
   ChatGPTMessageState,
   ChatGPTConversationState,
 } from '@/features/sidebar/store'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import {
+  ContentScriptConnectionV2,
+  getAIProviderSampleFiles,
+} from '@/features/chatgpt/utils'
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
 import { setChromeExtensionSettings } from '@/background/utils'
@@ -120,6 +123,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       `[ChatGPT Module] send question step 1\n maxHistoryMessageCnt=[${currentMaxHistoryMessageCnt}]\n messageId=[${currentMessageId}]\n parentMessageId=[${currentParentMessageId}]`,
     )
     log.info('[ChatGPT Module] send question step 2, push user message')
+    const attachments = await getAIProviderSampleFiles()
     setMessages((prevState) => {
       return [
         ...prevState,
@@ -134,6 +138,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
             meta: {
               contextMenu: options?.meta?.contextMenu,
+              attachments,
             },
           },
         } as IUserChatMessage,

@@ -7,7 +7,7 @@ import { useFloatingContextMenu } from '@/features/contextMenu'
 import { getCurrentDomainHost } from '@/utils'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
-const NO_SUPPORT_HOST = ['teams.live.com']
+const NO_SUPPORT_HOST = ['teams.live.com', 'notion.so']
 
 /**
  * 输入框呼出按钮

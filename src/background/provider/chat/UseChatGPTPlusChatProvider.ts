@@ -87,6 +87,9 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   async updateFiles(files: IChatUploadFile[]) {
     return await this.useChatGPTPlusChat.updateFiles(files)
   }
+  async getUploadFileToken() {
+    return await this.useChatGPTPlusChat.getUploadFileToken()
+  }
   async removeFiles(fileIds: string[]) {
     return await this.useChatGPTPlusChat.removeFiles(fileIds)
   }

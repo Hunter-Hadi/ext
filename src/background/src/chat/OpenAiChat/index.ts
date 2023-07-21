@@ -292,6 +292,7 @@ class OpenAIChat extends BaseChat {
   }
   async destroy() {
     log.info('destroy')
+    this.clearFiles()
     // this.status = 'needAuth'
     // await this.updateClientStatus()
 
@@ -468,58 +469,60 @@ class OpenAIChat extends BaseChat {
   }
   async uploadFiles(files: IChatUploadFile[]) {
     this.chatFiles = files
-    // 这里主要有几个步骤，因为chatgpt的上传文件走的是arkose
-    // 1. 确保/pages/chatgpt/codeinterpreter.js被注入到页面中，且页面是codeInterpreter页面
-    // 2. 发送文件上传请求
-    const result = await this.sendDaemonProcessTask(
-      'OpenAIDaemonProcess_pingFilesUpload',
-      {},
-    )
-    if (!result.success) {
+    if (files.filter((file) => file.uploadStatus !== 'success').length > 0) {
+      // 这里主要有几个步骤，因为chatgpt的上传文件走的是arkose
+      // 1. 确保/pages/chatgpt/codeinterpreter.js被注入到页面中，且页面是codeInterpreter页面
+      // 2. 发送文件上传请求
+      const result = await this.sendDaemonProcessTask(
+        'OpenAIDaemonProcess_pingFilesUpload',
+        {},
+      )
+      if (!result.success) {
+        this.chatFiles = this.chatFiles.map((file) => {
+          file.uploadStatus = 'error'
+          file.uploadErrorMessage = `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
+          return file
+        })
+        const processTabId = this.chatGPTProxyInstance?.id
+        if (processTabId) {
+          // 说明ping失败了，需要重新打开一个code_interpreter页面
+          const settings = await getChromeExtensionSettings()
+          if (
+            settings.models?.find(
+              (model) => model.slug === 'gpt-4-code-interpreter',
+            )
+          ) {
+            // 说明用户有权限
+            Browser.tabs.get(processTabId).then((tab) => {
+              if (tab) {
+                Browser.tabs.update(tab.id, {
+                  url: 'https://chat.openai.com/?model=gpt-4-code-interpreter',
+                })
+              }
+            })
+          } else {
+            // 说明用户没有权限
+            Browser.tabs.get(processTabId).then((tab) => {
+              if (tab) {
+                Browser.tabs.update(tab.id, {
+                  url: 'https://chat.openai.com/?model=gpt-4',
+                })
+              }
+            })
+          }
+        }
+        return
+      }
       this.chatFiles = this.chatFiles.map((file) => {
-        file.uploadStatus = 'error'
-        file.uploadErrorMessage = `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
+        file.uploadStatus = 'uploading'
         return file
       })
-      const processTabId = this.chatGPTProxyInstance?.id
-      if (processTabId) {
-        // 说明ping失败了，需要重新打开一个code_interpreter页面
-        const settings = await getChromeExtensionSettings()
-        if (
-          settings.models?.find(
-            (model) => model.slug === 'gpt-4-code-interpreter',
-          )
-        ) {
-          // 说明用户有权限
-          Browser.tabs.get(processTabId).then((tab) => {
-            if (tab) {
-              Browser.tabs.update(tab.id, {
-                url: 'https://chat.openai.com/?model=gpt-4-code-interpreter',
-              })
-            }
-          })
-        } else {
-          // 说明用户没有权限
-          Browser.tabs.get(processTabId).then((tab) => {
-            if (tab) {
-              Browser.tabs.update(tab.id, {
-                url: 'https://chat.openai.com/?model=gpt-4',
-              })
-            }
-          })
-        }
-      }
-      return
+      // 说明ping成功了，且当前页面在code_interpreter页面
+      // 发送文件上传请求
+      await this.sendDaemonProcessTask('OpenAIDaemonProcess_filesUpload', {
+        files,
+      })
     }
-    this.chatFiles = this.chatFiles.map((file) => {
-      file.uploadStatus = 'uploading'
-      return file
-    })
-    // 说明ping成功了，且当前页面在code_interpreter页面
-    // 发送文件上传请求
-    await this.sendDaemonProcessTask('OpenAIDaemonProcess_filesUpload', {
-      files,
-    })
   }
 }
 

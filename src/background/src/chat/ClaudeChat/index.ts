@@ -5,6 +5,8 @@ import {
   getClaudeOrganizationId,
   removeAllCacheClaudeConversation,
 } from '@/background/src/chat/ClaudeChat/claude/api'
+import { IChatUploadFile } from '@/features/chatgpt/types'
+import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
 
 // 为了减少请求claude.ai网页，设置一个本地的token key
 const cacheTokenKey = 'CHROME_EXTENSION_LOCAL_STORAGE_CLAUDE_TOKEN_KEY'
@@ -14,7 +16,7 @@ class ClaudeChat extends BaseChat {
   constructor() {
     super('ClaudeChat')
     this.claude = new Claude()
-    this.status = 'success'
+    this.status = 'needAuth'
   }
   async init() {
     this.log.info('init')
@@ -26,6 +28,7 @@ class ClaudeChat extends BaseChat {
       this.claude.organizationId = cache[cacheTokenKey]
     }
     this.status = this.claude.organizationId ? 'success' : 'needAuth'
+    await this.updateClientStatus(this.status)
   }
   async auth() {
     this.active = true
@@ -140,6 +143,7 @@ class ClaudeChat extends BaseChat {
         }
       },
     })
+    await this.clearFiles()
   }
   async abortTask(taskId: string) {
     this.claude.abortSendMessage()
@@ -157,6 +161,59 @@ class ClaudeChat extends BaseChat {
         .catch()
     }
     return
+  }
+  async getUploadFileToken() {
+    if (!this.claude.organizationId) {
+      await this.auth()
+    }
+    return this.claude.organizationId
+  }
+  async uploadFiles(files: IChatUploadFile[]) {
+    this.chatFiles = files
+    this.chatFiles = await Promise.all(
+      files.map(async (file) => {
+        if (file.uploadStatus !== 'success') {
+          const [fileUnit8Array, type] = deserializeUploadFile(file.file as any)
+          const blob = new Blob([fileUnit8Array], { type })
+          const attachmentResult = await this.claude.uploadAttachment(
+            blob,
+            file.fileName,
+          )
+          if (attachmentResult.success && attachmentResult.data) {
+            return {
+              ...file,
+              id: attachmentResult.data.id,
+              file: undefined, // 释放内存
+              uploadStatus: 'success',
+              uploadProgress: 100,
+            } as IChatUploadFile
+          } else {
+            return {
+              ...file,
+              file: undefined, // 释放内存
+              uploadStatus: 'error',
+              uploadProgress: 0,
+              uploadErrorMessage: attachmentResult.error,
+            } as IChatUploadFile
+          }
+        }
+        return file
+      }),
+    )
+  }
+  async removeFiles(fileIds: string[]) {
+    await super.removeFiles(fileIds)
+    fileIds.forEach((fileId) => {
+      this.claude.removeAttachment(fileId)
+    })
+    return true
+  }
+  async destroy() {
+    await this.clearFiles()
+    this.claude.resetAttachments()
+    this.status = 'needAuth'
+    await this.updateClientStatus('needAuth')
+    this.active = false
   }
 }
 

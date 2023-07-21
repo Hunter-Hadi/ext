@@ -41,6 +41,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_chatClearFiles'
   | 'Client_chatAbortUploadFiles'
   | 'Client_chatGetFiles'
+  | 'Client_chatGetUploadFileToken'
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

@@ -88,6 +88,9 @@ class BardChatProvider implements ChatAdapterInterface {
   async uploadFiles(files: IChatUploadFile[]) {
     return await this.bardChat.uploadFiles(files)
   }
+  async getUploadFileToken() {
+    return await this.bardChat.getUploadFileToken()
+  }
   async removeFiles(fileIds: string[]) {
     return await this.bardChat.removeFiles(fileIds)
   }

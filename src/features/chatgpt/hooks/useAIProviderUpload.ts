@@ -1,5 +1,4 @@
-import { AppSettingsState } from '@/store'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -9,6 +8,9 @@ import { ChatGPTMessageState } from '@/features/sidebar/store'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import cloneDeep from 'lodash-es/cloneDeep'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { serializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 /**
  * AI Provider的上传文件处理
@@ -19,125 +21,155 @@ const port = new ContentScriptConnectionV2({
 
 const useAIProviderUpload = () => {
   const [files, setFiles] = useState<IChatUploadFile[]>([])
-  const appSettings = useRecoilValue(AppSettingsState)
+  const { currentAIProviderModelDetail, aiProvider } = useAIProviderModels()
   const updateChatMessage = useSetRecoilState(ChatGPTMessageState)
   const blurDelayRef = useRef(false)
   const AIProviderConfig = useMemo(() => {
-    let isSupportedUpload = false
-    if (appSettings.chatGPTProvider) {
-      switch (appSettings.chatGPTProvider) {
-        case 'OPENAI':
-          {
-            if (appSettings.currentModel === 'gpt-4-code-interpreter') {
-              isSupportedUpload = true
-            }
-          }
-          break
-        default:
-          break
-      }
-    }
-    return {
-      isSupportedUpload,
-      currentModel: appSettings.currentModel,
-      chatGPTProvider: appSettings.chatGPTProvider,
-    }
-  }, [appSettings.currentModel, appSettings.chatGPTProvider])
+    return currentAIProviderModelDetail?.uploadFileConfig
+  }, [currentAIProviderModelDetail])
+  // 上传文件
   const aiProviderUploadFiles = useCallback(
     async (newUploadFiles: IChatUploadFile[]) => {
+      // 获取上传令牌
+      // const { data: aiProviderUploadFileToken } = await port.postMessage({
+      //   event: 'Client_chatGetUploadFileToken',
+      //   data: {},
+      // })
       blurDelayRef.current = true
       const uploadingFiles = cloneDeep(newUploadFiles).map((item) => {
-        item.uploadStatus = 'uploading'
-        item.uploadProgress = 20
+        if (item.uploadStatus === 'idle') {
+          item.uploadStatus = 'uploading'
+          item.uploadProgress = 20
+        }
         return item
       })
       console.log('useAIProviderUpload [aiProviderUploadFiles]', uploadingFiles)
       setFiles(uploadingFiles)
-      if (AIProviderConfig.isSupportedUpload) {
-        switch (AIProviderConfig.chatGPTProvider) {
-          case 'OPENAI':
-            {
-              // 确保/pages/chatgpt/codeInterpreter.ts正确的注入了
-              await port.postMessage({
-                event: 'Client_chatUploadFiles',
-                data: {
-                  files: uploadingFiles,
-                },
-              })
-            }
-            break
-          default:
-            break
-        }
+      switch (aiProvider) {
+        case 'OPENAI':
+          {
+            // 确保/pages/chatgpt/codeInterpreter.ts正确的注入了
+            await port.postMessage({
+              event: 'Client_chatUploadFiles',
+              data: {
+                files: uploadingFiles,
+              },
+            })
+          }
+          break
+        case 'CLAUDE':
+          {
+            // 本地上传
+            const newFiles = await Promise.all(
+              newUploadFiles.map(async (item) => {
+                const data = await serializeUploadFile(item.file!)
+                const cloneItem = cloneDeep(item)
+                cloneItem.file = data as any
+                return cloneItem
+              }),
+            )
+            await port.postMessage({
+              event: 'Client_chatUploadFiles',
+              data: {
+                files: newFiles,
+              },
+            })
+          }
+          break
+        default:
+          break
       }
       setTimeout(() => {
         blurDelayRef.current = false
       }, 1000)
     },
-    [AIProviderConfig],
+    [AIProviderConfig, aiProvider],
   )
   const aiProviderRemoveFiles = useCallback(
     async (files: IChatUploadFile[]) => {
-      if (AIProviderConfig.isSupportedUpload) {
-        const result = await port.postMessage({
-          event: 'Client_chatRemoveFiles',
-          data: {
-            files,
-          },
-        })
-        console.log('useAIProviderUpload [Client_chatRemoveFiles]', result.data)
-        setFiles(result.data || [])
-        return result.success
-        return false
-      }
-      return false
+      const result = await port.postMessage({
+        event: 'Client_chatRemoveFiles',
+        data: {
+          files,
+        },
+      })
+      console.log('useAIProviderUpload [Client_chatRemoveFiles]', result.data)
+      setFiles(result.data || [])
+      return result.success
     },
     [AIProviderConfig],
   )
   const aiProviderUploadingTooltip = useMemo(() => {
-    if (AIProviderConfig.isSupportedUpload) {
-      switch (AIProviderConfig.chatGPTProvider) {
-        case 'OPENAI':
-          return 'File uploading. Please send your message once upload completes.'
-        default:
-          return 'File uploading. Please send your message once upload completes.'
-      }
+    switch (aiProvider) {
+      case 'OPENAI':
+        return 'File uploading. Please send your message once upload completes.'
+      default:
+        return 'File uploading. Please send your message once upload completes.'
     }
     return ''
-  }, [AIProviderConfig])
+  }, [aiProvider])
   useEffect(() => {
     const errorItem = files.find((item) => item.uploadStatus === 'error')
     if (errorItem) {
-      updateChatMessage((old) => {
-        let isContainsError = false
-        for (let i = 0; i < old.length; i++) {
-          if (old[i].messageId === errorItem.id) {
-            isContainsError = true
-            break
+      switch (aiProvider) {
+        case 'OPENAI':
+          {
+            updateChatMessage((old) => {
+              let isContainsError = false
+              for (let i = 0; i < old.length; i++) {
+                if (old[i].messageId === errorItem.id) {
+                  isContainsError = true
+                  break
+                }
+              }
+              if (isContainsError) {
+                return old
+              }
+              return old.concat({
+                messageId: errorItem.id,
+                text:
+                  errorItem.uploadErrorMessage ||
+                  `File ${errorItem.fileName} upload error.`,
+                type: 'system',
+                extra: {
+                  status:
+                    errorItem.uploadErrorMessage ===
+                    `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
+                      ? 'info'
+                      : 'error',
+                },
+              } as ISystemChatMessage)
+            })
           }
+          break
+        default: {
+          updateChatMessage((old) => {
+            let isContainsError = false
+            for (let i = 0; i < old.length; i++) {
+              if (old[i].messageId === errorItem.id) {
+                isContainsError = true
+                break
+              }
+            }
+            if (isContainsError) {
+              return old
+            }
+            return old.concat({
+              messageId: errorItem.id,
+              text:
+                errorItem.uploadErrorMessage ||
+                `File ${errorItem.fileName} upload error.`,
+              type: 'system',
+              extra: {
+                status: 'error',
+              },
+            } as ISystemChatMessage)
+          })
         }
-        if (isContainsError) {
-          return old
-        }
-
-        return old.concat({
-          messageId: errorItem.id,
-          text:
-            errorItem.uploadErrorMessage ||
-            `File ${errorItem.fileName} upload error.`,
-          type: 'system',
-          extra: {
-            status:
-              errorItem.uploadErrorMessage ===
-              `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
-                ? 'info'
-                : 'error',
-          },
-        } as ISystemChatMessage)
-      })
+      }
       aiProviderRemoveFiles([errorItem])
     }
-  }, [files])
+  }, [files, aiProvider])
   useFocus(() => {
     port
       .postMessage({
@@ -148,6 +180,19 @@ const useAIProviderUpload = () => {
         if (blurDelayRef.current) {
           return
         }
+        if (isArray(result.data)) {
+          console.log('useAIProviderUpload [Client_chatGetFiles]', result.data)
+          setFiles(result.data)
+        }
+      })
+  })
+  useEffectOnce(() => {
+    port
+      .postMessage({
+        event: 'Client_chatGetFiles',
+        data: {},
+      })
+      .then((result) => {
         if (isArray(result.data)) {
           console.log('useAIProviderUpload [Client_chatGetFiles]', result.data)
           setFiles(result.data)

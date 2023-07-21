@@ -47,6 +47,17 @@ export class Claude {
       conversationId = await this.createConversation()
       // 如果还是没有conversationId，那么就不发送了, 让用户重新登陆
       if (!conversationId || !this.organizationId) {
+        onMessage?.({
+          completion: '',
+          log_id: '',
+          messageLimit: {
+            type: 'within_limit',
+          },
+          model: '',
+          stop: true,
+          stop_reason:
+            'Failed to access Claude.ai\nTry again, or visit [claude.ai](https://claude.ai/chats) for more information.',
+        } as ClaudeMessage)
         return
       }
       return
@@ -68,7 +79,7 @@ export class Claude {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        attchments: this.attachments.map((attachment) => {
+        attachments: this.attachments.map((attachment) => {
           const originalAttachment = cloneDeep(attachment)
           delete originalAttachment.id
           return originalAttachment
@@ -155,7 +166,7 @@ export class Claude {
     this.conversation = undefined
     return true
   }
-  async uploadAttachment(file: File) {
+  async uploadAttachment(file: File | Blob, fileName?: string) {
     if (!this.organizationId) {
       this.organizationId = await getClaudeOrganizationId()
       if (!this.organizationId) {
@@ -174,8 +185,13 @@ export class Claude {
         data: undefined,
       }
     }
-    const attachment = await uploadClaudeAttachment(this.organizationId, file)
-    if (attachment) {
+    const attachmentResult = await uploadClaudeAttachment(
+      this.organizationId,
+      file,
+      fileName || (file as File).name,
+    )
+    if (attachmentResult.success && attachmentResult.data) {
+      const attachment = attachmentResult.data
       attachment.id = uuidV4()
       this.attachments.push(attachment)
       return {
@@ -186,7 +202,7 @@ export class Claude {
     } else {
       return {
         success: false,
-        error: 'upload failed',
+        error: attachmentResult.error || 'Upload failed.',
         data: undefined,
       }
     }

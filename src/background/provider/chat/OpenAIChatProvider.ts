@@ -55,6 +55,9 @@ class OpenAIChatProvider implements ChatAdapterInterface {
   async getFiles() {
     return await this.openAIChat.getFiles()
   }
+  async getUploadFileToken() {
+    return await this.openAIChat.getUploadFileToken()
+  }
   async abortUploadFiles(fileIds: string[]) {
     return await this.openAIChat.abortUploadFiles(fileIds)
   }

@@ -390,7 +390,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             }}
             stopPropagation
             loading={loading}
-            expandNode={<ChatIconFileUpload size={'small'} />}
+            expandNode={
+              <ChatIconFileUpload direction={'column'} size={'small'} />
+            }
             onEnter={handleSendMessage}
           >
             <SidebarChatBoxInputActions onSendMessage={handleSendMessage} />

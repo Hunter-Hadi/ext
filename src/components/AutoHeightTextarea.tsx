@@ -158,11 +158,42 @@ const AutoHeightTextarea: FC<{
   const nextMessageIsActionRef = useRef(false)
   const [inputValue, setInputValue] = useState(defaultValue || '')
   const childrenHeightRef = useRef(0)
+  const expandHeightRef = useRef(0)
   const childrenRef = useRef<HTMLDivElement>(null)
+  const expandRef = useRef<HTMLDivElement>(null)
   const throttleAutoSizeTextarea = useMemo(
     () => throttle(autoSizeTextarea, 200),
     [],
   )
+  const computedChildrenHeight = () => {
+    if (
+      textareaRef?.current?.offsetHeight &&
+      expandRef.current?.offsetHeight &&
+      textareaRef.current.offsetHeight >= expandRef.current.offsetHeight
+    ) {
+      if (InputId === ROOT_FLOATING_INPUT_ID) {
+        console.log(
+          'computedChildrenHeight 111',
+          childrenHeightRef.current,
+          expandHeightRef.current,
+          textareaRef.current.offsetHeight,
+        )
+      }
+      return childrenHeightRef.current
+    } else {
+      if (InputId === ROOT_FLOATING_INPUT_ID) {
+        console.log(
+          'computedChildrenHeight 222',
+          childrenHeightRef.current + expandHeightRef.current,
+        )
+      }
+      return (
+        childrenHeightRef.current +
+        expandHeightRef.current -
+        (textareaRef.current?.offsetHeight || 0)
+      )
+    }
+  }
   const isError = useMemo(() => {
     return inputValue.length > 4000
   }, [inputValue])
@@ -226,29 +257,45 @@ const AutoHeightTextarea: FC<{
   }, [conversation.loading])
   // 更新input高度
   useEffect(() => {
-    if (textareaRef.current) {
-      throttleAutoSizeTextarea(textareaRef.current, childrenHeightRef.current)
-    }
+    setTimeout(() => {
+      if (textareaRef.current) {
+        autoSizeTextarea(textareaRef.current, computedChildrenHeight())
+      }
+    }, 0)
   }, [inputValue])
   // 计算children的高度
   useEffect(() => {
-    const observer = new ResizeObserver((entries) => {
+    const childrenObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        console.log('Child size:', entry.contentRect)
-        childrenHeightRef.current = entry.contentRect.height || 0
-        if (textareaRef.current) {
-          throttleAutoSizeTextarea(
-            textareaRef.current,
-            entry.contentRect.height,
-          )
-        }
+        setTimeout(() => {
+          childrenHeightRef.current =
+            (entry.target as HTMLElement)?.offsetHeight || 0
+          if (textareaRef.current) {
+            autoSizeTextarea(textareaRef.current, computedChildrenHeight())
+          }
+        }, 100)
       }
     })
+    const expandObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setTimeout(() => {
+          expandHeightRef.current =
+            (entry.target as HTMLElement)?.offsetHeight || 0
+          if (textareaRef.current) {
+            autoSizeTextarea(textareaRef.current, computedChildrenHeight())
+          }
+        }, 100)
+      }
+    })
+    if (expandRef.current) {
+      expandObserver.observe(expandRef.current)
+    }
     if (childrenRef.current) {
-      observer.observe(childrenRef.current)
+      childrenObserver.observe(childrenRef.current)
     }
     return () => {
-      observer.disconnect()
+      childrenObserver.disconnect()
+      expandObserver.disconnect()
     }
   }, [])
   // 浮动dropdown chat input
@@ -259,7 +306,7 @@ const AutoHeightTextarea: FC<{
       InputId === ROOT_FLOATING_INPUT_ID
     ) {
       console.log('focusTextareaAndAutoSize 浮动dropdown chat input', InputId)
-      autoFocusWithAllWebsite(textareaRef.current, childrenHeightRef.current)
+      autoFocusWithAllWebsite(textareaRef.current, computedChildrenHeight())
     }
   }, [floatingDropdownMenu.open])
   // 侧边栏chat input
@@ -270,7 +317,7 @@ const AutoHeightTextarea: FC<{
       InputId === ROOT_CHAT_BOX_INPUT_ID
     ) {
       console.log('focusTextareaAndAutoSize 侧边栏chat input', InputId)
-      autoFocusWithAllWebsite(textareaRef.current, childrenHeightRef.current)
+      autoFocusWithAllWebsite(textareaRef.current, computedChildrenHeight())
     }
   }, [appState.open, loading])
   return (
@@ -354,16 +401,15 @@ const AutoHeightTextarea: FC<{
           },
         }}
       >
-        {expandNode && (
-          <Stack
-            className={'max-ai-user-input__expand'}
-            sx={{
-              '&:has(> div)': { py: 1, pl: 1 },
-            }}
-          >
-            {expandNode}
-          </Stack>
-        )}
+        <Stack
+          ref={expandRef}
+          className={'max-ai-user-input__expand'}
+          sx={{
+            '&:has(> div)': { py: 1, pl: 1 },
+          }}
+        >
+          {expandNode}
+        </Stack>
         <textarea
           id={InputId}
           placeholder={placeholder}
@@ -433,7 +479,7 @@ const AutoHeightTextarea: FC<{
           onClick={(event) => {
             autoFocusWithAllWebsite(
               event.currentTarget,
-              childrenHeightRef.current,
+              computedChildrenHeight(),
             )
           }}
           onCompositionStart={(event) => {
@@ -452,7 +498,7 @@ const AutoHeightTextarea: FC<{
           onBlur={(event) => {
             throttleAutoSizeTextarea(
               event.currentTarget,
-              childrenHeightRef.current,
+              computedChildrenHeight(),
             )
             afterAutoFocusWithAllWebsite(event.currentTarget)
           }}

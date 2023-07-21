@@ -87,5 +87,8 @@ class BaseChat {
     this.chatFiles = []
     return true
   }
+  async getUploadFileToken() {
+    return null as any
+  }
 }
 export default BaseChat

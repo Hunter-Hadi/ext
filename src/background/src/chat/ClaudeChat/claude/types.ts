@@ -36,9 +36,9 @@ export interface ClaudeMessage {
 
 export const CLAUDE_MODELS: IAIProviderModel[] = [
   {
-    title: 'claude-2',
+    title: 'claude-2-100k',
     titleTag: '',
-    value: 'claude-2',
+    value: 'claude-2-100k',
     maxTokens: 100 * 1000,
     tags: [],
     descriptions: [
@@ -49,7 +49,7 @@ export const CLAUDE_MODELS: IAIProviderModel[] = [
       {
         label: 'Description',
         value:
-          'Think of Claude as a friendly, enthusiastic colleague or personal assistant who can be instructed in natural language to help you with many tasks.',
+          "Superior performance on tasks that require complex reasoning. Claude 2 is Anthropic's best-in-class offering.",
       },
     ],
     uploadFileConfig: {

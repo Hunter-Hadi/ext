@@ -209,6 +209,14 @@ class ChatSystem implements ChatSystemInterface {
               }
             }
             break
+          case 'Client_chatGetUploadFileToken': {
+            const token = await this.getUploadFileToken()
+            return {
+              success: true,
+              data: token,
+              message: 'ok',
+            }
+          }
           default:
             break
         }
@@ -355,6 +363,12 @@ class ChatSystem implements ChatSystemInterface {
   }
   async getFiles() {
     return this.chatFiles
+  }
+  async getUploadFileToken() {
+    if (!this.currentAdapter) {
+      return null
+    }
+    return await this.currentAdapter.getUploadFileToken()
   }
   async clearFiles() {
     if (!this.currentAdapter) {

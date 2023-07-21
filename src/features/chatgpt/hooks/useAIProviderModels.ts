@@ -72,6 +72,7 @@ const useAIProviderModels = () => {
           // 转换数据结构
           currentModels = (appSettings.models || [])
             .map((item) => {
+              const isCodeInterpreter = item.slug === 'gpt-4-code-interpreter'
               const providerModel: IAIProviderModel = {
                 title: item.title,
                 value: item.slug,
@@ -93,6 +94,14 @@ const useAIProviderModels = () => {
                   { label: 'Description', value: item.description },
                 ],
                 disabled: !whiteListModels.includes(item.slug),
+                uploadFileConfig: isCodeInterpreter
+                  ? {
+                      accept: '',
+                      acceptTooltip: 'Upload file',
+                      maxFileSize: -1,
+                      maxCount: 1,
+                    }
+                  : undefined,
               }
               return providerModel
             })
@@ -140,6 +149,11 @@ const useAIProviderModels = () => {
     }
     return currentThirdProviderSettings?.model || ''
   }, [currentProvider, appSettings.currentModel, currentThirdProviderSettings])
+  const currentAIProviderModelDetail = useMemo(() => {
+    return aiProviderModels.find(
+      (item) => item.value === currentAIProviderModel,
+    )
+  }, [currentAIProviderModel, aiProviderModels])
   const updateAIProviderModel = useCallback(
     async (model: string) => {
       try {
@@ -177,6 +191,7 @@ const useAIProviderModels = () => {
   return {
     aiProvider: appSettings.chatGPTProvider,
     aiProviderModel: currentAIProviderModel,
+    currentAIProviderModelDetail,
     aiProviderModels,
     updateAIProviderModel,
     loading,

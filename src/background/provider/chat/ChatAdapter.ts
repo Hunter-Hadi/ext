@@ -53,6 +53,7 @@ export interface ChatSystemInterface {
   abortAskQuestion: (messageId: string) => Promise<boolean>
   // 上传文件
   getFiles: () => Promise<IChatUploadFile[]>
+  getUploadFileToken: () => Promise<any>
   updateFiles: (updateFiles: IChatUploadFile[]) => Promise<void>
   uploadFiles: (file: IChatUploadFile[]) => Promise<void>
   abortUploadFiles: (fileIds: string[]) => Promise<boolean>
@@ -72,6 +73,7 @@ export interface ChatAdapterInterface {
   abortAskQuestion: (messageId: string) => Promise<boolean>
   // 上传文件
   getFiles: () => Promise<IChatUploadFile[]>
+  getUploadFileToken: () => Promise<any>
   updateFiles: (updateFiles: IChatUploadFile[]) => Promise<void>
   uploadFiles: (file: IChatUploadFile[]) => Promise<void>
   abortUploadFiles: (fileIds: string[]) => Promise<boolean>
@@ -115,6 +117,9 @@ export class ChatAdapter implements ChatSystemInterface {
   }
   get chatFiles() {
     return this.chatAdapter.chatFiles
+  }
+  async getUploadFileToken() {
+    return await this.chatAdapter.getUploadFileToken()
   }
   async updateFiles(updateFiles: IChatUploadFile[]) {
     await this.chatAdapter.updateFiles(updateFiles)

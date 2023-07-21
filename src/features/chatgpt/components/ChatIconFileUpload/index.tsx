@@ -15,9 +15,6 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 const ChatIconFileUpload: FC<{
-  accept?: string
-  maxFileSize?: number
-  maxFiles?: number
   disabled?: boolean
   children?: React.ReactNode
   direction?: 'row' | 'column'
@@ -26,15 +23,7 @@ const ChatIconFileUpload: FC<{
   size?: 'tiny' | 'small' | 'medium' | 'large'
   sx?: SxProps
 }> = (props) => {
-  const {
-    accept,
-    maxFileSize,
-    maxFiles = 1,
-    disabled = false,
-    direction = 'row',
-    size = 'medium',
-    sx,
-  } = props
+  const { disabled = false, direction = 'row', size = 'medium', sx } = props
   const {
     files,
     AIProviderConfig,
@@ -45,7 +34,6 @@ const ChatIconFileUpload: FC<{
   const clientState = useRecoilValue(ChatGPTClientState)
   const conversation = useRecoilValue(ChatGPTConversationState)
   const inputRef = useRef<HTMLInputElement>(null)
-  const [error, setError] = useState<string | null>(null)
   const [hoverId, setHoverId] = useState<string>('')
   const boxHeight = {
     tiny: 24,
@@ -53,34 +41,25 @@ const ChatIconFileUpload: FC<{
     medium: 32,
     large: 40,
   }[size]
+  const maxFiles = AIProviderConfig?.maxCount || 1
+  const maxFileSize = AIProviderConfig?.maxFileSize || 5 * 1024 * 1024 // 5MB
   const isMaxFiles = useMemo(() => {
-    return files.length >= maxFiles
+    return files.length >= (AIProviderConfig?.maxCount || 1)
   }, [files])
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files
-    if (!files) {
+    const existFilesCount = files?.length || 0
+    const canUploadCount = maxFiles - existFilesCount
+    const selectedUploadFiles = e.target.files
+    if (!selectedUploadFiles || canUploadCount === 0) {
       return
     }
-    const filesArray = Array.from(files)
+    let filesArray = Array.from(selectedUploadFiles)
+    filesArray = filesArray.slice(0, canUploadCount)
     if (filesArray.length === 0) {
       return
     }
-    if (isMaxFiles) {
-      setError(`You can only upload ${maxFiles} files`)
-      return
-    }
-    // fileSize
-    if (maxFileSize) {
-      const isOverSize = filesArray.some((file) => {
-        return file.size > maxFileSize
-      })
-      if (isOverSize) {
-        setError(`File size must be less than ${maxFileSize} bytes`)
-        return
-      }
-    }
     // upload
-    const uploadFiles = filesArray.map((file) => {
+    const newUploadFiles = filesArray.map((file) => {
       let icon = 'file'
       // image, svg, gif
       if (file.type.includes('image')) {
@@ -97,7 +76,7 @@ const ChatIconFileUpload: FC<{
       // uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
       // uploadErrorMessage?: string
       // uploadedUrl?: string
-      return {
+      const uploadFile = {
         id: uuidV4(),
         file,
         fileName: file.name,
@@ -109,32 +88,43 @@ const ChatIconFileUpload: FC<{
         uploadProgress: 0,
         icon,
       } as IChatUploadFile
+      // check file size
+      if (maxFileSize > 0 && uploadFile.fileSize > maxFileSize) {
+        uploadFile.uploadStatus = 'error'
+        uploadFile.uploadErrorMessage = `Upload failed: ${
+          uploadFile.fileName
+        } exceeds the ${(maxFileSize / 1024 / 1024).toFixed(
+          0,
+        )}MB limit. Please select a smaller file.`
+      }
+      return uploadFile
     })
-    await aiProviderUploadFiles(uploadFiles)
+    await aiProviderUploadFiles(files.concat(newUploadFiles))
     // clear input
     if (inputRef.current) {
       inputRef.current.value = ''
     }
   }
-  // const hasFileUploading = useMemo(() => {
-  //   return files.some((file) => file.uploadStatus === 'uploading')
-  // }, [files])
+  const hasFileUploading = useMemo(() => {
+    return files.some((file) => file.uploadStatus === 'uploading')
+  }, [files])
   if (
-    !AIProviderConfig.isSupportedUpload ||
+    !AIProviderConfig ||
     clientState.status !== 'success' ||
     conversation.loading
   ) {
     return <></>
   }
+
   return (
     <Stack
       direction={direction}
       sx={{
+        gap: 1,
         ...sx,
       }}
-      spacing={1}
     >
-      {files.map((file) => {
+      {files.map((file, fileIndex) => {
         const iconSize = {
           tiny: 16,
           small: 16,
@@ -151,7 +141,9 @@ const ChatIconFileUpload: FC<{
             floatingMenuTooltip={size === 'tiny'}
             placement={'top'}
             open={isUploading}
-            title={aiProviderUploadingTooltip}
+            title={
+              hasFileUploading && fileIndex === 0 && aiProviderUploadingTooltip
+            }
             key={file.id}
           >
             <Stack
@@ -222,7 +214,7 @@ const ChatIconFileUpload: FC<{
               <TextOnlyTooltip
                 floatingMenuTooltip={size === 'tiny'}
                 placement={'top'}
-                title={error || file.fileName}
+                title={file.uploadErrorMessage || file.fileName}
               >
                 <Stack
                   sx={{
@@ -325,7 +317,7 @@ const ChatIconFileUpload: FC<{
           floatingMenuTooltip={size === 'tiny'}
           placement={'top'}
           arrow
-          title={'Upload file'}
+          title={AIProviderConfig.acceptTooltip || 'Upload file'}
         >
           <Button
             disabled={disabled}
@@ -357,7 +349,7 @@ const ChatIconFileUpload: FC<{
         multiple={maxFiles > 1}
         onChange={handleUpload}
         ref={inputRef}
-        accept={accept || ''}
+        accept={AIProviderConfig.accept || ''}
         hidden
         style={{
           display: 'none',

@@ -95,6 +95,9 @@ class PoeChatProvider implements ChatAdapterInterface {
   async getFiles() {
     return await this.poeChat.getFiles()
   }
+  async getUploadFileToken() {
+    return await this.poeChat.getUploadFileToken()
+  }
   async abortUploadFiles(fileIds: string[]) {
     return await this.poeChat.abortUploadFiles(fileIds)
   }

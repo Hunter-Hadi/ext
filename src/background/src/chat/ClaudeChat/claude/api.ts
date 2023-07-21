@@ -134,10 +134,15 @@ export const deleteClaudeConversation = async (
 
 export const uploadClaudeAttachment = async (
   organizationId: string,
-  file: File,
-): Promise<ClaudeAttachment | undefined> => {
+  file: File | Blob,
+  fileName?: string,
+): Promise<{
+  success: boolean
+  data: ClaudeAttachment | undefined
+  error: string
+}> => {
   const formData = new FormData()
-  formData.append('file', file)
+  formData.append('file', file, fileName || (file as File)?.name || '')
   formData.append('orgUuid', organizationId)
   const response = await fetch('https://claude.ai/api/convert_document', {
     method: 'POST',
@@ -146,8 +151,21 @@ export const uploadClaudeAttachment = async (
   if (response.status === 200) {
     const body = await response.json()
     if (body.extracted_content) {
-      return body as ClaudeAttachment
+      body.file_name = fileName || (file as File)?.name || body.file_name || ''
+      return {
+        success: true,
+        data: body as ClaudeAttachment,
+        error: '',
+      }
     }
   }
-  return undefined
+  let errorMessage = 'Upload failed.'
+  if (response.status === 429) {
+    errorMessage = 'Exceeded file upload rate limit'
+  }
+  return {
+    success: false,
+    data: undefined,
+    error: errorMessage,
+  }
 }

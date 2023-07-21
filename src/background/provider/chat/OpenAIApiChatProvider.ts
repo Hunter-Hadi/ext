@@ -90,6 +90,9 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
   async updateFiles(files: IChatUploadFile[]) {
     return await this.openAiApiChat.updateFiles(files)
   }
+  async getUploadFileToken() {
+    return await this.openAiApiChat.getUploadFileToken()
+  }
   async removeFiles(fileIds: string[]) {
     return await this.openAiApiChat.removeFiles(fileIds)
   }

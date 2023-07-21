@@ -89,6 +89,9 @@ class BingChatProvider implements ChatAdapterInterface {
   async uploadFiles(files: IChatUploadFile[]) {
     return await this.bingChat.uploadFiles(files)
   }
+  async getUploadFileToken() {
+    return await this.bingChat.getUploadFileToken()
+  }
   async removeFiles(fileIds: string[]) {
     return await this.bingChat.removeFiles(fileIds)
   }

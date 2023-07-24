@@ -14,7 +14,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   title,
   description,
   floatingMenuTooltip = false,
-  paperCard = true,
+  paperCard = false,
   ...props
 }) => {
   const container =

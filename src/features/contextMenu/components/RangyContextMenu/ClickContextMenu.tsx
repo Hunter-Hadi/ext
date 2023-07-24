@@ -175,7 +175,7 @@ const ClickContextMenuButton: FC<{
             '& button': {
               bgcolor: 'background.paper',
               minWidth: 'unset',
-              padding: '3px 6px!important',
+              padding: '5px 8px!important',
               boxSizing: 'border-box',
               borderRadius: '0',
               '&:hover': {
@@ -183,6 +183,9 @@ const ClickContextMenuButton: FC<{
                   t.palette.mode === 'dark'
                     ? 'rgb(61,61,61)'
                     : 'rgb(224,224,224)',
+              },
+              '&:has(.max-ai__click-menu-button--box__text-icon)': {
+                padding: '3px 6px!important',
               },
             },
             '&:first-child': {
@@ -241,7 +244,7 @@ const ClickContextMenuButton: FC<{
           >
             <UseChatGptIcon
               sx={{
-                fontSize: '22px',
+                fontSize: '18px',
                 // color: 'inherit',
               }}
             />

@@ -103,7 +103,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                 size={'small'}
                 variant={'text'}
                 sx={{
-                  padding: '3px 6px',
+                  padding: '5px 8px',
                   color: 'inherit',
                   minWidth: 'unset',
                   ...sx,
@@ -116,7 +116,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                       t.palette.mode === 'dark'
                         ? 'rgba(255,255,255,.87)'
                         : 'rgba(0,0,0,.6)',
-                    fontSize: '22px',
+                    fontSize: '18px',
                   }}
                 />
               </Button>
@@ -130,14 +130,14 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                   },
                 }}
                 icon={hover ? 'Close' : 'More'}
-                iconSize={22}
+                iconSize={18}
                 sx={{
                   zIndex: 1,
                   left: hover ? '100%' : 0,
                   transition: 'left 0.1s ease-in-out',
                   width: '34px',
                   height: '28px',
-                  padding: '3px 6px',
+                  padding: '5px 8px',
                   borderRadius: '0 14px 14px 0',
                   right: '-100%',
                   position: 'absolute',

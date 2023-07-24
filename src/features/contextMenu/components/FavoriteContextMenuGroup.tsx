@@ -76,7 +76,7 @@ const FavoriteContextMenuGroup: FC<{
               <ContextMenuIcon
                 icon={item.data.icon!}
                 sx={{
-                  fontSize: '22px',
+                  fontSize: '18px',
                   color: (t: any) =>
                     t.palette.mode === 'dark'
                       ? 'rgba(255,255,255,.87)'
@@ -85,6 +85,7 @@ const FavoriteContextMenuGroup: FC<{
               />
             ) : (
               <Stack
+                className={'max-ai__click-menu-button--box__text-icon'}
                 alignItems={'center'}
                 justifyContent={'center'}
                 sx={{
@@ -92,7 +93,6 @@ const FavoriteContextMenuGroup: FC<{
                   height: '22px',
                   boxSizing: 'border-box',
                   borderRadius: '4px',
-                  p: '2px',
                   bgcolor: (t) =>
                     t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
                   color: (t) =>

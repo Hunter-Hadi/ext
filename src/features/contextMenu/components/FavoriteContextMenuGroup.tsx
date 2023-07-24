@@ -20,6 +20,7 @@ const FavoriteContextMenuGroup: FC<{
     <Stack
       direction={'row'}
       alignItems={'center'}
+      className={'max-ai__click-menu-button--box'}
       sx={
         {
           // '& > button,div': {
@@ -75,7 +76,11 @@ const FavoriteContextMenuGroup: FC<{
               <ContextMenuIcon
                 icon={item.data.icon!}
                 sx={{
-                  color: 'text.primary',
+                  fontSize: '22px',
+                  color: (t: any) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgba(255,255,255,.87)'
+                      : 'rgba(0,0,0,.6)',
                 }}
               />
             ) : (
@@ -83,13 +88,13 @@ const FavoriteContextMenuGroup: FC<{
                 alignItems={'center'}
                 justifyContent={'center'}
                 sx={{
-                  width: '20px',
-                  height: '20px',
+                  width: '22px',
+                  height: '22px',
                   boxSizing: 'border-box',
                   borderRadius: '4px',
                   p: '2px',
                   bgcolor: (t) =>
-                    t.palette.mode === 'dark' ? '#666' : '#F5F6F7',
+                    t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
                   color: (t) =>
                     t.palette.mode === 'dark'
                       ? 'rgba(255,255,255,.87)'
@@ -98,7 +103,7 @@ const FavoriteContextMenuGroup: FC<{
               >
                 <Typography
                   component={'span'}
-                  fontSize={'12px'}
+                  fontSize={'13px'}
                   color={'inherit'}
                 >
                   {shortTitle}

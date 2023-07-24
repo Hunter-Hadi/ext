@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import {
   chromeExtensionClientOpenPage,
   getAppContextMenuElement,
@@ -47,7 +47,6 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   const [hover, setHover] = useState(false)
-  const timerRef = useRef<any>(0)
   useEffect(() => {
     if (root) {
       return
@@ -74,24 +73,36 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
           referenceElement={
             <Box
               sx={{
+                zIndex: 2,
                 alignSelf: 'end',
+                position: 'relative',
+                bgcolor: hover ? 'background.paper' : 'transparent',
+                borderRadius: hover ? 0 : '0 14px 14px 0',
+                transition: hover
+                  ? 'background-color 0s ease-out'
+                  : 'background-color 0.1s ease-in-out',
+                width: '34px',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  left: 0,
+                  height: '100%',
+                  bgcolor: 'background.paper',
+                  width: '21px',
+                },
               }}
             >
               <Button
                 onMouseEnter={() => {
-                  clearTimeout(timerRef.current)
                   setHover(true)
                 }}
                 onMouseLeave={() => {
-                  timerRef.current = setTimeout(() => {
-                    setHover(false)
-                  }, 700)
+                  setHover(false)
                 }}
                 size={'small'}
                 variant={'text'}
                 sx={{
-                  width: 32,
-                  height: 32,
+                  padding: '3px 6px',
                   color: 'inherit',
                   minWidth: 'unset',
                   ...sx,
@@ -99,9 +110,50 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               >
                 <ContextMenuIcon
                   icon={'More'}
-                  sx={{ color: 'text.primary', fontSize: 16 }}
+                  sx={{
+                    color: (t: any) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,.87)'
+                        : 'rgba(0,0,0,.6)',
+                    fontSize: '22px',
+                  }}
                 />
               </Button>
+              <FloatingContextMenuTemporaryIconButton
+                ButtonProps={{
+                  onMouseEnter: () => {
+                    setHover(true)
+                  },
+                  onMouseLeave: () => {
+                    setHover(false)
+                  },
+                }}
+                icon={hover ? 'Close' : 'More'}
+                iconSize={22}
+                sx={{
+                  zIndex: 1,
+                  left: hover ? '100%' : 0,
+                  transition: 'left 0.1s ease-in-out',
+                  width: '34px',
+                  height: '28px',
+                  padding: '3px 6px',
+                  borderRadius: '0 14px 14px 0',
+                  right: '-100%',
+                  position: 'absolute',
+                  bgcolor: 'background.paper',
+                  color: (t: any) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgba(255,255,255,.87)'
+                      : 'rgba(0,0,0,.6)',
+                  '&:hover': {
+                    bgcolor: (t: any) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgb(61,61,61)'
+                        : 'rgb(224,224,224)',
+                  },
+                }}
+                placement={placement}
+              />
             </Box>
           }
         >
@@ -370,22 +422,6 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
             icon={'Settings'}
           />
         </DropdownMenu>
-      )}
-      {hover && (
-        <FloatingContextMenuTemporaryIconButton
-          ButtonProps={{
-            onMouseEnter: () => {
-              clearTimeout(timerRef.current)
-              setHover(true)
-            },
-            onMouseLeave: () => {
-              timerRef.current = setTimeout(() => {
-                setHover(false)
-              }, 700)
-            },
-          }}
-          placement={placement}
-        />
       )}
     </AppLoadingLayout>
   )

@@ -14,8 +14,10 @@ const FloatingContextMenuTemporaryIconButton: FC<{
   sx?: SxProps
   placement?: TooltipProps['placement']
   ButtonProps?: Partial<ButtonProps>
+  iconSize?: number
+  icon?: string
 }> = (props) => {
-  const { sx, placement, ButtonProps } = props
+  const { sx, placement, ButtonProps, iconSize = 16, icon = 'Close' } = props
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   return (
@@ -30,8 +32,8 @@ const FloatingContextMenuTemporaryIconButton: FC<{
         sx={{
           width: 32,
           height: 32,
-          color: 'inherit',
           minWidth: 'unset',
+          color: 'text.primary',
           ...sx,
         }}
         onClick={async () => {
@@ -47,8 +49,8 @@ const FloatingContextMenuTemporaryIconButton: FC<{
         {...ButtonProps}
       >
         <ContextMenuIcon
-          icon={'Close'}
-          sx={{ color: 'text.primary', fontSize: 16 }}
+          icon={icon}
+          sx={{ color: 'inherit', fontSize: iconSize }}
         />
       </Button>
     </TextOnlyTooltip>

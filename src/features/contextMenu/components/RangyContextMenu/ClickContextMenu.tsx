@@ -24,6 +24,7 @@ import { useComputedChromeExtensionButtonSettings } from '@/background/utils/but
 import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
 import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
+import Box from '@mui/material/Box'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -143,9 +144,8 @@ const ClickContextMenuButton: FC<{
       component={'div'}
       ref={refs.setFloating}
       sx={{
-        borderRadius: '4px',
-        border: '1px solid',
-        borderColor: 'customColor.borderColor',
+        bgcolor: 'transparent',
+        borderRadius: '14px',
         zIndex: memoShow ? 2147483600 : -1,
         position: strategy,
         opacity: memoShow ? 1 : 0,
@@ -158,64 +158,91 @@ const ClickContextMenuButton: FC<{
         direction={'row'}
         alignItems={'center'}
         sx={{
-          '& > button, > div': {
-            '&:not(:last-child)': {
-              marginRight: '1px',
-              borderRadius: '4px 0 0 4px',
-              boxShadow: (t) =>
-                t.palette.mode === 'dark'
-                  ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
-                  : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+          '& .max-ai__click-menu-button--box': {
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            '&:hover': {
+              '&::after': {
+                display: 'none',
+              },
+            },
+            '& button': {
+              bgcolor: 'background.paper',
+              minWidth: 'unset',
+              padding: '3px 6px!important',
+              boxSizing: 'border-box',
+              borderRadius: '0',
               '&:hover': {
-                boxShadow: (t) =>
+                bgcolor: (t) =>
                   t.palette.mode === 'dark'
-                    ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
-                    : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
+                    ? 'rgb(61,61,61)'
+                    : 'rgb(224,224,224)',
+              },
+            },
+            '&:first-child': {
+              '& button': {
+                borderTopLeftRadius: '14px',
+                borderBottomLeftRadius: '14px',
+                borderTopRightRadius: 0,
+                borderBottomRightRadius: 0,
+              },
+            },
+            '&:not(:last-child)': {
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                right: 0,
+                top: '25%',
+                transform: 'scale(0.5) translateY(-50%)',
+                width: '1px',
+                height: '32px',
+                bgcolor: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgb(61,61,61)'
+                    : 'rgb(224,224,224)',
               },
             },
           },
         }}
       >
-        <TooltipButton
-          TooltipProps={{
-            floatingMenuTooltip: true,
-            placement,
-            description: chatBoxShortCutKey,
-            sx: {
-              maxWidth: 360,
-            },
-          }}
-          title={'Ask AI to edit, summarize, explain, or generate text'}
-          className={'usechatgpt-ai__context-menu--handle-button'}
-          size={'small'}
-          variant={'text'}
-          sx={{
-            minWidth: 'unset',
-            px: '8px!important',
-            height: 32,
-            color: 'inherit',
-          }}
-          onMouseUp={(event) => {
-            event.stopPropagation()
-            event.preventDefault()
-          }}
-          onMouseDown={(event) => {
-            event.stopPropagation()
-            event.preventDefault()
-          }}
-          onClick={(event: any) => {
-            event.stopPropagation()
-            event.preventDefault()
-            tempSelection && showFloatingContextMenu()
-          }}
-        >
-          <UseChatGptIcon
-            sx={{
-              fontSize: '16px',
-              // color: 'inherit',
+        <Box component={'div'} className={'max-ai__click-menu-button--box'}>
+          <TooltipButton
+            TooltipProps={{
+              floatingMenuTooltip: true,
+              placement,
+              description: chatBoxShortCutKey,
+              sx: {
+                maxWidth: 360,
+              },
             }}
-          />
-        </TooltipButton>
+            title={'Ask AI to edit, summarize, explain, or generate text'}
+            className={'usechatgpt-ai__context-menu--handle-button'}
+            size={'small'}
+            variant={'text'}
+            onMouseUp={(event) => {
+              event.stopPropagation()
+              event.preventDefault()
+            }}
+            onMouseDown={(event) => {
+              event.stopPropagation()
+              event.preventDefault()
+            }}
+            onClick={(event: any) => {
+              event.stopPropagation()
+              event.preventDefault()
+              tempSelection && showFloatingContextMenu()
+            }}
+          >
+            <UseChatGptIcon
+              sx={{
+                fontSize: '22px',
+                // color: 'inherit',
+              }}
+            />
+          </TooltipButton>
+        </Box>
         <FavoriteContextMenuGroup
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}

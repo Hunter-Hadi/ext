@@ -9,7 +9,7 @@ interface ITooltipButton extends Omit<ButtonProps, 'title'> {
   TooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
 }
 const TooltipButton: FC<ITooltipButton> = (props) => {
-  const { title, TooltipProps, ...iconButtonProps } = props
+  const { title, sx, TooltipProps, ...iconButtonProps } = props
   return (
     <TextOnlyTooltip
       placement={'top'}
@@ -22,7 +22,7 @@ const TooltipButton: FC<ITooltipButton> = (props) => {
       {...TooltipProps}
     >
       <div>
-        <Button {...iconButtonProps} />
+        <Button sx={{ ...sx }} {...iconButtonProps} />
       </div>
     </TextOnlyTooltip>
   )

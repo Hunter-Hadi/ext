@@ -225,7 +225,7 @@ const GmailActionRunner = () => {
               fontSize={'14px'}
               fontWeight={600}
               textAlign={'left'}
-              color={'text.primary'}
+              color={'rgba(255,255,255,.87)'}
             >
               {permissionCardMemo.title}
             </Typography>
@@ -233,7 +233,7 @@ const GmailActionRunner = () => {
               fontSize={'12px'}
               fontWeight={400}
               textAlign={'left'}
-              color={'text.primary'}
+              color={'rgba(255,255,255,.87)'}
             >
               {permissionCardMemo.description}
             </Typography>

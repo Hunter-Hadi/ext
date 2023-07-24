@@ -177,7 +177,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
               fontSize={'14px'}
               fontWeight={600}
               textAlign={'left'}
-              color={'text.primary'}
+              color={'rgba(255,255,255,.87)'}
             >
               {permissionCard.title}
             </Typography>
@@ -185,7 +185,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
               fontSize={'12px'}
               fontWeight={400}
               textAlign={'left'}
-              color={'text.primary'}
+              color={'rgba(255,255,255,.87)'}
             >
               {permissionCard.description}
             </Typography>
@@ -194,6 +194,8 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                 target={'_blank'}
                 href={permissionCard.ctaButtonLink}
                 onClick={(event) => {
+                  event.preventDefault()
+                  window.open(permissionCard.ctaButtonLink, '_blank')
                   permissionCard.ctaButtonOnClick?.(event)
                   setOpen(false)
                 }}

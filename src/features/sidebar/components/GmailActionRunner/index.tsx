@@ -9,6 +9,7 @@ import { showChatBox, useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
   APP_USE_CHAT_GPT_HOST,
+  CHROME_EXTENSION_HOMEPAGE_URL,
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
@@ -26,6 +27,7 @@ import { PermissionWrapperCardType } from '@/features/auth/components/Permission
 import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
 import { v4 as uuidV4 } from 'uuid'
+import LazyLoadImage from '@/components/LazyloadImage'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {
@@ -99,6 +101,7 @@ const GmailActionRunner = () => {
   const permissionCardMemo = useMemo(() => {
     const isDraftMessageType = messageType !== 'reply'
     return {
+      imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/gmail-cta-button.png`,
       title: isDraftMessageType
         ? 'Upgrade for one-click email drafts'
         : 'Upgrade for one-click email replies',
@@ -198,6 +201,26 @@ const GmailActionRunner = () => {
           }}
         >
           <Stack spacing={1} component="div">
+            {permissionCardMemo.imageUrl && (
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                  '& img': {
+                    width: '100%',
+                    height: 'auto',
+                  },
+                }}
+              >
+                <LazyLoadImage
+                  skeletonHeight={140}
+                  src={permissionCardMemo.imageUrl}
+                  alt={`${permissionCardMemo.title} img`}
+                />
+              </Box>
+            )}
             <Typography
               fontSize={'14px'}
               fontWeight={600}

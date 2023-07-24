@@ -19,6 +19,8 @@ import { getChromeExtensionSettings } from '@/background/utils'
 import { useFocus } from '@/hooks/useFocus'
 import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
+import Divider from '@mui/material/Divider'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
@@ -154,7 +156,27 @@ const ChatGPTStatusWrapper: FC = () => {
                     },
                   }}
                 >
-                  Sign in with Google
+                  Continue with Google
+                </Button>
+              </Link>
+              <Divider sx={{ width: '100%' }}>OR</Divider>
+              <Link
+                href={APP_USE_CHAT_GPT_HOST + '/login-email'}
+                target={'_blank'}
+                sx={{ width: '100%' }}
+              >
+                <Button
+                  fullWidth
+                  startIcon={<ContextMenuIcon icon={'Email'} />}
+                  disableElevation
+                  variant={'contained'}
+                  sx={{
+                    height: 40,
+                    textIndent: '16px',
+                    fontSize: 14,
+                  }}
+                >
+                  Continue with Email
                 </Button>
               </Link>
             </Stack>

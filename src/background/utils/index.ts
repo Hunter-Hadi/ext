@@ -309,12 +309,12 @@ export const backgroundSendAllClientMessage = async (
             data,
           })
         } catch (e) {
-          console.error(
-            'backgroundSendAllClientMessage: \t',
-            e,
-            tab.url,
-            tab.id,
-          )
+          // console.error(
+          //   'backgroundSendAllClientMessage: \t',
+          //   e,
+          //   tab.url,
+          //   tab.id,
+          // )
         }
       }
     }),

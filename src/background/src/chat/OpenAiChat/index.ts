@@ -139,6 +139,7 @@ class OpenAIChat extends BaseChat {
     })
   }
   async preAuth() {
+    debugger
     this.active = true
     // 如果状态 status 不为 needAuth 说明之前的auth已经完成，不需要再次auth
     if (
@@ -265,7 +266,7 @@ class OpenAIChat extends BaseChat {
             {
               name: successFile.fileName,
               url: successFile.uploadedUrl,
-            },
+            } as any,
           ]
           this.chatFiles = []
           console.log('Client_chatUploadFilesChange', this.chatFiles)
@@ -291,6 +292,7 @@ class OpenAIChat extends BaseChat {
         messageId,
       },
     )
+    this.isAnswering = false
     return result.success
   }
   async destroy() {
@@ -386,6 +388,7 @@ class OpenAIChat extends BaseChat {
           })
         }
       }
+      this.isAnswering = false
       this.chatGPTProxyInstance = undefined
       this.cacheLastTimeChatGPTProxyInstance = undefined
       this.status = 'needAuth'

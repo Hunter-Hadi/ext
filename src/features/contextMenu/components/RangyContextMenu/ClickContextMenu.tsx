@@ -159,12 +159,16 @@ const ClickContextMenuButton: FC<{
         alignItems={'center'}
         sx={{
           '& .max-ai__click-menu-button--box': {
+            div: {
+              display: 'flex',
+            },
+            height: '28px',
             position: 'relative',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             '&:hover': {
-              '&::after': {
+              '&:has(button)&::after': {
                 display: 'none',
               },
             },

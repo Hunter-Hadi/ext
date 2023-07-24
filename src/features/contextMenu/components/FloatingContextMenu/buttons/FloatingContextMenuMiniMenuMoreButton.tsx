@@ -76,6 +76,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                 zIndex: 2,
                 alignSelf: 'end',
                 position: 'relative',
+                display: 'flex',
                 bgcolor: hover ? 'background.paper' : 'transparent',
                 borderRadius: hover ? 0 : '0 14px 14px 0',
                 transition: hover
@@ -86,7 +87,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                   content: '""',
                   position: 'absolute',
                   left: 0,
-                  height: '100%',
+                  height: '28px',
                   bgcolor: 'background.paper',
                   width: '21px',
                 },

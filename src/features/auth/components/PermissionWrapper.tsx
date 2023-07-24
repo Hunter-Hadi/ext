@@ -12,7 +12,10 @@ import { ClickAwayListener } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { v4 as uuidV4 } from 'uuid'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import {
+  APP_USE_CHAT_GPT_HOST,
+  CHROME_EXTENSION_HOMEPAGE_URL,
+} from '@/constants'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
@@ -53,7 +56,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
 } = {
   // 自定义prompt
   CUSTOM_PROMPT: {
-    videoUrl: 'https://www.youtube.com/embed/URUQea_AfM4',
+    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/chrome-extension/upgrade/custom-prompt.png`,
     title: 'Upgrade to add unlimited custom prompts',
     description:
       'Use your own prompts to speed up repetitive tasks as you work.',
@@ -61,8 +64,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // 自定义prompt
   CUSTOM_PROMPT_GROUP: {
-    imageUrl:
-      'chrome-extension://ifpoijjcjepjemmhjankdocecgkpffde/assets/USE_CHAT_GPT_AI/images/gmail/gmail-assistant-visible.png',
+    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/chrome-extension/upgrade/custom-prompt-group.png`,
     title: 'Upgrade to add unlimited custom prompt groups',
     description:
       'Organize your prompts for efficient use with custom prompt groups.',
@@ -70,6 +72,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Gmail cta button
   GMAIL_CTA_BUTTON: {
+    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/chrome-extension/upgrade/gmail-cta-button.png`,
     // 新邮件
     title: 'Upgrade for one-click email drafts',
     //邮件回复
@@ -82,6 +85,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Gmail context menu
   GMAIL_CONTEXT_MENU: {
+    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/chrome-extension/upgrade/gmail-context-menu.png`,
     title: 'Upgrade to perfect your draft in one click',
     description:
       'Improve writing, fix spelling & grammar, or change tone instantly with AI.',
@@ -212,6 +216,8 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                   ...child.props,
                   onClick: async (event: any) => {
                     let isAuth = false
+                    event?.stopPropagation?.()
+                    event?.preventDefault?.()
                     if (onPermission) {
                       const { success, cardSettings } = await onPermission(
                         currentUserPlan,
@@ -238,9 +244,6 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                     setOpen(!isAuth)
                     if (isAuth) {
                       child.props?.onClick?.(event)
-                    } else {
-                      event?.stopPropagation?.()
-                      event?.preventDefault?.()
                     }
                   },
                 }

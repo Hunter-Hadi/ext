@@ -6,12 +6,14 @@ import DialogTitle from '@mui/material/DialogTitle'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogActions from '@mui/material/DialogActions'
-import { CleanChatBoxIcon } from '@/components/CustomIcon'
+import { CleanChatBoxIcon, MagicBookIcon } from '@/components/CustomIcon'
 import Box from '@mui/material/Box'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import Link from '@mui/material/Link'
+import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const SidebarChatBoxChatSpeedDial: FC<{
@@ -98,6 +100,34 @@ const SidebarChatBoxChatSpeedDial: FC<{
                 </Stack>
               </TextOnlyTooltip>
             </Box>
+          }
+          tooltipTitle={''}
+        />
+        <SpeedDialAction
+          icon={
+            <Link
+              href={CHROME_EXTENSION_HOMEPAGE_URL + '/prompts'}
+              target={'_blank'}
+              color={'text.secondary'}
+            >
+              <Box
+                component={'div'}
+                onClick={(event) => {
+                  event.stopPropagation()
+                }}
+              >
+                <TextOnlyTooltip placement={'left'} title={'One-click prompts'}>
+                  <Stack
+                    p={1}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    component={'div'}
+                  >
+                    <MagicBookIcon sx={{ fontSize: 16 }} />
+                  </Stack>
+                </TextOnlyTooltip>
+              </Box>
+            </Link>
           }
           tooltipTitle={''}
         />

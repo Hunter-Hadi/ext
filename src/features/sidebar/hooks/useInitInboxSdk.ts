@@ -240,13 +240,18 @@ const useInitInboxSdk = () => {
             const emailElement = composeViewElement.querySelector(
               '[contenteditable="true"]',
             ) as HTMLDivElement
+            const ctaButtonElement = composeViewElement.querySelector(
+              '.usechatgpt-ai__gmail-toolbar-button-group',
+            )
             const range = document.createRange()
             range.selectNodeContents(emailElement)
             setTimeout(() => {
+              console.log(ctaButtonElement)
               window.dispatchEvent(
                 new CustomEvent('ctaButtonClick', {
                   detail: {
                     range: range.cloneRange(),
+                    ctaButtonElement,
                     emailElement,
                   },
                 }),

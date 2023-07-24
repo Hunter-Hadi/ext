@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import {
   IUserCurrentPlan,
   useUserInfo,
@@ -11,29 +11,80 @@ import Box, { BoxProps } from '@mui/material/Box'
 import { ClickAwayListener } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import { v4 as uuidV4 } from 'uuid'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import Button from '@mui/material/Button'
+import Link from '@mui/material/Link'
+import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 
-type PermissionWrapperCardSceneType = 'PROMPT'
-type PermissionWrapperCardType = {
+type PermissionWrapperCardSceneType =
+  | 'CUSTOM_PROMPT'
+  | 'CUSTOM_PROMPT_GROUP'
+  | 'GMAIL_CTA_BUTTON'
+  | 'GMAIL_CONTEXT_MENU'
+
+export type PermissionWrapperCardType = {
+  imageUrl?: string
+  videoUrl?: string
   title: React.ReactNode
   description: React.ReactNode
+  ctaButtonText?: React.ReactNode
+  ctaButtonLink?: string
+  ctaButtonOnClick?: (event: React.MouseEvent) => void
 }
 
 interface PermissionWrapperProps {
   sceneType: PermissionWrapperCardSceneType
   permissions: IUserRoleType[]
-  onPermission?: (currentPlan: IUserCurrentPlan) => Promise<boolean>
+  onPermission?: (
+    currentPlan: IUserCurrentPlan,
+    cardSettings: PermissionWrapperCardType,
+  ) => Promise<{
+    success: boolean
+    cardSettings?: Partial<PermissionWrapperCardType>
+  }>
   children: React.ReactNode
-  TooltipProps?: Omit<TextOnlyTooltipProps, 'title'>
+  TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
   BoxProps?: BoxProps
 }
 
 export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   [key in PermissionWrapperCardSceneType]: PermissionWrapperCardType
 } = {
-  PROMPT: {
-    title: 'Upgrade to add new prompt',
+  // 自定义prompt
+  CUSTOM_PROMPT: {
+    videoUrl: 'https://www.youtube.com/embed/URUQea_AfM4',
+    title: 'Upgrade to add unlimited custom prompts',
     description:
-      'New prompts can now be added with the upgraded version.  Upgrade now to unlock the potential of adding new prompts while maintaining a controlled environment within your workspace.',
+      'Use your own prompts to speed up repetitive tasks as you work.',
+    ctaButtonText: 'Upgrade to Pro',
+  },
+  // 自定义prompt
+  CUSTOM_PROMPT_GROUP: {
+    imageUrl:
+      'chrome-extension://ifpoijjcjepjemmhjankdocecgkpffde/assets/USE_CHAT_GPT_AI/images/gmail/gmail-assistant-visible.png',
+    title: 'Upgrade to add unlimited custom prompt groups',
+    description:
+      'Organize your prompts for efficient use with custom prompt groups.',
+    ctaButtonText: 'Upgrade to Pro',
+  },
+  // Gmail cta button
+  GMAIL_CTA_BUTTON: {
+    // 新邮件
+    title: 'Upgrade for one-click email drafts',
+    //邮件回复
+    // title: 'Upgrade for one-click email replies'
+    // 新邮件
+    description: 'Let AI generate entire email drafts for you in seconds.',
+    // 邮件回复
+    // description:
+    // 'Let AI generate entire email replies for you in seconds.',
+  },
+  // Gmail context menu
+  GMAIL_CONTEXT_MENU: {
+    title: 'Upgrade to perfect your draft in one click',
+    description:
+      'Improve writing, fix spelling & grammar, or change tone instantly with AI.',
   },
 }
 
@@ -46,9 +97,29 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     TooltipProps,
     children,
   } = props
-  const { title, description } = PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType]
+  const [permissionCard, setPermissionCard] =
+    useState<PermissionWrapperCardType>(() => {
+      return {
+        ctaButtonText: 'Upgrade to Pro',
+        ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
+        ...PERMISSION_CARD_SETTINGS_TEMPLATE[
+          sceneType as PermissionWrapperCardSceneType
+        ],
+      }
+    })
   const { currentUserPlan } = useUserInfo()
   const [open, setOpen] = useState(false)
+  const idRef = useRef(uuidV4())
+  useEffect(() => {
+    const listener = (event: any) => {
+      if (event.detail.id === idRef.current) return
+      setOpen(event.detail.open)
+    }
+    window.addEventListener('maxAIPermissionWrapperCustomEvent', listener)
+    return () => {
+      window.removeEventListener('maxAIPermissionWrapperCustomEvent', listener)
+    }
+  }, [])
   if (permissions.find((permission) => permission === currentUserPlan.name)) {
     return <>{children}</>
   }
@@ -56,21 +127,53 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     <TextOnlyTooltip
       arrow
       open={open}
-      sx={{
-        '& > div': {
-          p: 1,
+      PopperProps={{
+        sx: {
+          '& > div': {
+            maxWidth: 320,
+            p: 1,
+          },
         },
       }}
       title={
-        <ClickAwayListener onClickAway={() => setOpen(false)}>
-          <Stack spacing={1}>
+        <ClickAwayListener
+          onClickAway={() => {
+            setOpen(false)
+          }}
+        >
+          <Stack spacing={1} component="div">
+            {permissionCard.videoUrl && (
+              <YoutubePlayerBox
+                borderRadius={4}
+                youtubeLink={permissionCard.videoUrl}
+              />
+            )}
+            {permissionCard.imageUrl && (
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                  '& img': {
+                    width: '100%',
+                    height: 'auto',
+                  },
+                }}
+              >
+                <img
+                  src={permissionCard.imageUrl}
+                  alt={`${permissionCard.title} img`}
+                />
+              </Box>
+            )}
             <Typography
               fontSize={'14px'}
               fontWeight={600}
               textAlign={'left'}
               color={'text.primary'}
             >
-              {title}
+              {permissionCard.title}
             </Typography>
             <Typography
               fontSize={'12px'}
@@ -78,8 +181,22 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
               textAlign={'left'}
               color={'text.primary'}
             >
-              {description}
+              {permissionCard.description}
             </Typography>
+            {permissionCard.ctaButtonText && (
+              <Link
+                target={'_blank'}
+                href={permissionCard.ctaButtonLink}
+                onClick={(event) => {
+                  permissionCard.ctaButtonOnClick?.(event)
+                  setOpen(false)
+                }}
+              >
+                <Button fullWidth variant={'contained'}>
+                  {permissionCard.ctaButtonText}
+                </Button>
+              </Link>
+            )}
           </Stack>
         </ClickAwayListener>
       }
@@ -96,8 +213,28 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                   onClick: async (event: any) => {
                     let isAuth = false
                     if (onPermission) {
-                      isAuth = await onPermission(currentUserPlan)
+                      const { success, cardSettings } = await onPermission(
+                        currentUserPlan,
+                        permissionCard,
+                      )
+                      setPermissionCard({
+                        ...permissionCard,
+                        ...cardSettings,
+                      })
+                      isAuth = success
                     }
+                    // custom event
+                    // 关闭其他的
+                    const customEvent = new CustomEvent(
+                      'maxAIPermissionWrapperCustomEvent',
+                      {
+                        detail: {
+                          id: idRef.current,
+                          open: false,
+                        },
+                      },
+                    )
+                    window.dispatchEvent(customEvent)
                     setOpen(!isAuth)
                     if (isAuth) {
                       child.props?.onClick?.(event)

@@ -31,7 +31,10 @@ const userInitUserInfo = (isInit = true) => {
         data: {},
       })
       if (result.success && result.data?.email) {
-        setUserInfo(result.data)
+        setUserInfo({
+          user: result.data,
+          loading: false,
+        })
         return true
       }
       return false

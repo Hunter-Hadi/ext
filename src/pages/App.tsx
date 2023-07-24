@@ -16,9 +16,6 @@ import Announcement from '@/components/Announcement'
 import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
-const GmailActionRunner = React.lazy(
-  () => import('@/features/sidebar/components/GmailActionRunner'),
-)
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const { visibleWidth, maxWidth, minWidth, setLocalWidth, resizeEnable } =
@@ -120,7 +117,6 @@ const App: FC = () => {
             <ChatBoxHeader />
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>
-                {appState.env === 'gmail' && <GmailActionRunner />}
                 {isOpened && (
                   <Stack flex={1} height={0}>
                     <NormalChatPage />

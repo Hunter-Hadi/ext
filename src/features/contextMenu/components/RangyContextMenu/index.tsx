@@ -9,6 +9,9 @@ import {
   ROOT_CONTEXT_MENU_ID,
 } from '@/constants'
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
+import GmailActionRunner from '@/features/sidebar/components/GmailActionRunner'
+import { useRecoilValue } from 'recoil'
+import { AppState } from '@/store'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 
@@ -27,7 +30,15 @@ const RangyContextMenu = () => {
       </Paper>
       <ClickContextMenu />
       <FloatingShortCutsTip />
+      <GmailActionRunnerBox />
     </Portal>
   )
+}
+const GmailActionRunnerBox = () => {
+  const appState = useRecoilValue(AppState)
+  if (appState.env === 'gmail') {
+    return <GmailActionRunner />
+  }
+  return <></>
 }
 export { RangyContextMenu }

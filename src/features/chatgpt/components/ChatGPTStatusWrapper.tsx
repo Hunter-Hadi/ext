@@ -142,21 +142,34 @@ const ChatGPTStatusWrapper: FC = () => {
               >
                 <Button
                   fullWidth
-                  startIcon={<GoogleIcon />}
                   disableElevation
-                  variant={'outlined'}
+                  variant={'contained'}
                   sx={{
-                    height: 40,
-                    borderColor: 'customColor.borderColor',
-                    color: 'text.secondary',
-                    textIndent: '16px',
+                    height: 48,
+                    color: '#fff',
+                    border: 'none',
+                    bgcolor: '#4285F4',
                     fontSize: 14,
                     '&:hover': {
-                      color: 'text.primary',
+                      bgcolor: '#366dc9',
                     },
                   }}
                 >
-                  Continue with Google
+                  <Stack direction={'row'} spacing={2} alignItems={'center'}>
+                    <Stack
+                      sx={{
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        bgcolor: '#fff',
+                      }}
+                      justifyContent={'center'}
+                      alignItems={'center'}
+                    >
+                      <GoogleIcon sx={{ fontSize: '24px' }} />
+                    </Stack>
+                    <span>Continue with Google</span>
+                  </Stack>
                 </Button>
               </Link>
               <Divider sx={{ width: '100%' }}>OR</Divider>
@@ -167,16 +180,25 @@ const ChatGPTStatusWrapper: FC = () => {
               >
                 <Button
                   fullWidth
-                  startIcon={<ContextMenuIcon icon={'Email'} />}
                   disableElevation
-                  variant={'contained'}
+                  variant={'outlined'}
                   sx={{
-                    height: 40,
+                    height: 48,
                     textIndent: '16px',
                     fontSize: 14,
                   }}
                 >
-                  Continue with Email
+                  <Stack
+                    direction={'row'}
+                    spacing={2}
+                    alignItems={'center'}
+                    sx={{
+                      color: 'primary.main',
+                    }}
+                  >
+                    <ContextMenuIcon icon={'Email'} sx={{ fontSize: '24px' }} />
+                    <span>Continue with Email</span>
+                  </Stack>
                 </Button>
               </Link>
             </Stack>

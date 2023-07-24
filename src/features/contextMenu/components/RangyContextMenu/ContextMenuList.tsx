@@ -16,6 +16,7 @@ import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { FloatingContextMenuGmailCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 // import Browser  from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 
@@ -125,34 +126,65 @@ const ShortCutsButtonItem: FC<{
       onClick={({ event }) => {
         event.stopPropagation()
         event.preventDefault()
-        if (!running) {
-          setRunning(true)
-        }
       }}
       onMouseUp={(event) => {
         event.stopPropagation()
         event.preventDefault()
       }}
     >
-      {menuItem?.data?.icon && (
-        <ContextMenuIcon
-          size={16}
-          icon={menuItem.data.icon}
-          sx={{ color: 'primary.main', mr: 1 }}
-        />
-      )}
-      <Typography
-        fontSize={14}
-        textAlign={'left'}
-        color={'inherit'}
-        sx={{
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
+      <PermissionWrapper
+        TooltipProps={{
+          floatingMenuTooltip: true,
+          placement: 'right',
+        }}
+        permissions={['pro']}
+        sceneType={'GMAIL_CONTEXT_MENU'}
+        BoxProps={{
+          sx: {
+            p: '0',
+            width: '100%',
+            '& > div': {
+              p: 0,
+            },
+          },
         }}
       >
-        {menuItem.text}
-      </Typography>
+        <Stack
+          className={'max-ai__context-menu-item--permission'}
+          direction={'row'}
+          p={'6px'}
+          alignItems={'center'}
+          onClick={(event) => {
+            event.stopPropagation()
+            event.preventDefault()
+            setRunning(true)
+          }}
+          onMouseUp={(event) => {
+            event.stopPropagation()
+            event.preventDefault()
+          }}
+        >
+          {menuItem?.data?.icon && (
+            <ContextMenuIcon
+              size={16}
+              icon={menuItem.data.icon}
+              sx={{ color: 'primary.main', mr: 1 }}
+            />
+          )}
+          <Typography
+            fontSize={14}
+            textAlign={'left'}
+            color={'inherit'}
+            sx={{
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {menuItem.text}
+          </Typography>
+        </Stack>
+      </PermissionWrapper>
     </Item>
   )
 }

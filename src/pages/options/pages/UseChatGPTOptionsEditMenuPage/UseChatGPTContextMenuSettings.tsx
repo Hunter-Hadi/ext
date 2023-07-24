@@ -534,13 +534,18 @@ const ContextMenuSettings: FC<{
       )}
       <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
         <PermissionWrapper
+          TooltipProps={{
+            placement: 'top',
+          }}
           permissions={['pro']}
-          sceneType={'PROMPT'}
+          sceneType={'CUSTOM_PROMPT'}
           onPermission={async () => {
             const userEditablePrompts = originalTreeData.filter((item) => {
               return item.data.editable && item.data.type === 'shortcuts'
             })
-            return userEditablePrompts.length < 1
+            return {
+              success: userEditablePrompts.length < 1,
+            }
           }}
         >
           <Button
@@ -554,13 +559,18 @@ const ContextMenuSettings: FC<{
           </Button>
         </PermissionWrapper>
         <PermissionWrapper
+          TooltipProps={{
+            placement: 'top',
+          }}
           permissions={['pro']}
-          sceneType={'PROMPT'}
+          sceneType={'CUSTOM_PROMPT_GROUP'}
           onPermission={async () => {
             const userEditablePrompts = originalTreeData.filter((item) => {
               return item.data.editable && item.data.type === 'group'
             })
-            return userEditablePrompts.length < 1
+            return {
+              success: userEditablePrompts.length < 1,
+            }
           }}
         >
           <Button

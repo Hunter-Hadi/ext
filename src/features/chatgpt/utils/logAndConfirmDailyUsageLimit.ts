@@ -12,6 +12,7 @@ import {
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import { IAIProviderType } from '@/background/provider/chat'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -29,8 +30,20 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
     try {
       const settings = await getChromeExtensionSettings()
       const provider = settings.chatGPTProvider || 'UNKNOWN_PROVIDER'
+      const beautyQueryMap: {
+        [key in IAIProviderType]: string
+      } = {
+        USE_CHAT_GPT_PLUS: 'chatgpt',
+        OPENAI: 'chatgpt_web_app',
+        OPENAI_API: 'openai_api',
+        BARD: 'bard_web_app',
+        BING: 'bing_web_app',
+        POE: 'poe',
+        CLAUDE: 'claude_web_app',
+      }
       const info_object = {
-        ai_provider: provider,
+        ai_provider:
+          beautyQueryMap[provider as IAIProviderType] || 'UNKNOWN_PROVIDER',
         domain: promptDetail.host,
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,

@@ -8,6 +8,7 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { showChatBox, useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
+  APP_USE_CHAT_GPT_HOST,
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
@@ -15,6 +16,16 @@ import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { useCurrentMessageView } from '@/features/sidebar/hooks'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { ClickAwayListener } from '@mui/material'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import Box from '@mui/material/Box'
+import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper'
+import Link from '@mui/material/Link'
+import Button from '@mui/material/Button'
+import { v4 as uuidV4 } from 'uuid'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {
@@ -22,6 +33,9 @@ const GmailActionRunner = () => {
   const { step } = useRecoilValue(InboxEditState)
   const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   const [run, setRun] = useState(false)
+  const { currentUserPlan } = useUserInfo()
+  const [virtualElement, setVirtualElement] = useState<DOMRect | null>(null)
+  const [popperAnchorEl, setPopperAnchorEl] = useState<HTMLElement | null>(null)
   const { runShortCuts, setShortCuts } = useShortCutsWithMessageChat('')
   const { showFloatingContextMenuWithVirtualElement } = useFloatingContextMenu()
   const showFloatingContextMenuRef = useRef(
@@ -34,8 +48,23 @@ const GmailActionRunner = () => {
 
   useEffect(() => {
     const ctaButtonAction = (event: any) => {
-      console.log(event.detail)
-      // const { emailElement, range } = event.detail || {}
+      const { ctaButtonElement } = event.detail || {}
+      if (currentUserPlan.name === 'free') {
+        const customEvent = new CustomEvent(
+          'maxAIPermissionWrapperCustomEvent',
+          {
+            detail: {
+              id: idRef.current,
+              open: false,
+            },
+          },
+        )
+        window.dispatchEvent(customEvent)
+        const rect = (ctaButtonElement as HTMLElement).getBoundingClientRect()
+        setVirtualElement(rect)
+        setPopperAnchorEl(ctaButtonElement as HTMLElement)
+        return
+      }
       // if (emailElement) {
       //   emailElement.focus()
       //   if (range) {
@@ -65,7 +94,21 @@ const GmailActionRunner = () => {
     return () => {
       window.removeEventListener('ctaButtonClick', ctaButtonAction)
     }
-  }, [])
+  }, [currentUserPlan.name])
+
+  const permissionCardMemo = useMemo(() => {
+    const isDraftMessageType = messageType !== 'reply'
+    return {
+      title: isDraftMessageType
+        ? 'Upgrade for one-click email drafts'
+        : 'Upgrade for one-click email replies',
+      description: isDraftMessageType
+        ? 'Let AI generate entire email drafts for you in seconds.'
+        : 'Let AI generate entire email replies for you in seconds.',
+      ctaButtonText: 'Upgrade to Pro',
+      ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
+    } as PermissionWrapperCardType
+  }, [messageType])
 
   const executeShortCuts = useCallback(async () => {
     const gmailToolBarContextMenu = await getChromeExtensionButtonContextMenu(
@@ -118,7 +161,91 @@ const GmailActionRunner = () => {
       setRun(false)
     }
   }, memoizedDeps)
-
-  return <></>
+  const idRef = useRef(uuidV4())
+  useEffect(() => {
+    const listener = (event: any) => {
+      if (event.detail.id === idRef.current) return
+      setPopperAnchorEl(null)
+      setTimeout(() => {
+        setVirtualElement(null)
+      }, 300)
+    }
+    window.addEventListener('maxAIPermissionWrapperCustomEvent', listener)
+    return () => {
+      window.removeEventListener('maxAIPermissionWrapperCustomEvent', listener)
+    }
+  }, [])
+  return (
+    <TextOnlyTooltip
+      arrow
+      placement={'top'}
+      floatingMenuTooltip
+      PopperProps={{
+        sx: {
+          '& > div': {
+            p: 1,
+          },
+        },
+      }}
+      open={popperAnchorEl !== null}
+      title={
+        <ClickAwayListener
+          onClickAway={() => {
+            setPopperAnchorEl(null)
+            setTimeout(() => {
+              setVirtualElement(null)
+            }, 300)
+          }}
+        >
+          <Stack spacing={1} component="div">
+            <Typography
+              fontSize={'14px'}
+              fontWeight={600}
+              textAlign={'left'}
+              color={'text.primary'}
+            >
+              {permissionCardMemo.title}
+            </Typography>
+            <Typography
+              fontSize={'12px'}
+              fontWeight={400}
+              textAlign={'left'}
+              color={'text.primary'}
+            >
+              {permissionCardMemo.description}
+            </Typography>
+            {permissionCardMemo.ctaButtonText && (
+              <Link
+                target={'_blank'}
+                href={permissionCardMemo.ctaButtonLink}
+                onClick={(event) => {
+                  permissionCardMemo.ctaButtonOnClick?.(event)
+                  setPopperAnchorEl(null)
+                  setTimeout(() => {
+                    setVirtualElement(null)
+                  }, 300)
+                }}
+              >
+                <Button fullWidth variant={'contained'}>
+                  {permissionCardMemo.ctaButtonText}
+                </Button>
+              </Link>
+            )}
+          </Stack>
+        </ClickAwayListener>
+      }
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          top: virtualElement?.top,
+          left: virtualElement?.left,
+          width: virtualElement?.width,
+          height: virtualElement?.height,
+          zIndex: -1,
+        }}
+      ></Box>
+    </TextOnlyTooltip>
+  )
 }
 export default GmailActionRunner

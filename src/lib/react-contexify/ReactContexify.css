@@ -44,6 +44,9 @@
   min-width: var(--contexify-menu-minWidth);
   z-index: var(--contexify-zIndex);
 }
+.contexify_item .contexify_itemContent:has(.max-ai__context-menu-item--permission) {
+  padding: 0;
+}
 .contexify_submenu-isOpen, .contexify_submenu-isOpen > .contexify_itemContent {
   color: var(--contexify-activeItem-color);
   background-color: var(--contexify-activeItem-bgColor);

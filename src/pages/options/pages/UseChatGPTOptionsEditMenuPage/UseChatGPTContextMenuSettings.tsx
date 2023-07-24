@@ -44,6 +44,7 @@ import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
+import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 
 const rootId = 'root'
 
@@ -532,24 +533,46 @@ const ContextMenuSettings: FC<{
         />
       )}
       <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
-        <Button
-          disableElevation
-          variant={'contained'}
-          onClick={addNewMenuItem}
-          disabled={loading}
-          startIcon={<AddIcon />}
+        <PermissionWrapper
+          permissions={['pro']}
+          sceneType={'PROMPT'}
+          onPermission={async () => {
+            const userEditablePrompts = originalTreeData.filter((item) => {
+              return item.data.editable && item.data.type === 'shortcuts'
+            })
+            return userEditablePrompts.length < 1
+          }}
         >
-          New option
-        </Button>
-        <Button
-          disableElevation
-          variant={'contained'}
-          onClick={addNewMenuGroup}
-          disabled={loading}
-          startIcon={<AddIcon />}
+          <Button
+            disableElevation
+            variant={'contained'}
+            onClick={addNewMenuItem}
+            disabled={loading}
+            startIcon={<AddIcon />}
+          >
+            New option
+          </Button>
+        </PermissionWrapper>
+        <PermissionWrapper
+          permissions={['pro']}
+          sceneType={'PROMPT'}
+          onPermission={async () => {
+            const userEditablePrompts = originalTreeData.filter((item) => {
+              return item.data.editable && item.data.type === 'group'
+            })
+            return userEditablePrompts.length < 1
+          }}
         >
-          New option group
-        </Button>
+          <Button
+            disableElevation
+            variant={'contained'}
+            onClick={addNewMenuGroup}
+            disabled={loading}
+            startIcon={<AddIcon />}
+          >
+            New option group
+          </Button>
+        </PermissionWrapper>
         <Button
           disableElevation
           variant={'outlined'}

@@ -6,6 +6,8 @@ import React, { FC } from 'react'
 // import { UseChatGptIcon } from '@/components/CustomIcon'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { GoogleIcon } from '@/components/CustomIcon'
+import Divider from '@mui/material/Divider'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 const UseChatGPTOptionsLoginPage: FC = () => {
   return (
     <Stack
@@ -14,6 +16,7 @@ const UseChatGPTOptionsLoginPage: FC = () => {
         mx: 'auto!important',
         alignItems: 'center',
       }}
+      spacing={2}
     >
       <Stack
         direction={'row'}
@@ -54,7 +57,27 @@ const UseChatGPTOptionsLoginPage: FC = () => {
             },
           }}
         >
-          Sign in with Google
+          Continue with Google
+        </Button>
+      </Link>
+      <Divider sx={{ width: '100%' }}>OR</Divider>
+      <Link
+        href={APP_USE_CHAT_GPT_HOST + '/login-email'}
+        target={'_blank'}
+        sx={{ width: '100%' }}
+      >
+        <Button
+          fullWidth
+          startIcon={<ContextMenuIcon icon={'Email'} />}
+          disableElevation
+          variant={'contained'}
+          sx={{
+            height: 40,
+            textIndent: '16px',
+            fontSize: 14,
+          }}
+        >
+          Continue with Email
         </Button>
       </Link>
     </Stack>

@@ -11,7 +11,6 @@ import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 import LoginLayout from '@/features/auth/components/LoginLayout'
 import { getCurrentDomainHost } from '@/utils'
-import { useFocus } from '@/hooks/useFocus'
 
 const AuthUserRoleIconDropdown: FC = () => {
   const { userInfo, syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
@@ -27,9 +26,6 @@ const AuthUserRoleIconDropdown: FC = () => {
         syncUserSubscriptionInfo().then()
       }
     }
-  })
-  useFocus(() => {
-    syncUserInfo().then()
   })
   const userRoleRef = useRef('')
   const userRole = useMemo(() => {

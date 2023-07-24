@@ -28,6 +28,7 @@ import { Divider } from '@mui/material'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import { RESOURCES_URL } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 
 const log = new Log('AppInit')
 
@@ -394,6 +395,7 @@ const AppInit = () => {
   const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
   useAuthLogin()
+  userInitUserInfo()
   useEffectOnce(() => {
     disabledPDFViewer()
     forceUpdateContextMenuReadOnlyOption().then().catch()

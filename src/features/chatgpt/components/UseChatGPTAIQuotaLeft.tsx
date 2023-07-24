@@ -12,10 +12,7 @@ import Tooltip from '@mui/material/Tooltip'
 import useEffectOnce from '@/hooks/useEffectOnce'
 
 const UseChatGPTAIQuotaLeft: FC = () => {
-  const { loading, quotaLeftText, syncUserInfo } = useUserInfo()
-  useEffectOnce(() => {
-    syncUserInfo()
-  })
+  const { loading, quotaLeftText } = useUserInfo()
   return (
     <Stack spacing={0.5}>
       <Stack direction={'row'} alignItems={'center'} spacing={1}>

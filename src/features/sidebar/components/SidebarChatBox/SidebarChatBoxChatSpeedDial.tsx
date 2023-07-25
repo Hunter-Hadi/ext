@@ -82,29 +82,6 @@ const SidebarChatBoxChatSpeedDial: FC<{
       >
         <SpeedDialAction
           icon={
-            <Box
-              component={'div'}
-              onClick={() => {
-                console.log('restart dialog')
-                setRestartAppDialogVisible(true)
-              }}
-            >
-              <TextOnlyTooltip placement={'left'} title={'Restart extension'}>
-                <Stack
-                  p={1}
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                  component={'div'}
-                >
-                  <ContextMenuIcon icon={'Restart'} />
-                </Stack>
-              </TextOnlyTooltip>
-            </Box>
-          }
-          tooltipTitle={''}
-        />
-        <SpeedDialAction
-          icon={
             <Link
               href={CHROME_EXTENSION_HOMEPAGE_URL + '/prompts'}
               target={'_blank'}
@@ -128,6 +105,29 @@ const SidebarChatBoxChatSpeedDial: FC<{
                 </TextOnlyTooltip>
               </Box>
             </Link>
+          }
+          tooltipTitle={''}
+        />
+        <SpeedDialAction
+          icon={
+            <Box
+              component={'div'}
+              onClick={() => {
+                console.log('restart dialog')
+                setRestartAppDialogVisible(true)
+              }}
+            >
+              <TextOnlyTooltip placement={'left'} title={'Restart extension'}>
+                <Stack
+                  p={1}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  component={'div'}
+                >
+                  <ContextMenuIcon icon={'Restart'} />
+                </Stack>
+              </TextOnlyTooltip>
+            </Box>
           }
           tooltipTitle={''}
         />

@@ -441,6 +441,9 @@ class OpenAIChat extends BaseChat {
         if (isOk) {
           break
         }
+        if (!this.chatGPTProxyInstance?.id) {
+          break
+        }
         Browser.tabs
           .sendMessage(this.chatGPTProxyInstance.id, {
             id: CHROME_EXTENSION_POST_MESSAGE_ID,

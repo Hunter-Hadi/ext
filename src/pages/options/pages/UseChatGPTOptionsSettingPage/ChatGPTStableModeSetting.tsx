@@ -16,6 +16,7 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import BulletList from '@/components/BulletList'
 import { useFocus } from '@/hooks/useFocus'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 
 const useCountDown = (duration: number) => {
   const [timeLeft, setTimeLeft] = useState(duration)
@@ -325,21 +326,41 @@ const MinutesSlider: FC<{
   const { defaultValue, onChange, disabled } = props
   const [value, setValue] = useState<number>(defaultValue || 30)
   return (
-    <Slider
-      valueLabelFormat={(value) => (value > 0 ? `${value} minutes` : '0')}
-      disabled={disabled}
-      sx={{ my: 2 }}
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue as number)
-        onChange && onChange(newValue as number)
+    <PermissionWrapper
+      permissions={['pro']}
+      sceneType={'CUSTOM_PROMPT'}
+      onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
+        if (newValue > 30) {
+          if (value > 30) {
+            // 重置回30分钟
+            setValue(30)
+            onChange && onChange(30)
+          }
+          return {
+            success: false,
+          }
+        }
+        return {
+          success: true,
+        }
       }}
-      valueLabelDisplay="auto"
-      step={30}
-      marks={marks}
-      min={30}
-      max={480}
-    />
+    >
+      <Slider
+        valueLabelFormat={(value) => (value > 0 ? `${value} minutes` : '0')}
+        disabled={disabled}
+        sx={{ my: 2 }}
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue as number)
+          onChange && onChange(newValue as number)
+        }}
+        valueLabelDisplay="auto"
+        step={30}
+        marks={marks}
+        min={30}
+        max={480}
+      />
+    </PermissionWrapper>
   )
 }
 export default ChatGPTStableModeSetting

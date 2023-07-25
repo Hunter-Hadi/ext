@@ -54,7 +54,7 @@ export interface ISystemChatMessage extends IChatMessage {
   parentMessageId?: string
   extra: {
     status?: 'error' | 'success' | 'info'
-    systemMessageType?: 'dailyUsageLimited'
+    systemMessageType?: 'dailyUsageLimited' | 'needUpgrade'
   }
 }
 

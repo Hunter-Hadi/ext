@@ -24,10 +24,16 @@ import {
 } from '@/features/chatgpt/types'
 import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 import { getMediator } from '@/store/InputMediator'
-import { getCurrentDomainHost } from '@/utils'
+import { getCurrentDomainHost, showChatBox } from '@/utils'
 import { getDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import Browser from 'webextension-polyfill'
+import {
+  getPermissionCardSettings,
+  PermissionWrapperCardType,
+} from '@/features/auth/components/PermissionWrapper'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -36,6 +42,7 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
+  const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
   const [conversation, setConversation] = useRecoilState(
@@ -76,6 +83,47 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     },
     options?: IUserChatMessageExtraType,
   ): Promise<{ success: boolean; answer: string; error: string }> => {
+    const host = getCurrentDomainHost()
+    const contextMenu = options?.meta?.contextMenu
+    // 判断是否在特殊页面: PDF\Google Doc，如果是，判断是否是免费用户，如果是，弹出升级卡片
+    if (currentUserPlan.name === 'free' && contextMenu?.id) {
+      const url = new URL(location.href)
+      const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
+      let upgradeCardSetting: PermissionWrapperCardType | null = null
+      if (url.href.includes(PDFViewerHref)) {
+        upgradeCardSetting = getPermissionCardSettings('CUSTOM_PROMPT')
+      }
+      if (upgradeCardSetting) {
+        const { title, description, imageUrl, videoUrl } = upgradeCardSetting
+        const needUpgradeMessage: ISystemChatMessage = {
+          type: 'system',
+          text: '',
+          messageId: uuidV4(),
+          parentMessageId: '',
+          extra: {
+            status: 'error',
+            systemMessageType: 'needUpgrade',
+          },
+        }
+        let markdownText = `**${title}**\n${description}\n\n`
+        if (imageUrl) {
+          markdownText = `![${title}](${imageUrl})\n${markdownText}`
+        } else if (videoUrl) {
+          markdownText = `![${title}](${videoUrl})\n${markdownText}`
+        }
+        needUpgradeMessage.text = markdownText
+        // 展示sidebar
+        showChatBox()
+        setMessages((prevState) => {
+          return [...prevState, needUpgradeMessage]
+        })
+        return {
+          success: false,
+          answer: '',
+          error: '',
+        }
+      }
+    }
     const { question, messageId, parentMessageId } = questionInfo
     const {
       regenerate = false,
@@ -83,11 +131,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       maxHistoryMessageCnt = 0,
     } = options || {}
     if (!question || conversation.loading) {
-      return Promise.resolve({
+      return {
         success: false,
         answer: '',
         error: '',
-      })
+      }
     }
     setConversation((prevState) => {
       return {
@@ -157,8 +205,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     let hasError = false
     let errorMessage = ''
     try {
-      const host = getCurrentDomainHost()
-      const contextMenu = options?.meta?.contextMenu
       // 判断是否触达dailyUsageLimited
       const { data: isDailyUsageLimit } = await port.postMessage({
         event: 'Client_logCallApiRequest',
@@ -250,6 +296,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           onError: (error: any) => {
             hasError = true
             log.info('[ChatGPT Module] send question onerror', error)
+            let isDailyUsageLimit = false
+            if (error.includes('[upgrade to Pro]')) {
+              isDailyUsageLimit = true
+            }
             if (aiRespondingMessage?.messageId) {
               pushMessages.push(aiRespondingMessage)
             }
@@ -284,6 +334,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 text: errorMessage,
                 extra: {
                   status: 'error',
+                  systemMessageType: isDailyUsageLimit
+                    ? 'dailyUsageLimited'
+                    : '',
                 },
               } as ISystemChatMessage)
             }

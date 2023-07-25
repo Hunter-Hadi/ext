@@ -26,7 +26,8 @@ const SidebarChatBoxSystemTools: FC<{
           Retry
         </Button>
       )}
-      {chatMessageType === 'dailyUsageLimited' && (
+      {(chatMessageType === 'dailyUsageLimited' ||
+        chatMessageType === 'needUpgrade') && (
         <Button
           variant={'contained'}
           color={'primary'}

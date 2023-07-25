@@ -143,9 +143,13 @@ export const ClientMessageInit = () => {
                       ? undefined // 由于设置成 normal 会 在当前窗口只有一个tab时导致窗口缩小, 所以设置为 undefined (不改变state)
                       : 'minimized'
                   // get window all tabs
-                  const tabs = await Browser.tabs.query({
+                  let tabs = await Browser.tabs.query({
                     windowId: window.id,
                   })
+                  // 过滤掉new tab
+                  tabs = tabs.filter(
+                    (tab) => tab.url && !/.*:\/\/newtab/.test(tab.url),
+                  )
                   if (tabs.length === 1) {
                     await Browser.windows.update(window.id, {
                       focused: windowFocus,

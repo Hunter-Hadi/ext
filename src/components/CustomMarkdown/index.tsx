@@ -16,6 +16,7 @@ import remarkBreaks from 'remark-breaks'
 import supersub from 'remark-supersub'
 import Highlight from 'react-highlight'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 
 const OverrideAnchor: FC<{
   children: React.ReactNode
@@ -186,6 +187,15 @@ const CustomMarkdown: FC<{
               return (
                 <OverrideCode className={className}>{children}</OverrideCode>
               )
+            },
+            img: ({ node, src, alt, title, ...props }) => {
+              if (src) {
+                // check is YouTube embed url
+                if (src.startsWith('https://www.youtube.com/embed')) {
+                  return <YoutubePlayerBox youtubeLink={src} borderRadius={4} />
+                }
+              }
+              return <img {...{ src, alt, title }} />
             },
           }}
         >

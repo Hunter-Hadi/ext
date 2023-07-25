@@ -487,7 +487,7 @@ const FloatingContextMenu: FC<{
   ])
   useEffect(() => {
     let runActions = cloneDeep(actions)
-    if (!loading && actions.length > 0) {
+    if (actions.length > 0) {
       const lastRecordContextMenu = lastRecordContextMenuRef.current
       if (lastRecordContextMenu) {
         // 更新action的askChatGPT的参数
@@ -551,7 +551,7 @@ const FloatingContextMenu: FC<{
         }
       })
     }
-  }, [actions, loading, isLogin])
+  }, [actions, isLogin])
   useEffect(() => {
     const updateInputValue = (value: string, data: any) => {
       console.log('[ContextMenu Module] updateInputValue', value)

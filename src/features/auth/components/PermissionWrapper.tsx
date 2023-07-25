@@ -26,6 +26,9 @@ type PermissionWrapperCardSceneType =
   | 'CUSTOM_PROMPT_GROUP'
   | 'GMAIL_CTA_BUTTON'
   | 'GMAIL_CONTEXT_MENU'
+  | 'AI_RESPONSE_LANGUAGE'
+  | 'STABLE_MODE'
+  | 'PDF'
 
 export type PermissionWrapperCardType = {
   imageUrl?: string
@@ -43,6 +46,7 @@ interface PermissionWrapperProps {
   onPermission?: (
     currentPlan: IUserCurrentPlan,
     cardSettings: PermissionWrapperCardType,
+    event: any,
   ) => Promise<{
     success: boolean
     cardSettings?: Partial<PermissionWrapperCardType>
@@ -91,6 +95,31 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     description:
       'Improve writing, fix spelling & grammar, or change tone instantly with AI.',
   },
+  // AI response language
+  AI_RESPONSE_LANGUAGE: {
+    title: '',
+    description: '',
+  },
+  // Stable mode
+  STABLE_MODE: {
+    title: '',
+    description: '',
+  },
+  // PDF
+  PDF: {
+    title: '',
+    description: '',
+  },
+}
+
+export const getPermissionCardSettings = (
+  sceneType: PermissionWrapperCardSceneType,
+) => {
+  return {
+    ctaButtonText: 'Upgrade to Pro',
+    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
+    ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
+  }
 }
 
 const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
@@ -104,13 +133,9 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
   } = props
   const [permissionCard, setPermissionCard] =
     useState<PermissionWrapperCardType>(() => {
-      return {
-        ctaButtonText: 'Upgrade to Pro',
-        ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
-        ...PERMISSION_CARD_SETTINGS_TEMPLATE[
-          sceneType as PermissionWrapperCardSceneType
-        ],
-      }
+      return getPermissionCardSettings(
+        sceneType as PermissionWrapperCardSceneType,
+      )
     })
   const { currentUserPlan } = useUserInfo()
   const [open, setOpen] = useState(false)
@@ -142,6 +167,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
       }}
       title={
         <ClickAwayListener
+          mouseEvent={'onMouseDown'}
           onClickAway={() => {
             setOpen(false)
           }}
@@ -218,38 +244,76 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
               if (React.isValidElement(child)) {
                 const newProps = {
                   ...child.props,
-                  onClick: async (event: any) => {
-                    let isAuth = false
-                    event?.stopPropagation?.()
-                    event?.preventDefault?.()
-                    if (onPermission) {
-                      const { success, cardSettings } = await onPermission(
-                        currentUserPlan,
-                        permissionCard,
-                      )
-                      setPermissionCard({
-                        ...permissionCard,
-                        ...cardSettings,
-                      })
-                      isAuth = success
-                    }
-                    // custom event
-                    // 关闭其他的
-                    const customEvent = new CustomEvent(
-                      'maxAIPermissionWrapperCustomEvent',
-                      {
-                        detail: {
-                          id: idRef.current,
-                          open: false,
+                  ...(child.props.onClick && {
+                    onClick: async (event: any, ...args: any[]) => {
+                      let isAuth = false
+                      event?.stopPropagation?.()
+                      event?.preventDefault?.()
+                      if (onPermission) {
+                        const { success, cardSettings } = await onPermission(
+                          currentUserPlan,
+                          permissionCard,
+                          [event, ...args],
+                        )
+                        setPermissionCard({
+                          ...permissionCard,
+                          ...cardSettings,
+                        })
+                        isAuth = success
+                      }
+                      // custom event
+                      // 关闭其他的
+                      const customEvent = new CustomEvent(
+                        'maxAIPermissionWrapperCustomEvent',
+                        {
+                          detail: {
+                            id: idRef.current,
+                            open: false,
+                          },
                         },
-                      },
-                    )
-                    window.dispatchEvent(customEvent)
-                    setOpen(!isAuth)
-                    if (isAuth) {
-                      child.props?.onClick?.(event)
-                    }
-                  },
+                      )
+                      window.dispatchEvent(customEvent)
+                      setOpen(!isAuth)
+                      if (isAuth) {
+                        child.props?.onClick?.(event, ...args)
+                      }
+                    },
+                  }),
+                  ...(child.props.onChange && {
+                    onChange: async (event: any, ...args: any[]) => {
+                      let isAuth = false
+                      event?.stopPropagation?.()
+                      event?.preventDefault?.()
+                      if (onPermission) {
+                        const { success, cardSettings } = await onPermission(
+                          currentUserPlan,
+                          permissionCard,
+                          [event, ...args],
+                        )
+                        setPermissionCard({
+                          ...permissionCard,
+                          ...cardSettings,
+                        })
+                        isAuth = success
+                      }
+                      // custom event
+                      // 关闭其他的
+                      const customEvent = new CustomEvent(
+                        'maxAIPermissionWrapperCustomEvent',
+                        {
+                          detail: {
+                            id: idRef.current,
+                            open: false,
+                          },
+                        },
+                      )
+                      window.dispatchEvent(customEvent)
+                      setOpen(!isAuth)
+                      if (isAuth) {
+                        child.props?.onChange?.(event, ...args)
+                      }
+                    },
+                  }),
                 }
                 return React.cloneElement(child, newProps)
               }

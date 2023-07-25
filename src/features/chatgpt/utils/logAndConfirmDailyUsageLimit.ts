@@ -106,15 +106,22 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve) => {
     try {
-      const cache = await getDailyUsageLimitData()
+      let cache = await getDailyUsageLimitData()
       if (cache) {
         // 说明没有达到限制，可以继续调用
         if (!cache.has_reached_limit) {
           logApiAndConfirmIsLimited().then().catch()
           resolve(false)
         } else {
-          // TODO 校验身份 pro不拦截，但是发larkbot
           // 说明达到限制了
+          // 已经到达了限制，但是普通用户刷新时间到了，就更新
+          if (new Date() > new Date(cache.next_reset_timestamp * 1000)) {
+            await fetchUserSubscriptionInfo()
+            cache = await getDailyUsageLimitData()
+            resolve(cache.has_reached_limit)
+            return
+          }
+          // TODO 校验身份 pro不拦截，但是发larkbot
           const userInfo = await getChromeExtensionUserInfo(false)
           if (userInfo?.role?.name === 'pro') {
             // pro用户不拦截
@@ -134,14 +141,6 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
             return
           }
           resolve(true)
-          // // 调用userSubscription api更新缓存
-          // await fetchUserSubscriptionInfo()
-          // cache = await getDailyUsageLimitData()
-          // if (cache.has_reached_limit) {
-          //   // 说明还是达到限制了
-          //   resolve(true)
-          //   return
-          // }
         }
       } else {
         // 理论上不可能走到这里

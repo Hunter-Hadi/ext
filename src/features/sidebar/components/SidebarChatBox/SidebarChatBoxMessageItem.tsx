@@ -118,19 +118,38 @@ const SidebarChatBoxMessageItem: FC<{
         p: 1,
         ...hoverSx,
       } as SxProps
+    } else {
+      // system message
+      const systemMessage: ISystemChatMessage = message as ISystemChatMessage
+      if (systemMessage?.extra?.systemMessageType === 'needUpgrade') {
+        return {
+          borderRadius: '8px',
+          bgcolor: '#333',
+          '& > div': {
+            maxWidth: 450,
+            bgcolor: '#333',
+            padding: 0,
+            '& *': {
+              color: '#FFFFFF!important',
+            },
+          },
+          ...hoverSx,
+        } as SxProps
+      } else {
+        const border =
+          {
+            info: '1px solid #03a9f4!important',
+            error: '1px solid rgb(239, 83, 80)!important',
+            success: '1px solid #34A853!important',
+          }[message?.extra?.status as 'info'] || '1px solid #03a9f4!important'
+        return {
+          borderRadius: '8px',
+          border,
+          bgcolor: 'background.paper',
+          ...hoverSx,
+        } as SxProps
+      }
     }
-    const border =
-      {
-        info: '1px solid #03a9f4!important',
-        error: '1px solid rgb(239, 83, 80)!important',
-        success: '1px solid #34A853!important',
-      }[message?.extra?.status as 'info'] || '1px solid #03a9f4!important'
-    return {
-      borderRadius: '8px',
-      border,
-      bgcolor: 'background.paper',
-      ...hoverSx,
-    } as SxProps
   }, [message.type, userSettings, isHover])
   useEffect(() => {
     setDefaultText(message.text || '')

@@ -11,7 +11,24 @@ const SidebarChatBoxSystemTools: FC<{
   const { onRetry, message } = props
   const chatMessageType = message.extra.systemMessageType || 'normal'
   return (
-    <Stack direction={'row'} alignItems={'center'}>
+    <Stack direction={'row'} alignItems={'center'} flexWrap={'wrap'} gap={1}>
+      {(chatMessageType === 'dailyUsageLimited' ||
+        chatMessageType === 'needUpgrade') && (
+        <Button
+          fullWidth
+          sx={{
+            height: 48,
+            fontSize: '16px',
+            fontWeight: 500,
+          }}
+          variant={'contained'}
+          color={'primary'}
+          target={'_blank'}
+          href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+        >
+          Upgrade to Pro
+        </Button>
+      )}
       {chatMessageType === 'normal' && message.parentMessageId && (
         <Button
           size={'small'}
@@ -24,17 +41,6 @@ const SidebarChatBoxSystemTools: FC<{
           }}
         >
           Retry
-        </Button>
-      )}
-      {(chatMessageType === 'dailyUsageLimited' ||
-        chatMessageType === 'needUpgrade') && (
-        <Button
-          variant={'contained'}
-          color={'primary'}
-          target={'_blank'}
-          href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
-        >
-          Upgrade to Pro
         </Button>
       )}
     </Stack>

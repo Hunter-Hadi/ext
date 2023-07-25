@@ -92,6 +92,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       let upgradeCardSetting: PermissionWrapperCardType | null = null
       if (url.href.includes(PDFViewerHref)) {
         upgradeCardSetting = getPermissionCardSettings('PDF')
+      } else if (host === 'mail.google.com') {
+        upgradeCardSetting = getPermissionCardSettings('GMAIL_CONTEXT_MENU')
       }
       if (upgradeCardSetting) {
         const { title, description, imageUrl, videoUrl } = upgradeCardSetting
@@ -231,18 +233,18 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           type: 'system',
           messageId: uuidV4(),
           parentMessageId: currentMessageId,
-          text: `You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${formatTimeStampToHoursAndMinutes(
+          text: `![upgrade to pro image](https://www.maxai.me/assets/chrome-extension/upgrade/unlimited-ai-requests.png)You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${formatTimeStampToHoursAndMinutes(
             next_reset_timestamp,
           )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)\n\nIf you've already upgraded, reload the [My Plan](${APP_USE_CHAT_GPT_HOST}/my-plan) page to activate your membership.`,
           extra: {
             status: 'error',
-            systemMessageType: 'dailyUsageLimited',
+            systemMessageType: 'needUpgrade',
           },
         } as ISystemChatMessage)
         return {
           success: false,
           answer: '',
-          error: 'dailyUsageLimited',
+          error: '',
         }
       }
       // 发消息之前记录总数
@@ -296,10 +298,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           onError: (error: any) => {
             hasError = true
             log.info('[ChatGPT Module] send question onerror', error)
-            let isDailyUsageLimit = false
-            if (error.includes('[upgrade to Pro]')) {
-              isDailyUsageLimit = true
-            }
+            let needUpgrade = false
+
             if (aiRespondingMessage?.messageId) {
               pushMessages.push(aiRespondingMessage)
             }
@@ -327,6 +327,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "MaxAI.me" from the AI Provider options at the top of the sidebar.
                 ![switch-provider](https://www.maxai.me/assets/chrome-extension/switch-provider.png)`
               }
+              if (error.includes('[upgrade to Pro]')) {
+                needUpgrade = true
+                errorMessage = `![upgrade to pro image](https://www.maxai.me/assets/chrome-extension/upgrade/unlimited-ai-requests.png)${errorMessage}`
+              }
               pushMessages.push({
                 type: 'system',
                 messageId: uuidV4(),
@@ -334,9 +338,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 text: errorMessage,
                 extra: {
                   status: 'error',
-                  systemMessageType: isDailyUsageLimit
-                    ? 'dailyUsageLimited'
-                    : '',
+                  systemMessageType: needUpgrade ? 'needUpgrade' : '',
                 },
               } as ISystemChatMessage)
             }

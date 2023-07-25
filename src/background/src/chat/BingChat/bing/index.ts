@@ -172,11 +172,10 @@ export class BingWebBot {
           }
           // 触发微软验证码了
           if (errorMessage === 'User needs to solve CAPTCHA to continue.') {
+            const bingChallengeUrl = `\n\nPlease visit [bing.com/turing/captcha/challenge](https://www.bing.com/turing/captcha/challenge), complete any required verifications, then try again.`
             params.onEvent({
               type: 'ERROR',
-              error:
-                errorMessage +
-                `\n\nPlease sign in to [bing.com/turing/captcha/challenge](https://www.bing.com/turing/captcha/challenge), complete any required verifications, then try again.`,
+              error: errorMessage + bingChallengeUrl,
             })
           }
         }

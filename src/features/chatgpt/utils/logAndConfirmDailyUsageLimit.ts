@@ -6,7 +6,10 @@ import { getFingerPrint } from '@/utils/fingerPrint'
 import Browser from 'webextension-polyfill'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { getChromeExtensionUserInfo } from '@/features/auth/utils'
+import {
+  fetchUserSubscriptionInfo,
+  getChromeExtensionUserInfo,
+} from '@/features/auth/utils'
 import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
@@ -76,11 +79,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       if (body.data && body.status === 'OK') {
         console.log('logApiAndConfirmIsLimited api result', body.data)
         // save to local storage
-        await Browser.storage.local.set({
-          [CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY]: JSON.stringify(
-            body.data,
-          ),
-        })
+        await setDailyUsageLimitData(body.data)
         // 更新用户的SubscriptionInfo
         if (body.data.has_reached_limit) {
           getChromeExtensionUserInfo(true).then().catch()
@@ -90,6 +89,16 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       }
       return false
     } catch (e) {
+      if ((e as any)?.message === 'Failed to fetch') {
+        const subscriptionInfo = await fetchUserSubscriptionInfo()
+        if (subscriptionInfo?.name === 'free') {
+          // 说明请求被恶意拦截了
+          const cache = await getDailyUsageLimitData()
+          cache.has_reached_limit = true
+          await setDailyUsageLimitData(cache)
+          return true
+        }
+      }
       console.log('logApiAndConfirmIsLimited error', e)
       return false
     }

@@ -114,13 +114,6 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
           resolve(false)
         } else {
           // 说明达到限制了
-          // 已经到达了限制，但是普通用户刷新时间到了，就更新
-          if (new Date() > new Date(cache.next_reset_timestamp * 1000)) {
-            await fetchUserSubscriptionInfo()
-            cache = await getDailyUsageLimitData()
-            resolve(cache.has_reached_limit)
-            return
-          }
           // TODO 校验身份 pro不拦截，但是发larkbot
           const userInfo = await getChromeExtensionUserInfo(false)
           if (userInfo?.role?.name === 'pro') {
@@ -140,6 +133,14 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
             resolve(false)
             return
           }
+          // 已经到达了限制，但是普通用户刷新时间到了，就更新
+          if (new Date() > new Date(cache.next_reset_timestamp * 1000)) {
+            await fetchUserSubscriptionInfo()
+            cache = await getDailyUsageLimitData()
+            resolve(cache.has_reached_limit)
+            return
+          }
+          // 普通用户，到达了限制，但是还没有到刷新时间，就不更新
           resolve(true)
         }
       } else {

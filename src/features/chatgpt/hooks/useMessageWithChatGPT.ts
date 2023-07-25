@@ -91,7 +91,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
       let upgradeCardSetting: PermissionWrapperCardType | null = null
       if (url.href.includes(PDFViewerHref)) {
-        upgradeCardSetting = getPermissionCardSettings('CUSTOM_PROMPT')
+        upgradeCardSetting = getPermissionCardSettings('PDF')
       }
       if (upgradeCardSetting) {
         const { title, description, imageUrl, videoUrl } = upgradeCardSetting

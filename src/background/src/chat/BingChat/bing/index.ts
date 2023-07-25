@@ -176,7 +176,7 @@ export class BingWebBot {
               type: 'ERROR',
               error:
                 errorMessage +
-                `\n\nPlease sign in to [bing.com](http://bing.com/), complete any required verifications, then try again.`,
+                `\n\nPlease sign in to [bing.com/turing/captcha/challenge](https://www.bing.com/turing/captcha/challenge), complete any required verifications, then try again.`,
             })
           }
         }

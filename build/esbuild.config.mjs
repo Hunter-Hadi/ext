@@ -87,6 +87,11 @@ async function esbuildConfig() {
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
+        source: ['src/rules'],
+        target: `${buildDir}/rules`,
+        copyWithFolder: false,
+      }),
+      copyStaticFilesPlugin({
         source: ['src/pages/options/index.html'],
         target: `${buildDir}/pages/options`,
         copyWithFolder: false,

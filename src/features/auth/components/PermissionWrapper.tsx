@@ -27,7 +27,7 @@ type PermissionWrapperCardSceneType =
   | 'GMAIL_CTA_BUTTON'
   | 'GMAIL_CONTEXT_MENU'
   | 'AI_RESPONSE_LANGUAGE'
-  | 'STABLE_MODE'
+  | 'CHATGPT_STABLE_MODE'
   | 'PDF'
 
 export type PermissionWrapperCardType = {
@@ -97,18 +97,22 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // AI response language
   AI_RESPONSE_LANGUAGE: {
-    title: '',
-    description: '',
+    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/ai-response-language.png`,
+    title: 'Upgrade to change AI response language',
+    description: 'Set AI to always reply in your chosen language.',
   },
-  // Stable mode
-  STABLE_MODE: {
-    title: '',
-    description: '',
+  // ChatGPT Stable mode
+  CHATGPT_STABLE_MODE: {
+    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/chatgpt-stable-mode.png`,
+    title: 'Upgrade to personalize ChatGPT stable mode',
+    description: 'Set how long ChatGPT stable mode stays on after activation.',
   },
   // PDF
   PDF: {
-    title: '',
-    description: '',
+    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/pdf.png`,
+    title: 'Upgrade to elevate your PDF experience with AI',
+    description:
+      'Use AI to summarize, explain, translate, ask questions, and save time.',
   },
 }
 

@@ -32,7 +32,7 @@ export async function createConversation(): Promise<ConversationResponse> {
     })
     if (!resp) {
       throw new Error(
-        `Please sign in to [bing.com](http://bing.com/), complete any required verifications, then try again.`,
+        `Please sign in to [bing.com](https://bing.com/), complete any required verifications, then try again.`,
       )
     }
   }

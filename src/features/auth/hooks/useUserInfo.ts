@@ -45,11 +45,11 @@ const useUserInfo = () => {
   }, [userInfo])
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
     let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
-    if (userInfo?.role?.exp_time) {
+    if (userInfo?.chatgpt_expires_at) {
       // check is pro gift
       if (
         name === 'free' &&
-        new Date(userInfo.role.exp_time).getTime() > new Date().getTime()
+        new Date(userInfo.chatgpt_expires_at).getTime() > new Date().getTime()
       ) {
         name = 'pro_gift'
       }

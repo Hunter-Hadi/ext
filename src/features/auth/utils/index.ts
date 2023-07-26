@@ -33,7 +33,8 @@ export const getChromeExtensionUserInfo = async (
     )
     if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
       let userData =
-        cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]?.userData
+        cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+          ?.userData
       let isUpdated = false
       if (!userData) {
         userData = await fetchUserInfo()
@@ -91,11 +92,15 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             next_reset_timestamp: result.data.next_reset_timestamp,
             usage: result.data.usage,
           })
-          const role = result.data.roles.find(
-            (role: { name: string; exp_time: number }) => role.name === 'pro',
-          ) || {
-            name: 'free',
-            exp_time: 0,
+          let role =
+            result.data.roles.find(
+              (role: { name: string; exp_time: number }) => role.name === 'pro',
+            ) || result.data.roles[0]
+          if (!role) {
+            role = {
+              name: 'free',
+              exp_time: 0,
+            }
           }
           if (role.name === 'pro' && result.data.has_reached_limit) {
             sendLarkBotMessage(

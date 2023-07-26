@@ -1,43 +1,47 @@
 import React from 'react'
 
-export const settingsPageRouterList = [
+export const settingsPageRouterList: Array<{
+  route: string
+  label: string
+  divider?: boolean
+}> = [
   {
     route: '/people',
-    label: 'people',
+    label: 'left_menu__me',
   },
   {
     route: '/my-own-prompts',
-    label: 'my_own_prompts',
+    label: 'left_menu__my_own_prompts',
   },
   {
     route: '/openai-api-key',
-    label: 'openai_api_key',
+    label: 'left_menu__openai_api_key',
     divider: true,
   },
   {
     route: '/shortcut',
-    label: 'shortcut',
+    label: 'left_menu__shortcut',
   },
   {
     route: '/appearance',
-    label: 'appearance',
+    label: 'left_menu__appearance',
   },
   {
     route: '/mini-menu',
-    label: 'mini_menu',
+    label: 'left_menu__mini_menu',
   },
   {
     route: '/language',
-    label: 'languages',
+    label: 'left_menu__languages',
     divider: true,
   },
   {
     route: '/chatgpt-stable-mode',
-    label: 'chatgpt_stable_mode',
+    label: 'left_menu__chatgpt_stable_mode',
   },
   {
     route: '/help',
-    label: 'help',
+    label: 'left_menu__help',
   },
 ]
 

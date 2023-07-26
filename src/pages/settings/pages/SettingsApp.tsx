@@ -7,7 +7,6 @@ import {
   SettingsPageRouteContext,
   setLocationHashRoute,
 } from '@/pages/settings/context'
-import AccountMenu from '@/pages/settings/components/AccountMenu'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
@@ -43,7 +42,10 @@ const SettingsApp: FC = () => {
           direction={'row'}
           alignItems={'center'}
           sx={{
-            borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+            borderBottom: (t) =>
+              t.palette.mode === 'dark'
+                ? '1px solid rgba(255, 255, 255, 0.12)'
+                : '1px solid rgba(0, 0, 0, 0.12)',
             boxSizing: 'border-box',
           }}
         >
@@ -68,7 +70,7 @@ const SettingsApp: FC = () => {
               {/*TODO search bar*/}
             </Stack>
             <Stack direction={'row'} flex={'1 1 0'} justifyContent={'end'}>
-              <AccountMenu />
+              {/*<AccountMenu />*/}
             </Stack>
           </Stack>
         </Stack>
@@ -103,7 +105,7 @@ const SettingsApp: FC = () => {
           </Box>
           {/*content*/}
           <Stack flex={'1 1 0'} flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}>
-            <Stack width={SETTINGS_PAGE_CONTENT_WIDTH} mx={'auto'}>
+            <Stack width={SETTINGS_PAGE_CONTENT_WIDTH} mx={'auto'} pt={2}>
               <AppSuspenseLoadingLayout>
                 <AppLoadingLayout loading={loading}>
                   {route === '/people' && <PeoplePage />}

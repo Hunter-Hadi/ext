@@ -7,7 +7,9 @@ import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useUserInfo } from '@/features/chatgpt'
-
+/**
+ * @deprecated - 新版settings页面不需要了
+ */
 const AccountMenu: FC = () => {
   const { userInfo, loading } = useUserInfo()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)

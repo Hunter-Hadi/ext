@@ -22,6 +22,7 @@ i18n
     resources: {
       en: enResources,
     },
+    defaultNS: ['common', 'settings'],
     fallbackLng: 'en',
     debug: true,
     interpolation: {

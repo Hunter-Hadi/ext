@@ -2,18 +2,21 @@
   "description": "在任何网页上使用ChatGPT、Claude、Bard、Bing的最快方式。支持GPT-4、代码解释器、网络浏览和插件。",
   "name": "MaxAI.me：在任何网页上使用ChatGPT AI",
   "shortName": "MaxAI.me",
+  "common": {
+    "log_out": "登 出"
+  },
   "settings": {
-    "left_menu": {
-      "people": "我和MaxAI",
-      "my_own_prompts": "我的prompt",
-      "openai_api_key": "OpenAI API key",
-      "shortcut": "Shortcut",
-      "appearance": "Appearance",
-      "mini_menu": "Mini Menu",
-      "languages": "Languages",
-      "chatgpt_stable_mode": "ChatGPT Stable Mode",
-      "perks": "Perks",
-      "help": "Help"
-    }
+    "left_menu__me": "我与MaxAI",
+    "left_menu__my_own_prompts": "我的模版",
+    "left_menu__openai_api_key": "OpenAI API key",
+    "left_menu__shortcut": "Shortcut",
+    "left_menu__appearance": "Appearance",
+    "left_menu__mini_menu": "Mini Menu",
+    "left_menu__languages": "Languages",
+    "left_menu__chatgpt_stable_mode": "ChatGPT Stable Mode",
+    "left_menu__perks": "Perks",
+    "left_menu__help": "Help",
+    "feature_card__me__title": "我与MaxAI",
+    "feature_card__me__my_plan": "我的计划"
   }
 }

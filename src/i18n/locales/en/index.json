@@ -2,18 +2,21 @@
   "description": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. Supports GPT-4, Code Interpreter, Web Browsing, Plugins.",
   "name": "MaxAI.me: Use ChatGPT AI Anywhere Online",
   "shortName": "MaxAI.me",
+  "common": {
+    "log_out": "Log out"
+  },
   "settings": {
-    "left_menu": {
-      "people": "Me and MaxAI",
-      "my_own_prompts": "My Own Prompts",
-      "openai_api_key": "OpenAI API key",
-      "shortcut": "Shortcut",
-      "appearance": "Appearance",
-      "mini_menu": "Mini Menu",
-      "languages": "Languages",
-      "chatgpt_stable_mode": "ChatGPT Stable Mode",
-      "perks": "Perks",
-      "help": "Help"
-    }
+    "left_menu__me": "Me and MaxAI",
+    "left_menu__my_own_prompts": "My Own Prompts",
+    "left_menu__openai_api_key": "OpenAI API key",
+    "left_menu__shortcut": "Shortcut",
+    "left_menu__appearance": "Appearance",
+    "left_menu__mini_menu": "Mini Menu",
+    "left_menu__languages": "Languages",
+    "left_menu__chatgpt_stable_mode": "ChatGPT Stable Mode",
+    "left_menu__perks": "Perks",
+    "left_menu__help": "Help",
+    "feature_card__me__title": "Me and MaxAI",
+    "feature_card__me__my_plan": "My plan"
   }
 }

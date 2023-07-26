@@ -13,9 +13,7 @@ import { useTranslation } from 'react-i18next'
 const OptionsLeftMenu: FC<{
   sx?: SxProps
 }> = (props) => {
-  const { t } = useTranslation(['settings'], {
-    keyPrefix: 'left_menu',
-  })
+  const { t } = useTranslation('settings')
   const { route, setRoute } = useContext(SettingsPageRouteContext)
   const { sx } = props
   return (
@@ -32,7 +30,7 @@ const OptionsLeftMenu: FC<{
                 setRoute(menuItem.route)
               }}
             >
-              <ListItemText primary={t(menuItem.label)} />
+              <ListItemText primary={t(menuItem.label as any)} />
             </ListItemButton>
             {menuItem.divider && <Divider sx={{ my: 1 }} />}
           </React.Fragment>

@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl'
 import Switch from '@mui/material/Switch'
 import BulletList from '@/components/BulletList'
 import CloseAlert from '@/components/CloseAlert'
-import { PDFTooltip } from '@/pages/options/components/tooltipCollection'
+import { PDFTooltip } from '@/pages/settings/components/tooltipCollection'
 
 const PDFSettings: FC<{
   defaultValue?: {

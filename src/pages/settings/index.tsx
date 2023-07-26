@@ -1,19 +1,20 @@
 import React from 'react'
-import EzMailOptionsPage from '@/pages/options/pages/EzMailOptionsPage'
-import UseChatGPTOptionsPage from '@/pages/options/pages/UseChatGPTOptionsPage'
 import CssBaseline from '@mui/material/CssBaseline'
 import { createRoot } from 'react-dom/client'
 import AppThemeProvider from '@/components/AppTheme'
 import { RecoilRoot } from 'recoil'
 import OptionPagesInit from '@/utils/OptionPagesInit'
-import { isEzMailApp } from '@/constants'
+import SettingsApp from '@/pages/settings/pages/SettingsApp'
+import { SnackbarProvider } from 'notistack'
+// init i18n
+import '@/utils/i18n'
 
 const rootElement = document.getElementById('root')
 
 if (rootElement) {
   const root = createRoot(rootElement)
 
-  document.title = isEzMailApp ? `Settings | EzMail.AI` : `Settings | MaxAI.me`
+  document.title = `Settings | MaxAI.me`
 
   root.render(
     <React.StrictMode>
@@ -21,7 +22,9 @@ if (rootElement) {
         <AppThemeProvider>
           <OptionPagesInit />
           <CssBaseline />
-          {isEzMailApp ? <EzMailOptionsPage /> : <UseChatGPTOptionsPage />}
+          <SnackbarProvider maxSnack={3}>
+            <SettingsApp />
+          </SnackbarProvider>
         </AppThemeProvider>
       </RecoilRoot>
     </React.StrictMode>,

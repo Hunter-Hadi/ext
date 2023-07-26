@@ -51,6 +51,7 @@ import FormatAlignLeftOutlinedIcon from '@mui/icons-material/FormatAlignLeftOutl
 import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined'
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -112,6 +113,7 @@ export const CONTEXT_MENU_ICONS = [
   'Empty',
   'AddCircle',
   'InsertDriveFile',
+  'Menu',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -282,6 +284,8 @@ const ContextMenuIcon: FC<{
           }}
         ></Box>
       )
+    case 'Menu':
+      return <MenuOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

@@ -480,7 +480,7 @@ export const createChromeExtensionOptionsPage = async (
 ) => {
   const chromeExtensionId = Browser.runtime.id
   const findOptionPages = await Browser.tabs.query({
-    url: `chrome-extension://${chromeExtensionId}/pages/options/index.html`,
+    url: `chrome-extension://${chromeExtensionId}/pages/settings/index.html`,
   })
   // close old pages
   await Promise.all(
@@ -491,7 +491,7 @@ export const createChromeExtensionOptionsPage = async (
     }),
   )
   await Browser.tabs.create({
-    url: `chrome-extension://${chromeExtensionId}/pages/options/index.html${query}`,
+    url: `chrome-extension://${chromeExtensionId}/pages/settings/index.html${query}`,
     active: autoFocus,
   })
 }

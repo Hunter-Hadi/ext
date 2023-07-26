@@ -20,7 +20,7 @@ import PopperWrapper from '@/components/PopperWrapper'
 import { Card } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import HowToFindSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
+import HowToFindSettings from '@/pages/settings/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
 import {
   ContextMenuSettingsState,
   FloatingDropdownMenuState,

@@ -16,16 +16,16 @@ import {
   MultiBackend,
 } from '@minoru/react-dnd-treeview'
 import { DndProvider } from 'react-dnd'
-import ContextMenuItem from '@/pages/options/components/ContextMenuItem'
+import ContextMenuItem from '@/pages/settings/components/ContextMenuItem'
 import { v4 } from 'uuid'
-// import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
-import ContextMenuPlaceholder from '@/pages/options/components/ContextMenuPlaceholder'
-import ContextMenuViewSource from '@/pages/options/components/ContextMenuViewSource'
+// import ContextMenuViewSource from '@/pages/settings/components/ContextMenuViewSource'
+import ContextMenuPlaceholder from '@/pages/settings/components/ContextMenuPlaceholder'
+import ContextMenuViewSource from '@/pages/settings/components/ContextMenuViewSource'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
-} from '@/pages/options/components/ContextMenuActionConfirmModal'
+} from '@/pages/settings/components/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
-import ContextMenuMockTextarea from '@/pages/options/components/ContextMenuMockTextarea'
+import ContextMenuMockTextarea from '@/pages/settings/components/ContextMenuMockTextarea'
 import DevContent from '@/components/DevContent'
 import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
 import AddIcon from '@mui/icons-material/Add'
@@ -38,7 +38,7 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import BulletList from '@/components/BulletList'
-import ContextMenuEditFormModal from '@/pages/options/components/ContextMenuEditFormModal'
+import ContextMenuEditFormModal from '@/pages/settings/components/ContextMenuEditFormModal'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import {
   IContextMenuItem,

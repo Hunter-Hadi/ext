@@ -1,4 +1,4 @@
-import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
+import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
 import React, { FC, useCallback, useContext, useRef, useState } from 'react'
 
 import Alert from '@mui/material/Alert'
@@ -12,7 +12,7 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
-import { OptionsPageRouteContext } from '@/pages/options/context'
+import { SettingsPageRouteContext } from '@/pages/settings/context'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
@@ -29,7 +29,7 @@ const SyncSettingCheckerWrapper: FC<{
     localSettingsCacheRef,
   } = useSyncSettingsChecker()
   const [loaded, setLoaded] = useState(false)
-  const routerContext = useContext(OptionsPageRouteContext)
+  const routerContext = useContext(SettingsPageRouteContext)
   const isSpecialCaseRef = useRef(true)
   const onlyOnceTimesSaveLocalSettings = useCallback(async () => {
     // 特殊情况处理:

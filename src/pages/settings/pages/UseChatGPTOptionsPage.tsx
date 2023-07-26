@@ -8,19 +8,19 @@ import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { SnackbarProvider } from 'notistack'
 import { useAuthLogin } from '@/features/auth/hooks'
-import AccountMenu from '@/pages/options/components/AccountMenu'
-import { OptionsPageRouteContext } from '@/pages/options/context'
+import AccountMenu from '@/pages/settings/components/AccountMenu'
+import { SettingsPageRouteContext } from '@/pages/settings/context'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
 const UseChatGPTOptionsLoginPage = React.lazy(
-  () => import('@/pages/options/pages/UseChatGPTOptionsLoginPage'),
+  () => import('@/pages/settings/pages/UseChatGPTOptionsLoginPage'),
 )
 const UseChatGPTOptionsSettingPage = React.lazy(
-  () => import('@/pages/options/pages/UseChatGPTOptionsSettingPage'),
+  () => import('@/pages/settings/pages/UseChatGPTOptionsSettingPage'),
 )
 const UseChatGPTOptionsEditMenuPage = React.lazy(
-  () => import('@/pages/options/pages/UseChatGPTOptionsEditMenuPage'),
+  () => import('@/pages/settings/pages/UseChatGPTOptionsEditMenuPage'),
 )
 
 const UseChatGPTOptionsPage = () => {
@@ -96,7 +96,7 @@ const UseChatGPTOptionsPage = () => {
       }}
     >
       <SnackbarProvider maxSnack={3}>
-        <OptionsPageRouteContext.Provider value={{ route, setRoute }}>
+        <SettingsPageRouteContext.Provider value={{ route, setRoute }}>
           <Box
             sx={{
               width: '100%',
@@ -173,7 +173,7 @@ const UseChatGPTOptionsPage = () => {
               </AppLoadingLayout>
             </AppSuspenseLoadingLayout>
           </Container>
-        </OptionsPageRouteContext.Provider>
+        </SettingsPageRouteContext.Provider>
       </SnackbarProvider>
     </Stack>
   )

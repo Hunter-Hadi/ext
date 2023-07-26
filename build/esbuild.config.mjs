@@ -45,7 +45,7 @@ async function esbuildConfig() {
       'src/background.ts',
       'src/check_status.ts',
       'src/iframe.tsx',
-      'src/pages/options/index.tsx',
+      'src/pages/settings/index.tsx',
       'src/pages/popup/index.tsx',
       'src/pages/chatgpt/fileUploadServer.ts'
     ],
@@ -92,8 +92,8 @@ async function esbuildConfig() {
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
-        source: ['src/pages/options/index.html'],
-        target: `${buildDir}/pages/options`,
+        source: ['src/pages/settings/index.html'],
+        target: `${buildDir}/pages/settings`,
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
@@ -104,6 +104,11 @@ async function esbuildConfig() {
       copyStaticFilesPlugin({
         source: ['node_modules/@inboxsdk/core/pageWorld.js'],
         target: `${buildDir}`,
+        copyWithFolder: false,
+      }),
+      copyStaticFilesPlugin({
+        source: ['src/i18n/locales'],
+        target: `${buildDir}/i18n/locales`,
         copyWithFolder: false,
       }),
     ].concat(

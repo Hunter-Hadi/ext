@@ -19,6 +19,7 @@ import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 // import Browser  from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
+import { contextMenu } from 'react-contexify'
 
 const ContextMenuContext = React.createContext<{
   staticButton?: boolean
@@ -158,6 +159,7 @@ const ShortCutsButtonItem: FC<{
             event.stopPropagation()
             event.preventDefault()
             setRunning(true)
+            contextMenu.hideAll()
           }}
           onMouseUp={(event) => {
             event.stopPropagation()

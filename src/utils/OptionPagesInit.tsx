@@ -4,10 +4,12 @@ import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { getChromeExtensionSettings } from '@/background/utils'
 import { useLazyLoadI18nResources } from '@/utils/i18n'
+import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 
 const OptionPagesInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
   useLazyLoadI18nResources()
+  userInitUserInfo()
   useEffect(() => {
     const updateSettings = async () => {
       const settings = await getChromeExtensionSettings()

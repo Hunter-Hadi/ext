@@ -44,8 +44,16 @@ const useUserInfo = () => {
     return 0
   }, [userInfo])
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
-    const name: IUserRoleType =
-      userInfo?.role?.name || ('free' as IUserRoleType)
+    let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
+    if (userInfo?.chatgpt_expires_at) {
+      // check is pro gift
+      if (
+        name === 'free' &&
+        new Date(userInfo.chatgpt_expires_at).getTime() > new Date().getTime()
+      ) {
+        name = 'pro_gift'
+      }
+    }
     return {
       name,
     }

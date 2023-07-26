@@ -16,7 +16,8 @@ import Browser from 'webextension-polyfill'
 export const SETTINGS_PAGE_MENU_WIDTH = 250
 export const SETTINGS_PAGE_CONTENT_WIDTH = 800
 
-const PeoplePage = React.lazy(() => import('@/pages/settings/pages/people'))
+const SettingsMePage = React.lazy(() => import('@/pages/settings/pages/me'))
+const SettingsHelpPage = React.lazy(() => import('@/pages/settings/pages/help'))
 
 const SettingsApp: FC = () => {
   const { loading } = useAuthLogin()
@@ -108,7 +109,8 @@ const SettingsApp: FC = () => {
             <Stack width={SETTINGS_PAGE_CONTENT_WIDTH} mx={'auto'} pt={2}>
               <AppSuspenseLoadingLayout>
                 <AppLoadingLayout loading={loading}>
-                  {route === '/people' && <PeoplePage />}
+                  {route === '/people' && <SettingsMePage />}
+                  {route === '/help' && <SettingsHelpPage />}
                 </AppLoadingLayout>
               </AppSuspenseLoadingLayout>
             </Stack>

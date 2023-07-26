@@ -12,7 +12,8 @@ import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined'
 import Divider from '@mui/material/Divider'
-const SettingsPeoplePage: FC = () => {
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+const SettingsMePage: FC = () => {
   const { t, i18n } = useTranslation(['common', 'settings'])
   const { userInfo } = useUserInfo()
   return (
@@ -43,6 +44,9 @@ const SettingsPeoplePage: FC = () => {
             </ListItemIcon>
             <ListItemText primary={userInfo?.email || ''} />
             <Button
+              component={'a'}
+              target={'_blank'}
+              href={`${APP_USE_CHAT_GPT_HOST}/logout`}
               sx={{
                 border: '1px solid #e0e0e0',
                 '&:hover': {
@@ -58,7 +62,12 @@ const SettingsPeoplePage: FC = () => {
           <Divider />
           <ListItem
             secondaryAction={
-              <IconButton edge={'end'}>
+              <IconButton
+                component={'a'}
+                target={'_blank'}
+                href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
+                edge={'end'}
+              >
                 <ChevronRightOutlinedIcon
                   sx={{
                     fontSize: '24px',
@@ -83,4 +92,4 @@ const SettingsPeoplePage: FC = () => {
     </Stack>
   )
 }
-export default SettingsPeoplePage
+export default SettingsMePage

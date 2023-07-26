@@ -1,4 +1,4 @@
-export type IUserRoleType = 'free' | 'pro'
+export type IUserRoleType = 'free' | 'pro' | 'pro_gift'
 
 export type IUserRole = {
   name: IUserRoleType

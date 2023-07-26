@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useRef } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import IconDropdown from '@/components/IconDropdown'
@@ -13,7 +13,8 @@ import LoginLayout from '@/features/auth/components/LoginLayout'
 import { getCurrentDomainHost } from '@/utils'
 
 const AuthUserRoleIconDropdown: FC = () => {
-  const { userInfo, syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
+  const { currentUserPlan, syncUserInfo, syncUserSubscriptionInfo } =
+    useUserInfo()
   useEffectOnce(() => {
     syncUserInfo().then()
     if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
@@ -27,15 +28,9 @@ const AuthUserRoleIconDropdown: FC = () => {
       }
     }
   })
-  const userRoleRef = useRef('')
   const userRole = useMemo(() => {
-    let role = 'free'
-    if (userInfo && userInfo.role?.name === 'pro') {
-      role = 'pro'
-    }
-    userRoleRef.current = role
-    return role
-  }, [userInfo])
+    return currentUserPlan.name
+  }, [currentUserPlan])
   const MemoIcon = useMemo(() => {
     if (userRole === 'pro') {
       return (
@@ -63,7 +58,7 @@ const AuthUserRoleIconDropdown: FC = () => {
   return (
     <LoginLayout>
       {userRole === 'pro' && MemoIcon}
-      {userRole === 'free' && (
+      {(userRole === 'free' || userRole === 'pro_gift') && (
         <IconDropdown icon={MemoIcon}>
           <Stack maxWidth={400}>
             <Link

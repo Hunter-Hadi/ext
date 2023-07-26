@@ -537,7 +537,7 @@ const ContextMenuSettings: FC<{
           TooltipProps={{
             placement: 'top',
           }}
-          permissions={['pro']}
+          permissions={['pro', 'pro_gift']}
           sceneType={'CUSTOM_PROMPT'}
           onPermission={async () => {
             const userEditablePrompts = originalTreeData.filter((item) => {
@@ -562,7 +562,7 @@ const ContextMenuSettings: FC<{
           TooltipProps={{
             placement: 'top',
           }}
-          permissions={['pro']}
+          permissions={['pro', 'pro_gift']}
           sceneType={'CUSTOM_PROMPT_GROUP'}
           onPermission={async () => {
             const userEditablePrompts = originalTreeData.filter((item) => {

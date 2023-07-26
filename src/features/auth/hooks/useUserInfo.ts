@@ -44,8 +44,16 @@ const useUserInfo = () => {
     return 0
   }, [userInfo])
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
-    const name: IUserRoleType =
-      userInfo?.role?.name || ('free' as IUserRoleType)
+    let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
+    if (userInfo?.role?.exp_time) {
+      // check is pro gift
+      if (
+        name === 'free' &&
+        new Date(userInfo.role.exp_time).getTime() > new Date().getTime()
+      ) {
+        name = 'pro_gift'
+      }
+    }
     return {
       name,
     }

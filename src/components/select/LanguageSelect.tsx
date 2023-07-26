@@ -43,7 +43,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
   return (
     <PermissionWrapper
       sceneType={'AI_RESPONSE_LANGUAGE'}
-      permissions={['pro']}
+      permissions={['pro', 'pro_gift']}
       onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
         if (newValue.value !== DEFAULT_AI_OUTPUT_LANGUAGE_VALUE) {
           // 重置回默认语言

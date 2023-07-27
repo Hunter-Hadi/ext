@@ -345,11 +345,13 @@ const developmentHotReload = () => {
     const ws = new WebSocket('ws://localhost:8181')
     ws.addEventListener('message', (event) => {
       if (event.data === 'hot_reload_message') {
-        backgroundRestartChromeExtension().then(async () => {
-          await Browser.tabs.create({
-            url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html`,
-            active: true,
-          })
+        backgroundRestartChromeExtension().then(() => {
+          setTimeout(async () => {
+            await Browser.tabs.create({
+              url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html`,
+              active: true,
+            })
+          }, 1000)
         })
       }
     })

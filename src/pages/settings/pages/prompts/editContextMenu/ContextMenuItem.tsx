@@ -8,7 +8,7 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import ContextMenuItemPreviewTooltip from '@/pages/settings/components/ContextMenuItemPreviewTooltip'
+import ContextMenuItemPreviewTooltip from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuItemPreviewTooltip'
 const ContextMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean

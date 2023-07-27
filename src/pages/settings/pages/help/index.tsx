@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import SettingsCardLayout from '@/pages/settings/layout/SettingsCardLayout'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import React, { FC } from 'react'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import Typography from '@mui/material/Typography'
@@ -9,7 +9,7 @@ import { OpenInNewOutlined } from '@mui/icons-material'
 const SettingsHelpPage: FC = () => {
   const { t } = useTranslation('settings')
   return (
-    <SettingsCardLayout
+    <SettingsFeatureCardLayout
       title={t('feature_card__set_up__title')}
       id={'how-to-set-up'}
     >
@@ -32,7 +32,7 @@ const SettingsHelpPage: FC = () => {
         </Typography>
         <OpenInNewOutlined sx={{ fontSize: 20 }} />
       </Link>
-    </SettingsCardLayout>
+    </SettingsFeatureCardLayout>
   )
 }
 export default SettingsHelpPage

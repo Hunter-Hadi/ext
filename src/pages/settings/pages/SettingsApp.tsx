@@ -6,22 +6,59 @@ import {
   getLocationHashRoute,
   SettingsPageRouteContext,
   setLocationHashRoute,
+  ISettingsRouteType,
 } from '@/pages/settings/context'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
 import Browser from 'webextension-polyfill'
+import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
+import PageHelp from '@/pages/settings/components/pageHelp'
+import Button from '@mui/material/Button'
+import { useTranslation } from 'react-i18next'
 
-export const SETTINGS_PAGE_MENU_WIDTH = 250
-export const SETTINGS_PAGE_CONTENT_WIDTH = 800
+export const SETTINGS_PAGE_MENU_WIDTH = {
+  xs: 250,
+  sm: 250,
+  md: 250,
+  lg: 250,
+  xl: 250,
+}
+
+export const SETTINGS_PAGE_CONTENT_WIDTH = {
+  xs: 400,
+  sm: 680,
+  md: 800,
+  lg: 680,
+  xl: 800,
+}
 
 const SettingsMePage = React.lazy(() => import('@/pages/settings/pages/me'))
 const SettingsHelpPage = React.lazy(() => import('@/pages/settings/pages/help'))
+const SettingsMyOwnPromptsPage = React.lazy(
+  () => import('@/pages/settings/pages/prompts'),
+)
+const SettingsOpenaiAPIKeyPage = React.lazy(
+  () => import('@/pages/settings/pages/openai_api_key'),
+)
 
+const SettingsShortcutPage = React.lazy(
+  () => import('@/pages/settings/pages/shortcut'),
+)
+const SettingsAppearancePage = React.lazy(
+  () => import('@/pages/settings/pages/appearance'),
+)
+const SettingsMiniMenuPage = React.lazy(
+  () => import('@/pages/settings/pages/mini_menu'),
+)
 const SettingsApp: FC = () => {
+  const { i18n } = useTranslation()
   const { loading } = useAuthLogin()
-  const [route, setRoute] = useState(() => getLocationHashRoute())
+  const [route, setRoute] = useState<ISettingsRouteType>(() =>
+    getLocationHashRoute(),
+  )
+
   useEffect(() => {
     if (route) {
       if (getLocationHashRoute() !== route) {
@@ -69,9 +106,17 @@ const SettingsApp: FC = () => {
               flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}
             >
               {/*TODO search bar*/}
+              <Button
+                onClick={async () => {
+                  await i18n.changeLanguage('zh_CN')
+                }}
+              >
+                change language
+              </Button>
             </Stack>
             <Stack direction={'row'} flex={'1 1 0'} justifyContent={'end'}>
               {/*<AccountMenu />*/}
+              <PageHelp drawerMode defaultOpen />
             </Stack>
           </Stack>
         </Stack>
@@ -86,41 +131,67 @@ const SettingsApp: FC = () => {
           width={'100%'}
           px={2}
         >
-          {/*left menu*/}
-          <Box
-            flex={'1 1 0'}
-            sx={{
-              justifyContent: 'end',
-              height: '100%',
-              position: 'sticky',
-              top: 0,
-              display: {
-                xs: 'none',
-                md: 'flex',
-              },
-            }}
-          >
-            <Stack direction={'row'}>
-              <OptionsLeftMenu sx={{ width: SETTINGS_PAGE_MENU_WIDTH }} />
-            </Stack>
-          </Box>
-          {/*content*/}
-          <Stack flex={'1 1 0'} flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}>
-            <Stack width={SETTINGS_PAGE_CONTENT_WIDTH} mx={'auto'} pt={2}>
-              <AppSuspenseLoadingLayout>
-                <AppLoadingLayout loading={loading}>
-                  {route === '/people' && <SettingsMePage />}
-                  {route === '/help' && <SettingsHelpPage />}
-                </AppLoadingLayout>
-              </AppSuspenseLoadingLayout>
-            </Stack>
-          </Stack>
-          {/*right*/}
-          <Stack
-            direction={'row'}
-            flex={'1 1 0'}
-            justifyContent={'start'}
-          ></Stack>
+          <AppSuspenseLoadingLayout>
+            <AppLoadingLayout loading={loading}>
+              <SyncSettingCheckerWrapper>
+                {/*left menu*/}
+                <Box
+                  flex={'1 1 0'}
+                  sx={{
+                    justifyContent: 'end',
+                    height: '100%',
+                    position: 'sticky',
+                    top: 0,
+                    display: {
+                      xs: 'none',
+                      md: 'flex',
+                    },
+                  }}
+                >
+                  <Stack direction={'row'}>
+                    <OptionsLeftMenu sx={{ width: SETTINGS_PAGE_MENU_WIDTH }} />
+                  </Stack>
+                </Box>
+                {/*content*/}
+                <Stack
+                  flex={'1 1 0'}
+                  flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}
+                  sx={{ maxHeight: 'calc(100vh - 56px)', overflowY: 'auto' }}
+                >
+                  <Stack width={SETTINGS_PAGE_CONTENT_WIDTH} mx={'auto'} pt={2}>
+                    {route === '/me' && <SettingsMePage />}
+                    {route === '/help' && <SettingsHelpPage />}
+                    {route === '/my-own-prompts' && (
+                      <SettingsMyOwnPromptsPage />
+                    )}
+                    {route === '/openai-api-key' && (
+                      <SettingsOpenaiAPIKeyPage />
+                    )}
+                    {route === '/shortcut' && <SettingsShortcutPage />}
+                    {route === '/appearance' && <SettingsAppearancePage />}
+                    {route === '/mini-menu' && <SettingsMiniMenuPage />}
+                  </Stack>
+                </Stack>
+                {/*right*/}
+                <Stack
+                  direction={'row'}
+                  flex={'1 1 0'}
+                  justifyContent={'start'}
+                  sx={{
+                    pt: 2,
+                    display: {
+                      xs: 'none',
+                      lg: 'flex',
+                    },
+                  }}
+                >
+                  <Stack width={SETTINGS_PAGE_MENU_WIDTH}>
+                    <PageHelp defaultOpen />
+                  </Stack>
+                </Stack>
+              </SyncSettingCheckerWrapper>
+            </AppLoadingLayout>
+          </AppSuspenseLoadingLayout>
         </Box>
       </Stack>
     </SettingsPageRouteContext.Provider>

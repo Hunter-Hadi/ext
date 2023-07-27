@@ -7,7 +7,7 @@ import CloseAlert from '@/components/CloseAlert'
 import useCommands from '@/hooks/useCommands'
 import { newShortcutHint } from '@/features/contextMenu/utils/selectionHelper'
 import { usePrevious } from '@/hooks/usePrevious'
-import { Card } from '@mui/material'
+import Card from '@mui/material/Card'
 
 const ShortcutHintSettings: FC<{
   defaultValue?: boolean

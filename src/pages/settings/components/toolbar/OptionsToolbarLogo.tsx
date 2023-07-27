@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { Drawer } from '@mui/material'
+import Drawer from '@mui/material/Drawer'
 import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 

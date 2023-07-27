@@ -184,6 +184,19 @@ updateI18nJson(nameJson, (updateText, jsonData) => {
   }
 })
 
+const jsonTranslatePrompt = `
+You task is to perform the following actions:
+1 - Translate each string value in the given JSON object, which is delimited by triple backticks, from English to Chinese.
+2 - Output a JSON object that contains the results.
+Requirements when translating:
+Keep the json structure and keys unchanged
+Translate each string value as UX copy, and make each of the translation results suitable to be used as UX copy and looks concise, easy to understand, and professional
+JSON object:
+\`\`\`
+{{JSON}}
+\`\`\`
+`
+
 // prompt
 const sendPrompt = `
 I need you to help me complete my i18n JSON text with the sentence "[Doc]"

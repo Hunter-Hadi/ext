@@ -9,7 +9,10 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import { SnackbarProvider } from 'notistack'
 import { useAuthLogin } from '@/features/auth/hooks'
 import AccountMenu from '@/pages/settings/components/AccountMenu'
-import { SettingsPageRouteContext } from '@/pages/settings/context'
+import {
+  ISettingsRouteType,
+  SettingsPageRouteContext,
+} from '@/pages/settings/context'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 
@@ -25,19 +28,13 @@ const UseChatGPTOptionsEditMenuPage = React.lazy(
 
 const UseChatGPTOptionsPage = () => {
   const { loaded, isLogin, loading } = useAuthLogin()
-  const [route, setRoute] = useState('')
+  const [route, setRoute] = useState<ISettingsRouteType>('/me')
   const onceScorllRef = React.useRef(false)
   useEffect(() => {
     if (loaded) {
-      const params = new URLSearchParams(window.location.search)
       if (!isLogin) {
         setRoute('/login')
         return
-      }
-      if (params.get('route')) {
-        setRoute(params.get('route') || '/')
-      } else {
-        setRoute('/')
       }
     }
   }, [isLogin, loaded])

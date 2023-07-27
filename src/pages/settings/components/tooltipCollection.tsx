@@ -200,7 +200,7 @@ const PDFTooltip = () => {
   return (
     <Box>
       <IconButton aria-describedby={'run-prompt-tooltip'} onClick={handleClick}>
-        <HelpOutlineIcon fontSize="small" />
+        <HelpOutlineIcon sx={{ fontSize: 24 }} />
       </IconButton>
       <Popover
         id={id}

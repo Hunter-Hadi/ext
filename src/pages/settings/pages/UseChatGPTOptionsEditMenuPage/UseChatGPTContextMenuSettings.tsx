@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import React, {
   FC,
   useCallback,
@@ -16,35 +15,34 @@ import {
   MultiBackend,
 } from '@minoru/react-dnd-treeview'
 import { DndProvider } from 'react-dnd'
-import ContextMenuItem from '@/pages/settings/components/ContextMenuItem'
+import ContextMenuItem from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuItem'
 import { v4 } from 'uuid'
 // import ContextMenuViewSource from '@/pages/settings/components/ContextMenuViewSource'
-import ContextMenuPlaceholder from '@/pages/settings/components/ContextMenuPlaceholder'
-import ContextMenuViewSource from '@/pages/settings/components/ContextMenuViewSource'
+import ContextMenuPlaceholder from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuPlaceholder'
+import ContextMenuViewSource from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuViewSource'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
-} from '@/pages/settings/components/ContextMenuActionConfirmModal'
+} from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
-import ContextMenuMockTextarea from '@/pages/settings/components/ContextMenuMockTextarea'
+import ContextMenuMockTextarea from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuMockTextarea'
 import DevContent from '@/components/DevContent'
 import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
 import AddIcon from '@mui/icons-material/Add'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import groupBy from 'lodash-es/groupBy'
 import cloneDeep from 'lodash-es/cloneDeep'
-import CloseAlert from '@/components/CloseAlert'
 import {
   getChromeExtensionButtonContextMenu,
   setChromeExtensionSettings,
 } from '@/background/utils'
-import BulletList from '@/components/BulletList'
-import ContextMenuEditFormModal from '@/pages/settings/components/ContextMenuEditFormModal'
+import ContextMenuEditFormModal from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuEditFormModal'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
+import { useTranslation } from 'react-i18next'
 
 const rootId = 'root'
 
@@ -105,6 +103,7 @@ const ContextMenuSettings: FC<{
     iconSetting = false,
     onUpdated,
   } = props
+  const { t } = useTranslation(['settings'])
   const once = useRef(true)
   const [loading, setLoading] = useState(false)
   const originalTreeMapRef = useRef<{ [key: string]: IContextMenuItem }>({})
@@ -342,7 +341,7 @@ const ContextMenuSettings: FC<{
     return originalTreeData.filter((item) => showIds.includes(item.id))
   }, [originalTreeData, inputValue])
   return (
-    <Stack spacing={3} height={'100%'} mb={4}>
+    <Stack spacing={2} height={'100%'}>
       <Stack
         height={0}
         flex={1}
@@ -354,59 +353,6 @@ const ContextMenuSettings: FC<{
               <ContextMenuViewSource treeData={originalTreeData} />
             </Stack>
           </DevContent>
-          <Typography
-            fontSize={20}
-            fontWeight={700}
-            flexShrink={0}
-            component={'h2'}
-            id={'my-own-prompts'}
-          >
-            My own prompts
-          </Typography>
-          <CloseAlert
-            icon={<></>}
-            sx={{
-              // bgcolor: '#E2E8F0',
-              mt: 1,
-              mb: 2,
-            }}
-          >
-            <Stack
-              sx={{
-                b: {
-                  fontSize: 16,
-                  display: 'inline-flex',
-                  minWidth: '28px',
-                  justifyContent: 'center',
-                  paddingRight: 1,
-                },
-              }}
-              flexShrink={0}
-            >
-              <Typography fontSize={14} color={'text.primary'}>
-                {`You can:`}
-              </Typography>
-              <BulletList
-                textProps={{
-                  fontSize: 14,
-                  color: 'text.primary',
-                }}
-                pointProps={{
-                  mr: 2,
-                }}
-                textList={[
-                  'Add new options with your own prompt templates.',
-                  'Create your own option groups for nested options.',
-                  'Modify your own option’s name, icon, and prompt template.',
-                  'Drag your own options to reposition them.',
-                ]}
-              />
-              <Typography fontSize={14} color={'text.primary'}>
-                <b>📌 </b>
-                {`Please note that the options marked as "Read only" cannot be edited or moved.`}
-              </Typography>
-            </Stack>
-          </CloseAlert>
           <ContextMenuMockTextarea
             defaultValue={inputValue}
             onChange={setInputValue}
@@ -532,7 +478,7 @@ const ContextMenuSettings: FC<{
           onConfirm={handleActionConfirmOnConfirm}
         />
       )}
-      <Stack direction={'row'} alignItems={'center'} mb={2} spacing={2}>
+      <Stack direction={'row'} alignItems={'center'} spacing={2}>
         <PermissionWrapper
           TooltipProps={{
             placement: 'top',
@@ -555,7 +501,7 @@ const ContextMenuSettings: FC<{
             disabled={loading}
             startIcon={<AddIcon />}
           >
-            New option
+            {t('settings:feature_card__prompts__new_option_button')}
           </Button>
         </PermissionWrapper>
         <PermissionWrapper
@@ -580,7 +526,7 @@ const ContextMenuSettings: FC<{
             disabled={loading}
             startIcon={<AddIcon />}
           >
-            New option group
+            {t('settings:feature_card__prompts__new_option_group_button')}
           </Button>
         </PermissionWrapper>
         <Button
@@ -590,7 +536,7 @@ const ContextMenuSettings: FC<{
           onClick={() => handleActionConfirmOpen('reset')}
           startIcon={<RestartAltIcon />}
         >
-          Restore defaults
+          {t('settings:feature_card__prompts__restore_button')}
         </Button>
       </Stack>
     </Stack>

@@ -11,13 +11,17 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { CONTEXT_MENU_ICONS, ContextMenuIcon } from '@/features/contextMenu'
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
-import { RunPromptTooltip, TemplateTooltip } from './tooltipCollection'
+import {
+  RunPromptTooltip,
+  TemplateTooltip,
+} from '../../../components/tooltipCollection'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import CloseAlert from '@/components/CloseAlert'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
+import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
+import { useTranslation } from 'react-i18next'
 
 function replaceString(str: string, startIndex = 0) {
   const matches = templateStaticWords
@@ -117,6 +121,7 @@ const ContextMenuEditForm: FC<{
   onDelete?: (id: string) => void
   open: boolean
 }> = ({ open, node, onSave, onCancel, onDelete, settingsKey, iconSetting }) => {
+  const { t } = useTranslation(['settings'])
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
   )
@@ -142,12 +147,16 @@ const ContextMenuEditForm: FC<{
   }, [isDisabled, template, editNode.text])
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {
-      return isDisabled ? `Option group (Read only)` : 'Edit option group'
+      return isDisabled
+        ? t('settings:feature_card__prompts__read_prompt_group__title')
+        : t('settings:feature_card__prompts__edit_prompt_group__title')
     } else {
-      return isDisabled ? `Option (Read only)` : 'Edit option'
+      return isDisabled
+        ? t('settings:feature_card__prompts__read_prompt__title')
+        : t('settings:feature_card__prompts__edit_prompt__title')
     }
     return ''
-  }, [isDisabled, editNode.data.type])
+  }, [isDisabled, editNode.data.type, t])
 
   useEffect(() => {
     const cloneNode: IContextMenuItem = cloneDeep(node)
@@ -168,7 +177,6 @@ const ContextMenuEditForm: FC<{
   return (
     <Modal open={open} onClose={onCancel}>
       <Container
-        maxWidth={'lg'}
         sx={{
           position: 'absolute',
           top: '50%',
@@ -176,23 +184,25 @@ const ContextMenuEditForm: FC<{
           transform: 'translate(-50%, -50%)',
           borderRadius: 2,
           bgcolor: (t) => (t.palette.mode === 'dark' ? '#3d3d3d' : '#fff'),
-          minWidth: '60vw',
-          maxWidth: '90vw',
-          p: 4,
+          minWidth: SETTINGS_PAGE_CONTENT_WIDTH,
+          maxWidth: SETTINGS_PAGE_CONTENT_WIDTH,
+          p: 2,
         }}
       >
         <Stack spacing={2} minHeight={'60vh'} maxHeight={'90vh'}>
           <Stack
-            spacing={3}
             sx={{ overflowY: 'auto' }}
             width={'100%'}
             flex={1}
             height={0}
+            spacing={1}
           >
             <Typography variant={'h6'}>{modalTitle}</Typography>
-            <Stack>
+            <Stack spacing={1} pb={1}>
               <Typography variant={'body1'}>
-                {'Name '}
+                {`${t(
+                  'settings:feature_card__prompts__edit_prompt__field_name__title',
+                )} `}
                 <span style={{ color: 'red' }}>*</span>
               </Typography>
               <TextField
@@ -200,7 +210,9 @@ const ContextMenuEditForm: FC<{
                 size={'small'}
                 autoFocus
                 value={editNode.text}
-                placeholder={'Enter name'}
+                placeholder={t(
+                  'settings:feature_card__prompts__edit_prompt__field_name__placeholder',
+                )}
                 onChange={(event) => {
                   setEditNode((prev) => {
                     return {
@@ -212,21 +224,25 @@ const ContextMenuEditForm: FC<{
               />
             </Stack>
             {iconSetting && (
-              <Stack>
-                <Typography variant={'body1'}>{'Icon'}</Typography>
+              <Stack spacing={1} pb={1}>
+                <Typography variant={'body1'}>
+                  {t(
+                    'settings:feature_card__prompts__edit_prompt__field_icon__title',
+                  )}
+                </Typography>
                 <Stack
                   flexWrap={'wrap'}
                   gap={1}
                   direction={'row'}
                   alignItems={'center'}
-                  sx={{ maxHeight: '60px', overflowY: 'scroll' }}
+                  sx={{ maxHeight: '112px', overflowY: 'scroll' }}
                 >
                   {CONTEXT_MENU_ICONS.filter((icon) => icon !== 'Empty').map(
                     (icon) => {
                       return (
                         <Button
                           disabled={isDisabled}
-                          sx={{ width: 32, minWidth: 'unset', px: 1, py: 0.5 }}
+                          sx={{ width: 32, minWidth: 'unset', height: 32 }}
                           variant={
                             icon === (selectedIcon as string)
                               ? 'contained'
@@ -249,7 +265,7 @@ const ContextMenuEditForm: FC<{
                             })
                           }}
                         >
-                          <ContextMenuIcon icon={icon} />
+                          <ContextMenuIcon icon={icon} sx={{ fontSize: 20 }} />
                         </Button>
                       )
                     },
@@ -258,18 +274,21 @@ const ContextMenuEditForm: FC<{
               </Stack>
             )}
             {editNode.data.type === 'shortcuts' && (
-              <Box>
+              <Stack spacing={1} pb={1}>
                 <Stack direction={'row'} alignItems="center">
                   <Typography variant={'body1'}>
-                    Prompt template <span style={{ color: 'red' }}>*</span>
+                    {`${t(
+                      'settings:feature_card__prompts__edit_prompt__field_template__title',
+                    )} `}
+                    <span style={{ color: 'red' }}>*</span>
                   </Typography>
                   <TemplateTooltip />
                 </Stack>
                 <Box
                   position={'relative'}
-                  height={320}
                   sx={{
-                    ml: '2px',
+                    resize: 'vertical',
+                    ml: '2px!important',
                     width: 'calc(100% - 4px)',
                     p: 1,
                     boxSizing: 'border-box',
@@ -281,6 +300,10 @@ const ContextMenuEditForm: FC<{
                         : 'rgb(208, 208, 208)',
                     '.ace-tm .ace_comment': {
                       color: 'rgba(0,0,0,.6)',
+                    },
+                    '& > div': {
+                      minHeight: 200,
+                      resize: 'vertical',
                     },
                     '&:hover': {
                       borderColor: (t) =>
@@ -304,11 +327,9 @@ const ContextMenuEditForm: FC<{
                       onBlur={() => {
                         setFocusEditor(false)
                       }}
-                      placeholder={`The prompt template for ChatGPT.
-The template can include any number of the following variables:
-{{SELECTED_TEXT}}
-{{AI_RESPONSE_LANGUAGE}}
-{{CURRENT_WEBSITE_DOMAIN}}`}
+                      placeholder={t(
+                        'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
+                      )}
                       width={'100%'}
                       height={'100%'}
                       value={template}
@@ -338,54 +359,70 @@ The template can include any number of the following variables:
                     />
                   </AppSuspenseLoadingLayout>
                 </Box>
-              </Box>
+              </Stack>
             )}
             {editNode.data.type === 'shortcuts' && (
-              <FormControlLabel
-                control={<Switch checked={autoAskChatGPT} />}
-                label={
-                  <Stack direction={'row'} alignItems="center">
-                    <Typography variant={'body1'}>
-                      Send to AI directly
-                    </Typography>
-                    <RunPromptTooltip />
-                  </Stack>
-                }
-                value={autoAskChatGPT}
-                disabled={isDisabled}
-                onChange={(event: any) => {
-                  setAutoAskChatGPT(event.target.checked)
-                }}
-              />
+              <Stack spacing={1} pb={1}>
+                <Stack direction={'row'} alignItems="center">
+                  <Typography variant={'body1'}>
+                    {t(
+                      'settings:feature_card__prompts__edit_prompt__field_execution_mode__title',
+                    )}
+                  </Typography>
+                  <RunPromptTooltip />
+                </Stack>
+                <FormControlLabel
+                  sx={{
+                    p: '4px 16px',
+                    borderRadius: '4px',
+                    justifyContent: 'space-between',
+                    flexDirection: 'row-reverse',
+                    border: `1px solid`,
+                    borderColor: 'customColor.borderColor',
+                  }}
+                  control={<Switch checked={autoAskChatGPT} />}
+                  label={
+                    <Stack direction={'row'} alignItems="center">
+                      <Typography variant={'body1'}>
+                        {t(
+                          'settings:feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__title',
+                        )}
+                      </Typography>
+                    </Stack>
+                  }
+                  value={autoAskChatGPT}
+                  disabled={isDisabled}
+                  onChange={(event: any) => {
+                    setAutoAskChatGPT(event.target.checked)
+                  }}
+                />
+              </Stack>
             )}
             <Stack>
               <Stack direction={'row'} alignItems="center">
-                <Typography variant={'body1'}>Visibility</Typography>
+                <Typography variant={'body1'}>
+                  {t(
+                    'settings:feature_card__prompts__edit_prompt__field_visibility__title',
+                  )}
+                </Typography>
               </Stack>
               {editNode.data.visibility && (
-                <>
-                  <CloseAlert icon={<></>} sx={{}}>
-                    <Typography fontSize={14} color={'text.primary'}>
-                      Change visibility on selected websites
-                    </Typography>
-                  </CloseAlert>
-                  <VisibilitySettingCard
-                    disabled={isDisabled}
-                    sx={{ mt: 2 }}
-                    defaultValue={editNode.data.visibility}
-                    onChange={async (newVisibilitySetting) => {
-                      setEditNode((prev) => {
-                        return {
-                          ...prev,
-                          data: {
-                            ...prev.data,
-                            visibility: newVisibilitySetting,
-                          },
-                        }
-                      })
-                    }}
-                  />
-                </>
+                <VisibilitySettingCard
+                  disabled={isDisabled}
+                  sx={{ mt: 2 }}
+                  defaultValue={editNode.data.visibility}
+                  onChange={async (newVisibilitySetting) => {
+                    setEditNode((prev) => {
+                      return {
+                        ...prev,
+                        data: {
+                          ...prev.data,
+                          visibility: newVisibilitySetting,
+                        },
+                      }
+                    })
+                  }}
+                />
               )}
             </Stack>
           </Stack>
@@ -394,11 +431,9 @@ The template can include any number of the following variables:
             direction={'row'}
             mt={'auto!important'}
             mb={0}
-            pt={2}
             flexShrink={0}
             alignItems={'center'}
             spacing={1}
-            justifyContent={'center'}
           >
             <Button
               disabled={isDisabledSave}
@@ -418,6 +453,8 @@ The template can include any number of the following variables:
               Cancel
             </Button>
             <Button
+              sx={{ ml: 'auto!important', mr: 0 }}
+              startIcon={<ContextMenuIcon icon={'Delete'} />}
               color={'error'}
               disabled={isDisabled}
               variant={'outlined'}

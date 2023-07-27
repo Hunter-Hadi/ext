@@ -22,7 +22,7 @@ import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecke
 import HowToFindSettings from '@/pages/settings/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
 import ReferralInviteCard from '@/pages/settings/pages/UseChatGPTOptionsSettingPage/ReferralInviteCard'
 import ChatGPTStableModeSetting from '@/pages/settings/pages/UseChatGPTOptionsSettingPage/ChatGPTStableModeSetting'
-import ChatGPTApiSettings from '@/pages/settings/pages/UseChatGPTOptionsSettingPage/ChatGPTApiSettings'
+import ChatGPTApiSettings from '@/pages/settings/pages/openai_api_key/ChatGPTApiSettings'
 import OptionsPageDirectory from '@/pages/settings/components/OptionsPageDirectory'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import PDFSettings from '@/pages/settings/pages/UseChatGPTOptionsSettingPage/PDFSettings'

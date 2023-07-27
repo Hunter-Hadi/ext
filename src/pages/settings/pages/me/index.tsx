@@ -2,23 +2,23 @@ import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import { useTranslation } from 'react-i18next'
-import SettingsCardLayout from '@/pages/settings/layout/SettingsCardLayout'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import List from '@mui/material/List'
-import { ListItem } from '@mui/material'
+import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Avatar from '@mui/material/Avatar'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ListItemText from '@mui/material/ListItemText'
-import IconButton from '@mui/material/IconButton'
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined'
 import Divider from '@mui/material/Divider'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import ListItemButton from '@mui/material/ListItemButton'
 const SettingsMePage: FC = () => {
-  const { t, i18n } = useTranslation(['common', 'settings'])
+  const { t } = useTranslation(['common', 'settings'])
   const { userInfo } = useUserInfo()
   return (
     <Stack>
-      <SettingsCardLayout
+      <SettingsFeatureCardLayout
         title={t('settings:feature_card__me__title')}
         id={'user-info'}
       >
@@ -48,10 +48,7 @@ const SettingsMePage: FC = () => {
               target={'_blank'}
               href={`${APP_USE_CHAT_GPT_HOST}/logout`}
               sx={{
-                border: '1px solid #e0e0e0',
-                '&:hover': {
-                  border: '1px solid #e0e0e0',
-                },
+                borderColor: 'customColor.borderColor',
                 color: 'text.primary',
               }}
               variant={'outlined'}
@@ -60,35 +57,20 @@ const SettingsMePage: FC = () => {
             </Button>
           </ListItem>
           <Divider />
-          <ListItem
-            secondaryAction={
-              <IconButton
-                component={'a'}
-                target={'_blank'}
-                href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
-                edge={'end'}
-              >
-                <ChevronRightOutlinedIcon
-                  sx={{
-                    fontSize: '24px',
-                  }}
-                />
-              </IconButton>
-            }
+          <ListItemButton
+            component={'a'}
+            target={'_blank'}
+            href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
           >
             <ListItemText primary={t('settings:feature_card__me__my_plan')} />
-          </ListItem>
+            <ChevronRightOutlinedIcon
+              sx={{
+                fontSize: '24px',
+              }}
+            />
+          </ListItemButton>
         </List>
-      </SettingsCardLayout>
-      <p>{t('common:log_out')}</p>
-      <p>{i18n.language}</p>
-      <Button
-        onClick={async () => {
-          await i18n.changeLanguage('zh_CN')
-        }}
-      >
-        change language
-      </Button>
+      </SettingsFeatureCardLayout>
     </Stack>
   )
 }

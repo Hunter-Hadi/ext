@@ -1,0 +1,131 @@
+import { useTranslation } from 'react-i18next'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import React, { FC, useContext, useMemo, useState } from 'react'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
+import { SettingsPageRouteContext } from '@/pages/settings/context'
+import PromptsHelp from '@/pages/settings/components/pageHelp/pages/PromptsHelp'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
+import Drawer from '@mui/material/Drawer'
+import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
+import { SxProps } from '@mui/material/styles'
+import OpenaiAPIKeyHelp from '@/pages/settings/components/pageHelp/pages/OpenaiAPIKeyHelp'
+import AppearanceHelp from '@/pages/settings/components/pageHelp/pages/AppearanceHelp'
+
+const PageHelp: FC<{
+  drawerMode?: boolean
+  defaultOpen?: boolean
+}> = ({ defaultOpen, drawerMode }) => {
+  const { route } = useContext(SettingsPageRouteContext)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return
+      }
+      setDrawerOpen(open)
+    }
+  const RenderDom = useMemo(() => {
+    switch (route) {
+      case '/my-own-prompts': {
+        return <PromptsHelp defaultOpen={defaultOpen} />
+      }
+      case '/openai-api-key': {
+        return <OpenaiAPIKeyHelp defaultOpen={defaultOpen} />
+      }
+      case '/appearance': {
+        return <AppearanceHelp defaultOpen={defaultOpen} />
+      }
+    }
+    return null
+  }, [route, defaultOpen])
+  if (!RenderDom) {
+    return null
+  }
+  if (drawerMode) {
+    return (
+      <>
+        <Button
+          onClick={toggleDrawer(true)}
+          sx={{
+            color: 'text.primary',
+            display: {
+              xs: 'inline-flex',
+              lg: 'none',
+            },
+          }}
+        >
+          <PageHelpLabel />
+        </Button>
+        <Drawer
+          anchor={'right'}
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+        >
+          <Box
+            role={'presentation'}
+            component={'div'}
+            onKeyDown={toggleDrawer(false)}
+            onClick={toggleDrawer(false)}
+            sx={{
+              width: SETTINGS_PAGE_MENU_WIDTH,
+            }}
+          >
+            <Stack spacing={1}>
+              <PageHelpLabel sx={{ mt: 1, ml: 1 }} />
+              {RenderDom}
+            </Stack>
+          </Box>
+        </Drawer>
+      </>
+    )
+  }
+  return (
+    <Stack
+      spacing={1}
+      sx={{
+        '& .max-ai__settings__page-help-card + .max-ai__settings__page-help-card':
+          {
+            borderTop: '1px solid',
+            borderColor: 'customColor.borderColor',
+          },
+      }}
+    >
+      <PageHelpLabel />
+      {RenderDom}
+    </Stack>
+  )
+}
+
+export const PageHelpLabel: FC<{
+  sx?: SxProps
+}> = ({ sx }) => {
+  const { t } = useTranslation(['common'])
+  return (
+    <Box
+      sx={{
+        maxWidth: 'fit-content',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+        ...sx,
+      }}
+    >
+      <ContextMenuIcon icon={'HelpOutline'} sx={{ fontSize: 20 }} />
+      <Typography
+        fontSize={16}
+        fontWeight={800}
+        component={'h2'}
+        display={'inline-flex'}
+      >
+        {t('common:help')}
+      </Typography>
+    </Box>
+  )
+}
+export default PageHelp

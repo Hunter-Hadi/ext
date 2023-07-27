@@ -17,7 +17,7 @@ const OptionsLeftMenu: FC<{
   const { route, setRoute } = useContext(SettingsPageRouteContext)
   const { sx } = props
   return (
-    <List component="nav" sx={{ ...sx }}>
+    <List component="nav" sx={{ py: 2, ...sx }}>
       {settingsPageRouterList.map((menuItem) => {
         return (
           <React.Fragment key={menuItem.route}>

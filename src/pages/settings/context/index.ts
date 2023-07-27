@@ -1,17 +1,15 @@
 import React from 'react'
 
-export const settingsPageRouterList: Array<{
-  route: string
-  label: string
-  divider?: boolean
-}> = [
+export const settingsPageRouterList = [
   {
-    route: '/people',
+    route: '/me',
     label: 'left_menu__me',
+    divider: false,
   },
   {
     route: '/my-own-prompts',
     label: 'left_menu__my_own_prompts',
+    divider: false,
   },
   {
     route: '/openai-api-key',
@@ -21,14 +19,17 @@ export const settingsPageRouterList: Array<{
   {
     route: '/shortcut',
     label: 'left_menu__shortcut',
+    divider: false,
   },
   {
     route: '/appearance',
     label: 'left_menu__appearance',
+    divider: false,
   },
   {
     route: '/mini-menu',
     label: 'left_menu__mini_menu',
+    divider: false,
   },
   {
     route: '/language',
@@ -38,15 +39,24 @@ export const settingsPageRouterList: Array<{
   {
     route: '/chatgpt-stable-mode',
     label: 'left_menu__chatgpt_stable_mode',
+    divider: false,
   },
   {
     route: '/help',
     label: 'left_menu__help',
+    divider: false,
   },
-]
+] as const
 
-export const SettingsPageRouteContext = React.createContext({
-  route: '/',
+export type ISettingsRouteType =
+  | (typeof settingsPageRouterList)[number]['route']
+  | '/login'
+
+export const SettingsPageRouteContext = React.createContext<{
+  route: ISettingsRouteType
+  setRoute: (route: ISettingsRouteType) => void
+}>({
+  route: '/me',
   setRoute: (route: string) => {
     console.log('setRoute', route)
   },
@@ -56,12 +66,12 @@ export const getLocationHashRoute = () => {
   const hash = window.location.hash
   let route = hash.replace('#', '')
   if (!route) {
-    route = '/people'
-    setLocationHashRoute(route)
+    route = '/me'
+    setLocationHashRoute(route as ISettingsRouteType)
   }
-  return route
+  return route as ISettingsRouteType
 }
 
-export const setLocationHashRoute = (route: string) => {
+export const setLocationHashRoute = (route: ISettingsRouteType) => {
   window.location.hash = `#${route}`
 }

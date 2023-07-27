@@ -8,7 +8,7 @@ import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
 import Box, { BoxProps } from '@mui/material/Box'
-import { ClickAwayListener } from '@mui/material'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { v4 as uuidV4 } from 'uuid'

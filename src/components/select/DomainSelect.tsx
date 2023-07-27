@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import Autocomplete from '@mui/material/Autocomplete'
 import TextField from '@mui/material/TextField'
 import { SxProps } from '@mui/material/styles'
@@ -9,6 +9,7 @@ import { domain2Favicon } from '@/utils'
 
 interface DomainSelectProps {
   label?: string
+  value?: string
   defaultValue?: string
   disabled?: boolean
   onChange?: (value: string) => void
@@ -54,7 +55,6 @@ function filterOptions(options: any[], { inputValue }: any) {
 }
 
 const DomainSelect: FC<DomainSelectProps> = (props) => {
-  const [open, setOpen] = React.useState(false)
   const {
     label = 'Enter website URL',
     onChange = (value: string) => {
@@ -63,29 +63,51 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
     disabled,
     sx,
   } = props
+  const [open, setOpen] = React.useState(false)
+  const [selected, setSelected] = React.useState(null)
+  const memoOptions = useMemo(() => {
+    if (
+      props.value &&
+      !TOP_DOMAINS.find((domain) => domain.value === props.value)
+    ) {
+      return TOP_DOMAINS.concat({
+        label: props.value,
+        value: props.value,
+      })
+    } else {
+      return TOP_DOMAINS
+    }
+  }, [props.value])
+  const memoValue = useMemo(() => {
+    return memoOptions.find((option) => option.value === props.value)
+  }, [props.value, memoOptions])
   return (
     <Autocomplete
       disabled={disabled}
-      open={open}
+      open={open && !selected}
       onInputChange={(_, value) => {
+        if (value !== props.value) {
+          setSelected(null)
+        }
         if (value.length === 0) {
-          if (open) setOpen(false)
+          setOpen(false)
         } else {
-          if (!open) setOpen(true)
+          setOpen(true)
         }
       }}
+      value={memoValue}
       onClose={() => setOpen(false)}
       freeSolo
       disableClearable
-      value={null}
       clearOnBlur
       blurOnSelect
       size={'small'}
       sx={{ width: 160, ...sx }}
       autoHighlight
       getOptionLabel={(option) => option.label}
-      options={TOP_DOMAINS}
+      options={memoOptions}
       onChange={(event: any, newValue) => {
+        setSelected(newValue)
         onChange(newValue.value)
       }}
       filterOptions={filterOptions}

@@ -70,25 +70,37 @@ export class ActionGetContentsOfSearchEngine extends Action {
             URL: fullSearchURL,
           },
         })
-        if (response.success) {
-          const { status, html } = response.data as SearchResponse
-          if (status === 200 && html) {
-            this.output = JSON.stringify(
-              this.getSearchResults({
-                html,
-                limit: Number(searchParams?.limit || 3),
-                searchEngine,
-              }),
-              null,
-              2,
-            )
+
+        const { status, html } = (response.data || {}) as SearchResponse
+        if (response.success && status === 200 && html) {
+          // response is success
+          const searchResult = this.getSearchResults({
+            html,
+            limit: Number(searchParams?.limit || 3),
+            searchEngine,
+          })
+          if (searchResult.length <= 0) {
+            // 根据搜索结果爬取不到 内容
+            this.output = ''
+            this.error =
+              'No search results found. Please try a different query.'
+            return
+          } else {
+            // 正确获取到搜索结果，和爬取到的内容
+            this.output = JSON.stringify(searchResult, null, 2)
             return
           }
         }
-        this.output =
-          'Could not search the page.\nMake sure the URL is correct.'
-      } else {
-        this.error = 'Could not search the page.\nMake sure the URL is correct.'
+
+        // response is error
+        this.error = 'Failed to access the search page. Please try again.'
+        if (status === 301) {
+          // search engine 被重定向
+          // 目前默认为 301，需要人机验证
+          this.output = ''
+          this.error = `<a href="${fullSearchURL}" target="_blank" style="color: inherit">Click here to pass the security check</a> and try again.`
+          return
+        }
       }
       if (!this.output) {
         this.output = ''
@@ -103,39 +115,12 @@ export class ActionGetContentsOfSearchEngine extends Action {
     params: any,
     query: string,
   ) {
-    const searchURL = this.getSearchURL(engine)
-    const cloneParams = { ...params }
-    delete cloneParams.limit
-    const searchParams = new URLSearchParams({
-      ...cloneParams,
-      q: query,
-    })
+    const searchURL = getSearchURL(engine, params?.region)
+    const searchParams = getSearchParams(engine, params, query)
+
     return `${searchURL}?${searchParams.toString()}`
   }
-  private getSearchURL(engine: URLSearchEngine | string) {
-    switch (engine) {
-      case 'google':
-        return 'https://www.google.com/search'
-      case 'baidu':
-        return 'https://www.baidu.com/s'
-      case 'bing':
-        return 'https://cn.bing.com/search'
-      case 'duckduckgo':
-        return 'https://duckduckgo.com'
-      case 'yahoo':
-        return 'https://sg.search.yahoo.com/search'
-      case 'reddit':
-        return 'https://www.reddit.com/search'
-      case 'twitter':
-        return 'https://twitter.com/search'
-      case 'youtube':
-        return 'https://www.youtube.com/results'
-      case 'amazon':
-        return 'https://www.amazon.com/s'
-      default:
-        return engine
-    }
-  }
+
   private getSearchResults({
     html,
     limit,
@@ -145,43 +130,83 @@ export class ActionGetContentsOfSearchEngine extends Action {
     limit: number
     searchEngine: URLSearchEngine | string
   }) {
-    switch (searchEngine) {
-      case 'yahoo': {
-        const $ = cheerio.load(html)
-        const results: SearchResult[] = []
-        const rightPanel = $('#right .searchRightTop')
-        if (rightPanel.length) {
-          const rightPanelLink = rightPanel.find('.compText a').first()
-          const rightPanelInfo = rightPanel.find('.compInfo li')
-          const rightPanelInfoText = rightPanelInfo
-            .map((_, el) => $(el).text().trim())
-            .get()
-            .join('\n')
-
-          results.push({
-            title: rightPanelLink.text().trim(),
-            body: `${rightPanel.find('.compText').text().trim()}${
-              rightPanelInfoText ? `\n\n${rightPanelInfoText}` : ''
-            }`,
-            url: this.extractRealUrl(rightPanelLink.attr('href') ?? ''),
-          })
-        }
-        $('.algo-sr:not([class*="ad"])')
-          .slice(0, limit)
-          .each((_, el) => {
-            const element = $(el)
-            const titleElement = element.find('h3.title a')
+    try {
+      switch (searchEngine) {
+        case 'yahoo': {
+          const $ = cheerio.load(html)
+          const results: SearchResult[] = []
+          const rightPanel = $('#right .searchRightTop')
+          if (rightPanel.length) {
+            const rightPanelLink = rightPanel.find('.compText a').first()
+            const rightPanelInfo = rightPanel.find('.compInfo li')
+            const rightPanelInfoText = rightPanelInfo
+              .map((_, el) => $(el).text().trim())
+              .get()
+              .join('\n')
 
             results.push({
-              title: titleElement.attr('aria-label') ?? '',
-              body: element.find('.compText').text().trim(),
-              url: this.extractRealUrl(titleElement.attr('href') ?? ''),
+              title: rightPanelLink.text().trim(),
+              body: `${rightPanel.find('.compText').text().trim()}${
+                rightPanelInfoText ? `\n\n${rightPanelInfoText}` : ''
+              }`,
+              url: this.extractRealUrl(rightPanelLink.attr('href') ?? ''),
             })
-          })
-        return results
+          }
+          $('.algo-sr:not([class*="ad"])')
+            .slice(0, limit)
+            .each((_, el) => {
+              const element = $(el)
+              const titleElement = element.find('h3.title a')
+
+              results.push({
+                title: titleElement.attr('aria-label') ?? '',
+                body: element.find('.compText').text().trim(),
+                url: this.extractRealUrl(titleElement.attr('href') ?? ''),
+              })
+            })
+          return results
+        }
+        case 'google': {
+          const $ = cheerio.load(html)
+          const results: SearchResult[] = []
+
+          const rightPanel = $('#rhs')
+          if (rightPanel && rightPanel.length) {
+            const rightPanelTitle = rightPanel
+              .find('h2[data-attrid="title"]')
+              .text()
+              .trim()
+            const rightPanelLink = rightPanel.find('.kno-rdesc a[href]')
+            const rightPanelInfo = rightPanel.find('div.wp-ms').text().trim()
+
+            results.push({
+              title: rightPanelTitle,
+              body: rightPanelInfo,
+              url: this.extractRealUrl(rightPanelLink.attr('href') ?? ''),
+            })
+          }
+          $('#search #rso > div')
+            .filter((_, el) => !!$(el).find('a > h3').text())
+            .slice(0, limit)
+            .each((_, el) => {
+              const element = $(el)
+              const titleElement = element.find('a > h3')
+
+              results.push({
+                title: titleElement.text().trim() ?? '',
+                body: element.find('div.MUxGbd').text().trim(),
+                url: this.extractRealUrl(
+                  titleElement.closest('a').attr('href') ?? '',
+                ),
+              })
+            })
+          return results
+        }
+        default:
+          return []
       }
-      default:
-        return []
+    } catch (error) {
+      return []
     }
   }
   private extractRealUrl(url: string) {
@@ -191,5 +216,64 @@ export class ActionGetContentsOfSearchEngine extends Action {
     }
 
     return url
+  }
+}
+
+function getSearchParams(
+  engine: URLSearchEngine | string,
+  params: any,
+  query: string,
+) {
+  const cloneParams = { ...params }
+  delete cloneParams.limit
+
+  let newQuery = query || cloneParams.query
+
+  if (cloneParams.region && cloneParams.region !== 'wt-wt') {
+    if (engine === 'google') {
+      newQuery = `location:${cloneParams.region} ${newQuery}`
+    } else {
+      newQuery = `${cloneParams.region} ${newQuery}`
+    }
+
+    delete cloneParams.region
+  }
+
+  if (engine === 'yahoo') {
+    cloneParams.p = newQuery
+  }
+
+  const searchParams = new URLSearchParams({
+    ...cloneParams,
+    // default query
+    q: newQuery,
+  })
+
+  return searchParams
+}
+
+function getSearchURL(engine: URLSearchEngine | string, region = 'wt-wt') {
+  switch (engine) {
+    case 'google':
+      return 'https://www.google.com/search'
+    case 'yahoo':
+      return 'https://search.yahoo.com/search'
+    case 'baidu':
+      return 'https://www.baidu.com/s'
+    case 'bing':
+      return 'https://www.bing.com/search'
+    case 'duckduckgo':
+      return 'https://duckduckgo.com'
+    case 'reddit':
+      return 'https://www.reddit.com/search'
+    case 'twitter':
+      return 'https://twitter.com/search'
+    case 'youtube':
+      return 'https://www.youtube.com/results'
+    case 'amazon':
+      return 'https://www.amazon.com/s'
+    default:
+      // default yahoo search engine
+      return 'https://search.yahoo.com/search'
   }
 }

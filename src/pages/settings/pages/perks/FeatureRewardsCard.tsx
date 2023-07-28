@@ -18,7 +18,7 @@ const FeatureRewardsCard: FC = () => {
         description={
           <>
             {t('settings:feature_card__perks__rewards__card_description_1')}
-            <Link href={`${APP_USE_CHAT_GPT_HOST}/prompts`} target={'_blank'}>
+            <Link href={`${APP_USE_CHAT_GPT_HOST}/pricing`} target={'_blank'}>
               {t('settings:feature_card__perks__rewards__card_description_2')}
             </Link>
             {t('settings:feature_card__perks__rewards__card_description_3')}

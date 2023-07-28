@@ -12,7 +12,9 @@ const FeatureGmailAssistantCard: FC = () => {
   const { t } = useTranslation(['settings', 'common'])
   return (
     <SettingsFeatureCardLayout
-      title={t('settings:feature_card__appearance__field_shortcut_hint__title')}
+      title={t(
+        'settings:feature_card__appearance__field_gmail_assistant__title',
+      )}
       id={'gmail-assistant'}
     >
       <RadioCardGroup

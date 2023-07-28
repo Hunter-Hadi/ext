@@ -8,10 +8,13 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { GoogleIcon } from '@/components/CustomIcon'
 import Divider from '@mui/material/Divider'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-const UseChatGPTOptionsLoginPage: FC = () => {
+import { useTranslation } from 'react-i18next'
+const SettingsLoginPage: FC = () => {
+  const { t } = useTranslation(['settings', 'common'])
   return (
     <Stack
       sx={{
+        mt: 4,
         width: 600,
         mx: 'auto!important',
         alignItems: 'center',
@@ -25,15 +28,8 @@ const UseChatGPTOptionsLoginPage: FC = () => {
         flexShrink={0}
         mb={4}
       >
-        {/*<Box component={'span'}>*/}
-        {/*  <UseChatGptIcon*/}
-        {/*    sx={{*/}
-        {/*      fontSize: 48,*/}
-        {/*    }}*/}
-        {/*  />*/}
-        {/*</Box>*/}
         <Typography fontSize={24} fontWeight={700}>
-          Please sign in to manage your settings and create custom prompts
+          {t('settings:sign_in__description')}
         </Typography>
       </Stack>
       <Link
@@ -69,11 +65,11 @@ const UseChatGPTOptionsLoginPage: FC = () => {
             >
               <GoogleIcon sx={{ fontSize: '24px' }} />
             </Stack>
-            <span>Continue with Google</span>
+            <span>{t('settings:sign_in__google_button_text')}</span>
           </Stack>
         </Button>
       </Link>
-      <Divider sx={{ width: '100%' }}>OR</Divider>
+      <Divider sx={{ width: '100%' }}>{t('common:or')}</Divider>
       <Link
         href={APP_USE_CHAT_GPT_HOST + '/login-email'}
         target={'_blank'}
@@ -98,11 +94,11 @@ const UseChatGPTOptionsLoginPage: FC = () => {
             }}
           >
             <ContextMenuIcon icon={'Email'} sx={{ fontSize: '24px' }} />
-            <span>Continue with Email</span>
+            <span>{t('settings:sign_in__email_button_text')}</span>
           </Stack>
         </Button>
       </Link>
     </Stack>
   )
 }
-export default UseChatGPTOptionsLoginPage
+export default SettingsLoginPage

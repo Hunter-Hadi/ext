@@ -64,7 +64,7 @@ const FloatingContextMenuGmailCloseIconButton: FC<{
             onClick={async () => {
               await chromeExtensionClientOpenPage({
                 key: 'options',
-                query: '#gmail-assistant',
+                query: '?id=gmail-assistant#/appearance',
               })
             }}
             icon={'VisibilityOff'}

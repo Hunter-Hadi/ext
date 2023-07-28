@@ -108,15 +108,15 @@ const VisibilitySettingCard: FC<{
   }, [visibilitySetting])
   return (
     <Stack sx={{ ...props.sx }}>
-      <p>{JSON.stringify(visibilitySetting)}</p>
-      <p>mode: {isBlackMode ? 'black' : 'white'}</p>
-      <p>
-        {JSON.stringify(
-          visibilitySetting.isWhitelistMode
-            ? visibilitySetting.whitelist
-            : visibilitySetting.blacklist,
-        )}
-      </p>
+      {/*<p>{JSON.stringify(visibilitySetting)}</p>*/}
+      {/*<p>mode: {isBlackMode ? 'black' : 'white'}</p>*/}
+      {/*<p>*/}
+      {/*  {JSON.stringify(*/}
+      {/*    visibilitySetting.isWhitelistMode*/}
+      {/*      ? visibilitySetting.whitelist*/}
+      {/*      : visibilitySetting.blacklist,*/}
+      {/*  )}*/}
+      {/*</p>*/}
       <List
         sx={{
           p: 0,

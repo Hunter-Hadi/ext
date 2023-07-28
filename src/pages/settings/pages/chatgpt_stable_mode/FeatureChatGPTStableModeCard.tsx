@@ -165,7 +165,7 @@ const FeatureChatGPTStableModeCard: FC = () => {
   return (
     <SettingsFeatureCardLayout
       title={t('settings:feature_card__chatgpt_stable_mode__title')}
-      id={'ai-response-language'}
+      id={'chatgpt-stable-mode'}
     >
       <List
         sx={{

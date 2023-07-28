@@ -185,15 +185,21 @@ updateI18nJson(nameJson, (updateText, jsonData) => {
 })
 
 const jsonTranslatePrompt = `
-You task is to perform the following actions:
+Your task is to perform the following actions:
 1 - Translate each string value in the given JSON object, which is delimited by triple backticks, from English to Chinese.
 2 - Output a JSON object that contains the results.
 Requirements when translating:
-Keep the json structure and keys unchanged
+Keep the JSON structure and keys unchanged
 Translate each string value as UX copy, and make each of the translation results suitable to be used as UX copy and looks concise, easy to understand, and professional
+Keep all of these characters unchanged in each of the string values (I'll give you these characters in the following list, each delimited by a single backtick): 
+\`\\n\`
+\`\\t\`
+\`\\s\`
+\`" "\`
+\`' '\`
 JSON object:
 \`\`\`
-{{JSON}}
+paste.txt
 \`\`\`
 `
 

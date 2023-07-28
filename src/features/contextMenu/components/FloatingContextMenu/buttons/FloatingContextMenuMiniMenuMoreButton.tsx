@@ -407,7 +407,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               onClick={() => {
                 chromeExtensionClientOpenPage({
                   key: 'options',
-                  query: '#mini-menu-on-text-selection',
+                  query: '#/mini-menu',
                 })
               }}
             ></LiteDropdownMenuItem>

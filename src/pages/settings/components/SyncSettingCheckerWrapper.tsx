@@ -13,11 +13,13 @@ import { chromeExtensionClientOpenPage } from '@/utils'
 import { useFocus } from '@/hooks/useFocus'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { SettingsPageRouteContext } from '@/pages/settings/context'
+import { useTranslation } from 'react-i18next'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
   onLoad?: () => void
 }> = ({ children, onLoad }) => {
+  const { t } = useTranslation(['settings'])
   const {
     isSyncing,
     isChecking,
@@ -43,10 +45,14 @@ const SyncSettingCheckerWrapper: FC<{
     await syncServerToLocal()
     window.onbeforeunload = (event) => {
       event.preventDefault()
-      event.returnValue = `Be aware that you will lose your local browser settings permanently by keeping your online account settings and cannot be undone.`
-      return `Be aware that you will lose your local browser settings permanently by keeping your online account settings and cannot be undone.`
+      event.returnValue = t(
+        `settings:sync__different_settings__chose_local_or_server_description`,
+      )
+      return t(
+        `settings:sync__different_settings__chose_local_or_server_description`,
+      )
     }
-  }, [])
+  }, [t])
 
   useEffectOnce(() => {
     console.log('SyncSettingCheckerWrapper')
@@ -107,7 +113,7 @@ const SyncSettingCheckerWrapper: FC<{
           }}
         >
           <Alert severity="error">
-            {`We found different settings (including your custom prompts if any) on your local browser and online account. Your online account settings have overridden your local browser settings. If you prefer to keep your local browser settings instead, click the "Keep local browser settings" button now.`}
+            {t('settings:sync__different_settings__description')}
           </Alert>
           <Stack alignItems={'center'} spacing={2}>
             <Button
@@ -117,13 +123,15 @@ const SyncSettingCheckerWrapper: FC<{
               color={'primary'}
               onClick={async () => {
                 const isConfirmed = window.confirm(
-                  `Be aware that you will lose your local browser settings permanently by keeping your online account settings and cannot be undone.`,
+                  t(
+                    `settings:sync__different_settings__chose_local_or_server_description`,
+                  ),
                 )
                 if (!isConfirmed) return
                 await checkSync()
               }}
             >
-              Continue to Settings
+              {t('settings:sync__different_settings__keep_server_button')}
             </Button>
             <Button
               sx={{ width: 400, height: 56, fontSize: 20 }}
@@ -132,7 +140,9 @@ const SyncSettingCheckerWrapper: FC<{
               color={'primary'}
               onClick={async () => {
                 const isConfirmed = window.confirm(
-                  `Are you sure you want to replace your online account settings with your local browser settings (including your custom prompts if any)? Doing so will undo your online account settings permanently and cannot be undone.`,
+                  t(
+                    'settings:sync__different_settings__keep_local_button__confirm',
+                  ),
                 )
                 if (!isConfirmed) return
                 const success = await syncLocalToServer(
@@ -141,7 +151,7 @@ const SyncSettingCheckerWrapper: FC<{
                 success && (await checkSync())
               }}
             >
-              Keep local browser settings instead
+              {t('settings:sync__different_settings__keep_local_button')}
             </Button>
           </Stack>
         </Stack>
@@ -166,7 +176,7 @@ const SyncSettingCheckerWrapper: FC<{
             fontSize={16}
             lineHeight={1.25}
           >
-            Syncing...
+            {t('settings:sync__save_syncing')}
           </Typography>
         </Stack>
       </Backdrop>

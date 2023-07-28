@@ -38,7 +38,7 @@ const useSyncSettingsChecker = () => {
       setIsSyncing(true)
       return await syncServerSettingsToLocalSettings()
     } catch (e) {
-      enqueueSnackbar(t('settings:sync_failed'), {
+      enqueueSnackbar(t('settings:sync__sync_failed'), {
         variant: 'error',
         autoHideDuration: 1000,
       })
@@ -58,14 +58,14 @@ const useSyncSettingsChecker = () => {
         }
         const success = await syncLocalSettingsToServerSettings()
         if (success) {
-          debounceEnqueueSnackbar(t('settings:save_success'), {
+          debounceEnqueueSnackbar(t('settings:sync__save_success'), {
             variant: 'success',
             autoHideDuration: 1000,
           })
         }
         return success
       } catch (e) {
-        enqueueSnackbar(t('settings:sync_failed'), {
+        enqueueSnackbar(t('settings:sync__sync_failed'), {
           variant: 'error',
           autoHideDuration: 1000,
         })

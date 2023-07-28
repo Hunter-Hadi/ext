@@ -255,7 +255,7 @@ const useHandlePDFViewerError = () => {
                   event.stopPropagation()
                   await chromeExtensionClientOpenPage({
                     key: 'options',
-                    query: '#pdf',
+                    query: '?id=pdf-viewer#/appearance',
                   })
                   window.close()
                 }}
@@ -347,7 +347,7 @@ const disabledPDFViewer = () => {
                     event.stopPropagation()
                     await chromeExtensionClientOpenPage({
                       key: 'options',
-                      query: '#pdf',
+                      query: '?id=pdf-viewer#/appearance',
                     })
                   }}
                 >

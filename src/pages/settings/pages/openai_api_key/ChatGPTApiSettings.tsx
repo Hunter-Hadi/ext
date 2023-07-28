@@ -64,7 +64,7 @@ const ChatGPTApiSettings: FC = () => {
         ) {
           return
         } else {
-          debounceEnqueueSnackbar(t('settings:save_success'), {
+          debounceEnqueueSnackbar(t('settings:sync__save_success'), {
             variant: 'success',
           })
           // 第一次加载
@@ -72,7 +72,7 @@ const ChatGPTApiSettings: FC = () => {
         }
       }
       debounceSetSettings('OPENAI_API', settings, true)?.then(() => {
-        debounceEnqueueSnackbar(t('settings:save_success'), {
+        debounceEnqueueSnackbar(t('settings:sync__save_success'), {
           variant: 'success',
         })
       })

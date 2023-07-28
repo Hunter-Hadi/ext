@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import Stack from '@mui/material/Stack'
 import OptionsToolbarLogo from '@/pages/settings/components/toolbar/OptionsToolbarLogo'
 import Box from '@mui/material/Box'
@@ -12,11 +12,11 @@ import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
-import Browser from 'webextension-polyfill'
 import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
 import PageHelp from '@/pages/settings/components/pageHelp'
 import Button from '@mui/material/Button'
 import { useTranslation } from 'react-i18next'
+import SettingsLoginPage from '@/pages/settings/pages/login'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {
   xs: 250,
@@ -63,23 +63,52 @@ const SettingsPerksPage = React.lazy(
 )
 const SettingsApp: FC = () => {
   const { i18n } = useTranslation()
-  const { loading } = useAuthLogin()
+  const { loaded, isLogin } = useAuthLogin()
+  const onceScrollRef = useRef(false)
   const [route, setRoute] = useState<ISettingsRouteType>(() =>
     getLocationHashRoute(),
   )
-
   useEffect(() => {
     if (route) {
       if (getLocationHashRoute() !== route) {
         setLocationHashRoute(route)
       }
     }
-    console.log(
-      Browser.i18n.getAcceptLanguages().then((code) => {
-        console.log(code)
-      }),
-    )
   }, [route])
+  useEffect(() => {
+    if (route && isLogin && !onceScrollRef.current) {
+      const locationSearch = window.location.search
+      const searchParams = locationSearch.split('?')[1]?.split('&')
+      const searchParamsMap = new Map<string, string>()
+      searchParams?.forEach((searchParam) => {
+        const [key, value] = searchParam.split('=')
+        searchParamsMap.set(key, value)
+      })
+      if (searchParamsMap.get('id')) {
+        onceScrollRef.current = true
+        const maxRenderTime = 3000
+        const intervalTimer = setInterval(() => {
+          const hTag = document.getElementById(searchParamsMap.get('id')!)
+          if (hTag) {
+            clearInterval(intervalTimer)
+            hTag.scrollIntoView({
+              behavior: 'smooth',
+            })
+          }
+        }, 100)
+        const timer = setTimeout(() => {
+          clearInterval(intervalTimer)
+        }, maxRenderTime)
+        return () => {
+          clearTimeout(timer)
+          clearInterval(intervalTimer)
+        }
+      }
+    }
+    return () => {
+      // do nothing
+    }
+  }, [route, isLogin])
   return (
     <SettingsPageRouteContext.Provider value={{ route, setRoute }}>
       <Stack height={'100vh'}>
@@ -117,7 +146,9 @@ const SettingsApp: FC = () => {
               {/*TODO search bar*/}
               <Button
                 onClick={async () => {
-                  await i18n.changeLanguage('zh_CN')
+                  await i18n.changeLanguage(
+                    i18n.language === 'zh_CN' ? 'en' : 'zh_CN',
+                  )
                 }}
               >
                 change language
@@ -141,69 +172,79 @@ const SettingsApp: FC = () => {
           px={2}
         >
           <AppSuspenseLoadingLayout>
-            <AppLoadingLayout loading={loading}>
-              <SyncSettingCheckerWrapper>
-                {/*left menu*/}
-                <Box
-                  flex={'1 1 0'}
-                  sx={{
-                    justifyContent: 'end',
-                    height: '100%',
-                    position: 'sticky',
-                    top: 0,
-                    display: {
-                      xs: 'none',
-                      md: 'flex',
-                    },
-                  }}
-                >
-                  <Stack direction={'row'}>
-                    <OptionsLeftMenu sx={{ width: SETTINGS_PAGE_MENU_WIDTH }} />
+            <AppLoadingLayout loading={!loaded}>
+              {isLogin ? (
+                <SyncSettingCheckerWrapper>
+                  {/*left menu*/}
+                  <Box
+                    flex={'1 1 0'}
+                    sx={{
+                      justifyContent: 'end',
+                      height: '100%',
+                      position: 'sticky',
+                      top: 0,
+                      display: {
+                        xs: 'none',
+                        md: 'flex',
+                      },
+                    }}
+                  >
+                    <Stack direction={'row'}>
+                      <OptionsLeftMenu
+                        sx={{ width: SETTINGS_PAGE_MENU_WIDTH }}
+                      />
+                    </Stack>
+                  </Box>
+                  {/*content*/}
+                  <Stack
+                    flex={'1 1 0'}
+                    flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}
+                    sx={{ maxHeight: 'calc(100vh - 56px)', overflowY: 'auto' }}
+                  >
+                    <Stack
+                      width={SETTINGS_PAGE_CONTENT_WIDTH}
+                      mx={'auto'}
+                      pt={2}
+                    >
+                      {route === '/me' && <SettingsMePage />}
+                      {route === '/help' && <SettingsHelpPage />}
+                      {route === '/my-own-prompts' && (
+                        <SettingsMyOwnPromptsPage />
+                      )}
+                      {route === '/openai-api-key' && (
+                        <SettingsOpenaiAPIKeyPage />
+                      )}
+                      {route === '/shortcut' && <SettingsShortcutPage />}
+                      {route === '/appearance' && <SettingsAppearancePage />}
+                      {route === '/mini-menu' && <SettingsMiniMenuPage />}
+                      {route === '/language' && <SettingsLanguagePage />}
+                      {route === '/chatgpt-stable-mode' && (
+                        <SettingsChatGPTStableModePage />
+                      )}
+                      {route === '/perks' && <SettingsPerksPage />}
+                    </Stack>
                   </Stack>
-                </Box>
-                {/*content*/}
-                <Stack
-                  flex={'1 1 0'}
-                  flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}
-                  sx={{ maxHeight: 'calc(100vh - 56px)', overflowY: 'auto' }}
-                >
-                  <Stack width={SETTINGS_PAGE_CONTENT_WIDTH} mx={'auto'} pt={2}>
-                    {route === '/me' && <SettingsMePage />}
-                    {route === '/help' && <SettingsHelpPage />}
-                    {route === '/my-own-prompts' && (
-                      <SettingsMyOwnPromptsPage />
-                    )}
-                    {route === '/openai-api-key' && (
-                      <SettingsOpenaiAPIKeyPage />
-                    )}
-                    {route === '/shortcut' && <SettingsShortcutPage />}
-                    {route === '/appearance' && <SettingsAppearancePage />}
-                    {route === '/mini-menu' && <SettingsMiniMenuPage />}
-                    {route === '/language' && <SettingsLanguagePage />}
-                    {route === '/chatgpt-stable-mode' && (
-                      <SettingsChatGPTStableModePage />
-                    )}
-                    {route === '/perks' && <SettingsPerksPage />}
+                  {/*right*/}
+                  <Stack
+                    direction={'row'}
+                    flex={'1 1 0'}
+                    justifyContent={'start'}
+                    sx={{
+                      pt: 2,
+                      display: {
+                        xs: 'none',
+                        lg: 'flex',
+                      },
+                    }}
+                  >
+                    <Stack width={SETTINGS_PAGE_MENU_WIDTH}>
+                      <PageHelp defaultOpen />
+                    </Stack>
                   </Stack>
-                </Stack>
-                {/*right*/}
-                <Stack
-                  direction={'row'}
-                  flex={'1 1 0'}
-                  justifyContent={'start'}
-                  sx={{
-                    pt: 2,
-                    display: {
-                      xs: 'none',
-                      lg: 'flex',
-                    },
-                  }}
-                >
-                  <Stack width={SETTINGS_PAGE_MENU_WIDTH}>
-                    <PageHelp defaultOpen />
-                  </Stack>
-                </Stack>
-              </SyncSettingCheckerWrapper>
+                </SyncSettingCheckerWrapper>
+              ) : (
+                <SettingsLoginPage />
+              )}
             </AppLoadingLayout>
           </AppSuspenseLoadingLayout>
         </Box>

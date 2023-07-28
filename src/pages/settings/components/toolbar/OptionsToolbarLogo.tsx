@@ -1,10 +1,8 @@
 import React, { FC, useState } from 'react'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
 import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Drawer from '@mui/material/Drawer'
@@ -28,55 +26,42 @@ const OptionsToolbarLogo: FC = () => {
     }
   return (
     <React.Fragment>
-      <Link href={APP_USE_CHAT_GPT_HOST} target={'_blank'} underline={'none'}>
-        <Stack direction={'row'} alignItems={'center'} spacing={1}>
-          <Box
-            component={'span'}
+      <Stack direction={'row'} alignItems={'center'} spacing={1}>
+        <Box component={'span'}>
+          <UseChatGptIcon
             sx={{
-              cursor: 'pointer',
+              display: {
+                xs: 'none',
+                md: 'inline-flex',
+              },
+              fontSize: 32,
+            }}
+          />
+          <IconButton
+            onClick={(event) => {
+              event.stopPropagation()
+              event.preventDefault()
+              toggleDrawer(true)(event)
+            }}
+            sx={{
+              display: {
+                xs: 'inline-flex',
+                md: 'none',
+              },
             }}
           >
-            <UseChatGptIcon
+            <ContextMenuIcon
               sx={{
-                display: {
-                  xs: 'none',
-                  md: 'inline-flex',
-                },
-                fontSize: 32,
+                fontSize: 24,
               }}
+              icon={'Menu'}
             />
-            <IconButton
-              onClick={(event) => {
-                event.stopPropagation()
-                event.preventDefault()
-                toggleDrawer(true)(event)
-              }}
-              sx={{
-                display: {
-                  xs: 'inline-flex',
-                  md: 'none',
-                },
-              }}
-            >
-              <ContextMenuIcon
-                sx={{
-                  fontSize: 24,
-                }}
-                icon={'Menu'}
-              />
-            </IconButton>
-          </Box>
-          <Typography
-            fontSize={20}
-            fontWeight={700}
-            sx={{
-              cursor: 'pointer',
-            }}
-          >
-            MaxAI.me {t('common:settings')}
-          </Typography>
-        </Stack>
-      </Link>
+          </IconButton>
+        </Box>
+        <Typography fontSize={20} fontWeight={700} color={'text.primary'}>
+          MaxAI.me {t('common:settings')}
+        </Typography>
+      </Stack>
       <Drawer anchor={'left'} open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box
           role={'presentation'}
@@ -97,28 +82,16 @@ const OptionsToolbarLogo: FC = () => {
               pl: 2,
             }}
           >
-            <Link
-              href={APP_USE_CHAT_GPT_HOST}
-              target={'_blank'}
-              underline={'none'}
-            >
-              <Stack direction={'row'} alignItems={'center'} spacing={1}>
-                <UseChatGptIcon
-                  sx={{
-                    fontSize: 32,
-                  }}
-                />
-                <Typography
-                  fontSize={20}
-                  fontWeight={700}
-                  sx={{
-                    cursor: 'pointer',
-                  }}
-                >
-                  MaxAI.me {t('common:settings')}
-                </Typography>
-              </Stack>
-            </Link>
+            <Stack direction={'row'} alignItems={'center'} spacing={1}>
+              <UseChatGptIcon
+                sx={{
+                  fontSize: 32,
+                }}
+              />
+              <Typography fontSize={20} fontWeight={700} color={'text.primary'}>
+                MaxAI.me {t('common:settings')}
+              </Typography>
+            </Stack>
           </Stack>
           <OptionsLeftMenu />
         </Box>

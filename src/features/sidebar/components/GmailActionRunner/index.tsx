@@ -51,7 +51,7 @@ const GmailActionRunner = () => {
   useEffect(() => {
     const ctaButtonAction = (event: any) => {
       const { ctaButtonElement } = event.detail || {}
-      if (currentUserPlan.name === 'free') {
+      if (currentUserPlan.name === 'free' && !currentUserPlan.isNewUser) {
         const customEvent = new CustomEvent(
           'maxAIPermissionWrapperCustomEvent',
           {
@@ -96,7 +96,7 @@ const GmailActionRunner = () => {
     return () => {
       window.removeEventListener('ctaButtonClick', ctaButtonAction)
     }
-  }, [currentUserPlan.name])
+  }, [currentUserPlan])
 
   const permissionCardMemo = useMemo(() => {
     const isDraftMessageType = messageType !== 'reply'

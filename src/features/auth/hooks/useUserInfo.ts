@@ -3,10 +3,11 @@ import { AuthUserInfoState } from '@/features/auth/store'
 import { useMemo } from 'react'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { IUserRoleType } from '@/features/auth/types'
+import dayjs from 'dayjs'
 
 export type IUserCurrentPlan = {
   name: IUserRoleType
-  created_at?: string
+  isNewUser?: boolean
 }
 
 const useUserInfo = () => {
@@ -46,7 +47,7 @@ const useUserInfo = () => {
   }, [userInfo])
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
     let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
-    const created_at = userInfo?.created_at
+    let isNewUser = false
     if (userInfo?.chatgpt_expires_at) {
       // check is pro gift
       if (
@@ -56,9 +57,19 @@ const useUserInfo = () => {
         name = 'pro_gift'
       }
     }
+    // 判断是否是新用户 - 7天内注册的用户
+    if (userInfo?.created_at) {
+      const created_at = dayjs(userInfo?.created_at)
+      const now = dayjs().utc()
+      const diffDays = now.diff(created_at, 'day')
+      console.log('created account days', diffDays, created_at)
+      if (diffDays <= 7) {
+        isNewUser = true
+      }
+    }
     return {
       name,
-      created_at,
+      isNewUser,
     }
   }, [userInfo])
   return {

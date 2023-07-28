@@ -20,7 +20,6 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import LazyLoadImage from '@/components/LazyloadImage'
-import dayjs from 'dayjs'
 
 type PermissionWrapperCardSceneType =
   | 'CUSTOM_PROMPT'
@@ -162,15 +161,9 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     if (permissions.find((permission) => permission === currentUserPlan.name)) {
       return true
     }
-    // 判断是否刚注册7天以内
-    if (currentUserPlan?.created_at) {
-      const created_at = dayjs(currentUserPlan?.created_at)
-      const now = dayjs()
-      const diffDays = now.diff(created_at, 'day')
-      console.log('created account days', diffDays, created_at)
-      if (diffDays <= 7) {
-        return true
-      }
+    // 判断是否为新用户
+    if (currentUserPlan?.isNewUser) {
+      return true
     }
     return false
   }, [currentUserPlan, permissions])

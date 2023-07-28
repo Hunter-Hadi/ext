@@ -27,18 +27,12 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
   const { t } = useTranslation(['settings', 'common'])
   const confirmText = useMemo(() => {
     if (actionType === 'delete') {
-      return `${t(
-        'settings:feature_card__prompts__confirm__delete__description1',
-      )} ${
-        nodeType === 'shortcuts'
-          ? t('settings:feature_card__prompts__confirm__delete__option')
-          : t('settings:feature_card__prompts__confirm__delete__group')
-      }${t('settings:feature_card__prompts__confirm__delete__description2')}`
+      return t('settings:feature_card__prompts__confirm__delete__description')
     }
 
     // default reset type
     return t('settings:feature_card__prompts__confirm__restore__description')
-  }, [actionType])
+  }, [actionType, nodeType, t])
 
   const buttonText = useMemo(() => {
     if (actionType === 'delete') {
@@ -84,6 +78,7 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
               color: (t) => (t.palette.mode === 'dark' ? '#f5f5f5' : '#626262'),
               ':hover': {
                 bgcolor: '#666',
+                color: '#fff',
               },
             }}
             onClick={handleConfirm}

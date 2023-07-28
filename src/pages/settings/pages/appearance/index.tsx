@@ -9,9 +9,9 @@ const SettingsAppearancePage: FC = () => {
   return (
     <Stack spacing={1}>
       <FeatureAppearanceCard />
-      <FeatureShortcutHintCard />
       <FeatureGmailAssistantCard />
       <FeaturePDFViewerCard />
+      <FeatureShortcutHintCard />
     </Stack>
   )
 }

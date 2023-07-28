@@ -85,8 +85,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   ): Promise<{ success: boolean; answer: string; error: string }> => {
     const host = getCurrentDomainHost()
     const contextMenu = options?.meta?.contextMenu
-    // 判断是否在特殊页面开始: PDF\Google Doc，如果是，判断是否是免费用户，如果是，弹出升级卡片
-    if (currentUserPlan.name === 'free' && contextMenu?.id) {
+    // 判断是否在特殊页面开始: PDF\Google Doc，如果是，判断是否是免费用户(并且不是新用户)，如果是，弹出升级卡片
+    if (
+      currentUserPlan.name === 'free' &&
+      contextMenu?.id &&
+      !currentUserPlan.isNewUser
+    ) {
       const url = new URL(location.href)
       const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
       let upgradeCardSetting: PermissionWrapperCardType | null = null

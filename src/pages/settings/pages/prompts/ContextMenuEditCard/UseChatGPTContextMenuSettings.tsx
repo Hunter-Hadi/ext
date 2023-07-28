@@ -113,7 +113,7 @@ const ContextMenuSettings: FC<{
   )
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<string | null>(null)
-  const [confirmType, setconfirmType] = useState<IConfirmActionType | null>(
+  const [confirmType, setConfirmType] = useState<IConfirmActionType | null>(
     null,
   )
   const [inputValue, setInputValue] = useState<string>('')
@@ -238,7 +238,7 @@ const ContextMenuSettings: FC<{
   }
 
   const handleActionConfirmOpen = (type: IConfirmActionType, id?: string) => {
-    setconfirmType(type)
+    setConfirmType(type)
     if (id) {
       setConfirmId(id)
     }
@@ -246,7 +246,7 @@ const ContextMenuSettings: FC<{
   }
   const handleActionConfirmClose = () => {
     setConfirmOpen(false)
-    setconfirmType(null)
+    setConfirmType(null)
   }
 
   const handleActionConfirmOnConfirm = (type: IConfirmActionType) => {
@@ -265,7 +265,7 @@ const ContextMenuSettings: FC<{
       setEditNode(null)
     }
     setConfirmOpen(false)
-    setconfirmType(null)
+    setConfirmType(null)
   }
 
   useEffect(() => {

@@ -6,6 +6,7 @@ import { IUserRoleType } from '@/features/auth/types'
 
 export type IUserCurrentPlan = {
   name: IUserRoleType
+  created_at?: string
 }
 
 const useUserInfo = () => {
@@ -45,6 +46,7 @@ const useUserInfo = () => {
   }, [userInfo])
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
     let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
+    const created_at = userInfo?.created_at
     if (userInfo?.chatgpt_expires_at) {
       // check is pro gift
       if (
@@ -56,6 +58,7 @@ const useUserInfo = () => {
     }
     return {
       name,
+      created_at,
     }
   }, [userInfo])
   return {

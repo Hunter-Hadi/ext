@@ -43,11 +43,21 @@ export const syncServerSettingsToLocalSettings = async () => {
           serverSettings.gmailToolBarContextMenu = []
         }
         await setChromeExtensionSettings((localSettings) => {
+          // 从本地获取openai api key
+          const openaiAPIKey =
+            localSettings.thirdProviderSettings?.OPENAI_API?.apiKey
           return mergeWithObject([
             localSettings,
             serverSettings,
             {
               buttonSettings,
+            },
+            {
+              thirdProviderSettings: {
+                OPENAI_API: {
+                  apiKey: openaiAPIKey,
+                },
+              },
             },
           ]) as IChromeExtensionSettings
         })

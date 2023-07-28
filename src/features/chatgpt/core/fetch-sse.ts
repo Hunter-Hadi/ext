@@ -21,6 +21,7 @@ export const fetchSSE = async (
         location.href = 'https://chat.openai.com/auth/login'
       } else if (resp.status === 403) {
         location.reload()
+      } else if (resp.status === 418) {
       }
     }
     throw new Error(

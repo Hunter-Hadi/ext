@@ -17,6 +17,7 @@ import PageHelp from '@/pages/settings/components/pageHelp'
 import Button from '@mui/material/Button'
 import { useTranslation } from 'react-i18next'
 import SettingsLoginPage from '@/pages/settings/pages/login'
+import DevContent from '@/components/DevContent'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {
   xs: 250,
@@ -144,15 +145,17 @@ const SettingsApp: FC = () => {
               flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}
             >
               {/*TODO search bar*/}
-              <Button
-                onClick={async () => {
-                  await i18n.changeLanguage(
-                    i18n.language === 'zh_CN' ? 'en' : 'zh_CN',
-                  )
-                }}
-              >
-                change language
-              </Button>
+              <DevContent>
+                <Button
+                  onClick={async () => {
+                    await i18n.changeLanguage(
+                      i18n.language === 'zh_CN' ? 'en' : 'zh_CN',
+                    )
+                  }}
+                >
+                  change language
+                </Button>
+              </DevContent>
             </Stack>
             <Stack direction={'row'} flex={'1 1 0'} justifyContent={'end'}>
               {/*<AccountMenu />*/}

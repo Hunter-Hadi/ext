@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import {
   IUserCurrentPlan,
   useUserInfo,
@@ -20,6 +20,7 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import LazyLoadImage from '@/components/LazyloadImage'
+import dayjs from 'dayjs'
 
 type PermissionWrapperCardSceneType =
   | 'CUSTOM_PROMPT'
@@ -155,7 +156,26 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
       window.removeEventListener('maxAIPermissionWrapperCustomEvent', listener)
     }
   }, [])
-  if (permissions.find((permission) => permission === currentUserPlan.name)) {
+  // 通用的权限判断逻辑
+  const hasPermissionMemo = useMemo(() => {
+    // 判断角色
+    if (permissions.find((permission) => permission === currentUserPlan.name)) {
+      return true
+    }
+    // 判断是否刚注册7天以内
+    if (currentUserPlan?.created_at) {
+      const created_at = dayjs(currentUserPlan?.created_at)
+      const now = dayjs()
+      const diffDays = now.diff(created_at, 'day')
+      console.log('created account days', diffDays, created_at)
+      if (diffDays <= 7) {
+        return true
+      }
+    }
+    return false
+  }, [currentUserPlan, permissions])
+
+  if (hasPermissionMemo) {
     return <>{children}</>
   }
   return (

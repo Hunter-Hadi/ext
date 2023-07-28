@@ -316,7 +316,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             }
             errorMessage =
               error?.message || error || 'Error detected. Please try again.'
-            if (error === 'manual aborted request.') {
+            if (errorMessage === 'manual aborted request.') {
               isManualStop = true
               // 手动取消的请求不计入错误
             } else {
@@ -328,7 +328,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "MaxAI.me" from the AI Provider options at the top of the sidebar.
                 ![switch-provider](https://www.maxai.me/assets/chrome-extension/switch-provider.png)`
               }
-              if (error.includes('[upgrade to Pro]')) {
+              if (errorMessage.includes('[upgrade to Pro]')) {
                 needUpgrade = true
                 errorMessage = `![upgrade to pro image](https://www.maxai.me/assets/chrome-extension/upgrade/unlimited-ai-requests.png)${errorMessage}`
               }

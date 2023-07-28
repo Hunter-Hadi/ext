@@ -37,7 +37,7 @@ const ChatGPTApiSettings: FC = () => {
         autoHideDuration: 1000,
         ...options,
       })
-    }, 2000),
+    }, 1000),
     [enqueueSnackbar],
   )
   useEffectOnce(() => {

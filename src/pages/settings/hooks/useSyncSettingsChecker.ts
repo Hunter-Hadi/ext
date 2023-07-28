@@ -9,10 +9,12 @@ import {
   syncServerSettingsToLocalSettings,
 } from '@/background/utils/syncSettings'
 import { IChromeExtensionSettings } from '@/background/types/Settings'
+import { useTranslation } from 'react-i18next'
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
   // Sync successful!
   // Sync failed!
+  const { t } = useTranslation(['settings'])
   const { enqueueSnackbar } = useSnackbar()
   const [isSyncing, setIsSyncing] = useState(false)
   const [isChecking, setIsChecking] = useState(false)
@@ -36,7 +38,7 @@ const useSyncSettingsChecker = () => {
       setIsSyncing(true)
       return await syncServerSettingsToLocalSettings()
     } catch (e) {
-      enqueueSnackbar('Sync failed!', {
+      enqueueSnackbar(t('settings:sync_failed'), {
         variant: 'error',
         autoHideDuration: 1000,
       })
@@ -56,14 +58,14 @@ const useSyncSettingsChecker = () => {
         }
         const success = await syncLocalSettingsToServerSettings()
         if (success) {
-          debounceEnqueueSnackbar('Settings updated', {
+          debounceEnqueueSnackbar(t('settings:save_success'), {
             variant: 'success',
             autoHideDuration: 1000,
           })
         }
         return success
       } catch (e) {
-        enqueueSnackbar('Sync failed!', {
+        enqueueSnackbar(t('settings:sync_failed'), {
           variant: 'error',
           autoHideDuration: 1000,
         })

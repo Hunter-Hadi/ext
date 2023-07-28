@@ -14,7 +14,7 @@ import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import {
   RunPromptTooltip,
   TemplateTooltip,
-} from '../../../components/tooltipCollection'
+} from '../../../../../components/tooltipCollection'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
@@ -121,7 +121,7 @@ const ContextMenuEditForm: FC<{
   onDelete?: (id: string) => void
   open: boolean
 }> = ({ open, node, onSave, onCancel, onDelete, settingsKey, iconSetting }) => {
-  const { t } = useTranslation(['settings'])
+  const { t } = useTranslation(['settings', 'common'])
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
   )
@@ -408,6 +408,7 @@ const ContextMenuEditForm: FC<{
               </Stack>
               {editNode.data.visibility && (
                 <VisibilitySettingCard
+                  mode={'white'}
                   disabled={isDisabled}
                   sx={{ mt: 2 }}
                   defaultValue={editNode.data.visibility}
@@ -447,10 +448,10 @@ const ContextMenuEditForm: FC<{
                   )
               }}
             >
-              Save
+              {t('common:save')}
             </Button>
             <Button variant={'outlined'} onClick={onCancel}>
-              Cancel
+              {t('common:cancel')}
             </Button>
             <Button
               sx={{ ml: 'auto!important', mr: 0 }}
@@ -462,7 +463,7 @@ const ContextMenuEditForm: FC<{
                 onDelete && onDelete(editNode.id as string)
               }}
             >
-              Delete
+              {t('common:delete')}
             </Button>
           </Stack>
         </Stack>

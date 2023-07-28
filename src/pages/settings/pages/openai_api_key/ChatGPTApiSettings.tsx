@@ -18,13 +18,16 @@ import {
 import { useTranslation } from 'react-i18next'
 import Button from '@mui/material/Button'
 import { OpenInNewOutlined } from '@mui/icons-material'
+import { isEqual } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 const ChatGPTApiSettings: FC = () => {
   const { t } = useTranslation(['settings'])
   const { enqueueSnackbar } = useSnackbar()
   const [settings, setSettings] = useState<IOpenAIApiSettingsType>({})
   const [loaded, setLoaded] = useState(false)
-  const once = useRef(true)
+  const init = useRef<boolean>(false)
+  const initSettingsRef = useRef<IOpenAIApiSettingsType | null>(null)
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
   const debounceEnqueueSnackbar = useCallback(
@@ -40,24 +43,41 @@ const ChatGPTApiSettings: FC = () => {
   useEffectOnce(() => {
     setLoaded(false)
     getThirdProviderSettings('OPENAI_API').then((settings) => {
-      setSettings(settings as any)
-      setLoaded(true)
+      if (settings) {
+        initSettingsRef.current = cloneDeep(settings)
+        setSettings(settings)
+        setLoaded(true)
+      }
     })
   })
+  const debounceSetSettings = useCallback(
+    debounce(setThirdProviderSettings, 1000),
+    [],
+  )
   useEffect(() => {
     if (loaded) {
-      setThirdProviderSettings('OPENAI_API', settings, true).then(() => {
-        if (once.current) {
-          once.current = false
+      if (!init.current) {
+        // 深比较
+        if (
+          initSettingsRef.current &&
+          isEqual(initSettingsRef.current, settings)
+        ) {
           return
+        } else {
+          debounceEnqueueSnackbar(t('settings:save_success'), {
+            variant: 'success',
+          })
+          // 第一次加载
+          init.current = true
         }
-        debounceEnqueueSnackbar('Settings updated', {
+      }
+      debounceSetSettings('OPENAI_API', settings, true)?.then(() => {
+        debounceEnqueueSnackbar(t('settings:save_success'), {
           variant: 'success',
-          autoHideDuration: 1000,
         })
       })
     }
-  }, [settings, loaded])
+  }, [settings, loaded, debounceSetSettings, debounceEnqueueSnackbar, t])
   return (
     <Stack>
       <AppLoadingLayout loading={!loaded}>
@@ -157,7 +177,7 @@ const ChatGPTApiSettings: FC = () => {
             href={'https://platform.openai.com/account/api-keys'}
             target={'_blank'}
             rel={'noreferrer noopener nofollow'}
-            sx={{ width: 220 }}
+            sx={{ width: 240 }}
             variant={'contained'}
             endIcon={<OpenInNewOutlined />}
           >

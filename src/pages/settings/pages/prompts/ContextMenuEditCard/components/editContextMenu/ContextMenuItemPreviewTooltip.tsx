@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import { domain2Favicon } from '@/utils'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import { styled } from '@mui/material/styles'
+import { useTranslation } from 'react-i18next'
 // import Button from '@mui/material/Button'
 
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -27,6 +28,7 @@ const ContextMenuItemPreviewTooltip: FC<{
   item: IContextMenuItem
   children: React.ReactNode
 }> = (props) => {
+  const { t } = useTranslation(['settings', 'common'])
   const { item, children } = props
   // const isGroup = item.data.type === 'group'
   const visibilitySetting = useMemo(() => {
@@ -36,9 +38,6 @@ const ContextMenuItemPreviewTooltip: FC<{
       blacklist: [],
     }
     if (settings) {
-      const selectedModeText = settings.isWhitelistMode
-        ? 'Enable on selected websites:'
-        : 'Disable on selected websites:'
       const domains = (
         settings.isWhitelistMode ? settings.whitelist : settings.blacklist
       ).map((domain) => {
@@ -48,16 +47,11 @@ const ContextMenuItemPreviewTooltip: FC<{
         }
       })
       let isEmpty = false
-      const emptyText = settings.isWhitelistMode
-        ? '❌ Disabled on all websites'
-        : '✅ Enabled on all websites'
       if (domains.length === 0) {
         isEmpty = true
       }
       return {
         isEmpty,
-        emptyText,
-        selectedModeText,
         domains,
       }
     }
@@ -95,10 +89,14 @@ const ContextMenuItemPreviewTooltip: FC<{
           {visibilitySetting && visibilitySetting.isEmpty && (
             <Stack spacing={0.5}>
               <Typography fontSize={14} color={'text.secondary'}>
-                Visibility:
+                {t(
+                  'settings:feature_card__prompts__info_card__field_visibility__title',
+                )}
               </Typography>
               <Typography fontSize={14} color={'text.primary'}>
-                {visibilitySetting.emptyText}
+                {t(
+                  'settings:feature_card__prompts__info_card__field_visibility__description',
+                )}
               </Typography>
             </Stack>
           )}
@@ -106,15 +104,9 @@ const ContextMenuItemPreviewTooltip: FC<{
             <>
               <Stack>
                 <Typography fontSize={14} color={'text.secondary'}>
-                  Mode:
-                </Typography>
-                <Typography fontSize={14} color={'text.primary'}>
-                  {visibilitySetting.selectedModeText}
-                </Typography>
-              </Stack>
-              <Stack>
-                <Typography fontSize={14} color={'text.secondary'}>
-                  Selected websites:
+                  {t(
+                    'settings:feature_card__prompts__info_card__field_enabled_sites__title',
+                  )}
                 </Typography>
                 <Stack
                   direction={'row'}

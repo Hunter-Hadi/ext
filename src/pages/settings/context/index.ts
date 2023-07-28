@@ -42,6 +42,11 @@ export const settingsPageRouterList = [
     divider: false,
   },
   {
+    route: '/perks',
+    label: 'left_menu__perks',
+    divider: true,
+  },
+  {
     route: '/help',
     label: 'left_menu__help',
     divider: false,

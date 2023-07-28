@@ -25,7 +25,10 @@ const SettingsMePage: FC = () => {
         <List
           component={'nav'}
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: (theme) =>
+              theme.palette.mode === 'dark'
+                ? 'rgb(32, 33, 36)'
+                : 'rgb(255,255,255)',
             p: '0 !important',
             borderRadius: '4px',
             border: (t) =>

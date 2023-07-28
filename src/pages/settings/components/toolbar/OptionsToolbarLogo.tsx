@@ -10,8 +10,10 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Drawer from '@mui/material/Drawer'
 import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
+import { useTranslation } from 'react-i18next'
 
 const OptionsToolbarLogo: FC = () => {
+  const { t } = useTranslation(['common'])
   const [drawerOpen, setDrawerOpen] = useState(false)
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -71,7 +73,7 @@ const OptionsToolbarLogo: FC = () => {
               cursor: 'pointer',
             }}
           >
-            MaxAI.me Settings
+            MaxAI.me {t('common:settings')}
           </Typography>
         </Stack>
       </Link>
@@ -113,7 +115,7 @@ const OptionsToolbarLogo: FC = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  MaxAI.me Settings
+                  MaxAI.me {t('common:settings')}
                 </Typography>
               </Stack>
             </Link>

@@ -12,10 +12,12 @@ import {
 } from '@/features/shortcuts/utils'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import { useTranslation } from 'react-i18next'
 
 const PopperId = 'tempalte-description-tooltip'
 
 const WordItem = (props: { word: string }) => {
+  const { t } = useTranslation(['common', 'settings'])
   const { word } = props
   const { description, examples } = templateWordToExamples(word)
   return (
@@ -41,13 +43,13 @@ const WordItem = (props: { word: string }) => {
       </Typography>
       {description && (
         <Typography variant="body2" whiteSpace={'pre-wrap'}>
-          {description}
+          {t(`settings:${description}` as any)}
         </Typography>
       )}
       {examples && examples.length > 0 && (
         <Stack mt={2}>
           <Typography variant="body2" color={'text.secondary'}>
-            Example phrases to use:
+            {t('settings:feature_card__prompts__prompt_template__example')}
           </Typography>
           {examples.map((example, index) => (
             <Typography
@@ -68,8 +70,10 @@ const WordItem = (props: { word: string }) => {
                   mx: 1,
                 }}
               ></Box>
-              <span className={'code'}>{example}</span>{' '}
-              <CopyTooltipIconButton copyText={example} />
+              <span className={'code'}>{t(`settings:${example}` as any)}</span>{' '}
+              <CopyTooltipIconButton
+                copyText={t(`settings:${example}` as any)}
+              />
             </Typography>
           ))}
         </Stack>
@@ -79,8 +83,8 @@ const WordItem = (props: { word: string }) => {
 }
 
 const TemplateTooltip = () => {
+  const { t } = useTranslation(['common', 'settings'])
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -109,11 +113,10 @@ const TemplateTooltip = () => {
       >
         <Box maxWidth={'60vw'} maxHeight={420} overflow="auto" p={1}>
           <Typography variant="body2">
-            The prompt template.
+            {t('settings:feature_card__prompts__prompt_template__title')}
             <br />
             <br />
-            The template can include any number of the following pre-defined
-            variables, or none at all:
+            {t('settings:feature_card__prompts__prompt_template__description')}
             <br />
             <Divider sx={{ my: 1 }} />
           </Typography>
@@ -134,6 +137,7 @@ const TemplateTooltip = () => {
 }
 
 const RunPromptTooltip = () => {
+  const { t } = useTranslation(['common', 'settings'])
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -163,17 +167,29 @@ const RunPromptTooltip = () => {
       >
         <Box maxWidth={'600px'} maxHeight={420} overflow="auto" p={1}>
           <Typography variant="body2">
-            <b>When enabled</b>
+            <b>
+              {t(
+                'settings:feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title',
+              )}
+            </b>
           </Typography>
           <Typography variant="body2">
-            {`The prompt will be directly sent to AI, which is the default "normal behavior". All prompt templates will have this option enabled by default.`}
+            {t(
+              'settings:feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description',
+            )}
           </Typography>
           <Divider sx={{ my: 1 }} />
           <Typography variant="body2">
-            <b>When disabled</b>
+            <b>
+              {t(
+                'settings:feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title',
+              )}
+            </b>
           </Typography>
           <Typography variant="body2">
-            {`The prompt first goes to the input box, allowing you to modify or add additional information before sending it to AI.`}
+            {t(
+              'settings:feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__description',
+            )}
           </Typography>
           <YoutubePlayerBox
             borderRadius={8}
@@ -185,16 +201,14 @@ const RunPromptTooltip = () => {
   )
 }
 const PDFTooltip = () => {
+  const { t } = useTranslation(['common', 'settings'])
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
-
   const handleClose = () => {
     setAnchorEl(null)
   }
-
   const open = Boolean(anchorEl)
   const id = open ? 'run-prompt-tooltip' : undefined
   return (
@@ -220,24 +234,38 @@ const PDFTooltip = () => {
           p={1}
         >
           <Typography variant="body2">
-            <b>How to activate the extension on PDF file</b>
+            <b>
+              {t(
+                'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__title',
+              )}
+            </b>
           </Typography>
           <Stack>
             <Typography variant="body2">
-              {`Step 1: Open PDF file in browser`}
+              {t(
+                'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item1',
+              )}
             </Typography>
             <Typography variant="body2">
-              {`Step 2: Enable "PDF AI viewer" in extension settings`}
+              {t(
+                'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item2',
+              )}
             </Typography>
             <Typography variant="body2">
-              {`Step 3: Enable "Allow access to file URLs" in Chrome settings`}
+              {t(
+                'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item3',
+              )}
             </Typography>
             <Typography variant="body2">
-              {`Step 4: Re-open PDF in browser to use prompt on selected text`}
+              {t(
+                'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item4',
+              )}
             </Typography>
           </Stack>
           <Typography variant="body2">
-            {`Protip: Make sure to enable both "PDF AI viewer" and "Allow access to file URLs" to activate the extension on PDF file`}
+            {t(
+              'settings:feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item5',
+            )}
           </Typography>
           <YoutubePlayerBox
             borderRadius={8}

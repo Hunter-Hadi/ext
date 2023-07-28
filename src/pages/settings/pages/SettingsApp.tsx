@@ -52,6 +52,15 @@ const SettingsAppearancePage = React.lazy(
 const SettingsMiniMenuPage = React.lazy(
   () => import('@/pages/settings/pages/mini_menu'),
 )
+const SettingsLanguagePage = React.lazy(
+  () => import('@/pages/settings/pages/language'),
+)
+const SettingsChatGPTStableModePage = React.lazy(
+  () => import('@/pages/settings/pages/chatgpt_stable_mode'),
+)
+const SettingsPerksPage = React.lazy(
+  () => import('@/pages/settings/pages/perks'),
+)
 const SettingsApp: FC = () => {
   const { i18n } = useTranslation()
   const { loading } = useAuthLogin()
@@ -170,6 +179,11 @@ const SettingsApp: FC = () => {
                     {route === '/shortcut' && <SettingsShortcutPage />}
                     {route === '/appearance' && <SettingsAppearancePage />}
                     {route === '/mini-menu' && <SettingsMiniMenuPage />}
+                    {route === '/language' && <SettingsLanguagePage />}
+                    {route === '/chatgpt-stable-mode' && (
+                      <SettingsChatGPTStableModePage />
+                    )}
+                    {route === '/perks' && <SettingsPerksPage />}
                   </Stack>
                 </Stack>
                 {/*right*/}

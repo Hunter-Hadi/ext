@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { IVisibilitySetting } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -18,13 +18,14 @@ import DialogTitle from '@mui/material/DialogTitle'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import { useTranslation } from 'react-i18next'
+import { isEqual } from 'lodash-es'
 
 /**
  * 控制黑白名单的卡片
  * @param props
  * @constructor
  * @version 1.0 - 根据黑白名单模式切换和保存
- * @version 2.0 - 仿照chrome只保留白名单模式
+ * @version 2.0 - 仿照chrome只保留单独黑名单/白名单模式
  */
 
 const VisibilitySettingCard: FC<{
@@ -32,9 +33,11 @@ const VisibilitySettingCard: FC<{
   defaultValue: IVisibilitySetting
   onChange: (value: IVisibilitySetting) => void
   disabled?: boolean
+  mode: 'black' | 'white'
 }> = (props) => {
+  const { defaultValue, onChange, disabled, mode } = props
+  const isBlackMode = mode === 'black'
   const { t } = useTranslation(['settings', 'common'])
-  const { defaultValue, onChange, disabled } = props
   const [newSite, setNewSite] = useState('')
   const [open, setOpen] = useState(false)
   const BoxRef = useRef<HTMLDivElement>(null)
@@ -48,11 +51,42 @@ const VisibilitySettingCard: FC<{
   const handleClose = () => {
     setOpen(false)
   }
+  const handleSubmit = () => {
+    if (isBlackMode) {
+      setVisibilitySetting({
+        ...visibilitySetting,
+        isWhitelistMode: false,
+        blacklist: uniq([newSite, ...visibilitySetting.blacklist]).filter(
+          Boolean,
+        ),
+      })
+    } else {
+      setVisibilitySetting({
+        ...visibilitySetting,
+        isWhitelistMode: true,
+        whitelist: uniq([newSite, ...visibilitySetting.whitelist]).filter(
+          Boolean,
+        ),
+      })
+    }
+    setOpen(false)
+    setTimeout(() => {
+      setOpen(false)
+    }, 0)
+  }
+  const isInitial = useRef(false)
   const [visibilitySetting, setVisibilitySetting] =
     useState<IVisibilitySetting>(() => {
       return cloneDeep(defaultValue)
     })
   useEffect(() => {
+    if (!isInitial.current) {
+      if (!isEqual(defaultValue, visibilitySetting)) {
+        isInitial.current = true
+      } else {
+        return
+      }
+    }
     if (visibilitySetting.isWhitelistMode) {
       if (visibilitySetting.whitelist.length === 0) {
         setVisibilitySetting({
@@ -67,10 +101,15 @@ const VisibilitySettingCard: FC<{
     console.log('save visibilitySetting', visibilitySetting)
     onChange(visibilitySetting)
   }, [visibilitySetting])
+  const memoizedDomains = useMemo(() => {
+    return visibilitySetting.isWhitelistMode
+      ? visibilitySetting.whitelist
+      : visibilitySetting.blacklist
+  }, [visibilitySetting])
   return (
     <Stack sx={{ ...props.sx }}>
-      <p>{JSON.stringify(defaultValue)}</p>
-      <p>mode: [{visibilitySetting.isWhitelistMode ? 'white' : 'black'}]</p>
+      <p>{JSON.stringify(visibilitySetting)}</p>
+      <p>mode: {isBlackMode ? 'black' : 'white'}</p>
       <p>
         {JSON.stringify(
           visibilitySetting.isWhitelistMode
@@ -81,6 +120,10 @@ const VisibilitySettingCard: FC<{
       <List
         sx={{
           p: 0,
+          bgcolor: (theme) =>
+            theme.palette.mode === 'dark'
+              ? 'rgb(32, 33, 36)'
+              : 'rgb(255,255,255)',
           borderRadius: '4px',
           border: '1px solid',
           borderColor: 'customColor.borderColor',
@@ -95,8 +138,16 @@ const VisibilitySettingCard: FC<{
       >
         <ListItem sx={{ p: 0 }}>
           <ListItemText
-            primary={t('settings:visibility_card__title')}
-            secondary={t('settings:visibility_card__description')}
+            primary={
+              isBlackMode
+                ? t('settings:visibility_card__black_list_title')
+                : t('settings:visibility_card__white_list_title')
+            }
+            secondary={
+              isBlackMode
+                ? t('settings:visibility_card__black_list_description')
+                : t('settings:visibility_card__white_list_description')
+            }
           />
           <Button
             variant={'outlined'}
@@ -111,7 +162,7 @@ const VisibilitySettingCard: FC<{
             {t('common:add')}
           </Button>
         </ListItem>
-        {visibilitySetting.whitelist.map((site) => {
+        {memoizedDomains.map((site) => {
           return (
             <ListItem
               key={site}
@@ -144,12 +195,21 @@ const VisibilitySettingCard: FC<{
                 sx={{ flexShrink: 0 }}
                 disabled={disabled}
                 onClick={() => {
-                  setVisibilitySetting({
-                    ...visibilitySetting,
-                    whitelist: visibilitySetting.whitelist.filter(
-                      (item) => item !== site,
-                    ),
-                  })
+                  if (isBlackMode) {
+                    setVisibilitySetting({
+                      ...visibilitySetting,
+                      blacklist: visibilitySetting.blacklist.filter(
+                        (item) => item !== site,
+                      ),
+                    })
+                  } else {
+                    setVisibilitySetting({
+                      ...visibilitySetting,
+                      whitelist: visibilitySetting.whitelist.filter(
+                        (item) => item !== site,
+                      ),
+                    })
+                  }
                 }}
               >
                 <ContextMenuIcon icon={'Delete'} sx={{ fontSize: 20 }} />
@@ -158,7 +218,15 @@ const VisibilitySettingCard: FC<{
           )
         })}
       </List>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        onKeyDownCapture={(event) => {
+          if (event.key === 'Enter' && newSite) {
+            handleSubmit()
+          }
+        }}
+      >
         <DialogTitle>
           {t('settings:visibility_card__add_a_site_dialog__title')}
         </DialogTitle>
@@ -194,15 +262,7 @@ const VisibilitySettingCard: FC<{
           <Button
             disabled={!newSite}
             variant={'contained'}
-            onClick={() => {
-              handleClose()
-              // 添加网站等于启用白名单模式
-              setVisibilitySetting({
-                ...visibilitySetting,
-                isWhitelistMode: true,
-                whitelist: uniq([newSite, ...visibilitySetting.whitelist]),
-              })
-            }}
+            onClick={handleSubmit}
           >
             {t('common:add')}
           </Button>

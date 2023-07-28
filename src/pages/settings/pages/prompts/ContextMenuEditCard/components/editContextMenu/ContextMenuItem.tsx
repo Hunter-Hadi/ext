@@ -8,7 +8,8 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import ContextMenuItemPreviewTooltip from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuItemPreviewTooltip'
+import ContextMenuItemPreviewTooltip from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuItemPreviewTooltip'
+import { useTranslation } from 'react-i18next'
 const ContextMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean
@@ -18,6 +19,7 @@ const ContextMenuItem = (props: {
   onDelete?: (id: string) => void
   isDropTarget?: boolean
 }) => {
+  const { t } = useTranslation(['settings', 'common'])
   const {
     isDropTarget = false,
     disabledDrag = false,
@@ -170,7 +172,11 @@ const ContextMenuItem = (props: {
                 placement: 'left',
                 arrow: true,
               }}
-              title={node.data.editable ? 'Edit' : 'Read only'}
+              title={t(
+                node.data.editable
+                  ? 'settings:feature_card__prompts__tooltip_read_only_title'
+                  : 'settings:feature_card__prompts__tooltip_edit_title',
+              )}
               size={'small'}
               onClick={(event) => {
                 onEdit && onEdit(node)

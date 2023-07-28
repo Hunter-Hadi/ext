@@ -5,10 +5,12 @@ import Stack from '@mui/material/Stack'
 import RadioCardGroup from '@/pages/settings/components/RadioCardGroup'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 import {
+  getChromeExtensionButtonSettings,
   useChromeExtensionButtonSettings,
   useComputedChromeExtensionButtonSettings,
 } from '@/background/utils/buttonSettings'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 const SettingsMiniMenuPage: FC = () => {
   const { toggleButtonSettings, updateButtonSettings } =
@@ -61,12 +63,21 @@ const SettingsMiniMenuPage: FC = () => {
         />
         {visible && buttonSettings?.visibility && (
           <VisibilitySettingCard
+            mode={'black'}
             defaultValue={buttonSettings.visibility}
             onChange={async (value) => {
-              await updateButtonSettings('textSelectPopupButton', {
-                ...buttonSettings,
-                visibility: value,
-              })
+              const newVisibility = cloneDeep(value)
+              if (newVisibility.isWhitelistMode) {
+                newVisibility.whitelist = []
+              }
+              const latestButtonSettings =
+                await getChromeExtensionButtonSettings('textSelectPopupButton')
+              if (latestButtonSettings) {
+                await updateButtonSettings('textSelectPopupButton', {
+                  ...latestButtonSettings,
+                  visibility: value,
+                })
+              }
             }}
           ></VisibilitySettingCard>
         )}

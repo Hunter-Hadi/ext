@@ -1,9 +1,9 @@
 import Stack from '@mui/material/Stack'
 import React from 'react'
-import UseChatGPTContextMenuSettings from '@/pages/settings/pages/UseChatGPTOptionsEditMenuPage/UseChatGPTContextMenuSettings'
+import UseChatGPTContextMenuSettings from '@/pages/settings/pages/prompts/ContextMenuEditCard/UseChatGPTContextMenuSettings'
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 
-const UseChatGPTOptionsEditMenuPage = () => {
+const ContextMenuEditCard = () => {
   return (
     <Stack
       sx={{
@@ -20,4 +20,4 @@ const UseChatGPTOptionsEditMenuPage = () => {
     </Stack>
   )
 }
-export default UseChatGPTOptionsEditMenuPage
+export default ContextMenuEditCard

@@ -7,10 +7,10 @@ import Link from '@mui/material/Link'
 import { OpenInNewOutlined } from '@mui/icons-material'
 
 const SettingsHelpPage: FC = () => {
-  const { t } = useTranslation('settings')
+  const { t } = useTranslation(['settings', 'common'])
   return (
     <SettingsFeatureCardLayout
-      title={t('feature_card__set_up__title')}
+      title={t('settings:feature_card__set_up__title')}
       id={'how-to-set-up'}
     >
       <YoutubePlayerBox
@@ -28,11 +28,12 @@ const SettingsHelpPage: FC = () => {
         }}
       >
         <Typography component={'span'} fontSize={'16px'}>
-          Contact us
+          {t('common:contact_us')}
         </Typography>
         <OpenInNewOutlined sx={{ fontSize: 20 }} />
       </Link>
     </SettingsFeatureCardLayout>
   )
 }
+
 export default SettingsHelpPage

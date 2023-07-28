@@ -15,16 +15,16 @@ import {
   MultiBackend,
 } from '@minoru/react-dnd-treeview'
 import { DndProvider } from 'react-dnd'
-import ContextMenuItem from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuItem'
+import ContextMenuItem from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuItem'
 import { v4 } from 'uuid'
 // import ContextMenuViewSource from '@/pages/settings/components/ContextMenuViewSource'
-import ContextMenuPlaceholder from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuPlaceholder'
-import ContextMenuViewSource from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuViewSource'
+import ContextMenuPlaceholder from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuPlaceholder'
+import ContextMenuViewSource from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuViewSource'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
-} from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuActionConfirmModal'
+} from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuActionConfirmModal'
 import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
-import ContextMenuMockTextarea from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuMockTextarea'
+import ContextMenuMockTextarea from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuMockTextarea'
 import DevContent from '@/components/DevContent'
 import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
 import AddIcon from '@mui/icons-material/Add'
@@ -35,7 +35,7 @@ import {
   getChromeExtensionButtonContextMenu,
   setChromeExtensionSettings,
 } from '@/background/utils'
-import ContextMenuEditFormModal from '@/pages/settings/pages/prompts/editContextMenu/ContextMenuEditFormModal'
+import ContextMenuEditFormModal from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuEditFormModal'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import {
   IContextMenuItem,

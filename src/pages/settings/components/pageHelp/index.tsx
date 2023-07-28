@@ -12,6 +12,7 @@ import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import { SxProps } from '@mui/material/styles'
 import OpenaiAPIKeyHelp from '@/pages/settings/components/pageHelp/pages/OpenaiAPIKeyHelp'
 import AppearanceHelp from '@/pages/settings/components/pageHelp/pages/AppearanceHelp'
+import ChatGPTStableModeHelp from '@/pages/settings/components/pageHelp/pages/ChatGPTStableModeHelp'
 
 const PageHelp: FC<{
   drawerMode?: boolean
@@ -41,6 +42,9 @@ const PageHelp: FC<{
       case '/appearance': {
         return <AppearanceHelp defaultOpen={defaultOpen} />
       }
+      case '/chatgpt-stable-mode': {
+        return <ChatGPTStableModeHelp defaultOpen={defaultOpen} />
+      }
     }
     return null
   }, [route, defaultOpen])
@@ -53,6 +57,7 @@ const PageHelp: FC<{
         <Button
           onClick={toggleDrawer(true)}
           sx={{
+            minWidth: 80,
             color: 'text.primary',
             display: {
               xs: 'inline-flex',

@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { useTranslation } from 'react-i18next'
 
 export type IConfirmActionType = 'reset' | 'delete'
 
@@ -23,24 +24,33 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
   onClose,
   onConfirm,
 }) => {
+  const { t } = useTranslation(['settings', 'common'])
   const confirmText = useMemo(() => {
     if (actionType === 'delete') {
-      return `Are you sure you want to delete this ${
-        nodeType === 'shortcuts' ? 'option' : 'group'
-      }? Please note that once you delete it, the action cannot be undone.`
+      return `${t(
+        'settings:feature_card__prompts__confirm__delete__description1',
+      )} ${
+        nodeType === 'shortcuts'
+          ? t('settings:feature_card__prompts__confirm__delete__option')
+          : t('settings:feature_card__prompts__confirm__delete__group')
+      }${t('settings:feature_card__prompts__confirm__delete__description2')}`
     }
 
     // default reset type
-    return `Are you sure you want to reset to the default options? Please note that once you restore to defaults, the action cannot be undone.`
+    return t('settings:feature_card__prompts__confirm__restore__description')
   }, [actionType])
 
   const buttonText = useMemo(() => {
     if (actionType === 'delete') {
-      return `Yes, delete`
+      return t(
+        'settings:feature_card__prompts__confirm__delete__confirm_button_text',
+      )
     }
 
     // default reset type
-    return `Yes, restore defaults`
+    return t(
+      'settings:feature_card__prompts__confirm__restore__confirm_button_text',
+    )
   }, [actionType])
 
   const handleConfirm = () => {
@@ -64,7 +74,7 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
         <Typography>{confirmText}</Typography>
         <Stack direction={'row-reverse'} gap={1} mt={2}>
           <Button variant="contained" onClick={onClose}>
-            Cancel
+            {t('common:cancel')}
           </Button>
           <Button
             variant="contained"

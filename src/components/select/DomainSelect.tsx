@@ -83,6 +83,11 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
   }, [props.value, memoOptions])
   return (
     <Autocomplete
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          event.stopPropagation()
+        }
+      }}
       disabled={disabled}
       open={open && !selected}
       onInputChange={(_, value) => {

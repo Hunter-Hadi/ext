@@ -1,22 +1,25 @@
 import React, { FC, useEffect, useState } from 'react'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Slider from '@mui/material/Slider'
-import FormControl from '@mui/material/FormControl'
-import Stack from '@mui/material/Stack'
-import Switch from '@mui/material/Switch'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
+import { useTranslation } from 'react-i18next'
+import List from '@mui/material/List'
+import { ListItem } from '@mui/material'
+import ListItemText from '@mui/material/ListItemText'
 import LinearProgress, {
   LinearProgressProps,
 } from '@mui/material/LinearProgress'
-import CloseAlert from '@/components/CloseAlert'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY } from '@/constants'
 import dayjs from 'dayjs'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import BulletList from '@/components/BulletList'
 import { useFocus } from '@/hooks/useFocus'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import Switch from '@mui/material/Switch'
+import ListItemButton from '@mui/material/ListItemButton'
+import Stack from '@mui/material/Stack'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
+import Slider from '@mui/material/Slider'
 
 const useCountDown = (duration: number) => {
   const [timeLeft, setTimeLeft] = useState(duration)
@@ -58,11 +61,11 @@ const useCountDown = (duration: number) => {
   }
 }
 
-function LinearProgressWithLabel(
-  props: LinearProgressProps & { value: number; label?: string },
-) {
+const LinearProgressWithLabel: FC<
+  LinearProgressProps & { value: number; label?: string }
+> = (props) => {
   return (
-    <Box sx={{ display: 'flex', my: 2, alignItems: 'center' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ minWidth: 64 }}>
         <Typography variant="body2" color="text.secondary">
           {props.label || `${Math.round(props.value)}%`}
@@ -75,26 +78,24 @@ function LinearProgressWithLabel(
   )
 }
 
-const ChatGPTStableModeSetting: FC<{
-  defaultValue?: number
-  onChange?: (value: number) => void
-}> = ({ defaultValue, onChange }) => {
-  const [value, setValue] = useState(defaultValue || 30) // 分钟
+const FeatureChatGPTStableModeCard: FC = () => {
+  const { t } = useTranslation(['settings', 'common'])
+  const [value, setValue] = useState(30) // 默认30分钟
   const [leftDuration, setLeftDuration] = useState(0) // 毫秒
   const [duration, setDuration] = useState(0) // 毫秒
   const { isRunning, formattedTime, timeLeft, showHoursOrMinutes } =
     useCountDown(leftDuration)
   const setStopTime = async () => {
-    const setValue = value
+    const durationValue = value
     await Browser.storage.local.set({
       [CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY]:
         JSON.stringify({
           start: dayjs().utc(),
-          end: dayjs().utc().add(setValue, 'minutes'),
+          end: dayjs().utc().add(durationValue, 'minutes'),
         }),
     })
-    setDuration(setValue * 60 * 1000)
-    setLeftDuration(setValue * 60 * 1000)
+    setDuration(durationValue * 60 * 1000)
+    setLeftDuration(durationValue * 60 * 1000)
   }
   const stop = async () => {
     await Browser.storage.local.remove(
@@ -162,88 +163,82 @@ const ChatGPTStableModeSetting: FC<{
     update()
   })
   return (
-    <>
-      <Typography
-        fontSize={20}
-        fontWeight={700}
-        color={'text.primary'}
-        id={'chatgpt-stable-mode'}
-        mb={2}
-        component={'h2'}
+    <SettingsFeatureCardLayout
+      title={t('settings:feature_card__chatgpt_stable_mode__title')}
+      id={'ai-response-language'}
+    >
+      <List
+        sx={{
+          bgcolor: (theme) =>
+            theme.palette.mode === 'dark'
+              ? 'rgb(32, 33, 36)'
+              : 'rgb(255,255,255)',
+          p: '0 !important',
+          borderRadius: '4px',
+          border: (t) =>
+            t.palette.mode === 'dark'
+              ? '1px solid rgba(255, 255, 255, 0.12)'
+              : '1px solid rgba(0, 0, 0, 0.12)',
+          '& > * + .MuiListItem-root': {
+            borderTop: '1px solid',
+            borderColor: 'customColor.borderColor',
+          },
+        }}
       >
-        ChatGPT stable mode
-      </Typography>
-      <CloseAlert icon={<></>} severity={'info'}>
-        <Stack spacing={1}>
-          <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
-            Benefits:
-          </Typography>
-          <BulletList
-            textProps={{ fontSize: 14 }}
-            textList={[
-              'Reduced ChatGPT login interruptions',
-              'Reduced ChatGPT network errors',
-              'Reduced ChatGPT Cloudflare checks',
-              'Reduced ChatGPT webpage refreshes',
-            ]}
-          />
-          <Typography fontSize={14} fontWeight={700} color={'text.primary'}>
-            Caveats:
-          </Typography>
-          <BulletList
-            textProps={{ fontSize: 14 }}
-            textList={[
-              `We recommend enabling it only when you're experiencing frequent ChatGPT interruptions or network errors`,
-            ]}
-          />
-        </Stack>
-      </CloseAlert>
-      <FormControl size="small" sx={{ my: 2 }}>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>Disabled</Typography>
-          <Switch
-            checked={isRunning}
-            onChange={async (event) => {
-              if (event.target.checked) {
-                await setStopTime()
-                sendLarkBotMessage(
-                  'Stable Mode Enabled',
-                  `duration: ${value}`,
-                  { uuid: 'dd385931-45f4-4de1-8e48-8145561b0f9d' },
-                )
-              } else {
-                await stop()
-              }
-            }}
-          />
-          <Typography>Enabled</Typography>
-        </Stack>
-      </FormControl>
-      {isRunning ? (
-        <Typography fontSize={14} color={'text.primary'}>
-          Stable Mode will be disabled in {showHoursOrMinutes}.
-        </Typography>
-      ) : (
-        <Typography fontSize={14} color={'text.primary'}>
-          Adjust the duration of automatic disabling for Stable Mode after it
-          has been enabled.
-        </Typography>
-      )}
-      {isRunning ? (
-        <LinearProgressWithLabel
-          value={(timeLeft / duration) * 100}
-          label={formattedTime}
-        />
-      ) : (
-        <MinutesSlider
-          defaultValue={value}
-          onChange={(newValue) => {
-            setValue(newValue)
-            onChange && onChange(newValue)
+        <ListItemButton
+          onClick={async () => {
+            const newChecked = !isRunning
+            if (newChecked) {
+              await setStopTime()
+              sendLarkBotMessage('Stable Mode Enabled', `duration: ${value}`, {
+                uuid: 'dd385931-45f4-4de1-8e48-8145561b0f9d',
+              })
+            } else {
+              await stop()
+            }
           }}
-        />
-      )}
-    </>
+        >
+          <ListItemText
+            primary={t(
+              'settings:feature_card__chatgpt_stable_mode__field_chatgpt_stable_mode__switch_title',
+            )}
+          />
+          <Switch checked={isRunning} />
+        </ListItemButton>
+        <ListItem>
+          <ListItemText
+            primary={
+              isRunning
+                ? t(
+                    'settings:feature_card__chatgpt_stable_mode__field_chatgpt_stable_mode__slider_running_title',
+                  ) + ` ${showHoursOrMinutes}`
+                : t(
+                    'settings:feature_card__chatgpt_stable_mode__field_chatgpt_stable_mode__slider_title',
+                  )
+            }
+            secondary={
+              <Stack mt={1}>
+                {isRunning ? (
+                  <LinearProgressWithLabel
+                    value={(timeLeft / duration) * 100}
+                    label={formattedTime}
+                  />
+                ) : (
+                  <Stack px={2}>
+                    <MinutesSlider
+                      defaultValue={value}
+                      onChange={(newValue) => {
+                        setValue(newValue)
+                      }}
+                    />
+                  </Stack>
+                )}
+              </Stack>
+            }
+          />
+        </ListItem>
+      </List>
+    </SettingsFeatureCardLayout>
   )
 }
 
@@ -348,7 +343,6 @@ const MinutesSlider: FC<{
       <Slider
         valueLabelFormat={(value) => (value > 0 ? `${value} minutes` : '0')}
         disabled={disabled}
-        sx={{ my: 2 }}
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue as number)
@@ -363,4 +357,4 @@ const MinutesSlider: FC<{
     </PermissionWrapper>
   )
 }
-export default ChatGPTStableModeSetting
+export default FeatureChatGPTStableModeCard

@@ -6,6 +6,7 @@ import Collapse from '@mui/material/Collapse'
 import Box from '@mui/material/Box'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import ListItemButton from '@mui/material/ListItemButton'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const PageHelpCard: FC<{
   title: string
@@ -18,25 +19,27 @@ const PageHelpCard: FC<{
   const [open, setOpen] = useState(() => defaultOpen)
   return (
     <Stack sx={{ ...sx }} className={'max-ai__settings__page-help-card'}>
-      <ListItemButton
-        sx={{
-          p: 1,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-        onClick={(event) => {
-          event.stopPropagation()
-          setOpen((prev) => !prev)
-        }}
-      >
-        <Typography fontSize={16} fontWeight={400} noWrap>
-          {title}
-        </Typography>
-        <ContextMenuIcon
-          sx={{ fontSize: 24 }}
-          icon={open ? 'ExpandLess' : 'ExpandMore'}
-        />
-      </ListItemButton>
+      <TextOnlyTooltip title={title} placement={'top-start'}>
+        <ListItemButton
+          sx={{
+            p: 1,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+          onClick={(event) => {
+            event.stopPropagation()
+            setOpen((prev) => !prev)
+          }}
+        >
+          <Typography fontSize={16} fontWeight={400} noWrap>
+            {title}
+          </Typography>
+          <ContextMenuIcon
+            sx={{ fontSize: 24 }}
+            icon={open ? 'ExpandLess' : 'ExpandMore'}
+          />
+        </ListItemButton>
+      </TextOnlyTooltip>
       <Collapse in={open}>
         <Stack p={1} spacing={0.5}>
           {list.map((text, index) => {

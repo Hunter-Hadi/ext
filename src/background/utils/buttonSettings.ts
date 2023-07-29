@@ -69,10 +69,8 @@ export const useChromeExtensionButtonSettings = () => {
     buttonKey: IChromeExtensionButtonSettingKey,
     show: boolean,
   ): Promise<boolean> => {
-    const buttonSetting = appSettings.buttonSettings?.[
-      buttonKey
-    ] as IChromeExtensionButtonSetting
-    if (buttonSetting) {
+    const buttonSetting = await getChromeExtensionButtonSettings(buttonKey)
+    if (buttonSetting?.contextMenu?.length) {
       const newSettings = cloneDeep(buttonSetting)
       if (show) {
         newSettings.visibility.isWhitelistMode = false
@@ -80,6 +78,7 @@ export const useChromeExtensionButtonSettings = () => {
         newSettings.visibility.isWhitelistMode = true
         newSettings.visibility.whitelist = []
       }
+      console.log('mini menu', newSettings.contextMenu)
       await updateButtonSettings(buttonKey, newSettings)
       return true
     }

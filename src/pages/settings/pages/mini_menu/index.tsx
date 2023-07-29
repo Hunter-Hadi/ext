@@ -84,6 +84,7 @@ const SettingsMiniMenuPage: FC = () => {
                     'textSelectPopupButton',
                   )
                 if (latestButtonSettings) {
+                  console.log('mini menu', latestButtonSettings?.contextMenu)
                   await updateButtonSettings('textSelectPopupButton', {
                     ...latestButtonSettings,
                     visibility: value,

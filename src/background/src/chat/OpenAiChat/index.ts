@@ -113,7 +113,23 @@ class OpenAIChat extends BaseChat {
           case 'OpenAIDaemonProcess_daemonProcessSessionExpired': {
             log.info('OpenAIDaemonProcess_daemonProcessSessionExpired')
             this.status = 'needAuth'
+            if (!this.active) break
             await this.updateClientStatus()
+            // active sender tab
+            if (sender.tab) {
+              const { tab } = sender
+              if (tab && tab.id) {
+                await Browser.tabs.update(tab.id, {
+                  active: true,
+                })
+                if (tab.windowId) {
+                  await Browser.windows.update(tab.windowId, {
+                    focused: true,
+                    state: 'normal',
+                  })
+                }
+              }
+            }
             return {
               success: true,
               message: '',

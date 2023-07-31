@@ -3,7 +3,7 @@ import { AppSettingsInit } from '@/components/AppInit'
 import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { getChromeExtensionSettings } from '@/background/utils'
-import { useLazyLoadI18nResources } from '@/utils/i18n'
+import { useLazyLoadI18nResources } from '@/i18n/hooks'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 
 const OptionPagesInit = () => {

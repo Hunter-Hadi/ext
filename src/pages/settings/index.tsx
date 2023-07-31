@@ -7,7 +7,7 @@ import OptionPagesInit from '@/utils/OptionPagesInit'
 import SettingsApp from '@/pages/settings/pages/SettingsApp'
 import { SnackbarProvider } from 'notistack'
 // init i18n
-import '@/utils/i18n'
+import '@/i18n'
 
 const rootElement = document.getElementById('root')
 

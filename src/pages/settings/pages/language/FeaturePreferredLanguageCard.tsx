@@ -7,12 +7,12 @@ import ListItemText from '@mui/material/ListItemText'
 import LanguageSelect from '@/components/select/LanguageSelect'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
-const FeatureAIResponseLanguageCard: FC = () => {
+const FeaturePreferredLanguageCard: FC = () => {
   const { userSettings, setUserSettings } = useUserSettings()
   const { t } = useTranslation(['settings', 'common'])
   return (
     <SettingsFeatureCardLayout
-      title={t('settings:feature_card__ai_response_language__title')}
+      title={t('settings:feature_card__preferred_language__title')}
       id={'ai-response-language'}
     >
       <List
@@ -32,17 +32,17 @@ const FeatureAIResponseLanguageCard: FC = () => {
         <ListItem>
           <ListItemText
             primary={t(
-              'settings:feature_card__ai_response_language__field_ai_response_language__title',
+              'settings:feature_card__preferred_language__field_preferred_language_title',
             )}
             secondary={t(
-              'settings:feature_card__ai_response_language__field_ai_response_language__description',
+              'settings:feature_card__preferred_language__field_preferred_language_description',
             )}
           />
           {userSettings && (
             <LanguageSelect
               sx={{ flexShrink: 0, width: 220, ml: 2 }}
               label={t(
-                'settings:feature_card__ai_response_language__field_ai_response_language__label',
+                'settings:feature_card__preferred_language__field_preferred_language_label',
               )}
               defaultValue={userSettings.language}
               onChange={async (newLanguage) => {
@@ -58,4 +58,4 @@ const FeatureAIResponseLanguageCard: FC = () => {
     </SettingsFeatureCardLayout>
   )
 }
-export default FeatureAIResponseLanguageCard
+export default FeaturePreferredLanguageCard

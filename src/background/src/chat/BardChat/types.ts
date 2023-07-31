@@ -15,13 +15,18 @@ export const BARD_MODELS: IAIProviderModel[] = [
     tags: [],
     descriptions: [
       {
-        label: 'Description',
-        value:
-          'The most advanced model by Google. Powers Bard, PaLM API, MakerSuite, and various Workspace features at Google.',
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) =>
+          t('client:provider__bard_web_app__model__palm_2__description'),
       },
       {
-        label: 'What it can do',
-        value: 'Reasoning, multilingual translation, coding, and more.',
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__what_it_can_do'),
+        value: (t) =>
+          t(
+            'client:provider__bard_web_app__model__what_it_can_do__description',
+          ),
       },
     ],
     uploadFileConfig: {

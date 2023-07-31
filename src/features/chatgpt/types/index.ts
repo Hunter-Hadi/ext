@@ -1,5 +1,7 @@
 // 基础的聊天消息类型
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { TFunction } from 'i18next'
+import React from 'react'
 
 export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
@@ -83,8 +85,8 @@ export interface IChatUploadFile {
 }
 
 export type IAIProviderModelDescriptionType = {
-  label: string
-  value: string
+  label: (t: TFunction<['common', 'client']>) => React.ReactNode
+  value: (t: TFunction<['common', 'client']>) => React.ReactNode
 }
 
 export interface IAIProviderModel {

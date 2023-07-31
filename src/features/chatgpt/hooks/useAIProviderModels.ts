@@ -70,10 +70,22 @@ const useAIProviderModels = () => {
                 tags: item.tags || [],
                 descriptions: [
                   {
-                    label: 'Max tokens',
-                    value: generateMaxTokenText(item.max_tokens),
+                    label: (t) =>
+                      t(
+                        'client:provider__model__tooltip_card__label__max_token',
+                      ),
+                    value: (t) =>
+                      `${generateMaxTokenText(item.max_tokens)} ${t(
+                        'client:provider__model__tooltip_card__label__max_token__suffix',
+                      )}`,
                   },
-                  { label: 'Description', value: item.description },
+                  {
+                    label: (t) =>
+                      t(
+                        'client:provider__model__tooltip_card__label__description',
+                      ),
+                    value: (t) => item.description,
+                  },
                 ],
                 disabled:
                   // 白名单有值才判断

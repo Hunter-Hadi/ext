@@ -15,12 +15,17 @@ export const POE_MODELS: IAIProviderModel[] = [
     tags: [],
     descriptions: [
       {
-        label: 'Max tokens',
-        value: `${numberWithCommas(9000, 0)} tokens`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(9000, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
       },
       {
-        label: 'Description',
-        value: `Anthropic’s fastest model, with strength in creative tasks. Features a context window of 9k tokens (around 7,000 words).`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) => t('client:provider__poe__model__a2__description'),
       },
     ],
   },
@@ -32,13 +37,17 @@ export const POE_MODELS: IAIProviderModel[] = [
     tags: [],
     descriptions: [
       {
-        label: 'Max tokens',
-        value: `${numberWithCommas(9000, 0)} tokens`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(9000, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
       },
       {
-        label: 'Description',
-        value:
-          "Anthropic's most powerful model. Particularly good at creative writing.",
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) => t('client:provider__poe__model__a2_2__description'),
       },
     ],
   },
@@ -50,12 +59,17 @@ export const POE_MODELS: IAIProviderModel[] = [
     tags: [],
     descriptions: [
       {
-        label: 'Max tokens',
-        value: `${numberWithCommas(100000, 0)} tokens`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(100000, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
       },
       {
-        label: 'Description',
-        value: `Anthropic’s fastest model, with an increased context window of 100k tokens (around 75,000 words). Enables analysis of very long documents, code, and more. Since this is an experimental early access model, usage is currently limited to 100 messages per month for Poe subscribers (subject to change).`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) => t('client:provider__poe__model__a2_100k__description'),
       },
     ],
   },

@@ -43,13 +43,20 @@ export const CLAUDE_MODELS: IAIProviderModel[] = [
     tags: [],
     descriptions: [
       {
-        label: 'Max tokens',
-        value: `${numberWithCommas(100 * 1000, 0)} tokens`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(100 * 1000, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
       },
       {
-        label: 'Description',
-        value:
-          "Superior performance on tasks that require complex reasoning. Claude 2 is Anthropic's best-in-class offering.",
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) =>
+          t(
+            'client:provider__claude_web_app__model__claude_2_100k__description',
+          ),
       },
     ],
     uploadFileConfig: {

@@ -18,12 +18,12 @@ export type AIProviderOptionType = {
 const AIProviderOptions: AIProviderOptionType[] = [
   // {
   //   beta: false,
-  //   label: 'Claude (Poe)',
+  //   label: 'client:provider__poe__title',
   //   description: '',
   //   value: AI_PROVIDER_MAP.POE,
-  //   authDescription: 'Use your own Poe to power the extension.',
-  //   shortDescription: `Access Claude beyond the US and UK.`,
-  //   authButtonText: 'Continue with Poe web app',
+  //   authDescription: 'client:provider__poe__auth_description',
+  //   shortDescription: `client:provider__poe__short_description`,
+  //   authButtonText: 'client:provider__bing_web_app__auth_button_text',
   //   authOpenInNew: false,
   // },
   {

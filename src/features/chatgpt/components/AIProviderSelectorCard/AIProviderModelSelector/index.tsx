@@ -7,8 +7,10 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import Chip from '@mui/material/Chip'
+import { useTranslation } from 'react-i18next'
 
 const AIProviderModelSelector: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
   const { aiProviderModel, aiProviderModels, loading, updateAIProviderModel } =
     useAIProviderModels()
   const aiProviderModelsOptions = useMemo(
@@ -91,7 +93,10 @@ const AIProviderModelSelector: FC = () => {
               textAlign={'left'}
               noWrap
             >
-              {option?.label || 'Select model'}
+              {t(
+                option?.label ||
+                  'client:provider__model__selector__placeholder',
+              )}
             </Typography>
           </Stack>
         )
@@ -125,7 +130,9 @@ const AIProviderModelSelector: FC = () => {
                       textAlign={'left'}
                       fontWeight={700}
                     >
-                      Model disabled in extension for upgrade. Please try later.
+                      {t(
+                        'client:provider__model__selector__disabled__description',
+                      )}
                     </Typography>
                   )}
                   <Typography
@@ -163,20 +170,20 @@ const AIProviderModelSelector: FC = () => {
                 )}
                 {original.descriptions.map((item, index) => {
                   return (
-                    <Stack spacing={0.5} key={item.label}>
+                    <Stack spacing={0.5} key={index}>
                       <Typography
                         fontSize={'12px'}
                         color={'text.secondary'}
                         textAlign={'left'}
                       >
-                        {item.label}:
+                        {item.label(t)}:
                       </Typography>
                       <Typography
                         fontSize={'12px'}
                         color={'text.primary'}
                         textAlign={'left'}
                       >
-                        {item.value}
+                        {item.value(t)}
                       </Typography>
                     </Stack>
                   )
@@ -204,7 +211,10 @@ const AIProviderModelSelector: FC = () => {
                 textAlign={'left'}
                 noWrap
               >
-                {original.title || 'Select model'}
+                {t(
+                  (original.title as any) ||
+                    'client:provider__model__selector__placeholder',
+                )}
               </Typography>
               {original.titleTag && (
                 <Chip

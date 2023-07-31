@@ -34,16 +34,26 @@ export const BING_MODELS: IAIProviderModel[] = [
     tags: [],
     descriptions: [
       {
-        label: 'Max tokens',
-        value: `${numberWithCommas(8192, 0)} tokens`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(8192, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
       },
       {
-        label: 'Description',
-        value: `More capable than any GPT-3.5 model, able to do more complex tasks, and optimized for chat. Will be updated with OpenAI's latest model iteration 2 weeks after it is released.`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) =>
+          t('client:provider__bing_web_app__model__gpt_4__description'),
       },
       {
-        label: 'Training date',
-        value: `Up to ${dayjs('2021-09-01').format('MMM YYYY')}`,
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__training_date'),
+        value: (t) =>
+          `${t(
+            'client:provider__model__tooltip_card__label__training_date__prefix',
+          )} ${dayjs('2021-09-01').format('MMM YYYY')}`,
       },
     ],
     // TODO - bing的文件上传需要校验origin和referrer，需要新的chrome extension permission, 目前搁置

@@ -174,8 +174,8 @@ const ContextMenuItem = (props: {
               }}
               title={t(
                 node.data.editable
-                  ? 'settings:feature_card__prompts__tooltip_read_only_title'
-                  : 'settings:feature_card__prompts__tooltip_edit_title',
+                  ? 'settings:feature_card__prompts__tooltip_edit_title'
+                  : 'settings:feature_card__prompts__tooltip_read_only_title',
               )}
               size={'small'}
               onClick={(event) => {

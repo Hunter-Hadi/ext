@@ -96,8 +96,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       let upgradeCardSetting: PermissionWrapperCardType | null = null
       if (url.href.includes(PDFViewerHref)) {
         upgradeCardSetting = getPermissionCardSettings('PDF')
-      } else if (host === 'mail.google.com') {
-        upgradeCardSetting = getPermissionCardSettings('GMAIL_CONTEXT_MENU')
       }
       if (upgradeCardSetting) {
         const { title, description, imageUrl, videoUrl } = upgradeCardSetting

@@ -152,7 +152,7 @@
     "feature_card__mini_menu__field_mini_menu__visible": "选中文本时可见",
     "feature_card__mini_menu__field_mini_menu__hidden": "选中文本时隐藏",
     "feature_card__ai_response_language__title": "AI回复语言",
-    "feature_card__ai_response_language__field_ai_response_language__title": "选择Al回复的默认语言。",
+    "feature_card__ai_response_language__field_ai_response_language__title": "选择Al回复的默认语言",
     "feature_card__ai_response_language__field_ai_response_language__description": "当选择“自动”时,Al将用与所选文本相同的语言变体或方言回复。",
     "feature_card__ai_response_language__field_ai_response_language__label": "AI回复语言",
     "feature_card__chatgpt_stable_mode__title": "ChatGPT稳定模式",

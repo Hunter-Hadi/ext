@@ -152,7 +152,7 @@
     "feature_card__mini_menu__field_mini_menu__visible": "Visible when selecting text",
     "feature_card__mini_menu__field_mini_menu__hidden": "Hidden when selecting text",
     "feature_card__ai_response_language__title": "AI response language",
-    "feature_card__ai_response_language__field_ai_response_language__title": "Choose the default language for Al response.",
+    "feature_card__ai_response_language__field_ai_response_language__title": "Choose the default language for Al response",
     "feature_card__ai_response_language__field_ai_response_language__description": "When \"Auto\" is selected, Al will respond in the same language variety or dialect as the selected text.",
     "feature_card__ai_response_language__field_ai_response_language__label": "AI response language",
     "feature_card__chatgpt_stable_mode__title": "ChatGPT stable mode",

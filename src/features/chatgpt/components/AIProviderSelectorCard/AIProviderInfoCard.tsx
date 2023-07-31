@@ -8,6 +8,7 @@ import Link from '@mui/material/Link'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { IAIProviderType } from '@/background/provider/chat'
 import Box from '@mui/material/Box'
+import { useTranslation } from 'react-i18next'
 
 const AIProviderInfoCard: FC<{
   aiProviderOption: AIProviderOptionType
@@ -17,6 +18,7 @@ const AIProviderInfoCard: FC<{
   boxSx?: SxProps
 }> = (props) => {
   const { aiProviderOption, children, sx, boxSx, authMode } = props
+  const { t } = useTranslation(['common', 'client'])
   const beautyQueryMap: {
     [key in IAIProviderType]: string
   } = {
@@ -49,7 +51,7 @@ const AIProviderInfoCard: FC<{
         <Stack direction={'row'} spacing={1}>
           <AIProviderIcon aiProviderType={aiProviderOption.value} size={24} />
           <Typography fontSize={'16px'} fontWeight={600} color={'text.primary'}>
-            {aiProviderOption.label}
+            {t(aiProviderOption.label as any)}
           </Typography>
         </Stack>
         {authMode && (
@@ -58,11 +60,11 @@ const AIProviderInfoCard: FC<{
             color={'text.secondary'}
             fontWeight={400}
           >
-            {aiProviderOption.authDescription}
+            {t(aiProviderOption.authDescription as any)}
           </Typography>
         )}
         <Typography fontSize={'14px'} color={'text.secondary'} fontWeight={400}>
-          {aiProviderOption.shortDescription}
+          {aiProviderOption.shortDescription(t)}
         </Typography>
         <Box display={'flex'}>
           <Link
@@ -91,7 +93,7 @@ const AIProviderInfoCard: FC<{
               fontWeight={400}
               component={'span'}
             >
-              Learn more
+              {t('common:learn_more')}
             </Typography>
           </Link>
         </Box>

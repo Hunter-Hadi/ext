@@ -15,8 +15,10 @@ import React, { FC } from 'react'
 import useCommands from '@/hooks/useCommands'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { useTranslation } from 'react-i18next'
 
 const ChatBoxHeader: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
   const { chatBoxShortCutKey } = useCommands()
   return (
     <Stack
@@ -48,7 +50,7 @@ const ChatBoxHeader: FC = () => {
           }
           target={'_blank'}
         >
-          <TextOnlyTooltip title={'My account'}>
+          <TextOnlyTooltip title={t('client:sidebar__button__my_account')}>
             <Stack
               direction={'row'}
               alignItems={'center'}
@@ -85,7 +87,7 @@ const ChatBoxHeader: FC = () => {
         justifyContent={'end'}
         alignItems={'center'}
       >
-        <TextOnlyTooltip title="Settings">
+        <TextOnlyTooltip title={t('common:settings')}>
           <IconButton
             sx={{ flexShrink: 0 }}
             onClick={() => {
@@ -109,13 +111,13 @@ const ChatBoxHeader: FC = () => {
                 chromeExtensionClientOpenPage({ key: 'shortcuts' })
               }}
             >
-              {`Set up shortcut`}
+              {t('client:sidebar__button__set_up_shortcut')}
             </Link>
           </Typography>
         )}
         <TextOnlyTooltip
           placement={'bottom'}
-          title={'Close sidebar'}
+          title={t('client:sidebar__button__close_sidebar')}
           description={chatBoxShortCutKey}
         >
           <IconButton

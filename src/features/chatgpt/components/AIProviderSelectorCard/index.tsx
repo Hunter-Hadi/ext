@@ -15,6 +15,7 @@ import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelector
 import Index from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
+import { useTranslation } from 'react-i18next'
 
 interface AIProviderSelectorCardProps {
   sx?: SxProps
@@ -24,6 +25,7 @@ interface AIProviderSelectorCardProps {
 }
 const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
   const { sx, iconSize = 20, closeAble, onClose } = props
+  const { t } = useTranslation(['common', 'client'])
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
@@ -115,7 +117,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     color={'text.primary'}
                     textAlign={'left'}
                   >
-                    {providerOption.label}
+                    {t(providerOption.label as any)}
                   </Typography>
                 </Stack>
               </ListItemButton>

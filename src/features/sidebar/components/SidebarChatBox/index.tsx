@@ -30,6 +30,7 @@ import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarCh
 import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
+import { useTranslation } from 'react-i18next'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -82,6 +83,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
+  const { t } = useTranslation(['common', 'client'])
   // const conversation = useRecoilValue(ChatGPTConversationState)
   const stackRef = useRef<HTMLElement | null>(null)
   const messageListContainerList = useRef<HTMLElement | null>(null)
@@ -348,7 +350,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                       onReGenerate && onReGenerate()
                     }}
                   >
-                    Regenerate
+                    {t('client:sidebar__button__regenerate')}
                   </Button>
                 )}
                 {isShowContinueButton && (
@@ -365,7 +367,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                         })
                     }}
                   >
-                    Continue
+                    {t('client:sidebar__button__continue')}
                   </Button>
                 )}
               </>
@@ -380,7 +382,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   onStopGenerate && onStopGenerate()
                 }}
               >
-                Stop generating
+                {t('client:sidebar__button__stop_generating')}
               </Button>
             )}
           </Box>
@@ -413,7 +415,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               target={'_blank'}
               href={CHROME_EXTENSION_MAIL_TO}
             >
-              Contact us
+              {t('common:contact_us')}
             </Link>
           </Typography>
           <SidebarChatBoxReleaseLog />

@@ -14,6 +14,7 @@ import Stack from '@mui/material/Stack'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Link from '@mui/material/Link'
 import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
+import { useTranslation } from 'react-i18next'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const SidebarChatBoxChatSpeedDial: FC<{
@@ -21,6 +22,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
   onClick?: (type: ChatSpeedDialType) => void
 }> = (props) => {
   const { onClick, disabledMainButton } = props
+  const { t } = useTranslation(['common', 'client'])
   const [restartAppDialogVisible, setRestartAppDialogVisible] = useState(false)
   const handleCloseRestartAppDialog = () => {
     setRestartAppDialogVisible(false)
@@ -67,7 +69,10 @@ const SidebarChatBoxChatSpeedDial: FC<{
               onClick && onClick('new')
             }}
           >
-            <TextOnlyTooltip placement={'left'} title={'New chat'}>
+            <TextOnlyTooltip
+              placement={'left'}
+              title={t('client:sidebar__speed_dial__title')}
+            >
               <Stack
                 p={1}
                 alignItems={'center'}
@@ -93,7 +98,12 @@ const SidebarChatBoxChatSpeedDial: FC<{
                   event.stopPropagation()
                 }}
               >
-                <TextOnlyTooltip placement={'left'} title={'One-click prompts'}>
+                <TextOnlyTooltip
+                  placement={'left'}
+                  title={t(
+                    'client:sidebar__speed_dial__one_click_prompts__button',
+                  )}
+                >
                   <Stack
                     p={1}
                     alignItems={'center'}
@@ -117,7 +127,12 @@ const SidebarChatBoxChatSpeedDial: FC<{
                 setRestartAppDialogVisible(true)
               }}
             >
-              <TextOnlyTooltip placement={'left'} title={'Restart extension'}>
+              <TextOnlyTooltip
+                placement={'left'}
+                title={t(
+                  'client:sidebar__speed_dial__restart_extension__button',
+                )}
+              >
                 <Stack
                   p={1}
                   alignItems={'center'}
@@ -142,13 +157,17 @@ const SidebarChatBoxChatSpeedDial: FC<{
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {`Restart MaxAI.me extension?`}
+          {t('client:sidebar__speed_dial__restart_extension__tooltip__title')}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {`A quick extension restart can clear all existing glitches.`}
+            {t(
+              'client:sidebar__speed_dial__restart_extension__tooltip__description1',
+            )}
             <br />
-            {`Don't forget to reload all pages to activate the extension afterwards.`}
+            {t(
+              'client:sidebar__speed_dial__restart_extension__tooltip__description2',
+            )}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -159,7 +178,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
               handleCloseRestartAppDialog()
             }}
           >
-            Cancel
+            {t('common:cancel')}
           </Button>
           <Button
             color={'primary'}
@@ -170,7 +189,9 @@ const SidebarChatBoxChatSpeedDial: FC<{
             }}
             autoFocus
           >
-            Restart
+            {t(
+              'client:sidebar__speed_dial__restart_extension__tooltip__confirm',
+            )}
           </Button>
         </DialogActions>
       </Dialog>

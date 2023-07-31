@@ -2,15 +2,17 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { IAIProviderType } from '@/background/provider/chat'
 import Link from '@mui/material/Link'
 import React from 'react'
+import { I18nextKeysType } from '@/i18next'
+import { TFunction } from 'i18next'
 
 export type AIProviderOptionType = {
   beta: boolean
-  label: string
+  label: I18nextKeysType
   value: IAIProviderType
-  shortDescription: React.ReactNode
+  shortDescription: (t: TFunction<['common', 'client']>) => React.ReactNode
   description: string
-  authDescription: string
-  authButtonText: string
+  authDescription: I18nextKeysType
+  authButtonText: I18nextKeysType
   authOpenInNew: boolean
 }
 const AIProviderOptions: AIProviderOptionType[] = [
@@ -26,53 +28,57 @@ const AIProviderOptions: AIProviderOptionType[] = [
   // },
   {
     beta: false,
-    label: 'Bing web app',
+    label: 'client:provider__bing_web_app__title',
     description: '',
     value: AI_PROVIDER_MAP.BING,
-    authDescription: 'Use your own Bing Chat account to power the extension.',
-    shortDescription: `Enhanced with Bing Search.`,
-    authButtonText: 'Continue with Bing web app',
+    authDescription: 'client:provider__bing_web_app__auth_description',
+    shortDescription: (t) =>
+      t(`client:provider__bing_web_app__short_description`),
+    authButtonText: `client:provider__bing_web_app__auth_button_text`,
     authOpenInNew: false,
   },
   {
     beta: false,
-    label: 'Bard web app',
+    label: 'client:provider__bard_web_app__title',
     description: '',
     value: AI_PROVIDER_MAP.BARD,
-    authDescription: 'Use your own Google Bard account to power the extension.',
-    shortDescription: `Enhanced with Google Lens.`,
-    authButtonText: 'Continue with Bard web app',
+    authDescription: `client:provider__bard_web_app__auth_description`,
+    shortDescription: (t) =>
+      t(`client:provider__bard_web_app__short_description`),
+    authButtonText: `client:provider__bard_web_app__auth_button_text`,
     authOpenInNew: false,
   },
   {
     beta: false,
-    label: 'Claude web app',
+    label: 'client:provider__claude_web_app__title',
     value: AI_PROVIDER_MAP.CLAUDE,
     description: '',
-    authDescription: 'Use your own Claude account to power the extension.',
-    shortDescription: '100K context window. Chat with multiple documents.',
-    authButtonText: 'Log into Claude web app',
+    authDescription: `client:provider__claude_web_app__auth_description`,
+    shortDescription: (t) =>
+      t(`client:provider__claude_web_app__short_description`),
+    authButtonText: `client:provider__claude_web_app__auth_button_text`,
     authOpenInNew: true,
   },
   {
     beta: false,
-    label: 'ChatGPT web app',
+    label: 'client:provider__chatgpt_web_app__title',
     description: '',
     value: AI_PROVIDER_MAP.OPENAI,
-    authDescription: 'Use your own ChatGPT account to power the extension.',
-    shortDescription: `GPT-4, Web Browsing, Code Interpreter, and Plugins via ChatGPT Plus.`,
-    authButtonText: 'Log into ChatGPT web app',
+    authDescription: `client:provider__chatgpt_web_app__auth_description`,
+    shortDescription: (t) =>
+      t(`client:provider__chatgpt_web_app__short_description`),
+    authButtonText: `client:provider__chatgpt_web_app__auth_button_text`,
     authOpenInNew: true,
   },
   {
     beta: false,
-    label: 'OpenAI API',
+    label: 'client:provider__openai_api__title',
     description: '',
     value: AI_PROVIDER_MAP.OPENAI_API,
-    authDescription: 'Use your own OpenAl API key to power the extension.',
-    shortDescription: (
+    authDescription: `client:provider__openai_api__auth_description`,
+    shortDescription: (t) => (
       <span>
-        Explore your active models on{' '}
+        {t(`client:provider__openai_api__short_description1`)}{' '}
         <Link
           target={'_blank'}
           href="https://platform.openai.com/playground?mode=chat"
@@ -92,22 +98,22 @@ const AIProviderOptions: AIProviderOptionType[] = [
             },
           }}
         >
-          OpenAI Playground
+          {t(`client:provider__openai_api__short_description2`)}
         </Link>
-        .
+        {t(`client:provider__openai_api__short_description3`)}
       </span>
     ),
-    authButtonText: 'Add your OpenAI API key',
+    authButtonText: `client:provider__openai_api__auth_button_text`,
     authOpenInNew: true,
   },
   {
     beta: false,
     description: '',
-    label: 'ChatGPT',
-    authDescription: 'Use ChatGPT to power the extension.',
+    label: 'client:provider__chatgpt__title',
+    authDescription: `client:provider__chatgpt__auth_description`,
     value: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    shortDescription: `As fast as ChatGPT Plus.`,
-    authButtonText: 'Continue with ChatGPT',
+    shortDescription: (t) => t(`client:provider__chatgpt__short_description`),
+    authButtonText: `client:provider__chatgpt__auth_button_text`,
     authOpenInNew: false,
   },
 ]

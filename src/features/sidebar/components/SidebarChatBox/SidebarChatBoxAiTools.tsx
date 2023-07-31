@@ -9,6 +9,7 @@ import { gmailReplyBoxInsertText } from '@/features/sidebar/utils'
 import { useRangy } from '@/features/contextMenu/hooks'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
+import { useTranslation } from 'react-i18next'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
@@ -19,6 +20,7 @@ const SidebarChatBoxAiTools: FC<{
   message: IChatMessage
   onCopy?: () => void
 }> = (props) => {
+  const { t } = useTranslation(['common', 'client'])
   const { currentComposeView } = useInboxComposeViews()
   const { replaceSelectionRangeText, currentSelection } = useRangy()
   const { message, insertAble, replaceAble } = props
@@ -54,7 +56,7 @@ const SidebarChatBoxAiTools: FC<{
             }
           }}
         >
-          Insert
+          {t('client:sidebar__button__insert')}
         </Button>
       )}
       {/*// FIXME: 边界情况太多了*/}
@@ -70,7 +72,7 @@ const SidebarChatBoxAiTools: FC<{
               hideChatBox()
             }}
           >
-            Replace
+            {t('client:sidebar__button__replace')}
           </Button>
         )}
       <CopyTooltipIconButton

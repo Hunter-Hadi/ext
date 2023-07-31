@@ -25,10 +25,12 @@ import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
 import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
 import Box from '@mui/material/Box'
+import { useTranslation } from 'react-i18next'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
+  const { t } = useTranslation(['common', 'client'])
   const { tempSelection, show } = useRangy()
   const { chatBoxShortCutKey } = useCommands()
   const textSelectPopupButtonSettings =
@@ -224,7 +226,7 @@ const ClickContextMenuButton: FC<{
                 maxWidth: 360,
               },
             }}
-            title={'Ask AI to edit, summarize, explain, or generate text'}
+            title={t('client:floating_menu__button__cta__tooltip')}
             className={'usechatgpt-ai__context-menu--handle-button'}
             size={'small'}
             variant={'text'}

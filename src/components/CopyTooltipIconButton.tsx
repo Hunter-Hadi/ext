@@ -1,11 +1,12 @@
 import { IconButtonProps } from '@mui/material/IconButton'
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { SxProps } from '@mui/material/styles'
+import { useTranslation } from 'react-i18next'
 
 interface ITooltipIconButton extends IconButtonProps {
   copyText: string
@@ -15,7 +16,14 @@ interface ITooltipIconButton extends IconButtonProps {
 }
 const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
   const { copyText, onCopy, sx } = props
-  const [title, setTitle] = useState('Copy to clipboard')
+  const { t } = useTranslation(['common'])
+  const [isCopied, setIsCopied] = useState(false)
+  const title = useMemo(() => {
+    if (isCopied) {
+      return t('common:copied')
+    }
+    return t('common:copy_to_clipboard')
+  }, [t, isCopied])
   return (
     <CopyToClipboard
       text={copyText}
@@ -25,9 +33,9 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
       }}
       onCopy={() => {
         onCopy?.()
-        setTitle('Copied!')
+        setIsCopied(true)
         setTimeout(() => {
-          setTitle('Copy to clipboard')
+          setIsCopied(false)
         }, 1000)
       }}
     >

@@ -3,12 +3,14 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { useTranslation } from 'react-i18next'
 
 const SidebarChatBoxSystemTools: FC<{
   onRetry: () => void
   message: ISystemChatMessage
 }> = (props) => {
   const { onRetry, message } = props
+  const { t } = useTranslation(['common', 'client'])
   const chatMessageType = message.extra.systemMessageType || 'normal'
   return (
     <Stack direction={'row'} alignItems={'center'} flexWrap={'wrap'} gap={1}>
@@ -26,7 +28,7 @@ const SidebarChatBoxSystemTools: FC<{
           target={'_blank'}
           href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
         >
-          Upgrade to Pro
+          {t('client:sidebar__button__upgrade_to_pro')}
         </Button>
       )}
       {chatMessageType === 'normal' && message.parentMessageId && (
@@ -40,7 +42,7 @@ const SidebarChatBoxSystemTools: FC<{
             color: '#f44336',
           }}
         >
-          Retry
+          {t('client:sidebar__button__retry')}
         </Button>
       )}
     </Stack>

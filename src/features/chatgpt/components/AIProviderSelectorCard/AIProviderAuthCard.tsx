@@ -13,6 +13,7 @@ import TooltipButton from '@/components/TooltipButton'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { useTranslation } from 'react-i18next'
 
 const port = new ContentScriptConnectionV2()
 
@@ -20,6 +21,7 @@ const AIProviderAuthCard: FC<{
   aiProviderOption: AIProviderOptionType
 }> = (props) => {
   const { aiProviderOption } = props
+  const { t } = useTranslation(['common', 'client'])
   const chatGPTClientState = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
   useEffect(() => {
@@ -86,7 +88,7 @@ const AIProviderAuthCard: FC<{
                       fontSize={'14px'}
                       fontWeight={400}
                     >
-                      {`If connection takes more than 10 seconds, `}
+                      {t('client:provider__chatgpt_web_app__waiting_tooltip1')}
                     </Typography>
                     <Typography
                       component={'span'}
@@ -97,7 +99,7 @@ const AIProviderAuthCard: FC<{
                         textDecoration: 'underline',
                       }}
                     >
-                      {'check your ChatGPT page '}
+                      {t('client:provider__chatgpt_web_app__waiting_tooltip2')}
                     </Typography>
                     <OpenInNewIcon
                       sx={{ fontSize: 14, position: 'relative', top: 3 }}
@@ -108,7 +110,7 @@ const AIProviderAuthCard: FC<{
                       fontSize={'14px'}
                       fontWeight={400}
                     >
-                      {' for issues.'}
+                      {t('client:provider__chatgpt_web_app__waiting_tooltip3')}
                     </Typography>
                   </Box>
                 )
@@ -159,7 +161,9 @@ const AIProviderAuthCard: FC<{
                     fontSize={14}
                     textAlign={'left'}
                   >
-                    {`If experiencing frequent interruptions and network errors, try `}
+                    {t(
+                      'client:provider__chatgpt_web_app__stable_mode_tooltip1',
+                    )}
                   </Typography>
                   <Link
                     fontSize={14}
@@ -175,14 +179,18 @@ const AIProviderAuthCard: FC<{
                       })
                     }}
                   >
-                    ChatGPT Stable Mode
+                    {t(
+                      'client:provider__chatgpt_web_app__stable_mode_tooltip2',
+                    )}
                   </Link>
                   <Typography
                     component={'span'}
                     fontSize={14}
                     textAlign={'left'}
                   >
-                    {`.`}
+                    {t(
+                      'client:provider__chatgpt_web_app__stable_mode_tooltip3',
+                    )}
                   </Typography>
                 </Box>
               )
@@ -199,7 +207,7 @@ const AIProviderAuthCard: FC<{
             disableElevation
             fullWidth
           >
-            {aiProviderOption.authButtonText}
+            {t(aiProviderOption.authButtonText as any)}
             {aiProviderOption.authOpenInNew && (
               <OpenInNewIcon sx={{ fontSize: '16px', ml: '4px' }} />
             )}

@@ -13,11 +13,13 @@ import {
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Box from '@mui/material/Box'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
+import { useTranslation } from 'react-i18next'
 
 const FloatingContextMenuPopupSettingButton: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
+  const { t } = useTranslation(['common', 'client'])
   const [loading, setLoading] = useState(true)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   useEffect(() => {
@@ -75,7 +77,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
                 query: '#/my-own-prompts',
               })
             }}
-            label={'Manage my own prompts'}
+            label={t('client:floating_menu__button__manage_my_own_prompt')}
             icon={'DefaultIcon'}
           />
           <DropdownMenu
@@ -86,7 +88,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
               <LiteDropdownMenuItem
                 isGroup
                 icon={'Delete'}
-                label={'Clear suggested'}
+                label={t('client:floating_menu__button__clear_suggested')}
               />
             }
             menuSx={{
@@ -97,7 +99,9 @@ const FloatingContextMenuPopupSettingButton: FC<{
             label={''}
           >
             <LiteDropdownMenuItem
-              label={'Clear suggested prompts for this site'}
+              label={t(
+                'client:floating_menu__button__clear_suggested__this_site',
+              )}
               onClick={async () => {
                 await FavoriteMediatorFactory.getMediator(
                   'textSelectPopupButton',
@@ -105,7 +109,9 @@ const FloatingContextMenuPopupSettingButton: FC<{
               }}
             ></LiteDropdownMenuItem>
             <LiteDropdownMenuItem
-              label={'Clear suggested prompts for all sites'}
+              label={t(
+                'client:floating_menu__button__clear_suggested__all_sites',
+              )}
               onClick={async () => {
                 await FavoriteMediatorFactory.getMediator(
                   'textSelectPopupButton',
@@ -119,7 +125,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
                 key: 'options',
               })
             }}
-            label={'Settings'}
+            label={t('common:settings')}
             icon={'Settings'}
           />
         </DropdownMenu>

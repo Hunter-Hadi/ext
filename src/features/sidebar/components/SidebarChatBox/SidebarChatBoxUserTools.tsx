@@ -6,6 +6,7 @@ import DoneIcon from '@mui/icons-material/Done'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { hideChatBox } from '@/utils'
 import { IChatMessage } from '@/features/chatgpt/types'
+import { useTranslation } from 'react-i18next'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
@@ -17,6 +18,7 @@ const SidebarChatBoxUserTools: FC<{
   onCopy?: () => void
 }> = (props) => {
   const { onEdit, onSave, editAble, message } = props
+  const { t } = useTranslation(['common', 'client'])
   const [mode, setMode] = useState('done')
   return (
     <Stack
@@ -36,7 +38,7 @@ const SidebarChatBoxUserTools: FC<{
       />
       {mode === 'done' && editAble && (
         <TooltipIconButton
-          title={'edit'}
+          title={t('common:edit')}
           onClick={() => {
             onEdit()
             setMode('edit')
@@ -47,7 +49,7 @@ const SidebarChatBoxUserTools: FC<{
       )}
       {mode === 'edit' && editAble && (
         <TooltipIconButton
-          title={'save'}
+          title={t('common:save')}
           onClick={() => {
             onSave()
             setMode('done')

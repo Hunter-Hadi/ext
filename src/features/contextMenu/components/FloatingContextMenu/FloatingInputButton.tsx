@@ -6,6 +6,7 @@ import TooltipIconButton from '@/components/TooltipIconButton'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { getCurrentDomainHost } from '@/utils'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { useTranslation } from 'react-i18next'
 
 const NO_SUPPORT_HOST = ['teams.live.com', 'notion.so']
 
@@ -29,6 +30,7 @@ const FloatingInputButton: FC<{
     target: HTMLElement
   }
 }> = ({ buttonText, templateText, onBeforeShowContextMenu, iconButton }) => {
+  const { t } = useTranslation(['common', 'client'])
   const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
   const handleClick = (event: any) => {
     if (event.currentTarget) {
@@ -47,7 +49,10 @@ const FloatingInputButton: FC<{
   }
   if (iconButton) {
     return (
-      <TooltipIconButton title={'Use prompt'} onClick={handleClick}>
+      <TooltipIconButton
+        title={t('client:sidebar__button__use_prompt')}
+        onClick={handleClick}
+      >
         <UseChatGptIcon
           sx={{
             fontSize: 16,
@@ -58,7 +63,10 @@ const FloatingInputButton: FC<{
     )
   }
   return (
-    <TextOnlyTooltip placement={'top'} title={'Use prompt'}>
+    <TextOnlyTooltip
+      placement={'top'}
+      title={t('client:sidebar__button__use_prompt')}
+    >
       <Button
         sx={{
           p: '7px',

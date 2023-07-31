@@ -12,6 +12,7 @@ import { isEzMailApp, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import TooltipButton from '@/components/TooltipButton'
+import { useTranslation } from 'react-i18next'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
 // const MAX_GPT4_INPUT_LENGTH = 80000
@@ -20,6 +21,7 @@ const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
+  const { t } = useTranslation(['common', 'client'])
   const [inputValue, setInputValue] = useState('')
   const conversation = useRecoilValue(ChatGPTConversationState)
   const ref = React.useRef<HTMLElement>(null)
@@ -102,7 +104,7 @@ const SidebarChatBoxInputActions: FC<{
           />
         )}
         <TooltipButton
-          title={'Send to AI'}
+          title={t(`client:sidebar__button__send_to_ai`)}
           TooltipProps={{
             description: '⏎',
           }}

@@ -70,6 +70,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
 import { getChromeExtensionSettings } from '@/background/utils'
 import { AppSettingsState } from '@/store'
+import { useTranslation } from 'react-i18next'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -78,6 +79,7 @@ const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
   const { root } = props
+  const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -673,7 +675,7 @@ const FloatingContextMenu: FC<{
                   {loading ? (
                     <>
                       <Typography fontSize={'16px'} color={'primary.main'}>
-                        AI is writing...
+                        {t('client:floating_menu__input__running_placeholder')}
                       </Typography>
                       <CircularProgress size={'16px'} />
                     </>
@@ -694,7 +696,9 @@ const FloatingContextMenu: FC<{
                           />
                         )
                       }
-                      placeholder={'Ask AI to edit or generate...'}
+                      placeholder={t(
+                        'client:floating_menu__input__placeholder',
+                      )}
                       stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
                       sx={{
@@ -730,7 +734,7 @@ const FloatingContextMenu: FC<{
                     <>
                       <TextOnlyTooltip
                         floatingMenuTooltip
-                        title={'Send to AI'}
+                        title={t('client:floating_menu__button__send_to_ai')}
                         description={'⏎'}
                         placement={safePlacement.contextMenuPlacement}
                       >

@@ -30,12 +30,14 @@ import { useRecoilState, useSetRecoilState } from 'recoil'
 import { FloatingContextMenuTemporaryIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuTemporaryIconButton'
 import { TooltipProps } from '@mui/material/Tooltip'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
+import { useTranslation } from 'react-i18next'
 
 const FloatingContextMenuMiniMenuMoreButton: FC<{
   placement?: TooltipProps['placement']
   sx?: SxProps
 }> = (props) => {
   const { sx, placement } = props
+  const { t } = useTranslation(['common', 'client'])
   const [loading, setLoading] = useState(true)
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   const { updateButtonSettingsWithDomain, toggleButtonSettings } =
@@ -166,7 +168,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               <LiteDropdownMenuItem
                 isGroup
                 icon={'Delete'}
-                label={'Clear suggested'}
+                label={t('client:floating_menu__button__clear_suggested')}
               />
             }
             menuSx={{
@@ -177,7 +179,9 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
             label={''}
           >
             <LiteDropdownMenuItem
-              label={'Clear suggested prompts for this site'}
+              label={t(
+                'client:floating_menu__button__clear_suggested__this_site',
+              )}
               onClick={async () => {
                 await FavoriteMediatorFactory.getMediator(
                   'textSelectPopupButton',
@@ -185,7 +189,9 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               }}
             ></LiteDropdownMenuItem>
             <LiteDropdownMenuItem
-              label={'Clear suggested prompts for all sites'}
+              label={t(
+                'client:floating_menu__button__clear_suggested__all_sites',
+              )}
               onClick={async () => {
                 await FavoriteMediatorFactory.getMediator(
                   'textSelectPopupButton',
@@ -201,7 +207,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               <LiteDropdownMenuItem
                 isGroup
                 icon={'VisibilityOff'}
-                label={'Hide menu'}
+                label={t('client:floating_menu__button__hide_menu')}
               />
             }
             menuSx={{
@@ -222,7 +228,9 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                   closeBeforeRefresh: true,
                 }))
               }}
-              label={'Hide menu until next visit'}
+              label={t(
+                'client:floating_menu__button__hide_menu__until_next_visit',
+              )}
             />
             <LiteDropdownMenuItem
               CustomRenderNode={
@@ -249,7 +257,11 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                           fontWeight={'600'}
                           fontSize={'16px'}
                           color={'text.primary'}
-                        >{`Hide 'Mini menu' for this website?`}</Typography>
+                        >
+                          {t(
+                            'client:floating_menu__button__hide_menu__this_site__tooltip__title',
+                          )}
+                        </Typography>
                         <HowToFindSettings liteMode />
                         <Box />
                         <Button
@@ -265,9 +277,9 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             })
                           }}
                         >
-                          {textSelectPopupButtonSettings?.buttonVisible
-                            ? 'Hide menu for this site'
-                            : 'Show menu for this site'}
+                          {t(
+                            'client:floating_menu__button__hide_menu__this_site__tooltip__confirm',
+                          )}
                         </Button>
                         <Button
                           variant={'contained'}
@@ -280,7 +292,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             hideRangy()
                           }}
                         >
-                          Cancel
+                          {t('common:cancel')}
                         </Button>
                       </Stack>
                     </Card>
@@ -306,9 +318,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                       flex={1}
                       lineHeight={'28px'}
                     >
-                      {textSelectPopupButtonSettings?.buttonVisible
-                        ? 'Hide menu for this site'
-                        : 'Show menu for this site'}
+                      {t('client:floating_menu__button__hide_menu__this_site')}
                     </Typography>
                   </Stack>
                 </PopperWrapper>
@@ -339,7 +349,11 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                           color={'text.primary'}
                           textAlign={'center'}
                           fontWeight={'600'}
-                        >{`Always hide 'Mini menu'?`}</Typography>
+                        >
+                          {t(
+                            'client:floating_menu__button__hide_menu__all_sites__tooltip__title',
+                          )}
+                        </Typography>
                         <HowToFindSettings liteMode />
                         <Box />
                         <Button
@@ -356,7 +370,9 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             })
                           }}
                         >
-                          {'Hide menu always'}
+                          {t(
+                            'client:floating_menu__button__hide_menu__all_sites__tooltip__confirm',
+                          )}
                         </Button>
                         <Button
                           variant={'contained'}
@@ -369,7 +385,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             hideRangy()
                           }}
                         >
-                          Cancel
+                          {t('common:cancel')}
                         </Button>
                       </Stack>
                     </Card>
@@ -395,14 +411,14 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                       flex={1}
                       lineHeight={'28px'}
                     >
-                      {'Hide menu always'}
+                      {t('client:floating_menu__button__hide_menu__all_sites')}
                     </Typography>
                   </Stack>
                 </PopperWrapper>
               }
             />
             <LiteDropdownMenuItem
-              label={'Menu settings'}
+              label={t('client:floating_menu__button__menu_settings')}
               icon={'Settings'}
               onClick={() => {
                 chromeExtensionClientOpenPage({
@@ -419,7 +435,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                 key: 'options',
               })
             }}
-            label={'Settings'}
+            label={t('common:settings')}
             icon={'Settings'}
           />
         </DropdownMenu>

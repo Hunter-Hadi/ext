@@ -14,6 +14,8 @@ import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { getEnv } from '@/utils/AppEnv'
 import Announcement from '@/components/Announcement'
 import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
+// init i18n
+import '@/i18n'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const App: FC = () => {

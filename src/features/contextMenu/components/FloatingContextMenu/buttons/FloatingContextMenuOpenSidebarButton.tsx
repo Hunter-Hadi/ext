@@ -10,18 +10,20 @@ import useCommands from '@/hooks/useCommands'
 import { FloatingDropdownMenuState, useRangy } from '@/features/contextMenu'
 import { useRecoilState } from 'recoil'
 import { floatingContextMenuSaveDraftToChatBox } from '@/features/contextMenu/utils'
+import { useTranslation } from 'react-i18next'
 
 const FloatingContextMenuOpenSidebarButton: FC<{
   sx?: SxProps
   TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
 }> = (props) => {
+  const { t } = useTranslation(['common', 'client'])
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const { chatBoxShortCutKey } = useCommands()
   return (
     <TextOnlyTooltip
       description={chatBoxShortCutKey}
-      title={'Switch to sidebar'}
+      title={t('client:floating_menu__button__switch_to_sidebar')}
       placement={'bottom'}
       {...props.TooltipProps}
     >

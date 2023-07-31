@@ -29,6 +29,7 @@ import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/f
 import { RESOURCES_URL } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { useInitI18n } from '@/i18n/hooks'
 
 const log = new Log('AppInit')
 
@@ -396,6 +397,7 @@ const AppInit = () => {
   useInitChatGPTClient()
   useAuthLogin()
   userInitUserInfo()
+  useInitI18n()
   useEffectOnce(() => {
     disabledPDFViewer()
     forceUpdateContextMenuReadOnlyOption().then().catch()

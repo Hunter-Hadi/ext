@@ -13,7 +13,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useRangy } from '@/features/contextMenu'
 import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
-import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
+import { useTranslation } from 'react-i18next'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -51,10 +51,6 @@ const WritingMessageBox: FC<{
         isSameMessage = false
       }
       prevMessageIdRef.current = writingMessageId
-      // ChatGPT 有可能第一个回答会返回之前的问题
-      if (writingMessageText.includes(CHAT_GPT_PROMPT_PREFIX)) {
-        return
-      }
       setFloatingContextMenuDraft((prevState) => {
         const copyDraftList = cloneDeep(prevState.draftList)
         if (isSameMessage) {
@@ -162,6 +158,7 @@ const WritingMessageBox: FC<{
 }
 
 const ContextText: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
   const { currentSelection } = useRangy()
   const splitCenterText = useMemo(() => {
     if (
@@ -208,7 +205,9 @@ const ContextText: FC = () => {
       fontWeight={400}
       color={'text.secondary'}
     >
-      <span style={{ flexShrink: 0 }}>Context: </span>
+      <span style={{ flexShrink: 0 }}>
+        {t('client:floating_menu__draft_card__context__title')}:{' '}
+      </span>
       <span
         style={{
           display: 'inline-block',

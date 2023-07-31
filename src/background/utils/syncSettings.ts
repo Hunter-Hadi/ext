@@ -63,8 +63,6 @@ export const syncServerSettingsToLocalSettings = async () => {
         })
       }
     }
-    // 更新的时候要强制更新contextMenu
-    await forceUpdateContextMenuReadOnlyOption()
     return true
   } catch (e) {
     console.error(e)
@@ -75,8 +73,6 @@ export const syncServerSettingsToLocalSettings = async () => {
 export const syncLocalSettingsToServerSettings = async () => {
   try {
     console.log('同步本地设置到服务器')
-    // 更新的时候要强制更新contextMenu
-    await forceUpdateContextMenuReadOnlyOption()
     const lastModified = dayjs().utc().valueOf()
     // 更新本地设置的最后修改时间
     await setChromeExtensionSettings({
@@ -106,6 +102,8 @@ export const syncLocalSettingsToServerSettings = async () => {
 }
 export const isSettingsLastModifiedEqual = async (): Promise<boolean> => {
   try {
+    // 更新的时候要强制更新contextMenu
+    await forceUpdateContextMenuReadOnlyOption()
     console.log('检测本地设置和服务器设置时间是否一致')
     const result = await get<{
       settings: IChromeExtensionSettings

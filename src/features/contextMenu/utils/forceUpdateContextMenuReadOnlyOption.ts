@@ -38,8 +38,8 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
         if (item.id.includes('New_Mail_CTA_Button')) {
           item.id = USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID
         }
-        // 如果不能编辑，强制更新
-        if (!item.data.editable) {
+        // 如果不能编辑，或者是系统prompt, 强制更新
+        if (!item.data.editable || defaultJsonMap.get(item.id)) {
           // force update
           const defaultItem = defaultJsonMap.get(item.id)
           if (!defaultItem) {

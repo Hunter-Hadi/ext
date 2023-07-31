@@ -1,8 +1,10 @@
 import {
+  isProduction,
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+const editable = !isProduction
 
 export default [
   {
@@ -11,7 +13,7 @@ export default [
     droppable: false,
     text: 'Gmail (New email)',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -41,7 +43,7 @@ export default [
     droppable: false,
     text: 'Gmail (Reply)',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -72,7 +74,7 @@ export default [
     droppable: true,
     text: 'Professional',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -101,7 +103,7 @@ export default [
     droppable: true,
     text: 'Casual',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -130,7 +132,7 @@ export default [
     droppable: true,
     text: 'Straightforward',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -159,7 +161,7 @@ export default [
     droppable: true,
     text: 'Confident',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -188,7 +190,7 @@ export default [
     droppable: true,
     text: 'Friendly',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -217,7 +219,7 @@ export default [
     droppable: true,
     text: 'Improve writing',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -247,7 +249,7 @@ export default [
     droppable: true,
     text: 'Fix spelling & grammar',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -277,7 +279,7 @@ export default [
     droppable: true,
     text: 'Make shorter',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -307,7 +309,7 @@ export default [
     droppable: true,
     text: 'Make longer',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -337,7 +339,7 @@ export default [
     droppable: true,
     text: 'Change tone',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -355,7 +357,7 @@ export default [
     droppable: true,
     text: 'Simplify language',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -385,7 +387,7 @@ export default [
     droppable: true,
     text: 'Paraphrase',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -415,7 +417,7 @@ export default [
     droppable: false,
     text: 'Edit or review draft',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],

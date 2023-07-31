@@ -1,4 +1,6 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { isProduction } from '@/constants'
+const editable = !isProduction
 export default [
   {
     id: 'd0176963-2376-4dd8-acfc-95af778195b9',
@@ -6,7 +8,7 @@ export default [
     droppable: true,
     text: 'Poem...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -37,7 +39,7 @@ export default [
     droppable: true,
     text: 'To-do list...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -68,7 +70,7 @@ export default [
     droppable: true,
     text: 'Meeting agenda...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -99,7 +101,7 @@ export default [
     droppable: true,
     text: 'Pros and cons list...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -130,7 +132,7 @@ export default [
     droppable: true,
     text: 'Job description...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -161,7 +163,7 @@ export default [
     droppable: true,
     text: 'Sales email...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -192,7 +194,7 @@ export default [
     droppable: true,
     text: 'Recruiting email...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -223,7 +225,7 @@ export default [
     droppable: true,
     text: 'Brainstorm ideas...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -254,7 +256,7 @@ export default [
     droppable: true,
     text: 'Blog post...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -285,7 +287,7 @@ export default [
     droppable: true,
     text: 'Outline...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -316,7 +318,7 @@ export default [
     droppable: true,
     text: 'Social media post...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -347,7 +349,7 @@ export default [
     droppable: true,
     text: 'Code...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -378,7 +380,7 @@ export default [
     droppable: true,
     text: 'Press release...',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -409,7 +411,7 @@ export default [
     droppable: true,
     text: 'Creative story',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -440,7 +442,7 @@ export default [
     droppable: true,
     text: 'Essay',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -471,7 +473,7 @@ export default [
     droppable: true,
     text: 'See more',
     data: {
-      editable: false,
+      editable,
       type: 'group',
       actions: [],
       searchText: 'draft with ai see more',
@@ -484,7 +486,7 @@ export default [
     droppable: true,
     text: 'Continue writing',
     data: {
-      editable: false,
+      editable,
       type: 'shortcuts',
       actions: [
         {
@@ -522,7 +524,7 @@ export default [
     droppable: true,
     text: 'Like',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -552,7 +554,7 @@ export default [
     droppable: true,
     text: 'Dislike',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -582,7 +584,7 @@ export default [
     droppable: true,
     text: 'Support',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -612,7 +614,7 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -642,7 +644,7 @@ export default [
     droppable: true,
     text: 'Idea',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -672,7 +674,7 @@ export default [
     droppable: true,
     text: 'Question',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -702,7 +704,7 @@ export default [
     droppable: true,
     text: 'Enter prompt',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -734,7 +736,7 @@ export default [
     droppable: true,
     text: 'English',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -763,7 +765,7 @@ export default [
     droppable: true,
     text: 'Korean',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -792,7 +794,7 @@ export default [
     droppable: true,
     text: 'Chinese',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -821,7 +823,7 @@ export default [
     droppable: true,
     text: 'Japanese',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -850,7 +852,7 @@ export default [
     droppable: true,
     text: 'Spanish',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -879,7 +881,7 @@ export default [
     droppable: true,
     text: 'Russian',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -908,7 +910,7 @@ export default [
     droppable: true,
     text: 'French',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -937,7 +939,7 @@ export default [
     droppable: true,
     text: 'Portuguese',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -966,7 +968,7 @@ export default [
     droppable: true,
     text: 'German',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -995,7 +997,7 @@ export default [
     droppable: true,
     text: 'Italian',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1024,7 +1026,7 @@ export default [
     droppable: true,
     text: 'Dutch',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1053,7 +1055,7 @@ export default [
     droppable: true,
     text: 'Indonesian',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1082,7 +1084,7 @@ export default [
     droppable: true,
     text: 'Filipino',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1111,7 +1113,7 @@ export default [
     droppable: true,
     text: 'Vietnamese',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1140,7 +1142,7 @@ export default [
     droppable: true,
     text: 'Summarize',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1170,7 +1172,7 @@ export default [
     droppable: true,
     text: 'List key takeaways',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1200,7 +1202,7 @@ export default [
     droppable: true,
     text: 'Translate',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1218,7 +1220,7 @@ export default [
     droppable: true,
     text: 'Explain this',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1248,7 +1250,7 @@ export default [
     droppable: true,
     text: 'Find action items',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1278,7 +1280,7 @@ export default [
     droppable: true,
     text: 'Reply to this',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1296,7 +1298,7 @@ export default [
     droppable: true,
     text: 'Run this prompt',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1325,7 +1327,7 @@ export default [
     droppable: true,
     text: 'Professional',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1354,7 +1356,7 @@ export default [
     droppable: true,
     text: 'Casual',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1383,7 +1385,7 @@ export default [
     droppable: true,
     text: 'Straightforward',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1412,7 +1414,7 @@ export default [
     droppable: true,
     text: 'Confident',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1441,7 +1443,7 @@ export default [
     droppable: true,
     text: 'Friendly',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1470,7 +1472,7 @@ export default [
     droppable: true,
     text: 'Improve writing',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1500,7 +1502,7 @@ export default [
     droppable: true,
     text: 'Fix spelling & grammar',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1530,7 +1532,7 @@ export default [
     droppable: true,
     text: 'Make shorter',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1560,7 +1562,7 @@ export default [
     droppable: true,
     text: 'Make longer',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1590,7 +1592,7 @@ export default [
     droppable: true,
     text: 'Change tone',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1608,7 +1610,7 @@ export default [
     droppable: true,
     text: 'Simplify language',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1638,7 +1640,7 @@ export default [
     droppable: true,
     text: 'Paraphrase',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1668,7 +1670,7 @@ export default [
     droppable: true,
     text: 'Edit or review selection',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1685,7 +1687,7 @@ export default [
     droppable: true,
     text: 'Generate from selection',
     data: {
-      editable: false,
+      editable,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1707,7 +1709,7 @@ export default [
         whitelist: [],
         blacklist: [],
       },
-      editable: false,
+      editable,
       type: 'group',
       actions: [],
       searchText: 'write with ai',
@@ -1724,7 +1726,7 @@ export default [
         whitelist: [],
         blacklist: [],
       },
-      editable: false,
+      editable,
       type: 'group',
       actions: [],
       searchText: 'draft with ai',

@@ -93,6 +93,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
           {AIProviderOptions.map((providerOption) => {
             return (
               <ListItemButton
+                id={`max-ai__ai-provider-selector__${providerOption.value}`}
                 onClick={async () => {
                   if (providerOption.value !== provider) {
                     await updateChatGPTProvider(providerOption.value)

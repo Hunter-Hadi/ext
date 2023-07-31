@@ -152,26 +152,6 @@ export const fetchUserInfo = async (): Promise<
           delete result.data.conversationId
         }
         result.data.role = role
-        // TODO 本来就应该带上created_at这个字段, 后面删掉⬇️
-        try {
-          const created_at_response = await fetch(
-            `${APP_USE_CHAT_GPT_API_HOST}/user/get_referral_dashboard`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            },
-          )
-          const created_at_result = await created_at_response.json()
-          console.log('created_at_response', created_at_result)
-          const created_at = created_at_result?.data?.created_at
-          if (!result.data.created_at) {
-            result.data.created_at = created_at
-          }
-        } catch (e) {
-          console.log('created_at_response error', e)
-        }
-        // TODO 本来就应该带上created_at这个字段, 后面删掉⬆️
         return result.data as IUseChatGPTUserInfo
       }
     }

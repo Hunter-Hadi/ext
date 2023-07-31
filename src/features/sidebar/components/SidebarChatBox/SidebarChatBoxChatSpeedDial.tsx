@@ -1,4 +1,4 @@
-import { SpeedDial } from '@mui/material'
+import SpeedDial from '@mui/material/SpeedDial'
 import React, { FC, useState } from 'react'
 import SpeedDialAction from '@mui/material/SpeedDialAction'
 import Dialog from '@mui/material/Dialog'

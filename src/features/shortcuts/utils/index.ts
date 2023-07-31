@@ -133,49 +133,53 @@ export const templateWordToExamples = (
   switch (word) {
     case 'LAST_ACTION_OUTPUT':
       return {
-        description: 'The last action output',
+        description:
+          'feature_card__prompts__prompt_template__variable_last_action_output__description',
         examples: [],
       }
     case 'USER_INPUT':
       return {
-        description: 'The user input',
+        description:
+          'feature_card__prompts__prompt_template__variable_user_input__description',
         examples: [],
       }
     case 'SELECTED_TEXT':
       return {
         description:
-          'This prompt template variable will be replaced with the text you selected on the current page.',
+          'feature_card__prompts__prompt_template__variable_selected_text__description',
         examples: [
-          'write a better version of the follow text: {{SELECTED_TEXT}}',
-          'translate the following text to English: {{SELECTED_TEXT}}',
+          'feature_card__prompts__prompt_template__variable_selected_text__example1',
+          'feature_card__prompts__prompt_template__variable_selected_text__example2',
         ],
       }
     case 'AI_RESPONSE_LANGUAGE':
       return {
-        description: `This prompt template variable will be replaced with the "AI output language" selected on the Settings page.\nIf uncertain of the "Settings" page location, simply click the "Settings" icon found in the top bar within the side bar.`,
+        description:
+          'feature_card__prompts__prompt_template__variable_ai_response_language__description',
         examples: [
-          `respond in {{AI_RESPONSE_LANGUAGE}}`,
-          `you will reply with ideas in {{AI_RESPONSE_LANGUAGE}}`,
+          `feature_card__prompts__prompt_template__variable_ai_response_language__example1`,
+          `feature_card__prompts__prompt_template__variable_ai_response_language__example2`,
         ],
       }
     case 'GMAIL_EMAIL_CONTEXT':
       return {
         description:
-          'When you use this variable in the prompt template, it will display the incoming email that needs a response.',
+          'feature_card__prompts__prompt_template__variable_gmail_email_context__description',
         examples: [],
       }
     case 'GMAIL_DRAFT_CONTEXT':
       return {
         description:
-          'When you use this variable in the prompt template, it will display the current draft present in the Gmail text box.',
+          'feature_card__prompts__prompt_template__variable_gmail_draft_context__description',
         examples: [],
       }
     case 'CURRENT_WEBSITE_DOMAIN':
       return {
-        description: `This prompt template variable will be replaced with the current website's domain.`,
+        description:
+          'feature_card__prompts__prompt_template__variable_current_website_domain__description',
         examples: [
-          `reply to the following text on {{CURRENT_WEBSITE_DOMAIN}}`,
-          `note that the text is from {{CURRENT_WEBSITE_DOMAIN}}`,
+          'feature_card__prompts__prompt_template__variable_current_website_domain__example1',
+          'feature_card__prompts__prompt_template__variable_current_website_domain__example2',
         ],
       }
     default:

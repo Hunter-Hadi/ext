@@ -171,7 +171,7 @@ const AIProviderAuthCard: FC<{
                     onClick={async () => {
                       await chromeExtensionClientOpenPage({
                         key: 'options',
-                        query: '#chatgpt-stable-mode',
+                        query: '#/chatgpt-stable-mode',
                       })
                     }}
                   >

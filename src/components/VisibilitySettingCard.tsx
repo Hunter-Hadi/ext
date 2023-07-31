@@ -1,8 +1,6 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { IVisibilitySetting } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup/ToggleButtonGroup'
-import ToggleButton from '@mui/material/ToggleButton'
 import Typography from '@mui/material/Typography'
 import DomainSelect from '@/components/select/DomainSelect'
 import uniq from 'lodash-es/uniq'
@@ -11,263 +9,267 @@ import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { SxProps } from '@mui/material/styles'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useFocus } from '@/hooks/useFocus'
-import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
-import isEqual from 'lodash-es/isEqual'
-import Box from '@mui/material/Box'
+import { ListItem } from '@mui/material'
+import ListItemText from '@mui/material/ListItemText'
+import Button from '@mui/material/Button'
+import List from '@mui/material/List'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import { useTranslation } from 'react-i18next'
+import { isEqual } from 'lodash-es'
 
-const VisibilitySettingCardItem: FC<{
-  label: string
-  children: React.ReactNode
-}> = (props) => {
-  const { label, children } = props
-  return (
-    <Stack direction={'row'} alignItems={'start'}>
-      <Stack
-        direction={'row'}
-        alignItems={'center'}
-        sx={{ width: 130, flexShrink: 0, minHeight: 40 }}
-      >
-        <Typography color={'text.primary'} fontSize={14} fontWeight={500}>
-          {label}
-        </Typography>
-      </Stack>
-      <Stack direction={'row'} alignItems={'center'}>
-        {children}
-      </Stack>
-    </Stack>
-  )
-}
+/**
+ * 控制黑白名单的卡片
+ * @param props
+ * @constructor
+ * @version 1.0 - 根据黑白名单模式切换和保存
+ * @version 2.0 - 仿照chrome只保留单独黑名单/白名单模式
+ */
 
 const VisibilitySettingCard: FC<{
   sx?: SxProps
   defaultValue: IVisibilitySetting
   onChange: (value: IVisibilitySetting) => void
   disabled?: boolean
-  onlyBlacklist?: boolean
-  onlyWhitelist?: boolean
+  mode: 'black' | 'white'
 }> = (props) => {
-  const { defaultValue, onChange, disabled, onlyWhitelist, onlyBlacklist } =
-    props
+  const { defaultValue, onChange, disabled, mode } = props
+  const isBlackMode = mode === 'black'
+  const { t } = useTranslation(['settings', 'common'])
+  const [newSite, setNewSite] = useState('')
+  const [open, setOpen] = useState(false)
+  const BoxRef = useRef<HTMLDivElement>(null)
+  const handleOpen = () => {
+    setNewSite('')
+    setOpen(true)
+    setTimeout(() => {
+      BoxRef.current?.querySelector('input')?.focus()
+    }, 100)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+  const handleSubmit = () => {
+    if (isBlackMode) {
+      setVisibilitySetting({
+        ...visibilitySetting,
+        isWhitelistMode: false,
+        blacklist: uniq([newSite, ...visibilitySetting.blacklist]).filter(
+          Boolean,
+        ),
+      })
+    } else {
+      setVisibilitySetting({
+        ...visibilitySetting,
+        isWhitelistMode: true,
+        whitelist: uniq([newSite, ...visibilitySetting.whitelist]).filter(
+          Boolean,
+        ),
+      })
+    }
+    setOpen(false)
+    setTimeout(() => {
+      setOpen(false)
+    }, 0)
+  }
+  const isInitial = useRef(false)
   const [visibilitySetting, setVisibilitySetting] =
     useState<IVisibilitySetting>(() => {
       return cloneDeep(defaultValue)
     })
-  const prevSetting = React.useRef(visibilitySetting)
-  const memoDomains = useMemo(() => {
+  useEffect(() => {
+    if (!isInitial.current) {
+      if (!isEqual(defaultValue, visibilitySetting)) {
+        isInitial.current = true
+      } else {
+        return
+      }
+    }
+    if (visibilitySetting.isWhitelistMode) {
+      if (visibilitySetting.whitelist.length === 0) {
+        setVisibilitySetting({
+          ...visibilitySetting,
+          isWhitelistMode: false,
+          blacklist: [],
+          whitelist: [],
+        })
+        return
+      }
+    }
+    console.log('save visibilitySetting', visibilitySetting)
+    onChange(visibilitySetting)
+  }, [visibilitySetting])
+  const memoizedDomains = useMemo(() => {
     return visibilitySetting.isWhitelistMode
       ? visibilitySetting.whitelist
       : visibilitySetting.blacklist
   }, [visibilitySetting])
-  const emptyText = useMemo(() => {
-    if (memoDomains.length > 0) {
-      return ''
-    }
-    return visibilitySetting.isWhitelistMode
-      ? '❌ Disabled on all websites'
-      : '✅ Enabled on all websites'
-  }, [memoDomains, visibilitySetting.isWhitelistMode])
-  useFocus(() => {
-    getChromeExtensionButtonSettings('textSelectPopupButton').then(
-      (textSelectPopupSetting) => {
-        textSelectPopupSetting &&
-          setVisibilitySetting(textSelectPopupSetting.visibility)
-      },
-    )
-  })
-  useEffect(() => {
-    if (prevSetting.current) {
-      if (
-        prevSetting.current.isWhitelistMode !==
-        visibilitySetting.isWhitelistMode
-      ) {
-        onChange(visibilitySetting)
-      } else {
-        if (visibilitySetting.isWhitelistMode) {
-          if (
-            !isEqual(prevSetting.current.whitelist, visibilitySetting.whitelist)
-          ) {
-            onChange(visibilitySetting)
-          }
-        } else if (
-          !isEqual(prevSetting.current.blacklist, visibilitySetting.blacklist)
-        ) {
-          onChange(visibilitySetting)
-        }
-      }
-    }
-    prevSetting.current = visibilitySetting
-  }, [visibilitySetting])
   return (
     <Stack sx={{ ...props.sx }}>
-      <Box
+      {/*<p>{JSON.stringify(visibilitySetting)}</p>*/}
+      {/*<p>mode: {isBlackMode ? 'black' : 'white'}</p>*/}
+      {/*<p>*/}
+      {/*  {JSON.stringify(*/}
+      {/*    visibilitySetting.isWhitelistMode*/}
+      {/*      ? visibilitySetting.whitelist*/}
+      {/*      : visibilitySetting.blacklist,*/}
+      {/*  )}*/}
+      {/*</p>*/}
+      <List
         sx={{
-          p: 1,
-          bgcolor: 'background.paper',
+          p: 0,
+          bgcolor: (theme) =>
+            theme.palette.mode === 'dark'
+              ? 'rgb(32, 33, 36)'
+              : 'rgb(255,255,255)',
           borderRadius: '4px',
           border: '1px solid',
           borderColor: 'customColor.borderColor',
+          '& .MuiListItem-root': {
+            p: 2,
+          },
+          '& .MuiListItemText-root': {
+            m: 0,
+            mr: 2,
+          },
         }}
       >
-        <Stack spacing={2} p={2}>
-          <VisibilitySettingCardItem label={'Mode'}>
-            <ToggleButtonGroup
-              disabled={disabled}
-              size={'small'}
-              color="primary"
-              value={
-                visibilitySetting.isWhitelistMode ? 'whiteList' : 'blackList'
-              }
-              exclusive
-              onChange={(event, value) => {
-                setVisibilitySetting({
-                  ...visibilitySetting,
-                  isWhitelistMode: value === 'whiteList',
-                })
+        <ListItem sx={{ p: 0 }}>
+          <ListItemText
+            primary={
+              isBlackMode
+                ? t('settings:visibility_card__black_list_title')
+                : t('settings:visibility_card__white_list_title')
+            }
+            secondary={
+              isBlackMode
+                ? t('settings:visibility_card__black_list_description')
+                : t('settings:visibility_card__white_list_description')
+            }
+          />
+          <Button
+            variant={'outlined'}
+            sx={{
+              flexShrink: 0,
+              borderColor: 'customColor.borderColor',
+              color: 'text.primary',
+            }}
+            onClick={handleOpen}
+            disabled={disabled}
+          >
+            {t('common:add')}
+          </Button>
+        </ListItem>
+        {memoizedDomains.map((site) => {
+          return (
+            <ListItem
+              key={site}
+              sx={{
+                boxSizing: 'border-box',
+                p: '12px 16px',
+                borderTop: '1px solid',
+                borderColor: 'customColor.borderColor',
               }}
-              aria-label="Platform"
             >
-              {!onlyWhitelist && (
-                <ToggleButton sx={{ width: 220 }} value="blackList">
-                  Disable on selected websites
-                </ToggleButton>
-              )}
-              {!onlyBlacklist && (
-                <ToggleButton sx={{ width: 220 }} value="whiteList">
-                  Enable on selected websites
-                </ToggleButton>
-              )}
-            </ToggleButtonGroup>
-          </VisibilitySettingCardItem>
-          <VisibilitySettingCardItem label={'Selected websites'}>
-            <Stack sx={{ width: '100%' }} spacing={2}>
-              <Stack direction={'row'} spacing={2} alignItems={'center'}>
-                <DomainSelect
-                  sx={{
-                    width: 220,
-                  }}
-                  disabled={disabled}
-                  onChange={async (value) => {
-                    if (!value) {
-                      return
-                    }
-                    if (visibilitySetting.isWhitelistMode) {
-                      setVisibilitySetting({
-                        ...visibilitySetting,
-                        whitelist: uniq([
-                          value,
-                          ...visibilitySetting.whitelist,
-                        ]),
-                      })
-                    } else {
-                      setVisibilitySetting({
-                        ...visibilitySetting,
-                        blacklist: uniq([
-                          value,
-                          ...visibilitySetting.blacklist,
-                        ]),
-                      })
-                    }
-                  }}
-                />
-              </Stack>
-              <Stack
-                direction={'row'}
-                flexWrap={'wrap'}
-                alignItems={'center'}
-                width={'100%'}
-                sx={{
-                  overflowY: 'auto',
-                  maxHeight: 144,
+              <ListItemText
+                primary={
+                  <Stack direction={'row'} alignItems={'center'} spacing={2}>
+                    <img
+                      src={domain2Favicon(site)}
+                      alt={site}
+                      style={{
+                        width: 20,
+                        height: 20,
+                        flexShrink: 0,
+                      }}
+                    />
+                    <Typography component={'span'} noWrap fontSize={14}>
+                      {site}
+                    </Typography>
+                  </Stack>
+                }
+              />
+              <IconButton
+                sx={{ flexShrink: 0 }}
+                disabled={disabled}
+                onClick={() => {
+                  if (isBlackMode) {
+                    setVisibilitySetting({
+                      ...visibilitySetting,
+                      blacklist: visibilitySetting.blacklist.filter(
+                        (item) => item !== site,
+                      ),
+                    })
+                  } else {
+                    setVisibilitySetting({
+                      ...visibilitySetting,
+                      whitelist: visibilitySetting.whitelist.filter(
+                        (item) => item !== site,
+                      ),
+                    })
+                  }
                 }}
               >
-                <Typography fontSize={14} color={'text.primary'}>
-                  {emptyText}
-                </Typography>
-                {memoDomains.map((domain) => (
-                  <DomainDeleteItem
-                    key={domain}
-                    domain={domain}
-                    sx={{
-                      width: '200px',
-                    }}
-                    onDelete={async (domain) => {
-                      if (visibilitySetting.isWhitelistMode) {
-                        setVisibilitySetting({
-                          ...visibilitySetting,
-                          whitelist: visibilitySetting.whitelist.filter(
-                            (item) => item !== domain,
-                          ),
-                        })
-                      } else {
-                        setVisibilitySetting({
-                          ...visibilitySetting,
-                          blacklist: visibilitySetting.blacklist.filter(
-                            (item) => item !== domain,
-                          ),
-                        })
-                      }
-                    }}
-                  />
-                ))}
-              </Stack>
-            </Stack>
-          </VisibilitySettingCardItem>
-        </Stack>
-      </Box>
+                <ContextMenuIcon icon={'Delete'} sx={{ fontSize: 20 }} />
+              </IconButton>
+            </ListItem>
+          )
+        })}
+      </List>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        onKeyDownCapture={(event) => {
+          if (event.key === 'Enter' && newSite) {
+            handleSubmit()
+          }
+        }}
+      >
+        <DialogTitle>
+          {t('settings:visibility_card__add_a_site_dialog__title')}
+        </DialogTitle>
+        <DialogContent>
+          <Stack width={500} ref={BoxRef} spacing={1}>
+            <Typography fontSize={16}>
+              {t(
+                'settings:visibility_card__add_a_site_dialog__field_site__title',
+              )}
+            </Typography>
+            <DomainSelect
+              label={t(
+                'settings:visibility_card__add_a_site_dialog__field_site__placeholder',
+              )}
+              value={newSite}
+              sx={{
+                width: '100%',
+              }}
+              disabled={disabled}
+              onChange={async (value) => {
+                if (!value) {
+                  return
+                }
+                setNewSite(value)
+              }}
+            />
+          </Stack>
+        </DialogContent>
+        <DialogActions>
+          <Button variant={'outlined'} onClick={handleClose}>
+            {t('common:cancel')}
+          </Button>
+          <Button
+            disabled={!newSite}
+            variant={'contained'}
+            onClick={handleSubmit}
+          >
+            {t('common:add')}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Stack>
   )
 }
-const DomainDeleteItem: FC<{
-  domain: string
-  onDelete: (domain: string) => void
-  sx?: SxProps
-}> = (props) => {
-  return (
-    <Stack
-      direction={'row'}
-      alignItems={'center'}
-      spacing={1}
-      width={'100%'}
-      sx={{
-        py: 0.5,
-        px: 1,
-        m: 0.5,
-        borderRadius: '4px',
-        bgcolor: (t) =>
-          t.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : '#f7f8fa',
-        ...props.sx,
-      }}
-    >
-      <img
-        src={domain2Favicon(props.domain)}
-        alt={props.domain}
-        style={{
-          width: 16,
-          height: 16,
-          flexShrink: 0,
-        }}
-      />
-      <Typography
-        fontSize={14}
-        color={'text.primary'}
-        width={0}
-        flex={1}
-        noWrap
-      >
-        {props.domain}
-      </Typography>
-      <IconButton
-        sx={{
-          flexShrink: 0,
-        }}
-        onClick={() => {
-          props.onDelete(props.domain)
-        }}
-      >
-        <ContextMenuIcon icon={'Delete'} />
-      </IconButton>
-    </Stack>
-  )
-}
+
 export default VisibilitySettingCard

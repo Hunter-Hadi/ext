@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 import { mkdirpSync } from 'mkdirp'
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const i18nDir = join(__dirname, '../src/i18n/')
+const i18nDir = join(__dirname, '../src/i18n/locales')
 const outputDir = join(__dirname, '../dist/_locales/')
 
 const localesCreator = async () => {
@@ -18,7 +18,7 @@ const localesCreator = async () => {
     for (let i = 0; i < directories.length; i++) {
       mkdirpSync(join(localesDir, directories[i]))
       const jsonPath = join(__dirname,
-        `../src/i18n/${directories[i]}/index.json`,
+        `../src/i18n/locales/${directories[i]}/index.json`,
       )
       const {default: currentLang} = await import(jsonPath, {
         assert: {

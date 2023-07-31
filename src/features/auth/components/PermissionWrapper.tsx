@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import {
   IUserCurrentPlan,
   useUserInfo,
@@ -8,7 +8,7 @@ import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
 import Box, { BoxProps } from '@mui/material/Box'
-import { ClickAwayListener } from '@mui/material'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { v4 as uuidV4 } from 'uuid'
@@ -155,7 +155,20 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
       window.removeEventListener('maxAIPermissionWrapperCustomEvent', listener)
     }
   }, [])
-  if (permissions.find((permission) => permission === currentUserPlan.name)) {
+  // 通用的权限判断逻辑
+  const hasPermissionMemo = useMemo(() => {
+    // 判断角色
+    if (permissions.find((permission) => permission === currentUserPlan.name)) {
+      return true
+    }
+    // 判断是否为新用户
+    if (currentUserPlan?.isNewUser) {
+      return true
+    }
+    return false
+  }, [currentUserPlan, permissions])
+
+  if (hasPermissionMemo) {
     return <>{children}</>
   }
   return (

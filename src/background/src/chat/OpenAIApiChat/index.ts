@@ -65,7 +65,7 @@ class OpenAiApiChat extends BaseChat {
     this.active = true
     await this.checkApiKey()
     if (this.status === 'needAuth') {
-      await createChromeExtensionOptionsPage('#chatgpt-api-settings')
+      await createChromeExtensionOptionsPage('#/openai-api-key')
     }
   }
   async askChatGPT(

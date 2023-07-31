@@ -17,10 +17,10 @@ import {
 } from '@/background/utils/buttonSettings'
 import Box from '@mui/material/Box'
 import PopperWrapper from '@/components/PopperWrapper'
-import { Card } from '@mui/material'
+import Card from '@mui/material/Card'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import HowToFindSettings from '@/pages/options/pages/UseChatGPTOptionsSettingPage/HowToFindSettings'
+import HowToFindSettings from '@/pages/settings/components/HowToFindSettings'
 import {
   ContextMenuSettingsState,
   FloatingDropdownMenuState,
@@ -407,7 +407,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               onClick={() => {
                 chromeExtensionClientOpenPage({
                   key: 'options',
-                  query: '#mini-menu-on-text-selection',
+                  query: '#/mini-menu',
                 })
               }}
             ></LiteDropdownMenuItem>

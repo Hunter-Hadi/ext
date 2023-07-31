@@ -72,7 +72,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
             onClick={() => {
               chromeExtensionClientOpenPage({
                 key: 'options',
-                query: '#my-own-prompts',
+                query: '#/my-own-prompts',
               })
             }}
             label={'Manage my own prompts'}

@@ -68,6 +68,8 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import SendIcon from '@mui/icons-material/Send'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
+import { getChromeExtensionSettings } from '@/background/utils'
+import { AppSettingsState } from '@/store'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -78,6 +80,7 @@ const FloatingContextMenu: FC<{
   const { root } = props
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
+  const setAppSettings = useSetRecoilState(AppSettingsState)
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -267,6 +270,7 @@ const FloatingContextMenu: FC<{
    * @version 1.0 - 打开 dropdown menu:
    *    1. 自动focus
    *    2. 清空最后一次的输出
+   *    3. 更新contextMenuList
    * @version 2.0 - 关闭 dropdown menu
    *    1. 将用户输入的内容同步到sidebar chat box
    */
@@ -281,6 +285,10 @@ const FloatingContextMenu: FC<{
           textareaEl?.focus()
         }, 1)
       }
+      // 为了保证登陆后能直接用，需要先获取一次settings
+      getChromeExtensionSettings().then((settings) => {
+        setAppSettings(settings)
+      })
     } else {
       const textareaEl = getAppContextMenuElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
@@ -566,6 +574,7 @@ const FloatingContextMenu: FC<{
       getMediator('floatingMenuInputMediator').unsubscribe(updateInputValue)
     }
   }, [setInputValue])
+
   return (
     <FloatingPortal root={root}>
       <div

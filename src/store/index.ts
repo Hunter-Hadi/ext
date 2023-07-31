@@ -1,6 +1,7 @@
 import { atom } from 'recoil'
 import { getEnv } from '@/utils/AppEnv'
 import { IChromeExtensionSettings } from '@/background/types/Settings'
+import Browser from 'webextension-polyfill'
 
 export const AppState = atom<{
   env: 'gmail' | 'normal'
@@ -18,4 +19,13 @@ export const AppState = atom<{
 export const AppSettingsState = atom<IChromeExtensionSettings>({
   key: 'AppSettingsState',
   default: {},
+})
+
+export const AppLanguageState = atom<{
+  preferredLanguage: string
+}>({
+  key: 'AppLanguageState',
+  default: {
+    preferredLanguage: Browser.i18n.getUILanguage(),
+  },
 })

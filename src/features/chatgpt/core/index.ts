@@ -327,7 +327,7 @@ export const mockSendPostMessage = () => {
 }
 
 export const generateArkoseToken = async (model: string) => {
-  const needArkoseToken = [
+  const needWaitArkoseToken = [
     // 'text-davinci-002-render-sha',
     // 'text-davinci-002-render-sha-mobile',
     'gpt-4',
@@ -336,31 +336,33 @@ export const generateArkoseToken = async (model: string) => {
     'gpt-4-plugins',
     'gpt-4-mobile',
   ].includes(model)
-  if (!needArkoseToken) {
+  if (needWaitArkoseToken) {
+    console.log('wait generateArkose Iframe loaded')
+    await waitArkoseTokenIframeLoaded()
+    console.log('generateArkoseToken', model)
+    const currentToken = await getLocalArkoseToken()
+    mockSendPostMessage()
+    return new Promise((resolve) => {
+      const intervalDelay = 100
+      const maxLoop = (10 * 1000) / intervalDelay
+      let loop = 0
+      const timer = setInterval(async () => {
+        const newToken = await getLocalArkoseToken()
+        if (newToken && newToken.token !== currentToken?.token) {
+          clearInterval(timer)
+          resolve(newToken.token)
+        }
+        if (loop > maxLoop) {
+          clearInterval(timer)
+          resolve('')
+        }
+        loop++
+      }, intervalDelay)
+    })
+  } else {
+    // TODO gpt3.5某些用户可能也需要
     return ''
   }
-  console.log('wait generateArkose Iframe loaded')
-  await waitArkoseTokenIframeLoaded()
-  console.log('generateArkoseToken', model)
-  const currentToken = await getLocalArkoseToken()
-  mockSendPostMessage()
-  return new Promise((resolve) => {
-    const intervalDelay = 100
-    const maxLoop = (10 * 1000) / intervalDelay
-    let loop = 0
-    const timer = setInterval(async () => {
-      const newToken = await getLocalArkoseToken()
-      if (newToken && newToken.token !== currentToken?.token) {
-        clearInterval(timer)
-        resolve(newToken.token)
-      }
-      if (loop > maxLoop) {
-        clearInterval(timer)
-        resolve('')
-      }
-      loop++
-    }, intervalDelay)
-  })
 }
 
 class ChatGPTConversation {
@@ -488,6 +490,8 @@ class ChatGPTConversation {
     if (arkoseToken) {
       // NOTE: 只有gpt-4相关的模型需要传入arkoseToken
       postMessage.arkose_token = arkoseToken
+    } else {
+      // postMessage.arkose_token = null
     }
     if (params.meta) {
       // NOTE: 目前只用在了gpt-4-code-interpreter

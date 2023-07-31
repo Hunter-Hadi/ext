@@ -21,26 +21,17 @@ const FavoriteContextMenuGroup: FC<{
       direction={'row'}
       alignItems={'center'}
       className={'max-ai__click-menu-button--box'}
-      sx={
-        {
-          // '& > button,div': {
-          //   '&:not(:last-child)': {
-          //     marginRight: '1px',
-          //     borderRadius: '4px 0 0 4px',
-          //     boxShadow: (t) =>
-          //       t.palette.mode === 'dark'
-          //         ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
-          //         : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
-          //     '&:hover': {
-          //       boxShadow: (t) =>
-          //         t.palette.mode === 'dark'
-          //           ? 'rgb(255 255 255 / 21%) 1px 0px 0px'
-          //           : 'rgba(55, 53, 47, 0.09) 1px 0px 0px',
-          //     },
-          //   },
-          // },
-        }
-      }
+      sx={{
+        // 改成正方形 - 20230728 - @huangsong
+        '&.max-ai__click-menu-button--box': {
+          '& button': {
+            padding: '5px 5px!important',
+            '&:has(.max-ai__click-menu-button--box__text-icon)': {
+              padding: '3px 3px!important',
+            },
+          },
+        },
+      }}
     >
       {favoriteContextMenuList?.map((item) => {
         const isTextButton = !item.data.icon

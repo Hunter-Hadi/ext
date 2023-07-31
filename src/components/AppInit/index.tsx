@@ -24,7 +24,7 @@ import Link from '@mui/material/Link'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import useInterval from '@/hooks/useInterval'
-import { Divider } from '@mui/material'
+import Divider from '@mui/material/Divider'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import { RESOURCES_URL } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -255,7 +255,7 @@ const useHandlePDFViewerError = () => {
                   event.stopPropagation()
                   await chromeExtensionClientOpenPage({
                     key: 'options',
-                    query: '#pdf',
+                    query: '?id=pdf-viewer#/appearance',
                   })
                   window.close()
                 }}
@@ -347,7 +347,7 @@ const disabledPDFViewer = () => {
                     event.stopPropagation()
                     await chromeExtensionClientOpenPage({
                       key: 'options',
-                      query: '#pdf',
+                      query: '?id=pdf-viewer#/appearance',
                     })
                   }}
                 >

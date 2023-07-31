@@ -346,7 +346,12 @@ const developmentHotReload = () => {
     ws.addEventListener('message', (event) => {
       if (event.data === 'hot_reload_message') {
         backgroundRestartChromeExtension().then(() => {
-          // createChromeExtensionOptionsPage()
+          // setTimeout(async () => {
+          //   await Browser.tabs.create({
+          //     url: `chrome-extension://${Browser.runtime.id}/pages/settings/index.html`,
+          //     active: true,
+          //   })
+          // }, 1000)
         })
       }
     })

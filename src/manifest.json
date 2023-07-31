@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -38,7 +38,7 @@
     "<all_urls>"
   ],
   "options_ui": {
-    "page": "pages/options/index.html",
+    "page": "pages/settings/index.html",
     "open_in_tab": true
   },
   "permissions": ["tabs", "scripting", "storage", "management", "contextMenus", "clipboardRead", "clipboardWrite"],
@@ -80,6 +80,7 @@
   "web_accessible_resources": [
     {
       "resources": [
+        "i18n/locales/*",
         "pages/pdf/*",
         "content.css",
         "content_style.css",

@@ -20,7 +20,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { ClickAwayListener } from '@mui/material'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Box from '@mui/material/Box'
 import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper'
@@ -51,7 +51,7 @@ const GmailActionRunner = () => {
   useEffect(() => {
     const ctaButtonAction = (event: any) => {
       const { ctaButtonElement } = event.detail || {}
-      if (currentUserPlan.name === 'free') {
+      if (currentUserPlan.name === 'free' && !currentUserPlan.isNewUser) {
         const customEvent = new CustomEvent(
           'maxAIPermissionWrapperCustomEvent',
           {
@@ -96,7 +96,7 @@ const GmailActionRunner = () => {
     return () => {
       window.removeEventListener('ctaButtonClick', ctaButtonAction)
     }
-  }, [currentUserPlan.name])
+  }, [currentUserPlan])
 
   const permissionCardMemo = useMemo(() => {
     const isDraftMessageType = messageType !== 'reply'

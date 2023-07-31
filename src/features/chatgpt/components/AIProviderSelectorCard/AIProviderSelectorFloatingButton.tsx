@@ -6,7 +6,7 @@ import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard
 import { SxProps } from '@mui/material/styles'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
 import Popover from '@mui/material/Popover'
-import { ClickAwayListener } from '@mui/material'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { getAppRootElement } from '@/utils'
 
 const AIProviderSelectorFloatingButton: FC<{

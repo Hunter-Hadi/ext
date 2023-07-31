@@ -35,7 +35,7 @@ import useEffectOnce from '../../hooks/useEffectOnce'
 import { getChromeExtensionSettings, setChromeExtensionSettings } from './index'
 import { default as lodashSet } from 'lodash-es/set'
 import debounce from 'lodash-es/debounce'
-import useSyncSettingsChecker from '@/pages/options/hooks/useSyncSettingsChecker'
+import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
@@ -69,10 +69,8 @@ export const useChromeExtensionButtonSettings = () => {
     buttonKey: IChromeExtensionButtonSettingKey,
     show: boolean,
   ): Promise<boolean> => {
-    const buttonSetting = appSettings.buttonSettings?.[
-      buttonKey
-    ] as IChromeExtensionButtonSetting
-    if (buttonSetting) {
+    const buttonSetting = await getChromeExtensionButtonSettings(buttonKey)
+    if (buttonSetting?.contextMenu?.length) {
       const newSettings = cloneDeep(buttonSetting)
       if (show) {
         newSettings.visibility.isWhitelistMode = false
@@ -80,6 +78,7 @@ export const useChromeExtensionButtonSettings = () => {
         newSettings.visibility.isWhitelistMode = true
         newSettings.visibility.whitelist = []
       }
+      console.log('mini menu', newSettings.contextMenu)
       await updateButtonSettings(buttonKey, newSettings)
       return true
     }

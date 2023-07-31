@@ -103,6 +103,7 @@ export interface IChromeExtensionSettings {
     chatBoxWidth?: number
     colorSchema?: 'light' | 'dark'
     language?: string
+    preferredLanguage?: string
     /**
      * @deprecated
      */

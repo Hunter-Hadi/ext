@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 import List from '@mui/material/List'
 import { ListItem } from '@mui/material'
 import ListItemText from '@mui/material/ListItemText'
-import LanguageSelect from '@/components/select/LanguageSelect'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
+import LanguageCodeSelect from '@/components/select/LanguageCodeSelect'
 
 const FeaturePreferredLanguageCard: FC = () => {
   const { userSettings, setUserSettings } = useUserSettings()
@@ -39,16 +39,16 @@ const FeaturePreferredLanguageCard: FC = () => {
             )}
           />
           {userSettings && (
-            <LanguageSelect
+            <LanguageCodeSelect
               sx={{ flexShrink: 0, width: 220, ml: 2 }}
               label={t(
                 'settings:feature_card__preferred_language__field_preferred_language_label',
               )}
-              defaultValue={userSettings.language}
+              defaultValue={userSettings.preferredLanguage}
               onChange={async (newLanguage) => {
                 await setUserSettings({
                   ...userSettings,
-                  language: newLanguage,
+                  preferredLanguage: newLanguage,
                 })
               }}
             />

@@ -14,10 +14,7 @@ import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
 import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
 import PageHelp from '@/pages/settings/components/pageHelp'
-import Button from '@mui/material/Button'
-import { useTranslation } from 'react-i18next'
 import SettingsLoginPage from '@/pages/settings/pages/login'
-import DevContent from '@/components/DevContent'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {
   xs: 250,
@@ -63,7 +60,6 @@ const SettingsPerksPage = React.lazy(
   () => import('@/pages/settings/pages/perks'),
 )
 const SettingsApp: FC = () => {
-  const { i18n } = useTranslation()
   const { loaded, isLogin } = useAuthLogin()
   const onceScrollRef = useRef(false)
   const [route, setRoute] = useState<ISettingsRouteType>(() =>
@@ -145,17 +141,6 @@ const SettingsApp: FC = () => {
               flexBasis={SETTINGS_PAGE_CONTENT_WIDTH}
             >
               {/*TODO search bar*/}
-              <DevContent>
-                <Button
-                  onClick={async () => {
-                    await i18n.changeLanguage(
-                      i18n.language === 'zh_CN' ? 'en' : 'zh_CN',
-                    )
-                  }}
-                >
-                  change language
-                </Button>
-              </DevContent>
             </Stack>
             <Stack direction={'row'} flex={'1 1 0'} justifyContent={'end'}>
               {/*<AccountMenu />*/}

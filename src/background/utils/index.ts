@@ -69,6 +69,7 @@ export const getChromeExtensionSettings =
       /** @deprecated **/
       gmailToolBarContextMenu: [],
       userSettings: {
+        preferredLanguage: 'en',
         chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
         chatGPTStableModeDuration: 30,
         colorSchema: undefined,

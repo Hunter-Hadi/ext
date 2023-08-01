@@ -27,9 +27,14 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
   const { t } = useTranslation(['settings', 'common'])
   const confirmText = useMemo(() => {
     if (actionType === 'delete') {
-      return t('settings:feature_card__prompts__confirm__delete__description')
+      return nodeType === 'shortcuts'
+        ? t(
+            'settings:feature_card__prompts__confirm__delete__prompt__description',
+          )
+        : t(
+            'settings:feature_card__prompts__confirm__delete__prompt_group__description',
+          )
     }
-
     // default reset type
     return t('settings:feature_card__prompts__confirm__restore__description')
   }, [actionType, nodeType, t])

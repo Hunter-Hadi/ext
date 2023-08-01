@@ -15,6 +15,7 @@ import ChatIconFileList, {
 import { useRecoilValue } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { useTranslation } from 'react-i18next'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
@@ -23,6 +24,7 @@ interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
 }
 const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   const { disabled = false, TooltipProps, onUpload, onDone, ...rest } = props
+  const { t } = useTranslation(['common', 'client'])
   const {
     files,
     AIProviderConfig,
@@ -123,7 +125,11 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       {!isMaxFiles && (
         <TextOnlyTooltip
           placement={'top'}
-          title={AIProviderConfig?.acceptTooltip || 'Upload file'}
+          title={
+            AIProviderConfig?.acceptTooltip
+              ? AIProviderConfig.acceptTooltip(t)
+              : 'Upload file'
+          }
           {...TooltipProps}
         >
           <Button

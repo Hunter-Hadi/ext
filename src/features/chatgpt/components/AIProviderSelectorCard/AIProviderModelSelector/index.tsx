@@ -62,7 +62,7 @@ const AIProviderModelSelector: FC = () => {
       sx={{ width: '100%' }}
       size={'small'}
       loading={loading}
-      label={'Model'}
+      label={t('common:model')}
       labelSx={{
         fontSize: 16,
       }}

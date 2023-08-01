@@ -125,7 +125,7 @@ const AIProviderAuthCard: FC<{
                 }}
               >
                 <Typography fontSize={'18px'} fontWeight={700}>
-                  Connecting to ChatGPT...
+                  {t('client:provider__chatgpt_web_app__connecting')}
                 </Typography>
               </Stack>
             </TextOnlyTooltip>

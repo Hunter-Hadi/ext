@@ -18,6 +18,9 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import { backgroundSendClientMessage } from '@/background/utils'
 import Alert from '@mui/material/Alert'
 import BulletList from '../../components/BulletList'
+import '@/i18n'
+import { useTranslation } from 'react-i18next'
+import { useInitI18n } from '@/i18n/hooks'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
@@ -25,6 +28,8 @@ const App: FC<{
   isSpecialPage: boolean
 }> = (props) => {
   const { isSpecialPage } = props
+  useInitI18n()
+  const { t } = useTranslation(['common', 'client'])
   const [shortCutKey, setShorCutKey] = useState('')
   const [currentTabId, setCurrentTabId] = useState<number | undefined>()
   const init = async () => {
@@ -44,6 +49,7 @@ const App: FC<{
   }
   useEffectOnce(() => {
     init()
+    // todo init i18n
   })
   return (
     <Stack minWidth={400} spacing={2} p={1}>
@@ -75,12 +81,12 @@ const App: FC<{
               fontSize={20}
               fontWeight={800}
             >
-              Welcome to MaxAI.me!
+              {t('client:popup__title')}
             </Typography>
           </Stack>
         </Link>
         <TooltipButton
-          title={'Settings'}
+          title={t('common:settings')}
           size={'small'}
           variant={'text'}
           sx={{
@@ -103,24 +109,24 @@ const App: FC<{
       {isSpecialPage ? (
         <Alert severity={'info'}>
           <Typography fontSize={14} color={'text.primary'} mb={1}>
-            {`For security reasons, the extension only works on actual websites and PDF files, excluding ChatGPT's webpage. So it won't work on`}
+            {t('client:popup__special_page__title')}
           </Typography>
           <BulletList
             textProps={{
               fontSize: 14,
             }}
             textList={[
-              `New tabs without loaded websites`,
-              'Chrome pages',
-              'Chrome Web Store pages',
-              'chat.openai.com',
+              t('client:popup__special_page__item1'),
+              t('client:popup__special_page__item2'),
+              t('client:popup__special_page__item3'),
+              t('client:popup__special_page__item4'),
             ]}
           />
         </Alert>
       ) : (
         <Alert severity={'info'}>
           <Typography fontSize={14} color={'text.primary'}>
-            {`Refresh this page to activate the extension on this page.`}
+            {t('client:popup__refresh_page__title')}
           </Typography>
         </Alert>
       )}
@@ -137,12 +143,12 @@ const App: FC<{
             }
           }}
         >
-          Refresh this page
+          {t('client:popup__refresh_page__button')}
         </Button>
       )}
       <Stack>
         <Typography fontSize={14} color={'text.secondary'}>
-          <span>{`Press `}</span>
+          <span>{`${t('client:popup__set_shortcut__description1')} `}</span>
           <Box
             sx={{
               p: '0 4px',
@@ -158,16 +164,16 @@ const App: FC<{
           >
             {shortCutKey}
           </Box>
-          <span>{` to toggle the extension sidebar. You can also `}</span>
+          <span>{` ${t('client:popup__set_shortcut__description2')} `}</span>
           <Link
             href={'#'}
             onClick={async () => {
               await chromeExtensionClientOpenPage({ key: 'shortcuts' })
             }}
           >
-            change the shortcut
+            {t('client:popup__set_shortcut__description3')}
           </Link>
-          <span>{` anytime.`}</span>
+          <span>{` ${t('client:popup__set_shortcut__description4')}`}</span>
         </Typography>
       </Stack>
     </Stack>

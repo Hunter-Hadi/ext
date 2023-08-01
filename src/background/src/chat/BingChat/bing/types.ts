@@ -59,7 +59,7 @@ export const BING_MODELS: IAIProviderModel[] = [
     // TODO - bing的文件上传需要校验origin和referrer，需要新的chrome extension permission, 目前搁置
     // uploadFileConfig: {
     //   accept: 'image/gif, image/jpeg, image/png, image/webp',
-    //   acceptTooltip: 'Add an image',
+    //   acceptTooltip: t => t('client:provider__bing_web_app__upload__accept_tooltip'),
     //   maxFileSize: 5 * 1024 * 1024,
     //   maxCount: 1,
     // },

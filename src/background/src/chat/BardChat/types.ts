@@ -32,7 +32,8 @@ export const BARD_MODELS: IAIProviderModel[] = [
     uploadFileConfig: {
       maxFileSize: 25 * 1024 * 1024, // 25MB
       accept: '.jpg,.jpeg,.png,.webp',
-      acceptTooltip: 'Upload file JEPEG, PNG, WEBP',
+      acceptTooltip: (t) =>
+        t('client:provider__bard_web_app__upload__accept_tooltip'),
       maxCount: 1,
     },
   },

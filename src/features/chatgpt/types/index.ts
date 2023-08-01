@@ -99,7 +99,7 @@ export interface IAIProviderModel {
   disabled?: boolean
   uploadFileConfig?: {
     accept: string
-    acceptTooltip: string
+    acceptTooltip: (t: TFunction<['common', 'client']>) => React.ReactNode
     maxFileSize: number
     maxCount: number
   }

@@ -3,13 +3,18 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { SxProps } from '@mui/material/styles'
+import { useTranslation } from 'react-i18next'
 const AppLoadingLayout: FC<{
   loading: boolean
   loadingText?: string
   size?: number
   sx?: SxProps
   children?: React.ReactNode
-}> = ({ loading, loadingText = 'Loading...', size = 20, sx, children }) => {
+}> = ({ loading, loadingText, size = 20, sx, children }) => {
+  const { t } = useTranslation(['common'])
+  const loadingTextMemo = React.useMemo(() => {
+    return loadingText || t('common:loading')
+  }, [loadingText, t])
   return (
     <React.Fragment>
       {loading ? (
@@ -27,7 +32,7 @@ const AppLoadingLayout: FC<{
           }}
         >
           <CircularProgress size={size} sx={{ m: '0 auto' }} />
-          {loadingText && (
+          {loadingTextMemo && (
             <Typography
               mt={1.5}
               variant="body2"
@@ -36,7 +41,7 @@ const AppLoadingLayout: FC<{
               lineHeight={1.25}
               color={'text.primary'}
             >
-              {loadingText}
+              {loadingTextMemo}
             </Typography>
           )}
         </Box>

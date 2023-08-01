@@ -7,9 +7,11 @@ import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import Alert from '@mui/material/Alert'
+import { useTranslation } from 'react-i18next'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const ChatGPTRefreshPageTips: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
   return (
     <Stack minWidth={400} spacing={2} p={1}>
       <Stack
@@ -40,17 +42,16 @@ const ChatGPTRefreshPageTips: FC = () => {
               fontSize={20}
               fontWeight={800}
             >
-              MaxAI.me!
+              {t('client:sidebar__refresh_page__title')}
             </Typography>
           </Stack>
         </Link>
       </Stack>
       <Alert severity={'info'}>
         <Typography fontSize={14} color={'text.primary'} textAlign={'left'}>
-          {`Refresh this page to activate the extension on this page.`}
+          {t('client:sidebar__refresh_page__description')}
         </Typography>
       </Alert>
-
       <Button
         fullWidth
         color={'primary'}
@@ -60,7 +61,7 @@ const ChatGPTRefreshPageTips: FC = () => {
           window.location.reload()
         }}
       >
-        Refresh this page
+        {t('client:sidebar__refresh_page__button')}
       </Button>
     </Stack>
   )

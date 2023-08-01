@@ -84,7 +84,20 @@ const useAIProviderModels = () => {
                       t(
                         'client:provider__model__tooltip_card__label__description',
                       ),
-                    value: (t) => item.description,
+                    value: (t) => {
+                      const description = item.description
+                      // provider__chatgpt_web_app__text_davinci_002_render_sha__description
+                      const key =
+                        `provider__chatgpt_web_app__${item.slug}__description`.replace(
+                          /-/g,
+                          '_',
+                        )
+                      const i18nKey: any = `client:${key}`
+                      if (t(i18nKey) !== key) {
+                        return t(i18nKey)
+                      }
+                      return description
+                    },
                   },
                 ],
                 disabled:
@@ -95,7 +108,10 @@ const useAIProviderModels = () => {
                 uploadFileConfig: isCodeInterpreter
                   ? {
                       accept: '',
-                      acceptTooltip: 'Upload file',
+                      acceptTooltip: (t) =>
+                        t(
+                          'client:provider__chatgpt_web_app__upload__accept_tooltip',
+                        ),
                       maxFileSize: -1,
                       maxCount: 1,
                     }

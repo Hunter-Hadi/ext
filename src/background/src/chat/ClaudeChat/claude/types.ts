@@ -62,8 +62,8 @@ export const CLAUDE_MODELS: IAIProviderModel[] = [
     uploadFileConfig: {
       accept:
         '.pdf,.doc,.docx,.rtf,.epub,.odt,.odp,.pptx,.txt,.py,.ipynb,.js,.jsx,.html,.css,.java,.cs,.php,.c,.cpp,.cxx,.h,.hpp,.rs,.R,.Rmd,.swift,.go,.rb,.kt,.kts,.ts,.tsx,.m,.scala,.rs,.dart,.lua,.pl,.pm,.t,.sh,.bash,.zsh,.csv,.log,.ini,.config,.json,.yaml,.yml,.toml,.lua,.sql,.bat,.md,.coffee',
-      acceptTooltip:
-        'Add files (5 max, 10MB each). Accepts pdf, txt, csv, etc.',
+      acceptTooltip: (t) =>
+        t('client:provider__claude_web_app__upload__accept_tooltip'),
       maxFileSize: 10 * 1024 * 1024,
       maxCount: 5,
     },

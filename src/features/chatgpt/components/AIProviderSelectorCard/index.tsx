@@ -71,7 +71,9 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
       >
         <AppLoadingLayout
           loadingText={
-            chatGPTConversationLoading ? 'AI is writing...' : 'Loading...'
+            chatGPTConversationLoading
+              ? t('client:floating_menu__input__running_placeholder')
+              : t('common:loading')
           }
           loading={isLoadingMemo}
           size={24}

@@ -31,10 +31,12 @@ export const useInitI18n = () => {
   const { userSettings } = useUserSettings()
   useLazyLoadI18nResources()
   useEffect(() => {
-    i18n.changeLanguage(userSettings?.preferredLanguage || 'en', (err) => {
-      if (err) {
-        log.error('change language error', err)
-      }
-    })
+    if (userSettings?.preferredLanguage) {
+      i18n.changeLanguage(userSettings?.preferredLanguage, (err) => {
+        if (err) {
+          log.error('change language error', err)
+        }
+      })
+    }
   }, [userSettings?.preferredLanguage])
 }

@@ -5,6 +5,7 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import {
+  isProduction,
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
@@ -38,24 +39,30 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
         if (item.id.includes('New_Mail_CTA_Button')) {
           item.id = USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID
         }
-        // 如果不能编辑，或者是系统prompt, 强制更新
-        if (!item.data.editable || defaultJsonMap.get(item.id)) {
-          // force update
-          const defaultItem = defaultJsonMap.get(item.id)
-          if (!defaultItem) {
-            // 如果没有默认值，说明已经被删除或者废弃了，不保留
-            return null
-          }
-          if (defaultItem) {
-            defaultJsonMap.delete(item.id)
-            updateCount++
-            return {
-              ...defaultItem,
-              id: item.id,
+        if (!isProduction) {
+          // dev可编辑其他不修改
+          item.data.editable = true
+          return item
+        } else {
+          // 如果不能编辑, 强制更新, 如果能找到id, 也强制更新(未来system prompt可能会可以被编辑，就需要删掉这段)
+          if (!item.data.editable || defaultJsonMap.has(item.id)) {
+            // force update
+            const defaultItem = defaultJsonMap.get(item.id)
+            if (!defaultItem) {
+              // 如果没有默认值，说明已经被删除或者废弃了，不保留
+              return null
+            }
+            if (defaultItem) {
+              defaultJsonMap.delete(item.id)
+              updateCount++
+              return {
+                ...defaultItem,
+                id: item.id,
+              }
             }
           }
+          return item
         }
-        return item
       })
       .filter(Boolean)
     // 如果有新增的，也要更新

@@ -5,8 +5,10 @@ import Select from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import debounce from 'lodash-es/debounce'
+import { useTranslation } from 'react-i18next'
 
 const ChatGPTOpenAIAPITemperatureSlider: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
   const { saveThirdProviderSettings, currentThirdProviderSettings } =
     useThirdProviderSetting()
   const [temperature, setTemperature] = React.useState<number>(1)
@@ -31,7 +33,9 @@ const ChatGPTOpenAIAPITemperatureSlider: FC = () => {
   }, [temperature])
   return (
     <FormControl fullWidth>
-      <InputLabel id="openai-api-temperature-select-label">{`Temperature (conversation style): ${currentThirdProviderSettings.temperature}`}</InputLabel>
+      <InputLabel id="openai-api-temperature-select-label">{`${t(
+        'client:provider__openai_api__selector__temperature__label',
+      )}: ${currentThirdProviderSettings.temperature}`}</InputLabel>
       <Select
         sx={{
           '& > div': {
@@ -44,7 +48,9 @@ const ChatGPTOpenAIAPITemperatureSlider: FC = () => {
         open={false}
         id="openai-api-temperature-select-label"
         value={temperature}
-        label={`Temperature (conversation style): ${temperature}`}
+        label={`${t(
+          'client:provider__openai_api__selector__temperature__label',
+        )}: ${temperature}`}
         renderValue={(value) => {
           return (
             <Slider

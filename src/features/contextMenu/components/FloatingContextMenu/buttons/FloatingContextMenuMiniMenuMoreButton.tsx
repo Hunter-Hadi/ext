@@ -70,7 +70,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
           label={''}
           root={root}
           menuSx={{
-            width: 200,
+            width: 240,
           }}
           referenceElement={
             <Box
@@ -211,7 +211,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
               />
             }
             menuSx={{
-              width: 210,
+              width: 320,
             }}
             hoverOpen
             zIndex={2147483611}

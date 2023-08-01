@@ -123,6 +123,9 @@ const ContextMenuSettings: FC<{
       .filter((item) => item.data.type === 'group')
       .map((item) => item.id)
   }, [originalTreeData])
+  const currentConfirmNode = useMemo(() => {
+    return originalTreeData.find((item) => item.id === confirmId)
+  }, [confirmId, defaultContextMenuJson])
   useEffect(() => {
     // NOTE: 2023-05-05之前: 恒定展开全部
     if (openIds.length === 0) {
@@ -474,6 +477,7 @@ const ContextMenuSettings: FC<{
         <ContextMenuActionConfirmModal
           open={confirmOpen}
           actionType={confirmType}
+          nodeType={currentConfirmNode?.data?.type || 'shortcuts'}
           onClose={handleActionConfirmClose}
           onConfirm={handleActionConfirmOnConfirm}
         />

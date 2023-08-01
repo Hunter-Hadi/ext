@@ -28,6 +28,7 @@
     "provider": "Provider",
     "language": "Language",
     "learn_more": "Learn more",
+    "read_more": "Read more",
     "try_again": "Try again",
     "stop": "Stop",
     "copy": "Copy",
@@ -333,6 +334,7 @@
     "gmail__button__cta__placeholder_draft": "Click this button to generate an entire email",
     "gmail__button__cta__placeholder_reply": "Click this button to generate email reply",
     "gmail__button__dropdown__placeholder": "More Gmail assistant options",
-    "gmail__refresh_page__confirm": "MaxAI.me - Refresh this page to activate the updated settings for the 'Gmail assistant' button."
+    "gmail__refresh_page__confirm": "MaxAI.me - Refresh this page to activate the updated settings for the 'Gmail assistant' button.",
+    "temp__rebrand__is_now": "is now"
   }
 }

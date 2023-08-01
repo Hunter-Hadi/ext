@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import Browser from 'webextension-polyfill'
+import { useTranslation } from 'react-i18next'
 
 const TWEET_URL = 'https://twitter.com/MaxAI_HQ/status/1673665954062954500'
 
@@ -15,6 +16,7 @@ export const REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY =
   'REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY_20230627'
 
 const Announcement = () => {
+  const { t } = useTranslation(['common', 'client'])
   const [loaded, setLoaded] = useState(false)
   const [hide, setHide] = useState(false)
 
@@ -66,7 +68,7 @@ const Announcement = () => {
             UseChatGPT.AI
           </Typography>
         </Link>
-        is now
+        {t('client:temp__rebrand__is_now')}
         <Link
           sx={{
             color: 'inherit',
@@ -92,7 +94,7 @@ const Announcement = () => {
             borderColor: 'inherit',
           }}
         >
-          Read More
+          {t('common:read_more')}
         </Button>
       </Stack>
       <IconButton

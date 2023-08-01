@@ -34,7 +34,8 @@
     "copy_to_clipboard": "复制到剪贴板",
     "copied": "已复制",
     "paste": "粘贴",
-    "loading": "加载中..."
+    "loading": "加载中...",
+    "read_more": "阅读更多"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -333,6 +334,7 @@
     "gmail__button__cta__placeholder_draft": "点击此按钮生成整个电子邮件",
     "gmail__button__cta__placeholder_reply": "点击此按钮生成电子邮件回复",
     "gmail__button__dropdown__placeholder": "更多Gmail助手选项",
-    "gmail__refresh_page__confirm": "MaxAI.me - 刷新此页面以激活“Gmail助手”按钮的更新设置。"
+    "gmail__refresh_page__confirm": "MaxAI.me - 刷新此页面以激活“Gmail助手”按钮的更新设置。",
+    "temp__rebrand__is_now": "现在"
   }
 }

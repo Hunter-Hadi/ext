@@ -1,12 +1,15 @@
 import React, { FC } from 'react'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
-import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import useFavoriteContextMenuList, {
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
+import { useTranslation } from 'react-i18next'
 
 const FavoriteContextMenuGroup: FC<{
   buttonSettingKey: IChromeExtensionButtonSettingKey
@@ -14,6 +17,7 @@ const FavoriteContextMenuGroup: FC<{
   onClick?: (contextMenuItem: IContextMenuItem) => void
 }> = (props) => {
   const { buttonSettingKey, placement, onClick } = props
+  const { t } = useTranslation(['common', 'client', 'prompt'])
   const { favoriteContextMenuList } =
     useFavoriteContextMenuList(buttonSettingKey)
   return (
@@ -35,15 +39,21 @@ const FavoriteContextMenuGroup: FC<{
     >
       {favoriteContextMenuList?.map((item) => {
         const isTextButton = !item.data.icon
+        let itemLabel = item.text
+        const itemId = item.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+        const key: any = `prompt:${itemId}`
+        if (t(key) !== itemId) {
+          itemLabel = t(key)
+        }
         const shortTitle =
-          String(item.text[0] || '').toUpperCase() + String(item.text[1] || '')
+          String(itemLabel[0] || '').toUpperCase() + String(itemLabel[1] || '')
         return (
           <TooltipButton
             TooltipProps={{
               floatingMenuTooltip: true,
               placement: placement || 'bottom',
             }}
-            title={item.text}
+            title={itemLabel}
             key={item.id}
             sx={{
               minWidth: 'unset',

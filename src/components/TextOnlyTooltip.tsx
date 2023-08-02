@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
-import { getAppContextMenuElement, getAppRootElement } from '@/utils'
+import { getAppContextMenuRootElement, getAppRootElement } from '@/utils'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 
@@ -18,8 +18,9 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   ...props
 }) => {
   const container =
-    (floatingMenuTooltip ? getAppContextMenuElement() : getAppRootElement()) ||
-    document.body
+    (floatingMenuTooltip
+      ? getAppContextMenuRootElement()
+      : getAppRootElement()) || document.body
   return (
     <Tooltip
       {...props}

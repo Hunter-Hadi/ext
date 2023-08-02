@@ -299,9 +299,11 @@ const updateI18nJson = async (
     console.log('needTranslateJsonList count', needTranslateJsonList.length)
     let mergedJson = _.cloneDeep(currentLanguageJson)
     let translateHasError = false
+    let percentRate = 0
+    let successCount = 0
     // 翻译
     const translatedJsonData = await Promise.all(
-      needTranslateJsonList.map(async (needTranslateJson) => {
+      needTranslateJsonList.map(async (needTranslateJson, index) => {
         debug && console.log(needTranslateJson)
         const { data, success, usage } = await translateValue(
           needTranslateJson,
@@ -313,7 +315,13 @@ const updateI18nJson = async (
           translateHasError = true
         }
         totalUsage += usage
-        console.log('partOfResult: \n', data)
+        successCount++
+        percentRate = Math.floor(
+          (successCount / needTranslateJsonList.length) * 100,
+        )
+        console.log(
+          `[${percentRate}%]: partOfResult [${index}] translate success`,
+        )
         return data
       }),
     )
@@ -368,6 +376,83 @@ const updateI18nJson = async (
   console.log('==================================')
 }
 
+import esbuild from 'esbuild'
+import postcssPlugin from 'esbuild-style-plugin'
+import autoprefixer from 'autoprefixer'
+import * as buildEnv from './build/env.mjs'
+
+/**
+ * 更新system prompt的i18n key
+ * @param forceUpdate
+ * @returns {Promise<void>}
+ */
+async function updateDefaultJson(forceUpdate = false) {
+  return new Promise(async (resolve) => {
+    const sourceJson = JSON.parse(fs.readFileSync(sourceJsonPath, 'utf-8'))
+    const replaceEnv = buildEnv.getReplaceEnv()
+    const systemPromptsDir = join(__dirname, './temp_system_prompts')
+    const systemPromptsFile = join(
+      systemPromptsDir,
+      './allSystemPromptJson.mjs',
+    )
+    async function esbuildConfig() {
+      await esbuild.build({
+        entryPoints: [join(__dirname, './allSystemPromptJson.ts')],
+        format: 'esm',
+        drop: ['console', 'debugger'],
+        bundle: true,
+        minify: true,
+        treeShaking: true,
+        splitting: false,
+        platform: 'node',
+        outfile: systemPromptsFile,
+        chunkNames: 'chunks/[hash]',
+        define: replaceEnv,
+        loader: {
+          '.woff': 'dataurl',
+          '.woff2': 'dataurl',
+          '.eot': 'dataurl',
+          '.ttf': 'dataurl',
+          '.graphql': 'text',
+        },
+        plugins: [
+          // eslint({ /* config */ }),
+          postcssPlugin({
+            postcss: {
+              plugins: [autoprefixer],
+            },
+          }),
+        ],
+      })
+    }
+    await esbuildConfig()
+    import(systemPromptsFile)
+      .then(({ default: systemPromptList }) => {
+        console.log(
+          '系统prompt总数: ',
+          systemPromptList.length,
+          ', ',
+          forceUpdate ? '[强制更新]' : '[增量更新]',
+        )
+        systemPromptList.forEach((systemPrompt) => {
+          //   { '80e6d17b-2cf5-456b-944b-5f645f0e12de': 'Generate from selection' }
+          const key = `prompt.${Object.keys(systemPrompt)[0]}`
+          const value = Object.values(systemPrompt)[0]
+          _.set(sourceJson, key, value)
+        })
+        // write default.json
+        fs.writeFileSync(sourceJsonPath, JSON.stringify(sourceJson, null, 2))
+        // remove temp dir
+        fs.rmSync(systemPromptsDir, { recursive: true })
+        resolve()
+      })
+      .catch((err) => {
+        console.log(err)
+        resolve()
+      })
+  })
+}
+
 /**
  * 强制更新所有语言包, 会覆盖所有语言包的字段, 慎用
  * @returns {Promise<void>}
@@ -394,16 +479,23 @@ async function updateAll(retryLanguageCodes = []) {
 
 /**
  * 增量更新指定字段
- * @param keys
+ * @param keys 需要更新的字段
+ * @param forceUpdate 是否强制更新
+ * @param retryLanguageCodes 重试的语言包
  * @returns {Promise<void>}
  */
-async function updateKeys(keys, retryLanguageCodes = []) {
+async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
   await updateI18nJson(keys, false, retryLanguageCodes)
 }
 
-async function main(updateKeys) {
-  const keys = []
+async function main() {
+  await updateDefaultJson(true)
+  const keys = [
+    'permission__pricing_hook__max_ai_temperature__title',
+    'permission__pricing_hook__max_ai_temperature__description',
+  ]
   const retryLanguageCodes = []
-  await updateKeys(keys, retryLanguageCodes)
+  await updateKeys(keys, false, retryLanguageCodes)
 }
-main(updateKeys).then().catch()
+
+main().then().catch()

@@ -124,7 +124,7 @@ const useAIProviderModels = () => {
         break
       case 'USE_CHAT_GPT_PLUS':
         {
-          currentModels = USE_CHAT_GPT_PLUS_MODELS
+          currentModels = reverse(cloneDeep(USE_CHAT_GPT_PLUS_MODELS))
         }
         break
       case 'BARD':

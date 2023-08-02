@@ -16,7 +16,7 @@ import {
   CONTEXT_MENU_DRAFT_LIST,
   CONTEXT_MENU_DRAFT_TYPES,
 } from '@/features/contextMenu/constants'
-import { getAppContextMenuElement, getAppRootElement } from '@/utils'
+import { getAppContextMenuRootElement, getAppRootElement } from '@/utils'
 import { getMediator } from '@/store/InputMediator'
 
 export const groupByContextMenuItem = (
@@ -446,7 +446,7 @@ export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
 }
 
 export const isFloatingContextMenuVisible = () => {
-  const floatingMenu = getAppContextMenuElement()?.querySelector(
+  const floatingMenu = getAppContextMenuRootElement()?.querySelector(
     `#${ROOT_FLOATING_REFERENCE_ELEMENT_ID}`,
   )
   return floatingMenu && floatingMenu.getAttribute('aria-hidden') === 'false'

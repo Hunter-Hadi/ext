@@ -176,6 +176,7 @@ const SidebarChatBoxMessageItem: FC<{
           textAlign: 'left',
           fontSize: '16px',
           lineHeight: 1.4,
+          fontWeight: 400,
         },
       }}
       onCopy={(event) => {

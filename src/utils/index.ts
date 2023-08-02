@@ -44,7 +44,7 @@ export const getAppRootElement = (): HTMLDivElement | null => {
       `#${ROOT_CONTAINER_WRAPPER_ID}`,
     ) as HTMLDivElement
 }
-export const getAppContextMenuElement = (): HTMLDivElement | null => {
+export const getAppContextMenuRootElement = (): HTMLDivElement | null => {
   const portals =
     document
       .querySelector(`#${ROOT_CONTEXT_MENU_ID}`)

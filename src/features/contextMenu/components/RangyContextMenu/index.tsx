@@ -12,6 +12,7 @@ import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingCont
 import GmailActionRunner from '@/features/sidebar/components/GmailActionRunner'
 import { useRecoilValue } from 'recoil'
 import { AppState } from '@/store'
+import { DisabledPDFViewer } from '@/components/AppInit'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 
@@ -31,6 +32,7 @@ const RangyContextMenu = () => {
       <ClickContextMenu />
       <FloatingShortCutsTip />
       <GmailActionRunnerBox />
+      <DisabledPDFViewer />
     </Portal>
   )
 }

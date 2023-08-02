@@ -35,6 +35,10 @@ const SettingsMePage: FC = () => {
               t.palette.mode === 'dark'
                 ? '1px solid rgba(255, 255, 255, 0.12)'
                 : '1px solid rgba(0, 0, 0, 0.12)',
+            '& > * + .MuiListItem-root': {
+              borderTop: '1px solid',
+              borderColor: 'customColor.borderColor',
+            },
           }}
         >
           <ListItem>

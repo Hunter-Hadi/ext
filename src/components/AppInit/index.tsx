@@ -1,8 +1,11 @@
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { RangyContextMenu } from '@/features/contextMenu'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import React, { useEffect } from 'react'
-import { chromeExtensionClientOpenPage } from '@/utils'
+import React, { FC, useEffect, useMemo } from 'react'
+import {
+  chromeExtensionClientOpenPage,
+  getAppContextMenuRootElement,
+} from '@/utils'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import Button from '@mui/material/Button'
@@ -30,6 +33,7 @@ import { RESOURCES_URL } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitI18n } from '@/i18n/hooks'
+import { useTranslation } from 'react-i18next'
 
 const log = new Log('AppInit')
 
@@ -110,6 +114,7 @@ export const AppSettingsInit = () => {
 }
 
 const useHandlePDFViewerError = () => {
+  const { t } = useTranslation(['common', 'client'])
   const [delay, setDelay] = React.useState<number | null>(null)
   const initRef = React.useRef(false)
   useEffectOnce(() => {
@@ -153,7 +158,7 @@ const useHandlePDFViewerError = () => {
             />
             {/* <UseChatGptIcon sx={{ fontSize: 48 }} /> */}
             <Typography variant={'body1'} fontSize={18} fontWeight={700}>
-              PDF AI viewer
+              {t('client:pdf__info_card__title')}
             </Typography>
           </Stack>
           <Stack alignItems={'center'} spacing={0}>
@@ -165,7 +170,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`PDF Al viewer lets you select any text in local PDF files and use prompts on them. Click on "Allow access to file URLs" at `}
+              {t('client:pdf__info_card__access_permission__description1')}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}
@@ -179,7 +184,9 @@ const useHandlePDFViewerError = () => {
               >
                 {`chrome://extensions`}
               </Link>
-              {` to `}
+              {` ${t(
+                'client:pdf__info_card__access_permission__description2',
+              )} `}
             </Typography>
             <Typography
               flex={1}
@@ -194,7 +201,7 @@ const useHandlePDFViewerError = () => {
                 mb: 2,
               }}
             >
-              {`view ${dataUrl}`}
+              {dataUrl}
             </Typography>
             <Box mb={2}>
               <img
@@ -228,7 +235,7 @@ const useHandlePDFViewerError = () => {
                 },
               }}
             >
-              Allow access to file URLs
+              {t('client:pdf__info_card__access_permission__button')}
             </Button>
           </Stack>
           <Divider
@@ -236,7 +243,7 @@ const useHandlePDFViewerError = () => {
               color: '#fff',
             }}
           >
-            OR
+            {t('common:or')}
           </Divider>
           <Stack spacing={2}>
             <Typography
@@ -247,7 +254,7 @@ const useHandlePDFViewerError = () => {
                 overflowWrap: 'break-word',
               }}
             >
-              {`You can turn off "PDF AI viewer" at any time on the extension's `}
+              {t('client:pdf__info_card__disabled__description1')}
               <Link
                 color={'rgba(255,255,255,1)'}
                 href={'#'}
@@ -261,9 +268,9 @@ const useHandlePDFViewerError = () => {
                   window.close()
                 }}
               >
-                Settings page
+                {t('client:pdf__info_card__disabled__description2')}
               </Link>
-              {'.'}
+              {t('client:pdf__info_card__disabled__description3')}
             </Typography>
             <img
               style={{ flexShrink: 0, alignSelf: 'center' }}
@@ -283,112 +290,110 @@ const useHandlePDFViewerError = () => {
  * 关闭PDF预览功能，实际上是跳转到settings里
  * @constructor
  */
-const disabledPDFViewer = () => {
-  console.log(window.location.href)
-  if (window.location.href.startsWith('chrome-extension://')) {
-    if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
-      if (document.body.querySelector('#usechatgpt-disabled-pdf')) {
-        return
-      }
-      if (
-        window.localStorage.getItem('hide_usechatgptai_pdf_alert') === 'true'
-      ) {
-        return
-      }
-      const DisableTooltip = (
-        <Box
-          position={'fixed'}
-          right={8}
-          top={40}
-          zIndex={10000}
-          id={'usechatgpt-disabled-pdf'}
-        >
-          <CloseAlert
-            icon={<></>}
-            action={<></>}
-            sx={{
-              p: '8px!important',
-              bgcolor: '#fff',
-              border: '1px solid #7601D3',
-              '& > div': {
-                '&:first-of-type': {
-                  display: 'none',
-                },
-                '&:nth-of-type(2)': {
-                  padding: '0!important',
-                },
-                '&:last-of-type': {
-                  margin: '0!important',
-                  padding: '0!important',
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                },
-              },
-              '& *': {
-                color: '#7601D3',
-              },
-            }}
+export const DisabledPDFViewer: FC = () => {
+  const { t } = useTranslation(['client', 'common'])
+  const RenderDom = useMemo(() => {
+    if (window.location.href.startsWith('chrome-extension://')) {
+      if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
+        if (document.body.querySelector('#usechatgpt-disabled-pdf')) {
+          return null
+        }
+        if (
+          window.localStorage.getItem('hide_usechatgptai_pdf_alert') === 'true'
+        ) {
+          return null
+        }
+        return (
+          <Box
+            position={'fixed'}
+            right={8}
+            top={40}
+            zIndex={10000}
+            id={'usechatgpt-disabled-pdf'}
           >
-            <Stack spacing={1} maxWidth={320}>
-              <Stack direction={'row'} alignItems={'center'} spacing={1}>
-                <UseChatGptIcon sx={{ fontSize: 14 }} />
-                <Typography variant={'body1'} fontSize={14} fontWeight={700}>
-                  PDF AI viewer
+            <CloseAlert
+              icon={<></>}
+              action={<></>}
+              sx={{
+                p: '8px!important',
+                bgcolor: '#fff',
+                border: '1px solid #7601D3',
+                '& > div': {
+                  '&:first-of-type': {
+                    display: 'none',
+                  },
+                  '&:nth-of-type(2)': {
+                    padding: '0!important',
+                  },
+                  '&:last-of-type': {
+                    margin: '0!important',
+                    padding: '0!important',
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                  },
+                },
+                '& *': {
+                  color: '#7601D3',
+                },
+              }}
+            >
+              <Stack spacing={1} maxWidth={320}>
+                <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                  <UseChatGptIcon sx={{ fontSize: 14 }} />
+                  <Typography variant={'body1'} fontSize={14} fontWeight={700}>
+                    {t('client:pdf__floating_card__title')}
+                  </Typography>
+                </Stack>
+                <Typography fontSize={14}>
+                  {t('client:pdf__floating_card__description1')}
+                  <Link
+                    href={'#'}
+                    onClick={async (event) => {
+                      event.preventDefault()
+                      event.stopPropagation()
+                      await chromeExtensionClientOpenPage({
+                        key: 'options',
+                        query: '?id=pdf-viewer#/appearance',
+                      })
+                    }}
+                  >
+                    {t('client:pdf__floating_card__description2')}
+                  </Link>
+                  {t('client:pdf__floating_card__description3')}
                 </Typography>
-              </Stack>
-              <Typography fontSize={14}>
-                {`PDF AI viewer lets you select any text in local PDF files and use
-                prompts on them. You can turn it off at any time on the
-                extension's `}
-                <Link
-                  href={'#'}
-                  onClick={async (event) => {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    await chromeExtensionClientOpenPage({
-                      key: 'options',
-                      query: '?id=pdf-viewer#/appearance',
-                    })
+                <Button
+                  size={'small'}
+                  disableElevation
+                  sx={{
+                    bgcolor: '#7601D3',
+                    color: '#fff',
+                    '&:hover': {
+                      bgcolor: '#7601D3',
+                    },
+                    textTransform: 'none',
+                  }}
+                  onClick={async () => {
+                    window.localStorage.setItem(
+                      'hide_usechatgptai_pdf_alert',
+                      JSON.stringify(true),
+                    )
+                    getAppContextMenuRootElement()
+                      ?.querySelector('#usechatgpt-disabled-pdf')
+                      ?.remove()
                   }}
                 >
-                  Settings page
-                </Link>
-                {`.`}
-              </Typography>
-              <Button
-                size={'small'}
-                disableElevation
-                sx={{
-                  bgcolor: '#7601D3',
-                  color: '#fff',
-                  '&:hover': {
-                    bgcolor: '#7601D3',
-                  },
-                  textTransform: 'none',
-                }}
-                onClick={async () => {
-                  window.localStorage.setItem(
-                    'hide_usechatgptai_pdf_alert',
-                    JSON.stringify(true),
-                  )
-                  document.body
-                    .querySelector('#usechatgpt-disabled-pdf')
-                    ?.remove()
-                }}
-              >
-                Got it
-              </Button>
-            </Stack>
-          </CloseAlert>
-        </Box>
-      )
-      // append to body
-      const root = document.createElement('div')
-      document.body.appendChild(root)
-      render(DisableTooltip, root)
+                  {t('client:pdf__floating_card__button')}
+                </Button>
+              </Stack>
+            </CloseAlert>
+          </Box>
+        )
+      }
     }
-  }
+    return null
+  }, [t])
+  return RenderDom
 }
 
 const GmailInit = React.lazy(() => import('@/components/AppInit/GmailInit'))
@@ -399,7 +404,6 @@ const AppInit = () => {
   userInitUserInfo()
   useInitI18n()
   useEffectOnce(() => {
-    disabledPDFViewer()
     forceUpdateContextMenuReadOnlyOption().then().catch()
   })
   useInjectShortCutsRunTime()

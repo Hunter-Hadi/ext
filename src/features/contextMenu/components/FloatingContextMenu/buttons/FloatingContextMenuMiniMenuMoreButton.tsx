@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import {
   chromeExtensionClientOpenPage,
-  getAppContextMenuElement,
+  getAppContextMenuRootElement,
 } from '@/utils'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import Button from '@mui/material/Button'
@@ -53,7 +53,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
     if (root) {
       return
     }
-    const rootEl = getAppContextMenuElement()
+    const rootEl = getAppContextMenuRootElement()
     if (rootEl) {
       setRoot(rootEl)
     }

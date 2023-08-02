@@ -8,11 +8,17 @@ import { list2Options } from '@/utils/dataHelper/arrayHelper'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import Chip from '@mui/material/Chip'
 import { useTranslation } from 'react-i18next'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 
 const AIProviderModelSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const { aiProviderModel, aiProviderModels, loading, updateAIProviderModel } =
-    useAIProviderModels()
+  const {
+    aiProviderModel,
+    aiProviderModels,
+    loading,
+    updateAIProviderModel,
+    aiProvider,
+  } = useAIProviderModels()
   const aiProviderModelsOptions = useMemo(
     () =>
       list2Options(aiProviderModels, {
@@ -58,6 +64,15 @@ const AIProviderModelSelector: FC = () => {
             borderColor: 'customColor.borderColor',
           },
         },
+      }}
+      onPermission={async () => {
+        if (aiProvider === 'USE_CHAT_GPT_PLUS') {
+          // 恢复为gpt3.5 turbo, 这里不用ai provider models是因为已经倒序了
+          await updateAIProviderModel(USE_CHAT_GPT_PLUS_MODELS[0].value)
+        }
+        return {
+          success: false,
+        }
       }}
       sx={{ width: '100%' }}
       size={'small'}

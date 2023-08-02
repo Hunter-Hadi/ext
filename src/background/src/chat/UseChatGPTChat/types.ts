@@ -28,6 +28,24 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     ],
   },
   {
+    title: 'gpt-4',
+    titleTag: '',
+    value: 'gpt-4',
+    maxTokens: 8192,
+    tags: [],
+    descriptions: [
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) => t(`client:provider__chatgpt__model__gpt_4__description`),
+      },
+    ],
+    permission: {
+      sceneType: 'MAX_AI_PAID_MODEL_GPT4',
+      roles: ['pro'],
+    },
+  },
+  {
     title: 'gpt-3.5-turbo-16k',
     titleTag: '',
     value: 'gpt-3.5-turbo-16k',
@@ -41,19 +59,9 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
           t(`client:provider__chatgpt__model__gpt_3_5_16k__description`),
       },
     ],
-  },
-  {
-    title: 'gpt-4',
-    titleTag: '',
-    value: 'gpt-4',
-    maxTokens: 8192,
-    tags: [],
-    descriptions: [
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__description'),
-        value: (t) => t(`client:provider__chatgpt__model__gpt_4__description`),
-      },
-    ],
+    permission: {
+      sceneType: 'MAX_AI_PAID_MODEL_GPT3_5_16K',
+      roles: ['pro'],
+    },
   },
 ]

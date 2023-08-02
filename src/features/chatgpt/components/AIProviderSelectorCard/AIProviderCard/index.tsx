@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
 import AIProviderModelSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderModelSelector'
-import OpenAIAPITemperatureSlider from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/OpenAIAPITemperatureSlider'
+import OpenAIAPITemperatureSlider from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/APITemperatureSlider'
 import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/ChatGPTPluginsSelector'
 import BingConversationStyleSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/BingConversationStyleSelector'
 
@@ -22,7 +22,13 @@ const AIProviderCard: FC<{
       }}
     >
       {aiProviderOption.value === 'OPENAI_API' && (
-        <OpenAIAPITemperatureSlider />
+        <OpenAIAPITemperatureSlider provider={'OPENAI_API'} />
+      )}
+      {aiProviderOption.value === 'USE_CHAT_GPT_PLUS' && (
+        <OpenAIAPITemperatureSlider
+          provider={'USE_CHAT_GPT_PLUS'}
+          authSceneType={'MAX_AI_TEMPERATURE'}
+        />
       )}
       {aiProviderOption.value === 'OPENAI' && <ChatGPTPluginsSelector />}
       {aiProviderOption.value === 'BING' && <BingConversationStyleSelector />}

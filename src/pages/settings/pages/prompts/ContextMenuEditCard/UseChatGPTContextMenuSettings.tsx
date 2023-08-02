@@ -43,6 +43,7 @@ import {
 } from '@/features/contextMenu/types'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { useTranslation } from 'react-i18next'
+import ContextMenuRestoreDialog from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuRestoreDialog'
 
 const rootId = 'root'
 
@@ -112,6 +113,7 @@ const ContextMenuSettings: FC<{
     [],
   )
   const [confirmOpen, setConfirmOpen] = useState(false)
+  const [restoreDialogOpen, setRestoreDialogOpen] = useState(false)
   const [confirmId, setConfirmId] = useState<string | null>(null)
   const [confirmType, setConfirmType] = useState<IConfirmActionType | null>(
     null,
@@ -253,16 +255,6 @@ const ContextMenuSettings: FC<{
   }
 
   const handleActionConfirmOnConfirm = (type: IConfirmActionType) => {
-    if (type === 'reset') {
-      try {
-        setLoading(true)
-        setOriginalTreeData(defaultContextMenuJson || [])
-      } catch (error) {
-        console.log(error)
-      } finally {
-        setLoading(false)
-      }
-    }
     if (type === 'delete' && confirmId) {
       deleteMenuItemById(confirmId)
       setEditNode(null)
@@ -482,12 +474,33 @@ const ContextMenuSettings: FC<{
           onConfirm={handleActionConfirmOnConfirm}
         />
       )}
+      {restoreDialogOpen && (
+        <ContextMenuRestoreDialog
+          onRestore={(snapshot) => {
+            try {
+              setLoading(true)
+              setInputValue('')
+              const buttonSettings = snapshot.settings.buttonSettings
+              if (!buttonSettings) return
+              const { contextMenu } = buttonSettings[buttonKey]
+              setOriginalTreeData(contextMenu)
+            } catch (e) {
+              console.error(e)
+            } finally {
+              setLoading(false)
+            }
+          }}
+          onClose={() => {
+            setRestoreDialogOpen(false)
+          }}
+        />
+      )}
       <Stack direction={'row'} alignItems={'center'} spacing={2}>
         <PermissionWrapper
           TooltipProps={{
             placement: 'top',
           }}
-          permissions={['pro', 'pro_gift']}
+          allowedRoles={['pro', 'pro_gift', 'new_user']}
           sceneType={'CUSTOM_PROMPT'}
           onPermission={async () => {
             const userEditablePrompts = originalTreeData.filter((item) => {
@@ -512,7 +525,7 @@ const ContextMenuSettings: FC<{
           TooltipProps={{
             placement: 'top',
           }}
-          permissions={['pro', 'pro_gift']}
+          allowedRoles={['pro', 'pro_gift', 'new_user']}
           sceneType={'CUSTOM_PROMPT_GROUP'}
           onPermission={async () => {
             const userEditablePrompts = originalTreeData.filter((item) => {
@@ -537,7 +550,9 @@ const ContextMenuSettings: FC<{
           disableElevation
           variant={'outlined'}
           disabled={loading}
-          onClick={() => handleActionConfirmOpen('reset')}
+          onClick={() => {
+            setRestoreDialogOpen(true)
+          }}
           startIcon={<RestartAltIcon />}
         >
           {t('settings:feature_card__prompts__restore_button')}

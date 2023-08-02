@@ -5,7 +5,7 @@ import {
 } from '@/features/shortcuts/decorators'
 import { getMediator } from '@/store/InputMediator'
 import {
-  getAppContextMenuElement,
+  getAppContextMenuRootElement,
   getAppRootElement,
   promiseRetry,
 } from '@/utils'
@@ -37,7 +37,7 @@ export class ActionInsertUserInput extends Action {
         () => {
           let input: HTMLTextAreaElement | null = null
           if (isInsertToFloatingMenuInput) {
-            input = getAppContextMenuElement()?.querySelector(
+            input = getAppContextMenuRootElement()?.querySelector(
               `#${ROOT_FLOATING_INPUT_ID}`,
             ) as HTMLTextAreaElement
           } else {

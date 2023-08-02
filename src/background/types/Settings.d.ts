@@ -50,6 +50,7 @@ export type IChatGPTPluginType = {
 type IThirdProviderSettings = {
   [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]?: {
     model?: string
+    temperature?: number
   }
   [AI_PROVIDER_MAP.OPENAI]?: {
     model?: string

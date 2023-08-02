@@ -11,6 +11,9 @@ import EmptyContent from '@/components/select/EmptyContent'
 import { hasData } from '@/utils'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import Typography from '@mui/material/Typography'
+import PermissionWrapper, {
+  PermissionWrapperProps,
+} from '@/features/auth/components/PermissionWrapper'
 
 type IOptionValueType = string | number
 export type IOptionType = {
@@ -41,6 +44,7 @@ export interface IBaseSelectProps
   renderHeader?: React.ReactNode
   renderFooter?: React.ReactNode
   labelSx?: SxProps
+  onPermission?: PermissionWrapperProps['onPermission']
 }
 
 const findCurrentOption = (options: IOptionType[], value: IOptionValueType) => {
@@ -70,6 +74,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   renderHeader,
   label,
   labelSx,
+  onPermission,
   ...props
 }) => {
   const [selectValue, setSelectValue] = useState(defaultValue || '')
@@ -114,24 +119,57 @@ const BaseSelect: FC<IBaseSelectProps> = ({
     }
   }, [options, selectValue, loading])
   const optionsRenderCache = useMemo(() => {
-    return options.map((option, index) => (
-      <MenuItem
-        sx={{
-          ...labelProp,
-        }}
-        key={index}
-        disabled={option.origin.disabled}
-        value={option.value}
-        onClick={(event) => {
-          if (option.origin.disabled) {
-            event.stopPropagation()
-            event.preventDefault()
-          }
-        }}
-      >
-        {renderDom(option.value, option, index)}
-      </MenuItem>
-    ))
+    return options.map((option, index) => {
+      if (option.origin.permission) {
+        return (
+          <PermissionWrapper
+            key={index}
+            sceneType={option.origin.permission.sceneType}
+            allowedRoles={option.origin.permission.roles}
+            onPermission={onPermission}
+          >
+            <MenuItem
+              sx={{
+                ...labelProp,
+              }}
+              disabled={option.origin.disabled}
+              value={option.value}
+              onClick={(event) => {
+                if (option.origin.disabled) {
+                  event.stopPropagation()
+                  event.preventDefault()
+                }
+                setSelectValue(option.value as string)
+                onChange &&
+                  onChange(
+                    ...findCurrentOption(options, option.value as string),
+                  )
+              }}
+            >
+              {renderDom(option.value, option, index)}
+            </MenuItem>
+          </PermissionWrapper>
+        )
+      }
+      return (
+        <MenuItem
+          sx={{
+            ...labelProp,
+          }}
+          key={index}
+          disabled={option.origin.disabled}
+          value={option.value}
+          onClick={(event) => {
+            if (option.origin.disabled) {
+              event.stopPropagation()
+              event.preventDefault()
+            }
+          }}
+        >
+          {renderDom(option.value, option, index)}
+        </MenuItem>
+      )
+    })
   }, [options, selectValue, renderDom])
   return (
     <FormControl>

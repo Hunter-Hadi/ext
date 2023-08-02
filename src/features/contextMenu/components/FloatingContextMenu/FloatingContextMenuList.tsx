@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, useMemo } from 'react'
+import React, { FC, forwardRef, useCallback, useMemo } from 'react'
 
 import {
   DropdownMenu,
@@ -8,6 +8,7 @@ import {
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import { useTranslation } from 'react-i18next'
 // import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 // eslint-disable-next-line react/display-name
@@ -24,19 +25,31 @@ const RenderDropdownItem = forwardRef<
     customOpen,
     ...rest
   } = props
+  const { t } = useTranslation(['prompt'])
+  const menuLabel = useMemo(() => {
+    if (t(`prompt:${menuItem.id}` as any) !== menuItem.id) {
+      return t(`prompt:${menuItem.id}` as any)
+    }
+    return menuItem.text
+  }, [menuItem.text, t])
+  const getMenuLabel = useCallback(
+    (menuItem: IContextMenuItemWithChildren) => {
+      if (t(`prompt:${menuItem.id}` as any) !== menuItem.id) {
+        return t(`prompt:${menuItem.id}` as any)
+      }
+      return menuItem.text
+    },
+    [t],
+  )
   if (menuItem.data.type === 'group') {
     return (
       <DropdownMenu
         zIndex={props.zIndex}
         ref={ref}
         root={root}
-        label={menuItem.text}
+        label={menuLabel}
         referenceElement={
-          <DropdownMenuItem
-            {...rest}
-            label={menuItem.text}
-            menuItem={menuItem}
-          />
+          <DropdownMenuItem {...rest} label={menuLabel} menuItem={menuItem} />
         }
       >
         {menuItem.children.map((childMenuItem, index) => {
@@ -46,7 +59,7 @@ const RenderDropdownItem = forwardRef<
               root={root}
               key={childMenuItem.id}
               menuItem={childMenuItem}
-              label={childMenuItem.text}
+              label={getMenuLabel(childMenuItem)}
             />
           )
         })}
@@ -58,7 +71,7 @@ const RenderDropdownItem = forwardRef<
       {...rest}
       menuItem={menuItem}
       ref={ref}
-      label={menuItem.text}
+      label={menuLabel}
     />
   )
 })
@@ -79,10 +92,15 @@ const FloatingContextMenuList: FC<
     defaultFallbackPlacements,
     ...rest
   } = props
+  const { t } = useTranslation(['prompt'])
   const RenderMenuList = useMemo(() => {
     const nodeList: React.ReactNode[] = []
     console.log('Context Menu List Render', menuList)
     menuList.forEach((menuItem, index) => {
+      const menuLabel =
+        t(`prompt:${menuItem.id}` as any) !== menuItem.id
+          ? t(`prompt:${menuItem.id}` as any)
+          : menuItem.text
       if (menuItem.data.type === 'group') {
         if (index > 0) {
           // spector
@@ -136,7 +154,7 @@ const FloatingContextMenuList: FC<
               fontSize={12}
               color={'text.secondary'}
             >
-              {menuItem.text}
+              {menuLabel}
             </Typography>
           </Box>,
         )
@@ -165,7 +183,7 @@ const FloatingContextMenuList: FC<
     })
     // console.log('RenderMenuList', menuList, nodeList)
     return nodeList
-  }, [menuList])
+  }, [menuList, t])
   // console.log('FloatingContextMenuList', defaultPlacement)
   return (
     <DropdownMenu

@@ -8,8 +8,6 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { showChatBox, useDebounceValue } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import {
-  APP_USE_CHAT_GPT_HOST,
-  CHROME_EXTENSION_HOMEPAGE_URL,
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
@@ -23,7 +21,7 @@ import Typography from '@mui/material/Typography'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Box from '@mui/material/Box'
-import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper'
+import { usePermissionCard } from '@/features/auth/components/PermissionWrapper'
 import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
 import { v4 as uuidV4 } from 'uuid'
@@ -98,20 +96,12 @@ const GmailActionRunner = () => {
     }
   }, [currentUserPlan])
 
+  const newDraftPermissionCard = usePermissionCard('GMAIL_CTA_DRAFT_BUTTON')
+  const replyPermissionCard = usePermissionCard('GMAIL_CTA_REPLY_BUTTON')
   const permissionCardMemo = useMemo(() => {
     const isDraftMessageType = messageType !== 'reply'
-    return {
-      imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/gmail-cta-button.png`,
-      title: isDraftMessageType
-        ? 'Upgrade for one-click email drafts'
-        : 'Upgrade for one-click email replies',
-      description: isDraftMessageType
-        ? 'Let AI generate entire email drafts for you in seconds.'
-        : 'Let AI generate entire email replies for you in seconds.',
-      ctaButtonText: 'Upgrade to Pro',
-      ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
-    } as PermissionWrapperCardType
-  }, [messageType])
+    return isDraftMessageType ? newDraftPermissionCard : replyPermissionCard
+  }, [newDraftPermissionCard, replyPermissionCard, messageType])
 
   const executeShortCuts = useCallback(async () => {
     const gmailToolBarContextMenu = await getChromeExtensionButtonContextMenu(

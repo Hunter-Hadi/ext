@@ -34,7 +34,7 @@ import {
   ROOT_FLOATING_INPUT_ID,
   ROOT_FLOATING_REFERENCE_ELEMENT_ID,
 } from '@/constants'
-import { getAppContextMenuElement, showChatBox } from '@/utils'
+import { getAppContextMenuRootElement, showChatBox } from '@/utils'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
@@ -279,7 +279,7 @@ const FloatingContextMenu: FC<{
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getMediator('floatingMenuInputMediator').updateInputValue('')
-      const textareaEl = getAppContextMenuElement()?.querySelector(
+      const textareaEl = getAppContextMenuRootElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
       if (textareaEl) {
@@ -292,7 +292,7 @@ const FloatingContextMenu: FC<{
         setAppSettings(settings)
       })
     } else {
-      const textareaEl = getAppContextMenuElement()?.querySelector(
+      const textareaEl = getAppContextMenuRootElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
       const userInputDraft = textareaEl?.value
@@ -304,7 +304,7 @@ const FloatingContextMenu: FC<{
   }, [floatingDropdownMenu.open])
   const focusInput = (event: KeyboardEvent) => {
     if (floatingDropdownMenu.open) {
-      const textareaEl = getAppContextMenuElement()?.querySelector(
+      const textareaEl = getAppContextMenuRootElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
       if (textareaEl) {

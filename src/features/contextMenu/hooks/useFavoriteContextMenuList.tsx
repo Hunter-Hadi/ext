@@ -8,6 +8,7 @@ import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediat
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { useFocus } from '@/hooks/useFocus'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { useTranslation } from 'react-i18next'
 
 export const FAVORITE_CONTEXT_MENU_GROUP_ID = 'SUGGESTE'
 
@@ -29,6 +30,7 @@ export const contextMenuToFavoriteContextMenu = (
 const useFavoriteContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,
 ) => {
+  const { t } = useTranslation(['common', 'client'])
   const [favoriteContextMenuList, setFavoriteContextMenus] = useState<
     IContextMenuItem[]
   >([])
@@ -43,13 +45,13 @@ const useFavoriteContextMenuList = (
     }
     const group = {
       id: FAVORITE_CONTEXT_MENU_GROUP_ID,
-      text: 'Suggested',
+      text: t('client:prompt__group__suggested__title'),
       children: currentMenuList as IContextMenuItemWithChildren[],
       parent: 'root',
       droppable: false,
       data: {
         icon: '',
-        searchText: 'Suggested',
+        searchText: t('client:prompt__group__suggested__title'),
         editable: false,
         type: 'group',
         actions: [],
@@ -61,7 +63,7 @@ const useFavoriteContextMenuList = (
       },
     } as IContextMenuItemWithChildren
     return group
-  }, [currentMenuList])
+  }, [currentMenuList, t])
   useFocus(() => {
     FavoriteMediatorFactory.getMediator(
       buttonSettingKey,

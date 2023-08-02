@@ -21,6 +21,7 @@ import {
 } from '@/background/src/chat/util'
 import { useFocus } from '@/hooks/useFocus'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
+import { useTranslation } from 'react-i18next'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -37,6 +38,7 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const BingConversationStyleSelector: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
   const { cleanChatGPT } = useCleanChatGPT()
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
@@ -71,7 +73,9 @@ const BingConversationStyleSelector: FC = () => {
         }}
         id={'BingConversationStyleSelectorLabel'}
       >
-        <span style={{ fontSize: '16px' }}>{'Conversation style'}</span>
+        <span style={{ fontSize: '16px' }}>
+          {t('client:provider__bing_web_app__conversation_style__title')}
+        </span>
       </InputLabel>
       <Select
         disabled={chatGPTConversationLoading}
@@ -104,7 +108,7 @@ const BingConversationStyleSelector: FC = () => {
         }}
         IconComponent={ArrowDropDownIconCustom}
         labelId={'BingConversationStyleSelectorLabel'}
-        label={'Conversation style'}
+        label={t('client:provider__bing_web_app__conversation_style__title')}
         value={bingConversationStyle}
         onChange={async (event) => {
           try {
@@ -124,8 +128,8 @@ const BingConversationStyleSelector: FC = () => {
           }
         }}
         renderValue={(value) => {
-          const findModal = BING_CONVERSATION_STYLES.find(
-            (model) => model.value === value,
+          const currentConversationStyle = BING_CONVERSATION_STYLES.find(
+            (conversationStyle) => conversationStyle.value === value,
           )
           return (
             <Stack
@@ -141,15 +145,21 @@ const BingConversationStyleSelector: FC = () => {
                 textAlign={'left'}
                 noWrap
               >
-                {findModal?.label || 'Select model'}
+                {currentConversationStyle?.label
+                  ? t(currentConversationStyle.label as any)
+                  : 'Select conversation style'}
               </Typography>
             </Stack>
           )
         }}
       >
-        {BING_CONVERSATION_STYLES.map((model) => {
+        {BING_CONVERSATION_STYLES.map((conversationStyle) => {
           return (
-            <MenuItem value={model.value} key={model?.value} sx={{ p: 0 }}>
+            <MenuItem
+              value={conversationStyle.value}
+              key={conversationStyle?.value}
+              sx={{ p: 0 }}
+            >
               <Tooltip
                 placement={'left'}
                 componentsProps={{
@@ -174,7 +184,7 @@ const BingConversationStyleSelector: FC = () => {
                         color={'text.primary'}
                         textAlign={'left'}
                       >
-                        {model?.label}
+                        {t(conversationStyle.label as any)}
                       </Typography>
                     </Stack>
                     <Typography
@@ -182,7 +192,7 @@ const BingConversationStyleSelector: FC = () => {
                       color={'text.primary'}
                       textAlign={'left'}
                     >
-                      {model?.description}
+                      {t(conversationStyle.description as any)}
                     </Typography>
                   </Stack>
                 }
@@ -201,7 +211,9 @@ const BingConversationStyleSelector: FC = () => {
                     textAlign={'left'}
                     noWrap
                   >
-                    {model?.label || 'Select model'}
+                    {conversationStyle?.label
+                      ? t(conversationStyle.label as any)
+                      : 'Select conversation style'}
                   </Typography>
                 </Stack>
               </Tooltip>

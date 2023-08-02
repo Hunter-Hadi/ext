@@ -3,7 +3,7 @@ import { SxProps } from '@mui/material/styles'
 import Popper, { PopperProps } from '@mui/material/Popper'
 import Box from '@mui/material/Box'
 import { v4 } from 'uuid'
-import { getAppContextMenuElement } from '@/utils'
+import { getAppContextMenuRootElement } from '@/utils'
 
 const PopperWrapper: FC<{
   children: React.ReactNode
@@ -14,7 +14,7 @@ const PopperWrapper: FC<{
   hoverOpen?: boolean
   stopEvent?: boolean
 }> = (props) => {
-  const container = getAppContextMenuElement() || document.body
+  const container = getAppContextMenuRootElement() || document.body
   const {
     children,
     content,

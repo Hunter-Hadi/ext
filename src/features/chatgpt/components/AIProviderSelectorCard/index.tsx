@@ -12,7 +12,7 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
-import Index from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
+import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { useTranslation } from 'react-i18next'
@@ -62,7 +62,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
       <Stack
         sx={{
           p: 1,
-          width: 254,
+          width: 248,
           flexShrink: 0,
           borderRight: '1px solid #EBEBEB',
           alignItems: 'stretch',
@@ -77,13 +77,13 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
           }
           loading={isLoadingMemo}
           size={24}
-          sx={{ width: 254 }}
+          sx={{ width: 248 }}
         >
           {currentProviderOption && clientState.status !== 'success' && (
             <AIProviderAuthCard aiProviderOption={currentProviderOption} />
           )}
           {currentProviderOption && clientState.status === 'success' && (
-            <Index aiProviderOption={currentProviderOption} />
+            <AIProviderCard aiProviderOption={currentProviderOption} />
           )}
         </AppLoadingLayout>
       </Stack>

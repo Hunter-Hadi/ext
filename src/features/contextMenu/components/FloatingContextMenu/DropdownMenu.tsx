@@ -43,6 +43,8 @@ import { useRecoilValue, useRecoilState } from 'recoil'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 import Stack from '@mui/material/Stack'
+import { useTranslation } from 'react-i18next'
+import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 
 interface LiteDropdownMenuItemProps {
   label?: string
@@ -152,10 +154,19 @@ export const LiteDropdownMenuItem = React.forwardRef<
 export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
   ({ label, disabled, menuItem, ...props }, ref) => {
     const floatingUiProps: any = props
+    const { t } = useTranslation(['prompt'])
     const hoverIds = useRecoilValue(FloatingDropdownMenuItemsSelector)
     const [floatingDropdownMenuSelectedItem, updateSelectedId] = useRecoilState(
       FloatingDropdownMenuSelectedItemState,
     )
+    const menuLabel = useMemo(() => {
+      const id = menuItem.id.replace(FAVORITE_CONTEXT_MENU_GROUP_ID, '')
+      const key: any = `prompt:${id}`
+      if (t(key) !== id) {
+        return t(key)
+      }
+      return menuItem.text
+    }, [menuItem.text, t])
     const isHover = useMemo(() => {
       return (
         hoverIds.includes(menuItem.id) ||
@@ -256,7 +267,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           flex={1}
           lineHeight={'28px'}
         >
-          {menuItem.text}
+          {menuLabel}
         </Typography>
         <span
           className={

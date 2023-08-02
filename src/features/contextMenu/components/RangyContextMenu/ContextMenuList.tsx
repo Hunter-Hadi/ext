@@ -138,7 +138,7 @@ const ShortCutsButtonItem: FC<{
           floatingMenuTooltip: true,
           placement: 'right',
         }}
-        permissions={['pro', 'pro_gift']}
+        allowedRoles={['pro', 'pro_gift', 'new_user']}
         sceneType={'GMAIL_CONTEXT_MENU'}
         BoxProps={{
           sx: {

@@ -22,18 +22,15 @@ import {
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import { APP_USE_CHAT_GPT_HOST, CHAT_GPT_PROMPT_PREFIX } from '@/constants'
+import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 import { getMediator } from '@/store/InputMediator'
 import { getCurrentDomainHost, showChatBox } from '@/utils'
-import { getDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import Browser from 'webextension-polyfill'
-import {
-  getPermissionCardSettings,
-  PermissionWrapperCardType,
-} from '@/features/auth/components/PermissionWrapper'
+import { usePermissionCard } from '@/features/auth/components/PermissionWrapper'
+import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper/types'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -42,6 +39,8 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
+  const dailyLimitPermissionCard = usePermissionCard('CHAT_DAILY_LIMIT')
+  const pdfPermissionCard = usePermissionCard('PDF_AI_VIEWER')
   const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
@@ -95,7 +94,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
       let upgradeCardSetting: PermissionWrapperCardType | null = null
       if (url.href.includes(PDFViewerHref)) {
-        upgradeCardSetting = getPermissionCardSettings('PDF')
+        upgradeCardSetting = pdfPermissionCard
       }
       if (upgradeCardSetting) {
         const { title, description, imageUrl, videoUrl } = upgradeCardSetting
@@ -220,25 +219,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         },
       })
       if (isDailyUsageLimit) {
-        const { next_reset_timestamp } = await getDailyUsageLimitData()
-        const formatTimeStampToHoursAndMinutes = (timestamp: number) => {
-          const currentTime = new Date().getTime()
-          let nextTime = timestamp
-          if (!nextTime) {
-            nextTime = dayjs().utc().add(1, 'days').unix()
-          }
-          const diff = nextTime * 1000 - currentTime
-          const hours = Math.floor(diff / (1000 * 60 * 60))
-          const minutes = Math.floor((diff / (1000 * 60)) % 60)
-          return `${hours} hours and ${minutes} minutes`
-        }
         pushMessages.push({
           type: 'system',
           messageId: uuidV4(),
           parentMessageId: currentMessageId,
-          text: `![upgrade to pro image](https://www.maxai.me/assets/chrome-extension/upgrade/unlimited-ai-requests.png)You've reached the current daily usage cap. You can [upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) now for unlimited usage, or try again in ${formatTimeStampToHoursAndMinutes(
-            next_reset_timestamp,
-          )}. [Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)\n\nIf you've already upgraded, reload the [My Plan](${APP_USE_CHAT_GPT_HOST}/my-plan) page to activate your membership.`,
+          text: dailyLimitPermissionCard.description,
           extra: {
             status: 'error',
             systemMessageType: 'needUpgrade',
@@ -332,7 +317,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               }
               if (errorMessage.includes('[upgrade to Pro]')) {
                 needUpgrade = true
-                errorMessage = `![upgrade to pro image](https://www.maxai.me/assets/chrome-extension/upgrade/unlimited-ai-requests.png)${errorMessage}`
+                errorMessage = dailyLimitPermissionCard.description as string
               }
               pushMessages.push({
                 type: 'system',

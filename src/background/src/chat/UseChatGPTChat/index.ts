@@ -12,10 +12,16 @@ import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,
 } from '@/background/utils'
-import { getCacheConversationId } from '@/background/src/chat/util'
+import {
+  getCacheConversationId,
+  getThirdProviderSettings,
+} from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import isNumber from 'lodash-es/isNumber'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
@@ -111,6 +117,7 @@ class UseChatGPTPlusChat extends BaseChat {
       regenerate = false,
       max_history_message_cnt = 0,
     } = options || {}
+    const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
     const postBody = Object.assign(
       {
         include_history,
@@ -119,6 +126,10 @@ class UseChatGPTPlusChat extends BaseChat {
         message_content: question,
         max_history_message_cnt,
         chrome_extension_version: APP_VERSION,
+        model_name: userConfig?.model || USE_CHAT_GPT_PLUS_MODELS[0].value,
+        temperature: isNumber(userConfig?.temperature)
+          ? userConfig!.temperature
+          : 1,
       },
       cacheConversationId ? { conversation_id: cacheConversationId } : {},
     )
@@ -277,7 +288,33 @@ class UseChatGPTPlusChat extends BaseChat {
       })
     if (!isEnd) {
       log.info('streaming end success')
-      isEnd = true
+      if (messageResult === '') {
+        // HACK: 后端现在偶尔会返回空字符串，这里做个fallback
+        sendLarkBotMessage(
+          '[API] response empty string.',
+          JSON.stringify(
+            {
+              model: postBody.model_name,
+              promptTextLength: postBody.message_content.length,
+            },
+            null,
+            2,
+          ),
+          {
+            uuid: '6f02f533-def6-4696-b14e-1b00c2d9a4df',
+          },
+        )
+        onMessage &&
+          onMessage({
+            done: true,
+            type: 'error',
+            error:
+              'Something went wrong, please try again. If this issue persists, contact us via email.',
+            data: { text: '', conversationId },
+          })
+      } else {
+        isEnd = true
+      }
     }
     if (isTokenExpired) {
       log.info('user token expired')

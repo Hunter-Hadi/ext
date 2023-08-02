@@ -1,6 +1,7 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { isProduction } from '@/constants'
 const editable = !isProduction
+
 export default [
   {
     id: 'd0176963-2376-4dd8-acfc-95af778195b9',

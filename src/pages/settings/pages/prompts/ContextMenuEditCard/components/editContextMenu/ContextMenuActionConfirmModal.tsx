@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { useTranslation } from 'react-i18next'
 
-export type IConfirmActionType = 'reset' | 'delete'
+export type IConfirmActionType = 'restore' | 'delete' | 'deleteAll'
 
 interface IProps {
   open: boolean
@@ -20,7 +20,7 @@ interface IProps {
 const ContextMenuActionConfirmModal: FC<IProps> = ({
   open,
   nodeType = 'shortcuts',
-  actionType = 'reset',
+  actionType = 'delete',
   onClose,
   onConfirm,
 }) => {
@@ -35,18 +35,22 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
             'settings:feature_card__prompts__confirm__delete__prompt_group__description',
           )
     }
-    // default reset type
+    if (actionType === 'deleteAll') {
+      return t(
+        'settings:feature_card__prompts__confirm__delete_all__description',
+      )
+    }
+    // restore type
     return t('settings:feature_card__prompts__confirm__restore__description')
   }, [actionType, nodeType, t])
 
   const buttonText = useMemo(() => {
-    if (actionType === 'delete') {
+    if (actionType === 'delete' || actionType === 'deleteAll') {
       return t(
         'settings:feature_card__prompts__confirm__delete__confirm_button_text',
       )
     }
-
-    // default reset type
+    // restore type
     return t(
       'settings:feature_card__prompts__confirm__restore__confirm_button_text',
     )

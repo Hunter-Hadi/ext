@@ -12,37 +12,51 @@ import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { v4 as uuidV4 } from 'uuid'
-import {
-  APP_USE_CHAT_GPT_HOST,
-  CHROME_EXTENSION_HOMEPAGE_URL,
-} from '@/constants'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import LazyLoadImage from '@/components/LazyloadImage'
 
-type PermissionWrapperCardSceneType =
-  | 'CUSTOM_PROMPT'
-  | 'CUSTOM_PROMPT_GROUP'
-  | 'GMAIL_CTA_BUTTON'
-  | 'GMAIL_CONTEXT_MENU'
-  | 'AI_RESPONSE_LANGUAGE'
-  | 'CHATGPT_STABLE_MODE'
-  | 'PDF'
+import {
+  PermissionWrapperCardSceneType,
+  PERMISSION_CARD_SETTINGS_TEMPLATE,
+  PermissionWrapperCardType,
+  PermissionWrapperI18nCardType,
+} from '@/features/auth/components/PermissionWrapper/types'
+import { useTranslation } from 'react-i18next'
 
-export type PermissionWrapperCardType = {
-  imageUrl?: string
-  videoUrl?: string
-  title: React.ReactNode
-  description: React.ReactNode
-  ctaButtonText?: React.ReactNode
-  ctaButtonLink?: string
-  ctaButtonOnClick?: (event: React.MouseEvent) => void
+export const getPermissionCardSettings = (
+  sceneType: PermissionWrapperCardSceneType,
+): PermissionWrapperI18nCardType => {
+  return {
+    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
+    ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
+  }
 }
 
-interface PermissionWrapperProps {
+export const usePermissionCard = (
+  sceneType: PermissionWrapperCardSceneType,
+): PermissionWrapperCardType => {
+  const { t } = useTranslation(['common', 'client'])
+  return useMemo(() => {
+    const settings = getPermissionCardSettings(sceneType)
+    const permissionCard: PermissionWrapperCardType = {
+      title: settings.title(t),
+      description: settings.description(t),
+      ctaButtonText: settings.ctaButtonText(t),
+      ctaButtonLink: settings.ctaButtonLink,
+      ctaButtonOnClick: settings.ctaButtonOnClick,
+      imageUrl: settings.imageUrl,
+      videoUrl: settings.videoUrl,
+    }
+    return permissionCard
+  }, [sceneType, t])
+}
+
+export interface PermissionWrapperProps {
   sceneType: PermissionWrapperCardSceneType
-  permissions: IUserRoleType[]
+  allowedRoles: IUserRoleType[]
   onPermission?: (
     currentPlan: IUserCurrentPlan,
     cardSettings: PermissionWrapperCardType,
@@ -56,91 +70,25 @@ interface PermissionWrapperProps {
   BoxProps?: BoxProps
 }
 
-export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
-  [key in PermissionWrapperCardSceneType]: PermissionWrapperCardType
-} = {
-  // 自定义prompt
-  CUSTOM_PROMPT: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/custom-prompt.png`,
-    title: 'Upgrade to add unlimited custom prompts',
-    description:
-      'Use your own prompts to speed up repetitive tasks as you work.',
-    ctaButtonText: 'Upgrade to Pro',
-  },
-  // 自定义prompt
-  CUSTOM_PROMPT_GROUP: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/custom-prompt-group.png`,
-    title: 'Upgrade to add unlimited custom prompt groups',
-    description:
-      'Organize your prompts for efficient use with custom prompt groups.',
-    ctaButtonText: 'Upgrade to Pro',
-  },
-  // Gmail cta button
-  GMAIL_CTA_BUTTON: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/gmail-cta-button.png`,
-    // 新邮件
-    title: 'Upgrade for one-click email drafts',
-    //邮件回复
-    // title: 'Upgrade for one-click email replies'
-    // 新邮件
-    description: 'Let AI generate entire email drafts for you in seconds.',
-    // 邮件回复
-    // description:
-    // 'Let AI generate entire email replies for you in seconds.',
-  },
-  // Gmail context menu
-  GMAIL_CONTEXT_MENU: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/gmail-context-menu.png`,
-    title: 'Upgrade to perfect your draft in one click',
-    description:
-      'Improve writing, fix spelling & grammar, or change tone instantly with AI.',
-  },
-  // AI response language
-  AI_RESPONSE_LANGUAGE: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/ai-response-language.png`,
-    title: 'Upgrade to change AI response language',
-    description: 'Set AI to always reply in your chosen language.',
-  },
-  // ChatGPT Stable mode
-  CHATGPT_STABLE_MODE: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/chatgpt-stable-mode.png`,
-    title: 'Upgrade to personalize ChatGPT stable mode',
-    description: 'Set how long ChatGPT stable mode stays on after activation.',
-  },
-  // PDF
-  PDF: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/pdf.png`,
-    title: 'Upgrade to elevate your PDF experience with AI',
-    description:
-      'Use AI to summarize, explain, translate, ask questions, and save time.',
-  },
-}
-
-export const getPermissionCardSettings = (
-  sceneType: PermissionWrapperCardSceneType,
-) => {
-  return {
-    ctaButtonText: 'Upgrade to Pro',
-    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
-    ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
-  }
-}
-
 const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
   const {
-    sceneType = 'PROMPT',
-    permissions,
+    sceneType,
+    allowedRoles,
     onPermission,
     BoxProps,
     TooltipProps,
     children,
   } = props
-  const [permissionCard, setPermissionCard] =
-    useState<PermissionWrapperCardType>(() => {
-      return getPermissionCardSettings(
-        sceneType as PermissionWrapperCardSceneType,
-      )
-    })
+  const permissionCard = usePermissionCard(sceneType)
+  const [modifyPermissionCard, setModifyPermissionCard] = useState<
+    PermissionWrapperCardType | undefined
+  >(undefined)
+  const memoizedPermissionCard = useMemo(() => {
+    if (modifyPermissionCard) {
+      return modifyPermissionCard
+    }
+    return permissionCard
+  }, [permissionCard, modifyPermissionCard])
   const { currentUserPlan } = useUserInfo()
   console.log('currentUserPlan', currentUserPlan.name)
   const [open, setOpen] = useState(false)
@@ -158,15 +106,20 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
   // 通用的权限判断逻辑
   const hasPermissionMemo = useMemo(() => {
     // 判断角色
-    if (permissions.find((permission) => permission === currentUserPlan.name)) {
+    if (
+      allowedRoles.find((permission) => permission === currentUserPlan.name)
+    ) {
       return true
     }
     // 判断是否为新用户
-    if (currentUserPlan?.isNewUser) {
+    if (
+      allowedRoles.find((permission) => permission === 'new_user') &&
+      currentUserPlan?.isNewUser
+    ) {
       return true
     }
     return false
-  }, [currentUserPlan, permissions])
+  }, [currentUserPlan, allowedRoles])
 
   if (hasPermissionMemo) {
     return <>{children}</>
@@ -191,13 +144,13 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
           }}
         >
           <Stack spacing={1} component="div">
-            {permissionCard.videoUrl && (
+            {memoizedPermissionCard.videoUrl && (
               <YoutubePlayerBox
                 borderRadius={4}
-                youtubeLink={permissionCard.videoUrl}
+                youtubeLink={memoizedPermissionCard.videoUrl}
               />
             )}
-            {permissionCard.imageUrl && (
+            {memoizedPermissionCard.imageUrl && (
               <Box
                 sx={{
                   width: '100%',
@@ -212,8 +165,8 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
               >
                 <LazyLoadImage
                   skeletonHeight={140}
-                  src={permissionCard.imageUrl}
-                  alt={`${permissionCard.title} img`}
+                  src={memoizedPermissionCard.imageUrl}
+                  alt={`${memoizedPermissionCard.title} img`}
                 />
               </Box>
             )}
@@ -223,7 +176,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
               textAlign={'left'}
               color={'rgba(255,255,255,.87)'}
             >
-              {permissionCard.title}
+              {memoizedPermissionCard.title}
             </Typography>
             <Typography
               fontSize={'12px'}
@@ -231,21 +184,21 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
               textAlign={'left'}
               color={'rgba(255,255,255,.87)'}
             >
-              {permissionCard.description}
+              {memoizedPermissionCard.description}
             </Typography>
-            {permissionCard.ctaButtonText && (
+            {memoizedPermissionCard.ctaButtonText && (
               <Link
                 target={'_blank'}
-                href={permissionCard.ctaButtonLink}
+                href={memoizedPermissionCard.ctaButtonLink}
                 onClick={(event) => {
                   event.preventDefault()
-                  window.open(permissionCard.ctaButtonLink, '_blank')
-                  permissionCard.ctaButtonOnClick?.(event)
+                  window.open(memoizedPermissionCard.ctaButtonLink, '_blank')
+                  memoizedPermissionCard.ctaButtonOnClick?.(event)
                   setOpen(false)
                 }}
               >
                 <Button fullWidth variant={'contained'}>
-                  {permissionCard.ctaButtonText}
+                  {memoizedPermissionCard.ctaButtonText}
                 </Button>
               </Link>
             )}
@@ -270,11 +223,11 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       if (onPermission) {
                         const { success, cardSettings } = await onPermission(
                           currentUserPlan,
-                          permissionCard,
+                          memoizedPermissionCard,
                           [event, ...args],
                         )
-                        setPermissionCard({
-                          ...permissionCard,
+                        setModifyPermissionCard({
+                          ...memoizedPermissionCard,
                           ...cardSettings,
                         })
                         isAuth = success
@@ -305,11 +258,11 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       if (onPermission) {
                         const { success, cardSettings } = await onPermission(
                           currentUserPlan,
-                          permissionCard,
+                          memoizedPermissionCard,
                           [event, ...args],
                         )
-                        setPermissionCard({
-                          ...permissionCard,
+                        setModifyPermissionCard({
+                          ...memoizedPermissionCard,
                           ...cardSettings,
                         })
                         isAuth = success

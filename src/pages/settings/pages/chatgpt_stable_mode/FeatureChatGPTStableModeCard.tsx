@@ -322,7 +322,7 @@ const MinutesSlider: FC<{
   const [value, setValue] = useState<number>(defaultValue || 30)
   return (
     <PermissionWrapper
-      permissions={['pro', 'pro_gift']}
+      allowedRoles={['pro', 'pro_gift', 'new_user']}
       sceneType={'CHATGPT_STABLE_MODE'}
       onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
         if (newValue > 30) {

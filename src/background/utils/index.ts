@@ -54,9 +54,9 @@ export const FILTER_SAVE_KEYS = [
   'models',
 ] as Array<keyof IChromeExtensionSettings>
 
-export const getChromeExtensionSettings =
-  async (): Promise<IChromeExtensionSettings> => {
-    const defaultConfig = {
+export const getDefaultChromeExtensionSettings =
+  (): IChromeExtensionSettings => {
+    return {
       commands: [],
       models: [],
       currentModel: '',
@@ -113,6 +113,7 @@ export const getChromeExtensionSettings =
           model: 'text-davinci-002-render-sha',
         },
         [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: {
+          temperature: 1,
           model: USE_CHAT_GPT_PLUS_MODELS[0].value,
         },
         [AI_PROVIDER_MAP.OPENAI_API]: {
@@ -126,6 +127,11 @@ export const getChromeExtensionSettings =
         },
       },
     } as IChromeExtensionSettings
+  }
+
+export const getChromeExtensionSettings =
+  async (): Promise<IChromeExtensionSettings> => {
+    const defaultConfig = getDefaultChromeExtensionSettings()
     const localData = await Browser.storage.local.get(
       CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
     )
@@ -570,5 +576,18 @@ export const backgroundRestartChromeExtension = async () => {
     })
   } catch (e) {
     console.error('reStartChromeExtension: \t', e)
+  }
+}
+
+export const getPreviousVersion = (version: string): string => {
+  const [major, minor, patch] = version.split('.').map(Number)
+  if (patch > 0) {
+    return `${major}.${minor}.${patch - 1}`
+  } else if (minor > 0) {
+    return `${major}.${minor - 1}.99`
+  } else if (major > 0) {
+    return `${major - 1}.99.99`
+  } else {
+    throw new Error('Cannot get previous version for version 0.0.0')
   }
 }

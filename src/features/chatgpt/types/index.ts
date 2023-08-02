@@ -2,6 +2,8 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { TFunction } from 'i18next'
 import React from 'react'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { IUserRoleType } from '@/features/auth/types'
 
 export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
@@ -102,5 +104,9 @@ export interface IAIProviderModel {
     acceptTooltip: (t: TFunction<['common', 'client']>) => React.ReactNode
     maxFileSize: number
     maxCount: number
+  }
+  permission?: {
+    sceneType: PermissionWrapperCardSceneType
+    roles: IUserRoleType[]
   }
 }

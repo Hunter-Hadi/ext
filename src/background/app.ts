@@ -52,6 +52,7 @@ import {
 } from '@/background/utils/syncSettings'
 import { REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY } from '@/components/Announcement'
 import { ClaudeChat } from '@/background/src/chat/ClaudeChat'
+import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
 
 /**
  * background.js 入口
@@ -96,6 +97,8 @@ const initChromeExtensionInstalled = () => {
         [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
       })
     } else {
+      // 保存本地快照
+      await setChromeExtensionSettingsSnapshot()
       // 更新插件
       if (!(await isSettingsLastModifiedEqual())) {
         const result = await checkSettingsSync()

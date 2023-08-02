@@ -1,26 +1,31 @@
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import dayjs from 'dayjs'
+import { I18nextKeysType } from '@/i18next'
 
 export enum BingConversationStyle {
   Creative = 'creative',
   Balanced = 'balanced',
   Precise = 'precise',
 }
-export const BING_CONVERSATION_STYLES = [
+export const BING_CONVERSATION_STYLES: Array<{
+  label: I18nextKeysType
+  description: I18nextKeysType
+  value: BingConversationStyle
+}> = [
   {
-    label: 'Creative',
-    description: `Clear your conversation and start an original imaginative chat.`,
+    label: 'client:provider__bing_web_app__conversation_style__creative__title',
+    description: `client:provider__bing_web_app__conversation_style__creative__description`,
     value: BingConversationStyle.Creative,
   },
   {
-    label: 'Balanced',
-    description: `Clear your conversation and start an informative and friendly chat.`,
+    label: 'client:provider__bing_web_app__conversation_style__balanced__title',
+    description: `client:provider__bing_web_app__conversation_style__balanced__description`,
     value: BingConversationStyle.Balanced,
   },
   {
-    label: 'Precise',
-    description: `Clear your conversation and start a concise and straightforward chat.`,
+    label: 'client:provider__bing_web_app__conversation_style__precise__title',
+    description: `client:provider__bing_web_app__conversation_style__precise__description`,
     value: BingConversationStyle.Precise,
   },
 ]

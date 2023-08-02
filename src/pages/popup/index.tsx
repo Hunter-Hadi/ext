@@ -8,25 +8,30 @@ import TooltipButton from '@/components/TooltipButton'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import Link from '@mui/material/Link'
-import { RecoilRoot } from 'recoil'
+import { RecoilRoot, useSetRecoilState } from 'recoil'
 import AppThemeProvider from '@/components/AppTheme'
 import Button from '@mui/material/Button'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import Browser from 'webextension-polyfill'
 import Box from '@mui/material/Box'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import { backgroundSendClientMessage } from '@/background/utils'
+import {
+  backgroundSendClientMessage,
+  getChromeExtensionSettings,
+} from '@/background/utils'
 import Alert from '@mui/material/Alert'
 import BulletList from '../../components/BulletList'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import { useInitI18n } from '@/i18n/hooks'
+import { AppSettingsState } from '@/store'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
 const App: FC<{
   isSpecialPage: boolean
 }> = (props) => {
+  const updateAppSettings = useSetRecoilState(AppSettingsState)
   const { isSpecialPage } = props
   useInitI18n()
   const { t } = useTranslation(['common', 'client'])
@@ -50,6 +55,7 @@ const App: FC<{
   useEffectOnce(() => {
     init()
     // todo init i18n
+    getChromeExtensionSettings().then(updateAppSettings)
   })
   return (
     <Stack minWidth={400} spacing={2} p={1}>

@@ -64,7 +64,7 @@ export const CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY =
  * @deprecated - 不同的ai provider使用prefix产生效果不同，不再使用这个
  * @since - 2023-07-31
  */
-export const CHAT_GPT_PROMPT_PREFIX = ``
+export const CHAT_GPT_PROMPT_PREFIX = `\`reset\`\n\`no quotes\`\n\`no explanations\`\n\`no prompt\`\n\`no self-reference\`\n\`no apologies\`\n\`no filler\`\n\`just answer\`\n`
 export const CHAT_GPT_MESSAGES_RECOIL_KEY = 'CHAT_GPT_MESSAGES_RECOIL_KEY'
 export const AI_PROVIDER_MAP = {
   OPENAI: 'OPENAI',

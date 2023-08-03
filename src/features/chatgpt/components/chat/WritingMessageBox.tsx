@@ -14,6 +14,7 @@ import { useRangy } from '@/features/contextMenu'
 import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
 import { useTranslation } from 'react-i18next'
+import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -51,6 +52,13 @@ const WritingMessageBox: FC<{
         isSameMessage = false
       }
       prevMessageIdRef.current = writingMessageId
+      // ChatGPT 有可能第一个回答会返回之前的问题
+      if (
+        CHAT_GPT_PROMPT_PREFIX &&
+        writingMessageText.includes(CHAT_GPT_PROMPT_PREFIX)
+      ) {
+        return
+      }
       setFloatingContextMenuDraft((prevState) => {
         const copyDraftList = cloneDeep(prevState.draftList)
         if (isSameMessage) {

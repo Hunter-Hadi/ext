@@ -9,6 +9,9 @@ import pkg from 'gpt-3-encoder'
 const { encode } = pkg
 const debug = false
 
+const maxModelTokens = 16000 // 4k
+const maxResponseTokens = 12000 // 3k
+
 const getTextTokens = (text) => {
   try {
     const tokens = encode(text)
@@ -19,16 +22,19 @@ const getTextTokens = (text) => {
   }
 }
 
-const translateValue = async (translateJson, from, to) => {
+const translateValue = async (translateJson, from, to, logPrefix) => {
   const runTranslate = async (prompt, times) => {
     const agent = new HttpsProxyAgent('http://127.0.0.1:7890')
     const api = new ChatGPTAPI({
       apiKey: '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',
       completionParams: {
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-3.5-turbo-16k',
         temperature: 0.2,
         top_p: 0.1,
       },
+      systemMessage: 'You are a helpful assistant.',
+      maxResponseTokens,
+      maxModelTokens,
       fetch: (url, options = {}) => {
         const defaultOptions = {
           agent,
@@ -40,12 +46,12 @@ const translateValue = async (translateJson, from, to) => {
         return nodeFetch(url, mergedOptions)
       },
     })
-    debug && console.log(prompt)
+    debug && console.log(logPrefix + prompt)
     let res = null
     try {
       res = await api.sendMessage(prompt)
     } catch (e) {
-      debug && console.error('api.sendMessage error', e)
+      debug && console.error(logPrefix + 'api.sendMessage error', e)
     }
     let data = null
     if (res && res.text && res.detail) {
@@ -53,20 +59,25 @@ const translateValue = async (translateJson, from, to) => {
       try {
         data = JSON.parse(jsonText.replace(/^\n?```\n?|\n?```\n?$/g, ''))
       } catch (e) {
-        console.error('解析失败: \t', jsonText, '\n', res)
+        console.error(logPrefix + '解析失败 prompt: \t', prompt)
+        console.error(logPrefix + '解析失败: \t', jsonText, '\n', res)
       }
     }
     if (data) {
+      // prompt_tokens: promptTokens,
+      //   completion_tokens: completionTokens,
+      //   total_tokens: promptTokens + completionTokens,
       return {
         data,
         usage:
-          (res.detail && res.detail.usage && res.detail.usage.total_tokens) ||
+          (res.detail && res.detail.usage && res.detail.usage.prompt_tokens) ||
           0,
         success: true,
       }
     } else {
-      if (times < 5) {
-        console.log('第' + times + '次请求失败，重试')
+      if (times < 3) {
+        console.log(logPrefix + '第' + times + '次请求失败，重试')
+        await new Promise((resolve) => setTimeout(resolve, 3000))
         return await runTranslate(prompt, times + 1)
       } else {
         return {
@@ -94,7 +105,7 @@ Do not include any extra words that's not part of the JSON result in your answer
 Do not add any markdown to indicate that the JSON is a "json code". Just output the JSON itself.
 JSON object:
 \`\`\`
-${JSON.stringify(translateJson, null, 2)}
+${JSON.stringify(translateJson)}
 \`\`\`
 `
   // max 5 times
@@ -262,10 +273,12 @@ const updateI18nJson = async (
       }
     })
     const loopKeys = updateKeys.length ? updateKeys : sourceJsonKeyPaths
-    // 因为gpt3翻译有长度限制，所以需要分批处理
     const needTranslateJsonList = []
     let partOfNeedTranslateJson = {}
-    const partMaxToken = 500
+    // 因为gpt3翻译有长度限制，所以需要分批处理
+    // 所以需要控制prompt的长度为ai回复的1/4比较稳定 => maxResponseTokens/3
+    // system prompt差不多300
+    const partMaxToken = (maxResponseTokens / 4 - 300)
     for (let updateKey of loopKeys) {
       debug && console.log(`开始处理: [${updateKey}]`)
       if (updateKeys.length && !updateKeys.includes(updateKey)) {
@@ -274,23 +287,33 @@ const updateI18nJson = async (
       }
       const sourceValue = _.get(sourceJson, updateKey)
       const currentValue = _.get(currentLanguageJson, updateKey)
+      let needTranslate = false
       if (currentValue) {
         if (forceUpdate) {
           modifyKeyCount++
-          _.set(partOfNeedTranslateJson, updateKey, sourceValue)
+          needTranslate = true
           debug && console.log(`强制更新: [${updateKey}]`)
         }
       } else {
         addKeyCount++
-        _.set(partOfNeedTranslateJson, updateKey, sourceValue)
+        needTranslate = true
         debug && console.log(`新增: [${updateKey}]`)
       }
-      if (
-        getTextTokens(JSON.stringify(partOfNeedTranslateJson)).length >
-        partMaxToken
-      ) {
-        needTranslateJsonList.push(partOfNeedTranslateJson)
-        partOfNeedTranslateJson = {}
+      if (needTranslate) {
+        // 到目前为止，需要翻译的内容的token数量
+        const partOfNeedTranslateJsonTokens = getTextTokens(
+          JSON.stringify(partOfNeedTranslateJson),
+        ).length
+        // 新增需要翻译的内容的token数量
+        const currentValueTokens = getTextTokens(JSON.stringify({
+          [updateKey]: sourceValue,
+        })).length
+        // 如果当前需要翻译的内容的token数量 + 新增需要翻译的内容的token数量 > partMaxToken， 则需要分批处理
+        if (partOfNeedTranslateJsonTokens + currentValueTokens > partMaxToken) {
+          needTranslateJsonList.push(partOfNeedTranslateJson)
+          partOfNeedTranslateJson = {}
+        }
+        _.set(partOfNeedTranslateJson, updateKey, sourceValue)
       }
     }
     if (Object.keys(partOfNeedTranslateJson).length > 0) {
@@ -301,33 +324,42 @@ const updateI18nJson = async (
     let translateHasError = false
     let percentRate = 0
     let successCount = 0
-    // 翻译
-    const translatedJsonData = await Promise.all(
-      needTranslateJsonList.map(async (needTranslateJson, index) => {
-        debug && console.log(needTranslateJson)
-        const { data, success, usage } = await translateValue(
-          needTranslateJson,
-          'English',
-          languageName,
-        )
-        // 只要有一段翻译失败，就不更新
-        if (!success) {
-          translateHasError = true
-        }
-        totalUsage += usage
-        successCount++
-        percentRate = Math.floor(
-          (successCount / needTranslateJsonList.length) * 100,
-        )
-        console.log(
-          `[${percentRate}%]: 片段 [${index}] 翻译成功`,
-        )
-        return data
-      }),
-    )
-    if (translateHasError) {
-      errorLanguages.push(dirName)
-      continue
+    // 翻译, 每次并发10个
+    const maxConcurrency = 10
+    const translatedJsonData = []
+    for (let i = 0; i < needTranslateJsonList.length; i += maxConcurrency) {
+      const partNeedTranslateJsonList = needTranslateJsonList.slice(
+        i,
+        i + maxConcurrency,
+      )
+      translatedJsonData.push(
+        ...(await Promise.all(
+          partNeedTranslateJsonList.map(async (needTranslateJson, index) => {
+            debug && console.log(needTranslateJson)
+            const { data, success, usage } = await translateValue(
+              needTranslateJson,
+              'English',
+              languageName,
+              `i18n-${dirName}-part-${index} => `
+            )
+            // 只要有一段翻译失败，就不更新
+            if (!success) {
+              translateHasError = true
+            }
+            totalUsage += usage
+            successCount++
+            percentRate = Math.floor(
+              (successCount / needTranslateJsonList.length) * 100,
+            )
+            console.log(`[${percentRate}%]: 片段 [${index+i}] 翻译成功`)
+            return data
+          }),
+        )),
+      )
+      if (translateHasError) {
+        errorLanguages.push(dirName)
+        continue
+      }
     }
     // merge
     translatedJsonData.forEach((data) => {
@@ -346,7 +378,7 @@ const updateI18nJson = async (
   console.log(
     '耗费的token数: \t',
     `${Number(totalUsage / 1000).toFixed(1)}K`,
-    Number((totalUsage / 1000) * 0.02).toFixed(2),
+    Number((totalUsage / 1000) * 0.004).toFixed(2),
     '美元',
   )
   console.log(`翻译失败的语言包: \t[${errorLanguages.join('')}]`)
@@ -433,30 +465,30 @@ async function updateDefaultJson(forceUpdate = false) {
       })
   })
 }
-
-/**
- * 强制更新所有语言包, 会覆盖所有语言包的字段, 慎用
- * @returns {Promise<void>}
- */
-async function forceUpdateAll(retryLanguageCodes = []) {
-  const sourceJson = JSON.parse(fs.readFileSync(sourceJsonPath, 'utf-8'))
-  const sourceJsonKeyPaths = generateKeyPathFromObject(sourceJson).filter(
-    (key) => !BLACK_LIST_KEYS.includes(key),
-  )
-  await updateI18nJson(sourceJsonKeyPaths, true, retryLanguageCodes)
-}
-
-/**
- * 增量更新所有语言包, 只会增量更新所有语言包的字段
- * @returns {Promise<void>}
- */
-async function updateAll(retryLanguageCodes = []) {
-  const sourceJson = JSON.parse(fs.readFileSync(sourceJsonPath, 'utf-8'))
-  const sourceJsonKeyPaths = generateKeyPathFromObject(sourceJson).filter(
-    (key) => !BLACK_LIST_KEYS.includes(key),
-  )
-  await updateI18nJson(sourceJsonKeyPaths, false, retryLanguageCodes)
-}
+//
+// /**
+//  * 强制更新所有语言包, 会覆盖所有语言包的字段, 慎用
+//  * @returns {Promise<void>}
+//  */
+// async function forceUpdateAll(retryLanguageCodes = []) {
+//   const sourceJson = JSON.parse(fs.readFileSync(sourceJsonPath, 'utf-8'))
+//   const sourceJsonKeyPaths = generateKeyPathFromObject(sourceJson).filter(
+//     (key) => !BLACK_LIST_KEYS.includes(key),
+//   )
+//   await updateI18nJson(sourceJsonKeyPaths, true, retryLanguageCodes)
+// }
+//
+// /**
+//  * 增量更新所有语言包, 只会增量更新所有语言包的字段
+//  * @returns {Promise<void>}
+//  */
+// async function updateAll(retryLanguageCodes = []) {
+//   const sourceJson = JSON.parse(fs.readFileSync(sourceJsonPath, 'utf-8'))
+//   const sourceJsonKeyPaths = generateKeyPathFromObject(sourceJson).filter(
+//     (key) => !BLACK_LIST_KEYS.includes(key),
+//   )
+//   await updateI18nJson(sourceJsonKeyPaths, false, retryLanguageCodes)
+// }
 
 /**
  * 增量更新指定字段
@@ -471,11 +503,8 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = [
-  ]
-  const retryLanguageCodes = [
-    'zh_CN'
-  ]
+  const keys = []
+  const retryLanguageCodes = []
   await updateKeys(keys, false, retryLanguageCodes)
 }
 

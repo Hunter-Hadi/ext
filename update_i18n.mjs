@@ -59,19 +59,23 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
       const jsonText = res.text
       try {
         try {
+          console.log('1111')
           data = JSON.parse(jsonText.replace(/^\n?```\n?|\n?```\n?$/g, ''))
         } catch (e) {
           try {
             // 第二次尝试, 去掉最后一个逗号
+            console.log('2222')
             const jsonText2 = jsonText.replace(/,(?=[^,]*$)/, '')
             data = JSON.parse(jsonText2.replace(/^\n?```\n?|\n?```\n?$/g, ''))
           } catch (e) {
+            console.log('33333')
             // 第三次尝试,替换文本中错误的冒号
             const errorColon = JSON.stringify(jsonText).match(/"(?<colon>.)\s?{/)?.groups?.colon
             if (errorColon) {
               const jsonText3 = jsonText.replaceAll(errorColon, ':')
               data = JSON.parse(jsonText3.replace(/^\n?```\n?|\n?```\n?$/g, ''))
             } else {
+
               throw e('没的救了')
             }
           }
@@ -86,9 +90,9 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
         fs.appendFileSync(
           errorLogFilePath,
           `${logPrefix} ${new Date().toISOString()} start ======\n 
-${logPrefix} 解析失败 prompt: \n ${prompt}\n
-${logPrefix} 解析失败 json: \n ${jsonText}\n 
-解析失败: \t ${res}\n\n
+${logPrefix} 解析失败 prompt: \n ${prompt} \n
+${logPrefix} 解析失败 json: \n ${jsonText} \n 
+解析失败: \n ${JSON.stringify(res)} \n
 ${logPrefix} ${new Date().toISOString()} end ======\n`,
         )
         debug && console.error(logPrefix + '解析失败 prompt: \t', prompt)
@@ -312,9 +316,9 @@ const updateI18nJson = async (
       const needTranslateJsonList = []
       let partOfNeedTranslateJson = {}
       // 因为gpt3翻译有长度限制，所以需要分批处理
-      // 所以需要控制prompt的长度为ai回复的1/4比较稳定 => maxResponseTokens/4
+      // 所以需要控制prompt的长度为ai回复的1/5比较稳定 => maxResponseTokens/5
       // system prompt差不多300
-      const partMaxToken = maxResponseTokens / 4 - 300
+      const partMaxToken = maxResponseTokens / 5 - 300
       for (let updateKey of loopKeys) {
         debug && console.log(`开始处理: [${updateKey}]`)
         if (updateKeys.length && !updateKeys.includes(updateKey)) {
@@ -556,48 +560,7 @@ async function main() {
   await updateDefaultJson(true)
   const keys = []
   const retryLanguageCodes = [
-    'th',
-    'sl',
-    'nl',
-    'mr',
-    'no',
-    'ro',
-    'sk',
-    'sr',
-    'fi',
-    'fr',
-    'hu',
-    'lv',
-    'pt_BR',
-    'he_IL',
-    'id',
-    'ms',
-    'it',
-    'in',
-    'hr',
-    'pl',
-    'lt',
-    'kn',
-    'et',
-    'ml',
-    'es_419',
-    'fil',
-    'de',
-    'cs',
-    'da',
-    'ca',
-    'pt_PT',
-    'ko',
-    'bg',
-    'ru',
-    'ar',
-    'he',
-    'fa',
-    'el',
-    'hi',
-    'gu',
-    'am',
-    'te',
+    // 'ms',
   ]
   await updateKeys(keys, false, retryLanguageCodes)
 }

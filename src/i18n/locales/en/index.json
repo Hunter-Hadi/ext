@@ -390,7 +390,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Set how long ChatGPT stable mode stays on after activation.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Upgrade to elevate your PDF experience with AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Use AI to summarize, explain, translate, ask questions, and save time.",
-    "permission__pricing_hook__preferred_language__title": "Upgrade to change preferred language",
+    "permission__pricing_hook__preferred_language__title": "View all interface text in your chosen language.",
     "permission__pricing_hook__preferred_language__description": "Set preferred language to control how creative Max AI is.",
     "permission__pricing_hook__max_ai_temperature__title": "Upgrade to change temperature",
     "permission__pricing_hook__max_ai_temperature__description": "Control AI response randomness. A lower temperature makes AI responses less random, more deterministic, and repetitive.",

@@ -485,17 +485,16 @@ async function updateAll(retryLanguageCodes = []) {
  * @returns {Promise<void>}
  */
 async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
-  await updateI18nJson(keys, false, retryLanguageCodes)
+  await updateI18nJson(keys, forceUpdate, retryLanguageCodes)
 }
 
 async function main() {
   await updateDefaultJson(true)
   const keys = [
-    'permission__pricing_hook__max_ai_temperature__title',
-    'permission__pricing_hook__max_ai_temperature__description',
+    'permission__pricing_hook__preferred_language__title',
   ]
   const retryLanguageCodes = []
-  await updateKeys(keys, false, retryLanguageCodes)
+  await updateKeys(keys, true, retryLanguageCodes)
 }
 
 main().then().catch()

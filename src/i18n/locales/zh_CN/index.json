@@ -390,7 +390,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "激活后设置ChatGPT稳定模式持续时间。",
     "permission__pricing_hook__pdf_ai_viewer__title": "升级以提升PDF体验与AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "使用AI进行摘要、解释、翻译、提问，节省时间。",
-    "permission__pricing_hook__preferred_language__title": "升级以更改首选语言",
+    "permission__pricing_hook__preferred_language__title": "以您选择的语言查看所有界面文本。",
     "permission__pricing_hook__preferred_language__description": "设置首选语言以控制Max AI的创造力。",
     "permission__pricing_hook__max_ai_temperature__title": "升级以更改Max AI温度",
     "permission__pricing_hook__max_ai_temperature__description": "设置Max AI温度以控制Max AI的创造力。",

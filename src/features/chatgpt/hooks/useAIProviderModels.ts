@@ -75,7 +75,7 @@ const useAIProviderModels = () => {
                         'client:provider__model__tooltip_card__label__max_token',
                       ),
                     value: (t) =>
-                      `${generateMaxTokenText(item.max_tokens)} ${t(
+                      `${numberWithCommas(item.max_tokens, 0)} ${t(
                         'client:provider__model__tooltip_card__label__max_token__suffix',
                       )}`,
                   },
@@ -224,8 +224,5 @@ const useAIProviderModels = () => {
     loading,
   }
 }
-
-const generateMaxTokenText = (maxTokens?: number) =>
-  `${numberWithCommas(maxTokens || 0, 0)} tokens`
 
 export default useAIProviderModels

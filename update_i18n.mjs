@@ -58,7 +58,24 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
     if (res && res.text && res.detail) {
       const jsonText = res.text
       try {
-        data = JSON.parse(jsonText.replace(/^\n?```\n?|\n?```\n?$/g, ''))
+        try {
+          data = JSON.parse(jsonText.replace(/^\n?```\n?|\n?```\n?$/g, ''))
+        } catch (e) {
+          try {
+            // 第二次尝试, 去掉最后一个逗号
+            const jsonText2 = jsonText.replace(/,(?=[^,]*$)/, '')
+            data = JSON.parse(jsonText2.replace(/^\n?```\n?|\n?```\n?$/g, ''))
+          } catch (e) {
+            // 第三次尝试,替换文本中错误的冒号
+            const errorColon = JSON.stringify(jsonText).match(/"(?<colon>.)\s?{/)?.groups?.colon
+            if (errorColon) {
+              const jsonText3 = jsonText.replaceAll(errorColon, ':')
+              data = JSON.parse(jsonText3.replace(/^\n?```\n?|\n?```\n?$/g, ''))
+            } else {
+              throw e('没的救了')
+            }
+          }
+        }
       } catch (e) {
         // 写入本地日志
         const errorLogFilePath = join(__dirname, 'error.update_i18n.log')

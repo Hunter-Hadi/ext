@@ -47,14 +47,13 @@ const AuthUserRoleIconDropdown: FC = () => {
               alignItems={'center'}
               component={'div'}
               sx={{
-                cursor: 'pointer',
-                borderRadius: '99px',
+                borderRadius: '4px',
                 bgcolor: (t) =>
                   t.palette.mode === 'dark'
-                    ? 'rgba(178, 115, 255, 0.2)'
+                    ? 'rgba(178, 115, 255, 0.14)'
                     : 'rgba(118, 1, 211, 0.16)',
                 fontSize: '12px',
-                fontWeight: 600,
+                fontWeight: 700,
                 py: '2px',
                 px: '4px',
                 color: (t) => {
@@ -64,7 +63,6 @@ const AuthUserRoleIconDropdown: FC = () => {
                     return isHover ? 'primary.main' : 'text.primary'
                   }
                 },
-                gap: '2px',
               }}
             >
               <span>Pro</span>
@@ -93,8 +91,8 @@ const AuthUserRoleIconDropdown: FC = () => {
                   : 'rgba(118, 1, 211, 0.16)',
               fontSize: '12px',
               fontWeight: 600,
-              py: '2px',
-              px: '4px',
+              py: '6px',
+              px: '8px',
               color: (t) => {
                 if (t.palette.mode === 'dark') {
                   return isHover ? 'rgb(178,155,255)' : '#c7a5f1'

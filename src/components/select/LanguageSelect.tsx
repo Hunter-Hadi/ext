@@ -6,6 +6,7 @@ import { SxProps } from '@mui/material/styles'
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import { useTranslation } from 'react-i18next'
 
 interface LanguageSelectProps {
   label?: string
@@ -32,6 +33,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
     },
     sx,
   } = props
+  const { t } = useTranslation(['common'])
   const [value, setValue] = React.useState<{ label: string; value: string }>(
     () => {
       return (
@@ -64,6 +66,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       }}
     >
       <Autocomplete
+        noOptionsText={t('common:no_options')}
         disableClearable
         value={value}
         size={'small'}

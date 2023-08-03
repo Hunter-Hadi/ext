@@ -35,7 +35,8 @@
     "copy_to_clipboard": "Copy to clipboard",
     "copied": "Copied",
     "paste": "Paste",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "no_options": "No options"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -400,7 +401,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Upgrade to access gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI's most capable model, great for tasks that require creativity and advanced reasoning.",
     "prompt__group__suggested__title": "Suggested",
-    "rewards__title": "Rewards"
+    "rewards__title": "Rewards",
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

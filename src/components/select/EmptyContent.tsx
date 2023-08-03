@@ -2,10 +2,12 @@ import SearchIcon from '@mui/icons-material/Search'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const EmptyContent: FC<{
   emptyText?: string
-}> = ({ emptyText = 'No Results Found' }) => {
+}> = ({ emptyText }) => {
+  const { t } = useTranslation(['common'])
   return (
     <Stack alignItems={'center'}>
       <Stack
@@ -23,7 +25,9 @@ const EmptyContent: FC<{
       >
         <SearchIcon width={24} height={24} />
       </Stack>
-      <Typography variant={'body1'}>{emptyText}</Typography>
+      <Typography variant={'body1'}>
+        {emptyText || t('common:no_options')}
+      </Typography>
     </Stack>
   )
 }

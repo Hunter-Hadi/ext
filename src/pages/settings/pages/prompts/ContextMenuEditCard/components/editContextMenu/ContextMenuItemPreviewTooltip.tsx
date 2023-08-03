@@ -28,8 +28,15 @@ const ContextMenuItemPreviewTooltip: FC<{
   item: IContextMenuItem
   children: React.ReactNode
 }> = (props) => {
-  const { t } = useTranslation(['settings', 'common'])
+  const { t } = useTranslation(['settings', 'common', 'prompt'])
   const { item, children } = props
+  const itemI18nText = useMemo(() => {
+    const key: any = `prompt:${item.id}`
+    if (t(key) !== item.id) {
+      return t(key)
+    }
+    return item.text
+  }, [item, t])
   // const isGroup = item.data.type === 'group'
   const visibilitySetting = useMemo(() => {
     const settings = item?.data?.visibility || {
@@ -84,7 +91,7 @@ const ContextMenuItemPreviewTooltip: FC<{
           }}
         >
           <Typography fontSize={16} fontWeight={500} color={'text.primary'}>
-            {item.text}
+            {itemI18nText}
           </Typography>
           {visibilitySetting && visibilitySetting.isEmpty && (
             <Stack spacing={0.5}>

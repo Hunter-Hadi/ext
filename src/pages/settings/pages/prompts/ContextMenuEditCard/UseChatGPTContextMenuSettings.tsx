@@ -44,12 +44,7 @@ import {
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { useTranslation } from 'react-i18next'
 import ContextMenuRestoreDialog from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuRestoreDialog'
-import {
-  ContextMenuSearchTextStore,
-  removeContextMenuSearchTextStore,
-  setContextMenuSearchTextStore,
-  useContextMenuSearchTextStore,
-} from '@/features/sidebar/store/contextMenuSearchTextStore'
+import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 
 const rootId = 'root'
 
@@ -110,7 +105,7 @@ const ContextMenuSettings: FC<{
     iconSetting = false,
     onUpdated,
   } = props
-  const { t, i18n } = useTranslation(['settings', 'prompt'])
+  const { t } = useTranslation(['settings', 'prompt'])
   const tRef = useRef(t)
   const once = useRef(true)
   const [loading, setLoading] = useState(false)
@@ -291,60 +286,28 @@ const ContextMenuSettings: FC<{
   }, [buttonKey])
 
   useEffect(() => {
+    const searchTextMap: {
+      [key: string]: string
+    } = {}
     originalTreeMapRef.current = {}
-    const language = i18n.language
-    const searchTextPrefixMap: ContextMenuSearchTextStore = {
-      en: {} as any,
-      [language]: {} as any,
-    }
-    const saveSearchTextData: ContextMenuSearchTextStore = {
-      en: {} as any,
-      [language]: {} as any,
-    }
     const findSearchText = (parent: string) => {
       const children = originalTreeData.filter((item) => item.parent === parent)
       if (children.length === 0) {
         return
       }
       children.forEach((item) => {
-        // 拼接parent的前缀
-        const enPrefix = searchTextPrefixMap['en'][parent] || ''
-        const currentLanguagePrefix =
-          searchTextPrefixMap[language][parent] || ''
-        // 当前的text
-        const enItemText = item.text
-        let currentLanguageItemText = enItemText
+        const prefixText = searchTextMap[item.parent]
+          ? `${searchTextMap[item.parent]} `
+          : ''
         // 只拼接一层
-        const enSearchText = `${enPrefix} ${item.text}`.trimStart()
-        let currentLanguageSearchText = enSearchText
-        if (
-          language !== 'en' &&
-          tRef.current(`prompt:${item.id}` as any) !== item.id
-        ) {
-          currentLanguageItemText = tRef.current(`prompt:${item.id}` as any)
-          currentLanguageSearchText =
-            `${currentLanguagePrefix} ${currentLanguageItemText} ${enSearchText}`.trimStart()
-        }
-        searchTextPrefixMap.en[item.id] = enItemText.toLowerCase()
-        searchTextPrefixMap[language][item.id] =
-          currentLanguageItemText.toLowerCase()
-        saveSearchTextData.en[item.id] = enSearchText.toLowerCase()
-        saveSearchTextData[language][item.id] =
-          currentLanguageSearchText.toLowerCase()
-        item.data.searchText = enSearchText
+        searchTextMap[item.id] = `${item.text}`.toLowerCase()
+        item.data.searchText = prefixText + searchTextMap[item.id].toLowerCase()
         originalTreeMapRef.current[item.id] = item
         findSearchText(item.id)
       })
     }
+    findSearchText(rootId)
     if (originalTreeData.length > 0) {
-      findSearchText(rootId)
-      Promise.all([
-        removeContextMenuSearchTextStore('en'),
-        removeContextMenuSearchTextStore(language),
-      ]).then(() => {
-        setContextMenuSearchTextStore('en', saveSearchTextData.en)
-        setContextMenuSearchTextStore(language, saveSearchTextData[language])
-      })
       saveTreeData(buttonKey, originalTreeData).then(() => {
         console.log('saveTreeData success')
         if (once.current) {

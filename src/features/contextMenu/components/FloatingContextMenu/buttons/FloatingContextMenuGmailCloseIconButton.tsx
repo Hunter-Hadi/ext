@@ -11,11 +11,13 @@ import {
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { useTranslation } from 'react-i18next'
 
 const FloatingContextMenuGmailCloseIconButton: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
+  const { t } = useTranslation(['common', 'client'])
   const [loading, setLoading] = useState(true)
   const [root, setRoot] = useState<null | HTMLElement>(null)
   useEffect(() => {
@@ -68,7 +70,9 @@ const FloatingContextMenuGmailCloseIconButton: FC<{
               })
             }}
             icon={'VisibilityOff'}
-            label={`Hide Gmail assistant`}
+            label={t(
+              'client:gmail__cta_button__dropdown__hide_gmail_assistant',
+            )}
           />
         </DropdownMenu>
       )}

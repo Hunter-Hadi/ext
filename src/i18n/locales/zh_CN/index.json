@@ -35,7 +35,8 @@
     "copied": "已复制",
     "paste": "粘贴",
     "loading": "加载中...",
-    "read_more": "阅读更多"
+    "read_more": "阅读更多",
+    "no_options": "没有选项"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -399,7 +400,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "与标准gpt-3.5-turbo模型具有相同的功能，但上下文增加了4倍。",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "升级以访问gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI最强大的模型，非常适用于需要创造力和高级推理的任务。",
-    "prompt__group__suggested__title": "建议"
+    "prompt__group__suggested__title": "建议",
+    "rewards__title": "奖励",
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "隐藏Gmail助手"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

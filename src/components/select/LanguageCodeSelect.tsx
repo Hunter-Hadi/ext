@@ -6,6 +6,7 @@ import { SxProps } from '@mui/material/styles'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { LANGUAGE_CODE_MAP } from '@/i18n/types'
 import { IOptionType } from '@/components/select/BaseSelect'
+import { useTranslation } from 'react-i18next'
 
 interface LanguageCodeSelectProps {
   label?: string
@@ -58,6 +59,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
     },
     sx,
   } = props
+  const { t } = useTranslation(['common'])
   const [value, setValue] = React.useState<IOptionType>(() => {
     return (
       LanguageCodeOptions.find((option) => option.value === defaultValue) ||
@@ -89,6 +91,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
       }}
     >
       <Autocomplete
+        noOptionsText={t('common:no_options')}
         disableClearable
         value={value}
         size={'small'}

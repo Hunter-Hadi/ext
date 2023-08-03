@@ -216,23 +216,23 @@ const updateI18nJson = async (
     }
     return key
   })
-  console.log('i18n count', i18nDirs.length)
+  let needUpdateLanguages = i18nDirs
+  if (updateLanguageCodes.length) {
+    needUpdateLanguages = i18nDirs.filter((dir) =>
+      updateLanguageCodes.includes(dir.name),
+    )
+  }
+  console.log('i18n 需要更新的语言包总数: ', needUpdateLanguages.length)
   if (updateKeys.length > 0) {
-    console.log('i18n updateKey count', sourceJsonKeyPaths.length)
+    console.log('i18n 本次需要更新的key总数:', updateKeys.length)
   } else {
-    console.log('i18n total keys count', sourceJsonKeyPaths.length)
+    console.log('i18n key总数:', sourceJsonKeyPaths.length)
   }
   let totalUsage = 0
   let finallyLogs = []
   let errorLanguages = []
-  for (let i = 0; i < i18nDirs.length; i++) {
-    if (
-      updateLanguageCodes.length &&
-      !updateLanguageCodes.includes(i18nDirs[i].name)
-    ) {
-      continue
-    }
-    const dirName = 'zh_CN' || i18nDirs[i].name
+  for (let i = 0; i < needUpdateLanguages.length; i++) {
+    const dirName = needUpdateLanguages[i].name
     const { en_label: languageName } = LANGUAGE_CODE_MAP[dirName]
     if (!languageName) {
       console.log(`[${dirName}]语言包不存在`)
@@ -296,7 +296,7 @@ const updateI18nJson = async (
     if (Object.keys(partOfNeedTranslateJson).length > 0) {
       needTranslateJsonList.push(partOfNeedTranslateJson)
     }
-    console.log('needTranslateJsonList count', needTranslateJsonList.length)
+    console.log('需要翻译的i18n片段数量: ', needTranslateJsonList.length)
     let mergedJson = _.cloneDeep(currentLanguageJson)
     let translateHasError = false
     let percentRate = 0
@@ -320,7 +320,7 @@ const updateI18nJson = async (
           (successCount / needTranslateJsonList.length) * 100,
         )
         console.log(
-          `[${percentRate}%]: partOfResult [${index}] translate success`,
+          `[${percentRate}%]: 片段 [${index}] 翻译成功`,
         )
         return data
       }),
@@ -333,24 +333,6 @@ const updateI18nJson = async (
     translatedJsonData.forEach((data) => {
       mergedJson = _.merge(mergedJson, data)
     })
-    // // 翻译
-    // for (let needTranslateJson of needTranslateJsonList) {
-    //   console.log(needTranslateJson)
-    //   debug && console.log(needTranslateJson)
-    //   const { data, success, usage } = await translateValue(
-    //     needTranslateJson,
-    //     'English',
-    //     languageName,
-    //   )
-    //   // 只要有一段翻译失败，就不更新
-    //   if (!success) {
-    //     errorLanguages.push(dirName)
-    //     continue
-    //   }
-    //   totalUsage += usage
-    //   // merge
-    //   mergedJson = _.merge(mergedJson, data)
-    // }
     fs.writeFileSync(
       join(jsonDir, `/${dirName}/index.json`),
       JSON.stringify(mergedJson, null, 2),
@@ -358,7 +340,6 @@ const updateI18nJson = async (
     const log = `[${languageName}]语言包处理完成, 新增${addKeyCount}个字段, 修改${modifyKeyCount}个字段, 移除${removeUnusedKeyCount}个字段`
     console.log(log)
     finallyLogs.push(log)
-    break
   }
   console.log('==================================')
   finallyLogs.forEach((log) => console.log(log))
@@ -491,12 +472,11 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = [
-    'sidebar__button__my_plan',
-    'permission__pricing_hook__preferred_language__title',
-    'permission__pricing_hook__preferred_language__description',
   ]
-  const retryLanguageCodes = []
-  await updateKeys(keys, true, retryLanguageCodes)
+  const retryLanguageCodes = [
+    'zh_CN'
+  ]
+  await updateKeys(keys, false, retryLanguageCodes)
 }
 
 main().then().catch()

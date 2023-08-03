@@ -39,7 +39,7 @@ killPortProcess(port).then(() => {
       debounce((_, path) => {
         // console.log(`File change detected. Path: ${path}`)
         ws.send('hot_reload_message')
-      }, 1000),
+      }, 2000),
     )
     ws.on('close', () => {
       watcher.close()

@@ -19,7 +19,7 @@ const ContextMenuItem = (props: {
   onDelete?: (id: string) => void
   isDropTarget?: boolean
 }) => {
-  const { t } = useTranslation(['settings', 'common'])
+  const { t } = useTranslation(['settings', 'common', 'prompt'])
   const {
     isDropTarget = false,
     disabledDrag = false,
@@ -36,6 +36,13 @@ const ContextMenuItem = (props: {
   const memoPaddingLeft = useMemo(() => {
     return Math.max(0, depth) * 24 + DRAG_ICON_SIZE
   }, [DRAG_ICON_SIZE])
+  const nodeI18nText = useMemo(() => {
+    const key: any = `prompt:${node.id}`
+    if (t(key) !== node.id) {
+      return t(key)
+    }
+    return node.text
+  }, [node, t])
   return (
     <ContextMenuItemPreviewTooltip item={node}>
       <Stack
@@ -139,7 +146,7 @@ const ContextMenuItem = (props: {
           >
             {isGroup && isFirstDeep ? (
               <Typography fontSize={12} color={'text.secondary'}>
-                {node.text}
+                {nodeI18nText}
               </Typography>
             ) : (
               <Typography
@@ -154,7 +161,7 @@ const ContextMenuItem = (props: {
                   wordBreak: 'break-word',
                 }}
               >
-                {node.text}
+                {nodeI18nText}
               </Typography>
             )}
           </Stack>

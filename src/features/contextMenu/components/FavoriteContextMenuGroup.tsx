@@ -45,8 +45,7 @@ const FavoriteContextMenuGroup: FC<{
         if (t(key) !== itemId) {
           itemLabel = t(key)
         }
-        const shortTitle =
-          String(itemLabel[0] || '').toUpperCase() + String(itemLabel[1] || '')
+        const shortTitle = String(itemLabel[0] || '').toUpperCase()
         return (
           <TooltipButton
             TooltipProps={{

@@ -110,7 +110,9 @@ const SidebarChatBoxChatSpeedDial: FC<{
                     justifyContent={'center'}
                     component={'div'}
                   >
-                    <MagicBookIcon sx={{ fontSize: 16 }} />
+                    <MagicBookIcon
+                      sx={{ fontSize: '24px', color: 'primary.main' }}
+                    />
                   </Stack>
                 </TextOnlyTooltip>
               </Box>
@@ -139,7 +141,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
                   justifyContent={'center'}
                   component={'div'}
                 >
-                  <ContextMenuIcon icon={'Restart'} />
+                  <ContextMenuIcon icon={'Restart'} sx={{ fontSize: '24px' }} />
                 </Stack>
               </TextOnlyTooltip>
             </Box>

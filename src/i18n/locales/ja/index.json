@@ -203,7 +203,7 @@
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
-    "sidebar__button__my_account": "マイアカウント",
+    "sidebar__button__my_plan": "マイアカウント",
     "sidebar__button__new_chat": "新しいチャット",
     "sidebar__button__use_prompt": "プロンプトを使用",
     "sidebar__button__send_to_ai": "AIに送信",

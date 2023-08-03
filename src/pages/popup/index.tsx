@@ -58,7 +58,12 @@ const App: FC<{
     getChromeExtensionSettings().then(updateAppSettings)
   })
   return (
-    <Stack minWidth={400} spacing={2} p={1}>
+    <Stack
+      minWidth={400}
+      spacing={2}
+      p={1}
+      sx={{ bgcolor: 'background.paper' }}
+    >
       <Stack
         boxSizing={'border-box'}
         direction={'row'}

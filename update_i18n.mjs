@@ -491,7 +491,9 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = [
+    'sidebar__button__my_plan',
     'permission__pricing_hook__preferred_language__title',
+    'permission__pricing_hook__preferred_language__description',
   ]
   const retryLanguageCodes = []
   await updateKeys(keys, true, retryLanguageCodes)

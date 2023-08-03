@@ -3,10 +3,12 @@ import CloseAlert from '@/components/CloseAlert'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import { useTranslation } from 'react-i18next'
 
 const HowToFindSettings: FC<{
   liteMode?: boolean
 }> = ({ liteMode }) => {
+  const { t } = useTranslation(['common', 'client'])
   return (
     <>
       {liteMode ? (
@@ -27,8 +29,9 @@ const HowToFindSettings: FC<{
         >
           <Stack spacing={1} alignItems={'center'}>
             <Typography fontSize={14} color={'text.primary'}>
-              You can always re-enable it in Settings by clicking the Settings
-              icon at the top of the sidebar.
+              {t(
+                'client:floating_menu__button__hide_menu__this_site__tooltip__description',
+              )}
             </Typography>
             <img
               src={`https://www.maxai.me/assets/chrome-extension/settings-entry-small.png`}
@@ -49,8 +52,9 @@ const HowToFindSettings: FC<{
         >
           <Stack spacing={1}>
             <Typography fontSize={14} color={'text.primary'}>
-              You can always re-enable it in Settings by clicking the Settings
-              icon at the top of the sidebar.
+              {t(
+                'client:floating_menu__button__hide_menu__this_site__tooltip__description',
+              )}
             </Typography>
             <img
               src={`https://www.maxai.me/assets/chrome-extension/settings-entry.png`}

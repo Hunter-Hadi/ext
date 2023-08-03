@@ -50,7 +50,7 @@ const ChatBoxHeader: FC = () => {
           }
           target={'_blank'}
         >
-          <TextOnlyTooltip title={t('client:sidebar__button__my_account')}>
+          <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
             <Stack
               direction={'row'}
               alignItems={'center'}

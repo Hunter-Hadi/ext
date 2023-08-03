@@ -107,9 +107,9 @@ const ContextMenuRestoreDialog: FC<{
                         <Radio checked={isSelected} />
                         <Typography fontSize={16} color={'text.primary'}>{`${t(
                           'settings:feature_card__prompts__restore__dialog__item__description',
-                        )} ${dayjs(snapshot.timestamp)
-                          .utc()
-                          .format('MMMM DD, YYYY, HH:mm')}`}</Typography>
+                        )} ${dayjs(snapshot.timestamp).format(
+                          'MMMM DD, YYYY, HH:mm',
+                        )}`}</Typography>
                       </Stack>
                     }
                   ></ListItemText>

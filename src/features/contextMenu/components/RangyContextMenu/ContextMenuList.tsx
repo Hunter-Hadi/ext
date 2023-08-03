@@ -20,6 +20,7 @@ import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 // import Browser  from 'webextension-polyfill'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import { contextMenu } from 'react-contexify'
+import { useTranslation } from 'react-i18next'
 
 const ContextMenuContext = React.createContext<{
   staticButton?: boolean
@@ -30,9 +31,17 @@ const ContextMenuContext = React.createContext<{
 const ShortCutsButtonItem: FC<{
   menuItem: IContextMenuItemWithChildren
 }> = ({ menuItem }) => {
+  const { t } = useTranslation(['prompt'])
   const contextMenuContext = useContext(ContextMenuContext)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   const [running, setRunning] = useState(false)
+  const menuItemI18nText = useMemo(() => {
+    const key: any = `prompt:${menuItem.id}`
+    if (t(key) !== menuItem.id) {
+      return t(key)
+    }
+    return menuItem.text
+  }, [menuItem, t])
   useEffect(() => {
     if (running) {
       const actions = menuItem.data.actions
@@ -105,7 +114,7 @@ const ShortCutsButtonItem: FC<{
                 whiteSpace: 'nowrap',
               }}
             >
-              {menuItem.text}
+              {menuItemI18nText}
             </Typography>
           </Stack>
         }
@@ -183,7 +192,7 @@ const ShortCutsButtonItem: FC<{
               whiteSpace: 'nowrap',
             }}
           >
-            {menuItem.text}
+            {menuItemI18nText}
           </Typography>
         </Stack>
       </PermissionWrapper>
@@ -194,6 +203,14 @@ const ShortCutsButtonItem: FC<{
 const ShortCutsGroup: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
   menuItem,
 }) => {
+  const { t } = useTranslation(['prompt'])
+  const menuItemI18nText = useMemo(() => {
+    const key: any = `prompt:${menuItem.id}`
+    if (t(key) !== menuItem.id) {
+      return t(key)
+    }
+    return menuItem.text
+  }, [menuItem, t])
   return (
     <Stack>
       <Stack direction={'row'} alignItems={'center'}>
@@ -214,7 +231,7 @@ const ShortCutsGroup: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
             whiteSpace: 'nowrap',
           }}
         >
-          {menuItem.text}
+          {menuItemI18nText}
         </Typography>
       </Stack>
       {menuItem.children?.map((childMenuItem) => {

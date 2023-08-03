@@ -400,6 +400,9 @@ const ContextMenuSettings: FC<{
           <ContextMenuMockTextarea
             defaultValue={inputValue}
             onChange={setInputValue}
+            placeholder={t(
+              'feature_card__prompts__edit_prompt__mock_input__placeholder',
+            )}
           />
           <Box
             sx={{

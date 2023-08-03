@@ -9,8 +9,8 @@ import pkg from 'gpt-3-encoder'
 const { encode } = pkg
 const debug = false
 
-const maxModelTokens = 16000 // 4k
-const maxResponseTokens = 12000 // 3k
+const maxModelTokens = 16000 // 16k
+const maxResponseTokens = 12000 // 10k
 
 const getTextTokens = (text) => {
   try {
@@ -32,6 +32,7 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
         temperature: 0.2,
         top_p: 0.1,
       },
+      timeoutMs: 2 * 60 * 1000,
       systemMessage: 'You are a helpful assistant.',
       maxResponseTokens,
       maxModelTokens,
@@ -59,8 +60,22 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
       try {
         data = JSON.parse(jsonText.replace(/^\n?```\n?|\n?```\n?$/g, ''))
       } catch (e) {
-        console.error(logPrefix + '解析失败 prompt: \t', prompt)
-        console.error(logPrefix + '解析失败: \t', jsonText, '\n', res)
+        // 写入本地日志
+        const errorLogFilePath = join(__dirname, 'error.update_i18n.log')
+        // 如果文件不存在，创建文件
+        if (!fs.existsSync(errorLogFilePath)) {
+          fs.writeFileSync(errorLogFilePath, '')
+        }
+        fs.appendFileSync(
+          errorLogFilePath,
+          `${logPrefix} ${new Date().toISOString()} start ======\n 
+${logPrefix} 解析失败 prompt: \n ${prompt}\n
+${logPrefix} 解析失败 json: \n ${jsonText}\n 
+解析失败: \t ${res}\n\n
+${logPrefix} ${new Date().toISOString()} end ======\n`,
+        )
+        debug && console.error(logPrefix + '解析失败 prompt: \t', prompt)
+        debug && console.error(logPrefix + '解析失败: \t', jsonText, '\n', res)
       }
     }
     if (data) {
@@ -77,9 +92,12 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
     } else {
       if (times < 3) {
         console.log(logPrefix + '第' + times + '次请求失败，重试')
-        await new Promise((resolve) => setTimeout(resolve, 3000))
+        // 随机等待10s-20s
+        const waitTime = Math.floor(Math.random() * 10) + 10
+        await new Promise((resolve) => setTimeout(resolve, waitTime * 1000))
         return await runTranslate(prompt, times + 1)
       } else {
+        console.log(logPrefix + '第' + times + '次请求失败，结束请求')
         return {
           data: null,
           usage: 0,
@@ -105,7 +123,7 @@ Do not include any extra words that's not part of the JSON result in your answer
 Do not add any markdown to indicate that the JSON is a "json code". Just output the JSON itself.
 JSON object:
 \`\`\`
-${JSON.stringify(translateJson)}
+${JSON.stringify(translateJson, null, 2)}
 \`\`\`
 `
   // max 5 times
@@ -242,137 +260,153 @@ const updateI18nJson = async (
   let totalUsage = 0
   let finallyLogs = []
   let errorLanguages = []
-  for (let i = 0; i < needUpdateLanguages.length; i++) {
-    const dirName = needUpdateLanguages[i].name
-    const { en_label: languageName } = LANGUAGE_CODE_MAP[dirName]
-    if (!languageName) {
-      console.log(`[${dirName}]语言包不存在`)
-      errorLanguages.push(dirName)
-      continue
-    }
-    let removeUnusedKeyCount = 0
-    let modifyKeyCount = 0
-    let addKeyCount = 0
-    console.log(
-      `开始处理[${languageName}]语言包, ${
-        forceUpdate ? '[强制更新]' : '[增量更新]'
-      }`,
-    )
-    // 查找diff keys
-    const currentLanguageJson = JSON.parse(
-      fs.readFileSync(join(jsonDir, `/${dirName}/index.json`), 'utf-8'),
-    )
-    const currentLanguageKeyPaths = generateKeyPathFromObject(
-      currentLanguageJson,
-    ).filter((key) => !BLACK_LIST_KEYS.includes(key))
-    // remove unused keys
-    currentLanguageKeyPaths.forEach((keyPath) => {
-      if (!sourceJsonKeyPaths.includes(keyPath)) {
-        removeUnusedKeyCount++
-        _.unset(currentLanguageJson, keyPath)
-      }
-    })
-    const loopKeys = updateKeys.length ? updateKeys : sourceJsonKeyPaths
-    const needTranslateJsonList = []
-    let partOfNeedTranslateJson = {}
-    // 因为gpt3翻译有长度限制，所以需要分批处理
-    // 所以需要控制prompt的长度为ai回复的1/4比较稳定 => maxResponseTokens/3
-    // system prompt差不多300
-    const partMaxToken = (maxResponseTokens / 4 - 300)
-    for (let updateKey of loopKeys) {
-      debug && console.log(`开始处理: [${updateKey}]`)
-      if (updateKeys.length && !updateKeys.includes(updateKey)) {
-        debug && console.log(`跳过: [${updateKey}]`)
-        continue
-      }
-      const sourceValue = _.get(sourceJson, updateKey)
-      const currentValue = _.get(currentLanguageJson, updateKey)
-      let needTranslate = false
-      if (currentValue) {
-        if (forceUpdate) {
-          modifyKeyCount++
-          needTranslate = true
-          debug && console.log(`强制更新: [${updateKey}]`)
-        }
-      } else {
-        addKeyCount++
-        needTranslate = true
-        debug && console.log(`新增: [${updateKey}]`)
-      }
-      if (needTranslate) {
-        // 到目前为止，需要翻译的内容的token数量
-        const partOfNeedTranslateJsonTokens = getTextTokens(
-          JSON.stringify(partOfNeedTranslateJson),
-        ).length
-        // 新增需要翻译的内容的token数量
-        const currentValueTokens = getTextTokens(JSON.stringify({
-          [updateKey]: sourceValue,
-        })).length
-        // 如果当前需要翻译的内容的token数量 + 新增需要翻译的内容的token数量 > partMaxToken， 则需要分批处理
-        if (partOfNeedTranslateJsonTokens + currentValueTokens > partMaxToken) {
-          needTranslateJsonList.push(partOfNeedTranslateJson)
-          partOfNeedTranslateJson = {}
-        }
-        _.set(partOfNeedTranslateJson, updateKey, sourceValue)
-      }
-    }
-    if (Object.keys(partOfNeedTranslateJson).length > 0) {
-      needTranslateJsonList.push(partOfNeedTranslateJson)
-    }
-    console.log('需要翻译的i18n片段数量: ', needTranslateJsonList.length)
-    let mergedJson = _.cloneDeep(currentLanguageJson)
-    let translateHasError = false
-    let percentRate = 0
-    let successCount = 0
-    // 翻译, 每次并发10个
-    const maxConcurrency = 10
-    const translatedJsonData = []
-    for (let i = 0; i < needTranslateJsonList.length; i += maxConcurrency) {
-      const partNeedTranslateJsonList = needTranslateJsonList.slice(
-        i,
-        i + maxConcurrency,
-      )
-      translatedJsonData.push(
-        ...(await Promise.all(
-          partNeedTranslateJsonList.map(async (needTranslateJson, index) => {
-            debug && console.log(needTranslateJson)
-            const { data, success, usage } = await translateValue(
-              needTranslateJson,
-              'English',
-              languageName,
-              `i18n-${dirName}-part-${index} => `
-            )
-            // 只要有一段翻译失败，就不更新
-            if (!success) {
-              translateHasError = true
-            }
-            totalUsage += usage
-            successCount++
-            percentRate = Math.floor(
-              (successCount / needTranslateJsonList.length) * 100,
-            )
-            console.log(`[${percentRate}%]: 片段 [${index+i}] 翻译成功`)
-            return data
-          }),
-        )),
-      )
-      if (translateHasError) {
+  await Promise.all(
+    needUpdateLanguages.map(async ({ name }) => {
+      const dirName = name
+      const { en_label: languageName } = LANGUAGE_CODE_MAP[dirName]
+      if (!languageName) {
+        console.log(`[${dirName}]语言包不存在`)
         errorLanguages.push(dirName)
-        continue
+        return
       }
-    }
-    // merge
-    translatedJsonData.forEach((data) => {
-      mergedJson = _.merge(mergedJson, data)
-    })
-    fs.writeFileSync(
-      join(jsonDir, `/${dirName}/index.json`),
-      JSON.stringify(mergedJson, null, 2),
-    )
-    const log = `[${languageName}]语言包处理完成, 新增${addKeyCount}个字段, 修改${modifyKeyCount}个字段, 移除${removeUnusedKeyCount}个字段`
-    console.log(log)
-    finallyLogs.push(log)
-  }
+      let removeUnusedKeyCount = 0
+      let modifyKeyCount = 0
+      let addKeyCount = 0
+      console.log(
+        `开始处理[${languageName}]语言包, ${
+          forceUpdate ? '[强制更新]' : '[增量更新]'
+        }`,
+      )
+      // 查找diff keys
+      const currentLanguageJson = JSON.parse(
+        fs.readFileSync(join(jsonDir, `/${dirName}/index.json`), 'utf-8'),
+      )
+      const currentLanguageKeyPaths = generateKeyPathFromObject(
+        currentLanguageJson,
+      ).filter((key) => !BLACK_LIST_KEYS.includes(key))
+      // remove unused keys
+      currentLanguageKeyPaths.forEach((keyPath) => {
+        if (!sourceJsonKeyPaths.includes(keyPath)) {
+          removeUnusedKeyCount++
+          _.unset(currentLanguageJson, keyPath)
+        }
+      })
+      const loopKeys = updateKeys.length ? updateKeys : sourceJsonKeyPaths
+      const needTranslateJsonList = []
+      let partOfNeedTranslateJson = {}
+      // 因为gpt3翻译有长度限制，所以需要分批处理
+      // 所以需要控制prompt的长度为ai回复的1/4比较稳定 => maxResponseTokens/4
+      // system prompt差不多300
+      const partMaxToken = maxResponseTokens / 4 - 300
+      for (let updateKey of loopKeys) {
+        debug && console.log(`开始处理: [${updateKey}]`)
+        if (updateKeys.length && !updateKeys.includes(updateKey)) {
+          debug && console.log(`跳过: [${updateKey}]`)
+          continue
+        }
+        const sourceValue = _.get(sourceJson, updateKey)
+        const currentValue = _.get(currentLanguageJson, updateKey)
+        let needTranslate = false
+        if (currentValue) {
+          if (forceUpdate) {
+            modifyKeyCount++
+            needTranslate = true
+            debug && console.log(`强制更新: [${updateKey}]`)
+          }
+        } else {
+          addKeyCount++
+          needTranslate = true
+          debug && console.log(`新增: [${updateKey}]`)
+        }
+        if (needTranslate) {
+          // 到目前为止，需要翻译的内容的token数量
+          const partOfNeedTranslateJsonTokens = getTextTokens(
+            JSON.stringify(partOfNeedTranslateJson, null, 2),
+          ).length
+          // 新增需要翻译的内容的token数量
+          const currentValueTokens = getTextTokens(
+            JSON.stringify(
+              {
+                [updateKey]: sourceValue,
+              },
+              null,
+              2,
+            ),
+          ).length
+          // 如果当前需要翻译的内容的token数量 + 新增需要翻译的内容的token数量 > partMaxToken， 则需要分批处理
+          if (
+            partOfNeedTranslateJsonTokens + currentValueTokens >
+            partMaxToken
+          ) {
+            needTranslateJsonList.push(partOfNeedTranslateJson)
+            partOfNeedTranslateJson = {}
+          }
+          _.set(partOfNeedTranslateJson, updateKey, sourceValue)
+        }
+      }
+      if (Object.keys(partOfNeedTranslateJson).length > 0) {
+        needTranslateJsonList.push(partOfNeedTranslateJson)
+      }
+      console.log('需要翻译的i18n片段数量: ', needTranslateJsonList.length)
+      let mergedJson = _.cloneDeep(currentLanguageJson)
+      let translateHasError = false
+      let percentRate = 0
+      let successCount = 0
+      // 翻译, 每次并发10个
+      const maxConcurrency = 10
+      const translatedJsonData = []
+      for (let i = 0; i < needTranslateJsonList.length; i += maxConcurrency) {
+        const partNeedTranslateJsonList = needTranslateJsonList.slice(
+          i,
+          i + maxConcurrency,
+        )
+        translatedJsonData.push(
+          ...(await Promise.all(
+            partNeedTranslateJsonList.map(async (needTranslateJson, index) => {
+              debug && console.log(needTranslateJson)
+              const { data, success, usage } = await translateValue(
+                needTranslateJson,
+                'English',
+                languageName,
+                `i18n-${languageName}-part-${index} => `,
+              )
+              // 只要有一段翻译失败，就不更新
+              if (!success) {
+                translateHasError = true
+                return null
+              }
+              totalUsage += usage
+              successCount++
+              percentRate = Math.floor(
+                (successCount / needTranslateJsonList.length) * 100,
+              )
+              console.log(
+                `i18n-${languageName}-part-${index} => [${percentRate}%]: 片段 [${
+                  index + i
+                }] 翻译成功`,
+              )
+              return data
+            }),
+          )),
+        )
+        if (translateHasError) {
+          errorLanguages.push(dirName)
+          return
+        }
+      }
+      // merge
+      translatedJsonData.forEach((data) => {
+        mergedJson = _.merge(mergedJson, data)
+      })
+      fs.writeFileSync(
+        join(jsonDir, `/${dirName}/index.json`),
+        JSON.stringify(mergedJson, null, 2),
+      )
+      const log = `[${languageName}]语言包处理完成, 新增${addKeyCount}个字段, 修改${modifyKeyCount}个字段, 移除${removeUnusedKeyCount}个字段`
+      console.log(log)
+      finallyLogs.push(log)
+    }),
+  )
   console.log('==================================')
   finallyLogs.forEach((log) => console.log(log))
   console.log(
@@ -504,7 +538,50 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = []
-  const retryLanguageCodes = []
+  const retryLanguageCodes = [
+    'th',
+    'sl',
+    'nl',
+    'mr',
+    'no',
+    'ro',
+    'sk',
+    'sr',
+    'fi',
+    'fr',
+    'hu',
+    'lv',
+    'pt_BR',
+    'he_IL',
+    'id',
+    'ms',
+    'it',
+    'in',
+    'hr',
+    'pl',
+    'lt',
+    'kn',
+    'et',
+    'ml',
+    'es_419',
+    'fil',
+    'de',
+    'cs',
+    'da',
+    'ca',
+    'pt_PT',
+    'ko',
+    'bg',
+    'ru',
+    'ar',
+    'he',
+    'fa',
+    'el',
+    'hi',
+    'gu',
+    'am',
+    'te',
+  ]
   await updateKeys(keys, false, retryLanguageCodes)
 }
 

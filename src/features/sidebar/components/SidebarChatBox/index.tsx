@@ -9,7 +9,7 @@ import { SxProps } from '@mui/material/styles'
 import CachedIcon from '@mui/icons-material/Cached'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 // import SendIcon from '@mui/icons-material/Send'
-import BlockIcon from '@mui/icons-material/Block'
+import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/sidebar/store'
@@ -377,7 +377,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 sx={{ mb: 1 }}
                 disableElevation
                 variant={'outlined'}
-                startIcon={<BlockIcon />}
+                startIcon={<StopOutlinedIcon />}
                 onClick={() => {
                   onStopGenerate && onStopGenerate()
                 }}

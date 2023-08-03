@@ -90,3 +90,7 @@ export const OPENAI_IFRAME_ID = `${APP_ENV}_OPENAI_IFRAME_ID`
 export const CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH = 450
 
 export const RELEASE_LOG_URL = 'https://twitter.com/MaxAI_HQ'
+
+// context menu search text generate save key
+export const CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY =
+  'CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY'

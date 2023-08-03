@@ -18,6 +18,7 @@ import {
 } from '@/features/contextMenu/constants'
 import { getAppContextMenuRootElement, getAppRootElement } from '@/utils'
 import { getMediator } from '@/store/InputMediator'
+import { ContextMenuSearchTextStoreI18nStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 
 export const groupByContextMenuItem = (
   items: IContextMenuItem[],
@@ -255,6 +256,7 @@ export const computedRectPosition = (rect: IRangyRect, rate = 0.8) => {
 export const fuzzySearchContextMenuList = (
   data: IContextMenuItem[],
   query: string,
+  contextMenuSearchTextStore?: ContextMenuSearchTextStoreI18nStore,
 ) => {
   const queryText = query.toLowerCase().trim()
   const queryWords = queryText.split(/\s+/).filter(Boolean)
@@ -263,10 +265,13 @@ export const fuzzySearchContextMenuList = (
       const {
         data: { searchText },
       } = item
-      if (!searchText) {
+      const currentSearchText =
+        contextMenuSearchTextStore?.[item.id] || searchText
+      if (!currentSearchText) {
         return false
       }
-      const searchWords = searchText.split(/\s/)
+      console.log('currentSearchText', currentSearchText)
+      const searchWords = currentSearchText.split(/\s/)
       let found = true
       for (const queryWord of queryWords) {
         const searchWordIndex = searchWords.findIndex((word) =>

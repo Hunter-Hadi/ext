@@ -35,6 +35,8 @@ import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
+import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
+import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -515,6 +517,10 @@ export const chromeExtensionLogout = async () => {
   await Browser.storage.local.remove(
     CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
   )
+  // 清空本地own prompts快照
+  await removeAllChromeExtensionSettingsSnapshot()
+  // 清空本地i18n language
+  await clearContextMenuSearchTextStore()
 }
 
 /**

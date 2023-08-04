@@ -228,6 +228,7 @@ const ClickContextMenuButton: FC<{
             }}
             title={t('client:floating_menu__button__cta__tooltip')}
             className={'usechatgpt-ai__context-menu--handle-button'}
+            id={'max_ai__floating_context_menu__cta_button'}
             size={'small'}
             variant={'text'}
             onMouseUp={(event) => {

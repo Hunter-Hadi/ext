@@ -5,7 +5,7 @@ import { APP_VERSION, RELEASE_LOG_URL } from '@/constants'
 import Link from '@mui/material/Link'
 
 const SidebarChatBoxReleaseLog: FC = () => {
-  const ReleaseLogText = `Use Claude-2-100K via Claude.ai`
+  const ReleaseLogText = `Experience GPT-4 with MaxAI Pro`
   return (
     <Typography
       width={'100%'}

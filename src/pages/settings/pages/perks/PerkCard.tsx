@@ -51,10 +51,9 @@ const PerkCard: FC<{
           component={'a'}
           href={buttonLink}
           sx={{
-            width: isUpSm ? 240 : '100%',
+            width: isUpSm ? 280 : '100%',
             mt: 2,
             fontSize: '16px',
-            height: '40px',
             fontWeight: 600,
           }}
         >

@@ -177,7 +177,7 @@ const ChatGPTApiSettings: FC = () => {
             href={'https://platform.openai.com/account/api-keys'}
             target={'_blank'}
             rel={'noreferrer noopener nofollow'}
-            sx={{ width: 280 }}
+            sx={{ width: 320 }}
             variant={'contained'}
             endIcon={<OpenInNewOutlined />}
           >

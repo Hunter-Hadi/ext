@@ -45,6 +45,9 @@ import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 import Stack from '@mui/material/Stack'
 import { useTranslation } from 'react-i18next'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { getMediator } from '@/store/InputMediator'
+import { getAppContextMenuRootElement } from '@/utils'
+import { ROOT_FLOATING_INPUT_ID } from '@/constants'
 
 interface LiteDropdownMenuItemProps {
   label?: string
@@ -677,6 +680,34 @@ export const MenuComponent = React.forwardRef<
                         onClick(event) {
                           child.props.onClick?.(event)
                           tree?.events.emit('click')
+                        },
+                        onKeyDownCapture(event) {
+                          // 如果不是方向键，不处理
+                          if (
+                            ![
+                              'ArrowUp',
+                              'ArrowDown',
+                              'ArrowLeft',
+                              'ArrowRight',
+                            ].includes(event.key)
+                          ) {
+                            event.stopPropagation()
+                            event.preventDefault()
+                            const textareaEl =
+                              getAppContextMenuRootElement()?.querySelector(
+                                `#${ROOT_FLOATING_INPUT_ID}`,
+                              ) as HTMLTextAreaElement
+                            const floatingContextMenuInput =
+                              getAppContextMenuRootElement()?.querySelector(
+                                '.floating-context-menu-input',
+                              )
+                            const oldValue = getMediator(
+                              'floatingMenuInputMediator',
+                            ).getInputValue()
+                            getMediator(
+                              'floatingMenuInputMediator',
+                            ).updateInputValue(oldValue + event.key)
+                          }
                         },
                         // Allow focus synchronization if the cursor did not move.
                         onMouseEnter() {

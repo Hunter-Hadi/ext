@@ -284,12 +284,12 @@ const FloatingContextMenu: FC<{
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
       if (textareaEl) {
-        setTimeout(() => {
-          textareaEl?.focus()
-          setTimeout(() => {
-            textareaEl?.focus()
-          }, 4)
-        }, 4)
+        // setTimeout(() => {
+        //   textareaEl?.focus()
+        //   setTimeout(() => {
+        //     textareaEl?.focus()
+        //   }, 4)
+        // }, 4)
       }
     }
   }, [

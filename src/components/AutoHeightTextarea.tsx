@@ -22,6 +22,7 @@ import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { ChatGPTConversationState } from '@/features/sidebar'
+import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -172,6 +173,11 @@ const AutoHeightTextarea: FC<{
     expandNode,
     sx,
   } = props
+  const { isError } = useChatInputMaxTokens(
+    ROOT_FLOATING_INPUT_ID === InputId
+      ? 'floatingMenuInputMediator'
+      : 'chatBoxInputMediator',
+  )
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const onCompositionRef = useRef(false)
   const nextMessageIsActionRef = useRef(false)
@@ -195,9 +201,6 @@ const AutoHeightTextarea: FC<{
     )
     return [childrenHeightRef.current, expandHeightRef.current]
   }
-  const isError = useMemo(() => {
-    return inputValue.length > 4000
-  }, [inputValue])
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       const value = e.target.value

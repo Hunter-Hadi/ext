@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useMemo, useRef } from 'react'
+import React, { FC, useEffect, useState, useRef } from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
@@ -13,29 +13,20 @@ import { FloatingInputButton } from '@/features/contextMenu/components/FloatingC
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import TooltipButton from '@/components/TooltipButton'
 import { useTranslation } from 'react-i18next'
-
-// const MAX_NORMAL_INPUT_LENGTH = 10000
-// const MAX_GPT4_INPUT_LENGTH = 80000
+import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
   const { t } = useTranslation(['common', 'client'])
+  const { currentMaxInputLength, isError } = useChatInputMaxTokens(
+    'chatBoxInputMediator',
+  )
   const [inputValue, setInputValue] = useState('')
   const conversation = useRecoilValue(ChatGPTConversationState)
   const ref = React.useRef<HTMLElement>(null)
   const nextMessageIsActionRef = useRef(false)
-  const currentMaxInputLength = useMemo(() => {
-    // NOTE: GPT-4 最大输入长度为 80000，GPT-3 最大输入长度为 10000, 我们后端最多6000，所以这里写死4000
-    return 4000
-    // return conversation.model === 'gpt-4'
-    //   ? MAX_GPT4_INPUT_LENGTH
-    //   : MAX_NORMAL_INPUT_LENGTH
-  }, [])
-  const isGmailChatBoxError = useMemo(() => {
-    return inputValue.length > currentMaxInputLength
-  }, [inputValue, currentMaxInputLength])
   const metaDataRef = useRef<any>({})
   useEffect(() => {
     const handleInputUpdate = (newInputValue: string, metaData: any) => {
@@ -70,7 +61,7 @@ const SidebarChatBoxInputActions: FC<{
     >
       <Typography
         component={'span'}
-        color={isGmailChatBoxError ? 'rgb(239, 83, 80)' : 'text.secondary'}
+        color={isError ? 'rgb(239, 83, 80)' : 'text.secondary'}
         fontSize={12}
         // 用等宽字体，不然会左右闪烁宽度
         fontFamily={'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'}

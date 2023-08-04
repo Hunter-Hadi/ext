@@ -3,6 +3,7 @@
  * @since - 2023-07-18
  */
 import { IAIProviderModel } from '@/features/chatgpt/types'
+import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export const BARD_MODELS: IAIProviderModel[] = [
@@ -10,10 +11,17 @@ export const BARD_MODELS: IAIProviderModel[] = [
     title: 'PaLM 2',
     titleTag: '',
     value: 'PaLM 2',
-    // 因为Google并没有官方说明
-    maxTokens: -1,
+    maxTokens: 8192,
     tags: [],
     descriptions: [
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(8192, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
+      },
       {
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),

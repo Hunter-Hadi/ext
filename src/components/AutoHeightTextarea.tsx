@@ -448,32 +448,48 @@ const AutoHeightTextarea: FC<{
             event.stopPropagation()
           }}
           // onKeyDownCapture={(event) => {
+          //   console.log('测试键盘 onKeyDownCapture', event)
           //   if (stopPropagation) {
           //     event.stopPropagation()
           //   }
           // }}
           // onKeyUpCapture={(event) => {
+          //   console.log('测试键盘 onKeyUpCapture', event)
+          //   if (stopPropagation) {
+          //     event.stopPropagation()
+          //   }
+          // }}
+          // onKeyPressCapture={(event) => {
+          //   console.log('测试键盘 onKeyPressCapture', event)
           //   if (stopPropagation) {
           //     event.stopPropagation()
           //   }
           // }}
           onKeyUp={(event) => {
+            console.log('测试键盘 onKeyUp', event)
             if (stopPropagation) {
               event.stopPropagation()
             }
           }}
           onKeyPress={(event) => {
+            console.log('测试键盘 onKeyPress', event)
             if (stopPropagation) {
               event.stopPropagation()
             }
           }}
-          // onKeyPressCapture={(event) => {
-          //   if (stopPropagation) {
-          //     event.stopPropagation()
-          //   }
-          // }}
           onKeyDown={(event) => {
+            console.log('测试键盘 onKeyDown', event)
             if (stopPropagation) {
+              // 如果是方向键或者esc键，不阻止冒泡
+              if (
+                event.key === 'ArrowUp' ||
+                event.key === 'ArrowDown' ||
+                event.key === 'ArrowLeft' ||
+                event.key === 'ArrowRight' ||
+                event.key === 'Escape'
+              ) {
+                return
+              }
               event.stopPropagation()
             }
             if (onCompositionRef.current) {
@@ -503,19 +519,44 @@ const AutoHeightTextarea: FC<{
               ...computedChildrenHeight('click'),
             )
           }}
+          onCompositionUpdate={(event) => {
+            console.log('测试键盘 onCompositionUpdate', event)
+            if (stopPropagation) {
+              event.stopPropagation()
+            }
+          }}
           onCompositionStart={(event) => {
+            console.log('测试键盘 onCompositionStart', event)
             if (stopPropagation) {
               event.stopPropagation()
             }
             onCompositionRef.current = true
           }}
           onCompositionEnd={(event) => {
+            console.log('测试键盘 onCompositionEnd', event)
             if (stopPropagation) {
               event.stopPropagation()
             }
             onCompositionRef.current = false
+            handleChange(event as any)
           }}
-          onInput={handleChange}
+          onInput={(event) => {
+            if (stopPropagation) {
+              event.stopPropagation()
+            }
+            if (onCompositionRef.current) {
+              console.log(
+                '测试键盘 onInput 中文输入法',
+                event.currentTarget.value,
+                event,
+              )
+              // 中文输入法下，不触发 onInput
+              setInputValue(event.currentTarget.value)
+            } else {
+              console.log('测试键盘 onInput', event.currentTarget.value, event)
+              handleChange(event as any)
+            }
+          }}
           onBlur={(event) => {
             throttleAutoSizeTextarea(
               event.currentTarget,

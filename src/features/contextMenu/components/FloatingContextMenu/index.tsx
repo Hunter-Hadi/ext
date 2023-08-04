@@ -240,7 +240,7 @@ const FloatingContextMenu: FC<{
   }, [floatingDropdownMenu.rootRect])
   // 更新最后hover的contextMenuId
   useEffect(() => {
-    if (contextMenuList.length > 0) {
+    if (floatingDropdownMenu.open && contextMenuList.length > 0) {
       let firstMenuItem: null | IContextMenuItemWithChildren = null
       contextMenuList.find((menuItem) => {
         if (menuItem.data.type === 'group') {
@@ -267,7 +267,30 @@ const FloatingContextMenu: FC<{
         })
       }
     }
-  }, [contextMenuList])
+  }, [contextMenuList, floatingDropdownMenu.open])
+  useEffect(() => {
+    if (
+      floatingDropdownMenu.open &&
+      floatingDropdownMenuSelectedItem.lastHoverContextMenuId
+    ) {
+      // 说明focus element在context menu
+      console.log('测试 修改foucs')
+      const textareaEl = getAppContextMenuRootElement()?.querySelector(
+        `#${ROOT_FLOATING_INPUT_ID}`,
+      ) as HTMLTextAreaElement
+      if (textareaEl) {
+        setTimeout(() => {
+          textareaEl?.focus()
+          setTimeout(() => {
+            textareaEl?.focus()
+          }, 4)
+        }, 4)
+      }
+    }
+  }, [
+    floatingDropdownMenuSelectedItem.lastHoverContextMenuId,
+    floatingDropdownMenu.open,
+  ])
   /** 打开/关闭floating dropdown menu
    * @version 1.0 - 打开 dropdown menu:
    *    1. 自动focus
@@ -592,29 +615,33 @@ const FloatingContextMenu: FC<{
           maxWidth: '90vw',
         }}
         onKeyDown={(event) => {
+          // console.log('测试div', event.key)
+          // event.stopPropagation()
+          // // event.preventDefault()
+          // if (event.key.indexOf('Arrow') === -1) {
+          //   focusInput(event as any)
+          // }
+          // if (event.key === 'Escape') {
+          //   setFloatingDropdownMenu({
+          //     open: false,
+          //     rootRect: null,
+          //   })
+          //   setFloatingDropdownMenuLastFocusRange((prevState) => {
+          //     if (prevState.range) {
+          //       setTimeout(() => {
+          //         window.getSelection()?.removeAllRanges()
+          //         window.getSelection()?.addRange(prevState.range!)
+          //       }, 100)
+          //     }
+          //     return {
+          //       range: null,
+          //     }
+          //   })
+          // }
+          // console.log(event.key)
+        }}
+        onKeyUp={(event) => {
           event.stopPropagation()
-          // event.preventDefault()
-          if (event.key.indexOf('Arrow') === -1) {
-            focusInput(event as any)
-          }
-          if (event.key === 'Escape') {
-            setFloatingDropdownMenu({
-              open: false,
-              rootRect: null,
-            })
-            setFloatingDropdownMenuLastFocusRange((prevState) => {
-              if (prevState.range) {
-                setTimeout(() => {
-                  window.getSelection()?.removeAllRanges()
-                  window.getSelection()?.addRange(prevState.range!)
-                }, 100)
-              }
-              return {
-                range: null,
-              }
-            })
-          }
-          console.log(event.key)
         }}
         id={ROOT_FLOATING_REFERENCE_ELEMENT_ID}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
@@ -699,7 +726,6 @@ const FloatingContextMenu: FC<{
                       placeholder={t(
                         'client:floating_menu__input__placeholder',
                       )}
-                      stopPropagation={false}
                       InputId={ROOT_FLOATING_INPUT_ID}
                       sx={{
                         border: 'none',

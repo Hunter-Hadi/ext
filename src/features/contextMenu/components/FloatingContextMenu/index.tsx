@@ -268,11 +268,16 @@ const FloatingContextMenu: FC<{
       }
     }
   }, [contextMenuList, floatingDropdownMenu.open])
+  const oneTimesFocus = useRef(false)
   useEffect(() => {
     if (
       floatingDropdownMenu.open &&
       floatingDropdownMenuSelectedItem.lastHoverContextMenuId
     ) {
+      if (oneTimesFocus.current) {
+        return
+      }
+      oneTimesFocus.current = true
       // 说明focus element在context menu
       console.log('测试 修改foucs')
       const textareaEl = getAppContextMenuRootElement()?.querySelector(
@@ -325,19 +330,6 @@ const FloatingContextMenu: FC<{
     }
     console.log('AIInput remove', floatingDropdownMenu.open)
   }, [floatingDropdownMenu.open])
-  const focusInput = (event: KeyboardEvent) => {
-    if (floatingDropdownMenu.open) {
-      const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${ROOT_FLOATING_INPUT_ID}`,
-      ) as HTMLTextAreaElement
-      if (textareaEl) {
-        textareaEl?.focus()
-        setTimeout(() => {
-          textareaEl?.focus()
-        }, 1)
-      }
-    }
-  }
   const askChatGPT = (inputValue: string) => {
     if (inputValue.trim()) {
       const draft = floatingContextMenuDraft.draft

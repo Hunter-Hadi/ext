@@ -28,7 +28,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/material/styles'
 
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo } from 'react'
 import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
@@ -415,8 +415,6 @@ export const MenuComponent = React.forwardRef<
     })
     const role = useRole(context, { role: 'menu' })
     const dismiss = useDismiss(context)
-    // 最后一次按下的键盘事件
-    const lastKeydownEvent = useRef<React.KeyboardEvent | null>(null)
     const listNavigation = useListNavigation(context, {
       listRef: listItemsRef,
       activeIndex,
@@ -425,93 +423,48 @@ export const MenuComponent = React.forwardRef<
         if (index === activeIndex) {
           return
         }
-        const keydownKey = lastKeydownEvent.current?.key
-        if (keydownKey) {
-          console.log(`[${nodeId}]onNavigate---[current]\n${keydownKey}`)
-          // index === null 代表失去焦点了:
-          // 1. input被focus会触发, 所以index没有实际意义
-          // 过滤不是contextMenu的选项
-          const contextMenuIdList: Array<{
-            contextMenuId: string
-            contextMenuIndex: number
-          }> = []
-          listItemsRef.current?.forEach((item, index) => {
-            const contextMenuId = item?.getAttribute('data-id')
-            if (!contextMenuId) {
-              return
-            }
-            contextMenuIdList.push({
-              contextMenuId,
-              contextMenuIndex: index,
-            })
-          })
+        if (index === null) {
           updateHoverMenuId((prev) => {
-            const lastHoverContextMenuId = prev.lastHoverContextMenuId
-            const currentIndex = contextMenuIdList.findIndex(
-              (item) => item.contextMenuId === lastHoverContextMenuId,
-            )
-            // 如果按的是左右的方向键
-            if (keydownKey === 'ArrowRight' || keydownKey === 'ArrowLeft') {
-              // 如果 当前面板找不到最后hover的contextMenuId并且有index, 说明是按方向键切换面板了
-              if (currentIndex === -1 && index !== null) {
-                const nextContextMenuItem =
-                  contextMenuIdList[index] || contextMenuIdList[0]
-                setActiveIndex(nextContextMenuItem.contextMenuIndex)
-                return {
-                  ...prev,
-                  lastHoverContextMenuId: nextContextMenuItem.contextMenuId,
-                }
-              }
+            return {
+              ...prev,
+              hoverContextMenuIdMap: {
+                ...prev.hoverContextMenuIdMap,
+                [nodeId || '']: '',
+              },
             }
-            if (currentIndex === -1) {
-              return prev
-            }
-            // console.log(
-            //   `[${nodeId}]onNavigate---[current]\n`,
-            //   `[floatinguiIndex=${index}]`,
-            //   `[自己酸的=${currentIndex}]`,
-            //   lastHoverContextMenuId,
-            //   contextMenuIdList,
-            // )
-            if (currentIndex === index) {
-              return prev
-            }
-            let nextContextMenuItem: {
-              contextMenuId: string
-              contextMenuIndex: number
-            } | null = null
-            if (keydownKey === 'ArrowDown') {
-              // 寻找下一个，如果是最后一个，回到开头
-              if (contextMenuIdList[currentIndex + 1]) {
-                nextContextMenuItem = contextMenuIdList[currentIndex + 1]
-              } else {
-                nextContextMenuItem = contextMenuIdList[0]
-              }
-            } else if (keydownKey === 'ArrowUp') {
-              // 寻找上一个，如果是第一个，回到最后
-              if (contextMenuIdList[currentIndex - 1]) {
-                nextContextMenuItem = contextMenuIdList[currentIndex - 1]
-              } else {
-                nextContextMenuItem =
-                  contextMenuIdList[contextMenuIdList.length - 1]
-              }
-            }
-            if (nextContextMenuItem) {
-              // console.log(
-              //   `[${nodeId}]onNavigate---[next]\n`,
-              //   keydownKey,
-              //   nextContextMenuItem.contextMenuIndex,
-              //   nextContextMenuItem.contextMenuId,
-              // )
-              setActiveIndex(nextContextMenuItem.contextMenuIndex)
-              return {
-                ...prev,
-                lastHoverContextMenuId: nextContextMenuItem.contextMenuId,
-              }
-            }
-            return prev
           })
-          lastKeydownEvent.current = null
+          console.log(
+            nodeId,
+            index,
+            parentId,
+            listNavigation,
+            'onNavigateonNavigateonNavigate',
+          )
+          setActiveIndex(index)
+        } else {
+          console.log(
+            nodeId,
+            index,
+            parentId,
+            listNavigation,
+            'onNavigateonNavigateonNavigate',
+          )
+          const hoverId =
+            listItemsRef.current?.[index]?.getAttribute('data-id') || null
+          if (!hoverId) {
+            return
+          }
+          updateHoverMenuId((prev) => {
+            return {
+              ...prev,
+              lastHoverContextMenuId: hoverId,
+              hoverContextMenuIdMap: {
+                ...prev.hoverContextMenuIdMap,
+                [nodeId || '']: hoverId,
+              },
+            }
+          })
+          setActiveIndex(index)
         }
       },
       loop: true,
@@ -593,11 +546,6 @@ export const MenuComponent = React.forwardRef<
                   child?.key ===
                   floatingDropdownMenuSelectedItem.lastHoverContextMenuId,
               )
-              console.log(
-                '纯纯粹粹',
-                lastHoverIndex,
-                floatingDropdownMenuSelectedItem.lastHoverContextMenuId,
-              )
               if (lastHoverIndex !== -1 && prevState === null) {
                 console.log(
                   'findChildrenIndexWithKey',
@@ -628,29 +576,6 @@ export const MenuComponent = React.forwardRef<
               className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
               onClick(event) {
                 event.stopPropagation()
-              },
-              onKeyDownCapture(event) {
-                console.log(`[${nodeId}]onNavigate---[onKeyDownCapture]\n`)
-                if (
-                  event.key === 'ArrowLeft' ||
-                  (event.key === 'ArrowRight' && activeIndex !== null)
-                ) {
-                  const el = listItemsRef.current[activeIndex]
-                  if (el) {
-                    // focus 自身
-                    el.focus()
-                    // 触发event
-                    el.dispatchEvent(
-                      new KeyboardEvent('keydown', {
-                        key: event.key,
-                        bubbles: true,
-                        cancelable: true,
-                      }),
-                    )
-                  }
-                  return
-                }
-                lastKeydownEvent.current = event
               },
               ...(isNested && {
                 // Indicates this is a nested <Menu /> acting as a <MenuItem />.

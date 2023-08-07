@@ -78,6 +78,13 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   ...props
 }) => {
   const [selectValue, setSelectValue] = useState(defaultValue || '')
+  const [open, setOpen] = React.useState(false)
+  const handleClose = () => {
+    setOpen(false)
+  }
+  const handleOpen = () => {
+    setOpen(true)
+  }
   const isEmptyDataCache = useMemo(() => {
     return !hasData(options) && !loading
   }, [options, loading])
@@ -144,6 +151,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
                   onChange(
                     ...findCurrentOption(options, option.value as string),
                   )
+                handleClose()
               }}
             >
               {renderDom(option.value, option, index)}
@@ -182,6 +190,9 @@ const BaseSelect: FC<IBaseSelectProps> = ({
         </InputLabel>
       )}
       <Select
+        open={open}
+        onClose={handleClose}
+        onOpen={handleOpen}
         label={label}
         sx={{
           // bgcolor: 'background.paper',

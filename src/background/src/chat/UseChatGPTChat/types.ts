@@ -1,5 +1,6 @@
 // @docs - https://platform.openai.com/docs/models/gpt-4
 import { IAIProviderModel } from '@/features/chatgpt/types'
+import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import dayjs from 'dayjs'
 
@@ -11,10 +12,14 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     maxTokens: 4096,
     tags: [],
     descriptions: [
-      // {
-      //   label: (t) => t('client:provider__model__tooltip_card__label__max_token'),
-      //   value: `${numberWithCommas(4096, 0)} tokens`,
-      // },
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(4096, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
+      },
       {
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
@@ -36,6 +41,14 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     descriptions: [
       {
         label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(8192, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
+      },
+      {
+        label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
         value: (t) => t(`client:provider__chatgpt__model__gpt_4__description`),
       },
@@ -52,6 +65,14 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     maxTokens: 16384,
     tags: [],
     descriptions: [
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(16384, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
+      },
       {
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),

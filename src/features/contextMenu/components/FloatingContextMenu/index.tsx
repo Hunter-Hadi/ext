@@ -607,30 +607,24 @@ const FloatingContextMenu: FC<{
           maxWidth: '90vw',
         }}
         onKeyDown={(event) => {
-          // console.log('测试div', event.key)
-          // event.stopPropagation()
-          // // event.preventDefault()
-          // if (event.key.indexOf('Arrow') === -1) {
-          //   focusInput(event as any)
-          // }
-          // if (event.key === 'Escape') {
-          //   setFloatingDropdownMenu({
-          //     open: false,
-          //     rootRect: null,
-          //   })
-          //   setFloatingDropdownMenuLastFocusRange((prevState) => {
-          //     if (prevState.range) {
-          //       setTimeout(() => {
-          //         window.getSelection()?.removeAllRanges()
-          //         window.getSelection()?.addRange(prevState.range!)
-          //       }, 100)
-          //     }
-          //     return {
-          //       range: null,
-          //     }
-          //   })
-          // }
-          // console.log(event.key)
+          if (event.key === 'Escape') {
+            setFloatingDropdownMenu({
+              open: false,
+              rootRect: null,
+            })
+            setFloatingDropdownMenuLastFocusRange((prevState) => {
+              if (prevState.range) {
+                setTimeout(() => {
+                  window.getSelection()?.removeAllRanges()
+                  window.getSelection()?.addRange(prevState.range!)
+                }, 100)
+              }
+              return {
+                range: null,
+              }
+            })
+          }
+          console.log(event.key)
         }}
         onKeyUp={(event) => {
           event.stopPropagation()

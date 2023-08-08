@@ -12,6 +12,7 @@ import {
 } from '@/constants'
 import AppThemeProvider from '@/components/AppTheme'
 import Browser from 'webextension-polyfill'
+import { getCurrentDomainHost } from '@/utils'
 // import createCache from '@emotion/cache'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
@@ -78,10 +79,16 @@ a.chatgpt-ad {
       isSupportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
     )
     contextMenu.id = ROOT_CONTEXT_MENU_ID
+    if (getCurrentDomainHost() === 'youtube.com') {
+      contextMenu.contentEditable = 'true'
+    }
     document.body.appendChild(contextMenu)
     const container = document.createElement(
       isSupportWebComponent ? 'use-chat-gpt-ai' : 'div',
     )
+    if (getCurrentDomainHost() === 'youtube.com') {
+      container.contentEditable = 'true'
+    }
     container.id = ROOT_CONTAINER_ID
     container.style.display = 'none'
     document.body.appendChild(container)

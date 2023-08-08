@@ -9,9 +9,22 @@ import Drawer from '@mui/material/Drawer'
 import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { useTranslation } from 'react-i18next'
+import { useMediaQuery } from '@mui/material'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
+import {
+  APP_USE_CHAT_GPT_HOST,
+  CHROME_EXTENSION_HOMEPAGE_URL,
+  isEzMailApp,
+} from '@/constants'
+import Link from '@mui/material/Link'
 
 const OptionsToolbarLogo: FC = () => {
+  const { t } = useTranslation(['settings', 'common', 'client'])
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const theme = useCustomTheme()
+  const isDownMd = useMediaQuery(theme.customTheme.breakpoints.down('md'))
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -26,40 +39,80 @@ const OptionsToolbarLogo: FC = () => {
   return (
     <React.Fragment>
       <Stack direction={'row'} alignItems={'center'} spacing={1}>
-        <Box component={'span'}>
-          <UseChatGptIcon
+        {!isDownMd ? (
+          <Link
             sx={{
-              display: {
-                xs: 'none',
-                md: 'inline-flex',
-              },
-              fontSize: 32,
+              textDecoration: 'none!important',
             }}
-          />
-          <IconButton
-            onClick={(event) => {
-              event.stopPropagation()
-              event.preventDefault()
-              toggleDrawer(true)(event)
-            }}
-            sx={{
-              display: {
-                xs: 'inline-flex',
-                md: 'none',
-              },
-            }}
+            href={
+              isEzMailApp
+                ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
+                : APP_USE_CHAT_GPT_HOST
+            }
+            target={'_blank'}
           >
-            <ContextMenuIcon
+            <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <Box component={'span'}>
+                  <UseChatGptIcon
+                    sx={{
+                      fontSize: 32,
+                    }}
+                  />
+                </Box>
+                <Typography
+                  fontSize={20}
+                  fontWeight={700}
+                  color={'text.primary'}
+                >
+                  MaxAI.me
+                </Typography>
+              </Stack>
+            </TextOnlyTooltip>
+          </Link>
+        ) : (
+          <Stack direction={'row'} alignItems={'center'} spacing={1}>
+            <Box component={'span'}>
+              <IconButton
+                onClick={(event) => {
+                  event.stopPropagation()
+                  event.preventDefault()
+                  toggleDrawer(true)(event)
+                }}
+              >
+                <ContextMenuIcon
+                  sx={{
+                    fontSize: 24,
+                  }}
+                  icon={'Menu'}
+                />
+              </IconButton>
+            </Box>
+            <Link
               sx={{
-                fontSize: 24,
+                textDecoration: 'none!important',
               }}
-              icon={'Menu'}
-            />
-          </IconButton>
-        </Box>
-        <Typography fontSize={20} fontWeight={700} color={'text.primary'}>
-          MaxAI.me
-        </Typography>
+              href={
+                isEzMailApp
+                  ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
+                  : APP_USE_CHAT_GPT_HOST
+              }
+              target={'_blank'}
+            >
+              <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
+                <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                  <Typography
+                    fontSize={20}
+                    fontWeight={700}
+                    color={'text.primary'}
+                  >
+                    MaxAI.me
+                  </Typography>
+                </Stack>
+              </TextOnlyTooltip>
+            </Link>
+          </Stack>
+        )}
         <AuthUserRoleIconDropdown />
       </Stack>
       <Drawer anchor={'left'} open={drawerOpen} onClose={toggleDrawer(false)}>
@@ -83,14 +136,36 @@ const OptionsToolbarLogo: FC = () => {
             }}
           >
             <Stack direction={'row'} alignItems={'center'} spacing={1}>
-              <UseChatGptIcon
+              <Link
                 sx={{
-                  fontSize: 32,
+                  textDecoration: 'none!important',
                 }}
-              />
-              <Typography fontSize={20} fontWeight={700} color={'text.primary'}>
-                MaxAI.me
-              </Typography>
+                href={
+                  isEzMailApp
+                    ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
+                    : APP_USE_CHAT_GPT_HOST
+                }
+                target={'_blank'}
+              >
+                <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
+                  <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                    <Box component={'span'}>
+                      <UseChatGptIcon
+                        sx={{
+                          fontSize: 32,
+                        }}
+                      />
+                    </Box>
+                    <Typography
+                      fontSize={20}
+                      fontWeight={700}
+                      color={'text.primary'}
+                    >
+                      MaxAI.me
+                    </Typography>
+                  </Stack>
+                </TextOnlyTooltip>
+              </Link>
               <AuthUserRoleIconDropdown />
             </Stack>
           </Stack>

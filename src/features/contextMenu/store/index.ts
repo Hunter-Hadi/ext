@@ -49,10 +49,12 @@ export const FloatingDropdownMenuState = atom<{
 
 export const FloatingDropdownMenuLastFocusRangeState = atom<{
   range: Range | null
+  selectionText: string | null
 }>({
   key: 'FloatingDropdownMenuLastFocusRangeState',
   default: {
     range: null,
+    selectionText: null,
   },
 })
 

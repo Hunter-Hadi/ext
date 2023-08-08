@@ -1,3 +1,6 @@
+/**
+ * @description menu只能触发左右，不能触发上下，menuitem可以触发上下
+ */
 import * as React from 'react'
 import {
   useFloating,
@@ -405,7 +408,7 @@ export const MenuComponent = React.forwardRef<
       whileElementsMounted: needAutoUpdate ? autoUpdate : undefined,
     })
     const hover = useHover(context, {
-      enabled: (isNested || hoverOpen) && allowHover,
+      enabled: hoverOpen && allowHover && isNested,
       delay: { open: 75 },
       handleClose: safePolygon({
         restMs: 25,
@@ -437,6 +440,15 @@ export const MenuComponent = React.forwardRef<
         const isRootText = !parentId ? '[根级]' : `[子级]`
         const keydownKey = lastKeydownEvent.current?.key
         if (keydownKey) {
+          // 是否用户触摸的是contextMenu
+          let isHoverContextMenu = false
+          let hoverContextMenuItem: FloatingUIDropdownItemDetail | null = null
+          if (lastHoverDropdownMenuItemRef.current) {
+            isHoverContextMenu = true
+            hoverContextMenuItem = getFloatingUIDropdownItemDetail(
+              lastHoverDropdownMenuItemRef.current,
+            )
+          }
           console.log(
             `${isRootText}[${nodeId}]onNavigate---[keydownKey]: ${keydownKey}`,
           )
@@ -458,10 +470,14 @@ export const MenuComponent = React.forwardRef<
             })
           })
           setFloatingDropdownMenuSelectedItem((prev) => {
-            const lastHoverContextMenuId =
+            let lastHoverContextMenuId =
               prev.hoverContextMenuIdMap[nodeId] ||
               prev.lastHoverContextMenuId ||
               ''
+            // 如果是hover的contextMenu, 则使用hover的contextMenuId
+            if (isHoverContextMenu && hoverContextMenuItem?.contextMenuId) {
+              lastHoverContextMenuId = hoverContextMenuItem.contextMenuId
+            }
             let currentIndex = contextMenuIdList.findIndex(
               (item) => item.contextMenuId === lastHoverContextMenuId,
             )
@@ -508,6 +524,7 @@ export const MenuComponent = React.forwardRef<
             // 如果按的是上下的方向键
             // 是否是用户按下左方向键回退面板
             let isKeydownArrowLeftBack = false
+
             const keydownArrowLeftBackSelectItem = lastKeydownEvent.current
               ?.target as HTMLDivElement
             const keydownArrowLeftBackSelectId =
@@ -538,8 +555,9 @@ export const MenuComponent = React.forwardRef<
               contextMenuIndex: number
             } | null = null
             if (keydownKey === 'ArrowDown') {
-              if (isKeydownArrowLeftBack) {
+              if (isKeydownArrowLeftBack || isHoverContextMenu) {
                 // 因为是通过arrow down触发回退的，所以不需要加1
+                // 因为是通过hover触发的，所以不需要加1
                 nextContextMenuItem = contextMenuIdList[currentIndex]
               } else {
                 // 寻找下一个，如果是最后一个，回到开头
@@ -679,6 +697,7 @@ export const MenuComponent = React.forwardRef<
     }, [floatingDropdownMenuSelectedItem.lastHoverContextMenuId, children])
     const referenceRef = useMergeRefs([refs.setReference, forwardedRef])
     const lastParentDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
+    const lastHoverDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const handleExecuteActions = useCallback(() => {
       const lastHoverId =
         floatingDropdownMenuSelectedItem.lastHoverContextMenuId
@@ -723,6 +742,7 @@ export const MenuComponent = React.forwardRef<
                   event.key === 'ArrowLeft' ||
                   event.key === 'ArrowRight'
                 ) {
+                  lastHoverDropdownMenuItemRef.current = null
                   console.log(
                     `${
                       !parentId ? `[根级]` : `[子级]`
@@ -735,7 +755,7 @@ export const MenuComponent = React.forwardRef<
                       const nodeDetail = getFloatingUIDropdownItemDetail(
                         lastParentDropdownMenuItemRef.current,
                       )
-                      if (nodeDetail?.parentDropdownItem) {
+                      if (nodeDetail?.parentDropdownSelectedItem) {
                         // 这一步是为了让floating ui的focus节点还原
                         // focus 自身
                         nodeDetail.dropdownSelectedItem!.focus()
@@ -748,23 +768,26 @@ export const MenuComponent = React.forwardRef<
                           }),
                         )
                         // 因为通过keydownEvent来决定触发的时机，所以得让parentItem也触发一次keydown
-                        if (nodeDetail.parentDropdownItem && nodeDetail.id) {
-                          nodeDetail.parentDropdownItem!.setAttribute(
+                        if (
+                          nodeDetail.parentDropdownSelectedItem &&
+                          nodeDetail.id
+                        ) {
+                          nodeDetail.parentDropdownSelectedItem!.setAttribute(
                             'data-lastid',
                             nodeDetail.id,
                           )
-                          nodeDetail.parentDropdownItem!.focus()
+                          nodeDetail.parentDropdownSelectedItem!.focus()
                           if (
-                            nodeDetail.parentDropdownItem.classList.contains(
+                            nodeDetail.parentDropdownSelectedItem.classList.contains(
                               'RootMenu',
                             )
                           ) {
                             lastParentDropdownMenuItemRef.current = null
                           } else {
                             lastParentDropdownMenuItemRef.current =
-                              nodeDetail.parentDropdownItem
+                              nodeDetail.parentDropdownSelectedItem
                           }
-                          nodeDetail.parentDropdownItem!.dispatchEvent(
+                          nodeDetail.parentDropdownSelectedItem!.dispatchEvent(
                             new KeyboardEvent('keydown', {
                               key: 'ArrowDown',
                               bubbles: true,
@@ -950,17 +973,129 @@ export const MenuComponent = React.forwardRef<
                           tree?.events.emit('click')
                         },
                         onKeyDownCapture(event) {
-                          console.log(
-                            `[${nodeId}]onNavigate---[onKeyDownCapture children]\n`,
-                            referenceElement,
-                            listItemsRef.current,
-                          )
                           lastKeydownEvent.current = event
                         },
                         // Allow focus synchronization if the cursor did not move.
-                        onMouseEnter() {
-                          if (allowHover && isOpen && child.props?.menuItem) {
-                            setActiveIndex(index)
+                        onMouseEnter(event) {
+                          event.stopPropagation()
+                          event.preventDefault()
+                          const target = event.currentTarget as HTMLDivElement
+                          if (target.getAttribute('data-id')) {
+                            lastParentDropdownMenuItemRef.current = target
+                            const nodeDetail =
+                              getFloatingUIDropdownItemDetail(target)
+                            if (nodeDetail?.id || nodeDetail?.contextMenuId) {
+                              // 关闭开着的group
+                              if (nodeDetail.expandedSiblingMenuItem) {
+                                // 如果是同一个group，不关闭
+                                if (
+                                  nodeDetail.expandedSiblingMenuItem?.getAttribute(
+                                    'data-id',
+                                  ) === nodeDetail.contextMenuId
+                                ) {
+                                  return
+                                }
+                                const expandDropdownItemDetail =
+                                  getFloatingUIDropdownItemDetail(
+                                    nodeDetail.expandedSiblingMenuItem,
+                                  )
+                                if (
+                                  expandDropdownItemDetail?.dropdownSelectedItem
+                                ) {
+                                  console.log(
+                                    `${nodeId}onNavigate---[onMouseEnter][关闭组]`,
+                                  )
+                                  // 关闭开着的group
+                                  const mockKeydownEvent = new KeyboardEvent(
+                                    'keydown',
+                                    {
+                                      key: 'ArrowLeft',
+                                      bubbles: true,
+                                      cancelable: true,
+                                    },
+                                  )
+                                  lastHoverDropdownMenuItemRef.current =
+                                    expandDropdownItemDetail.dropdownSelectedItem
+                                  expandDropdownItemDetail.dropdownSelectedItem.focus()
+                                  expandDropdownItemDetail.dropdownSelectedItem.dispatchEvent(
+                                    mockKeydownEvent,
+                                  )
+                                  // 原本的menu也需要触发一次keydown
+                                  nodeDetail.expandedSiblingMenuItem.setAttribute(
+                                    'data-lastid',
+                                    nodeDetail.contextMenuId,
+                                  )
+                                  if (
+                                    nodeDetail.expandedSiblingMenuItem.classList.contains(
+                                      'RootMenu',
+                                    )
+                                  ) {
+                                    lastParentDropdownMenuItemRef.current = null
+                                  } else {
+                                    lastParentDropdownMenuItemRef.current =
+                                      expandDropdownItemDetail.parentDropdownSelectedItem
+                                  }
+                                  nodeDetail.expandedSiblingMenuItem.focus()
+                                  nodeDetail.expandedSiblingMenuItem.dispatchEvent(
+                                    new KeyboardEvent('keydown', {
+                                      key: 'ArrowDown',
+                                      bubbles: true,
+                                      cancelable: true,
+                                    }),
+                                  )
+                                }
+                              }
+                            }
+                            // 这是group
+                            if (nodeDetail?.id) {
+                              console.log(
+                                `${nodeId}onNavigate---[onMouseEnter][打开组]`,
+                              )
+                              // 这是item
+                              // mock keydown event
+                              const mockKeydownEvent = new KeyboardEvent(
+                                'keydown',
+                                {
+                                  key: 'ArrowDown',
+                                  bubbles: true,
+                                  cancelable: true,
+                                },
+                              )
+                              lastHoverDropdownMenuItemRef.current = target
+                              // 触发event
+                              nodeDetail.keydownEmitElement?.dispatchEvent(
+                                mockKeydownEvent,
+                              )
+                              // mock keydown event
+                              const mockKeyRightEvent = new KeyboardEvent(
+                                'keydown',
+                                {
+                                  key: 'ArrowRight',
+                                  bubbles: true,
+                                  cancelable: true,
+                                },
+                              )
+                              lastHoverDropdownMenuItemRef.current = target
+                              // 触发event
+                              target.dispatchEvent(mockKeyRightEvent)
+                            } else if (nodeDetail?.contextMenuId) {
+                              console.log(
+                                `${nodeId}onNavigate---[onMouseEnter][打开item]`,
+                              )
+                              // 这是item
+                              // mock keydown event
+                              const mockKeydownEvent = new KeyboardEvent(
+                                'keydown',
+                                {
+                                  key: 'ArrowDown',
+                                  bubbles: true,
+                                  cancelable: true,
+                                },
+                              )
+                              lastHoverDropdownMenuItemRef.current = target
+                              // 触发event
+                              target.dispatchEvent(mockKeydownEvent)
+                            }
                           }
                         },
                       }),
@@ -991,18 +1126,33 @@ export const DropdownMenu = React.forwardRef<
   return <MenuComponent {...props} ref={ref} />
 })
 
+type FloatingUIDropdownItemDetail = {
+  id: string
+  contextMenuId: string
+  isMenu: boolean
+  parentDropdownSelectedItem: HTMLDivElement | null
+  parentDropdown: HTMLDivElement | null
+  dropdownMenu: HTMLDivElement | null
+  dropdownSelectedItem: HTMLDivElement | null
+  keydownEmitElement: HTMLDivElement | null
+  expandedSiblingMenuItem: HTMLDivElement | null
+}
+
 // 下面的方法都是为了找floating ui的层级关系
-const getFloatingUIDropdownItemDetail = (node: HTMLDivElement) => {
+const getFloatingUIDropdownItemDetail = (
+  node: HTMLDivElement,
+): FloatingUIDropdownItemDetail | null => {
   const root = getAppContextMenuRootElement() as HTMLDivElement
   if (!node || !root) {
     return null
   }
-  const id = node.getAttribute('id')?.replace(/:/g, '\\:')
-  const isMenu = node.getAttribute('role') === 'menu'
-  const parentDropdownItem = root.querySelector(
+  const id = node.getAttribute('id')?.replace(/:/g, '\\:') || ''
+  const contextMenuId = node.getAttribute('data-id') || ''
+  const isMenu = node.getAttribute('aria-haspopup') === 'menu'
+  const parentDropdownSelectedItem = root.querySelector(
     `div[aria-haspopup="menu"][aria-activedescendant="${id}"]`,
   ) as HTMLDivElement
-  const parentDropdownId = parentDropdownItem
+  const parentDropdownId = parentDropdownSelectedItem
     ?.getAttribute('aria-controls')
     ?.replace(/:/g, '\\:')
   const parentDropdown = parentDropdownId
@@ -1028,12 +1178,21 @@ const getFloatingUIDropdownItemDetail = (node: HTMLDivElement) => {
       ) as HTMLDivElement
     }
   }
+  const keydownEmitElement = node.parentElement?.querySelector(
+    `.floating-context-menu-item:not([aria-haspopup="menu"]`,
+  ) as HTMLDivElement
+  const expandedSiblingMenuItem = node.parentElement?.querySelector(
+    `.floating-context-menu-item[aria-expanded="true"]`,
+  ) as HTMLDivElement
   return {
     id,
+    contextMenuId,
     isMenu,
-    parentDropdownItem,
+    parentDropdownSelectedItem,
     parentDropdown,
     dropdownMenu,
     dropdownSelectedItem,
+    keydownEmitElement,
+    expandedSiblingMenuItem,
   }
 }

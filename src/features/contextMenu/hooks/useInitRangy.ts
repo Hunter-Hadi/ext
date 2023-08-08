@@ -364,6 +364,7 @@ const useInitRangy = () => {
               ?.cloneRange()
             setFloatingDropdownMenuLastFocusRange({
               range: lastFocusRange || null,
+              selectionText: window?.getSelection()?.toString() || '',
             })
           }
           const { command } = data
@@ -528,9 +529,31 @@ const useInitRangy = () => {
     if (!floatingDropdownMenu.open) {
       setFloatingDropdownMenuLastFocusRange((prevState) => {
         if (prevState.range) {
-          debugger
           window.getSelection()?.removeAllRanges()
           window.getSelection()?.addRange(prevState.range)
+          const el = getSelectionBoundaryElement()
+          if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) {
+            const inputEl = el as HTMLInputElement
+            const startIndex = inputEl.value.indexOf(
+              prevState.selectionText || '',
+            )
+            const endIndex = startIndex + (prevState.selectionText || '').length
+            inputEl.focus()
+            inputEl.setSelectionRange(startIndex, endIndex)
+          }
+          setTimeout(() => {
+            // mock space keyup
+            const keyupEvent = new KeyboardEvent('keyup', {
+              key: ' ',
+              code: 'Space',
+              location: 0,
+              bubbles: true,
+              cancelable: true,
+              shiftKey: false,
+            })
+            ;(el || document.body).focus()
+            ;(el || document.body).dispatchEvent(keyupEvent)
+          }, 0)
         }
         return {
           ...prevState,

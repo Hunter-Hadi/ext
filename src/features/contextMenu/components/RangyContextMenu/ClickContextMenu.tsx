@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useCallback, useEffect, useMemo } from 'react'
 import { useRangy } from '@/features/contextMenu/hooks'
 
 import { flip, offset, shift, useFloating } from '@floating-ui/react'
@@ -27,18 +27,25 @@ import TooltipButton from '@/components/TooltipButton'
 import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
 import Box from '@mui/material/Box'
 import { useTranslation } from 'react-i18next'
+import {
+  removeAllRange,
+  removeAllSelectionMarker,
+} from '@/features/contextMenu/utils/selectionHelper'
+import { ChatGPTConversationState } from '@/features/sidebar'
+import { isShowChatBox } from '@/utils'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
   const { t } = useTranslation(['common', 'client'])
-  const { tempSelection, show } = useRangy()
+  const { tempSelection, show, hideRangy } = useRangy()
   const { chatBoxShortCutKey } = useCommands()
   const textSelectPopupButtonSettings =
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
   )
+  const conversation = useRecoilValue(ChatGPTConversationState)
   // 保存打开floatingMenu前最后的选区
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,
@@ -145,6 +152,35 @@ const ClickContextMenuButton: FC<{
       })
     }
   }, [tempSelection, memoShow])
+  const handleCloseClickContextMenuButton = useCallback(() => {
+    if (refs.floating.current) {
+      if (getComputedStyle(refs.floating.current).opacity === '0') {
+        return
+      }
+      hideRangy()
+      removeAllSelectionMarker()
+      removeAllRange()
+    }
+  }, [])
+  useEffect(() => {
+    // listen doc esc
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleCloseClickContextMenuButton()
+      }
+    }
+    document.addEventListener('keydown', handleEsc, true)
+    return () => {
+      document.removeEventListener('keydown', handleEsc, true)
+    }
+  }, [])
+  useEffect(() => {
+    if (!conversation.loading) {
+      if (isShowChatBox()) {
+        handleCloseClickContextMenuButton()
+      }
+    }
+  }, [conversation.loading])
   return (
     <Paper
       elevation={3}
@@ -255,6 +291,7 @@ const ClickContextMenuButton: FC<{
                   ?.cloneRange()
                 setFloatingDropdownMenuLastFocusRange({
                   range: lastFocusRange || null,
+                  selectionText: window?.getSelection()?.toString() || '',
                 })
               }
               tempSelection && showFloatingContextMenu()

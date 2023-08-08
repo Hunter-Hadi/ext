@@ -65,7 +65,9 @@ const useInitRangy = () => {
   const appSettings = useRecoilValue(AppSettingsState)
   const userSettings = appSettings.userSettings
   const { chatBoxShortCutKey } = useCommands()
-  const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
+  const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
+    FloatingDropdownMenuState,
+  )
   const [, setFloatingContextMenuDraft] = useRecoilState(
     FloatingContextMenuDraftState,
   )
@@ -128,17 +130,6 @@ const useInitRangy = () => {
             hideRangy()
             removeAllSelectionMarker()
             removeAllRange()
-            setFloatingDropdownMenuLastFocusRange((prevState) => {
-              if (prevState.range) {
-                setTimeout(() => {
-                  window.getSelection()?.removeAllRanges()
-                  window.getSelection()?.addRange(prevState.range!)
-                }, 100)
-              }
-              return {
-                range: null,
-              }
-            })
             return
           }
         }
@@ -533,6 +524,21 @@ const useInitRangy = () => {
         break
     }
   }, [floatingDropdownMenuSystemItems.selectContextMenuId])
+  useEffect(() => {
+    if (!floatingDropdownMenu.open) {
+      setFloatingDropdownMenuLastFocusRange((prevState) => {
+        if (prevState.range) {
+          debugger
+          window.getSelection()?.removeAllRanges()
+          window.getSelection()?.addRange(prevState.range)
+        }
+        return {
+          ...prevState,
+          range: null,
+        }
+      })
+    }
+  }, [floatingDropdownMenu.open])
 }
 
 export default useInitRangy

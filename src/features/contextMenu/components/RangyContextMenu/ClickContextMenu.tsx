@@ -12,6 +12,7 @@ import {
 } from '@/features/contextMenu/utils'
 import {
   ContextMenuSettingsState,
+  FloatingDropdownMenuLastFocusRangeState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
@@ -37,6 +38,10 @@ const ClickContextMenuButton: FC<{
     useComputedChromeExtensionButtonSettings('textSelectPopupButton')
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
+  )
+  // 保存打开floatingMenu前最后的选区
+  const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
+    FloatingDropdownMenuLastFocusRangeState,
   )
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
@@ -242,6 +247,16 @@ const ClickContextMenuButton: FC<{
             onClick={(event: any) => {
               event.stopPropagation()
               event.preventDefault()
+              const selectionCount = window.getSelection()?.rangeCount
+              if (selectionCount && selectionCount > 0) {
+                const lastFocusRange = window
+                  .getSelection()
+                  ?.getRangeAt(0)
+                  ?.cloneRange()
+                setFloatingDropdownMenuLastFocusRange({
+                  range: lastFocusRange || null,
+                })
+              }
               tempSelection && showFloatingContextMenu()
             }}
           >

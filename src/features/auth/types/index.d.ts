@@ -16,4 +16,5 @@ export type IUseChatGPTUserInfo = {
   referral_code: string
   referred_cnt: null | number
   created_at: string
+  roles: IUserRole[]
 }

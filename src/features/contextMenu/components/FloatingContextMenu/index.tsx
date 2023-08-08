@@ -11,7 +11,6 @@ import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import {
   FloatingContextMenuDraftState,
-  FloatingDropdownMenuLastFocusRangeState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -85,10 +84,6 @@ const FloatingContextMenu: FC<{
   const setAppSettings = useSetRecoilState(AppSettingsState)
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
-  )
-  // 打开floatingMenu前最后的选区
-  const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
-    FloatingDropdownMenuLastFocusRangeState,
   )
   const [floatingContextMenuDraft, setFloatingContextMenuDraft] =
     useRecoilState(FloatingContextMenuDraftState)
@@ -240,9 +235,9 @@ const FloatingContextMenu: FC<{
   }, [floatingDropdownMenu.rootRect])
   // 更新最后hover的contextMenuId
   useEffect(() => {
-    if (floatingDropdownMenu.open && contextMenuList.length > 0) {
+    if (floatingDropdownMenu.open && memoMenuList.length > 0) {
       let firstMenuItem: null | IContextMenuItemWithChildren = null
-      contextMenuList.find((menuItem) => {
+      memoMenuList.find((menuItem) => {
         if (menuItem.data.type === 'group') {
           if (menuItem.children.length > 0) {
             firstMenuItem =
@@ -267,7 +262,7 @@ const FloatingContextMenu: FC<{
         })
       }
     }
-  }, [contextMenuList, floatingDropdownMenu.open])
+  }, [memoMenuList, floatingDropdownMenu.open])
   const oneTimesFocus = useRef(false)
   useEffect(() => {
     if (
@@ -605,26 +600,6 @@ const FloatingContextMenu: FC<{
           left: x ?? 0,
           width: currentWidth,
           maxWidth: '90vw',
-        }}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') {
-            setFloatingDropdownMenu({
-              open: false,
-              rootRect: null,
-            })
-            setFloatingDropdownMenuLastFocusRange((prevState) => {
-              if (prevState.range) {
-                setTimeout(() => {
-                  window.getSelection()?.removeAllRanges()
-                  window.getSelection()?.addRange(prevState.range!)
-                }, 100)
-              }
-              return {
-                range: null,
-              }
-            })
-          }
-          console.log(event.key)
         }}
         onKeyUp={(event) => {
           event.stopPropagation()

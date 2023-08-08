@@ -7,6 +7,7 @@ import { IUseChatGPTUserInfo, IUserRole } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import isArray from 'lodash-es/isArray'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import dayjs from 'dayjs'
 
 export const getChromeExtensionAccessToken = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
@@ -40,7 +41,7 @@ export const getChromeExtensionUserInfo = async (
         userData = await fetchUserInfo()
         isUpdated = true
       }
-      if (forceUpdate) {
+      if (forceUpdate || !userData.role) {
         userData.role = await fetchUserSubscriptionInfo()
         isUpdated = true
       }
@@ -110,6 +111,15 @@ export const fetchUserSubscriptionInfo = async (): Promise<
               )}`,
               {
                 uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+              },
+            )
+          }
+          if (role === 'pro' && dayjs().utc().diff(dayjs(role.exp_time)) > 0) {
+            sendLarkBotMessage(
+              '[API] error response roles',
+              `Pro token [${token}]\n${JSON.stringify(result?.data)}`,
+              {
+                uuid: '6f02f533-def6-4696-b14e-1b00c2d9a4df',
               },
             )
           }

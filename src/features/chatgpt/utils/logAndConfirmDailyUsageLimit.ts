@@ -78,13 +78,13 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       // next_reset_timestamp:1688515200
       if (body.data && body.status === 'OK') {
         console.log('logApiAndConfirmIsLimited api result', body.data)
-        // save to local storage
+        // 更新本地的缓存
         await setDailyUsageLimitData(body.data)
         // 更新用户的SubscriptionInfo
         if (body.data.has_reached_limit) {
           getChromeExtensionUserInfo(true).then().catch()
         }
-        // 如果没有达到限制，就返回true
+        // 如果没有达到限制，就返回false
         return body.data.has_reached_limit
       }
       return false

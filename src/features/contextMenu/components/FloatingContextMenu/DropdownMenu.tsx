@@ -28,7 +28,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/material/styles'
 
-import { useEffect, useMemo, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
@@ -351,8 +351,10 @@ export const MenuComponent = React.forwardRef<
     const nodeId = useFloatingNodeId()
     const parentId = useFloatingParentNodeId()
     const isFirstDeep = !parentId && zIndex === 2147483601
-    const [floatingDropdownMenuSelectedItem, updateHoverMenuId] =
-      useRecoilState(FloatingDropdownMenuSelectedItemState)
+    const [
+      floatingDropdownMenuSelectedItem,
+      setFloatingDropdownMenuSelectedItem,
+    ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
     const isNested = parentId != null
     const [isOpen, setIsOpen] = React.useState(
       customOpen ? referenceElementOpen : false,
@@ -438,8 +440,6 @@ export const MenuComponent = React.forwardRef<
           console.log(
             `${isRootText}[${nodeId}]onNavigate---[keydownKey]: ${keydownKey}`,
           )
-          // index === null 代表失去焦点了:
-          // 1. input被focus会触发, 所以index没有实际意义
           // 过滤不是contextMenu的选项
           const contextMenuIdList: Array<{
             floatingUIId?: string
@@ -457,7 +457,7 @@ export const MenuComponent = React.forwardRef<
               contextMenuIndex: index,
             })
           })
-          updateHoverMenuId((prev) => {
+          setFloatingDropdownMenuSelectedItem((prev) => {
             const lastHoverContextMenuId =
               prev.hoverContextMenuIdMap[nodeId] ||
               prev.lastHoverContextMenuId ||
@@ -679,6 +679,26 @@ export const MenuComponent = React.forwardRef<
     }, [floatingDropdownMenuSelectedItem.lastHoverContextMenuId, children])
     const referenceRef = useMergeRefs([refs.setReference, forwardedRef])
     const lastParentDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
+    const handleExecuteActions = useCallback(() => {
+      const lastHoverId =
+        floatingDropdownMenuSelectedItem.lastHoverContextMenuId
+      if (lastHoverId) {
+        const menuItem = getAppContextMenuRootElement()?.querySelector(
+          `[data-id="${lastHoverId}"]`,
+        ) as HTMLDivElement
+        if (menuItem) {
+          menuItem.dispatchEvent(
+            new KeyboardEvent('keydown', {
+              key: 'Enter',
+              bubbles: true,
+              cancelable: true,
+              code: 'Enter',
+              keyCode: 13,
+            }),
+          )
+        }
+      }
+    }, [floatingDropdownMenuSelectedItem])
     return (
       <FloatingNode id={nodeId}>
         {referenceElement ? (
@@ -691,6 +711,11 @@ export const MenuComponent = React.forwardRef<
                 event.stopPropagation()
               },
               onKeyDownCapture(event) {
+                // 如果是enter并且是根节点
+                if (event.key === 'Enter' && !parentId) {
+                  handleExecuteActions()
+                  return
+                }
                 // 如果是方向键
                 if (
                   event.key === 'ArrowDown' ||

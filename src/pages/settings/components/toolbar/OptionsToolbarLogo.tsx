@@ -8,10 +8,9 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Drawer from '@mui/material/Drawer'
 import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
-import { useTranslation } from 'react-i18next'
+import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 
 const OptionsToolbarLogo: FC = () => {
-  const { t } = useTranslation(['common'])
   const [drawerOpen, setDrawerOpen] = useState(false)
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -59,8 +58,9 @@ const OptionsToolbarLogo: FC = () => {
           </IconButton>
         </Box>
         <Typography fontSize={20} fontWeight={700} color={'text.primary'}>
-          MaxAI.me {t('common:settings')}
+          MaxAI.me
         </Typography>
+        <AuthUserRoleIconDropdown />
       </Stack>
       <Drawer anchor={'left'} open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box
@@ -89,8 +89,9 @@ const OptionsToolbarLogo: FC = () => {
                 }}
               />
               <Typography fontSize={20} fontWeight={700} color={'text.primary'}>
-                MaxAI.me {t('common:settings')}
+                MaxAI.me
               </Typography>
+              <AuthUserRoleIconDropdown />
             </Stack>
           </Stack>
           <OptionsLeftMenu />

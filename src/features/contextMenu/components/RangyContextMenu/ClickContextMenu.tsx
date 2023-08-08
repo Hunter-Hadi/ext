@@ -32,7 +32,6 @@ import {
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
 import { ChatGPTConversationState } from '@/features/sidebar'
-import { isShowChatBox } from '@/utils'
 
 const ClickContextMenuButton: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -175,10 +174,11 @@ const ClickContextMenuButton: FC<{
     }
   }, [])
   useEffect(() => {
-    if (!conversation.loading) {
-      if (isShowChatBox()) {
+    if (conversation.loading) {
+      setTimeout(() => {
         handleCloseClickContextMenuButton()
-      }
+      }, 1000)
+      handleCloseClickContextMenuButton()
     }
   }, [conversation.loading])
   return (

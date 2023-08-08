@@ -1179,7 +1179,7 @@ const getFloatingUIDropdownItemDetail = (
     }
   }
   const keydownEmitElement = node.parentElement?.querySelector(
-    `.floating-context-menu-item:not([aria-haspopup="menu"]`,
+    `.floating-context-menu-item:not([aria-haspopup="menu"])`,
   ) as HTMLDivElement
   const expandedSiblingMenuItem = node.parentElement?.querySelector(
     `.floating-context-menu-item[aria-expanded="true"]`,

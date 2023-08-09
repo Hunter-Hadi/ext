@@ -21,11 +21,12 @@ import Typography from '@mui/material/Typography'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Box from '@mui/material/Box'
-import { usePermissionCard } from '@/features/auth/components/PermissionWrapper'
 import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
 import { v4 as uuidV4 } from 'uuid'
 import LazyLoadImage from '@/components/LazyloadImage'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { usePermissionCard } from '@/features/auth'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {
@@ -41,6 +42,12 @@ const GmailActionRunner = () => {
   const showFloatingContextMenuRef = useRef(
     showFloatingContextMenuWithVirtualElement,
   )
+  const newDraftPermissionCard = usePermissionCard('GMAIL_DRAFT_BUTTON')
+  const replyPermissionCard = usePermissionCard('GMAIL_REPLY_BUTTON')
+  const permissionCardMemo = useMemo(() => {
+    const isDraftMessageType = messageType !== 'reply'
+    return isDraftMessageType ? newDraftPermissionCard : replyPermissionCard
+  }, [newDraftPermissionCard, replyPermissionCard, messageType])
   useEffect(() => {
     showFloatingContextMenuRef.current =
       showFloatingContextMenuWithVirtualElement
@@ -63,6 +70,7 @@ const GmailActionRunner = () => {
         const rect = (ctaButtonElement as HTMLElement).getBoundingClientRect()
         setVirtualElement(rect)
         setPopperAnchorEl(ctaButtonElement as HTMLElement)
+        authEmitPricingHooksLog('show', permissionCardMemo.sceneType)
         return
       }
       // if (emailElement) {
@@ -94,14 +102,7 @@ const GmailActionRunner = () => {
     return () => {
       window.removeEventListener('ctaButtonClick', ctaButtonAction)
     }
-  }, [currentUserPlan])
-
-  const newDraftPermissionCard = usePermissionCard('GMAIL_CTA_DRAFT_BUTTON')
-  const replyPermissionCard = usePermissionCard('GMAIL_CTA_REPLY_BUTTON')
-  const permissionCardMemo = useMemo(() => {
-    const isDraftMessageType = messageType !== 'reply'
-    return isDraftMessageType ? newDraftPermissionCard : replyPermissionCard
-  }, [newDraftPermissionCard, replyPermissionCard, messageType])
+  }, [currentUserPlan, permissionCardMemo])
 
   const executeShortCuts = useCallback(async () => {
     const gmailToolBarContextMenu = await getChromeExtensionButtonContextMenu(
@@ -233,6 +234,7 @@ const GmailActionRunner = () => {
                 href={permissionCardMemo.ctaButtonLink}
                 onClick={(event) => {
                   permissionCardMemo.ctaButtonOnClick?.(event)
+                  authEmitPricingHooksLog('click', permissionCardMemo.sceneType)
                   setPopperAnchorEl(null)
                   setTimeout(() => {
                     setVirtualElement(null)

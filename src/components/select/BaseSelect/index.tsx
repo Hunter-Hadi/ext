@@ -139,6 +139,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
               sx={{
                 ...labelProp,
               }}
+              selected={option.value === props.value}
               disabled={option.origin.disabled}
               value={option.value}
               onClick={(event) => {
@@ -178,7 +179,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
         </MenuItem>
       )
     })
-  }, [options, selectValue, renderDom])
+  }, [options, props.value, renderDom])
   return (
     <FormControl>
       {label && (

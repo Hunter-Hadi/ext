@@ -54,7 +54,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       },
     ],
     permission: {
-      sceneType: 'MAX_AI_PAID_MODEL_GPT4',
+      sceneType: 'MAXAI_PAID_MODEL_GPT4',
       roles: ['pro'],
     },
   },
@@ -81,7 +81,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       },
     ],
     permission: {
-      sceneType: 'MAX_AI_PAID_MODEL_GPT3_5_16K',
+      sceneType: 'MAXAI_PAID_MODEL_GPT3_5_16K',
       roles: ['pro'],
     },
   },

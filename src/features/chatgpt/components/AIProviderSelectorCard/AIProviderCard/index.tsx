@@ -27,7 +27,7 @@ const AIProviderCard: FC<{
       {aiProviderOption.value === 'USE_CHAT_GPT_PLUS' && (
         <OpenAIAPITemperatureSlider
           provider={'USE_CHAT_GPT_PLUS'}
-          authSceneType={'MAX_AI_TEMPERATURE'}
+          authSceneType={'MAXAI_CHATGPT_TEMPERATURE'}
         />
       )}
       {aiProviderOption.value === 'OPENAI' && <ChatGPTPluginsSelector />}

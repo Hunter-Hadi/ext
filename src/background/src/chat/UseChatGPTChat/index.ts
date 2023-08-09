@@ -22,6 +22,7 @@ import BaseChat from '@/background/src/chat/BaseChat'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
@@ -265,6 +266,17 @@ class UseChatGPTPlusChat extends BaseChat {
         }
         try {
           const error = JSON.parse(err.message || err)
+          // 判断是不是付费model触发上线
+          if (error.msg && isPermissionCardSceneType(error.msg)) {
+            onMessage &&
+              onMessage({
+                type: 'error',
+                error: error.msg,
+                done: true,
+                data: { text: '', conversationId },
+              })
+            return
+          }
           if (error?.code === 401) {
             isTokenExpired = true
           }

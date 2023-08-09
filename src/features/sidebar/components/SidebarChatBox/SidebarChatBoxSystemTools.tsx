@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useTranslation } from 'react-i18next'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 
 const SidebarChatBoxSystemTools: FC<{
   onRetry: () => void
@@ -14,8 +15,7 @@ const SidebarChatBoxSystemTools: FC<{
   const chatMessageType = message.extra.systemMessageType || 'normal'
   return (
     <Stack direction={'row'} alignItems={'center'} flexWrap={'wrap'} gap={1}>
-      {(chatMessageType === 'dailyUsageLimited' ||
-        chatMessageType === 'needUpgrade') && (
+      {chatMessageType === 'needUpgrade' && (
         <Button
           fullWidth
           sx={{
@@ -27,6 +27,17 @@ const SidebarChatBoxSystemTools: FC<{
           color={'primary'}
           target={'_blank'}
           href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+          onClick={(event) => {
+            if (
+              message.extra.systemMessageType === 'needUpgrade' &&
+              message.extra.permissionSceneType
+            ) {
+              authEmitPricingHooksLog(
+                'click',
+                message.extra.permissionSceneType,
+              )
+            }
+          }}
         >
           {t('client:sidebar__button__upgrade_to_pro')}
         </Button>

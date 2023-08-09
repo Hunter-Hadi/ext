@@ -21,6 +21,7 @@ import {
   getChromeExtensionAccessToken,
   getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
+import { backendApiReportPricingHooks } from '@/background/api'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -265,6 +266,20 @@ export const ClientMessageInit = () => {
             }
           }
           break
+        case 'Client_emitPricingHooks': {
+          const { action, name } = data
+          if (name) {
+            await backendApiReportPricingHooks({
+              action,
+              name,
+            })
+          }
+          return {
+            success: true,
+            data: true,
+            message: 'ok',
+          }
+        }
         default:
           break
       }

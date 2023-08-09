@@ -34,6 +34,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_updateIframeInput'
   | 'Client_restartApp'
   | 'Client_logCallApiRequest'
+  | 'Client_emitPricingHooks'
   // 上传文件相关
   | 'Client_chatUploadFiles'
   | 'Client_chatUploadFilesChange'

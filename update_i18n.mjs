@@ -436,7 +436,7 @@ const updateI18nJson = async (
     Number((totalUsage / 1000) * 0.004).toFixed(2),
     '美元',
   )
-  console.log(`翻译失败的语言包: \t[${errorLanguages.join('')}]`)
+  console.log(`翻译失败的语言包: \t[${errorLanguages.join(',')}]`)
   errorLanguages.length > 0 &&
     console.log('请手动处理翻译失败的语言包, 并重新执行脚本')
   errorLanguages.length > 0 &&
@@ -558,9 +558,9 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = [
+  ]
   const retryLanguageCodes = [
-    // 'ms',
   ]
   await updateKeys(keys, false, retryLanguageCodes)
 }

@@ -29,8 +29,13 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import Browser from 'webextension-polyfill'
-import { usePermissionCard } from '@/features/auth/components/PermissionWrapper'
-import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper/types'
+import {
+  isPermissionCardSceneType,
+  PermissionWrapperCardSceneType,
+  PermissionWrapperCardType,
+} from '@/features/auth/components/PermissionWrapper/types'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -39,8 +44,7 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
-  const dailyLimitPermissionCard = usePermissionCard('CHAT_DAILY_LIMIT')
-  const pdfPermissionCard = usePermissionCard('PDF_AI_VIEWER')
+  const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
@@ -84,20 +88,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   ): Promise<{ success: boolean; answer: string; error: string }> => {
     const host = getCurrentDomainHost()
     const contextMenu = options?.meta?.contextMenu
-    // 判断是否在特殊页面开始: PDF\Google Doc，如果是，判断是否是免费用户(并且不是新用户)，如果是，弹出升级卡片
-    if (
-      currentUserPlan.name === 'free' &&
-      contextMenu?.id &&
-      !currentUserPlan.isNewUser
-    ) {
-      const url = new URL(location.href)
-      const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
-      let upgradeCardSetting: PermissionWrapperCardType | null = null
-      if (url.href.includes(PDFViewerHref)) {
-        upgradeCardSetting = pdfPermissionCard
-      }
-      if (upgradeCardSetting) {
-        const { title, description, imageUrl, videoUrl } = upgradeCardSetting
+    // 发消息前,或者报错信息用到的升级卡片
+    let abortAskAIShowUpgradeCard: PermissionWrapperCardType | null = null
+    const checkUpgradeCard = () => {
+      // 发消息之前判断有没有要付费升级的卡片
+      if (abortAskAIShowUpgradeCard) {
+        const { title, description, imageUrl, videoUrl } =
+          abortAskAIShowUpgradeCard
         const needUpgradeMessage: ISystemChatMessage = {
           type: 'system',
           text: '',
@@ -106,6 +103,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           extra: {
             status: 'error',
             systemMessageType: 'needUpgrade',
+            permissionSceneType: abortAskAIShowUpgradeCard.sceneType,
           },
         }
         let markdownText = `**${title}**\n${description}\n\n`
@@ -115,6 +113,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           markdownText = `![${title}](${videoUrl})\n${markdownText}`
         }
         needUpgradeMessage.text = markdownText
+        // log
+        authEmitPricingHooksLog('show', abortAskAIShowUpgradeCard.sceneType)
         // 展示sidebar
         showChatBox()
         setMessages((prevState) => {
@@ -126,8 +126,36 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           error: '',
         }
       }
+      return null
+    }
+    // 判断是否在特殊页面开始:
+    // 1.PDF\Google Doc，如果是
+    //     1.1 判断如果是否是免费用户(并且不是新用户)，如果是，弹出升级卡片
+    if (
+      currentUserPlan.name === 'free' &&
+      contextMenu?.id &&
+      !currentUserPlan.isNewUser
+    ) {
+      const url = new URL(location.href)
+      const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
+      if (url.href.includes(PDFViewerHref)) {
+        abortAskAIShowUpgradeCard = permissionCardMap['PDF_AI_VIEWER']
+      }
     }
     // 判断是否在特殊页面结束
+    // 判断是否触达dailyUsageLimited开始:
+    const { data: isDailyUsageLimit } = await port.postMessage({
+      event: 'Client_logCallApiRequest',
+      data: {
+        name: contextMenu?.text || 'chat',
+        id: contextMenu?.id || 'chat',
+        host,
+      },
+    })
+    if (isDailyUsageLimit && false) {
+      abortAskAIShowUpgradeCard = permissionCardMap['TOTAL_CHAT_DAILY_LIMIT']
+    }
+    // 判断是否触达dailyUsageLimited结束
     const { question, messageId, parentMessageId } = questionInfo
     const {
       regenerate = false,
@@ -209,31 +237,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     let hasError = false
     let errorMessage = ''
     try {
-      // 判断是否触达dailyUsageLimited
-      const { data: isDailyUsageLimit } = await port.postMessage({
-        event: 'Client_logCallApiRequest',
-        data: {
-          name: contextMenu?.text || 'chat',
-          id: contextMenu?.id || 'chat',
-          host,
-        },
-      })
-      if (isDailyUsageLimit) {
-        pushMessages.push({
-          type: 'system',
-          messageId: uuidV4(),
-          parentMessageId: currentMessageId,
-          text: dailyLimitPermissionCard.description,
-          extra: {
-            status: 'error',
-            systemMessageType: 'needUpgrade',
-          },
-        } as ISystemChatMessage)
-        return {
-          success: false,
-          answer: '',
-          error: '',
-        }
+      // 提前结束ask ai的流程
+      const abortData = checkUpgradeCard()
+      if (abortData) {
+        return abortData
       }
       // 发消息之前记录总数
       await increaseChatGPTRequestCount('total')
@@ -286,8 +293,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           onError: (error: any) => {
             hasError = true
             log.info('[ChatGPT Module] send question onerror', error)
-            let needUpgrade = false
-
             if (aiRespondingMessage?.messageId) {
               pushMessages.push(aiRespondingMessage)
             }
@@ -315,9 +320,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "MaxAI.me" from the AI Provider options at the top of the sidebar.
                 ![switch-provider](https://www.maxai.me/assets/chrome-extension/switch-provider.png)`
               }
-              if (errorMessage.includes('[upgrade to Pro]')) {
-                needUpgrade = true
-                errorMessage = dailyLimitPermissionCard.description as string
+              if (isPermissionCardSceneType(errorMessage)) {
+                abortAskAIShowUpgradeCard =
+                  permissionCardMap[
+                    errorMessage as PermissionWrapperCardSceneType
+                  ]
+                const abortData = checkUpgradeCard()
+                if (abortData) {
+                  return abortData
+                }
               }
               pushMessages.push({
                 type: 'system',
@@ -326,7 +337,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 text: errorMessage,
                 extra: {
                   status: 'error',
-                  systemMessageType: needUpgrade ? 'needUpgrade' : '',
                 },
               } as ISystemChatMessage)
             }

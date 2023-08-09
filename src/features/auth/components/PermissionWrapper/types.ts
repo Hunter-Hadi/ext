@@ -1,27 +1,31 @@
 import React from 'react'
-import {
-  APP_USE_CHAT_GPT_HOST,
-  CHROME_EXTENSION_HOMEPAGE_URL,
-} from '@/constants'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { TFunction } from 'i18next'
 import dayjs from 'dayjs'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+
+export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
+  'TOTAL_CHAT_DAILY_LIMIT',
+  'CUSTOM_PROMPT',
+  'CUSTOM_PROMPT_GROUP',
+  'GMAIL_DRAFT_BUTTON',
+  'GMAIL_REPLY_BUTTON',
+  'GMAIL_CONTEXT_MENU',
+  'AI_RESPONSE_LANGUAGE',
+  'PDF_AI_VIEWER',
+  'PREFERRED_LANGUAGE',
+  'CHATGPT_STABLE_MODE',
+  'MAXAI_CHATGPT_TEMPERATURE',
+  'MAXAI_PAID_MODEL_GPT3_5',
+  'MAXAI_PAID_MODEL_GPT3_5_16K',
+  'MAXAI_PAID_MODEL_GPT4',
+] as const
 
 export type PermissionWrapperCardSceneType =
-  | 'CHAT_DAILY_LIMIT'
-  | 'CUSTOM_PROMPT'
-  | 'CUSTOM_PROMPT_GROUP'
-  | 'GMAIL_CTA_DRAFT_BUTTON'
-  | 'GMAIL_CTA_REPLY_BUTTON'
-  | 'GMAIL_CONTEXT_MENU'
-  | 'AI_RESPONSE_LANGUAGE'
-  | 'CHATGPT_STABLE_MODE'
-  | 'PDF_AI_VIEWER'
-  | 'PREFERRED_LANGUAGE'
-  | 'MAX_AI_TEMPERATURE'
-  | 'MAX_AI_PAID_MODEL_GPT3_5_16K'
-  | 'MAX_AI_PAID_MODEL_GPT4'
+  (typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST)[number]
 
 export type PermissionWrapperCardType = {
+  sceneType: PermissionWrapperCardSceneType
   imageUrl?: string
   videoUrl?: string
   title: React.ReactNode
@@ -53,26 +57,30 @@ const formatTimeStampToHoursAndMinutes = (timestamp?: number) => {
   return `${hours} hours and ${minutes} minutes`
 }
 
+export const isPermissionCardSceneType = (sceneType: string) => {
+  return Object.keys(PERMISSION_CARD_SETTINGS_TEMPLATE).includes(sceneType)
+}
+export const getPermissionCardSettings = (
+  sceneType: PermissionWrapperCardSceneType,
+): PermissionWrapperI18nCardType => {
+  return {
+    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
+    ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
+  }
+}
+
 export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   [key in PermissionWrapperCardSceneType]: PermissionWrapperI18nCardType
 } = {
   // 聊天每日限制
-  CHAT_DAILY_LIMIT: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/chat-daily-limit.png`,
+  TOTAL_CHAT_DAILY_LIMIT: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/unlimited-ai-requests.png',
+    )}`,
     title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
     description: (t) => {
       const next_reset_timestamp = formatTimeStampToHoursAndMinutes()
-      // const template =
-      //   `![upgrade to pro image](https://www.maxai.me/assets/chrome-extension/upgrade/unlimited-ai-requests.png)` +
-      //   `You've reached the current daily usage cap. You can ` +
-      //   `[upgrade to Pro](${APP_USE_CHAT_GPT_HOST}/pricing) ` +
-      //   `now for unlimited usage, or try again in ${next_reset_timestamp}. ` +
-      //   `[Learn more](${APP_USE_CHAT_GPT_HOST}/pricing)` +
-      //   `\n\nIf you've already upgraded, reload the ` +
-      //   `[My Plan](${APP_USE_CHAT_GPT_HOST}/my-plan)` +
-      //   `page to activate your membership.`
       const textOfParts = [
-        `![upgrade to pro image](https://www.maxai.me/assets/chrome-extension/upgrade/unlimited-ai-requests.png)`,
         `${t('client:permission__pricing_hook__daily_limit__description1')} `,
         `[${t(
           'client:permission__pricing_hook__daily_limit__description2',
@@ -98,7 +106,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // 自定义prompt
   CUSTOM_PROMPT: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/custom-prompt.png`,
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/custom-prompt.png',
+    )}`,
     title: (t) => t('client:permission__pricing_hook__custom_prompt__title'),
     description: (t) =>
       t('client:permission__pricing_hook__custom_prompt__description'),
@@ -107,7 +117,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // 自定义prompt
   CUSTOM_PROMPT_GROUP: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/custom-prompt-group.png`,
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/custom-prompt-group.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__custom_prompt_group__title'),
     description: (t) =>
@@ -116,8 +128,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
   // Gmail cta button - 新邮件
-  GMAIL_CTA_DRAFT_BUTTON: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/gmail-cta-button.png`,
+  GMAIL_DRAFT_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/gmail-cta-button.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__gmail_cta_button_draft__title'),
     description: (t) =>
@@ -126,8 +140,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
   // Gmail cta button - 回复邮件
-  GMAIL_CTA_REPLY_BUTTON: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/gmail-cta-button.png`,
+  GMAIL_REPLY_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/gmail-cta-button.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__gmail_cta_button_reply__title'),
     description: (t) =>
@@ -137,7 +153,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Gmail context menu
   GMAIL_CONTEXT_MENU: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/gmail-context-menu.png`,
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/gmail-context-menu.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__gmail_context_menu__title'),
     description: (t) =>
@@ -147,7 +165,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // AI response language
   AI_RESPONSE_LANGUAGE: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/ai-response-language.png`,
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/ai-response-language.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__ai_response_language__title'),
     description: (t) =>
@@ -157,7 +177,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // ChatGPT Stable mode
   CHATGPT_STABLE_MODE: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/chatgpt-stable-mode.png`,
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/chatgpt-stable-mode.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__chatgpt_stable_mode__title'),
     description: (t) =>
@@ -167,7 +189,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // pdf ai viewer
   PDF_AI_VIEWER: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/pdf.png`,
+    imageUrl: `${getChromeExtensionAssetsURL('/images/upgrade/pdf.png')}`,
     title: (t) => t('client:permission__pricing_hook__pdf_ai_viewer__title'),
     description: (t) =>
       t('client:permission__pricing_hook__pdf_ai_viewer__description'),
@@ -176,7 +198,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Preferred language
   PREFERRED_LANGUAGE: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/preferred-language.png`,
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/preferred-language.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__preferred_language__title'),
     description: (t) =>
@@ -185,8 +209,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
   // MAX AI - temperature
-  MAX_AI_TEMPERATURE: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/max-ai-temperature.png`,
+  MAXAI_CHATGPT_TEMPERATURE: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-temperature.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__max_ai_temperature__title'),
     description: (t) =>
@@ -195,8 +221,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
   // MAX AI - paid model - gpt3.5 16k
-  MAX_AI_PAID_MODEL_GPT3_5_16K: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/max-ai-paid-model-gpt3-5-16k.png`,
+  MAXAI_PAID_MODEL_GPT3_5_16K: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt3-5-16k.png',
+    )}`,
     title: (t) =>
       t(
         'client:permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title',
@@ -209,13 +237,29 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
   // MAX AI - paid model - gpt4
-  MAX_AI_PAID_MODEL_GPT4: {
-    imageUrl: `${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/upgrade/max-ai-paid-model-gpt4.png`,
+  MAXAI_PAID_MODEL_GPT4: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt4.png',
+    )}`,
     title: (t) =>
       t('client:permission__pricing_hook__max_ai_paid_model__gpt4__title'),
     description: (t) =>
       t(
         'client:permission__pricing_hook__max_ai_paid_model__gpt4__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // MAX AI - paid model - gpt3.5
+  MAXAI_PAID_MODEL_GPT3_5: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt3-5.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__max_ai_paid_model__gpt3_5__title'),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gpt3_5__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),

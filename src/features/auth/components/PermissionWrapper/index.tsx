@@ -12,7 +12,6 @@ import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { v4 as uuidV4 } from 'uuid'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
@@ -20,39 +19,10 @@ import LazyLoadImage from '@/components/LazyloadImage'
 
 import {
   PermissionWrapperCardSceneType,
-  PERMISSION_CARD_SETTINGS_TEMPLATE,
   PermissionWrapperCardType,
-  PermissionWrapperI18nCardType,
 } from '@/features/auth/components/PermissionWrapper/types'
-import { useTranslation } from 'react-i18next'
-
-export const getPermissionCardSettings = (
-  sceneType: PermissionWrapperCardSceneType,
-): PermissionWrapperI18nCardType => {
-  return {
-    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
-    ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
-  }
-}
-
-export const usePermissionCard = (
-  sceneType: PermissionWrapperCardSceneType,
-): PermissionWrapperCardType => {
-  const { t } = useTranslation(['common', 'client'])
-  return useMemo(() => {
-    const settings = getPermissionCardSettings(sceneType)
-    const permissionCard: PermissionWrapperCardType = {
-      title: settings.title(t),
-      description: settings.description(t),
-      ctaButtonText: settings.ctaButtonText(t),
-      ctaButtonLink: settings.ctaButtonLink,
-      ctaButtonOnClick: settings.ctaButtonOnClick,
-      imageUrl: settings.imageUrl,
-      videoUrl: settings.videoUrl,
-    }
-    return permissionCard
-  }, [sceneType, t])
-}
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { usePermissionCard } from '@/features/auth'
 
 export interface PermissionWrapperProps {
   sceneType: PermissionWrapperCardSceneType
@@ -195,6 +165,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                   window.open(memoizedPermissionCard.ctaButtonLink, '_blank')
                   memoizedPermissionCard.ctaButtonOnClick?.(event)
                   setOpen(false)
+                  authEmitPricingHooksLog('click', permissionCard.sceneType)
                 }}
               >
                 <Button fullWidth variant={'contained'}>
@@ -223,11 +194,11 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       if (onPermission) {
                         const { success, cardSettings } = await onPermission(
                           currentUserPlan,
-                          memoizedPermissionCard,
+                          permissionCard,
                           [event, ...args],
                         )
                         setModifyPermissionCard({
-                          ...memoizedPermissionCard,
+                          ...permissionCard,
                           ...cardSettings,
                         })
                         isAuth = success
@@ -247,6 +218,11 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       setOpen(!isAuth)
                       if (isAuth) {
                         child.props?.onClick?.(event, ...args)
+                      } else {
+                        authEmitPricingHooksLog(
+                          'show',
+                          permissionCard.sceneType,
+                        )
                       }
                     },
                   }),
@@ -258,11 +234,11 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       if (onPermission) {
                         const { success, cardSettings } = await onPermission(
                           currentUserPlan,
-                          memoizedPermissionCard,
+                          permissionCard,
                           [event, ...args],
                         )
                         setModifyPermissionCard({
-                          ...memoizedPermissionCard,
+                          ...permissionCard,
                           ...cardSettings,
                         })
                         isAuth = success
@@ -282,6 +258,11 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       setOpen(!isAuth)
                       if (isAuth) {
                         child.props?.onChange?.(event, ...args)
+                      } else {
+                        authEmitPricingHooksLog(
+                          'show',
+                          permissionCard.sceneType,
+                        )
                       }
                     },
                   }),

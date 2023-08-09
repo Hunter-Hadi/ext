@@ -57,7 +57,7 @@ const ChatGPTOpenAIAPITemperatureSlider: FC<{
         renderValue={(value) => {
           return (
             <PermissionWrapper
-              sceneType={authSceneType || 'MAX_AI_TEMPERATURE'}
+              sceneType={authSceneType || 'MAXAI_CHATGPT_TEMPERATURE'}
               allowedRoles={
                 authSceneType
                   ? ['pro', 'pro_gift', 'new_user']

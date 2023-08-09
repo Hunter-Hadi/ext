@@ -35,6 +35,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react'
 import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
+  FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
 import {
   ContextMenuIcon,
@@ -370,7 +371,10 @@ export const MenuComponent = React.forwardRef<
     const [activeIndex, setActiveIndex] = React.useState<number | null>(
       isFirstDeep ? 1 : null,
     )
+    const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
     const [allowHover, setAllowHover] = React.useState(false)
+    const lastParentDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
+    const lastHoverDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const listItemsRef = React.useRef<Array<any | null>>([])
     const listContentRef = React.useRef(
       React.Children.map(children, (child) =>
@@ -384,11 +388,20 @@ export const MenuComponent = React.forwardRef<
       (isFirstDeep
         ? ['bottom-start', 'top-start', 'right']
         : ['right', 'left', 'bottom', 'top'])
+    const resetActiveIndex = () => {
+      console.log(`[${nodeId}]onNavigate---[重置]`)
+      setActiveIndex(null)
+      lastHoverDropdownMenuItemRef.current = null
+      lastParentDropdownMenuItemRef.current = null
+    }
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,
       open: isOpen,
       onOpenChange: (show) => {
         console.log(nodeId, parentId, 'onNavigateonNavigateonNavigate open')
+        if (!show) {
+          resetActiveIndex()
+        }
         if (customOpen) {
           return
         }
@@ -659,6 +672,7 @@ export const MenuComponent = React.forwardRef<
         window.removeEventListener('keydown', onKeyDown, true)
       }
     }, [allowHover])
+
     useEffect(() => {
       let destroy = false
       if (
@@ -696,8 +710,6 @@ export const MenuComponent = React.forwardRef<
       }
     }, [floatingDropdownMenuSelectedItem.lastHoverContextMenuId, children])
     const referenceRef = useMergeRefs([refs.setReference, forwardedRef])
-    const lastParentDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
-    const lastHoverDropdownMenuItemRef = useRef<HTMLDivElement | null>(null)
     const handleExecuteActions = useCallback(() => {
       const lastHoverId =
         floatingDropdownMenuSelectedItem.lastHoverContextMenuId
@@ -718,6 +730,18 @@ export const MenuComponent = React.forwardRef<
         }
       }
     }, [floatingDropdownMenuSelectedItem])
+    useEffect(() => {
+      if (!floatingDropdownMenu.open) {
+        resetActiveIndex()
+        setFloatingDropdownMenuSelectedItem((prevState) => {
+          return {
+            ...prevState,
+            hoverContextMenuIdMap: {},
+            lastHoverContextMenuId: null,
+          }
+        })
+      }
+    }, [floatingDropdownMenu.open])
     return (
       <FloatingNode id={nodeId}>
         {referenceElement ? (

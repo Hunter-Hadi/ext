@@ -152,7 +152,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         host,
       },
     })
-    if (isDailyUsageLimit && false) {
+    if (isDailyUsageLimit) {
       abortAskAIShowUpgradeCard = permissionCardMap['TOTAL_CHAT_DAILY_LIMIT']
     }
     // 判断是否触达dailyUsageLimited结束

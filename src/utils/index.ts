@@ -53,18 +53,22 @@ export const getAppContextMenuRootElement = (): HTMLDivElement | null => {
   return portal as HTMLDivElement
 }
 
-export const showChatBox = () => {
+/**
+ * 对于一些特殊的网站, 在聊天框显示的时候, 需要修改一些样式
+ */
+const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
   const htmlElement = document.body.parentElement
   const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  const host = getCurrentDomainHost()
   if (htmlElement && chatBoxElement) {
     const chatBoxElementWidth =
       chatBoxElement.offsetWidth ||
       CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
-    htmlElement.style.transition = 'width .1s ease-inout'
-    htmlElement.style.width = `calc(100% - ${chatBoxElementWidth}px)`
-    htmlElement.style.position = 'relative'
-    const host = getCurrentDomainHost()
-    if (host === 'outlook.live.com' || host === 'onedrive.live.com') {
+    if (
+      host === 'outlook.live.com' ||
+      host === 'onedrive.live.com' ||
+      host === 'outlook.office.com'
+    ) {
       htmlElement.style.minHeight = '100vh'
     }
     if (host === 'teams.live.com') {
@@ -77,10 +81,55 @@ export const showChatBox = () => {
         })
       })
     }
-    // 浏览器自带的pdf文件阅读器
-    if (document.querySelector('embed[type="application/pdf"]')) {
-      document.body.style.height = '100vh'
+  }
+  // 浏览器自带的pdf文件阅读器
+  if (document.querySelector('embed[type="application/pdf"]')) {
+    document.body.style.height = '100vh'
+  }
+}
+
+/**
+ * 对于一些特殊的网站，当聊天框隐藏的时候，需要修改一些样式
+ */
+const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
+  const htmlElement = document.body.parentElement
+  const host = getCurrentDomainHost()
+  if (htmlElement) {
+    if (
+      host === 'outlook.live.com' ||
+      host === 'onedrive.live.com' ||
+      host === 'outlook.office.com'
+    ) {
+      htmlElement.style.minHeight = ''
     }
+    if (host === 'teams.live.com') {
+      document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
+        element.style.width = `100%`
+        element.childNodes.forEach((child: any) => {
+          if (child.tagName === 'IFRAME') {
+            child.style.width = '100vw'
+          }
+        })
+      })
+    }
+  }
+  // 浏览器自带的pdf文件阅读器
+  if (document.querySelector('embed[type="application/pdf"]')) {
+    document.body.style.height = ''
+  }
+}
+
+export const showChatBox = () => {
+  const htmlElement = document.body.parentElement
+  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  if (htmlElement && chatBoxElement) {
+    const chatBoxElementWidth =
+      chatBoxElement.offsetWidth ||
+      CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
+    htmlElement.style.transition = 'width .1s ease-inout'
+    htmlElement.style.width = `calc(100% - ${chatBoxElementWidth}px)`
+    htmlElement.style.position = 'relative'
+    modifyHTMLStyleForSpecialWebsiteOnChatBoxShow()
     if (!chatBoxElement.classList.contains('open')) {
       chatBoxElement.classList.remove('close')
       chatBoxElement.classList.add('open')
@@ -102,24 +151,7 @@ export const hideChatBox = () => {
     htmlElement.style.transition = 'width .1s ease-inout'
     htmlElement.style.width = '100%'
     htmlElement.style.position = ''
-    const host = getCurrentDomainHost()
-    if (host === 'outlook.live.com' || host === 'onedrive.live.com') {
-      htmlElement.style.minHeight = ''
-    }
-    if (host === 'teams.live.com') {
-      document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
-        element.style.width = `100%`
-        element.childNodes.forEach((child: any) => {
-          if (child.tagName === 'IFRAME') {
-            child.style.width = '100vw'
-          }
-        })
-      })
-    }
-    // 浏览器自带的pdf文件阅读器
-    if (document.querySelector('embed[type="application/pdf"]')) {
-      document.body.style.height = '100%'
-    }
+    modifyHTMLStyleForSpecialWebsiteOnChatBoxHide()
     chatBoxElement.classList.remove('open')
     chatBoxElement.classList.add('close')
     setTimeout(() => {

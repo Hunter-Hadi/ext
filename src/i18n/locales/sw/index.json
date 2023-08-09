@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Mfano wenye uwezo mkubwa zaidi wa OpenAI, mzuri kwa kazi zinazohitaji ubunifu na hoja za juu.",
     "prompt__group__suggested__title": "Inapendekezwa",
     "rewards__title": "Tuzo",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Ficha msaidizi wa Gmail"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Ficha msaidizi wa Gmail",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sasisha ili kutumia ChatGPT bila ukomo",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Haraka kama ChatGPT Plus. Hakuna vizuizi vya nchi. Inatumia gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

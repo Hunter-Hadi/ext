@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIનું સૌથી સક્ષમ મોડેલ, જે રચનાત્મકતા અને ઉન્નત રીઝનિંગ જોઈએ તેવી કાર્યો માટે મહત્વપૂર્ણ છે.",
     "prompt__group__suggested__title": "સૂચવેલ",
     "rewards__title": "પુરસ્કારો",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail સહાયક છુપાવો"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail સહાયક છુપાવો",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "અમર્યાદિત ChatGPT ઉપયોગ માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT Plus જેવું ઝડપીથી. કોઈ દેશની મરજિયાત નથી. gpt-3.5-turbo દ્વારા સક્ષમ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

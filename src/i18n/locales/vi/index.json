@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Mô hình mạnh nhất của OpenAI, tuyệt vời cho các nhiệm vụ yêu cầu sự sáng tạo và suy luận nâng cao.",
     "prompt__group__suggested__title": "Đề xuất",
     "rewards__title": "Phần thưởng",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Ẩn trợ lý Gmail"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Ẩn trợ lý Gmail",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Nâng cấp để sử dụng ChatGPT không giới hạn",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Nhanh như ChatGPT Plus. Không có hạn chế về quốc gia. Được cung cấp bởi gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "El modelo más capaz de OpenAI, ideal para tareas que requieren creatividad y razonamiento avanzado.",
     "prompt__group__suggested__title": "Sugerido",
     "rewards__title": "Recompensas",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Ocultar asistente de Gmail"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Ocultar asistente de Gmail",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Actualiza para uso ilimitado de ChatGPT",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Tan rápido como ChatGPT Plus. Sin restricciones por país. Potenciado por gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

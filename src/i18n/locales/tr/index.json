@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI'nin en yetenekli modeli, yaratıcılık ve gelişmiş akıl gerektiren görevler için harika.",
     "prompt__group__suggested__title": "Önerilen",
     "rewards__title": "Ödüller",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail asistanını gizle"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail asistanını gizle",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sınırsız ChatGPT kullanımı için yükseltme yapın",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT Plus kadar hızlı. Ülke kısıtlaması yok. gpt-3.5-turbo tarafından desteklenmektedir."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

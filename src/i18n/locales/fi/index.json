@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI:n kyvykkäin malli, erinomainen tehtäviin, jotka vaativat luovuutta ja edistynyttä päättelyä.",
     "prompt__group__suggested__title": "Ehdotettu",
     "rewards__title": "Palkinnot",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Piilota Gmail-assistentti"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Piilota Gmail-assistentti",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Päivitä rajattomaan ChatGPT-käyttöön",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Yhtä nopea kuin ChatGPT Plus. Ei maakohtaisia rajoituksia. Toimii gpt-3.5-turbon avulla."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

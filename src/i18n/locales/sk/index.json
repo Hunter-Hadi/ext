@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Najvýkonnejší model od OpenAI, ideálny pre úlohy vyžadujúce kreativitu a pokročilé uvažovanie.",
     "prompt__group__suggested__title": "Navrhnuté",
     "rewards__title": "Odmeny",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Skryť asistenta Gmail"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Skryť asistenta Gmail",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Vylepšenie pre neobmedzené používanie ChatGPT",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Rovnaká rýchlosť ako ChatGPT Plus. Bez obmedzení na krajiny. Poháňané gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

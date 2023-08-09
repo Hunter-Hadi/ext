@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI کا سب سے قابلیت والا ماڈل، خلاقیت اور پیش رفتہ تجزیے کی ضرورت والے کاموں کے لئے عظیم ہے۔",
     "prompt__group__suggested__title": "تجویز شدہ",
     "rewards__title": "انعامات",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail اسسٹنٹ چھپائیں"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail اسسٹنٹ چھپائیں",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "غیر محدود چیٹ جی پی ٹی استعمال کے لئے اپگریڈ کریں",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "چیٹ جی پی ٹی پلس کی طرح تیز. کوئی ملکی پابندی نہیں. gpt-3.5-turbo کی طاقت سے محرک"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

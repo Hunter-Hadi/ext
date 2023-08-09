@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI యొక్క అత్యంత సామర్థ్యం ఉన్న మోడల్, సృజనాత్మకత మరియు ఆధ్వితీయ యోచనలను అవసరం కలిగి ఉంచే కార్యాలకు అద్వితీయంగా ఉంటుంది.",
     "prompt__group__suggested__title": "సూచించబడింది",
     "rewards__title": "పురస్కారాలు",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail అసిస్టెంట్‌ను దాచండి"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail అసిస్టెంట్‌ను దాచండి",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "అనిమిష్ట ChatGPT ఉపయోగాన్ని కొనండి కోసం నిలువగా చేరుకోండి",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT Plus తో సమానంగా వేగవంతం. దేశాల పరిమితులు లేవు. gpt-3.5-turbo ద్వారా ప్రాధాన్యం పొందబడింది."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

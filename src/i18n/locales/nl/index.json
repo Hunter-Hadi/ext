@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI's meest capabele model, ideaal voor taken die creativiteit en geavanceerd redeneren vereisen.",
     "prompt__group__suggested__title": "Aanbevolen",
     "rewards__title": "Beloningen",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail-assistent verbergen"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail-assistent verbergen",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade voor onbeperkt gebruik van ChatGPT",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Net zo snel als ChatGPT Plus. Geen landrestricties. Aangedreven door gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

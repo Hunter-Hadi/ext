@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Найпотужніша модель OpenAI, відмінна для завдань, які потребують творчості та високого рівня мислення.",
     "prompt__group__suggested__title": "Рекомендовані",
     "rewards__title": "Винагороди",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Приховати помічника Gmail"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Приховати помічника Gmail",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Оновлення для необмеженого використання ChatGPT",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Так швидко, як ChatGPT Plus. Без обмежень за країною. Працює на основі gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

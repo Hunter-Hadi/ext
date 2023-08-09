@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Model paling canggih dari OpenAI, bagus untuk tugas-tugas yang membutuhkan kreativitas dan penalaran tingkat lanjut.",
     "prompt__group__suggested__title": "Disarankan",
     "rewards__title": "Hadiah",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Sembunyikan asisten Gmail"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Sembunyikan asisten Gmail",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Tingkatkan untuk penggunaan ChatGPT tanpa batas",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Secepat ChatGPT Plus. Tanpa batasan negara. Didukung oleh gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

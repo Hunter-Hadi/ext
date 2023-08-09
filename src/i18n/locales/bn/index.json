@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "ক্রিয়েটিভিটি এবং উন্নত যাচাইয়ের জন্য প্রয়োজন যার জন্য OpenAI-র সবচেয়ে সক্ষম মডেল।",
     "prompt__group__suggested__title": "প্রস্তাবিত",
     "rewards__title": "পুরস্কার",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail সহায়ক লুকান"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail সহায়ক লুকান",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "সীমাহীন চ্যাটজিপিটি ব্যবহারের জন্য আপগ্রেড করুন",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "চ্যাটজিপিটি প্লাসের মত দ্রুত। কোন দেশের সীমাবদ্ধতা নেই। gpt-3.5-turbo দ্বারা প্রস্তুত।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

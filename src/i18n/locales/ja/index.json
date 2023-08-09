@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "創造性と高度な推論が必要なタスクに最適なOpenAIの最も能力のあるモデルです。",
     "prompt__group__suggested__title": "提案された",
     "rewards__title": "報酬",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmailアシスタントを非表示にする"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmailアシスタントを非表示にする",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "無制限のChatGPT利用のためのアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT Plusと同じ速さ。国の制限なし。gpt-3.5-turboによってパワーアップ。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

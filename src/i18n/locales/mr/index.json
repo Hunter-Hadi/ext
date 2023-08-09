@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI चा सर्वाधिक सक्षम मॉडेल, कल्पनाशक्ती आणि प्रगतीशील तर्कांसाठी आवश्यक असलेल्या कार्यांसाठी मोठं.",
     "prompt__group__suggested__title": "सुचवलेले",
     "rewards__title": "पुरस्कार",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail सहाय्यक लपवा"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail सहाय्यक लपवा",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "असीमित चॅटजीपीटी वापरासाठी अपग्रेड करा",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "चॅटजीपीटी प्लससारखे वेगवान. कोणत्याही देशांची प्रतिबंधना नाहीत. gpt-3.5-turbo द्वारे संचालित."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

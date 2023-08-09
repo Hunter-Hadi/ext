@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "창의성과 고급 추론을 필요로 하는 작업에 적합한 OpenAI의 가장 능력있는 모델입니다.",
     "prompt__group__suggested__title": "제안됨",
     "rewards__title": "보상",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail 어시스턴트 숨기기"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail 어시스턴트 숨기기",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "무제한 ChatGPT 사용을 위한 업그레이드",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT Plus와 같은 속도. 국가 제한 없음. gpt-3.5-turbo로 구동됩니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIs mest kapable model, perfekt til opgaver der kræver kreativitet og avanceret tænkning.",
     "prompt__group__suggested__title": "Forslag",
     "rewards__title": "Belønninger",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Skjul Gmail-assistent"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Skjul Gmail-assistent",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Opgrader for ubegrænset ChatGPT-brug",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Lige så hurtigt som ChatGPT Plus. Ingen landrestriktioner. Drevet af gpt-3.5-turbo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

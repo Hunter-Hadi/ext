@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "ಕ್ರೀಯಾಶೀಲತೆ ಮತ್ತು ಮುಂದಿನ ಯೋಚನೆಗಳನ್ನು ಅಗತ್ಯಪಡಿಸುವ ಕೆಲಸಗಳಿಗೆ ಉತ್ತಮವಾದ ಮಾದರಿ, ಒಳ್ಳೆಯದು.",
     "prompt__group__suggested__title": "ಸೂಚಿಸಲಾದದ್ದು",
     "rewards__title": "ಪ್ರತಿಫಲಗಳು",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail ಸಹಾಯಕನನ್ನು ಮರೆಮಾಡಿ"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail ಸಹಾಯಕನನ್ನು ಮರೆಮಾಡಿ",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ಅಸಂಖ್ಯ ಚಾಟ್‌ಜಿಪಿಟಿ ಬಳಕೆಗೆ ಮೆಚ್ಚುಗೆಯನ್ನು ಹೆಚ್ಚಿಸಲು ಮೆರುಗು",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ಚಾಟ್‌ಜಿಪಿಟಿ ಪ್ಲಸ್‌ಗೆ ತುಂಬಾ ವೇಗವಾಗಿ. ಯಾವುದೇ ದೇಶದ ಮಿತಿಗಳಿಲ್ಲ. gpt-3.5-ಟರ್ಬೊ ಶಕ್ತಿಯಿಂದ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "സൃജിക്കാൻ സാധ്യതയുള്ള മികച്ച മോഡൽ, സൃഷ്ടിക്കാൻ അഭിനവമായിരിക്കുന്ന ടാസ്കുകളിലേക്ക് അവസാനം.",
     "prompt__group__suggested__title": "ശുപാർശിച്ചത്",
     "rewards__title": "പുരസ്കാരങ്ങൾ",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail സഹായി മറയ്ക്കുക"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail സഹായി മറയ്ക്കുക",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "അനുവദിക്കുക എന്നാൽ അപരിമിതമായ ChatGPT ഉപയോഗം ലഭിക്കുക",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT Plus പേര്‍ക്കുവിട്ടതും വേഗതയുള്ളതുമായി. രാജ്യ പരിധികളില്ല. gpt-3.5-turbo പ്രവര്‍ത്തിപ്പിക്കുന്നു."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

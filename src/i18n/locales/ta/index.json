@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "கிரியேட்டிவியும் மேன்மையும் தேவைப்படும் பணிகளுக்கு அரிச்சுவடி ஆன OpenAI உள்ளிட்ட மிகச் சகாரமான மாதிரி.",
     "prompt__group__suggested__title": "பரிந்துரைக்கப்பட்டது",
     "rewards__title": "வெகுமதி",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail உதவி மறைக்க"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail உதவி மறைக்க",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "வரம்பு செயல்பாட்டுக்கான அளவிற்கு மேம்படுத்தல்",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT Plus போன்ற வேகமானது. எந்த நாட்டிலும் வரம்பு இல்லை. gpt-3.5-turbo மூலம் செயலாக்கப்படுகிறது."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

@@ -402,7 +402,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI最强大的模型，非常适用于需要创造力和高级推理的任务。",
     "prompt__group__suggested__title": "建议",
     "rewards__title": "奖励",
-    "gmail__cta_button__dropdown__hide_gmail_assistant": "隐藏Gmail助手"
+    "gmail__cta_button__dropdown__hide_gmail_assistant": "隐藏Gmail助手",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "升级以无限使用ChatGPT",
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "与ChatGPT Plus一样快速。没有国家限制。由gpt-3.5-turbo提供支持。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

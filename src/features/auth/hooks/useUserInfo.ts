@@ -64,14 +64,17 @@ const useUserInfo = () => {
       }
     }
     // 判断是否是新用户 - 7天内注册的用户
-    if (userInfo?.created_at) {
+    if (name === 'free' && userInfo?.created_at) {
       const created_at = dayjs(userInfo?.created_at)
       const now = dayjs().utc()
       const diffDays = now.diff(created_at, 'day')
-      console.log('created account days', diffDays, created_at)
-      if (diffDays <= 7) {
+      // 把“注册7天后在显示付费卡点”改为0天（也就是立刻就出现付费卡点）- 2023-08-09 - @huangsong
+      const NEW_USER_DAYS = -1
+      if (diffDays <= NEW_USER_DAYS) {
+        name = 'new_user'
         isNewUser = true
       }
+      console.log('created account days', diffDays)
     }
     return {
       name,

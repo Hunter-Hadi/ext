@@ -69,7 +69,7 @@ const useUserInfo = () => {
       const now = dayjs().utc()
       const diffDays = now.diff(created_at, 'day')
       // 把“注册7天后在显示付费卡点”改为0天（也就是立刻就出现付费卡点）- 2023-08-09 - @huangsong
-      const NEW_USER_DAYS = -1
+      const NEW_USER_DAYS = -100000
       if (diffDays <= NEW_USER_DAYS) {
         name = 'new_user'
         isNewUser = true

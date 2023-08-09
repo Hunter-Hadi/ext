@@ -341,7 +341,7 @@ export const MenuComponent = React.forwardRef<
       children,
       label,
       root,
-      hoverOpen = false,
+      hoverOpen = true,
       customOpen = false,
       needAutoUpdate = false,
       menuSx,
@@ -402,7 +402,7 @@ export const MenuComponent = React.forwardRef<
         if (!show) {
           resetActiveIndex()
         }
-        if (customOpen) {
+        if (customOpen && !show) {
           return
         }
         setIsOpen(show)
@@ -421,7 +421,7 @@ export const MenuComponent = React.forwardRef<
       whileElementsMounted: needAutoUpdate ? autoUpdate : undefined,
     })
     const hover = useHover(context, {
-      enabled: hoverOpen && allowHover && isNested,
+      enabled: hoverOpen && allowHover,
       delay: { open: 75 },
       handleClose: safePolygon({
         restMs: 25,

@@ -610,6 +610,7 @@ const FloatingContextMenu: FC<{
         <FloatingContextMenuList
           defaultPlacement={safePlacement.contextMenuPlacement}
           needAutoUpdate
+          hoverOpen={false}
           menuList={memoMenuList}
           referenceElementOpen={floatingDropdownMenu.open}
           referenceElement={

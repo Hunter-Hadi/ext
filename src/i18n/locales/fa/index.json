@@ -404,7 +404,7 @@
     "rewards__title": "جوایز",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "مخفی کردن دستیار Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ارتقا برای استفاده نامحدود از ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "به همان سرعت ChatGPT Plus. بدون محدودیت کشوری. قدرت گرفته شده از gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "شما به سقف استفاده روزانه فعلی برای ChatGPT رسیده اید.\nاکنون می توانید با سایر ارائه دهندگان Al ادامه دهید، یا همین حالا به نسخه Pro ارتقا دهید تا از استفاده نامحدود برخوردار شوید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

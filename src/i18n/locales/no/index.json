@@ -404,7 +404,7 @@
     "rewards__title": "Belønninger",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Skjul Gmail-assistent",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Oppgrader for ubegrenset bruk av ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Like rask som ChatGPT Plus. Ingen landrestriksjoner. Drevet av gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Du har nådd den gjeldende daglige bruksbegrensningen for ChatGPT.\nDu kan fortsette med de andre AI-leverandørene nå, eller oppgradere til Pro nå for ubegrenset bruk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

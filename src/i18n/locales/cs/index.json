@@ -404,7 +404,7 @@
     "rewards__title": "Odměny",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Skrýt asistenta Gmailu",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade pro neomezené používání ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Stejně rychlé jako ChatGPT Plus. Žádná omezení zemí. Poháněno gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dosáhli jste současného denního limitu použití pro ChatGPT.\nNyní můžete pokračovat s ostatními poskytovateli AI nebo nyní upgradovat na Pro verzi pro neomezené používání."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

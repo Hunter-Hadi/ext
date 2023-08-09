@@ -404,7 +404,7 @@
     "rewards__title": "Винагороди",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Приховати помічника Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Оновлення для необмеженого використання ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Так швидко, як ChatGPT Plus. Без обмежень за країною. Працює на основі gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Ви досягли поточного щоденного обмеження використання ChatGPT.\nТепер ви можете продовжити з іншими постачальниками ШІ або оновити до Pro для необмеженого використання."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

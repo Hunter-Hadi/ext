@@ -404,7 +404,7 @@
     "rewards__title": "Rewards",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Itago ang Gmail assistant",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Mag-upgrade para sa walang limitasyong paggamit ng ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Kasing bilis ng ChatGPT Plus. Walang mga pagsasaayos sa bansa. Pinapagana ng gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Narating mo na ang kasalukuyang araw-araw na limitasyon sa paggamit para sa ChatGPT.\nPwede kang magpatuloy sa ibang mga Al Providers ngayon, o mag-upgrade sa Pro ngayon para sa walang limitasyong paggamit."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

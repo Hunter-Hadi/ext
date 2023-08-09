@@ -404,7 +404,7 @@
     "rewards__title": "Beloningen",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail-assistent verbergen",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade voor onbeperkt gebruik van ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Net zo snel als ChatGPT Plus. Geen landrestricties. Aangedreven door gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Je hebt de huidige dagelijkse gebruikslimiet voor ChatGPT bereikt.\nJe kunt nu doorgaan met de andere AI-providers, of nu upgraden naar Pro voor onbeperkt gebruik."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

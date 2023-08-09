@@ -404,7 +404,7 @@
     "rewards__title": "Recompensas",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ocultar assistente do Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Atualize para uso ilimitado do ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Tão rápido quanto o ChatGPT Plus. Sem restrições de país. Alimentado por gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Você atingiu o limite diário atual de uso para o ChatGPT.\nAgora você pode continuar com os outros provedores de IA ou fazer upgrade para a versão Pro agora mesmo e ter uso ilimitado."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

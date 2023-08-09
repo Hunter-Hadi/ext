@@ -272,6 +272,8 @@ const updateI18nJson = async (
       updateLanguageCodes.includes(dir.name),
     )
   }
+  // 去掉en语言包
+  needUpdateLanguages = needUpdateLanguages.filter(dir => dir.name !== 'en')
   console.log('i18n 需要更新的语言包总数: ', needUpdateLanguages.length)
   if (updateKeys.length > 0) {
     console.log('i18n 本次需要更新的key总数:', updateKeys.length)

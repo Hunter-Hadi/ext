@@ -404,7 +404,7 @@
     "rewards__title": "Palkinnot",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Piilota Gmail-assistentti",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Päivitä rajattomaan ChatGPT-käyttöön",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Yhtä nopea kuin ChatGPT Plus. Ei maakohtaisia rajoituksia. Toimii gpt-3.5-turbon avulla."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Olet saavuttanut päivittäisen käyttörajan ChatGPT:lle.\nVoit jatkaa muiden Al-palveluntarjoajien kanssa tai päivittää Pro-tilaukseen rajoittamattoman käytön saamiseksi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

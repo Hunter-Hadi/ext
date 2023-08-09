@@ -404,7 +404,7 @@
     "rewards__title": "ደምቢዎች",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "የ Gmail አስማማሪውን ደብቅ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ለተጨባጭ የChatGPT ጠቅላላ ጥቅም እንዲሁም የተለመዱ ማሳወቂያዎች ይጠቀሙ",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "በChatGPT Plus በትኩረት የተለመዱትን ማሳወቂያዎች ይጠቀሙ። ምንም አልተሳካም አገልግሎት የለም። በgpt-3.5-turbo ማሳወቂያ ይሰጣል።"
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "አሁን የቀረበ ቀጥል የተሳተፈ የ ChatGPT የቀጥል መጠቀሚያ ማስተርያ ስለሆነ፣\nከሌሎች Al Providers ውስጥ በመጠቀም ይቀጥሉልን ወይም የ Pro ለመስጠት ለማድረግ ይጠቀሙልን."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

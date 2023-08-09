@@ -404,7 +404,7 @@
     "rewards__title": "รางวัล",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "ซ่อนผู้ช่วย Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "อัปเกรดสำหรับการใช้งาน ChatGPT ไม่จำกัด",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "เร็วเหมือน ChatGPT Plus ไม่มีข้อจำกัดทางประเทศ ขับเคลื่อนโดย gpt-3.5-turbo"
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "คุณได้ถึงขีดจำกัดการใช้งานรายวันปัจจุบันสำหรับ ChatGPT\nคุณสามารถดำเนินการต่อกับผู้ให้บริการ Al อื่นๆ หรืออัพเกรดเป็น Pro เพื่อใช้งานได้ไม่จำกัด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

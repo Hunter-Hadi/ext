@@ -404,7 +404,7 @@
     "rewards__title": "奖励",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "隐藏Gmail助手",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "升级以无限使用ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "与ChatGPT Plus一样快速。没有国家限制。由gpt-3.5-turbo提供支持。"
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "您已达到ChatGPT的当前每日使用上限。\n您现在可以继续使用其他AI提供商，或立即升级为专业版以享受无限使用。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

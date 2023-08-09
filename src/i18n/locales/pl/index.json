@@ -404,7 +404,7 @@
     "rewards__title": "Nagrody",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ukryj asystenta Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Uaktualnij, aby mieć nieograniczone korzystanie z ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Tak szybki jak ChatGPT Plus. Bez ograniczeń geograficznych. Napędzany przez gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Osiągnąłeś dzienne ograniczenie korzystania z ChatGPT.\nMożesz teraz kontynuować z innymi dostawcami Al lub teraz uaktualnić do wersji Pro, aby mieć nieograniczone możliwości."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

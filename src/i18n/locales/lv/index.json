@@ -404,7 +404,7 @@
     "rewards__title": "Balvas",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Paslēpt Gmail asistentu",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Jauniniet, lai iegūtu neierobežotu ChatGPT izmantošanu",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Tāpat kā ChatGPT Plus. Nav valstu ierobežojumu. Darbina gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Jūs esat sasniedzis pašreizējo dienas lietojuma ierobežojumu ChatGPT.\nTagad varat turpināt ar citiem Al pakalpojumu sniedzējiem vai uzlaboties uz Pro, lai iegūtu neierobežotu lietojumu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

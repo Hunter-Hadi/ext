@@ -404,7 +404,7 @@
     "rewards__title": "Nagrade",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sakrij Gmail asistenta",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Nadogradite za neograničeno korišćenje ChatGPT-a",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Toliko brzo kao i ChatGPT Plus. Bez ograničenja po zemljama. Pokreće gpt-3.5-turbo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dostigli ste trenutni dnevni limit za upotrebu ChatGPT-a.\nMožete nastaviti sa drugim AI provajderima sada, ili nadograditi na Pro verziju za neograničenu upotrebu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

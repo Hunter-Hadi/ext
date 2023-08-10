@@ -160,6 +160,9 @@ const ShortCutsButtonItem: FC<{
         }}
       >
         <Stack
+          sx={{
+            width: '100%',
+          }}
           className={'max-ai__context-menu-item--permission'}
           direction={'row'}
           p={'6px'}

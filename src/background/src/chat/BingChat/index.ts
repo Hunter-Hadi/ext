@@ -57,8 +57,7 @@ class BingChat extends BaseChat {
       prompt: question,
       imageUrl: file?.uploadedUrl,
       signal,
-      onEvent(event: Event) {
-        console.log(event)
+      onEvent: (event: Event) => {
         if (event.type === 'ERROR') {
           onMessage?.({
             type: 'error',
@@ -69,6 +68,10 @@ class BingChat extends BaseChat {
               conversationId: '',
             },
           })
+          if (taskId) {
+            this.abortTask(taskId)
+            this.bingLib.resetConversation()
+          }
         } else if (event.type === 'UPDATE_ANSWER') {
           onMessage?.({
             type: 'message',

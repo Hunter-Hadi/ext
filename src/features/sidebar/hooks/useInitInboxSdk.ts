@@ -28,8 +28,8 @@ import {
 import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { useFocus } from '@/hooks/useFocus'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import { useTranslation } from 'react-i18next'
+import { clientGetChromeExtensionButtonSettings } from '@/features/contextMenu/utils/clientButtonSettings'
 const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.usechatgpt-ai__gmail-toolbar-button--cta')
@@ -64,7 +64,7 @@ const useInitInboxSdk = () => {
     tRef.current = t
   }, [t])
   useFocus(async () => {
-    const gmailButtonSettings = await getChromeExtensionButtonSettings(
+    const gmailButtonSettings = await clientGetChromeExtensionButtonSettings(
       'gmailButton',
     )
     const newValue =
@@ -82,7 +82,7 @@ const useInitInboxSdk = () => {
   })
   const timeoutRef = useRef(false)
   useEffectOnce(() => {
-    getChromeExtensionButtonSettings('gmailButton').then(
+    clientGetChromeExtensionButtonSettings('gmailButton').then(
       (gmailButtonSettings) => {
         const gmailAssistant =
           gmailButtonSettings?.visibility.whitelist.includes(

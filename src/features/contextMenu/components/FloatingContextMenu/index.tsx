@@ -67,9 +67,9 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import SendIcon from '@mui/icons-material/Send'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
-import { getChromeExtensionSettings } from '@/background/utils'
 import { AppSettingsState } from '@/store'
 import { useTranslation } from 'react-i18next'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -311,7 +311,7 @@ const FloatingContextMenu: FC<{
         }, 1)
       }
       // 为了保证登陆后能直接用，需要先获取一次settings
-      getChromeExtensionSettings().then((settings) => {
+      clientGetLiteChromeExtensionSettings().then((settings) => {
         setAppSettings(settings)
       })
     } else {
@@ -506,34 +506,12 @@ const FloatingContextMenu: FC<{
     reGenerate,
   ])
   useEffect(() => {
-    let runActions = cloneDeep(actions)
+    const runActions = cloneDeep(actions)
     if (actions.length > 0) {
       const lastRecordContextMenu = lastRecordContextMenuRef.current
       if (lastRecordContextMenu) {
-        // 更新action的askChatGPT的参数
-        runActions = runActions.map((action) => {
-          // HACK: 这里的写法特别蠢，但是得记录正确的api和prompt，只能这么写
-          if (action.type === 'INSERT_USER_INPUT') {
-            if (!action.parameters.AskChatGPTActionMeta) {
-              action.parameters.AskChatGPTActionMeta = {}
-            }
-            action.parameters.AskChatGPTActionMeta.contextMenu =
-              lastRecordContextMenu
-          }
-          if (
-            action.type === 'ASK_CHATGPT' ||
-            action.type === 'WEBGPT_ASK_CHATGPT'
-          ) {
-            if (!action.parameters.AskChatGPTActionMeta) {
-              action.parameters.AskChatGPTActionMeta = {}
-            }
-            action.parameters.AskChatGPTActionMeta.contextMenu =
-              lastRecordContextMenu
-            // 要在找到askChatGPT之后，才能清空，例如code或者enter prompt的场景
-            lastRecordContextMenuRef.current = null
-          }
-          return action
-        })
+        // 要在找到askChatGPT之后，才能清空，例如code或者enter prompt的场景
+        lastRecordContextMenuRef.current = null
       }
       setShortCuts(runActions)
       setActions([])

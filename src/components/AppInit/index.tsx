@@ -10,10 +10,7 @@ import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import Button from '@mui/material/Button'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
-import {
-  getChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/background/utils'
+import { setChromeExtensionSettings } from '@/background/utils'
 import Log from '@/utils/Log'
 import { useAuthLogin } from '@/features/auth'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
@@ -28,12 +25,12 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import useInterval from '@/hooks/useInterval'
 import Divider from '@mui/material/Divider'
-import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import { RESOURCES_URL } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitI18n } from '@/i18n/hooks'
 import { useTranslation } from 'react-i18next'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
 const log = new Log('AppInit')
 
@@ -68,7 +65,7 @@ export const AppSettingsInit = () => {
   useThemeUpdateListener()
   useEffect(() => {
     const updateAppSettings = async () => {
-      const settings = await getChromeExtensionSettings()
+      const settings = await clientGetLiteChromeExtensionSettings()
       if (settings) {
         setAppSettings({
           ...settings,
@@ -403,9 +400,6 @@ const AppInit = () => {
   useAuthLogin()
   userInitUserInfo()
   useInitI18n()
-  useEffectOnce(() => {
-    forceUpdateContextMenuReadOnlyOption().then().catch()
-  })
   useInjectShortCutsRunTime()
   useHandlePDFViewerError()
   return (

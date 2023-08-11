@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
-import {
-  getChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/background/utils'
+import { setChromeExtensionSettings } from '@/background/utils'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { showChatBox } from '@/utils'
+import { useRecoilValue } from 'recoil'
+import { AppSettingsState } from '@/store'
 
 const RESIZE_ENABLE = {
   top: false,
@@ -26,15 +25,15 @@ const limitPageWidth = 150
 // 3. 屏幕resize会更新宽度，但是不会设置到本地缓存
 // 4. 本地缓存的宽度会在下次打开时使用
 const useChatBoxWidth = () => {
+  const appSettings = useRecoilValue(AppSettingsState)
   const [loaded, setLoaded] = useState<boolean>(false)
   const [visibleWidth, setVisibleWidth] = useState<number>(
     CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   )
   const [maxWidth, setMaxWidth] = useState<number>(0)
   const getLocalWidth = async () => {
-    const settings = await getChromeExtensionSettings()
-    if (settings.userSettings?.chatBoxWidth) {
-      setVisibleWidth(settings.userSettings.chatBoxWidth || maxWidth)
+    if (appSettings.userSettings?.chatBoxWidth) {
+      setVisibleWidth(appSettings.userSettings.chatBoxWidth || maxWidth)
     }
   }
   const setLocalWidth = async (width: number) => {

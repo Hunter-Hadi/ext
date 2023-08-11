@@ -1,10 +1,10 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
-import { getChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import Log from '@/utils/Log'
 import LFUCache from '@/utils/cache/LFUCache'
 import Browser from 'webextension-polyfill'
 import { getCurrentDomainHost } from '@/utils'
+import { clientGetChromeExtensionButtonSettings } from '@/features/contextMenu/utils/clientButtonSettings'
 
 const favoriteMediatorLog = new Log('Store/FavoriteMediator')
 
@@ -176,7 +176,7 @@ class FavoriteMediator {
     )
   }
   async restoreCacheFromLocalStorage() {
-    const buttonSettings = await getChromeExtensionButtonSettings(
+    const buttonSettings = await clientGetChromeExtensionButtonSettings(
       this.buttonSettingKey,
     )
     const favoritesCache = await getFavoriteContextMenuFromLocalStorageByHost(

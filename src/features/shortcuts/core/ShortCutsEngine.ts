@@ -20,6 +20,7 @@ import {
   ActionSummarizeOfText,
   ActionWebGPTAskChatGPT,
   ActionSliceOfText,
+  ActionFetchActions,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -40,6 +41,7 @@ const ActionClassMap = {
   [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
   [ActionGetContentsOfURL.type]: ActionGetContentsOfURL,
   [ActionGetContentsOfSearchEngine.type]: ActionGetContentsOfSearchEngine,
+  [ActionFetchActions.type]: ActionFetchActions,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

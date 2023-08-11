@@ -7,10 +7,10 @@ import { getAccessToken } from '@/utils/request'
 import debounce from 'lodash-es/debounce'
 import {
   getChromeExtensionOnBoardingData,
-  getChromeExtensionSettings,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import AES from 'crypto-js/aes'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况
@@ -53,7 +53,7 @@ export const increaseChatGPTRequestCount = async (
   try {
     const cacheData: IChatRequestCountRecordType =
       (await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)) || {}
-    const settings = await getChromeExtensionSettings()
+    const settings = await clientGetLiteChromeExtensionSettings()
     const provider = settings.chatGPTProvider || 'UNKNOWN_PROVIDER'
     const currentDay = dayjs().format('YYYY-MM-DD')
     // MARK - 清理过期的数据

@@ -22,6 +22,8 @@ import {
   getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
 import { backendApiReportPricingHooks } from '@/background/api'
+import getLiteChromeExtensionSettings from '@/background/utils/getLiteChromeExtensionSettings'
+import { getContextMenuActions } from '@/background/utils/buttonSettings'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -277,6 +279,31 @@ export const ClientMessageInit = () => {
           return {
             success: true,
             data: true,
+            message: 'ok',
+          }
+        }
+        case 'Client_getLiteChromeExtensionSettings': {
+          let fromUrl = sender.tab?.url || sender.url
+          if (!fromUrl) {
+            const currentActiveTab = await Browser.tabs.query({
+              active: true,
+              currentWindow: true,
+            })
+            fromUrl = currentActiveTab[0]?.url
+          }
+          const settings = await getLiteChromeExtensionSettings(fromUrl)
+          return {
+            success: true,
+            data: settings,
+            message: 'ok',
+          }
+        }
+        case 'Client_getContextMenuActions': {
+          const { contextMenuId } = data
+          const actions = await getContextMenuActions(contextMenuId)
+          return {
+            success: true,
+            data: actions,
             message: 'ok',
           }
         }

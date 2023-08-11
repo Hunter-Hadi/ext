@@ -35,6 +35,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_restartApp'
   | 'Client_logCallApiRequest'
   | 'Client_emitPricingHooks'
+  | 'Client_getLiteChromeExtensionSettings'
+  | 'Client_getContextMenuActions'
   // 上传文件相关
   | 'Client_chatUploadFiles'
   | 'Client_chatUploadFilesChange'

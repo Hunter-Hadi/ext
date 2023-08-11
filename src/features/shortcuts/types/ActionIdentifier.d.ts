@@ -13,6 +13,7 @@ type ActionIdentifier =
   | 'DATE_FORMAT'
   | 'SUMMARIZE_OF_TEXT'
   | 'SLICE_OF_TEXT'
+  | 'FETCH_ACTIONS'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier =

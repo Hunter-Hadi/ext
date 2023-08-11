@@ -36,6 +36,8 @@ import {
 } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import { useTranslation } from 'react-i18next'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -44,6 +46,7 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
+  const { t } = useTranslation(['common', 'prompt'])
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')
@@ -204,6 +207,16 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     )
     log.info('[ChatGPT Module] send question step 2, push user message')
     const attachments = await getAIProviderSampleFiles()
+    const currentContextMenu = options?.meta?.contextMenu as IContextMenuItem
+    let questionText = question
+    if (currentContextMenu) {
+      const menuTextKey = `prompt:${currentContextMenu.id}` as any
+      if (t(menuTextKey) !== currentContextMenu.id) {
+        questionText = `${t(menuTextKey)}`
+      } else {
+        questionText = `${currentContextMenu.text}`
+      }
+    }
     setMessages((prevState) => {
       return [
         ...prevState,
@@ -211,7 +224,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           type: 'user',
           messageId: currentMessageId,
           parentMessageId: currentParentMessageId,
-          text: question,
+          text: questionText,
           extra: {
             includeHistory,
             regenerate,

@@ -25,6 +25,8 @@ export interface IUserChatMessage extends IChatMessage {
   extra: {
     // 告诉Use ChatGPT API是否包含历史消息
     includeHistory?: boolean
+    // 告诉Provider是否需要重试
+    retry?: boolean
     // 告诉Provider是否需要重新生成
     regenerate?: boolean
     // 告诉Provider最大的历史消息数量

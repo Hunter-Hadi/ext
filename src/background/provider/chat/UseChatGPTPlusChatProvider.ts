@@ -25,9 +25,11 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     return this.useChatGPTPlusChat.status
   }
   async createConversation() {
-    return Promise.resolve('')
+    const conversationId = await this.useChatGPTPlusChat.createConversation()
+    return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {
+    this.useChatGPTPlusChat.conversation = undefined
     await setChromeExtensionSettings({
       conversationId: '',
     })

@@ -299,7 +299,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             position={'relative'}
           >
             <SidebarChatBoxChatSpeedDial
-              disabledMainButton={loading || slicedMessageList.length === 0}
+              disabledMainButton={loading}
               onClick={async (type) => {
                 if (type === 'focus') {
                   const chatInput = getAppRootElement()?.querySelector(

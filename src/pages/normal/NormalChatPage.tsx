@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
+import { useChatConversationMessages } from '@/features/chatgpt/hooks/useConversationMessages'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -15,12 +16,12 @@ const NormalChatPage = () => {
   const {
     sendQuestion,
     conversation,
-    messages,
     reGenerate,
     retryMessage,
     stopGenerateMessage,
     resetConversation,
   } = useMessageWithChatGPT('')
+  const messagesList = useChatConversationMessages()
   useEffect(() => {
     pingDaemonProcess()
   }, [])
@@ -44,7 +45,7 @@ const NormalChatPage = () => {
           )
         }}
         writingMessage={conversation.writingMessage}
-        messages={messages}
+        messages={messagesList}
         loading={conversation.loading}
         title={'Chat Draft'}
         onRetry={retryMessage}

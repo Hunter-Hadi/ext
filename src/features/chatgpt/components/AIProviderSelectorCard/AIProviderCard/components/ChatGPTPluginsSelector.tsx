@@ -14,10 +14,10 @@ import Typography from '@mui/material/Typography'
 import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { AppSettingsState } from '@/store'
-import { ChatGPTMessageState } from '@/features/sidebar/store'
 import { setChromeExtensionSettings } from '@/background/utils'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { chromeExtensionClientOpenPage } from '@/utils'
+import { ChatGPTMessageState } from '@/features/chatgpt/store'
 
 const ArrowDropDownIconCustom = () => {
   return (

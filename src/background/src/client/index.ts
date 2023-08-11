@@ -24,6 +24,8 @@ import {
 import { backendApiReportPricingHooks } from '@/background/api'
 import getLiteChromeExtensionSettings from '@/background/utils/getLiteChromeExtensionSettings'
 import { getContextMenuActions } from '@/background/utils/buttonSettings'
+import ChatConversations from '@/background/src/chatConversations'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -307,6 +309,92 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
+        case 'Client_getLiteConversation':
+          {
+            const { conversationId } = data
+            const conversation = await ChatConversations.getClientConversation(
+              conversationId,
+            )
+            return {
+              success: conversation?.id ? true : false,
+              data: conversation,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_updateConversation':
+          {
+            const { conversationId, updateConversationData } = data
+            const oldConversation =
+              await ChatConversations.conversationDB.getConversationById(
+                conversationId,
+              )
+            if (oldConversation) {
+              await ChatConversations.conversationDB.addOrUpdateConversation(
+                mergeWithObject([oldConversation, updateConversationData]),
+              )
+              const newConversationData =
+                await ChatConversations.getClientConversation(conversationId)
+              sender.tab?.id &&
+                (await Browser.tabs.sendMessage(sender.tab.id, {
+                  event: 'Client_listenUpdateConversationMessages',
+                  id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                  data: {
+                    conversation: newConversationData,
+                  },
+                }))
+              console.log('新版消息记录，更新conversation', newConversationData)
+              return {
+                success: true,
+                data: newConversationData,
+                message: 'ok',
+              }
+            }
+            return {
+              success: false,
+              data: false,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_modifyMessages':
+          {
+            const { conversationId, action, deleteCount, newMessages } = data
+            let success = false
+            console.log('新版消息记录，更新消息', conversationId, data)
+            if (action === 'add') {
+              success = await ChatConversations.pushMessages(
+                conversationId,
+                newMessages,
+              )
+            } else if (action === 'delete') {
+              success = await ChatConversations.deleteMessages(
+                conversationId,
+                deleteCount,
+              )
+            } else if (action === 'clear') {
+              success = await ChatConversations.deleteMessages(
+                conversationId,
+                99999999,
+              )
+            }
+            sender.tab?.id &&
+              (await Browser.tabs.sendMessage(sender.tab.id, {
+                event: 'Client_listenUpdateConversationMessages',
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                data: {
+                  conversation: await ChatConversations.getClientConversation(
+                    conversationId,
+                  ),
+                },
+              }))
+            return {
+              success,
+              data: true,
+              message: 'ok',
+            }
+          }
+          break
         default:
           break
       }

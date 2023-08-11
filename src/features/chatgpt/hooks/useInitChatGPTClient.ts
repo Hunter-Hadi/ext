@@ -2,14 +2,16 @@
  * 初始化在gmail的chatGPT客户端
  */
 import { useSetRecoilState } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
+import {
+  ChatGPTClientState,
+  ChatGPTMessageState,
+} from '@/features/chatgpt/store'
 import { useEffect, useRef } from 'react'
 import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background/app'
 import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { ChatGPTMessageState } from '@/features/sidebar/store'
 import {
   getChromeExtensionSettings,
   useCreateClientMessageListener,

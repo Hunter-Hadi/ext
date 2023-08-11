@@ -7,7 +7,6 @@ import {
 } from '@/features/sidebar/hooks'
 import { deepCloneGmailMessageElement } from '@/features/sidebar/utils'
 
-import { ChatGPTMessageState } from '@/features/sidebar/store'
 import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import {
@@ -15,6 +14,7 @@ import {
   ROOT_CHAT_BOX_INPUT_ID,
 } from '@/constants'
 import { AppSettingsState, AppState } from '@/store'
+import { ChatGPTMessageState } from '@/features/chatgpt/store'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)

@@ -12,6 +12,7 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_updateAppSettings'
   | 'Client_listenUpdateIframeInput'
   | 'Client_listenUploadFilesChange'
+  | 'Client_listenUpdateConversationMessages'
 
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
@@ -24,6 +25,9 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_removeChatGPTConversation'
   | 'Client_askChatGPTQuestion'
   | 'Client_abortAskChatGPTQuestion'
+  | 'Client_modifyMessages'
+  | 'Client_getLiteConversation'
+  | 'Client_updateConversation'
   | 'Client_openUrl'
   | 'Client_updateIcon'
   | 'Client_updateUseChatGPTAuthInfo'

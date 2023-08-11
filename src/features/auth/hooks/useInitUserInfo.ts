@@ -1,13 +1,13 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import Log from '@/utils/Log'
 import { useRecoilState, useSetRecoilState } from 'recoil'
-import { ChatGPTMessageState } from '@/features/sidebar'
 import { v4 as uuidV4 } from 'uuid'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { AuthUserInfoState } from '@/features/auth/store'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useFocus } from '@/hooks/useFocus'
+import { ChatGPTMessageState } from '@/features/chatgpt/store'
 
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')

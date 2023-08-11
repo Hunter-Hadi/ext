@@ -31,6 +31,7 @@ import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitI18n } from '@/i18n/hooks'
 import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 
 const log = new Log('AppInit')
 
@@ -397,6 +398,7 @@ const GmailInit = React.lazy(() => import('@/components/AppInit/GmailInit'))
 const AppInit = () => {
   const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
+  useInitClientConversationMap()
   useAuthLogin()
   userInitUserInfo()
   useInitI18n()

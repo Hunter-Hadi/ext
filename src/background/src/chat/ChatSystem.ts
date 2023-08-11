@@ -21,8 +21,13 @@ import {
   CHAT_GPT_MESSAGES_RECOIL_KEY,
   CHROME_EXTENSION_HOMEPAGE_URL,
 } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import {
+  IChatUploadFile,
+  IUserChatMessageExtraType,
+} from '@/features/chatgpt/types'
 import { OnBoardingKeyType } from '@/background/utils/onboardingStorage'
+import ChatConversations from '@/background/src/chatConversations'
+import { v4 as uuidV4 } from 'uuid'
 
 const log = new Log('Background/Chat/ChatSystem')
 
@@ -85,7 +90,20 @@ class ChatSystem implements ChatSystemInterface {
             }
           }
           case 'Client_createChatGPTConversation': {
+            const cache = await getChromeExtensionSettings()
+            if (cache.conversationId) {
+              return {
+                success: true,
+                data: {
+                  conversationId: cache.conversationId,
+                },
+                message: '',
+              }
+            }
             const conversationId = await this.createConversation()
+            await setChromeExtensionSettings({
+              conversationId,
+            })
             if (conversationId) {
               return {
                 success: true,
@@ -107,6 +125,58 @@ class ChatSystem implements ChatSystemInterface {
           case 'Client_askChatGPTQuestion':
             {
               const { taskId, question, options } = data
+              const { regenerate, retry } = options as IUserChatMessageExtraType
+              // 如果是重试或者重新生成，需要从原始会话中获取问题
+              const conversationId = question.conversationId
+              if ((retry || regenerate) && conversationId) {
+                const originalConversation =
+                  await ChatConversations.conversationDB.getConversationById(
+                    conversationId,
+                  )
+                if (originalConversation) {
+                  const originalMessages = originalConversation.messages
+                  if (regenerate) {
+                    // 重新生成，需要删除原始会话中的问题
+                    const originalMessageIndex = originalMessages.findIndex(
+                      (message) => message.messageId === question.messageId,
+                    )
+                    const originalMessage =
+                      originalMessages[originalMessageIndex]
+                    const needDeleteCount =
+                      originalMessages.length - 1 - originalMessageIndex
+                    await ChatConversations.deleteMessages(
+                      conversationId,
+                      needDeleteCount,
+                    )
+                    // 重新生成问题
+                    if (originalMessage) {
+                      question.question = originalMessage.text
+                      question.messageId = originalMessage.messageId
+                      question.parentMessageId = originalMessage.parentMessageId
+                    }
+                  } else if (retry) {
+                    // 重试，需要删除原始会话中的问题和答案
+                    const originalMessageIndex = originalMessages.findIndex(
+                      (message) => message.messageId === question.messageId,
+                    )
+                    const originalMessage =
+                      originalMessages[originalMessageIndex]
+                    const needDeleteCount =
+                      originalMessages.length - originalMessageIndex
+                    await ChatConversations.deleteMessages(
+                      conversationId,
+                      needDeleteCount,
+                    )
+                    // 重新生成问题
+                    if (originalMessage) {
+                      question.question = originalMessage.text
+                      question.messageId = uuidV4()
+                      question.parentMessageId = originalMessage.parentMessageId
+                    }
+                  }
+                  await this.updateClientConversationMessages(conversationId)
+                }
+              }
               await this.sendQuestion(taskId, sender, question, options)
               this.updateClientFiles()
             }
@@ -380,6 +450,14 @@ class ChatSystem implements ChatSystemInterface {
     console.log('Client_chatUploadFilesChange', this.chatFiles)
     backgroundSendAllClientMessage('Client_listenUploadFilesChange', {
       files: this.chatFiles,
+    })
+  }
+  async updateClientConversationMessages(conversationId: string) {
+    const conversation = await ChatConversations.getClientConversation(
+      conversationId,
+    )
+    backgroundSendAllClientMessage('Client_listenUpdateConversationMessages', {
+      conversation,
     })
   }
 }

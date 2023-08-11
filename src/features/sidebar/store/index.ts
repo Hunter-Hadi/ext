@@ -1,8 +1,7 @@
 import { atom, selector } from 'recoil'
 import { ComposeView, InboxSDK, ThreadView } from '@inboxsdk/core'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
-import Browser from 'webextension-polyfill'
 import { IChatMessage } from '@/features/chatgpt/types'
+
 // import { v4 as uuidV4 } from 'uuid'
 
 interface IProxyInboxSdkTarget<T> {
@@ -48,32 +47,8 @@ export const InboxComposeViewState = atom<{
   default: {},
 })
 
-export const ChatGPTMessageState = atom<IChatMessage[]>({
-  key: CHAT_GPT_MESSAGES_RECOIL_KEY,
-  default: [],
-  effects: [
-    ({ onSet }) => {
-      onSet((newValue) => {
-        if (newValue.length > 0) {
-          Browser.storage.local
-            .set({
-              [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify(newValue),
-            })
-            .then(() => {
-              console.log(
-                '[ChatGPT Module] [localstorage] message update:\t',
-                newValue,
-              )
-            })
-        }
-      })
-    },
-  ],
-})
-
 export const ChatGPTConversationState = atom<{
   writingMessage: IChatMessage | null
-  conversationId?: string
   lastMessageId?: string
   model: string
   loading: boolean
@@ -81,7 +56,6 @@ export const ChatGPTConversationState = atom<{
   key: 'ChatGPTConversationState',
   default: {
     writingMessage: null,
-    conversationId: '',
     lastMessageId: '',
     model: '',
     loading: false,

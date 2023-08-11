@@ -230,19 +230,12 @@ class OpenAIChat extends BaseChat {
     }
   }
   async createConversation() {
-    const cache = await getChromeExtensionSettings()
-    const result = await this.sendDaemonProcessTask(
-      'OpenAIDaemonProcess_createConversation',
-      {
-        conversationId: cache.conversationId || '',
-        model: cache.currentModel || '',
-      },
-    )
-    log.info('createConversation', result)
-    if (result.success) {
-      return result.data.conversationId
-    }
-    return ''
+    await super.createConversation()
+    await this.sendDaemonProcessTask('OpenAIDaemonProcess_createConversation', {
+      conversationId: this.conversation?.meta?.AIConversationId || '',
+      model: this.conversation?.meta?.AIModel || '',
+    })
+    return this.conversation?.id || ''
   }
   async removeConversation(conversationId: string) {
     if (!conversationId) {

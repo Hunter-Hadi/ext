@@ -1,17 +1,13 @@
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
-import {
-  ChatGPTMessageState,
-  ChatGPTConversationState,
-} from '@/features/sidebar/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   ContentScriptConnectionV2,
   getAIProviderSampleFiles,
 } from '@/features/chatgpt/utils'
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
-import { setChromeExtensionSettings } from '@/background/utils'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import {
@@ -36,8 +32,14 @@ import {
 } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import { useTranslation } from 'react-i18next'
+import {
+  clientChatConversationModifyChatMessages,
+  clientChatConversationUpdate,
+} from '@/features/chatgpt/utils/clientChatConversation'
+import { setChromeExtensionSettings } from '@/background/utils'
+import { AppSettingsState } from '@/store'
+import { useChatConversationMessages } from '@/features/chatgpt/hooks/useConversationMessages'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -46,11 +48,11 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
-  const { t } = useTranslation(['common', 'prompt'])
+  const messages = useChatConversationMessages()
+  const updateAppSettings = useSetRecoilState(AppSettingsState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')
-  const [messages, setMessages] = useRecoilState(ChatGPTMessageState)
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
@@ -60,19 +62,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     updateChatInputValue('')
     await cleanChatGPT()
   }
-  /**
-   * 创建会话目的是初始化并获取缓存中使用的conversationId, 不会创建conversationId
-   */
   const createConversation = async () => {
     const result = await port.postMessage({
       event: 'Client_createChatGPTConversation',
       data: {},
     })
-    log.info('createConversation', result)
     if (result.success) {
-      setConversation((prevState) => {
+      updateAppSettings((prev) => {
         return {
-          ...prevState,
+          ...prev,
           conversationId: result.data.conversationId,
         }
       })
@@ -120,9 +118,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         authEmitPricingHooksLog('show', abortAskAIShowUpgradeCard.sceneType)
         // 展示sidebar
         showChatBox()
-        setMessages((prevState) => {
-          return [...prevState, needUpgradeMessage]
-        })
         return {
           success: false,
           answer: '',
@@ -164,6 +159,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       regenerate = false,
       includeHistory = false,
       maxHistoryMessageCnt = 0,
+      retry = false,
     } = options || {}
     if (!question || conversation.loading) {
       return {
@@ -179,9 +175,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       }
     })
     const postConversationId: string = await createConversation()
-    log.info(
-      `[ChatGPT Module] send question step 0, init ConversationId=[${postConversationId}]`,
-    )
+    log.info('createConversation', postConversationId)
+    console.log('新版消息记录 createConversation', postConversationId)
     let currentMaxHistoryMessageCnt = maxHistoryMessageCnt
     // 如果没有传入指定的历史会话长度，并且includeHistory===true,计算历史会话条数
     if (!maxHistoryMessageCnt && includeHistory) {
@@ -202,41 +197,22 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     }
     const currentMessageId = messageId || uuidV4()
     const currentParentMessageId = parentMessageId || ''
-    log.info(
-      `[ChatGPT Module] send question step 1\n maxHistoryMessageCnt=[${currentMaxHistoryMessageCnt}]\n messageId=[${currentMessageId}]\n parentMessageId=[${currentParentMessageId}]`,
-    )
-    log.info('[ChatGPT Module] send question step 2, push user message')
     const attachments = await getAIProviderSampleFiles()
-    const currentContextMenu = options?.meta?.contextMenu as IContextMenuItem
-    let questionText = question
-    if (currentContextMenu) {
-      const menuTextKey = `prompt:${currentContextMenu.id}` as any
-      if (t(menuTextKey) !== currentContextMenu.id) {
-        questionText = `${t(menuTextKey)}`
-      } else {
-        questionText = `${currentContextMenu.text}`
-      }
-    }
-    setMessages((prevState) => {
-      return [
-        ...prevState,
-        {
-          type: 'user',
-          messageId: currentMessageId,
-          parentMessageId: currentParentMessageId,
-          text: questionText,
-          extra: {
-            includeHistory,
-            regenerate,
-            maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
-            meta: {
-              contextMenu: options?.meta?.contextMenu,
-              attachments,
-            },
-          },
-        } as IUserChatMessage,
-      ]
-    })
+    const questionMessage = {
+      type: 'user',
+      messageId: currentMessageId,
+      parentMessageId: currentParentMessageId,
+      text: question,
+      extra: {
+        includeHistory,
+        regenerate,
+        maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
+        meta: {
+          contextMenu: options?.meta?.contextMenu,
+          attachments,
+        },
+      },
+    } as IUserChatMessage
     setConversation((prevState) => {
       return {
         ...prevState,
@@ -244,7 +220,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         loading: true,
       }
     })
-    log.info('[ChatGPT Module] send question step 3 ask question')
+    await clientChatConversationModifyChatMessages(
+      'add',
+      postConversationId,
+      0,
+      [questionMessage],
+    )
     const pushMessages: IChatMessage[] = []
     let isManualStop = false
     let hasError = false
@@ -265,7 +246,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       })
       // ai 正在输出的消息
       let aiRespondingMessage: any = null
-      let saveConversationId = ''
+      let AIConversationId = ''
       await askChatGPTQuestion(
         {
           conversationId: postConversationId,
@@ -276,13 +257,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           parentMessageId: currentParentMessageId,
         },
         {
+          retry,
           includeHistory,
           regenerate,
           maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
         },
         {
           onMessage: (msg) => {
-            log.info('[ChatGPT Module] send question onmessage', msg)
             const writingMessage: IAIResponseMessage = {
               messageId: (msg.messageId as string) || uuidV4(),
               parentMessageId: (msg.parentMessageId as string) || uuidV4(),
@@ -291,13 +272,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             }
             aiRespondingMessage = writingMessage
             if (msg.conversationId) {
-              saveConversationId = msg.conversationId
+              AIConversationId = msg.conversationId
             }
             setConversation((prevState) => {
               return {
                 ...prevState,
-                conversationId:
-                  msg.conversationId || prevState.conversationId || '',
                 loading: true,
                 writingMessage,
               }
@@ -305,18 +284,14 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           },
           onError: (error: any) => {
             hasError = true
-            log.info('[ChatGPT Module] send question onerror', error)
             if (aiRespondingMessage?.messageId) {
               pushMessages.push(aiRespondingMessage)
             }
             const is403Error =
               typeof error === 'string' && error?.trim() === '403'
             if (error === 'Conversation not found' || is403Error) {
-              setConversation((prevState) => {
-                return {
-                  ...prevState,
-                  conversationId: '',
-                }
+              setChromeExtensionSettings({
+                conversationId: '',
               })
             }
             errorMessage =
@@ -353,7 +328,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                 },
               } as ISystemChatMessage)
             }
-            log.info('onerror', error, pushMessages)
             return
           },
         },
@@ -365,10 +339,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         aiRespondingMessage?.text
       ) {
         await increaseChatGPTRequestCount('success')
-        if (saveConversationId) {
-          await setChromeExtensionSettings({
-            conversationId: saveConversationId,
+        if (AIConversationId) {
+          await clientChatConversationUpdate(postConversationId, {
+            meta: {
+              AIConversationId,
+            },
           })
+          // TODO 保存chatgpt的conversationId到background
         }
         pushMessages.push(aiRespondingMessage as IAIResponseMessage)
         return Promise.resolve({
@@ -392,10 +369,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     } finally {
       // 清空输入框
       updateChatInputValue('')
-      // 更新消息
-      setMessages((prevState) => {
-        return [...prevState, ...pushMessages]
-      })
       // 清空writingMessage
       setConversation((prevState) => {
         return {
@@ -404,6 +377,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           loading: false,
         }
       })
+      // 更新消息
+      await clientChatConversationModifyChatMessages(
+        'add',
+        postConversationId,
+        0,
+        pushMessages,
+      )
     }
   }
   const retryMessage = async (retryMessageId: string) => {
@@ -417,9 +397,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           loading: true,
         }
       })
-      const delay = (t: number) =>
-        new Promise((resolve) => setTimeout(resolve, t))
-      await delay(3000)
       await sendQuestion(
         {
           question: originMessage.text,
@@ -427,13 +404,14 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           parentMessageId: originMessage.parentMessageId,
         },
         {
+          retry: true,
           regenerate: false,
           includeHistory: true,
         },
       )
     }
   }
-  const reGenerate = useCallback(() => {
+  const reGenerate = useCallback(async () => {
     let lastUserMessage: IUserChatMessage | null = null
     for (let i = messages.length - 1; i >= 0; i--) {
       const message = messages[i]
@@ -442,11 +420,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         break
       }
     }
-    console.log('handleShortCut regenerate run !', lastUserMessage)
     if (lastUserMessage) {
-      // remove after last user message
-      const index = messages.indexOf(lastUserMessage)
-      setMessages(messages.slice(0, index))
       return sendQuestion(
         {
           question: lastUserMessage.text,
@@ -470,19 +444,26 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const stopGenerateMessage = async () => {
     const parentMessageId = conversation.writingMessage?.parentMessageId
     if (parentMessageId || conversation.lastMessageId) {
-      const result = await port.postMessage({
+      await port.postMessage({
         event: 'Client_abortAskChatGPTQuestion',
         data: {
           messageId: conversation.lastMessageId,
         },
       })
-      log.info('stopGenerateMessage', result)
     }
   }
-  const pushMessage = (newMessage: ISystemChatMessage | IThirdChatMessage) => {
-    setMessages((prevState) => {
-      return [...prevState, newMessage]
-    })
+  const pushMessage = async (
+    newMessage: ISystemChatMessage | IThirdChatMessage,
+  ) => {
+    const settings = await clientGetLiteChromeExtensionSettings()
+    if (settings.conversationId) {
+      await clientChatConversationModifyChatMessages(
+        'add',
+        settings.conversationId,
+        0,
+        [newMessage],
+      )
+    }
   }
   const updateChatInputValue = (value: string) => {
     getMediator('chatBoxInputMediator').updateInputValue(value)

@@ -4,7 +4,6 @@ import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { useFocus } from '@/hooks/useFocus'
 import isArray from 'lodash-es/isArray'
-import { ChatGPTMessageState } from '@/features/sidebar/store'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -15,6 +14,7 @@ import {
 } from '@/background/utils/uplpadFileProcessHelper'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
+import { ChatGPTMessageState } from '@/features/chatgpt/store'
 
 /**
  * AI Provider的上传文件处理

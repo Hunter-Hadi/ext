@@ -232,7 +232,7 @@ class OpenAIChat extends BaseChat {
   }
   async createConversation() {
     if (this.conversation) {
-      // 更新conversation, 获取实际的conversation id
+      // 更新conversation, 获取实际的ChatGPT conversation id
       this.conversation =
         await ChatConversations.conversationDB.getConversationById(
           this.conversation.id,
@@ -257,17 +257,25 @@ class OpenAIChat extends BaseChat {
     return this.conversation?.id || ''
   }
   async removeConversation(conversationId: string) {
-    this.conversation = undefined
-    if (!conversationId) {
+    if (this.conversation) {
+      // 更新conversation, 获取实际的ChatGPT conversation id
+      this.conversation =
+        await ChatConversations.conversationDB.getConversationById(
+          this.conversation.id,
+        )
+    }
+    if (!this.conversation?.meta.AIConversationId) {
+      this.conversation = undefined
       return true
     }
     log.info('removeConversation', conversationId)
     const result = await this.sendDaemonProcessTask(
       'OpenAIDaemonProcess_removeConversation',
       {
-        conversationId,
+        conversationId: this.conversation.meta.AIConversationId,
       },
     )
+    this.conversation = undefined
     return result.success
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (
@@ -283,19 +291,20 @@ class OpenAIChat extends BaseChat {
       this.isAnswering = true
       const settings = await getChromeExtensionSettings()
       if (settings.currentModel === 'gpt-4-code-interpreter') {
-        const successFile = this.chatFiles.find(
-          (file) => file.uploadStatus === 'success',
+        const successFiles = this.chatFiles.filter(
+          (file) => file.uploadStatus === 'success' && file.uploadedFileId,
         )
-        if (successFile && successFile.uploadedUrl) {
+        if (successFiles.length > 0) {
           if (!options.meta) {
             options.meta = {}
           }
-          options.meta.attachments = [
-            {
+          options.meta.attachments = successFiles.map((successFile) => {
+            return {
               name: successFile.fileName,
-              url: successFile.uploadedUrl,
-            } as any,
-          ]
+              id: successFile.uploadedFileId,
+              size: successFile.fileSize,
+            } as any
+          })
           this.chatFiles = []
           console.log('Client_chatUploadFilesChange', this.chatFiles)
           backgroundSendAllClientMessage('Client_listenUploadFilesChange', {

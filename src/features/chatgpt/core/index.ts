@@ -342,23 +342,18 @@ export const generateArkoseToken = async (model: string) => {
     console.log('generateArkoseToken', model)
     const currentToken = await getLocalArkoseToken()
     mockSendPostMessage()
-    return new Promise((resolve) => {
-      const intervalDelay = 100
-      const maxLoop = (10 * 1000) / intervalDelay
-      let loop = 0
-      const timer = setInterval(async () => {
-        const newToken = await getLocalArkoseToken()
-        if (newToken && newToken.token !== currentToken?.token) {
-          clearInterval(timer)
-          resolve(newToken.token)
-        }
-        if (loop > maxLoop) {
-          clearInterval(timer)
-          resolve('')
-        }
-        loop++
-      }, intervalDelay)
-    })
+    const intervalDelay = 100
+    const maxLoop = (10 * 1000) / intervalDelay
+    const delay = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms))
+    for (let i = 0; i < maxLoop; i++) {
+      const newToken = await getLocalArkoseToken()
+      if (newToken?.token && newToken.token !== currentToken?.token) {
+        return newToken.token
+      }
+      await delay(intervalDelay)
+    }
+    return ''
   } else {
     // TODO gpt3.5某些用户可能也需要
     return ''

@@ -17,14 +17,16 @@ const maxAIInjectFetch = (url: string, options: any) => {
       // 克隆响应
       if (
         maxAIChatGPTBlockNextRequest &&
-        [
+        ([
           'https://chat.openai.com/backend-api/files',
           'https://chat.openai.com/backend-api/conversation/interpreter/process_upload',
-        ].includes(url)
+        ].includes(url) ||
+          url.includes('https://chat.openai.com/backend-api/files'))
       ) {
         const cloneResponse = response.clone()
         // https://chat.openai.com/backend-api/files // 第一次上传
         // https://chat.openai.com/backend-api/conversation/interpreter/process_upload // 第二次上传
+        // https://chat.openai.com/backend-api/files/uuid/uploaded // 第二次上传
         const step = url === 'https://chat.openai.com/backend-api/files' ? 1 : 2
         cloneResponse
           .json()
@@ -45,8 +47,8 @@ const maxAIInjectFetch = (url: string, options: any) => {
               result.status = 'error'
               // 将对象转换为字符串，并创建新的响应对象
               const modifiedResponse = new Response(JSON.stringify(result), {
-                status: response.status,
-                statusText: response.statusText,
+                status: 500,
+                statusText: 'error',
                 headers: response.headers,
               })
               maxAIChatGPTBlockNextRequest = false
@@ -110,6 +112,9 @@ window.addEventListener('message', (event) => {
           // result,
           //   progress: step === 2 ? 100 : 80,
           // done: step === 2,
+          if (result?.file_id) {
+            file.uploadedFileId = result?.file_id
+          }
           if (result.status === 'success') {
             file.uploadProgress = progress
             file.uploadStatus = done ? 'success' : 'uploading'

@@ -302,6 +302,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             }
             errorMessage =
               error?.message || error || 'Error detected. Please try again.'
+            if (typeof errorMessage !== 'string') {
+              errorMessage = 'Network error. Please try again.'
+            }
             if (errorMessage === 'manual aborted request.') {
               isManualStop = true
               // 手动取消的请求不计入错误

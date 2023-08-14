@@ -21,6 +21,7 @@ import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefresh
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
 import Divider from '@mui/material/Divider'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
@@ -107,7 +108,87 @@ const ChatGPTStatusWrapper: FC = () => {
           },
         }}
       >
-        <Stack spacing={2} width={'calc(100% - 16px)'}>
+        <Stack width={'calc(100% - 16px)'}>
+          <Stack
+            spacing={1.5}
+            p={3}
+            pb={2}
+            sx={{
+              maxWidth: '414px',
+              mx: 'auto!important',
+              borderRadius: '4px 4px 0 0',
+              width: '100%',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark' ? '#4f4f4f' : '#F5F6F7',
+            }}
+          >
+            <Stack
+              direction={'row'}
+              alignItems={'center'}
+              justifyContent={'center'}
+              width={'100%'}
+              spacing={1}
+            >
+              <UseChatGptIcon sx={{ fontSize: '24px' }} />
+              <Typography
+                fontSize={'24px'}
+                fontWeight={700}
+                color={'text.secondary'}
+                textAlign={'center'}
+              >
+                Use AI Anywhere Online
+              </Typography>
+            </Stack>
+            <Stack
+              direction={'row'}
+              sx={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 3,
+              }}
+            >
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <AIProviderIcon aiProviderType={'OPENAI'} size={20} />
+                <Typography
+                  component={'span'}
+                  fontSize={'16px'}
+                  color={'text.secondary'}
+                >
+                  ChatGPT
+                </Typography>
+              </Stack>
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <AIProviderIcon aiProviderType={'CLAUDE'} size={20} />
+                <Typography
+                  component={'span'}
+                  fontSize={'16px'}
+                  color={'text.secondary'}
+                >
+                  Claude
+                </Typography>
+              </Stack>
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <AIProviderIcon aiProviderType={'BARD'} size={20} />
+                <Typography
+                  component={'span'}
+                  fontSize={'16px'}
+                  color={'text.secondary'}
+                >
+                  Bard
+                </Typography>
+              </Stack>
+              <Stack direction={'row'} alignItems={'center'} spacing={1}>
+                <AIProviderIcon aiProviderType={'BING'} size={20} />
+                <Typography
+                  component={'span'}
+                  fontSize={'16px'}
+                  color={'text.secondary'}
+                >
+                  Bing
+                </Typography>
+              </Stack>
+            </Stack>
+          </Stack>
           <Paper
             sx={{
               maxWidth: '414px',
@@ -115,6 +196,7 @@ const ChatGPTStatusWrapper: FC = () => {
               width: '100%',
               p: 2,
               bgcolor: 'background.paper',
+              borderRadius: '0 0 4px 4px',
             }}
           >
             <Stack alignItems={'flex-start'} height={'100%'} spacing={2}>
@@ -125,9 +207,8 @@ const ChatGPTStatusWrapper: FC = () => {
                 width={'100%'}
                 spacing={1}
               >
-                <UseChatGptIcon sx={{ fontSize: 20 }} />
                 <Typography
-                  fontSize={'20px'}
+                  fontSize={'24px'}
                   fontWeight={700}
                   color={'text.primary'}
                   textAlign={'center'}

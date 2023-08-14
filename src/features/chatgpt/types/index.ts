@@ -86,6 +86,7 @@ export interface IChatUploadFile {
   uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
   uploadErrorMessage?: string
   uploadedUrl?: string
+  uploadedFileId?: string
 }
 
 export type IAIProviderModelDescriptionType = {

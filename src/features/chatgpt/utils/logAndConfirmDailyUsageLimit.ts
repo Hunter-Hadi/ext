@@ -73,7 +73,6 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         },
       })
       const body = await result.json()
-      console.log(body)
       // has_reached_limit:false
       // next_reset_timestamp:1688515200
       if (body.data && body.status === 'OK') {
@@ -117,21 +116,32 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
           // TODO 校验身份 pro不拦截，但是发larkbot
           const userInfo = await getChromeExtensionUserInfo(false)
           if (userInfo?.role?.name === 'pro') {
-            // pro用户不拦截
-            sendLarkBotMessage(
-              `[Pricing] Pro [cache] has reached the limit`,
-              `Pro user ${
-                userInfo?.email
-              } use has reached the limit.\n${JSON.stringify({
-                role: userInfo?.role,
-                usage: cache.usage,
-              })}`,
-              {
-                uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
-              },
-            )
-            resolve(false)
-            return
+            // pro用户没过期, 不拦截
+            if (
+              userInfo.role.exp_time &&
+              dayjs(userInfo.role.exp_time).diff(dayjs().utc()) > 0
+            ) {
+              sendLarkBotMessage(
+                `[Pricing] Pro [cache] has reached the limit`,
+                `Pro user ${
+                  userInfo?.email
+                } use has reached the limit.\n${JSON.stringify({
+                  role: userInfo?.role,
+                  usage: cache.usage,
+                })}`,
+                {
+                  uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+                },
+              )
+              resolve(false)
+              return
+            } else {
+              // pro 用户过期了，就拦截
+              await fetchUserSubscriptionInfo()
+              // 更新本地的缓存
+              cache = await getDailyUsageLimitData()
+              resolve(cache.has_reached_limit)
+            }
           }
           // 已经到达了限制，但是普通用户刷新时间到了，就更新
           if (new Date() > new Date(cache.next_reset_timestamp * 1000)) {

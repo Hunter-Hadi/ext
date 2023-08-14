@@ -70,7 +70,7 @@ export default [
   },
   {
     id: 'a70f5c73-72c4-4fd7-a213-460f6593b225',
-    parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
+    parent: '5073e4ce-13f1-4c12-93fe-833ffec3ab8b',
     droppable: true,
     text: 'Professional',
     data: {
@@ -99,7 +99,7 @@ export default [
   },
   {
     id: 'ffc003e5-816d-4c7b-a7ca-0ff2d1df1aa5',
-    parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
+    parent: '5073e4ce-13f1-4c12-93fe-833ffec3ab8b',
     droppable: true,
     text: 'Casual',
     data: {
@@ -128,7 +128,7 @@ export default [
   },
   {
     id: 'a211146b-a2d9-4c19-8187-e49a14cc54e6',
-    parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
+    parent: '5073e4ce-13f1-4c12-93fe-833ffec3ab8b',
     droppable: true,
     text: 'Straightforward',
     data: {
@@ -157,7 +157,7 @@ export default [
   },
   {
     id: 'dd803af3-a0b5-4f69-be13-2210fe5eba6e',
-    parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
+    parent: '5073e4ce-13f1-4c12-93fe-833ffec3ab8b',
     droppable: true,
     text: 'Confident',
     data: {
@@ -186,7 +186,7 @@ export default [
   },
   {
     id: '5c15c9a2-199c-444e-ab13-f7429755b874',
-    parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
+    parent: '5073e4ce-13f1-4c12-93fe-833ffec3ab8b',
     droppable: true,
     text: 'Friendly',
     data: {
@@ -215,7 +215,7 @@ export default [
   },
   {
     id: 'cf8b9c91-7b74-4ef0-a5df-facf3623e7cc',
-    parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
+    parent: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     droppable: true,
     text: 'Improve writing',
     data: {
@@ -245,7 +245,7 @@ export default [
   },
   {
     id: '6a3e9e6a-e26b-4723-a7c9-e8dedbed2227',
-    parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
+    parent: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     droppable: true,
     text: 'Fix spelling & grammar',
     data: {
@@ -275,7 +275,7 @@ export default [
   },
   {
     id: '211ddeb6-d48d-4840-b384-84b042e31368',
-    parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
+    parent: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     droppable: true,
     text: 'Make shorter',
     data: {
@@ -305,7 +305,7 @@ export default [
   },
   {
     id: 'd2effba2-f73a-4d71-affc-c5320037aabf',
-    parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
+    parent: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     droppable: true,
     text: 'Make longer',
     data: {
@@ -335,7 +335,7 @@ export default [
   },
   {
     id: '5073e4ce-13f1-4c12-93fe-833ffec3ab8b',
-    parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
+    parent: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     droppable: true,
     text: 'Change tone',
     data: {
@@ -353,7 +353,7 @@ export default [
   },
   {
     id: '2b77210f-4322-450d-a345-275493203750',
-    parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
+    parent: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     droppable: true,
     text: 'Simplify language',
     data: {
@@ -383,7 +383,7 @@ export default [
   },
   {
     id: '9a135767-4e4e-45b3-a8dd-7f9150dcb2a9',
-    parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
+    parent: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     droppable: true,
     text: 'Paraphrase',
     data: {

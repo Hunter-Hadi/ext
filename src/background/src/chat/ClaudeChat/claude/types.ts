@@ -32,6 +32,10 @@ export interface ClaudeMessage {
   model: string
   stop: boolean | null
   stop_reason: string | null
+  error?: {
+    type: string
+    message: string
+  }
 }
 
 export const CLAUDE_MODELS: IAIProviderModel[] = [

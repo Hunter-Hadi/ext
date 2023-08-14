@@ -100,6 +100,22 @@ export class Claude {
           const data = JSON.parse(message) as ClaudeMessage
           if (data.log_id) {
             onMessage?.(data)
+          } else if (data?.error?.message) {
+            let errorMessage = data?.error?.message || 'Network Error'
+            // claude.ai 负荷过大的时候，会返回 Overloaded
+            if (errorMessage === 'Overloaded') {
+              errorMessage = `You've sent too many requests to the Claude model. You can continue with the other AI Providers now, or try again later.`
+            }
+            onMessage?.({
+              completion: '',
+              log_id: '',
+              messageLimit: {
+                type: 'within_limit',
+              },
+              model: '',
+              stop: true,
+              stop_reason: errorMessage,
+            })
           }
         } catch (e) {
           console.error('claude sse message parse error', e)

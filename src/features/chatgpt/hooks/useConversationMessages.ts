@@ -8,7 +8,6 @@ export const useChatConversationMessages = () => {
   const appSettings = useRecoilValue(AppSettingsState)
   const conversationMap = useRecoilValue(ClientConversationMapState)
   return useMemo<IChatMessage[]>(() => {
-    console.log(`新版消息记录, conversationId: ${appSettings.conversationId}`)
     if (appSettings.conversationId) {
       return conversationMap[appSettings.conversationId]?.messages || []
     }

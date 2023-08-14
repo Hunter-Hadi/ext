@@ -5,6 +5,8 @@ import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { ChatConversation } from '@/background/src/chatConversations'
 import { useEffect } from 'react'
+import { useFocus } from '@/hooks/useFocus'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
 export const clientGetConversation = async (conversationId: string) => {
   try {
@@ -62,5 +64,22 @@ const useInitClientConversationMap = () => {
       })
     }
   }, [appSettings.conversationId])
+  useFocus(() => {
+    clientGetLiteChromeExtensionSettings().then((cache) => {
+      if (cache.conversationId) {
+        clientGetConversation(cache.conversationId).then((conversation) => {
+          if (conversation) {
+            console.log('新版消息记录 refocus更新', conversation.messages)
+            setClientConversationMap((prevState) => {
+              return {
+                ...prevState,
+                [conversation.id]: conversation,
+              }
+            })
+          }
+        })
+      }
+    })
+  })
 }
 export default useInitClientConversationMap

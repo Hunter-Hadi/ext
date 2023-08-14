@@ -60,7 +60,7 @@ import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExt
  */
 export const startChromeExtensionBackground = () => {
   // 获取必要的权限
-  Browser.management.getAll()
+  Browser.management?.getAll?.()
   Browser.storage.onChanged.addListener(() => {
     console.log('storage changed')
   })
@@ -312,7 +312,7 @@ const initChromeExtensionDisabled = () => {
   if (isEzMailApp) {
     // no popup
   } else {
-    Browser.management.onDisabled.addListener(function (extensionInfo) {
+    Browser.management?.onDisabled?.addListener(function (extensionInfo) {
       if (extensionInfo.id === Browser.runtime.id) {
         console.log('Extension disabled')
         Browser.action.setPopup({

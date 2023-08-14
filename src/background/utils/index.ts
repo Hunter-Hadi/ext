@@ -133,12 +133,6 @@ export const getDefaultChromeExtensionSettings =
 
 export const getChromeExtensionSettings =
   async (): Promise<IChromeExtensionSettings> => {
-    if (
-      typeof window !== 'undefined' &&
-      !window.location.href.includes(Browser.runtime.id)
-    ) {
-      debugger
-    }
     const defaultConfig = getDefaultChromeExtensionSettings()
     const localData = await Browser.storage.local.get(
       CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,

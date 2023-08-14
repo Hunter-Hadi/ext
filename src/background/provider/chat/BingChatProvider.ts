@@ -26,9 +26,14 @@ class BingChatProvider implements ChatAdapterInterface {
     return this.bingChat.status
   }
   async createConversation() {
-    return Promise.resolve('')
+    if (this.bingChat.conversation?.id) {
+      return Promise.resolve(this.bingChat.conversation.id)
+    }
+    const conversationId = await this.bingChat.createConversation()
+    return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {
+    this.bingChat.conversation = undefined
     await setChromeExtensionSettings({
       conversationId: '',
     })

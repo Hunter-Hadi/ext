@@ -9,6 +9,7 @@ import { IChatUploadFile } from '@/features/chatgpt/types'
 import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
 import { v4 as uuidV4 } from 'uuid'
 import { ClaudeAttachment } from '@/background/src/chat/ClaudeChat/claude/types'
+import ChatConversations from '@/background/src/chatConversations'
 
 // 为了减少请求claude.ai网页，设置一个本地的token key
 const cacheTokenKey = 'CHROME_EXTENSION_LOCAL_STORAGE_CLAUDE_TOKEN_KEY'
@@ -52,8 +53,11 @@ class ClaudeChat extends BaseChat {
     }
   }
   async createConversation() {
-    if (this.claude.conversationId) {
-      return this.claude.conversationId
+    if (!this.conversation) {
+      await super.createConversation()
+    }
+    if (this.conversation?.meta.AIConversationId) {
+      return this.conversation.id
     }
     const conversationId = await this.claude.createConversation(
       CLAUDE_CONVERSATION_NAME,
@@ -72,7 +76,13 @@ class ClaudeChat extends BaseChat {
       this.status = 'needAuth'
       await this.updateClientStatus('needAuth')
     }
-    return conversationId
+    if (this.conversation) {
+      this.conversation.meta.AIConversationId = conversationId
+      await ChatConversations.conversationDB.addOrUpdateConversation(
+        this.conversation,
+      )
+    }
+    return this.conversation?.id || ''
   }
   async askChatGPT(
     question: string,
@@ -152,6 +162,7 @@ class ClaudeChat extends BaseChat {
     return true
   }
   async removeConversation(conversationId: string) {
+    this.conversation = undefined
     await this.claude.resetConversation()
     if (this.claude.organizationId) {
       // 异步删除会话

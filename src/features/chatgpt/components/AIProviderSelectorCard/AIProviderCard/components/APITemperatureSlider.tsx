@@ -10,7 +10,7 @@ import { IAIProviderType } from '@/background/provider/chat'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 
-const ChatGPTOpenAIAPITemperatureSlider: FC<{
+const APITemperatureSlider: FC<{
   authSceneType?: PermissionWrapperCardSceneType
   provider: IAIProviderType
 }> = (props) => {
@@ -134,4 +134,4 @@ const ChatGPTOpenAIAPITemperatureSlider: FC<{
     </FormControl>
   )
 }
-export default ChatGPTOpenAIAPITemperatureSlider
+export default APITemperatureSlider

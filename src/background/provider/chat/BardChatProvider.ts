@@ -25,9 +25,14 @@ class BardChatProvider implements ChatAdapterInterface {
     return this.bardChat.status
   }
   async createConversation() {
-    return Promise.resolve('')
+    if (this.bardChat.conversation?.id) {
+      return Promise.resolve(this.bardChat.conversation.id)
+    }
+    const conversationId = await this.bardChat.createConversation()
+    return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {
+    this.bardChat.conversation = undefined
     await this.bardChat.reset()
     await setChromeExtensionSettings({
       conversationId: '',

@@ -90,16 +90,6 @@ class ChatSystem implements ChatSystemInterface {
             }
           }
           case 'Client_createChatGPTConversation': {
-            const cache = await getChromeExtensionSettings()
-            if (cache.conversationId) {
-              return {
-                success: true,
-                data: {
-                  conversationId: cache.conversationId,
-                },
-                message: '',
-              }
-            }
             const conversationId = await this.createConversation()
             await setChromeExtensionSettings({
               conversationId,

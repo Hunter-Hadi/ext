@@ -27,9 +27,14 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
     return this.openAiApiChat.status
   }
   async createConversation() {
-    return Promise.resolve('')
+    if (this.openAiApiChat.conversation?.id) {
+      return Promise.resolve(this.openAiApiChat.conversation.id)
+    }
+    const conversationId = await this.openAiApiChat.createConversation()
+    return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {
+    this.openAiApiChat.conversation = undefined
     await setChromeExtensionSettings({
       conversationId: '',
     })

@@ -30,8 +30,11 @@ const useCleanChatGPT = () => {
     await Browser.storage.local.set({
       [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
     })
-    setAppSettings({
-      conversationId: '',
+    setAppSettings((prevState) => {
+      return {
+        ...prevState,
+        conversationId: '',
+      }
     })
     // 清空本地储存的conversationId
     await setChromeExtensionSettings({

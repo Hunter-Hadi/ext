@@ -9,16 +9,14 @@ import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/t
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
-import {
-  getChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/background/utils'
+import { setChromeExtensionSettings } from '@/background/utils'
 import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import reverse from 'lodash-es/reverse'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -188,7 +186,7 @@ const useAIProviderModels = () => {
           await setChromeExtensionSettings({
             currentModel: model,
           })
-          setAppSettings(await getChromeExtensionSettings())
+          setAppSettings(await clientGetLiteChromeExtensionSettings())
         } else if (
           currentProvider &&
           aiProviderModels.find((item) => item.value === model)

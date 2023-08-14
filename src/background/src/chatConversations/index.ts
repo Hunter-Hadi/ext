@@ -245,7 +245,7 @@ export default class ChatConversations {
           const userMessage = message as IUserChatMessage
           if (userMessage.extra.meta?.contextMenu) {
             userMessage.text = userMessage.extra.meta.contextMenu.text
-            userMessage.extra.meta.contextMenu = undefined
+            userMessage.extra.meta.contextMenu.data = undefined as any
           }
           return userMessage
         }

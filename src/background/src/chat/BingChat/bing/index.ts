@@ -161,10 +161,12 @@ export class BingWebBot {
           const messages =
             (event?.item?.messages as ChatResponseMessage[]) || []
           const errorMessage = event?.item?.result?.error
+          let hasError = false
           const limited = messages.some(
             (message) => message.contentOrigin === 'TurnLimiter',
           )
           if (limited) {
+            hasError = true
             params.onEvent({
               type: 'ERROR',
               error: `Sorry, you have reached chat turns limit in this conversation.`,
@@ -172,11 +174,27 @@ export class BingWebBot {
           }
           // 触发微软验证码了
           if (errorMessage === 'User needs to solve CAPTCHA to continue.') {
+            hasError = true
             const bingChallengeUrl = `\n\nPlease visit [bing.com/turing/captcha/challenge](https://www.bing.com/turing/captcha/challenge), complete any required verifications, then try again.`
             params.onEvent({
               type: 'ERROR',
               error: errorMessage + bingChallengeUrl,
             })
+          }
+          if (messages.length === 0) {
+            if (event?.item?.result?.value === 'UnauthorizedRequest') {
+              hasError = true
+              params.onEvent({
+                type: 'ERROR',
+                error:
+                  errorMessage +
+                  `\n\nPlease sign in to [bing.com](http://bing.com/), complete any required verifications, then try again.`,
+              })
+              return
+            }
+          }
+          if (hasError) {
+            this.conversationContext = undefined
           }
         }
       }

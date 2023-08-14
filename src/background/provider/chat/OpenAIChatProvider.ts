@@ -4,6 +4,7 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { setChromeExtensionSettings } from '@/background/utils'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat
@@ -35,6 +36,9 @@ class OpenAIChatProvider implements ChatAdapterInterface {
     return await this.openAIChat.createConversation()
   }
   async removeConversation(conversationId: string) {
+    await setChromeExtensionSettings({
+      conversationId: '',
+    })
     return await this.openAIChat.removeConversation(conversationId)
   }
   destroy() {

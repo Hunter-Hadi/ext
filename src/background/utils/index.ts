@@ -133,7 +133,10 @@ export const getDefaultChromeExtensionSettings =
 
 export const getChromeExtensionSettings =
   async (): Promise<IChromeExtensionSettings> => {
-    if (typeof window !== 'undefined') {
+    if (
+      typeof window !== 'undefined' &&
+      !window.location.href.includes(Browser.runtime.id)
+    ) {
       debugger
     }
     const defaultConfig = getDefaultChromeExtensionSettings()
@@ -282,10 +285,10 @@ export const setChromeExtensionSettings = async (
   try {
     const oldSettings = await getChromeExtensionSettings()
     if (settingsOrUpdateFunction instanceof Function) {
+      const newSettings = settingsOrUpdateFunction(oldSettings)
       await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify(
-          settingsOrUpdateFunction(oldSettings),
-        ),
+        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]:
+          JSON.stringify(newSettings),
       })
     } else {
       await Browser.storage.local.set({

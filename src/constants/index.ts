@@ -21,9 +21,9 @@ export const EZMAIL_REPLY_GROUP_ID = `EzMail_Reply_Group`
 // ezmail new email group
 export const EZMAIL_NEW_MAIL_GROUP_ID = `EzMail_New_Mail_Group`
 // usechatgpt gmail new email cta button
-export const USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID = `29aa9f2c-8aac-4251-8c4f-6074ca409ac7`
+export const USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID = `9431ba4b-3e50-4932-a606-4989276ea593`
 // usechatgpt gmail reply cta button
-export const USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID = `93de409e-c22b-4e6c-8d13-fd60c00532ea`
+export const USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID = `'89da7597-3e7d-4368-807e-b7868d9c89d6'`
 
 // context menu
 export const ROOT_CONTEXT_MENU_ID = `${APP_ROOT_ID}_Context_Menu`

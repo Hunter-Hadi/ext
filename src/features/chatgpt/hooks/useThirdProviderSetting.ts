@@ -7,7 +7,7 @@ import {
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
 import { IThirdProviderSettings } from '@/background/types/Settings'
-import { getChromeExtensionSettings } from '@/background/utils'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
 const useThirdProviderSetting = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
@@ -38,7 +38,7 @@ const useThirdProviderSetting = () => {
   ) => {
     const success = await setThirdProviderSettings(providerKey, settings, false)
     if (success) {
-      setAppSettings(await getChromeExtensionSettings())
+      setAppSettings(await clientGetLiteChromeExtensionSettings())
     }
   }
   return {

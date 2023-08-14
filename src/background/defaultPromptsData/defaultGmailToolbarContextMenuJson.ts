@@ -69,7 +69,7 @@ export default [
     },
   },
   {
-    id: '202a7ddd-bea5-46b3-b32c-a0300c7ac1ee',
+    id: 'a70f5c73-72c4-4fd7-a213-460f6593b225',
     parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
     droppable: true,
     text: 'Professional',
@@ -98,7 +98,7 @@ export default [
     },
   },
   {
-    id: 'df5768a8-448d-4070-afa1-5307838ed965',
+    id: 'ffc003e5-816d-4c7b-a7ca-0ff2d1df1aa5',
     parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
     droppable: true,
     text: 'Casual',
@@ -127,7 +127,7 @@ export default [
     },
   },
   {
-    id: 'ce02e42f-e341-4b94-8bbc-095122507bd2',
+    id: 'a211146b-a2d9-4c19-8187-e49a14cc54e6',
     parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
     droppable: true,
     text: 'Straightforward',
@@ -156,7 +156,7 @@ export default [
     },
   },
   {
-    id: '3c3edab4-4125-43ac-89c0-ca95cda06d34',
+    id: 'dd803af3-a0b5-4f69-be13-2210fe5eba6e',
     parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
     droppable: true,
     text: 'Confident',
@@ -185,7 +185,7 @@ export default [
     },
   },
   {
-    id: '61404250-a6af-41e2-8b9a-4d6fcfefdb95',
+    id: '5c15c9a2-199c-444e-ab13-f7429755b874',
     parent: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
     droppable: true,
     text: 'Friendly',
@@ -214,7 +214,7 @@ export default [
     },
   },
   {
-    id: '4e54395c-5e8b-4bbd-a309-b6057a4737d3',
+    id: 'cf8b9c91-7b74-4ef0-a5df-facf3623e7cc',
     parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
     droppable: true,
     text: 'Improve writing',
@@ -244,7 +244,7 @@ export default [
     },
   },
   {
-    id: '496d1369-941d-49a5-a9ce-68eadd7601de',
+    id: '6a3e9e6a-e26b-4723-a7c9-e8dedbed2227',
     parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
     droppable: true,
     text: 'Fix spelling & grammar',
@@ -274,7 +274,7 @@ export default [
     },
   },
   {
-    id: '547b5b2d-4f7b-4b39-8fdc-524a31659238',
+    id: '211ddeb6-d48d-4840-b384-84b042e31368',
     parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
     droppable: true,
     text: 'Make shorter',
@@ -304,7 +304,7 @@ export default [
     },
   },
   {
-    id: '1f0b58d6-10cb-4e60-bbc9-10912ca6301c',
+    id: 'd2effba2-f73a-4d71-affc-c5320037aabf',
     parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
     droppable: true,
     text: 'Make longer',
@@ -334,7 +334,7 @@ export default [
     },
   },
   {
-    id: '718dae5a-8c58-47a7-9089-5dc02cedbc3c',
+    id: '5073e4ce-13f1-4c12-93fe-833ffec3ab8b',
     parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
     droppable: true,
     text: 'Change tone',
@@ -352,7 +352,7 @@ export default [
     },
   },
   {
-    id: '3ca990dc-b70b-49b5-abfa-eb1dc8e5f271',
+    id: '2b77210f-4322-450d-a345-275493203750',
     parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
     droppable: true,
     text: 'Simplify language',
@@ -382,7 +382,7 @@ export default [
     },
   },
   {
-    id: '84060107-e962-412b-afa2-f8134e593320',
+    id: '9a135767-4e4e-45b3-a8dd-7f9150dcb2a9',
     parent: '265bf819-f40b-482e-bbd8-df0480126c8a',
     droppable: true,
     text: 'Paraphrase',
@@ -412,7 +412,7 @@ export default [
     },
   },
   {
-    id: `265bf819-f40b-482e-bbd8-df0480126c8a`,
+    id: 'aafdf878-b383-47f0-bc7f-29695a15cb59',
     parent: 'root',
     droppable: false,
     text: 'Edit or review draft',

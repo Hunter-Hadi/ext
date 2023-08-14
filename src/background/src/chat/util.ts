@@ -14,6 +14,7 @@ import {
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
+import { default as lodashSet } from 'lodash-es/set'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**
@@ -221,24 +222,23 @@ export const getThirdProviderSettings = async <T extends IAIProviderType>(
 /**
  * 设置第三方AI Provider的设置
  * @param thirdProviderKey
- * @param settings
+ * @param newThirdProviderSettings
  * @param syncToServer - 是否同步到服务器
  */
 export const setThirdProviderSettings = async <T extends IAIProviderType>(
   thirdProviderKey: T,
-  settings: Partial<IThirdProviderSettings[T]>,
+  newThirdProviderSettings: Partial<IThirdProviderSettings[T]>,
   syncToServer: boolean,
 ) => {
   try {
-    const chromeExtensionSettings = await getChromeExtensionSettings()
-    chromeExtensionSettings.thirdProviderSettings = {
-      ...chromeExtensionSettings.thirdProviderSettings,
-      [thirdProviderKey]: {
-        ...chromeExtensionSettings.thirdProviderSettings?.[thirdProviderKey],
-        ...settings,
-      },
-    }
-    await setChromeExtensionSettings(chromeExtensionSettings)
+    await setChromeExtensionSettings((settings) => {
+      lodashSet(
+        settings,
+        `thirdProviderSettings.${thirdProviderKey}`,
+        newThirdProviderSettings,
+      )
+      return settings
+    })
     if (syncToServer) {
       if (await isSettingsLastModifiedEqual()) {
         await syncLocalSettingsToServerSettings()

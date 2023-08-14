@@ -16,6 +16,7 @@ import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/Chat
 import BaseChat from '@/background/src/chat/BaseChat'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
+import ChatConversations from '@/background/src/chatConversations'
 
 const log = new Log('ChatGPT/OpenAIChat')
 
@@ -230,7 +231,16 @@ class OpenAIChat extends BaseChat {
     }
   }
   async createConversation() {
-    await super.createConversation()
+    if (this.conversation) {
+      // 更新conversation, 获取实际的conversation id
+      this.conversation =
+        await ChatConversations.conversationDB.getConversationById(
+          this.conversation.id,
+        )
+    }
+    if (!this.conversation) {
+      await super.createConversation()
+    }
     await this.sendDaemonProcessTask('OpenAIDaemonProcess_createConversation', {
       conversationId: this.conversation?.meta?.AIConversationId || '',
       model: this.conversation?.meta?.AIModel || '',
@@ -238,6 +248,7 @@ class OpenAIChat extends BaseChat {
     return this.conversation?.id || ''
   }
   async removeConversation(conversationId: string) {
+    this.conversation = undefined
     if (!conversationId) {
       return true
     }

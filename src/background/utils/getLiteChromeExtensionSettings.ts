@@ -21,7 +21,11 @@ const getLiteChromeExtensionSettings = async (
     for (const key in settings.buttonSettings) {
       const saveKey = key as IChromeExtensionButtonSettingKey
       const { visibility, contextMenu } = settings.buttonSettings[saveKey]
-      if (checkVisibilitySettingIsVisible(host, visibility)) {
+      // textSelectPopupButton的contextMenu不需要visibility
+      if (
+        checkVisibilitySettingIsVisible(host, visibility) ||
+        saveKey === 'textSelectPopupButton'
+      ) {
         settings.buttonSettings[saveKey].contextMenu = contextMenu
           .filter((item) =>
             item.data.visibility

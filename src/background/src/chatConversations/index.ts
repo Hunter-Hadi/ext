@@ -265,7 +265,6 @@ export default class ChatConversations {
     if (!conversation) {
       return false
     }
-    console.log('新版消息记录 pushMessages', newMessages)
     conversation.messages = conversation.messages.concat(newMessages)
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true

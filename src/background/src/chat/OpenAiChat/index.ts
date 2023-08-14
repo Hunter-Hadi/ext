@@ -239,7 +239,16 @@ class OpenAIChat extends BaseChat {
         )
     }
     if (!this.conversation) {
-      await super.createConversation()
+      const currentModel = (await getChromeExtensionSettings()).currentModel
+      if (currentModel) {
+        await super.createConversation({
+          meta: {
+            AIModel: currentModel,
+          },
+        })
+      } else {
+        await super.createConversation()
+      }
     }
     await this.sendDaemonProcessTask('OpenAIDaemonProcess_createConversation', {
       conversationId: this.conversation?.meta?.AIConversationId || '',

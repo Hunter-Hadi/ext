@@ -315,6 +315,7 @@ export const ClientMessageInit = () => {
             const conversation = await ChatConversations.getClientConversation(
               conversationId,
             )
+            console.log('新版消息记录，获取conversation', conversation)
             return {
               success: conversation?.id ? true : false,
               data: conversation,
@@ -363,6 +364,13 @@ export const ClientMessageInit = () => {
             let success = false
             console.log('新版消息记录，更新消息', conversationId, data)
             if (action === 'add') {
+              if (newMessages.length === 0) {
+                return {
+                  success: true,
+                  data: true,
+                  message: 'ok',
+                }
+              }
               success = await ChatConversations.pushMessages(
                 conversationId,
                 newMessages,

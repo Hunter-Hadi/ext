@@ -145,14 +145,18 @@ class ChatSystem implements ChatSystemInterface {
                       question.parentMessageId = originalMessage.parentMessageId
                     }
                   } else if (retry) {
-                    // 重试，需要删除原始会话中的问题和答案
+                    // 重试，到这一步sidebar里面有[问题，答案，新问题]，要删到[问题]
                     const originalMessageIndex = originalMessages.findIndex(
-                      (message) => message.messageId === question.messageId,
+                      (message) =>
+                        message.messageId === question.parentMessageId,
                     )
+                    // 所以这里还要-1
                     const originalMessage =
                       originalMessages[originalMessageIndex]
-                    const needDeleteCount =
-                      originalMessages.length - originalMessageIndex
+                    const needDeleteCount = Math.max(
+                      originalMessages.length - originalMessageIndex - 1,
+                      0,
+                    )
                     await ChatConversations.deleteMessages(
                       conversationId,
                       needDeleteCount,

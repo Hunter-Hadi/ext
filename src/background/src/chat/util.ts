@@ -15,6 +15,8 @@ import {
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import { default as lodashSet } from 'lodash-es/set'
+import { default as lodashGet } from 'lodash-es/get'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**
@@ -235,7 +237,10 @@ export const setThirdProviderSettings = async <T extends IAIProviderType>(
       lodashSet(
         settings,
         `thirdProviderSettings.${thirdProviderKey}`,
-        newThirdProviderSettings,
+        mergeWithObject([
+          lodashGet(settings, `thirdProviderSettings.${thirdProviderKey}`),
+          newThirdProviderSettings,
+        ]),
       )
       return settings
     })

@@ -91,7 +91,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     const contextMenu = options?.meta?.contextMenu
     // 发消息前,或者报错信息用到的升级卡片
     let abortAskAIShowUpgradeCard: PermissionWrapperCardType | null = null
-    const checkUpgradeCard = () => {
+    const checkUpgradeCard = async (conversationId: string) => {
       // 发消息之前判断有没有要付费升级的卡片
       if (abortAskAIShowUpgradeCard) {
         const { title, description, imageUrl, videoUrl } =
@@ -114,6 +114,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           markdownText = `![${title}](${videoUrl})\n${markdownText}`
         }
         needUpgradeMessage.text = markdownText
+        await clientChatConversationModifyChatMessages(
+          'add',
+          conversationId,
+          0,
+          [needUpgradeMessage],
+        )
         // log
         authEmitPricingHooksLog('show', abortAskAIShowUpgradeCard.sceneType)
         // 展示sidebar
@@ -232,7 +238,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     let errorMessage = ''
     try {
       // 提前结束ask ai的流程
-      const abortData = checkUpgradeCard()
+      const abortData = await checkUpgradeCard(postConversationId)
       if (abortData) {
         return abortData
       }
@@ -282,7 +288,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               }
             })
           },
-          onError: (error: any) => {
+          onError: async (error: any) => {
             hasError = true
             if (aiRespondingMessage?.messageId) {
               pushMessages.push(aiRespondingMessage)
@@ -290,7 +296,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             const is403Error =
               typeof error === 'string' && error?.trim() === '403'
             if (error === 'Conversation not found' || is403Error) {
-              setChromeExtensionSettings({
+              await setChromeExtensionSettings({
                 conversationId: '',
               })
             }
@@ -313,7 +319,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
                   permissionCardMap[
                     errorMessage as PermissionWrapperCardSceneType
                   ]
-                const abortData = checkUpgradeCard()
+                const abortData = await checkUpgradeCard(postConversationId)
                 if (abortData) {
                   return abortData
                 }
@@ -401,7 +407,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         {
           question: originMessage.text,
           messageId: uuidV4(),
-          parentMessageId: originMessage.parentMessageId,
+          parentMessageId: originMessage.messageId,
         },
         {
           retry: true,

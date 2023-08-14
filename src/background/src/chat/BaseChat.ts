@@ -27,8 +27,10 @@ class BaseChat {
     await this.updateClientStatus('needAuth')
     this.active = false
   }
-  async createConversation() {
-    this.conversation = await ChatConversations.createConversation({})
+  async createConversation(newConversation?: Partial<ChatConversation>) {
+    this.conversation = await ChatConversations.createConversation({
+      ...newConversation,
+    })
     return this.conversation.id
   }
   async updateClientStatus(status: ChatStatus) {

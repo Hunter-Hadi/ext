@@ -33,7 +33,7 @@ import { useInitI18n } from '@/i18n/hooks'
 import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { isMaxAINewTabPage } from '@/pages/newtab/util'
+import { isMaxAINewTabPage } from '@/pages/chat/util'
 
 const log = new Log('AppInit')
 

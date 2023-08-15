@@ -102,8 +102,8 @@ async function esbuildConfig() {
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
-        source: ['src/pages/newtab/index.html'],
-        target: `${buildDir}/pages/newtab`,
+        source: ['src/pages/chat/index.html'],
+        target: `${buildDir}/pages/chat`,
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({

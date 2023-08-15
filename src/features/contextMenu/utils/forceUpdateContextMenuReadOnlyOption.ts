@@ -5,6 +5,7 @@ import {
 import uniqBy from 'lodash-es/uniqBy'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 /**
  * @version 2.0 - 移除所有不可编辑的system prompt
@@ -27,12 +28,27 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
         }
         return item
       })
-      .filter(Boolean)
+      .filter(Boolean) as IContextMenuItem[]
     updateMenuList = uniqBy(updateMenuList, 'id')
     if (buttonKey === 'gmailButton') {
       // TODO gmail 没有编辑权限
       updateMenuList = []
     }
+    const contextMenuIdMap: {
+      [key: string]: string
+    } = {}
+    updateMenuList.forEach((item) => {
+      contextMenuIdMap[item.id] = item.id
+    })
+    updateMenuList = updateMenuList.map((item) => {
+      // 因为移除了不可编辑的system prompt，所以有些contextMenu的parentId可能会找不到
+      if (contextMenuIdMap[item.parent]) {
+        return item
+      } else {
+        item.parent = 'root'
+        return item
+      }
+    })
     await setChromeExtensionSettings((settings) => {
       const newButtonSettings = mergeWithObject([
         settings.buttonSettings,

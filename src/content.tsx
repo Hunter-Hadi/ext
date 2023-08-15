@@ -13,7 +13,7 @@ import {
 import AppThemeProvider from '@/components/AppTheme'
 import Browser from 'webextension-polyfill'
 import { getCurrentDomainHost } from '@/utils'
-import { isMaxAINewTabPage } from '@/pages/newtab/util'
+import { isMaxAINewTabPage } from '@/pages/chat/util'
 // import createCache from '@emotion/cache'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()

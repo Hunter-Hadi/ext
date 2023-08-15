@@ -4,7 +4,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import { showChatBox } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
-import { isMaxAINewTabPage } from '@/pages/newtab/util'
+import { isMaxAINewTabPage } from '@/pages/chat/util'
 
 const RESIZE_ENABLE = {
   top: false,

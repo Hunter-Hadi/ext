@@ -16,7 +16,7 @@ import useCommands from '@/hooks/useCommands'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
-import { isMaxAINewTabPage } from '@/pages/newtab/util'
+import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Button from '@mui/material/Button'
 import Browser from 'webextension-polyfill'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -100,7 +100,7 @@ const ChatBoxHeader: FC = () => {
             }}
             onClick={() => {
               chromeExtensionClientOpenPage({
-                url: Browser.runtime.getURL(`/pages/newtab/index.html`),
+                url: Browser.runtime.getURL(`/pages/chat/index.html`),
               })
             }}
           >

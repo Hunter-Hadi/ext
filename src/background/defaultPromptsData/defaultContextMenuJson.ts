@@ -1262,7 +1262,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the following text delimited by triple backticks in all relevant aspects. \n\nOutput a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.\n\nUse the following format:\n## Summary\n<summary of the text>\n\n## Key takeaways\n<list of key takeaways>\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
+              'Ignore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the following text delimited by triple backticks in all relevant aspects. \n\nOutput a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.\n\nUse the following format:\n## Summary\n<summary of the text>\n\n## Key Takeaways\n<list of key takeaways>\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
           },
         },
         {

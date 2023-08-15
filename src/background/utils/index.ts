@@ -1,4 +1,3 @@
-import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import Browser from 'webextension-polyfill'
 import {
@@ -97,7 +96,7 @@ export const getDefaultChromeExtensionSettings =
             whitelist: [],
             blacklist: [],
           },
-          contextMenu: defaultContextMenuJson,
+          contextMenu: [],
         },
       },
       thirdProviderSettings: {
@@ -259,16 +258,8 @@ export const getChromeExtensionButtonContextMenu = async (
   buttonKey: IChromeExtensionButtonSettingKey,
 ) => {
   const settings = await getChromeExtensionSettings()
-  const defaultMenus = {
-    gmailButton: defaultGmailToolbarContextMenuJson,
-    textSelectPopupButton: defaultContextMenuJson,
-  }
   const cacheMenus = settings.buttonSettings?.[buttonKey].contextMenu
-  if (cacheMenus && cacheMenus.length > 0) {
-    return cacheMenus
-  } else {
-    return defaultMenus[buttonKey]
-  }
+  return cacheMenus || []
 }
 
 export const setChromeExtensionSettings = async (

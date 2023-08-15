@@ -260,7 +260,6 @@ const ListItem: FC<{ menuItem: IContextMenuItemWithChildren }> = ({
 
 const ContextMenuList: FC<{
   staticButton?: boolean
-  // defaultContextMenuJson: IContextMenuItem[]
   buttonKey: IChromeExtensionButtonSettingKey
 }> = (props) => {
   const { buttonKey } = props

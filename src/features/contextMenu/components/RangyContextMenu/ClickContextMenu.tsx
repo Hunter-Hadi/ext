@@ -21,7 +21,7 @@ import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloating
 import { FloatingContextMenuMiniMenuMoreButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import useCommands from '@/hooks/useCommands'
 import { isProduction } from '@/constants'
-import { useComputedChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
 import { IRangyRect } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
 import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
@@ -40,7 +40,9 @@ const ClickContextMenuButton: FC<{
   const { tempSelection, show, hideRangy } = useRangy()
   const { chatBoxShortCutKey } = useCommands()
   const textSelectPopupButtonSettings =
-    useComputedChromeExtensionButtonSettings('textSelectPopupButton')
+    useChromeExtensionButtonSettingsWithSystemContextMenu(
+      'textSelectPopupButton',
+    )
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
   )

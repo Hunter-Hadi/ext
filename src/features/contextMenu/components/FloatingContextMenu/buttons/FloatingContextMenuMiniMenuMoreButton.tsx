@@ -13,7 +13,7 @@ import {
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
   useChromeExtensionButtonSettings,
-  useComputedChromeExtensionButtonSettings,
+  useChromeExtensionButtonSettingsWithSystemContextMenu,
 } from '@/background/utils/buttonSettings'
 import Box from '@mui/material/Box'
 import PopperWrapper from '@/components/PopperWrapper'
@@ -43,7 +43,9 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
   const { updateButtonSettingsWithDomain, toggleButtonSettings } =
     useChromeExtensionButtonSettings()
   const textSelectPopupButtonSettings =
-    useComputedChromeExtensionButtonSettings('textSelectPopupButton')
+    useChromeExtensionButtonSettingsWithSystemContextMenu(
+      'textSelectPopupButton',
+    )
   console.log(textSelectPopupButtonSettings, 'textSelectPopupButtonSettings')
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)

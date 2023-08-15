@@ -41,6 +41,8 @@ import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { getCurrentDomainHost } from '@/utils'
+import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
+import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
@@ -127,7 +129,7 @@ export const useChromeExtensionButtonSettings = () => {
   }
 }
 
-export const useComputedChromeExtensionButtonSettings = (
+export const useChromeExtensionButtonSettingsWithSystemContextMenu = (
   buttonKey: IChromeExtensionButtonSettingKey,
 ) => {
   const [appSettings] = useRecoilState(AppSettingsState)
@@ -271,9 +273,14 @@ export const getContextMenuActions = async (contextMenuId: string) => {
     for (const buttonKey in settings.buttonSettings) {
       const buttonSettings =
         settings.buttonSettings[buttonKey as IChromeExtensionButtonSettingKey]
-      const contextMenu = buttonSettings.contextMenu.find(
+      let contextMenu = buttonSettings.contextMenu.find(
         (item) => item.id === contextMenuId,
       )
+      if (!contextMenu) {
+        contextMenu = getSystemContextMenuWithButtonSettingKey(buttonKey).find(
+          (item) => item.id === contextMenuId,
+        )
+      }
       if (contextMenu) {
         contextMenu.data.actions?.forEach((action) => {
           // HACK: 这里的写法特别蠢，但是得记录正确的api和prompt，只能这么写
@@ -285,7 +292,7 @@ export const getContextMenuActions = async (contextMenuId: string) => {
             if (!action.parameters.AskChatGPTActionMeta) {
               action.parameters.AskChatGPTActionMeta = {}
             }
-            const originData = cloneDeep(contextMenu)
+            const originData = cloneDeep(contextMenu) as IContextMenuItem
             delete originData.data.actions
             action.parameters.AskChatGPTActionMeta.contextMenu = originData
             return true
@@ -297,4 +304,25 @@ export const getContextMenuActions = async (contextMenuId: string) => {
     }
   }
   return []
+}
+
+export class SystemContextMenu {
+  static buttonSettings: {
+    [key in IChromeExtensionButtonSettingKey]: IContextMenuItem[]
+  } = {
+    gmailButton: defaultGmailToolbarContextMenuJson,
+    textSelectPopupButton: defaultContextMenuJson,
+  }
+}
+
+/**
+ * 获取系统默认的contextMenu
+ * @param buttonKey
+ */
+export const getSystemContextMenuWithButtonSettingKey = (buttonKey: string) => {
+  return cloneDeep(
+    SystemContextMenu.buttonSettings[
+      buttonKey as IChromeExtensionButtonSettingKey
+    ] || [],
+  )
 }

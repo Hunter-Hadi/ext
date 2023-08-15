@@ -3,7 +3,10 @@ import {
   IChromeExtensionSettings,
 } from '@/background/types/Settings'
 import { getChromeExtensionSettings } from '@/background/utils/index'
-import { checkVisibilitySettingIsVisible } from '@/background/utils/buttonSettings'
+import {
+  checkVisibilitySettingIsVisible,
+  getSystemContextMenuWithButtonSettingKey,
+} from '@/background/utils/buttonSettings'
 
 const getLiteChromeExtensionSettings = async (
   fromUrl?: string,
@@ -26,7 +29,10 @@ const getLiteChromeExtensionSettings = async (
         checkVisibilitySettingIsVisible(host, visibility) ||
         saveKey === 'textSelectPopupButton'
       ) {
-        settings.buttonSettings[saveKey].contextMenu = contextMenu
+        const systemPromptList =
+          getSystemContextMenuWithButtonSettingKey(saveKey)
+        settings.buttonSettings[saveKey].contextMenu = systemPromptList
+          .concat(contextMenu)
           .filter((item) =>
             item.data.visibility
               ? checkVisibilitySettingIsVisible(host, item.data.visibility)

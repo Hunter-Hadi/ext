@@ -26,7 +26,7 @@ import {
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { OnBoardingKeyType } from '@/background/utils/onboardingStorage'
-import ChatConversations from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import { v4 as uuidV4 } from 'uuid'
 
 const log = new Log('Background/Chat/ChatSystem')
@@ -120,7 +120,7 @@ class ChatSystem implements ChatSystemInterface {
               const conversationId = question.conversationId
               if ((retry || regenerate) && conversationId) {
                 const originalConversation =
-                  await ChatConversations.conversationDB.getConversationById(
+                  await ConversationManager.conversationDB.getConversationById(
                     conversationId,
                   )
                 if (originalConversation) {
@@ -134,7 +134,7 @@ class ChatSystem implements ChatSystemInterface {
                       originalMessages[originalMessageIndex]
                     const needDeleteCount =
                       originalMessages.length - 1 - originalMessageIndex
-                    await ChatConversations.deleteMessages(
+                    await ConversationManager.deleteMessages(
                       conversationId,
                       needDeleteCount,
                     )
@@ -157,7 +157,7 @@ class ChatSystem implements ChatSystemInterface {
                       originalMessages.length - originalMessageIndex - 1,
                       0,
                     )
-                    await ChatConversations.deleteMessages(
+                    await ConversationManager.deleteMessages(
                       conversationId,
                       needDeleteCount,
                     )
@@ -447,7 +447,7 @@ class ChatSystem implements ChatSystemInterface {
     })
   }
   async updateClientConversationMessages(conversationId: string) {
-    const conversation = await ChatConversations.getClientConversation(
+    const conversation = await ConversationManager.getClientConversation(
       conversationId,
     )
     backgroundSendAllClientMessage('Client_listenUpdateConversationMessages', {

@@ -16,7 +16,7 @@ import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/Chat
 import BaseChat from '@/background/src/chat/BaseChat'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
-import ChatConversations from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 
 const log = new Log('ChatGPT/OpenAIChat')
 
@@ -234,7 +234,7 @@ class OpenAIChat extends BaseChat {
     if (this.conversation) {
       // 更新conversation, 获取实际的ChatGPT conversation id
       this.conversation =
-        await ChatConversations.conversationDB.getConversationById(
+        await ConversationManager.conversationDB.getConversationById(
           this.conversation.id,
         )
     }
@@ -260,7 +260,7 @@ class OpenAIChat extends BaseChat {
     if (this.conversation) {
       // 更新conversation, 获取实际的ChatGPT conversation id
       this.conversation =
-        await ChatConversations.conversationDB.getConversationById(
+        await ConversationManager.conversationDB.getConversationById(
           this.conversation.id,
         )
     }

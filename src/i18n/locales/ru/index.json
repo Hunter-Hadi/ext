@@ -404,7 +404,8 @@
     "rewards__title": "Награды",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Скрыть помощника Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Повысьте для неограниченного использования ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Вы достигли текущего ежедневного лимита использования ChatGPT.\nТеперь вы можете продолжить работу с другими поставщиками ИИ или перейти на Pro для неограниченного использования."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Вы достигли текущего ежедневного лимита использования ChatGPT.\nТеперь вы можете продолжить работу с другими поставщиками ИИ или перейти на Pro для неограниченного использования.",
+    "sidebar__button__immersive_chat": "Погружной чат"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

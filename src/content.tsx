@@ -13,6 +13,7 @@ import {
 import AppThemeProvider from '@/components/AppTheme'
 import Browser from 'webextension-polyfill'
 import { getCurrentDomainHost } from '@/utils'
+import { isMaxAINewTabPage } from '@/pages/newtab/util'
 // import createCache from '@emotion/cache'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
@@ -100,6 +101,9 @@ a.chatgpt-ad {
     shadowRootElement.style.flexDirection = 'column'
     shadowRootElement.style.flex = '1'
     shadowRootElement.style.height = '100vh'
+    if (isMaxAINewTabPage()) {
+      shadowRootElement.setAttribute('data-maxai-newtab', 'true')
+    }
     // shadowRootElement.style.width = '100vw'
     // shadowRootElement.style.position = 'absolute'
     // shadowRootElement.style.top = '0'

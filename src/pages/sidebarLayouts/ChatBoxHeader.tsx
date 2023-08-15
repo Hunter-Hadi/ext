@@ -16,6 +16,10 @@ import useCommands from '@/hooks/useCommands'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
+import { isMaxAINewTabPage } from '@/pages/newtab/util'
+import Button from '@mui/material/Button'
+import Browser from 'webextension-polyfill'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 const ChatBoxHeader: FC = () => {
   const { t } = useTranslation(['common', 'client'])
@@ -24,8 +28,7 @@ const ChatBoxHeader: FC = () => {
     <Stack
       flexDirection={'row'}
       flexShrink={0}
-      mt={1}
-      height={44}
+      height={48}
       gap={1}
       alignItems={'center'}
       px={1}
@@ -87,6 +90,29 @@ const ChatBoxHeader: FC = () => {
         justifyContent={'end'}
         alignItems={'center'}
       >
+        {/*full screen*/}
+        <TextOnlyTooltip title={t('client:sidebar__button__immersive_chat')}>
+          <Button
+            sx={{
+              width: 36,
+              height: 36,
+              minWidth: 36,
+            }}
+            onClick={() => {
+              chromeExtensionClientOpenPage({
+                url: Browser.runtime.getURL(`/pages/newtab/index.html`),
+              })
+            }}
+          >
+            <ContextMenuIcon
+              icon={'Fullscreen'}
+              sx={{
+                color: 'text.secondary',
+                fontSize: 24,
+              }}
+            />
+          </Button>
+        </TextOnlyTooltip>
         <TextOnlyTooltip title={t('common:settings')}>
           <IconButton
             sx={{ flexShrink: 0 }}
@@ -123,6 +149,10 @@ const ChatBoxHeader: FC = () => {
           <IconButton
             sx={{ flexShrink: 0 }}
             onClick={() => {
+              if (isMaxAINewTabPage()) {
+                window.close()
+                return
+              }
               hideChatBox()
             }}
           >

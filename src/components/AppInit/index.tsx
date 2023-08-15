@@ -5,6 +5,7 @@ import React, { FC, useEffect, useMemo } from 'react'
 import {
   chromeExtensionClientOpenPage,
   getAppContextMenuRootElement,
+  showChatBox,
 } from '@/utils'
 import { AppSettingsState, AppState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
@@ -32,6 +33,7 @@ import { useInitI18n } from '@/i18n/hooks'
 import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { isMaxAINewTabPage } from '@/pages/newtab/util'
 
 const log = new Log('AppInit')
 
@@ -404,6 +406,11 @@ const AppInit = () => {
   useInitI18n()
   useInjectShortCutsRunTime()
   useHandlePDFViewerError()
+  useEffectOnce(() => {
+    if (isMaxAINewTabPage()) {
+      showChatBox()
+    }
+  })
   return (
     <>
       <AppSuspenseLoadingLayout>

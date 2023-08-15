@@ -404,7 +404,8 @@
     "rewards__title": "Récompenses",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Masquer l'assistant Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Mise à niveau pour une utilisation illimitée de ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Vous avez atteint la limite quotidienne actuelle d'utilisation pour ChatGPT.\nVous pouvez maintenant continuer avec les autres fournisseurs d'IA, ou passer à la version Pro dès maintenant pour une utilisation illimitée."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Vous avez atteint la limite quotidienne actuelle d'utilisation pour ChatGPT.\nVous pouvez maintenant continuer avec les autres fournisseurs d'IA, ou passer à la version Pro dès maintenant pour une utilisation illimitée.",
+    "sidebar__button__immersive_chat": "Chat immersif"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -404,7 +404,8 @@
     "rewards__title": "পুরস্কার",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail সহায়ক লুকান",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "সীমাহীন চ্যাটজিপিটি ব্যবহারের জন্য আপগ্রেড করুন",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "আপনি চ্যাটজিপিটির বর্তমান দৈনিক ব্যবহার সীমা অতিক্রম করেছেন।\nএখন আপনি অন্য এল প্রদানকারীগুলির সাথে চালিয়ে যেতে পারেন, অথবা সীমাহীন ব্যবহারের জন্য এখনই আপগ্রেড করুন।"
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "আপনি চ্যাটজিপিটির বর্তমান দৈনিক ব্যবহার সীমা অতিক্রম করেছেন।\nএখন আপনি অন্য এল প্রদানকারীগুলির সাথে চালিয়ে যেতে পারেন, অথবা সীমাহীন ব্যবহারের জন্য এখনই আপগ্রেড করুন।",
+    "sidebar__button__immersive_chat": "মনোহারী চ্যাট"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

@@ -404,7 +404,8 @@
     "rewards__title": "Hadiah",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sembunyikan asisten Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Tingkatkan untuk penggunaan ChatGPT tanpa batas",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Anda telah mencapai batas penggunaan harian saat ini untuk ChatGPT.\nAnda dapat melanjutkan dengan Al Providers lain sekarang, atau tingkatkan ke Pro sekarang untuk penggunaan tanpa batas."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Anda telah mencapai batas penggunaan harian saat ini untuk ChatGPT.\nAnda dapat melanjutkan dengan Al Providers lain sekarang, atau tingkatkan ke Pro sekarang untuk penggunaan tanpa batas.",
+    "sidebar__button__immersive_chat": "Chat Menyeluruh"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

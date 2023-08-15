@@ -104,7 +104,6 @@ const App: FC = () => {
           }}
         >
           <Stack
-            spacing={1}
             height={'100%'}
             sx={{
               '& *': {

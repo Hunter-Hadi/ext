@@ -404,7 +404,8 @@
     "rewards__title": "Belöningar",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Dölj Gmail-assistent",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Uppgradera för obegränsad ChatGPT-användning",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Du har nått den nuvarande dagliga användningsgränsen för ChatGPT.\nDu kan fortsätta med de andra Al-leverantörerna nu, eller uppgradera till Pro nu för obegränsad användning."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Du har nått den nuvarande dagliga användningsgränsen för ChatGPT.\nDu kan fortsätta med de andra Al-leverantörerna nu, eller uppgradera till Pro nu för obegränsad användning.",
+    "sidebar__button__immersive_chat": "Fördjupande chatt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

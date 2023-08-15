@@ -404,7 +404,8 @@
     "rewards__title": "Ödüller",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail asistanını gizle",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sınırsız ChatGPT kullanımı için yükseltme yapın",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT için günlük kullanım sınırına ulaştınız.\nŞimdi diğer AI Sağlayıcıları ile devam edebilir veya sınırsız kullanım için hemen Pro'ya yükseltme yapabilirsiniz."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT için günlük kullanım sınırına ulaştınız.\nŞimdi diğer AI Sağlayıcıları ile devam edebilir veya sınırsız kullanım için hemen Pro'ya yükseltme yapabilirsiniz.",
+    "sidebar__button__immersive_chat": "Sürükleyici sohbet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -1,0 +1,10 @@
+/*max-ai new tab start*/
+/* 在超过768px宽度时 */
+#USE_CHAT_GPT_AI_ROOT_Wrapper[data-maxai-newtab="true"] > div:first-of-type {
+    max-width: 100% !important;
+    min-width: 100% !important;
+}
+#USE_CHAT_GPT_AI_ROOT_Wrapper[data-maxai-newtab="true"] > div:first-of-type > div  {
+    border-right: 1px solid rgba(0, 0, 0, .1);
+}
+/*max-ai new tab end*/

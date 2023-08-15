@@ -404,7 +404,8 @@
     "rewards__title": "المكافآت",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "إخفاء مساعد Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ترقية لاستخدام ChatGPT غير محدود",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "لقد وصلت إلى الحد اليومي الحالي لاستخدام ChatGPT.\nيمكنك الاستمرار مع مزودي الذكاء الاصطناعي الآخرين الآن، أو الترقية إلى الإصدار المحترف الآن للاستخدام غير المحدود."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "لقد وصلت إلى الحد اليومي الحالي لاستخدام ChatGPT.\nيمكنك الاستمرار مع مزودي الذكاء الاصطناعي الآخرين الآن، أو الترقية إلى الإصدار المحترف الآن للاستخدام غير المحدود.",
+    "sidebar__button__immersive_chat": "الدردشة المغمورة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -54,6 +54,7 @@ import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutl
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined'
 import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined'
+import FullscreenOutlinedIcon from '@mui/icons-material/FullscreenOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -118,6 +119,7 @@ export const CONTEXT_MENU_ICONS = [
   'Menu',
   'ExpandMore',
   'ExpandLess',
+  'Fullscreen',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -294,6 +296,8 @@ const ContextMenuIcon: FC<{
       return <ExpandMoreOutlinedIcon sx={sxMemo} />
     case 'ExpandLess':
       return <ExpandLessOutlinedIcon sx={sxMemo} />
+    case 'Fullscreen':
+      return <FullscreenOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

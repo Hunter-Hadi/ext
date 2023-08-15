@@ -282,6 +282,13 @@ const initChromeExtensionAction = () => {
       // tab loaded
       if (changeInfo.status === 'complete') {
         if (tab.active) {
+          // TODO: check is new tab
+          // if (tab.url === 'chrome://newtab/' || tab.url === 'edge://newtab/') {
+          //   // redirect to /pages/newtabs.html
+          //   await Browser.tabs.update(tabId, {
+          //     url: Browser.runtime.getURL('/pages/newtab/index.html'),
+          //   })
+          // }
           await checkTabStatus(tab)
         }
       }

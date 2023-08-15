@@ -404,7 +404,8 @@
     "rewards__title": "Apdovanojimai",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Slėpti Gmail asistentą",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Atnaujinkite, kad gautumėte neribotą ChatGPT naudojimą",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Jūs pasiekėte šiuo metu galiojantį dienos naudojimo limitą ChatGPT.\nGalite tęsti su kitais Al tiekėjais dabar arba atnaujinti į Pro dabar, kad gautumėte neribotą naudojimą."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Jūs pasiekėte šiuo metu galiojantį dienos naudojimo limitą ChatGPT.\nGalite tęsti su kitais Al tiekėjais dabar arba atnaujinti į Pro dabar, kad gautumėte neribotą naudojimą.",
+    "sidebar__button__immersive_chat": "Įtraukiantis pokalbis"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

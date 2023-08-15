@@ -404,7 +404,8 @@
     "rewards__title": "獎勵",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "隱藏Gmail助手",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "升級以獲得無限的 ChatGPT 使用",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "您已達到 ChatGPT 的每日使用上限。\n您現在可以繼續使用其他 AI 提供者，或立即升級至專業版以無限制使用。"
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "您已達到 ChatGPT 的每日使用上限。\n您現在可以繼續使用其他 AI 提供者，或立即升級至專業版以無限制使用。",
+    "sidebar__button__immersive_chat": "沉浸式聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

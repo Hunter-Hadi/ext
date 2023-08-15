@@ -404,7 +404,8 @@
     "rewards__title": "Rewards",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade for unlimited ChatGPT usage",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "You've reached the current daily usage cap for ChatGPT.\nYou can continue with the other AI Providers now, or upgrade to Pro now for unlimited usage."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "You've reached the current daily usage cap for ChatGPT.\nYou can continue with the other AI Providers now, or upgrade to Pro now for unlimited usage.",
+    "sidebar__button__immersive_chat": "Immersive chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

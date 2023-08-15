@@ -404,7 +404,8 @@
     "rewards__title": "Odmeny",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Skryť asistenta Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Vylepšenie pre neobmedzené používanie ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dosiahli ste denný limit pre používanie ChatGPT.\nTeraz môžete pokračovať s inými poskytovateľmi AI alebo si teraz upgradnúť na Pro verziu pre neobmedzené používanie."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dosiahli ste denný limit pre používanie ChatGPT.\nTeraz môžete pokračovať s inými poskytovateľmi AI alebo si teraz upgradnúť na Pro verziu pre neobmedzené používanie.",
+    "sidebar__button__immersive_chat": "Ponořený chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

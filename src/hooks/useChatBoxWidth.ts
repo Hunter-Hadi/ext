@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import { setChromeExtensionSettings } from '@/background/utils'
-import useEffectOnce from '@/hooks/useEffectOnce'
 import { showChatBox } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import { AppSettingsState } from '@/store'
+import { isMaxAINewTabPage } from '@/pages/newtab/util'
 
 const RESIZE_ENABLE = {
   top: false,
@@ -31,11 +31,6 @@ const useChatBoxWidth = () => {
     CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   )
   const [maxWidth, setMaxWidth] = useState<number>(0)
-  const getLocalWidth = async () => {
-    if (appSettings.userSettings?.chatBoxWidth) {
-      setVisibleWidth(appSettings.userSettings.chatBoxWidth || maxWidth)
-    }
-  }
   const setLocalWidth = async (width: number) => {
     setVisibleWidth(width)
     if (!loaded) {
@@ -71,15 +66,25 @@ const useChatBoxWidth = () => {
   useEffect(() => {
     setVisibleWidth(Math.min(maxWidth, visibleWidth))
   }, [maxWidth])
-  useEffectOnce(() => {
-    getLocalWidth().then(() => {
+  const onceRef = useRef(false)
+  useEffect(() => {
+    if (onceRef.current) {
+      return
+    }
+    if (appSettings.userSettings?.chatBoxWidth && maxWidth) {
+      setVisibleWidth(Math.min(appSettings.userSettings.chatBoxWidth, maxWidth))
+      onceRef.current = true
       setLoaded(true)
-    })
-  })
+    }
+  }, [appSettings.userSettings?.chatBoxWidth, maxWidth])
   return {
     minWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
     maxWidth,
-    resizeEnable: RESIZE_ENABLE,
+    resizeEnable: {
+      ...RESIZE_ENABLE,
+      // 如果是新标签页，不允许左右拖动
+      left: !isMaxAINewTabPage(),
+    },
     visibleWidth,
     setLocalWidth,
   }

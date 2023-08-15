@@ -212,6 +212,7 @@
   },
   "client": {
     "sidebar__button__close_sidebar": "Close sidebar",
+    "sidebar__button__immersive_chat": "Immersive chat",
     "sidebar__button__my_plan": "My plan",
     "sidebar__button__use_prompt": "Use prompt",
     "sidebar__button__send_to_ai": "Send to AI",

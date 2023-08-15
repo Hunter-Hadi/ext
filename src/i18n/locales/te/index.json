@@ -404,7 +404,8 @@
     "rewards__title": "పురస్కారాలు",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail అసిస్టెంట్‌ను దాచండి",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "అనిమిష్ట ChatGPT ఉపయోగాన్ని కొనండి కోసం నిలువగా చేరుకోండి",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "మీరు ChatGPT కోసం ప్రస్తుత డేలీ ఉపయోగ క్యాప్‌ను చేరుకున్నారు.\nమీరు ఇప్పటివరకు మరొక Al ప్రొవైడర్‌తో కొనసాగించవచ్చు, లేదా అన్లిమిటెడ్ ఉపయోగాన్ని కోసం ప్రొ కొనవచ్చు."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "మీరు ChatGPT కోసం ప్రస్తుత డేలీ ఉపయోగ క్యాప్‌ను చేరుకున్నారు.\nమీరు ఇప్పటివరకు మరొక Al ప్రొవైడర్‌తో కొనసాగించవచ్చు, లేదా అన్లిమిటెడ్ ఉపయోగాన్ని కోసం ప్రొ కొనవచ్చు.",
+    "sidebar__button__immersive_chat": "ముగింపు చాట్"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

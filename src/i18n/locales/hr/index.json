@@ -404,7 +404,8 @@
     "rewards__title": "Nagrade",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sakrij Gmail pomoćnika",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Nadogradite za neograničeno korištenje ChatGPT-a",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dosegnuli ste trenutni dnevni limit za upotrebu ChatGPT-a.\nSada možete nastaviti s drugim AI pružateljima ili nadograditi na Pro verziju za neograničenu upotrebu."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dosegnuli ste trenutni dnevni limit za upotrebu ChatGPT-a.\nSada možete nastaviti s drugim AI pružateljima ili nadograditi na Pro verziju za neograničenu upotrebu.",
+    "sidebar__button__immersive_chat": "Intenzivan chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

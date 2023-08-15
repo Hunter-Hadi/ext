@@ -31,6 +31,7 @@ import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import { useTranslation } from 'react-i18next'
+import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -233,6 +234,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           overflowY: 'auto',
         }}
       >
+        <SidebarTabs />
         <Box ref={messageListContainerList}>
           <AppSuspenseLoadingLayout>
             {slicedMessageList.map((message) => {

@@ -404,7 +404,8 @@
     "rewards__title": "Tuzo",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ficha msaidizi wa Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sasisha ili kutumia ChatGPT bila ukomo",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Umefikia kikomo cha matumizi ya kila siku ya sasa kwa ChatGPT.\nUnaweza kuendelea na Watoaji wengine wa Al sasa, au nenda Pro sasa kwa matumizi yasiyo na kikomo."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Umefikia kikomo cha matumizi ya kila siku ya sasa kwa ChatGPT.\nUnaweza kuendelea na Watoaji wengine wa Al sasa, au nenda Pro sasa kwa matumizi yasiyo na kikomo.",
+    "sidebar__button__immersive_chat": "Mazungumzo ya kusisimua"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

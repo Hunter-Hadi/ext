@@ -404,7 +404,8 @@
     "rewards__title": "פרסים",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "הסתר את עוזר Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "שדרוג לשימוש בלתי מוגבל של ChatGPT",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "הגעת למגבלת השימוש היומית הנוכחית ב-ChatGPT.\nתוכל להמשיך עם ספקי האינטיליגנציה המלאים האחרים כעת, או לשדרג לגרסה מקצועית כעת לשימוש בלתי מוגבל."
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "הגעת למגבלת השימוש היומית הנוכחית ב-ChatGPT.\nתוכל להמשיך עם ספקי האינטיליגנציה המלאים האחרים כעת, או לשדרג לגרסה מקצועית כעת לשימוש בלתי מוגבל.",
+    "sidebar__button__immersive_chat": "צ'אט מוקפץ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

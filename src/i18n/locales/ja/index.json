@@ -404,7 +404,8 @@
     "rewards__title": "報酬",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmailアシスタントを非表示にする",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "無制限のChatGPT利用のためのアップグレード",
-    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPTの現在の日使用制限に達しました。\n他のAIプロバイダーで続行するか、無制限の使用のために今すぐProにアップグレードしてください。"
+    "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPTの現在の日使用制限に達しました。\n他のAIプロバイダーで続行するか、無制限の使用のために今すぐProにアップグレードしてください。",
+    "sidebar__button__immersive_chat": "没入型チャット"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -205,13 +205,28 @@ class ConversationDB {
    */
   public async removeUnnecessaryConversations(): Promise<void> {
     const allConversations = await this.getAllConversations()
-    const waitDeleteConversations = allConversations.filter((conversation) => {
+    const waitDeleteConversations: ChatConversation[] = []
+    let necessaryConversations = allConversations.filter((conversation) => {
       // 如果对话距离当前超过 3 天，则认为是不必要的对话
       const maxConversationAge = 3 * 24 * 60 * 60 * 1000
       const lastActiveTime = new Date(conversation.updated_at).getTime()
       const now = new Date().getTime()
-      return now - lastActiveTime >= maxConversationAge
+      if (now - lastActiveTime <= maxConversationAge) {
+        return true
+      }
+      waitDeleteConversations.push(conversation)
+      return false
     })
+    // 按照最后活跃时间排序，最后活跃时间越早的越靠前
+    necessaryConversations = necessaryConversations.sort((a, b) => {
+      const aLastActiveTime = new Date(a.updated_at).getTime()
+      const bLastActiveTime = new Date(b.updated_at).getTime()
+      return aLastActiveTime - bLastActiveTime
+    })
+    // 只保留最近的 30 个对话
+    for (let i = 0; i < necessaryConversations.length - 30; i++) {
+      waitDeleteConversations.push(necessaryConversations[i])
+    }
     await Promise.all(
       waitDeleteConversations.map((conversation) =>
         this.deleteConversation(conversation.id),

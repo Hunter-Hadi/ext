@@ -199,9 +199,28 @@ class ConversationDB {
       }
     })
   }
+
+  /**
+   * 删除所有不必要的对话。
+   */
+  public async removeUnnecessaryConversations(): Promise<void> {
+    const allConversations = await this.getAllConversations()
+    const waitDeleteConversations = allConversations.filter((conversation) => {
+      // 如果对话距离当前超过 3 天，则认为是不必要的对话
+      const maxConversationAge = 3 * 24 * 60 * 60 * 1000
+      const lastActiveTime = new Date(conversation.updated_at).getTime()
+      const now = new Date().getTime()
+      return now - lastActiveTime >= maxConversationAge
+    })
+    await Promise.all(
+      waitDeleteConversations.map((conversation) =>
+        this.deleteConversation(conversation.id),
+      ),
+    )
+  }
 }
 
-export default class ChatConversations {
+export default class ConversationManager {
   static conversationDB = new ConversationDB(
     'conversationDB',
     1,
@@ -228,6 +247,8 @@ export default class ChatConversations {
       newConversation,
     ])
     await this.conversationDB.addOrUpdateConversation(saveConversation)
+    // 异步清除无用的对话
+    this.conversationDB.removeUnnecessaryConversations().then().catch()
     return saveConversation as ChatConversation
   }
   static async getClientConversation(conversationId: string) {

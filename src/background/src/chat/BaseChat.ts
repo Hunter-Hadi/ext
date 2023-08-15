@@ -2,7 +2,7 @@ import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
 import { backgroundSendAllClientMessage } from '@/background/utils'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import ChatConversations, {
+import ConversationManager, {
   ChatConversation,
 } from '@/background/src/chatConversations'
 
@@ -28,7 +28,7 @@ class BaseChat {
     this.active = false
   }
   async createConversation(newConversation?: Partial<ChatConversation>) {
-    this.conversation = await ChatConversations.createConversation({
+    this.conversation = await ConversationManager.createConversation({
       ...newConversation,
     })
     return this.conversation.id

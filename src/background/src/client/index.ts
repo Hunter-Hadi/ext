@@ -24,7 +24,7 @@ import {
 import { backendApiReportPricingHooks } from '@/background/api'
 import getLiteChromeExtensionSettings from '@/background/utils/getLiteChromeExtensionSettings'
 import { getContextMenuActions } from '@/background/utils/buttonSettings'
-import ChatConversations from '@/background/src/chatConversations'
+import ConversationManager from '@/background/src/chatConversations'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 const log = new Log('Background/Client')
@@ -312,9 +312,8 @@ export const ClientMessageInit = () => {
         case 'Client_getLiteConversation':
           {
             const { conversationId } = data
-            const conversation = await ChatConversations.getClientConversation(
-              conversationId,
-            )
+            const conversation =
+              await ConversationManager.getClientConversation(conversationId)
             console.log('新版消息记录，获取conversation', conversation)
             return {
               success: conversation?.id ? true : false,
@@ -327,15 +326,15 @@ export const ClientMessageInit = () => {
           {
             const { conversationId, updateConversationData } = data
             const oldConversation =
-              await ChatConversations.conversationDB.getConversationById(
+              await ConversationManager.conversationDB.getConversationById(
                 conversationId,
               )
             if (oldConversation) {
-              await ChatConversations.conversationDB.addOrUpdateConversation(
+              await ConversationManager.conversationDB.addOrUpdateConversation(
                 mergeWithObject([oldConversation, updateConversationData]),
               )
               const newConversationData =
-                await ChatConversations.getClientConversation(conversationId)
+                await ConversationManager.getClientConversation(conversationId)
               sender.tab?.id &&
                 (await Browser.tabs.sendMessage(sender.tab.id, {
                   event: 'Client_listenUpdateConversationMessages',
@@ -371,17 +370,17 @@ export const ClientMessageInit = () => {
                   message: 'ok',
                 }
               }
-              success = await ChatConversations.pushMessages(
+              success = await ConversationManager.pushMessages(
                 conversationId,
                 newMessages,
               )
             } else if (action === 'delete') {
-              success = await ChatConversations.deleteMessages(
+              success = await ConversationManager.deleteMessages(
                 conversationId,
                 deleteCount,
               )
             } else if (action === 'clear') {
-              success = await ChatConversations.deleteMessages(
+              success = await ConversationManager.deleteMessages(
                 conversationId,
                 99999999,
               )
@@ -391,7 +390,7 @@ export const ClientMessageInit = () => {
                 event: 'Client_listenUpdateConversationMessages',
                 id: CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
-                  conversation: await ChatConversations.getClientConversation(
+                  conversation: await ConversationManager.getClientConversation(
                     conversationId,
                   ),
                 },

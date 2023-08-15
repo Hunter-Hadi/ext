@@ -28,9 +28,6 @@ const PromptsHelp: FC<{
           t(
             'settings:feature_card__prompts__help__manage_your_own_prompts__item4',
           ),
-          t(
-            'settings:feature_card__prompts__help__manage_your_own_prompts__item5',
-          ),
         ]}
       />
     </Stack>

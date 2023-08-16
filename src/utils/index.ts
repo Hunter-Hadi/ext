@@ -10,7 +10,6 @@ import {
   ROOT_CONTEXT_MENU_ID,
   ROOT_CONTEXT_MENU_PORTAL_ID,
 } from '@/constants'
-import { IInboxMessageType } from '@/features/sidebar/store'
 import {
   ContentScriptConnectionV2,
   pingDaemonProcess,
@@ -18,6 +17,7 @@ import {
 import { COUNTRIES_MAP } from '@/utils/staticData'
 import size from 'lodash-es/size'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { IInboxMessageType } from '@/features/sidebar/store/gmail'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)

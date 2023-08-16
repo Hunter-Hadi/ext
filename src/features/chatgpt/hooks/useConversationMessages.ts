@@ -2,15 +2,17 @@ import { useRecoilValue } from 'recoil'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useMemo } from 'react'
 import { IChatMessage } from '@/features/chatgpt/types'
-import { AppSettingsState } from '@/store'
+import { SidebarConversationIdSelector } from '@/features/sidebar'
 
-export const useChatConversationMessages = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
+const useConversationMessages = () => {
+  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const conversationMap = useRecoilValue(ClientConversationMapState)
   return useMemo<IChatMessage[]>(() => {
-    if (appSettings.conversationId) {
-      return conversationMap[appSettings.conversationId]?.messages || []
+    if (sidebarConversationId) {
+      return conversationMap[sidebarConversationId]?.messages || []
     }
     return []
-  }, [appSettings.conversationId, conversationMap])
+  }, [sidebarConversationId, conversationMap])
 }
+
+export default useConversationMessages

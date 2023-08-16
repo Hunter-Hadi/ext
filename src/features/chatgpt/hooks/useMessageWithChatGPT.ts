@@ -1,7 +1,11 @@
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import {
+  ChatGPTConversationState,
+  SidebarChatState,
+  SidebarConversationIdSelector,
+} from '@/features/sidebar/store'
 import {
   ContentScriptConnectionV2,
   getAIProviderSampleFiles,
@@ -38,8 +42,9 @@ import {
 } from '@/features/chatgpt/utils/clientChatConversation'
 import { setChromeExtensionSettings } from '@/background/utils'
 import { AppSettingsState } from '@/store'
-import { useChatConversationMessages } from '@/features/chatgpt/hooks/useConversationMessages'
+import useConversationMessages from '@/features/chatgpt/hooks/useConversationMessages'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import { setPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -48,7 +53,9 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
-  const messages = useChatConversationMessages()
+  const messages = useConversationMessages()
+  const [sidebarChat, setSidebarChat] = useRecoilState(SidebarChatState)
+  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const updateAppSettings = useSetRecoilState(AppSettingsState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
@@ -63,17 +70,30 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     await cleanChatGPT()
   }
   const createConversation = async () => {
+    if (sidebarConversationId) {
+      return sidebarConversationId
+    }
     const result = await port.postMessage({
       event: 'Client_createChatGPTConversation',
       data: {},
     })
-    if (result.success) {
-      updateAppSettings((prev) => {
-        return {
-          ...prev,
-          conversationId: result.data.conversationId,
-        }
-      })
+    if (result.success && result.data.conversationId) {
+      if (sidebarChat.type === 'Chat') {
+        updateAppSettings((prev) => {
+          return {
+            ...prev,
+            conversationId: result.data.conversationId,
+          }
+        })
+      } else if (sidebarChat.type === 'Summary') {
+        await setPageSummaryConversationId(result.data.conversationId)
+        setSidebarChat((prev) => {
+          return {
+            ...prev,
+            summaryConversationId: result.data.conversationId,
+          }
+        })
+      }
       return result.data.conversationId
     } else {
       return ''

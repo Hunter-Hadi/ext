@@ -1,12 +1,6 @@
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { useEffect, useRef } from 'react'
 import { load, ComposeViewButtonOnClickEvent } from '@inboxsdk/core'
-import {
-  InboxSdkState,
-  InboxThreadViewState,
-  InboxComposeViewState,
-  InboxEditState,
-} from '@/features/sidebar/store'
 import { getComposeViewMessageId } from '@/features/sidebar/utils'
 import { v4 as uuidV4 } from 'uuid'
 import {
@@ -30,6 +24,12 @@ import { useFocus } from '@/hooks/useFocus'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useTranslation } from 'react-i18next'
 import { clientGetChromeExtensionButtonSettings } from '@/features/contextMenu/utils/clientButtonSettings'
+import {
+  InboxComposeViewState,
+  InboxEditState,
+  InboxSdkState,
+  InboxThreadViewState,
+} from '@/features/sidebar/store/gmail'
 const initComposeViewButtonStyle = () => {
   document
     .querySelectorAll('.usechatgpt-ai__gmail-toolbar-button--cta')

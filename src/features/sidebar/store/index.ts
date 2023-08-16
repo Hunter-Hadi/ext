@@ -1,51 +1,5 @@
 import { atom, selector } from 'recoil'
-import { ComposeView, InboxSDK, ThreadView } from '@inboxsdk/core'
 import { IChatMessage } from '@/features/chatgpt/types'
-
-// import { v4 as uuidV4 } from 'uuid'
-
-interface IProxyInboxSdkTarget<T> {
-  getInstance?: () => T
-}
-
-export const InboxEditState = atom<{
-  currentMessageId?: string
-  currentDraftId?: string
-  step?: number
-}>({
-  key: 'InboxEditState',
-  default: {},
-})
-
-export const InboxSdkState = atom<{
-  sdk: InboxSDK | null
-  loading: boolean
-  initialized: boolean
-}>({
-  key: 'InboxSdkState',
-  default: {
-    sdk: null,
-    loading: true,
-    initialized: false,
-  },
-})
-
-export const InboxThreadViewState = atom<
-  IProxyInboxSdkTarget<ThreadView> & { currentThreadId?: string }
->({
-  key: 'InboxThreadViewState',
-  default: {
-    getInstance: undefined,
-    currentThreadId: undefined,
-  },
-})
-
-export const InboxComposeViewState = atom<{
-  [key: string]: IProxyInboxSdkTarget<ComposeView>
-}>({
-  key: 'InboxComposeViewState',
-  default: {},
-})
 
 export const ChatGPTConversationState = atom<{
   writingMessage: IChatMessage | null
@@ -62,16 +16,27 @@ export const ChatGPTConversationState = atom<{
   },
 })
 
-export type IInboxMessageType = 'new-email' | 'reply'
+export type ISidebarChatType = 'Chat' | 'Summary'
 
-export const CurrentInboxMessageTypeSelector = selector<IInboxMessageType>({
-  key: 'CurrentInboxMessageTypeSelector',
+export const SidebarChatState = atom<{
+  type: ISidebarChatType
+  chatConversationId?: string
+  summaryConversationId?: string
+}>({
+  key: 'SidebarChatState',
+  default: {
+    type: 'Chat',
+  },
+})
+
+export const SidebarConversationIdSelector = selector<string>({
+  key: 'SidebarConversationIdSelector',
   get: ({ get }) => {
-    const currentMessageId = get(InboxEditState).currentMessageId
-    if (currentMessageId?.includes('newDraft_')) {
-      return 'new-email'
+    const sidebarChat = get(SidebarChatState)
+    if (sidebarChat.type === 'Chat') {
+      return sidebarChat.chatConversationId || ''
     } else {
-      return 'reply'
+      return sidebarChat.summaryConversationId || ''
     }
   },
 })

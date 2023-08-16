@@ -1,8 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import {
-  CurrentInboxMessageTypeSelector,
-  InboxEditState,
-} from '@/features/sidebar/store'
 
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { showChatBox, useDebounceValue } from '@/utils'
@@ -27,6 +23,10 @@ import { v4 as uuidV4 } from 'uuid'
 import LazyLoadImage from '@/components/LazyloadImage'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { usePermissionCard } from '@/features/auth'
+import {
+  CurrentInboxMessageTypeSelector,
+  InboxEditState,
+} from '@/features/sidebar/store/gmail'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {

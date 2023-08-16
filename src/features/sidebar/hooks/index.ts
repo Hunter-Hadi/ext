@@ -1,11 +1,11 @@
 import { useRecoilValue } from 'recoil'
+import { useMemo } from 'react'
 import {
-  InboxSdkState,
   InboxComposeViewState,
   InboxEditState,
+  InboxSdkState,
   InboxThreadViewState,
-} from '@/features/sidebar/store'
-import { useMemo } from 'react'
+} from '@/features/sidebar/store/gmail'
 
 export { useCurrentMessageView } from './useCurrentMessageView'
 

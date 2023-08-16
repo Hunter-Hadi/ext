@@ -34,6 +34,7 @@ import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
+import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 
 const log = new Log('AppInit')
 
@@ -406,6 +407,7 @@ const AppInit = () => {
   useInitI18n()
   useInjectShortCutsRunTime()
   useHandlePDFViewerError()
+  useInitSidebar()
   useEffectOnce(() => {
     if (isMaxAINewTabPage()) {
       showChatBox()

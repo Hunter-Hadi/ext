@@ -6,7 +6,6 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { Item, Submenu } from 'react-contexify'
 import { groupByContextMenuItem } from '@/features/contextMenu/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { CurrentInboxMessageTypeSelector } from '@/features/sidebar/store'
 import { useRecoilValue } from 'recoil'
 import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
@@ -21,6 +20,7 @@ import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 // import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/types'
 import { contextMenu } from 'react-contexify'
 import { useTranslation } from 'react-i18next'
+import { CurrentInboxMessageTypeSelector } from '@/features/sidebar/store/gmail'
 
 const ContextMenuContext = React.createContext<{
   staticButton?: boolean

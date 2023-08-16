@@ -25,9 +25,6 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     return this.useChatGPTPlusChat.status
   }
   async createConversation() {
-    if (this.useChatGPTPlusChat.conversation?.id) {
-      return Promise.resolve(this.useChatGPTPlusChat.conversation.id)
-    }
     const conversationId = await this.useChatGPTPlusChat.createConversation()
     return Promise.resolve(conversationId)
   }

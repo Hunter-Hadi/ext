@@ -8,6 +8,7 @@ import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelector
 import Popover from '@mui/material/Popover'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { getAppRootElement } from '@/utils'
+import { isMaxAINewTabPage } from '@/pages/chat/util'
 
 const AIProviderSelectorFloatingButton: FC<{
   sx?: SxProps
@@ -84,7 +85,7 @@ const AIProviderSelectorFloatingButton: FC<{
         }}
         PaperProps={{
           sx: {
-            ml: '8px',
+            ml: isMaxAINewTabPage() ? 0 : '8px',
           },
         }}
       >

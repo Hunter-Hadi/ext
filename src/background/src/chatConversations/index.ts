@@ -3,17 +3,27 @@ import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import { getChromeExtensionSettings } from '@/background/utils'
 import { IAIProviderType } from '@/background/provider/chat'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { ISidebarConversationType } from '@/features/sidebar'
 
-export interface ChatConversation {
+export interface IChatConversation {
   id: string // 对话ID
   title: string // 对话标题
   created_at: string // 创建时间
   updated_at: string // 更新时间
   messages: IChatMessage[] // 对话中的消息列表
+  type: ISidebarConversationType // 对话类型
   meta: {
     AIProvider?: IAIProviderType // AI提供商
     AIModel?: string // AI模型
     AIConversationId?: string // AI对话ID
+    systemPrompt?: string // 系统提示
+    maxTokens?: number // 最大生成长度
+    maxHistoryCount?: number // 最大历史记录数
+    temperature?: number // 温度
+    topP?: number // topP
+    presencePenalty?: number // presencePenalty
+    frequencyPenalty?: number // frequencyPenalty
+    bestOf?: number // bestOf
     [key: string]: any
   } // 元数据
 }
@@ -79,7 +89,7 @@ class ConversationDB {
    * @returns Promise 对象，表示操作的异步结果
    */
   public addOrUpdateConversation(
-    conversation: ChatConversation,
+    conversation: IChatConversation,
   ): Promise<void> {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
@@ -142,7 +152,7 @@ class ConversationDB {
    */
   public getConversationById(
     conversationId: string,
-  ): Promise<ChatConversation | undefined> {
+  ): Promise<IChatConversation | undefined> {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
@@ -155,7 +165,7 @@ class ConversationDB {
 
         request.onsuccess = (event) => {
           const conversation = (event.target as any)?.result as
-            | ChatConversation
+            | IChatConversation
             | undefined
           resolve(conversation) // 解析 Promise 为获取到的对话对象
         }
@@ -174,7 +184,7 @@ class ConversationDB {
    *
    * @returns Promise 对象，解析为包含所有对话的数组
    */
-  public getAllConversations(): Promise<ChatConversation[]> {
+  public getAllConversations(): Promise<IChatConversation[]> {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
@@ -187,7 +197,7 @@ class ConversationDB {
 
         request.onsuccess = (event) => {
           const conversations = ((event.target as any)?.result ||
-            []) as ChatConversation[]
+            []) as IChatConversation[]
           resolve(conversations) // 解析 Promise 为包含所有对话的数组
         }
 
@@ -205,7 +215,7 @@ class ConversationDB {
    */
   public async removeUnnecessaryConversations(): Promise<void> {
     const allConversations = await this.getAllConversations()
-    const waitDeleteConversations: ChatConversation[] = []
+    const waitDeleteConversations: IChatConversation[] = []
     let necessaryConversations = allConversations.filter((conversation) => {
       // 如果对话距离当前超过 3 天，则认为是不必要的对话
       const maxConversationAge = 3 * 24 * 60 * 60 * 1000
@@ -241,11 +251,12 @@ export default class ConversationManager {
     1,
     'conversations',
   )
-  static async createConversation(newConversation: Partial<ChatConversation>) {
+  static async createConversation(newConversation: Partial<IChatConversation>) {
     const currentSettings = await getChromeExtensionSettings()
-    const defaultConversation: ChatConversation = {
+    const defaultConversation: IChatConversation = {
       id: uuidV4(),
       title: 'Chat',
+      type: 'Chat',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       messages: [],
@@ -264,7 +275,7 @@ export default class ConversationManager {
     await this.conversationDB.addOrUpdateConversation(saveConversation)
     // 异步清除无用的对话
     this.conversationDB.removeUnnecessaryConversations().then().catch()
-    return saveConversation as ChatConversation
+    return saveConversation as IChatConversation
   }
   static async getClientConversation(conversationId: string) {
     const conversation = await this.conversationDB.getConversationById(

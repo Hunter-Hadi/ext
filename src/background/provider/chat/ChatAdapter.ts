@@ -4,6 +4,7 @@ import {
   IChatUploadFile,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 /**
  * needAuth: 需要授权
@@ -42,12 +43,15 @@ export type IChatGPTAskQuestionFunctionType = (
 ) => Promise<void>
 
 export interface ChatSystemInterface {
+  conversation?: IChatConversation
   chatFiles: IChatUploadFile[]
   status: ChatStatus
   preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
   destroy: () => Promise<void>
-  createConversation: () => Promise<string>
+  createConversation: (
+    initConversationData: Partial<IChatConversation>,
+  ) => Promise<string>
   removeConversation: (conversationId: string) => Promise<boolean>
   sendQuestion: IChatGPTAskQuestionFunctionType
   abortAskQuestion: (messageId: string) => Promise<boolean>
@@ -62,12 +66,15 @@ export interface ChatSystemInterface {
 }
 
 export interface ChatAdapterInterface {
+  conversation?: IChatConversation
   chatFiles: IChatUploadFile[]
   status: ChatStatus
   preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
   destroy: () => Promise<void>
-  createConversation: () => Promise<string>
+  createConversation: (
+    initConversationData: Partial<IChatConversation>,
+  ) => Promise<string>
   removeConversation: (conversationId: string) => Promise<boolean>
   sendQuestion: IChatGPTAskQuestionFunctionType
   abortAskQuestion: (messageId: string) => Promise<boolean>
@@ -95,6 +102,9 @@ export class ChatAdapter implements ChatSystemInterface {
   get status() {
     return this.chatAdapter.status
   }
+  get conversation() {
+    return this.chatAdapter.conversation
+  }
   sendQuestion: IChatGPTAskQuestionFunctionType = (
     taskId,
     sender,
@@ -109,8 +119,8 @@ export class ChatAdapter implements ChatSystemInterface {
   async destroy() {
     await this.chatAdapter.destroy()
   }
-  async createConversation() {
-    return await this.chatAdapter.createConversation()
+  async createConversation(initConversationData: Partial<IChatConversation>) {
+    return await this.chatAdapter.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
     return await this.chatAdapter.removeConversation(conversationId)

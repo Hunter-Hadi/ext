@@ -52,9 +52,9 @@ class ClaudeChat extends BaseChat {
       })
     }
   }
-  async createConversation() {
+  async createConversation(conversationData: Partial<IChatUploadFile>) {
     if (!this.conversation) {
-      await super.createConversation()
+      await super.createConversation(conversationData)
     }
     if (this.conversation?.meta.AIConversationId) {
       return this.conversation.id

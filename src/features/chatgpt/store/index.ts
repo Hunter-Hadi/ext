@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 import { ChatStatus } from '@/background/provider/chat'
-import { ChatConversation } from '@/background/src/chatConversations'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 export const ChatGPTClientState = atom<{
   loaded: boolean
@@ -16,7 +16,7 @@ export const ChatGPTClientState = atom<{
 })
 
 export const ClientConversationMapState = atom<{
-  [key: string]: ChatConversation
+  [key: string]: IChatConversation
 }>({
   key: 'ClientConversationMapState',
   default: {},

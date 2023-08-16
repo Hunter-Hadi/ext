@@ -9,6 +9,9 @@ import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
+/**
+ * @deprecated - poe是竞对, 不再维护
+ */
 class PoeChatProvider implements ChatAdapterInterface {
   private poeChat: PoeChat
 
@@ -24,6 +27,9 @@ class PoeChatProvider implements ChatAdapterInterface {
   }
   get status() {
     return this.poeChat.status
+  }
+  get conversation() {
+    return this.poeChat.conversation
   }
   async createConversation() {
     return Promise.resolve('')

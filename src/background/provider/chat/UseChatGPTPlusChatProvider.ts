@@ -8,6 +8,8 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatConversation } from '@/background/src/chatConversations'
+import { IMaxAIChatGPTMessageType } from '@/background/src/chat/UseChatGPTChat/types'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -24,8 +26,13 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   get status() {
     return this.useChatGPTPlusChat.status
   }
-  async createConversation() {
-    const conversationId = await this.useChatGPTPlusChat.createConversation()
+  get conversation() {
+    return this.useChatGPTPlusChat.conversation
+  }
+  async createConversation(initConversationData: Partial<IChatConversation>) {
+    const conversationId = await this.useChatGPTPlusChat.createConversation(
+      initConversationData,
+    )
     return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {
@@ -42,6 +49,29 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     options,
   ) => {
     const messageId = uuidV4()
+    const chat_history: IMaxAIChatGPTMessageType[] = []
+    if (this.useChatGPTPlusChat.conversation) {
+      if (this.useChatGPTPlusChat.conversation.meta.systemPrompt) {
+        chat_history.push({
+          type: 'system',
+          data: {
+            content: this.useChatGPTPlusChat.conversation.meta.systemPrompt,
+            additional_kwargs: {},
+          },
+        })
+      }
+      options.historyMessages?.forEach((message) => {
+        chat_history.push({
+          type: message.type === 'ai' ? 'ai' : 'human',
+          data: {
+            content: message.text,
+            additional_kwargs: {},
+          },
+        })
+      })
+      options.includeHistory = false
+      options.maxHistoryMessageCnt = 0
+    }
     await this.useChatGPTPlusChat.askChatGPT(
       question.question,
       {
@@ -49,6 +79,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         regenerate: options.regenerate,
         include_history: options.includeHistory,
         max_history_message_cnt: options.maxHistoryMessageCnt,
+        chat_history,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

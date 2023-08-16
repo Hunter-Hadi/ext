@@ -7,6 +7,7 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import { setPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -26,18 +27,20 @@ const useCleanChatGPT = () => {
       })
       .then()
       .catch()
+    setAppSettings((prevState) => {
+      return {
+        ...prevState,
+        conversationId: '',
+      }
+    })
     if (sidebarSettings.type === 'Chat') {
-      setAppSettings((prevState) => {
-        return {
-          ...prevState,
-          conversationId: '',
-        }
-      })
       // 清空本地储存的conversationId
       await setChromeExtensionSettings({
         conversationId: '',
       })
     } else {
+      // 清除pageSummary的conversationId
+      await setPageSummaryConversationId('')
       updateSidebarSettings((prevState) => {
         return {
           ...prevState,

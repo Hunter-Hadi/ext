@@ -3,11 +3,11 @@ import { ChatStatus } from '@/background/provider/chat'
 import { backgroundSendAllClientMessage } from '@/background/utils'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import ConversationManager, {
-  ChatConversation,
+  IChatConversation,
 } from '@/background/src/chatConversations'
 
 class BaseChat {
-  conversation: ChatConversation | undefined
+  conversation: IChatConversation | undefined
   chatFiles: IChatUploadFile[]
   log: Log
   status: ChatStatus = 'needAuth'
@@ -19,6 +19,9 @@ class BaseChat {
     this.chatFiles = []
     this.log = new Log('Background/Chat/' + name)
   }
+  get conversationId() {
+    return this.conversation?.id || ''
+  }
   async auth(tabId: number) {
     this.active = true
     await this.updateClientStatus('success')
@@ -27,7 +30,7 @@ class BaseChat {
     await this.updateClientStatus('needAuth')
     this.active = false
   }
-  async createConversation(newConversation?: Partial<ChatConversation>) {
+  async createConversation(newConversation?: Partial<IChatConversation>) {
     this.conversation = await ConversationManager.createConversation({
       ...newConversation,
     })

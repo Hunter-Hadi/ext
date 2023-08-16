@@ -83,7 +83,6 @@ const userInitUserInfo = (isInit = true) => {
         data: {},
       })
       if (result.success && result.data?.name) {
-        debugger
         const newRole = result.data
         if (newRole) {
           setUserInfo((prevState) => {
@@ -98,8 +97,8 @@ const userInitUserInfo = (isInit = true) => {
               }
             }
             if (
-              // newUserInfo.role?.name &&
-              // newUserInfo.role.name !== newRole.name &&
+              newUserInfo.role?.name &&
+              newUserInfo.role.name !== newRole.name &&
               newRole.name !== 'free'
             ) {
               // 角色发生变化
@@ -132,7 +131,6 @@ const userInitUserInfo = (isInit = true) => {
     if (!needPushUpgradeMessage.current) {
       return
     }
-    debugger
     // 如果是升级，需要在侧边栏显示升级消息
     if (
       sidebarConversationId &&

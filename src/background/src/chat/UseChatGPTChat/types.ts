@@ -4,6 +4,16 @@ import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import dayjs from 'dayjs'
 
+export type IMaxAIChatGPTMessageType = {
+  type: 'human' | 'ai' | 'generic' | 'system' | 'function'
+  data: {
+    content: string
+    additional_kwargs: {
+      [key: string]: any
+    }
+  }
+}
+
 export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   {
     title: 'gpt-3.5-turbo',

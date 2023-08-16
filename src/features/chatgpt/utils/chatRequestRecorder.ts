@@ -9,8 +9,8 @@ import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import AES from 'crypto-js/aes'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import { aesJsonEncrypt } from '@/utils/encryptionHelper'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况
@@ -181,7 +181,7 @@ const fetchChatGPTErrorRecord = async () => {
     }
     const accessToken = await getAccessToken()
     if (startRecordTime && info && accessToken) {
-      const text = AES.encrypt(JSON.stringify(info), 'MaxAI').toString()
+      const text = aesJsonEncrypt(info)
       fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/log`, {
         method: 'POST',
         body: JSON.stringify({

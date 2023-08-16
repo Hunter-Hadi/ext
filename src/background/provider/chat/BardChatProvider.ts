@@ -8,6 +8,7 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 class BardChatProvider implements ChatAdapterInterface {
   private bardChat: BardChat
@@ -24,11 +25,16 @@ class BardChatProvider implements ChatAdapterInterface {
   get status() {
     return this.bardChat.status
   }
-  async createConversation() {
+  get conversation() {
+    return this.bardChat.conversation
+  }
+  async createConversation(initConversationData: Partial<IChatConversation>) {
     if (this.bardChat.conversation?.id) {
       return Promise.resolve(this.bardChat.conversation.id)
     }
-    const conversationId = await this.bardChat.createConversation()
+    const conversationId = await this.bardChat.createConversation(
+      initConversationData,
+    )
     return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {

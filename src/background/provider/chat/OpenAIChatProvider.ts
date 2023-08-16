@@ -5,6 +5,7 @@ import {
 } from '@/background/provider/chat/ChatAdapter'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { setChromeExtensionSettings } from '@/background/utils'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat
@@ -20,6 +21,9 @@ class OpenAIChatProvider implements ChatAdapterInterface {
   get status() {
     return this.openAIChat.status
   }
+  get conversation() {
+    return this.openAIChat.conversation
+  }
   sendQuestion: IChatGPTAskQuestionFunctionType = (
     taskId,
     sender,
@@ -32,8 +36,8 @@ class OpenAIChatProvider implements ChatAdapterInterface {
     return await this.openAIChat.abortAskQuestion(messageId)
   }
 
-  async createConversation() {
-    return await this.openAIChat.createConversation()
+  async createConversation(initConversationData: Partial<IChatConversation>) {
+    return await this.openAIChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
     await setChromeExtensionSettings({

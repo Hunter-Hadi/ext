@@ -18,10 +18,10 @@ export const ChatGPTConversationState = atom<{
   },
 })
 
-export type ISidebarChatType = 'Chat' | 'Summary'
+export type ISidebarConversationType = 'Chat' | 'Summary'
 
 export const SidebarSettingsState = atom<{
-  type: ISidebarChatType
+  type: ISidebarConversationType
   chatConversationId?: string
   summaryConversationId?: string
 }>({

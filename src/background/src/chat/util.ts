@@ -5,7 +5,10 @@ import {
   setChromeExtensionSettings,
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+import {
+  IChatMessage,
+  IUserChatMessageExtraType,
+} from '@/features/chatgpt/types'
 import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
 import { IThirdProviderSettings } from '@/background/types/Settings'
 import { IAIProviderType } from '@/background/provider/chat'
@@ -17,6 +20,12 @@ import {
 import { default as lodashSet } from 'lodash-es/set'
 import { default as lodashGet } from 'lodash-es/get'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { IAskChatGPTQuestionType } from '@/background/provider/chat/ChatAdapter'
+import ConversationManager, {
+  IChatConversation,
+} from '@/background/src/chatConversations'
+import { v4 as uuidV4 } from 'uuid'
+import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**
@@ -254,5 +263,115 @@ export const setThirdProviderSettings = async <T extends IAIProviderType>(
     return true
   } catch (e) {
     return false
+  }
+}
+
+/**
+ * 处理AI提问的参数
+ */
+export const processAskAIParameters = async (
+  conversation: IChatConversation,
+  question: IAskChatGPTQuestionType,
+  options: IUserChatMessageExtraType,
+) => {
+  const { regenerate, retry } = options as IUserChatMessageExtraType
+  // 如果是重试或者重新生成，需要从原始会话中获取问题
+  const conversationId = question.conversationId
+  if ((retry || regenerate) && conversationId) {
+    const originalConversation =
+      await ConversationManager.conversationDB.getConversationById(
+        conversationId,
+      )
+    if (originalConversation) {
+      const originalMessages = originalConversation.messages
+      if (regenerate) {
+        // 重新生成，需要删除原始会话中的问题
+        const originalMessageIndex = originalMessages.findIndex(
+          (message) => message.messageId === question.messageId,
+        )
+        const originalMessage = originalMessages[originalMessageIndex]
+        const needDeleteCount =
+          originalMessages.length - 1 - originalMessageIndex
+        await ConversationManager.deleteMessages(
+          conversationId,
+          needDeleteCount,
+        )
+        // 重新生成问题
+        if (originalMessage) {
+          question.question = originalMessage.text
+          question.messageId = originalMessage.messageId
+          question.parentMessageId = originalMessage.parentMessageId || ''
+        }
+      } else if (retry) {
+        // 重试，到这一步sidebar里面有[问题，答案，新问题]，要删到[问题]
+        const originalMessageIndex = originalMessages.findIndex(
+          (message) => message.messageId === question.parentMessageId,
+        )
+        // 所以这里还要-1
+        const originalMessage = originalMessages[originalMessageIndex]
+        const needDeleteCount = Math.max(
+          originalMessages.length - originalMessageIndex - 1,
+          0,
+        )
+        await ConversationManager.deleteMessages(
+          conversationId,
+          needDeleteCount,
+        )
+        // 重新生成问题
+        if (originalMessage) {
+          question.question = originalMessage.text
+          question.messageId = uuidV4()
+          question.parentMessageId = originalMessage.parentMessageId || ''
+        }
+      }
+    }
+  }
+  // 聊天记录生成
+  if (!options.historyMessages || options.historyMessages?.length === 0) {
+    const systemPromptTokens = (
+      await getTextTokens(conversation.meta.systemPrompt || '')
+    ).length
+    // api会用到1次message
+    let maxHistoryCount = (conversation.meta.maxHistoryCount || 10) - 1
+    // 如果有systemPrompt 会用到1次message
+    if (systemPromptTokens.length > 0) {
+      maxHistoryCount -= 1
+    }
+    const maxHistoryTokens =
+      (conversation.meta.maxTokens || 4096) - systemPromptTokens - 1000 // 预留1000个token给ai生成的答案
+    let historyTokensUsed = 0
+    const historyMessages: IChatMessage[] = []
+    // 如果小于最大历史记录数，并且小于最大历史记录token数
+    // 从后往前遍历，直到满足条件
+    let isFindAIResponse = false
+    for (let i = conversation.messages.length - 1; i >= 0; i--) {
+      const message = conversation.messages[i]
+      if (message.type === 'ai') {
+        isFindAIResponse = true
+      }
+      if (!isFindAIResponse) {
+        continue
+      }
+      const tokens = (await getTextTokens(message.text)).length
+      historyTokensUsed += tokens
+      if (
+        historyMessages.length < maxHistoryCount &&
+        historyTokensUsed < maxHistoryTokens
+      ) {
+        historyMessages.unshift(message)
+      } else {
+        break
+      }
+    }
+    console.log(
+      '新版消息记录 History Messages',
+      historyMessages,
+      historyTokensUsed + systemPromptTokens,
+    )
+    options.historyMessages = historyMessages
+  }
+  return {
+    question,
+    options,
   }
 }

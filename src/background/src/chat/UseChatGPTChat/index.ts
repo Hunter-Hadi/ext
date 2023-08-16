@@ -19,7 +19,10 @@ import {
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  IMaxAIChatGPTMessageType,
+  USE_CHAT_GPT_PLUS_MODELS,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
@@ -85,6 +88,7 @@ class UseChatGPTPlusChat extends BaseChat {
       regenerate?: boolean
       streaming?: boolean
       max_history_message_cnt?: number
+      chat_history?: IMaxAIChatGPTMessageType[]
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -117,17 +121,22 @@ class UseChatGPTPlusChat extends BaseChat {
       streaming = true,
       regenerate = false,
       max_history_message_cnt = 0,
+      chat_history = [],
     } = options || {}
     const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
     const postBody = Object.assign(
       {
+        chat_history,
         include_history,
         regenerate,
         streaming,
         message_content: question,
         max_history_message_cnt,
         chrome_extension_version: APP_VERSION,
-        model_name: userConfig?.model || USE_CHAT_GPT_PLUS_MODELS[0].value,
+        model_name:
+          this.conversation?.meta.AIModel ||
+          userConfig!.model ||
+          USE_CHAT_GPT_PLUS_MODELS[0].value,
         temperature: isNumber(userConfig?.temperature)
           ? userConfig!.temperature
           : 1,

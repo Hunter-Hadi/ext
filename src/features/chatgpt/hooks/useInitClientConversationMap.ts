@@ -3,7 +3,7 @@ import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { ChatConversation } from '@/background/src/chatConversations'
+import { IChatConversation } from '@/background/src/chatConversations'
 import { useEffect } from 'react'
 import { useFocus } from '@/hooks/useFocus'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
@@ -17,7 +17,7 @@ export const clientGetConversation = async (conversationId: string) => {
         conversationId,
       },
     })
-    return result.success ? (result.data as ChatConversation) : undefined
+    return result.success ? (result.data as IChatConversation) : undefined
   } catch (e) {
     return undefined
   }

@@ -8,6 +8,7 @@ import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ClaudeChat } from '@/background/src/chat/ClaudeChat'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 class ClaudeChatProvider implements ChatAdapterInterface {
   private claudeChat: ClaudeChat
@@ -24,10 +25,17 @@ class ClaudeChatProvider implements ChatAdapterInterface {
   get status() {
     return this.claudeChat.status
   }
-  async createConversation() {
-    return await this.claudeChat.createConversation()
+  get conversation() {
+    return this.claudeChat.conversation
+  }
+  async createConversation(initConversationData: Partial<IChatConversation>) {
+    if (this.claudeChat.conversation?.id) {
+      return Promise.resolve(this.claudeChat.conversation.id)
+    }
+    return await this.claudeChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
+    this.claudeChat.conversation = undefined
     await this.claudeChat.removeConversation(conversationId)
     await setChromeExtensionSettings({
       conversationId: '',

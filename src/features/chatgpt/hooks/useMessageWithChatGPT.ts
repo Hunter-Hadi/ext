@@ -44,7 +44,12 @@ import { setChromeExtensionSettings } from '@/background/utils'
 import { AppSettingsState } from '@/store'
 import useConversationMessages from '@/features/chatgpt/hooks/useConversationMessages'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
-import { setPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
+import {
+  generateInitPageSummaryData,
+  setPageSummaryConversationId,
+} from '@/features/sidebar/utils/pageSummaryHelper'
+import { IChatConversation } from '@/background/src/chatConversations'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -63,6 +68,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
+  const { currentAIProviderModelDetail } = useAIProviderModels()
   const { cleanChatGPT } = useCleanChatGPT()
   const resetConversation = async () => {
     // 清空输入框
@@ -73,31 +79,60 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     if (sidebarConversationId) {
       return sidebarConversationId
     }
-    const result = await port.postMessage({
-      event: 'Client_createChatGPTConversation',
-      data: {},
-    })
-    if (result.success && result.data.conversationId) {
-      if (sidebarChat.type === 'Chat') {
+    let conversationId = ''
+    if (sidebarChat.type === 'Chat') {
+      const result = await port.postMessage({
+        event: 'Client_createChatGPTConversation',
+        data: {
+          initConversationData: {
+            type: 'Chat',
+            meta: {
+              maxTokens: currentAIProviderModelDetail?.maxTokens || 4096,
+            },
+          } as Partial<IChatConversation>,
+        },
+      })
+      if (result.success && result.data.conversationId) {
+        conversationId = result.data.conversationId
         updateAppSettings((prev) => {
           return {
             ...prev,
             conversationId: result.data.conversationId,
           }
         })
-      } else if (sidebarChat.type === 'Summary') {
-        await setPageSummaryConversationId(result.data.conversationId)
-        setSidebarChat((prev) => {
-          return {
-            ...prev,
-            summaryConversationId: result.data.conversationId,
-          }
-        })
       }
-      return result.data.conversationId
-    } else {
-      return ''
+    } else if (sidebarChat.type === 'Summary') {
+      const initPageSummaryData = await generateInitPageSummaryData()
+      const result = await port.postMessage({
+        event: 'Client_createChatGPTConversation',
+        data: {
+          initConversationData: {
+            type: 'Summary',
+            meta: {
+              AIProvider: 'USE_CHAT_GPT_PLUS',
+              AIModel: 'gpt-3.5-turbo-16k',
+              systemPrompt:
+                'The following text delimited by triple backticks is the context:\n' +
+                '```\n' +
+                `${initPageSummaryData.pageContent}\n` +
+                '```',
+              maxTokens: 16384, // gpt-3.5-16k
+            },
+          } as Partial<IChatConversation>,
+        },
+      })
+      conversationId = result.data.conversationId
+      if (result.success && result.data.conversationId) {
+        await setPageSummaryConversationId(result.data.conversationId)
+      }
+      setSidebarChat((prev) => {
+        return {
+          ...prev,
+          summaryConversationId: result.data.conversationId,
+        }
+      })
     }
+    return conversationId
   }
   const sendQuestion = async (
     questionInfo: {

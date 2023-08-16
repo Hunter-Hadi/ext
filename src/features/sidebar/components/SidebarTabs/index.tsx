@@ -4,7 +4,7 @@ import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import {
-  ISidebarChatType,
+  ISidebarConversationType,
   SidebarSettingsState,
 } from '@/features/sidebar/store'
 import { useRecoilState } from 'recoil'
@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
-  value: ISidebarChatType
+  value: ISidebarConversationType
 }> = [
   {
     label: 'client:sidebar__tabs__chat__title',

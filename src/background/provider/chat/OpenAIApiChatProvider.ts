@@ -8,6 +8,7 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 class OpenAIApiChatProvider implements ChatAdapterInterface {
   private openAiApiChat: OpenAiApiChat
@@ -26,11 +27,16 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
     this.openAiApiChat.checkApiKey()
     return this.openAiApiChat.status
   }
-  async createConversation() {
+  get conversation() {
+    return this.openAiApiChat.conversation
+  }
+  async createConversation(initConversationData: Partial<IChatConversation>) {
     if (this.openAiApiChat.conversation?.id) {
       return Promise.resolve(this.openAiApiChat.conversation.id)
     }
-    const conversationId = await this.openAiApiChat.createConversation()
+    const conversationId = await this.openAiApiChat.createConversation(
+      initConversationData,
+    )
     return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {

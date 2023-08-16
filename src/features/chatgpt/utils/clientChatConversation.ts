@@ -5,7 +5,7 @@ import {
   IUserChatMessage,
 } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { ChatConversation } from '@/background/src/chatConversations'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 export const clientChatConversationModifyChatMessages = async (
   action: 'add' | 'delete' | 'clear',
@@ -34,7 +34,7 @@ export const clientChatConversationModifyChatMessages = async (
 
 export const clientChatConversationUpdate = async (
   conversationId: string,
-  updateConversationData: Partial<ChatConversation>,
+  updateConversationData: Partial<IChatConversation>,
 ) => {
   try {
     const port = new ContentScriptConnectionV2()

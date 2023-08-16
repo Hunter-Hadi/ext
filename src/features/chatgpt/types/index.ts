@@ -33,6 +33,8 @@ export interface IUserChatMessage extends IChatMessage {
     maxHistoryMessageCnt?: number
     // 额外数据
     meta?: IChatMessageExtraMetaType
+    // 聊天记录
+    historyMessages?: IChatMessage[]
   }
 }
 

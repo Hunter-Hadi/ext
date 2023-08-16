@@ -8,6 +8,7 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 class BingChatProvider implements ChatAdapterInterface {
   private bingChat: BingChat
@@ -25,11 +26,16 @@ class BingChatProvider implements ChatAdapterInterface {
   get status() {
     return this.bingChat.status
   }
-  async createConversation() {
+  get conversation() {
+    return this.bingChat.conversation
+  }
+  async createConversation(initConversationData: Partial<IChatConversation>) {
     if (this.bingChat.conversation?.id) {
       return Promise.resolve(this.bingChat.conversation.id)
     }
-    const conversationId = await this.bingChat.createConversation()
+    const conversationId = await this.bingChat.createConversation(
+      initConversationData,
+    )
     return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {

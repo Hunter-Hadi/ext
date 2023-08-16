@@ -22,6 +22,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_switchChatGPTProvider'
   | 'Client_authChatGPTProvider'
   | 'Client_createChatGPTConversation'
+  | 'Client_changeConversation'
   | 'Client_removeChatGPTConversation'
   | 'Client_askChatGPTQuestion'
   | 'Client_abortAskChatGPTQuestion'

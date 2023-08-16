@@ -17,13 +17,16 @@ import Log from '@/utils/Log'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import Browser from 'webextension-polyfill'
 import { APP_VERSION, CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
-import {
-  IChatUploadFile,
-  IUserChatMessageExtraType,
-} from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 import { OnBoardingKeyType } from '@/background/utils/onboardingStorage'
-import ConversationManager from '@/background/src/chatConversations'
-import { v4 as uuidV4 } from 'uuid'
+import ConversationManager, {
+  IChatConversation,
+} from '@/background/src/chatConversations'
+import {
+  getThirdProviderSettings,
+  processAskAIParameters,
+  setThirdProviderSettings,
+} from '@/background/src/chat/util'
 
 const log = new Log('Background/Chat/ChatSystem')
 
@@ -34,6 +37,9 @@ class ChatSystem implements ChatSystemInterface {
   } = {}
   constructor() {
     this.initChatSystem()
+  }
+  get conversation() {
+    return this.currentAdapter?.conversation
   }
   get status(): ChatStatus {
     if (this.currentAdapter) {
@@ -86,7 +92,17 @@ class ChatSystem implements ChatSystemInterface {
             }
           }
           case 'Client_createChatGPTConversation': {
-            const conversationId = await this.createConversation()
+            const initConversationData = (data.initConversationData ||
+              {}) as IChatConversation
+            if (
+              initConversationData.meta.AIProvider &&
+              this.currentProvider !== initConversationData.meta.AIProvider
+            ) {
+              await this.switchAdapter(initConversationData.meta.AIProvider)
+            }
+            const conversationId = await this.createConversation(
+              initConversationData || {},
+            )
             await setChromeExtensionSettings({
               conversationId,
             })
@@ -108,63 +124,62 @@ class ChatSystem implements ChatSystemInterface {
               }
             }
           }
+          case 'Client_changeConversation': {
+            const { conversationId } = data
+            if (conversationId) {
+              const conversation =
+                await ConversationManager.conversationDB.getConversationById(
+                  conversationId,
+                )
+              console.log(
+                '新版消息记录 切换会话: ',
+                conversation?.id,
+                conversation,
+              )
+              if (conversation) {
+                await this.switchAdapterWithConversation(conversation)
+                return {
+                  success: true,
+                  data: {
+                    conversationId,
+                  },
+                }
+              }
+            }
+            return {
+              success: false,
+              data: {},
+              message: '',
+            }
+          }
           case 'Client_askChatGPTQuestion':
             {
-              const { taskId, question, options } = data
-              const { regenerate, retry } = options as IUserChatMessageExtraType
-              // 如果是重试或者重新生成，需要从原始会话中获取问题
-              const conversationId = question.conversationId
-              if ((retry || regenerate) && conversationId) {
-                const originalConversation =
+              const taskId = data.taskId
+              let question = data.question
+              let options = data.options
+              if (question.conversationId) {
+                const conversation =
                   await ConversationManager.conversationDB.getConversationById(
-                    conversationId,
+                    question.conversationId,
                   )
-                if (originalConversation) {
-                  const originalMessages = originalConversation.messages
-                  if (regenerate) {
-                    // 重新生成，需要删除原始会话中的问题
-                    const originalMessageIndex = originalMessages.findIndex(
-                      (message) => message.messageId === question.messageId,
-                    )
-                    const originalMessage =
-                      originalMessages[originalMessageIndex]
-                    const needDeleteCount =
-                      originalMessages.length - 1 - originalMessageIndex
-                    await ConversationManager.deleteMessages(
-                      conversationId,
-                      needDeleteCount,
-                    )
-                    // 重新生成问题
-                    if (originalMessage) {
-                      question.question = originalMessage.text
-                      question.messageId = originalMessage.messageId
-                      question.parentMessageId = originalMessage.parentMessageId
-                    }
-                  } else if (retry) {
-                    // 重试，到这一步sidebar里面有[问题，答案，新问题]，要删到[问题]
-                    const originalMessageIndex = originalMessages.findIndex(
-                      (message) =>
-                        message.messageId === question.parentMessageId,
-                    )
-                    // 所以这里还要-1
-                    const originalMessage =
-                      originalMessages[originalMessageIndex]
-                    const needDeleteCount = Math.max(
-                      originalMessages.length - originalMessageIndex - 1,
-                      0,
-                    )
-                    await ConversationManager.deleteMessages(
-                      conversationId,
-                      needDeleteCount,
-                    )
-                    // 重新生成问题
-                    if (originalMessage) {
-                      question.question = originalMessage.text
-                      question.messageId = uuidV4()
-                      question.parentMessageId = originalMessage.parentMessageId
-                    }
+                if (conversation) {
+                  // 如果会话存在，但是AIProvider不一致，需要切换AIProvider
+                  if (
+                    conversation?.meta?.AIProvider &&
+                    conversation.meta.AIProvider !== this.currentProvider
+                  ) {
+                    await this.switchAdapterWithConversation(conversation)
                   }
-                  await this.updateClientConversationMessages(conversationId)
+                  // 处理AIProvider的参数
+                  const processedData = await processAskAIParameters(
+                    conversation,
+                    question,
+                    options,
+                  )
+                  question = processedData.question
+                  options = processedData.options
+                  // 更新客户端的聊天记录
+                  await this.updateClientConversationMessages(conversation.id)
                 }
               }
               await this.sendQuestion(taskId, sender, question, options)
@@ -314,6 +329,9 @@ class ChatSystem implements ChatSystemInterface {
     } catch (e) {
       log.error('switchAdapter', 'setUninstallURL', e)
     }
+    backgroundSendAllClientMessage('Client_updateAppSettings', {
+      data: {},
+    })
     return this.currentAdapter
   }
   async auth(authTabId: number) {
@@ -372,11 +390,14 @@ class ChatSystem implements ChatSystemInterface {
     }
     return false
   }
-  async createConversation() {
+  async createConversation(initConversationData: Partial<IChatConversation>) {
     if (!this.currentAdapter) {
       return ''
     }
-    return (await this.currentAdapter?.createConversation()) || ''
+    return (
+      (await this.currentAdapter?.createConversation(initConversationData)) ||
+      ''
+    )
   }
   async removeConversation(conversationId: string) {
     if (!this.currentAdapter) {
@@ -445,6 +466,33 @@ class ChatSystem implements ChatSystemInterface {
     backgroundSendAllClientMessage('Client_listenUpdateConversationMessages', {
       conversation,
     })
+  }
+  async switchAdapterWithConversation(conversation: IChatConversation) {
+    const currentConversationAIProvider = conversation.meta.AIProvider
+    if (currentConversationAIProvider) {
+      // 更新本地储存AI Provider Settings
+      const cache = await getThirdProviderSettings(
+        currentConversationAIProvider,
+      )
+      await setThirdProviderSettings(
+        currentConversationAIProvider,
+        {
+          ...cache,
+          model: conversation.meta.AIModel || cache?.model,
+        },
+        false,
+      )
+      // 切换AI Provider
+      await this.switchAdapter(currentConversationAIProvider)
+      // 清除旧的
+      await this.currentAdapter?.removeConversation(
+        this.currentAdapter?.conversation?.id || '',
+      )
+      // 创建conversation
+      await this.currentAdapter?.createConversation(conversation)
+      // 更新客户端的聊天记录
+      await this.updateClientConversationMessages(conversation.id)
+    }
   }
 }
 export { ChatSystem }

@@ -101,11 +101,9 @@ const initChromeExtensionInstalled = () => {
       await setChromeExtensionSettingsSnapshot()
       // 更新插件
       if (!(await isSettingsLastModifiedEqual())) {
-        const result = await checkSettingsSync()
-        if (result.success) {
-          await syncLocalSettingsToServerSettings()
-        }
+        await checkSettingsSync()
       }
+      await syncLocalSettingsToServerSettings()
     }
     try {
       await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')

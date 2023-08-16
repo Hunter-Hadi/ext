@@ -2,13 +2,11 @@ import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 // import { AppState } from '@/store'
 // import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
 import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
-import { FloatingContextMenuDraftState } from '@/features/contextMenu'
-import cloneDeep from 'lodash-es/cloneDeep'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { FloatingContextMenuOpenSidebarButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuOpenSidebarButton'
 
@@ -17,9 +15,6 @@ type FloatingContextMenuShortcutKey = 's' | 'r' | 'o' | 'c'
 const FloatingContextMenuShortcutButtonGroup: FC = () => {
   // const appState = useRecoilValue(AppState)
   const chatGPTConversation = useRecoilValue(ChatGPTConversationState)
-  const [, setFloatingContextMenuDraft] = useRecoilState(
-    FloatingContextMenuDraftState,
-  )
   const needRegenerateRef = useRef(false)
   const isGenerating = useMemo(() => {
     if (
@@ -50,26 +45,6 @@ const FloatingContextMenuShortcutButtonGroup: FC = () => {
   useEffect(() => {
     reGenerateRef.current = reGenerate
   }, [reGenerate])
-  useEffect(() => {
-    console.log(
-      `handleShortCut regenerate: \t [startRegenerate: ${needRegenerateRef.current}] [isGenerating: ${isGenerating}]`,
-    )
-    if (!chatGPTConversation.loading && needRegenerateRef.current) {
-      needRegenerateRef.current = false
-      setFloatingContextMenuDraft((prevState) => {
-        if (prevState.draftList.length === 0) {
-          return prevState
-        }
-        const copyDraftList = cloneDeep(prevState.draftList)
-        copyDraftList.pop()
-        return {
-          draft: copyDraftList.join('\n\n').replace(/\n{2,}/, '\n\n'),
-          draftList: copyDraftList,
-        }
-      })
-      reGenerateRef.current()
-    }
-  }, [chatGPTConversation.loading])
   useEffect(() => {
     if (!isGenerating) {
       return

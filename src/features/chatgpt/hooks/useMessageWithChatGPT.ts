@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import {
   ChatGPTConversationState,
-  SidebarChatState,
+  SidebarSettingsState,
   SidebarConversationIdSelector,
 } from '@/features/sidebar/store'
 import {
@@ -54,7 +54,7 @@ const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const messages = useConversationMessages()
-  const [sidebarChat, setSidebarChat] = useRecoilState(SidebarChatState)
+  const [sidebarChat, setSidebarChat] = useRecoilState(SidebarSettingsState)
   const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const updateAppSettings = useSetRecoilState(AppSettingsState)
   const permissionCardMap = usePermissionCardMap()

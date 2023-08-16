@@ -17,7 +17,7 @@ import { AppSettingsState } from '@/store'
 import { setChromeExtensionSettings } from '@/background/utils'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { ChatGPTMessageState } from '@/features/chatgpt/store'
+import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -34,7 +34,9 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTPluginsSelector: FC = () => {
-  const messages = useRecoilValue(ChatGPTMessageState)
+  const sidebarChatMessages = useRecoilValue(
+    SidebarChatConversationMessagesSelector,
+  )
   const [error, setError] = useState(false)
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const enabledPlugins = useMemo(() => {
@@ -88,7 +90,7 @@ const ChatGPTPluginsSelector: FC = () => {
             }}
             value={appSettings.currentPlugins || []}
             multiple
-            disabled={messages.length > 0}
+            disabled={sidebarChatMessages.length > 0}
             MenuProps={{
               anchorOrigin: {
                 vertical: 'top',

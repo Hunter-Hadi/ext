@@ -1,15 +1,10 @@
 /**
- * 初始化在gmail的chatGPT客户端
+ * 初始化chat客户端
  */
 import { useSetRecoilState } from 'recoil'
-import {
-  ChatGPTClientState,
-  ChatGPTMessageState,
-} from '@/features/chatgpt/store'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect, useRef } from 'react'
-import Browser from 'webextension-polyfill'
 import { IChromeExtensionClientListenEvent } from '@/background/app'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
@@ -25,7 +20,6 @@ const log = new Log('InitChatGPT')
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)
   const setAppSettings = useSetRecoilState(AppSettingsState)
-  const updateMessages = useSetRecoilState(ChatGPTMessageState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const showFloatingContextMenuRef = useRef(showFloatingContextMenu)
   useEffect(() => {
@@ -136,31 +130,6 @@ const useInitChatGPTClient = () => {
     return undefined
   })
   useEffect(() => {
-    const fetchLocalMessages = async () => {
-      const result: any = await Browser.storage.local.get(
-        CHAT_GPT_MESSAGES_RECOIL_KEY,
-      )
-      if (result[CHAT_GPT_MESSAGES_RECOIL_KEY]) {
-        try {
-          const localMessages: any = JSON.parse(
-            result[CHAT_GPT_MESSAGES_RECOIL_KEY],
-          )
-          if (localMessages && localMessages instanceof Array) {
-            updateMessages((prevState) => {
-              const lastMessageId = prevState[prevState.length - 1]?.messageId
-              const newMessageLastId =
-                localMessages[localMessages.length - 1]?.messageId
-              if (lastMessageId === newMessageLastId) {
-                return prevState
-              }
-              return localMessages
-            })
-          }
-        } catch (e) {
-          console.error(e)
-        }
-      }
-    }
     const checkChatGPTStatus = async () => {
       const result = await port.postMessage({
         event: 'Client_checkChatGPTStatus',
@@ -188,16 +157,11 @@ const useInitChatGPTClient = () => {
     })
     const onFocus = async () => {
       await checkChatGPTStatus()
-      // 由于多处地方会更新 message storage cache，所以在这里延迟一下确保 获取到的 storage cache 是最新的
-      setTimeout(async () => {
-        await fetchLocalMessages()
-      }, 100)
     }
     port.postMessage({
       event: 'Client_checkChatGPTStatus',
     })
     checkChatGPTStatus()
-    fetchLocalMessages()
     window.addEventListener('focus', onFocus)
     return () => {
       window.removeEventListener('focus', onFocus)

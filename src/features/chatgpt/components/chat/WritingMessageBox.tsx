@@ -1,103 +1,73 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { AppSettingsState } from '@/store'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import {
+  FloatingContextMenuDraftSelector,
   FloatingContextMenuDraftState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
-import cloneDeep from 'lodash-es/cloneDeep'
 import { useRangy } from '@/features/contextMenu'
 import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
 import { useTranslation } from 'react-i18next'
-import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
+import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
 }> = (props) => {
   const { onChange } = props
+  const sidebarChatMessages = useRecoilValue(
+    SidebarChatConversationMessagesSelector,
+  )
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const { userSettings } = useRecoilValue(AppSettingsState)
-  const conversation = useRecoilValue(ChatGPTConversationState)
-  const prevMessageIdRef = useRef<string | null>(null)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
-  const [floatingContextMenuDraft, setFloatingContextMenuDraft] =
-    useRecoilState(FloatingContextMenuDraftState)
+  const [, setFloatingContextMenuDraft] = useRecoilState(
+    FloatingContextMenuDraftState,
+  )
+  const floatingContextMenuDraftText = useRecoilValue(
+    FloatingContextMenuDraftSelector,
+  )
+  const lastAIMessageIdRef = useRef('')
   useEffect(() => {
-    console.log('AIInput writingMessage remove: ', floatingDropdownMenu.open)
+    // 从后往前找到最近的一条AI消息
+    lastAIMessageIdRef.current =
+      listReverseFind(sidebarChatMessages, (message) => message.type === 'ai')
+        ?.messageId || ''
+  }, [sidebarChatMessages])
+  useEffect(() => {
+    console.log(
+      'AIInput writingMessage remove: ',
+      floatingDropdownMenu.open,
+      lastAIMessageIdRef.current,
+    )
     setFloatingContextMenuDraft({
-      draft: '',
-      draftList: [],
+      lastAIMessageId: lastAIMessageIdRef.current,
     })
   }, [floatingDropdownMenu.open])
   useEffect(() => {
-    const writingMessageText = conversation.writingMessage?.text
-    const writingMessageId = conversation.writingMessage?.messageId
-    if (writingMessageId && writingMessageText) {
-      let isSameMessage = true
-      if (
-        prevMessageIdRef.current &&
-        prevMessageIdRef.current !== writingMessageId
-      ) {
-        console.log(
-          'AIInput writingMessage reset: ',
-          conversation.writingMessage,
-        )
-        isSameMessage = false
-      }
-      prevMessageIdRef.current = writingMessageId
-      // ChatGPT 有可能第一个回答会返回之前的问题
-      if (
-        CHAT_GPT_PROMPT_PREFIX &&
-        writingMessageText.includes(CHAT_GPT_PROMPT_PREFIX)
-      ) {
-        return
-      }
-      setFloatingContextMenuDraft((prevState) => {
-        const copyDraftList = cloneDeep(prevState.draftList)
-        if (isSameMessage) {
-          console.log('AIInput writingMessage update: ', writingMessageText)
-          // 更新最后一行
-          copyDraftList.pop()
-          copyDraftList.push(writingMessageText)
-        } else {
-          // 说明新增了一行
-          copyDraftList.push(writingMessageText)
-          console.log(
-            'AIInput writingMessage update new line: ',
-            writingMessageText,
-          )
-        }
-        return {
-          draft: copyDraftList.join('\n\n').replace(/\n{2,}/, '\n\n'),
-          draftList: copyDraftList,
-        }
-      })
-    }
-  }, [conversation.writingMessage])
-  useEffect(() => {
-    console.log('AIInput update: ', floatingContextMenuDraft.draft)
+    console.log('AIInput update: ', floatingContextMenuDraftText)
     setFloatingDropdownMenuSystemItems((prev) => {
       return {
         ...prev,
-        lastOutput: floatingContextMenuDraft.draft,
+        lastOutput: floatingContextMenuDraftText,
       }
     })
-    onChange?.(floatingContextMenuDraft.draft)
-  }, [floatingContextMenuDraft.draft])
+    onChange?.(floatingContextMenuDraftText)
+  }, [floatingContextMenuDraftText])
   const boxRef = React.useRef<HTMLDivElement>(null)
   useEffect(() => {
     // scroll to bottom
     boxRef.current?.scrollTo({
       top: boxRef.current.scrollHeight,
     })
-  }, [floatingContextMenuDraft.draft])
+  }, [])
   useEffect(() => {
     const keydownHandler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey) {
@@ -146,7 +116,7 @@ const WritingMessageBox: FC<{
       }}
       component={'div'}
     >
-      {isEmpty(floatingContextMenuDraft.draft) ? <ContextText /> : null}
+      {isEmpty(floatingContextMenuDraftText) ? <ContextText /> : null}
       <div
         tabIndex={-1}
         ref={boxRef}
@@ -158,7 +128,7 @@ const WritingMessageBox: FC<{
         }`}
       >
         <CustomMarkdown>
-          {floatingContextMenuDraft.draft.replace(/^\s+/, '')}
+          {floatingContextMenuDraftText.replace(/^\s+/, '')}
         </CustomMarkdown>
       </div>
     </Stack>

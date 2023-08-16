@@ -1,5 +1,7 @@
 import { atom, selector } from 'recoil'
 import { IChatMessage } from '@/features/chatgpt/types'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
+import { AppSettingsState } from '@/store'
 
 export const ChatGPTConversationState = atom<{
   writingMessage: IChatMessage | null
@@ -18,12 +20,12 @@ export const ChatGPTConversationState = atom<{
 
 export type ISidebarChatType = 'Chat' | 'Summary'
 
-export const SidebarChatState = atom<{
+export const SidebarSettingsState = atom<{
   type: ISidebarChatType
   chatConversationId?: string
   summaryConversationId?: string
 }>({
-  key: 'SidebarChatState',
+  key: 'SidebarSettingsState',
   default: {
     type: 'Chat',
   },
@@ -32,11 +34,40 @@ export const SidebarChatState = atom<{
 export const SidebarConversationIdSelector = selector<string>({
   key: 'SidebarConversationIdSelector',
   get: ({ get }) => {
-    const sidebarChat = get(SidebarChatState)
-    if (sidebarChat.type === 'Chat') {
-      return sidebarChat.chatConversationId || ''
+    const sidebarSetting = get(SidebarSettingsState)
+    if (sidebarSetting.type === 'Chat') {
+      return sidebarSetting.chatConversationId || ''
     } else {
-      return sidebarChat.summaryConversationId || ''
+      return sidebarSetting.summaryConversationId || ''
     }
   },
 })
+
+/**
+ * sidebar用户选择的板块的消息
+ */
+export const SidebarConversationMessagesSelector = selector<IChatMessage[]>({
+  key: 'SidebarConversationMessagesSelector',
+  get: ({ get }) => {
+    const sidebarConversationId = get(SidebarConversationIdSelector)
+    const conversationMap = get(ClientConversationMapState)
+    return conversationMap[sidebarConversationId]?.messages || []
+  },
+})
+
+/**
+ * sidebar用户Chat的板块的消息
+ */
+export const SidebarChatConversationMessagesSelector = selector<IChatMessage[]>(
+  {
+    key: 'SidebarChatConversationMessagesSelector',
+    get: ({ get }) => {
+      const sidebarConversationId = get(AppSettingsState).conversationId
+      const conversationMap = get(ClientConversationMapState)
+      if (sidebarConversationId && conversationMap[sidebarConversationId]) {
+        return conversationMap[sidebarConversationId]?.messages || []
+      }
+      return []
+    },
+  },
+)

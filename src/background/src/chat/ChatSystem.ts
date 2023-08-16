@@ -16,11 +16,7 @@ import {
 import Log from '@/utils/Log'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import Browser from 'webextension-polyfill'
-import {
-  APP_VERSION,
-  CHAT_GPT_MESSAGES_RECOIL_KEY,
-  CHROME_EXTENSION_HOMEPAGE_URL,
-} from '@/constants'
+import { APP_VERSION, CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 import {
   IChatUploadFile,
   IUserChatMessageExtraType,
@@ -390,10 +386,6 @@ class ChatSystem implements ChatSystemInterface {
     return result
   }
   async destroy() {
-    // 清空本地储存的message
-    await Browser.storage.local.set({
-      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
-    })
     // 清空本地储存的conversationId
     await setChromeExtensionSettings({
       conversationId: '',

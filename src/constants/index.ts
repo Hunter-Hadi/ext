@@ -65,6 +65,10 @@ export const CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY =
  * @since - 2023-07-31
  */
 export const CHAT_GPT_PROMPT_PREFIX = ``
+/**
+ * @deprecated - 不再用这个字段存储消息
+ * @since - 2023-08-16
+ */
 export const CHAT_GPT_MESSAGES_RECOIL_KEY = 'CHAT_GPT_MESSAGES_RECOIL_KEY'
 export const AI_PROVIDER_MAP = {
   OPENAI: 'OPENAI',

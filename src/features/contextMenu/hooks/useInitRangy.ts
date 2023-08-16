@@ -41,9 +41,10 @@ import {
   ROOT_CONTAINER_ID,
   ROOT_CONTEXT_MENU_ID,
 } from '@/constants'
-import cloneDeep from 'lodash-es/cloneDeep'
 import useCommands from '@/hooks/useCommands'
 import { AppSettingsState } from '@/store'
+import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -71,6 +72,9 @@ const useInitRangy = () => {
   const { chatBoxShortCutKey } = useCommands()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
+  )
+  const sidebarChatMessages = useRecoilValue(
+    SidebarChatConversationMessagesSelector,
   )
   const [, setFloatingContextMenuDraft] = useRecoilState(
     FloatingContextMenuDraftState,
@@ -485,16 +489,13 @@ const useInitRangy = () => {
         break
       case 'TRY_AGAIN':
         {
-          setFloatingContextMenuDraft((prevState) => {
-            if (prevState.draftList.length === 0) {
-              return prevState
-            }
-            const copyDraftList = cloneDeep(prevState.draftList)
-            copyDraftList.pop()
-            return {
-              draft: copyDraftList.join('\n\n').replace(/\n{2,}/, '\n\n'),
-              draftList: copyDraftList,
-            }
+          const lastAIMessageId =
+            listReverseFind(
+              sidebarChatMessages,
+              (message) => message.type === 'ai',
+            )?.messageId || ''
+          setFloatingContextMenuDraft({
+            lastAIMessageId,
           })
         }
         break

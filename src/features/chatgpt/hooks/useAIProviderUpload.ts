@@ -1,4 +1,4 @@
-import { useSetRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -14,7 +14,12 @@ import {
 } from '@/background/utils/uplpadFileProcessHelper'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
-import { ChatGPTMessageState } from '@/features/chatgpt/store'
+import {
+  SidebarChatConversationMessagesSelector,
+  SidebarSettingsState,
+} from '@/features/sidebar'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 
 /**
  * AI Provider的上传文件处理
@@ -26,7 +31,10 @@ const port = new ContentScriptConnectionV2({
 const useAIProviderUpload = () => {
   const [files, setFiles] = useState<IChatUploadFile[]>([])
   const { currentAIProviderModelDetail, aiProvider } = useAIProviderModels()
-  const updateChatMessage = useSetRecoilState(ChatGPTMessageState)
+  const { chatConversationId } = useRecoilValue(SidebarSettingsState)
+  const sidebarChatMessages = useRecoilValue(
+    SidebarChatConversationMessagesSelector,
+  )
   const blurDelayRef = useRef(false)
   const AIProviderConfig = useMemo(() => {
     return currentAIProviderModelDetail?.uploadFileConfig
@@ -138,57 +146,63 @@ const useAIProviderUpload = () => {
       switch (aiProvider) {
         case 'OPENAI':
           {
-            updateChatMessage((old) => {
-              let isContainsError = false
-              for (let i = 0; i < old.length; i++) {
-                if (old[i].messageId === errorItem.id) {
-                  isContainsError = true
-                  break
-                }
-              }
-              if (isContainsError) {
-                return old
-              }
-              return old.concat({
-                messageId: errorItem.id,
-                text:
-                  errorItem.uploadErrorMessage ||
-                  `File ${errorItem.fileName} upload error.`,
-                type: 'system',
-                extra: {
-                  status:
-                    errorItem.uploadErrorMessage ===
-                    `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
-                      ? 'info'
-                      : 'error',
-                },
-              } as ISystemChatMessage)
-            })
+            if (
+              chatConversationId &&
+              !listReverseFind(
+                sidebarChatMessages,
+                (item) => item.messageId === errorItem.id,
+              )
+            ) {
+              clientChatConversationModifyChatMessages(
+                'add',
+                chatConversationId,
+                0,
+                [
+                  {
+                    messageId: errorItem.id,
+                    text:
+                      errorItem.uploadErrorMessage ||
+                      `File ${errorItem.fileName} upload error.`,
+                    type: 'system',
+                    extra: {
+                      status:
+                        errorItem.uploadErrorMessage ===
+                        `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
+                          ? 'info'
+                          : 'error',
+                    },
+                  } as ISystemChatMessage,
+                ],
+              )
+            }
           }
           break
         default: {
-          updateChatMessage((old) => {
-            let isContainsError = false
-            for (let i = 0; i < old.length; i++) {
-              if (old[i].messageId === errorItem.id) {
-                isContainsError = true
-                break
-              }
-            }
-            if (isContainsError) {
-              return old
-            }
-            return old.concat({
-              messageId: errorItem.id,
-              text:
-                errorItem.uploadErrorMessage ||
-                `File ${errorItem.fileName} upload error.`,
-              type: 'system',
-              extra: {
-                status: 'error',
-              },
-            } as ISystemChatMessage)
-          })
+          if (
+            chatConversationId &&
+            !listReverseFind(
+              sidebarChatMessages,
+              (item) => item.messageId === errorItem.id,
+            )
+          ) {
+            clientChatConversationModifyChatMessages(
+              'add',
+              chatConversationId,
+              0,
+              [
+                {
+                  messageId: errorItem.id,
+                  text:
+                    errorItem.uploadErrorMessage ||
+                    `File ${errorItem.fileName} upload error.`,
+                  type: 'system',
+                  extra: {
+                    status: 'error',
+                  },
+                } as ISystemChatMessage,
+              ],
+            )
+          }
         }
       }
       aiProviderRemoveFiles([errorItem])

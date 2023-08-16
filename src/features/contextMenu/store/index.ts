@@ -1,5 +1,10 @@
 import { atom, selector } from 'recoil'
 import { IRangyRect, ISelection } from '@/features/contextMenu/types'
+import {
+  ChatGPTConversationState,
+  SidebarChatConversationMessagesSelector,
+} from '@/features/sidebar'
+import { IChatMessage } from '@/features/chatgpt/types'
 
 export const ContextMenuSettingsState = atom<{
   closeBeforeRefresh: boolean
@@ -97,15 +102,48 @@ export const FloatingDropdownMenuItemsSelector = selector<string[]>({
   },
 })
 /**
- * AI持续生成的草稿
+ * AI草稿状态
  */
 export const FloatingContextMenuDraftState = atom<{
-  draft: string
-  draftList: string[]
+  lastAIMessageId: string
 }>({
   key: 'FloatingContextMenuDraftState',
   default: {
-    draft: '',
-    draftList: [],
+    lastAIMessageId: '',
+  },
+})
+
+/**
+ * AI持续生成的草稿
+ */
+export const FloatingContextMenuDraftSelector = selector<string>({
+  key: 'FloatingContextMenuDraftSelector',
+  get: ({ get }) => {
+    const messages = get(SidebarChatConversationMessagesSelector)
+    const aiWritingMessage = get(ChatGPTConversationState)
+    const aiMessages: IChatMessage[] = []
+    const lastAIMessageId = get(FloatingContextMenuDraftState).lastAIMessageId
+    // 从后往前找，直到找到最近的AI message
+    for (let i = messages.length - 1; i >= 0; i--) {
+      const message = messages[i]
+      if (message.messageId === lastAIMessageId) {
+        break
+      }
+      if (message.type === 'ai') {
+        // 因为是从后往前找，所以插入到最前面
+        aiMessages.unshift(message)
+      }
+    }
+    if (aiWritingMessage.writingMessage) {
+      if (aiWritingMessage.writingMessage.type === 'ai') {
+        aiMessages.push(aiWritingMessage.writingMessage)
+      }
+    }
+    console.log('AiInput aiMessages', aiMessages, messages)
+    const draft = aiMessages
+      .map((message) => message.text)
+      .join('\n\n')
+      .replace(/\n{2,}/, '\n\n')
+    return draft
   },
 })

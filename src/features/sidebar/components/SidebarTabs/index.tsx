@@ -3,7 +3,10 @@ import Stack from '@mui/material/Stack'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
-import { ISidebarChatType, SidebarChatState } from '@/features/sidebar/store'
+import {
+  ISidebarChatType,
+  SidebarSettingsState,
+} from '@/features/sidebar/store'
 import { useRecoilState } from 'recoil'
 import { I18nextKeysType } from '@/i18next'
 import { useTranslation } from 'react-i18next'
@@ -24,7 +27,8 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const [sidebarChat, setSidebarChat] = useRecoilState(SidebarChatState)
+  const [sidebarSettings, setSidebarSettings] =
+    useRecoilState(SidebarSettingsState)
   if (isMaxAINewTabPage()) {
     return null
   }
@@ -53,9 +57,9 @@ const SidebarTabs: FC = () => {
               p: 1,
             },
           }}
-          value={sidebarChat.type}
+          value={sidebarSettings.type}
           onChange={(event, value) => {
-            setSidebarChat((prev) => {
+            setSidebarSettings((prev) => {
               return {
                 ...prev,
                 type: value,
@@ -74,7 +78,7 @@ const SidebarTabs: FC = () => {
           ))}
         </Tabs>
       </Stack>
-      <Stack>{JSON.stringify(sidebarChat, null, 2)}</Stack>
+      <Stack>{JSON.stringify(sidebarSettings, null, 2)}</Stack>
     </>
   )
 }

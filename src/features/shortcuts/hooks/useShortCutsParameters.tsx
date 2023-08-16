@@ -14,14 +14,17 @@ import {
   ROOT_CHAT_BOX_INPUT_ID,
 } from '@/constants'
 import { AppSettingsState, AppState } from '@/store'
-import { ChatGPTMessageState } from '@/features/chatgpt/store'
+import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentComposeView } = useInboxComposeViews()
   const { currentSelection } = useRangy()
   const { messageViewText, currentMessageId } = useCurrentMessageView()
-  const chatBoxMessages = useRecoilValue(ChatGPTMessageState)
+  const sidebarChatConversationMessages = useRecoilValue(
+    SidebarChatConversationMessagesSelector,
+  )
   const appSettings = useRecoilValue(AppSettingsState)
   return useCallback(() => {
     console.log(
@@ -67,7 +70,11 @@ const useShortCutsParameters = () => {
         getAppRootElement()?.querySelector<HTMLTextAreaElement>(
           `#${ROOT_CHAT_BOX_INPUT_ID}`,
         )?.value || '',
-      LAST_AI_OUTPUT: chatBoxMessages?.[chatBoxMessages.length - 1]?.text || '',
+      LAST_AI_OUTPUT:
+        listReverseFind(
+          sidebarChatConversationMessages,
+          (item) => item.type === 'ai',
+        )?.text || '',
       AI_RESPONSE_LANGUAGE:
         appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
       AI_OUTPUT_LANGUAGE:
@@ -102,7 +109,6 @@ const useShortCutsParameters = () => {
     messageViewText,
     currentMessageId,
     currentSelection,
-    chatBoxMessages,
     appSettings.userSettings,
   ])
 }

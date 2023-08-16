@@ -31,3 +31,21 @@ export const list2Options = <T>(
     },
   )
 }
+
+/**
+ * 从后往前找，直到找到最近的选项
+ * @param list
+ * @param predicate
+ */
+export const listReverseFind = <T>(
+  list: T[],
+  predicate: (item: T) => boolean,
+): T | undefined => {
+  for (let i = list.length - 1; i >= 0; i--) {
+    const item = list[i]
+    if (predicate(item)) {
+      return item
+    }
+  }
+  return undefined
+}

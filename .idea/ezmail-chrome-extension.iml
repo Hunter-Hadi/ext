@@ -8,7 +8,9 @@
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/releases" />
       <excludeFolder url="file://$MODULE_DIR$/test_crx" />
+      <excludeFolder url="file://$MODULE_DIR$/src/i18n/locales" />
     </content>
+    <content url="file://$MODULE_DIR$/src/i18n/locales/en" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

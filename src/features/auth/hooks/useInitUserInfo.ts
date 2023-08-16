@@ -1,14 +1,19 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import Log from '@/utils/Log'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { AuthUserInfoState } from '@/features/auth/store'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useFocus } from '@/hooks/useFocus'
-import { ChatGPTMessageState } from '@/features/chatgpt/store'
-
+import {
+  SidebarConversationMessagesSelector,
+  SidebarConversationIdSelector,
+} from '@/features/sidebar'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { useEffect, useRef } from 'react'
+import { ISystemChatMessage } from '@/features/chatgpt/types'
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
@@ -17,7 +22,9 @@ const upgradeText =
 
 const userInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
-  const updateMessage = useSetRecoilState(ChatGPTMessageState)
+  const sidebarMessages = useRecoilValue(SidebarConversationMessagesSelector)
+  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
+  const needPushUpgradeMessage = useRef(false)
   const syncUserInfo = async () => {
     try {
       setUserInfo((prevState) => {
@@ -76,6 +83,7 @@ const userInitUserInfo = (isInit = true) => {
         data: {},
       })
       if (result.success && result.data?.name) {
+        debugger
         const newRole = result.data
         if (newRole) {
           setUserInfo((prevState) => {
@@ -90,31 +98,12 @@ const userInitUserInfo = (isInit = true) => {
               }
             }
             if (
-              newUserInfo.role?.name &&
-              newUserInfo.role.name !== newRole.name &&
+              // newUserInfo.role?.name &&
+              // newUserInfo.role.name !== newRole.name &&
               newRole.name !== 'free'
             ) {
               // 角色发生变化
-              updateMessage((prevState) => {
-                // 避免重复添加
-                for (let i = prevState.length - 1; i >= 0; i--) {
-                  const message = prevState[i]
-                  if (message.type === 'system') {
-                    if (message.text === upgradeText) {
-                      return prevState
-                    }
-                  }
-                }
-                return prevState.concat({
-                  messageId: uuidV4(),
-                  type: 'system',
-                  parentMessageId: undefined,
-                  text: upgradeText,
-                  extra: {
-                    status: 'success',
-                  },
-                } as ISystemChatMessage)
-              })
+              needPushUpgradeMessage.current = true
             }
             return {
               user: {
@@ -139,6 +128,37 @@ const userInitUserInfo = (isInit = true) => {
       })
     }
   }
+  useEffect(() => {
+    if (!needPushUpgradeMessage.current) {
+      return
+    }
+    debugger
+    // 如果是升级，需要在侧边栏显示升级消息
+    if (
+      sidebarConversationId &&
+      !listReverseFind(
+        sidebarMessages,
+        (message) => message.text === upgradeText,
+      )
+    ) {
+      clientChatConversationModifyChatMessages(
+        'add',
+        sidebarConversationId,
+        0,
+        [
+          {
+            messageId: uuidV4(),
+            type: 'system',
+            parentMessageId: undefined,
+            text: upgradeText,
+            extra: {
+              status: 'success',
+            },
+          } as ISystemChatMessage,
+        ],
+      )
+    }
+  }, [sidebarConversationId, sidebarMessages])
   useEffectOnce(() => {
     if (isInit) {
       syncUserInfo()

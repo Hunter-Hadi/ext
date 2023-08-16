@@ -1,19 +1,20 @@
 import { useRecoilState } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import {
+  ChatGPTConversationState,
+  SidebarSettingsState,
+} from '@/features/sidebar/store'
 import { setChromeExtensionSettings } from '@/background/utils'
-import Browser from 'webextension-polyfill'
-import { CHAT_GPT_MESSAGES_RECOIL_KEY } from '@/constants'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { ChatGPTMessageState } from '@/features/chatgpt/store'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useCleanChatGPT = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
-  const [, setChatGPTMessages] = useRecoilState(ChatGPTMessageState)
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
+  const [sidebarSettings, updateSidebarSettings] =
+    useRecoilState(SidebarSettingsState)
   const cleanChatGPT = async () => {
     const cache = await clientGetLiteChromeExtensionSettings()
     port
@@ -25,21 +26,25 @@ const useCleanChatGPT = () => {
       })
       .then()
       .catch()
-    setChatGPTMessages([])
-    // 清空本地储存的message
-    await Browser.storage.local.set({
-      [CHAT_GPT_MESSAGES_RECOIL_KEY]: JSON.stringify([]),
-    })
-    setAppSettings((prevState) => {
-      return {
-        ...prevState,
+    if (sidebarSettings.type === 'Chat') {
+      setAppSettings((prevState) => {
+        return {
+          ...prevState,
+          conversationId: '',
+        }
+      })
+      // 清空本地储存的conversationId
+      await setChromeExtensionSettings({
         conversationId: '',
-      }
-    })
-    // 清空本地储存的conversationId
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
+      })
+    } else {
+      updateSidebarSettings((prevState) => {
+        return {
+          ...prevState,
+          summaryConversationId: '',
+        }
+      })
+    }
     setConversation({
       model: appSettings.currentModel || '',
       writingMessage: null,

@@ -10,7 +10,7 @@ import {
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import {
-  FloatingContextMenuDraftState,
+  FloatingContextMenuDraftSelector,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -85,8 +85,9 @@ const FloatingContextMenu: FC<{
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const [floatingContextMenuDraft, setFloatingContextMenuDraft] =
-    useRecoilState(FloatingContextMenuDraftState)
+  const floatingContextMenuDraft = useRecoilValue(
+    FloatingContextMenuDraftSelector,
+  )
   const { isLogin } = useAuthLogin()
   const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
@@ -327,7 +328,7 @@ const FloatingContextMenu: FC<{
   }, [floatingDropdownMenu.open])
   const askChatGPT = (inputValue: string) => {
     if (inputValue.trim()) {
-      const draft = floatingContextMenuDraft.draft
+      const draft = floatingContextMenuDraft
       let currentDraft = ''
       const selectionElement = currentSelectionRef.current?.selectionElement
       // 如果是可编辑元素
@@ -360,12 +361,6 @@ const FloatingContextMenu: FC<{
           currentDraft = '{{SELECTED_TEXT}}'
         }
       }
-      setFloatingContextMenuDraft((prev) => {
-        return {
-          draft: '',
-          draftList: [],
-        }
-      })
       let template = `${inputValue}`
       if (currentDraft) {
         template += `:\n"""\n${currentDraft}\n"""`

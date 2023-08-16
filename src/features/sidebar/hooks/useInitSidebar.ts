@@ -1,15 +1,16 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { SidebarChatState } from '@/features/sidebar'
+import { SidebarSettingsState } from '@/features/sidebar'
 import { AppSettingsState } from '@/store'
 import { useEffect } from 'react'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const useInitSidebar = () => {
-  const [sidebarChat, setSidebarChat] = useRecoilState(SidebarChatState)
+  const [sidebarSettings, setSidebarSettings] =
+    useRecoilState(SidebarSettingsState)
   const appSettings = useRecoilValue(AppSettingsState)
   useEffect(() => {
     getPageSummaryConversationId().then((conversationId) => {
-      setSidebarChat((prevState) => {
+      setSidebarSettings((prevState) => {
         return {
           ...prevState,
           summaryConversationId: conversationId,
@@ -17,6 +18,6 @@ const useInitSidebar = () => {
         }
       })
     })
-  }, [sidebarChat.type, appSettings.conversationId])
+  }, [sidebarSettings.type, appSettings.conversationId])
 }
 export default useInitSidebar

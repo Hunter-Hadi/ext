@@ -32,7 +32,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   const logApiAndConfirmIsLimited = async () => {
     try {
       const settings = await getChromeExtensionSettings()
-      const provider = settings.chatGPTProvider || 'UNKNOWN_PROVIDER'
+      const provider = settings.currentAIProvider || 'UNKNOWN_PROVIDER'
       const beautyQueryMap: {
         [key in IAIProviderType]: string
       } = {

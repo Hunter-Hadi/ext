@@ -1,6 +1,5 @@
 import { v4 as uuidV4 } from 'uuid'
 import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
-import { getChromeExtensionSettings } from '@/background/utils'
 import { IAIProviderType } from '@/background/provider/chat'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { ISidebarConversationType } from '@/features/sidebar'
@@ -12,20 +11,23 @@ export interface IChatConversation {
   updated_at: string // 更新时间
   messages: IChatMessage[] // 对话中的消息列表
   type: ISidebarConversationType // 对话类型
-  meta: {
-    AIProvider?: IAIProviderType // AI提供商
-    AIModel?: string // AI模型
-    AIConversationId?: string // AI对话ID
-    systemPrompt?: string // 系统提示
-    maxTokens?: number // 最大生成长度
-    maxHistoryCount?: number // 最大历史记录数
-    temperature?: number // 温度
-    topP?: number // topP
-    presencePenalty?: number // presencePenalty
-    frequencyPenalty?: number // frequencyPenalty
-    bestOf?: number // bestOf
-    [key: string]: any
-  } // 元数据
+  meta: IChatConversationMeta // 对话元数据
+}
+
+// 元数据
+export interface IChatConversationMeta {
+  AIProvider?: IAIProviderType // AI提供商
+  AIModel?: string // AI模型
+  AIConversationId?: string // AI对话ID
+  systemPrompt?: string // 系统提示
+  maxTokens?: number // 最大生成长度
+  maxHistoryCount?: number // 最大历史记录数
+  temperature?: number // 温度
+  topP?: number // topP
+  presencePenalty?: number // presencePenalty
+  frequencyPenalty?: number // frequencyPenalty
+  bestOf?: number // bestOf
+  [key: string]: any
 }
 
 class ConversationDB {
@@ -252,7 +254,6 @@ export default class ConversationManager {
     'conversations',
   )
   static async createConversation(newConversation: Partial<IChatConversation>) {
-    const currentSettings = await getChromeExtensionSettings()
     const defaultConversation: IChatConversation = {
       id: uuidV4(),
       title: 'Chat',
@@ -260,13 +261,7 @@ export default class ConversationManager {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       messages: [],
-      meta: {
-        AIProvider: currentSettings.chatGPTProvider || 'USE_CHAT_GPT_PLUS',
-        AIModel:
-          currentSettings.thirdProviderSettings?.[
-            currentSettings.chatGPTProvider as 'USE_CHAT_GPT_PLUS'
-          ]?.model || '',
-      },
+      meta: {},
     }
     const saveConversation = mergeWithObject([
       defaultConversation,
@@ -299,7 +294,7 @@ export default class ConversationManager {
         return message
       })
     }
-    console.log('新版消息记录 getConversation', conversation)
+    console.log('新版Conversation getConversation', conversation)
     return conversation
   }
   static async pushMessages(

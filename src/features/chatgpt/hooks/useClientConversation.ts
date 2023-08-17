@@ -14,6 +14,9 @@ import {
   getPageSummaryConversationId,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { md5TextEncrypt } from '@/utils/encryptionHelper'
+import { IAIProviderType } from '@/background/provider/chat'
+import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/types/getAIProviderConversationMetaConfig'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -22,21 +25,36 @@ const useClientConversation = () => {
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
   const [sidebarSettings, updateSidebarSettings] =
     useRecoilState(SidebarSettingsState)
-  const { currentAIProviderModelDetail } = useAIProviderModels()
+  const { currentAIProviderDetail, currentAIProviderModelDetail } =
+    useAIProviderModels()
   const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const createConversation = async () => {
+    if (sidebarConversationId) {
+      return sidebarConversationId
+    }
     let conversationId = ''
     if (sidebarSettings.type === 'Chat') {
-      if (sidebarConversationId) {
-        return sidebarConversationId
-      }
+      const id = md5TextEncrypt(
+        (currentAIProviderDetail?.value || '') +
+          (currentAIProviderModelDetail?.value || ''),
+      )
+      console.log(
+        '新版Conversation 生成chat conversation id',
+        id,
+        currentAIProviderDetail?.value,
+        currentAIProviderModelDetail?.value,
+      )
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
         data: {
           initConversationData: {
+            id,
             type: 'Chat',
             meta: {
               maxTokens: currentAIProviderModelDetail?.maxTokens || 4096,
+              ...(await getAIProviderConversationMetaConfig(
+                currentAIProviderDetail?.value,
+              )),
             },
           } as Partial<IChatConversation>,
         },
@@ -124,9 +142,36 @@ const useClientConversation = () => {
       loading: false,
     })
   }
+  const switchBackgroundChatSystemAIProvider = async (
+    provider: IAIProviderType,
+  ) => {
+    const result = await port.postMessage({
+      event: 'Client_switchAIProvider',
+      data: {
+        provider,
+      },
+    })
+    return result.success
+  }
+  const changeConversation = async (conversationId: string) => {
+    if (conversationId) {
+      const port = new ContentScriptConnectionV2()
+      // 复原background conversation
+      const result = await port.postMessage({
+        event: 'Client_changeConversation',
+        data: {
+          conversationId: conversationId,
+        },
+      })
+      return result.success
+    }
+    return false
+  }
   return {
     cleanConversation,
     createConversation,
+    changeConversation,
+    switchBackgroundChatSystemAIProvider,
   }
 }
 export { useClientConversation }

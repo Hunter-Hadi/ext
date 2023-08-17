@@ -33,12 +33,13 @@ class ClaudeChatProvider implements ChatAdapterInterface {
       this.claudeChat.conversation?.id &&
       initConversationData.id !== this.claudeChat.conversation.id
     ) {
+      console.log('新版Conversation 因为conversation id变了, 移除conversation')
       await this.claudeChat.removeConversation()
     }
     return await this.claudeChat.createConversation(initConversationData)
   }
   async removeConversation() {
-    this.claudeChat.conversation = undefined
+    await this.claudeChat.removeConversationWithCache()
     await this.claudeChat.removeConversation()
     return Promise.resolve(true)
   }

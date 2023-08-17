@@ -59,7 +59,7 @@ class ChatSystem implements ChatSystemInterface {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
       if (runtime === 'client') {
         switch (event) {
-          case 'Client_switchChatGPTProvider':
+          case 'Client_switchAIProvider':
             {
               const { provider } = data
               await this.switchAdapter(provider)
@@ -94,6 +94,7 @@ class ChatSystem implements ChatSystemInterface {
           case 'Client_createChatGPTConversation': {
             const initConversationData = (data.initConversationData ||
               {}) as IChatConversation
+            console.log('新版Conversation 创建会话', initConversationData)
             if (
               initConversationData.meta.AIProvider &&
               this.currentProvider !== initConversationData.meta.AIProvider
@@ -128,11 +129,6 @@ class ChatSystem implements ChatSystemInterface {
                 await ConversationManager.conversationDB.getConversationById(
                   conversationId,
                 )
-              console.log(
-                '新版消息记录 切换会话: ',
-                conversation?.id,
-                conversation,
-              )
               if (conversation) {
                 await this.switchAdapterWithConversation(conversation)
                 return {
@@ -185,6 +181,7 @@ class ChatSystem implements ChatSystemInterface {
             break
           case 'Client_removeChatGPTConversation': {
             const { conversationId } = data
+            console.log('新版Conversation 删除会话', conversationId)
             const success = await this.removeConversation(conversationId || '')
             return {
               success,
@@ -296,9 +293,9 @@ class ChatSystem implements ChatSystemInterface {
       return undefined
     })
     getChromeExtensionSettings().then(async (settings) => {
-      if (settings.chatGPTProvider) {
-        console.log('settings.chatGPTProvider', settings.chatGPTProvider)
-        await this.switchAdapter(settings.chatGPTProvider)
+      if (settings.currentAIProvider) {
+        console.log('settings.currentAIProvider', settings.currentAIProvider)
+        await this.switchAdapter(settings.currentAIProvider)
       }
     })
   }
@@ -307,16 +304,18 @@ class ChatSystem implements ChatSystemInterface {
   }
   async switchAdapter(provider: IAIProviderType) {
     if (provider === this.currentProvider) {
+      await this.preAuth()
       log.info('switchAdapter', 'same provider no need to switch')
       return
     }
     // destroy old adapter
     if (this.currentAdapter) {
-      await this.currentAdapter.destroy()
+      // 不需要销毁，因为会话还在，只是切换了AIProvider - 2023-08-17
+      // await this.currentAdapter.destroy()
     }
     this.currentProvider = provider
     await setChromeExtensionSettings({
-      chatGPTProvider: provider,
+      currentAIProvider: provider,
     })
     await this.preAuth()
     try {
@@ -464,6 +463,7 @@ class ChatSystem implements ChatSystemInterface {
   async switchAdapterWithConversation(conversation: IChatConversation) {
     const currentConversationAIProvider = conversation.meta.AIProvider
     if (currentConversationAIProvider) {
+      console.log('新版Conversation 切换会话: ', conversation?.id, conversation)
       // 更新本地储存AI Provider Settings
       const cache = await getThirdProviderSettings(
         currentConversationAIProvider,

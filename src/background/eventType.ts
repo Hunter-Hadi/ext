@@ -19,7 +19,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_ping'
   | 'Client_getChromeExtensionCommands'
   | 'Client_checkChatGPTStatus'
-  | 'Client_switchChatGPTProvider'
+  | 'Client_switchAIProvider'
   | 'Client_authChatGPTProvider'
   | 'Client_createChatGPTConversation'
   | 'Client_changeConversation'

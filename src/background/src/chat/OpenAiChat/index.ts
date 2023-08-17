@@ -279,7 +279,7 @@ class OpenAIChat extends BaseChat {
         conversationId: this.conversation.meta.AIConversationId,
       },
     )
-    this.conversation = undefined
+    await this.removeConversationWithCache()
     return result.success
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (

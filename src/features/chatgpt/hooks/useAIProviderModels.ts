@@ -25,7 +25,7 @@ import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExt
 
 const useAIProviderModels = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
-  const currentProvider = appSettings.chatGPTProvider
+  const currentProvider = appSettings.currentAIProvider
   const [loading, setLoading] = useState(false)
   const { currentThirdProviderSettings, saveThirdProviderSettings } =
     useThirdProviderSetting()
@@ -203,7 +203,7 @@ const useAIProviderModels = () => {
     }
   }, [currentAIProviderModel, currentProvider])
   return {
-    aiProvider: appSettings.chatGPTProvider,
+    aiProvider: appSettings.currentAIProvider,
     aiProviderModel: currentAIProviderModel,
     currentAIProviderDetail,
     currentAIProviderModelDetail,

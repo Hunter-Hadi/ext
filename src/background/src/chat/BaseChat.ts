@@ -33,6 +33,14 @@ class BaseChat {
     })
     return this.conversation.id
   }
+  async removeConversationWithCache() {
+    if (this.conversation?.id) {
+      await ConversationManager.conversationDB.deleteConversation(
+        this.conversation.id,
+      )
+    }
+    this.conversation = undefined
+  }
   async updateClientStatus(status: ChatStatus) {
     if (this.active) {
       this.status = status

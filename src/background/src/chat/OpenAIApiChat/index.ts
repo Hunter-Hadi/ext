@@ -8,54 +8,20 @@ import {
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { v4 as uuidV4 } from 'uuid'
 
-import {
-  CHATGPT_SYSTEM_MESSAGE,
-  IOpenAIApiChatMessage,
-} from '@/background/src/chat/OpenAiApiChat/types'
+import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAiApiChat/types'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 
 const log = new Log('Background/Chat/OpenAiApiChat')
 
-interface ConversationContext {
-  messages: IOpenAIApiChatMessage[]
-}
-
-const SYSTEM_MESSAGE: IOpenAIApiChatMessage = {
-  role: 'system',
-  content: CHATGPT_SYSTEM_MESSAGE,
-}
-
-const MAX_CONTEXT_SIZE = 10
-
 class OpenAiApiChat extends BaseChat {
   status: ChatStatus = 'needAuth'
-  private conversationContext?: ConversationContext
   constructor() {
     super('OpenAiApiChat')
     this.init()
   }
   private init() {
     log.info('init')
-    this.conversationContext = {
-      messages: [],
-    }
-  }
-  private buildMessages(historyMessageCount: number): IOpenAIApiChatMessage[] {
-    // return [
-    //   SYSTEM_MESSAGE,
-    //   ...this.conversationContext!.messages.slice(-(CONTEXT_SIZE + 1)),
-    // ]
-    const maxHistoryMessageCount = Math.min(
-      historyMessageCount,
-      MAX_CONTEXT_SIZE,
-    )
-    return [
-      SYSTEM_MESSAGE,
-      ...this.conversationContext!.messages.slice(
-        -(maxHistoryMessageCount + 1),
-      ),
-    ]
   }
   async preAuth() {
     this.active = true
@@ -76,6 +42,7 @@ class OpenAiApiChat extends BaseChat {
       regenerate?: boolean
       streaming?: boolean
       max_history_message_cnt?: number
+      history: IOpenAIApiChatMessage[]
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -91,8 +58,9 @@ class OpenAiApiChat extends BaseChat {
       taskId,
       // include_history = false,
       // streaming = true,
-      regenerate = false,
-      max_history_message_cnt = 0,
+      // regenerate = false,
+      // max_history_message_cnt = 0,
+      history,
     } = options || {}
     const chatGPTApiSettings = await this.getChatGPTAPISettings()
     if (!chatGPTApiSettings) {
@@ -106,23 +74,8 @@ class OpenAiApiChat extends BaseChat {
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
-    let messagesLength = this.conversationContext?.messages.length || 0
-    if (regenerate && messagesLength >= 2) {
-      // remove last two messages
-      this.conversationContext!.messages.pop()
-      this.conversationContext!.messages.pop()
-      messagesLength = Math.max(messagesLength - 2, 0)
-    } else if (messagesLength > 0) {
-      // 排除异常, 最后一条消息不能是user
-      if (
-        this.conversationContext!.messages[messagesLength - 1]?.role === 'user'
-      ) {
-        this.conversationContext!.messages.pop()
-        messagesLength = Math.max(messagesLength - 1, 0)
-      }
-    }
-    log.info('messages', this.conversationContext!.messages, messagesLength)
-    this.conversationContext!.messages.push({
+    const messages = history || []
+    messages.push({
       role: 'user',
       content: question,
     })
@@ -138,15 +91,13 @@ class OpenAiApiChat extends BaseChat {
       },
       body: JSON.stringify({
         model: chatGPTApiSettings.model,
-        messages: this.buildMessages(max_history_message_cnt),
+        messages,
         temperature: chatGPTApiSettings.temperature,
         stream: true,
       }),
       onMessage: (message: string) => {
         console.debug('chatgpt sse message', message)
         if (message === '[DONE]') {
-          const messages = this.conversationContext!.messages
-          messages.push(result)
           onMessage &&
             onMessage({
               type: 'message',
@@ -188,10 +139,6 @@ class OpenAiApiChat extends BaseChat {
       .catch((err) => {
         log.info('streaming end error', err)
         if (err?.message === 'The user aborted a request.') {
-          this.conversationContext!.messages.push({
-            content: result.content,
-            role: 'assistant',
-          })
           onMessage &&
             onMessage({
               type: 'error',
@@ -245,7 +192,7 @@ class OpenAiApiChat extends BaseChat {
       })
   }
   resetMessagesContext() {
-    this.conversationContext!.messages = []
+    // this.messagesContext = {}
   }
   async checkApiKey() {
     const settings = await getThirdProviderSettings('OPENAI_API')

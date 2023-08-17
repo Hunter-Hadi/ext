@@ -314,7 +314,7 @@ export const ClientMessageInit = () => {
             const { conversationId } = data
             const conversation =
               await ConversationManager.getClientConversation(conversationId)
-            console.log('新版消息记录，获取conversation', conversation)
+            // console.log('新版Conversation，获取conversation', conversation)
             return {
               success: conversation?.id ? true : false,
               data: conversation,
@@ -343,7 +343,10 @@ export const ClientMessageInit = () => {
                     conversation: newConversationData,
                   },
                 }))
-              console.log('新版消息记录，更新conversation', newConversationData)
+              console.log(
+                '新版Conversation，更新conversation',
+                newConversationData,
+              )
               return {
                 success: true,
                 data: newConversationData,
@@ -361,7 +364,7 @@ export const ClientMessageInit = () => {
           {
             const { conversationId, action, deleteCount, newMessages } = data
             let success = false
-            console.log('新版消息记录，更新消息', conversationId, data)
+            console.log('新版Conversation，更新消息', conversationId, data)
             if (action === 'add') {
               if (newMessages.length === 0) {
                 return {

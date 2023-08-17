@@ -36,7 +36,7 @@ import {
   clientChatConversationModifyChatMessages,
   clientChatConversationUpdate,
 } from '@/features/chatgpt/utils/clientChatConversation'
-import useConversationMessages from '@/features/chatgpt/hooks/useConversationMessages'
+import useClientConversationMessages from '@/features/chatgpt/hooks/useClientConversationMessages'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
@@ -46,7 +46,7 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
-  const messages = useConversationMessages()
+  const messages = useClientConversationMessages()
   const { createConversation, cleanConversation } = useClientConversation()
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
@@ -162,7 +162,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     })
     const postConversationId: string = await createConversation()
     log.info('createConversation', postConversationId)
-    console.log('新版消息记录 createConversation', postConversationId)
+    console.log('新版Conversation createConversation', postConversationId)
     let currentMaxHistoryMessageCnt = maxHistoryMessageCnt
     // 如果没有传入指定的历史会话长度，并且includeHistory===true,计算历史会话条数
     if (!maxHistoryMessageCnt && includeHistory) {

@@ -5,5 +5,6 @@ export const aesJsonEncrypt = (data: any, key = 'MaxAI') => {
 }
 
 export const md5TextEncrypt = (data: string) => {
+  console.log('新版Conversation md5TextEncrypt', data)
   return md5(data).toString()
 }

@@ -70,7 +70,7 @@ const AIProviderSelectorFloatingButton: FC<{
         }}
       >
         <AIProviderIcon
-          aiProviderType={appSettings.chatGPTProvider || 'USE_CHAT_GPT_PLUS'}
+          aiProviderType={appSettings.currentAIProvider || 'USE_CHAT_GPT_PLUS'}
         />
         <Popover
           open={open}
@@ -131,6 +131,6 @@ const AIProviderSelectorFloatingButton: FC<{
         </Popover>
       </Box>
     )
-  }, [appSettings.chatGPTProvider, open])
+  }, [appSettings.currentAIProvider, open])
 }
 export default AIProviderSelectorFloatingButton

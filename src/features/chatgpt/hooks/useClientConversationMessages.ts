@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil'
 import { SidebarConversationMessagesSelector } from '@/features/sidebar'
 
-const useConversationMessages = () => {
+const useClientConversationMessages = () => {
   const messages = useRecoilValue(SidebarConversationMessagesSelector)
   return messages
 }
 
-export default useConversationMessages
+export default useClientConversationMessages

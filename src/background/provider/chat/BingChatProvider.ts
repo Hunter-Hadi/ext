@@ -34,12 +34,13 @@ class BingChatProvider implements ChatAdapterInterface {
       this.bingChat.conversation?.id &&
       initConversationData.id !== this.bingChat.conversation.id
     ) {
+      console.log('新版Conversation 因为conversation id变了, 移除conversation')
       await this.bingChat.removeConversation()
     }
     return await this.bingChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
-    this.bingChat.conversation = undefined
+    await this.bingChat.removeConversationWithCache()
     await this.bingChat.removeConversation()
     return Promise.resolve(true)
   }

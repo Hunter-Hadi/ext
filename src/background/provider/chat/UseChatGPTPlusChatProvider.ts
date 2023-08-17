@@ -34,7 +34,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     )
   }
   async removeConversation(conversationId: string) {
-    this.useChatGPTPlusChat.conversation = undefined
+    await this.useChatGPTPlusChat.removeConversationWithCache()
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (

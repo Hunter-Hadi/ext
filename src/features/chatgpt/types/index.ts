@@ -34,7 +34,7 @@ export interface IUserChatMessage extends IChatMessage {
     // 额外数据
     meta?: IChatMessageExtraMetaType
     // 聊天记录
-    historyMessages?: IChatMessage[]
+    historyMessages?: Array<IAIResponseMessage | IUserChatMessage>
   }
 }
 

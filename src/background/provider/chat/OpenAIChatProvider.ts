@@ -41,6 +41,7 @@ class OpenAIChatProvider implements ChatAdapterInterface {
       this.openAIChat.conversation?.id &&
       initConversationData.id !== this.openAIChat.conversation.id
     ) {
+      console.log('新版Conversation 因为conversation id变了, 移除conversation')
       await this.openAIChat.removeConversation(this.openAIChat.conversation.id)
     }
     return await this.openAIChat.createConversation(initConversationData)

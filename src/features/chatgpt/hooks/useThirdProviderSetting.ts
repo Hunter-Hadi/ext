@@ -11,7 +11,7 @@ import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExt
 
 const useThirdProviderSetting = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
-  const currentProvider = appSettings.chatGPTProvider
+  const currentProvider = appSettings.currentAIProvider
   const currentThirdProviderSettings = useMemo(() => {
     if (
       appSettings.thirdProviderSettings &&

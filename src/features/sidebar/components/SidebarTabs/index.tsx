@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import Stack from '@mui/material/Stack'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
@@ -13,6 +13,8 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { I18nextKeysType } from '@/i18next'
 import { useTranslation } from 'react-i18next'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
+import cloneDeep from 'lodash-es/cloneDeep'
+import { AppSettingsState } from '@/store'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -33,8 +35,18 @@ const SidebarTabs: FC = () => {
   const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
+  const appSettings = useRecoilValue(AppSettingsState)
   const conversationMap = useRecoilValue(ClientConversationMapState)
   const conversation = useRecoilValue(ChatGPTConversationState)
+  const renderConversation = useMemo(() => {
+    const conversation: any = cloneDeep(
+      conversationMap[sidebarConversationID] || {},
+    )
+    if (conversation.messages) {
+      delete conversation.messages
+    }
+    return conversation
+  }, [conversationMap, sidebarConversationID])
   if (isMaxAINewTabPage()) {
     return null
   }
@@ -86,7 +98,10 @@ const SidebarTabs: FC = () => {
         </Tabs>
       </Stack>
       <Stack>{JSON.stringify(sidebarSettings, null, 2)}</Stack>
-      <Stack>{JSON.stringify(Object.keys(conversationMap), null, 2)}</Stack>
+      <Stack>
+        <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
+      </Stack>
+      <p>appSettings: {appSettings.conversationId}</p>
       <p>sidebarConversationID: {sidebarConversationID}</p>
     </>
   )

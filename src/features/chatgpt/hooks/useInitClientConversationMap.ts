@@ -53,7 +53,7 @@ const useInitClientConversationMap = () => {
     if (appSettings.conversationId) {
       clientGetConversation(appSettings.conversationId).then((conversation) => {
         if (conversation) {
-          console.log('新版消息记录 effect更新', conversation.messages)
+          console.log('新版Conversation effect更新', conversation.messages)
           setClientConversationMap((prevState) => {
             return {
               ...prevState,
@@ -69,7 +69,7 @@ const useInitClientConversationMap = () => {
       if (cache.conversationId) {
         clientGetConversation(cache.conversationId).then((conversation) => {
           if (conversation) {
-            console.log('新版消息记录 refocus更新', conversation.messages)
+            console.log('新版Conversation refocus更新', conversation.messages)
             setClientConversationMap((prevState) => {
               return {
                 ...prevState,

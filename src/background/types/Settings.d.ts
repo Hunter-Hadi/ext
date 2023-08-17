@@ -92,9 +92,9 @@ export interface IChromeExtensionButtonSetting {
 }
 
 export interface IChromeExtensionSettings {
-  chatGPTProvider?: IAIProviderType
   models?: IChatGPTModelType[]
   plugins?: IChatGPTPluginType[]
+  currentAIProvider?: IAIProviderType
   currentModel?: string
   currentPlugins?: string[]
   conversationId?: string

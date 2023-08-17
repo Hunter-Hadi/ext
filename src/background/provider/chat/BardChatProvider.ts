@@ -33,12 +33,13 @@ class BardChatProvider implements ChatAdapterInterface {
       this.bardChat.conversation?.id &&
       initConversationData.id !== this.bardChat.conversation.id
     ) {
+      console.log('新版Conversation 因为conversation id变了, 移除conversation')
       await this.bardChat.reset()
     }
     return await this.bardChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
-    this.bardChat.conversation = undefined
+    await this.bardChat.removeConversationWithCache()
     await this.bardChat.reset()
     return Promise.resolve(true)
   }

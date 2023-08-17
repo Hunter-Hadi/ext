@@ -6,7 +6,8 @@ import {
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
-  IChatMessage,
+  IAIResponseMessage,
+  IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
@@ -361,16 +362,22 @@ export const processAskAIParameters = async (
       questionPromptTokens -
       1000 // 预留1000个token给ai生成的答案
     let historyTokensUsed = 0
-    const historyMessages: IChatMessage[] = []
+    const historyMessages: Array<IAIResponseMessage | IUserChatMessage> = []
     // 如果小于最大历史记录数，并且小于最大历史记录token数
     // 从后往前遍历，直到满足条件
     let isFindAIResponse = false
     for (let i = conversation.messages.length - 1; i >= 0; i--) {
       const message = conversation.messages[i]
+      // 如果是ai回复，那么标记开始
       if (message.type === 'ai') {
         isFindAIResponse = true
       }
-      if (!isFindAIResponse) {
+      // 如果是system或者third，那么跳过
+      if (
+        !isFindAIResponse ||
+        message.type === 'system' ||
+        message.type === 'third'
+      ) {
         continue
       }
       const tokens = (await getTextTokens(message.text)).length
@@ -379,13 +386,13 @@ export const processAskAIParameters = async (
         historyMessages.length < maxHistoryCount &&
         historyTokensUsed < maxHistoryTokens
       ) {
-        historyMessages.unshift(message)
+        historyMessages.unshift(message as IAIResponseMessage)
       } else {
         break
       }
     }
     console.log(
-      '新版消息记录 History Messages',
+      '新版Conversation History Messages',
       historyMessages,
       historyTokensUsed + systemPromptTokens,
     )

@@ -50,7 +50,7 @@ export const FILTER_SAVE_KEYS = [
   'currentPlugins',
   'plugins',
   'conversationId',
-  'chatGPTProvider',
+  'currentAIProvider',
   'commands',
   'models',
 ] as Array<keyof IChromeExtensionSettings>
@@ -64,7 +64,7 @@ export const getDefaultChromeExtensionSettings =
       currentPlugins: [],
       plugins: [],
       conversationId: '',
-      chatGPTProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+      currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       /** @deprecated **/
       contextMenus: [],
       /** @deprecated **/

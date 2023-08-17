@@ -54,7 +54,7 @@ export const increaseChatGPTRequestCount = async (
     const cacheData: IChatRequestCountRecordType =
       (await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)) || {}
     const settings = await clientGetLiteChromeExtensionSettings()
-    const provider = settings.chatGPTProvider || 'UNKNOWN_PROVIDER'
+    const provider = settings.currentAIProvider || 'UNKNOWN_PROVIDER'
     const currentDay = dayjs().format('YYYY-MM-DD')
     // MARK - 清理过期的数据
     Object.keys(cacheData).forEach((cacheDay) => {

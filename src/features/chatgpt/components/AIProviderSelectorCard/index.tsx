@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
-import useChatGPTProvider from '@/features/chatgpt/hooks/useChatGPTProvider'
+import useAIProvider from '@/features/chatgpt/hooks/useAIProvider'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
 import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
@@ -34,7 +34,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
     provider,
     updateChatGPTProvider,
     loading: switchProviderLoading,
-  } = useChatGPTProvider()
+  } = useAIProvider()
   const isLoadingMemo = useMemo(() => {
     return chatGPTConversationLoading || switchProviderLoading
   }, [chatGPTConversationLoading, switchProviderLoading])

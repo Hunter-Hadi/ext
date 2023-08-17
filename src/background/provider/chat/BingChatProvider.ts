@@ -3,7 +3,6 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { BingChat } from '@/background/src/chat'
-import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
@@ -30,20 +29,18 @@ class BingChatProvider implements ChatAdapterInterface {
     return this.bingChat.conversation
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    if (this.bingChat.conversation?.id) {
-      return Promise.resolve(this.bingChat.conversation.id)
+    if (
+      initConversationData?.id &&
+      this.bingChat.conversation?.id &&
+      initConversationData.id !== this.bingChat.conversation.id
+    ) {
+      await this.bingChat.removeConversation()
     }
-    const conversationId = await this.bingChat.createConversation(
-      initConversationData,
-    )
-    return Promise.resolve(conversationId)
+    return await this.bingChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
     this.bingChat.conversation = undefined
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
-    await this.bingChat.removeConversation(conversationId)
+    await this.bingChat.removeConversation()
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (

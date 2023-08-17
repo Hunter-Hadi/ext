@@ -2,7 +2,6 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
@@ -29,17 +28,18 @@ class ClaudeChatProvider implements ChatAdapterInterface {
     return this.claudeChat.conversation
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    if (this.claudeChat.conversation?.id) {
-      return Promise.resolve(this.claudeChat.conversation.id)
+    if (
+      initConversationData?.id &&
+      this.claudeChat.conversation?.id &&
+      initConversationData.id !== this.claudeChat.conversation.id
+    ) {
+      await this.claudeChat.removeConversation()
     }
     return await this.claudeChat.createConversation(initConversationData)
   }
-  async removeConversation(conversationId: string) {
+  async removeConversation() {
     this.claudeChat.conversation = undefined
-    await this.claudeChat.removeConversation(conversationId)
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
+    await this.claudeChat.removeConversation()
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (

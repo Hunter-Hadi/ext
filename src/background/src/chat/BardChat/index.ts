@@ -5,10 +5,10 @@ import {
 } from '@/background/src/chat/BardChat/utils'
 import { ofetch } from 'ofetch'
 import Browser from 'webextension-polyfill'
-import { v4 as uuidV4 } from 'uuid'
 import { getChromeExtensionOnBoardingData } from '@/background/utils'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 
 function generateReqId() {
   return Math.floor(Math.random() * 900000) + 100000
@@ -20,7 +20,6 @@ class BardChat extends BaseChat {
     blValue: string
   }
   contextIds: [string, string, string] = ['', '', '']
-  conversationId?: string
   constructor() {
     super('BardChat')
     this.token = undefined
@@ -74,8 +73,14 @@ class BardChat extends BaseChat {
       }
     }) => void,
   ) {
-    if (!this.conversationId) {
-      this.conversationId = uuidV4()
+    if (!this.conversation) {
+      await super.createConversation({
+        meta: {
+          AIProvider: 'BARD',
+          AIModel: BARD_MODELS[0].value,
+          maxTokens: BARD_MODELS[0].maxTokens,
+        },
+      })
     }
     const {
       taskId,
@@ -162,7 +167,7 @@ class BardChat extends BaseChat {
             error: '',
             data: {
               text,
-              conversationId: this.conversationId,
+              conversationId: this.conversation?.id || '',
             },
           })
         onMessage &&
@@ -172,7 +177,7 @@ class BardChat extends BaseChat {
             error: '',
             data: {
               text,
-              conversationId: this.conversationId,
+              conversationId: this.conversation?.id || '',
             },
           })
         this.contextIds = ids
@@ -184,7 +189,7 @@ class BardChat extends BaseChat {
             error: 'BardChat: Unknown Error',
             data: {
               text: '',
-              conversationId: this.conversationId,
+              conversationId: this.conversation?.id || '',
             },
           })
       }
@@ -202,7 +207,6 @@ class BardChat extends BaseChat {
     return true
   }
   reset() {
-    this.conversationId = ''
     this.contextIds = ['', '', '']
   }
   async uploadFiles(files: IChatUploadFile[]) {

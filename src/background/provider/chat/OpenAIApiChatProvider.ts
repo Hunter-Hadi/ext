@@ -3,7 +3,6 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { OpenAiApiChat } from '@/background/src/chat'
-import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
@@ -31,19 +30,17 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
     return this.openAiApiChat.conversation
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    if (this.openAiApiChat.conversation?.id) {
-      return Promise.resolve(this.openAiApiChat.conversation.id)
+    if (
+      initConversationData?.id &&
+      this.openAiApiChat.conversation?.id &&
+      initConversationData.id !== this.openAiApiChat.conversation.id
+    ) {
+      await this.openAiApiChat.resetMessagesContext()
     }
-    const conversationId = await this.openAiApiChat.createConversation(
-      initConversationData,
-    )
-    return Promise.resolve(conversationId)
+    return await this.openAiApiChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
     this.openAiApiChat.conversation = undefined
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
     await this.openAiApiChat.resetMessagesContext()
     return Promise.resolve(true)
   }

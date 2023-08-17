@@ -185,7 +185,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
     focusListener()
     window.addEventListener('focus', focusListener)
-
     return () => window.removeEventListener('focus', focusListener)
   }, [])
   return (

@@ -4,12 +4,15 @@ import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import {
+  ChatGPTConversationState,
   ISidebarConversationType,
+  SidebarConversationIdSelector,
   SidebarSettingsState,
 } from '@/features/sidebar/store'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { I18nextKeysType } from '@/i18next'
 import { useTranslation } from 'react-i18next'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -27,8 +30,11 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
+  const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
+  const conversationMap = useRecoilValue(ClientConversationMapState)
+  const conversation = useRecoilValue(ChatGPTConversationState)
   if (isMaxAINewTabPage()) {
     return null
   }
@@ -71,6 +77,7 @@ const SidebarTabs: FC = () => {
         >
           {sidebarTabsData.map((item) => (
             <Tab
+              disabled={conversation.loading}
               key={item.value}
               value={item.value}
               label={t(item.label as any)}
@@ -79,6 +86,8 @@ const SidebarTabs: FC = () => {
         </Tabs>
       </Stack>
       <Stack>{JSON.stringify(sidebarSettings, null, 2)}</Stack>
+      <Stack>{JSON.stringify(Object.keys(conversationMap), null, 2)}</Stack>
+      <p>sidebarConversationID: {sidebarConversationID}</p>
     </>
   )
 }

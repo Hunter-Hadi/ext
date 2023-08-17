@@ -4,7 +4,6 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { setChromeExtensionSettings } from '@/background/utils'
 import { IChatConversation } from '@/background/src/chatConversations'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
@@ -37,12 +36,16 @@ class OpenAIChatProvider implements ChatAdapterInterface {
   }
 
   async createConversation(initConversationData: Partial<IChatConversation>) {
+    if (
+      initConversationData?.id &&
+      this.openAIChat.conversation?.id &&
+      initConversationData.id !== this.openAIChat.conversation.id
+    ) {
+      await this.openAIChat.removeConversation(this.openAIChat.conversation.id)
+    }
     return await this.openAIChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
     return await this.openAIChat.removeConversation(conversationId)
   }
   destroy() {

@@ -20,7 +20,7 @@ import {
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
 import { useFocus } from '@/hooks/useFocus'
-import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useTranslation } from 'react-i18next'
 
 const ArrowDropDownIconCustom = () => {
@@ -39,7 +39,7 @@ const ArrowDropDownIconCustom = () => {
 
 const BingConversationStyleSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const { cleanChatGPT } = useCleanChatGPT()
+  const { cleanConversation } = useClientConversation()
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ChatGPTConversationState,
   )
@@ -119,7 +119,7 @@ const BingConversationStyleSelector: FC = () => {
               },
               false,
             )
-            await cleanChatGPT()
+            await cleanConversation()
             setBingConversationStyle(
               event.target.value as BingConversationStyle,
             )

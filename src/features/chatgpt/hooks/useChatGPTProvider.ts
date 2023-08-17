@@ -3,18 +3,18 @@ import { AppSettingsState } from '@/store'
 import { IAIProviderType } from '@/background/provider/chat'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { setChromeExtensionSettings } from '@/background/utils'
-import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useState } from 'react'
 
 const port = new ContentScriptConnectionV2()
 const useChatGPTProvider = () => {
-  const { cleanChatGPT } = useCleanChatGPT()
+  const { cleanConversation } = useClientConversation()
   const [loading, setLoading] = useState(false)
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const updateChatGPTProvider = async (provider: IAIProviderType) => {
     try {
       setLoading(true)
-      await cleanChatGPT()
+      await cleanConversation()
       const result = await port.postMessage({
         event: 'Client_switchChatGPTProvider',
         data: {

@@ -3,7 +3,6 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { UseChatGPTPlusChat } from '@/background/src/chat'
-import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
@@ -30,16 +29,12 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     return this.useChatGPTPlusChat.conversation
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    const conversationId = await this.useChatGPTPlusChat.createConversation(
+    return await this.useChatGPTPlusChat.createConversation(
       initConversationData,
     )
-    return Promise.resolve(conversationId)
   }
   async removeConversation(conversationId: string) {
     this.useChatGPTPlusChat.conversation = undefined
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (

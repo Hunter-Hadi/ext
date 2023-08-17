@@ -19,9 +19,6 @@ class BaseChat {
     this.chatFiles = []
     this.log = new Log('Background/Chat/' + name)
   }
-  get conversationId() {
-    return this.conversation?.id || ''
-  }
   async auth(tabId: number) {
     this.active = true
     await this.updateClientStatus('success')

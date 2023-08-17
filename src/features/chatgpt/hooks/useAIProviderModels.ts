@@ -10,7 +10,6 @@ import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { setChromeExtensionSettings } from '@/background/utils'
-import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
 import reverse from 'lodash-es/reverse'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
@@ -30,7 +29,6 @@ const useAIProviderModels = () => {
   const [loading, setLoading] = useState(false)
   const { currentThirdProviderSettings, saveThirdProviderSettings } =
     useThirdProviderSetting()
-  const { cleanChatGPT } = useCleanChatGPT()
   // ===chatgpt 特殊处理开始===
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   useEffect(() => {
@@ -161,15 +159,6 @@ const useAIProviderModels = () => {
     }
     return currentThirdProviderSettings?.model || ''
   }, [currentProvider, appSettings.currentModel, currentThirdProviderSettings])
-  useEffect(() => {
-    // TODO 历史遗留问题
-    if (
-      currentProvider === 'CLAUDE' &&
-      currentThirdProviderSettings?.model === 'a2'
-    ) {
-      updateAIProviderModel(CLAUDE_MODELS[0].value)
-    }
-  }, [currentAIProviderModel, currentProvider])
   const currentAIProviderDetail = useMemo(() => {
     return AIProviderOptions.find((item) => item.value === currentProvider)
   }, [currentProvider])
@@ -196,22 +185,23 @@ const useAIProviderModels = () => {
             model,
           })
         }
-        await cleanChatGPT()
       } catch (e) {
         console.log(e)
       } finally {
         setLoading(false)
       }
     },
-    [currentProvider, saveThirdProviderSettings, aiProviderModels],
+    [currentProvider, aiProviderModels],
   )
-  console.log(
-    'aiProviderModels',
-    aiProviderModels,
-    currentAIProviderModel,
-    appSettings.chatGPTProvider,
-    currentThirdProviderSettings,
-  )
+  useEffect(() => {
+    // TODO 历史遗留问题
+    if (
+      currentProvider === 'CLAUDE' &&
+      currentThirdProviderSettings?.model === 'a2'
+    ) {
+      updateAIProviderModel(CLAUDE_MODELS[0].value)
+    }
+  }, [currentAIProviderModel, currentProvider])
   return {
     aiProvider: appSettings.chatGPTProvider,
     aiProviderModel: currentAIProviderModel,

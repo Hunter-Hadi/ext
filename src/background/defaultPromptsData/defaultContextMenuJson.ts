@@ -2,12 +2,363 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export default [
   {
+    id: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    parent: 'b83cb482-710d-4e48-9b22-43b8e8ea3a02',
+    droppable: true,
+    text: 'Quick reply',
+    data: {
+      editable: true,
+      type: 'group',
+      actions: [],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      icon: 'Reply',
+      searchText: 'messaging quick reply',
+    },
+  },
+  {
+    id: '0607ffb9-e0fb-41b5-9e02-afabff22acb6',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Like',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply like',
+    },
+  },
+  {
+    id: '2822ad40-9f2c-4db8-961b-50636218edc7',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Love',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply love',
+    },
+  },
+  {
+    id: '4d59573b-7e84-4fb0-8d55-582bd4a5c948',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Thanks',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, grateful, and delighted reply to the message/post that responds 'thank you' for whatever the message/post is about. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply thanks',
+    },
+  },
+  {
+    id: '6325c4b4-5b4c-457b-849a-eacdcb37edfb',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Care',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply care',
+    },
+  },
+  {
+    id: '32dd4492-4ec4-44a9-ba53-32223bf385fe',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Joke',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny reply to the message/post joking about it. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply joke',
+    },
+  },
+  {
+    id: '5bb90f56-7cae-4662-9d59-dd2c6ff941ec',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Wow',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply wow',
+    },
+  },
+  {
+    id: 'c4f861da-75ee-4afb-86a7-de234c0c2309',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Sad',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply sad',
+    },
+  },
+  {
+    id: '31e2d82e-5176-43a5-af28-33b873f27496',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Dislike',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "\nIgnore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply dislike',
+    },
+  },
+  {
+    id: '32f31576-0ab8-4fc8-966d-426970abede6',
+    parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
+    droppable: true,
+    text: 'Enter prompt',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n``` \n\nInclude the following aspects in the reply:",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply enter prompt',
+    },
+  },
+  {
     id: 'a261c7e0-1a4f-485f-a9e0-9998c45cd08c',
     parent: '665d4c2f-0f17-43be-9a49-a65ace4ef4e7',
     droppable: true,
     text: 'Yes',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -44,7 +395,7 @@ export default [
     droppable: true,
     text: 'No',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -81,7 +432,7 @@ export default [
     droppable: true,
     text: 'Thanks',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -118,7 +469,7 @@ export default [
     droppable: true,
     text: 'Sorry',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -155,7 +506,7 @@ export default [
     droppable: true,
     text: 'More info',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -192,7 +543,7 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -229,7 +580,7 @@ export default [
     droppable: true,
     text: 'Follow-up',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -266,7 +617,7 @@ export default [
     droppable: true,
     text: 'Quick reply',
     data: {
-      editable: false,
+      editable: true,
       type: 'group',
       actions: [],
       visibility: {
@@ -284,7 +635,7 @@ export default [
     droppable: true,
     text: 'Email',
     data: {
-      editable: false,
+      editable: true,
       type: 'group',
       actions: [],
       visibility: {
@@ -307,14 +658,14 @@ export default [
     droppable: true,
     text: 'Like',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -344,14 +695,14 @@ export default [
     droppable: true,
     text: 'Love',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -381,14 +732,14 @@ export default [
     droppable: true,
     text: 'Thanks',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, grateful, and delighted reply to the message/post that responds 'thank you' for whatever the message/post is about. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, grateful, and delighted reply to the message/post that responds 'thank you' for whatever the message/post is about. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -418,14 +769,14 @@ export default [
     droppable: true,
     text: 'Care',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -455,14 +806,14 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny reply to the message/post joking about it. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny reply to the message/post joking about it. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -492,14 +843,14 @@ export default [
     droppable: true,
     text: 'Wow',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -529,14 +880,14 @@ export default [
     droppable: true,
     text: 'Sad',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -566,14 +917,14 @@ export default [
     droppable: true,
     text: 'Dislike',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -603,14 +954,14 @@ export default [
     droppable: true,
     text: 'Enter prompt',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n``` \n\nInclude the following aspects in the reply:",
+              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n``` \n\nInclude the following aspects in the reply:",
           },
         },
         {
@@ -635,7 +986,7 @@ export default [
     droppable: true,
     text: 'Quick reply',
     data: {
-      editable: false,
+      editable: true,
       type: 'group',
       actions: [],
       visibility: {
@@ -653,33 +1004,26 @@ export default [
     droppable: true,
     text: 'Social media',
     data: {
-      editable: false,
+      editable: true,
       type: 'group',
       actions: [],
       visibility: {
         whitelist: [
-          'app.hubspot.com',
           'tiktok.com',
           'twitch.tv',
-          'mp.weixin.qq.com',
           'zhihu.com',
           'zhuanlan.zhihu.com',
-          'messenger.com',
           'bilibili.com',
           'quora.com',
           'web.facebook.com',
-          'web.telegram.org',
           'medium.com',
           'studio.youtube.com',
           'reddit.com',
           'fiverr.com',
-          'app.slack.com',
-          'discord.com',
           'instagram.com',
           'twitter.com',
           'facebook.com',
           'youtube.com',
-          'web.whatsapp.com',
           'linkedin.com',
         ],
         blacklist: [],
@@ -694,7 +1038,7 @@ export default [
     droppable: true,
     text: 'Continue writing',
     data: {
-      editable: false,
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
@@ -732,7 +1076,7 @@ export default [
     droppable: true,
     text: 'English',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -764,49 +1108,12 @@ export default [
     },
   },
   {
-    id: '6de2edc2-019f-4a6c-9051-a15aa11338a0',
-    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
-    droppable: true,
-    text: 'Korean',
-    data: {
-      editable: false,
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Korean.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
-      searchText: 'translate korean',
-    },
-  },
-  {
     id: 'e5a30298-52e9-431d-89d8-6f5431c236c9',
     parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
     droppable: true,
-    text: 'Chinese',
+    text: 'Chinese (Simplified)',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -818,7 +1125,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Chinese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Chinese (Simplified).\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -834,28 +1141,23 @@ export default [
           },
         },
       ],
-      searchText: 'translate chinese',
+      searchText: 'translate chinese (simplified)',
     },
   },
   {
-    id: '2a753c24-a5cb-496a-a34b-1037e366e690',
+    id: '0cb5746c-b879-4ac4-86fb-49f366c81542',
     parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
     droppable: true,
-    text: 'Japanese',
+    text: 'Chinese (Traditional)',
     data: {
-      editable: false,
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
+      editable: true,
       type: 'shortcuts',
       actions: [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Japanese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Chinese (Traditional).\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -871,118 +1173,12 @@ export default [
           },
         },
       ],
-      searchText: 'translate japanese',
-    },
-  },
-  {
-    id: '1aabb1d3-f1af-4e81-aab9-fe4d16630cc3',
-    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
-    droppable: true,
-    text: 'Spanish',
-    data: {
-      editable: false,
       visibility: {
-        isWhitelistMode: false,
         whitelist: [],
         blacklist: [],
-      },
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Spanish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
-      searchText: 'translate spanish',
-    },
-  },
-  {
-    id: '3aca0447-12a5-4453-b4b2-64e45f16598a',
-    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
-    droppable: true,
-    text: 'Russian',
-    data: {
-      editable: false,
-      visibility: {
         isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
       },
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Russian.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
-      searchText: 'translate russian',
-    },
-  },
-  {
-    id: 'ad6cebdb-c5ab-4db5-8776-95d6381b90de',
-    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
-    droppable: true,
-    text: 'French',
-    data: {
-      editable: false,
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into French.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
-      searchText: 'translate french',
+      searchText: 'translate chinese (traditional)',
     },
   },
   {
@@ -991,7 +1187,7 @@ export default [
     droppable: true,
     text: 'Portuguese',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1023,12 +1219,234 @@ export default [
     },
   },
   {
+    id: '1aabb1d3-f1af-4e81-aab9-fe4d16630cc3',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Spanish',
+    data: {
+      editable: true,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Spanish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      searchText: 'translate spanish',
+    },
+  },
+  {
+    id: 'ad6cebdb-c5ab-4db5-8776-95d6381b90de',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'French',
+    data: {
+      editable: true,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into French.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      searchText: 'translate french',
+    },
+  },
+  {
+    id: '6de2edc2-019f-4a6c-9051-a15aa11338a0',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Korean',
+    data: {
+      editable: true,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Korean.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      searchText: 'translate korean',
+    },
+  },
+  {
+    id: '24766e7e-a419-4992-aaaf-786a37a0e111',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Vietnamese',
+    data: {
+      editable: true,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Vietnamese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      searchText: 'translate vietnamese',
+    },
+  },
+  {
+    id: '2a753c24-a5cb-496a-a34b-1037e366e690',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Japanese',
+    data: {
+      editable: true,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Japanese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      searchText: 'translate japanese',
+    },
+  },
+  {
+    id: '3aca0447-12a5-4453-b4b2-64e45f16598a',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Russian',
+    data: {
+      editable: true,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Russian.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      searchText: 'translate russian',
+    },
+  },
+  {
     id: '8b6f4e3f-7669-44a8-a020-fb88c5c9d592',
     parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
     droppable: true,
     text: 'German',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1060,12 +1478,49 @@ export default [
     },
   },
   {
+    id: 'fee4c3e1-8970-436a-a535-e6085f283973',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Turkish',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Turkish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'translate turkish',
+    },
+  },
+  {
     id: 'd1484846-cba5-4b2b-9fef-0a2d0f4b15b7',
     parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
     droppable: true,
     text: 'Italian',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1102,7 +1557,7 @@ export default [
     droppable: true,
     text: 'Dutch',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1134,12 +1589,123 @@ export default [
     },
   },
   {
+    id: 'f8a45478-0da3-4c34-8306-b922b68fab5b',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Polish',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Polish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'translate polish',
+    },
+  },
+  {
+    id: 'c78b028f-ae08-4c3b-830b-c71bc03ead25',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Arabic',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Arabic.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'translate arabic',
+    },
+  },
+  {
+    id: 'e361913f-b0af-443f-8122-1affa88478be',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Hebrew',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Hebrew.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'translate hebrew',
+    },
+  },
+  {
     id: 'd4051326-c55b-4611-944a-3457ff0a8ed7',
     parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
     droppable: true,
     text: 'Indonesian',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1171,12 +1737,86 @@ export default [
     },
   },
   {
+    id: 'bf0da9ac-63d5-40f1-a5c5-63f1468ec13c',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Danish',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Danish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'translate danish',
+    },
+  },
+  {
+    id: '9b1b232b-c036-4131-bd6c-c2e5e690c4ea',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Swedish',
+    data: {
+      editable: true,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Swedish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'translate swedish',
+    },
+  },
+  {
     id: '0d6cce80-546b-4b09-8fe5-f84f195d9d2e',
     parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
     droppable: true,
     text: 'Filipino',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1208,49 +1848,12 @@ export default [
     },
   },
   {
-    id: '24766e7e-a419-4992-aaaf-786a37a0e111',
-    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
-    droppable: true,
-    text: 'Vietnamese',
-    data: {
-      editable: false,
-      visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
-        blacklist: [],
-      },
-      type: 'shortcuts',
-      actions: [
-        {
-          type: 'RENDER_CHATGPT_PROMPT',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Vietnamese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-      ],
-      searchText: 'translate vietnamese',
-    },
-  },
-  {
     id: '7b26a25c-e869-4832-b5bb-b19685f5c3a5',
     parent: '80e6d17b-2cf5-456b-944b-5f645f0e12de',
     droppable: true,
     text: 'Summarize',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1262,7 +1865,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the following text delimited by triple backticks in all relevant aspects. \n\nOutput a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.\n\nUse the following format:\n## Summary\n<summary of the text>\n\n## Key Takeaways\n<list of key takeaways>\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
+              '\nIgnore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the following text delimited by triple backticks in all relevant aspects. \n\nOutput a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.\n\nUse the following format:\n## Summary\n<summary of the text>\n\n## Key Takeaways\n<list of key takeaways>\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
           },
         },
         {
@@ -1288,7 +1891,7 @@ export default [
     droppable: true,
     text: 'Translate',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1306,7 +1909,7 @@ export default [
     droppable: true,
     text: 'Explain this',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1344,7 +1947,7 @@ export default [
     droppable: true,
     text: 'Find action items',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1382,7 +1985,7 @@ export default [
     droppable: true,
     text: 'Run this prompt',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1411,7 +2014,7 @@ export default [
     droppable: true,
     text: 'Professional',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1448,7 +2051,7 @@ export default [
     droppable: true,
     text: 'Friendly',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1485,7 +2088,7 @@ export default [
     droppable: true,
     text: 'Straightforward',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1522,7 +2125,7 @@ export default [
     droppable: true,
     text: 'Confident',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1559,7 +2162,7 @@ export default [
     droppable: true,
     text: 'Casual',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1596,7 +2199,7 @@ export default [
     droppable: true,
     text: 'Improve writing',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1634,7 +2237,7 @@ export default [
     droppable: true,
     text: 'Fix spelling & grammar',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1672,7 +2275,7 @@ export default [
     droppable: true,
     text: 'Make shorter',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1710,7 +2313,7 @@ export default [
     droppable: true,
     text: 'Make longer',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1748,7 +2351,7 @@ export default [
     droppable: true,
     text: 'Change tone',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1766,7 +2369,7 @@ export default [
     droppable: true,
     text: 'Simplify language',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1804,7 +2407,7 @@ export default [
     droppable: true,
     text: 'Paraphrase',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1816,7 +2419,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              "\nIgnore all previous instructions. You are a real human that can write properly. Your task is to write a re-worded version of the following text delimited by triple backticks.\n\nYour task means conveying the same meaning using different words and sentence structures. Avoiding plagiarism, improving the flow and readability of the text, and ensuring that the re-written content is unique and original.\n\nWrite the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the text is meant to do.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the paraphrased text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You are a real human that can write properly. Your task is to write a re-worded version of the following text delimited by triple backticks.\n\nYour task means conveying the same meaning using different words and sentence structures. Avoiding plagiarism, improving the flow and readability of the text, and ensuring that the re-written content is unique and original.\n\nWrite the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the text is meant to do.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the paraphrased text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
           },
         },
         {
@@ -1837,12 +2440,41 @@ export default [
     },
   },
   {
+    id: 'b83cb482-710d-4e48-9b22-43b8e8ea3a02',
+    parent: 'root',
+    droppable: true,
+    text: 'Messaging',
+    data: {
+      editable: true,
+      type: 'group',
+      actions: [],
+      visibility: {
+        whitelist: [
+          'meet.google.com',
+          'teams.microsoft.com',
+          'web.skype.com',
+          'web.snapchat.com',
+          'app.hubspot.com',
+          'mp.weixin.qq.com',
+          'messenger.com',
+          'web.telegram.org',
+          'app.slack.com',
+          'discord.com',
+          'web.whatsapp.com',
+        ],
+        blacklist: [],
+        isWhitelistMode: true,
+      },
+      searchText: 'messaging',
+    },
+  },
+  {
     id: '30f27496-1faf-4a00-87cf-b53926d35bfd',
     parent: 'root',
     droppable: true,
     text: 'Edit or review selection',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1859,7 +2491,7 @@ export default [
     droppable: true,
     text: 'Generate from selection',
     data: {
-      editable: false,
+      editable: true,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1881,7 +2513,7 @@ export default [
         whitelist: [],
         blacklist: [],
       },
-      editable: false,
+      editable: true,
       type: 'group',
       actions: [],
       searchText: 'write with ai',

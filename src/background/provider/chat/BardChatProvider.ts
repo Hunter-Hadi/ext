@@ -3,7 +3,6 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { BardChat } from '@/background/src/chat'
-import { setChromeExtensionSettings } from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
@@ -29,20 +28,18 @@ class BardChatProvider implements ChatAdapterInterface {
     return this.bardChat.conversation
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    if (this.bardChat.conversation?.id) {
-      return Promise.resolve(this.bardChat.conversation.id)
+    if (
+      initConversationData.id &&
+      this.bardChat.conversation?.id &&
+      initConversationData.id !== this.bardChat.conversation.id
+    ) {
+      await this.bardChat.reset()
     }
-    const conversationId = await this.bardChat.createConversation(
-      initConversationData,
-    )
-    return Promise.resolve(conversationId)
+    return await this.bardChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
     this.bardChat.conversation = undefined
     await this.bardChat.reset()
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (

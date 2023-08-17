@@ -1,13 +1,13 @@
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { RangyContextMenu } from '@/features/contextMenu'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import React, { FC, useEffect, useMemo } from 'react'
 import {
   chromeExtensionClientOpenPage,
   getAppContextMenuRootElement,
   showChatBox,
 } from '@/utils'
-import { AppSettingsState, AppState } from '@/store'
+import { AppSettingsState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import Button from '@mui/material/Button'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
@@ -35,6 +35,7 @@ import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExt
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
+import { getEnv } from '@/utils/AppEnv'
 
 const log = new Log('AppInit')
 
@@ -399,7 +400,6 @@ export const DisabledPDFViewer: FC = () => {
 
 const GmailInit = React.lazy(() => import('@/components/AppInit/GmailInit'))
 const AppInit = () => {
-  const appState = useRecoilValue(AppState)
   useInitChatGPTClient()
   useInitClientConversationMap()
   useAuthLogin()
@@ -416,7 +416,7 @@ const AppInit = () => {
   return (
     <>
       <AppSuspenseLoadingLayout>
-        {appState.env === 'gmail' && <GmailInit />}
+        {getEnv() === 'gmail' && <GmailInit />}
       </AppSuspenseLoadingLayout>
       <RangyInit />
       <RangyContextMenu />

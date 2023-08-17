@@ -161,7 +161,7 @@ class ClaudeChat extends BaseChat {
     this.claude.abortSendMessage()
     return true
   }
-  async removeConversation(conversationId: string) {
+  async removeConversation() {
     this.conversation = undefined
     await this.claude.resetConversation()
     if (this.claude.organizationId) {

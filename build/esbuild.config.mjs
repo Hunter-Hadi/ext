@@ -12,6 +12,7 @@ import path from 'path'
 import archiver from 'archiver'
 import dayjs from 'dayjs'
 // import eslint from 'esbuild-plugin-eslint';
+import resolve from 'esbuild-plugin-resolve';
 
 const replaceEnv = buildEnv.getReplaceEnv()
 const isProduction = buildEnv.isProduction
@@ -39,6 +40,7 @@ async function cleanBuildDir() {
 
 async function esbuildConfig() {
   await esbuild.build({
+    platform: 'browser',
     entryPoints: [
       'src/content.tsx',
       'src/content_style.ts',
@@ -65,6 +67,9 @@ async function esbuildConfig() {
       '.graphql': 'text',
     },
     plugins: [
+      resolve({
+        '@postlight/parser': 'node_modules/@postlight/parser/dist/mercury.web.js',
+      }),
       // eslint({ /* config */ }),
       postcssPlugin({
         postcss: {

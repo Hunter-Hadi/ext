@@ -1,11 +1,7 @@
-import Browser from 'webextension-polyfill'
-import { getCurrentDomainHost } from '@/utils'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
-
-const PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY =
-  'MAXAI_PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY'
+import { getPageContentWithPostlightParser } from '@/features/shortcuts/utils/pageContentHelper'
 
 export type IPageSummaryType = 'PAGE_SUMMARY'
 
@@ -55,73 +51,30 @@ const getCurrentPageUrl = () => {
   return url
 }
 
-export const getPageSummaryConversationId = async () => {
-  try {
-    const pageUrl = getCurrentPageUrl()
-    const cache = await Browser.storage.local.get(
-      PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY,
-    )
-    if (cache && cache[PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY]) {
-      const cacheData = JSON.parse(cache[PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY])
-      return cacheData[pageUrl]
-    } else {
-      return ''
-    }
-  } catch (e) {
-    console.log(e)
-    return ''
-  }
+export const getPageSummaryConversationId = () => {
+  return md5TextEncrypt(getCurrentPageUrl())
+}
+export const getPageSummaryType = (): IPageSummaryType => {
+  return 'PAGE_SUMMARY'
 }
 
-export const setPageSummaryConversationId = async (conversationId: string) => {
-  try {
-    const pageUrl = window.location.href
-    // remove hash or query
-    const url = pageUrl.split('#')[0].split('?')[0]
-    const cache = await Browser.storage.local.get(
-      PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY,
-    )
-    if (cache && cache[PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY]) {
-      const cacheData = JSON.parse(cache[PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY])
-      cacheData[url] = conversationId
-      await Browser.storage.local.set({
-        [PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY]: JSON.stringify(cacheData),
-      })
-      return true
-    } else {
-      await Browser.storage.local.set({
-        [PAGE_SUMMARY_LOCAL_STORAGE_SAVE_KEY]: JSON.stringify({
-          [url]: conversationId,
-        }),
-      })
-      return true
-    }
-  } catch (e) {
-    console.log(e)
-    return false
-  }
-}
-
-export type IInitPageSummaryData = {
-  id: string
-  host: string
-  pageContent: string
-  md5?: string
-  type: IPageSummaryType
-}
-
-export const generateInitPageSummaryData = async (
-  maxPageContentTokens = 12000,
-): Promise<IInitPageSummaryData> => {
-  const host = getCurrentDomainHost()
-  const htmlText = document.body.innerText
-  // TODO
-  const md5 = md5TextEncrypt(getCurrentPageUrl())
+export const generatePageSummaryData = async (
+  maxPageContentTokens?: number,
+): Promise<{
+  pageSummaryId: string
+  pageSummaryContent: string
+  pageSummaryType: IPageSummaryType
+}> => {
+  // 提取网页内容
+  const pageContent = await getPageContentWithPostlightParser(
+    window.location.href,
+  )
+  const md5 = md5TextEncrypt(pageContent)
   return {
-    id: await getPageSummaryConversationId(),
-    host,
-    pageContent: await sliceTextByTokens(htmlText, maxPageContentTokens),
-    md5,
-    type: 'PAGE_SUMMARY',
+    pageSummaryId: md5,
+    pageSummaryContent: maxPageContentTokens
+      ? await sliceTextByTokens(pageContent, maxPageContentTokens)
+      : pageContent,
+    pageSummaryType: 'PAGE_SUMMARY',
   }
 }

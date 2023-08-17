@@ -103,9 +103,6 @@ class ChatSystem implements ChatSystemInterface {
             const conversationId = await this.createConversation(
               initConversationData || {},
             )
-            await setChromeExtensionSettings({
-              conversationId,
-            })
             if (conversationId) {
               return {
                 success: true,
@@ -407,10 +404,7 @@ class ChatSystem implements ChatSystemInterface {
     return result
   }
   async destroy() {
-    // 清空本地储存的conversationId
-    await setChromeExtensionSettings({
-      conversationId: '',
-    })
+    await this.currentAdapter?.removeConversation('')
     await this.currentAdapter?.destroy()
     await this.currentAdapter?.clearFiles()
   }
@@ -484,10 +478,6 @@ class ChatSystem implements ChatSystemInterface {
       )
       // 切换AI Provider
       await this.switchAdapter(currentConversationAIProvider)
-      // 清除旧的
-      await this.currentAdapter?.removeConversation(
-        this.currentAdapter?.conversation?.id || '',
-      )
       // 创建conversation
       await this.currentAdapter?.createConversation(conversation)
       // 更新客户端的聊天记录

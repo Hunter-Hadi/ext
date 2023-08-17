@@ -26,6 +26,7 @@ import ConversationManager, {
 } from '@/background/src/chatConversations'
 import { v4 as uuidV4 } from 'uuid'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
+import isNumber from 'lodash-es/isNumber'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**
@@ -189,6 +190,9 @@ export const askChatGPTQuestion = async (
     })
   })
 }
+/**
+ * @deprecated - 使用BaseChat的conversation.id
+ */
 export const getCacheConversationId = async () => {
   const settings = await getChromeExtensionSettings()
   return settings.conversationId || ''
@@ -327,18 +331,35 @@ export const processAskAIParameters = async (
     }
   }
   // 聊天记录生成
-  if (!options.historyMessages || options.historyMessages?.length === 0) {
+  // 如果有includeHistory，并且没有主动传入historyMessages那么需要生成聊天记录
+  if (
+    options.includeHistory &&
+    (!options.historyMessages || options.historyMessages?.length === 0)
+  ) {
+    // system prompt占用的tokens
     const systemPromptTokens = (
       await getTextTokens(conversation.meta.systemPrompt || '')
     ).length
-    // api会用到1次message
+    // question prompt占用的tokens
+    const questionPromptTokens = (await getTextTokens(question.question)).length
+    // api question 会用到1次message, maxHistoryCount - 1
     let maxHistoryCount = (conversation.meta.maxHistoryCount || 10) - 1
-    // 如果有systemPrompt 会用到1次message
+    // 如果有systemPrompt, maxHistoryCount - 1
     if (systemPromptTokens.length > 0) {
       maxHistoryCount -= 1
     }
+    // 如果传入了maxHistoryMessageCnt，那么取最小值
+    if (isNumber(options.maxHistoryMessageCnt)) {
+      maxHistoryCount = Math.min(maxHistoryCount, options.maxHistoryMessageCnt)
+    }
+    /**
+     * 1. 如果有systemPrompt，那么最大历史记录token数 = maxTokens - systemPromptTokens - questionPromptTokens - 1000
+     */
     const maxHistoryTokens =
-      (conversation.meta.maxTokens || 4096) - systemPromptTokens - 1000 // 预留1000个token给ai生成的答案
+      (conversation.meta.maxTokens || 4096) -
+      systemPromptTokens -
+      questionPromptTokens -
+      1000 // 预留1000个token给ai生成的答案
     let historyTokensUsed = 0
     const historyMessages: IChatMessage[] = []
     // 如果小于最大历史记录数，并且小于最大历史记录token数

@@ -12,10 +12,7 @@ import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,
 } from '@/background/utils'
-import {
-  getCacheConversationId,
-  getThirdProviderSettings,
-} from '@/background/src/chat/util'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
@@ -114,7 +111,6 @@ class UseChatGPTPlusChat extends BaseChat {
         })
       return
     }
-    const cacheConversationId = await getCacheConversationId()
     const {
       include_history = false,
       taskId,
@@ -141,7 +137,7 @@ class UseChatGPTPlusChat extends BaseChat {
           ? userConfig!.temperature
           : 1,
       },
-      cacheConversationId ? { conversation_id: cacheConversationId } : {},
+      { conversation_id: this.conversation?.id || '' },
     )
     const controller = new AbortController()
     const signal = controller.signal
@@ -155,7 +151,7 @@ class UseChatGPTPlusChat extends BaseChat {
     let isEnd = false
     let hasError = false
     let sentTextLength = 0
-    let conversationId = cacheConversationId
+    let conversationId = this.conversation?.id || ''
     const sendTextSettings = await Browser.storage.local.get(
       BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
     )

@@ -1,11 +1,7 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
-import {
-  ChatGPTConversationState,
-  SidebarSettingsState,
-  SidebarConversationIdSelector,
-} from '@/features/sidebar/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   ContentScriptConnectionV2,
   getAIProviderSampleFiles,
@@ -13,7 +9,7 @@ import {
 import Log from '@/utils/Log'
 import { askChatGPTQuestion } from '@/background/src/chat/util'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
-import { useCleanChatGPT } from '@/features/chatgpt/hooks/useCleanChatGPT'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   IAIResponseMessage,
   IChatMessage,
@@ -40,16 +36,8 @@ import {
   clientChatConversationModifyChatMessages,
   clientChatConversationUpdate,
 } from '@/features/chatgpt/utils/clientChatConversation'
-import { setChromeExtensionSettings } from '@/background/utils'
-import { AppSettingsState } from '@/store'
 import useConversationMessages from '@/features/chatgpt/hooks/useConversationMessages'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
-import {
-  generateInitPageSummaryData,
-  setPageSummaryConversationId,
-} from '@/features/sidebar/utils/pageSummaryHelper'
-import { IChatConversation } from '@/background/src/chatConversations'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -59,80 +47,17 @@ const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const messages = useConversationMessages()
-  const [sidebarChat, setSidebarChat] = useRecoilState(SidebarSettingsState)
-  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
-  const updateAppSettings = useSetRecoilState(AppSettingsState)
+  const { createConversation, cleanConversation } = useClientConversation()
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
-  const { currentAIProviderModelDetail } = useAIProviderModels()
-  const { cleanChatGPT } = useCleanChatGPT()
   const resetConversation = async () => {
     // 清空输入框
     updateChatInputValue('')
-    await cleanChatGPT()
-  }
-  const createConversation = async () => {
-    if (sidebarConversationId) {
-      return sidebarConversationId
-    }
-    let conversationId = ''
-    if (sidebarChat.type === 'Chat') {
-      const result = await port.postMessage({
-        event: 'Client_createChatGPTConversation',
-        data: {
-          initConversationData: {
-            type: 'Chat',
-            meta: {
-              maxTokens: currentAIProviderModelDetail?.maxTokens || 4096,
-            },
-          } as Partial<IChatConversation>,
-        },
-      })
-      if (result.success && result.data.conversationId) {
-        conversationId = result.data.conversationId
-        updateAppSettings((prev) => {
-          return {
-            ...prev,
-            conversationId: result.data.conversationId,
-          }
-        })
-      }
-    } else if (sidebarChat.type === 'Summary') {
-      const initPageSummaryData = await generateInitPageSummaryData()
-      const result = await port.postMessage({
-        event: 'Client_createChatGPTConversation',
-        data: {
-          initConversationData: {
-            type: 'Summary',
-            meta: {
-              AIProvider: 'USE_CHAT_GPT_PLUS',
-              AIModel: 'gpt-3.5-turbo-16k',
-              systemPrompt:
-                'The following text delimited by triple backticks is the context:\n' +
-                '```\n' +
-                `${initPageSummaryData.pageContent}\n` +
-                '```',
-              maxTokens: 16384, // gpt-3.5-16k
-            },
-          } as Partial<IChatConversation>,
-        },
-      })
-      conversationId = result.data.conversationId
-      if (result.success && result.data.conversationId) {
-        await setPageSummaryConversationId(result.data.conversationId)
-      }
-      setSidebarChat((prev) => {
-        return {
-          ...prev,
-          summaryConversationId: result.data.conversationId,
-        }
-      })
-    }
-    return conversationId
+    await cleanConversation()
   }
   const sendQuestion = async (
     questionInfo: {
@@ -351,9 +276,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             const is403Error =
               typeof error === 'string' && error?.trim() === '403'
             if (error === 'Conversation not found' || is403Error) {
-              await setChromeExtensionSettings({
-                conversationId: '',
-              })
+              await cleanConversation()
+              return
             }
             errorMessage =
               error?.message || error || 'Error detected. Please try again.'

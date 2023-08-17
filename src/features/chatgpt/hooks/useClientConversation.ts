@@ -17,6 +17,7 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IAIProviderType } from '@/background/provider/chat'
 import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/types/getAIProviderConversationMetaConfig'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -30,7 +31,10 @@ const useClientConversation = () => {
   const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const createConversation = async () => {
     if (sidebarConversationId) {
-      return sidebarConversationId
+      // 确保conversation存在
+      if (await clientGetConversation(sidebarConversationId)) {
+        return sidebarConversationId
+      }
     }
     let conversationId = ''
     if (sidebarSettings.type === 'Chat') {
@@ -106,6 +110,7 @@ const useClientConversation = () => {
   }
 
   const cleanConversation = async () => {
+    console.log('新版Conversation 清除conversation', sidebarSettings.type)
     const cache = await clientGetLiteChromeExtensionSettings()
     port
       .postMessage({

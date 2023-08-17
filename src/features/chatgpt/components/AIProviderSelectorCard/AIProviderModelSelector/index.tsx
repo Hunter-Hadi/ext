@@ -9,6 +9,7 @@ import { IAIProviderModel } from '@/features/chatgpt/types'
 import Chip from '@mui/material/Chip'
 import { useTranslation } from 'react-i18next'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 const AIProviderModelSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
@@ -19,6 +20,7 @@ const AIProviderModelSelector: FC = () => {
     updateAIProviderModel,
     aiProvider,
   } = useAIProviderModels()
+  const { cleanConversation } = useClientConversation()
   const aiProviderModelsOptions = useMemo(
     () =>
       list2Options(aiProviderModels, {
@@ -39,7 +41,12 @@ const AIProviderModelSelector: FC = () => {
       if (modelIsNotFind || modelIsDisabled) {
         for (let i = aiProviderModels.length - 1; i >= 0; i--) {
           if (!aiProviderModels[i].disabled) {
-            updateAIProviderModel(aiProviderModels[i].value).then().catch()
+            cleanConversation()
+              .then()
+              .catch()
+              .finally(() => {
+                updateAIProviderModel(aiProviderModels[i].value).then().catch()
+              })
             break
           }
         }
@@ -68,6 +75,7 @@ const AIProviderModelSelector: FC = () => {
       onPermission={async () => {
         if (aiProvider === 'USE_CHAT_GPT_PLUS') {
           // 恢复为gpt3.5 turbo, 这里不用ai provider models是因为已经倒序了
+          await cleanConversation()
           await updateAIProviderModel(USE_CHAT_GPT_PLUS_MODELS[0].value)
         }
         return {
@@ -84,6 +92,7 @@ const AIProviderModelSelector: FC = () => {
       options={aiProviderModelsOptions}
       value={aiProviderModel}
       onChange={async (value) => {
+        await cleanConversation()
         await updateAIProviderModel(value as string)
       }}
       labelProp={{

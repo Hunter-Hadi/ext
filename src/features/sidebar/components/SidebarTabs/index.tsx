@@ -97,12 +97,25 @@ const SidebarTabs: FC = () => {
           ))}
         </Tabs>
       </Stack>
-      <Stack>{JSON.stringify(sidebarSettings, null, 2)}</Stack>
-      <Stack>
+      <Stack
+        sx={{
+          position: 'sticky',
+          top: '36px',
+          bgcolor: 'background.paper',
+          zIndex: 1,
+          color: 'text.primary',
+          '& > pre, & > p': {
+            p: 0,
+            m: 0,
+            fontSize: '12px',
+          },
+        }}
+      >
+        <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
+        <p>ChatTabId: {appSettings.conversationId}</p>
+        <p>currentTabUsingID: {sidebarConversationID}</p>
         <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
       </Stack>
-      <p>appSettings: {appSettings.conversationId}</p>
-      <p>sidebarConversationID: {sidebarConversationID}</p>
     </>
   )
 }

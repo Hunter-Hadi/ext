@@ -7,6 +7,8 @@ import { IChatConversation } from '@/background/src/chatConversations'
 import { useEffect } from 'react'
 import { useFocus } from '@/hooks/useFocus'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import { SidebarConversationIdSelector } from '@/features/sidebar'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export const clientGetConversation = async (conversationId: string) => {
   try {
@@ -27,6 +29,9 @@ const useInitClientConversationMap = () => {
   const appSettings = useRecoilValue(AppSettingsState)
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
+  )
+  const currentSidebarConversationId = useRecoilValue(
+    SidebarConversationIdSelector,
   )
   useCreateClientMessageListener(async (event, data, sender) => {
     switch (event) {
@@ -50,26 +55,31 @@ const useInitClientConversationMap = () => {
     return undefined
   })
   useEffect(() => {
-    if (appSettings.conversationId) {
-      clientGetConversation(appSettings.conversationId).then((conversation) => {
-        if (conversation) {
-          console.log('新版Conversation effect更新', conversation.messages)
-          setClientConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [conversation.id]: conversation,
-            }
-          })
-        }
-      })
+    if (currentSidebarConversationId) {
+      clientGetConversation(currentSidebarConversationId).then(
+        (conversation) => {
+          if (conversation) {
+            console.log('新版Conversation effect更新', conversation.messages)
+            setClientConversationMap((prevState) => {
+              return {
+                ...prevState,
+                [conversation.id]: conversation,
+              }
+            })
+          }
+        },
+      )
     }
-  }, [appSettings.conversationId])
+  }, [currentSidebarConversationId])
   useFocus(() => {
     clientGetLiteChromeExtensionSettings().then((cache) => {
       if (cache.conversationId) {
         clientGetConversation(cache.conversationId).then((conversation) => {
           if (conversation) {
-            console.log('新版Conversation refocus更新', conversation.messages)
+            console.log(
+              '新版Conversation refocus更新chat',
+              conversation.messages,
+            )
             setClientConversationMap((prevState) => {
               return {
                 ...prevState,
@@ -80,6 +90,24 @@ const useInitClientConversationMap = () => {
         })
       }
     })
+    if (getPageSummaryConversationId()) {
+      clientGetConversation(getPageSummaryConversationId()).then(
+        (conversation) => {
+          if (conversation) {
+            console.log(
+              '新版Conversation refocus更新summaryId',
+              conversation.messages,
+            )
+            setClientConversationMap((prevState) => {
+              return {
+                ...prevState,
+                [conversation.id]: conversation,
+              }
+            })
+          }
+        },
+      )
+    }
   })
 }
 export default useInitClientConversationMap

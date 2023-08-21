@@ -101,7 +101,7 @@ const ContextMenuEditCard: FC<{
   const { buttonKey, iconSetting = false, onUpdated } = props
   const { t } = useTranslation(['settings', 'prompt'])
   const tRef = useRef(t)
-  const once = useRef(true)
+  const loadedRef = useRef(false)
   const [loading, setLoading] = useState(false)
   const originalTreeMapRef = useRef<{ [key: string]: IContextMenuItem }>({})
   const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
@@ -267,13 +267,19 @@ const ContextMenuEditCard: FC<{
 
   useEffect(() => {
     let isDestroy = false
-    const getList = async () => {
-      const contextMenu = await getChromeExtensionButtonContextMenu(buttonKey)
-      if (isDestroy) return
-      setOriginalTreeData(contextMenu)
-      defaultTreeDataRef.current = contextMenu
+    if (buttonKey) {
+      const getList = async () => {
+        const contextMenu = await getChromeExtensionButtonContextMenu(buttonKey)
+        if (isDestroy) return
+        setOriginalTreeData(contextMenu)
+        setTimeout(() => {
+          // 防止直接触发保存
+          loadedRef.current = true
+        }, 0)
+        defaultTreeDataRef.current = contextMenu
+      }
+      getList()
     }
-    getList()
     return () => {
       isDestroy = true
     }
@@ -283,7 +289,6 @@ const ContextMenuEditCard: FC<{
     const searchTextMap: {
       [key: string]: string
     } = {}
-    originalTreeMapRef.current = {}
     const findSearchText = (parent: string) => {
       const children = originalTreeData.filter((item) => item.parent === parent)
       if (children.length === 0) {
@@ -301,13 +306,9 @@ const ContextMenuEditCard: FC<{
       })
     }
     findSearchText(rootId)
-    if (originalTreeData.length > 0) {
+    if (loadedRef.current) {
       saveTreeData(buttonKey, originalTreeData).then(() => {
         console.log('saveTreeData success')
-        if (once.current) {
-          once.current = false
-          return
-        }
         onUpdated && onUpdated()
       })
     }

@@ -279,7 +279,6 @@ export const processAskAIParameters = async (
   question: IAskChatGPTQuestionType,
   options: IUserChatMessageExtraType,
 ) => {
-  debugger
   const { regenerate, retry } = options as IUserChatMessageExtraType
   // 如果是重试或者重新生成，需要从原始会话中获取问题
   const conversationId = question.conversationId

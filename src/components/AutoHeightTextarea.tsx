@@ -17,7 +17,7 @@ import {
 } from '@/utils'
 import { AppState } from '@/store'
 import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
-import { getMediator } from '@/store/InputMediator'
+import { getInputMediator } from '@/store/InputMediator'
 import Stack from '@mui/material/Stack'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
@@ -205,9 +205,9 @@ const AutoHeightTextarea: FC<{
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       const value = e.target.value
       if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
-        getMediator('chatBoxInputMediator').updateInputValue(value)
+        getInputMediator('chatBoxInputMediator').updateInputValue(value)
       } else if (InputId === ROOT_FLOATING_INPUT_ID) {
-        getMediator('floatingMenuInputMediator').updateInputValue(value)
+        getInputMediator('floatingMenuInputMediator').updateInputValue(value)
       } else {
         setInputValue(value)
       }
@@ -233,9 +233,9 @@ const AutoHeightTextarea: FC<{
         }
         setInputValue(newInputValue)
       }
-      getMediator('chatBoxInputMediator').subscribe(handleInputUpdate)
+      getInputMediator('chatBoxInputMediator').subscribe(handleInputUpdate)
       return () => {
-        getMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
+        getInputMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
       }
     }
     if (InputId === ROOT_FLOATING_INPUT_ID) {
@@ -246,9 +246,11 @@ const AutoHeightTextarea: FC<{
         }
         setInputValue(newInputValue)
       }
-      getMediator('floatingMenuInputMediator').subscribe(handleInputUpdate)
+      getInputMediator('floatingMenuInputMediator').subscribe(handleInputUpdate)
       return () => {
-        getMediator('floatingMenuInputMediator').unsubscribe(handleInputUpdate)
+        getInputMediator('floatingMenuInputMediator').unsubscribe(
+          handleInputUpdate,
+        )
       }
     }
     return () => {

@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState, useRef } from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import { getMediator } from '@/store/InputMediator'
+import { getInputMediator } from '@/store/InputMediator'
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { getAppRootElement, numberWithCommas } from '@/utils'
@@ -40,9 +40,9 @@ const SidebarChatBoxInputActions: FC<{
       }
       setInputValue(newInputValue)
     }
-    getMediator('chatBoxInputMediator').subscribe(handleInputUpdate)
+    getInputMediator('chatBoxInputMediator').subscribe(handleInputUpdate)
     return () => {
-      getMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
+      getInputMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
     }
   }, [])
   useEffect(() => {

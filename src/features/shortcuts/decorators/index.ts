@@ -1,7 +1,8 @@
 // import { compileTemplate } from '../utils'
 import Action from '@/features/shortcuts/core/Action'
-import { getMediator } from '@/store/InputMediator'
+import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
 import { v4 as uuidV4 } from 'uuid'
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 
 function render(
   template: string,
@@ -131,13 +132,18 @@ export function clearUserInput(beforeExecute = true) {
   ) {
     const oldFunc = descriptor.value
     descriptor.value = async function (...args: any[]) {
+      const isInsertToFloatingMenuInput = isFloatingContextMenuVisible()
+      let chatBoxInputMediator: InputMediatorName = 'chatBoxInputMediator'
+      if (isInsertToFloatingMenuInput) {
+        chatBoxInputMediator = 'floatingMenuInputMediator'
+      }
       if (beforeExecute) {
-        getMediator('chatBoxInputMediator').updateInputValue('')
+        getInputMediator(chatBoxInputMediator).updateInputValue('')
         const value = await oldFunc.apply(this, args)
         return value
       } else {
         const value = await oldFunc.apply(this, args)
-        getMediator('chatBoxInputMediator').updateInputValue('')
+        getInputMediator(chatBoxInputMediator).updateInputValue('')
         return value
       }
     }

@@ -67,20 +67,22 @@ class FloatingMenuInputMediator implements InputMediator {
   }
 }
 
-export type MediatorName = 'chatBoxInputMediator' | 'floatingMenuInputMediator'
+export type InputMediatorName =
+  | 'chatBoxInputMediator'
+  | 'floatingMenuInputMediator'
 
-class MediatorFactory {
-  private static mediators: Record<MediatorName, InputMediator> = {
+class InputMediatorFactory {
+  private static mediators: Record<InputMediatorName, InputMediator> = {
     chatBoxInputMediator: new ChatBoxInputMediator(),
     floatingMenuInputMediator: new FloatingMenuInputMediator(),
   }
   public static getMediator(
     mediatorName: 'chatBoxInputMediator',
   ): InputMediator {
-    return MediatorFactory.mediators[mediatorName]
+    return InputMediatorFactory.mediators[mediatorName]
   }
 }
 
-export const getMediator = (mediatorName: MediatorName) => {
-  return MediatorFactory.getMediator(mediatorName as any)
+export const getInputMediator = (mediatorName: InputMediatorName) => {
+  return InputMediatorFactory.getMediator(mediatorName as any)
 }

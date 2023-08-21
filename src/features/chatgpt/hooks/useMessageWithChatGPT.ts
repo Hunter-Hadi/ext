@@ -23,7 +23,7 @@ import {
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
-import { getMediator } from '@/store/InputMediator'
+import { getInputMediator } from '@/store/InputMediator'
 import { getCurrentDomainHost, showChatBox } from '@/utils'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -469,7 +469,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     }
   }
   const updateChatInputValue = (value: string) => {
-    getMediator('chatBoxInputMediator').updateInputValue(value)
+    getInputMediator('chatBoxInputMediator').updateInputValue(value)
   }
   useEffect(() => {
     if (defaultInputValue) {

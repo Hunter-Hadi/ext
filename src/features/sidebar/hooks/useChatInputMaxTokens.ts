@@ -1,8 +1,8 @@
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useEffect, useMemo, useState } from 'react'
-import { getMediator, MediatorName } from '@/store/InputMediator'
+import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
 
-const useChatInputMaxTokens = (inputName: MediatorName) => {
+const useChatInputMaxTokens = (inputName: InputMediatorName) => {
   const [inputValue, setInputValue] = useState('')
   const { currentAIProviderModelDetail } = useAIProviderModels()
   const currentMaxInputLength = useMemo(() => {
@@ -24,9 +24,9 @@ const useChatInputMaxTokens = (inputName: MediatorName) => {
       }
       setInputValue(newInputValue)
     }
-    getMediator(inputName).subscribe(handleInputUpdate)
+    getInputMediator(inputName).subscribe(handleInputUpdate)
     return () => {
-      getMediator(inputName).unsubscribe(handleInputUpdate)
+      getInputMediator(inputName).unsubscribe(handleInputUpdate)
     }
   }, [])
   return {

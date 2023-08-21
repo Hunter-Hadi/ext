@@ -17,7 +17,7 @@ import {
   CONTEXT_MENU_DRAFT_TYPES,
 } from '@/features/contextMenu/constants'
 import { getAppContextMenuRootElement, getAppRootElement } from '@/utils'
-import { getMediator } from '@/store/InputMediator'
+import { getInputMediator } from '@/store/InputMediator'
 import { ContextMenuSearchTextStoreI18nStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 
 export const groupByContextMenuItem = (
@@ -489,7 +489,7 @@ export const getDraftContextMenuTypeById = (
 }
 
 export const floatingContextMenuSaveDraftToChatBox = () => {
-  const floatingContextMenuDraft = getMediator(
+  const floatingContextMenuDraft = getInputMediator(
     'floatingMenuInputMediator',
   ).getInputValue()
   if (!floatingContextMenuDraft) {
@@ -503,7 +503,7 @@ export const floatingContextMenuSaveDraftToChatBox = () => {
     ) as HTMLInputElement
     if (chatBoxInput) {
       clearInterval(timer)
-      getMediator('chatBoxInputMediator').updateInputValue(
+      getInputMediator('chatBoxInputMediator').updateInputValue(
         floatingContextMenuDraft,
       )
       setTimeout(() => {

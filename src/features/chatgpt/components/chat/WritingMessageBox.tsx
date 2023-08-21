@@ -44,7 +44,7 @@ const WritingMessageBox: FC<{
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       console.log(
-        'AIInput writingMessage remove: ',
+        'AIInput update lastAIMessageIdRef: ',
         floatingDropdownMenu.open,
         lastAIMessageIdRef.current,
       )
@@ -54,7 +54,10 @@ const WritingMessageBox: FC<{
     }
   }, [floatingDropdownMenu.open])
   useEffect(() => {
-    console.log('AIInput update: ', floatingContextMenuDraftText)
+    console.log(
+      'AIInput floatingContextMenuDraftText: ',
+      floatingContextMenuDraftText,
+    )
     setFloatingDropdownMenuSystemItems((prev) => {
       return {
         ...prev,

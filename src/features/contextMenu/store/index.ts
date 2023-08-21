@@ -142,7 +142,7 @@ export const FloatingContextMenuDraftSelector = selector<string>({
         aiMessages.push(aiWritingMessage.writingMessage)
       }
     }
-    console.log('AiInput aiMessages', aiMessages, messages)
+    console.log('AiInput aiMessages', lastAIMessageId, aiMessages, messages)
     const draft = aiMessages
       .map((message) => message.text)
       .join('\n\n')

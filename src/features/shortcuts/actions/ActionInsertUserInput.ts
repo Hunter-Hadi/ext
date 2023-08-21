@@ -3,7 +3,7 @@ import {
   clearUserInput,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
-import { getMediator } from '@/store/InputMediator'
+import { getInputMediator } from '@/store/InputMediator'
 import {
   getAppContextMenuRootElement,
   getAppRootElement,
@@ -57,14 +57,14 @@ export class ActionInsertUserInput extends Action {
         // HACK: 为了标记是shortcut运行的，而不是用户输入的，会加上一个前缀"``NO_HISTORY_&#``\n"
         // 让input监测到这个特殊的前缀，替换成系统常量的CHAT_GPT_PROMPT_PREFIX
         if (isInsertToFloatingMenuInput) {
-          getMediator('floatingMenuInputMediator').updateInputValue(
+          getInputMediator('floatingMenuInputMediator').updateInputValue(
             '``NO_HISTORY_&#``\n' + inputValue,
             AskChatGPTMetaData,
           )
           // focus on input
           autoFocusWithAllWebsite(chatBoxInput, 0)
         } else {
-          getMediator('chatBoxInputMediator').updateInputValue(
+          getInputMediator('chatBoxInputMediator').updateInputValue(
             '``NO_HISTORY_&#``\n' + inputValue,
             AskChatGPTMetaData,
           )

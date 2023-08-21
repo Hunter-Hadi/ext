@@ -1,7 +1,6 @@
 import { atom, selector } from 'recoil'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { AppSettingsState } from '@/store'
 
 export const ChatGPTConversationState = atom<{
   writingMessage: IChatMessage | null
@@ -62,10 +61,14 @@ export const SidebarChatConversationMessagesSelector = selector<IChatMessage[]>(
   {
     key: 'SidebarChatConversationMessagesSelector',
     get: ({ get }) => {
-      const sidebarConversationId = get(AppSettingsState).conversationId
+      const sidebarChatConversationId =
+        get(SidebarSettingsState).chatConversationId
       const conversationMap = get(ClientConversationMapState)
-      if (sidebarConversationId && conversationMap[sidebarConversationId]) {
-        return conversationMap[sidebarConversationId]?.messages || []
+      if (
+        sidebarChatConversationId &&
+        conversationMap[sidebarChatConversationId]
+      ) {
+        return conversationMap[sidebarChatConversationId]?.messages || []
       }
       return []
     },

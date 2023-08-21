@@ -42,7 +42,7 @@ import {
   FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
-import { getMediator } from '@/store/InputMediator'
+import { getInputMediator } from '@/store/InputMediator'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import {
   IContextMenuItem,
@@ -302,7 +302,7 @@ const FloatingContextMenu: FC<{
    */
   useEffect(() => {
     if (floatingDropdownMenu.open) {
-      getMediator('floatingMenuInputMediator').updateInputValue('')
+      getInputMediator('floatingMenuInputMediator').updateInputValue('')
       const textareaEl = getAppContextMenuRootElement()?.querySelector(
         `#${ROOT_FLOATING_INPUT_ID}`,
       ) as HTMLTextAreaElement
@@ -321,7 +321,9 @@ const FloatingContextMenu: FC<{
       ) as HTMLTextAreaElement
       const userInputDraft = textareaEl?.value
       if (userInputDraft) {
-        getMediator('chatBoxInputMediator').updateInputValue(userInputDraft)
+        getInputMediator('chatBoxInputMediator').updateInputValue(
+          userInputDraft,
+        )
       }
     }
     console.log('AIInput remove', floatingDropdownMenu.open)
@@ -512,7 +514,7 @@ const FloatingContextMenu: FC<{
       setActions([])
       if (!lastRecordContextMenuRef.current) {
         // 如果没有lastRecordContextMenuRef， 说明本次运行了ask chatgpt，清空input
-        getMediator('floatingMenuInputMediator').updateInputValue('')
+        getInputMediator('floatingMenuInputMediator').updateInputValue('')
       }
       // 是否为可编辑的元素
       const isEditableElement =
@@ -554,9 +556,11 @@ const FloatingContextMenu: FC<{
       }
       setInputValue(value)
     }
-    getMediator('floatingMenuInputMediator').subscribe(updateInputValue)
+    getInputMediator('floatingMenuInputMediator').subscribe(updateInputValue)
     return () => {
-      getMediator('floatingMenuInputMediator').unsubscribe(updateInputValue)
+      getInputMediator('floatingMenuInputMediator').unsubscribe(
+        updateInputValue,
+      )
     }
   }, [setInputValue])
 

@@ -546,19 +546,19 @@ const useInitRangy = () => {
             inputEl.focus()
             inputEl.setSelectionRange(startIndex, endIndex)
           }
-          setTimeout(() => {
-            // mock space keyup
-            const keyupEvent = new KeyboardEvent('keyup', {
-              key: ' ',
-              code: 'Space',
-              location: 0,
-              bubbles: true,
-              cancelable: true,
-              shiftKey: false,
-            })
-            ;(el || document.body).focus()
-            ;(el || document.body).dispatchEvent(keyupEvent)
-          }, 0)
+          // setTimeout(() => {
+          //   // mock space keyup
+          //   const keyupEvent = new KeyboardEvent('keyup', {
+          //     key: ' ',
+          //     code: 'Space',
+          //     location: 0,
+          //     bubbles: true,
+          //     cancelable: true,
+          //     shiftKey: false,
+          //   })
+          //   ;(el || document.body).focus()
+          //   ;(el || document.body).dispatchEvent(keyupEvent)
+          // }, 0)
         }
         return {
           ...prevState,

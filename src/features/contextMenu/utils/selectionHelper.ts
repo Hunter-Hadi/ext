@@ -714,7 +714,7 @@ export const replaceMarkerContent = async (
         cloneRange.setStart(cacheRange.startContainer, cacheRange.startOffset)
         cloneRange.setEnd(cacheRange.startContainer, cacheRange.startOffset)
       }
-      await replaceWithClipboard(cloneRange, value)
+      await replaceWithClipboard(cloneRange.cloneRange(), value)
       console.log('paste editableElementSelectionText', value)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
@@ -1271,14 +1271,15 @@ export const isElementCanEditable = (element: HTMLElement) => {
  * @param value
  */
 export const replaceWithClipboard = async (range: Range, value: string) => {
-  let originalRange: Range | null = range.cloneRange()
+  const originalRange: Range | null = range.cloneRange()
   const doc =
     (range.startContainer || range.endContainer)?.ownerDocument || document
-  if (!doc) {
+  if (!doc || doc.getElementById(ROOT_CLIPBOARD_ID)) {
     return
   }
   try {
     const selection = doc.getSelection()
+    let pastedText = value
     // save rich text from clipboard
     const div = doc.createElement('div')
     div.id = ROOT_CLIPBOARD_ID
@@ -1298,59 +1299,36 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       'copy',
       (event) => {
         event.stopPropagation()
+        pastedText = doc?.getSelection()?.toString() || pastedText
         console.log('replaceWithClipboard addEventListener copy div')
       },
       true,
     )
-    div.focus() // 将光标定位到div中
-    const divRange = doc.createRange()
-    divRange.selectNodeContents(div)
-    selection?.removeAllRanges()
-    selection?.addRange(divRange)
-    div.focus()
-    if (!['evernote.com'].includes(getCurrentDomainHost())) {
-      doc.execCommand('paste', false, '')
-    }
-    const { editableElement } = getEditableElement(
-      (originalRange.startContainer ||
-        originalRange.endContainer) as HTMLElement,
-    )
-    // 利用setTimeout来等待粘贴完成, 否则会在whatsapp中粘贴失败
-    const delay = (t: number) =>
-      new Promise((resolve) => setTimeout(resolve, t))
     if (await getClipboardPermission()) {
       await navigator.clipboard.writeText(value)
-      editableElement && editableElement.focus()
-      // restore rich text to clipboard
+      div.focus() // 将光标定位到div中
+      const divRange = doc.createRange()
+      divRange.selectNodeContents(div)
       selection?.removeAllRanges()
-      selection?.addRange(originalRange)
-      await delay(0)
+      selection?.addRange(divRange)
+      console.log('replaceWithClipboard paste', doc.activeElement)
       doc.execCommand('paste', false, '')
     } else {
-      editableElement && editableElement.focus()
-      // restore rich text to clipboard
+      div.focus() // 将光标定位到div中
+      const divRange = doc.createRange()
+      divRange.selectNodeContents(div)
       selection?.removeAllRanges()
-      selection?.addRange(originalRange)
+      selection?.addRange(divRange)
+      console.log('replaceWithClipboard paste', doc.activeElement)
       doc.execCommand('insertText', false, value)
-    }
-    await delay(0)
-    // 保存粘贴或者插入后的选区位置
-    // 1. 如果是粘贴, 选区会变成粘贴的内容
-    // 2. 如果是插入, 选区会变成插入的内容
-    const currentSelection = doc.getSelection()
-    if (currentSelection && currentSelection?.rangeCount > 0) {
-      originalRange =
-        currentSelection?.getRangeAt(0).cloneRange() || originalRange
-    } else {
-      originalRange = null
     }
     try {
       // select all from div
+      div.focus()
       const divRange2 = doc.createRange()
       divRange2.selectNodeContents(div)
       selection?.removeAllRanges()
       selection?.addRange(divRange2)
-      div.focus()
       doc.execCommand('copy', false, '')
       console.log('replaceWithClipboard copy success')
     } catch (e) {
@@ -1375,16 +1353,46 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
     } finally {
       div.remove()
     }
+    const finallySelection = doc.getSelection()
+    const { editableElement } = getEditableElement(
+      (originalRange.startContainer ||
+        originalRange.endContainer) as HTMLElement,
+    )
+    if (finallySelection && originalRange) {
+      if (['discord.com'].includes(getCurrentDomainHost())) {
+        await navigator.clipboard.writeText(pastedText)
+      }
+      editableElement?.focus()
+      finallySelection.removeAllRanges()
+      finallySelection.addRange(originalRange)
+      if (
+        ['evernote.com', 'web.whatsapp.com'].includes(getCurrentDomainHost())
+      ) {
+        doc.execCommand('Delete', false, '')
+        doc.execCommand('insertText', false, pastedText)
+        console.log(
+          'replaceWithClipboard insertText',
+          pastedText,
+          value,
+          editableElement,
+          doc.activeElement,
+          doc.hasFocus(),
+        )
+      } else {
+        doc.execCommand('paste', false, '')
+        console.log(
+          'replaceWithClipboard paste',
+          pastedText,
+          value,
+          doc.activeElement,
+          doc.hasFocus(),
+        )
+      }
+      originalRange.collapse(false)
+      finallySelection.collapseToEnd()
+    }
   } catch (e) {
     console.log('replaceWithClipboard error: \t', e)
-  } finally {
-    const selection = doc.getSelection()
-    if (selection && originalRange) {
-      selection.removeAllRanges()
-      selection.addRange(originalRange)
-      originalRange.collapse(false)
-      selection.collapseToEnd()
-    }
   }
 }
 

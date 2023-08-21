@@ -197,6 +197,18 @@ const createButton = (buttonText, top, listener, handleClick) => {
     await navigator.clipboard.writeText('Hi!\n\nJerry!\nThanks.')
     doc.execCommand('paste', false, '')
   })
+  createButton('hover replace insert Text', 320, 'mouseenter', async () => {
+    let originalRange = tempRnage.cloneRange()
+    console.log('TESTCRX hover replace', originalRange)
+    const doc =
+      (tempRnage.startContainer || tempRnage.endContainer).ownerDocument || document
+    if (!doc) {
+      return
+    }
+    doc.execCommand('Delete', false, '')
+    await navigator.clipboard.writeText('Hi!\n\nJerry!\nThanks.')
+    doc.execCommand('insertText', false, 'Hi!\n\nJerry!\nThanks.')
+  })
   const input = document.createElement('input')
   input.type = 'file'
   input.style.cssText = 'position: fixed;top: 0px;left:0px;overflow: hidden; z-index: -1;'

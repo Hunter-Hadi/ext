@@ -123,6 +123,9 @@ export const FloatingContextMenuDraftSelector = selector<string>({
     const aiWritingMessage = get(ChatGPTConversationState)
     const aiMessages: IChatMessage[] = []
     const lastAIMessageId = get(FloatingContextMenuDraftState).lastAIMessageId
+    if (!lastAIMessageId) {
+      return ''
+    }
     // 从后往前找，直到找到最近的AI message
     for (let i = messages.length - 1; i >= 0; i--) {
       const message = messages[i]

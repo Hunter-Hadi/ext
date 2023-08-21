@@ -62,11 +62,6 @@ export const sliceTextByTokens = async (
     partOfTextLength?: number
   },
 ) => {
-  const totalTokens = (await getTextTokens(text)).length
-  if (totalTokens <= tokenLimit) {
-    console.log('新版Conversation 切割文本片段太小', totalTokens)
-    return text
-  }
   const {
     bufferTokens = 0,
     startSliceRate = 1,

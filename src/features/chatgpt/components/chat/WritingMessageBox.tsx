@@ -42,14 +42,16 @@ const WritingMessageBox: FC<{
         ?.messageId || ''
   }, [sidebarChatMessages])
   useEffect(() => {
-    console.log(
-      'AIInput writingMessage remove: ',
-      floatingDropdownMenu.open,
-      lastAIMessageIdRef.current,
-    )
-    setFloatingContextMenuDraft({
-      lastAIMessageId: lastAIMessageIdRef.current,
-    })
+    if (floatingDropdownMenu.open) {
+      console.log(
+        'AIInput writingMessage remove: ',
+        floatingDropdownMenu.open,
+        lastAIMessageIdRef.current,
+      )
+      setFloatingContextMenuDraft({
+        lastAIMessageId: lastAIMessageIdRef.current,
+      })
+    }
   }, [floatingDropdownMenu.open])
   useEffect(() => {
     console.log('AIInput update: ', floatingContextMenuDraftText)
@@ -60,7 +62,7 @@ const WritingMessageBox: FC<{
       }
     })
     onChange?.(floatingContextMenuDraftText)
-  }, [floatingContextMenuDraftText])
+  }, [floatingContextMenuDraftText, floatingDropdownMenu.open])
   const boxRef = React.useRef<HTMLDivElement>(null)
   useEffect(() => {
     // scroll to bottom

@@ -243,12 +243,11 @@ export const generatePageSummaryData = async (): Promise<{
   const pageSummaryType = getPageSummaryType()
   let pageContent = ''
   if (pageSummaryType === 'DEFAULT_EMAIL_SUMMARY') {
-    pageContent = getEmailWebsitePageContent()
+    pageContent = await getEmailWebsitePageContent()
   } else {
     // 提取网页内容
     pageContent = await getPageContentWithPostlightParser(window.location.href)
   }
-  debugger
   const md5 = md5TextEncrypt(pageContent)
   return {
     pageSummaryId: md5,

@@ -581,6 +581,7 @@ const FloatingContextMenu: FC<{
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
       >
         <FloatingContextMenuList
+          customOpen
           defaultPlacement={safePlacement.contextMenuPlacement}
           needAutoUpdate
           hoverOpen={false}
@@ -755,7 +756,6 @@ const FloatingContextMenu: FC<{
               </Stack>
             </div>
           }
-          customOpen
           root={root}
         />
       </div>

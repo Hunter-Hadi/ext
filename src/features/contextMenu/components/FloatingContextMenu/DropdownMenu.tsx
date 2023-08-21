@@ -402,7 +402,7 @@ export const MenuComponent = React.forwardRef<
         if (!show) {
           resetActiveIndex()
         }
-        if (customOpen && !show) {
+        if (customOpen) {
           return
         }
         setIsOpen(show)

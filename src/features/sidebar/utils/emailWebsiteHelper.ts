@@ -34,7 +34,7 @@ export const emailWebsiteTrafficRankings = [
     traffic: 0.65,
   },
   {
-    website: 'protonmail.com',
+    website: 'mail.proton.me',
     traffic: 0.54,
   },
   {
@@ -42,7 +42,7 @@ export const emailWebsiteTrafficRankings = [
     traffic: 0.51,
   },
   {
-    website: 'zoho.com',
+    website: 'mail.zoho.com',
     traffic: 0.45,
   },
   {
@@ -58,6 +58,10 @@ export const emailWebsiteTrafficRankings = [
     website: 'mail.qq.com',
     traffic: 0.37,
   },
+  {
+    website: 'wx.mail.qq.com',
+    traffic: 0.36,
+  },
 ]
 export const emailWebsites = emailWebsiteTrafficRankings.map(
   (item) => item.website,
@@ -66,8 +70,11 @@ export const isEmailWebsite = () => {
   return emailWebsites.includes(getCurrentDomainHost())
 }
 
-export const getEmailWebsitePageContent = () => {
+export const getEmailWebsitePageContent = async () => {
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms))
   const host = getCurrentDomainHost()
+  let hasMore = false
   let emailContextSelector = 'body'
   if (host === 'mail.google.com') {
     emailContextSelector = 'div[role="list"]'
@@ -77,6 +84,30 @@ export const getEmailWebsitePageContent = () => {
   }
   if (host === 'mail.yahoo.com') {
     emailContextSelector = 'div[data-test-id="message-group-view-scroller"]'
+  }
+  if (host === 'wx.mail.qq.com') {
+    emailContextSelector = 'div.container'
+  }
+  if (host === 'mail.proton.me') {
+    document
+      .querySelectorAll('div.scroll-inner .message-header')
+      .forEach((item) => {
+        hasMore = true
+        ;(item as HTMLElement).click()
+      })
+    emailContextSelector = 'div.scroll-inner'
+  }
+  if (host === 'mail.zoho.com') {
+    document
+      .querySelectorAll('div.zmPVContent .zmTMailList .zmMHdrSumContent')
+      .forEach((emailItem) => {
+        hasMore = true
+        ;(emailItem as HTMLElement).click()
+      })
+    emailContextSelector = 'div.zmPVContent'
+  }
+  if (hasMore) {
+    await delay(3000)
   }
   const pageContent = (
     (document.querySelector(emailContextSelector) ||

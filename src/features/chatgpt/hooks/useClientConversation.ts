@@ -7,7 +7,6 @@ import {
 import { setChromeExtensionSettings } from '@/background/utils'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { IChatConversation } from '@/background/src/chatConversations'
 import {
   generatePageSummaryData,
@@ -18,6 +17,7 @@ import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IAIProviderType } from '@/background/provider/chat'
 import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/types/getAIProviderConversationMetaConfig'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -30,14 +30,14 @@ const useClientConversation = () => {
     useAIProviderModels()
   const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const createConversation = async () => {
-    if (sidebarConversationId) {
-      // 确保conversation存在
-      if (await clientGetConversation(sidebarConversationId)) {
-        return sidebarConversationId
-      }
-    }
     let conversationId = ''
     if (sidebarSettings.type === 'Chat') {
+      if (sidebarConversationId) {
+        // 确保conversation存在
+        if (await clientGetConversation(sidebarConversationId)) {
+          return sidebarConversationId
+        }
+      }
       const id = md5TextEncrypt(
         (currentAIProviderDetail?.value || '') +
           (currentAIProviderModelDetail?.value || ''),
@@ -76,7 +76,13 @@ const useClientConversation = () => {
         })
       }
     } else if (sidebarSettings.type === 'Summary') {
-      const pageSummaryData = await generatePageSummaryData(12000)
+      if (getPageSummaryConversationId()) {
+        // 确保conversation存在
+        if (await clientGetConversation(getPageSummaryConversationId())) {
+          return sidebarConversationId
+        }
+      }
+      const pageSummaryData = await generatePageSummaryData()
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
         data: {
@@ -86,11 +92,10 @@ const useClientConversation = () => {
             meta: {
               AIProvider: 'USE_CHAT_GPT_PLUS',
               AIModel: 'gpt-3.5-turbo',
-              systemPrompt:
-                'The following text delimited by triple backticks is the context:\n' +
-                '```\n' +
-                `${pageSummaryData.pageSummaryContent}\n` +
-                '```',
+              systemPrompt: `The following text delimited by triple backticks is the context text:
+\`\`\`
+${pageSummaryData.pageSummaryContent}
+\`\`\``,
               maxTokens: 16384, // gpt-3.5-16k
               pageSummaryId: pageSummaryData.pageSummaryId,
               pageSummaryType: pageSummaryData.pageSummaryType,
@@ -110,13 +115,16 @@ const useClientConversation = () => {
   }
 
   const cleanConversation = async () => {
-    console.log('新版Conversation 清除conversation', sidebarSettings.type)
-    const cache = await clientGetLiteChromeExtensionSettings()
+    console.log(
+      '新版Conversation 清除conversation',
+      sidebarSettings.type,
+      sidebarConversationId,
+    )
     port
       .postMessage({
         event: 'Client_removeChatGPTConversation',
         data: {
-          conversationId: cache.conversationId,
+          conversationId: sidebarConversationId,
         },
       })
       .then()
@@ -172,10 +180,20 @@ const useClientConversation = () => {
     }
     return false
   }
+  const updateConversation = async (
+    conversation: Partial<IChatConversation>,
+    conversationId: string,
+  ) => {
+    await clientChatConversationUpdate(
+      conversationId || sidebarConversationId,
+      conversation,
+    )
+  }
   return {
     cleanConversation,
     createConversation,
     changeConversation,
+    updateConversation,
     switchBackgroundChatSystemAIProvider,
   }
 }

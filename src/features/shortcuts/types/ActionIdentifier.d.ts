@@ -14,6 +14,8 @@ type ActionIdentifier =
   | 'SUMMARIZE_OF_TEXT'
   | 'SLICE_OF_TEXT'
   | 'FETCH_ACTIONS'
+  | 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
+  | 'GET_PDF_CONTENTS_OF_CRX'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier =

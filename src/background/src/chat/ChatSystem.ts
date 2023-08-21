@@ -162,6 +162,11 @@ class ChatSystem implements ChatSystemInterface {
                     conversation.meta.AIProvider !== this.currentProvider
                   ) {
                     await this.switchAdapterWithConversation(conversation)
+                  } else if (
+                    this.currentAdapter?.conversation?.id !== conversation.id
+                  ) {
+                    // 如果会话存在，但是当前会话不一致，需要切换会话
+                    await this.currentAdapter?.createConversation(conversation)
                   }
                   // 处理AIProvider的参数
                   const processedData = await processAskAIParameters(
@@ -183,6 +188,7 @@ class ChatSystem implements ChatSystemInterface {
             const { conversationId } = data
             console.log('新版Conversation 删除会话', conversationId)
             const success = await this.removeConversation(conversationId || '')
+            await this.updateClientConversationMessages(conversationId)
             return {
               success,
               data: {},
@@ -396,8 +402,16 @@ class ChatSystem implements ChatSystemInterface {
     )
   }
   async removeConversation(conversationId: string) {
-    if (!this.currentAdapter) {
+    if (!this.currentAdapter || !conversationId) {
       return false
+    }
+    const conversation =
+      await ConversationManager.conversationDB.getConversationById(
+        conversationId,
+      )
+    // 如果conversation存在
+    if (conversation) {
+      await this.switchAdapterWithConversation(conversation)
     }
     const result = await this.currentAdapter?.removeConversation(conversationId)
     return result
@@ -458,6 +472,7 @@ class ChatSystem implements ChatSystemInterface {
     )
     backgroundSendAllClientMessage('Client_listenUpdateConversationMessages', {
       conversation,
+      conversationId,
     })
   }
   async switchAdapterWithConversation(conversation: IChatConversation) {

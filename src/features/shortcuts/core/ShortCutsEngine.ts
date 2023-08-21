@@ -21,6 +21,8 @@ import {
   ActionWebGPTAskChatGPT,
   ActionSliceOfText,
   ActionFetchActions,
+  ActionGetYoutubeTranscriptOfURL,
+  ActionGetPDFContentsOfCRX,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -42,6 +44,8 @@ const ActionClassMap = {
   [ActionGetContentsOfURL.type]: ActionGetContentsOfURL,
   [ActionGetContentsOfSearchEngine.type]: ActionGetContentsOfSearchEngine,
   [ActionFetchActions.type]: ActionFetchActions,
+  [ActionGetYoutubeTranscriptOfURL.type]: ActionGetYoutubeTranscriptOfURL,
+  [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

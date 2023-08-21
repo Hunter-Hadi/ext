@@ -94,6 +94,8 @@ export function pushOutputToChat(
       const actionInstance: Action = this as any
       const value = await oldFunc.apply(this, args)
       // NOTE: Action还没有对外暴露，所以不能显示Action的名称和类型
+      const conversationId = engine.getChartGPT()?.getSidebarRef()
+        ?.currentConversationIdRef?.current
       if (actionInstance.error && !onlySuccess) {
         engine.getChartGPT()?.pushMessage({
           type: 'system',
@@ -102,16 +104,20 @@ export function pushOutputToChat(
           extra: {
             status: 'error',
           },
+          conversationId,
         })
       } else if (actionInstance.output && !onlyError) {
-        engine.getChartGPT()?.pushMessage({
-          type: 'system',
-          text: actionInstance.output,
-          messageId: uuidV4(),
-          extra: {
-            status: 'success',
+        engine.getChartGPT()?.pushMessage(
+          {
+            type: 'system',
+            text: actionInstance.output,
+            messageId: uuidV4(),
+            extra: {
+              status: 'success',
+            },
           },
-        })
+          conversationId,
+        )
       }
       return value
     }

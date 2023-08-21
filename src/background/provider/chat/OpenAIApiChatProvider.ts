@@ -59,7 +59,9 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
     const history: IOpenAIApiChatMessage[] = [
       {
         role: 'system',
-        content: OPENAI_API_SYSTEM_MESSAGE,
+        content:
+          this.openAiApiChat.conversation?.meta.systemPrompt ||
+          OPENAI_API_SYSTEM_MESSAGE,
       },
     ]
     options.historyMessages?.forEach((message) => {

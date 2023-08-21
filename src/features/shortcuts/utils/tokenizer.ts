@@ -51,7 +51,106 @@ export const getSliceEnd = async (
 }
 
 // 根据限制的 token 数量去截取文本
-export const sliceTextByTokens = async (text: string, tokenLimit?: number) => {
-  const sliceEnd = await getSliceEnd(text, tokenLimit)
-  return text.slice(0, sliceEnd)
+export const sliceTextByTokens = async (
+  text: string,
+  tokenLimit: number,
+  options?: {
+    bufferTokens?: number
+    startSliceRate?: number
+    endSliceRate?: number
+    startSlicePosition?: 'start' | 'end'
+    partOfTextLength?: number
+  },
+) => {
+  const totalTokens = (await getTextTokens(text)).length
+  if (totalTokens <= tokenLimit) {
+    console.log('新版Conversation 切割文本片段太小', totalTokens)
+    return text
+  }
+  const {
+    bufferTokens = 0,
+    startSliceRate = 1,
+    endSliceRate = 1,
+    partOfTextLength = 1000,
+    startSlicePosition = 'end',
+  } = options || {}
+  if (
+    (await getTextTokens(text.slice(0, partOfTextLength))).length > tokenLimit
+  ) {
+    console.log('新版Conversation 切割文本片段太大')
+    // 如果片段的token数量大于限制的token数量, 则直接返回片段
+    return startSlicePosition === 'start'
+      ? text.slice(0, partOfTextLength)
+      : text.slice(-partOfTextLength)
+  }
+  let startSlicedText = ''
+  let endSlicedText = ''
+  const currentTokenLimit = tokenLimit - bufferTokens
+  // middle out原则, 每次提取(partOfTextLength * startSliceRate/endSliceRate)个字符
+  const extractAndUpdateText = (length: number, fromStart = true) => {
+    const sliceLength = fromStart
+      ? startSliceRate * length
+      : endSliceRate * length
+    if (fromStart) {
+      const subText = text.slice(0, sliceLength)
+      text = text.slice(sliceLength)
+      return subText
+    } else {
+      const subText = text.slice(-sliceLength)
+      text = text.slice(0, -sliceLength)
+      return subText
+    }
+  }
+  let useTokens = 0
+  const addEndSubText = async () => {
+    const endSubtext = extractAndUpdateText(partOfTextLength, false)
+    if (!endSubtext) {
+      return false
+    }
+    const tokens = (await getTextTokens(endSubtext)).length
+    if (useTokens + tokens > currentTokenLimit) {
+      return false
+    }
+    useTokens += tokens
+    endSlicedText = endSubtext + endSlicedText
+    return true
+  }
+  const addStartSubText = async () => {
+    const startSubtext = extractAndUpdateText(partOfTextLength, true)
+    if (!startSubtext) {
+      return false
+    }
+    const tokens = (await getTextTokens(startSubtext)).length
+    if (useTokens + tokens > currentTokenLimit) {
+      return false
+    }
+    useTokens += tokens
+    startSlicedText = startSlicedText + startSubtext
+    return true
+  }
+  while (useTokens < currentTokenLimit) {
+    // 从尾部开始
+    if (startSlicePosition === 'end') {
+      if (!(await addEndSubText())) {
+        break
+      }
+      if (!(await addStartSubText())) {
+        break
+      }
+    } else {
+      // 从头部开始
+      if (!(await addStartSubText())) {
+        break
+      }
+      if (!(await addEndSubText())) {
+        break
+      }
+    }
+  }
+  console.log(
+    '新版Conversation 切割文本',
+    useTokens,
+    '\nstart: \n' + startSlicedText + '\nend:\n' + endSlicedText,
+  )
+  return startSlicedText + endSlicedText
 }

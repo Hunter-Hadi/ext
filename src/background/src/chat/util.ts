@@ -279,6 +279,7 @@ export const processAskAIParameters = async (
   question: IAskChatGPTQuestionType,
   options: IUserChatMessageExtraType,
 ) => {
+  debugger
   const { regenerate, retry } = options as IUserChatMessageExtraType
   // 如果是重试或者重新生成，需要从原始会话中获取问题
   const conversationId = question.conversationId
@@ -307,6 +308,10 @@ export const processAskAIParameters = async (
           question.messageId = originalMessage.messageId
           question.parentMessageId = originalMessage.parentMessageId || ''
         }
+        conversation =
+          (await ConversationManager.conversationDB.getConversationById(
+            conversationId,
+          )) as IChatConversation
       } else if (retry) {
         // 重试，到这一步sidebar里面有[问题，答案，新问题]，要删到[问题]
         const originalMessageIndex = originalMessages.findIndex(
@@ -328,6 +333,10 @@ export const processAskAIParameters = async (
           question.messageId = uuidV4()
           question.parentMessageId = originalMessage.parentMessageId || ''
         }
+        conversation =
+          (await ConversationManager.conversationDB.getConversationById(
+            conversationId,
+          )) as IChatConversation
       }
     }
   }

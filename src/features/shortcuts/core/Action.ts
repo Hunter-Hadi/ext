@@ -32,7 +32,10 @@ class Action implements IAction {
   }
   pushMessageToChat(message: ISystemChatMessage, engine: any) {
     if (engine && engine.getChartGPT()?.pushMessage) {
-      engine.getChartGPT()?.pushMessage(message)
+      const conversationId =
+        engine.getChartGPT()?.getSidebarRef()?.currentConversationIdRef
+          ?.current || ''
+      engine.getChartGPT()?.pushMessage(message, conversationId)
     }
   }
   reset() {

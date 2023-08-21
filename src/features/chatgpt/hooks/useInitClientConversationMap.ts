@@ -1,7 +1,6 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useCreateClientMessageListener } from '@/background/utils'
-import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useEffect } from 'react'
@@ -9,6 +8,7 @@ import { useFocus } from '@/hooks/useFocus'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { SidebarConversationIdSelector } from '@/features/sidebar'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 export const clientGetConversation = async (conversationId: string) => {
   try {
@@ -26,7 +26,6 @@ export const clientGetConversation = async (conversationId: string) => {
 }
 
 const useInitClientConversationMap = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
   )
@@ -37,13 +36,20 @@ const useInitClientConversationMap = () => {
     switch (event) {
       case 'Client_listenUpdateConversationMessages':
         {
-          const { conversation } = data
-          if (conversation.id) {
+          const { conversation, conversationId } = data
+          if (conversation?.id) {
             setClientConversationMap((prevState) => {
               return {
                 ...prevState,
                 [conversation.id]: conversation,
               }
+            })
+          } else if (conversationId && !conversation) {
+            // 如果是删除的话，就不会有conversation
+            setClientConversationMap((prevState) => {
+              const newState = cloneDeep(prevState)
+              delete newState[conversationId]
+              return newState
             })
           }
           return {

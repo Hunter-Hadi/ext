@@ -81,6 +81,10 @@ const useShortCutsParameters = () => {
         appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
       CURRENT_WEBSITE_DOMAIN:
         typeof window !== 'undefined' ? window.location.hostname : '',
+      CURRENT_WEBPAGE_URL:
+        typeof window !== 'undefined' ? window.location.href : '',
+      CURRENT_WEBPAGE_TITLE:
+        typeof window !== 'undefined' ? document.title : '',
     }
     const parameters: Array<{
       key: string

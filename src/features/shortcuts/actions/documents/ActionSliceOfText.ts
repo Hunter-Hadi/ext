@@ -28,7 +28,7 @@ export class ActionSliceOfText extends Action {
       if (this.parameters.SliceTextActionType === 'TOKENS') {
         this.output = await sliceTextByTokens(
           needSplitText,
-          this.parameters.SliceTextActionTokens,
+          this.parameters.SliceTextActionTokens || 4096,
         )
       } else {
         const sliceLength =

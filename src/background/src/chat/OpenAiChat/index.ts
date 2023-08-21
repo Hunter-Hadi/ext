@@ -229,6 +229,7 @@ class OpenAIChat extends BaseChat {
       this.status = 'complete'
       this.listenDaemonProcessTab()
       await this.updateClientStatus()
+      this.cacheLastTimeChatGPTProxyInstance = this.chatGPTProxyInstance
       this.keepAlive()
     }
   }
@@ -269,7 +270,7 @@ class OpenAIChat extends BaseChat {
         )
     }
     if (!this.conversation?.meta.AIConversationId) {
-      this.conversation = undefined
+      await this.removeConversationWithCache()
       return true
     }
     log.info('removeConversation', conversationId)

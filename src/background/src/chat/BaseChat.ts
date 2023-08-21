@@ -5,6 +5,8 @@ import { IChatUploadFile } from '@/features/chatgpt/types'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
+import cloneDeep from 'lodash-es/cloneDeep'
+import { v4 as uuidV4 } from 'uuid'
 
 class BaseChat {
   conversation: IChatConversation | undefined
@@ -35,9 +37,32 @@ class BaseChat {
   }
   async removeConversationWithCache() {
     if (this.conversation?.id) {
-      await ConversationManager.conversationDB.deleteConversation(
-        this.conversation.id,
-      )
+      if (this.conversation.type === 'Summary') {
+        console.log(
+          '新版Conversation',
+          '移除conversation',
+          this.conversation.id,
+          '因为是Summary',
+        )
+        await ConversationManager.conversationDB.deleteConversation(
+          this.conversation.id,
+        )
+      } else if (this.conversation.type === 'Chat') {
+        console.log(
+          '新版Conversation',
+          '移除conversation',
+          this.conversation.id,
+        )
+        // 把id替换成uuidv4，把当前删除
+        const savedConversation = cloneDeep(this.conversation)
+        savedConversation.id = uuidV4()
+        await ConversationManager.conversationDB.addOrUpdateConversation(
+          savedConversation,
+        )
+        await ConversationManager.conversationDB.deleteConversation(
+          this.conversation.id,
+        )
+      }
     }
     this.conversation = undefined
   }

@@ -3,6 +3,7 @@ import { v4 } from 'uuid'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 export const compileTemplate = (template: string, variables: any) => {
   return new Promise<{
@@ -251,4 +252,28 @@ export const actionContainsAskChatGPT = (actions: ISetActionsType) => {
   return actions.some((action) => {
     return action.type === 'ASK_CHATGPT' || action.type === 'WEBGPT_ASK_CHATGPT'
   })
+}
+
+export const clientFetchAPI = async (url: string, options: any) => {
+  try {
+    const port = new ContentScriptConnectionV2()
+    const response = await port.postMessage({
+      event: 'Client_proxyFetchAPI',
+      data: {
+        url,
+        options,
+      },
+    })
+    return {
+      success: response.success,
+      data: response.data,
+      error: response.message,
+    }
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: (error as any)?.message || error,
+    }
+  }
 }

@@ -40,9 +40,9 @@ export const pdfSnifferStartListener = async () => {
         if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
           const settings = await getChromeExtensionSettings()
           if (settings.userSettings?.pdf?.enabled) {
-            const redirectUrl = `chrome-extension://${
-              Browser.runtime.id
-            }/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`
+            const redirectUrl = Browser.runtime.getURL(
+              `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,
+            )
             log.info('pdfSnifferStartListener success', url, redirectUrl)
             await Browser.tabs.update(tabId, {
               url: redirectUrl,

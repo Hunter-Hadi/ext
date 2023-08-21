@@ -45,6 +45,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIChatGPTMessageType[] = []
+    debugger
     if (this.useChatGPTPlusChat.conversation) {
       if (this.useChatGPTPlusChat.conversation.meta.systemPrompt) {
         chat_history.push({

@@ -341,6 +341,7 @@ export const ClientMessageInit = () => {
                   id: CHROME_EXTENSION_POST_MESSAGE_ID,
                   data: {
                     conversation: newConversationData,
+                    conversationId,
                   },
                 }))
               console.log(
@@ -396,6 +397,7 @@ export const ClientMessageInit = () => {
                   conversation: await ConversationManager.getClientConversation(
                     conversationId,
                   ),
+                  conversationId,
                 },
               }))
             return {
@@ -405,6 +407,25 @@ export const ClientMessageInit = () => {
             }
           }
           break
+        case 'Client_proxyFetchAPI': {
+          try {
+            const { url, options } = data
+            const { parse = 'json', ...parseOptions } = options
+            const result = await fetch(url, parseOptions)
+            return {
+              success: true,
+              data:
+                parse === 'json' ? await result.json() : await result.text(),
+              message: 'ok',
+            }
+          } catch (e) {
+            return {
+              success: false,
+              data: e,
+              message: 'ok',
+            }
+          }
+        }
         default:
           break
       }

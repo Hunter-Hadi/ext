@@ -4,20 +4,23 @@
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
 import {
+  getContextMenuActionsByPageSummaryType,
   getPageSummaryConversationId,
   getPageSummaryType,
-  PAGE_SUMMARY_CONTEXT_MENU_MAP,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import cloneDeep from 'lodash-es/cloneDeep'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { useSetRecoilState } from 'recoil'
 import { SidebarSettingsState } from '@/features/sidebar'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 const usePageSummary = () => {
   const setSidebarSettings = useSetRecoilState(SidebarSettingsState)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
+  const [runActions, setRunActions] = useState<ISetActionsType>([])
+  const { createConversation } = useClientConversation()
   const isFetchingRef = useRef(false)
   const createPageSummary = async () => {
     if (isFetchingRef.current) {
@@ -39,32 +42,33 @@ const usePageSummary = () => {
         return
       }
       try {
-        isFetchingRef.current = true
-        const contextMenu = cloneDeep(
-          PAGE_SUMMARY_CONTEXT_MENU_MAP[getPageSummaryType()],
+        await createConversation()
+        const actions = getContextMenuActionsByPageSummaryType(
+          getPageSummaryType(),
         )
-        if (
-          setShortCuts([
-            {
-              type: 'ASK_CHATGPT',
-              parameters: {
-                template: contextMenu.data.actions?.[0].parameters.template,
-                AskChatGPTActionMeta: {
-                  contextMenu: contextMenu,
-                },
-              },
-            },
-          ])
-        ) {
-          await runShortCuts()
-        }
+        setRunActions(actions)
       } catch (e) {
-        console.log('usePageSummary error', e)
-      } finally {
-        isFetchingRef.current = false
+        console.log('创建Conversation失败', e)
       }
     }
   }
+  useEffect(() => {
+    if (runActions.length > 0 && !isFetchingRef.current) {
+      isFetchingRef.current = true
+      if (setShortCuts(runActions)) {
+        runShortCuts()
+          .then()
+          .catch()
+          .finally(() => {
+            isFetchingRef.current = false
+            setRunActions([])
+          })
+      } else {
+        setRunActions([])
+        isFetchingRef.current = false
+      }
+    }
+  }, [runShortCuts, setRunActions, runActions])
   return {
     createPageSummary,
   }

@@ -1,7 +1,11 @@
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import {
+  ChatGPTConversationState,
+  SidebarConversationIdSelector,
+  SidebarSettingsState,
+} from '@/features/sidebar/store'
 import {
   ContentScriptConnectionV2,
   getAIProviderSampleFiles,
@@ -32,12 +36,9 @@ import {
 } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import {
-  clientChatConversationModifyChatMessages,
-  clientChatConversationUpdate,
-} from '@/features/chatgpt/utils/clientChatConversation'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import useClientConversationMessages from '@/features/chatgpt/hooks/useClientConversationMessages'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import cloneDeep from 'lodash-es/cloneDeep'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -47,13 +48,24 @@ const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const messages = useClientConversationMessages()
-  const { createConversation, cleanConversation } = useClientConversation()
+  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
+  const sidebarSettings = useRecoilValue(SidebarSettingsState)
+  const currentConversationIdRef = useRef(sidebarConversationId)
+  const currentSidebarSettingsRef = useRef(sidebarSettings)
+  const { createConversation, cleanConversation, updateConversation } =
+    useClientConversation()
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
+  const getSidebarRef = () => {
+    return {
+      currentConversationIdRef,
+      currentSidebarSettingsRef,
+    }
+  }
   const resetConversation = async () => {
     // 清空输入框
     updateChatInputValue('')
@@ -328,11 +340,14 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       ) {
         await increaseChatGPTRequestCount('success')
         if (AIConversationId) {
-          await clientChatConversationUpdate(postConversationId, {
-            meta: {
-              AIConversationId,
+          await updateConversation(
+            {
+              meta: {
+                AIConversationId,
+              },
             },
-          })
+            postConversationId,
+          )
           // TODO 保存chatgpt的conversationId到background
         }
         pushMessages.push(aiRespondingMessage as IAIResponseMessage)
@@ -442,12 +457,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   }
   const pushMessage = async (
     newMessage: ISystemChatMessage | IThirdChatMessage,
+    conversationId?: string,
   ) => {
-    const settings = await clientGetLiteChromeExtensionSettings()
-    if (settings.conversationId) {
+    if (conversationId || sidebarConversationId) {
       await clientChatConversationModifyChatMessages(
         'add',
-        settings.conversationId,
+        conversationId || sidebarConversationId,
         0,
         [newMessage],
       )
@@ -461,6 +476,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       defaultValueRef.current = defaultInputValue
     }
   }, [defaultInputValue])
+  useEffect(() => {
+    currentSidebarSettingsRef.current = cloneDeep(sidebarSettings)
+    currentConversationIdRef.current = sidebarConversationId
+  }, [sidebarSettings, sidebarConversationId])
   return {
     sendQuestion,
     messages,
@@ -470,6 +489,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     reGenerate,
     stopGenerateMessage,
     pushMessage,
+    updateConversation,
+    getSidebarRef,
   }
 }
 export { useMessageWithChatGPT }

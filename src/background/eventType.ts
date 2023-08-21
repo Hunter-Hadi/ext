@@ -42,6 +42,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_emitPricingHooks'
   | 'Client_getLiteChromeExtensionSettings'
   | 'Client_getContextMenuActions'
+  | 'Client_proxyFetchAPI'
   // 上传文件相关
   | 'Client_chatUploadFiles'
   | 'Client_chatUploadFilesChange'

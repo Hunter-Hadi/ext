@@ -36,6 +36,7 @@ import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClient
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import { getEnv } from '@/utils/AppEnv'
+import Browser from 'webextension-polyfill'
 
 const log = new Log('AppInit')
 
@@ -120,7 +121,7 @@ const useHandlePDFViewerError = () => {
   const [delay, setDelay] = React.useState<number | null>(null)
   const initRef = React.useRef(false)
   useEffectOnce(() => {
-    if (window.location.href.startsWith('chrome-extension://')) {
+    if (window.location.href.includes(Browser.runtime.id)) {
       if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
         setDelay(100)
       }
@@ -295,7 +296,7 @@ const useHandlePDFViewerError = () => {
 export const DisabledPDFViewer: FC = () => {
   const { t } = useTranslation(['client', 'common'])
   const RenderDom = useMemo(() => {
-    if (window.location.href.startsWith('chrome-extension://')) {
+    if (window.location.href.includes(Browser.runtime.id)) {
       if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
         if (document.body.querySelector('#usechatgpt-disabled-pdf')) {
           return null

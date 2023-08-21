@@ -137,7 +137,7 @@ class UseChatGPTPlusChat extends BaseChat {
           ? userConfig!.temperature
           : 1,
       },
-      { conversation_id: this.conversation?.id || '' },
+      // { conversation_id: this.conversation?.id || '' },
     )
     const controller = new AbortController()
     const signal = controller.signal

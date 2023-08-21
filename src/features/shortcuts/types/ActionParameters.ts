@@ -47,6 +47,8 @@ interface ActionParameters {
   SELECTED_TEXT?: string
   SELECTED_HTML?: string
   CURRENT_WEBSITE_DOMAIN?: string
+  CURRENT_WEBPAGE_URL?: string
+  CURRENT_WEBPAGE_TITLE?: string
   AI_OUTPUT_LANGUAGE?: string
   // TODO 需要实现
   Advanced?: boolean

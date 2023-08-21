@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { AppSettingsState } from '@/store'
+import Typography from '@mui/material/Typography'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -92,7 +93,11 @@ const SidebarTabs: FC = () => {
               disabled={conversation.loading}
               key={item.value}
               value={item.value}
-              label={t(item.label as any)}
+              label={
+                <Typography fontSize={'14px'} color={'text.primary'}>
+                  {t(item.label as any)}
+                </Typography>
+              }
             />
           ))}
         </Tabs>
@@ -111,6 +116,7 @@ const SidebarTabs: FC = () => {
           },
         }}
       >
+        <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
         <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
         <p>ChatTabId: {appSettings.conversationId}</p>
         <p>currentTabUsingID: {sidebarConversationID}</p>

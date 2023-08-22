@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import { AppSettingsState } from '@/store'
 import usePageUrlChange from '@/hooks/usePageUrlChange'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 const useInitSidebar = () => {
   const appSettings = useRecoilValue(AppSettingsState)
@@ -11,6 +12,7 @@ const useInitSidebar = () => {
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
   const { pageUrl, startListen } = usePageUrlChange()
+  const { changeConversation } = useClientConversation()
   const sidebarTypeRef = useRef(sidebarSettings.type)
   useEffect(() => {
     if (sidebarSettings.type === 'Summary') {
@@ -21,6 +23,11 @@ const useInitSidebar = () => {
           // 切换到summary的时候，需要开始监听url变化
           startListen()
         })
+    } else if (
+      sidebarSettings.type === 'Chat' &&
+      sidebarSettings.chatConversationId
+    ) {
+      changeConversation(sidebarSettings.chatConversationId)
     }
     sidebarTypeRef.current = sidebarSettings.type
   }, [sidebarSettings.type])

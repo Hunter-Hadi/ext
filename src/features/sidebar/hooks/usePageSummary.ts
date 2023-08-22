@@ -22,6 +22,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { setChromeExtensionOnBoardingData } from '@/background/utils'
 
 const usePageSummary = () => {
   const setSidebarSettings = useSetRecoilState(SidebarSettingsState)
@@ -36,6 +37,11 @@ const usePageSummary = () => {
     if (isFetchingRef.current) {
       return
     }
+    //切换至summary的时候把ChatGPT（MaxAI）的provider的onboarding check设置为true
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_USE_CHAT_GPT_PLUS',
+      true,
+    )
     const pageSummaryConversationId = getPageSummaryConversationId()
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation

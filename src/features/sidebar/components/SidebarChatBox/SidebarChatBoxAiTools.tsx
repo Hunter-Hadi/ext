@@ -76,6 +76,7 @@ const SidebarChatBoxAiTools: FC<{
           </Button>
         )}
       <CopyTooltipIconButton
+        className={'max-ai__actions__button--copy'}
         copyText={message.text}
         onCopy={() => {
           props.onCopy?.()
@@ -86,6 +87,7 @@ const SidebarChatBoxAiTools: FC<{
       />
       {props.useChatGPTAble && (
         <FloatingInputButton
+          className={'max-ai__actions__button--use-max-ai'}
           iconButton
           onBeforeShowContextMenu={() => {
             return {

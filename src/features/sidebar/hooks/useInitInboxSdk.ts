@@ -8,7 +8,6 @@ import {
   GmailToolBarIconBase64Data,
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
-import { hideChatBox } from '@/utils'
 import { contextMenu } from 'react-contexify'
 import {
   findFirstTierMenuHeight,
@@ -124,7 +123,6 @@ const useInitInboxSdk = () => {
             currentMessageId: undefined,
             currentDraftId: undefined,
           })
-          hideChatBox()
         })
       })
       // 注册输入框生命周期方法
@@ -151,6 +149,7 @@ const useInitInboxSdk = () => {
             const newMessageId = getComposeViewMessageId(
               composeView.getElement(),
             )
+            console.log('新版Conversation 设置gmail ', newMessageId)
             if (newMessageId) {
               setInboxEditState((prevState) => {
                 return {
@@ -226,6 +225,7 @@ const useInitInboxSdk = () => {
             const newMessageId = getComposeViewMessageId(
               composeView.getElement(),
             )
+            console.log('新版Conversation 设置gmail ', newMessageId)
             if (newMessageId) {
               setInboxEditState((prevState) => {
                 return {
@@ -367,7 +367,6 @@ const useInitInboxSdk = () => {
               const { [currentDraftId]: discard, ...rest } = prevState
               return rest
             })
-            hideChatBox()
           }, 0)
         })
         // composeView.on('destroy', () => {

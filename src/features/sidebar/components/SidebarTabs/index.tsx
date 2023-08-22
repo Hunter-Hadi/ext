@@ -126,7 +126,11 @@ const SidebarTabs: FC = () => {
         >
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
-          <p>ChatTabId: {appSettings.conversationId}</p>
+          <p>
+            appSettings: {appSettings.chatTypeConversationId}
+            {'=='}
+            {appSettings.currentAIProvider}
+          </p>
           <p>currentTabUsingID: {sidebarConversationID}</p>
           <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
         </Stack>

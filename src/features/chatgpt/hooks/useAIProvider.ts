@@ -17,6 +17,9 @@ const useAIProvider = () => {
     try {
       setLoading(true)
       const cache = await clientGetLiteChromeExtensionSettings()
+      const prevConversation = cache.chatTypeConversationId
+        ? await clientGetConversation(cache.chatTypeConversationId)
+        : undefined
       const cacheModel = cache.thirdProviderSettings?.[provider]?.model
       let conversationId = ''
       if (cacheModel) {
@@ -32,26 +35,27 @@ const useAIProvider = () => {
           provider,
           cacheModel,
         )
-        conversationId = providerConversation?.id || ''
+        conversationId = providerConversationId
       }
       // 更新本地储存的provider
       setAppSettings((prevState) => {
         return {
           ...prevState,
           currentAIProvider: provider,
-          conversationId,
+          chatTypeConversationId: conversationId,
         }
       })
       await setChromeExtensionSettings({
         currentAIProvider: provider,
-        conversationId,
+        chatTypeConversationId: conversationId,
       })
       setTimeout(async () => {
         const currentSettings = await clientGetLiteChromeExtensionSettings()
-        // 如果有conversationId，则复原conversation
+        // 如果之前的conversation存在，且AIProvider没有变化，则切换conversation
         if (
-          conversationId &&
-          conversationId === currentSettings.conversationId
+          prevConversation?.meta.AIProvider &&
+          prevConversation?.meta.AIProvider ===
+            currentSettings.currentAIProvider
         ) {
           await changeConversation(conversationId)
         } else {

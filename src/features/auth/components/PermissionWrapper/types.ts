@@ -45,7 +45,7 @@ export type PermissionWrapperI18nCardType = {
   ctaButtonOnClick?: (event: React.MouseEvent) => void
 }
 
-const formatTimeStampToHoursAndMinutes = (timestamp?: number) => {
+export const formatTimeStampToHoursAndMinutes = (timestamp?: number) => {
   const currentTime = new Date().getTime()
   let nextTime = timestamp
   if (!nextTime) {
@@ -79,25 +79,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
     description: (t) => {
-      const next_reset_timestamp = formatTimeStampToHoursAndMinutes()
       const textOfParts = [
         `${t('client:permission__pricing_hook__daily_limit__description1')} `,
         `[${t(
           'client:permission__pricing_hook__daily_limit__description2',
         )}](${APP_USE_CHAT_GPT_HOST}/pricing) `,
-        `${t(
-          'client:permission__pricing_hook__daily_limit__description3',
-        )} ${next_reset_timestamp}${t(
-          'client:permission__pricing_hook__daily_limit__description4',
-        )} `,
-        `[${t(
-          'client:permission__pricing_hook__daily_limit__description5',
-        )}](${APP_USE_CHAT_GPT_HOST}/pricing)`,
-        `${t('client:permission__pricing_hook__daily_limit__description6')} `,
-        `[${t(
-          'client:permission__pricing_hook__daily_limit__description7',
-        )}](${APP_USE_CHAT_GPT_HOST}/my-plan)`,
-        ` ${t('client:permission__pricing_hook__daily_limit__description8')}`,
       ]
       return textOfParts.join('')
     },

@@ -97,7 +97,7 @@ export interface IChromeExtensionSettings {
   currentAIProvider?: IAIProviderType
   currentModel?: string
   currentPlugins?: string[]
-  conversationId?: string
+  chatTypeConversationId?: string
   contextMenus?: IContextMenuItem[]
   gmailToolBarContextMenu?: IContextMenuItem[]
   userSettings?: {

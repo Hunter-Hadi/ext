@@ -19,6 +19,7 @@ const NO_SUPPORT_HOST = ['teams.live.com', 'notion.so']
  * @constructor
  */
 const FloatingInputButton: FC<{
+  className?: string
   buttonText?: string
   iconButton?: boolean
   templateText?: string
@@ -29,7 +30,13 @@ const FloatingInputButton: FC<{
     template: string
     target: HTMLElement
   }
-}> = ({ buttonText, templateText, onBeforeShowContextMenu, iconButton }) => {
+}> = ({
+  buttonText,
+  templateText,
+  onBeforeShowContextMenu,
+  iconButton,
+  className,
+}) => {
   const { t } = useTranslation(['common', 'client'])
   const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
   const handleClick = (event: any) => {
@@ -50,6 +57,7 @@ const FloatingInputButton: FC<{
   if (iconButton) {
     return (
       <TooltipIconButton
+        className={className}
         title={t('client:sidebar__button__use_prompt')}
         onClick={handleClick}
       >
@@ -68,6 +76,7 @@ const FloatingInputButton: FC<{
       title={t('client:sidebar__button__use_prompt')}
     >
       <Button
+        className={className}
         sx={{
           p: '7px',
           minWidth: 'unset',

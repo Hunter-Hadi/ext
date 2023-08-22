@@ -123,10 +123,12 @@ export const FloatingContextMenuDraftSelector = selector<string>({
     const aiWritingMessage = get(ChatGPTConversationState)
     const aiMessages: IChatMessage[] = []
     let lastAIMessageId = get(FloatingContextMenuDraftState).lastAIMessageId
-    // 因为lastAIMessageId是上一次AI message的id，所以如果只有一个AI message，那么lastAIMessageId就是root
     console.log('AiInput aiMessages', lastAIMessageId, aiMessages, messages)
-    if (messages.filter((message) => message.type === 'ai').length === 1) {
-      lastAIMessageId = 'root'
+    if (!lastAIMessageId) {
+      // 因为lastAIMessageId是上一次AI message的id，所以如果只有一个AI message，那么lastAIMessageId就是root
+      if (messages.filter((message) => message.type === 'ai').length === 1) {
+        lastAIMessageId = 'root'
+      }
     }
     if (!lastAIMessageId) {
       return ''

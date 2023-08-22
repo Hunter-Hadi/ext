@@ -1,44 +1,53 @@
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { SidebarSettingsState } from '@/features/sidebar'
 import { useEffect, useRef } from 'react'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
+import { AppSettingsState } from '@/store'
+import usePageUrlChange from '@/hooks/usePageUrlChange'
 
 const useInitSidebar = () => {
+  const appSettings = useRecoilValue(AppSettingsState)
   const { createPageSummary } = usePageSummary()
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
-  const { currentAIProviderDetail, currentAIProviderModelDetail } =
-    useAIProviderModels()
+  const { pageUrl, startListen } = usePageUrlChange()
   const sidebarTypeRef = useRef(sidebarSettings.type)
   useEffect(() => {
     if (sidebarSettings.type === 'Summary') {
-      createPageSummary().then().catch()
+      createPageSummary()
+        .then()
+        .catch()
+        .finally(() => {
+          // 切换到summary的时候，需要开始监听url变化
+          startListen()
+        })
     }
     sidebarTypeRef.current = sidebarSettings.type
   }, [sidebarSettings.type])
+
   useEffect(() => {
     if (!sidebarSettings.summaryConversationId) {
       setTimeout(() => {
         if (sidebarTypeRef.current === 'Summary') {
           createPageSummary().then().catch()
         }
-      }, 200)
+      }, 100)
+    } else if (pageUrl) {
+      console.log('新版Conversation pageUrl更新', pageUrl)
+      debugger
+      createPageSummary().then().catch()
     }
-  }, [sidebarSettings.summaryConversationId])
+  }, [sidebarSettings.summaryConversationId, pageUrl])
   useEffect(() => {
-    if (currentAIProviderDetail?.value && currentAIProviderModelDetail?.value) {
-      const conversationId = md5TextEncrypt(
-        currentAIProviderDetail.value + currentAIProviderModelDetail.value,
-      )
+    if (appSettings.chatTypeConversationId && sidebarSettings.type === 'Chat') {
       setSidebarSettings((prevState) => {
         return {
           ...prevState,
-          chatConversationId: conversationId,
+          chatConversationId: appSettings.chatTypeConversationId,
         }
       })
     }
-  }, [currentAIProviderDetail, currentAIProviderModelDetail])
+  }, [appSettings.chatTypeConversationId, sidebarSettings.type])
 }
+
 export default useInitSidebar

@@ -39,7 +39,7 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
         }, 1000)
       }}
     >
-      <TooltipIconButton title={title} sx={sx}>
+      <TooltipIconButton title={title} sx={sx} className={props.className}>
         <ContentCopyIcon sx={{ fontSize: 16 }} />
         {props.children}
       </TooltipIconButton>

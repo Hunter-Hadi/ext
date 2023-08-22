@@ -196,7 +196,7 @@ export const askChatGPTQuestion = async (
  */
 export const getCacheConversationId = async () => {
   const settings = await getChromeExtensionSettings()
-  return settings.conversationId || ''
+  return settings.chatTypeConversationId || ''
 }
 
 export const getWindowIdOfChatGPTTab = async () => {

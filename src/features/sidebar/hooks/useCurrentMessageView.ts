@@ -1,7 +1,6 @@
 import { useRecoilValue } from 'recoil'
 import { useEffect, useRef, useState } from 'react'
 import { deepCloneGmailMessageElement } from '@/features/sidebar/utils'
-import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import { MessageView } from '@inboxsdk/core'
 import {
   InboxEditState,
@@ -9,7 +8,6 @@ import {
 } from '@/features/sidebar/store/gmail'
 
 const useCurrentMessageView = () => {
-  const { resetConversation } = useMessageWithChatGPT()
   const { currentMessageId } = useRecoilValue(InboxEditState)
   const inboxThreadView = useRecoilValue(InboxThreadViewState)
   const currentMessageViewRef = useRef<MessageView | null>(null)
@@ -121,9 +119,6 @@ const useCurrentMessageView = () => {
   const prevMessageId = useRef(currentMessageId)
   useEffect(() => {
     if (currentMessageId) {
-      if (prevMessageId.current !== currentMessageId) {
-        resetConversation()
-      }
       prevMessageId.current = currentMessageId
       try {
         setLoading(true)

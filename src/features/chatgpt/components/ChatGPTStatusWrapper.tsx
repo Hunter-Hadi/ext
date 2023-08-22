@@ -148,7 +148,10 @@ const ChatGPTStatusWrapper: FC = () => {
               }}
             >
               <Stack direction={'row'} alignItems={'center'} spacing={1}>
-                <AIProviderIcon aiProviderType={'OPENAI'} size={20} />
+                <AIProviderIcon
+                  aiProviderType={'USE_CHAT_GPT_PLUS'}
+                  size={20}
+                />
                 <Typography
                   component={'span'}
                   fontSize={'16px'}

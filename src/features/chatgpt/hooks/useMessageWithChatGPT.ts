@@ -230,6 +230,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     let errorMessage = ''
     try {
       // 提前结束ask ai的流程
+      // 如果这里提前结束，说明是每日使用次数限制到达上限
       const abortData = await checkUpgradeCard(postConversationId)
       if (abortData) {
         return abortData

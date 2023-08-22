@@ -20,8 +20,8 @@ export const syncServerSettingsToLocalSettings = async () => {
       const serverSettings = result.data?.settings
       if (serverSettings) {
         // HACK: remove conversationId
-        if (serverSettings?.conversationId) {
-          delete serverSettings.conversationId
+        if (serverSettings?.chatTypeConversationId) {
+          delete serverSettings.chatTypeConversationId
         }
         const buttonSettings: any = {}
         if (

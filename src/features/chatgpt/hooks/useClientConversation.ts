@@ -68,13 +68,13 @@ const useClientConversation = () => {
       })
       if (result.success && result.data.conversationId) {
         conversationId = result.data.conversationId
-        setChromeExtensionSettings({
-          conversationId: result.data.conversationId,
+        await setChromeExtensionSettings({
+          chatTypeConversationId: result.data.conversationId,
         })
         setAppSettings((prev) => {
           return {
             ...prev,
-            conversationId: result.data.conversationId,
+            chatTypeConversationId: result.data.conversationId,
           }
         })
       }
@@ -136,12 +136,12 @@ ${pageSummaryData.pageSummaryContent}
       setAppSettings((prevState) => {
         return {
           ...prevState,
-          conversationId: '',
+          chatTypeConversationId: '',
         }
       })
       // 清空本地储存的conversationId
       await setChromeExtensionSettings({
-        conversationId: '',
+        chatTypeConversationId: '',
       })
     } else {
       // 清除pageSummary的conversationId

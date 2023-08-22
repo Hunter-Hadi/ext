@@ -79,21 +79,23 @@ const useInitClientConversationMap = () => {
   }, [currentSidebarConversationId])
   useFocus(() => {
     clientGetLiteChromeExtensionSettings().then((cache) => {
-      if (cache.conversationId) {
-        clientGetConversation(cache.conversationId).then((conversation) => {
-          if (conversation) {
-            console.log(
-              '新版Conversation refocus更新chat',
-              conversation.messages,
-            )
-            setClientConversationMap((prevState) => {
-              return {
-                ...prevState,
-                [conversation.id]: conversation,
-              }
-            })
-          }
-        })
+      if (cache.chatTypeConversationId) {
+        clientGetConversation(cache.chatTypeConversationId).then(
+          (conversation) => {
+            if (conversation) {
+              console.log(
+                '新版Conversation refocus更新chat',
+                conversation.messages,
+              )
+              setClientConversationMap((prevState) => {
+                return {
+                  ...prevState,
+                  [conversation.id]: conversation,
+                }
+              })
+            }
+          },
+        )
       }
     })
     if (getPageSummaryConversationId()) {

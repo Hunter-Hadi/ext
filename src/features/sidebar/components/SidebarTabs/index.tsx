@@ -16,6 +16,7 @@ import { ClientConversationMapState } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { AppSettingsState } from '@/store'
 import Typography from '@mui/material/Typography'
+import DevContent from '@/components/DevContent'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -102,26 +103,33 @@ const SidebarTabs: FC = () => {
           ))}
         </Tabs>
       </Stack>
-      <Stack
-        sx={{
-          position: 'sticky',
-          top: '36px',
-          bgcolor: 'background.paper',
-          zIndex: 1,
-          color: 'text.primary',
-          '& > pre, & > p': {
-            p: 0,
-            m: 0,
-            fontSize: '12px',
-          },
-        }}
-      >
-        <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
-        <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
-        <p>ChatTabId: {appSettings.conversationId}</p>
-        <p>currentTabUsingID: {sidebarConversationID}</p>
-        <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
-      </Stack>
+      <DevContent>
+        <Stack
+          sx={{
+            position: 'absolute',
+            top: '0',
+            maxWidth: '400px',
+            overflowX: 'auto',
+            zIndex: 1,
+            color: 'text.primary',
+            right: '100%',
+            border: '1px solid',
+            borderColor: 'customColor.borderColor',
+            borderRadius: '4px',
+            '& > pre, & > p': {
+              p: 0,
+              m: 0,
+              fontSize: '12px',
+            },
+          }}
+        >
+          <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
+          <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
+          <p>ChatTabId: {appSettings.conversationId}</p>
+          <p>currentTabUsingID: {sidebarConversationID}</p>
+          <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
+        </Stack>
+      </DevContent>
     </>
   )
 }

@@ -9,11 +9,13 @@ import Popover from '@mui/material/Popover'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { getAppRootElement } from '@/utils'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
+import { SidebarSettingsState } from '@/features/sidebar'
 
 const AIProviderSelectorFloatingButton: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
+  const { type } = useRecoilValue(SidebarSettingsState)
   const appSettings = useRecoilValue(AppSettingsState)
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
   // 用户打开之后，锁定关闭700ms
@@ -32,6 +34,9 @@ const AIProviderSelectorFloatingButton: FC<{
   }
   const open = Boolean(anchorEl)
   return useMemo(() => {
+    if (type === 'Summary') {
+      return null
+    }
     return (
       <Box
         id={'max-ai__ai-provider-floating-button'}
@@ -131,6 +136,6 @@ const AIProviderSelectorFloatingButton: FC<{
         </Popover>
       </Box>
     )
-  }, [appSettings.currentAIProvider, open])
+  }, [appSettings.currentAIProvider, open, type])
 }
 export default AIProviderSelectorFloatingButton

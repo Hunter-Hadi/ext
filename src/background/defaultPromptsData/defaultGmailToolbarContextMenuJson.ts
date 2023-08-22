@@ -11,7 +11,7 @@ export default [
     id: USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
     parent: 'root',
     droppable: false,
-    text: 'Gmail (New email)',
+    text: '[Gmail] New email',
     data: {
       editable,
       visibility: {
@@ -41,7 +41,7 @@ export default [
     id: USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
     parent: 'root',
     droppable: false,
-    text: 'Gmail (Reply)',
+    text: '[Gmail] Reply',
     data: {
       editable,
       visibility: {

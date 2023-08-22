@@ -30,6 +30,7 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import Browser from 'webextension-polyfill'
 import {
+  getPermissionCardMessageByPermissionCardSettings,
   isPermissionCardSceneType,
   PermissionWrapperCardSceneType,
   PermissionWrapperCardType,
@@ -86,31 +87,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     const checkUpgradeCard = async (conversationId: string) => {
       // 发消息之前判断有没有要付费升级的卡片
       if (abortAskAIShowUpgradeCard) {
-        const { title, description, imageUrl, videoUrl } =
-          abortAskAIShowUpgradeCard
-        const needUpgradeMessage: ISystemChatMessage = {
-          type: 'system',
-          text: '',
-          messageId: uuidV4(),
-          parentMessageId: '',
-          extra: {
-            status: 'error',
-            systemMessageType: 'needUpgrade',
-            permissionSceneType: abortAskAIShowUpgradeCard.sceneType,
-          },
-        }
-        let markdownText = `**${title}**\n${description}\n\n`
-        if (imageUrl) {
-          markdownText = `![${title}](${imageUrl})\n${markdownText}`
-        } else if (videoUrl) {
-          markdownText = `![${title}](${videoUrl})\n${markdownText}`
-        }
-        needUpgradeMessage.text = markdownText
         await clientChatConversationModifyChatMessages(
           'add',
           conversationId,
           0,
-          [needUpgradeMessage],
+          [
+            getPermissionCardMessageByPermissionCardSettings(
+              permissionCardMap[abortAskAIShowUpgradeCard.sceneType],
+            ),
+          ],
         )
         // log
         authEmitPricingHooksLog('show', abortAskAIShowUpgradeCard.sceneType)

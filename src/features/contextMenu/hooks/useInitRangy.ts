@@ -44,7 +44,6 @@ import {
 import useCommands from '@/hooks/useCommands'
 import { AppSettingsState } from '@/store'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
-import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -456,6 +455,10 @@ const useInitRangy = () => {
       return
     }
     if (needCloseFloatingContextMenus.includes(selectedDraftContextMenuType)) {
+      setFloatingDropdownMenuLastFocusRange({
+        range: null,
+        selectionText: '',
+      })
       setFloatingDropdownMenu({
         open: false,
         rootRect: null,
@@ -489,11 +492,22 @@ const useInitRangy = () => {
         break
       case 'TRY_AGAIN':
         {
-          const lastAIMessageId =
-            listReverseFind(
-              sidebarChatMessages,
-              (message) => message.type === 'ai',
-            )?.messageId || ''
+          let lastAIMessageId = ''
+          if (sidebarChatMessages.length > 0) {
+            let isFindUserMessage = false
+            for (let i = sidebarChatMessages.length - 1; i >= 0; i--) {
+              const message = sidebarChatMessages[i]
+              if (message.type === 'user') {
+                isFindUserMessage = true
+              }
+              if (isFindUserMessage && message.type === 'ai') {
+                // 因为reGenerate, 要找到最后用户的前面的第一个ai消息
+                lastAIMessageId = message.messageId
+                break
+              }
+            }
+          }
+          console.log('AIInput TRY_AGAIN', lastAIMessageId)
           setFloatingContextMenuDraft({
             lastAIMessageId,
           })

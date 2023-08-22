@@ -384,6 +384,10 @@ const FloatingContextMenu: FC<{
       ])
     }
   }
+  const regenerateRef = useRef(reGenerate)
+  useEffect(() => {
+    regenerateRef.current = reGenerate
+  }, [reGenerate])
   useEffect(() => {
     /**
      * @description - 运行快捷指令
@@ -488,7 +492,7 @@ const FloatingContextMenu: FC<{
             if (
               getDraftContextMenuTypeById(currentContextMenuId) === 'TRY_AGAIN'
             ) {
-              reGenerate()
+              regenerateRef.current()
             }
             setTimeout(() => {
               setFloatingDropdownMenuSystemItems((prev) => {
@@ -507,10 +511,15 @@ const FloatingContextMenu: FC<{
     originContextMenuList,
     floatingDropdownMenu.open,
     loading,
-    chatGPTClient,
+    chatGPTClient.status,
     isLogin,
-    reGenerate,
   ])
+  useEffect(() => {
+    console.log(
+      '谁的问题: selectedContextMenuId',
+      floatingDropdownMenuSelectedItem.selectedContextMenuId,
+    )
+  }, [floatingDropdownMenuSelectedItem.selectedContextMenuId])
   const isRunningActionsRef = useRef(false)
   useEffect(() => {
     const runActions = cloneDeep(actions)
@@ -702,13 +711,6 @@ const FloatingContextMenu: FC<{
                       }}
                       onEnter={(value) => {
                         if (!haveContext && contextMenuList.length > 0) {
-                          updateFloatingDropdownMenuSelectedItem((preState) => {
-                            return {
-                              ...preState,
-                              selectedContextMenuId:
-                                preState.lastHoverContextMenuId,
-                            }
-                          })
                           return
                         }
                         askChatGPT(value)
@@ -745,15 +747,6 @@ const FloatingContextMenu: FC<{
                           }}
                           onClick={() => {
                             if (!haveContext && contextMenuList.length > 0) {
-                              updateFloatingDropdownMenuSelectedItem(
-                                (preState) => {
-                                  return {
-                                    ...preState,
-                                    selectedContextMenuId:
-                                      preState.lastHoverContextMenuId,
-                                  }
-                                },
-                              )
                               return
                             }
                             askChatGPT(inputValue)

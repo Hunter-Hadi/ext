@@ -18,10 +18,16 @@ import {
 import { useEffect, useRef, useState } from 'react'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 
 const usePageSummary = () => {
   const setSidebarSettings = useSetRecoilState(SidebarSettingsState)
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
+  const permissionCardMap = usePermissionCardMap()
+  const { currentUserPlan } = useUserInfo()
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation } = useClientConversation()
@@ -60,6 +66,25 @@ const usePageSummary = () => {
             loading: false,
           }
         })
+        if (currentUserPlan.name !== 'pro') {
+          await clientChatConversationModifyChatMessages(
+            'clear',
+            pageSummaryConversationId,
+            0,
+            [],
+          )
+          await clientChatConversationModifyChatMessages(
+            'add',
+            pageSummaryConversationId,
+            0,
+            [
+              getPermissionCardMessageByPermissionCardSettings(
+                permissionCardMap['PAGE_SUMMARY'],
+              ),
+            ],
+          )
+          return
+        }
         const actions = getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
         )

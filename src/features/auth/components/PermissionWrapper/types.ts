@@ -3,6 +3,8 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { TFunction } from 'i18next'
 import dayjs from 'dayjs'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+import { IChatMessage, ISystemChatMessage } from '@/features/chatgpt/types'
+import { v4 as uuidV4 } from 'uuid'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'TOTAL_CHAT_DAILY_LIMIT',
@@ -19,6 +21,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_PAID_MODEL_GPT3_5',
   'MAXAI_PAID_MODEL_GPT3_5_16K',
   'MAXAI_PAID_MODEL_GPT4',
+  'PAGE_SUMMARY',
 ] as const
 
 export type PermissionWrapperCardSceneType =
@@ -60,13 +63,37 @@ export const formatTimeStampToHoursAndMinutes = (timestamp?: number) => {
 export const isPermissionCardSceneType = (sceneType: string) => {
   return Object.keys(PERMISSION_CARD_SETTINGS_TEMPLATE).includes(sceneType)
 }
-export const getPermissionCardSettings = (
+export const getPermissionCardSettingsBySceneType = (
   sceneType: PermissionWrapperCardSceneType,
 ): PermissionWrapperI18nCardType => {
   return {
     ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
     ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
   }
+}
+export const getPermissionCardMessageByPermissionCardSettings = (
+  cardSettings: PermissionWrapperCardType,
+): IChatMessage => {
+  const needUpgradeMessage: ISystemChatMessage = {
+    type: 'system',
+    text: '',
+    messageId: uuidV4(),
+    parentMessageId: '',
+    extra: {
+      status: 'error',
+      systemMessageType: 'needUpgrade',
+      permissionSceneType: cardSettings.sceneType,
+    },
+  }
+  const { title, description, imageUrl, videoUrl } = cardSettings
+  let markdownText = `**${title}**\n${description}\n\n`
+  if (imageUrl) {
+    markdownText = `![${title}](${imageUrl})\n${markdownText}`
+  } else if (videoUrl) {
+    markdownText = `![${title}](${videoUrl})\n${markdownText}`
+  }
+  needUpgradeMessage.text = markdownText
+  return needUpgradeMessage
 }
 
 export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
@@ -79,13 +106,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
     description: (t) => {
-      const textOfParts = [
-        `${t('client:permission__pricing_hook__daily_limit__description1')} `,
-        `[${t(
-          'client:permission__pricing_hook__daily_limit__description2',
-        )}](${APP_USE_CHAT_GPT_HOST}/pricing) `,
-      ]
-      return textOfParts.join('')
+      return `${t(
+        'client:permission__pricing_hook__daily_limit__description1',
+      )}`
     },
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
@@ -246,6 +269,22 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     description: (t) =>
       t(
         'client:permission__pricing_hook__max_ai_paid_model__gpt3_5__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // page summary
+  PAGE_SUMMARY: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/page-summary.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__page_summary__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__page_summary__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),

@@ -456,7 +456,6 @@ export const ClientMessageInit = () => {
           break
         case 'Iframe_sendPageContent': {
           const { taskId, pageContent } = data
-          debugger
           if (taskId && sender.tab?.id) {
             // send to tab
             await Browser.tabs.sendMessage(sender.tab.id, {

@@ -3,6 +3,7 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
+import { createClientMessageListener } from '@/background/utils'
 
 /**
  * 判断是否需要获取iframe中的内容，在特殊的网站中，iframe中的内容才是我们需要的，例如：
@@ -27,39 +28,47 @@ export const iframePageContentHelper = () => {
   if (!iframeCurrentUrl) {
     return
   }
-  Browser.runtime.onMessage.addListener(async (msg) => {
-    if (
-      msg.id === CHROME_EXTENSION_POST_MESSAGE_ID &&
-      msg.event ===
-        ('Iframe_ListenGetPageContent' as IChromeExtensionClientListenEvent)
-    ) {
-      const { taskId } = msg.data
-      let pageContent = ''
-      // Microsoft office docs
-      // https://word-edit.officeapps.live.com/we/wordeditorframe.aspx
-      if (
-        iframeCurrentUrl.includes(
-          'word-edit.officeapps.live.com/we/wordeditorframe.aspx',
-        )
-      ) {
-        pageContent =
-          (doc.querySelector('#PageContentContainer') as HTMLDivElement)
-            ?.innerText || ''
+  createClientMessageListener(async (event, data, sender) => {
+    switch (event) {
+      case 'Iframe_ListenGetPageContent': {
+        const { taskId } = data
+        let pageContent = ''
+        // Microsoft office docs
+        // https://word-edit.officeapps.live.com/we/wordeditorframe.aspx
+        if (
+          iframeCurrentUrl.includes(
+            'word-edit.officeapps.live.com/we/wordeditorframe.aspx',
+          )
+        ) {
+          pageContent =
+            (doc.querySelector('#PageContentContainer') as HTMLDivElement)
+              ?.innerText || ''
+        }
+        pageContent = pageContent.trim()
+        if (!pageContent) {
+          return {
+            success: false,
+            data: '',
+            message: 'no page content',
+          }
+        }
+        console.log(taskId, pageContent, 'iframeListenGetPageContent')
+        const port = new ContentScriptConnectionV2()
+        await port.postMessage({
+          event: 'Iframe_sendPageContent',
+          data: {
+            taskId,
+            pageContent,
+          },
+        })
+        return {
+          success: true,
+          data: '',
+          message: '',
+        }
       }
-      pageContent = pageContent.trim()
-      if (!pageContent) {
-        return
-      }
-      console.log(taskId, pageContent, 'iframeListenGetPageContent')
-      const port = new ContentScriptConnectionV2()
-      await port.postMessage({
-        event: 'Iframe_sendPageContent',
-        data: {
-          taskId,
-          pageContent,
-        },
-      })
     }
+    return undefined
   })
 }
 

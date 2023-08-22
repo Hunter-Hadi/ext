@@ -5,14 +5,14 @@ import {
 } from '@/features/auth/components/PermissionWrapper/types'
 import { useTranslation } from 'react-i18next'
 import { useMemo } from 'react'
-import { getPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
+import { getPermissionCardSettingsBySceneType } from '@/features/auth/components/PermissionWrapper/types'
 
 export const usePermissionCard = (
   sceneType: PermissionWrapperCardSceneType,
 ): PermissionWrapperCardType => {
   const { t } = useTranslation(['common', 'client'])
   return useMemo(() => {
-    const settings = getPermissionCardSettings(sceneType)
+    const settings = getPermissionCardSettingsBySceneType(sceneType)
     const permissionCard: PermissionWrapperCardType = {
       title: settings.title(t),
       description: settings.description(t),
@@ -33,7 +33,7 @@ export const usePermissionCardMap = (): {
   return useMemo(() => {
     const permissionCardMap: any = {}
     PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST.forEach((sceneType) => {
-      const settings = getPermissionCardSettings(sceneType)
+      const settings = getPermissionCardSettingsBySceneType(sceneType)
       const permissionCard: PermissionWrapperCardType = {
         title: settings.title(t),
         description: settings.description(t),

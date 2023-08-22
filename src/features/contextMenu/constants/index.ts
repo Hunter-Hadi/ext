@@ -64,16 +64,9 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
       icon: 'DefaultIcon',
       actions: [
         {
-          type: 'RENDER_CHATGPT_PROMPT',
+          type: 'FETCH_ACTIONS',
           parameters: {
-            template:
-              'I have an unfinished text and I hope you can help me continue with the next paragraph. You don\'t need to complete all the content. Please continue the text from the following points that match the tone, writing style, structure, target audience, and direction that my text should take.\nWrite in {{AI_RESPONSE_LANGUAGE}}.\nHere is the text:\n"""\n{{LAST_AI_OUTPUT}}\n"""',
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            template: 'c0f7a642-9e34-4b1f-a2ee-1c4c5e93fa23',
           },
         },
       ],

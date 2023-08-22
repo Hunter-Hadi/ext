@@ -34,7 +34,6 @@ const useInitSidebar = () => {
       }, 100)
     } else if (pageUrl) {
       console.log('新版Conversation pageUrl更新', pageUrl)
-      debugger
       createPageSummary().then().catch()
     }
   }, [sidebarSettings.summaryConversationId, pageUrl])

@@ -150,6 +150,7 @@ class ChatSystem implements ChatSystemInterface {
               const taskId = data.taskId
               let question = data.question
               let options = data.options
+              console.log('新版Conversation 提问', question, options)
               if (question.conversationId) {
                 const conversation =
                   await ConversationManager.conversationDB.getConversationById(

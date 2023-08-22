@@ -1044,8 +1044,26 @@ export default [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
+            template: '{{SELECTED_TEXT}}\n{{POPUP_DRAFT}}',
+          },
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionTokens: 3000,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'MAXAI_CONTINUE_WRITING_TEXT_DRAFT',
+          },
+        },
+        {
+          type: 'RENDER_CHATGPT_PROMPT',
+          parameters: {
             template:
-              "Ignore all previous instructions. You are the original author of the unfinished text delimited by triple backticks. Your task is to continue writing the following unfinished text delimited by triple backticks.\n\nYour task requires you to pick up where the text is left off, making sure to maintain the same tone, writing style, structure, intended audience, and direction of the unfinished text. Continue the writing in a manner consistent with how the original author would have written.\n\nOnly write no more than 100 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the continued text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+              "Ignore all previous instructions. You are the original author of the unfinished text delimited by triple backticks. Your task is to continue writing the following unfinished text delimited by triple backticks.\n\nYour task requires you to pick up where the text is left off, making sure to maintain the same tone, writing style, structure, intended audience, and direction of the unfinished text. Continue the writing in a manner consistent with how the original author would have written.\n\nOnly write no more than 100 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the continued text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{MAXAI_CONTINUE_WRITING_TEXT_DRAFT}}\n```",
           },
         },
         {

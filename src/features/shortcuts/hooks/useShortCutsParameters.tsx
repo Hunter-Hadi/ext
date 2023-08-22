@@ -16,6 +16,7 @@ import {
 import { AppSettingsState, AppState } from '@/store'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
+import { FloatingContextMenuDraftSelector } from '@/features/contextMenu'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
@@ -24,6 +25,9 @@ const useShortCutsParameters = () => {
   const { messageViewText, currentMessageId } = useCurrentMessageView()
   const sidebarChatConversationMessages = useRecoilValue(
     SidebarChatConversationMessagesSelector,
+  )
+  const floatingContextMenuDraftText = useRecoilValue(
+    FloatingContextMenuDraftSelector,
   )
   const appSettings = useRecoilValue(AppSettingsState)
   return useCallback(() => {
@@ -85,6 +89,7 @@ const useShortCutsParameters = () => {
         typeof window !== 'undefined' ? window.location.href : '',
       CURRENT_WEBPAGE_TITLE:
         typeof window !== 'undefined' ? document.title : '',
+      POPUP_DRAFT: floatingContextMenuDraftText || '',
     }
     const parameters: Array<{
       key: string
@@ -114,6 +119,7 @@ const useShortCutsParameters = () => {
     currentMessageId,
     currentSelection,
     appSettings.userSettings,
+    floatingContextMenuDraftText,
   ])
 }
 export { useShortCutsParameters }

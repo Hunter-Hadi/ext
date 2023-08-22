@@ -714,7 +714,7 @@ export const replaceMarkerContent = async (
         cloneRange.setStart(cacheRange.startContainer, cacheRange.startOffset)
         cloneRange.setEnd(cacheRange.startContainer, cacheRange.startOffset)
       }
-      await replaceWithClipboard(cloneRange.cloneRange(), value)
+      await replaceWithClipboard(cloneRange, value)
       console.log('paste editableElementSelectionText', value)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
@@ -1272,6 +1272,7 @@ export const isElementCanEditable = (element: HTMLElement) => {
  */
 export const replaceWithClipboard = async (range: Range, value: string) => {
   const originalRange: Range | null = range.cloneRange()
+  const restoreRange: Range | null = range.cloneRange()
   const doc =
     (range.startContainer || range.endContainer)?.ownerDocument || document
   if (!doc || doc.getElementById(ROOT_CLIPBOARD_ID)) {
@@ -1367,6 +1368,8 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       finallySelection.addRange(originalRange)
       const delay = (ms: number) =>
         new Promise((resolve) => setTimeout(resolve, ms))
+      selection?.removeAllRanges()
+      selection?.addRange(restoreRange)
       await delay(0)
       if (
         ['evernote.com', 'web.whatsapp.com'].includes(getCurrentDomainHost())
@@ -1391,8 +1394,9 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           doc.hasFocus(),
         )
       }
-      originalRange.collapse(false)
-      finallySelection.collapseToEnd()
+
+      restoreRange.collapse(false)
+      selection?.collapseToEnd()
     }
   } catch (e) {
     console.log('replaceWithClipboard error: \t', e)

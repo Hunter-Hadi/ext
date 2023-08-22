@@ -53,8 +53,14 @@ export const CHROME_EXTENSION_HOMEPAGE_URL = isEzMailApp
   ? 'https://www.ezmail.ai'
   : 'https://www.maxai.me'
 
-export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
+/**
+ * MARK: 设计问题，历史遗留
+ */
+export const DEFAULT_AI_OUTPUT_LANGUAGE_ID =
   'the same language variety or dialect of the following text'
+
+export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
+  'the same language variety or dialect of the text'
 
 // chat gpt config
 export const CHAT_GPT_GPT4_ARKOSE_TOKEN = 'CHAT_GPT_GPT4_ARKOSE_TOKEN'

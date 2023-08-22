@@ -1,9 +1,9 @@
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
 
 export const LANGUAGES_OPTIONS = [
   {
     label: 'Auto',
-    value: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+    value: DEFAULT_AI_OUTPUT_LANGUAGE_ID,
   },
   {
     label: 'Acoli',

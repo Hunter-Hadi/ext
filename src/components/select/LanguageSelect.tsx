@@ -5,7 +5,7 @@ import { SxProps } from '@mui/material/styles'
 
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
 import { useTranslation } from 'react-i18next'
 
 interface LanguageSelectProps {
@@ -47,7 +47,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       sceneType={'AI_RESPONSE_LANGUAGE'}
       allowedRoles={['pro', 'pro_gift', 'new_user']}
       onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
-        if (newValue.value !== DEFAULT_AI_OUTPUT_LANGUAGE_VALUE) {
+        if (newValue.value !== DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
           // 重置回默认语言
           setValue(LANGUAGES_OPTIONS[0])
           onChange(LANGUAGES_OPTIONS[0].value)

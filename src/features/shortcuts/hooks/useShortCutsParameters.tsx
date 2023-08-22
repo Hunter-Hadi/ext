@@ -10,6 +10,7 @@ import { deepCloneGmailMessageElement } from '@/features/sidebar/utils'
 import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   ROOT_CHAT_BOX_INPUT_ID,
 } from '@/constants'
@@ -63,6 +64,12 @@ const useShortCutsParameters = () => {
     }
     const SELECTED_HTML = currentSelection?.selectionHTML || ''
     const SELECTED_TEXT = currentSelection?.selectionText || ''
+    let userSelectedLanguage =
+      appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    // MARK: 历史遗留问题
+    if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
+      userSelectedLanguage = DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    }
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any
     } = {
@@ -79,10 +86,8 @@ const useShortCutsParameters = () => {
           sidebarChatConversationMessages,
           (item) => item.type === 'ai',
         )?.text || '',
-      AI_RESPONSE_LANGUAGE:
-        appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-      AI_OUTPUT_LANGUAGE:
-        appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+      AI_RESPONSE_LANGUAGE: userSelectedLanguage,
+      AI_OUTPUT_LANGUAGE: userSelectedLanguage,
       CURRENT_WEBSITE_DOMAIN:
         typeof window !== 'undefined' ? window.location.hostname : '',
       CURRENT_WEBPAGE_URL:

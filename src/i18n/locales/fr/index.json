@@ -404,7 +404,9 @@
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Masquer l'assistant Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Mise à niveau pour une utilisation illimitée de ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Vous avez atteint la limite quotidienne actuelle d'utilisation pour ChatGPT.\nVous pouvez maintenant continuer avec les autres fournisseurs d'IA, ou passer à la version Pro dès maintenant pour une utilisation illimitée.",
-    "sidebar__button__immersive_chat": "Chat immersif"
+    "sidebar__button__immersive_chat": "Chat immersif",
+    "sidebar__tabs__chat__title": "Chatte",
+    "sidebar__tabs__summary__title": "Résumé"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -512,6 +514,24 @@
     "d426af1d-4055-4ada-b359-648b9ada81e7": "Je n'aime pas",
     "6e14fd11-a06e-40b3-97d5-3fc0515288b0": "Entrer une instruction",
     "aa4d2d42-28a6-4a2f-a67d-2805f4307fd9": "Réponse rapide",
-    "4d7c6a66-1905-43c1-826b-0b8201461d47": "Réseaux sociaux"
+    "4d7c6a66-1905-43c1-826b-0b8201461d47": "Réseaux sociaux",
+    "c769f823-a073-408a-ac44-00e5bfc333a7": "Réponse rapide",
+    "0607ffb9-e0fb-41b5-9e02-afabff22acb6": "J'aime",
+    "2822ad40-9f2c-4db8-961b-50636218edc7": "Amour",
+    "4d59573b-7e84-4fb0-8d55-582bd4a5c948": "Merci",
+    "6325c4b4-5b4c-457b-849a-eacdcb37edfb": "Attention",
+    "32dd4492-4ec4-44a9-ba53-32223bf385fe": "Blague",
+    "5bb90f56-7cae-4662-9d59-dd2c6ff941ec": "Waouh",
+    "c4f861da-75ee-4afb-86a7-de234c0c2309": "Triste",
+    "31e2d82e-5176-43a5-af28-33b873f27496": "Je n'aime pas",
+    "32f31576-0ab8-4fc8-966d-426970abede6": "Saisir une indication",
+    "0cb5746c-b879-4ac4-86fb-49f366c81542": "Chinois (traditionnel)",
+    "fee4c3e1-8970-436a-a535-e6085f283973": "Turc",
+    "f8a45478-0da3-4c34-8306-b922b68fab5b": "Polonais",
+    "c78b028f-ae08-4c3b-830b-c71bc03ead25": "Arabe",
+    "e361913f-b0af-443f-8122-1affa88478be": "Hébreu",
+    "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danois",
+    "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Suédois",
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Messagerie"
   }
 }

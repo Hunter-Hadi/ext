@@ -70,6 +70,7 @@ import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderS
 import { AppSettingsState } from '@/store'
 import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import { SidebarSettingsState } from '@/features/sidebar'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -82,6 +83,8 @@ const FloatingContextMenu: FC<{
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
   const setAppSettings = useSetRecoilState(AppSettingsState)
+  const [sidebarSettings, setSidebarSettings] =
+    useRecoilState(SidebarSettingsState)
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -458,6 +461,12 @@ const FloatingContextMenu: FC<{
             lastHoverContextMenuId: null,
           }
         })
+        setSidebarSettings((prevState) => {
+          return {
+            ...prevState,
+            type: 'Chat',
+          }
+        })
         if (runActions.length > 0) {
           setActions(runActions)
         } else {
@@ -502,9 +511,14 @@ const FloatingContextMenu: FC<{
     isLogin,
     reGenerate,
   ])
+  const isRunningActionsRef = useRef(false)
   useEffect(() => {
     const runActions = cloneDeep(actions)
-    if (actions.length > 0) {
+    if (actions.length > 0 && sidebarSettings.type === 'Chat') {
+      if (isRunningActionsRef.current) {
+        return
+      }
+      isRunningActionsRef.current = true
       const lastRecordContextMenu = lastRecordContextMenuRef.current
       if (lastRecordContextMenu) {
         // 要在找到askChatGPT之后，才能清空，例如code或者enter prompt的场景
@@ -532,21 +546,26 @@ const FloatingContextMenu: FC<{
         showChatBox()
       }
       setInputValue('')
-      runShortCuts().then(() => {
-        // done
-        const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
-        if (error) {
-          console.log('[ContextMenu Module] error', error)
-          setFloatingDropdownMenu({
-            open: false,
-            rootRect: null,
-          })
-          // 如果出错了，则打开聊天框
-          showChatBox()
-        }
-      })
+      runShortCuts()
+        .then(() => {
+          // done
+          const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
+          if (error) {
+            console.log('[ContextMenu Module] error', error)
+            setFloatingDropdownMenu({
+              open: false,
+              rootRect: null,
+            })
+            // 如果出错了，则打开聊天框
+            showChatBox()
+          }
+        })
+        .catch()
+        .finally(() => {
+          isRunningActionsRef.current = false
+        })
     }
-  }, [actions, isLogin])
+  }, [actions, isLogin, sidebarSettings.type])
   useEffect(() => {
     const updateInputValue = (value: string, data: any) => {
       console.log('[ContextMenu Module] updateInputValue', value)

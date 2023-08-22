@@ -49,7 +49,8 @@ async function esbuildConfig() {
       'src/iframe.tsx',
       'src/pages/settings/index.tsx',
       'src/pages/popup/index.tsx',
-      'src/pages/chatgpt/fileUploadServer.ts'
+      'src/pages/chatgpt/fileUploadServer.ts',
+      'src/pages/googleDoc/index.ts'
     ],
     format: 'esm',
     drop: isProduction ? ['console', 'debugger'] : [],

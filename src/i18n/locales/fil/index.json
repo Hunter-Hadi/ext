@@ -404,7 +404,9 @@
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Itago ang Gmail assistant",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Mag-upgrade para sa walang limitasyong paggamit ng ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Narating mo na ang kasalukuyang araw-araw na limitasyon sa paggamit para sa ChatGPT.\nPwede kang magpatuloy sa ibang mga Al Providers ngayon, o mag-upgrade sa Pro ngayon para sa walang limitasyong paggamit.",
-    "sidebar__button__immersive_chat": "Makalumang chat"
+    "sidebar__button__immersive_chat": "Makalumang chat",
+    "sidebar__tabs__chat__title": "Chat",
+    "sidebar__tabs__summary__title": "Buod"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -512,6 +514,24 @@
     "d426af1d-4055-4ada-b359-648b9ada81e7": "Hindi gusto",
     "6e14fd11-a06e-40b3-97d5-3fc0515288b0": "Maglagay ng prompt",
     "aa4d2d42-28a6-4a2f-a67d-2805f4307fd9": "Mabilis na sagot",
-    "4d7c6a66-1905-43c1-826b-0b8201461d47": "Social media"
+    "4d7c6a66-1905-43c1-826b-0b8201461d47": "Social media",
+    "c769f823-a073-408a-ac44-00e5bfc333a7": "Mabilis na tugon",
+    "0607ffb9-e0fb-41b5-9e02-afabff22acb6": "Gusto ko",
+    "2822ad40-9f2c-4db8-961b-50636218edc7": "Pag-ibig",
+    "4d59573b-7e84-4fb0-8d55-582bd4a5c948": "Salamat",
+    "6325c4b4-5b4c-457b-849a-eacdcb37edfb": "Malasakit",
+    "32dd4492-4ec4-44a9-ba53-32223bf385fe": "Joke",
+    "5bb90f56-7cae-4662-9d59-dd2c6ff941ec": "Wow",
+    "c4f861da-75ee-4afb-86a7-de234c0c2309": "Malungkot",
+    "31e2d82e-5176-43a5-af28-33b873f27496": "Hindi gusto",
+    "32f31576-0ab8-4fc8-966d-426970abede6": "Maglagay ng prompt",
+    "0cb5746c-b879-4ac4-86fb-49f366c81542": "Chinese (Tradisyonal)",
+    "fee4c3e1-8970-436a-a535-e6085f283973": "Turko",
+    "f8a45478-0da3-4c34-8306-b922b68fab5b": "Polako",
+    "c78b028f-ae08-4c3b-830b-c71bc03ead25": "Arabe",
+    "e361913f-b0af-443f-8122-1affa88478be": "Hebreo",
+    "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danish",
+    "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Swedish",
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Pagmemensahe"
   }
 }

@@ -111,6 +111,7 @@ const SidebarTabs: FC = () => {
             maxWidth: '400px',
             overflowX: 'auto',
             zIndex: 1,
+            bgcolor: 'background.paper',
             color: 'text.primary',
             right: '100%',
             border: '1px solid',

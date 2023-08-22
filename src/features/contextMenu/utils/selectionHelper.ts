@@ -1362,9 +1362,12 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       if (['discord.com'].includes(getCurrentDomainHost())) {
         await navigator.clipboard.writeText(pastedText)
       }
-      editableElement?.focus()
+      // editableElement?.focus()
       finallySelection.removeAllRanges()
       finallySelection.addRange(originalRange)
+      const delay = (ms: number) =>
+        new Promise((resolve) => setTimeout(resolve, ms))
+      await delay(0)
       if (
         ['evernote.com', 'web.whatsapp.com'].includes(getCurrentDomainHost())
       ) {

@@ -97,7 +97,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         `[${t(
           'client:permission__pricing_hook__daily_limit__description7',
         )}](${APP_USE_CHAT_GPT_HOST}/my-plan)`,
-        `${t('client:permission__pricing_hook__daily_limit__description8')}`,
+        ` ${t('client:permission__pricing_hook__daily_limit__description8')}`,
       ]
       return textOfParts.join('')
     },

@@ -11,13 +11,17 @@ import {
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { useSetRecoilState } from 'recoil'
-import { SidebarSettingsState } from '@/features/sidebar'
+import {
+  ChatGPTConversationState,
+  SidebarSettingsState,
+} from '@/features/sidebar'
 import { useEffect, useRef, useState } from 'react'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 const usePageSummary = () => {
   const setSidebarSettings = useSetRecoilState(SidebarSettingsState)
+  const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation } = useClientConversation()
@@ -32,7 +36,7 @@ const usePageSummary = () => {
       const pageSummaryConversation = await clientGetConversation(
         pageSummaryConversationId,
       )
-      if (pageSummaryConversation) {
+      if (pageSummaryConversation?.id) {
         setSidebarSettings((prevState) => {
           return {
             ...prevState,
@@ -42,7 +46,20 @@ const usePageSummary = () => {
         return
       }
       try {
+        updateConversation((prevState) => {
+          return {
+            ...prevState,
+            loading: true,
+          }
+        })
+        // 进入loading
         await createConversation()
+        updateConversation((prevState) => {
+          return {
+            ...prevState,
+            loading: false,
+          }
+        })
         const actions = getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
         )

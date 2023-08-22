@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import {
   ChatGPTConversationState,
   SidebarConversationIdSelector,
@@ -18,12 +18,15 @@ import { IAIProviderType } from '@/background/provider/chat'
 import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/types/getAIProviderConversationMetaConfig'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
+import cloneDeep from 'lodash-es/cloneDeep'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useClientConversation = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
+  const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const [sidebarSettings, updateSidebarSettings] =
     useRecoilState(SidebarSettingsState)
   const { currentAIProviderDetail, currentAIProviderModelDetail } =
@@ -149,6 +152,11 @@ ${pageSummaryData.pageSummaryContent}
         }
       })
     }
+    updateConversationMap((prev) => {
+      const newConversationMap = cloneDeep(prev)
+      delete newConversationMap[sidebarConversationId]
+      return newConversationMap
+    })
     setConversation({
       model: appSettings.currentModel || '',
       writingMessage: null,

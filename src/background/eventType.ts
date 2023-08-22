@@ -13,6 +13,9 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_listenUpdateIframeInput'
   | 'Client_listenUploadFilesChange'
   | 'Client_listenUpdateConversationMessages'
+  | 'Client_ListenGetIframePageContentResponse'
+  // iframe
+  | 'Iframe_ListenGetPageContent'
 
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
@@ -43,6 +46,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getLiteChromeExtensionSettings'
   | 'Client_getContextMenuActions'
   | 'Client_proxyFetchAPI'
+  | 'Client_getIframePageContent'
   // 上传文件相关
   | 'Client_chatUploadFiles'
   | 'Client_chatUploadFilesChange'
@@ -51,6 +55,8 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_chatAbortUploadFiles'
   | 'Client_chatGetFiles'
   | 'Client_chatGetUploadFileToken'
+  // iframe
+  | 'Iframe_sendPageContent'
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

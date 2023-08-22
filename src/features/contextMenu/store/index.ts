@@ -122,7 +122,12 @@ export const FloatingContextMenuDraftSelector = selector<string>({
     const messages = get(SidebarChatConversationMessagesSelector)
     const aiWritingMessage = get(ChatGPTConversationState)
     const aiMessages: IChatMessage[] = []
-    const lastAIMessageId = get(FloatingContextMenuDraftState).lastAIMessageId
+    let lastAIMessageId = get(FloatingContextMenuDraftState).lastAIMessageId
+    // 因为lastAIMessageId是上一次AI message的id，所以如果只有一个AI message，那么lastAIMessageId就是root
+    console.log('AiInput aiMessages', lastAIMessageId, aiMessages, messages)
+    if (messages.filter((message) => message.type === 'ai').length === 1) {
+      lastAIMessageId = 'root'
+    }
     if (!lastAIMessageId) {
       return ''
     }
@@ -142,7 +147,6 @@ export const FloatingContextMenuDraftSelector = selector<string>({
         aiMessages.push(aiWritingMessage.writingMessage)
       }
     }
-    console.log('AiInput aiMessages', lastAIMessageId, aiMessages, messages)
     const draft = aiMessages
       .map((message) => message.text)
       .join('\n\n')

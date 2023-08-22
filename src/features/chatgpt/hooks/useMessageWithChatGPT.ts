@@ -471,6 +471,22 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const updateChatInputValue = (value: string) => {
     getInputMediator('chatBoxInputMediator').updateInputValue(value)
   }
+  const showLoading = () => {
+    setConversation((prevState) => {
+      return {
+        ...prevState,
+        loading: true,
+      }
+    })
+  }
+  const hideLoading = () => {
+    setConversation((prevState) => {
+      return {
+        ...prevState,
+        loading: false,
+      }
+    })
+  }
   useEffect(() => {
     if (defaultInputValue) {
       defaultValueRef.current = defaultInputValue
@@ -491,6 +507,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     pushMessage,
     updateConversation,
     getSidebarRef,
+    showLoading,
+    hideLoading,
   }
 }
 export { useMessageWithChatGPT }

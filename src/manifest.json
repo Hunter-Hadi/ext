@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "2.0.15",
+  "version": "2.0.16",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -87,7 +87,8 @@
         "chunks/*.js",
         "pageWorld.js",
         "assets/*",
-        "pages/chatgpt/fileUploadServer.js"
+        "pages/chatgpt/fileUploadServer.js",
+        "pages/*"
       ],
       "matches": [
         "<all_urls>"

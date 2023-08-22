@@ -124,6 +124,22 @@ export function pushOutputToChat(
     }
   }
 }
+export function withLoading() {
+  return function (
+    target: Action,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
+    const oldFunc = descriptor.value
+    descriptor.value = async function (...args: any[]) {
+      const [, engine] = args
+      engine.getChartGPT()?.showLoading()
+      const value = await oldFunc.apply(this, args)
+      engine.getChartGPT()?.hideLoading()
+      return value
+    }
+  }
+}
 export function clearUserInput(beforeExecute = true) {
   return function (
     target: Action,

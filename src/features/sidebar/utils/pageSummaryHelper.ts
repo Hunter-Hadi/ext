@@ -5,10 +5,15 @@ import { getPageContentWithPostlightParser } from '@/features/shortcuts/utils/pa
 import { getCurrentDomainHost } from '@/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
+import { v4 as uuidV4 } from 'uuid'
 import {
   getEmailWebsitePageContent,
   isEmailWebsite,
 } from '@/features/sidebar/utils/emailWebsiteHelper'
+import {
+  getIframePageContent,
+  isNeedGetIframePageContent,
+} from '@/pages/content_script_iframe/iframePageContentHelper'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -242,9 +247,16 @@ export const generatePageSummaryData = async (): Promise<{
 }> => {
   const pageSummaryType = getPageSummaryType()
   let pageContent = ''
-  if (pageSummaryType === 'DEFAULT_EMAIL_SUMMARY') {
+  // 判断是不是需要从iframe获取网页内容
+  if (isNeedGetIframePageContent()) {
+    pageContent = await getIframePageContent()
+  } else if (isNeedGetSpecialHostPageContent()) {
+    pageContent = await getSpecialHostPageContent()
+  } else if (pageSummaryType === 'DEFAULT_EMAIL_SUMMARY') {
     pageContent = await getEmailWebsitePageContent()
-  } else {
+  }
+  pageContent = pageContent.trim()
+  if (!pageContent) {
     // 提取网页内容
     pageContent = await getPageContentWithPostlightParser(window.location.href)
   }
@@ -257,4 +269,44 @@ export const generatePageSummaryData = async (): Promise<{
     ),
     pageSummaryType: getPageSummaryType(),
   }
+}
+
+const isNeedGetSpecialHostPageContent = () => {
+  const host = getCurrentDomainHost()
+  return ['docs.google.com'].find((item) => item === host)
+}
+const getSpecialHostPageContent = async () => {
+  const host = getCurrentDomainHost()
+  if (host === 'docs.google.com') {
+    return new Promise<string>((resolve) => {
+      const eventId = uuidV4()
+      const script = document.createElement('script')
+      script.type = 'module'
+      script.src = Browser.runtime.getURL('pages/googleDoc/index.js')
+      script.setAttribute('data-event-id', eventId)
+      script.id = 'MAXAI_GOOGLE_DOC_CONTENT_SCRIPT'
+      document.body.appendChild(script)
+      let isResolved = false
+      window.addEventListener(
+        `${eventId}res`,
+        (e) => {
+          if (isResolved) {
+            return
+          }
+          isResolved = true
+          resolve((e as any).detail)
+        },
+        { once: true },
+      )
+      // 10s后如果没有获取到内容，就直接返回
+      setTimeout(() => {
+        if (isResolved) {
+          return
+        }
+        isResolved = true
+        resolve('')
+      }, 10000)
+    })
+  }
+  return ''
 }

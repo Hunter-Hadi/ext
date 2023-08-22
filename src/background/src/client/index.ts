@@ -426,6 +426,60 @@ export const ClientMessageInit = () => {
             }
           }
         }
+        case 'Client_getIframePageContent':
+          {
+            const { taskId } = data
+            if (sender.tab?.id && taskId) {
+              // send to tab
+              await Browser.tabs.sendMessage(sender.tab.id, {
+                event:
+                  'Iframe_ListenGetPageContent' as IChromeExtensionClientSendEvent,
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                data: {
+                  taskId,
+                  originPageUrl: sender.tab.url || sender.url,
+                },
+              })
+              return {
+                success: true,
+                data: taskId,
+                message: 'ok',
+              }
+            } else {
+              return {
+                success: false,
+                data: '',
+                message: 'ok',
+              }
+            }
+          }
+          break
+        case 'Iframe_sendPageContent': {
+          const { taskId, pageContent } = data
+          debugger
+          if (taskId && sender.tab?.id) {
+            // send to tab
+            await Browser.tabs.sendMessage(sender.tab.id, {
+              event:
+                'Client_ListenGetIframePageContentResponse' as IChromeExtensionClientSendEvent,
+              id: CHROME_EXTENSION_POST_MESSAGE_ID,
+              data: {
+                taskId,
+                pageContent,
+              },
+            })
+            return {
+              success: true,
+              data: taskId,
+              message: 'ok',
+            }
+          }
+          return {
+            success: false,
+            data: '',
+            message: 'ok',
+          }
+        }
         default:
           break
       }

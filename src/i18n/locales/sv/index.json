@@ -404,7 +404,9 @@
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Dölj Gmail-assistent",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Uppgradera för obegränsad ChatGPT-användning",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Du har nått den nuvarande dagliga användningsgränsen för ChatGPT.\nDu kan fortsätta med de andra Al-leverantörerna nu, eller uppgradera till Pro nu för obegränsad användning.",
-    "sidebar__button__immersive_chat": "Fördjupande chatt"
+    "sidebar__button__immersive_chat": "Fördjupande chatt",
+    "sidebar__tabs__chat__title": "Chatt",
+    "sidebar__tabs__summary__title": "Sammanfattning"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -512,6 +514,24 @@
     "d426af1d-4055-4ada-b359-648b9ada81e7": "Ogilla",
     "6e14fd11-a06e-40b3-97d5-3fc0515288b0": "Ange prompt",
     "aa4d2d42-28a6-4a2f-a67d-2805f4307fd9": "Snabbt svar",
-    "4d7c6a66-1905-43c1-826b-0b8201461d47": "Sociala medier"
+    "4d7c6a66-1905-43c1-826b-0b8201461d47": "Sociala medier",
+    "c769f823-a073-408a-ac44-00e5bfc333a7": "Snabbt svar",
+    "0607ffb9-e0fb-41b5-9e02-afabff22acb6": "Gilla",
+    "2822ad40-9f2c-4db8-961b-50636218edc7": "Älska",
+    "4d59573b-7e84-4fb0-8d55-582bd4a5c948": "Tack",
+    "6325c4b4-5b4c-457b-849a-eacdcb37edfb": "Omtanke",
+    "32dd4492-4ec4-44a9-ba53-32223bf385fe": "Skoja",
+    "5bb90f56-7cae-4662-9d59-dd2c6ff941ec": "Wow",
+    "c4f861da-75ee-4afb-86a7-de234c0c2309": "Ledsen",
+    "31e2d82e-5176-43a5-af28-33b873f27496": "Ogilla",
+    "32f31576-0ab8-4fc8-966d-426970abede6": "Ange prompt",
+    "0cb5746c-b879-4ac4-86fb-49f366c81542": "Kinesiska (traditionell)",
+    "fee4c3e1-8970-436a-a535-e6085f283973": "Turkiska",
+    "f8a45478-0da3-4c34-8306-b922b68fab5b": "Polska",
+    "c78b028f-ae08-4c3b-830b-c71bc03ead25": "Arabiska",
+    "e361913f-b0af-443f-8122-1affa88478be": "Hebreiska",
+    "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danska",
+    "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Svenska",
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Meddelande"
   }
 }

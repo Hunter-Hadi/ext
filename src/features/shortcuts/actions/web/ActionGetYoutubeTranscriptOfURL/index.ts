@@ -2,7 +2,11 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/lib'
-import { pushOutputToChat, templateParserDecorator } from '@/features/shortcuts'
+import {
+  pushOutputToChat,
+  templateParserDecorator,
+  withLoading,
+} from '@/features/shortcuts'
 import { v4 as uuidV4 } from 'uuid'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 export class ActionGetYoutubeTranscriptOfURL extends Action {
@@ -19,6 +23,7 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
+  @withLoading()
   async execute(params: ActionParameters, engine: any) {
     try {
       const youtubeLinkURL = this.parameters.URLActionURL || ''

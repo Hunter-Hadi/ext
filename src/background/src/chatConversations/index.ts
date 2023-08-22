@@ -245,6 +245,14 @@ class ConversationDB {
       ),
     )
   }
+  public async clearAllConversations() {
+    const allConversations = await this.getAllConversations()
+    await Promise.all(
+      allConversations.map((conversation) =>
+        this.deleteConversation(conversation.id),
+      ),
+    )
+  }
 }
 
 export default class ConversationManager {
@@ -329,5 +337,8 @@ export default class ConversationManager {
     // save
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true
+  }
+  static async clearAllConversations() {
+    await this.conversationDB.clearAllConversations()
   }
 }

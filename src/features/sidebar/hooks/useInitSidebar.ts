@@ -46,7 +46,6 @@ const useInitSidebar = () => {
       )
     }
   }, [sidebarSettings.type])
-
   useEffect(() => {
     if (!sidebarSettings.summaryConversationId) {
       setTimeout(() => {
@@ -77,6 +76,10 @@ const useInitSidebar = () => {
       appSettings.chatTypeConversationId &&
       sidebarSettingsRef.current.type === 'Chat'
     ) {
+      console.log(
+        '新版Conversation chatTypeConversationId更新',
+        appSettings.chatTypeConversationId,
+      )
       setSidebarSettings((prevState) => {
         return {
           ...prevState,

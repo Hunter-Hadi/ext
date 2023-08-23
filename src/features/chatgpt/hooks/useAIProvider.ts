@@ -24,10 +24,17 @@ const useAIProvider = () => {
       const prevConversation = cache.chatTypeConversationId
         ? await clientGetConversation(cache.chatTypeConversationId)
         : undefined
-      const cacheModel = cache.thirdProviderSettings?.[provider]?.model
+      let newProviderModel = ''
+      if (provider === 'OPENAI') {
+        newProviderModel = cache.currentModel || ''
+      } else {
+        newProviderModel = cache.thirdProviderSettings?.[provider]?.model || ''
+      }
       let conversationId = ''
-      if (cacheModel) {
-        const providerConversationId = md5TextEncrypt(provider + cacheModel)
+      if (newProviderModel) {
+        const providerConversationId = md5TextEncrypt(
+          provider + newProviderModel,
+        )
         const providerConversation = await clientGetConversation(
           providerConversationId,
         )
@@ -37,7 +44,7 @@ const useAIProvider = () => {
           providerConversation,
           '\n',
           provider,
-          cacheModel,
+          newProviderModel,
         )
         conversationId = providerConversationId
       }

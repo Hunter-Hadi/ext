@@ -16,6 +16,9 @@ import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeChat/claude/types'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import { md5TextEncrypt } from '@/utils/encryptionHelper'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -170,12 +173,43 @@ const useAIProviderModels = () => {
   const updateAIProviderModel = useCallback(
     async (model: string) => {
       try {
+        const prevConversationId = (
+          await clientGetLiteChromeExtensionSettings()
+        ).chatTypeConversationId
+        if (prevConversationId) {
+          const prevConversation = await clientGetConversation(
+            prevConversationId,
+          )
+          if (prevConversation) {
+            // 如果之前的对话是使用的非 maxai/openai_api 的AI provider，那么就清空conversation
+            if (
+              prevConversation?.meta?.AIProvider &&
+              !['USE_CHAT_GPT_PLUS', 'OPENAI_API'].includes(
+                prevConversation.meta.AIProvider,
+              )
+            ) {
+              console.log(
+                '新版Conversation，清空旧的Conversation， 因为不是maxai/openai_api',
+              )
+              const port = new ContentScriptConnectionV2()
+              port
+                .postMessage({
+                  event: 'Client_removeChatGPTConversation',
+                  data: {
+                    conversationId: prevConversationId,
+                  },
+                })
+                .then()
+                .catch()
+            }
+          }
+        }
         // TODO 以后统一处理，现在先用之前的逻辑
         if (currentProvider && currentProvider === 'OPENAI') {
           await setChromeExtensionSettings({
             currentModel: model,
+            chatTypeConversationId: md5TextEncrypt(currentProvider + model),
           })
-          setAppSettings(await clientGetLiteChromeExtensionSettings())
         } else if (
           currentProvider &&
           aiProviderModels.find((item) => item.value === model)
@@ -184,7 +218,11 @@ const useAIProviderModels = () => {
           await saveThirdProviderSettings(currentProvider, {
             model,
           })
+          await setChromeExtensionSettings({
+            chatTypeConversationId: md5TextEncrypt(currentProvider + model),
+          })
         }
+        setAppSettings(await clientGetLiteChromeExtensionSettings())
       } catch (e) {
         console.log(e)
       } finally {

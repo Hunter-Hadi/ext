@@ -9,6 +9,7 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
 import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import uniqBy from 'lodash-es/uniqBy'
 
 const useContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,
@@ -22,11 +23,12 @@ const useContextMenuList = (
     useContextMenuSearchTextStore()
   const originContextMenuListRef = useRef<IContextMenuItem[]>([])
   const groupByContextMenuList = useMemo(() => {
-    const originContextMenuList = buttonSettings?.contextMenu || []
-    originContextMenuListRef.current = originContextMenuList
-    const groupByContextMenuList = groupByContextMenuItem(
-      cloneDeep(originContextMenuList),
+    const originContextMenuList = uniqBy(
+      cloneDeep(buttonSettings?.contextMenu || []),
+      'id',
     )
+    originContextMenuListRef.current = originContextMenuList
+    const groupByContextMenuList = groupByContextMenuItem(originContextMenuList)
     if (favoriteContextMenuGroup) {
       groupByContextMenuList.unshift(favoriteContextMenuGroup)
     }

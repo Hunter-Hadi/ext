@@ -14,6 +14,7 @@ import {
   getIframePageContent,
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -225,7 +226,9 @@ export const getPageSummaryConversationId = () => {
 }
 export const getPageSummaryType = (): IPageSummaryType => {
   if (getCurrentDomainHost() === 'youtube.com') {
-    return 'YOUTUBE_VIDEO_SUMMARY'
+    if (YoutubeTranscript.retrieveVideoId(window.location.href)) {
+      return 'YOUTUBE_VIDEO_SUMMARY'
+    }
   }
   const url = new URL(location.href)
   const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`

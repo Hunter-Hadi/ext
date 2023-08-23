@@ -96,7 +96,7 @@ export class YoutubeTranscript {
    * Retrieve video id from url or string
    * @param videoId video url or video id
    */
-  private static retrieveVideoId(videoId: string) {
+  public static retrieveVideoId(videoId: string) {
     if (videoId.length === 11) {
       return videoId
     }

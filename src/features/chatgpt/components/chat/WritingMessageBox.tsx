@@ -66,6 +66,7 @@ const WritingMessageBox: FC<{
     })
     onChange?.(floatingContextMenuDraftText)
   }, [floatingContextMenuDraftText, floatingDropdownMenu.open])
+  const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = React.useRef<HTMLDivElement>(null)
   useEffect(() => {
     // scroll to bottom
@@ -94,12 +95,32 @@ const WritingMessageBox: FC<{
       }
     }
     boxRef.current?.addEventListener('keydown', keydownHandler, true)
+    const container = containerRef.current
+    const observerCallback = () => {
+      if (container) {
+        console.log(boxRef.current?.offsetHeight, '监听高度变化！！！')
+        container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
+        setTimeout(() => {
+          container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
+        }, 0)
+      }
+    }
+    const observer = new MutationObserver(observerCallback)
+    if (container) {
+      observer.observe(container, {
+        attributes: false,
+        childList: true,
+        subtree: true, // 只监听目标元素自身的变动
+      })
+    }
     return () => {
+      observer.disconnect()
       boxRef.current?.removeEventListener('keydown', keydownHandler, true)
     }
   }, [])
   return (
     <Stack
+      ref={containerRef}
       className={'chat-message--text'}
       whiteSpace={'pre-wrap'}
       width={'100%'}

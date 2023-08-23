@@ -19,6 +19,7 @@ import {
 import { getAppContextMenuRootElement, getAppRootElement } from '@/utils'
 import { getInputMediator } from '@/store/InputMediator'
 import { ContextMenuSearchTextStoreI18nStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import uniqBy from 'lodash-es/uniqBy'
 
 export const groupByContextMenuItem = (
   items: IContextMenuItem[],
@@ -289,7 +290,7 @@ export const fuzzySearchContextMenuList = (
   console.log(filterResult, queryWords)
   // 还原一层的树级结构
   const results: IContextMenuItemWithChildren[] = []
-  const groupByParent = groupBy(filterResult, 'parent')
+  const groupByParent = groupBy(uniqBy(filterResult, 'id'), 'parent')
   console.log(groupByParent)
   Object.keys(groupByParent).forEach((parent) => {
     const children = (

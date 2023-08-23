@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IAIProviderType } from '@/background/provider/chat'
 import { setChromeExtensionSettings } from '@/background/utils'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
@@ -13,6 +13,10 @@ const useAIProvider = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const { changeConversation, switchBackgroundChatSystemAIProvider } =
     useClientConversation()
+  const currentAIProviderRef = useRef(appSettings.currentAIProvider)
+  useEffect(() => {
+    currentAIProviderRef.current = appSettings.currentAIProvider
+  }, [appSettings.currentAIProvider])
   const updateChatGPTProvider = async (provider: IAIProviderType) => {
     try {
       setLoading(true)
@@ -70,6 +74,7 @@ const useAIProvider = () => {
     }
   }
   return {
+    currentAIProviderRef,
     provider: appSettings.currentAIProvider,
     updateChatGPTProvider,
     loading,

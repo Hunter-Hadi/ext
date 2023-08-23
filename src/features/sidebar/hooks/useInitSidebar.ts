@@ -5,6 +5,7 @@ import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import { AppSettingsState } from '@/store'
 import usePageUrlChange from '@/hooks/usePageUrlChange'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useAIProvider from '@/features/chatgpt/hooks/useAIProvider'
 
 const useInitSidebar = () => {
   const appSettings = useRecoilValue(AppSettingsState)
@@ -13,9 +14,15 @@ const useInitSidebar = () => {
     useRecoilState(SidebarSettingsState)
   const { pageUrl, startListen } = usePageUrlChange()
   const { changeConversation } = useClientConversation()
-  const sidebarTypeRef = useRef(sidebarSettings.type)
+  const sidebarSettingsRef = useRef(sidebarSettings)
+  const { currentAIProviderRef, updateChatGPTProvider } = useAIProvider()
+  const lastChatTypeAIProviderRef = useRef(currentAIProviderRef.current)
+  useEffect(() => {
+    sidebarSettingsRef.current = sidebarSettings
+  }, [sidebarSettings])
   useEffect(() => {
     if (sidebarSettings.type === 'Summary') {
+      lastChatTypeAIProviderRef.current = currentAIProviderRef.current
       createPageSummary()
         .then()
         .catch()
@@ -25,17 +32,25 @@ const useInitSidebar = () => {
         })
     } else if (
       sidebarSettings.type === 'Chat' &&
-      sidebarSettings.chatConversationId
+      sidebarSettingsRef.current?.chatConversationId
     ) {
-      changeConversation(sidebarSettings.chatConversationId)
+      changeConversation(sidebarSettingsRef.current.chatConversationId).then(
+        (success) => {
+          if (!success && lastChatTypeAIProviderRef.current) {
+            console.log(lastChatTypeAIProviderRef.current)
+            updateChatGPTProvider(lastChatTypeAIProviderRef.current)
+          } else {
+            lastChatTypeAIProviderRef.current = currentAIProviderRef.current
+          }
+        },
+      )
     }
-    sidebarTypeRef.current = sidebarSettings.type
   }, [sidebarSettings.type])
 
   useEffect(() => {
     if (!sidebarSettings.summaryConversationId) {
       setTimeout(() => {
-        if (sidebarTypeRef.current === 'Summary') {
+        if (sidebarSettingsRef.current.type === 'Summary') {
           createPageSummary().then().catch()
         }
       }, 500)
@@ -43,7 +58,7 @@ const useInitSidebar = () => {
   }, [sidebarSettings.summaryConversationId])
   useEffect(() => {
     console.log('usePageUrlChange, pageUrl', pageUrl)
-    if (sidebarTypeRef.current === 'Summary') {
+    if (sidebarSettingsRef.current.type === 'Summary') {
       if (pageUrl) {
         console.log('新版Conversation pageUrl更新', pageUrl)
         // createPageSummary().then().catch()
@@ -58,7 +73,10 @@ const useInitSidebar = () => {
     }
   }, [pageUrl])
   useEffect(() => {
-    if (appSettings.chatTypeConversationId && sidebarSettings.type === 'Chat') {
+    if (
+      appSettings.chatTypeConversationId &&
+      sidebarSettingsRef.current.type === 'Chat'
+    ) {
       setSidebarSettings((prevState) => {
         return {
           ...prevState,
@@ -66,7 +84,7 @@ const useInitSidebar = () => {
         }
       })
     }
-  }, [appSettings.chatTypeConversationId, sidebarSettings.type])
+  }, [appSettings.chatTypeConversationId])
 }
 
 export default useInitSidebar

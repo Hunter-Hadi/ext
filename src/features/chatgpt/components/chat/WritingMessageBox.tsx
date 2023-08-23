@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect, useMemo, useRef } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import { AppSettingsState } from '@/store'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import {
@@ -15,6 +15,7 @@ import isEmpty from 'lodash-es/isEmpty'
 import { useTranslation } from 'react-i18next'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
+import debounce from 'lodash-es/debounce'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -68,12 +69,22 @@ const WritingMessageBox: FC<{
   }, [floatingContextMenuDraftText, floatingDropdownMenu.open])
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = React.useRef<HTMLDivElement>(null)
+  const updateHeight = useCallback(
+    debounce(() => {
+      const container = containerRef.current
+      if (!container) return
+      console.log('检测到高度更新:\t', boxRef.current?.offsetHeight)
+      container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
+    }, 100),
+    [],
+  )
   useEffect(() => {
     // scroll to bottom
     setTimeout(() => {
       boxRef.current?.scrollTo({
         top: boxRef.current.scrollHeight,
       })
+      updateHeight()
     }, 0)
   }, [floatingContextMenuDraftText])
   useEffect(() => {
@@ -95,28 +106,6 @@ const WritingMessageBox: FC<{
       }
     }
     boxRef.current?.addEventListener('keydown', keydownHandler, true)
-    const container = containerRef.current
-    const observerCallback = () => {
-      if (container) {
-        console.log(boxRef.current?.offsetHeight, '监听高度变化！！！')
-        container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
-        setTimeout(() => {
-          container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
-        }, 0)
-      }
-    }
-    const observer = new MutationObserver(observerCallback)
-    if (container) {
-      observer.observe(container, {
-        attributes: false,
-        childList: true,
-        subtree: true, // 只监听目标元素自身的变动
-      })
-    }
-    return () => {
-      observer.disconnect()
-      boxRef.current?.removeEventListener('keydown', keydownHandler, true)
-    }
   }, [])
   return (
     <Stack

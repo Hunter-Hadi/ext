@@ -26,7 +26,7 @@ const useAIProvider = () => {
         : undefined
       let newProviderModel = ''
       if (provider === 'OPENAI') {
-        newProviderModel = cache.currentModel || ''
+        newProviderModel = cache.currentModel || 'text-davinci-002-render-sha'
       } else {
         newProviderModel = cache.thirdProviderSettings?.[provider]?.model || ''
       }

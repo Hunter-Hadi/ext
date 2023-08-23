@@ -23,6 +23,7 @@ import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { ChatGPTConversationState } from '@/features/sidebar'
 import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -336,7 +337,8 @@ const AutoHeightTextarea: FC<{
     if (
       appState.open &&
       textareaRef.current &&
-      InputId === ROOT_CHAT_BOX_INPUT_ID
+      InputId === ROOT_CHAT_BOX_INPUT_ID &&
+      !isFloatingContextMenuVisible()
     ) {
       console.log('focusTextareaAndAutoSize 侧边栏chat input', InputId)
       autoFocusWithAllWebsite(

@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Συνομιλία",
     "sidebar__tabs__summary__title": "Περίληψη",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Αναβαθμίστε για να συνοψίσετε και να συνομιλήσετε με οποιαδήποτε σελίδα",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Λάβετε συνόψεις, κάντε ερωτήσεις και βρείτε πληροφορίες για οποιαδήποτε ιστοσελίδα, PDF ή βίντεο YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Λάβετε συνόψεις, κάντε ερωτήσεις και βρείτε πληροφορίες για οποιαδήποτε ιστοσελίδα, PDF, email ή βίντεο YouTube."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

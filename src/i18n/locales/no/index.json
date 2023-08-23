@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Sammendrag",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Oppgrader for å oppsummere og chatte med hvilken som helst side",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Få sammendrag, still spørsmål og finn informasjon om hvilken som helst nettside, PDF eller YouTube-video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Få sammendrag, still spørsmål og finn informasjon om hvilken som helst nettside, PDF, e-post eller YouTube-video."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

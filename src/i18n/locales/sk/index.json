@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Prehľad",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Vylepšite si možnosť zhrnúť a chatovať s akoukoľvek stránkou",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Získajte zhrnutia, položte otázky a nájdite informácie o akomkoľvek webovom sídle, PDF alebo YouTube videu."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Získajte súhrny, položte otázky a nájdite informácie o akomkoľvek webovom sídle, PDF, e-mailu alebo YouTube videu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "چت",
     "sidebar__tabs__summary__title": "خلاصه",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ارتقا برای خلاصه‌سازی و گفتگو با هر صفحه",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "خلاصه‌ها را دریافت کنید، سوال بپرسید و اطلاعاتی درباره هر صفحه و PDF یا ویدیوی YouTube پیدا کنید."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "خلاصه ها را بگیرید، سوال بپرسید و اطلاعاتی درباره هر صفحه وب، PDF، ایمیل یا ویدیوی YouTube پیدا کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

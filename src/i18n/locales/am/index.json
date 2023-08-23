@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "ውይይት",
     "sidebar__tabs__summary__title": "ጥቅምት",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ዝርዝር እስካሁን በመግለጽ የጽሑፍ እና የአስተዳደር ማስታወቂያ ይዘት ይጠቀሙ",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "የጽሑፍን፣ ጥያቄዎችን የሚጠቅሙበትና የሚፈልጉትን መረጃዎች ለመግለጽ፣ ለመግለጽ የሚያስተካክሉትን የድረ-ገጽዎችን፣ PDF ወይም YouTube ቪዲዮዎችን ያግኙ።"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "የይዘት መግለጫዎችን ይዘት ያስገቡ፣ ጥያቄዎች ያግኙና የይዘት መረጃዎችን ያግኙ ለድረ-ገጽ፣ PDF፣ ኢሜይል፣ ወይም YouTube ቪዲዮ ስታትስቲክ ማድረግ ይችላሉ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

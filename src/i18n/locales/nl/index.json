@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Samenvatting",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Upgrade om elke pagina samen te vatten en te chatten",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ontvang samenvattingen, stel vragen en vind informatie over elke webpagina, PDF of YouTube-video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ontvang samenvattingen, stel vragen en vind informatie over elke webpagina, PDF, e-mail of YouTube-video."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

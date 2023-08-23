@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Riepilogo",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Aggiorna per riassumere e chattare con qualsiasi pagina",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ottieni riassunti, fai domande e trova informazioni su qualsiasi pagina web, PDF o video di YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ottieni riassunti, fai domande e trova informazioni su qualsiasi pagina web, PDF, email o video di YouTube."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

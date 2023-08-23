@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Resumé",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Opgrader for at opsummere og chatte med enhver side",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Få opsummeringer, stil spørgsmål og find information om enhver hjemmeside, PDF eller YouTube-video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Få resuméer, stil spørgsmål og find information om enhver webside, PDF, e-mail eller YouTube-video."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

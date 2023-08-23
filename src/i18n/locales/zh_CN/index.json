@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "聊天",
     "sidebar__tabs__summary__title": "摘要",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "升级以总结和与任何页面聊天",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "获取页面、PDF 或 YouTube 视频的摘要，提问并查找信息。"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "获取任何网页、PDF、电子邮件或YouTube视频的摘要，提问和查找信息。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

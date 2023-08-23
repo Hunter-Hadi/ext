@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "聊天",
     "sidebar__tabs__summary__title": "摘要",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "升級以總結和與任何頁面聊天",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "獲取總結，提問並查找有關任何網頁、PDF或YouTube視頻的信息。"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "獲取任何網頁、PDF、電子郵件或YouTube視頻的摘要，提問並尋找相關信息。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

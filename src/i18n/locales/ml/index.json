@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "ചാറ്റ്",
     "sidebar__tabs__summary__title": "സംഗ്രഹം",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ഏതെങ്കിലും പേജ് സംഗ്രഹം ചെയ്യുകയും ചാറ്റുചെയ്യുകയും ചെയ്യാന്‍ അപ്‌ഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "ഏതെങ്കിലും വെബ്‌പേജ്, പിഡിഎഫ് അല്ലെങ്കില്‍ YouTube വീഡിയോയെക്കുറിച്ച് സംഗ്രഹം ചെയ്യുക, ചോദ്യങ്ങള്‍ ചോദിക്കുക, വിവരങ്ങള്‍ കണ്ടെത്തുക."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "ഏതെങ്കിലും വെബ്‌പേജ്, പിഡിഎഫ്, ഇമെയിൽ, അല്ലെങ്കിൽ YouTube വീഡിയോയെക്കുറിച്ച് സംഗീതം, ചോദ്യങ്ങൾ ചോദിക്കുക, അല്ലെങ്കിൽ വിവരങ്ങൾ കണ്ടെത്തുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

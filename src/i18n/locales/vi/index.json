@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Trò chuyện",
     "sidebar__tabs__summary__title": "Tóm tắt",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Nâng cấp để tóm tắt và trò chuyện với bất kỳ trang nào",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Nhận tóm tắt, đặt câu hỏi và tìm thông tin về bất kỳ trang web, PDF hoặc video YouTube nào."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Nhận tóm tắt, đặt câu hỏi và tìm thông tin về bất kỳ trang web, PDF, email hoặc video YouTube nào."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "அரட்டை",
     "sidebar__tabs__summary__title": "சுருக்கம்",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "எந்த பக்கத்தையும் சுருக்கமாக்கி உரையாட, உரையாடுவதற்கு மேம்படுத்தவும்",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "எந்த வலைப்பக்கத்தின், PDF அல்லது YouTube வீடியோவின் சுருக்கங்களைப் பெறுங்கள், வினாக்களை கேள்விக்குரியதாக மற்றும் தகவல்களைக் கண்டுபிடிக்கவும்."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "எந்த வலைப்பக்கம், பிடிஎஃப், மின்னஞ்சல் அல்லது யூடியூப் வீடியோவும் பற்றிய சுருக்கங்களைப் பெறுங்கள், வினாக்களை கேள்விக்குறிப்புகளை கேட்கவும், தகவல்களைக் கண்டுபிடிக்கவும் அமைக்கலாம்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

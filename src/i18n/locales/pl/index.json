@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Czat",
     "sidebar__tabs__summary__title": "Podsumowanie",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Uaktualnij, aby podsumować i rozmawiać z dowolną stroną",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Otrzymuj podsumowania, zadawaj pytania i znajduj informacje o dowolnej stronie internetowej, pliku PDF lub filmie na YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Otrzymuj podsumowania, zadawaj pytania i znajduj informacje o dowolnej stronie internetowej, pliku PDF, e-mailu lub filmie na YouTube."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

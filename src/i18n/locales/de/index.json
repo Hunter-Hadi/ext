@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Zusammenfassung",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Upgrade, um jede Seite zusammenzufassen und zu chatten",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Erhalten Sie Zusammenfassungen, stellen Sie Fragen und finden Sie Informationen zu jeder Webseite, PDF oder YouTube-Video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Erhalten Sie Zusammenfassungen, stellen Sie Fragen und finden Sie Informationen zu jeder Webseite, PDF, E-Mail oder YouTube-Video."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

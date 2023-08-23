@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Resumen",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Actualiza para resumir y chatear con cualquier página",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Obtén resúmenes, haz preguntas y encuentra información sobre cualquier página web, PDF o video de YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Obtén resúmenes, haz preguntas y encuentra información sobre cualquier página web, PDF, correo electrónico o video de YouTube."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "चॅट",
     "sidebar__tabs__summary__title": "संक्षेप",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "कोणत्याही पृष्ठाचे संक्षेप आणि चॅट करण्यासाठी अपग्रेड करा",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "कोणत्याही वेबपेज, पीडीएफ किंवा YouTube व्हिडिओवरील संक्षेप मिळवा, प्रश्न विचारा आणि माहिती शोधा."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "कोणत्याही वेबपेज, पीडीएफ, ईमेल किंवा YouTube व्हिडिओवरील संक्षेप, प्रश्न विचारा आणि माहिती शोधा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

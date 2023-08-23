@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Obrolan",
     "sidebar__tabs__summary__title": "Ringkasan",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Tingkatkan untuk merangkum dan berbicara dengan halaman apa pun",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Dapatkan ringkasan, ajukan pertanyaan, dan temukan informasi tentang halaman web, PDF, atau video YouTube apa pun."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Dapatkan ringkasan, ajukan pertanyaan, dan temukan informasi tentang halaman web, PDF, email, atau video YouTube apa pun."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

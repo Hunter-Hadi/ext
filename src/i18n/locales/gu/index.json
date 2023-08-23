@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "ચેટ",
     "sidebar__tabs__summary__title": "સારાંશ",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "કોઈ પૃષ્ઠને સંક્ષેપમાં અપગ્રેડ કરો અને ચેટ કરો",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "કોઈ વેબપેજ, PDF અથવા YouTube વિડિઓ વિશે સંક્ષેપો મેળવો, પ્રશ્નો પૂછો અને માહિતી શોધો."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "કોઈ પેજ, PDF, ઇમેઇલ અથવા YouTube વિડિઓ વિશેની સંક્ષેપો મેળવો, પ્રશ્નો પૂછો અને માહિતી શોધો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

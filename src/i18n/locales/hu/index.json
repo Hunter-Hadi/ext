@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Csevegés",
     "sidebar__tabs__summary__title": "Összefoglaló",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Frissítés a bármely oldal összefoglalásához és csevegéshez",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Szerezzen összefoglalókat, tegyen fel kérdéseket és találjon információkat bármely weboldalról, PDF-ről vagy YouTube-videóról."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Kapjon összefoglalókat, tegyen fel kérdéseket és találjon információt bármely weboldalról, PDF-ről, e-mailről vagy YouTube videóról."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

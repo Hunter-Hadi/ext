@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "채팅",
     "sidebar__tabs__summary__title": "요약",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "어떤 페이지든 요약하고 채팅을 업그레이드하세요",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "웹페이지, PDF 또는 YouTube 비디오에 대한 요약, 질문 및 정보를 얻으세요."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "웹페이지, PDF, 이메일 또는 YouTube 동영상에 대한 요약 정보를 얻고 질문을 하며 정보를 찾아보세요."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

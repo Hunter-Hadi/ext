@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "الدردشة",
     "sidebar__tabs__summary__title": "الملخص",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ترقية للملخص والدردشة مع أي صفحة",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "احصل على ملخصات، اطرح أسئلة، وابحث عن معلومات حول أي صفحة وثيقة PDF أو فيديو يوتيوب."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "احصل على ملخصات، اطرح أسئلة، وابحث عن معلومات حول أي صفحة ويب، ملف PDF، بريد إلكتروني، أو فيديو يوتيوب."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

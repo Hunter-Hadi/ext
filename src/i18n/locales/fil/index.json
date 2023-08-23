@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Buod",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Mag-upgrade para sa buod at pakikipag-chat sa anumang pahina",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Kumuha ng mga buod, magtanong, at humanap ng impormasyon tungkol sa anumang pahina, PDF, o YouTube video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Kumuha ng mga buod, magtanong, at humanap ng impormasyon tungkol sa anumang webpage, PDF, email, o YouTube video."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

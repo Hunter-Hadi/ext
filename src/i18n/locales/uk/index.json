@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "چیٹ",
     "sidebar__tabs__summary__title": "خلاصہ",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "کسی بھی صفحے کو خلاصہ کرنے اور چیٹ کرنے کے لئے اپگریڈ کریں",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "کسی بھی ویب پیج، پی ڈی ایف یا یوٹیوب ویڈیو کے بارے میں خلاصے حاصل کریں، سوالات پوچھیں اور معلومات تلاش کریں۔"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "کسی بھی ویب پیج، پی ڈی ایف، ای میل یا یوٹیوب ویڈیو کے بارے میں خلاصے حاصل کریں، سوالات پوچھیں اور معلومات تلاش کریں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Klepet",
     "sidebar__tabs__summary__title": "Povzetek",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Nadgradite za povzetek in klepet z vsako stranjo",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Dobite povzetke, postavljajte vprašanja in poiščite informacije o katerikoli spletni strani, PDF dokumentu ali YouTube videu."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Dobite povzetke, postavljajte vprašanja in poiščite informacije o kateri koli spletni strani, PDF-ju, e-pošti ali YouTube videu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

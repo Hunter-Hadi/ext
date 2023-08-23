@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Sohbet",
     "sidebar__tabs__summary__title": "Özet",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Herhangi bir sayfayı özetlemek ve sohbet etmek için yükseltin",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Herhangi bir web sayfası, PDF veya YouTube videosu hakkında özetler alın, sorular sorun ve bilgi bulun."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Herhangi bir web sayfası, PDF, e-posta veya YouTube videosu hakkında özetler alın, sorular sorun ve bilgi bulun."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

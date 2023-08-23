@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "चैट",
     "sidebar__tabs__summary__title": "सारांश",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "किसी भी पेज को संक्षेपित करने और चैट करने के लिए अपग्रेड करें",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "किसी भी वेबपेज, पीडीएफ या यूट्यूब वीडियो के बारे में संक्षेप, सवाल पूछें और जानकारी ढूंढें।"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "किसी भी वेबपेज, पीडीएफ, ईमेल या YouTube वीडियो के बारे में सारांश प्राप्त करें, सवाल पूछें और जानकारी ढूंढें।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

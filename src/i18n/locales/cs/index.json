@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Souhrn",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Vylepšete si možnosti shrnutí a chatování s jakoukoli stránkou",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Získejte shrnutí, položte otázky a najděte informace o jakékoli webové stránce, PDF nebo YouTube videu."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Získejte shrnutí, položte otázky a najděte informace o libovolné webové stránce, PDF, e-mailu nebo YouTube videu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

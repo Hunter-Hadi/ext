@@ -401,7 +401,7 @@
     "sidebar__tabs__chat__title": "చాట్",
     "sidebar__tabs__summary__title": "సంగ్రహం",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ఏ పేజీని సంగ్రహించడానికి మరియు చాట్ చేయడానికి నవీకరించండి",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "ఏ వెబ్‌పేజీ, PDF లేదా YouTube వీడియో గురించి సంగ్రహించండి, ప్రశ్నలు అడిగండి మరియు సమాచారం కనుగొనండి."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "ఏ వెబ్‌పేజీ, PDF, ఇమెయిలు లేదా YouTube వీడియో గురించి సంగ్రహాలను పొందండి, ప్రశ్నలను అడ్డంగా అడిగండి మరియు సమాచారాన్ని కనుగొనండి."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

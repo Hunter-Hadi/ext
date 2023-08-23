@@ -69,10 +69,12 @@ const WritingMessageBox: FC<{
   const boxRef = React.useRef<HTMLDivElement>(null)
   useEffect(() => {
     // scroll to bottom
-    boxRef.current?.scrollTo({
-      top: boxRef.current.scrollHeight,
-    })
-  }, [])
+    setTimeout(() => {
+      boxRef.current?.scrollTo({
+        top: boxRef.current.scrollHeight,
+      })
+    }, 0)
+  }, [floatingContextMenuDraftText])
   useEffect(() => {
     const keydownHandler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey) {

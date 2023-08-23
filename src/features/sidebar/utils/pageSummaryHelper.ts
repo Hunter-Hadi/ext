@@ -77,8 +77,6 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
           parameters: {
             SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
-            URLActionURL:
-              typeof window !== 'undefined' ? window.location.href : '',
           },
         },
         {

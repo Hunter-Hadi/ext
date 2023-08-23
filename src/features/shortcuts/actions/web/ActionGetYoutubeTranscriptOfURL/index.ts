@@ -9,6 +9,8 @@ import {
 } from '@/features/shortcuts'
 import { v4 as uuidV4 } from 'uuid'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { getPageContentWithPostlightParser } from '@/features/shortcuts/utils/pageContentHelper'
 export class ActionGetYoutubeTranscriptOfURL extends Action {
   static type = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
   constructor(
@@ -26,11 +28,15 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
   @withLoading()
   async execute(params: ActionParameters, engine: any) {
     try {
-      const youtubeLinkURL = this.parameters.URLActionURL || ''
+      const currentUrl = window.location.href.includes('youtube.com')
+        ? window.location.href
+        : ''
+      const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
       if (!youtubeLinkURL) {
         this.error = 'Youtube URL is empty.'
         return
       }
+      console.log('youtubeLinkURL', youtubeLinkURL)
       this.pushMessageToChat(
         {
           type: 'system',
@@ -42,9 +48,46 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
         },
         engine,
       )
-      const transcripts = await YoutubeTranscript.fetchTranscript(
-        youtubeLinkURL,
+      let transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL)
+      const isEmptyTranscriptText =
+        transcripts.length <= 10
+          ? transcripts
+              .map((item) => item.text)
+              .join('')
+              .trim() === ''
+          : false
+      console.log(
+        'usePageUrlChange default youtube transcripts',
+        transcripts,
+        isEmptyTranscriptText ? '空的' : '非空',
       )
+      if (isEmptyTranscriptText) {
+        // youtube网站切换网页是不会更新meta和title的，所以这里需要重新获取，这里为了更新效果，要fallback网页content的获取
+        if (youtubeLinkURL && youtubeLinkURL.startsWith('https://')) {
+          const pageHTMLResult = await clientFetchAPI(youtubeLinkURL, {
+            parse: 'text',
+          })
+          console.log(
+            'usePageUrlChange 爬取youtubeLinkURL',
+            youtubeLinkURL,
+            pageHTMLResult.data,
+          )
+          if (pageHTMLResult.success && pageHTMLResult.data) {
+            const pageContent = await getPageContentWithPostlightParser(
+              youtubeLinkURL,
+              pageHTMLResult.data,
+            )
+            transcripts = [
+              {
+                start: '',
+                duration: '',
+                text: pageContent,
+              },
+            ]
+          }
+        }
+        console.log('usePageUrlChange 新的youtube transcripts', transcripts)
+      }
       if (transcripts.length > 0) {
         let transcriptText = `${transcripts
           .map((transcript) => {

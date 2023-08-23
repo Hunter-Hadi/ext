@@ -38,12 +38,25 @@ const useInitSidebar = () => {
         if (sidebarTypeRef.current === 'Summary') {
           createPageSummary().then().catch()
         }
-      }, 100)
-    } else if (pageUrl) {
-      console.log('新版Conversation pageUrl更新', pageUrl)
-      createPageSummary().then().catch()
+      }, 500)
     }
-  }, [sidebarSettings.summaryConversationId, pageUrl])
+  }, [sidebarSettings.summaryConversationId])
+  useEffect(() => {
+    console.log('usePageUrlChange, pageUrl', pageUrl)
+    if (sidebarTypeRef.current === 'Summary') {
+      if (pageUrl) {
+        console.log('新版Conversation pageUrl更新', pageUrl)
+        // createPageSummary().then().catch()
+        // MARK: 太耗费tokens了，所以切到chat就行
+        setSidebarSettings((prevState) => {
+          return {
+            ...prevState,
+            type: 'Chat',
+          }
+        })
+      }
+    }
+  }, [pageUrl])
   useEffect(() => {
     if (appSettings.chatTypeConversationId && sidebarSettings.type === 'Chat') {
       setSidebarSettings((prevState) => {

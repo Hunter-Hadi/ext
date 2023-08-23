@@ -86,6 +86,7 @@ const useClientConversation = () => {
         }
       }
       const pageSummaryData = await generatePageSummaryData()
+      console.log('usePageUrlChange', pageSummaryData)
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
         data: {

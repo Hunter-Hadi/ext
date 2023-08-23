@@ -124,6 +124,7 @@ use-chat-gpt-ai,
 #USE_CHAT_GPT_AI_ROOT,
 #USE_CHAT_GPT_AI_ROOT_Wrapper{
   visibility: visible!important;
+  outline: none;
 }
 
 /*gmail end*/

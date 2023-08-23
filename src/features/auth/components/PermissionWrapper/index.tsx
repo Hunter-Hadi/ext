@@ -15,7 +15,7 @@ import { v4 as uuidV4 } from 'uuid'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
-import LazyLoadImage from '@/components/LazyloadImage'
+import LazyLoadImage from '@/components/LazyLoadImage'
 
 import {
   PermissionWrapperCardSceneType,
@@ -134,7 +134,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                 }}
               >
                 <LazyLoadImage
-                  skeletonHeight={140}
+                  height={140}
                   src={memoizedPermissionCard.imageUrl}
                   alt={`${memoizedPermissionCard.title} img`}
                 />

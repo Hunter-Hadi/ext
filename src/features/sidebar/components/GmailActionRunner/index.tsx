@@ -20,7 +20,7 @@ import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
 import { v4 as uuidV4 } from 'uuid'
-import LazyLoadImage from '@/components/LazyloadImage'
+import LazyLoadImage from '@/components/LazyLoadImage'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { usePermissionCard } from '@/features/auth'
 import {
@@ -206,7 +206,7 @@ const GmailActionRunner = () => {
                 }}
               >
                 <LazyLoadImage
-                  skeletonHeight={140}
+                  height={140}
                   src={permissionCardMemo.imageUrl}
                   alt={`${permissionCardMemo.title} img`}
                 />

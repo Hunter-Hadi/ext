@@ -17,6 +17,8 @@ import supersub from 'remark-supersub'
 import Highlight from 'react-highlight'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import Browser from 'webextension-polyfill'
+import LazyLoadImage from '@/components/LazyLoadImage'
 
 const OverrideAnchor: FC<{
   children: React.ReactNode
@@ -194,6 +196,15 @@ const CustomMarkdown: FC<{
                 if (src.startsWith('https://www.youtube.com/embed')) {
                   return <YoutubePlayerBox youtubeLink={src} borderRadius={4} />
                 }
+              }
+              // 付费卡片图片
+              // chrome-extension://ifpoijjcjepjemmhjankdocecgkpffde/assets/USE_CHAT_GPT_AI/images/upgrade/unlimited-ai-requests.png
+              if (
+                src?.includes(
+                  `${Browser.runtime.id}/assets/USE_CHAT_GPT_AI/images/upgrade`,
+                )
+              ) {
+                return <LazyLoadImage src={src} alt={alt || ''} height={208} />
               }
               return <img {...{ src, alt, title }} />
             },

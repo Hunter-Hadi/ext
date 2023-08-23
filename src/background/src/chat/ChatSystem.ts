@@ -76,6 +76,11 @@ class ChatSystem implements ChatSystemInterface {
             const { provider } = data
             await this.switchAdapter(provider)
             await this.auth(sender.tab?.id || 0)
+            console.log(
+              'Client_authChatGPTProvider',
+              this.currentAdapter?.status,
+              this.currentAdapter,
+            )
             return {
               success: true,
               data: {},
@@ -163,10 +168,8 @@ class ChatSystem implements ChatSystemInterface {
                     conversation.meta.AIProvider !== this.currentProvider
                   ) {
                     await this.switchAdapterWithConversation(conversation)
-                  } else if (
-                    this.currentAdapter?.conversation?.id !== conversation.id
-                  ) {
-                    // 如果会话存在，但是当前会话不一致，需要切换会话
+                  } else if (this.currentAdapter?.conversation?.id) {
+                    // 更新当前会话
                     await this.currentAdapter?.createConversation(conversation)
                   }
                   // 处理AIProvider的参数
@@ -310,16 +313,6 @@ class ChatSystem implements ChatSystemInterface {
     this.adapters[provider] = adapter
   }
   async switchAdapter(provider: IAIProviderType) {
-    if (provider === this.currentProvider) {
-      await this.preAuth()
-      log.info('switchAdapter', 'same provider no need to switch')
-      return
-    }
-    // destroy old adapter
-    if (this.currentAdapter) {
-      // 不需要销毁，因为会话还在，只是切换了AIProvider - 2023-08-17
-      // await this.currentAdapter.destroy()
-    }
     this.currentProvider = provider
     await setChromeExtensionSettings({
       currentAIProvider: provider,
@@ -332,7 +325,7 @@ class ChatSystem implements ChatSystemInterface {
     } catch (e) {
       log.error('switchAdapter', 'setUninstallURL', e)
     }
-    backgroundSendAllClientMessage('Client_updateAppSettings', {
+    await backgroundSendAllClientMessage('Client_updateAppSettings', {
       data: {},
     })
     return this.currentAdapter
@@ -412,7 +405,7 @@ class ChatSystem implements ChatSystemInterface {
       )
     // 如果conversation存在
     if (conversation) {
-      await this.switchAdapterWithConversation(conversation)
+      await this.switchAdapterWithConversation(conversation, false)
     }
     const result = await this.currentAdapter?.removeConversation(conversationId)
     return result
@@ -476,7 +469,10 @@ class ChatSystem implements ChatSystemInterface {
       conversationId,
     })
   }
-  async switchAdapterWithConversation(conversation: IChatConversation) {
+  async switchAdapterWithConversation(
+    conversation: IChatConversation,
+    needUpdateClientMessages = true,
+  ) {
     const currentConversationAIProvider = conversation.meta.AIProvider
     if (currentConversationAIProvider) {
       console.log('新版Conversation 切换会话: ', conversation?.id, conversation)
@@ -496,8 +492,10 @@ class ChatSystem implements ChatSystemInterface {
       await this.switchAdapter(currentConversationAIProvider)
       // 创建conversation
       await this.currentAdapter?.createConversation(conversation)
-      // 更新客户端的聊天记录
-      await this.updateClientConversationMessages(conversation.id)
+      if (needUpdateClientMessages) {
+        // 更新客户端的聊天记录
+        await this.updateClientConversationMessages(conversation.id)
+      }
     }
   }
 }

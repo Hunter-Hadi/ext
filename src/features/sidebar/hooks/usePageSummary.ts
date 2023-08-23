@@ -37,33 +37,57 @@ const usePageSummary = () => {
     if (isFetchingRef.current) {
       return
     }
+    console.log('新版Conversation 创建pageSummary')
     //切换至summary的时候把ChatGPT（MaxAI）的provider的onboarding check设置为true
     await setChromeExtensionOnBoardingData(
       'ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_USE_CHAT_GPT_PLUS',
       true,
     )
     const pageSummaryConversationId = getPageSummaryConversationId()
+    updateConversation((prevState) => {
+      return {
+        ...prevState,
+        loading: true,
+      }
+    })
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
       const pageSummaryConversation = await clientGetConversation(
         pageSummaryConversationId,
       )
+      // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
+        console.log('新版Conversation pageSummary已经存在')
         setSidebarSettings((prevState) => {
           return {
             ...prevState,
             summaryConversationId: pageSummaryConversationId,
           }
         })
-        return
+        if (
+          pageSummaryConversation.messages?.find(
+            (message) => message.type === 'ai',
+          )
+        ) {
+          updateConversation((prevState) => {
+            return {
+              ...prevState,
+              loading: false,
+            }
+          })
+          return
+        } else {
+          // 如果没有AI消息，那么清空所有消息，然后添加AI消息
+          await clientChatConversationModifyChatMessages(
+            'clear',
+            pageSummaryConversationId,
+            0,
+            [],
+          )
+        }
       }
       try {
-        updateConversation((prevState) => {
-          return {
-            ...prevState,
-            loading: true,
-          }
-        })
+        console.log('新版Conversation pageSummary开始创建')
         // 进入loading
         await createConversation()
         updateConversation((prevState) => {

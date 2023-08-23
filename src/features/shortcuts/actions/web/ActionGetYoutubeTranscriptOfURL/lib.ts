@@ -22,6 +22,9 @@ export class YoutubeTranscript {
   ): Promise<TranscriptResponse[]> {
     try {
       const identifier = this.retrieveVideoId(videoId)
+      if (!identifier) {
+        return []
+      }
       const pageHTMLResult = await clientFetchAPI(
         'https://www.youtube.com/watch?v=' + identifier,
         {

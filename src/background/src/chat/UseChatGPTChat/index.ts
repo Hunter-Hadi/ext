@@ -359,6 +359,7 @@ class UseChatGPTPlusChat extends BaseChat {
   }
   async updateClientStatus() {
     if (this.active) {
+      console.log('Client_authChatGPTProvider updateClientStatus', this.status)
       await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
         status: this.status,
       })

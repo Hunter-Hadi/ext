@@ -37,6 +37,7 @@ class BaseChat {
   }
   async removeConversationWithCache() {
     if (this.conversation?.id) {
+      debugger
       if (this.conversation.type === 'Summary') {
         console.log(
           '新版Conversation',

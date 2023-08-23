@@ -22,6 +22,7 @@ import {
   FloatingContextMenuMiddleware,
   getContextMenuRenderPosition,
   getDraftContextMenuTypeById,
+  isFloatingContextMenuVisible,
 } from '@/features/contextMenu/utils'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -70,7 +71,10 @@ import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderS
 import { AppSettingsState } from '@/store'
 import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
-import { SidebarSettingsState } from '@/features/sidebar'
+import {
+  ChatGPTConversationState,
+  SidebarSettingsState,
+} from '@/features/sidebar'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -82,6 +86,7 @@ const FloatingContextMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
+  const conversation = useRecoilValue(ChatGPTConversationState)
   const setAppSettings = useSetRecoilState(AppSettingsState)
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
@@ -267,34 +272,6 @@ const FloatingContextMenu: FC<{
       }
     }
   }, [memoMenuList, floatingDropdownMenu.open])
-  const oneTimesFocus = useRef(false)
-  useEffect(() => {
-    if (
-      floatingDropdownMenu.open &&
-      floatingDropdownMenuSelectedItem.lastHoverContextMenuId
-    ) {
-      if (oneTimesFocus.current) {
-        return
-      }
-      oneTimesFocus.current = true
-      // 说明focus element在context menu
-      console.log('测试 修改foucs')
-      const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${ROOT_FLOATING_INPUT_ID}`,
-      ) as HTMLTextAreaElement
-      if (textareaEl) {
-        // setTimeout(() => {
-        //   textareaEl?.focus()
-        //   setTimeout(() => {
-        //     textareaEl?.focus()
-        //   }, 4)
-        // }, 4)
-      }
-    }
-  }, [
-    floatingDropdownMenuSelectedItem.lastHoverContextMenuId,
-    floatingDropdownMenu.open,
-  ])
   /** 打开/关闭floating dropdown menu
    * @version 1.0 - 打开 dropdown menu:
    *    1. 自动focus
@@ -331,6 +308,20 @@ const FloatingContextMenu: FC<{
     }
     console.log('AIInput remove', floatingDropdownMenu.open)
   }, [floatingDropdownMenu.open])
+  useEffect(() => {
+    if (!conversation.loading) {
+      if (isFloatingContextMenuVisible()) {
+        const textareaEl = getAppContextMenuRootElement()?.querySelector(
+          `#${ROOT_FLOATING_INPUT_ID}`,
+        ) as HTMLTextAreaElement
+        if (textareaEl) {
+          setTimeout(() => {
+            textareaEl?.focus()
+          }, 1)
+        }
+      }
+    }
+  }, [conversation.loading])
   const askChatGPT = (inputValue: string) => {
     if (inputValue.trim()) {
       const draft = floatingContextMenuDraft

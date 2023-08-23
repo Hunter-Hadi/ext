@@ -4,8 +4,9 @@ import {
 } from '@/background/utils'
 import uniqBy from 'lodash-es/uniqBy'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import lodashSet from 'lodash-es/set'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 /**
  * @version 2.0 - 移除所有不可编辑的system prompt
@@ -50,24 +51,19 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
       }
     })
     await setChromeExtensionSettings((settings) => {
-      const newButtonSettings = mergeWithObject([
-        settings.buttonSettings,
-        {
-          [buttonKey]: {
-            contextMenu: updateMenuList,
-          },
-        },
-      ]) as any
+      const newSettings = cloneDeep(settings)
+      lodashSet(
+        newSettings,
+        `buttonSettings.${buttonKey}.contextMenu`,
+        updateMenuList,
+      )
       console.log(
         `force update menu count button: [${buttonKey}]`,
         updateCount,
         updateMenuList,
-        newButtonSettings,
+        newSettings.buttonSettings?.[buttonKey].contextMenu,
       )
-      return {
-        ...settings,
-        buttonSettings: newButtonSettings,
-      }
+      return newSettings
     })
   }
   for (const buttonKey of updateContextButtonKeys) {

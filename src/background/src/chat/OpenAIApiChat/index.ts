@@ -138,7 +138,10 @@ class OpenAiApiChat extends BaseChat {
       .then()
       .catch((err) => {
         log.info('streaming end error', err)
-        if (err?.message === 'The user aborted a request.') {
+        if (
+          err?.message === 'BodyStreamBuffer was aborted' ||
+          err?.message === 'The user aborted a request.'
+        ) {
           onMessage &&
             onMessage({
               type: 'error',

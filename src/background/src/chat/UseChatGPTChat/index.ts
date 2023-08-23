@@ -259,7 +259,10 @@ class UseChatGPTPlusChat extends BaseChat {
         log.info('streaming end error', err)
         isEnd = true
         hasError = true
-        if (err?.message === 'The user aborted a request.') {
+        if (
+          err?.message === 'BodyStreamBuffer was aborted' ||
+          err?.message === 'The user aborted a request.'
+        ) {
           onMessage &&
             onMessage({
               type: 'error',

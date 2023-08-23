@@ -660,7 +660,10 @@ class ChatGPTConversation {
       .then()
       .catch((err) => {
         try {
-          if (err?.message === 'The user aborted a request.') {
+          if (
+            err?.message === 'BodyStreamBuffer was aborted' ||
+            err?.message === 'The user aborted a request.'
+          ) {
             params.onEvent({
               type: 'error',
               data: { message: 'manual aborted request.', detail: '' },

@@ -54,6 +54,7 @@ async function esbuildConfig() {
     ],
     format: 'esm',
     drop: isProduction ? ['console', 'debugger'] : [],
+    // drop:  [],
     bundle: true,
     minify: isProduction,
     treeShaking: true,

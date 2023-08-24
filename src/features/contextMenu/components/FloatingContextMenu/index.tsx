@@ -361,6 +361,12 @@ const FloatingContextMenu: FC<{
       if (currentDraft) {
         template += `:\n"""\n${currentDraft}\n"""`
       }
+      setSidebarSettings((prevState) => {
+        return {
+          ...prevState,
+          type: 'Chat',
+        }
+      })
       setActions([
         {
           type: 'RENDER_CHATGPT_PROMPT',

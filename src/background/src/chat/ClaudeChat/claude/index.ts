@@ -126,7 +126,10 @@ export class Claude {
         // do nothing
       })
       .catch((err) => {
-        if (err?.message.includes('The user aborted a request.')) {
+        if (
+          err?.message === 'BodyStreamBuffer was aborted' ||
+          err?.message === 'The user aborted a request.'
+        ) {
           onMessage?.({
             completion: '',
             log_id: '',

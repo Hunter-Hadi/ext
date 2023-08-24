@@ -1,0 +1,9 @@
+#USE_CHAT_GPT_AI_ROOT_Context_Menu_Portal {
+    visibility: hidden;
+}
+#USE_CHAT_GPT_AI_ROOT_Context_Menu_Portal:has(#USE_CHAT_GPT_AI_ROOT_Floating_Reference_Element[aria-hidden="false"]) {
+    visibility: visible!important;
+}
+#USE_CHAT_GPT_AI_ROOT_Context_Menu_Portal:has(.max-ai__click-context-menu.open) {
+    visibility: visible!important;
+}

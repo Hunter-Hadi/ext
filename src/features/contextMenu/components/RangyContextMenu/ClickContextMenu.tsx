@@ -188,6 +188,7 @@ const ClickContextMenuButton: FC<{
       elevation={3}
       component={'div'}
       ref={refs.setFloating}
+      className={`max-ai__click-context-menu ${memoShow ? 'open' : 'close'}`}
       sx={{
         bgcolor: 'transparent',
         borderRadius: '14px',

@@ -29,6 +29,7 @@ const AIProviderInfoCard: FC<{
     BING: 'bing_web_app',
     POE: 'poe',
     CLAUDE: 'claude_web_app',
+    MAXAI_CLAUDE: 'claude',
   }
   return (
     <Stack

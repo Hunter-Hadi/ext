@@ -19,6 +19,7 @@ import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExt
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -149,6 +150,11 @@ const useAIProviderModels = () => {
       case 'POE':
         {
           currentModels = POE_MODELS
+        }
+        break
+      case 'MAXAI_CLAUDE':
+        {
+          currentModels = reverse(cloneDeep(MAXAI_CLAUDE_MODELS))
         }
         break
       default:

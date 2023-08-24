@@ -16,22 +16,22 @@ import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
-import {
-  IMaxAIChatGPTMessageType,
-  USE_CHAT_GPT_PLUS_MODELS,
-} from '@/background/src/chat/UseChatGPTChat/types'
 import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import {
+  IMaxAIClaudeMessageType,
+  MAXAI_CLAUDE_MODELS,
+} from '@/background/src/chat/MaxAIClaudeChat/types'
 
-const log = new Log('Background/Chat/UseChatGPTPlusChat')
+const log = new Log('Background/Chat/MaxAIClaudeChat')
 
-class UseChatGPTPlusChat extends BaseChat {
+class MaxAIClaudeChat extends BaseChat {
   status: ChatStatus = 'needAuth'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
-    super('UseChatGPTPlusChat')
+    super('MaxAIClaudeChat')
     this.init()
   }
   private init() {
@@ -71,21 +71,17 @@ class UseChatGPTPlusChat extends BaseChat {
    * @param question 问题
    * @param options
    * @param onMessage 回调
-   * @param options.include_history 是否包含历史记录
    * @param options.regenerate 是否重新生成
    * @param options.streaming 是否流式
-   * @param options.max_history_message_cnt 最大历史记录数
    * @param options.taskId 任务id
    */
   async askChatGPT(
     question: string,
     options?: {
       taskId: string
-      include_history?: boolean
       regenerate?: boolean
       streaming?: boolean
-      max_history_message_cnt?: number
-      chat_history?: IMaxAIChatGPTMessageType[]
+      chat_history?: IMaxAIClaudeMessageType[]
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -112,27 +108,23 @@ class UseChatGPTPlusChat extends BaseChat {
       return
     }
     const {
-      include_history = false,
       taskId,
       streaming = true,
       regenerate = false,
-      max_history_message_cnt = 0,
       chat_history = [],
     } = options || {}
-    const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
+    const userConfig = await getThirdProviderSettings('MAXAI_CLAUDE')
     const postBody = Object.assign(
       {
         chat_history,
-        include_history,
         regenerate,
         streaming,
         message_content: question,
-        max_history_message_cnt,
         chrome_extension_version: APP_VERSION,
         model_name:
           this.conversation?.meta.AIModel ||
           userConfig!.model ||
-          USE_CHAT_GPT_PLUS_MODELS[0].value,
+          MAXAI_CLAUDE_MODELS[0].value,
         temperature: isNumber(userConfig?.temperature)
           ? userConfig!.temperature
           : 1,
@@ -229,7 +221,7 @@ class UseChatGPTPlusChat extends BaseChat {
     }
     throttleEchoText()
     let isTokenExpired = false
-    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
+    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_claude_response`, {
       provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       method: 'POST',
       signal,
@@ -369,4 +361,4 @@ class UseChatGPTPlusChat extends BaseChat {
     }
   }
 }
-export { UseChatGPTPlusChat }
+export { MaxAIClaudeChat }

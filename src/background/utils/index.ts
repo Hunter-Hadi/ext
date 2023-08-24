@@ -37,6 +37,7 @@ import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/typ
 import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
 import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import ConversationManager from '@/background/src/chatConversations'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -127,6 +128,10 @@ export const getDefaultChromeExtensionSettings =
         },
         [AI_PROVIDER_MAP.POE]: {
           model: POE_MODELS[0].value,
+        },
+        [AI_PROVIDER_MAP.CLAUDE]: {
+          model: MAXAI_CLAUDE_MODELS[0].value,
+          temperature: 1,
         },
       },
     } as IChromeExtensionSettings

@@ -84,6 +84,7 @@ export const AI_PROVIDER_MAP = {
   BING: 'BING',
   CLAUDE: 'CLAUDE',
   POE: 'POE',
+  MAXAI_CLAUDE: 'MAXAI_CLAUDE',
 } as const
 
 // app.maxai.me

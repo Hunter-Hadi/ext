@@ -22,6 +22,7 @@ import {
   BardChat,
   BingChat,
   ChatSystem,
+  MaxAIClaudeChat,
   OpenAiApiChat,
   OpenAIChat,
   PoeChat,
@@ -32,6 +33,7 @@ import {
   BingChatProvider,
   ChatAdapter,
   ClaudeChatProvider,
+  MaxAIClaudeChatProvider,
   OpenAIApiChatProvider,
   OpenAIChatProvider,
   PoeChatProvider,
@@ -162,6 +164,9 @@ const initChromeExtensionMessage = () => {
   const claudeChatAdapter = new ChatAdapter(
     new ClaudeChatProvider(new ClaudeChat()),
   )
+  const maxAIClaudeAdapter = new ChatAdapter(
+    new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),
+  )
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
   chatSystem.addAdapter(
@@ -172,6 +177,7 @@ const initChromeExtensionMessage = () => {
   chatSystem.addAdapter(AI_PROVIDER_MAP.BARD, bardChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
 }
 
 /**

@@ -70,6 +70,14 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
           }}
         />
       )}
+      {aiProviderType === 'MAXAI_CLAUDE' && (
+        <ClaudeIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+          }}
+        />
+      )}
       {aiProviderType === 'POE' && (
         <PoeIcon
           sx={{

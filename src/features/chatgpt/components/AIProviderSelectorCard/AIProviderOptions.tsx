@@ -108,6 +108,16 @@ const AIProviderOptions: AIProviderOptionType[] = [
   },
   {
     beta: false,
+    label: 'client:provider__claude__title',
+    value: AI_PROVIDER_MAP.MAXAI_CLAUDE,
+    description: '',
+    authDescription: `client:provider__claude__auth_description`,
+    shortDescription: (t) => t(`client:provider__claude__short_description`),
+    authButtonText: `client:provider__claude__auth_button_text`,
+    authOpenInNew: false,
+  },
+  {
+    beta: false,
     description: '',
     label: 'client:provider__chatgpt__title',
     authDescription: `client:provider__chatgpt__auth_description`,

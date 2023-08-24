@@ -6,6 +6,7 @@ export { BardChatProvider } from './BardChatProvider'
 export { BingChatProvider } from './BingChatProvider'
 export { PoeChatProvider } from './PoeChatProvider'
 export { ClaudeChatProvider } from './ClaudeChatProvider'
+export { MaxAIClaudeChatProvider } from './MaxAIClaudeChatProvider'
 
 export type {
   ChatStatus,

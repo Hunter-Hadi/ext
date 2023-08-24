@@ -74,6 +74,10 @@ type IThirdProviderSettings = {
   [AI_PROVIDER_MAP.POE]: {
     model?: string
   }
+  [AI_PROVIDER_MAP.MAXAI_CLAUDE]: {
+    model?: string
+    temperature?: number
+  }
 }
 
 export type IChromeExtensionButtonSettingKey =

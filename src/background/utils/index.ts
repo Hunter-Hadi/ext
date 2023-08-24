@@ -129,7 +129,7 @@ export const getDefaultChromeExtensionSettings =
         [AI_PROVIDER_MAP.POE]: {
           model: POE_MODELS[0].value,
         },
-        [AI_PROVIDER_MAP.CLAUDE]: {
+        [AI_PROVIDER_MAP.MAXAI_CLAUDE]: {
           model: MAXAI_CLAUDE_MODELS[0].value,
           temperature: 1,
         },

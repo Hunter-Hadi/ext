@@ -10,7 +10,7 @@ import {
 import { v4 as uuidV4 } from 'uuid'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
-import { getPageContentWithPostlightParser } from '@/features/shortcuts/utils/pageContentHelper'
+import { getPageContentWithNpmParserPackages } from '@/features/shortcuts/utils/pageContentHelper'
 export class ActionGetYoutubeTranscriptOfURL extends Action {
   static type = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
   constructor(
@@ -73,7 +73,7 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
             pageHTMLResult.data,
           )
           if (pageHTMLResult.success && pageHTMLResult.data) {
-            const pageContent = await getPageContentWithPostlightParser(
+            const pageContent = await getPageContentWithNpmParserPackages(
               youtubeLinkURL,
               pageHTMLResult.data,
             )

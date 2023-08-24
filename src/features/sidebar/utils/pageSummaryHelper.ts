@@ -1,7 +1,7 @@
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
-import { getPageContentWithPostlightParser } from '@/features/shortcuts/utils/pageContentHelper'
+import { getPageContentWithNpmParserPackages } from '@/features/shortcuts/utils/pageContentHelper'
 import { getCurrentDomainHost } from '@/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
@@ -259,7 +259,9 @@ export const generatePageSummaryData = async (): Promise<{
   pageContent = pageContent.trim()
   if (!pageContent) {
     // 提取网页内容
-    pageContent = await getPageContentWithPostlightParser(window.location.href)
+    pageContent = await getPageContentWithNpmParserPackages(
+      window.location.href,
+    )
   }
   const md5 = md5TextEncrypt(pageContent)
   return {

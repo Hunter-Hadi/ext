@@ -6,6 +6,7 @@ import { AppSettingsState } from '@/store'
 import usePageUrlChange from '@/hooks/usePageUrlChange'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useAIProvider from '@/features/chatgpt/hooks/useAIProvider'
+import { useFocus } from '@/hooks/useFocus'
 
 const useInitSidebar = () => {
   const appSettings = useRecoilValue(AppSettingsState)
@@ -88,6 +89,14 @@ const useInitSidebar = () => {
       })
     }
   }, [appSettings.chatTypeConversationId])
+  useFocus(() => {
+    if (
+      sidebarSettingsRef.current.type === 'Chat' &&
+      sidebarSettingsRef.current.chatConversationId
+    ) {
+      changeConversation(sidebarSettingsRef.current.chatConversationId).then()
+    }
+  })
 }
 
 export default useInitSidebar

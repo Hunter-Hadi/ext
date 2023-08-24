@@ -39,7 +39,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: `Ignore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
+            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
 
 The context text is sourced from the main content of the webpage at {{CURRENT_WEBPAGE_URL}}.
 
@@ -83,7 +83,7 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: `Ignore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
+            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
 
 The context text is the transcript of a video from {{CURRENT_WEBPAGE_URL}}.
 
@@ -127,7 +127,7 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: `Ignore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
+            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
 
 The context text originates from the main content of a PDF viewed on the browser at {{CURRENT_WEBPAGE_URL}}.
 
@@ -165,7 +165,7 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: `Ignore all previous instructions. You are a highly proficient researcher that can write fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
+            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
 
 The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.
 

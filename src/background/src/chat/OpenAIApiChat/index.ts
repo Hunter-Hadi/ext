@@ -159,7 +159,7 @@ class OpenAiApiChat extends BaseChat {
             onMessage &&
               onMessage({
                 type: 'error',
-                error: `${error?.message}\nChange model at the top of the sidebar ☝️`,
+                error: `${error?.message}`,
                 done: true,
                 data: { text: '', conversationId },
               })

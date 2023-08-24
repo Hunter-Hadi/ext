@@ -55,8 +55,26 @@ export default [
         {
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
-            template:
-              '"""\n{{GMAIL_EMAIL_CONTEXT}}\n"""\nWrite a reply to the email above: ',
+            template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+Text:
+\`\`\`
+{{GMAIL_DRAFT_CONTEXT}}
+\`\`\`
+
+Your task requires you to write a concise email reply in a polite, friendly, professional, and proper way.
+
+Make the email reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the email reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the email reply is meant to do.
+
+Do not include email subject, just output the email reply message.
+
+Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+Now, write the email reply, mentioning these points:`,
           },
         },
         {

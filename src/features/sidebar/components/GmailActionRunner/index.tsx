@@ -259,7 +259,10 @@ const GmailActionRunner = () => {
           height: virtualElement?.height,
           zIndex: -1,
         }}
-      ></Box>
+      >
+        {/*⬇️⬇️⬇️只是为了渲染floating context menu的visible*/}
+        <div className={'contexify'} style={{ display: 'none' }} />
+      </Box>
     </TextOnlyTooltip>
   )
 }

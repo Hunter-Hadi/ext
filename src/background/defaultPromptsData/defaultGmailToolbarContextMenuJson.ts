@@ -61,7 +61,7 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.
 
 Text:
 \`\`\`
-{{GMAIL_DRAFT_CONTEXT}}
+{{GMAIL_EMAIL_CONTEXT}}
 \`\`\`
 
 Your task requires you to write a concise email reply in a polite, friendly, professional, and proper way.

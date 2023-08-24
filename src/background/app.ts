@@ -52,8 +52,6 @@ import {
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
-import { REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY } from '@/components/Announcement'
-import { ClaudeChat } from '@/background/src/chat/ClaudeWebappChat'
 import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
 
 /**
@@ -93,10 +91,6 @@ const initChromeExtensionInstalled = () => {
       await resetChromeExtensionOnBoardingData()
       await Browser.tabs.create({
         url: CHROME_EXTENSION_DOC_URL + '/get-started',
-      })
-      // delete when rebrand Announcement
-      await Browser.storage.local.set({
-        [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: false,
       })
     } else {
       // 保存本地快照

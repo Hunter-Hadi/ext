@@ -5,7 +5,7 @@ import { APP_VERSION, RELEASE_LOG_URL } from '@/constants'
 import Link from '@mui/material/Link'
 
 const SidebarChatBoxReleaseLog: FC = () => {
-  const ReleaseLogText = `Page summary & chat with page`
+  const ReleaseLogText = `Summarize and chat with any page`
   return (
     <Typography
       width={'100%'}

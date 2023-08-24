@@ -1,43 +1,11 @@
-import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
-import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
-import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import React, { useState } from 'react'
+import React from 'react'
 import CloseIcon from '@mui/icons-material/Close'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import Browser from 'webextension-polyfill'
-import { useTranslation } from 'react-i18next'
-
-const TWEET_URL = 'https://twitter.com/MaxAI_HQ/status/1673665954062954500'
-
-export const REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY =
-  'REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY_20230627'
 
 const Announcement = () => {
-  const { t } = useTranslation(['common', 'client'])
-  const [loaded, setLoaded] = useState(false)
-  const [hide, setHide] = useState(false)
-
-  const updateFlag = async (flag: boolean) => {
-    setHide(flag)
-    await Browser.storage.local.set({
-      [REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY]: flag,
-    })
-  }
-
-  useEffectOnce(() => {
-    Browser.storage.local
-      .get(REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY)
-      .then((result) => {
-        setHide(result[REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY])
-        setLoaded(true)
-      })
-  })
-
-  if (!loaded || hide) return null
-
+  // TODO: 以后有需要再用通告板块 - 2023-08-24
+  return null
   return (
     <Stack
       direction="row"
@@ -54,53 +22,8 @@ const Announcement = () => {
         justifyContent="center"
         maxWidth={395}
         mx={'auto'}
-      >
-        <Link
-          sx={{
-            color: 'inherit',
-            textDecoration: 'underline!important',
-            mr: 0.5,
-          }}
-          href={'https://www.usechatgpt.ai'}
-          target={'_blank'}
-        >
-          <Typography variant="caption" fontSize={16} fontWeight={500}>
-            UseChatGPT.AI
-          </Typography>
-        </Link>
-        {t('client:temp__rebrand__is_now')}
-        <Link
-          sx={{
-            color: 'inherit',
-            textDecoration: 'underline!important',
-            ml: 0.5,
-          }}
-          href={CHROME_EXTENSION_HOMEPAGE_URL}
-          target={'_blank'}
-        >
-          <Typography variant="caption" fontSize={16} fontWeight={500}>
-            MaxAI.me
-          </Typography>
-        </Link>
-        . 🎉
-        <Button
-          variant="outlined"
-          color="inherit"
-          href={TWEET_URL}
-          target={'_blank'}
-          sx={{
-            ml: 'auto !important',
-            color: 'inherit',
-            borderColor: 'inherit',
-          }}
-        >
-          {t('common:read_more')}
-        </Button>
-      </Stack>
-      <IconButton
-        sx={{ flexShrink: 0, ml: 0.5, color: 'inherit' }}
-        onClick={() => updateFlag(true)}
-      >
+      ></Stack>
+      <IconButton sx={{ flexShrink: 0, ml: 0.5, color: 'inherit' }}>
         <CloseIcon sx={{ fontSize: '24px' }} />
       </IconButton>
     </Stack>

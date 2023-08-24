@@ -51,7 +51,7 @@ import {
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import { REBRAND_ANNOUNCEMENT_HIDDEN_SAVE_KEY } from '@/components/Announcement'
-import { ClaudeChat } from '@/background/src/chat/ClaudeChat'
+import { ClaudeChat } from '@/background/src/chat/ClaudeWebappChat'
 import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
 
 /**

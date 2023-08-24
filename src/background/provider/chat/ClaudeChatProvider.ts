@@ -6,7 +6,7 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { ClaudeChat } from '@/background/src/chat/ClaudeChat'
+import { ClaudeChat } from '@/background/src/chat/ClaudeWebappChat'
 import { IChatConversation } from '@/background/src/chatConversations'
 
 class ClaudeChatProvider implements ChatAdapterInterface {

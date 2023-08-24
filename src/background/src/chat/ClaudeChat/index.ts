@@ -1,89 +1,82 @@
-import BaseChat from '@/background/src/chat/BaseChat'
-import { Claude } from '@/background/src/chat/ClaudeChat/claude'
+import { ChatStatus } from '@/background/provider/chat'
+import Log from '@/utils/Log'
 import Browser from 'webextension-polyfill'
 import {
-  getClaudeOrganizationId,
-  removeAllCacheClaudeConversation,
-} from '@/background/src/chat/ClaudeChat/claude/api'
-import { IChatUploadFile } from '@/features/chatgpt/types'
-import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
-import { v4 as uuidV4 } from 'uuid'
-import { ClaudeAttachment } from '@/background/src/chat/ClaudeChat/claude/types'
-import ConversationManager from '@/background/src/chatConversations'
+  APP_USE_CHAT_GPT_API_HOST,
+  APP_USE_CHAT_GPT_HOST,
+  AI_PROVIDER_MAP,
+  BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
+  APP_VERSION,
+} from '@/constants'
+import {
+  backgroundSendAllClientMessage,
+  chromeExtensionLogout,
+} from '@/background/utils'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
+import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import BaseChat from '@/background/src/chat/BaseChat'
+import {
+  IMaxAIChatGPTMessageType,
+  USE_CHAT_GPT_PLUS_MODELS,
+} from '@/background/src/chat/UseChatGPTChat/types'
+import isNumber from 'lodash-es/isNumber'
+import { sendLarkBotMessage } from '@/utils/larkBot'
+import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 
-// 为了减少请求claude.ai网页，设置一个本地的token key
-const cacheTokenKey = 'CHROME_EXTENSION_LOCAL_STORAGE_CLAUDE_TOKEN_KEY'
-const CLAUDE_CONVERSATION_NAME = 'MaxAI.me'
-class ClaudeChat extends BaseChat {
-  private claude: Claude
+const log = new Log('Background/Chat/UseChatGPTPlusChat')
+
+class UseChatGPTPlusChat extends BaseChat {
+  status: ChatStatus = 'needAuth'
+  private lastActiveTabId?: number
+  private token?: string
   constructor() {
-    super('ClaudeChat')
-    this.claude = new Claude()
-    this.status = 'needAuth'
+    super('UseChatGPTPlusChat')
+    this.init()
   }
-  async init() {
-    this.log.info('init')
+  private init() {
+    log.info('init')
   }
   async preAuth() {
     this.active = true
-    const cache = await Browser.storage.local.get(cacheTokenKey)
-    if (cache[cacheTokenKey]) {
-      this.claude.organizationId = cache[cacheTokenKey]
-    }
-    this.status = this.claude.organizationId ? 'success' : 'needAuth'
-    await this.updateClientStatus(this.status)
+    await this.checkTokenAndUpdateStatus()
   }
-  async auth() {
+  async auth(authTabId: number) {
     this.active = true
-    // 获取organizationId, 如果没有则打开claude.ai网页
-    this.claude.organizationId = await getClaudeOrganizationId()
-    if (this.claude.organizationId) {
-      this.status = 'success'
-      // update cache
-      await Browser.storage.local.set({
-        [cacheTokenKey]: this.claude.organizationId,
-      })
-      await this.updateClientStatus('success')
-    } else {
-      // 打开claude.ai网页
+    this.lastActiveTabId = authTabId
+    await this.checkTokenAndUpdateStatus()
+    if (this.status === 'needAuth') {
+      // 引导去登陆
       await Browser.tabs.create({
-        url: 'https://claude.ai/chats',
         active: true,
+        url: APP_USE_CHAT_GPT_HOST,
       })
     }
+    await this.updateClientStatus()
   }
-  async createConversation(conversationData: Partial<IChatUploadFile>) {
-    if (!this.conversation) {
-      await super.createConversation(conversationData)
+  private async checkTokenAndUpdateStatus() {
+    const prevStatus = this.status
+    this.token = await this.getToken()
+    this.status = this.token ? 'success' : 'needAuth'
+    if (prevStatus !== this.status) {
+      log.info('checkTokenAndUpdateStatus', this.status, this.lastActiveTabId)
+      // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
+      this.lastActiveTabId = undefined
     }
-    if (this.conversation?.meta.AIConversationId) {
-      return this.conversation.id
-    }
-    const conversationId = await this.claude.createConversation(
-      CLAUDE_CONVERSATION_NAME,
-    )
-    // 创建会话的时候有可能失败，触发更新organizationId，所以可以在这里更新缓存
-    if (this.claude.organizationId) {
-      // update cache
-      await Browser.storage.local.set({
-        [cacheTokenKey]: this.claude.organizationId,
-      })
-    } else {
-      // 如果创建失败说明token过期了，需要重新登录
-      // 清空缓存
-      await Browser.storage.local.remove(cacheTokenKey)
-      // 重新登录
-      this.status = 'needAuth'
-      await this.updateClientStatus('needAuth')
-    }
-    if (this.conversation) {
-      this.conversation.meta.AIConversationId = conversationId
-      await ConversationManager.conversationDB.addOrUpdateConversation(
-        this.conversation,
-      )
-    }
-    return this.conversation?.id || ''
+    await this.updateClientStatus()
   }
+
+  /**
+   * 获取回答
+   * @param question 问题
+   * @param options
+   * @param onMessage 回调
+   * @param options.include_history 是否包含历史记录
+   * @param options.regenerate 是否重新生成
+   * @param options.streaming 是否流式
+   * @param options.max_history_message_cnt 最大历史记录数
+   * @param options.taskId 任务id
+   */
   async askChatGPT(
     question: string,
     options?: {
@@ -92,6 +85,7 @@ class ClaudeChat extends BaseChat {
       regenerate?: boolean
       streaming?: boolean
       max_history_message_cnt?: number
+      chat_history?: IMaxAIChatGPTMessageType[]
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -103,152 +97,276 @@ class ClaudeChat extends BaseChat {
       }
     }) => void,
   ) {
-    const { regenerate } = options || {}
-    let partOfMessageText = ''
-    this.log.info('ClaudeChat send')
-    await this.claude.sendMessage(question, {
-      regenerate: regenerate,
-      onMessage: (claudeMessage) => {
-        if (!claudeMessage.stop) {
-          // 有可能会有多个message
-          partOfMessageText += claudeMessage.completion || ''
-          onMessage?.({
+    await this.checkTokenAndUpdateStatus()
+    if (this.status !== 'success') {
+      onMessage &&
+        onMessage({
+          type: 'error',
+          done: true,
+          error: 'Your session has expired. Please log in.',
+          data: {
+            text: '',
+            conversationId: '',
+          },
+        })
+      return
+    }
+    const {
+      include_history = false,
+      taskId,
+      streaming = true,
+      regenerate = false,
+      max_history_message_cnt = 0,
+      chat_history = [],
+    } = options || {}
+    const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
+    const postBody = Object.assign(
+      {
+        chat_history,
+        include_history,
+        regenerate,
+        streaming,
+        message_content: question,
+        max_history_message_cnt,
+        chrome_extension_version: APP_VERSION,
+        model_name:
+          this.conversation?.meta.AIModel ||
+          userConfig!.model ||
+          USE_CHAT_GPT_PLUS_MODELS[0].value,
+        temperature: isNumber(userConfig?.temperature)
+          ? userConfig!.temperature
+          : 1,
+      },
+      // { conversation_id: this.conversation?.id || '' },
+    )
+    const controller = new AbortController()
+    const signal = controller.signal
+    if (taskId) {
+      this.taskList[taskId] = () => controller.abort()
+    }
+    log.info('streaming start', postBody)
+    // 后端会每段每段的给前端返回数据
+    // 前端保持匀速输出内容
+    let messageResult = ''
+    let isEnd = false
+    let hasError = false
+    let sentTextLength = 0
+    let conversationId = this.conversation?.id || ''
+    const sendTextSettings = await Browser.storage.local.get(
+      BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
+    )
+    const settings = sendTextSettings[BACKGROUND_SEND_TEXT_SPEED_SETTINGS] || {}
+    const interval = settings.interval || 50 //每隔(interval)ms输出一次
+    const echoTextRate = settings.rate || 0.5 // 每秒输出待发送文本的(rate * 100)%
+    const delay = (t: number) =>
+      new Promise((resolve) => setTimeout(resolve, t))
+    const throttleEchoText = async () => {
+      if (hasError) {
+        return
+      }
+      if (isEnd && sentTextLength === messageResult.length) {
+        // 在没有错误的情况下真正结束发送文本
+        log.info('streaming end success')
+        onMessage &&
+          onMessage({
+            done: true,
+            type: 'message',
+            error: '',
+            data: { text: '', conversationId },
+          })
+        return
+      }
+      let currentSendTextTextLength = 0
+      // 剩余要发送的文本长度
+      const waitSendTextLength = Math.floor(
+        messageResult.length - sentTextLength,
+      )
+      // 如果没有结束的话
+      if (!isEnd) {
+        // 发送剩余未文本的30%
+        const needSendTextLength = Math.floor(waitSendTextLength * echoTextRate)
+        currentSendTextTextLength = messageResult.slice(
+          sentTextLength,
+          needSendTextLength + sentTextLength,
+        ).length
+      } else {
+        // 如果结束了的话, 1秒钟发完剩下的文本, 至少发送10个字符
+        const needSendTextLength = Math.max(
+          Math.floor(messageResult.length * 0.1),
+          10,
+        )
+        currentSendTextTextLength = messageResult.slice(
+          sentTextLength,
+          needSendTextLength + sentTextLength,
+        ).length
+      }
+      if (currentSendTextTextLength > 0) {
+        log.debug(
+          'streaming echo message',
+          isEnd
+            ? '一秒发送完剩下的文本'
+            : `每${interval}毫秒发送剩余文本的${(echoTextRate * 100).toFixed(
+                0,
+              )}%`,
+          sentTextLength,
+          currentSendTextTextLength,
+          messageResult.length,
+        )
+        sentTextLength += currentSendTextTextLength
+        onMessage &&
+          onMessage({
             type: 'message',
             done: false,
             error: '',
             data: {
-              text: partOfMessageText,
-              conversationId: this.claude.conversationId!,
+              text: messageResult.slice(0, sentTextLength),
+              conversationId: conversationId,
             },
           })
-        } else {
-          if (claudeMessage.stop_reason === 'stop_sequence') {
-            onMessage?.({
-              type: 'message',
-              done: true,
-              error: '',
-              data: {
-                text: partOfMessageText,
-                conversationId: this.claude.conversationId!,
-              },
-            })
-          } else if (
-            claudeMessage.stop_reason === 'The user aborted a request.'
-          ) {
-            onMessage?.({
-              type: 'error',
-              error: 'manual aborted request.',
-              done: true,
-              data: { text: '', conversationId: this.claude.conversationId! },
-            })
-          } else {
-            onMessage?.({
-              type: 'error',
-              done: true,
-              error: claudeMessage.stop_reason || 'Network Error',
-              data: {
-                text: partOfMessageText,
-                conversationId: this.claude.conversationId!,
-              },
-            })
+      }
+      await delay(isEnd ? 100 : interval)
+      await throttleEchoText()
+    }
+    throttleEchoText()
+    let isTokenExpired = false
+    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
+      provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+      method: 'POST',
+      signal,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`,
+      },
+      body: JSON.stringify(postBody),
+      onMessage: (message: string) => {
+        try {
+          const messageData = JSON.parse(message as string)
+          if (messageData?.conversation_id) {
+            conversationId = messageData.conversation_id
           }
+          if (messageData?.text) {
+            // 记录到结果里，前端分流输出
+            messageResult += messageData.text
+          }
+          log.debug('streaming on message', messageResult)
+        } catch (e) {
+          log.error('parse message.data error: \t', e)
         }
       },
     })
-    await this.clearFiles()
+      .then()
+      .catch((err) => {
+        log.info('streaming end error', err)
+        isEnd = true
+        hasError = true
+        if (
+          err?.message === 'BodyStreamBuffer was aborted' ||
+          err?.message === 'The user aborted a request.'
+        ) {
+          onMessage &&
+            onMessage({
+              type: 'error',
+              error: 'manual aborted request.',
+              done: true,
+              data: { text: '', conversationId },
+            })
+          return
+        }
+        try {
+          const error = JSON.parse(err.message || err)
+          // 判断是不是付费model触发上线
+          if (error.msg && isPermissionCardSceneType(error.msg)) {
+            onMessage &&
+              onMessage({
+                type: 'error',
+                error: error.msg,
+                done: true,
+                data: { text: '', conversationId },
+              })
+            return
+          }
+          if (error?.code === 401) {
+            isTokenExpired = true
+          }
+          log.error('sse error', err)
+          onMessage &&
+            onMessage({
+              done: true,
+              type: 'error',
+              error: error.message || error.detail || 'Network error.',
+              data: { text: '', conversationId },
+            })
+        } catch (e) {
+          onMessage &&
+            onMessage({
+              done: true,
+              type: 'error',
+              error: 'Network error.',
+              data: { text: '', conversationId },
+            })
+        }
+      })
+    if (!isEnd) {
+      log.info('streaming end success')
+      if (messageResult === '') {
+        // HACK: 后端现在偶尔会返回空字符串，这里做个fallback
+        sendLarkBotMessage(
+          '[API] response empty string.',
+          JSON.stringify(
+            {
+              model: postBody.model_name,
+              promptTextLength: postBody.message_content.length,
+            },
+            null,
+            2,
+          ),
+          {
+            uuid: '6f02f533-def6-4696-b14e-1b00c2d9a4df',
+          },
+        )
+        onMessage &&
+          onMessage({
+            done: true,
+            type: 'error',
+            error:
+              'Something went wrong, please try again. If this issue persists, contact us via email.',
+            data: { text: '', conversationId },
+          })
+      } else {
+        isEnd = true
+      }
+    }
+    if (isTokenExpired) {
+      log.info('user token expired')
+      this.status = 'needAuth'
+      await chromeExtensionLogout()
+      await this.updateClientStatus()
+    }
   }
   async abortTask(taskId: string) {
-    this.claude.abortSendMessage()
-    return true
-  }
-  async removeConversation() {
-    this.conversation = undefined
-    await this.claude.resetConversation()
-    if (this.claude.organizationId) {
-      // 异步删除会话
-      removeAllCacheClaudeConversation(
-        this.claude.organizationId,
-        CLAUDE_CONVERSATION_NAME,
-      )
-        .then()
-        .catch()
+    if (this.taskList[taskId]) {
+      this.taskList[taskId]()
+      delete this.taskList[taskId]
+      return true
     }
-    return
-  }
-  async getUploadFileToken() {
-    if (!this.claude.organizationId) {
-      await this.auth()
-    }
-    return this.claude.organizationId
-  }
-  async uploadFiles(files: IChatUploadFile[]) {
-    this.chatFiles = files
-    this.chatFiles = await Promise.all(
-      files.map(async (file) => {
-        if (file.uploadStatus !== 'success') {
-          const [fileUnit8Array, type] = deserializeUploadFile(file.file as any)
-          const blob = new Blob([fileUnit8Array], { type })
-          if (type.includes('pdf')) {
-            const attachmentResult = await this.claude.uploadAttachment(
-              blob,
-              file.fileName,
-            )
-            if (attachmentResult.success && attachmentResult.data) {
-              return {
-                ...file,
-                id: attachmentResult.data.id,
-                file: undefined, // 释放内存
-                uploadStatus: 'success',
-                uploadProgress: 100,
-              } as IChatUploadFile
-            } else {
-              return {
-                ...file,
-                file: undefined, // 释放内存
-                uploadStatus: 'error',
-                uploadProgress: 0,
-                uploadErrorMessage: attachmentResult.error,
-              } as IChatUploadFile
-            }
-          } else {
-            // 其他文件类型直接读取文本
-            const text = await blob.text()
-            const textAttachments = {
-              id: uuidV4(),
-              extracted_content: text,
-              file_name: file.fileName,
-              file_size: file.fileSize,
-              file_type: type,
-              totalPages: 1,
-            } as ClaudeAttachment
-            this.claude.attachments.push(textAttachments)
-            return {
-              ...file,
-              id: textAttachments.id,
-              file: undefined, // 释放内存
-              uploadStatus: 'success',
-              uploadProgress: 100,
-            } as IChatUploadFile
-          }
-        }
-        return file
-      }),
-    )
-  }
-  async removeFiles(fileIds: string[]) {
-    await super.removeFiles(fileIds)
-    fileIds.forEach((fileId) => {
-      this.claude.removeAttachment(fileId)
-    })
     return true
   }
   async destroy() {
-    await this.clearFiles()
-    this.claude.resetAttachments()
+    log.info('destroy')
     this.status = 'needAuth'
-    await this.updateClientStatus('needAuth')
+    // await this.updateClientStatus()
     this.active = false
   }
+  private async getToken() {
+    return await getChromeExtensionAccessToken()
+  }
+  async updateClientStatus() {
+    if (this.active) {
+      console.log('Client_authChatGPTProvider updateClientStatus', this.status)
+      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
+        status: this.status,
+      })
+    }
+  }
 }
-
-export { ClaudeChat }
+export { UseChatGPTPlusChat }

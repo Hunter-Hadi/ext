@@ -467,43 +467,64 @@ const BardIcon: FC<SvgIconProps> = (props) => {
 }
 const ClaudeIcon: FC<SvgIconProps> = (props) => {
   return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_8404_67589)">
+        <path
+          d="M20 0H4C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0Z"
+          fill="#D19974"
+        />
+        <path
+          d="M13.2993 4.95142L18.9196 19.0485H22.0018L16.3814 4.95142H13.2993Z"
+          fill="#181818"
+        />
+        <path
+          d="M7.30767 13.4701L9.23077 8.51595L11.1539 13.4701H7.30767ZM7.61946 4.95142L2 19.0485H5.14206L6.29133 16.0881H12.1704L13.3195 19.0485H16.4615L10.8421 4.95142H7.61946Z"
+          fill="#181818"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_8404_67589">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+const ClaudeWebappIcon: FC<SvgIconProps> = (props) => {
+  return (
     <SvgIcon {...props}>
       <svg
         width="24"
         height="24"
-        viewBox="0 0 256 256"
+        viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width="256" height="256" fill="#D19974" />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M155.465 174L118.721 82H98.2052L61.4609 174H80.0968L87.4259 155.282H129.5L136.829 174H155.465ZM122.791 138.147H94.1348L108.433 101.479L122.791 138.147Z"
-          fill="#1E1E1C"
-        />
-        <path
-          d="M193.635 174L156.439 82H138.449L174.999 174H193.635Z"
-          fill="#1E1E1C"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M94.1504 138.147L108.449 101.479L122.807 138.147H94.1504ZM95.6133 137.147L108.451 104.226L121.342 137.147H95.6133Z"
-          fill="black"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M119.666 81.6289L119.414 81H97.543L97.293 81.6289L60 175H80.7949L88.123 156.282H128.834L136.162 175H156.957L119.666 81.6289ZM129.516 155.282H87.4414L80.1133 174H61.4766L98.2207 82H118.736L155.48 174H136.846L129.516 155.282Z"
-          fill="black"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M157.295 81.625L157.043 81H138.174C138.174 81 137.996 81 137.891 81C137.785 81 137.607 81 137.607 81H136.977L174.336 175H195.135L157.295 81.625ZM156.369 82H138.449L175.016 174H193.65L156.369 82Z"
-          fill="black"
-        />
+        <g clipPath="url(#clip0_8404_67577)">
+          <path
+            d="M20 0H4C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0Z"
+            fill="black"
+          />
+          <path
+            d="M13.2993 4.95142L18.9196 19.0485H22.0018L16.3814 4.95142H13.2993Z"
+            fill="white"
+          />
+          <path
+            d="M7.30767 13.4701L9.23077 8.51595L11.1539 13.4701H7.30767ZM7.61946 4.95142L2 19.0485H5.14206L6.29133 16.0881H12.1704L13.3195 19.0485H16.4615L10.8421 4.95142H7.61946Z"
+            fill="white"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_8404_67577">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
       </svg>
     </SvgIcon>
   )
@@ -648,6 +669,7 @@ export {
   GmailToolBarIconBase64Data,
   GmailToolBarDropdownIconBase64Data,
   CleanChatBoxIcon,
+  ClaudeWebappIcon,
   GiftIcon,
   OpenAIIcon,
   ClaudeIcon,

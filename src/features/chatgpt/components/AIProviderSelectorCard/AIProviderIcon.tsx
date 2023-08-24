@@ -6,6 +6,7 @@ import {
   ChatGPTBlackIcon,
   ChatGPTIcon,
   ClaudeIcon,
+  ClaudeWebappIcon,
   OpenAIIcon,
   PoeIcon,
 } from '@/components/CustomIcon'
@@ -63,10 +64,12 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
         />
       )}
       {aiProviderType === 'CLAUDE' && (
-        <ClaudeIcon
+        <ClaudeWebappIcon
           sx={{
             ...sx,
             fontSize: size,
+            color: (t) =>
+              t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
           }}
         />
       )}

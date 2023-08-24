@@ -22,6 +22,7 @@ import {
   BardChat,
   BingChat,
   ChatSystem,
+  ClaudeWebappChat,
   MaxAIClaudeChat,
   OpenAiApiChat,
   OpenAIChat,
@@ -156,7 +157,7 @@ const initChromeExtensionMessage = () => {
   const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
   const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
   const claudeChatAdapter = new ChatAdapter(
-    new ClaudeChatProvider(new ClaudeChat()),
+    new ClaudeChatProvider(new ClaudeWebappChat()),
   )
   const maxAIClaudeAdapter = new ChatAdapter(
     new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),

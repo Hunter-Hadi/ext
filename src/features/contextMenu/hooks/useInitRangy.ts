@@ -310,6 +310,7 @@ const useInitRangy = () => {
       document.addEventListener('mouseup', mouseUpListener)
       document.addEventListener('keyup', keyupListener)
       clearListener = listenIframeMessage((iframeSelectionData) => {
+        debugger
         // AIInputLog.info('iframe message', iframeSelectionData)
         // Virtual Elements
         //  如果既不是可编辑元素，也没有选中的文本，不处理

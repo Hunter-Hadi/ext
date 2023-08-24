@@ -3,6 +3,9 @@ import { PoeWebBot } from '@/background/src/chat/PoeChat/poe'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
 import { getChromeExtensionOnBoardingData } from '@/background/utils'
 
+/**
+ * @deprecated
+ */
 class PoeChat extends BaseChat {
   private poeLib: PoeWebBot
   constructor() {

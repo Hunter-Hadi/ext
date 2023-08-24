@@ -248,10 +248,11 @@ export const generatePageSummaryData = async (): Promise<{
 }> => {
   const pageSummaryType = getPageSummaryType()
   let pageContent = ''
-  // 判断是不是需要从iframe获取网页内容
+  // 判断是不是需要从iframe获取网页内容: mircosoft word
   if (isNeedGetIframePageContent()) {
     pageContent = await getIframePageContent()
   } else if (isNeedGetSpecialHostPageContent()) {
+    // 判断是不是需要从特殊网站获取网页内容： google docs
     pageContent = await getSpecialHostPageContent()
   } else if (pageSummaryType === 'DEFAULT_EMAIL_SUMMARY') {
     pageContent = await getEmailWebsitePageContent()

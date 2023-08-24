@@ -14,7 +14,7 @@ import ConversationManager from '@/background/src/chatConversations'
 // 为了减少请求claude.ai网页，设置一个本地的token key
 const cacheTokenKey = 'CHROME_EXTENSION_LOCAL_STORAGE_CLAUDE_TOKEN_KEY'
 const CLAUDE_CONVERSATION_NAME = 'MaxAI.me'
-class ClaudeChat extends BaseChat {
+class ClaudeWebappChat extends BaseChat {
   private claude: Claude
   constructor() {
     super('ClaudeChat')
@@ -251,4 +251,4 @@ class ClaudeChat extends BaseChat {
   }
 }
 
-export { ClaudeChat }
+export { ClaudeWebappChat }

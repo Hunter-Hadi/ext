@@ -14,7 +14,7 @@ export const isNeedGetIframePageContent = () => {
   if (!url) {
     return false
   }
-  return ['onedrive.live.com/edit.aspx'].find((website) =>
+  return ['onedrive.live.com/edit.aspx', 'icloud.com/mail'].find((website) =>
     url.includes(website),
   )
 }
@@ -42,6 +42,17 @@ export const iframePageContentHelper = () => {
         ) {
           pageContent =
             (doc.querySelector('#PageContentContainer') as HTMLDivElement)
+              ?.innerText || ''
+        }
+        // iCloud mail
+        // https://www-mail.icloud-sandbox.com/applications/mail2-message/current/zh-cn/index.html
+        if (
+          iframeCurrentUrl.includes(
+            'icloud-sandbox.com/applications/mail2-message',
+          )
+        ) {
+          pageContent =
+            (doc.querySelector('.mail-message-defaults') as HTMLDivElement)
               ?.innerText || ''
         }
         pageContent = pageContent.trim()

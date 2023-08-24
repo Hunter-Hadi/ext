@@ -467,33 +467,31 @@ const BardIcon: FC<SvgIconProps> = (props) => {
 }
 const ClaudeIcon: FC<SvgIconProps> = (props) => {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g clipPath="url(#clip0_8404_67589)">
-        <path
-          d="M20 0H4C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0Z"
-          fill="#D19974"
-        />
-        <path
-          d="M13.2993 4.95142L18.9196 19.0485H22.0018L16.3814 4.95142H13.2993Z"
-          fill="#181818"
-        />
-        <path
-          d="M7.30767 13.4701L9.23077 8.51595L11.1539 13.4701H7.30767ZM7.61946 4.95142L2 19.0485H5.14206L6.29133 16.0881H12.1704L13.3195 19.0485H16.4615L10.8421 4.95142H7.61946Z"
-          fill="#181818"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_8404_67589">
-          <rect width="24" height="24" fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_8435_67633)">
+          <path
+            d="M20 0H4C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0Z"
+            fill="#D19974"
+          />
+          <path
+            d="M15.6487 6H13.0444L17.7937 18H20.3981L15.6487 6ZM8.12437 6L3.375 18H6.03075L7.002 15.48H11.9707L12.942 18H15.5977L10.8484 6H8.12437ZM7.86112 13.2514L9.48637 9.03412L11.1116 13.2514H7.86112Z"
+            fill="#1F1F1F"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_8435_67633">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </SvgIcon>
   )
 }
 const ClaudeWebappIcon: FC<SvgIconProps> = (props) => {
@@ -506,22 +504,14 @@ const ClaudeWebappIcon: FC<SvgIconProps> = (props) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clipPath="url(#clip0_8404_67577)">
+        <g clipPath="url(#clip0_8435_67633)">
           <path
-            d="M20 0H4C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0Z"
-            fill="black"
-          />
-          <path
-            d="M13.2993 4.95142L18.9196 19.0485H22.0018L16.3814 4.95142H13.2993Z"
-            fill="white"
-          />
-          <path
-            d="M7.30767 13.4701L9.23077 8.51595L11.1539 13.4701H7.30767ZM7.61946 4.95142L2 19.0485H5.14206L6.29133 16.0881H12.1704L13.3195 19.0485H16.4615L10.8421 4.95142H7.61946Z"
-            fill="white"
+            d="M15.6487 6H13.0444L17.7937 18H20.3981L15.6487 6ZM8.12437 6L3.375 18H6.03075L7.002 15.48H11.9707L12.942 18H15.5977L10.8484 6H8.12437ZM7.86112 13.2514L9.48637 9.03412L11.1116 13.2514H7.86112Z"
+            fill="currentColor"
           />
         </g>
         <defs>
-          <clipPath id="clip0_8404_67577">
+          <clipPath id="clip0_8435_67633">
             <rect width="24" height="24" fill="white" />
           </clipPath>
         </defs>

@@ -14,9 +14,11 @@ export const isNeedGetIframePageContent = () => {
   if (!url) {
     return false
   }
-  return ['onedrive.live.com/edit.aspx', 'icloud.com/mail'].find((website) =>
-    url.includes(website),
-  )
+  return [
+    'onedrive.live.com/edit.aspx',
+    'icloud.com/mail',
+    'navigator-lxa.mail.com/mail',
+  ].find((website) => url.includes(website))
 }
 
 export const iframePageContentHelper = () => {
@@ -54,6 +56,11 @@ export const iframePageContentHelper = () => {
           pageContent =
             (doc.querySelector('.mail-message-defaults') as HTMLDivElement)
               ?.innerText || ''
+        }
+        // mail.com
+        // https://3c-lxa.mail.com/mail/client/mailbody
+        if (iframeCurrentUrl.includes('mail.com/mail/client/mailbody')) {
+          pageContent = doc?.ownerDocument?.body?.innerText || ''
         }
         pageContent = pageContent.trim()
         if (!pageContent) {

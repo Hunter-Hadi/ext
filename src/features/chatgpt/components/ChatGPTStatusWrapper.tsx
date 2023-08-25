@@ -161,7 +161,7 @@ const ChatGPTStatusWrapper: FC = () => {
                 </Typography>
               </Stack>
               <Stack direction={'row'} alignItems={'center'} spacing={1}>
-                <AIProviderIcon aiProviderType={'CLAUDE'} size={20} />
+                <AIProviderIcon aiProviderType={'MAXAI_CLAUDE'} size={20} />
                 <Typography
                   component={'span'}
                   fontSize={'16px'}

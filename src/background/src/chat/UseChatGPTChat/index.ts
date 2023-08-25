@@ -133,9 +133,13 @@ class UseChatGPTPlusChat extends BaseChat {
           this.conversation?.meta.AIModel ||
           userConfig!.model ||
           USE_CHAT_GPT_PLUS_MODELS[0].value,
-        temperature: isNumber(userConfig?.temperature)
-          ? userConfig!.temperature
-          : 1,
+        /**
+         * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
+         */
+        temperature: Math.min(
+          isNumber(userConfig?.temperature) ? userConfig!.temperature : 1,
+          1.6,
+        ),
       },
       // { conversation_id: this.conversation?.id || '' },
     )

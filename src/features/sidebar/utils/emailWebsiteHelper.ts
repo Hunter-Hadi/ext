@@ -18,10 +18,10 @@ export const emailWebsiteTrafficRankings = [
     website: 'outlook.office.com',
     traffic: 1.63,
   },
-  // {
-  //   website: 'navigator-lxa.mail.com',
-  //   traffic: 1.51,
-  // },
+  {
+    website: 'navigator-lxa.mail.com',
+    traffic: 1.51,
+  },
   // {
   //   website: 'mail.aol.com',
   //   traffic: 1.07,

@@ -19,10 +19,7 @@ import useCommands from '@/hooks/useCommands'
 import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 
-const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = [
-  'mail.google.com',
-  'outlook.live.com',
-] as const
+const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
 
 /**
  * 判断是否需要创建selection marker
@@ -888,22 +885,6 @@ export const replaceMarkerContent = async (
             cssText: 'white-space: pre-wrap;',
             onSeparator: () => {
               const div = doc.createElement('div')
-              const br = doc.createElement('br')
-              div.appendChild(br)
-              return div
-            },
-          })
-        }
-        break
-      case 'outlook.live.com':
-        {
-          focusEditableElement()
-          highlightSelection()
-          insertValueToWithRichText(value, {
-            className: 'elementToProof ContentPasted0',
-            onSeparator: () => {
-              const div = doc.createElement('div')
-              div.className = 'elementToProof ContentPasted0'
               const br = doc.createElement('br')
               div.appendChild(br)
               return div

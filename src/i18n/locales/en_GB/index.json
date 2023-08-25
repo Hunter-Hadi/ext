@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Summary",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Upgrade to summarise and chat with any page",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Get summaries, ask questions, and find information about any webpage, PDF, email, or YouTube video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Get summaries, ask questions, and find information about any webpage, PDF, email, and YouTube video.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Upgrade to access claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarisation, and comprehension.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Upgrade to access claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K context window. Claude-instant-100k and Claude-2-100k.",
+    "provider__claude__auth_description": "Use Claude to power the extension.",
+    "provider__claude__auth_button_text": "Continue with Claude",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarisation, and comprehension.",
+    "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Sumar",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Upgradează pentru a rezuma și a discuta cu orice pagină",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Obține rezumate, pune întrebări și găsește informații despre orice pagină web, PDF, email sau videoclip YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Obține rezumate, pune întrebări și găsește informații despre orice pagină web, PDF, email și videoclip YouTube.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Upgrade pentru a accesa claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Cel mai rapid model al Anthropic, fereastră de context de 100K, excelent pentru analiza documentelor și codurilor foarte lungi, rezumarea și înțelegerea acestora.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Upgrade pentru a accesa claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Cel mai puternic model al Anthropic, fereastră de context de 100K, excelent pentru sarcini care variază de la dialog sofisticat și generare de conținut creativ la instrucțiuni detaliate.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "Fereastră de context de 100K. Claude-instant-100k și Claude-2-100k.",
+    "provider__claude__auth_description": "Utilizați Claude pentru a alimenta extensia.",
+    "provider__claude__auth_button_text": "Continuați cu Claude",
+    "provider__claude__model__claude_instant_100k__description": "Cel mai rapid model al Anthropic, fereastră de context de 100K, excelent pentru analiza documentelor și codului foarte lungi, rezumarea și înțelegerea.",
+    "provider__claude__model__claude_2_100k__description": "Cel mai puternic model al Anthropic, fereastră de context de 100K, excelent pentru sarcini care variază de la dialog sofisticat și generare de conținut creativ la instrucțiuni detaliate."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

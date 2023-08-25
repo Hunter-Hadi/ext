@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "แชท",
     "sidebar__tabs__summary__title": "สรุป",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "อัปเกรดเพื่อสรุปและสนทนากับหน้าใดก็ได้",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "รับสรุปเนื้อหา ถามคำถาม และค้นหาข้อมูลเกี่ยวกับเว็บเพจ ไฟล์ PDF อีเมล หรือวิดีโอ YouTube ใด ๆ"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "รับสรุปคำอธิบายหน้าเว็บเพจ ถามคำถาม และค้นหาข้อมูลเกี่ยวกับเว็บเพจ เอกสาร PDF อีเมล และวิดีโอ YouTube ใด ๆ",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "อัปเกรดเพื่อเข้าถึง claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "โมเดลที่เร็วที่สุดของ Anthropic หน้าต่างความสัมพันธ์ 100K ยอดเยี่ยมสำหรับเอกสารที่ยาวมากและการวิเคราะห์โค้ด การสรุปและความเข้าใจ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "อัปเกรดเพื่อเข้าถึง claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "โมเดลที่มีกำลังมากที่สุดของ Anthropic หน้าต่างความสัมพันธ์ 100K ยอดเยี่ยมสำหรับงานที่หลากหลายตั้งแต่การสนทนาที่ซับซ้อนและการสร้างเนื้อหาที่สร้างสรรค์ไปจนถึงคำแนะนำที่ละเอียด",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "หน้าต่างความสัมพันธ์ 100K คำ. Claude-instant-100k และ Claude-2-100k.",
+    "provider__claude__auth_description": "ใช้ Claude เพื่อขับเคลื่อนส่วนขยาย",
+    "provider__claude__auth_button_text": "ดำเนินการต่อด้วย Claude",
+    "provider__claude__model__claude_instant_100k__description": "โมเดลที่เร็วที่สุดของ Anthropic, หน้าต่างความสัมพันธ์ 100K คำ, เหมาะสำหรับเอกสารที่ยาวมากและการวิเคราะห์โค้ด, สรุปผลและเข้าใจ",
+    "provider__claude__model__claude_2_100k__description": "โมเดลที่มีกำลังมากที่สุดของ Anthropic, หน้าต่างความสัมพันธ์ 100K คำ, เหมาะสำหรับงานต่างๆ ตั้งแต่การสนทนาที่ซับซ้อนและการสร้างเนื้อหาที่สร้างสรรค์ไปจนถึงคำแนะนำที่ละเอียด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

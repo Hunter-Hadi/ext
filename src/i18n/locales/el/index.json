@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Συνομιλία",
     "sidebar__tabs__summary__title": "Περίληψη",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Αναβαθμίστε για να συνοψίσετε και να συνομιλήσετε με οποιαδήποτε σελίδα",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Λάβετε συνόψεις, κάντε ερωτήσεις και βρείτε πληροφορίες για οποιαδήποτε ιστοσελίδα, PDF, email ή βίντεο YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Λάβετε περιλήψεις, κάντε ερωτήσεις και βρείτε πληροφορίες για οποιαδήποτε ιστοσελίδα, PDF, email και YouTube βίντεο.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Αναβαθμίστε για πρόσβαση στο claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Ο γρηγορότερος μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για πολύ μεγάλα έγγραφα και ανάλυση κώδικα, περίληψη και κατανόηση.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Αναβαθμίστε για πρόσβαση στο claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Το πιο ισχυρό μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για εργασίες από εξεζητημένο διάλογο και δημιουργία δημιουργικού περιεχομένου έως λεπτομερείς οδηγίες.",
+    "provider__claude__title": "Κλωντ",
+    "provider__claude__short_description": "100K παράθυρο περιβάλλοντος. Κλωντ-άμεσο-100k και Κλωντ-2-100k.",
+    "provider__claude__auth_description": "Χρησιμοποιήστε τον Κλωντ για να ενισχύσετε την επέκταση.",
+    "provider__claude__auth_button_text": "Συνέχεια με τον Κλωντ",
+    "provider__claude__model__claude_instant_100k__description": "Ο γρηγορότερος μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για πολύ μεγάλα έγγραφα και ανάλυση κώδικα, συνοπτικότητα και κατανόηση.",
+    "provider__claude__model__claude_2_100k__description": "Το πιο ισχυρό μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για εργασίες από εξεζητημένο διάλογο και δημιουργία δημιουργικού περιεχομένου μέχρι λεπτομερείς οδηγίες."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

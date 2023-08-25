@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "聊天",
     "sidebar__tabs__summary__title": "摘要",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "升級以總結和與任何頁面聊天",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "獲取任何網頁、PDF、電子郵件或YouTube視頻的摘要，提問並尋找相關信息。"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "獲取任何網頁、PDF、電子郵件和YouTube視頻的摘要，提問並尋找相關信息。",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "升級以獲取claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic最快的模型，100K上下文窗口，非常適合長篇文件和代碼分析、摘要和理解。",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "升級以獲取claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic最強大的模型，100K上下文窗口，適用於從複雜對話和創意內容生成到詳細指導的各種任務。",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K 上下文視窗。Claude-instant-100k 和 Claude-2-100k。",
+    "provider__claude__auth_description": "使用 Claude 提供擴展功能。",
+    "provider__claude__auth_button_text": "繼續使用 Claude",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic 最快的模型，100K 上下文視窗，非常適合長篇文件和代碼分析、摘要和理解。",
+    "provider__claude__model__claude_2_100k__description": "Anthropic 最強大的模型，100K 上下文視窗，適用於從複雜對話和創意內容生成到詳細指導的各種任務。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

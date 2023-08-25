@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "ચેટ",
     "sidebar__tabs__summary__title": "સારાંશ",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "કોઈ પૃષ્ઠને સંક્ષેપમાં અપગ્રેડ કરો અને ચેટ કરો",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "કોઈ પેજ, PDF, ઇમેઇલ અથવા YouTube વિડિઓ વિશેની સંક્ષેપો મેળવો, પ્રશ્નો પૂછો અને માહિતી શોધો."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "કોઈ પેજ, PDF, ઇમેઇલ અને YouTube વિડિઓ વિશે સંગ્રહણીઓ મેળવો, પ્રશ્નો પૂછો અને માહિતી શોધો.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "પહોંચ મેળવવા માટે અપગ્રેડ કરો claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropicનું સર્વાધિક ઝડપીથી કાર્ય કરનારું મોડેલ, 100K સંદર્ભ વિંડો, ખૂબ લાંબા દસ્તાવેજ અને કોડ વિશ્લેષણ, સંગ્રહણ, અને સમજણ માટે મહત્ત્વપૂર્ણ.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "પહોંચ મેળવવા માટે અપગ્રેડ કરો claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropicનું સબસે શક્તિશાળી મોડેલ, 100K સંદર્ભ વિંડો, સુસંગત સંવાદ અને રચના ઉત્પાદનથી લેકર વિગતવાર નિર્દેશન સુધીની કાર્યો માટે મહત્ત્વપૂર્ણ.",
+    "provider__claude__title": "ક્લોડ",
+    "provider__claude__short_description": "100K સંદર્ભ વિંડો. ક્લોડ-ઇન્સ્ટન્ટ-100k અને ક્લોડ-2-100k.",
+    "provider__claude__auth_description": "એક્સ્ટેન્શન પર શક્તિ આપવા માટે ક્લોડનો ઉપયોગ કરો.",
+    "provider__claude__auth_button_text": "ક્લોડ સાથે ચાલો",
+    "provider__claude__model__claude_instant_100k__description": "એન્થ્રોપિકની સરળતાનું મોડેલ, 100K સંદર્ભ વિંડો, ખૂબ લાંબા દસ્તાવેજ અને કોડ વિશ્લેષણ, સંગ્રહણ, અને સમજણ માટે મહત્ત્વપૂર્ણ.",
+    "provider__claude__model__claude_2_100k__description": "એન્થ્રોપિકનું સૌથી શક્તિશાળી મોડેલ, 100K સંદર્ભ વિંડો, સુંદર સંવાદ અને રચના ઉત્પાદનથી લેકર વિગતવાર નિર્દેશન સુધીની કાર્યો માટે મહત્ત્વપૂર્ણ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

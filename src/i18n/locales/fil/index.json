@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Buod",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Mag-upgrade para sa buod at pakikipag-chat sa anumang pahina",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Kumuha ng mga buod, magtanong, at humanap ng impormasyon tungkol sa anumang webpage, PDF, email, o YouTube video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Kumuha ng mga buod, magtanong, at humanap ng impormasyon tungkol sa anumang webpage, PDF, email, at YouTube video.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Mag-upgrade para ma-access ang claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Ang pinakamabilis na modelo ng Anthropic, may 100K na window ng konteksto, mahusay para sa napakahabang dokumento at pagsusuri ng code, pagbuod, at pang-unawa.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Mag-upgrade para ma-access ang claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Ang pinakamalakas na modelo ng Anthropic, may 100K na window ng konteksto, mahusay para sa mga gawain mula sa kahusayan sa pakikipag-usap at paglikha ng nilalaman hanggang sa detalyadong tagubilin.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K window ng konteksto. Claude-instant-100k at Claude-2-100k.",
+    "provider__claude__auth_description": "Gamitin ang Claude upang palakasin ang extension.",
+    "provider__claude__auth_button_text": "Magpatuloy gamit ang Claude",
+    "provider__claude__model__claude_instant_100k__description": "Pinakamabilis na modelo ng Anthropic, may 100K window ng konteksto, mahusay para sa napakahabang dokumento at pagsusuri ng code, pag-uulit-ulit, at pang-unawa.",
+    "provider__claude__model__claude_2_100k__description": "Pinakamalakas na modelo ng Anthropic, may 100K window ng konteksto, mahusay para sa mga gawain mula sa kumplikadong pakikipag-usap at paglikha ng nilalaman hanggang sa detalyadong tagubilin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

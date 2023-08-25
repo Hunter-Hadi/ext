@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Prehľad",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Vylepšite si možnosť zhrnúť a chatovať s akoukoľvek stránkou",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Získajte súhrny, položte otázky a nájdite informácie o akomkoľvek webovom sídle, PDF, e-mailu alebo YouTube videu."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Získajte súhrny, položte otázky a nájdite informácie o akomkoľvek webovom sídle, PDF, e-maili a YouTube videu.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Vylepšite pre prístup k claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Najrýchlejší model od Anthropic, 100K kontextové okno, skvelý pre veľmi dlhé dokumenty a analýzu kódu, zhrnutie a porozumenie.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Vylepšite pre prístup k claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Najvýkonnejší model od Anthropic, 100K kontextové okno, skvelý pre úlohy od sofistikovaného dialógu a tvorby obsahu po podrobné inštrukcie.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K kontextové okno. Claude-instant-100k a Claude-2-100k.",
+    "provider__claude__auth_description": "Použite Clauda na napájanie rozšírenia.",
+    "provider__claude__auth_button_text": "Pokračovať s Claudom",
+    "provider__claude__model__claude_instant_100k__description": "Najrýchlejší model od Anthropic, 100K kontextové okno, skvelý pre veľmi dlhé dokumenty a analýzu kódu, zhrnutie a porozumenie.",
+    "provider__claude__model__claude_2_100k__description": "Najvýkonnejší model od Anthropic, 100K kontextové okno, skvelý pre úlohy od sofistikovaného dialógu a tvorby obsahu po podrobné inštrukcie."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

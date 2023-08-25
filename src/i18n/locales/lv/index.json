@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Čats",
     "sidebar__tabs__summary__title": "Kopsavilkums",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Jauniniet, lai apkopotu un sazinātos ar jebkuru lapu",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Iegūstiet kopsavilkumus, uzdodiet jautājumus un atrastiet informāciju par jebkuru tīmekļa lapu, PDF, e-pasta vai YouTube video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Iegūstiet kopsavilkumus, uzdodiet jautājumus un atrast informāciju par jebkuru tīmekļa lapu, PDF, e-pasta ziņojumu un YouTube video.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Jauniniet, lai piekļūtu claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic ātrākais modelis, 100K konteksta logs, lielisks ļoti garu dokumentu un kodu analīzei, kopsavilkumiem un saprašanai.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Jauniniet, lai piekļūtu claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic visvarenākais modelis, 100K konteksta logs, lielisks uzdevumiem sākot no sarežģītas dialoga līdz radošas saturveidošanas un detalizētām instrukcijām.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K konteksta logs. Claude-instant-100k un Claude-2-100k.",
+    "provider__claude__auth_description": "Izmantojiet Claude, lai padarītu paplašinājumu spēcīgāku.",
+    "provider__claude__auth_button_text": "Turpināt ar Claude",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic ātrākais modelis, 100K konteksta logs, lielisks ļoti garu dokumentu un koda analīzei, kopsavilkumiem un saprašanai.",
+    "provider__claude__model__claude_2_100k__description": "Anthropic visvarenākais modelis, 100K konteksta logs, lielisks uzdevumiem sākot no sarežģītas dialoga līdz radošas saturveidošanas un detalizētu instrukciju sniegšanai."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

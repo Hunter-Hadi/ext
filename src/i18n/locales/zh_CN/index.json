@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "聊天",
     "sidebar__tabs__summary__title": "摘要",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "升级以总结和与任何页面聊天",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "获取任何网页、PDF、电子邮件或YouTube视频的摘要，提问和查找信息。"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "获取任何网页、PDF、电子邮件和YouTube视频的摘要，提问并查找信息。",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "升级以访问claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic最快的模型，100K上下文窗口，非常适合长文档和代码分析、摘要和理解。",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "升级以访问claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic最强大的模型，100K上下文窗口，非常适合从复杂对话和创造性内容生成到详细指导的各种任务。",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K上下文窗口。Claude-instant-100k和Claude-2-100k。",
+    "provider__claude__auth_description": "使用Claude提供扩展功能。",
+    "provider__claude__auth_button_text": "继续使用Claude",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic最快的模型，100K上下文窗口，非常适合长文档和代码分析、摘要和理解。",
+    "provider__claude__model__claude_2_100k__description": "Anthropic最强大的模型，100K上下文窗口，非常适合从复杂对话和创造性内容生成到详细指导的任务。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

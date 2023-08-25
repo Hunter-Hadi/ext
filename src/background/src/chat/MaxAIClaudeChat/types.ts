@@ -16,14 +16,14 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     title: 'claude-instant-100k',
     titleTag: '',
     value: 'claude-instant-v1',
-    maxTokens: 4096,
+    maxTokens: 100000,
     tags: [],
     descriptions: [
       {
         label: (t) =>
           t('client:provider__model__tooltip_card__label__max_token'),
         value: (t) =>
-          `${numberWithCommas(4096, 0)} ${t(
+          `${numberWithCommas(100000, 0)} ${t(
             'client:provider__model__tooltip_card__label__max_token__suffix',
           )}`,
       },
@@ -31,11 +31,11 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
         value: (t) =>
-          t(`client:provider__chatgpt__model__gpt_3_5__description`),
+          t(`client:provider__claude__model__claude_instant_100k__description`),
       },
     ],
     permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4',
+      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
       roles: ['pro'],
     },
   },
@@ -43,14 +43,14 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     title: 'claude-2-100k',
     titleTag: '',
     value: 'claude-2',
-    maxTokens: 4096,
+    maxTokens: 100000,
     tags: [],
     descriptions: [
       {
         label: (t) =>
           t('client:provider__model__tooltip_card__label__max_token'),
         value: (t) =>
-          `${numberWithCommas(4096, 0)} ${t(
+          `${numberWithCommas(100000, 0)} ${t(
             'client:provider__model__tooltip_card__label__max_token__suffix',
           )}`,
       },
@@ -58,11 +58,11 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
         value: (t) =>
-          t(`client:provider__chatgpt__model__gpt_3_5__description`),
+          t(`client:provider__claude__model__claude_2_100k__description`),
       },
     ],
     permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4',
+      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2',
       roles: ['pro'],
     },
   },

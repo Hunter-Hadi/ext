@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "চ্যাট",
     "sidebar__tabs__summary__title": "সংক্ষিপ্ত",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "কোন পৃষ্ঠা সংক্ষেপ করতে এবং চ্যাট করতে আপগ্রেড করুন",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "কোন ওয়েবপেজ, পিডিএফ, ইমেল বা YouTube ভিডিও সম্পর্কে সারসংক্ষেপ পান, প্রশ্ন করুন এবং তথ্য খুঁজুন।"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "যেকোনো ওয়েবপেজ, পিডিএফ, ইমেল এবং YouTube ভিডিও সম্পর্কে সংক্ষিপ্ত বিবরণ, প্রশ্ন করুন এবং তথ্য খুঁজুন।",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "আপগ্রেড করুন claude-instant-100k এর অ্যাক্সেস পেতে",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic এর সর্বত্তক দ্রুত মডেল, 100K কনটেক্সট উইন্ডো, খুব দীর্ঘ নথি এবং কোড বিশ্লেষণ, সংক্ষেপণ এবং বোধগম্যতা জন্য অত্যন্ত ভাল।",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "আপগ্রেড করুন claude-2-100k এর অ্যাক্সেস পেতে",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic এর সবচেয়ে শক্তিশালী মডেল, 100K কনটেক্সট উইন্ডো, সৃজনশীল সংলাপ এবং সৃজনশীল সামগ্রী উৎপন্ন থেকে বিস্তারিত নির্দেশনা পর্যন্ত পরিষ্কার কাজের জন্য অত্যন্ত ভাল।",
+    "provider__claude__title": "ক্লোড",
+    "provider__claude__short_description": "100K সংদর্ভ উইন্ডো। Claude-instant-100k এবং Claude-2-100k।",
+    "provider__claude__auth_description": "এক্সটেনশন চালাতে Claude ব্যবহার করুন।",
+    "provider__claude__auth_button_text": "ক্লোড চালিয়ে যান",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic এর সর্বত্তপর দ্রুততম মডেল, 100K সংদর্ভ উইন্ডো, খুব লম্বা নথি এবং কোড বিশ্লেষণ, সংক্ষেপণ এবং বোধগম্যতা জন্য অত্যন্ত ভাল।",
+    "provider__claude__model__claude_2_100k__description": "Anthropic এর সবচেয়ে শক্তিশালী মডেল, 100K সংদর্ভ উইন্ডো, সুবিধাজনক সংলাপ এবং সৃজনশীল সামগ্রী উৎপন্ন থেকে বিস্তারিত নির্দেশনা পর্যন্ত পরিষ্কার করার জন্য অত্যন্ত ভাল।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

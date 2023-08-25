@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "அரட்டை",
     "sidebar__tabs__summary__title": "சுருக்கம்",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "எந்த பக்கத்தையும் சுருக்கமாக்கி உரையாட, உரையாடுவதற்கு மேம்படுத்தவும்",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "எந்த வலைப்பக்கம், பிடிஎஃப், மின்னஞ்சல் அல்லது யூடியூப் வீடியோவும் பற்றிய சுருக்கங்களைப் பெறுங்கள், வினாக்களை கேள்விக்குறிப்புகளை கேட்கவும், தகவல்களைக் கண்டுபிடிக்கவும் அமைக்கலாம்."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "எந்த வலைப்பக்கத்தின், PDF இன், மின்னஞ்சலின், யூடியூப் வீடியோவின் பற்றிய சுருக்கங்களைப் பெறுங்கள், கேள்விகளை கேட்டுக் கேள்வி செய்யுங்கள் மற்றும் தகவல்களைக் கண்டுபிடிக்குங்கள்.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "அப்கிரேட் செய்ய கிடைக்கும் claude-instant-100k ஐ அணுகுங்கள்",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic இன் வேகமான மாதிரி, 100K உருவாக்க சாப்பிடு, மிகுந்த நீளமான ஆவணம் மற்றும் குறியீட்டின் பகுதிகளுக்கு அணுகல், சுருக்கமாக்கல் மற்றும் புரிந்துகொள்ளுதல் போன்ற பணிகளுக்கு அழைப்பு.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "அப்கிரேட் செய்ய கிடைக்கும் claude-2-100k ஐ அணுகுங்கள்",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic இன் மிகவும் வல்லமையான மாதிரி, 100K உருவாக்க சாப்பிடு, மிகுந்த உரையாடல் மற்றும் உரிமைக்கு தகுதி வழங்கும் பணிகளில் அணுகல்.",
+    "provider__claude__title": "கிளோடு",
+    "provider__claude__short_description": "100K சூழல் சாளரம். கிளோடு-உடனடி-100k மற்றும் கிளோடு-2-100k.",
+    "provider__claude__auth_description": "நீங்கள் நீட்டிப்புக்கு கிளோடை பயன்படுத்தலாம்.",
+    "provider__claude__auth_button_text": "கிளோடுடன் தொடருங்கள்",
+    "provider__claude__model__claude_instant_100k__description": "அந்த்ராபிக் அதிவேக மாதிரி, 100K சூழல் சாளரம், மிகவும் நீளமான ஆவணம் மற்றும் குறிப்பிட்ட குறிப்புகளுக்கு பொருந்தும் கட்டுப்பாடு, சுருக்கமானது.",
+    "provider__claude__model__claude_2_100k__description": "அந்த்ராபிக் அதிவேக மாதிரி, 100K சூழல் சாளரம், மிகவும் வியப்புள்ள உரையாடல் மற்றும் உரிமையான உள்ளடக்கத்திற்கு அணுகல் முறைகளில் அனைத்து பணிகளுக்கும் பொருந்தும் கட்டுப்பாடு."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

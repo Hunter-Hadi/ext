@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Csevegés",
     "sidebar__tabs__summary__title": "Összefoglaló",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Frissítés a bármely oldal összefoglalásához és csevegéshez",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Kapjon összefoglalókat, tegyen fel kérdéseket és találjon információt bármely weboldalról, PDF-ről, e-mailről vagy YouTube videóról."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Szerezzen összefoglalókat, tegyen fel kérdéseket és találjon információt bármely weboldalról, PDF-ről, e-mailről és YouTube videóról.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Frissítés a claude-instant-100k eléréséhez",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic leggyorsabb modellje, 100K kontextusablak, nagyszerű hosszú dokumentumok és kód elemzéséhez, összefoglaláshoz és megértéshez.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Frissítés a claude-2-100k eléréséhez",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic legerősebb modellje, 100K kontextusablak, nagyszerű feladatokhoz a szofisztikált párbeszédtől a kreatív tartalomgenerálásig és részletes utasításokig.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K kontextusablak. Claude-instant-100k és Claude-2-100k.",
+    "provider__claude__auth_description": "Használd Claudet a bővítmény működtetéséhez.",
+    "provider__claude__auth_button_text": "Folytatás Claudedal",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic leggyorsabb modellje, 100K kontextusablak, nagyszerű hosszú dokumentumok és kód elemzéséhez, összefoglaláshoz és megértéshez.",
+    "provider__claude__model__claude_2_100k__description": "Anthropic legerősebb modellje, 100K kontextusablak, kiválóan alkalmas a szofisztikált párbeszédre és kreatív tartalomgenerálásra, részletes utasításokhoz."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

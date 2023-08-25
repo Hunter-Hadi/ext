@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Resumé",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Opgrader for at opsummere og chatte med enhver side",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Få resuméer, stil spørgsmål og find information om enhver webside, PDF, e-mail eller YouTube-video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Få resuméer, stil spørgsmål og find information om enhver webside, PDF, e-mail og YouTube-video.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Opgrader for at få adgang til claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropics hurtigste model, 100K kontekstvindue, perfekt til meget lange dokumenter og kodeanalyse, resuméer og forståelse.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Opgrader for at få adgang til claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropics mest kraftfulde model, 100K kontekstvindue, perfekt til opgaver lige fra sofistikeret dialog og kreativt indholdsgenerering til detaljerede instruktioner.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K kontekstvindue. Claude-instant-100k og Claude-2-100k.",
+    "provider__claude__auth_description": "Brug Claude til at drive udvidelsen.",
+    "provider__claude__auth_button_text": "Fortsæt med Claude",
+    "provider__claude__model__claude_instant_100k__description": "Anthropics hurtigste model, 100K kontekstvindue, perfekt til meget lange dokumenter og kodeanalyse, sammenfatning og forståelse.",
+    "provider__claude__model__claude_2_100k__description": "Anthropics mest kraftfulde model, 100K kontekstvindue, perfekt til opgaver lige fra sofistikeret dialog og kreativ indholdsproduktion til detaljerede instruktioner."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

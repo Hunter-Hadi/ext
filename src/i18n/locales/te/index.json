@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "చాట్",
     "sidebar__tabs__summary__title": "సంగ్రహం",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ఏ పేజీని సంగ్రహించడానికి మరియు చాట్ చేయడానికి నవీకరించండి",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "ఏ వెబ్‌పేజీ, PDF, ఇమెయిలు లేదా YouTube వీడియో గురించి సంగ్రహాలను పొందండి, ప్రశ్నలను అడ్డంగా అడిగండి మరియు సమాచారాన్ని కనుగొనండి."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "పేజీ సారాంశాలు పొందండి, ప్రశ్నలను అడ్డంగా చేయండి మరియు ఏ వెబ్‌పేజీ, PDF, ఇమెయిల్, మరియు YouTube వీడియో గురించి సమాచారం కనుగొనండి.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "claude-instant-100k కి ప్రాముఖ్యతను పొందండి",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic యొక్క త్వరగతి మోడల్, 100K కంటెక్స్ట్ విండో, చాలా పొడవు పత్రం మరియు కోడ్ విశ్లేషణ, సారాంశీకరణ, మరియు గ్రహించడం కోసం అది మంచిది.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "claude-2-100k కి ప్రాముఖ్యతను పొందండి",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic యొక్క అత్యంత శక్తివంతమైన మోడల్, 100K కంటెక్స్ట్ విండో, సాధారణ సంభాషణ మరియు సృజనాత్మక కంటెంట్ జనరేషన్ నుండి వివరణాత్మక నిర్దేశాలకు వచ్చే విధంగా ఉపయోగించబడుతుంది.",
+    "provider__claude__title": "క్లాడ్",
+    "provider__claude__short_description": "100K సందర్భ విండో. క్లాడ్-ఇన్స్టంట్-100k మరియు క్లాడ్-2-100k.",
+    "provider__claude__auth_description": "పొందడానికి క్లాడ్ ఉపయోగించండి.",
+    "provider__claude__auth_button_text": "క్లాడ్ తో కొనసాగించండి",
+    "provider__claude__model__claude_instant_100k__description": "అంథ్రాపిక్‌కి తీవ్రతరంగా మోడల్, 100K సందర్భ విండో, చాలా పొడవు పత్రం మరియు కోడ్ విశ్లేషణ, సారాంశీకరణ, మరియు గ్రహించడం కోసం అది మంచిది.",
+    "provider__claude__model__claude_2_100k__description": "అంథ్రాపిక్‌కి అత్యంత శక్తివంతమైన మోడల్, 100K సందర్భ విండో, సొంత సంభాషణ మరియు సృజనాత్మక కంటెంట్ జనరేషన్ నుండి వివరణాత్మక నిర్దేశనకు వర్గీకరించడంలో మంచిది."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

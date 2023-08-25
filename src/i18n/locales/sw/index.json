@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Majadiliano",
     "sidebar__tabs__summary__title": "Muhtasari",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Nunua ili kupata muhtasari na mazungumzo kuhusu ukurasa wowote",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Pata muhtasari, uliza maswali, na pata habari kuhusu ukurasa wowote, PDF, barua pepe, au video ya YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Pata muhtasari, uliza maswali, na pata habari kuhusu ukurasa wowote, PDF, barua pepe, na video ya YouTube.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Nunua ili upate claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Modeli ya haraka zaidi ya Anthropic, dirisha la muktadha wa 100K, nzuri kwa nyaraka ndefu sana na uchambuzi wa nambari, muhtasari, na ufahamu.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Nunua ili upate claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Modeli yenye nguvu zaidi ya Anthropic, dirisha la muktadha wa 100K, nzuri kwa majukumu yanayotofautiana kutoka kwa mazungumzo ya kisasa na uzalishaji wa maudhui ya ubunifu hadi maelekezo ya kina.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "Dirisha la muktadha wa 100K. Claude-instant-100k na Claude-2-100k.",
+    "provider__claude__auth_description": "Tumia Claude kuwezesha kifaa cha nyongeza.",
+    "provider__claude__auth_button_text": "Endelea na Claude",
+    "provider__claude__model__claude_instant_100k__description": "Mfano wa haraka zaidi wa Anthropic, dirisha la muktadha wa 100K, mzuri kwa hati ndefu sana na uchambuzi wa nambari, muhtasari, na ufahamu.",
+    "provider__claude__model__claude_2_100k__description": "Mfano wenye nguvu zaidi wa Anthropic, dirisha la muktadha wa 100K, mzuri kwa majukumu yanayotofautiana kutoka kwa mazungumzo ya kisasa na uzalishaji wa yaliyomo ya ubunifu hadi maagizo ya kina."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

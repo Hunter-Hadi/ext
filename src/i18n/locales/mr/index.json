@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "चॅट",
     "sidebar__tabs__summary__title": "संक्षेप",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "कोणत्याही पृष्ठाचे संक्षेप आणि चॅट करण्यासाठी अपग्रेड करा",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "कोणत्याही वेबपेज, पीडीएफ, ईमेल किंवा YouTube व्हिडिओवरील संक्षेप, प्रश्न विचारा आणि माहिती शोधा."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "कोणत्याही वेबपेज, पीडीएफ, ईमेल आणि YouTube व्हिडिओवरील संक्षेप, प्रश्न विचारा आणि माहिती शोधा.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "claude-instant-100k ला प्रवेश करण्यासाठी अपग्रेड करा",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic चा झटपट मॉडेल, 100K संदर्भ विंडो, खूप लांबी दस्तऐवज आणि कोड विश्लेषण, संक्षेपण आणि समज यासाठी उत्कृष्ट.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "claude-2-100k ला प्रवेश करण्यासाठी अपग्रेड करा",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic चा सर्वाधिक शक्तिशाली मॉडेल, 100K संदर्भ विंडो, सुसंगत अभिवादन आणि सृजनशील सामग्री निर्माण ते तपशीलवार निर्देशांकपासून पर्यायी कार्यांसाठी उत्कृष्ट.",
+    "provider__claude__title": "क्लोड",
+    "provider__claude__short_description": "100K संदर्भ विंडो। क्लोड-तुरंत-100k आणि क्लोड-2-100k.",
+    "provider__claude__auth_description": "एक्सटेंशनसाठी क्लोडचा वापर करा.",
+    "provider__claude__auth_button_text": "क्लोडसह सुरू करा",
+    "provider__claude__model__claude_instant_100k__description": "एंथ्रोपिकचे जलद मॉडेल, 100K संदर्भ विंडो, अत्यंत लांबी दस्तऐवज आणि कोड विश्लेषण, संक्षेपण आणि समज यासाठी उत्कृष्ट.",
+    "provider__claude__model__claude_2_100k__description": "एंथ्रोपिकचे सर्वाधिक शक्तिशाळी मॉडेल, 100K संदर्भ विंडो, सुविचारगत संवाद आणि सृजनात्मक सामग्री उत्पादन ते तपशीलवार निर्देशांकपर्यंतच्या कार्यांसाठी उत्कृष्ट."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

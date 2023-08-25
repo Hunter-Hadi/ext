@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "الدردشة",
     "sidebar__tabs__summary__title": "الملخص",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ترقية للملخص والدردشة مع أي صفحة",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "احصل على ملخصات، اطرح أسئلة، وابحث عن معلومات حول أي صفحة ويب، ملف PDF، بريد إلكتروني، أو فيديو يوتيوب."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "احصل على ملخصات، اطرح أسئلة، وابحث عن معلومات حول أي صفحة ويب، ملف PDF، بريد إلكتروني، وفيديو يوتيوب.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "الترقية للوصول إلى claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "أسرع نموذج من Anthropic، نافذة سياق 100 ألف، مثالي لتحليل المستندات الطويلة جدًا وتحليل الشفرة، وإعطاء ملخصات وفهم.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "الترقية للوصول إلى claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "أقوى نموذج من Anthropic، نافذة سياق 100 ألف، مثالي لمهام تتراوح بين الحوار المتطور وإنشاء المحتوى الإبداعي والتعليم التفصيلي.",
+    "provider__claude__title": "كلود",
+    "provider__claude__short_description": "نافذة سياق 100 ألف. كلود-فوري-100 ألف وكلود-2-100 ألف.",
+    "provider__claude__auth_description": "استخدم كلود لتشغيل الامتداد.",
+    "provider__claude__auth_button_text": "المتابعة مع كلود",
+    "provider__claude__model__claude_instant_100k__description": "أسرع نموذج لأنثروبيك، نافذة سياق 100 ألف، مثالي لتحليل المستندات والشفرات الطويلة جدًا، وإعادة صياغة النصوص، والفهم.",
+    "provider__claude__model__claude_2_100k__description": "أقوى نموذج لأنثروبيك، نافذة سياق 100 ألف، مثالي لمهام تتراوح بين الحوار المتطور وإنشاء المحتوى الإبداعي إلى التعليمات التفصيلية."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

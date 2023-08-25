@@ -22,6 +22,8 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_PAID_MODEL_GPT3_5_16K',
   'MAXAI_PAID_MODEL_GPT4',
   'PAGE_SUMMARY',
+  'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
+  'MAXAI_PAID_MODEL_CLAUDE_V2',
 ] as const
 
 export type PermissionWrapperCardSceneType =
@@ -285,6 +287,36 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     description: (t) =>
       t(
         'client:permission__pricing_hook__max_ai_paid_model__page_summary__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // MAX AI - paid model - calude - instant-v1-100k
+  MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-instant-100k.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // MAX AI - paid model - calude - instant-v2
+  MAXAI_PAID_MODEL_CLAUDE_V2: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-2-100k.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__max_ai_paid_model__claude_v2__title'),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__claude_v2__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),

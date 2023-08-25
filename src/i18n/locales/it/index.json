@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Riepilogo",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Aggiorna per riassumere e chattare con qualsiasi pagina",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ottieni riassunti, fai domande e trova informazioni su qualsiasi pagina web, PDF, email o video di YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ottieni riassunti, fai domande e trova informazioni su qualsiasi pagina web, PDF, email e video di YouTube.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Passa a claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Il modello più veloce di Anthropic, finestra di contesto di 100K, ottimo per documenti molto lunghi e analisi del codice, riassunti e comprensione.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Passa a claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Il modello più potente di Anthropic, finestra di contesto di 100K, ottimo per attività che vanno dal dialogo sofisticato alla generazione di contenuti creativi fino alle istruzioni dettagliate.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "Finestra di contesto 100K. Claude-instant-100k e Claude-2-100k.",
+    "provider__claude__auth_description": "Usa Claude per alimentare l'estensione.",
+    "provider__claude__auth_button_text": "Continua con Claude",
+    "provider__claude__model__claude_instant_100k__description": "Il modello più veloce di Anthropic, finestra di contesto 100K, ottimo per documenti molto lunghi e analisi del codice, sintesi e comprensione.",
+    "provider__claude__model__claude_2_100k__description": "Il modello più potente di Anthropic, finestra di contesto 100K, ideale per dialoghi sofisticati e generazione di contenuti creativi fino a istruzioni dettagliate."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

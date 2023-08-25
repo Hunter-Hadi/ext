@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "چیٹ",
     "sidebar__tabs__summary__title": "خلاصہ",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "کسی بھی صفحے کو خلاصہ کرنے اور چیٹ کرنے کے لئے اپگریڈ کریں",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "کسی بھی ویب پیج، پی ڈی ایف، ای میل یا یوٹیوب ویڈیو کے بارے میں خلاصے حاصل کریں، سوالات پوچھیں اور معلومات تلاش کریں۔"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "کسی بھی ویب پیج، پی ڈی ایف، ای میل اور یوٹیوب ویڈیو کے بارے میں خلاصے حاصل کریں، سوالات پوچھیں اور معلومات تلاش کریں۔",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "کلوڈ-انسٹنٹ-100K تک رسائی حاصل کریں",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic کا تیز ترین ماڈل، 100K کنٹیکسٹ ونڈو، بہت لمبے دستاویز اور کوڈ تجزیے، خلاصہ کرنے اور سمجھنے کے لئے عظیم ہے۔",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "کلوڈ-2-100K تک رسائی حاصل کریں",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic کا طاقتور ترین ماڈل، 100K کنٹیکسٹ ونڈو، سفارشی گفتگو اور تخلیقی مواد تولید سے لے کر تفصیلی ہدایات تک کئی ذمہ داریوں کے لئے عظیم ہے۔",
+    "provider__claude__title": "کلاؤڈ",
+    "provider__claude__short_description": "100K کنٹیکسٹ ونڈو۔ کلاؤڈ-انسٹنٹ-100K اور کلاؤڈ-2-100K۔",
+    "provider__claude__auth_description": "توسیع کو چلانے کے لئے کلاؤڈ کا استعمال کریں۔",
+    "provider__claude__auth_button_text": "کلاؤڈ کے ساتھ جاری رکھیں",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic کا تیز ترین ماڈل، 100K کنٹیکسٹ ونڈو، بہت لمبے دستاویز اور کوڈ تجزیہ، خلاصہ کاری اور سمجھ میں عظیم۔",
+    "provider__claude__model__claude_2_100k__description": "Anthropic کا زبردست ماڈل، 100K کنٹیکسٹ ونڈو، فنی گفتگو اور تخلیقی مواد تیار کرنے سے لے کر تفصیلی ہدایات تک کے وسعت والے کاموں کے لئے عظیم۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

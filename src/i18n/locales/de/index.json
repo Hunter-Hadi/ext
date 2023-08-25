@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Zusammenfassung",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Upgrade, um jede Seite zusammenzufassen und zu chatten",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Erhalten Sie Zusammenfassungen, stellen Sie Fragen und finden Sie Informationen zu jeder Webseite, PDF, E-Mail oder YouTube-Video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Erhalten Sie Zusammenfassungen, stellen Sie Fragen und finden Sie Informationen zu jeder Webseite, PDF, E-Mail und YouTube-Video.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Upgrade, um auf claude-instant-100k zuzugreifen",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropics schnellstes Modell, 100K Kontextfenster, ideal für sehr lange Dokumente und Code-Analyse, Zusammenfassung und Verständnis.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Upgrade, um auf claude-2-100k zuzugreifen",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropics leistungsstärkstes Modell, 100K Kontextfenster, ideal für Aufgaben von anspruchsvollem Dialog und kreativer Inhalteerstellung bis hin zu detaillierten Anweisungen.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K Kontextfenster. Claude-instant-100k und Claude-2-100k.",
+    "provider__claude__auth_description": "Verwenden Sie Claude, um die Erweiterung zu aktivieren.",
+    "provider__claude__auth_button_text": "Mit Claude fortfahren",
+    "provider__claude__model__claude_instant_100k__description": "Anthropics schnellstes Modell, 100K Kontextfenster, ideal für sehr lange Dokumente und Code-Analyse, Zusammenfassung und Verständnis.",
+    "provider__claude__model__claude_2_100k__description": "Anthropics leistungsstärkstes Modell, 100K Kontextfenster, ideal für Aufgaben von anspruchsvollem Dialog und kreativer Inhaltsentwicklung bis hin zu detaillierten Anweisungen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

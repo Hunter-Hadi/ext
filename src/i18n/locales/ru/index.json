@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Чат",
     "sidebar__tabs__summary__title": "Сводка",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Обновите для создания сводки и общения с любой страницей",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Получайте краткие сведения, задавайте вопросы и находите информацию о любой веб-странице, PDF-файле, электронной почте или видео на YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Получайте краткие сведения, задавайте вопросы и находите информацию о любой веб-странице, PDF-файле, электронной почте и видео на YouTube.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Обновитесь, чтобы получить доступ к claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Самая быстрая модель Anthropic, окно контекста 100K, отлично подходит для очень длинных документов и анализа кода, создания сводок и понимания.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Обновитесь, чтобы получить доступ к claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Самая мощная модель Anthropic, окно контекста 100K, отлично подходит для задач от сложного диалога и творческого создания контента до подробных инструкций.",
+    "provider__claude__title": "Клод",
+    "provider__claude__short_description": "Окно контекста 100K. Клауд-мгновенный-100k и Клауд-2-100k.",
+    "provider__claude__auth_description": "Используйте Клауд для работы с расширением.",
+    "provider__claude__auth_button_text": "Продолжить с Клаудом",
+    "provider__claude__model__claude_instant_100k__description": "Самая быстрая модель Anthropic, окно контекста 100K, отлично подходит для очень длинных документов и анализа кода, краткого изложения и понимания.",
+    "provider__claude__model__claude_2_100k__description": "Самая мощная модель Anthropic, окно контекста 100K, отлично подходит для задач от сложного диалога и творческого создания контента до подробных инструкций."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

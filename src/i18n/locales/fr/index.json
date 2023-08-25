@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chatte",
     "sidebar__tabs__summary__title": "Résumé",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Mettez à niveau pour résumer et discuter avec n'importe quelle page",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Obtenez des résumés, posez des questions et trouvez des informations sur n'importe quelle page Web, PDF, e-mail ou vidéo YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Obtenez des résumés, posez des questions et trouvez des informations sur n'importe quelle page Web, PDF, e-mail et vidéo YouTube.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Mettez à niveau pour accéder à claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Le modèle le plus rapide d'Anthropic, fenêtre contextuelle de 100K, idéal pour les documents très longs et l'analyse de code, la synthèse et la compréhension.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Mettez à niveau pour accéder à claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Le modèle le plus puissant d'Anthropic, fenêtre contextuelle de 100K, idéal pour des tâches allant du dialogue sophistiqué à la génération de contenu créatif en passant par des instructions détaillées.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "Fenêtre contextuelle de 100K. Claude-instant-100k et Claude-2-100k.",
+    "provider__claude__auth_description": "Utilisez Claude pour alimenter l'extension.",
+    "provider__claude__auth_button_text": "Continuer avec Claude",
+    "provider__claude__model__claude_instant_100k__description": "Le modèle le plus rapide d'Anthropic, fenêtre contextuelle de 100K, idéal pour l'analyse de documents très longs et de code, la résumé et la compréhension.",
+    "provider__claude__model__claude_2_100k__description": "Le modèle le plus puissant d'Anthropic, fenêtre contextuelle de 100K, idéal pour des tâches allant du dialogue sophistiqué à la génération de contenu créatif et aux instructions détaillées."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

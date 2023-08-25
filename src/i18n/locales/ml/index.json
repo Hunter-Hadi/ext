@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "ചാറ്റ്",
     "sidebar__tabs__summary__title": "സംഗ്രഹം",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ഏതെങ്കിലും പേജ് സംഗ്രഹം ചെയ്യുകയും ചാറ്റുചെയ്യുകയും ചെയ്യാന്‍ അപ്‌ഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "ഏതെങ്കിലും വെബ്‌പേജ്, പിഡിഎഫ്, ഇമെയിൽ, അല്ലെങ്കിൽ YouTube വീഡിയോയെക്കുറിച്ച് സംഗീതം, ചോദ്യങ്ങൾ ചോദിക്കുക, അല്ലെങ്കിൽ വിവരങ്ങൾ കണ്ടെത്തുക."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "ഏതെങ്കിലും വെബ്‌പേജ്, PDF, ഇമെയിൽ, യൂട്യൂബ് വീഡിയോയുടെ സംഗൃഹ്യം, ചോദ്യങ്ങൾ ചോദിക്കുക, അറിയുക.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "ക്ലോഡ്-ഇൻസ്റ്റന്റ്-100K ഉപയോഗിക്കുന്നതിന് അപ്‌ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "ആന്ഥ്രോപിക്സിന്റെ ഏറ്റവും വേഗത്തിലുള്ള മോഡൽ, 100K സന്ദേശം വിൻഡോ, വളരെ നീളമുള്ള രേഖാപത്രങ്ങളും കോഡ് വിശകലനവും സംഗ്രഹിക്കുന്നതിനുള്ളത്, സംഗ്രഹിക്കൽ, അറിയൽ.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "ക്ലോഡ്-2-100K ഉപയോഗിക്കുന്നതിന് അപ്‌ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "ആന്ഥ്രോപിക്സിന്റെ ഏറ്റവും ശക്തമായ മോഡൽ, 100K സന്ദേശം വിൻഡോ, സിനിമായിരുന്നു സംഭാഷണങ്ങളും സൃജിക്കൽ ഉള്ളടക്കം വരെയുള്ള ശാസ്ത്രീയ ഉപദേശങ്ങളും ചെയ്യുന്നതിന് അതിലേക്ക് മാറ്റം.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "Jendhaanam 100K. Claude-instant-100k um Claude-2-100k um.",
+    "provider__claude__auth_description": "Extension il power cheyyan Claude upayogikkuka.",
+    "provider__claude__auth_button_text": "Claude-um pokkam kazhiyumo",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, very long document and code analysis, summarization, and comprehension ku nalla aaswadikkunna model.",
+    "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, sophisticated dialogue and creative content generation ila detailed instruction vareyum oru range of tasks ku nalla aaswadikkunna model."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

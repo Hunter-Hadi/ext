@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Sohbet",
     "sidebar__tabs__summary__title": "Özet",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Herhangi bir sayfayı özetlemek ve sohbet etmek için yükseltin",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Herhangi bir web sayfası, PDF, e-posta veya YouTube videosu hakkında özetler alın, sorular sorun ve bilgi bulun."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Herhangi bir web sayfası, PDF, e-posta ve YouTube videosu hakkında özetler alın, sorular sorun ve bilgi bulun.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "claude-instant-100k'e erişimi yükseltin",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic'in en hızlı modeli, 100K bağlam penceresi, çok uzun belge ve kod analizi, özetleme ve anlama için ideal.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "claude-2-100k'ye erişimi yükseltin",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic'in en güçlü modeli, 100K bağlam penceresi, sofistike diyalogdan yaratıcı içerik oluşturmaya ve detaylı talimatlara kadar geniş bir yelpazede görevler için ideal.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K bağlam penceresi. Claude-anında-100k ve Claude-2-100k.",
+    "provider__claude__auth_description": "Uzantıyı güçlendirmek için Claude kullanın.",
+    "provider__claude__auth_button_text": "Claude ile Devam Et",
+    "provider__claude__model__claude_instant_100k__description": "Anthropic'in en hızlı modeli, 100K bağlam penceresi, çok uzun belge ve kod analizi, özetleme ve anlama için ideal.",
+    "provider__claude__model__claude_2_100k__description": "Anthropic'in en güçlü modeli, 100K bağlam penceresi, sofistike diyalogdan yaratıcı içerik oluşturmaya ve ayrıntılı talimatlara kadar geniş bir yelpazede görevler için ideal."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

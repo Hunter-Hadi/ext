@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Trò chuyện",
     "sidebar__tabs__summary__title": "Tóm tắt",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Nâng cấp để tóm tắt và trò chuyện với bất kỳ trang nào",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Nhận tóm tắt, đặt câu hỏi và tìm thông tin về bất kỳ trang web, PDF, email hoặc video YouTube nào."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Nhận tóm tắt, đặt câu hỏi và tìm thông tin về bất kỳ trang web, PDF, email và video YouTube nào.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Nâng cấp để truy cập claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Mô hình nhanh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho việc phân tích tài liệu và mã rất dài, tóm tắt và hiểu biết.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Nâng cấp để truy cập claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Mô hình mạnh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho các nhiệm vụ từ cuộc trò chuyện phức tạp và tạo nội dung sáng tạo đến hướng dẫn chi tiết.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "Cửa sổ ngữ cảnh 100K. Claude-instant-100k và Claude-2-100k.",
+    "provider__claude__auth_description": "Sử dụng Claude để nâng cấp tiện ích.",
+    "provider__claude__auth_button_text": "Tiếp tục với Claude",
+    "provider__claude__model__claude_instant_100k__description": "Mô hình nhanh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho việc phân tích tài liệu và mã nguồn rất dài, tóm tắt và hiểu nội dung.",
+    "provider__claude__model__claude_2_100k__description": "Mô hình mạnh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho các nhiệm vụ từ giao tiếp phức tạp và tạo nội dung sáng tạo đến hướng dẫn chi tiết."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

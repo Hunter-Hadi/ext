@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "צ'אט",
     "sidebar__tabs__summary__title": "סיכום",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "שדרג כדי לסכם ולשוחח עם כל דף",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "קבל סיכומים, שאלות ומידע על כל דף אינטרנט, PDF או סרטון ב-YouTube."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "קבל סיכומים, שאל שאלות ומצא מידע על כל דף אינטרנט, PDF, אימייל וסרטון יוטיוב.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "שדרג כדי לגשת ל-claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "המודל המהיר ביותר של אנתרופיק, חלון הקשר 100K, מצוין לניתוח מסמכים וקוד ארוכים מאוד, סיכום והבנה.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "שדרג כדי לגשת ל-claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "המודל החזק ביותר של אנתרופיק, חלון הקשר 100K, מצוין למגוון משימות החל מדיאלוג מתוחכם ויצירת תוכן יצירתי ועד הוראות מפורטות.",
+    "provider__claude__title": "קלוד",
+    "provider__claude__short_description": "חלון הקשר של 100K. קלוד-מיידי-100K וקלוד-2-100K.",
+    "provider__claude__auth_description": "השתמש בקלוד כדי להפעיל את התוסף.",
+    "provider__claude__auth_button_text": "המשך עם קלוד",
+    "provider__claude__model__claude_instant_100k__description": "הדגם המהיר ביותר של Anthropic, חלון הקשר של 100K, מתאים במיוחד לניתוח מסמכים ארוכים מאוד וקוד, סיכום והבנה.",
+    "provider__claude__model__claude_2_100k__description": "הדגם החזק ביותר של Anthropic, חלון הקשר של 100K, מתאים במיוחד למשימות הכוללות דיאלוג מתוחכם ויצירת תוכן יצירתי עד הוראות מפורטות."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

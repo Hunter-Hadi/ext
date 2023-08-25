@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__summary__title": "Samenvatting",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Upgrade om elke pagina samen te vatten en te chatten",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ontvang samenvattingen, stel vragen en vind informatie over elke webpagina, PDF, e-mail of YouTube-video."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Ontvang samenvattingen, stel vragen en vind informatie over elke webpagina, PDF, e-mail en YouTube-video.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Upgrade om toegang te krijgen tot claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic's snelste model, 100K contextvenster, ideaal voor zeer lange documenten en code-analyse, samenvatting en begrip.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Upgrade om toegang te krijgen tot claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic's krachtigste model, 100K contextvenster, ideaal voor taken variërend van geavanceerde dialoog en creatieve inhoudsgeneratie tot gedetailleerde instructie.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K context venster. Claude-instant-100k en Claude-2-100k.",
+    "provider__claude__auth_description": "Gebruik Claude om de extensie te versterken.",
+    "provider__claude__auth_button_text": "Doorgaan met Claude",
+    "provider__claude__model__claude_instant_100k__description": "Het snelste model van Anthropic, 100K context venster, ideaal voor zeer lange documenten en code-analyse, samenvatting en begrip.",
+    "provider__claude__model__claude_2_100k__description": "Het krachtigste model van Anthropic, 100K context venster, ideaal voor taken variërend van geavanceerde dialoog en creatieve inhoudsgeneratie tot gedetailleerde instructies."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

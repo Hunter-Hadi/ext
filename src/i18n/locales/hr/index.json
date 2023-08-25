@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "Razgovor",
     "sidebar__tabs__summary__title": "Sažetak",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Nadogradite da biste saželi i razgovarali s bilo kojom stranicom",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Dobijte sažetke, postavljajte pitanja i pronađite informacije o bilo kojoj web stranici, PDF-u, e-pošti ili YouTube videu."
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "Dohvati sažetke, postavljaj pitanja i pronađi informacije o bilo kojoj web stranici, PDF-u, e-pošti i YouTube videu.",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "Nadogradi za pristup claude-instant-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Najbrži model tvrtke Anthropic, prozor konteksta od 100K, idealan za vrlo dugačke dokumente i analizu koda, sažimanje i razumijevanje.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Nadogradi za pristup claude-2-100k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Najmoćniji model tvrtke Anthropic, prozor konteksta od 100K, idealan za zadatke koji se kreću od sofisticiranog dijaloga i generiranja kreativnog sadržaja do detaljnih uputa.",
+    "provider__claude__title": "Claude",
+    "provider__claude__short_description": "100K kontekstni prozor. Claude-instant-100k i Claude-2-100k.",
+    "provider__claude__auth_description": "Koristite Claude za napajanje proširenja.",
+    "provider__claude__auth_button_text": "Nastavite s Claudeom",
+    "provider__claude__model__claude_instant_100k__description": "Najbrži model tvrtke Anthropic, 100K kontekstni prozor, odličan za vrlo dugačke dokumente i analizu koda, sažimanje i razumijevanje.",
+    "provider__claude__model__claude_2_100k__description": "Najmoćniji model tvrtke Anthropic, 100K kontekstni prozor, odličan za zadatke koji se kreću od sofisticiranog dijaloga i generiranja kreativnog sadržaja do detaljnih uputa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "チャット",
     "sidebar__tabs__summary__title": "サマリー",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "どのページでも要約してチャットするためにアップグレード",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "任意のウェブページ、PDF、メール、またはYouTubeビデオについて要約を取得し、質問をすることができます。"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "任意のウェブページ、PDF、メール、YouTubeビデオについて要約を取得し、質問をしたり情報を見つけたりできます。",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "claude-instant-100kへのアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropicの最速モデルで、100Kのコンテキストウィンドウを持ち、非常に長いドキュメントやコードの分析、要約、理解に適しています。",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "claude-2-100kへのアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropicの最も強力なモデルで、100Kのコンテキストウィンドウを持ち、洗練された対話や創造的なコンテンツ生成から詳細な指示まで幅広いタスクに適しています。",
+    "provider__claude__title": "クロード",
+    "provider__claude__short_description": "100Kコンテキストウィンドウ。クロードインスタント100kとクロード2-100k。",
+    "provider__claude__auth_description": "拡張機能のパワーにクロードを使用します。",
+    "provider__claude__auth_button_text": "クロードで続行",
+    "provider__claude__model__claude_instant_100k__description": "Anthropicの最速モデル、100Kコンテキストウィンドウ、非常に長いドキュメントやコードの分析、要約、理解に最適です。",
+    "provider__claude__model__claude_2_100k__description": "Anthropicの最も強力なモデル、100Kコンテキストウィンドウ、洗練された対話や創造的なコンテンツ生成から詳細な指示まで幅広いタスクに適しています。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -401,7 +401,17 @@
     "sidebar__tabs__chat__title": "ውይይት",
     "sidebar__tabs__summary__title": "ጥቅምት",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "ዝርዝር እስካሁን በመግለጽ የጽሑፍ እና የአስተዳደር ማስታወቂያ ይዘት ይጠቀሙ",
-    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "የይዘት መግለጫዎችን ይዘት ያስገቡ፣ ጥያቄዎች ያግኙና የይዘት መረጃዎችን ያግኙ ለድረ-ገጽ፣ PDF፣ ኢሜይል፣ ወይም YouTube ቪዲዮ ስታትስቲክ ማድረግ ይችላሉ።"
+    "permission__pricing_hook__max_ai_paid_model__page_summary__description": "የወረዳ ጥቅስን ይመልከቱ, ጥያቄዎችን ጠቅላላ ያደረጉትን እና የድረ-ገጽን መረጃ ለመጠቀም የሚያስችል ነው።",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title": "የ claude-instant-100k ይሁኑ ለመጠቀም",
+    "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic's በትኩረት በትኩረት የተለመደው ሞዴል, 100K የመጠን ማስታወሻ, በተለያዩ የሙስሊም ድረ-ገጽና የኮድ አንስትራክስ አካውንት, የመጠቀም እና የማስታወሻ መረጃ ለመጠቀም የሚያስችል ነው።",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "የ claude-2-100k ይሁኑ ለመጠቀም",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic's በትኩረት በትኩረት የተለመደው ሞዴል, 100K የመጠን ማስታወሻ, በተለያዩ የሙስሊም ድረ-ገጽና የኮድ አንስትራክስ አካውንት, የመጠቀም እና የማስታወሻ መረጃ ለመጠቀም የሚያስችል ነው።",
+    "provider__claude__title": "ክላድ",
+    "provider__claude__short_description": "100K የተሻለ የመግቢያ ማስታወቂያ፣ ክላድ-በቀላል-100k እና ክላድ-2-100k።",
+    "provider__claude__auth_description": "ክላድን በማስተካከያ ላይ መቀየር ይችላሉ።",
+    "provider__claude__auth_button_text": "ክላድ እንዲሁም መግቢያውን በመግባት ይግቡ",
+    "provider__claude__model__claude_instant_100k__description": "አንቴሪክ በትንሽ ስልክ የተሻለ ሞዴል፣ 100K የመግቢያ ማስታወቂያ፣ በተለይ የሚገኙ የማይሻሽ የመግቢያና የማይሻሽ ኮድ አንስቶም ወደሆነ የተሻለ ድረገጽ እና የተሻለ የመግቢያ ማስታወቂያ ማስተላለፍ ይችላሉ።",
+    "provider__claude__model__claude_2_100k__description": "አንቴሪክ በትንሽ ስልክ የተሻለ ሞዴል፣ 100K የመግቢያ ማስታወቂያ፣ በተለይ የሚገኙ የማይሻሽ የመግቢያና የማይሻሽ ኮድ አንስቶም ወደሆነ የተሻለ ድረገጽ እና የተሻለ የመግቢያ ማስታወቂያ ማስተላለፍ ይችላሉ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

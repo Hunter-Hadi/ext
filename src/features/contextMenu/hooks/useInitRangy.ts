@@ -29,6 +29,7 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import {
+  createSandboxIframeClickAndKeydownEvent,
   createSelectionElement,
   getEditableElement,
   getSelectionBoundaryElement,
@@ -248,14 +249,57 @@ const useInitRangy = () => {
     },
     [rangy, saveTempSelection, showRangy, hideRangy],
   )
+  const saveHighlightedRangeAndShowContextMenuRef = useRef(
+    saveHighlightedRangeAndShowContextMenu,
+  )
+  useEffect(() => {
+    saveHighlightedRangeAndShowContextMenuRef.current =
+      saveHighlightedRangeAndShowContextMenu
+  }, [saveHighlightedRangeAndShowContextMenu])
+
+  const stopIframeSandBoxListenerRef = useRef<() => void>(() => {
+    // do nothing
+  })
   // 页面editElement点击事件，因为window.getSelection()其实无法准确定位到textarea/input的位置,所以要在mousedown的时候保存一下
   useEffect(() => {
     const mouseUpListener = debounce(
-      saveHighlightedRangeAndShowContextMenu,
+      saveHighlightedRangeAndShowContextMenuRef.current,
       200,
     )
-    const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
+    const keyupListener = debounce(
+      saveHighlightedRangeAndShowContextMenuRef.current,
+      200,
+    )
     const mouseDownListener = (event: MouseEvent) => {
+      stopIframeSandBoxListenerRef.current()
+      stopIframeSandBoxListenerRef.current =
+        createSandboxIframeClickAndKeydownEvent(
+          (virtualIframeSelectionElement) => {
+            //  如果既不是可编辑元素，也没有选中的文本，不处理
+            if (!virtualIframeSelectionElement.selectionText) {
+              // 因为触发了iframe的点击，页面本身的元素肯定失焦了，所以隐藏
+              hideRangy()
+              if (!virtualIframeSelectionElement.isEditableElement) {
+                selectionElementRef.current = null
+                return
+              }
+            }
+            // AIInputLog.info('set editable element', virtualTarget)
+            selectionElementRef.current = virtualIframeSelectionElement
+            // show floating button
+            if (virtualIframeSelectionElement.selectionText) {
+              if (virtualIframeSelectionElement.eventType === 'mouseup') {
+                mouseUpListener({
+                  target: null,
+                } as any)
+              } else {
+                keyupListener({
+                  target: null,
+                } as any)
+              }
+            }
+          },
+        )
       const mouseTarget = event.target as HTMLElement
       const { isEditableElement, editableElement } =
         getEditableElement(mouseTarget)
@@ -287,20 +331,18 @@ const useInitRangy = () => {
         targetElementRef.current.removeEventListener('keyup', keyupListener)
       }
     }
-  }, [
-    rangy,
-    saveHighlightedRangeAndShowContextMenu,
-    chatBoxShortCutKey,
-    userSettings?.shortcutHintEnable,
-  ])
+  }, [rangy, chatBoxShortCutKey, userSettings?.shortcutHintEnable])
 
   // selection事件
   useEffect(() => {
     const mouseUpListener = debounce(
-      saveHighlightedRangeAndShowContextMenu,
+      saveHighlightedRangeAndShowContextMenuRef.current,
       200,
     )
-    const keyupListener = debounce(saveHighlightedRangeAndShowContextMenu, 200)
+    const keyupListener = debounce(
+      saveHighlightedRangeAndShowContextMenuRef.current,
+      200,
+    )
     // 和注入iframe的content script通信
     let clearListener: any = () => {
       // nothing
@@ -310,7 +352,6 @@ const useInitRangy = () => {
       document.addEventListener('mouseup', mouseUpListener)
       document.addEventListener('keyup', keyupListener)
       clearListener = listenIframeMessage((iframeSelectionData) => {
-        debugger
         // AIInputLog.info('iframe message', iframeSelectionData)
         // Virtual Elements
         //  如果既不是可编辑元素，也没有选中的文本，不处理
@@ -359,7 +400,7 @@ const useInitRangy = () => {
       document.removeEventListener('keyup', keyupListener)
       clearListener()
     }
-  }, [rangy, saveHighlightedRangeAndShowContextMenu, runEmbedShortCuts])
+  }, [rangy])
   useCreateClientMessageListener(async (event, data, sender) => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenOpenChatMessageBox':

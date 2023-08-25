@@ -4,6 +4,7 @@ import {
   ContextMenuDraftType,
   IRangyRect,
   ISelectionElement,
+  IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
 import { getCurrentDomainHost } from '@/utils'
@@ -150,16 +151,15 @@ export const getInputSelection = (element: HTMLInputElement) => {
 /**
  * 计算选区的字符串
  */
-export const computedSelectionString = () => {
-  if (document) {
-    if (document.getSelection) {
+export const computedSelectionString = (propDocument?: Document) => {
+  const doc = propDocument || document
+  if (doc) {
+    if (doc.getSelection) {
       // Most browsers
-      return String(document.getSelection())?.replace(/\u200B/g, '')
-    } else if ((document as any).selection) {
+      return String(doc.getSelection())?.replace(/\u200B/g, '')
+    } else if ((doc as any).selection) {
       // Internet Explorer 8 and below
-      return (document as any).selection
-        .createRange()
-        .text?.replace(/\u200B/g, '')
+      return (doc as any).selection.createRange().text?.replace(/\u200B/g, '')
     } else if (window.getSelection) {
       // Safari 3
       return String(window.getSelection())?.replace(/\u200B/g, '')
@@ -1707,3 +1707,223 @@ export const useBindRichTextEditorLineTextPlaceholder = () => {
 
 export const newShortcutHint = (shortCutKey: string) =>
   `Press '${shortCutKey}' for AI`
+
+/**
+ *
+ * @description: 给sandbox iframe添加点击事件和keydown事件, 因为content_scripts无法监听没有allow-scripts的iframe的事件
+ * @example: mail.proton.me - text-select-popup失效
+ */
+export const createSandboxIframeClickAndKeydownEvent = (
+  onMessage: (
+    virtualIframeSelectionElement: IVirtualIframeSelectionElement,
+  ) => void,
+) => {
+  const iframes = document.querySelectorAll('iframe')
+  const sandboxIframes: HTMLIFrameElement[] = []
+  const removeListeners: Array<() => void> = []
+  iframes.forEach((iframe) => {
+    if (iframe.getAttribute('sandbox')) {
+      if (iframe.getAttribute('sandbox')?.includes('allow-scripts')) {
+        return
+      }
+      if (iframe.contentDocument && iframe.contentWindow) {
+        sandboxIframes.push(iframe)
+      }
+    }
+  })
+  sandboxIframes.forEach((iframe) => {
+    const iframeDocument = iframe?.contentDocument
+    const iframeWindow = iframe?.contentWindow
+    if (!iframeDocument || !iframeWindow) {
+      return
+    }
+    let positions: number[] = []
+    let mouseDownElement: null | HTMLInputElement | HTMLTextAreaElement = null
+    const handleClickOrKeyUp = (event: MouseEvent | KeyboardEvent) => {
+      try {
+        const target = mouseDownElement || (event.target as HTMLElement)
+        let selectionText = computedSelectionString(iframeDocument)
+        let editableElementSelectionString = ''
+        const { isEditableElement, editableElement } =
+          getEditableElement(target)
+        let startMarkerId = ''
+        let endMarkerId = ''
+        let caretOffset = 0
+        if (isEditableElement && editableElement) {
+          caretOffset = getCaretCharacterOffsetWithin(editableElement)
+          const selectionMarker = createSelectionMarker(editableElement)
+          startMarkerId = selectionMarker.startMarkerId
+          endMarkerId = selectionMarker.endMarkerId
+          selectionText = selectionMarker.selectionText
+          editableElementSelectionString =
+            selectionMarker.editableElementSelectionText
+        }
+        // 释放mouseDownElement
+        mouseDownElement = null
+        const windowRect = cloneRect(
+          iframeDocument.body.getBoundingClientRect(),
+        )
+        const targetRect = cloneRect(target.getBoundingClientRect())
+        const selectionRect = iframeWindow
+          .getSelection()
+          ?.getRangeAt(0)
+          ?.getBoundingClientRect()
+        // console.clear()
+        // log.info('iframe windowRect:', windowRect)
+        // log.info('iframe targetRect:', targetRect)
+        // log.info('iframe selectionRect: ', selectionRect)
+        // log.info('iframe iframeSelectionString: ', iframeSelectionString)
+        // log.info('iframe screen', window.screenLeft, window.screenTop)
+        let iframeSelectionRect: IRangyRect | null = null
+        if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+          const minLeft = Math.max(targetRect.left, 0)
+          const minTop = Math.max(targetRect.top, 0)
+          const maxWidth =
+            (iframeDocument.documentElement.clientWidth ||
+              iframeDocument.body.clientWidth ||
+              iframeDocument.body.offsetWidth) - minLeft
+          const maxHeight =
+            iframeDocument.documentElement.clientHeight ||
+            iframeDocument.body.clientHeight ||
+            iframeDocument.body.offsetHeight
+          const left = Math.max(targetRect.left, 0)
+          const x = Math.max(targetRect.left, 0)
+          const top = Math.min(minTop, maxHeight)
+          const y = Math.min(minTop, maxHeight)
+          // 宽度计算需要考虑是否在视窗内
+          const width = Math.min(
+            targetRect.left > 0
+              ? targetRect.width
+              : targetRect.width + targetRect.left,
+            maxWidth,
+          )
+          // 高度计算需要考虑是否在视窗内
+          const height = Math.min(
+            targetRect.top > 0
+              ? targetRect.height
+              : targetRect.height + targetRect.top,
+            maxHeight,
+          )
+          iframeSelectionRect = {
+            left,
+            x,
+            top,
+            y,
+            width,
+            height,
+            right: Math.max(Math.min(targetRect.width, maxWidth), maxWidth),
+            bottom: Math.min(targetRect.bottom, maxHeight),
+          }
+          // 这里有点特殊，高度应该是iframe高度减去top的值和元素实际的高度做比较
+          iframeSelectionRect.height = Math.min(
+            maxHeight - iframeSelectionRect.top,
+            iframeSelectionRect.height,
+          )
+        } else if (selectionRect) {
+          const minLeft = Math.max(selectionRect.left, 0)
+          const minTop = Math.max(selectionRect.top, 0)
+          const maxWidth =
+            (iframeDocument.documentElement.clientWidth ||
+              iframeDocument.body.clientWidth ||
+              iframeDocument.body.offsetWidth) - minLeft
+          const maxHeight =
+            iframeDocument.documentElement.clientHeight ||
+            iframeDocument.body.clientHeight ||
+            iframeDocument.body.offsetHeight
+          const left = Math.max(selectionRect.left, 0)
+          const x = Math.max(selectionRect.left, 0)
+          const top = Math.min(minTop, maxHeight)
+          const y = Math.min(minTop, maxHeight)
+          iframeSelectionRect = {
+            left,
+            x,
+            top,
+            y,
+            width: Math.min(selectionRect.width, maxWidth),
+            height: Math.min(selectionRect.height, maxHeight),
+            right: Math.max(Math.min(selectionRect.right, maxWidth), maxWidth),
+            bottom: Math.min(selectionRect.bottom, maxHeight),
+          }
+          // 这里有点特殊，高度应该是iframe高度减去top的值和元素实际的高度做比较
+          iframeSelectionRect.height = Math.min(
+            maxHeight - iframeSelectionRect.top,
+            iframeSelectionRect.height,
+          )
+        }
+        const iframePosition = [
+          positions[0] - window.screenLeft,
+          positions[1] - window.screenTop,
+        ]
+        console.log('iframe currentRect', iframePosition)
+        if (selectionRect) {
+          // draw box
+          const old = iframeDocument.getElementById('a')
+          old && old.remove()
+          const div = iframeDocument.createElement('div')
+          div.id = 'a'
+          div.style.position = 'fixed'
+          div.style.top = selectionRect.top + 'px'
+          div.style.left = selectionRect.left + 'px'
+          div.style.width = selectionRect.width - 2 + 'px'
+          div.style.height = selectionRect.height - 2 + 'px'
+          div.style.border = '1px solid red'
+          div.style.pointerEvents = 'none'
+          iframeDocument.body.appendChild(div)
+        }
+        const iframeRect = cloneRect(iframe.getBoundingClientRect())
+        const virtualIframeSelectionElement = {
+          virtual: true,
+          iframeId: '',
+          tagName: target.tagName,
+          id: target.id,
+          className: target.className,
+          windowRect: cloneRect(windowRect),
+          targetRect: cloneRect(targetRect),
+          selectionRect: selectionRect ? cloneRect(selectionRect) : undefined,
+          iframeSelectionRect: iframeSelectionRect
+            ? cloneRect(iframeSelectionRect)
+            : undefined,
+          iframePosition,
+          selectionText: selectionText || '',
+          selectionHTML: selectionText || '',
+          editableElementSelectionText: editableElementSelectionString,
+          editableElementSelectionHTML: editableElementSelectionString,
+          eventType: event.type === 'mouseup' ? 'mouseup' : 'keyup',
+          isEmbedPage: false,
+          isEditableElement,
+          caretOffset,
+          startMarkerId,
+          endMarkerId,
+        } as IVirtualIframeSelectionElement
+        virtualIframeSelectionElement.selectionRect.top += iframeRect.top
+        virtualIframeSelectionElement.selectionRect.left += iframeRect.left
+        virtualIframeSelectionElement.selectionRect.right += iframeRect.left
+        virtualIframeSelectionElement.selectionRect.bottom += iframeRect.top
+        onMessage(virtualIframeSelectionElement)
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    // 鼠标按下事件
+    const handleMouseDown = (event: MouseEvent) => {
+      const target = event.target as HTMLInputElement
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+        mouseDownElement = target
+      }
+      positions = [event.screenX, event.screenY]
+    }
+    iframeDocument.addEventListener('mousedown', handleMouseDown)
+    iframeDocument.addEventListener('mouseup', handleClickOrKeyUp)
+    iframeDocument.addEventListener('keyup', handleClickOrKeyUp)
+    removeListeners.push(() => {
+      iframeDocument.removeEventListener('mousedown', handleMouseDown)
+      iframeDocument.removeEventListener('mouseup', handleClickOrKeyUp)
+      iframeDocument.removeEventListener('keyup', handleClickOrKeyUp)
+    })
+  })
+  return () => {
+    removeListeners.forEach((removeListener) => {
+      removeListener()
+    })
+  }
+}

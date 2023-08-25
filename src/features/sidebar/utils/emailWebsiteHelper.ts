@@ -87,6 +87,7 @@ export const getEmailWebsitePageContent = async () => {
     new Promise((resolve) => setTimeout(resolve, ms))
   const host = getCurrentDomainHost()
   let hasMore = false
+  let iframeSelector = ''
   let emailContextSelector = 'body'
   if (host === 'mail.google.com') {
     emailContextSelector = 'div[role="list"]'
@@ -107,7 +108,8 @@ export const getEmailWebsitePageContent = async () => {
         hasMore = true
         ;(item as HTMLElement).click()
       })
-    emailContextSelector = 'div.scroll-inner'
+    iframeSelector = 'iframe[sandbox]'
+    emailContextSelector = 'div#proton-root'
   }
   if (host === 'mail.zoho.com') {
     document
@@ -121,14 +123,41 @@ export const getEmailWebsitePageContent = async () => {
   if (hasMore) {
     await delay(3000)
   }
-  const pageContent = document.querySelector(
-    emailContextSelector,
-  ) as HTMLElement
-  if (pageContent) {
-    return pageContent.innerText
-  } else {
-    return getPageContentWithNpmParserPackages(
-      window.location.href,
+  let documentElements: HTMLElement[] = [document.documentElement]
+  if (iframeSelector) {
+    documentElements = Array.from(
+      document.querySelectorAll(iframeSelector),
+    ) as any as HTMLElement[]
+  }
+  try {
+    const pageContent = (
+      await Promise.all(
+        documentElements.map(async (element) => {
+          if (!element?.querySelector) {
+            return ''
+          }
+          const doc: any =
+            (element as any)?.contentDocument ||
+            element?.ownerDocument ||
+            document
+          const pageContent = element.querySelector(
+            emailContextSelector,
+          ) as HTMLElement
+          if (pageContent) {
+            return pageContent.innerText
+          } else {
+            return await getPageContentWithNpmParserPackages(
+              doc?.location?.href,
+              doc?.documentElement?.innerHTML,
+            )
+          }
+        }),
+      )
+    ).join('')
+    return pageContent
+  } catch (e) {
+    return await getPageContentWithNpmParserPackages(
+      document.location.href,
       document.documentElement.innerHTML,
     )
   }

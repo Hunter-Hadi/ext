@@ -133,14 +133,14 @@ export const getEmailWebsitePageContent = async () => {
     const pageContent = (
       await Promise.all(
         documentElements.map(async (element) => {
-          if (!element?.querySelector) {
-            return ''
-          }
           const doc: any =
             (element as any)?.contentDocument ||
             element?.ownerDocument ||
             document
-          const pageContent = element.querySelector(
+          if (!doc?.querySelector) {
+            return ''
+          }
+          const pageContent = doc.querySelector(
             emailContextSelector,
           ) as HTMLElement
           if (pageContent) {

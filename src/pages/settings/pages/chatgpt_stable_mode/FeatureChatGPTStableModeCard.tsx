@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { useTranslation } from 'react-i18next'
 import List from '@mui/material/List'
-import { ListItem } from '@mui/material'
+import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import LinearProgress, {
   LinearProgressProps,

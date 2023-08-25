@@ -16,7 +16,6 @@ import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
-import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import {
@@ -125,9 +124,10 @@ class MaxAIClaudeChat extends BaseChat {
           this.conversation?.meta.AIModel ||
           userConfig!.model ||
           MAXAI_CLAUDE_MODELS[0].value,
-        temperature: isNumber(userConfig?.temperature)
-          ? userConfig!.temperature
-          : 1,
+        // TODO: 界面还没做
+        // temperature: isNumber(userConfig?.temperature)
+        //   ? userConfig!.temperature
+        //   : 1,
       },
       // { conversation_id: this.conversation?.id || '' },
     )

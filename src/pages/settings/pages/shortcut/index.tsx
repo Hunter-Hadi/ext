@@ -10,7 +10,7 @@ import Box from '@mui/material/Box'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import List from '@mui/material/List'
 import Button from '@mui/material/Button'
-import { ListItem } from '@mui/material'
+import ListItem from '@mui/material/ListItem'
 import Typography from '@mui/material/Typography'
 
 const SettingsOpenaiApiKeyPage: FC = () => {

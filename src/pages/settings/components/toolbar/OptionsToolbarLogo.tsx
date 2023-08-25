@@ -11,7 +11,7 @@ import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
-import { useMediaQuery } from '@mui/material'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import {
   APP_USE_CHAT_GPT_HOST,

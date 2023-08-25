@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { SxProps } from '@mui/material/styles'
 import Stack from '@mui/material/Stack'
-import { Radio } from '@mui/material'
+import Radio from '@mui/material/Radio'
 import FormControlLabel from '@mui/material/FormControlLabel'
 
 export type RadioCardGroupOption = {

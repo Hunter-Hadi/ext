@@ -92,7 +92,12 @@ class OpenAiApiChat extends BaseChat {
       body: JSON.stringify({
         model: chatGPTApiSettings.model,
         messages,
-        temperature: chatGPTApiSettings.temperature,
+        /**
+         * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
+         */
+        temperature: chatGPTApiSettings.temperature
+          ? Math.min(chatGPTApiSettings.temperature, 1.6)
+          : undefined,
         stream: true,
       }),
       onMessage: (message: string) => {

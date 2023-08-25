@@ -27,15 +27,10 @@ const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
  * 一般来说就是处理后的网站，例如gmail和outlook.com/mail
  */
 const isDomainNeedCreateSelectionMarker = () => {
-  const fullPath = window.location.href
   const host = getCurrentDomainHost()
   if (host) {
     if (host === 'mail.google.com') {
       return true
-    }
-    if (host === 'outlook.live.com') {
-      // 便签页面不需要创建selection marker
-      return !/mail\/\d+\/notes/.test(fullPath)
     }
   }
   return false
@@ -1340,6 +1335,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       (originalRange.startContainer ||
         originalRange.endContainer) as HTMLElement,
     )
+    const currentHost = getCurrentDomainHost()
     if (finallySelection && originalRange) {
       if (['discord.com'].includes(getCurrentDomainHost())) {
         await navigator.clipboard.writeText(pastedText)
@@ -1353,7 +1349,12 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       selection?.addRange(restoreRange)
       await delay(0)
       if (
-        ['evernote.com', 'web.whatsapp.com'].includes(getCurrentDomainHost())
+        [
+          'evernote.com',
+          'web.whatsapp.com',
+          'outlook.live.com',
+          'outlook.office.com',
+        ].includes(currentHost)
       ) {
         doc.execCommand('Delete', false, '')
         doc.execCommand('insertText', false, pastedText)

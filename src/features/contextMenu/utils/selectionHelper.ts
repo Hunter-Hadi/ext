@@ -1856,21 +1856,21 @@ export const createSandboxIframeClickAndKeydownEvent = (
           positions[1] - window.screenTop,
         ]
         console.log('iframe currentRect', iframePosition)
-        if (selectionRect) {
-          // draw box
-          const old = iframeDocument.getElementById('a')
-          old && old.remove()
-          const div = iframeDocument.createElement('div')
-          div.id = 'a'
-          div.style.position = 'fixed'
-          div.style.top = selectionRect.top + 'px'
-          div.style.left = selectionRect.left + 'px'
-          div.style.width = selectionRect.width - 2 + 'px'
-          div.style.height = selectionRect.height - 2 + 'px'
-          div.style.border = '1px solid red'
-          div.style.pointerEvents = 'none'
-          iframeDocument.body.appendChild(div)
-        }
+        // if (selectionRect) {
+        //   // draw box
+        //   const old = iframeDocument.getElementById('a')
+        //   old && old.remove()
+        //   const div = iframeDocument.createElement('div')
+        //   div.id = 'a'
+        //   div.style.position = 'fixed'
+        //   div.style.top = selectionRect.top + 'px'
+        //   div.style.left = selectionRect.left + 'px'
+        //   div.style.width = selectionRect.width - 2 + 'px'
+        //   div.style.height = selectionRect.height - 2 + 'px'
+        //   div.style.border = '1px solid red'
+        //   div.style.pointerEvents = 'none'
+        //   iframeDocument.body.appendChild(div)
+        // }
         const iframeRect = cloneRect(iframe.getBoundingClientRect())
         const virtualIframeSelectionElement = {
           virtual: true,

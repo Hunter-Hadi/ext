@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "อัปเกรดเป็น Pro",
     "sidebar__button__retry": "ลองใหม่",
     "sidebar__button__set_up_shortcut": "ตั้งค่าทางลัด",
-    "sidebar__speed_dial__title": "แชทใหม่",
     "sidebar__speed_dial__one_click_prompts__button": "คำให้การแบบ One-click",
     "sidebar__speed_dial__restart_extension__button": "รีสตาร์ทส่วนขยาย",
     "sidebar__speed_dial__restart_extension__tooltip__title": "รีสตาร์ทส่วนขยาย MaxAI.me อีกครั้ง?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "ใช้ Claude เพื่อขับเคลื่อนส่วนขยาย",
     "provider__claude__auth_button_text": "ดำเนินการต่อด้วย Claude",
     "provider__claude__model__claude_instant_100k__description": "โมเดลที่เร็วที่สุดของ Anthropic, หน้าต่างความสัมพันธ์ 100K คำ, เหมาะสำหรับเอกสารที่ยาวมากและการวิเคราะห์โค้ด, สรุปผลและเข้าใจ",
-    "provider__claude__model__claude_2_100k__description": "โมเดลที่มีกำลังมากที่สุดของ Anthropic, หน้าต่างความสัมพันธ์ 100K คำ, เหมาะสำหรับงานต่างๆ ตั้งแต่การสนทนาที่ซับซ้อนและการสร้างเนื้อหาที่สร้างสรรค์ไปจนถึงคำแนะนำที่ละเอียด"
+    "provider__claude__model__claude_2_100k__description": "โมเดลที่มีกำลังมากที่สุดของ Anthropic, หน้าต่างความสัมพันธ์ 100K คำ, เหมาะสำหรับงานต่างๆ ตั้งแต่การสนทนาที่ซับซ้อนและการสร้างเนื้อหาที่สร้างสรรค์ไปจนถึงคำแนะนำที่ละเอียด",
+    "sidebar__tabs__chat__action_btn__title": "แชทใหม่",
+    "sidebar__tabs__summary__action_btn__title": "รีเฟรชสรุป"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

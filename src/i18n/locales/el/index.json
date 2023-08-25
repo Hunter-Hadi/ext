@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Αναβάθμιση σε Pro",
     "sidebar__button__retry": "Επανάληψη",
     "sidebar__button__set_up_shortcut": "Ρύθμιση συντόμευσης",
-    "sidebar__speed_dial__title": "Νέα συνομιλία",
     "sidebar__speed_dial__one_click_prompts__button": "Προτροπές με ένα κλικ",
     "sidebar__speed_dial__restart_extension__button": "Επανεκκίνηση επέκτασης",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Επανεκκίνηση της επέκτασης MaxAI.me;",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Χρησιμοποιήστε τον Κλωντ για να ενισχύσετε την επέκταση.",
     "provider__claude__auth_button_text": "Συνέχεια με τον Κλωντ",
     "provider__claude__model__claude_instant_100k__description": "Ο γρηγορότερος μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για πολύ μεγάλα έγγραφα και ανάλυση κώδικα, συνοπτικότητα και κατανόηση.",
-    "provider__claude__model__claude_2_100k__description": "Το πιο ισχυρό μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για εργασίες από εξεζητημένο διάλογο και δημιουργία δημιουργικού περιεχομένου μέχρι λεπτομερείς οδηγίες."
+    "provider__claude__model__claude_2_100k__description": "Το πιο ισχυρό μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για εργασίες από εξεζητημένο διάλογο και δημιουργία δημιουργικού περιεχομένου μέχρι λεπτομερείς οδηγίες.",
+    "sidebar__tabs__chat__action_btn__title": "Νέα συνομιλία",
+    "sidebar__tabs__summary__action_btn__title": "Ανανέωση περίληψης"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

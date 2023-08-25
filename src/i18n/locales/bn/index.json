@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "প্রোতে আপগ্রেড করুন",
     "sidebar__button__retry": "পুনরায় চেষ্টা করুন",
     "sidebar__button__set_up_shortcut": "শর্টকাট সেট করুন",
-    "sidebar__speed_dial__title": "নতুন চ্যাট",
     "sidebar__speed_dial__one_click_prompts__button": "এক ক্লিক প্রম্পট",
     "sidebar__speed_dial__restart_extension__button": "এক্সটেনশন পুনরায় চালু করুন",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me এক্সটেনশন পুনরায় চালু করবেন?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "এক্সটেনশন চালাতে Claude ব্যবহার করুন।",
     "provider__claude__auth_button_text": "ক্লোড চালিয়ে যান",
     "provider__claude__model__claude_instant_100k__description": "Anthropic এর সর্বত্তপর দ্রুততম মডেল, 100K সংদর্ভ উইন্ডো, খুব লম্বা নথি এবং কোড বিশ্লেষণ, সংক্ষেপণ এবং বোধগম্যতা জন্য অত্যন্ত ভাল।",
-    "provider__claude__model__claude_2_100k__description": "Anthropic এর সবচেয়ে শক্তিশালী মডেল, 100K সংদর্ভ উইন্ডো, সুবিধাজনক সংলাপ এবং সৃজনশীল সামগ্রী উৎপন্ন থেকে বিস্তারিত নির্দেশনা পর্যন্ত পরিষ্কার করার জন্য অত্যন্ত ভাল।"
+    "provider__claude__model__claude_2_100k__description": "Anthropic এর সবচেয়ে শক্তিশালী মডেল, 100K সংদর্ভ উইন্ডো, সুবিধাজনক সংলাপ এবং সৃজনশীল সামগ্রী উৎপন্ন থেকে বিস্তারিত নির্দেশনা পর্যন্ত পরিষ্কার করার জন্য অত্যন্ত ভাল।",
+    "sidebar__tabs__chat__action_btn__title": "নতুন চ্যাট",
+    "sidebar__tabs__summary__action_btn__title": "সারাংশ রিফ্রেশ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro க்கு மேம்படுக",
     "sidebar__button__retry": "மீண்டும் முயற்சி செய்",
     "sidebar__button__set_up_shortcut": "குறுக்குவழியை அமைக்கவும்",
-    "sidebar__speed_dial__title": "புதிய உரையாடல்",
     "sidebar__speed_dial__one_click_prompts__button": "ஒரு கிளிக் பணி வழங்கும்",
     "sidebar__speed_dial__restart_extension__button": "மீண்டும் துவக்கவும்",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me நீட்டிப்பு மீண்டும் துவக்கமாக்கலாமா?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "நீங்கள் நீட்டிப்புக்கு கிளோடை பயன்படுத்தலாம்.",
     "provider__claude__auth_button_text": "கிளோடுடன் தொடருங்கள்",
     "provider__claude__model__claude_instant_100k__description": "அந்த்ராபிக் அதிவேக மாதிரி, 100K சூழல் சாளரம், மிகவும் நீளமான ஆவணம் மற்றும் குறிப்பிட்ட குறிப்புகளுக்கு பொருந்தும் கட்டுப்பாடு, சுருக்கமானது.",
-    "provider__claude__model__claude_2_100k__description": "அந்த்ராபிக் அதிவேக மாதிரி, 100K சூழல் சாளரம், மிகவும் வியப்புள்ள உரையாடல் மற்றும் உரிமையான உள்ளடக்கத்திற்கு அணுகல் முறைகளில் அனைத்து பணிகளுக்கும் பொருந்தும் கட்டுப்பாடு."
+    "provider__claude__model__claude_2_100k__description": "அந்த்ராபிக் அதிவேக மாதிரி, 100K சூழல் சாளரம், மிகவும் வியப்புள்ள உரையாடல் மற்றும் உரிமையான உள்ளடக்கத்திற்கு அணுகல் முறைகளில் அனைத்து பணிகளுக்கும் பொருந்தும் கட்டுப்பாடு.",
+    "sidebar__tabs__chat__action_btn__title": "புதிய உரைநடவாதை",
+    "sidebar__tabs__summary__action_btn__title": "சுருக்கமான சுருக்கம்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Upgrade to Pro",
     "sidebar__button__retry": "Retry",
     "sidebar__button__set_up_shortcut": "Set up shortcut",
-    "sidebar__speed_dial__title": "New chat",
     "sidebar__speed_dial__one_click_prompts__button": "One-click prompts",
     "sidebar__speed_dial__restart_extension__button": "Restart extension",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Restart MaxAI.me extension?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Use Claude to power the extension.",
     "provider__claude__auth_button_text": "Continue with Claude",
     "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarisation, and comprehension.",
-    "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction."
+    "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction.",
+    "sidebar__tabs__chat__action_btn__title": "New chat",
+    "sidebar__tabs__summary__action_btn__title": "Refresh summary"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

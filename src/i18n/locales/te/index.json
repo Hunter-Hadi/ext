@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro కు అప్‌గ్రేడ్ చేయండి",
     "sidebar__button__retry": "మళ్ళీ ప్రయత్నించండి",
     "sidebar__button__set_up_shortcut": "షార్ట్‌కట్ సెట్ అప్ చేయండి",
-    "sidebar__speed_dial__title": "కొత్త చాట్",
     "sidebar__speed_dial__one_click_prompts__button": "ఒకే నొక్కి ప్రాంప్ట్‌లు",
     "sidebar__speed_dial__restart_extension__button": "ఎక్స్టెన్షన్‌ను మళ్లీ ప్రారంభించండి",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me ఎక్స్టెన్షన్‌ను మళ్లీ ప్రారంభించాలా?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "పొందడానికి క్లాడ్ ఉపయోగించండి.",
     "provider__claude__auth_button_text": "క్లాడ్ తో కొనసాగించండి",
     "provider__claude__model__claude_instant_100k__description": "అంథ్రాపిక్‌కి తీవ్రతరంగా మోడల్, 100K సందర్భ విండో, చాలా పొడవు పత్రం మరియు కోడ్ విశ్లేషణ, సారాంశీకరణ, మరియు గ్రహించడం కోసం అది మంచిది.",
-    "provider__claude__model__claude_2_100k__description": "అంథ్రాపిక్‌కి అత్యంత శక్తివంతమైన మోడల్, 100K సందర్భ విండో, సొంత సంభాషణ మరియు సృజనాత్మక కంటెంట్ జనరేషన్ నుండి వివరణాత్మక నిర్దేశనకు వర్గీకరించడంలో మంచిది."
+    "provider__claude__model__claude_2_100k__description": "అంథ్రాపిక్‌కి అత్యంత శక్తివంతమైన మోడల్, 100K సందర్భ విండో, సొంత సంభాషణ మరియు సృజనాత్మక కంటెంట్ జనరేషన్ నుండి వివరణాత్మక నిర్దేశనకు వర్గీకరించడంలో మంచిది.",
+    "sidebar__tabs__chat__action_btn__title": "కొత్త చాట్",
+    "sidebar__tabs__summary__action_btn__title": "సమరాలను రిఫ్రెష్ చేయండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

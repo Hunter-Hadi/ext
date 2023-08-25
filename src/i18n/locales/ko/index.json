@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro로 업그레이드",
     "sidebar__button__retry": "다시 시도",
     "sidebar__button__set_up_shortcut": "바로 가기 설정",
-    "sidebar__speed_dial__title": "새 채팅",
     "sidebar__speed_dial__one_click_prompts__button": "원클릭 프롬프트",
     "sidebar__speed_dial__restart_extension__button": "확장 프로그램 재시작",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me 확장 프로그램 재시작?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "확장 기능을 제공하기 위해 클로드를 사용하세요.",
     "provider__claude__auth_button_text": "클로드로 계속하기",
     "provider__claude__model__claude_instant_100k__description": "안쓰로픽의 가장 빠른 모델, 100K 컨텍스트 창, 매우 긴 문서 및 코드 분석, 요약 및 이해에 적합합니다.",
-    "provider__claude__model__claude_2_100k__description": "안쓰로픽의 가장 강력한 모델, 100K 컨텍스트 창, 정교한 대화 및 창의적인 콘텐츠 생성부터 상세한 지시까지 다양한 작업에 적합합니다."
+    "provider__claude__model__claude_2_100k__description": "안쓰로픽의 가장 강력한 모델, 100K 컨텍스트 창, 정교한 대화 및 창의적인 콘텐츠 생성부터 상세한 지시까지 다양한 작업에 적합합니다.",
+    "sidebar__tabs__chat__action_btn__title": "새로운 채팅",
+    "sidebar__tabs__summary__action_btn__title": "요약 새로고침"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

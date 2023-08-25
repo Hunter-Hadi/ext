@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Nâng cấp lên Pro",
     "sidebar__button__retry": "Thử lại",
     "sidebar__button__set_up_shortcut": "Thiết lập phím tắt",
-    "sidebar__speed_dial__title": "Trò chuyện mới",
     "sidebar__speed_dial__one_click_prompts__button": "Gợi ý bằng một cú nhấp chuột",
     "sidebar__speed_dial__restart_extension__button": "Khởi động lại tiện ích",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Khởi động lại tiện ích MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Sử dụng Claude để nâng cấp tiện ích.",
     "provider__claude__auth_button_text": "Tiếp tục với Claude",
     "provider__claude__model__claude_instant_100k__description": "Mô hình nhanh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho việc phân tích tài liệu và mã nguồn rất dài, tóm tắt và hiểu nội dung.",
-    "provider__claude__model__claude_2_100k__description": "Mô hình mạnh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho các nhiệm vụ từ giao tiếp phức tạp và tạo nội dung sáng tạo đến hướng dẫn chi tiết."
+    "provider__claude__model__claude_2_100k__description": "Mô hình mạnh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho các nhiệm vụ từ giao tiếp phức tạp và tạo nội dung sáng tạo đến hướng dẫn chi tiết.",
+    "sidebar__tabs__chat__action_btn__title": "Trò chuyện mới",
+    "sidebar__tabs__summary__action_btn__title": "Làm mới tổng kết"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

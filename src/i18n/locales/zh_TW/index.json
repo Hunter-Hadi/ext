@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "升級到專業版",
     "sidebar__button__retry": "重試",
     "sidebar__button__set_up_shortcut": "設置快捷方式",
-    "sidebar__speed_dial__title": "新聊天",
     "sidebar__speed_dial__one_click_prompts__button": "一鍵提示",
     "sidebar__speed_dial__restart_extension__button": "重新啟動擴展",
     "sidebar__speed_dial__restart_extension__tooltip__title": "重新啟動 MaxAI.me 擴充功能？",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "使用 Claude 提供擴展功能。",
     "provider__claude__auth_button_text": "繼續使用 Claude",
     "provider__claude__model__claude_instant_100k__description": "Anthropic 最快的模型，100K 上下文視窗，非常適合長篇文件和代碼分析、摘要和理解。",
-    "provider__claude__model__claude_2_100k__description": "Anthropic 最強大的模型，100K 上下文視窗，適用於從複雜對話和創意內容生成到詳細指導的各種任務。"
+    "provider__claude__model__claude_2_100k__description": "Anthropic 最強大的模型，100K 上下文視窗，適用於從複雜對話和創意內容生成到詳細指導的各種任務。",
+    "sidebar__tabs__chat__action_btn__title": "新聊天",
+    "sidebar__tabs__summary__action_btn__title": "刷新摘要"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

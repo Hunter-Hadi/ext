@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro માટે અપગ્રેડ કરો",
     "sidebar__button__retry": "ફરીથી પ્રયાસ કરો",
     "sidebar__button__set_up_shortcut": "શૉર્ટકટ સેટ કરો",
-    "sidebar__speed_dial__title": "નવી ચેટ",
     "sidebar__speed_dial__one_click_prompts__button": "એક-ક્લિક પ્રોમ્પ્ટ્સ",
     "sidebar__speed_dial__restart_extension__button": "એક્સટેન્શન પુનઃઆરંભ કરો",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me એક્સટેન્શન પુનઃઆરંભ કરીશું?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "એક્સ્ટેન્શન પર શક્તિ આપવા માટે ક્લોડનો ઉપયોગ કરો.",
     "provider__claude__auth_button_text": "ક્લોડ સાથે ચાલો",
     "provider__claude__model__claude_instant_100k__description": "એન્થ્રોપિકની સરળતાનું મોડેલ, 100K સંદર્ભ વિંડો, ખૂબ લાંબા દસ્તાવેજ અને કોડ વિશ્લેષણ, સંગ્રહણ, અને સમજણ માટે મહત્ત્વપૂર્ણ.",
-    "provider__claude__model__claude_2_100k__description": "એન્થ્રોપિકનું સૌથી શક્તિશાળી મોડેલ, 100K સંદર્ભ વિંડો, સુંદર સંવાદ અને રચના ઉત્પાદનથી લેકર વિગતવાર નિર્દેશન સુધીની કાર્યો માટે મહત્ત્વપૂર્ણ."
+    "provider__claude__model__claude_2_100k__description": "એન્થ્રોપિકનું સૌથી શક્તિશાળી મોડેલ, 100K સંદર્ભ વિંડો, સુંદર સંવાદ અને રચના ઉત્પાદનથી લેકર વિગતવાર નિર્દેશન સુધીની કાર્યો માટે મહત્ત્વપૂર્ણ.",
+    "sidebar__tabs__chat__action_btn__title": "નવી ચેટ",
+    "sidebar__tabs__summary__action_btn__title": "સંક્ષેપ રિફ્રેશ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

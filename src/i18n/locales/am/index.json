@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro ይዘት ይግዙ",
     "sidebar__button__retry": "ድግሪ",
     "sidebar__button__set_up_shortcut": "የተጠቃሚ መቀጠል ይንከባከቡ",
-    "sidebar__speed_dial__title": "አዲስ ውይይት",
     "sidebar__speed_dial__one_click_prompts__button": "አንድ-ጊዜ ጥቅልልን",
     "sidebar__speed_dial__restart_extension__button": "የተጠቃሚውን አጽዳ",
     "sidebar__speed_dial__restart_extension__tooltip__title": "የMaxAI.me ተጠቃሚውን አጽዳ?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "ክላድን በማስተካከያ ላይ መቀየር ይችላሉ።",
     "provider__claude__auth_button_text": "ክላድ እንዲሁም መግቢያውን በመግባት ይግቡ",
     "provider__claude__model__claude_instant_100k__description": "አንቴሪክ በትንሽ ስልክ የተሻለ ሞዴል፣ 100K የመግቢያ ማስታወቂያ፣ በተለይ የሚገኙ የማይሻሽ የመግቢያና የማይሻሽ ኮድ አንስቶም ወደሆነ የተሻለ ድረገጽ እና የተሻለ የመግቢያ ማስታወቂያ ማስተላለፍ ይችላሉ።",
-    "provider__claude__model__claude_2_100k__description": "አንቴሪክ በትንሽ ስልክ የተሻለ ሞዴል፣ 100K የመግቢያ ማስታወቂያ፣ በተለይ የሚገኙ የማይሻሽ የመግቢያና የማይሻሽ ኮድ አንስቶም ወደሆነ የተሻለ ድረገጽ እና የተሻለ የመግቢያ ማስታወቂያ ማስተላለፍ ይችላሉ።"
+    "provider__claude__model__claude_2_100k__description": "አንቴሪክ በትንሽ ስልክ የተሻለ ሞዴል፣ 100K የመግቢያ ማስታወቂያ፣ በተለይ የሚገኙ የማይሻሽ የመግቢያና የማይሻሽ ኮድ አንስቶም ወደሆነ የተሻለ ድረገጽ እና የተሻለ የመግቢያ ማስታወቂያ ማስተላለፍ ይችላሉ።",
+    "sidebar__tabs__chat__action_btn__title": "ኮምፕዩተር መጀመሪያ",
+    "sidebar__tabs__summary__action_btn__title": "የጽሁፍ አማራጭ አድርግ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

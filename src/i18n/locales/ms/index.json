@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Naik taraf ke Pro",
     "sidebar__button__retry": "Cuba semula",
     "sidebar__button__set_up_shortcut": "Tetapkan pintasan",
-    "sidebar__speed_dial__title": "Perbualan baru",
     "sidebar__speed_dial__one_click_prompts__button": "Prompt satu klik",
     "sidebar__speed_dial__restart_extension__button": "Mulakan semula sambungan",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Mulakan semula sambungan MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Gunakan Claude untuk memperkuat perpanjangan.",
     "provider__claude__auth_button_text": "Teruskan dengan Claude",
     "provider__claude__model__claude_instant_100k__description": "Model tercepat Anthropic, jendela konteks 100K, bagus untuk analisis dokumen dan kode yang sangat panjang, ringkasan, dan pemahaman.",
-    "provider__claude__model__claude_2_100k__description": "Model paling kuat Anthropic, jendela konteks 100K, bagus untuk tugas mulai dari dialog canggih dan generasi konten kreatif hingga instruksi terperinci."
+    "provider__claude__model__claude_2_100k__description": "Model paling kuat Anthropic, jendela konteks 100K, bagus untuk tugas mulai dari dialog canggih dan generasi konten kreatif hingga instruksi terperinci.",
+    "sidebar__tabs__chat__action_btn__title": "Perbualan baru",
+    "sidebar__tabs__summary__action_btn__title": "Muat semula ringkasan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

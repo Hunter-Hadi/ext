@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Actualitza a Pro",
     "sidebar__button__retry": "Torna-ho a intentar",
     "sidebar__button__set_up_shortcut": "Configura un drecera",
-    "sidebar__speed_dial__title": "Xat nou",
     "sidebar__speed_dial__one_click_prompts__button": "Prompts d'un clic",
     "sidebar__speed_dial__restart_extension__button": "Reinicia l'extensió",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Voleu reiniciar l'extensió MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Utilitza Claude per alimentar l'extensió.",
     "provider__claude__auth_button_text": "Continua amb Claude",
     "provider__claude__model__claude_instant_100k__description": "El model més ràpid d'Anthropic, finestra de context de 100K, ideal per a documents molt llargs i anàlisi de codi, resum i comprensió.",
-    "provider__claude__model__claude_2_100k__description": "El model més potent d'Anthropic, finestra de context de 100K, ideal per a tasques que van des del diàleg sofisticat fins a la generació de contingut creatiu i instruccions detallades."
+    "provider__claude__model__claude_2_100k__description": "El model més potent d'Anthropic, finestra de context de 100K, ideal per a tasques que van des del diàleg sofisticat fins a la generació de contingut creatiu i instruccions detallades.",
+    "sidebar__tabs__chat__action_btn__title": "Xat nou",
+    "sidebar__tabs__summary__action_btn__title": "Actualitza resum"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

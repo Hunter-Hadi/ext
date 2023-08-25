@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "I-upgrade sa Pro",
     "sidebar__button__retry": "Subukan muli",
     "sidebar__button__set_up_shortcut": "Itakda ang shortcut",
-    "sidebar__speed_dial__title": "Bagong chat",
     "sidebar__speed_dial__one_click_prompts__button": "One-click prompts",
     "sidebar__speed_dial__restart_extension__button": "I-restart ang extension",
     "sidebar__speed_dial__restart_extension__tooltip__title": "I-restart ang MaxAI.me extension?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Gamitin ang Claude upang palakasin ang extension.",
     "provider__claude__auth_button_text": "Magpatuloy gamit ang Claude",
     "provider__claude__model__claude_instant_100k__description": "Pinakamabilis na modelo ng Anthropic, may 100K window ng konteksto, mahusay para sa napakahabang dokumento at pagsusuri ng code, pag-uulit-ulit, at pang-unawa.",
-    "provider__claude__model__claude_2_100k__description": "Pinakamalakas na modelo ng Anthropic, may 100K window ng konteksto, mahusay para sa mga gawain mula sa kumplikadong pakikipag-usap at paglikha ng nilalaman hanggang sa detalyadong tagubilin."
+    "provider__claude__model__claude_2_100k__description": "Pinakamalakas na modelo ng Anthropic, may 100K window ng konteksto, mahusay para sa mga gawain mula sa kumplikadong pakikipag-usap at paglikha ng nilalaman hanggang sa detalyadong tagubilin.",
+    "sidebar__tabs__chat__action_btn__title": "Bagong chat",
+    "sidebar__tabs__summary__action_btn__title": "I-refresh ang buod"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

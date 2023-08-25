@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Uaktualnij do Pro",
     "sidebar__button__retry": "Ponów",
     "sidebar__button__set_up_shortcut": "Skonfiguruj skrót",
-    "sidebar__speed_dial__title": "Nowy czat",
     "sidebar__speed_dial__one_click_prompts__button": "Jedno kliknięcie - gotowe propozycje",
     "sidebar__speed_dial__restart_extension__button": "Uruchom ponownie rozszerzenie",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Uruchomić ponownie rozszerzenie MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Użyj Claude do zasilania rozszerzenia.",
     "provider__claude__auth_button_text": "Kontynuuj z Claude",
     "provider__claude__model__claude_instant_100k__description": "Najszybszy model Anthropic, okno kontekstowe 100K, idealny do analizy bardzo długich dokumentów i kodu, streszczania i zrozumienia.",
-    "provider__claude__model__claude_2_100k__description": "Najpotężniejszy model Anthropic, okno kontekstowe 100K, idealny do zadań od zaawansowanego dialogu i generowania kreatywnych treści po szczegółowe instrukcje."
+    "provider__claude__model__claude_2_100k__description": "Najpotężniejszy model Anthropic, okno kontekstowe 100K, idealny do zadań od zaawansowanego dialogu i generowania kreatywnych treści po szczegółowe instrukcje.",
+    "sidebar__tabs__chat__action_btn__title": "Nowy czat",
+    "sidebar__tabs__summary__action_btn__title": "Odśwież podsumowanie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

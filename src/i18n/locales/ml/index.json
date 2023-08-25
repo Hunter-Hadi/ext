@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "പ്രോയിലേക്ക് അപ്ഗ്രേഡുചെയ്യുക",
     "sidebar__button__retry": "വീണ്ടും ശ്രമിക്കുക",
     "sidebar__button__set_up_shortcut": "ഷോർട്ട്കട് സജ്ജമാക്കുക",
-    "sidebar__speed_dial__title": "പുതിയ ചാറ്റ്",
     "sidebar__speed_dial__one_click_prompts__button": "ഒരു ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
     "sidebar__speed_dial__restart_extension__button": "എക്സ്റ്റൻഷൻ പുനഃസജ്ജമാക്കുക",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me എക്സ്റ്റൻഷൻ പുനഃസജ്ജമാക്കണോ?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Extension il power cheyyan Claude upayogikkuka.",
     "provider__claude__auth_button_text": "Claude-um pokkam kazhiyumo",
     "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, very long document and code analysis, summarization, and comprehension ku nalla aaswadikkunna model.",
-    "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, sophisticated dialogue and creative content generation ila detailed instruction vareyum oru range of tasks ku nalla aaswadikkunna model."
+    "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, sophisticated dialogue and creative content generation ila detailed instruction vareyum oru range of tasks ku nalla aaswadikkunna model.",
+    "sidebar__tabs__chat__action_btn__title": "പുതിയ ചാറ്റ്",
+    "sidebar__tabs__summary__action_btn__title": "സംഗൃഹനം പുനരുജ്ജീവനം"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

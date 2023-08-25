@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Надстройте до Pro",
     "sidebar__button__retry": "Опитай отново",
     "sidebar__button__set_up_shortcut": "Настройка на прекия път",
-    "sidebar__speed_dial__title": "Нов чат",
     "sidebar__speed_dial__one_click_prompts__button": "Еднократни предложения",
     "sidebar__speed_dial__restart_extension__button": "Рестартирайте разширението",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Рестартиране на разширението MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Използвайте Клод за захранване на разширението.",
     "provider__claude__auth_button_text": "Продължи с Клод",
     "provider__claude__model__claude_instant_100k__description": "Най-бързият модел на Антропик, 100K контекстен прозорец, отличен за много дълги документи и анализ на код, резюмиране и разбиране.",
-    "provider__claude__model__claude_2_100k__description": "Най-мощният модел на Антропик, 100K контекстен прозорец, подходящ за задачи от сложен диалог и генериране на креативно съдържание до подробни инструкции."
+    "provider__claude__model__claude_2_100k__description": "Най-мощният модел на Антропик, 100K контекстен прозорец, подходящ за задачи от сложен диалог и генериране на креативно съдържание до подробни инструкции.",
+    "sidebar__tabs__chat__action_btn__title": "Нов чат",
+    "sidebar__tabs__summary__action_btn__title": "Опресни обобщение"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

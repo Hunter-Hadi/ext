@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Sasisha hadi Pro",
     "sidebar__button__retry": "Jaribu tena",
     "sidebar__button__set_up_shortcut": "Sanidi mkato",
-    "sidebar__speed_dial__title": "Mazungumzo mapya",
     "sidebar__speed_dial__one_click_prompts__button": "Pendekezo la kubofya moja",
     "sidebar__speed_dial__restart_extension__button": "Anzisha upya upanuzi",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Anzisha upya upanuzi wa MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Tumia Claude kuwezesha kifaa cha nyongeza.",
     "provider__claude__auth_button_text": "Endelea na Claude",
     "provider__claude__model__claude_instant_100k__description": "Mfano wa haraka zaidi wa Anthropic, dirisha la muktadha wa 100K, mzuri kwa hati ndefu sana na uchambuzi wa nambari, muhtasari, na ufahamu.",
-    "provider__claude__model__claude_2_100k__description": "Mfano wenye nguvu zaidi wa Anthropic, dirisha la muktadha wa 100K, mzuri kwa majukumu yanayotofautiana kutoka kwa mazungumzo ya kisasa na uzalishaji wa yaliyomo ya ubunifu hadi maagizo ya kina."
+    "provider__claude__model__claude_2_100k__description": "Mfano wenye nguvu zaidi wa Anthropic, dirisha la muktadha wa 100K, mzuri kwa majukumu yanayotofautiana kutoka kwa mazungumzo ya kisasa na uzalishaji wa yaliyomo ya ubunifu hadi maagizo ya kina.",
+    "sidebar__tabs__chat__action_btn__title": "Mazungumzo mapya",
+    "sidebar__tabs__summary__action_btn__title": "Sasisha muhtasari"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

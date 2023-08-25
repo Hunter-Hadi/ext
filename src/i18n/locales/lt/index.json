@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Atnaujinti į Pro",
     "sidebar__button__retry": "Bandyti dar kartą",
     "sidebar__button__set_up_shortcut": "Nustatyti spartųjį klavišą",
-    "sidebar__speed_dial__title": "Naujas pokalbis",
     "sidebar__speed_dial__one_click_prompts__button": "Vieno paspaudimo užduotys",
     "sidebar__speed_dial__restart_extension__button": "Perkrauti plėtinį",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Perkrauti MaxAI.me plėtinį?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Naudokite Claude, kad palaikytumėte plėtinį.",
     "provider__claude__auth_button_text": "Tęsti su Claude",
     "provider__claude__model__claude_instant_100k__description": "Greičiausias Anthropic modelis, 100K konteksto langas, puikus ilgiems dokumentams ir kodo analizei, santraukoms ir supratimui.",
-    "provider__claude__model__claude_2_100k__description": "Galingiausias Anthropic modelis, 100K konteksto langas, puikus nuo sudėtingų dialogų ir kūrybinio turinio generavimo iki išsamios instrukcijos."
+    "provider__claude__model__claude_2_100k__description": "Galingiausias Anthropic modelis, 100K konteksto langas, puikus nuo sudėtingų dialogų ir kūrybinio turinio generavimo iki išsamios instrukcijos.",
+    "sidebar__tabs__chat__action_btn__title": "Naujas pokalbis",
+    "sidebar__tabs__summary__action_btn__title": "Atnaujinti suvestinę"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Oppgrader til Pro",
     "sidebar__button__retry": "Prøv igjen",
     "sidebar__button__set_up_shortcut": "Sett opp snarvei",
-    "sidebar__speed_dial__title": "Ny chat",
     "sidebar__speed_dial__one_click_prompts__button": "Ett-klikk-prompter",
     "sidebar__speed_dial__restart_extension__button": "Start utvidelsen på nytt",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Start MaxAI.me-utvidelsen på nytt?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Bruk Claude til å drive utvidelsen.",
     "provider__claude__auth_button_text": "Fortsett med Claude",
     "provider__claude__model__claude_instant_100k__description": "Anthropics raskeste modell, 100K kontekstvindu, flott for svært lange dokumenter og kodeanalyse, sammendrag og forståelse.",
-    "provider__claude__model__claude_2_100k__description": "Anthropics kraftigste modell, 100K kontekstvindu, flott for oppgaver som spenner fra sofistikert dialog og kreativt innholdsgenerering til detaljerte instruksjoner."
+    "provider__claude__model__claude_2_100k__description": "Anthropics kraftigste modell, 100K kontekstvindu, flott for oppgaver som spenner fra sofistikert dialog og kreativt innholdsgenerering til detaljerte instruksjoner.",
+    "sidebar__tabs__chat__action_btn__title": "Ny chat",
+    "sidebar__tabs__summary__action_btn__title": "Oppdater oppsummering"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

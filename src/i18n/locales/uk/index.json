@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro میں اپ گریڈ کریں",
     "sidebar__button__retry": "دوبارہ کوشش کریں",
     "sidebar__button__set_up_shortcut": "شارٹکٹ تشکیل دیں",
-    "sidebar__speed_dial__title": "نیا چیٹ",
     "sidebar__speed_dial__one_click_prompts__button": "ایک کلک پرومپٹس",
     "sidebar__speed_dial__restart_extension__button": "توسیع دوبارہ شروع کریں",
     "sidebar__speed_dial__restart_extension__tooltip__title": "کیا آپ MaxAI.me توسیع دوبارہ شروع کرنا چاہتے ہیں؟",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "توسیع کو چلانے کے لئے کلاؤڈ کا استعمال کریں۔",
     "provider__claude__auth_button_text": "کلاؤڈ کے ساتھ جاری رکھیں",
     "provider__claude__model__claude_instant_100k__description": "Anthropic کا تیز ترین ماڈل، 100K کنٹیکسٹ ونڈو، بہت لمبے دستاویز اور کوڈ تجزیہ، خلاصہ کاری اور سمجھ میں عظیم۔",
-    "provider__claude__model__claude_2_100k__description": "Anthropic کا زبردست ماڈل، 100K کنٹیکسٹ ونڈو، فنی گفتگو اور تخلیقی مواد تیار کرنے سے لے کر تفصیلی ہدایات تک کے وسعت والے کاموں کے لئے عظیم۔"
+    "provider__claude__model__claude_2_100k__description": "Anthropic کا زبردست ماڈل، 100K کنٹیکسٹ ونڈو، فنی گفتگو اور تخلیقی مواد تیار کرنے سے لے کر تفصیلی ہدایات تک کے وسعت والے کاموں کے لئے عظیم۔",
+    "sidebar__tabs__chat__action_btn__title": "نئی چیٹ",
+    "sidebar__tabs__summary__action_btn__title": "تازہ کریں خلاصہ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

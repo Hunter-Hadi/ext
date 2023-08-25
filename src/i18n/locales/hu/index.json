@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Frissítés Pro verzióra",
     "sidebar__button__retry": "Újra",
     "sidebar__button__set_up_shortcut": "Parancsikon beállítása",
-    "sidebar__speed_dial__title": "Új beszélgetés",
     "sidebar__speed_dial__one_click_prompts__button": "Egykattintásos segédletek",
     "sidebar__speed_dial__restart_extension__button": "Bővítmény újraindítása",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Újraindítja a MaxAI.me bővítményt?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Használd Claudet a bővítmény működtetéséhez.",
     "provider__claude__auth_button_text": "Folytatás Claudedal",
     "provider__claude__model__claude_instant_100k__description": "Anthropic leggyorsabb modellje, 100K kontextusablak, nagyszerű hosszú dokumentumok és kód elemzéséhez, összefoglaláshoz és megértéshez.",
-    "provider__claude__model__claude_2_100k__description": "Anthropic legerősebb modellje, 100K kontextusablak, kiválóan alkalmas a szofisztikált párbeszédre és kreatív tartalomgenerálásra, részletes utasításokhoz."
+    "provider__claude__model__claude_2_100k__description": "Anthropic legerősebb modellje, 100K kontextusablak, kiválóan alkalmas a szofisztikált párbeszédre és kreatív tartalomgenerálásra, részletes utasításokhoz.",
+    "sidebar__tabs__chat__action_btn__title": "Új csevegés",
+    "sidebar__tabs__summary__action_btn__title": "Összefoglaló frissítése"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

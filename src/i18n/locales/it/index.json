@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Passa a Pro",
     "sidebar__button__retry": "Riprova",
     "sidebar__button__set_up_shortcut": "Imposta una scorciatoia",
-    "sidebar__speed_dial__title": "Nuova chat",
     "sidebar__speed_dial__one_click_prompts__button": "Prompts con un solo clic",
     "sidebar__speed_dial__restart_extension__button": "Riavvia l'estensione",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Riavviare l'estensione MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Usa Claude per alimentare l'estensione.",
     "provider__claude__auth_button_text": "Continua con Claude",
     "provider__claude__model__claude_instant_100k__description": "Il modello più veloce di Anthropic, finestra di contesto 100K, ottimo per documenti molto lunghi e analisi del codice, sintesi e comprensione.",
-    "provider__claude__model__claude_2_100k__description": "Il modello più potente di Anthropic, finestra di contesto 100K, ideale per dialoghi sofisticati e generazione di contenuti creativi fino a istruzioni dettagliate."
+    "provider__claude__model__claude_2_100k__description": "Il modello più potente di Anthropic, finestra di contesto 100K, ideale per dialoghi sofisticati e generazione di contenuti creativi fino a istruzioni dettagliate.",
+    "sidebar__tabs__chat__action_btn__title": "Nuova chat",
+    "sidebar__tabs__summary__action_btn__title": "Aggiorna riepilogo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

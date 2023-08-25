@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro मध्ये अपग्रेड करा",
     "sidebar__button__retry": "पुन्हा प्रयत्न करा",
     "sidebar__button__set_up_shortcut": "शॉर्टकट सेट करा",
-    "sidebar__speed_dial__title": "नवीन चॅट",
     "sidebar__speed_dial__one_click_prompts__button": "एक क्लिक प्रॉम्प्ट्स",
     "sidebar__speed_dial__restart_extension__button": "एक्सटेंशन पुनरारंभ करा",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me एक्सटेंशन पुनरारंभ करायचे आहे?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "एक्सटेंशनसाठी क्लोडचा वापर करा.",
     "provider__claude__auth_button_text": "क्लोडसह सुरू करा",
     "provider__claude__model__claude_instant_100k__description": "एंथ्रोपिकचे जलद मॉडेल, 100K संदर्भ विंडो, अत्यंत लांबी दस्तऐवज आणि कोड विश्लेषण, संक्षेपण आणि समज यासाठी उत्कृष्ट.",
-    "provider__claude__model__claude_2_100k__description": "एंथ्रोपिकचे सर्वाधिक शक्तिशाळी मॉडेल, 100K संदर्भ विंडो, सुविचारगत संवाद आणि सृजनात्मक सामग्री उत्पादन ते तपशीलवार निर्देशांकपर्यंतच्या कार्यांसाठी उत्कृष्ट."
+    "provider__claude__model__claude_2_100k__description": "एंथ्रोपिकचे सर्वाधिक शक्तिशाळी मॉडेल, 100K संदर्भ विंडो, सुविचारगत संवाद आणि सृजनात्मक सामग्री उत्पादन ते तपशीलवार निर्देशांकपर्यंतच्या कार्यांसाठी उत्कृष्ट.",
+    "sidebar__tabs__chat__action_btn__title": "नवीन चॅट",
+    "sidebar__tabs__summary__action_btn__title": "सारांश रिफ्रेश करा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "ارتقا به Pro",
     "sidebar__button__retry": "تلاش مجدد",
     "sidebar__button__set_up_shortcut": "تنظیم میان‌بر",
-    "sidebar__speed_dial__title": "چت جدید",
     "sidebar__speed_dial__one_click_prompts__button": "پرومپت‌های یک کلیک",
     "sidebar__speed_dial__restart_extension__button": "راه‌اندازی مجدد افزونه",
     "sidebar__speed_dial__restart_extension__tooltip__title": "آیا می‌خواهید افزونه MaxAI.me را راه‌اندازی مجدد کنید؟",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "از کلود برای قدرت دادن به افزونه استفاده کنید.",
     "provider__claude__auth_button_text": "ادامه با کلود",
     "provider__claude__model__claude_instant_100k__description": "سریع‌ترین مدل آنتروپیک، پنجره متنی ۱۰۰ هزار کلمه، عالی برای تحلیل سند و کد بسیار بلند، خلاصه‌سازی و درک.",
-    "provider__claude__model__claude_2_100k__description": "قدرتمندترین مدل آنتروپیک، پنجره متنی ۱۰۰ هزار کلمه، عالی برای وظایفی از جمله دیالوگ پیچیده و تولید محتوای خلاق تا دستورالعمل‌های دقیق."
+    "provider__claude__model__claude_2_100k__description": "قدرتمندترین مدل آنتروپیک، پنجره متنی ۱۰۰ هزار کلمه، عالی برای وظایفی از جمله دیالوگ پیچیده و تولید محتوای خلاق تا دستورالعمل‌های دقیق.",
+    "sidebar__tabs__chat__action_btn__title": "چت جدید",
+    "sidebar__tabs__summary__action_btn__title": "به‌روزرسانی خلاصه"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

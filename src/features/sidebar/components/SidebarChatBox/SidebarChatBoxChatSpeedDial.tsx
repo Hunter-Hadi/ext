@@ -15,6 +15,8 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Link from '@mui/material/Link'
 import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
+import { SidebarSettingsState } from '@/features/sidebar'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const SidebarChatBoxChatSpeedDial: FC<{
@@ -23,6 +25,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
 }> = (props) => {
   const { onClick, disabledMainButton } = props
   const { t } = useTranslation(['common', 'client'])
+  const sidebarSettings = useRecoilValue(SidebarSettingsState)
   const [restartAppDialogVisible, setRestartAppDialogVisible] = useState(false)
   const handleCloseRestartAppDialog = () => {
     setRestartAppDialogVisible(false)
@@ -71,7 +74,11 @@ const SidebarChatBoxChatSpeedDial: FC<{
           >
             <TextOnlyTooltip
               placement={'left'}
-              title={t('client:sidebar__speed_dial__title')}
+              title={
+                sidebarSettings.type === 'Chat'
+                  ? t('client:sidebar__tabs__chat__action_btn__title')
+                  : t('client:sidebar__tabs__summary__action_btn__title')
+              }
             >
               <Stack
                 p={1}

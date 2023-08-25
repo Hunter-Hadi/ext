@@ -223,7 +223,6 @@
     "sidebar__button__upgrade_to_pro": "Upgrade to Pro",
     "sidebar__button__retry": "Retry",
     "sidebar__button__set_up_shortcut": "Set up shortcut",
-    "sidebar__speed_dial__title": "New chat",
     "sidebar__speed_dial__one_click_prompts__button": "One-click prompts",
     "sidebar__speed_dial__restart_extension__button": "Restart extension",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Restart MaxAI.me extension?",
@@ -411,7 +410,9 @@
     "rewards__title": "Rewards",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant",
     "sidebar__tabs__chat__title": "Chat",
-    "sidebar__tabs__summary__title": "Summary"
+    "sidebar__tabs__chat__action_btn__title": "New chat",
+    "sidebar__tabs__summary__title": "Summary",
+    "sidebar__tabs__summary__action_btn__title": "Refresh summary"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

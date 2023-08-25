@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Täiusta Pro versioonile",
     "sidebar__button__retry": "Proovi uuesti",
     "sidebar__button__set_up_shortcut": "Seadista otsetee",
-    "sidebar__speed_dial__title": "Uus vestlus",
     "sidebar__speed_dial__one_click_prompts__button": "Üheklõpsulised vihjed",
     "sidebar__speed_dial__restart_extension__button": "Taaskäivita laiendus",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Kas taaskäivitada MaxAI.me laiendus?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Kasuta Claudet laienduse toitmiseks.",
     "provider__claude__auth_button_text": "Jätka Claude'iga",
     "provider__claude__model__claude_instant_100k__description": "Anthropicu kõige kiirem mudel, 100K kontekstaken, suurepärane väga pikkade dokumentide ja koodianalüüsi, kokkuvõtte tegemise ning mõistmise jaoks.",
-    "provider__claude__model__claude_2_100k__description": "Anthropicu võimsaim mudel, 100K kontekstaken, sobib suurepäraselt keerukate dialoogide ja loome sisu genereerimisest üksikasjalike juhiste koostamiseni."
+    "provider__claude__model__claude_2_100k__description": "Anthropicu võimsaim mudel, 100K kontekstaken, sobib suurepäraselt keerukate dialoogide ja loome sisu genereerimisest üksikasjalike juhiste koostamiseni.",
+    "sidebar__tabs__chat__action_btn__title": "Uus vestlus",
+    "sidebar__tabs__summary__action_btn__title": "Värskenda kokkuvõtet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

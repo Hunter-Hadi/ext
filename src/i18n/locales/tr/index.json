@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Pro'ya yükselt",
     "sidebar__button__retry": "Tekrar dene",
     "sidebar__button__set_up_shortcut": "Kısayolu ayarla",
-    "sidebar__speed_dial__title": "Yeni sohbet",
     "sidebar__speed_dial__one_click_prompts__button": "Tek tıklamayla ipuçları",
     "sidebar__speed_dial__restart_extension__button": "Uzantıyı yeniden başlat",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me uzantısını yeniden başlat?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Uzantıyı güçlendirmek için Claude kullanın.",
     "provider__claude__auth_button_text": "Claude ile Devam Et",
     "provider__claude__model__claude_instant_100k__description": "Anthropic'in en hızlı modeli, 100K bağlam penceresi, çok uzun belge ve kod analizi, özetleme ve anlama için ideal.",
-    "provider__claude__model__claude_2_100k__description": "Anthropic'in en güçlü modeli, 100K bağlam penceresi, sofistike diyalogdan yaratıcı içerik oluşturmaya ve ayrıntılı talimatlara kadar geniş bir yelpazede görevler için ideal."
+    "provider__claude__model__claude_2_100k__description": "Anthropic'in en güçlü modeli, 100K bağlam penceresi, sofistike diyalogdan yaratıcı içerik oluşturmaya ve ayrıntılı talimatlara kadar geniş bir yelpazede görevler için ideal.",
+    "sidebar__tabs__chat__action_btn__title": "Yeni sohbet",
+    "sidebar__tabs__summary__action_btn__title": "Özeti yenile"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

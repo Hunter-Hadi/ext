@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "الترقية إلى Pro",
     "sidebar__button__retry": "إعادة المحاولة",
     "sidebar__button__set_up_shortcut": "إعداد اختصار",
-    "sidebar__speed_dial__title": "دردشة جديدة",
     "sidebar__speed_dial__one_click_prompts__button": "التلميحات بنقرة واحدة",
     "sidebar__speed_dial__restart_extension__button": "إعادة تشغيل الامتداد",
     "sidebar__speed_dial__restart_extension__tooltip__title": "هل ترغب في إعادة تشغيل امتداد MaxAI.me؟",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "استخدم كلود لتشغيل الامتداد.",
     "provider__claude__auth_button_text": "المتابعة مع كلود",
     "provider__claude__model__claude_instant_100k__description": "أسرع نموذج لأنثروبيك، نافذة سياق 100 ألف، مثالي لتحليل المستندات والشفرات الطويلة جدًا، وإعادة صياغة النصوص، والفهم.",
-    "provider__claude__model__claude_2_100k__description": "أقوى نموذج لأنثروبيك، نافذة سياق 100 ألف، مثالي لمهام تتراوح بين الحوار المتطور وإنشاء المحتوى الإبداعي إلى التعليمات التفصيلية."
+    "provider__claude__model__claude_2_100k__description": "أقوى نموذج لأنثروبيك، نافذة سياق 100 ألف، مثالي لمهام تتراوح بين الحوار المتطور وإنشاء المحتوى الإبداعي إلى التعليمات التفصيلية.",
+    "sidebar__tabs__chat__action_btn__title": "محادثة جديدة",
+    "sidebar__tabs__summary__action_btn__title": "تحديث الملخص"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

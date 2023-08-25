@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Upgrade naar Pro",
     "sidebar__button__retry": "Opnieuw proberen",
     "sidebar__button__set_up_shortcut": "Snelkoppeling instellen",
-    "sidebar__speed_dial__title": "Nieuwe chat",
     "sidebar__speed_dial__one_click_prompts__button": "Eén-klik prompts",
     "sidebar__speed_dial__restart_extension__button": "Extensie herstarten",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me-extensie herstarten?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Gebruik Claude om de extensie te versterken.",
     "provider__claude__auth_button_text": "Doorgaan met Claude",
     "provider__claude__model__claude_instant_100k__description": "Het snelste model van Anthropic, 100K context venster, ideaal voor zeer lange documenten en code-analyse, samenvatting en begrip.",
-    "provider__claude__model__claude_2_100k__description": "Het krachtigste model van Anthropic, 100K context venster, ideaal voor taken variërend van geavanceerde dialoog en creatieve inhoudsgeneratie tot gedetailleerde instructies."
+    "provider__claude__model__claude_2_100k__description": "Het krachtigste model van Anthropic, 100K context venster, ideaal voor taken variërend van geavanceerde dialoog en creatieve inhoudsgeneratie tot gedetailleerde instructies.",
+    "sidebar__tabs__chat__action_btn__title": "Nieuwe chat",
+    "sidebar__tabs__summary__action_btn__title": "Vernieuw samenvatting"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -222,7 +222,6 @@
     "sidebar__button__upgrade_to_pro": "Оновити до Pro",
     "sidebar__button__retry": "Повторити спробу",
     "sidebar__button__set_up_shortcut": "Налаштувати ярлик",
-    "sidebar__speed_dial__title": "Новий чат",
     "sidebar__speed_dial__one_click_prompts__button": "Одноклікові запити",
     "sidebar__speed_dial__restart_extension__button": "Перезапустити розширення",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Перезапустити розширення MaxAI.me?",
@@ -411,7 +410,9 @@
     "provider__claude__auth_description": "Використовуйте Клода для розширення.",
     "provider__claude__auth_button_text": "Продовжити з Клодом",
     "provider__claude__model__claude_instant_100k__description": "Найшвидша модель Anthropic, 100K вікно контексту, ідеальна для дуже довгих документів та аналізу коду, стиснення та розуміння.",
-    "provider__claude__model__claude_2_100k__description": "Найпотужніша модель Anthropic, 100K вікно контексту, ідеальна для завдань від складного діалогу та творчого генерування контенту до детальних інструкцій."
+    "provider__claude__model__claude_2_100k__description": "Найпотужніша модель Anthropic, 100K вікно контексту, ідеальна для завдань від складного діалогу та творчого генерування контенту до детальних інструкцій.",
+    "sidebar__tabs__chat__action_btn__title": "Новий чат",
+    "sidebar__tabs__summary__action_btn__title": "Оновити підсумок"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

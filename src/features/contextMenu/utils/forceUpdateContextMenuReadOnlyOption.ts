@@ -7,6 +7,7 @@ import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import lodashSet from 'lodash-es/set'
 import cloneDeep from 'lodash-es/cloneDeep'
+import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
 
 /**
  * @version 2.0 - 移除所有不可编辑的system prompt
@@ -21,10 +22,11 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
     buttonKey: IChromeExtensionButtonSettingKey,
   ) => {
     const menuList = await getChromeExtensionButtonContextMenu(buttonKey)
+    const needRemoveMenuIdMap = getNeedRemovePromptIdsMap()
     const updateCount = 0
     let updateMenuList = menuList
       .map((item) => {
-        if (!item.data.editable) {
+        if (!item.data.editable || needRemoveMenuIdMap.get(item.id)) {
           return null
         }
         return item

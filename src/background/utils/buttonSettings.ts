@@ -43,6 +43,7 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { getCurrentDomainHost } from '@/utils'
 import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
+import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
@@ -56,7 +57,11 @@ export const useChromeExtensionButtonSettings = () => {
     newSettings: IChromeExtensionButtonSetting,
     saveToServer = true,
   ) => {
+    const needRemoveMenuIdMap = getNeedRemovePromptIdsMap()
     await setChromeExtensionSettings((settings) => {
+      newSettings.contextMenu = newSettings.contextMenu.filter(
+        (contextMenu) => !needRemoveMenuIdMap.get(contextMenu.id),
+      )
       lodashSet(settings, `buttonSettings.${buttonKey}`, newSettings)
       return settings
     })

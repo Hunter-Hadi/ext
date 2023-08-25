@@ -8,6 +8,7 @@ import { IChromeExtensionSettings } from '@/background/types/Settings'
 import Browser from 'webextension-polyfill'
 import { orderBy } from 'lodash-es'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
+import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
 
 export interface ChromeExtensionSettingsSnapshot {
   isDefault: boolean

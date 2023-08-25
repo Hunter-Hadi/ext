@@ -26,6 +26,11 @@ import getLiteChromeExtensionSettings from '@/background/utils/getLiteChromeExte
 import { getContextMenuActions } from '@/background/utils/buttonSettings'
 import ConversationManager from '@/background/src/chatConversations'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import {
+  checkSettingsSync,
+  isSettingsLastModifiedEqual,
+  syncLocalSettingsToServerSettings,
+} from '@/background/utils/syncSettings'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -238,6 +243,11 @@ export const ClientMessageInit = () => {
             }
             if (!prevToken && accessToken) {
               await createChromeExtensionOptionsPage('', false)
+              // 更新插件
+              if (!(await isSettingsLastModifiedEqual())) {
+                await checkSettingsSync()
+              }
+              await syncLocalSettingsToServerSettings()
             }
             // 因为会打开新的optionsTab，所以需要再切换回去
             await Browser.tabs.update(sender.tab?.id, {

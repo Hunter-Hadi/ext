@@ -7,13 +7,11 @@ import { useEffect, useRef } from 'react'
 import { IChromeExtensionClientListenEvent } from '@/background/app'
 import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import {
-  getChromeExtensionSettings,
-  useCreateClientMessageListener,
-} from '@/background/utils'
+import { useCreateClientMessageListener } from '@/background/utils'
 import Log from '@/utils/Log'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { replaceMarkerContent } from '@/features/contextMenu/utils/selectionHelper'
+import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
 const log = new Log('InitChatGPT')
 
@@ -97,7 +95,7 @@ const useInitChatGPTClient = () => {
         break
       case 'Client_updateAppSettings':
         {
-          const newSettings = await getChromeExtensionSettings()
+          const newSettings = await clientGetLiteChromeExtensionSettings()
           setAppSettings(newSettings)
           return {
             success: true,

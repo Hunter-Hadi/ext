@@ -23,6 +23,7 @@ import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/uti
 import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { setChromeExtensionOnBoardingData } from '@/background/utils'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 
 const usePageSummary = () => {
   const setSidebarSettings = useSetRecoilState(SidebarSettingsState)
@@ -113,6 +114,7 @@ const usePageSummary = () => {
               ),
             ],
           )
+          authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
           return
         }
         const actions = getContextMenuActionsByPageSummaryType(

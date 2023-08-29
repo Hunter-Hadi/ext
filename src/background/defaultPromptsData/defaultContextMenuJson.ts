@@ -337,12 +337,6 @@ export default [
             template: '{{LAST_ACTION_OUTPUT}}',
           },
         },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
       ],
       visibility: {
         whitelist: [],

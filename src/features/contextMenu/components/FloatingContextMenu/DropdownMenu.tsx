@@ -981,6 +981,7 @@ export const MenuComponent = React.forwardRef<
                 }}
                 {...getFloatingProps()}
               >
+                <p>zIndex: {zIndex}</p>
                 {React.Children.map(
                   children,
                   (child, index) =>

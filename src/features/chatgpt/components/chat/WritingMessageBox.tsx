@@ -110,7 +110,7 @@ const WritingMessageBox: FC<{
   return (
     <Stack
       ref={containerRef}
-      className={'chat-message--text'}
+      className={'chat-message--text max-ai__writing-message-box'}
       whiteSpace={'pre-wrap'}
       width={'100%'}
       sx={{
@@ -121,6 +121,7 @@ const WritingMessageBox: FC<{
             ? '#FFFFFFDE'
             : 'rgba(0,0,0,0.87)',
         '& .markdown-body': {
+          userSelect: 'text',
           maxHeight: 'min(40vh, 320px)',
           overflowY: 'auto',
           '*': {

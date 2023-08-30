@@ -9,10 +9,7 @@ import {
 } from '@/components/CustomIcon'
 import { pingDaemonProcess } from '@/features/chatgpt'
 import { contextMenu } from 'react-contexify'
-import {
-  findFirstTierMenuHeight,
-  getContextMenuRenderPosition,
-} from '@/features/contextMenu/utils'
+import { getContextMenuRenderPosition } from '@/features/contextMenu/utils'
 import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
@@ -179,10 +176,7 @@ const useInitInboxSdk = () => {
               )
 
               console.log('gmailButton', options)
-              const itemHeight = Math.max(
-                findFirstTierMenuHeight(options) || 0,
-                0,
-              )
+              const itemHeight = 244
 
               console.log('itemHeight', itemHeight)
               const { x, y } = getContextMenuRenderPosition(

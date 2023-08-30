@@ -1,4 +1,6 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { UAParser } from 'ua-parser-js'
+import Browser from 'webextension-polyfill'
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 export type botUuid =
@@ -28,4 +30,19 @@ export const sendLarkBotMessage = (
   })
     .then()
     .catch()
+}
+
+export const clientGetBrowserInfo = async () => {
+  const { getBrowser } = new UAParser()
+  await Browser.storage.local.set({
+    MAXAI_BROWSER_INFO: JSON.stringify(getBrowser()),
+  })
+}
+export const getBrowserInfo = async () => {
+  const { getBrowser } = new UAParser()
+  const browserInfo = await Browser.storage.local.get('MAXAI_BROWSER_INFO')
+  if (browserInfo.MAXAI_BROWSER_INFO) {
+    return JSON.parse(browserInfo.MAXAI_BROWSER_INFO)
+  }
+  return getBrowser()
 }

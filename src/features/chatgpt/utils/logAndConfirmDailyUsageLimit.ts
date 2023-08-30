@@ -14,7 +14,7 @@ import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { getBrowserInfo, sendLarkBotMessage } from '@/utils/larkBot'
 import { IAIProviderType } from '@/background/provider/chat'
 dayjs.extend(utc)
 
@@ -51,6 +51,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         domain: promptDetail.host,
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,
+        browser: await getBrowserInfo(),
       }
       if (contextMenuIsFavoriteContextMenu(info_object.prompt_id)) {
         info_object.prompt_id =

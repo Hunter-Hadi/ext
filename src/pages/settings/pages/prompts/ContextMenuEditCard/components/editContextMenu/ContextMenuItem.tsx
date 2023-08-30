@@ -10,6 +10,7 @@ import TooltipIconButton from '@/components/TooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import ContextMenuItemPreviewTooltip from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuItemPreviewTooltip'
 import { useTranslation } from 'react-i18next'
+import { PRESET_PROMPT_ID } from '@/pages/settings/pages/prompts/ContextMenuEditCard'
 const ContextMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean
@@ -29,8 +30,9 @@ const ContextMenuItem = (props: {
     onEdit,
     // onDelete,
   } = props
+  const isPresetPromptItem = node.id === PRESET_PROMPT_ID
   const isFirstDeep = node.parent === 'root'
-  const isGroup = node.data.type === 'group'
+  const isGroup = node.data.type === 'group' || isPresetPromptItem
   const DRAG_ICON_SIZE = 24
   const [isHover, setIsHover] = useState(false)
   const memoPaddingLeft = useMemo(() => {
@@ -115,14 +117,18 @@ const ContextMenuItem = (props: {
               flexShrink: 0,
               transform: isOpen ? 'rotate(0)' : 'rotate(-90deg)',
               fontSize: 20,
-              color: 'inherit',
+              color: isPresetPromptItem ? 'text.secondary' : 'inherit',
             }}
           />
         )}
         {node.data.icon && (
           <ContextMenuIcon
             icon={node.data.icon}
-            sx={{ mr: 1, flexShrink: 0, color: 'primary.main', fontSize: 16 }}
+            sx={{
+              mr: 1,
+              flexShrink: 0,
+              fontSize: 16,
+            }}
           />
         )}
         <Stack
@@ -151,7 +157,7 @@ const ContextMenuItem = (props: {
             ) : (
               <Typography
                 fontSize={14}
-                color={'text.primary'}
+                color={isPresetPromptItem ? 'text.secondary' : 'text.primary'}
                 sx={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -165,38 +171,43 @@ const ContextMenuItem = (props: {
               </Typography>
             )}
           </Stack>
-          <Stack
-            direction={'row'}
-            alignItems={'center'}
-            flexShrink={0}
-            sx={{
-              pl: 2,
-              height: '100%',
-            }}
-          >
-            <TooltipIconButton
-              TooltipProps={{
-                placement: 'left',
-                arrow: true,
-              }}
-              title={t(
-                node.data.editable
-                  ? 'settings:feature_card__prompts__tooltip_edit_title'
-                  : 'settings:feature_card__prompts__tooltip_read_only_title',
-              )}
-              size={'small'}
-              onClick={(event) => {
-                onEdit && onEdit(node)
-                event.stopPropagation()
+          {
+            <Stack
+              direction={'row'}
+              alignItems={'center'}
+              flexShrink={0}
+              sx={{
+                pl: 2,
+                height: '100%',
               }}
             >
-              {node.data.editable ? (
-                <ContextMenuIcon icon={'DefaultIcon'} sx={{ fontSize: 20 }} />
-              ) : (
-                <ContextMenuIcon icon={'Lock'} sx={{ fontSize: 20 }} />
-              )}
-            </TooltipIconButton>
-          </Stack>
+              <TooltipIconButton
+                TooltipProps={{
+                  placement: 'left',
+                  arrow: true,
+                }}
+                title={t(
+                  node.data.editable
+                    ? 'settings:feature_card__prompts__tooltip_edit_title'
+                    : 'settings:feature_card__prompts__tooltip_read_only_title',
+                )}
+                size={'small'}
+                onClick={(event) => {
+                  if (isPresetPromptItem) {
+                    return
+                  }
+                  onEdit && onEdit(node)
+                  event.stopPropagation()
+                }}
+              >
+                {node.data.editable ? (
+                  <ContextMenuIcon icon={'DefaultIcon'} sx={{ fontSize: 20 }} />
+                ) : (
+                  <ContextMenuIcon icon={'Lock'} sx={{ fontSize: 20 }} />
+                )}
+              </TooltipIconButton>
+            </Stack>
+          }
         </Stack>
       </Stack>
     </ContextMenuItemPreviewTooltip>

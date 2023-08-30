@@ -10,6 +10,7 @@ import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/backgro
 import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import uniqBy from 'lodash-es/uniqBy'
+import { sortBy } from 'lodash-es'
 
 const useContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,
@@ -28,7 +29,13 @@ const useContextMenuList = (
       'id',
     )
     originContextMenuListRef.current = originContextMenuList
-    const groupByContextMenuList = groupByContextMenuItem(originContextMenuList)
+    let groupByContextMenuList = groupByContextMenuItem(originContextMenuList)
+    groupByContextMenuList = sortBy(groupByContextMenuList, (group) => {
+      if (group.data.editable) {
+        return buttonSettings?.contextMenuPosition === 'end' ? 0 : 2
+      }
+      return 1
+    })
     if (favoriteContextMenuGroup) {
       groupByContextMenuList.unshift(favoriteContextMenuGroup)
     }

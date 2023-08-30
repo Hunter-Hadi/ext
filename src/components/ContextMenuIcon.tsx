@@ -120,6 +120,7 @@ export const CONTEXT_MENU_ICONS = [
   'ExpandMore',
   'ExpandLess',
   'Fullscreen',
+  'Lock',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{

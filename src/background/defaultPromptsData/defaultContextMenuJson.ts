@@ -7,7 +7,7 @@ export default [
     droppable: true,
     text: 'Quick reply',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       visibility: {
@@ -25,7 +25,7 @@ export default [
     droppable: true,
     text: 'Like',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -62,7 +62,7 @@ export default [
     droppable: true,
     text: 'Love',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -99,7 +99,7 @@ export default [
     droppable: true,
     text: 'Thanks',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -136,7 +136,7 @@ export default [
     droppable: true,
     text: 'Care',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -173,7 +173,7 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -210,7 +210,7 @@ export default [
     droppable: true,
     text: 'Wow',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -247,7 +247,7 @@ export default [
     droppable: true,
     text: 'Sad',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -284,7 +284,7 @@ export default [
     droppable: true,
     text: 'Dislike',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -321,7 +321,7 @@ export default [
     droppable: true,
     text: 'Enter prompt',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -352,7 +352,7 @@ export default [
     droppable: true,
     text: 'Yes',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -389,7 +389,7 @@ export default [
     droppable: true,
     text: 'No',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -426,7 +426,7 @@ export default [
     droppable: true,
     text: 'Thanks',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -463,7 +463,7 @@ export default [
     droppable: true,
     text: 'Sorry',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -500,7 +500,7 @@ export default [
     droppable: true,
     text: 'More info',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -537,7 +537,7 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -574,7 +574,7 @@ export default [
     droppable: true,
     text: 'Follow-up',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -611,7 +611,7 @@ export default [
     droppable: true,
     text: 'Quick reply',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       visibility: {
@@ -629,7 +629,7 @@ export default [
     droppable: true,
     text: 'Email',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       visibility: {
@@ -652,7 +652,7 @@ export default [
     droppable: true,
     text: 'Like',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -689,7 +689,7 @@ export default [
     droppable: true,
     text: 'Love',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -726,7 +726,7 @@ export default [
     droppable: true,
     text: 'Thanks',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -763,7 +763,7 @@ export default [
     droppable: true,
     text: 'Care',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -800,7 +800,7 @@ export default [
     droppable: true,
     text: 'Joke',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -837,7 +837,7 @@ export default [
     droppable: true,
     text: 'Wow',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -874,7 +874,7 @@ export default [
     droppable: true,
     text: 'Sad',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -911,7 +911,7 @@ export default [
     droppable: true,
     text: 'Dislike',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -948,7 +948,7 @@ export default [
     droppable: true,
     text: 'Enter prompt',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -980,7 +980,7 @@ export default [
     droppable: true,
     text: 'Quick reply',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       visibility: {
@@ -998,7 +998,7 @@ export default [
     droppable: true,
     text: 'Social media',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       visibility: {
@@ -1032,7 +1032,7 @@ export default [
     droppable: true,
     text: 'Continue writing',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1088,7 +1088,7 @@ export default [
     droppable: true,
     text: 'English',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1125,7 +1125,7 @@ export default [
     droppable: true,
     text: 'Chinese (Simplified)',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1162,7 +1162,7 @@ export default [
     droppable: true,
     text: 'Chinese (Traditional)',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1199,7 +1199,7 @@ export default [
     droppable: true,
     text: 'Portuguese',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1236,7 +1236,7 @@ export default [
     droppable: true,
     text: 'Spanish',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1273,7 +1273,7 @@ export default [
     droppable: true,
     text: 'French',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1310,7 +1310,7 @@ export default [
     droppable: true,
     text: 'Korean',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1347,7 +1347,7 @@ export default [
     droppable: true,
     text: 'Vietnamese',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1384,7 +1384,7 @@ export default [
     droppable: true,
     text: 'Japanese',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1421,7 +1421,7 @@ export default [
     droppable: true,
     text: 'Russian',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1458,7 +1458,7 @@ export default [
     droppable: true,
     text: 'German',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1495,7 +1495,7 @@ export default [
     droppable: true,
     text: 'Turkish',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1532,7 +1532,7 @@ export default [
     droppable: true,
     text: 'Italian',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1569,7 +1569,7 @@ export default [
     droppable: true,
     text: 'Dutch',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1606,7 +1606,7 @@ export default [
     droppable: true,
     text: 'Polish',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1643,7 +1643,7 @@ export default [
     droppable: true,
     text: 'Arabic',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1680,7 +1680,7 @@ export default [
     droppable: true,
     text: 'Hebrew',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1717,7 +1717,7 @@ export default [
     droppable: true,
     text: 'Indonesian',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1754,7 +1754,7 @@ export default [
     droppable: true,
     text: 'Danish',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1791,7 +1791,7 @@ export default [
     droppable: true,
     text: 'Swedish',
     data: {
-      editable: true,
+      editable: false,
       type: 'shortcuts',
       actions: [
         {
@@ -1828,7 +1828,7 @@ export default [
     droppable: true,
     text: 'Filipino',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1865,7 +1865,7 @@ export default [
     droppable: true,
     text: 'Summarize',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1903,7 +1903,7 @@ export default [
     droppable: true,
     text: 'Translate',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1921,7 +1921,7 @@ export default [
     droppable: true,
     text: 'Explain this',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1959,7 +1959,7 @@ export default [
     droppable: true,
     text: 'Find action items',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -1997,7 +1997,7 @@ export default [
     droppable: true,
     text: 'Run this prompt',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2026,7 +2026,7 @@ export default [
     droppable: true,
     text: 'Professional',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2063,7 +2063,7 @@ export default [
     droppable: true,
     text: 'Friendly',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2100,7 +2100,7 @@ export default [
     droppable: true,
     text: 'Straightforward',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2137,7 +2137,7 @@ export default [
     droppable: true,
     text: 'Confident',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2174,7 +2174,7 @@ export default [
     droppable: true,
     text: 'Casual',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2211,7 +2211,7 @@ export default [
     droppable: true,
     text: 'Improve writing',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2249,7 +2249,7 @@ export default [
     droppable: true,
     text: 'Fix spelling & grammar',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2287,7 +2287,7 @@ export default [
     droppable: true,
     text: 'Make shorter',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2325,7 +2325,7 @@ export default [
     droppable: true,
     text: 'Make longer',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2363,7 +2363,7 @@ export default [
     droppable: true,
     text: 'Change tone',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2381,7 +2381,7 @@ export default [
     droppable: true,
     text: 'Simplify language',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2419,7 +2419,7 @@ export default [
     droppable: true,
     text: 'Paraphrase',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2457,7 +2457,7 @@ export default [
     droppable: true,
     text: 'Messaging',
     data: {
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       visibility: {
@@ -2486,7 +2486,7 @@ export default [
     droppable: true,
     text: 'Edit or review selection',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2503,7 +2503,7 @@ export default [
     droppable: true,
     text: 'Generate from selection',
     data: {
-      editable: true,
+      editable: false,
       visibility: {
         isWhitelistMode: false,
         whitelist: [],
@@ -2525,7 +2525,7 @@ export default [
         whitelist: [],
         blacklist: [],
       },
-      editable: true,
+      editable: false,
       type: 'group',
       actions: [],
       searchText: 'write with ai',

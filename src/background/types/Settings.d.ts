@@ -96,6 +96,7 @@ export interface IVisibilitySetting {
 export interface IChromeExtensionButtonSetting {
   contextMenu: IContextMenuItem[]
   visibility: IVisibilitySetting
+  contextMenuPosition: 'start' | 'end'
 }
 
 export interface IChromeExtensionSettings {

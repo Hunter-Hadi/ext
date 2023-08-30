@@ -1,4 +1,3 @@
-import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import Browser from 'webextension-polyfill'
 import {
   AI_PROVIDER_MAP,
@@ -88,7 +87,8 @@ export const getDefaultChromeExtensionSettings =
             whitelist: ['mail.google.com'],
             blacklist: [],
           },
-          contextMenu: defaultGmailToolbarContextMenuJson,
+          contextMenu: [],
+          contextMenuPosition: 'start',
         },
         textSelectPopupButton: {
           visibility: {
@@ -97,6 +97,7 @@ export const getDefaultChromeExtensionSettings =
             blacklist: [],
           },
           contextMenu: [],
+          contextMenuPosition: 'start',
         },
       },
       thirdProviderSettings: {

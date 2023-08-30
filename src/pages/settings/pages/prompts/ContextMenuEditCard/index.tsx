@@ -93,12 +93,28 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
   return true
 }
 
+/**
+ * 用来在my own prompts渲染的虚拟节点，让用户设置preset prompt的位置
+ */
+export const PRESET_PROMPT_ID = 'PRESET_PROMPT_ID'
+export const PRESET_PROMPT: IContextMenuItem = {
+  text: 'Preset prompts',
+  id: PRESET_PROMPT_ID,
+  parent: 'root',
+  droppable: false,
+  data: {
+    type: 'shortcuts',
+    editable: false,
+  },
+}
+
 const ContextMenuEditCard: FC<{
+  position: 'start' | 'end'
   iconSetting?: boolean
   buttonKey: IChromeExtensionButtonSettingKey
   onUpdated?: () => void
 }> = (props) => {
-  const { buttonKey, iconSetting = false, onUpdated } = props
+  const { position, buttonKey, iconSetting = false, onUpdated } = props
   const { t } = useTranslation(['settings', 'prompt'])
   const tRef = useRef(t)
   const loadedRef = useRef(false)
@@ -147,9 +163,9 @@ const ContextMenuEditCard: FC<{
   }, [originalTreeData])
   const defaultTreeDataRef = useRef<null | IContextMenuItem[]>(null)
   const handleDrop = async (newTreeData: any[], dragDetail: any) => {
+    newTreeData = newTreeData.filter((node) => node.id !== PRESET_PROMPT_ID)
     setOriginalTreeData(newTreeData)
   }
-
   const addNewMenuItem = async () => {
     const newEditId = v4()
     setEditNode({
@@ -315,7 +331,11 @@ const ContextMenuEditCard: FC<{
   }, [originalTreeData])
   const filteredTreeData = useMemo(() => {
     if (!inputValue) {
-      return originalTreeData
+      if (position === 'start') {
+        return [PRESET_PROMPT].concat(originalTreeData)
+      } else {
+        return originalTreeData.concat(PRESET_PROMPT)
+      }
     }
     const result = fuzzySearchContextMenuList(
       originalTreeData,
@@ -341,7 +361,12 @@ const ContextMenuEditCard: FC<{
     }
     result.forEach(deepFindId)
     return originalTreeData.filter((item) => showIds.includes(item.id))
-  }, [originalTreeData, inputValue, contextMenuSearchTextWithCurrentLanguage])
+  }, [
+    originalTreeData,
+    inputValue,
+    contextMenuSearchTextWithCurrentLanguage,
+    position,
+  ])
   return (
     <Stack spacing={2} height={'100%'}>
       <Stack

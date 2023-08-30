@@ -36,6 +36,7 @@ import { isMaxAINewTabPage } from '@/pages/chat/util'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import { getEnv } from '@/utils/AppEnv'
 import Browser from 'webextension-polyfill'
+import { clientGetBrowserInfo } from '@/utils/larkBot'
 
 const log = new Log('AppInit')
 
@@ -403,6 +404,7 @@ const AppInit = () => {
     if (isMaxAINewTabPage()) {
       showChatBox()
     }
+    clientGetBrowserInfo().then().catch()
   })
   return (
     <>

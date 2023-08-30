@@ -11,7 +11,6 @@ import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
-import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { FloatingContextMenuGmailCloseIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
@@ -21,6 +20,7 @@ import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { contextMenu } from 'react-contexify'
 import { useTranslation } from 'react-i18next'
 import { CurrentInboxMessageTypeSelector } from '@/features/sidebar/store/gmail'
+import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
 
 const ContextMenuContext = React.createContext<{
   staticButton?: boolean
@@ -265,10 +265,12 @@ const ContextMenuList: FC<{
   const { buttonKey } = props
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
   const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
+  const buttonSettings =
+    useChromeExtensionButtonSettingsWithSystemContextMenu(buttonKey)
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {
-      let menuList = await getChromeExtensionButtonContextMenu(buttonKey)
+      let menuList = cloneDeep(buttonSettings?.contextMenu || [])
       if (buttonKey === 'gmailButton') {
         menuList = menuList.filter(
           (item) =>
@@ -283,7 +285,7 @@ const ContextMenuList: FC<{
     return () => {
       isDestroy = true
     }
-  }, [messageType])
+  }, [messageType, buttonSettings?.contextMenu])
   const sortBySettingsKey = useMemo(() => {
     return list
   }, [list, buttonKey])

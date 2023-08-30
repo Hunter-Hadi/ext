@@ -34,7 +34,7 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
       .filter(Boolean) as IContextMenuItem[]
     updateMenuList = uniqBy(updateMenuList, 'id')
     if (buttonKey === 'gmailButton') {
-      // TODO gmail 没有编辑权限
+      // NOTE gmail 目前没有编辑权限
       updateMenuList = []
     }
     const contextMenuIdMap: {

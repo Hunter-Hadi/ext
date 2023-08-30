@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Atualize para uso ilimitado",
     "permission__pricing_hook__daily_limit__description1": "Você atingiu o limite diário atual de uso para todos os Provedores de IA.\nVocê pode atualizar para a versão Pro agora para uso ilimitado ou tentar novamente mais tarde.",
     "permission__pricing_hook__custom_prompt__title": "Atualize para adicionar prompts personalizados ilimitados",
-    "permission__pricing_hook__custom_prompt__description": "Use seus próprios prompts para agilizar tarefas repetitivas enquanto você trabalha.",
+    "permission__pricing_hook__custom_prompt__description": "Adicione suas próprias mensagens para agilizar tarefas repetitivas enquanto você trabalha.",
     "permission__pricing_hook__custom_prompt_group__title": "Atualize para adicionar grupos de prompts personalizados ilimitados",
     "permission__pricing_hook__custom_prompt_group__description": "Organize seus prompts para uso eficiente com grupos de prompts personalizados.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Atualize para rascunhos de e-mail com um clique",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "O modelo mais rápido da Anthropic, janela de contexto de 100K, ótimo para análise de documentos e código muito longos, sumarização e compreensão.",
     "provider__claude__model__claude_2_100k__description": "O modelo mais poderoso da Anthropic, janela de contexto de 100K, ótimo para tarefas que vão desde diálogos sofisticados e geração de conteúdo criativo até instruções detalhadas.",
     "sidebar__tabs__chat__action_btn__title": "Novo chat",
-    "sidebar__tabs__summary__action_btn__title": "Atualizar resumo"
+    "sidebar__tabs__summary__action_btn__title": "Atualizar resumo",
+    "sidebar__tabs__chat__tooltip": "Pergunte qualquer coisa para a IA",
+    "sidebar__tabs__summary__tooltip": "Resumo da página/PDF e chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

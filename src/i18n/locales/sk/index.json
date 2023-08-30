@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Aktualizujte pre neobmedzené používanie",
     "permission__pricing_hook__daily_limit__description1": "Dosiahli ste denný limit pre všetkých poskytovateľov AI.\nMôžete teraz aktualizovať na Pro verziu pre neobmedzené používanie alebo skúsiť neskôr znova.",
     "permission__pricing_hook__custom_prompt__title": "Vylepšite si účet a pridajte neobmedzené vlastné prompty",
-    "permission__pricing_hook__custom_prompt__description": "Používajte vlastné prompty na zrýchlenie opakujúcich sa úloh pri práci.",
+    "permission__pricing_hook__custom_prompt__description": "Pridajte vlastné podnety na zrýchlenie opakujúcich sa úloh počas práce.",
     "permission__pricing_hook__custom_prompt_group__title": "Vylepšite si účet a pridajte neobmedzené skupiny vlastných promptov",
     "permission__pricing_hook__custom_prompt_group__description": "Organizujte svoje prompty do efektívnych skupín pre ich lepšie využitie.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Vylepšite si účet a vytvorte e-mailový návrh jedným kliknutím",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Najrýchlejší model od Anthropic, 100K kontextové okno, skvelý pre veľmi dlhé dokumenty a analýzu kódu, zhrnutie a porozumenie.",
     "provider__claude__model__claude_2_100k__description": "Najvýkonnejší model od Anthropic, 100K kontextové okno, skvelý pre úlohy od sofistikovaného dialógu a tvorby obsahu po podrobné inštrukcie.",
     "sidebar__tabs__chat__action_btn__title": "Nový chat",
-    "sidebar__tabs__summary__action_btn__title": "Obnoviť súhrn"
+    "sidebar__tabs__summary__action_btn__title": "Obnoviť súhrn",
+    "sidebar__tabs__chat__tooltip": "Opýtajte sa AI čokoľvek",
+    "sidebar__tabs__summary__tooltip": "Stručný prehľad stránky/PDF a chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -375,7 +375,7 @@
     "permission__pricing_hook__daily_limit__title": "Upgrade for unlimited usage",
     "permission__pricing_hook__daily_limit__description1": "You've reached the current daily usage cap for all AI Providers.\nYou can upgrade to Pro now for unlimited usage, or try again later.",
     "permission__pricing_hook__custom_prompt__title": "Upgrade to add unlimited custom prompts",
-    "permission__pricing_hook__custom_prompt__description": "Use your own prompts to speed up repetitive tasks as you work.",
+    "permission__pricing_hook__custom_prompt__description": "Add your own prompts to speed up repetitive tasks as you work.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade to add unlimited custom prompt groups",
     "permission__pricing_hook__custom_prompt_group__description": "Organize your prompts for efficient use with custom prompt groups.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Upgrade for one-click email drafts",
@@ -410,8 +410,10 @@
     "rewards__title": "Rewards",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant",
     "sidebar__tabs__chat__title": "Chat",
+    "sidebar__tabs__chat__tooltip": "Ask AI anything",
     "sidebar__tabs__chat__action_btn__title": "New chat",
     "sidebar__tabs__summary__title": "Summary",
+    "sidebar__tabs__summary__tooltip": "Page/PDF summary & chat",
     "sidebar__tabs__summary__action_btn__title": "Refresh summary"
   },
   "prompt": {

@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Tingkatkan untuk penggunaan tak terbatas",
     "permission__pricing_hook__daily_limit__description1": "Anda telah mencapai batas penggunaan harian saat ini untuk semua Penyedia AI.\nAnda dapat meningkatkan ke Pro sekarang untuk penggunaan tak terbatas, atau coba lagi nanti.",
     "permission__pricing_hook__custom_prompt__title": "Tingkatkan untuk menambahkan prompt kustom tanpa batas",
-    "permission__pricing_hook__custom_prompt__description": "Gunakan prompt kustom Anda sendiri untuk mempercepat tugas-tugas berulang saat Anda bekerja.",
+    "permission__pricing_hook__custom_prompt__description": "Tambahkan prompt Anda sendiri untuk mempercepat tugas-tugas yang berulang saat Anda bekerja.",
     "permission__pricing_hook__custom_prompt_group__title": "Tingkatkan untuk menambahkan grup prompt kustom tanpa batas",
     "permission__pricing_hook__custom_prompt_group__description": "Atur prompt Anda untuk penggunaan yang efisien dengan grup prompt kustom.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Tingkatkan untuk draf email satu klik",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Model tercepat Anthropic, jendela konteks 100K, sangat cocok untuk analisis dokumen dan kode yang sangat panjang, ringkasan, dan pemahaman.",
     "provider__claude__model__claude_2_100k__description": "Model paling kuat Anthropic, jendela konteks 100K, sangat cocok untuk tugas mulai dari dialog canggih dan generasi konten kreatif hingga instruksi terperinci.",
     "sidebar__tabs__chat__action_btn__title": "Chat baru",
-    "sidebar__tabs__summary__action_btn__title": "Segarkan ringkasan"
+    "sidebar__tabs__summary__action_btn__title": "Segarkan ringkasan",
+    "sidebar__tabs__chat__tooltip": "Tanyakan apa saja kepada AI",
+    "sidebar__tabs__summary__tooltip": "Ringkasan Halaman/PDF & chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

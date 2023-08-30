@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Millora per a un ús il·limitat",
     "permission__pricing_hook__daily_limit__description1": "Has arribat al límit diari actual per a tots els proveïdors d'IA.\nPots millorar a Pro ara mateix per a un ús il·limitat, o tornar-ho a intentar més tard.",
     "permission__pricing_hook__custom_prompt__title": "Millora per afegir suggeriments personalitzats il·limitats",
-    "permission__pricing_hook__custom_prompt__description": "Utilitza els teus propis suggeriments per agilitzar tasques repetitives mentre treballes.",
+    "permission__pricing_hook__custom_prompt__description": "Afegiu les vostres pròpies indicacions per agilitzar tasques repetitives mentre treballeu.",
     "permission__pricing_hook__custom_prompt_group__title": "Millora per afegir grups de suggeriments personalitzats il·limitats",
     "permission__pricing_hook__custom_prompt_group__description": "Organitza els teus suggeriments per a un ús eficient amb grups de suggeriments personalitzats.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Millora per a esborranys d'email amb un clic",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "El model més ràpid d'Anthropic, finestra de context de 100K, ideal per a documents molt llargs i anàlisi de codi, resum i comprensió.",
     "provider__claude__model__claude_2_100k__description": "El model més potent d'Anthropic, finestra de context de 100K, ideal per a tasques que van des del diàleg sofisticat fins a la generació de contingut creatiu i instruccions detallades.",
     "sidebar__tabs__chat__action_btn__title": "Xat nou",
-    "sidebar__tabs__summary__action_btn__title": "Actualitza resum"
+    "sidebar__tabs__summary__action_btn__title": "Actualitza resum",
+    "sidebar__tabs__chat__tooltip": "Pregunta-ho tot a l'IA",
+    "sidebar__tabs__summary__tooltip": "Resum de la pàgina/PDF i xat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

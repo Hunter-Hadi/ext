@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "لامحدود استعمال کے لئے اپگریڈ کریں",
     "permission__pricing_hook__daily_limit__description1": "آپ نے تمام AI پرووائیڈرز کے لئے موجودہ روزانہ استعمال کی حد تک پہنچ گئی ہے۔\nآپ لامحدود استعمال کے لئے فوری طور پر پرو میں اپگریڈ کرسکتے ہیں، یا بعد میں دوبارہ کوشش کریں۔",
     "permission__pricing_hook__custom_prompt__title": "غیر محدود کسٹم پرومپٹس شامل کرنے کے لئے اپگریڈ کریں",
-    "permission__pricing_hook__custom_prompt__description": "کام کو تیز کرنے کے لئے اپنے خود کے پرومپٹس استعمال کریں۔",
+    "permission__pricing_hook__custom_prompt__description": "اپنے کام کو تیز کرنے کے لئے اپنے خود کے پرومپٹس شامل کریں جب آپ تکراری کاموں کو کرتے ہیں۔",
     "permission__pricing_hook__custom_prompt_group__title": "غیر محدود کسٹم پرومپٹ گروپس شامل کرنے کے لئے اپگریڈ کریں",
     "permission__pricing_hook__custom_prompt_group__description": "کسٹم پرومپٹس کو ترتیب دینے کے لئے اپنے پرومپٹ گروپس کا استعمال کریں۔",
     "permission__pricing_hook__gmail_cta_button_draft__title": "ای میل ڈرافٹس کے لئے ایک کلک اپگریڈ کریں",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic کا تیز ترین ماڈل، 100K کنٹیکسٹ ونڈو، بہت لمبے دستاویز اور کوڈ تجزیہ، خلاصہ کاری اور سمجھ میں عظیم۔",
     "provider__claude__model__claude_2_100k__description": "Anthropic کا زبردست ماڈل، 100K کنٹیکسٹ ونڈو، فنی گفتگو اور تخلیقی مواد تیار کرنے سے لے کر تفصیلی ہدایات تک کے وسعت والے کاموں کے لئے عظیم۔",
     "sidebar__tabs__chat__action_btn__title": "نئی چیٹ",
-    "sidebar__tabs__summary__action_btn__title": "تازہ کریں خلاصہ"
+    "sidebar__tabs__summary__action_btn__title": "تازہ کریں خلاصہ",
+    "sidebar__tabs__chat__tooltip": "AI سے کچھ بھی پوچھیں",
+    "sidebar__tabs__summary__tooltip": "صفحہ / PDF خلاصہ اور چیٹ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

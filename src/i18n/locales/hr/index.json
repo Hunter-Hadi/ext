@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Nadogradite za neograničeno korištenje",
     "permission__pricing_hook__daily_limit__description1": "Dosegli ste trenutno dnevno ograničenje korištenja za sve AI pružatelje.\nMožete nadograditi na Pro verziju za neograničeno korištenje ili pokušati kasnije.",
     "permission__pricing_hook__custom_prompt__title": "Nadogradite da biste dodali neograničene prilagođene upute",
-    "permission__pricing_hook__custom_prompt__description": "Koristite vlastite upute kako biste ubrzali ponavljajuće zadatke dok radite.",
+    "permission__pricing_hook__custom_prompt__description": "Dodajte vlastite upute kako biste ubrzali ponavljajuće zadatke dok radite.",
     "permission__pricing_hook__custom_prompt_group__title": "Nadogradite da biste dodali neograničene grupe prilagođenih uputa",
     "permission__pricing_hook__custom_prompt_group__description": "Organizirajte svoje upute za učinkovito korištenje s grupama prilagođenih uputa.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Nadogradite za izradu e-pošte u jednom koraku",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Najbrži model tvrtke Anthropic, 100K kontekstni prozor, odličan za vrlo dugačke dokumente i analizu koda, sažimanje i razumijevanje.",
     "provider__claude__model__claude_2_100k__description": "Najmoćniji model tvrtke Anthropic, 100K kontekstni prozor, odličan za zadatke koji se kreću od sofisticiranog dijaloga i generiranja kreativnog sadržaja do detaljnih uputa.",
     "sidebar__tabs__chat__action_btn__title": "Novi chat",
-    "sidebar__tabs__summary__action_btn__title": "Osvježi sažetak"
+    "sidebar__tabs__summary__action_btn__title": "Osvježi sažetak",
+    "sidebar__tabs__chat__tooltip": "Pitajte AI bilo što",
+    "sidebar__tabs__summary__tooltip": "Sažetak stranice/PDF-a i chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

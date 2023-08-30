@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Actualiza para uso ilimitado",
     "permission__pricing_hook__daily_limit__description1": "Has alcanzado el límite diario actual de uso para todos los Proveedores de IA.\nPuedes actualizar a Pro ahora para un uso ilimitado, o intentarlo más tarde.",
     "permission__pricing_hook__custom_prompt__title": "Actualiza para agregar sugerencias personalizadas ilimitadas",
-    "permission__pricing_hook__custom_prompt__description": "Utiliza tus propias sugerencias para agilizar tareas repetitivas mientras trabajas.",
+    "permission__pricing_hook__custom_prompt__description": "Agrega tus propias indicaciones para acelerar las tareas repetitivas mientras trabajas.",
     "permission__pricing_hook__custom_prompt_group__title": "Actualiza para agregar grupos de sugerencias personalizadas ilimitados",
     "permission__pricing_hook__custom_prompt_group__description": "Organiza tus sugerencias para un uso eficiente con grupos de sugerencias personalizadas.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Actualiza para generar borradores de correo electrónico con un clic",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "El modelo más rápido de Anthropic, ventana de contexto de 100K, ideal para análisis de documentos y código muy largos, resúmenes y comprensión.",
     "provider__claude__model__claude_2_100k__description": "El modelo más poderoso de Anthropic, ventana de contexto de 100K, ideal para tareas que van desde diálogos sofisticados y generación de contenido creativo hasta instrucciones detalladas.",
     "sidebar__tabs__chat__action_btn__title": "Nuevo chat",
-    "sidebar__tabs__summary__action_btn__title": "Actualizar resumen"
+    "sidebar__tabs__summary__action_btn__title": "Actualizar resumen",
+    "sidebar__tabs__chat__tooltip": "Pregúntale a la IA cualquier cosa",
+    "sidebar__tabs__summary__tooltip": "Resumen de página/PDF y chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

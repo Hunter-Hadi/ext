@@ -194,37 +194,37 @@ const fetchChatGPTErrorRecord = async () => {
           console.log('fetchChatGPTErrorRecord error', e)
         }
       })
-      // TODO - 即将废弃，旧的接口
-      try {
-        let oldErrorCount = 0
-        let oldErrorInfo = {}
-        Object.keys(info).forEach((date) => {
-          if (info[date]) {
-            oldErrorCount += info[date].error_cnt
-            oldErrorInfo = {
-              [date]: info[date].total_cnt,
-            }
-          }
-        })
-        fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/save_gpt_error_records`, {
-          method: 'POST',
-          body: JSON.stringify({
-            start_timestamp: dayjs(startRecordTime).unix(),
-            end_timestamp: dayjs().unix(),
-            error_count: oldErrorCount,
-            info_object: oldErrorInfo,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-            fp: `${fingerprint}`,
-          },
-        })
-          .then()
-          .catch()
-      } catch (e) {
-        console.log('fetchChatGPTErrorRecord error', e)
-      }
+      // // TODO - 即将废弃，旧的接口
+      // try {
+      //   let oldErrorCount = 0
+      //   let oldErrorInfo = {}
+      //   Object.keys(info).forEach((date) => {
+      //     if (info[date]) {
+      //       oldErrorCount += info[date].error_cnt
+      //       oldErrorInfo = {
+      //         [date]: info[date].total_cnt,
+      //       }
+      //     }
+      //   })
+      //   fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/save_gpt_error_records`, {
+      //     method: 'POST',
+      //     body: JSON.stringify({
+      //       start_timestamp: dayjs(startRecordTime).unix(),
+      //       end_timestamp: dayjs().unix(),
+      //       error_count: oldErrorCount,
+      //       info_object: oldErrorInfo,
+      //     }),
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       Authorization: `Bearer ${accessToken}`,
+      //       fp: `${fingerprint}`,
+      //     },
+      //   })
+      //     .then()
+      //     .catch()
+      // } catch (e) {
+      //   console.log('fetchChatGPTErrorRecord error', e)
+      // }
     }
   } catch (error) {
     console.log('fetchChatGPTErrorRecord error', error)

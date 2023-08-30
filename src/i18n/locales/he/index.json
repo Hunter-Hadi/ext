@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "שדרג לשימוש בלתי מוגבל",
     "permission__pricing_hook__daily_limit__description1": "הגעת למגבלת השימוש היומית הנוכחית עבור כל ספקי האינטיליגנציה המלאכותית.\nתוכל לשדרג לגרסה Pro כעת לשימוש בלתי מוגבל, או לנסות שוב מאוחר יותר.",
     "permission__pricing_hook__custom_prompt__title": "שדרג כדי להוסיף הזמנות מותאמות אישית בלתי מוגבלות",
-    "permission__pricing_hook__custom_prompt__description": "השתמש בהזמנות מותאמות אישית כדי להאיץ משימות חוזרות בעבודה שלך.",
+    "permission__pricing_hook__custom_prompt__description": "הוסף הזמנות משלך כדי להאיץ משימות חוזרות בעת עבודה.",
     "permission__pricing_hook__custom_prompt_group__title": "שדרג כדי להוסיף קבוצות הזמנות מותאמות אישית בלתי מוגבלות",
     "permission__pricing_hook__custom_prompt_group__description": "ארגן את ההזמנות שלך לשימוש יעיל עם קבוצות הזמנות מותאמות אישית.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "שדרג כדי ליצור טיוטות של דואר אלקטרוני בלחיצה אחת",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "הדגם המהיר ביותר של Anthropic, חלון הקשר של 100K, מתאים במיוחד לניתוח מסמכים ארוכים מאוד וקוד, סיכום והבנה.",
     "provider__claude__model__claude_2_100k__description": "הדגם החזק ביותר של Anthropic, חלון הקשר של 100K, מתאים במיוחד למשימות הכוללות דיאלוג מתוחכם ויצירת תוכן יצירתי עד הוראות מפורטות.",
     "sidebar__tabs__chat__action_btn__title": "צ'אט חדש",
-    "sidebar__tabs__summary__action_btn__title": "רענן סיכום"
+    "sidebar__tabs__summary__action_btn__title": "רענן סיכום",
+    "sidebar__tabs__chat__tooltip": "שאלו את המערכת על כל דבר",
+    "sidebar__tabs__summary__tooltip": "סיכום עמוד/קובץ PDF וצ'אט"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

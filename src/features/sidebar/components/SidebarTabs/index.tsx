@@ -17,17 +17,21 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { AppSettingsState } from '@/store'
 import Typography from '@mui/material/Typography'
 import DevContent from '@/components/DevContent'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
   value: ISidebarConversationType
+  tooltip?: I18nextKeysType
 }> = [
   {
     label: 'client:sidebar__tabs__chat__title',
+    tooltip: 'client:sidebar__tabs__chat__tooltip',
     value: 'Chat',
   },
   {
     label: 'client:sidebar__tabs__summary__title',
+    tooltip: 'client:sidebar__tabs__summary__tooltip',
     value: 'Summary',
   },
 ]
@@ -95,9 +99,11 @@ const SidebarTabs: FC = () => {
               key={item.value}
               value={item.value}
               label={
-                <Typography fontSize={'14px'} color={'text.primary'}>
-                  {t(item.label as any)}
-                </Typography>
+                <TextOnlyTooltip title={t(item.tooltip as any)}>
+                  <Typography fontSize={'14px'} color={'text.primary'}>
+                    {t(item.label as any)}
+                  </Typography>
+                </TextOnlyTooltip>
               }
             />
           ))}

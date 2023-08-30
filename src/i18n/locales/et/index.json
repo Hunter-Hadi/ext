@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Täiendage piiramatu kasutamise jaoks",
     "permission__pricing_hook__daily_limit__description1": "Olete jõudnud kõigi AI-pakkujate praeguse päevase kasutuspiiranguni.\nSaate nüüd täiendada Pro versioonile piiramatu kasutamise jaoks või proovida hiljem uuesti.",
     "permission__pricing_hook__custom_prompt__title": "Lisage piiramatu hulk kohandatud kiirklahve, tõstes tasemele Pro",
-    "permission__pricing_hook__custom_prompt__description": "Kasutage oma kiirklahve, et kiirendada korduvaid ülesandeid töötamise ajal.",
+    "permission__pricing_hook__custom_prompt__description": "Lisage oma kohandatud vihjed, et kiirendada korduvaid ülesandeid töötamise ajal.",
     "permission__pricing_hook__custom_prompt_group__title": "Lisage piiramatu hulk kohandatud kiirklahvigruppe, tõstes tasemele Pro",
     "permission__pricing_hook__custom_prompt_group__description": "Korraldage oma kiirklahve tõhusaks kasutamiseks kohandatud kiirklahvigruppidega.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Ühe klõpsuga e-kirja mustandite saamiseks tõstke tasemele Pro",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropicu kõige kiirem mudel, 100K kontekstaken, suurepärane väga pikkade dokumentide ja koodianalüüsi, kokkuvõtte tegemise ning mõistmise jaoks.",
     "provider__claude__model__claude_2_100k__description": "Anthropicu võimsaim mudel, 100K kontekstaken, sobib suurepäraselt keerukate dialoogide ja loome sisu genereerimisest üksikasjalike juhiste koostamiseni.",
     "sidebar__tabs__chat__action_btn__title": "Uus vestlus",
-    "sidebar__tabs__summary__action_btn__title": "Värskenda kokkuvõtet"
+    "sidebar__tabs__summary__action_btn__title": "Värskenda kokkuvõtet",
+    "sidebar__tabs__chat__tooltip": "Küsi AI-lt midagi",
+    "sidebar__tabs__summary__tooltip": "Lehe/PDF-i kokkuvõte ja vestlus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

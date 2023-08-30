@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "ለውጥ የተወሰነ ጠቅላላ ይጠቀሙ",
     "permission__pricing_hook__daily_limit__description1": "ለሁሉም AI የሚጠቀሙ የቀንድ የጠቅላላ ውጤት ተወሰነች።\nየተወሰኑትን ለመውጣት አሁንም Pro ይጠቀሙ፣ ወደጥቅማቸው አገልግሎት ይመልከቱ።",
     "permission__pricing_hook__custom_prompt__title": "ወደ የተጠቀምነው የተጠቃሚ ጥቅም ይግዙ",
-    "permission__pricing_hook__custom_prompt__description": "የሚጠቀምበት እንዴት በተጠቃሚ ጥቅም ውስጥ በተጨማሪ ጊዜ የሚሰራ ይግዙ.",
+    "permission__pricing_hook__custom_prompt__description": "ለማስተካከያ በጥቅም የተሰጡ ማስታወቂያዎችን ያክሉ እንዲሁም በስልክ ላይ የተሰጡ ማስተካከያዎችን ያክሉ።",
     "permission__pricing_hook__custom_prompt_group__title": "ወደ የተጠቀምነው የተጠቃሚ ጥቅም ቡድን ይግዙ",
     "permission__pricing_hook__custom_prompt_group__description": "የሚጠቀምበት እንዴት በተጠቃሚ ጥቅም ቡድን ውስጥ የሚሰራ ይግዙ.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "ወደ አንድ-ግል የኢሜል መግቢያ ይግዙ",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "አንቴሪክ በትንሽ ስልክ የተሻለ ሞዴል፣ 100K የመግቢያ ማስታወቂያ፣ በተለይ የሚገኙ የማይሻሽ የመግቢያና የማይሻሽ ኮድ አንስቶም ወደሆነ የተሻለ ድረገጽ እና የተሻለ የመግቢያ ማስታወቂያ ማስተላለፍ ይችላሉ።",
     "provider__claude__model__claude_2_100k__description": "አንቴሪክ በትንሽ ስልክ የተሻለ ሞዴል፣ 100K የመግቢያ ማስታወቂያ፣ በተለይ የሚገኙ የማይሻሽ የመግቢያና የማይሻሽ ኮድ አንስቶም ወደሆነ የተሻለ ድረገጽ እና የተሻለ የመግቢያ ማስታወቂያ ማስተላለፍ ይችላሉ።",
     "sidebar__tabs__chat__action_btn__title": "ኮምፕዩተር መጀመሪያ",
-    "sidebar__tabs__summary__action_btn__title": "የጽሁፍ አማራጭ አድርግ"
+    "sidebar__tabs__summary__action_btn__title": "የጽሁፍ አማራጭ አድርግ",
+    "sidebar__tabs__chat__tooltip": "አይ ስጠራ",
+    "sidebar__tabs__summary__tooltip": "ጽሁፎ/PDF መግለጫ & ስጠራ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

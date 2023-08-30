@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "అనివార్య ఉపయోగం కొరకు అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__daily_limit__description1": "మీరు ప్రస్తుత రోజువారీ ఉపయోగ పరిమితిని చేరుకున్నారు AI ప్రొవైడర్ల కోసం.\nమీరు అనివార్య ఉపయోగం కోసం ప్రొ కొనండి, లేదా తరువాత మళ్ళీ ప్రయత్నించండి.",
     "permission__pricing_hook__custom_prompt__title": "అప్గ్రేడ్ చేయడానికి అనివార్యమైన కస్టమ్ ప్రాంప్ట్‌లను జోడించండి",
-    "permission__pricing_hook__custom_prompt__description": "పనిని చేయడానికి మీ స్వంత ప్రాంప్ట్‌లను ఉపయోగించండి.",
+    "permission__pricing_hook__custom_prompt__description": "పనితీరు చేయడానికి మీ స్వంత ప్రాంప్ట్‌లను జోడించండి.",
     "permission__pricing_hook__custom_prompt_group__title": "అనివార్యమైన కస్టమ్ ప్రాంప్ట్ గ్రూప్‌లను జోడించడానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__custom_prompt_group__description": "కస్టమ్ ప్రాంప్ట్ గ్రూప్‌లను ఉపయోగించడానికి మీ ప్రాంప్ట్‌లను సంగ్రహించండి.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "ఒకే నొక్కిన ఇమెయిల్ డ్రాఫ్ట్‌లకు అప్గ్రేడ్ చేయండి",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "అంథ్రాపిక్‌కి తీవ్రతరంగా మోడల్, 100K సందర్భ విండో, చాలా పొడవు పత్రం మరియు కోడ్ విశ్లేషణ, సారాంశీకరణ, మరియు గ్రహించడం కోసం అది మంచిది.",
     "provider__claude__model__claude_2_100k__description": "అంథ్రాపిక్‌కి అత్యంత శక్తివంతమైన మోడల్, 100K సందర్భ విండో, సొంత సంభాషణ మరియు సృజనాత్మక కంటెంట్ జనరేషన్ నుండి వివరణాత్మక నిర్దేశనకు వర్గీకరించడంలో మంచిది.",
     "sidebar__tabs__chat__action_btn__title": "కొత్త చాట్",
-    "sidebar__tabs__summary__action_btn__title": "సమరాలను రిఫ్రెష్ చేయండి"
+    "sidebar__tabs__summary__action_btn__title": "సమరాలను రిఫ్రెష్ చేయండి",
+    "sidebar__tabs__chat__tooltip": "ఏదైనా విషయంలో AI కి అడగండి",
+    "sidebar__tabs__summary__tooltip": "పేజీ/PDF సారాంశం & చాట్"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

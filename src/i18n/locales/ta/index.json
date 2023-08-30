@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "முழுமையான பயன்பாடுகளுக்கான மேம்படுத்தல்",
     "permission__pricing_hook__daily_limit__description1": "அனைத்து AI வழங்குநர்களுக்கான தற்போதைய தினசரி பயன்பாட்டு வரம்பை நீங்கள் அடைவது.\nமுடிவாக முடித்து முடிக்க முடியும் அல்லது பிரோ பயன்பாட்டிற்கு மேம்படுத்தல் செய்யலாம்.",
     "permission__pricing_hook__custom_prompt__title": "எதுவும் குறிப்புகளை சேர்க்க பிரோ-க்கு மேம்படுத்துக",
-    "permission__pricing_hook__custom_prompt__description": "பணியாளர் பணிகளை விரைவாக முடிக்க உங்கள் சொந்த குறிப்புகளை பயன்படுத்துக.",
+    "permission__pricing_hook__custom_prompt__description": "வேலை செய்யும் போது மீண்டும் மீண்டும் நிரப்புகளை வேகமாக சேர்க்க உங்கள் தனிப்பட்ட விழிப்புணர்வைச் சேர்க்கவும்.",
     "permission__pricing_hook__custom_prompt_group__title": "எதுவும் குறிப்பு குழுக்களை சேர்க்க பிரோ-க்கு மேம்படுத்துக",
     "permission__pricing_hook__custom_prompt_group__description": "சொந்த குறிப்பு குழுக்களுடன் அதிக பயன்பாட்டுகளுக்கு உருவாக்கவும்.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "ஒரு கிளிப்பு மின்னஞ்சலை அனுப்ப ஒரு கிளிக் செய்யவும்",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "அந்த்ராபிக் அதிவேக மாதிரி, 100K சூழல் சாளரம், மிகவும் நீளமான ஆவணம் மற்றும் குறிப்பிட்ட குறிப்புகளுக்கு பொருந்தும் கட்டுப்பாடு, சுருக்கமானது.",
     "provider__claude__model__claude_2_100k__description": "அந்த்ராபிக் அதிவேக மாதிரி, 100K சூழல் சாளரம், மிகவும் வியப்புள்ள உரையாடல் மற்றும் உரிமையான உள்ளடக்கத்திற்கு அணுகல் முறைகளில் அனைத்து பணிகளுக்கும் பொருந்தும் கட்டுப்பாடு.",
     "sidebar__tabs__chat__action_btn__title": "புதிய உரைநடவாதை",
-    "sidebar__tabs__summary__action_btn__title": "சுருக்கமான சுருக்கம்"
+    "sidebar__tabs__summary__action_btn__title": "சுருக்கமான சுருக்கம்",
+    "sidebar__tabs__chat__tooltip": "ஏதேனும் கேள்வியை அரசைப் பெறுங்கள்",
+    "sidebar__tabs__summary__tooltip": "பக்கம்/PDF சுருக்கம் மற்றும் கேள்வி"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

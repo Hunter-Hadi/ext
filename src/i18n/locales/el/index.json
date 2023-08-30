@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Αναβαθμίστε για απεριόριστη χρήση",
     "permission__pricing_hook__daily_limit__description1": "Έχετε φτάσει τον τρέχοντα ημερήσιο περιορισμό χρήσης για όλους τους AI Providers.\nΜπορείτε να αναβαθμίσετε σε Pro τώρα για απεριόριστη χρήση, ή να δοκιμάσετε ξανά αργότερα.",
     "permission__pricing_hook__custom_prompt__title": "Αναβάθμιση για προσθήκη απεριόριστων προσαρμοσμένων προτροπών",
-    "permission__pricing_hook__custom_prompt__description": "Χρησιμοποιήστε τις δικές σας προτροπές για να επιταχύνετε επαναλαμβανόμενες εργασίες καθώς εργάζεστε.",
+    "permission__pricing_hook__custom_prompt__description": "Προσθέστε τις δικές σας υποδείξεις για να επιταχύνετε τις επαναλαμβανόμενες εργασίες καθώς εργάζεστε.",
     "permission__pricing_hook__custom_prompt_group__title": "Αναβάθμιση για προσθήκη απεριόριστων ομάδων προσαρμοσμένων προτροπών",
     "permission__pricing_hook__custom_prompt_group__description": "Οργανώστε τις προτροπές σας για αποτελεσματική χρήση με ομάδες προσαρμοσμένων προτροπών.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Αναβάθμιση για σύνταξη email με ένα κλικ",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Ο γρηγορότερος μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για πολύ μεγάλα έγγραφα και ανάλυση κώδικα, συνοπτικότητα και κατανόηση.",
     "provider__claude__model__claude_2_100k__description": "Το πιο ισχυρό μοντέλο της Anthropic, 100K παράθυρο περιβάλλοντος, ιδανικό για εργασίες από εξεζητημένο διάλογο και δημιουργία δημιουργικού περιεχομένου μέχρι λεπτομερείς οδηγίες.",
     "sidebar__tabs__chat__action_btn__title": "Νέα συνομιλία",
-    "sidebar__tabs__summary__action_btn__title": "Ανανέωση περίληψης"
+    "sidebar__tabs__summary__action_btn__title": "Ανανέωση περίληψης",
+    "sidebar__tabs__chat__tooltip": "Ρωτήστε την AI οτιδήποτε",
+    "sidebar__tabs__summary__tooltip": "Περίληψη σελίδας/PDF & συνομιλία"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

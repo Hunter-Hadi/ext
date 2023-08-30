@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "อัปเกรดเพื่อการใช้งานไม่จำกัด",
     "permission__pricing_hook__daily_limit__description1": "คุณได้ถึงขีดจำกัดการใช้งานรายวันปัจจุบันสำหรับ AI Providers ทั้งหมด\nคุณสามารถอัปเกรดเป็น Pro เพื่อการใช้งานไม่จำกัด หรือลองอีกครั้งในภายหลัง",
     "permission__pricing_hook__custom_prompt__title": "อัปเกรดเพื่อเพิ่มคำพูดที่กำหนดเองได้ไม่จำกัด",
-    "permission__pricing_hook__custom_prompt__description": "ใช้คำพูดของคุณเพื่อส่งเร็วในการทำงานที่ซ้ำซาก",
+    "permission__pricing_hook__custom_prompt__description": "เพิ่มคำพูดของคุณเองเพื่อให้งานที่ซ้ำซ้อนเร็วขึ้นเมื่อคุณทำงาน",
     "permission__pricing_hook__custom_prompt_group__title": "อัปเกรดเพื่อเพิ่มกลุ่มคำพูดที่กำหนดเองได้ไม่จำกัด",
     "permission__pricing_hook__custom_prompt_group__description": "จัดระเบียบคำพูดของคุณเพื่อใช้งานอย่างมีประสิทธิภาพด้วยกลุ่มคำพูดที่กำหนดเอง",
     "permission__pricing_hook__gmail_cta_button_draft__title": "อัปเกรดสำหรับการร่ายเอกสารอีเมลแบบคลิกเดียว",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "โมเดลที่เร็วที่สุดของ Anthropic, หน้าต่างความสัมพันธ์ 100K คำ, เหมาะสำหรับเอกสารที่ยาวมากและการวิเคราะห์โค้ด, สรุปผลและเข้าใจ",
     "provider__claude__model__claude_2_100k__description": "โมเดลที่มีกำลังมากที่สุดของ Anthropic, หน้าต่างความสัมพันธ์ 100K คำ, เหมาะสำหรับงานต่างๆ ตั้งแต่การสนทนาที่ซับซ้อนและการสร้างเนื้อหาที่สร้างสรรค์ไปจนถึงคำแนะนำที่ละเอียด",
     "sidebar__tabs__chat__action_btn__title": "แชทใหม่",
-    "sidebar__tabs__summary__action_btn__title": "รีเฟรชสรุป"
+    "sidebar__tabs__summary__action_btn__title": "รีเฟรชสรุป",
+    "sidebar__tabs__chat__tooltip": "ถาม AI อะไรก็ได้",
+    "sidebar__tabs__summary__tooltip": "สรุปหน้า/PDF และการสนทนา"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

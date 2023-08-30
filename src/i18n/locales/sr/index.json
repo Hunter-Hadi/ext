@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Unapredite za neograničeno korišćenje",
     "permission__pricing_hook__daily_limit__description1": "Dostigli ste trenutni dnevni limit za sve AI provajdere.\nMožete se sada unaprediti na Pro verziju za neograničeno korišćenje, ili pokušajte kasnije.",
     "permission__pricing_hook__custom_prompt__title": "Nadogradite da biste dodali neograničene prilagođene upite",
-    "permission__pricing_hook__custom_prompt__description": "Koristite svoje upite da biste ubrzali ponavljajuće zadatke dok radite.",
+    "permission__pricing_hook__custom_prompt__description": "Dodajte svoje upute da biste ubrzali ponavljajuće zadatke dok radite.",
     "permission__pricing_hook__custom_prompt_group__title": "Nadogradite da biste dodali neograničene grupe prilagođenih upita",
     "permission__pricing_hook__custom_prompt_group__description": "Organizujte svoje upite za efikasno korišćenje sa grupama prilagođenih upita.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Nadogradite za izradu e-poruka u jednom koraku",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Najbrži model kompanije Antropik, prozor konteksta od 100K, odličan za vrlo dugačke dokumente i analizu koda, sažimanje i razumevanje.",
     "provider__claude__model__claude_2_100k__description": "Najmoćniji model kompanije Antropik, prozor konteksta od 100K, odličan za zadatke koji se kreću od sofisticiranog dijaloga i generisanja kreativnog sadržaja do detaljnih instrukcija.",
     "sidebar__tabs__chat__action_btn__title": "Novi čet",
-    "sidebar__tabs__summary__action_btn__title": "Osveži rezime"
+    "sidebar__tabs__summary__action_btn__title": "Osveži rezime",
+    "sidebar__tabs__chat__tooltip": "Pitajte veštačku inteligenciju bilo šta",
+    "sidebar__tabs__summary__tooltip": "Sažetak stranice/PDF-a i čet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

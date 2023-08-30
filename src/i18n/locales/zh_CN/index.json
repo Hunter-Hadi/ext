@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "升级以获得无限使用",
     "permission__pricing_hook__daily_limit__description1": "您已达到所有AI提供商的当前每日使用上限。\n您可以立即升级到专业版以获得无限使用，或稍后再试。",
     "permission__pricing_hook__custom_prompt__title": "升级以添加无限自定义提示",
-    "permission__pricing_hook__custom_prompt__description": "在工作中使用自己的提示来加快重复任务的速度。",
+    "permission__pricing_hook__custom_prompt__description": "添加自定义提示以加快您的工作中的重复任务。",
     "permission__pricing_hook__custom_prompt_group__title": "升级以添加无限自定义提示组",
     "permission__pricing_hook__custom_prompt_group__description": "使用自定义提示组来组织您的提示，提高效率。",
     "permission__pricing_hook__gmail_cta_button_draft__title": "升级以一键生成电子邮件草稿",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic最快的模型，100K上下文窗口，非常适合长文档和代码分析、摘要和理解。",
     "provider__claude__model__claude_2_100k__description": "Anthropic最强大的模型，100K上下文窗口，非常适合从复杂对话和创造性内容生成到详细指导的任务。",
     "sidebar__tabs__chat__action_btn__title": "新聊天",
-    "sidebar__tabs__summary__action_btn__title": "刷新摘要"
+    "sidebar__tabs__summary__action_btn__title": "刷新摘要",
+    "sidebar__tabs__chat__tooltip": "向AI提问",
+    "sidebar__tabs__summary__tooltip": "页面/PDF摘要和聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

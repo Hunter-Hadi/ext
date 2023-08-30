@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Oppgrader for ubegrenset bruk",
     "permission__pricing_hook__daily_limit__description1": "Du har nådd den gjeldende daglige bruksbegrensningen for alle AI-leverandører.\nDu kan oppgradere til Pro nå for ubegrenset bruk, eller prøve igjen senere.",
     "permission__pricing_hook__custom_prompt__title": "Oppgrader for å legge til ubegrensede egendefinerte prompter",
-    "permission__pricing_hook__custom_prompt__description": "Bruk egne prompter for å fremskynde gjentakende oppgaver mens du jobber.",
+    "permission__pricing_hook__custom_prompt__description": "Legg til egne påminnelser for å øke hastigheten på gjentakende oppgaver mens du jobber.",
     "permission__pricing_hook__custom_prompt_group__title": "Oppgrader for å legge til ubegrensede egendefinerte promptgrupper",
     "permission__pricing_hook__custom_prompt_group__description": "Organiser promptene dine for effektiv bruk med egendefinerte promptgrupper.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Oppgrader for ett-klikks e-postutkast",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropics raskeste modell, 100K kontekstvindu, flott for svært lange dokumenter og kodeanalyse, sammendrag og forståelse.",
     "provider__claude__model__claude_2_100k__description": "Anthropics kraftigste modell, 100K kontekstvindu, flott for oppgaver som spenner fra sofistikert dialog og kreativt innholdsgenerering til detaljerte instruksjoner.",
     "sidebar__tabs__chat__action_btn__title": "Ny chat",
-    "sidebar__tabs__summary__action_btn__title": "Oppdater oppsummering"
+    "sidebar__tabs__summary__action_btn__title": "Oppdater oppsummering",
+    "sidebar__tabs__chat__tooltip": "Spør AI om noe",
+    "sidebar__tabs__summary__tooltip": "Side/PDF sammendrag og chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

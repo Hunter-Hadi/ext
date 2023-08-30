@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "અમર્યાદિત ઉપયોગ માટે અનલિમિટેડ વપરાશ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__daily_limit__description1": "તમે બધા AI પ્રોવાઇડર્સ માટેની વર્તમાન દૈનિક વપરાશ કેપ પર પહોંચ્યા છે.\nતમે અનલિમિટેડ વપરાશ માટે હવે Pro માટે અપગ્રેડ કરી શકો છો, અથવા પછીથી ફરીથી પ્રયાસ કરો.",
     "permission__pricing_hook__custom_prompt__title": "અપરિમિત કસ્ટમ પ્રોમ્પ્ટ્સ ઉમેરવા માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__custom_prompt__description": "કામ કરતાં સમય બચાવવા માટે તમારા ખુદની પ્રોમ્પ્ટ્સનો ઉપયોગ કરો.",
+    "permission__pricing_hook__custom_prompt__description": "કામ કરતાં સમય નિરંતર કાર્યોને ઝડપીથી પૂર્ણ કરવા માટે તમારા આપના પ્રોમ્પ્ટ્સ ઉમેરો.",
     "permission__pricing_hook__custom_prompt_group__title": "અપરિમિત કસ્ટમ પ્રોમ્પ્ટ ગ્રુપ્સ ઉમેરવા માટે અપગ્રેડ કરો",
     "permission__pricing_hook__custom_prompt_group__description": "તમારા પ્રોમ્પ્ટ્સને સારવાર કરવા માટે તમારા પ્રોમ્પ્ટ ગ્રુપ્સનો ઉપયોગ કરો.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "એક-ક્લિક ઇમેઇલ ડ્રાફ્ટ માટે અપગ્રેડ કરો",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "એન્થ્રોપિકની સરળતાનું મોડેલ, 100K સંદર્ભ વિંડો, ખૂબ લાંબા દસ્તાવેજ અને કોડ વિશ્લેષણ, સંગ્રહણ, અને સમજણ માટે મહત્ત્વપૂર્ણ.",
     "provider__claude__model__claude_2_100k__description": "એન્થ્રોપિકનું સૌથી શક્તિશાળી મોડેલ, 100K સંદર્ભ વિંડો, સુંદર સંવાદ અને રચના ઉત્પાદનથી લેકર વિગતવાર નિર્દેશન સુધીની કાર્યો માટે મહત્ત્વપૂર્ણ.",
     "sidebar__tabs__chat__action_btn__title": "નવી ચેટ",
-    "sidebar__tabs__summary__action_btn__title": "સંક્ષેપ રિફ્રેશ"
+    "sidebar__tabs__summary__action_btn__title": "સંક્ષેપ રિફ્રેશ",
+    "sidebar__tabs__chat__tooltip": "એઆઈ કોઈપણ સવાલ પૂછો",
+    "sidebar__tabs__summary__tooltip": "પેજ/પીડીએફ સારાંશ અને ચેટ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

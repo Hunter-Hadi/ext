@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "ترقية للاستخدام غير المحدود",
     "permission__pricing_hook__daily_limit__description1": "لقد وصلت إلى الحد اليومي الحالي لجميع مزودي الذكاء الاصطناعي.\nيمكنك الترقية إلى النسخة المحترفة الآن للاستخدام غير المحدود، أو حاول مرة أخرى في وقت لاحق.",
     "permission__pricing_hook__custom_prompt__title": "الترقية لإضافة تلميحات مخصصة غير محدودة",
-    "permission__pricing_hook__custom_prompt__description": "استخدم التلميحات الخاصة بك لتسريع المهام المتكررة أثناء العمل.",
+    "permission__pricing_hook__custom_prompt__description": "أضف تلميحاتك الخاصة لتسريع المهام المتكررة أثناء العمل.",
     "permission__pricing_hook__custom_prompt_group__title": "الترقية لإضافة مجموعات تلميحات مخصصة غير محدودة",
     "permission__pricing_hook__custom_prompt_group__description": "قم بتنظيم التلميحات الخاصة بك للاستخدام الفعال مع مجموعات تلميحات مخصصة.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "الترقية لصنع مسودات البريد الإلكتروني بنقرة واحدة",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "أسرع نموذج لأنثروبيك، نافذة سياق 100 ألف، مثالي لتحليل المستندات والشفرات الطويلة جدًا، وإعادة صياغة النصوص، والفهم.",
     "provider__claude__model__claude_2_100k__description": "أقوى نموذج لأنثروبيك، نافذة سياق 100 ألف، مثالي لمهام تتراوح بين الحوار المتطور وإنشاء المحتوى الإبداعي إلى التعليمات التفصيلية.",
     "sidebar__tabs__chat__action_btn__title": "محادثة جديدة",
-    "sidebar__tabs__summary__action_btn__title": "تحديث الملخص"
+    "sidebar__tabs__summary__action_btn__title": "تحديث الملخص",
+    "sidebar__tabs__chat__tooltip": "اسأل الذكاء الاصطناعي أي شيء",
+    "sidebar__tabs__summary__tooltip": "ملخص الصفحة / PDF والدردشة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

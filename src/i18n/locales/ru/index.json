@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Обновите для неограниченного использования",
     "permission__pricing_hook__daily_limit__description1": "Вы достигли текущего ежедневного лимита использования для всех AI-провайдеров.\nВы можете обновиться до Pro сейчас для неограниченного использования или попробовать позже.",
     "permission__pricing_hook__custom_prompt__title": "Добавьте неограниченное количество пользовательских подсказок, перейдя на Pro",
-    "permission__pricing_hook__custom_prompt__description": "Используйте собственные подсказки, чтобы ускорить повторяющиеся задачи в процессе работы.",
+    "permission__pricing_hook__custom_prompt__description": "Добавьте свои собственные подсказки, чтобы ускорить повторяющиеся задачи в процессе работы.",
     "permission__pricing_hook__custom_prompt_group__title": "Добавьте неограниченное количество групп пользовательских подсказок, перейдя на Pro",
     "permission__pricing_hook__custom_prompt_group__description": "Организуйте свои подсказки для эффективного использования с помощью групп пользовательских подсказок.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Создавайте черновики электронных писем одним нажатием кнопки, перейдя на Pro",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Самая быстрая модель Anthropic, окно контекста 100K, отлично подходит для очень длинных документов и анализа кода, краткого изложения и понимания.",
     "provider__claude__model__claude_2_100k__description": "Самая мощная модель Anthropic, окно контекста 100K, отлично подходит для задач от сложного диалога и творческого создания контента до подробных инструкций.",
     "sidebar__tabs__chat__action_btn__title": "Новый чат",
-    "sidebar__tabs__summary__action_btn__title": "Обновить сводку"
+    "sidebar__tabs__summary__action_btn__title": "Обновить сводку",
+    "sidebar__tabs__chat__tooltip": "Задайте AI любой вопрос",
+    "sidebar__tabs__summary__tooltip": "Сводка страницы/PDF и чат"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

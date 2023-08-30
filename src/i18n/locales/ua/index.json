@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Оновіть для необмеженого використання",
     "permission__pricing_hook__daily_limit__description1": "Ви досягли поточного щоденного обмеження використання для всіх постачальників ШІ.\nВи можете оновити до Про зараз для необмеженого використання або спробувати пізніше.",
     "permission__pricing_hook__custom_prompt__title": "Оновіть, щоб додати необмежені власні підказки",
-    "permission__pricing_hook__custom_prompt__description": "Використовуйте власні підказки для прискорення повторюваних завдань під час роботи.",
+    "permission__pricing_hook__custom_prompt__description": "Додайте свої підказки, щоб прискорити повторювані завдання під час роботи.",
     "permission__pricing_hook__custom_prompt_group__title": "Оновіть, щоб додати необмежені групи власних підказок",
     "permission__pricing_hook__custom_prompt_group__description": "Організуйте свої підказки для ефективного використання з групами власних підказок.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Оновіть для створення електронних чернеток одним клацанням",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Найшвидша модель Anthropic, 100K вікно контексту, ідеальна для дуже довгих документів та аналізу коду, стиснення та розуміння.",
     "provider__claude__model__claude_2_100k__description": "Найпотужніша модель Anthropic, 100K вікно контексту, ідеальна для завдань від складного діалогу та творчого генерування контенту до детальних інструкцій.",
     "sidebar__tabs__chat__action_btn__title": "Новий чат",
-    "sidebar__tabs__summary__action_btn__title": "Оновити підсумок"
+    "sidebar__tabs__summary__action_btn__title": "Оновити підсумок",
+    "sidebar__tabs__chat__tooltip": "Запитайте штучний інтелект будь-що",
+    "sidebar__tabs__summary__tooltip": "Стислий огляд сторінки/PDF та чат"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

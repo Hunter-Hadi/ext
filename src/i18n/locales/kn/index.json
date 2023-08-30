@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "ಅಮಿತ ಬಳಕೆಯ ಹಕ್ಕುಗಾಗಿ ಮೆಚ್ಚುಗೆ",
     "permission__pricing_hook__daily_limit__description1": "ಎಲ್ಲಾ AI ಪ್ರೊವೈಡರ್‌ಗಳ ದಿನಂಪ್ರತಿ ಬಳಕೆ ಮಿತಿಗೆ ನೀವು ಸೇರಿದ್ದೀರಿ.\nಅಮಿತ ಬಳಕೆಗಾಗಿ ಪ್ರೊ ಗೆ ಮೆಚ್ಚುಗೆ ಮಾಡಿಕೊಳ್ಳಲು ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "permission__pricing_hook__custom_prompt__title": "ಅಪ್ರತಿಮ ಕಸ್ಟಮ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳನ್ನು ಸೇರಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__custom_prompt__description": "ಕೆಲಸದ ಪುನರಾವರ್ತನೆಗಳನ್ನು ಹೆಚ್ಚಿಸಲು ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್‌ಗಳನ್ನು ಬಳಸಿ.",
+    "permission__pricing_hook__custom_prompt__description": "ನೀವು ಕೆಲಸ ಮಾಡುತ್ತಿರುವಾಗ ಪುನರಾವರ್ತನೆಯಾಗುವ ಕೆಲಸಗಳನ್ನು ಹೆಚ್ಚಿಸಲು ನಿಮ್ಮ ತಾಳೆಯನ್ನು ಸೇರಿಸಿ.",
     "permission__pricing_hook__custom_prompt_group__title": "ಅಪ್ರತಿಮ ಕಸ್ಟಮ್ ಪ್ರಾಂಪ್ಟ್ ಗುಂಪುಗಳನ್ನು ಸೇರಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__custom_prompt_group__description": "ಕಸ್ಟಮ್ ಪ್ರಾಂಪ್ಟ್ ಗುಂಪುಗಳನ್ನು ಉಪಯೋಗಿಸಲು ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್‌ಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "ಒಂದು ಕ್ಲಿಕ್ ಇಮೇಲ್ ಡ್ರಾಫ್ಟ್‌ಗಾಗಿ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "ಅಂಥ್ರೋಪಿಕ್‌ನ ತ್ವರಿತತಮ ಮಾದರಿ, 100K ಸಂದರ್ಭ ವಿಂಡೋ, ಹೆಚ್ಚು ಉದ್ದವಾದ ದಸ್ತಾವೇಜು ಮತ್ತು ಕೋಡ್ ವಿಶ್ಲೇಷಣೆ, ಸಂಗ್ರಹಣೆ, ಮತ್ತು ಗ್ರಹಿಕರಣಕ್ಕೆ ಅತ್ಯುತ್ತಮ.",
     "provider__claude__model__claude_2_100k__description": "ಅಂಥ್ರೋಪಿಕ್‌ನ ಶಕ್ತಿಶಾಲಿ ಮಾದರಿ, 100K ಸಂದರ್ಭ ವಿಂಡೋ, ಸುಸಂವಾದ ಮತ್ತು ಸೃಜನಾತ್ಮಕ ವಿಷಯ ಸೃಷ್ಟಿಗೆ ವಿಸ್ತೃತ ನಿರ್ದೇಶನೆಗಳಿಂದ ಹೊಂದಿಕೊಳ್ಳುವುದಕ್ಕೆ ಅತ್ಯುತ್ತಮ.",
     "sidebar__tabs__chat__action_btn__title": "ಹೊಸ ಚಾಟ್",
-    "sidebar__tabs__summary__action_btn__title": "ಸಂಗ್ರಹವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ"
+    "sidebar__tabs__summary__action_btn__title": "ಸಂಗ್ರಹವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ",
+    "sidebar__tabs__chat__tooltip": "ಏನಾದರೂ ಕೇಳಿ AI",
+    "sidebar__tabs__summary__tooltip": "ಪುಟ/ಪಿಡಿಎಫ್ ಸಾರಾಂಶ ಮತ್ತು ಚಾಟ್"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

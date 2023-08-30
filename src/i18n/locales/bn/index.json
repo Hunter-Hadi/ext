@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "সীমাহীন ব্যবহারের জন্য আপগ্রেড করুন",
     "permission__pricing_hook__daily_limit__description1": "আপনি সমস্ত AI প্রদানকারীদের জন্য বর্তমান দৈনিক ব্যবহার সীমা অর্জন করেছেন।\nআপনি সীমাহীন ব্যবহারের জন্য এখনই Pro-তে আপগ্রেড করতে পারেন, অথবা পরে আবার চেষ্টা করতে পারেন।",
     "permission__pricing_hook__custom_prompt__title": "অসীম কাস্টম প্রম্পট যোগ করতে আপগ্রেড করুন",
-    "permission__pricing_hook__custom_prompt__description": "কাজগুলি দ্রুত করতে নিজের প্রম্পট ব্যবহার করুন।",
+    "permission__pricing_hook__custom_prompt__description": "কাজ করতে সময় বাঁচাতে নিজের প্রম্পট যোগ করুন।",
     "permission__pricing_hook__custom_prompt_group__title": "অসীম কাস্টম প্রম্পট গ্রুপ যোগ করতে আপগ্রেড করুন",
     "permission__pricing_hook__custom_prompt_group__description": "কাস্টম প্রম্পট গ্রুপ দ্বারা প্রম্পটগুলি সংগ্রহশীল করে নিজের কাজগুলি দ্রুত করুন।",
     "permission__pricing_hook__gmail_cta_button_draft__title": "এক-ক্লিক ইমেল খসড়ার জন্য আপগ্রেড করুন",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic এর সর্বত্তপর দ্রুততম মডেল, 100K সংদর্ভ উইন্ডো, খুব লম্বা নথি এবং কোড বিশ্লেষণ, সংক্ষেপণ এবং বোধগম্যতা জন্য অত্যন্ত ভাল।",
     "provider__claude__model__claude_2_100k__description": "Anthropic এর সবচেয়ে শক্তিশালী মডেল, 100K সংদর্ভ উইন্ডো, সুবিধাজনক সংলাপ এবং সৃজনশীল সামগ্রী উৎপন্ন থেকে বিস্তারিত নির্দেশনা পর্যন্ত পরিষ্কার করার জন্য অত্যন্ত ভাল।",
     "sidebar__tabs__chat__action_btn__title": "নতুন চ্যাট",
-    "sidebar__tabs__summary__action_btn__title": "সারাংশ রিফ্রেশ"
+    "sidebar__tabs__summary__action_btn__title": "সারাংশ রিফ্রেশ",
+    "sidebar__tabs__chat__tooltip": "এইচআই কিছু জিজ্ঞাসা করুন",
+    "sidebar__tabs__summary__tooltip": "পৃষ্ঠা/পিডিএফ সংক্ষেপ এবং চ্যাট"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

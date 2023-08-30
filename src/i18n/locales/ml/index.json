@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "അനവധി ഉപയോഗത്തിന് അപ്‌ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__daily_limit__description1": "എല്ലാ AI പ്രൊവൈഡറുകളുടെയും നിലവിലെ ദിവസ ഉപയോഗ കാപ്പ് എത്തിയിരിക്കുന്നു.\nഅപ്‌ഗ്രേഡ് ചെയ്യാന്‍ നിങ്ങള്‍ക്ക് പ്രൊ നിലവില്‍ ഉപയോഗത്തിന് അനവധി അവസരം ലഭ്യമാണ്, അല്ലെങ്കില്‍ പിന്നീട് ശ്രമിക്കുക.",
     "permission__pricing_hook__custom_prompt__title": "അനവധി ഉപയോഗ്യമായ ഉപയോക്തൃ പ്രോംപ്റ്റുകൾ ചേർക്കാൻ പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_hook__custom_prompt__description": "നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ വേഗത്തിൽ നടത്താൻ നിങ്ങളുടെ സ്വന്തമായ പ്രോംപ്റ്റുകൾ ഉപയോഗിക്കുക.",
+    "permission__pricing_hook__custom_prompt__description": "നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ പൂർണ്ണമായും വേഗത്തിൽ ചെയ്യാൻ നിങ്ങളുടെ സ്വന്തമായ പ്രോംപ്റ്റുകൾ ചേർക്കുക.",
     "permission__pricing_hook__custom_prompt_group__title": "അനവധി ഉപയോക്തൃ പ്രോംപ്റ്റ് ഗ്രൂപ്പുകൾ ചേർക്കാൻ പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__custom_prompt_group__description": "സ്വന്തമായ പ്രോംപ്റ്റുകൾ സൂക്ഷിക്കാൻ പ്രൊ ഉപയോഗിക്കുക.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "ഒരു-ക്ലിക്ക് ഇമെയിൽ ഡ്രാഫ്റ്റുകൾക്ക് പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, very long document and code analysis, summarization, and comprehension ku nalla aaswadikkunna model.",
     "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, sophisticated dialogue and creative content generation ila detailed instruction vareyum oru range of tasks ku nalla aaswadikkunna model.",
     "sidebar__tabs__chat__action_btn__title": "പുതിയ ചാറ്റ്",
-    "sidebar__tabs__summary__action_btn__title": "സംഗൃഹനം പുനരുജ്ജീവനം"
+    "sidebar__tabs__summary__action_btn__title": "സംഗൃഹനം പുനരുജ്ജീവനം",
+    "sidebar__tabs__chat__tooltip": "ഏതെങ്കിലും ചോദിക്കുക AI",
+    "sidebar__tabs__summary__tooltip": "പേജ്/PDF സംഗ്രഹവും ചാറ്റും"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "ارتقا برای استفاده نامحدود",
     "permission__pricing_hook__daily_limit__description1": "شما به سقف استفاده روزانه فعلی برای تمام ارائه دهندگان هوش مصنوعی رسیده‌اید.\nشما می‌توانید همین حالا به نسخه پرو ارتقا دهید و از استفاده نامحدود بهره‌مند شوید، یا بعداً دوباره امتحان کنید.",
     "permission__pricing_hook__custom_prompt__title": "ارتقا برای افزودن پیش‌نویس‌های سفارشی نامحدود",
-    "permission__pricing_hook__custom_prompt__description": "از پیش‌نویس‌های خود برای افزایش سرعت وظایف تکراری در حین کار استفاده کنید.",
+    "permission__pricing_hook__custom_prompt__description": "با اضافه کردن راهنمایی های خود، وظایف تکراری را به سرعت انجام دهید.",
     "permission__pricing_hook__custom_prompt_group__title": "ارتقا برای افزودن گروه‌های پیش‌نویس سفارشی نامحدود",
     "permission__pricing_hook__custom_prompt_group__description": "پیش‌نویس‌های خود را برای استفاده بهینه با گروه‌های پیش‌نویس سفارشی سازماندهی کنید.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "ارتقا برای پیش‌نویس ایمیل با یک کلیک",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "سریع‌ترین مدل آنتروپیک، پنجره متنی ۱۰۰ هزار کلمه، عالی برای تحلیل سند و کد بسیار بلند، خلاصه‌سازی و درک.",
     "provider__claude__model__claude_2_100k__description": "قدرتمندترین مدل آنتروپیک، پنجره متنی ۱۰۰ هزار کلمه، عالی برای وظایفی از جمله دیالوگ پیچیده و تولید محتوای خلاق تا دستورالعمل‌های دقیق.",
     "sidebar__tabs__chat__action_btn__title": "چت جدید",
-    "sidebar__tabs__summary__action_btn__title": "به‌روزرسانی خلاصه"
+    "sidebar__tabs__summary__action_btn__title": "به‌روزرسانی خلاصه",
+    "sidebar__tabs__chat__tooltip": "هر سوالی از هوش مصنوعی بپرسید",
+    "sidebar__tabs__summary__tooltip": "خلاصه صفحه/فایل PDF و گفتگو"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

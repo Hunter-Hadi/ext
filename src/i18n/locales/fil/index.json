@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Mag-upgrade para sa walang limitasyong paggamit",
     "permission__pricing_hook__daily_limit__description1": "Narating mo na ang kasalukuyang limitasyon sa araw-araw na paggamit para sa lahat ng AI Providers.\nPwede kang mag-upgrade sa Pro ngayon para sa walang limitasyong paggamit, o subukan muli mamaya.",
     "permission__pricing_hook__custom_prompt__title": "Mag-upgrade upang magdagdag ng walang limitasyong custom prompts",
-    "permission__pricing_hook__custom_prompt__description": "Gamitin ang iyong sariling mga prompt upang mapabilis ang mga paulit-ulit na gawain habang nagtatrabaho ka.",
+    "permission__pricing_hook__custom_prompt__description": "Magdagdag ng sariling mga prompt upang mapabilis ang mga paulit-ulit na gawain habang nagtatrabaho ka.",
     "permission__pricing_hook__custom_prompt_group__title": "Mag-upgrade upang magdagdag ng walang limitasyong custom prompt groups",
     "permission__pricing_hook__custom_prompt_group__description": "Organisahin ang iyong mga prompt para sa mabisang paggamit gamit ang custom prompt groups.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Mag-upgrade para sa one-click email drafts",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Pinakamabilis na modelo ng Anthropic, may 100K window ng konteksto, mahusay para sa napakahabang dokumento at pagsusuri ng code, pag-uulit-ulit, at pang-unawa.",
     "provider__claude__model__claude_2_100k__description": "Pinakamalakas na modelo ng Anthropic, may 100K window ng konteksto, mahusay para sa mga gawain mula sa kumplikadong pakikipag-usap at paglikha ng nilalaman hanggang sa detalyadong tagubilin.",
     "sidebar__tabs__chat__action_btn__title": "Bagong chat",
-    "sidebar__tabs__summary__action_btn__title": "I-refresh ang buod"
+    "sidebar__tabs__summary__action_btn__title": "I-refresh ang buod",
+    "sidebar__tabs__chat__tooltip": "Tanongin ang AI tungkol sa anumang bagay",
+    "sidebar__tabs__summary__tooltip": "Buod ng Pahina/PDF at chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

@@ -367,7 +367,7 @@
     "permission__pricing_hook__daily_limit__title": "Frissítés korlátlan használathoz",
     "permission__pricing_hook__daily_limit__description1": "Elérted a jelenlegi napi használati korlátot az összes AI szolgáltatóhoz.\nMost frissíthetsz Pro változatra korlátlan használathoz, vagy később próbálkozhatsz újra.",
     "permission__pricing_hook__custom_prompt__title": "Korlátlan egyedi felugró ablak hozzáadásához frissítés",
-    "permission__pricing_hook__custom_prompt__description": "Használja saját felugró ablakait a munka során ismétlődő feladatok gyorsabb elvégzéséhez.",
+    "permission__pricing_hook__custom_prompt__description": "Addjon hozzá a saját figyelmeztetéseket, hogy felgyorsítsa az ismétlődő feladatokat, amiközben dolgozik.",
     "permission__pricing_hook__custom_prompt_group__title": "Korlátlan egyedi felugró ablak csoport hozzáadásához frissítés",
     "permission__pricing_hook__custom_prompt_group__description": "Szervezze felugró ablakait hatékony használat érdekében egyedi felugró ablak csoportokkal.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Egykattintásos e-mail vázlatokhoz frissítés",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic leggyorsabb modellje, 100K kontextusablak, nagyszerű hosszú dokumentumok és kód elemzéséhez, összefoglaláshoz és megértéshez.",
     "provider__claude__model__claude_2_100k__description": "Anthropic legerősebb modellje, 100K kontextusablak, kiválóan alkalmas a szofisztikált párbeszédre és kreatív tartalomgenerálásra, részletes utasításokhoz.",
     "sidebar__tabs__chat__action_btn__title": "Új csevegés",
-    "sidebar__tabs__summary__action_btn__title": "Összefoglaló frissítése"
+    "sidebar__tabs__summary__action_btn__title": "Összefoglaló frissítése",
+    "sidebar__tabs__chat__tooltip": "Kérdezze az AI-t bármit",
+    "sidebar__tabs__summary__tooltip": "Oldal/PDF összefoglaló és chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Sasisha kwa matumizi yasiyokuwa na kikomo",
     "permission__pricing_hook__daily_limit__description1": "Umefikia kiwango cha matumizi ya kila siku cha sasa kwa Watoa Huduma wote wa AI.\nUnaweza kusasisha kuwa Pro sasa kwa matumizi yasiyokuwa na kikomo, au jaribu tena baadaye.",
     "permission__pricing_hook__custom_prompt__title": "Sasisha ili kuongeza maelekezo ya desturi yasiyokuwa na kikomo",
-    "permission__pricing_hook__custom_prompt__description": "Tumia maelekezo yako mwenyewe ili kuharakisha kazi za kurudia unapofanya kazi.",
+    "permission__pricing_hook__custom_prompt__description": "Ongeza maelezo yako mwenyewe ili kuongeza kasi ya kazi zinazorudiwa unapofanya kazi.",
     "permission__pricing_hook__custom_prompt_group__title": "Sasisha ili kuongeza vikundi vya maelekezo ya desturi yasiyokuwa na kikomo",
     "permission__pricing_hook__custom_prompt_group__description": "Panga maelekezo yako kwa matumizi yenye ufanisi na vikundi vya maelekezo ya desturi.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Sasisha ili kupata rasimu ya barua pepe kwa kubofya moja",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Mfano wa haraka zaidi wa Anthropic, dirisha la muktadha wa 100K, mzuri kwa hati ndefu sana na uchambuzi wa nambari, muhtasari, na ufahamu.",
     "provider__claude__model__claude_2_100k__description": "Mfano wenye nguvu zaidi wa Anthropic, dirisha la muktadha wa 100K, mzuri kwa majukumu yanayotofautiana kutoka kwa mazungumzo ya kisasa na uzalishaji wa yaliyomo ya ubunifu hadi maagizo ya kina.",
     "sidebar__tabs__chat__action_btn__title": "Mazungumzo mapya",
-    "sidebar__tabs__summary__action_btn__title": "Sasisha muhtasari"
+    "sidebar__tabs__summary__action_btn__title": "Sasisha muhtasari",
+    "sidebar__tabs__chat__tooltip": "Uliza AI chochote",
+    "sidebar__tabs__summary__tooltip": "Muhtasari wa Ukurasa/PDF & mazungumzo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

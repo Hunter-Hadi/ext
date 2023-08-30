@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Jauniniet, lai iegūtu neierobežotu lietošanu",
     "permission__pricing_hook__daily_limit__description1": "Jūs esat sasniedzis pašreizējo dienas lietošanas limitu visiem AI pakalpojumu sniedzējiem.\nVarat jaunināt uz Pro tagad, lai iegūtu neierobežotu lietošanu vai mēģināt vēlāk.",
     "permission__pricing_hook__custom_prompt__title": "Uzlabojiet, lai pievienotu neierobežotus pielāgotos norādījumus",
-    "permission__pricing_hook__custom_prompt__description": "Izmantojiet savas norādes, lai paātrinātu atkārtotas darbības, strādājot.",
+    "permission__pricing_hook__custom_prompt__description": "Pievienojiet savus norādes, lai paātrinātu atkārtojošas darbības, strādājot.",
     "permission__pricing_hook__custom_prompt_group__title": "Uzlabojiet, lai pievienotu neierobežotus pielāgotos norāžu grupas",
     "permission__pricing_hook__custom_prompt_group__description": "Organizējiet savas norādes efektīvai lietošanai ar pielāgotām norāžu grupām.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Uzlabojiet, lai izveidotu e-pasta projektus ar vienu klikšķi",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic ātrākais modelis, 100K konteksta logs, lielisks ļoti garu dokumentu un koda analīzei, kopsavilkumiem un saprašanai.",
     "provider__claude__model__claude_2_100k__description": "Anthropic visvarenākais modelis, 100K konteksta logs, lielisks uzdevumiem sākot no sarežģītas dialoga līdz radošas saturveidošanas un detalizētu instrukciju sniegšanai.",
     "sidebar__tabs__chat__action_btn__title": "Jauna čata tērzēšana",
-    "sidebar__tabs__summary__action_btn__title": "Atsvaidzināt kopsavilkumu"
+    "sidebar__tabs__summary__action_btn__title": "Atsvaidzināt kopsavilkumu",
+    "sidebar__tabs__chat__tooltip": "Jautājiet AI jebko",
+    "sidebar__tabs__summary__tooltip": "Lapas/PDF kopsavilkums un čats"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

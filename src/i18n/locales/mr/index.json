@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "असीमित वापरसाठी सुधारित करा",
     "permission__pricing_hook__daily_limit__description1": "तुम्ही सर्व AI प्रदात्यांच्या सध्याच्या दैनंदिन वापराच्या मर्यादेत पोहोचला आहे.\nतुम्ही असीमित वापरसाठी आत्तापर्यंत प्रोच्या अपग्रेडसाठी प्रयत्न करू शकता, किंवा नंतर पुन्हा प्रयत्न करा.",
     "permission__pricing_hook__custom_prompt__title": "असीमित स्वतंत्र प्रॉम्प्ट जोडण्यासाठी अपग्रेड करा",
-    "permission__pricing_hook__custom_prompt__description": "कामाच्या पुनरावृत्तीची गती वाढविण्यासाठी आपले स्वतंत्र प्रॉम्प्ट वापरा.",
+    "permission__pricing_hook__custom_prompt__description": "आपल्या काम करतांना दोहळे कार्यांची गतिविधी वाढवण्यासाठी आपल्या स्वतंत्र प्रॉम्प्टस जोडा.",
     "permission__pricing_hook__custom_prompt_group__title": "असीमित स्वतंत्र प्रॉम्प्ट ग्रुप जोडण्यासाठी अपग्रेड करा",
     "permission__pricing_hook__custom_prompt_group__description": "आपले प्रॉम्प्ट दक्षतेने वापरण्यासाठी आपले प्रॉम्प्ट ग्रुप व्यवस्थित करा.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "एक क्लिकमध्ये ईमेल ड्राफ्टसाठी अपग्रेड करा",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "एंथ्रोपिकचे जलद मॉडेल, 100K संदर्भ विंडो, अत्यंत लांबी दस्तऐवज आणि कोड विश्लेषण, संक्षेपण आणि समज यासाठी उत्कृष्ट.",
     "provider__claude__model__claude_2_100k__description": "एंथ्रोपिकचे सर्वाधिक शक्तिशाळी मॉडेल, 100K संदर्भ विंडो, सुविचारगत संवाद आणि सृजनात्मक सामग्री उत्पादन ते तपशीलवार निर्देशांकपर्यंतच्या कार्यांसाठी उत्कृष्ट.",
     "sidebar__tabs__chat__action_btn__title": "नवीन चॅट",
-    "sidebar__tabs__summary__action_btn__title": "सारांश रिफ्रेश करा"
+    "sidebar__tabs__summary__action_btn__title": "सारांश रिफ्रेश करा",
+    "sidebar__tabs__chat__tooltip": "AIला काहीही विचारा",
+    "sidebar__tabs__summary__tooltip": "पृष्ठ/पीडीएफ संक्षेप आणि चॅट"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

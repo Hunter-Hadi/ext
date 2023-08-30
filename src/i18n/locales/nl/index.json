@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Upgrade voor onbeperkt gebruik",
     "permission__pricing_hook__daily_limit__description1": "Je hebt de huidige dagelijkse gebruikslimiet bereikt voor alle AI-providers.\nJe kunt nu upgraden naar Pro voor onbeperkt gebruik, of later opnieuw proberen.",
     "permission__pricing_hook__custom_prompt__title": "Upgrade om onbeperkte aangepaste prompts toe te voegen",
-    "permission__pricing_hook__custom_prompt__description": "Gebruik uw eigen prompts om repetitieve taken sneller uit te voeren terwijl u werkt.",
+    "permission__pricing_hook__custom_prompt__description": "Voeg uw eigen prompts toe om repetitieve taken te versnellen terwijl u werkt.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade om onbeperkte aangepaste promptgroepen toe te voegen",
     "permission__pricing_hook__custom_prompt_group__description": "Organiseer uw prompts voor efficiënt gebruik met aangepaste promptgroepen.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Upgrade voor e-mailconcepten met één klik",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Het snelste model van Anthropic, 100K context venster, ideaal voor zeer lange documenten en code-analyse, samenvatting en begrip.",
     "provider__claude__model__claude_2_100k__description": "Het krachtigste model van Anthropic, 100K context venster, ideaal voor taken variërend van geavanceerde dialoog en creatieve inhoudsgeneratie tot gedetailleerde instructies.",
     "sidebar__tabs__chat__action_btn__title": "Nieuwe chat",
-    "sidebar__tabs__summary__action_btn__title": "Vernieuw samenvatting"
+    "sidebar__tabs__summary__action_btn__title": "Vernieuw samenvatting",
+    "sidebar__tabs__chat__tooltip": "Vraag AI om hulp",
+    "sidebar__tabs__summary__tooltip": "Pagina/PDF samenvatting & chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

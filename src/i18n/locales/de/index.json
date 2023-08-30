@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Upgrade für unbegrenzte Nutzung",
     "permission__pricing_hook__daily_limit__description1": "Sie haben das aktuelle tägliche Nutzungslimit für alle KI-Anbieter erreicht.\nSie können jetzt auf Pro upgraden, um unbegrenzte Nutzung zu erhalten, oder es später erneut versuchen.",
     "permission__pricing_hook__custom_prompt__title": "Upgrade, um unbegrenzte benutzerdefinierte Prompts hinzuzufügen",
-    "permission__pricing_hook__custom_prompt__description": "Verwenden Sie eigene Prompts, um wiederkehrende Aufgaben schneller zu erledigen, während Sie arbeiten.",
+    "permission__pricing_hook__custom_prompt__description": "Fügen Sie eigene Aufforderungen hinzu, um wiederkehrende Aufgaben zu beschleunigen, während Sie arbeiten.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade, um unbegrenzte benutzerdefinierte Prompt-Gruppen hinzuzufügen",
     "permission__pricing_hook__custom_prompt_group__description": "Organisieren Sie Ihre Prompts effizient mit benutzerdefinierten Prompt-Gruppen.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Upgrade für E-Mail-Entwürfe mit einem Klick",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropics schnellstes Modell, 100K Kontextfenster, ideal für sehr lange Dokumente und Code-Analyse, Zusammenfassung und Verständnis.",
     "provider__claude__model__claude_2_100k__description": "Anthropics leistungsstärkstes Modell, 100K Kontextfenster, ideal für Aufgaben von anspruchsvollem Dialog und kreativer Inhaltsentwicklung bis hin zu detaillierten Anweisungen.",
     "sidebar__tabs__chat__action_btn__title": "Neuer Chat",
-    "sidebar__tabs__summary__action_btn__title": "Zusammenfassung aktualisieren"
+    "sidebar__tabs__summary__action_btn__title": "Zusammenfassung aktualisieren",
+    "sidebar__tabs__chat__tooltip": "Fragen Sie KI alles",
+    "sidebar__tabs__summary__tooltip": "Seiten-/PDF-Zusammenfassung & Chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

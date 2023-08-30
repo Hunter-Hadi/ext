@@ -368,7 +368,7 @@
     "permission__pricing_hook__daily_limit__title": "Nâng cấp để sử dụng không giới hạn",
     "permission__pricing_hook__daily_limit__description1": "Bạn đã đạt đến giới hạn sử dụng hàng ngày hiện tại cho tất cả các Nhà cung cấp AI.\nBạn có thể nâng cấp lên phiên bản Pro ngay bây giờ để sử dụng không giới hạn, hoặc thử lại sau.",
     "permission__pricing_hook__custom_prompt__title": "Nâng cấp để thêm gợi ý tùy chỉnh không giới hạn",
-    "permission__pricing_hook__custom_prompt__description": "Sử dụng các gợi ý của riêng bạn để tăng tốc các nhiệm vụ lặp đi lặp lại khi bạn làm việc.",
+    "permission__pricing_hook__custom_prompt__description": "Thêm những lời nhắc riêng của bạn để tăng tốc các nhiệm vụ lặp đi lặp lại khi bạn làm việc.",
     "permission__pricing_hook__custom_prompt_group__title": "Nâng cấp để thêm nhóm gợi ý tùy chỉnh không giới hạn",
     "permission__pricing_hook__custom_prompt_group__description": "Tổ chức các gợi ý của bạn để sử dụng hiệu quả với các nhóm gợi ý tùy chỉnh.",
     "permission__pricing_hook__gmail_cta_button_draft__title": "Nâng cấp để tạo bản nháp email chỉ với một cú nhấp chuột",
@@ -412,7 +412,9 @@
     "provider__claude__model__claude_instant_100k__description": "Mô hình nhanh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho việc phân tích tài liệu và mã nguồn rất dài, tóm tắt và hiểu nội dung.",
     "provider__claude__model__claude_2_100k__description": "Mô hình mạnh nhất của Anthropic, cửa sổ ngữ cảnh 100K, phù hợp cho các nhiệm vụ từ giao tiếp phức tạp và tạo nội dung sáng tạo đến hướng dẫn chi tiết.",
     "sidebar__tabs__chat__action_btn__title": "Trò chuyện mới",
-    "sidebar__tabs__summary__action_btn__title": "Làm mới tổng kết"
+    "sidebar__tabs__summary__action_btn__title": "Làm mới tổng kết",
+    "sidebar__tabs__chat__tooltip": "Hỏi bất cứ điều gì từ AI",
+    "sidebar__tabs__summary__tooltip": "Tóm tắt Trang/PDF & chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

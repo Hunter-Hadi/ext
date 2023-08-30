@@ -372,7 +372,6 @@ class OpenAIChat extends BaseChat {
       }
     }
     // 不存在守护进程，重新创建
-    // TODO: 重新创建守护进程
     await this.destroy()
     return {
       success: false,

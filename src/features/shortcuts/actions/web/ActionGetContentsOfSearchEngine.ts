@@ -18,7 +18,7 @@ export interface SearchResponse {
   url: string
 }
 
-// TODO 这只是为了webget的业务实现的，不具备通用性
+// NOTE: 这只是为了webget的业务实现的，不具备通用性
 export class ActionGetContentsOfSearchEngine extends Action {
   static type = 'GET_CONTENTS_OF_SEARCH_ENGINE'
   constructor(

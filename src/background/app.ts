@@ -281,7 +281,7 @@ const initChromeExtensionAction = () => {
       // tab loaded
       if (changeInfo.status === 'complete') {
         if (tab.active) {
-          // TODO: check is new tab
+          // TODO: check is new tab， theme的需求，暂时不做
           // if (tab.url === 'chrome://newtab/' || tab.url === 'edge://newtab/') {
           //   // redirect to /pages/chat/index.html
           //   await Browser.tabs.update(tabId, {

@@ -62,7 +62,7 @@ const useInitSidebar = () => {
       if (pageUrl) {
         console.log('新版Conversation pageUrl更新', pageUrl)
         // createPageSummary().then().catch()
-        // MARK: 太耗费tokens了，所以切到chat就行
+        // NOTE: 太耗费tokens了，所以切到chat就行
         setSidebarSettings((prevState) => {
           return {
             ...prevState,

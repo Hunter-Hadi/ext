@@ -108,7 +108,7 @@ export const ClientMessageInit = () => {
                   },
                 })
               } else {
-                // MARK: 因为有些浏览器主题看不清， 所以暂时不用白色的icon
+                // NOTE: 因为有些浏览器主题看不清， 所以暂时不用白色的icon
                 await Browser.action.setIcon({
                   path: {
                     16: 'assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png',

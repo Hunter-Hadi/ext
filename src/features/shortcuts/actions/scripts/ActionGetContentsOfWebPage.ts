@@ -5,7 +5,7 @@ import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { parseDocumentToReadabilityData } from '@/features/shortcuts/utils/webHelper'
 import { parseHTML } from 'linkedom'
 
-// MARK: 这里本来以为是获取网页内容，其实是用script获取网页内容，并不使用url的方式，所以在script而不是web文件夹
+// NOTE: 这里本来以为是获取网页内容，其实是用script获取网页内容，并不使用url的方式，所以在script而不是web文件夹
 export class ActionGetContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_CONTENTS_OF_WEBPAGE'
   constructor(

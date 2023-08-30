@@ -184,7 +184,7 @@ export const createSelectionMarker = (
       let sel
       const startMarkerId = `usechatgpt-start-marker-${uuidV4()}`
       const endMarkerId = `usechatgpt-end-marker-${uuidV4()}`
-      // MARK - 会导致一些问题
+      // NOTE: - 会导致一些问题
       // const markerTextChar = '\ufeff'
       const markerTextChar = ''
       if (typeof doc.getSelection != 'undefined') {

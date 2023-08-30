@@ -56,27 +56,17 @@ export const increaseChatGPTRequestCount = async (
     const settings = await clientGetLiteChromeExtensionSettings()
     const provider = settings.currentAIProvider || 'UNKNOWN_PROVIDER'
     const currentDay = dayjs().format('YYYY-MM-DD')
-    // MARK - 清理过期的数据
+    // NOTE: - 清理过期的数据
     Object.keys(cacheData).forEach((cacheDay) => {
       if (
-        !Object.prototype.hasOwnProperty.call(
-          cacheData[cacheDay],
-          'prompt_cnt',
-        ) ||
-        // TODO - 因为上个版本有domain_cnt，这个版本不需要了，直接重新来
-        Object.prototype.hasOwnProperty.call(cacheData[cacheDay], 'domain_cnt')
+        !Object.prototype.hasOwnProperty.call(cacheData[cacheDay], 'prompt_cnt')
       ) {
         delete cacheData[cacheDay]
       }
     })
     if (
       !cacheData[currentDay] ||
-      !Object.prototype.hasOwnProperty.call(
-        cacheData[currentDay],
-        'prompt_cnt',
-      ) ||
-      // TODO - 因为上个版本有domain_cnt，这个版本不需要了，直接重新来
-      Object.prototype.hasOwnProperty.call(cacheData[currentDay], 'domain_cnt')
+      !Object.prototype.hasOwnProperty.call(cacheData[currentDay], 'prompt_cnt')
     ) {
       cacheData[currentDay] = {
         error_cnt: 0,

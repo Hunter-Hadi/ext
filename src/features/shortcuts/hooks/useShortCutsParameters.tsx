@@ -66,7 +66,7 @@ const useShortCutsParameters = () => {
     const SELECTED_TEXT = currentSelection?.selectionText || ''
     let userSelectedLanguage =
       appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
-    // MARK: 历史遗留问题
+    // NOTE: 历史遗留问题
     if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
       userSelectedLanguage = DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
     }

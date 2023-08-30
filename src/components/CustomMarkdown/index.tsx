@@ -52,7 +52,7 @@ const OverrideAnchor: FC<{
     </Link>
   )
 }
-// TODO: add more overrides
+
 type IHeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 const OverrideHeading: FC<HTMLHeadingElement & { heading: IHeadingType }> = (

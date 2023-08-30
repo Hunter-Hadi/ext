@@ -17,7 +17,7 @@ import {
 } from '@/features/shortcuts/utils/tokenizer'
 // import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
 
-// MARK: 这只是为了webget的业务实现的，不具备通用性
+// NOTE: 这只是为了webget的业务实现的，不具备通用性
 export class ActionWebGPTSearchResultsExpand extends Action {
   static type = 'WEBGPT_SEARCH_RESULTS_EXPAND'
   constructor(
@@ -66,7 +66,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       const addActions: ISetActionsType = []
       for (let i = 0; i < expandResults.length; i++) {
         const searchResult = expandResults[i]
-        // MARK: 特殊处理 给webgppt用的
+        // NOTE: 特殊处理 给webgppt用的
         if (summarizeType === 'NO_SUMMARIZE') {
           addActions.push({
             type: 'RENDER_CHATGPT_PROMPT',

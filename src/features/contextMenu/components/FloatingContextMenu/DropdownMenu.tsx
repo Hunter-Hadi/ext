@@ -1187,7 +1187,7 @@ const getFloatingUIDropdownItemDetail = (
   const dropdownMenu = dropdownId
     ? (root.querySelector(`#${dropdownId}`) as HTMLDivElement)
     : null
-  // MARK: 这里不是用户选择的，是因为menu无法触发关闭
+  // NOTE: 这里不是用户选择的，是因为menu无法触发关闭
   // const dropdownSelectedId = node
   //   .getAttribute('aria-activedescendant')
   //   ?.replace(/:/g, '\\:')

@@ -168,7 +168,7 @@ async function buildFiles () {
     await cleanBuildDir()
     await esbuildConfig()
     await updateManifest()
-    // TODO 不参与每次构建，只有在需要时才构建
+    // OPTIMIZE: 不参与每次构建，只有在需要时才构建
     await localesCreator()
     // computed time with seconds
     const time = ((Date.now() - startTimestamp) / 1000).toFixed(2)

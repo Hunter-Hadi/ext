@@ -29,8 +29,7 @@ export const parseDocumentToReadabilityData = (doc: Document) => {
   }
 
   let text = cleanText(cloneDeep(parsed.textContent))
-  // TODO - 放到userSettings
-  // MARK: 这里截取8000个字符是为了方便后面运行
+  // NOTE: 这里截取8000个字符是为了方便后面运行
   const trimLongText = true
   if (trimLongText && text.length > 8000) {
     text = text.slice(0, 8000)

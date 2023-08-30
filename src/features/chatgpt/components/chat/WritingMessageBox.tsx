@@ -15,7 +15,7 @@ import isEmpty from 'lodash-es/isEmpty'
 import { useTranslation } from 'react-i18next'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
-import debounce from 'lodash-es/debounce'
+import throttle from 'lodash-es/throttle'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -70,10 +70,14 @@ const WritingMessageBox: FC<{
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = React.useRef<HTMLDivElement>(null)
   const updateHeight = useCallback(
-    debounce(() => {
+    throttle(() => {
       const container = containerRef.current
       if (!container) return
-      console.log('检测到高度更新:\t', boxRef.current?.offsetHeight)
+      console.log(
+        '检测到高度更新:\t',
+        boxRef.current?.offsetHeight,
+        boxRef.current?.getBoundingClientRect().height,
+      )
       container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
     }, 100),
     [],

@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import Slider from '@mui/material/Slider'
-import useThirdProviderSetting from '@/features/chatgpt/hooks/useThirdProviderSetting'
+import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import Select from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
@@ -17,7 +17,7 @@ const APITemperatureSlider: FC<{
   const { provider, authSceneType } = props
   const { t } = useTranslation(['common', 'client'])
   const { saveThirdProviderSettings, currentThirdProviderSettings } =
-    useThirdProviderSetting()
+    useThirdProviderSettings()
   const [temperature, setTemperature] = React.useState<number>(1)
   const once = React.useRef<boolean>(false)
   useEffect(() => {

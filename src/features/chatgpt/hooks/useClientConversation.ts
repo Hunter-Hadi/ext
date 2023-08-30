@@ -24,7 +24,7 @@ const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useClientConversation = () => {
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const [, setAppSettings] = useRecoilState(AppSettingsState)
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const [sidebarSettings, updateSidebarSettings] =
@@ -159,7 +159,7 @@ ${pageSummaryData.pageSummaryContent}
       return newConversationMap
     })
     setConversation({
-      model: appSettings.currentModel || '',
+      model: '',
       writingMessage: null,
       loading: false,
     })

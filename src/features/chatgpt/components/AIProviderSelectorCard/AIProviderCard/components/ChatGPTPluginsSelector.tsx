@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 
 import Box from '@mui/material/Box'
 import Checkbox from '@mui/material/Checkbox'
@@ -13,11 +13,10 @@ import Typography from '@mui/material/Typography'
 
 import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import { AppSettingsState } from '@/store'
-import { setChromeExtensionSettings } from '@/background/utils'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
+import { useSingleThirdProviderSettings } from '@/features/chatgpt/hooks/useThirdProviderSettings'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -38,32 +37,36 @@ const ChatGPTPluginsSelector: FC = () => {
     SidebarChatConversationMessagesSelector,
   )
   const [error, setError] = useState(false)
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const [openAIProviderSettings, updateOpenAIProviderSettings] =
+    useSingleThirdProviderSettings('OPENAI')
   const enabledPlugins = useMemo(() => {
-    return appSettings.currentPlugins || []
-  }, [appSettings.currentPlugins])
+    return openAIProviderSettings?.plugins || []
+  }, [openAIProviderSettings])
   const plugins = useMemo(() => {
-    if (appSettings.plugins && appSettings.currentModel === 'gpt-4-plugins') {
-      return uniqBy(appSettings.plugins, 'id').filter(
+    if (
+      openAIProviderSettings?.pluginOptions &&
+      openAIProviderSettings?.model === 'gpt-4-plugins'
+    ) {
+      return uniqBy(openAIProviderSettings.pluginOptions, 'id').filter(
         (plugin) => plugin.user_settings.is_installed,
       )
     } else {
       return []
     }
-  }, [appSettings.plugins, appSettings.currentModel])
+  }, [openAIProviderSettings])
   useEffect(() => {
-    if (appSettings.currentModel === 'gpt-4-plugins') {
+    if (openAIProviderSettings?.model === 'gpt-4-plugins') {
       // 过滤掉不存在的
       const filterIds = enabledPlugins.filter((id) => {
         return plugins.find((plugin) => plugin.id === id)
       })
       if (filterIds.length !== enabledPlugins.length) {
-        setChromeExtensionSettings({
-          currentPlugins: filterIds,
+        updateOpenAIProviderSettings({
+          plugins: filterIds,
         })
       }
     }
-  }, [plugins, enabledPlugins, appSettings.currentModel])
+  }, [plugins, enabledPlugins, openAIProviderSettings?.model])
   const handleError = () => {
     // set error 1s
     setError(true)
@@ -88,7 +91,7 @@ const ChatGPTPluginsSelector: FC = () => {
               height: 40,
               p: 0,
             }}
-            value={appSettings.currentPlugins || []}
+            value={openAIProviderSettings?.plugins || []}
             multiple
             disabled={sidebarChatMessages.length > 0}
             MenuProps={{
@@ -132,14 +135,8 @@ const ChatGPTPluginsSelector: FC = () => {
                 return
               }
               const value = e.target.value as string[]
-              setAppSettings((appSettings) => {
-                return {
-                  ...appSettings,
-                  currentPlugins: value,
-                }
-              })
-              await setChromeExtensionSettings({
-                currentPlugins: value,
+              await updateOpenAIProviderSettings({
+                plugins: value,
               })
             }}
             renderValue={(selected) => {
@@ -298,7 +295,7 @@ const ChatGPTPluginsSelector: FC = () => {
                       </Typography>
                       <Checkbox
                         sx={{ flexShrink: 0 }}
-                        checked={appSettings.currentPlugins?.includes(
+                        checked={openAIProviderSettings?.plugins?.includes(
                           plugin.id,
                         )}
                       />

@@ -6,12 +6,12 @@ import {
   CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY,
   AI_PROVIDER_MAP,
 } from '@/constants'
-import { getChromeExtensionSettings } from '@/background/utils'
 import {
   IChatGPTModelType,
   IChatGPTPluginType,
 } from '@/background/types/Settings'
 import Browser from 'webextension-polyfill'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 
 export interface IChatGPTAnswer {
   text: string
@@ -450,7 +450,7 @@ class ChatGPTConversation {
     let isSend = false
     let resultText = ''
     let resultMessageId = ''
-    const settings = await getChromeExtensionSettings()
+    const settings = await getThirdProviderSettings('OPENAI')
     let arkoseToken = undefined
     try {
       arkoseToken = await generateArkoseToken(this.model)
@@ -493,12 +493,12 @@ class ChatGPTConversation {
       postMessage.messages[0].metadata = params.meta
     }
     if (
-      settings.currentPlugins &&
+      settings?.plugins &&
       !this.conversationId &&
       this.model === 'gpt-4-plugins'
     ) {
       // NOTE: 只有创建新的对话时才需要传入插件
-      postMessage.plugin_ids = settings.currentPlugins
+      postMessage.plugin_ids = settings.plugins
     }
     // chatgpt特殊的图片渲染格式 => <<ImageDisplayed>>
     // {"message": {"id": "6c7a3d32-0e43-4f51-ad89-b2bf0e7922af", "author": {"role": "tool", "name": "python", "metadata": {}}, "create_time": 1689588774.3638568, "update_time": 1689588775.6521173, "content": {"content_type": "execution_output", "text": "\n<<ImageDisplayed>>"}, "status": "finished_successfully", "end_turn": null, "weight": 1.0, "metadata": {"aggregate_result": {"status": "success", "run_id": "48a329c7-017b-4370-898b-f311a08aa7a9", "start_time": 1689588774.3525271, "update_time": 1689588775.6513627, "code": "import qrcode\nimport matplotlib.pyplot as plt\n\n# Create qr code instance\nqr = qrcode.QRCode(\n    version = 1,\n    error_correction = qrcode.constants.ERROR_CORRECT_H,\n    box_size = 10,\n    border = 4,\n)\n\n# The data that you want to store\ndata = \"MaxAI.me\"\n\n# Add data\nqr.add_data(data)\nqr.make(fit=True)\n\n# Create an image from the QR Code instance\nimg = qr.make_image()\n\n# Display the generated image\nplt.imshow(img, cmap='gray')\nplt.axis('off')\nplt.show()", "end_time": 1689588775.6513627, "final_expression_output": null, "in_kernel_exception": null, "system_exception": null, "messages": [{"message_type": "image", "time": 1689588775.618626, "sender": "server", "image_payload": null, "image_url": "file-service://2073c3f9-f30e-4225-9728-6a3d2d7a41bd"}], "jupyter_messages": [{"msg_type": "status", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"execution_state": "busy"}}, {"msg_type": "execute_input", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}}, {"msg_type": "display_data", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"data": {"text/plain": "<Figure size 2000x1200 with 1 Axes>", "image/vnd.openai.fileservice.png": "file-service://2073c3f9-f30e-4225-9728-6a3d2d7a41bd"}}}, {"msg_type": "status", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"execution_state": "idle"}}], "timeout_triggered": null}, "is_complete": true, "message_type": "next", "model_slug": "gpt-4-code-interpreter"}, "recipient": "all"}, "conversation_id": "4e7a2dec-0b48-4d4c-b091-6cbf425b27ca", "error": null}

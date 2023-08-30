@@ -9,7 +9,7 @@ import {
 import { IThirdProviderSettings } from '@/background/types/Settings'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 
-const useThirdProviderSetting = () => {
+const useThirdProviderSettings = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
   const currentProvider = appSettings.currentAIProvider
   const currentThirdProviderSettings = useMemo(() => {
@@ -47,4 +47,24 @@ const useThirdProviderSetting = () => {
     currentThirdProviderSettings,
   }
 }
-export default useThirdProviderSetting
+
+export const useSingleThirdProviderSettings = <T extends IAIProviderType>(
+  providerKey: T,
+) => {
+  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const providerSettings = useMemo(() => {
+    return appSettings.thirdProviderSettings?.[providerKey] as
+      | IThirdProviderSettings[T]
+      | undefined
+  }, [appSettings.thirdProviderSettings, providerKey])
+  const updateThirdProviderSettings = async (
+    settings: Partial<IThirdProviderSettings[T]>,
+  ) => {
+    const success = await setThirdProviderSettings(providerKey, settings, false)
+    if (success) {
+      setAppSettings(await clientGetLiteChromeExtensionSettings())
+    }
+  }
+  return [providerSettings, updateThirdProviderSettings] as const
+}
+export default useThirdProviderSettings

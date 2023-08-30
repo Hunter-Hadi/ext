@@ -54,6 +54,9 @@ type IThirdProviderSettings = {
   }
   [AI_PROVIDER_MAP.OPENAI]?: {
     model?: string
+    plugins?: string[]
+    modelOptions?: IChatGPTModelType[]
+    pluginOptions?: IChatGPTPluginType[]
   }
   [AI_PROVIDER_MAP.OPENAI_API]?: {
     temperature?: number
@@ -96,29 +99,21 @@ export interface IChromeExtensionButtonSetting {
 }
 
 export interface IChromeExtensionSettings {
-  models?: IChatGPTModelType[]
-  plugins?: IChatGPTPluginType[]
+  // models?: IChatGPTModelType[]
+  // plugins?: IChatGPTPluginType[]
   currentAIProvider?: IAIProviderType
-  currentModel?: string
-  currentPlugins?: string[]
+  // currentModel?: string
+  // currentPlugins?: string[]
   chatTypeConversationId?: string
-  contextMenus?: IContextMenuItem[]
-  gmailToolBarContextMenu?: IContextMenuItem[]
   userSettings?: {
     chatBoxWidth?: number
     colorSchema?: 'light' | 'dark'
     language?: string
     preferredLanguage?: string
-    /**
-     * @deprecated
-     */
-    // selectionButtonVisible?: boolean
     chatGPTStableModeDuration?: number
     pdf?: {
       enabled?: boolean
     }
-    // TODO remove this
-    gmailAssistant?: boolean
     // shortcut hint
     shortcutHintEnable?: boolean
   }
@@ -129,6 +124,9 @@ export interface IChromeExtensionSettings {
     [P in IAIProviderType]?: IThirdProviderSettings[P]
   }
   lastModified?: number
+  // TODO remove this
+  contextMenus?: IContextMenuItem[]
+  gmailToolBarContextMenu?: IContextMenuItem[]
 }
 
 export type IChromeExtensionSettingsUpdateFunction = (

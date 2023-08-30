@@ -1,4 +1,3 @@
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { RangyContextMenu } from '@/features/contextMenu'
 import { useSetRecoilState } from 'recoil'
 import React, { FC, useEffect, useMemo } from 'react'
@@ -67,7 +66,6 @@ const RangyInit = () => {
 
 export const AppSettingsInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
-  const updateConversation = useSetRecoilState(ChatGPTConversationState)
   useThemeUpdateListener()
   useEffect(() => {
     const updateAppSettings = async () => {
@@ -95,14 +93,6 @@ export const AppSettingsInit = () => {
               ...settings.userSettings,
               colorSchema: defaultColorSchema,
             },
-          })
-        }
-        if (settings?.currentModel) {
-          updateConversation((conversation) => {
-            return {
-              ...conversation,
-              model: settings.currentModel || '',
-            }
           })
         }
       }

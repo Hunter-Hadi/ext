@@ -24,12 +24,8 @@ const useAIProvider = () => {
       const prevConversation = cache.chatTypeConversationId
         ? await clientGetConversation(cache.chatTypeConversationId)
         : undefined
-      let newProviderModel = ''
-      if (provider === 'OPENAI') {
-        newProviderModel = cache.currentModel || 'text-davinci-002-render-sha'
-      } else {
-        newProviderModel = cache.thirdProviderSettings?.[provider]?.model || ''
-      }
+      const newProviderModel =
+        cache.thirdProviderSettings?.[provider]?.model || ''
       let conversationId = ''
       if (newProviderModel) {
         const providerConversationId = md5TextEncrypt(

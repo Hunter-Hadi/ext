@@ -32,6 +32,7 @@ import {
   pingChatGPTFileUploadServer,
   startMockChatGPTUploadFile,
 } from '@/pages/chatgpt/fileUploadContentScriptHelper'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 const APP_NAME = String(process.env.APP_NAME)
 
@@ -150,7 +151,10 @@ const useDaemonProcess = () => {
               ])
               if (models.length > 0) {
                 await setChromeExtensionSettings((settings) => {
-                  let currentModel = settings.currentModel
+                  const newSettings = cloneDeep(settings)
+                  const openAISettings =
+                    newSettings.thirdProviderSettings?.OPENAI
+                  let currentModel = openAISettings?.model
                   const defaultModel =
                     models.find((model) => model?.title?.includes('Default')) ||
                     models[0]
@@ -166,13 +170,17 @@ const useDaemonProcess = () => {
                     // 设置默认模型
                     currentModel = defaultModel?.slug
                   }
-                  log.info(`set currentModel model`, currentModel)
-                  return {
-                    ...settings,
-                    models,
-                    currentModel,
-                    plugins,
+                  if (!newSettings.thirdProviderSettings?.OPENAI) {
+                    newSettings.thirdProviderSettings!.OPENAI = {}
                   }
+                  newSettings.thirdProviderSettings!.OPENAI.modelOptions =
+                    models
+                  newSettings.thirdProviderSettings!.OPENAI.pluginOptions =
+                    plugins
+                  newSettings.thirdProviderSettings!.OPENAI.model = currentModel
+                  debugger
+                  log.info(`set currentModel model`, currentModel)
+                  return newSettings
                 })
                 await port.postMessage({
                   event: 'OpenAIDaemonProcess_setDaemonProcess',

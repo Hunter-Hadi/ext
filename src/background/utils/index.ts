@@ -56,16 +56,15 @@ export const FILTER_SAVE_KEYS = [
   'currentAIProvider',
   'commands',
   'models',
+  `thirdProviderSettings.${AI_PROVIDER_MAP.OPENAI}.plugins`,
+  `thirdProviderSettings.${AI_PROVIDER_MAP.OPENAI}.pluginOptions`,
+  `thirdProviderSettings.${AI_PROVIDER_MAP.OPENAI}.modelOptions`,
 ] as Array<keyof IChromeExtensionSettings>
 
 export const getDefaultChromeExtensionSettings =
   (): IChromeExtensionSettings => {
     return {
       commands: [],
-      models: [],
-      currentModel: '',
-      currentPlugins: [],
-      plugins: [],
       chatTypeConversationId: '',
       currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       /** @deprecated **/
@@ -81,8 +80,6 @@ export const getDefaultChromeExtensionSettings =
         pdf: {
           enabled: true,
         },
-        /** @deprecated **/
-        gmailAssistant: true,
       },
       buttonSettings: {
         gmailButton: {
@@ -115,6 +112,9 @@ export const getDefaultChromeExtensionSettings =
         },
         [AI_PROVIDER_MAP.OPENAI]: {
           model: 'text-davinci-002-render-sha',
+          plugins: [],
+          pluginOptions: [],
+          modelOptions: [],
         },
         [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: {
           temperature: 1,

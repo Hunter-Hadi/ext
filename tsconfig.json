@@ -12,12 +12,13 @@
     "strict": true,
     "target": "es2018",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["src/*"]
     },
     "experimentalDecorators": true,
     "baseUrl": "./",
     "types": [
       "esbuild-style-plugin"
-    ]
+    ],
+    "skipLibCheck": true
   }
 }

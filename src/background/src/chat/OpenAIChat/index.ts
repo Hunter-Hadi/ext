@@ -2,6 +2,7 @@ import Browser from 'webextension-polyfill'
 import {
   checkChatGPTProxyInstance,
   createDaemonProcessTab,
+  getThirdProviderSettings,
 } from '@/background/src/chat/util'
 import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
@@ -9,7 +10,6 @@ import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
-  getChromeExtensionSettings,
 } from '@/background/utils'
 import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
@@ -242,7 +242,7 @@ class OpenAIChat extends BaseChat {
         )
     }
     if (!this.conversation) {
-      const currentModel = (await getChromeExtensionSettings()).currentModel
+      const currentModel = (await getThirdProviderSettings('OPENAI'))?.model
       if (currentModel) {
         await super.createConversation({
           ...initConversationData,
@@ -294,8 +294,8 @@ class OpenAIChat extends BaseChat {
       updateChatGPTWhiteListModelAsync().then().catch()
       this.questionSender = sender
       this.isAnswering = true
-      const settings = await getChromeExtensionSettings()
-      if (settings.currentModel === 'gpt-4-code-interpreter') {
+      const settings = await getThirdProviderSettings('OPENAI')
+      if (settings?.model === 'gpt-4-code-interpreter') {
         const successFiles = this.chatFiles.filter(
           (file) => file.uploadStatus === 'success' && file.uploadedFileId,
         )
@@ -536,9 +536,9 @@ class OpenAIChat extends BaseChat {
         const processTabId = this.chatGPTProxyInstance?.id
         if (processTabId) {
           // 说明ping失败了，需要重新打开一个code_interpreter页面
-          const settings = await getChromeExtensionSettings()
+          const settings = await getThirdProviderSettings('OPENAI')
           if (
-            settings.models?.find(
+            settings?.modelOptions?.find(
               (model) => model.slug === 'gpt-4-code-interpreter',
             )
           ) {

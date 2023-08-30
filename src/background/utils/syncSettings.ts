@@ -9,6 +9,7 @@ import dayjs from 'dayjs'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { IChromeExtensionSettings } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import unset from 'lodash-es/unset'
 
 export const syncServerSettingsToLocalSettings = async () => {
   try {
@@ -80,7 +81,7 @@ export const syncLocalSettingsToServerSettings = async () => {
     })
     const localSettings = cloneDeep(await getChromeExtensionSettings())
     FILTER_SAVE_KEYS.forEach((deleteKey) => {
-      delete localSettings[deleteKey]
+      unset(localSettings, deleteKey)
     })
     // 不上传用户的openai api key
     if (localSettings.thirdProviderSettings?.OPENAI_API) {

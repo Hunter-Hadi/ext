@@ -3,7 +3,7 @@ import { AppSettingsState } from '@/store'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
-import useThirdProviderSetting from '@/features/chatgpt/hooks/useThirdProviderSetting'
+import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
@@ -32,7 +32,7 @@ const useAIProviderModels = () => {
   const currentProvider = appSettings.currentAIProvider
   const [loading, setLoading] = useState(false)
   const { currentThirdProviderSettings, saveThirdProviderSettings } =
-    useThirdProviderSetting()
+    useThirdProviderSettings()
   // ===chatgpt 特殊处理开始===
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   useEffect(() => {
@@ -52,7 +52,9 @@ const useAIProviderModels = () => {
       case 'OPENAI':
         {
           // 转换数据结构
-          currentModels = (appSettings.models || [])
+          currentModels = (
+            appSettings.thirdProviderSettings?.OPENAI?.modelOptions || []
+          )
             .map((item) => {
               const isCodeInterpreter = item.slug === 'gpt-4-code-interpreter'
               const providerModel: IAIProviderModel = {
@@ -161,13 +163,14 @@ const useAIProviderModels = () => {
         break
     }
     return currentModels
-  }, [currentProvider, appSettings.models, whiteListModels])
+  }, [
+    currentProvider,
+    whiteListModels,
+    appSettings.thirdProviderSettings?.OPENAI?.modelOptions,
+  ])
   const currentAIProviderModel = useMemo(() => {
-    if (currentProvider === 'OPENAI') {
-      return appSettings.currentModel
-    }
     return currentThirdProviderSettings?.model || ''
-  }, [currentProvider, appSettings.currentModel, currentThirdProviderSettings])
+  }, [currentProvider, currentThirdProviderSettings])
   const currentAIProviderDetail = useMemo(() => {
     return AIProviderOptions.find((item) => item.value === currentProvider)
   }, [currentProvider])
@@ -210,13 +213,7 @@ const useAIProviderModels = () => {
             }
           }
         }
-        // TODO 以后统一处理，现在先用之前的逻辑
-        if (currentProvider && currentProvider === 'OPENAI') {
-          await setChromeExtensionSettings({
-            currentModel: model,
-            chatTypeConversationId: md5TextEncrypt(currentProvider + model),
-          })
-        } else if (
+        if (
           currentProvider &&
           aiProviderModels.find((item) => item.value === model)
         ) {

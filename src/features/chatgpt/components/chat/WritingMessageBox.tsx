@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import throttle from 'lodash-es/throttle'
+import debounce from 'lodash-es/debounce'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -69,7 +70,7 @@ const WritingMessageBox: FC<{
   }, [floatingContextMenuDraftText, floatingDropdownMenu.open])
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = React.useRef<HTMLDivElement>(null)
-  const updateHeight = useCallback(
+  const throttleUpdateHeight = useCallback(
     throttle(() => {
       const container = containerRef.current
       if (!container) return
@@ -82,13 +83,27 @@ const WritingMessageBox: FC<{
     }, 100),
     [],
   )
+  const debounceUpdateHeight = useCallback(
+    debounce(() => {
+      const container = containerRef.current
+      if (!container) return
+      console.log(
+        '检测到高度更新:\t',
+        boxRef.current?.offsetHeight,
+        boxRef.current?.getBoundingClientRect().height,
+      )
+      container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
+    }, 1000),
+    [],
+  )
   useEffect(() => {
     // scroll to bottom
     setTimeout(() => {
       boxRef.current?.scrollTo({
         top: boxRef.current.scrollHeight,
       })
-      updateHeight()
+      throttleUpdateHeight()
+      debounceUpdateHeight()
     }, 0)
   }, [floatingContextMenuDraftText])
   useEffect(() => {

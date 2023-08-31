@@ -92,8 +92,8 @@ const WritingMessageBox: FC<{
         boxRef.current?.offsetHeight,
         boxRef.current?.getBoundingClientRect().height,
       )
-      container.style.minHeight = `${boxRef.current?.offsetHeight || 0}px`
-    }, 1000),
+      container.style.minHeight = `${(boxRef.current?.offsetHeight || 0) + 1}px`
+    }, 100),
     [],
   )
   useEffect(() => {

@@ -425,7 +425,7 @@ export const MenuComponent = React.forwardRef<
       delay: { open: 75 },
       handleClose: safePolygon({
         restMs: 25,
-        blockPointerEvents: true,
+        blockPointerEvents: false,
       }),
     })
     const click = useClick(context, {

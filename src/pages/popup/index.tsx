@@ -54,7 +54,6 @@ const App: FC<{
   }
   useEffectOnce(() => {
     init()
-    // todo init i18n
     getChromeExtensionSettings().then(updateAppSettings)
   })
   return (

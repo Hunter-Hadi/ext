@@ -49,6 +49,8 @@ const FeatureGmailAssistantCard: FC = () => {
                 blacklist: [],
               },
               contextMenu: buttonSettings.gmailButton.contextMenu,
+              contextMenuPosition:
+                buttonSettings.gmailButton.contextMenuPosition,
             })
           }
         }}

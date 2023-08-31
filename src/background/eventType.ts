@@ -1,5 +1,8 @@
 // 客户端监听event
-import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import {
+  IShortCutsClientListenEvent,
+  IShortCutsSendEvent,
+} from '@/features/shortcuts/background/eventType'
 
 export type IChromeExtensionClientListenEvent =
   | 'Client_ChatGPTStatusUpdate'
@@ -87,4 +90,6 @@ export type IChromeExtensionListenEvent =
   | IShortCutsSendEvent
 
 // chrome extension 发送 event
-export type IChromeExtensionSendEvent = IChromeExtensionClientListenEvent
+export type IChromeExtensionSendEvent =
+  | IChromeExtensionClientListenEvent
+  | IShortCutsClientListenEvent

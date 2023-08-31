@@ -48,38 +48,47 @@ export const ClientMessageInit = () => {
           {
             const { url, key, query = '' } = data
             if (url) {
-              await Browser.tabs.create({
+              const tab = await Browser.tabs.create({
                 url,
               })
               return {
-                data: true,
+                data: {
+                  tabId: tab.id,
+                },
                 success: true,
                 message: 'ok',
               }
             } else if (key) {
+              let tabId: number | undefined = undefined
               if (key === 'current_page') {
                 if (sender.tab?.id) {
                   await Browser.tabs.update(sender.tab.id, {
                     active: true,
                   })
+                  tabId = sender.tab.id
                 }
               } else if (key === 'shortcuts') {
-                await Browser.tabs.create({
+                const tab = await Browser.tabs.create({
                   url: 'chrome://extensions/shortcuts',
                   active: true,
                 })
+                tabId = tab.id
               } else if (key === 'options') {
-                await createChromeExtensionOptionsPage(query)
+                tabId = await createChromeExtensionOptionsPage(query)
               } else if (key === 'chatgpt') {
-                await createDaemonProcessTab()
+                const tab = await createDaemonProcessTab()
+                tabId = tab.id
               } else if (key === 'manage_extension') {
-                await Browser.tabs.create({
+                const tab = await Browser.tabs.create({
                   url: `chrome://extensions/?id=${Browser.runtime.id}`,
                   active: true,
                 })
+                tabId = tab.id
               }
               return {
-                data: true,
+                data: {
+                  tabId,
+                },
                 success: true,
                 message: 'ok',
               }

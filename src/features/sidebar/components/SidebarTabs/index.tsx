@@ -18,6 +18,8 @@ import { AppSettingsState } from '@/store'
 import Typography from '@mui/material/Typography'
 import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import Button from '@mui/material/Button'
+import useAutoTwitterReferral from '@/features/referral/hooks/twitter'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -38,6 +40,7 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
+  const { autoTwitterReferral, loading } = useAutoTwitterReferral()
   const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
@@ -130,6 +133,15 @@ const SidebarTabs: FC = () => {
             },
           }}
         >
+          <Stack direction={'row'} gap={1}>
+            <Button
+              variant={'contained'}
+              disabled={loading}
+              onClick={autoTwitterReferral}
+            >
+              Twitter
+            </Button>
+          </Stack>
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
           <p>

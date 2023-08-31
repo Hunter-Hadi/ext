@@ -34,6 +34,7 @@ import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActio
 import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
 import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
 import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
+import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -168,6 +169,8 @@ interface ActionParameters {
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionMeta?: IChatMessageExtraMetaType
+  // Operation Element
+  OperationElementConfig?: OperationElementConfigType
 }
 
 export default ActionParameters

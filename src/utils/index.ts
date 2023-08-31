@@ -309,8 +309,9 @@ export const chromeExtensionClientOpenPage = async (params: {
     return
   }
   const port = new ContentScriptConnectionV2()
+  let result: any = null
   if (key) {
-    await port.postMessage({
+    result = await port.postMessage({
       event: 'Client_openUrl',
       data: {
         key,
@@ -318,7 +319,7 @@ export const chromeExtensionClientOpenPage = async (params: {
       },
     })
   } else {
-    await port.postMessage({
+    result = await port.postMessage({
       event: 'Client_openUrl',
       data: {
         url,
@@ -327,6 +328,7 @@ export const chromeExtensionClientOpenPage = async (params: {
     })
   }
   port.destroy()
+  return (result.data?.tabId as number) || null
 }
 /**
  * 判断是否有数据

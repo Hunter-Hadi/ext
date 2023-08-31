@@ -23,6 +23,8 @@ import {
   ActionFetchActions,
   ActionGetYoutubeTranscriptOfURL,
   ActionGetPDFContentsOfCRX,
+  ActionOpenURLs,
+  ActionOperationElement,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -38,6 +40,7 @@ const ActionClassMap = {
   // scripts
   [ActionInsertUserInput.type]: ActionInsertUserInput,
   [ActionSetVariable.type]: ActionSetVariable,
+  [ActionOperationElement.type]: ActionOperationElement,
   // web
   [ActionURL.type]: ActionURL,
   [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
@@ -46,6 +49,7 @@ const ActionClassMap = {
   [ActionFetchActions.type]: ActionFetchActions,
   [ActionGetYoutubeTranscriptOfURL.type]: ActionGetYoutubeTranscriptOfURL,
   [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
+  [ActionOpenURLs.type]: ActionOpenURLs,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

@@ -496,10 +496,11 @@ export const createChromeExtensionOptionsPage = async (
       }
     }),
   )
-  await Browser.tabs.create({
+  const tab = await Browser.tabs.create({
     url: `chrome-extension://${chromeExtensionId}/pages/settings/index.html${query}`,
     active: autoFocus,
   })
+  return tab.id
 }
 
 /**

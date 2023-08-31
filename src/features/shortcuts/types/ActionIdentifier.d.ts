@@ -16,6 +16,8 @@ type ActionIdentifier =
   | 'FETCH_ACTIONS'
   | 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
   | 'GET_PDF_CONTENTS_OF_CRX'
+  | 'OPEN_URLS'
+  | 'OPERATION_ELEMENT'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier =

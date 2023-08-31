@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "પ્રોમ્પ્ટ ફક્ત સક્ષમ સાઇટ્સ પર દેખાશે. જો કોઈ સક્ષમ સાઇટ્સ ઉમેરવામાં આવે નહીં, તો પ્રોમ્પ્ટ બધી સાઇટ્સ પર દેખાશે.",
     "visibility_card__add_a_site_dialog__title": "સાઇટ ઉમેરો",
     "visibility_card__add_a_site_dialog__field_site__title": "સાઇટ",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "વેબસાઇટ URL દાખલ કરો"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "વેબસાઇટ URL દાખલ કરો",
+    "feature_card__prompts__place_my_own_prompts_switch": "મારા પ્રોમ્પ્ટ્સ ટોચપડવા"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "હીબ્રુ",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "ડેનિશ",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "સ્વીડિશ",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "મેસેજિંગ"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "મેસેજિંગ",
+    "PRESET_PROMPT_ID": "પ્રીસેટ પ્રોમ્પ્ટ્સ"
   }
 }

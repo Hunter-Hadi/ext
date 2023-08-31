@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "செயலில் உள்ள தளங்களில் மட்டுமே பரிந்துரை காட்டப்படும். எந்த செயலில் உள்ள தளங்கள் சேர்க்கப்படவில்லையெனில், அனைத்து தளங்களிலும் பரிந்துரை காட்டப்படும்.",
     "visibility_card__add_a_site_dialog__title": "தளத்தைச் சேர்க்கவும்",
     "visibility_card__add_a_site_dialog__field_site__title": "தளம்",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "வலைத்தள வருவாய் உள்ளிடவும்"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "வலைத்தள வருவாய் உள்ளிடவும்",
+    "feature_card__prompts__place_my_own_prompts_switch": "எனது தனிப்பட்ட விருப்பங்களை மேல் வைக்கவும்"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "ஹீப்ரு",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "டேனிஷ்",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "ஸ்வீடிஷ்",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "செய்திகள்"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "செய்திகள்",
+    "PRESET_PROMPT_ID": "முன்னியல் விருப்பங்கள்"
   }
 }

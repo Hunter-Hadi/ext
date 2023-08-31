@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "ಪ್ರಾಂಪ್ಟ್ ಮಾತ್ರ ಸಕ್ರಿಯವಾಗುವುದು ಸಕ್ರಿಯ ವೆಬ್‌ಸೈಟ್‌ಗಳಲ್ಲಿ. ಯಾವುದೇ ಸಕ್ರಿಯ ವೆಬ್‌ಸೈಟ್‌ಗಳನ್ನು ಸೇರಿಸದೆ ಇದ್ದರೆ, ಪ್ರಾಂಪ್ಟ್ ಎಲ್ಲ ವೆಬ್‌ಸೈಟ್‌ಗಳಲ್ಲಿ ಕಾಣುವುದು.",
     "visibility_card__add_a_site_dialog__title": "ಒಂದು ವೆಬ್‌ಸೈಟ್ ಸೇರಿಸಿ",
     "visibility_card__add_a_site_dialog__field_site__title": "ವೆಬ್‌ಸೈಟ್",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "ವೆಬ್‌ಸೈಟ್ URL ಅನ್ನು ನಮೂದಿಸಿ"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "ವೆಬ್‌ಸೈಟ್ URL ಅನ್ನು ನಮೂದಿಸಿ",
+    "feature_card__prompts__place_my_own_prompts_switch": "ನನ್ನ ಪ್ರಮ್ಪ್ಟ್‌ಗಳನ್ನು ಮೇಲೆ ಇಡಿ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "ಹೀಬ್ರೂ",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "ಡ್ಯಾನಿಶ್",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "ಸ್ವೀಡಿಷ್",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "ಸಂದೇಶಪಟ್ಟಿ"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "ಸಂದೇಶಪಟ್ಟಿ",
+    "PRESET_PROMPT_ID": "ಪೂರ್ವನಿಯಮಿತ ಪ್ರಮ್ಪ್ಟ್‌ಗಳು"
   }
 }

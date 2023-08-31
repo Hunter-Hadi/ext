@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "The prompt will only appear on the enabled sites. If no enabled sites are added, the prompt will be visible on all sites.",
     "visibility_card__add_a_site_dialog__title": "Add a site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Enter website URL"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Enter website URL",
+    "feature_card__prompts__place_my_own_prompts_switch": "Place my own prompts at the top"
   },
   "client": {
     "sidebar__button__close_sidebar": "Close sidebar",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Hebrew",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danish",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Swedish",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Messaging"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Messaging",
+    "PRESET_PROMPT_ID": "Preset prompts"
   }
 }

@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "سيظهر التلميح فقط على المواقع الممكّنة. إذا لم يتم إضافة مواقع ممكّنة، سيكون التلميح مرئيًا على جميع المواقع.",
     "visibility_card__add_a_site_dialog__title": "أضف موقعًا",
     "visibility_card__add_a_site_dialog__field_site__title": "الموقع",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "أدخل عنوان URL للموقع"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "أدخل عنوان URL للموقع",
+    "feature_card__prompts__place_my_own_prompts_switch": "ضع تلميحاتي الخاصة في الأعلى"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "العبرية",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "الدانماركية",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "السويدية",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "المراسلة"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "المراسلة",
+    "PRESET_PROMPT_ID": "تلميحات مُعدة مسبقًا"
   }
 }

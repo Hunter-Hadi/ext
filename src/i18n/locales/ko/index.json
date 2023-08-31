@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "프롬프트는 활성화된 사이트에서만 표시됩니다. 활성화된 사이트가 추가되지 않은 경우, 모든 사이트에서 프롬프트가 표시됩니다.",
     "visibility_card__add_a_site_dialog__title": "사이트 추가",
     "visibility_card__add_a_site_dialog__field_site__title": "사이트",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "웹사이트 URL 입력"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "웹사이트 URL 입력",
+    "feature_card__prompts__place_my_own_prompts_switch": "내가 만든 프롬프트를 맨 위에 배치"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "히브리어",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "덴마크어",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "스웨덴어",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "메시징"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "메시징",
+    "PRESET_PROMPT_ID": "미리 설정된 프롬프트"
   }
 }

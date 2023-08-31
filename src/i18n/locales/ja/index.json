@@ -207,7 +207,8 @@
     "feature_card__prompts__restore__dialog__item__description": "スナップショットから復元",
     "feature_card__prompts__restore__dialog__item__own_prompt_description": "あなた自身のプロンプト",
     "feature_card__prompts__restore__dialog__restore_button": "復元",
-    "feature_card__prompts__restore__dialog__delete_all_button": "すべて削除"
+    "feature_card__prompts__restore__dialog__delete_all_button": "すべて削除",
+    "feature_card__prompts__place_my_own_prompts_switch": "自分のプロンプトを上部に配置する"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "ヘブライ語",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "デンマーク語",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "スウェーデン語",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "メッセージング"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "メッセージング",
+    "PRESET_PROMPT_ID": "プリセットのプロンプト"
   }
 }

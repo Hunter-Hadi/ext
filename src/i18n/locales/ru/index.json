@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Подсказка будет отображаться только на включенных сайтах. Если не добавлено ни одного включенного сайта, подсказка будет видна на всех сайтах.",
     "visibility_card__add_a_site_dialog__title": "Добавить сайт",
     "visibility_card__add_a_site_dialog__field_site__title": "Сайт",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Введите URL веб-сайта"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Введите URL веб-сайта",
+    "feature_card__prompts__place_my_own_prompts_switch": "Разместить свои подсказки вверху"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Иврит",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Датский",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Шведский",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Обмен сообщениями"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Обмен сообщениями",
+    "PRESET_PROMPT_ID": "Предустановленные подсказки"
   }
 }

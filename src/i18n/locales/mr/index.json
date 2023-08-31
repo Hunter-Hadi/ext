@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "प्रॉम्प्ट फक्त सक्षम केलेल्या साइट्सवरच दिसेल. कोणतीही सक्षम केलेली साइट्स जोडली नाहीत तर प्रॉम्प्ट सर्व साइट्सवर दिसेल.",
     "visibility_card__add_a_site_dialog__title": "साइट जोडा",
     "visibility_card__add_a_site_dialog__field_site__title": "साइट",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "वेबसाइट URL प्रविष्ट करा"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "वेबसाइट URL प्रविष्ट करा",
+    "feature_card__prompts__place_my_own_prompts_switch": "माझे स्वतःचे प्रॉम्प्ट वर ठेवा"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "हिब्रू",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "डेनिश",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "स्वीडिश",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "संदेशिंग"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "संदेशिंग",
+    "PRESET_PROMPT_ID": "प्रीसेट प्रॉम्प्ट्स"
   }
 }

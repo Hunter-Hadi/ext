@@ -38,7 +38,9 @@ const SettingsPromptsPage: FC = () => {
               )
             }
           }}
-          label="Place my own prompts at the top"
+          label={t(
+            'settings:feature_card__prompts__place_my_own_prompts_switch',
+          )}
         />
         <ContextMenuEditCard
           position={

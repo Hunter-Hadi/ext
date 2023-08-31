@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "প্রম্পট শুধুমাত্র সক্ষম সাইটে দেখা যাবে। যদি কোনও সক্ষম সাইট যোগ করা না হয়, তবে প্রম্পটটি সমস্ত সাইটে দেখা যাবে।",
     "visibility_card__add_a_site_dialog__title": "একটি সাইট যোগ করুন",
     "visibility_card__add_a_site_dialog__field_site__title": "ওয়েবসাইট",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "ওয়েবসাইট URL লিখুন"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "ওয়েবসাইট URL লিখুন",
+    "feature_card__prompts__place_my_own_prompts_switch": "আমার নিজের প্রম্পটগুলি শীর্ষে রাখুন"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "হিব্রু",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "ডেনিশ",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "সুইডিশ",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "বার্তা"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "বার্তা",
+    "PRESET_PROMPT_ID": "পূর্বনির্ধারিত প্রম্পটগুলি"
   }
 }

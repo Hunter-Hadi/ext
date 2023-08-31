@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Prompt hanya akan muncul pada situs yang diaktifkan. Jika tidak ada situs yang diaktifkan ditambahkan, prompt akan terlihat pada semua situs.",
     "visibility_card__add_a_site_dialog__title": "Tambahkan situs",
     "visibility_card__add_a_site_dialog__field_site__title": "Situs",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Masukkan URL situs web"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Masukkan URL situs web",
+    "feature_card__prompts__place_my_own_prompts_switch": "Letakkan prompt saya sendiri di atas"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Ibrani",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Denmark",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Sweden",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mesej"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mesej",
+    "PRESET_PROMPT_ID": "Prompt pra-tetap"
   }
 }

@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "ప్రాప్యత సైట్‌లలో మాత్రమే ప్రాంప్ట్ కనిపిస్తుంది. ఎంచుకున్న ప్రాప్యత సైట్‌లు ఏవీ జోడించలేరు, అన్ని సైట్‌లలో ప్రాంప్ట్ కనిపిస్తుంది.",
     "visibility_card__add_a_site_dialog__title": "సైట్ జోడించండి",
     "visibility_card__add_a_site_dialog__field_site__title": "సైట్",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "వెబ్సైట్ URL నమోదు చేయండి"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "వెబ్సైట్ URL నమోదు చేయండి",
+    "feature_card__prompts__place_my_own_prompts_switch": "నా ప్రాంప్టులను మొదలుగా ఉంచు"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "హీబ్రూ",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "డానిష్",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "స్వీడిష్",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "సందేశాలు"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "సందేశాలు",
+    "PRESET_PROMPT_ID": "ప్రీసెట్ ప్రాంప్టులు"
   }
 }

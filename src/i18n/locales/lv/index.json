@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Pamudinājums parādīsies tikai iespējotajās vietnēs. Ja nav pievienotas iespējotas vietnes, pamudinājums būs redzams visās vietnēs.",
     "visibility_card__add_a_site_dialog__title": "Pievienot vietni",
     "visibility_card__add_a_site_dialog__field_site__title": "Vietne",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Ievadiet vietnes URL"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Ievadiet vietnes URL",
+    "feature_card__prompts__place_my_own_prompts_switch": "Novietot manus norādījumus augšpusē"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Ivrits",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Dāņu",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Zviedru",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Ziņojumi"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Ziņojumi",
+    "PRESET_PROMPT_ID": "Iepriekš iestatīti norādījumi"
   }
 }

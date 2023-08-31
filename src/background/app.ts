@@ -60,25 +60,29 @@ import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExt
  *
  */
 export const startChromeExtensionBackground = () => {
-  // 获取必要的权限
-  Browser.management?.getAll?.()
-  Browser.storage.onChanged.addListener(() => {
-    console.log('storage changed')
-  })
-  Browser.scripting.getRegisteredContentScripts()
-  // lifecycle
-  initChromeExtensionInstalled()
-  initChromeExtensionMessage()
-  initChromeExtensionCommands()
-  initChromeExtensionAction()
-  initChromeExtensionContextMenu()
-  initChromeExtensionDisabled()
-  initChromeExtensionUninstalled()
-  // feature
-  // pdf feature
-  pdfSnifferStartListener().then().catch()
-  // hot reload
-  developmentHotReload()
+  try {
+    // 获取必要的权限
+    Browser.management?.getAll?.()
+    Browser.storage.onChanged.addListener(() => {
+      console.log('storage changed')
+    })
+    Browser.scripting.getRegisteredContentScripts()
+    // lifecycle
+    initChromeExtensionInstalled()
+    initChromeExtensionMessage()
+    initChromeExtensionCommands()
+    initChromeExtensionAction()
+    initChromeExtensionContextMenu()
+    initChromeExtensionDisabled()
+    initChromeExtensionUninstalled()
+    // feature
+    // pdf feature
+    pdfSnifferStartListener().then().catch()
+    // hot reload
+    developmentHotReload()
+  } catch (e) {
+    //
+  }
 }
 
 /**

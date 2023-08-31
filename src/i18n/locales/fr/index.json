@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Le prompt n'apparaîtra que sur les sites activés. Si aucun site activé n'est ajouté, le prompt sera visible sur tous les sites.",
     "visibility_card__add_a_site_dialog__title": "Ajouter un site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Entrez l'URL du site Web"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Entrez l'URL du site Web",
+    "feature_card__prompts__place_my_own_prompts_switch": "Placer mes propres invitations en haut"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Hébreu",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danois",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Suédois",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Messagerie"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Messagerie",
+    "PRESET_PROMPT_ID": "Invitations prédéfinies"
   }
 }

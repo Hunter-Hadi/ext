@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "ההצעה תופיע רק באתרים המופעלים. אם לא נוספים אתרים מופעלים, ההצעה תהיה גלויה בכל האתרים.",
     "visibility_card__add_a_site_dialog__title": "הוסף אתר",
     "visibility_card__add_a_site_dialog__field_site__title": "אתר",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "הזן כתובת URL של האתר"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "הזן כתובת URL של האתר",
+    "feature_card__prompts__place_my_own_prompts_switch": "שים את הפניות שלי בראש"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "עברית",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "דנית",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "שוודית",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "הודעות"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "הודעות",
+    "PRESET_PROMPT_ID": "פניות מוגדרות מראש"
   }
 }

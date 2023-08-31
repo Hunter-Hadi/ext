@@ -11,6 +11,18 @@ const allSystemPromptList: any = ([] as any[])
   .concat(defaultGmailToolbarContextMenuJson)
   // draft list
   .concat(CONTEXT_MENU_DRAFT_LIST)
+  .concat([
+    {
+      text: 'Preset prompts',
+      id: 'PRESET_PROMPT_ID',
+      parent: 'root',
+      droppable: false,
+      data: {
+        type: 'shortcuts',
+        editable: false,
+      },
+    },
+  ])
   .map((item) => {
     return {
       [item.id]: item.text,

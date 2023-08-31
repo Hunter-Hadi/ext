@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "പ്രോംപ്റ്റ് സജീവമാക്കാൻ കഴിയുന്നത് സജീവമാക്കിയ സൈറ്റുകളിൽ മാത്രമാണ്. സജീവമാക്കിയ സൈറ്റുകൾ ചേർക്കാനായില്ലെങ്കിൽ, എല്ലാ സൈറ്റുകളിലും പ്രോംപ്റ്റ് കാണാൻ കഴിയും.",
     "visibility_card__add_a_site_dialog__title": "ഒരു സൈറ്റ് ചേർക്കുക",
     "visibility_card__add_a_site_dialog__field_site__title": "സൈറ്റ്",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "വെബ്സൈറ്റ് URL നൽകുക"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "വെബ്സൈറ്റ് URL നൽകുക",
+    "feature_card__prompts__place_my_own_prompts_switch": "എന്റെ പ്രോംപ്റ്റുകൾ മുകളിൽ അടയാളപ്പെടുത്തുക"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "ഹീബ്രു",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "ഡാനിഷ്",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "സ്വീഡിഷ്",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "സന്ദേശം"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "സന്ദേശം",
+    "PRESET_PROMPT_ID": "പ്രീസറ്റ് പ്രോംപ്റ്റുകൾ"
   }
 }

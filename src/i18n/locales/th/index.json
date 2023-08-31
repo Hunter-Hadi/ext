@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "คำแนะนำจะปรากฏเฉพาะในเว็บไซต์ที่เปิดใช้งานเท่านั้น หากไม่มีเว็บไซต์ที่เปิดใช้งานถูกเพิ่ม คำแนะนำจะปรากฏในทุกเว็บไซต์",
     "visibility_card__add_a_site_dialog__title": "เพิ่มเว็บไซต์",
     "visibility_card__add_a_site_dialog__field_site__title": "เว็บไซต์",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "ป้อน URL เว็บไซต์"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "ป้อน URL เว็บไซต์",
+    "feature_card__prompts__place_my_own_prompts_switch": "วางคำพูดของฉันที่ด้านบน"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "ฮิบรู",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "เดนมาร์ก",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "สวีเดน",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "การสื่อสาร"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "การสื่อสาร",
+    "PRESET_PROMPT_ID": "คำพูดที่ตั้งไว้ล่วงหน้า"
   }
 }

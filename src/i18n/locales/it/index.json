@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Il prompt apparirà solo sui siti abilitati. Se non vengono aggiunti siti abilitati, il prompt sarà visibile su tutti i siti.",
     "visibility_card__add_a_site_dialog__title": "Aggiungi un sito",
     "visibility_card__add_a_site_dialog__field_site__title": "Sito",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Inserisci l'URL del sito web"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Inserisci l'URL del sito web",
+    "feature_card__prompts__place_my_own_prompts_switch": "Posiziona le mie promozioni in cima"
   },
   "client": {
     "sidebar__button__close_sidebar": "Chiudi la barra laterale",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Ebraico",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danese",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Svedese",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Messaggistica"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Messaggistica",
+    "PRESET_PROMPT_ID": "Promozioni predefinite"
   }
 }

@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Promptul va apărea doar pe site-urile activate. Dacă nu sunt adăugate site-uri activate, promptul va fi vizibil pe toate site-urile.",
     "visibility_card__add_a_site_dialog__title": "Adăugați un site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Introduceți URL-ul site-ului"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Introduceți URL-ul site-ului",
+    "feature_card__prompts__place_my_own_prompts_switch": "Plasează propriile mele prompt-uri în partea de sus"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Ebraică",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Daneză",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Suedeză",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mesagerie"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mesagerie",
+    "PRESET_PROMPT_ID": "Prompt-uri predefinite"
   }
 }

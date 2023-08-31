@@ -207,7 +207,8 @@
     "feature_card__prompts__restore__dialog__item__own_prompt_description": "您自己的提示",
     "feature_card__prompts__restore__dialog__restore_button": "恢复",
     "feature_card__prompts__restore__dialog__delete_all_button": "全部删除",
-    "feature_card__prompts__edit_prompt__mock_input__placeholder": "向AI提问以编辑或生成..."
+    "feature_card__prompts__edit_prompt__mock_input__placeholder": "向AI提问以编辑或生成...",
+    "feature_card__prompts__place_my_own_prompts_switch": "将我的提示放在顶部"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "希伯来语",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "丹麦语",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "瑞典语",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "消息"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "消息",
+    "PRESET_PROMPT_ID": "预设提示"
   }
 }

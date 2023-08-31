@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "İpucu yalnızca etkinleştirilen sitelerde görüntülenecektir. Etkinleştirilen siteler eklenmediyse, ipucu tüm sitelerde görünür olacaktır.",
     "visibility_card__add_a_site_dialog__title": "Bir site ekle",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Web sitesi URL'sini girin"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Web sitesi URL'sini girin",
+    "feature_card__prompts__place_my_own_prompts_switch": "Kendi ipuçlarımı en üste yerleştir"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "İbranice",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danca",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "İsveççe",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mesajlaşma"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mesajlaşma",
+    "PRESET_PROMPT_ID": "Önceden belirlenmiş ipuçları"
   }
 }

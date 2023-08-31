@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "پرومپٹ صرف فعال سائٹس پر نظر آئے گا۔ اگر کوئی فعال سائٹسز شامل نہیں کی گئی ہوں تو پرومپٹ تمام سائٹسز پر دکھایا جائے گا۔",
     "visibility_card__add_a_site_dialog__title": "سائٹ شامل کریں",
     "visibility_card__add_a_site_dialog__field_site__title": "سائٹ",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "ویب سائٹ کا URL درج کریں"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "ویب سائٹ کا URL درج کریں",
+    "feature_card__prompts__place_my_own_prompts_switch": "اپنے خود کے پرومپٹس کو اوپر رکھیں"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "عبرانی",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "ڈینش",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "سویڈش",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "میسجنگ"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "میسجنگ",
+    "PRESET_PROMPT_ID": "پیش سے تیار شدہ پرومپٹس"
   }
 }

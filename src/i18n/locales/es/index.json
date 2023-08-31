@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "La sugerencia solo aparecerá en los sitios habilitados. Si no se agrega ningún sitio habilitado, la sugerencia será visible en todos los sitios.",
     "visibility_card__add_a_site_dialog__title": "Agregar un sitio",
     "visibility_card__add_a_site_dialog__field_site__title": "Sitio",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Ingresa la URL del sitio"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Ingresa la URL del sitio",
+    "feature_card__prompts__place_my_own_prompts_switch": "Colocar mis propias indicaciones en la parte superior"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Hebreo",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Danés",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Sueco",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mensajería"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Mensajería",
+    "PRESET_PROMPT_ID": "Indicaciones predefinidas"
   }
 }

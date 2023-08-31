@@ -387,7 +387,14 @@ export const MenuComponent = React.forwardRef<
       defaultFallbackPlacements ||
       (isFirstDeep
         ? ['bottom-start', 'top-start', 'right']
-        : ['right', 'left', 'bottom', 'top'])
+        : [
+            'right',
+            'right-start',
+            'right-end',
+            'left',
+            'left-start',
+            'left-end',
+          ])
     const resetActiveIndex = () => {
       console.log(`[${nodeId}]onNavigate---[重置]`)
       setActiveIndex(null)

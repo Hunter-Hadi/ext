@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Prompten vil bare vises på de aktiverte nettstedene. Hvis ingen aktiverte nettsteder er lagt til, vil prompten være synlig på alle nettsteder.",
     "visibility_card__add_a_site_dialog__title": "Legg til et nettsted",
     "visibility_card__add_a_site_dialog__field_site__title": "Nettsted",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Skriv inn nettsteds-URL"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Skriv inn nettsteds-URL",
+    "feature_card__prompts__place_my_own_prompts_switch": "Plasser mine egne forslag øverst"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Hebraisk",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Dansk",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Svensk",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Meldinger"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Meldinger",
+    "PRESET_PROMPT_ID": "Forhåndsinnstilte forslag"
   }
 }

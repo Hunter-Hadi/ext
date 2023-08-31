@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "De prompt verschijnt alleen op de ingeschakelde websites. Als er geen ingeschakelde websites zijn toegevoegd, is de prompt zichtbaar op alle websites.",
     "visibility_card__add_a_site_dialog__title": "Voeg een website toe",
     "visibility_card__add_a_site_dialog__field_site__title": "Website",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Voer de URL van de website in"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Voer de URL van de website in",
+    "feature_card__prompts__place_my_own_prompts_switch": "Plaats mijn eigen prompts bovenaan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Hebreeuws",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Deens",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Zweeds",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Berichten"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Berichten",
+    "PRESET_PROMPT_ID": "Vooraf ingestelde prompts"
   }
 }

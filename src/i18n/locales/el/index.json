@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Η προτροπή θα εμφανίζεται μόνο στις ενεργοποιημένες ιστοσελίδες. Εάν δεν προστεθούν ενεργοποιημένες ιστοσελίδες, η προτροπή θα είναι ορατή σε όλες τις ιστοσελίδες.",
     "visibility_card__add_a_site_dialog__title": "Προσθήκη ιστοσελίδας",
     "visibility_card__add_a_site_dialog__field_site__title": "Ιστοσελίδα",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Εισαγάγετε το URL της ιστοσελίδας"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Εισαγάγετε το URL της ιστοσελίδας",
+    "feature_card__prompts__place_my_own_prompts_switch": "Τοποθέτηση των δικών μου προτροπών στην κορυφή"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Εβραϊκά",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Δανέζικα",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Σουηδικά",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Μηνύματα"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Μηνύματα",
+    "PRESET_PROMPT_ID": "Προεπιλεγμένες προτροπές"
   }
 }

@@ -207,7 +207,8 @@
     "visibility_card__white_list_description": "Vihje kuvatakse ainult lubatud veebisaitidel. Kui pole lisatud ühtegi lubatud saiti, on vihje nähtav kõigil saitidel.",
     "visibility_card__add_a_site_dialog__title": "Lisa sait",
     "visibility_card__add_a_site_dialog__field_site__title": "Sait",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Sisestage veebisaidi URL"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Sisestage veebisaidi URL",
+    "feature_card__prompts__place_my_own_prompts_switch": "Paiguta minu enda vihjed üles"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -540,6 +541,7 @@
     "e361913f-b0af-443f-8122-1affa88478be": "Heebrea",
     "bf0da9ac-63d5-40f1-a5c5-63f1468ec13c": "Taani",
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Rootsi",
-    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Sõnumid"
+    "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Sõnumid",
+    "PRESET_PROMPT_ID": "Eelseadistatud vihjed"
   }
 }

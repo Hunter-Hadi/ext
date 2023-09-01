@@ -20,7 +20,8 @@ import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
 import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
-// import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookReferral'
+import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookReferral'
+import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinReferral'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -43,8 +44,10 @@ const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const { autoTwitterReferral, autoTwitterReferralLoading } =
     useAutoTwitterReferral()
-  // const { autoFacebookReferral, autoFacebookReferralLoading } =
-  //   useAutoFacebookReferral()
+  const { autoFacebookReferral, autoFacebookReferralLoading } =
+    useAutoFacebookReferral()
+  const { autoLinkedinReferral, autoLinkedinReferralLoading } =
+    useAutoLinkedinReferral()
   const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
@@ -145,13 +148,20 @@ const SidebarTabs: FC = () => {
             >
               Tweet and follow us on Twitter
             </Button>
-            {/*<Button*/}
-            {/*  variant={'contained'}*/}
-            {/*  disabled={autoFacebookReferralLoading}*/}
-            {/*  onClick={autoFacebookReferral}*/}
-            {/*>*/}
-            {/*  Share on Facebook*/}
-            {/*</Button>*/}
+            <Button
+              variant={'contained'}
+              disabled={autoFacebookReferralLoading}
+              onClick={autoFacebookReferral}
+            >
+              Share on Facebook
+            </Button>
+            <Button
+              variant={'contained'}
+              disabled={autoLinkedinReferralLoading}
+              onClick={autoLinkedinReferral}
+            >
+              Share on Linkedin
+            </Button>
           </Stack>
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>

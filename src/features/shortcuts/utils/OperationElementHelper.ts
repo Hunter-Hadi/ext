@@ -120,6 +120,13 @@ export const clientExecuteOperationElement = async (
               const text =
                 actionExtraData?.text || actionExtraData?.value.toString() || ''
               element.focus()
+              if (element.getAttribute('contenteditable') === 'true') {
+                const selection = window.getSelection()
+                const range = document.createRange();
+                range.selectNodeContents(element);
+                selection?.removeAllRanges();
+                selection?.addRange(range);
+              }
               if (actionExtraData?.clearBeforeInsertText) {
                 if (
                   element.tagName === 'INPUT' ||

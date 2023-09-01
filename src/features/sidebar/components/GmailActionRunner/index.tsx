@@ -7,7 +7,6 @@ import {
   USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
   USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
 } from '@/constants'
-import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { useCurrentMessageView } from '@/features/sidebar/hooks'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -27,6 +26,7 @@ import {
   CurrentInboxMessageTypeSelector,
   InboxEditState,
 } from '@/features/sidebar/store/gmail'
+import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {
@@ -38,6 +38,8 @@ const GmailActionRunner = () => {
   const [virtualElement, setVirtualElement] = useState<DOMRect | null>(null)
   const [popperAnchorEl, setPopperAnchorEl] = useState<HTMLElement | null>(null)
   const { runShortCuts, setShortCuts } = useShortCutsWithMessageChat('')
+  const gmailButtonSettings =
+    useChromeExtensionButtonSettingsWithSystemContextMenu('gmailButton')
   const { showFloatingContextMenuWithVirtualElement } = useFloatingContextMenu()
   const showFloatingContextMenuRef = useRef(
     showFloatingContextMenuWithVirtualElement,
@@ -105,13 +107,11 @@ const GmailActionRunner = () => {
   }, [currentUserPlan, permissionCardMemo])
 
   const executeShortCuts = useCallback(async () => {
-    const gmailToolBarContextMenu = await getChromeExtensionButtonContextMenu(
-      'gmailButton',
-    )
-    const ctaButtonAction = gmailToolBarContextMenu.find((item) =>
-      messageType === 'reply'
-        ? item.id === USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID
-        : item.id === USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+    const ctaButtonAction = (gmailButtonSettings?.contextMenu || []).find(
+      (item) =>
+        messageType === 'reply'
+          ? item.id === USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID
+          : item.id === USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
     )
     if (ctaButtonAction && ctaButtonAction?.data?.actions) {
       console.log(messageType)
@@ -135,7 +135,12 @@ const GmailActionRunner = () => {
       setShortCuts(runActions)
       await runShortCuts()
     }
-  }, [setShortCuts, runShortCuts, messageType])
+  }, [
+    setShortCuts,
+    runShortCuts,
+    messageType,
+    gmailButtonSettings?.contextMenu,
+  ])
   const prefExecuteShortCuts = useRef(executeShortCuts)
   const prevIdRef = useRef<string | undefined>()
   useEffect(() => {

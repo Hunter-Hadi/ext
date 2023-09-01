@@ -43,7 +43,11 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
 
 The context text is sourced from the main content of the webpage at {{CURRENT_WEBPAGE_URL}}.
 
-Output a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+Output a summary and a list of key takeaways respectively.
+The summary should be a one-liner in at most 100 words.
+The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+
+---
 
 Use the following format:
 ## 🌐 {{CURRENT_WEBPAGE_TITLE}}
@@ -53,6 +57,12 @@ Use the following format:
 
 ### Key Takeaways
 <list of key takeaways>
+
+---
+
+You must add these two lines at the bottom of the response:
+### Deep Dive
+Ask AI anything about the page...
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
@@ -87,7 +97,11 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
 
 The context text is the transcript of a video from {{CURRENT_WEBPAGE_URL}}.
 
-Output a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+Output a summary and a list of key takeaways respectively.
+The summary should be a one-liner in at most 100 words.
+The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+
+---
 
 Use the following format:
 ## 📺 {{CURRENT_WEBPAGE_TITLE}}
@@ -97,6 +111,12 @@ Use the following format:
 
 ### Key Takeaways
 <list of key takeaways>
+
+---
+
+You must add these two lines at the bottom of the response:
+### Deep Dive
+Ask AI anything about the video...
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
@@ -131,7 +151,11 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
 
 The context text originates from the main content of a PDF viewed on the browser at {{CURRENT_WEBPAGE_URL}}.
 
-Output a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+Output a summary and a list of key takeaways respectively.
+The summary should be a one-liner in at most 100 words.
+The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+
+---
 
 Use the following format:
 ## 📄 {{CURRENT_WEBPAGE_TITLE}}
@@ -141,6 +165,12 @@ Use the following format:
 
 ### Key Takeaways
 <list of key takeaways>
+
+---
+
+You must add these two lines at the bottom of the response:
+### Deep Dive
+Ask AI anything about the PDF...
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
@@ -170,12 +200,11 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
 The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.
 
 Output a summary, a list of key takeaways, and a list of action items respectively.
-
 The summary should be a one-liner in at most 100 words. 
-
 The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
-
 When extracting the action items, identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Output the action items in bulletpoints, and pick a good matching emoji for every bullet point.
+
+---
 
 Use the following format:
 ## 📧 {{CURRENT_WEBPAGE_TITLE}}
@@ -188,6 +217,12 @@ Use the following format:
 
 ### Action Items
 <list of action items>
+
+---
+
+You must add these two lines at the bottom of the response:
+### Deep Dive
+Ask AI anything about the email...
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },

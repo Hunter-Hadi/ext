@@ -1,7 +1,6 @@
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { pushOutputToChat } from '@/features/shortcuts/decorators'
 
 export class ActionOperationElement extends Action {
   static type: ActionIdentifier = 'OPERATION_ELEMENT'
@@ -13,9 +12,6 @@ export class ActionOperationElement extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  @pushOutputToChat({
-    onlyError: true,
-  })
   async execute(params: ActionParameters, engine: any) {
     try {
       const port = engine.getBackgroundConversation()
@@ -30,11 +26,12 @@ export class ActionOperationElement extends Action {
             this.parameters.OperationElementConfig ||
             params.OperationElementConfig ||
             {},
+          OperationElementTabID:
+            this.parameters.OperationElementTabID ||
+            params.OperationElementTabID,
         },
       })
-      if (result.success) {
-        this.output = result.data
-      } else {
+      if (!result.success) {
         this.error = result.message
       }
     } catch (e) {

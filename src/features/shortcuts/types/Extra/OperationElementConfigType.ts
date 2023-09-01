@@ -7,9 +7,6 @@ export type OperationElementConfigType = {
   // 操作类型
   // default: 'click'
   actionType: OperationElementActionType
-  // 执行操作的网页tabId
-  // default: undefined
-  executePageTabId?: number
   // 根元素选择器
   // default: document
   rootElementSelector?: string
@@ -20,7 +17,7 @@ export type OperationElementConfigType = {
   // default: 1
   executeElementCount?: number
   // 延迟执行时间
-  // default: 3000
+  // default: 0
   beforeDelay?: number
   // 执行后等待时间
   // default: 0

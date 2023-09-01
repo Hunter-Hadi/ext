@@ -44,12 +44,42 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
+        case 'Client_closeUrl':
+          {
+            const { url, tabId } = data
+            let tab: null | Browser.Tabs.Tab = null
+            if (tabId) {
+              tab = await Browser.tabs.get(tabId)
+            } else if (url) {
+              tab =
+                (
+                  await Browser.tabs.query({
+                    url: url,
+                  })
+                )?.[0] || null
+            }
+            if (tab?.id) {
+              await Browser.tabs.remove(tab.id)
+              return {
+                success: true,
+                data: true,
+                message: 'ok',
+              }
+            }
+            return {
+              success: true,
+              data: false,
+              message: 'Cannot find close tab.',
+            }
+          }
+          break
         case 'Client_openUrl':
           {
-            const { url, key, query = '' } = data
+            const { url, key, query = '', active = true } = data
             if (url) {
               const tab = await Browser.tabs.create({
                 url,
+                active,
               })
               return {
                 data: {
@@ -63,14 +93,14 @@ export const ClientMessageInit = () => {
               if (key === 'current_page') {
                 if (sender.tab?.id) {
                   await Browser.tabs.update(sender.tab.id, {
-                    active: true,
+                    active,
                   })
                   tabId = sender.tab.id
                 }
               } else if (key === 'shortcuts') {
                 const tab = await Browser.tabs.create({
                   url: 'chrome://extensions/shortcuts',
-                  active: true,
+                  active,
                 })
                 tabId = tab.id
               } else if (key === 'options') {
@@ -81,7 +111,7 @@ export const ClientMessageInit = () => {
               } else if (key === 'manage_extension') {
                 const tab = await Browser.tabs.create({
                   url: `chrome://extensions/?id=${Browser.runtime.id}`,
-                  active: true,
+                  active,
                 })
                 tabId = tab.id
               }

@@ -4,39 +4,14 @@ import {
   getWebpageTitleAndText,
   getWebpageUrlContent,
 } from '@/features/shortcuts/utils/webHelper'
-import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
-import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IChromeExtensionSendEvent } from '@/background/eventType'
+import { backgroundSendClientToExecuteOperationElement } from '@/features/shortcuts/utils/OperationElementHelper'
 
 // const log = new Log('Background/ShortCut')
 
-const backgroundExecuteOperationElement = (
-  tabId: number,
-  OperationElementConfig: OperationElementConfigType,
-) => {
-  // eslint-disable-next-line no-async-promise-executor
-  return new Promise(async (resolve) => {
-    const taskId = uuidV4()
-    const onceListener = (event: any, data: any, sender: any) => {
-      debugger
-    }
-    Browser.runtime.onMessage.addListener(onceListener)
-    await Browser.tabs.sendMessage(tabId, {
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      event:
-        'ShortCuts_ClientExecuteOperationPageElement' as IChromeExtensionSendEvent,
-      data: {
-        taskId,
-        OperationElementConfig,
-      },
-    })
-  })
-}
-
-export const ShortcutMessageInit = () => {
+export const ShortcutMessageBackgroundInit = () => {
   createBackgroundMessageListener(async (runtime, event, data, sender) => {
     if (runtime === 'shortcut') {
       switch (event as IShortCutsSendEvent) {
@@ -63,7 +38,7 @@ export const ShortcutMessageInit = () => {
             const OperationElementConfig =
               data.OperationElementConfig as OperationElementConfigType
             let executePageTabId =
-              OperationElementConfig.executePageTabId || sender.tab?.id
+              (data.OperationElementTabID as number) || sender.tab?.id
             let currentTab: Browser.Tabs.Tab | null = null
             if (executePageTabId) {
               currentTab = await Browser.tabs.get(executePageTabId)
@@ -76,14 +51,40 @@ export const ShortcutMessageInit = () => {
               }
             }
             executePageTabId = currentTab.id
-            const success = await backgroundExecuteOperationElement(
-              executePageTabId,
-              OperationElementConfig,
-            )
+            if (executePageTabId !== sender.tab?.id) {
+              // wait page loaded
+              const interval = 500
+              const maxCount = (10 * 1000) / interval
+              const delay = (t: number) =>
+                new Promise((resolve) => setTimeout(resolve, t))
+              let isLoaded = false
+              let count = 0
+              while (!isLoaded && count < maxCount) {
+                const currentTab = await Browser.tabs.get(executePageTabId)
+                console.log('轮训tab', currentTab.status)
+                if (currentTab.status === 'complete') {
+                  isLoaded = true
+                }
+                count++
+                await delay(interval)
+              }
+              if (isLoaded) {
+                const success =
+                  await backgroundSendClientToExecuteOperationElement(
+                    executePageTabId,
+                    OperationElementConfig,
+                  )
+                return {
+                  data: success,
+                  success,
+                  message: 'ok',
+                }
+              }
+            }
             return {
-              data: success,
-              success,
-              message: 'ok',
+              data: false,
+              success: false,
+              message: 'Page not loaded.',
             }
           }
           break

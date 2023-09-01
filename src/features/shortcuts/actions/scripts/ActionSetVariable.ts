@@ -29,6 +29,7 @@ export class ActionSetVariable extends Action {
         shortCutsEngine.setVariable(
           VariableName,
           params.LAST_ACTION_OUTPUT || '',
+          true,
         )
         this.output = params.LAST_ACTION_OUTPUT || ''
       }

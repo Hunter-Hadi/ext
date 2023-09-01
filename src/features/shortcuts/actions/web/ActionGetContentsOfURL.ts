@@ -2,7 +2,7 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
-import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { v4 as uuidV4 } from 'uuid'
 
 export class ActionGetContentsOfURL extends Action {

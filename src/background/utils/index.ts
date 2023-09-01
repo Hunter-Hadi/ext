@@ -28,7 +28,7 @@ import {
   IChromeExtensionSettingsUpdateFunction,
 } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'

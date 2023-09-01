@@ -4,3 +4,4 @@ export { ActionGetContentsOfSearchEngine } from './ActionGetContentsOfSearchEngi
 export { ActionFetchActions } from './ActionFetchActions'
 export { ActionGetYoutubeTranscriptOfURL } from './ActionGetYoutubeTranscriptOfURL'
 export { ActionOpenURLs } from './ActionOpenURLs'
+export { ActionCloseURLS } from './ActionCloseURLS'

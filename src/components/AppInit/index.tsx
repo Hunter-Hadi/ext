@@ -37,6 +37,7 @@ import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import { getEnv } from '@/utils/AppEnv'
 import Browser from 'webextension-polyfill'
 import { clientGetBrowserInfo } from '@/utils/larkBot'
+import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
 
 const log = new Log('AppInit')
 
@@ -404,6 +405,7 @@ const AppInit = () => {
     if (isMaxAINewTabPage()) {
       showChatBox()
     }
+    ShortcutMessageClientInit()
     clientGetBrowserInfo().then().catch()
   })
   return (

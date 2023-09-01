@@ -2,7 +2,7 @@
 import {
   IShortCutsClientListenEvent,
   IShortCutsSendEvent,
-} from '@/features/shortcuts/background/eventType'
+} from '@/features/shortcuts/messageChannel/eventType'
 
 export type IChromeExtensionClientListenEvent =
   | 'Client_ChatGPTStatusUpdate'
@@ -36,6 +36,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getLiteConversation'
   | 'Client_updateConversation'
   | 'Client_openUrl'
+  | 'Client_closeUrl'
   | 'Client_updateIcon'
   | 'Client_updateUseChatGPTAuthInfo'
   | 'Client_getUseChatGPTUserInfo'

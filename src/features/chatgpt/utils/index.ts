@@ -4,7 +4,7 @@ import {
 } from '@/background/eventType'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import cloneDeep from 'lodash-es/cloneDeep'
 

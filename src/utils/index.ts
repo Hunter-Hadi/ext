@@ -303,11 +303,13 @@ export const chromeExtensionClientOpenPage = async (params: {
   key?: (typeof CLIENT_OPEN_PAGE_KEYS)[number]
   url?: string
   query?: string
+  active?: boolean
 }) => {
-  const { key, url, query } = params
+  const { key, url, query, active = true } = params
   if (!url && !key) {
     return
   }
+  debugger
   const port = new ContentScriptConnectionV2()
   let result: any = null
   if (key) {
@@ -316,6 +318,7 @@ export const chromeExtensionClientOpenPage = async (params: {
       data: {
         key,
         query,
+        active,
       },
     })
   } else {
@@ -324,11 +327,40 @@ export const chromeExtensionClientOpenPage = async (params: {
       data: {
         url,
         query,
+        active,
       },
     })
   }
   port.destroy()
   return (result.data?.tabId as number) || null
+}
+export const chromeExtensionClientClosePage = async (params: {
+  tabId?: number
+  url?: string
+}) => {
+  const { tabId, url } = params
+  if (!tabId && !url) {
+    return
+  }
+  const port = new ContentScriptConnectionV2()
+  let result: { success: boolean; message: string; data: boolean } | null = null
+  if (url) {
+    result = await port.postMessage({
+      event: 'Client_closeUrl',
+      data: {
+        url,
+      },
+    })
+  } else {
+    result = await port.postMessage({
+      event: 'Client_closeUrl',
+      data: {
+        tabId,
+      },
+    })
+  }
+  port.destroy()
+  return result
 }
 /**
  * 判断是否有数据

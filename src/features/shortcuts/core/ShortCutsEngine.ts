@@ -25,6 +25,7 @@ import {
   ActionGetPDFContentsOfCRX,
   ActionOpenURLs,
   ActionOperationElement,
+  ActionCloseURLS,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -50,6 +51,7 @@ const ActionClassMap = {
   [ActionGetYoutubeTranscriptOfURL.type]: ActionGetYoutubeTranscriptOfURL,
   [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
+  [ActionCloseURLS.type]: ActionCloseURLS,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,
@@ -280,6 +282,9 @@ class ShortCutsEngine implements IShortcutEngine {
   }
   getNextAction() {
     return this.actions[this.stepIndex + 1] || null
+  }
+  getPrevAction() {
+    return this.actions[this.stepIndex - 1] || null
   }
   get progress() {
     return Number(

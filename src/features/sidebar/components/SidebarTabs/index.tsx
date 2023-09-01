@@ -19,7 +19,7 @@ import Typography from '@mui/material/Typography'
 import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
-import useAutoTwitterReferral from '@/features/referral/hooks/twitter'
+import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType

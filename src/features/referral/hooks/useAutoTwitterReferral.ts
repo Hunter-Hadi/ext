@@ -14,13 +14,26 @@ Join me at MaxAI.me for a free week of MaxAI Pro rewards. It lets you use AI on 
           },
         },
         {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'OperationElementTabID',
+          },
+        },
+        {
           type: 'OPERATION_ELEMENT',
           parameters: {
             OperationElementConfig: {
               elementSelectors: ['div[data-testid="tweetButton"]'],
               actionType: 'click',
+              beforeDelay: 2000,
+              //留点时间发接口
+              afterDelay: 2000,
             },
           },
+        },
+        {
+          type: 'CLOSE_URLS',
+          parameters: {},
         },
       ])
       await runShortCuts()

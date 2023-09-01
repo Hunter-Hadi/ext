@@ -47,7 +47,7 @@ import {
   backgroundRestartChromeExtension,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
-import { ShortcutMessageInit } from '@/features/shortcuts/background'
+import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
@@ -124,7 +124,7 @@ const initChromeExtensionInstalled = () => {
  */
 const initChromeExtensionMessage = () => {
   ClientMessageInit()
-  ShortcutMessageInit()
+  ShortcutMessageBackgroundInit()
   Browser.runtime.onMessage.addListener(
     (message, sender, sendResponse: any) => {
       if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {

@@ -43,5 +43,11 @@ class Action implements IAction {
     this.error = ''
     this.output = ''
   }
+  getNextAction(engine: any) {
+    return engine?.getShortCutsEngine()?.getNextAction() as IAction | null
+  }
+  getPrevAction(engine: any) {
+    return engine?.getShortCutsEngine()?.getPrevAction() as IAction | null
+  }
 }
 export default Action

@@ -153,6 +153,7 @@ interface ActionParameters {
   WFTimeUntilReferenceDate?: WFTimeUntilReferenceDate
   WFTimeUntilUnit?: WFSerialization | WFTimeUntilUnit
   URLActionURL?: string
+  URLActionActiveTab?: boolean
   URLSearchEngine?: URLSearchEngine | string
   URLSearchEngineParams?: {
     [key in string]: string
@@ -170,6 +171,7 @@ interface ActionParameters {
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionMeta?: IChatMessageExtraMetaType
   // Operation Element
+  OperationElementTabID?: number
   OperationElementConfig?: OperationElementConfigType
 }
 

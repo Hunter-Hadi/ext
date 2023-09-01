@@ -3,7 +3,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { SearchResult } from '@/features/shortcuts/actions/web/ActionGetContentsOfSearchEngine'
-import { IShortCutsSendEvent } from '@/features/shortcuts/background/eventType'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import {
   createSummarizeOfTextRunActions,

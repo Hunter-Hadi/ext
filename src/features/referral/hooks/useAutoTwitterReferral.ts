@@ -28,6 +28,39 @@ Join me at MaxAI.me for a free week of MaxAI Pro rewards. It lets you use AI on 
               beforeDelay: 2000,
               //留点时间发接口
               afterDelay: 2000,
+              successMessage: 'Retweet success!',
+            },
+          },
+        },
+        {
+          type: 'CLOSE_URLS',
+          parameters: {},
+        },
+        {
+          type: 'OPEN_URLS',
+          parameters: {
+            URLActionURL: 'https://twitter.com/MaxAI_HQ',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'OperationElementTabID',
+          },
+        },
+        {
+          type: 'OPERATION_ELEMENT',
+          parameters: {
+            OperationElementConfig: {
+              elementSelectors: [
+                'div[data-testid="1667007582270296064-follow"]',
+              ],
+              actionType: 'click',
+              beforeDelay: 2000,
+              //留点时间发接口
+              afterDelay: 2000,
+              successMessage: 'Follow MaxAI success!',
+              errorMessage: 'You have already followed',
             },
           },
         },
@@ -43,7 +76,7 @@ Join me at MaxAI.me for a free week of MaxAI Pro rewards. It lets you use AI on 
   }, [loading, runShortCuts, setShortCuts])
   return {
     autoTwitterReferral,
-    loading,
+    autoTwitterReferralLoading: loading,
   }
 }
 export default useAutoTwitterReferral

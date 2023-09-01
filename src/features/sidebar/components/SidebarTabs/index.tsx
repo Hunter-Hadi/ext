@@ -20,6 +20,7 @@ import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
 import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
+// import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookReferral'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -40,7 +41,10 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const { autoTwitterReferral, loading } = useAutoTwitterReferral()
+  const { autoTwitterReferral, autoTwitterReferralLoading } =
+    useAutoTwitterReferral()
+  // const { autoFacebookReferral, autoFacebookReferralLoading } =
+  //   useAutoFacebookReferral()
   const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
@@ -133,14 +137,21 @@ const SidebarTabs: FC = () => {
             },
           }}
         >
-          <Stack direction={'row'} gap={1}>
+          <Stack gap={1}>
             <Button
               variant={'contained'}
-              disabled={loading}
+              disabled={autoTwitterReferralLoading}
               onClick={autoTwitterReferral}
             >
-              Twitter
+              Tweet and follow us on Twitter
             </Button>
+            {/*<Button*/}
+            {/*  variant={'contained'}*/}
+            {/*  disabled={autoFacebookReferralLoading}*/}
+            {/*  onClick={autoFacebookReferral}*/}
+            {/*>*/}
+            {/*  Share on Facebook*/}
+            {/*</Button>*/}
           </Stack>
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>

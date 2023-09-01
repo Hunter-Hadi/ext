@@ -76,10 +76,12 @@ export const clientExecuteOperationElement = async (
     rotationTimes = 3000,
     rotationInterval = 1000,
     actionType = 'click',
+    actionExtraData,
   } = OperationElementConfig || {}
+  const doc = document
   let rootElement = rootElementSelector
-    ? document.querySelector(rootElementSelector)
-    : document
+    ? doc.querySelector(rootElementSelector)
+    : doc
   if (isShadowElement) {
     rootElement = (rootElement as any).shadowRoot
   }
@@ -101,12 +103,34 @@ export const clientExecuteOperationElement = async (
           await delay(rotationInterval)
         }
       }
+      // 找不到元素
+      if (elements.length === 0) {
+        return false
+      }
       elements = elements.slice(0, executeElementCount)
       elements.forEach((element) => {
         switch (actionType) {
           case 'click':
             {
               element.click()
+            }
+            break
+          case 'insertText':
+            {
+              const text =
+                actionExtraData?.text || actionExtraData?.value.toString() || ''
+              element.focus()
+              if (actionExtraData?.clearBeforeInsertText) {
+                if (
+                  element.tagName === 'INPUT' ||
+                  element.tagName === 'TEXTAREA'
+                ) {
+                  console.log(element)
+                  ;(element as HTMLInputElement).select()
+                  doc.execCommand('Delete', false, '')
+                }
+              }
+              doc.execCommand('insertText', false, text)
             }
             break
           default:

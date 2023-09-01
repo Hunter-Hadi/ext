@@ -309,7 +309,6 @@ export const chromeExtensionClientOpenPage = async (params: {
   if (!url && !key) {
     return
   }
-  debugger
   const port = new ContentScriptConnectionV2()
   let result: any = null
   if (key) {

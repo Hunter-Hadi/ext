@@ -1,4 +1,4 @@
-export type OperationElementActionType = 'click'
+export type OperationElementActionType = 'click' | 'insertText'
 
 export type OperationElementConfigType = {
   // 选择器
@@ -7,6 +7,12 @@ export type OperationElementConfigType = {
   // 操作类型
   // default: 'click'
   actionType: OperationElementActionType
+  // 操作额外数据
+  actionExtraData?: {
+    clearBeforeInsertText?: boolean
+    text?: string
+    value?: any
+  }
   // 根元素选择器
   // default: document
   rootElementSelector?: string
@@ -31,4 +37,8 @@ export type OperationElementConfigType = {
   // 轮训元素存在时间间隔
   // default: 1000
   rotationInterval?: number
+  // 执行成功发送消息
+  successMessage?: string
+  // 执行失败发送消息
+  errorMessage?: string
 }

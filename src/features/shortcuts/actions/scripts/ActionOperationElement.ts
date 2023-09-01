@@ -1,7 +1,9 @@
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-
+import { ISystemChatMessage } from '@/features/chatgpt/types'
+import { v4 as uuidV4 } from 'uuid'
+import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 export class ActionOperationElement extends Action {
   static type: ActionIdentifier = 'OPERATION_ELEMENT'
   constructor(
@@ -15,24 +17,49 @@ export class ActionOperationElement extends Action {
   async execute(params: ActionParameters, engine: any) {
     try {
       const port = engine.getBackgroundConversation()
-      if (!port) {
+      const OperationElementConfig: OperationElementConfigType | undefined =
+        this.parameters.OperationElementConfig || params.OperationElementConfig
+      if (!port || !OperationElementConfig) {
         this.error = 'Action cannot execute!'
         return
       }
+      const OperationElementTabID =
+        this.parameters.OperationElementTabID || params.OperationElementTabID
       const result = await port.postMessage({
         event: 'ShortCuts_OperationPageElement',
         data: {
-          OperationElementConfig:
-            this.parameters.OperationElementConfig ||
-            params.OperationElementConfig ||
-            {},
-          OperationElementTabID:
-            this.parameters.OperationElementTabID ||
-            params.OperationElementTabID,
+          OperationElementConfig,
+          OperationElementTabID,
         },
       })
       if (!result.success) {
-        this.error = result.message
+        OperationElementConfig.errorMessage &&
+          this.pushMessageToChat(
+            {
+              type: 'system',
+              messageId: uuidV4(),
+              parentMessageId: '',
+              text: OperationElementConfig.errorMessage,
+              extra: {
+                status: 'error',
+              },
+            } as ISystemChatMessage,
+            engine,
+          )
+      } else {
+        OperationElementConfig.successMessage &&
+          this.pushMessageToChat(
+            {
+              type: 'system',
+              messageId: uuidV4(),
+              parentMessageId: '',
+              text: OperationElementConfig.successMessage,
+              extra: {
+                status: 'info',
+              },
+            } as ISystemChatMessage,
+            engine,
+          )
       }
     } catch (e) {
       this.error = (e as any).toString()

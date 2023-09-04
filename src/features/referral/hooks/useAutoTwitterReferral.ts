@@ -141,7 +141,6 @@ const useAutoTwitterReferral = () => {
           action?.type === 'SET_VARIABLE' &&
           action.parameters?.VariableName === 'AutoTwitterReferralResult'
         ) {
-          debugger
           const isSuccess = action.parameters.WFFormValues?.Value === true
           sendLarkBotMessage(
             `[Referral] One-click button [Twitter] ${

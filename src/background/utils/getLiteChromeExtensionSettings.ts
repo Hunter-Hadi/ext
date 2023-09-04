@@ -33,11 +33,6 @@ const getLiteChromeExtensionSettings = async (
           getSystemContextMenuWithButtonSettingKey(saveKey)
         settings.buttonSettings[saveKey].contextMenu = systemPromptList
           .concat(contextMenu)
-          .filter((item) =>
-            item.data.visibility
-              ? checkVisibilitySettingIsVisible(host, item.data.visibility)
-              : true,
-          )
           .map((item) => {
             // clear item.data.actions
             if (item.data.actions) {

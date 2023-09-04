@@ -1,9 +1,14 @@
 import { getAppRootElement } from '@/utils'
 import { v4 } from 'uuid'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import {
+  APP_USE_CHAT_GPT_API_HOST,
+  CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/constants'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { getAccessToken } from '@/utils/request'
+import { getFingerPrint } from '@/utils/fingerPrint'
 
 export const compileTemplate = (template: string, variables: any) => {
   return new Promise<{
@@ -257,6 +262,53 @@ export const actionContainsAskChatGPT = (actions: ISetActionsType) => {
 export const clientFetchAPI = async (url: string, options: any) => {
   try {
     const port = new ContentScriptConnectionV2()
+    const response = await port.postMessage({
+      event: 'Client_proxyFetchAPI',
+      data: {
+        url,
+        options,
+      },
+    })
+    return {
+      success: response.success,
+      data: response.data,
+      error: response.message,
+    }
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: (error as any)?.message || error,
+    }
+  }
+}
+
+export const clientFetchMaxAIAPI = async (
+  url: string,
+  body: any,
+  options: any = {},
+) => {
+  try {
+    const port = new ContentScriptConnectionV2()
+    const fingerprint = await getFingerPrint()
+    const accessToken = await getAccessToken()
+    options.body = JSON.stringify(body)
+    if (!options.headers) {
+      options.headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+        fp: `${fingerprint}`,
+      }
+    }
+    if (!options.method) {
+      options.method = 'POST'
+    }
+    if (
+      APP_USE_CHAT_GPT_API_HOST &&
+      !url.startsWith(APP_USE_CHAT_GPT_API_HOST)
+    ) {
+      url = APP_USE_CHAT_GPT_API_HOST + url
+    }
     const response = await port.postMessage({
       event: 'Client_proxyFetchAPI',
       data: {

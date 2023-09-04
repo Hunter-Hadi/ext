@@ -4,9 +4,9 @@ import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinRe
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useEffect, useRef } from 'react'
 
-const APP_MAX_AI_ME_REFERRAL_PAGE_URL = 'http://localhost:3000/referral-new'
-// const APP_MAX_AI_ME_REFERRAL_PAGE_URL =
-//   'https://main.d3bohqvl407i44.amplifyapp.com/referral-new'
+// const APP_MAX_AI_ME_REFERRAL_PAGE_URL = 'http://localhost:3000/referral-new'
+const APP_MAX_AI_ME_REFERRAL_PAGE_URL =
+  'https://main.d3bohqvl407i44.amplifyapp.com/referral-new'
 
 /**
  * 初始化one-click referral, https://app.maxai.me/referral
@@ -16,13 +16,17 @@ const useInitOneClickShareButton = () => {
   const { autoTwitterReferral } = useAutoTwitterReferral()
   const { autoFacebookReferral } = useAutoFacebookReferral()
   const { autoLinkedinReferral } = useAutoLinkedinReferral()
-  const ReferralActionsRef = useRef<any>([])
+  const ReferralActionsRef = useRef<{
+    twitter?: () => Promise<boolean>
+    linkedin?: () => Promise<boolean>
+    facebook?: () => Promise<boolean>
+  }>({})
   useEffect(() => {
-    ReferralActionsRef.current = [
-      autoTwitterReferral,
-      autoLinkedinReferral,
-      autoFacebookReferral,
-    ]
+    ReferralActionsRef.current = {
+      twitter: autoTwitterReferral,
+      linkedin: autoLinkedinReferral,
+      facebook: autoFacebookReferral,
+    }
   }, [autoTwitterReferral, autoLinkedinReferral, autoFacebookReferral])
   useEffectOnce(() => {
     if (location.href.includes(APP_MAX_AI_ME_REFERRAL_PAGE_URL)) {
@@ -30,7 +34,6 @@ const useInitOneClickShareButton = () => {
         const oneClickShareButtonContainer = document.querySelector(
           '#appMaxAIReferralShareOneClickContainer',
         ) as HTMLDivElement
-
         const oneClickShareButton: HTMLButtonElement | null =
           document.querySelector('#appMaxAIReferralShareOneClickButton')
         if (oneClickShareButtonContainer && oneClickShareButton) {
@@ -39,8 +42,21 @@ const useInitOneClickShareButton = () => {
             oneClickShareButtonContainer.classList.add('loaded')
           }
           oneClickShareButton.addEventListener('click', async () => {
-            for (let i = 0; i < ReferralActionsRef.current.length; i++) {
-              await ReferralActionsRef.current[i]()
+            const needReferralSocialMediaElements = Array.from(
+              document.querySelectorAll(
+                '.app-maxai-me__one-click-share-status-card[data-checked="true"]',
+              ),
+            )
+            for (let i = 0; i < needReferralSocialMediaElements.length; i++) {
+              const needReferralSocialMediaElement =
+                needReferralSocialMediaElements[i]
+              const socialMediaName =
+                needReferralSocialMediaElement.getAttribute('data-name')
+              const runFn =
+                ReferralActionsRef.current?.[socialMediaName as 'twitter']
+              if (runFn) {
+                await runFn()
+              }
             }
             // 获取当前页面的 URL
             const url = new URL(window.location.href)

@@ -5,6 +5,7 @@ import Action from '@/features/shortcuts/core/Action'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ReferralConfig from '@/features/referral/config'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 const useAutoTwitterReferral = () => {
   const { userInfo } = useUserInfo()
@@ -161,7 +162,9 @@ const useAutoTwitterReferral = () => {
             .then()
             .catch()
           if (isSuccess) {
-            // alert('发送api')
+            clientFetchMaxAIAPI('/user/complete_referral', {
+              referral_types: ['TWITTER_SHARE'],
+            }).then()
           }
         }
       }

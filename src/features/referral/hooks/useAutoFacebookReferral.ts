@@ -5,6 +5,7 @@ import ReferralConfig from '@/features/referral/config'
 import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 const useAutoFacebookReferral = () => {
   const { userInfo } = useUserInfo()
@@ -151,7 +152,9 @@ const useAutoFacebookReferral = () => {
             .then()
             .catch()
           if (isSuccess) {
-            // alert('发送api')
+            clientFetchMaxAIAPI('/user/complete_referral', {
+              referral_types: ['FACEBOOK_SHARE'],
+            }).then()
           }
         }
       }

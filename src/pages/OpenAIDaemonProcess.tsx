@@ -178,7 +178,6 @@ const useDaemonProcess = () => {
                   newSettings.thirdProviderSettings!.OPENAI.pluginOptions =
                     plugins
                   newSettings.thirdProviderSettings!.OPENAI.model = currentModel
-                  debugger
                   log.info(`set currentModel model`, currentModel)
                   return newSettings
                 })

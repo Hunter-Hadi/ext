@@ -45,7 +45,7 @@ export const ShortcutMessageBackgroundInit = () => {
             }
             if (!currentTab?.id) {
               return {
-                data: false,
+                data: null,
                 success: false,
                 message: 'No tabId to execute operation page element.',
               }
@@ -69,20 +69,20 @@ export const ShortcutMessageBackgroundInit = () => {
                 await delay(interval)
               }
               if (isLoaded) {
-                const success =
+                const response =
                   await backgroundSendClientToExecuteOperationElement(
                     executePageTabId,
                     OperationElementConfig,
                   )
                 return {
-                  data: success,
-                  success,
+                  data: response,
+                  success: response.success,
                   message: 'ok',
                 }
               }
             }
             return {
-              data: false,
+              data: null,
               success: false,
               message: 'Page not loaded.',
             }

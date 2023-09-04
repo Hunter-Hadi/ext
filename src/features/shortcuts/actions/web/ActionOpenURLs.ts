@@ -27,8 +27,14 @@ export class ActionOpenURLs extends Action {
         this.error = 'No open url'
         return
       }
-      this.output =
-        (await chromeExtensionClientOpenPage({ url, active })) || undefined
+      if (url === 'current_page') {
+        this.output =
+          (await chromeExtensionClientOpenPage({ key: 'current_page' })) ||
+          undefined
+      } else {
+        this.output =
+          (await chromeExtensionClientOpenPage({ url, active })) || undefined
+      }
     } catch (e) {
       this.error = (e as any).toString()
     }

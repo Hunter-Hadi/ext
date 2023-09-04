@@ -35,6 +35,7 @@ import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGP
 import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
 import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -79,6 +80,8 @@ interface ActionParameters {
   WFCommentActionText?: string
   WFCondition?: WFCondition
   WFConditionalActionString?: string
+  WFConditionalIfTrueActions?: ISetActionsType
+  WFConditionalIfFalseActions?: ISetActionsType
   WFControlFlowMode?: number
   WFCountType?: WFCountType
   DateActionDate?: WFSerialization | string
@@ -152,7 +155,7 @@ interface ActionParameters {
   WFTimeUntilCustomDate?: WFSerialization | string
   WFTimeUntilReferenceDate?: WFTimeUntilReferenceDate
   WFTimeUntilUnit?: WFSerialization | WFTimeUntilUnit
-  URLActionURL?: string
+  URLActionURL?: string | 'current_page'
   URLActionActiveTab?: boolean
   URLSearchEngine?: URLSearchEngine | string
   URLSearchEngineParams?: {

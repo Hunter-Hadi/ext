@@ -319,7 +319,7 @@ export default [
     id: '32f31576-0ab8-4fc8-966d-426970abede6',
     parent: 'c769f823-a073-408a-ac44-00e5bfc333a7',
     droppable: true,
-    text: 'Enter prompt',
+    text: 'Enter key points',
     data: {
       editable: false,
       type: 'shortcuts',
@@ -343,7 +343,7 @@ export default [
         blacklist: [],
         isWhitelistMode: false,
       },
-      searchText: 'quick reply enter prompt',
+      searchText: 'quick reply enter key points',
     },
   },
   {
@@ -946,7 +946,7 @@ export default [
     id: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
     parent: 'aa4d2d42-28a6-4a2f-a67d-2805f4307fd9',
     droppable: true,
-    text: 'Enter prompt',
+    text: 'Enter key points',
     data: {
       editable: false,
       type: 'shortcuts',
@@ -971,7 +971,7 @@ export default [
         isWhitelistMode: false,
       },
       icon: 'DefaultIcon',
-      searchText: 'quick reply enter prompt',
+      searchText: 'quick reply enter key points',
     },
   },
   {
@@ -1877,7 +1877,7 @@ export default [
           type: 'RENDER_CHATGPT_PROMPT',
           parameters: {
             template:
-              'Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the following text delimited by triple backticks in all relevant aspects. \n\nOutput a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.\n\nUse the following format:\n### Summary\n<summary of the text>\n\n### Key Takeaways\n<list of key takeaways>\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
+              'Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the following text delimited by triple backticks in all relevant aspects. \n\nOutput a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be in up to seven bulletpoints, the fewer the better.\n\nUse the following format:\n### Summary\n<summary of the text>\n\n### Key Takeaways\n<list of key takeaways>\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
           },
         },
         {

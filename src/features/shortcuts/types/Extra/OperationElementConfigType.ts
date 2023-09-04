@@ -1,4 +1,4 @@
-export type OperationElementActionType = 'click' | 'insertText'
+export type OperationElementActionType = 'click' | 'insertText' | 'getText'
 
 export type OperationElementConfigType = {
   // 选择器

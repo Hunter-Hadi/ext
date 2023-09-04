@@ -26,6 +26,7 @@ import {
   ActionOpenURLs,
   ActionOperationElement,
   ActionCloseURLS,
+  ActionConditional,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -42,6 +43,7 @@ const ActionClassMap = {
   [ActionInsertUserInput.type]: ActionInsertUserInput,
   [ActionSetVariable.type]: ActionSetVariable,
   [ActionOperationElement.type]: ActionOperationElement,
+  [ActionConditional.type]: ActionConditional,
   // web
   [ActionURL.type]: ActionURL,
   [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,

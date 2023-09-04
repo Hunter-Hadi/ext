@@ -45,7 +45,7 @@ The context text is sourced from the main content of the webpage at {{CURRENT_WE
 
 Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.
-The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+The key takeaways should be in up to seven bulletpoints, the fewer the better.
 
 ---
 
@@ -75,36 +75,31 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       },
     },
   },
-  YOUTUBE_VIDEO_SUMMARY: {
-    id: '215bf574-3a68-4ac8-8fff-ccdd19150cb9',
+  DEFAULT_EMAIL_SUMMARY: {
+    id: '8ed1bf33-efc9-4714-8b21-09ceede3e2a8',
     parent: 'root',
     droppable: false,
-    text: 'Summarize video',
+    text: 'Summarize email',
     data: {
       editable: false,
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
-          parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
+            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
 
-The context text is the transcript of a video from {{CURRENT_WEBPAGE_URL}}.
+The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.
 
-Output a summary and a list of key takeaways respectively.
-The summary should be a one-liner in at most 100 words.
-The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+Output a summary, a list of key takeaways, and a list of action items respectively.
+The summary should be a one-liner in at most 100 words. 
+The key takeaways should be in up to seven bulletpoints, the fewer the better.
+When extracting the action items, identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Output the action items in bulletpoints, and pick a good matching emoji for every bullet point.
 
 ---
 
 Use the following format:
-## 📺 {{CURRENT_WEBPAGE_TITLE}}
+## 📧 {{CURRENT_WEBPAGE_TITLE}}
 
 ### Summary
 <summary of the text>
@@ -112,11 +107,14 @@ Use the following format:
 ### Key Takeaways
 <list of key takeaways>
 
+### Action Items
+<list of action items>
+
 ---
 
 You must add these two lines at the bottom of the response:
 ### Deep Dive
-Ask AI anything about the video...
+Ask AI anything about the email...
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
@@ -153,7 +151,7 @@ The context text originates from the main content of a PDF viewed on the browser
 
 Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.
-The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
+The key takeaways should be in up to seven bulletpoints, the fewer the better.
 
 ---
 
@@ -183,31 +181,36 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       },
     },
   },
-  DEFAULT_EMAIL_SUMMARY: {
-    id: '8ed1bf33-efc9-4714-8b21-09ceede3e2a8',
+  YOUTUBE_VIDEO_SUMMARY: {
+    id: '215bf574-3a68-4ac8-8fff-ccdd19150cb9',
     parent: 'root',
     droppable: false,
-    text: 'Summarize email',
+    text: 'Summarize video',
     data: {
       editable: false,
       type: 'shortcuts',
       actions: [
         {
+          type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+          parameters: {
+            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+          },
+        },
+        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
+            template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
 
-The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.
+The context text is the transcript of a video from {{CURRENT_WEBPAGE_URL}}.
 
-Output a summary, a list of key takeaways, and a list of action items respectively.
-The summary should be a one-liner in at most 100 words. 
-The key takeaways should be  in up to five bulletpoints, and pick a good matching emoji for every bullet point.
-When extracting the action items, identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Output the action items in bulletpoints, and pick a good matching emoji for every bullet point.
+Output a summary and a list of key takeaways respectively.
+The summary should be a one-liner in at most 100 words.
+The key takeaways should be in up to seven bulletpoints, the fewer the better.
 
 ---
 
 Use the following format:
-## 📧 {{CURRENT_WEBPAGE_TITLE}}
+## 📺 {{CURRENT_WEBPAGE_TITLE}}
 
 ### Summary
 <summary of the text>
@@ -215,14 +218,11 @@ Use the following format:
 ### Key Takeaways
 <list of key takeaways>
 
-### Action Items
-<list of action items>
-
 ---
 
 You must add these two lines at the bottom of the response:
 ### Deep Dive
-Ask AI anything about the email...
+Ask AI anything about the video...
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },

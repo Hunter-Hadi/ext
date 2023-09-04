@@ -4,6 +4,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { v4 as uuidV4 } from 'uuid'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
+import { IExecuteOperationResult } from '@/features/shortcuts/utils/OperationElementHelper'
 export class ActionOperationElement extends Action {
   static type: ActionIdentifier = 'OPERATION_ELEMENT'
   constructor(
@@ -25,14 +26,19 @@ export class ActionOperationElement extends Action {
       }
       const OperationElementTabID =
         this.parameters.OperationElementTabID || params.OperationElementTabID
-      const result = await port.postMessage({
+      const result: {
+        success: boolean
+        data: IExecuteOperationResult | null
+        message: string
+      } = await port.postMessage({
         event: 'ShortCuts_OperationPageElement',
         data: {
           OperationElementConfig,
           OperationElementTabID,
         },
       })
-      if (!result.success) {
+      const executeResponse = result.data
+      if (!executeResponse?.success) {
         OperationElementConfig.errorMessage &&
           this.pushMessageToChat(
             {
@@ -60,6 +66,10 @@ export class ActionOperationElement extends Action {
             } as ISystemChatMessage,
             engine,
           )
+        // 如果actionType === getText, output设置为获取到的innerText
+        if (OperationElementConfig.actionType === 'getText') {
+          this.output = executeResponse.elementsInnerText
+        }
       }
     } catch (e) {
       this.error = (e as any).toString()

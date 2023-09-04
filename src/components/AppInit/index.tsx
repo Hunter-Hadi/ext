@@ -38,6 +38,7 @@ import { getEnv } from '@/utils/AppEnv'
 import Browser from 'webextension-polyfill'
 import { clientGetBrowserInfo } from '@/utils/larkBot'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
+import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 
 const log = new Log('AppInit')
 
@@ -408,6 +409,8 @@ const AppInit = () => {
     ShortcutMessageClientInit()
     clientGetBrowserInfo().then().catch()
   })
+  // 初始化one-click referral, https://app.maxai.me/referral
+  useInitOneClickShareButton()
   return (
     <>
       <AppSuspenseLoadingLayout>

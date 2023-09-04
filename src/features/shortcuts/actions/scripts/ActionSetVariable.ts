@@ -28,7 +28,9 @@ export class ActionSetVariable extends Action {
       if (shortCutsEngine && shortCutsEngine.setVariable) {
         shortCutsEngine.setVariable(
           VariableName,
-          params.LAST_ACTION_OUTPUT || '',
+          this.parameters?.WFFormValues?.Value ||
+            params.LAST_ACTION_OUTPUT ||
+            '',
           true,
         )
         this.output = params.LAST_ACTION_OUTPUT || ''

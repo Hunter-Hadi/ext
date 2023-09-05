@@ -55,6 +55,7 @@ import {
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
+import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 
 /**
  * background.js 入口
@@ -106,6 +107,8 @@ const initChromeExtensionInstalled = () => {
         await checkSettingsSync()
       }
       await syncLocalSettingsToServerSettings()
+      // 更新i18n
+      await updateContextMenuSearchTextStore('textSelectPopupButton')
     }
     try {
       await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')

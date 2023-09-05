@@ -29,6 +29,29 @@ export const useLazyLoadI18nResources = () => {
   }, [i18n, userSettings?.preferredLanguage])
 }
 
+export const loadI18nResources = (i18n: any, language: string) => {
+  return new Promise((resolve) => {
+    if (i18n.language && !i18n.hasResourceBundle(language, 'name')) {
+      // lazy load resources
+      fetch(Browser.runtime.getURL(`i18n/locales/${language}/index.json`))
+        .then((t) => t.json())
+        .then((json) => {
+          Object.keys(json).forEach((key) => {
+            i18n.addResourceBundle(language, key, json[key], true, true)
+          })
+          log.info('load i18n resources success', language)
+          resolve(true)
+        })
+        .catch((err) => {
+          log.error('load i18n resources error', err)
+          resolve(false)
+        })
+    } else {
+      resolve(true)
+    }
+  })
+}
+
 export const useInitI18n = () => {
   const { i18n } = useTranslation()
   const { userSettings } = useRecoilValue(AppSettingsState)

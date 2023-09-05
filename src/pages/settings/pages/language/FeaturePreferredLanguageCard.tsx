@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef } from 'react'
+import React, { FC } from 'react'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { useTranslation } from 'react-i18next'
 import List from '@mui/material/List'
@@ -6,98 +6,12 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 import LanguageCodeSelect from '@/components/select/LanguageCodeSelect'
-import { useContextMenuList } from '@/features/contextMenu'
-import {
-  ContextMenuSearchTextStore,
-  removeContextMenuSearchTextStore,
-  setContextMenuSearchTextStore,
-} from '@/features/sidebar/store/contextMenuSearchTextStore'
+import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 
 const FeaturePreferredLanguageCard: FC = () => {
   const { userSettings, setUserSettings } = useUserSettings()
-  const { t, i18n } = useTranslation(['settings', 'common', 'prompt'])
-  const { originContextMenuList } = useContextMenuList('textSelectPopupButton')
-  const handleUpdateContextMenuI18nCache = useCallback(
-    async (language: string) => {
-      if (language && originContextMenuList.length > 0) {
-        const searchTextPrefixMap: ContextMenuSearchTextStore = {
-          en: {} as any,
-          [language]: {} as any,
-        }
-        const saveSearchTextData: ContextMenuSearchTextStore = {
-          en: {} as any,
-          [language]: {} as any,
-        }
-        const findSearchText = (parent: string) => {
-          const children = originContextMenuList.filter(
-            (item) => item.parent === parent,
-          )
-          if (children.length === 0) {
-            return
-          }
-          children.forEach((item) => {
-            // 拼接parent的前缀
-            const enPrefix = searchTextPrefixMap['en'][parent] || ''
-            const currentLanguagePrefix =
-              searchTextPrefixMap[language][parent] || ''
-            // 当前的text
-            const enItemText = item.text
-            let currentLanguageItemText = enItemText
-            // 只拼接一层
-            const enSearchText = `${enPrefix} ${item.text}`.trimStart()
-            let currentLanguageSearchText = enSearchText
-            if (
-              language !== 'en' &&
-              t(`prompt:${item.id}` as any) !== item.id
-            ) {
-              currentLanguageItemText = t(`prompt:${item.id}` as any)
-              currentLanguageSearchText =
-                `${currentLanguagePrefix} ${currentLanguageItemText} ${enSearchText}`.trimStart()
-            }
-            searchTextPrefixMap.en[item.id] = enItemText.toLowerCase()
-            searchTextPrefixMap[language][item.id] =
-              currentLanguageItemText.toLowerCase()
-            saveSearchTextData.en[item.id] = enSearchText.toLowerCase()
-            saveSearchTextData[language][item.id] =
-              currentLanguageSearchText.toLowerCase()
-            findSearchText(item.id)
-          })
-        }
-        findSearchText('root')
-        await removeContextMenuSearchTextStore('en')
-        await removeContextMenuSearchTextStore(language)
-        await setContextMenuSearchTextStore('en', saveSearchTextData.en)
-        await setContextMenuSearchTextStore(
-          language,
-          saveSearchTextData[language],
-        )
-      }
-    },
-    [originContextMenuList],
-  )
-  const handleUpdateContextMenuI18nCacheRef = useRef(
-    handleUpdateContextMenuI18nCache,
-  )
-  useEffect(() => {
-    handleUpdateContextMenuI18nCacheRef.current =
-      handleUpdateContextMenuI18nCache
-  }, [handleUpdateContextMenuI18nCache])
-  useEffect(() => {
-    if (i18n.language) {
-      const timer = setInterval(() => {
-        if (i18n.hasResourceBundle(i18n.language, 'name')) {
-          clearInterval(timer)
-          handleUpdateContextMenuI18nCacheRef.current(i18n.language)
-        }
-      }, 500)
-      return () => {
-        clearInterval(timer)
-      }
-    }
-    return () => {
-      // do nothing
-    }
-  }, [i18n.language])
+  const { t } = useTranslation(['settings', 'common', 'prompt'])
+
   return (
     <SettingsFeatureCardLayout
       title={t('settings:feature_card__preferred_language__title')}
@@ -138,7 +52,7 @@ const FeaturePreferredLanguageCard: FC = () => {
                   ...userSettings,
                   preferredLanguage: newLanguage,
                 })
-                await handleUpdateContextMenuI18nCache(newLanguage)
+                await updateContextMenuSearchTextStore('textSelectPopupButton')
               }}
             />
           )}

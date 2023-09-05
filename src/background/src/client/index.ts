@@ -78,6 +78,21 @@ export const ClientMessageInit = () => {
           {
             const { url, key, query = '', active = true } = data
             if (url) {
+              if (url === Browser.runtime.getURL(`/pages/chat/index.html`)) {
+                const findTab: Browser.Tabs.Tab | null =
+                  (
+                    await Browser.tabs.query({
+                      url,
+                    })
+                  )?.[0] || null
+                if (findTab) {
+                  // active
+                  await Browser.tabs.update(findTab.id, {
+                    active: true,
+                  })
+                  return
+                }
+              }
               const tab = await Browser.tabs.create({
                 url,
                 active,

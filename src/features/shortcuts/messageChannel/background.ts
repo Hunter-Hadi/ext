@@ -1,5 +1,8 @@
 // import Log from '@/utils/Log'
-import { createBackgroundMessageListener } from '@/background/utils'
+import {
+  createBackgroundMessageListener,
+  safeGetBrowserTab,
+} from '@/background/utils'
 import {
   getWebpageTitleAndText,
   getWebpageUrlContent,
@@ -41,7 +44,7 @@ export const ShortcutMessageBackgroundInit = () => {
               (data.OperationElementTabID as number) || sender.tab?.id
             let currentTab: Browser.Tabs.Tab | null = null
             if (executePageTabId) {
-              currentTab = await Browser.tabs.get(executePageTabId)
+              currentTab = await safeGetBrowserTab(executePageTabId)
             }
             if (!currentTab?.id) {
               return {
@@ -60,7 +63,10 @@ export const ShortcutMessageBackgroundInit = () => {
               let isLoaded = false
               let count = 0
               while (!isLoaded && count < maxCount) {
-                const currentTab = await Browser.tabs.get(executePageTabId)
+                const currentTab = await safeGetBrowserTab(executePageTabId)
+                if (!currentTab) {
+                  break
+                }
                 console.log('轮训tab', currentTab.status)
                 if (currentTab.status === 'complete') {
                   isLoaded = true

@@ -2,6 +2,7 @@ import Browser from 'webextension-polyfill'
 import {
   createClientMessageListener,
   getChromeExtensionSettings,
+  safeGetBrowserTab,
   setChromeExtensionSettings,
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -118,7 +119,7 @@ export const checkChatGPTProxyInstance = async (
     return false
   }
   try {
-    const chatGPTProxyTab = await Browser.tabs.get(chatGPTProxyTabId)
+    const chatGPTProxyTab = await safeGetBrowserTab(chatGPTProxyTabId)
     if (!chatGPTProxyTab) {
       return false
     }

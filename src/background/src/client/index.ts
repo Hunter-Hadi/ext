@@ -5,6 +5,7 @@ import {
   createChromeExtensionOptionsPage,
   backgroundRestartChromeExtension,
   chromeExtensionLogout,
+  safeGetBrowserTab,
 } from '@/background/utils'
 import {
   createDaemonProcessTab,
@@ -49,7 +50,7 @@ export const ClientMessageInit = () => {
             const { url, tabId } = data
             let tab: null | Browser.Tabs.Tab = null
             if (tabId) {
-              tab = await Browser.tabs.get(tabId)
+              tab = await safeGetBrowserTab(tabId)
             } else if (url) {
               tab =
                 (

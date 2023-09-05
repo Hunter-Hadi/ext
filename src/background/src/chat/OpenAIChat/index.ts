@@ -10,6 +10,7 @@ import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
+  safeGetBrowserTab,
 } from '@/background/utils'
 import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
@@ -165,7 +166,7 @@ class OpenAIChat extends BaseChat {
       this.cacheLastTimeChatGPTProxyInstance &&
       this.cacheLastTimeChatGPTProxyInstance.id
     ) {
-      const cacheLastTimeTab = await Browser.tabs.get(
+      const cacheLastTimeTab = await safeGetBrowserTab(
         this.cacheLastTimeChatGPTProxyInstance.id,
       )
       if (
@@ -200,7 +201,7 @@ class OpenAIChat extends BaseChat {
         this.cacheLastTimeChatGPTProxyInstance &&
         this.cacheLastTimeChatGPTProxyInstance.id
       ) {
-        const cacheTab = await Browser.tabs.get(
+        const cacheTab = await safeGetBrowserTab(
           this.cacheLastTimeChatGPTProxyInstance.id,
         )
         this.chatGPTProxyInstance = cacheTab
@@ -543,7 +544,7 @@ class OpenAIChat extends BaseChat {
             )
           ) {
             // 说明用户有权限
-            Browser.tabs.get(processTabId).then((tab) => {
+            safeGetBrowserTab(processTabId).then((tab) => {
               if (tab) {
                 Browser.tabs.update(tab.id, {
                   url: 'https://chat.openai.com/?model=gpt-4-code-interpreter',
@@ -552,7 +553,7 @@ class OpenAIChat extends BaseChat {
             })
           } else {
             // 说明用户没有权限
-            Browser.tabs.get(processTabId).then((tab) => {
+            safeGetBrowserTab(processTabId).then((tab) => {
               if (tab) {
                 Browser.tabs.update(tab.id, {
                   url: 'https://chat.openai.com/?model=gpt-4',

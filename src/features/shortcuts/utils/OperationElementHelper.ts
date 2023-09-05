@@ -14,6 +14,10 @@ export const backgroundSendClientToExecuteOperationElement = (
   tabId: number,
   OperationElementConfig: OperationElementConfigType,
 ) => {
+  const executeOperationErrorResult: IExecuteOperationResult = {
+    success: false,
+    elementsInnerText: '',
+  }
   const maxExecuteTimes =
     (OperationElementConfig.durationTimes || 30 * 1000) + 5 * 1000
   // eslint-disable-next-line no-async-promise-executor
@@ -23,34 +27,56 @@ export const backgroundSendClientToExecuteOperationElement = (
     setTimeout(() => {
       if (!isResolve) {
         isResolve = true
-        resolve({
-          success: false,
-          elementsInnerText: '',
-        })
+        resolve(executeOperationErrorResult)
       }
     }, maxExecuteTimes)
-    const onceListener = (message: any) => {
-      const { data: responseData, event } = message
-      if (
-        event === 'ShortCuts_OperationPageElementResponse' &&
-        responseData.taskId === taskId
-      ) {
+    const errorListener = setInterval(async () => {
+      if (isResolve) {
+        clearInterval(errorListener)
+      }
+      try {
+        await Browser.tabs.sendMessage(tabId, {
+          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'Client_pong' as IChromeExtensionSendEvent,
+        })
+        console.log('OperationElement errorListener pong')
+      } catch (e) {
+        console.log('OperationElement errorListener error')
         if (!isResolve) {
           isResolve = true
-          resolve(responseData?.data?.data)
+          resolve(executeOperationErrorResult)
         }
       }
+    }, 1000)
+    try {
+      const onceListener = (message: any) => {
+        const { data: responseData, event } = message
+        if (
+          event === 'ShortCuts_OperationPageElementResponse' &&
+          responseData.taskId === taskId
+        ) {
+          if (!isResolve) {
+            isResolve = true
+            resolve(responseData?.data?.data)
+          }
+        }
+      }
+      Browser.runtime.onMessage.addListener(onceListener)
+      await Browser.tabs.sendMessage(tabId, {
+        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        event:
+          'ShortCuts_ClientExecuteOperationPageElement' as IChromeExtensionSendEvent,
+        data: {
+          taskId,
+          OperationElementConfig,
+        },
+      })
+    } catch (e) {
+      if (!isResolve) {
+        isResolve = true
+        resolve(executeOperationErrorResult)
+      }
     }
-    Browser.runtime.onMessage.addListener(onceListener)
-    await Browser.tabs.sendMessage(tabId, {
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
-      event:
-        'ShortCuts_ClientExecuteOperationPageElement' as IChromeExtensionSendEvent,
-      data: {
-        taskId,
-        OperationElementConfig,
-      },
-    })
   })
 }
 

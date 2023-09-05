@@ -45,6 +45,7 @@ import {
   backgroundSendClientMessage,
   resetChromeExtensionOnBoardingData,
   backgroundRestartChromeExtension,
+  safeGetBrowserTab,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
@@ -279,7 +280,8 @@ const initChromeExtensionAction = () => {
       }
     }
     Browser.tabs.onActivated.addListener(async ({ tabId }) => {
-      await checkTabStatus(await Browser.tabs.get(tabId))
+      const tab = await safeGetBrowserTab(tabId)
+      tab && (await checkTabStatus(tab))
     })
     Browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       // tab loaded

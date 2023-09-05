@@ -4,9 +4,9 @@ import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinRe
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useEffect, useRef } from 'react'
 
-// const APP_MAX_AI_ME_REFERRAL_PAGE_URL = 'http://localhost:3000/referral-new'
-const APP_MAX_AI_ME_REFERRAL_PAGE_URL =
-  'https://main.d3bohqvl407i44.amplifyapp.com/referral-new'
+const APP_MAX_AI_ME_REFERRAL_PAGE_URL = 'http://localhost:3000/referral'
+// const APP_MAX_AI_ME_REFERRAL_PAGE_URL =
+//   'https://main.d3bohqvl407i44.amplifyapp.com/referral'
 
 /**
  * 初始化one-click referral, https://app.maxai.me/referral
@@ -30,16 +30,22 @@ const useInitOneClickShareButton = () => {
   }, [autoTwitterReferral, autoLinkedinReferral, autoFacebookReferral])
   useEffectOnce(() => {
     if (location.href.includes(APP_MAX_AI_ME_REFERRAL_PAGE_URL)) {
-      const timer = setInterval(() => {
+      setInterval(() => {
         const oneClickShareButtonContainer = document.querySelector(
           '#appMaxAIReferralShareOneClickContainer',
         ) as HTMLDivElement
         const oneClickShareButton: HTMLButtonElement | null =
           document.querySelector('#appMaxAIReferralShareOneClickButton')
+        console.log(
+          'useInitOneClickShareButton oneClickShareButtonContainer',
+          oneClickShareButtonContainer,
+        )
         if (oneClickShareButtonContainer && oneClickShareButton) {
-          clearInterval(timer)
           if (!oneClickShareButtonContainer.classList.contains('loaded')) {
             oneClickShareButtonContainer.classList.add('loaded')
+          } else {
+            console.log('useInitOneClickShareButton has injected')
+            return
           }
           oneClickShareButton.addEventListener('click', async () => {
             const needReferralSocialMediaElements = Array.from(
@@ -70,7 +76,7 @@ const useInitOneClickShareButton = () => {
             window.location.href = url.toString()
           })
         }
-      }, 500)
+      }, 1000)
     }
   })
 }

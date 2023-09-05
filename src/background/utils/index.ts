@@ -331,7 +331,7 @@ export const backgroundSendClientMessage = async (
   event: IChromeExtensionSendEvent,
   data: any,
 ) => {
-  const currentTab = await Browser.tabs.get(clientTabId)
+  const currentTab = await safeGetBrowserTab(clientTabId)
   if (currentTab && currentTab.id) {
     try {
       const result = await Browser.tabs.sendMessage(currentTab.id, {
@@ -595,5 +595,22 @@ export const getPreviousVersion = (version: string): string => {
     return `${major - 1}.99.99`
   } else {
     throw new Error('Cannot get previous version for version 0.0.0')
+  }
+}
+
+/**
+ * 安全的获取浏览器的tab
+ * @description - 因为Browser.tabs.get在获取不到tab的时候会抛出异常，影响background正常运行
+ * @param tabId
+ */
+export const safeGetBrowserTab = async (tabId?: number) => {
+  if (tabId) {
+    try {
+      return await Browser.tabs.get(tabId)
+    } catch (e) {
+      return null
+    }
+  } else {
+    return null
   }
 }

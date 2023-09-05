@@ -323,7 +323,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Στιγμιότυπο του gpt-4 από τις 13 Ιουνίου 2023 με δεδομένα κλήσης συνάρτησης. Αντίθετα με το gpt-4, αυτό το μοντέλο δεν θα λαμβάνει ενημερώσεις και θα καταργηθεί 3 μήνες μετά την κυκλοφορία νέας έκδοσης.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Στιγμιότυπο του gpt-4-32 από τις 13 Ιουνίου 2023. Αντίθετα με το gpt-4-32k, αυτό το μοντέλο δεν θα λαμβάνει ενημερώσεις και θα καταργηθεί 3 μήνες μετά την κυκλοφορία νέας έκδοσης.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Τόσο γρήγορο όσο το ChatGPT Plus.",
+    "provider__chatgpt__short_description": "Τόσο γρήγορο όσο το ChatGPT Plus. GPT-3.5-turbo, GPT-4 και GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Χρησιμοποιήστε το ChatGPT για να ενεργοποιήσετε την επέκταση.",
     "provider__chatgpt__auth_button_text": "Συνέχεια με το ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Το γρηγορότερο μοντέλο της OpenAI, ιδανικό για τις περισσότερες καθημερινές εργασίες.",
@@ -341,7 +341,6 @@
     "popup__special_page__item1": "Νέες καρτέλες χωρίς φορτωμένες ιστοσελίδες",
     "popup__special_page__item2": "Σελίδες Chrome",
     "popup__special_page__item3": "Σελίδες Chrome Web Store",
-    "popup__special_page__item4": "chat.openai.com",
     "popup__refresh_page__title": "Ανανεώστε αυτήν τη σελίδα για να ενεργοποιήσετε την επέκταση σε αυτήν τη σελίδα.",
     "popup__refresh_page__button": "Ανανέωση αυτής της σελίδας",
     "popup__set_shortcut__description1": "Πατήστε",
@@ -543,6 +542,5 @@
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Σουηδικά",
     "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Μηνύματα",
     "PRESET_PROMPT_ID": "Προεπιλεγμένες προτροπές"
-  },
-  "": ""
+  }
 }

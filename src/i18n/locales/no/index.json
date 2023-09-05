@@ -323,7 +323,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Øyeblikksbilde av gpt-4 fra 13. juni 2023 med funksjonskall-data. I motsetning til gpt-4 vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Øyeblikksbilde av gpt-4-32 fra 13. juni 2023. I motsetning til gpt-4-32k vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Like rask som ChatGPT Plus.",
+    "provider__chatgpt__short_description": "Like ChatGPT Plus. GPT-3.5-turbo, GPT-4, and GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Bruk ChatGPT til å drive utvidelsen.",
     "provider__chatgpt__auth_button_text": "Fortsett med ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAIs raskeste modell, flott for de fleste daglige oppgaver.",
@@ -341,7 +341,6 @@
     "popup__special_page__item1": "Nye faner uten lastede nettsteder",
     "popup__special_page__item2": "Chrome-sider",
     "popup__special_page__item3": "Chrome Web Store-sider",
-    "popup__special_page__item4": "chat.openai.com",
     "popup__refresh_page__title": "Oppdater denne siden for å aktivere utvidelsen på denne siden.",
     "popup__refresh_page__button": "Oppdater denne siden",
     "popup__set_shortcut__description1": "Trykk",
@@ -543,6 +542,5 @@
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Svensk",
     "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Meldinger",
     "PRESET_PROMPT_ID": "Forhåndsinnstilte forslag"
-  },
-  "": ""
+  }
 }

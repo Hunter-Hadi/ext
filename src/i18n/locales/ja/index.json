@@ -312,7 +312,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "2023年6月13日のgpt-4のスナップショットで、関数呼び出しデータを含みます。gpt-4とは異なり、このモデルは更新を受け取らず、新しいバージョンがリリースされてから3ヶ月後に廃止されます。",
     "provider__openai_api__model__gpt_4_0613_32k__description": "2023年6月13日のgpt-4-32のスナップショット。gpt-4-32kとは異なり、このモデルは更新を受け取らず、新しいバージョンがリリースされてから3ヶ月後に廃止されます。",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "ChatGPT Plusと同じくらい速いです。",
+    "provider__chatgpt__short_description": "ChatGPT Plusと同じくらい速いです。GPT-3.5-turbo、GPT-4、およびGPT-3.5-turbo-16k。",
     "provider__chatgpt__auth_description": "拡張機能のパワーとしてChatGPTを使用します。",
     "provider__chatgpt__auth_button_text": "ChatGPTで続行",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAIの最速モデルで、ほとんどの日常的なタスクに適しています。",
@@ -330,7 +330,6 @@
     "popup__special_page__item1": "読み込まれていない新しいタブ",
     "popup__special_page__item2": "Chromeのページ",
     "popup__special_page__item3": "Chromeウェブストアのページ",
-    "popup__special_page__item4": "chat.openai.com",
     "popup__refresh_page__title": "このページをリフレッシュして、このページで拡張機能を有効にします。",
     "popup__refresh_page__button": "このページをリフレッシュ",
     "popup__set_shortcut__description1": "押して",
@@ -543,6 +542,5 @@
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "スウェーデン語",
     "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "メッセージング",
     "PRESET_PROMPT_ID": "プリセットのプロンプト"
-  },
-  "": ""
+  }
 }

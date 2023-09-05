@@ -323,7 +323,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Snapshot av gpt-4 från 13 juni 2023 med funktionsanropsdata. Till skillnad från gpt-4 kommer denna modell inte att uppdateras och kommer att fasas ut 3 månader efter att en ny version släpps.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snapshot av gpt-4-32 från 13 juni 2023. Till skillnad från gpt-4-32k kommer denna modell inte att uppdateras och kommer att fasas ut 3 månader efter att en ny version släpps.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Lika snabb som ChatGPT Plus.",
+    "provider__chatgpt__short_description": "Så snabbt som ChatGPT Plus. GPT-3.5-turbo, GPT-4 och GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Använd ChatGPT för att driva förlängningen.",
     "provider__chatgpt__auth_button_text": "Fortsätt med ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAIs snabbaste modell, bra för de flesta vardagliga uppgifter.",
@@ -341,7 +341,6 @@
     "popup__special_page__item1": "Nya flikar utan laddade webbplatser",
     "popup__special_page__item2": "Chrome-sidor",
     "popup__special_page__item3": "Chrome Web Store-sidor",
-    "popup__special_page__item4": "chat.openai.com",
     "popup__refresh_page__title": "Uppdatera den här sidan för att aktivera förlängningen på denna sida.",
     "popup__refresh_page__button": "Uppdatera den här sidan",
     "popup__set_shortcut__description1": "Tryck på",
@@ -543,6 +542,5 @@
     "9b1b232b-c036-4131-bd6c-c2e5e690c4ea": "Svenska",
     "b83cb482-710d-4e48-9b22-43b8e8ea3a02": "Meddelande",
     "PRESET_PROMPT_ID": "Förinställda förslag"
-  },
-  "": ""
+  }
 }

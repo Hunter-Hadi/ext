@@ -3,10 +3,7 @@ import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookRe
 import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinReferral'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useEffect, useRef } from 'react'
-
-const APP_MAX_AI_ME_REFERRAL_PAGE_URL = 'http://localhost:3000'
-// const APP_MAX_AI_ME_REFERRAL_PAGE_URL =
-//   'https://main.d3bohqvl407i44.amplifyapp.com'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 
 /**
  * 初始化one-click referral, https://app.maxai.me/referral
@@ -29,7 +26,10 @@ const useInitOneClickShareButton = () => {
     }
   }, [autoTwitterReferral, autoLinkedinReferral, autoFacebookReferral])
   useEffectOnce(() => {
-    if (location.href.includes(APP_MAX_AI_ME_REFERRAL_PAGE_URL)) {
+    if (
+      APP_USE_CHAT_GPT_HOST &&
+      location.href.includes(APP_USE_CHAT_GPT_HOST)
+    ) {
       setInterval(() => {
         const oneClickShareButtonContainer = document.querySelector(
           '#appMaxAIReferralShareOneClickContainer',

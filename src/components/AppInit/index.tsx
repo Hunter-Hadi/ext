@@ -25,7 +25,6 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import useInterval from '@/hooks/useInterval'
 import Divider from '@mui/material/Divider'
-import { RESOURCES_URL } from '@/constants'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitI18n } from '@/i18n/hooks'
@@ -39,6 +38,7 @@ import Browser from 'webextension-polyfill'
 import { clientGetBrowserInfo } from '@/utils/larkBot'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const log = new Log('AppInit')
 
@@ -204,7 +204,7 @@ const useHandlePDFViewerError = () => {
                 style={{ flexShrink: 0, alignSelf: 'center' }}
                 height={156}
                 width={468}
-                src={`${RESOURCES_URL}/extension/pdf/guide1.gif`}
+                src={getChromeExtensionAssetsURL('/images/pdf/guide-1.gif')}
               />
             </Box>
             <Button
@@ -272,7 +272,7 @@ const useHandlePDFViewerError = () => {
               style={{ flexShrink: 0, alignSelf: 'center' }}
               height={156}
               width={468}
-              src={`${RESOURCES_URL}/extension/pdf/guide2.gif`}
+              src={getChromeExtensionAssetsURL('/images/pdf/guide-2.gif')}
             />
           </Stack>
         </Stack>,

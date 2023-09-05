@@ -348,7 +348,6 @@
     "popup__special_page__item1": "New tabs without loaded websites",
     "popup__special_page__item2": "Chrome pages",
     "popup__special_page__item3": "Chrome Web Store pages",
-    "popup__special_page__item4": "chat.openai.com",
     "popup__refresh_page__title": "Refresh this page to activate the extension on this page.",
     "popup__refresh_page__button": "Refresh this page",
     "popup__set_shortcut__description1": "Press",

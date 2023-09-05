@@ -129,7 +129,6 @@ const App: FC<{
               t('client:popup__special_page__item1'),
               t('client:popup__special_page__item2'),
               t('client:popup__special_page__item3'),
-              t('client:popup__special_page__item4'),
             ]}
           />
         </Alert>
@@ -205,8 +204,7 @@ const init = async () => {
         (currentTab && currentTab[0] && currentTab[0].url) || 'chrome://'
       isSpecialPage =
         tabUrl.startsWith('chrome') ||
-        tabUrl.startsWith('https://chrome.google.com/webstore') ||
-        tabUrl.startsWith('https://chat.openai.com')
+        tabUrl.startsWith('https://chrome.google.com/webstore')
       if (isSpecialPage) {
         if (
           tabUrl.includes('pages/pdf/web') &&
@@ -236,6 +234,12 @@ const init = async () => {
         }
       }
     } catch (e) {
+      if (isSpecialPage) {
+        chromeExtensionClientOpenPage({
+          url: Browser.runtime.getURL(`/pages/chat/index.html`),
+        })
+        return
+      }
       console.log(e)
       root.render(
         <React.StrictMode>

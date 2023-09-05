@@ -72,7 +72,7 @@ const AuthUserRoleIconDropdown: FC = () => {
       )}
       {userRole !== 'pro' && (
         <Link
-          href={`${APP_USE_CHAT_GPT_HOST}/referral`}
+          href={`${APP_USE_CHAT_GPT_HOST}/rewards`}
           target={'_blank'}
           underline={'none'}
         >

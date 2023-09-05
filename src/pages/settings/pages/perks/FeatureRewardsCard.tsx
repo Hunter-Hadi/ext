@@ -30,7 +30,7 @@ const FeatureRewardsCard: FC = () => {
         imageLink={getChromeExtensionAssetsURL(
           '/images/settings/perks/rewards.png',
         )}
-        buttonLink={`${APP_USE_CHAT_GPT_HOST}/referral`}
+        buttonLink={`${APP_USE_CHAT_GPT_HOST}/rewards`}
       />
     </SettingsFeatureCardLayout>
   )

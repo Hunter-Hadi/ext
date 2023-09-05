@@ -273,7 +273,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
           flex={1}
           lineHeight={'28px'}
         >
-          {menuLabel}
+          {menuLabel} - {menuItem.id}
         </Typography>
         <span
           className={

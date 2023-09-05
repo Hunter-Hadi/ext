@@ -2,6 +2,8 @@ import { useRecoilState } from 'recoil'
 import { RangyCoreState, RangyState } from '@/features/contextMenu/store'
 import { ISelection } from '@/features/contextMenu/types'
 import { useEffect, useRef } from 'react'
+import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const useRangy = () => {
   const [rangyCore, setRangyCore] = useRecoilState(RangyCoreState)
@@ -41,8 +43,11 @@ const useRangy = () => {
     })
   }
 
-  const saveCurrentSelection = (selection: ISelection) => {
-    console.log('[ContextMenu Module]: saveCurrentSelection', selection)
+  const saveCurrentSelection = async (selection: ISelection) => {
+    selection.selectionText = await sliceTextByTokens(
+      selection.selectionText || '',
+      PAGE_SUMMARY_MAX_TOKENS,
+    )
     setRangy((prevState) => {
       return {
         ...prevState,

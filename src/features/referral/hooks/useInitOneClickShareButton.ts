@@ -4,9 +4,9 @@ import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinRe
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useEffect, useRef } from 'react'
 
-// const APP_MAX_AI_ME_REFERRAL_PAGE_URL = 'http://localhost:3000/referral'
-const APP_MAX_AI_ME_REFERRAL_PAGE_URL =
-  'https://main.d3bohqvl407i44.amplifyapp.com'
+const APP_MAX_AI_ME_REFERRAL_PAGE_URL = 'http://localhost:3000'
+// const APP_MAX_AI_ME_REFERRAL_PAGE_URL =
+//   'https://main.d3bohqvl407i44.amplifyapp.com'
 
 /**
  * 初始化one-click referral, https://app.maxai.me/referral

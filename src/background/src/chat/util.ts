@@ -8,6 +8,7 @@ import {
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
   IAIResponseMessage,
+  IChatMessage,
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
@@ -353,7 +354,8 @@ export const processAskAIParameters = async (
     // question prompt占用的tokens
     const questionPromptTokens = (await getTextTokens(question.question)).length
     // api question 会用到1次message, maxHistoryCount - 1
-    let maxHistoryCount = (conversation.meta.maxHistoryCount || 10) - 1
+    // NOTE: 因为有middle out, 设置默认的maxHistoryCount上限为100
+    let maxHistoryCount = (conversation.meta.maxHistoryCount || 100) - 1
     // 如果有systemPrompt, maxHistoryCount - 1
     if (systemPromptTokens.length > 0) {
       maxHistoryCount -= 1
@@ -363,43 +365,79 @@ export const processAskAIParameters = async (
       maxHistoryCount = Math.min(maxHistoryCount, options.maxHistoryMessageCnt)
     }
     /**
-     * 1. 如果有systemPrompt，那么最大历史记录token数 = maxTokens - systemPromptTokens - questionPromptTokens - 1000
+     * 最大历史记录token数 = maxTokens - systemPromptTokens - questionPromptTokens - 1000
      */
     const maxHistoryTokens =
       (conversation.meta.maxTokens || 4096) -
       systemPromptTokens -
       questionPromptTokens -
       1000 // 预留1000个token给ai生成的答案
-    let historyTokensUsed = 0
-    const historyMessages: Array<IAIResponseMessage | IUserChatMessage> = []
-    // 如果小于最大历史记录数，并且小于最大历史记录token数
-    // 从后往前遍历，直到满足条件
-    let isFindAIResponse = false
+    // 寻找本次提问的历史记录开始和结束节点
+    let startIndex: number | null = null
+    let endIndex: number | null = null
     for (let i = conversation.messages.length - 1; i >= 0; i--) {
       const message = conversation.messages[i]
       // 如果是ai回复，那么标记开始
-      if (message.type === 'ai') {
-        isFindAIResponse = true
+      if (message.type === 'ai' && endIndex === null) {
+        endIndex = i
       }
-      // 如果是system或者third，那么跳过
-      if (
-        !isFindAIResponse ||
-        message.type === 'system' ||
-        message.type === 'third'
-      ) {
-        continue
-      }
-      const tokens = (await getTextTokens(message.text)).length
-      historyTokensUsed += tokens
-      if (
-        historyMessages.length < maxHistoryCount &&
-        historyTokensUsed < maxHistoryTokens
-      ) {
-        historyMessages.unshift(message as IAIResponseMessage)
-      } else {
-        break
+      // 如果是用户消息，从非includeHistory的消息开始
+      if (message.type === 'user' && startIndex === null) {
+        if (!(message as IUserChatMessage).extra.includeHistory) {
+          startIndex = i
+        }
       }
     }
+    if (startIndex === null) {
+      // 说明用户没用过contextMenu
+      startIndex = 0
+    }
+    let historyTokensUsed = 0
+    let historyCountUsed = 0
+    const startMessages: Array<IUserChatMessage | IAIResponseMessage> = []
+    const endMessages: Array<IUserChatMessage | IAIResponseMessage> = []
+    // middle out 从尾部开始，直到满足条件
+    if (endIndex !== null) {
+      let addMessagePosition: 'start' | 'end' = 'end'
+      // 如果小于最大历史记录长度，并且小于最大历史记录token数
+      while (
+        historyTokensUsed < maxHistoryTokens &&
+        historyCountUsed < maxHistoryCount
+      ) {
+        let message: IChatMessage | null = null
+        if (addMessagePosition === 'end') {
+          message = conversation.messages[endIndex] || null
+          endIndex -= 1
+        } else {
+          message = conversation.messages[startIndex] || null
+          startIndex += 1
+        }
+        if (!message) {
+          break
+        }
+        if (message.type !== 'system' && message.type !== 'third') {
+          const messageToken = (await getTextTokens(message.text)).length
+          // 如果当前消息的token数大于最大历史记录token数，那么不添加
+          if (historyTokensUsed + messageToken > maxHistoryTokens) {
+            break
+          } else {
+            if (addMessagePosition === 'end') {
+              endMessages.unshift(message as IUserChatMessage)
+            } else {
+              startMessages.push(message as IUserChatMessage)
+            }
+          }
+          historyTokensUsed += messageToken
+          historyCountUsed += 1
+          addMessagePosition = addMessagePosition === 'end' ? 'start' : 'end'
+        }
+        // 如果开始下标和结束下标重合了，break
+        if (startIndex === endIndex) {
+          break
+        }
+      }
+    }
+    const historyMessages = startMessages.concat(endMessages)
     console.log(
       '新版Conversation History Messages',
       historyMessages,

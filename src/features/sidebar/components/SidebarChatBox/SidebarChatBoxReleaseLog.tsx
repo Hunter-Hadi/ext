@@ -35,7 +35,9 @@ const SidebarChatBoxReleaseLog: FC = () => {
             textDecoration: 'underline!important',
           }}
         >
-          {`MaxAI.me v${APP_VERSION} - ${ReleaseLogText}`}
+          <span>{`MaxAI.me v`}</span>
+          <span>{`${APP_VERSION}`}</span>
+          <span>{`- ${ReleaseLogText}`}</span>
         </Link>
       </Typography>
       {/*<Link*/}

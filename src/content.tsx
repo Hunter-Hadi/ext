@@ -5,6 +5,7 @@ import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import {
+  APP_VERSION,
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
@@ -92,6 +93,7 @@ import('./pages/App').then((module) => {
   }
   container.id = ROOT_CONTAINER_ID
   container.style.display = 'none'
+  container.setAttribute('data-version', APP_VERSION)
   document.body.appendChild(container)
   const shadowContainer = container.attachShadow({ mode: 'open' })
   const emotionRoot = document.createElement('style')

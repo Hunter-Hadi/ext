@@ -22,7 +22,7 @@ export type IPageSummaryType =
   | 'PDF_CRX_SUMMARY'
   | 'DEFAULT_EMAIL_SUMMARY'
 
-const PAGE_SUMMARY_MAX_TOKENS = 12000 // 12k
+export const PAGE_SUMMARY_MAX_TOKENS = 12000 // 12k
 
 export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   [key in IPageSummaryType]: IContextMenuItem

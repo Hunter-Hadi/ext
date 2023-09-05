@@ -264,6 +264,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `client.${key}`)) {
       return `client.${key}`
     }
+    if (_.get(sourceJson, `prompt.${key}`)) {
+      return `prompt.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs
@@ -383,10 +386,12 @@ const updateI18nJson = async (
           i,
           i + maxConcurrency,
         )
+
         translatedJsonData.push(
           ...(await Promise.all(
             partNeedTranslateJsonList.map(async (needTranslateJson, index) => {
               debug && console.log(needTranslateJson)
+              // console.log(needTranslateJson)
               const { data, success, usage } = await translateValue(
                 needTranslateJson,
                 'English',

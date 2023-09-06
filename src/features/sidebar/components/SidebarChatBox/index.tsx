@@ -236,7 +236,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         <SidebarTabs />
         <Box ref={messageListContainerList}>
           <AppSuspenseLoadingLayout>
-            {slicedMessageList.map((message) => {
+            {slicedMessageList.map((message, index) => {
               return (
                 <SidebarChatBoxMessageItem
                   className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
@@ -247,7 +247,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   editAble={editAble}
                   userAvatar={userAvatar}
                   useChatGPTAble={true}
-                  key={message.messageId}
+                  key={
+                    message.messageId + '_sidebar_chat_message_' + String(index)
+                  }
                   onSave={(value) => {
                     onQuestionUpdate &&
                       onQuestionUpdate(message.messageId, value)

@@ -11,10 +11,7 @@ import {
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import {
-  useChromeExtensionButtonSettings,
-  useChromeExtensionButtonSettingsWithSystemContextMenu,
-} from '@/background/utils/buttonSettings'
+import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import Box from '@mui/material/Box'
 import PopperWrapper from '@/components/PopperWrapper'
 import Card from '@mui/material/Card'
@@ -42,11 +39,6 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
   const { updateButtonSettingsWithDomain, toggleButtonSettings } =
     useChromeExtensionButtonSettings()
-  const textSelectPopupButtonSettings =
-    useChromeExtensionButtonSettingsWithSystemContextMenu(
-      'textSelectPopupButton',
-    )
-  console.log(textSelectPopupButtonSettings, 'textSelectPopupButtonSettings')
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)

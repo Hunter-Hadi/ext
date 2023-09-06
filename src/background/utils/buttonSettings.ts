@@ -25,7 +25,7 @@
  *   }
  * }
  */
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   IChromeExtensionButtonSetting,
   IChromeExtensionButtonSettingKey,
@@ -43,10 +43,21 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { getCurrentDomainHost } from '@/utils'
 import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
-import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
+import isEqual from 'lodash-es/isEqual'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const [buttonSettings, setButtonSettings] = useState(
+    () => appSettings.buttonSettings,
+  )
+  useEffect(() => {
+    setButtonSettings((prevState) => {
+      if (isEqual(prevState, appSettings.buttonSettings)) {
+        return prevState
+      }
+      return appSettings.buttonSettings
+    })
+  }, [appSettings.buttonSettings])
   const { syncLocalToServer } = useSyncSettingsChecker()
   const debounceSyncLocalToServer = useCallback(
     debounce(syncLocalToServer, 1000),
@@ -57,12 +68,12 @@ export const useChromeExtensionButtonSettings = () => {
     newSettings: IChromeExtensionButtonSetting,
     saveToServer = true,
   ) => {
-    const needRemoveMenuIdMap = getNeedRemovePromptIdsMap()
     await setChromeExtensionSettings((settings) => {
-      newSettings.contextMenu = newSettings.contextMenu.filter(
-        (contextMenu) => !needRemoveMenuIdMap.get(contextMenu.id),
+      lodashSet(
+        settings,
+        `buttonSettings.${buttonKey}.visibility`,
+        newSettings.visibility,
       )
-      lodashSet(settings, `buttonSettings.${buttonKey}`, newSettings)
       return settings
     })
     const settings = await getChromeExtensionSettings()
@@ -127,7 +138,7 @@ export const useChromeExtensionButtonSettings = () => {
   }
   return {
     loaded: !!appSettings.buttonSettings,
-    buttonSettings: appSettings.buttonSettings,
+    buttonSettings,
     updateButtonSettings,
     toggleButtonSettings,
     updateButtonSettingsWithDomain,
@@ -137,7 +148,6 @@ export const useChromeExtensionButtonSettings = () => {
 export const useChromeExtensionButtonSettingsWithSystemContextMenu = (
   buttonKey: IChromeExtensionButtonSettingKey,
 ) => {
-  const [appSettings] = useRecoilState(AppSettingsState)
   const [host, setHost] = useState<string>('')
   const { loaded, buttonSettings } = useChromeExtensionButtonSettings()
   useEffectOnce(() => {
@@ -186,7 +196,7 @@ export const useChromeExtensionButtonSettingsWithSystemContextMenu = (
       return computedButtonSettings
     }
     return undefined
-  }, [loaded, buttonSettings, host, buttonKey, appSettings.userSettings])
+  }, [loaded, buttonSettings, host, buttonKey])
 }
 
 /**

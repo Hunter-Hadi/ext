@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Mazungumzo mapya",
     "sidebar__tabs__summary__action_btn__title": "Sasisha muhtasari",
     "sidebar__tabs__chat__tooltip": "Uliza AI chochote",
-    "sidebar__tabs__summary__tooltip": "Muhtasari wa Ukurasa/PDF & mazungumzo"
+    "sidebar__tabs__summary__tooltip__page": "Muhtasari wa Ukurasa & Mzungumzo",
+    "sidebar__tabs__summary__tooltip__default_email": "Muhtasari wa Barua pepe & Mzungumzo",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Muhtasari wa PDF & Mzungumzo",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Muhtasari wa Video & Mzungumzo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

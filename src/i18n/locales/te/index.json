@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "కొత్త చాట్",
     "sidebar__tabs__summary__action_btn__title": "సమరాలను రిఫ్రెష్ చేయండి",
     "sidebar__tabs__chat__tooltip": "ఏదైనా విషయంలో AI కి అడగండి",
-    "sidebar__tabs__summary__tooltip": "పేజీ/PDF సారాంశం & చాట్"
+    "sidebar__tabs__summary__tooltip__page": "పేజీ సారాంశం & చాట్",
+    "sidebar__tabs__summary__tooltip__default_email": "ఇమెయిల్ సారాంశం & చాట్",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF సారాంశం & చాట్",
+    "sidebar__tabs__summary__tooltip__youtube_video": "వీడియో సారాంశం & చాట్"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

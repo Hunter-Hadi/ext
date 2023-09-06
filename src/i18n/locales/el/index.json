@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Νέα συνομιλία",
     "sidebar__tabs__summary__action_btn__title": "Ανανέωση περίληψης",
     "sidebar__tabs__chat__tooltip": "Ρωτήστε την AI οτιδήποτε",
-    "sidebar__tabs__summary__tooltip": "Περίληψη σελίδας/PDF & συνομιλία"
+    "sidebar__tabs__summary__tooltip__page": "Σύνοψη σελίδας & συνομιλία",
+    "sidebar__tabs__summary__tooltip__default_email": "Σύνοψη email & συνομιλία",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Σύνοψη PDF & συνομιλία",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Σύνοψη βίντεο YouTube & συνομιλία"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

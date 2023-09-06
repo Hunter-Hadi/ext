@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "নতুন চ্যাট",
     "sidebar__tabs__summary__action_btn__title": "সারাংশ রিফ্রেশ",
     "sidebar__tabs__chat__tooltip": "এইচআই কিছু জিজ্ঞাসা করুন",
-    "sidebar__tabs__summary__tooltip": "পৃষ্ঠা/পিডিএফ সংক্ষেপ এবং চ্যাট"
+    "sidebar__tabs__summary__tooltip__page": "পৃষ্ঠা সংক্ষেপ এবং চ্যাট",
+    "sidebar__tabs__summary__tooltip__default_email": "ইমেল সংক্ষেপ এবং চ্যাট",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "পিডিএফ সংক্ষেপ এবং চ্যাট",
+    "sidebar__tabs__summary__tooltip__youtube_video": "ভিডিও সংক্ষেপ এবং চ্যাট"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

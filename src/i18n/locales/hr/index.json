@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Novi chat",
     "sidebar__tabs__summary__action_btn__title": "Osvježi sažetak",
     "sidebar__tabs__chat__tooltip": "Pitajte AI bilo što",
-    "sidebar__tabs__summary__tooltip": "Sažetak stranice/PDF-a i chat"
+    "sidebar__tabs__summary__tooltip__page": "Sažetak stranice i chat",
+    "sidebar__tabs__summary__tooltip__default_email": "Sažetak e-pošte i chat",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Sažetak PDF-a i chat",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Sažetak videa i chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

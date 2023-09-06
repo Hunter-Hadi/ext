@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "नया चैट",
     "sidebar__tabs__summary__action_btn__title": "सारांश ताजगी करें",
     "sidebar__tabs__chat__tooltip": "AI से कुछ पूछें",
-    "sidebar__tabs__summary__tooltip": "पृष्ठ/पीडीएफ सारांश और चैट"
+    "sidebar__tabs__summary__tooltip__page": "पृष्ठ सारांश और चैट",
+    "sidebar__tabs__summary__tooltip__default_email": "ईमेल सारांश और चैट",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "पीडीएफ सारांश और चैट",
+    "sidebar__tabs__summary__tooltip__youtube_video": "वीडियो सारांश और चैट"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

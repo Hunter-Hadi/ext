@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Jauna čata tērzēšana",
     "sidebar__tabs__summary__action_btn__title": "Atsvaidzināt kopsavilkumu",
     "sidebar__tabs__chat__tooltip": "Jautājiet AI jebko",
-    "sidebar__tabs__summary__tooltip": "Lapas/PDF kopsavilkums un čats"
+    "sidebar__tabs__summary__tooltip__page": "Lapas kopsavilkums un tērzēšana",
+    "sidebar__tabs__summary__tooltip__default_email": "E-pasta kopsavilkums un tērzēšana",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF kopsavilkums un tērzēšana",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Video kopsavilkums un tērzēšana"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

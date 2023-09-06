@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Bagong chat",
     "sidebar__tabs__summary__action_btn__title": "I-refresh ang buod",
     "sidebar__tabs__chat__tooltip": "Tanongin ang AI tungkol sa anumang bagay",
-    "sidebar__tabs__summary__tooltip": "Buod ng Pahina/PDF at chat"
+    "sidebar__tabs__summary__tooltip__page": "Buod ng Pahina at Chat",
+    "sidebar__tabs__summary__tooltip__default_email": "Buod ng Email at Chat",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Buod ng PDF at Chat",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Buod ng Video at Chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

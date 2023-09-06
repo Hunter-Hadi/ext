@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Nov klepet",
     "sidebar__tabs__summary__action_btn__title": "Osveži povzetek",
     "sidebar__tabs__chat__tooltip": "Vprašajte AI karkoli",
-    "sidebar__tabs__summary__tooltip": "Povzetek strani/PDF in klepet"
+    "sidebar__tabs__summary__tooltip__page": "Povzetek strani in klepet",
+    "sidebar__tabs__summary__tooltip__default_email": "Povzetek e-pošte in klepet",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Povzetek PDF in klepet",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Povzetek videa in klepet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

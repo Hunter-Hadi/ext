@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Perbualan baru",
     "sidebar__tabs__summary__action_btn__title": "Muat semula ringkasan",
     "sidebar__tabs__chat__tooltip": "Tanya AI apa-apa",
-    "sidebar__tabs__summary__tooltip": "Ringkasan Halaman/PDF & chat"
+    "sidebar__tabs__summary__tooltip__page": "Ringkasan Halaman & Perbualan",
+    "sidebar__tabs__summary__tooltip__default_email": "Ringkasan Emel & Perbualan",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Ringkasan PDF & Perbualan",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Ringkasan Video & Perbualan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

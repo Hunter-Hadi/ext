@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Neuer Chat",
     "sidebar__tabs__summary__action_btn__title": "Zusammenfassung aktualisieren",
     "sidebar__tabs__chat__tooltip": "Fragen Sie KI alles",
-    "sidebar__tabs__summary__tooltip": "Seiten-/PDF-Zusammenfassung & Chat"
+    "sidebar__tabs__summary__tooltip__page": "Seitenzusammenfassung & Chat",
+    "sidebar__tabs__summary__tooltip__default_email": "E-Mail-Zusammenfassung & Chat",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF-Zusammenfassung & Chat",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Video-Zusammenfassung & Chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

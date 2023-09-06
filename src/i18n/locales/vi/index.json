@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Trò chuyện mới",
     "sidebar__tabs__summary__action_btn__title": "Làm mới tổng kết",
     "sidebar__tabs__chat__tooltip": "Hỏi bất cứ điều gì từ AI",
-    "sidebar__tabs__summary__tooltip": "Tóm tắt Trang/PDF & chat"
+    "sidebar__tabs__summary__tooltip__page": "Tổng kết trang & trò chuyện",
+    "sidebar__tabs__summary__tooltip__default_email": "Tổng kết Email & trò chuyện",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Tổng kết PDF & trò chuyện",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Tổng kết Video & trò chuyện"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

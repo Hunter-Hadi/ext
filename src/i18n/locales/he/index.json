@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "צ'אט חדש",
     "sidebar__tabs__summary__action_btn__title": "רענן סיכום",
     "sidebar__tabs__chat__tooltip": "שאלו את המערכת על כל דבר",
-    "sidebar__tabs__summary__tooltip": "סיכום עמוד/קובץ PDF וצ'אט"
+    "sidebar__tabs__summary__tooltip__page": "סיכום עמוד וצ'אט",
+    "sidebar__tabs__summary__tooltip__default_email": "סיכום אימייל וצ'אט",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "סיכום PDF וצ'אט",
+    "sidebar__tabs__summary__tooltip__youtube_video": "סיכום וידאו וצ'אט"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Naujas pokalbis",
     "sidebar__tabs__summary__action_btn__title": "Atnaujinti suvestinę",
     "sidebar__tabs__chat__tooltip": "Užduokite AI bet kokią klausimą",
-    "sidebar__tabs__summary__tooltip": "Puslapio/PDF santrauka ir pokalbis"
+    "sidebar__tabs__summary__tooltip__page": "Puslapio santrauka ir pokalbis",
+    "sidebar__tabs__summary__tooltip__default_email": "El. pašto santrauka ir pokalbis",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF santrauka ir pokalbis",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Vaizdo įrašo santrauka ir pokalbis"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

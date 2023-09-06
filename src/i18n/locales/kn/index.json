@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "ಹೊಸ ಚಾಟ್",
     "sidebar__tabs__summary__action_btn__title": "ಸಂಗ್ರಹವನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ",
     "sidebar__tabs__chat__tooltip": "ಏನಾದರೂ ಕೇಳಿ AI",
-    "sidebar__tabs__summary__tooltip": "ಪುಟ/ಪಿಡಿಎಫ್ ಸಾರಾಂಶ ಮತ್ತು ಚಾಟ್"
+    "sidebar__tabs__summary__tooltip__page": "ಪುಟ ಸಾರಾಂಶ ಮತ್ತು ಚಾಟ್",
+    "sidebar__tabs__summary__tooltip__default_email": "ಇಮೇಲ್ ಸಾರಾಂಶ ಮತ್ತು ಚಾಟ್",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF ಸಾರಾಂಶ ಮತ್ತು ಚಾಟ್",
+    "sidebar__tabs__summary__tooltip__youtube_video": "ವೀಡಿಯೊ ಸಾರಾಂಶ ಮತ್ತು ಚಾಟ್"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

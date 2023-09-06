@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "새로운 채팅",
     "sidebar__tabs__summary__action_btn__title": "요약 새로고침",
     "sidebar__tabs__chat__tooltip": "AI에게 무엇이든 물어보세요",
-    "sidebar__tabs__summary__tooltip": "페이지/PDF 요약 및 채팅"
+    "sidebar__tabs__summary__tooltip__page": "페이지 요약 및 채팅",
+    "sidebar__tabs__summary__tooltip__default_email": "이메일 요약 및 채팅",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF 요약 및 채팅",
+    "sidebar__tabs__summary__tooltip__youtube_video": "비디오 요약 및 채팅"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

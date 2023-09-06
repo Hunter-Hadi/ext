@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Nowy czat",
     "sidebar__tabs__summary__action_btn__title": "Odśwież podsumowanie",
     "sidebar__tabs__chat__tooltip": "Zadaj AI cokolwiek",
-    "sidebar__tabs__summary__tooltip": "Podsumowanie strony/PDF i czat"
+    "sidebar__tabs__summary__tooltip__page": "Podsumowanie strony i czat",
+    "sidebar__tabs__summary__tooltip__default_email": "Podsumowanie e-maila i czat",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Podsumowanie PDF i czat",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Podsumowanie wideo i czat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

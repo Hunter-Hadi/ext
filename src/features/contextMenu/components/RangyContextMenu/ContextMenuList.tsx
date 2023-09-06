@@ -1,6 +1,13 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useContext, useEffect, useMemo, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { Item, Submenu } from 'react-contexify'
@@ -21,6 +28,7 @@ import { contextMenu } from 'react-contexify'
 import { useTranslation } from 'react-i18next'
 import { CurrentInboxMessageTypeSelector } from '@/features/sidebar/store/gmail'
 import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
+import { ChatGPTConversationState } from '@/features/sidebar'
 
 const ContextMenuContext = React.createContext<{
   staticButton?: boolean
@@ -31,10 +39,10 @@ const ContextMenuContext = React.createContext<{
 const ShortCutsButtonItem: FC<{
   menuItem: IContextMenuItemWithChildren
 }> = ({ menuItem }) => {
+  const conversation = useRecoilValue(ChatGPTConversationState)
   const { t } = useTranslation(['prompt'])
   const contextMenuContext = useContext(ContextMenuContext)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
-  const [running, setRunning] = useState(false)
   const menuItemI18nText = useMemo(() => {
     const key: any = `prompt:${menuItem.id}`
     if (t(key) !== menuItem.id) {
@@ -42,56 +50,52 @@ const ShortCutsButtonItem: FC<{
     }
     return menuItem.text
   }, [menuItem, t])
-  useEffect(() => {
-    if (running) {
-      const actions = menuItem.data.actions
-      if (actions && actions.length > 0) {
-        console.log('actions', actions)
-        let setActions = cloneDeep(actions)
-        if (contextMenuContext.staticButton) {
-          setActions = setActions.map((action) => {
-            if (action.type === 'RENDER_CHATGPT_PROMPT') {
-              return {
-                ...action,
-                parameters: {
-                  ...action.parameters,
-                  template: (action.parameters?.template || '').replace(
-                    /\{\{SELECTED_TEXT\}\}/g,
-                    '{{LAST_AI_OUTPUT}}',
-                  ),
-                },
-              }
-            }
-            return action
-          })
-        }
+  const runActions = useCallback(async () => {
+    if (conversation.loading) {
+      return
+    }
+    console.log('Gmail bugs runActions')
+    const actions = menuItem.data.actions
+    if (actions && actions.length > 0) {
+      let setActions = cloneDeep(actions)
+      if (contextMenuContext.staticButton) {
         setActions = setActions.map((action) => {
-          // HACK: 这里的写法特别蠢，但是得记录正确的api和prompt，只能这么写
-          if (
-            action.type === 'INSERT_USER_INPUT' ||
-            action.type === 'ASK_CHATGPT' ||
-            action.type === 'WEBGPT_ASK_CHATGPT'
-          ) {
-            if (!action.parameters.AskChatGPTActionMeta) {
-              action.parameters.AskChatGPTActionMeta = {}
+          if (action.type === 'RENDER_CHATGPT_PROMPT') {
+            return {
+              ...action,
+              parameters: {
+                ...action.parameters,
+                template: (action.parameters?.template || '').replace(
+                  /\{\{SELECTED_TEXT\}\}/g,
+                  '{{LAST_AI_OUTPUT}}',
+                ),
+              },
             }
-            action.parameters.AskChatGPTActionMeta.contextMenu =
-              cloneDeep(menuItem)
-            action.parameters.AskChatGPTActionMeta.contextMenu.text = `[Gmail] ${menuItem.text}`
           }
           return action
         })
-        const isSetSuccess = setShortCuts(setActions)
-        isSetSuccess &&
-          runShortCuts(true)
-            .then()
-            .catch()
-            .finally(() => {
-              setRunning(false)
-            })
       }
+      setActions = setActions.map((action) => {
+        // HACK: 这里的写法特别蠢，但是得记录正确的api和prompt，只能这么写
+        if (
+          action.type === 'INSERT_USER_INPUT' ||
+          action.type === 'ASK_CHATGPT' ||
+          action.type === 'WEBGPT_ASK_CHATGPT'
+        ) {
+          if (!action.parameters.AskChatGPTActionMeta) {
+            action.parameters.AskChatGPTActionMeta = {}
+          }
+          action.parameters.AskChatGPTActionMeta.contextMenu =
+            cloneDeep(menuItem)
+          action.parameters.AskChatGPTActionMeta.contextMenu.text = `[Gmail] ${menuItem.text}`
+        }
+        return action
+      })
+      const isSetSuccess = setShortCuts(setActions)
+      isSetSuccess && (await runShortCuts())
     }
-  }, [runShortCuts, running])
+  }, [setShortCuts, runShortCuts, conversation.loading])
+
   if (menuItem.children && menuItem.children.length > 0) {
     return (
       <Submenu
@@ -167,11 +171,11 @@ const ShortCutsButtonItem: FC<{
           direction={'row'}
           p={'6px'}
           alignItems={'center'}
-          onClick={(event) => {
+          onClick={async (event) => {
             event.stopPropagation()
             event.preventDefault()
-            setRunning(true)
             contextMenu.hideAll()
+            await runActions()
           }}
           onMouseUp={(event) => {
             event.stopPropagation()

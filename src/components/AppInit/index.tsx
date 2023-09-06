@@ -62,11 +62,6 @@ const UseChatGPTWebPageJumpToShortCuts = () => {
   )
 }
 
-const RangyInit = () => {
-  useInitRangy()
-  return <></>
-}
-
 export const AppSettingsInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
   useThemeUpdateListener()
@@ -411,12 +406,15 @@ const AppInit = () => {
   })
   // 初始化one-click referral, https://app.maxai.me/referral
   useInitOneClickShareButton()
+  useInitRangy()
+  useEffect(() => {
+    console.log('????什么鬼')
+  }, [])
   return (
     <>
       <AppSuspenseLoadingLayout>
         {getEnv() === 'gmail' && <GmailInit />}
       </AppSuspenseLoadingLayout>
-      <RangyInit />
       <RangyContextMenu />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />

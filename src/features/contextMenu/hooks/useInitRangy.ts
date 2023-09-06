@@ -64,10 +64,6 @@ const useInitRangy = () => {
     currentSelection,
   } = useRangy()
   const appSettings = useRecoilValue(AppSettingsState)
-  console.log(
-    'lite appSettings',
-    appSettings.buttonSettings?.textSelectPopupButton,
-  )
   const userSettings = appSettings.userSettings
   const { chatBoxShortCutKey } = useCommands()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(

@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "പുതിയ ചാറ്റ്",
     "sidebar__tabs__summary__action_btn__title": "സംഗൃഹനം പുനരുജ്ജീവനം",
     "sidebar__tabs__chat__tooltip": "ഏതെങ്കിലും ചോദിക്കുക AI",
-    "sidebar__tabs__summary__tooltip": "പേജ്/PDF സംഗ്രഹവും ചാറ്റും"
+    "sidebar__tabs__summary__tooltip__page": "പേജ് സംഗ്രഹം & ചാറ്റ്",
+    "sidebar__tabs__summary__tooltip__default_email": "ഇമെയിൽ സംഗ്രഹം & ചാറ്റ്",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF സംഗ്രഹം & ചാറ്റ്",
+    "sidebar__tabs__summary__tooltip__youtube_video": "വീഡിയോ സംഗ്രഹം & ചാറ്റ്"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

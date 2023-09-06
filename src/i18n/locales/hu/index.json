@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Új csevegés",
     "sidebar__tabs__summary__action_btn__title": "Összefoglaló frissítése",
     "sidebar__tabs__chat__tooltip": "Kérdezze az AI-t bármit",
-    "sidebar__tabs__summary__tooltip": "Oldal/PDF összefoglaló és chat"
+    "sidebar__tabs__summary__tooltip__page": "Oldal összefoglaló és csevegés",
+    "sidebar__tabs__summary__tooltip__default_email": "E-mail összefoglaló és csevegés",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF összefoglaló és csevegés",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Videó összefoglaló és csevegés"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

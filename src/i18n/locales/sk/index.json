@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Nový chat",
     "sidebar__tabs__summary__action_btn__title": "Obnoviť súhrn",
     "sidebar__tabs__chat__tooltip": "Opýtajte sa AI čokoľvek",
-    "sidebar__tabs__summary__tooltip": "Stručný prehľad stránky/PDF a chat"
+    "sidebar__tabs__summary__tooltip__page": "Stručný prehľad stránky a chat",
+    "sidebar__tabs__summary__tooltip__default_email": "Stručný prehľad e-mailu a chat",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Stručný prehľad PDF a chat",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Stručný prehľad videa a chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

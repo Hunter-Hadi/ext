@@ -22,20 +22,35 @@ import Button from '@mui/material/Button'
 import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
 import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookReferral'
 import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinReferral'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
   value: ISidebarConversationType
-  tooltip?: I18nextKeysType
+  tooltip?: () => I18nextKeysType
 }> = [
   {
     label: 'client:sidebar__tabs__chat__title',
-    tooltip: 'client:sidebar__tabs__chat__tooltip',
+    tooltip: () => 'client:sidebar__tabs__chat__tooltip',
     value: 'Chat',
   },
   {
     label: 'client:sidebar__tabs__summary__title',
-    tooltip: 'client:sidebar__tabs__summary__tooltip',
+    tooltip: () => {
+      const summaryType = getPageSummaryType()
+      switch (summaryType) {
+        case 'DEFAULT_EMAIL_SUMMARY':
+          return 'client:sidebar__tabs__summary__tooltip__default_email'
+        case 'PAGE_SUMMARY':
+          return 'client:sidebar__tabs__summary__tooltip__page'
+        case 'PDF_CRX_SUMMARY':
+          return 'client:sidebar__tabs__summary__tooltip__pdf_crx'
+        case 'YOUTUBE_VIDEO_SUMMARY':
+          return 'client:sidebar__tabs__summary__tooltip__youtube_video'
+        default:
+          return 'client:sidebar__tabs__summary__tooltip__page'
+      }
+    },
     value: 'Summary',
   },
 ]
@@ -109,7 +124,7 @@ const SidebarTabs: FC = () => {
               key={item.value}
               value={item.value}
               label={
-                <TextOnlyTooltip title={t(item.tooltip as any)}>
+                <TextOnlyTooltip title={t(item.tooltip?.() as any)}>
                   <Typography fontSize={'14px'} color={'text.primary'}>
                     {t(item.label as any)}
                   </Typography>

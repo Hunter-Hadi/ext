@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "புதிய உரைநடவாதை",
     "sidebar__tabs__summary__action_btn__title": "சுருக்கமான சுருக்கம்",
     "sidebar__tabs__chat__tooltip": "ஏதேனும் கேள்வியை அரசைப் பெறுங்கள்",
-    "sidebar__tabs__summary__tooltip": "பக்கம்/PDF சுருக்கம் மற்றும் கேள்வி"
+    "sidebar__tabs__summary__tooltip__page": "பக்க சுருக்கம் மற்றும் அரட்டை",
+    "sidebar__tabs__summary__tooltip__default_email": "மின்னஞ்சல் சுருக்கம் மற்றும் அரட்டை",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF சுருக்கம் மற்றும் அரட்டை",
+    "sidebar__tabs__summary__tooltip__youtube_video": "வீடியோ சுருக்கம் மற்றும் அரட்டை"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

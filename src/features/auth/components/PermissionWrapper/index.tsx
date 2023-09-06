@@ -60,7 +60,6 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     return permissionCard
   }, [permissionCard, modifyPermissionCard])
   const { currentUserPlan } = useUserInfo()
-  console.log('currentUserPlan', currentUserPlan.name)
   const [open, setOpen] = useState(false)
   const idRef = useRef(uuidV4())
   useEffect(() => {

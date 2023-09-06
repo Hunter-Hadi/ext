@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Novi čet",
     "sidebar__tabs__summary__action_btn__title": "Osveži rezime",
     "sidebar__tabs__chat__tooltip": "Pitajte veštačku inteligenciju bilo šta",
-    "sidebar__tabs__summary__tooltip": "Sažetak stranice/PDF-a i čet"
+    "sidebar__tabs__summary__tooltip__page": "Sažetak stranice i čet",
+    "sidebar__tabs__summary__tooltip__default_email": "Sažetak e-pošte i čet",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "Sažetak PDF-a i čet",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Sažetak videa i čet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

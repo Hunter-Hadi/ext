@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "Uusi keskustelu",
     "sidebar__tabs__summary__action_btn__title": "Päivitä yhteenveto",
     "sidebar__tabs__chat__tooltip": "Kysy tekoälyltä mitä tahansa",
-    "sidebar__tabs__summary__tooltip": "Sivu/PDF-yhteenveto ja keskustelu"
+    "sidebar__tabs__summary__tooltip__page": "Sivun yhteenveto ja keskustelu",
+    "sidebar__tabs__summary__tooltip__default_email": "Sähköpostin yhteenveto ja keskustelu",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF:n yhteenveto ja keskustelu",
+    "sidebar__tabs__summary__tooltip__youtube_video": "Videon yhteenveto ja keskustelu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

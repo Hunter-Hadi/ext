@@ -48,15 +48,18 @@ const SidebarChatBoxChatSpeedDial: FC<{
         sx={{
           position: 'absolute',
           left: 0,
-          bottom: '4px',
-          '& button': {
-            width: 36,
-            height: 36,
-            minHeight: 36,
-          },
+          bottom: '0',
           '& > button': {
             width: 40,
             height: 40,
+          },
+        }}
+        FabProps={{
+          sx: {
+            '& + div': {
+              marginBottom: '-40px!important',
+              paddingBottom: '48px!important',
+            },
           },
         }}
         icon={

@@ -414,7 +414,10 @@
     "sidebar__tabs__chat__action_btn__title": "新聊天",
     "sidebar__tabs__summary__action_btn__title": "刷新摘要",
     "sidebar__tabs__chat__tooltip": "向AI提問",
-    "sidebar__tabs__summary__tooltip": "頁面/PDF摘要與對話"
+    "sidebar__tabs__summary__tooltip__page": "頁面摘要與聊天",
+    "sidebar__tabs__summary__tooltip__default_email": "電子郵件摘要與聊天",
+    "sidebar__tabs__summary__tooltip__pdf_crx": "PDF摘要與聊天",
+    "sidebar__tabs__summary__tooltip__youtube_video": "影片摘要與聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

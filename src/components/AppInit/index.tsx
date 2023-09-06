@@ -39,6 +39,7 @@ import { clientGetBrowserInfo } from '@/utils/larkBot'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
 
 const log = new Log('AppInit')
 
@@ -403,6 +404,7 @@ const AppInit = () => {
     }
     ShortcutMessageClientInit()
     clientGetBrowserInfo().then().catch()
+    initClientProxyWebsocket()
   })
   // 初始化one-click referral, https://app.maxai.me/referral
   useInitOneClickShareButton()

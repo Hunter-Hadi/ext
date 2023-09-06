@@ -17,6 +17,7 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_listenUploadFilesChange'
   | 'Client_listenUpdateConversationMessages'
   | 'Client_ListenGetIframePageContentResponse'
+  | 'Client_ListenProxyWebsocket'
   // iframe
   | 'Iframe_ListenGetPageContent'
 
@@ -51,6 +52,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getContextMenuActions'
   | 'Client_proxyFetchAPI'
   | 'Client_getIframePageContent'
+  | 'Client_ListenProxyWebsocketResponse'
   // 上传文件相关
   | 'Client_chatUploadFiles'
   | 'Client_chatUploadFilesChange'

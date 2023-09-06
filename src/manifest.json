@@ -11,37 +11,38 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
+      "matches": ["<all_urls>"],
       "js": ["content.js"],
       "run_at": "document_end"
     },
     {
-      "matches": [
-        "https://main.d3bohqvl407i44.amplifyapp.com/*"
-      ],
+      "matches": ["https://main.d3bohqvl407i44.amplifyapp.com/*"],
       "js": ["check_status.js"],
       "run_at": "document_end"
     },
     {
-      "matches": [
-        "<all_urls>"
-      ],
+      "matches": ["<all_urls>"],
       "match_about_blank": true,
       "all_frames": true,
       "js": ["iframe.js"],
       "run_at": "document_end"
     }
   ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "host_permissions": ["<all_urls>"],
   "options_ui": {
     "page": "pages/settings/index.html",
     "open_in_tab": true
   },
-  "permissions": ["tabs", "scripting", "storage", "management", "contextMenus", "clipboardRead", "clipboardWrite"],
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage",
+    "management",
+    "contextMenus",
+    "clipboardRead",
+    "clipboardWrite",
+    "declarativeNetRequestWithHostAccess"
+  ],
   "action": {
     "default_icon": {
       "16": "assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png",
@@ -52,9 +53,9 @@
     "default_popup": "pages/popup/index.html"
   },
   "icons": {
-    "16":  "assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png",
-    "32":  "assets/USE_CHAT_GPT_AI/icons/maxai_32_normal.png",
-    "48":  "assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png",
+    "16": "assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png",
+    "32": "assets/USE_CHAT_GPT_AI/icons/maxai_32_normal.png",
+    "48": "assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png",
     "128": "assets/USE_CHAT_GPT_AI/icons/maxai_128_normal.png"
   },
   "commands": {
@@ -90,9 +91,16 @@
         "pages/chatgpt/fileUploadServer.js",
         "pages/*"
       ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_bing",
+        "enabled": true,
+        "path": "rules/bing.json"
+      }
+    ]
+  }
 }

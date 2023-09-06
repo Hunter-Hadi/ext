@@ -365,7 +365,7 @@ export const createBackgroundMessageListener = (
     sender: Browser.Runtime.MessageSender,
   ) => Promise<{ success: boolean; data?: any; message?: string } | undefined>,
 ) => {
-  Browser.runtime.onMessage.addListener((message, sender) => {
+  const currentListener = (message: any, sender: any) => {
     const {
       data: { _RUNTIME_, ...rest },
       event,
@@ -381,7 +381,11 @@ export const createBackgroundMessageListener = (
         }
       })
     })
-  })
+  }
+  Browser.runtime.onMessage.addListener(currentListener)
+  return () => {
+    Browser.runtime.onMessage.removeListener(currentListener)
+  }
 }
 
 /**

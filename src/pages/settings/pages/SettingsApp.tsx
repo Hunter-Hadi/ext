@@ -15,6 +15,9 @@ import { useAuthLogin } from '@/features/auth'
 import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
 import PageHelp from '@/pages/settings/components/pageHelp'
 import SettingsLoginPage from '@/pages/settings/pages/login'
+import useEffectOnce from '@/hooks/useEffectOnce'
+import WebSocketAsPromised from 'websocket-as-promised'
+import { websocketUtils } from '@/background/src/chat/BingChat/bing/utils'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {
   xs: 250,
@@ -106,6 +109,19 @@ const SettingsApp: FC = () => {
       // do nothing
     }
   }, [route, isLogin])
+  useEffectOnce(() => {
+    setTimeout(async () => {
+      const wsp = new WebSocketAsPromised(
+        'wss://sydney.bing.com/sydney/ChatHub',
+        {
+          packMessage: websocketUtils.packMessage,
+          unpackMessage: websocketUtils.unpackMessage,
+        },
+      )
+      wsp.open()
+      wsp.sendPacked({ protocol: 'json', version: 1 })
+    }, 3000)
+  })
   return (
     <SettingsPageRouteContext.Provider value={{ route, setRoute }}>
       <Stack height={'100vh'}>

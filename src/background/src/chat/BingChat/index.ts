@@ -109,6 +109,7 @@ class BingChat extends BaseChat {
         }
       },
     })
+    await this.clearFiles()
   }
   async uploadFiles(files: IChatUploadFile[]) {
     this.chatFiles = files

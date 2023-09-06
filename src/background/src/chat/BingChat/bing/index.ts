@@ -6,10 +6,10 @@ import {
   InvocationEventType,
   SendMessageParams,
 } from './types'
-import { convertMessageToMarkdown, websocketUtils } from './utils'
-import WebSocketAsPromised from 'websocket-as-promised'
+import { convertMessageToMarkdown } from './utils'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { v4 as uuidV4 } from 'uuid'
+import { ClientProxyWebSocket } from '@/background/utils/clientProxyWebsocket/background'
 
 const styleOptionMap: Record<BingConversationStyle, string> = {
   [BingConversationStyle.Balanced]: '',
@@ -127,13 +127,15 @@ export class BingWebBot {
       }
     }
     const conversation = this.conversationContext!
-    const wsp = new WebSocketAsPromised(
-      'wss://sydney.bing.com/sydney/ChatHub',
-      {
-        packMessage: websocketUtils.packMessage,
-        unpackMessage: websocketUtils.unpackMessage,
-      },
-    )
+    const wsp = new ClientProxyWebSocket('wss://sydney.bing.com/sydney/ChatHub')
+    await wsp.init()
+    // const wsp = new WebSocketAsPromised(
+    //   'wss://sydney.bing.com/sydney/ChatHub',
+    //   {
+    //     packMessage: websocketUtils.packMessage,
+    //     unpackMessage: websocketUtils.unpackMessage,
+    //   },
+    // )
     wsp.onUnpackedMessage.addListener((events: any) => {
       console.log(JSON.stringify(events), 'bing')
       for (const event of events) {
@@ -221,8 +223,8 @@ export class BingWebBot {
         error: 'manual aborted request.',
       })
     })
-    await wsp.open()
-    wsp.sendPacked({ protocol: 'json', version: 1 })
+    await wsp.open('bing')
+    await wsp.sendPacked({ protocol: 'json', version: 1 })
   }
 
   resetConversation() {

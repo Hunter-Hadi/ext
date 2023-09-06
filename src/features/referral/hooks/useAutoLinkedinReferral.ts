@@ -13,6 +13,7 @@ const useAutoLinkedinReferral = () => {
     useShortCutsWithMessageChat()
   const autoLinkedinReferral = useCallback(async () => {
     if (!loading) {
+      const postText = ReferralConfig.inviteLink(userInfo?.referral_code || '')
       setShortCuts([
         {
           type: 'OPEN_URLS',
@@ -45,7 +46,7 @@ const useAutoLinkedinReferral = () => {
               actionType: 'insertText',
               actionExtraData: {
                 clearBeforeInsertText: true,
-                text: ReferralConfig.inviteLink(userInfo?.referral_code || ''),
+                text: postText,
               },
               afterDelay: 1000,
             },
@@ -59,6 +60,21 @@ const useAutoLinkedinReferral = () => {
               actionType: 'click',
               afterDelay: 3000,
             },
+          },
+        },
+        {
+          type: 'OPERATION_ELEMENT',
+          parameters: {
+            OperationElementConfig: {
+              elementSelectors: ['a.inshare-success-state__view-btn'],
+              actionType: 'getLink',
+            },
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SHARE_POST_LINK',
           },
         },
         {
@@ -116,36 +132,40 @@ const useAutoLinkedinReferral = () => {
           },
         },
       ])
+      let shareLink = ''
       const listener: IShortcutEngineListenerType = (event, data) => {
         const action = data?.action as Action
-        if (
-          event === 'afterRunAction' &&
-          action?.type === 'SET_VARIABLE' &&
-          action.parameters?.VariableName === 'AutoTwitterReferralResult'
-        ) {
-          const isSuccess = action.parameters.WFFormValues?.Value === true
-          sendLarkBotMessage(
-            `[Referral] One-click button [Linkedin] ${
-              isSuccess ? 'Success' : 'Fail'
-            }`,
-            JSON.stringify(
+        if (event === 'afterRunAction' && action?.type === 'SET_VARIABLE') {
+          if (action.parameters?.VariableName === 'SHARE_POST_LINK') {
+            shareLink = action.output
+          } else if (
+            action.parameters?.VariableName === 'AutoTwitterReferralResult'
+          ) {
+            const isSuccess = action.parameters.WFFormValues?.Value === true
+            sendLarkBotMessage(
+              `[Referral] One-click button [Linkedin] ${
+                isSuccess ? 'Success' : 'Fail'
+              }`,
+              JSON.stringify(
+                {
+                  email: userInfo?.email || 'unknown',
+                  success: isSuccess,
+                  shareLink: `[ ${shareLink} ]`,
+                },
+                null,
+                4,
+              ),
               {
-                email: userInfo?.email || 'unknown',
-                success: isSuccess,
+                uuid: '608156c7-e65d-4a69-a055-6c10a6ba7217',
               },
-              null,
-              4,
-            ),
-            {
-              uuid: '608156c7-e65d-4a69-a055-6c10a6ba7217',
-            },
-          )
-            .then()
-            .catch()
-          if (isSuccess) {
-            clientFetchMaxAIAPI('/user/complete_referral', {
-              referral_types: ['LINKEDIN_SHARE'],
-            }).then()
+            )
+              .then()
+              .catch()
+            if (isSuccess) {
+              clientFetchMaxAIAPI('/user/complete_referral', {
+                referral_types: ['LINKEDIN_SHARE'],
+              })
+            }
           }
         }
       }

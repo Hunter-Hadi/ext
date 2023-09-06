@@ -13,13 +13,12 @@ const useAutoTwitterReferral = () => {
     useShortCutsWithMessageChat()
   const autoTwitterReferral = useCallback(async () => {
     if (!loading) {
+      const postText = ReferralConfig.inviteLink(userInfo?.referral_code || '')
       setShortCuts([
         {
           type: 'OPEN_URLS',
           parameters: {
-            URLActionURL: `https://twitter.com/intent/tweet?text=${ReferralConfig.inviteLink(
-              userInfo?.referral_code || '',
-            )}`,
+            URLActionURL: `https://twitter.com/intent/tweet?text=${postText}`,
           },
         },
         {
@@ -54,6 +53,23 @@ const useAutoTwitterReferral = () => {
           type: 'OPERATION_ELEMENT',
           parameters: {
             OperationElementConfig: {
+              elementSelectors: [
+                'article[data-testid="tweet"] div[data-testid="User-Name"] a[role="link"]',
+              ],
+              actionType: 'getLink',
+            },
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SHARE_POST_LINK',
+          },
+        },
+        {
+          type: 'OPERATION_ELEMENT',
+          parameters: {
+            OperationElementConfig: {
               elementSelectors: ['div[data-testid="tweetText"]'],
               actionType: 'getText',
               executeElementCount: 10,
@@ -64,8 +80,9 @@ const useAutoTwitterReferral = () => {
           type: 'SCRIPTS_CONDITIONAL',
           parameters: {
             WFCondition: 'Contains',
+            WFMatchTextCaseSensitive: false,
             WFFormValues: {
-              Value: ReferralConfig.inviteLinkMatchText,
+              Value: postText.slice(0, 10),
               WFSerializationType: 'WFDictionaryFieldValue',
             },
             WFConditionalIfTrueActions: [
@@ -135,36 +152,40 @@ const useAutoTwitterReferral = () => {
           },
         },
       ])
+      let shareLink = ''
       const listener: IShortcutEngineListenerType = (event, data) => {
         const action = data?.action as Action
-        if (
-          event === 'afterRunAction' &&
-          action?.type === 'SET_VARIABLE' &&
-          action.parameters?.VariableName === 'AutoTwitterReferralResult'
-        ) {
-          const isSuccess = action.parameters.WFFormValues?.Value === true
-          sendLarkBotMessage(
-            `[Referral] One-click button [Twitter] ${
-              isSuccess ? 'Success' : 'Fail'
-            }`,
-            JSON.stringify(
+        if (event === 'afterRunAction' && action?.type === 'SET_VARIABLE') {
+          if (action.parameters?.VariableName === 'SHARE_POST_LINK') {
+            shareLink = action.output
+          } else if (
+            action.parameters?.VariableName === 'AutoTwitterReferralResult'
+          ) {
+            const isSuccess = action.parameters.WFFormValues?.Value === true
+            sendLarkBotMessage(
+              `[Referral] One-click button [Linkedin] ${
+                isSuccess ? 'Success' : 'Fail'
+              }`,
+              JSON.stringify(
+                {
+                  email: userInfo?.email || 'unknown',
+                  success: isSuccess,
+                  shareLink: `[ ${shareLink} ]`,
+                },
+                null,
+                4,
+              ),
               {
-                email: userInfo?.email || 'unknown',
-                success: isSuccess,
+                uuid: '608156c7-e65d-4a69-a055-6c10a6ba7217',
               },
-              null,
-              4,
-            ),
-            {
-              uuid: '608156c7-e65d-4a69-a055-6c10a6ba7217',
-            },
-          )
-            .then()
-            .catch()
-          if (isSuccess) {
-            clientFetchMaxAIAPI('/user/complete_referral', {
-              referral_types: ['TWITTER_SHARE'],
-            }).then()
+            )
+              .then()
+              .catch()
+            if (isSuccess) {
+              clientFetchMaxAIAPI('/user/complete_referral', {
+                referral_types: ['TWITTER_SHARE'],
+              })
+            }
           }
         }
       }

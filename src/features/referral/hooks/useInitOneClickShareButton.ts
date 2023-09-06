@@ -64,6 +64,9 @@ const useInitOneClickShareButton = () => {
                 await runFn()
               }
             }
+            const delay = (t: number) =>
+              new Promise((resolve) => setTimeout(resolve, t))
+            await delay(3000)
             // 获取当前页面的 URL
             const url = new URL(window.location.href)
             // 创建 URLSearchParams 对象，用于处理查询参数

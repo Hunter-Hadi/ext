@@ -69,6 +69,8 @@ export class ActionOperationElement extends Action {
         // 如果actionType === getText, output设置为获取到的innerText
         if (OperationElementConfig.actionType === 'getText') {
           this.output = executeResponse.elementsInnerText
+        } else if (OperationElementConfig.actionType === 'getLink') {
+          this.output = executeResponse.link
         }
       }
     } catch (e) {

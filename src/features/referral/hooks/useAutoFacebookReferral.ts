@@ -13,6 +13,7 @@ const useAutoFacebookReferral = () => {
     useShortCutsWithMessageChat()
   const autoFacebookReferral = useCallback(async () => {
     if (!loading) {
+      const postText = ReferralConfig.inviteLink(userInfo?.referral_code || '')
       setShortCuts([
         {
           type: 'OPEN_URLS',
@@ -84,8 +85,9 @@ const useAutoFacebookReferral = () => {
           type: 'SCRIPTS_CONDITIONAL',
           parameters: {
             WFCondition: 'Contains',
+            WFMatchTextCaseSensitive: false,
             WFFormValues: {
-              Value: ReferralConfig.inviteLinkMatchText,
+              Value: postText.slice(0, 10),
               WFSerializationType: 'WFDictionaryFieldValue',
             },
             WFConditionalIfTrueActions: [

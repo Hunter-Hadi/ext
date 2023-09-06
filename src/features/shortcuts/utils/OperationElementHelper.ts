@@ -8,6 +8,7 @@ import concat from 'lodash-es/concat'
 export interface IExecuteOperationResult {
   success: boolean
   elementsInnerText: string
+  link: string
 }
 
 export const backgroundSendClientToExecuteOperationElement = (
@@ -17,6 +18,7 @@ export const backgroundSendClientToExecuteOperationElement = (
   const executeOperationErrorResult: IExecuteOperationResult = {
     success: false,
     elementsInnerText: '',
+    link: '',
   }
   const maxExecuteTimes =
     (OperationElementConfig.durationTimes || 30 * 1000) + 5 * 1000
@@ -102,6 +104,7 @@ export const clientExecuteOperationElement = async (
   const executeResult: IExecuteOperationResult = {
     success: false,
     elementsInnerText: '',
+    link: '',
   }
   const doc = document
   let rootElement = rootElementSelector
@@ -180,6 +183,51 @@ export const clientExecuteOperationElement = async (
             {
               const innerText = element?.innerText || ''
               executeResult.elementsInnerText += innerText
+            }
+            break
+          case 'getLink':
+            {
+              if (element.tagName === 'A') {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += (element as HTMLAnchorElement).href
+              } else if (element.tagName === 'IMG') {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += (element as HTMLImageElement).src
+              } else if (element.tagName === 'VIDEO') {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += (element as HTMLVideoElement).src
+              } else if (element.tagName === 'IFRAME') {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += (element as HTMLIFrameElement).src
+              } else if (element.tagName === 'EMBED') {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += (element as HTMLEmbedElement).src
+              } else if (element.tagName === 'SOURCE') {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += (element as HTMLSourceElement).src
+              } else if (element.tagName === 'TRACK') {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += (element as HTMLTrackElement).src
+              } else {
+                if (executeResult.link) {
+                  executeResult.link += ','
+                }
+                executeResult.link += element?.innerText || ''
+              }
             }
             break
           default:

@@ -2,7 +2,10 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChromeExtensionSendEvent } from '@/background/eventType'
-import { createBackgroundMessageListener } from '@/background/utils'
+import {
+  createBackgroundMessageListener,
+  safeGetBrowserTab,
+} from '@/background/utils'
 interface IClientProxyWebSocketOptions {
   createWebSocket?: (url: string) => WebSocket
   packMessage?: (data: any) => string | ArrayBuffer | Blob
@@ -37,13 +40,13 @@ export class ClientProxyWebSocket {
     this.options = options || {}
   }
   async init(clientTabId?: number) {
-    this.clientTabId =
-      clientTabId ||
-      (
-        await Browser.tabs.query({
-          active: true,
-        })
-      )?.[0]?.id
+    const propTab = await safeGetBrowserTab(clientTabId)
+    const currentTab = (
+      await Browser.tabs.query({
+        active: true,
+      })
+    )?.[0]
+    this.clientTabId = propTab?.id || currentTab?.id
     this.clearListener = createBackgroundMessageListener(
       async (runtime, event, data) => {
         if (runtime === 'client') {

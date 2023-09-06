@@ -37,6 +37,7 @@ class BingChat extends BaseChat {
       regenerate?: boolean
       streaming?: boolean
       max_history_message_cnt?: number
+      clientTabId?: number
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -48,7 +49,7 @@ class BingChat extends BaseChat {
       }
     }) => void,
   ) {
-    const { taskId } = options || {}
+    const { taskId, clientTabId } = options || {}
     this.log.info('askChatGPT')
     const controller = new AbortController()
     const signal = controller.signal
@@ -68,6 +69,7 @@ class BingChat extends BaseChat {
       })
     }
     await this.bingLib.doSendMessage({
+      clientTabId,
       prompt: question,
       imageUrl: file?.uploadedUrl,
       signal,

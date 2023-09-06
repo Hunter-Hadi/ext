@@ -95,6 +95,7 @@ export interface SendMessageParams {
   imageUrl?: string
   onEvent: (event: Event) => void
   signal?: AbortSignal
+  clientTabId?: number
 }
 
 export interface ConversationResponse {

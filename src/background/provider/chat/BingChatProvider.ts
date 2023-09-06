@@ -58,6 +58,7 @@ class BingChatProvider implements ChatAdapterInterface {
         regenerate: options.regenerate,
         include_history: options.includeHistory,
         max_history_message_cnt: options.maxHistoryMessageCnt,
+        clientTabId: sender.tab?.id,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

@@ -116,38 +116,44 @@ class BingChat extends BaseChat {
     this.chatFiles = await Promise.all(
       files.map(async (file) => {
         if (file.uploadStatus !== 'success' && file.base64Data) {
-          const formData = new FormData()
-          formData.append(
-            'knowledgeRequest',
-            JSON.stringify({
-              imageInfo: {},
-              knowledgeRequest: {
-                invokedSkills: ['ImageById'],
-                subscriptionId: 'Bing.Chat.Multimodal.Underside',
-                invokedSkillsRequestData: { enableFaceBlur: true },
-                convoData: { convoid: '', convotone: 'Balanced' },
+          try {
+            const formData = new FormData()
+            formData.append(
+              'knowledgeRequest',
+              JSON.stringify({
+                imageInfo: {},
+                knowledgeRequest: {
+                  invokedSkills: ['ImageById'],
+                  subscriptionId: 'Bing.Chat.Multimodal.Underside',
+                  invokedSkillsRequestData: { enableFaceBlur: true },
+                  convoData: { convoid: '', convotone: 'Balanced' },
+                },
+              }),
+            )
+            formData.append(
+              'imageBase64',
+              file.base64Data.replace('data:', '').replace(/^.+,/, ''),
+            )
+            const response = await ofetch<{ blobId: string }>(
+              'https://www.bing.com/images/kblob',
+              {
+                method: 'POST',
+                body: formData,
               },
-            }),
-          )
-          formData.append(
-            'imageBase64',
-            file.base64Data.replace('data:', '').replace(/^.+,/, ''),
-          )
-          const response = await ofetch<{ blobId: string }>(
-            'https://www.bing.com/images/kblob',
-            {
-              method: 'POST',
-              body: formData,
-            },
-          )
-          if (response?.blobId) {
-            file.uploadedUrl = `https://www.bing.com/images/blob?bcid=${response.blobId}`
-            file.uploadStatus = 'success'
-          } else {
+            )
+            if (response?.blobId) {
+              file.uploadedUrl = `https://www.bing.com/images/blob?bcid=${response.blobId}`
+              file.uploadStatus = 'success'
+            } else {
+              file.uploadStatus = 'error'
+              file.uploadErrorMessage = `Failed to upload image`
+            }
+            this.log.info('uploadFiles', file)
+          } catch (e) {
             file.uploadStatus = 'error'
             file.uploadErrorMessage = `Failed to upload image`
+            this.log.error('uploadFiles', e, file)
           }
-          this.log.info('uploadFiles', file)
           return file
         }
         return file

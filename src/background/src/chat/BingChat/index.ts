@@ -1,7 +1,10 @@
 import BaseChat from '@/background/src/chat/BaseChat'
 import { BingWebBot } from '@/background/src/chat/BingChat/bing'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
-import { getChromeExtensionOnBoardingData } from '@/background/utils'
+import {
+  getChromeExtensionOnBoardingData,
+  requestHostPermission,
+} from '@/background/utils'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ofetch } from 'ofetch'
 
@@ -53,6 +56,17 @@ class BingChat extends BaseChat {
       this.taskList[taskId] = () => controller.abort()
     }
     const file = this.chatFiles?.[0]
+    if (!(await requestHostPermission('wss://*.bing.com/'))) {
+      onMessage?.({
+        type: 'error',
+        done: true,
+        error: 'Missing bing.com permission',
+        data: {
+          text: 'Missing bing.com permission',
+          conversationId: '',
+        },
+      })
+    }
     await this.bingLib.doSendMessage({
       prompt: question,
       imageUrl: file?.uploadedUrl,

@@ -8,15 +8,13 @@ import { ROOT_CONTAINER_ID } from '@/constants'
 import useCommands from '@/hooks/useCommands'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { ContextMenuSettingsState } from '@/features/contextMenu/store'
-import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
+import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
 const FloatingShortCutsTip: FC = () => {
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { haveSelection, showFloatingContextMenu, floatingDropdownMenuOpen } =
     useFloatingContextMenu()
   const textSelectPopupButtonSettings =
-    useChromeExtensionButtonSettingsWithSystemContextMenu(
-      'textSelectPopupButton',
-    )
+    useChromeExtensionButtonSettingsWithVisibility('textSelectPopupButton')
   const [chatBoxWidth, setChatBoxWidth] = useState(16)
   const [buttonShow, setButtonShow] = useState(3)
   const { chatBoxShortCutKey } = useCommands()

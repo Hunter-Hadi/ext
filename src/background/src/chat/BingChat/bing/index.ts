@@ -9,6 +9,7 @@ import {
 import { convertMessageToMarkdown, websocketUtils } from './utils'
 import WebSocketAsPromised from 'websocket-as-promised'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { v4 as uuidV4 } from 'uuid'
 
 const styleOptionMap: Record<BingConversationStyle, string> = {
   [BingConversationStyle.Balanced]: '',
@@ -22,17 +23,18 @@ const OPTIONS_SETS = [
   'disable_emoji_spoken_text',
   'responsible_ai_policy_235',
   'enablemm',
-  'iycapbing',
-  'iyxapbing',
-  'objopinion',
-  'rweasgv2',
-  'dagslnv1',
   'dv3sugg',
-  'autosave',
-  'iyoloxap',
-  'iyoloneutral',
-  'clgalileo',
-  'gencontentv3',
+  'iyxapbing',
+  'iycapbing',
+  'galileo',
+  'saharagenconv5',
+  'fluxhint',
+  'glfluxv13',
+  'uquopt',
+  'bof107v2',
+  'streamw',
+  'rctechalwlst',
+  'agicert',
 ]
 
 export class BingWebBot {
@@ -43,6 +45,7 @@ export class BingWebBot {
     message: string,
     imageUrl?: string,
   ) {
+    const requestId = uuidV4()
     const styleOption = styleOptionMap[conversation.conversationStyle]
     const optionsSets = OPTIONS_SETS.concat(styleOption || [])
     return {
@@ -60,33 +63,36 @@ export class BingWebBot {
             'SearchQuery',
           ],
           sliceIds: [
-            'winmuid1tf',
-            'anssupfor_c',
-            'imgchatgptv2',
-            'tts2cf',
-            'contansperf',
-            'mlchatpc8500w',
-            'mlchatpc2',
-            'ctrlworkpay',
-            'winshortmsgtf',
-            'cibctrl',
-            'sydtransctrl',
+            '825asmetrics',
+            'gbacf',
+            'divkorbl2p',
+            'emovoice',
+            'tts3',
+            'wrapuxslimt',
+            'rbingchromecf',
             'sydconfigoptc',
-            '0705trt4',
-            '517opinion',
-            '628ajcopus0',
-            '330uaugs0',
-            '529rwea',
-            '0626snptrcs0',
-            '424dagslnv1',
+            '0824cntor',
+            '816bof107v2',
+            '0529streamw',
+            'streamw',
+            '178gentech',
+            '824fluxhi52s0',
+            '0825agicert',
+            '621alllocs0',
+            '727nrprdrs0',
           ],
+          scenario: 'SERP',
+          plugins: [],
           isStartOfSession: conversation.invocationId === 0,
           message: {
+            timestamp: new Date().toISOString(),
             author: 'user',
             inputMethod: 'Keyboard',
             text: message,
             imageUrl,
             messageType: 'Chat',
+            requestId,
+            messageId: requestId,
           },
           conversationId: conversation.conversationId,
           conversationSignature: conversation.conversationSignature,

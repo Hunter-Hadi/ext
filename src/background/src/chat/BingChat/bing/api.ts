@@ -14,7 +14,7 @@ export async function createConversation(): Promise<ConversationResponse> {
   const headers = {
     'x-ms-client-request-id': uuidV4(),
     'x-ms-useragent':
-      'azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.0 OS/Win32',
+      'azsdk-js-api-client-factory/1.0.0-beta.1 core-rest-pipeline/1.10.3 OS/macOS',
   }
 
   let resp: ConversationResponse

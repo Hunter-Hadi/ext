@@ -27,7 +27,7 @@ import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { contextMenu } from 'react-contexify'
 import { useTranslation } from 'react-i18next'
 import { CurrentInboxMessageTypeSelector } from '@/features/sidebar/store/gmail'
-import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
+import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
 import { ChatGPTConversationState } from '@/features/sidebar'
 
 const ContextMenuContext = React.createContext<{
@@ -92,7 +92,7 @@ const ShortCutsButtonItem: FC<{
         return action
       })
       const isSetSuccess = setShortCuts(setActions)
-      isSetSuccess && (await runShortCuts())
+      isSetSuccess && (await runShortCuts(true))
     }
   }, [setShortCuts, runShortCuts, conversation.loading])
 
@@ -270,7 +270,8 @@ const ContextMenuList: FC<{
   const [list, setList] = useState<IContextMenuItemWithChildren[]>([])
   const messageType = useRecoilValue(CurrentInboxMessageTypeSelector)
   const buttonSettings =
-    useChromeExtensionButtonSettingsWithSystemContextMenu(buttonKey)
+    useChromeExtensionButtonSettingsWithVisibility(buttonKey)
+  console.log(buttonSettings, 'buttonSettings ContextMenuList')
   useEffect(() => {
     let isDestroy = false
     const getList = async () => {

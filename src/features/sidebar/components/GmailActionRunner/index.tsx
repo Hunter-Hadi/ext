@@ -26,7 +26,7 @@ import {
   CurrentInboxMessageTypeSelector,
   InboxEditState,
 } from '@/features/sidebar/store/gmail'
-import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
+import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
 
 // FIXME: inputValue采用了中介者模式，所以这个页面的代码逻辑需要重新调整
 const GmailActionRunner = () => {
@@ -39,7 +39,7 @@ const GmailActionRunner = () => {
   const [popperAnchorEl, setPopperAnchorEl] = useState<HTMLElement | null>(null)
   const { runShortCuts, setShortCuts } = useShortCutsWithMessageChat('')
   const gmailButtonSettings =
-    useChromeExtensionButtonSettingsWithSystemContextMenu('gmailButton')
+    useChromeExtensionButtonSettingsWithVisibility('gmailButton')
   const { showFloatingContextMenuWithVirtualElement } = useFloatingContextMenu()
   const showFloatingContextMenuRef = useRef(
     showFloatingContextMenuWithVirtualElement,

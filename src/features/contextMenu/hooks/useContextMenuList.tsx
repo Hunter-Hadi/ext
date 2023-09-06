@@ -6,7 +6,7 @@ import {
 import cloneDeep from 'lodash-es/cloneDeep'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { useChromeExtensionButtonSettingsWithSystemContextMenu } from '@/background/utils/buttonSettings'
+import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
 import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import uniqBy from 'lodash-es/uniqBy'
@@ -17,7 +17,7 @@ const useContextMenuList = (
   query?: string,
 ) => {
   const buttonSettings =
-    useChromeExtensionButtonSettingsWithSystemContextMenu(buttonSettingKey)
+    useChromeExtensionButtonSettingsWithVisibility(buttonSettingKey)
   const { favoriteContextMenuGroup } =
     useFavoriteContextMenuList(buttonSettingKey)
   const { contextMenuSearchTextWithCurrentLanguage } =

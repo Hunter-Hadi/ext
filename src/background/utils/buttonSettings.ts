@@ -47,6 +47,7 @@ import isEqual from 'lodash-es/isEqual'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  console.log('')
   const [buttonSettings, setButtonSettings] = useState(
     () => appSettings.buttonSettings,
   )
@@ -145,7 +146,7 @@ export const useChromeExtensionButtonSettings = () => {
   }
 }
 
-export const useChromeExtensionButtonSettingsWithSystemContextMenu = (
+export const useChromeExtensionButtonSettingsWithVisibility = (
   buttonKey: IChromeExtensionButtonSettingKey,
 ) => {
   const [host, setHost] = useState<string>('')

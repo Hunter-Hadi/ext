@@ -3,10 +3,7 @@ import {
   IChromeExtensionSettings,
 } from '@/background/types/Settings'
 import { getChromeExtensionSettings } from '@/background/utils/index'
-import {
-  checkVisibilitySettingIsVisible,
-  getSystemContextMenuWithButtonSettingKey,
-} from '@/background/utils/buttonSettings'
+import { getSystemContextMenuWithButtonSettingKey } from '@/background/utils/buttonSettings'
 
 const getLiteChromeExtensionSettings = async (
   fromUrl?: string,
@@ -23,33 +20,24 @@ const getLiteChromeExtensionSettings = async (
   if (host && settings.buttonSettings) {
     for (const key in settings.buttonSettings) {
       const saveKey = key as IChromeExtensionButtonSettingKey
-      const { visibility, contextMenu } = settings.buttonSettings[saveKey]
-      // textSelectPopupButton的contextMenu不需要visibility
-      if (
-        checkVisibilitySettingIsVisible(host, visibility) ||
-        saveKey === 'textSelectPopupButton'
-      ) {
-        const systemPromptList =
-          getSystemContextMenuWithButtonSettingKey(saveKey)
-        settings.buttonSettings[saveKey].contextMenu = systemPromptList
-          .concat(contextMenu)
-          .map((item) => {
-            // clear item.data.actions
-            if (item.data.actions) {
-              item.data.actions = [
-                {
-                  type: 'FETCH_ACTIONS',
-                  parameters: {
-                    template: item.id,
-                  },
+      const { contextMenu } = settings.buttonSettings[saveKey]
+      const systemPromptList = getSystemContextMenuWithButtonSettingKey(saveKey)
+      settings.buttonSettings[saveKey].contextMenu = systemPromptList
+        .concat(contextMenu)
+        .map((item) => {
+          // clear item.data.actions
+          if (item.data.actions) {
+            item.data.actions = [
+              {
+                type: 'FETCH_ACTIONS',
+                parameters: {
+                  template: item.id,
                 },
-              ]
-            }
-            return item
-          })
-      } else {
-        settings.buttonSettings[saveKey].contextMenu = []
-      }
+              },
+            ]
+          }
+          return item
+        })
     }
   }
   console.log('lite settings', settings)

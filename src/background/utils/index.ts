@@ -614,3 +614,15 @@ export const safeGetBrowserTab = async (tabId?: number) => {
     return null
   }
 }
+
+/**
+ * 判断插件是否有这个网站的权限
+ * @param host
+ */
+export const requestHostPermission = async (host: string) => {
+  const permissions: Browser.Permissions.Permissions = { origins: [host] }
+  if (await Browser.permissions.contains(permissions)) {
+    return true
+  }
+  return Browser.permissions.request(permissions)
+}

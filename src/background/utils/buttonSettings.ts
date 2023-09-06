@@ -75,6 +75,11 @@ export const useChromeExtensionButtonSettings = () => {
         `buttonSettings.${buttonKey}.visibility`,
         newSettings.visibility,
       )
+      lodashSet(
+        settings,
+        `buttonSettings.${buttonKey}.contextMenuPosition`,
+        newSettings.contextMenuPosition,
+      )
       return settings
     })
     const settings = await getChromeExtensionSettings()

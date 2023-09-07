@@ -34,6 +34,7 @@ const FloatingMenuButton: FC = () => {
   const [isDragging, setIsDragging] = useState(false)
   const currentDragAxisYRef = useRef(dragAxisY)
   const prevDragAxisYRef = useRef(dragAxisY)
+  const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
     if (height && height - 32 <= dragAxisY) {
       const calcY = height - 32
@@ -45,12 +46,20 @@ const FloatingMenuButton: FC = () => {
     }
   }, [dragAxisY, height])
   useEffectOnce(() => {
-    getBowserLocalStoreageFloatingButtonY().then(setDragAxisY)
+    getBowserLocalStoreageFloatingButtonY()
+      .then(setDragAxisY)
+      .catch()
+      .finally(() => {
+        setIsLoaded(true)
+      })
   })
   useEffect(() => {
+    currentDragAxisYRef.current = dragAxisY
     saveBowserLocalStoreageFloatingButtonY(dragAxisY)
   }, [dragAxisY])
-
+  if (!isLoaded) {
+    return null
+  }
   return (
     <Box
       sx={{

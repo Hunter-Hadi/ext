@@ -24,6 +24,8 @@ import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { ChatGPTConversationState } from '@/features/sidebar'
 import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import useEffectOnce from '@/hooks/useEffectOnce'
+import { isMaxAINewTabPage } from '@/pages/chat/util'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -347,6 +349,16 @@ const AutoHeightTextarea: FC<{
       )
     }
   }, [appState.open, loading])
+  useEffectOnce(() => {
+    if (InputId === ROOT_CHAT_BOX_INPUT_ID && isMaxAINewTabPage()) {
+      setTimeout(() => {
+        autoFocusWithAllWebsite(
+          textareaRef.current!,
+          ...computedChildrenHeight('appState'),
+        )
+      }, 100)
+    }
+  })
   return (
     <Box
       component={'div'}

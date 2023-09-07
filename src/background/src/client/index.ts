@@ -79,6 +79,26 @@ export const ClientMessageInit = () => {
             const { url, key, query = '', active = true } = data
             if (url) {
               if (url === Browser.runtime.getURL(`/pages/chat/index.html`)) {
+                if (
+                  sender?.url &&
+                  sender.url ===
+                    Browser.runtime.getURL('/pages/popup/index.html')
+                ) {
+                  const tabs = await Browser.tabs.query({
+                    active: true,
+                  })
+                  for (const tab of tabs) {
+                    if (
+                      tab.id &&
+                      (tab.pendingUrl === `chrome://newtab/` ||
+                        tab.pendingUrl === `about:blank` ||
+                        tab.url === 'chrome://newtab/' ||
+                        tab.url === 'about:blank')
+                    ) {
+                      await Browser.tabs.remove(tab.id)
+                    }
+                  }
+                }
                 const findTab: Browser.Tabs.Tab | null =
                   (
                     await Browser.tabs.query({

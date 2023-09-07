@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "2.0.19",
+  "version": "2.0.20",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -10,6 +10,11 @@
     "type": "module"
   },
   "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["minimum.js"],
+      "run_at": "document_end"
+    },
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],

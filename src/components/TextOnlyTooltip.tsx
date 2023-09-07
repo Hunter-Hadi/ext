@@ -1,26 +1,39 @@
 import React, { FC } from 'react'
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
-import { getAppContextMenuRootElement, getAppRootElement } from '@/utils'
+import {
+  getAppContextMenuRootElement,
+  getAppMinimizeContainerElement,
+  getAppRootElement,
+} from '@/utils'
 import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 
 export interface TextOnlyTooltipProps extends TooltipProps {
   description?: React.ReactNode
   floatingMenuTooltip?: boolean
+  minimumTooltip?: boolean
   paperCard?: boolean
 }
 
 const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   title,
   description,
+  minimumTooltip = false,
   floatingMenuTooltip = false,
   paperCard = false,
   ...props
 }) => {
-  const container =
-    (floatingMenuTooltip
+  let container: any = document.body
+  if (minimumTooltip) {
+    container = getAppMinimizeContainerElement()
+  } else {
+    container = floatingMenuTooltip
       ? getAppContextMenuRootElement()
-      : getAppRootElement()) || document.body
+      : getAppRootElement()
+  }
+  if (!container) {
+    container = document.body
+  }
   return (
     <Tooltip
       {...props}

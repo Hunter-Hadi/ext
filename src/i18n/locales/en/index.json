@@ -158,6 +158,7 @@
     "feature_card__appearance__field_shortcut_hint__title": "Shortcut hint",
     "feature_card__appearance__field_gmail_assistant__title": "Gmail assistant",
     "feature_card__appearance__field_pdf_viewer__title": "PDF AI viewer",
+    "feature_card__appearance__field_quick_access__title": "Quick access",
     "feature_card__appearance__field_pdf_viewer__help__benefits__title": "PDF AI viewer benefits",
     "feature_card__appearance__field_pdf_viewer__help__benefits__item1": "Ability to select text in any PDF files and use prompts on them.",
     "feature_card__appearance__field_pdf_viewer__help__benefits__item2": "Enhanced PDF viewer features compared to the browser's built-in viewer.",

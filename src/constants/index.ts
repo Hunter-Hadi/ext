@@ -15,7 +15,7 @@ export const ROOT_CHAT_BOX_INPUT_ID = `${APP_ROOT_ID}_ChatBox_Input`
 export const ROOT_FLOATING_INPUT_ID = `${APP_ROOT_ID}_Floating_Input`
 export const ROOT_FLOATING_REFERENCE_ELEMENT_ID = `${APP_ROOT_ID}_Floating_Reference_Element`
 export const ROOT_CLIPBOARD_ID = `${APP_ROOT_ID}_Clipboard`
-
+export const ROOT_MINIMIZE_CONTAINER_ID = `${APP_ROOT_ID}_Minimize_Container`
 // ezmail reply group
 export const EZMAIL_REPLY_GROUP_ID = `EzMail_Reply_Group`
 // ezmail new email group

@@ -79,6 +79,9 @@ export const getDefaultChromeExtensionSettings =
         pdf: {
           enabled: true,
         },
+        quickAccess: {
+          enabled: true,
+        },
       },
       buttonSettings: {
         gmailButton: {

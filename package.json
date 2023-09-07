@@ -45,6 +45,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dnd": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.5",
     "react-highlight": "^0.15.0",
     "react-i18next": "^13.0.2",
     "react-markdown": "^8.0.7",

@@ -117,6 +117,9 @@ export interface IChromeExtensionSettings {
     }
     // shortcut hint
     shortcutHintEnable?: boolean
+    quickAccess?: {
+      enabled?: boolean
+    }
   }
   buttonSettings?: {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting

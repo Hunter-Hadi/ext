@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import Stack from '@mui/material/Stack'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
@@ -18,10 +18,6 @@ import { AppSettingsState } from '@/store'
 import Typography from '@mui/material/Typography'
 import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import Button from '@mui/material/Button'
-import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
-import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookReferral'
-import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinReferral'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export const sidebarTabsData: Array<{
@@ -57,12 +53,6 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const { autoTwitterReferral, autoTwitterReferralLoading } =
-    useAutoTwitterReferral()
-  const { autoFacebookReferral, autoFacebookReferralLoading } =
-    useAutoFacebookReferral()
-  const { autoLinkedinReferral, autoLinkedinReferralLoading } =
-    useAutoLinkedinReferral()
   const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
   const [sidebarSettings, setSidebarSettings] =
     useRecoilState(SidebarSettingsState)
@@ -81,6 +71,23 @@ const SidebarTabs: FC = () => {
   if (isMaxAINewTabPage()) {
     return null
   }
+  useEffect(() => {
+    const listener = (event: any) => {
+      const type: ISidebarConversationType = event?.detail?.type
+      if (type) {
+        setSidebarSettings((prev) => {
+          return {
+            ...prev,
+            type,
+          }
+        })
+      }
+    }
+    window.addEventListener('MaxAISwitchSidebarTab', listener)
+    return () => {
+      window.removeEventListener('MaxAISwitchSidebarTab', listener)
+    }
+  })
   return (
     <>
       <Stack
@@ -125,7 +132,11 @@ const SidebarTabs: FC = () => {
               value={item.value}
               label={
                 <TextOnlyTooltip title={t(item.tooltip?.() as any)}>
-                  <Typography fontSize={'14px'} color={'text.primary'}>
+                  <Typography
+                    fontSize={'14px'}
+                    color={'text.primary'}
+                    data-testid={'max-ai__summary-tab'}
+                  >
                     {t(item.label as any)}
                   </Typography>
                 </TextOnlyTooltip>
@@ -155,29 +166,6 @@ const SidebarTabs: FC = () => {
             },
           }}
         >
-          <Stack gap={1}>
-            <Button
-              variant={'contained'}
-              disabled={autoTwitterReferralLoading}
-              onClick={autoTwitterReferral}
-            >
-              Tweet and follow us on Twitter
-            </Button>
-            <Button
-              variant={'contained'}
-              disabled={autoFacebookReferralLoading}
-              onClick={autoFacebookReferral}
-            >
-              Share on Facebook
-            </Button>
-            <Button
-              variant={'contained'}
-              disabled={autoLinkedinReferralLoading}
-              onClick={autoLinkedinReferral}
-            >
-              Share on Linkedin
-            </Button>
-          </Stack>
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
           <p>

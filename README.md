@@ -24,7 +24,7 @@ If you reference files that can't be automatically recognized, use the
       "resources": [
         "pages/popup/index.html",
         "pages/popup/App.tsx",
-        "pages/popup/index.tsx"
+        "pages/popup/minimum.tsx"
       ],
       "matches": [
         "<all_urls>"

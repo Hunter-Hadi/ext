@@ -9,6 +9,7 @@ import {
   ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
   ROOT_CONTEXT_MENU_PORTAL_ID,
+  ROOT_MINIMIZE_CONTAINER_ID,
 } from '@/constants'
 import {
   ContentScriptConnectionV2,
@@ -51,6 +52,11 @@ export const getAppContextMenuRootElement = (): HTMLDivElement | null => {
       ?.shadowRoot?.querySelectorAll(`#${ROOT_CONTEXT_MENU_PORTAL_ID}`) || []
   const portal = Array.from(portals).find((portal) => portal.innerHTML !== '')
   return portal as HTMLDivElement
+}
+
+export const getAppMinimizeContainerElement = (): HTMLDivElement | null => {
+  return document.querySelector(`#${ROOT_MINIMIZE_CONTAINER_ID}`)
+    ?.shadowRoot as any as HTMLDivElement
 }
 
 /**

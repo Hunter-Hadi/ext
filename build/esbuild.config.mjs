@@ -12,13 +12,13 @@ import path from 'path'
 import archiver from 'archiver'
 import dayjs from 'dayjs'
 // import eslint from 'esbuild-plugin-eslint';
-import resolve from 'esbuild-plugin-resolve';
+import resolve from 'esbuild-plugin-resolve'
 
 const replaceEnv = buildEnv.getReplaceEnv()
 const isProduction = buildEnv.isProduction
 const sourceDir = path.resolve('src')
 const buildDir = path.resolve('dist')
-const releaseDir = path.resolve('release')
+const releasesDir = path.resolve('releases')
 
 async function cleanBuildDir() {
   try {
@@ -39,10 +39,11 @@ async function cleanBuildDir() {
 }
 
 async function esbuildConfig() {
-  await esbuild.build({
+  const result = await esbuild.build({
     platform: 'browser',
     entryPoints: [
       'src/content.tsx',
+      'src/minimum.tsx',
       'src/content_style.ts',
       'src/background.ts',
       'src/check_status.ts',
@@ -50,7 +51,7 @@ async function esbuildConfig() {
       'src/pages/settings/index.tsx',
       'src/pages/popup/index.tsx',
       'src/pages/chatgpt/fileUploadServer.ts',
-      'src/pages/googleDoc/index.ts'
+      'src/pages/googleDoc/index.ts',
     ],
     format: 'esm',
     drop: isProduction ? ['console', 'debugger'] : [],
@@ -59,6 +60,7 @@ async function esbuildConfig() {
     minify: isProduction,
     treeShaking: true,
     splitting: true,
+    metafile: true,
     chunkNames: 'chunks/[hash]',
     define: replaceEnv,
     loader: {
@@ -70,7 +72,8 @@ async function esbuildConfig() {
     },
     plugins: [
       resolve({
-        '@postlight/parser': 'node_modules/@postlight/parser/dist/mercury.web.js',
+        '@postlight/parser':
+          'node_modules/@postlight/parser/dist/mercury.web.js',
       }),
       // eslint({ /* config */ }),
       postcssPlugin({
@@ -136,6 +139,7 @@ async function esbuildConfig() {
     ),
     outdir: buildDir,
   })
+  fs.writeJsonSync(`${releasesDir}/meta.json`, result.metafile)
 }
 async function updateManifest() {
   const manifest = await fs.readJson(`${buildDir}/manifest.json`)
@@ -161,7 +165,7 @@ async function updateManifest() {
   })
   fs.writeJsonSync(`${buildDir}/manifest.json`, manifest, { spaces: 2 })
 }
-async function buildFiles () {
+async function buildFiles() {
   try {
     const startTimestamp = Date.now()
     console.log('env -> ', isProduction ? 'production' : 'development')

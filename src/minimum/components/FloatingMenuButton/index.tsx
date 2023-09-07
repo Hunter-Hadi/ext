@@ -1,0 +1,138 @@
+/**
+ * 渲染到页面中 右侧的 butonn
+ */
+import { Box } from '@mui/material'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import Draggable from 'react-draggable'
+import useWindowSize from '@/hooks/useWindowSize'
+import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
+import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
+import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
+import { showChatBox } from '@/utils'
+import Browser from 'webextension-polyfill'
+import useEffectOnce from '@/hooks/useEffectOnce'
+import MaxAIHideMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
+const DEFAULT_TOP = 400
+
+const actionsCount = 3
+const safeTopY = actionsCount * (32 + 6)
+
+const saveBowserLocalStoreageFloatingButtonY = async (y: number) => {
+  await Browser.storage.local.set({
+    floatingButtonY: y,
+  })
+}
+const getBowserLocalStoreageFloatingButtonY = async () => {
+  const { floatingButtonY } = await Browser.storage.local.get('floatingButtonY')
+  return floatingButtonY || DEFAULT_TOP
+}
+
+const FloatingMenuButton: FC = () => {
+  const { height } = useWindowSize()
+  const [dragAxisY, setDragAxisY] = useState(() => DEFAULT_TOP)
+  const [isHover, setIsHover] = useState(true)
+  const [isDragging, setIsDragging] = useState(false)
+  const currentDragAxisYRef = useRef(dragAxisY)
+  const prevDragAxisYRef = useRef(dragAxisY)
+  useEffect(() => {
+    if (height && height - 32 <= dragAxisY) {
+      const calcY = height - 32
+      const newPosition = calcY <= 0 ? DEFAULT_TOP : calcY
+      setDragAxisY(newPosition)
+    } else if (dragAxisY < safeTopY) {
+      // 最小顶部高度
+      setDragAxisY(safeTopY)
+    }
+  }, [dragAxisY, height])
+  useEffectOnce(() => {
+    getBowserLocalStoreageFloatingButtonY().then(setDragAxisY)
+  })
+  useEffect(() => {
+    saveBowserLocalStoreageFloatingButtonY(dragAxisY)
+  }, [dragAxisY])
+
+  return (
+    <Box
+      sx={{
+        width: 0,
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        zIndex: 2100000000,
+      }}
+    >
+      <Draggable
+        disabled={!isHover}
+        bounds="parent"
+        position={{ x: 0, y: dragAxisY }}
+        axis="y"
+        scale={1}
+        onStop={(e, data) => {
+          setDragAxisY(data.y)
+          setIsHover(false)
+          setIsDragging(false)
+        }}
+        onDrag={(e, data) => {
+          currentDragAxisYRef.current = data.y
+          setIsDragging(true)
+          setIsHover(true)
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            width: 52,
+            right: 0,
+            top: 0,
+            userSelect: 'none',
+          }}
+        >
+          <Box
+            sx={{
+              width: 52,
+              height: 32,
+              transform: isHover ? 'translateX(0)' : 'translateX(20px)',
+              transition: '0.3s all',
+              borderRadius: '27px 0 0 27px',
+              bgcolor: 'background.paper',
+              boxShadow:
+                '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
+              cursor: 'pointer',
+            }}
+            onMouseEnter={() => {
+              setIsHover(true)
+            }}
+            onMouseLeave={() => {
+              setIsHover(false)
+            }}
+            onMouseDown={() => {
+              prevDragAxisYRef.current = dragAxisY
+            }}
+          >
+            <MaxAIMiniButton
+              isDragging={isDragging}
+              onClick={() => {
+                if (
+                  Math.abs(
+                    prevDragAxisYRef.current - currentDragAxisYRef.current,
+                  ) > 5
+                ) {
+                  return
+                }
+                showChatBox()
+              }}
+              actions={[
+                <MaxAIHideMiniButton key={'MaxAIHideMiniButton'} />,
+                <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />,
+                <MaxAISummarizeButton key={'MaxAISummarizeButton'} />,
+              ]}
+            />
+          </Box>
+        </Box>
+      </Draggable>
+    </Box>
+  )
+}
+
+export default FloatingMenuButton

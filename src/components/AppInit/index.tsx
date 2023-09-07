@@ -391,11 +391,11 @@ export const DisabledPDFViewer: FC = () => {
 const GmailInit = React.lazy(() => import('@/components/AppInit/GmailInit'))
 const AppInit = () => {
   useInitChatGPTClient()
-  useInitClientConversationMap()
   useAuthLogin()
   userInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
+  useInitClientConversationMap()
   useHandlePDFViewerError()
   useInitSidebar()
   useEffectOnce(() => {
@@ -409,9 +409,6 @@ const AppInit = () => {
   // 初始化one-click referral, https://app.maxai.me/referral
   useInitOneClickShareButton()
   useInitRangy()
-  useEffect(() => {
-    console.log('????什么鬼')
-  }, [])
   return (
     <>
       <AppSuspenseLoadingLayout>

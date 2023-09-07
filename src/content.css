@@ -11,6 +11,9 @@
   z-index: -2147483600;
   visibility: hidden;
 }
+#USE_CHAT_GPT_AI_ROOT_Minimize_Container{
+  visibility: visible!important;
+}
 #USE_CHAT_GPT_AI_ROOT.open {
   min-width: 400px;
   opacity: 1;

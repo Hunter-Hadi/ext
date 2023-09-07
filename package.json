@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.10.6",
     "@fingerprintjs/fingerprintjs": "^3.4.1",
     "@floating-ui/react": "^0.20.1",
-    "@inboxsdk/core": "0.2.28-alpha.4",
+    "@inboxsdk/core": "2.0.1",
     "@minoru/react-dnd-treeview": "^3.4.1",
     "@mozilla/readability": "^0.4.4",
     "@mui/icons-material": "^5.11.9",

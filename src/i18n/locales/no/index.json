@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Legg til et nettsted",
     "visibility_card__add_a_site_dialog__field_site__title": "Nettsted",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Skriv inn nettsteds-URL",
-    "feature_card__prompts__place_my_own_prompts_switch": "Plasser mine egne forslag øverst"
+    "feature_card__prompts__place_my_own_prompts_switch": "Plasser mine egne forslag øverst",
+    "feature_card__appearance__field_quick_access__title": "Rask tilgang"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",

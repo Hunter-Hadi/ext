@@ -208,7 +208,8 @@
     "feature_card__prompts__restore__dialog__restore_button": "恢复",
     "feature_card__prompts__restore__dialog__delete_all_button": "全部删除",
     "feature_card__prompts__edit_prompt__mock_input__placeholder": "向AI提问以编辑或生成...",
-    "feature_card__prompts__place_my_own_prompts_switch": "将我的提示放在顶部"
+    "feature_card__prompts__place_my_own_prompts_switch": "将我的提示放在顶部",
+    "feature_card__appearance__field_quick_access__title": "快速访问"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",

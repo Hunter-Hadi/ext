@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Adicionar um site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Digite a URL do site",
-    "feature_card__prompts__place_my_own_prompts_switch": "Colocar minhas próprias sugestões no topo"
+    "feature_card__prompts__place_my_own_prompts_switch": "Colocar minhas próprias sugestões no topo",
+    "feature_card__appearance__field_quick_access__title": "Acesso rápido"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",

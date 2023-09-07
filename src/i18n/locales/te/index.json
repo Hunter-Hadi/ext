@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "సైట్ జోడించండి",
     "visibility_card__add_a_site_dialog__field_site__title": "సైట్",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "వెబ్సైట్ URL నమోదు చేయండి",
-    "feature_card__prompts__place_my_own_prompts_switch": "నా ప్రాంప్టులను మొదలుగా ఉంచు"
+    "feature_card__prompts__place_my_own_prompts_switch": "నా ప్రాంప్టులను మొదలుగా ఉంచు",
+    "feature_card__appearance__field_quick_access__title": "త్వరిత ప్రవేశ"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",

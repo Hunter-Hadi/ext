@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "ಒಂದು ವೆಬ್‌ಸೈಟ್ ಸೇರಿಸಿ",
     "visibility_card__add_a_site_dialog__field_site__title": "ವೆಬ್‌ಸೈಟ್",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ವೆಬ್‌ಸೈಟ್ URL ಅನ್ನು ನಮೂದಿಸಿ",
-    "feature_card__prompts__place_my_own_prompts_switch": "ನನ್ನ ಪ್ರಮ್ಪ್ಟ್‌ಗಳನ್ನು ಮೇಲೆ ಇಡಿ"
+    "feature_card__prompts__place_my_own_prompts_switch": "ನನ್ನ ಪ್ರಮ್ಪ್ಟ್‌ಗಳನ್ನು ಮೇಲೆ ಇಡಿ",
+    "feature_card__appearance__field_quick_access__title": "ತ್ವರಿತ ಪ್ರವೇಶ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",

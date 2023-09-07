@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Pridať stránku",
     "visibility_card__add_a_site_dialog__field_site__title": "Stránka",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Zadajte URL webovej stránky",
-    "feature_card__prompts__place_my_own_prompts_switch": "Umiestniť moje vlastné podnety na vrch"
+    "feature_card__prompts__place_my_own_prompts_switch": "Umiestniť moje vlastné podnety na vrch",
+    "feature_card__appearance__field_quick_access__title": "Rýchly prístup"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",

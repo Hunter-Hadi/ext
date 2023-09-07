@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "เพิ่มเว็บไซต์",
     "visibility_card__add_a_site_dialog__field_site__title": "เว็บไซต์",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ป้อน URL เว็บไซต์",
-    "feature_card__prompts__place_my_own_prompts_switch": "วางคำพูดของฉันที่ด้านบน"
+    "feature_card__prompts__place_my_own_prompts_switch": "วางคำพูดของฉันที่ด้านบน",
+    "feature_card__appearance__field_quick_access__title": "การเข้าถึงด่วน"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",

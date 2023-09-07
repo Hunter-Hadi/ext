@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "הוסף אתר",
     "visibility_card__add_a_site_dialog__field_site__title": "אתר",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "הזן כתובת URL של האתר",
-    "feature_card__prompts__place_my_own_prompts_switch": "שים את הפניות שלי בראש"
+    "feature_card__prompts__place_my_own_prompts_switch": "שים את הפניות שלי בראש",
+    "feature_card__appearance__field_quick_access__title": "גישה מהירה"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",

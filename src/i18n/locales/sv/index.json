@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Lägg till en webbplats",
     "visibility_card__add_a_site_dialog__field_site__title": "Webbplats",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Ange webbadress",
-    "feature_card__prompts__place_my_own_prompts_switch": "Placera mina egna förslag överst"
+    "feature_card__prompts__place_my_own_prompts_switch": "Placera mina egna förslag överst",
+    "feature_card__appearance__field_quick_access__title": "Snabb åtkomst"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",

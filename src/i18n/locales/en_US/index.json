@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Add a site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Enter website URL",
-    "feature_card__prompts__place_my_own_prompts_switch": "Place my own prompts at the top"
+    "feature_card__prompts__place_my_own_prompts_switch": "Place my own prompts at the top",
+    "feature_card__appearance__field_quick_access__title": "Quick access"
   },
   "client": {
     "sidebar__button__close_sidebar": "Close sidebar",

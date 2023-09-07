@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "साइट जोडा",
     "visibility_card__add_a_site_dialog__field_site__title": "साइट",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "वेबसाइट URL प्रविष्ट करा",
-    "feature_card__prompts__place_my_own_prompts_switch": "माझे स्वतःचे प्रॉम्प्ट वर ठेवा"
+    "feature_card__prompts__place_my_own_prompts_switch": "माझे स्वतःचे प्रॉम्प्ट वर ठेवा",
+    "feature_card__appearance__field_quick_access__title": "त्वरित प्रवेश"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

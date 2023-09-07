@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Pievienot vietni",
     "visibility_card__add_a_site_dialog__field_site__title": "Vietne",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Ievadiet vietnes URL",
-    "feature_card__prompts__place_my_own_prompts_switch": "Novietot manus norādījumus augšpusē"
+    "feature_card__prompts__place_my_own_prompts_switch": "Novietot manus norādījumus augšpusē",
+    "feature_card__appearance__field_quick_access__title": "Ātra piekļuve"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

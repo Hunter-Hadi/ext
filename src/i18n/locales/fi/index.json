@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Lisää sivusto",
     "visibility_card__add_a_site_dialog__field_site__title": "Sivusto",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Kirjoita verkkosivun URL-osoite",
-    "feature_card__prompts__place_my_own_prompts_switch": "Sijoita omat vihjeeni yläosaan"
+    "feature_card__prompts__place_my_own_prompts_switch": "Sijoita omat vihjeeni yläosaan",
+    "feature_card__appearance__field_quick_access__title": "Nopea pääsy"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

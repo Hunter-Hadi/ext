@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Προσθήκη ιστοσελίδας",
     "visibility_card__add_a_site_dialog__field_site__title": "Ιστοσελίδα",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Εισαγάγετε το URL της ιστοσελίδας",
-    "feature_card__prompts__place_my_own_prompts_switch": "Τοποθέτηση των δικών μου προτροπών στην κορυφή"
+    "feature_card__prompts__place_my_own_prompts_switch": "Τοποθέτηση των δικών μου προτροπών στην κορυφή",
+    "feature_card__appearance__field_quick_access__title": "Γρήγορη πρόσβαση"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

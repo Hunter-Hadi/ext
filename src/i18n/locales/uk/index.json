@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "سائٹ شامل کریں",
     "visibility_card__add_a_site_dialog__field_site__title": "سائٹ",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ویب سائٹ کا URL درج کریں",
-    "feature_card__prompts__place_my_own_prompts_switch": "اپنے خود کے پرومپٹس کو اوپر رکھیں"
+    "feature_card__prompts__place_my_own_prompts_switch": "اپنے خود کے پرومپٹس کو اوپر رکھیں",
+    "feature_card__appearance__field_quick_access__title": "تیز رس"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",

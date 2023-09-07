@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Adăugați un site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Introduceți URL-ul site-ului",
-    "feature_card__prompts__place_my_own_prompts_switch": "Plasează propriile mele prompt-uri în partea de sus"
+    "feature_card__prompts__place_my_own_prompts_switch": "Plasează propriile mele prompt-uri în partea de sus",
+    "feature_card__appearance__field_quick_access__title": "Acces rapid"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",

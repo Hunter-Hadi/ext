@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Bir site ekle",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Web sitesi URL'sini girin",
-    "feature_card__prompts__place_my_own_prompts_switch": "Kendi ipuçlarımı en üste yerleştir"
+    "feature_card__prompts__place_my_own_prompts_switch": "Kendi ipuçlarımı en üste yerleştir",
+    "feature_card__appearance__field_quick_access__title": "Hızlı erişim"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",

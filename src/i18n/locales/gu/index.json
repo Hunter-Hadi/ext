@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "સાઇટ ઉમેરો",
     "visibility_card__add_a_site_dialog__field_site__title": "સાઇટ",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "વેબસાઇટ URL દાખલ કરો",
-    "feature_card__prompts__place_my_own_prompts_switch": "મારા પ્રોમ્પ્ટ્સ ટોચપડવા"
+    "feature_card__prompts__place_my_own_prompts_switch": "મારા પ્રોમ્પ્ટ્સ ટોચપડવા",
+    "feature_card__appearance__field_quick_access__title": "ઝડપી ઍક્સેસ"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",

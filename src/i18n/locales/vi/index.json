@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Thêm một trang web",
     "visibility_card__add_a_site_dialog__field_site__title": "Trang web",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Nhập URL trang web",
-    "feature_card__prompts__place_my_own_prompts_switch": "Đặt những gợi ý của riêng tôi ở đầu"
+    "feature_card__prompts__place_my_own_prompts_switch": "Đặt những gợi ý của riêng tôi ở đầu",
+    "feature_card__appearance__field_quick_access__title": "Truy cập nhanh"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",

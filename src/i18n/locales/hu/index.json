@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Webhely hozzáadása",
     "visibility_card__add_a_site_dialog__field_site__title": "Webhely",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Adja meg a webhely URL-jét",
-    "feature_card__prompts__place_my_own_prompts_switch": "Saját kérdéseimet helyezze el az elején"
+    "feature_card__prompts__place_my_own_prompts_switch": "Saját kérdéseimet helyezze el az elején",
+    "feature_card__appearance__field_quick_access__title": "Gyors hozzáférés"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",

@@ -208,7 +208,8 @@
     "visibility_card__add_a_site_dialog__title": "Voeg een website toe",
     "visibility_card__add_a_site_dialog__field_site__title": "Website",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Voer de URL van de website in",
-    "feature_card__prompts__place_my_own_prompts_switch": "Plaats mijn eigen prompts bovenaan"
+    "feature_card__prompts__place_my_own_prompts_switch": "Plaats mijn eigen prompts bovenaan",
+    "feature_card__appearance__field_quick_access__title": "Snelle toegang"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",

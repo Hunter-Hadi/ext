@@ -30,7 +30,7 @@ const getBowserLocalStoreageFloatingButtonY = async () => {
 const FloatingMenuButton: FC = () => {
   const { height } = useWindowSize()
   const [dragAxisY, setDragAxisY] = useState(() => DEFAULT_TOP)
-  const [isHover, setIsHover] = useState(true)
+  const [isHover, setIsHover] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
   const currentDragAxisYRef = useRef(dragAxisY)
   const prevDragAxisYRef = useRef(dragAxisY)

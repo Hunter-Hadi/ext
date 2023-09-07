@@ -12,7 +12,7 @@ import Browser from 'webextension-polyfill'
 import useEffectOnce from '@/hooks/useEffectOnce'
 // import MaxAIHideMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-const DEFAULT_TOP = 400
+const DEFAULT_TOP = window.innerHeight * 0.382
 
 const actionsCount = 2
 const safeTopY = actionsCount * (32 + 6)

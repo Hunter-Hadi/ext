@@ -57,7 +57,7 @@ const MaxAIMiniButton: FC<{
             borderRadius: '16px 0 0 16px',
             minWidth: 'unset',
             display: 'flex',
-            p: '6px 13px 6px 8px',
+            p: '6px 18px 6px 8px',
             '&:hover': {
               bgcolor: 'rgba(118, 1, 211, 0.08)',
             },

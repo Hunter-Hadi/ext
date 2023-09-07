@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import Parser from '@/lib/@postlight/parser'
+// import Parser from '@/lib/@postlight/parser'
 import { Readability } from '@mozilla/readability'
 import TurndownService from 'turndown'
 
@@ -12,19 +12,20 @@ export const getPageContentWithNpmParserPackages = async (
     const clonedDocument = document.cloneNode(true)
     const reader = new Readability(clonedDocument as any)
     const readabilityArticle = reader.parse()
+    const htmlContent = html
+      ? html
+      : typeof window !== 'undefined'
+      ? document.documentElement.innerHTML
+      : undefined
     if (!readabilityArticle || !readabilityArticle?.content) {
-      const htmlContent = html
-        ? html
-        : typeof window !== 'undefined'
-        ? document.documentElement.innerHTML
-        : undefined
-      const result = await Parser.parse(url, {
-        html: htmlContent,
-        contentType: 'markdown',
-      })
-      const postlightResult = `# ${result.title}\n\n${result.content}\n`
-      console.log('Parser vs [postlight] parse result: \n', postlightResult)
-      return postlightResult
+      // const result = await Parser.parse(url, {
+      //   html: htmlContent,
+      //   contentType: 'markdown',
+      // })
+      // const postlightResult = `# ${result.title}\n\n${result.content}\n`
+      // console.log('Parser vs [postlight] parse result: \n', postlightResult)
+      // return postlightResult
+      return htmlContent
     }
     const turndownService = new TurndownService()
     const readabilityMarkdown = turndownService.turndown(

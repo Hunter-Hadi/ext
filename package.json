@@ -19,7 +19,6 @@
     "@mozilla/readability": "^0.4.4",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
-    "@postlight/parser": "^2.2.3",
     "ace-builds": "^1.15.3",
     "cheerio": "1.0.0-rc.12",
     "crypto-js": "^4.1.1",

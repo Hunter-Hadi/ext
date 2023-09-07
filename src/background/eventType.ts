@@ -39,6 +39,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_openUrl'
   | 'Client_closeUrl'
   | 'Client_updateIcon'
+  | 'Client_emitCMDJ'
   | 'Client_updateUseChatGPTAuthInfo'
   | 'Client_getUseChatGPTUserInfo'
   | 'Client_getUseChatGPTUserSubscriptionInfo'

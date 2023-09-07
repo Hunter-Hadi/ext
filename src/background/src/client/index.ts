@@ -161,6 +161,17 @@ export const ClientMessageInit = () => {
             }
           }
           break
+        case 'Client_emitCMDJ':
+          {
+            if (sender.tab?.id) {
+              await Browser.tabs.sendMessage(sender.tab.id, {
+                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                event: 'Client_listenOpenChatMessageBox',
+                data: {},
+              })
+            }
+          }
+          break
         case 'Client_updateIcon':
           {
             const { mode } = data

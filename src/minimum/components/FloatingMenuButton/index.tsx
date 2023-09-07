@@ -8,13 +8,13 @@ import useWindowSize from '@/hooks/useWindowSize'
 import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
 import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
-import { showChatBox } from '@/utils'
 import Browser from 'webextension-polyfill'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import MaxAIHideMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
+// import MaxAIHideMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 const DEFAULT_TOP = 400
 
-const actionsCount = 3
+const actionsCount = 2
 const safeTopY = actionsCount * (32 + 6)
 
 const saveBowserLocalStoreageFloatingButtonY = async (y: number) => {
@@ -91,7 +91,7 @@ const FloatingMenuButton: FC = () => {
         <Box
           sx={{
             position: 'absolute',
-            width: 52,
+            width: 42,
             right: 0,
             top: 0,
             userSelect: 'none',
@@ -99,9 +99,9 @@ const FloatingMenuButton: FC = () => {
         >
           <Box
             sx={{
-              width: 52,
+              width: 42,
               height: 32,
-              transform: isHover ? 'translateX(0)' : 'translateX(20px)',
+              transform: isHover ? 'translateX(0)' : 'translateX(10px)',
               transition: '0.3s all',
               borderRadius: '27px 0 0 27px',
               bgcolor: 'background.paper',
@@ -129,10 +129,14 @@ const FloatingMenuButton: FC = () => {
                 ) {
                   return
                 }
-                showChatBox()
+                const port = new ContentScriptConnectionV2()
+                port.postMessage({
+                  event: 'Client_emitCMDJ',
+                  data: {},
+                })
               }}
               actions={[
-                <MaxAIHideMiniButton key={'MaxAIHideMiniButton'} />,
+                // <MaxAIHideMiniButton key={'MaxAIHideMiniButton'} />,
                 <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />,
                 <MaxAISummarizeButton key={'MaxAISummarizeButton'} />,
               ]}

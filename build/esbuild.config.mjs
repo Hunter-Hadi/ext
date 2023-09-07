@@ -71,10 +71,10 @@ async function esbuildConfig() {
       '.graphql': 'text',
     },
     plugins: [
-      resolve({
-        '@postlight/parser':
-          'node_modules/@postlight/parser/dist/mercury.web.js',
-      }),
+      // resolve({
+      //   '@postlight/parser':
+      //     'node_modules/@postlight/parser/dist/mercury.web.js',
+      // }),
       // eslint({ /* config */ }),
       postcssPlugin({
         postcss: {

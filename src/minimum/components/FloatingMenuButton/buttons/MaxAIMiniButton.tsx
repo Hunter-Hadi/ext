@@ -3,7 +3,6 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
 import useCommands from '@/hooks/useCommands'
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import Stack from '@mui/material/Stack'
 import { Fade } from '@mui/material'
 
@@ -38,7 +37,7 @@ const MaxAIMiniButton: FC<{
     <Stack
       direction={'row'}
       sx={{
-        width: 52,
+        width: 42,
         height: 32,
         position: 'relative',
       }}
@@ -53,11 +52,15 @@ const MaxAIMiniButton: FC<{
       >
         <Button
           sx={{
-            width: 32,
+            width: 42,
             height: 32,
-            borderRadius: '50%',
+            borderRadius: '16px 0 0 16px',
             minWidth: 'unset',
             display: 'flex',
+            p: '6px 13px 6px 8px',
+            '&:hover': {
+              bgcolor: 'rgba(118, 1, 211, 0.08)',
+            },
           }}
           onMouseEnter={waitAnimationOpen}
           onMouseLeave={() => {
@@ -79,39 +82,40 @@ const MaxAIMiniButton: FC<{
           />
         </Button>
       </TextOnlyTooltip>
-      <Stack
-        width={12}
-        borderRadius={'4px'}
-        justifyContent={'center'}
-        alignItems={'center'}
-        sx={{
-          marginLeft: '4px',
-          '&:hover': {
-            height: 32,
-            bgcolor: (t) =>
-              t.palette.mode === 'dark'
-                ? 'rgba(178, 115, 255, 0.08)'
-                : 'rgb(235,235,235)',
-          },
-        }}
-      >
-        <DragIndicatorIcon
-          sx={{
-            fontSize: 20,
-            color: 'rgb(146,146,146)',
-          }}
-        />
-      </Stack>
+      {/*<Stack*/}
+      {/*  width={12}*/}
+      {/*  borderRadius={'4px'}*/}
+      {/*  justifyContent={'center'}*/}
+      {/*  alignItems={'center'}*/}
+      {/*  sx={{*/}
+      {/*    marginLeft: '4px',*/}
+      {/*    '&:hover': {*/}
+      {/*      height: 32,*/}
+      {/*      bgcolor: (t) =>*/}
+      {/*        t.palette.mode === 'dark'*/}
+      {/*          ? 'rgba(178, 115, 255, 0.08)'*/}
+      {/*          : 'rgb(235,235,235)',*/}
+      {/*    },*/}
+      {/*  }}*/}
+      {/*>*/}
+      {/*  <DragIndicatorIcon*/}
+      {/*    sx={{*/}
+      {/*      fontSize: 20,*/}
+      {/*      color: 'rgb(146,146,146)',*/}
+      {/*    }}*/}
+      {/*  />*/}
+      {/*</Stack>*/}
       <Stack
         sx={{
           position: 'absolute',
           left: 0,
-          width: 32,
+          width: 42,
           bottom: 32,
+          visibility: hover && !isDragging ? 'visible' : 'hidden',
         }}
       >
         <Fade in={hover && !isDragging} timeout={300}>
-          <Stack mb={'6px'} spacing={'6px'}>
+          <Stack pb={'6px'} spacing={'6px'}>
             {actions as any}
           </Stack>
         </Fade>

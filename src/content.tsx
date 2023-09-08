@@ -26,6 +26,12 @@ if (location.host === 'chat.openai.com') {
   const script = document.createElement('script')
   script.type = 'module'
   script.src = Browser.runtime.getURL('/pages/chatgpt/fileUploadServer.js')
+  script.setAttribute(
+    'data-arkose',
+    Browser.runtime.getURL(
+      '/assets/openai/js/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147/api.js',
+    ),
+  )
   ;(document.head || document.documentElement).append(script)
   import('./pages/OpenAIDaemonProcess').then((module) => {
     const { default: OpenAIDaemonProcess } = module

@@ -16,7 +16,6 @@ import {
 } from '@/features/contextMenu/types'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { openAIChatGPTArkoseTokenHelper } from '@/pages/content_script_iframe/openAIChatGPTArkoseTOkenHelper'
 import { iframePageContentHelper } from '@/pages/content_script_iframe/iframePageContentHelper'
 dayjs.extend(utc)
 
@@ -50,7 +49,6 @@ const initIframe = async () => {
     return
   }
   iframePageContentHelper()
-  openAIChatGPTArkoseTokenHelper()
   let mouseDownElement: null | HTMLInputElement | HTMLTextAreaElement = null
   let positions: number[] = []
   let isEmbedPage = false

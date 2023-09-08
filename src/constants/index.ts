@@ -62,10 +62,6 @@ export const DEFAULT_AI_OUTPUT_LANGUAGE_ID =
 export const DEFAULT_AI_OUTPUT_LANGUAGE_VALUE =
   'the same language variety or dialect of the text'
 
-// chat gpt config
-export const CHAT_GPT_GPT4_ARKOSE_TOKEN = 'CHAT_GPT_GPT4_ARKOSE_TOKEN'
-export const CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY =
-  '35536E1E-65B4-4D96-9D97-6ADB7EFF8147'
 /**
  * @deprecated - 不同的ai provider使用prefix产生效果不同，不再使用这个
  * @since - 2023-07-31

@@ -1,5 +1,6 @@
 // 保存原始的 fetch 方法的引用
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { arkoseTokenGenerator } from '@/features/chatgpt/core/ArkoseGenerator'
 
 const MAX_AI_CHAT_GPT_MESSAGE_KEY = 'MAX_AI_CHAT_GPT_MESSAGE_KEY'
 let maxAIChatGPTBlockNextRequest = false
@@ -138,3 +139,11 @@ window.addEventListener('message', (event) => {
     }
   }
 })
+
+// arkose
+const arkoseScriptSrc = document
+  .querySelector('script[data-arkose]')
+  ?.getAttribute('data-arkose')
+if (arkoseScriptSrc) {
+  arkoseTokenGenerator.injectScript(arkoseScriptSrc)
+}

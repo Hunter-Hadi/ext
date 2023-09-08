@@ -25,7 +25,7 @@ export const getPageContentWithNpmParserPackages = async (
       // const postlightResult = `# ${result.title}\n\n${result.content}\n`
       // console.log('Parser vs [postlight] parse result: \n', postlightResult)
       // return postlightResult
-      return htmlContent
+      return htmlContent || ''
     }
     const turndownService = new TurndownService()
     const readabilityMarkdown = turndownService.turndown(

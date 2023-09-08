@@ -4,6 +4,10 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { v4 as uuidV4 } from 'uuid'
 import { pushOutputToChat, templateParserDecorator } from '@/features/shortcuts'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  MaxUploadTxtFileTokens,
+  stringConvertTxtUpload,
+} from '@/features/shortcuts/utils/stringConvertTxtUpload'
 export class ActionGetPDFContentsOfCRX extends Action {
   static type = 'GET_PDF_CONTENTS_OF_CRX'
   constructor(
@@ -31,6 +35,7 @@ export class ActionGetPDFContentsOfCRX extends Action {
         },
         engine,
       )
+      let docId = ''
       if (
         typeof window !== 'undefined' &&
         (window as any).pdfjsLib &&
@@ -60,7 +65,9 @@ export class ActionGetPDFContentsOfCRX extends Action {
             }
             let startPDFContent = ''
             let endPDFContent = ''
+            let shortMiddleOutPDFContent = ''
             let loadPageCount = 0
+            let needFileUpload = false
             for (let i = 0; i < totalPages; i++) {
               let partOfPDFContents = ''
               let isSliceEnd = false
@@ -74,7 +81,15 @@ export class ActionGetPDFContentsOfCRX extends Action {
               const partOfPDFContentsToken = (
                 await getTextTokens(partOfPDFContents)
               ).length
-              if (partOfPDFContentsToken + useTokens > maxPDFTokens) {
+              if (
+                partOfPDFContentsToken + useTokens > maxPDFTokens &&
+                shortMiddleOutPDFContent === ''
+              ) {
+                needFileUpload = true
+                shortMiddleOutPDFContent = startPDFContent + endPDFContent
+              }
+              if (partOfPDFContentsToken + useTokens > MaxUploadTxtFileTokens) {
+                // 自2023-09-08之后，太长的PDF内容用上传文件的最大tokens来middle out
                 break
               }
               loadPageCount += 1
@@ -90,7 +105,15 @@ export class ActionGetPDFContentsOfCRX extends Action {
               startPDFContent,
               endPDFContent,
             )
-            return startPDFContent + endPDFContent
+            // TODO
+            // eslint-disable-next-line no-constant-condition
+            if (needFileUpload && false) {
+              docId = await stringConvertTxtUpload(
+                startPDFContent + endPDFContent,
+                (window as any)?.PDFViewerApplication?._docFilename,
+              )
+            }
+            return shortMiddleOutPDFContent || startPDFContent + endPDFContent
           } catch (e) {
             console.error(`ActionGetPDFContentsOfCRX error: \t`, e)
             return ''
@@ -106,6 +129,7 @@ export class ActionGetPDFContentsOfCRX extends Action {
           await getChartGPT()?.updateConversation(
             {
               meta: {
+                docId,
                 systemPrompt: `The following text delimited by triple backticks is the context text:
 \`\`\`
 ${PDFPageContent}

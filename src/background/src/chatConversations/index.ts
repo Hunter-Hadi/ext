@@ -27,6 +27,7 @@ export interface IChatConversationMeta {
   presencePenalty?: number // presencePenalty
   frequencyPenalty?: number // frequencyPenalty
   bestOf?: number // bestOf
+  docId?: string // 聊天文档id
   [key: string]: any
 }
 

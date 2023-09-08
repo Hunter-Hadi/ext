@@ -1,16 +1,11 @@
 import { v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
-import {
-  CHAT_GPT_GPT4_ARKOSE_TOKEN,
-  CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY,
-  AI_PROVIDER_MAP,
-} from '@/constants'
+import { AI_PROVIDER_MAP } from '@/constants'
 import {
   IChatGPTModelType,
   IChatGPTPluginType,
 } from '@/background/types/Settings'
-import Browser from 'webextension-polyfill'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 
 export interface IChatGPTAnswer {
@@ -258,74 +253,6 @@ export const getChatGPTAccessToken = async (
   return data?.accessToken || ''
 }
 
-const getLocalArkoseToken = async () => {
-  const cache = await Browser.storage.local.get(CHAT_GPT_GPT4_ARKOSE_TOKEN)
-  const data = JSON.parse(cache[CHAT_GPT_GPT4_ARKOSE_TOKEN] || '{}')
-  if (data.token) {
-    return data as {
-      token: string
-      date: number
-    }
-  } else {
-    return undefined
-  }
-}
-export const waitArkoseTokenIframeLoaded = async () => {
-  const key = CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY
-  // find script
-  const scripts = document.querySelectorAll('script')
-  const script = Array.from(scripts).find((script) => {
-    return script.src.includes(key)
-  })
-  if (!script) {
-    // not found
-    // 'https://chat.openai.com/?model=gpt-4'
-    location.href = 'https://chat.openai.com/?model=gpt-4'
-    throw new Error('Network error.')
-  }
-  // max wait 10s
-  const timeout = 10000
-  const start = Date.now()
-  let count = 0
-  while (Date.now() - start < timeout) {
-    const iframes = document.querySelectorAll('iframe')
-    const iframe = Array.from(iframes).find((iframe) => {
-      return iframe.src.includes(key)
-    })
-    if (iframe) {
-      if (count > 0) {
-        console.log('waitArkoseTokenIframeLoaded', count)
-        // 说明不是第一次就找到，给点时间让content script加载
-        await new Promise((resolve) => {
-          setTimeout(resolve, 3000)
-        })
-      }
-      return iframe
-    }
-    await new Promise((resolve) => {
-      setTimeout(resolve, 100)
-    })
-    count++
-  }
-  return undefined
-}
-export const mockSendPostMessage = () => {
-  const iframes = document.querySelectorAll('iframe')
-  for (let i = 0; i < iframes.length; i++) {
-    const frame = iframes[i]
-    const data = {
-      data: undefined,
-      key: CHAT_GPT_GPT4_ARKOSE_TOKEN_KEY,
-      message: 'show enforcement',
-      type: 'emit',
-    }
-    // post message
-    if (frame.contentWindow && frame.contentWindow.postMessage) {
-      frame.contentWindow.postMessage(JSON.stringify(data), '*')
-    }
-  }
-}
-
 export const generateArkoseToken = async (model: string) => {
   const needWaitArkoseToken = [
     // 'text-davinci-002-render-sha',
@@ -337,23 +264,47 @@ export const generateArkoseToken = async (model: string) => {
     'gpt-4-mobile',
   ].includes(model)
   if (needWaitArkoseToken) {
-    console.log('wait generateArkose Iframe loaded')
-    await waitArkoseTokenIframeLoaded()
-    console.log('generateArkoseToken', model)
-    const currentToken = await getLocalArkoseToken()
-    mockSendPostMessage()
-    const intervalDelay = 100
-    const maxLoop = (10 * 1000) / intervalDelay
-    const delay = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms))
-    for (let i = 0; i < maxLoop; i++) {
-      const newToken = await getLocalArkoseToken()
-      if (newToken?.token && newToken.token !== currentToken?.token) {
-        return newToken.token
+    return new Promise((resolve, reject) => {
+      const taskId = uuidV4()
+      let isResolve = false
+      window.postMessage({
+        event: 'MAX_AI_CHAT_GPT_MESSAGE_KEY',
+        type: 'arkoseToken',
+        data: {
+          taskId,
+        },
+      })
+      setTimeout(() => {
+        if (!isResolve) {
+          reject(
+            'Something went wrong, please try again. If this issue persists, contact us via email.',
+          )
+          window.removeEventListener('message', onceListener)
+          window.location.reload()
+        }
+      }, 20 * 1000)
+      const onceListener = (event: any) => {
+        if (
+          event?.data?.event === 'MAX_AI_CHAT_GPT_MESSAGE_KEY' &&
+          event?.data?.type === 'arkoseTokenResponse' &&
+          event?.data?.data?.taskId === taskId
+        ) {
+          if (!isResolve) {
+            isResolve = true
+            const token = event?.data?.data?.token || ''
+            if (token) {
+              resolve(token)
+            } else {
+              reject(
+                'Something went wrong, please try again. If this issue persists, contact us via email.',
+              )
+            }
+            window.removeEventListener('message', onceListener)
+          }
+        }
       }
-      await delay(intervalDelay)
-    }
-    return ''
+      window.addEventListener('message', onceListener)
+    })
   } else {
     // TODO gpt3.5某些用户可能也需要
     return ''
@@ -459,6 +410,8 @@ class ChatGPTConversation {
         type: 'error',
         data: { message: (e as any).message || 'Network error.', detail: '' },
       })
+      params.onEvent({ type: 'done' })
+      return
     }
     const postMessage = {
       action: regenerate ? 'variant' : 'next',

@@ -8,6 +8,7 @@ import { AppSettingsState } from '@/store'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { setChromeExtensionSettings } from '@/background/utils'
+
 const AppSettingsInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
   useThemeUpdateListener()

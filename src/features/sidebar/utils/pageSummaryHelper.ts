@@ -1,6 +1,9 @@
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  getTextTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 import { getPageContentWithNpmParserPackages } from '@/features/shortcuts/utils/pageContentHelper'
 import { getCurrentDomainHost } from '@/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -15,6 +18,7 @@ import {
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { stringConvertTxtUpload } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -280,6 +284,8 @@ export const generatePageSummaryData = async (): Promise<{
   pageSummaryId: string
   pageSummaryContent: string
   pageSummaryType: IPageSummaryType
+  pageSummaryContentTokens: number
+  pageSummaryDocId?: string
 }> => {
   const pageSummaryType = getPageSummaryType()
   let pageContent = ''
@@ -299,13 +305,22 @@ export const generatePageSummaryData = async (): Promise<{
       window.location.href,
     )
   }
+  const pageSummaryContentTokens = (await getTextTokens(pageContent)).length
   const md5 = md5TextEncrypt(pageContent)
+  // 如果网页内容超过12k，就上传到服务器
+  const pageSummaryDocId =
+    pageSummaryContentTokens > PAGE_SUMMARY_MAX_TOKENS
+      ? await stringConvertTxtUpload(pageContent, `${pageSummaryType}.txt`)
+      : ''
+  // 如没成功上传到服务器，就截取前12k个token
+  if (!pageSummaryDocId) {
+    pageContent = await sliceTextByTokens(pageContent, PAGE_SUMMARY_MAX_TOKENS)
+  }
   return {
     pageSummaryId: md5,
-    pageSummaryContent: await sliceTextByTokens(
-      pageContent,
-      PAGE_SUMMARY_MAX_TOKENS,
-    ),
+    pageSummaryDocId,
+    pageSummaryContent: pageContent,
+    pageSummaryContentTokens,
     pageSummaryType: getPageSummaryType(),
   }
 }

@@ -71,21 +71,20 @@ class UseChatGPTPlusChat extends BaseChat {
    * @param question 问题
    * @param options
    * @param onMessage 回调
-   * @param options.include_history 是否包含历史记录
-   * @param options.regenerate 是否重新生成
+   * @param options.doc_id 大文件聊天之前上传的上下文的documentId
+   * @param options.chat_history 聊天历史
+   * @param options.backendAPI 后端api
    * @param options.streaming 是否流式
-   * @param options.max_history_message_cnt 最大历史记录数
    * @param options.taskId 任务id
    */
   async askChatGPT(
     question: string,
     options?: {
       taskId: string
-      include_history?: boolean
-      regenerate?: boolean
+      doc_id?: string
       streaming?: boolean
-      max_history_message_cnt?: number
       chat_history?: IMaxAIChatGPTMessageType[]
+      backendAPI?: 'chat_with_document' | 'get_chatgpt_response'
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -112,22 +111,18 @@ class UseChatGPTPlusChat extends BaseChat {
       return
     }
     const {
-      include_history = false,
       taskId,
+      doc_id,
+      backendAPI = 'get_chatgpt_response',
       streaming = true,
-      regenerate = false,
-      max_history_message_cnt = 0,
       chat_history = [],
     } = options || {}
     const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
     const postBody = Object.assign(
       {
         chat_history,
-        include_history,
-        regenerate,
         streaming,
         message_content: question,
-        max_history_message_cnt,
         chrome_extension_version: APP_VERSION,
         model_name:
           this.conversation?.meta.AIModel ||
@@ -141,7 +136,7 @@ class UseChatGPTPlusChat extends BaseChat {
           1.6,
         ),
       },
-      // { conversation_id: this.conversation?.id || '' },
+      doc_id ? { doc_id } : {},
     )
     const controller = new AbortController()
     const signal = controller.signal
@@ -233,7 +228,7 @@ class UseChatGPTPlusChat extends BaseChat {
     }
     throttleEchoText()
     let isTokenExpired = false
-    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`, {
+    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
       provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       method: 'POST',
       signal,

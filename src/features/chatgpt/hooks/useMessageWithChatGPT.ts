@@ -61,8 +61,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
+  const conversationRef = useRef(conversation)
+  useEffect(() => {
+    conversationRef.current = conversation
+  }, [conversation])
   const getSidebarRef = () => {
     return {
+      conversationRef,
       currentConversationIdRef,
       currentSidebarSettingsRef,
     }

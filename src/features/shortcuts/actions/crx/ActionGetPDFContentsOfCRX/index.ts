@@ -105,9 +105,7 @@ export class ActionGetPDFContentsOfCRX extends Action {
               startPDFContent,
               endPDFContent,
             )
-            // TODO
-            // eslint-disable-next-line no-constant-condition
-            if (needFileUpload && false) {
+            if (needFileUpload) {
               docId = await stringConvertTxtUpload(
                 startPDFContent + endPDFContent,
                 (window as any)?.PDFViewerApplication?._docFilename,
@@ -119,7 +117,6 @@ export class ActionGetPDFContentsOfCRX extends Action {
             return ''
           }
         }
-        // TODO 支持控制最大数量
         const PDFPageContent = await fetchPageContents()
         const { getShortCutsEngine, getChartGPT } = engine
         if (getShortCutsEngine()?.getNextAction?.()?.type === 'ASK_CHATGPT') {

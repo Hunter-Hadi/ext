@@ -34,6 +34,9 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   if (!container) {
     container = document.body
   }
+  if (typeof container === 'function' || container instanceof Array) {
+    debugger
+  }
   return (
     <Tooltip
       {...props}

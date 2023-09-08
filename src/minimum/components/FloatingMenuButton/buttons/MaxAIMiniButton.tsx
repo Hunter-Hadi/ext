@@ -5,6 +5,7 @@ import useCommands from '@/hooks/useCommands'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import Stack from '@mui/material/Stack'
 import { Fade } from '@mui/material'
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 
 const MaxAIMiniButton: FC<{
   isDragging?: boolean
@@ -82,29 +83,29 @@ const MaxAIMiniButton: FC<{
           />
         </Button>
       </TextOnlyTooltip>
-      {/*<Stack*/}
-      {/*  width={12}*/}
-      {/*  borderRadius={'4px'}*/}
-      {/*  justifyContent={'center'}*/}
-      {/*  alignItems={'center'}*/}
-      {/*  sx={{*/}
-      {/*    marginLeft: '4px',*/}
-      {/*    '&:hover': {*/}
-      {/*      height: 32,*/}
-      {/*      bgcolor: (t) =>*/}
-      {/*        t.palette.mode === 'dark'*/}
-      {/*          ? 'rgba(178, 115, 255, 0.08)'*/}
-      {/*          : 'rgb(235,235,235)',*/}
-      {/*    },*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  <DragIndicatorIcon*/}
-      {/*    sx={{*/}
-      {/*      fontSize: 20,*/}
-      {/*      color: 'rgb(146,146,146)',*/}
-      {/*    }}*/}
-      {/*  />*/}
-      {/*</Stack>*/}
+      <Stack
+        width={12}
+        borderRadius={'4px'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        sx={{
+          marginLeft: '4px',
+          '&:hover': {
+            height: 32,
+            bgcolor: (t) =>
+              t.palette.mode === 'dark'
+                ? 'rgba(178, 115, 255, 0.08)'
+                : 'rgb(235,235,235)',
+          },
+        }}
+      >
+        <DragIndicatorIcon
+          sx={{
+            fontSize: 20,
+            color: 'rgb(146,146,146)',
+          }}
+        />
+      </Stack>
       <Stack
         sx={{
           position: 'absolute',

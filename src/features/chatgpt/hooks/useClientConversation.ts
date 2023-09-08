@@ -20,6 +20,8 @@ import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientCon
 import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
+import merge from 'lodash-es/merge'
+
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -93,17 +95,30 @@ const useClientConversation = () => {
           initConversationData: {
             id: getPageSummaryConversationId(),
             type: 'Summary',
-            meta: {
-              AIProvider: 'USE_CHAT_GPT_PLUS',
-              AIModel: 'gpt-3.5-turbo',
-              systemPrompt: `The following text delimited by triple backticks is the context text:
+            meta: merge(
+              {
+                AIProvider: 'USE_CHAT_GPT_PLUS',
+                AIModel:
+                  pageSummaryData?.pageSummaryType === 'PDF_CRX_SUMMARY'
+                    ? 'gpt-3.5-turbo-16k'
+                    : 'gpt-3.5-turbo',
+                maxTokens: 16384, // gpt-3.5-16k
+                pageSummaryId: pageSummaryData.pageSummaryId,
+                pageSummaryType: pageSummaryData.pageSummaryType,
+                systemPrompt: '',
+              },
+              pageSummaryData.pageSummaryDocId
+                ? {
+                    AIModel: 'gpt-3.5-turbo-16k',
+                    docId: pageSummaryData.pageSummaryDocId,
+                  }
+                : {
+                    systemPrompt: `The following text delimited by triple backticks is the context text:
 \`\`\`
 ${pageSummaryData.pageSummaryContent}
 \`\`\``,
-              maxTokens: 16384, // gpt-3.5-16k
-              pageSummaryId: pageSummaryData.pageSummaryId,
-              pageSummaryType: pageSummaryData.pageSummaryType,
-            },
+                  },
+            ),
           } as Partial<IChatConversation>,
         },
       })

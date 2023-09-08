@@ -2,6 +2,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IAction } from '@/features/shortcuts/types/Action'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 
 class Action implements IAction {
   id: string
@@ -48,6 +49,15 @@ class Action implements IAction {
   }
   getPrevAction(engine: any) {
     return engine?.getShortCutsEngine()?.getPrevAction() as IAction | null
+  }
+  async getCurrentConversation(engine: any) {
+    const conversationId =
+      engine.getChartGPT()?.getSidebarRef()?.currentConversationIdRef
+        ?.current || ''
+    if (conversationId) {
+      return await clientGetConversation(conversationId)
+    }
+    return null
   }
 }
 export default Action

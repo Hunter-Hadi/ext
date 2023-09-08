@@ -7,7 +7,9 @@ import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { IChatConversation } from '@/background/src/chatConversations'
+import ConversationManager, {
+  IChatConversation,
+} from '@/background/src/chatConversations'
 import { IMaxAIChatGPTMessageType } from '@/background/src/chat/UseChatGPTChat/types'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
@@ -45,8 +47,15 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIChatGPTMessageType[] = []
+    const conversationDetail =
+      await ConversationManager.conversationDB.getConversationById(
+        question.conversationId,
+      )
+    // 大文件聊天之前上传的上下文的documentId
+    const docId = conversationDetail?.meta?.docId
     if (this.useChatGPTPlusChat.conversation) {
-      if (this.useChatGPTPlusChat.conversation.meta.systemPrompt) {
+      // 有docId的情况下，不需要发送系统提示
+      if (!docId && this.useChatGPTPlusChat.conversation.meta.systemPrompt) {
         chat_history.push({
           type: 'system',
           data: {
@@ -64,16 +73,13 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
           },
         })
       })
-      options.includeHistory = false
-      options.maxHistoryMessageCnt = 0
     }
     await this.useChatGPTPlusChat.askChatGPT(
       question.question,
       {
+        doc_id: docId,
+        backendAPI: docId ? 'chat_with_document' : 'get_chatgpt_response',
         taskId: question.messageId,
-        regenerate: options.regenerate,
-        include_history: options.includeHistory,
-        max_history_message_cnt: options.maxHistoryMessageCnt,
         chat_history,
       },
       async ({ type, done, error, data }) => {

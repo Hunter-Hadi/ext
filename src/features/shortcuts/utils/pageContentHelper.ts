@@ -33,6 +33,7 @@ export const getPageContentWithNpmParserPackages = async (
     )
     const readabilityResult = `# ${readabilityArticle?.title}\n\n${readabilityMarkdown}\n`
     console.log('Parser vs [Readability] parse result: \n', readabilityResult)
+    debugger
     return readabilityResult
   } catch (e) {
     console.log(e)

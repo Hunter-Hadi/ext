@@ -348,9 +348,13 @@ export const processAskAIParameters = async (
     (!options.historyMessages || options.historyMessages?.length === 0)
   ) {
     // system prompt占用的tokens
-    const systemPromptTokens = (
+    let systemPromptTokens = (
       await getTextTokens(conversation.meta.systemPrompt || '')
     ).length
+    if (conversation?.meta?.docId) {
+      // 因为有docId不会带上systemPrompt，所以不用计算tokens
+      systemPromptTokens = 0
+    }
     // question prompt占用的tokens
     const questionPromptTokens = (await getTextTokens(question.question)).length
     // api question 会用到1次message, maxHistoryCount - 1
@@ -400,6 +404,7 @@ export const processAskAIParameters = async (
     if (endIndex !== null) {
       let addMessagePosition: 'start' | 'end' = 'end'
       // 如果小于最大历史记录长度，并且小于最大历史记录token数
+      let needBreak = false
       while (
         historyTokensUsed < maxHistoryTokens &&
         historyCountUsed < maxHistoryCount
@@ -431,9 +436,13 @@ export const processAskAIParameters = async (
           historyCountUsed += 1
           addMessagePosition = addMessagePosition === 'end' ? 'start' : 'end'
         }
-        // 如果开始下标和结束下标重合了，break
-        if (startIndex === endIndex) {
+        if (needBreak) {
           break
+        }
+        // 如果开始下标和结束下标重合了，下一次才break
+        // 例如start 1, end 2, end - 1 = 1, 但是start也得加，所以是下一次
+        if (startIndex === endIndex) {
+          needBreak = true
         }
       }
     }

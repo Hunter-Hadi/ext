@@ -27,7 +27,7 @@ const MaxAIMiniButton: FC<{
     timerRef.current = setTimeout(() => {
       setHover(true)
       setButtonHover(true)
-    }, 300) as any
+    }, 100) as any
   }
   const waitAnimationClose = () => {
     clearTimer()
@@ -115,7 +115,7 @@ const MaxAIMiniButton: FC<{
           visibility: hover && !isDragging ? 'visible' : 'hidden',
         }}
       >
-        <Fade in={hover && !isDragging} timeout={300}>
+        <Fade in={hover && !isDragging} timeout={100}>
           <Stack pb={'6px'} spacing={'6px'}>
             {actions as any}
           </Stack>

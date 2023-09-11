@@ -48,6 +48,7 @@ const AIProviderModelSelector: FC = () => {
   }, [aiProviderModels, aiProviderModel])
   return (
     <BaseSelect
+      displayLoading={false}
       MenuProps={{
         elevation: 0,
         anchorOrigin: {

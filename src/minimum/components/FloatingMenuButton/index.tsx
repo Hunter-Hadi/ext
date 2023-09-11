@@ -68,7 +68,7 @@ const FloatingMenuButton: FC = () => {
         position: 'fixed',
         top: 0,
         right: 0,
-        zIndex: 2100000000,
+        zIndex: 2147483647,
       }}
     >
       <Draggable
@@ -102,7 +102,7 @@ const FloatingMenuButton: FC = () => {
               width: 42,
               height: 32,
               transform: isHover ? 'translateX(0)' : 'translateX(10px)',
-              transition: '0.3s all',
+              transition: '0.1s all',
               borderRadius: '27px 0 0 27px',
               bgcolor: 'background.paper',
               boxShadow:

@@ -1356,7 +1356,10 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           'outlook.office.com',
         ].includes(currentHost)
       ) {
-        doc.execCommand('Delete', false, '')
+        // 有内容才Delete
+        if (selection?.toString().trim()) {
+          doc.execCommand('Delete', false, '')
+        }
         doc.execCommand('insertText', false, pastedText)
         console.log(
           'replaceWithClipboard insertText',

@@ -45,6 +45,7 @@ export interface IBaseSelectProps
   renderFooter?: React.ReactNode
   labelSx?: SxProps
   onPermission?: PermissionWrapperProps['onPermission']
+  displayLoading?: boolean
 }
 
 const findCurrentOption = (options: IOptionType[], value: IOptionValueType) => {
@@ -75,6 +76,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   label,
   labelSx,
   onPermission,
+  displayLoading = true,
   ...props
 }) => {
   const [selectValue, setSelectValue] = useState(defaultValue || '')
@@ -231,7 +233,9 @@ const BaseSelect: FC<IBaseSelectProps> = ({
         displayEmpty
         {...props}
       >
-        {loading && <AppLoadingLayout size={32} loading={loading} />}
+        {loading && displayLoading && (
+          <AppLoadingLayout size={16} loading={loading} />
+        )}
         {!isEmptyDataCache && renderHeader}
         {!isEmptyDataCache && optionsRenderCache}
         {!isEmptyDataCache && renderFooter}

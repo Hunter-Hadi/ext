@@ -6,14 +6,14 @@ import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventTy
 import { v4 as uuidV4 } from 'uuid'
 
 export class ActionGetContentsOfURL extends Action {
-  static type = 'GET_CONTENTS_OF_URL'
+  static type: ActionIdentifier = 'GET_CONTENTS_OF_URL'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'GET_CONTENTS_OF_URL', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   @pushOutputToChat({
     onlyError: true,

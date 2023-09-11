@@ -2,14 +2,14 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 export class ActionURL extends Action {
-  static type = 'URL'
+  static type: ActionIdentifier = 'URL'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'URL', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   async execute(params: ActionParameters, engine: any) {
     try {

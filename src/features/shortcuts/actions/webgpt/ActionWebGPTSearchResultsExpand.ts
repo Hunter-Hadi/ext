@@ -19,14 +19,14 @@ import {
 
 // NOTE: 这只是为了webget的业务实现的，不具备通用性
 export class ActionWebGPTSearchResultsExpand extends Action {
-  static type = 'WEBGPT_SEARCH_RESULTS_EXPAND'
+  static type: ActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'WEBGPT_SEARCH_RESULTS_EXPAND', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   @pushOutputToChat({
     onlyError: true,

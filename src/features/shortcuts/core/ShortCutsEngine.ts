@@ -7,7 +7,6 @@ import {
 import {
   ActionAskChatGPT,
   ActionRenderChatGPTPrompt,
-  ActionGmailInsertReplyBox,
   ActionInsertUserInput,
   ActionGetContentsOfWebPage,
   ActionSetVariable,
@@ -27,6 +26,9 @@ import {
   ActionOperationElement,
   ActionCloseURLS,
   ActionConditional,
+  ActionAnalyzeChatFile,
+  ActionGetEmailContentsOfWebPage,
+  ActionGetReadabilityContentsOfWebPage,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -35,10 +37,10 @@ import { IAction } from '@/features/shortcuts/types/Action'
 
 const ActionClassMap = {
   // 即将废弃
-  [ActionGmailInsertReplyBox.type]: ActionGmailInsertReplyBox,
-  // chatgpt
-  [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
+  // chat
+  [ActionAskChatGPT.type]: ActionAskChatGPT,
+  [ActionAnalyzeChatFile.type]: ActionAnalyzeChatFile,
   // scripts
   [ActionInsertUserInput.type]: ActionInsertUserInput,
   [ActionSetVariable.type]: ActionSetVariable,
@@ -54,6 +56,9 @@ const ActionClassMap = {
   [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
+  [ActionGetReadabilityContentsOfWebPage.type]:
+    ActionGetReadabilityContentsOfWebPage,
+  [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

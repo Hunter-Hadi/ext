@@ -9,14 +9,14 @@ import { IChatMessage } from '@/features/chatgpt/types'
 import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 
 export class ActionAskChatGPT extends Action {
-  static type = 'ASK_CHATGPT'
+  static type: ActionIdentifier = 'ASK_CHATGPT'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'ASK_CHATGPT', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

@@ -3,7 +3,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { chromeExtensionClientOpenPage } from '@/utils'
 export class ActionOpenURLs extends Action {
-  static type = 'OPEN_URLS'
+  static type: ActionIdentifier = 'OPEN_URLS'
 
   constructor(
     id: string,
@@ -11,7 +11,7 @@ export class ActionOpenURLs extends Action {
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'OPEN_URLS', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
 
   async execute(params: ActionParameters, engine: any) {

@@ -8,14 +8,14 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IChatMessage } from '@/features/chatgpt/types'
 
 export class ActionWebGPTAskChatGPT extends Action {
-  static type = 'WEBGPT_ASK_CHATGPT'
+  static type: ActionIdentifier = 'WEBGPT_ASK_CHATGPT'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'WEBGPT_ASK_CHATGPT', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

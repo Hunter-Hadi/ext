@@ -176,6 +176,8 @@ interface ActionParameters {
   // Operation Element
   OperationElementTabID?: number
   OperationElementConfig?: OperationElementConfigType
+  AnalyzeChatFileName?: string
+  AnalyzeChatFileImmediateUpdateConversation?: boolean
 }
 
 export default ActionParameters

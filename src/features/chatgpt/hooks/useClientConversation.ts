@@ -9,8 +9,8 @@ import { AppSettingsState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 import {
-  generatePageSummaryData,
   getPageSummaryConversationId,
+  getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
@@ -87,38 +87,26 @@ const useClientConversation = () => {
           return sidebarConversationId
         }
       }
-      const pageSummaryData = await generatePageSummaryData()
-      console.log('usePageUrlChange', pageSummaryData)
+      // const pageSummaryData = await generatePageSummaryData()
+      // console.log('usePageUrlChange', pageSummaryData)
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
         data: {
           initConversationData: {
             id: getPageSummaryConversationId(),
             type: 'Summary',
-            meta: merge(
-              {
-                AIProvider: 'USE_CHAT_GPT_PLUS',
-                AIModel:
-                  pageSummaryData?.pageSummaryType === 'PDF_CRX_SUMMARY'
-                    ? 'gpt-3.5-turbo-16k'
-                    : 'gpt-3.5-turbo',
-                maxTokens: 16384, // gpt-3.5-16k
-                pageSummaryId: pageSummaryData.pageSummaryId,
-                pageSummaryType: pageSummaryData.pageSummaryType,
-                systemPrompt: '',
-              },
-              pageSummaryData.pageSummaryDocId
-                ? {
-                    AIModel: 'gpt-3.5-turbo-16k',
-                    docId: pageSummaryData.pageSummaryDocId,
-                  }
-                : {
-                    systemPrompt: `The following text delimited by triple backticks is the context text:
-\`\`\`
-${pageSummaryData.pageSummaryContent}
-\`\`\``,
-                  },
-            ),
+            meta: merge({
+              AIProvider: 'USE_CHAT_GPT_PLUS',
+              AIModel: 'gpt-3.5-turbo',
+              maxTokens: 16384, // gpt-3.5-16k
+              pageSummaryType: getPageSummaryType(),
+              //               pageSummaryId: pageSummaryData.pageSummaryId,
+              //               pageSummaryType: pageSummaryData.pageSummaryType,
+              //               systemPrompt: `The following text delimited by triple backticks is the context text:
+              // \`\`\`
+              // ${pageSummaryData.pageSummaryContent}
+              // \`\`\``,
+            }),
           } as Partial<IChatConversation>,
         },
       })

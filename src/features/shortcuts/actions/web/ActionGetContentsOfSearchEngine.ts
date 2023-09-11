@@ -20,14 +20,14 @@ export interface SearchResponse {
 
 // NOTE: 这只是为了webget的业务实现的，不具备通用性
 export class ActionGetContentsOfSearchEngine extends Action {
-  static type = 'GET_CONTENTS_OF_SEARCH_ENGINE'
+  static type: ActionIdentifier = 'GET_CONTENTS_OF_SEARCH_ENGINE'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'GET_CONTENTS_OF_SEARCH_ENGINE', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   @pushOutputToChat({
     onlyError: true,

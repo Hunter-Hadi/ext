@@ -3,6 +3,8 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IAction } from '@/features/shortcuts/types/Action'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
+import { IChatConversation } from '@/background/src/chatConversations'
 
 class Action implements IAction {
   id: string
@@ -33,9 +35,7 @@ class Action implements IAction {
   }
   pushMessageToChat(message: ISystemChatMessage, engine: any) {
     if (engine && engine.getChartGPT()?.pushMessage) {
-      const conversationId =
-        engine.getChartGPT()?.getSidebarRef()?.currentConversationIdRef
-          ?.current || ''
+      const conversationId = this.getCurrentConversationId(engine)
       engine.getChartGPT()?.pushMessage(message, conversationId)
     }
   }
@@ -43,6 +43,12 @@ class Action implements IAction {
     this.status = 'idle'
     this.error = ''
     this.output = ''
+  }
+  getCurrentConversationId(engine: any) {
+    const conversationId =
+      engine.getChartGPT()?.getSidebarRef()?.currentConversationIdRef
+        ?.current || ''
+    return conversationId
   }
   getNextAction(engine: any) {
     return engine?.getShortCutsEngine()?.getNextAction() as IAction | null
@@ -58,6 +64,13 @@ class Action implements IAction {
       return await clientGetConversation(conversationId)
     }
     return null
+  }
+  async updateConversation(
+    engine: any,
+    updateConversationData: Partial<IChatConversation>,
+  ) {
+    const conversationId = this.getCurrentConversationId(engine)
+    await clientChatConversationUpdate(conversationId, updateConversationData)
   }
 }
 export default Action

@@ -16,14 +16,14 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 
 export class ActionInsertUserInput extends Action {
-  static type = 'INSERT_USER_INPUT'
+  static type: ActionIdentifier = 'INSERT_USER_INPUT'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'INSERT_USER_INPUT', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   @templateParserDecorator()
   @clearUserInput()

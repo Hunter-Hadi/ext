@@ -1,24 +1,15 @@
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import {
-  getTextTokens,
-  sliceTextByTokens,
-} from '@/features/shortcuts/utils/tokenizer'
-import { getPageContentWithNpmParserPackages } from '@/features/shortcuts/utils/pageContentHelper'
 import { getCurrentDomainHost } from '@/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 import { v4 as uuidV4 } from 'uuid'
 import {
-  getEmailWebsitePageContent,
-  isEmailWebsite,
-} from '@/features/sidebar/utils/emailWebsiteHelper'
-import {
   getIframePageContent,
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { stringConvertTxtUpload } from '@/features/shortcuts/utils/stringConvertTxtUpload'
+import { isEmailWebsite } from '@/features/shortcuts/actions/web/ActionGetEmailContentsOfWebPage/getEmailWebsitePageContents'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -40,6 +31,17 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
       editable: false,
       type: 'shortcuts',
       actions: [
+        {
+          type: 'GET_READABILITY_CONTENTS_OF_WEBPAGE',
+          parameters: {},
+        },
+        {
+          type: 'ANALYZE_CHAT_FILE',
+          parameters: {
+            AnalyzeChatFileImmediateUpdateConversation: false,
+            AnalyzeChatFileName: 'PageSummaryContent.txt',
+          },
+        },
         {
           type: 'ASK_CHATGPT',
           parameters: {
@@ -88,6 +90,17 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       editable: false,
       type: 'shortcuts',
       actions: [
+        {
+          type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
+          parameters: {},
+        },
+        {
+          type: 'ANALYZE_CHAT_FILE',
+          parameters: {
+            AnalyzeChatFileImmediateUpdateConversation: false,
+            AnalyzeChatFileName: 'EmailSummaryContent.txt',
+          },
+        },
         {
           type: 'ASK_CHATGPT',
           parameters: {
@@ -142,8 +155,13 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       actions: [
         {
           type: 'GET_PDF_CONTENTS_OF_CRX',
+          parameters: {},
+        },
+        {
+          type: 'ANALYZE_CHAT_FILE',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            AnalyzeChatFileImmediateUpdateConversation: false,
+            AnalyzeChatFileName: 'PDFSummaryContent.txt',
           },
         },
         {
@@ -196,8 +214,13 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       actions: [
         {
           type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+          parameters: {},
+        },
+        {
+          type: 'ANALYZE_CHAT_FILE',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+            AnalyzeChatFileImmediateUpdateConversation: false,
           },
         },
         {
@@ -280,49 +303,17 @@ export const getPageSummaryType = (): IPageSummaryType => {
   return 'PAGE_SUMMARY'
 }
 
-export const generatePageSummaryData = async (): Promise<{
-  pageSummaryId: string
-  pageSummaryContent: string
-  pageSummaryType: IPageSummaryType
-  pageSummaryContentTokens: number
-  pageSummaryDocId?: string
-}> => {
-  const pageSummaryType = getPageSummaryType()
+export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
   let pageContent = ''
-  // 判断是不是需要从iframe获取网页内容: mircosoft word
+  // 判断是不是需要从iframe获取网页内容: Microsoft word
   if (isNeedGetIframePageContent()) {
     pageContent = await getIframePageContent()
   } else if (isNeedGetSpecialHostPageContent()) {
     // 判断是不是需要从特殊网站获取网页内容： google docs
     pageContent = await getSpecialHostPageContent()
-  } else if (pageSummaryType === 'DEFAULT_EMAIL_SUMMARY') {
-    pageContent = await getEmailWebsitePageContent()
   }
   pageContent = pageContent.trim()
-  if (!pageContent) {
-    // 提取网页内容
-    pageContent = await getPageContentWithNpmParserPackages(
-      window.location.href,
-    )
-  }
-  const pageSummaryContentTokens = (await getTextTokens(pageContent)).length
-  const md5 = md5TextEncrypt(pageContent)
-  // 如果网页内容超过12k，就上传到服务器
-  const pageSummaryDocId =
-    pageSummaryContentTokens > PAGE_SUMMARY_MAX_TOKENS
-      ? await stringConvertTxtUpload(pageContent, `${pageSummaryType}.txt`)
-      : ''
-  // 如没成功上传到服务器，就截取前12k个token
-  if (!pageSummaryDocId) {
-    pageContent = await sliceTextByTokens(pageContent, PAGE_SUMMARY_MAX_TOKENS)
-  }
-  return {
-    pageSummaryId: md5,
-    pageSummaryDocId,
-    pageSummaryContent: pageContent,
-    pageSummaryContentTokens,
-    pageSummaryType: getPageSummaryType(),
-  }
+  return pageContent
 }
 
 const isNeedGetSpecialHostPageContent = () => {

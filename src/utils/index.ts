@@ -19,7 +19,6 @@ import { COUNTRIES_MAP } from '@/utils/staticData'
 import size from 'lodash-es/size'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { IInboxMessageType } from '@/features/sidebar/store/gmail'
-import querySelector from '@inboxsdk/core/src/platform-implementation-js/lib/dom/querySelectorOrFail'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)

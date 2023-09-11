@@ -4,8 +4,6 @@ type ActionIdentifier =
   | 'RENDER_CHATGPT_PROMPT'
   // 提问ai provider
   | 'ASK_CHATGPT'
-  // 插入GMAIL回复框
-  | 'GMAIL_INSERT_REPLY_BOX'
   // 插入用户输入框
   | 'INSERT_USER_INPUT'
   // 获取网页内容
@@ -32,6 +30,10 @@ type ActionIdentifier =
   | 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
   // 从插件获取PDF的内容
   | 'GET_PDF_CONTENTS_OF_CRX'
+  // 从@mozilla/readability获取网页内容
+  | 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
+  // 从各大邮件网站获取内容
+  | 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   // 打开网页
   | 'OPEN_URLS'
   //  关闭网页
@@ -40,6 +42,8 @@ type ActionIdentifier =
   | 'OPERATION_ELEMENT'
   // if条件
   | 'SCRIPTS_CONDITIONAL'
+  // 聊天文件太长上传
+  | 'ANALYZE_CHAT_FILE'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier =

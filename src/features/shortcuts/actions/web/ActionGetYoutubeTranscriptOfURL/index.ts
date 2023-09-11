@@ -10,16 +10,17 @@ import {
 import { v4 as uuidV4 } from 'uuid'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
-import { getPageContentWithNpmParserPackages } from '@/features/shortcuts/utils/pageContentHelper'
+import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
+
 export class ActionGetYoutubeTranscriptOfURL extends Action {
-  static type = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
+  static type: ActionIdentifier = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
   constructor(
     id: string,
     type: ActionIdentifier,
     parameters: ActionParameters,
     autoExecute: boolean,
   ) {
-    super(id, 'GET_YOUTUBE_TRANSCRIPT_OF_URL', parameters, autoExecute)
+    super(id, type, parameters, autoExecute)
   }
   @templateParserDecorator()
   @pushOutputToChat({
@@ -73,10 +74,7 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
             pageHTMLResult.data,
           )
           if (pageHTMLResult.success && pageHTMLResult.data) {
-            const pageContent = await getPageContentWithNpmParserPackages(
-              youtubeLinkURL,
-              pageHTMLResult.data,
-            )
+            const pageContent = await getPageContentWithMozillaReadability()
             transcripts = [
               {
                 start: '',

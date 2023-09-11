@@ -138,6 +138,10 @@ class UseChatGPTPlusChat extends BaseChat {
       },
       doc_id ? { doc_id } : {},
     )
+    // 当前只有大文件聊天用到这个model
+    if (backendAPI === 'chat_with_document') {
+      postBody.model_name = 'gpt-3.5-turbo-16k'
+    }
     const controller = new AbortController()
     const signal = controller.signal
     if (taskId) {

@@ -1,5 +1,5 @@
 import { getCurrentDomainHost } from '@/utils'
-import { getPageContentWithNpmParserPackages } from '@/features/shortcuts/utils/pageContentHelper'
+import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 
 export const emailWebsiteTrafficRankings = [
   {
@@ -82,7 +82,7 @@ export const isEmailWebsite = () => {
   return false
 }
 
-export const getEmailWebsitePageContent = async () => {
+const getEmailWebsitePageContents = async () => {
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms))
   const host = getCurrentDomainHost()
@@ -146,19 +146,14 @@ export const getEmailWebsitePageContent = async () => {
           if (pageContent) {
             return pageContent.innerText
           } else {
-            return await getPageContentWithNpmParserPackages(
-              doc?.location?.href,
-              doc?.documentElement?.innerHTML,
-            )
+            return await getPageContentWithMozillaReadability()
           }
         }),
       )
     ).join('')
     return pageContent
   } catch (e) {
-    return await getPageContentWithNpmParserPackages(
-      document.location.href,
-      document.documentElement.innerHTML,
-    )
+    return await getPageContentWithMozillaReadability()
   }
 }
+export default getEmailWebsitePageContents

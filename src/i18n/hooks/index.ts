@@ -12,7 +12,7 @@ export const useLazyLoadI18nResources = () => {
   const { i18n } = useTranslation()
   useEffect(() => {
     const newLanguage = userSettings?.preferredLanguage || i18n.language
-    if (!i18n.hasResourceBundle(newLanguage, 'name')) {
+    if (!i18n?.hasResourceBundle?.(newLanguage, 'name')) {
       // lazy load resources
       fetch(Browser.runtime.getURL(`i18n/locales/${newLanguage}/index.json`))
         .then((t) => t.json())
@@ -31,7 +31,7 @@ export const useLazyLoadI18nResources = () => {
 
 export const loadI18nResources = (i18n: any, language: string) => {
   return new Promise((resolve) => {
-    if (i18n.language && !i18n.hasResourceBundle(language, 'name')) {
+    if (i18n?.language && !i18n?.hasResourceBundle?.(language, 'name')) {
       // lazy load resources
       fetch(Browser.runtime.getURL(`i18n/locales/${language}/index.json`))
         .then((t) => t.json())

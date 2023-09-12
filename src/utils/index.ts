@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-  EZMAIL_NEW_MAIL_GROUP_ID,
-  USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
-  EZMAIL_REPLY_GROUP_ID,
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
@@ -17,8 +13,6 @@ import {
 } from '@/features/chatgpt/utils'
 import { COUNTRIES_MAP } from '@/utils/staticData'
 import size from 'lodash-es/size'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import { IInboxMessageType } from '@/features/sidebar/store/gmail'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
@@ -169,26 +163,6 @@ export const hideChatBox = () => {
 export const isShowChatBox = () => {
   const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
   return chatBoxElement?.classList.contains('open') || false
-}
-
-export const filteredTypeGmailToolBarContextMenu = (
-  messageType: IInboxMessageType,
-  filterCTAButton = false,
-  sourceList: IContextMenuItem[],
-) => {
-  let menuList = sourceList
-  if (filterCTAButton) {
-    menuList = menuList.filter(
-      (item) =>
-        item.id !== USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID &&
-        item.id !== USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
-    )
-  }
-  if (messageType === 'reply') {
-    return menuList.filter((item) => item.id !== EZMAIL_NEW_MAIL_GROUP_ID)
-  } else {
-    return menuList.filter((item) => item.id !== EZMAIL_REPLY_GROUP_ID)
-  }
 }
 
 export const useDebounceValue = <T>(

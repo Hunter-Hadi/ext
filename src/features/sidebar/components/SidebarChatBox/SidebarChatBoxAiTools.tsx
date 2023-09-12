@@ -2,11 +2,8 @@ import React, { FC, useMemo } from 'react'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import ReplyIcon from '@mui/icons-material/Reply'
-import { useInboxComposeViews } from '@/features/sidebar/hooks'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { hideChatBox } from '@/utils'
-import { gmailReplyBoxInsertText } from '@/features/sidebar/utils'
-import { useRangy } from '@/features/contextMenu/hooks'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import { useTranslation } from 'react-i18next'
@@ -21,11 +18,9 @@ const SidebarChatBoxAiTools: FC<{
   onCopy?: () => void
 }> = (props) => {
   const { t } = useTranslation(['common', 'client'])
-  const { currentComposeView } = useInboxComposeViews()
-  const { replaceSelectionRangeText, currentSelection } = useRangy()
-  const { message, insertAble, replaceAble } = props
+  const { message, insertAble } = props
   const insertAbleMemo = useMemo(() => {
-    return currentComposeView && insertAble
+    return insertAble
   }, [insertAble])
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
   return (
@@ -43,38 +38,12 @@ const SidebarChatBoxAiTools: FC<{
           title={'insert to draft'}
           startIcon={<ReplyIcon />}
           onClick={() => {
-            const composeView =
-              currentComposeView && currentComposeView.getInstance?.()
-            if (composeView) {
-              const composeViewBodyElement = composeView.getBodyElement()
-              if (composeViewBodyElement) {
-                gmailReplyBoxInsertText(composeViewBodyElement, message.text)
-                hideChatBox()
-              } else {
-                composeView.setBodyText(message.text)
-              }
-            }
+            // TODO
           }}
         >
           {t('client:sidebar__button__insert')}
         </Button>
       )}
-      {/*// FIXME: 边界情况太多了*/}
-      {false &&
-        replaceAble &&
-        !insertAbleMemo &&
-        currentSelection?.selectionInputAble && (
-          <Button
-            size={'small'}
-            variant={'contained'}
-            onClick={() => {
-              replaceSelectionRangeText(message.text)
-              hideChatBox()
-            }}
-          >
-            {t('client:sidebar__button__replace')}
-          </Button>
-        )}
       <CopyTooltipIconButton
         className={'max-ai__actions__button--copy'}
         copyText={message.text}

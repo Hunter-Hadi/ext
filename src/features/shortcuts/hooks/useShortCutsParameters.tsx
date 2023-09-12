@@ -1,11 +1,6 @@
 import { useRecoilValue } from 'recoil'
 import { useCallback } from 'react'
 import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
-import {
-  useCurrentMessageView,
-  useInboxComposeViews,
-} from '@/features/sidebar/hooks'
-import { deepCloneGmailMessageElement } from '@/features/sidebar/utils'
 
 import { getAppRootElement } from '@/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
@@ -21,9 +16,7 @@ import { FloatingContextMenuDraftSelector } from '@/features/contextMenu'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
-  const { currentComposeView } = useInboxComposeViews()
   const { currentSelection } = useRangy()
-  const { messageViewText, currentMessageId } = useCurrentMessageView()
   const sidebarChatConversationMessages = useRecoilValue(
     SidebarChatConversationMessagesSelector,
   )
@@ -32,36 +25,23 @@ const useShortCutsParameters = () => {
   )
   const appSettings = useRecoilValue(AppSettingsState)
   return useCallback(() => {
-    console.log(
-      'init default input value useShortCutsParameters messageViewText',
-      messageViewText,
-    )
-    let GMAIL_DRAFT_CONTEXT = ''
-    if (appState.env === 'gmail') {
-      if (currentComposeView) {
-        const bodyElement = currentComposeView.getInstance?.()?.getBodyElement()
-        const draftHTMLElement: any = bodyElement
-          ? deepCloneGmailMessageElement(bodyElement)
-          : undefined
-        GMAIL_DRAFT_CONTEXT =
-          draftHTMLElement?.cloneElement?.innerHTML
-            ?.replace(/<br\s*\/?>/gi, '\n')
-            .replace(/<\/?div[^>]*>/g, '\n')
-            .replace(/<[^>]+>/g, '')
-            .replace(/\u00ad/g, '')
-            .replace(/&nbsp;/g, ' ')
-            .replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>')
-            .replace(/&amp;/g, '&')
-            .replace(/&quot;/g, '"')
-            .replace(/&apos;/g, "'")
-            .replace(
-              /data:image\/(png|jpeg|gif);base64,\s?[A-Za-z0-9+/]+={0,2}/g,
-              '',
-            )
-            .replace(/\n{3,}/g, `\n`) || ''
-      }
-    }
+    const GMAIL_DRAFT_CONTEXT =
+      ''
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<\/?div[^>]*>/g, '\n')
+        .replace(/<[^>]+>/g, '')
+        .replace(/\u00ad/g, '')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&')
+        .replace(/&quot;/g, '"')
+        .replace(/&apos;/g, "'")
+        .replace(
+          /data:image\/(png|jpeg|gif);base64,\s?[A-Za-z0-9+/]+={0,2}/g,
+          '',
+        )
+        .replace(/\n{3,}/g, `\n`) || ''
     const SELECTED_HTML = currentSelection?.selectionHTML || ''
     const SELECTED_TEXT = currentSelection?.selectionText || ''
     let userSelectedLanguage =
@@ -73,7 +53,7 @@ const useShortCutsParameters = () => {
     const builtInParameters: {
       [keys in IShortcutEngineBuiltInVariableType]?: any
     } = {
-      GMAIL_EMAIL_CONTEXT: messageViewText,
+      GMAIL_EMAIL_CONTEXT: '',
       GMAIL_DRAFT_CONTEXT,
       SELECTED_HTML,
       SELECTED_TEXT,
@@ -119,9 +99,6 @@ const useShortCutsParameters = () => {
     }
   }, [
     appState.env,
-    currentComposeView,
-    messageViewText,
-    currentMessageId,
     currentSelection,
     appSettings.userSettings,
     floatingContextMenuDraftText,

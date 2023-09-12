@@ -55,71 +55,6 @@ const useRangy = () => {
       }
     })
   }
-  const replaceSelectionRangeText = (text: string) => {
-    // try {
-    //   if (rangy.lastSelectionRanges) {
-    //     const selectionData = parseRangySelectRangeData(
-    //       rangy?.lastSelectionRanges?.selectRange,
-    //     )
-    //     const selection = rangy?.lastSelectionRanges?.selection
-    //     const selectionRangeInfos = selection?.rangeInfos?.[0]
-    //     if (selectionRangeInfos) {
-    //       const selectionStart =
-    //         selectionRangeInfos.startMarkerId &&
-    //         document.getElementById(selectionRangeInfos.startMarkerId)
-    //       const selectionEnd =
-    //         selectionRangeInfos.endMarkerId &&
-    //         document.getElementById(selectionRangeInfos.endMarkerId)
-    //       if (
-    //         selectionStart &&
-    //         selectionEnd &&
-    //         document.body.contains(selectionStart) &&
-    //         document.body.contains(selectionEnd)
-    //       ) {
-    //         const range = rangyCore.rangy.createRange()
-    //         range.setStartAfter(selectionStart)
-    //         range.setEndBefore(selectionEnd)
-    //         range.deleteContents()
-    //         text.split(/\r?\n/g).forEach((line, i) => {
-    //           // if (i > 0) range.insertNode(document.createElement('br'))
-    //           const p = document.createElement('p')
-    //           p.innerText = line
-    //           range.insertNode(p)
-    //         })
-    //         // make it highlight
-    //         try {
-    //           rangyCore.rangy.restoreSelection(selection, true)
-    //         } catch (e) {
-    //           console.log(e)
-    //         }
-    //         setTimeout(function () {
-    //           if (selectionData?.startMarker?.parentElement?.focus) {
-    //             selectionData?.startMarker?.parentElement?.focus()
-    //           }
-    //         }, 1)
-    //         return
-    //       }
-    //     } else {
-    //       const currentRange = rangyCore.rangy?.getSelection()?.getRangeAt(0)
-    //       if (currentRange) {
-    //         currentRange.deleteContents()
-    //         text.split(/\r?\n/g).forEach((line, i) => {
-    //           // if (i > 0) currentRange.insertNode(document.createElement('br'))
-    //           const p = document.createElement('p')
-    //           p.innerText = line
-    //           currentRange.insertNode(p)
-    //         })
-    //         // make currentRange highlight
-    //         rangyCore.rangy?.getSelection()?.setSingleRange(currentRange)
-    //       }
-    //     }
-    //   }
-    // } catch (e) {
-    //   console.error(`replaceSelectionRangeText error :\t`, e)
-    // } finally {
-    //   hideRangy(true)
-    // }
-  }
   const tempSelectionRef = useRef<ISelection | null>(rangy.tempSelection)
   useEffect(() => {
     tempSelectionRef.current = rangy.tempSelection
@@ -133,7 +68,6 @@ const useRangy = () => {
     hideRangy,
     rangy: rangyCore.rangy,
     initRangyCore,
-    replaceSelectionRangeText,
     saveCurrentSelection,
     saveTempSelection,
     show: rangy.show,

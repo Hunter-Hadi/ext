@@ -1,14 +1,10 @@
-import {
-  isProduction,
-  USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
-  USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
-} from '@/constants'
+import { isProduction } from '@/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 const editable = !isProduction
 
 export default [
   {
-    id: USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID,
+    id: '8b80d639-40db-46aa-9647-90913e54a2b8',
     parent: 'root',
     droppable: false,
     text: '[Gmail] New email',
@@ -38,7 +34,7 @@ export default [
     },
   },
   {
-    id: USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID,
+    id: 'ee78534c-cbb0-459f-8432-1f691243ea1f',
     parent: 'root',
     droppable: false,
     text: '[Gmail] Reply',

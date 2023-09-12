@@ -6,10 +6,6 @@ import {
 import { useCallback, useRef } from 'react'
 import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
-import {
-  useCurrentMessageView,
-  useInboxComposeViews,
-} from '@/features/sidebar/hooks'
 import { isShowChatBox, showChatBox } from '@/utils'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ShortCutsState } from '@/features/shortcuts/store'
@@ -30,9 +26,6 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
   )
   const shortCutsEngineRef = useRef<ShortCutsEngine | null>(shortCutsEngine)
   const messageWithChatGPT = useMessageWithChatGPT(defaultInputValue || '')
-  const { messageViewText } = useCurrentMessageView()
-  const { currentComposeView } = useInboxComposeViews()
-  const { currentMessageView } = useCurrentMessageView()
   const setShortCuts = (actions: ISetActionsType) => {
     if (!shortCutsEngineRef.current) {
       return false
@@ -73,12 +66,6 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
               getChartGPT: () => {
                 return messageWithChatGPT
               },
-              getInbox: () => {
-                return {
-                  currentComposeView,
-                  currentMessageView,
-                }
-              },
               getBackgroundConversation: () => {
                 return port
               },
@@ -93,15 +80,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
         })
       }
     },
-    [
-      messageWithChatGPT,
-      currentMessageView,
-      currentComposeView,
-      shortCutsEngineRef,
-      messageViewText,
-      getParams,
-      isLogin,
-    ],
+    [messageWithChatGPT, shortCutsEngineRef, getParams, isLogin],
   )
   const stopShortCuts = useCallback(() => {
     if (!shortCutsEngineRef.current) {

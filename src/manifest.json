@@ -91,7 +91,6 @@
         "content.css",
         "content_style.css",
         "chunks/*.js",
-        "pageWorld.js",
         "assets/*",
         "pages/chatgpt/fileUploadServer.js",
         "pages/*"

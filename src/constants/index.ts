@@ -16,19 +16,10 @@ export const ROOT_FLOATING_INPUT_ID = `${APP_ROOT_ID}_Floating_Input`
 export const ROOT_FLOATING_REFERENCE_ELEMENT_ID = `${APP_ROOT_ID}_Floating_Reference_Element`
 export const ROOT_CLIPBOARD_ID = `${APP_ROOT_ID}_Clipboard`
 export const ROOT_MINIMIZE_CONTAINER_ID = `${APP_ROOT_ID}_Minimize_Container`
-// ezmail reply group
-export const EZMAIL_REPLY_GROUP_ID = `EzMail_Reply_Group`
-// ezmail new email group
-export const EZMAIL_NEW_MAIL_GROUP_ID = `EzMail_New_Mail_Group`
-// usechatgpt gmail new email cta button
-export const USECHATGPT_GMAIL_NEW_EMAIL_CTA_BUTTON_ID = `9431ba4b-3e50-4932-a606-4989276ea593`
-// usechatgpt gmail reply cta button
-export const USECHATGPT_GMAIL_REPLY_CTA_BUTTON_ID = `89da7597-3e7d-4368-807e-b7868d9c89d6`
 
 // context menu
 export const ROOT_CONTEXT_MENU_ID = `${APP_ROOT_ID}_Context_Menu`
 export const ROOT_CONTEXT_MENU_PORTAL_ID = `${APP_ROOT_ID}_Context_Menu_Portal`
-export const ROOT_CONTEXT_MENU_GMAIL_TOOLBAR_ID = `${APP_ROOT_ID}_Context_Menu_Gmail_Toolbar`
 export const ROOT_CONTEXT_MENU_CONTAINER_ID = `${APP_ROOT_ID}_Context_Menu_Container_ID`
 
 // chrome extension

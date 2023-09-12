@@ -136,8 +136,6 @@ const CleanChatBoxIcon = (props: SvgIconProps) => {
     </SvgIcon>
   )
 }
-const GmailToolBarIconBase64Data = `data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjMwMjkgNy43MjczNUwxNC4zNTU5IDUuNjQ0MDJMMTIuMjcyNiA0LjY5NzA1TDE0LjM1NTkgMy43NTAwOEwxNS4zMDI5IDEuNjY2NzVMMTYuMjQ5OCAzLjc1MDA4TDE4LjMzMzIgNC42OTcwNUwxNi4yNDk4IDUuNjQ0MDJMMTUuMzAyOSA3LjcyNzM1Wk0xNS4zMDI5IDE4LjMzMzRMMTQuMzU1OSAxNi4yNTAxTDEyLjI3MjYgMTUuMzAzMUwxNC4zNTU5IDE0LjM1NjFMMTUuMzAyOSAxMi4yNzI4TDE2LjI0OTggMTQuMzU2MUwxOC4zMzMyIDE1LjMwMzFMMTYuMjQ5OCAxNi4yNTAxTDE1LjMwMjkgMTguMzMzNFpNNy43MjcxMSAxNi4wNjA3TDUuODMzMTcgMTEuODk0TDEuNjY2NSAxMC4wMDAxTDUuODMzMTcgOC4xMDYxNEw3LjcyNzExIDMuOTM5NDhMOS42MjEwNSA4LjEwNjE0TDEzLjc4NzcgMTAuMDAwMUw5LjYyMTA1IDExLjg5NEw3LjcyNzExIDE2LjA2MDdaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K`
-const GmailToolBarDropdownIconBase64Data = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAQAAAAngNWGAAAAIUlEQVR4AWOgPhgF/xv+I4MG4pQ2EGdqA3EOaKCV50YBAK5AI+Hsps9tAAAAAElFTkSuQmCC`
 const GiftIcon = (props: SvgIconProps) => {
   return (
     <SvgIcon sx={props.sx}>
@@ -656,8 +654,6 @@ export {
   ChatGPTIcon,
   ChatGPTBlackIcon,
   UseChatGptIcon,
-  GmailToolBarIconBase64Data,
-  GmailToolBarDropdownIconBase64Data,
   CleanChatBoxIcon,
   ClaudeWebappIcon,
   GiftIcon,

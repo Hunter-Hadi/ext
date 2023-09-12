@@ -1,4 +1,3 @@
-import { RangyContextMenu } from '@/features/contextMenu'
 import { useSetRecoilState } from 'recoil'
 import React, { FC, useEffect, useMemo } from 'react'
 import {
@@ -25,7 +24,6 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import useInterval from '@/hooks/useInterval'
 import Divider from '@mui/material/Divider'
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitI18n } from '@/i18n/hooks'
 import { useTranslation } from 'react-i18next'
@@ -33,13 +31,13 @@ import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExt
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
-import { getEnv } from '@/utils/AppEnv'
 import Browser from 'webextension-polyfill'
 import { clientGetBrowserInfo } from '@/utils/larkBot'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
+import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 
 const log = new Log('AppInit')
 
@@ -388,7 +386,6 @@ export const DisabledPDFViewer: FC = () => {
   return RenderDom
 }
 
-const GmailInit = React.lazy(() => import('@/components/AppInit/GmailInit'))
 const AppInit = () => {
   useInitChatGPTClient()
   useAuthLogin()
@@ -411,10 +408,7 @@ const AppInit = () => {
   useInitRangy()
   return (
     <>
-      <AppSuspenseLoadingLayout>
-        {getEnv() === 'gmail' && <GmailInit />}
-      </AppSuspenseLoadingLayout>
-      <RangyContextMenu />
+      <ContextMenuRoot />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />
     </>

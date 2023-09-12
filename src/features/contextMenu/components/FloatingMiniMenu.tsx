@@ -33,7 +33,7 @@ import {
 } from '@/features/contextMenu/utils/selectionHelper'
 import { ChatGPTConversationState } from '@/features/sidebar'
 
-const ClickContextMenuButton: FC<{
+const FloatingMiniMenu: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
 }> = (props) => {
   const { t } = useTranslation(['common', 'client'])
@@ -327,12 +327,4 @@ const ClickContextMenuButton: FC<{
   )
 }
 
-const ClickContextMenu = () => {
-  return (
-    <>
-      <ClickContextMenuButton />
-    </>
-  )
-}
-
-export default ClickContextMenu
+export default FloatingMiniMenu

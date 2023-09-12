@@ -9,8 +9,11 @@ import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { CONTEXT_MENU_ICONS, ContextMenuIcon } from '@/features/contextMenu'
-import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
+import {
+  IContextMenuIconKey,
+  CONTEXT_MENU_ICONS,
+  ContextMenuIcon,
+} from '@/components/ContextMenuIcon'
 import {
   RunPromptTooltip,
   TemplateTooltip,

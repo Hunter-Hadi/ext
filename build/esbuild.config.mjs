@@ -117,11 +117,6 @@ async function esbuildConfig() {
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
-        source: ['node_modules/@inboxsdk/core/pageWorld.js'],
-        target: `${buildDir}`,
-        copyWithFolder: false,
-      }),
-      copyStaticFilesPlugin({
         source: ['src/i18n/locales'],
         target: `${buildDir}/i18n/locales`,
         copyWithFolder: false,

@@ -13,7 +13,7 @@ export const clientGetContextMenuRunActions = async (contextMenuId: string) => {
   // run this prompt
   const fallback = [
     {
-      type: 'RENDER_CHATGPT_PROMPT',
+      type: 'RENDER_TEMPLATE',
       parameters: {
         template: '{{SELECTED_TEXT}}',
       },

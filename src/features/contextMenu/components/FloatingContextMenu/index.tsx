@@ -369,7 +369,7 @@ const FloatingContextMenu: FC<{
       })
       setActions([
         {
-          type: 'RENDER_CHATGPT_PROMPT',
+          type: 'RENDER_TEMPLATE',
           parameters: {
             template,
           },

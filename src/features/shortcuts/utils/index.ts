@@ -68,7 +68,7 @@ export const getDefaultActionWithTemplate = (
   const actions: Record<IChromeExtensionButtonSettingKey, ISetActionsType> = {
     gmailButton: [
       {
-        type: 'RENDER_CHATGPT_PROMPT',
+        type: 'RENDER_TEMPLATE',
         parameters: {
           template,
         },
@@ -76,7 +76,7 @@ export const getDefaultActionWithTemplate = (
     ],
     textSelectPopupButton: [
       {
-        type: 'RENDER_CHATGPT_PROMPT',
+        type: 'RENDER_TEMPLATE',
         parameters: {
           template,
         },

@@ -67,7 +67,7 @@ const ContextMenuItemPreviewTooltip: FC<{
   // const promptText = useMemo(() => {
   //   if (item.data?.actions && item.data.actions.length > 0) {
   //     const prompt = item.data.actions.find(
-  //       (action) => action.type === 'RENDER_CHATGPT_PROMPT',
+  //       (action) => action.type === 'RENDER_TEMPLATE',
   //     )
   //     if (prompt) {
   //       return prompt.parameters.template

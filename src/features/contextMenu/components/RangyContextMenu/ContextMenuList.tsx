@@ -60,7 +60,7 @@ const ShortCutsButtonItem: FC<{
       let setActions = cloneDeep(actions)
       if (contextMenuContext.staticButton) {
         setActions = setActions.map((action) => {
-          if (action.type === 'RENDER_CHATGPT_PROMPT') {
+          if (action.type === 'RENDER_TEMPLATE') {
             return {
               ...action,
               parameters: {

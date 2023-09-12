@@ -52,7 +52,7 @@ const TestAllActionsButton: FC = () => {
               cloneShortcut.data.actions.length > 0
             ) {
               const setActions = cloneShortcut.data.actions.map((action) => {
-                if (action.type === 'RENDER_CHATGPT_PROMPT') {
+                if (action.type === 'RENDER_TEMPLATE') {
                   return {
                     ...action,
                     parameters: {

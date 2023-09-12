@@ -1,0 +1,1 @@
+export { ActionRenderTemplate } from './ActionRenderTemplate'

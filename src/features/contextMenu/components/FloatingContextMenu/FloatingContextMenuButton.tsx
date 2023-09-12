@@ -39,7 +39,7 @@ const EMPTY_CONTEXT_MENU_ARRAY = [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_CHATGPT_PROMPT',
+          type: 'RENDER_TEMPLATE',
           parameters: {
             template: '',
           },
@@ -128,7 +128,7 @@ const FloatingContextMenuButton: FC<{
         })
         setShortCuts(
           findContextMenu.data.actions.map((action) => {
-            if (action.type === 'RENDER_CHATGPT_PROMPT') {
+            if (action.type === 'RENDER_TEMPLATE') {
               return {
                 ...action,
                 parameters: {

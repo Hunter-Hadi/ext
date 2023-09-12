@@ -29,6 +29,7 @@ import {
   ActionAnalyzeChatFile,
   ActionGetEmailContentsOfWebPage,
   ActionGetReadabilityContentsOfWebPage,
+  ActionRenderTemplate,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -36,8 +37,10 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IAction } from '@/features/shortcuts/types/Action'
 
 const ActionClassMap = {
-  // 即将废弃
+  // 废弃
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
+  //common
+  [ActionRenderTemplate.type]: ActionRenderTemplate,
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAnalyzeChatFile.type]: ActionAnalyzeChatFile,
@@ -62,12 +65,12 @@ const ActionClassMap = {
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,
-  // webgpt插件
-  [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
-  [ActionWebGPTAskChatGPT.type]: ActionWebGPTAskChatGPT,
   // documents
   [ActionSummarizeOfText.type]: ActionSummarizeOfText,
   [ActionSliceOfText.type]: ActionSliceOfText,
+  // webgpt插件
+  [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
+  [ActionWebGPTAskChatGPT.type]: ActionWebGPTAskChatGPT,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))

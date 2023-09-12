@@ -12,7 +12,7 @@ export type ISetActionsType = Array<{
 export interface IAction {
   id: string
   status: 'idle' | 'running' | 'error' | 'complete'
-  //动作的类型，比如 "RENDER_CHATGPT_PROMPT" 或 "ASK_CHATGPT"
+  //动作的类型，比如 "RENDER_TEMPLATE" 或 "ASK_CHATGPT"
   type: ActionIdentifier
   execute: (params: any, engine: any) => Promise<any>
   reset: () => void

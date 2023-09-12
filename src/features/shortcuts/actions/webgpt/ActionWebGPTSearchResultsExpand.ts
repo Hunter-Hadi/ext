@@ -69,7 +69,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         // NOTE: 特殊处理 给webgppt用的
         if (summarizeType === 'NO_SUMMARIZE') {
           addActions.push({
-            type: 'RENDER_CHATGPT_PROMPT',
+            type: 'RENDER_TEMPLATE',
             parameters: {
               template: searchResult.body,
             },
@@ -114,7 +114,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         }
       }
       addActions.push({
-        type: 'RENDER_CHATGPT_PROMPT',
+        type: 'RENDER_TEMPLATE',
         parameters: {
           template,
         },

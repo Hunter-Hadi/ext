@@ -1,4 +1,4 @@
-import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
 import { getAccessToken } from '@/utils/request'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { sendLarkBotMessage } from '@/utils/larkBot'
@@ -20,7 +20,11 @@ export const checkDocIdExist = async (accessToken: string, docId: string) => {
     })
       .then((response) => response.json())
       .then((result) => {
-        resolve(result?.data?.exists || false)
+        if (isProduction) {
+          resolve(result?.data?.exists || false)
+          return
+        }
+        resolve(false)
       })
       .catch((e) => {
         resolve(false)

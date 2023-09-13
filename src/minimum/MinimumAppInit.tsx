@@ -1,13 +1,12 @@
-import { useInitChatGPTClient } from '@/features/chatgpt'
-import { useAuthLogin } from '@/features/auth/hooks'
-import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { useInitI18n } from '@/i18n/hooks'
 import React, { FC, useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
 import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { setChromeExtensionSettings } from '@/background/utils'
+import { useInitChatGPTClient } from '@/features/chatgpt'
+import { useAuthLogin } from '@/features/auth'
+import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 
 const AppSettingsInit = () => {
   const setAppSettings = useSetRecoilState(AppSettingsState)
@@ -53,7 +52,6 @@ const MinimumAppInit: FC = () => {
   useInitChatGPTClient()
   useAuthLogin()
   userInitUserInfo()
-  useInitI18n()
   return (
     <>
       <AppSettingsInit />

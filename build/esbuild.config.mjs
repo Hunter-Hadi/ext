@@ -87,6 +87,11 @@ async function esbuildConfig() {
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
+        source: ['src/lib/openai'],
+        target: `${buildDir}/assets`,
+        copyWithFolder: true,
+      }),
+      copyStaticFilesPlugin({
         source: ['src/assets/USE_CHAT_GPT_AI'],
         target: `${buildDir}/assets/USE_CHAT_GPT_AI`,
         copyWithFolder: false,

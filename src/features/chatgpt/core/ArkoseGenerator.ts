@@ -16,6 +16,7 @@ class ArkoseTokenGenerator {
     resolve: (value?: any) => void
     reject: (reason?: any) => void
   }[] = []
+  config: any
 
   constructor() {
     window.addEventListener('message', async (event: any) => {
@@ -38,27 +39,59 @@ class ArkoseTokenGenerator {
 
   private useArkoseSetupEnforcement(enforcement: ArkoseEnforcement) {
     this.enforcement = enforcement
-    enforcement.setConfig({
-      onCompleted: (result) => {
-        console.debug('enforcement.onCompleted', result)
-        this.pendingPromises.forEach((promise) => {
-          promise.resolve(result.token)
-        })
-        this.pendingPromises = []
-      },
-      onReady: () => {
-        console.debug('enforcement.onReady')
-      },
-      onError: (result) => {
-        console.debug('enforcement.onError', result)
-      },
-      onFailed: (result) => {
-        console.debug('enforcement.onFailed', result)
-        this.pendingPromises.forEach((promise) => {
-          promise.reject(new Error('Failed to generate arkose token'))
-        })
-      },
-    })
+    ;(window as any).useArkoseSetupEnforcement(
+      new Proxy(enforcement, {
+        get: (target: ArkoseEnforcement, p: string | symbol, receiver: any) => {
+          if (p === 'setConfig') {
+            return (config: any) => {
+              this.config = config
+              // 包装原本的onCompleted
+              const onCompleted = config.onCompleted
+              config.onCompleted = (result: any) => {
+                onCompleted(result)
+                this.pendingPromises.forEach((promise) => {
+                  promise.resolve(result.token)
+                })
+                this.pendingPromises = []
+              }
+              // 包装原本的onFailed
+              const onFailed = config.onFailed
+              config.onFailed = (result: any) => {
+                onFailed(result)
+                this.pendingPromises.forEach((promise) => {
+                  promise.reject(new Error('Failed to generate arkose token'))
+                })
+              }
+              return Reflect.get(target, p, receiver)(config)
+            }
+          }
+          return Reflect.get(target, p, receiver)
+        },
+      }),
+    )
+    // return
+    // this.enforcement = enforcement
+    // enforcement.setConfig({
+    //   onCompleted: (result) => {
+    //     console.debug('enforcement.onCompleted', result)
+    //     this.pendingPromises.forEach((promise) => {
+    //       promise.resolve(result.token)
+    //     })
+    //     this.pendingPromises = []
+    //   },
+    //   onReady: () => {
+    //     console.debug('enforcement.onReady')
+    //   },
+    //   onError: (result) => {
+    //     console.debug('enforcement.onError', result)
+    //   },
+    //   onFailed: (result) => {
+    //     console.debug('enforcement.onFailed', result)
+    //     this.pendingPromises.forEach((promise) => {
+    //       promise.reject(new Error('Failed to generate arkose token'))
+    //     })
+    //   },
+    // })
   }
 
   public injectScript(src: string) {
@@ -72,13 +105,48 @@ class ArkoseTokenGenerator {
     document.body.appendChild(script)
   }
 
+  async loadConfig() {
+    const input = (document.querySelector('#prompt-textarea') ||
+      document.querySelector('textarea')) as HTMLTextAreaElement
+    if (input) {
+      input.focus()
+      input.select()
+      let isLoadedConfig = false
+      while (!isLoadedConfig) {
+        document.execCommand('insertText', false, 'a')
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        isLoadedConfig = !!this.config
+      }
+    }
+    input.select()
+    document.execCommand('Delete', false, '')
+    return true
+  }
+  async run() {
+    const input = (document.querySelector('#prompt-textarea') ||
+      document.querySelector('textarea')) as HTMLTextAreaElement
+    if (input) {
+      input.focus()
+      input.select()
+      document.execCommand('Delete', false, '')
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+      document.execCommand('insertText', false, 'a')
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+      document.execCommand('Delete', false, '')
+    }
+  }
   async generate(): Promise<any> {
     if (!this.enforcement) {
       return
     }
-    return new Promise((resolve, reject) => {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async (resolve, reject) => {
       this.pendingPromises = [{ resolve, reject }] // store only one promise for now.
-      this.enforcement!.run()
+      if (!this.config) {
+        await this.loadConfig()
+      }
+      await this.run()
+      // this.enforcement!.run()
     })
   }
 }

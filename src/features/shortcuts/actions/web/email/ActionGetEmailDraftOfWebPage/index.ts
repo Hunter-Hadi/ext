@@ -28,7 +28,6 @@ export class ActionGetEmailDraftOfWebPage extends Action {
         this.parameters.OperationElementElementSelector ||
         params.OperationElementElementSelector ||
         ''
-      debugger
       if (OperationElementElementSelector) {
         const result = await getEmailWebsitePageDraft(
           OperationElementElementSelector,

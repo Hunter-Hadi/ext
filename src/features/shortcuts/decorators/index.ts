@@ -4,13 +4,13 @@ import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
 import { v4 as uuidV4 } from 'uuid'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 
-function render(
+export const shortcutsRenderTemplate = (
   template: string,
   params: any,
 ): {
   data: string
   error: string
-} {
+} => {
   try {
     const data = template.replace(
       /\{\{(.+?)\}\}/g,
@@ -57,7 +57,7 @@ export function templateParserDecorator() {
         //   actionInstance.parameters?.template || '',
         //   parameters,
         // )
-        const result = render(
+        const result = shortcutsRenderTemplate(
           actionInstance.parameters?.template || '',
           parameters,
         )

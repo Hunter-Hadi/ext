@@ -261,7 +261,16 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         onClose?.()
       } else {
         setTimeout(() => {
-          inputBoxRef.current?.querySelector('textarea')?.focus()
+          const emptyTextTextarea = Array.from(
+            inputBoxRef.current?.querySelectorAll('textarea') || [],
+          ).find((textarea) => {
+            return textarea.value === ''
+          })
+          if (emptyTextTextarea) {
+            emptyTextTextarea.focus()
+          } else {
+            inputBoxRef.current?.querySelector('textarea')?.focus()
+          }
         }, 0)
         onShow?.()
       }

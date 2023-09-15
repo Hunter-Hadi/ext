@@ -31,7 +31,10 @@ export default [
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
+            SetVariablesModalConfig: {
+              title: 'Reply with key points',
+              modelKey: 'Sidebar',
+              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
 
 Text:
 \`\`\`
@@ -49,11 +52,14 @@ Do not include email subject, just output the email reply message.
 Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
 Now, write the email reply, mentioning these points:`,
-            SetVariablesModalConfig: {
-              title: 'Enter key points',
-              modelKey: 'Sidebar',
-
               variables: [
+                {
+                  label: 'Email draft',
+                  VariableName: 'EMAIL_DRAFT',
+                  valueType: 'Text',
+                  placeholder: 'Enter Email draft',
+                  defaultValue: '{{EMAIL_DRAFT}}',
+                },
                 {
                   label: 'Key points',
                   VariableName: 'KEY_POINTS',

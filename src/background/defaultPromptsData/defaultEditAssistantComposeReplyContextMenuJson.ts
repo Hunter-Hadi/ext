@@ -456,7 +456,7 @@ export default [
     id: '47070ec6-8700-43fd-a519-20fe3841df38',
     parent: 'cf4e0b8e-a5da-4d4f-8244-c748466e7c35',
     droppable: true,
-    text: 'Enter key points',
+    text: 'Reply with key points',
     data: {
       icon: 'DefaultIcon',
       editable: false,
@@ -475,17 +475,18 @@ export default [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: 'EMAIL_CONTEXT',
           },
         },
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
+            SetVariablesModalConfig: {
+              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
 
 Text:
 \`\`\`
-{{EMAIL_DRAFT}}
+{{EMAIL_CONTEXT}}
 \`\`\`
 
 Your task requires you to write a concise email reply in a polite, friendly, professional, and proper way.
@@ -499,27 +500,21 @@ Do not include email subject, just output the email reply message.
 Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
 Now, write the email reply, mentioning these points:`,
-            SetVariablesModalConfig: {
               title: 'Enter key points',
               modelKey: 'Sidebar',
               variables: [
+                {
+                  label: 'Email context',
+                  VariableName: 'EMAIL_CONTEXT',
+                  valueType: 'Text',
+                  placeholder: 'Enter Email context',
+                  defaultValue: '{{EMAIL_CONTEXT}}',
+                },
                 {
                   label: 'Key points',
                   VariableName: 'KEY_POINTS',
                   valueType: 'Text',
                   placeholder: 'Enter key points',
-                },
-                {
-                  label: 'Key points 2',
-                  VariableName: 'KEY_POINTS_2',
-                  valueType: 'Text',
-                  placeholder: 'Enter key points 2',
-                },
-                {
-                  label: 'Key points 3',
-                  VariableName: 'KEY_POINTS_3',
-                  valueType: 'Text',
-                  placeholder: 'Enter key points 3',
                 },
               ],
               systemVariables: [

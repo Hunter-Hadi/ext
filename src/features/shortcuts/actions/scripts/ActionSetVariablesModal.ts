@@ -6,7 +6,11 @@ import OneShotCommunicator from '@/utils/OneShotCommunicator'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import { getAppRootElement } from '@/utils'
 import { ActionSetVariablesConfirmData } from '@/features/shortcuts/components/ActionSetVariablesModal'
-import { templateParserDecorator } from '@/features/shortcuts'
+import {
+  shortcutsRenderTemplate,
+  templateParserDecorator,
+} from '@/features/shortcuts'
+import cloneDeep from 'lodash-es/cloneDeep'
 
 export class ActionSetVariablesModal extends Action {
   static type: ActionIdentifier = 'SET_VARIABLES_MODAL'
@@ -39,20 +43,31 @@ export class ActionSetVariablesModal extends Action {
             5000,
           ))
       }
+      const shortCutsEngine = engine.getShortCutsEngine()
+      const shortCutsVariables = shortCutsEngine.getVariables()
+      const cloneConfig = cloneDeep(config)
+      cloneConfig.variables.map((variable) => {
+        if (
+          variable.defaultValue &&
+          typeof variable.defaultValue === 'string'
+        ) {
+          variable.defaultValue =
+            shortcutsRenderTemplate(variable.defaultValue, shortCutsVariables)
+              .data || ''
+        }
+        return variable
+      })
+      cloneConfig.template =
+        config.template || this.parameters?.compliedTemplate || ''
       const result: ActionSetVariablesConfirmData =
         await OneShotCommunicator.send(
           'SetVariablesModal',
           {
             task: 'open',
-            config: {
-              ...config,
-              template:
-                config.template || this.parameters?.compliedTemplate || '',
-            },
+            config: cloneConfig,
           },
           5 * 60 * 1000,
         )
-      const shortCutsEngine = engine.getShortCutsEngine()
       if (result.success) {
         Object.keys(result.data).forEach((VariableName) => {
           if (result.data[VariableName] !== undefined) {

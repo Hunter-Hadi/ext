@@ -6,7 +6,7 @@ export default [
     id: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
     parent: 'c73787fb-e2fd-41f2-8ad0-854b2a624022',
     droppable: true,
-    text: 'Enter key points',
+    text: 'Compose with key points',
     data: {
       icon: 'DefaultIcon',
       editable: false,
@@ -66,7 +66,7 @@ export default [
         blacklist: [],
         isWhitelistMode: false,
       },
-      searchText: 'quick compose enter key points',
+      searchText: 'quick compose compose with key points',
     },
   },
   {

@@ -7,13 +7,19 @@ import Stack from '@mui/material/Stack'
 import { useTranslation } from 'react-i18next'
 import useWindowSize from '@/hooks/useWindowSize'
 import isNumber from 'lodash-es/isNumber'
-
+import { UAParser } from 'ua-parser-js'
+const { getOS } = new UAParser()
 const SidebarChatBoxFooter: FC = () => {
   const { width, scrollWidth } = useWindowSize()
   const { t } = useTranslation(['common'])
   const [needSafePadding, setNeedSafePadding] = useState(false)
   useEffect(() => {
     if (isNumber(scrollWidth) && isNumber(width) && scrollWidth > width) {
+      // check is mac
+      if (getOS().name === 'Mac OS') {
+        // 因为mac没有滚动条高度
+        return
+      }
       setNeedSafePadding(true)
     }
   }, [width, scrollWidth])

@@ -107,19 +107,20 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         let template = config?.template || ''
         let systemVariablesTemplate = ''
         if (
-          presetVariables.AI_RESPONSE_TONE &&
-          presetVariables.AI_RESPONSE_WRITING_STYLE
+          presetVariables.AI_RESPONSE_TONE !== 'Default' &&
+          presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default'
         ) {
           systemVariablesTemplate =
             '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-        } else if (presetVariables.AI_RESPONSE_TONE) {
+        } else if (presetVariables.AI_RESPONSE_TONE !== 'Default') {
           systemVariablesTemplate =
             '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
-        } else if (presetVariables.AI_RESPONSE_WRITING_STYLE) {
+        } else if (presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default') {
           systemVariablesTemplate =
             '\n\nPlease write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
         } else {
-          systemVariablesTemplate = '\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.'
+          systemVariablesTemplate =
+            '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
         }
         template += systemVariablesTemplate
         const actions: ISetActionsType = []
@@ -388,7 +389,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               InputLabelProps={{ shrink: true }}
               multiline
               placeholder={textTypeVariable.placeholder}
-              minRows={Math.min(currentModalConfig.maxTextareaMaxRows, 3)}
+              minRows={Math.min(currentModalConfig.maxTextareaMaxRows, 2)}
               maxRows={currentModalConfig.maxTextareaMaxRows}
             />
           )
@@ -424,7 +425,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           ) : (
             <SendIcon />
           )}
-          {!loading ? 'Run this prompt' : ''}
+          {!loading ? 'Send to AI' : ''}
         </Button>
       </Stack>
     </Stack>

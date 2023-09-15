@@ -4,7 +4,6 @@
   "description": "",
   "author": "",
   "scripts": {
-    "prompt": "node ./SystemPromptEditor/esbuild.config.mjs",
     "pdf": "node ./build/pdf.js",
     "usechatgpt": "node ./build/esbuild.config.mjs --app=usechatgpt",
     "release:usechatgpt": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"

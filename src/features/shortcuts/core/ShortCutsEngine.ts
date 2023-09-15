@@ -189,7 +189,7 @@ class ShortCutsEngine implements IShortcutEngine {
             this.reset()
             break
           }
-          if (parameters) {
+          if (parameters && this.stepIndex === 0) {
             this.setVariables(parameters)
           }
           const currentAction = this.getCurrentAction()

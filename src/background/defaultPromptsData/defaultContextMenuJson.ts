@@ -685,10 +685,10 @@ Output the email reply without additional context, explanation, or extra wording
 Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
               variables: [
                 {
-                  label: 'Context',
+                  label: 'Email context',
                   VariableName: 'CONTEXT',
                   valueType: 'Text',
-                  placeholder: 'Enter context',
+                  placeholder: 'Enter email context',
                   defaultValue: '{{SELECTED_TEXT}}',
                 },
                 {

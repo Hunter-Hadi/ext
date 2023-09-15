@@ -54,7 +54,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   const { title, variables, systemVariables, modelKey, onShow, onClose } = props
   const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat()
   const { type } = useRecoilValue(SidebarSettingsState)
-  const { t } = useTranslation(['common'])
+  const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
   const [hide, setHide] = useState(false)
   const [config, setConfig] = useState<ActionSetVariablesModalConfig | null>(
@@ -413,6 +413,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           onClick={async () => await confirmModal()}
           variant={'contained'}
           color={'primary'}
+          sx={{
+            gap: 1,
+          }}
         >
           {loading ? (
             <CircularProgress
@@ -425,7 +428,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           ) : (
             <SendIcon />
           )}
-          {!loading ? 'Send to AI' : ''}
+          {!loading ? `${t('client:sidebar__button__send_to_ai')}` : ''}
         </Button>
       </Stack>
     </Stack>

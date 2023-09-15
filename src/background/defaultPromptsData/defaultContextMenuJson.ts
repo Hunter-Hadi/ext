@@ -649,8 +649,24 @@ export default [
             SetVariablesModalConfig: {
               title: 'Reply with key points',
               modelKey: 'Sidebar',
-              template:
-                "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{CONTEXT}}\n``` \n\nInclude the following aspects in the reply:\n{{KEY_POINTS}}",
+              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
+
+Text:
+\`\`\`
+{{CONTEXT}}
+\`\`\`
+
+Your task requires you to write a concise email reply in a polite, friendly, professional, and proper way.
+
+Make the email reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the email reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the email reply is meant to do.
+
+Do not include email subject, just output the email reply message.
+
+Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Email context',
@@ -1045,24 +1061,8 @@ export default [
             SetVariablesModalConfig: {
               title: 'Reply with key points',
               modelKey: 'Sidebar',
-              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
-
-Text:
-\`\`\`
-{{CONTEXT}}
-\`\`\`
-
-Your task requires you to write a concise email reply in a polite, friendly, professional, and proper way.
-
-Make the email reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email reply.
-
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the email reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the email reply is meant to do.
-
-Do not include email subject, just output the email reply message.
-
-Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-
-Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
+              template:
+                "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{CONTEXT}}\n``` \n\nInclude the following aspects in the reply:\n{{KEY_POINTS}}",
               variables: [
                 {
                   label: 'Context',

@@ -94,7 +94,7 @@ const InputAssistantButtonContextMenu: FC<
       root={root}
       menuList={contextMenuList}
       needAutoUpdate
-      hoverOpen
+      hoverOpen={false}
       menuWidth={240}
       referenceElement={children}
       onClickContextMenu={runContextMenu}

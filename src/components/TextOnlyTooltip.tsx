@@ -31,6 +31,9 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
       ? getAppContextMenuRootElement()
       : getAppRootElement()
   }
+  if (props.PopperProps?.container) {
+    container = props.PopperProps.container
+  }
   if (!container) {
     container = document.body
   }

@@ -12,6 +12,8 @@ import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar'
 import CircularProgress from '@mui/material/CircularProgress'
 import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { useTranslation } from 'react-i18next'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -67,6 +69,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     CTAButtonStyle,
     buttonGroup,
   } = props
+  const { t } = useTranslation(['client'])
   const { loading } = useRecoilValue(ChatGPTConversationState)
   const [isCTAHover, setCTAIsHover] = useState(false)
   const memoButtonSx = useMemo(() => {
@@ -162,29 +165,36 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           }
           root={root}
         >
-          <Button
-            disabled={loading}
-            sx={memoButtonSx.ctaButtonSx}
-            onMouseEnter={() => setCTAIsHover(true)}
-            onMouseLeave={() => setCTAIsHover(false)}
+          <TextOnlyTooltip
+            PopperProps={{
+              container: root,
+            }}
+            title={t(buttonGroup[0].tooltip as any)}
           >
-            {loading ? (
-              <CircularProgress
-                size={CTAButtonStyle?.iconSize || 20}
-                sx={{
-                  fontSize: `inherit`,
-                  color: '#fff',
-                }}
-              />
-            ) : (
-              <UseChatGptIcon
-                sx={{
-                  fontSize: `inherit`,
-                  color: 'inherit',
-                }}
-              />
-            )}
-          </Button>
+            <Button
+              disabled={loading}
+              sx={memoButtonSx.ctaButtonSx}
+              onMouseEnter={() => setCTAIsHover(true)}
+              onMouseLeave={() => setCTAIsHover(false)}
+            >
+              {loading ? (
+                <CircularProgress
+                  size={CTAButtonStyle?.iconSize || 20}
+                  sx={{
+                    fontSize: `inherit`,
+                    color: '#fff',
+                  }}
+                />
+              ) : (
+                <UseChatGptIcon
+                  sx={{
+                    fontSize: `inherit`,
+                    color: 'inherit',
+                  }}
+                />
+              )}
+            </Button>
+          </TextOnlyTooltip>
         </InputAssistantButtonContextMenu>
       )}
       {buttonGroup[1] && (
@@ -196,15 +206,22 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           }
           root={root}
         >
-          <Button disabled={loading} sx={memoButtonSx.dropdownButtonSx}>
-            <ContextMenuIcon
-              icon={'ArrowDropDown'}
-              sx={{
-                fontSize: `inherit`,
-                color: 'inherit',
-              }}
-            />
-          </Button>
+          <TextOnlyTooltip
+            PopperProps={{
+              container: root,
+            }}
+            title={t(buttonGroup[1].tooltip as any)}
+          >
+            <Button disabled={loading} sx={memoButtonSx.dropdownButtonSx}>
+              <ContextMenuIcon
+                icon={'ArrowDropDown'}
+                sx={{
+                  fontSize: `inherit`,
+                  color: 'inherit',
+                }}
+              />
+            </Button>
+          </TextOnlyTooltip>
         </InputAssistantButtonContextMenu>
       )}
     </Stack>

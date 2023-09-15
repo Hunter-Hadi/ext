@@ -318,7 +318,7 @@ export default [
         },
       ],
       icon: 'AutoFix',
-      searchText: 'edit or review selection improve writing',
+      searchText: 'edit or review draft improve writing',
     },
   },
   {
@@ -372,7 +372,7 @@ export default [
         },
       ],
       icon: 'Done',
-      searchText: 'edit or review selection fix spelling & grammar',
+      searchText: 'edit or review draft fix spelling & grammar',
     },
   },
   {
@@ -426,7 +426,7 @@ export default [
         },
       ],
       icon: 'ShortText',
-      searchText: 'edit or review selection make shorter',
+      searchText: 'edit or review draft make shorter',
     },
   },
   {
@@ -480,7 +480,7 @@ export default [
         },
       ],
       icon: 'LongText',
-      searchText: 'edit or review selection make longer',
+      searchText: 'edit or review draft make longer',
     },
   },
   {
@@ -498,7 +498,7 @@ export default [
       type: 'group',
       actions: [],
       icon: 'Voice',
-      searchText: 'edit or review selection change tone',
+      searchText: 'edit or review draft change tone',
     },
   },
   {
@@ -552,7 +552,7 @@ export default [
         },
       ],
       icon: 'AutoAwesome',
-      searchText: 'edit or review selection simplify language',
+      searchText: 'edit or review draft simplify language',
     },
   },
   {
@@ -606,14 +606,14 @@ export default [
         },
       ],
       icon: 'Autorenew',
-      searchText: 'edit or review selection paraphrase',
+      searchText: 'edit or review draft paraphrase',
     },
   },
   {
     id: '451284fb-8f5b-4f5a-81c8-f97d20ced787',
     parent: 'root',
     droppable: true,
-    text: 'Edit or review selection',
+    text: 'Edit or review draft',
     data: {
       editable: false,
       visibility: {
@@ -623,7 +623,7 @@ export default [
       },
       type: 'group',
       actions: [],
-      searchText: 'edit or review selection',
+      searchText: 'edit or review draft',
     },
   },
 ] as IContextMenuItem[]

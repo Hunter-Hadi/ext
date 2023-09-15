@@ -4,7 +4,7 @@ import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 export default [
   {
     id: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
-    parent: 'root',
+    parent: 'c73787fb-e2fd-41f2-8ad0-854b2a624022',
     droppable: true,
     text: 'Enter key points',
     data: {
@@ -90,7 +90,24 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
         blacklist: [],
         isWhitelistMode: false,
       },
-      searchText: 'quick reply enter key points',
+      searchText: 'quick compose enter key points',
+    },
+  },
+  {
+    id: 'c73787fb-e2fd-41f2-8ad0-854b2a624022',
+    parent: 'root',
+    droppable: true,
+    text: 'Quick compose',
+    data: {
+      editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'group',
+      actions: [],
+      searchText: 'quick compose',
     },
   },
 ] as IContextMenuItem[]

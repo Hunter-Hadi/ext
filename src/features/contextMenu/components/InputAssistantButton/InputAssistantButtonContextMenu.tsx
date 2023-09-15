@@ -15,6 +15,7 @@ import {
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { showChatBox } from '@/utils'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
@@ -45,6 +46,7 @@ const InputAssistantButtonContextMenu: FC<
       if (!loading && contextMenu.data.actions) {
         // 如果没有权限，显示付费卡片
         if (!hasPermission && permissionWrapperCardSceneType) {
+          showChatBox()
           const conversationId = await createConversation()
           await clientChatConversationModifyChatMessages(
             'add',

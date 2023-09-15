@@ -15,7 +15,7 @@ import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRe
  */
 const forceUpdateContextMenuReadOnlyOption = async () => {
   const updateContextButtonKeys: IChromeExtensionButtonSettingKey[] = [
-    'inputAssistantReplyButton',
+    'inputAssistantComposeReplyButton',
     'textSelectPopupButton',
   ]
   const updateButtonContextMenu = async (
@@ -33,7 +33,7 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
       })
       .filter(Boolean) as IContextMenuItem[]
     updateMenuList = uniqBy(updateMenuList, 'id')
-    if (buttonKey === 'inputAssistantReplyButton') {
+    if (buttonKey === 'inputAssistantComposeReplyButton') {
       // NOTE gmail 目前没有编辑权限
       updateMenuList = []
     }

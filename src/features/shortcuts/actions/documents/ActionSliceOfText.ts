@@ -22,7 +22,9 @@ export class ActionSliceOfText extends Action {
     try {
       const needSplitText = params.LAST_ACTION_OUTPUT || ''
       if (!needSplitText) {
-        this.error = 'No text to split'
+        // this.error = 'No text to split'
+        // return
+        this.output = ''
         return
       }
       if (

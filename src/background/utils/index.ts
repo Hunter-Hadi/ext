@@ -84,7 +84,7 @@ export const getDefaultChromeExtensionSettings =
         },
       },
       buttonSettings: {
-        inputAssistantReplyButton: {
+        inputAssistantComposeReplyButton: {
           visibility: {
             isWhitelistMode: false,
             whitelist: [],
@@ -93,7 +93,7 @@ export const getDefaultChromeExtensionSettings =
           contextMenu: [],
           contextMenuPosition: 'start',
         },
-        inputAssistantDraftNewButton: {
+        inputAssistantComposeNewButton: {
           visibility: {
             isWhitelistMode: false,
             whitelist: [],
@@ -102,7 +102,7 @@ export const getDefaultChromeExtensionSettings =
           contextMenu: [],
           contextMenuPosition: 'start',
         },
-        inputAssistantEditButton: {
+        inputAssistantRefineDraftButton: {
           visibility: {
             isWhitelistMode: false,
             whitelist: [],
@@ -226,9 +226,9 @@ export const getChromeExtensionSettings =
           [key in IChromeExtensionButtonSettingKey]: Partial<IChromeExtensionButtonSetting>
         } = {
           textSelectPopupButton: {},
-          inputAssistantReplyButton: {},
-          inputAssistantDraftNewButton: {},
-          inputAssistantEditButton: {},
+          inputAssistantComposeReplyButton: {},
+          inputAssistantComposeNewButton: {},
+          inputAssistantRefineDraftButton: {},
         }
         Object.keys(currentButtonContentMenuSettings).forEach((buttonKey) => {
           if (buttonMap.has(buttonKey)) {

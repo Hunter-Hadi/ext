@@ -83,9 +83,9 @@ type IThirdProviderSettings = {
 }
 
 export type IChromeExtensionButtonSettingKey =
-  | 'inputAssistantReplyButton'
-  | 'inputAssistantDraftNewButton'
-  | 'inputAssistantEditButton'
+  | 'inputAssistantComposeReplyButton'
+  | 'inputAssistantComposeNewButton'
+  | 'inputAssistantRefineDraftButton'
   | 'textSelectPopupButton'
 
 export interface IVisibilitySetting {

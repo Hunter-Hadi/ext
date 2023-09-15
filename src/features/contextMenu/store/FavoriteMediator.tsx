@@ -304,13 +304,15 @@ class FavoriteMediatorFactory {
     FavoriteMediator
   > = {
     textSelectPopupButton: new FavoriteMediator('textSelectPopupButton'),
-    inputAssistantDraftNewButton: new FavoriteMediator(
-      'inputAssistantDraftNewButton',
+    inputAssistantComposeNewButton: new FavoriteMediator(
+      'inputAssistantComposeNewButton',
     ),
-    inputAssistantReplyButton: new FavoriteMediator(
-      'inputAssistantReplyButton',
+    inputAssistantComposeReplyButton: new FavoriteMediator(
+      'inputAssistantComposeReplyButton',
     ),
-    inputAssistantEditButton: new FavoriteMediator('inputAssistantEditButton'),
+    inputAssistantRefineDraftButton: new FavoriteMediator(
+      'inputAssistantRefineDraftButton',
+    ),
   }
   public static getMediator(
     mediatorName: IChromeExtensionButtonSettingKey,

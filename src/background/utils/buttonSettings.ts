@@ -41,9 +41,9 @@ import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { getCurrentDomainHost } from '@/utils'
-import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantEditContextMenuJson'
-import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantDraftNewContextMenuJson'
-import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantReplyContextMenuJson'
+import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
+import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
+import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 import isEqual from 'lodash-es/isEqual'
 
@@ -333,9 +333,10 @@ export class SystemContextMenu {
     [key in IChromeExtensionButtonSettingKey]: IContextMenuItem[]
   } = {
     textSelectPopupButton: defaultContextMenuJson,
-    inputAssistantEditButton: defaultInputAssistantEditContextMenuJson,
-    inputAssistantReplyButton: defaultEditAssistantReplyContextMenuJson,
-    inputAssistantDraftNewButton: defaultInputAssistantDraftNewContextMenuJson,
+    inputAssistantRefineDraftButton: defaultInputAssistantEditContextMenuJson,
+    inputAssistantComposeReplyButton: defaultEditAssistantReplyContextMenuJson,
+    inputAssistantComposeNewButton:
+      defaultInputAssistantDraftNewContextMenuJson,
   }
 }
 

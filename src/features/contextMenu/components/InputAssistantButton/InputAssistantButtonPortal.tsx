@@ -7,12 +7,12 @@ import InputAssistantButtonManager, {
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
-import { IInputAssistantButtonBaseConfig } from '@/features/contextMenu/components/InputAssistantButton/config'
+import { IInputAssistantButtonGroupConfig } from '@/features/contextMenu/components/InputAssistantButton/config'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
   .replace(/_/g, '-')
 const InputAssistantPortal: FC = () => {
-  const [config, setConfig] = useState<IInputAssistantButtonBaseConfig | null>(
+  const [config, setConfig] = useState<IInputAssistantButtonGroupConfig | null>(
     null,
   )
   const [allObserverData, setAllObserverData] = useState<
@@ -42,9 +42,11 @@ const InputAssistantPortal: FC = () => {
           <CacheProvider value={cache}>
             <InputAssistantButton
               rootId={observerData.id}
-              buttonKeys={observerData.buttonKeys}
+              buttonGroup={observerData.buttonGroup}
               root={observerData!.renderRootElement as HTMLElement}
               InputAssistantBoxStyle={config?.InputAssistantBoxStyle}
+              CTAButtonStyle={config?.CTAButtonStyle}
+              DropdownButtonStyle={config?.DropdownButtonStyle}
             />
           </CacheProvider>,
           observerData.renderRootElement,

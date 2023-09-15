@@ -11,7 +11,7 @@ import InputAssistantButtonContextMenu from '@/features/contextMenu/components/I
 import { useRecoilValue } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar'
 import CircularProgress from '@mui/material/CircularProgress'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
+import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -32,7 +32,7 @@ type InputAssistantButtonPosition =
 type InputAssistantButtonSize = 'small' | 'medium' | 'large'
 
 // 按钮样式配置
-interface InputAssistantButtonStyle {
+export interface InputAssistantButtonStyle {
   backgroundColor?: string // 按钮背景颜色
   hoverBackgroundColor?: string // 按钮鼠标悬浮时背景颜色
   color?: string // 按钮文字颜色
@@ -50,24 +50,24 @@ interface InputAssistantButtonStyle {
 interface InputAssistantButtonProps {
   root: HTMLElement
   rootId: string
-  buttonKeys: IChromeExtensionButtonSettingKey[] // 按钮配置
   buttonMode?: 'fixed' | 'static' // 按钮模式
   buttonPosition?: InputAssistantButtonPosition // 按钮位置
   buttonSize?: InputAssistantButtonSize // 按钮尺寸
   CTAButtonStyle?: InputAssistantButtonStyle // 按钮样式
   DropdownButtonStyle?: InputAssistantButtonStyle // 按钮样式
   InputAssistantBoxStyle?: SxProps // 按钮容器样式
+  buttonGroup: IInputAssistantButton[] // 按钮组
 }
 const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
-  const { loading } = useRecoilValue(ChatGPTConversationState)
   const {
     root,
     rootId,
     InputAssistantBoxStyle,
     DropdownButtonStyle,
     CTAButtonStyle,
-    buttonKeys,
+    buttonGroup,
   } = props
+  const { loading } = useRecoilValue(ChatGPTConversationState)
   const [isCTAHover, setCTAIsHover] = useState(false)
   const memoButtonSx = useMemo(() => {
     let ctaButtonSx = {}
@@ -114,7 +114,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderWidth = '0',
         iconSize = 20,
         padding = '8px 4px',
-      } = props.CTAButtonStyle || {}
+      } = props.DropdownButtonStyle || {}
       dropdownButtonSx = {
         minWidth: 'unset',
         backgroundColor: isCTAHover ? hoverBackgroundColor : backgroundColor,
@@ -153,10 +153,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         ...InputAssistantBoxStyle,
       }}
     >
-      {buttonKeys[0] && (
+      {buttonGroup[0] && (
         <InputAssistantButtonContextMenu
           rootId={rootId}
-          buttonKey={buttonKeys[0]}
+          buttonKey={buttonGroup[0].buttonKey}
+          permissionWrapperCardSceneType={
+            buttonGroup[0].permissionWrapperCardSceneType
+          }
           root={root}
         >
           <Button
@@ -184,10 +187,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           </Button>
         </InputAssistantButtonContextMenu>
       )}
-      {buttonKeys[1] && (
+      {buttonGroup[1] && (
         <InputAssistantButtonContextMenu
           rootId={rootId}
-          buttonKey={buttonKeys[1]}
+          buttonKey={buttonGroup[1].buttonKey}
+          permissionWrapperCardSceneType={
+            buttonGroup[1].permissionWrapperCardSceneType
+          }
           root={root}
         >
           <Button disabled={loading} sx={memoButtonSx.dropdownButtonSx}>

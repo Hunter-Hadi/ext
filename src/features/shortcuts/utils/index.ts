@@ -74,7 +74,7 @@ export const getDefaultActionWithTemplate = (
         },
       },
     ],
-    inputAssistantReplyButton: [
+    inputAssistantComposeReplyButton: [
       {
         type: 'RENDER_TEMPLATE',
         parameters: {
@@ -82,7 +82,7 @@ export const getDefaultActionWithTemplate = (
         },
       },
     ],
-    inputAssistantDraftNewButton: [
+    inputAssistantComposeNewButton: [
       {
         type: 'RENDER_TEMPLATE',
         parameters: {
@@ -90,7 +90,7 @@ export const getDefaultActionWithTemplate = (
         },
       },
     ],
-    inputAssistantEditButton: [
+    inputAssistantRefineDraftButton: [
       {
         type: 'RENDER_TEMPLATE',
         parameters: {

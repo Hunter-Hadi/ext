@@ -3,12 +3,16 @@ import { useState, useEffect } from 'react'
 interface WindowSize {
   width: number | undefined
   height: number | undefined
+  scrollHeight: number | undefined
+  scrollWidth: number | undefined
 }
 
 const useWindowSize = (): WindowSize => {
   const [windowSize, setWindowSize] = useState<WindowSize>({
     width: undefined,
     height: undefined,
+    scrollHeight: undefined,
+    scrollWidth: undefined,
   })
 
   useEffect(() => {
@@ -16,6 +20,8 @@ const useWindowSize = (): WindowSize => {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
+        scrollHeight: document.body.scrollHeight,
+        scrollWidth: document.body.scrollWidth,
       })
     }
 

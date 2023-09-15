@@ -1,28 +1,29 @@
 import { getCurrentDomainHost } from '@/utils'
 import inputAssistantButtonBaseConfig, {
-  IInputAssistantButtonBaseConfig,
+  IInputAssistantButton,
+  IInputAssistantButtonGroupConfig,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import Log from '@/utils/Log'
 import isNumber from 'lodash-es/isNumber'
 import { v4 as uuidV4 } from 'uuid'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
-import checkHostUsingButtonKeys from '@/features/contextMenu/components/InputAssistantButton/chcekHostUsingButtonKey'
+import getInputAssistantButtonGroupWithHost from '@/features/contextMenu/components/InputAssistantButton/getInputAssistantButtonGroupWithHost'
 
 const log = new Log('ContextMenu/InputAssistantButtonManager')
+
 export interface IInputAssistantButtonObserverData {
   id: string
   observer: MutationObserver
   shadowRootElement: ShadowRoot
   renderRootElement: HTMLElement
   destroy: () => void
-  buttonKeys: IChromeExtensionButtonSettingKey[]
+  buttonGroup: IInputAssistantButton[]
 }
 
 class InputAssistantButtonManager {
   host: string
   timer?: ReturnType<typeof setInterval>
   interval = 1000
-  config: IInputAssistantButtonBaseConfig | null
+  config: IInputAssistantButtonGroupConfig | null
   observerMap: Map<HTMLElement, IInputAssistantButtonObserverData>
   constructor() {
     this.host = getCurrentDomainHost()
@@ -32,7 +33,7 @@ class InputAssistantButtonManager {
   createInputAssistantButtonListener(
     listener: (
       allObserverData: IInputAssistantButtonObserverData[],
-      config: IInputAssistantButtonBaseConfig,
+      config: IInputAssistantButtonGroupConfig,
     ) => void,
   ) {
     this.timer = setInterval(() => {
@@ -106,8 +107,9 @@ class InputAssistantButtonManager {
       renderRootElement: container,
       observer,
       shadowRootElement: shadowContainer as ShadowRoot,
-      buttonKeys: checkHostUsingButtonKeys({
+      buttonGroup: getInputAssistantButtonGroupWithHost({
         keyElement: rootElement,
+        buttonGroupConfig: this.config,
       }),
     } as IInputAssistantButtonObserverData
     this.observerMap.set(rootElement, observerData)

@@ -19,8 +19,8 @@ const FeatureGmailAssistantCard: FC = () => {
     >
       <RadioCardGroup
         defaultValue={
-          buttonSettings?.inputAssistantReplyButton?.visibility?.whitelist
-            ?.length === 0
+          buttonSettings?.inputAssistantComposeReplyButton?.visibility
+            ?.whitelist?.length === 0
             ? 'disabled'
             : 'enabled'
         }
@@ -41,17 +41,19 @@ const FeatureGmailAssistantCard: FC = () => {
           },
         ]}
         onChange={async (value) => {
-          if (buttonSettings?.inputAssistantReplyButton) {
+          if (buttonSettings?.inputAssistantComposeReplyButton) {
             const isEnable = value === 'enabled'
-            await updateButtonSettings('inputAssistantReplyButton', {
+            await updateButtonSettings('inputAssistantComposeReplyButton', {
               visibility: {
                 isWhitelistMode: true,
                 whitelist: isEnable ? ['mail.google.com'] : [],
                 blacklist: [],
               },
-              contextMenu: buttonSettings.inputAssistantReplyButton.contextMenu,
+              contextMenu:
+                buttonSettings.inputAssistantComposeReplyButton.contextMenu,
               contextMenuPosition:
-                buttonSettings.inputAssistantReplyButton.contextMenuPosition,
+                buttonSettings.inputAssistantComposeReplyButton
+                  .contextMenuPosition,
             })
           }
         }}

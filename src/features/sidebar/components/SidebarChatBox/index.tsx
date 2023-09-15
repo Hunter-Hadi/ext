@@ -2,9 +2,7 @@ import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 // import CircularProgress from '@mui/material/CircularProgress'
-import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/material/styles'
 import CachedIcon from '@mui/icons-material/Cached'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
@@ -13,7 +11,7 @@ import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { CHROME_EXTENSION_MAIL_TO, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 // import DevContent from '@/components/DevContent'
 // import { TestAllActionsButton } from '@/features/shortcuts'
 import throttle from 'lodash-es/throttle'
@@ -24,7 +22,6 @@ import {
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import useSliceMessageList from '../../hooks/useSliceMessageList'
-import SidebarChatBoxReleaseLog from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxReleaseLog'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
@@ -33,6 +30,7 @@ import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIPr
 import { useTranslation } from 'react-i18next'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
+import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -394,26 +392,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             <SidebarChatBoxInputActions onSendMessage={handleSendMessage} />
           </AutoHeightTextarea>
         </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          sx={{ width: '100%' }}
-          spacing={2}
-          justifyContent={'space-between'}
-        >
-          <Typography sx={{ flexShrink: 0 }} fontSize={12}>
-            <Link
-              color={'text.primary'}
-              sx={{ cursor: 'pointer' }}
-              underline={'always'}
-              target={'_blank'}
-              href={CHROME_EXTENSION_MAIL_TO}
-            >
-              {t('common:contact_us')}
-            </Link>
-          </Typography>
-          <SidebarChatBoxReleaseLog />
-        </Stack>
+        <SidebarChatBoxFooter />
       </Stack>
     </Stack>
   )

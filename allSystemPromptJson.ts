@@ -2,9 +2,9 @@
  * 用于生成所有系统提示的i18n文件
  */
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
-import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantEditContextMenuJson'
-import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantDraftNewContextMenuJson'
-import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantReplyContextMenuJson'
+import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
+import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
+import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
 import { CONTEXT_MENU_DRAFT_LIST } from '@/features/contextMenu/constants'
 const allSystemPromptList: any = ([] as any[])
   // text-select-popup

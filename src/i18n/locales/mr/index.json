@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "पृष्ठ सारांश आणि चॅट",
     "sidebar__tabs__summary__tooltip__default_email": "ईमेल सारांश आणि चॅट",
     "sidebar__tabs__summary__tooltip__pdf_crx": "PDF सारांश आणि चॅट",
-    "sidebar__tabs__summary__tooltip__youtube_video": "व्हिडिओ सारांश आणि चॅट"
+    "sidebar__tabs__summary__tooltip__youtube_video": "व्हिडिओ सारांश आणि चॅट",
+    "input_assistant_button__quick_compose__tooltip": "त्वरित संयोजन",
+    "input_assistant_button__quick_reply__tooltip": "त्वरित प्रतिसाद",
+    "input_assistant_button__edit_or_review_draft__tooltip": "संपादित किंवा समीक्षा केलेले मसूद"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "विनोद",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "अनुवर्ती",
     "47070ec6-8700-43fd-a519-20fe3841df38": "महत्त्वाचे पॉइंटसह उत्तर द्या",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "जलद उत्तर"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "जलद उत्तर",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "त्वरित संयोजन"
   }
 }

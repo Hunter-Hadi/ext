@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "பக்க சுருக்கம் மற்றும் அரட்டை",
     "sidebar__tabs__summary__tooltip__default_email": "மின்னஞ்சல் சுருக்கம் மற்றும் அரட்டை",
     "sidebar__tabs__summary__tooltip__pdf_crx": "PDF சுருக்கம் மற்றும் அரட்டை",
-    "sidebar__tabs__summary__tooltip__youtube_video": "வீடியோ சுருக்கம் மற்றும் அரட்டை"
+    "sidebar__tabs__summary__tooltip__youtube_video": "வீடியோ சுருக்கம் மற்றும் அரட்டை",
+    "input_assistant_button__quick_compose__tooltip": "விரைவு உரையாடல்",
+    "input_assistant_button__quick_reply__tooltip": "விரைவு பதில்",
+    "input_assistant_button__edit_or_review_draft__tooltip": "மாற்று அல்லது மதிப்பிடு முன் முதலீடு"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "பொட்டுக்காட்டு",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "பின்னூட்டம்",
     "47070ec6-8700-43fd-a519-20fe3841df38": "முக்கிய முன்னுரிமைகளுடன் பதிலளிக்குக",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "விரைவான பதில்"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "விரைவான பதில்",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "விரைவு உரையாடல்"
   }
 }

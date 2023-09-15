@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Lapas kopsavilkums un tērzēšana",
     "sidebar__tabs__summary__tooltip__default_email": "E-pasta kopsavilkums un tērzēšana",
     "sidebar__tabs__summary__tooltip__pdf_crx": "PDF kopsavilkums un tērzēšana",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Video kopsavilkums un tērzēšana"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Video kopsavilkums un tērzēšana",
+    "input_assistant_button__quick_compose__tooltip": "Ātra sarakstīšana",
+    "input_assistant_button__quick_reply__tooltip": "Ātra atbilde",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Rediģēt vai pārskatīt melnrakstu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Joks",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Sekojošais",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Atbildēt ar galvenajiem punktiem",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Ātra atbilde"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Ātra atbilde",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Ātra sarakstīšana"
   }
 }

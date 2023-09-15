@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Rezumat pagină și chat",
     "sidebar__tabs__summary__tooltip__default_email": "Rezumat email și chat",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Rezumat PDF și chat",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Rezumat video și chat"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Rezumat video și chat",
+    "input_assistant_button__quick_compose__tooltip": "Compunere rapidă",
+    "input_assistant_button__quick_reply__tooltip": "Răspuns rapid",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Editare sau revizuire proiect"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Glucoză",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Urmărire",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Răspunde cu punctele cheie",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Răspuns rapid"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Răspuns rapid",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Compunere rapidă"
   }
 }

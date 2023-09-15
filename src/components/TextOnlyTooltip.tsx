@@ -13,6 +13,7 @@ export interface TextOnlyTooltipProps extends TooltipProps {
   floatingMenuTooltip?: boolean
   minimumTooltip?: boolean
   paperCard?: boolean
+  zIndex?: number
 }
 
 const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
@@ -21,6 +22,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   minimumTooltip = false,
   floatingMenuTooltip = false,
   paperCard = false,
+  zIndex = 2147483620,
   ...props
 }) => {
   let container: any = document.body
@@ -45,7 +47,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
         ...props.PopperProps,
         style: {
           ...props.style,
-          zIndex: 2147483620,
+          zIndex,
         },
         sx: {
           '&[data-popper-placement*="bottom"] > div': {

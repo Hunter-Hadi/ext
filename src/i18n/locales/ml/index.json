@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "പേജ് സംഗ്രഹം & ചാറ്റ്",
     "sidebar__tabs__summary__tooltip__default_email": "ഇമെയിൽ സംഗ്രഹം & ചാറ്റ്",
     "sidebar__tabs__summary__tooltip__pdf_crx": "PDF സംഗ്രഹം & ചാറ്റ്",
-    "sidebar__tabs__summary__tooltip__youtube_video": "വീഡിയോ സംഗ്രഹം & ചാറ്റ്"
+    "sidebar__tabs__summary__tooltip__youtube_video": "വീഡിയോ സംഗ്രഹം & ചാറ്റ്",
+    "input_assistant_button__quick_compose__tooltip": "വേഗത്തിൽ രചന ചെയ്യുക",
+    "input_assistant_button__quick_reply__tooltip": "വേഗത്തിൽ പ്രതികരിക്കുക",
+    "input_assistant_button__edit_or_review_draft__tooltip": "ഡ്രാഫ്റ്റ് എഡിറ്റുചെയ്യുക അല്ലെങ്കിൽ അവലോകനം ചെയ്യുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "ജോക്ക്",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "പിന്തുണ",
     "47070ec6-8700-43fd-a519-20fe3841df38": "പ്രധാന പോയിന്റുകൾ ഉപയോഗിച്ച് മറുപടി നൽകുക",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "വെളിപ്പെടുത്തലും"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "വെളിപ്പെടുത്തലും",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "വേഗത്തിൽ രചന ചെയ്യുക"
   }
 }

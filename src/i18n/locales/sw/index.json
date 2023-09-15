@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Muhtasari wa Ukurasa & Mzungumzo",
     "sidebar__tabs__summary__tooltip__default_email": "Muhtasari wa Barua pepe & Mzungumzo",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Muhtasari wa PDF & Mzungumzo",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Muhtasari wa Video & Mzungumzo"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Muhtasari wa Video & Mzungumzo",
+    "input_assistant_button__quick_compose__tooltip": "Andika haraka",
+    "input_assistant_button__quick_reply__tooltip": "Jibu haraka",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Hariri au pitia rasimu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Mzaha",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Fuata-up",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Jibu na alama muhimu",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Jibu haraka"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Jibu haraka",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Andika haraka"
   }
 }

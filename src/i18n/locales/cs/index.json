@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Stručný přehled stránky a chat",
     "sidebar__tabs__summary__tooltip__default_email": "Stručný přehled e-mailu a chat",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Stručný přehled PDF a chat",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Stručný přehled videa a chat"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Stručný přehled videa a chat",
+    "input_assistant_button__quick_compose__tooltip": "Rychlé vytvoření",
+    "input_assistant_button__quick_reply__tooltip": "Rychlá odpověď",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Upravit nebo zkontrolovat koncept"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Vtip",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Následná otázka",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Odpověď s klíčovými body",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Rychlá odpověď"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Rychlá odpověď",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Rychlé vytvoření"
   }
 }

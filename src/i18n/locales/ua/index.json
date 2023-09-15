@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Огляд сторінки та чат",
     "sidebar__tabs__summary__tooltip__default_email": "Огляд електронної пошти та чат",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Огляд PDF та чат",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Огляд відео та чат"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Огляд відео та чат",
+    "input_assistant_button__quick_compose__tooltip": "Швидке створення",
+    "input_assistant_button__quick_reply__tooltip": "Швидка відповідь",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Редагувати або переглянути чернетку"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Жарт",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Доповнення",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Відповісти з ключовими моментами",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Швидка відповідь"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Швидка відповідь",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Швидке створення"
   }
 }

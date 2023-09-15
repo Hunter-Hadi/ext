@@ -14,6 +14,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
+import Box from '@mui/material/Box'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -72,6 +73,8 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   const { t } = useTranslation(['client'])
   const { loading } = useRecoilValue(ChatGPTConversationState)
   const [isCTAHover, setCTAIsHover] = useState(false)
+  const [ctaTooltipShow, setCtaTooltipShow] = useState(false)
+  const [dropdownTooltipShow, setDropdownTooltipShow] = useState(false)
   const memoButtonSx = useMemo(() => {
     let ctaButtonSx = {}
     let dropdownButtonSx = {}
@@ -165,36 +168,49 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           }
           root={root}
         >
-          <TextOnlyTooltip
-            PopperProps={{
-              container: root,
-            }}
-            title={t(buttonGroup[0].tooltip as any)}
-          >
-            <Button
-              disabled={loading}
-              sx={memoButtonSx.ctaButtonSx}
-              onMouseEnter={() => setCTAIsHover(true)}
-              onMouseLeave={() => setCTAIsHover(false)}
+          <Box>
+            <TextOnlyTooltip
+              open={ctaTooltipShow}
+              zIndex={2000000}
+              PopperProps={{
+                container: root,
+              }}
+              title={t(buttonGroup[0].tooltip as any)}
             >
-              {loading ? (
-                <CircularProgress
-                  size={CTAButtonStyle?.iconSize || 20}
-                  sx={{
-                    fontSize: `inherit`,
-                    color: '#fff',
-                  }}
-                />
-              ) : (
-                <UseChatGptIcon
-                  sx={{
-                    fontSize: `inherit`,
-                    color: 'inherit',
-                  }}
-                />
-              )}
-            </Button>
-          </TextOnlyTooltip>
+              <Button
+                disabled={loading}
+                sx={memoButtonSx.ctaButtonSx}
+                onMouseEnter={() => {
+                  setCTAIsHover(true)
+                  setCtaTooltipShow(true)
+                }}
+                onMouseLeave={() => {
+                  setCTAIsHover(false)
+                  setCtaTooltipShow(false)
+                }}
+                onClick={() => {
+                  setCtaTooltipShow(false)
+                }}
+              >
+                {loading ? (
+                  <CircularProgress
+                    size={CTAButtonStyle?.iconSize || 20}
+                    sx={{
+                      fontSize: `inherit`,
+                      color: '#fff',
+                    }}
+                  />
+                ) : (
+                  <UseChatGptIcon
+                    sx={{
+                      fontSize: `inherit`,
+                      color: 'inherit',
+                    }}
+                  />
+                )}
+              </Button>
+            </TextOnlyTooltip>
+          </Box>
         </InputAssistantButtonContextMenu>
       )}
       {buttonGroup[1] && (
@@ -206,22 +222,38 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           }
           root={root}
         >
-          <TextOnlyTooltip
-            PopperProps={{
-              container: root,
-            }}
-            title={t(buttonGroup[1].tooltip as any)}
-          >
-            <Button disabled={loading} sx={memoButtonSx.dropdownButtonSx}>
-              <ContextMenuIcon
-                icon={'ArrowDropDown'}
-                sx={{
-                  fontSize: `inherit`,
-                  color: 'inherit',
+          <Box>
+            <TextOnlyTooltip
+              open={dropdownTooltipShow}
+              zIndex={2000000}
+              PopperProps={{
+                container: root,
+              }}
+              title={t(buttonGroup[1].tooltip as any)}
+            >
+              <Button
+                disabled={loading}
+                sx={memoButtonSx.dropdownButtonSx}
+                onMouseEnter={() => {
+                  setDropdownTooltipShow(true)
                 }}
-              />
-            </Button>
-          </TextOnlyTooltip>
+                onMouseLeave={() => {
+                  setDropdownTooltipShow(false)
+                }}
+                onClick={() => {
+                  setDropdownTooltipShow(false)
+                }}
+              >
+                <ContextMenuIcon
+                  icon={'ArrowDropDown'}
+                  sx={{
+                    fontSize: `inherit`,
+                    color: 'inherit',
+                  }}
+                />
+              </Button>
+            </TextOnlyTooltip>
+          </Box>
         </InputAssistantButtonContextMenu>
       )}
     </Stack>

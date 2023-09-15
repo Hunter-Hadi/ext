@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Sažetak stranice i chat",
     "sidebar__tabs__summary__tooltip__default_email": "Sažetak e-pošte i chat",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Sažetak PDF-a i chat",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Sažetak videa i chat"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Sažetak videa i chat",
+    "input_assistant_button__quick_compose__tooltip": "Brzo sastavi",
+    "input_assistant_button__quick_reply__tooltip": "Brzi odgovor",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Uredi ili pregledaj skicu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Šala",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Nastavak",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Odgovor s ključnim točkama",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Brzi odgovor"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Brzi odgovor",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Brzo sastavi"
   }
 }

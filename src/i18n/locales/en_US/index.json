@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Page summary & chat",
     "sidebar__tabs__summary__tooltip__default_email": "Email summary & chat",
     "sidebar__tabs__summary__tooltip__pdf_crx": "PDF summary & chat",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Video summary & chat"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Video summary & chat",
+    "input_assistant_button__quick_compose__tooltip": "Quick compose",
+    "input_assistant_button__quick_reply__tooltip": "Quick reply",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Edit or review draft"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Joke",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Follow-up",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Reply with key points",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Quick reply"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Quick reply",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Quick compose"
   }
 }

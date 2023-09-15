@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Riepilogo pagina e chat",
     "sidebar__tabs__summary__tooltip__default_email": "Riepilogo email e chat",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Riepilogo PDF e chat",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Riepilogo video e chat"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Riepilogo video e chat",
+    "input_assistant_button__quick_compose__tooltip": "Composizione rapida",
+    "input_assistant_button__quick_reply__tooltip": "Risposta rapida",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Modifica o revisione bozza"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Barzelletta",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Seguito",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Rispondi con i punti chiave",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Risposta rapida"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Risposta rapida",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Composizione rapida"
   }
 }

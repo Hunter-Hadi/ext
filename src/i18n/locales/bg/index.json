@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Обобщение на страницата и чат",
     "sidebar__tabs__summary__tooltip__default_email": "Обобщение на имейл и чат",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Обобщение на PDF и чат",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Обобщение на видео и чат"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Обобщение на видео и чат",
+    "input_assistant_button__quick_compose__tooltip": "Бързо съставяне",
+    "input_assistant_button__quick_reply__tooltip": "Бърз отговор",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Редактиране или преглед на чернова"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Шега",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Следващ въпрос",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Отговор с ключови точки",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Бърз отговор"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Бърз отговор",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Бързо съставяне"
   }
 }

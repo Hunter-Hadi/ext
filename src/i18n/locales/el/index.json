@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Σύνοψη σελίδας & συνομιλία",
     "sidebar__tabs__summary__tooltip__default_email": "Σύνοψη email & συνομιλία",
     "sidebar__tabs__summary__tooltip__pdf_crx": "Σύνοψη PDF & συνομιλία",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Σύνοψη βίντεο YouTube & συνομιλία"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Σύνοψη βίντεο YouTube & συνομιλία",
+    "input_assistant_button__quick_compose__tooltip": "Γρήγορη σύνθεση",
+    "input_assistant_button__quick_reply__tooltip": "Γρήγορη απάντηση",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Επεξεργασία ή αναθεώρηση πρόχειρου"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Ανέκδοτο",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Επακόλουθο",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Απάντηση με βασικά σημεία",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Γρήγορη απάντηση"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Γρήγορη απάντηση",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Γρήγορη σύνθεση"
   }
 }

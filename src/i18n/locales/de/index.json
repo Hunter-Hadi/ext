@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Seitenzusammenfassung & Chat",
     "sidebar__tabs__summary__tooltip__default_email": "E-Mail-Zusammenfassung & Chat",
     "sidebar__tabs__summary__tooltip__pdf_crx": "PDF-Zusammenfassung & Chat",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Video-Zusammenfassung & Chat"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Video-Zusammenfassung & Chat",
+    "input_assistant_button__quick_compose__tooltip": "Schnell verfassen",
+    "input_assistant_button__quick_reply__tooltip": "Schnell antworten",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Entwurf bearbeiten oder überprüfen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Witz",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Nachfolge",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Antwort mit Schlüsselpunkten",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Schnelle Antwort"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Schnelle Antwort",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Schnell verfassen"
   }
 }

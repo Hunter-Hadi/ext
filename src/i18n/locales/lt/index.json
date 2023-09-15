@@ -418,7 +418,10 @@
     "sidebar__tabs__summary__tooltip__page": "Puslapio santrauka ir pokalbis",
     "sidebar__tabs__summary__tooltip__default_email": "El. pašto santrauka ir pokalbis",
     "sidebar__tabs__summary__tooltip__pdf_crx": "PDF santrauka ir pokalbis",
-    "sidebar__tabs__summary__tooltip__youtube_video": "Vaizdo įrašo santrauka ir pokalbis"
+    "sidebar__tabs__summary__tooltip__youtube_video": "Vaizdo įrašo santrauka ir pokalbis",
+    "input_assistant_button__quick_compose__tooltip": "Greitas rašymas",
+    "input_assistant_button__quick_reply__tooltip": "Greitas atsakymas",
+    "input_assistant_button__edit_or_review_draft__tooltip": "Redaguoti ar peržiūrėti juodraštį"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -569,6 +572,7 @@
     "b1cd46eb-ca76-437e-841e-f7714aaea215": "Juokas",
     "eeb8c14c-b058-42ac-a7dd-6e78d74264a2": "Papildoma informacija",
     "47070ec6-8700-43fd-a519-20fe3841df38": "Atsakyti su pagrindiniais punktais",
-    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Greitas atsakymas"
+    "cf4e0b8e-a5da-4d4f-8244-c748466e7c35": "Greitas atsakymas",
+    "c73787fb-e2fd-41f2-8ad0-854b2a624022": "Greitas rašymas"
   }
 }

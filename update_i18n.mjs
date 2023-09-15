@@ -70,12 +70,12 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
           } catch (e) {
             console.log('33333')
             // 第三次尝试,替换文本中错误的冒号
-            const errorColon = JSON.stringify(jsonText).match(/"(?<colon>.)\s?{/)?.groups?.colon
+            const errorColon =
+              JSON.stringify(jsonText).match(/"(?<colon>.)\s?{/)?.groups?.colon
             if (errorColon) {
               const jsonText3 = jsonText.replaceAll(errorColon, ':')
               data = JSON.parse(jsonText3.replace(/^\n?```\n?|\n?```\n?$/g, ''))
             } else {
-
               throw e('没的救了')
             }
           }
@@ -276,7 +276,7 @@ const updateI18nJson = async (
     )
   }
   // 去掉en语言包
-  needUpdateLanguages = needUpdateLanguages.filter(dir => dir.name !== 'en')
+  needUpdateLanguages = needUpdateLanguages.filter((dir) => dir.name !== 'en')
   console.log('i18n 需要更新的语言包总数: ', needUpdateLanguages.length)
   if (updateKeys.length > 0) {
     console.log('i18n 本次需要更新的key总数:', updateKeys.length)
@@ -565,10 +565,8 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = [
-  ]
-  const retryLanguageCodes = [
-  ]
+  const keys = []
+  const retryLanguageCodes = []
   await updateKeys(keys, false, retryLanguageCodes)
 }
 

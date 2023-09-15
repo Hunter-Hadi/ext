@@ -21,9 +21,18 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'unused-imports'],
   rules: {
     // disable the rule for all files
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
     'unused-imports/no-unused-imports': 'error',
+    '@typescript-eslint/no-unused-vars': [
+      'warn', // or "error"
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
     'unused-imports/no-unused-vars': [
       'warn',
       {

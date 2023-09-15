@@ -51,12 +51,11 @@ export type IContextMenuItem = {
   droppable: boolean
   text: string
   data: {
-    icon?: string
-    searchText?: string
     editable: boolean
     type: 'group' | 'shortcuts'
+    icon?: string
+    searchText?: string
     actions?: ISetActionsType
-    // TODO - 之前的版本没有这个字段, 为了兼容老版本, 先不加required
     visibility?: IVisibilitySetting
   }
 }

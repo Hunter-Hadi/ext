@@ -9,15 +9,13 @@ import {
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { isEmailWebsite } from '@/features/shortcuts/actions/web/ActionGetEmailContentsOfWebPage/getEmailWebsitePageContents'
+import { isEmailWebsite } from '@/features/shortcuts/actions/web/email/getEmailWebsitePageContentsOrDraft'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
   | 'YOUTUBE_VIDEO_SUMMARY'
   | 'PDF_CRX_SUMMARY'
   | 'DEFAULT_EMAIL_SUMMARY'
-
-export const PAGE_SUMMARY_MAX_TOKENS = 12000 // 12k
 
 export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   [key in IPageSummaryType]: IContextMenuItem

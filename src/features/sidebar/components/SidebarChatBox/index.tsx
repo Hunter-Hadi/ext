@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef } from 'react'
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 // import CircularProgress from '@mui/material/CircularProgress'
@@ -32,6 +32,7 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import { useTranslation } from 'react-i18next'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
+import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -84,6 +85,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
+  const [isSetVariables, setIsSetVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
   // const conversation = useRecoilValue(ChatGPTConversationState)
   const stackRef = useRef<HTMLElement | null>(null)
@@ -274,8 +276,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           </AppSuspenseLoadingLayout>
         </Box>
       </Box>
-      {/*// input height*/}
-      <Box height={8} flexShrink={0} />
       <Stack
         className={'use-chat-gpt-ai__chat-box__input-box'}
         position={'relative'}
@@ -325,24 +325,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             />
             {!loading && slicedMessageList.length > 0 && (
               <>
-                {/*<TooltipButton*/}
-                {/*  title={'New chat'}*/}
-                {/*  sx={{*/}
-                {/*    fontSize: '26px',*/}
-                {/*    p: '5px',*/}
-                {/*    minWidth: 'unset',*/}
-                {/*    borderRadius: '18px',*/}
-                {/*  }}*/}
-                {/*  disableElevation*/}
-                {/*  variant={'contained'}*/}
-                {/*  onClick={() => {*/}
-                {/*    onReset && onReset()*/}
-                {/*  }}*/}
-                {/*>*/}
-                {/*  <CleanChatBoxIcon*/}
-                {/*    sx={{ color: 'inherit', fontSize: 'inherit' }}*/}
-                {/*  />*/}
-                {/*</TooltipButton>*/}
                 {reGenerateAble && (
                   <Button
                     disableElevation
@@ -389,9 +371,18 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               </Button>
             )}
           </Box>
+          <ActionSetVariablesModal
+            onClose={() => {
+              setIsSetVariables(false)
+            }}
+            onShow={() => setIsSetVariables(true)}
+            modelKey={'Sidebar'}
+          />
           <AutoHeightTextarea
             sx={{
-              minHeight: 80,
+              minHeight: isSetVariables ? 0 : 80,
+              height: isSetVariables ? '0!important' : 'unset',
+              visibility: isSetVariables ? 'hidden' : 'visible',
             }}
             stopPropagation
             loading={loading}

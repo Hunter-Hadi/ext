@@ -7,7 +7,6 @@ import {
   templateParserDecorator,
   withLoading,
 } from '@/features/shortcuts'
-import { v4 as uuidV4 } from 'uuid'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
@@ -38,17 +37,6 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
         return
       }
       console.log('youtubeLinkURL', youtubeLinkURL)
-      this.pushMessageToChat(
-        {
-          type: 'system',
-          text: `Generating summary...`,
-          messageId: uuidV4(),
-          extra: {
-            status: 'info',
-          },
-        },
-        engine,
-      )
       let transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL)
       const isEmptyTranscriptText =
         transcripts.length <= 10

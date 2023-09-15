@@ -45,7 +45,10 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu/types'
 import Stack from '@mui/material/Stack'
 import { useTranslation } from 'react-i18next'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
@@ -326,6 +329,9 @@ export interface MenuProps {
   hoverOpen?: boolean
   defaultPlacement?: Placement
   defaultFallbackPlacements?: Placement[]
+  onClickContextMenu?: (contextMenu: IContextMenuItem) => void
+  onClickReferenceElement?: (event: React.MouseEvent<any, MouseEvent>) => void
+  menuWidth?: number
 }
 
 // eslint-disable-next-line react/display-name
@@ -347,6 +353,9 @@ export const MenuComponent = React.forwardRef<
       menuSx,
       defaultPlacement,
       defaultFallbackPlacements,
+      onClickContextMenu,
+      onClickReferenceElement,
+      menuWidth = 400,
       ...props
     },
     forwardedRef,
@@ -759,6 +768,7 @@ export const MenuComponent = React.forwardRef<
               className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
               onClick(event) {
                 event.stopPropagation()
+                onClickReferenceElement?.(event)
               },
               onKeyDownCapture(event) {
                 // 如果是enter并且是根节点
@@ -959,7 +969,7 @@ export const MenuComponent = React.forwardRef<
                   flexDirection: 'column',
                   p: 0.5,
                   outline: 'none!important',
-                  width: 400,
+                  width: menuWidth,
                   maxHeight: 327,
                   boxSizing: 'border-box',
                   overflowY: 'auto',
@@ -1002,6 +1012,11 @@ export const MenuComponent = React.forwardRef<
                         onClick(event) {
                           child.props.onClick?.(event)
                           tree?.events.emit('click')
+                          if (
+                            child.props?.menuItem?.data?.type === 'shortcuts'
+                          ) {
+                            onClickContextMenu?.(child.props.menuItem)
+                          }
                         },
                         onKeyDownCapture(event) {
                           lastKeydownEvent.current = event

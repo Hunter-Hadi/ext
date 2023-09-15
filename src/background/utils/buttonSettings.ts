@@ -41,7 +41,9 @@ import { useRecoilState } from 'recoil'
 import { AppSettingsState } from '@/store'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { getCurrentDomainHost } from '@/utils'
-import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
+import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantEditContextMenuJson'
+import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantDraftNewContextMenuJson'
+import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantReplyContextMenuJson'
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 import isEqual from 'lodash-es/isEqual'
 
@@ -330,8 +332,10 @@ export class SystemContextMenu {
   static buttonSettings: {
     [key in IChromeExtensionButtonSettingKey]: IContextMenuItem[]
   } = {
-    gmailButton: defaultGmailToolbarContextMenuJson,
     textSelectPopupButton: defaultContextMenuJson,
+    inputAssistantEditButton: defaultInputAssistantEditContextMenuJson,
+    inputAssistantReplyButton: defaultEditAssistantReplyContextMenuJson,
+    inputAssistantDraftNewButton: defaultInputAssistantDraftNewContextMenuJson,
   }
 }
 

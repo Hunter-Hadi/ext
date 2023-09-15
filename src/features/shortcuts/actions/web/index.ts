@@ -6,4 +6,5 @@ export { ActionGetYoutubeTranscriptOfURL } from './ActionGetYoutubeTranscriptOfU
 export { ActionOpenURLs } from './ActionOpenURLs'
 export { ActionCloseURLS } from './ActionCloseURLS'
 export { ActionGetReadabilityContentsOfWebPage } from './ActionGetReadabilityContentsOfWebPage'
-export { ActionGetEmailContentsOfWebPage } from './ActionGetEmailContentsOfWebPage'
+export { ActionGetEmailContentsOfWebPage } from './email/ActionGetEmailContentsOfWebPage'
+export { ActionGetEmailDraftOfWebPage } from './email/ActionGetEmailDraftOfWebPage'

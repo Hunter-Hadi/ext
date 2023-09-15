@@ -23,6 +23,8 @@ const RenderDropdownItem = forwardRef<
     referenceElementOpen,
     rootMenu,
     customOpen,
+    onClickContextMenu,
+    menuWidth,
     ...rest
   } = props
   const { t } = useTranslation(['prompt'])
@@ -48,6 +50,8 @@ const RenderDropdownItem = forwardRef<
         ref={ref}
         root={root}
         label={menuLabel}
+        menuWidth={menuWidth}
+        onClickContextMenu={onClickContextMenu}
         referenceElement={
           <DropdownMenuItem {...rest} label={menuLabel} menuItem={menuItem} />
         }
@@ -90,6 +94,10 @@ const FloatingContextMenuList: FC<
     needAutoUpdate,
     defaultPlacement,
     defaultFallbackPlacements,
+    onClickContextMenu,
+    menuWidth,
+    onClickReferenceElement,
+    hoverOpen,
     ...rest
   } = props
   const { t } = useTranslation(['prompt'])
@@ -161,6 +169,8 @@ const FloatingContextMenuList: FC<
         menuItem.children.forEach((childMenuItem, index) => {
           nodeList.push(
             <RenderDropdownItem
+              menuWidth={menuWidth}
+              onClickContextMenu={onClickContextMenu}
               zIndex={2147483602}
               {...rest}
               key={childMenuItem.id}
@@ -173,6 +183,8 @@ const FloatingContextMenuList: FC<
       } else {
         nodeList.push(
           <RenderDropdownItem
+            menuWidth={menuWidth}
+            onClickContextMenu={onClickContextMenu}
             key={menuItem.id}
             label={''}
             menuItem={menuItem}
@@ -196,6 +208,10 @@ const FloatingContextMenuList: FC<
       referenceElementOpen={referenceElementOpen}
       defaultPlacement={defaultPlacement}
       defaultFallbackPlacements={defaultFallbackPlacements}
+      onClickContextMenu={onClickContextMenu}
+      onClickReferenceElement={onClickReferenceElement}
+      hoverOpen={hoverOpen}
+      menuWidth={menuWidth}
     >
       {RenderMenuList}
     </DropdownMenu>

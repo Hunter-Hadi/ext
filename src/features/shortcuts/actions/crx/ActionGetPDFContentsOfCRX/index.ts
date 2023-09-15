@@ -1,7 +1,6 @@
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { v4 as uuidV4 } from 'uuid'
 import {
   pushOutputToChat,
   templateParserDecorator,
@@ -26,17 +25,6 @@ export class ActionGetPDFContentsOfCRX extends Action {
   @withLoading()
   async execute(params: ActionParameters, engine: any) {
     try {
-      this.pushMessageToChat(
-        {
-          type: 'system',
-          text: `Generating summary...`,
-          messageId: uuidV4(),
-          extra: {
-            status: 'info',
-          },
-        },
-        engine,
-      )
       if (
         typeof window !== 'undefined' &&
         (window as any).pdfjsLib &&

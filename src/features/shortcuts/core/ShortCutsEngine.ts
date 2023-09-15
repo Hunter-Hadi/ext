@@ -30,6 +30,9 @@ import {
   ActionGetEmailContentsOfWebPage,
   ActionGetReadabilityContentsOfWebPage,
   ActionRenderTemplate,
+  ActionSetVariableMap,
+  ActionSetVariablesModal,
+  ActionGetEmailDraftOfWebPage,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -49,6 +52,8 @@ const ActionClassMap = {
   [ActionSetVariable.type]: ActionSetVariable,
   [ActionOperationElement.type]: ActionOperationElement,
   [ActionConditional.type]: ActionConditional,
+  [ActionSetVariablesModal.type]: ActionSetVariablesModal,
+  [ActionSetVariableMap.type]: ActionSetVariableMap,
   // web
   [ActionURL.type]: ActionURL,
   [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
@@ -62,6 +67,7 @@ const ActionClassMap = {
   [ActionGetReadabilityContentsOfWebPage.type]:
     ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
+  [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,
@@ -148,7 +154,7 @@ class ShortCutsEngine implements IShortcutEngine {
       // execute action
       action.status = 'running'
       this.emit('action', action)
-      await action.execute(this.getVariable(), engine)
+      await action.execute(this.getVariables(), engine)
       if (action.error) {
         action.status = 'error'
         this.emit('action', action)
@@ -277,10 +283,10 @@ class ShortCutsEngine implements IShortcutEngine {
       this.setVariable(variable.key, variable.value, variable.overwrite)
     })
   }
-  getVariable(key?: IShortcutEngineVariableType) {
-    if (key) {
-      return this.variables.get(key as string)
-    }
+  getVariable(key: IShortcutEngineVariableType) {
+    return this.variables.get(key as string)
+  }
+  getVariables() {
     console.log(
       'ShortCutEngine.getVariables',
       Object.fromEntries(this.variables),

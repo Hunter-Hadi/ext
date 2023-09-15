@@ -3,7 +3,7 @@ import { RangyCoreState, RangyState } from '@/features/contextMenu/store'
 import { ISelection } from '@/features/contextMenu/types'
 import { useEffect, useRef } from 'react'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/sidebar/utils/pageSummaryHelper'
+import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 
 const useRangy = () => {
   const [rangyCore, setRangyCore] = useRecoilState(RangyCoreState)

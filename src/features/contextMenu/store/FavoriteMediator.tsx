@@ -304,7 +304,13 @@ class FavoriteMediatorFactory {
     FavoriteMediator
   > = {
     textSelectPopupButton: new FavoriteMediator('textSelectPopupButton'),
-    gmailButton: new FavoriteMediator('gmailButton'),
+    inputAssistantDraftNewButton: new FavoriteMediator(
+      'inputAssistantDraftNewButton',
+    ),
+    inputAssistantReplyButton: new FavoriteMediator(
+      'inputAssistantReplyButton',
+    ),
+    inputAssistantEditButton: new FavoriteMediator('inputAssistantEditButton'),
   }
   public static getMediator(
     mediatorName: IChromeExtensionButtonSettingKey,

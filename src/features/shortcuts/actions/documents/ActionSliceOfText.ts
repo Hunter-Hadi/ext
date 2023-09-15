@@ -25,7 +25,10 @@ export class ActionSliceOfText extends Action {
         this.error = 'No text to split'
         return
       }
-      if (this.parameters.SliceTextActionType === 'TOKENS') {
+      if (
+        this.parameters.SliceTextActionType === 'TOKENS' ||
+        this.parameters.SliceTextActionTokens
+      ) {
         this.output = await sliceTextByTokens(
           needSplitText,
           this.parameters.SliceTextActionTokens || 4096,

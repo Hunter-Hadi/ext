@@ -36,6 +36,7 @@ import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActio
 import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -51,7 +52,7 @@ interface ActionParameters {
   CURRENT_WEBSITE_DOMAIN?: string
   CURRENT_WEBPAGE_URL?: string
   CURRENT_WEBPAGE_TITLE?: string
-  AI_OUTPUT_LANGUAGE?: string
+  AI_RESPONSE_LANGUAGE?: string
   // TODO 需要实现
   Advanced?: boolean
   AssertionType?: AssertionType
@@ -163,6 +164,9 @@ interface ActionParameters {
   }
   Variable?: WFSerialization | string
   VariableName?: string
+  VariableMap?: {
+    [key in string]: string | number | undefined
+  }
   WFVolume?: number
   WFWorkflowName?: string
   WFZIPName?: WFSerialization | string
@@ -174,10 +178,13 @@ interface ActionParameters {
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionMeta?: IChatMessageExtraMetaType
   // Operation Element
+  OperationElementElementSelector?: string
   OperationElementTabID?: number
   OperationElementConfig?: OperationElementConfigType
   AnalyzeChatFileName?: string
   AnalyzeChatFileImmediateUpdateConversation?: boolean
+  // set variable modal
+  SetVariablesModalConfig?: ActionSetVariablesModalConfig
 }
 
 export default ActionParameters

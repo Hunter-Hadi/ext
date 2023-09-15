@@ -93,7 +93,8 @@ export interface IShortcutEngine {
       overwrite: boolean
     }>,
   ) => void
-  getVariable: (key?: IShortcutEngineVariableType) => any
+  getVariable: (key: IShortcutEngineVariableType) => any
+  getVariables: () => Record<string, any>
   setActions: (actions: ISetActionsType) => void
   getCurrentAction: () => IAction
   getNextAction: () => IAction

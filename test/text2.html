@@ -1,64 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>The Adventures of Little Red Riding Hood</title>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Flex Layout</title>
   <style>
-      h1 {
-          text-align: center;
-          font-size: 2.5em;
-          margin-top: 30px;
-          margin-bottom: 30px;
-      }
-      h2 {
-          font-size: 1.5em;
-          margin-top: 20px;
-          margin-bottom: 20px;
-      }
-      p {
-          font-size: 1em;
-          line-height: 1.5;
-          margin-top: 10px;
-          margin-bottom: 10px;
-      }
-      * {
-          margin: 0;
-          padding: 0;
-      }
-      body{
+      #container {
           display: flex;
-          flex-direction: column;
-          gap: 8px;
-          padding: 20px;
-          overflow: auto;
+          flex-wrap: wrap;
+          gap: 16px;
       }
-      textarea{
-          font-size: 14px;
+
+      #container > div {
+          background-color: #e0e0e0;
+          padding: 20px;
+          box-sizing: border-box;
       }
   </style>
 </head>
 <body>
-<input type='password' value='aa'>
-<input readonly type='text' value=''>
-<input disabled type='text' value=''>
-<textarea  name='' id='' cols='30' rows='10' inputmode='none'></textarea>
-<textarea  name='' id='' cols='30' rows='10' inputmode='text'></textarea>
-<textarea  name='' id='' cols='30' rows='10' inputmode='decimal'></textarea>
-<div contenteditable='true'>
-  <p>"Hello, Little Red Riding Hood," said the wolf. "Where are you going?"</p>
+
+<div id="container">
+  <!-- Sample children elements, you can add or remove to test -->
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <div>7</div>
+  <div>7</div>
+  <div>7</div>
+  <div>7</div>
+  <!-- ... -->
 </div>
-<textarea  name='' id='' cols='30' rows='10' style='width: 600px;font-size: 30px'>
-  Little Red Riding Hood thanked the woodsman for saving her life. Then she went inside to see her grandmother. She told her grandmother what had happened, and they both agreed that they would never go into the woods alone again.
-</textarea>
-<textarea  name='' id='' cols='30' rows='10'>
-  Little Red Riding Hood thanked the woodsman for saving her life. Then she went inside to see her grandmother. She told her grandmother what had happened, and they both agreed that they would never go into the woods alone again.
-</textarea>
-<input type='text' value='1 2 3 4 5 6'>
-<h2>Chapter 2: The Wolf in the Woods</h2>
-<p>One day, Little Red Riding Hood was on her way to visit her grandmother. She had a basket of goodies in her hand and a skip in her step. As she walked through the woods, she met a big, bad wolf.</p>
-<p>"Hello, Little Red Riding Hood," said the wolf. "Where are you going?"</p>
-<p>"I'm going to visit my grandmother," said Little Red Riding Hood.</p>
-<p>"And what's in your basket?" asked the wolf.</p>
+
+<script>
+  const container = document.getElementById("container");
+  const children = container.children;
+
+  const getChildrenWidth = (index, count) => {
+    const remainder = count % 3;
+    const fullRows = (count - remainder) / 3;
+
+    if (index < fullRows * 3) {
+      return "calc(33.33% - (2/3)*16px)";
+    } else {
+      switch (remainder) {
+        case 1:
+          if (index === count - 1) return "100%";
+          break;
+        case 2:
+          if (index >= count - 2) return "calc(50% - 8px)";
+          break;
+      }
+    }
+    return null;
+  }
+
+  for (let i = 0; i < children.length; i++) {
+    const width = getChildrenWidth(i, children.length);
+    if (width) {
+      children[i].style.width = width;
+    }
+  }
+</script>
+
 </body>
 </html>

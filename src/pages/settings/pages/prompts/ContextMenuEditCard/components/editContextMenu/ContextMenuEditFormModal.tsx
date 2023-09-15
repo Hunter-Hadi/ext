@@ -244,6 +244,7 @@ const ContextMenuEditForm: FC<{
                     (icon) => {
                       return (
                         <Button
+                          data-name={icon}
                           disabled={isDisabled}
                           sx={{ width: 32, minWidth: 'unset', height: 32 }}
                           variant={

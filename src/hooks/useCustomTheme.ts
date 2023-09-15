@@ -40,6 +40,11 @@ declare module '@mui/material/styles' {
     neutral: PaletteOptions['primary']
   }
 }
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    secondary: true
+  }
+}
 
 interface IProps {
   isDarkMode: boolean
@@ -100,6 +105,27 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
                   }
                 : {},
             },
+            variants: [
+              {
+                props: { variant: 'secondary' },
+                style: {
+                  backgroundColor: isDarkMode
+                    ? 'rgba(255, 255, 255, 0.12)'
+                    : 'rgba(0, 0, 0, 0.08)',
+                  color: isDarkMode
+                    ? 'rgba(255, 255, 255, 0.3)'
+                    : 'rgba(0, 0, 0, 0.38)',
+                  '&:hover': {
+                    backgroundColor: isDarkMode
+                      ? 'rgba(255, 255, 255, 0.2)'
+                      : 'rgba(0, 0, 0, 0.1)',
+                    color: isDarkMode
+                      ? 'rgba(255, 255, 255, 0.3)'
+                      : 'rgba(0, 0, 0, 0.38)',
+                  },
+                },
+              },
+            ],
           },
           MuiTab: {
             styleOverrides: {

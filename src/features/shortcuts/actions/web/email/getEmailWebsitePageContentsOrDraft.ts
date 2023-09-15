@@ -82,7 +82,38 @@ export const isEmailWebsite = () => {
   return false
 }
 
-const getEmailWebsitePageContents = async () => {
+export const getEmailWebsitePageDraft = async (
+  inputAssistantButtonElementSelector: string,
+) => {
+  const button = document.querySelector(
+    inputAssistantButtonElementSelector,
+  ) as HTMLButtonElement
+  const host = getCurrentDomainHost()
+  let emailDraftSelector = ''
+  let documentElement: HTMLElement = document.documentElement
+  if (host === 'mail.google.com') {
+    // document.querySelectorAll('table[role="presentation"][id] div[role="textbox"]')[1].innerText
+    document.querySelectorAll('table[role="presentation"]').forEach((table) => {
+      if (table.contains(button)) {
+        documentElement = table as HTMLTableElement
+      }
+    })
+    emailDraftSelector = 'div[role="textbox"]'
+  }
+  try {
+    if (emailDraftSelector) {
+      const draft = documentElement.querySelector(
+        emailDraftSelector,
+      ) as HTMLElement
+      return draft?.innerText?.trim() || ''
+    }
+    return ''
+  } catch (e) {
+    return ''
+  }
+}
+
+export const getEmailWebsitePageContentsOrDraft = async () => {
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms))
   const host = getCurrentDomainHost()
@@ -156,4 +187,3 @@ const getEmailWebsitePageContents = async () => {
     return await getPageContentWithMozillaReadability()
   }
 }
-export default getEmailWebsitePageContents

@@ -1,0 +1,1 @@
+export const PAGE_SUMMARY_MAX_TOKENS = 12000 // 12k

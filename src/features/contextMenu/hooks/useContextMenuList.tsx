@@ -15,6 +15,7 @@ import { sortBy } from 'lodash-es'
 const useContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,
   query?: string,
+  needFavoriteContextMenu = true,
 ) => {
   const buttonSettings =
     useChromeExtensionButtonSettingsWithVisibility(buttonSettingKey)
@@ -36,7 +37,7 @@ const useContextMenuList = (
       }
       return 1
     })
-    if (favoriteContextMenuGroup) {
+    if (favoriteContextMenuGroup && needFavoriteContextMenu) {
       groupByContextMenuList.unshift(favoriteContextMenuGroup)
     }
     return groupByContextMenuList
@@ -49,18 +50,8 @@ const useContextMenuList = (
         contextMenuSearchTextWithCurrentLanguage,
       )
     }
-    if (buttonSettingKey === 'gmailButton') {
-      return groupByContextMenuList.map((group, index) => {
-        if (index === 0) {
-          // gmail只有一个group
-          // group第一个作为cta button
-          group.children = group.children.slice(1)
-        }
-        return group
-      })
-    }
     return groupByContextMenuList
-  }, [groupByContextMenuList, buttonSettingKey, query])
+  }, [groupByContextMenuList, buttonSettingKey, query, needFavoriteContextMenu])
   return {
     contextMenuList,
     originContextMenuList: buttonSettings?.contextMenu || [],

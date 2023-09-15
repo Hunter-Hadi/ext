@@ -84,10 +84,28 @@ export const getDefaultChromeExtensionSettings =
         },
       },
       buttonSettings: {
-        gmailButton: {
+        inputAssistantReplyButton: {
           visibility: {
-            isWhitelistMode: true,
-            whitelist: ['mail.google.com'],
+            isWhitelistMode: false,
+            whitelist: [],
+            blacklist: [],
+          },
+          contextMenu: [],
+          contextMenuPosition: 'start',
+        },
+        inputAssistantDraftNewButton: {
+          visibility: {
+            isWhitelistMode: false,
+            whitelist: [],
+            blacklist: [],
+          },
+          contextMenu: [],
+          contextMenuPosition: 'start',
+        },
+        inputAssistantEditButton: {
+          visibility: {
+            isWhitelistMode: false,
+            whitelist: [],
             blacklist: [],
           },
           contextMenu: [],
@@ -207,8 +225,10 @@ export const getChromeExtensionSettings =
         const currentButtonContentMenuSettings: {
           [key in IChromeExtensionButtonSettingKey]: Partial<IChromeExtensionButtonSetting>
         } = {
-          gmailButton: {},
           textSelectPopupButton: {},
+          inputAssistantReplyButton: {},
+          inputAssistantDraftNewButton: {},
+          inputAssistantEditButton: {},
         }
         Object.keys(currentButtonContentMenuSettings).forEach((buttonKey) => {
           if (buttonMap.has(buttonKey)) {

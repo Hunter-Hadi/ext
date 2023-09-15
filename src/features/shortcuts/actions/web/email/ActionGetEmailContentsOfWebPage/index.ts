@@ -5,10 +5,9 @@ import {
   pushOutputToChat,
   templateParserDecorator,
   withLoading,
-} from '@/features/shortcuts'
-import { v4 as uuidV4 } from 'uuid'
-import getEmailWebsitePageContents from '@/features/shortcuts/actions/web/ActionGetEmailContentsOfWebPage/getEmailWebsitePageContents'
+} from '@/features/shortcuts/decorators'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
+import { getEmailWebsitePageContentsOrDraft } from '@/features/shortcuts/actions/web/email/getEmailWebsitePageContentsOrDraft'
 export class ActionGetEmailContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   constructor(
@@ -26,23 +25,12 @@ export class ActionGetEmailContentsOfWebPage extends Action {
   @withLoading()
   async execute(params: ActionParameters, engine: any) {
     try {
-      this.pushMessageToChat(
-        {
-          type: 'system',
-          text: `Generating summary...`,
-          messageId: uuidV4(),
-          extra: {
-            status: 'info',
-          },
-        },
-        engine,
-      )
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
-        (await getEmailWebsitePageContents())
+        (await getEmailWebsitePageContentsOrDraft())
       this.output = result
     } catch (e) {
-      this.error = (e as any).toString()
+      this.error = (e as Error).toString()
     }
   }
 }

@@ -2,7 +2,6 @@ import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 
 export type IChatGPTModelType = {
   slug: string
@@ -84,7 +83,9 @@ type IThirdProviderSettings = {
 }
 
 export type IChromeExtensionButtonSettingKey =
-  | 'gmailButton'
+  | 'inputAssistantReplyButton'
+  | 'inputAssistantDraftNewButton'
+  | 'inputAssistantEditButton'
   | 'textSelectPopupButton'
 
 export interface IVisibilitySetting {

@@ -15,6 +15,10 @@ type ActionIdentifier =
   | 'GET_CONTENTS_OF_WEBPAGE'
   // 设置变量
   | 'SET_VARIABLE'
+  // 设置变量映射
+  | 'SET_VARIABLE_MAP'
+  // 设置变量弹窗
+  | 'SET_VARIABLES_MODAL'
   // 设置URL
   | 'URL'
   // 获取URL内容
@@ -39,6 +43,8 @@ type ActionIdentifier =
   | 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
   // 从各大邮件网站获取内容
   | 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
+  // 从各大邮件网站获取草稿
+  | 'GET_EMAIL_DRAFT_OF_WEBPAGE'
   // 打开网页
   | 'OPEN_URLS'
   //  关闭网页

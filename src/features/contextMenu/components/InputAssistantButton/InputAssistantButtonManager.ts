@@ -5,6 +5,8 @@ import inputAssistantButtonBaseConfig, {
 import Log from '@/utils/Log'
 import isNumber from 'lodash-es/isNumber'
 import { v4 as uuidV4 } from 'uuid'
+import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
+import checkHostUsingButtonKeys from '@/features/contextMenu/components/InputAssistantButton/chcekHostUsingButtonKey'
 
 const log = new Log('ContextMenu/InputAssistantButtonManager')
 export interface IInputAssistantButtonObserverData {
@@ -13,6 +15,7 @@ export interface IInputAssistantButtonObserverData {
   shadowRootElement: ShadowRoot
   renderRootElement: HTMLElement
   destroy: () => void
+  buttonKeys: IChromeExtensionButtonSettingKey[]
 }
 
 class InputAssistantButtonManager {
@@ -27,7 +30,10 @@ class InputAssistantButtonManager {
     this.observerMap = new Map()
   }
   createInputAssistantButtonListener(
-    listener: (allObserverData: IInputAssistantButtonObserverData[]) => void,
+    listener: (
+      allObserverData: IInputAssistantButtonObserverData[],
+      config: IInputAssistantButtonBaseConfig,
+    ) => void,
   ) {
     this.timer = setInterval(() => {
       if (this.config) {
@@ -46,7 +52,7 @@ class InputAssistantButtonManager {
         // remove unused observer
         const isClean = this.cleanObserverMap()
         if (isClean || isAddNew) {
-          listener(this.getAllObserverData())
+          listener(this.getAllObserverData(), this.config)
         }
       }
     }, this.interval)
@@ -100,7 +106,10 @@ class InputAssistantButtonManager {
       renderRootElement: container,
       observer,
       shadowRootElement: shadowContainer as ShadowRoot,
-    }
+      buttonKeys: checkHostUsingButtonKeys({
+        keyElement: rootElement,
+      }),
+    } as IInputAssistantButtonObserverData
     this.observerMap.set(rootElement, observerData)
     return observerData
   }

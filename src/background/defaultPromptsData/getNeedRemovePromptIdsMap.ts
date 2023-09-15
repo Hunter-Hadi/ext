@@ -1,5 +1,4 @@
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
-import defaultGmailToolbarContextMenuJson from '@/background/defaultPromptsData/defaultGmailToolbarContextMenuJson'
 
 const needRemovePromptIds = [
   'c769f823-a073-408a-ac44-00e5bfc333a7',
@@ -119,15 +118,11 @@ const needRemovePromptIds = [
 ]
 const getNeedRemovePromptIdsMap = () => {
   const textSelectPopupIds = defaultContextMenuJson.map((item) => item.id)
-  const gmailIds = defaultGmailToolbarContextMenuJson.map((item) => item.id)
   const needRemovePromptIdsMap = new Map<string, string>()
   needRemovePromptIds.forEach((id) => {
     needRemovePromptIdsMap.set(id, id)
   })
   textSelectPopupIds.forEach((id) => {
-    needRemovePromptIdsMap.set(id, id)
-  })
-  gmailIds.forEach((id) => {
     needRemovePromptIdsMap.set(id, id)
   })
   return needRemovePromptIdsMap

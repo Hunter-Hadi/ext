@@ -66,7 +66,7 @@ export const getDefaultActionWithTemplate = (
   autoAskChatGPT: boolean,
 ) => {
   const actions: Record<IChromeExtensionButtonSettingKey, ISetActionsType> = {
-    gmailButton: [
+    textSelectPopupButton: [
       {
         type: 'RENDER_TEMPLATE',
         parameters: {
@@ -74,7 +74,23 @@ export const getDefaultActionWithTemplate = (
         },
       },
     ],
-    textSelectPopupButton: [
+    inputAssistantReplyButton: [
+      {
+        type: 'RENDER_TEMPLATE',
+        parameters: {
+          template,
+        },
+      },
+    ],
+    inputAssistantDraftNewButton: [
+      {
+        type: 'RENDER_TEMPLATE',
+        parameters: {
+          template,
+        },
+      },
+    ],
+    inputAssistantEditButton: [
       {
         type: 'RENDER_TEMPLATE',
         parameters: {

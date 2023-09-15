@@ -6,7 +6,6 @@ import {
   templateParserDecorator,
   withLoading,
 } from '@/features/shortcuts'
-import { v4 as uuidV4 } from 'uuid'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 
@@ -27,17 +26,6 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
   @withLoading()
   async execute(params: ActionParameters, engine: any) {
     try {
-      this.pushMessageToChat(
-        {
-          type: 'system',
-          text: `Generating summary...`,
-          messageId: uuidV4(),
-          extra: {
-            status: 'info',
-          },
-        },
-        engine,
-      )
       await new Promise((resolve) => setTimeout(resolve, 1000))
       const result =
         (await getIframeOrSpecialHostPageContent()) ||

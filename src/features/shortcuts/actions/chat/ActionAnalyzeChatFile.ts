@@ -5,12 +5,13 @@ import {
   getTextTokens,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/sidebar/utils/pageSummaryHelper'
 import {
   MAX_UPLOAD_TEXT_FILE_TOKENS,
   stringConvertTxtUpload,
 } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { v4 as uuidV4 } from 'uuid'
+import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 
 /**
  * @since 2023-09-11
@@ -29,6 +30,17 @@ export class ActionAnalyzeChatFile extends Action {
   @templateParserDecorator()
   async execute(params: any, engine: any) {
     try {
+      this.pushMessageToChat(
+        {
+          type: 'system',
+          text: `Generating summary...`,
+          messageId: uuidV4(),
+          extra: {
+            status: 'info',
+          },
+        },
+        engine,
+      )
       const fileName =
         this.parameters.AnalyzeChatFileName ||
         params.AnalyzeChatFileName ||

@@ -540,7 +540,7 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
         blacklist: [],
         isWhitelistMode: false,
       },
-      searchText: 'quick reply enter key points',
+      searchText: 'quick reply reply with key points',
     },
   },
   {

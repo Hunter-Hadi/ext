@@ -54,7 +54,6 @@ const getReplaceEnv = () => {
   )
   const replaceEnv = {
     [`process.env.APP_VERSION`]: JSON.stringify(pkg.version),
-    preventAssignment: true,
   }
   Object.keys(env).forEach((key) => {
     replaceEnv[`process.env.${key}`] = JSON.stringify(env[key])

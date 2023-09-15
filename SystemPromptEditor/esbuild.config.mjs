@@ -31,10 +31,10 @@ async function cleanBuildDir() {
 }
 
 async function esbuildConfig() {
-  await esbuild.build({
+  const ctx = await esbuild.context({
     platform: 'browser',
     entryPoints: [
-      'SystemPromptEditor/src/app.ts',
+      'SystemPromptEditor/src/app.tsx',
     ],
     format: 'esm',
     drop: isProduction ? ['console', 'debugger'] : [],
@@ -72,6 +72,12 @@ async function esbuildConfig() {
     ],
     outdir: buildDir,
   })
+  await ctx.watch()
+  let { host, port } = await ctx.serve({
+    servedir: 'SystemPromptEditor/dist',
+  })
+  console.log(`Serving on http://localhost:${port}`)
+  console.log(`Serving on http://${host}:${port}`)
 }
 async function buildFiles() {
   try {
@@ -88,15 +94,4 @@ async function buildFiles() {
 }
 
 
-async function main() {
-  await buildFiles()
-  const watcher = chokidar.watch(sourceDir, {
-    ignoreInitial: true,
-  })
-  watcher.on('change', async (path) => {
-    console.log(`File change detected. Path: ${path}`)
-    await buildFiles()
-  })
-}
-
-main()
+buildFiles()

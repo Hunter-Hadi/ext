@@ -4,6 +4,7 @@
   "description": "",
   "author": "",
   "scripts": {
+    "prompt": "node ./SystemPromptEditor/esbuild.config.mjs",
     "pdf": "node ./build/pdf.js",
     "usechatgpt": "node ./build/esbuild.config.mjs --app=usechatgpt",
     "release:usechatgpt": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"
@@ -106,6 +107,7 @@
     "gpt-3-encoder": "^1.1.4",
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
+    "http-server": "^14.1.1",
     "https-proxy-agent": "^7.0.1",
     "less": "^4.1.3",
     "node-fetch": "^3.3.2",

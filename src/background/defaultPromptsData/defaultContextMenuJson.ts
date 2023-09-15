@@ -321,6 +321,7 @@ export default [
     droppable: true,
     text: 'Enter key points',
     data: {
+      icon: 'DefaultIcon',
       editable: false,
       type: 'shortcuts',
       actions: [
@@ -328,7 +329,7 @@ export default [
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
-              title: 'Enter key points',
+              title: 'Reply with key points',
               modelKey: 'Sidebar',
               template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
 
@@ -347,7 +348,7 @@ Do not include email subject, just output the email reply message.
 
 Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write the email reply, mentioning these points:`,
+Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Context',
@@ -654,6 +655,7 @@ Now, write the email reply, mentioning these points:`,
     droppable: true,
     text: 'Enter key points',
     data: {
+      icon: 'DefaultIcon',
       editable: false,
       type: 'shortcuts',
       actions: [
@@ -661,7 +663,7 @@ Now, write the email reply, mentioning these points:`,
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
-              title: 'Enter key points',
+              title: 'Reply with key points',
               modelKey: 'Sidebar',
               template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
 
@@ -680,7 +682,7 @@ Do not include email subject, just output the email reply message.
 
 Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write the email reply, mentioning these points:`,
+Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Context',
@@ -1065,6 +1067,7 @@ Now, write the email reply, mentioning these points:`,
     droppable: true,
     text: 'Enter key points',
     data: {
+      icon: 'DefaultIcon',
       editable: false,
       type: 'shortcuts',
       actions: [
@@ -1072,7 +1075,7 @@ Now, write the email reply, mentioning these points:`,
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
-              title: 'Enter key points',
+              title: 'Reply with key points',
               modelKey: 'Sidebar',
               template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
 
@@ -1091,7 +1094,7 @@ Do not include email subject, just output the email reply message.
 
 Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write the email reply, mentioning these points:`,
+Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Context',
@@ -1130,7 +1133,6 @@ Now, write the email reply, mentioning these points:`,
         blacklist: [],
         isWhitelistMode: false,
       },
-      icon: 'DefaultIcon',
       searchText: 'quick reply enter key points',
     },
   },

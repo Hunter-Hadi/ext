@@ -499,15 +499,15 @@ Do not include email subject, just output the email reply message.
 
 Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write the email reply, mentioning these points:`,
-              title: 'Enter key points',
+Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
+              title: 'Reply with key points',
               modelKey: 'Sidebar',
               variables: [
                 {
                   label: 'Email context',
                   VariableName: 'EMAIL_CONTEXT',
                   valueType: 'Text',
-                  placeholder: 'Enter Email context',
+                  placeholder: 'Enter email context',
                   defaultValue: '{{EMAIL_CONTEXT}}',
                 },
                 {

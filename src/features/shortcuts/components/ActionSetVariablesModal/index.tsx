@@ -306,7 +306,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           sx={{
             borderRadius: '4px',
             p: '4px 8px',
-            bgcolor: 'text.primary',
+            bgcolor: 'rgba(0, 0, 0, 0.87)',
           }}
         >
           <Typography fontSize={'14px'} color={'#fff'} fontWeight={600}>

@@ -191,10 +191,23 @@ const CustomMarkdown: FC<{
               )
             },
             img: ({ node, src, alt, title, ...props }) => {
+              let data: any = null
+              try {
+                // 传输Markdown自定义数据
+                data = JSON.parse(alt || '')
+              } catch (e) {
+                // nothing
+              }
               if (src) {
                 // check is YouTube embed url
                 if (src.startsWith('https://www.youtube.com/embed')) {
-                  return <YoutubePlayerBox youtubeLink={src} borderRadius={4} />
+                  return (
+                    <YoutubePlayerBox
+                      youtubeLink={src}
+                      borderRadius={4}
+                      cover={data?.cover}
+                    />
+                  )
                 }
               }
               // 付费卡片图片
@@ -204,9 +217,15 @@ const CustomMarkdown: FC<{
                   `${Browser.runtime.id}/assets/USE_CHAT_GPT_AI/images/upgrade`,
                 )
               ) {
-                return <LazyLoadImage src={src} alt={alt || ''} height={208} />
+                return (
+                  <LazyLoadImage
+                    src={src}
+                    alt={data.alt || alt || ''}
+                    height={208}
+                  />
+                )
               }
-              return <img {...{ src, alt, title }} />
+              return <img {...{ src, alt: data.alt || alt || '', title }} />
             },
           }}
         >

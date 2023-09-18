@@ -116,6 +116,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
             {memoizedPermissionCard.videoUrl && (
               <YoutubePlayerBox
                 borderRadius={4}
+                cover={memoizedPermissionCard.imageUrl}
                 youtubeLink={memoizedPermissionCard.videoUrl}
               />
             )}

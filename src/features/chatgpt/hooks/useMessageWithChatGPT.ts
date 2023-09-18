@@ -130,11 +130,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     }
     // 判断是否在特殊页面结束
     // 判断是否触达dailyUsageLimited开始:
+    const fallbackId = sidebarSettings.type === 'Chat' ? 'chat' : 'summary_chat'
     const { data: isDailyUsageLimit } = await port.postMessage({
       event: 'Client_logCallApiRequest',
       data: {
-        name: contextMenu?.text || 'chat',
-        id: contextMenu?.id || 'chat',
+        name: contextMenu?.text || fallbackId,
+        id: contextMenu?.id || fallbackId,
         host,
       },
     })

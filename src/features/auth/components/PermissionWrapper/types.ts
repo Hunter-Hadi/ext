@@ -89,10 +89,16 @@ export const getPermissionCardMessageByPermissionCardSettings = (
   }
   const { title, description, imageUrl, videoUrl } = cardSettings
   let markdownText = `**${title}**\n${description}\n\n`
-  if (imageUrl) {
-    markdownText = `![${title}](${imageUrl})\n${markdownText}`
-  } else if (videoUrl) {
-    markdownText = `![${title}](${videoUrl})\n${markdownText}`
+  if (videoUrl) {
+    markdownText = `![${JSON.stringify({
+      alt: title,
+      cover: imageUrl,
+    })}](${videoUrl})\n${markdownText}`
+  } else if (imageUrl) {
+    markdownText = `![${JSON.stringify({
+      alt: title,
+      cover: imageUrl,
+    })}](${imageUrl})\n${markdownText}`
   }
   needUpgradeMessage.text = markdownText
   return needUpgradeMessage
@@ -263,6 +269,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // MAX AI - paid model - gpt3.5
   MAXAI_PAID_MODEL_GPT3_5: {
+    videoUrl: 'https://www.youtube.com/embed/zgq2DKlwEYk',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt3-5.png',
     )}`,
@@ -277,6 +284,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // page summary
   PAGE_SUMMARY: {
+    videoUrl: 'https://www.youtube.com/embed/72UM1jMaJhY',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/page-summary.png',
     )}`,

@@ -24,10 +24,16 @@ export class ActionGetEmailContentsOfWebPage extends Action {
   })
   @withLoading()
   async execute(params: ActionParameters, engine: any) {
+    const OperationElementElementSelector =
+      this.parameters.OperationElementElementSelector ||
+      params.OperationElementElementSelector ||
+      ''
     try {
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
-        (await getEmailWebsitePageContentsOrDraft())
+        (await getEmailWebsitePageContentsOrDraft(
+          OperationElementElementSelector,
+        ))
       this.output = result
     } catch (e) {
       this.error = (e as Error).toString()

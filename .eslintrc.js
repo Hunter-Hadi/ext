@@ -42,6 +42,7 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
+    'react/prop-types': 'off',
   },
   ignorePatterns: ['src/lib/**/*.js', 'pdf/**/*.js'],
 }

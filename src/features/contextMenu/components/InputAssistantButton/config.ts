@@ -27,6 +27,7 @@ export interface IInputAssistantButtonGroupConfig
   rootStyle?: string
   // 举例root还有多少层parent
   rootParentDeep: number
+  rootParentStyle?: string
   rootWrapperTagName: string
   appendPosition: number
   InputAssistantBoxStyle?: SxProps
@@ -65,6 +66,7 @@ const IInputAssistantButtonGroupConfig = {
     rootSelector: 'div[data-testid="ComposeSendButton"]',
     rootParentDeep: 1,
     rootStyle: 'overflow: unset;',
+    rootParentStyle: 'overflow: unset;',
     rootWrapperTagName: 'div',
     composeNewButton: {
       tooltip: 'client:input_assistant_button__quick_compose__tooltip',
@@ -97,6 +99,7 @@ const IInputAssistantButtonGroupConfig = {
     rootSelector: 'div[data-testid="ComposeSendButton"]',
     rootParentDeep: 1,
     rootStyle: 'overflow: unset;',
+    rootParentStyle: 'overflow: unset;',
     rootWrapperTagName: 'div',
     composeNewButton: {
       tooltip: 'client:input_assistant_button__quick_compose__tooltip',

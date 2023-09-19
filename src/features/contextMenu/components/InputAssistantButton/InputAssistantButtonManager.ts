@@ -73,6 +73,9 @@ class InputAssistantButtonManager {
     }
     if (rootElement && this.config.rootStyle) {
       rootElement.style.cssText = this.config.rootStyle
+      if (this.config.rootParentStyle && rootElement.parentElement) {
+        rootElement.parentElement.style.cssText = this.config.rootStyle
+      }
     }
     const id = uuidV4()
     const { rootWrapperTagName, appendPosition } = this.config

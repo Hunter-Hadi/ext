@@ -16,6 +16,9 @@ const checkHostUsingButtonKeys = (
   if (host === 'mail.google.com') {
     return getGmailButtonGroup(config)
   }
+  if (host === 'outlook.office.com') {
+    return getOutlookButtonGroup(config)
+  }
   return [
     config.buttonGroupConfig.composeReplyButton,
     config.buttonGroupConfig.refineDraftButton,
@@ -39,6 +42,48 @@ const getGmailButtonGroup = (
   return [
     buttonGroupConfig.composeNewButton,
     buttonGroupConfig.refineDraftButton,
+  ]
+}
+const getOutlookButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  const listContainer = document.querySelector(
+    'div[data-app-section="ConversationContainer"]',
+  ) as HTMLDivElement
+  const editPanelElement = document.querySelector(
+    '#ReadingPaneContainerId',
+  ) as HTMLElement
+  if (
+    editPanelElement?.contains(keyElement) &&
+    !listContainer?.contains(keyElement)
+  ) {
+    let userInputText = (
+      Array.from(
+        editPanelElement.querySelectorAll('div[role="textbox"]'),
+      ) as HTMLElement[]
+    )
+      .map((el) => el.innerText || '')
+      .join('')
+    if (userInputText === '\n') {
+      userInputText = ''
+    }
+    const placeholderText =
+      (
+        editPanelElement.querySelector(
+          '#sonoraIntroHintParent',
+        ) as HTMLSpanElement
+      )?.innerText || ''
+    if (userInputText === placeholderText) {
+      return [
+        buttonGroupConfig.composeNewButton,
+        buttonGroupConfig.refineDraftButton,
+      ]
+    }
+  }
+  return [
+    config.buttonGroupConfig.composeReplyButton,
+    config.buttonGroupConfig.refineDraftButton,
   ]
 }
 export default checkHostUsingButtonKeys

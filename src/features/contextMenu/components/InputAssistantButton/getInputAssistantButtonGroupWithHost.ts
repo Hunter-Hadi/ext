@@ -16,7 +16,7 @@ const checkHostUsingButtonKeys = (
   if (host === 'mail.google.com') {
     return getGmailButtonGroup(config)
   }
-  if (host === 'outlook.office.com') {
+  if (host === 'outlook.office.com' || host === 'outlook.live.com') {
     return getOutlookButtonGroup(config)
   }
   return [
@@ -54,32 +54,31 @@ const getOutlookButtonGroup = (
   const editPanelElement = document.querySelector(
     '#ReadingPaneContainerId',
   ) as HTMLElement
+  const fromElement = (
+    Array.from(
+      editPanelElement.querySelectorAll(
+        '#ReadingPaneContainerId div[aria-haspopup="menu"][id]',
+      ),
+    ) as HTMLDivElement[]
+  ).find((item) => item.id.includes('fromContainer'))
+  const toOrCC = editPanelElement.querySelectorAll(
+    '#div[role="textbox"]:has(#removeButton)',
+  ).length
+  const fwdMsg = editPanelElement.querySelector('#RplyFwdMsg')
+  // 1. 不在列表
+  // 2. 没有fromElement
+  // 3. 没有toOrCC的用户
+  // 4. 没有fwdMsg
   if (
-    editPanelElement?.contains(keyElement) &&
-    !listContainer?.contains(keyElement)
+    !listContainer?.contains(keyElement) &&
+    !fromElement &&
+    toOrCC === 0 &&
+    !fwdMsg
   ) {
-    let userInputText = (
-      Array.from(
-        editPanelElement.querySelectorAll('div[role="textbox"]'),
-      ) as HTMLElement[]
-    )
-      .map((el) => el.innerText || '')
-      .join('')
-    if (userInputText === '\n') {
-      userInputText = ''
-    }
-    const placeholderText =
-      (
-        editPanelElement.querySelector(
-          '#sonoraIntroHintParent',
-        ) as HTMLSpanElement
-      )?.innerText || ''
-    if (userInputText === placeholderText) {
-      return [
-        buttonGroupConfig.composeNewButton,
-        buttonGroupConfig.refineDraftButton,
-      ]
-    }
+    return [
+      buttonGroupConfig.composeNewButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
   }
   return [
     config.buttonGroupConfig.composeReplyButton,

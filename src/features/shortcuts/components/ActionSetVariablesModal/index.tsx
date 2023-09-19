@@ -293,6 +293,24 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         gap: 1,
       }}
       maxHeight={'60vh'}
+      // onKeyDownCapture={(event) => {
+      //   event.stopPropagation()
+      // }}
+      // onKeyDown={(event) => {
+      //   event.stopPropagation()
+      // }}
+      onKeyPressCapture={(event) => {
+        event.stopPropagation()
+      }}
+      onKeyPress={(event) => {
+        event.stopPropagation()
+      }}
+      // onKeyUpCapture={(event) => {
+      //   event.stopPropagation()
+      // }}
+      // onKeyUp={(event) => {
+      //   event.stopPropagation()
+      // }}
     >
       {/*Header*/}
       <Stack

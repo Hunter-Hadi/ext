@@ -101,7 +101,7 @@ export const getEmailWebsitePageDraft = async (
     })
     emailDraftSelector = 'div[role="textbox"]'
   }
-  if (host === 'outlook.office.com') {
+  if (host === 'outlook.office.com' || host === 'outlook.live.com') {
     const maxDeep = 20
     let parent: HTMLElement | null = button.parentElement as HTMLElement
     let textboxElement: HTMLElement | null = null
@@ -111,7 +111,11 @@ export const getEmailWebsitePageDraft = async (
       textboxElement =
         (parent?.querySelector(
           'div[role="textbox"][textprediction]',
-        ) as HTMLElement) || null
+        ) as HTMLElement) ||
+        (parent?.querySelector(
+          'div[id] > div[role="textbox"]',
+        ) as HTMLElement) ||
+        null
       deep++
     }
     return textboxElement ? removeEmailContentQuote(textboxElement) : ''
@@ -341,7 +345,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
       emailContextSelector = 'div[role="list"]'
     }
   }
-  if (host === 'outlook.office.com') {
+  if (host === 'outlook.office.com' || host === 'outlook.live.com') {
     // outlook 有3种回复邮件的UI: 列表框展开回复 | 邮件详情页回复 | 弹窗邮件详情页回复 | 弹窗邮件详情页回复新邮件
     // 1. 列表框展开回复判断条件:
     //    1.1 列表容器document.querySelector('div[data-app-section="ConversationContainer"]')存在
@@ -537,9 +541,13 @@ export const getEmailWebsitePageContentsOrDraft = async (
         return ''
       }
       // ======================== 2.弹窗邮件详情页回复 ========================
-      const modalEmailContextElement = document.querySelector(
-        'div[role="dialog"] div[role="textbox"][textprediction]',
-      ) as HTMLDivElement
+      const modalEmailContextElement =
+        (document.querySelector(
+          'div[role="dialog"] div[role="textbox"][textprediction]',
+        ) as HTMLDivElement) ||
+        (document.querySelector(
+          'div[role="dialog"] div[id] > div[role="textbox"]',
+        ) as HTMLDivElement)
       const modalElement = (
         Array.from(
           document.querySelectorAll('div[role="dialog"]'),
@@ -566,12 +574,8 @@ export const getEmailWebsitePageContentsOrDraft = async (
       }
       emailContextSelector = '#ReadingPaneContainerId'
     } catch (e) {
-      debugger
       emailContextSelector = 'div[data-app-section="ConversationContainer"]'
     }
-  }
-  if (host === 'outlook.live.com') {
-    emailContextSelector = 'div[data-app-section="ConversationContainer"]'
   }
   if (host === 'mail.yahoo.com') {
     emailContextSelector = 'div[data-test-id="message-group-view-scroller"]'

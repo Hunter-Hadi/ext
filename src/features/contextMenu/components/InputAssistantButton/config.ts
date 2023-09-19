@@ -57,6 +57,10 @@ const IInputAssistantButtonGroupConfig = {
       permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
     },
     appendPosition: 1,
+    CTAButtonStyle: {
+      iconSize: 18,
+      padding: '9px 12px',
+    },
     InputAssistantBoxStyle: {
       margin: '0 0 0 12px',
     },
@@ -85,7 +89,8 @@ const IInputAssistantButtonGroupConfig = {
     },
     appendPosition: 1,
     CTAButtonStyle: {
-      padding: '6px 20px',
+      iconSize: 16,
+      padding: '8px 20px',
     },
     DropdownButtonStyle: {
       padding: '6px',

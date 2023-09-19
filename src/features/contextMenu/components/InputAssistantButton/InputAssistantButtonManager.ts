@@ -38,10 +38,16 @@ class InputAssistantButtonManager {
   ) {
     this.timer = setInterval(() => {
       if (this.config) {
-        const { rootSelector } = this.config
+        const { rootSelector, rootParentDeep } = this.config
         const rootElements = document.querySelectorAll(rootSelector)
         let isAddNew = false
-        rootElements.forEach((rootElement) => {
+        rootElements.forEach((element) => {
+          let rootElement = element
+          let deep = rootParentDeep
+          while (deep > 0) {
+            deep--
+            rootElement = rootElement.parentElement as HTMLElement
+          }
           const newObserverData = this.attachInputAssistantButton(
             rootElement as HTMLElement,
           )
@@ -64,6 +70,9 @@ class InputAssistantButtonManager {
       rootElement.querySelector('[maxai-input-assistant-button-id]')
     ) {
       return null
+    }
+    if (rootElement && this.config.rootStyle) {
+      rootElement.style.cssText = this.config.rootStyle
     }
     const id = uuidV4()
     const { rootWrapperTagName, appendPosition } = this.config

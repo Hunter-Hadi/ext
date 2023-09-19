@@ -16,7 +16,10 @@ const checkHostUsingButtonKeys = (
   if (host === 'mail.google.com') {
     return getGmailButtonGroup(config)
   }
-  return []
+  return [
+    config.buttonGroupConfig.composeReplyButton,
+    config.buttonGroupConfig.refineDraftButton,
+  ]
 }
 
 const getGmailButtonGroup = (

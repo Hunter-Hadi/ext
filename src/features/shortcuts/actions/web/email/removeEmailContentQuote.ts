@@ -7,6 +7,9 @@ import { getCurrentDomainHost } from '@/utils'
 export const removeEmailContentQuote = (
   emailContentHtmlElement: HTMLElement,
 ) => {
+  if (!emailContentHtmlElement) {
+    return ''
+  }
   const cloneElement = emailContentHtmlElement.cloneNode(true) as HTMLElement
   const needRemoveElements: Element[] = []
   const host = getCurrentDomainHost()

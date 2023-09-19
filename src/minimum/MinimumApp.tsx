@@ -12,23 +12,26 @@ const MinimumApp: FC = () => {
   console.log('MinimumApp appSettings', appSettings.userSettings?.quickAccess)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   useEffectOnce(() => {
-    const root = document.querySelector(`#${ROOT_CONTAINER_ID}`)
-    // watch attribute change
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes') {
-          const isOpen = (
-            mutation.target as HTMLDivElement
-          )?.classList?.contains('open')
-          setSidebarOpen(isOpen || false)
-        }
+    const timer: ReturnType<typeof setInterval> = setInterval(() => {
+      const root = document.querySelector(`#${ROOT_CONTAINER_ID}`)
+      // watch attribute change
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes') {
+            const isOpen = (
+              mutation.target as HTMLDivElement
+            )?.classList?.contains('open')
+            setSidebarOpen(isOpen || false)
+          }
+        })
       })
-    })
-    if (root) {
-      observer.observe(root, {
-        attributes: true,
-      })
-    }
+      if (root) {
+        clearInterval(timer)
+        observer.observe(root, {
+          attributes: true,
+        })
+      }
+    }, 500)
   })
   return (
     <AppSuspenseLoadingLayout>

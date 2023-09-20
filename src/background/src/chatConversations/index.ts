@@ -3,6 +3,7 @@ import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import { IAIProviderType } from '@/background/provider/chat'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { ISidebarConversationType } from '@/features/sidebar'
+import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
 
 export interface IChatConversation {
   id: string // 对话ID
@@ -295,7 +296,9 @@ export default class ConversationManager {
         if (message.type === 'user') {
           const userMessage = message as IUserChatMessage
           if (userMessage.extra.meta?.contextMenu) {
-            userMessage.text = userMessage.extra.meta.contextMenu.text
+            userMessage.text = (
+              userMessage.extra.meta.contextMenu.text || userMessage.text
+            ).replace(ContextMenuNamePrefixRegex, '')
             userMessage.extra.meta.contextMenu.data = undefined as any
           }
           return userMessage

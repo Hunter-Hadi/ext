@@ -1,6 +1,7 @@
 import { getCurrentDomainHost } from '@/utils'
+import { ContextMenuNamePrefixType } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
 
-const getContextMenuNamePrefixWithHost = () => {
+const getContextMenuNamePrefixWithHost = (): ContextMenuNamePrefixType => {
   const host = getCurrentDomainHost()
   if (host === 'mail.google.com') {
     return '[Gmail] '
@@ -11,6 +12,6 @@ const getContextMenuNamePrefixWithHost = () => {
   ) {
     return '[Outlook] '
   }
-  return ''
+  return '' as ContextMenuNamePrefixType
 }
 export default getContextMenuNamePrefixWithHost

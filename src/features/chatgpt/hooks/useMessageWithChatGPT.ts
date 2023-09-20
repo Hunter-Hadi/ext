@@ -53,8 +53,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   const sidebarSettings = useRecoilValue(SidebarSettingsState)
   const currentConversationIdRef = useRef(sidebarConversationId)
   const currentSidebarSettingsRef = useRef(sidebarSettings)
-  const { createConversation, cleanConversation, updateConversation } =
-    useClientConversation()
+  const {
+    createConversation,
+    cleanConversation,
+    updateConversation,
+  } = useClientConversation()
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const defaultValueRef = useRef<string>(defaultInputValue || '')

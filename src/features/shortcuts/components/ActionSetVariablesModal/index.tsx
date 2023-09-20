@@ -25,6 +25,10 @@ import { useRecoilValue } from 'recoil'
 import { SidebarSettingsState } from '@/features/sidebar'
 import { isProduction } from '@/constants'
 import isNumber from 'lodash-es/isNumber'
+import {
+  getSetVariablesModalSelectCache,
+  setVariablesModalSelectCache,
+} from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
@@ -214,7 +218,18 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     // NOTE: 24px是textarea的行高, -1是为了安全高度
     const maxTextareaMaxRows =
       Math.floor(textareaMaxHeight / 24 / textareaCount) - 1
-    setForm(initialForm)
+    getSetVariablesModalSelectCache().then((cache) => {
+      const initialFormKeys = Object.keys(initialForm)
+      if (initialFormKeys.length === 0) {
+        return
+      }
+      initialFormKeys.forEach((formKey) => {
+        if (cache[formKey] !== undefined) {
+          initialForm[formKey] = cache[formKey]
+        }
+      })
+      setForm(initialForm)
+    })
     return {
       currentTitle,
       currentSelectTotalCount,
@@ -282,7 +297,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setHide(false)
     }
   }, [show, hide])
-  if (!show || hide) {
+  if (!show || hide || Object.keys(form).length === 0) {
     return null
   }
   return (
@@ -366,7 +381,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 defaultValue={
                   (form[systemVariable.VariableName] as string) || ''
                 }
-                onChange={(value) => {
+                onChange={async (value) => {
+                  await setVariablesModalSelectCache(
+                    systemVariable.VariableName,
+                    value,
+                  )
                   setForm((prevState) => {
                     return {
                       ...prevState,

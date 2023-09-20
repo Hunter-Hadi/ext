@@ -32,6 +32,8 @@ export interface ActionSetVariablesModalConfig {
   systemVariables: IActionSetSystemVariablesData
   title: string
   template?: string
+  // 只是为了log记录，没其他作用
+  contextMenuId: string
   // 等待用户操作
   waitForUserAction?: boolean
 }
@@ -141,9 +143,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             type: 'ASK_CHATGPT',
             parameters: {
               template: '{{LAST_ACTION_OUTPUT}}',
+              AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
               AskChatGPTActionMeta: {
                 contextMenu: {
-                  id: uuidV4(),
+                  id: config.contextMenuId || uuidV4(),
                   droppable: false,
                   parent: uuidV4(),
                   text: config.title,

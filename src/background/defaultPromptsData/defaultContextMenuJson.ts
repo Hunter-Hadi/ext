@@ -329,6 +329,7 @@ export default [
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
+              contextMenuId: '32f31576-0ab8-4fc8-966d-426970abede6',
               title: 'Reply with key points',
               modelKey: 'Sidebar',
               template:
@@ -647,6 +648,7 @@ export default [
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
+              contextMenuId: '0815c986-5bd2-49a7-a62f-eeb2c49907da',
               title: 'Reply with key points',
               modelKey: 'Sidebar',
               template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
@@ -1059,6 +1061,7 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
+              contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
               title: 'Reply with key points',
               modelKey: 'Sidebar',
               template:

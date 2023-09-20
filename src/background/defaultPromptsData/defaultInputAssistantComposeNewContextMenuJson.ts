@@ -32,6 +32,7 @@ export default [
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
+              contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
               title: 'Compose with key points',
               modelKey: 'Sidebar',
               template: `Write an email:\n{{KEY_POINTS}}`,
@@ -77,9 +78,13 @@ export default [
     data: {
       editable: false,
       visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
+        whitelist: [
+          'outlook.live.com',
+          'outlook.office365.com',
+          'outlook.office.com',
+        ],
         blacklist: [],
+        isWhitelistMode: true,
       },
       type: 'group',
       actions: [],

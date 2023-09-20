@@ -68,7 +68,8 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
     if (
       host === 'outlook.live.com' ||
       host === 'onedrive.live.com' ||
-      host === 'outlook.office.com'
+      host === 'outlook.office.com' ||
+      host === 'outlook.office365.com'
     ) {
       htmlElement.style.minHeight = '100vh'
     }
@@ -281,7 +282,7 @@ export const CLIENT_OPEN_PAGE_KEYS = [
 ] as const
 
 export const chromeExtensionClientOpenPage = async (params: {
-  key?: (typeof CLIENT_OPEN_PAGE_KEYS)[number]
+  key?: typeof CLIENT_OPEN_PAGE_KEYS[number]
   url?: string
   query?: string
   active?: boolean

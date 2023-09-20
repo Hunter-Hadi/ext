@@ -49,6 +49,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -102,6 +103,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -155,6 +157,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -208,6 +211,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -261,6 +265,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -314,6 +319,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -368,6 +374,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -422,6 +429,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -476,6 +484,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -602,6 +611,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -617,9 +627,13 @@ export default [
     data: {
       editable: false,
       visibility: {
-        isWhitelistMode: false,
-        whitelist: [],
+        whitelist: [
+          'outlook.live.com',
+          'outlook.office365.com',
+          'outlook.office.com',
+        ],
         blacklist: [],
+        isWhitelistMode: true,
       },
       type: 'group',
       actions: [],

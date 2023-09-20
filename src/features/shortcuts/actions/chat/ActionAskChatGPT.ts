@@ -7,6 +7,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
+import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
 
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
@@ -30,25 +31,36 @@ export class ActionAskChatGPT extends Action {
     try {
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ask_chatgpt'
+      if (
+        askChatGPTType === 'ASK_CHAT_GPT_WITH_PREFIX' &&
+        this.parameters.AskChatGPTActionMeta?.contextMenu
+      ) {
+        this.parameters.AskChatGPTActionMeta.contextMenu.text =
+          getContextMenuNamePrefixWithHost() +
+          this.parameters.AskChatGPTActionMeta.contextMenu.text
+      }
       this.question = params.LAST_ACTION_OUTPUT
-      const { success, answer, message, error } = (await engine
-        .getChartGPT()
-        ?.sendQuestion(
-          {
-            messageId: '',
-            question:
-              this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT,
-            parentMessageId: '',
+      const {
+        success,
+        answer,
+        message,
+        error,
+      } = (await engine.getChartGPT()?.sendQuestion(
+        {
+          messageId: '',
+          question:
+            this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT,
+          parentMessageId: '',
+        },
+        {
+          includeHistory: false,
+          regenerate: false,
+          hiddenInChat: askChatGPTType === 'ASK_CHAT_GPT_HIDDEN',
+          meta: {
+            ...this.parameters.AskChatGPTActionMeta,
           },
-          {
-            includeHistory: false,
-            regenerate: false,
-            hiddenInChat: askChatGPTType === 'ASK_CHAT_GPT_HIDDEN',
-            meta: {
-              ...this.parameters.AskChatGPTActionMeta,
-            },
-          },
-        )) || { success: false, answer: '', error: '' }
+        },
+      )) || { success: false, answer: '', error: '' }
       if (success) {
         this.output = answer
         this.message = message

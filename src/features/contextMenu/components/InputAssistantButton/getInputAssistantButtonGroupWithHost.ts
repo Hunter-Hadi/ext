@@ -16,7 +16,11 @@ const checkHostUsingButtonKeys = (
   if (host === 'mail.google.com') {
     return getGmailButtonGroup(config)
   }
-  if (host === 'outlook.office.com' || host === 'outlook.live.com') {
+  if (
+    host === 'outlook.office.com' ||
+    host === 'outlook.live.com' ||
+    host === 'outlook.office365.com'
+  ) {
     return getOutlookButtonGroup(config)
   }
   return [

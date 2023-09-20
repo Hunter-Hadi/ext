@@ -20,6 +20,10 @@ export const emailWebsiteTrafficRankings = [
     traffic: 1.63,
   },
   {
+    website: 'outlook.office365.com',
+    traffic: 1.63,
+  },
+  {
     website: 'navigator-lxa.mail.com',
     traffic: 1.51,
   },
@@ -77,6 +81,8 @@ export const isEmailWebsite = () => {
       return window.location.href.includes('outlook.live.com/mail')
     } else if (currentHost === 'outlook.office.com') {
       return window.location.href.includes('outlook.office.com/mail')
+    } else if (currentHost === 'outlook.office365.com') {
+      return window.location.href.includes('outlook.office365.com')
     }
     return true
   }
@@ -101,7 +107,11 @@ export const getEmailWebsitePageDraft = async (
     })
     emailDraftSelector = 'div[role="textbox"]'
   }
-  if (host === 'outlook.office.com' || host === 'outlook.live.com') {
+  if (
+    host === 'outlook.office.com' ||
+    host === 'outlook.live.com' ||
+    host === 'outlook.office365.com'
+  ) {
     const maxDeep = 20
     let parent: HTMLElement | null = button.parentElement as HTMLElement
     let textboxElement: HTMLElement | null = null
@@ -350,7 +360,11 @@ export const getEmailWebsitePageContentsOrDraft = async (
       emailContextSelector = 'div[role="list"]'
     }
   }
-  if (host === 'outlook.office.com' || host === 'outlook.live.com') {
+  if (
+    host === 'outlook.office.com' ||
+    host === 'outlook.live.com' ||
+    host === 'outlook.office365.com'
+  ) {
     // outlook 有3种回复邮件的UI: 列表框展开回复 | 邮件详情页回复 | 弹窗邮件详情页回复 | 弹窗邮件详情页回复新邮件
     // 1. 列表框展开回复判断条件:
     //    1.1 列表容器document.querySelector('div[data-app-section="ConversationContainer"]')存在

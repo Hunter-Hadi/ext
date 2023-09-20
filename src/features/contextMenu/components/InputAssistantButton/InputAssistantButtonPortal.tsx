@@ -22,8 +22,9 @@ const InputAssistantPortal: FC = () => {
   const [allObserverData, setAllObserverData] = useState<
     IInputAssistantButtonObserverData[]
   >([])
-  const inputAssistantPortalRef =
-    React.useRef<InputAssistantButtonManager | null>(null)
+  const inputAssistantPortalRef = React.useRef<InputAssistantButtonManager | null>(
+    null,
+  )
   useEffectOnce(() => {
     inputAssistantPortalRef.current = new InputAssistantButtonManager()
     inputAssistantPortalRef.current.createInputAssistantButtonListener(
@@ -38,7 +39,11 @@ const InputAssistantPortal: FC = () => {
     if (host === 'mail.google.com') {
       return appSetting.userSettings?.inputAssistantButton?.gmail === true
     }
-    if (host === 'outlook.live.com' || host === 'outlook.office.com') {
+    if (
+      host === 'outlook.live.com' ||
+      host === 'outlook.office.com' ||
+      host === 'outlook.office365.com'
+    ) {
       return appSetting.userSettings?.inputAssistantButton?.outlook === true
     }
     return false

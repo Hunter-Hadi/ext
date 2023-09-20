@@ -132,6 +132,39 @@ const IInputAssistantButtonGroupConfig = {
       margin: '0 0 0 12px',
     },
   },
+  'outlook.office365.com': {
+    enable: true,
+    rootSelector: 'div[data-testid="ComposeSendButton"]',
+    rootParentDeep: 1,
+    rootStyle: 'overflow: unset;',
+    rootParentStyle: 'overflow: unset;',
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__quick_compose__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__quick_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__edit_or_review_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+    },
+    appendPosition: 1,
+    CTAButtonStyle: {
+      padding: '6px 20px',
+    },
+    DropdownButtonStyle: {
+      padding: '6px',
+    },
+    InputAssistantBoxStyle: {
+      margin: '0 0 0 12px',
+    },
+  },
 } as {
   [key in string]: IInputAssistantButtonGroupConfig
 }

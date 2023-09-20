@@ -123,6 +123,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -176,6 +177,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -229,6 +231,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -282,6 +285,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -335,6 +339,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -388,6 +393,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -441,6 +447,7 @@ export default [
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
           },
         },
       ],
@@ -482,6 +489,7 @@ export default [
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
+              contextMenuId: '47070ec6-8700-43fd-a519-20fe3841df38',
               template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
 
 Text:
@@ -553,9 +561,13 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: [],
+        whitelist: [
+          'outlook.live.com',
+          'outlook.office365.com',
+          'outlook.office.com',
+        ],
         blacklist: [],
-        isWhitelistMode: false,
+        isWhitelistMode: true,
       },
       searchText: 'email quick reply',
       icon: 'Reply',

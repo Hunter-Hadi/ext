@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 const TONE_OPTIONS = [
   { label: `Default`, value: `` },
   { label: `Authoritative`, value: `Authoritative` },
+  { label: 'Casual', value: 'Casual' },
   { label: `Clinical`, value: `Clinical` },
   { label: `Cold`, value: `Cold` },
   { label: `Confident`, value: `Confident` },
@@ -18,8 +19,10 @@ const TONE_OPTIONS = [
   { label: `Optimistic`, value: `Optimistic` },
   { label: `Pessimistic`, value: `Pessimistic` },
   { label: `Playful`, value: `Playful` },
+  { label: `Professional`, value: `Professional` },
   { label: `Sarcastic`, value: `Sarcastic` },
   { label: `Serious`, value: `Serious` },
+  { label: `Straightforward`, value: `Straightforward` },
   { label: `Sympathetic`, value: `Sympathetic` },
   { label: `Tentative`, value: `Tentative` },
   { label: `Warm`, value: `Warm` },

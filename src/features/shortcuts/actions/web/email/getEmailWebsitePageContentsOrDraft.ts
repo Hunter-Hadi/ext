@@ -519,9 +519,11 @@ export const getEmailWebsitePageContentsOrDraft = async (
       const getSingleEmailText = (originElement: HTMLElement) => {
         const emailContentElement = originElement.cloneNode(true) as HTMLElement
         const emailCorrespondence = new EmailCorrespondence()
-        const emailInfoElement = emailContentElement.querySelector(
-          '#divRplyFwdMsg',
-        ) as HTMLDivElement
+        const emailInfoElement =
+          (emailContentElement.querySelector(
+            '#divRplyFwdMsg',
+          ) as HTMLDivElement) ||
+          (emailContentElement.querySelector('#RplyFwdMsg') as HTMLDivElement)
         const emailQuoteElement = emailInfoElement?.nextElementSibling as HTMLDivElement
         if (emailInfoElement && emailQuoteElement) {
           const textNodeList = Array.from(

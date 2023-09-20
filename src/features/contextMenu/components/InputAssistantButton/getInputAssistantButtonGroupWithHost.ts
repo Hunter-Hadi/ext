@@ -55,9 +55,11 @@ const getOutlookButtonGroup = (
     '#ReadingPaneContainerId',
   ) as HTMLElement
   const toOrCC = editPanelElement.querySelectorAll(
-    '#div[role="textbox"]:has(#removeButton)',
+    'div[role="textbox"]:has(#removeButton)',
   ).length
-  const fwdMsg = editPanelElement.querySelector('#RplyFwdMsg')
+  const fwdMsg =
+    editPanelElement.querySelector('#RplyFwdMsg') ||
+    editPanelElement.querySelector('#divRplyFwdMsg')
   const isDialog = Array.from(
     document.querySelectorAll('div[role="dialog"]'),
   ).find((modal) => modal.contains(keyElement))

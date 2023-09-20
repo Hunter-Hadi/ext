@@ -452,6 +452,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         gap={1}
       >
         <Button
+          sx={{
+            height: '32px',
+          }}
           onClick={async () => await closeModal(true)}
           variant={'secondary'}
         >
@@ -467,21 +470,26 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           variant={'contained'}
           color={'primary'}
           sx={{
-            gap: 1,
+            width: '32px',
+            height: '32px',
+            minWidth: 'unset',
           }}
         >
           {loading ? (
             <CircularProgress
-              size={20}
+              size={16}
               sx={{
                 fontSize: `inherit`,
                 color: '#fff',
               }}
             />
           ) : (
-            <SendIcon />
+            <SendIcon
+              sx={{
+                fontSize: '16px',
+              }}
+            />
           )}
-          {!loading ? `${t('client:sidebar__button__send_to_ai')}` : ''}
         </TooltipButton>
       </Stack>
     </Stack>

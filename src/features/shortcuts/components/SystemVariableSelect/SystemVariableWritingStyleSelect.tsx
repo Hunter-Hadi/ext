@@ -57,6 +57,13 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
   )
   return (
     <Autocomplete
+      componentsProps={{
+        popper: {
+          style: {
+            width: 160,
+          },
+        },
+      }}
       placeholder={placeholder}
       disableClearable
       value={value}

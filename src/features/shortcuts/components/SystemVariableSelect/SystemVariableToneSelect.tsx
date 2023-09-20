@@ -1,5 +1,7 @@
-import { Autocomplete, SxProps, TextField } from '@mui/material'
 import React, { FC } from 'react'
+import Autocomplete from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
+import { SxProps } from '@mui/material/styles'
 
 const TONE_OPTIONS = [
   { label: `Default`, value: `` },
@@ -65,6 +67,13 @@ const SystemVariableToneSelect: FC<toneSelectProps> = (props) => {
   )
   return (
     <Autocomplete
+      componentsProps={{
+        popper: {
+          style: {
+            width: 160,
+          },
+        },
+      }}
       placeholder={placeholder}
       disableClearable
       value={value}

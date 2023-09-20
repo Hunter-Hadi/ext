@@ -399,9 +399,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               }}
               onKeyDown={async (event) => {
                 if (event.key === 'Enter' && !event.shiftKey) {
-                  await confirmModal(index)
                   event.stopPropagation()
                   event.preventDefault()
+                  await confirmModal(index)
+                } else {
+                  event.stopPropagation()
                 }
               }}
               InputLabelProps={{ shrink: true }}

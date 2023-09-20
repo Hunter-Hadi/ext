@@ -369,29 +369,17 @@ export const getEmailWebsitePageContentsOrDraft = async (
         document.querySelector(
           '#ReadingPaneContainerId div[role="heading"][aria-level="2"]',
         )?.textContent || document.title
-      const profileButton = document.querySelector(
-        '#meInitialsButton',
-      ) as HTMLButtonElement
+
       const expandMoreButton = document.querySelector(
         'div[role="button"][aria-label="See more messages"]',
       ) as HTMLButtonElement
       expandMoreButton?.click()
-      while (!document.querySelector('#mectrl_currentAccount_primary')) {
-        profileButton.click()
-        await delay(2000)
-      }
-      const userName =
-        document.querySelector('#mectrl_currentAccount_primary')?.textContent ||
-        ''
-      const userEmail =
-        document.querySelector('#mectrl_currentAccount_secondary')
-          ?.textContent || ''
       // ======================== 1.列表框展开回复 ========================
       // 邮件列表容器
       const rootElement = document.querySelector(
         'div[data-app-section="ConversationContainer"]',
       ) as HTMLDivElement
-      if (rootElement) {
+      if (rootElement && rootElement.contains(inputAssistantButtonElement)) {
         const emailCorrespondence = new EmailCorrespondence()
         const messageItems: Element[] = []
         const totalMessageItems = Array.from(
@@ -420,6 +408,19 @@ export const getEmailWebsitePageContentsOrDraft = async (
           const expandMessages = messageItem.querySelectorAll('& > div > div')
           expandMessages.forEach((expandMessage) => fireClick(expandMessage))
         })
+        const profileButton = document.querySelector(
+          '#meInitialsButton',
+        ) as HTMLButtonElement
+        while (!document.querySelector('#mectrl_currentAccount_primary')) {
+          profileButton.click()
+          await delay(2000)
+        }
+        const userName =
+          document.querySelector('#mectrl_currentAccount_primary')
+            ?.textContent || ''
+        const userEmail =
+          document.querySelector('#mectrl_currentAccount_secondary')
+            ?.textContent || ''
         // 寻找sender和receiver
         for (let i = 0; i < messageItems.length; i++) {
           const emailEmailElements = Array.from(
@@ -444,7 +445,18 @@ export const getEmailWebsitePageContentsOrDraft = async (
           // 因为outlook的html中，用户本身的邮件是不带邮件地址的，所以只能先判断有没有邮件，再判断是不是接受者
           emailEmailElements.find((emailElement) => {
             const emailElementContext = emailElement.textContent || ''
-            const email = emailElementContext.match(emailRegex)?.[0]
+            let email = emailElementContext.match(emailRegex)?.[0]
+            if (
+              !email &&
+              emailElementContext === emailCorrespondence.sender?.name
+            ) {
+              email = emailCorrespondence.sender.email
+            } else if (
+              !email &&
+              emailElementContext === emailCorrespondence.receiver?.name
+            ) {
+              email = emailCorrespondence.receiver.email
+            }
             if (email) {
               let isReceiver = false
               if (receiverElement?.contains(emailElement)) {
@@ -510,16 +522,16 @@ export const getEmailWebsitePageContentsOrDraft = async (
         const emailInfoElement = emailContentElement.querySelector(
           '#divRplyFwdMsg',
         ) as HTMLDivElement
-        const emailQuoteElement =
-          emailInfoElement?.nextElementSibling as HTMLDivElement
+        const emailQuoteElement = emailInfoElement?.nextElementSibling as HTMLDivElement
         if (emailInfoElement && emailQuoteElement) {
           const textNodeList = Array.from(
             emailInfoElement.querySelector('font')?.childNodes || [],
           ).filter((item) => !(item as HTMLElement).tagName)
           // 顺序分别是 From, Sent, To, Subject
           if (textNodeList.length === 4) {
-            const fromEmail =
-              textNodeList[0].textContent?.match(emailRegex)?.[0]
+            const fromEmail = textNodeList[0].textContent?.match(
+              emailRegex,
+            )?.[0]
             const fromName = textNodeList[0].textContent?.replace(
               ` <${fromEmail}>`,
               '',
@@ -562,11 +574,11 @@ export const getEmailWebsitePageContentsOrDraft = async (
         (document.querySelector(
           'div[role="dialog"] div[id] > div[role="textbox"]',
         ) as HTMLDivElement)
-      const modalElement = (
-        Array.from(
-          document.querySelectorAll('div[role="dialog"]'),
-        ) as HTMLDivElement[]
-      ).find((modalElement) => modalElement.contains(modalEmailContextElement))
+      const modalElement = (Array.from(
+        document.querySelectorAll('div[role="dialog"]'),
+      ) as HTMLDivElement[]).find((modalElement) =>
+        modalElement.contains(modalEmailContextElement),
+      )
       if (modalElement && modalElement.contains(inputAssistantButtonElement)) {
         const emailContext = getSingleEmailText(modalEmailContextElement)
         if (emailContext) {
@@ -621,9 +633,9 @@ export const getEmailWebsitePageContentsOrDraft = async (
   }
   let documentElements: HTMLElement[] = [document.documentElement]
   if (iframeSelector) {
-    documentElements = Array.from(
+    documentElements = (Array.from(
       document.querySelectorAll(iframeSelector),
-    ) as any as HTMLElement[]
+    ) as any) as HTMLElement[]
   }
   try {
     const pageContent = (

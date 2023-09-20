@@ -120,26 +120,27 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                 youtubeLink={memoizedPermissionCard.videoUrl}
               />
             )}
-            {memoizedPermissionCard.imageUrl && (
-              <Box
-                sx={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: '4px',
-                  overflow: 'hidden',
-                  '& img': {
+            {!memoizedPermissionCard.videoUrl &&
+              memoizedPermissionCard.imageUrl && (
+                <Box
+                  sx={{
                     width: '100%',
                     height: 'auto',
-                  },
-                }}
-              >
-                <LazyLoadImage
-                  height={140}
-                  src={memoizedPermissionCard.imageUrl}
-                  alt={`${memoizedPermissionCard.title} img`}
-                />
-              </Box>
-            )}
+                    borderRadius: '4px',
+                    overflow: 'hidden',
+                    '& img': {
+                      width: '100%',
+                      height: 'auto',
+                    },
+                  }}
+                >
+                  <LazyLoadImage
+                    height={140}
+                    src={memoizedPermissionCard.imageUrl}
+                    alt={`${memoizedPermissionCard.title} img`}
+                  />
+                </Box>
+              )}
             <Typography
               fontSize={'14px'}
               fontWeight={600}
@@ -192,7 +193,10 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       event?.stopPropagation?.()
                       event?.preventDefault?.()
                       if (onPermission) {
-                        const { success, cardSettings } = await onPermission(
+                        const {
+                          success,
+                          cardSettings,
+                        } = await onPermission(
                           currentUserPlan,
                           permissionCard,
                           [event, ...args],
@@ -232,7 +236,10 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       event?.stopPropagation?.()
                       event?.preventDefault?.()
                       if (onPermission) {
-                        const { success, cardSettings } = await onPermission(
+                        const {
+                          success,
+                          cardSettings,
+                        } = await onPermission(
                           currentUserPlan,
                           permissionCard,
                           [event, ...args],

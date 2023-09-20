@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "സൈറ്റ്",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "വെബ്സൈറ്റ് URL നൽകുക",
     "feature_card__prompts__place_my_own_prompts_switch": "എന്റെ പ്രോംപ്റ്റുകൾ മുകളിൽ അടയാളപ്പെടുത്തുക",
-    "feature_card__appearance__field_quick_access__title": "വേഗത്തിൽ പ്രവർത്തിക്കുന്നു"
+    "feature_card__appearance__field_quick_access__title": "വേഗത്തിൽ പ്രവർത്തിക്കുന്നു",
+    "left_menu__help_me_write": "എനിക്ക് എഴുതാൻ സഹായിക്കൂ",
+    "feature_card__appearance__field_outlook_assistant__title": "ഔട്ലൂക്ക് സഹായി"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",

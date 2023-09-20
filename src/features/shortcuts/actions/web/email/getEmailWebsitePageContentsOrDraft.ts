@@ -527,7 +527,10 @@ export const getEmailWebsitePageContentsOrDraft = async (
           })
         }
         emailCorrespondence.sortEmails()
-        return emailCorrespondence.formatText()
+        if (emailCorrespondence.emails.length > 0) {
+          return emailCorrespondence.formatText()
+        }
+        emailContextSelector = 'div[data-app-section="ConversationContainer"]'
       }
       // 因为接下来对单个邮件的处理都一样，这里封装一下
       const getSingleEmailText = (originElement: HTMLElement) => {
@@ -612,6 +615,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
         if (emailContext) {
           return emailContext
         }
+        emailContextSelector = '#ReadingPaneContainerId'
       }
       // ======================== 3.邮件详情页回复 ========================
       const detailEmailContextElement = document.querySelector(
@@ -625,8 +629,8 @@ export const getEmailWebsitePageContentsOrDraft = async (
         if (emailContext) {
           return emailContext
         }
+        emailContextSelector = '#ReadingPaneContainerId'
       }
-      emailContextSelector = '#ReadingPaneContainerId'
     } catch (e) {
       emailContextSelector = 'div[data-app-section="ConversationContainer"]'
     }

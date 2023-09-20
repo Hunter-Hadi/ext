@@ -54,13 +54,6 @@ const getOutlookButtonGroup = (
   const editPanelElement = document.querySelector(
     '#ReadingPaneContainerId',
   ) as HTMLElement
-  const fromElement = (
-    Array.from(
-      editPanelElement.querySelectorAll(
-        '#ReadingPaneContainerId div[aria-haspopup="menu"][id]',
-      ),
-    ) as HTMLDivElement[]
-  ).find((item) => item.id.includes('fromContainer'))
   const toOrCC = editPanelElement.querySelectorAll(
     '#div[role="textbox"]:has(#removeButton)',
   ).length
@@ -69,13 +62,11 @@ const getOutlookButtonGroup = (
     document.querySelectorAll('div[role="dialog"]'),
   ).find((modal) => modal.contains(keyElement))
   // 1. 不在列表
-  // 2. 没有fromElement
-  // 3. 没有toOrCC的用户
-  // 4. 没有fwdMsg
-  // 5. 不在dialog中
+  // 2. 没有toOrCC的用户
+  // 3. 没有fwdMsg
+  // 4. 不在dialog中
   if (
     !listContainer?.contains(keyElement) &&
-    !fromElement &&
     toOrCC === 0 &&
     !fwdMsg &&
     !isDialog

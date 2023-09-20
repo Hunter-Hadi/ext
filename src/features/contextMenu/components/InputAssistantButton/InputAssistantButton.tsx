@@ -178,6 +178,8 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               title={t(buttonGroup[0].tooltip as any)}
             >
               <Button
+                id={`maxAIInputAssistantCtaButton${rootId}`}
+                maxai-input-assistant-cta-button={`ctaButton${rootId}`}
                 disabled={loading}
                 sx={memoButtonSx.ctaButtonSx}
                 onMouseEnter={() => {
@@ -232,6 +234,8 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               title={t(buttonGroup[1].tooltip as any)}
             >
               <Button
+                id={`maxAIInputAssistantDropdownButton${rootId}`}
+                maxai-input-assistant-dropdown-button={`dropdownButton${rootId}`}
                 disabled={loading}
                 sx={memoButtonSx.dropdownButtonSx}
                 onMouseEnter={() => {

@@ -63,6 +63,10 @@ const getOutlookButtonGroup = (
   const isDialog = Array.from(
     document.querySelectorAll('div[role="dialog"]'),
   ).find((modal) => modal.contains(keyElement))
+  const subject =
+    (editPanelElement.querySelector(
+      'input[maxlength="255"]',
+    ) as HTMLInputElement)?.value || ''
   // 1. 不在列表
   // 2. 没有toOrCC的用户
   // 3. 没有fwdMsg
@@ -71,7 +75,8 @@ const getOutlookButtonGroup = (
     !listContainer?.contains(keyElement) &&
     toOrCC === 0 &&
     !fwdMsg &&
-    !isDialog
+    !isDialog &&
+    !subject
   ) {
     return [
       buttonGroupConfig.composeNewButton,

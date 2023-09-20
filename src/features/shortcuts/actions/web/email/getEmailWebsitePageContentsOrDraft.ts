@@ -517,7 +517,19 @@ export const getEmailWebsitePageContentsOrDraft = async (
       }
       // 因为接下来对单个邮件的处理都一样，这里封装一下
       const getSingleEmailText = (originElement: HTMLElement) => {
-        const emailContentElement = originElement.cloneNode(true) as HTMLElement
+        let currentOriginElement: HTMLElement = originElement
+        let count = 0
+        while (
+          !currentOriginElement.querySelector('#divRplyFwdMsg') &&
+          !currentOriginElement.querySelector('#divRplyFwdMsg') &&
+          count < 10
+        ) {
+          count++
+          currentOriginElement = currentOriginElement.parentElement as HTMLElement
+        }
+        const emailContentElement = currentOriginElement.cloneNode(
+          true,
+        ) as HTMLElement
         const emailCorrespondence = new EmailCorrespondence()
         const emailInfoElement =
           (emailContentElement.querySelector(

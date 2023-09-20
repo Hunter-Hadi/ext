@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Сайт",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Введіть URL-адресу веб-сайту",
     "feature_card__prompts__place_my_own_prompts_switch": "Розмістити свої підказки у верхній частині",
-    "feature_card__appearance__field_quick_access__title": "Швидкий доступ"
+    "feature_card__appearance__field_quick_access__title": "Швидкий доступ",
+    "left_menu__help_me_write": "Допоможіть мені написати",
+    "feature_card__appearance__field_outlook_assistant__title": "Асистент Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",

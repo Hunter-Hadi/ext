@@ -209,7 +209,9 @@
     "feature_card__prompts__prompt_template__variable_user_input__description": "使用者輸入",
     "feature_card__prompts__prompt_template__variable_selected_text__example1": "寫一個更好的版本，取代以下文本：{{SELECTED_TEXT}}",
     "feature_card__prompts__place_my_own_prompts_switch": "將我的提示放在頂部",
-    "feature_card__appearance__field_quick_access__title": "快速存取"
+    "feature_card__appearance__field_quick_access__title": "快速存取",
+    "left_menu__help_me_write": "幫我寫",
+    "feature_card__appearance__field_outlook_assistant__title": "Outlook 助手"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",

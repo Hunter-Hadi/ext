@@ -114,7 +114,7 @@ export const LiteDropdownMenuItem = React.forwardRef<
       ref={ref}
       component={'div'}
       role="menuitem"
-      onClick={(event) => {
+      onClick={(event: any) => {
         onClick?.(event)
         floatingUiProps?.onClick?.(event)
       }}
@@ -238,7 +238,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         ref={ref}
         component={'div'}
         role="menuitem"
-        onKeyDown={(event) => {
+        onKeyDown={(event: any) => {
           floatingUiProps?.onKeyDown?.(event)
           if (event.code === 'Enter') {
             updateSelectedId((prevState) => {
@@ -250,7 +250,7 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
             event.stopPropagation()
           }
         }}
-        onClick={(event) => {
+        onClick={(event: any) => {
           updateSelectedId((prevState) => {
             return {
               ...prevState,

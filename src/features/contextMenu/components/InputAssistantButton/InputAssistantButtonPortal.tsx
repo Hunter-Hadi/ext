@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import InputAssistantButton from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
 import InputAssistantButtonManager, {
@@ -8,26 +8,50 @@ import useEffectOnce from '@/hooks/useEffectOnce'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
 import { IInputAssistantButtonGroupConfig } from '@/features/contextMenu/components/InputAssistantButton/config'
+import { useRecoilValue } from 'recoil'
+import { AppSettingsState } from '@/store'
+import { getCurrentDomainHost } from '@/utils'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
   .replace(/_/g, '-')
 const InputAssistantPortal: FC = () => {
+  const appSetting = useRecoilValue(AppSettingsState)
   const [config, setConfig] = useState<IInputAssistantButtonGroupConfig | null>(
     null,
   )
   const [allObserverData, setAllObserverData] = useState<
     IInputAssistantButtonObserverData[]
   >([])
+  const inputAssistantPortalRef =
+    React.useRef<InputAssistantButtonManager | null>(null)
   useEffectOnce(() => {
-    const inputAssistantPortal = new InputAssistantButtonManager()
-    inputAssistantPortal.createInputAssistantButtonListener(
+    inputAssistantPortalRef.current = new InputAssistantButtonManager()
+    inputAssistantPortalRef.current.createInputAssistantButtonListener(
       (allObserverData, config) => {
         setAllObserverData(allObserverData)
         setConfig(config)
       },
     )
   })
-
+  const currentPageShow = useMemo(() => {
+    const host = getCurrentDomainHost()
+    if (host === 'mail.google.com') {
+      return appSetting.userSettings?.inputAssistantButton?.gmail === true
+    }
+    if (host === 'outlook.live.com' || host === 'outlook.office.com') {
+      return appSetting.userSettings?.inputAssistantButton?.outlook === true
+    }
+    return false
+  }, [appSetting.userSettings?.inputAssistantButton])
+  useEffect(() => {
+    if (inputAssistantPortalRef.current) {
+      if (currentPageShow) {
+        inputAssistantPortalRef.current?.continue()
+      } else {
+        inputAssistantPortalRef.current?.pause()
+      }
+    }
+  }, [currentPageShow])
   return (
     <>
       {allObserverData.map((observerData) => {

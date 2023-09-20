@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Lloc web",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Introduïu l'URL del lloc web",
     "feature_card__prompts__place_my_own_prompts_switch": "Col·loca les meves pròpies indicacions a dalt",
-    "feature_card__appearance__field_quick_access__title": "Accés ràpid"
+    "feature_card__appearance__field_quick_access__title": "Accés ràpid",
+    "left_menu__help_me_write": "Ajuda'm a escriure",
+    "feature_card__appearance__field_outlook_assistant__title": "Assistent d'Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",

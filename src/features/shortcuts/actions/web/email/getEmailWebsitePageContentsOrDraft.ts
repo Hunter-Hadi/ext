@@ -188,6 +188,11 @@ class EmailCorrespondence {
       }
     }
   }
+  sortEmails() {
+    this.emails.sort((a, b) => {
+      return new Date(a.date).getTime() - new Date(b.date).getTime()
+    })
+  }
   formatText() {
     return (
       this.emails
@@ -373,7 +378,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
       expandMoreButton?.click()
       while (!document.querySelector('#mectrl_currentAccount_primary')) {
         profileButton.click()
-        await delay(1000)
+        await delay(2000)
       }
       const userName =
         document.querySelector('#mectrl_currentAccount_primary')?.textContent ||
@@ -389,24 +394,32 @@ export const getEmailWebsitePageContentsOrDraft = async (
       if (rootElement) {
         const emailCorrespondence = new EmailCorrespondence()
         const messageItems: Element[] = []
-        //如果发现了inputAssistantButtonElementSelector，就不用再找了
-        Array.from(rootElement.querySelectorAll('& > div > div'))
-          // 因为outlook的邮件是从下往上的
-          .reverse()
-          .find((messageItem) => {
-            const expandMessages = messageItem.querySelectorAll('& > div > div')
-            expandMessages.forEach((expandMessage) => fireClick(expandMessage))
-            if (
-              (messageItem as HTMLDivElement).contains(
-                inputAssistantButtonElement,
-              )
-            ) {
-              messageItems.push(messageItem)
-              return true
-            }
+        const totalMessageItems = Array.from(
+          rootElement.querySelectorAll('& > div > div'),
+        ) as HTMLElement[]
+        // 因为outlook可以修改邮件顺序，所以要先拿到邮件的date
+        const replyMessageDate =
+          totalMessageItems
+            .find((messageItem) =>
+              messageItem.contains(inputAssistantButtonElement),
+            )
+            ?.querySelector('div[data-testid="SentReceivedSavedTime"]')
+            ?.textContent || ''
+        // 插入时间比replyMessageDate小的message
+        totalMessageItems.forEach((messageItem) => {
+          const messageDate =
+            messageItem.querySelector(
+              'div[data-testid="SentReceivedSavedTime"]',
+            )?.textContent || ''
+          if (
+            new Date(messageDate).getTime() <=
+            new Date(replyMessageDate).getTime()
+          ) {
             messageItems.push(messageItem)
-            return false
-          })
+          }
+          const expandMessages = messageItem.querySelectorAll('& > div > div')
+          expandMessages.forEach((expandMessage) => fireClick(expandMessage))
+        })
         // 寻找sender和receiver
         for (let i = 0; i < messageItems.length; i++) {
           const emailEmailElements = Array.from(
@@ -487,6 +500,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
             return false
           })
         }
+        emailCorrespondence.sortEmails()
         return emailCorrespondence.formatText()
       }
       // 因为接下来对单个邮件的处理都一样，这里封装一下

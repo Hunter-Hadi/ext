@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Ιστοσελίδα",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Εισαγάγετε το URL της ιστοσελίδας",
     "feature_card__prompts__place_my_own_prompts_switch": "Τοποθέτηση των δικών μου προτροπών στην κορυφή",
-    "feature_card__appearance__field_quick_access__title": "Γρήγορη πρόσβαση"
+    "feature_card__appearance__field_quick_access__title": "Γρήγορη πρόσβαση",
+    "left_menu__help_me_write": "Βοήθησέ με να γράψω",
+    "feature_card__appearance__field_outlook_assistant__title": "Βοηθός Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Stránka",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Zadejte URL webové stránky",
     "feature_card__prompts__place_my_own_prompts_switch": "Umístit vlastní podněty nahoru",
-    "feature_card__appearance__field_quick_access__title": "Rychlý přístup"
+    "feature_card__appearance__field_quick_access__title": "Rychlý přístup",
+    "left_menu__help_me_write": "Pomozte mi psát",
+    "feature_card__appearance__field_outlook_assistant__title": "Outlook asistent"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",

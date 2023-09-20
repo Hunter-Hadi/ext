@@ -65,15 +65,20 @@ const getOutlookButtonGroup = (
     '#div[role="textbox"]:has(#removeButton)',
   ).length
   const fwdMsg = editPanelElement.querySelector('#RplyFwdMsg')
+  const isDialog = Array.from(
+    document.querySelectorAll('div[role="dialog"]'),
+  ).find((modal) => modal.contains(keyElement))
   // 1. 不在列表
   // 2. 没有fromElement
   // 3. 没有toOrCC的用户
   // 4. 没有fwdMsg
+  // 5. 不在dialog中
   if (
     !listContainer?.contains(keyElement) &&
     !fromElement &&
     toOrCC === 0 &&
-    !fwdMsg
+    !fwdMsg &&
+    !isDialog
   ) {
     return [
       buttonGroupConfig.composeNewButton,

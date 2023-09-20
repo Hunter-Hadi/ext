@@ -24,6 +24,9 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'PAGE_SUMMARY',
   'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
   'MAXAI_PAID_MODEL_CLAUDE_V2',
+  'OUTLOOK_COMPOSE_NEW_BUTTON',
+  'OUTLOOK_COMPOSE_REPLY_BUTTON',
+  'OUTLOOK_REFINE_DRAFT_BUTTON',
 ] as const
 
 export type PermissionWrapperCardSceneType =
@@ -144,10 +147,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
-  // Gmail cta button - 新邮件
+  // Gmail cta button - compose new
   GMAIL_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/gmail-cta-button.png',
+      '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
       t('client:permission__pricing_hook__gmail_cta_button_draft__title'),
@@ -156,10 +159,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
-  // Gmail cta button - 回复邮件
+  // Gmail cta button - compose reply
   GMAIL_REPLY_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/gmail-cta-button.png',
+      '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
       t('client:permission__pricing_hook__gmail_cta_button_reply__title'),
@@ -168,10 +171,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
-  // Gmail context menu
+  // Gmail dropdown button - refine draft
   GMAIL_CONTEXT_MENU: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/gmail-context-menu.png',
+      '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
       t('client:permission__pricing_hook__gmail_context_menu__title'),
@@ -239,6 +242,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // MAX AI - paid model - gpt3.5 16k
   MAXAI_PAID_MODEL_GPT3_5_16K: {
+    videoUrl: `https://www.youtube.com/embed/QA4gxm3xtLE`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt3-5-16k.png',
     )}`,
@@ -255,6 +259,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // MAX AI - paid model - gpt4
   MAXAI_PAID_MODEL_GPT4: {
+    videoUrl: 'https://www.youtube.com/embed/mAi1D9cbGos',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt4.png',
     )}`,
@@ -301,6 +306,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // MAX AI - paid model - calude - instant-v1-100k
   MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1: {
+    videoUrl: 'https://www.youtube.com/embed/qwFVrq3Epcs',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-instant-100k.png',
     )}`,
@@ -317,6 +323,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // MAX AI - paid model - calude - instant-v2
   MAXAI_PAID_MODEL_CLAUDE_V2: {
+    videoUrl: 'https://www.youtube.com/embed/3hHrqmIU284',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-2-100k.png',
     )}`,
@@ -326,6 +333,42 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t(
         'client:permission__pricing_hook__max_ai_paid_model__claude_v2__description',
       ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Outlook cta button - compose new
+  OUTLOOK_COMPOSE_NEW_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-email.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__gmail_cta_button_draft__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__gmail_cta_button_draft__description'),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Outlook cta button - compose reply
+  OUTLOOK_COMPOSE_REPLY_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-email.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__gmail_cta_button_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__gmail_cta_button_reply__description'),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Outlook dropdown button - refine draft
+  OUTLOOK_REFINE_DRAFT_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-email.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__gmail_context_menu__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__gmail_context_menu__description'),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },

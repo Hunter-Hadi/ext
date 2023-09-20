@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "ওয়েবসাইট",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ওয়েবসাইট URL লিখুন",
     "feature_card__prompts__place_my_own_prompts_switch": "আমার নিজের প্রম্পটগুলি শীর্ষে রাখুন",
-    "feature_card__appearance__field_quick_access__title": "দ্রুত অ্যাক্সেস"
+    "feature_card__appearance__field_quick_access__title": "দ্রুত অ্যাক্সেস",
+    "left_menu__help_me_write": "আমাকে লিখতে সাহায্য করুন",
+    "feature_card__appearance__field_outlook_assistant__title": "আউটলুক সহায়ক"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",

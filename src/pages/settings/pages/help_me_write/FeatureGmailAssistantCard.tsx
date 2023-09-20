@@ -3,12 +3,10 @@ import RadioCardGroup from '@/pages/settings/components/RadioCardGroup'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { useTranslation } from 'react-i18next'
-import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
 const FeatureGmailAssistantCard: FC = () => {
-  // whitelist为空说明没有开启
-  const { buttonSettings, updateButtonSettings } =
-    useChromeExtensionButtonSettings()
+  const { userSettings, setUserSettings } = useUserSettings()
   const { t } = useTranslation(['settings', 'common'])
   return (
     <SettingsFeatureCardLayout
@@ -19,10 +17,7 @@ const FeatureGmailAssistantCard: FC = () => {
     >
       <RadioCardGroup
         defaultValue={
-          buttonSettings?.inputAssistantComposeReplyButton?.visibility
-            ?.whitelist?.length === 0
-            ? 'disabled'
-            : 'enabled'
+          userSettings?.inputAssistantButton?.gmail ? 'enabled' : 'disabled'
         }
         options={[
           {
@@ -41,21 +36,13 @@ const FeatureGmailAssistantCard: FC = () => {
           },
         ]}
         onChange={async (value) => {
-          if (buttonSettings?.inputAssistantComposeReplyButton) {
-            const isEnable = value === 'enabled'
-            await updateButtonSettings('inputAssistantComposeReplyButton', {
-              visibility: {
-                isWhitelistMode: true,
-                whitelist: isEnable ? ['mail.google.com'] : [],
-                blacklist: [],
-              },
-              contextMenu:
-                buttonSettings.inputAssistantComposeReplyButton.contextMenu,
-              contextMenuPosition:
-                buttonSettings.inputAssistantComposeReplyButton
-                  .contextMenuPosition,
-            })
-          }
+          await setUserSettings({
+            ...userSettings,
+            inputAssistantButton: {
+              ...userSettings?.inputAssistantButton,
+              gmail: value === 'enabled',
+            },
+          })
         }}
         maxWidth={372}
       />

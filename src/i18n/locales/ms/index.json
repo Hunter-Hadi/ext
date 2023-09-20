@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Situs",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Masukkan URL situs web",
     "feature_card__prompts__place_my_own_prompts_switch": "Letakkan prompt saya sendiri di atas",
-    "feature_card__appearance__field_quick_access__title": "Akses Cepat"
+    "feature_card__appearance__field_quick_access__title": "Akses Cepat",
+    "left_menu__help_me_write": "Bantu saya menulis",
+    "feature_card__appearance__field_outlook_assistant__title": "Pembantu Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

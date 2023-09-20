@@ -57,6 +57,10 @@ export const removeEmailContentQuote = (
       return
     }
   })
+  // remove blockquote
+  cloneElement.querySelectorAll('blockquote').forEach((blockquote) => {
+    needRemoveElements.push(blockquote)
+  })
   console.log('removeEmailContentQuote needRemoveElements', needRemoveElements)
   needRemoveElements.forEach((element) => {
     try {

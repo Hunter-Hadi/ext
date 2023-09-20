@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Sait",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Sisestage veebisaidi URL",
     "feature_card__prompts__place_my_own_prompts_switch": "Paiguta minu enda vihjed üles",
-    "feature_card__appearance__field_quick_access__title": "Kiire juurdepääs"
+    "feature_card__appearance__field_quick_access__title": "Kiire juurdepääs",
+    "left_menu__help_me_write": "Aita mind kirjutada",
+    "feature_card__appearance__field_outlook_assistant__title": "Outlooki abiline"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",

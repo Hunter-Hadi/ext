@@ -32,6 +32,11 @@ export const settingsPageRouterList = [
     divider: false,
   },
   {
+    route: '/help-me-write',
+    label: 'left_menu__help_me_write',
+    divider: false,
+  },
+  {
     route: '/language',
     label: 'left_menu__languages',
     divider: true,

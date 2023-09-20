@@ -25,7 +25,9 @@ class InputAssistantButtonManager {
   interval = 1000
   config: IInputAssistantButtonGroupConfig | null
   observerMap: Map<HTMLElement, IInputAssistantButtonObserverData>
+  stop: boolean
   constructor() {
+    this.stop = false
     this.host = getCurrentDomainHost()
     this.config = inputAssistantButtonBaseConfig[this.host]
     this.observerMap = new Map()
@@ -37,6 +39,9 @@ class InputAssistantButtonManager {
     ) => void,
   ) {
     this.timer = setInterval(() => {
+      if (this.stop) {
+        return
+      }
       if (this.config) {
         const { rootSelector, rootParentDeep } = this.config
         const rootElements = document.querySelectorAll(rootSelector)
@@ -139,10 +144,23 @@ class InputAssistantButtonManager {
     })
     return isClean
   }
+  clearObserverMap() {
+    this.observerMap.forEach((observer, rootElement) => {
+      observer.destroy()
+      this.observerMap.delete(rootElement)
+    })
+  }
   getAllObserverData() {
     const allObserverData: IInputAssistantButtonObserverData[] = []
     this.observerMap.forEach((value) => allObserverData.push(value))
     return allObserverData
+  }
+  pause() {
+    this.stop = true
+    this.clearObserverMap()
+  }
+  continue() {
+    this.stop = false
   }
 }
 export default InputAssistantButtonManager

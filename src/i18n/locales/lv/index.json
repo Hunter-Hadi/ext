@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Vietne",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Ievadiet vietnes URL",
     "feature_card__prompts__place_my_own_prompts_switch": "Novietot manus norādījumus augšpusē",
-    "feature_card__appearance__field_quick_access__title": "Ātra piekļuve"
+    "feature_card__appearance__field_quick_access__title": "Ātra piekļuve",
+    "left_menu__help_me_write": "Palīdziet man rakstīt",
+    "feature_card__appearance__field_outlook_assistant__title": "Outlook asistents"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

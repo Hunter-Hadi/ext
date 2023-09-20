@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Sitio",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Ingresa la URL del sitio web",
     "feature_card__prompts__place_my_own_prompts_switch": "Colocar mis propias sugerencias en la parte superior",
-    "feature_card__appearance__field_quick_access__title": "Acceso rápido"
+    "feature_card__appearance__field_quick_access__title": "Acceso rápido",
+    "left_menu__help_me_write": "Ayúdame a escribir",
+    "feature_card__appearance__field_outlook_assistant__title": "Asistente de Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",

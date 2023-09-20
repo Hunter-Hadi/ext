@@ -121,6 +121,10 @@ export interface IChromeExtensionSettings {
     quickAccess?: {
       enabled?: boolean
     }
+    inputAssistantButton?: {
+      gmail?: boolean
+      outlook?: boolean
+    }
   }
   buttonSettings?: {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting

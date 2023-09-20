@@ -50,6 +50,9 @@ const SettingsAppearancePage = React.lazy(
 const SettingsMiniMenuPage = React.lazy(
   () => import('@/pages/settings/pages/mini_menu'),
 )
+const SettingsHelpMeWritePage = React.lazy(
+  () => import('@/pages/settings/pages/help_me_write'),
+)
 const SettingsLanguagePage = React.lazy(
   () => import('@/pages/settings/pages/language'),
 )
@@ -205,6 +208,9 @@ const SettingsApp: FC = () => {
                       {route === '/shortcut' && <SettingsShortcutPage />}
                       {route === '/appearance' && <SettingsAppearancePage />}
                       {route === '/mini-menu' && <SettingsMiniMenuPage />}
+                      {route === '/help-me-write' && (
+                        <SettingsHelpMeWritePage />
+                      )}
                       {route === '/language' && <SettingsLanguagePage />}
                       {route === '/chatgpt-stable-mode' && (
                         <SettingsChatGPTStableModePage />

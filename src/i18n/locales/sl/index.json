@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Spletno mesto",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Vnesite URL spletnega mesta",
     "feature_card__prompts__place_my_own_prompts_switch": "Postavite svoje namige na vrh",
-    "feature_card__appearance__field_quick_access__title": "Hitri dostop"
+    "feature_card__appearance__field_quick_access__title": "Hitri dostop",
+    "left_menu__help_me_write": "Pomoč pri pisanju",
+    "feature_card__appearance__field_outlook_assistant__title": "Pomočnik Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",

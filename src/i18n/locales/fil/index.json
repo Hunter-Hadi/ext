@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Ilagay ang URL ng website",
     "feature_card__prompts__place_my_own_prompts_switch": "Ilagay ang aking sariling mga prompt sa tuktok",
-    "feature_card__appearance__field_quick_access__title": "Mabilis na pag-access"
+    "feature_card__appearance__field_quick_access__title": "Mabilis na pag-access",
+    "left_menu__help_me_write": "Tulungan ako sa pagsusulat",
+    "feature_card__appearance__field_outlook_assistant__title": "Tagapayo ng Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",

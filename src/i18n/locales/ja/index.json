@@ -209,7 +209,9 @@
     "feature_card__prompts__restore__dialog__restore_button": "復元",
     "feature_card__prompts__restore__dialog__delete_all_button": "すべて削除",
     "feature_card__prompts__place_my_own_prompts_switch": "自分のプロンプトを上部に配置する",
-    "feature_card__appearance__field_quick_access__title": "クイックアクセス"
+    "feature_card__appearance__field_quick_access__title": "クイックアクセス",
+    "left_menu__help_me_write": "書き方を教えて",
+    "feature_card__appearance__field_outlook_assistant__title": "Outlookアシスタント"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",

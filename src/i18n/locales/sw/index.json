@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Tovuti",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Ingiza URL ya wavuti",
     "feature_card__prompts__place_my_own_prompts_switch": "Weka vidokezo vyangu mwenyewe juu",
-    "feature_card__appearance__field_quick_access__title": "Upatikanaji wa haraka"
+    "feature_card__appearance__field_quick_access__title": "Upatikanaji wa haraka",
+    "left_menu__help_me_write": "Nisaidie kuandika",
+    "feature_card__appearance__field_outlook_assistant__title": "Msaidizi wa Outlook"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

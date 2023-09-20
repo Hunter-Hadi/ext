@@ -82,6 +82,10 @@ export const getDefaultChromeExtensionSettings =
         quickAccess: {
           enabled: true,
         },
+        inputAssistantButton: {
+          gmail: true,
+          outlook: true,
+        },
       },
       buttonSettings: {
         inputAssistantComposeReplyButton: {

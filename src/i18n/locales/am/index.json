@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "አካባቢ",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "የድረገጽ URL ያስገቡ",
     "feature_card__prompts__place_my_own_prompts_switch": "የእኔ ምርጫዎችን በማድረግ ላይ አንድነት ይሰራ",
-    "feature_card__appearance__field_quick_access__title": "በቀላሉ ማንበብ"
+    "feature_card__appearance__field_quick_access__title": "በቀላሉ ማንበብ",
+    "left_menu__help_me_write": "እባክዎ መጻፍ ያስፈልጋል",
+    "feature_card__appearance__field_outlook_assistant__title": "የኦድስ አስራት"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",

@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "ವೆಬ್‌ಸೈಟ್",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ವೆಬ್‌ಸೈಟ್ URL ಅನ್ನು ನಮೂದಿಸಿ",
     "feature_card__prompts__place_my_own_prompts_switch": "ನನ್ನ ಪ್ರಮ್ಪ್ಟ್‌ಗಳನ್ನು ಮೇಲೆ ಇಡಿ",
-    "feature_card__appearance__field_quick_access__title": "ತ್ವರಿತ ಪ್ರವೇಶ"
+    "feature_card__appearance__field_quick_access__title": "ತ್ವರಿತ ಪ್ರವೇಶ",
+    "left_menu__help_me_write": "ನನಗೆ ಬರೆಯುವುದಕ್ಕೆ ಸಹಾಯ ಮಾಡಿ",
+    "feature_card__appearance__field_outlook_assistant__title": "ಔಟ್‌ಲುಕ್ ಸಹಾಯಕ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",

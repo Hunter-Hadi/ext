@@ -209,7 +209,9 @@
     "visibility_card__add_a_site_dialog__field_site__title": "Svetainė",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Įveskite svetainės URL",
     "feature_card__prompts__place_my_own_prompts_switch": "Įdėti savo užduotis viršuje",
-    "feature_card__appearance__field_quick_access__title": "Greitas prieiga"
+    "feature_card__appearance__field_quick_access__title": "Greitas prieiga",
+    "left_menu__help_me_write": "Padėk man parašyti",
+    "feature_card__appearance__field_outlook_assistant__title": "Outlook asistentas"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",

@@ -96,6 +96,9 @@ export const useChromeExtensionButtonSettings = () => {
   ): Promise<boolean> => {
     const buttonSetting = await getChromeExtensionButtonSettings(buttonKey)
     const newSettings = cloneDeep(buttonSetting)
+    if (!newSettings) {
+      return false
+    }
     if (show) {
       newSettings.visibility.isWhitelistMode = false
     } else {
@@ -105,7 +108,6 @@ export const useChromeExtensionButtonSettings = () => {
     console.log('mini menu', newSettings.contextMenu)
     await updateButtonSettings(buttonKey, newSettings)
     return true
-    return false
   }
   const updateButtonSettingsWithDomain = async (
     buttonKey: IChromeExtensionButtonSettingKey,
@@ -120,8 +122,9 @@ export const useChromeExtensionButtonSettings = () => {
       if (newSettings.visibility.isWhitelistMode) {
         // 如果白名单中已经存在了这个域名, 则删除
         if (newSettings.visibility.whitelist.includes(domain)) {
-          newSettings.visibility.whitelist =
-            newSettings.visibility.whitelist.filter((item) => item !== domain)
+          newSettings.visibility.whitelist = newSettings.visibility.whitelist.filter(
+            (item) => item !== domain,
+          )
         } else {
           // 如果白名单中不存在这个域名, 则添加
           newSettings.visibility.whitelist.push(domain)
@@ -130,8 +133,9 @@ export const useChromeExtensionButtonSettings = () => {
         // 如果是黑名单模式
         // 如果黑名单中已经存在了这个域名, 则删除
         if (newSettings.visibility.blacklist.includes(domain)) {
-          newSettings.visibility.blacklist =
-            newSettings.visibility.blacklist.filter((item) => item !== domain)
+          newSettings.visibility.blacklist = newSettings.visibility.blacklist.filter(
+            (item) => item !== domain,
+          )
         } else {
           // 如果黑名单中不存在这个域名, 则添加
           newSettings.visibility.blacklist.push(domain)
@@ -161,10 +165,18 @@ export const useChromeExtensionButtonSettingsWithVisibility = (
   return useMemo(() => {
     if (loaded && host && buttonSettings?.[buttonKey]) {
       const originalButtonSettings = cloneDeep(buttonSettings[buttonKey])
-      const buttonVisible = checkVisibilitySettingIsVisible(
+      let buttonVisible = checkVisibilitySettingIsVisible(
         host,
         originalButtonSettings.visibility,
       )
+      // 由InputAssistantButtonManager.ts处理
+      if (
+        buttonKey === 'inputAssistantComposeNewButton' ||
+        buttonKey === 'inputAssistantComposeReplyButton' ||
+        buttonKey === 'inputAssistantRefineDraftButton'
+      ) {
+        buttonVisible = true
+      }
       const computedButtonSettings = {
         ...originalButtonSettings,
         contextMenu: originalButtonSettings.contextMenu.filter(
@@ -187,6 +199,7 @@ export const useChromeExtensionButtonSettingsWithVisibility = (
       }
       console.log(
         'computedButtonSettings',
+        `[key=${buttonKey}]`,
         `[host=${host}]`,
         `[originPromptLength=${originalButtonSettings.contextMenu.length}]`,
         `[promptLength=${computedButtonSettings.contextMenu.length}]`,
@@ -194,6 +207,7 @@ export const useChromeExtensionButtonSettingsWithVisibility = (
       )
       console.log(
         'computedButtonSettings',
+        `[key=${buttonKey}]`,
         `[host=${host}]`,
         `[buttonVisible=${computedButtonSettings.buttonVisible}]`,
         computedButtonSettings.visibility,
@@ -333,8 +347,7 @@ export class SystemContextMenu {
     textSelectPopupButton: defaultContextMenuJson,
     inputAssistantRefineDraftButton: defaultInputAssistantEditContextMenuJson,
     inputAssistantComposeReplyButton: defaultEditAssistantReplyContextMenuJson,
-    inputAssistantComposeNewButton:
-      defaultInputAssistantDraftNewContextMenuJson,
+    inputAssistantComposeNewButton: defaultInputAssistantDraftNewContextMenuJson,
   }
 }
 

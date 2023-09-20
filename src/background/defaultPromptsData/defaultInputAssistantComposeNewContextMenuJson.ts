@@ -81,6 +81,7 @@ export default [
         whitelist: [
           'outlook.live.com',
           'outlook.office365.com',
+          'mail.google.com',
           'outlook.office.com',
         ],
         blacklist: [],

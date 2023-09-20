@@ -17,12 +17,15 @@ const useContextMenuList = (
   query?: string,
   needFavoriteContextMenu = true,
 ) => {
-  const buttonSettings =
-    useChromeExtensionButtonSettingsWithVisibility(buttonSettingKey)
-  const { favoriteContextMenuGroup } =
-    useFavoriteContextMenuList(buttonSettingKey)
-  const { contextMenuSearchTextWithCurrentLanguage } =
-    useContextMenuSearchTextStore()
+  const buttonSettings = useChromeExtensionButtonSettingsWithVisibility(
+    buttonSettingKey,
+  )
+  const { favoriteContextMenuGroup } = useFavoriteContextMenuList(
+    buttonSettingKey,
+  )
+  const {
+    contextMenuSearchTextWithCurrentLanguage,
+  } = useContextMenuSearchTextStore()
   const originContextMenuListRef = useRef<IContextMenuItem[]>([])
   const groupByContextMenuList = useMemo(() => {
     const originContextMenuList = uniqBy(

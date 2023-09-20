@@ -29,6 +29,7 @@ import {
   getSetVariablesModalSelectCache,
   setVariablesModalSelectCache,
 } from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
+import TooltipButton from '@/components/TooltipButton'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
@@ -450,7 +451,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         >
           {t('common:cancel')}
         </Button>
-        <Button
+        <TooltipButton
+          title={t(`client:sidebar__button__send_to_ai`)}
+          TooltipProps={{
+            description: '⏎',
+          }}
           disabled={loading}
           onClick={async () => await confirmModal()}
           variant={'contained'}
@@ -471,7 +476,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             <SendIcon />
           )}
           {!loading ? `${t('client:sidebar__button__send_to_ai')}` : ''}
-        </Button>
+        </TooltipButton>
       </Stack>
     </Stack>
   )

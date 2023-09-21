@@ -182,25 +182,29 @@ const IInputAssistantButtonGroupConfig = {
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_NEW_BUTTON',
     },
     composeReplyButton: {
       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_REPLY_BUTTON',
     },
     refineDraftButton: {
       tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+      permissionWrapperCardSceneType: 'TWITTER_REFINE_DRAFT_BUTTON',
     },
     CTAButtonStyle: {
+      iconSize: 16,
       borderRadius: '18px 0 0 18px',
-      padding: '8px 9px',
+      padding: '10px 9px',
     },
     DropdownButtonStyle: {
       borderRadius: '0 18px 18px 0',
       padding: '8px 3px',
+    },
+    InputAssistantBoxStyle: {
+      borderRadius: '18px',
     },
     appendPosition: 0,
   },

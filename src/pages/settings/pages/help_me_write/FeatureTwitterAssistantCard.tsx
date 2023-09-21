@@ -5,33 +5,33 @@ import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCa
 import { useTranslation } from 'react-i18next'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
-const FeatureOutlookAssistantCard: FC = () => {
+const FeatureTwitterAssistantCard: FC = () => {
   const { userSettings, setUserSettings } = useUserSettings()
   const { t } = useTranslation(['settings', 'common'])
   return (
     <SettingsFeatureCardLayout
       title={t(
-        'settings:feature_card__help_me_write__field__outlook_input_assistant_button__title',
+        'settings:feature_card__help_me_write__field__twitter_input_assistant_button__title',
       )}
-      id={'outlook-assistant'}
+      id={'twitter-assistant'}
     >
       <RadioCardGroup
         defaultValue={
-          userSettings?.inputAssistantButton?.outlook ? 'enabled' : 'disabled'
+          userSettings?.inputAssistantButton?.twitter ? 'enabled' : 'disabled'
         }
         options={[
           {
             label: t('common:enabled'),
             value: 'enabled',
             image: getChromeExtensionAssetsURL(
-              '/images/settings/appearance/outlook-input-assistant-enabled.png',
+              '/images/settings/appearance/twitter-input-assistant-enabled.png',
             ),
           },
           {
             label: t('common:disabled'),
             value: 'disabled',
             image: getChromeExtensionAssetsURL(
-              '/images/settings/appearance/outlook-input-assistant-disabled.png',
+              '/images/settings/appearance/twitter-input-assistant-disabled.png',
             ),
           },
         ]}
@@ -40,7 +40,7 @@ const FeatureOutlookAssistantCard: FC = () => {
             ...userSettings,
             inputAssistantButton: {
               ...userSettings?.inputAssistantButton,
-              outlook: value === 'enabled',
+              twitter: value === 'enabled',
             },
           })
         }}
@@ -49,4 +49,4 @@ const FeatureOutlookAssistantCard: FC = () => {
     </SettingsFeatureCardLayout>
   )
 }
-export default FeatureOutlookAssistantCard
+export default FeatureTwitterAssistantCard

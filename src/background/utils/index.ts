@@ -95,6 +95,9 @@ export const getDefaultChromeExtensionSettings = (): IChromeExtensionSettings =>
         discord: true,
         whatsApp: true,
         hubspot: true,
+        telegram: true,
+        googleChat: true,
+        microsoftTeams: true,
       },
     },
     buttonSettings: {

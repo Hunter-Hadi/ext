@@ -11,7 +11,7 @@ const FeatureGmailAssistantCard: FC = () => {
   return (
     <SettingsFeatureCardLayout
       title={t(
-        'settings:feature_card__appearance__field_gmail_assistant__title',
+        'settings:feature_card__help_me_write__field__gmail_input_assistant_button__title',
       )}
       id={'gmail-assistant'}
     >

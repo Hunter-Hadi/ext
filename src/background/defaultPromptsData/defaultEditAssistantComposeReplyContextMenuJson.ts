@@ -4,8 +4,8 @@ import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 const socialMediaPrompts = [
   // 社交媒体
   {
-    id: '4f3d7b3b-62e5-4e88-bd79-01efd7ef0bd0',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '26f44f32-cbe8-4832-9049-7b64aa2198fb',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Like',
     data: {
@@ -51,8 +51,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: '8294f143-2727-4de6-9065-12358f87a7bd',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '31d488a9-0d16-48ce-b865-6c7667ebf573',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Love',
     data: {
@@ -98,8 +98,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: '3e4d313f-8a15-48b2-beb9-1f05f93b4d4f',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '1d93656a-fbf0-4650-b3b9-e735b36caca3',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Thanks',
     data: {
@@ -145,8 +145,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: '176a963c-849e-4cd7-8bf3-84e4531f0cc0',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: 'bda41b5f-2985-4dd2-8b09-3bb958ab24d9',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Care',
     data: {
@@ -192,8 +192,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: '0486d1dc-b6bd-4c9b-a861-660e1f87f621',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '115cbff4-aeb5-49f5-884c-09971d39314e',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Joke',
     data: {
@@ -239,8 +239,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: '93c3fd09-315d-447d-bbdf-052a78511f39',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: 'bdbd5e9e-355b-4563-bd8d-74e7586fdbdd',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Wow',
     data: {
@@ -286,8 +286,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: 'c4ed94fc-d8cc-4633-b563-4a94582ab58c',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '0f6ba970-ed50-4d03-8582-29d4561ea2b6',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Sad',
     data: {
@@ -333,8 +333,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: 'd426af1d-4055-4ada-b359-648b9ada81e7',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '730b1b2d-809b-428b-9967-9c3b53154bbf',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Dislike',
     data: {
@@ -380,8 +380,8 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
-    parent: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1',
+    parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     droppable: true,
     text: 'Reply with key points',
     data: {
@@ -450,7 +450,7 @@ const socialMediaPrompts = [
     },
   },
   {
-    id: '15bbcee6-e39f-40d6-8885-73b83e968869',
+    id: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
     parent: 'root',
     droppable: true,
     text: 'Quick reply',

@@ -132,11 +132,13 @@ Now, write a new email, mentioning these points:
               contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
               title: 'Compose with key points',
               modelKey: 'Sidebar',
-              template: `Ignore all previous instructions. You're a highly skilled social media expert, adept at composing all types of social media posts in an appropriate manner. Your task is to write a new social media post.
+              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}} posting, adept at composing all types of {{CURRENT_WEBSITE_DOMAIN}} posts in an appropriate manner. Your task is to write a new post on {{CURRENT_WEBSITE_DOMAIN}}.
 
-Make sure the post aligns with the prevalent length, style, and format of the most successful post on {{CURRENT_WEBSITE_DOMAIN}}.
+Ensure that the post is in line with the widely observed length, style, inclusion or omission of emojis and hashtags, and format of the highest performing post on {{CURRENT_WEBSITE_DOMAIN}}.
 
-Now, write a social media post, mentioning these points:
+Write the post like a real person would. 
+
+Now, write a {{CURRENT_WEBSITE_DOMAIN}} post, mentioning these points:
 {{KEY_POINTS}}`,
               variables: [
                 {

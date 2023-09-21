@@ -1017,14 +1017,16 @@ export const MenuComponent = React.forwardRef<
                         ref(node: any) {
                           listItemsRef.current[index] = node
                         },
-                        onClick(event) {
-                          child.props.onClick?.(event)
+                        onMouseDown(event) {
                           tree?.events.emit('click')
                           if (
                             child.props?.menuItem?.data?.type === 'shortcuts'
                           ) {
                             onClickContextMenu?.(child.props.menuItem)
                           }
+                        },
+                        onClick(event) {
+                          child.props.onClick?.(event)
                         },
                         onKeyDownCapture(event) {
                           lastKeydownEvent.current = event

@@ -416,7 +416,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               size={'small'}
               key={textTypeVariable.VariableName}
               label={textTypeVariable.label}
-              defaultValue={form[textTypeVariable.VariableName] || ''}
+              value={form[textTypeVariable.VariableName] || ''}
               onChange={(event) => {
                 const value = event.target.value
                 setForm((prevState) => {

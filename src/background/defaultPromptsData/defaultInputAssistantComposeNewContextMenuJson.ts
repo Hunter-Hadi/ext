@@ -35,7 +35,14 @@ export default [
               contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
               title: 'Compose with key points',
               modelKey: 'Sidebar',
-              template: `Write an email:\n{{KEY_POINTS}}`,
+              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at composing all types of emails in an appropriate manner. Your task is to write a new email.
+
+Make the email clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email content.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the email like a real person would. 
+
+Now, write a new email, mentioning these points:
+{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Key points',
@@ -125,7 +132,12 @@ export default [
               contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
               title: 'Compose with key points',
               modelKey: 'Sidebar',
-              template: `Write an post in {{CURRENT_WEBSITE_DOMAIN}}:\n{{KEY_POINTS}}`,
+              template: `Ignore all previous instructions. You're a highly skilled social media expert, adept at composing all types of social media posts in an appropriate manner. Your task is to write a new social media post.
+
+Make sure the post aligns with the prevalent length, style, and format of the most successful post on {{CURRENT_WEBSITE_DOMAIN}}.
+
+Now, write a social media post, mentioning these points:
+{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Key points',

@@ -107,6 +107,17 @@ const getTwitterButtonGroup = (
       buttonGroupConfig.refineDraftButton,
     ]
   }
+  const detailPostPage = (Array.from(
+    document.querySelectorAll('article[data-testid="tweet"]'),
+  ) as HTMLElement[]).find((post) => {
+    return post.nextElementSibling?.contains(keyElement)
+  })
+  if (detailPostPage) {
+    return [
+      buttonGroupConfig.composeReplyButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
   return [
     buttonGroupConfig.composeNewButton,
     buttonGroupConfig.refineDraftButton,

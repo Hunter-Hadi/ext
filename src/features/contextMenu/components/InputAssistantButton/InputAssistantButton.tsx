@@ -173,6 +173,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               open={ctaTooltipShow}
               zIndex={2000000}
               PopperProps={{
+                sx: {
+                  width: 120,
+                },
                 container: root,
               }}
               title={t(buttonGroup[0].tooltip as any)}
@@ -229,6 +232,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               open={dropdownTooltipShow}
               zIndex={2000000}
               PopperProps={{
+                sx: {
+                  width: 140,
+                },
                 container: root,
               }}
               title={t(buttonGroup[1].tooltip as any)}

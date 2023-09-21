@@ -33,6 +33,8 @@ import {
   ActionSetVariableMap,
   ActionSetVariablesModal,
   ActionGetEmailDraftOfWebPage,
+  ActionGetSocialMediaPostDraftOfWebPage,
+  ActionGetSocialMediaPostContentOfWebPage,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -64,10 +66,11 @@ const ActionClassMap = {
   [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
-  [ActionGetReadabilityContentsOfWebPage.type]:
-    ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
+  [ActionGetSocialMediaPostDraftOfWebPage.type]: ActionGetSocialMediaPostDraftOfWebPage,
+  [ActionGetSocialMediaPostContentOfWebPage.type]: ActionGetSocialMediaPostContentOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

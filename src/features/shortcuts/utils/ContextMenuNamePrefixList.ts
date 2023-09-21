@@ -1,4 +1,8 @@
-const ContextMenuNamePrefixList = ['[Gmail] ', '[Outlook] '] as const
+const ContextMenuNamePrefixList = [
+  '[Gmail] ',
+  '[Outlook] ',
+  '[Twitter] ',
+] as const
 export const ContextMenuNamePrefixRegex = new RegExp(
   ContextMenuNamePrefixList.join('|')
     .replace(/\[/g, '\\[')

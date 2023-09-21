@@ -6,9 +6,9 @@ import {
   templateParserDecorator,
   withLoading,
 } from '@/features/shortcuts/decorators'
-import { getEmailWebsitePageDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
-export class ActionGetEmailDraftOfWebPage extends Action {
-  static type: ActionIdentifier = 'GET_EMAIL_DRAFT_OF_WEBPAGE'
+import { getSocialMediaPostContentOrDraft } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
+export class ActionGetSocialMediaPostDraftOfWebPage extends Action {
+  static type: ActionIdentifier = 'GET_SOCIAL_MEDIA_POST_DRAFT_OF_WEBPAGE'
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -23,19 +23,15 @@ export class ActionGetEmailDraftOfWebPage extends Action {
   })
   @withLoading()
   async execute(params: ActionParameters, engine: any) {
+    const OperationElementElementSelector =
+      this.parameters.OperationElementElementSelector ||
+      params.OperationElementElementSelector ||
+      ''
     try {
-      const OperationElementElementSelector =
-        this.parameters.OperationElementElementSelector ||
-        params.OperationElementElementSelector ||
-        ''
-      if (OperationElementElementSelector) {
-        const result = await getEmailWebsitePageDraft(
-          OperationElementElementSelector,
-        )
-        this.output = result
-      } else {
-        this.output = ''
-      }
+      const result = await getSocialMediaPostContentOrDraft(
+        OperationElementElementSelector,
+      )
+      this.output = result
     } catch (e) {
       this.error = (e as Error).toString()
     }

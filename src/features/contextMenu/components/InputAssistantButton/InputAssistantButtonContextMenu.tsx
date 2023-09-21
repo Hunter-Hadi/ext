@@ -24,15 +24,20 @@ interface InputAssistantButtonContextMenuProps {
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
 }
-const InputAssistantButtonContextMenu: FC<
-  InputAssistantButtonContextMenuProps
-> = (props) => {
-  const { buttonKey, children, root, rootId, permissionWrapperCardSceneType } =
-    props
+const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> = (
+  props,
+) => {
+  const {
+    buttonKey,
+    children,
+    root,
+    rootId,
+    permissionWrapperCardSceneType,
+  } = props
   const { currentUserPlan } = useUserInfo()
   const permissionCardMap = usePermissionCardMap()
   const { createConversation } = useClientConversation()
-  const { contextMenuList } = useContextMenuList(buttonKey)
+  const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { loading } = useRecoilValue(ChatGPTConversationState)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
   const hasPermission = useMemo(() => {
@@ -83,13 +88,13 @@ const InputAssistantButtonContextMenu: FC<
   )
   return (
     <FloatingContextMenuList
-      defaultPlacement={'top-start'}
+      defaultPlacement={'bottom-start'}
       defaultFallbackPlacements={[
-        'top-end',
-        'top',
-        'bottom-start',
         'bottom-end',
         'bottom',
+        'top-start',
+        'top-end',
+        'top',
         'right',
         'left',
       ]}

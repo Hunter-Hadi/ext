@@ -7,7 +7,7 @@ import {
   withLoading,
 } from '@/features/shortcuts/decorators'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
-import { getEmailWebsitePageContentsOrDraft } from '@/features/shortcuts/actions/web/email/getEmailWebsitePageContentsOrDraft'
+import { getEmailWebsitePageContentsOrDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 export class ActionGetEmailContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   constructor(

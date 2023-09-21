@@ -23,13 +23,15 @@ export interface IInputAssistantButtonGroupConfig
   extends IInputAssistantButtonGroupConfigBase {
   enable: boolean
   rootSelector: string
-  // 给root添加的样式
-  rootStyle?: string
   // 举例root还有多少层parent
   rootParentDeep: number
-  rootParentStyle?: string
   rootWrapperTagName: string
   appendPosition: number
+  // 给root添加的样式
+  rootStyle?: string
+  rootParentStyle?: string
+  // 给root的parent添加的样式的层数
+  rootParentStyleDeep?: number
   InputAssistantBoxStyle?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
@@ -42,26 +44,31 @@ const IInputAssistantButtonGroupConfig = {
     rootParentDeep: 0,
     rootWrapperTagName: 'td',
     composeNewButton: {
-      tooltip: 'client:input_assistant_button__quick_compose__tooltip',
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
       permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
     },
     composeReplyButton: {
-      tooltip: 'client:input_assistant_button__quick_reply__tooltip',
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
       permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
     },
     refineDraftButton: {
-      tooltip: 'client:input_assistant_button__edit_or_review_draft__tooltip',
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
       permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
     },
     appendPosition: 1,
     CTAButtonStyle: {
+      borderRadius: '18px 0 0 18px',
       iconSize: 18,
       padding: '9px 12px',
     },
+    DropdownButtonStyle: {
+      borderRadius: '0 18px 18px 0',
+    },
     InputAssistantBoxStyle: {
+      borderRadius: '18px',
       margin: '0 0 0 12px',
     },
   },
@@ -73,17 +80,17 @@ const IInputAssistantButtonGroupConfig = {
     rootParentStyle: 'overflow: unset;',
     rootWrapperTagName: 'div',
     composeNewButton: {
-      tooltip: 'client:input_assistant_button__quick_compose__tooltip',
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
       permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
     },
     composeReplyButton: {
-      tooltip: 'client:input_assistant_button__quick_reply__tooltip',
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
       permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
     },
     refineDraftButton: {
-      tooltip: 'client:input_assistant_button__edit_or_review_draft__tooltip',
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
       permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
     },
@@ -107,17 +114,17 @@ const IInputAssistantButtonGroupConfig = {
     rootParentStyle: 'overflow: unset;',
     rootWrapperTagName: 'div',
     composeNewButton: {
-      tooltip: 'client:input_assistant_button__quick_compose__tooltip',
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
       permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
     },
     composeReplyButton: {
-      tooltip: 'client:input_assistant_button__quick_reply__tooltip',
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
       permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
     },
     refineDraftButton: {
-      tooltip: 'client:input_assistant_button__edit_or_review_draft__tooltip',
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
       permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
     },
@@ -140,19 +147,19 @@ const IInputAssistantButtonGroupConfig = {
     rootParentStyle: 'overflow: unset;',
     rootWrapperTagName: 'div',
     composeNewButton: {
-      tooltip: 'client:input_assistant_button__quick_compose__tooltip',
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_NEW_BUTTON',
     },
     composeReplyButton: {
-      tooltip: 'client:input_assistant_button__quick_reply__tooltip',
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
     },
     refineDraftButton: {
-      tooltip: 'client:input_assistant_button__edit_or_review_draft__tooltip',
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+      permissionWrapperCardSceneType: 'OUTLOOK_REFINE_DRAFT_BUTTON',
     },
     appendPosition: 1,
     CTAButtonStyle: {
@@ -164,6 +171,38 @@ const IInputAssistantButtonGroupConfig = {
     InputAssistantBoxStyle: {
       margin: '0 0 0 12px',
     },
+  },
+  'twitter.com': {
+    enable: true,
+    rootSelector: 'div[data-testid="toolBar"] > div:nth-child(2)',
+    rootParentDeep: 0,
+    rootParentStyleDeep: 4,
+    rootParentStyle: 'z-index: 1001;',
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+    },
+    CTAButtonStyle: {
+      borderRadius: '18px 0 0 18px',
+      padding: '8px 9px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 18px 18px 0',
+      padding: '8px 3px',
+    },
+    appendPosition: 0,
   },
 } as {
   [key in string]: IInputAssistantButtonGroupConfig

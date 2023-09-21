@@ -35,6 +35,19 @@ const InputAssistantPortal: FC = () => {
     )
   })
   const currentPageShow = useMemo(() => {
+    // gmail?: boolean
+    // outlook?: boolean
+    // twitter?: boolean
+    // linkedIn?: boolean
+    // facebook?: boolean
+    // youtube?: boolean
+    // instagram?: boolean
+    // reddit?: boolean
+    // googleMyBusiness?: boolean
+    // slack?: boolean
+    // discord?: boolean
+    // whatsApp?: boolean
+    // hubspot?: boolean
     const host = getCurrentDomainHost()
     if (host === 'mail.google.com') {
       return appSetting.userSettings?.inputAssistantButton?.gmail === true
@@ -45,6 +58,9 @@ const InputAssistantPortal: FC = () => {
       host === 'outlook.office365.com'
     ) {
       return appSetting.userSettings?.inputAssistantButton?.outlook === true
+    }
+    if (host === 'twitter.com') {
+      return appSetting.userSettings?.inputAssistantButton?.twitter === true
     }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])

@@ -43,7 +43,7 @@ class InputAssistantButtonManager {
         return
       }
       if (this.config) {
-        const { rootSelector, rootParentDeep } = this.config
+        const { rootSelector, rootParentDeep = 0 } = this.config
         const rootElements = document.querySelectorAll(rootSelector)
         let isAddNew = false
         rootElements.forEach((element) => {
@@ -76,16 +76,26 @@ class InputAssistantButtonManager {
     ) {
       return null
     }
-    if (rootElement && this.config.rootStyle) {
-      rootElement.style.cssText = this.config.rootStyle
-      if (this.config.rootParentStyle && rootElement.parentElement) {
-        rootElement.parentElement.style.cssText = this.config.rootStyle
+    const { rootStyle, rootParentStyle, rootParentStyleDeep = 1 } = this.config
+    if (rootElement && rootStyle) {
+      rootElement.style.cssText = rootStyle
+    }
+    if (rootParentStyle) {
+      let deep = 0
+      let parentElement: HTMLElement = rootElement
+      while (deep < rootParentStyleDeep) {
+        deep++
+        parentElement = parentElement?.parentElement as HTMLElement
+      }
+      if (parentElement) {
+        parentElement.style.cssText = rootParentStyle
       }
     }
     const id = uuidV4()
     const { rootWrapperTagName, appendPosition } = this.config
     const isSupportWebComponent = 'customElements' in window
     const rootWrapperElement = document.createElement(rootWrapperTagName)
+    rootWrapperElement.style.position = 'relative'
     const webComponentRoot = document.createElement(
       isSupportWebComponent ? 'maxai-input-assistant-button' : 'div',
     )

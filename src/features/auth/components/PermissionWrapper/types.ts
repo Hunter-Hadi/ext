@@ -29,8 +29,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'OUTLOOK_REFINE_DRAFT_BUTTON',
 ] as const
 
-export type PermissionWrapperCardSceneType =
-  (typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST)[number]
+export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
 
 export type PermissionWrapperCardType = {
   sceneType: PermissionWrapperCardSceneType
@@ -210,6 +209,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // pdf ai viewer
   PDF_AI_VIEWER: {
     imageUrl: `${getChromeExtensionAssetsURL('/images/upgrade/pdf.png')}`,
+    videoUrl: `https://www.youtube.com/embed/eYO5Dh6Ruic`,
     title: (t) => t('client:permission__pricing_hook__pdf_ai_viewer__title'),
     description: (t) =>
       t('client:permission__pricing_hook__pdf_ai_viewer__description'),

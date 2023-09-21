@@ -23,15 +23,22 @@ export interface IInputAssistantButtonGroupConfig
   extends IInputAssistantButtonGroupConfigBase {
   enable: boolean
   rootSelector: string
-  // 举例root还有多少层parent
+  // 距离root还有多少层parent
   rootParentDeep: number
+  // 渲染根节点的TagName
   rootWrapperTagName: string
+  // 添加到root容器的第几个位置
   appendPosition: number
+  // 给rootSelector添加的样式
+  rootSelectorStyle?: string
   // 给root添加的样式
   rootStyle?: string
+  // 给root的parent添加的样式
   rootParentStyle?: string
   // 给root的parent添加的样式的层数
   rootParentStyleDeep?: number
+  // 给wrapper添加的样式
+  rootWrapperStyle?: string
   InputAssistantBoxStyle?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
@@ -174,8 +181,10 @@ const IInputAssistantButtonGroupConfig = {
   },
   'twitter.com': {
     enable: true,
-    rootSelector: 'div[data-testid="toolBar"] > div:nth-child(2)',
-    rootParentDeep: 0,
+    rootSelector:
+      'div[data-testid="toolBar"] > div:nth-child(2) div[role="button"][data-testid]',
+    rootSelectorStyle: 'order:2;',
+    rootParentDeep: 1,
     rootParentStyleDeep: 4,
     rootParentStyle: 'z-index: 1001;',
     rootWrapperTagName: 'div',
@@ -205,7 +214,9 @@ const IInputAssistantButtonGroupConfig = {
     },
     InputAssistantBoxStyle: {
       borderRadius: '18px',
+      margin: '0 0 0 12px',
     },
+    rootWrapperStyle: 'position: relative;order :1;',
     appendPosition: 0,
   },
 } as {

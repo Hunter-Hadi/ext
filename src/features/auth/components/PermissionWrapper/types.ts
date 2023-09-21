@@ -402,7 +402,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Twitter cta button - compose new
   TWITTER_COMPOSE_NEW_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-email.png',
+      '/images/upgrade/input-assistant-social-media.png',
     )}`,
     title: (t) =>
       t(
@@ -418,7 +418,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Twitter cta button - compose reply
   TWITTER_COMPOSE_REPLY_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-email.png',
+      '/images/upgrade/input-assistant-social-media.png',
     )}`,
     title: (t) =>
       t(
@@ -434,7 +434,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Twitter dropdown button - refine draft
   TWITTER_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-email.png',
+      '/images/upgrade/input-assistant-social-media.png',
     )}`,
     title: (t) =>
       t(

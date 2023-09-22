@@ -214,7 +214,7 @@ const IInputAssistantButtonGroupConfig = {
       borderRadius: '18px',
       margin: '0 0 0 12px',
     },
-    rootWrapperStyle: 'position: relative;order :1;',
+    rootWrapperStyle: 'order :1;',
     appendPosition: 0,
   },
 } as {

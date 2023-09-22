@@ -288,8 +288,8 @@ export default class ConversationManager {
     )
     if (conversation) {
       // 更新最后访问时间
-      conversation.updated_at = new Date().toISOString()
-      await this.conversationDB.addOrUpdateConversation(conversation)
+      // conversation.updated_at = new Date().toISOString()
+      // await this.conversationDB.addOrUpdateConversation(conversation)
       // 瘦身
       conversation.messages = conversation.messages.map((message) => {
         // 因为要发给客户端，所以需要瘦身

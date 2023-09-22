@@ -44,11 +44,16 @@ class InputAssistantButtonManager {
       }
       if (this.config) {
         const {
-          rootSelector,
+          rootSelectors,
           rootSelectorStyle,
           rootParentDeep = 0,
         } = this.config
-        const rootElements = document.querySelectorAll(rootSelector)
+        const rootElements: HTMLElement[] = []
+        rootSelectors.map((rootSelector) =>
+          rootElements.push(
+            ...(document.querySelectorAll(rootSelector) as any),
+          ),
+        )
         let isAddNew = false
         rootElements.forEach((element) => {
           const origin = element as HTMLElement

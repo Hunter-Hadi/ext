@@ -86,8 +86,22 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   const [ctaTooltipShow, setCtaTooltipShow] = useState(false)
   const [dropdownTooltipShow, setDropdownTooltipShow] = useState(false)
   const memoButtonSx = useMemo(() => {
+    let cloneCTAButtonStyle = cloneDeep(CTAButtonStyle)
+    let cloneDropdownButtonStyle = cloneDeep(DropdownButtonStyle)
     let ctaButtonSx = {}
     let dropdownButtonSx = {}
+    buttonGroup.forEach((button) => {
+      if (button.CTAButtonStyle) {
+        cloneCTAButtonStyle = Object.assign(cloneCTAButtonStyle, {
+          ...button.CTAButtonStyle,
+        })
+      }
+      if (button.DropdownButtonStyle) {
+        cloneDropdownButtonStyle = Object.assign(cloneDropdownButtonStyle, {
+          ...button.DropdownButtonStyle,
+        })
+      }
+    })
     if (ctaButtonSx) {
       const {
         backgroundColor = '#7601D3',
@@ -100,7 +114,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderWidth = '0 1px 0 0',
         iconSize = 20,
         padding = '8px 12px',
-      } = props.CTAButtonStyle || {}
+      } = cloneCTAButtonStyle || {}
       ctaButtonSx = {
         minWidth: 'unset',
         backgroundColor,
@@ -130,7 +144,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderWidth = '0',
         iconSize = 20,
         padding = '8px 4px',
-      } = props.DropdownButtonStyle || {}
+      } = cloneDropdownButtonStyle || {}
       dropdownButtonSx = {
         minWidth: 'unset',
         backgroundColor: isCTAHover ? hoverBackgroundColor : backgroundColor,
@@ -155,9 +169,14 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       ctaButtonSx: SxProps
       dropdownButtonSx: SxProps
     }
-  }, [CTAButtonStyle, DropdownButtonStyle, isCTAHover])
+  }, [CTAButtonStyle, DropdownButtonStyle, isCTAHover, buttonGroup])
   const inputAssistantBoxStyle = useMemo(() => {
-    const cloneSx = cloneDeep(InputAssistantBoxSx) as any
+    const cloneSx = (cloneDeep(InputAssistantBoxSx) as any) || {}
+    buttonGroup.forEach((button) => {
+      if (button.InputAssistantBoxSx) {
+        Object.assign(cloneSx, button.InputAssistantBoxSx)
+      }
+    })
     const InputAssistantBoxSxHover = {
       boxShadow:
         '0px 2px 3px 1px rgba(118, 1, 211, 0.16), 1px 0px 2px 0px rgba(118, 1, 211, 0.08), -1px 0px 2px 0px rgba(118, 1, 211, 0.08)',
@@ -170,7 +189,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       ...cloneSx,
       ...(isBoxHover ? InputAssistantBoxSxHover : {}),
     } as React.CSSProperties
-  }, [InputAssistantBoxSx, isBoxHover])
+  }, [InputAssistantBoxSx, isBoxHover, buttonGroup])
   useEffect(() => {
     if (shadowRoot) {
       const emotionRoot = document.createElement('style')
@@ -210,7 +229,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           }
           root={contextMenuContainer as HTMLElement}
         >
-          <div>
+          <div style={{ display: 'flex' }}>
             {emotionCacheRef.current && (
               <CacheProvider value={emotionCacheRef.current}>
                 <TextOnlyTooltip
@@ -270,7 +289,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           }
           root={contextMenuContainer as HTMLElement}
         >
-          <div>
+          <div style={{ display: 'flex' }}>
             {emotionCacheRef.current && (
               <CacheProvider value={emotionCacheRef.current}>
                 <TextOnlyTooltip

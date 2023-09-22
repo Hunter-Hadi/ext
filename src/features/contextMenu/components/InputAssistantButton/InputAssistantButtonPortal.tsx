@@ -57,6 +57,9 @@ const InputAssistantPortal: FC = () => {
     if (host === 'twitter.com') {
       return appSetting.userSettings?.inputAssistantButton?.twitter === true
     }
+    if (host === 'linkedin.com') {
+      return appSetting.userSettings?.inputAssistantButton?.linkedIn === true
+    }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])
   useEffect(() => {
@@ -77,7 +80,7 @@ const InputAssistantPortal: FC = () => {
             rootId={observerData.id}
             buttonGroup={observerData.buttonGroup}
             root={observerData!.renderRootElement as HTMLElement}
-            InputAssistantBoxSx={config?.InputAssistantBoxStyle}
+            InputAssistantBoxSx={config?.InputAssistantBoxSx}
             CTAButtonStyle={config?.CTAButtonStyle}
             DropdownButtonStyle={config?.DropdownButtonStyle}
           />,

@@ -8,6 +8,9 @@ export interface IInputAssistantButton {
   tooltip: I18nextKeysType
   buttonKey: IChromeExtensionButtonSettingKey
   permissionWrapperCardSceneType: PermissionWrapperCardSceneType
+  InputAssistantBoxSx?: SxProps
+  CTAButtonStyle?: InputAssistantButtonStyle
+  DropdownButtonStyle?: InputAssistantButtonStyle
 }
 export type IInputAssistantButtonKeyType =
   | 'composeNewButton'
@@ -22,7 +25,7 @@ interface IInputAssistantButtonGroupConfigBase {
 export interface IInputAssistantButtonGroupConfig
   extends IInputAssistantButtonGroupConfigBase {
   enable: boolean
-  rootSelector: string
+  rootSelectors: string[]
   // 距离root还有多少层parent
   rootParentDeep: number
   // 渲染根节点的TagName
@@ -39,7 +42,7 @@ export interface IInputAssistantButtonGroupConfig
   rootParentStyleDeep?: number
   // 给wrapper添加的样式
   rootWrapperStyle?: string
-  InputAssistantBoxStyle?: SxProps
+  InputAssistantBoxSx?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
 }
@@ -47,7 +50,7 @@ export interface IInputAssistantButtonGroupConfig
 const IInputAssistantButtonGroupConfig = {
   'mail.google.com': {
     enable: true,
-    rootSelector: '.btC',
+    rootSelectors: ['.btC'],
     rootParentDeep: 0,
     rootWrapperTagName: 'td',
     composeNewButton: {
@@ -74,14 +77,14 @@ const IInputAssistantButtonGroupConfig = {
     DropdownButtonStyle: {
       borderRadius: '0 18px 18px 0',
     },
-    InputAssistantBoxStyle: {
+    InputAssistantBoxSx: {
       borderRadius: '18px',
       margin: '0 0 0 12px',
     },
   },
   'outlook.office.com': {
     enable: true,
-    rootSelector: 'div[data-testid="ComposeSendButton"]',
+    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
     rootParentDeep: 1,
     rootStyle: 'overflow: unset;',
     rootParentStyle: 'overflow: unset;',
@@ -109,13 +112,13 @@ const IInputAssistantButtonGroupConfig = {
     DropdownButtonStyle: {
       padding: '6px',
     },
-    InputAssistantBoxStyle: {
+    InputAssistantBoxSx: {
       margin: '0 0 0 12px',
     },
   },
   'outlook.live.com': {
     enable: true,
-    rootSelector: 'div[data-testid="ComposeSendButton"]',
+    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
     rootParentDeep: 1,
     rootStyle: 'overflow: unset;',
     rootParentStyle: 'overflow: unset;',
@@ -142,13 +145,13 @@ const IInputAssistantButtonGroupConfig = {
     DropdownButtonStyle: {
       padding: '6px',
     },
-    InputAssistantBoxStyle: {
+    InputAssistantBoxSx: {
       margin: '0 0 0 12px',
     },
   },
   'outlook.office365.com': {
     enable: true,
-    rootSelector: 'div[data-testid="ComposeSendButton"]',
+    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
     rootParentDeep: 1,
     rootStyle: 'overflow: unset;',
     rootParentStyle: 'overflow: unset;',
@@ -175,14 +178,15 @@ const IInputAssistantButtonGroupConfig = {
     DropdownButtonStyle: {
       padding: '6px',
     },
-    InputAssistantBoxStyle: {
+    InputAssistantBoxSx: {
       margin: '0 0 0 12px',
     },
   },
   'twitter.com': {
     enable: true,
-    rootSelector:
+    rootSelectors: [
       'div[data-testid="toolBar"] > div:nth-child(2) div[role="button"][data-testid]',
+    ],
     rootSelectorStyle: 'order:2;',
     rootParentDeep: 1,
     rootWrapperTagName: 'div',
@@ -210,12 +214,59 @@ const IInputAssistantButtonGroupConfig = {
       borderRadius: '0 18px 18px 0',
       padding: '8px 3px',
     },
-    InputAssistantBoxStyle: {
+    InputAssistantBoxSx: {
       borderRadius: '18px',
       margin: '0 0 0 12px',
     },
     rootWrapperStyle: 'order :1;',
     appendPosition: 0,
+  },
+  'linkedin.com': {
+    enable: true,
+    rootSelectors: [
+      '.comments-comment-box-comment__text-editor + div > div',
+      '.article-editor-toolbar .artdeco-button--primary',
+    ],
+    appendPosition: 0,
+    rootSelectorStyle: 'order:2;',
+    rootParentDeep: 1,
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_REPLY_BUTTON',
+      CTAButtonStyle: {
+        padding: '2px 6px',
+      },
+      DropdownButtonStyle: {
+        padding: '0px',
+      },
+      InputAssistantBoxSx: {
+        marginTop: '6px',
+      },
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'TWITTER_REFINE_DRAFT_BUTTON',
+    },
+    CTAButtonStyle: {
+      iconSize: 16,
+      borderRadius: '16px 0 0 16px',
+      padding: '8px 9px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 16px 16px 0',
+      padding: '6px 3px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '16px',
+    },
   },
 } as {
   [key in string]: IInputAssistantButtonGroupConfig

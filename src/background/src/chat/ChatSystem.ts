@@ -130,10 +130,9 @@ class ChatSystem implements ChatSystemInterface {
           case 'Client_changeConversation': {
             const { conversationId } = data
             if (conversationId) {
-              const conversation =
-                await ConversationManager.conversationDB.getConversationById(
-                  conversationId,
-                )
+              const conversation = await ConversationManager.conversationDB.getConversationById(
+                conversationId,
+              )
               if (conversation) {
                 await this.switchAdapterWithConversation(conversation)
                 return {
@@ -156,11 +155,11 @@ class ChatSystem implements ChatSystemInterface {
               let question = data.question
               let options = data.options
               console.log('新版Conversation 提问', question, options)
+
               if (question.conversationId) {
-                const conversation =
-                  await ConversationManager.conversationDB.getConversationById(
-                    question.conversationId,
-                  )
+                const conversation = await ConversationManager.conversationDB.getConversationById(
+                  question.conversationId,
+                )
                 if (conversation) {
                   // 如果会话存在，但是AIProvider不一致，需要切换AIProvider
                   if (
@@ -399,10 +398,9 @@ class ChatSystem implements ChatSystemInterface {
     if (!this.currentAdapter || !conversationId) {
       return false
     }
-    const conversation =
-      await ConversationManager.conversationDB.getConversationById(
-        conversationId,
-      )
+    const conversation = await ConversationManager.conversationDB.getConversationById(
+      conversationId,
+    )
     // 如果conversation存在
     if (conversation) {
       await this.switchAdapterWithConversation(conversation, false)

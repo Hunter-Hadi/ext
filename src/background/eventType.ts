@@ -1,4 +1,5 @@
 // 客户端监听event
+import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
 import {
   IShortCutsClientListenEvent,
   IShortCutsSendEvent,
@@ -92,6 +93,7 @@ export type IChromeExtensionListenEvent =
   | IOpenAIChatSendEvent
   | IChromeExtensionClientSendEvent
   | IShortCutsSendEvent
+  | ISearchWithAISendEvent
 
 // chrome extension 发送 event
 export type IChromeExtensionSendEvent =

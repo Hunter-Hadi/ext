@@ -86,6 +86,10 @@ export const getDefaultChromeExtensionSettings =
           gmail: true,
           outlook: true,
         },
+        searchWithAI: {
+          triggerMode: 'always',
+          webAccessPrompt: true,
+        },
       },
       buttonSettings: {
         inputAssistantComposeReplyButton: {

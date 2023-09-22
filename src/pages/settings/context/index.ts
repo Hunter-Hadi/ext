@@ -39,6 +39,11 @@ export const settingsPageRouterList = [
   {
     route: '/language',
     label: 'left_menu__languages',
+    divider: false,
+  },
+  {
+    route: '/search-with-ai',
+    label: 'left_menu__search_with_ai',
     divider: true,
   },
   {

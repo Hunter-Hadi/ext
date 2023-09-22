@@ -193,10 +193,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       event?.stopPropagation?.()
                       event?.preventDefault?.()
                       if (onPermission) {
-                        const {
-                          success,
-                          cardSettings,
-                        } = await onPermission(
+                        const { success, cardSettings } = await onPermission(
                           currentUserPlan,
                           permissionCard,
                           [event, ...args],
@@ -236,10 +233,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       event?.stopPropagation?.()
                       event?.preventDefault?.()
                       if (onPermission) {
-                        const {
-                          success,
-                          cardSettings,
-                        } = await onPermission(
+                        const { success, cardSettings } = await onPermission(
                           currentUserPlan,
                           permissionCard,
                           [event, ...args],

@@ -56,6 +56,7 @@ import {
 } from '@/background/utils/syncSettings'
 import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
+import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 
 /**
  * background.js 入口
@@ -181,6 +182,9 @@ const initChromeExtensionMessage = () => {
   chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
+
+  // search with ai
+  SearchWithAIMessageInit()
 }
 
 /**

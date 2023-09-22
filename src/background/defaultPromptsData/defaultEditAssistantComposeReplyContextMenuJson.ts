@@ -423,7 +423,7 @@ Do not use hashtags. Write the reply like a real person would.
 
 Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write a concise reply to the post/message above by properly expanding the following points:
+Now, write a concise reply to the post/message above by writing a better version of the following points:
 {{KEY_POINTS}}`,
               variables: [
                 {

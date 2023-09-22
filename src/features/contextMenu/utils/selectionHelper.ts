@@ -1509,7 +1509,6 @@ export const getRichTextEditorLineText = (
             const host = getCurrentDomainHost()
             let isNewLine = false
             let editableElement = rangeElement
-            debugger
             if (location.href.startsWith(`https://${host}/mail/`)) {
               console.log(
                 'lineText outlook.live.com rangeElement: \t',

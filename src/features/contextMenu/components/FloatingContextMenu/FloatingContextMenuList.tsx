@@ -116,7 +116,7 @@ const FloatingContextMenuList: FC<
             <Box
               key={menuItem.id + '_group_spector'}
               aria-disabled={true}
-              onClick={(event) => {
+              onClick={(event: any) => {
                 event.stopPropagation()
                 event.preventDefault()
               }}
@@ -145,7 +145,7 @@ const FloatingContextMenuList: FC<
               px: 1,
               pointerEvents: 'none',
             }}
-            onClick={(event) => {
+            onClick={(event: any) => {
               event.stopPropagation()
               event.preventDefault()
             }}

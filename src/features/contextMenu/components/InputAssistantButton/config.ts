@@ -185,8 +185,6 @@ const IInputAssistantButtonGroupConfig = {
       'div[data-testid="toolBar"] > div:nth-child(2) div[role="button"][data-testid]',
     rootSelectorStyle: 'order:2;',
     rootParentDeep: 1,
-    rootParentStyleDeep: 4,
-    rootParentStyle: 'z-index: 1001;',
     rootWrapperTagName: 'div',
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',

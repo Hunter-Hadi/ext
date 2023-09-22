@@ -90,17 +90,17 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
     ],
   )
   useEffect(() => {
-    const modalRoot = root as HTMLDivElement
-    if (modalRoot && !emotionCacheRef.current) {
+    if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')
-      modalRoot.appendChild(emotionRoot)
+      emotionRoot.setAttribute('data-emotion-id', rootId)
+      root.appendChild(emotionRoot)
       emotionCacheRef.current = createCache({
         key: `max-ai-input-assistant-context-menu`,
         prepend: true,
         container: emotionRoot,
       })
     }
-  }, [root])
+  }, [root, rootId])
   if (!root || !emotionCacheRef.current) {
     return null
   }

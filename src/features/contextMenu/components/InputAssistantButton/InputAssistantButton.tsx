@@ -81,7 +81,8 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     setContextMenuContainer,
   ] = useState<HTMLElement | null>(null)
   const { loading } = useRecoilValue(ChatGPTConversationState)
-  const [isCTAHover, setCTAIsHover] = useState(false)
+  const [isCTAHover, setIsCTAHover] = useState(false)
+  const [isBoxHover, setIsBoxHover] = useState(false)
   const [ctaTooltipShow, setCtaTooltipShow] = useState(false)
   const [dropdownTooltipShow, setDropdownTooltipShow] = useState(false)
   const memoButtonSx = useMemo(() => {
@@ -166,10 +167,10 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       delete cloneSx['&:hover']
     }
     return {
-      ...InputAssistantBoxSx,
-      ...InputAssistantBoxSxHover,
+      ...cloneSx,
+      ...(isBoxHover ? InputAssistantBoxSxHover : {}),
     } as React.CSSProperties
-  }, [InputAssistantBoxSx])
+  }, [InputAssistantBoxSx, isBoxHover])
   useEffect(() => {
     if (shadowRoot) {
       const emotionRoot = document.createElement('style')
@@ -197,6 +198,8 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderRadius: '4px',
         ...inputAssistantBoxStyle,
       }}
+      onMouseEnter={() => setIsBoxHover(true)}
+      onMouseLeave={() => setIsBoxHover(false)}
     >
       {buttonGroup[0] && (
         <InputAssistantButtonContextMenu
@@ -205,7 +208,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           permissionWrapperCardSceneType={
             buttonGroup[0].permissionWrapperCardSceneType
           }
-          root={contextMenuContainer}
+          root={contextMenuContainer as HTMLElement}
         >
           <div>
             {emotionCacheRef.current && (
@@ -227,11 +230,11 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     disabled={loading}
                     sx={memoButtonSx.ctaButtonSx}
                     onMouseEnter={() => {
-                      setCTAIsHover(true)
+                      setIsCTAHover(true)
                       setCtaTooltipShow(true)
                     }}
                     onMouseLeave={() => {
-                      setCTAIsHover(false)
+                      setIsCTAHover(false)
                       setCtaTooltipShow(false)
                     }}
                     onClick={() => {
@@ -268,7 +271,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           permissionWrapperCardSceneType={
             buttonGroup[1].permissionWrapperCardSceneType
           }
-          root={contextMenuContainer}
+          root={contextMenuContainer as HTMLElement}
         >
           <div>
             {emotionCacheRef.current && (

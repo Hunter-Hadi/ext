@@ -1064,8 +1064,25 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
               contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
               title: 'Reply with key points',
               modelKey: 'Sidebar',
-              template:
-                "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{CONTEXT}}\n``` \n\nInclude the following aspects in the reply:\n{{KEY_POINTS}}",
+              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and messages in an appropriate manner. 
+
+Your task is to write a reply to the following post/message on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Post/message:
+\`\`\` 
+{{CONTEXT}}
+\`\`\` 
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/message and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
+
+Do not use hashtags. Write the reply like a real person would. 
+
+Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+Now, write a concise reply to the post/message above by properly expanding the following points:
+{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Context',

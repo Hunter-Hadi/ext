@@ -60,7 +60,7 @@ export const getSocialMediaPostContent = (
       const tweetText = (tweetRoot.querySelector(
         'div[data-testid="tweetText"]',
       ) as HTMLDivElement).innerText
-      return `${nickName} ${userName} ${date}\n${tweetText}`
+      return `${nickName} @${userName} ${date}\n${tweetText}`
     }
   }
   return ''

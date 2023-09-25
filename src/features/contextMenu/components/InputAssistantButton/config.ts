@@ -225,8 +225,9 @@ const IInputAssistantButtonGroupConfig = {
     enable: true,
     rootSelectors: [
       '.comments-comment-box-comment__text-editor + div > div',
-      '.article-editor-toolbar .artdeco-button--primary',
+      '.share-box_actions .share-actions__primary-action',
     ],
+    rootStyle: 'display:flex;alight-items:center;',
     appendPosition: 0,
     rootSelectorStyle: 'order:2;',
     rootParentDeep: 1,
@@ -258,7 +259,7 @@ const IInputAssistantButtonGroupConfig = {
     CTAButtonStyle: {
       iconSize: 16,
       borderRadius: '16px 0 0 16px',
-      padding: '8px 9px',
+      padding: '8px 10px',
     },
     DropdownButtonStyle: {
       borderRadius: '0 16px 16px 0',
@@ -266,6 +267,7 @@ const IInputAssistantButtonGroupConfig = {
     },
     InputAssistantBoxSx: {
       borderRadius: '16px',
+      marginRight: '8px',
     },
   },
 } as {

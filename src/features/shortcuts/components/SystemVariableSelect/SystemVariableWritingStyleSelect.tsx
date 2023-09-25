@@ -81,7 +81,14 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
         <TextField
           {...params}
           label={label}
+          InputLabelProps={{
+            sx: { fontSize: '16px' },
+            ...params.InputLabelProps,
+          }}
           inputProps={{
+            sx: {
+              fontSize: '16px',
+            },
             ...params.inputProps,
             autoComplete: 'new-password', // disable autocomplete and autofill
           }}

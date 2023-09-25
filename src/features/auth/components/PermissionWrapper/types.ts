@@ -30,6 +30,9 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'TWITTER_COMPOSE_NEW_BUTTON',
   'TWITTER_COMPOSE_REPLY_BUTTON',
   'TWITTER_REFINE_DRAFT_BUTTON',
+  'LINKEDIN_COMPOSE_NEW_BUTTON',
+  'LINKEDIN_COMPOSE_REPLY_BUTTON',
+  'LINKEDIN_REFINE_DRAFT_BUTTON',
 ] as const
 
 export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
@@ -433,6 +436,54 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Twitter dropdown button - refine draft
   TWITTER_REFINE_DRAFT_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // linkedin cta button - compose new
+  LINKEDIN_COMPOSE_NEW_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // linkedin cta button - compose reply
+  LINKEDIN_COMPOSE_REPLY_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // linkedin dropdown button - refine draft
+  LINKEDIN_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-social-media.png',
     )}`,

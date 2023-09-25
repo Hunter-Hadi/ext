@@ -435,7 +435,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                   event.stopPropagation()
                 }
               }}
-              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                sx: {
+                  fontSize: '16px',
+                },
+              }}
+              InputLabelProps={{ shrink: true, sx: { fontSize: '16px' } }}
               multiline
               placeholder={textTypeVariable.placeholder}
               minRows={Math.min(currentModalConfig.maxTextareaMaxRows, 2)}

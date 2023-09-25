@@ -160,7 +160,14 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
         <TextField
           {...params}
           label={label}
+          InputLabelProps={{
+            sx: { fontSize: '16px' },
+            ...params.InputLabelProps,
+          }}
           inputProps={{
+            sx: {
+              fontSize: '16px',
+            },
             ...params.inputProps,
           }}
         />

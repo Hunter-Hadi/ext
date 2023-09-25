@@ -6,7 +6,7 @@ import {
   templateParserDecorator,
   withLoading,
 } from '@/features/shortcuts/decorators'
-import { getSocialMediaPostContentOrDraft } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
+import { getSocialMediaPostDraft } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
 export class ActionGetSocialMediaPostDraftOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_SOCIAL_MEDIA_POST_DRAFT_OF_WEBPAGE'
   constructor(
@@ -28,7 +28,7 @@ export class ActionGetSocialMediaPostDraftOfWebPage extends Action {
       params.OperationElementElementSelector ||
       ''
     try {
-      const result = await getSocialMediaPostContentOrDraft(
+      const result = await getSocialMediaPostDraft(
         OperationElementElementSelector,
       )
       this.output = result

@@ -27,6 +27,9 @@ const checkHostUsingButtonKeys = (
   if (host === 'twitter.com') {
     return getTwitterButtonGroup(config)
   }
+  if (host === 'linkedin.com') {
+    return getLinkedInButtonGroup(config)
+  }
   return [
     config.buttonGroupConfig.composeReplyButton,
     config.buttonGroupConfig.refineDraftButton,
@@ -123,4 +126,21 @@ const getTwitterButtonGroup = (
     buttonGroupConfig.refineDraftButton,
   ]
 }
+
+const getLinkedInButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (keyElement.classList.contains('share-box_actions')) {
+    return [
+      buttonGroupConfig.composeNewButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
 export default checkHostUsingButtonKeys

@@ -476,7 +476,7 @@ Now, write a concise reply to the post/message above by *writing a better versio
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: ['twitter.com'],
+        whitelist: ['twitter.com', 'linkedin.com'],
         blacklist: [],
         isWhitelistMode: true,
       },

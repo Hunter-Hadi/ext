@@ -394,43 +394,31 @@ const socialMediaPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
               contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
               title: 'Reply with key points',
               modelKey: 'Sidebar',
-              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner. 
-
-Your task is to write a reply to the following post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
-
-Post/comment:
-{{POST_CONTENT}}
-
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/message and the purpose of your reply.
-
-Choose simple words and phrases. Avoid ones that are too hard or confusing.
-
-Do not use hashtags. Write the reply like a real person would. 
-
-Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-
-Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
-{{KEY_POINTS}}`,
+              // NOTE: 交给GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE动态创建
+              // template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+              //
+              // Your task is to write a reply to the following post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+              //
+              // Post/comment:
+              // {{POST_CONTENT}}
+              //
+              // Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/message and the purpose of your reply.
+              //
+              // Choose simple words and phrases. Avoid ones that are too hard or confusing.
+              //
+              // Do not use hashtags. Write the reply like a real person would.
+              //
+              // Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+              //
+              // Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
+              // {{KEY_POINTS}}`,
               variables: [
-                {
-                  label: 'Context',
-                  VariableName: 'POST_CONTENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue: '{{POST_CONTENT}}',
-                },
                 {
                   label: 'Key points',
                   VariableName: 'KEY_POINTS',

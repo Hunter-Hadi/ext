@@ -21,13 +21,14 @@ ${content}`,
         data: commentData,
       })
     })
+    const last = comments[comments.length - 1]
+    const previous = comments.slice(0, comments.length - 1)
     return {
-      last: comments[comments.length - 1],
-      previous: comments
-        .slice(0, comments.length - 1)
-        .map((comment) => comment.text)
-        .join('\n'),
-      text: comments.join(''),
+      last,
+      lastText: comments[comments.length - 1].text,
+      previous,
+      previousText: previous.map((comment) => comment.text).join('\n'),
+      fullText: comments.join('\n'),
     }
   }
   return null
@@ -40,15 +41,71 @@ export interface ISocialMediaPost {
   title: string
 }
 
+export interface ISocialMediaPostContextData {
+  fullContext: string
+  postText: string
+  targetPostOrComment: string
+  post?: ISocialMediaPost
+  replyCommentText?: string
+  replyComment?: ICommentData
+  previousComments?: ICommentData[]
+  previousCommentsText?: string
+}
+
 export default class SocialMediaPostContext {
   post: ISocialMediaPost
   commentList: ICommentData[][] = []
   constructor(post: ISocialMediaPost) {
     this.post = post
   }
+  static get emptyData(): ISocialMediaPostContextData {
+    return {
+      fullContext: '',
+      targetPostOrComment: '',
+      postText: '',
+    }
+  }
   addCommentList(commentList: ICommentData[]) {
     this.commentList.push(commentList)
   }
+
+  get data(): ISocialMediaPostContextData {
+    const { content, author, date } = this.post
+    const commentsData = createCommentListData(this.commentList?.[0] || [])
+    const postText = `**Author:** ${author}
+**Date:** ${date}
+**Post:**
+${content}`
+    if (commentsData?.lastText) {
+      return {
+        targetPostOrComment: commentsData.lastText,
+        fullContext: commentsData.previousText
+          ? `${postText}
+${commentsData.previousText}
+${commentsData.lastText}`
+          : `${postText}
+${commentsData.lastText}`,
+        post: this.post,
+        postText,
+        replyCommentText: commentsData.last.text,
+        replyComment: commentsData.last.data,
+        previousComments: this.commentList?.[0] || [],
+        previousCommentsText: commentsData.previousText,
+      }
+    } else {
+      return {
+        targetPostOrComment: postText,
+        fullContext: postText,
+        post: this.post,
+        postText,
+        previousComments: this.commentList?.[0] || [],
+        previousCommentsText: commentsData?.previousText,
+      }
+    }
+  }
+  /**
+   * @deprecated
+   */
   generateMarkdownText() {
     try {
       const { content, author } = this.post

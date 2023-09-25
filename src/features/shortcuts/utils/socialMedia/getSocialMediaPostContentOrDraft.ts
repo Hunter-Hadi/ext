@@ -1,7 +1,9 @@
 import { getCurrentDomainHost } from '@/utils'
 import SocialMediaPostContext, {
   ICommentData,
+  ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
+import uniq from 'lodash-es/uniq'
 
 /**
  * 寻找父级元素包含的selector元素
@@ -61,7 +63,7 @@ export const getTwitterInputAssistantButtonRootContainer = (
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
-) => {
+): Promise<ISocialMediaPostContextData> => {
   const inputAssistantButton = document.querySelector(
     inputAssistantButtonElementSelector,
   ) as HTMLButtonElement
@@ -77,7 +79,7 @@ export const getSocialMediaPostContent = async (
       }, t),
     )
   if (!inputAssistantButton) {
-    return ''
+    return SocialMediaPostContext.emptyData
   }
   const host = getCurrentDomainHost()
   if (host === 'twitter.com') {
@@ -89,17 +91,23 @@ export const getSocialMediaPostContent = async (
       const userInfo = tweetRoot.querySelector(
         'div[data-testid="User-Name"]',
       ) as HTMLDivElement
-      const [nickName, userName] = Array.from(
-        userInfo?.querySelectorAll('span'),
+      const [nickName, userName] = uniq(
+        Array.from(userInfo?.querySelectorAll('span'))
+          .map((element) => element.textContent || '')
+          .filter((textContent) => textContent && textContent !== '·'),
       )
-        .map((element) => element.textContent || '')
-        .filter((textContent) => textContent && textContent !== '·')
       const date = tweetRoot?.querySelector('time')?.dateTime || ''
       console.log(nickName, userName, date)
       const tweetText = (tweetRoot.querySelector(
         'div[data-testid="tweetText"]',
       ) as HTMLDivElement).innerText
-      return `Nickname: ${nickName}\nUsername: @${userName}\nDate: ${date}\nPost/message:\n${tweetText}`
+      const twitterSocialMediaPostContext = new SocialMediaPostContext({
+        author: `${nickName}(${userName})`,
+        content: tweetText,
+        date,
+        title: '',
+      })
+      return twitterSocialMediaPostContext.data
     }
   }
   if (host === 'linkedin.com') {
@@ -126,7 +134,7 @@ export const getSocialMediaPostContent = async (
         const commentDate =
           (root.querySelector('time') as HTMLTimeElement)?.innerText || ''
         const seeMoreButton = root.querySelector(
-          '& > .comments-reply-item-content-body button.see-more',
+          '& > .comments-reply-item-content-body button.see-more' as any,
         ) as HTMLButtonElement
         if (seeMoreButton) {
           seeMoreButton.click()
@@ -134,10 +142,10 @@ export const getSocialMediaPostContent = async (
         }
         const commentContent =
           (root.querySelector(
-            '& > div.comments-comment-item-content-body',
+            '& > div.comments-comment-item-content-body' as any,
           ) as HTMLDivElement)?.innerText ||
           (root.querySelector(
-            '& > div.comments-reply-item-content-body',
+            '& > div.comments-reply-item-content-body' as any,
           ) as HTMLDivElement)?.innerText
         return {
           author: commentAuthor || '',
@@ -152,74 +160,73 @@ export const getSocialMediaPostContent = async (
           '.feed-shared-update-v2__description-wrapper',
           linkedInReplyBox,
         )
-        if (!articleContent) {
-          return ''
-        }
-        const articleRoot = articleContent?.parentElement as HTMLDivElement
-        console.log(articleRoot)
-        // see more button - button[role="button"].see-more
-        const seeMoreButton = articleRoot?.querySelector(
-          'button[role="button"].see-more',
-        ) as HTMLButtonElement
-        if (seeMoreButton) {
-          seeMoreButton.click()
-          await delay(100)
-        }
-        const account =
-          articleRoot?.querySelector(
-            '.update-components-actor__name span:not(.visually-hidden)',
-          )?.textContent || ''
-        const articleContentText = articleContent?.innerText || ''
-        // ml4 mt2 text-body-xsmall
-        const date = (
-          (articleRoot?.querySelector(
-            'div.ml4.mt2.text-body-xsmall',
-          ) as HTMLDivElement)?.innerText || ''
-        ).split('•')?.[0]
-        const socialMediaPostContext = new SocialMediaPostContext({
-          author: account,
-          content: articleContentText,
-          title: '',
-          date,
-        })
-        // 如果replyBox中有评论的容器，那么就是回复评论/回复评论的评论
-        // 文章底下的评论
-        if (
-          linkedInReplyBox.parentElement?.classList.contains(
-            'comments-comment-item__nested-items',
-          )
-        ) {
-          const linkedInPostComments: ICommentData[] = []
-          const linkedInFirstComment = findSelectorParent(
-            'article.comments-comments-list__comment-item',
-            inputAssistantButton,
-          ) as HTMLDivElement
-          const inputRoot = linkedInFirstComment?.querySelector(
-            'div.editor-content div[contenteditable="true"]',
-          ) as HTMLDivElement
-          const inputValue = inputRoot?.innerText || ''
-          linkedInPostComments.push(
-            await getLinkedInCommentDetail(linkedInFirstComment),
-          )
-          if (inputValue) {
-            // 可能要回复评论的评论
-            const nestedArticles = Array.from(
-              linkedInFirstComment.querySelectorAll('article'),
-            ) as HTMLDivElement[]
-            for (let i = 0; i < nestedArticles.length; i++) {
-              const nestedArticle = nestedArticles[i]
-              const nestedCommentDetail = await getLinkedInCommentDetail(
-                nestedArticle,
-              )
-              if (inputValue.startsWith(nestedCommentDetail.author)) {
-                linkedInPostComments.push(nestedCommentDetail)
-                break
+        if (articleContent) {
+          const articleRoot = articleContent?.parentElement as HTMLDivElement
+          console.log(articleRoot)
+          // see more button - button[role="button"].see-more
+          const seeMoreButton = articleRoot?.querySelector(
+            'button[role="button"].see-more',
+          ) as HTMLButtonElement
+          if (seeMoreButton) {
+            seeMoreButton.click()
+            await delay(100)
+          }
+          const account =
+            articleRoot?.querySelector(
+              '.update-components-actor__name span:not(.visually-hidden)',
+            )?.textContent || ''
+          const articleContentText = articleContent?.innerText || ''
+          // ml4 mt2 text-body-xsmall
+          const date = (
+            (articleRoot?.querySelector(
+              'div.ml4.mt2.text-body-xsmall',
+            ) as HTMLDivElement)?.innerText || ''
+          ).split('•')?.[0]
+          const socialMediaPostContext = new SocialMediaPostContext({
+            author: account,
+            content: articleContentText,
+            title: '',
+            date,
+          })
+          // 如果replyBox中有评论的容器，那么就是回复评论/回复评论的评论
+          // 文章底下的评论
+          if (
+            linkedInReplyBox.parentElement?.classList.contains(
+              'comments-comment-item__nested-items',
+            )
+          ) {
+            const linkedInPostComments: ICommentData[] = []
+            const linkedInFirstComment = findSelectorParent(
+              'article.comments-comments-list__comment-item',
+              inputAssistantButton,
+            ) as HTMLDivElement
+            const inputRoot = linkedInFirstComment?.querySelector(
+              'div.editor-content div[contenteditable="true"]',
+            ) as HTMLDivElement
+            const inputValue = inputRoot?.innerText || ''
+            linkedInPostComments.push(
+              await getLinkedInCommentDetail(linkedInFirstComment),
+            )
+            if (inputValue) {
+              // 可能要回复评论的评论
+              const nestedArticles = Array.from(
+                linkedInFirstComment.querySelectorAll('article'),
+              ) as HTMLDivElement[]
+              for (let i = 0; i < nestedArticles.length; i++) {
+                const nestedArticle = nestedArticles[i]
+                const nestedCommentDetail = await getLinkedInCommentDetail(
+                  nestedArticle,
+                )
+                if (inputValue.startsWith(nestedCommentDetail.author)) {
+                  linkedInPostComments.push(nestedCommentDetail)
+                  break
+                }
               }
             }
+            socialMediaPostContext.addCommentList(linkedInPostComments)
           }
-          socialMediaPostContext.addCommentList(linkedInPostComments)
+          return socialMediaPostContext.data
         }
-        return socialMediaPostContext.generateMarkdownText()
       }
     }
   }
@@ -319,9 +326,9 @@ export const getSocialMediaPostContent = async (
       }
       facebookSocialMediaPostContext.addCommentList(facebookPostComments)
     }
-    return facebookSocialMediaPostContext.generateMarkdownText()
+    return facebookSocialMediaPostContext.data
   }
-  return ''
+  return SocialMediaPostContext.emptyData
 }
 
 export const getSocialMediaPostDraft = async (
@@ -349,6 +356,14 @@ export const getSocialMediaPostDraft = async (
       30,
     )
     return (linkedinDraftEditor as HTMLDivElement)?.innerText || ''
+  }
+  if (host === 'facebook.com') {
+    const facebookDraftEditor = findSelectorParent(
+      'div[contenteditable="true"]',
+      inputAssistantButton,
+      30,
+    )
+    return (facebookDraftEditor as HTMLDivElement)?.innerText || ''
   }
   return ''
 }

@@ -1066,14 +1066,14 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
               modelKey: 'Sidebar',
               template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and messages in an appropriate manner. 
 
-Your task is to write a reply to the following post/message on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Post/message:
+Post/comment:
 \`\`\` 
 {{CONTEXT}}
 \`\`\` 
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/message and the purpose of your reply.
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing.
 
@@ -1081,7 +1081,7 @@ Do not use hashtags. Write the reply like a real person would.
 
 Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write a concise reply to the post/message above by *writing a better version* of the following points:
+Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
 {{KEY_POINTS}}`,
               variables: [
                 {

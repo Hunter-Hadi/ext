@@ -81,9 +81,12 @@ ${content}`
         targetPostOrComment: commentsData.lastText,
         fullContext: commentsData.previousText
           ? `${postText}
+
 ${commentsData.previousText}
+
 ${commentsData.lastText}`
           : `${postText}
+
 ${commentsData.lastText}`,
         post: this.post,
         postText,

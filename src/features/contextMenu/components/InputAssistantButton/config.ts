@@ -229,18 +229,17 @@ const IInputAssistantButtonGroupConfig = {
     ],
     rootStyle: 'display:flex;alight-items:center;',
     appendPosition: 0,
-    rootSelectorStyle: 'order:2;',
     rootParentDeep: 1,
     rootWrapperTagName: 'div',
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_NEW_BUTTON',
+      permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_NEW_BUTTON',
     },
     composeReplyButton: {
       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_REPLY_BUTTON',
+      permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_REPLY_BUTTON',
       CTAButtonStyle: {
         padding: '2px 6px',
       },
@@ -254,7 +253,7 @@ const IInputAssistantButtonGroupConfig = {
     refineDraftButton: {
       tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'TWITTER_REFINE_DRAFT_BUTTON',
+      permissionWrapperCardSceneType: 'LINKEDIN_REFINE_DRAFT_BUTTON',
     },
     CTAButtonStyle: {
       iconSize: 16,
@@ -264,6 +263,45 @@ const IInputAssistantButtonGroupConfig = {
     DropdownButtonStyle: {
       borderRadius: '0 16px 16px 0',
       padding: '6px 3px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '16px',
+      marginRight: '8px',
+    },
+  },
+  'facebook.com': {
+    enable: true,
+    rootSelectors: [
+      'div > div > div > #focused-state-composer-submit',
+      'form[method="POST"] div > span > div[aria-label="Emoji"]',
+    ],
+    rootStyle: 'display: flex;align-items: center;flex-direction: row;',
+    appendPosition: 0,
+    rootParentDeep: 1,
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'FACEBOOK_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'FACEBOOK_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'FACEBOOK_REFINE_DRAFT_BUTTON',
+    },
+    CTAButtonStyle: {
+      padding: '2px 6px',
+      iconSize: 16,
+      borderRadius: '16px 0 0 16px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 16px 16px 0',
+      padding: '0px',
     },
     InputAssistantBoxSx: {
       borderRadius: '16px',

@@ -2,6 +2,8 @@ const ContextMenuNamePrefixList = [
   '[Gmail] ',
   '[Outlook] ',
   '[Twitter] ',
+  '[LinkedIn] ',
+  '[Facebook] ',
 ] as const
 export const ContextMenuNamePrefixRegex = new RegExp(
   ContextMenuNamePrefixList.join('|')

@@ -3,7 +3,10 @@ import {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
-import { getTwitterInputAssistantButtonRootContainer } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
+import {
+  findSelectorParent,
+  getTwitterInputAssistantButtonRootContainer,
+} from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
 
 type getInputAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement
@@ -29,6 +32,9 @@ const checkHostUsingButtonKeys = (
   }
   if (host === 'linkedin.com') {
     return getLinkedInButtonGroup(config)
+  }
+  if (host === 'facebook.com') {
+    return getFacebookButtonGroup(config)
   }
   return [
     config.buttonGroupConfig.composeReplyButton,
@@ -143,4 +149,20 @@ const getLinkedInButtonGroup = (
   ]
 }
 
+const getFacebookButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  const isForm = findSelectorParent('form[method="POST"]', keyElement, 20)
+  if (isForm) {
+    return [
+      buttonGroupConfig.composeNewButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
 export default checkHostUsingButtonKeys

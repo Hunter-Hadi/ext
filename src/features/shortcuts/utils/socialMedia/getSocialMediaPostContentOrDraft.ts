@@ -1,5 +1,14 @@
 import { getCurrentDomainHost } from '@/utils'
+import SocialMediaPostContext, {
+  ICommentData,
+} from '@/features/shortcuts/utils/SocialMediaPostContext'
 
+/**
+ * 寻找父级元素包含的selector元素
+ * @param selector
+ * @param startElement
+ * @param maxDeep
+ */
 export const findSelectorParent = (
   selector: string,
   startElement: HTMLElement,
@@ -12,6 +21,25 @@ export const findSelectorParent = (
     deep++
   }
   return (parent.querySelector(selector) as HTMLElement) || null
+}
+/**
+ * 寻找父级元素是selector元素
+ * @param selector
+ * @param startElement
+ * @param maxDeep
+ */
+export const findParentEqualSelector = (
+  selector: string,
+  startElement: HTMLElement,
+  maxDeep = 20,
+) => {
+  let parent: HTMLElement = startElement
+  let deep = 0
+  while (deep < maxDeep && !parent.matches(selector)) {
+    parent = parent?.parentElement as HTMLElement
+    deep++
+  }
+  return parent.matches(selector) ? parent : null
 }
 
 export const getTwitterInputAssistantButtonRootContainer = (
@@ -75,40 +103,26 @@ export const getSocialMediaPostContent = async (
     }
   }
   if (host === 'linkedin.com') {
-    const commentRoot = findSelectorParent(
+    // linkedin button所在的地方的回复框
+    const linkedInReplyBox = findSelectorParent(
       '.comments-comment-box',
       inputAssistantButton,
     )
-    const articleRoot = findSelectorParent(
+    // linkedin button所在的地方的文章的评论根容器
+    const linkedInPostCommentRootContainer = findSelectorParent(
       '.social-details-social-activity',
-      commentRoot,
+      linkedInReplyBox,
     )
-    if (commentRoot) {
-      // `**Author:** [Author Name] | **Date:** [Date]
-      //
-      // Post content...
-      //
-      // ---
-      //
-      // **Comments**
-      //
-      // > **Author:** [Commenter 1] | **Date:** [Date]
-      //
-      // > Comment 1...
-      //
-      // >> **Reply from [Replier 1.1] | Date: [Date]**
-      //
-      // >> Reply to Comment 1...
-      //
-      // >>> **Reply form Me | Date: Now**
-      // >>> Reply to Comment 2...
-      // `
-      let comment = ''
-      const getLinkedInCommentDetail = async (root: HTMLElement) => {
-        const commentAuthor =
+    if (linkedInReplyBox) {
+      // 获取linkedin评论的作者，日期，内容
+      const getLinkedInCommentDetail = async (
+        root: HTMLElement,
+      ): Promise<ICommentData> => {
+        const commentAuthor = (
           (root.querySelector(
             'span.comments-post-meta__name span:not(.visually-hidden)',
           ) as HTMLSpanElement)?.innerText || ''
+        ).split('\n')[0]
         const commentDate =
           (root.querySelector('time') as HTMLTimeElement)?.innerText || ''
         const seeMoreButton = root.querySelector(
@@ -126,51 +140,17 @@ export const getSocialMediaPostContent = async (
             '& > div.comments-reply-item-content-body',
           ) as HTMLDivElement)?.innerText
         return {
-          commentAuthor,
-          commentDate,
-          commentContent,
+          author: commentAuthor || '',
+          date: commentDate || '',
+          content: commentContent || '',
         }
       }
-      // 文章底下的评论
-      if (
-        commentRoot.parentElement?.classList.contains(
-          'comments-comment-item__nested-items',
-        )
-      ) {
-        const commentRoot = findSelectorParent(
-          'article.comments-comments-list__comment-item',
-          inputAssistantButton,
-        ) as HTMLDivElement
-        const inputRoot = commentRoot?.querySelector(
-          'div.editor-content div[contenteditable="true"]',
-        ) as HTMLDivElement
-        const inputValue = inputRoot?.innerText || ''
-        const rootCommentDetail = await getLinkedInCommentDetail(commentRoot)
-        comment += `\n\n---\n\n**Comments**\n\n> **Author:** ${rootCommentDetail.commentAuthor} | **Date:** ${rootCommentDetail.commentDate}\n\n> ${rootCommentDetail.commentContent}`
-        let replyComment = ''
-        if (inputValue) {
-          // 可能要回复评论的评论
-          const nestedArticles = Array.from(
-            commentRoot.querySelectorAll('article'),
-          ) as HTMLDivElement[]
-          for (let i = 0; i < nestedArticles.length; i++) {
-            const nestedArticle = nestedArticles[i]
-            const nestedCommentDetail = await getLinkedInCommentDetail(
-              nestedArticle,
-            )
-            if (inputValue.startsWith(nestedCommentDetail.commentAuthor)) {
-              replyComment += `\n\n>> **Reply from ${nestedCommentDetail.commentAuthor} | Date: ${nestedCommentDetail.commentDate}**\n\n>> ${nestedCommentDetail.commentContent}`
-              break
-            }
-          }
-          comment += replyComment
-        }
-      }
-      if (articleRoot) {
+      // 获取文章本身的内容
+      if (linkedInPostCommentRootContainer) {
         //文章
         const articleContent = findSelectorParent(
           '.feed-shared-update-v2__description-wrapper',
-          commentRoot,
+          linkedInReplyBox,
         )
         if (!articleContent) {
           return ''
@@ -196,13 +176,150 @@ export const getSocialMediaPostContent = async (
             'div.ml4.mt2.text-body-xsmall',
           ) as HTMLDivElement)?.innerText || ''
         ).split('•')?.[0]
-        // **Author:** [Author Name] | **Date:** [Date]
-        return (
-          `Author: ${account}\nDate: ${date}\nPost/message:\n${articleContentText}` +
-          comment
-        )
+        const socialMediaPostContext = new SocialMediaPostContext({
+          author: account,
+          content: articleContentText,
+          title: '',
+          date,
+        })
+        // 如果replyBox中有评论的容器，那么就是回复评论/回复评论的评论
+        // 文章底下的评论
+        if (
+          linkedInReplyBox.parentElement?.classList.contains(
+            'comments-comment-item__nested-items',
+          )
+        ) {
+          const linkedInPostComments: ICommentData[] = []
+          const linkedInFirstComment = findSelectorParent(
+            'article.comments-comments-list__comment-item',
+            inputAssistantButton,
+          ) as HTMLDivElement
+          const inputRoot = linkedInFirstComment?.querySelector(
+            'div.editor-content div[contenteditable="true"]',
+          ) as HTMLDivElement
+          const inputValue = inputRoot?.innerText || ''
+          linkedInPostComments.push(
+            await getLinkedInCommentDetail(linkedInFirstComment),
+          )
+          if (inputValue) {
+            // 可能要回复评论的评论
+            const nestedArticles = Array.from(
+              linkedInFirstComment.querySelectorAll('article'),
+            ) as HTMLDivElement[]
+            for (let i = 0; i < nestedArticles.length; i++) {
+              const nestedArticle = nestedArticles[i]
+              const nestedCommentDetail = await getLinkedInCommentDetail(
+                nestedArticle,
+              )
+              if (inputValue.startsWith(nestedCommentDetail.author)) {
+                linkedInPostComments.push(nestedCommentDetail)
+                break
+              }
+            }
+          }
+          socialMediaPostContext.addCommentList(linkedInPostComments)
+        }
+        return socialMediaPostContext.generateMarkdownText()
       }
     }
+  }
+  if (host === 'facebook.com') {
+    const facebookReplyForm = findSelectorParent(
+      'form[role="presentation"]',
+      inputAssistantButton,
+    )
+    const facebookPostContentCard = findSelectorParent(
+      'div[data-ad-preview="message"]',
+      facebookReplyForm,
+      30,
+    )
+    const facebookPostAuthorElement = findSelectorParent(
+      'span:has(h3 > span)',
+      facebookReplyForm,
+      30,
+    )
+    const facebookPostAuthor = facebookPostAuthorElement?.innerText || ''
+    const facebookPostDate =
+      (facebookPostAuthorElement?.nextElementSibling?.querySelector(
+        'a',
+      ) as HTMLAnchorElement)?.innerText || ''
+    const facebookPostContent = facebookPostContentCard?.innerText || ''
+    const facebookPostComments: ICommentData[] = []
+    const facebookSocialMediaPostContext = new SocialMediaPostContext({
+      author: facebookPostAuthor,
+      date: facebookPostDate,
+      content: facebookPostContent,
+      title: '',
+    })
+    const getFacebookCommentDetail = async (
+      root: HTMLElement,
+    ): Promise<ICommentData> => {
+      const commentAuthor =
+        (root?.querySelector('a > span > span') as HTMLSpanElement)
+          ?.innerText || ''
+      const commentContent =
+        (root?.querySelector('span[lang][dir]') as HTMLSpanElement)
+          ?.innerText || ''
+      const links = Array.from(
+        root?.querySelectorAll('a > span'),
+      ) as HTMLSpanElement[]
+      const commentDate = links[links.length - 1]?.innerText || ''
+      return {
+        content: commentContent,
+        author: commentAuthor,
+        date: commentDate,
+      }
+    }
+    if (facebookReplyForm) {
+      const replyInput = facebookReplyForm.querySelector(
+        'div[contenteditable="true"][role="textbox"]',
+      ) as HTMLDivElement
+      const replyContent = replyInput?.innerText || ''
+      let parentLiElement: HTMLElement | null = findParentEqualSelector(
+        'li',
+        facebookReplyForm,
+        10,
+      )
+      while (parentLiElement) {
+        const commentElement = parentLiElement.childNodes[0] as HTMLDivElement
+        if (commentElement) {
+          const facebookCommentData = await getFacebookCommentDetail(
+            commentElement,
+          )
+          // 这是Facebook回复列表的某个回复, 某个回复下的一堆回复，用户点击了其中一个 input就会有用户名，类似linkedin
+          if (
+            facebookPostComments.length === 0 &&
+            !replyContent.startsWith(facebookCommentData.author)
+          ) {
+            if (parentLiElement && replyContent) {
+              const listItems = Array.from(
+                parentLiElement.querySelectorAll('& > div > ul li > div'),
+              ) as HTMLDivElement[]
+              for (let i = 0; i < listItems.length; i++) {
+                const listItem = listItems[i]
+                const commentDetail = await getFacebookCommentDetail(listItem)
+                if (replyContent.startsWith(commentDetail.author)) {
+                  facebookPostComments.push(commentDetail)
+                  break
+                }
+              }
+            }
+          }
+          facebookPostComments.splice(0, 0, facebookCommentData)
+          if (parentLiElement?.parentElement) {
+            parentLiElement = findParentEqualSelector(
+              'li',
+              parentLiElement.parentElement,
+              10,
+            )
+            continue
+          }
+        }
+        break
+      }
+      facebookSocialMediaPostContext.addCommentList(facebookPostComments)
+    }
+    return facebookSocialMediaPostContext.generateMarkdownText()
   }
   return ''
 }

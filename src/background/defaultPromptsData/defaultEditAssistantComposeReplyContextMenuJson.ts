@@ -406,14 +406,12 @@ const socialMediaPrompts = [
               contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
               title: 'Reply with key points',
               modelKey: 'Sidebar',
-              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and messages in an appropriate manner. 
+              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner. 
 
-Your task is to write a reply to the following post/message on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Post/message:
-\`\`\` 
+Post/comment:
 {{POST_CONTENT}}
-\`\`\` 
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/message and the purpose of your reply.
 
@@ -423,7 +421,7 @@ Do not use hashtags. Write the reply like a real person would.
 
 Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write a concise reply to the post/message above by *writing a better version* of the following points:
+Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
 {{KEY_POINTS}}`,
               variables: [
                 {
@@ -476,7 +474,7 @@ Now, write a concise reply to the post/message above by *writing a better versio
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: ['twitter.com', 'linkedin.com'],
+        whitelist: ['twitter.com', 'linkedin.com', 'facebook.com'],
         blacklist: [],
         isWhitelistMode: true,
       },

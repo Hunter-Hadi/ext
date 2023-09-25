@@ -627,7 +627,7 @@ const socialMediaPrompts = [
     data: {
       editable: false,
       visibility: {
-        whitelist: ['twitter.com', 'linkedin.com'],
+        whitelist: ['twitter.com', 'linkedin.com', 'facebook.com'],
         blacklist: [],
         isWhitelistMode: true,
       },

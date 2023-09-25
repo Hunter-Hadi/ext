@@ -60,6 +60,9 @@ const InputAssistantPortal: FC = () => {
     if (host === 'linkedin.com') {
       return appSetting.userSettings?.inputAssistantButton?.linkedIn === true
     }
+    if (host === 'facebook.com') {
+      return appSetting.userSettings?.inputAssistantButton?.facebook === true
+    }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])
   useEffect(() => {

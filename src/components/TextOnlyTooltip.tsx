@@ -42,6 +42,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   return (
     <Tooltip
       {...props}
+      placement={props.placement || 'top'}
       PopperProps={{
         container,
         ...props.PopperProps,

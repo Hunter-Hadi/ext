@@ -13,6 +13,10 @@ const getContextMenuNamePrefixWithHost = (): ContextMenuNamePrefixType => {
     return '[Outlook] '
   } else if (host === 'twitter.com') {
     return '[Twitter] '
+  } else if (host === 'linkedin.com') {
+    return '[LinkedIn] '
+  } else if (host === 'facebook.com') {
+    return '[Facebook] '
   }
   return '' as ContextMenuNamePrefixType
 }

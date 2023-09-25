@@ -279,8 +279,11 @@ export const listenIframeMessage = (onMessage?: IframeMessageType) => {
     const { id, type, data } = event.data
     if (id === CHROME_EXTENSION_POST_MESSAGE_ID) {
       if (type === 'iframeSelection') {
-        const { selectionText, iframeSelectionRect, iframePosition } =
-          data as IVirtualIframeSelectionElement
+        const {
+          selectionText,
+          iframeSelectionRect,
+          iframePosition,
+        } = data as IVirtualIframeSelectionElement
         if (isInIframe()) {
           // TODO
           // 如果是iframe，需要继续透传

@@ -129,7 +129,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           systemVariablesTemplate =
             '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
         }
-        template += systemVariablesTemplate
+        template += '\n\n---' + systemVariablesTemplate
         const actions: ISetActionsType = []
         actions.push({
           type: 'SET_VARIABLE_MAP',

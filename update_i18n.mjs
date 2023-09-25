@@ -565,9 +565,9 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = ['feature_card__help_me_write__field__twitter_input_assistant_button__title']
   const retryLanguageCodes = []
-  await updateKeys(keys, false, retryLanguageCodes)
+  await updateKeys(keys, true, retryLanguageCodes)
 }
 
 main().then().catch()

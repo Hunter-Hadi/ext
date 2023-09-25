@@ -32,7 +32,6 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
       const result = await getSocialMediaPostContent(
         OperationElementElementSelector,
       )
-      debugger
       const shortcutsEngine = engine.getShortCutsEngine()
       if (shortcutsEngine) {
         shortcutsEngine.pushActions([

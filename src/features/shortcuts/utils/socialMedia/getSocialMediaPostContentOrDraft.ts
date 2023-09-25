@@ -196,8 +196,8 @@ export const getSocialMediaPostContent = async (
             )
           ) {
             const linkedInPostComments: ICommentData[] = []
-            const linkedInFirstComment = findSelectorParent(
-              'article.comments-comments-list__comment-item',
+            const linkedInFirstComment = findParentEqualSelector(
+              'article.comments-comment-item',
               inputAssistantButton,
             ) as HTMLDivElement
             const inputRoot = linkedInFirstComment?.querySelector(

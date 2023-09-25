@@ -32,6 +32,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
       const result = await getSocialMediaPostContent(
         OperationElementElementSelector,
       )
+      debugger
       const shortcutsEngine = engine.getShortCutsEngine()
       if (shortcutsEngine) {
         shortcutsEngine.pushActions([
@@ -50,6 +51,20 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           // 动态设置3套prompt
           let dynamicPrompts = ''
           const addFields: IActionSetVariablesData = []
+          addFields.push({
+            label: 'TARGET_POST_OF_COMMENT',
+            hidden: true,
+            VariableName: 'TARGET_POST_OF_COMMENT',
+            valueType: 'Text',
+            defaultValue: result.targetPostOrComment,
+          })
+          addFields.push({
+            label: 'CONTEXT',
+            hidden: true,
+            VariableName: 'CONTEXT',
+            valueType: 'Text',
+            defaultValue: result.fullContext,
+          })
           addFields.push({
             label: 'Post',
             VariableName: 'POST',
@@ -177,7 +192,6 @@ Now, write a concise reply to the post above by *writing a better version* of th
           return
         }
       }
-      debugger
       this.output = result.postText
     } catch (e) {
       this.error = (e as Error).toString()

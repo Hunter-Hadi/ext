@@ -12,12 +12,14 @@ export interface IActionSetVariables {
   defaultValue?: string
   options?: IOptionType[]
   placeholder?: string
+  hidden?: boolean
 }
 export interface IActionSetSystemVariables {
   VariableName: ISystemVariableSelectKey
   defaultValue?: string
   label?: string
   placeholder?: string
+  hidden?: boolean
 }
 
 export type IActionSetVariablesData = IActionSetVariables[]

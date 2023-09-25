@@ -111,7 +111,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setShow(false)
       onClose?.()
       if (config?.template) {
-        let template = config?.template || ''
+        let template = form?.TEMPLATE || config?.template || ''
         let systemVariablesTemplate = ''
         if (
           presetVariables.AI_RESPONSE_TONE !== 'Default' &&
@@ -140,7 +140,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         actions.push({
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template,
+            template: template as string,
           },
         })
         if (isProduction) {
@@ -375,8 +375,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           gap: '16px',
         }}
       >
-        {currentModalConfig.currentSystemVariables.map(
-          (systemVariable, index) => {
+        {currentModalConfig.currentSystemVariables
+          .filter((systemVariable) => !systemVariable.hidden)
+          .map((systemVariable, index) => {
             const width = getChildrenWidth(
               index,
               currentModalConfig.currentSelectTotalCount,
@@ -405,49 +406,50 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 }}
               />
             )
-          },
-        )}
+          })}
       </Stack>
       {/*Text*/}
       <Stack gap={2} paddingTop={1} ref={inputBoxRef}>
-        {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
-          return (
-            <TextField
-              size={'small'}
-              key={textTypeVariable.VariableName}
-              label={textTypeVariable.label}
-              value={form[textTypeVariable.VariableName] || ''}
-              onChange={(event) => {
-                const value = event.target.value
-                setForm((prevState) => {
-                  return {
-                    ...prevState,
-                    [textTypeVariable.VariableName]: value,
+        {currentModalConfig.textTypeVariables
+          .filter((textTypeVariable) => !textTypeVariable.hidden)
+          .map((textTypeVariable, index) => {
+            return (
+              <TextField
+                size={'small'}
+                key={textTypeVariable.VariableName}
+                label={textTypeVariable.label}
+                value={form[textTypeVariable.VariableName] || ''}
+                onChange={(event) => {
+                  const value = event.target.value
+                  setForm((prevState) => {
+                    return {
+                      ...prevState,
+                      [textTypeVariable.VariableName]: value,
+                    }
+                  })
+                }}
+                onKeyDown={async (event) => {
+                  if (event.key === 'Enter' && !event.shiftKey) {
+                    event.stopPropagation()
+                    event.preventDefault()
+                    await confirmModal(index)
+                  } else {
+                    event.stopPropagation()
                   }
-                })
-              }}
-              onKeyDown={async (event) => {
-                if (event.key === 'Enter' && !event.shiftKey) {
-                  event.stopPropagation()
-                  event.preventDefault()
-                  await confirmModal(index)
-                } else {
-                  event.stopPropagation()
-                }
-              }}
-              InputProps={{
-                sx: {
-                  fontSize: '16px',
-                },
-              }}
-              InputLabelProps={{ shrink: true, sx: { fontSize: '16px' } }}
-              multiline
-              placeholder={textTypeVariable.placeholder}
-              minRows={Math.min(currentModalConfig.maxTextareaMaxRows, 2)}
-              maxRows={currentModalConfig.maxTextareaMaxRows}
-            />
-          )
-        })}
+                }}
+                InputProps={{
+                  sx: {
+                    fontSize: '16px',
+                  },
+                }}
+                InputLabelProps={{ shrink: true, sx: { fontSize: '16px' } }}
+                multiline
+                placeholder={textTypeVariable.placeholder}
+                minRows={Math.min(currentModalConfig.maxTextareaMaxRows, 2)}
+                maxRows={currentModalConfig.maxTextareaMaxRows}
+              />
+            )
+          })}
       </Stack>
       {/*Actions*/}
       <Stack

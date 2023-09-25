@@ -47,10 +47,9 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIChatGPTMessageType[] = []
-    const conversationDetail =
-      await ConversationManager.conversationDB.getConversationById(
-        question.conversationId,
-      )
+    const conversationDetail = await ConversationManager.conversationDB.getConversationById(
+      question.conversationId,
+    )
     // 大文件聊天之前上传的上下文的documentId
     const docId = conversationDetail?.meta?.docId
     if (this.useChatGPTPlusChat.conversation) {
@@ -73,6 +72,12 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
           },
         })
       })
+    }
+    if (docId && chat_history[0].type === 'human') {
+      // summary里面的chat history不包括页面的自动summary对话
+      // 这个自动总结的对话会影响后续用户真正问的问题，我们在chat_with_document传chat hisotry的时候把这两条去掉吧
+      // 2023-09-21 @xiang.xu
+      chat_history.splice(0, 2)
     }
     await this.useChatGPTPlusChat.askChatGPT(
       question.question,

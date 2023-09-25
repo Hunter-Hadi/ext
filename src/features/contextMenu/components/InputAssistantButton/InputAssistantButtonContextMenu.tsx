@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useContextMenuList } from '@/features/contextMenu'
@@ -16,6 +16,8 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { showChatBox } from '@/utils'
+import createCache, { EmotionCache } from '@emotion/cache'
+import { CacheProvider } from '@emotion/react'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
@@ -24,17 +26,23 @@ interface InputAssistantButtonContextMenuProps {
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
 }
-const InputAssistantButtonContextMenu: FC<
-  InputAssistantButtonContextMenuProps
-> = (props) => {
-  const { buttonKey, children, root, rootId, permissionWrapperCardSceneType } =
-    props
+const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> = (
+  props,
+) => {
+  const {
+    buttonKey,
+    children,
+    rootId,
+    root,
+    permissionWrapperCardSceneType,
+  } = props
   const { currentUserPlan } = useUserInfo()
   const permissionCardMap = usePermissionCardMap()
   const { createConversation } = useClientConversation()
-  const { contextMenuList } = useContextMenuList(buttonKey)
+  const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { loading } = useRecoilValue(ChatGPTConversationState)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
+  const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {
     if (permissionWrapperCardSceneType && currentUserPlan.name === 'free') {
       return false
@@ -81,29 +89,46 @@ const InputAssistantButtonContextMenu: FC<
       permissionWrapperCardSceneType,
     ],
   )
+  useEffect(() => {
+    if (root && rootId && !emotionCacheRef.current) {
+      const emotionRoot = document.createElement('style')
+      emotionRoot.setAttribute('data-emotion-id', rootId)
+      root.appendChild(emotionRoot)
+      emotionCacheRef.current = createCache({
+        key: `max-ai-input-assistant-context-menu`,
+        prepend: true,
+        container: emotionRoot,
+      })
+    }
+  }, [root, rootId])
+  if (!root || !emotionCacheRef.current) {
+    return null
+  }
   return (
-    <FloatingContextMenuList
-      defaultPlacement={'top-start'}
-      defaultFallbackPlacements={[
-        'top-end',
-        'top',
-        'bottom-start',
-        'bottom-end',
-        'bottom',
-        'right',
-        'left',
-      ]}
-      root={root}
-      menuList={contextMenuList}
-      needAutoUpdate
-      hoverOpen={false}
-      menuWidth={240}
-      referenceElement={children}
-      onClickContextMenu={runContextMenu}
-      onClickReferenceElement={() => {
-        // TODO
-      }}
-    />
+    <CacheProvider value={emotionCacheRef.current}>
+      <FloatingContextMenuList
+        defaultPlacement={'bottom-start'}
+        defaultFallbackPlacements={[
+          'bottom-end',
+          'bottom',
+          'top-start',
+          'top-end',
+          'top',
+          'right',
+          'left',
+        ]}
+        root={root}
+        menuList={contextMenuList}
+        needAutoUpdate
+        hoverOpen={false}
+        menuWidth={240}
+        referenceElement={children}
+        onClickContextMenu={runContextMenu}
+        onClickReferenceElement={() => {
+          // TODO
+        }}
+      />
+    </CacheProvider>
   )
 }
 export default InputAssistantButtonContextMenu

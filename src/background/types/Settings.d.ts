@@ -124,6 +124,20 @@ export interface IChromeExtensionSettings {
     inputAssistantButton?: {
       gmail?: boolean
       outlook?: boolean
+      twitter?: boolean
+      linkedIn?: boolean
+      facebook?: boolean
+      youtube?: boolean
+      instagram?: boolean
+      reddit?: boolean
+      googleMyBusiness?: boolean
+      slack?: boolean
+      discord?: boolean
+      whatsApp?: boolean
+      hubspot?: boolean
+      telegram?: boolean
+      microsoftTeams?: boolean
+      googleChat?: boolean
     }
   }
   buttonSettings?: {

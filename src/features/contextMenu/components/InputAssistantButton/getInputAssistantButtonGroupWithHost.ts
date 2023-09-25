@@ -3,6 +3,7 @@ import {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
+import { getTwitterInputAssistantButtonRootContainer } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
 
 type getInputAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement
@@ -22,6 +23,9 @@ const checkHostUsingButtonKeys = (
     host === 'outlook.office365.com'
   ) {
     return getOutlookButtonGroup(config)
+  }
+  if (host === 'twitter.com') {
+    return getTwitterButtonGroup(config)
   }
   return [
     config.buttonGroupConfig.composeReplyButton,
@@ -88,8 +92,35 @@ const getOutlookButtonGroup = (
     ]
   }
   return [
-    config.buttonGroupConfig.composeReplyButton,
-    config.buttonGroupConfig.refineDraftButton,
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+const getTwitterButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  const rooContainer = getTwitterInputAssistantButtonRootContainer(keyElement)
+  if (rooContainer?.querySelector('article[data-testid="tweet"]')) {
+    return [
+      buttonGroupConfig.composeReplyButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
+  const detailPostPage = (Array.from(
+    document.querySelectorAll('article[data-testid="tweet"]'),
+  ) as HTMLElement[]).find((post) => {
+    return post.nextElementSibling?.contains(keyElement)
+  })
+  if (detailPostPage) {
+    return [
+      buttonGroupConfig.composeReplyButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
+  return [
+    buttonGroupConfig.composeNewButton,
+    buttonGroupConfig.refineDraftButton,
   ]
 }
 export default checkHostUsingButtonKeys

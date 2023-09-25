@@ -9,7 +9,7 @@ import {
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { isEmailWebsite } from '@/features/shortcuts/actions/web/email/getEmailWebsitePageContentsOrDraft'
+import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'

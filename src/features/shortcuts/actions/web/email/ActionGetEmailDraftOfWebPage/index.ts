@@ -6,7 +6,7 @@ import {
   templateParserDecorator,
   withLoading,
 } from '@/features/shortcuts/decorators'
-import { getEmailWebsitePageDraft } from '@/features/shortcuts/actions/web/email/getEmailWebsitePageContentsOrDraft'
+import { getEmailWebsitePageDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 export class ActionGetEmailDraftOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_DRAFT_OF_WEBPAGE'
   constructor(

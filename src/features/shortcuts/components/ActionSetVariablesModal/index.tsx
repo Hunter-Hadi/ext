@@ -129,7 +129,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           systemVariablesTemplate =
             '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
         }
-        template += systemVariablesTemplate
+        template += '\n\n---' + systemVariablesTemplate
         const actions: ISetActionsType = []
         actions.push({
           type: 'SET_VARIABLE_MAP',
@@ -416,7 +416,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               size={'small'}
               key={textTypeVariable.VariableName}
               label={textTypeVariable.label}
-              defaultValue={form[textTypeVariable.VariableName] || ''}
+              value={form[textTypeVariable.VariableName] || ''}
               onChange={(event) => {
                 const value = event.target.value
                 setForm((prevState) => {

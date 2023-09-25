@@ -11,6 +11,8 @@ const getContextMenuNamePrefixWithHost = (): ContextMenuNamePrefixType => {
     host === 'outlook.office365.com'
   ) {
     return '[Outlook] '
+  } else if (host === 'twitter.com') {
+    return '[Twitter] '
   }
   return '' as ContextMenuNamePrefixType
 }

@@ -27,10 +27,12 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'OUTLOOK_COMPOSE_NEW_BUTTON',
   'OUTLOOK_COMPOSE_REPLY_BUTTON',
   'OUTLOOK_REFINE_DRAFT_BUTTON',
+  'TWITTER_COMPOSE_NEW_BUTTON',
+  'TWITTER_COMPOSE_REPLY_BUTTON',
+  'TWITTER_REFINE_DRAFT_BUTTON',
 ] as const
 
-export type PermissionWrapperCardSceneType =
-  (typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST)[number]
+export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
 
 export type PermissionWrapperCardType = {
   sceneType: PermissionWrapperCardSceneType
@@ -153,9 +155,13 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_draft__title'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_new__title',
+      ),
     description: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_draft__description'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_new__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
@@ -165,9 +171,13 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_reply__title'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__title',
+      ),
     description: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_reply__description'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
@@ -177,9 +187,13 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
-      t('client:permission__pricing_hook__gmail_context_menu__title'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__title',
+      ),
     description: (t) =>
-      t('client:permission__pricing_hook__gmail_context_menu__description'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
@@ -210,6 +224,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // pdf ai viewer
   PDF_AI_VIEWER: {
     imageUrl: `${getChromeExtensionAssetsURL('/images/upgrade/pdf.png')}`,
+    videoUrl: `https://www.youtube.com/embed/eYO5Dh6Ruic`,
     title: (t) => t('client:permission__pricing_hook__pdf_ai_viewer__title'),
     description: (t) =>
       t('client:permission__pricing_hook__pdf_ai_viewer__description'),
@@ -342,9 +357,13 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_draft__title'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_new__title',
+      ),
     description: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_draft__description'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_new__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
@@ -354,9 +373,13 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_reply__title'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__title',
+      ),
     description: (t) =>
-      t('client:permission__pricing_hook__gmail_cta_button_reply__description'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
@@ -366,9 +389,61 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       '/images/upgrade/input-assistant-email.png',
     )}`,
     title: (t) =>
-      t('client:permission__pricing_hook__gmail_context_menu__title'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__title',
+      ),
     description: (t) =>
-      t('client:permission__pricing_hook__gmail_context_menu__description'),
+      t(
+        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Twitter cta button - compose new
+  TWITTER_COMPOSE_NEW_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Twitter cta button - compose reply
+  TWITTER_COMPOSE_REPLY_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Twitter dropdown button - refine draft
+  TWITTER_REFINE_DRAFT_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },

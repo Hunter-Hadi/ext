@@ -43,15 +43,23 @@ class InputAssistantButtonManager {
         return
       }
       if (this.config) {
-        const { rootSelector, rootParentDeep } = this.config
+        const {
+          rootSelector,
+          rootSelectorStyle,
+          rootParentDeep = 0,
+        } = this.config
         const rootElements = document.querySelectorAll(rootSelector)
         let isAddNew = false
         rootElements.forEach((element) => {
+          const origin = element as HTMLElement
           let rootElement = element
           let deep = rootParentDeep
           while (deep > 0) {
             deep--
             rootElement = rootElement.parentElement as HTMLElement
+          }
+          if (rootSelectorStyle) {
+            origin.style.cssText = rootSelectorStyle
           }
           const newObserverData = this.attachInputAssistantButton(
             rootElement as HTMLElement,
@@ -76,16 +84,28 @@ class InputAssistantButtonManager {
     ) {
       return null
     }
-    if (rootElement && this.config.rootStyle) {
-      rootElement.style.cssText = this.config.rootStyle
-      if (this.config.rootParentStyle && rootElement.parentElement) {
-        rootElement.parentElement.style.cssText = this.config.rootStyle
+    const { rootStyle, rootParentStyle, rootParentStyleDeep = 1 } = this.config
+    if (rootElement && rootStyle) {
+      rootElement.style.cssText = rootStyle
+    }
+    if (rootParentStyle) {
+      let deep = 0
+      let parentElement: HTMLElement = rootElement
+      while (deep < rootParentStyleDeep) {
+        deep++
+        parentElement = parentElement?.parentElement as HTMLElement
+      }
+      if (parentElement) {
+        parentElement.style.cssText = rootParentStyle
       }
     }
     const id = uuidV4()
-    const { rootWrapperTagName, appendPosition } = this.config
+    const { rootWrapperTagName, appendPosition, rootWrapperStyle } = this.config
     const isSupportWebComponent = 'customElements' in window
     const rootWrapperElement = document.createElement(rootWrapperTagName)
+    if (rootWrapperStyle) {
+      rootWrapperElement.style.cssText = rootWrapperStyle
+    }
     const webComponentRoot = document.createElement(
       isSupportWebComponent ? 'maxai-input-assistant-button' : 'div',
     )

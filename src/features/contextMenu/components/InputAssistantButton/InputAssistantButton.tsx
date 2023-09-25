@@ -1,5 +1,4 @@
-import React, { FC, useMemo, useState } from 'react'
-import Stack from '@mui/material/Stack'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import Button from '@mui/material/Button'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import { SxProps } from '@mui/material/styles'
@@ -14,7 +13,10 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
-import Box from '@mui/material/Box'
+import createCache, { EmotionCache } from '@emotion/cache'
+import { CacheProvider } from '@emotion/react'
+import cloneDeep from 'lodash-es/cloneDeep'
+import { ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -52,27 +54,35 @@ export interface InputAssistantButtonStyle {
 
 interface InputAssistantButtonProps {
   root: HTMLElement
+  shadowRoot: ShadowRoot
   rootId: string
   buttonMode?: 'fixed' | 'static' // 按钮模式
   buttonPosition?: InputAssistantButtonPosition // 按钮位置
   buttonSize?: InputAssistantButtonSize // 按钮尺寸
   CTAButtonStyle?: InputAssistantButtonStyle // 按钮样式
   DropdownButtonStyle?: InputAssistantButtonStyle // 按钮样式
-  InputAssistantBoxStyle?: SxProps // 按钮容器样式
+  InputAssistantBoxSx?: SxProps // 按钮容器样式
   buttonGroup: IInputAssistantButton[] // 按钮组
 }
 const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   const {
     root,
     rootId,
-    InputAssistantBoxStyle,
+    InputAssistantBoxSx,
     DropdownButtonStyle,
     CTAButtonStyle,
     buttonGroup,
+    shadowRoot,
   } = props
+  const emotionCacheRef = useRef<EmotionCache | null>(null)
   const { t } = useTranslation(['client'])
+  const [
+    contextMenuContainer,
+    setContextMenuContainer,
+  ] = useState<HTMLElement | null>(null)
   const { loading } = useRecoilValue(ChatGPTConversationState)
-  const [isCTAHover, setCTAIsHover] = useState(false)
+  const [isCTAHover, setIsCTAHover] = useState(false)
+  const [isBoxHover, setIsBoxHover] = useState(false)
   const [ctaTooltipShow, setCtaTooltipShow] = useState(false)
   const [dropdownTooltipShow, setDropdownTooltipShow] = useState(false)
   const memoButtonSx = useMemo(() => {
@@ -146,18 +156,50 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
       dropdownButtonSx: SxProps
     }
   }, [CTAButtonStyle, DropdownButtonStyle, isCTAHover])
+  const inputAssistantBoxStyle = useMemo(() => {
+    const cloneSx = cloneDeep(InputAssistantBoxSx) as any
+    const InputAssistantBoxSxHover = {
+      boxShadow:
+        '0px 2px 3px 1px rgba(118, 1, 211, 0.16), 1px 0px 2px 0px rgba(118, 1, 211, 0.08), -1px 0px 2px 0px rgba(118, 1, 211, 0.08)',
+      ...(cloneSx?.['&:hover'] as React.CSSProperties),
+    }
+    if (InputAssistantBoxSxHover) {
+      delete cloneSx['&:hover']
+    }
+    return {
+      ...cloneSx,
+      ...(isBoxHover ? InputAssistantBoxSxHover : {}),
+    } as React.CSSProperties
+  }, [InputAssistantBoxSx, isBoxHover])
+  useEffect(() => {
+    if (shadowRoot) {
+      const emotionRoot = document.createElement('style')
+      shadowRoot.appendChild(emotionRoot)
+      emotionCacheRef.current = createCache({
+        key: `max-ai-input-assistant-context-menu`,
+        prepend: true,
+        container: emotionRoot,
+      })
+    }
+  }, [shadowRoot])
+  useEffect(() => {
+    setContextMenuContainer(
+      document
+        .querySelector(`#${ROOT_MINIMIZE_CONTAINER_ID}`)
+        ?.shadowRoot?.querySelector('div') as HTMLElement,
+    )
+  }, [])
   return (
-    <Stack
-      direction={'row'}
-      alignItems={'center'}
-      sx={{
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
         borderRadius: '4px',
-        '&:hover': {
-          boxShadow:
-            '0px 2px 3px 1px rgba(118, 1, 211, 0.16), 1px 0px 2px 0px rgba(118, 1, 211, 0.08), -1px 0px 2px 0px rgba(118, 1, 211, 0.08)',
-        },
-        ...InputAssistantBoxStyle,
+        ...inputAssistantBoxStyle,
       }}
+      onMouseEnter={() => setIsBoxHover(true)}
+      onMouseLeave={() => setIsBoxHover(false)}
     >
       {buttonGroup[0] && (
         <InputAssistantButtonContextMenu
@@ -166,53 +208,57 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           permissionWrapperCardSceneType={
             buttonGroup[0].permissionWrapperCardSceneType
           }
-          root={root}
+          root={contextMenuContainer as HTMLElement}
         >
-          <Box>
-            <TextOnlyTooltip
-              open={ctaTooltipShow}
-              zIndex={2000000}
-              PopperProps={{
-                container: root,
-              }}
-              title={t(buttonGroup[0].tooltip as any)}
-            >
-              <Button
-                id={`maxAIInputAssistantCtaButton${rootId}`}
-                maxai-input-assistant-cta-button={`ctaButton${rootId}`}
-                disabled={loading}
-                sx={memoButtonSx.ctaButtonSx}
-                onMouseEnter={() => {
-                  setCTAIsHover(true)
-                  setCtaTooltipShow(true)
-                }}
-                onMouseLeave={() => {
-                  setCTAIsHover(false)
-                  setCtaTooltipShow(false)
-                }}
-                onClick={() => {
-                  setCtaTooltipShow(false)
-                }}
-              >
-                {loading ? (
-                  <CircularProgress
-                    size={CTAButtonStyle?.iconSize || 20}
-                    sx={{
-                      fontSize: `inherit`,
-                      color: '#fff',
+          <div>
+            {emotionCacheRef.current && (
+              <CacheProvider value={emotionCacheRef.current}>
+                <TextOnlyTooltip
+                  open={ctaTooltipShow}
+                  zIndex={2000000}
+                  PopperProps={{
+                    container: root,
+                  }}
+                  title={t(buttonGroup[0].tooltip as any)}
+                >
+                  <Button
+                    id={`maxAIInputAssistantCtaButton${rootId}`}
+                    maxai-input-assistant-cta-button={`ctaButton${rootId}`}
+                    disabled={loading}
+                    sx={memoButtonSx.ctaButtonSx}
+                    onMouseEnter={() => {
+                      setIsCTAHover(true)
+                      setCtaTooltipShow(true)
                     }}
-                  />
-                ) : (
-                  <UseChatGptIcon
-                    sx={{
-                      fontSize: `inherit`,
-                      color: 'inherit',
+                    onMouseLeave={() => {
+                      setIsCTAHover(false)
+                      setCtaTooltipShow(false)
                     }}
-                  />
-                )}
-              </Button>
-            </TextOnlyTooltip>
-          </Box>
+                    onClick={() => {
+                      setCtaTooltipShow(false)
+                    }}
+                  >
+                    {loading ? (
+                      <CircularProgress
+                        size={CTAButtonStyle?.iconSize || 20}
+                        sx={{
+                          fontSize: `inherit`,
+                          color: '#fff',
+                        }}
+                      />
+                    ) : (
+                      <UseChatGptIcon
+                        sx={{
+                          fontSize: `inherit`,
+                          color: 'inherit',
+                        }}
+                      />
+                    )}
+                  </Button>
+                </TextOnlyTooltip>
+              </CacheProvider>
+            )}
+          </div>
         </InputAssistantButtonContextMenu>
       )}
       {buttonGroup[1] && (
@@ -222,45 +268,49 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           permissionWrapperCardSceneType={
             buttonGroup[1].permissionWrapperCardSceneType
           }
-          root={root}
+          root={contextMenuContainer as HTMLElement}
         >
-          <Box>
-            <TextOnlyTooltip
-              open={dropdownTooltipShow}
-              zIndex={2000000}
-              PopperProps={{
-                container: root,
-              }}
-              title={t(buttonGroup[1].tooltip as any)}
-            >
-              <Button
-                id={`maxAIInputAssistantDropdownButton${rootId}`}
-                maxai-input-assistant-dropdown-button={`dropdownButton${rootId}`}
-                disabled={loading}
-                sx={memoButtonSx.dropdownButtonSx}
-                onMouseEnter={() => {
-                  setDropdownTooltipShow(true)
-                }}
-                onMouseLeave={() => {
-                  setDropdownTooltipShow(false)
-                }}
-                onClick={() => {
-                  setDropdownTooltipShow(false)
-                }}
-              >
-                <ContextMenuIcon
-                  icon={'ArrowDropDown'}
-                  sx={{
-                    fontSize: `inherit`,
-                    color: 'inherit',
+          <div>
+            {emotionCacheRef.current && (
+              <CacheProvider value={emotionCacheRef.current}>
+                <TextOnlyTooltip
+                  open={dropdownTooltipShow}
+                  zIndex={2000000}
+                  PopperProps={{
+                    container: root,
                   }}
-                />
-              </Button>
-            </TextOnlyTooltip>
-          </Box>
+                  title={t(buttonGroup[1].tooltip as any)}
+                >
+                  <Button
+                    id={`maxAIInputAssistantDropdownButton${rootId}`}
+                    maxai-input-assistant-dropdown-button={`dropdownButton${rootId}`}
+                    disabled={loading}
+                    sx={memoButtonSx.dropdownButtonSx}
+                    onMouseEnter={() => {
+                      setDropdownTooltipShow(true)
+                    }}
+                    onMouseLeave={() => {
+                      setDropdownTooltipShow(false)
+                    }}
+                    onClick={() => {
+                      setDropdownTooltipShow(false)
+                    }}
+                  >
+                    <ContextMenuIcon
+                      icon={'ArrowDropDown'}
+                      sx={{
+                        fontSize: `inherit`,
+                        color: 'inherit',
+                      }}
+                    />
+                  </Button>
+                </TextOnlyTooltip>
+              </CacheProvider>
+            )}
+          </div>
         </InputAssistantButtonContextMenu>
       )}
-    </Stack>
+    </div>
   )
 }
 

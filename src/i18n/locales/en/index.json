@@ -227,7 +227,6 @@
     "visibility_card__add_a_site_dialog__title": "Add a site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Enter website URL",
-
     "feature__search_with_ai__title": "Display AI responses next to search results",
     "feature__search_with_ai__trigger_mode__title": "When to display AI responses",
     "feature__search_with_ai__trigger_mode__always__name": "Always",
@@ -631,6 +630,7 @@
     "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Sad",
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Dislike",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Reply with key points",
-    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Quick reply"
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Quick reply",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Reply with key points(test)"
   }
 }

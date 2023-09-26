@@ -614,6 +614,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
       conversationId,
     })
     // this.conversations.push(conversationInstance)
+    // 由于只存在一个会话 所以这里直接替换
     this.conversations = [conversationInstance]
     removeCacheConversation && conversationInstance.removeCacheConversation()
     await conversationInstance.fetchHistoryAndConfig()

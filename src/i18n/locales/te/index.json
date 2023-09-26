@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "HubSpot సహాయకుడు",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Telegram సహాయకుడు",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Microsoft Teams సహాయకుడు",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat సహాయకుడు"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat సహాయకుడు",
+    "left_menu__search_with_ai": "యొక్క AI తో శోధించండి",
+    "feature__search_with_ai__title": "శోధ ఫలితాల పక్కన AI సమాధానాలను ప్రదర్శించండి",
+    "feature__search_with_ai__trigger_mode__title": "AI సమాధానాలను ప్రదర్శించడానికి ఎప్పటికప్పుడు",
+    "feature__search_with_ai__trigger_mode__always__name": "ఎప్పటికప్పుడు",
+    "feature__search_with_ai__trigger_mode__always__desc": "ప్రతి శోధకి AI సమాధానాన్ని ప్రదర్శించండి.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "ప్రశ్న గుర్తించడం",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "మీ శోధన ప్రశ్న గుర్తించడంతో ఎప్పటికప్పుడు AI సమాధానాన్ని ప్రదర్శించండి.",
+    "feature__search_with_ai__trigger_mode__manual__name": "మాన్యువల్లో",
+    "feature__search_with_ai__trigger_mode__manual__desc": "మీరు మాన్యువల్లో బటన్ నొక్కి మాత్రమే AI సమాధానాన్ని ప్రదర్శించండి."
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "డ్రాఫ్ట్‌ను సవరించండి లేదా సమీక్షించండి",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "ముఖ్య పాయింట్‌తో నొందించండి",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "త్వరగా నొందించండి",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "త్వరగా సమాధానం ఇవ్వండి"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "త్వరగా సమాధానం ఇవ్వండి",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "ఇష్టం",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "ప్రేమ",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "ధన్యవాదాలు",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "ఆదరించండి",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "జోక్",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "అద్భుతం",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "దుఃఖం",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "అసంతృప్తి",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "ముఖ్య పాయింట్లతో సమాధానం ఇవ్వండి",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "త్వరలో సమాధానం",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ముఖ్య పాయింట్లతో సమాధానం(టెస్ట్)"
   }
 }

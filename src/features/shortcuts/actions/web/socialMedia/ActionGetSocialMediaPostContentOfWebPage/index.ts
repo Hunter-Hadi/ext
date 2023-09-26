@@ -39,7 +39,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
             type: 'SET_VARIABLE_MAP',
             parameters: {
               VariableMap: {
-                TARGET_POST_OF_COMMENT: result.targetPostOrComment,
+                TARGET_POST_OR_COMMENT: result.targetPostOrComment,
                 CONTEXT: result.fullContext,
               },
             },
@@ -51,9 +51,9 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           let dynamicPrompts = ''
           const addFields: IActionSetVariablesData = []
           addFields.push({
-            label: 'TARGET_POST_OF_COMMENT',
+            label: 'TARGET_POST_OR_COMMENT',
             hidden: true,
-            VariableName: 'TARGET_POST_OF_COMMENT',
+            VariableName: 'TARGET_POST_OR_COMMENT',
             valueType: 'Text',
             defaultValue: result.targetPostOrComment,
           })

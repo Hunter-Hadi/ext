@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "Asystent HubSpot",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Asystent Telegrama",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Asystent Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Asystent Google Chat"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Asystent Google Chat",
+    "left_menu__search_with_ai": "Wyszukaj za pomocą AI",
+    "feature__search_with_ai__title": "Wyświetl odpowiedzi AI obok wyników wyszukiwania",
+    "feature__search_with_ai__trigger_mode__title": "Kiedy wyświetlać odpowiedzi AI",
+    "feature__search_with_ai__trigger_mode__always__name": "Zawsze",
+    "feature__search_with_ai__trigger_mode__always__desc": "Wyświetlaj odpowiedź AI dla każdego wyszukiwania.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Znak zapytania",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Wyświetlaj odpowiedź AI, gdy zapytanie kończy się znakiem zapytania.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Ręcznie",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Wyświetlaj odpowiedź AI tylko po kliknięciu przycisku ręcznie."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "Edytuj lub przeglądaj szkic",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "Twórz z kluczowymi punktami",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "Szybkie tworzenie",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "Szybka odpowiedź"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "Szybka odpowiedź",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "Lubię",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "Kocham",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "Dzięki",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "Troska",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "Żart",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "Wow",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Smutny",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nie lubię",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odpowiedz kluczowymi punktami",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Szybka odpowiedź",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpowiedz kluczowymi punktami (test)"
   }
 }

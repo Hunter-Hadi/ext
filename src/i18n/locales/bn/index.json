@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "হাবসপট সহায়ক",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "টেলিগ্রাম সহায়ক",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "মাইক্রোসফট টিমস সহায়ক",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "গুগল চ্যাট সহায়ক"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "গুগল চ্যাট সহায়ক",
+    "left_menu__search_with_ai": "এইচটিএমএল সার্চ",
+    "feature__search_with_ai__title": "সার্চ ফলাফলের পাশে এইচটিএমএল উত্তর দেখান",
+    "feature__search_with_ai__trigger_mode__title": "এইচটিএমএল উত্তর দেখানোর সময়",
+    "feature__search_with_ai__trigger_mode__always__name": "সর্বদা",
+    "feature__search_with_ai__trigger_mode__always__desc": "প্রতিটি সার্চের জন্য এইচটিএমএল উত্তর দেখান।",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "প্রশ্ন চিহ্ন",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "আপনার সার্চ কুয়েরি শেষ হলে এইচটিএমএল উত্তর দেখান।",
+    "feature__search_with_ai__trigger_mode__manual__name": "ম্যানুয়ালি",
+    "feature__search_with_ai__trigger_mode__manual__desc": "বাটনে ক্লিক করলেই এইচটিএমএল উত্তর দেখান।"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "ড্রাফট সম্পাদনা বা পর্যালোচনা",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "মূল বিন্যাসে লেখা করুন",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "দ্রুত সংক্ষিপ্ত লেখা",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "দ্রুত উত্তর"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "দ্রুত উত্তর",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "পছন্দ",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "ভালবাসা",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "ধন্যবাদ",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "যত্ন",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "জোক",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "ওয়াও",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "দু:খিত",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "অপছন্দ",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "দ্রুত উত্তর",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন (পরীক্ষা)"
   }
 }

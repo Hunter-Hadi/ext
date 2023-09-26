@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "Msaidizi wa HubSpot",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Msaidizi wa Telegram",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Msaidizi wa Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Msaidizi wa Google Chat"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Msaidizi wa Google Chat",
+    "left_menu__search_with_ai": "Tafuta Kwa AI",
+    "feature__search_with_ai__title": "Onyesha majibu ya AI karibu na matokeo ya utafutaji",
+    "feature__search_with_ai__trigger_mode__title": "Lini kuonyesha majibu ya AI",
+    "feature__search_with_ai__trigger_mode__always__name": "Daima",
+    "feature__search_with_ai__trigger_mode__always__desc": "Onyesha majibu ya AI kwa kila utafutaji.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Alama ya swali",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Onyesha majibu ya AI wakati wowote utafutaji wako unamalizika na alama ya swali.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Kwa mkono",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Onyesha majibu ya AI tu wakati unapobofya kitufe kwa mkono."
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "Hariri au hakiki rasimu",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "Andika na alama muhimu",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "Andika haraka",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "Jibu haraka"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "Jibu haraka",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "Kama",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "Upendo",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "Asante",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "Jali",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "Mzaha",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "Wow",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Huzuni",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "Siipendi",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Jibu na pointi muhimu",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Jibu haraka",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Jibu na pointi muhimu (jaribio)"
   }
 }

@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "HubSpot-Assistent",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Telegram-Assistent",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Microsoft Teams-Assistent",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat-Assistent"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat-Assistent",
+    "left_menu__search_with_ai": "Mit KI suchen",
+    "feature__search_with_ai__title": "KI-Antworten neben den Suchergebnissen anzeigen",
+    "feature__search_with_ai__trigger_mode__title": "Wann KI-Antworten anzeigen",
+    "feature__search_with_ai__trigger_mode__always__name": "Immer",
+    "feature__search_with_ai__trigger_mode__always__desc": "Für jede Suche eine KI-Antwort anzeigen.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Fragezeichen",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Eine KI-Antwort anzeigen, wenn deine Suchanfrage mit einem Fragezeichen endet.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Manuell",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Nur bei manueller Betätigung einen KI-Antwort anzeigen."
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "Entwurf bearbeiten oder überprüfen",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "Mit Schlüsselpunkten verfassen",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "Schnell verfassen",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "Schnell antworten"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "Schnell antworten",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "Gefällt mir",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "Liebe",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "Danke",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "Kümmern",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "Witz",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "Wow",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Traurig",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "Gefällt mir nicht",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Antwort mit Schlüsselpunkten",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Schnelle Antwort",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwort mit Schlüsselpunkten (Test)"
   }
 }

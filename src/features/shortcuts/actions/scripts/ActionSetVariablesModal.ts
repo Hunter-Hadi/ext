@@ -59,15 +59,14 @@ export class ActionSetVariablesModal extends Action {
       })
       cloneConfig.template =
         config.template || this.parameters?.compliedTemplate || ''
-      const result: ActionSetVariablesConfirmData =
-        await OneShotCommunicator.send(
-          'SetVariablesModal',
-          {
-            task: 'open',
-            config: cloneConfig,
-          },
-          5 * 60 * 1000,
-        )
+      const result: ActionSetVariablesConfirmData = await OneShotCommunicator.send(
+        'SetVariablesModal',
+        {
+          task: 'open',
+          config: cloneConfig,
+        },
+        5 * 60 * 1000,
+      )
       if (result.success) {
         Object.keys(result.data).forEach((VariableName) => {
           if (result.data[VariableName] !== undefined) {

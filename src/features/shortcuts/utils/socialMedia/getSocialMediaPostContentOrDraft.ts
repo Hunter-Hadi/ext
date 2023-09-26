@@ -333,21 +333,28 @@ export const getSocialMediaPostContent = async (
         10,
       )
       while (parentLiElement) {
-        const commentElement = parentLiElement.childNodes[0] as HTMLDivElement
+        const commentElement = parentLiElement.children?.[0] as HTMLDivElement
         if (commentElement) {
           const facebookCommentData = await getFacebookCommentDetail(
             commentElement,
           )
           // 这是Facebook回复列表的某个回复, 某个回复下的一堆回复，用户点击了其中一个 input就会有用户名，类似linkedin
-          if (
-            facebookPostComments.length === 0 &&
-            !replyContent.startsWith(facebookCommentData.author)
-          ) {
+          if (facebookPostComments.length === 0) {
             if (parentLiElement && replyContent) {
-              const listItems = Array.from(
-                parentLiElement.querySelectorAll('& > div > ul li > div'),
+              let listItems = Array.from(
+                parentLiElement.querySelectorAll(
+                  '& > div > ul > li > div' as any,
+                ),
               ) as HTMLDivElement[]
-              for (let i = 0; i < listItems.length; i++) {
+              if (listItems.length === 0) {
+                listItems = Array.from(
+                  parentLiElement.querySelectorAll(
+                    '& > div > div > ul > li > div' as any,
+                  ),
+                ) as HTMLDivElement[]
+              }
+              // 倒叙寻找
+              for (let i = listItems.length - 1; i >= 0; i--) {
                 const listItem = listItems[i]
                 const commentDetail = await getFacebookCommentDetail(listItem)
                 if (replyContent.startsWith(commentDetail.author)) {

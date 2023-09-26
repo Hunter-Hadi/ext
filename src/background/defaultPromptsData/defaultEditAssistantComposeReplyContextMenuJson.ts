@@ -27,12 +27,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -95,12 +95,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here' the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -163,12 +163,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -231,12 +231,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -299,12 +299,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -373,12 +373,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -441,12 +441,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -516,12 +516,12 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
@@ -589,13 +589,13 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{CONTEXT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 
 Here's the text to reply to:
 \`\`\`
-{{TARGET_POST_OR_COMMENT}}
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 ---

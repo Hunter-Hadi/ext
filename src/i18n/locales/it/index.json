@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Migliora la scrittura, correggi errori di ortografia e grammatica o cambia tono istantaneamente con l'IA.",
     "input_assistant_button__compose_new__tooltip": "Composizione rapida",
     "input_assistant_button__compose_reply__tooltip": "Risposta rapida",
-    "input_assistant_button__refine_draft__tooltip": "Modifica o rivedi la bozza"
+    "input_assistant_button__refine_draft__tooltip": "Modifica o rivedi la bozza",
+    "permission__pricing_hook__search_with_ai_claude__title": "Passa a cercare con Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Il modello più veloce di Anthropic. Nessuna restrizione di paese.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Passa a cercare con ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Velocità pari a ChatGPT Plus. Nessuna restrizione di paese.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Utilizza la tua chiave API OpenAI per alimentare 'Cerca con l'IA'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

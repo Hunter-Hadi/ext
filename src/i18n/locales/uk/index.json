@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI کے ساتھ لکھائی کو بہتر بنائیں، املا و گرامر کو درست کریں یا فوری طور پر ٹون تبدیل کریں۔",
     "input_assistant_button__compose_new__tooltip": "تیزی سے تشکیل دیں",
     "input_assistant_button__compose_reply__tooltip": "تیزی سے جواب دیں",
-    "input_assistant_button__refine_draft__tooltip": "ڈرافٹ میں ترمیم یا جائزہ لیں"
+    "input_assistant_button__refine_draft__tooltip": "ڈرافٹ میں ترمیم یا جائزہ لیں",
+    "permission__pricing_hook__search_with_ai_claude__title": "کلوڈ کے ساتھ تلاش کرنے کے لئے اپگریڈ کریں",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic کا تیز ترین ماڈل۔ کوئی ملکی پابندی نہیں۔",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "چیٹ جی پی ٹی کے ساتھ تلاش کرنے کے لئے اپگریڈ کریں",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus کی طرح تیز۔ کوئی ملکی پابندی نہیں۔",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'تلاش باہمی عقل' کو چلانے کے لئے اپنی خود کی OpenAI API کو استعمال کریں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Îmbunătățiți scrierea, corectați greșelile de ortografie și gramatică sau schimbați tonul instantaneu cu ajutorul IA.",
     "input_assistant_button__compose_new__tooltip": "Compoziție rapidă",
     "input_assistant_button__compose_reply__tooltip": "Răspuns rapid",
-    "input_assistant_button__refine_draft__tooltip": "Editare sau revizuire a proiectului"
+    "input_assistant_button__refine_draft__tooltip": "Editare sau revizuire a proiectului",
+    "permission__pricing_hook__search_with_ai_claude__title": "Upgradează pentru a căuta cu Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Cel mai rapid model al Anthropic. Fără restricții de țară.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Upgradează pentru a căuta cu ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "La fel de rapid ca și ChatGPT Plus. Fără restricții de țară.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Folosește propriul tău cheie OpenAI API pentru a alimenta 'Căutare cu AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

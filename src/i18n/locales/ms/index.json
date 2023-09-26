@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Tingkatkan penulisan, betulkan ejaan & tatabahasa, atau ubah nada secara langsung dengan AI.",
     "input_assistant_button__compose_new__tooltip": "Segera tulis",
     "input_assistant_button__compose_reply__tooltip": "Segera balas",
-    "input_assistant_button__refine_draft__tooltip": "Edit atau semak draf"
+    "input_assistant_button__refine_draft__tooltip": "Edit atau semak draf",
+    "permission__pricing_hook__search_with_ai_claude__title": "Naik taraf ke carian dengan Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Model terpantas Anthropic. Tiada sekatan negara.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Naik taraf ke carian dengan ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Sama pantas dengan ChatGPT Plus. Tiada sekatan negara.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gunakan kunci API OpenAI anda sendiri untuk kuasa 'Carian dengan AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

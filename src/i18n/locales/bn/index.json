@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "আইএ দ্বারা লেখা উন্নত করুন, বানান ও ব্যাকরণ ঠিক করুন, অথবা আত্মবিশ্বাসের সাথে টোন পরিবর্তন করুন।",
     "input_assistant_button__compose_new__tooltip": "দ্রুত সংক্ষিপ্ত লেখা",
     "input_assistant_button__compose_reply__tooltip": "দ্রুত উত্তর",
-    "input_assistant_button__refine_draft__tooltip": "ড্রাফট সম্পাদনা বা পর্যালোচনা"
+    "input_assistant_button__refine_draft__tooltip": "ড্রাফট সম্পাদনা বা পর্যালোচনা",
+    "permission__pricing_hook__search_with_ai_claude__title": "ক্লোড দিয়ে অনুসন্ধান আপগ্রেড করুন",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic এর সর্বাধিক দ্রুত মডেল। কোনও দেশের সীমাবদ্ধতা নেই।",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "চ্যাটজিপিটি দিয়ে অনুসন্ধান আপগ্রেড করুন",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus এর মতো দ্রুত। কোনও দেশের সীমাবদ্ধতা নেই।",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'অ্যাপিটি দিয়ে অনুসন্ধান' চালাতে আপনার নিজস্ব OpenAI API কী ব্যবহার করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

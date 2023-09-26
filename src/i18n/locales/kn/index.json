@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI ನೊಂದಿಗೆ ಬರೆಯುವುದನ್ನು ಮೇಲ್ಮಡಿಯಾಗಿ ಮಾಡುವುದೂ, ವರ್ತನೆಯನ್ನು ತಕ್ಷಣವೇ ಸರಿಪಡಿಸುವುದೂ, ವರ್ತನೆಯನ್ನು ಬದಲಾಯಿಸುವುದೂ ಮಾಡಿ ನಿಮ್ಮ ಪೋಸ್ಟ್‌ಗಳನ್ನು ಮತ್ತು ಉತ್ತರಗಳನ್ನು ಸರಿಪಡಿಸಿ.",
     "input_assistant_button__compose_new__tooltip": "ತ್ವರಿತ ರಚಿಸು",
     "input_assistant_button__compose_reply__tooltip": "ತ್ವರಿತ ಉತ್ತರ",
-    "input_assistant_button__refine_draft__tooltip": "ಡ್ರಾಫ್ಟ್ ಸಂಪಾದಿಸಿ ಅಥವಾ ಪರಿಶೀಲಿಸಿ"
+    "input_assistant_button__refine_draft__tooltip": "ಡ್ರಾಫ್ಟ್ ಸಂಪಾದಿಸಿ ಅಥವಾ ಪರಿಶೀಲಿಸಿ",
+    "permission__pricing_hook__search_with_ai_claude__title": "ಕ್ಲೋಡ್ ನೊಂದಿಗೆ ಹುಡುಕಾಟವನ್ನು ಮೆಚ್ಚಿಸಿ",
+    "permission__pricing_hook__search_with_ai_claude__description": "ಅಂಥ್ರೋಪಿಕ್ ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಯಾವುದೇ ದೇಶದ ಮಿತಿಗಳಿಲ್ಲ.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT ನೊಂದಿಗೆ ಹುಡುಕಾಟವನ್ನು ಮೆಚ್ಚಿಸಿ",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus ಯಂತ್ರದಷ್ಟು ಬೇಗ. ಯಾವುದೇ ದೇಶದ ಮಿತಿಗಳಿಲ್ಲ.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "ನಿಮ್ಮ ಸ್ವಂತ OpenAI API ಕೀಲಿಯನ್ನು ಬಳಸಿ 'ಹುಡುಕಾಟ ಜೊತೆಗೆ AI' ಶಕ್ತಿಗೊಳಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

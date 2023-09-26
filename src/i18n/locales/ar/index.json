@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "تحسين الكتابة، إصلاح الأخطاء الإملائية والنحوية، أو تغيير الأسلوب على الفور باستخدام الذكاء الاصطناعي.",
     "input_assistant_button__compose_new__tooltip": "إنشاء سريع",
     "input_assistant_button__compose_reply__tooltip": "الرد السريع",
-    "input_assistant_button__refine_draft__tooltip": "تحرير أو مراجعة المسودة"
+    "input_assistant_button__refine_draft__tooltip": "تحرير أو مراجعة المسودة",
+    "permission__pricing_hook__search_with_ai_claude__title": "ترقية للبحث مع كلود",
+    "permission__pricing_hook__search_with_ai_claude__description": "أسرع نموذج من أنثروبيك. بدون قيود جغرافية.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ترقية للبحث مع ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "بنفس سرعة ChatGPT Plus. بدون قيود جغرافية.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "استخدم مفتاح OpenAI الخاص بك لتشغيل 'البحث مع AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

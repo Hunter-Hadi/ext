@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Paranda kirjutamist, paranda õigekirja ja grammatikat või muuda tooni kohe AI abil.",
     "input_assistant_button__compose_new__tooltip": "Kiire koostamine",
     "input_assistant_button__compose_reply__tooltip": "Kiire vastus",
-    "input_assistant_button__refine_draft__tooltip": "Redigeeri või vaata üle mustand"
+    "input_assistant_button__refine_draft__tooltip": "Redigeeri või vaata üle mustand",
+    "permission__pricing_hook__search_with_ai_claude__title": "Tõsta tasemele otsinguga Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropicu kiireim mudel. Pole riigipiiranguid.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Tõsta tasemele otsinguga ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Nii kiire kui ChatGPT Plus. Pole riigipiiranguid.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Kasuta oma OpenAI API võtit 'Otsi AI-ga' toitmiseks."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

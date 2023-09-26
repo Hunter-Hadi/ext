@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "ปรับปรุงการเขียน แก้ไขการสะกดคำและไวยากรณ์ หรือเปลี่ยนโทนทันทีด้วย AI",
     "input_assistant_button__compose_new__tooltip": "ร่ายเร็ว",
     "input_assistant_button__compose_reply__tooltip": "ตอบเร็ว",
-    "input_assistant_button__refine_draft__tooltip": "แก้ไขหรือตรวจสอบร่าง"
+    "input_assistant_button__refine_draft__tooltip": "แก้ไขหรือตรวจสอบร่าง",
+    "permission__pricing_hook__search_with_ai_claude__title": "อัปเกรดเพื่อค้นหาด้วย Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "โมเดลที่เร็วที่สุดของ Anthropic ไม่มีข้อจำกัดตามประเทศ",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "อัปเกรดเพื่อค้นหาด้วย ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "เร็วเท่ากับ ChatGPT Plus ไม่มีข้อจำกัดตามประเทศ",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "ใช้ OpenAI API key เองเพื่อให้พลังให้กับ 'ค้นหาด้วย AI'"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

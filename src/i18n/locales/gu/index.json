@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI સાથે લેખન સુધારો, શબ્દાંશ અને વ્યાકરણ ઠીક કરો અથવા ટોન તત્વો તત્વેની સંપૂર્ણતાથી બદલો.",
     "input_assistant_button__compose_new__tooltip": "ઝડપી સંપૂર્ણ કરો",
     "input_assistant_button__compose_reply__tooltip": "ઝડપી જવાબ આપો",
-    "input_assistant_button__refine_draft__tooltip": "ડ્રાફ્ટ સંપૂર્ણ કરો અથવા સમીક્ષા કરો"
+    "input_assistant_button__refine_draft__tooltip": "ડ્રાફ્ટ સંપૂર્ણ કરો અથવા સમીક્ષા કરો",
+    "permission__pricing_hook__search_with_ai_claude__title": "ક્લોડ સાથે શોધ માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__search_with_ai_claude__description": "એન્થ્રોપિકની સર્વાધિક ઝડપીથી ચાલતી મોડેલ. કોઈ દેશની મરજિયાત નથી.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ચેટજીપીટી સાથે શોધ માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ચેટજીપીટી પ્લસ જેવી ઝડપીથી ચાલતું. કોઈ દેશની મરજિયાત નથી.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "તમારી પોતાની OpenAI API કીનો ઉપયોગ કરો 'શોધ સાથે AI' ને ચાલીએ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

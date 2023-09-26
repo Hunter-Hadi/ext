@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Förbättra skrivandet, fixa stavfel och grammatik eller ändra tonen direkt med hjälp av AI.",
     "input_assistant_button__compose_new__tooltip": "Snabbkomponera",
     "input_assistant_button__compose_reply__tooltip": "Snabbsvar",
-    "input_assistant_button__refine_draft__tooltip": "Redigera eller granska utkast"
+    "input_assistant_button__refine_draft__tooltip": "Redigera eller granska utkast",
+    "permission__pricing_hook__search_with_ai_claude__title": "Uppgradera till sökning med Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropics snabbaste modell. Inga landsrestriktioner.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Uppgradera till sökning med ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Lika snabb som ChatGPT Plus. Inga landsrestriktioner.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Använd din egen OpenAI API-nyckel för att driva 'Sök med AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI తో రాయండి, వ్యాఖ్యానించండి లేదా భాషను త్వరగా మార్చండి.",
     "input_assistant_button__compose_new__tooltip": "త్వరగా నొందించండి",
     "input_assistant_button__compose_reply__tooltip": "త్వరగా సమాధానం ఇవ్వండి",
-    "input_assistant_button__refine_draft__tooltip": "డ్రాఫ్ట్‌ను సవరించండి లేదా సమీక్షించండి"
+    "input_assistant_button__refine_draft__tooltip": "డ్రాఫ్ట్‌ను సవరించండి లేదా సమీక్షించండి",
+    "permission__pricing_hook__search_with_ai_claude__title": "క్లాడ్‌తో శోధన నిర్మించడానికి అప్గ్రేడ్ చేయండి",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic సర్వేక్షణ మోడల్‌కు అత్యంత వేగంగా. దేశాల పరిమితులు లేవు.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT తో శోధన నిర్మించడానికి అప్గ్రేడ్ చేయండి",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus కంటే త్వరగా. దేశాల పరిమితులు లేవు.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'శోధన విత్ ఐ' ప్రాముఖ్యతను పొందడానికి మీ స్వంత OpenAI API కీని ఉపయోగించండి."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

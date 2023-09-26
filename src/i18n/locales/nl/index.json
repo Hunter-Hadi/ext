@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Verbeter het schrijven, corrigeer spelling en grammatica, of verander direct de toon met behulp van AI.",
     "input_assistant_button__compose_new__tooltip": "Snel opstellen",
     "input_assistant_button__compose_reply__tooltip": "Snel antwoorden",
-    "input_assistant_button__refine_draft__tooltip": "Bewerk of bekijk concept"
+    "input_assistant_button__refine_draft__tooltip": "Bewerk of bekijk concept",
+    "permission__pricing_hook__search_with_ai_claude__title": "Upgrade naar zoeken met Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Het snelste model van Anthropic. Geen landbeperkingen.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Upgrade naar zoeken met ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Net zo snel als ChatGPT Plus. Geen landbeperkingen.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gebruik je eigen OpenAI API-sleutel om 'Zoeken met AI' te activeren."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

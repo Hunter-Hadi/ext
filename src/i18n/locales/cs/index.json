@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Zlepšete psaní, opravte pravopis a gramatiku nebo okamžitě změňte tón s pomocí umělé inteligence.",
     "input_assistant_button__compose_new__tooltip": "Rychlé vytvoření",
     "input_assistant_button__compose_reply__tooltip": "Rychlá odpověď",
-    "input_assistant_button__refine_draft__tooltip": "Upravit nebo zkontrolovat koncept"
+    "input_assistant_button__refine_draft__tooltip": "Upravit nebo zkontrolovat koncept",
+    "permission__pricing_hook__search_with_ai_claude__title": "Vylepšit na vyhledávání s Claudem",
+    "permission__pricing_hook__search_with_ai_claude__description": "Nejrychlejší model od Anthropic. Žádná omezení země.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Vylepšit na vyhledávání s ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Stejně rychlé jako ChatGPT Plus. Žádná omezení země.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Použijte vlastní klíč OpenAI API pro napájení 'Vyhledávání s AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

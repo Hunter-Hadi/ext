@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Boresha uandishi, tafuta na kurekebisha makosa ya sarufi, au badilisha mtindo mara moja na AI.",
     "input_assistant_button__compose_new__tooltip": "Andika haraka",
     "input_assistant_button__compose_reply__tooltip": "Jibu haraka",
-    "input_assistant_button__refine_draft__tooltip": "Hariri au hakiki rasimu"
+    "input_assistant_button__refine_draft__tooltip": "Hariri au hakiki rasimu",
+    "permission__pricing_hook__search_with_ai_claude__title": "Sasisha ili kutafuta na Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Mfano wa haraka zaidi wa Anthropic. Hakuna vizuizi vya nchi.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Sasisha ili kutafuta na ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Haraka kama ChatGPT Plus. Hakuna vizuizi vya nchi.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Tumia ufunguo wako wa OpenAI API kuwezesha 'Tafuta na AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI እንዴት በሚያስተካክል የመስመር ቃልዎን ይዘት, የምስልና ድግሪን እና ትርጉም በአስተካክል ይሰጣል",
     "input_assistant_button__compose_new__tooltip": "በቀጥታ መስመር",
     "input_assistant_button__compose_reply__tooltip": "በቀጥታ መመልከት",
-    "input_assistant_button__refine_draft__tooltip": "ቃልዎን አስተካክል ወደግሩን ወደሚያስተካክል ይሰጣል"
+    "input_assistant_button__refine_draft__tooltip": "ቃልዎን አስተካክል ወደግሩን ወደሚያስተካክል ይሰጣል",
+    "permission__pricing_hook__search_with_ai_claude__title": "ወደ Claude መግባት አድርግ",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic ብቻ ምርጫውን የተጠቀሰ ማሳወቂያ. ምድብ የሚያስችል የሆነ አጠቃላይ ምርጫ.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ወደ ChatGPT መግባት አድርግ",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus ብቻ ምርጫውን የተጠቀሰ ማሳወቂያ. ምድብ የሚያስችል የሆነ አጠቃላይ ምርጫ.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "የሚጠቀሙ 'Search with AI' እንዴት እንደሚሰጥ ኢንፎርሜሽን የሚጠቀሙ OpenAI API ኪዩ ይጠቀም."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

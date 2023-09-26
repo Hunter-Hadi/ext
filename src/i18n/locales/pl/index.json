@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Poprawiaj pisanie, naprawiaj błędy ortograficzne i gramatyczne lub zmieniaj ton natychmiastowo za pomocą AI.",
     "input_assistant_button__compose_new__tooltip": "Szybkie tworzenie",
     "input_assistant_button__compose_reply__tooltip": "Szybka odpowiedź",
-    "input_assistant_button__refine_draft__tooltip": "Edytuj lub przeglądaj szkic"
+    "input_assistant_button__refine_draft__tooltip": "Edytuj lub przeglądaj szkic",
+    "permission__pricing_hook__search_with_ai_claude__title": "Ulepsz do wyszukiwania z Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Najszybszy model od Anthropic. Bez ograniczeń geograficznych.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Ulepsz do wyszukiwania z ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Tak szybki jak ChatGPT Plus. Bez ograniczeń geograficznych.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Użyj własnego klucza OpenAI API do zasilania funkcji 'Wyszukaj z AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

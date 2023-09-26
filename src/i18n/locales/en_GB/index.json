@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Improve writing, fix spelling & grammar, or change tone instantly with AI.",
     "input_assistant_button__compose_new__tooltip": "Quick compose",
     "input_assistant_button__compose_reply__tooltip": "Quick reply",
-    "input_assistant_button__refine_draft__tooltip": "Edit or review draft"
+    "input_assistant_button__refine_draft__tooltip": "Edit or review draft",
+    "permission__pricing_hook__search_with_ai_claude__title": "Upgrade to search with Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic's fastest model. No country restrictions.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Upgrade to search with ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "As fast as ChatGPT Plus. No country restrictions.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Use your own OpenAI API key to power 'Search with AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

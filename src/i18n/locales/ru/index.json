@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Улучшайте письма, исправляйте орфографию и грамматику или мгновенно меняйте тон с помощью ИИ.",
     "input_assistant_button__compose_new__tooltip": "Быстрое создание",
     "input_assistant_button__compose_reply__tooltip": "Быстрый ответ",
-    "input_assistant_button__refine_draft__tooltip": "Редактировать или просмотреть черновик"
+    "input_assistant_button__refine_draft__tooltip": "Редактировать или просмотреть черновик",
+    "permission__pricing_hook__search_with_ai_claude__title": "Обновите для поиска с Клодом",
+    "permission__pricing_hook__search_with_ai_claude__description": "Самая быстрая модель Anthropic. Без ограничений по странам.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Обновите для поиска с ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Так же быстро, как ChatGPT Plus. Без ограничений по странам.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Используйте свой собственный ключ OpenAI API для работы с 'Поиск с ИИ'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

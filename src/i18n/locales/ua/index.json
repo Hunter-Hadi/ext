@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Покращуйте письмо, виправляйте помилки в написанні та граматиці або миттєво змінюйте тон за допомогою штучного інтелекту.",
     "input_assistant_button__compose_new__tooltip": "Швидке створення",
     "input_assistant_button__compose_reply__tooltip": "Швидка відповідь",
-    "input_assistant_button__refine_draft__tooltip": "Редагувати або переглянути чернетку"
+    "input_assistant_button__refine_draft__tooltip": "Редагувати або переглянути чернетку",
+    "permission__pricing_hook__search_with_ai_claude__title": "Оновити до пошуку з Клодом",
+    "permission__pricing_hook__search_with_ai_claude__description": "Найшвидша модель від Anthropic. Без обмежень за країною.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Оновити до пошуку з ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Так само швидко, як ChatGPT Plus. Без обмежень за країною.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Використовуйте свій власний ключ OpenAI API для роботи з 'Пошуком з AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

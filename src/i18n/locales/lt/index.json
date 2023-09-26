@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Patobulinkite rašymą, ištaisykite rašybą ir gramatiką arba keiskite toną akimirksniu naudojant dirbtinę intelektą.",
     "input_assistant_button__compose_new__tooltip": "Greitas kūrimas",
     "input_assistant_button__compose_reply__tooltip": "Greitas atsakymas",
-    "input_assistant_button__refine_draft__tooltip": "Redaguoti ar peržiūrėti projektą"
+    "input_assistant_button__refine_draft__tooltip": "Redaguoti ar peržiūrėti projektą",
+    "permission__pricing_hook__search_with_ai_claude__title": "Atnaujinti ieškant su Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Greičiausias Anthropic modelis. Jokių šalių apribojimų.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Atnaujinti ieškant su ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Tokia pati greitai kaip ChatGPT Plus. Jokių šalių apribojimų.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Naudokite savo OpenAI API raktą, kad galėtumėte naudoti „Ieškoti su AI“."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

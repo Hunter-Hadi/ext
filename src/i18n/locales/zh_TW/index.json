@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "使用 AI 改進寫作、修正拼寫和語法錯誤，或即時更改語氣。",
     "input_assistant_button__compose_new__tooltip": "快速撰寫",
     "input_assistant_button__compose_reply__tooltip": "快速回覆",
-    "input_assistant_button__refine_draft__tooltip": "編輯或檢閱草稿"
+    "input_assistant_button__refine_draft__tooltip": "編輯或檢閱草稿",
+    "permission__pricing_hook__search_with_ai_claude__title": "升級至使用Claude進行搜索",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic最快的模型。無國家限制。",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "升級至使用ChatGPT進行搜索",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "與ChatGPT Plus一樣快速。無國家限制。",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "使用您自己的OpenAI API密鑰來提供“使用AI進行搜索”。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

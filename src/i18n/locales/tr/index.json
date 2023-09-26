@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Yazmayı iyileştirin, yazım ve dilbilgisi hatalarını düzeltin veya tonu anında değiştirin.",
     "input_assistant_button__compose_new__tooltip": "Hızlı oluştur",
     "input_assistant_button__compose_reply__tooltip": "Hızlı yanıt",
-    "input_assistant_button__refine_draft__tooltip": "Taslak düzenle veya gözden geçir"
+    "input_assistant_button__refine_draft__tooltip": "Taslak düzenle veya gözden geçir",
+    "permission__pricing_hook__search_with_ai_claude__title": "Claude ile arama yapmaya yükseltin",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic'in en hızlı modeli. Ülke kısıtlaması yok.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT ile arama yapmaya yükseltin",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus kadar hızlı. Ülke kısıtlaması yok.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AI ile Arama'yı güçlendirmek için kendi OpenAI API anahtarınızı kullanın."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Βελτιώστε τη γραφή, διορθώστε την ορθογραφία και τη γραμματική ή αλλάξτε αμέσως τον τόνο με την τεχνητή νοημοσύνη.",
     "input_assistant_button__compose_new__tooltip": "Γρήγορη σύνθεση",
     "input_assistant_button__compose_reply__tooltip": "Γρήγορη απάντηση",
-    "input_assistant_button__refine_draft__tooltip": "Επεξεργασία ή αναθεώρηση προσχεδίου"
+    "input_assistant_button__refine_draft__tooltip": "Επεξεργασία ή αναθεώρηση προσχεδίου",
+    "permission__pricing_hook__search_with_ai_claude__title": "Αναβάθμιση για αναζήτηση με τον Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Ο γρηγορότερος μοντέλο της Anthropic. Χωρίς περιορισμούς χώρας.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Αναβάθμιση για αναζήτηση με το ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Τόσο γρήγορο όσο το ChatGPT Plus. Χωρίς περιορισμούς χώρας.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Χρησιμοποιήστε το δικό σας κλειδί OpenAI API για να ενεργοποιήσετε την 'Αναζήτηση με AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

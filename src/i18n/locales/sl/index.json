@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Izboljšajte pisanje, popravite črkovanje in slovnico ali takoj spremenite ton s pomočjo umetne inteligence.",
     "input_assistant_button__compose_new__tooltip": "Hitro ustvarjanje",
     "input_assistant_button__compose_reply__tooltip": "Hitro odgovarjanje",
-    "input_assistant_button__refine_draft__tooltip": "Uredi ali pregledaj osnutek"
+    "input_assistant_button__refine_draft__tooltip": "Uredi ali pregledaj osnutek",
+    "permission__pricing_hook__search_with_ai_claude__title": "Nadgraditev za iskanje s Claudeom",
+    "permission__pricing_hook__search_with_ai_claude__description": "Najhitrejši model podjetja Anthropic. Brez omejitev glede države.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Nadgraditev za iskanje s ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Enako hitro kot ChatGPT Plus. Brez omejitev glede države.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Uporabite svoj OpenAI API ključ za napajanje 'Iskanja z AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI ने सेकंदात लिही, वर्तनी आणि व्याकरण सुधारणा करा किंवा तोन त्वरितपणे बदला.",
     "input_assistant_button__compose_new__tooltip": "जलद लिहा",
     "input_assistant_button__compose_reply__tooltip": "जलद प्रतिसाद द्या",
-    "input_assistant_button__refine_draft__tooltip": "ड्राफ्ट संपादित करा किंवा पुनरावलोकन करा"
+    "input_assistant_button__refine_draft__tooltip": "ड्राफ्ट संपादित करा किंवा पुनरावलोकन करा",
+    "permission__pricing_hook__search_with_ai_claude__title": "Claudeसह शोधाची अपग्रेड",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropicची सर्वात जलद मॉडेल. कोणत्याही देशांची प्रतिबंधितता नाही.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPTसह शोधाची अपग्रेड",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plusसारखे जलद. कोणत्याही देशांची प्रतिबंधितता नाही.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' साठी आपला स्वत: OpenAI API की वापरा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

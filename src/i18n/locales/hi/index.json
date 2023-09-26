@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI के साथ लेखन को बेहतर बनाएं, त्रुटियों को ठीक करें और भाषा को तत्काल बदलें।",
     "input_assistant_button__compose_new__tooltip": "त्वरित रचना",
     "input_assistant_button__compose_reply__tooltip": "त्वरित जवाब",
-    "input_assistant_button__refine_draft__tooltip": "ड्राफ्ट संपादित करें या समीक्षा करें"
+    "input_assistant_button__refine_draft__tooltip": "ड्राफ्ट संपादित करें या समीक्षा करें",
+    "permission__pricing_hook__search_with_ai_claude__title": "Claude के साथ खोज करने के लिए अपग्रेड करें",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic का सबसे तेज़ मॉडल। कोई देश की प्रतिबंधन नहीं।",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT के साथ खोज करने के लिए अपग्रेड करें",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus के बराबर तेज़। कोई देश की प्रतिबंधन नहीं।",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' को सक्षम करने के लिए अपनी खुद की OpenAI API कुंजी का उपयोग करें।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

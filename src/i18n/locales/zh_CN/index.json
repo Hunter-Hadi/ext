@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "使用AI改进写作，修正拼写和语法错误，或即时更改语气。",
     "input_assistant_button__compose_new__tooltip": "快速撰写",
     "input_assistant_button__compose_reply__tooltip": "快速回复",
-    "input_assistant_button__refine_draft__tooltip": "编辑或审查草稿"
+    "input_assistant_button__refine_draft__tooltip": "编辑或审查草稿",
+    "permission__pricing_hook__search_with_ai_claude__title": "升级到使用Claude搜索",
+    "permission__pricing_hook__search_with_ai_claude__description": "Anthropic最快的模型。无国家限制。",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "升级到使用ChatGPT搜索",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "与ChatGPT Plus一样快。无国家限制。",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "使用您自己的OpenAI API密钥来提供“使用AI进行搜索”。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "AI உடன் எழுத்துக்களை மேம்படுத்தி, தப்புகளை சரிசெய்யலாம் அல்லது மாற்றலாம்.",
     "input_assistant_button__compose_new__tooltip": "விரைவு மின்னஞ்சல்",
     "input_assistant_button__compose_reply__tooltip": "விரைவு பதில்",
-    "input_assistant_button__refine_draft__tooltip": "வரைபடத்தை திருத்து அல்லது மதிப்பிடு"
+    "input_assistant_button__refine_draft__tooltip": "வரைபடத்தை திருத்து அல்லது மதிப்பிடு",
+    "permission__pricing_hook__search_with_ai_claude__title": "கிளோடு மூலம் தேடுக",
+    "permission__pricing_hook__search_with_ai_claude__description": "அந்த்ராபிக் அதிவேகமான மாதிரி. எந்த நாட்டின் வரைபடமும் இல்லை.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT மூலம் தேடுக",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus போன்ற வேகத்தில். எந்த நாட்டின் வரைபடமும் இல்லை.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'ஐயும் தேடு' செயல்பாட்டை செல்லுபடிக்க உங்கள் சொந்த OpenAI API விசையைப் பயன்படுத்துங்கள்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

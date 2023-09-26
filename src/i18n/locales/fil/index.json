@@ -452,7 +452,12 @@
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Mapabuti ang pagsusulat, ayusin ang pagbaybay at gramatika, o baguhin ang tono nang agad gamit ang AI.",
     "input_assistant_button__compose_new__tooltip": "Mabilis na komposisyon",
     "input_assistant_button__compose_reply__tooltip": "Mabilis na tugon",
-    "input_assistant_button__refine_draft__tooltip": "I-edit o suriin ang draft"
+    "input_assistant_button__refine_draft__tooltip": "I-edit o suriin ang draft",
+    "permission__pricing_hook__search_with_ai_claude__title": "Mag-upgrade para sa paghahanap gamit ang Claude",
+    "permission__pricing_hook__search_with_ai_claude__description": "Pinakamabilis na modelo ng Anthropic. Walang mga limitasyon sa bansa.",
+    "permission__pricing_hook__search_with_ai_chatgpt__title": "Mag-upgrade para sa paghahanap gamit ang ChatGPT",
+    "permission__pricing_hook__search_with_ai_chatgpt__description": "Kasingbilis ng ChatGPT Plus. Walang mga limitasyon sa bansa.",
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gamitin ang iyong sariling OpenAI API key upang patakbuhin ang 'Search with AI'."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

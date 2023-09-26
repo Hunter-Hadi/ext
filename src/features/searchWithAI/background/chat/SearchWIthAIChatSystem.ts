@@ -1,16 +1,12 @@
-import {
-  ChatAdapterInterface,
-  IAIProviderType,
-} from '@/background/provider/chat'
+import { ChatAdapterInterface } from '@/background/provider/chat'
 import { createBackgroundMessageListener } from '@/background/utils'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
-import { ISearchWithAISendEvent } from '../background/eventType'
+import { ISearchWithAISendEvent } from '../eventType'
 import {
-  DEFAULT_SEARCH_WITH_AI_SETTING,
   getSearchWithAISettings,
   setSearchWithAISettings,
-} from '../utils/searchWithAISettings'
-import { AI_PROVIDER_MAP } from '@/constants'
+} from '../../utils/searchWithAISettings'
+
 import {
   BardChatProvider,
   BingChatProvider,
@@ -18,7 +14,6 @@ import {
   ClaudeChatProvider,
   MaxAIClaudeChatProvider,
   OpenAIApiChatProvider,
-  OpenAIChatProvider,
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
 import {
@@ -27,18 +22,24 @@ import {
   ClaudeWebappChat,
   MaxAIClaudeChat,
   OpenAiApiChat,
-  OpenAIChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
+import {
+  ISearchWithAIProviderType,
+  SEARCH_WITH_AI_PROVIDER_MAP,
+} from '../../constants'
+
+import { OpenAIChatProvider } from '../provider/OpenAIChatProvider'
+import { OpenAIChat } from './OpenAiChat/index'
 
 class SearchWIthAIChatSystem {
-  currentProvider?: IAIProviderType
+  currentProvider?: ISearchWithAIProviderType
   private adapters: {
-    [key in IAIProviderType]?: ChatAdapterInterface
+    [key in ISearchWithAIProviderType]?: ChatAdapterInterface
   } = {}
   constructor() {
     const openAIChatAdapter = new ChatAdapter(
-      new OpenAIChatProvider(new OpenAIChat()),
+      new OpenAIChatProvider(new OpenAIChat() as any) as any,
     )
     const useChatGPTPlusAdapter = new ChatAdapter(
       new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
@@ -59,13 +60,13 @@ class SearchWIthAIChatSystem {
       new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),
     )
     this.adapters = {
-      [AI_PROVIDER_MAP.OPENAI]: openAIChatAdapter,
-      [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: useChatGPTPlusAdapter,
-      [AI_PROVIDER_MAP.OPENAI_API]: newOpenAIApiChatAdapter,
-      [AI_PROVIDER_MAP.BARD]: bardChatAdapter,
-      [AI_PROVIDER_MAP.BING]: bingChatAdapter,
-      [AI_PROVIDER_MAP.CLAUDE]: claudeChatAdapter,
-      [AI_PROVIDER_MAP.MAXAI_CLAUDE]: maxAIClaudeAdapter,
+      [SEARCH_WITH_AI_PROVIDER_MAP.OPENAI]: openAIChatAdapter,
+      [SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: useChatGPTPlusAdapter,
+      [SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API]: newOpenAIApiChatAdapter,
+      [SEARCH_WITH_AI_PROVIDER_MAP.BARD]: bardChatAdapter,
+      [SEARCH_WITH_AI_PROVIDER_MAP.BING]: bingChatAdapter,
+      [SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE]: claudeChatAdapter,
+      [SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE]: maxAIClaudeAdapter,
     }
 
     this.initChatSystem()
@@ -91,7 +92,6 @@ class SearchWIthAIChatSystem {
             const { provider } = data
             await this.switchAdapter(provider)
             await this.preAuth()
-            await this.auth(sender.tab?.id || 0)
             return {
               success: true,
               data: provider,
@@ -101,6 +101,7 @@ class SearchWIthAIChatSystem {
           }
 
           case 'SWAI_askAIQuestion': {
+            await this.auth(sender.tab?.id || 0)
             const taskId = data.taskId
             const question = data.question
             const options = data.options
@@ -124,7 +125,7 @@ class SearchWIthAIChatSystem {
       return undefined
     })
   }
-  async switchAdapter(provider: IAIProviderType) {
+  async switchAdapter(provider: ISearchWithAIProviderType) {
     await this.destroy()
     this.currentProvider = provider
     await setSearchWithAISettings({ aiProvider: provider })

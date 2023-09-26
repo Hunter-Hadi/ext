@@ -23,6 +23,7 @@ import {
 } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { usePermissionCard } from '@/features/auth'
+import { PopperProps } from '@mui/material'
 
 export interface PermissionWrapperProps {
   sceneType: PermissionWrapperCardSceneType
@@ -104,6 +105,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
             p: 1,
           },
         },
+        ...TooltipProps?.PopperProps,
       }}
       title={
         <ClickAwayListener

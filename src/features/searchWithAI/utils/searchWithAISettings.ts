@@ -1,11 +1,13 @@
-import { IAIProviderType } from '@/background/provider/chat'
-import { AI_PROVIDER_MAP } from '@/constants'
 import Browser from 'webextension-polyfill'
+import {
+  ISearchWithAIProviderType,
+  SEARCH_WITH_AI_PROVIDER_MAP,
+} from '../constants'
 
 export const SEARCH_WITH_AI_STORAGE_KEY = 'SEARCH_WITH_AI_STORAGE_KEY'
 
 export interface ISearchWithAISettings {
-  aiProvider: IAIProviderType
+  aiProvider: ISearchWithAIProviderType
   enable: boolean
   triggerMode: 'manual' | 'always' | 'question-mask'
   webAccessPrompt: boolean
@@ -20,7 +22,7 @@ export interface ISearchWithAISettings {
 }
 
 export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
-  aiProvider: AI_PROVIDER_MAP.MAXAI_CLAUDE,
+  aiProvider: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE,
   enable: true,
   triggerMode: 'manual',
   webAccessPrompt: true,

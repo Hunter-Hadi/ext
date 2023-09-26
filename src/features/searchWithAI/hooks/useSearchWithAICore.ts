@@ -90,7 +90,9 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     }
 
     // 3. ASK_CHATGPT
-    const template = generatePromptTemplate(question, expandContent)
+    const template = searchWithAISettings.webAccessPrompt
+      ? generatePromptTemplate(question, expandContent)
+      : question
     const messageId = uuidV4()
     const conversationId = uuidV4()
     updateConversation({

@@ -32,6 +32,11 @@ export const settingsPageRouterList = [
     divider: false,
   },
   {
+    route: '/search-with-ai',
+    label: 'left_menu__search_with_ai',
+    divider: false,
+  },
+  {
     route: '/help-me-write',
     label: 'left_menu__help_me_write',
     divider: false,
@@ -39,11 +44,6 @@ export const settingsPageRouterList = [
   {
     route: '/language',
     label: 'left_menu__languages',
-    divider: false,
-  },
-  {
-    route: '/search-with-ai',
-    label: 'left_menu__search_with_ai',
     divider: true,
   },
   {

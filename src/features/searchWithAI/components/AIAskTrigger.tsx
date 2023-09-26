@@ -1,5 +1,5 @@
 import { Button, Divider, Stack, Typography } from '@mui/material'
-import { FC, useEffect, useRef } from 'react'
+import { FC, useEffect } from 'react'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 import { endsWithQuestionMark } from '../utils'
 import React from 'react'

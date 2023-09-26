@@ -107,6 +107,7 @@ const mount = async (
                 question={question}
                 siteName={siteName}
                 isDarkMode={siteConfig.isDarkMode()}
+                rootElement={shadowContainer}
               />
             </AppThemeProvider>
           </CacheProvider>

@@ -1,6 +1,6 @@
-import { IAIProviderType } from '@/background/provider/chat'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useCallback, useMemo, useState } from 'react'
+import { ISearchWithAIProviderType } from '../constants'
 import useSearchWithAISettings from './useSearchWithAISettings'
 
 const port = new ContentScriptConnectionV2({
@@ -18,19 +18,22 @@ const useSearchWithProvider = () => {
     [searchWithAISettings.aiProvider],
   )
 
-  const switchProvider = useCallback(async (provider: IAIProviderType) => {
-    setLoading(true)
-    await port.postMessage({
-      event: 'SWAI_switchAIProvider',
-      data: {
-        provider,
-      },
-    })
-    setSearchWithAISettings({
-      aiProvider: provider,
-    })
-    setLoading(false)
-  }, [])
+  const switchProvider = useCallback(
+    async (provider: ISearchWithAIProviderType) => {
+      setLoading(true)
+      await port.postMessage({
+        event: 'SWAI_switchAIProvider',
+        data: {
+          provider,
+        },
+      })
+      setSearchWithAISettings({
+        aiProvider: provider,
+      })
+      setLoading(false)
+    },
+    [],
+  )
 
   return {
     provider: currentProvider,

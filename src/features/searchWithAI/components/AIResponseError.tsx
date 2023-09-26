@@ -1,16 +1,18 @@
-import { IAIProviderType } from '@/background/provider/chat'
-import { AI_PROVIDER_MAP } from '@/constants'
 import { Box, Button, Link, Stack, SxProps } from '@mui/material'
 import { FC, useEffect, useMemo, useState } from 'react'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import React from 'react'
-import { AI_PROVIDER_NAME_MAP } from '../constants'
+import SearchWithAIProviderOptions from '../constants/searchWithAIProviderOptions'
+import {
+  ISearchWithAIProviderType,
+  SEARCH_WITH_AI_PROVIDER_MAP,
+} from '../constants'
 
 interface IProps {
   message: string
-  provider: IAIProviderType
+  provider: ISearchWithAIProviderType
   handleAsk: () => void
   isDarkMode?: boolean
   // sx?: SxProps
@@ -25,6 +27,13 @@ const AIResponseError: FC<IProps> = ({
   const text = message || 'Something went wrong. Please try again.'
 
   const [errorStatus, setErrorStatus] = useState<'UNAUTHORIZED' | 'TRY_AGAIN'>()
+
+  const providerOption = useMemo(() => {
+    return (
+      SearchWithAIProviderOptions.find((item) => item.value === provider) ||
+      SearchWithAIProviderOptions[0]
+    )
+  }, [provider])
 
   const sxCache = useMemo<SxProps>(() => {
     return {
@@ -52,16 +61,16 @@ const AIResponseError: FC<IProps> = ({
   }, [])
 
   const authLink = useMemo(() => {
-    if (provider === AI_PROVIDER_MAP.OPENAI) {
+    if (provider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI) {
       return 'https://chat.openai.com/auth/login'
     }
-    if (provider === AI_PROVIDER_MAP.BING) {
+    if (provider === SEARCH_WITH_AI_PROVIDER_MAP.BING) {
       return `https://bing.com/chat`
     }
-    if (provider === AI_PROVIDER_MAP.BARD) {
+    if (provider === SEARCH_WITH_AI_PROVIDER_MAP.BARD) {
       return `https://bard.google.com`
     }
-    if (provider === AI_PROVIDER_MAP.CLAUDE) {
+    if (provider === SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE) {
       return 'https://claude.ai/login'
     }
     return ''
@@ -69,7 +78,7 @@ const AIResponseError: FC<IProps> = ({
 
   const textCover = useMemo(() => {
     if (text === 'UNAUTHORIZED' || text === 'CLOUDFLARE') {
-      return `Please log into ${AI_PROVIDER_NAME_MAP[provider]} and try again.`
+      return `Please log into ${providerOption.label} and try again.`
     }
 
     // 兼容 claude.ai 的 500的错误提示
@@ -115,7 +124,7 @@ const AIResponseError: FC<IProps> = ({
           }}
         >
           <Button variant="normalOutlined">
-            Log into {AI_PROVIDER_NAME_MAP[provider]}
+            Log into {providerOption.label}
           </Button>
         </Link>
       )

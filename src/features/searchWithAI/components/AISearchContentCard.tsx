@@ -71,8 +71,8 @@ const AISearchContentCard: FC<IProps> = ({
         mb: 2.5,
       }}
     >
-      <h1>{currentAIProvider}</h1>
-      <h1>status: {status}</h1>
+      {/* <h1>{currentAIProvider}</h1>
+      <h1>status: {status}</h1> */}
       <SearchWithAIHeader
         status={status}
         isAnswering={isAnswering}
@@ -80,13 +80,14 @@ const AISearchContentCard: FC<IProps> = ({
         handleClose={handleClose}
         handleResetStatus={handleResetStatus}
       />
-      <Divider />
 
       <AIProviderBar
         isAnswering={!!conversation.writingMessage}
         onProviderChange={handleResetStatus}
-        // sx={{ mb: 1 }}
+        sx={{ mb: 1 }}
       />
+
+      <Divider />
 
       <Stack
         sx={{

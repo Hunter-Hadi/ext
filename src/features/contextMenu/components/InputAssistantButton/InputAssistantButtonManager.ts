@@ -140,6 +140,15 @@ class InputAssistantButtonManager {
       childList: true,
       subtree: true,
     })
+    const buttonGroup = getInputAssistantButtonGroupWithHost({
+      keyElement: rootElement,
+      buttonGroupConfig: this.config,
+    })
+    if (buttonGroup.length === 0) {
+      observer.disconnect()
+      rootWrapperElement.remove()
+      return null
+    }
     const observerData = {
       id,
       destroy: () => {

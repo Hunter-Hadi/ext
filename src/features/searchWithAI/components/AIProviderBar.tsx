@@ -181,8 +181,6 @@ const PreChangeCheckerTooltip = (
     }
   }, [props.checker])
 
-  console.log(`PreChangeCheckerTooltip`, props)
-
   return (
     <TextOnlyTooltip
       // arrow

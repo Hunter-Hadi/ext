@@ -33,7 +33,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
 
     permission: {
       allowedRoles: ['pro'],
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
+      sceneType: 'SEARCH_WITH_AI_CHATGPT',
     },
   },
   {
@@ -42,7 +42,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
 
     permission: {
       allowedRoles: ['pro'],
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
+      sceneType: 'SEARCH_WITH_AI_CLAUDE',
     },
   },
 
@@ -57,26 +57,27 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
       tooltip: {
         title: (
           <Stack spacing={1} py={0.5}>
-            <Typography
-              fontSize={'16px'}
-              fontWeight={600}
-              lineHeight={'24px'}
-              sx={{
-                color: (t) =>
-                  t.palette.mode === 'dark' ? '#fff' : 'rgba(0, 0, 0, 0.87)',
-              }}
-            >
+            <Stack direction="row" spacing={1} alignItems="center">
               <SearchWIthAIProviderIcon
                 aiProviderType="OPENAI_API"
                 isActive
                 size={20}
                 sx={{
                   verticalAlign: 'middle',
-                  mr: 1,
                 }}
               />
-              OpenAI API
-            </Typography>
+              <Typography
+                fontSize={'16px'}
+                fontWeight={600}
+                lineHeight={'24px'}
+                sx={{
+                  color: (t) =>
+                    t.palette.mode === 'dark' ? '#fff' : 'rgba(0, 0, 0, 0.87)',
+                }}
+              >
+                OpenAI API
+              </Typography>
+            </Stack>
             <Typography
               fontSize={'14px'}
               fontWeight={400}

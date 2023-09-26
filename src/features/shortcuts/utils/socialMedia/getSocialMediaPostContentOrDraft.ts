@@ -341,25 +341,29 @@ export const getSocialMediaPostContent = async (
           // 这是Facebook回复列表的某个回复, 某个回复下的一堆回复，用户点击了其中一个 input就会有用户名，类似linkedin
           if (facebookPostComments.length === 0) {
             if (parentLiElement && replyContent) {
-              let listItems = Array.from(
-                parentLiElement.querySelectorAll(
-                  '& > div > ul > li > div' as any,
-                ),
+              const listULElement =
+                parentLiElement.querySelector('& > div > ul' as any) ||
+                parentLiElement.querySelector('& > div > div > ul' as any)
+              const listItems = Array.from(
+                listULElement?.querySelectorAll('& > li > div' as any) || [],
               ) as HTMLDivElement[]
-              if (listItems.length === 0) {
-                listItems = Array.from(
-                  parentLiElement.querySelectorAll(
-                    '& > div > div > ul > li > div' as any,
-                  ),
-                ) as HTMLDivElement[]
-              }
-              // 倒叙寻找
-              for (let i = listItems.length - 1; i >= 0; i--) {
-                const listItem = listItems[i]
-                const commentDetail = await getFacebookCommentDetail(listItem)
-                if (replyContent.startsWith(commentDetail.author)) {
-                  facebookPostComments.push(commentDetail)
-                  break
+              if (listULElement && listItems.length > 0) {
+                // 尝试展开回复列表
+                const expandButton = listULElement.nextElementSibling?.querySelector(
+                  'div[role="button"]',
+                )
+                if (expandButton) {
+                  expandButton.click()
+                  await delay(100)
+                }
+                // 倒叙寻找
+                for (let i = listItems.length - 1; i >= 0; i--) {
+                  const listItem = listItems[i]
+                  const commentDetail = await getFacebookCommentDetail(listItem)
+                  if (replyContent.startsWith(commentDetail.author)) {
+                    facebookPostComments.push(commentDetail)
+                    break
+                  }
                 }
               }
             }

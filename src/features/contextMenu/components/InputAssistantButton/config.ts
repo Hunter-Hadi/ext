@@ -227,7 +227,7 @@ const IInputAssistantButtonGroupConfig = {
       '.comments-comment-box-comment__text-editor + div > div',
       '.share-box_actions .share-actions__primary-action',
     ],
-    rootStyle: 'display:flex;alight-items:center;',
+    rootStyle: 'display:flex;align-items:center;',
     appendPosition: 0,
     rootParentDeep: 1,
     rootWrapperTagName: 'div',
@@ -245,9 +245,6 @@ const IInputAssistantButtonGroupConfig = {
       },
       DropdownButtonStyle: {
         padding: '0px',
-      },
-      InputAssistantBoxSx: {
-        marginTop: '6px',
       },
     },
     refineDraftButton: {

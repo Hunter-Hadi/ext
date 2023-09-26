@@ -148,7 +148,7 @@ const AISearchContentCard: FC<IProps> = ({
 function AnswerLabelTitle({ loading }: { loading: boolean }) {
   if (loading) {
     return (
-      <Stack direction={'row'} alignItems="center" spacing={1} mb={2}>
+      <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
         <CircularProgress size={18} />
         <Typography
           sx={{
@@ -164,7 +164,7 @@ function AnswerLabelTitle({ loading }: { loading: boolean }) {
   }
 
   return (
-    <Stack direction={'row'} alignItems="center" spacing={1} mb={2}>
+    <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
       <ReadIcon
         sx={{
           color: 'primary.main',

@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next'
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
+import { isProduction, ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
 import Box from '@mui/material/Box'
 
 // 按钮位置选项
@@ -51,6 +51,7 @@ export interface InputAssistantButtonStyle {
   margin?: string // 按钮外边距
   padding?: string // 按钮内边距
   icon?: IContextMenuIconKey // 按钮图标
+  transparentHeight?: number // 透明的可点击高度
 }
 
 interface InputAssistantButtonProps {
@@ -85,8 +86,6 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   const { loading } = useRecoilValue(ChatGPTConversationState)
   const [isCTAHover, setIsCTAHover] = useState(false)
   const [isBoxHover, setIsBoxHover] = useState(false)
-  const [ctaTooltipShow, setCtaTooltipShow] = useState(false)
-  const [dropdownTooltipShow, setDropdownTooltipShow] = useState(false)
   const memoButtonSx = useMemo(() => {
     let cloneCTAButtonStyle = cloneDeep(CTAButtonStyle)
     let cloneDropdownButtonStyle = cloneDeep(DropdownButtonStyle)
@@ -235,32 +234,41 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           <Box>
             <TextOnlyTooltip
               placement={placement}
-              open={ctaTooltipShow}
               zIndex={2000000}
               PopperProps={{
                 container: contextMenuContainer as HTMLElement,
               }}
               title={t(buttonGroup[0].tooltip as any)}
             >
-              <div style={{ display: 'flex' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={() => {
+                  setIsCTAHover(true)
+                }}
+                onMouseLeave={() => {
+                  setIsCTAHover(false)
+                }}
+              >
                 {emotionCacheRef.current && (
                   <CacheProvider value={emotionCacheRef.current}>
+                    <Box
+                      position={'absolute'}
+                      top={`-${CTAButtonStyle?.transparentHeight || 0}px`}
+                      width={'100%'}
+                      height={`${CTAButtonStyle?.transparentHeight || 0}px`}
+                      bgcolor={isProduction ? 'transparent' : 'red'}
+                      zIndex={2000001}
+                    />
                     <Button
                       id={`maxAIInputAssistantCtaButton${rootId}`}
-                      maxai-input-assistant-cta-button={`ctaButton${rootId}`}
+                      data-testid={'maxai-input-assistant-cta-button'}
                       disabled={loading}
                       sx={memoButtonSx.ctaButtonSx}
-                      onMouseEnter={() => {
-                        setIsCTAHover(true)
-                        setCtaTooltipShow(true)
-                      }}
-                      onMouseLeave={() => {
-                        setIsCTAHover(false)
-                        setCtaTooltipShow(false)
-                      }}
-                      onClick={() => {
-                        setCtaTooltipShow(false)
-                      }}
                     >
                       {loading ? (
                         <CircularProgress
@@ -279,6 +287,14 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                         />
                       )}
                     </Button>
+                    <Box
+                      position={'absolute'}
+                      bottom={`-${CTAButtonStyle?.transparentHeight || 0}px`}
+                      width={'100%'}
+                      height={`${CTAButtonStyle?.transparentHeight || 0}px`}
+                      bgcolor={isProduction ? 'transparent' : 'red'}
+                      zIndex={2000001}
+                    />
                   </CacheProvider>
                 )}
               </div>
@@ -298,30 +314,37 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
           <Box>
             <TextOnlyTooltip
               placement={placement}
-              open={dropdownTooltipShow}
               zIndex={2000000}
               PopperProps={{
                 container: contextMenuContainer as HTMLElement,
               }}
               title={t(buttonGroup[1].tooltip as any)}
             >
-              <div style={{ display: 'flex' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  cursor: 'pointer',
+                }}
+              >
                 {emotionCacheRef.current && (
                   <CacheProvider value={emotionCacheRef.current}>
+                    <Box
+                      position={'absolute'}
+                      top={`-${DropdownButtonStyle?.transparentHeight || 0}px`}
+                      width={'100%'}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
+                      bgcolor={isProduction ? 'transparent' : 'red'}
+                      zIndex={2000001}
+                    />
                     <Button
                       id={`maxAIInputAssistantDropdownButton${rootId}`}
-                      maxai-input-assistant-dropdown-button={`dropdownButton${rootId}`}
+                      data-testid={'maxai-input-assistant-dropdown-button'}
                       disabled={loading}
                       sx={memoButtonSx.dropdownButtonSx}
-                      onMouseEnter={() => {
-                        setDropdownTooltipShow(true)
-                      }}
-                      onMouseLeave={() => {
-                        setDropdownTooltipShow(false)
-                      }}
-                      onClick={() => {
-                        setDropdownTooltipShow(false)
-                      }}
                     >
                       <ContextMenuIcon
                         icon={'ArrowDropDown'}
@@ -331,6 +354,18 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                         }}
                       />
                     </Button>
+                    <Box
+                      position={'absolute'}
+                      bottom={`-${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
+                      width={'100%'}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
+                      bgcolor={isProduction ? 'transparent' : 'red'}
+                      zIndex={2000001}
+                    />
                   </CacheProvider>
                 )}
               </div>

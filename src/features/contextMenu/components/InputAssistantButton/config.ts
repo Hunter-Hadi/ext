@@ -256,10 +256,12 @@ const IInputAssistantButtonGroupConfig = {
       iconSize: 16,
       borderRadius: '16px 0 0 16px',
       padding: '8px 10px',
+      transparentHeight: 6,
     },
     DropdownButtonStyle: {
       borderRadius: '0 16px 16px 0',
       padding: '6px 3px',
+      transparentHeight: 6,
     },
     InputAssistantBoxSx: {
       borderRadius: '16px',
@@ -269,13 +271,13 @@ const IInputAssistantButtonGroupConfig = {
   'facebook.com': {
     enable: true,
     rootSelectors: [
-      'div > div > div > #focused-state-composer-submit',
+      'div > div > div > #focused-state-composer-submit > span > div > i',
       'form[method="POST"] div > span > div[aria-label="Emoji"]',
     ],
     rootStyle:
       'display: flex;align-items: center;flex-direction: row;padding: 0',
     appendPosition: 0,
-    rootParentDeep: 1,
+    rootParentDeep: 5,
     rootWrapperTagName: 'div',
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',
@@ -296,10 +298,12 @@ const IInputAssistantButtonGroupConfig = {
       padding: '2px 6px',
       iconSize: 16,
       borderRadius: '16px 0 0 16px',
+      transparentHeight: 6,
     },
     DropdownButtonStyle: {
       borderRadius: '0 16px 16px 0',
       padding: '0px',
+      transparentHeight: 6,
     },
     InputAssistantBoxSx: {
       borderRadius: '16px',

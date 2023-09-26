@@ -310,6 +310,46 @@ const IInputAssistantButtonGroupConfig = {
       marginRight: '8px',
     },
   },
+  'youtube.com': {
+    enable: true,
+    rootSelectors: [
+      'ytd-commentbox ytd-button-renderer button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled',
+    ],
+    rootStyle: '',
+    appendPosition: 2,
+    rootParentDeep: 2,
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+    },
+    CTAButtonStyle: {
+      padding: '2px 6px',
+      iconSize: 16,
+      borderRadius: '16px 0 0 16px',
+      transparentHeight: 6,
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 16px 16px 0',
+      padding: '0px',
+      transparentHeight: 6,
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '16px',
+      marginRight: '8px',
+    },
+  },
 } as {
   [key in string]: IInputAssistantButtonGroupConfig
 }

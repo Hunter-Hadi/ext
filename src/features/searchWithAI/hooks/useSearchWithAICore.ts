@@ -1,7 +1,7 @@
 import { crawlingSearchResults } from '@/features/shortcuts/utils/searchEngineCrawling'
 import dayjs from 'dayjs'
 import random from 'lodash-es/random'
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   // SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT,
   SEARCH_WITH_AI_PROMPT,
@@ -28,11 +28,14 @@ export type IAIForSearchStatus =
 
 const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   const [status, setStatus] = useState<IAIForSearchStatus>('idle')
+  const loadingRef = useRef(false)
 
   const taskId = useRef('')
 
-  const { searchWithAISettings, setSearchWithAISettings } =
-    useSearchWithAISettings()
+  const {
+    searchWithAISettings,
+    setSearchWithAISettings,
+  } = useSearchWithAISettings()
 
   const conversation = searchWithAISettings.conversation
 
@@ -64,7 +67,12 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   )
 
   const handleAskQuestion = useCallback(async () => {
+    if (loadingRef.current) {
+      return
+    }
+
     setStatus('waitingAnswer')
+    loadingRef.current = true
 
     // 1. GET_CONTENTS_OF_HTML
     startSourcesLoading()
@@ -149,6 +157,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       updateConversation({
         loading: false,
         errorMessage: errorMessage,
+        writingMessage: '',
       })
     } else {
       setStatus('success')
@@ -158,7 +167,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         writingMessage: '',
       })
     }
-  }, [question, searchWithAISettings?.webAccessPrompt])
+    loadingRef.current = false
+  }, [question, searchWithAISettings?.webAccessPrompt, status])
 
   const handleResetStatus = useCallback(async () => {
     clearSources()
@@ -176,6 +186,17 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     }
     // setStatus('idle')
   }, [conversation.conversationId])
+
+  useEffect(() => {
+    return () => {
+      port.postMessage({
+        event: 'SWAI_abortAskChatGPTQuestion',
+        data: {
+          taskId: taskId.current,
+        },
+      })
+    }
+  }, [])
 
   return {
     status,

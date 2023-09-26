@@ -80,7 +80,7 @@ const AIAskTrigger: FC<IProps> = ({
         >
           Ask AI for this query
         </Button>
-        <Divider> OR</Divider>
+        <Divider> OR </Divider>
         <Typography variant="body2">
           End your search with a question mark to get an AI response
           automatically.

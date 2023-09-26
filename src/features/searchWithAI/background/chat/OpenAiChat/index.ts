@@ -2,9 +2,10 @@ import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { backgroundSendAllClientMessage } from '@/background/utils'
 import {
-  ChatGPTConversation,
   ChatGPTDaemonProcess,
-} from '@/features/chatgpt/core'
+  ChatGPTConversation,
+} from '@/features/searchWithAI/chatCore/chatgpt/core'
+
 // import { ChatGPTConversation } from '@/features/chatgpt/coreBackup'
 import Log from '@/utils/Log'
 

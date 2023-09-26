@@ -1,10 +1,11 @@
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { PermissionWrapperProps } from '@/features/auth/components/PermissionWrapper'
-import { Button, Link, Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { ISearchWithAIProviderType, SEARCH_WITH_AI_PROVIDER_MAP } from './index'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import SearchWIthAIProviderIcon from '../components/SearchWIthAIProviderIcon'
 
 const port = new ContentScriptConnectionV2()
 
@@ -27,7 +28,7 @@ export interface ISearchWithAIProviderOptionsType {
 
 const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
   {
-    label: 'MaxAI chatgpt',
+    label: 'ChatGPT',
     value: SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
 
     permission: {
@@ -35,9 +36,8 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
     },
   },
-
   {
-    label: 'MaxAI claude',
+    label: 'Claude',
     value: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE,
 
     permission: {
@@ -57,29 +57,36 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
       tooltip: {
         title: (
           <Stack spacing={1} py={0.5}>
-            <Typography fontSize={'16px'} fontWeight={600} lineHeight={'24px'}>
-              Use your own OpenAl API key to power the extension.
+            <Typography
+              fontSize={'16px'}
+              fontWeight={600}
+              lineHeight={'24px'}
+              sx={{
+                color: (t) =>
+                  t.palette.mode === 'dark' ? '#fff' : 'rgba(0, 0, 0, 0.87)',
+              }}
+            >
+              <SearchWIthAIProviderIcon
+                aiProviderType="OPENAI_API"
+                isActive
+                size={20}
+                sx={{
+                  verticalAlign: 'middle',
+                  mr: 1,
+                }}
+              />
+              OpenAI API
             </Typography>
-            <Typography fontSize={'14px'} fontWeight={400} lineHeight={'20px'}>
-              <span>
-                Explore your active models on{' '}
-                <Link
-                  target={'_blank'}
-                  href="https://platform.openai.com/playground?mode=chat"
-                  rel="noreferrer noopener nofollow"
-                  sx={{
-                    color: 'inherit',
-                    display: 'inline-flex',
-                    textDecorationColor: 'rgba(255,255,255,0.4)',
-                    '&:hover': {
-                      textDecorationColor: 'rgba(255,255,255,0.6)',
-                    },
-                  }}
-                >
-                  OpenAI Playground
-                </Link>
-                .
-              </span>
+            <Typography
+              fontSize={'14px'}
+              fontWeight={400}
+              lineHeight={'20px'}
+              sx={{
+                color: (t) =>
+                  t.palette.mode === 'dark' ? '#fff' : 'rgba(0, 0, 0, 0.87)',
+              }}
+            >
+              {`Use your own OpenAI API key to power 'Search with AI'.`}
             </Typography>
             <Button
               variant="contained"
@@ -89,7 +96,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
                 width: '100%',
                 px: '0',
                 py: '6px',
-                height: '40px',
+                height: '48px',
                 mt: '16px !important',
               }}
               onClick={async () => {
@@ -118,11 +125,11 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
     value: SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE,
   },
   {
-    label: 'Bard',
+    label: 'Bard web app',
     value: SEARCH_WITH_AI_PROVIDER_MAP.BARD,
   },
   {
-    label: 'Bing chat',
+    label: 'Bing web app',
     value: SEARCH_WITH_AI_PROVIDER_MAP.BING,
   },
 ]

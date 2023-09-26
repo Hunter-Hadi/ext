@@ -57,12 +57,7 @@ const AISearchContentCard: FC<IProps> = ({
     setShow(false)
   }, [])
 
-  log.info('status', status)
-  log.info('triggerMode', triggerMode)
-  log.info('completedAnswer', completedAnswer)
-  log.info('isAnswering', isAnswering)
-
-  if (!show || !currentAIProvider) return null
+  if (!show || !searchWithAISettings.loaded || !currentAIProvider) return null
 
   return (
     <Paper

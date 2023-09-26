@@ -23,19 +23,19 @@ const socialMediaPrompts = [
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here's the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
-
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -91,19 +91,19 @@ Output the answer without additional context, explanation, or extra wording, jus
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here' the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
-
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -155,23 +155,23 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `{{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here's the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
-
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -227,19 +227,19 @@ Output the answer without additional context, explanation, or extra wording, jus
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here's the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
-
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -295,19 +295,19 @@ Output the answer without additional context, explanation, or extra wording, jus
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here's the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
-
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -369,19 +369,19 @@ Output the answer without additional context, explanation, or extra wording, jus
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here's the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
-
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -393,8 +393,7 @@ Choose simple words and phrases. Avoid ones that are too hard or confusing. Writ
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-`,
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -438,19 +437,20 @@ Output the answer without additional context, explanation, or extra wording, jus
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here's the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
 
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -512,19 +512,19 @@ Output the answer without additional context, explanation, or extra wording, jus
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{CONTEXT}}
+</context>
+
+Here's the text to reply to:
 \`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+{{TARGET_POST_OR_COMMENT}}
 \`\`\`
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.
-
----
-
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
 
 ---
 
@@ -585,17 +585,18 @@ Output the answer without additional context, explanation, or extra wording, jus
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-Text:
-\`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
-\`\`\`
-
 ---
 
-The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{CONTEXT}}
 </context>
+
+
+Here's the text to reply to:
+\`\`\`
+{{TARGET_POST_OR_COMMENT}}
+\`\`\`
 
 ---
 
@@ -608,8 +609,7 @@ Do not use hashtags. Write the reply like a real person would.
 Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
 Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
-{{KEY_POINTS}}
-`,
+{{KEY_POINTS}}`,
               variables: [
                 {
                   label: 'Context',

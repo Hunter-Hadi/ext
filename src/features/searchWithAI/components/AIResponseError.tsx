@@ -91,7 +91,11 @@ const AIResponseError: FC<IProps> = ({
   }, [text, provider])
 
   useEffect(() => {
-    if (textCover.includes('sign in') || textCover.includes('log into')) {
+    if (
+      textCover.includes('sign in') ||
+      textCover.includes('log into') ||
+      textCover.includes('Failed to access Bard')
+    ) {
       setErrorStatus('UNAUTHORIZED')
       return
     }

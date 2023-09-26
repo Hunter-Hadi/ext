@@ -119,3 +119,34 @@ export const currency2CurrencySymbol = (currency: string, locale = 'en-US') => {
     return undefined
   }
 }
+
+export const checkIsDomain = (url: string) => {
+  const regex = new RegExp(
+    /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/,
+  )
+  return regex.test(url)
+}
+
+export const httpLink2Hostname = (httpLink: string) => {
+  if (!httpLink) {
+    return ''
+  }
+  try {
+    const regExp =
+      /^(?:https?:\/\/)?(?:www\.)?((?:(?!www\.|\.).)+\.[-a-zA-Z0-9.]+)/gm
+    const host = httpLink.match(regExp)
+    return (host ? host[0] : '').toLowerCase()
+  } catch (e) {
+    return httpLink
+  }
+}
+
+export const string2DomainFaviconUrl = (
+  keywordOrDomain: string,
+  faviconSize: 16 | 32 | 48 | 64 | 96 | 128 | 144 = 16,
+) => {
+  const domain =
+    httpLink2Hostname(keywordOrDomain) ||
+    `${keywordOrDomain?.toLowerCase()}.com`
+  return `https://www.google.com/s2/favicons?sz=${faviconSize}&domain_url=${domain}`
+}

@@ -43,15 +43,22 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     secondary: true
+    normalOutlined: true
   }
 }
 
-interface IProps {
+interface IUseCustomThemeReturn {
   isDarkMode: boolean
   customTheme: Theme
 }
 
-export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
+interface IProps {
+  shadowRootElement?: HTMLElement
+  colorSchema?: 'light' | 'dark'
+}
+
+export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
+  const { shadowRootElement, colorSchema } = props || {}
   const AppSettings = useRecoilValue(AppSettingsState)
 
   // React.useEffect(() => {
@@ -64,8 +71,12 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
   // }, [])
 
   const isDarkMode = useMemo(() => {
+    if (colorSchema !== undefined) {
+      return colorSchema === 'dark'
+    }
+
     return AppSettings.userSettings?.colorSchema === 'dark'
-  }, [AppSettings.userSettings])
+  }, [AppSettings.userSettings, colorSchema])
 
   const theme = React.useMemo(() => {
     return responsiveFontSizes(
@@ -122,6 +133,25 @@ export const useCustomTheme = (shadowRootElement?: HTMLElement): IProps => {
                     color: isDarkMode
                       ? 'rgba(255, 255, 255, 0.3)'
                       : 'rgba(0, 0, 0, 0.38)',
+                  },
+                },
+              },
+              {
+                props: { variant: 'normalOutlined' },
+                style: {
+                  backgroundColor: 'transparent',
+                  border: '1px solid',
+                  color: isDarkMode
+                    ? 'rgba(255, 255, 255, 1)'
+                    : 'rgba(0, 0, 0, 0.87)',
+                  borderColor: isDarkMode
+                    ? 'rgba(255, 255, 255, 0.23)'
+                    : 'rgba(0, 0, 0, 0.23)',
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                    borderColor: isDarkMode
+                      ? 'rgba(255, 255, 255, 1)'
+                      : 'rgba(0, 0, 0, 0.87)',
                   },
                 },
               },

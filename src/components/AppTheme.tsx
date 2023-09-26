@@ -7,7 +7,9 @@ interface IProps {
 }
 
 const AppThemeProvider: FC<PropsWithChildren<IProps>> = (props) => {
-  const { customTheme } = useCustomTheme(props.shadowRootElement)
+  const { customTheme } = useCustomTheme({
+    shadowRootElement: props.shadowRootElement,
+  })
   return <ThemeProvider theme={customTheme} {...props} />
 }
 export default AppThemeProvider

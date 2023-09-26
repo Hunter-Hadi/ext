@@ -23,6 +23,7 @@ import {
 } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { usePermissionCard } from '@/features/auth'
+import { PopperProps } from '@mui/material'
 
 export interface PermissionWrapperProps {
   sceneType: PermissionWrapperCardSceneType
@@ -104,6 +105,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
             p: 1,
           },
         },
+        ...TooltipProps?.PopperProps,
       }}
       title={
         <ClickAwayListener
@@ -193,10 +195,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       event?.stopPropagation?.()
                       event?.preventDefault?.()
                       if (onPermission) {
-                        const {
-                          success,
-                          cardSettings,
-                        } = await onPermission(
+                        const { success, cardSettings } = await onPermission(
                           currentUserPlan,
                           permissionCard,
                           [event, ...args],
@@ -236,10 +235,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
                       event?.stopPropagation?.()
                       event?.preventDefault?.()
                       if (onPermission) {
-                        const {
-                          success,
-                          cardSettings,
-                        } = await onPermission(
+                        const { success, cardSettings } = await onPermission(
                           currentUserPlan,
                           permissionCard,
                           [event, ...args],

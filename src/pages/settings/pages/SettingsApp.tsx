@@ -62,6 +62,9 @@ const SettingsChatGPTStableModePage = React.lazy(
 const SettingsPerksPage = React.lazy(
   () => import('@/pages/settings/pages/perks'),
 )
+const SettingsSearchWithAIPage = React.lazy(
+  () => import('@/pages/settings/pages/search_with_ai'),
+)
 const SettingsApp: FC = () => {
   const { loaded, isLogin } = useAuthLogin()
   const onceScrollRef = useRef(false)
@@ -216,6 +219,9 @@ const SettingsApp: FC = () => {
                         <SettingsChatGPTStableModePage />
                       )}
                       {route === '/perks' && <SettingsPerksPage />}
+                      {route === '/search-with-ai' && (
+                        <SettingsSearchWithAIPage />
+                      )}
                     </Stack>
                   </Stack>
                   {/*right*/}

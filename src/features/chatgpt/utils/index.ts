@@ -7,6 +7,7 @@ import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
 
 export const pingDaemonProcess = async () => {
   const port = new ContentScriptConnectionV2()
@@ -64,6 +65,7 @@ export class ContentScriptConnectionV2 {
       | IChromeExtensionClientSendEvent
       | IOpenAIChatSendEvent
       | IShortCutsSendEvent
+      | ISearchWithAISendEvent
     data?: any
   }): Promise<{
     success: boolean

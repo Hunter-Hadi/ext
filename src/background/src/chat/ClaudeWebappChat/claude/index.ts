@@ -60,7 +60,7 @@ export class Claude {
         } as ClaudeMessage)
         return
       }
-      return
+      // return
     }
     this.abortController = new AbortController()
     const signal = this.abortController.signal

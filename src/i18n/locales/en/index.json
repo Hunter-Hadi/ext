@@ -46,6 +46,7 @@
     "left_menu__appearance": "Appearance",
     "left_menu__mini_menu": "Mini menu",
     "left_menu__help_me_write": "Help me write",
+    "left_menu__search_with_ai": "Search With AI",
     "left_menu__languages": "Languages",
     "left_menu__chatgpt_stable_mode": "ChatGPT stable mode",
     "left_menu__perks": "Perks",
@@ -225,7 +226,16 @@
     "visibility_card__white_list_description": "The prompt will only appear on the enabled sites. If no enabled sites are added, the prompt will be visible on all sites.",
     "visibility_card__add_a_site_dialog__title": "Add a site",
     "visibility_card__add_a_site_dialog__field_site__title": "Site",
-    "visibility_card__add_a_site_dialog__field_site__placeholder": "Enter website URL"
+    "visibility_card__add_a_site_dialog__field_site__placeholder": "Enter website URL",
+
+    "feature__search_with_ai__title": "Display AI responses next to search results",
+    "feature__search_with_ai__trigger_mode__title": "When to display AI responses",
+    "feature__search_with_ai__trigger_mode__always__name": "Always",
+    "feature__search_with_ai__trigger_mode__always__desc": "Display AI response for every search.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Question mark",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Display AI response whenever your search query ends with a question mark.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Manually",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Display AI response only when you click a button manually."
   },
   "client": {
     "sidebar__button__close_sidebar": "Close sidebar",

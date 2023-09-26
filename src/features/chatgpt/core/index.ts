@@ -105,7 +105,7 @@ export interface IChatGPTDaemonProcess {
 }
 
 const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
-const CHAT_TITLE = 'MaxAI.me'
+const CHAT_TITLE = 'MaxAI.me - Search With AI'
 
 const chatGptRequest = (
   token: string,
@@ -311,7 +311,7 @@ export const generateArkoseToken = async (model: string) => {
   }
 }
 
-class ChatGPTConversation {
+export class ChatGPTConversation {
   id: string
   token: string
   model: string

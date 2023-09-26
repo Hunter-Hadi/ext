@@ -79,7 +79,7 @@ const AIResponseError: FC<IProps> = ({
   const textCover = useMemo(() => {
     if (text === 'UNAUTHORIZED' || text === 'CLOUDFLARE') {
       if (providerOption.label === 'ChatGPT web app') {
-        return `Please log into [ChatGPT web app](https://chat.openai.com) and try again.`
+        return `Please log into [Chat.openai.com](https://chat.openai.com) and try again.`
       }
       return `Please log into ${providerOption.label} and try again.`
     }

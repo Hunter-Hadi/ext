@@ -56,7 +56,12 @@ const AIAskTrigger: FC<IProps> = ({
         fullWidth
         variant="normalOutlined"
         startIcon={<SearchOutlinedIcon />}
-        onClick={handleAsk}
+        onClick={() => {
+          // 兼容 开始是 manual，随后配置改成了 always 的情况
+          // 这种情况也不再自动触发
+          setAutoTriggerAskEnable(false)
+          handleAsk()
+        }}
       >
         Ask AI for this query
       </Button>

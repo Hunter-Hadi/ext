@@ -319,9 +319,12 @@ const SearchWIthAIProviderIcon: FC<ISearchWIthAIProviderIconProps> = (
     <Box
       component={'span'}
       sx={{
+        p: 1,
         lineHeight: 0,
         // bgcolor: isActive ? 'red' : 'transparent',
         filter: `grayscale(${isActive ? '0' : '1'})`,
+
+        bgcolor: isActive ? 'rgba(0, 0, 0, 0.12)' : 'transparent',
       }}
     >
       <ProviderIcon {...props} />

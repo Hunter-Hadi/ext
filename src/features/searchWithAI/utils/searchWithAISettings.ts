@@ -22,9 +22,9 @@ export interface ISearchWithAISettings {
 }
 
 export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
-  aiProvider: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE,
+  aiProvider: SEARCH_WITH_AI_PROVIDER_MAP.OPENAI,
   enable: true,
-  triggerMode: 'manual',
+  triggerMode: 'always',
   webAccessPrompt: true,
   conversation: {
     conversationId: '',

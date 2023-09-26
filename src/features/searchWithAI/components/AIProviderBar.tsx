@@ -61,13 +61,10 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
     const providerIcon = (
       <IconButton
         sx={{
-          p: 1,
+          p: 0,
           borderRadius: 0,
           borderRight: rightBorder ? '1px solid rgba(0, 0, 0, 0.08)' : 'none',
 
-          bgcolor: isProviderActive(provider.value)
-            ? 'rgba(0, 0, 0, 0.12)'
-            : 'transparent',
           // bgcolor: (t) =>
           //   isProviderActive(provider)
           //     ? t.palette.mode === 'dark'
@@ -186,6 +183,17 @@ const PreChangeCheckerTooltip = (
       open={open}
       PopperProps={{
         disablePortal: true,
+        sx: {
+          '& > div': {
+            bgcolor: (t) => {
+              if (t.palette.mode === 'dark') {
+                return 'rgba(97, 97, 97, 0.9)'
+              } else {
+                return '#fff'
+              }
+            },
+          },
+        },
       }}
       placement="bottom"
       title={

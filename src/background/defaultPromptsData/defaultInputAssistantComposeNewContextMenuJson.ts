@@ -182,7 +182,12 @@ Now, write a {{CURRENT_WEBSITE_DOMAIN}} post, mentioning these points:
     data: {
       editable: false,
       visibility: {
-        whitelist: ['twitter.com', 'linkedin.com', 'facebook.com'],
+        whitelist: [
+          'twitter.com',
+          'linkedin.com',
+          'facebook.com',
+          'youtube.com',
+        ],
         blacklist: [],
         isWhitelistMode: true,
       },

@@ -3,10 +3,8 @@ import {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
-import {
-  findSelectorParent,
-  getTwitterInputAssistantButtonRootContainer,
-} from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
+import { getTwitterInputAssistantButtonRootContainer } from '@/features/shortcuts/utils/socialMedia/platforms/twitter'
+import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 type getInputAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement

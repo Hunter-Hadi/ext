@@ -317,7 +317,7 @@ const IInputAssistantButtonGroupConfig = {
     ],
     rootStyle: '',
     appendPosition: 2,
-    rootParentDeep: 2,
+    rootParentDeep: 3,
     rootWrapperTagName: 'div',
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',
@@ -335,19 +335,17 @@ const IInputAssistantButtonGroupConfig = {
       permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
     },
     CTAButtonStyle: {
-      padding: '2px 6px',
+      padding: '10px 9px',
       iconSize: 16,
-      borderRadius: '16px 0 0 16px',
-      transparentHeight: 6,
+      borderRadius: '18px 0 0 18px',
     },
     DropdownButtonStyle: {
-      borderRadius: '0 16px 16px 0',
-      padding: '0px',
-      transparentHeight: 6,
+      borderRadius: '0 18px 18px 0',
+      padding: '8px 3px',
     },
     InputAssistantBoxSx: {
-      borderRadius: '16px',
-      marginRight: '8px',
+      borderRadius: '18px',
+      marginLeft: '8px',
     },
   },
 } as {

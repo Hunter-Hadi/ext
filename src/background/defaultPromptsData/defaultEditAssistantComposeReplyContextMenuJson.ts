@@ -462,7 +462,12 @@ const socialMediaPrompts = [
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: ['twitter.com', 'linkedin.com', 'facebook.com'],
+        whitelist: [
+          'twitter.com',
+          'linkedin.com',
+          'facebook.com',
+          'youtube.com',
+        ],
         blacklist: [],
         isWhitelistMode: true,
       },

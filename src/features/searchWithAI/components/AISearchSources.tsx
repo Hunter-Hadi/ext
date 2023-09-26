@@ -15,15 +15,15 @@ import useSourcesStatus from '../hooks/useSourcesStatus'
 const AISearchSources = () => {
   const { loading, sources } = useSourcesStatus()
 
-  const isEmpty = useMemo(
-    () => loading === false && sources.length === 0,
-    [loading, sources],
-  )
+  const isEmpty = useMemo(() => loading === false && sources.length === 0, [
+    loading,
+    sources,
+  ])
 
   if (isEmpty) return null
 
   return (
-    <Box pb={2}>
+    <Box pb={3}>
       <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
         <CaptivePortalIcon
           sx={{

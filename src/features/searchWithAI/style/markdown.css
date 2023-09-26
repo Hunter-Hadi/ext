@@ -1,5 +1,5 @@
 .search-with-ai--text .markdown-body {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--tw-prose-body);
   --theme-0: #fff;
@@ -14,7 +14,7 @@
   --theme-800: #1e293b;
   --theme-900: #0f172a;
   --tw-primary: #62bbf3;
-  --tw-prose-body: #374151;
+  --tw-prose-body: #4d5156;
   --tw-prose-headings: #111827;
   --tw-prose-lead: var(--theme-600);
   --tw-prose-links: var(--theme-900);
@@ -33,7 +33,7 @@
   --tw-prose-bg: var(--theme-0);
   --tw-prose-meta: var(--theme-500);
   --tw-prose-meta-bg: var(--theme-100);
-  --tw-prose-invert-body: #d1d5db;
+  --tw-prose-invert-body: #b7bbc1;
   --tw-prose-invert-headings: var(--theme-0);
   --tw-prose-invert-lead: var(--theme-400);
   --tw-prose-invert-links: var(--theme-0);

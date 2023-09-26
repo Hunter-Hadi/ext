@@ -14,7 +14,7 @@ export const createCommentListData = (commentList: ICommentData[]) => {
       // index代表 # 的数量
       const { content, author } = commentData
       comments.push({
-        text: `Comment ${index + 1})
+        text: `[Comment ${index + 1}]
 **Author:** ${author}
 **Comment:**
 ${content}`,
@@ -72,7 +72,7 @@ export default class SocialMediaPostContext {
   get data(): ISocialMediaPostContextData {
     const { content, author } = this.post
     const commentsData = createCommentListData(this.commentList?.[0] || [])
-    const postText = `**Author:** ${author}
+    const postText = `[Post]\n**Author:** ${author}
 **Post:**
 ${content}`
     if (commentsData?.lastText) {

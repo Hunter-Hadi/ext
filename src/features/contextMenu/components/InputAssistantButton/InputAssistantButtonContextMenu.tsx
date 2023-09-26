@@ -18,6 +18,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { showChatBox } from '@/utils'
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
@@ -55,6 +56,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
         // 如果没有权限，显示付费卡片
         if (!hasPermission && permissionWrapperCardSceneType) {
           showChatBox()
+          authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
           const conversationId = await createConversation()
           await clientChatConversationModifyChatMessages(
             'add',

@@ -272,16 +272,29 @@ export const getSocialMediaPostContent = async (
       facebookReplyForm,
       30,
     )
-    const facebookPostAuthorElement = findSelectorParent(
+    const h3AuthorElement = findSelectorParent(
       'span:has(h3 > span)',
       facebookReplyForm,
       30,
     )
+    const facebookPostAuthorElement =
+      h3AuthorElement ||
+      findSelectorParent('span:has(h4 > div)', facebookReplyForm, 30)
     const facebookPostAuthor = facebookPostAuthorElement?.innerText || ''
-    const facebookPostDate =
-      (facebookPostAuthorElement?.nextElementSibling?.querySelector(
-        'a',
-      ) as HTMLAnchorElement)?.innerText || ''
+    const facebookPostDate = h3AuthorElement
+      ? (facebookPostAuthorElement?.nextElementSibling?.querySelector(
+          'a',
+        ) as HTMLAnchorElement)?.innerText
+      : facebookPostAuthorElement?.parentElement?.nextElementSibling?.querySelectorAll(
+          'a',
+        )?.[1]?.innerText || ''
+    const facebookExpandButton = facebookPostContentCard?.querySelector(
+      'div[dir] > div[role="button"]',
+    ) as HTMLDivElement
+    if (facebookExpandButton) {
+      facebookExpandButton.click()
+      await delay(100)
+    }
     const facebookPostContent = facebookPostContentCard?.innerText || ''
     const facebookPostComments: ICommentData[] = []
     const facebookSocialMediaPostContext = new SocialMediaPostContext({
@@ -355,6 +368,19 @@ export const getSocialMediaPostContent = async (
           }
         }
         break
+      }
+      if (replyContent.replace('\n', '') && !facebookPostComments.length) {
+        const homePagePostCommentBox = findSelectorParent(
+          'div[role="article"]',
+          facebookReplyForm,
+        )
+        const commentData = await getFacebookCommentDetail(
+          homePagePostCommentBox as HTMLElement,
+        )
+        if (replyContent.startsWith(commentData.author)) {
+          // 确定是主页的评论回复
+          facebookPostComments.push(commentData)
+        }
       }
       facebookSocialMediaPostContext.addCommentList(facebookPostComments)
     }

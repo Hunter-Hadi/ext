@@ -42,14 +42,16 @@ export interface ISocialMediaPost {
 }
 
 export interface ISocialMediaPostContextData {
-  fullContext: string
   postText: string
-  targetPostOrComment: string
   post?: ISocialMediaPost
   replyCommentText?: string
   replyComment?: ICommentData
   previousComments?: ICommentData[]
   previousCommentsText?: string
+  // 社交媒体要回复的Post或者Comment
+  SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: string
+  // 社交媒体要回复的Post或者Comment用到的上下文
+  SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT: string
 }
 
 export default class SocialMediaPostContext {
@@ -60,8 +62,8 @@ export default class SocialMediaPostContext {
   }
   static get emptyData(): ISocialMediaPostContextData {
     return {
-      fullContext: '',
-      targetPostOrComment: '',
+      SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT: '',
+      SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: '',
       postText: '',
     }
   }
@@ -77,8 +79,8 @@ export default class SocialMediaPostContext {
 ${content}`
     if (commentsData?.lastText) {
       return {
-        targetPostOrComment: commentsData.lastText,
-        fullContext: commentsData.previousText
+        SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: commentsData.lastText,
+        SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT: commentsData.previousText
           ? `${postText}
 
 ${commentsData.previousText}
@@ -96,8 +98,8 @@ ${commentsData.lastText}`,
       }
     } else {
       return {
-        targetPostOrComment: postText,
-        fullContext: postText,
+        SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: postText,
+        SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT: postText,
         post: this.post,
         postText,
         previousComments: this.commentList?.[0] || [],

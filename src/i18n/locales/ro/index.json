@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "Asistent HubSpot",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Asistent Telegram",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Asistent Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Asistent Google Chat"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Asistent Google Chat",
+    "left_menu__search_with_ai": "Căutare cu AI",
+    "feature__search_with_ai__title": "Afișați răspunsurile AI lângă rezultatele căutării",
+    "feature__search_with_ai__trigger_mode__title": "Când să afișați răspunsurile AI",
+    "feature__search_with_ai__trigger_mode__always__name": "Întotdeauna",
+    "feature__search_with_ai__trigger_mode__always__desc": "Afișați răspunsul AI pentru fiecare căutare.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Semn de întrebare",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Afișați răspunsul AI ori de câte ori interogarea de căutare se termină cu un semn de întrebare.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Manual",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Afișați răspunsul AI numai atunci când faceți clic manual pe un buton."
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "Editare sau revizuire a proiectului",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "Compuneți cu punctele cheie",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "Compoziție rapidă",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "Răspuns rapid"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "Răspuns rapid",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "Apreciez",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "Iubesc",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "Mulțumesc",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "Grijă",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "Glucoză",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "Uau",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Trist",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nu îmi place",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Răspunde cu punctele cheie",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Răspuns rapid",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Răspunde cu punctele cheie (test)"
   }
 }

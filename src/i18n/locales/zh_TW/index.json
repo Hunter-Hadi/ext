@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "HubSpot 助手",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Telegram 助手",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Microsoft Teams 助手",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat 助手"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat 助手",
+    "left_menu__search_with_ai": "使用AI搜索",
+    "feature__search_with_ai__title": "在搜索结果旁显示AI回复",
+    "feature__search_with_ai__trigger_mode__title": "何時顯示AI回覆",
+    "feature__search_with_ai__trigger_mode__always__name": "始終",
+    "feature__search_with_ai__trigger_mode__always__desc": "每次搜索都顯示AI回覆。",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "問號",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "只有當您的搜索查詢以問號結尾時才顯示AI回覆。",
+    "feature__search_with_ai__trigger_mode__manual__name": "手動",
+    "feature__search_with_ai__trigger_mode__manual__desc": "只有在手動點擊按鈕時才顯示AI回覆。"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "編輯或檢閱草稿",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "帶有關鍵要點的撰寫",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "快速撰寫",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "快速回覆"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "快速回覆",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "喜歡",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "愛",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "謝謝",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "關心",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "笑話",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "哇",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "傷心",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "不喜歡",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "回覆關鍵點",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "快速回覆",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回覆關鍵點（測試）"
   }
 }

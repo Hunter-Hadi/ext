@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "Pomoćnik za HubSpot",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Pomoćnik za Telegram",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Pomoćnik za Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Pomoćnik za Google Chat"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Pomoćnik za Google Chat",
+    "left_menu__search_with_ai": "Pretraživanje s AI",
+    "feature__search_with_ai__title": "Prikaži AI odgovore pored rezultata pretrage",
+    "feature__search_with_ai__trigger_mode__title": "Kada prikazati AI odgovore",
+    "feature__search_with_ai__trigger_mode__always__name": "Uvijek",
+    "feature__search_with_ai__trigger_mode__always__desc": "Prikaži AI odgovor za svaku pretragu.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Upitnik",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Prikaži AI odgovor kada se upit za pretragu završava upitnikom.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Ručno",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Prikaži AI odgovor samo kada ručno kliknete gumb."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "Uredi ili pregledaj nacrt",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "Sastavi s ključnim točkama",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "Brzo sastavi",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "Brzi odgovor"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "Brzi odgovor",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "Sviđa mi se",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "Volim",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "Hvala",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "Briga",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "Šala",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "Wow",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Tužno",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "Ne sviđa mi se",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odgovori sa ključnim točkama",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Brzi odgovor",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odgovori sa ključnim točkama (test)"
   }
 }

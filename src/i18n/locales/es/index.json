@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "Asistente de HubSpot",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Asistente de Telegram",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Asistente de Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Asistente de Google Chat"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Asistente de Google Chat",
+    "left_menu__search_with_ai": "Buscar con IA",
+    "feature__search_with_ai__title": "Mostrar respuestas de IA junto a los resultados de búsqueda",
+    "feature__search_with_ai__trigger_mode__title": "Cuándo mostrar las respuestas de IA",
+    "feature__search_with_ai__trigger_mode__always__name": "Siempre",
+    "feature__search_with_ai__trigger_mode__always__desc": "Mostrar respuesta de IA para cada búsqueda.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Signo de interrogación",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Mostrar respuesta de IA cuando tu consulta de búsqueda termina con un signo de interrogación.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Manualmente",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Mostrar respuesta de IA solo cuando hagas clic en un botón manualmente."
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "Editar o revisar borrador",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "Componer con puntos clave",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "Composición rápida",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "Respuesta rápida"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "Respuesta rápida",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "Me gusta",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "Amor",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "Gracias",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "Cuidado",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "Broma",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "Wow",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Triste",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "No me gusta",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Responder con puntos clave",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Respuesta rápida",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Responder con puntos clave (prueba)"
   }
 }

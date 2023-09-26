@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "ஹப்ஸ்பாட் உதவி",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "டெலிகிராம் உதவி",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "மைக்ரோசாஃப்ட் டீம்ஸ் உதவி",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "கூகுள் சோதனை உதவி"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "கூகுள் சோதனை உதவி",
+    "left_menu__search_with_ai": "ஐயுடன் தேடு",
+    "feature__search_with_ai__title": "தேடல் முடிவுகளுக்கு பின்னர் ஐயைக் காட்டு",
+    "feature__search_with_ai__trigger_mode__title": "ஐயைக் காட்ட எப்போது",
+    "feature__search_with_ai__trigger_mode__always__name": "எப்போதும்",
+    "feature__search_with_ai__trigger_mode__always__desc": "ஒவ்வொரு தேடலுக்கும் ஐய் முதலில் காட்டு.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "கேள்வி முடியும் சின்னம்",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "உங்கள் தேடல் வினாவின் முடிவு கேள்வி சின்னத்துடன் முடியும் என்றால் ஐய் முதலில் காட்டு.",
+    "feature__search_with_ai__trigger_mode__manual__name": "கைமுறையாக",
+    "feature__search_with_ai__trigger_mode__manual__desc": "நீங்கள் கையேடு பொத்தானை அழுத்தியவுடன் மட்டுமே ஐய் முதலில் காட்டு."
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "வரைபடத்தை திருத்து அல்லது மதிப்பிடு",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "முக்கிய அமைப்புகளுடன் வரைபடத்தை உருவாக்குக",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "விரைவு மின்னஞ்சல்",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "விரைவு பதில்"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "விரைவு பதில்",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "பிடித்தமானது",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "அன்பு",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "நன்றி",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "பரிசு",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "ஜோக்",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "ஆமாம்",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "மனமார்ந்தது",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "விருப்பமற்றது",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "முக்கிய அம்சங்களையுடன் பதிலளிக்கவும்",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "விரைவான பதில்",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "முக்கிய அம்சங்களையுடன் பதிலளிக்கவும்(சோதனை)"
   }
 }

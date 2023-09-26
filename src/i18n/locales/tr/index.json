@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "HubSpot asistanı",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Telegram asistanı",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Microsoft Teams asistanı",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat asistanı"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat asistanı",
+    "left_menu__search_with_ai": "AI ile Arama",
+    "feature__search_with_ai__title": "Arama sonuçlarının yanında AI yanıtlarını göster",
+    "feature__search_with_ai__trigger_mode__title": "AI yanıtlarını ne zaman göstermek",
+    "feature__search_with_ai__trigger_mode__always__name": "Her zaman",
+    "feature__search_with_ai__trigger_mode__always__desc": "Her arama için AI yanıtını göster.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "Soru işareti",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "Arama sorgunuz bir soru işaretiyle biterse AI yanıtını göster.",
+    "feature__search_with_ai__trigger_mode__manual__name": "Elle",
+    "feature__search_with_ai__trigger_mode__manual__desc": "Yalnızca manuel olarak bir düğmeye tıkladığınızda AI yanıtını göster."
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "Taslak düzenle veya gözden geçir",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "Anahtar noktalarla oluştur",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "Hızlı oluştur",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "Hızlı yanıt"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "Hızlı yanıt",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "Beğen",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "Sev",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "Teşekkürler",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "İlgilen",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "Şaka",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "Vay",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "Üzgün",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "Beğenme",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Anahtar noktalarıyla yanıtla",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Hızlı yanıt",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Anahtar noktalarıyla yanıtla(test)"
   }
 }

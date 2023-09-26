@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "HubSpot सहाय्यक",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "Telegram सहाय्यक",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "Microsoft Teams सहाय्यक",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat सहाय्यक"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "Google Chat सहाय्यक",
+    "left_menu__search_with_ai": "AI शोधा",
+    "feature__search_with_ai__title": "शोध निकटतम परिणामांच्या बद्दल AI प्रतिसाद दाखवा",
+    "feature__search_with_ai__trigger_mode__title": "AI प्रतिसाद दाखवण्याची कधी",
+    "feature__search_with_ai__trigger_mode__always__name": "नेहमी",
+    "feature__search_with_ai__trigger_mode__always__desc": "प्रत्येक शोधासाठी AI प्रतिसाद दाखवा.",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "प्रश्न चिन्ह",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "तुमच्या शोध प्रश्नाच्या शेवटी प्रश्न चिन्हाने संपलेल्या असताना AI प्रतिसाद दाखवा.",
+    "feature__search_with_ai__trigger_mode__manual__name": "स्वतः",
+    "feature__search_with_ai__trigger_mode__manual__desc": "बटणावर क्लिक केल्यास फक्त AI प्रतिसाद दाखवा."
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "ड्राफ्ट संपादित करा किंवा पुनरावलोकन करा",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "महत्त्वाच्या बिंदूसह संयोजित करा",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "जलद लिहा",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "जलद प्रतिसाद"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "जलद प्रतिसाद",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "पसंती",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "प्रेम",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "धन्यवाद",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "काळजी",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "मजाक",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "वाह",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "दु:खी",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "असंतोष",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "जलद प्रतिसाद",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या (परीक्षण)"
   }
 }

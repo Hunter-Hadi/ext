@@ -225,7 +225,16 @@
     "feature_card__help_me_write__field__hubspot_input_assistant_button__title": "허브스팟 어시스턴트",
     "feature_card__help_me_write__field__telegram_input_assistant_button__title": "텔레그램 어시스턴트",
     "feature_card__help_me_write__field__microsoft_teams_input_assistant_button__title": "마이크로소프트 팀즈 어시스턴트",
-    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "구글 챗 어시스턴트"
+    "feature_card__help_me_write__field__google_chat_input_assistant_button__title": "구글 챗 어시스턴트",
+    "left_menu__search_with_ai": "AI로 검색",
+    "feature__search_with_ai__title": "검색 결과 옆에 AI 응답 표시",
+    "feature__search_with_ai__trigger_mode__title": "AI 응답 표시 시기",
+    "feature__search_with_ai__trigger_mode__always__name": "항상",
+    "feature__search_with_ai__trigger_mode__always__desc": "모든 검색에 AI 응답 표시",
+    "feature__search_with_ai__trigger_mode__question-mask__name": "물음표",
+    "feature__search_with_ai__trigger_mode__question-mask__desc": "질문 마침표로 끝나는 검색에 AI 응답 표시",
+    "feature__search_with_ai__trigger_mode__manual__name": "수동으로",
+    "feature__search_with_ai__trigger_mode__manual__desc": "버튼을 수동으로 클릭할 때만 AI 응답 표시"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",
@@ -611,6 +620,17 @@
     "8ca12784-e40f-4cd6-82eb-14aba0bf8566": "초안 편집 또는 검토",
     "1cc8f601-27ac-474f-a70c-20ed1177711a": "주요 포인트로 작성",
     "fef7401d-ecd3-4bae-94b1-8307cf85fa2f": "빠른 작성",
-    "15bbcee6-e39f-40d6-8885-73b83e968869": "빠른 답장"
+    "15bbcee6-e39f-40d6-8885-73b83e968869": "빠른 답장",
+    "26f44f32-cbe8-4832-9049-7b64aa2198fb": "좋아요",
+    "31d488a9-0d16-48ce-b865-6c7667ebf573": "사랑해요",
+    "1d93656a-fbf0-4650-b3b9-e735b36caca3": "감사합니다",
+    "bda41b5f-2985-4dd2-8b09-3bb958ab24d9": "관심있어요",
+    "115cbff4-aeb5-49f5-884c-09971d39314e": "농담",
+    "bdbd5e9e-355b-4563-bd8d-74e7586fdbdd": "와우",
+    "0f6ba970-ed50-4d03-8582-29d4561ea2b6": "슬퍼요",
+    "730b1b2d-809b-428b-9967-9c3b53154bbf": "싫어요",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "주요 포인트로 답장",
+    "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "빠른 답장",
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "주요 포인트로 답장(테스트)"
   }
 }

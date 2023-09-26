@@ -36,6 +36,9 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'FACEBOOK_COMPOSE_NEW_BUTTON',
   'FACEBOOK_COMPOSE_REPLY_BUTTON',
   'FACEBOOK_REFINE_DRAFT_BUTTON',
+
+  'SEARCH_WITH_AI_CLAUDE',
+  'SEARCH_WITH_AI_CHATGPT',
 ] as const
 
 export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
@@ -546,6 +549,31 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t(
         'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
       ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+
+  // Search with AI - Claude
+  SEARCH_WITH_AI_CLAUDE: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-instant-100k.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__search_with_ai_claude__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__search_with_ai_claude__description'),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Search with AI - ChatGPt
+  SEARCH_WITH_AI_CHATGPT: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt3-5.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__search_with_ai_chatgpt__description'),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },

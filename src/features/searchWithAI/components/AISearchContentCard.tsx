@@ -64,6 +64,7 @@ const AISearchContentCard: FC<IProps> = ({
       variant="outlined"
       sx={{
         mb: 2.5,
+        bgcolor: 'transparent',
       }}
     >
       {/* <h1>{currentAIProvider}</h1>
@@ -88,7 +89,7 @@ const AISearchContentCard: FC<IProps> = ({
         sx={{
           px: 2,
           pb: 2,
-          pt: 1,
+          pt: 3,
         }}
       >
         {status !== 'idle' && <QuestionTitle question={question} />}

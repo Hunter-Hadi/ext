@@ -101,7 +101,14 @@ class SearchWIthAIChatSystem {
           }
 
           case 'SWAI_askAIQuestion': {
-            await this.auth(sender.tab?.id || 0)
+            // 特殊处理
+            // 为了不在 auth 时自动弹出登录窗口， 在bard 和 claude 时不执行 auth
+            if (
+              this.currentProvider !== SEARCH_WITH_AI_PROVIDER_MAP.BARD &&
+              this.currentProvider !== SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE
+            ) {
+              await this.auth(sender.tab?.id || 0)
+            }
             const taskId = data.taskId
             const question = data.question
             const options = data.options

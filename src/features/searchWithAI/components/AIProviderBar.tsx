@@ -13,13 +13,11 @@ import {
 } from '@mui/material'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FC } from 'react'
-import { useSetRecoilState } from 'recoil'
 import { ISearchWithAIProviderType } from '../constants'
 import SearchWithAIProviderOptions, {
   ISearchWithAIProviderOptionsType,
 } from '../constants/searchWithAIProviderOptions'
 import useSearchWithProvider from '../hooks/useSearchWithProvider'
-import { AutoTriggerAskEnableAtom } from '../store'
 import SearchWIthAIProviderIcon from './SearchWIthAIProviderIcon'
 
 interface IProps {
@@ -31,8 +29,6 @@ interface IProps {
 const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
   // TODO: providerList 从 AIProviderOptions 配置中读取
   const providerList = SearchWithAIProviderOptions
-
-  const setAutoTriggerAskEnable = useSetRecoilState(AutoTriggerAskEnableAtom)
 
   const {
     provider: currentProvider,
@@ -84,8 +80,6 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
         disabled={loading || isAnswering}
         onClick={() => {
           updateChatGPTProvider(provider.value)
-          // 重置 auto trigger 状态
-          setAutoTriggerAskEnable(true)
           onProviderChange && onProviderChange()
         }}
       >
@@ -180,8 +174,6 @@ const PreChangeCheckerTooltip = (
       return true
     }
   }, [props.checker])
-
-  console.log(`PreChangeCheckerTooltip`, props)
 
   return (
     <TextOnlyTooltip

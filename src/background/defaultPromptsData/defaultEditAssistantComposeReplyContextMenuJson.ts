@@ -17,16 +17,37 @@ const socialMediaPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the post/comment. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -64,16 +85,37 @@ const socialMediaPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the post/comment. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -111,16 +153,37 @@ const socialMediaPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, grateful, and delighted reply to the message/post that responds 'thank you' for whatever the message/post is about. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `{{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write an affectionate, grateful, and delighted reply to the post/comment that responds 'thank you' for whatever the post/comment is about. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -158,16 +221,37 @@ const socialMediaPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the post/comment. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -205,16 +289,37 @@ const socialMediaPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny reply to the message/post joking about it. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write a humorous, entertaining, playful, and funny reply to the post/comment joking about it. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -260,8 +365,36 @@ const socialMediaPrompts = [
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the post/comment. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -299,16 +432,37 @@ const socialMediaPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the post/comment. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -354,8 +508,35 @@ const socialMediaPrompts = [
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nRespond in {{AI_RESPONSE_LANGUAGE}}.\n\nText:\n```\n{{POST_CONTENT}}\n```",
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+Respond in {{AI_RESPONSE_LANGUAGE}}.
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Your task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the post/comment. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
           },
         },
         {
@@ -400,25 +581,51 @@ const socialMediaPrompts = [
               contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
               title: 'Reply with key points',
               modelKey: 'Sidebar',
-              // NOTE: 交给GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE动态创建
-              // template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
-              //
-              // Your task is to write a reply to the following post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
-              //
-              // Post/comment:
-              // {{POST_CONTENT}}
-              //
-              // Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/message and the purpose of your reply.
-              //
-              // Choose simple words and phrases. Avoid ones that are too hard or confusing.
-              //
-              // Do not use hashtags. Write the reply like a real person would.
-              //
-              // Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-              //
-              // Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
-              // {{KEY_POINTS}}`,
+              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+Text:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+---
+
+The following is the complete context of the above post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+---
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
+
+Do not use hashtags. Write the reply like a real person would. 
+
+Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
+{{KEY_POINTS}}
+`,
               variables: [
+                {
+                  label: 'Context',
+                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT',
+                  valueType: 'Text',
+                  placeholder: 'Enter context',
+                  defaultValue:
+                    '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+                },
+                {
+                  label: 'Target post/comment',
+                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
+                  valueType: 'Text',
+                  placeholder: 'Enter target post/comment',
+                  defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+                },
                 {
                   label: 'Key points',
                   VariableName: 'KEY_POINTS',

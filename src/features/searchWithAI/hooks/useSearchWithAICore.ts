@@ -12,6 +12,8 @@ import useSearchWithAISettings from './useSearchWithAISettings'
 import useSourcesStatus from './useSourcesStatus'
 import { v4 as uuidV4 } from 'uuid'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { useSetRecoilState } from 'recoil'
+import { AutoTriggerAskEnableAtom } from '../store'
 const port = new ContentScriptConnectionV2()
 
 export type IAIForSearchStatus =
@@ -38,6 +40,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   } = useSearchWithAISettings()
 
   const conversation = searchWithAISettings.conversation
+
+  const setAutoTriggerAskEnable = useSetRecoilState(AutoTriggerAskEnableAtom)
 
   const { startSourcesLoading, clearSources, setSources } = useSourcesStatus()
 
@@ -172,6 +176,9 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
   const handleResetStatus = useCallback(async () => {
     clearSources()
+
+    // 重置 auto trigger 状态
+    setAutoTriggerAskEnable(true)
     setStatus('idle')
   }, [])
 

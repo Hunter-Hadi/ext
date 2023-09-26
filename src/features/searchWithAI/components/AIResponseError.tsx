@@ -91,6 +91,11 @@ const AIResponseError: FC<IProps> = ({
   }, [text, provider])
 
   useEffect(() => {
+    if (textCover.includes('sign in') || textCover.includes('log into')) {
+      setErrorStatus('UNAUTHORIZED')
+      return
+    }
+
     if (
       textCover.includes('Only one message at a time') ||
       (textCover.includes('try again') && !textCover.includes('log into'))
@@ -102,19 +107,19 @@ const AIResponseError: FC<IProps> = ({
   }, [textCover])
 
   useEffect(() => {
-    if (errorStatus === 'UNAUTHORIZED') {
-      // 如果报错了，则开始监听 onfocus 事件，在 Focus 时，自动重新 ask
-      window.addEventListener('focus', handleAsk)
-    } else {
-      window.removeEventListener('focus', handleAsk)
-    }
-    return () => {
-      window.removeEventListener('focus', handleAsk)
-    }
+    // if (errorStatus === 'UNAUTHORIZED') {
+    //   // 如果报错了，则开始监听 onfocus 事件，在 Focus 时，自动重新 ask
+    //   window.addEventListener('focus', handleAsk)
+    // } else {
+    //   window.removeEventListener('focus', handleAsk)
+    // }
+    // return () => {
+    //   window.removeEventListener('focus', handleAsk)
+    // }
   }, [errorStatus, handleAsk])
 
   const ErrorButton = useMemo(() => {
-    if (errorStatus === 'UNAUTHORIZED') {
+    if (errorStatus === 'UNAUTHORIZED' && authLink) {
       return (
         <Link
           href={authLink}
@@ -140,7 +145,7 @@ const AIResponseError: FC<IProps> = ({
         Ask AI for this query
       </Button>
     )
-  }, [errorStatus, provider])
+  }, [errorStatus, provider, authLink])
 
   return (
     <Stack spacing={2}>

@@ -1,12 +1,51 @@
-import { v4 as uuidV4 } from 'uuid'
-import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
-import { AI_PROVIDER_MAP } from '@/constants'
-import {
-  IChatGPTModelType,
-  IChatGPTPluginType,
-} from '@/background/types/Settings'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+// import Log from '@/util/Log'
+import { v4 as uuidV4 } from 'uuid'
+import { CHATGPT_3_5_MODEL_NAME } from '../constants'
+import { fetchSSE } from './fetch-sse'
+
+export type IChatGPTModelType = {
+  slug: string
+  max_tokens: number
+  title: string
+  description: string
+  tags?: string[]
+  enabled_tools?: string[]
+  qualitative_properties?: {
+    reasoning: number[]
+    speed: number[]
+    conciseness: number[]
+  }
+}
+export type IChatGPTPluginType = {
+  id: string
+  domain: string
+  categories: unknown[]
+  manifest?: {
+    api: {
+      type: string
+      url: string
+    }
+    auth: {
+      type: string
+    }
+    contact_email: string
+    description_for_human: string
+    description_for_model: string
+    legal_info_url: string
+    logo_url: string
+    name_for_human: string
+    name_for_model: string
+    schema_version: string
+  }
+  namespace: string
+  oauth_client_id: string
+  status: 'approved'
+  user_settings: {
+    is_installed: boolean
+    is_authenticated: boolean
+  }
+}
 
 export interface IChatGPTAnswer {
   text: string
@@ -105,7 +144,7 @@ export interface IChatGPTDaemonProcess {
 }
 
 const CHAT_GPT_PROXY_HOST = `https://chat.openai.com`
-const CHAT_TITLE = 'MaxAI.me'
+const CHAT_TITLE = 'MaxAI.me - Search With AI'
 
 const chatGptRequest = (
   token: string,
@@ -121,67 +160,6 @@ const chatGptRequest = (
     },
     body: data === undefined ? undefined : JSON.stringify(data),
   })
-}
-export const getConversationDownloadFile = async (params: { uuid: string }) => {
-  // https://chat.openai.com/backend-api/files/181e27fe-1a7b-4d14-ab17-68f70582ab30/download
-  const { uuid } = params
-  try {
-    const token = await getChatGPTAccessToken()
-    const resp = await chatGptRequest(
-      token,
-      'GET',
-      `/backend-api/files/${uuid}/download`,
-    )
-    const data = await resp.json()
-    return {
-      success: true,
-      data: data?.download_url,
-    }
-  } catch (e) {
-    console.error(e)
-    return {
-      success: false,
-      data: '',
-    }
-  }
-}
-export const getConversationFileUrl = async (params: {
-  conversationId: string
-  message_id: string
-  sandbox_path: string
-}) => {
-  const { conversationId, message_id, sandbox_path } = params
-  const fallbackUrl = `https://chat.openai.com/c/${conversationId}`
-  // https://chat.openai.com/backend-api/conversation/647c720d-9eeb-4986-8b89-112098f107b6/interpreter/download?message_id=895986d6-bd39-404e-a485-923cdb5c7476&sandbox_path=%2Fmnt%2Fdata%2Fclip_3s.mp4
-  try {
-    const token = await getChatGPTAccessToken()
-    const resp = await chatGptRequest(
-      token,
-      'GET',
-      `/backend-api/conversation/${conversationId}/interpreter/download?message_id=${message_id}&sandbox_path=${sandbox_path}`,
-    )
-    const data = await resp.json()
-    // error_code:"ace_pod_expired"
-    // status:"error"
-    if (data?.status === 'error') {
-      return {
-        success: false,
-        data: fallbackUrl,
-        error: 'File Expired',
-      }
-    }
-    return {
-      success: true,
-      data: data?.download_url || fallbackUrl,
-    }
-  } catch (e) {
-    console.error(e)
-    return {
-      success: false,
-      data: fallbackUrl,
-      error: 'Network Error',
-    }
-  }
 }
 export const getConversationList = async (params: {
   token: string
@@ -251,64 +229,6 @@ export const getChatGPTAccessToken = async (
     throw new Error('UNAUTHORIZED')
   }
   return data?.accessToken || ''
-}
-
-export const generateArkoseToken = async (model: string) => {
-  const needWaitArkoseToken = [
-    // 'text-davinci-002-render-sha',
-    // 'text-davinci-002-render-sha-mobile',
-    'gpt-4',
-    'gpt-4-code-interpreter',
-    'gpt-4-browsing',
-    'gpt-4-plugins',
-    'gpt-4-mobile',
-  ].includes(model)
-  if (needWaitArkoseToken) {
-    return new Promise((resolve, reject) => {
-      const taskId = uuidV4()
-      let isResolve = false
-      window.postMessage({
-        event: 'MAX_AI_CHAT_GPT_MESSAGE_KEY',
-        type: 'arkoseToken',
-        data: {
-          taskId,
-        },
-      })
-      setTimeout(() => {
-        if (!isResolve) {
-          reject(
-            'Something went wrong, please try again. If this issue persists, contact us via email.',
-          )
-          window.removeEventListener('message', onceListener)
-          window.location.reload()
-        }
-      }, 20 * 1000)
-      const onceListener = (event: any) => {
-        if (
-          event?.data?.event === 'MAX_AI_CHAT_GPT_MESSAGE_KEY' &&
-          event?.data?.type === 'arkoseTokenResponse' &&
-          event?.data?.data?.taskId === taskId
-        ) {
-          if (!isResolve) {
-            isResolve = true
-            const token = event?.data?.data?.token || ''
-            if (token) {
-              resolve(token)
-            } else {
-              reject(
-                'Something went wrong, please try again. If this issue persists, contact us via email.',
-              )
-            }
-            window.removeEventListener('message', onceListener)
-          }
-        }
-      }
-      window.addEventListener('message', onceListener)
-    })
-  } else {
-    // TODO gpt3.5某些用户可能也需要
-    return ''
-  }
 }
 
 export class ChatGPTConversation {
@@ -400,18 +320,6 @@ export class ChatGPTConversation {
     let isSend = false
     let resultText = ''
     let resultMessageId = ''
-    const settings = await getThirdProviderSettings('OPENAI')
-    let arkoseToken = undefined
-    try {
-      arkoseToken = await generateArkoseToken(this.model)
-    } catch (e) {
-      params.onEvent({
-        type: 'error',
-        data: { message: (e as any).message || 'Network error.', detail: '' },
-      })
-      params.onEvent({ type: 'done' })
-      return
-    }
     const postMessage = {
       action: regenerate ? 'variant' : 'next',
       messages: [
@@ -434,29 +342,18 @@ export class ChatGPTConversation {
     if (this.conversationId) {
       postMessage.conversation_id = this.conversationId
     }
-    if (arkoseToken) {
-      // NOTE: 只有gpt-4相关的模型需要传入arkoseToken
-      postMessage.arkose_token = arkoseToken
-    } else {
-      // postMessage.arkose_token = null
-    }
+    // if (arkoseToken) {
+    //   // NOTE: 只有gpt-4相关的模型需要传入arkoseToken
+    //   postMessage.arkose_token = arkoseToken
+    // } else {
+    //   // postMessage.arkose_token = null
+    // }
     if (params.meta) {
       // NOTE: 目前只用在了gpt-4-code-interpreter
       postMessage.messages[0].metadata = params.meta
     }
-    if (
-      settings?.plugins &&
-      !this.conversationId &&
-      this.model === 'gpt-4-plugins'
-    ) {
-      // NOTE: 只有创建新的对话时才需要传入插件
-      postMessage.plugin_ids = settings.plugins
-    }
-    // chatgpt特殊的图片渲染格式 => <<ImageDisplayed>>
-    // {"message": {"id": "6c7a3d32-0e43-4f51-ad89-b2bf0e7922af", "author": {"role": "tool", "name": "python", "metadata": {}}, "create_time": 1689588774.3638568, "update_time": 1689588775.6521173, "content": {"content_type": "execution_output", "text": "\n<<ImageDisplayed>>"}, "status": "finished_successfully", "end_turn": null, "weight": 1.0, "metadata": {"aggregate_result": {"status": "success", "run_id": "48a329c7-017b-4370-898b-f311a08aa7a9", "start_time": 1689588774.3525271, "update_time": 1689588775.6513627, "code": "import qrcode\nimport matplotlib.pyplot as plt\n\n# Create qr code instance\nqr = qrcode.QRCode(\n    version = 1,\n    error_correction = qrcode.constants.ERROR_CORRECT_H,\n    box_size = 10,\n    border = 4,\n)\n\n# The data that you want to store\ndata = \"MaxAI.me\"\n\n# Add data\nqr.add_data(data)\nqr.make(fit=True)\n\n# Create an image from the QR Code instance\nimg = qr.make_image()\n\n# Display the generated image\nplt.imshow(img, cmap='gray')\nplt.axis('off')\nplt.show()", "end_time": 1689588775.6513627, "final_expression_output": null, "in_kernel_exception": null, "system_exception": null, "messages": [{"message_type": "image", "time": 1689588775.618626, "sender": "server", "image_payload": null, "image_url": "file-service://2073c3f9-f30e-4225-9728-6a3d2d7a41bd"}], "jupyter_messages": [{"msg_type": "status", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"execution_state": "busy"}}, {"msg_type": "execute_input", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}}, {"msg_type": "display_data", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"data": {"text/plain": "<Figure size 2000x1200 with 1 Axes>", "image/vnd.openai.fileservice.png": "file-service://2073c3f9-f30e-4225-9728-6a3d2d7a41bd"}}}, {"msg_type": "status", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"execution_state": "idle"}}], "timeout_triggered": null}, "is_complete": true, "message_type": "next", "model_slug": "gpt-4-code-interpreter"}, "recipient": "all"}, "conversation_id": "4e7a2dec-0b48-4d4c-b091-6cbf425b27ca", "error": null}
-    const displayImageIds: string[] = []
+
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
-      provider: AI_PROVIDER_MAP.OPENAI,
       method: 'POST',
       signal: params.signal,
       headers: {
@@ -464,7 +361,7 @@ export class ChatGPTConversation {
         Authorization: `Bearer ${this.token}`,
       },
       body: JSON.stringify(Object.assign(postMessage)),
-      onMessage: async (message: string) => {
+      onMessage: (message: string) => {
         console.debug('sse message', message)
         if (message === '[DONE]') {
           if (resultText && this.conversationId && resultMessageId) {
@@ -476,83 +373,7 @@ export class ChatGPTConversation {
               input: resultText,
             })
           }
-          let newResultText = resultText
-          // 渲染displayImage
-          if (displayImageIds.length > 0) {
-            const imageUrls = await Promise.all(
-              displayImageIds.map(async (displayImageId) => {
-                return await getConversationDownloadFile({
-                  uuid: displayImageId,
-                })
-              }),
-            )
-            imageUrls.forEach((image) => {
-              if (image.success && image.data) {
-                newResultText = `![image](${image.data})\n${newResultText}`
-              }
-            })
-          }
-          // 解析resultText中的markdown链接
-          const markdownLinks = newResultText.match(/\[.*?\]\(.*?\)/g)
-          if (
-            this.conversationId &&
-            markdownLinks &&
-            markdownLinks.length > 0
-          ) {
-            const replaceDataList = await Promise.all(
-              markdownLinks.map(async (markdownLink) => {
-                // "[Download the clipped video](sandbox:/mnt/data/clip_3s.mp4)"
-                // split by "]("
-                const parts = markdownLink.split('](')
-                if (parts.length !== 2) {
-                  return undefined
-                }
-                const text = parts[0].slice(1)
-                const url = parts[1].slice(0, -1)
-                if (!url.startsWith('sandbox:')) {
-                  return undefined
-                }
-                const downloadFile = await getConversationFileUrl({
-                  conversationId: this.conversationId!,
-                  message_id: resultMessageId,
-                  sandbox_path: url.replace('sandbox:', ''),
-                })
-                if (downloadFile.success) {
-                  return {
-                    original: markdownLink,
-                    new: `[${text}](${downloadFile.data})`,
-                  } as {
-                    original: string
-                    new: string
-                  }
-                } else {
-                  return undefined
-                }
-              }),
-            )
-            replaceDataList.forEach((replaceData) => {
-              if (replaceData) {
-                newResultText = newResultText.replace(
-                  replaceData.original,
-                  replaceData.new,
-                )
-              }
-            })
-            params.onEvent({
-              type: 'answer',
-              data: {
-                text: newResultText,
-                messageId: resultMessageId,
-                conversationId: this.conversationId,
-                parentMessageId: questionId,
-              },
-            })
-            setTimeout(() => {
-              params.onEvent({ type: 'done' })
-            }, 100)
-          } else {
-            params.onEvent({ type: 'done' })
-          }
+          params.onEvent({ type: 'done' })
           return
         }
         let data
@@ -565,17 +386,7 @@ export class ChatGPTConversation {
         // web browsing object
         // {"message": {"id": "a1bad9ad-29b0-4ab3-8603-a9f6b4399fbb", "author": {"role": "assistant", "name": null, "metadata": {}}, "create_time": 1684210390.537254, "update_time": null, "content": {"content_type": "code", "language": "unknown", "text": "# To find out today's news, I'll perform a search.\nsearch(\"2023\u5e745\u670816\u65e5"}, "status": "in_progress", "end_turn": null, "weight": 1.0, "metadata": {"message_type": "next", "model_slug": "gpt-4-browsing"}, "recipient": "browser"}, "conversation_id": "3eade3ec-a3b7-4d04-941b-52347d533c80", "error": null}
         const text =
-          data.message?.content?.parts?.[0] || data.message?.content?.text || ''
-        if (text.includes(`<<ImageDisplayed>>`)) {
-          const imageFileUrl =
-            data.message?.metadata?.aggregate_result?.messages?.[0]?.image_url
-          // "file-service://9fb16358-e2b8-4ab5-9e38-c47c6d3a8c2b"
-          const imageFileId = imageFileUrl.split('//')[1]
-          if (displayImageIds.find((item) => item === imageFileId)) {
-            return
-          }
-          displayImageIds.push(imageFileId)
-        }
+          data.message?.content?.parts?.[0] || data.message?.content?.text
         // console.log(
         //   'generateAnswer on content',
         //   data?.message?.content?.content_type,
@@ -613,8 +424,8 @@ export class ChatGPTConversation {
       .catch((err) => {
         try {
           if (
-            err?.message === 'BodyStreamBuffer was aborted' ||
-            err?.message === 'The user aborted a request.'
+            err?.message === 'The user aborted a request.' ||
+            err?.message === 'BodyStreamBuffer was aborted'
           ) {
             params.onEvent({
               type: 'error',
@@ -700,6 +511,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   models: IChatGPTModelType[]
   plugins: IChatGPTPluginType[]
   constructor() {
+    // 每次都需要创建一个新的回话 所以这里的 conversations 只会有一个
     this.conversations = []
     this.abortFunctions = {}
     this.plugins = []
@@ -710,47 +522,15 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     if (this.models.length > 0) {
       return this.models
     }
-    const permissionResult = await chatGptRequest(
-      token,
-      'GET',
-      '/backend-api/settings/beta_features',
-    )
-      .then(async (r) => {
-        const permission: any = await r.json()
-        return {
-          browsing: permission?.browsing || false,
-          chat_preferences: permission?.chat_preferences || false,
-          code_interpreter: permission?.code_interpreter || false,
-          plugins: permission?.plugins || false,
-        }
-      })
-      .catch(() => {
-        return {
-          browsing: false,
-          chat_preferences: false,
-          code_interpreter: false,
-          plugins: false,
-        }
-      })
     const resp = await chatGptRequest(
       token,
       'GET',
       '/backend-api/models',
     ).then((r) => r.json())
     if (resp?.models && resp.models.length > 0) {
-      this.models = resp.models.filter((model: any) => {
-        // TODO 因为不知道chat_preferences对应的slug，所以暂时不处理
-        if (model.slug === 'gpt-4-code-interpreter') {
-          return permissionResult.code_interpreter
-        } else if (model.slug === 'gpt-4-browsing') {
-          return permissionResult.browsing
-        } else if (model.slug === 'gpt-4-plugins') {
-          return permissionResult.plugins
-        }
-        return true
-      })
+      this.models = resp.models
     }
-    return this.models
+    return resp.models
   }
   private async fetchPlugins(token: string): Promise<IChatGPTPluginType[]> {
     if (this.plugins.length > 0) {
@@ -759,7 +539,7 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     const resp = await chatGptRequest(
       token,
       'GET',
-      '/backend-api/aip/p?offset=0&limit=100&is_installed=true',
+      '/backend-api/aip/p?offset=0&limit=100&statuses=approved',
     ).then((r) => r.json())
     if (resp?.items && resp.items.length > 0) {
       this.plugins = resp.items
@@ -781,10 +561,10 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
         }
         return models[0].slug
       }
-      return 'text-davinci-002-render-sha'
+      return CHATGPT_3_5_MODEL_NAME
     } catch (err) {
       console.error(err)
-      return 'text-davinci-002-render-sha'
+      return CHATGPT_3_5_MODEL_NAME
     }
   }
   async getAllModels() {
@@ -817,31 +597,37 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
       return []
     }
   }
-  async createConversation(conversationId?: string, selectedModel?: string) {
-    if (this.conversations.length > 0) {
-      return this.conversations[0]
-    }
-    try {
-      const token = this.token || (await getChatGPTAccessToken())
-      const model = await this.getModelName(token, selectedModel)
-      const conversationInstance = new ChatGPTConversation({
-        token,
-        model,
-        conversationId,
-      })
-      this.conversations.push(conversationInstance)
-      conversationInstance.removeCacheConversation()
-      await conversationInstance.fetchHistoryAndConfig()
-      console.log(conversationInstance)
-      return conversationInstance
-    } catch (error) {
-      console.error('createConversation error:\t', error)
-      if ((error as any).message === 'CLOUDFLARE') {
-        // 刷新网页
-        location.reload()
-      }
-      return undefined
-    }
+  async createConversation(
+    conversationId?: string,
+    selectedModel?: string,
+    removeCacheConversation = true,
+  ) {
+    // if (this.conversations.length > 0) {
+    //   return this.conversations[0]
+    // }
+    // try {
+    const token = this.token || (await getChatGPTAccessToken())
+    const model = await this.getModelName(token, selectedModel)
+    const conversationInstance = new ChatGPTConversation({
+      token,
+      model,
+      conversationId,
+    })
+    // this.conversations.push(conversationInstance)
+    this.conversations = [conversationInstance]
+    removeCacheConversation && conversationInstance.removeCacheConversation()
+    await conversationInstance.fetchHistoryAndConfig()
+    console.log(conversationInstance)
+
+    return conversationInstance
+    // } catch (error) {
+    //   console.error('createConversation error:\t', error)
+    //   if ((error as any).message === 'CLOUDFLARE') {
+    //     // 刷新网页
+    //     // location.reload()
+    //   }
+    //   return undefined
+    // }
   }
   getConversation(conversationId: string) {
     return this.conversations.find(
@@ -855,10 +641,12 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     try {
       const conversation = this.getConversation(conversationId)
       if (conversation) {
-        await conversation.close()
         this.conversations = this.conversations.filter(
-          (conversation) => conversation.conversationId !== conversationId,
+          (conversation) =>
+            conversation.conversationId !== conversationId &&
+            conversation.id !== conversationId,
         )
+        await conversation.close()
       }
       return true
     } catch (e) {
@@ -874,7 +662,6 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   abortWithMessageId(messageId: string) {
     try {
-      console.log(messageId)
       if (this.abortFunctions[messageId]) {
         console.log('abort Controller abort runed', messageId)
         this.abortFunctions[messageId]()
@@ -887,5 +674,15 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   removeCacheConversation() {
     return this.conversations?.[0]?.removeCacheConversation()
+  }
+  removeConversationWithId(conversationId: string) {
+    const willDeleConversation = this.conversations.find(
+      (conversation) => conversation.conversationId === conversationId,
+    )
+    if (!willDeleConversation) {
+      // console.log('isCleaningCache!!!')
+      return
+    }
+    willDeleConversation.close()
   }
 }

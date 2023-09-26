@@ -40,8 +40,6 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
     loading,
   } = useSearchWithProvider()
 
-  console.log(`currentProvider`, currentProvider)
-
   const isProviderActive = (provider: ISearchWithAIProviderType) => {
     return currentProvider === provider
   }
@@ -61,20 +59,24 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
     const providerIcon = (
       <IconButton
         sx={{
-          p: 0,
+          p: 1,
           borderRadius: 0,
-          borderRight: rightBorder ? '1px solid rgba(0, 0, 0, 0.08)' : 'none',
+          borderRight: rightBorder ? '1px solid' : 'none',
+          borderColor: (t) =>
+            t.palette.mode === 'dark'
+              ? 'rgba(255, 255, 255, 0.08)'
+              : 'rgba(0, 0, 0, 0.08)',
 
-          // bgcolor: (t) =>
-          //   isProviderActive(provider)
-          //     ? t.palette.mode === 'dark'
-          //       ? '#6a6a6a !important'
-          //       : '#DADCE0 !important'
-          //     : 'transparent',
-          // filter: `grayscale(${isProviderActive(provider.value) ? '0' : '1'})`,
-          // color: isProviderActive(provider.value)
-          //   ? 'text.primary'
-          //   : '#9E9E9E',
+          bgcolor: (t) => {
+            if (isProviderActive(provider.value)) {
+              return t.palette.mode === 'dark'
+                ? 'rgba(255, 255, 255, 0.23) !important'
+                : 'rgba(0, 0, 0, 0.12) !important'
+            } else {
+              return 'transparent'
+            }
+          },
+
           '&.Mui-disabled': {
             cursor: 'not-allowed',
           },
@@ -135,7 +137,11 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
       alignItems="center"
       sx={{
         borderRadius: 1,
-        border: '1px solid rgba(0, 0, 0, 0.08)',
+        border: '1px solid',
+        borderColor: (t) =>
+          t.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, 0.08)'
+            : 'rgba(0, 0, 0, 0.08)',
         width: 'max-content',
         mx: 'auto',
         overflow: 'hidden',
@@ -179,7 +185,7 @@ const PreChangeCheckerTooltip = (
 
   return (
     <TextOnlyTooltip
-      arrow
+      // arrow
       open={open}
       PopperProps={{
         disablePortal: true,
@@ -192,6 +198,7 @@ const PreChangeCheckerTooltip = (
                 return '#fff'
               }
             },
+            boxShadow: (t) => t.shadows[1],
           },
         },
       }}

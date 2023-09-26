@@ -126,6 +126,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         fontSize: `${iconSize}px`,
         borderWidth: borderWidth,
         borderStyle: 'solid',
+        position: 'relative',
         padding,
         '&:hover': {
           color: hoverColor,

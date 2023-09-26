@@ -70,10 +70,9 @@ export default class SocialMediaPostContext {
   }
 
   get data(): ISocialMediaPostContextData {
-    const { content, author, date } = this.post
+    const { content, author } = this.post
     const commentsData = createCommentListData(this.commentList?.[0] || [])
     const postText = `**Author:** ${author}
-**Date:** ${date}
 **Post:**
 ${content}`
     if (commentsData?.lastText) {

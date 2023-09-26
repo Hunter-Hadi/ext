@@ -275,7 +275,8 @@ const IInputAssistantButtonGroupConfig = {
       'div > div > div > #focused-state-composer-submit',
       'form[method="POST"] div > span > div[aria-label="Emoji"]',
     ],
-    rootStyle: 'display: flex;align-items: center;flex-direction: row;',
+    rootStyle:
+      'display: flex;align-items: center;flex-direction: row;padding: 0',
     appendPosition: 0,
     rootParentDeep: 1,
     rootWrapperTagName: 'div',

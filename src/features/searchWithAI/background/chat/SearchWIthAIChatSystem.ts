@@ -161,6 +161,12 @@ class SearchWIthAIChatSystem {
     data,
     options,
   ) => {
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
+      options.meta = {
+        model: OPENAI_API_MODELS[0].value,
+      }
+    }
+
     return (
       this.currentAdapter?.sendQuestion(taskId, sender, data, options) ||
       Promise.resolve()

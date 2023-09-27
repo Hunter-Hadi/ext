@@ -43,6 +43,7 @@ class OpenAiApiChat extends BaseChat {
       streaming?: boolean
       max_history_message_cnt?: number
       history: IOpenAIApiChatMessage[]
+      meta?: Record<string, any>
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -60,6 +61,7 @@ class OpenAiApiChat extends BaseChat {
       // streaming = true,
       // regenerate = false,
       // max_history_message_cnt = 0,
+      meta,
       history,
     } = options || {}
     const chatGPTApiSettings = await this.getChatGPTAPISettings()
@@ -90,7 +92,7 @@ class OpenAiApiChat extends BaseChat {
         Authorization: `Bearer ${chatGPTApiSettings.apiKey}`,
       },
       body: JSON.stringify({
-        model: chatGPTApiSettings.model,
+        model: meta?.model ?? chatGPTApiSettings.model,
         messages,
         /**
          * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong

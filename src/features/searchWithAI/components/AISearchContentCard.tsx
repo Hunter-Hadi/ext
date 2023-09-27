@@ -12,6 +12,7 @@ import { FC, useCallback, useState } from 'react'
 
 import useSearchWithAICore from '../hooks/useSearchWithAICore'
 import useSearchWithAISettings from '../hooks/useSearchWithAISettings'
+import useSearchWithProvider from '../hooks/useSearchWithProvider'
 import { ISearchPageKey } from '../utils/SearchPageAdapter'
 import AIAskTrigger from './AIAskTrigger'
 import AIProviderBar from './AIProviderBar'
@@ -36,6 +37,8 @@ const AISearchContentCard: FC<IProps> = ({
   const [show, setShow] = useState(true)
 
   const { searchWithAISettings } = useSearchWithAISettings()
+
+  const { loading: providerLoading } = useSearchWithProvider()
 
   const triggerMode = searchWithAISettings.triggerMode
   const currentAIProvider = searchWithAISettings.aiProvider
@@ -64,8 +67,8 @@ const AISearchContentCard: FC<IProps> = ({
         bgcolor: 'transparent',
       }}
     >
-      {/* <h1>{currentAIProvider}</h1>
-      <h1>status: {status}</h1> */}
+      <h1>{currentAIProvider}</h1>
+      <h1>status: {status}</h1>
       <SearchWithAIHeader
         status={status}
         isAnswering={isAnswering}
@@ -99,12 +102,14 @@ const AISearchContentCard: FC<IProps> = ({
 
         {status === 'success' ? <AnswerLabelTitle loading={false} /> : null}
 
-        <AIAskTrigger
-          status={status}
-          triggerMode={triggerMode}
-          question={question}
-          handleAsk={handleAskQuestion}
-        />
+        {!providerLoading && (
+          <AIAskTrigger
+            status={status}
+            triggerMode={triggerMode}
+            question={question}
+            handleAsk={handleAskQuestion}
+          />
+        )}
 
         {status === 'error' && conversation.errorMessage && (
           <AIResponseError

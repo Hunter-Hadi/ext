@@ -1,6 +1,8 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
+import { useRecoilState } from 'recoil'
 import { ISearchWithAIProviderType } from '../constants'
+import { SearchWithAIProviderLoadingAtom } from '../store'
 import useSearchWithAISettings from './useSearchWithAISettings'
 
 const port = new ContentScriptConnectionV2({
@@ -8,15 +10,16 @@ const port = new ContentScriptConnectionV2({
 })
 
 const useSearchWithProvider = () => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useRecoilState(SearchWithAIProviderLoadingAtom)
 
-  const { searchWithAISettings, setSearchWithAISettings } =
-    useSearchWithAISettings()
+  const {
+    searchWithAISettings,
+    setSearchWithAISettings,
+  } = useSearchWithAISettings()
 
-  const currentProvider = useMemo(
-    () => searchWithAISettings.aiProvider,
-    [searchWithAISettings.aiProvider],
-  )
+  const currentProvider = useMemo(() => searchWithAISettings.aiProvider, [
+    searchWithAISettings.aiProvider,
+  ])
 
   const switchProvider = useCallback(
     async (provider: ISearchWithAIProviderType) => {

@@ -35,3 +35,8 @@ export const AutoTriggerAskEnableAtom = atom({
   key: 'AutoTriggerAskEnableAtom',
   default: true,
 })
+
+export const SearchWithAIProviderLoadingAtom = atom({
+  key: 'SearchWithAIProviderLoadingAtom',
+  default: false,
+})

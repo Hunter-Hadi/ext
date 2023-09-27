@@ -15,7 +15,6 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useSetRecoilState } from 'recoil'
 import { AutoTriggerAskEnableAtom } from '../store'
 import { getCurrentDomainHost } from '@/utils'
-import { IAIProviderType } from '@/background/provider/chat'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -123,6 +122,10 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     taskId.current = messageId
 
     // 为了控制 第一次 onmessage 时，setStatus('answering') 不重复set
+    // console.log(
+    //   `searchWithAISettings.aiProvider`,
+    //   searchWithAISettings.aiProvider,
+    // )
     let answered = false
     let message = ''
     let hasError = false
@@ -132,7 +135,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       data: {
         name: 'SEARCH_WITH_AI',
         id: 'SEARCH_WITH_AI',
-        provider: searchWithAISettings.aiProvider as IAIProviderType,
+        provider: searchWithAISettings.aiProvider,
         host: getCurrentDomainHost(),
       },
     })

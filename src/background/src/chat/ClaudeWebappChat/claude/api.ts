@@ -5,12 +5,16 @@ import { v4 as uuidV4 } from 'uuid'
  * claude.ai api都是基于organizationId的，所以需要先获取organizationId
  */
 export const getClaudeOrganizationId = async () => {
-  const response = await fetch('https://claude.ai/api/organizations', {
-    redirect: 'error',
-    cache: 'no-cache',
-  })
-  const organization = await response.json()
-  return organization?.[0]?.uuid
+  try {
+    const response = await fetch('https://claude.ai/api/organizations', {
+      redirect: 'error',
+      cache: 'no-cache',
+    })
+    const organization = await response.json()
+    return organization?.[0]?.uuid
+  } catch (e) {
+    return ''
+  }
 }
 /**
  * 创建一个claude conversation

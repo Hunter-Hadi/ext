@@ -605,6 +605,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
 
   // Search with AI - Claude
   SEARCH_WITH_AI_CLAUDE: {
+    videoUrl: 'https://www.youtube.com/embed/qwFVrq3Epcs',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-instant-100k.png',
     )}`,
@@ -617,6 +618,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Search with AI - ChatGPt
   SEARCH_WITH_AI_CHATGPT: {
+    videoUrl: 'https://www.youtube.com/embed/zgq2DKlwEYk',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt3-5.png',
     )}`,

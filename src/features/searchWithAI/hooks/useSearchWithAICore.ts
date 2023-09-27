@@ -14,8 +14,10 @@ import { v4 as uuidV4 } from 'uuid'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useSetRecoilState } from 'recoil'
 import { AutoTriggerAskEnableAtom } from '../store'
-const port = new ContentScriptConnectionV2()
-
+import { getCurrentDomainHost } from '@/utils'
+const port = new ContentScriptConnectionV2({
+  runtime: 'client',
+})
 export type IAIForSearchStatus =
   // 初始化状态
   | 'idle'
@@ -75,36 +77,42 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       return
     }
 
+    const webAccessPrompt = searchWithAISettings.webAccessPrompt
+
+    let template = question
+
     setStatus('waitingAnswer')
     loadingRef.current = true
 
     // 1. GET_CONTENTS_OF_HTML
-    startSourcesLoading()
-    const results = await crawlingSearchResults({
-      html: document.body.innerHTML,
-      limit: 6,
-      searchEngine: siteName,
-      fullSearchURL: location.href,
-      query: question,
-    })
-    // 由于获取 sources 的过程都比较快，所以这里 模拟一个 800ms ~ 500ms 的loading
-    setTimeout(() => {
-      setSources(results)
-    }, random(500, 800))
+    if (webAccessPrompt) {
+      // 开启 webAccessPrompt 时才获取 sources
+      startSourcesLoading()
+      const results = await crawlingSearchResults({
+        html: document.body.innerHTML,
+        limit: 6,
+        searchEngine: siteName,
+        fullSearchURL: location.href,
+        query: question,
+      })
+      // 由于获取 sources 的过程都比较快，所以这里 模拟一个 800ms ~ 500ms 的loading
+      setTimeout(() => {
+        setSources(results)
+      }, random(500, 800))
 
-    // 2. SEARCH_RESULTS_EXPAND
-    let expandContent = ''
-    for (let i = 0; i < results.length; i++) {
-      const searchResult = results[i]
-      expandContent += `NUMBER:${i + 1}\nURL: ${searchResult.url}\nTITLE: ${
-        searchResult.title
-      }\nCONTENT: ${searchResult.body}\n\n`
+      // 2. SEARCH_RESULTS_EXPAND
+      let expandContent = ''
+      for (let i = 0; i < results.length; i++) {
+        const searchResult = results[i]
+        expandContent += `NUMBER:${i + 1}\nURL: ${searchResult.url}\nTITLE: ${
+          searchResult.title
+        }\nCONTENT: ${searchResult.body}\n\n`
+      }
+
+      template = generatePromptTemplate(question, expandContent)
     }
 
     // 3. ASK_CHATGPT
-    const template = searchWithAISettings.webAccessPrompt
-      ? generatePromptTemplate(question, expandContent)
-      : question
     const messageId = uuidV4()
     const conversationId = uuidV4()
     updateConversation({
@@ -114,10 +122,23 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     taskId.current = messageId
 
     // 为了控制 第一次 onmessage 时，setStatus('answering') 不重复set
+    // console.log(
+    //   `searchWithAISettings.aiProvider`,
+    //   searchWithAISettings.aiProvider,
+    // )
     let answered = false
     let message = ''
     let hasError = false
     let errorMessage = ''
+    port.postMessage({
+      event: 'Client_logCallApiRequest',
+      data: {
+        name: 'SEARCH_WITH_AI',
+        id: 'SEARCH_WITH_AI',
+        provider: searchWithAISettings.aiProvider,
+        host: getCurrentDomainHost(),
+      },
+    })
     await searchWithAIAskQuestion(
       {
         messageId,
@@ -172,7 +193,12 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       })
     }
     loadingRef.current = false
-  }, [question, searchWithAISettings?.webAccessPrompt, status])
+  }, [
+    question,
+    searchWithAISettings?.webAccessPrompt,
+    status,
+    searchWithAISettings?.aiProvider,
+  ])
 
   const handleResetStatus = useCallback(async () => {
     clearSources()

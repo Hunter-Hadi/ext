@@ -22,7 +22,9 @@ export const parseBardResponse = (resp: string) => {
     // FIXME: 需要测试所有场景
     // throw new ChatError('Failed to access Bard', ErrorCode.BARD_EMPTY_RESPONSE)
     return {
-      text: 'Failed to access Bard\nTry again, or visit [bard.google.com](https://bard.google.com) for more information.',
+      text: '',
+      error:
+        'Failed to access Bard\nTry again, or visit [bard.google.com](https://bard.google.com) for more information.',
       ids: ['', '', ''] as [string, string, string],
     }
   }
@@ -30,6 +32,7 @@ export const parseBardResponse = (resp: string) => {
   const text = payload[4][0][1][0] as string
   return {
     text,
+    error: '',
     ids: [...payload[1], payload[4][0][0]] as [string, string, string],
   }
 }

@@ -154,33 +154,46 @@ class BardChat extends BaseChat {
         .finally(() => {
           this.clearFiles()
         })
-      const { text, ids } = parseBardResponse(result)
+      const { text, ids, error } = parseBardResponse(result)
       this.log.debug('result', result, text, ids)
-      if (text && ids) {
+      if (ids) {
         if (isAbort) {
           return
         }
-        onMessage &&
-          onMessage({
-            type: 'message',
-            done: false,
-            error: '',
-            data: {
-              text,
-              conversationId: this.conversation?.id || '',
-            },
-          })
-        onMessage &&
-          onMessage({
-            type: 'message',
-            done: true,
-            error: '',
-            data: {
-              text,
-              conversationId: this.conversation?.id || '',
-            },
-          })
-        this.contextIds = ids
+        if (error) {
+          onMessage &&
+            onMessage({
+              type: 'message',
+              done: true,
+              error: error,
+              data: {
+                text: '',
+                conversationId: this.conversation?.id || '',
+              },
+            })
+        } else if (text) {
+          onMessage &&
+            onMessage({
+              type: 'message',
+              done: false,
+              error: '',
+              data: {
+                text,
+                conversationId: this.conversation?.id || '',
+              },
+            })
+          onMessage &&
+            onMessage({
+              type: 'message',
+              done: true,
+              error: '',
+              data: {
+                text,
+                conversationId: this.conversation?.id || '',
+              },
+            })
+          this.contextIds = ids
+        }
       } else {
         onMessage &&
           onMessage({

@@ -100,7 +100,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
       PopperProps={{
         sx: {
           '& > div': {
-            maxWidth: 320,
+            maxWidth: 316,
             p: 1,
           },
         },
@@ -113,7 +113,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
             setOpen(false)
           }}
         >
-          <Stack spacing={1} component="div">
+          <Stack spacing={1} component="div" width={300}>
             {memoizedPermissionCard.videoUrl && (
               <YoutubePlayerBox
                 borderRadius={4}

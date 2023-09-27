@@ -405,13 +405,13 @@
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade to add unlimited custom prompt groups",
     "permission__pricing_hook__custom_prompt_group__description": "Organize your prompts for efficient use with custom prompt groups.",
     "permission__pricing_hook__input_assistant_button__email__compose_new__title": "Upgrade for one-click email drafts",
-    "permission__pricing_hook__input_assistant_button__email__compose_new__description": "Let AI generate entire email drafts for you in seconds.",
+    "permission__pricing_hook__input_assistant_button__email__compose_new__description": "Let AI generate personalized email drafts for you in seconds.",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__title": "Upgrade for one-click email replies",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__description": "Let AI generate personalized email replies for you in seconds.",
     "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "Upgrade to perfect your emails in one click",
     "permission__pricing_hook__input_assistant_button__email__refine_draft__description": "Improve writing, fix spelling & grammar, or change tone instantly with AI.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__title": "Upgrade for one-click social media posts",
-    "permission__pricing_hook__input_assistant_button__social_media__compose_new__description": "Let AI generate complete social media posts for you in seconds.",
+    "permission__pricing_hook__input_assistant_button__social_media__compose_new__description": "Let AI generate personalized social media posts for you in seconds.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__title": "Upgrade for one-click social media replies",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__description": "Let AI generate personalized social media replies for you in seconds.",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Upgrade to perfect your posts and replies in one click",
@@ -438,14 +438,11 @@
     "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarization, and comprehension.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Upgrade to access claude-2-100k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction.",
-
     "permission__pricing_hook__search_with_ai_claude__title": "Upgrade to search with Claude",
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic's fastest model. No country restrictions.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Upgrade to search with ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "As fast as ChatGPT Plus. No country restrictions.",
-
-
-
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Use your own OpenAI API key to power 'Search with AI'.",
     "prompt__group__suggested__title": "Suggested",
     "rewards__title": "Rewards",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant",

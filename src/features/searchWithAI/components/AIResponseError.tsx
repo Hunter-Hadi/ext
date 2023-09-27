@@ -78,6 +78,9 @@ const AIResponseError: FC<IProps> = ({
 
   const textCover = useMemo(() => {
     if (text === 'UNAUTHORIZED' || text === 'CLOUDFLARE') {
+      if (providerOption.label === 'ChatGPT web app') {
+        return `Please log into [Chat.openai.com](https://chat.openai.com) and try again.`
+      }
       return `Please log into ${providerOption.label} and try again.`
     }
 
@@ -91,7 +94,11 @@ const AIResponseError: FC<IProps> = ({
   }, [text, provider])
 
   useEffect(() => {
-    if (textCover.includes('sign in') || textCover.includes('log into')) {
+    if (
+      textCover.includes('sign in') ||
+      textCover.includes('log into') ||
+      textCover.includes('Failed to access Bard')
+    ) {
       setErrorStatus('UNAUTHORIZED')
       return
     }

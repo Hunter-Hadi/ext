@@ -158,6 +158,11 @@ const getFacebookButtonGroup = (
       buttonGroupConfig.refineDraftButton,
     ]
   }
+  const replyForm = findSelectorParent('form[role="presentation"]', keyElement)
+  if (replyForm?.getBoundingClientRect().width < 240) {
+    // 宽度不够
+    return []
+  }
   return [
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,

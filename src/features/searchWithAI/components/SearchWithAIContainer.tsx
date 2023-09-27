@@ -8,6 +8,8 @@ import React from 'react'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import useSearchWithAISettingsInit from '../hooks/useSearchWithAISettingsInit'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { useInitI18n } from '@/i18n/hooks'
+
 interface IProps {
   question: string
   siteName: ISearchPageKey
@@ -29,6 +31,7 @@ const SearchWithAIContainer: FC<IProps> = ({
   console.log(`SearchWithAIContainer rootElement`, rootElement)
 
   userInitUserInfo()
+  useInitI18n()
 
   useSearchWithAISettingsInit()
 

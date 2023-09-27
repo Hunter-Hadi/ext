@@ -1,5 +1,4 @@
 import { ReadIcon } from '@/components/CustomIcon'
-import Log from '@/utils/Log'
 
 import {
   CircularProgress,
@@ -13,6 +12,7 @@ import { FC, useCallback, useState } from 'react'
 
 import useSearchWithAICore from '../hooks/useSearchWithAICore'
 import useSearchWithAISettings from '../hooks/useSearchWithAISettings'
+import useSearchWithProvider from '../hooks/useSearchWithProvider'
 import { ISearchPageKey } from '../utils/SearchPageAdapter'
 import AIAskTrigger from './AIAskTrigger'
 import AIProviderBar from './AIProviderBar'
@@ -22,8 +22,6 @@ import AISearchingLoading from './AISearchingLoading'
 import AISearchSources from './AISearchSources'
 // import SearchWithAIFooter from './SearchWithAIFooter'
 import SearchWithAIHeader from './SearchWithAIHeader'
-
-const log = new Log('searchWithAi')
 
 interface IProps {
   question: string
@@ -40,10 +38,13 @@ const AISearchContentCard: FC<IProps> = ({
 
   const { searchWithAISettings } = useSearchWithAISettings()
 
+  const { loading: providerLoading } = useSearchWithProvider()
+
   const triggerMode = searchWithAISettings.triggerMode
   const currentAIProvider = searchWithAISettings.aiProvider
 
   const {
+    loading,
     status,
     completedAnswer,
     isAnswering,
@@ -64,10 +65,9 @@ const AISearchContentCard: FC<IProps> = ({
       variant="outlined"
       sx={{
         mb: 2.5,
+        bgcolor: 'transparent',
       }}
     >
-      {/* <h1>{currentAIProvider}</h1>
-      <h1>status: {status}</h1> */}
       <SearchWithAIHeader
         status={status}
         isAnswering={isAnswering}
@@ -77,7 +77,7 @@ const AISearchContentCard: FC<IProps> = ({
       />
 
       <AIProviderBar
-        isAnswering={!!conversation.writingMessage}
+        disabled={loading}
         onProviderChange={handleResetStatus}
         sx={{ mb: 1 }}
       />
@@ -88,7 +88,7 @@ const AISearchContentCard: FC<IProps> = ({
         sx={{
           px: 2,
           pb: 2,
-          pt: 1,
+          pt: 3,
         }}
       >
         {status !== 'idle' && <QuestionTitle question={question} />}
@@ -101,12 +101,14 @@ const AISearchContentCard: FC<IProps> = ({
 
         {status === 'success' ? <AnswerLabelTitle loading={false} /> : null}
 
-        <AIAskTrigger
-          status={status}
-          triggerMode={triggerMode}
-          question={question}
-          handleAsk={handleAskQuestion}
-        />
+        {!providerLoading && (
+          <AIAskTrigger
+            status={status}
+            triggerMode={triggerMode}
+            question={question}
+            handleAsk={handleAskQuestion}
+          />
+        )}
 
         {status === 'error' && conversation.errorMessage && (
           <AIResponseError
@@ -147,7 +149,7 @@ const AISearchContentCard: FC<IProps> = ({
 function AnswerLabelTitle({ loading }: { loading: boolean }) {
   if (loading) {
     return (
-      <Stack direction={'row'} alignItems="center" spacing={1} mb={2}>
+      <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
         <CircularProgress size={18} />
         <Typography
           sx={{
@@ -163,7 +165,7 @@ function AnswerLabelTitle({ loading }: { loading: boolean }) {
   }
 
   return (
-    <Stack direction={'row'} alignItems="center" spacing={1} mb={2}>
+    <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
       <ReadIcon
         sx={{
           color: 'primary.main',

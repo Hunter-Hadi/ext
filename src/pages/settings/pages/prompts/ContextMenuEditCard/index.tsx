@@ -41,7 +41,6 @@ import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
-import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { useTranslation } from 'react-i18next'
 import ContextMenuRestoreDialog from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuRestoreDialog'
 import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
@@ -132,8 +131,9 @@ const ContextMenuEditCard: FC<{
   )
   const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
-  const { contextMenuSearchTextWithCurrentLanguage } =
-    useContextMenuSearchTextStore()
+  const {
+    contextMenuSearchTextWithCurrentLanguage,
+  } = useContextMenuSearchTextStore()
   const memoAllGroupIds = useMemo(() => {
     return originalTreeData
       .filter((item) => item.data.type === 'group')
@@ -531,56 +531,25 @@ const ContextMenuEditCard: FC<{
         />
       )}
       <Stack direction={'row'} alignItems={'center'} spacing={2}>
-        <PermissionWrapper
-          TooltipProps={{
-            placement: 'top',
-          }}
-          allowedRoles={['pro', 'pro_gift', 'new_user']}
-          sceneType={'CUSTOM_PROMPT'}
-          onPermission={async () => {
-            const userEditablePrompts = originalTreeData.filter((item) => {
-              return item.data.editable && item.data.type === 'shortcuts'
-            })
-            return {
-              success: userEditablePrompts.length < 1,
-            }
-          }}
+        <Button
+          disableElevation
+          variant={'contained'}
+          onClick={addNewMenuItem}
+          disabled={loading}
+          startIcon={<AddIcon />}
         >
-          <Button
-            disableElevation
-            variant={'contained'}
-            onClick={addNewMenuItem}
-            disabled={loading}
-            startIcon={<AddIcon />}
-          >
-            {t('settings:feature_card__prompts__new_option_button')}
-          </Button>
-        </PermissionWrapper>
-        <PermissionWrapper
-          TooltipProps={{
-            placement: 'top',
-          }}
-          allowedRoles={['pro', 'pro_gift', 'new_user']}
-          sceneType={'CUSTOM_PROMPT_GROUP'}
-          onPermission={async () => {
-            const userEditablePrompts = originalTreeData.filter((item) => {
-              return item.data.editable && item.data.type === 'group'
-            })
-            return {
-              success: userEditablePrompts.length < 1,
-            }
-          }}
+          {t('settings:feature_card__prompts__new_option_button')}
+        </Button>
+
+        <Button
+          disableElevation
+          variant={'contained'}
+          onClick={addNewMenuGroup}
+          disabled={loading}
+          startIcon={<AddIcon />}
         >
-          <Button
-            disableElevation
-            variant={'contained'}
-            onClick={addNewMenuGroup}
-            disabled={loading}
-            startIcon={<AddIcon />}
-          >
-            {t('settings:feature_card__prompts__new_option_group_button')}
-          </Button>
-        </PermissionWrapper>
+          {t('settings:feature_card__prompts__new_option_group_button')}
+        </Button>
         <Button
           disableElevation
           variant={'outlined'}

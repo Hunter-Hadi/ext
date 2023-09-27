@@ -50,6 +50,7 @@ export function searchWithAIStyleReset(
     }
 
     default: {
+      break
     }
   }
 }

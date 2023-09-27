@@ -6,7 +6,6 @@ import {
   getSearchWithAISettings,
   setSearchWithAISettings,
 } from '../../utils/searchWithAISettings'
-
 import {
   BardChatProvider,
   BingChatProvider,
@@ -31,6 +30,8 @@ import {
 
 import { OpenAIChatProvider } from '../provider/OpenAIChatProvider'
 import { OpenAIChat } from './OpenAiChat/index'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 
 class SearchWIthAIChatSystem {
   currentProvider?: ISearchWithAIProviderType
@@ -112,7 +113,7 @@ class SearchWIthAIChatSystem {
             const taskId = data.taskId
             const question = data.question
             const options = data.options
-
+            await this.createConversation(question.conversationId)
             await this.sendQuestion(taskId, sender, question, options)
             break
           }
@@ -167,16 +168,37 @@ class SearchWIthAIChatSystem {
     return false
   }
 
-  // async createConversation() {
-  //   if (!this.currentAdapter) {
-  //     return ''
-  //   }
-  //   debugger
-  //   // return (
-  //   //   (await this.currentAdapter?.createConversation(initConversationData)) ||
-  //   //   ''
-  //   // )
-  // }
+  async createConversation(conversationId: string) {
+    if (!this.currentAdapter) {
+      return ''
+    }
+
+    const meta = {
+      AIModel: '',
+    }
+
+    // 传入写死的 model name
+    if (
+      this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS
+    ) {
+      meta.AIModel = USE_CHAT_GPT_PLUS_MODELS[0].value
+    }
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE) {
+      meta.AIModel = MAXAI_CLAUDE_MODELS[0].value
+    }
+
+    return (
+      (await this.currentAdapter?.createConversation({
+        id: conversationId,
+        title: 'Chat - Search With AI',
+        type: 'Chat',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        messages: [],
+        meta,
+      })) || ''
+    )
+  }
   // async removeConversation(conversationId: string) {
   //   if (!this.currentAdapter || !conversationId) {
   //     return false

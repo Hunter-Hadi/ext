@@ -22,11 +22,11 @@ import SearchWIthAIProviderIcon from './SearchWIthAIProviderIcon'
 
 interface IProps {
   onProviderChange?: () => void
-  isAnswering?: boolean
+  disabled?: boolean
   sx?: SxProps
 }
 
-const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
+const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
   // TODO: providerList 从 AIProviderOptions 配置中读取
   const providerList = SearchWithAIProviderOptions
 
@@ -77,7 +77,7 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, isAnswering, sx }) => {
             cursor: 'not-allowed',
           },
         }}
-        disabled={loading || isAnswering}
+        disabled={loading || disabled}
         onClick={() => {
           updateChatGPTProvider(provider.value)
           onProviderChange && onProviderChange()

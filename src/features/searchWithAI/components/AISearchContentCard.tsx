@@ -67,8 +67,8 @@ const AISearchContentCard: FC<IProps> = ({
         bgcolor: 'transparent',
       }}
     >
-      <h1>{currentAIProvider}</h1>
-      <h1>status: {status}</h1>
+      {/* <h1>{currentAIProvider}</h1>
+      <h1>status: {status}</h1> */}
       <SearchWithAIHeader
         status={status}
         isAnswering={isAnswering}

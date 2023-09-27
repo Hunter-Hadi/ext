@@ -57,7 +57,19 @@ export interface ISocialMediaPostContextData {
 export default class SocialMediaPostContext {
   post: ISocialMediaPost
   commentList: ICommentData[][] = []
-  constructor(post: ISocialMediaPost) {
+  config: {
+    postTagName: string
+  }
+  constructor(
+    post: ISocialMediaPost,
+    options?: {
+      postTagName?: string
+    },
+  ) {
+    const { postTagName = '[Post]' } = options || {}
+    this.config = {
+      postTagName,
+    }
     this.post = post
   }
   static get emptyData(): ISocialMediaPostContextData {
@@ -74,7 +86,7 @@ export default class SocialMediaPostContext {
   get data(): ISocialMediaPostContextData {
     const { content, author } = this.post
     const commentsData = createCommentListData(this.commentList?.[0] || [])
-    const postText = `[Post]\n**Author:** ${author}
+    const postText = `${this.config.postTagName}\n**Author:** ${author}
 **Post:**
 ${content}`
     if (commentsData?.lastText) {

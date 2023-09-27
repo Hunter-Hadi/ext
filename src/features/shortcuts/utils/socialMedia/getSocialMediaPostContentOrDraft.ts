@@ -10,7 +10,14 @@ import {
   linkedInGetDraftContent,
   linkedInGetPostContent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/linkedIn'
-import { facebookGetPostContent } from '@/features/shortcuts/utils/socialMedia/platforms/facebook'
+import {
+  facebookGetDraftContent,
+  facebookGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/facebook'
+import {
+  youTubeGetDraftContent,
+  youTubeGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/youtube'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
@@ -32,6 +39,9 @@ export const getSocialMediaPostContent = async (
   if (host === 'facebook.com') {
     return await facebookGetPostContent(inputAssistantButton)
   }
+  if (host === 'youtube.com') {
+    return await youTubeGetPostContent(inputAssistantButton)
+  }
   return SocialMediaPostContext.emptyData
 }
 
@@ -52,7 +62,10 @@ export const getSocialMediaPostDraft = async (
     return linkedInGetDraftContent(inputAssistantButton)
   }
   if (host === 'facebook.com') {
-    return facebookGetPostContent(inputAssistantButton)
+    return facebookGetDraftContent(inputAssistantButton)
+  }
+  if (host === 'youtube.com') {
+    return await youTubeGetDraftContent(inputAssistantButton)
   }
   return ''
 }

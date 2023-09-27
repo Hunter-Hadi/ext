@@ -134,9 +134,8 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
       }
     }
     facebookSocialMediaPostContext.addCommentList(facebookPostComments)
-    return facebookSocialMediaPostContext.data
   }
-  return SocialMediaPostContext.emptyData
+  return facebookSocialMediaPostContext.data
 }
 export const facebookGetDraftContent: GetSocialMediaPostDraftFunction = (
   inputAssistantButton,

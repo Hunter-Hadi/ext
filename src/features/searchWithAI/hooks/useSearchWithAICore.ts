@@ -14,8 +14,11 @@ import { v4 as uuidV4 } from 'uuid'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useSetRecoilState } from 'recoil'
 import { AutoTriggerAskEnableAtom } from '../store'
-const port = new ContentScriptConnectionV2()
-
+import { getCurrentDomainHost } from '@/utils'
+import { IAIProviderType } from '@/background/provider/chat'
+const port = new ContentScriptConnectionV2({
+  runtime: 'client',
+})
 export type IAIForSearchStatus =
   // 初始化状态
   | 'idle'
@@ -124,6 +127,15 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     let message = ''
     let hasError = false
     let errorMessage = ''
+    port.postMessage({
+      event: 'Client_logCallApiRequest',
+      data: {
+        name: 'SEARCH_WITH_AI',
+        id: 'SEARCH_WITH_AI',
+        provider: searchWithAISettings.aiProvider as IAIProviderType,
+        host: getCurrentDomainHost(),
+      },
+    })
     await searchWithAIAskQuestion(
       {
         messageId,
@@ -178,7 +190,12 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       })
     }
     loadingRef.current = false
-  }, [question, searchWithAISettings?.webAccessPrompt, status])
+  }, [
+    question,
+    searchWithAISettings?.webAccessPrompt,
+    status,
+    searchWithAISettings?.aiProvider,
+  ])
 
   const handleResetStatus = useCallback(async () => {
     clearSources()

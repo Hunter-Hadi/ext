@@ -28,11 +28,15 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   id: string
   name: string
   host: string
+  provider?: IAIProviderType
 }): Promise<boolean> => {
   const logApiAndConfirmIsLimited = async () => {
     try {
       const settings = await getChromeExtensionSettings()
-      const provider = settings.currentAIProvider || 'UNKNOWN_PROVIDER'
+      const provider =
+        promptDetail.provider ||
+        settings.currentAIProvider ||
+        'UNKNOWN_PROVIDER'
       const beautyQueryMap: {
         [key in IAIProviderType]: string
       } = {

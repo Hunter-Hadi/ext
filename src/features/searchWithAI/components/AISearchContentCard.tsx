@@ -1,5 +1,4 @@
 import { ReadIcon } from '@/components/CustomIcon'
-import Log from '@/utils/Log'
 
 import {
   CircularProgress,
@@ -22,8 +21,6 @@ import AISearchingLoading from './AISearchingLoading'
 import AISearchSources from './AISearchSources'
 // import SearchWithAIFooter from './SearchWithAIFooter'
 import SearchWithAIHeader from './SearchWithAIHeader'
-
-const log = new Log('searchWithAi')
 
 interface IProps {
   question: string

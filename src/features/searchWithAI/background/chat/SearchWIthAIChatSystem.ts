@@ -112,6 +112,7 @@ class SearchWIthAIChatSystem {
             const taskId = data.taskId
             const question = data.question
             const options = data.options
+
             await this.sendQuestion(taskId, sender, question, options)
             break
           }

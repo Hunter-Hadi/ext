@@ -44,6 +44,7 @@ const AISearchContentCard: FC<IProps> = ({
   const currentAIProvider = searchWithAISettings.aiProvider
 
   const {
+    loading,
     status,
     completedAnswer,
     isAnswering,
@@ -67,8 +68,6 @@ const AISearchContentCard: FC<IProps> = ({
         bgcolor: 'transparent',
       }}
     >
-      {/* <h1>{currentAIProvider}</h1>
-      <h1>status: {status}</h1> */}
       <SearchWithAIHeader
         status={status}
         isAnswering={isAnswering}
@@ -78,7 +77,7 @@ const AISearchContentCard: FC<IProps> = ({
       />
 
       <AIProviderBar
-        isAnswering={!!conversation.writingMessage}
+        disabled={loading}
         onProviderChange={handleResetStatus}
         sx={{ mb: 1 }}
       />

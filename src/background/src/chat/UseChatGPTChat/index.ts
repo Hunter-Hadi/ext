@@ -23,6 +23,7 @@ import {
 import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { hasData } from '@/utils'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
@@ -85,6 +86,7 @@ class UseChatGPTPlusChat extends BaseChat {
       streaming?: boolean
       chat_history?: IMaxAIChatGPTMessageType[]
       backendAPI?: 'chat_with_document' | 'get_chatgpt_response'
+      meta?: Record<string, any>
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -116,8 +118,16 @@ class UseChatGPTPlusChat extends BaseChat {
       backendAPI = 'get_chatgpt_response',
       streaming = true,
       chat_history = [],
+      meta,
     } = options || {}
     const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
+    let temperature = Math.min(
+      isNumber(userConfig?.temperature) ? userConfig!.temperature : 1,
+      1.6,
+    )
+    if (hasData(meta?.temperature)) {
+      temperature = meta?.temperature
+    }
     const postBody = Object.assign(
       {
         chat_history,
@@ -131,10 +141,7 @@ class UseChatGPTPlusChat extends BaseChat {
         /**
          * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
          */
-        temperature: Math.min(
-          isNumber(userConfig?.temperature) ? userConfig!.temperature : 1,
-          1.6,
-        ),
+        temperature,
       },
       doc_id ? { doc_id } : {},
     )

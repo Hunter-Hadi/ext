@@ -164,6 +164,15 @@ class SearchWIthAIChatSystem {
     if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
       options.meta = {
         model: OPENAI_API_MODELS[0].value,
+        temperature: 0,
+      }
+    }
+
+    if (
+      this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS
+    ) {
+      options.meta = {
+        temperature: 0,
       }
     }
 

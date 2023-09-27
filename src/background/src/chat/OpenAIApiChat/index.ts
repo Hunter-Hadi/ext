@@ -11,6 +11,7 @@ import { v4 as uuidV4 } from 'uuid'
 import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAiApiChat/types'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { hasData } from '@/utils'
 
 const log = new Log('Background/Chat/OpenAiApiChat')
 
@@ -83,6 +84,12 @@ class OpenAiApiChat extends BaseChat {
     })
     const conversationId = uuidV4()
     const result: IOpenAIApiChatMessage = { role: 'assistant', content: '' }
+    let temperature = chatGPTApiSettings.temperature
+      ? Math.min(chatGPTApiSettings.temperature, 1.6)
+      : undefined
+    if (hasData(meta?.temperature)) {
+      temperature = meta?.temperature
+    }
     await fetchSSE(`${chatGPTApiSettings.apiHost}/v1/chat/completions`, {
       provider: AI_PROVIDER_MAP.OPENAI_API,
       method: 'POST',
@@ -97,9 +104,7 @@ class OpenAiApiChat extends BaseChat {
         /**
          * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
          */
-        temperature: chatGPTApiSettings.temperature
-          ? Math.min(chatGPTApiSettings.temperature, 1.6)
-          : undefined,
+        temperature,
         stream: true,
       }),
       onMessage: (message: string) => {

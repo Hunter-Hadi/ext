@@ -99,7 +99,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         {
           postTitle: 'Video post',
           meta: {
-            'Video transcript': youTubeTranscriptText,
+            'Post video transcript': youTubeTranscriptText,
           },
         },
       )

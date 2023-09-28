@@ -565,10 +565,10 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = ['description']
   const retryLanguageCodes = [
   ]
-  await updateKeys(keys, false, retryLanguageCodes)
+  await updateKeys(keys, true, retryLanguageCodes)
 }
 
 main().then().catch()

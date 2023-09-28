@@ -63,7 +63,7 @@ const InputAssistantPortal: FC = () => {
     if (host === 'facebook.com') {
       return appSetting.userSettings?.inputAssistantButton?.facebook === true
     }
-    if (host === 'youtube.com') {
+    if (host === 'youtube.com' || host === 'studio.youtube.com') {
       return appSetting.userSettings?.inputAssistantButton?.youtube === true
     }
     return false

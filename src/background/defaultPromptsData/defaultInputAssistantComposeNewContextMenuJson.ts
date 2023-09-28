@@ -187,6 +187,7 @@ Now, write a {{CURRENT_WEBSITE_DOMAIN}} post, mentioning these points:
           'linkedin.com',
           'facebook.com',
           'youtube.com',
+          'studio.youtube.com',
         ],
         blacklist: [],
         isWhitelistMode: true,

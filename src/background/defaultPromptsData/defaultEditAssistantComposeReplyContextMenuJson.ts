@@ -674,6 +674,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           'linkedin.com',
           'facebook.com',
           'youtube.com',
+          'studio.youtube.com',
         ],
         blacklist: [],
         isWhitelistMode: true,

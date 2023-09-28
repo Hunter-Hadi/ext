@@ -632,6 +632,7 @@ const socialMediaPrompts = [
           'linkedin.com',
           'facebook.com',
           'youtube.com',
+          'studio.youtube.com',
         ],
         blacklist: [],
         isWhitelistMode: true,

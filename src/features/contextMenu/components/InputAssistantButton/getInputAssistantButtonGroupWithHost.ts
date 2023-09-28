@@ -40,6 +40,12 @@ const checkHostUsingButtonKeys = (
       config.buttonGroupConfig.refineDraftButton,
     ]
   }
+  if (host === 'studio.youtube.com') {
+    return [
+      config.buttonGroupConfig.composeReplyButton,
+      config.buttonGroupConfig.refineDraftButton,
+    ]
+  }
   return [
     config.buttonGroupConfig.composeReplyButton,
     config.buttonGroupConfig.refineDraftButton,

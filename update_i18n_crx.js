@@ -133,7 +133,14 @@ const path = require('path')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 const folder = path.join(__dirname, 'src/i18n')
+/**
+ * @deprecated
+ * @param jsonSources
+ * @param updateFn
+ */
 const updateI18nJson = (jsonSources, updateFn) => {
+  console.error('这个方法已经废弃了, 请使用: \nnode update_i18n.mjs')
+  return
   // get folder lang folders
   const langFolders = fs.readdirSync(folder).filter((file) => {
     return (

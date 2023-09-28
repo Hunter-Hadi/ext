@@ -91,9 +91,7 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction = as
           date,
           content,
         },
-        {
-          postTagName: '[YouTube Video Post]',
-        },
+        {},
       )
     }
     if (ytcpCommentBox && youTubeSocialMediaPostContext) {

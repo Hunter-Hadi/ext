@@ -99,9 +99,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           date,
           content,
         },
-        {
-          postTagName: '[YouTube Video Post]',
-        },
+        {},
       )
     } else if (
       window.location.href.startsWith('https://www.youtube.com/shorts')
@@ -127,9 +125,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
             date: '',
             content,
           },
-          {
-            postTagName: '[YouTube Shorts Post]',
-          },
+          {},
         )
       }
     }

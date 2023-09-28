@@ -74,7 +74,9 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
     if (colorSchema !== undefined) {
       return colorSchema === 'dark'
     }
-
+    if (AppSettings.userSettings?.colorSchema === 'auto') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+    }
     return AppSettings.userSettings?.colorSchema === 'dark'
   }, [AppSettings.userSettings, colorSchema])
 

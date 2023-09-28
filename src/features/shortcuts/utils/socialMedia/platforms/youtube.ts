@@ -44,6 +44,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
   try {
+    // comment box
     const ytdCommentBox = findParentEqualSelector(
       'ytd-commentbox',
       inputAssistantButton,
@@ -51,10 +52,13 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
     const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
       window.location.href,
     )
+    // 上下文
     let youTubeSocialMediaPostContext: SocialMediaPostContext | null = null
     if (youTubeVideoId) {
+      // youTube transcript
       const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
         await YoutubeTranscript.fetchTranscript(window.location.href),
+        2048,
       )
       const youTubeVideoMetaData = document.querySelector('ytd-watch-metadata')
       const title =

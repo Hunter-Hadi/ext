@@ -65,7 +65,7 @@ export const getSocialMediaPostDraft = async (
     return facebookGetDraftContent(inputAssistantButton)
   }
   if (host === 'youtube.com') {
-    return await youTubeGetDraftContent(inputAssistantButton)
+    return youTubeGetDraftContent(inputAssistantButton)
   }
   return ''
 }

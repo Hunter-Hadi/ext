@@ -34,6 +34,12 @@ const checkHostUsingButtonKeys = (
   if (host === 'facebook.com') {
     return getFacebookButtonGroup(config)
   }
+  if (host === 'youtube.com') {
+    return [
+      config.buttonGroupConfig.composeReplyButton,
+      config.buttonGroupConfig.refineDraftButton,
+    ]
+  }
   return [
     config.buttonGroupConfig.composeReplyButton,
     config.buttonGroupConfig.refineDraftButton,

@@ -72,21 +72,20 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction = as
         await YoutubeTranscript.fetchTranscript(window.location.href),
         2048,
       )
-      const title =
+      let content =
         (commentBoxRoot?.querySelector(
           '#video-title > yt-formatted-string',
-        ) as HTMLHeadingElement)?.innerText || document.title
+        ) as HTMLHeadingElement)?.innerText || ''
       const userName = ((document.querySelector(
         '#entity-name',
       ) as any) as HTMLDivElement)?.innerText
       const date = ''
-      let content = ''
       if (youTubeTranscriptText) {
         content += `\n\n[Transcript]:\n${youTubeTranscriptText}`
       }
       youTubeSocialMediaPostContext = new SocialMediaPostContext(
         {
-          title,
+          title: '',
           author: `${userName}`,
           date,
           content,

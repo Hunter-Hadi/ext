@@ -1354,7 +1354,9 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           'web.whatsapp.com',
           'outlook.live.com',
           'outlook.office.com',
-        ].includes(currentHost)
+        ].includes(currentHost) ||
+        // YouTube的shorts会粘贴富文本 会出问题
+        window.location.href.startsWith('https://www.youtube.com/shorts')
       ) {
         // 有内容才Delete
         if (selection?.toString().trim()) {

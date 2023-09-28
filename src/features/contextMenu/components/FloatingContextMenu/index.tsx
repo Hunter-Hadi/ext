@@ -88,8 +88,9 @@ const FloatingContextMenu: FC<{
   const { currentSelectionRef } = useRangy()
   const conversation = useRecoilValue(ChatGPTConversationState)
   const setAppSettings = useSetRecoilState(AppSettingsState)
-  const [sidebarSettings, setSidebarSettings] =
-    useRecoilState(SidebarSettingsState)
+  const [sidebarSettings, setSidebarSettings] = useRecoilState(
+    SidebarSettingsState,
+  )
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -99,8 +100,10 @@ const FloatingContextMenu: FC<{
   const { isLogin } = useAuthLogin()
   const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
-  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
-    useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const [
+    floatingDropdownMenuSystemItems,
+    setFloatingDropdownMenuSystemItems,
+  ] = useRecoilState(FloatingDropdownMenuSystemItemsState)
   // 是否有上下文，决定contextMenu展示的内容
   const haveContext = useMemo(
     () => floatingDropdownMenuSystemItems.lastOutput,
@@ -449,8 +452,9 @@ const FloatingContextMenu: FC<{
         }
         // 如果是[推荐]菜单的动作，则需要转换为[草稿]菜单的动作
         if (isSuggestedContextMenu) {
-          currentContextMenu =
-            contextMenuToFavoriteContextMenu(currentContextMenu)
+          currentContextMenu = contextMenuToFavoriteContextMenu(
+            currentContextMenu,
+          )
         }
         lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
@@ -688,9 +692,11 @@ const FloatingContextMenu: FC<{
                           />
                         )
                       }
-                      placeholder={t(
-                        'client:floating_menu__input__placeholder',
-                      )}
+                      placeholder={
+                        floatingDropdownMenu.open
+                          ? t('client:floating_menu__input__placeholder')
+                          : ''
+                      }
                       InputId={ROOT_FLOATING_INPUT_ID}
                       sx={{
                         border: 'none',

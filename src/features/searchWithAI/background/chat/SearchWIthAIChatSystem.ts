@@ -32,6 +32,11 @@ import { OpenAIChatProvider } from '../provider/OpenAIChatProvider'
 import { OpenAIChat } from './OpenAiChat/index'
 import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { CHATGPT_3_5_MODEL_NAME } from '../../chatCore/chatgpt/constants'
+import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 
 class SearchWIthAIChatSystem {
   currentProvider?: ISearchWithAIProviderType
@@ -156,6 +161,21 @@ class SearchWIthAIChatSystem {
     data,
     options,
   ) => {
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
+      options.meta = {
+        model: OPENAI_API_MODELS[0].value,
+        temperature: 1,
+      }
+    }
+
+    if (
+      this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS
+    ) {
+      options.meta = {
+        temperature: 1,
+      }
+    }
+
     return (
       this.currentAdapter?.sendQuestion(taskId, sender, data, options) ||
       Promise.resolve()
@@ -185,6 +205,21 @@ class SearchWIthAIChatSystem {
     }
     if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE) {
       meta.AIModel = MAXAI_CLAUDE_MODELS[0].value
+    }
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
+      meta.AIModel = OPENAI_API_MODELS[0].value
+    }
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI) {
+      meta.AIModel = CHATGPT_3_5_MODEL_NAME
+    }
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE) {
+      meta.AIModel = CLAUDE_MODELS[0].value
+    }
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.BARD) {
+      meta.AIModel = BARD_MODELS[0].value
+    }
+    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.BING) {
+      meta.AIModel = BING_MODELS[0].value
     }
 
     return (

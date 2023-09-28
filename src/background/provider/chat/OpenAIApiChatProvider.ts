@@ -79,6 +79,7 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
         include_history: options.includeHistory,
         max_history_message_cnt: options.maxHistoryMessageCnt,
         history,
+        meta: options.meta,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

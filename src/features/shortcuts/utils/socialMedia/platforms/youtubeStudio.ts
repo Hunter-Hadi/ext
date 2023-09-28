@@ -36,7 +36,7 @@ const getYouTubeStudioCommentContent = async (
     ((ytcpCommentBox.querySelector('#content-text') as any) as HTMLDivElement)
       ?.innerText || ''
   return {
-    author,
+    author: author.replace(/\n/g, '').trim(),
     date,
     content: commentText,
   }
@@ -72,7 +72,7 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction = as
         await YoutubeTranscript.fetchTranscript(window.location.href),
         2048,
       )
-      const content =
+      const title =
         (commentBoxRoot?.querySelector(
           '#video-title > yt-formatted-string',
         ) as HTMLHeadingElement)?.innerText || ''
@@ -82,10 +82,10 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction = as
       const date = ''
       youTubeSocialMediaPostContext = new SocialMediaPostContext(
         {
-          title: '',
+          title,
           author: `${userName}`,
           date,
-          content,
+          content: '',
         },
         {
           postTitle: 'Video post',

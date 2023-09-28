@@ -34,7 +34,7 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector('#content-text') as HTMLDivElement)
       ?.innerText || ''
   return {
-    author,
+    author: author.replace(/\n/g, '').trim(),
     date,
     content: commentText,
   }
@@ -64,7 +64,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       const title =
         (youTubeVideoMetaData?.querySelector(
           '#title > h1',
-        ) as HTMLHeadingElement).innerText || document.title
+        ) as HTMLHeadingElement)?.innerText || document.title
       const authorElement = document.querySelector('ytd-video-owner-renderer')
       const userName = authorElement?.querySelector('yt-formatted-string')
         ?.textContent
@@ -84,7 +84,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       const date =
         (youTubeVideoMetaData?.querySelector(
           '#description #info-container yt-formatted-string > span:nth-child(3)',
-        ) as HTMLSpanElement).innerText || ''
+        ) as HTMLSpanElement)?.innerText || ''
       const content =
         (youTubeVideoMetaData?.querySelector(
           '#description ytd-text-inline-expander yt-attributed-string',
@@ -116,8 +116,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         'ytd-reel-player-header-renderer',
       )
       if (ytdReelPlayerHeader) {
-        const title = ''
-        const content =
+        const title =
           (ytdReelPlayerHeader?.querySelector(
             '.title > yt-formatted-string',
           ) as HTMLDivElement)?.innerText || ''
@@ -130,7 +129,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
             title,
             author,
             date: '',
-            content,
+            content: '',
           },
           {
             postTitle: 'Video post',

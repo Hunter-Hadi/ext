@@ -98,16 +98,15 @@ export default class SocialMediaPostContext {
   }
 
   get data(): ISocialMediaPostContextData {
-    const { content, author } = this.post
+    const { content, author, title } = this.post
     const commentsData = createCommentListData(this.commentList?.[0] || [])
-    let postText = `[${this.config.postTitle}]\n**Post author:** ${author}
-**${this.config.postContentTagName}:**
-${content}`
+    let postText = ''
+    postText += `[${this.config.postTitle}]`
+    postText += `\n**Post author:** ${author || 'N/A'}`
+    postText += `\n**Post title:** ${title || 'N/A'}`
+    postText += `\n**${this.config.postContentTagName}:**\n${content || 'N/A'}`
     Object.keys(this.config.meta || {}).forEach((metaKey) => {
-      const value = this.config.meta?.[metaKey] || ''
-      if (value) {
-        postText += `\n**${metaKey}:**:\n${value}`
-      }
+      postText += `\n**${metaKey}:**\n${this.config.meta?.[metaKey] || 'N/A'}`
     })
     if (commentsData?.lastText) {
       return {

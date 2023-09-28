@@ -11,7 +11,7 @@ const FeatureYouTubeAssistantCard: FC = () => {
   return (
     <SettingsFeatureCardLayout
       title={t(
-        'settings:feature_card__help_me_write__field__facebook_input_assistant_button__title',
+        'settings:feature_card__help_me_write__field__youtube_input_assistant_button__title',
       )}
       id={'facebook-assistant'}
     >

@@ -72,7 +72,7 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction = as
         await YoutubeTranscript.fetchTranscript(window.location.href),
         2048,
       )
-      let content =
+      const content =
         (commentBoxRoot?.querySelector(
           '#video-title > yt-formatted-string',
         ) as HTMLHeadingElement)?.innerText || ''
@@ -80,9 +80,6 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction = as
         '#entity-name',
       ) as any) as HTMLDivElement)?.innerText
       const date = ''
-      if (youTubeTranscriptText) {
-        content += `\n\n[Transcript]:\n${youTubeTranscriptText}`
-      }
       youTubeSocialMediaPostContext = new SocialMediaPostContext(
         {
           title: '',
@@ -90,7 +87,12 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction = as
           date,
           content,
         },
-        {},
+        {
+          postTitle: 'Video post',
+          meta: {
+            'Video transcript': youTubeTranscriptText,
+          },
+        },
       )
     }
     if (ytcpCommentBox && youTubeSocialMediaPostContext) {

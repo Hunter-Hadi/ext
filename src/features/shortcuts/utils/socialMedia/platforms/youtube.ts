@@ -85,13 +85,10 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         (youTubeVideoMetaData?.querySelector(
           '#description #info-container yt-formatted-string > span:nth-child(3)',
         ) as HTMLSpanElement).innerText || ''
-      let content =
+      const content =
         (youTubeVideoMetaData?.querySelector(
           '#description ytd-text-inline-expander yt-attributed-string',
         ) as HTMLDivElement)?.innerText || ''
-      if (youTubeTranscriptText) {
-        content += `\n\n[Transcript]:\n${youTubeTranscriptText}`
-      }
       youTubeSocialMediaPostContext = new SocialMediaPostContext(
         {
           title,
@@ -99,13 +96,23 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           date,
           content,
         },
-        {},
+        {
+          postTitle: 'Video post',
+          meta: {
+            'Video transcript': youTubeTranscriptText,
+          },
+        },
       )
     } else if (
       window.location.href.startsWith('https://www.youtube.com/shorts')
     ) {
       // 短视频
-      const ytdReelPlayerHeader = document.querySelector(
+      const rootContainer = findParentEqualSelector(
+        'ytd-reel-video-renderer',
+        inputAssistantButton,
+        50,
+      ) as HTMLDivElement
+      const ytdReelPlayerHeader = rootContainer?.querySelector(
         'ytd-reel-player-header-renderer',
       )
       if (ytdReelPlayerHeader) {
@@ -125,7 +132,9 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
             date: '',
             content,
           },
-          {},
+          {
+            postTitle: 'Video post',
+          },
         )
       }
     }

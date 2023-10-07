@@ -20,6 +20,7 @@ import AIResponseError from './AIResponseError'
 import AIResponseMessage from './AIResponseMessage'
 import AISearchingLoading from './AISearchingLoading'
 import AISearchSources from './AISearchSources'
+import SearchWithAIGALoader from './SearchWithAIGALoader'
 // import SearchWithAIFooter from './SearchWithAIFooter'
 import SearchWithAIHeader from './SearchWithAIHeader'
 
@@ -142,6 +143,11 @@ const AISearchContentCard: FC<IProps> = ({
           <SearchWithAIFooter handleAskQuestion={handleAskQuestion} />
         </>
       )} */}
+
+      {/* ga loader */}
+      {status === 'answering' || status === 'success' ? (
+        <SearchWithAIGALoader />
+      ) : null}
     </Paper>
   )
 }

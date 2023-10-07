@@ -11,7 +11,6 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import CloseIcon from '@mui/icons-material/Close'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 import SearchWithAIWebAccessToggle from './SearchWithAIWebAccessToggle'
 import { SEARCH_WITH_AI_LOGO_ID } from '../constants'
 import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
@@ -66,17 +65,17 @@ const SearchWithAIHeader: FC<IProps> = ({
       },
     ]
 
-    if (isAnswering) {
-      return [
-        {
-          name: 'stop-generate',
-          label: 'Stop generating',
-          icon: <StopOutlinedIcon fontSize="inherit" />,
-          tooltip: '',
-          onClick: handleStopGenerate,
-        },
-      ]
-    }
+    // if (isAnswering) {
+    //   return [
+    //     {
+    //       name: 'stop-generate',
+    //       label: 'Stop generating',
+    //       icon: <StopOutlinedIcon fontSize="inherit" />,
+    //       tooltip: '',
+    //       onClick: handleStopGenerate,
+    //     },
+    //   ]
+    // }
 
     // if (status === 'success') {
     //   commonActions.push({

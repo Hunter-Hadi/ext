@@ -1,6 +1,7 @@
 import { ReadIcon } from '@/components/CustomIcon'
 
 import {
+  Button,
   CircularProgress,
   Divider,
   Paper,
@@ -9,6 +10,7 @@ import {
 } from '@mui/material'
 import React from 'react'
 import { FC, useCallback, useState } from 'react'
+import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 
 import useSearchWithAICore from '../hooks/useSearchWithAICore'
 import useSearchWithAISettings from '../hooks/useSearchWithAISettings'
@@ -97,10 +99,15 @@ const AISearchContentCard: FC<IProps> = ({
         <AISearchSources />
 
         {status === 'answering' || status === 'waitingAnswer' ? (
-          <AnswerLabelTitle loading />
+          <AnswerLabelTitle loading handleStopGenerate={handleStopGenerate} />
         ) : null}
 
-        {status === 'success' ? <AnswerLabelTitle loading={false} /> : null}
+        {status === 'success' ? (
+          <AnswerLabelTitle
+            loading={false}
+            handleStopGenerate={handleStopGenerate}
+          />
+        ) : null}
 
         {!providerLoading && (
           <AIAskTrigger
@@ -152,7 +159,13 @@ const AISearchContentCard: FC<IProps> = ({
   )
 }
 
-function AnswerLabelTitle({ loading }: { loading: boolean }) {
+function AnswerLabelTitle({
+  loading,
+  handleStopGenerate,
+}: {
+  loading: boolean
+  handleStopGenerate: () => void
+}) {
   if (loading) {
     return (
       <Stack direction={'row'} alignItems="center" spacing={1} mb={1}>
@@ -166,6 +179,18 @@ function AnswerLabelTitle({ loading }: { loading: boolean }) {
         >
           Writing
         </Typography>
+
+        <Button
+          startIcon={<StopOutlinedIcon fontSize="inherit" />}
+          color="inherit"
+          size="small"
+          onClick={handleStopGenerate}
+          sx={{
+            ml: 'auto !important',
+          }}
+        >
+          Stop generating
+        </Button>
       </Stack>
     )
   }
@@ -199,6 +224,7 @@ function QuestionTitle({ question }: { question: string }) {
         lineHeight: 1.4,
         fontWeight: 500,
         mb: 3,
+        overflowWrap: 'break-word',
       }}
     >
       {question}

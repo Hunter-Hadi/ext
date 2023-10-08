@@ -1,5 +1,3 @@
-import { ReadIcon } from '@/components/CustomIcon'
-
 import {
   Button,
   CircularProgress,
@@ -23,8 +21,10 @@ import AIResponseMessage from './AIResponseMessage'
 import AISearchingLoading from './AISearchingLoading'
 import AISearchSources from './AISearchSources'
 import SearchWithAIGALoader from './SearchWithAIGALoader'
-// import SearchWithAIFooter from './SearchWithAIFooter'
+import SearchWithAIFooter from './SearchWithAIFooter'
 import SearchWithAIHeader from './SearchWithAIHeader'
+import { ReadIcon } from './SearchWithAIIcons'
+import { SEARCH_WITH_AI_APP_NAME } from '../constants'
 
 interface IProps {
   question: string
@@ -144,12 +144,12 @@ const AISearchContentCard: FC<IProps> = ({
         {status === 'waitingAnswer' && <AISearchingLoading />}
       </Stack>
 
-      {/* {status === 'success' && (
+      {SEARCH_WITH_AI_APP_NAME === 'webchatgpt' && status === 'success' ? (
         <>
           <Divider />
           <SearchWithAIFooter handleAskQuestion={handleAskQuestion} />
         </>
-      )} */}
+      ) : null}
 
       {/* ga loader */}
       {status === 'answering' || status === 'success' ? (

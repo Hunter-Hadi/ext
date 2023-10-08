@@ -40,3 +40,24 @@ export const SearchWithAIProviderLoadingAtom = atom({
   key: 'SearchWithAIProviderLoadingAtom',
   default: false,
 })
+
+export interface ISearchWithAIConversationType {
+  conversationId: string
+  loading: boolean
+  writingMessage: string
+  completedMessage: string
+  errorMessage: string
+}
+
+export const SearchWithAIConversationAtom = atom<ISearchWithAIConversationType>(
+  {
+    key: 'SearchWithAIConversationAtom',
+    default: {
+      conversationId: '',
+      loading: false,
+      writingMessage: '',
+      completedMessage: '',
+      errorMessage: '',
+    },
+  },
+)

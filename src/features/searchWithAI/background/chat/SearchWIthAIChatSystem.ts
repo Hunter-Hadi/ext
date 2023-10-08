@@ -6,30 +6,12 @@ import {
   getSearchWithAISettings,
   setSearchWithAISettings,
 } from '../../utils/searchWithAISettings'
-import {
-  BardChatProvider,
-  BingChatProvider,
-  ChatAdapter,
-  ClaudeChatProvider,
-  MaxAIClaudeChatProvider,
-  OpenAIApiChatProvider,
-  UseChatGPTPlusChatProvider,
-} from '@/background/provider/chat'
-import {
-  BardChat,
-  BingChat,
-  ClaudeWebappChat,
-  MaxAIClaudeChat,
-  OpenAiApiChat,
-  UseChatGPTPlusChat,
-} from '@/background/src/chat'
+
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_PROVIDER_MAP,
 } from '../../constants'
 
-import { OpenAIChatProvider } from '../provider/OpenAIChatProvider'
-import { OpenAIChat } from './OpenAiChat/index'
 import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
@@ -37,6 +19,7 @@ import { CHATGPT_3_5_MODEL_NAME } from '../../chatCore/chatgpt/constants'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
+import { initProviderChatAdapters } from '../utils'
 
 class SearchWIthAIChatSystem {
   currentProvider?: ISearchWithAIProviderType
@@ -44,36 +27,7 @@ class SearchWIthAIChatSystem {
     [key in ISearchWithAIProviderType]?: ChatAdapterInterface
   } = {}
   constructor() {
-    const openAIChatAdapter = new ChatAdapter(
-      new OpenAIChatProvider(new OpenAIChat() as any) as any,
-    )
-    const useChatGPTPlusAdapter = new ChatAdapter(
-      new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
-    )
-    const newOpenAIApiChatAdapter = new ChatAdapter(
-      new OpenAIApiChatProvider(new OpenAiApiChat()),
-    )
-    const bardChatAdapter = new ChatAdapter(
-      new BardChatProvider(new BardChat()),
-    )
-    const bingChatAdapter = new ChatAdapter(
-      new BingChatProvider(new BingChat()),
-    )
-    const claudeChatAdapter = new ChatAdapter(
-      new ClaudeChatProvider(new ClaudeWebappChat()),
-    )
-    const maxAIClaudeAdapter = new ChatAdapter(
-      new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),
-    )
-    this.adapters = {
-      [SEARCH_WITH_AI_PROVIDER_MAP.OPENAI]: openAIChatAdapter,
-      [SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: useChatGPTPlusAdapter,
-      [SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API]: newOpenAIApiChatAdapter,
-      [SEARCH_WITH_AI_PROVIDER_MAP.BARD]: bardChatAdapter,
-      [SEARCH_WITH_AI_PROVIDER_MAP.BING]: bingChatAdapter,
-      [SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE]: claudeChatAdapter,
-      [SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE]: maxAIClaudeAdapter,
-    }
+    this.adapters = initProviderChatAdapters()
 
     this.initChatSystem()
 
@@ -81,9 +35,6 @@ class SearchWIthAIChatSystem {
     getSearchWithAISettings().then((settings) => {
       this.currentProvider = settings.aiProvider
     })
-  }
-  get conversation() {
-    return this.currentAdapter?.conversation
   }
   get currentAdapter(): ChatAdapterInterface | undefined {
     return this.currentProvider

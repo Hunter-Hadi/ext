@@ -1,3 +1,6 @@
+type ISearchWithAIAppNameMap = 'maxai' | 'webchatgpt'
+export const SEARCH_WITH_AI_APP_NAME: ISearchWithAIAppNameMap = 'maxai'
+
 export const SEARCH_WITH_AI_ROOT_ID = 'MAXAI_SEARCH_WITH_AI_ROOT_ID'
 export const SEARCH_WITH_AI_SHADOW_CONTAINER_ID =
   'MAXAI_SEARCH_WITH_AI_SHADOW_CONTAINER_ID'
@@ -17,7 +20,6 @@ export const SEARCH_WITH_AI_PROVIDER_MAP = {
   BARD: 'BARD',
 } as const
 
-export type ISearchWithAIProviderType =
-  (typeof SEARCH_WITH_AI_PROVIDER_MAP)[keyof typeof SEARCH_WITH_AI_PROVIDER_MAP]
+export type ISearchWithAIProviderType = typeof SEARCH_WITH_AI_PROVIDER_MAP[keyof typeof SEARCH_WITH_AI_PROVIDER_MAP]
 
 export * from './searchWithAIPrompt'

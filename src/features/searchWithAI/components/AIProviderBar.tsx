@@ -1,4 +1,3 @@
-import { getThirdProviderSettings } from '@/background/src/chat/util'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 
@@ -11,7 +10,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { FC } from 'react'
 import { ISearchWithAIProviderType } from '../constants'
 import SearchWithAIProviderOptions, {
@@ -39,14 +38,6 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
   const isProviderActive = (provider: ISearchWithAIProviderType) => {
     return currentProvider === provider
   }
-
-  useEffect(() => {
-    getThirdProviderSettings('OPENAI_API').then((settings) => {
-      if (settings) {
-        console.log(`OPENAI_API settings`, settings)
-      }
-    })
-  }, [])
 
   const renderIcon = (
     provider: ISearchWithAIProviderOptionsType,

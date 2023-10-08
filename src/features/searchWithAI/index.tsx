@@ -35,7 +35,7 @@ const mount = async (
     return
   }
 
-  let sidebarContainer = siteConfig.sidebarContainerFinder()
+  const sidebarContainer = siteConfig.sidebarContainerFinder()
 
   if (sidebarContainer) {
     // change sidebarContainer style
@@ -77,7 +77,9 @@ const mount = async (
       const style = document.createElement('style')
       style.textContent = styleContent
       emotionRoot.append(style)
-    } catch (error) {}
+    } catch (error) {
+      console.error('fetch searchWithAI.css error', error)
+    }
 
     // 二次检查是否已经挂载
     if (document.getElementById(SEARCH_WITH_AI_ROOT_ID)) {

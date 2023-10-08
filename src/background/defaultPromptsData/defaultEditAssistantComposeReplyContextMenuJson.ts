@@ -669,7 +669,13 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: ['twitter.com', 'linkedin.com', 'facebook.com'],
+        whitelist: [
+          'twitter.com',
+          'linkedin.com',
+          'facebook.com',
+          'youtube.com',
+          'studio.youtube.com',
+        ],
         blacklist: [],
         isWhitelistMode: true,
       },

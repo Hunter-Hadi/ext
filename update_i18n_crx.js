@@ -1,63 +1,64 @@
 const descriptionJson = `
 {
-  "en": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. Supports GPT-4, Code Interpreter, Web Browsing, Plugins.",
-  "en_GB": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. Supports GPT-4, Code Interpreter, Web Browsing, Plugins.",
-  "en_US": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. Supports GPT-4, Code Interpreter, Web Browsing, Plugins.",
-  "zh_CN": "在任何网页上使用ChatGPT、Claude、Bard、Bing的最快方式。支持GPT-4、代码解释器、网络浏览和插件。",
-  "zh_TW": "在任何網頁上使用ChatGPT、Claude、Bard、Bing的最快方式。支援GPT-4、程式碼解譯器、網頁瀏覽和插件。",
-  "am": "በወደቀ በግልፅ የChatGPT, Claude, Bard, Bing መጠቀም ውስጥ በግል ተጨማሪ አድራሻዎች ናቸው። የGPT-4, ኮድ መልክትዎን, ድረ-ገጽ, አማራጭራርዎን ያገኛሉ።",
-  "ar": "أسرع طريقة لاستخدام ChatGPT و Bard و Bing و Claude على الإنترنت في أي مكان. يدعم GPT-4 ومفسر الشفرة وتصفح الويب والمكونات الإضافية.",
-  "bg": "Най-бързият начин да използвате ChatGPT, Claude, Bard, Bing навсякъде онлайн. Поддържа GPT-4, интерпретатор на кода, уеб браузър, добавки.",
-  "bn": "ChatGPT, Claude, Bard, Bing যেকোনো অনলাইন স্থানে ব্যবহার করার জন্য সর্বত্র সবচেয়ে দ্রুত উপায়। GPT-4, কোড ইন্টারপ্রেটার, ওয়েব ব্রাউজিং, প্লাগইন সমর্থন করে।",
-  "ca": "La forma més ràpida d'utilitzar ChatGPT, Claude, Bard, Bing en qualsevol lloc en línia. Admet GPT-4, intèrpret de codi, navegació web, connectors.",
-  "cs": "Nejrychlejší způsob, jak používat ChatGPT, Claude, Bard, Bing kdekoli online. Podporuje GPT-4, interpretační kód, webové prohlížení, pluginy.",
-  "da": "Den hurtigste måde at bruge ChatGPT, Claude, Bard, Bing overalt online. Understøtter GPT-4, kodefortolker, webbrowsing, plugins.",
-  "de": "Der schnellste Weg, um ChatGPT, Claude, Bard, Bing überall online zu nutzen. Unterstützt GPT-4, Code-Interpreter, Web-Browsing, Plugins.",
-  "el": "Ο γρηγορότερος τρόπος για να χρησιμοποιήσετε το ChatGPT, Claude, Bard, Bing οπουδήποτε στο διαδίκτυο. Υποστηρίζει GPT-4, διερμηνέα κώδικα, περιήγηση στον ιστό, πρόσθετα.",
-  "es": "La forma más rápida de usar ChatGPT, Claude, Bard, Bing en cualquier lugar en línea. Admite GPT-4, intérprete de código, navegación web, complementos.",
-  "es_419": "La forma más rápida de usar ChatGPT, Claude, Bard, Bing en cualquier lugar en línea. Admite GPT-4, intérprete de código, navegación web, complementos.",
-  "et": "Kiireim viis kasutada ChatGPT, Claude, Bard, Bing'it kõikjal veebis. Toetab GPT-4, koodi tõlk, veebilehitseja, pistikprogramme.",
-  "fa": "سریعترین راه برای استفاده از ChatGPT، Claude، Bard، Bing در هر مکان آنلاین. از GPT-4، تفسیر کد، مرورگر وب، پلاگین ها پشتیبانی می کند.",
-  "fi": "Nopein tapa käyttää ChatGPT, Claude, Bard, Binga missä tahansa verkossa. Tukee GPT-4, kooditulkki, verkkoselailu, lisäosat.",
-  "fil": "Ang pinakamabilis na paraan upang gamitin ang ChatGPT, Claude, Bard, Bing kahit saan online. Sumusuporta sa GPT-4, Code Interpreter, Web Browsing, Plugins.",
-  "fr": "La façon la plus rapide d'utiliser ChatGPT, Claude, Bard, Bing n'importe où en ligne. Prend en charge GPT-4, un interprète de code, la navigation web et les plugins.",
-  "gu": "ChatGPT, Claude, Bard, Bing ને ઓનલાઇન ક્યાંક વપરાશ કરવાની સૌથી ઝડપી રીત. GPT-4, કોડ ઇન્ટરપ્રેટર, વેબ બ્રાઉઝિંગ, પ્લગઇનો સમર્થન કરે છે.",
-  "he": "הדרך המהירה ביותר להשתמש ב-ChatGPT, Claude, Bard, Bing בכל מקום באינטרנט. תומך ב-GPT-4, מפרש קוד, גלישה ברשת, תוספים.",
-  "hi": "ChatGPT, Claude, Bard, Bing का उपयोग करने का सबसे तेज़ तरीका, कहीं भी ऑनलाइन. GPT-4, कोड अनुप्रेत, वेब ब्राउज़िंग, प्लगइन्स का समर्थन करता है।",
-  "hr": "Najbrži način korištenja ChatGPT, Claude, Bard, Bing bilo gdje online. Podržava GPT-4, interpreter koda, web pregledavanje, dodatke.",
-  "hu": "A leggyorsabb módja a ChatGPT, Claude, Bard, Bing bármely online felhasználásának. Támogatja a GPT-4, a kódértelmezőt, a webböngészést és a bővítményeket.",
-  "id": "Cara tercepat untuk menggunakan ChatGPT, Claude, Bard, Bing di mana saja secara online. Mendukung GPT-4, Interpreter Kode, Penjelajahan Web, Plugin.",
-  "it": "Il modo più veloce per utilizzare ChatGPT, Claude, Bard, Bing ovunque online. Supporta GPT-4, interprete di codice, navigazione web, plug-in.",
-  "ja": "ChatGPT、Claude、Bard、Bing をオンラインでどこでも最速で利用する方法です。GPT-4、コードインタプリタ、Web ブラウジング、プラグインに対応しています。",
-  "kn": "ಆನ್‍ಲೈನ್‍ನಲ್ಲಿ ಚಾಟ್‌ಜಿಪಿಟಿ, ಬಾರ್ಡ್‌, ಬಿಂಗ್, ಕ್ಲಾಡ್ ಅನ್ನು ಬಳಸುವ ಅತ್ಯಂತ ವೇಗವಾದ ಮಾರ್ಗ. GPT-4, ಕೋಡ್ ಅನುವಾದಕ, ವೆಬ್ ಬ್ರೌಸಿಂಗ್, ಪ್ಲಗಿನ್‌ಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ.",
-  "ko": "ChatGPT, Claude, Bard, Bing를 온라인 어디에서나 가장 빠르게 사용하는 방법입니다. GPT-4, 코드 인터프리터, 웹 브라우징, 플러그인을 지원합니다.",
-  "lt": "Greičiausias būdas naudoti ChatGPT, Claude, Bard, Bing bet kurioje interneto vietoje. Palaiko GPT-4, kodų interpretatorių, interneto naršymą, įskiepius.",
-  "lv": "Ātrākais veids, kā izmantot ChatGPT, Claude, Bard, Bing jebkurā vietā tiešsaistē. Atbalsta GPT-4, koda interpretatoru, tīmekļa pārlūkošanu, spraudņus.",
-  "ml": "ChatGPT, Claude, Bard, Bing ഓൺലൈൻ ഏതുവർക്കും ഉപയോഗിക്കുന്നതിന്റെ വേഗതയുള്ള വഴി. GPT-4, കോഡ് ഇന്റർപ്രറ്റർ, വെബ്ബ് ബ്രൗസിംഗ്, പ്ലഗിൻസ് പിന്തുണയ്ക്കുന്നു.",
-  "mr": "ChatGPT, Claude, Bard, Bing ऑनलाइन कुठेही वापरण्याचा सर्वात वेगवान मार्ग. GPT-4, कोड इंटरप्रेटर, वेब ब्राउझिंग, प्लगइन्स समर्थन करतो.",
-  "ms": "Cara terpantas untuk menggunakan ChatGPT, Claude, Bard, Bing di mana saja secara dalam talian. Menyokong GPT-4, Penterjemah Kod, Pelayar Web, Pemalam.",
-  "nl": "De snelste manier om ChatGPT, Claude, Bard, Bing overal online te gebruiken. Ondersteunt GPT-4, code-interpreter, webbrowsing, plug-ins.",
-  "no": "Den raskeste måten å bruke ChatGPT, Claude, Bard, Bing hvor som helst online. Støtter GPT-4, kode tolk, nettlesing, utvidelser.",
-  "pl": "Najszybszy sposób na korzystanie z ChatGPT, Claude, Bard, Bing w dowolnym miejscu online. Obsługuje GPT-4, interpreter kodu, przeglądanie sieci web, wtyczki.",
-  "pt_BR": "A maneira mais rápida de usar o ChatGPT, Claude, Bard, Bing em qualquer lugar online. Suporta GPT-4, interpretador de código, navegação na web, plugins.",
-  "pt_PT": "A forma mais rápida de utilizar o ChatGPT, Claude, Bard, Bing em qualquer lugar online. Suporta GPT-4, intérprete de código, navegação na web, plugins.",
-  "ro": "Cea mai rapidă modalitate de a utiliza ChatGPT, Claude, Bard, Bing oriunde online. Suportă GPT-4, interpretor de cod, navigare web, module.",
-  "ru": "Самый быстрый способ использовать ChatGPT, Claude, Bard, Bing в любом месте в Интернете. Поддерживает GPT-4, интерпретатор кода, веб-браузер, плагины.",
-  "sk": "Najrýchlejší spôsob, ako používať ChatGPT, Claude, Bard, Bing kdekoľvek online. Podporuje GPT-4, interpret kódu, webové prehliadanie, pluginy.",
-  "sl": "Najhitrejši način za uporabo ChatGPT, Claude, Bard, Bing kjerkoli na spletu. Podpira GPT-4, tolmač kode, brskanje po spletu, vtičnike.",
-  "sr": "Најбржи начин за коришћење ChatGPT, Claude, Bard, Bing било где на интернету. Подржава GPT-4, интерпретер кода, веб прегледање, додатке.",
-  "sv": "Det snabbaste sättet att använda ChatGPT, Claude, Bard, Bing var som helst online. Stöder GPT-4, kodtolk, webbläsning, tillägg.",
-  "sw": "Njia ya haraka zaidi ya kutumia ChatGPT, Claude, Bard, Bing popote mtandaoni. Inasaidia GPT-4, Interpreter ya Kanuni, Kivinjari cha Wavuti, Programu-jalizi.",
-  "ta": "அனைத்து இணையதள இடங்களிலும் ChatGPT, Claude, Bard, Bing ஐப் பயன்படுத்துவதற்கான விரைவான வழி. GPT-4, குறியீட்டு விளக்கமும், இணைய உலாவல், சேர்ப்புகளைக் கொண்டிருக்கின்றது.",
-  "te": "ఎవరైనా ఆన్‌లైన్‌లో ChatGPT, Claude, Bard, Bing ఉపయోగించే త్వరితమైన మార్గం. GPT-4, కోడ్ ఇంటర్‌ప్రెటర్, వెబ్ బ్రౌజింగ్, ప్లగిన్లను మద్దతు చేస్తుంది.",
-  "th": "วิธีที่เร็วที่สุดในการใช้ ChatGPT, Claude, Bard, Bing ทุกที่ออนไลน์ รองรับ GPT-4, ตัวแปลโค้ด, เว็บเบราว์ซิ่ง, ปลั๊กอิน",
-  "tr": "ChatGPT, Claude, Bard, Bing'yi çevrimiçi herhangi bir yerde kullanmanın en hızlı yolu. GPT-4, Kod Yorumlayıcı, Web Tarayıcısı, Eklentileri destekler.",
-  "uk": "Найшвидший спосіб використовувати ChatGPT, Claude, Bard, Bing будь-де онлайн. Підтримує GPT-4, інтерпретатор коду, веб-переглядач, плагіни.",
-  "vi": "Cách nhanh nhất để sử dụng ChatGPT, Claude, Bard, Bing bất kỳ nơi nào trực tuyến. Hỗ trợ GPT-4, trình thông dịch mã, duyệt web, các plugin.",
-  "he_IL": "הדרך המהירה ביותר להשתמש ב-ChatGPT, Claude, Bard, Bing בכל מקום באינטרנט. תומך ב-GPT-4, מפרש קוד, גלישה ברשת, ותוספים.",
-  "in": "Cara tercepat untuk menggunakan ChatGPT, Claude, Bard, Bing di mana saja secara online. Mendukung GPT-4, Penerjemah Kode, Penjelajahan Web, Plugin.",
-  "ua": "Найшвидший спосіб використовувати ChatGPT, Claude, Bard, Bing будь-де онлайн. Підтримує GPT-4, інтерпретатор коду, веб-переглядач, плагіни."
+  "en": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. The only generative AI-powered extension you need.",
+  "en_GB": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. The only generative AI-powered extension you need.",
+  "en_US": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. The only generative AI-powered extension you need.",
+  "zh_CN": "在线使用ChatGPT、Claude、Bard、Bing的最快方式。您唯一需要的生成式AI扩展。",
+  "zh_TW": "在線使用ChatGPT、Claude、Bard、Bing的最快方式。您唯一需要的生成式AI擴展。",
+  "am": "ChatGPT, Claude, Bard, Bing-ን በመጫን የታቀየለት በድርጊት ነው። ሁሉም ባህር ማድረግ በእርስዎ አይደለም።",
+  "ar": "أسرع طريقة لاستخدام ChatGPT وClaude وBard وBing في أي مكان عبر الإنترنت. الإمتداد الوحيد المدعوم بالذكاء الاصطناعي الذي تحتاجه.",
+  "bg": "Най-бързият начин да използвате ChatGPT, Claude, Bard, Bing навсякъде онлайн. Единственото AI-захранвано разширение, от което имате нужда.",
+  "bn": "চ্যাটজিপিটি, ক্লোড, বার্ড, বিং যেখানেই অনলাইনে ব্যবহার করার সবচেয়ে দ্রুত উপায়। আপনি যেটি প্রয়োজন তা হল একটি জেনারেটিভ এআই পাওয়ারড এক্সটেনশন।",
+  "ca": "La manera més ràpida d'utilitzar ChatGPT, Claude, Bard, Bing a qualsevol lloc en línia. L'única extensió amb IA generativa que necessites.",
+  "cs": "Nejrychlejší způsob, jak používat ChatGPT, Claude, Bard, Bing kdekoli online. Jedná se o jediné rozšíření s generativním umělým inteligentním systémem, které potřebujete.",
+  "da": "Den hurtigste måde at bruge ChatGPT, Claude, Bard, Bing overalt online. Den eneste generative AI-drevne udvidelse, du har brug for.",
+  "de": "Der schnellste Weg, ChatGPT, Claude, Bard, Bing überall online zu nutzen. Die einzige generative KI-gesteuerte Erweiterung, die Sie benötigen.",
+  "el": "Ο ταχύτερος τρόπος να χρησιμοποιήσετε το ChatGPT, τον Claude, τον Bard, τον Bing οπουδήποτε online. Το μοναδικό AI-powered πρόσθετο που χρειάζεστε.",
+  "es": "La forma más rápida de usar ChatGPT, Claude, Bard, Bing en cualquier lugar en línea. La única extensión con inteligencia artificial generativa que necesitas.",
+  "es_419": "La forma más rápida de usar ChatGPT, Claude, Bard, Bing en cualquier lugar en línea. La única extensión con inteligencia artificial generativa que necesitas.",
+  "et": "Kõige kiirem viis kasutada ChatGPT, Claude, Bard, Bing kõikjal võrgus. Ainuke tehisintellektiga varustatud generatiivne laiendus, mida vajate.",
+  "fa": "سریعترین راه برای استفاده از ChatGPT، Claude، Bard، Bing در هر کجا آنلاین است. تنها افزونه مجهز به هوش مصنوعی تولیدی که نیاز دارید.",
+  "fi": "Nopein tapa käyttää ChatGPT, Claude, Bard, Bing missä tahansa verkossa. Ainoa generatiivinen tekoälyä käyttävä laajennus, jonka tarvitset.",
+  "fil": "Ang pinakamabilis na paraan para gamitin ang ChatGPT, Claude, Bard, Bing kahit saan online. Ang tanging generative AI powered extension na kailangan mo.",
+  "fr": "La manière la plus rapide d'utiliser ChatGPT, Claude, Bard, Bing n'importe où en ligne. La seule extension alimentée par l'IA générative dont vous avez besoin.",
+  "gu": "ChatGPT, Claude, Bard, Bingનો ઓનલાઇન ક્યારેય વપરવાનો સભેશેષ વગરનો તરત રસ્તો. શ્રેષ્ઠ જેનરેટિવ AI પવર એક્સ્ટેન્શન જોઈ ને તમે જોઈ છો.",
+  "he": "הדרך הכי מהירה להשתמש ב-ChatGPT, Claude, Bard, Bing בכל מקום באינטרנט. הרחבת הבנייה היחידה שאתה צריך.",
+  "hi": "ChatGPT, Claude, Bard, Bing का उपयोग कहीं भी ऑनलाइन करने का सबसे तेज तरीका। जिसकी आपको आवश्यकता है, वह केवल जेनरेटिव एआई पावर्ड एक्सटेंशन है।",
+  "hr": "Najbrži način za upotrebu ChatGPT, Claude, Bard, Bing bilo gdje online. Jedini generativni AI-powered dodatak koji vam treba.",
+  "hu": "A ChatGPT, Claude, Bard, Bing online bárhol történő leggyorsabb használatának módja. Az egyetlen generatív AI hajtotta kiterjesztés, amire szükséged van.",
+  "id": "Cara tercepat untuk menggunakan ChatGPT, Claude, Bard, Bing di mana saja secara online. Satu-satunya ekstensi yang didukung AI generatif yang Anda butuhkan.",
+  "it": "Il modo più veloce per utilizzare ChatGPT, Claude, Bard, Bing ovunque online. L'unica estensione con intelligenza artificiale generativa di cui hai bisogno.",
+  "ja": "ChatGPT、Claude、Bard、Bingをどこでもオンラインで使用する最速の方法。必要な唯一の生成AIパワード拡張機能。",
+  "kn": "ಚಾಟ್ಜಿಪಿಟಿ, ಕ್ಲೋಡ್, ಬಾರ್ಡ್, ಬಿಂಗ್ ಯಾವುದೇ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಬಳಸುವ ಅತ್ಯಂತ ವೇಗದ ಮಾರುಗೊಮ್ಮ. ನೀವು ಬಳಸಬೇಕಾದ ಯಾವುದೇ ಜೆನರೇಟಿವ್ ಏಆಯ್‌ಪವರ್ಡ್ ಎಕ್ಸ್ಟೆನ್ಷನ್.",
+  "ko": "온라인 어디서나 ChatGPT, Claude, Bard, Bing을 사용하는 가장 빠른 방법. 필요한 유일한 생성적 AI 패워드 확장 기능입니다.",
+  "lt": "Greičiausias būdas naudoti ChatGPT, Claude, Bard, Bing bet kur internete. Vienintelis jums reikalingas generatyvinis AI pagrindinis plėtinys.",
+  "lv": "Ātrākais veids, kā izmantot ChatGPT, Claude, Bard, Bing jebkur tiešsaistē. Vienīgais ģeneratīvā intelekta spēkā esošais paplašinājums, kas jums nepieciešams.",
+  "ml": "ഓൺലൈൻ എങ്ങനെയെങ്കിലും ChatGPT, Claude, Bard, Bing ഉപയോഗിക്കുന്നതിന്നുള്ള അത്യാവശ്യമായ വഴി. നിന്നുള്ള യൂസർ ആവശ്യമായ ജനറേറ്റീവ് എആയ് പവവേഡ് എക്സ്റ്റെൻഷൻ.",
+  "mr": "ऑनलाइन चॅटजीपीटी, क्लोड, बार्ड, बिंग वापरण्याचा सर्वात वेगवेगळा मार्ग. तुम्हाला आवश्यक आहे, ते एक मांडणारा AI-संचालित एक्सटेंशन आहे.",
+  "ms": "Cara paling cepat untuk menggunakan ChatGPT, Claude, Bard, Bing di mana-mana dalam talian. Satu-satunya sambungan berkuasa AI generatif yang anda perlukan.",
+  "nl": "De snelste manier om ChatGPT, Claude, Bard, Bing overal online te gebruiken. De enige generatieve AI-aangedreven extensie die je nodig hebt.",
+  "no": "Den raskeste måten å bruke ChatGPT, Claude, Bard, Bing hvor som helst på nettet. Den eneste generative AI-drevne utvidelsen du trenger.",
+  "pl": "Najszybszy sposób na korzystanie z ChatGPT, Claude, Bard, Bing w dowolnym miejscu online. Jedyny generatywny rozszerzenie z AI, którego potrzebujesz.",
+  "pt_BR": "A maneira mais rápida de usar o ChatGPT, Claude, Bard, Bing em qualquer lugar online. A única extensão alimentada por IA generativa de que você precisa.",
+  "pt_PT": "A forma mais rápida de usar o ChatGPT, Claude, Bard, Bing em qualquer lugar online. A única extensão alimentada por IA generativa de que você precisa.",
+  "ro": "Cel mai rapid mod de a utiliza ChatGPT, Claude, Bard, Bing oriunde online. Singura extensie cu inteligență artificială generativă de care ai nevoie.",
+  "ru": "Самый быстрый способ использовать ChatGPT, Claude, Bard, Bing в Интернете. Единственное расширение, поддерживаемое искусственным интеллектом, которое вам нужно.",
+  "sk": "Najrýchlejší spôsob, ako používať ChatGPT, Claude, Bard, Bing kdekoľvek online. Jedinečný generatívny rozšírenie s pohonnou jednotkou AI, ktoré potrebujete.",
+  "sl": "Najhitrejši način za uporabo ChatGPT, Claude, Bard, Bing kjerkoli na spletu. Edina generativna razširitev z umetno inteligenco, ki jo potrebujete.",
+  "sr": "Најбржи начин да користите ChatGPT, Claude, Bard, Bing било где на мрежи. Једини генеративни AI powered додатак који вам је потребан.",
+  "sv": "Det snabbaste sättet att använda ChatGPT, Claude, Bard, Bing var som helst online. Det enda generativa AI-drivna tillägget du behöver.",
+  "sw": "Njia ya haraka zaidi ya kutumia ChatGPT, Claude, Bard, Bing popote mtandaoni. Upanuzi wa pekee unaotumiwa na AI ya kizazi unayohitaji.",
+  "ta": "ChatGPT, Claude, Bard, Bing ஐ ஆன்லைனில் எங்கேயும் உபயோகிக்கும் விரைவான வழி. உங்கள் தேவைக்கு ஒரு உத்தம உருவாக்கப்பட்ட AI-powered நீட்டியை மட்டும் நீங்கள் கொண்டிருக்கின்றீர்கள்.",
+  "te": "ChatGPT, Claude, Bard, Bing ను ఆన్‌లైన్‌లో ఎక్కువ వేగంగా ఉపయోగించడానికి అత్యంత విధినమైన మార్గం. మీకు కావలెను ఏమేను మాత్రమే జెనరేటివ్ AI పవర్డ్ ఎక్స్టెన్షన్.",
+  "th": "วิธีที่เร็วที่สุดในการใช้ ChatGPT, Claude, Bard, Bing ที่ไหนก็ได้ออนไลน์ ส่วนขยายเดียวที่คุณต้องการที่มีพลังงาน AI สร้าง",
+  "tr": "ChatGPT, Claude, Bard, Bing'i çevrimiçi her yerde kullanmanın en hızlı yolu. İhtiyacınız olan tek generatif AI destekli eklenti.",
+  "uk": "Найшвидший спосіб використовувати ChatGPT, Claude, Bard, Bing будь-де онлайн. Єдиний генеративний розширення, яке вам потрібно.",
+  "vi": "Cách nhanh nhất để sử dụng ChatGPT, Claude, Bard, Bing bất kỳ nơi nào trực tuyến. Tiện ích mở rộng được trang bị trí tuệ nhân tạo duy nhất mà bạn cần.",
+  "he_IL": "הדרך הכי מהירה להשתמש ב-ChatGPT, Claude, Bard, Bing בכל מקום באינטרנט. הרחבת הבנייה היחידה שאתה צריך.",
+  "in": "Cara tercepat untuk menggunakan ChatGPT, Claude, Bard, Bing di mana saja secara online. Satu-satunya ekstensi yang didukung AI generatif yang Anda butuhkan.",
+  "ua": "Найшвидший спосіб використовувати ChatGPT, Claude, Bard, Bing будь-де онлайн. Єдиний генеративний розширення, яке вам потрібно."
 }
+
 `
 const nameJson = `
 {
@@ -132,11 +133,24 @@ const path = require('path')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs')
 const folder = path.join(__dirname, 'src/i18n')
+/**
+ * @deprecated
+ * @param jsonSources
+ * @param updateFn
+ */
 const updateI18nJson = (jsonSources, updateFn) => {
+  console.error('这个方法已经废弃了, 请使用: \nnode update_i18n.mjs')
+  return
   // get folder lang folders
-  const langFolders = fs
-    .readdirSync(folder)
-    .filter((file) => !file.startsWith('.'))
+  const langFolders = fs.readdirSync(folder).filter((file) => {
+    return (
+      !file.startsWith('.') &&
+      !file.startsWith('index.ts') &&
+      !file.startsWith('locales') &&
+      !file.startsWith('types') &&
+      !file.startsWith('hooks')
+    )
+  })
   const jsonSourceData = JSON.parse(jsonSources)
   const keys = Object.keys(jsonSourceData)
   if (keys.length < langFolders.length) {
@@ -146,7 +160,7 @@ const updateI18nJson = (jsonSources, updateFn) => {
         console.log('need update description', lang)
       })
     throw new Error(
-      'need update description, cause langFolders.length !== keys.length',
+      `need update description, cause langFolders.length !== keys.length ${keys.length}/${langFolders.length}`,
     )
   }
   console.log('need update lang', keys.length)

@@ -1,5 +1,5 @@
 {
-  "description": "Kiireim viis kasutada ChatGPT, Claude, Bard, Bing'it kõikjal veebis. Toetab GPT-4, koodi tõlk, veebilehitseja, pistikprogramme.",
+  "description": "Kiireim viis ChatGPT, Claude, Bard, Bing kasutamiseks veebis. Ainuke generatiivse tehisintellektiga laiendus, mida vajate.",
   "name": "MaxAI.me: Kasutage ChatGPT AI-d veebis kõikjal",
   "shortName": "MaxAI.me",
   "common": {

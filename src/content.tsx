@@ -87,16 +87,16 @@ import('./pages/App').then((module) => {
     isSupportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
   )
   contextMenu.id = ROOT_CONTEXT_MENU_ID
-  if (getCurrentDomainHost() === 'youtube.com') {
+  if (
+    getCurrentDomainHost() === 'youtube.com' ||
+    getCurrentDomainHost() === 'studio.youtube.com'
+  ) {
     contextMenu.contentEditable = 'true'
   }
   document.body.appendChild(contextMenu)
   const container = document.createElement(
     isSupportWebComponent ? 'use-chat-gpt-ai' : 'div',
   )
-  if (getCurrentDomainHost() === 'youtube.com') {
-    container.contentEditable = 'true'
-  }
   container.id = ROOT_CONTAINER_ID
   container.style.display = 'none'
   container.setAttribute('data-version', APP_VERSION)

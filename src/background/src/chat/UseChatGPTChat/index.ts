@@ -138,8 +138,14 @@ class UseChatGPTPlusChat extends BaseChat {
           this.conversation?.meta.AIModel ||
           userConfig!.model ||
           USE_CHAT_GPT_PLUS_MODELS[0].value,
-        prompt_id: meta?.contextMenu?.id || 'chat',
-        prompt_name: meta?.contextMenu?.text || 'chat',
+        prompt_id:
+          meta?.contextMenu?.id || backendAPI === 'chat_with_document'
+            ? 'summary_chat'
+            : 'chat',
+        prompt_name:
+          meta?.contextMenu?.text || backendAPI === 'chat_with_document'
+            ? 'summary_chat'
+            : 'chat',
         /**
          * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
          */

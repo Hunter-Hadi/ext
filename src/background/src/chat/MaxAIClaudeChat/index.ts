@@ -81,6 +81,7 @@ class MaxAIClaudeChat extends BaseChat {
       regenerate?: boolean
       streaming?: boolean
       chat_history?: IMaxAIClaudeMessageType[]
+      meta?: Record<string, any>
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -111,6 +112,7 @@ class MaxAIClaudeChat extends BaseChat {
       streaming = true,
       regenerate = false,
       chat_history = [],
+      meta,
     } = options || {}
     const userConfig = await getThirdProviderSettings('MAXAI_CLAUDE')
     const postBody = Object.assign(
@@ -124,6 +126,8 @@ class MaxAIClaudeChat extends BaseChat {
           this.conversation?.meta.AIModel ||
           userConfig!.model ||
           MAXAI_CLAUDE_MODELS[0].value,
+        prompt_id: meta?.contextMenu?.id || '',
+        prompt_name: meta?.contextMenu?.text || '',
         // TODO: 界面还没做
         // temperature: isNumber(userConfig?.temperature)
         //   ? userConfig!.temperature

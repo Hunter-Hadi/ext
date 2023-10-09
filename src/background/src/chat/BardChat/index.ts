@@ -96,6 +96,16 @@ class BardChat extends BaseChat {
       }
       this.status = 'needAuth'
       await this.updateClientStatus(this.status)
+      onMessage?.({
+        type: 'error',
+        done: true,
+        error:
+          'Please log into [bard.google.com](https://bard.google.com) and try again.',
+        data: {
+          text: '',
+          conversationId: '',
+        },
+      })
       return
     }
     const controller = new AbortController()

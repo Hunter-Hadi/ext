@@ -260,6 +260,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           retry,
           includeHistory,
           regenerate,
+          meta: options?.meta,
           maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
         },
         {

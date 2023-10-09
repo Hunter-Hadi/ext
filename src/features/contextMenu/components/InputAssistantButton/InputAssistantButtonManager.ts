@@ -167,17 +167,19 @@ class InputAssistantButtonManager {
     this.observerMap.set(rootElement, observerData)
     return observerData
   }
-  private elementIsVisible(element: HTMLElement) {
-    return element.offsetWidth > 0 && element.offsetHeight > 0
-  }
   cleanObserverMap() {
     let isClean = false
     this.observerMap.forEach((observer, rootElement) => {
-      // check Visibility
-      if (
-        document.body.contains(rootElement) &&
-        this.elementIsVisible(rootElement)
-      ) {
+      const emotionElement = Array.from(
+        (observer.shadowRootElement.querySelectorAll(
+          'style[data-emotion]',
+        ) as any) as HTMLStyleElement[],
+      )
+      const hasEmptyEmotion = emotionElement.find(
+        (element) =>
+          element.sheet?.cssRules.length === 0 && element.innerHTML === '',
+      )
+      if (document.body.contains(rootElement) && !hasEmptyEmotion) {
         return
       }
       isClean = true

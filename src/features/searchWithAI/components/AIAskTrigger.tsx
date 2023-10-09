@@ -46,6 +46,19 @@ const AIAskTrigger: FC<IProps> = ({
     }
   }, [triggerMode, question, autoTriggerAskEnable])
 
+  if (status === 'stop') {
+    return (
+      <Button
+        fullWidth
+        variant="normalOutlined"
+        startIcon={<SearchOutlinedIcon />}
+        onClick={handleAsk}
+      >
+        Ask AI for this query
+      </Button>
+    )
+  }
+
   if (status !== 'idle') {
     return null
   }

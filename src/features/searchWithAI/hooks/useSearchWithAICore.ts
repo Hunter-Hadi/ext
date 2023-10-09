@@ -33,6 +33,8 @@ export type IAIForSearchStatus =
   | 'success'
   // 报错
   | 'error'
+  // 停止
+  | 'stop'
 
 const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   const [status, setStatus] = useState<IAIForSearchStatus>('idle')
@@ -219,8 +221,19 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         },
       })
     }
-    // setStatus('idle')
-  }, [conversation.conversationId])
+
+    if (conversation.writingMessage) {
+      setStatus('success')
+    } else {
+      setStatus('stop')
+      clearSources()
+    }
+
+    updateConversation({
+      loading: false,
+    })
+    loadingRef.current = false
+  }, [conversation.conversationId, conversation.writingMessage])
 
   useEffect(() => {
     return () => {

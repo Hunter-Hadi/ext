@@ -94,7 +94,9 @@ const AISearchContentCard: FC<IProps> = ({
           pt: 3,
         }}
       >
-        {status !== 'idle' && <QuestionTitle question={question} />}
+        {status !== 'idle' && status !== 'stop' ? (
+          <QuestionTitle question={question} />
+        ) : null}
 
         <AISearchSources />
 

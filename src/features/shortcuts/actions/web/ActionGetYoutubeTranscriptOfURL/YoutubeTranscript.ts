@@ -1,7 +1,7 @@
 import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 
-const RE_YOUTUBE =
-  /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i
+const RE_YOUTUBE = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i
 
 export interface TranscriptResponse {
   start: string
@@ -91,6 +91,23 @@ export class YoutubeTranscript {
     } catch (e) {
       return []
     }
+  }
+
+  /**
+   * Format transcript to string
+   * @param transcripts
+   * @param sliceTokens
+   */
+  public static async transcriptFormat(
+    transcripts: TranscriptResponse[],
+    sliceTokens = 4096,
+  ) {
+    const transcriptText = `${transcripts
+      .map((transcript) => {
+        return `${transcript.start} ${transcript.text}\n`
+      })
+      .join('')}`
+    return await sliceTextByTokens(transcriptText, sliceTokens)
   }
   /**
    * Retrieve video id from url or string

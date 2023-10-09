@@ -1,4 +1,3 @@
-import { CaptivePortalIcon } from '@/components/CustomIcon'
 import {
   Box,
   Card,
@@ -11,6 +10,7 @@ import {
 import React, { useMemo } from 'react'
 import { SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT } from '../constants'
 import useSourcesStatus from '../hooks/useSourcesStatus'
+import { CaptivePortalIcon } from './SearchWithAIIcons'
 
 const AISearchSources = () => {
   const { loading, sources } = useSourcesStatus()

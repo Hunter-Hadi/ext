@@ -11,14 +11,6 @@ export interface ISearchWithAISettings {
   enable: boolean
   triggerMode: 'manual' | 'always' | 'question-mask'
   webAccessPrompt: boolean
-
-  conversation: {
-    conversationId: string
-    loading: boolean
-    writingMessage: string
-    completedMessage: string
-    errorMessage: string
-  }
 }
 
 export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
@@ -26,13 +18,6 @@ export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
   enable: true,
   triggerMode: 'always',
   webAccessPrompt: true,
-  conversation: {
-    conversationId: '',
-    loading: false,
-    writingMessage: '',
-    completedMessage: '',
-    errorMessage: '',
-  },
 }
 
 export const getSearchWithAISettings = async () => {

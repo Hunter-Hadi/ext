@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import Stack from '@mui/material/Stack'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
@@ -20,6 +20,9 @@ import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
+import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
+import Button from '@mui/material/Button'
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
   value: ISidebarConversationType
@@ -53,9 +56,11 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
+  const [showDevContent, setShowDevContent] = useState(true)
   const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
-  const [sidebarSettings, setSidebarSettings] =
-    useRecoilState(SidebarSettingsState)
+  const [sidebarSettings, setSidebarSettings] = useRecoilState(
+    SidebarSettingsState,
+  )
   const appSettings = useRecoilValue(AppSettingsState)
   const conversationMap = useRecoilValue(ClientConversationMapState)
   const conversation = useRecoilValue(ChatGPTConversationState)
@@ -150,7 +155,8 @@ const SidebarTabs: FC = () => {
           sx={{
             position: 'absolute',
             top: '0',
-            maxWidth: '400px',
+            maxWidth: showDevContent ? '400px' : '32px',
+            maxHeight: showDevContent ? 'unset' : '32px',
             overflowX: 'auto',
             zIndex: 1,
             bgcolor: 'background.paper',
@@ -166,6 +172,35 @@ const SidebarTabs: FC = () => {
             },
           }}
         >
+          {showDevContent ? (
+            <Button
+              variant={'contained'}
+              sx={{
+                minWidth: 'unset',
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                p: 1,
+              }}
+              onClick={() => setShowDevContent(false)}
+            >
+              <UnfoldLessIcon />
+            </Button>
+          ) : (
+            <Button
+              variant={'contained'}
+              sx={{
+                minWidth: 'unset',
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                p: 1,
+              }}
+              onClick={() => setShowDevContent(true)}
+            >
+              <UnfoldMoreIcon />
+            </Button>
+          )}
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
           <p>

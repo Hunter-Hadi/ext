@@ -57,7 +57,33 @@ export interface ISocialMediaPostContextData {
 export default class SocialMediaPostContext {
   post: ISocialMediaPost
   commentList: ICommentData[][] = []
-  constructor(post: ISocialMediaPost) {
+  config: {
+    postTitle: string
+    postContentTagName: string
+    meta?: {
+      [key in string]: string
+    }
+  }
+  constructor(
+    post: ISocialMediaPost,
+    options?: {
+      postTitle?: string
+      postContentTagName?: string
+      meta?: {
+        [key in string]: string
+      }
+    },
+  ) {
+    const {
+      postTitle = 'Post',
+      postContentTagName = 'Post caption/description',
+      meta = {},
+    } = options || {}
+    this.config = {
+      postTitle,
+      postContentTagName,
+      meta,
+    }
     this.post = post
   }
   static get emptyData(): ISocialMediaPostContextData {
@@ -72,11 +98,16 @@ export default class SocialMediaPostContext {
   }
 
   get data(): ISocialMediaPostContextData {
-    const { content, author } = this.post
+    const { content, author, title } = this.post
     const commentsData = createCommentListData(this.commentList?.[0] || [])
-    const postText = `[Post]\n**Author:** ${author}
-**Post:**
-${content}`
+    let postText = ''
+    postText += `[${this.config.postTitle}]`
+    postText += `\n**Post author:** ${author || 'N/A'}`
+    postText += `\n**Post title:** ${title || 'N/A'}`
+    postText += `\n**${this.config.postContentTagName}:**\n${content || 'N/A'}`
+    Object.keys(this.config.meta || {}).forEach((metaKey) => {
+      postText += `\n**${metaKey}:**\n${this.config.meta?.[metaKey] || 'N/A'}`
+    })
     if (commentsData?.lastText) {
       return {
         SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: commentsData.lastText,
@@ -105,87 +136,6 @@ ${commentsData.lastText}`,
         previousComments: this.commentList?.[0] || [],
         previousCommentsText: commentsData?.previousText,
       }
-    }
-  }
-  /**
-   * @deprecated
-   */
-  generateMarkdownText() {
-    try {
-      const { content, author } = this.post
-      const commentsData = createCommentListData(this.commentList?.[0] || [])
-      // 回复评论
-      // `
-      // ```
-      // **Author:**
-      // **Date:**
-      // **Comment:**
-      // ```
-      //
-      // ---
-      //
-      // The above comment is the final one in a series of previous comments of a post.
-      //
-      // Here's the post, delimited by <post></post>:
-      // <post>
-      // **Author:**
-      // **Date:**
-      // **Post:**
-      // </post>
-      //
-      // Here are the earlier comments listed in the order they were added, from the very first to the one before the final comment, delimited by <previous_comments></previous_comments>:
-      // <previous_questions>
-      // Comment index)
-      // **Author:**
-      // **Date:**
-      // **Comment:**
-      // index)
-      // **Author:**
-      // **Date:**
-      // **Comment:**
-      // </previous_questions>
-      //
-      // ---`
-      if (commentsData) {
-        return `\`\`\`
-${commentsData.last.text}
-\`\`\`
-
----
-
-The above comment is the final one in a series of previous comments of a post.
-
-Here's the post, delimited by <post></post>:
-<post>
-**Author:** ${author}
-**Post:**
-**Post:**
-${content}
-</post>
-
-Here are the earlier comments listed in the order they were added, from the very first to the one before the final comment, delimited by <previous_comments></previous_comments>:
-<previous_comments>
-${commentsData.previous}
-</previous_comments>
-
----`
-      } else {
-        // 回复post
-        // `
-        // ```
-        // **Author:**
-        // **Date:**
-        // **Post:**
-        // ```
-        return `\`\`\`
-**Author:** ${author}
-**Post:**
-${content}
-\`\`\``
-      }
-    } catch (e) {
-      console.error(e)
-      return ''
     }
   }
 }

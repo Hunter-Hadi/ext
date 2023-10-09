@@ -7,7 +7,6 @@ import {
   templateParserDecorator,
   withLoading,
 } from '@/features/shortcuts'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 
@@ -75,14 +74,8 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
         console.log('usePageUrlChange 新的youtube transcripts', transcripts)
       }
       if (transcripts.length > 0) {
-        let transcriptText = `${transcripts
-          .map((transcript) => {
-            return `${transcript.start} ${transcript.text}\n`
-          })
-          .join('')}`
-        transcriptText = await sliceTextByTokens(
-          transcriptText,
-          this.parameters.SliceTextActionTokens || 4096,
+        const transcriptText = await YoutubeTranscript.transcriptFormat(
+          transcripts,
         )
         const { getChartGPT, getShortCutsEngine } = engine
         if (getShortCutsEngine()?.getNextAction?.()?.type === 'ASK_CHATGPT') {

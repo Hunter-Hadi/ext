@@ -1,5 +1,6 @@
 .search-with-ai--text .markdown-body {
   font-size: 14px;
+  line-height: 1.58;
   font-weight: 400;
   color: var(--tw-prose-body);
   --theme-0: #fff;

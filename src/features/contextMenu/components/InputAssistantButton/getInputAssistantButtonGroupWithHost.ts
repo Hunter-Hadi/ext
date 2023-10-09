@@ -3,10 +3,8 @@ import {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
-import {
-  findSelectorParent,
-  getTwitterInputAssistantButtonRootContainer,
-} from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
+import { getTwitterInputAssistantButtonRootContainer } from '@/features/shortcuts/utils/socialMedia/platforms/twitter'
+import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 type getInputAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement
@@ -35,6 +33,18 @@ const checkHostUsingButtonKeys = (
   }
   if (host === 'facebook.com') {
     return getFacebookButtonGroup(config)
+  }
+  if (host === 'youtube.com') {
+    return [
+      config.buttonGroupConfig.composeReplyButton,
+      config.buttonGroupConfig.refineDraftButton,
+    ]
+  }
+  if (host === 'studio.youtube.com') {
+    return [
+      config.buttonGroupConfig.composeReplyButton,
+      config.buttonGroupConfig.refineDraftButton,
+    ]
   }
   return [
     config.buttonGroupConfig.composeReplyButton,

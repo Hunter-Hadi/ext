@@ -86,6 +86,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         backendAPI: docId ? 'chat_with_document' : 'get_chatgpt_response',
         taskId: question.messageId,
         chat_history,
+        meta: options.meta,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

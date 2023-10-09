@@ -1,7 +1,6 @@
 import SearchWIthAIChatSystem from './chat/SearchWIthAIChatSystem'
 
 export const SearchWithAIMessageInit = () => {
-  const searchWIthAIChatSystem = new SearchWIthAIChatSystem()
-
-  console.log(`searchWIthAIChatSystem`, searchWIthAIChatSystem)
+  // init search with ai chat system
+  new SearchWIthAIChatSystem()
 }

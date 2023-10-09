@@ -311,6 +311,80 @@ const IInputAssistantButtonGroupConfig = {
       marginRight: '8px',
     },
   },
+  'youtube.com': {
+    enable: true,
+    rootSelectors: [
+      'ytd-commentbox ytd-button-renderer button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled',
+    ],
+    rootStyle: '',
+    appendPosition: 2,
+    rootParentDeep: 3,
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+    },
+    CTAButtonStyle: {
+      padding: '10px 9px',
+      iconSize: 16,
+      borderRadius: '18px 0 0 18px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 18px 18px 0',
+      padding: '8px 3px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '18px',
+      marginLeft: '8px',
+    },
+  },
+  'studio.youtube.com': {
+    enable: true,
+    rootSelectors: ['ytcp-commentbox #submit-button'],
+    appendPosition: 2,
+    rootParentDeep: 2,
+    rootStyle: 'display: flex;align-items: center;margin-top: 8px',
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+    },
+    CTAButtonStyle: {
+      padding: '10px 9px',
+      iconSize: 16,
+      borderRadius: '18px 0 0 18px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 18px 18px 0',
+      padding: '8px 3px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '18px',
+      marginLeft: '8px',
+    },
+  },
 } as {
   [key in string]: IInputAssistantButtonGroupConfig
 }

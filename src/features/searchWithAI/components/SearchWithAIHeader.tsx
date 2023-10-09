@@ -10,12 +10,10 @@ import { FC, useMemo } from 'react'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import CloseIcon from '@mui/icons-material/Close'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 import SearchWithAIWebAccessToggle from './SearchWithAIWebAccessToggle'
-import { SEARCH_WITH_AI_LOGO_ID } from '../constants'
 import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
 import React from 'react'
+import SearchWithAILogo from './SearchWithAILogo'
 interface IProps {
   status: IAIForSearchStatus
   isAnswering: boolean
@@ -66,17 +64,17 @@ const SearchWithAIHeader: FC<IProps> = ({
       },
     ]
 
-    if (isAnswering) {
-      return [
-        {
-          name: 'stop-generate',
-          label: 'Stop generating',
-          icon: <StopOutlinedIcon fontSize="inherit" />,
-          tooltip: '',
-          onClick: handleStopGenerate,
-        },
-      ]
-    }
+    // if (isAnswering) {
+    //   return [
+    //     {
+    //       name: 'stop-generate',
+    //       label: 'Stop generating',
+    //       icon: <StopOutlinedIcon fontSize="inherit" />,
+    //       tooltip: '',
+    //       onClick: handleStopGenerate,
+    //     },
+    //   ]
+    // }
 
     // if (status === 'success') {
     //   commonActions.push({
@@ -106,27 +104,7 @@ const SearchWithAIHeader: FC<IProps> = ({
       }}
       py={1}
     >
-      <Stack
-        direction="row"
-        alignItems="center"
-        spacing={1}
-        id={SEARCH_WITH_AI_LOGO_ID}
-      >
-        <UseChatGptIcon
-          sx={{
-            fontSize: 22,
-            color: 'primary.main',
-          }}
-        />
-        <Typography
-          component="h6"
-          fontSize={16}
-          fontWeight={800}
-          color="inherit"
-        >
-          {String(process.env.APP_NAME)}
-        </Typography>
-      </Stack>
+      <SearchWithAILogo />
       <Box sx={{ flexGrow: 1 }} />
       <Stack direction="row" alignItems="center">
         {showWebAccess && (

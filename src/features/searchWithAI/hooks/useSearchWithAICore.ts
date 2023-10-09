@@ -3,17 +3,21 @@ import dayjs from 'dayjs'
 import random from 'lodash-es/random'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
+  SEARCH_WITH_AI_APP_NAME,
   // SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT,
   SEARCH_WITH_AI_PROMPT,
 } from '../constants'
 import { searchWithAIAskQuestion, ISearchPageKey } from '../utils'
-import { ISearchWithAISettings } from '../utils/searchWithAISettings'
 import useSearchWithAISettings from './useSearchWithAISettings'
 import useSourcesStatus from './useSourcesStatus'
 import { v4 as uuidV4 } from 'uuid'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { useSetRecoilState } from 'recoil'
-import { AutoTriggerAskEnableAtom } from '../store'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import {
+  AutoTriggerAskEnableAtom,
+  ISearchWithAIConversationType,
+  SearchWithAIConversationAtom,
+} from '../store'
 import { getCurrentDomainHost } from '@/utils'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -36,26 +40,22 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
   const taskId = useRef('')
 
-  const {
-    searchWithAISettings,
-    setSearchWithAISettings,
-  } = useSearchWithAISettings()
+  const { searchWithAISettings } = useSearchWithAISettings()
 
-  const conversation = searchWithAISettings.conversation
+  const [conversation, setConversation] = useRecoilState(
+    SearchWithAIConversationAtom,
+  )
 
   const setAutoTriggerAskEnable = useSetRecoilState(AutoTriggerAskEnableAtom)
 
   const { startSourcesLoading, clearSources, setSources } = useSourcesStatus()
 
   const updateConversation = (
-    newConversationData: Partial<ISearchWithAISettings['conversation']>,
+    newConversationData: Partial<ISearchWithAIConversationType>,
   ) => {
-    setSearchWithAISettings((pre) => ({
+    setConversation((pre) => ({
       ...pre,
-      conversation: {
-        ...pre.conversation,
-        ...newConversationData,
-      },
+      ...newConversationData,
     }))
   }
 
@@ -130,15 +130,17 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     let message = ''
     let hasError = false
     let errorMessage = ''
-    port.postMessage({
-      event: 'Client_logCallApiRequest',
-      data: {
-        name: 'SEARCH_WITH_AI',
-        id: 'SEARCH_WITH_AI',
-        provider: searchWithAISettings.aiProvider,
-        host: getCurrentDomainHost(),
-      },
-    })
+    if (SEARCH_WITH_AI_APP_NAME === 'maxai') {
+      port.postMessage({
+        event: 'Client_logCallApiRequest',
+        data: {
+          name: 'SEARCH_WITH_AI',
+          id: 'SEARCH_WITH_AI',
+          provider: searchWithAISettings.aiProvider,
+          host: getCurrentDomainHost(),
+        },
+      })
+    }
     await searchWithAIAskQuestion(
       {
         messageId,

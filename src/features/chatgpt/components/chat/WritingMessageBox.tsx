@@ -1,7 +1,6 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
 import Stack from '@mui/material/Stack'
 import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
-import { AppSettingsState } from '@/store'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import {
   FloatingContextMenuDraftSelector,
@@ -17,16 +16,17 @@ import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import throttle from 'lodash-es/throttle'
 import debounce from 'lodash-es/debounce'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
 }> = (props) => {
+  const theme = useCustomTheme()
   const { onChange } = props
   const sidebarChatMessages = useRecoilValue(
     SidebarChatConversationMessagesSelector,
   )
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
-  const { userSettings } = useRecoilValue(AppSettingsState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
@@ -135,10 +135,8 @@ const WritingMessageBox: FC<{
       sx={{
         wordBreak: 'break-word',
         borderBottomLeftRadius: 0,
-        color:
-          userSettings?.colorSchema === 'dark'
-            ? '#FFFFFFDE'
-            : 'rgba(0,0,0,0.87)',
+        color: (t) =>
+          t.palette.mode === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
         '& .markdown-body': {
           userSelect: 'text',
           maxHeight: 'min(40vh, 320px)',
@@ -161,7 +159,7 @@ const WritingMessageBox: FC<{
           textAlign: 'left',
         }}
         className={`markdown-body ${
-          userSettings?.colorSchema === 'dark' ? 'markdown-body-dark' : ''
+          theme.isDarkMode ? 'markdown-body-dark' : ''
         }`}
       >
         <CustomMarkdown>

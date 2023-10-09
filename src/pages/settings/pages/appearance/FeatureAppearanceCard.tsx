@@ -14,11 +14,11 @@ const FeatureAppearanceCard: FC = () => {
       id={'appearance'}
     >
       <RadioCardGroup
-        defaultValue={userSettings?.colorSchema === 'dark' ? 'dark' : 'light'}
+        defaultValue={userSettings?.colorSchema || 'light'}
         onChange={async (value) => {
           await setUserSettings({
             ...userSettings,
-            colorSchema: value === 'dark' ? 'dark' : 'light',
+            colorSchema: value as 'dark' | 'light' | 'auto',
           })
         }}
         options={[
@@ -34,6 +34,13 @@ const FeatureAppearanceCard: FC = () => {
             value: 'dark',
             image: getChromeExtensionAssetsURL(
               '/images/settings/appearance/appearance-dark.png',
+            ),
+          },
+          {
+            label: t('common:auto'),
+            value: 'auto',
+            image: getChromeExtensionAssetsURL(
+              '/images/settings/appearance/appearance-auto.png',
             ),
           },
         ]}

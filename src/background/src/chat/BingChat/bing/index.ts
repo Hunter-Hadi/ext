@@ -130,7 +130,14 @@ export class BingWebBot {
       }
     }
     const conversation = this.conversationContext!
-    const wsp = new ClientProxyWebSocket('wss://sydney.bing.com/sydney/ChatHub')
+
+    const wsp = new ClientProxyWebSocket(
+      conversation.encryptedConversationSignature
+        ? `wss://sydney.bing.com/sydney/ChatHub?sec_access_token=${encodeURIComponent(
+            conversation.encryptedConversationSignature,
+          )}`
+        : 'wss://sydney.bing.com/sydney/ChatHub',
+    )
     await wsp.init(params.clientTabId)
     // const wsp = new WebSocketAsPromised(
     //   'wss://sydney.bing.com/sydney/ChatHub',

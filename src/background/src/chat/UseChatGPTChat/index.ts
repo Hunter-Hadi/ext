@@ -123,7 +123,7 @@ class UseChatGPTPlusChat extends BaseChat {
     const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
     let temperature = Math.min(
       isNumber(userConfig?.temperature) ? userConfig!.temperature : 1,
-      1.6,
+      1.2,
     )
     if (hasData(meta?.temperature)) {
       temperature = meta?.temperature

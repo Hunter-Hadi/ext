@@ -126,8 +126,8 @@ class MaxAIClaudeChat extends BaseChat {
           this.conversation?.meta.AIModel ||
           userConfig!.model ||
           MAXAI_CLAUDE_MODELS[0].value,
-        prompt_id: meta?.contextMenu?.id || '',
-        prompt_name: meta?.contextMenu?.text || '',
+        prompt_id: meta?.contextMenu?.id || 'chat',
+        prompt_name: meta?.contextMenu?.text || 'chat',
         // TODO: 界面还没做
         // temperature: isNumber(userConfig?.temperature)
         //   ? userConfig!.temperature

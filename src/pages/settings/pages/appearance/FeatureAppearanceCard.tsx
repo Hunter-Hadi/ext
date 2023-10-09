@@ -23,6 +23,13 @@ const FeatureAppearanceCard: FC = () => {
         }}
         options={[
           {
+            label: t('common:auto'),
+            value: 'auto',
+            image: getChromeExtensionAssetsURL(
+              '/images/settings/appearance/appearance-auto.png',
+            ),
+          },
+          {
             label: t('common:light'),
             value: 'light',
             image: getChromeExtensionAssetsURL(
@@ -34,13 +41,6 @@ const FeatureAppearanceCard: FC = () => {
             value: 'dark',
             image: getChromeExtensionAssetsURL(
               '/images/settings/appearance/appearance-dark.png',
-            ),
-          },
-          {
-            label: t('common:auto'),
-            value: 'auto',
-            image: getChromeExtensionAssetsURL(
-              '/images/settings/appearance/appearance-auto.png',
             ),
           },
         ]}

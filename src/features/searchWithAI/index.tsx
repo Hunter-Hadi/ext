@@ -19,7 +19,7 @@ import {
   createMindGoogleSidebar,
 } from './utils'
 import { getSearchWithAISettings } from './utils/searchWithAISettings'
-import { preCheckCanRender } from './utils/preCheckRender'
+import { preCheckCanRender, preInjectFlag } from './utils/preCheckRender'
 
 const mount = async (
   question: string,
@@ -168,6 +168,8 @@ export const initSearchWithAI = () => {
   if (!siteName || !siteConfig) {
     return
   }
+
+  preInjectFlag()
 
   if (!preCheckCanRender()) {
     return

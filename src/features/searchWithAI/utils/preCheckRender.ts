@@ -23,9 +23,7 @@ export const preInjectFlag = () => {
 
 export const checkInjectedFlag = () => {
   const blackList = SEARCH_WITH_AI_CHECK_FLAG_BACKLIST.map((id) => toFlagId(id))
-  const selfFlagId = toFlagId(SEARCH_WITH_AI_ROOT_ID)
-  const allFlagIds = [...blackList, selfFlagId]
-  const flag = allFlagIds.find((id) => document.getElementById(id))
+  const flag = blackList.find((id) => document.getElementById(id))
   return flag
 }
 

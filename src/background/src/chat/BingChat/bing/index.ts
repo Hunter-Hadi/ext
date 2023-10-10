@@ -28,13 +28,30 @@ const OPTIONS_SETS = [
   'iycapbing',
   'galileo',
   'saharagenconv5',
-  'fluxhint',
-  'glfluxv13',
-  'uquopt',
-  'bof107v2',
-  'streamw',
-  'rctechalwlst',
-  'agicert',
+  'log2sph',
+  'savememfilter',
+  'uprofgen',
+  'uprofupd',
+  'uprofupdasy',
+  'vidsumsnip',
+]
+
+const SLICE_IDS = [
+  'tnaenableux',
+  'adssqovr',
+  'tnaenable',
+  'arankc_1_9_3',
+  'rankcf',
+  '0731ziv2s0',
+  '926buffall',
+  'inosanewsmob',
+  'wrapnoins',
+  'prechr',
+  'sydtransl',
+  '806log2sph',
+  '927uprofasy',
+  '919vidsnip',
+  '829suggtrims0',
 ]
 
 export class BingWebBot {
@@ -62,25 +79,8 @@ export class BingWebBot {
             'GenerateContentQuery',
             'SearchQuery',
           ],
-          sliceIds: [
-            '825asmetrics',
-            'gbacf',
-            'divkorbl2p',
-            'emovoice',
-            'tts3',
-            'wrapuxslimt',
-            'rbingchromecf',
-            'sydconfigoptc',
-            '0824cntor',
-            '816bof107v2',
-            '0529streamw',
-            'streamw',
-            '178gentech',
-            '824fluxhi52s0',
-            '0825agicert',
-            '621alllocs0',
-            '727nrprdrs0',
-          ],
+          sliceIds: SLICE_IDS,
+          verbosity: 'verbose',
           scenario: 'SERP',
           plugins: [],
           isStartOfSession: conversation.invocationId === 0,
@@ -94,6 +94,7 @@ export class BingWebBot {
             requestId,
             messageId: requestId,
           },
+          requestId,
           conversationId: conversation.conversationId,
           conversationSignature: conversation.conversationSignature,
           participant: { id: conversation.clientId },
@@ -113,6 +114,8 @@ export class BingWebBot {
         this.conversationContext = {
           conversationId: conversation.conversationId,
           conversationSignature: conversation.conversationSignature,
+          encryptedConversationSignature:
+            conversation.encryptedConversationSignature,
           clientId: conversation.clientId,
           invocationId: 0,
           conversationStyle:
@@ -127,7 +130,14 @@ export class BingWebBot {
       }
     }
     const conversation = this.conversationContext!
-    const wsp = new ClientProxyWebSocket('wss://sydney.bing.com/sydney/ChatHub')
+
+    const wsp = new ClientProxyWebSocket(
+      conversation.encryptedConversationSignature
+        ? `wss://sydney.bing.com/sydney/ChatHub?sec_access_token=${encodeURIComponent(
+            conversation.encryptedConversationSignature,
+          )}`
+        : 'wss://sydney.bing.com/sydney/ChatHub',
+    )
     await wsp.init(params.clientTabId)
     // const wsp = new WebSocketAsPromised(
     //   'wss://sydney.bing.com/sydney/ChatHub',

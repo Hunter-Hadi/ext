@@ -162,6 +162,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Gmail cta button - compose new
   GMAIL_DRAFT_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-email.png',
     )}`,
@@ -178,6 +179,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Gmail cta button - compose reply
   GMAIL_REPLY_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-email.png',
     )}`,
@@ -194,6 +196,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Gmail dropdown button - refine draft
   GMAIL_CONTEXT_MENU: {
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-email.png',
     )}`,
@@ -364,6 +367,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Outlook cta button - compose new
   OUTLOOK_COMPOSE_NEW_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/Y2yZ4wWQDno`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-email.png',
     )}`,
@@ -380,6 +384,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Outlook cta button - compose reply
   OUTLOOK_COMPOSE_REPLY_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/Y2yZ4wWQDno`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-email.png',
     )}`,
@@ -396,6 +401,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Outlook dropdown button - refine draft
   OUTLOOK_REFINE_DRAFT_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/Y2yZ4wWQDno`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-email.png',
     )}`,
@@ -412,6 +418,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Twitter cta button - compose new
   TWITTER_COMPOSE_NEW_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/3UQaOm8sWVI`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-social-media.png',
     )}`,
@@ -428,6 +435,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Twitter cta button - compose reply
   TWITTER_COMPOSE_REPLY_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/3UQaOm8sWVI`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-social-media.png',
     )}`,
@@ -444,6 +452,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Twitter dropdown button - refine draft
   TWITTER_REFINE_DRAFT_BUTTON: {
+    videoUrl: `https://www.youtube.com/embed/3UQaOm8sWVI`,
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-social-media.png',
     )}`,

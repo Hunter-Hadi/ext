@@ -102,6 +102,7 @@ export interface ConversationResponse {
   conversationId: string
   clientId: string
   conversationSignature: string
+  encryptedConversationSignature?: string
   result: {
     value: string
     message: null
@@ -126,6 +127,7 @@ export interface ConversationInfo {
   conversationSignature: string
   invocationId: number
   conversationStyle: BingConversationStyle
+  encryptedConversationSignature?: string
 }
 
 export interface BingChatResponse {

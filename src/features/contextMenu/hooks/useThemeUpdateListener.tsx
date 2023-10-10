@@ -13,9 +13,6 @@ const useThemeUpdateListener = () => {
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches
       console.log('theme mode Update', isDarkModeEnabled ? 'dark' : 'light')
-      // setChromeExtensionSettings({
-      //   colorSchema: isDarkModeEnabled ? 'dark' : 'light',
-      // })
       port.postMessage({
         event: 'Client_updateIcon',
         data: {

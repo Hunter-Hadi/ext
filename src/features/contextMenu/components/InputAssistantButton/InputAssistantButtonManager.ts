@@ -2,6 +2,7 @@ import { getCurrentDomainHost } from '@/utils'
 import inputAssistantButtonBaseConfig, {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
+  InputAssistantButtonGroupConfigHostType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import Log from '@/utils/Log'
 import isNumber from 'lodash-es/isNumber'
@@ -20,7 +21,7 @@ export interface IInputAssistantButtonObserverData {
 }
 
 class InputAssistantButtonManager {
-  host: string
+  host: InputAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>
   interval = 1000
   config: IInputAssistantButtonGroupConfig | null
@@ -28,7 +29,7 @@ class InputAssistantButtonManager {
   stop: boolean
   constructor() {
     this.stop = false
-    this.host = getCurrentDomainHost()
+    this.host = getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
     this.config = inputAssistantButtonBaseConfig[this.host]
     this.observerMap = new Map()
   }
@@ -169,7 +170,16 @@ class InputAssistantButtonManager {
   cleanObserverMap() {
     let isClean = false
     this.observerMap.forEach((observer, rootElement) => {
-      if (document.body.contains(rootElement)) {
+      const emotionElement = Array.from(
+        (observer.shadowRootElement.querySelectorAll(
+          'style[data-emotion]',
+        ) as any) as HTMLStyleElement[],
+      )
+      const hasEmptyEmotion = emotionElement.find(
+        (element) =>
+          element.sheet?.cssRules.length === 0 && element.innerHTML === '',
+      )
+      if (document.body.contains(rootElement) && !hasEmptyEmotion) {
         return
       }
       isClean = true

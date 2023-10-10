@@ -15,10 +15,15 @@ import {
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { showChatBox } from '@/utils'
+import { getCurrentDomainHost, showChatBox } from '@/utils'
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import {
+  getChromeExtensionOnBoardingData,
+  setChromeExtensionOnBoardingData,
+} from '@/background/utils'
+import { OnBoardingKeyType } from '@/background/utils/onboardingStorage'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
@@ -53,22 +58,35 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
   const runContextMenu = useCallback(
     async (contextMenu: IContextMenuItem) => {
       if (!loading && contextMenu.data.actions) {
-        // 如果没有权限，显示付费卡片
+        // 每个网站5次免费InputAssistantButton的机会
+        const onBoardingData = await getChromeExtensionOnBoardingData()
+        const key = `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
+        const currentHostFreeTrialTimes = Number(onBoardingData[key] || 0)
+        // 如果没有权限, 显示付费卡片
         if (!hasPermission && permissionWrapperCardSceneType) {
-          showChatBox()
-          authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
-          const conversationId = await createConversation()
-          await clientChatConversationModifyChatMessages(
-            'add',
-            conversationId,
-            0,
-            [
-              getPermissionCardMessageByPermissionCardSettings(
-                permissionCardMap[permissionWrapperCardSceneType],
-              ),
-            ],
-          )
-          return
+          if (currentHostFreeTrialTimes > 0) {
+            // 如果有免费试用次数, 则减少一次
+            await setChromeExtensionOnBoardingData(
+              key,
+              currentHostFreeTrialTimes - 1,
+            )
+          } else {
+            // 如果没有免费试用次数, 则显示付费卡片
+            showChatBox()
+            authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
+            const conversationId = await createConversation()
+            await clientChatConversationModifyChatMessages(
+              'add',
+              conversationId,
+              0,
+              [
+                getPermissionCardMessageByPermissionCardSettings(
+                  permissionCardMap[permissionWrapperCardSceneType],
+                ),
+              ],
+            )
+            return
+          }
         }
         const actions = cloneDeep(contextMenu.data.actions)
         actions.splice(0, 0, {

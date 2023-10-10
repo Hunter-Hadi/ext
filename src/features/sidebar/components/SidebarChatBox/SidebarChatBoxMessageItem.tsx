@@ -1,14 +1,12 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import Alert from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
-import { Theme, SxProps } from '@mui/material/styles'
+import { SxProps } from '@mui/material/styles'
 
 import SidebarChatBoxUserTools from './SidebarChatBoxUserTools'
 import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
 import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/constants'
-import { useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
 import {
   IChatMessage,
   ISystemChatMessage,
@@ -18,6 +16,7 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
 import DevContent from '@/components/DevContent'
 import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const SidebarChatBoxMessageItem: FC<{
@@ -44,8 +43,8 @@ const SidebarChatBoxMessageItem: FC<{
     onRetry,
     className,
   } = props
+  const { isDarkMode } = useCustomTheme()
   const [defaultText, setDefaultText] = useState(message.text || '')
-  const { userSettings } = useRecoilValue(AppSettingsState)
   const [isEdit, setIsEdit] = useState(false)
   const [isHover, setIsHover] = useState(false)
   const hoverTimer = useRef<any>(null)
@@ -68,19 +67,12 @@ const SidebarChatBoxMessageItem: FC<{
         // color: 'rgb(56,56,56)!important',
         // bgcolor: `rgb(233,233,235)!important`,
 
-        color:
-          userSettings?.colorSchema === 'dark'
-            ? '#FFFFFFDE'
-            : 'rgba(0,0,0,0.87)',
+        color: isDarkMode ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
         border: '1px solid',
-        borderColor:
-          userSettings?.colorSchema === 'dark'
-            ? 'customColor.borderColor'
-            : 'transparent',
-        bgcolor: (t: Theme) =>
-          t.palette.mode === 'dark'
-            ? 'rgba(255, 255, 255, 0.04)'
-            : 'rgb(233,233,235)!important',
+        borderColor: isDarkMode ? 'customColor.borderColor' : 'transparent',
+        bgcolor: isDarkMode
+          ? 'rgba(255, 255, 255, 0.04)'
+          : 'rgb(233,233,235)!important',
         ...hoverSx,
       } as SxProps
     }
@@ -92,21 +84,15 @@ const SidebarChatBoxMessageItem: FC<{
           if (String(process.env.APP_ENV) === 'EZ_MAIL_AI') {
             return '#FEE6E1 !important'
           }
-          if (userSettings?.colorSchema === 'dark') {
+          if (isDarkMode) {
             return '#6B23C259 !important'
           } else {
             return '#F1E2FD !important'
           }
         },
         border: '1px solid',
-        borderColor:
-          userSettings?.colorSchema === 'dark'
-            ? 'customColor.borderColor'
-            : 'transparent',
-        color:
-          userSettings?.colorSchema === 'dark'
-            ? '#FFFFFFDE'
-            : 'rgba(0,0,0,0.87)!important',
+        borderColor: isDarkMode ? 'customColor.borderColor' : 'transparent',
+        color: isDarkMode ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)!important',
         maxWidth: '100%',
         width: 'auto',
         borderRadius: '8px',
@@ -150,7 +136,7 @@ const SidebarChatBoxMessageItem: FC<{
         } as SxProps
       }
     }
-  }, [message.type, userSettings, isHover])
+  }, [message.type, isHover, isDarkMode])
   useEffect(() => {
     setDefaultText(message.text || '')
   }, [message.text])
@@ -263,9 +249,7 @@ const SidebarChatBoxMessageItem: FC<{
             >
               <div
                 className={`markdown-body ${
-                  userSettings?.colorSchema === 'dark'
-                    ? 'markdown-body-dark'
-                    : ''
+                  isDarkMode ? 'markdown-body-dark' : ''
                 }`}
               >
                 <CustomMarkdown>
@@ -298,9 +282,7 @@ const SidebarChatBoxMessageItem: FC<{
               {message.type !== 'user' ? (
                 <div
                   className={`markdown-body ${
-                    userSettings?.colorSchema === 'dark'
-                      ? 'markdown-body-dark'
-                      : ''
+                    isDarkMode ? 'markdown-body-dark' : ''
                   }`}
                 >
                   <CustomMarkdown>

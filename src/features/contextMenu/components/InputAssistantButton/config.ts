@@ -47,7 +47,18 @@ export interface IInputAssistantButtonGroupConfig
   DropdownButtonStyle?: InputAssistantButtonStyle
 }
 
-const IInputAssistantButtonGroupConfig = {
+export type InputAssistantButtonGroupConfigHostType =
+  | 'mail.google.com'
+  | 'outlook.office.com'
+  | 'outlook.live.com'
+  | 'outlook.office365.com'
+  | 'twitter.com'
+  | 'linkedin.com'
+  | 'facebook.com'
+  | 'youtube.com'
+  | 'studio.youtube.com'
+
+const InputAssistantButtonGroupConfig = {
   'mail.google.com': {
     enable: true,
     rootSelectors: ['.btC'],
@@ -386,7 +397,10 @@ const IInputAssistantButtonGroupConfig = {
     },
   },
 } as {
-  [key in string]: IInputAssistantButtonGroupConfig
+  [key in InputAssistantButtonGroupConfigHostType]: IInputAssistantButtonGroupConfig
 }
+export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
+  InputAssistantButtonGroupConfig,
+) as InputAssistantButtonGroupConfigHostType[]
 
-export default IInputAssistantButtonGroupConfig
+export default InputAssistantButtonGroupConfig

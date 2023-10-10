@@ -53,8 +53,9 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
         }
 
         // 兼容下 google for search 插件创建的 rhs
-        const googleForSearchExtensionBar =
-          rcnt.querySelector<HTMLElement>('div#rhs')
+        const googleForSearchExtensionBar = rcnt.querySelector<HTMLElement>(
+          'div#rhs',
+        )
         if (googleForSearchExtensionBar) {
           return googleForSearchExtensionBar
         }
@@ -267,7 +268,7 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
 }
 
 function matchSearchPageConfig() {
-  let siteName: ISearchPageKey = 'google'
+  let siteName: ISearchPageKey | null = null
   const pageKeys = Object.keys(SearchPageAdapter) as ISearchPageKey[]
   for (let i = 0; i < pageKeys.length; i++) {
     const key = pageKeys[i]
@@ -280,7 +281,7 @@ function matchSearchPageConfig() {
 
   return {
     siteName,
-    config: SearchPageAdapter[siteName],
+    config: siteName ? SearchPageAdapter[siteName] : null,
   }
 }
 

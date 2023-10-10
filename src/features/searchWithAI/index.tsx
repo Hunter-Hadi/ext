@@ -181,10 +181,13 @@ export const initSearchWithAI = () => {
 
   if (siteConfig.watchRouteChange) {
     siteConfig.watchRouteChange(() => {
-      run({
-        siteConfig,
-        siteName,
-      })
+      preInjectFlag()
+
+      preCheckCanRender() &&
+        run({
+          siteConfig,
+          siteName,
+        })
     })
   }
 

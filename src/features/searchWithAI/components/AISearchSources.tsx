@@ -53,7 +53,7 @@ const AISearchSources = () => {
         </Grid>
       )}
 
-      {sources.length > 0 && (
+      {!loading && sources.length > 0 ? (
         <Grid container spacing={1}>
           {sources.map((source, index) => (
             <Grid item xs={6} key={source.title}>
@@ -95,7 +95,7 @@ const AISearchSources = () => {
             </Grid>
           ))}
         </Grid>
-      )}
+      ) : null}
     </Box>
   )
 }

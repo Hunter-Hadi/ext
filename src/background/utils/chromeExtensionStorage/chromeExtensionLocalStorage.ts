@@ -19,7 +19,7 @@ import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types
 import Browser from 'webextension-polyfill'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
-export const getDefaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStorage => {
+export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStorage => {
   return {
     chatTypeConversationId: '',
     currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
@@ -60,9 +60,8 @@ export const getDefaultChromeExtensionLocalStorage = (): IChromeExtensionLocalSt
     },
   }
 }
-let flag = false
 export const getChromeExtensionLocalStorage = async (): Promise<IChromeExtensionLocalStorage> => {
-  const defaultConfig = getDefaultChromeExtensionLocalStorage()
+  const defaultConfig = defaultChromeExtensionLocalStorage()
   const localData = await Browser.storage.local.get(
     CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY,
   )
@@ -71,24 +70,6 @@ export const getChromeExtensionLocalStorage = async (): Promise<IChromeExtension
       const localSettings = JSON.parse(
         localData[CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY],
       )
-      console.log(
-        'localSettings',
-        localSettings.thirdProviderSettings.USE_CHAT_GPT_PLUS,
-        flag,
-      )
-      if (
-        localSettings.thirdProviderSettings.USE_CHAT_GPT_PLUS.model ==
-        'gpt-3.5-turbo-16k'
-      ) {
-        flag = true
-      }
-      if (
-        localSettings.thirdProviderSettings.USE_CHAT_GPT_PLUS.model ===
-          'gpt-3.5-turbo' &&
-        flag
-      ) {
-        debugger
-      }
       return mergeWithObject([defaultConfig, localSettings])
     } else {
       return defaultConfig
@@ -104,7 +85,7 @@ export const setChromeExtensionLocalStorage = async (
     | IChromeExtensionLocalStorageUpdateFunction,
 ): Promise<boolean> => {
   try {
-    const oldSettings = await getDefaultChromeExtensionLocalStorage()
+    const oldSettings = await getChromeExtensionLocalStorage()
     if (settingsOrUpdateFunction instanceof Function) {
       const newSettings = settingsOrUpdateFunction(oldSettings)
       await Browser.storage.local.set({

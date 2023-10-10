@@ -36,13 +36,14 @@ class ArkoseTokenGenerator {
       }
     })
   }
-
+  // 第二部 拦截setConfig
   private useArkoseSetupEnforcement(enforcement: ArkoseEnforcement) {
     this.enforcement = enforcement
     ;(window as any).useArkoseSetupEnforcement(
       new Proxy(enforcement, {
         get: (target: ArkoseEnforcement, p: string | symbol, receiver: any) => {
           if (p === 'setConfig') {
+            debugger
             return (config: any) => {
               this.config = config
               // 包装原本的onCompleted
@@ -94,6 +95,7 @@ class ArkoseTokenGenerator {
     // })
   }
 
+  // 第一步 注入脚本
   public injectScript(src: string) {
     const win = window as any
     win.useArkoseSetupEnforcement2 = this.useArkoseSetupEnforcement.bind(this)
@@ -104,7 +106,7 @@ class ArkoseTokenGenerator {
     script.setAttribute('data-callback', 'useArkoseSetupEnforcement2')
     document.body.appendChild(script)
   }
-
+  // 模拟用户输入 生成arkose token
   async loadConfig() {
     const input = (document.querySelector('#prompt-textarea') ||
       document.querySelector('textarea')) as HTMLTextAreaElement
@@ -135,6 +137,7 @@ class ArkoseTokenGenerator {
       document.execCommand('Delete', false, '')
     }
   }
+  // 当用户用了gpt4相关的model，会调用这个方法
   async generate(): Promise<any> {
     if (!this.enforcement) {
       return

@@ -30,7 +30,9 @@ import {
  */
 
 const useAIProviderModels = () => {
-  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
+  const [appLocalStorage, setAppLocalStorage] = useRecoilState(
+    AppLocalStorageState,
+  )
   const currentProvider = appLocalStorage.currentAIProvider
   const [loading, setLoading] = useState(false)
   const {
@@ -226,6 +228,7 @@ const useAIProviderModels = () => {
           await setChromeExtensionLocalStorage({
             chatTypeConversationId: md5TextEncrypt(currentProvider + model),
           })
+          setAppLocalStorage(await getChromeExtensionLocalStorage())
         }
       } catch (e) {
         console.log(e)

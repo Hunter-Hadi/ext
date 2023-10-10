@@ -14,7 +14,7 @@ import {
 } from '@/background/utils'
 import { IChromeExtensionButtonSetting } from '@/background/utils/chromeExtensionStorage/type'
 
-export const getDefaultChromeExtensionDBStorage = (): IChromeExtensionDBStorage => {
+export const defaultChromeExtensionDBStorage = (): IChromeExtensionDBStorage => {
   return {
     userSettings: {
       preferredLanguage: 'en',
@@ -88,7 +88,7 @@ export const getDefaultChromeExtensionDBStorage = (): IChromeExtensionDBStorage 
   }
 }
 export const getChromeExtensionDBStorage = async (): Promise<IChromeExtensionDBStorage> => {
-  const defaultConfig = getDefaultChromeExtensionDBStorage()
+  const defaultConfig = defaultChromeExtensionDBStorage()
   const localData = await Browser.storage.local.get(
     CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
   )

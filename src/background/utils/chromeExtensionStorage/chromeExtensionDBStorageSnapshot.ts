@@ -7,7 +7,7 @@ import { orderBy } from 'lodash-es'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import {
   getChromeExtensionDBStorage,
-  getDefaultChromeExtensionDBStorage,
+  defaultChromeExtensionDBStorage,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 
@@ -51,7 +51,7 @@ export const setChromeExtensionDBStorageSnapshot = async () => {
 export const getChromeExtensionDBStorageSnapshotList = async (): Promise<
   ChromeExtensionDBStorageSnapshot[]
 > => {
-  const defaultSettings = getDefaultChromeExtensionDBStorage()
+  const defaultSettings = defaultChromeExtensionDBStorage()
   const defaultSnapshot = {
     isDefault: true,
     settings: defaultSettings,

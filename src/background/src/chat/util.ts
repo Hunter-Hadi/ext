@@ -12,11 +12,7 @@ import {
 } from '@/features/chatgpt/types'
 import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
 import { IAIProviderType } from '@/background/provider/chat'
-import {
-  checkSettingsSync,
-  isSettingsLastModifiedEqual,
-  syncLocalSettingsToServerSettings,
-} from '@/background/utils/syncSettings'
+
 import { default as lodashSet } from 'lodash-es/set'
 import { default as lodashGet } from 'lodash-es/get'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
@@ -27,9 +23,11 @@ import ConversationManager, {
 import { v4 as uuidV4 } from 'uuid'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 import isNumber from 'lodash-es/isNumber'
-import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/types'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
+import {
+  getChromeExtensionLocalStorage,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**
@@ -241,15 +239,13 @@ export const getThirdProviderSettings = async <T extends IAIProviderType>(
  * 设置第三方AI Provider的设置
  * @param thirdProviderKey
  * @param newThirdProviderSettings
- * @param syncToServer - 是否同步到服务器
  */
 export const setThirdProviderSettings = async <T extends IAIProviderType>(
   thirdProviderKey: T,
   newThirdProviderSettings: Partial<IThirdProviderSettings[T]>,
-  syncToServer: boolean,
 ) => {
   try {
-    await setChromeExtensionDBStorage((settings) => {
+    await setChromeExtensionLocalStorage((settings) => {
       lodashSet(
         settings,
         `thirdProviderSettings.${thirdProviderKey}`,
@@ -260,13 +256,7 @@ export const setThirdProviderSettings = async <T extends IAIProviderType>(
       )
       return settings
     })
-    if (syncToServer) {
-      if (await isSettingsLastModifiedEqual()) {
-        await syncLocalSettingsToServerSettings()
-      } else {
-        await checkSettingsSync()
-      }
-    }
+    console.log(await getChromeExtensionLocalStorage())
     return true
   } catch (e) {
     return false

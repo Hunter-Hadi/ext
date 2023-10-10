@@ -3,7 +3,7 @@ import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionS
 import {
   IChromeExtensionButtonSettingKey,
   IChromeExtensionDBStorage,
-} from '@/background/utils/chromeExtensionStorage/types'
+} from '@/background/utils/chromeExtensionStorage/type'
 
 const getLiteChromeExtensionDBStorage = async (
   fromUrl?: string,

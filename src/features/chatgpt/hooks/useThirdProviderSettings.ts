@@ -6,7 +6,7 @@ import {
   getThirdProviderSettings,
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
-import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/types'
+import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const useThirdProviderSettings = () => {
@@ -38,7 +38,7 @@ const useThirdProviderSettings = () => {
     providerKey: T,
     settings: Partial<IThirdProviderSettings[T]>,
   ) => {
-    const success = await setThirdProviderSettings(providerKey, settings, false)
+    const success = await setThirdProviderSettings(providerKey, settings)
     if (success) {
       setAppLocalStorage(await getChromeExtensionLocalStorage())
     }
@@ -64,7 +64,7 @@ export const useSingleThirdProviderSettings = <T extends IAIProviderType>(
   const updateThirdProviderSettings = async (
     settings: Partial<IThirdProviderSettings[T]>,
   ) => {
-    const success = await setThirdProviderSettings(providerKey, settings, false)
+    const success = await setThirdProviderSettings(providerKey, settings)
     if (success) {
       setAppLocalStorage(await getChromeExtensionLocalStorage())
     }

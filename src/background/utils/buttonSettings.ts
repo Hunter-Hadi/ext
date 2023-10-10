@@ -48,7 +48,7 @@ import {
   IChromeExtensionButtonSetting,
   IChromeExtensionButtonSettingKey,
   IVisibilitySetting,
-} from '@/background/utils/chromeExtensionStorage/types'
+} from '@/background/utils/chromeExtensionStorage/type'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appDBStorage, setAppDBStorage] = useRecoilState(AppDBStorageState)

@@ -356,8 +356,8 @@ export const requestHostPermission = async (host: string) => {
   }
   return Browser.permissions.request(permissions)
 }
-export { IChromeExtensionDBStorageUpdateFunction } from '@/background/utils/chromeExtensionStorage/types'
-export { IChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/types'
-export { IChromeExtensionButtonSettingKey } from '@/background/utils/chromeExtensionStorage/types'
-export { IChatGPTPluginType } from '@/background/utils/chromeExtensionStorage/types'
-export { IChatGPTModelType } from '@/background/utils/chromeExtensionStorage/types'
+export { IChromeExtensionDBStorageUpdateFunction } from '@/background/utils/chromeExtensionStorage/type'
+export { IChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/type'
+export { IChromeExtensionButtonSettingKey } from '@/background/utils/chromeExtensionStorage/type'
+export { IChatGPTPluginType } from '@/background/utils/chromeExtensionStorage/type'
+export { IChatGPTModelType } from '@/background/utils/chromeExtensionStorage/type'

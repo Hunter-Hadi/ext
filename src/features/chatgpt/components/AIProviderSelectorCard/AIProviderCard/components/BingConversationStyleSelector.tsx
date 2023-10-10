@@ -112,13 +112,9 @@ const BingConversationStyleSelector: FC = () => {
         value={bingConversationStyle}
         onChange={async (event) => {
           try {
-            await setThirdProviderSettings(
-              'BING',
-              {
-                conversationStyle: event.target.value as BingConversationStyle,
-              },
-              false,
-            )
+            await setThirdProviderSettings('BING', {
+              conversationStyle: event.target.value as BingConversationStyle,
+            })
             await cleanConversation()
             setBingConversationStyle(
               event.target.value as BingConversationStyle,

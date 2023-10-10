@@ -1,7 +1,7 @@
 import {
   IChromeExtensionLocalStorage,
   IChromeExtensionLocalStorageUpdateFunction,
-} from '@/background/utils/chromeExtensionStorage/types'
+} from '@/background/utils/chromeExtensionStorage/type'
 import {
   AI_PROVIDER_MAP,
   CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY,
@@ -60,6 +60,7 @@ export const getDefaultChromeExtensionLocalStorage = (): IChromeExtensionLocalSt
     },
   }
 }
+let flag = false
 export const getChromeExtensionLocalStorage = async (): Promise<IChromeExtensionLocalStorage> => {
   const defaultConfig = getDefaultChromeExtensionLocalStorage()
   const localData = await Browser.storage.local.get(
@@ -70,6 +71,24 @@ export const getChromeExtensionLocalStorage = async (): Promise<IChromeExtension
       const localSettings = JSON.parse(
         localData[CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY],
       )
+      console.log(
+        'localSettings',
+        localSettings.thirdProviderSettings.USE_CHAT_GPT_PLUS,
+        flag,
+      )
+      if (
+        localSettings.thirdProviderSettings.USE_CHAT_GPT_PLUS.model ==
+        'gpt-3.5-turbo-16k'
+      ) {
+        flag = true
+      }
+      if (
+        localSettings.thirdProviderSettings.USE_CHAT_GPT_PLUS.model ===
+          'gpt-3.5-turbo' &&
+        flag
+      ) {
+        debugger
+      }
       return mergeWithObject([defaultConfig, localSettings])
     } else {
       return defaultConfig

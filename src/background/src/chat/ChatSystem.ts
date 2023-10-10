@@ -481,14 +481,10 @@ class ChatSystem implements ChatSystemInterface {
       const cache = await getThirdProviderSettings(
         currentConversationAIProvider,
       )
-      await setThirdProviderSettings(
-        currentConversationAIProvider,
-        {
-          ...cache,
-          model: conversation.meta.AIModel || cache?.model,
-        },
-        false,
-      )
+      await setThirdProviderSettings(currentConversationAIProvider, {
+        ...cache,
+        model: conversation.meta.AIModel || cache?.model,
+      })
       // 切换AI Provider
       await this.switchAdapter(currentConversationAIProvider)
       // 创建conversation

@@ -1,6 +1,6 @@
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
-import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/types'
+import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/type'
 
 export type ContextMenuDraftType = keyof typeof CONTEXT_MENU_DRAFT_TYPES
 

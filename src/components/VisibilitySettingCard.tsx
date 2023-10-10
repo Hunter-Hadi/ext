@@ -18,7 +18,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import { useTranslation } from 'react-i18next'
 import { isEqual } from 'lodash-es'
-import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/types'
+import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/type'
 
 /**
  * 控制黑白名单的卡片

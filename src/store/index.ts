@@ -2,7 +2,7 @@ import { atom } from 'recoil'
 import { getEnv } from '@/utils/AppEnv'
 import Browser from 'webextension-polyfill'
 import { IChromeExtensionDBStorage } from '@/background/utils'
-import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/types'
+import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
 
 export const AppState = atom<{
   env: 'gmail' | 'normal'

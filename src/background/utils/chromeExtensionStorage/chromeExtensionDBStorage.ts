@@ -12,7 +12,7 @@ import {
   IChromeExtensionDBStorage,
   IChromeExtensionDBStorageUpdateFunction,
 } from '@/background/utils'
-import { IChromeExtensionButtonSetting } from '@/background/utils/chromeExtensionStorage/types'
+import { IChromeExtensionButtonSetting } from '@/background/utils/chromeExtensionStorage/type'
 
 export const getDefaultChromeExtensionDBStorage = (): IChromeExtensionDBStorage => {
   return {

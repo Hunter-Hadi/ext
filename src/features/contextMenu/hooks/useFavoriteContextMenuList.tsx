@@ -5,10 +5,10 @@ import {
 import { useMemo, useState } from 'react'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { useFocus } from '@/hooks/useFocus'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useTranslation } from 'react-i18next'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 export const FAVORITE_CONTEXT_MENU_GROUP_ID = 'SUGGESTE'
 

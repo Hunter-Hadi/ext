@@ -14,7 +14,7 @@ import { I18nextKeysType } from '@/i18next'
 import { useTranslation } from 'react-i18next'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { AppSettingsState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import Typography from '@mui/material/Typography'
 import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -61,7 +61,7 @@ const SidebarTabs: FC = () => {
   const [sidebarSettings, setSidebarSettings] = useRecoilState(
     SidebarSettingsState,
   )
-  const appSettings = useRecoilValue(AppSettingsState)
+  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const conversationMap = useRecoilValue(ClientConversationMapState)
   const conversation = useRecoilValue(ChatGPTConversationState)
   const renderConversation = useMemo(() => {
@@ -204,9 +204,9 @@ const SidebarTabs: FC = () => {
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
           <p>
-            appSettings: {appSettings.chatTypeConversationId}
+            AppLocalStorage: {appLocalStorage.chatTypeConversationId}
             {'=='}
-            {appSettings.currentAIProvider}
+            {appLocalStorage.currentAIProvider}
           </p>
           <p>currentTabUsingID: {sidebarConversationID}</p>
           <pre>{JSON.stringify(renderConversation, null, 2)}</pre>

@@ -5,10 +5,10 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useEffect } from 'react'
 import { useFocus } from '@/hooks/useFocus'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { SidebarConversationIdSelector } from '@/features/sidebar'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 export const clientGetConversation = async (conversationId: string) => {
   try {
@@ -78,7 +78,7 @@ const useInitClientConversationMap = () => {
     }
   }, [currentSidebarConversationId])
   useFocus(() => {
-    clientGetLiteChromeExtensionSettings().then((cache) => {
+    getChromeExtensionLocalStorage().then((cache) => {
       if (cache.chatTypeConversationId) {
         clientGetConversation(cache.chatTypeConversationId).then(
           (conversation) => {

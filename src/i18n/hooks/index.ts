@@ -3,12 +3,12 @@ import { useEffect } from 'react'
 import Browser from 'webextension-polyfill'
 import Log from '@/utils/Log'
 import { useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 
 const log = new Log('i18n')
 
 export const useLazyLoadI18nResources = () => {
-  const { userSettings } = useRecoilValue(AppSettingsState)
+  const { userSettings } = useRecoilValue(AppDBStorageState)
   const { i18n } = useTranslation()
   useEffect(() => {
     const newLanguage = userSettings?.preferredLanguage || i18n.language
@@ -54,7 +54,7 @@ export const loadI18nResources = (i18n: any, language: string) => {
 
 export const useInitI18n = () => {
   const { i18n } = useTranslation()
-  const { userSettings } = useRecoilValue(AppSettingsState)
+  const { userSettings } = useRecoilValue(AppDBStorageState)
   useLazyLoadI18nResources()
   useEffect(() => {
     if (userSettings?.preferredLanguage) {

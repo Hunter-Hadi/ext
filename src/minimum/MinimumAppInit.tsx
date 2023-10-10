@@ -1,43 +1,32 @@
 import React, { FC, useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
-import { setChromeExtensionSettings } from '@/background/utils'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import { useAuthLogin } from '@/features/auth'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const AppSettingsInit = () => {
-  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const setAppDBStorage = useSetRecoilState(AppDBStorageState)
+  const setAppLocalStorage = useSetRecoilState(AppLocalStorageState)
   useThemeUpdateListener()
   useEffect(() => {
     const updateAppSettings = async () => {
-      const settings = await clientGetLiteChromeExtensionSettings()
-      if (settings) {
-        setAppSettings({
-          ...settings,
+      const liteChromeExtensionDBStorage = await clientGetLiteChromeExtensionDBStorage()
+      if (liteChromeExtensionDBStorage) {
+        setAppDBStorage({
+          ...liteChromeExtensionDBStorage,
         })
-        if (settings.userSettings && !settings.userSettings?.colorSchema) {
-          const defaultColorSchema = window.matchMedia(
-            '(prefers-color-scheme: dark)',
-          ).matches
-            ? 'dark'
-            : 'light'
-          await setChromeExtensionSettings({
-            userSettings: {
-              ...settings.userSettings,
-              colorSchema: defaultColorSchema,
-            },
-          })
-          setAppSettings({
-            ...settings,
-            userSettings: {
-              ...settings.userSettings,
-              colorSchema: defaultColorSchema,
-            },
-          })
-        }
+        console.log('get db settings', liteChromeExtensionDBStorage)
+      }
+      const chromeExtensionLocalStorage = await getChromeExtensionLocalStorage()
+      if (chromeExtensionLocalStorage) {
+        setAppLocalStorage({
+          ...chromeExtensionLocalStorage,
+        })
+        console.log('get local settings', chromeExtensionLocalStorage)
       }
     }
     updateAppSettings()

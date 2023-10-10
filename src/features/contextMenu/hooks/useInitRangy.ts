@@ -43,7 +43,7 @@ import {
   ROOT_CONTEXT_MENU_ID,
 } from '@/constants'
 import useCommands from '@/hooks/useCommands'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 
 initRangyPosition(rangyLib)
@@ -63,8 +63,8 @@ const useInitRangy = () => {
     saveTempSelection,
     currentSelection,
   } = useRangy()
-  const appSettings = useRecoilValue(AppSettingsState)
-  const userSettings = appSettings.userSettings
+  const appDBStorage = useRecoilValue(AppDBStorageState)
+  const userSettings = appDBStorage.userSettings
   const { chatBoxShortCutKey } = useCommands()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
@@ -81,8 +81,10 @@ const useInitRangy = () => {
   )
   // 绑定点击或者按键的placeholder事件
   useBindRichTextEditorLineTextPlaceholder()
-  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
-    useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const [
+    floatingDropdownMenuSystemItems,
+    setFloatingDropdownMenuSystemItems,
+  ] = useRecoilState(FloatingDropdownMenuSystemItemsState)
   const targetElementRef = useRef<HTMLElement | null>(null)
   const selectionElementRef = useRef<
     ISelectionElement | IVirtualIframeSelectionElement | null
@@ -249,8 +251,7 @@ const useInitRangy = () => {
     saveHighlightedRangeAndShowContextMenu,
   )
   useEffect(() => {
-    saveHighlightedRangeAndShowContextMenuRef.current =
-      saveHighlightedRangeAndShowContextMenu
+    saveHighlightedRangeAndShowContextMenuRef.current = saveHighlightedRangeAndShowContextMenu
   }, [saveHighlightedRangeAndShowContextMenu])
 
   const stopIframeSandBoxListenerRef = useRef<() => void>(() => {
@@ -268,37 +269,37 @@ const useInitRangy = () => {
     )
     const mouseDownListener = (event: MouseEvent) => {
       stopIframeSandBoxListenerRef.current()
-      stopIframeSandBoxListenerRef.current =
-        createSandboxIframeClickAndKeydownEvent(
-          (virtualIframeSelectionElement) => {
-            //  如果既不是可编辑元素，也没有选中的文本，不处理
-            if (!virtualIframeSelectionElement.selectionText) {
-              // 因为触发了iframe的点击，页面本身的元素肯定失焦了，所以隐藏
-              hideRangy()
-              if (!virtualIframeSelectionElement.isEditableElement) {
-                selectionElementRef.current = null
-                return
-              }
+      stopIframeSandBoxListenerRef.current = createSandboxIframeClickAndKeydownEvent(
+        (virtualIframeSelectionElement) => {
+          //  如果既不是可编辑元素，也没有选中的文本，不处理
+          if (!virtualIframeSelectionElement.selectionText) {
+            // 因为触发了iframe的点击，页面本身的元素肯定失焦了，所以隐藏
+            hideRangy()
+            if (!virtualIframeSelectionElement.isEditableElement) {
+              selectionElementRef.current = null
+              return
             }
-            // AIInputLog.info('set editable element', virtualTarget)
-            selectionElementRef.current = virtualIframeSelectionElement
-            // show floating button
-            if (virtualIframeSelectionElement.selectionText) {
-              if (virtualIframeSelectionElement.eventType === 'mouseup') {
-                mouseUpListener({
-                  target: null,
-                } as any)
-              } else {
-                keyupListener({
-                  target: null,
-                } as any)
-              }
+          }
+          // AIInputLog.info('set editable element', virtualTarget)
+          selectionElementRef.current = virtualIframeSelectionElement
+          // show floating button
+          if (virtualIframeSelectionElement.selectionText) {
+            if (virtualIframeSelectionElement.eventType === 'mouseup') {
+              mouseUpListener({
+                target: null,
+              } as any)
+            } else {
+              keyupListener({
+                target: null,
+              } as any)
             }
-          },
-        )
+          }
+        },
+      )
       const mouseTarget = event.target as HTMLElement
-      const { isEditableElement, editableElement } =
-        getEditableElement(mouseTarget)
+      const { isEditableElement, editableElement } = getEditableElement(
+        mouseTarget,
+      )
       if (isEditableElement && editableElement) {
         if (targetElementRef.current?.isSameNode(editableElement)) {
           return
@@ -418,8 +419,9 @@ const useInitRangy = () => {
           // 例如: linkedin的消息输入框
           if (!selectionElementRef.current) {
             const element = getSelectionBoundaryElement()
-            const { editableElement, isEditableElement } =
-              getEditableElement(element)
+            const { editableElement, isEditableElement } = getEditableElement(
+              element,
+            )
             if (isEditableElement && editableElement) {
               selectionElementRef.current = createSelectionElement(
                 editableElement,

@@ -4,8 +4,8 @@ declare module '*.less' {
   const value: string
   export default value
 }
-export { IChromeExtensionSettingsUpdateFunction } from './background/types/Settings'
-export { IChromeExtensionButtonSettingKey } from './background/types/Settings'
-export { IChromeExtensionSettings } from './background/types/Settings'
-export { IChatGPTPluginType } from './background/types/Settings'
-export { IChatGPTModelType } from './background/types/Settings'
+export { IChromeExtensionDBStorageUpdateFunction } from '@/background/utils'
+export { IChromeExtensionDBStorage } from '@/background/utils'
+export { IChromeExtensionButtonSettingKey } from '@/background/utils'
+export { IChatGPTPluginType } from '@/background/utils'
+export { IChatGPTModelType } from '@/background/utils'

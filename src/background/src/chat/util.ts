@@ -1,9 +1,7 @@
 import Browser from 'webextension-polyfill'
 import {
   createClientMessageListener,
-  getChromeExtensionSettings,
   safeGetBrowserTab,
-  setChromeExtensionSettings,
 } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
@@ -13,7 +11,6 @@ import {
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
-import { IThirdProviderSettings } from '@/background/types/Settings'
 import { IAIProviderType } from '@/background/provider/chat'
 import {
   checkSettingsSync,
@@ -30,6 +27,9 @@ import ConversationManager, {
 import { v4 as uuidV4 } from 'uuid'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 import isNumber from 'lodash-es/isNumber'
+import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/types'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**
@@ -197,7 +197,7 @@ export const askChatGPTQuestion = async (
  * @deprecated - 使用BaseChat的conversation.id
  */
 export const getCacheConversationId = async () => {
-  const settings = await getChromeExtensionSettings()
+  const settings = await getChromeExtensionLocalStorage()
   return settings.chatTypeConversationId || ''
 }
 
@@ -226,7 +226,7 @@ export const getThirdProviderSettings = async <T extends IAIProviderType>(
   thirdProviderKey: T,
 ) => {
   try {
-    const settings = await getChromeExtensionSettings()
+    const settings = await getChromeExtensionLocalStorage()
     const thirdProviderSetting = settings.thirdProviderSettings
     if (thirdProviderSetting && thirdProviderSetting[thirdProviderKey]) {
       return thirdProviderSetting[thirdProviderKey] as IThirdProviderSettings[T]
@@ -249,7 +249,7 @@ export const setThirdProviderSettings = async <T extends IAIProviderType>(
   syncToServer: boolean,
 ) => {
   try {
-    await setChromeExtensionSettings((settings) => {
+    await setChromeExtensionDBStorage((settings) => {
       lodashSet(
         settings,
         `thirdProviderSettings.${thirdProviderKey}`,
@@ -285,10 +285,9 @@ export const processAskAIParameters = async (
   // 如果是重试或者重新生成，需要从原始会话中获取问题
   const conversationId = question.conversationId
   if ((retry || regenerate) && conversationId) {
-    const originalConversation =
-      await ConversationManager.conversationDB.getConversationById(
-        conversationId,
-      )
+    const originalConversation = await ConversationManager.conversationDB.getConversationById(
+      conversationId,
+    )
     if (originalConversation) {
       const originalMessages = originalConversation.messages
       if (regenerate) {
@@ -309,10 +308,9 @@ export const processAskAIParameters = async (
           question.messageId = originalMessage.messageId
           question.parentMessageId = originalMessage.parentMessageId || ''
         }
-        conversation =
-          (await ConversationManager.conversationDB.getConversationById(
-            conversationId,
-          )) as IChatConversation
+        conversation = (await ConversationManager.conversationDB.getConversationById(
+          conversationId,
+        )) as IChatConversation
       } else if (retry) {
         // 重试，到这一步sidebar里面有[问题，答案，新问题]，要删到[问题]
         const originalMessageIndex = originalMessages.findIndex(
@@ -334,10 +332,9 @@ export const processAskAIParameters = async (
           question.messageId = uuidV4()
           question.parentMessageId = originalMessage.parentMessageId || ''
         }
-        conversation =
-          (await ConversationManager.conversationDB.getConversationById(
-            conversationId,
-          )) as IChatConversation
+        conversation = (await ConversationManager.conversationDB.getConversationById(
+          conversationId,
+        )) as IChatConversation
       }
     }
   }

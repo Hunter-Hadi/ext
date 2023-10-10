@@ -20,7 +20,6 @@ import {
 } from '@/constants'
 import CloseIcon from '@mui/icons-material/Close'
 import Log from '@/utils/Log'
-import { setChromeExtensionSettings } from '@/background/utils'
 import dayjs from 'dayjs'
 import CloseAlert from '@/components/CloseAlert'
 import { chromeExtensionClientOpenPage } from '@/utils'
@@ -33,6 +32,7 @@ import {
   startMockChatGPTUploadFile,
 } from '@/pages/chatgpt/fileUploadContentScriptHelper'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const APP_NAME = String(process.env.APP_NAME)
 
@@ -150,7 +150,7 @@ const useDaemonProcess = () => {
                 chatGptInstanceRef.current.getAllPlugins(),
               ])
               if (models.length > 0) {
-                await setChromeExtensionSettings((settings) => {
+                await setChromeExtensionLocalStorage((settings) => {
                   const newSettings = cloneDeep(settings)
                   const openAISettings =
                     newSettings.thirdProviderSettings?.OPENAI
@@ -173,10 +173,8 @@ const useDaemonProcess = () => {
                   if (!newSettings.thirdProviderSettings?.OPENAI) {
                     newSettings.thirdProviderSettings!.OPENAI = {}
                   }
-                  newSettings.thirdProviderSettings!.OPENAI.modelOptions =
-                    models
-                  newSettings.thirdProviderSettings!.OPENAI.pluginOptions =
-                    plugins
+                  newSettings.thirdProviderSettings!.OPENAI.modelOptions = models
+                  newSettings.thirdProviderSettings!.OPENAI.pluginOptions = plugins
                   newSettings.thirdProviderSettings!.OPENAI.model = currentModel
                   log.info(`set currentModel model`, currentModel)
                   return newSettings
@@ -251,11 +249,10 @@ const useDaemonProcess = () => {
                     conversationId,
                     model,
                   )
-                  const conversation =
-                    await chatGptInstanceRef.current?.createConversation(
-                      conversationId,
-                      model,
-                    )
+                  const conversation = await chatGptInstanceRef.current?.createConversation(
+                    conversationId,
+                    model,
+                  )
                   if (conversation) {
                     return {
                       success: true,
@@ -290,13 +287,13 @@ const useDaemonProcess = () => {
                     parentMessageId,
                     question: questionText,
                   } = question
-                  let conversation =
-                    chatGptInstanceRef.current?.getConversation(conversationId)
+                  let conversation = chatGptInstanceRef.current?.getConversation(
+                    conversationId,
+                  )
                   if (!conversation) {
-                    conversation =
-                      await chatGptInstanceRef.current?.createConversation(
-                        conversationId,
-                      )
+                    conversation = await chatGptInstanceRef.current?.createConversation(
+                      conversationId,
+                    )
                     conversation && (await conversation.fetchHistoryAndConfig())
                   }
                   if (conversation) {
@@ -377,10 +374,9 @@ const useDaemonProcess = () => {
                     conversationId,
                   )
                   if (conversationId) {
-                    const isSuccessDeleteConversation =
-                      await chatGptInstanceRef.current.closeConversation(
-                        conversationId,
-                      )
+                    const isSuccessDeleteConversation = await chatGptInstanceRef.current.closeConversation(
+                      conversationId,
+                    )
                     return {
                       success: isSuccessDeleteConversation,
                       data: {},

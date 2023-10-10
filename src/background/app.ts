@@ -54,7 +54,7 @@ import {
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
-import { setChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
+import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 
@@ -102,7 +102,7 @@ const initChromeExtensionInstalled = () => {
       })
     } else {
       // 保存本地快照
-      await setChromeExtensionSettingsSnapshot()
+      await setChromeExtensionDBStorageSnapshot()
       // 更新插件
       if (!(await isSettingsLastModifiedEqual())) {
         await checkSettingsSync()

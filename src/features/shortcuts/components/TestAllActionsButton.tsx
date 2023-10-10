@@ -6,8 +6,8 @@ import { getAppRootElement } from '@/utils'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
-import { getChromeExtensionButtonContextMenu } from '@/background/utils'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { getChromeExtensionDBStorageButtonContextMenu } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 
 const TestAllActionsButton: FC = () => {
   const [loading, setLoading] = React.useState(false)
@@ -15,7 +15,7 @@ const TestAllActionsButton: FC = () => {
   const isStopRef = React.useRef(false)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
   useEffect(() => {
-    getChromeExtensionButtonContextMenu('textSelectPopupButton').then(
+    getChromeExtensionDBStorageButtonContextMenu('textSelectPopupButton').then(
       (shortcuts) => {
         setAllShortcuts(shortcuts.filter((s) => s?.data?.type === 'shortcuts'))
       },
@@ -33,11 +33,9 @@ const TestAllActionsButton: FC = () => {
           return
         }
         const inputText =
-          (
-            getAppRootElement()?.querySelector(
-              '#' + ROOT_CHAT_BOX_INPUT_ID,
-            ) as HTMLInputElement
-          )?.value || ''
+          (getAppRootElement()?.querySelector(
+            '#' + ROOT_CHAT_BOX_INPUT_ID,
+          ) as HTMLInputElement)?.value || ''
         if (!inputText) return
         try {
           setLoading(true)

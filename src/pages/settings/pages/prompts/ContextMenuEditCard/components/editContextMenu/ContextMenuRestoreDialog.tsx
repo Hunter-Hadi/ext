@@ -9,9 +9,9 @@ import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import {
-  ChromeExtensionSettingsSnapshot,
-  getChromeExtensionSettingsSnapshotList,
-} from '@/background/utils/chromeExtensionSettingsSnapshot'
+  ChromeExtensionDBStorageSnapshot,
+  getChromeExtensionDBStorageSnapshotList,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
@@ -21,7 +21,7 @@ import ContextMenuActionConfirmModal from '@/pages/settings/pages/prompts/Contex
 
 const ContextMenuRestoreDialog: FC<{
   onClose: () => void
-  onRestore: (snapshot: ChromeExtensionSettingsSnapshot) => void
+  onRestore: (snapshot: ChromeExtensionDBStorageSnapshot) => void
 }> = (props) => {
   const { t } = useTranslation(['settings', 'common'])
   const [open, setOpen] = useState(true)
@@ -29,16 +29,18 @@ const ContextMenuRestoreDialog: FC<{
   const [confirmType, setConfirmType] = useState<
     'restore' | 'deleteAll' | undefined
   >(undefined)
-  const [selectedSnapshot, setSelectedSnapshot] =
-    useState<ChromeExtensionSettingsSnapshot | null>(null)
+  const [
+    selectedSnapshot,
+    setSelectedSnapshot,
+  ] = useState<ChromeExtensionDBStorageSnapshot | null>(null)
   const [snapshotList, setSnapshotList] = useState<
-    ChromeExtensionSettingsSnapshot[]
+    ChromeExtensionDBStorageSnapshot[]
   >([])
   const filterSnapshotList = useMemo(() => {
     return snapshotList.filter((snapshot) => !snapshot.isDefault)
   }, [snapshotList])
   useEffectOnce(() => {
-    getChromeExtensionSettingsSnapshotList().then((list) => {
+    getChromeExtensionDBStorageSnapshotList().then((list) => {
       setSnapshotList(list)
     })
   })

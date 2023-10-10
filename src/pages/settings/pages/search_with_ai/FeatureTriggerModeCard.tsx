@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   FormControlLabel,
@@ -31,8 +31,10 @@ const TRIGGER_MODE_OPTIONS = [
 
 const FeatureTriggerModeCard: FC = () => {
   const { t } = useTranslation('settings')
-  const { searchWithAISettings, setSearchWithAISettings } =
-    useSearchWithAISettings()
+  const {
+    searchWithAISettings,
+    setSearchWithAISettings,
+  } = useSearchWithAISettings()
 
   return (
     <SettingsFeatureCardLayout

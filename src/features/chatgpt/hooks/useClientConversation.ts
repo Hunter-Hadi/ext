@@ -4,8 +4,7 @@ import {
   SidebarConversationIdSelector,
   SidebarSettingsState,
 } from '@/features/sidebar/store'
-import { setChromeExtensionSettings } from '@/background/utils'
-import { AppSettingsState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 import {
@@ -15,24 +14,28 @@ import {
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IAIProviderType } from '@/background/provider/chat'
-import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/types/getAIProviderConversationMetaConfig'
+import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
 import merge from 'lodash-es/merge'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useClientConversation = () => {
-  const [, setAppSettings] = useRecoilState(AppSettingsState)
+  const [, setAppLocalStorage] = useRecoilState(AppLocalStorageState)
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const [sidebarSettings, updateSidebarSettings] =
-    useRecoilState(SidebarSettingsState)
-  const { currentAIProviderDetail, currentAIProviderModelDetail } =
-    useAIProviderModels()
+  const [sidebarSettings, updateSidebarSettings] = useRecoilState(
+    SidebarSettingsState,
+  )
+  const {
+    currentAIProviderDetail,
+    currentAIProviderModelDetail,
+  } = useAIProviderModels()
   const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const createConversation = async () => {
     let conversationId = ''
@@ -70,10 +73,10 @@ const useClientConversation = () => {
       })
       if (result.success && result.data.conversationId) {
         conversationId = result.data.conversationId
-        await setChromeExtensionSettings({
+        await setChromeExtensionLocalStorage({
           chatTypeConversationId: result.data.conversationId,
         })
-        setAppSettings((prev) => {
+        setAppLocalStorage((prev) => {
           return {
             ...prev,
             chatTypeConversationId: result.data.conversationId,
@@ -137,14 +140,14 @@ const useClientConversation = () => {
       .then()
       .catch()
     if (sidebarSettings.type === 'Chat') {
-      setAppSettings((prevState) => {
+      setAppLocalStorage((prevState) => {
         return {
           ...prevState,
           chatTypeConversationId: '',
         }
       })
       // 清空本地储存的conversationId
-      await setChromeExtensionSettings({
+      await setChromeExtensionLocalStorage({
         chatTypeConversationId: '',
       })
     } else {

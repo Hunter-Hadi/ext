@@ -5,10 +5,10 @@ import {
   CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { getAccessToken } from '@/utils/request'
 import { getFingerPrint } from '@/utils/fingerPrint'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 export const compileTemplate = (template: string, variables: any) => {
   return new Promise<{

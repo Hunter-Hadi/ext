@@ -1,17 +1,19 @@
 import {
-  getChromeExtensionSettings,
-  getDefaultChromeExtensionSettings,
   getPreviousVersion,
-  setChromeExtensionSettings,
-} from '@/background/utils/index'
-import { IChromeExtensionSettings } from '@/background/types/Settings'
+  IChromeExtensionDBStorage,
+} from '@/background/utils'
 import Browser from 'webextension-polyfill'
 import { orderBy } from 'lodash-es'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
+import {
+  getChromeExtensionDBStorage,
+  getDefaultChromeExtensionDBStorage,
+  setChromeExtensionDBStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 
-export interface ChromeExtensionSettingsSnapshot {
+export interface ChromeExtensionDBStorageSnapshot {
   isDefault: boolean
-  settings: IChromeExtensionSettings
+  settings: IChromeExtensionDBStorage
   timestamp: number
   version: string
 }
@@ -19,16 +21,16 @@ const LOCAL_STORAGE_KEY = 'CHROME_EXTENSION_SETTINGS_SNAPSHOT_LIST'
 /**
  * 保存当前设置为快照
  */
-export const setChromeExtensionSettingsSnapshot = async () => {
+export const setChromeExtensionDBStorageSnapshot = async () => {
   // 保存本地快照
   const previousVersion = getPreviousVersion(
     Browser.runtime.getManifest().version,
   )
-  const snapshotList = await getChromeExtensionSettingsSnapshotList()
+  const snapshotList = await getChromeExtensionDBStorageSnapshotList()
   let sortedSnapshotList = orderBy(snapshotList, 'timestamp', 'desc').filter(
     (snapshot) => !snapshot.isDefault && snapshot.version !== previousVersion,
   )
-  const settings = await getChromeExtensionSettings()
+  const settings = await getChromeExtensionDBStorage()
   const snapshot = {
     isDefault: false,
     settings,
@@ -46,10 +48,10 @@ export const setChromeExtensionSettingsSnapshot = async () => {
 /**
  * 获取快照列表
  */
-export const getChromeExtensionSettingsSnapshotList = async (): Promise<
-  ChromeExtensionSettingsSnapshot[]
+export const getChromeExtensionDBStorageSnapshotList = async (): Promise<
+  ChromeExtensionDBStorageSnapshot[]
 > => {
-  const defaultSettings = getDefaultChromeExtensionSettings()
+  const defaultSettings = getDefaultChromeExtensionDBStorage()
   const defaultSnapshot = {
     isDefault: true,
     settings: defaultSettings,
@@ -59,7 +61,7 @@ export const getChromeExtensionSettingsSnapshotList = async (): Promise<
   try {
     const cache = await Browser.storage.local.get(LOCAL_STORAGE_KEY)
     if (cache[LOCAL_STORAGE_KEY]) {
-      const snapshotList: ChromeExtensionSettingsSnapshot[] = JSON.parse(
+      const snapshotList: ChromeExtensionDBStorageSnapshot[] = JSON.parse(
         cache[LOCAL_STORAGE_KEY],
       )
       return snapshotList.concat(defaultSnapshot)
@@ -88,7 +90,7 @@ export const removeAllChromeExtensionSettingsSnapshot = async () => {
 export const removeChromeExtensionSettingsSnapshot = async (
   version: string,
 ) => {
-  const snapshotList = await getChromeExtensionSettingsSnapshotList()
+  const snapshotList = await getChromeExtensionDBStorageSnapshotList()
   const newSnapshotList = snapshotList.filter(
     (snapshot) => snapshot.version !== version,
   )
@@ -106,10 +108,10 @@ export const removeChromeExtensionSettingsSnapshot = async (
 export const restoreChromeExtensionSettingsSnapshot = async (
   version: string,
 ) => {
-  const snapshotList = await getChromeExtensionSettingsSnapshotList()
+  const snapshotList = await getChromeExtensionDBStorageSnapshotList()
   const snapshot = snapshotList.find((snapshot) => snapshot.version === version)
   if (snapshot?.settings && snapshot.settings.buttonSettings) {
-    await setChromeExtensionSettings((settings) => {
+    await setChromeExtensionDBStorage((settings) => {
       // 只还原buttonSettings
       settings.buttonSettings = snapshot.settings.buttonSettings
       return settings

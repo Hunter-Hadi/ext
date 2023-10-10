@@ -68,9 +68,9 @@ import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload
 import SendIcon from '@mui/icons-material/Send'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { useTranslation } from 'react-i18next'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import {
   ChatGPTConversationState,
   SidebarSettingsState,
@@ -87,7 +87,7 @@ const FloatingContextMenu: FC<{
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
   const conversation = useRecoilValue(ChatGPTConversationState)
-  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const [sidebarSettings, setSidebarSettings] = useRecoilState(
     SidebarSettingsState,
   )
@@ -295,8 +295,8 @@ const FloatingContextMenu: FC<{
         }, 1)
       }
       // 为了保证登陆后能直接用，需要先获取一次settings
-      clientGetLiteChromeExtensionSettings().then((settings) => {
-        setAppSettings(settings)
+      clientGetLiteChromeExtensionDBStorage().then((settings) => {
+        setAppDBStorage(settings)
       })
     } else {
       const textareaEl = getAppContextMenuRootElement()?.querySelector(

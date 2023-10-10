@@ -23,7 +23,7 @@ import {
   getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
 import { backendApiReportPricingHooks } from '@/background/api'
-import getLiteChromeExtensionSettings from '@/background/utils/getLiteChromeExtensionSettings'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 import { getContextMenuActions } from '@/background/utils/buttonSettings'
 import ConversationManager from '@/background/src/chatConversations'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
@@ -388,7 +388,7 @@ export const ClientMessageInit = () => {
             })
             fromUrl = currentActiveTab[0]?.url
           }
-          const settings = await getLiteChromeExtensionSettings(fromUrl)
+          const settings = await getLiteChromeExtensionDBStorage(fromUrl)
           return {
             success: true,
             data: settings,

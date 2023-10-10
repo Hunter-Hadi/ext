@@ -9,8 +9,8 @@ import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { aesJsonEncrypt } from '@/utils/encryptionHelper'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况
@@ -53,7 +53,7 @@ export const increaseChatGPTRequestCount = async (
   try {
     const cacheData: IChatRequestCountRecordType =
       (await getStorageDataKeyByKey(CHATGPT_REQUEST_COUNT_RECORD)) || {}
-    const settings = await clientGetLiteChromeExtensionSettings()
+    const settings = await getChromeExtensionLocalStorage()
     const provider = settings.currentAIProvider || 'UNKNOWN_PROVIDER'
     const currentDay = dayjs().format('YYYY-MM-DD')
     // NOTE: - 清理过期的数据
@@ -93,8 +93,9 @@ export const increaseChatGPTRequestCount = async (
         if (
           !cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider]
         ) {
-          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider] =
-            {}
+          cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][
+            provider
+          ] = {}
         }
         if (
           !cacheData[currentDay]['prompt_cnt'][id]['ai_provider_cnt'][provider][
@@ -118,8 +119,9 @@ export const increaseChatGPTRequestCount = async (
     })
     console.log('CHATGPT_REQUEST_COUNT_RECORD', cacheData)
     const dateRequestCount = omit(cacheData)
-    const { ON_BOARDING_RECORD_FIRST_MESSAGE } =
-      await getChromeExtensionOnBoardingData()
+    const {
+      ON_BOARDING_RECORD_FIRST_MESSAGE,
+    } = await getChromeExtensionOnBoardingData()
     if (!ON_BOARDING_RECORD_FIRST_MESSAGE) {
       // 用户第一次使用需要发送数据
       fetchChatGPTErrorRecord()

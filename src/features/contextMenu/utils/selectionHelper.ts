@@ -17,8 +17,8 @@ import {
 } from '@/constants'
 import { useEffect } from 'react'
 import useCommands from '@/hooks/useCommands'
-import { useRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
+import { useRecoilValue } from 'recoil'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
 
@@ -1659,7 +1659,7 @@ export const hideRichEditorLineTextPlaceholder = () => {
 
 export const useBindRichTextEditorLineTextPlaceholder = () => {
   const { chatBoxShortCutKey, floatingMenuShortCutKey } = useCommands()
-  const [appSettings] = useRecoilState(AppSettingsState)
+  const appDBStorage = useRecoilValue(AppDBStorageState)
   useEffect(() => {
     const richTextEditorHandle = (event: MouseEvent | KeyboardEvent) => {
       console.log('lineText', event)
@@ -1670,7 +1670,7 @@ export const useBindRichTextEditorLineTextPlaceholder = () => {
       if (!richTextEditorLineText && richTextEditorLineTextElement) {
         const placeholderText =
           floatingMenuShortCutKey &&
-          appSettings.userSettings?.shortcutHintEnable
+          appDBStorage.userSettings?.shortcutHintEnable
             ? `Press '${floatingMenuShortCutKey}' for AI`
             : ''
         console.log(
@@ -1712,7 +1712,7 @@ export const useBindRichTextEditorLineTextPlaceholder = () => {
   }, [
     chatBoxShortCutKey,
     floatingMenuShortCutKey,
-    appSettings.userSettings?.shortcutHintEnable,
+    appDBStorage.userSettings?.shortcutHintEnable,
   ])
 }
 

@@ -1,4 +1,3 @@
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import {
   ContextMenuSearchTextStore,
   removeContextMenuSearchTextStore,
@@ -6,13 +5,14 @@ import {
 } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import i18n from '@/i18n'
 import { loadI18nResources } from '@/i18n/hooks'
-import { getChromeExtensionSettings } from '@/background/utils'
 import { getSystemContextMenuWithButtonSettingKey } from '@/background/utils/buttonSettings'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 export const updateContextMenuSearchTextStore = async (
   buttonSettingKey: IChromeExtensionButtonSettingKey,
 ) => {
-  const settings = await getChromeExtensionSettings()
+  const settings = await getChromeExtensionDBStorage()
   const language = settings.userSettings?.preferredLanguage || 'en'
   const buttonSettings = settings.buttonSettings?.[buttonSettingKey]
   const contextMenuList = (buttonSettings?.contextMenu || []).concat(
@@ -51,15 +51,16 @@ export const updateContextMenuSearchTextStore = async (
           i18n.t(`prompt:${item.id}` as any) !== item.id
         ) {
           currentLanguageItemText = i18n.t(`prompt:${item.id}` as any)
-          currentLanguageSearchText =
-            `${currentLanguagePrefix} ${currentLanguageItemText} ${enSearchText}`.trimStart()
+          currentLanguageSearchText = `${currentLanguagePrefix} ${currentLanguageItemText} ${enSearchText}`.trimStart()
         }
         searchTextPrefixMap.en[item.id] = enItemText.toLowerCase()
-        searchTextPrefixMap[language][item.id] =
-          currentLanguageItemText.toLowerCase()
+        searchTextPrefixMap[language][
+          item.id
+        ] = currentLanguageItemText.toLowerCase()
         saveSearchTextData.en[item.id] = enSearchText.toLowerCase()
-        saveSearchTextData[language][item.id] =
-          currentLanguageSearchText.toLowerCase()
+        saveSearchTextData[language][
+          item.id
+        ] = currentLanguageSearchText.toLowerCase()
         findSearchText(item.id)
       })
     }

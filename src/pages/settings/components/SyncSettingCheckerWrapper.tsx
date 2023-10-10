@@ -15,14 +15,14 @@ import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { SettingsPageRouteContext } from '@/pages/settings/context'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
-import { getChromeExtensionSettings } from '@/background/utils'
+import { AppDBStorageState } from '@/store'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode
   onLoad?: () => void
 }> = ({ children, onLoad }) => {
-  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const { t } = useTranslation(['settings'])
   const {
     isSyncing,
@@ -73,9 +73,9 @@ const SyncSettingCheckerWrapper: FC<{
       })
       .catch()
       .finally(async () => {
-        const latestSettings = await getChromeExtensionSettings()
+        const latestSettings = await getChromeExtensionDBStorage()
         console.log('设置 sync latestSettings', latestSettings)
-        setAppSettings(latestSettings)
+        setAppDBStorage(latestSettings)
         setLoaded(true)
         onLoad?.()
       })

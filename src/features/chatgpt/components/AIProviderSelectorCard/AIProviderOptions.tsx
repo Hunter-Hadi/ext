@@ -76,6 +76,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     description: '',
     value: AI_PROVIDER_MAP.OPENAI_API,
     authDescription: `client:provider__openai_api__auth_description`,
+    // eslint-disable-next-line react/display-name
     shortDescription: (t) => (
       <span>
         {t(`client:provider__openai_api__short_description1`)}{' '}

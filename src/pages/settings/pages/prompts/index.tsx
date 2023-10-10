@@ -7,14 +7,16 @@ import Stack from '@mui/material/Stack'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 const EditButtonKey: IChromeExtensionButtonSettingKey = 'textSelectPopupButton'
 const SettingsPromptsPage: FC = () => {
   const { syncLocalToServer } = useSyncSettingsChecker()
   const { t } = useTranslation(['settings'])
-  const { buttonSettings, updateButtonSettings } =
-    useChromeExtensionButtonSettings()
+  const {
+    buttonSettings,
+    updateButtonSettings,
+  } = useChromeExtensionButtonSettings()
   return (
     <SettingsFeatureCardLayout
       title={t('settings:feature_card__prompts__title')}

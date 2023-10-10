@@ -1,10 +1,10 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import Log from '@/utils/Log'
 import LFUCache from '@/utils/cache/LFUCache'
 import Browser from 'webextension-polyfill'
 import { getCurrentDomainHost } from '@/utils'
 import { clientGetChromeExtensionButtonSettings } from '@/features/contextMenu/utils/clientButtonSettings'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 const favoriteMediatorLog = new Log('Store/FavoriteMediator')
 
@@ -52,9 +52,11 @@ export const setFavoriteContextMenuCapacity = async (capacity: number) => {
 /**
  * 获取全部网站的收藏菜单
  */
-export const getFavoriteContextMenuFromLocalStorage = async (): Promise<{
-  [key in string]: [IContextMenuItem, number[]][]
-}> => {
+export const getFavoriteContextMenuFromLocalStorage = async (): Promise<
+  {
+    [key in string]: [IContextMenuItem, number[]][]
+  }
+> => {
   try {
     const localStorageData = await Browser.storage.local.get(
       FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY,
@@ -73,9 +75,11 @@ export const getFavoriteContextMenuFromLocalStorage = async (): Promise<{
  * 设置全部网站的收藏菜单
  * @param cache
  */
-export const setFavoriteContextMenuToLocalStorage = async (cache: {
-  [key in string]: [IContextMenuItem, number[]][]
-}) => {
+export const setFavoriteContextMenuToLocalStorage = async (
+  cache: {
+    [key in string]: [IContextMenuItem, number[]][]
+  },
+) => {
   try {
     await Browser.storage.local.set({
       [FAVORITE_CONTEXT_MENU_LOCAL_STORAGE_KEY]: JSON.stringify(cache),

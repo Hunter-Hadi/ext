@@ -1,66 +1,28 @@
 import { get, post } from '@/utils/request'
-import {
-  FILTER_SAVE_KEYS,
-  getChromeExtensionSettings,
-  setChromeExtensionSettings,
-} from '@/background/utils/index'
+import { IChromeExtensionDBStorage } from '@/background/utils/index'
 import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import dayjs from 'dayjs'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { IChromeExtensionSettings } from '@/background/types/Settings'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import unset from 'lodash-es/unset'
+import {
+  getChromeExtensionDBStorage,
+  setChromeExtensionDBStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 
 export const syncServerSettingsToLocalSettings = async () => {
   try {
     console.log('同步服务器设置到本地')
     const result = await get<{
-      settings: IChromeExtensionSettings
+      settings: IChromeExtensionDBStorage
     }>('/user/get_user_info')
     if (result?.status === 'OK') {
       const serverSettings = result.data?.settings
       if (serverSettings) {
-        // HACK: remove conversationId
-        if (serverSettings?.chatTypeConversationId) {
-          delete serverSettings.chatTypeConversationId
-        }
-        const buttonSettings: any = {}
-        if (
-          serverSettings.contextMenus &&
-          serverSettings.contextMenus?.length > 0
-        ) {
-          buttonSettings.textSelectPopupButton = {
-            contextMenu: cloneDeep(serverSettings.contextMenus),
-          }
-          serverSettings.contextMenus = []
-        }
-        if (
-          serverSettings.gmailToolBarContextMenu &&
-          serverSettings.gmailToolBarContextMenu?.length > 0
-        ) {
-          buttonSettings.gmailButton = {
-            contextMenu: cloneDeep(serverSettings.gmailToolBarContextMenu),
-          }
-          serverSettings.gmailToolBarContextMenu = []
-        }
-        await setChromeExtensionSettings((localSettings) => {
-          // 从本地获取openai api key
-          const openaiAPIKey =
-            localSettings.thirdProviderSettings?.OPENAI_API?.apiKey
+        await setChromeExtensionDBStorage((localSettings) => {
           return mergeWithObject([
             localSettings,
             serverSettings,
-            {
-              buttonSettings,
-            },
-            {
-              thirdProviderSettings: {
-                OPENAI_API: {
-                  apiKey: openaiAPIKey,
-                },
-              },
-            },
-          ]) as IChromeExtensionSettings
+          ]) as IChromeExtensionDBStorage
         })
       }
     }
@@ -76,17 +38,10 @@ export const syncLocalSettingsToServerSettings = async () => {
     console.log('同步本地设置到服务器')
     const lastModified = dayjs().utc().valueOf()
     // 更新本地设置的最后修改时间
-    await setChromeExtensionSettings({
+    await setChromeExtensionDBStorage({
       lastModified,
     })
-    const localSettings = cloneDeep(await getChromeExtensionSettings())
-    FILTER_SAVE_KEYS.forEach((deleteKey) => {
-      unset(localSettings, deleteKey)
-    })
-    // 不上传用户的openai api key
-    if (localSettings.thirdProviderSettings?.OPENAI_API) {
-      localSettings.thirdProviderSettings.OPENAI_API.apiKey = ''
-    }
+    const localSettings = cloneDeep(await getChromeExtensionDBStorage())
     const result = await post<{
       status: 'OK' | 'ERROR'
     }>('/user/save_user_settings', {
@@ -107,10 +62,10 @@ export const isSettingsLastModifiedEqual = async (): Promise<boolean> => {
     await forceUpdateContextMenuReadOnlyOption()
     console.log('检测本地设置和服务器设置时间是否一致')
     const result = await get<{
-      settings: IChromeExtensionSettings
+      settings: IChromeExtensionDBStorage
     }>('/user/get_user_settings_last_modified')
     if (result?.status === 'OK') {
-      const localSettings = await getChromeExtensionSettings()
+      const localSettings = await getChromeExtensionDBStorage()
       const serverLastModified = String(result.data) // timestamp
       const localLastModified = String(localSettings.lastModified) // timestamp
       if (serverLastModified && localLastModified) {
@@ -133,15 +88,15 @@ export const isSettingsLastModifiedEqual = async (): Promise<boolean> => {
 export const checkSettingsSync = async (): Promise<{
   success: boolean
   status: 'ok' | 'needSync' | 'error' | 'needLogin'
-  cacheLocalSettings?: IChromeExtensionSettings
+  cacheLocalSettings?: IChromeExtensionDBStorage
 }> => {
   try {
     console.log('检测本地设置和服务器设置')
-    const localSettings = await getChromeExtensionSettings()
+    const localSettings = await getChromeExtensionDBStorage()
     // 更新的时候要强制更新contextMenu
     await forceUpdateContextMenuReadOnlyOption()
     const result = await get<{
-      settings: IChromeExtensionSettings
+      settings: IChromeExtensionDBStorage
     }>('/user/get_user_info')
     if (result?.status === 'OK') {
       const serverSettings = result.data?.settings
@@ -154,7 +109,7 @@ export const checkSettingsSync = async (): Promise<{
           if (!localLastModified) {
             // 本地没有设置, 判断是否有自定义prompt
             if (
-              localSettings.contextMenus?.find(
+              localSettings.buttonSettings?.textSelectPopupButton.contextMenu?.find(
                 (menuItem) => menuItem.data.editable,
               )
             ) {

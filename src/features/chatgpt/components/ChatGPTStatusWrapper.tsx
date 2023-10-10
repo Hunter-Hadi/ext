@@ -14,28 +14,29 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import { GoogleIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import { AuthState } from '@/features/auth/store'
-import { AppSettingsState } from '@/store'
-import { getChromeExtensionSettings } from '@/background/utils'
+import { AppDBStorageState } from '@/store'
 import { useFocus } from '@/hooks/useFocus'
 import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
 import Divider from '@mui/material/Divider'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
   const [authLogin] = useRecoilState(AuthState)
-  const setAppSettings = useSetRecoilState(AppSettingsState)
-  const [chatGPTClientState, setChatGPTClientState] =
-    useRecoilState(ChatGPTClientState)
+  const setAppSettings = useSetRecoilState(AppDBStorageState)
+  const [chatGPTClientState, setChatGPTClientState] = useRecoilState(
+    ChatGPTClientState,
+  )
   const { status } = chatGPTClientState
   const [prevStatus, setPrevStatus] = useState(status)
   useEffect(() => {
     if (prevStatus !== status && status === 'success') {
       // get latest settings
       console.log('get latest settings')
-      getChromeExtensionSettings().then(setAppSettings)
+      getChromeExtensionDBStorage().then(setAppSettings)
     }
     setPrevStatus(status)
   }, [status])

@@ -11,20 +11,22 @@ import {
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useFocus } from '@/hooks/useFocus'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { useRecoilValue } from 'recoil'
 
 const SettingsMiniMenuPage: FC = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
-  const { toggleButtonSettings, updateButtonSettings } =
-    useChromeExtensionButtonSettings()
+  const appDBStorage = useRecoilValue(AppDBStorageState)
+  const {
+    toggleButtonSettings,
+    updateButtonSettings,
+  } = useChromeExtensionButtonSettings()
   const [reRender, setReRender] = useState(true)
   const visible = useMemo(() => {
     return (
-      appSettings.buttonSettings?.textSelectPopupButton?.visibility
+      appDBStorage.buttonSettings?.textSelectPopupButton?.visibility
         .isWhitelistMode === false
     )
-  }, [appSettings.buttonSettings?.textSelectPopupButton.visibility])
+  }, [appDBStorage.buttonSettings?.textSelectPopupButton.visibility])
   useFocus(() => {
     setReRender(false)
     setTimeout(() => {
@@ -37,7 +39,7 @@ const SettingsMiniMenuPage: FC = () => {
       title={t('feature_card__mini_menu__title')}
       id={'mini-menu'}
     >
-      {appSettings.buttonSettings?.textSelectPopupButton?.visibility &&
+      {appDBStorage.buttonSettings?.textSelectPopupButton?.visibility &&
         reRender && (
           <Stack spacing={2}>
             <RadioCardGroup
@@ -77,17 +79,16 @@ const SettingsMiniMenuPage: FC = () => {
               <VisibilitySettingCard
                 mode={'black'}
                 defaultValue={
-                  appSettings.buttonSettings?.textSelectPopupButton.visibility
+                  appDBStorage.buttonSettings?.textSelectPopupButton.visibility
                 }
                 onChange={async (value) => {
                   const newVisibility = cloneDeep(value)
                   if (newVisibility.isWhitelistMode) {
                     newVisibility.whitelist = []
                   }
-                  const latestButtonSettings =
-                    await getChromeExtensionButtonSettings(
-                      'textSelectPopupButton',
-                    )
+                  const latestButtonSettings = await getChromeExtensionButtonSettings(
+                    'textSelectPopupButton',
+                  )
                   if (latestButtonSettings) {
                     console.log('mini menu', latestButtonSettings?.contextMenu)
                     await updateButtonSettings('textSelectPopupButton', {

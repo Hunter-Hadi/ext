@@ -1,26 +1,32 @@
 import { useRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import { IAIProviderType } from '@/background/provider/chat'
-import { setChromeExtensionSettings } from '@/background/utils'
 import { useEffect, useRef, useState } from 'react'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import {
+  getChromeExtensionLocalStorage,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const useAIProvider = () => {
   const [loading, setLoading] = useState(false)
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
-  const { changeConversation, switchBackgroundChatSystemAIProvider } =
-    useClientConversation()
-  const currentAIProviderRef = useRef(appSettings.currentAIProvider)
+  const [appLocalStorage, setAppLocalStorage] = useRecoilState(
+    AppLocalStorageState,
+  )
+  const {
+    changeConversation,
+    switchBackgroundChatSystemAIProvider,
+  } = useClientConversation()
+  const currentAIProviderRef = useRef(appLocalStorage.currentAIProvider)
   useEffect(() => {
-    currentAIProviderRef.current = appSettings.currentAIProvider
-  }, [appSettings.currentAIProvider])
+    currentAIProviderRef.current = appLocalStorage.currentAIProvider
+  }, [appLocalStorage.currentAIProvider])
   const updateChatGPTProvider = async (provider: IAIProviderType) => {
     try {
       setLoading(true)
-      const cache = await clientGetLiteChromeExtensionSettings()
+      const cache = await getChromeExtensionLocalStorage()
       const prevConversation = cache.chatTypeConversationId
         ? await clientGetConversation(cache.chatTypeConversationId)
         : undefined
@@ -45,19 +51,19 @@ const useAIProvider = () => {
         conversationId = providerConversationId
       }
       // 更新本地储存的provider
-      setAppSettings((prevState) => {
+      setAppLocalStorage((prevState) => {
         return {
           ...prevState,
           currentAIProvider: provider,
           chatTypeConversationId: conversationId,
         }
       })
-      await setChromeExtensionSettings({
+      await setChromeExtensionLocalStorage({
         currentAIProvider: provider,
         chatTypeConversationId: conversationId,
       })
       setTimeout(async () => {
-        const currentSettings = await clientGetLiteChromeExtensionSettings()
+        const currentSettings = await getChromeExtensionLocalStorage()
         // 如果之前的conversation存在，且AIProvider没有变化，则切换conversation
         if (
           prevConversation?.meta.AIProvider &&
@@ -78,7 +84,7 @@ const useAIProvider = () => {
   }
   return {
     currentAIProviderRef,
-    provider: appSettings.currentAIProvider,
+    provider: appLocalStorage.currentAIProvider,
     updateChatGPTProvider,
     loading,
   }

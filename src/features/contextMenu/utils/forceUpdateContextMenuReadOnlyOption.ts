@@ -1,13 +1,13 @@
-import {
-  getChromeExtensionButtonContextMenu,
-  setChromeExtensionSettings,
-} from '@/background/utils'
 import uniqBy from 'lodash-es/uniqBy'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import lodashSet from 'lodash-es/set'
 import cloneDeep from 'lodash-es/cloneDeep'
 import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
+import {
+  getChromeExtensionDBStorageButtonContextMenu,
+  setChromeExtensionDBStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 /**
  * @version 2.0 - 移除所有不可编辑的system prompt
@@ -21,7 +21,9 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
   const updateButtonContextMenu = async (
     buttonKey: IChromeExtensionButtonSettingKey,
   ) => {
-    const menuList = await getChromeExtensionButtonContextMenu(buttonKey)
+    const menuList = await getChromeExtensionDBStorageButtonContextMenu(
+      buttonKey,
+    )
     const needRemoveMenuIdMap = getNeedRemovePromptIdsMap()
     const updateCount = 0
     let updateMenuList = menuList
@@ -52,7 +54,7 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
         return item
       }
     })
-    await setChromeExtensionSettings((settings) => {
+    await setChromeExtensionDBStorage((settings) => {
       const newSettings = cloneDeep(settings)
       lodashSet(
         newSettings,

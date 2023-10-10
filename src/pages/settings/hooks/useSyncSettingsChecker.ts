@@ -1,6 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
 import { useSnackbar } from 'notistack'
-import { setChromeExtensionSettings } from '@/background/utils'
 import debounce from 'lodash-es/debounce'
 import {
   checkSettingsSync,
@@ -8,8 +7,9 @@ import {
   syncLocalSettingsToServerSettings,
   syncServerSettingsToLocalSettings,
 } from '@/background/utils/syncSettings'
-import { IChromeExtensionSettings } from '@/background/types/Settings'
 import { useTranslation } from 'react-i18next'
+import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { IChromeExtensionDBStorage } from '@/background/utils'
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
   // Sync successful!
@@ -20,7 +20,7 @@ const useSyncSettingsChecker = () => {
   const [isChecking, setIsChecking] = useState(false)
   const [showErrorAlert, setShowErrorAlert] = useState(false)
   const [showCheckAlert, setShowCheckAlert] = useState(false)
-  const localSettingsCacheRef = useRef<IChromeExtensionSettings | undefined>(
+  const localSettingsCacheRef = useRef<IChromeExtensionDBStorage | undefined>(
     undefined,
   )
   const debounceEnqueueSnackbar = useCallback(
@@ -49,12 +49,12 @@ const useSyncSettingsChecker = () => {
     }
   }, [])
   const syncLocalToServer = useCallback(
-    async (saveSettings?: IChromeExtensionSettings) => {
+    async (saveSettings?: IChromeExtensionDBStorage) => {
       try {
         console.log('同步本地设置到服务器')
         setIsSyncing(true)
         if (saveSettings) {
-          await setChromeExtensionSettings(saveSettings)
+          await setChromeExtensionDBStorage(saveSettings)
         }
         const success = await syncLocalSettingsToServerSettings()
         if (success) {

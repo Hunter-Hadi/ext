@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
@@ -9,17 +9,19 @@ import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/t
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
-import { setChromeExtensionSettings } from '@/background/utils'
 import reverse from 'lodash-es/reverse'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import {
+  getChromeExtensionLocalStorage,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -28,11 +30,15 @@ import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types
  */
 
 const useAIProviderModels = () => {
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
-  const currentProvider = appSettings.currentAIProvider
+  const [appLocalStorage, setAppLocalStorage] = useRecoilState(
+    AppLocalStorageState,
+  )
+  const currentProvider = appLocalStorage.currentAIProvider
   const [loading, setLoading] = useState(false)
-  const { currentThirdProviderSettings, saveThirdProviderSettings } =
-    useThirdProviderSettings()
+  const {
+    currentThirdProviderSettings,
+    saveThirdProviderSettings,
+  } = useThirdProviderSettings()
   // ===chatgpt 特殊处理开始===
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   useEffect(() => {
@@ -53,7 +59,7 @@ const useAIProviderModels = () => {
         {
           // 转换数据结构
           currentModels = (
-            appSettings.thirdProviderSettings?.OPENAI?.modelOptions || []
+            appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions || []
           )
             .map((item) => {
               const isCodeInterpreter = item.slug === 'gpt-4-code-interpreter'
@@ -89,11 +95,10 @@ const useAIProviderModels = () => {
                     value: (t) => {
                       const description = item.description
                       // provider__chatgpt_web_app__text_davinci_002_render_sha__description
-                      const key =
-                        `provider__chatgpt_web_app__${item.slug}__description`.replace(
-                          /-/g,
-                          '_',
-                        )
+                      const key = `provider__chatgpt_web_app__${item.slug}__description`.replace(
+                        /-/g,
+                        '_',
+                      )
                       const i18nKey: any = `client:${key}`
                       if (t(i18nKey) !== key) {
                         return t(i18nKey)
@@ -166,7 +171,7 @@ const useAIProviderModels = () => {
   }, [
     currentProvider,
     whiteListModels,
-    appSettings.thirdProviderSettings?.OPENAI?.modelOptions,
+    appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions,
   ])
   const currentAIProviderModel = useMemo(() => {
     return currentThirdProviderSettings?.model || ''
@@ -182,9 +187,8 @@ const useAIProviderModels = () => {
   const updateAIProviderModel = useCallback(
     async (model: string) => {
       try {
-        const prevConversationId = (
-          await clientGetLiteChromeExtensionSettings()
-        ).chatTypeConversationId
+        const prevConversationId = (await getChromeExtensionLocalStorage())
+          .chatTypeConversationId
         if (prevConversationId) {
           const prevConversation = await clientGetConversation(
             prevConversationId,
@@ -221,11 +225,11 @@ const useAIProviderModels = () => {
           await saveThirdProviderSettings(currentProvider, {
             model,
           })
-          await setChromeExtensionSettings({
+          await setChromeExtensionLocalStorage({
             chatTypeConversationId: md5TextEncrypt(currentProvider + model),
           })
         }
-        setAppSettings(await clientGetLiteChromeExtensionSettings())
+        setAppLocalStorage(await getChromeExtensionLocalStorage())
       } catch (e) {
         console.log(e)
       } finally {
@@ -244,7 +248,7 @@ const useAIProviderModels = () => {
     }
   }, [currentAIProviderModel, currentProvider])
   return {
-    aiProvider: appSettings.currentAIProvider,
+    aiProvider: appLocalStorage.currentAIProvider,
     aiProviderModel: currentAIProviderModel,
     currentAIProviderDetail,
     currentAIProviderModelDetail,

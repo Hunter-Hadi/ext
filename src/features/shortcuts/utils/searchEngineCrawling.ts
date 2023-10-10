@@ -40,7 +40,7 @@ export function crawlingSearchResults({
      * 3. 再根据用户选择的 limit 切片
      */
     const emptyResult: ICrawlingSearchResult[] = []
-    const emptyResultIndex: Number[] = []
+    const emptyResultIndex: number[] = []
     const filteredResult = results.filter((item, index) => {
       if (!item.body || !item.title || !item.url) {
         emptyResult.push(item)
@@ -421,7 +421,7 @@ const CrawlingResultsWithEngine = (
           let url = extractRealUrl(titleElement.attr('href') ?? '')
           url = url.startsWith('/') ? location.origin + url : url
 
-          let fromTextArr = element
+          const fromTextArr = element
             .find('.citeurl')
             .text()
             .replace(/\n\s*/g, '')
@@ -469,7 +469,7 @@ const CrawlingResultsWithEngine = (
           let titleElement = element.find('.snippet-title')
           let title = titleElement.text()
           let linkElement = titleElement.closest('a')
-          let imgLink = element.find('img.favicon').attr('src')
+          const imgLink = element.find('img.favicon').attr('src')
 
           if (!title) {
             titleElement = element.find('a > div.url')
@@ -548,12 +548,12 @@ const CrawlingResultsWithEngine = (
 }
 
 function cleanText(text: string) {
-  return text.trim().replaceAll('\n', '') || ''
+  return text.trim().replace(/\n/g, '') || ''
 }
 
 function getNameByUrl(url: string) {
   try {
-    let uri = domain2HttpsDomain(url.trim().replaceAll('...', ''))
+    const uri = domain2HttpsDomain(url.trim().replace(/.../g, ''))
     const urlObj = new URL(uri)
     const hostArr = urlObj.host.split('.')
     return hostArr.length >= 3 ? hostArr[1] : hostArr[0]

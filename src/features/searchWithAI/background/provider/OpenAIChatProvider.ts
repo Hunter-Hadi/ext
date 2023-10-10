@@ -6,10 +6,13 @@ import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 import { OpenAIChat } from '../chat/OpenAiChat'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat
+  chatFiles: IChatUploadFile[]
   constructor(openAIChat: OpenAIChat) {
+    this.chatFiles = []
     this.openAIChat = openAIChat
   }
   async preAuth() {
@@ -81,6 +84,33 @@ class OpenAIChatProvider implements ChatAdapterInterface {
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })
+  }
+
+  abortUploadFiles(fileIds: string[]): Promise<boolean> {
+    return Promise.resolve(false)
+  }
+  clearFiles(): Promise<boolean> {
+    return Promise.resolve(false)
+  }
+
+  getFiles(): Promise<IChatUploadFile[]> {
+    return Promise.resolve([])
+  }
+
+  getUploadFileToken(): Promise<any> {
+    return Promise.resolve(undefined)
+  }
+
+  removeFiles(fileIds: string[]): Promise<boolean> {
+    return Promise.resolve(false)
+  }
+
+  updateFiles(updateFiles: IChatUploadFile[]): Promise<void> {
+    return Promise.resolve(undefined)
+  }
+
+  uploadFiles(file: IChatUploadFile[]): Promise<void> {
+    return Promise.resolve(undefined)
   }
 }
 export { OpenAIChatProvider }

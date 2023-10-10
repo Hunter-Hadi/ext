@@ -2,17 +2,18 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { SidebarSettingsState } from '@/features/sidebar'
 import { useEffect, useRef } from 'react'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
-import { AppSettingsState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import usePageUrlChange from '@/hooks/usePageUrlChange'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useAIProvider from '@/features/chatgpt/hooks/useAIProvider'
 import { useFocus } from '@/hooks/useFocus'
 
 const useInitSidebar = () => {
-  const appSettings = useRecoilValue(AppSettingsState)
+  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const { createPageSummary } = usePageSummary()
-  const [sidebarSettings, setSidebarSettings] =
-    useRecoilState(SidebarSettingsState)
+  const [sidebarSettings, setSidebarSettings] = useRecoilState(
+    SidebarSettingsState,
+  )
   const { pageUrl, startListen } = usePageUrlChange()
   const { changeConversation } = useClientConversation()
   const sidebarSettingsRef = useRef(sidebarSettings)
@@ -74,21 +75,21 @@ const useInitSidebar = () => {
   }, [pageUrl])
   useEffect(() => {
     if (
-      appSettings.chatTypeConversationId &&
+      appLocalStorage.chatTypeConversationId &&
       sidebarSettingsRef.current.type === 'Chat'
     ) {
       console.log(
         '新版Conversation chatTypeConversationId更新',
-        appSettings.chatTypeConversationId,
+        appLocalStorage.chatTypeConversationId,
       )
       setSidebarSettings((prevState) => {
         return {
           ...prevState,
-          chatConversationId: appSettings.chatTypeConversationId,
+          chatConversationId: appLocalStorage.chatTypeConversationId,
         }
       })
     }
-  }, [appSettings.chatTypeConversationId])
+  }, [appLocalStorage.chatTypeConversationId])
   useFocus(() => {
     if (
       sidebarSettingsRef.current.type === 'Chat' &&

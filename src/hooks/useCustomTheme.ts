@@ -1,4 +1,4 @@
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { createTheme, responsiveFontSizes, Theme } from '@mui/material/styles'
 import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
@@ -59,26 +59,16 @@ interface IProps {
 
 export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
   const { shadowRootElement, colorSchema } = props || {}
-  const AppSettings = useRecoilValue(AppSettingsState)
-
-  // React.useEffect(() => {
-  //   if (AppSettings.colorSchema) return
-  //   setChromeExtensionSettings({
-  //     colorSchema: window.matchMedia('(prefers-color-scheme: dark)').matches
-  //       ? 'dark'
-  //       : 'light',
-  //   })
-  // }, [])
-
+  const appDBStorage = useRecoilValue(AppDBStorageState)
   const isDarkMode = useMemo(() => {
     if (colorSchema !== undefined) {
       return colorSchema === 'dark'
     }
-    if (AppSettings.userSettings?.colorSchema === 'auto') {
+    if (appDBStorage.userSettings?.colorSchema === 'auto') {
       return window.matchMedia('(prefers-color-scheme: dark)').matches
     }
-    return AppSettings.userSettings?.colorSchema === 'dark'
-  }, [AppSettings.userSettings, colorSchema])
+    return appDBStorage.userSettings?.colorSchema === 'dark'
+  }, [appDBStorage.userSettings, colorSchema])
 
   const theme = React.useMemo(() => {
     return responsiveFontSizes(

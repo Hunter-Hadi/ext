@@ -1,11 +1,8 @@
 import Browser from 'webextension-polyfill'
 import {
-  AI_PROVIDER_MAP,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-  CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
+  CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
   CHROME_EXTENSION_POST_MESSAGE_ID,
-  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/constants'
 import {
   IChromeExtensionListenEvent,
@@ -15,321 +12,18 @@ import { useEffect } from 'react'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import {
-  BING_MODELS,
-  BingConversationStyle,
-} from '@/background/src/chat/BingChat/bing/types'
-import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
-import cloneDeep from 'lodash-es/cloneDeep'
-import {
-  IChromeExtensionButtonSetting,
-  IChromeExtensionSettings,
-  IChromeExtensionButtonSettingKey,
-  IChromeExtensionSettingsUpdateFunction,
-} from '@/background/types/Settings'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
-import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
-import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
-import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionSettingsSnapshot'
+import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import ConversationManager from '@/background/src/chatConversations'
-import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 
 export {
   resetChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
   getChromeExtensionOnBoardingData,
-} from './onboardingStorage'
+} from './chromeExtensionStorage/chromeExtensionOnboardingStorage'
 
 dayjs.extend(utc)
-
-export const FILTER_SAVE_KEYS = [
-  'currentModel',
-  'currentPlugins',
-  'plugins',
-  'conversationId',
-  'chatTypeConversationId',
-  'currentAIProvider',
-  'commands',
-  'models',
-  `thirdProviderSettings.${AI_PROVIDER_MAP.OPENAI}.plugins`,
-  `thirdProviderSettings.${AI_PROVIDER_MAP.OPENAI}.pluginOptions`,
-  `thirdProviderSettings.${AI_PROVIDER_MAP.OPENAI}.modelOptions`,
-] as Array<keyof IChromeExtensionSettings>
-
-export const getDefaultChromeExtensionSettings = (): IChromeExtensionSettings => {
-  return {
-    commands: [],
-    chatTypeConversationId: '',
-    currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    /** @deprecated **/
-    contextMenus: [],
-    /** @deprecated **/
-    gmailToolBarContextMenu: [],
-    userSettings: {
-      preferredLanguage: 'en',
-      chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-      chatGPTStableModeDuration: 30,
-      colorSchema: 'auto',
-      language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-      pdf: {
-        enabled: true,
-      },
-      quickAccess: {
-        enabled: true,
-      },
-      inputAssistantButton: {
-        gmail: true,
-        outlook: true,
-        linkedIn: true,
-        twitter: true,
-        facebook: true,
-        youtube: true,
-        instagram: true,
-        reddit: true,
-        googleMyBusiness: true,
-        slack: true,
-        discord: true,
-        whatsApp: true,
-        hubspot: true,
-        telegram: true,
-        googleChat: true,
-        microsoftTeams: true,
-      },
-    },
-    buttonSettings: {
-      inputAssistantComposeReplyButton: {
-        visibility: {
-          isWhitelistMode: false,
-          whitelist: [],
-          blacklist: [],
-        },
-        contextMenu: [],
-        contextMenuPosition: 'start',
-      },
-      inputAssistantComposeNewButton: {
-        visibility: {
-          isWhitelistMode: false,
-          whitelist: [],
-          blacklist: [],
-        },
-        contextMenu: [],
-        contextMenuPosition: 'start',
-      },
-      inputAssistantRefineDraftButton: {
-        visibility: {
-          isWhitelistMode: false,
-          whitelist: [],
-          blacklist: [],
-        },
-        contextMenu: [],
-        contextMenuPosition: 'start',
-      },
-      textSelectPopupButton: {
-        visibility: {
-          isWhitelistMode: false,
-          whitelist: [],
-          blacklist: [],
-        },
-        contextMenu: [],
-        contextMenuPosition: 'start',
-      },
-    },
-    thirdProviderSettings: {
-      [AI_PROVIDER_MAP.BING]: {
-        conversationStyle: BingConversationStyle.Balanced,
-        model: BING_MODELS[0].value,
-      },
-      [AI_PROVIDER_MAP.CLAUDE]: {
-        model: CLAUDE_MODELS[0].value,
-      },
-      [AI_PROVIDER_MAP.BARD]: {
-        model: BARD_MODELS[0].value,
-      },
-      [AI_PROVIDER_MAP.OPENAI]: {
-        model: 'text-davinci-002-render-sha',
-        plugins: [],
-        pluginOptions: [],
-        modelOptions: [],
-      },
-      [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: {
-        temperature: 1,
-        model: USE_CHAT_GPT_PLUS_MODELS[0].value,
-      },
-      [AI_PROVIDER_MAP.OPENAI_API]: {
-        model: OPENAI_API_MODELS[0].value,
-        temperature: 1,
-        apiKey: '',
-        apiHost: 'https://api.openai.com',
-      },
-      [AI_PROVIDER_MAP.POE]: {
-        model: POE_MODELS[0].value,
-      },
-      [AI_PROVIDER_MAP.MAXAI_CLAUDE]: {
-        model: MAXAI_CLAUDE_MODELS[0].value,
-        temperature: 1,
-      },
-    },
-  } as IChromeExtensionSettings
-}
-
-export const getChromeExtensionSettings = async (): Promise<IChromeExtensionSettings> => {
-  const defaultConfig = getDefaultChromeExtensionSettings()
-  const localData = await Browser.storage.local.get(
-    CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
-  )
-  try {
-    if (localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]) {
-      const localSettings = JSON.parse(
-        localData[CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY],
-      )
-      const cloneDefaultConfig = cloneDeep(defaultConfig)
-      const cloneLocalSettings = cloneDeep(localSettings)
-      // 为了提高merge的性能，先把contextMenu字段拿出来 -- 开始
-      const buttonMap = new Map()
-      // 默认的buttonSettings
-      const defaultButtonSettings = cloneDeep(cloneDefaultConfig.buttonSettings)
-      if (defaultButtonSettings) {
-        Object.keys(defaultButtonSettings).forEach((buttonKey) => {
-          if (
-            defaultButtonSettings[buttonKey as IChromeExtensionButtonSettingKey]
-              .contextMenu?.length > 0
-          ) {
-            buttonMap.set(
-              buttonKey,
-              cloneDeep(
-                defaultButtonSettings[
-                  buttonKey as IChromeExtensionButtonSettingKey
-                ].contextMenu,
-              ),
-            )
-            defaultButtonSettings[
-              buttonKey as IChromeExtensionButtonSettingKey
-            ].contextMenu = []
-          }
-        })
-      }
-      // 本地的buttonSettings
-      const localButtonSettings = cloneDeep(cloneLocalSettings.buttonSettings)
-      if (localButtonSettings) {
-        if (localSettings.contextMenus?.length > 0) {
-          localButtonSettings.textSelectPopupButton.contextMenu =
-            localSettings.contextMenus
-          localSettings.contextMenus = []
-        }
-        if (localSettings.gmailToolBarContextMenu?.length > 0) {
-          localButtonSettings.gmailButton.contextMenu =
-            localSettings.gmailToolBarContextMenu
-          localSettings.gmailToolBarContextMenu = []
-        }
-        Object.keys(localButtonSettings).forEach((buttonKey) => {
-          if (localButtonSettings[buttonKey].contextMenu?.length > 0) {
-            buttonMap.set(
-              buttonKey,
-              cloneDeep(localButtonSettings[buttonKey].contextMenu),
-            )
-            localButtonSettings[buttonKey].contextMenu = []
-          }
-        })
-      }
-      const currentButtonContentMenuSettings: {
-        [key in IChromeExtensionButtonSettingKey]: Partial<IChromeExtensionButtonSetting>
-      } = {
-        textSelectPopupButton: {},
-        inputAssistantComposeReplyButton: {},
-        inputAssistantComposeNewButton: {},
-        inputAssistantRefineDraftButton: {},
-      }
-      Object.keys(currentButtonContentMenuSettings).forEach((buttonKey) => {
-        if (buttonMap.has(buttonKey)) {
-          currentButtonContentMenuSettings[
-            buttonKey as IChromeExtensionButtonSettingKey
-          ].contextMenu = buttonMap.get(buttonKey)
-        }
-      })
-      // 为了提高merge的性能，先把contextMenu字段拿出来 -- 结束
-      // 因为每次版本更新都可能会有新字段，用本地的覆盖默认的就行
-      const mergedSettings = mergeWithObject([
-        cloneDefaultConfig,
-        cloneLocalSettings,
-        {
-          buttonSettings: defaultButtonSettings,
-        },
-        {
-          buttonSettings: localButtonSettings,
-        },
-        {
-          buttonSettings: currentButtonContentMenuSettings,
-        },
-      ]) as IChromeExtensionSettings
-      console.log('mergedSettings', mergedSettings)
-      // 废弃字段处理
-      // 1. 去掉selectionButtonVisible字段控制 - v2.0.2 - 20230710
-      if (
-        Object.prototype.hasOwnProperty.call(
-          mergedSettings.userSettings as any,
-          'selectionButtonVisible',
-        )
-      ) {
-        // 说明用户打开了textSelectPopupButton
-        if ((mergedSettings.userSettings as any).selectionButtonVisible) {
-          // 需要把textSelectPopupButton的visibility的黑名单模式打开
-          mergedSettings.buttonSettings!.textSelectPopupButton.visibility.isWhitelistMode = false
-        } else {
-          // 需要把textSelectPopupButton的visibility的白名单模式打开
-          mergedSettings.buttonSettings!.textSelectPopupButton.visibility.isWhitelistMode = true
-          mergedSettings.buttonSettings!.textSelectPopupButton.visibility.whitelist = []
-        }
-        delete (mergedSettings.userSettings as any).selectionButtonVisible
-      }
-      return mergedSettings
-    } else {
-      return defaultConfig
-    }
-  } catch (e) {
-    // 说明没有这个字段，应该返回默认的配置
-    return defaultConfig
-  }
-}
-
-export const getChromeExtensionButtonContextMenu = async (
-  buttonKey: IChromeExtensionButtonSettingKey,
-) => {
-  const settings = await getChromeExtensionSettings()
-  const cacheMenus = settings.buttonSettings?.[buttonKey].contextMenu
-  return cacheMenus || []
-}
-
-export const setChromeExtensionSettings = async (
-  settingsOrUpdateFunction:
-    | IChromeExtensionSettings
-    | IChromeExtensionSettingsUpdateFunction,
-): Promise<boolean> => {
-  try {
-    const oldSettings = await getChromeExtensionSettings()
-    if (settingsOrUpdateFunction instanceof Function) {
-      const newSettings = settingsOrUpdateFunction(oldSettings)
-      await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify(
-          newSettings,
-        ),
-      })
-    } else {
-      await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY]: JSON.stringify({
-          ...oldSettings,
-          ...settingsOrUpdateFunction,
-        }),
-      })
-    }
-    return true
-  } catch (e) {
-    return false
-  }
-}
 
 export const backgroundSendAllClientMessage = async (
   event: IChromeExtensionSendEvent,
@@ -550,9 +244,7 @@ export const chromeExtensionLogout = async () => {
     CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   )
   // 清空用户设置
-  await Browser.storage.local.remove(
-    CHROME_EXTENSION_LOCAL_STORAGE_CLIENT_SAVE_KEY,
-  )
+  await Browser.storage.local.remove(CHROME_EXTENSION_DB_STORAGE_SAVE_KEY)
   // 清空用户indexedDB
   await ConversationManager.conversationDB.clearAllConversations()
   // 清空本地own prompts快照
@@ -664,3 +356,8 @@ export const requestHostPermission = async (host: string) => {
   }
   return Browser.permissions.request(permissions)
 }
+export { IChromeExtensionDBStorageUpdateFunction } from '@/background/utils/chromeExtensionStorage/types'
+export { IChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/types'
+export { IChromeExtensionButtonSettingKey } from '@/background/utils/chromeExtensionStorage/types'
+export { IChatGPTPluginType } from '@/background/utils/chromeExtensionStorage/types'
+export { IChatGPTModelType } from '@/background/utils/chromeExtensionStorage/types'

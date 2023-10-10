@@ -5,11 +5,10 @@ import {
   getAppContextMenuRootElement,
   showChatBox,
 } from '@/utils'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import { useInitChatGPTClient } from '@/features/chatgpt'
 import Button from '@mui/material/Button'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
-import { setChromeExtensionSettings } from '@/background/utils'
 import Log from '@/utils/Log'
 import { useAuthLogin } from '@/features/auth'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
@@ -27,7 +26,7 @@ import Divider from '@mui/material/Divider'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitI18n } from '@/i18n/hooks'
 import { useTranslation } from 'react-i18next'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
@@ -38,6 +37,7 @@ import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClic
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const log = new Log('AppInit')
 
@@ -62,36 +62,24 @@ const UseChatGPTWebPageJumpToShortCuts = () => {
 }
 
 export const AppSettingsInit = () => {
-  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const setAppDBStorage = useSetRecoilState(AppDBStorageState)
+  const setAppLocalStorage = useSetRecoilState(AppLocalStorageState)
   useThemeUpdateListener()
   useEffect(() => {
     const updateAppSettings = async () => {
-      const settings = await clientGetLiteChromeExtensionSettings()
-      if (settings) {
-        setAppSettings({
-          ...settings,
+      const liteChromeExtensionDBStorage = await clientGetLiteChromeExtensionDBStorage()
+      if (liteChromeExtensionDBStorage) {
+        setAppDBStorage({
+          ...liteChromeExtensionDBStorage,
         })
-        log.info('get settings', settings)
-        if (settings.userSettings && !settings.userSettings?.colorSchema) {
-          const defaultColorSchema = window.matchMedia(
-            '(prefers-color-scheme: dark)',
-          ).matches
-            ? 'dark'
-            : 'light'
-          await setChromeExtensionSettings({
-            userSettings: {
-              ...settings.userSettings,
-              colorSchema: defaultColorSchema,
-            },
-          })
-          setAppSettings({
-            ...settings,
-            userSettings: {
-              ...settings.userSettings,
-              colorSchema: defaultColorSchema,
-            },
-          })
-        }
+        log.info('get db settings', liteChromeExtensionDBStorage)
+      }
+      const chromeExtensionLocalStorage = await getChromeExtensionLocalStorage()
+      if (chromeExtensionLocalStorage) {
+        setAppLocalStorage({
+          ...chromeExtensionLocalStorage,
+        })
+        log.info('get local settings', chromeExtensionLocalStorage)
       }
     }
     updateAppSettings()

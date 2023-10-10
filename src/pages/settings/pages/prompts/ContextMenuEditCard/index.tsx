@@ -31,12 +31,7 @@ import AddIcon from '@mui/icons-material/Add'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import groupBy from 'lodash-es/groupBy'
 import cloneDeep from 'lodash-es/cloneDeep'
-import {
-  getChromeExtensionButtonContextMenu,
-  setChromeExtensionSettings,
-} from '@/background/utils'
 import ContextMenuEditFormModal from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuEditFormModal'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
@@ -44,6 +39,11 @@ import {
 import { useTranslation } from 'react-i18next'
 import ContextMenuRestoreDialog from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuRestoreDialog'
 import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import {
+  getChromeExtensionDBStorageButtonContextMenu,
+  setChromeExtensionDBStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 const rootId = 'root'
 
@@ -53,7 +53,7 @@ const saveTreeData = async (
 ) => {
   try {
     console.log('saveTreeData', key, treeData)
-    const success = await setChromeExtensionSettings((settings) => {
+    const success = await setChromeExtensionDBStorage((settings) => {
       return {
         ...settings,
         buttonSettings: {
@@ -285,7 +285,9 @@ const ContextMenuEditCard: FC<{
     let isDestroy = false
     if (buttonKey) {
       const getList = async () => {
-        const contextMenu = await getChromeExtensionButtonContextMenu(buttonKey)
+        const contextMenu = await getChromeExtensionDBStorageButtonContextMenu(
+          buttonKey,
+        )
         if (isDestroy) return
         setOriginalTreeData(contextMenu)
         setTimeout(() => {

@@ -1,7 +1,7 @@
 import React, { FC, useMemo, useRef } from 'react'
 import Box from '@mui/material/Box'
 import { useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import { SxProps } from '@mui/material/styles'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
@@ -16,7 +16,7 @@ const AIProviderSelectorFloatingButton: FC<{
 }> = (props) => {
   const { sx } = props
   const { type } = useRecoilValue(SidebarSettingsState)
-  const appSettings = useRecoilValue(AppSettingsState)
+  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
   // 用户打开之后，锁定关闭700ms
   const lockTimerRef = useRef<any>(null)
@@ -75,7 +75,9 @@ const AIProviderSelectorFloatingButton: FC<{
         }}
       >
         <AIProviderIcon
-          aiProviderType={appSettings.currentAIProvider || 'USE_CHAT_GPT_PLUS'}
+          aiProviderType={
+            appLocalStorage.currentAIProvider || 'USE_CHAT_GPT_PLUS'
+          }
         />
         <Popover
           open={open}
@@ -137,6 +139,6 @@ const AIProviderSelectorFloatingButton: FC<{
         </Popover>
       </Box>
     )
-  }, [appSettings.currentAIProvider, open, type])
+  }, [appLocalStorage.currentAIProvider, open, type])
 }
 export default AIProviderSelectorFloatingButton

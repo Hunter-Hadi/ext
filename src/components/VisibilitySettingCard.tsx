@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { IVisibilitySetting } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import DomainSelect from '@/components/select/DomainSelect'
@@ -19,6 +18,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import { useTranslation } from 'react-i18next'
 import { isEqual } from 'lodash-es'
+import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/types'
 
 /**
  * 控制黑白名单的卡片
@@ -75,10 +75,12 @@ const VisibilitySettingCard: FC<{
     }, 0)
   }
   const isInitial = useRef(false)
-  const [visibilitySetting, setVisibilitySetting] =
-    useState<IVisibilitySetting>(() => {
-      return cloneDeep(defaultValue)
-    })
+  const [
+    visibilitySetting,
+    setVisibilitySetting,
+  ] = useState<IVisibilitySetting>(() => {
+    return cloneDeep(defaultValue)
+  })
   useEffect(() => {
     if (!isInitial.current) {
       if (!isEqual(defaultValue, visibilitySetting)) {

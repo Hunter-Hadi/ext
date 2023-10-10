@@ -1,27 +1,29 @@
 import { useRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import { useMemo } from 'react'
 import { IAIProviderType } from '@/background/provider/chat'
 import {
   getThirdProviderSettings,
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
-import { IThirdProviderSettings } from '@/background/types/Settings'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/types'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const useThirdProviderSettings = () => {
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
-  const currentProvider = appSettings.currentAIProvider
+  const [appLocalStorage, setAppLocalStorage] = useRecoilState(
+    AppLocalStorageState,
+  )
+  const currentProvider = appLocalStorage.currentAIProvider
   const currentThirdProviderSettings = useMemo(() => {
     if (
-      appSettings.thirdProviderSettings &&
+      appLocalStorage.thirdProviderSettings &&
       currentProvider &&
-      appSettings['thirdProviderSettings'][currentProvider]
+      appLocalStorage['thirdProviderSettings'][currentProvider]
     ) {
-      return appSettings.thirdProviderSettings?.[currentProvider] as any
+      return appLocalStorage.thirdProviderSettings?.[currentProvider] as any
     }
     return undefined
-  }, [currentProvider, appSettings.thirdProviderSettings])
+  }, [currentProvider, appLocalStorage.thirdProviderSettings])
   const fetchThirdProviderSettings = async <T extends IAIProviderType>(
     providerKey: T,
   ) => {
@@ -38,7 +40,7 @@ const useThirdProviderSettings = () => {
   ) => {
     const success = await setThirdProviderSettings(providerKey, settings, false)
     if (success) {
-      setAppSettings(await clientGetLiteChromeExtensionSettings())
+      setAppLocalStorage(await getChromeExtensionLocalStorage())
     }
   }
   return {
@@ -51,18 +53,20 @@ const useThirdProviderSettings = () => {
 export const useSingleThirdProviderSettings = <T extends IAIProviderType>(
   providerKey: T,
 ) => {
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const [appLocalStorage, setAppLocalStorage] = useRecoilState(
+    AppLocalStorageState,
+  )
   const providerSettings = useMemo(() => {
-    return appSettings.thirdProviderSettings?.[providerKey] as
+    return appLocalStorage.thirdProviderSettings?.[providerKey] as
       | IThirdProviderSettings[T]
       | undefined
-  }, [appSettings.thirdProviderSettings, providerKey])
+  }, [appLocalStorage.thirdProviderSettings, providerKey])
   const updateThirdProviderSettings = async (
     settings: Partial<IThirdProviderSettings[T]>,
   ) => {
     const success = await setThirdProviderSettings(providerKey, settings, false)
     if (success) {
-      setAppSettings(await clientGetLiteChromeExtensionSettings())
+      setAppLocalStorage(await getChromeExtensionLocalStorage())
     }
   }
   return [providerSettings, updateThirdProviderSettings] as const

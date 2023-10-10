@@ -9,6 +9,7 @@ export function getPossibleElementByQuerySelector<T extends HTMLElement>(
       return element as T
     }
   }
+  return undefined
 }
 
 interface ICreateShadowRootProps {

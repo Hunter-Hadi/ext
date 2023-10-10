@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useContextMenuList } from '@/features/contextMenu'
 import { useRecoilValue } from 'recoil'
@@ -21,9 +20,10 @@ import { CacheProvider } from '@emotion/react'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import {
   getChromeExtensionOnBoardingData,
+  IChromeExtensionButtonSettingKey,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import { OnBoardingKeyType } from '@/background/utils/onboardingStorage'
+import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement

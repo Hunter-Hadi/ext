@@ -12,8 +12,8 @@ import {
   gqlRequest,
 } from './api'
 import { SendMessageParams } from '@/background/src/chat/BingChat/bing/types'
-import { getChromeExtensionSettings } from '@/background/utils'
 import { PoeModel } from '@/background/src/chat/PoeChat/type'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 interface ChatMessage {
   id: string
@@ -54,10 +54,10 @@ export class PoeWebBot {
     }
 
     if (!this.conversationContext) {
-      const settings = await getChromeExtensionSettings()
+      const appLocalStorage = await getChromeExtensionLocalStorage()
       const { poeModel: botId } = {
         poeModel:
-          settings.thirdProviderSettings?.CLAUDE?.model ||
+          appLocalStorage.thirdProviderSettings?.CLAUDE?.model ||
           PoeModel.ClaudeInstant,
       }
       console.log('Using poe model', botId)

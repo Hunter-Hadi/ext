@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import Stack from '@mui/material/Stack'
 import useFavoriteContextMenuList, {
   FAVORITE_CONTEXT_MENU_GROUP_ID,
@@ -10,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import TooltipButton from '@/components/TooltipButton'
 import { useTranslation } from 'react-i18next'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 const FavoriteContextMenuGroup: FC<{
   buttonSettingKey: IChromeExtensionButtonSettingKey
@@ -18,8 +18,9 @@ const FavoriteContextMenuGroup: FC<{
 }> = (props) => {
   const { buttonSettingKey, placement, onClick } = props
   const { t } = useTranslation(['common', 'client', 'prompt'])
-  const { favoriteContextMenuList } =
-    useFavoriteContextMenuList(buttonSettingKey)
+  const { favoriteContextMenuList } = useFavoriteContextMenuList(
+    buttonSettingKey,
+  )
   return (
     <Stack
       direction={'row'}

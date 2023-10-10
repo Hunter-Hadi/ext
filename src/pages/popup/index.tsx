@@ -15,23 +15,21 @@ import RefreshIcon from '@mui/icons-material/Refresh'
 import Browser from 'webextension-polyfill'
 import Box from '@mui/material/Box'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import {
-  backgroundSendClientMessage,
-  getChromeExtensionSettings,
-} from '@/background/utils'
+import { backgroundSendClientMessage } from '@/background/utils'
 import Alert from '@mui/material/Alert'
 import BulletList from '../../components/BulletList'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import { useInitI18n } from '@/i18n/hooks'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
 const App: FC<{
   isSpecialPage: boolean
 }> = (props) => {
-  const updateAppSettings = useSetRecoilState(AppSettingsState)
+  const updateAppSettings = useSetRecoilState(AppDBStorageState)
   const { isSpecialPage } = props
   useInitI18n()
   const { t } = useTranslation(['common', 'client'])
@@ -54,7 +52,7 @@ const App: FC<{
   }
   useEffectOnce(() => {
     init()
-    getChromeExtensionSettings().then(updateAppSettings)
+    getChromeExtensionDBStorage().then(updateAppSettings)
   })
   return (
     <Stack

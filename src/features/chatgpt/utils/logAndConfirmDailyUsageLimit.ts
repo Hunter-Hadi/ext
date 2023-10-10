@@ -1,4 +1,3 @@
-import { getChromeExtensionSettings } from '@/background/utils'
 import { getAccessToken } from '@/utils/request'
 import AES from 'crypto-js/aes'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
@@ -16,6 +15,7 @@ import {
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { getBrowserInfo, sendLarkBotMessage } from '@/utils/larkBot'
 import { IAIProviderType } from '@/background/provider/chat'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -32,10 +32,10 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
 }): Promise<boolean> => {
   const logApiAndConfirmIsLimited = async () => {
     try {
-      const settings = await getChromeExtensionSettings()
+      const appLocalStorage = await getChromeExtensionLocalStorage()
       const provider =
         promptDetail.provider ||
-        settings.currentAIProvider ||
+        appLocalStorage.currentAIProvider ||
         'UNKNOWN_PROVIDER'
       const beautyQueryMap: {
         [key in IAIProviderType]: string

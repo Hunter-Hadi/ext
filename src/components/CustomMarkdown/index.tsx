@@ -90,10 +90,9 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
   props,
 ) => {
   const { children, className } = props
-  const code = useMemo(
-    () => reactNodeToString(props.children),
-    [props.children],
-  )
+  const code = useMemo(() => reactNodeToString(props.children), [
+    props.children,
+  ])
   const lang = props.className?.match(/language-(\w+)/)?.[1] || 'code'
   return (
     <Stack
@@ -152,24 +151,31 @@ const CustomMarkdown: FC<{
           // ]}
           disallowedElements={['br']}
           components={{
+            // eslint-disable-next-line react/display-name
             h1: (props: any) => {
               return <OverrideHeading {...props} heading={'h1'} />
             },
+            // eslint-disable-next-line react/display-name
             h2: (props: any) => {
               return <OverrideHeading {...props} heading={'h2'} />
             },
+            // eslint-disable-next-line react/display-name
             h3: (props: any) => {
               return <OverrideHeading {...props} heading={'h3'} />
             },
+            // eslint-disable-next-line react/display-name
             h4: (props: any) => {
               return <OverrideHeading {...props} heading={'h4'} />
             },
+            // eslint-disable-next-line react/display-name
             h5: (props: any) => {
               return <OverrideHeading {...props} heading={'h5'} />
             },
+            // eslint-disable-next-line react/display-name
             h6: (props: any) => {
               return <OverrideHeading {...props} heading={'h6'} />
             },
+            // eslint-disable-next-line react/display-name
             a: ({ node, ...props }) => {
               return (
                 // eslint-disable-next-line react/prop-types
@@ -178,6 +184,7 @@ const CustomMarkdown: FC<{
                 </OverrideAnchor>
               )
             },
+            // eslint-disable-next-line react/display-name
             code: ({ node, inline, className, children, ...props }) => {
               if (inline) {
                 return (
@@ -190,6 +197,7 @@ const CustomMarkdown: FC<{
                 <OverrideCode className={className}>{children}</OverrideCode>
               )
             },
+            // eslint-disable-next-line react/display-name
             img: ({ node, src, alt, title, ...props }) => {
               let data: any = null
               try {

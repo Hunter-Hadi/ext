@@ -7,10 +7,10 @@ import InputAssistantButtonManager, {
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { IInputAssistantButtonGroupConfig } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { getCurrentDomainHost } from '@/utils'
 const InputAssistantPortal: FC = () => {
-  const appSetting = useRecoilValue(AppSettingsState)
+  const appSetting = useRecoilValue(AppDBStorageState)
   const [config, setConfig] = useState<IInputAssistantButtonGroupConfig | null>(
     null,
   )

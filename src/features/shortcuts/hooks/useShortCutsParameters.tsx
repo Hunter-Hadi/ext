@@ -9,7 +9,7 @@ import {
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   ROOT_CHAT_BOX_INPUT_ID,
 } from '@/constants'
-import { AppSettingsState, AppState } from '@/store'
+import { AppDBStorageState, AppState } from '@/store'
 import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import { FloatingContextMenuDraftSelector } from '@/features/contextMenu'
@@ -23,7 +23,7 @@ const useShortCutsParameters = () => {
   const floatingContextMenuDraftText = useRecoilValue(
     FloatingContextMenuDraftSelector,
   )
-  const appSettings = useRecoilValue(AppSettingsState)
+  const appDBStorage = useRecoilValue(AppDBStorageState)
   return useCallback(() => {
     const GMAIL_DRAFT_CONTEXT =
       ''
@@ -45,7 +45,7 @@ const useShortCutsParameters = () => {
     const SELECTED_HTML = currentSelection?.selectionHTML || ''
     const SELECTED_TEXT = currentSelection?.selectionText || ''
     let userSelectedLanguage =
-      appSettings.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+      appDBStorage.userSettings?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
     // NOTE: 历史遗留问题
     if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
       userSelectedLanguage = DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
@@ -100,7 +100,7 @@ const useShortCutsParameters = () => {
   }, [
     appState.env,
     currentSelection,
-    appSettings.userSettings,
+    appDBStorage.userSettings,
     floatingContextMenuDraftText,
   ])
 }

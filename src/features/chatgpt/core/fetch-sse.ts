@@ -22,6 +22,7 @@ export const fetchSSE = async (
       } else if (resp.status === 403) {
         location.reload()
       } else if (resp.status === 418) {
+        // 418 I'm a teapot
       }
     }
     throw new Error(

@@ -2,11 +2,8 @@ import { v4 as uuidV4 } from 'uuid'
 import { fetchSSE } from './fetch-sse'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 import { AI_PROVIDER_MAP } from '@/constants'
-import {
-  IChatGPTModelType,
-  IChatGPTPluginType,
-} from '@/background/types/Settings'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
 
 export interface IChatGPTAnswer {
   text: string

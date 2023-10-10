@@ -45,8 +45,9 @@ const ContextMenuItemPreviewTooltip: FC<{
       blacklist: [],
     }
     if (settings) {
-      const domains = (
-        settings.isWhitelistMode ? settings.whitelist : settings.blacklist
+      const domains = (settings.isWhitelistMode
+        ? settings.whitelist
+        : settings.blacklist
       ).map((domain) => {
         return {
           domain,
@@ -85,7 +86,7 @@ const ContextMenuItemPreviewTooltip: FC<{
           spacing={2}
           width={300}
           component={'div'}
-          onClick={(event) => {
+          onClick={(event: any) => {
             event.stopPropagation()
             event.preventDefault()
           }}

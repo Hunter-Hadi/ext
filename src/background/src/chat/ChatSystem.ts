@@ -9,16 +9,14 @@ import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
   getChromeExtensionOnBoardingData,
-  getChromeExtensionSettings,
   setChromeExtensionOnBoardingData,
-  setChromeExtensionSettings,
 } from '@/background/utils'
 import Log from '@/utils/Log'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import Browser from 'webextension-polyfill'
 import { APP_VERSION, CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { OnBoardingKeyType } from '@/background/utils/onboardingStorage'
+import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
@@ -27,6 +25,11 @@ import {
   processAskAIParameters,
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
+
+import {
+  getChromeExtensionLocalStorage,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const log = new Log('Background/Chat/ChatSystem')
 
@@ -301,7 +304,7 @@ class ChatSystem implements ChatSystemInterface {
       }
       return undefined
     })
-    getChromeExtensionSettings().then(async (settings) => {
+    getChromeExtensionLocalStorage().then(async (settings) => {
       if (settings.currentAIProvider) {
         console.log('settings.currentAIProvider', settings.currentAIProvider)
         await this.switchAdapter(settings.currentAIProvider)
@@ -313,7 +316,7 @@ class ChatSystem implements ChatSystemInterface {
   }
   async switchAdapter(provider: IAIProviderType) {
     this.currentProvider = provider
-    await setChromeExtensionSettings({
+    await setChromeExtensionLocalStorage({
       currentAIProvider: provider,
     })
     await this.preAuth()

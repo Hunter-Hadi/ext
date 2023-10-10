@@ -14,6 +14,8 @@ const log = new Log('SearchWithAI/OpenAIChat')
 class OpenAIChat extends BaseChat {
   openAILib: ChatGPTDaemonProcess
   status: ChatStatus = 'success'
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   conversation?: ChatGPTConversation
 
   constructor() {
@@ -34,8 +36,8 @@ class OpenAIChat extends BaseChat {
     await this.updateClientStatus()
   }
   async createConversation() {
-    this.conversation = await this.openAILib.createConversation()
-    return this.conversation
+    this.conversation = (await this.openAILib.createConversation()) as ChatGPTConversation
+    return this.conversation.id
   }
   async removeConversation(conversationId: string) {
     return await this.openAILib.closeConversation(conversationId)

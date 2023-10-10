@@ -1,13 +1,13 @@
+import { getSystemContextMenuWithButtonSettingKey } from '@/background/utils/buttonSettings'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import {
   IChromeExtensionButtonSettingKey,
-  IChromeExtensionSettings,
-} from '@/background/types/Settings'
-import { getChromeExtensionSettings } from '@/background/utils/index'
-import { getSystemContextMenuWithButtonSettingKey } from '@/background/utils/buttonSettings'
+  IChromeExtensionDBStorage,
+} from '@/background/utils/chromeExtensionStorage/types'
 
-const getLiteChromeExtensionSettings = async (
+const getLiteChromeExtensionDBStorage = async (
   fromUrl?: string,
-): Promise<IChromeExtensionSettings> => {
+): Promise<IChromeExtensionDBStorage> => {
   let host =
     new URL(fromUrl || 'https://a').host
       ?.replace(/^www\./, '')
@@ -16,7 +16,7 @@ const getLiteChromeExtensionSettings = async (
   if (host.includes('larksuite.com')) {
     host = 'larksuite.com'
   }
-  const settings = await getChromeExtensionSettings()
+  const settings = await getChromeExtensionDBStorage()
   if (host && settings.buttonSettings) {
     for (const key in settings.buttonSettings) {
       const saveKey = key as IChromeExtensionButtonSettingKey
@@ -43,4 +43,4 @@ const getLiteChromeExtensionSettings = async (
   console.log('lite settings', settings)
   return settings
 }
-export default getLiteChromeExtensionSettings
+export default getLiteChromeExtensionDBStorage

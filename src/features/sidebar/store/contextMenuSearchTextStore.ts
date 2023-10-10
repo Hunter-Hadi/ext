@@ -1,7 +1,7 @@
 import { CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY } from '@/constants'
 import Browser from 'webextension-polyfill'
 import { useRecoilValue } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { useMemo, useState } from 'react'
 import { useFocus } from '@/hooks/useFocus'
 import useEffectOnce from '@/hooks/useEffectOnce'
@@ -17,22 +17,21 @@ export interface ContextMenuSearchTextStore {
   [key: string]: ContextMenuSearchTextStoreI18nStore
 }
 
-export const getContextMenuSearchTextStore =
-  async (): Promise<ContextMenuSearchTextStore> => {
-    try {
-      const cache = await Browser.storage.local.get(
-        CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY,
-      )
-      if (cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY]) {
-        return JSON.parse(
-          cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY] || '{}',
-        ) as ContextMenuSearchTextStore
-      }
-      return {}
-    } catch (e) {
-      return {}
+export const getContextMenuSearchTextStore = async (): Promise<ContextMenuSearchTextStore> => {
+  try {
+    const cache = await Browser.storage.local.get(
+      CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY,
+    )
+    if (cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY]) {
+      return JSON.parse(
+        cache[CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY] || '{}',
+      ) as ContextMenuSearchTextStore
     }
+    return {}
+  } catch (e) {
+    return {}
   }
+}
 
 export const setContextMenuSearchTextStore = async (
   lang: string,
@@ -72,16 +71,17 @@ export const clearContextMenuSearchTextStore = async () => {
 }
 
 export const useContextMenuSearchTextStore = () => {
-  const { userSettings } = useRecoilValue(AppSettingsState)
-  const [contextMenuSearchTextStore, setContextMenuSearchTextStore] =
-    useState<ContextMenuSearchTextStore>({})
-  const contextMenuSearchTextWithCurrentLanguage =
-    useMemo<ContextMenuSearchTextStoreI18nStore>(() => {
-      if (userSettings?.preferredLanguage) {
-        return contextMenuSearchTextStore[userSettings.preferredLanguage] || {}
-      }
-      return {}
-    }, [userSettings?.preferredLanguage, contextMenuSearchTextStore])
+  const { userSettings } = useRecoilValue(AppDBStorageState)
+  const [
+    contextMenuSearchTextStore,
+    setContextMenuSearchTextStore,
+  ] = useState<ContextMenuSearchTextStore>({})
+  const contextMenuSearchTextWithCurrentLanguage = useMemo<ContextMenuSearchTextStoreI18nStore>(() => {
+    if (userSettings?.preferredLanguage) {
+      return contextMenuSearchTextStore[userSettings.preferredLanguage] || {}
+    }
+    return {}
+  }, [userSettings?.preferredLanguage, contextMenuSearchTextStore])
   useFocus(() => {
     getContextMenuSearchTextStore().then(setContextMenuSearchTextStore)
   })

@@ -26,19 +26,13 @@
  * }
  */
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import {
-  IChromeExtensionButtonSetting,
-  IChromeExtensionButtonSettingKey,
-  IVisibilitySetting,
-} from '../types/Settings'
 import useEffectOnce from '../../hooks/useEffectOnce'
-import { getChromeExtensionSettings, setChromeExtensionSettings } from './index'
 import { default as lodashSet } from 'lodash-es/set'
 import debounce from 'lodash-es/debounce'
 import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useRecoilState } from 'recoil'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState } from '@/store'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { getCurrentDomainHost } from '@/utils'
 import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
@@ -46,20 +40,29 @@ import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPr
 import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
 import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
 import isEqual from 'lodash-es/isEqual'
+import {
+  getChromeExtensionDBStorage,
+  setChromeExtensionDBStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import {
+  IChromeExtensionButtonSetting,
+  IChromeExtensionButtonSettingKey,
+  IVisibilitySetting,
+} from '@/background/utils/chromeExtensionStorage/types'
 
 export const useChromeExtensionButtonSettings = () => {
-  const [appSettings, setAppSettings] = useRecoilState(AppSettingsState)
+  const [appDBStorage, setAppDBStorage] = useRecoilState(AppDBStorageState)
   const [buttonSettings, setButtonSettings] = useState(
-    () => appSettings.buttonSettings,
+    () => appDBStorage.buttonSettings,
   )
   useEffect(() => {
     setButtonSettings((prevState) => {
-      if (isEqual(prevState, appSettings.buttonSettings)) {
+      if (isEqual(prevState, appDBStorage.buttonSettings)) {
         return prevState
       }
-      return appSettings.buttonSettings
+      return appDBStorage.buttonSettings
     })
-  }, [appSettings.buttonSettings])
+  }, [appDBStorage.buttonSettings])
   const { syncLocalToServer } = useSyncSettingsChecker()
   const debounceSyncLocalToServer = useCallback(
     debounce(syncLocalToServer, 1000),
@@ -70,7 +73,7 @@ export const useChromeExtensionButtonSettings = () => {
     newSettings: IChromeExtensionButtonSetting,
     saveToServer = true,
   ) => {
-    await setChromeExtensionSettings((settings) => {
+    await setChromeExtensionDBStorage((settings) => {
       lodashSet(
         settings,
         `buttonSettings.${buttonKey}.visibility`,
@@ -83,8 +86,7 @@ export const useChromeExtensionButtonSettings = () => {
       )
       return settings
     })
-    const settings = await getChromeExtensionSettings()
-    setAppSettings(settings)
+    setAppDBStorage(await getChromeExtensionDBStorage())
     if (saveToServer) {
       await debounceSyncLocalToServer()
     }
@@ -113,7 +115,7 @@ export const useChromeExtensionButtonSettings = () => {
     buttonKey: IChromeExtensionButtonSettingKey,
   ) => {
     const domain = getCurrentDomainHost()
-    const buttonSetting = appSettings.buttonSettings?.[
+    const buttonSetting = appDBStorage.buttonSettings?.[
       buttonKey
     ] as IChromeExtensionButtonSetting
     if (buttonSetting) {
@@ -146,7 +148,7 @@ export const useChromeExtensionButtonSettings = () => {
     return false
   }
   return {
-    loaded: !!appSettings.buttonSettings,
+    loaded: !!appDBStorage.buttonSettings,
     buttonSettings,
     updateButtonSettings,
     toggleButtonSettings,
@@ -297,12 +299,12 @@ export const checkContextMenuVisibilitySettingIsVisible = (
 export const getChromeExtensionButtonSettings = async (
   buttonKey: IChromeExtensionButtonSettingKey,
 ) => {
-  const settings = await getChromeExtensionSettings()
+  const settings = await getChromeExtensionDBStorage()
   return settings.buttonSettings?.[buttonKey]
 }
 
 export const getContextMenuActions = async (contextMenuId: string) => {
-  const settings = await getChromeExtensionSettings()
+  const settings = await getChromeExtensionDBStorage()
   if (settings.buttonSettings) {
     for (const buttonKey in settings.buttonSettings) {
       const buttonSettings =

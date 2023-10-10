@@ -5,19 +5,21 @@ import { useSetRecoilState } from 'recoil'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect, useRef } from 'react'
 import { IChromeExtensionClientListenEvent } from '@/background/app'
-import { AppSettingsState } from '@/store'
+import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { useCreateClientMessageListener } from '@/background/utils'
 import Log from '@/utils/Log'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { replaceMarkerContent } from '@/features/contextMenu/utils/selectionHelper'
-import clientGetLiteChromeExtensionSettings from '@/utils/clientGetLiteChromeExtensionSettings'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const log = new Log('InitChatGPT')
 
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)
-  const setAppSettings = useSetRecoilState(AppSettingsState)
+  const setAppDBStorage = useSetRecoilState(AppDBStorageState)
+  const setAppLocalStorage = useSetRecoilState(AppLocalStorageState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const showFloatingContextMenuRef = useRef(showFloatingContextMenu)
   useEffect(() => {
@@ -95,8 +97,8 @@ const useInitChatGPTClient = () => {
         break
       case 'Client_updateAppSettings':
         {
-          const newSettings = await clientGetLiteChromeExtensionSettings()
-          setAppSettings(newSettings)
+          setAppDBStorage(await clientGetLiteChromeExtensionDBStorage())
+          setAppLocalStorage(await getChromeExtensionLocalStorage())
           return {
             success: true,
             data: {},

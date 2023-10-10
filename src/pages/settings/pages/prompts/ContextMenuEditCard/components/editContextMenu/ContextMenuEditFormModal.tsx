@@ -20,11 +20,11 @@ import {
 } from '../../../../../components/tooltipCollection'
 import { templateStaticWords } from '@/features/shortcuts/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import { IChromeExtensionButtonSettingKey } from '@/background/types/Settings'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import { useTranslation } from 'react-i18next'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 function replaceString(str: string, startIndex = 0) {
   const matches = templateStaticWords

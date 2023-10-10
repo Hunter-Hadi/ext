@@ -1,7 +1,13 @@
-import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { IAIProviderType } from '@/background/provider/chat'
+
+export type IChromeExtensionButtonSettingKey =
+  | 'inputAssistantComposeReplyButton'
+  | 'inputAssistantComposeNewButton'
+  | 'inputAssistantRefineDraftButton'
+  | 'textSelectPopupButton'
 
 export type IChatGPTModelType = {
   slug: string
@@ -46,6 +52,61 @@ export type IChatGPTPluginType = {
   }
 }
 
+export interface IVisibilitySetting {
+  isWhitelistMode: boolean
+  whitelist: string[]
+  blacklist: string[]
+}
+
+export interface IChromeExtensionButtonSetting {
+  contextMenu: IContextMenuItem[]
+  visibility: IVisibilitySetting
+  contextMenuPosition: 'start' | 'end'
+}
+
+export interface IChromeExtensionDBStorage {
+  userSettings?: {
+    chatBoxWidth?: number
+    colorSchema?: 'light' | 'dark' | 'auto'
+    language?: string
+    preferredLanguage?: string
+    chatGPTStableModeDuration?: number
+    pdf?: {
+      enabled?: boolean
+    }
+    shortcutHintEnable?: boolean
+    quickAccess?: {
+      enabled?: boolean
+    }
+    inputAssistantButton?: {
+      gmail?: boolean
+      outlook?: boolean
+      twitter?: boolean
+      linkedIn?: boolean
+      facebook?: boolean
+      youtube?: boolean
+      instagram?: boolean
+      reddit?: boolean
+      googleMyBusiness?: boolean
+      slack?: boolean
+      discord?: boolean
+      whatsApp?: boolean
+      hubspot?: boolean
+      telegram?: boolean
+      microsoftTeams?: boolean
+      googleChat?: boolean
+    }
+  }
+  buttonSettings?: {
+    [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting
+  }
+  lastModified?: number
+}
+
+export type IChromeExtensionDBStorageUpdateFunction = (
+  settings: IChromeExtensionDBStorage,
+) => IChromeExtensionDBStorage
+
 type IThirdProviderSettings = {
   [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]?: {
     model?: string
@@ -82,76 +143,13 @@ type IThirdProviderSettings = {
   }
 }
 
-export type IChromeExtensionButtonSettingKey =
-  | 'inputAssistantComposeReplyButton'
-  | 'inputAssistantComposeNewButton'
-  | 'inputAssistantRefineDraftButton'
-  | 'textSelectPopupButton'
-
-export interface IVisibilitySetting {
-  isWhitelistMode: boolean
-  whitelist: string[]
-  blacklist: string[]
-}
-
-export interface IChromeExtensionButtonSetting {
-  contextMenu: IContextMenuItem[]
-  visibility: IVisibilitySetting
-  contextMenuPosition: 'start' | 'end'
-}
-
-export interface IChromeExtensionSettings {
-  // models?: IChatGPTModelType[]
-  // plugins?: IChatGPTPluginType[]
+export interface IChromeExtensionLocalStorage {
   currentAIProvider?: IAIProviderType
-  // currentModel?: string
-  // currentPlugins?: string[]
   chatTypeConversationId?: string
-  userSettings?: {
-    chatBoxWidth?: number
-    colorSchema?: 'light' | 'dark' | 'auto'
-    language?: string
-    preferredLanguage?: string
-    chatGPTStableModeDuration?: number
-    pdf?: {
-      enabled?: boolean
-    }
-    // shortcut hint
-    shortcutHintEnable?: boolean
-    quickAccess?: {
-      enabled?: boolean
-    }
-    inputAssistantButton?: {
-      gmail?: boolean
-      outlook?: boolean
-      twitter?: boolean
-      linkedIn?: boolean
-      facebook?: boolean
-      youtube?: boolean
-      instagram?: boolean
-      reddit?: boolean
-      googleMyBusiness?: boolean
-      slack?: boolean
-      discord?: boolean
-      whatsApp?: boolean
-      hubspot?: boolean
-      telegram?: boolean
-      microsoftTeams?: boolean
-      googleChat?: boolean
-    }
-  }
-  buttonSettings?: {
-    [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting
-  }
   thirdProviderSettings?: {
     [P in IAIProviderType]?: IThirdProviderSettings[P]
   }
-  lastModified?: number
-  // TODO remove this
-  contextMenus?: IContextMenuItem[]
-  gmailToolBarContextMenu?: IContextMenuItem[]
 }
-
-export type IChromeExtensionSettingsUpdateFunction = (
-  settings: IChromeExtensionSettings,
-) => IChromeExtensionSettings
+export type IChromeExtensionLocalStorageUpdateFunction = (
+  settings: IChromeExtensionLocalStorage,
+) => IChromeExtensionLocalStorage

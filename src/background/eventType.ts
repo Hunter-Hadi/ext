@@ -4,6 +4,7 @@ import {
   IShortCutsClientListenEvent,
   IShortCutsSendEvent,
 } from '@/features/shortcuts/messageChannel/eventType'
+import { IWebsiteContextSendEvent } from '@/features/websiteContext/eventType'
 
 export type IChromeExtensionClientListenEvent =
   | 'Client_ChatGPTStatusUpdate'
@@ -65,6 +66,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_chatGetUploadFileToken'
   // iframe
   | 'Iframe_sendPageContent'
+  | IWebsiteContextSendEvent
 
 // chat.openai.com(daemon process) 监听task event
 export type IOpenAIChatListenTaskEvent =

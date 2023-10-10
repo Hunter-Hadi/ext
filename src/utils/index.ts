@@ -423,7 +423,6 @@ export const getCurrentDomainHost = () => {
     if (host.includes('larksuite.com')) {
       return 'larksuite.com'
     }
-    // outlook的邮件才需要特殊处理
     return host
   } catch (e) {
     return ''

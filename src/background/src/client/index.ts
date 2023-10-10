@@ -32,6 +32,9 @@ import {
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
+import WebsiteContextManager, {
+  IWebsiteContext,
+} from '@/features/websiteContext/background'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -570,6 +573,102 @@ export const ClientMessageInit = () => {
           return {
             success: false,
             data: '',
+            message: 'ok',
+          }
+        }
+        case 'WebsiteContext_getWebsiteContext': {
+          const { url, id } = data
+          let websiteContext: IWebsiteContext | undefined = undefined
+          if (id) {
+            websiteContext = await WebsiteContextManager.getWebsiteContextById(
+              id,
+            )
+          }
+          if (!websiteContext && url) {
+            websiteContext = await WebsiteContextManager.getWebsiteContextByUrl(
+              url,
+            )
+          }
+          return {
+            success: true,
+            data: websiteContext,
+            message: 'ok',
+          }
+        }
+        case 'WebsiteContext_searchWebsiteContext': {
+          // todo - 做rewind的时候再开发
+          return {
+            success: true,
+            data: [],
+            message: 'ok',
+          }
+        }
+        case 'WebsiteContext_deleteWebsiteContext': {
+          const { id } = data
+          if (id) {
+            await WebsiteContextManager.deleteWebsiteContext(id)
+            return {
+              success: true,
+              data: true,
+              message: 'ok',
+            }
+          }
+          return {
+            success: false,
+            data: false,
+            message: 'ok',
+          }
+        }
+        case 'WebsiteContext_clearAllWebsiteContext': {
+          await WebsiteContextManager.clearAllWebsiteContexts()
+          return {
+            success: true,
+            data: true,
+            message: 'ok',
+          }
+        }
+        case 'WebsiteContext_updateWebsiteContext': {
+          const { query, websiteContext } = data
+          if (query.id) {
+            await WebsiteContextManager.updateWebsiteContext(
+              query.id,
+              websiteContext,
+            )
+            return {
+              success: true,
+              data: true,
+              message: 'ok',
+            }
+          } else if (query.url) {
+            const websiteContext = await WebsiteContextManager.getWebsiteContextByUrl(
+              query.url,
+            )
+            if (websiteContext) {
+              await WebsiteContextManager.updateWebsiteContext(
+                websiteContext.id,
+                websiteContext,
+              )
+              return {
+                success: true,
+                data: true,
+                message: 'ok',
+              }
+            }
+          }
+          return {
+            success: false,
+            data: false,
+            message: 'ok',
+          }
+        }
+        case 'WebsiteContext_createWebsiteContext': {
+          const { websiteContext } = data
+          const newWebsiteContext = await WebsiteContextManager.createWebsiteContext(
+            websiteContext,
+          )
+          return {
+            success: true,
+            data: newWebsiteContext,
             message: 'ok',
           }
         }

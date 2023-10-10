@@ -85,7 +85,7 @@ class OpenAiApiChat extends BaseChat {
     const conversationId = uuidV4()
     const result: IOpenAIApiChatMessage = { role: 'assistant', content: '' }
     let temperature = chatGPTApiSettings.temperature
-      ? Math.min(chatGPTApiSettings.temperature, 1.6)
+      ? Math.min(chatGPTApiSettings.temperature, 1.2)
       : undefined
     if (hasData(meta?.temperature)) {
       temperature = meta?.temperature

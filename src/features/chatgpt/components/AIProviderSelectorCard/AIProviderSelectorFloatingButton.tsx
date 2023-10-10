@@ -89,6 +89,7 @@ const AIProviderSelectorFloatingButton: FC<{
             vertical: 'bottom',
             horizontal: 'right',
           }}
+          disableScrollLock
           PaperProps={{
             sx: {
               ml: isMaxAINewTabPage() ? 0 : '8px',

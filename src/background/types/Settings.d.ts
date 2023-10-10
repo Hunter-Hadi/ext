@@ -109,7 +109,7 @@ export interface IChromeExtensionSettings {
   chatTypeConversationId?: string
   userSettings?: {
     chatBoxWidth?: number
-    colorSchema?: 'light' | 'dark'
+    colorSchema?: 'light' | 'dark' | 'auto'
     language?: string
     preferredLanguage?: string
     chatGPTStableModeDuration?: number

@@ -71,6 +71,7 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
         taskId: question.messageId,
         regenerate: options.regenerate,
         chat_history,
+        meta: options.meta,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

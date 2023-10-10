@@ -17,8 +17,6 @@ const AIResponseMessage: FC<IProps> = (props) => {
     return {
       wordBreak: 'break-word',
       whiteSpace: 'pre-wrap',
-      // color:
-      //   userSettings?.colorSchema === 'dark' ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
       '& .markdown-body': {
         // maxHeight: 'min(40vh, 320px)',
         // overflowY: 'auto',

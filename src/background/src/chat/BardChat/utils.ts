@@ -7,12 +7,17 @@ function extractFromHTML(variableName: string, html: string) {
 }
 
 export const fetchBardRequestParams = async () => {
-  const html = await ofetch('https://bard.google.com/faq', {
-    cache: 'reload',
-  })
-  const atValue = extractFromHTML('SNlM0e', html)
-  const blValue = extractFromHTML('cfb2h', html)
-  return { atValue, blValue }
+  try {
+    const html = await ofetch('https://bard.google.com/faq', {
+      cache: 'reload',
+    })
+    const atValue = extractFromHTML('SNlM0e', html)
+    const blValue = extractFromHTML('cfb2h', html)
+    return { atValue, blValue }
+  } catch (e) {
+    console.error('fetchBardRequestParams', e)
+    return { atValue: '', blValue: '' }
+  }
 }
 
 export const parseBardResponse = (resp: string) => {
@@ -24,7 +29,7 @@ export const parseBardResponse = (resp: string) => {
     return {
       text: '',
       error:
-        'Failed to access Bard\nTry again, or visit [bard.google.com](https://bard.google.com) for more information.',
+        'Please log into [bard.google.com](https://bard.google.com) and try again.',
       ids: ['', '', ''] as [string, string, string],
     }
   }

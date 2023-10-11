@@ -37,6 +37,7 @@ import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
+import { IWebsiteContext } from '@/features/websiteContext/background'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -185,6 +186,7 @@ interface ActionParameters {
   AnalyzeChatFileImmediateUpdateConversation?: boolean
   // set variable modal
   SetVariablesModalConfig?: ActionSetVariablesModalConfig
+  CreateWebsiteContextConfig?: Partial<IWebsiteContext>
 }
 
 export default ActionParameters

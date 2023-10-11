@@ -35,11 +35,13 @@ import {
   ActionGetEmailDraftOfWebPage,
   ActionGetSocialMediaPostDraftOfWebPage,
   ActionGetSocialMediaPostContentOfWebPage,
+  ActionCreateWebsiteContext,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IAction } from '@/features/shortcuts/types/Action'
+import { shortcutsRenderTemplate } from '@/features/shortcuts'
 
 const ActionClassMap = {
   // 废弃
@@ -77,6 +79,7 @@ const ActionClassMap = {
   // documents
   [ActionSummarizeOfText.type]: ActionSummarizeOfText,
   [ActionSliceOfText.type]: ActionSliceOfText,
+  [ActionCreateWebsiteContext.type]: ActionCreateWebsiteContext,
   // webgpt插件
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
   [ActionWebGPTAskChatGPT.type]: ActionWebGPTAskChatGPT,
@@ -327,6 +330,9 @@ class ShortCutsEngine implements IShortcutEngine {
     this.listeners.forEach((listener) => {
       listener(event, data)
     })
+  }
+  parseTemplate(template: string) {
+    return shortcutsRenderTemplate(template, this.getVariables()).data
   }
 }
 export default ShortCutsEngine

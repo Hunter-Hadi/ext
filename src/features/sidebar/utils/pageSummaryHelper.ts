@@ -41,6 +41,12 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           },
         },
         {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
+          },
+        },
+        {
           type: 'ASK_CHATGPT',
           parameters: {
             template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
@@ -71,6 +77,23 @@ Ask AI anything about the page...
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
         },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CREATE_WEBSITE_CONTEXT',
+          parameters: {
+            CreateWebsiteContextConfig: {
+              summary: '{{SUMMARY_CONTENTS}}',
+              meta: {
+                readability: '{{READABILITY_CONTENTS}}',
+              },
+            },
+          },
+        },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -97,6 +120,12 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           parameters: {
             AnalyzeChatFileImmediateUpdateConversation: false,
             AnalyzeChatFileName: 'EmailSummaryContent.txt',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -134,6 +163,23 @@ Ask AI anything about the email...
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
         },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CREATE_WEBSITE_CONTEXT',
+          parameters: {
+            CreateWebsiteContextConfig: {
+              summary: '{{SUMMARY_CONTENTS}}',
+              meta: {
+                readability: '{{READABILITY_CONTENTS}}',
+              },
+            },
+          },
+        },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -160,6 +206,12 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           parameters: {
             AnalyzeChatFileImmediateUpdateConversation: false,
             AnalyzeChatFileName: 'PDFSummaryContent.txt',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -193,6 +245,23 @@ Ask AI anything about the PDF...
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
         },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CREATE_WEBSITE_CONTEXT',
+          parameters: {
+            CreateWebsiteContextConfig: {
+              summary: '{{SUMMARY_CONTENTS}}',
+              meta: {
+                readability: '{{READABILITY_CONTENTS}}',
+              },
+            },
+          },
+        },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -213,6 +282,12 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
         {
           type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
           parameters: {},
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
+          },
         },
         {
           type: 'ANALYZE_CHAT_FILE',
@@ -250,6 +325,23 @@ You must add these two lines at the bottom of the response:
 Ask AI anything about the video...
 
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CREATE_WEBSITE_CONTEXT',
+          parameters: {
+            CreateWebsiteContextConfig: {
+              summary: '{{SUMMARY_CONTENTS}}',
+              meta: {
+                readability: '{{READABILITY_CONTENTS}}',
+              },
+            },
           },
         },
       ],

@@ -11,7 +11,7 @@ const port = new ContentScriptConnectionV2()
 export const clientCreateWebsiteContext = async (
   websiteContext?: Partial<IWebsiteContext>,
 ) => {
-  return await port.postMessage({
+  const result = await port.postMessage({
     event: 'WebsiteContext_createWebsiteContext',
     data: {
       websiteContext: {
@@ -22,10 +22,10 @@ export const clientCreateWebsiteContext = async (
       },
     },
   })
+  return result.data as IWebsiteContext | null
 }
 
 export const clientGetWebsiteContext = async (query: {
-  url?: string
   id?: string
 }): Promise<IWebsiteContext | null> => {
   const result = await port.postMessage({
@@ -68,12 +68,11 @@ export const clientClearAllWebsiteContext = async (): Promise<boolean> => {
 
 export const clientUpdateWebsiteContext = async (
   query: {
-    url?: string
     id?: string
   },
   websiteContext: Partial<IWebsiteContext>,
 ): Promise<boolean> => {
-  if (!query.id && !query.url) {
+  if (!query.id) {
     return false
   }
   const result = await port.postMessage({

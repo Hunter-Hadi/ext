@@ -50,6 +50,12 @@ class Action implements IAction {
         ?.current || ''
     return conversationId
   }
+  getCurrentSidebarType(engine: any) {
+    const currentSidebarType =
+      engine.getChartGPT()?.getSidebarRef()?.currentSidebarSettingsRef?.current
+        ?.type || 'Chat'
+    return currentSidebarType
+  }
   getNextAction(engine: any) {
     return engine?.getShortCutsEngine()?.getNextAction() as IAction | null
   }

@@ -8,7 +8,6 @@ import {
 } from '@/features/shortcuts'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
-import { clientCreateWebsiteContext } from '@/features/websiteContext/client'
 
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
@@ -30,9 +29,6 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
         (await getPageContentWithMozillaReadability())
-      await clientCreateWebsiteContext({
-        pageContext: result,
-      })
       this.output = result
     } catch (e) {
       this.error = (e as any).toString()

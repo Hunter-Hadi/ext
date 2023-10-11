@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
     "ace-builds": "^1.15.3",
+    "browser-image-compression": "^2.0.2",
     "cheerio": "1.0.0-rc.12",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",

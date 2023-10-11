@@ -106,7 +106,7 @@ export type IChromeExtensionDBStorageUpdateFunction = (
   settings: IChromeExtensionDBStorage,
 ) => IChromeExtensionDBStorage
 
-type IThirdProviderSettings = {
+export type IThirdProviderSettings = {
   [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]?: {
     model?: string
     temperature?: number

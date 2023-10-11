@@ -71,7 +71,7 @@ const ChatGPTApiSettings: FC = () => {
           init.current = true
         }
       }
-      debounceSetSettings('OPENAI_API', settings, true)?.then(() => {
+      debounceSetSettings('OPENAI_API', settings)?.then(() => {
         debounceEnqueueSnackbar(t('settings:sync__save_success'), {
           variant: 'success',
         })

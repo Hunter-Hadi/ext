@@ -26,6 +26,7 @@ export type IChromeExtensionClientListenEvent =
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
   | 'Client_ping'
+  | 'Client_backgroundRunFunction'
   | 'Client_getChromeExtensionCommands'
   | 'Client_checkChatGPTStatus'
   | 'Client_switchAIProvider'

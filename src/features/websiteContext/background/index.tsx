@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { analyzeWebsiteContextMetaData } from '@/features/websiteContext/background/analyzeWebsiteContextMetaData'
-import Browser from 'webextension-polyfill'
+import { ISidebarConversationType } from '@/features/sidebar'
 
 export interface IWebsiteContext {
   id: string
@@ -9,6 +9,7 @@ export interface IWebsiteContext {
   url: string
   created_at: string // 创建时间
   updated_at: string // 更新时间
+  sidebarType: ISidebarConversationType // sidebarType
   title?: string // 标题
   html?: string // html内容
   pageContext?: string // 页面主要的内容
@@ -177,38 +178,6 @@ export class WebsiteContextDB {
   }
 
   /**
-   * 根据对话 URL 获取对话。
-   * @param url
-   */
-  getWebsiteContextByUrl(url: string): Promise<IWebsiteContext | undefined> {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async (resolve, reject) => {
-      try {
-        const db = await this.openDatabase()
-
-        const transaction = db.transaction([this.objectStoreName], 'readonly')
-        const objectStore = transaction.objectStore(this.objectStoreName)
-
-        const index = objectStore.index('url')
-        const request = index.get(url)
-
-        request.onsuccess = (event) => {
-          const websiteContext = (event.target as any)?.result as
-            | IWebsiteContext
-            | undefined
-          resolve(websiteContext) // 解析 Promise 为获取到的对话对象
-        }
-
-        request.onerror = (event) => {
-          reject((event.target as any)?.error || '') // 操作出错，拒绝 Promise 并传递错误信息
-        }
-      } catch (error) {
-        reject(error) // 操作出错，拒绝 Promise 并传递错误信息
-      }
-    })
-  }
-
-  /**
    * 获取所有网站信息。
    *
    * @returns Promise 对象，解析为包含所有网站信息的数组
@@ -314,6 +283,7 @@ export default class WebsiteContextManager {
         host: websiteContext.host || fullUrlToHost(websiteContext.url),
         url: '',
         meta: {},
+        sidebarType: 'Chat',
       },
       websiteContext,
     ])
@@ -327,27 +297,20 @@ export default class WebsiteContextManager {
           findWebsiteContext,
         ])
       }
-    } else if (websiteContext.url) {
-      const findWebsiteContext = await this.websiteContextDB.getWebsiteContextByUrl(
-        websiteContext.url,
-      )
-      if (findWebsiteContext) {
-        baseWebsiteContext = mergeWithObject([
-          baseWebsiteContext,
-          findWebsiteContext,
-        ])
-      }
     }
     await this.websiteContextDB.addOrUpdateWebsite(
       mergeWithObject([baseWebsiteContext, websiteContext]),
     )
-    this.websiteContextDB.removeUnnecessaryWebsiteContext()
-    this.analyzeWebsiteContextMetaData(
+    const analyzedWebsiteContext = await this.analyzeWebsiteContextMetaData(
       baseWebsiteContext.id,
       websiteContext.html,
     )
-    console.log('createWebsiteContext', baseWebsiteContext)
-    return baseWebsiteContext
+    console.log(
+      'createWebsiteContext',
+      analyzedWebsiteContext || baseWebsiteContext,
+    )
+    this.websiteContextDB.removeUnnecessaryWebsiteContext()
+    return analyzedWebsiteContext || baseWebsiteContext
   }
   static async updateWebsiteContext(
     websiteId: string,
@@ -371,17 +334,6 @@ export default class WebsiteContextManager {
     websiteId: string,
   ): Promise<IWebsiteContext | undefined> {
     return this.websiteContextDB.getWebsiteContextById(websiteId)
-  }
-  static async getWebsiteContextByUrl(
-    url: string,
-  ): Promise<IWebsiteContext | undefined> {
-    const websiteContext = await this.websiteContextDB.getWebsiteContextByUrl(
-      url,
-    )
-    if (!websiteContext) {
-      return await this.createWebsiteContext({ url })
-    }
-    return websiteContext
   }
   static async getAllWebsiteContext(): Promise<IWebsiteContext[]> {
     return this.websiteContextDB.getAllWebsiteContext()
@@ -415,59 +367,12 @@ export default class WebsiteContextManager {
         currentWebsiteContext.meta,
         metaData,
       ])
+      // 减少储存占用
+      currentWebsiteContext.html = ''
     }
     await WebsiteContextManager.websiteContextDB.addOrUpdateWebsite(
       currentWebsiteContext,
     )
     return currentWebsiteContext
-  }
-  static async takeWebsiteScreenshot(
-    websiteContext: IWebsiteContext,
-    browserTabId: number,
-  ) {
-    if (websiteContext.meta && browserTabId) {
-      try {
-        const screenshot = await Browser.tabs.captureTab(browserTabId, {})
-        await WebsiteContextManager.websiteContextDB.addOrUpdateWebsite(
-          mergeWithObject([
-            websiteContext,
-            {
-              meta: {
-                screenshot,
-              },
-            },
-          ]),
-        )
-      } catch (e) {
-        try {
-          // chrome 不支持captureTab
-          const visibleTabs = await Browser.tabs.query({
-            active: true,
-          })
-          const currentTab = visibleTabs.find((tab) => tab.id === browserTabId)
-          if (currentTab?.windowId && currentTab?.id) {
-            const screenshot = await Browser.tabs.captureVisibleTab(
-              currentTab.windowId,
-              {
-                format: 'png',
-                quality: 80,
-              },
-            )
-            await WebsiteContextManager.websiteContextDB.addOrUpdateWebsite(
-              mergeWithObject([
-                websiteContext,
-                {
-                  meta: {
-                    screenshot,
-                  },
-                },
-              ]),
-            )
-          }
-        } catch (e) {
-          // ignore
-        }
-      }
-    }
   }
 }

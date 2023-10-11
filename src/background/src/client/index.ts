@@ -35,6 +35,7 @@ import {
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
+import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -577,16 +578,11 @@ export const ClientMessageInit = () => {
           }
         }
         case 'WebsiteContext_getWebsiteContext': {
-          const { url, id } = data
+          const { id } = data
           let websiteContext: IWebsiteContext | undefined = undefined
           if (id) {
             websiteContext = await WebsiteContextManager.getWebsiteContextById(
               id,
-            )
-          }
-          if (!websiteContext && url) {
-            websiteContext = await WebsiteContextManager.getWebsiteContextByUrl(
-              url,
             )
           }
           return {
@@ -639,21 +635,6 @@ export const ClientMessageInit = () => {
               data: true,
               message: 'ok',
             }
-          } else if (query.url) {
-            const websiteContext = await WebsiteContextManager.getWebsiteContextByUrl(
-              query.url,
-            )
-            if (websiteContext) {
-              await WebsiteContextManager.updateWebsiteContext(
-                websiteContext.id,
-                websiteContext,
-              )
-              return {
-                success: true,
-                data: true,
-                message: 'ok',
-              }
-            }
           }
           return {
             success: false,
@@ -668,22 +649,21 @@ export const ClientMessageInit = () => {
           const newWebsiteContext = await WebsiteContextManager.createWebsiteContext(
             websiteContext,
           )
-          if (sender.tab?.id && websiteContext.url === sender.tab.url) {
-            WebsiteContextManager.takeWebsiteScreenshot(
-              mergeWithObject([
-                newWebsiteContext,
-                {
-                  meta: {
-                    favicon: sender.tab.favIconUrl,
-                  },
-                },
-              ]),
-              sender.tab.id,
-            )
-          }
           return {
             success: true,
             data: newWebsiteContext,
+            message: 'ok',
+          }
+        }
+        case 'Client_backgroundRunFunction': {
+          const result = await backgroundCommandHandler(
+            data.command,
+            data.commandFunctionName,
+            data.commandFunctionData,
+          )
+          return {
+            success: !!result,
+            data: result,
             message: 'ok',
           }
         }

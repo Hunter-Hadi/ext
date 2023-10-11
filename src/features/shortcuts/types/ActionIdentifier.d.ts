@@ -63,6 +63,8 @@ type ActionIdentifier =
   | 'SCRIPTS_CONDITIONAL'
   // 聊天文件太长上传
   | 'ANALYZE_CHAT_FILE'
+  // 创建网站内容
+  | 'CREATE_WEBSITE_CONTEXT'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier =

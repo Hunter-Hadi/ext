@@ -13,6 +13,12 @@ import {
 } from '@/features/chatgpt/utils'
 import { COUNTRIES_MAP } from '@/utils/staticData'
 import size from 'lodash-es/size'
+import {
+  IBackgroundRunCommandFunctionKey,
+  IBackgroundRunCommandFunctionParams,
+  IBackgroundRunCommandFunctionReturn,
+  IBackgroundRunCommandKey,
+} from '@/background/src/client/backgroundCommandHandler'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
@@ -440,5 +446,31 @@ export const clientRestartChromeExtension = async () => {
     return true
   } catch (e) {
     return false
+  }
+}
+
+export const clientRunBackgroundFunction = async <
+  T extends IBackgroundRunCommandKey,
+  K extends IBackgroundRunCommandFunctionKey<T>
+>(
+  command: T,
+  commandFunctionName: K,
+  commandFunctionData: IBackgroundRunCommandFunctionParams<T, K>,
+) => {
+  const port = new ContentScriptConnectionV2({
+    runtime: 'client',
+  })
+  const result = await port.postMessage({
+    event: 'Client_backgroundRunFunction',
+    data: {
+      command,
+      commandFunctionName,
+      commandFunctionData,
+    },
+  })
+  if (result.success) {
+    return result.data as IBackgroundRunCommandFunctionReturn<T, K>
+  } else {
+    return null
   }
 }

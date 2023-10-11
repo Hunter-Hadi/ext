@@ -15,7 +15,7 @@ export const clientCreateWebsiteContext = async (
     event: 'WebsiteContext_createWebsiteContext',
     data: {
       websiteContext: {
-        url: window.location.href,
+        url: window.location.href || location.href || document.location.href,
         host: getCurrentDomainHost(),
         html: document.documentElement.outerHTML,
         ...websiteContext,

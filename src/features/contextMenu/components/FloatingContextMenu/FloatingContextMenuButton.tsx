@@ -54,6 +54,7 @@ const EMPTY_CONTEXT_MENU_ARRAY = [
 
 /**
  * use chatgpt的button
+ * @deprecated
  * @param buttonText
  * @param templateText
  * @param iconButton
@@ -76,8 +77,9 @@ const FloatingContextMenuButton: FC<{
     floatingDropdownMenuSelectedItem,
     updateFloatingDropdownMenuSelectedItem,
   ] = useRecoilState(FloatingDropdownMenuSelectedItemState)
-  const { setShortCuts, runShortCuts, loading } =
-    useShortCutsWithMessageChat('')
+  const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat(
+    '',
+  )
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
   )

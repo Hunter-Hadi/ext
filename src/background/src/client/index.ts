@@ -662,10 +662,25 @@ export const ClientMessageInit = () => {
           }
         }
         case 'WebsiteContext_createWebsiteContext': {
-          const { websiteContext } = data
+          const { websiteContext } = data as {
+            websiteContext: Partial<IWebsiteContext>
+          }
           const newWebsiteContext = await WebsiteContextManager.createWebsiteContext(
             websiteContext,
           )
+          if (sender.tab?.id && websiteContext.url === sender.tab.url) {
+            WebsiteContextManager.takeWebsiteScreenshot(
+              mergeWithObject([
+                newWebsiteContext,
+                {
+                  meta: {
+                    favicon: sender.tab.favIconUrl,
+                  },
+                },
+              ]),
+              sender.tab.id,
+            )
+          }
           return {
             success: true,
             data: newWebsiteContext,

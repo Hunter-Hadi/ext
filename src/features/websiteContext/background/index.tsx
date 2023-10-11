@@ -1,5 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { analyzeWebsiteContextMetaData } from '@/features/websiteContext/background/analyzeWebsiteContextMetaData'
+import Browser from 'webextension-polyfill'
 
 export interface IWebsiteContext {
   id: string
@@ -17,17 +19,19 @@ export interface IWebsiteContext {
 export interface IWebsiteContextMeta {
   readability?: string // mozilla
   youtubeTranscript?: string[]
-  author?: string
+  jsonLD?: any
+  openGraph?: {
+    title?: string
+    type?: string
+    url?: string
+    description?: string
+    image?: string[]
+  }
+  title?: string
   description?: string
-  image?: string[]
-  video?: string[]
-  audio?: string[]
-  lang?: string
   logo?: string
-  logoFavicon?: string
-  mediaProvider?: string
-  publisher?: string
-  snapshot?: string // base64Data - chrome.tabs.captureVisibleTab
+  favicon?: string
+  screenshot?: string // base64Data - chrome.tabs.captureVisibleTab
 }
 
 export class WebsiteContextDB {
@@ -302,14 +306,17 @@ export default class WebsiteContextManager {
   static async createWebsiteContext(
     websiteContext: Partial<IWebsiteContext>,
   ): Promise<IWebsiteContext> {
-    let baseWebsiteContext: IWebsiteContext = {
-      id: uuidV4(),
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      host: websiteContext.host || fullUrlToHost(websiteContext.url),
-      url: '',
-      meta: {},
-    }
+    let baseWebsiteContext: IWebsiteContext = mergeWithObject([
+      {
+        id: uuidV4(),
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        host: websiteContext.host || fullUrlToHost(websiteContext.url),
+        url: '',
+        meta: {},
+      },
+      websiteContext,
+    ])
     if (websiteContext.id) {
       const findWebsiteContext = await this.websiteContextDB.getWebsiteContextById(
         websiteContext.id,
@@ -334,8 +341,12 @@ export default class WebsiteContextManager {
     await this.websiteContextDB.addOrUpdateWebsite(
       mergeWithObject([baseWebsiteContext, websiteContext]),
     )
-    this.analyzeWebsiteContext(baseWebsiteContext.id, websiteContext.html)
     this.websiteContextDB.removeUnnecessaryWebsiteContext()
+    this.analyzeWebsiteContextMetaData(
+      baseWebsiteContext.id,
+      websiteContext.html,
+    )
+    console.log('createWebsiteContext', baseWebsiteContext)
     return baseWebsiteContext
   }
   static async updateWebsiteContext(
@@ -381,7 +392,7 @@ export default class WebsiteContextManager {
   static async deleteWebsiteContext(websiteId: string) {
     return this.websiteContextDB.deleteWebsiteContext(websiteId)
   }
-  static async analyzeWebsiteContext(websiteId: string, html?: string) {
+  static async analyzeWebsiteContextMetaData(websiteId: string, html?: string) {
     if (!websiteId) {
       return
     }
@@ -396,7 +407,67 @@ export default class WebsiteContextManager {
     }
     if (currentWebsiteContext.html) {
       // 开始分析meta
-      debugger
+      const metaData = await analyzeWebsiteContextMetaData(
+        currentWebsiteContext.url,
+        currentWebsiteContext.html,
+      )
+      currentWebsiteContext.meta = mergeWithObject([
+        currentWebsiteContext.meta,
+        metaData,
+      ])
+    }
+    await WebsiteContextManager.websiteContextDB.addOrUpdateWebsite(
+      currentWebsiteContext,
+    )
+    return currentWebsiteContext
+  }
+  static async takeWebsiteScreenshot(
+    websiteContext: IWebsiteContext,
+    browserTabId: number,
+  ) {
+    if (websiteContext.meta && browserTabId) {
+      try {
+        const screenshot = await Browser.tabs.captureTab(browserTabId, {})
+        await WebsiteContextManager.websiteContextDB.addOrUpdateWebsite(
+          mergeWithObject([
+            websiteContext,
+            {
+              meta: {
+                screenshot,
+              },
+            },
+          ]),
+        )
+      } catch (e) {
+        try {
+          // chrome 不支持captureTab
+          const visibleTabs = await Browser.tabs.query({
+            active: true,
+          })
+          const currentTab = visibleTabs.find((tab) => tab.id === browserTabId)
+          if (currentTab?.windowId && currentTab?.id) {
+            const screenshot = await Browser.tabs.captureVisibleTab(
+              currentTab.windowId,
+              {
+                format: 'png',
+                quality: 80,
+              },
+            )
+            await WebsiteContextManager.websiteContextDB.addOrUpdateWebsite(
+              mergeWithObject([
+                websiteContext,
+                {
+                  meta: {
+                    screenshot,
+                  },
+                },
+              ]),
+            )
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
     }
   }
 }

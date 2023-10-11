@@ -7,7 +7,14 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import {
   FloatingContextMenuDraftSelector,
@@ -34,7 +41,11 @@ import {
   ROOT_FLOATING_INPUT_ID,
   ROOT_FLOATING_REFERENCE_ELEMENT_ID,
 } from '@/constants'
-import { getAppContextMenuRootElement, showChatBox } from '@/utils'
+import {
+  getAppContextMenuRootElement,
+  getAppRootElement,
+  showChatBox,
+} from '@/utils'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useTheme } from '@mui/material/styles'
@@ -104,6 +115,13 @@ const FloatingContextMenu: FC<{
     floatingDropdownMenuSystemItems,
     setFloatingDropdownMenuSystemItems,
   ] = useRecoilState(FloatingDropdownMenuSystemItemsState)
+  // 判断是不是从sidebar的use prompt的按钮点击触发的actions
+  const isContextMenuFromSidebar = useCallback(() => {
+    const activeElement =
+      currentSelectionRef.current?.activeElement ||
+      currentSelectionRef.current?.selectionElement?.target
+    return activeElement && getAppRootElement()?.contains(activeElement)
+  }, [])
   // 是否有上下文，决定contextMenu展示的内容
   const haveContext = useMemo(
     () => floatingDropdownMenuSystemItems.lastOutput,
@@ -364,12 +382,14 @@ const FloatingContextMenu: FC<{
       if (currentDraft) {
         template += `:\n"""\n${currentDraft}\n"""`
       }
-      setSidebarSettings((prevState) => {
-        return {
-          ...prevState,
-          type: 'Chat',
-        }
-      })
+      if (!isContextMenuFromSidebar()) {
+        setSidebarSettings((prevState) => {
+          return {
+            ...prevState,
+            type: 'Chat',
+          }
+        })
+      }
       setActions([
         {
           type: 'RENDER_TEMPLATE',
@@ -466,12 +486,14 @@ const FloatingContextMenu: FC<{
             lastHoverContextMenuId: null,
           }
         })
-        setSidebarSettings((prevState) => {
-          return {
-            ...prevState,
-            type: 'Chat',
-          }
-        })
+        if (!isContextMenuFromSidebar()) {
+          setSidebarSettings((prevState) => {
+            return {
+              ...prevState,
+              type: 'Chat',
+            }
+          })
+        }
         if (runActions.length > 0) {
           setActions(runActions)
         } else {
@@ -524,7 +546,11 @@ const FloatingContextMenu: FC<{
   const isRunningActionsRef = useRef(false)
   useEffect(() => {
     const runActions = cloneDeep(actions)
-    if (actions.length > 0 && sidebarSettings.type === 'Chat') {
+    // 如果有动作，并且sidebar是Chat或者是从Sidebar触发的prompt才运行
+    if (
+      actions.length > 0 &&
+      (sidebarSettings.type === 'Chat' || isContextMenuFromSidebar())
+    ) {
       if (isRunningActionsRef.current) {
         return
       }

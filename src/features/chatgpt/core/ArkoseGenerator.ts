@@ -43,7 +43,6 @@ class ArkoseTokenGenerator {
       new Proxy(enforcement, {
         get: (target: ArkoseEnforcement, p: string | symbol, receiver: any) => {
           if (p === 'setConfig') {
-            debugger
             return (config: any) => {
               this.config = config
               // 包装原本的onCompleted

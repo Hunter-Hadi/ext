@@ -19,6 +19,7 @@ import {
   createMindGoogleSidebar,
 } from './utils'
 import { getSearchWithAISettings } from './utils/searchWithAISettings'
+import { preCheckCanRender, preInjectFlag } from './utils/preCheckRender'
 
 const mount = async (
   question: string,
@@ -164,16 +165,29 @@ export const run = (runParams: IRunParams) => {
 export const initSearchWithAI = () => {
   const { siteName, config: siteConfig } = matchSearchPageConfig()
 
+  if (!siteName || !siteConfig) {
+    return
+  }
+
+  preInjectFlag()
+
+  if (!preCheckCanRender()) {
+    return
+  }
+
   if (siteName === 'google') {
     guardianOfComplementaryBar()
   }
 
   if (siteConfig.watchRouteChange) {
     siteConfig.watchRouteChange(() => {
-      run({
-        siteConfig,
-        siteName,
-      })
+      preInjectFlag()
+
+      preCheckCanRender() &&
+        run({
+          siteConfig,
+          siteName,
+        })
     })
   }
 

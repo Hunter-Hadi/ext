@@ -21,12 +21,12 @@ import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelector
 import Divider from '@mui/material/Divider'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
-import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
   const [authLogin] = useRecoilState(AuthState)
-  const setAppSettings = useSetRecoilState(AppDBStorageState)
+  const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const [chatGPTClientState, setChatGPTClientState] = useRecoilState(
     ChatGPTClientState,
   )
@@ -36,7 +36,7 @@ const ChatGPTStatusWrapper: FC = () => {
     if (prevStatus !== status && status === 'success') {
       // get latest settings
       console.log('get latest settings')
-      getChromeExtensionDBStorage().then(setAppSettings)
+      getLiteChromeExtensionDBStorage().then(setAppDBStorage)
     }
     setPrevStatus(status)
   }, [status])

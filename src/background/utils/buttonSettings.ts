@@ -49,6 +49,7 @@ import {
   IChromeExtensionButtonSettingKey,
   IVisibilitySetting,
 } from '@/background/utils/chromeExtensionStorage/type'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appDBStorage, setAppDBStorage] = useRecoilState(AppDBStorageState)
@@ -86,7 +87,7 @@ export const useChromeExtensionButtonSettings = () => {
       )
       return settings
     })
-    setAppDBStorage(await getChromeExtensionDBStorage())
+    setAppDBStorage(await getLiteChromeExtensionDBStorage())
     if (saveToServer) {
       await debounceSyncLocalToServer()
     }

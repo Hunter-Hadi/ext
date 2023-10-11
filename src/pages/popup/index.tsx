@@ -22,7 +22,7 @@ import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import { useInitI18n } from '@/i18n/hooks'
 import { AppDBStorageState } from '@/store'
-import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
@@ -52,7 +52,7 @@ const App: FC<{
   }
   useEffectOnce(() => {
     init()
-    getChromeExtensionDBStorage().then(updateAppSettings)
+    getLiteChromeExtensionDBStorage().then(updateAppSettings)
   })
   return (
     <Stack

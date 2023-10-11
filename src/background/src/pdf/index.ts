@@ -1,6 +1,6 @@
 import Browser from 'webextension-polyfill'
 import Log from '@/utils/Log'
-import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 // NOTE: 2023-05-15
 /**
  * NOTE: 2023-05-15
@@ -38,7 +38,7 @@ export const pdfSnifferStartListener = async () => {
       const url = tab.url || tab.pendingUrl
       if (url?.startsWith('file://') || url?.startsWith('ftp://')) {
         if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
-          const settings = await getChromeExtensionDBStorage()
+          const settings = await getLiteChromeExtensionDBStorage()
           if (settings.userSettings?.pdf?.enabled) {
             const redirectUrl = Browser.runtime.getURL(
               `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,

@@ -12,7 +12,10 @@ import {
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { I18nextKeysType } from '@/i18next'
 import { useTranslation } from 'react-i18next'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
+import {
+  ChatGPTClientState,
+  ClientConversationMapState,
+} from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { AppLocalStorageState } from '@/store'
 import Typography from '@mui/material/Typography'
@@ -56,6 +59,7 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
+  const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
   const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
   const [sidebarSettings, setSidebarSettings] = useRecoilState(
@@ -201,6 +205,7 @@ const SidebarTabs: FC = () => {
               <UnfoldMoreIcon />
             </Button>
           )}
+          <p>authStatus: {chatGPTClientState.status}</p>
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
           <p>

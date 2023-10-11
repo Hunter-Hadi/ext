@@ -142,7 +142,10 @@ const AIResponseError: FC<IProps> = ({
             variant="normalOutlined"
             onClick={handleAsk}
             sx={{
-              color: 'rgba(0,0,0,0.6)',
+              color: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(255,255,255,0.6)'
+                  : 'rgba(0,0,0,0.6)',
             }}
           >
             Try again

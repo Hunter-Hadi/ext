@@ -20,7 +20,10 @@ import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientCha
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
 import merge from 'lodash-es/merge'
-import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  getChromeExtensionLocalStorage,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -38,23 +41,43 @@ const useClientConversation = () => {
   } = useAIProviderModels()
   const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
   const createConversation = async () => {
+    let currentSidebarConversationId = sidebarConversationId
+    let currentAIProvider =
+      currentAIProviderDetail?.value || 'USE_CHAT_GPT_PLUS'
+    let currentAIProviderModel =
+      currentAIProviderModelDetail?.value || 'gpt-3.5-turbo'
     let conversationId = ''
     if (sidebarSettings.type === 'Chat') {
-      if (sidebarConversationId) {
+      // NOTE: 之所以这么写是因为Shorcuts在运行之前拿到的ai provider和model是已经决定好的了,导致conversationID错误
+      // ===开始
+      // 之前导致的bug: 选择Bing，选择prompt，切换到chatgpt，聊天记录加到bing去了
+      const appLocalStorage = await getChromeExtensionLocalStorage()
+      if (
+        appLocalStorage.currentAIProvider &&
+        appLocalStorage.currentAIProvider !== currentAIProvider
+      ) {
+        currentAIProvider = appLocalStorage.currentAIProvider
+        currentAIProviderModel =
+          appLocalStorage.thirdProviderSettings?.[
+            appLocalStorage.currentAIProvider
+          ]?.model || currentAIProviderModel
+        currentSidebarConversationId = md5TextEncrypt(
+          currentAIProvider + currentAIProviderModel,
+        )
+      }
+      // ===结束
+      if (currentSidebarConversationId) {
         // 确保conversation存在
-        if (await clientGetConversation(sidebarConversationId)) {
-          return sidebarConversationId
+        if (await clientGetConversation(currentSidebarConversationId)) {
+          return currentSidebarConversationId
         }
       }
-      const id = md5TextEncrypt(
-        (currentAIProviderDetail?.value || '') +
-          (currentAIProviderModelDetail?.value || ''),
-      )
+      const id = md5TextEncrypt(currentAIProvider + currentAIProviderModel)
       console.log(
         '新版Conversation 生成chat conversation id',
         id,
-        currentAIProviderDetail?.value,
-        currentAIProviderModelDetail?.value,
+        currentAIProvider,
+        currentAIProviderModel,
       )
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -64,9 +87,7 @@ const useClientConversation = () => {
             type: 'Chat',
             meta: {
               maxTokens: currentAIProviderModelDetail?.maxTokens || 4096,
-              ...(await getAIProviderConversationMetaConfig(
-                currentAIProviderDetail?.value,
-              )),
+              ...(await getAIProviderConversationMetaConfig(currentAIProvider)),
             },
           } as Partial<IChatConversation>,
         },
@@ -87,7 +108,7 @@ const useClientConversation = () => {
       if (getPageSummaryConversationId()) {
         // 确保conversation存在
         if (await clientGetConversation(getPageSummaryConversationId())) {
-          return sidebarConversationId
+          return currentSidebarConversationId
         }
       }
       // const pageSummaryData = await generatePageSummaryData()

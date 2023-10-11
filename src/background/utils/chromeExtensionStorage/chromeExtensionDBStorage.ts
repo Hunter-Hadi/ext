@@ -1,7 +1,6 @@
 import Browser from 'webextension-polyfill'
 import {
   CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
-  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/constants'
 
@@ -18,7 +17,6 @@ export const defaultChromeExtensionDBStorage = (): IChromeExtensionDBStorage => 
   return {
     userSettings: {
       preferredLanguage: 'en',
-      chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
       chatGPTStableModeDuration: 30,
       colorSchema: 'auto',
       language: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,

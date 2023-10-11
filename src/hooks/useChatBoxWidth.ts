@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import { showChatBox } from '@/utils'
 import { useRecoilValue } from 'recoil'
-import { AppDBStorageState } from '@/store'
+import { AppLocalStorageState } from '@/store'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
-import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 const RESIZE_ENABLE = {
   top: false,
@@ -25,7 +25,7 @@ const limitPageWidth = 150
 // 3. 屏幕resize会更新宽度，但是不会设置到本地缓存
 // 4. 本地缓存的宽度会在下次打开时使用
 const useChatBoxWidth = () => {
-  const appDBStorage = useRecoilValue(AppDBStorageState)
+  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const [loaded, setLoaded] = useState<boolean>(false)
   const [visibleWidth, setVisibleWidth] = useState<number>(
     CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
@@ -36,11 +36,11 @@ const useChatBoxWidth = () => {
     if (!loaded) {
       return
     }
-    await setChromeExtensionDBStorage((settings) => {
+    await setChromeExtensionLocalStorage((settings) => {
       return {
         ...settings,
-        userSettings: {
-          ...settings.userSettings,
+        sidebarSettings: {
+          ...settings.sidebarSettings,
           chatBoxWidth: width,
         },
       }
@@ -71,14 +71,14 @@ const useChatBoxWidth = () => {
     if (onceRef.current) {
       return
     }
-    if (appDBStorage.userSettings?.chatBoxWidth && maxWidth) {
+    if (appLocalStorage.sidebarSettings?.chatBoxWidth && maxWidth) {
       setVisibleWidth(
-        Math.min(appDBStorage.userSettings.chatBoxWidth, maxWidth),
+        Math.min(appLocalStorage.sidebarSettings.chatBoxWidth, maxWidth),
       )
       onceRef.current = true
       setLoaded(true)
     }
-  }, [appDBStorage.userSettings?.chatBoxWidth, maxWidth])
+  }, [appLocalStorage.sidebarSettings?.chatBoxWidth, maxWidth])
   return {
     minWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
     maxWidth,

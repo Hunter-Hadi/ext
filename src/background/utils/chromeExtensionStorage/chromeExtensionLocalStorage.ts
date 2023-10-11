@@ -5,6 +5,7 @@ import {
 import {
   AI_PROVIDER_MAP,
   CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY,
+  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
 } from '@/constants'
 import {
   BING_MODELS,
@@ -23,6 +24,9 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
   return {
     chatTypeConversationId: '',
     currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+    sidebarSettings: {
+      chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+    },
     thirdProviderSettings: {
       [AI_PROVIDER_MAP.BING]: {
         conversationStyle: BingConversationStyle.Balanced,

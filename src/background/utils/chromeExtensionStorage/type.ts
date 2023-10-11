@@ -66,7 +66,6 @@ export interface IChromeExtensionButtonSetting {
 
 export interface IChromeExtensionDBStorage {
   userSettings?: {
-    chatBoxWidth?: number
     colorSchema?: 'light' | 'dark' | 'auto'
     language?: string
     preferredLanguage?: string
@@ -146,6 +145,9 @@ type IThirdProviderSettings = {
 export interface IChromeExtensionLocalStorage {
   currentAIProvider?: IAIProviderType
   chatTypeConversationId?: string
+  sidebarSettings?: {
+    chatBoxWidth?: number
+  }
   thirdProviderSettings?: {
     [P in IAIProviderType]?: IThirdProviderSettings[P]
   }

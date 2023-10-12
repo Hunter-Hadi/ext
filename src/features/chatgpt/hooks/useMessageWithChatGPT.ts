@@ -127,7 +127,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     ) {
       const url = new URL(location.href)
       const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
-      if (url.href.includes(PDFViewerHref)) {
+      if (url.href.includes(PDFViewerHref) && sidebarSettings.type === 'Chat') {
         abortAskAIShowUpgradeCard = permissionCardMap['PDF_AI_VIEWER']
       }
     }

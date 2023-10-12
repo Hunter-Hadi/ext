@@ -22,6 +22,10 @@ import {
   youTubeStudioGetDraftContent,
   youTubeStudioGetPostContent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/youtubeStudio'
+import {
+  instagramGetDraftContent,
+  instagramGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/instagram'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
@@ -48,6 +52,9 @@ export const getSocialMediaPostContent = async (
   }
   if (host === 'studio.youtube.com') {
     return await youTubeStudioGetPostContent(inputAssistantButton)
+  }
+  if (host === 'instagram.com') {
+    return await instagramGetPostContent(inputAssistantButton)
   }
   return SocialMediaPostContext.emptyData
 }
@@ -76,6 +83,9 @@ export const getSocialMediaPostDraft = async (
   }
   if (host === 'studio.youtube.com') {
     return youTubeStudioGetDraftContent(inputAssistantButton)
+  }
+  if (host === 'instagram.com') {
+    return instagramGetDraftContent(inputAssistantButton)
   }
   return ''
 }

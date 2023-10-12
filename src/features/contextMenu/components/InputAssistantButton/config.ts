@@ -396,6 +396,44 @@ const InputAssistantButtonGroupConfig = {
       marginLeft: '8px',
     },
   },
+  'instagram.com': {
+    enable: true,
+    rootSelectors: [
+      'form textarea',
+      'div:has( > div[contenteditable="true"]) + div > div:nth-child(1) > button > div',
+    ],
+    appendPosition: 1,
+    rootParentDeep: 1,
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+    },
+    rootWrapperStyle: 'order:2;margin-right: 8px;margin-left: 8px;',
+    CTAButtonStyle: {
+      padding: '5px 12px',
+      iconSize: 14,
+      borderRadius: '12px 0  0 12px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 12px 12px 0',
+      padding: '2px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '12px',
+    },
+  },
 } as {
   [key in InputAssistantButtonGroupConfigHostType]: IInputAssistantButtonGroupConfig
 }

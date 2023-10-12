@@ -46,6 +46,9 @@ const checkHostUsingButtonKeys = (
       config.buttonGroupConfig.refineDraftButton,
     ]
   }
+  if (host === 'instagram.com') {
+    return getInstagramButtonGroup(config)
+  }
   return [
     config.buttonGroupConfig.composeReplyButton,
     config.buttonGroupConfig.refineDraftButton,
@@ -174,6 +177,27 @@ const getFacebookButtonGroup = (
   if (replyForm?.getBoundingClientRect().width < 240) {
     // 宽度不够
     return []
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getInstagramButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  const isForm = findSelectorParent(
+    'div[contenteditable="true"]',
+    keyElement,
+    20,
+  )
+  if (isForm) {
+    return [
+      buttonGroupConfig.composeNewButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
   }
   return [
     buttonGroupConfig.composeReplyButton,

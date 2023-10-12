@@ -17,6 +17,8 @@ const getContextMenuNamePrefixWithHost = (): ContextMenuNamePrefixType => {
     return '[LinkedIn] '
   } else if (host === 'facebook.com') {
     return '[Facebook] '
+  } else if (host === 'instagram.com') {
+    return '[Instagram] '
   }
   return '' as ContextMenuNamePrefixType
 }

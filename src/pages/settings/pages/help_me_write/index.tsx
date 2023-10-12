@@ -6,6 +6,7 @@ import FeatureTwitterAssistantCard from '@/pages/settings/pages/help_me_write/Fe
 import FeatureLinkedInAssistantCard from '@/pages/settings/pages/help_me_write/FeatureLinkedInAssistantCard'
 import FeatureFacebookAssistantCard from '@/pages/settings/pages/help_me_write/FeatureFacebookAssistantCard'
 import FeatureYouTubeAssistantCard from '@/pages/settings/pages/help_me_write/FeatureYouTubeAssistantCard'
+import FeatureInstagramAssistantCard from '@/pages/settings/pages/help_me_write/FeatureInstagramAssistantCard'
 
 const SettingsHelpMeWritePage: FC = () => {
   return (
@@ -16,6 +17,7 @@ const SettingsHelpMeWritePage: FC = () => {
       <FeatureTwitterAssistantCard />
       <FeatureFacebookAssistantCard />
       <FeatureYouTubeAssistantCard />
+      <FeatureInstagramAssistantCard />
     </Stack>
   )
 }

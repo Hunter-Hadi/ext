@@ -66,6 +66,9 @@ const InputAssistantPortal: FC = () => {
     if (host === 'youtube.com' || host === 'studio.youtube.com') {
       return appSetting.userSettings?.inputAssistantButton?.youtube === true
     }
+    if (host === 'instagram.com') {
+      return appSetting.userSettings?.inputAssistantButton?.instagram === true
+    }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])
   useEffect(() => {

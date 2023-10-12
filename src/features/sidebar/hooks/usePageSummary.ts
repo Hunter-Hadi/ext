@@ -22,7 +22,10 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
-import { setChromeExtensionOnBoardingData } from '@/background/utils'
+import {
+  getChromeExtensionOnBoardingData,
+  setChromeExtensionOnBoardingData,
+} from '@/background/utils'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 
 const usePageSummary = () => {
@@ -97,25 +100,40 @@ const usePageSummary = () => {
             loading: false,
           }
         })
+        // 如果是免费用户
         if (currentUserPlan.name !== 'pro') {
-          await clientChatConversationModifyChatMessages(
-            'clear',
-            pageSummaryConversationId,
-            0,
-            [],
-          )
-          await clientChatConversationModifyChatMessages(
-            'add',
-            pageSummaryConversationId,
-            0,
-            [
-              getPermissionCardMessageByPermissionCardSettings(
-                permissionCardMap['PAGE_SUMMARY'],
-              ),
-            ],
-          )
-          authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
-          return
+          // 判断lifetimes free trial是否已经用完
+          const summaryLifetimesQuota =
+            Number(
+              (await getChromeExtensionOnBoardingData())
+                .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
+            ) || 0
+          if (summaryLifetimesQuota > 0) {
+            // 如果没有用完，那么就减一
+            await setChromeExtensionOnBoardingData(
+              'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',
+              summaryLifetimesQuota - 1,
+            )
+          } else {
+            await clientChatConversationModifyChatMessages(
+              'clear',
+              pageSummaryConversationId,
+              0,
+              [],
+            )
+            await clientChatConversationModifyChatMessages(
+              'add',
+              pageSummaryConversationId,
+              0,
+              [
+                getPermissionCardMessageByPermissionCardSettings(
+                  permissionCardMap['PAGE_SUMMARY'],
+                ),
+              ],
+            )
+            authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
+            return
+          }
         }
         const actions = getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),

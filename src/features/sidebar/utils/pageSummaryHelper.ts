@@ -34,16 +34,16 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           parameters: {},
         },
         {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
+          },
+        },
+        {
           type: 'ANALYZE_CHAT_FILE',
           parameters: {
             AnalyzeChatFileImmediateUpdateConversation: false,
             AnalyzeChatFileName: 'PageSummaryContent.txt',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -116,16 +116,16 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           parameters: {},
         },
         {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
+          },
+        },
+        {
           type: 'ANALYZE_CHAT_FILE',
           parameters: {
             AnalyzeChatFileImmediateUpdateConversation: false,
             AnalyzeChatFileName: 'EmailSummaryContent.txt',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -202,16 +202,16 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           parameters: {},
         },
         {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
+          },
+        },
+        {
           type: 'ANALYZE_CHAT_FILE',
           parameters: {
             AnalyzeChatFileImmediateUpdateConversation: false,
             AnalyzeChatFileName: 'PDFSummaryContent.txt',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -284,16 +284,16 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           parameters: {},
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
-          },
-        },
-        {
           type: 'ANALYZE_CHAT_FILE',
           parameters: {
             AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
             AnalyzeChatFileImmediateUpdateConversation: false,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {

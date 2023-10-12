@@ -75,15 +75,15 @@ export class WebsiteContextDB {
 
       request.onupgradeneeded = (event) => {
         const db = (event.target as any)?.result as IDBDatabase
-
         if (!db.objectStoreNames.contains(this.objectStoreName)) {
           // 如果对象存储不存在，则创建对象存储和索引
           const objectStore = db.createObjectStore(this.objectStoreName, {
             keyPath: 'id',
           })
           objectStore.createIndex('id', 'id', { unique: true })
-          objectStore.createIndex('title', 'title', { unique: false })
           objectStore.createIndex('url', 'url', { unique: false })
+          objectStore.createIndex('title', 'meta.title', { unique: false })
+          objectStore.createIndex('summary', 'summary', { unique: false })
         }
       }
     })

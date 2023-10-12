@@ -1,8 +1,18 @@
-import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useContextMenuList } from '@/features/contextMenu'
-import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import {
+  ChatGPTConversationState,
+  SidebarSettingsState,
+} from '@/features/sidebar'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -42,6 +52,13 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
     root,
     permissionWrapperCardSceneType,
   } = props
+  const [
+    clickContextMenu,
+    setClickContextMenu,
+  ] = useState<IContextMenuItem | null>(null)
+  const [sidebarSettings, updateSidebarSettings] = useRecoilState(
+    SidebarSettingsState,
+  )
   const { currentUserPlan } = useUserInfo()
   const permissionCardMap = usePermissionCardMap()
   const { createConversation } = useClientConversation()
@@ -109,6 +126,33 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
       permissionWrapperCardSceneType,
     ],
   )
+  const runContextMenuRef = useRef(runContextMenu)
+  useEffect(() => {
+    runContextMenuRef.current = runContextMenu
+  }, [runContextMenu])
+  const isRunningRef = useRef(false)
+  const sidebarSettingsTypeRef = useRef(sidebarSettings.type)
+  useEffect(() => {
+    sidebarSettingsTypeRef.current = sidebarSettings.type
+  }, [sidebarSettings.type])
+  useEffect(() => {
+    if (
+      !isRunningRef.current &&
+      clickContextMenu &&
+      runContextMenuRef.current &&
+      sidebarSettingsTypeRef.current === 'Chat'
+    ) {
+      isRunningRef.current = true
+      setClickContextMenu(null)
+      runContextMenuRef
+        .current(clickContextMenu)
+        .then()
+        .catch()
+        .finally(() => {
+          isRunningRef.current = false
+        })
+    }
+  }, [clickContextMenu])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')
@@ -143,7 +187,15 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
         hoverOpen={false}
         menuWidth={240}
         referenceElement={children}
-        onClickContextMenu={runContextMenu}
+        onClickContextMenu={(contextMenu) => {
+          updateSidebarSettings((prev) => {
+            return {
+              ...prev,
+              type: 'Chat',
+            }
+          })
+          setClickContextMenu(contextMenu)
+        }}
         onClickReferenceElement={() => {
           // TODO
         }}

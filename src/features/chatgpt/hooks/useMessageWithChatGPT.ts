@@ -146,13 +146,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       abortAskAIShowUpgradeCard = permissionCardMap['TOTAL_CHAT_DAILY_LIMIT']
     }
     // 判断是否触达dailyUsageLimited结束
-    // 判断是否在用Page Summary开始:
-    if (sidebarSettings.type === 'Summary') {
-      if (currentUserPlan.name !== 'pro') {
-        abortAskAIShowUpgradeCard = permissionCardMap['PAGE_SUMMARY']
-      }
-    }
-    // 判断是否在用Page Summary结束
     const { question, messageId, parentMessageId } = questionInfo
     const {
       regenerate = false,

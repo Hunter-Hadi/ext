@@ -13,6 +13,8 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_RECORD_FIRST_MESSAGE'
   | 'ON_BOARDING_RECORD_BROWSER_VERSION'
   | `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${IAIProviderType}`
+  // summary 和  input assistant button free trial times
+  | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
   | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${InputAssistantButtonGroupConfigHostType}_TIMES`
 
 export type OnBoardingMapType = {
@@ -24,6 +26,8 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     ON_BOARDING_RECORD_FIRST_MESSAGE: false,
     // 记录用户浏览器版本号太旧
     ON_BOARDING_RECORD_BROWSER_VERSION: false,
+    // 记录用户剩余的summary free trial times - 2次 - 2023-10-12 - @tdzhang
+    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 2,
   }
   // 记录每个AI Provider至少auth过一次
   Object.keys(AI_PROVIDER_MAP).forEach((AI_PROVIDER) => {

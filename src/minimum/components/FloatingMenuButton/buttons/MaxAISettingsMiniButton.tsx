@@ -42,7 +42,7 @@ const MaxAISettingsMiniButton = () => {
           onClick={(event) => {
             chromeExtensionClientOpenPage({
               key: 'options',
-              query: '?id=quick-access#/appearance',
+              query: '?id=quick-access#/me',
             })
           }}
         >

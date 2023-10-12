@@ -131,14 +131,19 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
     runContextMenuRef.current = runContextMenu
   }, [runContextMenu])
   const isRunningRef = useRef(false)
+  const sidebarSettingsTypeRef = useRef(sidebarSettings.type)
+  useEffect(() => {
+    sidebarSettingsTypeRef.current = sidebarSettings.type
+  }, [sidebarSettings.type])
   useEffect(() => {
     if (
       !isRunningRef.current &&
       clickContextMenu &&
       runContextMenuRef.current &&
-      sidebarSettings.type === 'Chat'
+      sidebarSettingsTypeRef.current === 'Chat'
     ) {
       isRunningRef.current = true
+      setClickContextMenu(null)
       runContextMenuRef
         .current(clickContextMenu)
         .then()
@@ -147,7 +152,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
           isRunningRef.current = false
         })
     }
-  }, [clickContextMenu, sidebarSettings.type])
+  }, [clickContextMenu])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')

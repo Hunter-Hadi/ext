@@ -38,6 +38,7 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import useHideInHost from '@/minimum/hooks/useHideInHost'
 
 const log = new Log('AppInit')
 
@@ -375,6 +376,7 @@ export const DisabledPDFViewer: FC = () => {
 }
 
 const AppInit = () => {
+  useHideInHost()
   useInitChatGPTClient()
   useAuthLogin()
   userInitUserInfo()

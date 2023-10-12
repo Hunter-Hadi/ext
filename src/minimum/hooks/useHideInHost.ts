@@ -1,10 +1,53 @@
 import { getCurrentDomainHost } from '@/utils'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import { useState } from 'react'
+import { APP_ROOT_ID, ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
+import debounce from 'lodash-es/debounce'
+
+const startHideInHostHandle = debounce(() => {
+  const host = getCurrentDomainHost()
+  if (host === 'youtube.com') {
+    // youtube.com全屏播放器处理
+    // sidebar
+    if (document.documentElement.style.position === 'relative') {
+      document.documentElement.style.position = 'unset'
+      document
+        .querySelector(`#${APP_ROOT_ID}`)
+        ?.classList.replace('open', 'close')
+    }
+    // quick access
+    const minimizeApp = document.querySelector(
+      `#${ROOT_MINIMIZE_CONTAINER_ID}`,
+    ) as HTMLDivElement
+    if (minimizeApp) {
+      minimizeApp.style.display = 'none'
+    }
+  }
+}, 100)
+const stopHideInHostHandle = debounce(() => {
+  {
+    const host = getCurrentDomainHost()
+    if (host === 'youtube.com') {
+      // youtube.com全屏播放器处理
+      // sidebar
+      if (document.documentElement.style.position === 'unset') {
+        document.documentElement.style.position = 'relative'
+        document
+          .querySelector(`#${APP_ROOT_ID}`)
+          ?.classList.replace('close', 'open')
+      }
+      // quick access
+      const minimizeApp = document.querySelector(
+        `#${ROOT_MINIMIZE_CONTAINER_ID}`,
+      ) as HTMLDivElement
+      if (minimizeApp) {
+        minimizeApp.style.display = ''
+      }
+    }
+  }
+}, 100)
 
 const useHideInHost = () => {
   const host = getCurrentDomainHost()
-  const [hide, setHide] = useState(false)
   useEffectOnce(() => {
     if (host === 'youtube.com') {
       // 全屏模式需要隐藏quick access
@@ -13,9 +56,9 @@ const useHideInHost = () => {
           if (mutation.target) {
             const target = mutation.target as HTMLDivElement
             if (target.hasAttribute('scrolling')) {
-              setHide(true)
+              startHideInHostHandle()
             } else {
-              setHide(false)
+              stopHideInHostHandle()
             }
           }
         })
@@ -30,6 +73,5 @@ const useHideInHost = () => {
       }
     }
   })
-  return hide
 }
 export default useHideInHost

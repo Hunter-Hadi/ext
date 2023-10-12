@@ -12,7 +12,6 @@ import Browser from 'webextension-polyfill'
 import useEffectOnce from '@/hooks/useEffectOnce'
 // import MaxAIHideMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import useHideInHost from '@/minimum/hooks/useHideInHost'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
 const actionsCount = 2
@@ -29,7 +28,6 @@ const getBowserLocalStoreageFloatingButtonY = async () => {
 }
 
 const FloatingMenuButton: FC = () => {
-  const needHide = useHideInHost()
   const { height } = useWindowSize()
   const [dragAxisY, setDragAxisY] = useState(() => DEFAULT_TOP)
   const [isHover, setIsHover] = useState(false)
@@ -59,7 +57,7 @@ const FloatingMenuButton: FC = () => {
     currentDragAxisYRef.current = dragAxisY
     saveBowserLocalStoreageFloatingButtonY(dragAxisY)
   }, [dragAxisY])
-  if (!isLoaded || needHide) {
+  if (!isLoaded) {
     return null
   }
   return (

@@ -95,6 +95,13 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
       ) as HTMLDivElement
       youTubeStudioContainer.style.width = `calc(100% - ${chatBoxElementWidth}px)`
     }
+    if (host === 'youtube.com') {
+      document
+        .querySelectorAll('.ytp-chrome-bottom')
+        .forEach((element: any) => {
+          element.style.maxWidth = '95%'
+        })
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
@@ -125,6 +132,13 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
           }
         })
       })
+    }
+    if (host === 'youtube.com') {
+      document
+        .querySelectorAll('.ytp-chrome-bottom')
+        .forEach((element: any) => {
+          element.style.maxWidth = ''
+        })
     }
     if (host === 'studio.youtube.com') {
       const youTubeStudioContainer = document.querySelector(

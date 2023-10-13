@@ -36,7 +36,8 @@
     "copied": "Nokopēts",
     "paste": "Ielīmēt",
     "loading": "Ielādē...",
-    "no_options": "Nav variantu"
+    "no_options": "Nav variantu",
+    "auto": "Automobilis"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Miniatūras izvēlne teksta atlasei",
     "feature_card__mini_menu__field_mini_menu__visible": "Redzams, kad atlasāts teksts",
     "feature_card__mini_menu__field_mini_menu__hidden": "Paslēpts, kad atlasāts teksts",
-    "feature_card__preferred_language__title": "Izvēlētā valoda",
+    "feature_card__preferred_language__title": "Saskarnes valoda",
     "feature_card__preferred_language__field_preferred_language_title": "Izvēlieties savu izvēlēto valodu",
     "feature_card__preferred_language__field_preferred_language_description": "Skatiet visu saskarnes tekstu izvēlētajā valodā.",
-    "feature_card__preferred_language__field_preferred_language_label": "Izvēlētā valoda",
+    "feature_card__preferred_language__field_preferred_language_label": "Saskarnes valoda",
     "feature_card__ai_response_language__title": "AI atbildes valoda",
     "feature_card__ai_response_language__field_ai_response_language__title": "Izvēlieties noklusējuma valodu AI atbildēm",
     "feature_card__ai_response_language__field_ai_response_language__description": "Kad ir atlasīts \"Automātiski\", Al atbildēs ar tādu pašu valodas variāciju vai dialektu kā atlasītais teksts.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Iestatiet, cik ilgi ChatGPT stabilais režīms paliek ieslēgts pēc aktivizēšanas.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Uzlabojiet, lai uzlabotu savu PDF pieredzi ar AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Izmantojiet AI, lai apkopotu, izskaidrotu, tulkojiet, uzdotu jautājumus un ietaupītu laiku.",
-    "permission__pricing_hook__preferred_language__title": "Uzlabojiet, lai mainītu vēlamo valodu",
+    "permission__pricing_hook__preferred_language__title": "Jauniniet, lai mainītu saskarnes valodu",
     "permission__pricing_hook__preferred_language__description": "Skatiet visu saskarnes tekstu savā izvēlētajā valodā.",
     "permission__pricing_hook__max_ai_temperature__title": "Uzlabojiet, lai mainītu temperatūru",
     "permission__pricing_hook__max_ai_temperature__description": "Kontrolējiet AI atbildes nejaušību. Zemāka temperatūra padara AI atbildes mazāk nejaušas, noteiktākas un atkārtojošākas.",

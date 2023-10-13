@@ -36,7 +36,8 @@
     "copied": "કૉપી કર્યું",
     "paste": "પેસ્ટ કરો",
     "loading": "લોડ થઈ રહ્યું છે...",
-    "no_options": "કોઈ વિકલ્પો નથી"
+    "no_options": "કોઈ વિકલ્પો નથી",
+    "auto": "આપો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "ટેક્સ્ટ પસંદ કરવામાં મિની મેનૂ",
     "feature_card__mini_menu__field_mini_menu__visible": "ટેક્સ્ટ પસંદ કરવામાં દૃશ્યમાન",
     "feature_card__mini_menu__field_mini_menu__hidden": "ટેક્સ્ટ પસંદ કરવામાં છુપેલ",
-    "feature_card__preferred_language__title": "પસંદગીની ભાષા",
+    "feature_card__preferred_language__title": "ઇંટરફેસ ભાષા",
     "feature_card__preferred_language__field_preferred_language_title": "તમારી પસંદગીની ભાષા પસંદ કરો",
     "feature_card__preferred_language__field_preferred_language_description": "તમારી પસંદગીની ભાષામાં બધા ઇંટરફેસ ટેક્સ્ટ જુઓ.",
-    "feature_card__preferred_language__field_preferred_language_label": "પસંદગીની ભાષા",
+    "feature_card__preferred_language__field_preferred_language_label": "ઇંટરફેસ ભાષા",
     "feature_card__ai_response_language__title": "AI પ્રતિસાદ ભાષા",
     "feature_card__ai_response_language__field_ai_response_language__title": "મૂળભૂત ભાષા પસંદ કરો Al પ્રતિસાદ માટે",
     "feature_card__ai_response_language__field_ai_response_language__description": "જ્યારે \"આપો\" પસંદ થયેલ હોય, Al પ્રતિસાદ પસંદ કરેલ ટેક્સ્ટ જેવી ભાષા પ્રકાર અથવા બોલીને જવાબ આપે છે.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "સક્રિય થાય પછી ચેટજીપીટી સ્થિર મોડ કેટલા સમય સુધી ચાલે તેને સેટ કરો.",
     "permission__pricing_hook__pdf_ai_viewer__title": "એઆઈ સાથે તમારી PDF અનુભવને ઉચ્ચતમ સ્તરે લાવવા માટે અપગ્રેડ કરો",
     "permission__pricing_hook__pdf_ai_viewer__description": "સંક્ષેપિત કરો, સમજાવો, અનુવાદ કરો, પ્રશ્નો પૂછો અને સમય બચાવો માટે એઆઈનો ઉપયોગ કરો.",
-    "permission__pricing_hook__preferred_language__title": "પસંદગીની ભાષા બદલવા માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__preferred_language__title": "ભાષા બદલવા માટે અપગ્રેડ કરો",
     "permission__pricing_hook__preferred_language__description": "તમારી પસંદગીની ભાષામાં બધા ઇંટરફેસ ટેક્સ્ટ જુઓ.",
     "permission__pricing_hook__max_ai_temperature__title": "તાપમાન બદલવા માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_temperature__description": "એઆઈ પ્રતિસાદ યાદૃચ્છિકતાને નિયંત્રિત કરો. ઓછો તાપમાન એઆઈ પ્રતિસાદોને ઓછી યાદૃચ્છિક, વધુ નિયત્મક અને પુનરાવર્તક બનાવે છે.",

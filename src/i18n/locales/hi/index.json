@@ -36,7 +36,8 @@
     "copied": "कॉपी किया गया",
     "paste": "पेस्ट करें",
     "loading": "लोड हो रहा है...",
-    "no_options": "कोई विकल्प नहीं"
+    "no_options": "कोई विकल्प नहीं",
+    "auto": "ऑटो"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "पाठ का चयन करते समय मिनी मेनू",
     "feature_card__mini_menu__field_mini_menu__visible": "पाठ का चयन करते समय दिखाई देता है",
     "feature_card__mini_menu__field_mini_menu__hidden": "पाठ का चयन करते समय छिपा हुआ होता है",
-    "feature_card__preferred_language__title": "पसंदीदा भाषा",
+    "feature_card__preferred_language__title": "इंटरफ़ेस भाषा",
     "feature_card__preferred_language__field_preferred_language_title": "अपनी पसंदीदा भाषा चुनें",
     "feature_card__preferred_language__field_preferred_language_description": "अपनी चयनित भाषा में सभी इंटरफ़ेस पाठ देखें।",
-    "feature_card__preferred_language__field_preferred_language_label": "पसंदीदा भाषा",
+    "feature_card__preferred_language__field_preferred_language_label": "इंटरफ़ेस भाषा",
     "feature_card__ai_response_language__title": "AI प्रतिक्रिया भाषा",
     "feature_card__ai_response_language__field_ai_response_language__title": "डिफ़ॉल्ट भाषा के लिए AI प्रतिक्रिया चुनें",
     "feature_card__ai_response_language__field_ai_response_language__description": "जब \"ऑटो\" चयनित होता है, तो Al चयनित पाठ के समान भाषा विविधता या बोली में प्रतिक्रिया करेगा।",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "सक्रियण के बाद ChatGPT स्थिर मोड को कितने समय तक चालू रखें।",
     "permission__pricing_hook__pdf_ai_viewer__title": "पीडीएफ अनुभव को एआई के साथ ऊंचा करने के लिए अपग्रेड करें",
     "permission__pricing_hook__pdf_ai_viewer__description": "समारह, समझाना, अनुवाद करना, सवाल पूछना और समय बचाने के लिए एआई का उपयोग करें।",
-    "permission__pricing_hook__preferred_language__title": "पसंदीदा भाषा बदलने के लिए अपग्रेड करें",
+    "permission__pricing_hook__preferred_language__title": "भाषा बदलने के लिए अपग्रेड करें",
     "permission__pricing_hook__preferred_language__description": "अपनी चुनी हुई भाषा में सभी इंटरफ़ेस पाठ देखें।",
     "permission__pricing_hook__max_ai_temperature__title": "तापमान बदलने के लिए अपग्रेड करें",
     "permission__pricing_hook__max_ai_temperature__description": "एआई प्रतिक्रिया के रैंडमनेस को नियंत्रित करें। निचला तापमान एआई प्रतिक्रियाओं को कम रैंडम, अधिक निर्धारित और दोहराने वाला बनाता है।",

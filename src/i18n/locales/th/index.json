@@ -36,7 +36,8 @@
     "copied": "คัดลอกแล้ว",
     "paste": "วาง",
     "loading": "กำลังโหลด...",
-    "no_options": "ไม่มีตัวเลือก"
+    "no_options": "ไม่มีตัวเลือก",
+    "auto": "อัตโนมัติ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "เมนูย่อยขณะเลือกข้อความ",
     "feature_card__mini_menu__field_mini_menu__visible": "แสดงเมื่อเลือกข้อความ",
     "feature_card__mini_menu__field_mini_menu__hidden": "ซ่อนเมื่อเลือกข้อความ",
-    "feature_card__preferred_language__title": "ภาษาที่ต้องการ",
+    "feature_card__preferred_language__title": "ภาษาอินเตอร์เฟซ",
     "feature_card__preferred_language__field_preferred_language_title": "เลือกภาษาที่ต้องการ",
     "feature_card__preferred_language__field_preferred_language_description": "ดูข้อความในอินเตอร์เฟซทั้งหมดในภาษาที่คุณเลือก",
-    "feature_card__preferred_language__field_preferred_language_label": "ภาษาที่ต้องการ",
+    "feature_card__preferred_language__field_preferred_language_label": "ภาษาอินเตอร์เฟซ",
     "feature_card__ai_response_language__title": "ภาษาการตอบสนองของ AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "เลือกภาษาเริ่มต้นสำหรับการตอบสนองของ Al",
     "feature_card__ai_response_language__field_ai_response_language__description": "เมื่อเลือก \"อัตโนมัติ\" Al จะตอบสนองในรูปแบบหรือสำเนียงภาษาเดียวกับข้อความที่เลือก",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "ตั้งค่าระยะเวลาที่โหมด ChatGPT ที่เสถียรจะเปิดใช้งานหลังจากเปิดใช้งาน",
     "permission__pricing_hook__pdf_ai_viewer__title": "อัปเกรดเพื่อเพิ่มประสบการณ์ PDF ของคุณด้วย AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "ใช้ AI เพื่อสรุปข้อมูล เข้าใจ แปล ถามคำถาม และประหยัดเวลาในการใช้งาน",
-    "permission__pricing_hook__preferred_language__title": "อัปเกรดเพื่อเปลี่ยนภาษาที่ต้องการ",
+    "permission__pricing_hook__preferred_language__title": "อัปเกรดเพื่อเปลี่ยนภาษาอินเตอร์เฟซ",
     "permission__pricing_hook__preferred_language__description": "ดูข้อความอินเตอร์เฟซทั้งหมดในภาษาที่คุณเลือก",
     "permission__pricing_hook__max_ai_temperature__title": "อัปเกรดเพื่อเปลี่ยนอุณหภูมิ",
     "permission__pricing_hook__max_ai_temperature__description": "ควบคุมความสับสนในการตอบกลับของ AI อุณหภูมิต่ำกว่าทำให้การตอบกลับของ AI ไม่เป็นสุ่มมากขึ้น มีความกำหนดและเป็นรูปแบบ",

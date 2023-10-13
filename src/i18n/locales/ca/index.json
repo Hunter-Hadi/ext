@@ -36,7 +36,8 @@
     "copied": "Copiat",
     "paste": "Enganxa",
     "loading": "Carregant...",
-    "no_options": "Sense opcions"
+    "no_options": "Sense opcions",
+    "auto": "Automàtic"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Menú mini en la selecció de text",
     "feature_card__mini_menu__field_mini_menu__visible": "Visible en seleccionar text",
     "feature_card__mini_menu__field_mini_menu__hidden": "Amagat en seleccionar text",
-    "feature_card__preferred_language__title": "Idioma preferit",
+    "feature_card__preferred_language__title": "Idioma de la interfície",
     "feature_card__preferred_language__field_preferred_language_title": "Trieu el vostre idioma preferit",
     "feature_card__preferred_language__field_preferred_language_description": "Visualitzeu tot el text de la interfície en l'idioma triat.",
-    "feature_card__preferred_language__field_preferred_language_label": "Idioma preferit",
+    "feature_card__preferred_language__field_preferred_language_label": "Idioma de la interfície",
     "feature_card__ai_response_language__title": "Idioma de resposta de l'IA",
     "feature_card__ai_response_language__field_ai_response_language__title": "Trieu l'idioma per defecte per a la resposta de l'IA",
     "feature_card__ai_response_language__field_ai_response_language__description": "Quan s'ha seleccionat \"Automàtic\", l'IA respondrà en la mateixa varietat o dialecte d'idioma que el text seleccionat.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Estableix durant quant temps el mode estable de ChatGPT estarà actiu després de l'activació.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Millora per millorar la teva experiència amb PDF amb IA",
     "permission__pricing_hook__pdf_ai_viewer__description": "Utilitza l'IA per resumir, explicar, traduir, fer preguntes i estalviar temps amb els PDF.",
-    "permission__pricing_hook__preferred_language__title": "Millora per canviar l'idioma preferit",
+    "permission__pricing_hook__preferred_language__title": "Actualitza per canviar l'idioma de la interfície",
     "permission__pricing_hook__preferred_language__description": "Visualitza tot el text de la interfície en l'idioma que hagis triat.",
     "permission__pricing_hook__max_ai_temperature__title": "Millora per canviar la temperatura",
     "permission__pricing_hook__max_ai_temperature__description": "Controla l'aleatorietat de les respostes de l'IA. Una temperatura més baixa fa que les respostes de l'IA siguin menys aleatòries, més deterministes i repetitives.",

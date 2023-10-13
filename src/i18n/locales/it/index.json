@@ -36,7 +36,8 @@
     "copied": "Copiato",
     "paste": "Incolla",
     "loading": "Caricamento...",
-    "no_options": "Nessuna opzione"
+    "no_options": "Nessuna opzione",
+    "auto": "Automobile"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini menu durante la selezione del testo",
     "feature_card__mini_menu__field_mini_menu__visible": "Visibile durante la selezione del testo",
     "feature_card__mini_menu__field_mini_menu__hidden": "Nascosto durante la selezione del testo",
-    "feature_card__preferred_language__title": "Lingua preferita",
+    "feature_card__preferred_language__title": "Lingua dell'interfaccia",
     "feature_card__preferred_language__field_preferred_language_title": "Scegli la tua lingua preferita",
     "feature_card__preferred_language__field_preferred_language_description": "Visualizza tutto il testo dell'interfaccia nella lingua scelta.",
-    "feature_card__preferred_language__field_preferred_language_label": "Lingua preferita",
+    "feature_card__preferred_language__field_preferred_language_label": "Lingua dell'interfaccia",
     "feature_card__ai_response_language__title": "Lingua della risposta dell'IA",
     "feature_card__ai_response_language__field_ai_response_language__title": "Scegli la lingua predefinita per la risposta dell'IA",
     "feature_card__ai_response_language__field_ai_response_language__description": "Quando viene selezionato \"Auto\", l'IA risponderà nella stessa varietà o dialetto della lingua selezionata.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Imposta quanto tempo la modalità stabile di ChatGPT rimane attiva dopo l'attivazione.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Passa a Pro per migliorare la tua esperienza PDF con l'IA",
     "permission__pricing_hook__pdf_ai_viewer__description": "Utilizza l'IA per riassumere, spiegare, tradurre, fare domande e risparmiare tempo nei PDF.",
-    "permission__pricing_hook__preferred_language__title": "Passa a Pro per cambiare la lingua preferita",
+    "permission__pricing_hook__preferred_language__title": "Aggiorna per cambiare la lingua dell'interfaccia",
     "permission__pricing_hook__preferred_language__description": "Visualizza tutto il testo dell'interfaccia nella tua lingua preferita.",
     "permission__pricing_hook__max_ai_temperature__title": "Passa a Pro per cambiare la temperatura",
     "permission__pricing_hook__max_ai_temperature__description": "Controlla la casualità delle risposte dell'IA. Una temperatura più bassa rende le risposte dell'IA meno casuali, più deterministiche e ripetitive.",

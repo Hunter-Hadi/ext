@@ -36,7 +36,8 @@
     "copied": "Gekopieerd",
     "paste": "Plakken",
     "loading": "Laden...",
-    "no_options": "Geen opties"
+    "no_options": "Geen opties",
+    "auto": "Auto"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini-menu bij het selecteren van tekst",
     "feature_card__mini_menu__field_mini_menu__visible": "Zichtbaar bij het selecteren van tekst",
     "feature_card__mini_menu__field_mini_menu__hidden": "Verborgen bij het selecteren van tekst",
-    "feature_card__preferred_language__title": "Voorkeurstaal",
+    "feature_card__preferred_language__title": "Interface taal",
     "feature_card__preferred_language__field_preferred_language_title": "Kies je voorkeurstaal",
     "feature_card__preferred_language__field_preferred_language_description": "Bekijk alle interface-tekst in je gekozen taal.",
-    "feature_card__preferred_language__field_preferred_language_label": "Voorkeurstaal",
+    "feature_card__preferred_language__field_preferred_language_label": "Interface taal",
     "feature_card__ai_response_language__title": "Taal voor AI-respons",
     "feature_card__ai_response_language__field_ai_response_language__title": "Kies de standaardtaal voor AI-respons",
     "feature_card__ai_response_language__field_ai_response_language__description": "Als \"Automatisch\" is geselecteerd, zal Al reageren in dezelfde taalvariëteit of dialect als de geselecteerde tekst.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Stel in hoelang ChatGPT stabiele modus actief blijft na activering.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Upgrade om uw PDF-ervaring te verbeteren met AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Gebruik AI om samen te vatten, uit te leggen, te vertalen, vragen te stellen en tijd te besparen.",
-    "permission__pricing_hook__preferred_language__title": "Upgrade om de voorkeurstaal te wijzigen",
+    "permission__pricing_hook__preferred_language__title": "Upgrade om de interface taal te wijzigen",
     "permission__pricing_hook__preferred_language__description": "Bekijk alle interfacetekst in uw gekozen taal.",
     "permission__pricing_hook__max_ai_temperature__title": "Upgrade om de temperatuur te wijzigen",
     "permission__pricing_hook__max_ai_temperature__description": "Beheer de willekeurigheid van AI-responsen. Een lagere temperatuur maakt AI-responsen minder willekeurig, meer bepaald en repetitief.",

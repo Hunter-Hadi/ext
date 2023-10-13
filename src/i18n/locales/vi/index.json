@@ -36,7 +36,8 @@
     "copied": "Đã sao chép",
     "paste": "Dán",
     "loading": "Đang tải...",
-    "no_options": "Không có tùy chọn"
+    "no_options": "Không có tùy chọn",
+    "auto": "Tự động"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Menu nhỏ khi chọn văn bản",
     "feature_card__mini_menu__field_mini_menu__visible": "Hiển thị khi chọn văn bản",
     "feature_card__mini_menu__field_mini_menu__hidden": "Ẩn khi chọn văn bản",
-    "feature_card__preferred_language__title": "Ngôn ngữ ưu tiên",
+    "feature_card__preferred_language__title": "Ngôn ngữ giao diện",
     "feature_card__preferred_language__field_preferred_language_title": "Chọn ngôn ngữ ưu tiên của bạn",
     "feature_card__preferred_language__field_preferred_language_description": "Xem tất cả văn bản giao diện bằng ngôn ngữ bạn đã chọn.",
-    "feature_card__preferred_language__field_preferred_language_label": "Ngôn ngữ ưu tiên",
+    "feature_card__preferred_language__field_preferred_language_label": "Ngôn ngữ giao diện",
     "feature_card__ai_response_language__title": "Ngôn ngữ phản hồi AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Chọn ngôn ngữ mặc định cho phản hồi AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "Khi chọn \"Tự động\", AI sẽ phản hồi bằng cùng một biến thể hoặc phương ngôn ngữ như văn bản đã chọn.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Đặt thời gian ChatGPT ổn định hoạt động sau khi kích hoạt.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Nâng cấp để nâng cao trải nghiệm PDF của bạn với trí tuệ nhân tạo",
     "permission__pricing_hook__pdf_ai_viewer__description": "Sử dụng trí tuệ nhân tạo để tóm tắt, giải thích, dịch, đặt câu hỏi và tiết kiệm thời gian.",
-    "permission__pricing_hook__preferred_language__title": "Nâng cấp để thay đổi ngôn ngữ ưu tiên",
+    "permission__pricing_hook__preferred_language__title": "Nâng cấp để thay đổi ngôn ngữ giao diện",
     "permission__pricing_hook__preferred_language__description": "Xem tất cả văn bản giao diện bằng ngôn ngữ bạn đã chọn.",
     "permission__pricing_hook__max_ai_temperature__title": "Nâng cấp để thay đổi nhiệt độ",
     "permission__pricing_hook__max_ai_temperature__description": "Kiểm soát sự ngẫu nhiên trong phản hồi của trí tuệ nhân tạo. Nhiệt độ thấp hơn làm cho phản hồi của trí tuệ nhân tạo ít ngẫu nhiên hơn, xác định hơn và lặp đi lặp lại hơn.",

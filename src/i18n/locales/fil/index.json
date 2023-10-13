@@ -36,7 +36,8 @@
     "copied": "Nakopya",
     "paste": "I-paste",
     "loading": "Naglo-load...",
-    "no_options": "Walang mga opsyon"
+    "no_options": "Walang mga opsyon",
+    "auto": "Awto"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini menu kapag pumipili ng teksto",
     "feature_card__mini_menu__field_mini_menu__visible": "Nakikita kapag pumipili ng teksto",
     "feature_card__mini_menu__field_mini_menu__hidden": "Nakatago kapag pumipili ng teksto",
-    "feature_card__preferred_language__title": "Inirerekomendang wika",
+    "feature_card__preferred_language__title": "Wika ng interface",
     "feature_card__preferred_language__field_preferred_language_title": "Piliin ang iyong inirerekomendang wika",
     "feature_card__preferred_language__field_preferred_language_description": "Tingnan ang lahat ng teksto sa interface sa iyong napiling wika.",
-    "feature_card__preferred_language__field_preferred_language_label": "Inirerekomendang wika",
+    "feature_card__preferred_language__field_preferred_language_label": "Wika ng interface",
     "feature_card__ai_response_language__title": "Wika ng tugon ng AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Piliin ang default na wika para sa tugon ng AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "Kapag pinili ang \"Auto\", magtutugon ang AI sa parehong uri o diyalekto ng wika na napiling teksto.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Itakda kung gaano katagal mananatili ang ChatGPT stable mode pagkatapos ng pag-activate.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Mag-upgrade upang mapataas ang iyong karanasan sa PDF gamit ang AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Gamitin ang AI upang buodin, ipaliwanag, isalin, magtanong, at makatipid ng oras sa PDF.",
-    "permission__pricing_hook__preferred_language__title": "Mag-upgrade upang baguhin ang piniling wika",
+    "permission__pricing_hook__preferred_language__title": "Mag-upgrade para baguhin ang wika ng interface",
     "permission__pricing_hook__preferred_language__description": "Tingnan ang lahat ng teksto ng interface sa iyong piniling wika.",
     "permission__pricing_hook__max_ai_temperature__title": "Mag-upgrade upang baguhin ang temperatura",
     "permission__pricing_hook__max_ai_temperature__description": "Kontrolin ang kawalang-katiyakan ng AI response. Ang mas mababang temperatura ay gumagawa ng mas kaunting random, mas deterministic, at paulit-ulit na mga sagot ng AI.",

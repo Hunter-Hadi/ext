@@ -36,7 +36,8 @@
     "copied": "Copiado",
     "paste": "Colar",
     "loading": "Carregando...",
-    "no_options": "Sem opções"
+    "no_options": "Sem opções",
+    "auto": "Automático"
   },
   "settings": {
     "left_menu__me": "Eu e MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini menu na seleção de texto",
     "feature_card__mini_menu__field_mini_menu__visible": "Visível ao selecionar texto",
     "feature_card__mini_menu__field_mini_menu__hidden": "Oculto ao selecionar texto",
-    "feature_card__preferred_language__title": "Idioma preferido",
+    "feature_card__preferred_language__title": "Idioma da interface",
     "feature_card__preferred_language__field_preferred_language_title": "Escolha seu idioma preferido",
     "feature_card__preferred_language__field_preferred_language_description": "Veja todo o texto da interface no idioma escolhido.",
-    "feature_card__preferred_language__field_preferred_language_label": "Idioma preferido",
+    "feature_card__preferred_language__field_preferred_language_label": "Idioma da interface",
     "feature_card__ai_response_language__title": "Idioma da resposta da IA",
     "feature_card__ai_response_language__field_ai_response_language__title": "Escolha o idioma padrão para a resposta da IA",
     "feature_card__ai_response_language__field_ai_response_language__description": "Quando \"Automático\" é selecionado, a IA responderá no mesmo idioma ou dialeto do texto selecionado.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Defina por quanto tempo o modo estável do ChatGPT permanece ativado após a ativação.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Atualize para elevar sua experiência em PDF com IA",
     "permission__pricing_hook__pdf_ai_viewer__description": "Use a IA para resumir, explicar, traduzir, fazer perguntas e economizar tempo em arquivos PDF.",
-    "permission__pricing_hook__preferred_language__title": "Atualize para alterar o idioma preferido",
+    "permission__pricing_hook__preferred_language__title": "Atualize para alterar o idioma da interface",
     "permission__pricing_hook__preferred_language__description": "Veja todo o texto da interface no idioma escolhido.",
     "permission__pricing_hook__max_ai_temperature__title": "Atualize para alterar a temperatura",
     "permission__pricing_hook__max_ai_temperature__description": "Controle a aleatoriedade das respostas da IA. Uma temperatura mais baixa torna as respostas da IA menos aleatórias, mais determinísticas e repetitivas.",

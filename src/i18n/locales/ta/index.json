@@ -36,7 +36,8 @@
     "copied": "நகலெடுக்கப்பட்டது",
     "paste": "ஒட்டு",
     "loading": "ஏற்றுகின்றது...",
-    "no_options": "விருப்பங்கள் இல்லை"
+    "no_options": "விருப்பங்கள் இல்லை",
+    "auto": "ஆட்டோ"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "உரை தேர்ந்தெடும் போது மினி மெனு",
     "feature_card__mini_menu__field_mini_menu__visible": "உரையைத் தேர்ந்தெடுக்கும் போது காட்டப்படுகிறது",
     "feature_card__mini_menu__field_mini_menu__hidden": "உரையைத் தேர்ந்தெடுக்கும் போது மறைக்கப்படுகிறது",
-    "feature_card__preferred_language__title": "முன்னுரிமையான மொழி",
+    "feature_card__preferred_language__title": "அமைப்பு மொழி",
     "feature_card__preferred_language__field_preferred_language_title": "உங்கள் முன்னுரிமையான மொழியைத் தேர்ந்தெடுக்கவும்",
     "feature_card__preferred_language__field_preferred_language_description": "உங்கள் தேர்ந்தெடுக்கப்பட்ட மொழியில் அனைத்து பயன்பாட்டு உரையையும் பார்க்கவும்.",
-    "feature_card__preferred_language__field_preferred_language_label": "முன்னுரிமையான மொழி",
+    "feature_card__preferred_language__field_preferred_language_label": "அமைப்பு மொழி",
     "feature_card__ai_response_language__title": "AI பதில் மொழி",
     "feature_card__ai_response_language__field_ai_response_language__title": "பொது மொழி மாற்றவும்",
     "feature_card__ai_response_language__field_ai_response_language__description": "\"தானியங்கி\" தேர்ந்தெடுக்கப்பட்டால், தேர்ந்தெடுக்கப்பட்ட உரையின் மொழி வகையையும் மாற்றும்.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "ChatGPT நிலையை செயல்பாட்டின் பிறகு எவ்வளவே நேரம் இருக்கும் என்பதை அமைக்க.",
     "permission__pricing_hook__pdf_ai_viewer__title": "AI ஐ பயன்படுத்தி உங்கள் PDF அனுபவத்தை மேம்படுத்துக",
     "permission__pricing_hook__pdf_ai_viewer__description": "சுருக்கம் செய்ய, விளக்கம் செய்ய, மொழிபெயர் செய்ய, கேள்விகளை கேட்கலாம் மற்றும் நேரம் சேமிக்கலாம்.",
-    "permission__pricing_hook__preferred_language__title": "முதன்முதலில் விருப்பமான மொழியை மாற்ற பிரோ-க்கு மேம்படுத்துக",
+    "permission__pricing_hook__preferred_language__title": "மொழி மாற்றுவதற்கு மேம்படுத்தல்",
     "permission__pricing_hook__preferred_language__description": "உங்கள் தேர்ந்தெடுக்கப்பட்ட மொழியில் அனைத்து பட்டியல் உரையையும் பார்க்க.",
     "permission__pricing_hook__max_ai_temperature__title": "வெப்பம் மாற்ற பிரோ-க்கு மேம்படுத்துக",
     "permission__pricing_hook__max_ai_temperature__description": "AI பதில் முதலில் ஏதேனும் சீரமைப்பை கட்டுப்படுத்துக. குறைந்த வெப்பம் AI பதில்களை குறைத்துக் கணியுங்கள், மிகுந்த வெப்பம் பதில்களை அதிகரித்துக் கணியுங்கள்.",

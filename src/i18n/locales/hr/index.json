@@ -36,7 +36,8 @@
     "copied": "Kopirano",
     "paste": "Zalijepi",
     "loading": "Učitavanje...",
-    "no_options": "Nema opcija"
+    "no_options": "Nema opcija",
+    "auto": "Automatski"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini izbornik pri odabiru teksta",
     "feature_card__mini_menu__field_mini_menu__visible": "Vidljivo pri odabiru teksta",
     "feature_card__mini_menu__field_mini_menu__hidden": "Sakriveno pri odabiru teksta",
-    "feature_card__preferred_language__title": "Preferirani jezik",
+    "feature_card__preferred_language__title": "Jezik sučelja",
     "feature_card__preferred_language__field_preferred_language_title": "Odaberite svoj preferirani jezik",
     "feature_card__preferred_language__field_preferred_language_description": "Prikazujte sve tekstove sučelja na odabranom jeziku.",
-    "feature_card__preferred_language__field_preferred_language_label": "Preferirani jezik",
+    "feature_card__preferred_language__field_preferred_language_label": "Jezik sučelja",
     "feature_card__ai_response_language__title": "Jezik odgovora AI-a",
     "feature_card__ai_response_language__field_ai_response_language__title": "Odaberite zadani jezik za odgovor AI-a",
     "feature_card__ai_response_language__field_ai_response_language__description": "Kada je odabrano \"Automatski\", AI će odgovarati na istom jezičnom dijalektu ili varijanti kao i odabrani tekst.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Postavite koliko dugo stabilni način rada ChatGPT ostaje uključen nakon aktivacije.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Nadogradite da biste unaprijedili svoje iskustvo s PDF-om uz pomoć AI-a",
     "permission__pricing_hook__pdf_ai_viewer__description": "Koristite AI za sažimanje, objašnjavanje, prevođenje, postavljanje pitanja i uštedu vremena s PDF-om.",
-    "permission__pricing_hook__preferred_language__title": "Nadogradite da biste promijenili željeni jezik",
+    "permission__pricing_hook__preferred_language__title": "Ažurirajte za promjenu jezika sučelja",
     "permission__pricing_hook__preferred_language__description": "Prikazujte sve tekstove sučelja na odabranom jeziku.",
     "permission__pricing_hook__max_ai_temperature__title": "Nadogradite da biste promijenili temperaturu",
     "permission__pricing_hook__max_ai_temperature__description": "Kontrolirajte nasumičnost odgovora AI-a. Niža temperatura čini odgovore AI-a manje slučajnima, više determinističkima i ponavljajućima.",

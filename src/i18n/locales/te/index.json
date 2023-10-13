@@ -36,7 +36,8 @@
     "copied": "కాపీ చేయబడింది",
     "paste": "పేస్ట్",
     "loading": "లోడు అవుతోంది...",
-    "no_options": "ఎంచుకోలేదు"
+    "no_options": "ఎంచుకోలేదు",
+    "auto": "ఆటో"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "టెక్స్ట్ ఎంపిక చేసినప్పుడు మిని మెనూ",
     "feature_card__mini_menu__field_mini_menu__visible": "టెక్స్ట్ ఎంపిక చేసినప్పుడు కనిపించేది",
     "feature_card__mini_menu__field_mini_menu__hidden": "టెక్స్ట్ ఎంపిక చేసినప్పుడు దాచినది",
-    "feature_card__preferred_language__title": "మీ మెరిది భాష",
+    "feature_card__preferred_language__title": "ఇంటర్ఫేస్ భాష",
     "feature_card__preferred_language__field_preferred_language_title": "మీ మెరిది భాషను ఎంచుకోండి",
     "feature_card__preferred_language__field_preferred_language_description": "మీ ఎంపిక భాషలో అన్ని ఇంటర్‌ఫేస్ టెక్స్ట్‌ను చూడండి.",
-    "feature_card__preferred_language__field_preferred_language_label": "మెరిది భాష",
+    "feature_card__preferred_language__field_preferred_language_label": "ఇంటర్ఫేస్ భాష",
     "feature_card__ai_response_language__title": "AI సమాధాన భాష",
     "feature_card__ai_response_language__field_ai_response_language__title": "డిఫాల్ట్ భాషను ఎంచుకోండి AI సమాధానం కోసం",
     "feature_card__ai_response_language__field_ai_response_language__description": "\"ఆటో\" ఎంపిక చేసినప్పుడు, AI ఎంపిక టెక్స్ట్‌తో ఒకే భాష వారియటీ లేదా బొమ్మలను ఉపయోగించండి.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "సక్రియేషన్ తర్వాత ChatGPT స్థిర మోడ్ నిల్వ ఎంపిక చేయండి.",
     "permission__pricing_hook__pdf_ai_viewer__title": "AI తో మీ PDF అనుభవాన్ని పెంచేందుకు అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__pdf_ai_viewer__description": "సంగతివంతంగా, వివరించండి, అనువాదించండి, ప్రశ్నించండి మరియు సమయం సేవ్ చేయడానికి AI ని ఉపయోగించండి.",
-    "permission__pricing_hook__preferred_language__title": "మీ మెరుగుపేరు భాషను మార్చడానికి అప్గ్రేడ్ చేయండి",
+    "permission__pricing_hook__preferred_language__title": "ఇంటర్ఫేస్ భాషను మార్చడానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__preferred_language__description": "మీ ఎంపిక భాషలో అన్ని ఇంటర్ఫేస్ టెక్స్ట్‌ను చూడండి.",
     "permission__pricing_hook__max_ai_temperature__title": "తాపమీయతను మార్చడానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_temperature__description": "AI సమాధాన యాదృచ్ఛికతను నియంత్రించండి. తక్కువ తాపమీయత అన్ని యాదృచ్ఛికంగా, నిర్ధారకంగా మరియు మళ్లీరాండంగా ఉంటుంది.",

@@ -36,7 +36,8 @@
     "copied": "ನಕಲಿಸಲಾಗಿದೆ",
     "paste": "ಹಾಕಿ",
     "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
-    "no_options": "ಯಾವುದೇ ಆಯ್ಕೆಗಳಿಲ್ಲ"
+    "no_options": "ಯಾವುದೇ ಆಯ್ಕೆಗಳಿಲ್ಲ",
+    "auto": "ಸ್ವಯಂಚಾಲಿತ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "ಪಠ್ಯ ಆಯ್ಕೆಯಲ್ಲಿ ಮಿನಿ ಮೆನು",
     "feature_card__mini_menu__field_mini_menu__visible": "ಪಠ್ಯವನ್ನು ಆಯ್ಕೆ ಮಾಡುವಾಗ ಕಾಣುವುದು",
     "feature_card__mini_menu__field_mini_menu__hidden": "ಪಠ್ಯವನ್ನು ಆಯ್ಕೆ ಮಾಡುವಾಗ ಮರೆತುಹೋಗುವುದು",
-    "feature_card__preferred_language__title": "ಆದ್ಯತೆಯನ್ನು ಪಡೆದ ಭಾಷೆ",
+    "feature_card__preferred_language__title": "ಇಂಟರ್ಫೇಸ್ ಭಾಷೆ",
     "feature_card__preferred_language__field_preferred_language_title": "ನಿಮ್ಮ ಆದ್ಯತೆಯನ್ನು ಪಡೆದ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
     "feature_card__preferred_language__field_preferred_language_description": "ನಿಮ್ಮ ಆಯ್ಕೆಮಾಡಿದ ಭಾಷೆಯಲ್ಲಿ ಎಲ್ಲಾ ಇಂಟರ್‌ಫೇಸ್ ಪಠ್ಯವನ್ನು ವೀಕ್ಷಿಸಿ.",
-    "feature_card__preferred_language__field_preferred_language_label": "ಆದ್ಯತೆಯನ್ನು ಪಡೆದ ಭಾಷೆ",
+    "feature_card__preferred_language__field_preferred_language_label": "ಇಂಟರ್ಫೇಸ್ ಭಾಷೆ",
     "feature_card__ai_response_language__title": "AI ಪ್ರತಿಕ್ರಿಯೆಯ ಭಾಷೆ",
     "feature_card__ai_response_language__field_ai_response_language__title": "ಪೂರ್ವನಿರ್ಧಾರಿತ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
     "feature_card__ai_response_language__field_ai_response_language__description": "\"ಸ್ವಯಂಚಾಲಿತ\" ಆಯ್ಕೆಯಾಗಿದ್ದರೆ, AI ಆಯ್ಕೆಮಾಡಿದ ಪಠ್ಯದ ಭಾಷೆಯ ವೈವಿಧ್ಯ ಅಥವಾ ನಾಡಿನ ಪ್ರತಿಕ್ರಿಯೆ ಭಾಷೆಯಲ್ಲಿ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡುತ್ತದೆ.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "ಸಕ್ರಿಯಗೊಳಿಸುವ ನಂತರ ChatGPT ಸ್ಥಿರ ಮೋಡ್ ಉಳಿದುಕೊಳ್ಳುವ ಕಾಲವನ್ನು ಹೇಗೆ ಹೊಂದಿಸಬೇಕೆಂದು ನಿರ್ಧರಿಸಿ.",
     "permission__pricing_hook__pdf_ai_viewer__title": "ಎಯ್‌ಐ ಜೊತೆಗೆ ನಿಮ್ಮ PDF ಅನುಭವವನ್ನು ಉನ್ನತಗೊಳಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__pdf_ai_viewer__description": "ಸಂಗ್ರಹಿಸಲು, ವಿವರಿಸಲು, ಅನುವಾದಿಸಲು, ಪ್ರಶ್ನಿಸಲು ಮತ್ತು ಸಮಯವನ್ನು ಉಳಿಸಲು AI ಬಳಸಿ PDF ಅನುಭವವನ್ನು ಬಳಸಿ.",
-    "permission__pricing_hook__preferred_language__title": "ಆದ್ಯತೆಯ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__preferred_language__title": "ಭಾಷೆ ಬದಲಿಸಲು ಮೇಲ್ಪಂಕ್ತಿಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__preferred_language__description": "ಆಯ್ಕೆಯ ಭಾಷೆಯಲ್ಲಿ ಎಲ್ಲಾ ಇಂಟರ್‌ಫೇಸ್ ಪಠ್ಯವನ್ನು ವೀಕ್ಷಿಸಿ.",
     "permission__pricing_hook__max_ai_temperature__title": "ತಾಪಮಾನವನ್ನು ಬದಲಾಯಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_temperature__description": "AI ಪ್ರತಿಕ್ರಿಯೆಯ ಯಾದೃಚ್ಛಿಕತೆಯನ್ನು ನಿಯಂತ್ರಿಸಿ. ಕಡಿಮೆ ತಾಪಮಾನ ಯಾದೃಚ್ಛಿಕತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ, ಹೆಚ್ಚು ನಿರ್ಧಾರಕ, ಪುನರಾವರ್ತನೆಯಾಗಿರುವ AI ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಮಾಡುತ್ತದೆ.",

@@ -36,7 +36,8 @@
     "copied": "Αντιγράφηκε",
     "paste": "Επικόλληση",
     "loading": "Φόρτωση...",
-    "no_options": "Χωρίς επιλογές"
+    "no_options": "Χωρίς επιλογές",
+    "auto": "Αυτόματο"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Μικρό μενού κατά την επιλογή κειμένου",
     "feature_card__mini_menu__field_mini_menu__visible": "Ορατό κατά την επιλογή κειμένου",
     "feature_card__mini_menu__field_mini_menu__hidden": "Κρυφό κατά την επιλογή κειμένου",
-    "feature_card__preferred_language__title": "Προτιμώμενη γλώσσα",
+    "feature_card__preferred_language__title": "Γλώσσα διεπαφής",
     "feature_card__preferred_language__field_preferred_language_title": "Επιλέξτε την προτιμώμενη γλώσσα σας",
     "feature_card__preferred_language__field_preferred_language_description": "Προβάλλετε όλο το κείμενο διεπαφής στην επιλεγμένη γλώσσα σας.",
-    "feature_card__preferred_language__field_preferred_language_label": "Προτιμώμενη γλώσσα",
+    "feature_card__preferred_language__field_preferred_language_label": "Γλώσσα διεπαφής",
     "feature_card__ai_response_language__title": "Γλώσσα απάντησης AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Επιλέξτε την προεπιλεγμένη γλώσσα για την απάντηση του Al",
     "feature_card__ai_response_language__field_ai_response_language__description": "Όταν επιλέγεται \"Αυτόματο\", ο Al θα απαντά στην ίδια γλωσσική ποικιλία ή διάλεκτο με το επιλεγμένο κείμενο.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Ορίστε πόση ώρα θα παραμείνει ενεργοποιημένη η σταθερή λειτουργία ChatGPT μετά την ενεργοποίησή της.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Αναβάθμιση για να αναβαθμίσετε την εμπειρία σας με PDF με τη βοήθεια της AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Χρησιμοποιήστε την AI για να συνοψίσετε, εξηγήσετε, μεταφράσετε, κάνετε ερωτήσεις και εξοικονομήστε χρόνο στα PDF.",
-    "permission__pricing_hook__preferred_language__title": "Αναβάθμιση για αλλαγή της προτιμώμενης γλώσσας",
+    "permission__pricing_hook__preferred_language__title": "Αναβαθμίστε για να αλλάξετε τη γλώσσα διεπαφής",
     "permission__pricing_hook__preferred_language__description": "Προβάλετε όλο το κείμενο διεπαφής στην επιλεγμένη γλώσσα σας.",
     "permission__pricing_hook__max_ai_temperature__title": "Αναβάθμιση για αλλαγή της θερμοκρασίας",
     "permission__pricing_hook__max_ai_temperature__description": "Ελέγξτε την τυχαιότητα των απαντήσεων της AI. Μια χαμηλότερη θερμοκρασία καθιστά τις απαντήσεις της AI λιγότερο τυχαίες, πιο προκαθορισμένες και επαναλαμβανόμενες.",

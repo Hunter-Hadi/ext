@@ -36,7 +36,8 @@
     "copied": "Kopirano",
     "paste": "Prilepi",
     "loading": "Nalaganje...",
-    "no_options": "Ni možnosti"
+    "no_options": "Ni možnosti",
+    "auto": "Avtomatsko"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini meni ob izbiri besedila",
     "feature_card__mini_menu__field_mini_menu__visible": "Vidno pri izbiri besedila",
     "feature_card__mini_menu__field_mini_menu__hidden": "Skrito pri izbiri besedila",
-    "feature_card__preferred_language__title": "Prednostni jezik",
+    "feature_card__preferred_language__title": "Jezik vmesnika",
     "feature_card__preferred_language__field_preferred_language_title": "Izberite svoj prednostni jezik",
     "feature_card__preferred_language__field_preferred_language_description": "Ogled vsega besedila vmesnika v izbranem jeziku.",
-    "feature_card__preferred_language__field_preferred_language_label": "Prednostni jezik",
+    "feature_card__preferred_language__field_preferred_language_label": "Jezik vmesnika",
     "feature_card__ai_response_language__title": "Jezik odziva AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Izberite privzeti jezik za odziv AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "Ko je izbrana možnost »Samodejno«, bo AI odgovarjal v istem jezikovnem narečju ali dialektu kot izbrano besedilo.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Nastavite, kako dolgo bo ChatGPT ostal v stabilnem načinu po aktivaciji.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Nadgradite za izboljšanje izkušnje s PDF z AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Uporabite AI za povzetek, razlago, prevajanje, postavljanje vprašanj in prihranek časa pri delu s PDF.",
-    "permission__pricing_hook__preferred_language__title": "Nadgradite za spremembo prednostnega jezika",
+    "permission__pricing_hook__preferred_language__title": "Nadgradite za spremembo jezika vmesnika",
     "permission__pricing_hook__preferred_language__description": "Ogled vsega besedila vmesnika v izbranem jeziku.",
     "permission__pricing_hook__max_ai_temperature__title": "Nadgradite za spreminjanje temperature",
     "permission__pricing_hook__max_ai_temperature__description": "Nadzorujte naključnost odziva AI. Nižja temperatura naredi odzive AI manj naključne, bolj določene in ponavljajoče se.",

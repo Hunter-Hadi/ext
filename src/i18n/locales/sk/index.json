@@ -36,7 +36,8 @@
     "copied": "Skopírované",
     "paste": "Vložiť",
     "loading": "Načítava sa...",
-    "no_options": "Žiadne možnosti"
+    "no_options": "Žiadne možnosti",
+    "auto": "Auto"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Minimálne menu pri výbere textu",
     "feature_card__mini_menu__field_mini_menu__visible": "Viditeľné pri výbere textu",
     "feature_card__mini_menu__field_mini_menu__hidden": "Skryté pri výbere textu",
-    "feature_card__preferred_language__title": "Preferovaný jazyk",
+    "feature_card__preferred_language__title": "Jazyk rozhrania",
     "feature_card__preferred_language__field_preferred_language_title": "Vyberte svoj preferovaný jazyk",
     "feature_card__preferred_language__field_preferred_language_description": "Zobrazte všetok text rozhrania vo vašom zvolenom jazyku.",
-    "feature_card__preferred_language__field_preferred_language_label": "Preferovaný jazyk",
+    "feature_card__preferred_language__field_preferred_language_label": "Jazyk rozhrania",
     "feature_card__ai_response_language__title": "Jazyk odpovede od AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Vyberte predvolený jazyk pre odpoveď od AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "Pri výbere možnosti \"Auto\" bude AI odpovedať v rovnakom jazykovom variante alebo dialekte ako vybraný text.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Nastavte, ako dlho zostáva stabilný režim ChatGPT aktívny po jeho aktivácii.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Vylepšite si účet a zlepšite svoje skúsenosti s PDF pomocou umelého inteligentného systému",
     "permission__pricing_hook__pdf_ai_viewer__description": "Používajte umelú inteligenciu na zhrnutie, vysvetlenie, preklad, otázky a ušetrite čas pri práci s PDF.",
-    "permission__pricing_hook__preferred_language__title": "Vylepšite si účet a zmeňte preferovaný jazyk",
+    "permission__pricing_hook__preferred_language__title": "Aktualizujte pre zmenu jazyka rozhrania",
     "permission__pricing_hook__preferred_language__description": "Zobrazujte všetok text rozhrania vo vašom vybranom jazyku.",
     "permission__pricing_hook__max_ai_temperature__title": "Vylepšite si účet a zmeňte teplotu odpovedí umelého inteligentného systému",
     "permission__pricing_hook__max_ai_temperature__description": "Ovládajte náhodnosť odpovedí umelého inteligentného systému. Nižšia teplota znamená menej náhodné, viac deterministické a opakujúce sa odpovede.",

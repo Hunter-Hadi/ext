@@ -36,7 +36,8 @@
     "copied": "Másolva",
     "paste": "Beillesztés",
     "loading": "Betöltés...",
-    "no_options": "Nincsenek lehetőségek"
+    "no_options": "Nincsenek lehetőségek",
+    "auto": "Autó"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini menü a szöveg kijelölésekor",
     "feature_card__mini_menu__field_mini_menu__visible": "Látható a szöveg kijelölésekor",
     "feature_card__mini_menu__field_mini_menu__hidden": "Rejtett a szöveg kijelölésekor",
-    "feature_card__preferred_language__title": "Előnyben részesített nyelv",
+    "feature_card__preferred_language__title": "Felhasználói felület nyelve",
     "feature_card__preferred_language__field_preferred_language_title": "Válassza ki az előnyben részesített nyelvét",
     "feature_card__preferred_language__field_preferred_language_description": "Az összes felhasználói felületi szöveget megjelenítheti a választott nyelven.",
-    "feature_card__preferred_language__field_preferred_language_label": "Előnyben részesített nyelv",
+    "feature_card__preferred_language__field_preferred_language_label": "Felhasználói felület nyelve",
     "feature_card__ai_response_language__title": "AI válasz nyelve",
     "feature_card__ai_response_language__field_ai_response_language__title": "Válassza ki az alapértelmezett nyelvet az AI válaszához",
     "feature_card__ai_response_language__field_ai_response_language__description": "Amikor az „Automatikus” van kiválasztva, az AI ugyanabban a nyelvi változatban vagy dialektusban válaszol, mint a kiválasztott szöveg.",
@@ -402,7 +403,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Állítsa be, hogy meddig maradjon bekapcsolt állapotban a ChatGPT stabil módja.",
     "permission__pricing_hook__pdf_ai_viewer__title": "PDF élményének fejlesztéséhez AI-val frissítés",
     "permission__pricing_hook__pdf_ai_viewer__description": "Használja az AI-t a PDF-ek összefoglalásához, magyarázatához, fordításához, kérdések feltevéséhez és időt takarítson meg.",
-    "permission__pricing_hook__preferred_language__title": "Az előnyben részesített nyelv módosításához frissítés",
+    "permission__pricing_hook__preferred_language__title": "Frissítés a felhasználói felület nyelvének megváltoztatásához",
     "permission__pricing_hook__preferred_language__description": "Az összes felületi szöveg megtekintése a választott nyelven.",
     "permission__pricing_hook__max_ai_temperature__title": "Hőmérséklet módosításához frissítés",
     "permission__pricing_hook__max_ai_temperature__description": "Irányítsa az AI válaszok véletlenszerűségét. Az alacsonyabb hőmérséklet kevésbé véletlenszerű, meghatározottabb és ismétlődőbb válaszokat eredményez.",

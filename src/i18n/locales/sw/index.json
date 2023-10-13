@@ -36,7 +36,8 @@
     "copied": "Imenakiliwa",
     "paste": "Bandika",
     "loading": "Inapakia...",
-    "no_options": "Hakuna chaguo"
+    "no_options": "Hakuna chaguo",
+    "auto": "Gari"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Menyu ndogo wakati wa kuchagua maandishi",
     "feature_card__mini_menu__field_mini_menu__visible": "Inaonekana wakati wa kuchagua maandishi",
     "feature_card__mini_menu__field_mini_menu__hidden": "Imefichwa wakati wa kuchagua maandishi",
-    "feature_card__preferred_language__title": "Lugha inayopendelewa",
+    "feature_card__preferred_language__title": "Lugha ya interface",
     "feature_card__preferred_language__field_preferred_language_title": "Chagua lugha unayopendelea",
     "feature_card__preferred_language__field_preferred_language_description": "Angalia maandishi yote ya kiolesura kwa lugha uliyochagua.",
-    "feature_card__preferred_language__field_preferred_language_label": "Lugha inayopendelewa",
+    "feature_card__preferred_language__field_preferred_language_label": "Lugha ya interface",
     "feature_card__ai_response_language__title": "Lugha ya majibu ya AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Chagua lugha ya msingi kwa majibu ya AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "Wakati \"Auto\" imechaguliwa, Al atajibu kwa aina sawa au lahaja ya lugha kama maandishi yaliyochaguliwa.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Weka muda gani hali thabiti ya ChatGPT inaendelea baada ya kuwasha.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Sasisha ili kuinua uzoefu wako wa PDF na AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Tumia AI kusindika, kueleza, kutafsiri, kuuliza maswali, na kuokoa muda wakati wa kutumia PDF.",
-    "permission__pricing_hook__preferred_language__title": "Sasisha ili kubadilisha lugha unayopendelea",
+    "permission__pricing_hook__preferred_language__title": "Boresha ili kubadilisha lugha ya interface",
     "permission__pricing_hook__preferred_language__description": "Angalia maandishi yote ya interface katika lugha unayochagua.",
     "permission__pricing_hook__max_ai_temperature__title": "Sasisha ili kubadilisha joto",
     "permission__pricing_hook__max_ai_temperature__description": "Dhibiti upangaji wa majibu ya AI. Joto la chini linapunguza ubunifu na kuongeza utabirika na kurudia.",

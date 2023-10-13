@@ -36,7 +36,8 @@
     "copied": "Skopiowane",
     "paste": "Wklej",
     "loading": "Ładowanie...",
-    "no_options": "Brak opcji"
+    "no_options": "Brak opcji",
+    "auto": "Samochód"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Mini menu podczas zaznaczania tekstu",
     "feature_card__mini_menu__field_mini_menu__visible": "Widoczne podczas zaznaczania tekstu",
     "feature_card__mini_menu__field_mini_menu__hidden": "Ukryte podczas zaznaczania tekstu",
-    "feature_card__preferred_language__title": "Preferowany język",
+    "feature_card__preferred_language__title": "Język interfejsu",
     "feature_card__preferred_language__field_preferred_language_title": "Wybierz preferowany język",
     "feature_card__preferred_language__field_preferred_language_description": "Wyświetlaj cały tekst interfejsu w wybranym języku.",
-    "feature_card__preferred_language__field_preferred_language_label": "Preferowany język",
+    "feature_card__preferred_language__field_preferred_language_label": "Język interfejsu",
     "feature_card__ai_response_language__title": "Język odpowiedzi AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Wybierz domyślny język dla odpowiedzi AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "Po wybraniu opcji \"Auto\" AI będzie odpowiadać w tym samym odmianie lub dialekcie języka co wybrany tekst.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Ustaw, jak długo ma być aktywny stabilny tryb ChatGPT po jego aktywacji.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Przejdź na wersję Pro, aby podnieść swoje doświadczenie z plikami PDF za pomocą AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Używaj AI do streszczania, wyjaśniania, tłumaczenia, zadawania pytań i oszczędzania czasu.",
-    "permission__pricing_hook__preferred_language__title": "Przejdź na wersję Pro, aby zmienić preferowany język",
+    "permission__pricing_hook__preferred_language__title": "Zaktualizuj, aby zmienić język interfejsu",
     "permission__pricing_hook__preferred_language__description": "Wyświetlaj cały tekst interfejsu w wybranym przez Ciebie języku.",
     "permission__pricing_hook__max_ai_temperature__title": "Przejdź na wersję Pro, aby zmienić temperaturę",
     "permission__pricing_hook__max_ai_temperature__description": "Kontroluj losowość odpowiedzi AI. Niższa temperatura sprawia, że odpowiedzi AI są mniej losowe, bardziej zdeterminowane i powtarzalne.",

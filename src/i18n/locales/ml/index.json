@@ -36,7 +36,8 @@
     "copied": "പകർത്തിയിരിക്കുന്നു",
     "paste": "പേസ്റ്റ് ചെയ്യുക",
     "loading": "ലോഡുചെയ്യുന്നു...",
-    "no_options": "ഓപ്ഷനുകൾ ഇല്ല"
+    "no_options": "ഓപ്ഷനുകൾ ഇല്ല",
+    "auto": "ഓട്ടോ"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "ടെക്സ്റ്റ് തിരഞ്ഞെടുത്താലുള്ള മിനി മെനു",
     "feature_card__mini_menu__field_mini_menu__visible": "ടെക്സ്റ്റ് തിരഞ്ഞെടുത്താലുള്ളത് കാണാൻ",
     "feature_card__mini_menu__field_mini_menu__hidden": "ടെക്സ്റ്റ് തിരഞ്ഞെടുത്താലുള്ളത് മറയ്ക്കാൻ",
-    "feature_card__preferred_language__title": "മൊഴം തിരഞ്ഞെടുക്കുന്നത്",
+    "feature_card__preferred_language__title": "ഇന്റർഫേസ് ഭാഷ",
     "feature_card__preferred_language__field_preferred_language_title": "താങ്കളുടെ പ്രിയമായ ഭാഷ തിരഞ്ഞെടുക്കുക",
     "feature_card__preferred_language__field_preferred_language_description": "താങ്കളുടെ തിരഞ്ഞെടുത്ത ഭാഷയിൽ എല്ലാ ഇന്റർഫേസ് ടെക്സ്റ്റും കാണുക.",
-    "feature_card__preferred_language__field_preferred_language_label": "പ്രിയമായ ഭാഷ",
+    "feature_card__preferred_language__field_preferred_language_label": "ഇന്റർഫേസ് ഭാഷ",
     "feature_card__ai_response_language__title": "AI പ്രതികരണ ഭാഷ",
     "feature_card__ai_response_language__field_ai_response_language__title": "AI പ്രതികരണത്തിന് പ്രധാന ഭാഷ തിരഞ്ഞെടുക്കുക",
     "feature_card__ai_response_language__field_ai_response_language__description": "\"ഓട്ടോ\" തിരഞ്ഞെടുക്കുമ്പോൾ, AI തിരഞ്ഞെടുത്ത ടെക്സ്റ്റിനുള്ളിൽ അതേ ഭാഷ വിവരം ഉപയോഗിച്ച് AI പ്രതികരിക്കും.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "ChatGPT സ്ഥിര മോഡ് സജ്ജീകരിക്കുന്നതിന് എത്ര ദിവസങ്ങൾ അനുവദിക്കും സജ്ജീകരിക്കുക.",
     "permission__pricing_hook__pdf_ai_viewer__title": "AI ഉപയോഗിച്ച് നിങ്ങളുടെ PDF അനുഭവം ഉയർത്താൻ പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__pdf_ai_viewer__description": "സംഗ്രഹിക്കുക, വിശദീകരിക്കുക, വിവർത്തനം ചെയ്യുക, ചോദ്യങ്ങൾ ചോദിക്കുക, സമയം സംരക്ഷിക്കുക എന്നിവയിൽ AI ഉപയോഗിക്കുക.",
-    "permission__pricing_hook__preferred_language__title": "തിരഞ്ഞെടുത്ത ഭാഷ മാറ്റാൻ പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__preferred_language__title": "ഇന്റർഫേസ് ഭാഷ മാറ്റാൻ അപ്ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__preferred_language__description": "തിരഞ്ഞെടുത്ത ഭാഷയിൽ എല്ലാ ഇന്റർഫേസ് വാചകം കാണുക.",
     "permission__pricing_hook__max_ai_temperature__title": "താപനില മാറ്റാൻ പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_temperature__description": "AI പ്രതികരണ യാഥാർത്ഥ്യത്തിന് നിയന്ത്രണം നൽകുക. താപനില കുറഞ്ഞത് AI പ്രതികരണങ്ങൾ കുറവാക്കുന്നു, അധികം നിയമാനുസരണമുള്ളതാക്കുന്നു.",

@@ -36,7 +36,8 @@
     "copied": "הועתק",
     "paste": "הדבק",
     "loading": "טוען...",
-    "no_options": "אין אפשרויות"
+    "no_options": "אין אפשרויות",
+    "auto": "אוטומטי"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "תפריט מיני בעת בחירת טקסט",
     "feature_card__mini_menu__field_mini_menu__visible": "נראה בעת בחירת טקסט",
     "feature_card__mini_menu__field_mini_menu__hidden": "מוסתר בעת בחירת טקסט",
-    "feature_card__preferred_language__title": "שפה מועדפת",
+    "feature_card__preferred_language__title": "שפת ממשק",
     "feature_card__preferred_language__field_preferred_language_title": "בחר את השפה המועדפת עליך",
     "feature_card__preferred_language__field_preferred_language_description": "הצג את כל הטקסט בממשק בשפה שבחרת.",
-    "feature_card__preferred_language__field_preferred_language_label": "שפה מועדפת",
+    "feature_card__preferred_language__field_preferred_language_label": "שפת ממשק",
     "feature_card__ai_response_language__title": "שפת תגובת AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "בחר את השפה המוגדרת כברירת מחדל לתגובת AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "כאשר \"אוטומטי\" נבחר, AI יענה באותה גרסה או דיאלקט של הטקסט שנבחר.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "הגדר כמה זמן מצב ChatGPT היציב יישאר פעיל לאחר הפעלה.",
     "permission__pricing_hook__pdf_ai_viewer__title": "שדרג כדי לשדרג את חוויית ה-PDF שלך עם AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "השתמש ב-AI כדי לסכם, להסביר, לתרגם, לשאול שאלות ולחסוך זמן.",
-    "permission__pricing_hook__preferred_language__title": "שדרג כדי לשנות את השפה המועדפת",
+    "permission__pricing_hook__preferred_language__title": "שדרג כדי לשנות שפת ממשק",
     "permission__pricing_hook__preferred_language__description": "צפה בכל טקסט הממשק בשפה שבחרת.",
     "permission__pricing_hook__max_ai_temperature__title": "שדרג כדי לשנות את הטמפרטורה",
     "permission__pricing_hook__max_ai_temperature__description": "שלוט באקראיות תגובות AI. טמפרטורה נמוכה מפחיתה את האקראיות של תגובות AI, הופכת אותן לפחות אקראיות, יותר דטרמיניסטיות וחוזרות.",

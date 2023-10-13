@@ -36,7 +36,8 @@
     "copied": "Скопировано",
     "paste": "Вставить",
     "loading": "Загрузка...",
-    "no_options": "Нет вариантов"
+    "no_options": "Нет вариантов",
+    "auto": "Авто"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Мини-меню при выборе текста",
     "feature_card__mini_menu__field_mini_menu__visible": "Видимо при выборе текста",
     "feature_card__mini_menu__field_mini_menu__hidden": "Скрыто при выборе текста",
-    "feature_card__preferred_language__title": "Предпочитаемый язык",
+    "feature_card__preferred_language__title": "Язык интерфейса",
     "feature_card__preferred_language__field_preferred_language_title": "Выберите предпочитаемый язык",
     "feature_card__preferred_language__field_preferred_language_description": "Просмотрите все тексты интерфейса на выбранном вами языке.",
-    "feature_card__preferred_language__field_preferred_language_label": "Предпочитаемый язык",
+    "feature_card__preferred_language__field_preferred_language_label": "Язык интерфейса",
     "feature_card__ai_response_language__title": "Язык ответа ИИ",
     "feature_card__ai_response_language__field_ai_response_language__title": "Выберите язык ответа по умолчанию для ИИ",
     "feature_card__ai_response_language__field_ai_response_language__description": "При выборе \"Авто\" Al будет отвечать на том же языке или диалекте, что и выбранный текст.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Установите, как долго стабильный режим ChatGPT будет активен после включения.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Улучшите свой опыт работы с PDF с помощью ИИ, перейдя на Pro",
     "permission__pricing_hook__pdf_ai_viewer__description": "Используйте ИИ для создания краткого содержания, объяснения, перевода, задавайте вопросы и экономьте время.",
-    "permission__pricing_hook__preferred_language__title": "Измените предпочитаемый язык, перейдя на Pro",
+    "permission__pricing_hook__preferred_language__title": "Обновите для изменения языка интерфейса",
     "permission__pricing_hook__preferred_language__description": "Просматривайте все тексты интерфейса на выбранном вами языке.",
     "permission__pricing_hook__max_ai_temperature__title": "Измените температуру, перейдя на Pro",
     "permission__pricing_hook__max_ai_temperature__description": "Управляйте случайностью ответов ИИ. Более низкая температура делает ответы ИИ менее случайными, более детерминированными и повторяющимися.",

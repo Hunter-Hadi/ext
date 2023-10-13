@@ -36,7 +36,8 @@
     "copied": "Kopyalandı",
     "paste": "Yapıştır",
     "loading": "Yükleniyor...",
-    "no_options": "Seçenek yok"
+    "no_options": "Seçenek yok",
+    "auto": "Otomatik"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Metin seçiminde mini menü",
     "feature_card__mini_menu__field_mini_menu__visible": "Metin seçerken görünür",
     "feature_card__mini_menu__field_mini_menu__hidden": "Metin seçerken gizlenir",
-    "feature_card__preferred_language__title": "Tercih edilen dil",
+    "feature_card__preferred_language__title": "Arayüz dili",
     "feature_card__preferred_language__field_preferred_language_title": "Tercih ettiğiniz dili seçin",
     "feature_card__preferred_language__field_preferred_language_description": "Seçtiğiniz dili tercih edilen dil olarak kullanarak tüm arayüz metinlerini görüntüleyin.",
-    "feature_card__preferred_language__field_preferred_language_label": "Tercih edilen dil",
+    "feature_card__preferred_language__field_preferred_language_label": "Arayüz dili",
     "feature_card__ai_response_language__title": "AI yanıt dili",
     "feature_card__ai_response_language__field_ai_response_language__title": "Varsayılan dil için AI yanıtını seçin",
     "feature_card__ai_response_language__field_ai_response_language__description": "\"Otomatik\" seçildiğinde, AI, seçilen metinle aynı dil çeşidi veya lehçede yanıt verir.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "ChatGPT kararlı modunun etkinleştikten sonra ne kadar süreyle açık kalacağını belirleyin.",
     "permission__pricing_hook__pdf_ai_viewer__title": "AI ile PDF deneyiminizi geliştirmek için yükseltin",
     "permission__pricing_hook__pdf_ai_viewer__description": "Özetleme, açıklama, çeviri, soru sorma ve zaman kazanma için AI'yi kullanın.",
-    "permission__pricing_hook__preferred_language__title": "Tercih edilen dili değiştirmek için yükseltin",
+    "permission__pricing_hook__preferred_language__title": "Arayüz dilini değiştirmek için yükseltin",
     "permission__pricing_hook__preferred_language__description": "Arayüz metnini seçtiğiniz dilde görüntüleyin.",
     "permission__pricing_hook__max_ai_temperature__title": "Sıcaklığı değiştirmek için yükseltin",
     "permission__pricing_hook__max_ai_temperature__description": "AI yanıtının rastgeleliğini kontrol edin. Daha düşük bir sıcaklık, AI yanıtlarını daha az rastgele, daha belirli ve tekrarlayan hale getirir.",

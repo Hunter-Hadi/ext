@@ -36,7 +36,8 @@
     "copied": "Kopioitu",
     "paste": "Liitä",
     "loading": "Ladataan...",
-    "no_options": "Ei vaihtoehtoja"
+    "no_options": "Ei vaihtoehtoja",
+    "auto": "Automaattinen"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Pikavalikko tekstivalinnassa",
     "feature_card__mini_menu__field_mini_menu__visible": "Näkyvissä valittaessa tekstiä",
     "feature_card__mini_menu__field_mini_menu__hidden": "Piilotettu valittaessa tekstiä",
-    "feature_card__preferred_language__title": "Ensisijainen kieli",
+    "feature_card__preferred_language__title": "Käyttöliittymän kieli",
     "feature_card__preferred_language__field_preferred_language_title": "Valitse ensisijainen kieli",
     "feature_card__preferred_language__field_preferred_language_description": "Näytä kaikki käyttöliittymän tekstit valitsemallasi kielellä.",
-    "feature_card__preferred_language__field_preferred_language_label": "Ensisijainen kieli",
+    "feature_card__preferred_language__field_preferred_language_label": "Käyttöliittymän kieli",
     "feature_card__ai_response_language__title": "AI-vastauksen kieli",
     "feature_card__ai_response_language__field_ai_response_language__title": "Valitse oletuskieli AI-vastaukselle",
     "feature_card__ai_response_language__field_ai_response_language__description": "Kun \"Automaattinen\" on valittuna, Al vastaa samalla kielimuodolla tai murteella kuin valittu teksti.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Määritä kuinka kauan ChatGPT-vakaa tila pysyy päällä sen aktivoinnin jälkeen.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Päivitä nostamaan PDF-kokemus uudelle tasolle tekoälyn avulla",
     "permission__pricing_hook__pdf_ai_viewer__description": "Käytä tekoälyä yhteenvedon, selityksen, kääntämisen, kysymysten esittämisen ja ajan säästämiseen PDF-tiedostoissa.",
-    "permission__pricing_hook__preferred_language__title": "Päivitä vaihtaaksesi haluamasi kielen",
+    "permission__pricing_hook__preferred_language__title": "Päivitä vaihtaaksesi käyttöliittymän kielen",
     "permission__pricing_hook__preferred_language__description": "Näe kaikki käyttöliittymän tekstit valitsemallasi kielellä.",
     "permission__pricing_hook__max_ai_temperature__title": "Päivitä vaihtaaksesi lämpötilaa",
     "permission__pricing_hook__max_ai_temperature__description": "Hallitse tekoälyn vastauksen satunnaisuutta. Alhaisempi lämpötila tekee tekoälyn vastauksista vähemmän satunnaisia, enemmän määrätietoisia ja toistuvia.",

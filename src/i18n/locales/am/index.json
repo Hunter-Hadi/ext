@@ -36,7 +36,8 @@
     "copied": "ተዘምተው ተቀምጧል",
     "paste": "ጽሁፍ",
     "loading": "በመጫን ላይ...",
-    "no_options": "ምንም አማራጭ የለም"
+    "no_options": "ምንም አማራጭ የለም",
+    "auto": "ራስዎ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "ቅንጅት ለውጥ ሚና",
     "feature_card__mini_menu__field_mini_menu__visible": "ለውጥ ለውጥ ሚና ያለው",
     "feature_card__mini_menu__field_mini_menu__hidden": "ለውጥ ለውጥ ሚና ያልተሳሳተ",
-    "feature_card__preferred_language__title": "የተማሪ ቋንቋ",
+    "feature_card__preferred_language__title": "የማስተርጓሚ ቋንቋ",
     "feature_card__preferred_language__field_preferred_language_title": "የተማሪ ቋንቋዎን ይምረጡ",
     "feature_card__preferred_language__field_preferred_language_description": "የተማሪ ቋንቋዎን በሚገኙ ቋንቋዎች ላይ የሚመልከቱ የተለያዩ ጽሁፍዎችን ይመልከቱ.",
-    "feature_card__preferred_language__field_preferred_language_label": "የተማሪ ቋንቋ",
+    "feature_card__preferred_language__field_preferred_language_label": "የማስተርጓሚ ቋንቋ",
     "feature_card__ai_response_language__title": "AI የመልክአክል ቋንቋ",
     "feature_card__ai_response_language__field_ai_response_language__title": "የ AI የመልክአክል ቋንቋዎን ይምረጡ",
     "feature_card__ai_response_language__field_ai_response_language__description": "የ \"ራስን\" የተማሪ ቋንቋ ይምረጡ ወይም የተማሪ ጽሁፍ ቋንቋዎች እንዴት ይመልከቱ.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "ChatGPT ስልክ መሸጫ ከተጠቀምኩ በፊት ለማሳወቂያ ስልክ ሲያስተካከው ይግዙ.",
     "permission__pricing_hook__pdf_ai_viewer__title": "ወደ PDF የሚያስተካከው የ AI መጠቀሚያ ይግዙ",
     "permission__pricing_hook__pdf_ai_viewer__description": "AI እንዴት በሙሉ የ PDF መጠቀሚያዎችን መግቢያ, መልሶችን, ተርጓሚዎችን እና ጥቅም ይጠቀምቃል.",
-    "permission__pricing_hook__preferred_language__title": "ወደ የተመረጡ ቋንቋ ይግዙ",
+    "permission__pricing_hook__preferred_language__title": "የማስተርጓሚ ቋንቋን ለመቀየር ይፈልጋሉ",
     "permission__pricing_hook__preferred_language__description": "ሁሉም መረጃዎችን በየተመረጡ ቋንቋ ይመልሳል.",
     "permission__pricing_hook__max_ai_temperature__title": "ወደ የውስጥ የ AI መልሶች ይግዙ",
     "permission__pricing_hook__max_ai_temperature__description": "AI መልሶች የሚሰራውን የውስጥ የመልሶች ይጠቀምቃል. የቀረበ የውስጥ የመልሶች ይጠቀምቃል, የማሳወቂያውን የውስጥ የመልሶች ይጠቀምቃል.",

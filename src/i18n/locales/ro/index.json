@@ -36,7 +36,8 @@
     "copied": "Copiat",
     "paste": "Lipire",
     "loading": "Se încarcă...",
-    "no_options": "Nicio opțiune"
+    "no_options": "Nicio opțiune",
+    "auto": "Automat"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -171,10 +172,10 @@
     "feature_card__mini_menu__title": "Meniu miniatură la selectarea textului",
     "feature_card__mini_menu__field_mini_menu__visible": "Vizibil la selectarea textului",
     "feature_card__mini_menu__field_mini_menu__hidden": "Ascuns la selectarea textului",
-    "feature_card__preferred_language__title": "Limba preferată",
+    "feature_card__preferred_language__title": "Limba interfeței",
     "feature_card__preferred_language__field_preferred_language_title": "Alegeți limba preferată",
     "feature_card__preferred_language__field_preferred_language_description": "Vizualizați toate textele interfeței în limba aleasă.",
-    "feature_card__preferred_language__field_preferred_language_label": "Limba preferată",
+    "feature_card__preferred_language__field_preferred_language_label": "Limba interfeței",
     "feature_card__ai_response_language__title": "Limba răspunsului AI",
     "feature_card__ai_response_language__field_ai_response_language__title": "Alegeți limba implicită pentru răspunsul AI",
     "feature_card__ai_response_language__field_ai_response_language__description": "Atunci când este selectată opțiunea „Automat”, AI va răspunde în aceeași limbă sau dialect ca textul selectat.",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "Stabiliți cât timp rămâne activat modul stabil ChatGPT după activare.",
     "permission__pricing_hook__pdf_ai_viewer__title": "Upgrade pentru a îmbunătăți experiența PDF cu ajutorul AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "Utilizați AI pentru a rezuma, explica, traduce, pune întrebări și economisi timp în fișierele PDF.",
-    "permission__pricing_hook__preferred_language__title": "Upgrade pentru a schimba limba preferată",
+    "permission__pricing_hook__preferred_language__title": "Upgradează pentru a schimba limba interfeței",
     "permission__pricing_hook__preferred_language__description": "Vizualizați toate textele interfeței în limba aleasă de dvs.",
     "permission__pricing_hook__max_ai_temperature__title": "Upgrade pentru a schimba temperatura AI",
     "permission__pricing_hook__max_ai_temperature__description": "Controlați aleatoritatea răspunsurilor AI. O temperatură mai mică face ca răspunsurile AI să fie mai puțin aleatoare, mai deterministe și repetitive.",

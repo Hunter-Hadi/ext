@@ -36,7 +36,8 @@
     "paste": "粘贴",
     "loading": "加载中...",
     "read_more": "阅读更多",
-    "no_options": "没有选项"
+    "no_options": "没有选项",
+    "auto": "自动"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -195,10 +196,10 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "输入网站 URL",
     "feature_card__prompts__confirm__delete__prompt__description": "您确定要删除此提示吗？请注意，一旦删除，无法撤消此操作。",
     "feature_card__prompts__confirm__delete__prompt_group__description": "您确定要删除此提示组吗？请注意，一旦删除，该提示组下的所有提示也将被删除，并且无法撤消此操作。",
-    "feature_card__preferred_language__title": "首选语言",
+    "feature_card__preferred_language__title": "界面语言",
     "feature_card__preferred_language__field_preferred_language_title": "选择您的首选语言",
     "feature_card__preferred_language__field_preferred_language_description": "以您选择的语言查看所有界面文本。",
-    "feature_card__preferred_language__field_preferred_language_label": "首选语言",
+    "feature_card__preferred_language__field_preferred_language_label": "界面语言",
     "feature_card__prompts__confirm__delete_all__description": "您确定要删除所有提示和提示组吗？请注意，一旦继续，无法撤消此操作。",
     "feature_card__prompts__restore__dialog__title": "从以前的版本恢复您的提示",
     "feature_card__prompts__restore__dialog__description": "从以前的版本恢复您的提示和提示组，或全部删除。",
@@ -403,7 +404,7 @@
     "permission__pricing_hook__chatgpt_stable_mode__description": "激活后设置ChatGPT稳定模式持续时间。",
     "permission__pricing_hook__pdf_ai_viewer__title": "升级以提升PDF体验与AI",
     "permission__pricing_hook__pdf_ai_viewer__description": "使用AI进行摘要、解释、翻译、提问，节省时间。",
-    "permission__pricing_hook__preferred_language__title": "升级以更改首选语言",
+    "permission__pricing_hook__preferred_language__title": "升级以更改界面语言",
     "permission__pricing_hook__preferred_language__description": "在您选择的语言中查看所有界面文本。",
     "permission__pricing_hook__max_ai_temperature__title": "升级以更改Max AI温度",
     "permission__pricing_hook__max_ai_temperature__description": "设置Max AI温度以控制Max AI的创造力。",

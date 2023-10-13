@@ -24,14 +24,14 @@ const FeatureInstagramAssistantCard: FC = () => {
             label: t('common:enabled'),
             value: 'enabled',
             image: getChromeExtensionAssetsURL(
-              '/images/settings/appearance/instagram-input-assistant-enabled.png',
+              '/images/settings/appearance/ig-input-assistant-enabled.png',
             ),
           },
           {
             label: t('common:disabled'),
             value: 'disabled',
             image: getChromeExtensionAssetsURL(
-              '/images/settings/appearance/instagram-input-assistant-disabled.png',
+              '/images/settings/appearance/ig-input-assistant-disabled.png',
             ),
           },
         ]}

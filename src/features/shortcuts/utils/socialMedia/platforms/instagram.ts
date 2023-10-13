@@ -26,7 +26,7 @@ const getInstagramCommentDetail = async (
   const expandButton = root.querySelector(
     'div[role="button"][tabindex="0"]',
   ) as HTMLButtonElement
-  if (expandButton) {
+  if (expandButton && expandButton?.innerText === 'more') {
     expandButton.click()
     await delayAndScrollToInputAssistantButton(500)
   }

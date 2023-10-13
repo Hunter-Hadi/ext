@@ -4,7 +4,10 @@ import {
   IInputAssistantButtonGroupConfig,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { getTwitterInputAssistantButtonRootContainer } from '@/features/shortcuts/utils/socialMedia/platforms/twitter'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import {
+  findParentEqualSelector,
+  findSelectorParent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 type getInputAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement
@@ -193,7 +196,11 @@ const getInstagramButtonGroup = (
     keyElement,
     20,
   )
-  if (isForm) {
+  const isCreateDialog = findParentEqualSelector(
+    'div[aria-label][role="dialog"]',
+    isForm,
+  )
+  if (isForm && isCreateDialog) {
     return [
       buttonGroupConfig.composeNewButton,
       buttonGroupConfig.refineDraftButton,

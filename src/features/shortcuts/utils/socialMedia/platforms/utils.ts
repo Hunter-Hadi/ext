@@ -51,9 +51,9 @@ export const findParentEqualSelector = (
 ) => {
   let parent: HTMLElement = startElement
   let deep = 0
-  while (deep < maxDeep && !parent.matches(selector)) {
+  while (deep < maxDeep && !parent?.matches(selector)) {
     parent = parent?.parentElement as HTMLElement
     deep++
   }
-  return parent.matches(selector) ? parent : null
+  return parent?.matches(selector) ? parent : null
 }

@@ -6,6 +6,7 @@ import SocialMediaPostContext, {
   ICommentData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
 import {
+  delayAndScrollToInputAssistantButton,
   findParentEqualSelector,
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
@@ -21,6 +22,14 @@ const getInstagramCommentDetail = async (
   const commentDateElement = root.querySelector('time')
   let commentContent = ''
   let commentDate = ''
+  // 找到展开按钮
+  const expandButton = root.querySelector(
+    'div[role="button"][tabindex="0"]',
+  ) as HTMLButtonElement
+  if (expandButton) {
+    expandButton.click()
+    await delayAndScrollToInputAssistantButton(500)
+  }
   // 日期的下一行就是内容
   if (commentDateElement) {
     commentDate = commentDateElement?.dateTime || ''
@@ -36,6 +45,12 @@ const getInstagramCommentDetail = async (
       ((root.querySelector('h3') || root.querySelector('h2'))
         ?.nextElementSibling as HTMLDivElement)?.innerText || ''
   }
+  // 如果没获取到，尝试获取嵌套的span[dir]
+  if (!commentContent) {
+    commentContent =
+      (root.querySelector('span[dir] > span[dir]') as HTMLSpanElement)
+        ?.innerText || ''
+  }
   return {
     content: commentContent,
     author: commentAuthor.startsWith('@')
@@ -48,6 +63,7 @@ const getInstagramCommentDetail = async (
 export const instagramGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
+  debugger
   // 回复框所在的section
   const textareaSection = findParentEqualSelector(
     'section',
@@ -59,6 +75,7 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
   const instagramRootReplyBox = textareaSection?.parentElement
     ?.parentElement as HTMLDivElement
   if (instagramRootReplyBox) {
+    // 查找comment 列表
     const replyMessageThread = instagramRootReplyBox.querySelector('hr')
       ? (Array.from(
           instagramRootReplyBox?.querySelectorAll('hr + div > div > div > div'),
@@ -67,6 +84,27 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
           instagramRootReplyBox?.querySelectorAll('section + div > ul > *'),
         ) as HTMLDivElement[])
     const [postContent, ...comments] = replyMessageThread
+    if (!postContent) {
+      // 说明可能在Home或者其他页面
+      const homePostContent = instagramRootReplyBox.querySelector(
+        'div:has( > span[dir] > span[dir])',
+      ) as HTMLSpanElement
+      if (homePostContent) {
+        const homePagePostData = await getInstagramCommentDetail(
+          homePostContent,
+        )
+        // 因为首页的只有post，没有回复，所以不用管comment
+        const socialMediaPostContext = new SocialMediaPostContext({
+          author: homePagePostData.author,
+          content: homePagePostData.content,
+          title: '',
+          date: homePagePostData.date,
+        })
+        return socialMediaPostContext.data
+      } else {
+        return SocialMediaPostContext.emptyData
+      }
+    }
     const postData = await getInstagramCommentDetail(postContent)
     const socialMediaPostContext = new SocialMediaPostContext({
       author: postData.author,

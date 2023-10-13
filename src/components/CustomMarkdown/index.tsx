@@ -199,7 +199,7 @@ const CustomMarkdown: FC<{
             },
             // eslint-disable-next-line react/display-name
             img: ({ node, src, alt, title, ...props }) => {
-              let data: any = null
+              let data: any = {}
               try {
                 // 传输Markdown自定义数据
                 data = JSON.parse(alt || '')
@@ -228,12 +228,12 @@ const CustomMarkdown: FC<{
                 return (
                   <LazyLoadImage
                     src={src}
-                    alt={data.alt || alt || ''}
+                    alt={data?.alt || alt || ''}
                     height={208}
                   />
                 )
               }
-              return <img {...{ src, alt: data.alt || alt || '', title }} />
+              return <img {...{ src, alt: data?.alt || alt || '', title }} />
             },
           }}
         >

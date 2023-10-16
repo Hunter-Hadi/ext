@@ -17,7 +17,6 @@ import {
   ClientConversationMapState,
 } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { AppLocalStorageState } from '@/store'
 import Typography from '@mui/material/Typography'
 import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -55,6 +54,11 @@ export const sidebarTabsData: Array<{
     },
     value: 'Summary',
   },
+  {
+    label: 'client:sidebar__tabs__search__title',
+    tooltip: () => 'client:sidebar__tabs__search__title',
+    value: 'Search',
+  },
 ]
 
 const SidebarTabs: FC = () => {
@@ -65,7 +69,6 @@ const SidebarTabs: FC = () => {
   const [sidebarSettings, setSidebarSettings] = useRecoilState(
     SidebarSettingsState,
   )
-  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const conversationMap = useRecoilValue(ClientConversationMapState)
   const conversation = useRecoilValue(ChatGPTConversationState)
   const renderConversation = useMemo(() => {
@@ -208,11 +211,6 @@ const SidebarTabs: FC = () => {
           <p>authStatus: {chatGPTClientState.status}</p>
           <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
           <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
-          <p>
-            AppLocalStorage: {appLocalStorage.chatTypeConversationId}
-            {'=='}
-            {appLocalStorage.currentAIProvider}
-          </p>
           <p>currentTabUsingID: {sidebarConversationID}</p>
           <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
         </Stack>

@@ -19,16 +19,21 @@ const useAIProvider = () => {
     changeConversation,
     switchBackgroundChatSystemAIProvider,
   } = useClientConversation()
-  const currentAIProviderRef = useRef(appLocalStorage.currentAIProvider)
+  const currentAIProviderRef = useRef(
+    appLocalStorage.sidebarSettings?.common?.currentAIProvider,
+  )
   useEffect(() => {
-    currentAIProviderRef.current = appLocalStorage.currentAIProvider
-  }, [appLocalStorage.currentAIProvider])
+    currentAIProviderRef.current =
+      appLocalStorage.sidebarSettings?.common?.currentAIProvider
+  }, [appLocalStorage.sidebarSettings?.common?.currentAIProvider])
   const updateChatGPTProvider = async (provider: IAIProviderType) => {
     try {
       setLoading(true)
       const cache = await getChromeExtensionLocalStorage()
-      const prevConversation = cache.chatTypeConversationId
-        ? await clientGetConversation(cache.chatTypeConversationId)
+      const prevConversation = cache.sidebarSettings?.chat?.conversationId
+        ? await clientGetConversation(
+            cache.sidebarSettings?.chat.conversationId,
+          )
         : undefined
       const newProviderModel =
         cache.thirdProviderSettings?.[provider]?.model || ''
@@ -54,13 +59,28 @@ const useAIProvider = () => {
       setAppLocalStorage((prevState) => {
         return {
           ...prevState,
-          currentAIProvider: provider,
-          chatTypeConversationId: conversationId,
+          sidebarSettings: {
+            ...prevState.sidebarSettings,
+            chat: {
+              ...prevState.sidebarSettings?.chat,
+              conversationId,
+            },
+            common: {
+              ...prevState.sidebarSettings?.common,
+              currentAIProvider: provider,
+            },
+          },
         }
       })
       await setChromeExtensionLocalStorage({
-        currentAIProvider: provider,
-        chatTypeConversationId: conversationId,
+        sidebarSettings: {
+          chat: {
+            conversationId,
+          },
+          common: {
+            currentAIProvider: provider,
+          },
+        },
       })
       setTimeout(async () => {
         const currentSettings = await getChromeExtensionLocalStorage()
@@ -68,7 +88,7 @@ const useAIProvider = () => {
         if (
           prevConversation?.meta.AIProvider &&
           prevConversation?.meta.AIProvider ===
-            currentSettings.currentAIProvider
+            currentSettings.sidebarSettings?.common?.currentAIProvider
         ) {
           await changeConversation(conversationId)
         } else {
@@ -84,7 +104,7 @@ const useAIProvider = () => {
   }
   return {
     currentAIProviderRef,
-    provider: appLocalStorage.currentAIProvider,
+    provider: appLocalStorage.sidebarSettings?.common?.currentAIProvider,
     updateChatGPTProvider,
     loading,
   }

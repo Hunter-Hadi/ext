@@ -305,9 +305,14 @@ class ChatSystem implements ChatSystemInterface {
       return undefined
     })
     getChromeExtensionLocalStorage().then(async (settings) => {
-      if (settings.currentAIProvider) {
-        console.log('settings.currentAIProvider', settings.currentAIProvider)
-        await this.switchAdapter(settings.currentAIProvider)
+      if (settings.sidebarSettings?.common?.currentAIProvider) {
+        console.log(
+          'settings.currentAIProvider',
+          settings.sidebarSettings.common?.currentAIProvider,
+        )
+        await this.switchAdapter(
+          settings.sidebarSettings.common?.currentAIProvider,
+        )
       }
     })
   }
@@ -316,8 +321,11 @@ class ChatSystem implements ChatSystemInterface {
   }
   async switchAdapter(provider: IAIProviderType) {
     this.currentProvider = provider
-    await setChromeExtensionLocalStorage({
-      currentAIProvider: provider,
+    await setChromeExtensionLocalStorage((settings) => {
+      if (settings.sidebarSettings?.common) {
+        settings.sidebarSettings.common.currentAIProvider = provider
+      }
+      return settings
     })
     await this.preAuth()
     try {

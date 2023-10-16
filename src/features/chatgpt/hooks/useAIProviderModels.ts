@@ -33,7 +33,8 @@ const useAIProviderModels = () => {
   const [appLocalStorage, setAppLocalStorage] = useRecoilState(
     AppLocalStorageState,
   )
-  const currentProvider = appLocalStorage.currentAIProvider
+  const currentProvider =
+    appLocalStorage.sidebarSettings?.common?.currentAIProvider
   const [loading, setLoading] = useState(false)
   const {
     currentThirdProviderSettings,
@@ -188,7 +189,7 @@ const useAIProviderModels = () => {
     async (model: string) => {
       try {
         const prevConversationId = (await getChromeExtensionLocalStorage())
-          .chatTypeConversationId
+          .sidebarSettings?.chat?.conversationId
         if (prevConversationId) {
           const prevConversation = await clientGetConversation(
             prevConversationId,
@@ -226,7 +227,11 @@ const useAIProviderModels = () => {
             model,
           })
           await setChromeExtensionLocalStorage({
-            chatTypeConversationId: md5TextEncrypt(currentProvider + model),
+            sidebarSettings: {
+              chat: {
+                conversationId: md5TextEncrypt(currentProvider + model),
+              },
+            },
           })
           setAppLocalStorage(await getChromeExtensionLocalStorage())
         }
@@ -248,7 +253,7 @@ const useAIProviderModels = () => {
     }
   }, [currentAIProviderModel, currentProvider])
   return {
-    aiProvider: appLocalStorage.currentAIProvider,
+    aiProvider: appLocalStorage.sidebarSettings?.common?.currentAIProvider,
     aiProviderModel: currentAIProviderModel,
     currentAIProviderDetail,
     currentAIProviderModelDetail,

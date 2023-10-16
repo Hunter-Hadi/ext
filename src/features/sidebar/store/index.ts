@@ -17,7 +17,7 @@ export const ChatGPTConversationState = atom<{
   },
 })
 
-export type ISidebarConversationType = 'Chat' | 'Summary'
+export type ISidebarConversationType = 'Chat' | 'Summary' | 'Search'
 
 export const SidebarSettingsState = atom<{
   type: ISidebarConversationType
@@ -61,8 +61,8 @@ export const SidebarChatConversationMessagesSelector = selector<IChatMessage[]>(
   {
     key: 'SidebarChatConversationMessagesSelector',
     get: ({ get }) => {
-      const sidebarChatConversationId =
-        get(SidebarSettingsState).chatConversationId
+      const sidebarChatConversationId = get(SidebarSettingsState)
+        .chatConversationId
       const conversationMap = get(ClientConversationMapState)
       if (
         sidebarChatConversationId &&

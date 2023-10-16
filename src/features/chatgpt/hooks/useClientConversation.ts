@@ -53,14 +53,15 @@ const useClientConversation = () => {
       // 之前导致的bug: 选择Bing，选择prompt，切换到chatgpt，聊天记录加到bing去了
       const appLocalStorage = await getChromeExtensionLocalStorage()
       if (
-        appLocalStorage.currentAIProvider &&
-        appLocalStorage.currentAIProvider !== currentAIProvider
+        appLocalStorage.sidebarSettings?.common?.currentAIProvider &&
+        appLocalStorage.sidebarSettings.common.currentAIProvider !==
+          currentAIProvider
       ) {
-        currentAIProvider = appLocalStorage.currentAIProvider
+        currentAIProvider =
+          appLocalStorage.sidebarSettings.common.currentAIProvider
         currentAIProviderModel =
-          appLocalStorage.thirdProviderSettings?.[
-            appLocalStorage.currentAIProvider
-          ]?.model || currentAIProviderModel
+          appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model ||
+          currentAIProviderModel
         currentSidebarConversationId = md5TextEncrypt(
           currentAIProvider + currentAIProviderModel,
         )
@@ -95,12 +96,22 @@ const useClientConversation = () => {
       if (result.success && result.data.conversationId) {
         conversationId = result.data.conversationId
         await setChromeExtensionLocalStorage({
-          chatTypeConversationId: result.data.conversationId,
+          sidebarSettings: {
+            chat: {
+              conversationId: result.data.conversationId,
+            },
+          },
         })
         setAppLocalStorage((prev) => {
           return {
             ...prev,
-            chatTypeConversationId: result.data.conversationId,
+            sidebarSettings: {
+              ...prev.sidebarSettings,
+              chat: {
+                ...prev.sidebarSettings?.chat,
+                conversationId: result.data.conversationId,
+              },
+            },
           }
         })
       }
@@ -164,12 +175,22 @@ const useClientConversation = () => {
       setAppLocalStorage((prevState) => {
         return {
           ...prevState,
-          chatTypeConversationId: '',
+          sidebarSettings: {
+            ...prevState.sidebarSettings,
+            chat: {
+              ...prevState.sidebarSettings?.chat,
+              conversationId: '',
+            },
+          },
         }
       })
       // 清空本地储存的conversationId
       await setChromeExtensionLocalStorage({
-        chatTypeConversationId: '',
+        sidebarSettings: {
+          chat: {
+            conversationId: '',
+          },
+        },
       })
     } else {
       // 清除pageSummary的conversationId

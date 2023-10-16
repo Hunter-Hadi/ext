@@ -35,7 +35,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       const appLocalStorage = await getChromeExtensionLocalStorage()
       const provider =
         promptDetail.provider ||
-        appLocalStorage.currentAIProvider ||
+        appLocalStorage.sidebarSettings?.common?.currentAIProvider ||
         'UNKNOWN_PROVIDER'
       const beautyQueryMap: {
         [key in IAIProviderType]: string

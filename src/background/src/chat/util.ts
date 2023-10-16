@@ -191,13 +191,6 @@ export const askChatGPTQuestion = async (
     })
   })
 }
-/**
- * @deprecated - 使用BaseChat的conversation.id
- */
-export const getCacheConversationId = async () => {
-  const settings = await getChromeExtensionLocalStorage()
-  return settings.chatTypeConversationId || ''
-}
 
 export const getWindowIdOfChatGPTTab = async () => {
   const result = await Browser.storage.local.get(

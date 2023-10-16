@@ -79,8 +79,8 @@ const useInitClientConversationMap = () => {
   }, [currentSidebarConversationId])
   useFocus(() => {
     getChromeExtensionLocalStorage().then((cache) => {
-      if (cache.chatTypeConversationId) {
-        clientGetConversation(cache.chatTypeConversationId).then(
+      if (cache.sidebarSettings?.chat?.conversationId) {
+        clientGetConversation(cache.sidebarSettings?.chat?.conversationId).then(
           (conversation) => {
             if (conversation) {
               console.log(

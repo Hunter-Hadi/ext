@@ -104,7 +104,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
             >
               <Box
                 component={'div'}
-                onClick={(event) => {
+                onClick={(event: any) => {
                   event.stopPropagation()
                 }}
               >

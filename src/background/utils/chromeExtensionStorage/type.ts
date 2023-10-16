@@ -2,6 +2,7 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { IAIProviderType } from '@/background/provider/chat'
+import { ISidebarConversationType } from '@/features/sidebar'
 
 export type IChromeExtensionButtonSettingKey =
   | 'inputAssistantComposeReplyButton'
@@ -143,10 +144,21 @@ export type IThirdProviderSettings = {
 }
 
 export interface IChromeExtensionLocalStorage {
-  currentAIProvider?: IAIProviderType
-  chatTypeConversationId?: string
   sidebarSettings?: {
-    chatBoxWidth?: number
+    chat?: {
+      conversationId?: string
+    }
+    summary?: {
+      conversationId?: string
+    }
+    search?: {
+      conversationId?: string
+    }
+    common?: {
+      currentSidebarConversationType?: ISidebarConversationType
+      currentAIProvider?: IAIProviderType
+      chatBoxWidth?: number
+    }
   }
   thirdProviderSettings?: {
     [P in IAIProviderType]?: IThirdProviderSettings[P]

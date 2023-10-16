@@ -7,11 +7,13 @@ export const getAIProviderConversationMetaConfig = async (
   provider?: IAIProviderType,
 ) => {
   const currentSettings = await getChromeExtensionLocalStorage()
+  const currentAIProvider =
+    currentSettings.sidebarSettings?.common?.currentAIProvider
   const baseMetaConfig: Partial<IChatConversationMeta> = {
-    AIProvider: currentSettings.currentAIProvider,
+    AIProvider: currentAIProvider,
     AIModel:
       currentSettings.thirdProviderSettings?.[
-        currentSettings.currentAIProvider as 'USE_CHAT_GPT_PLUS'
+        currentAIProvider as 'USE_CHAT_GPT_PLUS'
       ]?.model || '',
   }
   if (provider === 'OPENAI_API') {

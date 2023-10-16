@@ -76,7 +76,8 @@ const AIProviderSelectorFloatingButton: FC<{
       >
         <AIProviderIcon
           aiProviderType={
-            appLocalStorage.currentAIProvider || 'USE_CHAT_GPT_PLUS'
+            appLocalStorage.sidebarSettings?.common?.currentAIProvider ||
+            'USE_CHAT_GPT_PLUS'
           }
         />
         <Popover
@@ -139,6 +140,6 @@ const AIProviderSelectorFloatingButton: FC<{
         </Popover>
       </Box>
     )
-  }, [appLocalStorage.currentAIProvider, open, type])
+  }, [appLocalStorage.sidebarSettings?.common?.currentAIProvider, open, type])
 }
 export default AIProviderSelectorFloatingButton

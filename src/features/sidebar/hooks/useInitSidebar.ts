@@ -75,21 +75,22 @@ const useInitSidebar = () => {
   }, [pageUrl])
   useEffect(() => {
     if (
-      appLocalStorage.chatTypeConversationId &&
+      appLocalStorage.sidebarSettings?.chat?.conversationId &&
       sidebarSettingsRef.current.type === 'Chat'
     ) {
       console.log(
-        '新版Conversation chatTypeConversationId更新',
-        appLocalStorage.chatTypeConversationId,
+        '新版Conversion chat.conversationId更新',
+        appLocalStorage.sidebarSettings?.chat.conversationId,
       )
       setSidebarSettings((prevState) => {
         return {
           ...prevState,
-          chatConversationId: appLocalStorage.chatTypeConversationId,
+          chatConversationId:
+            appLocalStorage.sidebarSettings?.chat?.conversationId,
         }
       })
     }
-  }, [appLocalStorage.chatTypeConversationId])
+  }, [appLocalStorage.sidebarSettings?.chat?.conversationId])
   useFocus(() => {
     if (
       sidebarSettingsRef.current.type === 'Chat' &&

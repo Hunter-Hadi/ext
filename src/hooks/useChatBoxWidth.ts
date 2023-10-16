@@ -36,14 +36,12 @@ const useChatBoxWidth = () => {
     if (!loaded) {
       return
     }
-    await setChromeExtensionLocalStorage((settings) => {
-      return {
-        ...settings,
-        sidebarSettings: {
-          ...settings.sidebarSettings,
+    await setChromeExtensionLocalStorage({
+      sidebarSettings: {
+        common: {
           chatBoxWidth: width,
         },
-      }
+      },
     })
     showChatBox()
   }
@@ -71,14 +69,17 @@ const useChatBoxWidth = () => {
     if (onceRef.current) {
       return
     }
-    if (appLocalStorage.sidebarSettings?.chatBoxWidth && maxWidth) {
+    if (appLocalStorage.sidebarSettings?.common?.chatBoxWidth && maxWidth) {
       setVisibleWidth(
-        Math.min(appLocalStorage.sidebarSettings.chatBoxWidth, maxWidth),
+        Math.min(
+          maxWidth,
+          appLocalStorage.sidebarSettings?.common?.chatBoxWidth,
+        ),
       )
       onceRef.current = true
       setLoaded(true)
     }
-  }, [appLocalStorage.sidebarSettings?.chatBoxWidth, maxWidth])
+  }, [appLocalStorage.sidebarSettings?.common?.chatBoxWidth, maxWidth])
   return {
     minWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
     maxWidth,

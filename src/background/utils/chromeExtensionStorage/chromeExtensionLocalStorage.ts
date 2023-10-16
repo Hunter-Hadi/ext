@@ -22,10 +22,19 @@ import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStorage => {
   return {
-    chatTypeConversationId: '',
-    currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
     sidebarSettings: {
-      chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+      chat: {
+        conversationId: '',
+      },
+      summary: {
+        conversationId: '',
+      },
+      search: {},
+      common: {
+        currentSidebarConversationType: 'Chat',
+        currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+        chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+      },
     },
     thirdProviderSettings: {
       [AI_PROVIDER_MAP.BING]: {
@@ -97,10 +106,9 @@ export const setChromeExtensionLocalStorage = async (
       })
     } else {
       await Browser.storage.local.set({
-        [CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY]: JSON.stringify({
-          ...oldSettings,
-          ...settingsOrUpdateFunction,
-        }),
+        [CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY]: JSON.stringify(
+          mergeWithObject([oldSettings, settingsOrUpdateFunction]),
+        ),
       })
     }
     return true

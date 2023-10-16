@@ -63,7 +63,6 @@ const getInstagramCommentDetail = async (
 export const instagramGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
-  debugger
   // 回复框所在的section
   const textareaSection = findParentEqualSelector(
     'section',

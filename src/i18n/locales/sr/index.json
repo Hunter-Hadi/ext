@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Najbrži model kompanije Anthropic. Bez ograničenja po zemljama.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Nadogradite na pretragu sa ChatGPT-om",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Podjednako brzo kao i ChatGPT Plus. Bez ograničenja po zemljama.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Koristite svoj OpenAI API ključ za napajanje 'Pretrage sa AI'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Koristite svoj OpenAI API ključ za napajanje 'Pretrage sa AI'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Unapredi otkrivanje znanja uz pretragu sa veštačkom inteligencijom",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Najmoćniji odgovorni motor koji vam pomaže da brže pronađete činjenice i jasno dobijete odgovore na vaša pitanja.",
+    "sidebar__tabs__search__title": "Pretraga"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

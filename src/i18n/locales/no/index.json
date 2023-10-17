@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropics raskeste modell. Ingen landrestriksjoner.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Oppgrader for å søke med ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Like rask som ChatGPT Plus. Ingen landrestriksjoner.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Bruk din egen OpenAI API-nøkkel til å drive 'Søk med AI'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Bruk din egen OpenAI API-nøkkel til å drive 'Søk med AI'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Oppgrader for å oppdage kunnskap med AI-drevet søk",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Den kraftigste svaremotoren som hjelper deg med å finne fakta raskere og få tydelige svar på spørsmålene dine.",
+    "sidebar__tabs__search__title": "Søk"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

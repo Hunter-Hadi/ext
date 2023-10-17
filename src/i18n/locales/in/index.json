@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Model tercepat dari Anthropic. Tanpa batasan negara.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Tingkatkan ke pencarian dengan ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Secepat ChatGPT Plus. Tanpa batasan negara.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gunakan kunci API OpenAI Anda sendiri untuk mengaktifkan 'Pencarian dengan AI'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gunakan kunci API OpenAI Anda sendiri untuk mengaktifkan 'Pencarian dengan AI'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Tingkatkan untuk menemukan pengetahuan dengan pencarian berbasis AI",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Mesin jawaban paling kuat yang membantu Anda menemukan fakta lebih cepat dan mendapatkan jawaban yang jelas untuk pertanyaan Anda.",
+    "sidebar__tabs__search__title": "Pencarian"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

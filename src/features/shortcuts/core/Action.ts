@@ -33,10 +33,16 @@ class Action implements IAction {
     this.output = ''
     this.status = 'complete'
   }
-  pushMessageToChat(message: ISystemChatMessage, engine: any) {
+  async pushMessageToChat(message: ISystemChatMessage, engine: any) {
     if (engine && engine.getChartGPT()?.pushMessage) {
       const conversationId = this.getCurrentConversationId(engine)
-      engine.getChartGPT()?.pushMessage(message, conversationId)
+      await engine.getChartGPT()?.pushMessage(message, conversationId)
+    }
+  }
+  async deleteMessageFromChat(count: number, engine: any) {
+    if (engine && engine.getChartGPT()?.deleteMessage) {
+      const conversationId = this.getCurrentConversationId(engine)
+      await engine.getChartGPT()?.deleteMessage(count, conversationId)
     }
   }
   reset() {

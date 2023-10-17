@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "El model més ràpid d'Anthropic. Sense restriccions de país.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Millora a la cerca amb ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Tan ràpid com ChatGPT Plus. Sense restriccions de país.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Utilitza la teva pròpia clau d'API d'OpenAI per alimentar 'Cerca amb IA'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Utilitza la teva pròpia clau d'API d'OpenAI per alimentar 'Cerca amb IA'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Millora per descobrir coneixement amb cerca impulsada per IA",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "El motor de resposta més potent que t'ajuda a trobar fets més ràpidament i obtenir respostes clares a les teves preguntes.",
+    "sidebar__tabs__search__title": "Cerca"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

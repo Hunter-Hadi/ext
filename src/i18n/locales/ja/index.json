@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropicの最速モデル。国の制限なし。",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPTで検索するにはアップグレード",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plusと同じくらい速いです。国の制限なし。",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AIで検索'をパワーアップするために、独自のOpenAI APIキーを使用します。"
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AIで検索'をパワーアップするために、独自のOpenAI APIキーを使用します。",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AIパワーで知識を発見するためにアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "迅速に事実を見つけ、明確な回答を得るのに役立つ最も強力な回答エンジン。",
+    "sidebar__tabs__search__title": "検索"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

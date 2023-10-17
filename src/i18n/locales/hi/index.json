@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic का सबसे तेज़ मॉडल। कोई देश की प्रतिबंधन नहीं।",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT के साथ खोज करने के लिए अपग्रेड करें",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus के बराबर तेज़। कोई देश की प्रतिबंधन नहीं।",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' को सक्षम करने के लिए अपनी खुद की OpenAI API कुंजी का उपयोग करें।"
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' को सक्षम करने के लिए अपनी खुद की OpenAI API कुंजी का उपयोग करें।",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AI-पावर्ड सर्च के साथ ज्ञान की खोज करने के लिए अपग्रेड करें",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "सबसे शक्तिशाली उत्तर इंजन जो आपको तत्वों को तेजी से ढूंढ़ने में मदद करता है और आपके सवालों के स्पष्ट जवाब प्राप्त करता है।",
+    "sidebar__tabs__search__title": "खोज"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

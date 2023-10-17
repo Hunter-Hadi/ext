@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Самая быстрая модель Anthropic. Без ограничений по странам.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Обновите для поиска с ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Так же быстро, как ChatGPT Plus. Без ограничений по странам.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Используйте свой собственный ключ OpenAI API для работы с 'Поиск с ИИ'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Используйте свой собственный ключ OpenAI API для работы с 'Поиск с ИИ'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Обновите для поиска знаний с помощью искусственного интеллекта",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Самый мощный ответный движок, который помогает вам находить факты быстрее и получать четкие ответы на ваши вопросы.",
+    "sidebar__tabs__search__title": "Поиск"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

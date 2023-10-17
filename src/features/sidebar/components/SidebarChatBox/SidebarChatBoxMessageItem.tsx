@@ -19,6 +19,17 @@ import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/C
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
+const getMessageRenderText = (message: IChatMessage) => {
+  if (message.type === 'system') {
+    return message.text
+  }
+  return (
+    (message as IUserChatMessage)?.extra?.meta?.messageVisibleText ||
+    message.text ||
+    ''
+  )
+}
+
 const SidebarChatBoxMessageItem: FC<{
   replaceAble?: boolean
   insertAble?: boolean
@@ -44,7 +55,9 @@ const SidebarChatBoxMessageItem: FC<{
     className,
   } = props
   const { isDarkMode } = useCustomTheme()
-  const [defaultText, setDefaultText] = useState(message.text || '')
+  const [defaultText, setDefaultText] = useState(() =>
+    getMessageRenderText(message),
+  )
   const [isEdit, setIsEdit] = useState(false)
   const [isHover, setIsHover] = useState(false)
   const hoverTimer = useRef<any>(null)
@@ -138,7 +151,7 @@ const SidebarChatBoxMessageItem: FC<{
     }
   }, [message.type, isHover, isDarkMode])
   useEffect(() => {
-    setDefaultText(message.text || '')
+    setDefaultText(getMessageRenderText(message))
   }, [message.text])
   const attachments = useMemo(() => {
     if (message.type === 'user') {

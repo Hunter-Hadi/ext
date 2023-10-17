@@ -17,7 +17,6 @@ import {
   ActionDate,
   ActionDateFormat,
   ActionSummarizeOfText,
-  ActionWebGPTAskChatGPT,
   ActionSliceOfText,
   ActionFetchActions,
   ActionGetYoutubeTranscriptOfURL,
@@ -36,6 +35,7 @@ import {
   ActionGetSocialMediaPostDraftOfWebPage,
   ActionGetSocialMediaPostContentOfWebPage,
   ActionCreateWebsiteContext,
+  ActionTextHandler,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -80,9 +80,9 @@ const ActionClassMap = {
   [ActionSummarizeOfText.type]: ActionSummarizeOfText,
   [ActionSliceOfText.type]: ActionSliceOfText,
   [ActionCreateWebsiteContext.type]: ActionCreateWebsiteContext,
+  [ActionTextHandler.type]: ActionTextHandler,
   // webgpt插件
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
-  [ActionWebGPTAskChatGPT.type]: ActionWebGPTAskChatGPT,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))

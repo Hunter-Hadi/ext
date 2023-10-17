@@ -38,6 +38,8 @@ import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/Ope
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
 import { IWebsiteContext } from '@/features/websiteContext/background'
+import { IAIProviderType } from '@/background/provider/chat'
+import { ITextHandlerParameters } from '@/features/shortcuts/utils/textHelper'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -178,6 +180,10 @@ interface ActionParameters {
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionMeta?: IChatMessageExtraMetaType
+  AskChatGPTProvider?: {
+    provider: IAIProviderType
+    model: string
+  }
   // Operation Element
   OperationElementElementSelector?: string
   OperationElementTabID?: number
@@ -187,6 +193,8 @@ interface ActionParameters {
   // set variable modal
   SetVariablesModalConfig?: ActionSetVariablesModalConfig
   CreateWebsiteContextConfig?: Partial<IWebsiteContext>
+  // 处理文本
+  ActionTextHandleParameters?: ITextHandlerParameters
 }
 
 export default ActionParameters

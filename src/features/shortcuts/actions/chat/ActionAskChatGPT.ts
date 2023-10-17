@@ -31,6 +31,14 @@ export class ActionAskChatGPT extends Action {
     try {
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ask_chatgpt'
+      const askChatGPTProvider = this.parameters.AskChatGPTProvider
+      if (askChatGPTProvider) {
+        // 设置了单独的Provider和model，实例化一个chatSystem
+        // const chatSystemInstance = this.createChatSystemInstance(
+        //   askChatGPTProvider.provider,
+        // )
+        // TODO
+      }
       if (
         askChatGPTType === 'ASK_CHAT_GPT_WITH_PREFIX' &&
         this.parameters.AskChatGPTActionMeta?.contextMenu
@@ -39,7 +47,8 @@ export class ActionAskChatGPT extends Action {
           getContextMenuNamePrefixWithHost() +
           this.parameters.AskChatGPTActionMeta.contextMenu.text
       }
-      this.question = params.LAST_ACTION_OUTPUT
+      this.question =
+        this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT
       const {
         success,
         answer,
@@ -48,20 +57,26 @@ export class ActionAskChatGPT extends Action {
       } = (await engine.getChartGPT()?.sendQuestion(
         {
           messageId: '',
-          question:
-            this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT,
+          question: this.question,
           parentMessageId: '',
         },
         {
           includeHistory: false,
           regenerate: false,
-          hiddenInChat: askChatGPTType === 'ASK_CHAT_GPT_HIDDEN',
           meta: {
             ...this.parameters.AskChatGPTActionMeta,
+            deleteMessageCount:
+              askChatGPTType === 'ASK_CHAT_GPT_HIDDEN_QUESTION' ? 1 : 0,
           },
         },
       )) || { success: false, answer: '', error: '' }
       if (success) {
+        // 因为是隐藏答案或者隐藏问题，所以需要运行完成后再删除消息
+        if (askChatGPTType === 'ASK_CHAT_GPT_HIDDEN') {
+          await this.deleteMessageFromChat(2, engine)
+        } else if (askChatGPTType === 'ASK_CHAT_GPT_HIDDEN_ANSWER') {
+          await this.deleteMessageFromChat(1, engine)
+        }
         this.output = answer
         this.message = message
       } else {

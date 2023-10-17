@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Nejrychlejší model od Anthropic. Žádná omezení země.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Vylepšit na vyhledávání s ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Stejně rychlé jako ChatGPT Plus. Žádná omezení země.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Použijte vlastní klíč OpenAI API pro napájení 'Vyhledávání s AI'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Použijte vlastní klíč OpenAI API pro napájení 'Vyhledávání s AI'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Vylepšete se a objevujte znalosti s vyhledáváním pomocí umělé inteligence",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Nejsilnější odpověďový systém, který vám pomůže najít fakta rychleji a dostat jasné odpovědi na vaše otázky.",
+    "sidebar__tabs__search__title": "Vyhledávání"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

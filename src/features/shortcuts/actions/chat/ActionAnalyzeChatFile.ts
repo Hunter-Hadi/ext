@@ -30,7 +30,7 @@ export class ActionAnalyzeChatFile extends Action {
   @templateParserDecorator()
   async execute(params: any, engine: any) {
     try {
-      this.pushMessageToChat(
+      await this.pushMessageToChat(
         {
           type: 'system',
           text: `Generating summary...`,

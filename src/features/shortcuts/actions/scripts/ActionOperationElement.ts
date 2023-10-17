@@ -40,7 +40,7 @@ export class ActionOperationElement extends Action {
       const executeResponse = result.data
       if (!executeResponse?.success) {
         OperationElementConfig.errorMessage &&
-          this.pushMessageToChat(
+          (await this.pushMessageToChat(
             {
               type: 'system',
               messageId: uuidV4(),
@@ -51,10 +51,10 @@ export class ActionOperationElement extends Action {
               },
             } as ISystemChatMessage,
             engine,
-          )
+          ))
       } else {
         OperationElementConfig.successMessage &&
-          this.pushMessageToChat(
+          (await this.pushMessageToChat(
             {
               type: 'system',
               messageId: uuidV4(),
@@ -65,7 +65,7 @@ export class ActionOperationElement extends Action {
               },
             } as ISystemChatMessage,
             engine,
-          )
+          ))
         // 如果actionType === getText, output设置为获取到的innerText
         if (OperationElementConfig.actionType === 'getText') {
           this.output = executeResponse.elementsInnerText

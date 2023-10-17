@@ -110,6 +110,37 @@ const useClientConversation = () => {
           conversationId,
         },
       })
+    } else if (currentSidebarConversationType === 'Search') {
+      // 如果search板块已经有conversationId了
+      if (
+        currentSidebarConversationId &&
+        (await clientGetConversation(currentSidebarConversationId))
+      ) {
+        // 如果已经存在了，并且有AI消息，那么就不用创建了
+        return currentSidebarConversationId
+      }
+      // 创建一个新的conversation
+      const result = await port.postMessage({
+        event: 'Client_createChatGPTConversation',
+        data: {
+          initConversationData: {
+            type: 'Search',
+            meta: merge({
+              AIProvider: 'USE_CHAT_GPT_PLUS',
+              AIModel: 'gpt-3.5-turbo',
+              maxTokens: 16384, // gpt-3.5-16k
+            }),
+          } as Partial<IChatConversation>,
+        },
+      })
+      if (result.success) {
+        conversationId = result.data.conversationId
+        await updateSidebarSettings({
+          search: {
+            conversationId,
+          },
+        })
+      }
     }
     return conversationId
   }
@@ -150,10 +181,17 @@ const useClientConversation = () => {
           },
         },
       })
-    } else {
+    } else if (currentSidebarConversationType === 'Summary') {
       // 清除pageSummary的conversationId
-      updateSidebarSettings({
+      await updateSidebarSettings({
         summary: {
+          conversationId: '',
+        },
+      })
+    } else if (currentSidebarConversationType === 'Search') {
+      // 清除search的conversationId
+      await updateSidebarSettings({
+        search: {
           conversationId: '',
         },
       })

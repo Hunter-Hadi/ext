@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "أسرع نموذج من أنثروبيك. بدون قيود جغرافية.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "ترقية للبحث مع ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "بنفس سرعة ChatGPT Plus. بدون قيود جغرافية.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "استخدم مفتاح OpenAI الخاص بك لتشغيل 'البحث مع AI'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "استخدم مفتاح OpenAI الخاص بك لتشغيل 'البحث مع AI'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "ترقية لاكتشاف المعرفة بواسطة البحث المدعوم بالذكاء الاصطناعي",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "أقوى محرك إجابات يساعدك على العثور على الحقائق بشكل أسرع والحصول على إجابات واضحة لأسئلتك.",
+    "sidebar__tabs__search__title": "البحث"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

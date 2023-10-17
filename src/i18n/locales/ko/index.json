@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "앤트로픽의 가장 빠른 모델. 국가 제한 없음.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPT로 검색 업그레이드",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus와 같은 속도. 국가 제한 없음.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AI로 검색'을 구동하기 위해 자체 OpenAI API 키를 사용하세요."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'AI로 검색'을 구동하기 위해 자체 OpenAI API 키를 사용하세요.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AI 기반 검색으로 지식을 발견하려면 업그레이드하세요",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "빠르게 사실을 찾고 질문에 명확한 답변을 얻을 수 있는 가장 강력한 답변 엔진입니다.",
+    "sidebar__tabs__search__title": "검색"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Ο γρηγορότερος μοντέλο της Anthropic. Χωρίς περιορισμούς χώρας.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Αναβάθμιση για αναζήτηση με το ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Τόσο γρήγορο όσο το ChatGPT Plus. Χωρίς περιορισμούς χώρας.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Χρησιμοποιήστε το δικό σας κλειδί OpenAI API για να ενεργοποιήσετε την 'Αναζήτηση με AI'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Χρησιμοποιήστε το δικό σας κλειδί OpenAI API για να ενεργοποιήσετε την 'Αναζήτηση με AI'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Αναβαθμίστε για να ανακαλύψετε γνώση με αναζήτηση που χρησιμοποιεί AI",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Ο πιο ισχυρός μηχανισμός απάντησης που σας βοηθά να βρίσκετε γεγονότα πιο γρήγορα και να λαμβάνετε σαφείς απαντήσεις στις ερωτήσεις σας.",
+    "sidebar__tabs__search__title": "Αναζήτηση"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

@@ -14,6 +14,21 @@ export interface ICrawlingSearchResult {
   imgLink?: string // 内容来源的品牌图片地址
 }
 
+const isFileUrl = (url: string) => {
+  try {
+    const parsedURL = new URL(url)
+
+    const ext = parsedURL.pathname.split('.').pop() || ''
+
+    if (['doc', 'xls', 'ppt', 'pdf', 'zip', 'rar', 'apk'].includes(ext)) {
+      return true
+    }
+    return false
+  } catch (error) {
+    return false
+  }
+}
+
 export function crawlingSearchResults({
   html,
   limit,
@@ -46,21 +61,21 @@ export function crawlingSearchResults({
         emptyResult.push(item)
         emptyResultIndex.push(index)
       }
+
+      // 爬虫不支持爬取 file url
+      if (isFileUrl(item.url)) {
+        return false
+      }
+
       return item.url && (item.body || item.title)
     })
 
-    const slicedResult = filteredResult.slice(0, limit)
-
-    //     console.log(`crawlingSearchResults fullSearchURL`, fullSearchURL)
-    //     // 20230905 更新 slicedResult 为 0 时才发送 larkBot
-    //     if (slicedResult.length <= 0) {
+    // 找到 body、url、title 为空的 result 发 larkBot
+    //     if (emptyResult.length > 0) {
     //       sendLarkBotMessageInContentScript(
     //         'Search item body is empty',
-    //         `version: ${WEBCHATGPT_VERSION}
-    // fullSearchURL: ${fullSearchURL}
+    //         `fullSearchURL: ${fullSearchURL}
     // query: ${query}
-    // resultLength: ${slicedResult.length}
-    // searchLimit: ${limit}
     // searchEngine: ${searchEngine}
     // emptyResultIndex: ${JSON.stringify(emptyResultIndex)}
     // emptyResult:
@@ -72,11 +87,16 @@ export function crawlingSearchResults({
     //       )
     //     }
 
+    const slicedResult = filteredResult.slice(0, limit)
+
+    console.log(`crawlingSearchResults fullSearchURL`, fullSearchURL)
+
     return slicedResult
   } catch (error) {
     return []
   }
 }
+
 function extractRealUrl(url: string) {
   const match = url.match(/RU=([^/]+)/)
   if (match && match[1]) {
@@ -111,8 +131,57 @@ const CrawlingResultsWithEngine = (
         //     url: extractRealUrl(rightPanelLink.attr('href') ?? ''),
         //   })
         // }
+
         const searchItems = $('#search #rso > div')
         if (searchItems.length === 1) {
+          // 兼容 kp-wp-tab-overview 类型
+          const searchBox = $('#rso #kp-wp-tab-overview:not([style])')
+          if (searchBox.length > 0) {
+            $(
+              '#rso #kp-wp-tab-overview:not([style]) div[class*="K7khPe"]',
+            ).each((_, el) => {
+              const element = $(el)
+              const titleElement = element.find('a > h3')
+              const aElement = titleElement.closest('a')
+              let bodyText = element.find('div.MUxGbd').text()
+
+              if (!bodyText) {
+                const maybeBodyElement = element
+                  .find('div[style]')
+                  .filter((_, el) => {
+                    return !!$(el)
+                      ?.attr('style')
+                      ?.includes('-webkit-line-clamp')
+                  })
+                bodyText = $(maybeBodyElement[0]).text().trim()
+              }
+
+              const metaInfoEl = titleElement.next()
+
+              const url = extractRealUrl(aElement.attr('href') ?? '')
+
+              const from = metaInfoEl
+                ?.children()
+                ?.last()
+                ?.children()
+                ?.first()
+                ?.text()
+
+              const titleText = titleElement.text()
+
+              if (titleText) {
+                results.push({
+                  title: titleText,
+                  // body 为空时，用 title 覆盖
+                  body: bodyText ? bodyText : titleText,
+                  url,
+                  from: from,
+                  imgLink: metaInfoEl?.find('img')?.attr('src'),
+                })
+              }
+            })
+          }
+
           // is News tab (tbm=nws)
           $('#search #rso > div a[data-ved]')
             .filter((_, el) => !!$(el).find('div[role=heading]').text())

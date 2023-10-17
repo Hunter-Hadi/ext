@@ -41,6 +41,8 @@ export interface IUserChatMessage extends IChatMessage {
 export type IChatMessageExtraMetaType = {
   contextMenu?: IContextMenuItem
   attachments?: IChatUploadFile[]
+  messageVisibleText?: string
+  deleteMessageCount?: number
   [key: string]: any
 }
 

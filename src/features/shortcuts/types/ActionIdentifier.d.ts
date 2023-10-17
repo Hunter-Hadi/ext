@@ -65,10 +65,10 @@ type ActionIdentifier =
   | 'ANALYZE_CHAT_FILE'
   // 创建网站内容
   | 'CREATE_WEBSITE_CONTEXT'
+  // 处理文本
+  | 'TEXT_HANDLER'
 
 // webgpt action identifiers
-type WebGPTActionIdentifier =
-  | 'WEBGPT_SEARCH_RESULTS_EXPAND'
-  | 'WEBGPT_ASK_CHATGPT'
+type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'
 
 export default ActionIdentifier

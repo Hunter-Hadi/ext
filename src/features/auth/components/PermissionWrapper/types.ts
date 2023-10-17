@@ -44,6 +44,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'INSTAGRAM_REFINE_DRAFT_BUTTON',
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
+  'SIDEBAR_SEARCH_WITH_AI',
 ] as const
 
 export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
@@ -685,6 +686,21 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__description'),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  SIDEBAR_SEARCH_WITH_AI: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/search-with-ai.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__search_with_ai__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__search_with_ai__description',
+      ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },

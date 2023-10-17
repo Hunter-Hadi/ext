@@ -13,8 +13,9 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_RECORD_FIRST_MESSAGE'
   | 'ON_BOARDING_RECORD_BROWSER_VERSION'
   | `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${IAIProviderType}`
-  // summary 和  input assistant button free trial times
+  // summary 和 search 和  input assistant button free trial times
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
+  | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'
   | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${InputAssistantButtonGroupConfigHostType}_TIMES`
 
 export type OnBoardingMapType = {
@@ -27,7 +28,11 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     // 记录用户浏览器版本号太旧
     ON_BOARDING_RECORD_BROWSER_VERSION: false,
     // 记录用户剩余的summary free trial times - 2次 - 2023-10-12 - @tdzhang
-    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 2,
+    // 关闭free trail - 2023-10-17 - @HuangSong
+    ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 0,
+    // 记录用户剩余的search free trial times - 2次 - 2023-10-12 - @tdzhang
+    // 关闭free trail - 2023-10-17 - @HuangSong
+    ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES: 0,
   }
   // 记录每个AI Provider至少auth过一次
   Object.keys(AI_PROVIDER_MAP).forEach((AI_PROVIDER) => {
@@ -38,11 +43,12 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
   /**
    * InputAssistantButton onBoarding Keys
    * @since 2023-10-09 - 为Help me write的各个button添加lifetime的5次free trial - @HuangSong
+   * @update - 关闭free trail - 2023-10-17 - @HuangSong
    */
   InputAssistantButtonGroupConfigHostKeys.forEach((key) => {
     onBoardingMap[
       `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${key}_TIMES` as OnBoardingKeyType
-    ] = 5
+    ] = 0
   })
   return onBoardingMap
 }

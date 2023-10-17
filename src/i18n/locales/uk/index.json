@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropic کا تیز ترین ماڈل۔ کوئی ملکی پابندی نہیں۔",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "چیٹ جی پی ٹی کے ساتھ تلاش کرنے کے لئے اپگریڈ کریں",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plus کی طرح تیز۔ کوئی ملکی پابندی نہیں۔",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'تلاش باہمی عقل' کو چلانے کے لئے اپنی خود کی OpenAI API کو استعمال کریں۔"
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'تلاش باہمی عقل' کو چلانے کے لئے اپنی خود کی OpenAI API کو استعمال کریں۔",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AI-powered تلاش کے ساتھ علم کی دریافت کے لئے اپگریڈ کریں",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "سب سے زیادہ قوی جواب مشین جو آپ کو فوراً حقائق تلاش کرنے میں مدد کرتی ہے اور آپ کے سوالات کے واضح جوابات حاصل کرتی ہے۔",
+    "sidebar__tabs__search__title": "تلاش"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

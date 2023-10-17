@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Le modèle le plus rapide d'Anthropic. Aucune restriction de pays.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "Passer à la recherche avec ChatGPT",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "Aussi rapide que ChatGPT Plus. Aucune restriction de pays.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Utilisez votre propre clé d'API OpenAI pour alimenter 'Recherche avec IA'."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Utilisez votre propre clé d'API OpenAI pour alimenter 'Recherche avec IA'.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Mettez à niveau pour découvrir la connaissance avec une recherche alimentée par l'IA",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Le moteur de réponse le plus puissant qui vous aide à trouver des faits plus rapidement et à obtenir des réponses claires à vos questions.",
+    "sidebar__tabs__search__title": "Recherche"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -5,6 +5,7 @@ import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -13,6 +14,8 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 //   return autoFocusInputValue || 'Enter ChatGPT prompt...'
 // }
 const NormalChatPage = () => {
+  const { currentSidebarConversationType } = useSidebarSettings()
+  const { createSearchWithAI } = useSearchWithAI()
   const {
     sendQuestion,
     conversation,
@@ -32,17 +35,21 @@ const NormalChatPage = () => {
         editAble={false}
         insertAble={false}
         onSendMessage={async (question, options) => {
-          console.log('NormalChatPage onSendMessage', options)
-          await sendQuestion(
-            {
-              question,
-            },
-            {
-              ...options,
-              regenerate: false,
-              includeHistory: options.includeHistory === true,
-            },
-          )
+          if (currentSidebarConversationType === 'Search') {
+            await createSearchWithAI(question, options)
+          } else {
+            console.log('NormalChatPage onSendMessage', options)
+            await sendQuestion(
+              {
+                question,
+              },
+              {
+                ...options,
+                regenerate: false,
+                includeHistory: options.includeHistory === true,
+              },
+            )
+          }
         }}
         writingMessage={conversation.writingMessage}
         messages={currentSidebarConversationMessages}

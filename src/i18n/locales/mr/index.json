@@ -458,7 +458,10 @@
     "permission__pricing_hook__search_with_ai_claude__description": "Anthropicची सर्वात जलद मॉडेल. कोणत्याही देशांची प्रतिबंधितता नाही.",
     "permission__pricing_hook__search_with_ai_chatgpt__title": "ChatGPTसह शोधाची अपग्रेड",
     "permission__pricing_hook__search_with_ai_chatgpt__description": "ChatGPT Plusसारखे जलद. कोणत्याही देशांची प्रतिबंधितता नाही.",
-    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' साठी आपला स्वत: OpenAI API की वापरा."
+    "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' साठी आपला स्वत: OpenAI API की वापरा.",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AI-सहाय्यित शोधाने संचालित करण्यासाठी अपग्रेड करा",
+    "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "तुमच्या प्रश्नांची स्पष्ट, वेगवेगळीत उत्तरे मिळवण्यास मदत करणारा सर्वात शक्तिशाली उत्तर इंजिन.",
+    "sidebar__tabs__search__title": "शोध"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

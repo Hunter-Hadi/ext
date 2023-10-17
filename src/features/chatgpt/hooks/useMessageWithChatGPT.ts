@@ -89,6 +89,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   ): Promise<{ success: boolean; answer: string; error: string }> => {
     const host = getCurrentDomainHost()
     const contextMenu = options?.meta?.contextMenu
+    const deleteMessageCount = options?.meta?.deleteMessageCount || 0
     // 发消息前,或者报错信息用到的升级卡片
     let abortAskAIShowUpgradeCard: PermissionWrapperCardType | null = null
     const checkUpgradeCard = async (conversationId: string) => {
@@ -169,7 +170,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         loading: true,
       }
     })
-    debugger
     const postConversationId: string = await createConversation()
     log.info('createConversation', postConversationId)
     console.log('新版Conversation createConversation', postConversationId)
@@ -204,7 +204,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         regenerate,
         maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
         meta: {
-          contextMenu: options?.meta?.contextMenu,
+          ...options?.meta,
           attachments,
         },
       },
@@ -222,6 +222,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       0,
       [questionMessage],
     )
+    // 提问之前删除的信息
+    if (deleteMessageCount > 0) {
+      await clientChatConversationModifyChatMessages(
+        'delete',
+        postConversationId,
+        deleteMessageCount,
+        [],
+      )
+    }
     const pushMessages: IChatMessage[] = []
     let isManualStop = false
     let hasError = false
@@ -468,6 +477,16 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       )
     }
   }
+  const deleteMessage = async (count: number, conversationId?: string) => {
+    if (conversationId || currentSidebarConversationId) {
+      await clientChatConversationModifyChatMessages(
+        'delete',
+        conversationId || currentSidebarConversationId || '',
+        count,
+        [],
+      )
+    }
+  }
   const updateChatInputValue = (value: string) => {
     getInputMediator('chatBoxInputMediator').updateInputValue(value)
   }
@@ -505,6 +524,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     reGenerate,
     stopGenerateMessage,
     pushMessage,
+    deleteMessage,
     updateConversation,
     getSidebarRef,
     showLoading,

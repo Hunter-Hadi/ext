@@ -1,11 +1,7 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { useCallback, useEffect, useRef } from 'react'
 import { v4 as uuidV4 } from 'uuid'
-import {
-  ChatGPTConversationState,
-  SidebarConversationIdSelector,
-  SidebarSettingsState,
-} from '@/features/sidebar/store'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   ContentScriptConnectionV2,
   getAIProviderSampleFiles,
@@ -38,8 +34,8 @@ import {
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import useClientConversationMessages from '@/features/chatgpt/hooks/useClientConversationMessages'
 import cloneDeep from 'lodash-es/cloneDeep'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -48,10 +44,13 @@ const port = new ContentScriptConnectionV2({
 const log = new Log('UseMessageWithChatGPT')
 
 const useMessageWithChatGPT = (defaultInputValue?: string) => {
-  const messages = useClientConversationMessages()
-  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
-  const sidebarSettings = useRecoilValue(SidebarSettingsState)
-  const currentConversationIdRef = useRef(sidebarConversationId)
+  const {
+    currentSidebarConversationMessages,
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+    sidebarSettings,
+  } = useSidebarSettings()
+  const currentConversationIdRef = useRef(currentSidebarConversationId)
   const currentSidebarSettingsRef = useRef(sidebarSettings)
   const {
     createConversation,
@@ -127,13 +126,17 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     ) {
       const url = new URL(location.href)
       const PDFViewerHref = `${Browser.runtime.id}/pages/pdf/web/viewer.html`
-      if (url.href.includes(PDFViewerHref) && sidebarSettings.type === 'Chat') {
+      if (
+        url.href.includes(PDFViewerHref) &&
+        currentSidebarConversationType === 'Chat'
+      ) {
         abortAskAIShowUpgradeCard = permissionCardMap['PDF_AI_VIEWER']
       }
     }
     // 判断是否在特殊页面结束
     // 判断是否触达dailyUsageLimited开始:
-    const fallbackId = sidebarSettings.type === 'Chat' ? 'chat' : 'summary_chat'
+    const fallbackId =
+      currentSidebarConversationType === 'Chat' ? 'chat' : 'summary_chat'
     const { data: isDailyUsageLimit } = await port.postMessage({
       event: 'Client_logCallApiRequest',
       data: {
@@ -166,6 +169,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         loading: true,
       }
     })
+    debugger
     const postConversationId: string = await createConversation()
     log.info('createConversation', postConversationId)
     console.log('新版Conversation createConversation', postConversationId)
@@ -173,8 +177,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     // 如果没有传入指定的历史会话长度，并且includeHistory===true,计算历史会话条数
     if (!maxHistoryMessageCnt && includeHistory) {
       let historyCnt = 0
-      for (let i = messages.length - 1; i >= 0; i--) {
-        const msg = messages[i] as IUserChatMessage
+      for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
+        const msg = currentSidebarConversationMessages[i] as IUserChatMessage
         if (msg.type === 'user' && msg.extra?.includeHistory === false) {
           historyCnt++
           break
@@ -386,7 +390,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     }
   }
   const retryMessage = async (retryMessageId: string) => {
-    const originMessage = messages.find(
+    const originMessage = currentSidebarConversationMessages.find(
       (message) => message.messageId === retryMessageId,
     )
     if (originMessage) {
@@ -412,8 +416,8 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   }
   const reGenerate = useCallback(async () => {
     let lastUserMessage: IUserChatMessage | null = null
-    for (let i = messages.length - 1; i >= 0; i--) {
-      const message = messages[i]
+    for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
+      const message = currentSidebarConversationMessages[i]
       if (message.type === 'user') {
         lastUserMessage = message as IUserChatMessage
         break
@@ -439,7 +443,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       )
     }
     return null
-  }, [messages, sendQuestion])
+  }, [currentSidebarConversationMessages, sendQuestion])
   const stopGenerateMessage = async () => {
     const parentMessageId = conversation.writingMessage?.parentMessageId
     if (parentMessageId || conversation.lastMessageId) {
@@ -455,10 +459,10 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     newMessage: ISystemChatMessage | IThirdChatMessage,
     conversationId?: string,
   ) => {
-    if (conversationId || sidebarConversationId) {
+    if (conversationId || currentSidebarConversationId) {
       await clientChatConversationModifyChatMessages(
         'add',
-        conversationId || sidebarConversationId,
+        conversationId || currentSidebarConversationId || '',
         0,
         [newMessage],
       )
@@ -490,11 +494,11 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
   }, [defaultInputValue])
   useEffect(() => {
     currentSidebarSettingsRef.current = cloneDeep(sidebarSettings)
-    currentConversationIdRef.current = sidebarConversationId
-  }, [sidebarSettings, sidebarConversationId])
+    currentConversationIdRef.current = currentSidebarConversationId
+  }, [sidebarSettings, currentSidebarConversationId])
   return {
     sendQuestion,
-    messages,
+    currentSidebarConversationMessages,
     resetConversation,
     conversation,
     retryMessage,

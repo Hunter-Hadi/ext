@@ -8,7 +8,7 @@ import {
 } from '@/components/ContextMenuIcon'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
 import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import CircularProgress from '@mui/material/CircularProgress'
 import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'

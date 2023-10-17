@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
-import { useRecoilValue } from 'recoil'
 
 import Box from '@mui/material/Box'
 import Checkbox from '@mui/material/Checkbox'
@@ -15,8 +14,8 @@ import uniqBy from 'lodash-es/uniqBy'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { useSingleThirdProviderSettings } from '@/features/chatgpt/hooks/useThirdProviderSettings'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -33,12 +32,12 @@ const ArrowDropDownIconCustom = () => {
 }
 
 const ChatGPTPluginsSelector: FC = () => {
-  const sidebarChatMessages = useRecoilValue(
-    SidebarChatConversationMessagesSelector,
-  )
+  const { currentSidebarConversationMessages } = useSidebarSettings()
   const [error, setError] = useState(false)
-  const [openAIProviderSettings, updateOpenAIProviderSettings] =
-    useSingleThirdProviderSettings('OPENAI')
+  const [
+    openAIProviderSettings,
+    updateOpenAIProviderSettings,
+  ] = useSingleThirdProviderSettings('OPENAI')
   const enabledPlugins = useMemo(() => {
     return openAIProviderSettings?.plugins || []
   }, [openAIProviderSettings])
@@ -93,7 +92,7 @@ const ChatGPTPluginsSelector: FC = () => {
             }}
             value={openAIProviderSettings?.plugins || []}
             multiple
-            disabled={sidebarChatMessages.length > 0}
+            disabled={currentSidebarConversationMessages.length > 0}
             MenuProps={{
               anchorOrigin: {
                 vertical: 'top',

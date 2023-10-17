@@ -17,7 +17,6 @@ import React, {
 } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import {
-  FloatingContextMenuDraftSelector,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -82,10 +81,9 @@ import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderS
 import { AppDBStorageState } from '@/store'
 import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import {
-  ChatGPTConversationState,
-  SidebarSettingsState,
-} from '@/features/sidebar'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -99,15 +97,14 @@ const FloatingContextMenu: FC<{
   const { currentSelectionRef } = useRangy()
   const conversation = useRecoilValue(ChatGPTConversationState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const [sidebarSettings, setSidebarSettings] = useRecoilState(
-    SidebarSettingsState,
-  )
+  const {
+    currentSidebarConversationType,
+    updateSidebarConversationType,
+  } = useSidebarSettings()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const floatingContextMenuDraft = useRecoilValue(
-    FloatingContextMenuDraftSelector,
-  )
+  const floatingContextMenuDraft = useFloatingContextMenuDraft()
   const { isLogin } = useAuthLogin()
   const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
@@ -343,7 +340,7 @@ const FloatingContextMenu: FC<{
       }
     }
   }, [conversation.loading])
-  const askChatGPT = (inputValue: string) => {
+  const askChatGPT = async (inputValue: string) => {
     if (inputValue.trim()) {
       const draft = floatingContextMenuDraft
       let currentDraft = ''
@@ -383,12 +380,7 @@ const FloatingContextMenu: FC<{
         template += `:\n"""\n${currentDraft}\n"""`
       }
       if (!isContextMenuFromSidebar()) {
-        setSidebarSettings((prevState) => {
-          return {
-            ...prevState,
-            type: 'Chat',
-          }
-        })
+        updateSidebarConversationType('Chat')
       }
       setActions([
         {
@@ -487,12 +479,7 @@ const FloatingContextMenu: FC<{
           }
         })
         if (!isContextMenuFromSidebar()) {
-          setSidebarSettings((prevState) => {
-            return {
-              ...prevState,
-              type: 'Chat',
-            }
-          })
+          updateSidebarConversationType('Chat')
         }
         if (runActions.length > 0) {
           setActions(runActions)
@@ -549,7 +536,7 @@ const FloatingContextMenu: FC<{
     // 如果有动作，并且sidebar是Chat或者是从Sidebar触发的prompt才运行
     if (
       actions.length > 0 &&
-      (sidebarSettings.type === 'Chat' || isContextMenuFromSidebar())
+      (currentSidebarConversationType === 'Chat' || isContextMenuFromSidebar())
     ) {
       if (isRunningActionsRef.current) {
         return
@@ -601,7 +588,7 @@ const FloatingContextMenu: FC<{
           isRunningActionsRef.current = false
         })
     }
-  }, [actions, isLogin, sidebarSettings.type])
+  }, [actions, isLogin, currentSidebarConversationType])
   useEffect(() => {
     const updateInputValue = (value: string, data: any) => {
       console.log('[ContextMenu Module] updateInputValue', value)

@@ -21,8 +21,6 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { v4 as uuidV4 } from 'uuid'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { useRecoilValue } from 'recoil'
-import { SidebarSettingsState } from '@/features/sidebar'
 import { isProduction } from '@/constants'
 import isNumber from 'lodash-es/isNumber'
 import {
@@ -30,6 +28,7 @@ import {
   setVariablesModalSelectCache,
 } from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
 import TooltipButton from '@/components/TooltipButton'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
@@ -60,7 +59,7 @@ interface ActionSetVariablesModalProps
 const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   const { title, variables, systemVariables, modelKey, onShow, onClose } = props
   const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat()
-  const { type } = useRecoilValue(SidebarSettingsState)
+  const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
   const [hide, setHide] = useState(false)
@@ -269,12 +268,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     })
   })
   useEffect(() => {
-    if (type === 'Chat') {
+    if (currentSidebarConversationType === 'Chat') {
       setHide(false)
     } else {
       setHide(true)
     }
-  }, [type])
+  }, [currentSidebarConversationType])
   useEffect(() => {
     if (show) {
       if (hide) {

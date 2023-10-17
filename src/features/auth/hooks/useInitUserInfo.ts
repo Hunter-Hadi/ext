@@ -1,19 +1,16 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import Log from '@/utils/Log'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { AuthUserInfoState } from '@/features/auth/store'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useFocus } from '@/hooks/useFocus'
-import {
-  SidebarConversationMessagesSelector,
-  SidebarConversationIdSelector,
-} from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useEffect, useRef } from 'react'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
@@ -22,8 +19,10 @@ const upgradeText =
 
 const userInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
-  const sidebarMessages = useRecoilValue(SidebarConversationMessagesSelector)
-  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
+  const {
+    currentSidebarConversationMessages,
+    currentSidebarConversationId,
+  } = useSidebarSettings()
   const needPushUpgradeMessage = useRef(false)
   const syncUserInfo = async () => {
     try {
@@ -133,15 +132,15 @@ const userInitUserInfo = (isInit = true) => {
     }
     // 如果是升级，需要在侧边栏显示升级消息
     if (
-      sidebarConversationId &&
+      currentSidebarConversationId &&
       !listReverseFind(
-        sidebarMessages,
+        currentSidebarConversationMessages,
         (message) => message.text === upgradeText,
       )
     ) {
       clientChatConversationModifyChatMessages(
         'add',
-        sidebarConversationId,
+        currentSidebarConversationId,
         0,
         [
           {
@@ -156,7 +155,7 @@ const userInitUserInfo = (isInit = true) => {
         ],
       )
     }
-  }, [sidebarConversationId, sidebarMessages])
+  }, [currentSidebarConversationId, currentSidebarConversationMessages])
   useEffectOnce(() => {
     if (isInit) {
       syncUserInfo()

@@ -44,7 +44,7 @@ import {
 } from '@/constants'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
-import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -69,9 +69,7 @@ const useInitRangy = () => {
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const sidebarChatMessages = useRecoilValue(
-    SidebarChatConversationMessagesSelector,
-  )
+  const { currentSidebarConversationMessages } = useSidebarSettings()
   const [, setFloatingContextMenuDraft] = useRecoilState(
     FloatingContextMenuDraftState,
   )
@@ -533,10 +531,14 @@ const useInitRangy = () => {
       case 'TRY_AGAIN':
         {
           let lastAIMessageId = ''
-          if (sidebarChatMessages.length > 0) {
+          if (currentSidebarConversationMessages.length > 0) {
             let isFindUserMessage = false
-            for (let i = sidebarChatMessages.length - 1; i >= 0; i--) {
-              const message = sidebarChatMessages[i]
+            for (
+              let i = currentSidebarConversationMessages.length - 1;
+              i >= 0;
+              i--
+            ) {
+              const message = currentSidebarConversationMessages[i]
               if (message.type === 'user') {
                 isFindUserMessage = true
               }

@@ -9,9 +9,8 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import Box from '@mui/material/Box'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
-import { SidebarSettingsState } from '@/features/sidebar'
 import { IAIProviderType } from '@/background/provider/chat'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 interface AIProviderIconWithTooltipProps
   extends Omit<AIProviderIconProps, 'aiProviderType'> {
@@ -21,9 +20,11 @@ const AIProviderIconWithTooltip: FC<AIProviderIconWithTooltipProps> = ({
   TooltipProps,
   ...props
 }) => {
-  const sidebarSettings = useRecoilValue(SidebarSettingsState)
-  const { currentAIProviderDetail, currentAIProviderModelDetail } =
-    useAIProviderModels()
+  const { currentSidebarConversationType } = useSidebarSettings()
+  const {
+    currentAIProviderDetail,
+    currentAIProviderModelDetail,
+  } = useAIProviderModels()
   const { t } = useTranslation(['common', 'client'])
   const [providerSettings, setProviderSettings] = useState<
     | {
@@ -35,7 +36,7 @@ const AIProviderIconWithTooltip: FC<AIProviderIconWithTooltipProps> = ({
   >(undefined)
   useEffect(() => {
     if (
-      sidebarSettings.type === 'Chat' &&
+      currentSidebarConversationType === 'Chat' &&
       currentAIProviderDetail &&
       currentAIProviderModelDetail
     ) {
@@ -59,7 +60,7 @@ const AIProviderIconWithTooltip: FC<AIProviderIconWithTooltipProps> = ({
     currentAIProviderDetail,
     currentAIProviderModelDetail,
     t,
-    sidebarSettings.type,
+    currentSidebarConversationType,
   ])
   return (
     <>

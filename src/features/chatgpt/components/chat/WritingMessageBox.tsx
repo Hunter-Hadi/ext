@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack'
 import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import {
-  FloatingContextMenuDraftSelector,
   FloatingContextMenuDraftState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -12,20 +11,19 @@ import { useRangy } from '@/features/contextMenu'
 import Typography from '@mui/material/Typography'
 import isEmpty from 'lodash-es/isEmpty'
 import { useTranslation } from 'react-i18next'
-import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import throttle from 'lodash-es/throttle'
 import debounce from 'lodash-es/debounce'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
 }> = (props) => {
   const theme = useCustomTheme()
   const { onChange } = props
-  const sidebarChatMessages = useRecoilValue(
-    SidebarChatConversationMessagesSelector,
-  )
+  const { currentSidebarConversationMessages } = useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
@@ -33,16 +31,16 @@ const WritingMessageBox: FC<{
   const [, setFloatingContextMenuDraft] = useRecoilState(
     FloatingContextMenuDraftState,
   )
-  const floatingContextMenuDraftText = useRecoilValue(
-    FloatingContextMenuDraftSelector,
-  )
+  const floatingContextMenuDraftText = useFloatingContextMenuDraft()
   const lastAIMessageIdRef = useRef('')
   useEffect(() => {
     // 从后往前找到最近的一条AI消息
     lastAIMessageIdRef.current =
-      listReverseFind(sidebarChatMessages, (message) => message.type === 'ai')
-        ?.messageId || ''
-  }, [sidebarChatMessages])
+      listReverseFind(
+        currentSidebarConversationMessages,
+        (message) => message.type === 'ai',
+      )?.messageId || ''
+  }, [currentSidebarConversationMessages])
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       console.log(

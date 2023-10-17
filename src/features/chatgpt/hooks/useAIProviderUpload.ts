@@ -1,4 +1,3 @@
-import { useRecoilValue } from 'recoil'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -14,12 +13,9 @@ import {
 } from '@/background/utils/uplpadFileProcessHelper'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
-import {
-  SidebarChatConversationMessagesSelector,
-  SidebarSettingsState,
-} from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 /**
  * AI Provider的上传文件处理
@@ -31,10 +27,10 @@ const port = new ContentScriptConnectionV2({
 const useAIProviderUpload = () => {
   const [files, setFiles] = useState<IChatUploadFile[]>([])
   const { currentAIProviderModelDetail, aiProvider } = useAIProviderModels()
-  const { chatConversationId } = useRecoilValue(SidebarSettingsState)
-  const sidebarChatMessages = useRecoilValue(
-    SidebarChatConversationMessagesSelector,
-  )
+  const {
+    currentSidebarConversationMessages,
+    currentSidebarConversationId,
+  } = useSidebarSettings()
   const blurDelayRef = useRef(false)
   const AIProviderConfig = useMemo(() => {
     return currentAIProviderModelDetail?.uploadFileConfig
@@ -74,8 +70,9 @@ const useAIProviderUpload = () => {
             const newFiles = await Promise.all(
               newUploadFiles.map(async (item) => {
                 if (item.file && checkFileTypeIsImage(item.file)) {
-                  const bingCompressBase64Data =
-                    await bingCompressedImageDataAsync(item.file)
+                  const bingCompressBase64Data = await bingCompressedImageDataAsync(
+                    item.file,
+                  )
                   if (bingCompressBase64Data) {
                     item.base64Data = bingCompressBase64Data
                   }
@@ -147,15 +144,15 @@ const useAIProviderUpload = () => {
         case 'OPENAI':
           {
             if (
-              chatConversationId &&
+              currentSidebarConversationId &&
               !listReverseFind(
-                sidebarChatMessages,
+                currentSidebarConversationMessages,
                 (item) => item.messageId === errorItem.id,
               )
             ) {
               clientChatConversationModifyChatMessages(
                 'add',
-                chatConversationId,
+                currentSidebarConversationId,
                 0,
                 [
                   {
@@ -179,15 +176,15 @@ const useAIProviderUpload = () => {
           break
         default: {
           if (
-            chatConversationId &&
+            currentSidebarConversationId &&
             !listReverseFind(
-              sidebarChatMessages,
+              currentSidebarConversationMessages,
               (item) => item.messageId === errorItem.id,
             )
           ) {
             clientChatConversationModifyChatMessages(
               'add',
-              chatConversationId,
+              currentSidebarConversationId,
               0,
               [
                 {

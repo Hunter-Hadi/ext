@@ -29,9 +29,10 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
       summary: {
         conversationId: '',
       },
-      search: {},
+      search: {
+        conversationId: '',
+      },
       common: {
-        currentSidebarConversationType: 'Chat',
         currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
         chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
       },

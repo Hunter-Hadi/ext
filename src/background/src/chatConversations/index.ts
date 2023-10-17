@@ -2,7 +2,7 @@ import { v4 as uuidV4 } from 'uuid'
 import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import { IAIProviderType } from '@/background/provider/chat'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { ISidebarConversationType } from '@/features/sidebar'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
 
 export interface IChatConversation {

@@ -11,10 +11,7 @@ import {
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { useSetRecoilState } from 'recoil'
-import {
-  ChatGPTConversationState,
-  SidebarSettingsState,
-} from '@/features/sidebar'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { useEffect, useRef, useState } from 'react'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -27,9 +24,14 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const usePageSummary = () => {
-  const setSidebarSettings = useSetRecoilState(SidebarSettingsState)
+  const {
+    updateSidebarSettings,
+    currentSidebarConversationId,
+    currentSidebarConversationType,
+  } = useSidebarSettings()
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
@@ -62,11 +64,10 @@ const usePageSummary = () => {
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         console.log('新版Conversation pageSummary已经存在')
-        setSidebarSettings((prevState) => {
-          return {
-            ...prevState,
-            summaryConversationId: pageSummaryConversationId,
-          }
+        await updateSidebarSettings({
+          summary: {
+            conversationId: pageSummaryConversationId,
+          },
         })
         if (
           pageSummaryConversation.messages?.find(
@@ -145,7 +146,12 @@ const usePageSummary = () => {
     }
   }
   useEffect(() => {
-    if (runActions.length > 0 && !isFetchingRef.current) {
+    if (
+      runActions.length > 0 &&
+      !isFetchingRef.current &&
+      currentSidebarConversationType === 'Summary' &&
+      currentSidebarConversationId
+    ) {
       isFetchingRef.current = true
       if (setShortCuts(runActions)) {
         runShortCuts()
@@ -160,7 +166,13 @@ const usePageSummary = () => {
         isFetchingRef.current = false
       }
     }
-  }, [runShortCuts, setRunActions, runActions])
+  }, [
+    runShortCuts,
+    setRunActions,
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+    runActions,
+  ])
   return {
     createPageSummary,
   }

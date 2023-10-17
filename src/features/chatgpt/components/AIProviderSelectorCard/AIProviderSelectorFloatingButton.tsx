@@ -9,13 +9,13 @@ import Popover from '@mui/material/Popover'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { getAppRootElement } from '@/utils'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
-import { SidebarSettingsState } from '@/features/sidebar'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const AIProviderSelectorFloatingButton: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
-  const { type } = useRecoilValue(SidebarSettingsState)
+  const { currentSidebarConversationType } = useSidebarSettings()
   const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
   // 用户打开之后，锁定关闭700ms
@@ -34,7 +34,7 @@ const AIProviderSelectorFloatingButton: FC<{
   }
   const open = Boolean(anchorEl)
   return useMemo(() => {
-    if (type === 'Summary') {
+    if (currentSidebarConversationType === 'Summary') {
       return null
     }
     return (
@@ -140,6 +140,10 @@ const AIProviderSelectorFloatingButton: FC<{
         </Popover>
       </Box>
     )
-  }, [appLocalStorage.sidebarSettings?.common?.currentAIProvider, open, type])
+  }, [
+    appLocalStorage.sidebarSettings?.common?.currentAIProvider,
+    open,
+    currentSidebarConversationType,
+  ])
 }
 export default AIProviderSelectorFloatingButton

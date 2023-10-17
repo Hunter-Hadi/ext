@@ -6,7 +6,7 @@ import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Stack from '@mui/material/Stack'
-import { ISidebarConversationType } from '@/features/sidebar'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 
 const tooltipKey = () => {
   const summaryType = getPageSummaryType()

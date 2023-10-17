@@ -10,19 +10,16 @@ import {
   ROOT_CHAT_BOX_INPUT_ID,
 } from '@/constants'
 import { AppDBStorageState, AppState } from '@/store'
-import { SidebarChatConversationMessagesSelector } from '@/features/sidebar'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
-import { FloatingContextMenuDraftSelector } from '@/features/contextMenu'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentSelection } = useRangy()
-  const sidebarChatConversationMessages = useRecoilValue(
-    SidebarChatConversationMessagesSelector,
-  )
-  const floatingContextMenuDraftText = useRecoilValue(
-    FloatingContextMenuDraftSelector,
-  )
+  const { currentSidebarConversationMessages } = useSidebarSettings()
+
+  const floatingContextMenuDraftText = useFloatingContextMenuDraft()
   const appDBStorage = useRecoilValue(AppDBStorageState)
   return useCallback(() => {
     const GMAIL_DRAFT_CONTEXT =
@@ -63,7 +60,7 @@ const useShortCutsParameters = () => {
         )?.value || '',
       LAST_AI_OUTPUT:
         listReverseFind(
-          sidebarChatConversationMessages,
+          currentSidebarConversationMessages,
           (item) => item.type === 'ai',
         )?.text || '',
       AI_RESPONSE_LANGUAGE: userSelectedLanguage,

@@ -1,14 +1,11 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useEffect } from 'react'
-import { useFocus } from '@/hooks/useFocus'
-import { SidebarConversationIdSelector } from '@/features/sidebar'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export const clientGetConversation = async (conversationId: string) => {
   try {
@@ -29,9 +26,7 @@ const useInitClientConversationMap = () => {
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
   )
-  const currentSidebarConversationId = useRecoilValue(
-    SidebarConversationIdSelector,
-  )
+  const { currentSidebarConversationId } = useSidebarSettings()
   useCreateClientMessageListener(async (event, data, sender) => {
     switch (event) {
       case 'Client_listenUpdateConversationMessages':
@@ -77,45 +72,45 @@ const useInitClientConversationMap = () => {
       )
     }
   }, [currentSidebarConversationId])
-  useFocus(() => {
-    getChromeExtensionLocalStorage().then((cache) => {
-      if (cache.sidebarSettings?.chat?.conversationId) {
-        clientGetConversation(cache.sidebarSettings?.chat?.conversationId).then(
-          (conversation) => {
-            if (conversation) {
-              console.log(
-                '新版Conversation refocus更新chat',
-                conversation.messages,
-              )
-              setClientConversationMap((prevState) => {
-                return {
-                  ...prevState,
-                  [conversation.id]: conversation,
-                }
-              })
-            }
-          },
-        )
-      }
-    })
-    if (getPageSummaryConversationId()) {
-      clientGetConversation(getPageSummaryConversationId()).then(
-        (conversation) => {
-          if (conversation) {
-            console.log(
-              '新版Conversation refocus更新summaryId',
-              conversation.messages,
-            )
-            setClientConversationMap((prevState) => {
-              return {
-                ...prevState,
-                [conversation.id]: conversation,
-              }
-            })
-          }
-        },
-      )
-    }
-  })
+  // useFocus(() => {
+  //   getChromeExtensionLocalStorage().then((cache) => {
+  //     if (cache.sidebarSettings?.chat?.conversationId) {
+  //       clientGetConversation(cache.sidebarSettings?.chat?.conversationId).then(
+  //         (conversation) => {
+  //           if (conversation) {
+  //             console.log(
+  //               '新版Conversation refocus更新chat',
+  //               conversation.messages,
+  //             )
+  //             setClientConversationMap((prevState) => {
+  //               return {
+  //                 ...prevState,
+  //                 [conversation.id]: conversation,
+  //               }
+  //             })
+  //           }
+  //         },
+  //       )
+  //     }
+  //   })
+  //   if (getPageSummaryConversationId()) {
+  //     clientGetConversation(getPageSummaryConversationId()).then(
+  //       (conversation) => {
+  //         if (conversation) {
+  //           console.log(
+  //             '新版Conversation refocus更新summaryId',
+  //             conversation.messages,
+  //           )
+  //           setClientConversationMap((prevState) => {
+  //             return {
+  //               ...prevState,
+  //               [conversation.id]: conversation,
+  //             }
+  //           })
+  //         }
+  //       },
+  //     )
+  //   }
+  // })
 }
 export default useInitClientConversationMap

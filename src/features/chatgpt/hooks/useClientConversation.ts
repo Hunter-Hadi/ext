@@ -1,9 +1,5 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import {
-  ChatGPTConversationState,
-  SidebarConversationIdSelector,
-  SidebarSettingsState,
-} from '@/features/sidebar/store'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { AppLocalStorageState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
@@ -11,10 +7,7 @@ import {
   getPageSummaryConversationId,
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IAIProviderType } from '@/background/provider/chat'
-import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
@@ -24,6 +17,9 @@ import {
   getChromeExtensionLocalStorage,
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -32,103 +28,67 @@ const useClientConversation = () => {
   const [, setAppLocalStorage] = useRecoilState(AppLocalStorageState)
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const [sidebarSettings, updateSidebarSettings] = useRecoilState(
-    SidebarSettingsState,
-  )
   const {
-    currentAIProviderDetail,
-    currentAIProviderModelDetail,
-  } = useAIProviderModels()
-  const sidebarConversationId = useRecoilValue(SidebarConversationIdSelector)
-  const createConversation = async () => {
-    let currentSidebarConversationId = sidebarConversationId
-    let currentAIProvider =
-      currentAIProviderDetail?.value || 'USE_CHAT_GPT_PLUS'
-    let currentAIProviderModel =
-      currentAIProviderModelDetail?.value || 'gpt-3.5-turbo'
-    let conversationId = ''
-    if (sidebarSettings.type === 'Chat') {
-      // NOTE: 之所以这么写是因为Shorcuts在运行之前拿到的ai provider和model是已经决定好的了,导致conversationID错误
-      // ===开始
-      // 之前导致的bug: 选择Bing，选择prompt，切换到chatgpt，聊天记录加到bing去了
-      const appLocalStorage = await getChromeExtensionLocalStorage()
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+    updateSidebarSettings,
+  } = useSidebarSettings()
+  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModels()
+  const createConversation = async (): Promise<string> => {
+    let conversationId: string = ''
+    if (currentSidebarConversationType === 'Chat') {
+      // 如果chat板块已经有conversationId了
       if (
-        appLocalStorage.sidebarSettings?.common?.currentAIProvider &&
-        appLocalStorage.sidebarSettings.common.currentAIProvider !==
-          currentAIProvider
+        currentSidebarConversationId &&
+        (await clientGetConversation(currentSidebarConversationId))
       ) {
-        currentAIProvider =
-          appLocalStorage.sidebarSettings.common.currentAIProvider
-        currentAIProviderModel =
-          appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model ||
-          currentAIProviderModel
-        currentSidebarConversationId = md5TextEncrypt(
-          currentAIProvider + currentAIProviderModel,
-        )
+        // 如果已经存在了，并且有AI消息，那么就不用创建了
+        return currentSidebarConversationId
       }
-      // ===结束
-      if (currentSidebarConversationId) {
-        // 确保conversation存在
-        if (await clientGetConversation(currentSidebarConversationId)) {
-          return currentSidebarConversationId
-        }
-      }
-      const id = md5TextEncrypt(currentAIProvider + currentAIProviderModel)
-      console.log(
-        '新版Conversation 生成chat conversation id',
-        id,
-        currentAIProvider,
-        currentAIProviderModel,
-      )
+      // 如果没有，那么就创建一个
+      const appLocalStorage = await getChromeExtensionLocalStorage()
+      // 获取当前AIProvider
+      const currentAIProvider = appLocalStorage.sidebarSettings?.common
+        ?.currentAIProvider as IAIProviderType
+      // 获取当前AIProvider的model
+      const currentModel =
+        appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model || ''
+      // 获取当前AIProvider的model的maxTokens
+      const maxTokens =
+        (AI_PROVIDER_MODEL_MAP as any)?.[currentModel]?.maxTokens || 4096
+      // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
         data: {
           initConversationData: {
-            id,
             type: 'Chat',
             meta: {
-              maxTokens: currentAIProviderModelDetail?.maxTokens || 4096,
+              maxTokens,
               ...(await getAIProviderConversationMetaConfig(currentAIProvider)),
             },
           } as Partial<IChatConversation>,
         },
       })
-      if (result.success && result.data.conversationId) {
+      if (result.success) {
         conversationId = result.data.conversationId
-        await setChromeExtensionLocalStorage({
-          sidebarSettings: {
-            chat: {
-              conversationId: result.data.conversationId,
-            },
+        await updateSidebarSettings({
+          chat: {
+            conversationId,
           },
         })
-        setAppLocalStorage((prev) => {
-          return {
-            ...prev,
-            sidebarSettings: {
-              ...prev.sidebarSettings,
-              chat: {
-                ...prev.sidebarSettings?.chat,
-                conversationId: result.data.conversationId,
-              },
-            },
-          }
-        })
       }
-    } else if (sidebarSettings.type === 'Summary') {
-      if (getPageSummaryConversationId()) {
-        // 确保conversation存在
-        if (await clientGetConversation(getPageSummaryConversationId())) {
-          return currentSidebarConversationId
-        }
+    } else if (currentSidebarConversationType === 'Summary') {
+      conversationId = getPageSummaryConversationId()
+      // 如果已经存在了，并且有AI消息，那么就不用创建了
+      if (conversationId && (await clientGetConversation(conversationId))) {
+        return conversationId
       }
-      // const pageSummaryData = await generatePageSummaryData()
-      // console.log('usePageUrlChange', pageSummaryData)
-      const result = await port.postMessage({
+      // 如果没有，那么就创建一个
+      await port.postMessage({
         event: 'Client_createChatGPTConversation',
         data: {
           initConversationData: {
-            id: getPageSummaryConversationId(),
+            id: conversationId,
             type: 'Summary',
             meta: merge({
               AIProvider: 'USE_CHAT_GPT_PLUS',
@@ -145,12 +105,10 @@ const useClientConversation = () => {
           } as Partial<IChatConversation>,
         },
       })
-      conversationId = result.data.conversationId
-      updateSidebarSettings((prev) => {
-        return {
-          ...prev,
-          summaryConversationId: result.data.conversationId,
-        }
+      await updateSidebarSettings({
+        summary: {
+          conversationId,
+        },
       })
     }
     return conversationId
@@ -159,19 +117,19 @@ const useClientConversation = () => {
   const cleanConversation = async () => {
     console.log(
       '新版Conversation 清除conversation',
-      sidebarSettings.type,
-      sidebarConversationId,
+      currentSidebarConversationType,
+      currentSidebarConversationId,
     )
     port
       .postMessage({
         event: 'Client_removeChatGPTConversation',
         data: {
-          conversationId: sidebarConversationId,
+          conversationId: currentSidebarConversationId,
         },
       })
       .then()
       .catch()
-    if (sidebarSettings.type === 'Chat') {
+    if (currentSidebarConversationType === 'Chat') {
       setAppLocalStorage((prevState) => {
         return {
           ...prevState,
@@ -194,16 +152,15 @@ const useClientConversation = () => {
       })
     } else {
       // 清除pageSummary的conversationId
-      updateSidebarSettings((prevState) => {
-        return {
-          ...prevState,
-          summaryConversationId: '',
-        }
+      updateSidebarSettings({
+        summary: {
+          conversationId: '',
+        },
       })
     }
     updateConversationMap((prev) => {
       const newConversationMap = cloneDeep(prev)
-      delete newConversationMap[sidebarConversationId]
+      delete newConversationMap[currentSidebarConversationId || '']
       return newConversationMap
     })
     setConversation({
@@ -224,7 +181,7 @@ const useClientConversation = () => {
     return result.success
   }
   const changeConversation = async (conversationId: string) => {
-    if (conversationId) {
+    if (conversationId && currentSidebarConversationId !== conversationId) {
       const port = new ContentScriptConnectionV2()
       // 复原background conversation
       const result = await port.postMessage({
@@ -235,14 +192,14 @@ const useClientConversation = () => {
       })
       return result.success
     }
-    return false
+    return true
   }
   const updateConversation = async (
     conversation: Partial<IChatConversation>,
     conversationId: string,
   ) => {
     await clientChatConversationUpdate(
-      conversationId || sidebarConversationId,
+      conversationId || currentSidebarConversationId || '',
       conversation,
     )
   }

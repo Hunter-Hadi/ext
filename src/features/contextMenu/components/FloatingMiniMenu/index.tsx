@@ -31,7 +31,7 @@ import {
   removeAllRange,
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
-import { ChatGPTConversationState } from '@/features/sidebar'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 const FloatingMiniMenu: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -39,8 +39,9 @@ const FloatingMiniMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { tempSelection, show, hideRangy } = useRangy()
   const { chatBoxShortCutKey } = useCommands()
-  const textSelectPopupButtonSettings =
-    useChromeExtensionButtonSettingsWithVisibility('textSelectPopupButton')
+  const textSelectPopupButtonSettings = useChromeExtensionButtonSettingsWithVisibility(
+    'textSelectPopupButton',
+  )
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
   )

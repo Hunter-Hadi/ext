@@ -13,7 +13,8 @@ const useThirdProviderSettings = () => {
   const [appLocalStorage, setAppLocalStorage] = useRecoilState(
     AppLocalStorageState,
   )
-  const currentProvider = appLocalStorage.currentAIProvider
+  const currentProvider =
+    appLocalStorage.sidebarSettings?.common?.currentAIProvider
   const currentThirdProviderSettings = useMemo(() => {
     if (
       appLocalStorage.thirdProviderSettings &&

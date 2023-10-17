@@ -77,8 +77,8 @@ const runEmbedShortCuts = () => {
     }
     try {
       // set selection
-      const shadowRoot =
-        document.getElementById(ROOT_CONTEXT_MENU_ID)?.shadowRoot
+      const shadowRoot = document.getElementById(ROOT_CONTEXT_MENU_ID)
+        ?.shadowRoot
       // find contextMenu click button in 2000ms
       if (shadowRoot) {
         const contextMenuButton = await intervalFindAllHtmlElement(
@@ -128,7 +128,7 @@ const runEmbedShortCuts = () => {
       console.log('error', e)
       resolveValue({
         success: false,
-        error: e?.toString() || '',
+        error: (e as any)?.toString() || '',
       })
     }
   })

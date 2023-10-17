@@ -1,104 +1,95 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { SidebarSettingsState } from '@/features/sidebar'
 import { useEffect, useRef } from 'react'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
-import { AppLocalStorageState } from '@/store'
 import usePageUrlChange from '@/hooks/usePageUrlChange'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import useAIProvider from '@/features/chatgpt/hooks/useAIProvider'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { usePrevious } from '@/hooks/usePrevious'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 import { useFocus } from '@/hooks/useFocus'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 
+/**
+ * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
+ * 除了这里对conversationType有操作以外，还有这些文件:
+ * @file src/features/contextMenu/components/FloatingContextMenu/index.tsx - popup menu菜单要切换到Chat
+ * @file src/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu.tsx - Input Assistant Button的菜单要切换到Chat
+ * @file src/features/sidebar/components/SidebarTabs/index.tsx - Sidebar的菜单要切换到Chat
+ *
+ */
 const useInitSidebar = () => {
-  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const { createPageSummary } = usePageSummary()
-  const [sidebarSettings, setSidebarSettings] = useRecoilState(
-    SidebarSettingsState,
-  )
   const { pageUrl, startListen } = usePageUrlChange()
-  const { changeConversation } = useClientConversation()
+  const {
+    sidebarSettings,
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+    updateSidebarSettings,
+    updateSidebarConversationType,
+  } = useSidebarSettings()
+  const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
   const sidebarSettingsRef = useRef(sidebarSettings)
-  const { currentAIProviderRef, updateChatGPTProvider } = useAIProvider()
-  const lastChatTypeAIProviderRef = useRef(currentAIProviderRef.current)
+  const prevSummaryConversationId = usePrevious(
+    sidebarSettings?.summary?.conversationId,
+  )
   useEffect(() => {
     sidebarSettingsRef.current = sidebarSettings
   }, [sidebarSettings])
   useEffect(() => {
-    if (sidebarSettings.type === 'Summary') {
-      lastChatTypeAIProviderRef.current = currentAIProviderRef.current
-      createPageSummary()
-        .then()
-        .catch()
-        .finally(() => {
-          // 切换到summary的时候，需要开始监听url变化
-          startListen()
-        })
-    } else if (
-      sidebarSettings.type === 'Chat' &&
-      sidebarSettingsRef.current?.chatConversationId
-    ) {
-      changeConversation(sidebarSettingsRef.current.chatConversationId).then(
-        (success) => {
-          if (!success && lastChatTypeAIProviderRef.current) {
-            console.log(lastChatTypeAIProviderRef.current)
-            updateChatGPTProvider(lastChatTypeAIProviderRef.current)
-          } else {
-            lastChatTypeAIProviderRef.current = currentAIProviderRef.current
-          }
-        },
+    if (currentSidebarConversationType) {
+      console.log(
+        '新版Conversation currentSidebarConversationType',
+        currentSidebarConversationType,
       )
-    }
-  }, [sidebarSettings.type])
-  useEffect(() => {
-    if (!sidebarSettings.summaryConversationId) {
-      setTimeout(() => {
-        if (sidebarSettingsRef.current.type === 'Summary') {
-          createPageSummary().then().catch()
-        }
-      }, 500)
-    }
-  }, [sidebarSettings.summaryConversationId])
-  useEffect(() => {
-    console.log('usePageUrlChange, pageUrl', pageUrl)
-    if (sidebarSettingsRef.current.type === 'Summary') {
-      if (pageUrl) {
-        console.log('新版Conversation pageUrl更新', pageUrl)
-        // createPageSummary().then().catch()
-        // NOTE: 太耗费tokens了，所以切到chat就行
-        setSidebarSettings((prevState) => {
-          return {
-            ...prevState,
-            type: 'Chat',
+      switch (currentSidebarConversationType) {
+        case 'Chat':
+          {
+            // Chat的逻辑
           }
-        })
+          break
+        case 'Summary':
+          {
+            // Summary的逻辑
+            createPageSummary()
+              .then()
+              .catch()
+              .finally(() => {
+                startListen()
+              })
+          }
+          break
+        case 'Search':
+          {
+            // Search的逻辑
+          }
+          break
+      }
+      pageConversationTypeRef.current = currentSidebarConversationType
+    }
+  }, [currentSidebarConversationType])
+  // 对不同conversation type的特殊处理
+  useEffect(() => {
+    if (currentSidebarConversationType === 'Summary') {
+      // 当上次有ID，当前没有ID，并且是Summary的时候，说明用户点击了New Chat，所以重新生成
+      if (prevSummaryConversationId && !currentSidebarConversationId) {
+        createPageSummary().then().catch().finally()
       }
     }
-  }, [pageUrl])
-  useEffect(() => {
-    if (
-      appLocalStorage.sidebarSettings?.chat?.conversationId &&
-      sidebarSettingsRef.current.type === 'Chat'
-    ) {
-      console.log(
-        '新版Conversion chat.conversationId更新',
-        appLocalStorage.sidebarSettings?.chat.conversationId,
-      )
-      setSidebarSettings((prevState) => {
-        return {
-          ...prevState,
-          chatConversationId:
-            appLocalStorage.sidebarSettings?.chat?.conversationId,
-        }
+  }, [currentSidebarConversationId, currentSidebarConversationType])
+  // 聚焦处理
+  useFocus(() => {
+    if (pageConversationTypeRef.current === 'Summary') {
+      updateSidebarSettings({
+        summary: {
+          conversationId: getPageSummaryConversationId(),
+        },
       })
     }
-  }, [appLocalStorage.sidebarSettings?.chat?.conversationId])
-  useFocus(() => {
-    if (
-      sidebarSettingsRef.current.type === 'Chat' &&
-      sidebarSettingsRef.current.chatConversationId
-    ) {
-      changeConversation(sidebarSettingsRef.current.chatConversationId).then()
-    }
   })
+  // Summary的特殊逻辑 - 切换url的时候为了省下token，直接切换到chat
+  useEffect(() => {
+    if (pageConversationTypeRef.current === 'Summary') {
+      updateSidebarConversationType('Chat')
+    }
+  }, [pageUrl])
 }
 
 export default useInitSidebar

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect } from 'react'
 import Stack from '@mui/material/Stack'
 import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
@@ -6,25 +6,17 @@ import Tab from '@mui/material/Tab'
 import {
   ChatGPTConversationState,
   ISidebarConversationType,
-  SidebarConversationIdSelector,
-  SidebarSettingsState,
 } from '@/features/sidebar/store'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { I18nextKeysType } from '@/i18next'
 import { useTranslation } from 'react-i18next'
-import {
-  ChatGPTClientState,
-  ClientConversationMapState,
-} from '@/features/chatgpt/store'
-import cloneDeep from 'lodash-es/cloneDeep'
 import Typography from '@mui/material/Typography'
 import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
-import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
-import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
-import Button from '@mui/material/Button'
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
   value: ISidebarConversationType
@@ -63,23 +55,11 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
-  const [showDevContent, setShowDevContent] = useState(true)
-  const sidebarConversationID = useRecoilValue(SidebarConversationIdSelector)
-  const [sidebarSettings, setSidebarSettings] = useRecoilState(
-    SidebarSettingsState,
-  )
-  const conversationMap = useRecoilValue(ClientConversationMapState)
+  const {
+    currentSidebarConversationType,
+    updateSidebarConversationType,
+  } = useSidebarSettings()
   const conversation = useRecoilValue(ChatGPTConversationState)
-  const renderConversation = useMemo(() => {
-    const conversation: any = cloneDeep(
-      conversationMap[sidebarConversationID] || {},
-    )
-    if (conversation.messages) {
-      delete conversation.messages
-    }
-    return conversation
-  }, [conversationMap, sidebarConversationID])
   if (isMaxAINewTabPage()) {
     return null
   }
@@ -87,12 +67,7 @@ const SidebarTabs: FC = () => {
     const listener = (event: any) => {
       const type: ISidebarConversationType = event?.detail?.type
       if (type) {
-        setSidebarSettings((prev) => {
-          return {
-            ...prev,
-            type,
-          }
-        })
+        updateSidebarConversationType(type)
       }
     }
     window.addEventListener('MaxAISwitchSidebarTab', listener)
@@ -125,14 +100,9 @@ const SidebarTabs: FC = () => {
               p: 1,
             },
           }}
-          value={sidebarSettings.type}
-          onChange={(event, value) => {
-            setSidebarSettings((prev) => {
-              return {
-                ...prev,
-                type: value,
-              }
-            })
+          value={currentSidebarConversationType}
+          onChange={async (event, value) => {
+            updateSidebarConversationType(value)
           }}
           textColor="inherit"
           indicatorColor="primary"
@@ -158,62 +128,7 @@ const SidebarTabs: FC = () => {
         </Tabs>
       </Stack>
       <DevContent>
-        <Stack
-          sx={{
-            position: 'absolute',
-            top: '0',
-            maxWidth: showDevContent ? '400px' : '32px',
-            maxHeight: showDevContent ? 'unset' : '32px',
-            overflowX: 'auto',
-            zIndex: 1,
-            bgcolor: 'background.paper',
-            color: 'text.primary',
-            right: '100%',
-            border: '1px solid',
-            borderColor: 'customColor.borderColor',
-            borderRadius: '4px',
-            '& > pre, & > p': {
-              p: 0,
-              m: 0,
-              fontSize: '12px',
-            },
-          }}
-        >
-          {showDevContent ? (
-            <Button
-              variant={'contained'}
-              sx={{
-                minWidth: 'unset',
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                p: 1,
-              }}
-              onClick={() => setShowDevContent(false)}
-            >
-              <UnfoldLessIcon />
-            </Button>
-          ) : (
-            <Button
-              variant={'contained'}
-              sx={{
-                minWidth: 'unset',
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                p: 1,
-              }}
-              onClick={() => setShowDevContent(true)}
-            >
-              <UnfoldMoreIcon />
-            </Button>
-          )}
-          <p>authStatus: {chatGPTClientState.status}</p>
-          <p>loading: {conversation.loading ? 'loading' : 'done'}</p>
-          <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
-          <p>currentTabUsingID: {sidebarConversationID}</p>
-          <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
-        </Stack>
+        <DevConsole />
       </DevContent>
     </>
   )

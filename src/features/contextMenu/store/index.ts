@@ -1,10 +1,5 @@
 import { atom, selector } from 'recoil'
 import { IRangyRect, ISelection } from '@/features/contextMenu/types'
-import {
-  ChatGPTConversationState,
-  SidebarChatConversationMessagesSelector,
-} from '@/features/sidebar'
-import { IChatMessage } from '@/features/chatgpt/types'
 
 export const ContextMenuSettingsState = atom<{
   closeBeforeRefresh: boolean
@@ -95,9 +90,8 @@ export const FloatingDropdownMenuSelectedItemState = atom<{
 export const FloatingDropdownMenuItemsSelector = selector<string[]>({
   key: 'FloatingDropdownMenuItemsSelector',
   get: ({ get }) => {
-    const hoverIdMap = get(
-      FloatingDropdownMenuSelectedItemState,
-    ).hoverContextMenuIdMap
+    const hoverIdMap = get(FloatingDropdownMenuSelectedItemState)
+      .hoverContextMenuIdMap
     return Object.values(hoverIdMap).filter((id) => id)
   },
 })
@@ -110,53 +104,5 @@ export const FloatingContextMenuDraftState = atom<{
   key: 'FloatingContextMenuDraftState',
   default: {
     lastAIMessageId: '',
-  },
-})
-
-/**
- * AI持续生成的草稿
- */
-export const FloatingContextMenuDraftSelector = selector<string>({
-  key: 'FloatingContextMenuDraftSelector',
-  get: ({ get }) => {
-    const messages = get(SidebarChatConversationMessagesSelector)
-    const conversation = get(ChatGPTConversationState)
-    const aiMessages: IChatMessage[] = []
-    let lastAIMessageId = get(FloatingContextMenuDraftState).lastAIMessageId
-    if (!lastAIMessageId) {
-      // 因为lastAIMessageId是上一次AI message的id，所以如果只有一个AI message，那么lastAIMessageId就是root
-      if (messages.filter((message) => message.type === 'ai').length === 1) {
-        lastAIMessageId = 'root'
-      }
-    }
-    if (lastAIMessageId) {
-      // 从后往前找，直到找到最近的AI message
-      for (let i = messages.length - 1; i >= 0; i--) {
-        const message = messages[i]
-        if (message.messageId === lastAIMessageId) {
-          break
-        }
-        if (message.type === 'ai') {
-          // 因为是从后往前找，所以插入到最前面
-          aiMessages.unshift(message)
-        }
-      }
-    }
-    if (conversation.writingMessage) {
-      if (conversation.writingMessage.type === 'ai') {
-        aiMessages.push(conversation.writingMessage)
-      }
-    }
-    console.log(
-      'AiInput aiMessages',
-      lastAIMessageId,
-      aiMessages,
-      conversation.writingMessage,
-    )
-    const draft = aiMessages
-      .map((message) => message.text)
-      .join('\n\n')
-      .replace(/\n{2,}/, '\n\n')
-    return draft
   },
 })

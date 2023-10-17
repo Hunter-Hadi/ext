@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { analyzeWebsiteContextMetaData } from '@/features/websiteContext/background/analyzeWebsiteContextMetaData'
-import { ISidebarConversationType } from '@/features/sidebar'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 
 export interface IWebsiteContext {
   id: string

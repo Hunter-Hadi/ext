@@ -43,9 +43,11 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
       return searchInput?.value || ''
     },
     sidebarContainerFinder: () => {
-      const rcnt = document.querySelector<HTMLDivElement>('#rcnt')
-      if (rcnt) {
-        const complementaryBarOriginal = rcnt.querySelector<HTMLElement>(
+      const googleSidebarElement = document.querySelector<HTMLDivElement>(
+        '#rcnt',
+      )
+      if (googleSidebarElement) {
+        const complementaryBarOriginal = googleSidebarElement.querySelector<HTMLElement>(
           'div#rhs[role=complementary]',
         )
         if (complementaryBarOriginal) {
@@ -53,7 +55,7 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
         }
 
         // 兼容下 google for search 插件创建的 rhs
-        const googleForSearchExtensionBar = rcnt.querySelector<HTMLElement>(
+        const googleForSearchExtensionBar = googleSidebarElement.querySelector<HTMLElement>(
           'div#rhs',
         )
         if (googleForSearchExtensionBar) {
@@ -71,14 +73,15 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
         // not complementaryBar
         const mindComplementaryBar = createMindGoogleSidebar()
 
-        const centerColBox = rcnt.querySelector('#center_col')
+        const centerColBox = googleSidebarElement.querySelector('#center_col')
         if (centerColBox) {
           insertAfter(mindComplementaryBar, centerColBox)
         } else {
-          rcnt.appendChild(mindComplementaryBar)
+          googleSidebarElement.appendChild(mindComplementaryBar)
         }
         return mindComplementaryBar
       }
+      return undefined
     },
     isDarkMode: () => !!document.querySelector('meta[content=dark]'),
   },

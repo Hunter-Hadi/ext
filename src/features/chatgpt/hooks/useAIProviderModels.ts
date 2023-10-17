@@ -50,130 +50,89 @@ const useAIProviderModels = () => {
     }
   }, [currentProvider])
   // ===chatgpt 特殊处理结束===
+  const AI_PROVIDER_MODEL_MAP = useMemo(() => {
+    return {
+      OPENAI: (
+        appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions || []
+      )
+        .map((item) => {
+          const isCodeInterpreter = item.slug === 'gpt-4-code-interpreter'
+          const providerModel: IAIProviderModel = {
+            title: item.title,
+            value: item.slug,
+            titleTag:
+              item.tags?.find((tag) => tag.toLowerCase().includes('beta')) ||
+              item.tags?.find((tag) => tag.toLowerCase().includes('mobile')) ||
+              '',
+            maxTokens: item.max_tokens,
+            tags: item.tags || [],
+            descriptions: [
+              {
+                label: (t) =>
+                  t('client:provider__model__tooltip_card__label__max_token'),
+                value: (t) =>
+                  `${numberWithCommas(item.max_tokens, 0)} ${t(
+                    'client:provider__model__tooltip_card__label__max_token__suffix',
+                  )}`,
+              },
+              {
+                label: (t) =>
+                  t('client:provider__model__tooltip_card__label__description'),
+                value: (t) => {
+                  const description = item.description
+                  // provider__chatgpt_web_app__text_davinci_002_render_sha__description
+                  const key = `provider__chatgpt_web_app__${item.slug}__description`.replace(
+                    /-/g,
+                    '_',
+                  )
+                  const i18nKey: any = `client:${key}`
+                  if (t(i18nKey) !== key) {
+                    return t(i18nKey)
+                  }
+                  return description
+                },
+              },
+            ],
+            disabled:
+              // 白名单有值才判断
+              whiteListModels.length > 0
+                ? !whiteListModels.includes(item.slug)
+                : false,
+            uploadFileConfig: isCodeInterpreter
+              ? {
+                  accept: '',
+                  acceptTooltip: (t) =>
+                    t(
+                      'client:provider__chatgpt_web_app__upload__accept_tooltip',
+                    ),
+                  maxFileSize: -1,
+                  maxCount: 1,
+                }
+              : undefined,
+          }
+          return providerModel
+        })
+        .reverse(),
+      USE_CHAT_GPT_PLUS: reverse(cloneDeep(USE_CHAT_GPT_PLUS_MODELS)),
+      BARD: BARD_MODELS,
+      BING: BING_MODELS,
+      OPENAI_API: reverse(cloneDeep(OPENAI_API_MODELS)),
+      CLAUDE: CLAUDE_MODELS,
+      POE: POE_MODELS,
+      MAXAI_CLAUDE: reverse(cloneDeep(MAXAI_CLAUDE_MODELS)),
+    }
+  }, [
+    whiteListModels,
+    appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions,
+  ])
   const aiProviderModels = useMemo<IAIProviderModel[]>(() => {
     let currentModels: IAIProviderModel[] = []
     if (!currentProvider) {
       return currentModels
     }
-    switch (currentProvider) {
-      case 'OPENAI':
-        {
-          // 转换数据结构
-          currentModels = (
-            appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions || []
-          )
-            .map((item) => {
-              const isCodeInterpreter = item.slug === 'gpt-4-code-interpreter'
-              const providerModel: IAIProviderModel = {
-                title: item.title,
-                value: item.slug,
-                titleTag:
-                  item.tags?.find((tag) =>
-                    tag.toLowerCase().includes('beta'),
-                  ) ||
-                  item.tags?.find((tag) =>
-                    tag.toLowerCase().includes('mobile'),
-                  ) ||
-                  '',
-                maxTokens: item.max_tokens,
-                tags: item.tags || [],
-                descriptions: [
-                  {
-                    label: (t) =>
-                      t(
-                        'client:provider__model__tooltip_card__label__max_token',
-                      ),
-                    value: (t) =>
-                      `${numberWithCommas(item.max_tokens, 0)} ${t(
-                        'client:provider__model__tooltip_card__label__max_token__suffix',
-                      )}`,
-                  },
-                  {
-                    label: (t) =>
-                      t(
-                        'client:provider__model__tooltip_card__label__description',
-                      ),
-                    value: (t) => {
-                      const description = item.description
-                      // provider__chatgpt_web_app__text_davinci_002_render_sha__description
-                      const key = `provider__chatgpt_web_app__${item.slug}__description`.replace(
-                        /-/g,
-                        '_',
-                      )
-                      const i18nKey: any = `client:${key}`
-                      if (t(i18nKey) !== key) {
-                        return t(i18nKey)
-                      }
-                      return description
-                    },
-                  },
-                ],
-                disabled:
-                  // 白名单有值才判断
-                  whiteListModels.length > 0
-                    ? !whiteListModels.includes(item.slug)
-                    : false,
-                uploadFileConfig: isCodeInterpreter
-                  ? {
-                      accept: '',
-                      acceptTooltip: (t) =>
-                        t(
-                          'client:provider__chatgpt_web_app__upload__accept_tooltip',
-                        ),
-                      maxFileSize: -1,
-                      maxCount: 1,
-                    }
-                  : undefined,
-              }
-              return providerModel
-            })
-            .reverse()
-        }
-        break
-      case 'USE_CHAT_GPT_PLUS':
-        {
-          currentModels = reverse(cloneDeep(USE_CHAT_GPT_PLUS_MODELS))
-        }
-        break
-      case 'BARD':
-        {
-          currentModels = BARD_MODELS
-        }
-        break
-      case 'BING':
-        {
-          currentModels = BING_MODELS
-        }
-        break
-      case 'OPENAI_API':
-        {
-          currentModels = reverse(cloneDeep(OPENAI_API_MODELS))
-        }
-        break
-      case 'CLAUDE':
-        {
-          currentModels = CLAUDE_MODELS
-        }
-        break
-      case 'POE':
-        {
-          currentModels = POE_MODELS
-        }
-        break
-      case 'MAXAI_CLAUDE':
-        {
-          currentModels = reverse(cloneDeep(MAXAI_CLAUDE_MODELS))
-        }
-        break
-      default:
-        break
-    }
+    currentModels = AI_PROVIDER_MODEL_MAP[currentProvider]
     return currentModels
-  }, [
-    currentProvider,
-    whiteListModels,
-    appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions,
-  ])
+  }, [currentProvider, AI_PROVIDER_MODEL_MAP])
   const currentAIProviderModel = useMemo(() => {
     return currentThirdProviderSettings?.model || ''
   }, [currentProvider, currentThirdProviderSettings])
@@ -260,6 +219,7 @@ const useAIProviderModels = () => {
     aiProviderModels,
     updateAIProviderModel,
     loading,
+    AI_PROVIDER_MODEL_MAP,
   }
 }
 

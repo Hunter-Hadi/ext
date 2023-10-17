@@ -7,15 +7,16 @@ import ListItemButton from '@mui/material/ListItemButton'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import Typography from '@mui/material/Typography'
 import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
-import useAIProvider from '@/features/chatgpt/hooks/useAIProvider'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
 import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { useTranslation } from 'react-i18next'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 interface AIProviderSelectorCardProps {
   sx?: SxProps
@@ -31,18 +32,18 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
   )
   const clientState = useRecoilValue(ChatGPTClientState)
   const {
-    provider,
-    updateChatGPTProvider,
-    loading: switchProviderLoading,
-  } = useAIProvider()
+    currentSidebarAIProvider,
+    updateSidebarSettings,
+  } = useSidebarSettings()
+  const { switchBackgroundChatSystemAIProvider } = useClientConversation()
   const isLoadingMemo = useMemo(() => {
-    return chatGPTConversationLoading || switchProviderLoading
-  }, [chatGPTConversationLoading, switchProviderLoading])
+    return chatGPTConversationLoading
+  }, [chatGPTConversationLoading])
   const currentProviderOption = useMemo(() => {
     return AIProviderOptions.find(
-      (aiProviderOption) => aiProviderOption.value === provider,
+      (aiProviderOption) => aiProviderOption.value === currentSidebarAIProvider,
     )
-  }, [provider])
+  }, [currentSidebarAIProvider])
   return (
     <Box
       id={closeAble ? 'MaxAIProviderSelectorCard' : ''}
@@ -99,14 +100,26 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
               <ListItemButton
                 id={`max-ai__ai-provider-selector__${providerOption.value}`}
                 className={`max-ai__ai-provider-selector__item ${
-                  providerOption.value === provider ? 'selected' : ''
+                  providerOption.value === currentSidebarAIProvider
+                    ? 'selected'
+                    : ''
                 }`}
                 onClick={async () => {
-                  if (providerOption.value !== provider) {
-                    await updateChatGPTProvider(providerOption.value)
+                  if (providerOption.value !== currentSidebarAIProvider) {
+                    await updateSidebarSettings({
+                      chat: {
+                        conversationId: '',
+                      },
+                      common: {
+                        currentAIProvider: providerOption.value,
+                      },
+                    })
                   }
+                  await switchBackgroundChatSystemAIProvider(
+                    providerOption.value,
+                  )
                 }}
-                selected={providerOption.value === provider}
+                selected={providerOption.value === currentSidebarAIProvider}
                 disabled={isLoadingMemo}
                 key={providerOption.value}
               >

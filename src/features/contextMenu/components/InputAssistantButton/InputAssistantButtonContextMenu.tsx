@@ -8,11 +8,8 @@ import React, {
 } from 'react'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useContextMenuList } from '@/features/contextMenu'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import {
-  ChatGPTConversationState,
-  SidebarSettingsState,
-} from '@/features/sidebar'
+import { useRecoilValue } from 'recoil'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import cloneDeep from 'lodash-es/cloneDeep'
@@ -34,6 +31,7 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
@@ -56,9 +54,10 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
     clickContextMenu,
     setClickContextMenu,
   ] = useState<IContextMenuItem | null>(null)
-  const [sidebarSettings, updateSidebarSettings] = useRecoilState(
-    SidebarSettingsState,
-  )
+  const {
+    currentSidebarConversationType,
+    updateSidebarConversationType,
+  } = useSidebarSettings()
   const { currentUserPlan } = useUserInfo()
   const permissionCardMap = usePermissionCardMap()
   const { createConversation } = useClientConversation()
@@ -131,10 +130,10 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
     runContextMenuRef.current = runContextMenu
   }, [runContextMenu])
   const isRunningRef = useRef(false)
-  const sidebarSettingsTypeRef = useRef(sidebarSettings.type)
+  const sidebarSettingsTypeRef = useRef(currentSidebarConversationType)
   useEffect(() => {
-    sidebarSettingsTypeRef.current = sidebarSettings.type
-  }, [sidebarSettings.type])
+    sidebarSettingsTypeRef.current = currentSidebarConversationType
+  }, [currentSidebarConversationType])
   useEffect(() => {
     if (
       !isRunningRef.current &&
@@ -187,13 +186,8 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
         hoverOpen={false}
         menuWidth={240}
         referenceElement={children}
-        onClickContextMenu={(contextMenu) => {
-          updateSidebarSettings((prev) => {
-            return {
-              ...prev,
-              type: 'Chat',
-            }
-          })
+        onClickContextMenu={async (contextMenu) => {
+          updateSidebarConversationType('Chat')
           setClickContextMenu(contextMenu)
         }}
         onClickReferenceElement={() => {

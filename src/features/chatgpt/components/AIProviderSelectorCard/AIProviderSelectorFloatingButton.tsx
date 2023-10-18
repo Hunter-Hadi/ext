@@ -34,7 +34,7 @@ const AIProviderSelectorFloatingButton: FC<{
   }
   const open = Boolean(anchorEl)
   return useMemo(() => {
-    if (currentSidebarConversationType === 'Summary') {
+    if (currentSidebarConversationType !== 'Chat') {
       return null
     }
     return (

@@ -461,7 +461,8 @@
     "sidebar__tabs__search__title": "Search",
     "input_assistant_button__compose_new__tooltip": "Quick compose",
     "input_assistant_button__compose_reply__tooltip": "Quick reply",
-    "input_assistant_button__refine_draft__tooltip": "Edit or review draft"
+    "input_assistant_button__refine_draft__tooltip": "Edit or review draft",
+    "youtube_summary_button__text": "Summarize"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

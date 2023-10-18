@@ -47,8 +47,25 @@ const useAIProviderModels = () => {
         appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions || []
       )
         .map((item) => {
-          const isCodeInterpreterOrGPT4 =
-            item.slug === 'gpt-4-code-interpreter' || item.slug === 'gpt-4'
+          let uploadFileConfig: IAIProviderModel['uploadFileConfig'] = undefined
+          if (item.slug === 'gpt-4-code-interpreter') {
+            uploadFileConfig = {
+              accept:
+                'image/webp,.webp,image/png,.png,image/gif,.gif,image/jpeg,.jpg,.jpeg',
+              acceptTooltip: (t: any) =>
+                t('client:provider__chatgpt_web_app__upload__accept_tooltip'),
+              maxFileSize: -1,
+              maxCount: 1,
+            }
+          } else if (item.slug === 'gpt-4') {
+            uploadFileConfig = {
+              accept: '',
+              acceptTooltip: (t) =>
+                t('client:provider__chatgpt_web_app__upload__accept_tooltip'),
+              maxFileSize: -1,
+              maxCount: 1,
+            }
+          }
           const providerModel: IAIProviderModel = {
             title: item.title,
             value: item.slug,
@@ -90,17 +107,7 @@ const useAIProviderModels = () => {
               whiteListModels.length > 0
                 ? !whiteListModels.includes(item.slug)
                 : false,
-            uploadFileConfig: isCodeInterpreterOrGPT4
-              ? {
-                  accept: '',
-                  acceptTooltip: (t) =>
-                    t(
-                      'client:provider__chatgpt_web_app__upload__accept_tooltip',
-                    ),
-                  maxFileSize: -1,
-                  maxCount: 1,
-                }
-              : undefined,
+            uploadFileConfig,
           }
           return providerModel
         })

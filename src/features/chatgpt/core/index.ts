@@ -438,8 +438,28 @@ export class ChatGPTConversation {
       // postMessage.arkose_token = null
     }
     if (params.meta) {
-      // NOTE: 目前只用在了gpt-4-code-interpreter
-      postMessage.messages[0].metadata = params.meta
+      if (params.meta?.attachments && this.model === 'gpt-4') {
+        // gpt-4现在可以带图片聊天
+        try {
+          postMessage.messages[0].content.content_type = 'multimodal_text'
+          // 把用户上传的文件带进parts里
+          postMessage.messages[0].content.parts = params.meta.attachments
+            .map((chatUploadFile: any) => {
+              return {
+                width: 0,
+                height: 0,
+                asset_pointer: `file-service://${chatUploadFile.id}`,
+                size_bytes: chatUploadFile.size,
+              }
+            })
+            .concat(postMessage.messages[0].content.parts)
+        } catch (e) {
+          // 防止报错影响运行
+        }
+      } else {
+        // NOTE: 目前只用在了gpt-4-code-interpreter
+        postMessage.messages[0].metadata = params.meta
+      }
     }
     if (
       settings?.plugins &&

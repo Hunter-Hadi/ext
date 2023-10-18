@@ -50,8 +50,7 @@ const useAIProviderModels = () => {
           let uploadFileConfig: IAIProviderModel['uploadFileConfig'] = undefined
           if (item.slug === 'gpt-4-code-interpreter') {
             uploadFileConfig = {
-              accept:
-                'image/webp,.webp,image/png,.png,image/gif,.gif,image/jpeg,.jpg,.jpeg',
+              accept: '',
               acceptTooltip: (t: any) =>
                 t('client:provider__chatgpt_web_app__upload__accept_tooltip'),
               maxFileSize: -1,
@@ -59,7 +58,8 @@ const useAIProviderModels = () => {
             }
           } else if (item.slug === 'gpt-4') {
             uploadFileConfig = {
-              accept: '',
+              accept:
+                'image/webp,.webp,image/png,.png,image/gif,.gif,image/jpeg,.jpg,.jpeg',
               acceptTooltip: (t) =>
                 t('client:provider__chatgpt_web_app__upload__accept_tooltip'),
               maxFileSize: -1,

@@ -237,10 +237,9 @@ class OpenAIChat extends BaseChat {
   async createConversation(initConversationData: Partial<IChatConversation>) {
     if (this.conversation) {
       // 更新conversation, 获取实际的ChatGPT conversation id
-      this.conversation =
-        await ConversationManager.conversationDB.getConversationById(
-          this.conversation.id,
-        )
+      this.conversation = await ConversationManager.conversationDB.getConversationById(
+        this.conversation.id,
+      )
     }
     if (!this.conversation) {
       const currentModel = (await getThirdProviderSettings('OPENAI'))?.model
@@ -265,10 +264,9 @@ class OpenAIChat extends BaseChat {
   async removeConversation(conversationId: string) {
     if (this.conversation) {
       // 更新conversation, 获取实际的ChatGPT conversation id
-      this.conversation =
-        await ConversationManager.conversationDB.getConversationById(
-          this.conversation.id,
-        )
+      this.conversation = await ConversationManager.conversationDB.getConversationById(
+        this.conversation.id,
+      )
     }
     if (!this.conversation?.meta.AIConversationId) {
       await this.removeConversationWithCache()
@@ -296,7 +294,10 @@ class OpenAIChat extends BaseChat {
       this.questionSender = sender
       this.isAnswering = true
       const settings = await getThirdProviderSettings('OPENAI')
-      if (settings?.model === 'gpt-4-code-interpreter') {
+      if (
+        settings?.model === 'gpt-4-code-interpreter' ||
+        settings?.model === 'gpt-4'
+      ) {
         const successFiles = this.chatFiles.filter(
           (file) => file.uploadStatus === 'success' && file.uploadedFileId,
         )

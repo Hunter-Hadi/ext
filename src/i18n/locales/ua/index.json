@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Використовуйте свій власний ключ OpenAI API для роботи з 'Пошуком з AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Оновіться, щоб відкрити знання за допомогою пошуку з штучним інтелектом",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Найпотужніший двигун відповідей, який допомагає вам знаходити факти швидше та отримувати чіткі відповіді на ваші питання.",
-    "sidebar__tabs__search__title": "Пошук"
+    "sidebar__tabs__search__title": "Пошук",
+    "youtube_summary_button__text": "Узагальнити"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -47,7 +47,8 @@ const useAIProviderModels = () => {
         appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions || []
       )
         .map((item) => {
-          const isCodeInterpreter = item.slug === 'gpt-4-code-interpreter'
+          const isCodeInterpreterOrGPT4 =
+            item.slug === 'gpt-4-code-interpreter' || item.slug === 'gpt-4'
           const providerModel: IAIProviderModel = {
             title: item.title,
             value: item.slug,
@@ -89,7 +90,7 @@ const useAIProviderModels = () => {
               whiteListModels.length > 0
                 ? !whiteListModels.includes(item.slug)
                 : false,
-            uploadFileConfig: isCodeInterpreter
+            uploadFileConfig: isCodeInterpreterOrGPT4
               ? {
                   accept: '',
                   acceptTooltip: (t) =>

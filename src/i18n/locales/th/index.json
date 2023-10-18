@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "ใช้ OpenAI API key เองเพื่อให้พลังให้กับ 'ค้นหาด้วย AI'",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "อัปเกรดเพื่อค้นหาความรู้ด้วยการค้นหาที่ใช้ AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "เครื่องมือตอบคำถามที่มีกำลังในการช่วยคุณค้นหาข้อมูลได้อย่างรวดเร็วและได้คำตอบที่ชัดเจน",
-    "sidebar__tabs__search__title": "ค้นหา"
+    "sidebar__tabs__search__title": "ค้นหา",
+    "youtube_summary_button__text": "สรุป"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

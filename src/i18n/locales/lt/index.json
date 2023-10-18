@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Naudokite savo OpenAI API raktą, kad galėtumėte naudoti „Ieškoti su AI“.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Atnaujinkite, kad atrastumėte žinias su AI pagalba",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Galingiausias atsakymų variklis, padedantis jums greičiau rasti faktus ir aiškiai gauti atsakymus į savo klausimus.",
-    "sidebar__tabs__search__title": "Ieškoti"
+    "sidebar__tabs__search__title": "Ieškoti",
+    "youtube_summary_button__text": "Santrauka"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

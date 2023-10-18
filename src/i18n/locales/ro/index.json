@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Folosește propriul tău cheie OpenAI API pentru a alimenta 'Căutare cu AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Upgradează pentru a descoperi cunoștințele cu căutarea alimentată de AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Motorul de răspuns cel mai puternic care te ajută să găsești fapte mai rapid și să obții răspunsuri clare la întrebările tale.",
-    "sidebar__tabs__search__title": "Căutare"
+    "sidebar__tabs__search__title": "Căutare",
+    "youtube_summary_button__text": "Rezumat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

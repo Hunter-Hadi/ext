@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Használja saját OpenAI API kulcsát az „AI-val való keresés” működtetéséhez.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Frissítés az AI-alapú kereséssel történő tudásmegszerzéshez",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "A legerősebb válaszmotor, amely segít gyorsabban megtalálni a tényeket és világos válaszokat kapni a kérdéseidre.",
-    "sidebar__tabs__search__title": "Keresés"
+    "sidebar__tabs__search__title": "Keresés",
+    "youtube_summary_button__text": "Összefoglalás"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

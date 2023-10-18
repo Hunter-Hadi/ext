@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "የሚጠቀሙ 'Search with AI' እንዴት እንደሚሰጥ ኢንፎርሜሽን የሚጠቀሙ OpenAI API ኪዩ ይጠቀም.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "የትምህርት እውቀት አጠቃላይ የAI-ሰውን ማውጫ እንዲሁም መረጃ አስተዋፅዖ ይጠቀሙ",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "የትምህርት እውቀት አጠቃላይ የAI-ሰው ማውጫ እንዲሁም መረጃ አስተዋፅዖ ይጠቀሙ",
-    "sidebar__tabs__search__title": "ፈልግ"
+    "sidebar__tabs__search__title": "ፈልግ",
+    "youtube_summary_button__text": "ጥቅምት"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

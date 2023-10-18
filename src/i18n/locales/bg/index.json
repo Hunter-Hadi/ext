@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Използвайте собствения си ключ за OpenAI API, за да задействате 'Търсене с AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Надстройка за откриване на знания с помощта на изкуствен интелект",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Най-мощният отговорен двигател, който ви помага да намерите факти по-бързо и да получите ясни отговори на вашите въпроси.",
-    "sidebar__tabs__search__title": "Търсене"
+    "sidebar__tabs__search__title": "Търсене",
+    "youtube_summary_button__text": "Резюмирай"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "ನಿಮ್ಮ ಸ್ವಂತ OpenAI API ಕೀಲಿಯನ್ನು ಬಳಸಿ 'ಹುಡುಕಾಟ ಜೊತೆಗೆ AI' ಶಕ್ತಿಗೊಳಿಸಿ.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "ಏಐ ಶಕ್ತಿಯ ಹುಡುಕಾಟದಿಂದ ಜ್ಞಾನವನ್ನು ಕಂಡುಹಿಡಿಯಲು ಮೆರುಗು",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "ನೀವು ಹೆಚ್ಚು ಬೇಗ ಸತ್ಯಗಳನ್ನು ಹುಡುಕಲು ಮತ್ತು ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳಿಗೆ ಸ್ಪಷ್ಟ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಲು ನೆರವಾಗುವ ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿ ಉತ್ತರ ಎಂಜಿನ್.",
-    "sidebar__tabs__search__title": "ಹುಡುಕಾಟ"
+    "sidebar__tabs__search__title": "ಹುಡುಕಾಟ",
+    "youtube_summary_button__text": "ಸಂಗ್ರಹಿಸು"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Použijte vlastní klíč OpenAI API pro napájení 'Vyhledávání s AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Vylepšete se a objevujte znalosti s vyhledáváním pomocí umělé inteligence",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Nejsilnější odpověďový systém, který vám pomůže najít fakta rychleji a dostat jasné odpovědi na vaše otázky.",
-    "sidebar__tabs__search__title": "Vyhledávání"
+    "sidebar__tabs__search__title": "Vyhledávání",
+    "youtube_summary_button__text": "Shrnutí"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

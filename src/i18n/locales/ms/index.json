@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gunakan kunci API OpenAI anda sendiri untuk kuasa 'Carian dengan AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Naik taraf untuk menemui pengetahuan dengan carian berkuasa AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Enjin jawapan yang paling berkuasa yang membantu anda mencari fakta dengan lebih cepat dan mendapatkan jawapan kepada soalan anda dengan jelas.",
-    "sidebar__tabs__search__title": "Carian"
+    "sidebar__tabs__search__title": "Carian",
+    "youtube_summary_button__text": "Ringkaskan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

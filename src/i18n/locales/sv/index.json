@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Använd din egen OpenAI API-nyckel för att driva 'Sök med AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Uppgradera för att upptäcka kunskap med AI-drivna sökningar",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Den mest kraftfulla svars motorn som hjälper dig att hitta fakta snabbare och få tydliga svar på dina frågor.",
-    "sidebar__tabs__search__title": "Sök"
+    "sidebar__tabs__search__title": "Sök",
+    "youtube_summary_button__text": "Sammanfatta"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

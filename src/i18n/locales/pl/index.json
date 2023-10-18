@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Użyj własnego klucza OpenAI API do zasilania funkcji 'Wyszukaj z AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Ulepsz, aby odkryć wiedzę dzięki wyszukiwaniu z wykorzystaniem sztucznej inteligencji",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Najpotężniejszy silnik odpowiedzi, który pomaga Ci znaleźć fakty szybciej i uzyskać jasne odpowiedzi na Twoje pytania.",
-    "sidebar__tabs__search__title": "Wyszukaj"
+    "sidebar__tabs__search__title": "Wyszukaj",
+    "youtube_summary_button__text": "Podsumuj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

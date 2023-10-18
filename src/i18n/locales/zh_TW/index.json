@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "使用您自己的OpenAI API密鑰來提供“使用AI進行搜索”。",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "升級以AI搜尋發現知識",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "最強大的答案引擎，幫助您更快地找到事實並清晰地回答您的問題。",
-    "sidebar__tabs__search__title": "搜尋"
+    "sidebar__tabs__search__title": "搜尋",
+    "youtube_summary_button__text": "總結"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

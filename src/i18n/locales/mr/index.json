@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'Search with AI' साठी आपला स्वत: OpenAI API की वापरा.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AI-सहाय्यित शोधाने संचालित करण्यासाठी अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "तुमच्या प्रश्नांची स्पष्ट, वेगवेगळीत उत्तरे मिळवण्यास मदत करणारा सर्वात शक्तिशाली उत्तर इंजिन.",
-    "sidebar__tabs__search__title": "शोध"
+    "sidebar__tabs__search__title": "शोध",
+    "youtube_summary_button__text": "संक्षेपित करा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

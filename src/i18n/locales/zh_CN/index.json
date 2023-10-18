@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "使用您自己的OpenAI API密钥来提供“使用AI进行搜索”。",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "升级以通过AI搜索发现知识",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "最强大的答案引擎，帮助您更快地找到事实并清晰地回答问题。",
-    "sidebar__tabs__search__title": "搜索"
+    "sidebar__tabs__search__title": "搜索",
+    "youtube_summary_button__text": "总结"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

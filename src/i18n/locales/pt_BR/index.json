@@ -461,7 +461,8 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Use sua própria chave de API OpenAI para alimentar 'Pesquisar com IA'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Atualize para descobrir conhecimento com busca alimentada por IA",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "O mecanismo de resposta mais poderoso que ajuda você a encontrar fatos mais rapidamente e obter respostas claras para suas perguntas.",
-    "sidebar__tabs__search__title": "Buscar"
+    "sidebar__tabs__search__title": "Buscar",
+    "youtube_summary_button__text": "Resumir"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

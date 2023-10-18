@@ -6,6 +6,8 @@ import { usePrevious } from '@/hooks/usePrevious'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 import { useFocus } from '@/hooks/useFocus'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
@@ -25,6 +27,7 @@ const useInitSidebar = () => {
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const { switchBackgroundChatSystemAIProvider } = useClientConversation()
   const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
   const sidebarSettingsRef = useRef(sidebarSettings)
   const prevSummaryConversationId = usePrevious(
@@ -65,7 +68,7 @@ const useInitSidebar = () => {
       pageConversationTypeRef.current = currentSidebarConversationType
     }
   }, [currentSidebarConversationType])
-  // 对不同conversation type的特殊处理
+  // summary 重新生成的逻辑
   useEffect(() => {
     if (currentSidebarConversationType === 'Summary') {
       // 当上次有ID，当前没有ID，并且是Summary的时候，说明用户点击了New Chat，所以重新生成
@@ -74,7 +77,7 @@ const useInitSidebar = () => {
       }
     }
   }, [currentSidebarConversationId, currentSidebarConversationType])
-  // 聚焦处理
+  // summary 聚焦处理
   useFocus(() => {
     if (pageConversationTypeRef.current === 'Summary') {
       updateSidebarSettings({
@@ -90,6 +93,32 @@ const useInitSidebar = () => {
       updateSidebarConversationType('Chat')
     }
   }, [pageUrl])
+  // conversationID切换的时候的处理
+  useEffect(() => {
+    // 切换使用的AI provider
+    let destroy = false
+    if (currentSidebarConversationId) {
+      clientGetConversation(currentSidebarConversationId).then(
+        async (conversation) => {
+          if (conversation?.meta.AIProvider) {
+            if (!destroy) {
+              console.log(
+                '新版Conversation 切换Tab导致AIProvider',
+                conversation.meta.AIProvider,
+              )
+              await switchBackgroundChatSystemAIProvider(
+                conversation.meta.AIProvider,
+                conversation.meta.AIModel,
+              )
+            }
+          }
+        },
+      )
+    }
+    return () => {
+      destroy = true
+    }
+  }, [currentSidebarConversationId])
 }
 
 export default useInitSidebar

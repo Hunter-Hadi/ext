@@ -93,8 +93,10 @@ const useSearchWithAI = () => {
   const {
     currentSidebarConversationId,
     currentSidebarConversationType,
+    currentSidebarConversationMessages,
   } = useSidebarSettings()
-  const { currentSidebarConversationMessages } = useSidebarSettings()
+  const [prevQuery, setPrevQuery] = useState('')
+  const [prevOptions, setPrevOptions] = useState<IUserChatMessageExtraType>({})
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
@@ -184,7 +186,6 @@ const useSearchWithAI = () => {
         noQuotes: true,
         noCommand: true,
       })
-      debugger
       const actions: ISetActionsType = [
         {
           type: 'DATE',
@@ -260,9 +261,65 @@ const useSearchWithAI = () => {
           },
         },
       ]
+      setPrevQuery(query)
+      setPrevOptions(options)
       setRunActions(actions)
     } catch (e) {
       console.log('创建Conversation失败', e)
+    }
+  }
+  const regenerateSearchWithAI = async () => {
+    try {
+      if (currentSidebarConversationId) {
+        if (prevQuery) {
+          await clientChatConversationModifyChatMessages(
+            'delete',
+            currentSidebarConversationId,
+            2,
+            [],
+          )
+          await createSearchWithAI(prevQuery, prevOptions)
+        } else {
+          let deleteCount = 0
+          let userMessage: IUserChatMessage | null = null
+          // find last user message
+          for (
+            let i = currentSidebarConversationMessages.length - 1;
+            i >= 0;
+            i--
+          ) {
+            if (currentSidebarConversationMessages[i].type === 'user') {
+              userMessage = currentSidebarConversationMessages[
+                i
+              ] as IUserChatMessage
+              deleteCount = currentSidebarConversationMessages.length - i
+              break
+            }
+          }
+          await clientChatConversationModifyChatMessages(
+            'delete',
+            currentSidebarConversationId,
+            deleteCount,
+            [],
+          )
+          if (userMessage?.extra?.meta?.messageVisibleText) {
+            await createSearchWithAI(
+              userMessage.extra.meta.messageVisibleText,
+              userMessage.extra,
+            )
+          } else {
+            // 如果没有找到user message，那么就重新生成Conversation
+            await clientChatConversationModifyChatMessages(
+              'delete',
+              currentSidebarConversationId,
+              9999,
+              [],
+            )
+          }
+        }
+      }
+    } catch (e) {
+      console.log('重新生成Conversation失败', e)
     }
   }
   useEffect(() => {
@@ -295,6 +352,7 @@ const useSearchWithAI = () => {
   ])
   return {
     createSearchWithAI,
+    regenerateSearchWithAI,
   }
 }
 export default useSearchWithAI

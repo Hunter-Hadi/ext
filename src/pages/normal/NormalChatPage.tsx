@@ -15,7 +15,7 @@ import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 // }
 const NormalChatPage = () => {
   const { currentSidebarConversationType } = useSidebarSettings()
-  const { createSearchWithAI } = useSearchWithAI()
+  const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const {
     sendQuestion,
     conversation,
@@ -56,7 +56,13 @@ const NormalChatPage = () => {
         loading={conversation.loading}
         title={'Chat Draft'}
         onRetry={retryMessage}
-        onReGenerate={reGenerate}
+        onReGenerate={async () => {
+          if (currentSidebarConversationType === 'Search') {
+            await regenerateSearchWithAI()
+          } else {
+            await reGenerate()
+          }
+        }}
         onStopGenerate={stopGenerateMessage}
         onReset={resetConversation}
       />

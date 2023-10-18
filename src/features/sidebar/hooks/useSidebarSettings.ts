@@ -1,4 +1,4 @@
-import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { AppLocalStorageState } from '@/store'
 import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
 import {
@@ -7,21 +7,12 @@ import {
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { useMemo } from 'react'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import {
+  ISidebarConversationType,
+  SidebarPageState,
+} from '@/features/sidebar/store'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { IChatConversation } from '@/background/src/chatConversations'
-
-/**
- * @description - 因为发现页面之间使用的type其实不需要完全同步，例如A页面用Chat类型，B页面用Summary类型，这其实是不用同步的，反而会增加bug
- */
-const SidebarPageState = atom<{
-  sidebarConversationType: ISidebarConversationType
-}>({
-  key: 'SidebarPageState',
-  default: {
-    sidebarConversationType: 'Chat',
-  },
-})
 
 const useSidebarSettings = () => {
   const [appLocalStorage, setAppLocalStorage] = useRecoilState(

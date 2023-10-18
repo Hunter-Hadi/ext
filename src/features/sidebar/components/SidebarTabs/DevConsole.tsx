@@ -11,6 +11,7 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
+import { AppLocalStorageState } from '@/store'
 
 const DevConsole: FC = () => {
   const {
@@ -20,6 +21,7 @@ const DevConsole: FC = () => {
     currentSidebarConversation,
     sidebarSettings,
   } = useSidebarSettings()
+  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const chatGPTConversation = useRecoilValue(ChatGPTConversationState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
@@ -103,6 +105,9 @@ const DevConsole: FC = () => {
       <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
       <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
       <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
+      <pre>
+        {JSON.stringify(appLocalStorage.thirdProviderSettings, null, 2)}
+      </pre>
     </Stack>
   )
 }

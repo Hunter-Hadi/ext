@@ -36,6 +36,10 @@ export interface IInputAssistantButtonGroupConfig
   rootSelectorStyle?: string
   // 给root添加的样式
   rootStyle?: string
+  // 给root前面的兄弟节点添加的样式
+  rootPreviousElementSiblingStyle?: string
+  // 给root后面的兄弟节点添加的样式
+  rootNextElementSiblingStyle?: string
   // 给root的parent添加的样式
   rootParentStyle?: string
   // 给root的parent添加的样式的层数
@@ -286,6 +290,7 @@ const InputAssistantButtonGroupConfig = {
       'form[method="POST"] div > span > div[aria-label="Emoji"]',
     ],
     rootParentStyle: 'padding: 0',
+    rootPreviousElementSiblingStyle: 'right: 100px',
     rootStyle:
       'display: flex;align-items: center;flex-direction: row;padding: 0',
     appendPosition: 0,

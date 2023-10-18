@@ -17,7 +17,7 @@ import {
 } from '@/features/shortcuts/utils/tokenizer'
 // import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
 
-// NOTE: 这只是为了webget的业务实现的，不具备通用性
+// NOTE: 这只是为了WebGPT的业务实现的，不具备通用性
 export class ActionWebGPTSearchResultsExpand extends Action {
   static type: ActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'
   constructor(
@@ -100,13 +100,15 @@ export class ActionWebGPTSearchResultsExpand extends Action {
             searchResult.body,
             MAX_CHARACTERS_TOKENS / expandResults.length,
           )
-          const { actions: summarizeActions, variableName } =
-            await createSummarizeOfTextRunActions(
-              searchResult.body,
-              summarizeType as SummarizeActionType,
-              // Math.ceil(SUMMARIZE_MAX_CHARACTERS / expandResults.length),
-              currentResultTextLength,
-            )
+          const {
+            actions: summarizeActions,
+            variableName,
+          } = await createSummarizeOfTextRunActions(
+            searchResult.body,
+            summarizeType as SummarizeActionType,
+            // Math.ceil(SUMMARIZE_MAX_CHARACTERS / expandResults.length),
+            currentResultTextLength,
+          )
           addActions.push(...summarizeActions)
           template += `NUMBER:${i + 1}\nURL: ${searchResult.url}\nTITLE: ${
             searchResult.title

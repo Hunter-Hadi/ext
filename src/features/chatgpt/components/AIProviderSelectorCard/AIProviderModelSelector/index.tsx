@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import { BaseSelect } from '@/components/select'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -9,6 +9,10 @@ import { IAIProviderModel } from '@/features/chatgpt/types'
 import Chip from '@mui/material/Chip'
 import { useTranslation } from 'react-i18next'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { usePrevious } from '@/hooks/usePrevious'
 
 const AIProviderModelSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
@@ -19,6 +23,9 @@ const AIProviderModelSelector: FC = () => {
     updateAIProviderModel,
     aiProvider,
   } = useAIProviderModels()
+  const prevAIProvider = usePrevious(aiProvider)
+  const { cleanConversation, createConversation } = useClientConversation()
+  const { currentSidebarConversationType } = useSidebarSettings()
   const aiProviderModelsOptions = useMemo(
     () =>
       list2Options(aiProviderModels, {
@@ -27,6 +34,26 @@ const AIProviderModelSelector: FC = () => {
       }),
     [aiProviderModels],
   )
+  const handleUpdateModel = useCallback(
+    async (updateModel: string) => {
+      await updateAIProviderModel(updateModel)
+      // 如果当前是chat，就清空会话，重新创建
+      if (currentSidebarConversationType === 'Chat') {
+        await cleanConversation()
+        await createConversation()
+      }
+    },
+    [
+      currentSidebarConversationType,
+      createConversation,
+      cleanConversation,
+      updateAIProviderModel,
+    ],
+  )
+  const handleUpdateModelRef = useRef(handleUpdateModel)
+  useEffect(() => {
+    handleUpdateModelRef.current = handleUpdateModel
+  }, [handleUpdateModel])
   useEffect(() => {
     if (aiProviderModel && aiProviderModels.length > 0) {
       const modelIsNotFind = aiProviderModels.every(
@@ -39,13 +66,24 @@ const AIProviderModelSelector: FC = () => {
       if (modelIsNotFind || modelIsDisabled) {
         for (let i = aiProviderModels.length - 1; i >= 0; i--) {
           if (!aiProviderModels[i].disabled) {
-            updateAIProviderModel(aiProviderModels[i].value).then().catch()
+            handleUpdateModel(aiProviderModels[i].value).then().catch()
             break
           }
         }
       }
     }
   }, [aiProviderModels, aiProviderModel])
+  useEffect(() => {
+    getChromeExtensionLocalStorage().then((appLocalStorage) => {
+      if (prevAIProvider && aiProvider && prevAIProvider !== aiProvider) {
+        const currentModel =
+          appLocalStorage.thirdProviderSettings?.[aiProvider]?.model
+        if (currentModel) {
+          handleUpdateModelRef.current(currentModel)
+        }
+      }
+    })
+  }, [aiProvider])
   return (
     <BaseSelect
       displayLoading={false}
@@ -69,7 +107,7 @@ const AIProviderModelSelector: FC = () => {
       onPermission={async () => {
         if (aiProvider === 'USE_CHAT_GPT_PLUS') {
           // 恢复为gpt3.5 turbo, 这里不用ai provider models是因为已经倒序了
-          await updateAIProviderModel(USE_CHAT_GPT_PLUS_MODELS[0].value)
+          await handleUpdateModel(USE_CHAT_GPT_PLUS_MODELS[0].value)
         }
         return {
           success: false,
@@ -85,7 +123,7 @@ const AIProviderModelSelector: FC = () => {
       options={aiProviderModelsOptions}
       value={aiProviderModel}
       onChange={async (value) => {
-        await updateAIProviderModel(value as string)
+        await handleUpdateModel(value as string)
       }}
       labelProp={{
         p: 0,

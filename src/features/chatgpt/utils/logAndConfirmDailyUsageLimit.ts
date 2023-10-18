@@ -67,6 +67,9 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       const accessToken = await getAccessToken()
       const fingerprint = await getFingerPrint()
       const text = AES.encrypt(JSON.stringify(info_object), 'MaxAI').toString()
+      if (!accessToken) {
+        return false
+      }
       const result = await fetch(`${APP_USE_CHAT_GPT_API_HOST}/user/call_api`, {
         method: 'POST',
         body: JSON.stringify({

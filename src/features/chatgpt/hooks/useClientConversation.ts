@@ -20,6 +20,7 @@ import {
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { IAIProviderModel } from '@/features/chatgpt/types'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -33,7 +34,7 @@ const useClientConversation = () => {
     currentSidebarConversationId,
     updateSidebarSettings,
   } = useSidebarSettings()
-  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModels()
+  const { AI_PROVIDER_MODEL_MAP, updateAIProviderModel } = useAIProviderModels()
   const createConversation = async (): Promise<string> => {
     let conversationId: string = ''
     if (currentSidebarConversationType === 'Chat') {
@@ -55,7 +56,9 @@ const useClientConversation = () => {
         appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model || ''
       // 获取当前AIProvider的model的maxTokens
       const maxTokens =
-        (AI_PROVIDER_MODEL_MAP as any)?.[currentModel]?.maxTokens || 4096
+        ((AI_PROVIDER_MODEL_MAP as any)?.[currentAIProvider] || []).find(
+          (model: IAIProviderModel) => model?.value === currentModel,
+        )?.maxTokens || 4096
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -209,6 +212,7 @@ const useClientConversation = () => {
   }
   const switchBackgroundChatSystemAIProvider = async (
     provider: IAIProviderType,
+    model?: string,
   ) => {
     const result = await port.postMessage({
       event: 'Client_switchAIProvider',
@@ -216,6 +220,9 @@ const useClientConversation = () => {
         provider,
       },
     })
+    if (result.success && model) {
+      await updateAIProviderModel(model)
+    }
     return result.success
   }
   const changeConversation = async (conversationId: string) => {

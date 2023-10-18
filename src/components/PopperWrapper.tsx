@@ -53,13 +53,13 @@ const PopperWrapper: FC<{
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
-        onMouseDown={(event) => {
+        onMouseDown={(event: any) => {
           if (stopEvent) {
             event.stopPropagation()
             event.preventDefault()
           }
         }}
-        onMouseUp={(event) => {
+        onMouseUp={(event: any) => {
           if (stopEvent) {
             event.stopPropagation()
             event.preventDefault()

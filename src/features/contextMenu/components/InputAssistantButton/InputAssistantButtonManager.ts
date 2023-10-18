@@ -90,9 +90,26 @@ class InputAssistantButtonManager {
     ) {
       return null
     }
-    const { rootStyle, rootParentStyle, rootParentStyleDeep = 1 } = this.config
+    const {
+      rootStyle,
+      rootParentStyle,
+      rootParentStyleDeep = 1,
+      rootNextElementSiblingStyle,
+      rootPreviousElementSiblingStyle,
+    } = this.config
     if (rootElement && rootStyle) {
+      if (
+        rootPreviousElementSiblingStyle &&
+        rootElement.previousElementSibling
+      ) {
+        const previousElementSibling = rootElement.previousElementSibling as HTMLElement
+        previousElementSibling.style.cssText = rootPreviousElementSiblingStyle
+      }
       rootElement.style.cssText = rootStyle
+      if (rootNextElementSiblingStyle && rootElement.nextElementSibling) {
+        const nextElementSibling = rootElement.nextElementSibling as HTMLElement
+        nextElementSibling.style.cssText = rootNextElementSiblingStyle
+      }
     }
     if (rootParentStyle) {
       let deep = 0

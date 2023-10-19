@@ -69,18 +69,16 @@ export class ActionAskChatGPT extends Action {
           regenerate: false,
           meta: {
             ...this.parameters.AskChatGPTActionMeta,
-            deleteMessageCount:
-              askChatGPTType === 'ASK_CHAT_GPT_HIDDEN_QUESTION' ? 1 : 0,
           },
+          aiMessageVisible:
+            askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
+            askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER',
+          userMessageVisible:
+            askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
+            askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_QUESTION',
         },
       )) || { success: false, answer: '', error: '' }
       if (success) {
-        // 因为是隐藏答案或者隐藏问题，所以需要运行完成后再删除消息
-        if (askChatGPTType === 'ASK_CHAT_GPT_HIDDEN') {
-          await this.deleteMessageFromChat(2, engine)
-        } else if (askChatGPTType === 'ASK_CHAT_GPT_HIDDEN_ANSWER') {
-          await this.deleteMessageFromChat(1, engine)
-        }
         this.output = answer
         this.message = message
       } else {

@@ -85,11 +85,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       messageId?: string
       parentMessageId?: string
     },
-    options?: IUserChatMessageExtraType,
+    options?: IUserChatMessageExtraType & {
+      userMessageVisible?: boolean
+      aiMessageVisible?: boolean
+    },
   ): Promise<{ success: boolean; answer: string; error: string }> => {
     const host = getCurrentDomainHost()
     const contextMenu = options?.meta?.contextMenu
-    const deleteMessageCount = options?.meta?.deleteMessageCount || 0
     // 发消息前,或者报错信息用到的升级卡片
     let abortAskAIShowUpgradeCard: PermissionWrapperCardType | null = null
     const checkUpgradeCard = async (conversationId: string) => {
@@ -216,19 +218,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         loading: true,
       }
     })
-    await clientChatConversationModifyChatMessages(
-      'add',
-      postConversationId,
-      0,
-      [questionMessage],
-    )
-    // 提问之前删除的信息
-    if (deleteMessageCount > 0) {
+    if (options?.userMessageVisible !== false) {
       await clientChatConversationModifyChatMessages(
-        'delete',
+        'add',
         postConversationId,
-        deleteMessageCount,
-        [],
+        0,
+        [questionMessage],
       )
     }
     const pushMessages: IChatMessage[] = []
@@ -293,6 +288,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           onError: async (error: any) => {
             hasError = true
             if (aiRespondingMessage?.messageId) {
+              if (aiRespondingMessage?.originalMessage?.metadata) {
+                aiRespondingMessage.originalMessage.metadata.isComplete = true
+              }
               pushMessages.push(aiRespondingMessage)
             }
             const is403Error =
@@ -393,13 +391,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           loading: false,
         }
       })
-      // 更新消息
-      await clientChatConversationModifyChatMessages(
-        'add',
-        postConversationId,
-        0,
-        pushMessages,
-      )
+      if (options?.aiMessageVisible !== false) {
+        // 更新消息
+        await clientChatConversationModifyChatMessages(
+          'add',
+          postConversationId,
+          0,
+          pushMessages,
+        )
+      }
     }
   }
   const retryMessage = async (retryMessageId: string) => {

@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack'
 import ReplyIcon from '@mui/icons-material/Reply'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { hideChatBox } from '@/utils'
-import { IChatMessage } from '@/features/chatgpt/types'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import { useTranslation } from 'react-i18next'
 
@@ -14,7 +14,7 @@ const SidebarChatBoxAiTools: FC<{
   insertAble?: boolean
   replaceAble?: boolean
   useChatGPTAble?: boolean
-  message: IChatMessage
+  message: IAIResponseMessage
   onCopy?: () => void
 }> = (props) => {
   const { t } = useTranslation(['common', 'client'])
@@ -23,6 +23,20 @@ const SidebarChatBoxAiTools: FC<{
     return insertAble
   }, [insertAble])
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
+  const memoCopyText = useMemo(() => {
+    let currentCopyText = message.originalMessage?.content?.text || message.text
+    if (message.originalMessage?.metadata?.sources?.links) {
+      const links = message.originalMessage.metadata.sources.links
+      let citations = `\n\nCitations:`
+      if (links.length > 0) {
+        links.forEach((link, index) => {
+          citations += `\n[${index + 1}] ${link.url}`
+        })
+      }
+      currentCopyText += citations
+    }
+    return currentCopyText
+  }, [message])
   return (
     <Stack
       direction={'row'}
@@ -46,7 +60,7 @@ const SidebarChatBoxAiTools: FC<{
       )}
       <CopyTooltipIconButton
         className={'max-ai__actions__button--copy'}
-        copyText={message.text}
+        copyText={memoCopyText}
         onCopy={() => {
           props.onCopy?.()
           if (TEMP_CLOSE_HOSTS.includes(window.location.host)) {

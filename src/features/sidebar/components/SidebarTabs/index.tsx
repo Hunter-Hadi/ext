@@ -1,6 +1,5 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import Stack from '@mui/material/Stack'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import {
@@ -16,6 +15,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { isMaxAINewTabPage } from '@/pages/chat/util'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -60,9 +60,6 @@ const SidebarTabs: FC = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
   const conversation = useRecoilValue(ChatGPTConversationState)
-  if (isMaxAINewTabPage()) {
-    return null
-  }
   useEffect(() => {
     const listener = (event: any) => {
       const type: ISidebarConversationType = event?.detail?.type
@@ -75,6 +72,16 @@ const SidebarTabs: FC = () => {
       window.removeEventListener('MaxAISwitchSidebarTab', listener)
     }
   })
+  const memoSidebarTabsData = useMemo(() => {
+    return sidebarTabsData.filter((tab) => {
+      if (tab.value === 'Summary') {
+        if (isMaxAINewTabPage()) {
+          return false
+        }
+      }
+      return true
+    })
+  }, [])
   return (
     <>
       <Stack
@@ -107,7 +114,7 @@ const SidebarTabs: FC = () => {
           textColor="inherit"
           indicatorColor="primary"
         >
-          {sidebarTabsData.map((item) => (
+          {memoSidebarTabsData.map((item) => (
             <Tab
               disabled={conversation.loading}
               key={item.value}

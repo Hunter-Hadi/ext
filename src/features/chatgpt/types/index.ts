@@ -9,7 +9,11 @@ export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   text: string
   messageId: string
+  // 本条消息是否展示
+  messageVisible?: boolean
   parentMessageId?: string
+  // 是否显示在历史记录里
+  visible?: boolean
   // 不同的message存放数据的地方
   extra?: {
     [key: string]: any
@@ -44,8 +48,6 @@ export type IChatMessageExtraMetaType = {
   attachments?: IChatUploadFile[]
   // 本条消息的显示消息
   messageVisibleText?: string
-  // 删除多少条消息
-  deleteMessageCount?: number
   // 搜索的消息源Json
   searchSources?: string
   [key: string]: any

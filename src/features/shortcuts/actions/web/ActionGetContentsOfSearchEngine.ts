@@ -1,7 +1,10 @@
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { pushOutputToChat } from '@/features/shortcuts/decorators'
+import {
+  pushOutputToChat,
+  withLoadingDecorators,
+} from '@/features/shortcuts/decorators'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import { crawlingSearchResults } from '@/features/shortcuts/utils/searchEngineCrawling'
@@ -26,6 +29,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
+  @withLoadingDecorators()
   async execute(params: ActionParameters, engine: any) {
     try {
       let query =

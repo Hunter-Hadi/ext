@@ -31,8 +31,10 @@ const MaxAIMiniButton: FC<{
   }
   const waitAnimationClose = () => {
     clearTimer()
-    setHover(false)
     setButtonHover(false)
+    setTimeout(() => {
+      setHover(false)
+    }, 100)
   }
   return (
     <Stack

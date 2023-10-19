@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Oppgrader for å oppdage kunnskap med AI-drevet søk",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Den kraftigste svaremotoren som hjelper deg med å finne fakta raskere og få tydelige svar på spørsmålene dine.",
     "sidebar__tabs__search__title": "Søk",
-    "youtube_summary_button__text": "Oppsummer"
+    "youtube_summary_button__text": "Oppsummer",
+    "sidebar__tabs__search__tooltip": "AI-drevet søk"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

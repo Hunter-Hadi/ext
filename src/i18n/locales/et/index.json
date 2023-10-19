@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Täiusta teadmiste avastamiseks AI-toega otsingut",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Kõige võimsam vastusemootor, mis aitab teil leida fakte kiiremini ja saada selgeid vastuseid oma küsimustele.",
     "sidebar__tabs__search__title": "Otsing",
-    "youtube_summary_button__text": "Kokkuvõte"
+    "youtube_summary_button__text": "Kokkuvõte",
+    "sidebar__tabs__search__tooltip": "AI-toega otsing"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

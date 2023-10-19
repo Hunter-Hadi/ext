@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Upgrade om kennis te ontdekken met AI-aangedreven zoekopdrachten",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "De krachtigste antwoordmachine die je helpt sneller feiten te vinden en je vragen duidelijk beantwoordt.",
     "sidebar__tabs__search__title": "Zoeken",
-    "youtube_summary_button__text": "Samenvatten"
+    "youtube_summary_button__text": "Samenvatten",
+    "sidebar__tabs__search__tooltip": "Zoeken met AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

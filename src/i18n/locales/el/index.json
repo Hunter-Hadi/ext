@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Αναβαθμίστε για να ανακαλύψετε γνώση με αναζήτηση που χρησιμοποιεί AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Ο πιο ισχυρός μηχανισμός απάντησης που σας βοηθά να βρίσκετε γεγονότα πιο γρήγορα και να λαμβάνετε σαφείς απαντήσεις στις ερωτήσεις σας.",
     "sidebar__tabs__search__title": "Αναζήτηση",
-    "youtube_summary_button__text": "Σύνοψη"
+    "youtube_summary_button__text": "Σύνοψη",
+    "sidebar__tabs__search__tooltip": "Αναζήτηση με τεχνητή νοημοσύνη"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

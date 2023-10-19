@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Actualiza para descubrir conocimiento con búsqueda impulsada por IA",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "El motor de respuestas más poderoso que te ayuda a encontrar hechos más rápido y obtener respuestas claras a tus preguntas.",
     "sidebar__tabs__search__title": "Buscar",
-    "youtube_summary_button__text": "Resumir"
+    "youtube_summary_button__text": "Resumir",
+    "sidebar__tabs__search__tooltip": "Búsqueda impulsada por IA"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

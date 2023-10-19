@@ -8,6 +8,7 @@ import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
 import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
 import { ROOT_CONTAINER_ID } from '@/constants'
 import {
+  IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
@@ -17,6 +18,7 @@ import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/D
 import DevContent from '@/components/DevContent'
 import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import SidebarAIMessage from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const getMessageRenderText = (message: IChatMessage) => {
@@ -292,18 +294,12 @@ const SidebarChatBoxMessageItem: FC<{
                   files={attachments}
                 />
               )}
-              {message.type !== 'user' ? (
-                <div
-                  className={`markdown-body ${
-                    isDarkMode ? 'markdown-body-dark' : ''
-                  }`}
-                >
-                  <CustomMarkdown>
-                    {defaultText.replace(/^\s+/, '')}
-                  </CustomMarkdown>
-                </div>
-              ) : (
-                defaultText.replace(/^\s+/, '')
+              {message.type === 'user' && defaultText.replace(/^\s+/, '')}
+              {(message.type === 'third' || message.type === 'ai') && (
+                <SidebarAIMessage
+                  isDarkMode={isDarkMode}
+                  message={message as IAIResponseMessage}
+                />
               )}
             </Stack>
           )}

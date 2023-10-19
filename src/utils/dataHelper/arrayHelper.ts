@@ -49,3 +49,24 @@ export const listReverseFind = <T>(
   }
   return undefined
 }
+
+/**
+ * 递归获取对象的path和value
+ * @param object
+ * @param callback
+ * @param path
+ */
+export const getAllPathsAndValues = (
+  object: any,
+  callback: (path: string[], value: any) => void,
+  path: string[] = [],
+) => {
+  Object.entries(object).forEach(([key, value]) => {
+    const newPath = [...path, key]
+    if (typeof value === 'object' && value !== null) {
+      getAllPathsAndValues(value, callback, newPath)
+    } else {
+      callback(newPath, value)
+    }
+  })
+}

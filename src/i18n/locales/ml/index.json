@@ -461,8 +461,9 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "നിങ്ങളുടെ അടയാളപ്പെടുത്തലുകൾക്ക് 'Search with AI' പ്രവർത്തിപ്പിക്കാൻ നിങ്ങളുടെ സ്വന്തമായ OpenAI API കീ ഉപയോഗിക്കുക.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "എ.ഐ-പ്രവർത്തിക്കുന്ന തിരച്ചിൽ ഉപയോഗിച്ച് അറിയാനും അറിയിക്കാനും മുന്നേറ്റത്തെക്കാർക്ക് അപ്ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "വിഷയങ്ങൾ വേഗത്തിൽ കണ്ടെത്താൻ സഹായിക്കുന്ന ഏറ്റവും ശക്തമായ ഉത്തരം എഞ്ചിൻ, സ്പഷ്ടമായി നിങ്ങളുടെ ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുന്നു.",
-    "sidebar__tabs__search__title": "തിരച്ചിൽ",
-    "youtube_summary_button__text": "സംഗ്രഹിക്കുക"
+    "sidebar__tabs__search__title": "തിരയൽ",
+    "youtube_summary_button__text": "സംഗ്രഹിക്കുക",
+    "sidebar__tabs__search__tooltip": "AI-പ്രവർത്തനം ചെയ്യുന്ന തിരച്ചിൽ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

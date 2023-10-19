@@ -461,8 +461,9 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Izmantojiet savu OpenAI API atslēgu, lai darbinātu 'Meklēšanu ar AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Uzlabojiet, lai atklātu zināšanas ar AI jaudīgu meklēšanu",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Spēcīgākais atbilžu dzinējs, kas palīdz atrast faktus ātrāk un saņemt skaidrus atbildes uz jūsu jautājumiem.",
-    "sidebar__tabs__search__title": "Meklēšana",
-    "youtube_summary_button__text": "Apkopot"
+    "sidebar__tabs__search__title": "Meklēt",
+    "youtube_summary_button__text": "Apkopot",
+    "sidebar__tabs__search__tooltip": "Meklēšana, kas darbojas ar AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

@@ -40,20 +40,63 @@ export interface IUserChatMessage extends IChatMessage {
 
 export type IChatMessageExtraMetaType = {
   contextMenu?: IContextMenuItem
+  // 附件
   attachments?: IChatUploadFile[]
+  // 本条消息的显示消息
   messageVisibleText?: string
+  // 删除多少条消息
   deleteMessageCount?: number
+  // 搜索的消息源Json
+  searchSources?: string
   [key: string]: any
 }
 
 export type IUserChatMessageExtraType = IUserChatMessage['extra']
 
+export interface IAIResponseOriginalMessage {
+  id?: string
+  create_time?: string
+  update_time?: string
+  author?: {
+    role: string
+    name: string
+    metadata?: string
+  }
+  content?: {
+    contentType: 'text'
+    text: string
+    language?: string
+    images?: string[]
+  }
+  metadata?: {
+    finish?: {
+      type: string
+      stopTokens?: number
+    }
+    isComplete?: boolean
+    title?: string
+    sources?: {
+      links?: Array<{
+        title: string
+        url: string
+        favicon: string
+        img: string
+        from?: string
+      }>
+    }
+    // TODO
+    related?: string[]
+    copilot?: string[]
+  }
+  status?: string
+}
 // AI返回的消息
 export interface IAIResponseMessage extends IChatMessage {
   type: 'ai'
   text: string
   messageId: string
   parentMessageId?: string
+  originalMessage?: IAIResponseOriginalMessage
 }
 
 // 系统消息

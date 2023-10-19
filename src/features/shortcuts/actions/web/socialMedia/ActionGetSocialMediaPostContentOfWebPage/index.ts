@@ -4,7 +4,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   templateParserDecorator,
-  withLoading,
+  withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
 import { getSocialMediaPostContent } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
 export class ActionGetSocialMediaPostContentOfWebPage extends Action {
@@ -21,7 +21,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  @withLoading()
+  @withLoadingDecorators()
   async execute(params: ActionParameters, engine: any) {
     const OperationElementElementSelector =
       this.parameters.OperationElementElementSelector ||

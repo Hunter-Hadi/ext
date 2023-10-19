@@ -6,6 +6,7 @@ import {
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
   IAIResponseMessage,
+  IAIResponseOriginalMessage,
   IChatMessage,
   IUserChatMessage,
   IUserChatMessageExtraType,
@@ -145,6 +146,7 @@ export const askChatGPTQuestion = async (
       parentMessageId: string
       conversationId: string
       text: string
+      originalMessage?: IAIResponseOriginalMessage
     }) => void
     onError?: (error: string) => void
   },

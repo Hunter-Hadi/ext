@@ -4,7 +4,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   templateParserDecorator,
-  withLoading,
+  withLoadingDecorators,
 } from '@/features/shortcuts'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -23,7 +23,7 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  @withLoading()
+  @withLoadingDecorators()
   async execute(params: ActionParameters, engine: any) {
     try {
       const result =

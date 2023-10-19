@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Upgrade to discover knowledge with AI-powered search",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "The most powerful answer engine that helps you find facts faster and get your questions answered clearly.",
     "sidebar__tabs__search__title": "Search",
-    "youtube_summary_button__text": "Summarize"
+    "youtube_summary_button__text": "Summarize",
+    "sidebar__tabs__search__tooltip": "AI-powered search"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

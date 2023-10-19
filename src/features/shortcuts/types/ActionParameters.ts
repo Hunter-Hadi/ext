@@ -180,6 +180,7 @@ interface ActionParameters {
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionMeta?: IChatMessageExtraMetaType
+  AskChatGPTWithHistory?: boolean
   AskChatGPTProvider?: {
     provider: IAIProviderType
     model: string

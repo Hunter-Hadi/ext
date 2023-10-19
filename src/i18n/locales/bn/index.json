@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "জ্ঞান সন্ধানের জন্য AI-পাওয়ারড অনুসন্ধানে আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "সবচেয়ে শক্তিশালী উত্তর ইঞ্জিন যা আপনাকে দ্রুত সত্য খুঁজে বের করতে সাহায্য করে এবং আপনার প্রশ্নগুলি পরিষ্কারভাবে উত্তর দেয়।",
     "sidebar__tabs__search__title": "অনুসন্ধান",
-    "youtube_summary_button__text": "সংক্ষেপ করুন"
+    "youtube_summary_button__text": "সংক্ষেপ করুন",
+    "sidebar__tabs__search__tooltip": "এইচআই-পাওয়ারড অনুসন্ধান"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

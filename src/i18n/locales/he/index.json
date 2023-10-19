@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "שדרג כדי לגלות ידע עם חיפוש מופעל על ידי AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "מנוע התשובות החזק ביותר שיעזור לך למצוא עובדות במהירות ולקבל תשובות ברורות לשאלות שלך.",
     "sidebar__tabs__search__title": "חיפוש",
-    "youtube_summary_button__text": "סיכום"
+    "youtube_summary_button__text": "סיכום",
+    "sidebar__tabs__search__tooltip": "חיפוש מופעל על ידי AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

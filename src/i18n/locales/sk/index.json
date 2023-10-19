@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Vylepšite sa a objavujte poznatky s vyhľadávaním pomocou AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Najvýkonnejší odpovedací systém, ktorý vám pomôže nájsť fakty rýchlejšie a získať jasné odpovede na vaše otázky.",
     "sidebar__tabs__search__title": "Vyhľadávanie",
-    "youtube_summary_button__text": "Zhrnúť"
+    "youtube_summary_button__text": "Zhrnúť",
+    "sidebar__tabs__search__tooltip": "Vyhľadávanie s umelou inteligenciou"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

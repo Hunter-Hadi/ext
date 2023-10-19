@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Päivitä ja löydä tietoa tekoälyn avulla",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Tehokkain vastausmoottori, joka auttaa sinua löytämään faktoja nopeammin ja saamaan selkeät vastaukset kysymyksiisi.",
     "sidebar__tabs__search__title": "Haku",
-    "youtube_summary_button__text": "Tiivistä"
+    "youtube_summary_button__text": "Tiivistä",
+    "sidebar__tabs__search__tooltip": "AI-tehostettu haku"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -1,17 +1,17 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import Stack from '@mui/material/Stack'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import EditIcon from '@mui/icons-material/Edit'
 import DoneIcon from '@mui/icons-material/Done'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { hideChatBox } from '@/utils'
-import { IChatMessage } from '@/features/chatgpt/types'
+import { IUserChatMessage } from '@/features/chatgpt/types'
 import { useTranslation } from 'react-i18next'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
 const SidebarChatBoxUserTools: FC<{
-  message: IChatMessage
+  message: IUserChatMessage
   editAble?: boolean
   onEdit: () => void
   onSave: () => void
@@ -20,6 +20,9 @@ const SidebarChatBoxUserTools: FC<{
   const { onEdit, onSave, editAble, message } = props
   const { t } = useTranslation(['common', 'client'])
   const [mode, setMode] = useState('done')
+  const currentMessage = useMemo(() => {
+    return message.extra.meta?.messageVisibleText || message.text
+  }, [message])
   return (
     <Stack
       direction={'row'}
@@ -28,7 +31,7 @@ const SidebarChatBoxUserTools: FC<{
       justifyContent={'flex-end'}
     >
       <CopyTooltipIconButton
-        copyText={message.text}
+        copyText={currentMessage}
         onCopy={() => {
           props.onCopy?.()
           if (TEMP_CLOSE_HOSTS.includes(window.location.host)) {

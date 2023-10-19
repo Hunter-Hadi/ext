@@ -97,6 +97,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
               parentMessageId: question.messageId,
               conversationId: data.conversationId,
               messageId,
+              originalMessage: data.originalMessage,
             },
             error,
             done,

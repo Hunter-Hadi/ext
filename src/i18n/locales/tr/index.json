@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AI destekli arama ile bilgi keşfetmek için yükseltme yapın",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Faktları daha hızlı bulmanıza ve sorularınızın net cevaplarını almanıza yardımcı olan en güçlü yanıt motoru.",
     "sidebar__tabs__search__title": "Arama",
-    "youtube_summary_button__text": "Özetle"
+    "youtube_summary_button__text": "Özetle",
+    "sidebar__tabs__search__tooltip": "Yapay zeka destekli arama"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

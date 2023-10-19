@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Nunua ili ugundue maarifa na utafutaji unaotumia AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Injini ya majibu yenye nguvu zaidi inayokusaidia kupata ukweli kwa haraka na kupata majibu sahihi kwa maswali yako.",
     "sidebar__tabs__search__title": "Tafuta",
-    "youtube_summary_button__text": "Muhtasari"
+    "youtube_summary_button__text": "Muhtasari",
+    "sidebar__tabs__search__tooltip": "Tafuta yenye nguvu ya AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -31,6 +31,7 @@ import { useTranslation } from 'react-i18next'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -93,6 +94,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     messageListContainerList,
     messages,
   )
+  const { currentSidebarConversationType } = useSidebarSettings()
   // const [inputValue, setInputValue] = useState('')
   // 为了在消息更新前计算滚动高度
   // const currentMaxInputLength = useMemo(() => {
@@ -336,23 +338,24 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                     {t('client:sidebar__button__regenerate')}
                   </Button>
                 )}
-                {isShowContinueButton && (
-                  <Button
-                    disableElevation
-                    startIcon={<ContextMenuIcon icon={'FastForward'} />}
-                    variant={'outlined'}
-                    disabled={loading}
-                    onClick={() => {
-                      handleSendMessage &&
-                        handleSendMessage('Continue', {
-                          includeHistory: true,
-                          regenerate: false,
-                        })
-                    }}
-                  >
-                    {t('client:sidebar__button__continue')}
-                  </Button>
-                )}
+                {isShowContinueButton &&
+                  currentSidebarConversationType !== 'Search' && (
+                    <Button
+                      disableElevation
+                      startIcon={<ContextMenuIcon icon={'FastForward'} />}
+                      variant={'outlined'}
+                      disabled={loading}
+                      onClick={() => {
+                        handleSendMessage &&
+                          handleSendMessage('Continue', {
+                            includeHistory: true,
+                            regenerate: false,
+                          })
+                      }}
+                    >
+                      {t('client:sidebar__button__continue')}
+                    </Button>
+                  )}
               </>
             )}
             {loading && (

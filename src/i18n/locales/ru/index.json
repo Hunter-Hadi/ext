@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Обновите для поиска знаний с помощью искусственного интеллекта",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Самый мощный ответный движок, который помогает вам находить факты быстрее и получать четкие ответы на ваши вопросы.",
     "sidebar__tabs__search__title": "Поиск",
-    "youtube_summary_button__text": "Суммировать"
+    "youtube_summary_button__text": "Суммировать",
+    "sidebar__tabs__search__tooltip": "Поиск с использованием искусственного интеллекта"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

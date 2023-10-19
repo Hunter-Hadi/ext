@@ -276,8 +276,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
               parentMessageId: (msg.parentMessageId as string) || uuidV4(),
               text: (msg.text as string) || '',
               type: 'ai' as const,
+              originalMessage: msg.originalMessage,
             }
-            aiRespondingMessage = writingMessage
+            aiRespondingMessage = cloneDeep(writingMessage)
             if (msg.conversationId) {
               AIConversationId = msg.conversationId
             }
@@ -347,6 +348,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         aiRespondingMessage?.messageId &&
         aiRespondingMessage?.text
       ) {
+        if (aiRespondingMessage?.originalMessage?.metadata) {
+          aiRespondingMessage.originalMessage.metadata.isComplete = true
+        }
         await increaseChatGPTRequestCount('success')
         if (AIConversationId) {
           await updateConversation(

@@ -5,7 +5,6 @@ import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import { crawlingSearchResults } from '@/features/shortcuts/utils/searchEngineCrawling'
-import { v4 as uuidV4 } from 'uuid'
 
 export interface SearchResponse {
   status: number
@@ -37,17 +36,17 @@ export class ActionGetContentsOfSearchEngine extends Action {
         ''
       const backgroundConversation = engine.getBackgroundConversation()
       if (query && backgroundConversation) {
-        await this.pushMessageToChat(
-          {
-            messageId: uuidV4(),
-            extra: {
-              status: 'info',
-            },
-            type: 'system',
-            text: `The extension is crawling this page: ${query}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
-          },
-          engine,
-        )
+        // await this.pushMessageToChat(
+        //   {
+        //     messageId: uuidV4(),
+        //     extra: {
+        //       status: 'info',
+        //     },
+        //     type: 'system',
+        //     text: `The extension is crawling this page: ${query}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
+        //   },
+        //   engine,
+        // )
         // remove head and tail space
         query = query.trim()
 
@@ -110,8 +109,6 @@ export class ActionGetContentsOfSearchEngine extends Action {
       }
     } catch (e) {
       this.error = (e as any).toString()
-    } finally {
-      await this.deleteMessageFromChat(1, engine)
     }
   }
   private getFullSearchURL(

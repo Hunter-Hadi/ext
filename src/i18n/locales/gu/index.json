@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "એઆઈ-પવર્ડ શોધમાં જ્ઞાન શોધવા માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "તમને ફક્તો ઝડપીથી શોધવા અને તમારા પ્રશ્નોને સ્પષ્ટતાથી જવાબ આપવામાં મદદ કરનાર સૌથી શક્તિશાળી ઉત્તર ઇજન છે.",
     "sidebar__tabs__search__title": "શોધ",
-    "youtube_summary_button__text": "સંક્ષેપ કરો"
+    "youtube_summary_button__text": "સંક્ષેપ કરો",
+    "sidebar__tabs__search__tooltip": "AI પર આધારિત શોધ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

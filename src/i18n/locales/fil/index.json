@@ -461,8 +461,9 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "Gamitin ang iyong sariling OpenAI API key upang patakbuhin ang 'Search with AI'.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Mag-upgrade para makahanap ng kaalaman gamit ang AI-powered na paghahanap",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Ang pinakamalakas na sagot na makina na tumutulong sa iyo na mas mabilis na makahanap ng mga katotohanan at malinaw na sagutan ang iyong mga tanong.",
-    "sidebar__tabs__search__title": "Paghahanap",
-    "youtube_summary_button__text": "Buodin"
+    "sidebar__tabs__search__title": "Hanapin",
+    "youtube_summary_button__text": "Buodin",
+    "sidebar__tabs__search__tooltip": "AI-powered na paghahanap"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

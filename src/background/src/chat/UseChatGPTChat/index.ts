@@ -24,6 +24,12 @@ import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { hasData } from '@/utils'
+import {
+  IAIResponseOriginalMessage,
+  IChatMessageExtraMetaType,
+} from '@/features/chatgpt/types'
+import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
+import sum from 'lodash-es/sum'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
@@ -86,7 +92,7 @@ class UseChatGPTPlusChat extends BaseChat {
       streaming?: boolean
       chat_history?: IMaxAIChatGPTMessageType[]
       backendAPI?: 'chat_with_document' | 'get_chatgpt_response'
-      meta?: Record<string, any>
+      meta?: IChatMessageExtraMetaType
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -95,6 +101,7 @@ class UseChatGPTPlusChat extends BaseChat {
       data: {
         text: string
         conversationId: string
+        originalMessage?: IAIResponseOriginalMessage
       }
     }) => void,
   ) {
@@ -112,6 +119,7 @@ class UseChatGPTPlusChat extends BaseChat {
         })
       return
     }
+
     const {
       taskId,
       doc_id,
@@ -148,7 +156,8 @@ class UseChatGPTPlusChat extends BaseChat {
             : 'chat',
         /**
          * MARK: 将 OpenAI API的温度控制加一个最大值限制：1.6 - 2023-08-25 - @huangsong
-         */
+         * 将 OpenAI API的温度控制加一个最大值限制：1.2 - 2023-10-9 - @huangsong
+         * */
         temperature,
       },
       doc_id ? { doc_id } : {},
@@ -170,6 +179,53 @@ class UseChatGPTPlusChat extends BaseChat {
     let hasError = false
     let sentTextLength = 0
     let conversationId = this.conversation?.id || ''
+    // 原始ai response
+    const originalMessage: IAIResponseOriginalMessage = {
+      content: {
+        contentType: 'text',
+        text: '',
+      },
+      metadata: {
+        title: meta?.messageVisibleText || '',
+        isComplete: false,
+        sources: {
+          links:
+            typeof meta?.searchSources === 'object'
+              ? ((meta?.searchSources || []) as ICrawlingSearchResult[])?.map(
+                  (result) => {
+                    return {
+                      favicon: result.imgLink || '',
+                      title: result.title || '',
+                      url: result.url || '',
+                      img: result.imgLink || '',
+                      form: result.from || '',
+                    }
+                  },
+                )
+              : [],
+        },
+      },
+    }
+    // 如果已经有sources了，先发送一条消息让AI message有骨架屏
+    if (
+      sum(
+        Object.values(originalMessage.metadata?.sources || {}).map(
+          (sourceData) => sourceData.length,
+        ),
+      ) > 0
+    ) {
+      onMessage &&
+        onMessage({
+          done: false,
+          type: 'message',
+          error: '',
+          data: {
+            text: '',
+            conversationId: conversationId,
+            originalMessage,
+          },
+        })
+    }
     const sendTextSettings = await Browser.storage.local.get(
       BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
     )
@@ -231,6 +287,9 @@ class UseChatGPTPlusChat extends BaseChat {
           messageResult.length,
         )
         sentTextLength += currentSendTextTextLength
+        if (originalMessage.content?.text) {
+          originalMessage.content.text = messageResult.slice(0, sentTextLength)
+        }
         onMessage &&
           onMessage({
             type: 'message',
@@ -239,6 +298,7 @@ class UseChatGPTPlusChat extends BaseChat {
             data: {
               text: messageResult.slice(0, sentTextLength),
               conversationId: conversationId,
+              originalMessage,
             },
           })
       }

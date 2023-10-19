@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Nâng cấp để khám phá kiến thức với tìm kiếm AI",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Bộ máy trả lời mạnh mẽ nhất giúp bạn tìm kiếm thông tin nhanh hơn và nhận được câu trả lời rõ ràng cho câu hỏi của bạn.",
     "sidebar__tabs__search__title": "Tìm kiếm",
-    "youtube_summary_button__text": "Tóm tắt"
+    "youtube_summary_button__text": "Tóm tắt",
+    "sidebar__tabs__search__tooltip": "Tìm kiếm được hỗ trợ bởi trí tuệ nhân tạo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

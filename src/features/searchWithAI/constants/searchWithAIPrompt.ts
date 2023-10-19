@@ -1,10 +1,9 @@
-export const SEARCH_WITH_AI_PROMPT = `Ignore all previous instructions. You are a knowledgeable and helpful person that can answer any questions. Your task is to answer the following question delimited by triple backticks.
+export const SEARCH_WITH_AI_PROMPT = `You are a knowledgeable and helpful person that can answer any questions. Your task is to answer the following question delimited by triple backticks.
 
 Question:
 \`\`\`
 {query}
 \`\`\`
-
 It's possible that the question, or just a portion of it, requires relevant information from the internet to give a satisfactory answer. The relevant search results provided below, delimited by triple quotes, are the necessary information already obtained from the internet. The search results set the context for addressing the question, so you don't need to access the internet to answer the question.
 
 Write a comprehensive answer to the question in the best way you can. If necessary, use the provided search results.

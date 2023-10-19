@@ -4,7 +4,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   templateParserDecorator,
-  withLoading,
+  withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 import { getEmailWebsitePageContentsOrDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
@@ -22,7 +22,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  @withLoading()
+  @withLoadingDecorators()
   async execute(params: ActionParameters, engine: any) {
     const OperationElementElementSelector =
       this.parameters.OperationElementElementSelector ||

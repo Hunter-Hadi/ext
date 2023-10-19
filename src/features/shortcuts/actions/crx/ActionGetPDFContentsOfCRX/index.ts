@@ -4,7 +4,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   templateParserDecorator,
-  withLoading,
+  withLoadingDecorators,
 } from '@/features/shortcuts'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 import { MAX_UPLOAD_TEXT_FILE_TOKENS } from '@/features/shortcuts/utils/stringConvertTxtUpload'
@@ -22,7 +22,7 @@ export class ActionGetPDFContentsOfCRX extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  @withLoading()
+  @withLoadingDecorators()
   async execute(params: ActionParameters, engine: any) {
     try {
       if (

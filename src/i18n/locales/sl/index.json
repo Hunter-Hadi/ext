@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Nadgraditev za odkrivanje znanja s pomočjo iskanja z umetno inteligenco",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Najmočnejši odgovorni motor, ki vam pomaga hitreje najti dejstva in jasno dobiti odgovore na vaša vprašanja.",
     "sidebar__tabs__search__title": "Iskanje",
-    "youtube_summary_button__text": "Povzetek"
+    "youtube_summary_button__text": "Povzetek",
+    "sidebar__tabs__search__tooltip": "Iskanje z umetno inteligenco"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -5,7 +5,7 @@ import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYou
 import {
   pushOutputToChat,
   templateParserDecorator,
-  withLoading,
+  withLoadingDecorators,
 } from '@/features/shortcuts'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
@@ -24,7 +24,7 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  @withLoading()
+  @withLoadingDecorators()
   async execute(params: ActionParameters, engine: any) {
     try {
       const currentUrl = window.location.href.includes('youtube.com')

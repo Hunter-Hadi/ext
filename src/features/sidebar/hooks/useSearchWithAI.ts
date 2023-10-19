@@ -21,8 +21,8 @@ import {
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import { getDefaultPrompt } from '@/features/sidebar/utils/searchWithAIHelper'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
 
 export const SMART_SEARCH_PROMPT = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
@@ -71,7 +71,7 @@ const generateSmartSearchPromptWithPreviousQuestion = (questions: string[]) => {
  * @param query
  */
 const generatePromptTemplate = async (query: string) => {
-  let promptTemplate = getDefaultPrompt() || ''
+  let promptTemplate = SEARCH_WITH_AI_PROMPT
   if (!promptTemplate) {
     return query
   }
@@ -211,6 +211,7 @@ const useSearchWithAI = () => {
               ...options.meta,
               messageVisibleText: query,
             },
+            AskChatGPTWithHistory: true,
           },
         },
         {
@@ -234,8 +235,8 @@ const useSearchWithAI = () => {
           parameters: {
             URLSearchEngine: 'google',
             URLSearchEngineParams: {
-              region: 'us',
-              limit: '10',
+              region: '',
+              limit: '6',
               btf: '',
               nojs: '1',
               ei: 'UTF-8',
@@ -247,15 +248,29 @@ const useSearchWithAI = () => {
         {
           type: 'SET_VARIABLE',
           parameters: {
+            VariableName: 'SEARCH_SOURCES',
+          },
+        },
+        {
+          type: 'WEBGPT_SEARCH_RESULTS_EXPAND',
+          parameters: {
+            SummarizeActionType: 'NO_SUMMARIZE',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
             VariableName: 'PAGE_CONTENT',
           },
         },
         {
           type: 'ASK_CHATGPT',
           parameters: {
+            AskChatGPTWithHistory: true,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN_QUESTION',
             AskChatGPTActionMeta: {
               messageVisibleText: query,
+              searchSources: '{{SEARCH_SOURCES}}',
             },
             template: await generatePromptTemplate(currentQuestion),
           },

@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "AI 기반 검색으로 지식을 발견하려면 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "빠르게 사실을 찾고 질문에 명확한 답변을 얻을 수 있는 가장 강력한 답변 엔진입니다.",
     "sidebar__tabs__search__title": "검색",
-    "youtube_summary_button__text": "요약"
+    "youtube_summary_button__text": "요약",
+    "sidebar__tabs__search__tooltip": "인공지능 기반 검색"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

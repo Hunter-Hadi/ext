@@ -3,6 +3,7 @@ export interface ITextHandlerParameters {
   noQuotes?: boolean
   noCommand?: boolean
   noSummaryTag?: boolean
+  noResponseTag?: boolean
 }
 
 export function textHandler(text: string, params?: ITextHandlerParameters) {
@@ -31,6 +32,13 @@ export function textHandler(text: string, params?: ITextHandlerParameters) {
 
   if (params?.noSummaryTag) {
     value = value.replaceAll('<summary>', '').replaceAll('</summary>', '')
+    // 删除第一个换行符
+    if (value[0] === '\n') {
+      value = value.slice(1)
+    }
+  }
+  if (params?.noResponseTag) {
+    value = value.replaceAll('<response>', '').replaceAll('</response>', '')
     // 删除第一个换行符
     if (value[0] === '\n') {
       value = value.slice(1)

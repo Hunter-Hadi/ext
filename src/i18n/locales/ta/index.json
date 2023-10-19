@@ -461,8 +461,9 @@
     "permission__pricing_hook__search_with_ai_openai_api__checker_description": "'ஐயும் தேடு' செயல்பாட்டை செல்லுபடிக்க உங்கள் சொந்த OpenAI API விசையைப் பயன்படுத்துங்கள்.",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "அறிவியல் மூலம் அறியும் மேலும் புத்தகங்களைக் கண்டறியுங்கள்",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "உண்மையான விவரங்களை விரைவில் கண்டறியும் மிகவும் சக்தியான பதில் எண்ணிக்கை இயந்திரத்தை உதவும்.",
-    "sidebar__tabs__search__title": "தேடல்",
-    "youtube_summary_button__text": "சுருக்கி"
+    "sidebar__tabs__search__title": "தேடு",
+    "youtube_summary_button__text": "சுருக்கி",
+    "sidebar__tabs__search__tooltip": "மின்னஞ்சல் அறிவிப்புடன் தேடு"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

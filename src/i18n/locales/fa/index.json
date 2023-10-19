@@ -462,7 +462,8 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "ارتقا برای کشف دانش با جستجوی قدرتمند هوش مصنوعی",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "قدرتمندترین موتور پاسخ که به شما در پیدا کردن حقایق سریعتر و پاسخ دادن به سوالاتتان به صورت روشن کمک می‌کند.",
     "sidebar__tabs__search__title": "جستجو",
-    "youtube_summary_button__text": "خلاصه کن"
+    "youtube_summary_button__text": "خلاصه کن",
+    "sidebar__tabs__search__tooltip": "جستجوی قدرتمند هوش مصنوعی"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

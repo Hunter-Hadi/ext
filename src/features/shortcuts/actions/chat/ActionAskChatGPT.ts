@@ -1,6 +1,7 @@
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
+  parametersParserDecorator,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -25,6 +26,8 @@ export class ActionAskChatGPT extends Action {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   private message?: IChatMessage
+
+  @parametersParserDecorator()
   @templateParserDecorator()
   @clearUserInput(false)
   async execute(params: ActionParameters, engine: any) {
@@ -32,6 +35,7 @@ export class ActionAskChatGPT extends Action {
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ask_chatgpt'
       const askChatGPTProvider = this.parameters.AskChatGPTProvider
+      const includeHistory = this.parameters.AskChatGPTWithHistory || false
       if (askChatGPTProvider) {
         // 设置了单独的Provider和model，实例化一个chatSystem
         // const chatSystemInstance = this.createChatSystemInstance(
@@ -61,7 +65,7 @@ export class ActionAskChatGPT extends Action {
           parentMessageId: '',
         },
         {
-          includeHistory: false,
+          includeHistory,
           regenerate: false,
           meta: {
             ...this.parameters.AskChatGPTActionMeta,

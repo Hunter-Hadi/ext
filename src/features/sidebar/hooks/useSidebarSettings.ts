@@ -13,6 +13,7 @@ import {
 } from '@/features/sidebar/store'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { IChatConversation } from '@/background/src/chatConversations'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 const useSidebarSettings = () => {
   const [appLocalStorage, setAppLocalStorage] = useRecoilState(
@@ -22,6 +23,18 @@ const useSidebarSettings = () => {
   const [sidebarPageState, setSidebarPageSate] = useRecoilState(
     SidebarPageState,
   )
+
+  useEffectOnce(() => {
+    const url = new URL(window.location.href)
+    const searchParams = new URLSearchParams(url.search)
+    const urlParamConversationType = searchParams.get('conversationType')
+    if (urlParamConversationType) {
+      updateSidebarConversationType(
+        urlParamConversationType as ISidebarConversationType,
+      )
+    }
+  })
+
   const currentSidebarConversationType =
     sidebarPageState.sidebarConversationType
   const currentSidebarAIProvider =

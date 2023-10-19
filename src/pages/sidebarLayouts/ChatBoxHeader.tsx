@@ -20,10 +20,14 @@ import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Button from '@mui/material/Button'
 import Browser from 'webextension-polyfill'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ChatBoxHeader: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const { chatBoxShortCutKey } = useCommands()
+
+  const { currentSidebarConversationType } = useSidebarSettings()
+
   return (
     <Stack
       flexDirection={'row'}
@@ -101,6 +105,7 @@ const ChatBoxHeader: FC = () => {
             onClick={() => {
               chromeExtensionClientOpenPage({
                 url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                query: `?conversationType=${currentSidebarConversationType}`,
               })
             }}
           >

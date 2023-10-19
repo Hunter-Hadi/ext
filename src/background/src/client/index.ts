@@ -118,7 +118,7 @@ export const ClientMessageInit = () => {
                 }
               }
               const tab = await Browser.tabs.create({
-                url,
+                url: url + query,
                 active,
               })
               return {

@@ -12,8 +12,6 @@ export interface IChatMessage {
   // 本条消息是否展示
   messageVisible?: boolean
   parentMessageId?: string
-  // 是否显示在历史记录里
-  visible?: boolean
   // 不同的message存放数据的地方
   extra?: {
     [key: string]: any

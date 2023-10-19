@@ -74,7 +74,7 @@ const SidebarChatBoxAiTools: FC<{
           iconButton
           onBeforeShowContextMenu={() => {
             return {
-              template: message.text,
+              template: memoCopyText,
               target: gmailChatBoxAiToolsRef.current
                 ?.parentElement as HTMLElement,
             }

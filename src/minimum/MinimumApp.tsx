@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react'
 import FloatingMenuButton from '@/minimum/components/FloatingMenuButton'
-import MinimumAppInit from '@/minimum/MinimumAppInit'
 import { useRecoilValue } from 'recoil'
 import { AppDBStorageState } from '@/store'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { ROOT_CONTAINER_ID } from '@/constants'
 import YouTubeSummaryButton from '@/minimum/components/YouTubeSummaryButton'
+import MinimumAppInit from '@/minimum/MinimumAppInit'
 
 const MinimumApp: FC = () => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
@@ -35,13 +35,15 @@ const MinimumApp: FC = () => {
     }, 500)
   })
   return (
-    <AppSuspenseLoadingLayout>
+    <>
       <MinimumAppInit />
-      {appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen && (
-        <FloatingMenuButton />
-      )}
-      <YouTubeSummaryButton />
-    </AppSuspenseLoadingLayout>
+      <AppSuspenseLoadingLayout>
+        {appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen && (
+          <FloatingMenuButton />
+        )}
+        <YouTubeSummaryButton />
+      </AppSuspenseLoadingLayout>
+    </>
   )
 }
 export default MinimumApp

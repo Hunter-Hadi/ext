@@ -277,13 +277,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             if (msg.conversationId) {
               AIConversationId = msg.conversationId
             }
-            setConversation((prevState) => {
-              return {
-                ...prevState,
-                loading: true,
-                writingMessage,
-              }
-            })
+            if (options?.aiMessageVisible !== false) {
+              setConversation((prevState) => {
+                return {
+                  ...prevState,
+                  loading: true,
+                  writingMessage,
+                }
+              })
+            }
           },
           onError: async (error: any) => {
             hasError = true

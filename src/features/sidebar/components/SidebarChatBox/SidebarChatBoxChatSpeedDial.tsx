@@ -78,8 +78,8 @@ const SidebarChatBoxChatSpeedDial: FC<{
               placement={'left'}
               title={
                 currentSidebarConversationType === 'Summary'
-                  ? t('client:sidebar__tabs__chat__action_btn__title')
-                  : t('client:sidebar__tabs__summary__action_btn__title')
+                  ? t('client:sidebar__tabs__summary__action_btn__title')
+                  : t('client:sidebar__tabs__chat__action_btn__title')
               }
             >
               <Stack

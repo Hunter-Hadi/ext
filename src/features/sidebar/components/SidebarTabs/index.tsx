@@ -48,7 +48,7 @@ export const sidebarTabsData: Array<{
   },
   {
     label: 'client:sidebar__tabs__search__title',
-    tooltip: () => 'client:sidebar__tabs__search__title',
+    tooltip: () => 'client:sidebar__tabs__search__tooltip',
     value: 'Search',
   },
 ]

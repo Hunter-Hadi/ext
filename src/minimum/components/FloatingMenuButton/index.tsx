@@ -12,9 +12,10 @@ import Browser from 'webextension-polyfill'
 import useEffectOnce from '@/hooks/useEffectOnce'
 // import MaxAIHideMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
-const actionsCount = 2
+const actionsCount = 3
 const safeTopY = actionsCount * (32 + 6)
 
 const saveBowserLocalStoreageFloatingButtonY = async (y: number) => {
@@ -138,6 +139,7 @@ const FloatingMenuButton: FC = () => {
               actions={[
                 // <MaxAIHideMiniButton key={'MaxAIHideMiniButton'} />,
                 <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />,
+                <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />,
                 <MaxAISummarizeButton key={'MaxAISummarizeButton'} />,
               ]}
             />

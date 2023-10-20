@@ -82,11 +82,14 @@ export const ClientMessageInit = () => {
           {
             const { url, key, query = '', active = true } = data
             if (url) {
-              if (url === Browser.runtime.getURL(`/pages/chat/index.html`)) {
+              if (
+                url.startsWith(Browser.runtime.getURL(`/pages/chat/index.html`))
+              ) {
                 if (
                   sender?.url &&
-                  sender.url ===
-                    Browser.runtime.getURL('/pages/popup/index.html')
+                  sender.url.startsWith(
+                    Browser.runtime.getURL('/pages/popup/index.html'),
+                  )
                 ) {
                   const totalTabs = await Browser.tabs.query({
                     currentWindow: true,
@@ -108,18 +111,29 @@ export const ClientMessageInit = () => {
                     }
                   }
                 }
-                const findTab: Browser.Tabs.Tab | null =
-                  (
-                    await Browser.tabs.query({
-                      url,
+                const allTabs = await Browser.tabs.query({
+                  currentWindow: true,
+                })
+                for (let i = 0; i < allTabs.length; i++) {
+                  const tab = allTabs[i]
+                  if (
+                    tab.url &&
+                    tab.url.startsWith(
+                      Browser.runtime.getURL(`/pages/chat/index.html`),
+                    )
+                  ) {
+                    await Browser.tabs.update(tab.id, {
+                      url: url + query,
+                      active,
                     })
-                  )?.[0] || null
-                if (findTab) {
-                  // active
-                  await Browser.tabs.update(findTab.id, {
-                    active: true,
-                  })
-                  return
+                    return {
+                      data: {
+                        tabId: tab.id,
+                      },
+                      success: true,
+                      message: 'ok',
+                    }
+                  }
                 }
               }
               const tab = await Browser.tabs.create({

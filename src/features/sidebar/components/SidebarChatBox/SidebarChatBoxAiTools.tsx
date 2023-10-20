@@ -28,7 +28,7 @@ const SidebarChatBoxAiTools: FC<{
     if (message.originalMessage?.metadata?.sources?.links) {
       // 把长的引用链接变成短的: [[a](link)] => [a]
       currentCopyText = currentCopyText.replace(
-        /\[\[(\d+)\]\([^\)]+\)\]/g,
+        /\[\[(\d+)\]\([^)]+\)\]/g,
         '[$1]',
       )
       const links = message.originalMessage.metadata.sources.links

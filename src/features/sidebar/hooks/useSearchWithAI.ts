@@ -36,7 +36,7 @@ The question is the final one in a series of previous questions and answers. Her
 
 For your reference, today's date is {{CURRENT_DATE}}.
 
-Output the search query without additional context, explanation, or extra wording, just the search query itself. Don't use any punctuation, especially no quotes or backticks, around the search query.Output the search query without additional context, explanation, or extra wording, just the search query itself. Don't use any punctuation, especially no quotes or backticks, around the search query.`
+Output the search query without additional context, explanation, or extra wording, just the search query itself. Don't use any punctuation, especially no quotes or backticks, around the search query.`
 
 const generateSmartSearchPromptWithPreviousQuestion = (questions: string[]) => {
   let template = SMART_SEARCH_PROMPT

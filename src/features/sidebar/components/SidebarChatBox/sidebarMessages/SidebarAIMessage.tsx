@@ -35,7 +35,7 @@ export const SidebarAIMessage: FC<{
         message.originalMessage?.metadata?.sources?.status === 'loading',
       answer: message.text,
       content: message.originalMessage?.content,
-      contentLoading: !message.originalMessage?.metadata?.isComplete,
+      messageIsComplete: !message.originalMessage?.metadata?.isComplete,
     }
     if (message.originalMessage?.content?.text) {
       currentRenderData.answer =
@@ -106,7 +106,8 @@ export const SidebarAIMessage: FC<{
                           width={16}
                           height={16}
                         >
-                          {item.status === 'loading' ? (
+                          {item.status === 'loading' &&
+                          !renderData.messageIsComplete ? (
                             <CircularProgress size={16} />
                           ) : (
                             <ContextMenuIcon
@@ -176,7 +177,7 @@ export const SidebarAIMessage: FC<{
           {renderData.sources && (
             <Stack spacing={1}>
               <Stack direction={'row'} alignItems="center" spacing={1}>
-                {renderData.sourcesLoading ? (
+                {renderData.sourcesLoading && !renderData.messageIsComplete ? (
                   <CircularProgress size={18} />
                 ) : (
                   <CaptivePortalIcon
@@ -279,7 +280,7 @@ export const SidebarAIMessage: FC<{
           )}
           {renderData.content && (
             <Stack>
-              {renderData.contentLoading ? (
+              {renderData.messageIsComplete ? (
                 <Stack direction={'row'} alignItems="center" spacing={1}>
                   <CircularProgress size={18} />
                   <Typography

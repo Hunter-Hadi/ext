@@ -1,10 +1,7 @@
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import {
-  pushOutputToChat,
-  templateParserDecorator,
-} from '@/features/shortcuts/decorators'
+import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 
 export class ActionTextHandler extends Action {
@@ -18,9 +15,9 @@ export class ActionTextHandler extends Action {
     super(id, type, parameters, autoExecute)
   }
   @templateParserDecorator()
-  @pushOutputToChat({
-    onlyError: true,
-  })
+  // @pushOutputToChat({
+  //   onlyError: true,
+  // })
   async execute(params: ActionParameters, engine: any) {
     try {
       const text = params.LAST_ACTION_OUTPUT || this.parameters.template || ''

@@ -322,6 +322,29 @@ export default class ConversationManager {
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true
   }
+  static async updateMessage(
+    conversationId: string,
+    updateMessage: IChatMessage,
+  ) {
+    const conversation = await this.conversationDB.getConversationById(
+      conversationId,
+    )
+    if (!conversation) {
+      return false
+    }
+    const messageIndex = conversation.messages.findIndex(
+      (message) => message.messageId === updateMessage.messageId,
+    )
+    if (messageIndex === -1) {
+      return false
+    }
+    conversation.messages[messageIndex] = mergeWithObject([
+      conversation.messages[messageIndex],
+      updateMessage,
+    ])
+    await this.conversationDB.addOrUpdateConversation(conversation)
+    return true
+  }
   static async deleteMessages(conversationId: string, deleteCount: number) {
     const conversation = await this.conversationDB.getConversationById(
       conversationId,

@@ -364,11 +364,11 @@ export const processAskAIParameters = async (
     for (let i = conversation.messages.length - 1; i >= 0; i--) {
       const message = conversation.messages[i]
       // 如果是ai回复，那么标记开始
-      if (message.type === 'ai' && endIndex === null) {
+      if (message.type === 'ai' && message.text && endIndex === null) {
         endIndex = i
       }
       // 如果是用户消息，从非includeHistory的消息开始
-      if (message.type === 'user' && startIndex === null) {
+      if (message.type === 'user' && message.text && startIndex === null) {
         if (!(message as IUserChatMessage).extra.includeHistory) {
           startIndex = i
         }

@@ -33,7 +33,10 @@ import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
 import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
 import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
-import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
+import {
+  IChatMessage,
+  IChatMessageExtraMetaType,
+} from '@/features/chatgpt/types'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
@@ -180,6 +183,8 @@ interface ActionParameters {
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionMeta?: IChatMessageExtraMetaType
+  // 需要把writingMessage注入的消息id
+  AskChatGPTInsertMessageId?: string
   AskChatGPTWithHistory?: boolean
   AskChatGPTProvider?: {
     provider: IAIProviderType
@@ -196,6 +201,10 @@ interface ActionParameters {
   CreateWebsiteContextConfig?: Partial<IWebsiteContext>
   // 处理文本
   ActionTextHandleParameters?: ITextHandlerParameters
+  // 消息
+  ActionChatMessageType?: IChatMessage['type']
+  ActionChatMessageOperationType?: 'add' | 'update' | 'delete'
+  ActionChatMessageConfig?: IChatMessage
 }
 
 export default ActionParameters

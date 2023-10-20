@@ -4,6 +4,7 @@ import { TFunction } from 'i18next'
 import React from 'react'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { IUserRoleType } from '@/features/auth/types'
+import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 
 export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
@@ -76,6 +77,7 @@ export interface IAIResponseOriginalMessage {
     isComplete?: boolean
     title?: string
     sources?: {
+      status: 'loading' | 'complete'
       links?: Array<{
         title: string
         url: string
@@ -84,6 +86,12 @@ export interface IAIResponseOriginalMessage {
         from?: string
       }>
     }
+    quickSearch?: Array<{
+      status: 'loading' | 'complete'
+      title: string
+      icon: IContextMenuIconKey
+      value?: string | string[] | Record<string, any>
+    }>
     // TODO
     related?: string[]
     copilot?: string[]

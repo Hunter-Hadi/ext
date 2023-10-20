@@ -2,6 +2,7 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
+  parametersParserDecorator,
   pushOutputToChat,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
@@ -26,6 +27,8 @@ export class ActionGetContentsOfSearchEngine extends Action {
   ) {
     super(id, 'GET_CONTENTS_OF_SEARCH_ENGINE', parameters, autoExecute)
   }
+
+  @parametersParserDecorator()
   @pushOutputToChat({
     onlyError: true,
   })

@@ -493,6 +493,11 @@ export const ClientMessageInit = () => {
                 conversationId,
                 99999999,
               )
+            } else if (action === 'update') {
+              success = await ConversationManager.updateMessage(
+                conversationId,
+                newMessages[0],
+              )
             }
             sender.tab?.id &&
               (await Browser.tabs.sendMessage(sender.tab.id, {

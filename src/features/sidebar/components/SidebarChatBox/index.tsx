@@ -152,7 +152,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
       for (let i = messages.length - 1; i >= 0; i--) {
         const message = messages[i]
-        if (message.type === 'user' || message.type === 'system') {
+        if (message) {
+          // if (message.type === 'user' || message.type === 'system') {
           const list = stackRef.current
           if (
             lastScrollId.current &&

@@ -6,9 +6,11 @@ import {
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { IChatMessage } from '@/features/chatgpt/types'
+import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
@@ -36,6 +38,8 @@ export class ActionAskChatGPT extends Action {
         this.parameters.AskChatGPTActionType || 'ask_chatgpt'
       const askChatGPTProvider = this.parameters.AskChatGPTProvider
       const includeHistory = this.parameters.AskChatGPTWithHistory || false
+      // 用于像search with ai持续更新的message
+      const insertMessageId = this.parameters.AskChatGPTInsertMessageId || ''
       if (askChatGPTProvider) {
         // 设置了单独的Provider和model，实例化一个chatSystem
         // const chatSystemInstance = this.createChatSystemInstance(
@@ -43,6 +47,7 @@ export class ActionAskChatGPT extends Action {
         // )
         // TODO
       }
+      const conversationId = this.getCurrentConversationId(engine)
       if (
         askChatGPTType === 'ASK_CHAT_GPT_WITH_PREFIX' &&
         this.parameters.AskChatGPTActionMeta?.contextMenu
@@ -76,6 +81,43 @@ export class ActionAskChatGPT extends Action {
           userMessageVisible:
             askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
             askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_QUESTION',
+        },
+        {
+          onProcess: async (message: IChatMessage) => {
+            if (insertMessageId && conversationId) {
+              message.messageId = insertMessageId
+              await clientChatConversationModifyChatMessages(
+                'update',
+                conversationId,
+                0,
+                [message],
+              )
+            }
+          },
+          onEnd: async (isSuccess: boolean, message: IAIResponseMessage) => {
+            if (insertMessageId && conversationId) {
+              if (message) {
+                message.messageId = insertMessageId
+                await clientChatConversationModifyChatMessages(
+                  'update',
+                  conversationId,
+                  0,
+                  [
+                    mergeWithObject([
+                      message,
+                      {
+                        originalMessage: {
+                          metadata: {
+                            isComplete: true,
+                          },
+                        },
+                      },
+                    ]),
+                  ],
+                )
+              }
+            }
+          },
         },
       )) || { success: false, answer: '', error: '' }
       if (success) {

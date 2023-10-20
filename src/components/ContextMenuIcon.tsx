@@ -58,6 +58,8 @@ import FullscreenOutlinedIcon from '@mui/icons-material/FullscreenOutlined'
 import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined'
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
+import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined'
+import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -127,6 +129,8 @@ export const CONTEXT_MENU_ICONS = [
   'ArrowDropUp',
   'ArrowDropDown',
   'Search',
+  'Bolt',
+  'CheckCircle',
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -311,6 +315,10 @@ const ContextMenuIcon: FC<{
       return <ArrowDropDownOutlinedIcon sx={sxMemo} />
     case 'Search':
       return <SearchOutlinedIcon sx={sxMemo} />
+    case 'Bolt':
+      return <BoltOutlinedIcon sx={sxMemo} />
+    case 'CheckCircle':
+      return <CheckCircleOutlineOutlined sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

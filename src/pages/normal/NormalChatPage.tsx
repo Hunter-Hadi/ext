@@ -36,7 +36,7 @@ const NormalChatPage = () => {
         insertAble={false}
         onSendMessage={async (question, options) => {
           if (currentSidebarConversationType === 'Search') {
-            await createSearchWithAI(question, options)
+            await createSearchWithAI(question)
           } else {
             console.log('NormalChatPage onSendMessage', options)
             await sendQuestion(

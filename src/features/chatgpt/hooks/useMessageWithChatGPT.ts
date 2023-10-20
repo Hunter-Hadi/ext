@@ -14,7 +14,6 @@ import {
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
-  IThirdChatMessage,
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
@@ -89,7 +88,13 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       userMessageVisible?: boolean
       aiMessageVisible?: boolean
     },
+    listeners?: {
+      onStart?: (question: string) => Promise<void>
+      onProcess?: (writingMessage: IChatMessage) => Promise<void>
+      onEnd?: (success: boolean, message?: IChatMessage) => Promise<void>
+    },
   ): Promise<{ success: boolean; answer: string; error: string }> => {
+    const { onStart, onProcess, onEnd } = listeners || {}
     const host = getCurrentDomainHost()
     const contextMenu = options?.meta?.contextMenu
     // 发消息前,或者报错信息用到的升级卡片
@@ -229,6 +234,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         [questionMessage],
       )
     }
+    if (onStart) {
+      await onStart(questionMessage.text)
+    }
     const pushMessages: IChatMessage[] = []
     let isManualStop = false
     let hasError = false
@@ -268,13 +276,16 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
         },
         {
-          onMessage: (msg) => {
+          onMessage: async (msg) => {
             const writingMessage: IAIResponseMessage = {
               messageId: (msg.messageId as string) || uuidV4(),
               parentMessageId: (msg.parentMessageId as string) || uuidV4(),
               text: (msg.text as string) || '',
               type: 'ai' as const,
               originalMessage: msg.originalMessage,
+            }
+            if (onProcess) {
+              await onProcess(cloneDeep(writingMessage))
             }
             aiRespondingMessage = cloneDeep(writingMessage)
             if (msg.conversationId) {
@@ -386,6 +397,9 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         error: (e as any).message || e,
       })
     } finally {
+      if (onEnd) {
+        await onEnd(hasError, pushMessages?.[0])
+      }
       // 清空输入框
       updateChatInputValue('')
       // 清空writingMessage
@@ -474,7 +488,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     }
   }
   const pushMessage = async (
-    newMessage: ISystemChatMessage | IThirdChatMessage,
+    newMessage: IChatMessage,
     conversationId?: string,
   ) => {
     if (conversationId || currentSidebarConversationId) {
@@ -483,6 +497,19 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         conversationId || currentSidebarConversationId || '',
         0,
         [newMessage],
+      )
+    }
+  }
+  const updateMessage = async (
+    message: IChatMessage,
+    conversationId?: string,
+  ) => {
+    if (conversationId && message.messageId) {
+      await clientChatConversationModifyChatMessages(
+        'update',
+        conversationId,
+        0,
+        [message],
       )
     }
   }
@@ -533,6 +560,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
     reGenerate,
     stopGenerateMessage,
     pushMessage,
+    updateMessage,
     deleteMessage,
     updateConversation,
     getSidebarRef,

@@ -1,7 +1,7 @@
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { IAction } from '@/features/shortcuts/types/Action'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
+import { IChatMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 import { IChatConversation } from '@/background/src/chatConversations'
@@ -33,7 +33,7 @@ class Action implements IAction {
     this.output = ''
     this.status = 'complete'
   }
-  async pushMessageToChat(message: ISystemChatMessage, engine: any) {
+  async pushMessageToChat(message: IChatMessage, engine: any) {
     if (engine && engine.getChartGPT()?.pushMessage) {
       const conversationId = this.getCurrentConversationId(engine)
       await engine.getChartGPT()?.pushMessage(message, conversationId)

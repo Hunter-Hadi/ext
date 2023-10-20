@@ -8,7 +8,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 
 export const clientChatConversationModifyChatMessages = async (
-  action: 'add' | 'delete' | 'clear',
+  action: 'add' | 'delete' | 'clear' | 'update',
   conversationId: string,
   deleteCount: number,
   newMessages: Array<

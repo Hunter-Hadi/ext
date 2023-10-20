@@ -17,13 +17,11 @@ import { getPermissionCardMessageByPermissionCardSettings } from '@/features/aut
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import dayjs from 'dayjs'
-import {
-  IUserChatMessage,
-  IUserChatMessageExtraType,
-} from '@/features/chatgpt/types'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { v4 as uuidV4 } from 'uuid'
 
 export const SMART_SEARCH_PROMPT = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
@@ -96,8 +94,6 @@ const useSearchWithAI = () => {
     currentSidebarConversationType,
     currentSidebarConversationMessages,
   } = useSidebarSettings()
-  const [prevQuery, setPrevQuery] = useState('')
-  const [prevOptions, setPrevOptions] = useState<IUserChatMessageExtraType>({})
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
@@ -107,19 +103,16 @@ const useSearchWithAI = () => {
   const isFetchingRef = useRef(false)
   const memoPrevQuestions = useMemo(() => {
     return currentSidebarConversationMessages
-      .filter((message) => message.type === 'user')
-      .map((userMessage) => {
+      .filter((message) => message.type === 'ai')
+      .map((aiMessage) => {
         return (
-          (userMessage as IUserChatMessage)?.extra?.meta?.messageVisibleText ||
-          userMessage.text ||
+          (aiMessage as IAIResponseMessage)?.originalMessage?.metadata?.title ||
+          aiMessage.text ||
           ''
         )
       })
   }, [currentSidebarConversationMessages])
-  const createSearchWithAI = async (
-    query: string,
-    options: IUserChatMessageExtraType,
-  ) => {
+  const createSearchWithAI = async (query: string) => {
     if (isFetchingRef.current) {
       return
     }
@@ -202,14 +195,42 @@ const useSearchWithAI = () => {
           },
         },
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: uuidV4(),
+              text: '',
+              originalMessage: {
+                metadata: {
+                  title: query,
+                  quickSearch: [
+                    {
+                      title: 'Understanding question',
+                      status: 'loading',
+                      icon: 'CheckCircle',
+                    },
+                  ],
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
+        },
+        {
           type: 'ASK_CHATGPT',
           parameters: {
             template: generateSmartSearchPromptWithPreviousQuestion(
               memoPrevQuestions.concat(currentQuestion),
             ),
-            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN_ANSWER',
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
             AskChatGPTActionMeta: {
-              ...options.meta,
               messageVisibleText: query,
               contextMenu: {
                 id: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',
@@ -243,10 +264,47 @@ const useSearchWithAI = () => {
           },
         },
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  quickSearch: [
+                    {
+                      title: 'Understanding question',
+                      status: 'complete',
+                      icon: 'CheckCircle',
+                    },
+                    {
+                      title: 'Searching web',
+                      status: 'loading',
+                      icon: 'Search',
+                      value: '{{SMART_SEARCH_QUERY}}',
+                    },
+                  ],
+                  sources: {
+                    status: 'loading',
+                    links: [],
+                  },
+                },
+                content: {
+                  contentType: 'text',
+                  text: '',
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
           type: 'GET_CONTENTS_OF_SEARCH_ENGINE',
           parameters: {
             URLSearchEngine: 'google',
             URLSearchEngineParams: {
+              q: `{{SMART_SEARCH_QUERY}}`,
               region: '',
               limit: '6',
               btf: '',
@@ -261,6 +319,45 @@ const useSearchWithAI = () => {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'SEARCH_SOURCES',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  title: query,
+                  quickSearch: [
+                    {
+                      title: 'Understanding question',
+                      status: 'complete',
+                      icon: 'CheckCircle',
+                    },
+                    {
+                      title: 'Searching web',
+                      status: 'complete',
+                      icon: 'Search',
+                      value: '{{SMART_SEARCH_QUERY}}',
+                    },
+                  ],
+                  sources: {
+                    status: 'complete',
+                    links: `{{SEARCH_SOURCES}}` as any,
+                  },
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `{{SEARCH_SOURCES}}`,
           },
         },
         {
@@ -279,7 +376,8 @@ const useSearchWithAI = () => {
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTWithHistory: true,
-            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN_QUESTION',
+            AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
             AskChatGPTActionMeta: {
               messageVisibleText: query,
               searchSources: '{{SEARCH_SOURCES}}',
@@ -299,8 +397,6 @@ const useSearchWithAI = () => {
           },
         },
       ]
-      setPrevQuery(query)
-      setPrevOptions(options)
       setRunActions(actions)
     } catch (e) {
       console.log('创建Conversation失败', e)
@@ -309,51 +405,23 @@ const useSearchWithAI = () => {
   const regenerateSearchWithAI = async () => {
     try {
       if (currentSidebarConversationId) {
-        if (prevQuery) {
+        const lastQuestion = memoPrevQuestions[memoPrevQuestions.length - 1]
+        if (lastQuestion) {
           await clientChatConversationModifyChatMessages(
             'delete',
             currentSidebarConversationId,
-            2,
+            1,
             [],
           )
-          await createSearchWithAI(prevQuery, prevOptions)
+          await createSearchWithAI(lastQuestion)
         } else {
-          let deleteCount = 0
-          let userMessage: IUserChatMessage | null = null
-          // find last user message
-          for (
-            let i = currentSidebarConversationMessages.length - 1;
-            i >= 0;
-            i--
-          ) {
-            if (currentSidebarConversationMessages[i].type === 'user') {
-              userMessage = currentSidebarConversationMessages[
-                i
-              ] as IUserChatMessage
-              deleteCount = currentSidebarConversationMessages.length - i
-              break
-            }
-          }
+          // 如果没有找到last question，那么就重新生成Conversation
           await clientChatConversationModifyChatMessages(
             'delete',
             currentSidebarConversationId,
-            deleteCount,
+            9999,
             [],
           )
-          if (userMessage?.extra?.meta?.messageVisibleText) {
-            await createSearchWithAI(
-              userMessage.extra.meta.messageVisibleText,
-              userMessage.extra,
-            )
-          } else {
-            // 如果没有找到user message，那么就重新生成Conversation
-            await clientChatConversationModifyChatMessages(
-              'delete',
-              currentSidebarConversationId,
-              9999,
-              [],
-            )
-          }
         }
       }
     } catch (e) {

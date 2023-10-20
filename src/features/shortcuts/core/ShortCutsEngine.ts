@@ -36,6 +36,7 @@ import {
   ActionGetSocialMediaPostContentOfWebPage,
   ActionCreateWebsiteContext,
   ActionTextHandler,
+  ActionChatMessage,
 } from '@/features/shortcuts/actions'
 import { v4 } from 'uuid'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -51,6 +52,7 @@ const ActionClassMap = {
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAnalyzeChatFile.type]: ActionAnalyzeChatFile,
+  [ActionChatMessage.type]: ActionChatMessage,
   // scripts
   [ActionInsertUserInput.type]: ActionInsertUserInput,
   [ActionSetVariable.type]: ActionSetVariable,

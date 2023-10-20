@@ -17,21 +17,25 @@ import {
   CaptivePortalIcon,
   ReadIcon,
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
-import sum from 'lodash-es/sum'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import isArray from 'lodash-es/isArray'
 
 export const SidebarAIMessage: FC<{
   message: IAIResponseMessage
   isDarkMode?: boolean
 }> = (props) => {
   const { message, isDarkMode } = props
+  const isRichAIMessage = message.originalMessage !== undefined
   const renderData = useMemo(() => {
     const currentRenderData = {
       title: message.originalMessage?.metadata?.title,
-      sources: message.originalMessage?.metadata?.sources || {
-        links: [],
-      },
+      quickSearch: message.originalMessage?.metadata?.quickSearch,
+      sources: message.originalMessage?.metadata?.sources,
+      sourcesLoading:
+        message.originalMessage?.metadata?.sources?.status === 'loading',
       answer: message.text,
-      isWriting: !message.originalMessage?.metadata?.isComplete,
+      content: message.originalMessage?.content,
+      contentLoading: !message.originalMessage?.metadata?.isComplete,
     }
     if (message.originalMessage?.content?.text) {
       currentRenderData.answer =
@@ -46,20 +50,11 @@ export const SidebarAIMessage: FC<{
   const isWaitFirstAIResponseText = useMemo(() => {
     return !renderData.answer
   }, [renderData.answer])
-  const isAIMessageHasSources = useMemo(() => {
-    return sum(
-      Object.values(renderData.sources).map((value) => {
-        if (value instanceof Array) {
-          return value.length
-        }
-        return 0
-      }),
-    )
-  }, [renderData.sources])
+
   return (
     <>
-      {isAIMessageHasSources ? (
-        <Stack spacing={3}>
+      {isRichAIMessage ? (
+        <Stack spacing={2}>
           {renderData.title && (
             <Typography
               sx={{
@@ -70,15 +65,127 @@ export const SidebarAIMessage: FC<{
               {renderData.title}
             </Typography>
           )}
-          {renderData.sources.links?.length ? (
+          {renderData.quickSearch && (
             <Stack spacing={1}>
               <Stack direction={'row'} alignItems="center" spacing={1}>
-                <CaptivePortalIcon
+                <Stack
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  width={16}
+                  height={16}
+                >
+                  <ContextMenuIcon
+                    sx={{
+                      color: 'primary.main',
+                      fontSize: 24,
+                    }}
+                    icon={'Bolt'}
+                  />
+                </Stack>
+                <Typography
                   sx={{
                     color: 'primary.main',
-                    fontSize: 20,
+                    fontSize: 18,
                   }}
-                />
+                >
+                  Quick search
+                </Typography>
+              </Stack>
+              <Stack spacing={1}>
+                {renderData.quickSearch.map((item) => {
+                  return (
+                    <Stack key={item.status + item.title} spacing={0.5}>
+                      <Stack
+                        spacing={1}
+                        direction={'row'}
+                        alignItems={'center'}
+                      >
+                        <Stack
+                          alignItems={'center'}
+                          justifyContent={'center'}
+                          width={16}
+                          height={16}
+                        >
+                          {item.status === 'loading' ? (
+                            <CircularProgress size={16} />
+                          ) : (
+                            <ContextMenuIcon
+                              sx={{
+                                color: 'primary.main',
+                                fontSize: 16,
+                              }}
+                              icon={item.icon}
+                            />
+                          )}
+                        </Stack>
+                        <Typography
+                          fontSize={16}
+                          color="text.primary"
+                          noWrap
+                          sx={{
+                            p: 0,
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+                      </Stack>
+                      {item.value && (
+                        <Stack
+                          spacing={1}
+                          direction={'row'}
+                          alignItems={'center'}
+                        >
+                          <Stack
+                            alignItems={'center'}
+                            justifyContent={'center'}
+                            width={16}
+                            height={16}
+                          />
+                          {isArray(item.value) &&
+                            item.value.map((tag) => {
+                              return (
+                                <Card
+                                  key={tag}
+                                  variant="outlined"
+                                  sx={{ px: 1 }}
+                                >
+                                  <Typography
+                                    fontSize={14}
+                                    color={'text.primary'}
+                                  >
+                                    {tag}
+                                  </Typography>
+                                </Card>
+                              )
+                            })}
+                          {typeof item.value === 'string' && (
+                            <Card variant="outlined" sx={{ px: 1 }}>
+                              <Typography fontSize={14} color={'text.primary'}>
+                                {item.value}
+                              </Typography>
+                            </Card>
+                          )}
+                        </Stack>
+                      )}
+                    </Stack>
+                  )
+                })}
+              </Stack>
+            </Stack>
+          )}
+          {renderData.sources && (
+            <Stack spacing={1}>
+              <Stack direction={'row'} alignItems="center" spacing={1}>
+                {renderData.sourcesLoading ? (
+                  <CircularProgress size={18} />
+                ) : (
+                  <CaptivePortalIcon
+                    sx={{
+                      color: 'primary.main',
+                      fontSize: 20,
+                    }}
+                  />
+                )}
                 <Typography
                   sx={{
                     color: 'primary.main',
@@ -88,81 +195,91 @@ export const SidebarAIMessage: FC<{
                   Sources
                 </Typography>
               </Stack>
-              <Grid container spacing={1}>
-                {renderData.sources.links.map((source, index) => (
-                  <Grid item xs={6} key={source.title}>
-                    <Card variant="outlined">
-                      <Link
-                        href={source.url}
-                        target={'_blank'}
-                        underline="none"
-                      >
-                        <Stack p={1} spacing={0.5}>
-                          <Typography
-                            fontSize={14}
-                            color="text.primary"
-                            noWrap
-                            sx={{
-                              p: 0,
-                            }}
-                          >
-                            {source.title}
-                          </Typography>
-                          <Stack
-                            direction={'row'}
-                            alignItems="center"
-                            spacing={0.5}
-                          >
-                            <Box
-                              width={16}
-                              height={16}
-                              borderRadius="50%"
-                              overflow="hidden"
-                              flexShrink={0}
+              {renderData.sources.links && (
+                <Grid
+                  container
+                  spacing={1}
+                  sx={{
+                    ml: `-8px!important`,
+                  }}
+                >
+                  {renderData.sourcesLoading
+                    ? Array(SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT)
+                        .fill('')
+                        .map((_, index) => (
+                          <Grid item xs={6} key={index}>
+                            <Skeleton
+                              variant="rounded"
+                              width={'100%'}
+                              height={60}
+                            />
+                          </Grid>
+                        ))
+                    : renderData.sources.links.map((source, index) => (
+                        <Grid item xs={6} key={source.title}>
+                          <Card variant="outlined">
+                            <Link
+                              href={source.url}
+                              target={'_blank'}
+                              underline="none"
                             >
-                              <img
-                                src={source.favicon}
-                                alt={source?.from}
-                                width="100%"
-                                height="100%"
-                              />
-                            </Box>
-                            <Typography
-                              fontSize={12}
-                              color="text.secondary"
-                              noWrap
-                            >
-                              {source?.from}
-                            </Typography>
-                            <Typography
-                              fontSize={12}
-                              color="text.secondary"
-                              flexShrink={0}
-                            >
-                              · {index + 1}
-                            </Typography>
-                          </Stack>
-                        </Stack>
-                      </Link>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
+                              <Stack p={1} spacing={0.5}>
+                                <Typography
+                                  fontSize={14}
+                                  color="text.primary"
+                                  noWrap
+                                  sx={{
+                                    p: 0,
+                                  }}
+                                >
+                                  {source.title}
+                                </Typography>
+                                <Stack
+                                  direction={'row'}
+                                  alignItems="center"
+                                  spacing={0.5}
+                                >
+                                  <Box
+                                    width={16}
+                                    height={16}
+                                    borderRadius="50%"
+                                    overflow="hidden"
+                                    flexShrink={0}
+                                  >
+                                    <img
+                                      src={source.favicon}
+                                      alt={source?.from}
+                                      width="100%"
+                                      height="100%"
+                                    />
+                                  </Box>
+                                  <Typography
+                                    fontSize={12}
+                                    color="text.secondary"
+                                    noWrap
+                                  >
+                                    {source?.from}
+                                  </Typography>
+                                  <Typography
+                                    fontSize={12}
+                                    color="text.secondary"
+                                    flexShrink={0}
+                                  >
+                                    · {index + 1}
+                                  </Typography>
+                                </Stack>
+                              </Stack>
+                            </Link>
+                          </Card>
+                        </Grid>
+                      ))}
+                </Grid>
+              )}
             </Stack>
-          ) : null}
-          {isWaitFirstAIResponseText ? (
-            <Grid container spacing={1}>
-              {Array(SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT)
-                .fill('')
-                .map((_, index) => (
-                  <Grid item xs={6} key={index}>
-                    <Skeleton variant="rounded" width={'100%'} height={60} />
-                  </Grid>
-                ))}
-            </Grid>
-          ) : (
-            <Stack spacing={1}>
-              {renderData.isWriting ? (
+          )}
+          {renderData.content && (
+            <Stack>
+              {renderData.contentLoading ? (
                 <Stack direction={'row'} alignItems="center" spacing={1}>
                   <CircularProgress size={18} />
                   <Typography
@@ -194,13 +311,24 @@ export const SidebarAIMessage: FC<{
                   </Typography>
                 </Stack>
               )}
-              <div
-                className={`markdown-body ${
-                  isDarkMode ? 'markdown-body-dark' : ''
-                }`}
-              >
-                <CustomMarkdown>{renderData.answer}</CustomMarkdown>
-              </div>
+              {isWaitFirstAIResponseText ? (
+                <Stack>
+                  <Skeleton animation="wave" height={10} />
+                  <Skeleton animation="wave" height={10} />
+                  <Skeleton animation="wave" height={10} />
+                  <Skeleton animation="wave" height={10} />
+                  <Skeleton animation="wave" height={10} />
+                  <Skeleton animation="wave" height={10} />
+                </Stack>
+              ) : (
+                <div
+                  className={`markdown-body ${
+                    isDarkMode ? 'markdown-body-dark' : ''
+                  }`}
+                >
+                  <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+                </div>
+              )}
             </Stack>
           )}
         </Stack>

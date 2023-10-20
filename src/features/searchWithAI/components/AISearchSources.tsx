@@ -72,7 +72,7 @@ const AISearchSources = () => {
                         flexShrink={0}
                       >
                         <img
-                          src={source.imgLink}
+                          src={source.favicon}
                           alt={source.from}
                           width="100%"
                           height="100%"

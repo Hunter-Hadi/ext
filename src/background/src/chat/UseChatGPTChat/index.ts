@@ -24,12 +24,7 @@ import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { hasData } from '@/utils'
-import {
-  IAIResponseOriginalMessage,
-  IChatMessageExtraMetaType,
-} from '@/features/chatgpt/types'
-import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
-import sum from 'lodash-es/sum'
+import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
@@ -101,7 +96,6 @@ class UseChatGPTPlusChat extends BaseChat {
       data: {
         text: string
         conversationId: string
-        originalMessage?: IAIResponseOriginalMessage
       }
     }) => void,
   ) {
@@ -179,53 +173,6 @@ class UseChatGPTPlusChat extends BaseChat {
     let hasError = false
     let sentTextLength = 0
     let conversationId = this.conversation?.id || ''
-    // 原始ai response
-    const originalMessage: IAIResponseOriginalMessage = {
-      content: {
-        contentType: 'text',
-        text: '',
-      },
-      metadata: {
-        title: meta?.messageVisibleText || '',
-        isComplete: false,
-        sources: {
-          links:
-            typeof meta?.searchSources === 'object'
-              ? ((meta?.searchSources || []) as ICrawlingSearchResult[])?.map(
-                  (result) => {
-                    return {
-                      favicon: result.imgLink || '',
-                      title: result.title || '',
-                      url: result.url || '',
-                      img: result.imgLink || '',
-                      from: result.from || '',
-                    }
-                  },
-                )
-              : [],
-        },
-      },
-    }
-    // 如果已经有sources了，先发送一条消息让AI message有骨架屏
-    if (
-      sum(
-        Object.values(originalMessage.metadata?.sources || {}).map(
-          (sourceData) => sourceData.length,
-        ),
-      ) > 0
-    ) {
-      onMessage &&
-        onMessage({
-          done: false,
-          type: 'message',
-          error: '',
-          data: {
-            text: '',
-            conversationId: conversationId,
-            originalMessage,
-          },
-        })
-    }
     const sendTextSettings = await Browser.storage.local.get(
       BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
     )
@@ -287,9 +234,6 @@ class UseChatGPTPlusChat extends BaseChat {
           messageResult.length,
         )
         sentTextLength += currentSendTextTextLength
-        if (originalMessage.content?.text) {
-          originalMessage.content.text = messageResult.slice(0, sentTextLength)
-        }
         onMessage &&
           onMessage({
             type: 'message',
@@ -298,7 +242,6 @@ class UseChatGPTPlusChat extends BaseChat {
             data: {
               text: messageResult.slice(0, sentTextLength),
               conversationId: conversationId,
-              originalMessage,
             },
           })
       }

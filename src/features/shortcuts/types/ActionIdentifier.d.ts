@@ -67,6 +67,8 @@ type ActionIdentifier =
   | 'CREATE_WEBSITE_CONTEXT'
   // 处理文本
   | 'TEXT_HANDLER'
+  // 聊天信息管理
+  | 'CHAT_MESSAGE'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'

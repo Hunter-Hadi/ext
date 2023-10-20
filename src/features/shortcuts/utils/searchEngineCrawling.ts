@@ -11,7 +11,7 @@ export interface ICrawlingSearchResult {
   body: string // 内容
   url: string // 地址
   from?: string // 内容来源
-  imgLink?: string // 内容来源的品牌图片地址
+  favicon?: string // 内容来源的品牌图片地址
 }
 
 const isFileUrl = (url: string) => {
@@ -176,7 +176,7 @@ const CrawlingResultsWithEngine = (
                   body: bodyText ? bodyText : titleText,
                   url,
                   from: from,
-                  imgLink: metaInfoEl?.find('img')?.attr('src'),
+                  favicon: metaInfoEl?.find('img')?.attr('src'),
                 })
               }
             })
@@ -198,7 +198,7 @@ const CrawlingResultsWithEngine = (
                 body: bodyText ? bodyText : titleText,
                 url: url,
                 from: metaInfoEl.text(),
-                imgLink: metaInfoEl.find('img')?.attr('src'),
+                favicon: metaInfoEl.find('img')?.attr('src'),
               })
             })
         } else {
@@ -263,7 +263,7 @@ const CrawlingResultsWithEngine = (
                 body: bodyText ? bodyText : titleText,
                 url,
                 from: from,
-                imgLink: metaInfoEl?.find('img')?.attr('src'),
+                favicon: metaInfoEl?.find('img')?.attr('src'),
               })
             })
         }
@@ -302,7 +302,7 @@ const CrawlingResultsWithEngine = (
             body: bodyText ?? '',
             url: extractRealUrl(titleElement.attr('href') ?? ''),
             from: element.find('a .tptt').text(),
-            imgLink: element.find('img.rms_img').attr('src'),
+            favicon: element.find('img.rms_img').attr('src'),
           })
         })
         break
@@ -337,7 +337,7 @@ const CrawlingResultsWithEngine = (
             body: bodyText ?? '',
             url: extractRealUrl(linkElement.attr('href') ?? ''),
             from: metaInfoEl.text(),
-            imgLink: metaInfoEl.find('img')?.attr('src'),
+            favicon: metaInfoEl.find('img')?.attr('src'),
           })
         })
         break
@@ -374,7 +374,7 @@ const CrawlingResultsWithEngine = (
             // duckduckgo 的from 用url 来生成
             from: getNameByUrl(url) || extrasLink.children().first().text(),
             // from: extrasLink.children().first().text(),
-            imgLink: fromImg.find('a > img')?.attr('src'),
+            favicon: fromImg.find('a > img')?.attr('src'),
           })
         })
         break
@@ -430,7 +430,7 @@ const CrawlingResultsWithEngine = (
             body: element.find('.dsc_txt').text(),
             url,
             from: getNameByUrl(url),
-            imgLink: imgLink,
+            favicon: imgLink,
           })
         })
         break
@@ -465,7 +465,7 @@ const CrawlingResultsWithEngine = (
             title: titleElement.text(),
             body: element.find('.organic__content-wrapper').text(),
             url,
-            imgLink,
+            favicon: imgLink,
             from: getNameByUrl(url),
           })
         })
@@ -515,7 +515,7 @@ const CrawlingResultsWithEngine = (
             body: bodyText,
             url,
             from,
-            imgLink: string2DomainFaviconUrl(from),
+            favicon: string2DomainFaviconUrl(from),
           })
         })
         break
@@ -570,7 +570,7 @@ const CrawlingResultsWithEngine = (
             title,
             body: bodyText,
             url,
-            imgLink,
+            favicon: imgLink,
             from,
           })
         })
@@ -597,8 +597,8 @@ const CrawlingResultsWithEngine = (
         newItem.from = newItem.from.replace(/\.[^.]*$/, '')
       }
 
-      if (!newItem.imgLink && newItem.url) {
-        newItem.imgLink = string2DomainFaviconUrl(newItem.url)
+      if (!newItem.favicon && newItem.url) {
+        newItem.favicon = string2DomainFaviconUrl(newItem.url)
       }
 
       // cleanText

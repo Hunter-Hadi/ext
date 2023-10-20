@@ -158,7 +158,7 @@ class ChatSystem implements ChatSystemInterface {
               let question = data.question
               let options = data.options
               console.log('新版Conversation 提问', question, options)
-
+              debugger
               if (question.conversationId) {
                 const conversation = await ConversationManager.conversationDB.getConversationById(
                   question.conversationId,

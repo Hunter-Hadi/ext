@@ -103,10 +103,16 @@ const ChatBoxHeader: FC = () => {
               minWidth: 36,
             }}
             onClick={() => {
-              chromeExtensionClientOpenPage({
-                url: Browser.runtime.getURL(`/pages/chat/index.html`),
-                query: `?conversationType=${currentSidebarConversationType}`,
-              })
+              if (currentSidebarConversationType !== 'Summary') {
+                chromeExtensionClientOpenPage({
+                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                  query: `?conversationType=${currentSidebarConversationType}`,
+                })
+              } else {
+                chromeExtensionClientOpenPage({
+                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                })
+              }
             }}
           >
             <ContextMenuIcon

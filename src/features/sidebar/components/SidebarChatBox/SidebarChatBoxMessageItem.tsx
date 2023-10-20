@@ -308,7 +308,7 @@ const SidebarChatBoxMessageItem: FC<{
           <SidebarChatBoxUserTools
             editAble={editAble}
             onCopy={onCopy}
-            message={message}
+            message={message as IUserChatMessage}
             onSave={() => {
               setIsEdit(false)
               const messageTextElement = document.getElementById(
@@ -336,7 +336,7 @@ const SidebarChatBoxMessageItem: FC<{
             replaceAble={replaceAble}
             useChatGPTAble={useChatGPTAble}
             onCopy={onCopy}
-            message={message}
+            message={message as IAIResponseMessage}
           />
         )}
         {message.type === 'system' && (

@@ -198,7 +198,7 @@ class UseChatGPTPlusChat extends BaseChat {
                       title: result.title || '',
                       url: result.url || '',
                       img: result.imgLink || '',
-                      form: result.from || '',
+                      from: result.from || '',
                     }
                   },
                 )

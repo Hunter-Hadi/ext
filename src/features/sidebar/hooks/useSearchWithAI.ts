@@ -23,6 +23,7 @@ import {
 } from '@/features/chatgpt/types'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export const SMART_SEARCH_PROMPT = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
@@ -210,6 +211,17 @@ const useSearchWithAI = () => {
             AskChatGPTActionMeta: {
               ...options.meta,
               messageVisibleText: query,
+              contextMenu: {
+                id: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',
+                droppable: false,
+                parent: '',
+                text: '[Search] smart query',
+                data: {
+                  editable: false,
+                  type: 'shortcuts',
+                  actions: [],
+                },
+              } as IContextMenuItem,
             },
             AskChatGPTWithHistory: true,
           },
@@ -271,6 +283,17 @@ const useSearchWithAI = () => {
             AskChatGPTActionMeta: {
               messageVisibleText: query,
               searchSources: '{{SEARCH_SOURCES}}',
+              contextMenu: {
+                id: '73361add-2d6a-4bf3-b2a7-5097551653e7',
+                droppable: false,
+                parent: '',
+                text: '[Search] answer',
+                data: {
+                  editable: false,
+                  type: 'shortcuts',
+                  actions: [],
+                },
+              } as IContextMenuItem,
             },
             template: await generatePromptTemplate(currentQuestion),
           },

@@ -88,18 +88,23 @@ export const ClientMessageInit = () => {
                   sender.url ===
                     Browser.runtime.getURL('/pages/popup/index.html')
                 ) {
+                  const totalTabs = await Browser.tabs.query({
+                    currentWindow: true,
+                  })
                   const tabs = await Browser.tabs.query({
                     active: true,
                   })
-                  for (const tab of tabs) {
-                    if (
-                      tab.id &&
-                      (tab.pendingUrl === `chrome://newtab/` ||
-                        tab.pendingUrl === `about:blank` ||
-                        tab.url === 'chrome://newtab/' ||
-                        tab.url === 'about:blank')
-                    ) {
-                      await Browser.tabs.remove(tab.id)
+                  if (totalTabs.length > 1) {
+                    for (const tab of tabs) {
+                      if (
+                        tab.id &&
+                        (tab.pendingUrl === `chrome://newtab/` ||
+                          tab.pendingUrl === `about:blank` ||
+                          tab.url === 'chrome://newtab/' ||
+                          tab.url === 'about:blank')
+                      ) {
+                        await Browser.tabs.remove(tab.id)
+                      }
                     }
                   }
                 }

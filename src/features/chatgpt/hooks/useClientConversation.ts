@@ -1,6 +1,5 @@
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { AppLocalStorageState } from '@/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 import {
@@ -13,10 +12,7 @@ import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientCha
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import cloneDeep from 'lodash-es/cloneDeep'
 import merge from 'lodash-es/merge'
-import {
-  getChromeExtensionLocalStorage,
-  setChromeExtensionLocalStorage,
-} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -26,7 +22,6 @@ const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useClientConversation = () => {
-  const [, setAppLocalStorage] = useRecoilState(AppLocalStorageState)
   const [, setConversation] = useRecoilState(ChatGPTConversationState)
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const {
@@ -164,24 +159,9 @@ const useClientConversation = () => {
       .then()
       .catch()
     if (currentSidebarConversationType === 'Chat') {
-      setAppLocalStorage((prevState) => {
-        return {
-          ...prevState,
-          sidebarSettings: {
-            ...prevState.sidebarSettings,
-            chat: {
-              ...prevState.sidebarSettings?.chat,
-              conversationId: '',
-            },
-          },
-        }
-      })
-      // 清空本地储存的conversationId
-      await setChromeExtensionLocalStorage({
-        sidebarSettings: {
-          chat: {
-            conversationId: '',
-          },
+      await updateSidebarSettings({
+        chat: {
+          conversationId: '',
         },
       })
     } else if (currentSidebarConversationType === 'Summary') {

@@ -26,6 +26,11 @@ const SidebarChatBoxAiTools: FC<{
   const memoCopyText = useMemo(() => {
     let currentCopyText = message.originalMessage?.content?.text || message.text
     if (message.originalMessage?.metadata?.sources?.links) {
+      // 把长的引用链接变成短的: [[a](link)] => [a]
+      currentCopyText = currentCopyText.replace(
+        /\[\[(\d+)\]\([^\)]+\)\]/g,
+        '[$1]',
+      )
       const links = message.originalMessage.metadata.sources.links
       let citations = `\n\nCitations:`
       if (links.length > 0) {

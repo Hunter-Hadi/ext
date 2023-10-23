@@ -96,6 +96,7 @@ export interface IAIResponseOriginalMessage {
     related?: string[]
     copilot?: string[]
   }
+  include_history?: boolean
   status?: string
 }
 // AI返回的消息

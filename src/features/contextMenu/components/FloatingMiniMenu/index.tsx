@@ -32,6 +32,7 @@ import {
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { FloatingContextMenuMiniMenuSearchWithAIButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuMiniMenuSearchWithAIButton'
 
 const FloatingMiniMenu: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
@@ -307,6 +308,7 @@ const FloatingMiniMenu: FC<{
             />
           </TooltipButton>
         </Box>
+        <FloatingContextMenuMiniMenuSearchWithAIButton placement={placement} />
         <FavoriteContextMenuGroup
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}

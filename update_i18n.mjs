@@ -566,12 +566,10 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = [
-  'sidebar__button__upgrade_to_pro',
-    'permission__pricing_hook__button__upgrade_to_pro'
-    ]
+  ]
   const retryLanguageCodes = [
   ]
-  await updateKeys(keys, true, retryLanguageCodes)
+  await updateKeys(keys, false, retryLanguageCodes)
 }
 
 main().then().catch()

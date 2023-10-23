@@ -19,6 +19,7 @@ import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
 import { useRecoilValue } from 'recoil'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import { findParentEqualSelector } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
 
@@ -396,6 +397,37 @@ export const getEditableElementSelectionTextOnSpecialHost = (
                   doc.querySelector('.page-block-children') ||
                   doc.querySelector('.page-block') ||
                   doc.querySelector('.root-block')
+                const larkCursor = win.getSelection().focusNode
+                if (larkCursor && pageContentRoot) {
+                  debugger
+                  const larkLineElement = findParentEqualSelector(
+                    '.ace-line',
+                    larkCursor?.parentElement as HTMLElement,
+                    5,
+                  )
+                  if (larkLineElement) {
+                    debugger
+                    // 当前所在的行
+                    // 计算元素从头到光标的位置
+                    const boundaryRange = document.createRange()
+                    boundaryRange.selectNode(pageContentRoot)
+                    const partOfStartToCaret = boundaryRange.cloneRange()
+                    partOfStartToCaret.setEndBefore(larkLineElement)
+                    const partOfStartToCaretText = partOfStartToCaret
+                      .toString()
+                      .trim()
+                      .replace(/\u200B/g, '')
+                    if (partOfStartToCaretText) {
+                      return {
+                        editableElementSelectionText: larkLineElement.innerText
+                          .toString()
+                          .trim()
+                          .replace(/\u200B/g, ''),
+                        selectionText: partOfStartToCaretText,
+                      }
+                    }
+                  }
+                }
               }
               break
             case 'writer.zoho.com':

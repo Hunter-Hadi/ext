@@ -47,7 +47,7 @@ const AISearchContentCard: FC<IProps> = ({
   const currentAIProvider = searchWithAISettings.aiProvider
 
   const {
-    loading,
+    // loading,
     status,
     completedAnswer,
     isAnswering,
@@ -80,8 +80,11 @@ const AISearchContentCard: FC<IProps> = ({
       />
 
       <AIProviderBar
-        disabled={loading}
-        onProviderChange={handleResetStatus}
+        disabled={isAnswering}
+        onProviderChange={async () => {
+          await handleStopGenerate()
+          await handleResetStatus()
+        }}
         sx={{ mb: 1 }}
       />
 

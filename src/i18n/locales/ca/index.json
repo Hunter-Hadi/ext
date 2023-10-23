@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "El motor de resposta més potent que t'ajuda a trobar fets més ràpidament i obtenir respostes clares a les teves preguntes.",
     "sidebar__tabs__search__title": "Cerca",
     "youtube_summary_button__text": "Resum",
-    "sidebar__tabs__search__tooltip": "Cerca impulsada per IA"
+    "sidebar__tabs__search__tooltip": "Cerca impulsada per IA",
+    "sidebar__search_with_ai__continue_chat__title": "Continua amb la cerca impulsada per IA",
+    "social_media_summary_button__text": "Resum"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

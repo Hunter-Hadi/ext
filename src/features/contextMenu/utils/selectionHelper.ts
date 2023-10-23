@@ -399,14 +399,12 @@ export const getEditableElementSelectionTextOnSpecialHost = (
                   doc.querySelector('.root-block')
                 const larkCursor = win.getSelection().focusNode
                 if (larkCursor && pageContentRoot) {
-                  debugger
                   const larkLineElement = findParentEqualSelector(
                     '.ace-line',
                     larkCursor?.parentElement as HTMLElement,
                     5,
                   )
                   if (larkLineElement) {
-                    debugger
                     // 当前所在的行
                     // 计算元素从头到光标的位置
                     const boundaryRange = document.createRange()

@@ -408,13 +408,6 @@ class ChatSystem implements ChatSystemInterface {
     if (!this.currentAdapter || !conversationId) {
       return false
     }
-    const conversation = await ConversationManager.conversationDB.getConversationById(
-      conversationId,
-    )
-    // 如果conversation存在
-    if (conversation) {
-      await this.switchAdapterWithConversation(conversation, false)
-    }
     const result = await this.currentAdapter?.removeConversation(conversationId)
     return result
   }

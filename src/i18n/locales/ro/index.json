@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Motorul de răspuns cel mai puternic care te ajută să găsești fapte mai rapid și să obții răspunsuri clare la întrebările tale.",
     "sidebar__tabs__search__title": "Căutare",
     "youtube_summary_button__text": "Rezumat",
-    "sidebar__tabs__search__tooltip": "Căutare cu ajutorul AI"
+    "sidebar__tabs__search__tooltip": "Căutare cu ajutorul AI",
+    "sidebar__search_with_ai__continue_chat__title": "Continuați în căutarea cu ajutorul AI",
+    "social_media_summary_button__text": "Rezumat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

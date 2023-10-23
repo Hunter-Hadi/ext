@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Mesin jawaban paling kuat yang membantu Anda menemukan fakta lebih cepat dan mendapatkan jawaban yang jelas untuk pertanyaan Anda.",
     "sidebar__tabs__search__title": "Cari",
     "youtube_summary_button__text": "Ringkasan",
-    "sidebar__tabs__search__tooltip": "Pencarian berbasis AI"
+    "sidebar__tabs__search__tooltip": "Pencarian berbasis AI",
+    "sidebar__search_with_ai__continue_chat__title": "Lanjutkan dengan pencarian berbasis AI",
+    "social_media_summary_button__text": "Ringkas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

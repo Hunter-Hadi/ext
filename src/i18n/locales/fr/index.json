@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Le moteur de réponse le plus puissant qui vous aide à trouver des faits plus rapidement et à obtenir des réponses claires à vos questions.",
     "sidebar__tabs__search__title": "Rechercher",
     "youtube_summary_button__text": "Résumer",
-    "sidebar__tabs__search__tooltip": "Recherche alimentée par l'IA"
+    "sidebar__tabs__search__tooltip": "Recherche alimentée par l'IA",
+    "sidebar__search_with_ai__continue_chat__title": "Continuer avec la recherche alimentée par l'IA",
+    "social_media_summary_button__text": "Résumer"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

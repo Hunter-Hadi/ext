@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Najmoćniji odgovorni motor koji vam pomaže da brže pronađete činjenice i jasno dobijete odgovore na svoja pitanja.",
     "sidebar__tabs__search__title": "Pretraživanje",
     "youtube_summary_button__text": "Sažmi",
-    "sidebar__tabs__search__tooltip": "Pretraživanje s umjetnom inteligencijom"
+    "sidebar__tabs__search__tooltip": "Pretraživanje s umjetnom inteligencijom",
+    "sidebar__search_with_ai__continue_chat__title": "Nastavi s pretragom pokretanom umjetnom inteligencijom",
+    "social_media_summary_button__text": "Sažmi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Die leistungsstärkste Antwortmaschine, die Ihnen hilft, Fakten schneller zu finden und Ihre Fragen klar beantwortet zu bekommen.",
     "sidebar__tabs__search__title": "Suche",
     "youtube_summary_button__text": "Zusammenfassen",
-    "sidebar__tabs__search__tooltip": "Künstliche Intelligenz-gesteuerte Suche"
+    "sidebar__tabs__search__tooltip": "Künstliche Intelligenz-gesteuerte Suche",
+    "sidebar__search_with_ai__continue_chat__title": "Weiter mit KI-gesteuerter Suche",
+    "social_media_summary_button__text": "Zusammenfassen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

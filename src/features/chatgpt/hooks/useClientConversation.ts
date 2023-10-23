@@ -48,6 +48,10 @@ const useClientConversation = () => {
         chatCacheConversationId &&
         (await clientGetConversation(chatCacheConversationId))
       ) {
+        console.log(
+          '新版Conversation chatCacheConversationId',
+          chatCacheConversationId,
+        )
         // 如果已经存在了，并且有AI消息，那么就不用创建了
         return chatCacheConversationId
       }
@@ -64,6 +68,7 @@ const useClientConversation = () => {
         ((AI_PROVIDER_MODEL_MAP as any)?.[currentAIProvider] || []).find(
           (model: IAIProviderModel) => model?.value === currentModel,
         )?.maxTokens || 4096
+      console.log('新版Conversation ', currentAIProvider, currentModel)
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -126,6 +131,10 @@ const useClientConversation = () => {
         searchCacheConversationId &&
         (await clientGetConversation(searchCacheConversationId))
       ) {
+        console.log(
+          '新版Conversation chatCacheConversationId',
+          searchCacheConversationId,
+        )
         // 如果已经存在了，并且有AI消息，那么就不用创建了
         return searchCacheConversationId
       }
@@ -161,15 +170,14 @@ const useClientConversation = () => {
       currentSidebarConversationType,
       currentSidebarConversationId,
     )
-    port
-      .postMessage({
-        event: 'Client_removeChatGPTConversation',
-        data: {
-          conversationId: currentSidebarConversationId,
-        },
-      })
-      .then()
-      .catch()
+    console.log(await getChromeExtensionLocalStorage())
+    await port.postMessage({
+      event: 'Client_removeChatGPTConversation',
+      data: {
+        conversationId: currentSidebarConversationId,
+      },
+    })
+    console.log(await getChromeExtensionLocalStorage())
     if (currentSidebarConversationType === 'Chat') {
       await updateSidebarSettings({
         chat: {

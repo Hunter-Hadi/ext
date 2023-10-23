@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Ang pinakamalakas na sagot na makina na tumutulong sa iyo na mas mabilis na makahanap ng mga katotohanan at malinaw na sagutan ang iyong mga tanong.",
     "sidebar__tabs__search__title": "Hanapin",
     "youtube_summary_button__text": "Buodin",
-    "sidebar__tabs__search__tooltip": "AI-powered na paghahanap"
+    "sidebar__tabs__search__tooltip": "AI-powered na paghahanap",
+    "sidebar__search_with_ai__continue_chat__title": "Magpatuloy sa AI-powered na paghahanap",
+    "social_media_summary_button__text": "Buodin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

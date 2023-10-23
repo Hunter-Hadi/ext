@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Najpotężniejszy silnik odpowiedzi, który pomaga Ci znaleźć fakty szybciej i uzyskać jasne odpowiedzi na Twoje pytania.",
     "sidebar__tabs__search__title": "Szukaj",
     "youtube_summary_button__text": "Podsumuj",
-    "sidebar__tabs__search__tooltip": "Wyszukiwanie oparte na sztucznej inteligencji"
+    "sidebar__tabs__search__tooltip": "Wyszukiwanie oparte na sztucznej inteligencji",
+    "sidebar__search_with_ai__continue_chat__title": "Kontynuuj w wyszukiwaniu z AI",
+    "social_media_summary_button__text": "Podsumuj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

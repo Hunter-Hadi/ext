@@ -40,6 +40,7 @@ const AIProviderModelSelector: FC = () => {
       // 如果当前是chat，就清空会话，重新创建
       if (currentSidebarConversationType === 'Chat') {
         await cleanConversation()
+        await new Promise((resolve) => setTimeout(resolve, 0))
         await createConversation()
       }
     },

@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "最強大的答案引擎，幫助您更快地找到事實並清晰地回答您的問題。",
     "sidebar__tabs__search__title": "搜尋",
     "youtube_summary_button__text": "總結",
-    "sidebar__tabs__search__tooltip": "AI 強化搜尋"
+    "sidebar__tabs__search__tooltip": "AI 強化搜尋",
+    "sidebar__search_with_ai__continue_chat__title": "繼續使用AI動力搜索",
+    "social_media_summary_button__text": "摘要"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

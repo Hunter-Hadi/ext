@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "A legerősebb válaszmotor, amely segít gyorsabban megtalálni a tényeket és világos válaszokat kapni a kérdéseidre.",
     "sidebar__tabs__search__title": "Keresés",
     "youtube_summary_button__text": "Összefoglalás",
-    "sidebar__tabs__search__tooltip": "AI-alapú keresés"
+    "sidebar__tabs__search__tooltip": "AI-alapú keresés",
+    "sidebar__search_with_ai__continue_chat__title": "Folytassa az AI-alapú keresést",
+    "social_media_summary_button__text": "Összefoglalás"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "உண்மையான விவரங்களை விரைவில் கண்டறியும் மிகவும் சக்தியான பதில் எண்ணிக்கை இயந்திரத்தை உதவும்.",
     "sidebar__tabs__search__title": "தேடு",
     "youtube_summary_button__text": "சுருக்கி",
-    "sidebar__tabs__search__tooltip": "மின்னஞ்சல் அறிவிப்புடன் தேடு"
+    "sidebar__tabs__search__tooltip": "மின்னஞ்சல் அறிவிப்புடன் தேடு",
+    "sidebar__search_with_ai__continue_chat__title": "ஐயும் சேர்ந்து தேடுங்கள்",
+    "social_media_summary_button__text": "சுருக்கம்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

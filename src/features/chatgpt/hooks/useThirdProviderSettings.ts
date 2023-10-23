@@ -40,6 +40,11 @@ const useThirdProviderSettings = () => {
     settings: Partial<IThirdProviderSettings[T]>,
   ) => {
     const success = await setThirdProviderSettings(providerKey, settings)
+    console.log(
+      '新版Conversation 更新saveThirdProviderSettings',
+      providerKey,
+      settings,
+    )
     if (success) {
       setAppLocalStorage(await getChromeExtensionLocalStorage())
     }

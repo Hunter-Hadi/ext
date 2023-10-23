@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { IAIProviderType } from '@/background/provider/chat'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 
 const APITemperatureSlider: FC<{
   authSceneType?: PermissionWrapperCardSceneType
@@ -16,8 +17,10 @@ const APITemperatureSlider: FC<{
 }> = (props) => {
   const { provider, authSceneType } = props
   const { t } = useTranslation(['common', 'client'])
-  const { saveThirdProviderSettings, currentThirdProviderSettings } =
-    useThirdProviderSettings()
+  const {
+    saveThirdProviderSettings,
+    currentThirdProviderSettings,
+  } = useThirdProviderSettings()
   const [temperature, setTemperature] = React.useState<number>(1)
   const once = React.useRef<boolean>(false)
   useEffect(() => {
@@ -28,9 +31,13 @@ const APITemperatureSlider: FC<{
     setTemperature(currentThirdProviderSettings.temperature)
   }, [currentThirdProviderSettings.temperature])
   const debounceSaveThirdProviderSettings = debounce(async (value: number) => {
-    await saveThirdProviderSettings(provider, {
-      temperature: value,
-    })
+    const prevTemperature = ((await getThirdProviderSettings(provider)) as any)
+      ?.temperature
+    if (prevTemperature !== value) {
+      await saveThirdProviderSettings(provider, {
+        temperature: value,
+      })
+    }
   }, 200)
   useEffect(() => {
     debounceSaveThirdProviderSettings(temperature)

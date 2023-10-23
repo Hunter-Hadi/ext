@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Най-мощният отговорен двигател, който ви помага да намерите факти по-бързо и да получите ясни отговори на вашите въпроси.",
     "sidebar__tabs__search__title": "Търсене",
     "youtube_summary_button__text": "Резюмирай",
-    "sidebar__tabs__search__tooltip": "Търсене с изкуствен интелект"
+    "sidebar__tabs__search__tooltip": "Търсене с изкуствен интелект",
+    "sidebar__search_with_ai__continue_chat__title": "Продължете с търсене с изкуствен интелект",
+    "social_media_summary_button__text": "Резюмирай"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

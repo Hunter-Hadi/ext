@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Il motore di risposta più potente che ti aiuta a trovare fatti più velocemente e ottenere risposte chiare alle tue domande.",
     "sidebar__tabs__search__title": "Cerca",
     "youtube_summary_button__text": "Sintetizza",
-    "sidebar__tabs__search__tooltip": "Ricerca con intelligenza artificiale"
+    "sidebar__tabs__search__tooltip": "Ricerca con intelligenza artificiale",
+    "sidebar__search_with_ai__continue_chat__title": "Continua nella ricerca con intelligenza artificiale",
+    "social_media_summary_button__text": "Sintetizza"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

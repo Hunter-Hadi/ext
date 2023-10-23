@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "మీరు ఫాక్ట్స్ త్వరగా కనుగొనేందుకు సహాయపడే అత్యంత శక్తివంతమైన జవాబు ఎంజిన్, మీ ప్రశ్నలకు స్పష్టమైన సమాధానాలను ఇస్తుంది.",
     "sidebar__tabs__search__title": "శోధించు",
     "youtube_summary_button__text": "సంగ్రహించు",
-    "sidebar__tabs__search__tooltip": "AI ప్రాముఖ్యత ఉన్న శోధన"
+    "sidebar__tabs__search__tooltip": "AI ప్రాముఖ్యత ఉన్న శోధన",
+    "sidebar__search_with_ai__continue_chat__title": "యాక్స్ ద్వారా పోల్చే ముందు కొనసాగించండి",
+    "social_media_summary_button__text": "సంగ్రహించు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

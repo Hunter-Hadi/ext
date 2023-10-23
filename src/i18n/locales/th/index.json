@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "เครื่องมือตอบคำถามที่มีกำลังในการช่วยคุณค้นหาข้อมูลได้อย่างรวดเร็วและได้คำตอบที่ชัดเจน",
     "sidebar__tabs__search__title": "ค้นหา",
     "youtube_summary_button__text": "สรุป",
-    "sidebar__tabs__search__tooltip": "การค้นหาที่มีพลังปัญญาประดิษฐ์"
+    "sidebar__tabs__search__tooltip": "การค้นหาที่มีพลังปัญญาประดิษฐ์",
+    "sidebar__search_with_ai__continue_chat__title": "ดำเนินการต่อในการค้นหาที่มีพลังปัญญาประดิษฐ์",
+    "social_media_summary_button__text": "สรุป"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

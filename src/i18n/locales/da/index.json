@@ -463,7 +463,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "Den mest kraftfulde svarmotor, der hjælper dig med at finde fakta hurtigere og få klare svar på dine spørgsmål.",
     "sidebar__tabs__search__title": "Søg",
     "youtube_summary_button__text": "Resumé",
-    "sidebar__tabs__search__tooltip": "AI-drevet søgning"
+    "sidebar__tabs__search__tooltip": "AI-drevet søgning",
+    "sidebar__search_with_ai__continue_chat__title": "Fortsæt med AI-drevet søgning",
+    "social_media_summary_button__text": "Resumé"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

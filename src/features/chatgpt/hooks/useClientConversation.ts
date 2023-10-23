@@ -1,5 +1,8 @@
 import { useRecoilState, useSetRecoilState } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import {
+  ChatGPTConversationState,
+  ISidebarConversationType,
+} from '@/features/sidebar/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IChatConversation } from '@/background/src/chatConversations'
 import {
@@ -30,16 +33,23 @@ const useClientConversation = () => {
     updateSidebarSettings,
   } = useSidebarSettings()
   const { AI_PROVIDER_MODEL_MAP, updateAIProviderModel } = useAIProviderModels()
-  const createConversation = async (): Promise<string> => {
+  const createConversation = async (
+    overwriteConversationType?: ISidebarConversationType,
+  ): Promise<string> => {
     let conversationId: string = ''
-    if (currentSidebarConversationType === 'Chat') {
+    // 因为从外部打开sidebar的时候conversationId和type都是有延迟的，所以直接从localStorage拿
+    const conversationType =
+      overwriteConversationType || currentSidebarConversationType
+    if (conversationType === 'Chat') {
+      const chatCacheConversationId = (await getChromeExtensionLocalStorage())
+        .sidebarSettings?.chat?.conversationId
       // 如果chat板块已经有conversationId了
       if (
-        currentSidebarConversationId &&
-        (await clientGetConversation(currentSidebarConversationId))
+        chatCacheConversationId &&
+        (await clientGetConversation(chatCacheConversationId))
       ) {
         // 如果已经存在了，并且有AI消息，那么就不用创建了
-        return currentSidebarConversationId
+        return chatCacheConversationId
       }
       // 如果没有，那么就创建一个
       const appLocalStorage = await getChromeExtensionLocalStorage()
@@ -75,7 +85,7 @@ const useClientConversation = () => {
           },
         })
       }
-    } else if (currentSidebarConversationType === 'Summary') {
+    } else if (conversationType === 'Summary') {
       conversationId = getPageSummaryConversationId()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (conversationId && (await clientGetConversation(conversationId))) {
@@ -108,14 +118,16 @@ const useClientConversation = () => {
           conversationId,
         },
       })
-    } else if (currentSidebarConversationType === 'Search') {
+    } else if (conversationType === 'Search') {
+      const searchCacheConversationId = (await getChromeExtensionLocalStorage())
+        .sidebarSettings?.search?.conversationId
       // 如果search板块已经有conversationId了
       if (
-        currentSidebarConversationId &&
-        (await clientGetConversation(currentSidebarConversationId))
+        searchCacheConversationId &&
+        (await clientGetConversation(searchCacheConversationId))
       ) {
         // 如果已经存在了，并且有AI消息，那么就不用创建了
-        return currentSidebarConversationId
+        return searchCacheConversationId
       }
       // 创建一个新的conversation
       const result = await port.postMessage({

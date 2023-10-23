@@ -256,7 +256,6 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         id: contextMenu?.id || 'chat',
         host,
       })
-      debugger
       // ai 正在输出的消息
       let aiRespondingMessage: any = null
       let AIConversationId = ''

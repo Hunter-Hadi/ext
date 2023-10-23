@@ -22,6 +22,7 @@ import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeEx
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { v4 as uuidV4 } from 'uuid'
+import { isShowChatBox, showChatBox } from '@/utils'
 
 export const SMART_SEARCH_PROMPT = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
@@ -93,6 +94,7 @@ const useSearchWithAI = () => {
     currentSidebarConversationId,
     currentSidebarConversationType,
     currentSidebarConversationMessages,
+    updateSidebarConversationType,
   } = useSidebarSettings()
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const permissionCardMap = usePermissionCardMap()
@@ -112,9 +114,16 @@ const useSearchWithAI = () => {
         )
       })
   }, [currentSidebarConversationMessages])
-  const createSearchWithAI = async (query: string) => {
+  const createSearchWithAI = async (query: string, includeHistory: boolean) => {
     if (isFetchingRef.current) {
       return
+    }
+    debugger
+    if (!isShowChatBox()) {
+      showChatBox()
+    }
+    if (currentSidebarConversationType !== 'Search') {
+      await updateSidebarConversationType('Search')
     }
     console.log('新版Conversation 创建searchWithAI')
     //切换至Search的时候把ChatGPT（MaxAI）的provider的onboarding check设置为true
@@ -131,7 +140,7 @@ const useSearchWithAI = () => {
     try {
       console.log('新版Conversation search with AI 开始创建')
       // 进入loading
-      const conversationId = await createConversation()
+      const conversationId = await createConversation('Search')
       updateConversation((prevState) => {
         return {
           ...prevState,
@@ -213,6 +222,7 @@ const useSearchWithAI = () => {
                     },
                   ],
                 },
+                include_history: includeHistory,
               },
             } as IAIResponseMessage,
           },
@@ -226,9 +236,13 @@ const useSearchWithAI = () => {
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: generateSmartSearchPromptWithPreviousQuestion(
-              memoPrevQuestions.concat(currentQuestion),
-            ),
+            template: includeHistory
+              ? generateSmartSearchPromptWithPreviousQuestion(
+                  memoPrevQuestions.concat(currentQuestion),
+                )
+              : generateSmartSearchPromptWithPreviousQuestion([
+                  currentQuestion,
+                ]),
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
             AskChatGPTActionMeta: {
               messageVisibleText: query,
@@ -405,6 +419,10 @@ const useSearchWithAI = () => {
   const regenerateSearchWithAI = async () => {
     try {
       if (currentSidebarConversationId) {
+        const lastAIResponse =
+          currentSidebarConversationMessages[
+            currentSidebarConversationMessages.length - 1
+          ]
         const lastQuestion = memoPrevQuestions[memoPrevQuestions.length - 1]
         if (lastQuestion) {
           await clientChatConversationModifyChatMessages(
@@ -413,7 +431,12 @@ const useSearchWithAI = () => {
             1,
             [],
           )
-          await createSearchWithAI(lastQuestion)
+          debugger
+          await createSearchWithAI(
+            lastQuestion,
+            (lastAIResponse as IAIResponseMessage)?.originalMessage
+              ?.include_history || false,
+          )
         } else {
           // 如果没有找到last question，那么就重新生成Conversation
           await clientChatConversationModifyChatMessages(

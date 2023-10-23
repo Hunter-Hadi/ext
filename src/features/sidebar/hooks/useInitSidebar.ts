@@ -8,6 +8,8 @@ import { useFocus } from '@/hooks/useFocus'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
@@ -28,6 +30,7 @@ const useInitSidebar = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
   const { switchBackgroundChatSystemAIProvider } = useClientConversation()
+  const { continueInSearchWithAI } = useSearchWithAI()
   const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
   const sidebarSettingsRef = useRef(sidebarSettings)
   const prevSummaryConversationId = usePrevious(
@@ -119,6 +122,19 @@ const useInitSidebar = () => {
       destroy = true
     }
   }, [currentSidebarConversationId])
+  // 监听搜索引擎的continue search with ai
+  useEffect(() => {
+    const listener = (event: any) => {
+      const aiMessage: IAIResponseMessage = event?.detail?.aiMessage
+      if (aiMessage) {
+        continueInSearchWithAI(aiMessage).then().catch()
+      }
+    }
+    window.addEventListener('MaxAIContinueSearchWithAI', listener)
+    return () => {
+      window.removeEventListener('MaxAIContinueSearchWithAI', listener)
+    }
+  })
 }
 
 export default useInitSidebar

@@ -10,8 +10,8 @@ interface ISourcesStatusAtom {
   sources: ICrawlingSearchResult[]
 }
 
-export const SourcesStatusAtom = atom<ISourcesStatusAtom>({
-  key: 'SourcesStatusAtom',
+export const SearchWithAISourcesState = atom<ISourcesStatusAtom>({
+  key: 'SearchWithAISourcesState',
   default: {
     loading: false,
     sources: [],

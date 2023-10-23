@@ -23,6 +23,7 @@ import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { v4 as uuidV4 } from 'uuid'
 import { isShowChatBox, showChatBox } from '@/utils'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 export const SMART_SEARCH_PROMPT = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
@@ -104,15 +105,22 @@ const useSearchWithAI = () => {
   const { createConversation } = useClientConversation()
   const isFetchingRef = useRef(false)
   const memoPrevQuestions = useMemo(() => {
-    return currentSidebarConversationMessages
-      .filter((message) => message.type === 'ai')
-      .map((aiMessage) => {
-        return (
-          (aiMessage as IAIResponseMessage)?.originalMessage?.metadata?.title ||
-          aiMessage.text ||
-          ''
-        )
-      })
+    const memoQuestions = []
+    // 从后往前，直到include_history为false
+    for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
+      const message = currentSidebarConversationMessages[
+        i
+      ] as IAIResponseMessage
+      memoQuestions.unshift(
+        message?.originalMessage?.metadata?.title || message.text || '',
+      )
+      if (message.type === 'ai') {
+        if (message?.originalMessage?.include_history === false) {
+          break
+        }
+      }
+    }
+    return memoQuestions
   }, [currentSidebarConversationMessages])
   const createSearchWithAI = async (query: string, includeHistory: boolean) => {
     if (isFetchingRef.current) {
@@ -415,26 +423,68 @@ const useSearchWithAI = () => {
       console.log('创建Conversation失败', e)
     }
   }
+  // 因为在regenerate的时候消息更更新不及时，所以需要一个ref确保历史记录是最新的
+  const createSearchWithAIRef = useRef(createSearchWithAI)
+  useEffect(() => {
+    createSearchWithAIRef.current = createSearchWithAI
+  }, [createSearchWithAI])
+  const getSearchWithAIConversationId = async () => {
+    return (
+      (await getChromeExtensionLocalStorage())?.sidebarSettings?.search
+        ?.conversationId || ''
+    )
+  }
+  /**
+   * 专门搜索引擎的search with ai板块往sidebar继续聊天的入口
+   */
+  const continueInSearchWithAI = async (startMessage: IAIResponseMessage) => {
+    if (!isShowChatBox()) {
+      showChatBox()
+    }
+    if (currentSidebarConversationType !== 'Search') {
+      await updateSidebarConversationType('Search')
+    }
+    const conversationId =
+      (await getSearchWithAIConversationId()) ||
+      (await createConversation('Search'))
+    await clientChatConversationModifyChatMessages('add', conversationId, 0, [
+      startMessage,
+    ])
+  }
   const regenerateSearchWithAI = async () => {
     try {
       if (currentSidebarConversationId) {
-        const lastAIResponse =
-          currentSidebarConversationMessages[
-            currentSidebarConversationMessages.length - 1
-          ]
-        const lastQuestion = memoPrevQuestions[memoPrevQuestions.length - 1]
+        let lastAIResponse: IAIResponseMessage | null = null
+        let deleteCount = 0
+        for (
+          let i = currentSidebarConversationMessages.length - 1;
+          i >= 0;
+          i--
+        ) {
+          const message = currentSidebarConversationMessages[i]
+          deleteCount++
+          if (message.type === 'ai') {
+            lastAIResponse = message as IAIResponseMessage
+            break
+          }
+        }
+        const lastQuestion =
+          lastAIResponse?.originalMessage?.metadata?.title ||
+          lastAIResponse?.text ||
+          ''
         if (lastQuestion) {
           await clientChatConversationModifyChatMessages(
             'delete',
             currentSidebarConversationId,
-            1,
+            deleteCount,
             [],
           )
-          await createSearchWithAI(
-            lastQuestion,
-            (lastAIResponse as IAIResponseMessage)?.originalMessage
-              ?.include_history || false,
-          )
+          setTimeout(async () => {
+            await createSearchWithAIRef.current(
+              lastQuestion,
+              lastAIResponse?.originalMessage?.include_history || false,
+            )
+          }, 200)
         } else {
           // 如果没有找到last question，那么就重新生成Conversation
           await clientChatConversationModifyChatMessages(
@@ -480,6 +530,7 @@ const useSearchWithAI = () => {
   return {
     createSearchWithAI,
     regenerateSearchWithAI,
+    continueInSearchWithAI,
   }
 }
 export default useSearchWithAI

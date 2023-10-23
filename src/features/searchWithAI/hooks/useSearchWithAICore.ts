@@ -9,7 +9,7 @@ import {
 } from '../constants'
 import { searchWithAIAskQuestion, ISearchPageKey } from '../utils'
 import useSearchWithAISettings from './useSearchWithAISettings'
-import useSourcesStatus from './useSourcesStatus'
+import useSearchWithAISources from './useSearchWithAISources'
 import { v4 as uuidV4 } from 'uuid'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useRecoilState, useSetRecoilState } from 'recoil'
@@ -50,7 +50,11 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
   const setAutoTriggerAskEnable = useSetRecoilState(AutoTriggerAskEnableAtom)
 
-  const { startSourcesLoading, clearSources, setSources } = useSourcesStatus()
+  const {
+    startSourcesLoading,
+    clearSources,
+    setSources,
+  } = useSearchWithAISources()
 
   const updateConversation = (
     newConversationData: Partial<ISearchWithAIConversationType>,

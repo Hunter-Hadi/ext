@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { FC, useCallback, useState } from 'react'
 import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 
@@ -24,7 +24,9 @@ import SearchWithAIGALoader from './SearchWithAIGALoader'
 import SearchWithAIFooter from './SearchWithAIFooter'
 import SearchWithAIHeader from './SearchWithAIHeader'
 import { ReadIcon } from './SearchWithAIIcons'
-import { SEARCH_WITH_AI_APP_NAME } from '../constants'
+import useSearchWithAISources from '@/features/searchWithAI/hooks/useSearchWithAISources'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { v4 as uuidV4 } from 'uuid'
 
 interface IProps {
   question: string
@@ -56,7 +58,49 @@ const AISearchContentCard: FC<IProps> = ({
     handleAskQuestion,
     handleStopGenerate,
   } = useSearchWithAICore(question, siteName)
-
+  const { sources } = useSearchWithAISources()
+  const memoAIResponseMessage = useMemo(() => {
+    if (status === 'success') {
+      const messageId = uuidV4()
+      return {
+        messageId,
+        parentMessageId: '',
+        text: question,
+        type: 'ai',
+        originalMessage: {
+          include_history: false,
+          id: messageId,
+          create_time: new Date().toISOString(),
+          content: {
+            text: completedAnswer,
+            contentType: 'text',
+          },
+          metadata: {
+            isComplete: true,
+            quickSearch: [
+              {
+                title: 'Understanding question',
+                status: 'complete',
+                icon: 'CheckCircle',
+              },
+              {
+                title: 'Searching web',
+                status: 'complete',
+                icon: 'Search',
+                value: question,
+              },
+            ],
+            title: question,
+            sources: {
+              status: 'complete',
+              links: sources as any,
+            },
+          },
+        },
+      } as IAIResponseMessage
+    }
+    return null
+  }, [sources, status, completedAnswer, question])
   const handleClose = useCallback(() => {
     setShow(false)
   }, [])
@@ -149,10 +193,13 @@ const AISearchContentCard: FC<IProps> = ({
         {status === 'waitingAnswer' && <AISearchingLoading />}
       </Stack>
 
-      {SEARCH_WITH_AI_APP_NAME === 'webchatgpt' && status === 'success' ? (
+      {status === 'success' ? (
         <>
           <Divider />
-          <SearchWithAIFooter handleAskQuestion={handleAskQuestion} />
+          <SearchWithAIFooter
+            aiMessage={memoAIResponseMessage}
+            handleAskQuestion={handleAskQuestion}
+          />
         </>
       ) : null}
 

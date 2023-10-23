@@ -4,7 +4,7 @@ import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCa
 import { useTranslation } from 'react-i18next'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
-import { OpenInNewOutlined } from '@mui/icons-material'
+import OpenInNewOutlined from '@mui/icons-material/OpenInNewOutlined'
 import useCommands from '@/hooks/useCommands'
 import Box from '@mui/material/Box'
 import { chromeExtensionClientOpenPage } from '@/utils'

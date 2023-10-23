@@ -9,11 +9,11 @@ import {
 } from '@mui/material'
 import React, { useMemo } from 'react'
 import { SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT } from '../constants'
-import useSourcesStatus from '../hooks/useSourcesStatus'
+import useSearchWithAISources from '../hooks/useSearchWithAISources'
 import { CaptivePortalIcon } from './SearchWithAIIcons'
 
 const AISearchSources = () => {
-  const { loading, sources } = useSourcesStatus()
+  const { loading, sources } = useSearchWithAISources()
 
   const isEmpty = useMemo(() => loading === false && sources.length === 0, [
     loading,

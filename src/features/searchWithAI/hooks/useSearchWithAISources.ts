@@ -1,8 +1,10 @@
 import { useRecoilState } from 'recoil'
-import { SourcesStatusAtom } from '../store'
+import { SearchWithAISourcesState } from '../store'
 
-const useSourcesStatus = () => {
-  const [sourcesStatus, setSourcesStatus] = useRecoilState(SourcesStatusAtom)
+const useSearchWithAISources = () => {
+  const [sourcesStatus, setSourcesStatus] = useRecoilState(
+    SearchWithAISourcesState,
+  )
 
   const startSourcesLoading = () => {
     setSourcesStatus({
@@ -36,4 +38,4 @@ const useSourcesStatus = () => {
   }
 }
 
-export default useSourcesStatus
+export default useSearchWithAISources

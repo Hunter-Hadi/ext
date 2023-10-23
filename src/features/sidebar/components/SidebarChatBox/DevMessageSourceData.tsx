@@ -18,14 +18,16 @@ const DevMessageSourceData: FC<{
         <Tooltip
           title={
             <Stack>
+              <CopyTooltipIconButton copyText={copyJson} />
               <pre
                 style={{
                   fontSize: '12px',
+                  maxHeight: '500px',
+                  overflowY: 'auto',
                 }}
               >
                 {copyJson}
               </pre>
-              <CopyTooltipIconButton copyText={copyJson} />
             </Stack>
           }
         >

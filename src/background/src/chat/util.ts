@@ -364,14 +364,29 @@ export const processAskAIParameters = async (
     for (let i = conversation.messages.length - 1; i >= 0; i--) {
       const message = conversation.messages[i]
       // 如果是ai回复，那么标记开始
-      if (message.type === 'ai' && message.text && endIndex === null) {
-        endIndex = i
+      if (message.type === 'ai' && message.text) {
+        if (endIndex === null) {
+          endIndex = i
+        }
+        // 如果已经有结束节点了，找到includeHistory为false的作为开始
+        if (!startIndex) {
+          if (
+            (message as IAIResponseMessage)?.originalMessage
+              ?.include_history === false
+          ) {
+            startIndex = i
+          }
+        }
       }
       // 如果是用户消息，从非includeHistory的消息开始
       if (message.type === 'user' && message.text && startIndex === null) {
-        if (!(message as IUserChatMessage).extra.includeHistory) {
+        if ((message as IUserChatMessage).extra.includeHistory === false) {
           startIndex = i
         }
+      }
+      // 如果都找到了，那么break
+      if (isNumber(startIndex) && isNumber(endIndex)) {
+        break
       }
     }
     if (startIndex === null) {
@@ -425,6 +440,10 @@ export const processAskAIParameters = async (
         // 例如start 1, end 2, end - 1 = 1, 但是start也得加，所以是下一次
         if (startIndex === endIndex) {
           needBreak = true
+        } else if (startIndex > endIndex) {
+          // 很特殊的场景在search with ai中
+          // 例如start 2, end 2, end - 1 = 1, start>end, 所以直接break
+          break
         }
       }
     }

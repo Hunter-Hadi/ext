@@ -1,7 +1,7 @@
-import { getCurrentDomainHost } from '@/utils'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { APP_ROOT_ID, ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
 import debounce from 'lodash-es/debounce'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const startHideInHostHandle = debounce(() => {
   const host = getCurrentDomainHost()

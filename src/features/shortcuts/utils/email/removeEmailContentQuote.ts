@@ -2,7 +2,7 @@
  * remove email content quote
  * @param emailContentHtmlElement
  */
-import { getCurrentDomainHost } from '@/utils'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const removeEmailContentQuote = (
   emailContentHtmlElement: HTMLElement,

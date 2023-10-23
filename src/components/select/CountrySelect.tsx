@@ -2,8 +2,8 @@ import React, { FC, useRef, useState } from 'react'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
-import { countryIcon, countryOptions } from '@/utils'
 import FormControl from '@mui/material/FormControl'
+import { countryIcon, countryOptions } from '@/utils/dataHelper/websiteHelper'
 
 interface CountrySelectProps {
   defaultValue?: string

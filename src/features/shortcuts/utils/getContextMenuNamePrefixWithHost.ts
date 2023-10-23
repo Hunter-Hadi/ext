@@ -1,5 +1,5 @@
-import { getCurrentDomainHost } from '@/utils'
 import { ContextMenuNamePrefixType } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const getContextMenuNamePrefixWithHost = (): ContextMenuNamePrefixType => {
   const host = getCurrentDomainHost()

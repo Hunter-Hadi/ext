@@ -1,4 +1,3 @@
-import { getCurrentDomainHost } from '@/utils'
 import SocialMediaPostContext, {
   ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
@@ -26,6 +25,7 @@ import {
   instagramGetDraftContent,
   instagramGetPostContent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/instagram'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,

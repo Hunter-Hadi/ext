@@ -16,11 +16,11 @@ import useCommands from '@/hooks/useCommands'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
 import Button from '@mui/material/Button'
 import Browser from 'webextension-polyfill'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const ChatBoxHeader: FC = () => {
   const { t } = useTranslation(['common', 'client'])
@@ -160,7 +160,7 @@ const ChatBoxHeader: FC = () => {
           <IconButton
             sx={{ flexShrink: 0 }}
             onClick={() => {
-              if (isMaxAINewTabPage()) {
+              if (isMaxAIImmersiveChatPage()) {
                 window.close()
                 return
               }

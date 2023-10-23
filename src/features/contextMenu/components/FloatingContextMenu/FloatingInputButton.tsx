@@ -4,9 +4,9 @@ import Button from '@mui/material/Button'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useFloatingContextMenu } from '@/features/contextMenu'
-import { getCurrentDomainHost } from '@/utils'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const NO_SUPPORT_HOST = ['teams.live.com', 'notion.so']
 

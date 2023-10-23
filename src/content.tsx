@@ -13,8 +13,10 @@ import {
 } from '@/constants'
 import AppThemeProvider from '@/components/AppTheme'
 import Browser from 'webextension-polyfill'
-import { getCurrentDomainHost } from '@/utils'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
+import {
+  getCurrentDomainHost,
+  isMaxAIImmersiveChatPage,
+} from '@/utils/dataHelper/websiteHelper'
 // import createCache from '@emotion/cache'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
@@ -109,7 +111,7 @@ import('./pages/App').then((module) => {
   shadowRootElement.style.flexDirection = 'column'
   shadowRootElement.style.flex = '1'
   shadowRootElement.style.height = '100vh'
-  if (isMaxAINewTabPage()) {
+  if (isMaxAIImmersiveChatPage()) {
     shadowRootElement.setAttribute('data-maxai-newtab', 'true')
   }
   // shadowRootElement.style.width = '100vw'

@@ -21,7 +21,7 @@ import {
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { getCurrentDomainHost, showChatBox } from '@/utils'
+import { showChatBox } from '@/utils'
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
@@ -32,6 +32,7 @@ import {
 } from '@/background/utils'
 import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement

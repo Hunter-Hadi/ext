@@ -8,8 +8,8 @@ import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelector
 import Popover from '@mui/material/Popover'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import { getAppRootElement } from '@/utils'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const AIProviderSelectorFloatingButton: FC<{
   sx?: SxProps
@@ -95,7 +95,7 @@ const AIProviderSelectorFloatingButton: FC<{
           disableScrollLock
           PaperProps={{
             sx: {
-              ml: isMaxAINewTabPage() ? 0 : '8px',
+              ml: isMaxAIImmersiveChatPage() ? 0 : '8px',
             },
           }}
         >

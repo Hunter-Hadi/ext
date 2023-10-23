@@ -34,7 +34,6 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useRecoilState } from 'recoil'
 import { AppDBStorageState } from '@/store'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { getCurrentDomainHost } from '@/utils'
 import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
 import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
 import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
@@ -50,6 +49,7 @@ import {
   IVisibilitySetting,
 } from '@/background/utils/chromeExtensionStorage/type'
 import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appDBStorage, setAppDBStorage] = useRecoilState(AppDBStorageState)

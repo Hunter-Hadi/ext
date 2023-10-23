@@ -18,7 +18,7 @@ import {
   ISearchWithAIConversationType,
   SearchWithAIConversationAtom,
 } from '../store'
-import { getCurrentDomainHost } from '@/utils'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })

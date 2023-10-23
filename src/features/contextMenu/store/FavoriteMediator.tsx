@@ -2,9 +2,9 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import Log from '@/utils/Log'
 import LFUCache from '@/utils/cache/LFUCache'
 import Browser from 'webextension-polyfill'
-import { getCurrentDomainHost } from '@/utils'
 import { clientGetChromeExtensionButtonSettings } from '@/features/contextMenu/utils/clientButtonSettings'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const favoriteMediatorLog = new Log('Store/FavoriteMediator')
 

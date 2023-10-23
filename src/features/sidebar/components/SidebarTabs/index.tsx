@@ -15,7 +15,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -75,7 +75,7 @@ const SidebarTabs: FC = () => {
   const memoSidebarTabsData = useMemo(() => {
     return sidebarTabsData.filter((tab) => {
       if (tab.value === 'Summary') {
-        if (isMaxAINewTabPage()) {
+        if (isMaxAIImmersiveChatPage()) {
           return false
         }
       }

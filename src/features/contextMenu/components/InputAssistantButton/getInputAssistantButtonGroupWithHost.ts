@@ -1,4 +1,3 @@
-import { getCurrentDomainHost } from '@/utils'
 import {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
@@ -8,6 +7,7 @@ import {
   findParentEqualSelector,
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 type getInputAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement

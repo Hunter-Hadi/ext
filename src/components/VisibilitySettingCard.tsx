@@ -3,7 +3,6 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import DomainSelect from '@/components/select/DomainSelect'
 import uniq from 'lodash-es/uniq'
-import { domain2Favicon } from '@/utils'
 import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { SxProps } from '@mui/material/styles'
@@ -19,6 +18,7 @@ import DialogContent from '@mui/material/DialogContent'
 import { useTranslation } from 'react-i18next'
 import { isEqual } from 'lodash-es'
 import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/type'
+import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * 控制黑白名单的卡片

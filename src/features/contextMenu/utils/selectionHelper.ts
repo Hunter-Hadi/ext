@@ -7,7 +7,6 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
-import { getCurrentDomainHost } from '@/utils'
 import sum from 'lodash-es/sum'
 import TurnDownService from 'turndown'
 import {
@@ -19,6 +18,7 @@ import { useEffect } from 'react'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
 import { useRecoilValue } from 'recoil'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
 

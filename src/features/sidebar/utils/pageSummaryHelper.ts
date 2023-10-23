@@ -1,6 +1,5 @@
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { getCurrentDomainHost } from '@/utils'
 import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 import { v4 as uuidV4 } from 'uuid'
@@ -10,6 +9,7 @@ import {
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'

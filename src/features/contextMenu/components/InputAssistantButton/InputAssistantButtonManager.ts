@@ -1,4 +1,3 @@
-import { getCurrentDomainHost } from '@/utils'
 import inputAssistantButtonBaseConfig, {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
@@ -8,6 +7,7 @@ import Log from '@/utils/Log'
 import isNumber from 'lodash-es/isNumber'
 import { v4 as uuidV4 } from 'uuid'
 import getInputAssistantButtonGroupWithHost from '@/features/contextMenu/components/InputAssistantButton/getInputAssistantButtonGroupWithHost'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const log = new Log('ContextMenu/InputAssistantButtonManager')
 

@@ -19,7 +19,7 @@ import {
 } from '@/features/chatgpt/types'
 import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 import { getInputMediator } from '@/store/InputMediator'
-import { getCurrentDomainHost, showChatBox } from '@/utils'
+import { showChatBox } from '@/utils'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
@@ -35,6 +35,7 @@ import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import cloneDeep from 'lodash-es/cloneDeep'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',

@@ -9,12 +9,13 @@ import { v4 as uuidV4 } from 'uuid'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { getAppRootElement, getCurrentDomainHost } from '@/utils'
+import { getAppRootElement } from '@/utils'
 import Button from '@mui/material/Button'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import Box from '@mui/material/Box'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const CurrentFloatingContextMenuButtonState = atom({
   key: 'CurrentFloatingContextMenuButtonState',

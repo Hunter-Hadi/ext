@@ -25,7 +25,7 @@ import { ChatGPTConversationState } from '@/features/sidebar/store'
 import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
@@ -350,7 +350,7 @@ const AutoHeightTextarea: FC<{
     }
   }, [appState.open, loading])
   useEffectOnce(() => {
-    if (InputId === ROOT_CHAT_BOX_INPUT_ID && isMaxAINewTabPage()) {
+    if (InputId === ROOT_CHAT_BOX_INPUT_ID && isMaxAIImmersiveChatPage()) {
       setTimeout(() => {
         autoFocusWithAllWebsite(
           textareaRef.current!,

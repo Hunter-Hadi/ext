@@ -5,8 +5,8 @@ import { AppDBStorageState } from '@/store'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { ROOT_CONTAINER_ID } from '@/constants'
-import YouTubeSummaryButton from '@/minimum/components/YouTubeSummaryButton'
 import MinimumAppInit from '@/minimum/MinimumAppInit'
+import SpecialHostSummaryButton from '@/minimum/components/SpecialHostSummaryButton'
 
 const MinimumApp: FC = () => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
@@ -41,8 +41,8 @@ const MinimumApp: FC = () => {
         {appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen && (
           <FloatingMenuButton />
         )}
-        <YouTubeSummaryButton />
       </AppSuspenseLoadingLayout>
+      <SpecialHostSummaryButton />
     </>
   )
 }

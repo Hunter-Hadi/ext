@@ -6,13 +6,16 @@ import Stack from '@mui/material/Stack'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import Link from '@mui/material/Link'
 import LoginLayout from '@/features/auth/components/LoginLayout'
-import { getCurrentDomainHost } from '@/utils'
 import { useTranslation } from 'react-i18next'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const AuthUserRoleIconDropdown: FC = () => {
-  const { currentUserPlan, syncUserInfo, syncUserSubscriptionInfo } =
-    useUserInfo()
+  const {
+    currentUserPlan,
+    syncUserInfo,
+    syncUserSubscriptionInfo,
+  } = useUserInfo()
   const { t } = useTranslation(['common', 'client'])
   const [isHover, setIsHover] = useState(false)
   useEffectOnce(() => {

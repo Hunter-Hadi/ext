@@ -28,7 +28,6 @@ import { useInitI18n } from '@/i18n/hooks'
 import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import Browser from 'webextension-polyfill'
 import { clientGetBrowserInfo } from '@/utils/larkBot'
@@ -39,6 +38,7 @@ import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/cl
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useHideInHost from '@/minimum/hooks/useHideInHost'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const log = new Log('AppInit')
 
@@ -386,7 +386,7 @@ const AppInit = () => {
   useHandlePDFViewerError()
   useInitSidebar()
   useEffectOnce(() => {
-    if (isMaxAINewTabPage()) {
+    if (isMaxAIImmersiveChatPage()) {
       showChatBox()
     }
     ShortcutMessageClientInit()

@@ -5,7 +5,7 @@ import { SxProps } from '@mui/material/styles'
 
 import { TOP_DOMAINS } from '@/utils/staticData'
 import Typography from '@mui/material/Typography'
-import { domain2Favicon } from '@/utils'
+import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
 
 interface DomainSelectProps {
   label?: string

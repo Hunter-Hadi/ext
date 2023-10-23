@@ -3,8 +3,8 @@ import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constan
 import { showChatBox } from '@/utils'
 import { useRecoilValue } from 'recoil'
 import { AppLocalStorageState } from '@/store'
-import { isMaxAINewTabPage } from '@/pages/chat/util'
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const RESIZE_ENABLE = {
   top: false,
@@ -86,7 +86,7 @@ const useChatBoxWidth = () => {
     resizeEnable: {
       ...RESIZE_ENABLE,
       // 如果是新标签页，不允许左右拖动
-      left: !isMaxAINewTabPage(),
+      left: !isMaxAIImmersiveChatPage(),
     },
     visibleWidth,
     setLocalWidth,

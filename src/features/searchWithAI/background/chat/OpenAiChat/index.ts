@@ -37,7 +37,7 @@ class OpenAIChat extends BaseChat {
   }
   async createConversation() {
     this.conversation = (await this.openAILib.createConversation()) as ChatGPTConversation
-    return this.conversation.id
+    return this.conversation?.id || ''
   }
   async removeConversation(conversationId: string) {
     return await this.openAILib.closeConversation(conversationId)
@@ -73,6 +73,19 @@ class OpenAIChat extends BaseChat {
           conversationId: '',
         },
       })
+    }
+
+    if (!this.openAILib.token) {
+      onMessage?.({
+        type: 'error',
+        done: true,
+        error: 'UNAUTHORIZED',
+        data: {
+          text: '',
+          conversationId: '',
+        },
+      })
+      return
     }
 
     if (!this.conversation) {

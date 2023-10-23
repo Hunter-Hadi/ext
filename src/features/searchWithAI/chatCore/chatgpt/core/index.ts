@@ -605,30 +605,30 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     // if (this.conversations.length > 0) {
     //   return this.conversations[0]
     // }
-    // try {
-    const token = this.token || (await getChatGPTAccessToken())
-    const model = await this.getModelName(token, selectedModel)
-    const conversationInstance = new ChatGPTConversation({
-      token,
-      model,
-      conversationId,
-    })
-    // this.conversations.push(conversationInstance)
-    // 由于只存在一个会话 所以这里直接替换
-    this.conversations = [conversationInstance]
-    removeCacheConversation && conversationInstance.removeCacheConversation()
-    await conversationInstance.fetchHistoryAndConfig()
-    console.log(conversationInstance)
+    try {
+      const token = this.token || (await getChatGPTAccessToken())
+      if (token) {
+        this.token = token
+      }
+      const model = await this.getModelName(token, selectedModel)
+      const conversationInstance = new ChatGPTConversation({
+        token,
+        model,
+        conversationId,
+      })
+      // this.conversations.push(conversationInstance)
+      // 由于只存在一个会话 所以这里直接替换
+      this.conversations = [conversationInstance]
 
-    return conversationInstance
-    // } catch (error) {
-    //   console.error('createConversation error:\t', error)
-    //   if ((error as any).message === 'CLOUDFLARE') {
-    //     // 刷新网页
-    //     // location.reload()
-    //   }
-    //   return undefined
-    // }
+      removeCacheConversation && conversationInstance.removeCacheConversation()
+      await conversationInstance.fetchHistoryAndConfig()
+      console.log(conversationInstance)
+
+      return conversationInstance
+    } catch (error) {
+      console.error('createConversation error:\t', error)
+      return undefined
+    }
   }
   getConversation(conversationId: string) {
     return this.conversations.find(

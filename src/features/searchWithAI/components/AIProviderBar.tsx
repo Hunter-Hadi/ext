@@ -20,7 +20,7 @@ import useSearchWithProvider from '../hooks/useSearchWithProvider'
 import SearchWIthAIProviderIcon from './SearchWIthAIProviderIcon'
 
 interface IProps {
-  onProviderChange?: () => void
+  onProviderChange: () => void
   disabled?: boolean
   sx?: SxProps
 }
@@ -69,9 +69,9 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
           },
         }}
         disabled={loading || disabled}
-        onClick={() => {
+        onClick={async () => {
+          await onProviderChange()
           updateChatGPTProvider(provider.value)
-          onProviderChange && onProviderChange()
         }}
       >
         <SearchWIthAIProviderIcon

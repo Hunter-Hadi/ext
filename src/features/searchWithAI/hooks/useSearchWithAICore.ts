@@ -126,6 +126,9 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       loading: true,
     })
     taskId.current = messageId
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    window.__search_with_AI_running_task_id = messageId
 
     // 为了控制 第一次 onmessage 时，setStatus('answering') 不重复set
     // console.log(
@@ -157,15 +160,19 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       {},
       {
         onMessage: (msg) => {
-          if (!answered) {
-            setStatus('answering')
-            answered = true
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          if (window.__search_with_AI_running_task_id === msg.parentMessageId) {
+            if (!answered) {
+              setStatus('answering')
+              answered = true
+            }
+            message = msg.text
+            updateConversation({
+              loading: true,
+              writingMessage: msg.text,
+            })
           }
-          message = msg.text
-          updateConversation({
-            loading: true,
-            writingMessage: msg.text,
-          })
         },
         onError: async (error: any) => {
           hasError = true
@@ -184,21 +191,30 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         },
       },
     )
+    if (
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      window.__search_with_AI_running_task_id === taskId.current
+    ) {
+      if (hasError && errorMessage) {
+        setStatus('error')
+        updateConversation({
+          loading: false,
+          errorMessage: errorMessage,
+          writingMessage: '',
+        })
+      } else {
+        setStatus('success')
+        updateConversation({
+          loading: false,
+          completedMessage: message,
+          writingMessage: '',
+        })
+      }
 
-    if (hasError && errorMessage) {
-      setStatus('error')
-      updateConversation({
-        loading: false,
-        errorMessage: errorMessage,
-        writingMessage: '',
-      })
-    } else {
-      setStatus('success')
-      updateConversation({
-        loading: false,
-        completedMessage: message,
-        writingMessage: '',
-      })
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      window.__search_with_AI_running_task_id = null
     }
     loadingRef.current = false
   }, [
@@ -214,6 +230,9 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     // 重置 auto trigger 状态
     setAutoTriggerAskEnable(true)
     setStatus('idle')
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    window.__search_with_AI_running_task_id = null
   }, [])
 
   const handleStopGenerate = useCallback(async () => {
@@ -237,6 +256,9 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       loading: false,
     })
     loadingRef.current = false
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    window.__search_with_AI_running_task_id = null
   }, [conversation.conversationId, conversation.writingMessage])
 
   useEffect(() => {

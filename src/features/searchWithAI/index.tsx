@@ -69,6 +69,17 @@ const mount = async (
       },
     })
 
+    if (siteName === 'baidu') {
+      // 修复百度热搜滚动到底部时与 searchWithAI 的样式冲突
+      const searchWithAIInjectStyle = document.createElement('style')
+      searchWithAIInjectStyle.textContent = `
+        #container.sam_newgrid div[class^="right-ceiling"] {
+          position: static !important;
+        }
+      `
+      document.body.append(searchWithAIInjectStyle)
+    }
+
     // insert style
     try {
       const styleResponse = await fetch(

@@ -10,6 +10,8 @@ import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientCon
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
+import { useSetRecoilState } from 'recoil'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
@@ -29,6 +31,7 @@ const useInitSidebar = () => {
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { switchBackgroundChatSystemAIProvider } = useClientConversation()
   const { continueInSearchWithAI } = useSearchWithAI()
   const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
@@ -97,6 +100,7 @@ const useInitSidebar = () => {
     }
   }, [pageUrl])
   // conversationID切换的时候的处理
+  const currentSidebarConversationIdRef = useRef(currentSidebarConversationId)
   useEffect(() => {
     // 切换使用的AI provider
     let destroy = false
@@ -118,6 +122,7 @@ const useInitSidebar = () => {
         },
       )
     }
+    currentSidebarConversationIdRef.current = currentSidebarConversationId
     return () => {
       destroy = true
     }
@@ -133,6 +138,30 @@ const useInitSidebar = () => {
     window.addEventListener('MaxAIContinueSearchWithAI', listener)
     return () => {
       window.removeEventListener('MaxAIContinueSearchWithAI', listener)
+    }
+  })
+  // focus的时候更新消息
+  useFocus(() => {
+    if (currentSidebarConversationIdRef.current) {
+      clientGetConversation(currentSidebarConversationIdRef.current).then(
+        (conversation) => {
+          if (conversation) {
+            console.log('新版Conversation refocus更新', conversation.messages)
+            updateConversationMap((prevState) => {
+              return {
+                ...prevState,
+                [conversation.id]: conversation,
+              }
+            })
+            // setClientConversationMap((prevState) => {
+            //   return {
+            //     ...prevState,
+            //     [conversation.id]: conversation,
+            //   }
+            // })
+          }
+        },
+      )
     }
   })
 }

@@ -10,19 +10,31 @@ import { ISidebarConversationType } from '@/features/sidebar/store'
 
 const GmailSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])
-  const { element } = useFindElement('div[jsaction] > .adF')
+  const isPopout = location.pathname.includes('popout')
+  const { element } = useFindElement(
+    isPopout ? 'div[jsaction] .G-tF' : 'div[jsaction] > .adF',
+  )
   return (
     <DynamicComponent
       rootContainer={element}
       customElementName={'max-ai-gmail-summary-button'}
     >
       <Box
-        sx={{
-          height: 20,
-          position: 'relative',
-          top: -8,
-          mr: 1,
-        }}
+        sx={
+          isPopout
+            ? {
+                height: 36,
+                position: 'absolute',
+                right: 0,
+                top: 4,
+              }
+            : {
+                height: 20,
+                position: 'relative',
+                top: -8,
+                mr: 1,
+              }
+        }
       >
         <Button
           startIcon={

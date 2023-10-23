@@ -105,7 +105,6 @@ const useInitSidebar = () => {
     // 切换使用的AI provider
     let destroy = false
     if (currentSidebarConversationId) {
-      debugger
       clientGetConversation(currentSidebarConversationId).then(
         async (conversation) => {
           if (conversation?.meta.AIProvider) {

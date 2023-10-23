@@ -118,7 +118,6 @@ const useSearchWithAI = () => {
     if (isFetchingRef.current) {
       return
     }
-    debugger
     if (!isShowChatBox()) {
       showChatBox()
     }
@@ -236,6 +235,7 @@ const useSearchWithAI = () => {
         {
           type: 'ASK_CHATGPT',
           parameters: {
+            AskChatGPTWithHistory: includeHistory,
             template: includeHistory
               ? generateSmartSearchPromptWithPreviousQuestion(
                   memoPrevQuestions.concat(currentQuestion),
@@ -258,7 +258,6 @@ const useSearchWithAI = () => {
                 },
               } as IContextMenuItem,
             },
-            AskChatGPTWithHistory: true,
           },
         },
         {
@@ -389,7 +388,7 @@ const useSearchWithAI = () => {
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            AskChatGPTWithHistory: true,
+            AskChatGPTWithHistory: includeHistory,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
             AskChatGPTActionMeta: {
@@ -431,7 +430,6 @@ const useSearchWithAI = () => {
             1,
             [],
           )
-          debugger
           await createSearchWithAI(
             lastQuestion,
             (lastAIResponse as IAIResponseMessage)?.originalMessage

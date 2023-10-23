@@ -366,6 +366,28 @@ export const getEditableElementSelectionTextOnSpecialHost = (
                 pageContentRoot =
                   doc.querySelector('.notion-page-content') ||
                   doc.querySelector('[data-content-editable-root="true"]')
+                const notionCursor = win.getSelection().focusNode
+                if (pageContentRoot && notionCursor) {
+                  // 当前所在的行
+                  // 计算元素从头到光标的位置
+                  const boundaryRange = document.createRange()
+                  boundaryRange.selectNode(pageContentRoot)
+                  const partOfStartToCaret = boundaryRange.cloneRange()
+                  partOfStartToCaret.setEndBefore(notionCursor)
+                  const partOfStartToCaretText = partOfStartToCaret
+                    .toString()
+                    .trim()
+                    .replace(/\u200B/g, '')
+                  if (partOfStartToCaretText) {
+                    return {
+                      editableElementSelectionText: notionCursor.innerText
+                        .toString()
+                        .trim()
+                        .replace(/\u200B/g, ''),
+                      selectionText: partOfStartToCaretText,
+                    }
+                  }
+                }
               }
               break
             case 'larksuite.com':

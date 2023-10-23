@@ -39,7 +39,38 @@ class ArkoseTokenGenerator {
   // 第二部 拦截setConfig
   private useArkoseSetupEnforcement(enforcement: ArkoseEnforcement) {
     this.enforcement = enforcement
-    ;(window as any).useArkoseSetupEnforcement(
+    ;(window as any).useArkoseSetupEnforcementgpt4(
+      new Proxy(enforcement, {
+        get: (target: ArkoseEnforcement, p: string | symbol, receiver: any) => {
+          if (p === 'setConfig') {
+            return (config: any) => {
+              this.config = config
+              // 包装原本的onCompleted
+              const onCompleted = config.onCompleted
+              config.onCompleted = (result: any) => {
+                onCompleted(result)
+                this.pendingPromises.forEach((promise) => {
+                  promise.resolve(result.token)
+                })
+                this.pendingPromises = []
+              }
+              // 包装原本的onFailed
+              const onFailed = config.onFailed
+              config.onFailed = (result: any) => {
+                onFailed(result)
+                this.pendingPromises.forEach((promise) => {
+                  promise.reject(new Error('Failed to generate arkose token'))
+                })
+              }
+              return Reflect.get(target, p, receiver)(config)
+            }
+          }
+          return Reflect.get(target, p, receiver)
+        },
+      }),
+    )
+
+    ;(window as any).useArkoseSetupEnforcementgpt35(
       new Proxy(enforcement, {
         get: (target: ArkoseEnforcement, p: string | symbol, receiver: any) => {
           if (p === 'setConfig') {

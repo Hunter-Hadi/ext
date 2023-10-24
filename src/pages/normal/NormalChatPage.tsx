@@ -6,6 +6,7 @@ import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatu
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -24,6 +25,7 @@ const NormalChatPage = () => {
     stopGenerateMessage,
     resetConversation,
   } = useMessageWithChatGPT('')
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const { currentSidebarConversationMessages } = useSidebarSettings()
   useEffect(() => {
     pingDaemonProcess()
@@ -53,7 +55,7 @@ const NormalChatPage = () => {
         }}
         writingMessage={conversation.writingMessage}
         messages={currentSidebarConversationMessages}
-        loading={conversation.loading}
+        loading={smoothConversationLoading}
         title={'Chat Draft'}
         onRetry={retryMessage}
         onReGenerate={async () => {

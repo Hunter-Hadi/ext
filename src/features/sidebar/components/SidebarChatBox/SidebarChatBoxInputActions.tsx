@@ -3,8 +3,6 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import { getInputMediator } from '@/store/InputMediator'
-import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { getAppRootElement, numberWithCommas } from '@/utils'
 import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
@@ -14,6 +12,7 @@ import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import TooltipButton from '@/components/TooltipButton'
 import { useTranslation } from 'react-i18next'
 import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
@@ -24,7 +23,7 @@ const SidebarChatBoxInputActions: FC<{
     'chatBoxInputMediator',
   )
   const [inputValue, setInputValue] = useState('')
-  const conversation = useRecoilValue(ChatGPTConversationState)
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const ref = React.useRef<HTMLElement>(null)
   const nextMessageIsActionRef = useRef(false)
   const metaDataRef = useRef<any>({})
@@ -48,7 +47,7 @@ const SidebarChatBoxInputActions: FC<{
   useEffect(() => {
     nextMessageIsActionRef.current = false
     metaDataRef.current = {}
-  }, [conversation.loading])
+  }, [smoothConversationLoading])
   return (
     <Stack
       ref={ref}
@@ -66,8 +65,8 @@ const SidebarChatBoxInputActions: FC<{
         // 用等宽字体，不然会左右闪烁宽度
         fontFamily={'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'}
       >
-        {conversation.loading ? 0 : numberWithCommas(inputValue.length, 0)}/
-        {numberWithCommas(currentMaxInputLength, 0)}
+        {smoothConversationLoading ? 0 : numberWithCommas(inputValue.length, 0)}
+        /{numberWithCommas(currentMaxInputLength, 0)}
       </Typography>
       <Box
         component={'div'}
@@ -81,7 +80,7 @@ const SidebarChatBoxInputActions: FC<{
         {/*<DevContent>*/}
         {/*  <TestAllActionsButton />*/}
         {/*</DevContent>*/}
-        {!isEzMailApp && !conversation.loading && (
+        {!isEzMailApp && !smoothConversationLoading && (
           <FloatingInputButton
             onBeforeShowContextMenu={() => {
               return {
@@ -102,7 +101,7 @@ const SidebarChatBoxInputActions: FC<{
           sx={{ minWidth: 'unset', p: 1 }}
           disableElevation
           variant={'contained'}
-          disabled={conversation.loading}
+          disabled={smoothConversationLoading}
           onClick={() => {
             onSendMessage &&
               onSendMessage(inputValue, {
@@ -113,7 +112,7 @@ const SidebarChatBoxInputActions: FC<{
             nextMessageIsActionRef.current = false
           }}
         >
-          {conversation.loading ? (
+          {smoothConversationLoading ? (
             <CircularProgress size={16} />
           ) : (
             <SendIcon sx={{ fontSize: '16px' }} />

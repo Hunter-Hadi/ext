@@ -15,7 +15,9 @@ const SpecialHostSummaryButton: FC = () => {
       {appHost === 'mail.google.com' && <GmailSummaryButton />}
       {appHost === 'youtube.com' && <YouTubeSummaryButton />}
       {isMaxAIPDFPage() && <PDFSummaryButton />}
-      {appHost === 'outlook.live.com' && <OutlookSummaryButton />}
+      {(appHost === 'outlook.live.com' ||
+        appHost === 'outlook.office.com' ||
+        appHost === 'outlook.office365.com') && <OutlookSummaryButton />}
     </>
   )
 }

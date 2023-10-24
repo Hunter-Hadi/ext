@@ -253,6 +253,7 @@ const useSearchWithAI = () => {
                 ]),
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
             AskChatGPTActionMeta: {
+              temperature: 0,
               messageVisibleText: query,
               contextMenu: {
                 id: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',

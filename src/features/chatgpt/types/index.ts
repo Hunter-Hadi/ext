@@ -43,6 +43,8 @@ export interface IUserChatMessage extends IChatMessage {
 
 export type IChatMessageExtraMetaType = {
   contextMenu?: IContextMenuItem
+  // 温度
+  temperature?: number
   // 附件
   attachments?: IChatUploadFile[]
   // 本条消息的显示消息

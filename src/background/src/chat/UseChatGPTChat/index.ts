@@ -23,7 +23,6 @@ import {
 import isNumber from 'lodash-es/isNumber'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
-import { hasData } from '@/utils'
 import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
@@ -123,13 +122,13 @@ class UseChatGPTPlusChat extends BaseChat {
       meta,
     } = options || {}
     const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
-    let temperature = Math.min(
-      isNumber(userConfig?.temperature) ? userConfig!.temperature : 1,
-      1.2,
-    )
-    if (hasData(meta?.temperature)) {
-      temperature = meta?.temperature
+    let temperature = isNumber(userConfig?.temperature)
+      ? userConfig!.temperature
+      : 1
+    if (typeof meta?.temperature === 'number') {
+      temperature = meta.temperature
     }
+    temperature = Math.min(temperature, 1.2)
     const postBody = Object.assign(
       {
         chat_history,

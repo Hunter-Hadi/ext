@@ -25,7 +25,7 @@ const GmailSummaryButton: FC = () => {
             ? {
                 height: 36,
                 position: 'absolute',
-                right: 0,
+                right: 16,
                 top: 4,
               }
             : {

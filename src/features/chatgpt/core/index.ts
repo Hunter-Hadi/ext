@@ -252,7 +252,7 @@ export const getChatGPTAccessToken = async (
 
 export const generateArkoseToken = async (model: string) => {
   const needWaitArkoseToken = [
-    // 'text-davinci-002-render-sha',
+    'text-davinci-002-render-sha',
     // 'text-davinci-002-render-sha-mobile',
     'gpt-4',
     'gpt-4-code-interpreter',

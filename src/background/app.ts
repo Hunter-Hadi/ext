@@ -101,6 +101,12 @@ const initChromeExtensionInstalled = () => {
         url: CHROME_EXTENSION_DOC_URL + '/get-started',
       })
     } else {
+      // NOTE: 在2.2.3版本更新的时候，弹出https://app.maxai.me/celebrationV2 - 2023-10-24
+      if (APP_VERSION === '2.2.3') {
+        await Browser.tabs.create({
+          url: 'https://app.maxai.me/celebrationV2',
+        })
+      }
       // 保存本地快照
       await setChromeExtensionDBStorageSnapshot()
       // 更新插件

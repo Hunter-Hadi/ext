@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import random from 'lodash-es/random'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
+  ISearchWithAIProviderType,
   SEARCH_WITH_AI_APP_NAME,
   // SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT,
   SEARCH_WITH_AI_PROMPT,
@@ -37,11 +38,23 @@ export type IAIForSearchStatus =
   // 停止
   | 'stop'
 
+// 不同 provider 的超时时间
+const PROVIDER_TIMEOUT_DURATION: Record<ISearchWithAIProviderType, number> = {
+  OPENAI: 10000,
+  USE_CHAT_GPT_PLUS: 10000,
+  MAXAI_CLAUDE: 10000,
+  OPENAI_API: 10000,
+  CLAUDE: 10000,
+  BING: 10000,
+  BARD: 20000,
+}
+
 const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   const [status, setStatus] = useState<IAIForSearchStatus>('idle')
   const loadingRef = useRef(false)
 
   const taskId = useRef('')
+  const timer = useRef(0)
 
   const { searchWithAISettings } = useSearchWithAISettings()
 
@@ -140,6 +153,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     let message = ''
     let hasError = false
     let errorMessage = ''
+    let isTimeout = false
     if (SEARCH_WITH_AI_APP_NAME === 'maxai') {
       port.postMessage({
         event: 'Client_logCallApiRequest',
@@ -173,6 +187,27 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         arkoseToken,
       })
     }
+
+    timer.current && window.clearTimeout(timer.current)
+    timer.current = window.setTimeout(() => {
+      // console.error('in timeout')
+      setStatus('error')
+      isTimeout = true
+      updateConversation({
+        loading: false,
+        errorMessage:
+          'It seems like the system is experiencing some trouble right now. Please try again.',
+        writingMessage: '',
+      })
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      window.__search_with_AI_running_task_id = null
+
+      loadingRef.current = false
+      return
+    }, PROVIDER_TIMEOUT_DURATION[searchWithAISettings.aiProvider])
+
     await searchWithAIAskQuestion(
       {
         messageId,
@@ -183,9 +218,15 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       {},
       {
         onMessage: (msg) => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          if (window.__search_with_AI_running_task_id === msg.parentMessageId) {
+          if (isTimeout) {
+            return
+          }
+          timer.current && window.clearTimeout(timer.current)
+          if (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            window.__search_with_AI_running_task_id === msg.parentMessageId
+          ) {
             if (!answered) {
               setStatus('answering')
               answered = true
@@ -198,6 +239,10 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
           }
         },
         onError: async (error: any) => {
+          if (isTimeout) {
+            return
+          }
+          timer.current && window.clearTimeout(timer.current)
           hasError = true
           errorMessage =
             error?.message || error || 'Error detected. Please try again.'
@@ -217,7 +262,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     if (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      window.__search_with_AI_running_task_id === taskId.current
+      window.__search_with_AI_running_task_id === taskId.current &&
+      !isTimeout
     ) {
       if (hasError && errorMessage) {
         setStatus('error')
@@ -238,8 +284,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       window.__search_with_AI_running_task_id = null
+      loadingRef.current = false
     }
-    loadingRef.current = false
   }, [
     question,
     searchWithAISettings?.webAccessPrompt,
@@ -248,6 +294,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   ])
 
   const handleResetStatus = useCallback(async () => {
+    timer.current && window.clearTimeout(timer.current)
+
     clearSources()
 
     // 重置 auto trigger 状态
@@ -259,6 +307,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   }, [])
 
   const handleStopGenerate = useCallback(async () => {
+    timer.current && window.clearTimeout(timer.current)
+
     if (taskId.current) {
       await port.postMessage({
         event: 'SWAI_abortAskChatGPTQuestion',

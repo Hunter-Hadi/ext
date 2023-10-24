@@ -3,6 +3,10 @@ import { mappingToMessages } from '@/features/chatgpt/core/util'
 import { v4 as uuidV4 } from 'uuid'
 import { CHATGPT_3_5_MODEL_NAME } from '../constants'
 import { fetchSSE } from './fetch-sse'
+import {
+  getSearchWithAISettings,
+  setSearchWithAISettings,
+} from '@/features/searchWithAI/utils/searchWithAISettings'
 
 export type IChatGPTModelType = {
   slug: string
@@ -341,6 +345,14 @@ export class ChatGPTConversation {
     } as any
     if (this.conversationId) {
       postMessage.conversation_id = this.conversationId
+    }
+    const searchWithAICacheArkoseToken = (await getSearchWithAISettings())
+      .arkoseToken
+    if (searchWithAICacheArkoseToken) {
+      postMessage.arkose_token = searchWithAICacheArkoseToken
+      await setSearchWithAISettings({
+        arkoseToken: '',
+      })
     }
     // if (arkoseToken) {
     //   // NOTE: 只有gpt-4相关的模型需要传入arkoseToken

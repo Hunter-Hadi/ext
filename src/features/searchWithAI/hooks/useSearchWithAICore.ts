@@ -19,6 +19,7 @@ import {
   SearchWithAIConversationAtom,
 } from '../store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -148,6 +149,28 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
           provider: searchWithAISettings.aiProvider,
           host: getCurrentDomainHost(),
         },
+      })
+    }
+    const generateArkoseToken = async () => {
+      return new Promise<string>((resolve) => {
+        const event = new CustomEvent(
+          'max-ai-search-with-ai-arkose-generator',
+          {},
+        )
+        window.dispatchEvent(event)
+        window.addEventListener(
+          'max-ai-search-with-ai-arkose-token',
+          (e: any) => {
+            const { token } = e.detail
+            resolve(token as string)
+          },
+        )
+      })
+    }
+    if (searchWithAISettings.aiProvider === 'OPENAI') {
+      const arkoseToken = await generateArkoseToken()
+      await setSearchWithAISettings({
+        arkoseToken,
       })
     }
     await searchWithAIAskQuestion(

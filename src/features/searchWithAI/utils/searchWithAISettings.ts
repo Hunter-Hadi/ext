@@ -11,6 +11,7 @@ export interface ISearchWithAISettings {
   enable: boolean
   triggerMode: 'manual' | 'always' | 'question-mask'
   webAccessPrompt: boolean
+  arkoseToken: string
 }
 
 export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
@@ -18,6 +19,7 @@ export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
   enable: true,
   triggerMode: 'always',
   webAccessPrompt: true,
+  arkoseToken: '',
 }
 
 export const getSearchWithAISettings = async () => {

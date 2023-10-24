@@ -79,8 +79,20 @@ const mount = async (
       `
       document.body.append(searchWithAIInjectStyle)
     }
-
-    // insert style
+    const script = document.createElement('script')
+    script.src = Browser.runtime.getURL(
+      '/assets/openai/js/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147/import_api.js',
+    )
+    script.setAttribute(
+      'search-with-ai',
+      Browser.runtime.getURL(
+        '/assets/openai/js/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147/api2.js',
+      ),
+    )
+    script.async = true
+    script.defer = true
+    script.type = 'module'
+    document.body.appendChild(script)
     try {
       const styleResponse = await fetch(
         Browser.runtime.getURL('searchWithAI.css'),
@@ -112,6 +124,7 @@ const mount = async (
       container: emotionRoot,
       speedy: false,
     })
+
     createRoot(shadowContainer).render(
       <React.StrictMode>
         <RecoilRoot>

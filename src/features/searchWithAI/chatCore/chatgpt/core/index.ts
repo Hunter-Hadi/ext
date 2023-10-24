@@ -417,6 +417,11 @@ export class ChatGPTConversation {
               parentMessageId: questionId,
             },
           })
+        } else if (data.error) {
+          params.onEvent({
+            type: 'error',
+            data: { message: data.error, detail: data },
+          })
         }
       },
     })

@@ -623,6 +623,15 @@ export class ChatGPTConversation {
               parentMessageId: questionId,
             },
           })
+        } else if (data.error) {
+          console.error('generateAnswer on error', data)
+          params.onEvent({
+            type: 'error',
+            data: {
+              message: data.error,
+              detail: '',
+            },
+          })
         }
       },
     })

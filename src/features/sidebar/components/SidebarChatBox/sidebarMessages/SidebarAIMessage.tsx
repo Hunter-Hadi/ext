@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { ComponentType, FC, useMemo, Component } from 'react'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
@@ -23,6 +23,36 @@ import {
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import isArray from 'lodash-es/isArray'
 import { SxProps } from '@mui/material/styles'
+
+interface ErrorBoundaryState {
+  hasError: boolean
+}
+
+const withErrorBoundary = <P extends object>(
+  WrappedComponent: ComponentType<P>,
+) => {
+  return class ErrorBoundary extends Component<P, ErrorBoundaryState> {
+    constructor(props: P) {
+      super(props)
+      this.state = { hasError: false }
+    }
+
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+      // 处理错误，例如记录错误信息
+      console.error(error, errorInfo)
+      // 更新状态以渲染降级的 UI
+      this.setState({ hasError: true })
+    }
+
+    render() {
+      if (this.state.hasError) {
+        // 渲染降级的 UI
+        return <WrappedComponent {...this.props} liteMode />
+      }
+      return <WrappedComponent {...this.props} />
+    }
+  }
+}
 
 const MetadataTitleRender: FC<{
   title: IAIResponseOriginalMessageMetadataTitle
@@ -62,11 +92,12 @@ const MetadataTitleRender: FC<{
 }
 
 export const SidebarAIMessage: FC<{
+  liteMode?: boolean
   message: IAIResponseMessage
   isDarkMode?: boolean
 }> = (props) => {
-  const { message, isDarkMode } = props
-  const isRichAIMessage = message.originalMessage !== undefined
+  const { message, isDarkMode, liteMode = false } = props
+  const isRichAIMessage = message.originalMessage !== undefined && !liteMode
   const renderData = useMemo(() => {
     const currentRenderData = {
       title: message.originalMessage?.metadata?.title,
@@ -385,4 +416,4 @@ export const SidebarAIMessage: FC<{
     </>
   )
 }
-export default SidebarAIMessage
+export default withErrorBoundary(SidebarAIMessage)

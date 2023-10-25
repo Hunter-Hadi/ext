@@ -78,6 +78,7 @@ export interface IAIResponseOriginalMessage {
     metadata?: string
   }
   content?: {
+    title?: IAIResponseOriginalMessageMetadataTitle
     contentType: 'text'
     text: string
     language?: string
@@ -90,6 +91,12 @@ export interface IAIResponseOriginalMessage {
     }
     isComplete?: boolean
     title?: IAIResponseOriginalMessageMetadataTitle
+    // 来源于哪个网站
+    sourceWebpage?: {
+      title?: string
+      url?: string
+      favicon?: string
+    }
     sources?: {
       status: 'loading' | 'complete'
       links?: Array<{
@@ -109,6 +116,8 @@ export interface IAIResponseOriginalMessage {
       title?: IAIResponseOriginalMessageMetadataTitle
       value: string
     }
+    // 分享的类型, 用作在copy和share的时候
+    shareType?: 'normal' | 'summary' | 'search'
     // TODO
     related?: string[]
   }

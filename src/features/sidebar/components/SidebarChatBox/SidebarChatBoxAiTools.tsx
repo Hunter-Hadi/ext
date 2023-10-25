@@ -24,23 +24,56 @@ const SidebarChatBoxAiTools: FC<{
   }, [insertAble])
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
   const memoCopyText = useMemo(() => {
-    let currentCopyText = message.originalMessage?.content?.text || message.text
-    if (message.originalMessage?.metadata?.sources?.links) {
-      // 把长的引用链接变成短的: [[a](link)] => [a]
-      currentCopyText = currentCopyText.replace(
-        /\[\[(\d+)\]\([^)]+\)\]/g,
-        '[$1]',
-      )
-      const links = message.originalMessage.metadata.sources.links
-      let citations = `\n\nCitations:`
-      if (links.length > 0) {
-        links.forEach((link, index) => {
-          citations += `\n[${index + 1}] ${link.url}`
-        })
+    const originalMessage = message.originalMessage
+    if (originalMessage) {
+      const shareType = originalMessage.metadata?.shareType || 'normal'
+      let currentCopyText =
+        message.originalMessage?.content?.text || message.text
+      switch (shareType) {
+        case 'normal':
+          break
+        case 'summary':
+          {
+            // 添加标题和结尾
+            if (
+              originalMessage.metadata?.sourceWebpage?.title &&
+              originalMessage.metadata.sourceWebpage.url
+            ) {
+              currentCopyText =
+                `${originalMessage.metadata.sourceWebpage.title}\n\n` +
+                currentCopyText
+              currentCopyText = `${currentCopyText}\n\nSource:\n${originalMessage.metadata.sourceWebpage.url}`
+            }
+            // 替换 ####Title => Title:
+            currentCopyText = currentCopyText.replace(/####\s?([^\n]+)/g, '$1:')
+          }
+          break
+        case 'search':
+          {
+            if (originalMessage?.metadata?.sources?.links) {
+              // 把长的引用链接变成短的: [[a](link)] => [a]
+              currentCopyText = currentCopyText.replace(
+                /\[\[(\d+)\]\([^)]+\)\]/g,
+                '[$1]',
+              )
+              const links = originalMessage.metadata.sources.links
+              let citations = `\n\nCitations:`
+              if (links.length > 0) {
+                links.forEach((link, index) => {
+                  citations += `\n[${index + 1}] ${link.url}`
+                })
+              }
+              currentCopyText += citations
+            }
+          }
+          break
+        default:
+          break
       }
-      currentCopyText += citations
+      return currentCopyText
+    } else {
+      return message.text
     }
-    return currentCopyText
   }, [message])
   return (
     <Stack

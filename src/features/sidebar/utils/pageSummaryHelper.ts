@@ -40,19 +40,24 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
               text: '',
               originalMessage: {
                 metadata: {
+                  sourceWebpage: {
+                    url: `{{CURRENT_WEBPAGE_URL}}`,
+                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                  },
+                  shareType: 'summary',
                   title: {
-                    title: `🌐 {{CURRENT_WEBPAGE_TITLE}}`,
+                    title: `Summarize page`,
                   },
                   copilot: {
                     title: {
-                      title: 'Copilot',
-                      titleIcon: 'AutoFix',
+                      title: 'Page insights',
+                      titleIcon: 'LaptopMac',
                     },
                     steps: [
                       {
-                        title: 'Analyze webpage',
+                        title: 'Analyzing page',
                         status: 'loading',
-                        icon: 'CheckCircle',
+                        icon: 'SmartToy',
                       },
                     ],
                   },
@@ -98,13 +103,20 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   copilot: {
                     steps: [
                       {
-                        title: 'Analyze webpage',
+                        title: 'Analyzing page',
                         status: 'complete',
-                        icon: 'CheckCircle',
-                        value: '{{READABILITY_CONTENTS}}',
+                        icon: 'SmartToy',
+                        value: '{{CURRENT_WEBPAGE_TITLE}}',
                       },
                     ],
                   },
+                },
+                content: {
+                  title: {
+                    title: 'Summary',
+                  },
+                  text: '',
+                  contentType: 'text',
                 },
                 include_history: false,
               },
@@ -125,7 +137,7 @@ The key takeaways should be in up to seven bulletpoints, the fewer the better.
 ---
 
 Use the following format:
-#### Summary
+#### TL;DR
 <summary of the text>
 
 #### Key Takeaways
@@ -156,7 +168,8 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
                 metadata: {
                   deepDive: {
                     title: {
-                      title: 'Deep Dive',
+                      title: 'Deep dive',
+                      titleIcon: 'TipsAndUpdates',
                     },
                     value: 'Ask AI anything about the page...',
                   },
@@ -194,6 +207,49 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       type: 'shortcuts',
       actions: [
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: uuidV4(),
+              text: '',
+              originalMessage: {
+                metadata: {
+                  sourceWebpage: {
+                    url: `{{CURRENT_WEBPAGE_URL}}`,
+                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                  },
+                  shareType: 'summary',
+                  title: {
+                    title: `Summarize email`,
+                  },
+                  copilot: {
+                    title: {
+                      title: 'Page insights',
+                      titleIcon: 'LaptopMac',
+                    },
+                    steps: [
+                      {
+                        title: 'Analyzing email',
+                        status: 'loading',
+                        icon: 'SmartToy',
+                      },
+                    ],
+                  },
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
+        },
+        {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
           parameters: {},
         },
@@ -211,6 +267,39 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
         },
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+              text: '',
+              originalMessage: {
+                metadata: {
+                  copilot: {
+                    steps: [
+                      {
+                        title: 'Analyzing email',
+                        status: 'complete',
+                        icon: 'SmartToy',
+                        value: '{{CURRENT_WEBPAGE_TITLE}}}',
+                      },
+                    ],
+                  },
+                },
+                content: {
+                  title: {
+                    title: 'Summary',
+                  },
+                  text: '',
+                  contentType: 'text',
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
           type: 'ASK_CHATGPT',
           parameters: {
             template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
@@ -225,30 +314,48 @@ When extracting the action items, identify only the action items that need the r
 ---
 
 Use the following format:
-## 📧 {{CURRENT_WEBPAGE_TITLE}}
-
-### Summary
+#### TL;DR
 <summary of the text>
 
-### Key Takeaways
+#### Key Takeaways
 <list of key takeaways>
 
-### Action Items
+#### Action Items
 <list of action items>
 
 ---
 
-You must add these two lines at the bottom of the response:
-### Deep Dive
-Ask AI anything about the email...
-
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+            AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
         },
         {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  deepDive: {
+                    title: {
+                      title: 'Deep dive',
+                      titleIcon: 'TipsAndUpdates',
+                    },
+                    value: 'Ask AI anything about the email...',
+                  },
+                },
+              },
+            } as IAIResponseMessage,
           },
         },
         {
@@ -280,6 +387,49 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       type: 'shortcuts',
       actions: [
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: uuidV4(),
+              text: '',
+              originalMessage: {
+                metadata: {
+                  sourceWebpage: {
+                    url: `{{CURRENT_WEBPAGE_URL}}`,
+                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                  },
+                  shareType: 'summary',
+                  title: {
+                    title: `Summarize PDF`,
+                  },
+                  copilot: {
+                    title: {
+                      title: 'Page insights',
+                      titleIcon: 'LaptopMac',
+                    },
+                    steps: [
+                      {
+                        title: 'Analyzing PDF',
+                        status: 'loading',
+                        icon: 'SmartToy',
+                      },
+                    ],
+                  },
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
+        },
+        {
           type: 'GET_PDF_CONTENTS_OF_CRX',
           parameters: {},
         },
@@ -297,6 +447,39 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
         },
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+              text: '',
+              originalMessage: {
+                metadata: {
+                  copilot: {
+                    steps: [
+                      {
+                        title: 'Analyzing PDF',
+                        status: 'complete',
+                        icon: 'SmartToy',
+                        value: '{{CURRENT_WEBPAGE_TITLE}}',
+                      },
+                    ],
+                  },
+                },
+                content: {
+                  title: {
+                    title: 'Summary',
+                  },
+                  text: '',
+                  contentType: 'text',
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
           type: 'ASK_CHATGPT',
           parameters: {
             template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
@@ -310,27 +493,45 @@ The key takeaways should be in up to seven bulletpoints, the fewer the better.
 ---
 
 Use the following format:
-## 📄 {{CURRENT_WEBPAGE_TITLE}}
-
-### Summary
+#### TL;DR
 <summary of the text>
 
-### Key Takeaways
+#### Key Takeaways
 <list of key takeaways>
 
 ---
 
-You must add these two lines at the bottom of the response:
-### Deep Dive
-Ask AI anything about the PDF...
-
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+            AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
         },
         {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  deepDive: {
+                    title: {
+                      title: 'Deep dive',
+                      titleIcon: 'TipsAndUpdates',
+                    },
+                    value: 'Ask AI anything about the PDF...',
+                  },
+                },
+              },
+            } as IAIResponseMessage,
           },
         },
         {
@@ -362,8 +563,96 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
       type: 'shortcuts',
       actions: [
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: uuidV4(),
+              text: '',
+              originalMessage: {
+                metadata: {
+                  sourceWebpage: {
+                    url: `{{CURRENT_WEBPAGE_URL}}`,
+                    title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                  },
+                  shareType: 'summary',
+                  title: {
+                    title: `Summarize video`,
+                  },
+                  copilot: {
+                    title: {
+                      title: 'Page insights',
+                      titleIcon: 'LaptopMac',
+                    },
+                    steps: [
+                      {
+                        title: 'Analyzing video',
+                        status: 'loading',
+                        icon: 'SmartToy',
+                      },
+                    ],
+                  },
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
+        },
+        {
           type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
           parameters: {},
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'YOUTUBE_TRANSCRIPT',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+              text: '',
+              originalMessage: {
+                metadata: {
+                  copilot: {
+                    steps: [
+                      {
+                        title: 'Analyzing video',
+                        status: 'complete',
+                        icon: 'SmartToy',
+                        value: '{{CURRENT_WEBPAGE_TITLE}}',
+                      },
+                    ],
+                  },
+                },
+                content: {
+                  title: {
+                    title: 'Summary',
+                  },
+                  text: '',
+                  contentType: 'text',
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `{{YOUTUBE_TRANSCRIPT}}`,
+          },
         },
         {
           type: 'ANALYZE_CHAT_FILE',
@@ -392,27 +681,46 @@ The key takeaways should be in up to seven bulletpoints, the fewer the better.
 ---
 
 Use the following format:
-## 📺 {{CURRENT_WEBPAGE_TITLE}}
-
-### Summary
+#### TL;DR
 <summary of the text>
 
-### Key Takeaways
+#### Key Takeaways
 <list of key takeaways>
 
 ---
 
-You must add these two lines at the bottom of the response:
-### Deep Dive
-Ask AI anything about the video...
-
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+            AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
         },
         {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+              text: '',
+              originalMessage: {
+                metadata: {
+                  deepDive: {
+                    title: {
+                      title: 'Deep dive',
+                      titleIcon: 'TipsAndUpdates',
+                    },
+                    value: 'Ask AI anything about the video...',
+                  },
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
           },
         },
         {

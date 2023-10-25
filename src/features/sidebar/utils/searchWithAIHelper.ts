@@ -124,6 +124,7 @@ export const generateSearchWithAIActions = async (
           text: '',
           originalMessage: {
             metadata: {
+              shareType: 'search',
               title: {
                 title: query,
               },

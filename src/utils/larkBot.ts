@@ -12,6 +12,8 @@ export type botUuid =
   | '6f02f533-def6-4696-b14e-1b00c2d9a4df'
   // maxai referral
   | '608156c7-e65d-4a69-a055-6c10a6ba7217'
+  // maxai summary
+  | '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a'
 
 export const sendLarkBotMessage = (
   title: string,

@@ -3,6 +3,8 @@ import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
 import DoneIcon from '@mui/icons-material/Done'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
+import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined'
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined'
 // import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import ShortTextIcon from '@mui/icons-material/ShortText'
 import SubjectIcon from '@mui/icons-material/Subject'
@@ -14,7 +16,6 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
-import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
 import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined'
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
@@ -60,6 +61,9 @@ import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined'
 import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOutlined'
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
+import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined'
+import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -126,11 +130,15 @@ export const CONTEXT_MENU_ICONS = [
   'ExpandLess',
   'Fullscreen',
   'Lock',
+  'TextSnippet',
   'ArrowDropUp',
   'ArrowDropDown',
   'Search',
   'Bolt',
   'CheckCircle',
+  'Awesome',
+  'ScreenSearchDesktop',
+  'LaptopMac',
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -319,6 +327,14 @@ const ContextMenuIcon: FC<{
       return <BoltOutlinedIcon sx={sxMemo} />
     case 'CheckCircle':
       return <CheckCircleOutlineOutlined sx={sxMemo} />
+    case 'TextSnippet':
+      return <TextSnippetOutlinedIcon sx={sxMemo} />
+    case 'Awesome':
+      return <AutoAwesomeOutlinedIcon sx={sxMemo} />
+    case 'ScreenSearchDesktop':
+      return <ScreenSearchDesktopOutlinedIcon sx={sxMemo} />
+    case 'LaptopMac':
+      return <LaptopMacOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

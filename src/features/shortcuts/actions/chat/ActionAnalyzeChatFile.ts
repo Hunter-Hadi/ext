@@ -11,6 +11,8 @@ import {
 } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
+import { sendLarkBotMessage } from '@/utils/larkBot'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
 /**
  * @since 2023-09-11
@@ -52,6 +54,25 @@ export class ActionAnalyzeChatFile extends Action {
         PAGE_SUMMARY_MAX_TOKENS,
       )
       if (needUpload) {
+        // 异步通知LarkBot
+        sendLarkBotMessage(
+          `[Summary] tokens has reached maximum limit.`,
+          `${JSON.stringify(
+            {
+              summary_type: getPageSummaryType(),
+              url: window.location.href,
+              // convert number to k
+              total_tokens: `${Math.floor(textTokens / 1000)}k`,
+            },
+            null,
+            4,
+          )}`,
+          {
+            uuid: '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a',
+          },
+        )
+          .then()
+          .catch()
         if (immediateUpdateConversation) {
           const docId = await stringConvertTxtUpload(text, fileName)
           await this.updateConversation(engine, {

@@ -140,13 +140,13 @@ export const SidebarAIMessage: FC<{
           )}
           {renderData.copilot && (
             <Stack spacing={1}>
+              {renderData.copilot?.title && (
+                <MetadataTitleRender title={renderData.copilot.title} />
+              )}
               <Stack spacing={1}>
                 {renderData.copilot.steps.map((item) => {
                   return (
                     <Stack key={item.status + item.title} spacing={0.5}>
-                      {renderData.copilot?.title && (
-                        <MetadataTitleRender title={renderData.copilot.title} />
-                      )}
                       <Stack
                         spacing={1}
                         direction={'row'}
@@ -158,8 +158,7 @@ export const SidebarAIMessage: FC<{
                           width={16}
                           height={16}
                         >
-                          {item.status === 'loading' &&
-                          !renderData.messageIsComplete ? (
+                          {item.status === 'loading' ? (
                             <CircularProgress size={16} />
                           ) : (
                             <ContextMenuIcon
@@ -354,12 +353,30 @@ export const SidebarAIMessage: FC<{
                 </Stack>
               ) : (
                 <Stack direction={'row'} alignItems="center" spacing={1}>
-                  <ReadIcon
-                    sx={{
-                      color: 'primary.main',
-                      fontSize: 20,
-                    }}
-                  />
+                  {renderData.content.title?.titleIcon ? (
+                    <Stack
+                      alignItems={'center'}
+                      justifyContent={'center'}
+                      width={16}
+                      height={16}
+                    >
+                      <ContextMenuIcon
+                        sx={{
+                          color: 'primary.main',
+                          fontSize:
+                            renderData.content.title?.titleIconSize || 18,
+                        }}
+                        icon={renderData.content.title?.titleIcon}
+                      />
+                    </Stack>
+                  ) : (
+                    <ReadIcon
+                      sx={{
+                        color: 'primary.main',
+                        fontSize: 20,
+                      }}
+                    />
+                  )}
                   <Typography
                     sx={{
                       color: 'primary.main',
@@ -367,7 +384,7 @@ export const SidebarAIMessage: FC<{
                       lineHeight: '20px',
                     }}
                   >
-                    Answer
+                    {renderData.content.title?.title || 'Answer'}
                   </Typography>
                 </Stack>
               )}

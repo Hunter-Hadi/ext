@@ -10,7 +10,6 @@ import {
   stringConvertTxtUpload,
 } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { v4 as uuidV4 } from 'uuid'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 
 /**
@@ -30,17 +29,6 @@ export class ActionAnalyzeChatFile extends Action {
   @templateParserDecorator()
   async execute(params: any, engine: any) {
     try {
-      await this.pushMessageToChat(
-        {
-          type: 'system',
-          text: `Generating summary...`,
-          messageId: uuidV4(),
-          extra: {
-            status: 'info',
-          },
-        },
-        engine,
-      )
       const fileName =
         this.parameters.AnalyzeChatFileName ||
         params.AnalyzeChatFileName ||

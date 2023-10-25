@@ -56,6 +56,18 @@ export type IChatMessageExtraMetaType = {
 
 export type IUserChatMessageExtraType = IUserChatMessage['extra']
 
+export type IAIResponseOriginalMessageCopilotStep = {
+  status: 'loading' | 'complete'
+  title: string
+  icon: IContextMenuIconKey
+  value?: string | string[] | Record<string, any>
+}
+export type IAIResponseOriginalMessageMetadataTitle = {
+  title: string
+  titleIcon?: string
+  titleIconSize?: number
+}
+
 export interface IAIResponseOriginalMessage {
   id?: string
   create_time?: string
@@ -77,7 +89,7 @@ export interface IAIResponseOriginalMessage {
       stopTokens?: number
     }
     isComplete?: boolean
-    title?: string
+    title?: IAIResponseOriginalMessageMetadataTitle
     sources?: {
       status: 'loading' | 'complete'
       links?: Array<{
@@ -88,15 +100,17 @@ export interface IAIResponseOriginalMessage {
         from?: string
       }>
     }
-    quickSearch?: Array<{
-      status: 'loading' | 'complete'
-      title: string
-      icon: IContextMenuIconKey
-      value?: string | string[] | Record<string, any>
-    }>
+    copilot?: {
+      title?: IAIResponseOriginalMessageMetadataTitle
+      steps: IAIResponseOriginalMessageCopilotStep[]
+    }
+    // summary底下的最后一句
+    deepDive?: {
+      title?: IAIResponseOriginalMessageMetadataTitle
+      value: string
+    }
     // TODO
     related?: string[]
-    copilot?: string[]
   }
   include_history?: boolean
   status?: string

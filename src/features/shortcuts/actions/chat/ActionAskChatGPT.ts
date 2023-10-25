@@ -86,11 +86,40 @@ export class ActionAskChatGPT extends Action {
           onProcess: async (message: IChatMessage) => {
             if (insertMessageId && conversationId) {
               message.messageId = insertMessageId
+              if (message.type === 'ai') {
+                const aiMessage = message as IAIResponseMessage
+                if (aiMessage.originalMessage) {
+                  if (!aiMessage.originalMessage.content) {
+                    aiMessage.originalMessage.content = {
+                      text: message.text,
+                      contentType: 'text',
+                    }
+                  } else {
+                    aiMessage.text = message.text
+                  }
+                }
+              }
               await clientChatConversationModifyChatMessages(
                 'update',
                 conversationId,
                 0,
-                [message],
+                message.type === 'ai'
+                  ? [
+                      mergeWithObject([
+                        message,
+                        {
+                          originalMessage: {
+                            content: {
+                              contentType:
+                                (message as IAIResponseMessage).originalMessage
+                                  ?.content?.contentType || 'text',
+                              text: message.text,
+                            },
+                          },
+                        } as IAIResponseMessage,
+                      ]),
+                    ]
+                  : [message],
               )
             }
           },
@@ -103,16 +132,18 @@ export class ActionAskChatGPT extends Action {
                   conversationId,
                   0,
                   [
-                    mergeWithObject([
-                      message,
-                      {
-                        originalMessage: {
-                          metadata: {
-                            isComplete: true,
-                          },
-                        },
-                      },
-                    ]),
+                    message.type === 'ai'
+                      ? mergeWithObject([
+                          message,
+                          {
+                            originalMessage: {
+                              metadata: {
+                                isComplete: true,
+                              },
+                            },
+                          } as IAIResponseMessage,
+                        ])
+                      : [message],
                   ],
                 )
               }

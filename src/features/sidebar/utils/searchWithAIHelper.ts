@@ -1,108 +1,337 @@
-// web access prompt 需要根据当前用户选择的 model 来返回不同
-export const WEB_ACCESS_PROMPT_DEFAULT = `You are a knowledgeable and helpful person that can answer any questions. Your task is to answer questions.
+import dayjs from 'dayjs'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { v4 as uuidV4 } from 'uuid'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { textHandler } from '@/features/shortcuts/utils/textHelper'
 
-It's possible that the question, or just a portion of it, requires relevant information from the internet to give a satisfactory answer. The relevant search results provided below, delimited by <search_results></search_results>, are the necessary information already obtained from the internet. The search results set the context for addressing the question, so you don't need to access the internet to answer the question.
+/**
+ * 智能query生成器
+ */
+export const SMART_SEARCH_PROMPT = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
-Write a comprehensive answer to the question in the best way you can. If necessary, use the provided search results.
+<question>
+{{current_question}}
+</question>
 
-Search results:
-<search_results>
-{web_results}
-</search_results>
+The question is the final one in a series of previous questions and answers. Here are the earlier questions listed in the order they were asked, from the very first to the one before the final question, delimited by <previous_questions></previous_questions>:
+<previous_questions>
+{{previous_questions}}
+</previous_questions>
 
-Each search result item provides the following information in this format:
-Number: [Index number of the search result]
-URL: [URL of the search result]
-Title: [Page title of the search result]
-Content: [Page content of the search result]
+For your reference, today's date is {{CURRENT_DATE}}.
 
-If you can't find enough information in the search results and you're not sure about the answer, try your best to give a helpful response by using all the information you have from the search results.
+Output the search query without additional context, explanation, or extra wording, just the search query itself. Don't use any punctuation, especially no quotes or backticks, around the search query.`
 
-For your reference, today's date is {current_date}.
+export const generateSmartSearchPromptWithPreviousQuestion = (
+  questions: string[],
+) => {
+  let template = SMART_SEARCH_PROMPT
 
----
+  template = template.replaceAll(
+    '{{CURRENT_DATE}}',
+    dayjs().format('YYYY-MM-DD HH:mm:ss'),
+  )
 
-You should always respond using the following Markdown format delimited by <response></response>:
+  // questions 最后一个元素作为 current question
+  const currentQuestion = questions[questions.length - 1]
+  // 取出 questions 除了最后一个，剩下的都是 previousQuestion
+  const previousQuestions = questions.slice(0, -1)
 
-<response>
-# {query}
+  template = template.replaceAll('{{current_question}}', currentQuestion)
 
-## 🗒️ Answer
-<answer to the question>
+  let previousQuestionsStr = ''
+  previousQuestions.forEach((preQuestion, index) => {
+    previousQuestionsStr += `${index + 1}) ${preQuestion}${
+      index < previousQuestions.length - 1 ? '\n' : ''
+    }`
+  })
 
-## 🌐 Sources
-<numbered list of all the provided search results>
-</response>
+  template = template.replaceAll('{{previous_questions}}', previousQuestionsStr)
 
----
+  return template
+}
+/**
+ * 在搜索引擎搜索并总结片段后，真正发起提问的prompt
+ * @param query
+ */
+const generatePromptTemplate = async (query: string) => {
+  let promptTemplate = SEARCH_WITH_AI_PROMPT
+  if (!promptTemplate) {
+    return query
+  }
+  promptTemplate = promptTemplate.replaceAll('{query}', query)
+  promptTemplate = promptTemplate.replace('{web_results}', '{{PAGE_CONTENT}}')
+  promptTemplate = promptTemplate.replaceAll(
+    '{current_date}',
+    '{{CURRENT_DATE}}',
+  )
+  const userConfig = await clientGetLiteChromeExtensionDBStorage()
+  if (userConfig.userSettings?.language) {
+    promptTemplate =
+      promptTemplate + `\nRespond in ${userConfig.userSettings?.language}`
+  }
+  return promptTemplate
+}
 
-Here are more requirements for the response Markdown format described above:
-
-For <answer to the question> part in the above Markdown format:
-If you use any of the search results in <answer to the question>, always cite the sources at the end of the corresponding line, similar to how Wikipedia.org cites information. Use the citation format [[NUMBER](URL)], where both the NUMBER and URL correspond to the provided search results in <numbered list of all the provided search results>.
-
-Present the answer in a clear format.
-Use a numbered list if it clarifies things
-Make the answer as short as possible, ideally no more than 200 words.
-
-For <numbered list of all the provided search results> part in the above Markdown format:
-Always list all the search results provided above, delimited by <search_results></search_results>.
-Do not miss any search result items, regardless if there are duplicated ones in the provided search results.
-Use the following format for each search result item:
-[the domain of the URL - TITLE](URL)
-Ensure the bullet point's number matches the 'NUMBER' of the corresponding search result item.`
-
-export const WEB_ACCESS_PROMPT_GPT4 = `You are a knowledgeable and helpful person that can answer any questions. Your task is to answer questions.
-
-It's possible that the question, or just a portion of it, requires relevant information from the internet to give a satisfactory answer. The relevant search results provided below, delimited by <search_results></search_results>, are the necessary information already obtained from the internet. The search results set the context for addressing the question, so you don't need to access the internet to answer the question.
-
-Write a comprehensive answer to the question in the best way you can. If necessary, use the provided search results.
-
-Search results:
-<search_results>
-{web_results}
-</search_results>
-
-Each search result item provides the following information in this format:
-Number: [Index number of the search result]
-URL: [URL of the search result]
-Title: [Page title of the search result]
-Content: [Page content of the search result]
-
-If you can't find enough information in the search results and you're not sure about the answer, try your best to give a helpful response by using all the information you have from the search results.
-
-For your reference, today's date is {current_date}.
-
----
-
-You should always respond using the following Markdown format:
-
-# {query}
-
-## 🗒️ Answer
-<answer to the question>
-
-## 🌐 Sources
-<numbered list of all the provided search results>
-
----
-
-Here are more requirements for the response Markdown format described above:
-
-For <answer to the question> part in the above Markdown format:
-If you use any of the search results in <answer to the question>, always cite the sources at the end of the corresponding line, similar to how Wikipedia.org cites information. Use the citation format [[NUMBER](URL)], where both the NUMBER and URL correspond to the provided search results in <numbered list of all the provided search results>.
-
-Present the answer in a clear format.
-Use a numbered list if it clarifies things
-Make the answer as short as possible, ideally no more than 200 words.
-
-For <numbered list of all the provided search results> part in the above Markdown format:
-Always list all the search results provided above, delimited by <search_results></search_results>.
-Do not miss any search result items, regardless if there are duplicated ones in the provided search results.
-Use the following format for each search result item:
-[the domain of the URL - TITLE](URL)
-Ensure the bullet point's number matches the 'NUMBER' of the corresponding search result item.`
-
-export const getDefaultPrompt = () => {
-  return WEB_ACCESS_PROMPT_DEFAULT
+/**
+ * 生成搜索引擎搜索的actions
+ * @param query
+ * @param prevQuestions
+ * @param includeHistory
+ */
+export const generateSearchWithAIActions = async (
+  query: string,
+  prevQuestions: string[],
+  includeHistory: boolean,
+) => {
+  // search with AI 开始
+  let currentQuestion = query
+  let site = ''
+  const siteCommandMatch = query.match(/\/site:(\S+)/)
+  if (siteCommandMatch) {
+    site = siteCommandMatch[1]
+    currentQuestion = query.replace(siteCommandMatch[0], '')
+  }
+  currentQuestion = textHandler(currentQuestion, {
+    trim: true,
+    noQuotes: true,
+    noCommand: true,
+  })
+  const actions: ISetActionsType = [
+    {
+      type: 'DATE',
+      parameters: {
+        DateActionMode: 'Current Date',
+        DateFormatStyle: 'YYYY-MM-DD HH:mm:ss',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'CURRENT_DATE',
+      },
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'add',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: uuidV4(),
+          text: '',
+          originalMessage: {
+            metadata: {
+              title: {
+                title: query,
+              },
+              copilot: {
+                title: {
+                  title: 'Quick search',
+                  titleIcon: 'Bolt',
+                  titleIconSize: 24,
+                },
+                steps: [
+                  {
+                    title: 'Understanding question',
+                    status: 'loading',
+                    icon: 'CheckCircle',
+                  },
+                ],
+              },
+            },
+            include_history: includeHistory,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'ASK_CHATGPT',
+      parameters: {
+        AskChatGPTWithHistory: includeHistory,
+        template: includeHistory
+          ? generateSmartSearchPromptWithPreviousQuestion(
+              prevQuestions.concat(currentQuestion),
+            )
+          : generateSmartSearchPromptWithPreviousQuestion([currentQuestion]),
+        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+        AskChatGPTActionMeta: {
+          temperature: 0,
+          messageVisibleText: query,
+          contextMenu: {
+            id: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',
+            droppable: false,
+            parent: '',
+            text: '[Search] smart query',
+            data: {
+              editable: false,
+              type: 'shortcuts',
+              actions: [],
+            },
+          } as IContextMenuItem,
+        },
+      },
+    },
+    {
+      type: 'TEXT_HANDLER',
+      parameters: {
+        ActionTextHandleParameters: {
+          trim: true,
+          noQuotes: true,
+          noCommand: true,
+        },
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'SMART_SEARCH_QUERY',
+      },
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+          text: '',
+          originalMessage: {
+            metadata: {
+              copilot: {
+                steps: [
+                  {
+                    title: 'Understanding question',
+                    status: 'complete',
+                    icon: 'CheckCircle',
+                  },
+                  {
+                    title: 'Searching web',
+                    status: 'loading',
+                    icon: 'Search',
+                    value: '{{SMART_SEARCH_QUERY}}',
+                  },
+                ],
+              },
+              sources: {
+                status: 'loading',
+                links: [],
+              },
+            },
+            content: {
+              contentType: 'text',
+              text: '',
+            },
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'GET_CONTENTS_OF_SEARCH_ENGINE',
+      parameters: {
+        URLSearchEngine: 'google',
+        URLSearchEngineParams: {
+          q: `{{SMART_SEARCH_QUERY}}`,
+          region: '',
+          limit: '6',
+          btf: '',
+          nojs: '1',
+          ei: 'UTF-8',
+          csp: '1',
+          site,
+        },
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'SEARCH_SOURCES',
+      },
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+          text: '',
+          originalMessage: {
+            metadata: {
+              copilot: {
+                steps: [
+                  {
+                    title: 'Understanding question',
+                    status: 'complete',
+                    icon: 'CheckCircle',
+                  },
+                  {
+                    title: 'Searching web',
+                    status: 'complete',
+                    icon: 'Search',
+                    value: '{{SMART_SEARCH_QUERY}}',
+                  },
+                ],
+              },
+              sources: {
+                status: 'complete',
+                links: `{{SEARCH_SOURCES}}` as any,
+              },
+            },
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'RENDER_TEMPLATE',
+      parameters: {
+        template: `{{SEARCH_SOURCES}}`,
+      },
+    },
+    {
+      type: 'WEBGPT_SEARCH_RESULTS_EXPAND',
+      parameters: {
+        SummarizeActionType: 'NO_SUMMARIZE',
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'PAGE_CONTENT',
+      },
+    },
+    {
+      type: 'ASK_CHATGPT',
+      parameters: {
+        AskChatGPTWithHistory: includeHistory,
+        AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+        AskChatGPTActionMeta: {
+          messageVisibleText: query,
+          searchSources: '{{SEARCH_SOURCES}}',
+          contextMenu: {
+            id: '73361add-2d6a-4bf3-b2a7-5097551653e7',
+            droppable: false,
+            parent: '',
+            text: '[Search] answer',
+            data: {
+              editable: false,
+              type: 'shortcuts',
+              actions: [],
+            },
+          } as IContextMenuItem,
+        },
+        template: await generatePromptTemplate(currentQuestion),
+      },
+    },
+  ]
+  return actions
 }

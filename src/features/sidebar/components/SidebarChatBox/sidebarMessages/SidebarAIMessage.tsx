@@ -1,5 +1,8 @@
 import React, { FC, useMemo } from 'react'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
+import {
+  IAIResponseMessage,
+  IAIResponseOriginalMessageMetadataTitle,
+} from '@/features/chatgpt/types'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import Typography from '@mui/material/Typography'
@@ -19,6 +22,44 @@ import {
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import isArray from 'lodash-es/isArray'
+import { SxProps } from '@mui/material/styles'
+
+const MetadataTitleRender: FC<{
+  title: IAIResponseOriginalMessageMetadataTitle
+  fontSx?: SxProps
+}> = (props) => {
+  const { fontSx } = props
+  const { title, titleIcon, titleIconSize } = props.title
+  return (
+    <Stack direction={'row'} alignItems="center" spacing={1}>
+      {titleIcon && (
+        <Stack
+          alignItems={'center'}
+          justifyContent={'center'}
+          width={16}
+          height={16}
+        >
+          <ContextMenuIcon
+            sx={{
+              color: 'primary.main',
+              fontSize: titleIconSize || 18,
+            }}
+            icon={titleIcon}
+          />
+        </Stack>
+      )}
+      <Typography
+        sx={{
+          color: 'primary.main',
+          fontSize: 18,
+          ...fontSx,
+        }}
+      >
+        {title}
+      </Typography>
+    </Stack>
+  )
+}
 
 export const SidebarAIMessage: FC<{
   message: IAIResponseMessage
@@ -29,13 +70,14 @@ export const SidebarAIMessage: FC<{
   const renderData = useMemo(() => {
     const currentRenderData = {
       title: message.originalMessage?.metadata?.title,
-      quickSearch: message.originalMessage?.metadata?.quickSearch,
+      copilot: message.originalMessage?.metadata?.copilot,
       sources: message.originalMessage?.metadata?.sources,
       sourcesLoading:
         message.originalMessage?.metadata?.sources?.status === 'loading',
       answer: message.text,
       content: message.originalMessage?.content,
       messageIsComplete: !message.originalMessage?.metadata?.isComplete,
+      deepDive: message.originalMessage?.metadata?.deepDive,
     }
     if (message.originalMessage?.content?.text) {
       currentRenderData.answer =
@@ -56,45 +98,24 @@ export const SidebarAIMessage: FC<{
       {isRichAIMessage ? (
         <Stack spacing={2}>
           {renderData.title && (
-            <Typography
-              sx={{
+            <MetadataTitleRender
+              title={renderData.title}
+              fontSx={{
                 fontWeight: 'bold',
-                fontSize: 28,
+                fontSize: '28px',
+                color: 'text.primary',
               }}
-            >
-              {renderData.title}
-            </Typography>
+            />
           )}
-          {renderData.quickSearch && (
+          {renderData.copilot && (
             <Stack spacing={1}>
-              <Stack direction={'row'} alignItems="center" spacing={1}>
-                <Stack
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                  width={16}
-                  height={16}
-                >
-                  <ContextMenuIcon
-                    sx={{
-                      color: 'primary.main',
-                      fontSize: 24,
-                    }}
-                    icon={'Bolt'}
-                  />
-                </Stack>
-                <Typography
-                  sx={{
-                    color: 'primary.main',
-                    fontSize: 18,
-                  }}
-                >
-                  Quick search
-                </Typography>
-              </Stack>
               <Stack spacing={1}>
-                {renderData.quickSearch.map((item) => {
+                {renderData.copilot.steps.map((item) => {
                   return (
                     <Stack key={item.status + item.title} spacing={0.5}>
+                      {renderData.copilot?.title && (
+                        <MetadataTitleRender title={renderData.copilot.title} />
+                      )}
                       <Stack
                         spacing={1}
                         direction={'row'}
@@ -151,6 +172,8 @@ export const SidebarAIMessage: FC<{
                                   sx={{ px: 1 }}
                                 >
                                   <Typography
+                                    noWrap
+                                    maxWidth={64}
                                     fontSize={14}
                                     color={'text.primary'}
                                   >
@@ -161,7 +184,12 @@ export const SidebarAIMessage: FC<{
                             })}
                           {typeof item.value === 'string' && (
                             <Card variant="outlined" sx={{ px: 1 }}>
-                              <Typography fontSize={14} color={'text.primary'}>
+                              <Typography
+                                fontSize={14}
+                                color={'text.primary'}
+                                noWrap
+                                maxWidth={256}
+                              >
                                 {item.value}
                               </Typography>
                             </Card>
@@ -330,6 +358,20 @@ export const SidebarAIMessage: FC<{
                   <CustomMarkdown>{renderData.answer}</CustomMarkdown>
                 </div>
               )}
+            </Stack>
+          )}
+          {renderData.deepDive && (
+            <Stack spacing={1}>
+              {renderData.deepDive.title && (
+                <MetadataTitleRender title={renderData.deepDive.title} />
+              )}
+              <div
+                className={`markdown-body ${
+                  isDarkMode ? 'markdown-body-dark' : ''
+                }`}
+              >
+                <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
+              </div>
             </Stack>
           )}
         </Stack>

@@ -10,6 +10,7 @@ import {
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -30,6 +31,44 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
       type: 'shortcuts',
       actions: [
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: uuidV4(),
+              text: '',
+              originalMessage: {
+                metadata: {
+                  title: {
+                    title: `🌐 {{CURRENT_WEBPAGE_TITLE}}`,
+                  },
+                  copilot: {
+                    title: {
+                      title: 'Copilot',
+                      titleIcon: 'AutoFix',
+                    },
+                    steps: [
+                      {
+                        title: 'Analyze webpage',
+                        status: 'loading',
+                        icon: 'CheckCircle',
+                      },
+                    ],
+                  },
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
+        },
+        {
           type: 'GET_READABILITY_CONTENTS_OF_WEBPAGE',
           parameters: {},
         },
@@ -47,6 +86,32 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           },
         },
         {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+              text: '',
+              originalMessage: {
+                metadata: {
+                  copilot: {
+                    steps: [
+                      {
+                        title: 'Analyze webpage',
+                        status: 'complete',
+                        icon: 'CheckCircle',
+                        value: '{{READABILITY_CONTENTS}}',
+                      },
+                    ],
+                  },
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
           type: 'ASK_CHATGPT',
           parameters: {
             template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
@@ -60,27 +125,44 @@ The key takeaways should be in up to seven bulletpoints, the fewer the better.
 ---
 
 Use the following format:
-## 🌐 {{CURRENT_WEBPAGE_TITLE}}
-
-### Summary
+#### Summary
 <summary of the text>
 
-### Key Takeaways
+#### Key Takeaways
 <list of key takeaways>
 
 ---
 
-You must add these two lines at the bottom of the response:
-### Deep Dive
-Ask AI anything about the page...
-
 Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+            AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
         },
         {
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'SUMMARY_CONTENTS',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  deepDive: {
+                    title: {
+                      title: 'Deep Dive',
+                    },
+                    value: 'Ask AI anything about the page...',
+                  },
+                },
+              },
+            } as IAIResponseMessage,
           },
         },
         {

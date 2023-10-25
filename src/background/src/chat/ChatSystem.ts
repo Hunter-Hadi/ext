@@ -405,11 +405,23 @@ class ChatSystem implements ChatSystemInterface {
     )
   }
   async removeConversation(conversationId: string) {
-    if (!this.currentAdapter || !conversationId) {
+    if (!conversationId) {
       return false
     }
-    const result = await this.currentAdapter?.removeConversation(conversationId)
-    return result
+    const conversationDetail = await ConversationManager.getClientConversation(
+      conversationId,
+    )
+    const conversationProvider = conversationDetail?.meta.AIProvider
+    if (conversationProvider) {
+      const currentProvider = this.adapters[conversationProvider]
+      await currentProvider?.createConversation(conversationDetail)
+      await currentProvider?.removeConversation(conversationId)
+    } else {
+      await ConversationManager.conversationDB.deleteConversation(
+        conversationId,
+      )
+    }
+    return true
   }
   async destroy() {
     await this.currentAdapter?.removeConversation('')

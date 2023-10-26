@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Σύνοψη",
     "sidebar__tabs__search__tooltip": "Αναζήτηση με τεχνητή νοημοσύνη",
     "sidebar__search_with_ai__continue_chat__title": "Συνέχισε με αναζήτηση με τεχνητή νοημοσύνη",
-    "social_media_summary_button__text": "Περίληψη"
+    "social_media_summary_button__text": "Περίληψη",
+    "sidebar__search_with_ai__advanced__title": "Προηγμένες επιλογές αναζήτησης",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Χρησιμοποιήστε έξυπνες ερωτήσεις με την υποστήριξη της τεχνητής νοημοσύνης για εκτεταμένες αναζητήσεις στον ιστό. Εξαγάγετε πλήρες περιεχόμενο από τα αποτελέσματα αναζήτησης. Λάβετε απαντήσεις στις δυσκολότερες ερωτήσεις με ολοκληρωμένες πληροφορίες από τον ιστό.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Αποτελέσματα αναζήτησης",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Μηχανή αναζήτησης"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

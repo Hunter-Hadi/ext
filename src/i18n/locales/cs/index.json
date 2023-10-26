@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Shrnutí",
     "sidebar__tabs__search__tooltip": "Vyhledávání s podporou umělé inteligence",
     "sidebar__search_with_ai__continue_chat__title": "Pokračovat v vyhledávání s umělou inteligencí",
-    "social_media_summary_button__text": "Shrnutí"
+    "social_media_summary_button__text": "Shrnutí",
+    "sidebar__search_with_ai__advanced__title": "Pokročilé možnosti vyhledávání",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Použijte inteligentní dotazy s podporou umělé inteligence pro důkladné vyhledávání na webu. Extrahujte kompletní obsah z výsledků vyhledávání. Získejte odpovědi na nejtěžší otázky s komplexními informacemi z webu.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Výsledky vyhledávání",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Vyhledávač"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

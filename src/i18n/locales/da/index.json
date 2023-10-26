@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Resumé",
     "sidebar__tabs__search__tooltip": "AI-drevet søgning",
     "sidebar__search_with_ai__continue_chat__title": "Fortsæt med AI-drevet søgning",
-    "social_media_summary_button__text": "Resumé"
+    "social_media_summary_button__text": "Resumé",
+    "sidebar__search_with_ai__advanced__title": "Avancerede søgemuligheder",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Brug AI-drevne smarte forespørgsler til omfattende websøgninger. Udtræk komplet indhold fra søgeresultater. Få svar på de sværeste spørgsmål med omfattende webindsigter.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Søgeresultater",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Søgemaskine"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

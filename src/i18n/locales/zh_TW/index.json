@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "總結",
     "sidebar__tabs__search__tooltip": "AI 強化搜尋",
     "sidebar__search_with_ai__continue_chat__title": "繼續使用AI動力搜索",
-    "social_media_summary_button__text": "摘要"
+    "social_media_summary_button__text": "摘要",
+    "sidebar__search_with_ai__advanced__title": "進階搜尋選項",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "使用 AI 強化的智能查詢進行全面的網絡搜索。從搜索結果中提取完整內容。通過全面的網絡洞察力獲得對最難問題的答案。",
+    "sidebar__search_with_ai__advanced__search_results__title": "搜索結果",
+    "sidebar__search_with_ai__advanced__search_engine__title": "搜索引擎"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

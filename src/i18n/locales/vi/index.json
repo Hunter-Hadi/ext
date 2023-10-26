@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Tóm tắt",
     "sidebar__tabs__search__tooltip": "Tìm kiếm được hỗ trợ bởi trí tuệ nhân tạo",
     "sidebar__search_with_ai__continue_chat__title": "Tiếp tục tìm kiếm với công nghệ AI",
-    "social_media_summary_button__text": "Tóm tắt"
+    "social_media_summary_button__text": "Tóm tắt",
+    "sidebar__search_with_ai__advanced__title": "Tùy chọn tìm kiếm nâng cao",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Sử dụng truy vấn thông minh được cung cấp bởi trí tuệ nhân tạo để tìm kiếm web một cách toàn diện. Trích xuất nội dung đầy đủ từ kết quả tìm kiếm. Nhận câu trả lời cho những câu hỏi khó nhất với thông tin chi tiết về web.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Kết quả tìm kiếm",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Máy tìm kiếm"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Buodin",
     "sidebar__tabs__search__tooltip": "AI-powered na paghahanap",
     "sidebar__search_with_ai__continue_chat__title": "Magpatuloy sa AI-powered na paghahanap",
-    "social_media_summary_button__text": "Buodin"
+    "social_media_summary_button__text": "Buodin",
+    "sidebar__search_with_ai__advanced__title": "Mga Advanced na Pagpipilian sa Paghahanap",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Gamitin ang AI-powered smart queries para sa malawakang paghahanap sa web. Kunin ang buong nilalaman mula sa mga resulta ng paghahanap. Makakuha ng mga sagot sa pinakamahirap na mga tanong gamit ang kumprehensibong kaalaman sa web.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Mga Resulta ng Paghahanap",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Engine ng Paghahanap"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

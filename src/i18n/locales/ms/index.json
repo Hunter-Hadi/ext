@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Ringkaskan",
     "sidebar__tabs__search__tooltip": "Carian dikuasakan oleh AI",
     "sidebar__search_with_ai__continue_chat__title": "Teruskan dalam carian berteknologi AI",
-    "social_media_summary_button__text": "Ringkaskan"
+    "social_media_summary_button__text": "Ringkaskan",
+    "sidebar__search_with_ai__advanced__title": "Pilihan carian lanjutan",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Gunakan pertanyaan pintar AI untuk carian web yang menyeluruh. Ekstrak kandungan lengkap daripada hasil carian. Dapatkan jawapan kepada soalan-soalan yang paling sukar dengan pandangan web yang komprehensif.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Keputusan carian",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Enjin carian"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

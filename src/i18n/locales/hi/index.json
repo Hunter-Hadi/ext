@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "संक्षेपित करें",
     "sidebar__tabs__search__tooltip": "AI संचालित खोज",
     "sidebar__search_with_ai__continue_chat__title": "AI-पावर्ड खोज में जारी रखें",
-    "social_media_summary_button__text": "संक्षेपित करें"
+    "social_media_summary_button__text": "संक्षेपित करें",
+    "sidebar__search_with_ai__advanced__title": "उन्नत खोज विकल्प",
+    "sidebar__search_with_ai__advanced__copilot__title": "कोपायलट",
+    "sidebar__search_with_ai__advanced__copilot__description": "AI-संचालित स्मार्ट क्वेरी का उपयोग करें व्यापक वेब खोजों के लिए। खोज परिणामों से पूरी सामग्री निकालें। व्यापक वेब इंसाइट के साथ सबसे कठिन सवालों के जवाब प्राप्त करें।",
+    "sidebar__search_with_ai__advanced__search_results__title": "खोज परिणाम",
+    "sidebar__search_with_ai__advanced__search_engine__title": "खोज इंजन"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

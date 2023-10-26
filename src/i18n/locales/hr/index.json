@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Sažmi",
     "sidebar__tabs__search__tooltip": "Pretraživanje s umjetnom inteligencijom",
     "sidebar__search_with_ai__continue_chat__title": "Nastavi s pretragom pokretanom umjetnom inteligencijom",
-    "social_media_summary_button__text": "Sažmi"
+    "social_media_summary_button__text": "Sažmi",
+    "sidebar__search_with_ai__advanced__title": "Napredne opcije pretraživanja",
+    "sidebar__search_with_ai__advanced__copilot__title": "Kopilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Koristite pametne upite s umjetnom inteligencijom za sveobuhvatno pretraživanje weba. Izvucite potpuni sadržaj iz rezultata pretraživanja. Dobijte odgovore na najteža pitanja uz sveobuhvatne uvide s weba.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Rezultati pretraživanja",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Pretraživač"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

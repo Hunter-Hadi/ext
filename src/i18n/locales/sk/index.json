@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Zhrnúť",
     "sidebar__tabs__search__tooltip": "Vyhľadávanie s umelou inteligenciou",
     "sidebar__search_with_ai__continue_chat__title": "Pokračovať v vyhľadávaní s umelou inteligenciou",
-    "social_media_summary_button__text": "Zhrnúť"
+    "social_media_summary_button__text": "Zhrnúť",
+    "sidebar__search_with_ai__advanced__title": "Pokročilé možnosti vyhľadávania",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Použite inteligentné dotazy poháňané umelou inteligenciou pre podrobné vyhľadávanie na webe. Extrahujte kompletný obsah zo výsledkov vyhľadávania. Získajte odpovede na najťažšie otázky s komplexnými informáciami z webu.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Výsledky vyhľadávania",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Vyhľadávací nástroj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

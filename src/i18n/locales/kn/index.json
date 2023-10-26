@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "ಸಂಗ್ರಹಿಸು",
     "sidebar__tabs__search__tooltip": "AI ಶಕ್ತಿಯ ಹುಡುಕಾಟ",
     "sidebar__search_with_ai__continue_chat__title": "ಎಲ್ಲಾದರ ಮೇಲೆ ನಿಂತು ಹೇಳಿ",
-    "social_media_summary_button__text": "ಸಂಗ್ರಹಿಸಿ"
+    "social_media_summary_button__text": "ಸಂಗ್ರಹಿಸಿ",
+    "sidebar__search_with_ai__advanced__title": "ಮುಂದಿನ ಹುಡುಕಾಟ ಆಯ್ಕೆಗಳು",
+    "sidebar__search_with_ai__advanced__copilot__title": "ಕೋಪಿಲೋಟ್",
+    "sidebar__search_with_ai__advanced__copilot__description": "ವಿಸ್ತರಿಸಿದ ವೆಬ್ ಹುಡುಕುಗಳಿಗೆ AI ಶಕ್ತಿಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಉಪಯೋಗಿಸಿ. ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳಿಂದ ಪೂರ್ಣ ವಿಷಯವನ್ನು ಪಡೆಯಿರಿ. ವಿಸ್ತಾರವಾದ ವೆಬ್ ಅರಿವುಗಳೊಂದಿಗೆ ಕಠಿಣ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
+    "sidebar__search_with_ai__advanced__search_results__title": "ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು",
+    "sidebar__search_with_ai__advanced__search_engine__title": "ಹುಡುಕಾಟ ಇಂಜಿನ್"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Santrauka",
     "sidebar__tabs__search__tooltip": "AI pagrįstas paieška",
     "sidebar__search_with_ai__continue_chat__title": "Tęsti naudojant AI paiešką",
-    "social_media_summary_button__text": "Santrauka"
+    "social_media_summary_button__text": "Santrauka",
+    "sidebar__search_with_ai__advanced__title": "Išplėstinė paieškos parinktys",
+    "sidebar__search_with_ai__advanced__copilot__title": "Kopilotas",
+    "sidebar__search_with_ai__advanced__copilot__description": "Naudokite AI technologiją, kad gautumėte išsamią informaciją apie interneto paieškas. Ištraukite visą turinį iš paieškos rezultatų. Gaukite atsakymus į sunkiausius klausimus su išsamiais interneto įžvalgomis.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Paieškos rezultatai",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Paieškos variklis"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

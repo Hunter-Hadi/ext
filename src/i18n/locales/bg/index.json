@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Резюмирай",
     "sidebar__tabs__search__tooltip": "Търсене с изкуствен интелект",
     "sidebar__search_with_ai__continue_chat__title": "Продължете с търсене с изкуствен интелект",
-    "social_media_summary_button__text": "Резюмирай"
+    "social_media_summary_button__text": "Резюмирай",
+    "sidebar__search_with_ai__advanced__title": "Разширени опции за търсене",
+    "sidebar__search_with_ai__advanced__copilot__title": "Копилот",
+    "sidebar__search_with_ai__advanced__copilot__description": "Използвайте AI-смарт заявки за изчерпателно търсене в мрежата. Извличайте пълно съдържание от резултатите от търсенето. Получавайте отговори на най-трудните въпроси с обширни уеб анализи.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Резултати от търсенето",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Търсачка"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

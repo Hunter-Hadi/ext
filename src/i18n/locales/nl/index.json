@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Samenvatten",
     "sidebar__tabs__search__tooltip": "Zoeken met AI",
     "sidebar__search_with_ai__continue_chat__title": "Doorgaan met AI-aangedreven zoekopdracht",
-    "social_media_summary_button__text": "Samenvatten"
+    "social_media_summary_button__text": "Samenvatten",
+    "sidebar__search_with_ai__advanced__title": "Geavanceerde zoekopties",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copiloot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Gebruik AI-aangedreven slimme zoekopdrachten voor uitgebreide webzoekopdrachten. Haal volledige inhoud uit zoekresultaten. Krijg antwoorden op de moeilijkste vragen met uitgebreide webinzichten.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Zoekresultaten",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Zoekmachine"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

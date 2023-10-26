@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "สรุป",
     "sidebar__tabs__search__tooltip": "การค้นหาที่มีพลังปัญญาประดิษฐ์",
     "sidebar__search_with_ai__continue_chat__title": "ดำเนินการต่อในการค้นหาที่มีพลังปัญญาประดิษฐ์",
-    "social_media_summary_button__text": "สรุป"
+    "social_media_summary_button__text": "สรุป",
+    "sidebar__search_with_ai__advanced__title": "ตัวเลือกการค้นหาขั้นสูง",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "ใช้คิวรีที่มีพลังปัญญาประดิษฐ์เพื่อค้นหาบนเว็บอย่างละเอียด. แยกเนื้อหาทั้งหมดจากผลการค้นหา. ได้คำตอบสำหรับคำถามที่ยากที่สุดด้วยข้อมูลอย่างละเอียดบนเว็บ",
+    "sidebar__search_with_ai__advanced__search_results__title": "ผลการค้นหา",
+    "sidebar__search_with_ai__advanced__search_engine__title": "เครื่องมือค้นหา"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

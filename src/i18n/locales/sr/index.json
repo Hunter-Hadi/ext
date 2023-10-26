@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Sumiraj",
     "sidebar__tabs__search__tooltip": "Pretraga sa veštačkom inteligencijom",
     "sidebar__search_with_ai__continue_chat__title": "Nastavi sa pretragom pomoću veštačke inteligencije",
-    "social_media_summary_button__text": "Sumiraj"
+    "social_media_summary_button__text": "Sumiraj",
+    "sidebar__search_with_ai__advanced__title": "Napredne opcije pretrage",
+    "sidebar__search_with_ai__advanced__copilot__title": "Kopilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Koristite pametne upite sa AI tehnologijom za sveobuhvatno pretraživanje weba. Izvlačite kompletan sadržaj iz rezultata pretrage. Dobijte odgovore na najteža pitanja uz sveobuhvatne informacije sa weba.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Rezultati pretrage",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Pretraživač"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

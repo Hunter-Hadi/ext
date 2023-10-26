@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "સંક્ષેપ કરો",
     "sidebar__tabs__search__tooltip": "AI પર આધારિત શોધ",
     "sidebar__search_with_ai__continue_chat__title": "એઆઈ-પવર્ડ શોધમાં ચાલુ રાખો",
-    "social_media_summary_button__text": "સંક્ષેપિત કરો"
+    "social_media_summary_button__text": "સંક્ષેપિત કરો",
+    "sidebar__search_with_ai__advanced__title": "અગ્રિમ શોધ વિકલ્પો",
+    "sidebar__search_with_ai__advanced__copilot__title": "કોપાયલટ",
+    "sidebar__search_with_ai__advanced__copilot__description": "એઆઈ-પવર્ડ સ્માર્ટ ક્વેરીઝનો ઉપયોગ કરો અતિશય વેબ શોધ માટે. શોધ પરિણામોમાંથી સંપૂર્ણ સામગ્રી ની સંચાલન કરો. વિસ્તૃત વેબ અભિપ્રેતિઓ સાથે સબસ્ટન્ટિવ જવાબો મેળવો.",
+    "sidebar__search_with_ai__advanced__search_results__title": "શોધ પરિણામો",
+    "sidebar__search_with_ai__advanced__search_engine__title": "શોધ ઇંજિન"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

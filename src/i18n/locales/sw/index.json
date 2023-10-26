@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Muhtasari",
     "sidebar__tabs__search__tooltip": "Tafuta yenye nguvu ya AI",
     "sidebar__search_with_ai__continue_chat__title": "Endelea na utafutaji unaotumia AI",
-    "social_media_summary_button__text": "Muhtasari"
+    "social_media_summary_button__text": "Muhtasari",
+    "sidebar__search_with_ai__advanced__title": "Chaguzi za utafutaji za juu",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Tumia AI yenye nguvu kwa utafutaji wa kina wa wavuti. Chambua maudhui kamili kutoka kwenye matokeo ya utafutaji. Pata majibu ya maswali magumu na ufahamu kamili wa wavuti.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Matokeo ya utafutaji",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Injini ya utafutaji"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

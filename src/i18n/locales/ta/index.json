@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "சுருக்கி",
     "sidebar__tabs__search__tooltip": "மின்னஞ்சல் அறிவிப்புடன் தேடு",
     "sidebar__search_with_ai__continue_chat__title": "ஐயும் சேர்ந்து தேடுங்கள்",
-    "social_media_summary_button__text": "சுருக்கம்"
+    "social_media_summary_button__text": "சுருக்கம்",
+    "sidebar__search_with_ai__advanced__title": "மேம்படுத்தப்பட்ட தேடல் விருப்பங்கள்",
+    "sidebar__search_with_ai__advanced__copilot__title": "கோபிலாட்",
+    "sidebar__search_with_ai__advanced__copilot__description": "மூன்றும் மேற்கொண்ட AI சேமிப்புகளைப் பயன்படுத்தி மிகுந்த வலைத்தள தேடல்களைப் பயன்படுத்துங்கள். தேடல் முடிவுகளிலிருந்து முழுமையான உள்ளடக்கத்தைப் பெறுங்கள். மிகவும் கடினமான வினாக்களுக்கு முழுமையான வலைத்தள அறிவிப்புகளைப் பெறுங்கள்.",
+    "sidebar__search_with_ai__advanced__search_results__title": "தேடல் முடிவுகள்",
+    "sidebar__search_with_ai__advanced__search_engine__title": "தேடல் எஞ்சின்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

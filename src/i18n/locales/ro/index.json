@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Rezumat",
     "sidebar__tabs__search__tooltip": "Căutare cu ajutorul AI",
     "sidebar__search_with_ai__continue_chat__title": "Continuați în căutarea cu ajutorul AI",
-    "social_media_summary_button__text": "Rezumat"
+    "social_media_summary_button__text": "Rezumat",
+    "sidebar__search_with_ai__advanced__title": "Opțiuni de căutare avansate",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
+    "sidebar__search_with_ai__advanced__copilot__description": "Utilizați interogări inteligente alimentate de IA pentru căutări web exhaustive. Extrageți conținut complet din rezultatele căutării. Obțineți răspunsuri la cele mai dificile întrebări cu informații cuprinzătoare despre web.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Rezultatele căutării",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Motor de căutare"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

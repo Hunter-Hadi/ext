@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "Résumer",
     "sidebar__tabs__search__tooltip": "Recherche alimentée par l'IA",
     "sidebar__search_with_ai__continue_chat__title": "Continuer avec la recherche alimentée par l'IA",
-    "social_media_summary_button__text": "Résumer"
+    "social_media_summary_button__text": "Résumer",
+    "sidebar__search_with_ai__advanced__title": "Options de recherche avancées",
+    "sidebar__search_with_ai__advanced__copilot__title": "Copilote",
+    "sidebar__search_with_ai__advanced__copilot__description": "Utilisez des requêtes intelligentes alimentées par l'IA pour des recherches web exhaustives. Extrayez le contenu complet des résultats de recherche. Obtenez des réponses aux questions les plus difficiles avec des informations web complètes.",
+    "sidebar__search_with_ai__advanced__search_results__title": "Résultats de recherche",
+    "sidebar__search_with_ai__advanced__search_engine__title": "Moteur de recherche"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

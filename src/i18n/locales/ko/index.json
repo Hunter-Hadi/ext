@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "요약",
     "sidebar__tabs__search__tooltip": "인공지능 기반 검색",
     "sidebar__search_with_ai__continue_chat__title": "AI 기반 검색으로 계속하기",
-    "social_media_summary_button__text": "요약"
+    "social_media_summary_button__text": "요약",
+    "sidebar__search_with_ai__advanced__title": "고급 검색 옵션",
+    "sidebar__search_with_ai__advanced__copilot__title": "코파일럿",
+    "sidebar__search_with_ai__advanced__copilot__description": "AI 기반 스마트 쿼리를 사용하여 포괄적인 웹 검색을 수행하세요. 검색 결과에서 완전한 콘텐츠를 추출하세요. 포괄적인 웹 인사이트로 어려운 질문에 대한 답변을 받으세요.",
+    "sidebar__search_with_ai__advanced__search_results__title": "검색 결과",
+    "sidebar__search_with_ai__advanced__search_engine__title": "검색 엔진"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

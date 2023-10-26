@@ -465,7 +465,12 @@
     "youtube_summary_button__text": "సంగ్రహించు",
     "sidebar__tabs__search__tooltip": "AI ప్రాముఖ్యత ఉన్న శోధన",
     "sidebar__search_with_ai__continue_chat__title": "యాక్స్ ద్వారా పోల్చే ముందు కొనసాగించండి",
-    "social_media_summary_button__text": "సంగ్రహించు"
+    "social_media_summary_button__text": "సంగ్రహించు",
+    "sidebar__search_with_ai__advanced__title": "ఆధ్వర్యం శోధన ఎంపికలు",
+    "sidebar__search_with_ai__advanced__copilot__title": "కోపిలాట్",
+    "sidebar__search_with_ai__advanced__copilot__description": "పూర్తి వెబ్ శోధనల కొరకు AI-పోవర్డ్ స్మార్ట్ క్వెరీలను ఉపయోగించండి. శోధన ఫలితాల నుండి పూర్తి కంటెంట్ పొందండి. విషమంగా ప్రశ్నలకు వివరణాత్మక వెబ్ ఇనైట్స్ తో జవాబులు పొందండి.",
+    "sidebar__search_with_ai__advanced__search_results__title": "శోధ ఫలితాలు",
+    "sidebar__search_with_ai__advanced__search_engine__title": "శోధన ఇంజన్"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

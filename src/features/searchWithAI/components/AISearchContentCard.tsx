@@ -76,21 +76,34 @@ const AISearchContentCard: FC<IProps> = ({
             contentType: 'text',
           },
           metadata: {
+            shareType: 'search',
+            sourceWebpage: {
+              url: window.location.href,
+              title: document.title,
+            },
             isComplete: true,
-            quickSearch: [
-              {
-                title: 'Understanding question',
-                status: 'complete',
-                icon: 'CheckCircle',
+            copilot: {
+              title: {
+                title: 'Quick search',
+                titleIcon: 'Bult',
               },
-              {
-                title: 'Searching web',
-                status: 'complete',
-                icon: 'Search',
-                value: question,
-              },
-            ],
-            title: question,
+              steps: [
+                {
+                  title: 'Understanding question',
+                  status: 'complete',
+                  icon: 'CheckCircle',
+                },
+                {
+                  title: 'Searching web',
+                  status: 'complete',
+                  icon: 'Search',
+                  value: question,
+                },
+              ],
+            },
+            title: {
+              title: question,
+            },
             sources: {
               status: 'complete',
               links: sources as any,

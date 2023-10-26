@@ -80,9 +80,8 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
-        {currentSidebarConversationType === 'Search' && (
-          <SearchWithAICopilotToggle />
-        )}
+        {currentSidebarConversationType === 'Search' &&
+          !smoothConversationLoading && <SearchWithAICopilotToggle />}
         {/*<DevContent>*/}
         {/*  <TestAllActionsButton />*/}
         {/*</DevContent>*/}

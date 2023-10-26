@@ -70,3 +70,22 @@ export const getAllPathsAndValues = (
     }
   })
 }
+
+/**
+ * 锯齿合并数组
+ *
+ * e.g: interleaveMerge([1, 4, 7], [2, 5, 8], [3, 6, 9]);
+ *
+ * return [1, 2, 3, 4, 5, 6, 7, 8, 9]
+ */
+export const interleaveMerge = (...arrays: any[]) => {
+  const maxLength = arrays.reduce((max, arr) => Math.max(max, arr.length), 0)
+  const result = []
+  for (let i = 0; i < maxLength; i++) {
+    for (const array of arrays) {
+      array[i] && result.push(array[i])
+    }
+  }
+
+  return result
+}

@@ -13,11 +13,14 @@ import TooltipButton from '@/components/TooltipButton'
 import { useTranslation } from 'react-i18next'
 import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
 }> = (props) => {
   const { onSendMessage } = props
+  const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const { currentMaxInputLength, isError } = useChatInputMaxTokens(
     'chatBoxInputMediator',
@@ -77,6 +80,9 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
+        {currentSidebarConversationType === 'Search' && (
+          <SearchWithAICopilotToggle />
+        )}
         {/*<DevContent>*/}
         {/*  <TestAllActionsButton />*/}
         {/*</DevContent>*/}
@@ -122,4 +128,5 @@ const SidebarChatBoxInputActions: FC<{
     </Stack>
   )
 }
+
 export default SidebarChatBoxInputActions

@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import { showChatBox } from '@/utils'
-import { useRecoilValue } from 'recoil'
-import { AppLocalStorageState } from '@/store'
-import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const RESIZE_ENABLE = {
   top: false,
@@ -25,7 +23,7 @@ const limitPageWidth = 150
 // 3. 屏幕resize会更新宽度，但是不会设置到本地缓存
 // 4. 本地缓存的宽度会在下次打开时使用
 const useChatBoxWidth = () => {
-  const appLocalStorage = useRecoilValue(AppLocalStorageState)
+  const { sidebarSettings, updateSidebarSettings } = useSidebarSettings()
   const [loaded, setLoaded] = useState<boolean>(false)
   const [visibleWidth, setVisibleWidth] = useState<number>(
     CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
@@ -36,11 +34,9 @@ const useChatBoxWidth = () => {
     if (!loaded) {
       return
     }
-    await setChromeExtensionLocalStorage({
-      sidebarSettings: {
-        common: {
-          chatBoxWidth: width,
-        },
+    await updateSidebarSettings({
+      common: {
+        chatBoxWidth: width,
       },
     })
     showChatBox()
@@ -69,17 +65,12 @@ const useChatBoxWidth = () => {
     if (onceRef.current) {
       return
     }
-    if (appLocalStorage.sidebarSettings?.common?.chatBoxWidth && maxWidth) {
-      setVisibleWidth(
-        Math.min(
-          maxWidth,
-          appLocalStorage.sidebarSettings?.common?.chatBoxWidth,
-        ),
-      )
+    if (sidebarSettings?.common?.chatBoxWidth && maxWidth) {
+      setVisibleWidth(Math.min(maxWidth, sidebarSettings?.common?.chatBoxWidth))
       onceRef.current = true
       setLoaded(true)
     }
-  }, [appLocalStorage.sidebarSettings?.common?.chatBoxWidth, maxWidth])
+  }, [sidebarSettings?.common?.chatBoxWidth, maxWidth])
   return {
     minWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
     maxWidth,

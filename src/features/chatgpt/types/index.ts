@@ -60,8 +60,18 @@ export type IAIResponseOriginalMessageCopilotStep = {
   status: 'loading' | 'complete'
   title: string
   icon: IContextMenuIconKey
+  valueType?: 'text' | 'tags' | 'list' | 'table' | 'image' | 'link'
   value?: string | string[] | Record<string, any>
 }
+
+export type IAIResponseOriginalMessageSourceLink = {
+  title: string
+  url: string
+  favicon: string
+  img: string
+  from?: string
+}
+
 export type IAIResponseOriginalMessageMetadataTitle = {
   title: string
   titleIcon?: string
@@ -99,13 +109,7 @@ export interface IAIResponseOriginalMessage {
     }
     sources?: {
       status: 'loading' | 'complete'
-      links?: Array<{
-        title: string
-        url: string
-        favicon: string
-        img: string
-        from?: string
-      }>
+      links?: IAIResponseOriginalMessageSourceLink[]
     }
     copilot?: {
       title?: IAIResponseOriginalMessageMetadataTitle

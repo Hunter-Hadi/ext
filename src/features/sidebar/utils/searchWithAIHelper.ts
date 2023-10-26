@@ -6,11 +6,9 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
-/**
- * 智能query生成器
- */
-export const SMART_SEARCH_PROMPT = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
+export const SMART_SEARCH_PROMPT_OUTPUT_MULTIPLE = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
 <question>
 {{current_question}}
@@ -23,12 +21,33 @@ The question is the final one in a series of previous questions and answers. Her
 
 For your reference, today's date is {{CURRENT_DATE}}.
 
-Output the search query without additional context, explanation, or extra wording, just the search query itself. Don't use any punctuation, especially no quotes or backticks, around the search query.`
+Output 3 search queries as JSON Array format without additional number, context, explanation, or extra wording, site information, just 3 text search queries as JSON Array format.`
+
+export const SMART_SEARCH_PROMPT_OUTPUT_SINGLE = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
+
+<question>
+{{current_question}}
+</question>
+
+The question is the final one in a series of previous questions and answers. Here are the earlier questions listed in the order they were asked, from the very first to the one before the final question, delimited by <previous_questions></previous_questions>:
+<previous_questions>
+{{previous_questions}}
+</previous_questions>
+
+For your reference, today's date is {{CURRENT_DATE}}.
+
+Output 1 search query as JSON Array format without additional number, context, explanation, or extra wording, site information, just 1 text search query as JSON Array format.`
+
+// smart search 结果的分隔符
+export const SMART_SEARCH_RESPONSE_DELIMITER = ','
 
 export const generateSmartSearchPromptWithPreviousQuestion = (
   questions: string[],
+  multiple = false,
 ) => {
-  let template = SMART_SEARCH_PROMPT
+  let template = multiple
+    ? SMART_SEARCH_PROMPT_OUTPUT_MULTIPLE
+    : SMART_SEARCH_PROMPT_OUTPUT_SINGLE
 
   template = template.replaceAll(
     '{{CURRENT_DATE}}',
@@ -81,12 +100,15 @@ const generatePromptTemplate = async (query: string) => {
  * @param query
  * @param prevQuestions
  * @param includeHistory
+ * @param copilot
  */
 export const generateSearchWithAIActions = async (
   query: string,
   prevQuestions: string[],
   includeHistory: boolean,
 ) => {
+  const { searchEngine = 'google', maxResultsCount = 6, copilot = false } =
+    (await getChromeExtensionLocalStorage()).sidebarSettings?.search || {}
   // search with AI 开始
   let currentQuestion = query
   let site = ''
@@ -95,6 +117,7 @@ export const generateSearchWithAIActions = async (
     site = siteCommandMatch[1]
     currentQuestion = query.replace(siteCommandMatch[0], '')
   }
+  debugger
   currentQuestion = textHandler(currentQuestion, {
     trim: true,
     noQuotes: true,
@@ -130,8 +153,8 @@ export const generateSearchWithAIActions = async (
               },
               copilot: {
                 title: {
-                  title: 'Quick search',
-                  titleIcon: 'Bolt',
+                  title: copilot ? 'Copilot' : 'Quick search',
+                  titleIcon: copilot ? 'Awesome' : 'Bolt',
                   titleIconSize: 24,
                 },
                 steps: [
@@ -161,8 +184,12 @@ export const generateSearchWithAIActions = async (
         template: includeHistory
           ? generateSmartSearchPromptWithPreviousQuestion(
               prevQuestions.concat(currentQuestion),
+              copilot,
             )
-          : generateSmartSearchPromptWithPreviousQuestion([currentQuestion]),
+          : generateSmartSearchPromptWithPreviousQuestion(
+              [currentQuestion],
+              copilot,
+            ),
         AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
         AskChatGPTActionMeta: {
           temperature: 0,
@@ -188,6 +215,7 @@ export const generateSearchWithAIActions = async (
           trim: true,
           noQuotes: true,
           noCommand: true,
+          matchSquareBracketContent: true,
         },
       },
     },
@@ -218,7 +246,6 @@ export const generateSearchWithAIActions = async (
                     title: 'Searching web',
                     status: 'loading',
                     icon: 'Search',
-                    value: '{{SMART_SEARCH_QUERY}}',
                   },
                 ],
               },
@@ -238,16 +265,17 @@ export const generateSearchWithAIActions = async (
     {
       type: 'GET_CONTENTS_OF_SEARCH_ENGINE',
       parameters: {
-        URLSearchEngine: 'google',
+        URLSearchEngine: searchEngine,
         URLSearchEngineParams: {
           q: `{{SMART_SEARCH_QUERY}}`,
           region: '',
-          limit: '6',
+          limit: `${maxResultsCount}`,
           btf: '',
           nojs: '1',
           ei: 'UTF-8',
           csp: '1',
           site,
+          splitWith: SMART_SEARCH_RESPONSE_DELIMITER,
         },
       },
     },
@@ -278,6 +306,7 @@ export const generateSearchWithAIActions = async (
                     title: 'Searching web',
                     status: 'complete',
                     icon: 'Search',
+                    valueType: 'tags',
                     value: '{{SMART_SEARCH_QUERY}}',
                   },
                 ],
@@ -300,7 +329,37 @@ export const generateSearchWithAIActions = async (
     {
       type: 'WEBGPT_SEARCH_RESULTS_EXPAND',
       parameters: {
-        SummarizeActionType: 'NO_SUMMARIZE',
+        SummarizeActionType: copilot ? 'MAP_REDUCE' : 'NO_SUMMARIZE',
+        template: `You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. You task is to extract and summarize the information related to the following question, delimited by <question></question>, from the following text, delimited by <text></text>.
+
+---
+
+Question:
+<question>
+${currentQuestion}
+</question>
+
+Text:
+<text>
+{{WEBPAGE_CONTENT}}
+</text>
+
+---
+
+Output a concise summary that is at most {{NUMBER_OF_WORDS}} words.
+
+Use the following format:
+<summary>
+The summary of the text
+</summary>
+
+---
+
+If there's no information related to question, delimited by <question></question>, in the text, delimited by <text></text>, simply reply N/A.
+
+The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
+
+Respond in the same language variety or dialect of the text.`,
       },
     },
     {

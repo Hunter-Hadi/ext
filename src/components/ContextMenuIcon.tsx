@@ -6,6 +6,7 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined'
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined'
 // import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined'
 import ShortTextIcon from '@mui/icons-material/ShortText'
 import SubjectIcon from '@mui/icons-material/Subject'
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined'
@@ -64,6 +65,7 @@ import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOu
 import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
 import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined'
 import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined'
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -139,6 +141,8 @@ export const CONTEXT_MENU_ICONS = [
   'Awesome',
   'ScreenSearchDesktop',
   'LaptopMac',
+  'Filter',
+  'Tune',
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -335,6 +339,10 @@ const ContextMenuIcon: FC<{
       return <ScreenSearchDesktopOutlinedIcon sx={sxMemo} />
     case 'LaptopMac':
       return <LaptopMacOutlinedIcon sx={sxMemo} />
+    case 'Filter':
+      return <FilterAltOutlinedIcon sx={sxMemo} />
+    case 'Tune':
+      return <TuneOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

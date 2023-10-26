@@ -11,6 +11,7 @@ import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventTy
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import Browser from 'webextension-polyfill'
 import { backgroundSendClientToExecuteOperationElement } from '@/features/shortcuts/utils/OperationElementHelper'
+import { promiseTimeout } from '@/utils/promiseUtils'
 
 // const log = new Log('Background/ShortCut')
 
@@ -19,8 +20,17 @@ export const ShortcutMessageBackgroundInit = () => {
     if (runtime === 'shortcut') {
       switch (event as IShortCutsSendEvent) {
         case 'ShortCuts_getContentOfURL': {
-          const { URL } = data
-          const webpageData = await getWebpageTitleAndText(URL)
+          const { URL, timeout } = data
+          const webpageData = await promiseTimeout(
+            getWebpageTitleAndText(URL),
+            timeout || 60 * 1000, //如果没有传入timeout，就默认60秒
+            {
+              title: '',
+              body: '',
+              url: '',
+              success: false,
+            },
+          )
           return {
             data: webpageData,
             success: webpageData.success,
@@ -38,8 +48,7 @@ export const ShortcutMessageBackgroundInit = () => {
         }
         case 'ShortCuts_OperationPageElement':
           {
-            const OperationElementConfig =
-              data.OperationElementConfig as OperationElementConfigType
+            const OperationElementConfig = data.OperationElementConfig as OperationElementConfigType
             let executePageTabId =
               (data.OperationElementTabID as number) || sender.tab?.id
             let currentTab: Browser.Tabs.Tab | null = null
@@ -75,11 +84,10 @@ export const ShortcutMessageBackgroundInit = () => {
                 await delay(interval)
               }
               if (isLoaded) {
-                const response =
-                  await backgroundSendClientToExecuteOperationElement(
-                    executePageTabId,
-                    OperationElementConfig,
-                  )
+                const response = await backgroundSendClientToExecuteOperationElement(
+                  executePageTabId,
+                  OperationElementConfig,
+                )
                 return {
                   data: response,
                   success: response.success,

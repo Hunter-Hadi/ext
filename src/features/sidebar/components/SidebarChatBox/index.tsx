@@ -32,6 +32,7 @@ import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIAdvanced'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -318,6 +319,13 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               }}
             />
             <AIProviderSelectorFloatingButton
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+              }}
+            />
+            <SearchWithAIAdvanced
               sx={{
                 position: 'absolute',
                 bottom: 0,

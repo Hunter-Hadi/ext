@@ -269,12 +269,6 @@ export const chatGPTCommonErrorInterceptor = (errorMsg?: string) => {
   return newErrorMsg
 }
 
-export const actionContainsAskChatGPT = (actions: ISetActionsType) => {
-  return actions.some((action) => {
-    return action.type === 'ASK_CHATGPT' || action.type === 'WEBGPT_ASK_CHATGPT'
-  })
-}
-
 export const clientFetchAPI = async (url: string, options: any) => {
   try {
     const port = new ContentScriptConnectionV2()

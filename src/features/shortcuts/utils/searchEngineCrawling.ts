@@ -5,6 +5,9 @@ import {
   domain2HttpsDomain,
   string2DomainFaviconUrl,
 } from '@/utils/dataHelper/stringHelper'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
+import { SearchResponse } from '@/features/shortcuts/actions/web/ActionGetContentsOfSearchEngine'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 export interface ICrawlingSearchResult {
   title: string // 标题
@@ -28,19 +31,12 @@ const isFileUrl = (url: string) => {
     return false
   }
 }
-
 export function crawlingSearchResults({
   html,
-  limit,
   searchEngine,
-  fullSearchURL,
-  query,
 }: {
   html: string
-  limit: number
   searchEngine: URLSearchEngine | string
-  fullSearchURL?: string
-  query?: string
 }) {
   try {
     const results: ICrawlingSearchResult[] = CrawlingResultsWithEngine(
@@ -51,17 +47,9 @@ export function crawlingSearchResults({
      * Empty filter
      *
      * 1. 判定是否为 empty url不能为空，并且title和content必须有一项有值
-     * 2. body、title、url 有一项为空就保存起来，发送larkBot
      * 3. 再根据用户选择的 limit 切片
      */
-    const emptyResult: ICrawlingSearchResult[] = []
-    const emptyResultIndex: number[] = []
-    const filteredResult = results.filter((item, index) => {
-      if (!item.body || !item.title || !item.url) {
-        emptyResult.push(item)
-        emptyResultIndex.push(index)
-      }
-
+    const filteredResult = results.filter((item) => {
       // 爬虫不支持爬取 file url
       if (isFileUrl(item.url)) {
         return false
@@ -69,29 +57,7 @@ export function crawlingSearchResults({
 
       return item.url && (item.body || item.title)
     })
-
-    // 找到 body、url、title 为空的 result 发 larkBot
-    //     if (emptyResult.length > 0) {
-    //       sendLarkBotMessageInContentScript(
-    //         'Search item body is empty',
-    //         `fullSearchURL: ${fullSearchURL}
-    // query: ${query}
-    // searchEngine: ${searchEngine}
-    // emptyResultIndex: ${JSON.stringify(emptyResultIndex)}
-    // emptyResult:
-    // ${JSON.stringify(emptyResult, null, 4)}
-    // `,
-    //         {
-    //           uuid: '2dbab662-f43b-4b58-8353-18614522d158',
-    //         },
-    //       )
-    //     }
-
-    const slicedResult = filteredResult.slice(0, limit)
-
-    console.log(`crawlingSearchResults fullSearchURL`, fullSearchURL)
-
-    return slicedResult
+    return filteredResult
   } catch (error) {
     return []
   }
@@ -628,5 +594,26 @@ function getNameByUrl(url: string) {
     return hostArr.length >= 3 ? hostArr[1] : hostArr[0]
   } catch (error) {
     return url
+  }
+}
+
+/**
+ * 获取html
+ * @param url
+ */
+export const backgroundFetchHTMLByUrl = async (url: string) => {
+  const port = new ContentScriptConnectionV2({
+    runtime: 'shortcut',
+  })
+  const response = await port.postMessage({
+    event: 'ShortCuts_getContentOfSearchEngine' as IShortCutsSendEvent,
+    data: {
+      URL: url,
+    },
+  })
+  const { status, html } = (response.data || {}) as SearchResponse
+  return {
+    status,
+    html,
   }
 }

@@ -8,4 +8,8 @@ type URLSearchEngine =
   | 'yahoo'
   | 'youtube'
   | 'duckduckgo'
+  | 'sogou'
+  | 'brave'
+  | 'yandex'
+  | 'naver'
 export default URLSearchEngine

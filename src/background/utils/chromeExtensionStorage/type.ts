@@ -2,6 +2,7 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { IAIProviderType } from '@/background/provider/chat'
+import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 
 export type IChromeExtensionButtonSettingKey =
   | 'inputAssistantComposeReplyButton'
@@ -152,6 +153,9 @@ export interface IChromeExtensionLocalStorage {
     }
     search?: {
       conversationId?: string
+      copilot?: boolean
+      maxResultsCount?: number
+      searchEngine?: URLSearchEngine
     }
     common?: {
       currentAIProvider?: IAIProviderType

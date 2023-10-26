@@ -129,7 +129,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
   }, [options, selectValue, loading])
   const optionsRenderCache = useMemo(() => {
     return options.map((option, index) => {
-      if (option.origin.permission) {
+      if (option?.origin?.permission) {
         return (
           <PermissionWrapper
             key={index}
@@ -168,10 +168,10 @@ const BaseSelect: FC<IBaseSelectProps> = ({
             ...labelProp,
           }}
           key={index}
-          disabled={option.origin.disabled}
+          disabled={option?.origin?.disabled}
           value={option.value}
           onClick={(event) => {
-            if (option.origin.disabled) {
+            if (option?.origin?.disabled) {
               event.stopPropagation()
               event.preventDefault()
             }

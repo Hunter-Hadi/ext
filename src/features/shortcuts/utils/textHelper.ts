@@ -4,6 +4,7 @@ export interface ITextHandlerParameters {
   noCommand?: boolean
   noSummaryTag?: boolean
   noResponseTag?: boolean
+  matchSquareBracketContent?: boolean
 }
 
 export function textHandler(text: string, params?: ITextHandlerParameters) {
@@ -16,7 +17,15 @@ export function textHandler(text: string, params?: ITextHandlerParameters) {
   if (params?.noQuotes) {
     value = value.replaceAll('"', '')
   }
-
+  // 用于处理SearchWithAI的Smart Query的输出结果: [apple13, <previous_questions></previous_questions>, 2023-10-26]
+  if (params?.matchSquareBracketContent) {
+    const regex = /\[[^\]]+\]/g
+    const matches = value.match(regex)
+    if (matches) {
+      value = matches[0]
+      value = value.replaceAll('[', '').replaceAll(']', '')
+    }
+  }
   if (params?.noCommand) {
     if (value.includes('site:')) {
       value = value.replace(/site:[^ ]+/g, '')

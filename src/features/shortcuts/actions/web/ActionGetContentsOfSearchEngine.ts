@@ -6,9 +6,13 @@ import {
   pushOutputToChat,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
-import { crawlingSearchResults } from '@/features/shortcuts/utils/searchEngineCrawling'
+import {
+  backgroundFetchHTMLByUrl,
+  crawlingSearchResults,
+} from '@/features/shortcuts/utils/searchEngineCrawling'
+import { interleaveMerge } from '@/utils/dataHelper/arrayHelper'
+import isNumber from 'lodash-es/isNumber'
 
 export interface SearchResponse {
   status: number
@@ -19,6 +23,11 @@ export interface SearchResponse {
 // MARK: 这只是为了webget的业务实现的，不具备通用性
 export class ActionGetContentsOfSearchEngine extends Action {
   static type = 'GET_CONTENTS_OF_SEARCH_ENGINE'
+  /**
+   * 搜索引擎默认的搜索结果数量
+   * @private
+   */
+  private SearchEngineResultDefaultLimit = 6
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -63,56 +72,57 @@ export class ActionGetContentsOfSearchEngine extends Action {
         }
         const searchEngine = this.parameters.URLSearchEngine || 'yahoo'
         const searchParams = this.parameters.URLSearchEngineParams || {}
-        const fullSearchURL = this.getFullSearchURL(
-          searchEngine,
-          searchParams,
-          query,
+        const limit = isNumber(Number(searchParams?.limit))
+          ? Number(searchParams?.limit)
+          : this.SearchEngineResultDefaultLimit
+        let queryArr = [query]
+        if (searchParams.splitWith && query.includes(searchParams.splitWith)) {
+          queryArr = query.split(searchParams.splitWith)
+          delete searchParams.splitWith
+        }
+        const searchResultArr = await Promise.all(
+          queryArr.map(async (itemQuery) => {
+            const fullSearchURL = this.getFullSearchURL(
+              searchEngine,
+              searchParams,
+              itemQuery.trim(),
+            )
+
+            const { html, status } = await backgroundFetchHTMLByUrl(
+              fullSearchURL,
+            )
+            // response is error
+            if (status === 301) {
+              // search engine 被重定向
+              // 目前默认为 301，需要人机验证
+              this.error = `<a href="${fullSearchURL}" target="_blank" style="color: inherit">Click here for ${searchEngine.replace(
+                /^\w/,
+                (c) => c.toUpperCase(),
+              )}</a>. Pass security checks and keep the tab open for stable web access.`
+            }
+
+            // response is success
+            if (status === 200 && html) {
+              return crawlingSearchResults({
+                html,
+                searchEngine,
+              })
+            }
+            return []
+          }),
         )
-        const response = await backgroundConversation.postMessage({
-          event: 'ShortCuts_getContentOfSearchEngine' as IShortCutsSendEvent,
-          data: {
-            URL: fullSearchURL,
-          },
-        })
-        const { status, html } = (response.data || {}) as SearchResponse
-        if (response.success && status === 200 && html) {
-          // response is success
-          const searchResult = crawlingSearchResults({
-            html,
-            searchEngine,
-            limit: Number(searchParams?.limit || 3),
-            fullSearchURL,
-            query,
-          })
-          if (searchResult.length <= 0) {
-            // 根据搜索结果爬取不到 内容
-            this.output = ''
-            this.error =
-              'No search results found. Please try again with a different search engine or search query.'
-            return
-          } else {
-            // 正确获取到搜索结果，和爬取到的内容
-            this.output = JSON.stringify(searchResult, null, 2)
-            return
-          }
-        }
-        // response is error
-        this.error = 'Failed to access the search page. Please try again.'
-        if (status === 301) {
-          // search engine 被重定向
-          // 目前默认为 301，需要人机验证
+        const mergedSearchResult = interleaveMerge(...searchResultArr)
+        const slicedSearchResult = mergedSearchResult.slice(0, limit)
+        if (slicedSearchResult.length <= 0) {
+          // 根据搜索结果爬取不到 内容
           this.output = ''
-          this.error = `<a href="${fullSearchURL}" target="_blank" style="color: inherit">Click here for ${searchEngine.replace(
-            /^\w/,
-            (c) => c.toUpperCase(),
-          )}</a>. Pass security checks and keep the tab open for stable web access.`
-          return
+          this.error =
+            'No search results found. Please try again with a different search engine or search query.'
+        } else {
+          this.error = ''
+          // 正确获取到搜索结果，和爬取到的内容
+          this.output = JSON.stringify(slicedSearchResult, null, 2)
         }
-      }
-      if (!this.output) {
-        this.output = ''
-        this.error =
-          'No search results found. Please try again with a different search engine or search query.'
       }
     } catch (e) {
       this.error = (e as any).toString()

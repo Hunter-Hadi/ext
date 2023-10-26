@@ -31,6 +31,9 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
       },
       search: {
         conversationId: '',
+        copilot: false,
+        searchEngine: 'google',
+        maxResultsCount: 6,
       },
       common: {
         currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,

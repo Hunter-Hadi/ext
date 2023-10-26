@@ -117,7 +117,6 @@ export const generateSearchWithAIActions = async (
     site = siteCommandMatch[1]
     currentQuestion = query.replace(siteCommandMatch[0], '')
   }
-  debugger
   currentQuestion = textHandler(currentQuestion, {
     trim: true,
     noQuotes: true,

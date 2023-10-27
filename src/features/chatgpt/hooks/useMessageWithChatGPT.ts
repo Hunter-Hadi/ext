@@ -419,6 +419,16 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           0,
           pushMessages,
         )
+      } else {
+        // 只更新系统信息或者报错
+        await clientChatConversationModifyChatMessages(
+          'add',
+          postConversationId,
+          0,
+          pushMessages.filter(
+            (message) => message.type === 'third' || message.type === 'system',
+          ),
+        )
       }
     }
   }

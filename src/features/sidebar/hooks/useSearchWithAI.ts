@@ -256,10 +256,6 @@ const useSearchWithAI = () => {
     runActions,
   ])
   const map = getNeedRemovePromptIdsMap()
-  console.log(
-    'QQQQQQ',
-    JSON.stringify(Array.from(map).map(([key, value]) => key)),
-  )
   return {
     createSearchWithAI,
     regenerateSearchWithAI,

@@ -43,6 +43,7 @@ const SidebarChatBoxMessageItem: FC<{
   onSave?: (text: string) => void
   onCopy?: () => void
   onRetry?: (messageId: string) => void
+  onReGenerate?: () => void
   className?: string
 }> = (props) => {
   const {

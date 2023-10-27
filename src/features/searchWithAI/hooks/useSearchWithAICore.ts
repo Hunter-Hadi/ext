@@ -110,10 +110,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       startSourcesLoading()
       const results = await crawlingSearchResults({
         html: document.body.innerHTML,
-        limit: 6,
         searchEngine: siteName,
-        fullSearchURL: location.href,
-        query: question,
       })
       // 由于获取 sources 的过程都比较快，所以这里 模拟一个 800ms ~ 500ms 的loading
       setTimeout(() => {

@@ -87,6 +87,7 @@ const SearchWithAIAdvanced: FC<{
       >
         <ContextMenuIcon
           sx={{
+            color: 'text.primary',
             fontSize: '24px',
           }}
           icon={'Tune'}

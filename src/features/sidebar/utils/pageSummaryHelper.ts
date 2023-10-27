@@ -748,7 +748,11 @@ export const getContextMenuActionsByPageSummaryType = (
   pageSummaryType: IPageSummaryType,
 ) => {
   const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType])
-  return (contextMenu.data.actions || []).map((action) => {
+  let messageId = ''
+  const actions = (contextMenu.data.actions || []).map((action, index) => {
+    if (index === 0) {
+      messageId = action.parameters.ActionChatMessageConfig?.messageId || ''
+    }
     if (action.type === 'ASK_CHATGPT') {
       action.parameters.AskChatGPTActionMeta = {
         contextMenu: cloneDeep(contextMenu),
@@ -756,6 +760,10 @@ export const getContextMenuActionsByPageSummaryType = (
     }
     return action
   })
+  return {
+    actions,
+    messageId,
+  }
 }
 
 const getCurrentPageUrl = () => {

@@ -425,9 +425,22 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           'add',
           postConversationId,
           0,
-          pushMessages.filter(
-            (message) => message.type === 'third' || message.type === 'system',
-          ),
+          pushMessages
+            .filter(
+              (message) =>
+                message.type === 'third' || message.type === 'system',
+            )
+            .map((message) => {
+              return {
+                ...message,
+                // 因为options?.aiMessageVisible === false的时候
+                // 很多情况下是不能retry的，所以这里把parentMessageId设置为空，防止retry
+                parentMessageId:
+                  options?.aiMessageVisible === false
+                    ? ''
+                    : message.parentMessageId,
+              }
+            }),
         )
       }
     }

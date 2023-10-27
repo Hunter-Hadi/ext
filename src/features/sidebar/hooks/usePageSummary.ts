@@ -25,6 +25,7 @@ import {
 } from '@/background/utils'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
 
 const usePageSummary = () => {
   const {
@@ -39,6 +40,7 @@ const usePageSummary = () => {
   const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation } = useClientConversation()
   const isFetchingRef = useRef(false)
+  const lastMessageIdRef = useRef('')
   const createPageSummary = async () => {
     if (isFetchingRef.current) {
       return
@@ -136,9 +138,10 @@ const usePageSummary = () => {
             return
           }
         }
-        const actions = getContextMenuActionsByPageSummaryType(
+        const { actions, messageId } = getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
         )
+        lastMessageIdRef.current = messageId
         setRunActions(actions)
       } catch (e) {
         console.log('创建Conversation失败', e)
@@ -160,6 +163,31 @@ const usePageSummary = () => {
           .finally(() => {
             isFetchingRef.current = false
             setRunActions([])
+            const conversationId = getPageSummaryConversationId()
+            if (conversationId && lastMessageIdRef.current) {
+              // 因为整个过程不一定是成功的
+              // 更新消息的isComplete/sources.status
+              clientChatConversationModifyChatMessages(
+                'update',
+                conversationId,
+                0,
+                [
+                  {
+                    messageId: lastMessageIdRef.current,
+                    originalMessage: {
+                      metadata: {
+                        sources: {
+                          status: 'complete',
+                        },
+                        isComplete: true,
+                      },
+                    },
+                  } as IAIResponseMessage,
+                ],
+              )
+                .then()
+                .catch()
+            }
           })
       } else {
         setRunActions([])

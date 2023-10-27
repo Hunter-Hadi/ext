@@ -19,7 +19,6 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { isShowChatBox, showChatBox } from '@/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
-import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
 
 const useSearchWithAI = () => {
   const {
@@ -255,7 +254,6 @@ const useSearchWithAI = () => {
     currentSidebarConversationId,
     runActions,
   ])
-  const map = getNeedRemovePromptIdsMap()
   return {
     createSearchWithAI,
     regenerateSearchWithAI,

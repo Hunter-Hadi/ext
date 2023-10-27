@@ -69,7 +69,6 @@ class ArkoseTokenGenerator {
         },
       }),
     )
-
     ;(window as any).useArkoseSetupEnforcementgpt35(
       new Proxy(enforcement, {
         get: (target: ArkoseEnforcement, p: string | symbol, receiver: any) => {

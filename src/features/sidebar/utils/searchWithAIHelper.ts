@@ -109,6 +109,7 @@ export const generateSearchWithAIActions = async (
 ) => {
   const { searchEngine = 'google', maxResultsCount = 6, copilot = false } =
     (await getChromeExtensionLocalStorage()).sidebarSettings?.search || {}
+  const messageId = uuidV4()
   // search with AI 开始
   let currentQuestion = query
   let site = ''
@@ -142,7 +143,7 @@ export const generateSearchWithAIActions = async (
         ActionChatMessageOperationType: 'add',
         ActionChatMessageConfig: {
           type: 'ai',
-          messageId: uuidV4(),
+          messageId: messageId,
           text: '',
           originalMessage: {
             metadata: {
@@ -392,5 +393,8 @@ Respond in the same language variety or dialect of the text.`,
       },
     },
   ]
-  return actions
+  return {
+    actions,
+    messageId,
+  }
 }

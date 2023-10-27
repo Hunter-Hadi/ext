@@ -100,7 +100,7 @@ export const SidebarAIMessage: FC<{
         message.originalMessage?.metadata?.sources?.status === 'loading',
       answer: message.text,
       content: message.originalMessage?.content,
-      messageIsComplete: !message.originalMessage?.metadata?.isComplete,
+      messageIsComplete: message.originalMessage?.metadata?.isComplete,
       deepDive: message.originalMessage?.metadata?.deepDive,
     }
     if (message.originalMessage?.content?.text) {
@@ -140,6 +140,7 @@ export const SidebarAIMessage: FC<{
                 {renderData.copilot.steps.map((copilotStep) => {
                   return (
                     <SidebarAIMessageCopilotStep
+                      messageIsComplete={renderData.messageIsComplete}
                       copilot={copilotStep}
                       key={copilotStep.title}
                     />
@@ -178,7 +179,7 @@ export const SidebarAIMessage: FC<{
           )}
           {renderData.content && (
             <Stack>
-              {renderData.messageIsComplete ? (
+              {!renderData.messageIsComplete ? (
                 <Stack direction={'row'} alignItems="center" spacing={1}>
                   <CircularProgress size={18} />
                   <Typography
@@ -228,7 +229,7 @@ export const SidebarAIMessage: FC<{
                   </Typography>
                 </Stack>
               )}
-              {isWaitFirstAIResponseText ? (
+              {isWaitFirstAIResponseText && !renderData.messageIsComplete ? (
                 <Stack>
                   <Skeleton animation="wave" height={10} />
                   <Skeleton animation="wave" height={10} />

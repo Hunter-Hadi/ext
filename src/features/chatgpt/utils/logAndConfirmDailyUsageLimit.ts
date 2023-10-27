@@ -1,6 +1,6 @@
 import { getAccessToken } from '@/utils/request'
 import AES from 'crypto-js/aes'
-import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import Browser from 'webextension-polyfill'
 import dayjs from 'dayjs'
@@ -56,6 +56,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,
         browser: await getBrowserInfo(),
+        app_version: APP_VERSION,
       }
       if (contextMenuIsFavoriteContextMenu(info_object.prompt_id)) {
         info_object.prompt_id =

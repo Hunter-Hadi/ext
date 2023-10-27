@@ -97,6 +97,7 @@ const useSidebarSettings = () => {
   const updateSidebarSettings = async (
     newSidebarSettings: IChromeExtensionLocalStorage['sidebarSettings'],
   ) => {
+    debugger
     await setChromeExtensionLocalStorage({
       sidebarSettings: newSidebarSettings,
     })

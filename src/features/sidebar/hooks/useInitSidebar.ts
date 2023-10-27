@@ -143,9 +143,11 @@ const useInitSidebar = () => {
   // focus的时候更新消息
   useFocus(() => {
     if (currentSidebarConversationIdRef.current) {
+      const start = new Date().getTime()
       clientGetConversation(currentSidebarConversationIdRef.current).then(
         (conversation) => {
           if (conversation) {
+            console.log('UsingUsingUsing', new Date().getTime() - start, 'ms')
             console.log('新版Conversation refocus更新', conversation.messages)
             updateConversationMap((prevState) => {
               return {
@@ -153,13 +155,23 @@ const useInitSidebar = () => {
                 [conversation.id]: conversation,
               }
             })
-            // setClientConversationMap((prevState) => {
-            //   return {
-            //     ...prevState,
-            //     [conversation.id]: conversation,
-            //   }
-            // })
+            if (conversation?.meta.AIProvider) {
+              // 因为其他网页初始化的时候有conversationId，所以会修改prompt.
+              // 也就导致当refocus的时候要把当前focus页面的conversation的aiProvider和model复原
+              switchBackgroundChatSystemAIProvider(
+                conversation.meta.AIProvider,
+                conversation.meta.AIModel,
+              )
+                .then()
+                .catch()
+            }
           }
+          // setClientConversationMap((prevState) => {
+          //   return {
+          //     ...prevState,
+          //     [conversation.id]: conversation,
+          //   }
+          // })
         },
       )
     }

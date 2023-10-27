@@ -19,6 +19,7 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { isShowChatBox, showChatBox } from '@/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
+import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
 
 const useSearchWithAI = () => {
   const {
@@ -34,6 +35,7 @@ const useSearchWithAI = () => {
   const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation } = useClientConversation()
   const isFetchingRef = useRef(false)
+  const lastMessageIdRef = useRef('')
   const memoPrevQuestions = useMemo(() => {
     const memoQuestions = []
     // 从后往前，直到include_history为false
@@ -113,13 +115,13 @@ const useSearchWithAI = () => {
           return
         }
       }
-      setRunActions(
-        await generateSearchWithAIActions(
-          query,
-          memoPrevQuestions,
-          includeHistory,
-        ),
+      const { messageId, actions } = await generateSearchWithAIActions(
+        query,
+        memoPrevQuestions,
+        includeHistory,
       )
+      lastMessageIdRef.current = messageId
+      setRunActions(actions)
     } catch (e) {
       console.log('创建Conversation失败', e)
     }
@@ -212,9 +214,34 @@ const useSearchWithAI = () => {
         runShortCuts()
           .then()
           .catch()
-          .finally(() => {
+          .finally(async () => {
             isFetchingRef.current = false
             setRunActions([])
+            const conversationId = await getSearchWithAIConversationId()
+            if (conversationId && lastMessageIdRef.current) {
+              // 因为整个过程不一定是成功的
+              // 更新消息的isComplete/sources.status
+              clientChatConversationModifyChatMessages(
+                'update',
+                conversationId,
+                0,
+                [
+                  {
+                    messageId: lastMessageIdRef.current,
+                    originalMessage: {
+                      metadata: {
+                        sources: {
+                          status: 'complete',
+                        },
+                        isComplete: true,
+                      },
+                    },
+                  } as IAIResponseMessage,
+                ],
+              )
+                .then()
+                .catch()
+            }
           })
       } else {
         setRunActions([])
@@ -228,6 +255,11 @@ const useSearchWithAI = () => {
     currentSidebarConversationId,
     runActions,
   ])
+  const map = getNeedRemovePromptIdsMap()
+  console.log(
+    'QQQQQQ',
+    JSON.stringify(Array.from(map).map(([key, value]) => key)),
+  )
   return {
     createSearchWithAI,
     regenerateSearchWithAI,

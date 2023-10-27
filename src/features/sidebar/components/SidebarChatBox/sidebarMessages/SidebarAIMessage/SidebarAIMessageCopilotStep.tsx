@@ -6,8 +6,10 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Typography from '@mui/material/Typography'
 
 const SidebarAIMessageCopilotStep: FC<{
+  messageIsComplete?: boolean
   copilot: IAIResponseOriginalMessageCopilotStep
 }> = (props) => {
+  const { messageIsComplete } = props
   const { title, icon, value, valueType = 'text', status } = props.copilot
   const RenderValueDom = useMemo(() => {
     if (!value) return null
@@ -68,7 +70,7 @@ const SidebarAIMessageCopilotStep: FC<{
           width={16}
           height={16}
         >
-          {status === 'loading' ? (
+          {status === 'loading' && !messageIsComplete ? (
             <CircularProgress size={16} />
           ) : (
             <ContextMenuIcon

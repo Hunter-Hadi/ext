@@ -155,7 +155,10 @@ const useInitSidebar = () => {
                 [conversation.id]: conversation,
               }
             })
-            if (conversation?.meta.AIProvider) {
+            if (
+              pageConversationTypeRef.current === 'Chat' &&
+              conversation?.meta?.AIProvider
+            ) {
               // 因为其他网页初始化的时候有conversationId，所以会修改prompt.
               // 也就导致当refocus的时候要把当前focus页面的conversation的aiProvider和model复原
               switchBackgroundChatSystemAIProvider(
@@ -166,14 +169,15 @@ const useInitSidebar = () => {
                 .catch()
             }
           }
-          // setClientConversationMap((prevState) => {
-          //   return {
-          //     ...prevState,
-          //     [conversation.id]: conversation,
-          //   }
-          // })
         },
       )
+    }
+    if (pageConversationTypeRef.current !== 'Chat') {
+      // 因为其他网页初始化的时候有conversationId，所以会修改prompt.
+      // 也就导致当refocus的时候要把当前focus页面的conversation的aiProvider和model复原
+      switchBackgroundChatSystemAIProvider('USE_CHAT_GPT_PLUS', 'gpt-3.5-turbo')
+        .then()
+        .catch()
     }
   })
 }

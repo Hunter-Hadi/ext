@@ -108,33 +108,33 @@ const initChromeExtensionInstalled = () => {
         })
       }
       // NOTE: 更新的时候统计一下当前占用的内存
-      // if (APP_VERSION === '2.2.6') {
-      //   WebsiteContextManager.computeWebsiteContextStorageSize()
-      //     .then((size) => {
-      //       if (size > 0) {
-      //         setTimeout(() => {
-      //           // 发送到larkbot
-      //           sendLarkBotMessage(
-      //             '[Memory] storage size',
-      //             JSON.stringify(
-      //               {
-      //                 size,
-      //                 version: APP_VERSION,
-      //               },
-      //               null,
-      //               4,
-      //             ),
-      //             {
-      //               uuid: '247cb207-4b00-4cd3-be74-bdb9ade6f8f4',
-      //             },
-      //           )
-      //             .then()
-      //             .catch()
-      //         }, (Math.random() * 60 + 10) * 1000) // 延迟10-70s发送,降低发送频率
-      //       }
-      //     })
-      //     .catch()
-      // }
+      if (APP_VERSION === '2.2.6') {
+        WebsiteContextManager.computeWebsiteContextStorageSize()
+          .then((size) => {
+            if (size > 0) {
+              setTimeout(() => {
+                // 发送到larkbot
+                sendLarkBotMessage(
+                  '[Memory] storage size',
+                  JSON.stringify(
+                    {
+                      size,
+                      version: APP_VERSION,
+                    },
+                    null,
+                    4,
+                  ),
+                  {
+                    uuid: '247cb207-4b00-4cd3-be74-bdb9ade6f8f4',
+                  },
+                )
+                  .then()
+                  .catch()
+              }, (Math.random() * 60 + 10) * 1000) // 延迟10-70s发送,降低发送频率
+            }
+          })
+          .catch()
+      }
       // 保存本地快照
       await setChromeExtensionDBStorageSnapshot()
       // 更新插件

@@ -42,6 +42,9 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'INSTAGRAM_COMPOSE_NEW_BUTTON',
   'INSTAGRAM_COMPOSE_REPLY_BUTTON',
   'INSTAGRAM_REFINE_DRAFT_BUTTON',
+  'REDDIT_COMPOSE_NEW_BUTTON',
+  'REDDIT_COMPOSE_REPLY_BUTTON',
+  'REDDIT_REFINE_DRAFT_BUTTON',
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SIDEBAR_SEARCH_WITH_AI',
@@ -700,6 +703,54 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     description: (t) =>
       t(
         'client:permission__pricing_hook__max_ai_paid_model__search_with_ai__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Reddit cta button - compose new
+  REDDIT_COMPOSE_NEW_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Reddit cta button - compose reply
+  REDDIT_COMPOSE_REPLY_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Reddit dropdown button - refine draft
+  REDDIT_REFINE_DRAFT_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-social-media.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),

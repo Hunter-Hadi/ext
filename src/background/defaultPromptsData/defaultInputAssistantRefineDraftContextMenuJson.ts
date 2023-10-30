@@ -634,6 +634,7 @@ const socialMediaPrompts = [
           'youtube.com',
           'studio.youtube.com',
           'instagram.com',
+          'reddit.com',
         ],
         blacklist: [],
         isWhitelistMode: true,

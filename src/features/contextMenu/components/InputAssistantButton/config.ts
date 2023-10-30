@@ -61,6 +61,7 @@ export type InputAssistantButtonGroupConfigHostType =
   | 'facebook.com'
   | 'youtube.com'
   | 'studio.youtube.com'
+  | 'reddit.com'
 
 const InputAssistantButtonGroupConfig = {
   'mail.google.com': {
@@ -440,6 +441,63 @@ const InputAssistantButtonGroupConfig = {
     InputAssistantBoxSx: {
       borderRadius: '12px',
     },
+  },
+  'reddit.com': {
+    enable: true,
+    rootSelectors: [
+      'div[data-test-id="comment-submission-form-richtext"] + div button[type="submit"]',
+      'hr + div > div > div > div:nth-child(1) button',
+    ],
+    rootSelectorStyle: 'order:2',
+    rootWrapperStyle: 'order:1;',
+    appendPosition: 1,
+    rootParentDeep: 1,
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+      CTAButtonStyle: {
+        iconSize: 16,
+        borderRadius: '16px 0 0 16px',
+        padding: '8px 10px',
+        transparentHeight: 6,
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 16px 16px 0',
+        padding: '6px 3px',
+        transparentHeight: 6,
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '16px',
+        marginRight: '8px',
+      },
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+      CTAButtonStyle: {
+        padding: '5px 12px',
+        iconSize: 14,
+        borderRadius: '12px 0  0 12px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 12px 12px 0',
+        padding: '2px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '12px',
+      },
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+    },
+    CTAButtonStyle: {},
+    DropdownButtonStyle: {},
+    InputAssistantBoxSx: {},
   },
 } as {
   [key in InputAssistantButtonGroupConfigHostType]: IInputAssistantButtonGroupConfig

@@ -676,6 +676,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           'youtube.com',
           'studio.youtube.com',
           'instagram.com',
+          'reddit.com',
         ],
         blacklist: [],
         isWhitelistMode: true,

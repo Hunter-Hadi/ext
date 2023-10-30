@@ -69,6 +69,9 @@ const InputAssistantPortal: FC = () => {
     if (host === 'instagram.com') {
       return appSetting.userSettings?.inputAssistantButton?.instagram === true
     }
+    if (host === 'reddit.com') {
+      return appSetting.userSettings?.inputAssistantButton?.reddit === true
+    }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])
   useEffect(() => {

@@ -26,6 +26,10 @@ import {
   instagramGetPostContent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/instagram'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import {
+  redditGetDraftContent,
+  redditGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/reddit'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
@@ -55,6 +59,9 @@ export const getSocialMediaPostContent = async (
   }
   if (host === 'instagram.com') {
     return await instagramGetPostContent(inputAssistantButton)
+  }
+  if (host === 'reddit.com') {
+    return await redditGetPostContent(inputAssistantButton)
   }
   return SocialMediaPostContext.emptyData
 }
@@ -86,6 +93,9 @@ export const getSocialMediaPostDraft = async (
   }
   if (host === 'instagram.com') {
     return instagramGetDraftContent(inputAssistantButton)
+  }
+  if (host === 'reddit.com') {
+    return await redditGetDraftContent(inputAssistantButton)
   }
   return ''
 }

@@ -52,6 +52,9 @@ const checkHostUsingButtonKeys = (
   if (host === 'instagram.com') {
     return getInstagramButtonGroup(config)
   }
+  if (host === 'reddit.com') {
+    return getRedditButtonGroup(config)
+  }
   return [
     config.buttonGroupConfig.composeReplyButton,
     config.buttonGroupConfig.refineDraftButton,
@@ -210,5 +213,23 @@ const getInstagramButtonGroup = (
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,
   ]
+}
+
+const getRedditButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (keyElement.querySelector('button[type="submit"]')) {
+    // reply
+    return [
+      buttonGroupConfig.composeReplyButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  } else {
+    return [
+      buttonGroupConfig.composeNewButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
 }
 export default checkHostUsingButtonKeys

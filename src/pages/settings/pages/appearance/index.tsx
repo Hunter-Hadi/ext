@@ -11,9 +11,9 @@ const SettingsAppearancePage: FC = () => {
     <Stack spacing={1}>
       <FeatureAppearanceCard />
       <FeatureQuickAccessViewerCard />
-      <FeatureSummarizeButton />
       <FeaturePDFViewerCard />
       <FeatureShortcutHintCard />
+      <FeatureSummarizeButton />
     </Stack>
   )
 }

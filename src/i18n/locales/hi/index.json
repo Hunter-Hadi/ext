@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "प्रश्न चिह्न",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "जब आपकी खोज प्रश्न चिह्न के साथ समाप्त होती है, तो AI प्रतिक्रिया दिखाएं।",
     "feature__search_with_ai__trigger_mode__manual__name": "हस्तनिर्देशित",
-    "feature__search_with_ai__trigger_mode__manual__desc": "AI प्रतिक्रिया केवल तब दिखाएं जब आप मैन्युअल रूप से एक बटन पर क्लिक करें।"
+    "feature__search_with_ai__trigger_mode__manual__desc": "AI प्रतिक्रिया केवल तब दिखाएं जब आप मैन्युअल रूप से एक बटन पर क्लिक करें।",
+    "feature_card__appearance__field_summarize_button__title": "संक्षेप बटन"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",

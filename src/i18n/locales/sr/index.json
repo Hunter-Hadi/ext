@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Upitnik",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Prikazuje odgovor veštačke inteligencije kada se upit završava upitnikom.",
     "feature__search_with_ai__trigger_mode__manual__name": "Ručno",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Prikazuje odgovor veštačke inteligencije samo kada ručno kliknete dugme."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Prikazuje odgovor veštačke inteligencije samo kada ručno kliknete dugme.",
+    "feature_card__appearance__field_summarize_button__title": "Dugme za rezime"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",

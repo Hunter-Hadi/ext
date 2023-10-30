@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Vprašajte znamko",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Prikaži odgovor AI, kadar se vaše iskalno poizvedba konča z vprašajem.",
     "feature__search_with_ai__trigger_mode__manual__name": "Ročno",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Prikaži odgovor AI samo, ko ročno kliknete gumb."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Prikaži odgovor AI samo, ko ročno kliknete gumb.",
+    "feature_card__appearance__field_summarize_button__title": "Gumb za povzetek"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",

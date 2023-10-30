@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Znak zapytania",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Wyświetlaj odpowiedź AI, gdy zapytanie kończy się znakiem zapytania.",
     "feature__search_with_ai__trigger_mode__manual__name": "Ręcznie",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Wyświetlaj odpowiedź AI tylko po kliknięciu przycisku ręcznie."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Wyświetlaj odpowiedź AI tylko po kliknięciu przycisku ręcznie.",
+    "feature_card__appearance__field_summarize_button__title": "Przycisk podsumowania"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",

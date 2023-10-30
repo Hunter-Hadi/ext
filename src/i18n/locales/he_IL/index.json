@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "סימן שאלה",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "הצג תשובת AI כאשר השאילתה שלך מסתיימת בסימן שאלה.",
     "feature__search_with_ai__trigger_mode__manual__name": "ידנית",
-    "feature__search_with_ai__trigger_mode__manual__desc": "הצג תשובת AI רק כאשר אתה לוחץ על כפתור באופן ידני."
+    "feature__search_with_ai__trigger_mode__manual__desc": "הצג תשובת AI רק כאשר אתה לוחץ על כפתור באופן ידני.",
+    "feature_card__appearance__field_summarize_button__title": "כפתור סיכום"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",

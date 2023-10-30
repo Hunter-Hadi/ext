@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "เครื่องหมายคำถาม",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "แสดงคำตอบของ AI เมื่อคำค้นหาของคุณจบด้วยเครื่องหมายคำถาม",
     "feature__search_with_ai__trigger_mode__manual__name": "ด้วยตนเอง",
-    "feature__search_with_ai__trigger_mode__manual__desc": "แสดงคำตอบของ AI เฉพาะเมื่อคุณคลิกปุ่มด้วยตนเอง"
+    "feature__search_with_ai__trigger_mode__manual__desc": "แสดงคำตอบของ AI เฉพาะเมื่อคุณคลิกปุ่มด้วยตนเอง",
+    "feature_card__appearance__field_summarize_button__title": "ปุ่มสรุป"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",

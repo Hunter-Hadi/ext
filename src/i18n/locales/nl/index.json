@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Vraagteken",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Toon AI-reactie wanneer je zoekopdracht eindigt met een vraagteken.",
     "feature__search_with_ai__trigger_mode__manual__name": "Handmatig",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Toon AI-reactie alleen wanneer je handmatig op een knop klikt."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Toon AI-reactie alleen wanneer je handmatig op een knop klikt.",
+    "feature_card__appearance__field_summarize_button__title": "Samenvatten knop"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",

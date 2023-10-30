@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Ponto de interrogação",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Exibir resposta de IA sempre que sua consulta de pesquisa terminar com um ponto de interrogação.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manualmente",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Exibir resposta de IA somente quando você clicar em um botão manualmente."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Exibir resposta de IA somente quando você clicar em um botão manualmente.",
+    "feature_card__appearance__field_summarize_button__title": "Botão de Resumo"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",

@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Semn de întrebare",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Afișați răspunsul AI ori de câte ori interogarea de căutare se termină cu un semn de întrebare.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manual",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Afișați răspunsul AI numai atunci când faceți clic manual pe un buton."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Afișați răspunsul AI numai atunci când faceți clic manual pe un buton.",
+    "feature_card__appearance__field_summarize_button__title": "Buton de rezumat"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",

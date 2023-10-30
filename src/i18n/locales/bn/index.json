@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "প্রশ্ন চিহ্ন",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "আপনার সার্চ কুয়েরি শেষ হলে এইচটিএমএল উত্তর দেখান।",
     "feature__search_with_ai__trigger_mode__manual__name": "ম্যানুয়ালি",
-    "feature__search_with_ai__trigger_mode__manual__desc": "বাটনে ক্লিক করলেই এইচটিএমএল উত্তর দেখান।"
+    "feature__search_with_ai__trigger_mode__manual__desc": "বাটনে ক্লিক করলেই এইচটিএমএল উত্তর দেখান।",
+    "feature_card__appearance__field_summarize_button__title": "সংক্ষেপ বোতাম"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",

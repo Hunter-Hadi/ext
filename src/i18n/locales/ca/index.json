@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Signe d'interrogació",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Mostra la resposta de l'IA sempre que la teva consulta de cerca acabi amb un signe d'interrogació.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manualment",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Mostra la resposta de l'IA només quan feu clic manualment en un botó."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Mostra la resposta de l'IA només quan feu clic manualment en un botó.",
+    "feature_card__appearance__field_summarize_button__title": "Botó de resum"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",

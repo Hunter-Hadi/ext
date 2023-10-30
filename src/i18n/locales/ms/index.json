@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Tanda soalan",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Paparkan respons AI apabila pertanyaan carian anda berakhir dengan tanda soalan.",
     "feature__search_with_ai__trigger_mode__manual__name": "Secara manual",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Paparkan respons AI hanya apabila anda mengklik butang secara manual."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Paparkan respons AI hanya apabila anda mengklik butang secara manual.",
+    "feature_card__appearance__field_summarize_button__title": "Butang Ringkaskan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

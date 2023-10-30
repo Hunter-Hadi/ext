@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Ερωτηματικό",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Εμφάνιση απάντησης της Τεχνητής Νοημοσύνης όταν η αναζήτησή σας τελειώνει με ερωτηματικό.",
     "feature__search_with_ai__trigger_mode__manual__name": "Χειροκίνητα",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Εμφάνιση απάντησης της Τεχνητής Νοημοσύνης μόνο όταν κάνετε κλικ σε ένα κουμπί χειροκίνητα."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Εμφάνιση απάντησης της Τεχνητής Νοημοσύνης μόνο όταν κάνετε κλικ σε ένα κουμπί χειροκίνητα.",
+    "feature_card__appearance__field_summarize_button__title": "Κουμπί περίληψης"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

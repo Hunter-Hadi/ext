@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "प्रश्न चिन्ह",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "तुमच्या शोध प्रश्नाच्या शेवटी प्रश्न चिन्हाने संपलेल्या असताना AI प्रतिसाद दाखवा.",
     "feature__search_with_ai__trigger_mode__manual__name": "स्वतः",
-    "feature__search_with_ai__trigger_mode__manual__desc": "बटणावर क्लिक केल्यास फक्त AI प्रतिसाद दाखवा."
+    "feature__search_with_ai__trigger_mode__manual__desc": "बटणावर क्लिक केल्यास फक्त AI प्रतिसाद दाखवा.",
+    "feature_card__appearance__field_summarize_button__title": "संक्षेपित करा बटण"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

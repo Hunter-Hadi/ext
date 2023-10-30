@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "ጥያቄ ማለት",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "AI መልዕክትን ለመፈለግ በጥያቄ መመለስ ያሳውቁ።",
     "feature__search_with_ai__trigger_mode__manual__name": "በእርስዎ እንዲሁም",
-    "feature__search_with_ai__trigger_mode__manual__desc": "AI መልዕክትን ለመፈለግ በአዝራር የሚሰጥ ሁኔታ ያሳውቁ።"
+    "feature__search_with_ai__trigger_mode__manual__desc": "AI መልዕክትን ለመፈለግ በአዝራር የሚሰጥ ሁኔታ ያሳውቁ።",
+    "feature_card__appearance__field_summarize_button__title": "የግል አማራጭ አዝራር"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",

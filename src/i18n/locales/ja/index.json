@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "疑問符",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "検索クエリが疑問符で終わる場合にAIの回答を表示します。",
     "feature__search_with_ai__trigger_mode__manual__name": "手動",
-    "feature__search_with_ai__trigger_mode__manual__desc": "ボタンをクリックしたときにのみAIの回答を表示します。"
+    "feature__search_with_ai__trigger_mode__manual__desc": "ボタンをクリックしたときにのみAIの回答を表示します。",
+    "feature_card__appearance__field_summarize_button__title": "要約ボタン"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",

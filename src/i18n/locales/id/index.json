@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Tanda tanya",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Tampilkan respons AI ketika kueri pencarian Anda diakhiri dengan tanda tanya.",
     "feature__search_with_ai__trigger_mode__manual__name": "Secara manual",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Tampilkan respons AI hanya saat Anda mengklik tombol secara manual."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Tampilkan respons AI hanya saat Anda mengklik tombol secara manual.",
+    "feature_card__appearance__field_summarize_button__title": "Tombol Ringkasan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

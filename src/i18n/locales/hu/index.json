@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Kérdőjel",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Az AI választ akkor jeleníti meg, ha a keresési lekérdezés kérdőjellel végződik.",
     "feature__search_with_ai__trigger_mode__manual__name": "Kézi",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Az AI választ csak akkor jeleníti meg, ha kézzel kattintasz egy gombra."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Az AI választ csak akkor jeleníti meg, ha kézzel kattintasz egy gombra.",
+    "feature_card__appearance__field_summarize_button__title": "Összefoglalás gomb"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",

@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Въпросителен знак",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Показване на отговор от ИИ, когато вашата търсена фраза завършва с въпросителен знак.",
     "feature__search_with_ai__trigger_mode__manual__name": "Ръчно",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Показване на отговор от ИИ само когато щракнете ръчно върху бутон."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Показване на отговор от ИИ само когато щракнете ръчно върху бутон.",
+    "feature_card__appearance__field_summarize_button__title": "Бутон за обобщение"
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",

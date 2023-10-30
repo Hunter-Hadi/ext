@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Otáznik",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Zobraziť odpoveď AI, keď sa vaše vyhľadávacie dopyty končia otáznikom.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manuálne",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Zobraziť odpoveď AI iba po manuálnom kliknutí na tlačidlo."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Zobraziť odpoveď AI iba po manuálnom kliknutí na tlačidlo.",
+    "feature_card__appearance__field_summarize_button__title": "Tlačidlo zhrnutia"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",

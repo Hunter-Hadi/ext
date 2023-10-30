@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "ചോദ്യം മാസ്ക്",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "നിങ്ങളുടെ തിരയ്ക്ക് ചോദ്യം അടയാളപ്പെടുന്നതായാൽ AI പ്രതികരണം കാണിക്കുക.",
     "feature__search_with_ai__trigger_mode__manual__name": "കൈമാറ്റം",
-    "feature__search_with_ai__trigger_mode__manual__desc": "ബട്ടൺ ക്ലിക്ക് ചെയ്യുമ്പോൾ മാത്രം AI പ്രതികരണം കാണിക്കുക."
+    "feature__search_with_ai__trigger_mode__manual__desc": "ബട്ടൺ ക്ലിക്ക് ചെയ്യുമ്പോൾ മാത്രം AI പ്രതികരണം കാണിക്കുക.",
+    "feature_card__appearance__field_summarize_button__title": "സംഗ്രഹിക്കുക ബട്ടൺ"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",

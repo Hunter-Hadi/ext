@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "கேள்வி முடியும் சின்னம்",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "உங்கள் தேடல் வினாவின் முடிவு கேள்வி சின்னத்துடன் முடியும் என்றால் ஐய் முதலில் காட்டு.",
     "feature__search_with_ai__trigger_mode__manual__name": "கைமுறையாக",
-    "feature__search_with_ai__trigger_mode__manual__desc": "நீங்கள் கையேடு பொத்தானை அழுத்தியவுடன் மட்டுமே ஐய் முதலில் காட்டு."
+    "feature__search_with_ai__trigger_mode__manual__desc": "நீங்கள் கையேடு பொத்தானை அழுத்தியவுடன் மட்டுமே ஐய் முதலில் காட்டு.",
+    "feature_card__appearance__field_summarize_button__title": "சுருக்கு பொத்தானை சுருக்குக"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",

@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "ప్రశ్న గుర్తించడం",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "మీ శోధన ప్రశ్న గుర్తించడంతో ఎప్పటికప్పుడు AI సమాధానాన్ని ప్రదర్శించండి.",
     "feature__search_with_ai__trigger_mode__manual__name": "మాన్యువల్లో",
-    "feature__search_with_ai__trigger_mode__manual__desc": "మీరు మాన్యువల్లో బటన్ నొక్కి మాత్రమే AI సమాధానాన్ని ప్రదర్శించండి."
+    "feature__search_with_ai__trigger_mode__manual__desc": "మీరు మాన్యువల్లో బటన్ నొక్కి మాత్రమే AI సమాధానాన్ని ప్రదర్శించండి.",
+    "feature_card__appearance__field_summarize_button__title": "సంగ్రహించు బటన్"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",

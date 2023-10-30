@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Dấu hỏi",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Hiển thị câu trả lời AI khi câu truy vấn tìm kiếm của bạn kết thúc bằng dấu hỏi.",
     "feature__search_with_ai__trigger_mode__manual__name": "Thủ công",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Chỉ hiển thị câu trả lời AI khi bạn nhấp vào nút thủ công."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Chỉ hiển thị câu trả lời AI khi bạn nhấp vào nút thủ công.",
+    "feature_card__appearance__field_summarize_button__title": "Nút Tóm tắt"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",

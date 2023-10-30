@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "ಪ್ರಶ್ನೆ ಗುರುತಿಸಿ",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "ನಿಮ್ಮ ಹುಡುಕಾಟ ಪ್ರಶ್ನೆ ಚಿಹ್ನೆಯೊಂದಿನಿಂದ ಮುಗಿಯುವವರೆಗೆ AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತೋರಿಸಿ.",
     "feature__search_with_ai__trigger_mode__manual__name": "ಕೈಯಿಂದ",
-    "feature__search_with_ai__trigger_mode__manual__desc": "ಬಟನ್ ಒತ್ತಿದಾಗ ಮಾತ್ರ AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತೋರಿಸಿ."
+    "feature__search_with_ai__trigger_mode__manual__desc": "ಬಟನ್ ಒತ್ತಿದಾಗ ಮಾತ್ರ AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತೋರಿಸಿ.",
+    "feature_card__appearance__field_summarize_button__title": "ಸಂಗ್ರಹಿಸು ಬಟನ್"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",

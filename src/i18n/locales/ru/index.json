@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Вопросительный знак",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Отображать ответ ИИ, когда ваш запрос поиска заканчивается вопросительным знаком.",
     "feature__search_with_ai__trigger_mode__manual__name": "Вручную",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Отображать ответ ИИ только при нажатии кнопки вручную."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Отображать ответ ИИ только при нажатии кнопки вручную.",
+    "feature_card__appearance__field_summarize_button__title": "Кнопка суммирования"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",

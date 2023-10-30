@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "سوال علامت",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "جب آپ کا تلاش کوئی سوال علامت کے ساتھ ختم ہوتا ہے تو AI جواب دکھائیں۔",
     "feature__search_with_ai__trigger_mode__manual__name": "دستیاب",
-    "feature__search_with_ai__trigger_mode__manual__desc": "صرف اس صورت میں AI جواب دکھائیں جب آپ مینوئلی بٹن پر کلک کریں۔"
+    "feature__search_with_ai__trigger_mode__manual__desc": "صرف اس صورت میں AI جواب دکھائیں جب آپ مینوئلی بٹن پر کلک کریں۔",
+    "feature_card__appearance__field_summarize_button__title": "خلاصہ کریں بٹن"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",

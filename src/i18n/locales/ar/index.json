@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "علامة الاستفهام",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "عرض رد الذكاء الاصطناعي عندما ينتهي استعلام البحث الخاص بك بعلامة استفهام.",
     "feature__search_with_ai__trigger_mode__manual__name": "يدويًا",
-    "feature__search_with_ai__trigger_mode__manual__desc": "عرض رد الذكاء الاصطناعي فقط عند النقر على زر يدويًا."
+    "feature__search_with_ai__trigger_mode__manual__desc": "عرض رد الذكاء الاصطناعي فقط عند النقر على زر يدويًا.",
+    "feature_card__appearance__field_summarize_button__title": "زر التلخيص"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",

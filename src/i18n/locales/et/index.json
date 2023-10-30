@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Küsimärgiga",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Kuva tehisintellekti vastus alati, kui otsingupäring lõpeb küsimärgiga.",
     "feature__search_with_ai__trigger_mode__manual__name": "Käsitsi",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Kuva tehisintellekti vastus ainult siis, kui klõpsate nuppu käsitsi."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Kuva tehisintellekti vastus ainult siis, kui klõpsate nuppu käsitsi.",
+    "feature_card__appearance__field_summarize_button__title": "Kokkuvõtte nupp"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",

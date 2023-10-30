@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Alama ya swali",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Onyesha majibu ya AI wakati wowote utafutaji wako unamalizika na alama ya swali.",
     "feature__search_with_ai__trigger_mode__manual__name": "Kwa mkono",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Onyesha majibu ya AI tu wakati unapobofya kitufe kwa mkono."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Onyesha majibu ya AI tu wakati unapobofya kitufe kwa mkono.",
+    "feature_card__appearance__field_summarize_button__title": "Kifungo cha Muhtasari"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

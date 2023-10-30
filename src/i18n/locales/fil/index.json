@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Tandang tanong",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Ipakita ang tugon ng AI kapag nagtatapos ang iyong query sa isang tandang tanong.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manu-manong",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Ipakita ang tugon ng AI lamang kapag ikaw ay mag-click ng isang button manu-mano."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Ipakita ang tugon ng AI lamang kapag ikaw ay mag-click ng isang button manu-mano.",
+    "feature_card__appearance__field_summarize_button__title": "Pindutin para sa Buod"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",

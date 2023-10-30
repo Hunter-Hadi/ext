@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Frågetecken",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Visa AI-svar när din sökfråga slutar med ett frågetecken.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manuellt",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Visa AI-svar endast när du klickar på en knapp manuellt."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Visa AI-svar endast när du klickar på en knapp manuellt.",
+    "feature_card__appearance__field_summarize_button__title": "Sammanfatta knapp"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",

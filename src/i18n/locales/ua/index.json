@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Знак питання",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Відображати відповідь ШІ, коли ваш запит закінчується знаком питання.",
     "feature__search_with_ai__trigger_mode__manual__name": "Вручну",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Відображати відповідь ШІ лише при натисканні кнопки вручну."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Відображати відповідь ШІ лише при натисканні кнопки вручну.",
+    "feature_card__appearance__field_summarize_button__title": "Кнопка підсумування"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",

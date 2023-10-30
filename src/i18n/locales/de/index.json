@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Fragezeichen",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Eine KI-Antwort anzeigen, wenn deine Suchanfrage mit einem Fragezeichen endet.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manuell",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Nur bei manueller Betätigung einen KI-Antwort anzeigen."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Nur bei manueller Betätigung einen KI-Antwort anzeigen.",
+    "feature_card__appearance__field_summarize_button__title": "Zusammenfassungsschaltfläche"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",

@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "問號",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "只有當您的搜索查詢以問號結尾時才顯示AI回覆。",
     "feature__search_with_ai__trigger_mode__manual__name": "手動",
-    "feature__search_with_ai__trigger_mode__manual__desc": "只有在手動點擊按鈕時才顯示AI回覆。"
+    "feature__search_with_ai__trigger_mode__manual__desc": "只有在手動點擊按鈕時才顯示AI回覆。",
+    "feature_card__appearance__field_summarize_button__title": "摘要按鈕"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",

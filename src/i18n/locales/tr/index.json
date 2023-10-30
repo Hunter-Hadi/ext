@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Soru işareti",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Arama sorgunuz bir soru işaretiyle biterse AI yanıtını göster.",
     "feature__search_with_ai__trigger_mode__manual__name": "Elle",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Yalnızca manuel olarak bir düğmeye tıkladığınızda AI yanıtını göster."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Yalnızca manuel olarak bir düğmeye tıkladığınızda AI yanıtını göster.",
+    "feature_card__appearance__field_summarize_button__title": "Özetle düğmesi"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",

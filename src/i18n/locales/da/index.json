@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Spørgsmålstegn",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Vis AI-svar, når din søgeforespørgsel slutter med et spørgsmålstegn.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manuelt",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Vis AI-svar kun, når du manuelt klikker på en knap."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Vis AI-svar kun, når du manuelt klikker på en knap.",
+    "feature_card__appearance__field_summarize_button__title": "Opsummeringsknap"
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",

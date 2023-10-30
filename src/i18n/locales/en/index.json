@@ -173,6 +173,7 @@
     "feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item3": "Step 3: Enable \"Allow access to file URLs\" in Chrome settings",
     "feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item4": "Step 4: Re-open PDF in browser to use prompt on selected text",
     "feature_card__appearance__field_pdf_viewer__tooltip__how_to_use__item5": "Protip: Make sure to enable both \"PDF AI viewer\" and \"Allow access to file URLs\" to activate the extension on PDF file",
+    "feature_card__appearance__field_summarize_button__title": "Summarize button",
     "feature_card__mini_menu__title": "Mini menu on text selection",
     "feature_card__mini_menu__field_mini_menu__visible": "Visible when selecting text",
     "feature_card__mini_menu__field_mini_menu__hidden": "Hidden when selecting text",

@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Upitnik",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Prikaži AI odgovor kada se upit za pretragu završava upitnikom.",
     "feature__search_with_ai__trigger_mode__manual__name": "Ručno",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Prikaži AI odgovor samo kada ručno kliknete gumb."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Prikaži AI odgovor samo kada ručno kliknete gumb.",
+    "feature_card__appearance__field_summarize_button__title": "Gumb za sažetak"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",

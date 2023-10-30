@@ -4,12 +4,14 @@ import FeatureAppearanceCard from '@/pages/settings/pages/appearance/FeatureAppe
 import FeatureShortcutHintCard from '@/pages/settings/pages/appearance/FeatureShortcutHintCard'
 import FeaturePDFViewerCard from '@/pages/settings/pages/appearance/FeaturePDFViewerCard'
 import FeatureQuickAccessViewerCard from '@/pages/settings/pages/appearance/FeatureQuickAccessViewerCard'
+import FeatureSummarizeButton from '@/pages/settings/pages/appearance/FeatureSummarizeButton'
 
 const SettingsAppearancePage: FC = () => {
   return (
     <Stack spacing={1}>
       <FeatureAppearanceCard />
       <FeatureQuickAccessViewerCard />
+      <FeatureSummarizeButton />
       <FeaturePDFViewerCard />
       <FeatureShortcutHintCard />
     </Stack>

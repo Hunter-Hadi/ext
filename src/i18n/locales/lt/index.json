@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Klausimo ženklas",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Rodyti dirbtinio intelekto atsakymą, kai paieškos užklausa baigiasi klausimo ženklu.",
     "feature__search_with_ai__trigger_mode__manual__name": "Rankiniu būdu",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Rodyti dirbtinio intelekto atsakymą tik tada, kai rankiniu būdu paspausite mygtuką."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Rodyti dirbtinio intelekto atsakymą tik tada, kai rankiniu būdu paspausite mygtuką.",
+    "feature_card__appearance__field_summarize_button__title": "Santrauka"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",

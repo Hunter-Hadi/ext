@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "علامت سؤال",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "نمایش پاسخ هوش مصنوعی هرگاه کوئری جستجوی شما با یک علامت سؤال به پایان برسد.",
     "feature__search_with_ai__trigger_mode__manual__name": "دستی",
-    "feature__search_with_ai__trigger_mode__manual__desc": "نمایش پاسخ هوش مصنوعی فقط زمانی که به صورت دستی روی یک دکمه کلیک می‌کنید."
+    "feature__search_with_ai__trigger_mode__manual__desc": "نمایش پاسخ هوش مصنوعی فقط زمانی که به صورت دستی روی یک دکمه کلیک می‌کنید.",
+    "feature_card__appearance__field_summarize_button__title": "دکمه خلاصه کردن"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",

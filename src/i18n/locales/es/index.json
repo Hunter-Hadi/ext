@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Signo de interrogación",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Mostrar respuesta de IA cuando tu consulta de búsqueda termina con un signo de interrogación.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manualmente",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Mostrar respuesta de IA solo cuando hagas clic en un botón manualmente."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Mostrar respuesta de IA solo cuando hagas clic en un botón manualmente.",
+    "feature_card__appearance__field_summarize_button__title": "Botón de resumen"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",

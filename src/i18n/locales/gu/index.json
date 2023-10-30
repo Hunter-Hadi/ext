@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "પ્રશ્ન ચિહ્ન",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "જ્યારે તમારી શોધ પ્રશ્ન ચિહ્નથી આખે છે, ત્યારે એઆઈ પ્રતિસાદ બતાવો.",
     "feature__search_with_ai__trigger_mode__manual__name": "હાથે",
-    "feature__search_with_ai__trigger_mode__manual__desc": "માન્યતાને ક્લિક કરીને ફક્ત જ્યારે એઆઈ પ્રતિસાદ બતાવો."
+    "feature__search_with_ai__trigger_mode__manual__desc": "માન્યતાને ક્લિક કરીને ફક્ત જ્યારે એઆઈ પ્રતિસાદ બતાવો.",
+    "feature_card__appearance__field_summarize_button__title": "સંક્ષેપ બટન"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",

@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "Kysymysmerkki",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "Näytä tekoälyn vastaus aina, kun hakukysely päättyy kysymysmerkkiin.",
     "feature__search_with_ai__trigger_mode__manual__name": "Manuaalisesti",
-    "feature__search_with_ai__trigger_mode__manual__desc": "Näytä tekoälyn vastaus vain, kun napsautat painiketta manuaalisesti."
+    "feature__search_with_ai__trigger_mode__manual__desc": "Näytä tekoälyn vastaus vain, kun napsautat painiketta manuaalisesti.",
+    "feature_card__appearance__field_summarize_button__title": "Tiivistä-painike"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

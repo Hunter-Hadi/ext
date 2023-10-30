@@ -235,7 +235,8 @@
     "feature__search_with_ai__trigger_mode__question-mask__name": "물음표",
     "feature__search_with_ai__trigger_mode__question-mask__desc": "질문 마침표로 끝나는 검색에 AI 응답 표시",
     "feature__search_with_ai__trigger_mode__manual__name": "수동으로",
-    "feature__search_with_ai__trigger_mode__manual__desc": "버튼을 수동으로 클릭할 때만 AI 응답 표시"
+    "feature__search_with_ai__trigger_mode__manual__desc": "버튼을 수동으로 클릭할 때만 AI 응답 표시",
+    "feature_card__appearance__field_summarize_button__title": "요약 버튼"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",

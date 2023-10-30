@@ -323,8 +323,7 @@ export const getContextMenuActions = async (contextMenuId: string) => {
           // HACK: 这里的写法特别蠢，但是得记录正确的api和prompt，只能这么写
           if (
             action.type === 'INSERT_USER_INPUT' ||
-            action.type === 'ASK_CHATGPT' ||
-            action.type === 'WEBGPT_ASK_CHATGPT'
+            action.type === 'ASK_CHATGPT'
           ) {
             if (!action.parameters.AskChatGPTActionMeta) {
               action.parameters.AskChatGPTActionMeta = {}

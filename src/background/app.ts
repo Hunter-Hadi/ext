@@ -57,6 +57,7 @@ import {
 import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
+import WebsiteContextManager from '@/features/websiteContext/background'
 
 /**
  * background.js 入口
@@ -106,6 +107,16 @@ const initChromeExtensionInstalled = () => {
         await Browser.tabs.create({
           url: 'https://app.maxai.me/celebrationV2',
         })
+      }
+      // NOTE: 更新的时候统计一下当前占用的内存
+      if (APP_VERSION === '2.2.6') {
+        WebsiteContextManager.computeWebsiteContextStorageSize()
+          .then((size) => {
+            if (size > 0) {
+              // 发送到larkbot
+            }
+          })
+          .catch()
       }
       // 保存本地快照
       await setChromeExtensionDBStorageSnapshot()

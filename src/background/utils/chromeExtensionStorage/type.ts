@@ -78,6 +78,12 @@ export interface IChromeExtensionDBStorage {
     quickAccess?: {
       enabled?: boolean
     }
+    summarizeButton?: {
+      gmail?: boolean
+      outlook?: boolean
+      youtube?: boolean
+      pdf?: boolean
+    }
     inputAssistantButton?: {
       gmail?: boolean
       outlook?: boolean

@@ -44,6 +44,12 @@ export const defaultChromeExtensionDBStorage = (): IChromeExtensionDBStorage => 
         googleChat: true,
         microsoftTeams: true,
       },
+      summarizeButton: {
+        gmail: true,
+        pdf: true,
+        outlook: true,
+        youtube: true,
+      },
     },
     buttonSettings: {
       inputAssistantComposeReplyButton: {

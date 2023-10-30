@@ -344,6 +344,11 @@ export default class WebsiteContextManager {
   static async deleteWebsiteContext(websiteId: string) {
     return this.websiteContextDB.deleteWebsiteContext(websiteId)
   }
+  static async computeWebsiteContextStorageSize() {
+    // 预估每条数据1MB
+    const allWebsiteContexts = await this.websiteContextDB.getAllWebsiteContext()
+    return allWebsiteContexts.length * 1 // MB
+  }
   static async analyzeWebsiteContextMetaData(websiteId: string, html?: string) {
     if (!websiteId) {
       return

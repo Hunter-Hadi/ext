@@ -456,7 +456,7 @@ const InputAssistantButtonGroupConfig = {
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+      permissionWrapperCardSceneType: 'REDDIT_COMPOSE_NEW_BUTTON',
       CTAButtonStyle: {
         iconSize: 16,
         borderRadius: '16px 0 0 16px',
@@ -476,7 +476,7 @@ const InputAssistantButtonGroupConfig = {
     composeReplyButton: {
       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+      permissionWrapperCardSceneType: 'REDDIT_COMPOSE_REPLY_BUTTON',
       CTAButtonStyle: {
         padding: '5px 12px',
         iconSize: 14,
@@ -493,7 +493,7 @@ const InputAssistantButtonGroupConfig = {
     refineDraftButton: {
       tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+      permissionWrapperCardSceneType: 'REDDIT_REFINE_DRAFT_BUTTON',
     },
     CTAButtonStyle: {},
     DropdownButtonStyle: {},

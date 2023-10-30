@@ -7,6 +7,7 @@ const ContextMenuNamePrefixList = [
   '[YouTube] ',
   '[YouTube Studio] ',
   '[Instagram] ',
+  '[Reddit] ',
 ] as const
 export const ContextMenuNamePrefixRegex = new RegExp(
   ContextMenuNamePrefixList.join('|')

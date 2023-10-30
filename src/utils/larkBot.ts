@@ -14,6 +14,8 @@ export type botUuid =
   | '608156c7-e65d-4a69-a055-6c10a6ba7217'
   // maxai summary
   | '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a'
+  //  maxai memory indexdb log
+  | '247cb207-4b00-4cd3-be74-bdb9ade6f8f4'
 
 export const sendLarkBotMessage = (
   title: string,

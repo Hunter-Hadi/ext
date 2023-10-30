@@ -58,6 +58,7 @@ import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeEx
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import WebsiteContextManager from '@/features/websiteContext/background'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 /**
  * background.js 入口
@@ -114,6 +115,20 @@ const initChromeExtensionInstalled = () => {
           .then((size) => {
             if (size > 0) {
               // 发送到larkbot
+              sendLarkBotMessage(
+                '[Memory] storage size',
+                JSON.stringify(
+                  {
+                    size,
+                    version: APP_VERSION,
+                  },
+                  null,
+                  4,
+                ),
+                {
+                  uuid: '247cb207-4b00-4cd3-be74-bdb9ade6f8f4',
+                },
+              )
             }
           })
           .catch()

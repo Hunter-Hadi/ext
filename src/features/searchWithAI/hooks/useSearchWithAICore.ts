@@ -114,7 +114,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       })
       // 由于获取 sources 的过程都比较快，所以这里 模拟一个 800ms ~ 500ms 的loading
       setTimeout(() => {
-        setSources(results)
+        setSources(results.slice(0, 6))
       }, random(500, 800))
 
       // 2. SEARCH_RESULTS_EXPAND

@@ -59,6 +59,13 @@ const NormalChatPage = () => {
         title={'Chat Draft'}
         onRetry={retryMessage}
         onReGenerate={async () => {
+          if (currentSidebarConversationType === 'Summary') {
+            if (currentSidebarConversationMessages.length === 1) {
+              // 只有一个消息，说明是总结的那一条消息，这个时候就可以重置conversation了
+              await resetConversation()
+              return
+            }
+          }
           if (currentSidebarConversationType === 'Search') {
             await regenerateSearchWithAI()
           } else {

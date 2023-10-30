@@ -57,6 +57,8 @@ import {
 import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
+import WebsiteContextManager from '@/features/websiteContext/background'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 /**
  * background.js 入口

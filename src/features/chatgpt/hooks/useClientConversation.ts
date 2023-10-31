@@ -224,14 +224,12 @@ const useClientConversation = () => {
         }
       }
     }
-    if (!saveConversationCache) {
-      await port.postMessage({
-        event: 'Client_removeChatGPTConversation',
-        data: {
-          conversationId: currentSidebarConversationId,
-        },
-      })
-    }
+    await port.postMessage({
+      event: 'Client_removeChatGPTConversation',
+      data: {
+        conversationId: currentSidebarConversationId,
+      },
+    })
     if (currentSidebarConversationType === 'Chat') {
       await updateSidebarSettings({
         chat: {

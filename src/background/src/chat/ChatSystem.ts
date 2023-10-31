@@ -103,6 +103,7 @@ class ChatSystem implements ChatSystemInterface {
             const initConversationData = (data.initConversationData ||
               {}) as IChatConversation
             console.log('新版Conversation 创建会话', initConversationData)
+            debugger
             if (
               initConversationData.meta.AIProvider &&
               this.currentProvider !== initConversationData.meta.AIProvider

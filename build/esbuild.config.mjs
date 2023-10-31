@@ -42,7 +42,7 @@ async function esbuildConfig() {
   const result = await esbuild.build({
     platform: 'browser',
     entryPoints: [
-      'src/chatgpt_content.ts',
+      'src/assets/openai/arkoseTokenIframe.ts',
       'src/content.tsx',
       'src/minimum.tsx',
       'src/content_style.ts',
@@ -52,7 +52,6 @@ async function esbuildConfig() {
       'src/pages/settings/index.tsx',
       'src/pages/popup/index.tsx',
       'src/pages/chatgpt/fileUploadServer.ts',
-      'src/pages/chatgpt/arkose_inject.ts',
       'src/pages/googleDoc/index.ts',
       'src/searchWithAI.ts',
     ],

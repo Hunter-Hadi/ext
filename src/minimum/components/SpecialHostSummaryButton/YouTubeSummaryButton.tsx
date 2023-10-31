@@ -7,35 +7,44 @@ import { ISidebarConversationType } from '@/features/sidebar/store'
 import DynamicComponent from '@/components/DynamicComponent'
 import useFindElement from '@/hooks/useFindElement'
 
+const MAXAI_YOUTUBE_SUMMARY_BUTTON = 'max-ai-youtube-summary-button'
 const YouTubeSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])
-  const { element } = useFindElement(
-    'ytd-watch-metadata #menu ytd-menu-renderer',
+  const { element } = useFindElement('#top-row')
+  const [renderElement, setRenderElement] = React.useState<HTMLElement | null>(
+    null,
   )
-
   useEffect(() => {
-    if (element) {
-      setTimeout(() => {
-        const youtubeApp = document.querySelector('ytd-app') as HTMLElement
-        if (youtubeApp) {
-          // resize 网页宽度，不然会有bug
-          const originWidth = youtubeApp.getBoundingClientRect().width
-          youtubeApp.style.width = `${originWidth - 1}px`
-          setTimeout(() => {
-            youtubeApp.style.width = ''
-          }, 100)
-        }
-      }, 1000)
+    if (
+      element &&
+      !document.querySelector(`#${MAXAI_YOUTUBE_SUMMARY_BUTTON}`)
+    ) {
+      // 插入到element的nextSibling
+      const nextElementSibling = element.nextElementSibling
+      if (nextElementSibling) {
+        const button = document.createElement('div')
+        button.id = MAXAI_YOUTUBE_SUMMARY_BUTTON
+        button.style.cssText = `
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          padding: 16px 0 0 0;
+        `
+        nextElementSibling.parentNode?.insertBefore(button, nextElementSibling)
+        setRenderElement(button)
+      }
     }
   }, [element])
+  if (!renderElement) {
+    return null
+  }
   return (
     <DynamicComponent
       customElementName={'max-ai-youtube-summary-button'}
-      rootContainer={element}
+      rootContainer={renderElement}
     >
       <Button
         sx={{
-          mr: 1,
           borderRadius: '18px',
         }}
         onClick={() => {

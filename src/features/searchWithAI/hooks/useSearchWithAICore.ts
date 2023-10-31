@@ -21,6 +21,7 @@ import {
 } from '../store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
+import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -162,24 +163,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         },
       })
     }
-    const generateArkoseToken = async () => {
-      return new Promise<string>((resolve) => {
-        const event = new CustomEvent(
-          'max-ai-search-with-ai-arkose-generator',
-          {},
-        )
-        window.dispatchEvent(event)
-        window.addEventListener(
-          'max-ai-search-with-ai-arkose-token',
-          (e: any) => {
-            const { token } = e.detail
-            resolve(token as string)
-          },
-        )
-      })
-    }
     if (searchWithAISettings.aiProvider === 'OPENAI') {
-      const arkoseToken = await generateArkoseToken()
+      const arkoseToken = await chromeExtensionArkoseTokenGenerator.generateToken()
       await setSearchWithAISettings({
         arkoseToken,
       })

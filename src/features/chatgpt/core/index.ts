@@ -4,6 +4,7 @@ import { mappingToMessages } from '@/features/chatgpt/core/util'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
+import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 
 export interface IChatGPTAnswer {
   text: string
@@ -261,6 +262,13 @@ export const generateArkoseToken = async (model: string) => {
     'gpt-4-mobile',
   ].includes(model)
   if (needWaitArkoseToken) {
+    const token = await chromeExtensionArkoseTokenGenerator.generateToken()
+    if (!token) {
+      throw Error(
+        'Something went wrong, please try again. If this issue persists, contact us via email.',
+      )
+    }
+    return token
     return new Promise((resolve, reject) => {
       const taskId = uuidV4()
       let isResolve = false

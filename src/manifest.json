@@ -36,11 +36,6 @@
       "matches": ["<all_urls>"],
       "js": ["searchWithAI.js"],
       "run_at": "document_end"
-    },
-    {
-      "matches": ["https://chat.openai.com/*"],
-      "js": ["chatgpt_content.js"],
-      "run_at": "document_start"
     }
   ],
   "host_permissions": ["<all_urls>"],

@@ -38,12 +38,10 @@ export const getFloatingContextMenuActiveElement = (): HTMLElement | null => {
   if (element === undefined) return null
   return element
 }
-export const getAppRootElement = (): HTMLDivElement | null => {
+export const getAppRootElement = (): HTMLElement | undefined => {
   return document
     .querySelector(`#${ROOT_CONTAINER_ID}`)
-    ?.shadowRoot?.querySelector(
-      `#${ROOT_CONTAINER_WRAPPER_ID}`,
-    ) as HTMLDivElement
+    ?.shadowRoot?.querySelector(`#${ROOT_CONTAINER_WRAPPER_ID}`) as HTMLElement
 }
 export const getAppContextMenuRootElement = (): HTMLDivElement | null => {
   const portals =

@@ -203,30 +203,24 @@ const useClientConversation = () => {
         waitRemoveConversation?.meta?.AIModel
       // 基于当前AIProvider和AIModel，更新cache
       if (waitRemoveConversationAIProvider && waitRemoveConversationAIModel) {
-        // 只有USE_CHAT_GPT_PLUS和MAXAI_CLAUDE需要更新cache
-        if (
-          waitRemoveConversationAIProvider === 'USE_CHAT_GPT_PLUS' ||
-          waitRemoveConversationAIProvider === 'MAXAI_CLAUDE'
-        ) {
-          if (saveConversationCache) {
-            await updateSidebarSettings({
-              cache: {
-                chatConversationCache: {
-                  [waitRemoveConversationAIProvider +
-                  waitRemoveConversationAIModel]: currentSidebarConversationId,
-                },
+        if (saveConversationCache) {
+          await updateSidebarSettings({
+            cache: {
+              chatConversationCache: {
+                [waitRemoveConversationAIProvider +
+                waitRemoveConversationAIModel]: currentSidebarConversationId,
               },
-            })
-          } else {
-            await updateSidebarSettings({
-              cache: {
-                chatConversationCache: {
-                  [waitRemoveConversationAIProvider +
-                  waitRemoveConversationAIModel]: '',
-                },
+            },
+          })
+        } else {
+          await updateSidebarSettings({
+            cache: {
+              chatConversationCache: {
+                [waitRemoveConversationAIProvider +
+                waitRemoveConversationAIModel]: '',
               },
-            })
-          }
+            },
+          })
         }
       }
     }

@@ -107,9 +107,6 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                 onClick={async () => {
                   if (providerOption.value !== currentSidebarAIProvider) {
                     await updateSidebarSettings({
-                      chat: {
-                        conversationId: '',
-                      },
                       common: {
                         currentAIProvider: providerOption.value,
                       },

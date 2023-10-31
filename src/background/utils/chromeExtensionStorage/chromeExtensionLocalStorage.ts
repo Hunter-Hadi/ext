@@ -39,6 +39,9 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
         currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
         chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
       },
+      cache: {
+        chatConversationCache: {},
+      },
     },
     thirdProviderSettings: {
       [AI_PROVIDER_MAP.BING]: {

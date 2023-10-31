@@ -167,6 +167,11 @@ export interface IChromeExtensionLocalStorage {
       currentAIProvider?: IAIProviderType
       chatBoxWidth?: number
     }
+    cache?: {
+      chatConversationCache?: {
+        [key in string]: string
+      }
+    }
   }
   thirdProviderSettings?: {
     [P in IAIProviderType]?: IThirdProviderSettings[P]

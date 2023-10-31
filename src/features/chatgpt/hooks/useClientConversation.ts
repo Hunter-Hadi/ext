@@ -69,6 +69,24 @@ const useClientConversation = () => {
           (model: IAIProviderModel) => model?.value === currentModel,
         )?.maxTokens || 4096
       console.log('新版Conversation ', currentAIProvider, currentModel)
+      // 看看有没有cache的Conversation
+      const cacheChatConversationId =
+        appLocalStorage.sidebarSettings?.cache?.chatConversationCache?.[
+          currentAIProvider + currentModel
+        ]
+      if (cacheChatConversationId) {
+        // 如果有，那么就直接用
+        conversationId = cacheChatConversationId
+        // 如果已经存在了，并且有AI消息，那么就不用创建了
+        if (conversationId && (await clientGetConversation(conversationId))) {
+          await updateSidebarSettings({
+            chat: {
+              conversationId,
+            },
+          })
+          return conversationId
+        }
+      }
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -164,20 +182,62 @@ const useClientConversation = () => {
     return conversationId
   }
 
-  const cleanConversation = async () => {
+  const cleanConversation = async (saveConversationCache = false) => {
     console.log(
       '新版Conversation 清除conversation',
       currentSidebarConversationType,
       currentSidebarConversationId,
     )
-    console.log(await getChromeExtensionLocalStorage())
-    await port.postMessage({
-      event: 'Client_removeChatGPTConversation',
-      data: {
-        conversationId: currentSidebarConversationId,
-      },
-    })
-    console.log(await getChromeExtensionLocalStorage())
+    // 让用户在切换回对应model的时候保留聊天记录
+    if (
+      currentSidebarConversationType === 'Chat' &&
+      currentSidebarConversationId
+    ) {
+      // 拿到当前conversation的AIProvider和AIModel
+      const waitRemoveConversation = await clientGetConversation(
+        currentSidebarConversationId,
+      )
+      const waitRemoveConversationAIProvider =
+        waitRemoveConversation?.meta?.AIProvider
+      const waitRemoveConversationAIModel =
+        waitRemoveConversation?.meta?.AIModel
+      // 基于当前AIProvider和AIModel，更新cache
+      if (waitRemoveConversationAIProvider && waitRemoveConversationAIModel) {
+        // 只有USE_CHAT_GPT_PLUS和MAXAI_CLAUDE需要更新cache
+        if (
+          waitRemoveConversationAIProvider === 'USE_CHAT_GPT_PLUS' ||
+          waitRemoveConversationAIProvider === 'MAXAI_CLAUDE'
+        ) {
+          if (saveConversationCache) {
+            await updateSidebarSettings({
+              cache: {
+                chatConversationCache: {
+                  [waitRemoveConversationAIProvider +
+                  waitRemoveConversationAIModel]: currentSidebarConversationId,
+                },
+              },
+            })
+          } else {
+            await updateSidebarSettings({
+              cache: {
+                chatConversationCache: {
+                  [waitRemoveConversationAIProvider +
+                  waitRemoveConversationAIModel]: '',
+                },
+              },
+            })
+          }
+        }
+      }
+    }
+    if (!saveConversationCache) {
+      await port.postMessage({
+        event: 'Client_removeChatGPTConversation',
+        data: {
+          conversationId: currentSidebarConversationId,
+        },
+      })
+    }
     if (currentSidebarConversationType === 'Chat') {
       await updateSidebarSettings({
         chat: {

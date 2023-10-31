@@ -41,17 +41,21 @@ class ChromeExtensionArkoseTokenGenerator {
       10 * 1000,
       '',
     )
-    log.info('generateToken', token)
+    // 如果获取失败，移除iframe
+    if (!token) {
+      this.removeIframe()
+    }
+    log.info(`generateToken ${token ? 'success' : 'fail'}`, token)
     return token
   }
   private getRootContainer(): HTMLElement | undefined {
     return getAppRootElement()
   }
-  private ping() {
+  private async ping() {
     log.info('ping')
     if (this.iframeInstance) {
       // 因为是ping 所以2秒超时
-      return promiseTimeout(
+      const pingSuccess = await promiseTimeout(
         new Promise<boolean>((resolve) => {
           const once = (event: any) => {
             if (
@@ -79,6 +83,11 @@ class ChromeExtensionArkoseTokenGenerator {
         2000,
         false,
       )
+      if (!pingSuccess) {
+        this.removeIframe()
+        return false
+      }
+      return true
     }
     log.info('ping result', false)
     return false

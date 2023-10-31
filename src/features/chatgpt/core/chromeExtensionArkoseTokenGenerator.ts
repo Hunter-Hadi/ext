@@ -110,6 +110,17 @@ class ChromeExtensionArkoseTokenGenerator {
       const iframe = document.createElement('iframe')
       iframe.id = ChromeExtensionArkoseTokenGenerator.iframeId
       iframe.src = Browser.runtime.getURL('/assets/openai/arkoseToken.html')
+      iframe.style.cssText = `
+      position: absolute !important;
+      opacity: 0 !important;
+      width: 1px !important;
+      height: 1px !important;
+      top: 0 !important;
+      left: 0 !important;
+      border: none !important;
+      display: block !important;
+      z-index: -1 !important;
+      pointer-events: none;`
       this.iframeInstance = iframe
       this.getRootContainer()?.append(iframe)
     })

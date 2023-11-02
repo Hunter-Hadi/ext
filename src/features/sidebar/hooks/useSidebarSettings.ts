@@ -13,7 +13,6 @@ import {
 } from '@/features/sidebar/store'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { IChatConversation } from '@/background/src/chatConversations'
-import useEffectOnce from '@/hooks/useEffectOnce'
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 
 const useSidebarSettings = () => {
@@ -24,18 +23,6 @@ const useSidebarSettings = () => {
   const [sidebarPageState, setSidebarPageSate] = useRecoilState(
     SidebarPageState,
   )
-
-  useEffectOnce(() => {
-    const url = new URL(window.location.href)
-    const searchParams = new URLSearchParams(url.search)
-    const urlParamConversationType = searchParams.get('conversationType')
-    if (urlParamConversationType) {
-      updateSidebarConversationType(
-        urlParamConversationType as ISidebarConversationType,
-      )
-    }
-  })
-
   const currentSidebarConversationType =
     sidebarPageState.sidebarConversationType
   const currentSidebarAIProvider =

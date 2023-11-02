@@ -33,6 +33,7 @@ import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVa
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIAdvanced'
+import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -194,8 +195,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   return (
     <Stack
       position={'relative'}
-      borderTop={'1px solid'}
-      borderColor="customColor.borderColor"
       sx={{
         height: 0,
         flex: 1,
@@ -239,6 +238,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       >
         <SidebarTabs />
         <Box ref={messageListContainerList}>
+          <SidebarHeader />
           <AppSuspenseLoadingLayout>
             {slicedMessageList.map((message, index) => {
               return (

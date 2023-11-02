@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Kopiloot",
     "sidebar__search_with_ai__advanced__copilot__description": "Kasutage AI-toega nutikaid päringuid põhjalikeks veebiotsinguteks. Saage täielik sisu otsingutulemustest. Saage vastused kõige raskematele küsimustele põhjalike veebiandmete abil.",
     "sidebar__search_with_ai__advanced__search_results__title": "Otsingutulemused",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Otsingumootor"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Otsingumootor",
+    "immersive_chat__delete_chat__title": "Kustuta vestlus?",
+    "immersive_chat__delete_chat__description1": "See kustutab",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Kustuta",
+    "immersive_chat__delete_chat__button__cancel__title": "Tühista",
+    "immersive_chat__delete_all_chat__title": "Kas olete kindel, et soovite kustutada kogu vestluse ajaloo?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Kinnita kustutamine",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Tühista"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

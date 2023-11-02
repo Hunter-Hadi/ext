@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Kopilotas",
     "sidebar__search_with_ai__advanced__copilot__description": "Naudokite AI technologiją, kad gautumėte išsamią informaciją apie interneto paieškas. Ištraukite visą turinį iš paieškos rezultatų. Gaukite atsakymus į sunkiausius klausimus su išsamiais interneto įžvalgomis.",
     "sidebar__search_with_ai__advanced__search_results__title": "Paieškos rezultatai",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Paieškos variklis"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Paieškos variklis",
+    "immersive_chat__delete_chat__title": "Ištrinti pokalbį?",
+    "immersive_chat__delete_chat__description1": "Tai ištrins",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Ištrinti",
+    "immersive_chat__delete_chat__button__cancel__title": "Atšaukti",
+    "immersive_chat__delete_all_chat__title": "Išvalyti pokalbių istoriją - ar tikrai?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Patvirtinti ištrynimą",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Atšaukti"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

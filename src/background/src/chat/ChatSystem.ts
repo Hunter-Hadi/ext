@@ -103,7 +103,6 @@ class ChatSystem implements ChatSystemInterface {
             const initConversationData = (data.initConversationData ||
               {}) as IChatConversation
             console.log('新版Conversation 创建会话', initConversationData)
-            debugger
             if (
               initConversationData.meta.AIProvider &&
               this.currentProvider !== initConversationData.meta.AIProvider
@@ -191,7 +190,17 @@ class ChatSystem implements ChatSystemInterface {
             }
             break
           case 'Client_removeChatGPTConversation': {
-            const { conversationId } = data
+            const { conversationId, isForceRemove = false } = data
+            if (isForceRemove && conversationId) {
+              const success = await ConversationManager.removeConversation(
+                conversationId,
+              )
+              return {
+                success,
+                data: {},
+                message: '',
+              }
+            }
             console.log('新版Conversation 删除会话', conversationId)
             const success = await this.removeConversation(conversationId || '')
             await this.updateClientConversationMessages(conversationId)

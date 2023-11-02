@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Verwenden Sie KI-gesteuerte intelligente Abfragen für umfassende Websuchen. Extrahieren Sie vollständige Inhalte aus den Suchergebnissen. Erhalten Sie Antworten auf die schwierigsten Fragen mit umfassenden Web-Einblicken.",
     "sidebar__search_with_ai__advanced__search_results__title": "Suchergebnisse",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Suchmaschine"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Suchmaschine",
+    "immersive_chat__delete_chat__title": "Chat löschen?",
+    "immersive_chat__delete_chat__description1": "Dies wird gelöscht",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Löschen",
+    "immersive_chat__delete_chat__button__cancel__title": "Abbrechen",
+    "immersive_chat__delete_all_chat__title": "Gesprächsverlauf löschen - Sind Sie sicher?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Löschung bestätigen",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Abbrechen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

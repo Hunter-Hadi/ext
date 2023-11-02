@@ -471,7 +471,15 @@
     "input_assistant_button__compose_reply__tooltip": "Quick reply",
     "input_assistant_button__refine_draft__tooltip": "Edit or review draft",
     "youtube_summary_button__text": "Summarize",
-    "social_media_summary_button__text": "Summarize"
+    "social_media_summary_button__text": "Summarize",
+    "immersive_chat__delete_chat__title": "Delete chat?",
+    "immersive_chat__delete_chat__description1": "This will delete",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Delete",
+    "immersive_chat__delete_chat__button__cancel__title": "Cancel",
+    "immersive_chat__delete_all_chat__title": "Clear your conversation history - are you sure?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Confirm deletion",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Cancel"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

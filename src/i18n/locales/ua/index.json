@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Копілот",
     "sidebar__search_with_ai__advanced__copilot__description": "Використовуйте запити зі штучним інтелектом для повного веб-пошуку. Видобувайте повний вміст з результатів пошуку. Отримуйте відповіді на найскладніші питання з допомогою всебічного аналізу вебу.",
     "sidebar__search_with_ai__advanced__search_results__title": "Результати пошуку",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Пошуковий двигун"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Пошуковий двигун",
+    "immersive_chat__delete_chat__title": "Видалити чат?",
+    "immersive_chat__delete_chat__description1": "Це призведе до видалення",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Видалити",
+    "immersive_chat__delete_chat__button__cancel__title": "Скасувати",
+    "immersive_chat__delete_all_chat__title": "Очистити історію розмов - ви впевнені?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Підтвердити видалення",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Скасувати"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

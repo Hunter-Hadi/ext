@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "使用 AI 強化的智能查詢進行全面的網絡搜索。從搜索結果中提取完整內容。通過全面的網絡洞察力獲得對最難問題的答案。",
     "sidebar__search_with_ai__advanced__search_results__title": "搜索結果",
-    "sidebar__search_with_ai__advanced__search_engine__title": "搜索引擎"
+    "sidebar__search_with_ai__advanced__search_engine__title": "搜索引擎",
+    "immersive_chat__delete_chat__title": "刪除聊天？",
+    "immersive_chat__delete_chat__description1": "這將刪除",
+    "immersive_chat__delete_chat__description2": "。",
+    "immersive_chat__delete_chat__button__delete__title": "刪除",
+    "immersive_chat__delete_chat__button__cancel__title": "取消",
+    "immersive_chat__delete_all_chat__title": "清除您的對話記錄 - 您確定嗎？",
+    "immersive_chat__delete_all_chat__button__delete__title": "確認刪除",
+    "immersive_chat__delete_all_chat__button__cancel__title": "取消"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

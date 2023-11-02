@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Użyj inteligentnych zapytań opartych na sztucznej inteligencji do przeprowadzenia wyczerpujących wyszukiwań w sieci. Wyodrębniaj pełne treści z wyników wyszukiwania. Otrzymuj odpowiedzi na najtrudniejsze pytania dzięki wszechstronnym informacjom z sieci.",
     "sidebar__search_with_ai__advanced__search_results__title": "Wyniki wyszukiwania",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Silnik wyszukiwania"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Silnik wyszukiwania",
+    "immersive_chat__delete_chat__title": "Usunąć czat?",
+    "immersive_chat__delete_chat__description1": "Spowoduje to usunięcie",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Usuń",
+    "immersive_chat__delete_chat__button__cancel__title": "Anuluj",
+    "immersive_chat__delete_all_chat__title": "Wyczyść historię rozmowy - na pewno?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Potwierdź usunięcie",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Anuluj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Tumia AI yenye nguvu kwa utafutaji wa kina wa wavuti. Chambua maudhui kamili kutoka kwenye matokeo ya utafutaji. Pata majibu ya maswali magumu na ufahamu kamili wa wavuti.",
     "sidebar__search_with_ai__advanced__search_results__title": "Matokeo ya utafutaji",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Injini ya utafutaji"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Injini ya utafutaji",
+    "immersive_chat__delete_chat__title": "Futa mazungumzo?",
+    "immersive_chat__delete_chat__description1": "Hii itafuta",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Futa",
+    "immersive_chat__delete_chat__button__cancel__title": "Ghairi",
+    "immersive_chat__delete_all_chat__title": "Futa historia yako ya mazungumzo - una uhakika?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Thibitisha kufuta",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Ghairi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

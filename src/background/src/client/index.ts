@@ -418,6 +418,30 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
+        case 'Client_getAllConversation': {
+          const conversations = await ConversationManager.getAllConversation()
+          return {
+            success: true,
+            data: conversations,
+            message: 'ok',
+          }
+        }
+        case 'Client_getAllPaginationConversation': {
+          const allPaginationConversations = await ConversationManager.getAllPaginationConversations()
+          return {
+            success: true,
+            data: allPaginationConversations,
+            message: 'ok',
+          }
+        }
+        case 'Client_removeAllConversation': {
+          const result = await ConversationManager.clearAllConversations()
+          return {
+            success: result,
+            data: result,
+            message: 'ok',
+          }
+        }
         case 'Client_getContextMenuActions': {
           const { contextMenuId } = data
           const actions = await getContextMenuActions(contextMenuId)

@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Bruk AI-drevne smarte spørringer for omfattende nettsøk. Hent ut fullstendig innhold fra søkeresultater. Få svar på de vanskeligste spørsmålene med omfattende innsikt fra nettet.",
     "sidebar__search_with_ai__advanced__search_results__title": "Søkeresultater",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Søkemotor"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Søkemotor",
+    "immersive_chat__delete_chat__title": "Slette chat?",
+    "immersive_chat__delete_chat__description1": "Dette vil slette",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Slett",
+    "immersive_chat__delete_chat__button__cancel__title": "Avbryt",
+    "immersive_chat__delete_all_chat__title": "Slette hele samtalehistorikken din - er du sikker?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Bekreft sletting",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

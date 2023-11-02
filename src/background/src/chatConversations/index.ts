@@ -1,5 +1,9 @@
 import { v4 as uuidV4 } from 'uuid'
-import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+  IUserChatMessage,
+} from '@/features/chatgpt/types'
 import { IAIProviderType } from '@/background/provider/chat'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { ISidebarConversationType } from '@/features/sidebar/store'
@@ -30,6 +34,16 @@ export interface IChatConversationMeta {
   bestOf?: number // bestOf
   docId?: string // 聊天文档id
   [key: string]: any
+}
+export interface PaginationConversation {
+  id: string // 对话ID
+  title: string // 对话标题
+  created_at: string // 创建时间
+  updated_at: string // 更新时间
+  lastMessage: IChatMessage
+  type: ISidebarConversationType // 对话类型
+  AIProvider?: IAIProviderType // AI提供商
+  AIModel?: string // AI模型
 }
 
 class ConversationDB {
@@ -99,15 +113,13 @@ class ConversationDB {
     return new Promise(async (resolve, reject) => {
       try {
         const db = await this.openDatabase()
-
         const transaction = db.transaction([this.objectStoreName], 'readwrite')
         const objectStore = transaction.objectStore(this.objectStoreName)
+        conversation.updated_at = new Date().toISOString()
         objectStore.put(conversation)
-
         transaction.oncomplete = () => {
           resolve() // 操作成功完成，解析 Promise
         }
-
         transaction.onerror = (event) => {
           reject((event.target as any)?.error || '') // 操作出错，拒绝 Promise 并传递错误信息
         }
@@ -281,6 +293,70 @@ export default class ConversationManager {
     this.conversationDB.removeUnnecessaryConversations().then().catch()
     return saveConversation as IChatConversation
   }
+  static async getAllConversation() {
+    const conversations = await this.conversationDB.getAllConversations()
+    console.log('新版Conversation getAllConversation', conversations)
+    return conversations
+  }
+  static async removeConversation(conversationId: string) {
+    try {
+      if (
+        conversationId &&
+        (await this.conversationDB.getConversationById(conversationId))
+      ) {
+        await this.conversationDB.deleteConversation(conversationId)
+        return true
+      }
+      return false
+    } catch (e) {
+      console.error(e)
+      return false
+    }
+  }
+  static async getAllPaginationConversations(): Promise<
+    PaginationConversation[]
+  > {
+    const conversations = await this.conversationDB.getAllConversations()
+    const paginationConversations = conversations
+      .map((conversation) => {
+        let lastMessage: any = undefined
+        for (let i = conversation.messages.length - 1; i >= 0; i--) {
+          if (
+            conversation.messages[i]?.text &&
+            conversation['messages'][i]?.type !== 'system'
+          ) {
+            lastMessage = conversation.messages[i]
+            break
+          }
+        }
+        let title = conversation.title
+        // 试图找出search或者summary用户根问题，chat后期可能也有
+        for (let i = 0; i < 5; i++) {
+          if (!conversation?.messages?.[i]) {
+            break
+          }
+          const message = conversation.messages[i]
+          if (message.type === 'ai') {
+            const aiMessage = message as IAIResponseMessage
+            if (aiMessage?.originalMessage?.metadata?.title) {
+              title = aiMessage.originalMessage.metadata.title.title
+            }
+          }
+        }
+        return {
+          id: conversation.id,
+          title,
+          created_at: conversation.created_at,
+          updated_at: conversation.updated_at,
+          lastMessage,
+          type: conversation.type,
+          AIProvider: conversation.meta.AIProvider,
+          AIModel: conversation.meta.AIModel,
+        }
+      })
+      .filter((conversation) => conversation.lastMessage)
+    return paginationConversations
+  }
   static async getClientConversation(conversationId: string) {
     const conversation = await this.conversationDB.getConversationById(
       conversationId,
@@ -365,6 +441,12 @@ export default class ConversationManager {
     return true
   }
   static async clearAllConversations() {
-    await this.conversationDB.clearAllConversations()
+    try {
+      await this.conversationDB.clearAllConversations()
+      return true
+    } catch (e) {
+      console.error(e)
+      return false
+    }
   }
 }

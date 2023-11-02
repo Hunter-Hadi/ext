@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Kopilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Koristite pametne upite sa AI tehnologijom za sveobuhvatno pretraživanje weba. Izvlačite kompletan sadržaj iz rezultata pretrage. Dobijte odgovore na najteža pitanja uz sveobuhvatne informacije sa weba.",
     "sidebar__search_with_ai__advanced__search_results__title": "Rezultati pretrage",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Pretraživač"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Pretraživač",
+    "immersive_chat__delete_chat__title": "Obriši čet?",
+    "immersive_chat__delete_chat__description1": "Ovo će obrisati",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Obriši",
+    "immersive_chat__delete_chat__button__cancel__title": "Otkaži",
+    "immersive_chat__delete_all_chat__title": "Obriši celu istoriju razgovora - da li ste sigurni?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Potvrdi brisanje",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Otkaži"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

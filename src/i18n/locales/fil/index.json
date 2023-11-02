@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Gamitin ang AI-powered smart queries para sa malawakang paghahanap sa web. Kunin ang buong nilalaman mula sa mga resulta ng paghahanap. Makakuha ng mga sagot sa pinakamahirap na mga tanong gamit ang kumprehensibong kaalaman sa web.",
     "sidebar__search_with_ai__advanced__search_results__title": "Mga Resulta ng Paghahanap",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Engine ng Paghahanap"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Engine ng Paghahanap",
+    "immersive_chat__delete_chat__title": "Tanggalin ang usapan?",
+    "immersive_chat__delete_chat__description1": "Ito ay magtatanggal",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Tanggalin",
+    "immersive_chat__delete_chat__button__cancel__title": "Kanselahin",
+    "immersive_chat__delete_all_chat__title": "Tanggalin ang buong kasaysayan ng usapan - sigurado ka ba?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Kumpirmahin ang pagtanggal",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Kanselahin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

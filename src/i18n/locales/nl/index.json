@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copiloot",
     "sidebar__search_with_ai__advanced__copilot__description": "Gebruik AI-aangedreven slimme zoekopdrachten voor uitgebreide webzoekopdrachten. Haal volledige inhoud uit zoekresultaten. Krijg antwoorden op de moeilijkste vragen met uitgebreide webinzichten.",
     "sidebar__search_with_ai__advanced__search_results__title": "Zoekresultaten",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Zoekmachine"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Zoekmachine",
+    "immersive_chat__delete_chat__title": "Chat verwijderen?",
+    "immersive_chat__delete_chat__description1": "Dit zal verwijderen",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Verwijderen",
+    "immersive_chat__delete_chat__button__cancel__title": "Annuleren",
+    "immersive_chat__delete_all_chat__title": "Gespreksgeschiedenis wissen - weet u het zeker?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Bevestig verwijdering",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Annuleren"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

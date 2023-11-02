@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "കോപ്പിലോട്",
     "sidebar__search_with_ai__advanced__copilot__description": "വിസ്മയകരമായ വെബ് തിരച്ചിലിന് AI-പ്രവർത്തിത ചോദ്യങ്ങൾ ഉപയോഗിക്കുക. തിരച്ചിലിന്റെ പൂർണ്ണ ഉള്ളടക്കം എക്സ്ട്രാക്ട് ചെയ്യുക. വലിയ ചോദ്യങ്ങളിലേക്ക് വലിയ വെബ് അന്വേഷണങ്ങൾക്ക് ഉത്തരം നൽകുക.",
     "sidebar__search_with_ai__advanced__search_results__title": "തിരച്ചിൽ ഫലങ്ങൾ",
-    "sidebar__search_with_ai__advanced__search_engine__title": "തിരച്ചിൽ എഞ്ചിൻ"
+    "sidebar__search_with_ai__advanced__search_engine__title": "തിരച്ചിൽ എഞ്ചിൻ",
+    "immersive_chat__delete_chat__title": "ചാറ്റ് ഇല്ലാതാക്കുക?",
+    "immersive_chat__delete_chat__description1": "ഇത് ഇല്ലാതാക്കും",
+    "immersive_chat__delete_chat__description2": "ആണ്.",
+    "immersive_chat__delete_chat__button__delete__title": "ഇല്ലാതാക്കുക",
+    "immersive_chat__delete_chat__button__cancel__title": "റദ്ദാക്കുക",
+    "immersive_chat__delete_all_chat__title": "നിങ്ങളുടെ സംഭാഷണ ചരിത്രം മായ്ക്കാൻ ഉറപ്പാണോ - ഉറപ്പാണോ?",
+    "immersive_chat__delete_all_chat__button__delete__title": "മായ്ക്കൽ സ്ഥിരീകരിക്കുക",
+    "immersive_chat__delete_all_chat__button__cancel__title": "റദ്ദാക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

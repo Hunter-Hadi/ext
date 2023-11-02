@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Χρησιμοποιήστε έξυπνες ερωτήσεις με την υποστήριξη της τεχνητής νοημοσύνης για εκτεταμένες αναζητήσεις στον ιστό. Εξαγάγετε πλήρες περιεχόμενο από τα αποτελέσματα αναζήτησης. Λάβετε απαντήσεις στις δυσκολότερες ερωτήσεις με ολοκληρωμένες πληροφορίες από τον ιστό.",
     "sidebar__search_with_ai__advanced__search_results__title": "Αποτελέσματα αναζήτησης",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Μηχανή αναζήτησης"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Μηχανή αναζήτησης",
+    "immersive_chat__delete_chat__title": "Διαγραφή συνομιλίας;",
+    "immersive_chat__delete_chat__description1": "Αυτό θα διαγράψει",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Διαγραφή",
+    "immersive_chat__delete_chat__button__cancel__title": "Ακύρωση",
+    "immersive_chat__delete_all_chat__title": "Καθαρισμός ιστορικού συνομιλίας - είστε σίγουροι;",
+    "immersive_chat__delete_all_chat__button__delete__title": "Επιβεβαίωση διαγραφής",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Ακύρωση"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

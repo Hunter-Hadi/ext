@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "কো-পাইলট",
     "sidebar__search_with_ai__advanced__copilot__description": "এই আর্টিফিশিয়াল ইন্টেলিজেন্স দ্বারা সমর্থিত স্মার্ট কুয়েরিগুলি ব্যবহার করে সম্পূর্ণ ওয়েব অনুসন্ধান করুন। অনুসন্ধান ফলাফল থেকে সম্পূর্ণ বিষয়বস্তু উত্তোলন করুন। বিশ্বের সবচেয়ে কঠিন প্রশ্নের উত্তর পান সম্পূর্ণ ওয়েব পরিচিতির সাথে।",
     "sidebar__search_with_ai__advanced__search_results__title": "অনুসন্ধান ফলাফল",
-    "sidebar__search_with_ai__advanced__search_engine__title": "অনুসন্ধান ইঞ্জিন"
+    "sidebar__search_with_ai__advanced__search_engine__title": "অনুসন্ধান ইঞ্জিন",
+    "immersive_chat__delete_chat__title": "চ্যাট মুছে ফেলবেন?",
+    "immersive_chat__delete_chat__description1": "এটি মুছে ফেলবে",
+    "immersive_chat__delete_chat__description2": "।",
+    "immersive_chat__delete_chat__button__delete__title": "মুছে ফেলুন",
+    "immersive_chat__delete_chat__button__cancel__title": "বাতিল করুন",
+    "immersive_chat__delete_all_chat__title": "আপনার চ্যাট ইতিহাস মুছে ফেলবেন - আপনি কি নিশ্চিত?",
+    "immersive_chat__delete_all_chat__button__delete__title": "মুছে ফেলতে নিশ্চিত করুন",
+    "immersive_chat__delete_all_chat__button__cancel__title": "বাতিল করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

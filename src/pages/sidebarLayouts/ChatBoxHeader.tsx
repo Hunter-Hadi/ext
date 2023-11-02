@@ -36,6 +36,8 @@ const ChatBoxHeader: FC = () => {
       gap={1}
       alignItems={'center'}
       px={1}
+      borderBottom={'1px solid'}
+      borderColor="customColor.borderColor"
     >
       <Stack
         sx={{

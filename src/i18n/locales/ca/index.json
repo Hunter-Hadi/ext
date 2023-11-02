@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Utilitza consultes intel·ligents alimentades per IA per a cerques web exhaustives. Extreu el contingut complet dels resultats de cerca. Obtén respostes a les preguntes més difícils amb una visió completa de la web.",
     "sidebar__search_with_ai__advanced__search_results__title": "Resultats de cerca",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Motor de cerca"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Motor de cerca",
+    "immersive_chat__delete_chat__title": "Esborrar xat?",
+    "immersive_chat__delete_chat__description1": "Això eliminarà",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Esborrar",
+    "immersive_chat__delete_chat__button__cancel__title": "Cancel·lar",
+    "immersive_chat__delete_all_chat__title": "Esborrar tot l'historial de conversa - esteu segur?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Confirmar esborrat",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Cancel·lar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

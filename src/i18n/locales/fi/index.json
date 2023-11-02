@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Käytä tekoälyllä varustettuja älykkäitä kyselyjä perusteellisiin verkkohakuihin. Poimi täydellinen sisältö hakutuloksista. Saat vastaukset vaikeimpiin kysymyksiin kattavien verkkotietojen avulla.",
     "sidebar__search_with_ai__advanced__search_results__title": "Hakutulokset",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Hakukone"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Hakukone",
+    "immersive_chat__delete_chat__title": "Poista keskustelu?",
+    "immersive_chat__delete_chat__description1": "Tämä poistaa",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Poista",
+    "immersive_chat__delete_chat__button__cancel__title": "Peruuta",
+    "immersive_chat__delete_all_chat__title": "Tyhjennä keskusteluhistoriasi - oletko varma?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Vahvista poisto",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Peruuta"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "副驾驶",
     "sidebar__search_with_ai__advanced__copilot__description": "使用AI智能查询进行全面的网络搜索。从搜索结果中提取完整内容。通过全面的网络洞察力获取最难问题的答案。",
     "sidebar__search_with_ai__advanced__search_results__title": "搜索结果",
-    "sidebar__search_with_ai__advanced__search_engine__title": "搜索引擎"
+    "sidebar__search_with_ai__advanced__search_engine__title": "搜索引擎",
+    "immersive_chat__delete_chat__title": "删除聊天？",
+    "immersive_chat__delete_chat__description1": "这将删除",
+    "immersive_chat__delete_chat__description2": "。",
+    "immersive_chat__delete_chat__button__delete__title": "删除",
+    "immersive_chat__delete_chat__button__cancel__title": "取消",
+    "immersive_chat__delete_all_chat__title": "清除您的对话历史记录 - 确定吗？",
+    "immersive_chat__delete_all_chat__button__delete__title": "确认删除",
+    "immersive_chat__delete_all_chat__button__cancel__title": "取消"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

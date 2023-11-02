@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "השתמש בשאילתות חכמות המופעלות על ידי AI לחיפושים מקיפים ברשת. דלף את התוכן המלא מתוך תוצאות החיפוש. קבל תשובות לשאלות הקשות ביותר עם תובנות מקיפות ברשת.",
     "sidebar__search_with_ai__advanced__search_results__title": "תוצאות חיפוש",
-    "sidebar__search_with_ai__advanced__search_engine__title": "מנוע חיפוש"
+    "sidebar__search_with_ai__advanced__search_engine__title": "מנוע חיפוש",
+    "immersive_chat__delete_chat__title": "מחיקת צ'אט?",
+    "immersive_chat__delete_chat__description1": "פעולה זו תמחק",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "מחק",
+    "immersive_chat__delete_chat__button__cancel__title": "ביטול",
+    "immersive_chat__delete_all_chat__title": "נקה את ההיסטוריה של השיחה - האם אתה בטוח?",
+    "immersive_chat__delete_all_chat__button__delete__title": "אשר מחיקה",
+    "immersive_chat__delete_all_chat__button__cancel__title": "ביטול"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

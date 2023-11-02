@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "ኮፒሎት",
     "sidebar__search_with_ai__advanced__copilot__description": "የማስታወቂያ የሚሆን የማስተላለፊያ ጥያቄዎችን ለመጠቀም የAI-የማስተላለፊያ ጥያቄዎችን ለመጠቀም የሚያስችል የድርጅት ዝርዝር ይጠቀሙ። የማስተላለፊያ ዝርዝርዎን በግልጽ ያሳውቁ፣ በግልጽ የተጠቀሙ የድርጅቶችን መረጃዎች ያሳውቁ።",
     "sidebar__search_with_ai__advanced__search_results__title": "የፍጥነት ውጤቶች",
-    "sidebar__search_with_ai__advanced__search_engine__title": "የፍጥነት ገፅ"
+    "sidebar__search_with_ai__advanced__search_engine__title": "የፍጥነት ገፅ",
+    "immersive_chat__delete_chat__title": "ስለዚህ ክሳቸውን ማጥፋት?",
+    "immersive_chat__delete_chat__description1": "ይህ ክሳቸውን ያስገቡ",
+    "immersive_chat__delete_chat__description2": "።",
+    "immersive_chat__delete_chat__button__delete__title": "ሰርዝ",
+    "immersive_chat__delete_chat__button__cancel__title": "ይቅረት",
+    "immersive_chat__delete_all_chat__title": "የእርሶ የክስ ታሪክን ማስጀመሪያ - እርስዎ አልፎ ማስቀመጥ ነው?",
+    "immersive_chat__delete_all_chat__button__delete__title": "ማስቀመጥ አስተካክል",
+    "immersive_chat__delete_all_chat__button__cancel__title": "ይቅረት"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

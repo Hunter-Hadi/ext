@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "ใช้คิวรีที่มีพลังปัญญาประดิษฐ์เพื่อค้นหาบนเว็บอย่างละเอียด. แยกเนื้อหาทั้งหมดจากผลการค้นหา. ได้คำตอบสำหรับคำถามที่ยากที่สุดด้วยข้อมูลอย่างละเอียดบนเว็บ",
     "sidebar__search_with_ai__advanced__search_results__title": "ผลการค้นหา",
-    "sidebar__search_with_ai__advanced__search_engine__title": "เครื่องมือค้นหา"
+    "sidebar__search_with_ai__advanced__search_engine__title": "เครื่องมือค้นหา",
+    "immersive_chat__delete_chat__title": "ลบแชท?",
+    "immersive_chat__delete_chat__description1": "การดำเนินการนี้จะลบ",
+    "immersive_chat__delete_chat__description2": "。",
+    "immersive_chat__delete_chat__button__delete__title": "ลบ",
+    "immersive_chat__delete_chat__button__cancel__title": "ยกเลิก",
+    "immersive_chat__delete_all_chat__title": "ล้างประวัติการสนทนาของคุณ - แน่ใจหรือไม่?",
+    "immersive_chat__delete_all_chat__button__delete__title": "ยืนยันการลบ",
+    "immersive_chat__delete_all_chat__button__cancel__title": "ยกเลิก"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

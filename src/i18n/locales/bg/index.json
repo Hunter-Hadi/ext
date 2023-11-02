@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Копилот",
     "sidebar__search_with_ai__advanced__copilot__description": "Използвайте AI-смарт заявки за изчерпателно търсене в мрежата. Извличайте пълно съдържание от резултатите от търсенето. Получавайте отговори на най-трудните въпроси с обширни уеб анализи.",
     "sidebar__search_with_ai__advanced__search_results__title": "Резултати от търсенето",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Търсачка"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Търсачка",
+    "immersive_chat__delete_chat__title": "Изтриване на чат?",
+    "immersive_chat__delete_chat__description1": "Това ще изтрие",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Изтрий",
+    "immersive_chat__delete_chat__button__cancel__title": "Отказ",
+    "immersive_chat__delete_all_chat__title": "Изчистване на историята на разговора - сигурни ли сте?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Потвърди изтриването",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Отказ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

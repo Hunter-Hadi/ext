@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Använd AI-drivna smarta frågor för omfattande webbsökningar. Extrahera komplett innehåll från sökresultat. Få svar på de svåraste frågorna med omfattande webbinsikter.",
     "sidebar__search_with_ai__advanced__search_results__title": "Sökresultat",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Sökmotor"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Sökmotor",
+    "immersive_chat__delete_chat__title": "Radera chatt?",
+    "immersive_chat__delete_chat__description1": "Detta kommer att radera",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Radera",
+    "immersive_chat__delete_chat__button__cancel__title": "Avbryt",
+    "immersive_chat__delete_all_chat__title": "Rensa din konversationshistorik - är du säker?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Bekräfta radering",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

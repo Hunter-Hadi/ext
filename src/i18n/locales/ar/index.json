@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "المساعد",
     "sidebar__search_with_ai__advanced__copilot__description": "استخدم استعلامات ذكية مدعومة بالذكاء الاصطناعي لإجراء بحث شامل على الويب. استخرج المحتوى الكامل من نتائج البحث. احصل على إجابات لأصعب الأسئلة مع رؤى شاملة حول الويب.",
     "sidebar__search_with_ai__advanced__search_results__title": "نتائج البحث",
-    "sidebar__search_with_ai__advanced__search_engine__title": "محرك البحث"
+    "sidebar__search_with_ai__advanced__search_engine__title": "محرك البحث",
+    "immersive_chat__delete_chat__title": "هل ترغب في حذف الدردشة؟",
+    "immersive_chat__delete_chat__description1": "سيتم حذف هذا",
+    "immersive_chat__delete_chat__description2": " .",
+    "immersive_chat__delete_chat__button__delete__title": "حذف",
+    "immersive_chat__delete_chat__button__cancel__title": "إلغاء",
+    "immersive_chat__delete_all_chat__title": "هل أنت متأكد من رغبتك في مسح سجل المحادثات الخاص بك؟",
+    "immersive_chat__delete_all_chat__button__delete__title": "تأكيد الحذف",
+    "immersive_chat__delete_all_chat__button__cancel__title": "إلغاء"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

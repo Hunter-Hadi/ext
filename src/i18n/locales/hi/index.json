@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "कोपायलट",
     "sidebar__search_with_ai__advanced__copilot__description": "AI-संचालित स्मार्ट क्वेरी का उपयोग करें व्यापक वेब खोजों के लिए। खोज परिणामों से पूरी सामग्री निकालें। व्यापक वेब इंसाइट के साथ सबसे कठिन सवालों के जवाब प्राप्त करें।",
     "sidebar__search_with_ai__advanced__search_results__title": "खोज परिणाम",
-    "sidebar__search_with_ai__advanced__search_engine__title": "खोज इंजन"
+    "sidebar__search_with_ai__advanced__search_engine__title": "खोज इंजन",
+    "immersive_chat__delete_chat__title": "चैट हटाएं?",
+    "immersive_chat__delete_chat__description1": "यह हटा देगा",
+    "immersive_chat__delete_chat__description2": "।",
+    "immersive_chat__delete_chat__button__delete__title": "हटाएं",
+    "immersive_chat__delete_chat__button__cancel__title": "रद्द करें",
+    "immersive_chat__delete_all_chat__title": "क्या आप वाकई अपने बातचीत इतिहास को साफ करना चाहते हैं?",
+    "immersive_chat__delete_all_chat__button__delete__title": "हटाने की पुष्टि करें",
+    "immersive_chat__delete_all_chat__button__cancel__title": "रद्द करें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

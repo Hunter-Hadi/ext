@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "ಕೋಪಿಲೋಟ್",
     "sidebar__search_with_ai__advanced__copilot__description": "ವಿಸ್ತರಿಸಿದ ವೆಬ್ ಹುಡುಕುಗಳಿಗೆ AI ಶಕ್ತಿಯ ಪ್ರಶ್ನೆಗಳನ್ನು ಉಪಯೋಗಿಸಿ. ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳಿಂದ ಪೂರ್ಣ ವಿಷಯವನ್ನು ಪಡೆಯಿರಿ. ವಿಸ್ತಾರವಾದ ವೆಬ್ ಅರಿವುಗಳೊಂದಿಗೆ ಕಠಿಣ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
     "sidebar__search_with_ai__advanced__search_results__title": "ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳು",
-    "sidebar__search_with_ai__advanced__search_engine__title": "ಹುಡುಕಾಟ ಇಂಜಿನ್"
+    "sidebar__search_with_ai__advanced__search_engine__title": "ಹುಡುಕಾಟ ಇಂಜಿನ್",
+    "immersive_chat__delete_chat__title": "ಚಾಟ್ ಅಳಿಸಿಯೇಕೆ?",
+    "immersive_chat__delete_chat__description1": "ಇದು ಅಳಿಸುತ್ತದೆ",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "ಅಳಿಸು",
+    "immersive_chat__delete_chat__button__cancel__title": "ರದ್ದುಗೊಳಿಸು",
+    "immersive_chat__delete_all_chat__title": "ನಿಮ್ಮ ಚಾಟ್ ಇತಿಹಾಸವನ್ನು ತೆಗೆದುಹಾಕಿ - ಖಚಿತವಾಗಿ?",
+    "immersive_chat__delete_all_chat__button__delete__title": "ಅಳಿಸುವುದನ್ನು ದೃಢೀಕರಿಸಿ",
+    "immersive_chat__delete_all_chat__button__cancel__title": "ರದ್ದುಗೊಳಿಸು"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

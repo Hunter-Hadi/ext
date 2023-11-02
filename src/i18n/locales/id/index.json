@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Gunakan kueri pintar berbasis AI untuk pencarian web yang komprehensif. Ekstrak konten lengkap dari hasil pencarian. Dapatkan jawaban untuk pertanyaan-pertanyaan sulit dengan wawasan web yang komprehensif.",
     "sidebar__search_with_ai__advanced__search_results__title": "Hasil pencarian",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Mesin pencari"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Mesin pencari",
+    "immersive_chat__delete_chat__title": "Hapus obrolan?",
+    "immersive_chat__delete_chat__description1": "Ini akan menghapus",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Hapus",
+    "immersive_chat__delete_chat__button__cancel__title": "Batal",
+    "immersive_chat__delete_all_chat__title": "Hapus riwayat percakapan Anda - apakah Anda yakin?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Konfirmasi penghapusan",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Batal"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

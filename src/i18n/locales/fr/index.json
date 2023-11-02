@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilote",
     "sidebar__search_with_ai__advanced__copilot__description": "Utilisez des requêtes intelligentes alimentées par l'IA pour des recherches web exhaustives. Extrayez le contenu complet des résultats de recherche. Obtenez des réponses aux questions les plus difficiles avec des informations web complètes.",
     "sidebar__search_with_ai__advanced__search_results__title": "Résultats de recherche",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Moteur de recherche"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Moteur de recherche",
+    "immersive_chat__delete_chat__title": "Supprimer le chat ?",
+    "immersive_chat__delete_chat__description1": "Cela supprimera",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Supprimer",
+    "immersive_chat__delete_chat__button__cancel__title": "Annuler",
+    "immersive_chat__delete_all_chat__title": "Effacer l'historique de conversation - êtes-vous sûr(e) ?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Confirmer la suppression",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Annuler"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

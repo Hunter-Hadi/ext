@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "کوپیلوت",
     "sidebar__search_with_ai__advanced__copilot__description": "از پرسمان‌های هوشمند مبتنی بر هوش مصنوعی برای جستجوهای جامع در وب استفاده کنید. محتوای کامل را از نتایج جستجو استخراج کنید. با داشتن بینش جامع وب، به سوالات سخت‌تر پاسخ دهید.",
     "sidebar__search_with_ai__advanced__search_results__title": "نتایج جستجو",
-    "sidebar__search_with_ai__advanced__search_engine__title": "موتور جستجو"
+    "sidebar__search_with_ai__advanced__search_engine__title": "موتور جستجو",
+    "immersive_chat__delete_chat__title": "حذف چت؟",
+    "immersive_chat__delete_chat__description1": "این عمل باعث حذف می‌شود",
+    "immersive_chat__delete_chat__description2": "است.",
+    "immersive_chat__delete_chat__button__delete__title": "حذف",
+    "immersive_chat__delete_chat__button__cancel__title": "لغو",
+    "immersive_chat__delete_all_chat__title": "پاک کردن تاریخچه گفتگو - آیا مطمئن هستید؟",
+    "immersive_chat__delete_all_chat__button__delete__title": "تأیید حذف",
+    "immersive_chat__delete_all_chat__button__cancel__title": "لغو"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

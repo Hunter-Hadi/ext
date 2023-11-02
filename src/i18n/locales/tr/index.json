@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Kapsamlı web aramaları için yapay zeka destekli akıllı sorgular kullanın. Arama sonuçlarından tam içeriği çıkarın. Kapsamlı web bilgileri ile en zor soruların cevaplarını alın.",
     "sidebar__search_with_ai__advanced__search_results__title": "Arama sonuçları",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Arama motoru"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Arama motoru",
+    "immersive_chat__delete_chat__title": "Sohbeti sil?",
+    "immersive_chat__delete_chat__description1": "Bu siler",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Sil",
+    "immersive_chat__delete_chat__button__cancel__title": "İptal",
+    "immersive_chat__delete_all_chat__title": "Tüm sohbet geçmişinizi temizlemek istediğinizden emin misiniz?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Silme işlemini onayla",
+    "immersive_chat__delete_all_chat__button__cancel__title": "İptal"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

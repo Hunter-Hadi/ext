@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Копилот",
     "sidebar__search_with_ai__advanced__copilot__description": "Используйте умные запросы на основе искусственного интеллекта для полного веб-поиска. Извлекайте полное содержимое из результатов поиска. Получайте ответы на самые сложные вопросы с помощью всестороннего анализа веб-информации.",
     "sidebar__search_with_ai__advanced__search_results__title": "Результаты поиска",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Поисковая система"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Поисковая система",
+    "immersive_chat__delete_chat__title": "Удалить чат?",
+    "immersive_chat__delete_chat__description1": "Это действие удалит",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Удалить",
+    "immersive_chat__delete_chat__button__cancel__title": "Отмена",
+    "immersive_chat__delete_all_chat__title": "Очистить историю переписки - вы уверены?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Подтвердить удаление",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Отмена"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

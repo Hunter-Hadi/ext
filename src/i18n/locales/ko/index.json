@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "코파일럿",
     "sidebar__search_with_ai__advanced__copilot__description": "AI 기반 스마트 쿼리를 사용하여 포괄적인 웹 검색을 수행하세요. 검색 결과에서 완전한 콘텐츠를 추출하세요. 포괄적인 웹 인사이트로 어려운 질문에 대한 답변을 받으세요.",
     "sidebar__search_with_ai__advanced__search_results__title": "검색 결과",
-    "sidebar__search_with_ai__advanced__search_engine__title": "검색 엔진"
+    "sidebar__search_with_ai__advanced__search_engine__title": "검색 엔진",
+    "immersive_chat__delete_chat__title": "채팅 삭제?",
+    "immersive_chat__delete_chat__description1": "이것은 삭제됩니다",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "삭제",
+    "immersive_chat__delete_chat__button__cancel__title": "취소",
+    "immersive_chat__delete_all_chat__title": "대화 기록 지우기 - 확실합니까?",
+    "immersive_chat__delete_all_chat__button__delete__title": "삭제 확인",
+    "immersive_chat__delete_all_chat__button__cancel__title": "취소"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

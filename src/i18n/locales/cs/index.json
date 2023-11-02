@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Použijte inteligentní dotazy s podporou umělé inteligence pro důkladné vyhledávání na webu. Extrahujte kompletní obsah z výsledků vyhledávání. Získejte odpovědi na nejtěžší otázky s komplexními informacemi z webu.",
     "sidebar__search_with_ai__advanced__search_results__title": "Výsledky vyhledávání",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Vyhledávač"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Vyhledávač",
+    "immersive_chat__delete_chat__title": "Smazat chat?",
+    "immersive_chat__delete_chat__description1": "Tímto se smaže",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Smazat",
+    "immersive_chat__delete_chat__button__cancel__title": "Zrušit",
+    "immersive_chat__delete_all_chat__title": "Vymazat historii konverzace - jste si jisti?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Potvrdit smazání",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Zrušit"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

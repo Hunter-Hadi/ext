@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "کوپائلٹ",
     "sidebar__search_with_ai__advanced__copilot__description": "AI پر مبنی ذہین سوالات کے لئے استعمال کریں. تفصیلی ویب تلاش کے نتائج سے مکمل مواد حاصل کریں. مکمل ویب فہم کے ساتھ سب سے مشکل سوالوں کے جوابات حاصل کریں.",
     "sidebar__search_with_ai__advanced__search_results__title": "تلاش کے نتائج",
-    "sidebar__search_with_ai__advanced__search_engine__title": "تلاش انجن"
+    "sidebar__search_with_ai__advanced__search_engine__title": "تلاش انجن",
+    "immersive_chat__delete_chat__title": "چیٹ حذف کریں؟",
+    "immersive_chat__delete_chat__description1": "یہ حذف کر دے گا",
+    "immersive_chat__delete_chat__description2": "۔",
+    "immersive_chat__delete_chat__button__delete__title": "حذف کریں",
+    "immersive_chat__delete_chat__button__cancel__title": "منسوخ کریں",
+    "immersive_chat__delete_all_chat__title": "کیا آپ اپنی بات چیت کی تاریخ صاف کرنا چاہتے ہیں؟",
+    "immersive_chat__delete_all_chat__button__delete__title": "تصدیق حذف",
+    "immersive_chat__delete_all_chat__button__cancel__title": "منسوخ کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

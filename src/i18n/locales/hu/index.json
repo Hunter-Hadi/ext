@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",
     "sidebar__search_with_ai__advanced__copilot__description": "Használjon AI-alapú okos lekérdezéseket a teljes webes keresésekhez. Kinyerje a teljes tartalmat a keresési eredményekből. Kapjon válaszokat a legnehezebb kérdésekre átfogó webes információkkal.",
     "sidebar__search_with_ai__advanced__search_results__title": "Keresési eredmények",
-    "sidebar__search_with_ai__advanced__search_engine__title": "Keresőmotor"
+    "sidebar__search_with_ai__advanced__search_engine__title": "Keresőmotor",
+    "immersive_chat__delete_chat__title": "Törölni szeretné a beszélgetést?",
+    "immersive_chat__delete_chat__description1": "Ez törli",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "Törlés",
+    "immersive_chat__delete_chat__button__cancel__title": "Mégse",
+    "immersive_chat__delete_all_chat__title": "Biztosan törli a beszélgetési előzményeket?",
+    "immersive_chat__delete_all_chat__button__delete__title": "Törlés megerősítése",
+    "immersive_chat__delete_all_chat__button__cancel__title": "Mégse"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

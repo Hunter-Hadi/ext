@@ -471,7 +471,15 @@
     "sidebar__search_with_ai__advanced__copilot__title": "కోపిలాట్",
     "sidebar__search_with_ai__advanced__copilot__description": "పూర్తి వెబ్ శోధనల కొరకు AI-పోవర్డ్ స్మార్ట్ క్వెరీలను ఉపయోగించండి. శోధన ఫలితాల నుండి పూర్తి కంటెంట్ పొందండి. విషమంగా ప్రశ్నలకు వివరణాత్మక వెబ్ ఇనైట్స్ తో జవాబులు పొందండి.",
     "sidebar__search_with_ai__advanced__search_results__title": "శోధ ఫలితాలు",
-    "sidebar__search_with_ai__advanced__search_engine__title": "శోధన ఇంజన్"
+    "sidebar__search_with_ai__advanced__search_engine__title": "శోధన ఇంజన్",
+    "immersive_chat__delete_chat__title": "చాట్ తొలగించాలా?",
+    "immersive_chat__delete_chat__description1": "ఇది తొలగిస్తుంది",
+    "immersive_chat__delete_chat__description2": ".",
+    "immersive_chat__delete_chat__button__delete__title": "తొలగించు",
+    "immersive_chat__delete_chat__button__cancel__title": "రద్దు చేయి",
+    "immersive_chat__delete_all_chat__title": "మీ చాట్ చర్యల చరిత్రను తొలగించాలా - ఖచ్చితంగా ఉందా?",
+    "immersive_chat__delete_all_chat__button__delete__title": "తొలగించించు ధృవీకరణ",
+    "immersive_chat__delete_all_chat__button__cancel__title": "రద్దు చేయి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

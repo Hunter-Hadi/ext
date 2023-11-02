@@ -19,6 +19,7 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { isShowChatBox, showChatBox } from '@/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 
 const useSearchWithAI = () => {
   const {
@@ -146,12 +147,21 @@ const useSearchWithAI = () => {
     if (currentSidebarConversationType !== 'Search') {
       await updateSidebarConversationType('Search')
     }
-    const conversationId =
-      (await getSearchWithAIConversationId()) ||
-      (await createConversation('Search'))
-    await clientChatConversationModifyChatMessages('add', conversationId, 0, [
-      startMessage,
-    ])
+    let cacheConversationId = await getSearchWithAIConversationId()
+    if (
+      cacheConversationId &&
+      (await clientGetConversation(cacheConversationId))
+    ) {
+      // nothing
+    } else {
+      cacheConversationId = await createConversation('Search')
+    }
+    await clientChatConversationModifyChatMessages(
+      'add',
+      cacheConversationId,
+      0,
+      [startMessage],
+    )
   }
   const regenerateSearchWithAI = async () => {
     try {

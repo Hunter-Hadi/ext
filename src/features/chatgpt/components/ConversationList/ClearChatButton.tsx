@@ -15,8 +15,8 @@ const ClearChatButton: FC<{
   conversationTitle: string
   onDelete?: () => void
 }> = (props) => {
-  const { cleanConversation } = useClientConversation()
   const { conversationTitle, conversationId, onDelete } = props
+  const { cleanConversation } = useClientConversation()
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
   return (

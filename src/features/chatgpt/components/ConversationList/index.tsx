@@ -28,8 +28,8 @@ const ConversationList: FC = () => {
           const beautyConversations = conversations
             .sort((prev, next) => {
               return (
-                dayjs(next.updated_at).valueOf() -
-                dayjs(prev.updated_at).valueOf()
+                dayjs(next.created_at).valueOf() -
+                dayjs(prev.created_at).valueOf()
               )
             })
             .map((conversation) => {
@@ -198,7 +198,13 @@ const ConversationList: FC = () => {
                           fetchPaginationConversations().then(
                             (conversations) => {
                               setPaginationConversations(conversations)
-                              updateSidebarConversationType('Chat')
+                              updateSidebarSettings({
+                                chat: {
+                                  conversationId: '',
+                                },
+                              }).then(() => {
+                                updateSidebarConversationType('Chat')
+                              })
                             },
                           )
                         }}
@@ -220,7 +226,19 @@ const ConversationList: FC = () => {
           onDelete={() => {
             fetchPaginationConversations().then((conversations) => {
               setPaginationConversations(conversations)
-              updateSidebarConversationType('Chat')
+              updateSidebarSettings({
+                chat: {
+                  conversationId: '',
+                },
+                search: {
+                  conversationId: '',
+                },
+                summary: {
+                  conversationId: '',
+                },
+              }).then(() => {
+                updateSidebarConversationType('Chat')
+              })
             })
           }}
         />

@@ -7,13 +7,11 @@ import Modal from '@mui/material/Modal'
 import Container from '@mui/material/Container'
 import { removeAllConversations } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { useTranslation } from 'react-i18next'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 const ClearAllChatButton: FC<{
   onDelete?: () => void
 }> = (props) => {
   const { onDelete } = props
-  const { cleanConversation } = useClientConversation()
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
   return (
@@ -87,10 +85,10 @@ const ClearAllChatButton: FC<{
                 color={'error'}
                 onClick={async () => {
                   try {
-                    await cleanConversation()
                     await removeAllConversations()
                     onDelete?.()
                   } catch (e) {
+                    console.error(e)
                   } finally {
                     setOpen(false)
                   }

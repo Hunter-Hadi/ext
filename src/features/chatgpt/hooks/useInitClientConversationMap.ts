@@ -120,7 +120,7 @@ const useInitClientConversationMap = () => {
   useEffect(() => {
     if (currentSidebarConversationId) {
       clientGetConversation(currentSidebarConversationId).then(
-        (conversation) => {
+        async (conversation) => {
           if (conversation) {
             console.log('新版Conversation effect更新', conversation.messages)
             setClientConversationMap((prevState) => {
@@ -134,45 +134,5 @@ const useInitClientConversationMap = () => {
       )
     }
   }, [currentSidebarConversationId])
-  // useFocus(() => {
-  //   getChromeExtensionLocalStorage().then((cache) => {
-  //     if (cache.sidebarSettings?.chat?.conversationId) {
-  //       clientGetConversation(cache.sidebarSettings?.chat?.conversationId).then(
-  //         (conversation) => {
-  //           if (conversation) {
-  //             console.log(
-  //               '新版Conversation refocus更新chat',
-  //               conversation.messages,
-  //             )
-  //             setClientConversationMap((prevState) => {
-  //               return {
-  //                 ...prevState,
-  //                 [conversation.id]: conversation,
-  //               }
-  //             })
-  //           }
-  //         },
-  //       )
-  //     }
-  //   })
-  //   if (getPageSummaryConversationId()) {
-  //     clientGetConversation(getPageSummaryConversationId()).then(
-  //       (conversation) => {
-  //         if (conversation) {
-  //           console.log(
-  //             '新版Conversation refocus更新summaryId',
-  //             conversation.messages,
-  //           )
-  //           setClientConversationMap((prevState) => {
-  //             return {
-  //               ...prevState,
-  //               [conversation.id]: conversation,
-  //             }
-  //           })
-  //         }
-  //       },
-  //     )
-  //   }
-  // })
 }
 export default useInitClientConversationMap

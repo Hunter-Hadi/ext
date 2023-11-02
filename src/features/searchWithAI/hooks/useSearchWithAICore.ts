@@ -22,6 +22,8 @@ import {
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -127,7 +129,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         }\nCONTENT: ${searchResult.body}\n\n`
       }
 
-      template = generatePromptTemplate(question, expandContent)
+      template = await generatePromptTemplate(question, expandContent)
     }
 
     // 3. ASK_CHATGPT
@@ -339,8 +341,16 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   }
 }
 
-const generatePromptTemplate = (query: string, content: string) => {
+const generatePromptTemplate = async (query: string, content: string) => {
   let promptTemplate = SEARCH_WITH_AI_PROMPT
+  const userSelectedLanguage = (await clientGetLiteChromeExtensionDBStorage())
+    ?.userSettings?.language
+  if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
+    // 不需要操作
+  } else {
+    promptTemplate += `\nRespond in ${userSelectedLanguage}.`
+  }
+
   const date = dayjs().format('YYYY-MM-DD HH:mm:ss')
 
   promptTemplate = promptTemplate.replace(/{query}/g, query)

@@ -11,11 +11,9 @@ interface TextListProps {
 
 const ChatGPTExpandList: React.FC<TextListProps> = ({ title, children }) => {
   const [expanded, setExpanded] = useState(false)
-
   const handleExpandClick = () => {
     setExpanded(!expanded)
   }
-
   return (
     <Stack width={'100%'}>
       <Stack

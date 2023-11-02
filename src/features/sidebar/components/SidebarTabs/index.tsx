@@ -10,10 +10,8 @@ import { useRecoilValue } from 'recoil'
 import { I18nextKeysType } from '@/i18next'
 import { useTranslation } from 'react-i18next'
 import Typography from '@mui/material/Typography'
-import DevContent from '@/components/DevContent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -134,9 +132,6 @@ const SidebarTabs: FC = () => {
           ))}
         </Tabs>
       </Stack>
-      <DevContent>
-        <DevConsole />
-      </DevContent>
     </>
   )
 }

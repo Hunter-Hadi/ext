@@ -34,6 +34,9 @@ import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/S
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIAdvanced'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import DevContent from '@/components/DevContent'
+import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000
@@ -236,8 +239,11 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           overflowY: 'auto',
         }}
       >
-        <SidebarTabs />
+        {!isMaxAIImmersiveChatPage() && <SidebarTabs />}
         <Box ref={messageListContainerList}>
+          <DevContent>
+            <DevConsole />
+          </DevContent>
           <SidebarHeader />
           <AppSuspenseLoadingLayout>
             {slicedMessageList.map((message, index) => {

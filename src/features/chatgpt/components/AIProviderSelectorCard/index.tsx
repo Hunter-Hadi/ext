@@ -105,9 +105,6 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     : ''
                 }`}
                 onClick={async () => {
-                  if (currentSidebarAIProvider === providerOption.value) {
-                    return
-                  }
                   await updateSidebarSettings({
                     common: {
                       currentAIProvider: providerOption.value,

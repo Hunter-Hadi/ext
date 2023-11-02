@@ -47,7 +47,7 @@ const App: FC = () => {
           <AppSuspenseLoadingLayout>
             <Stack flexDirection={'row'} flex={1} height={'calc(100vh - 48px)'}>
               <Stack
-                width={290}
+                width={312}
                 flexShrink={0}
                 borderRight={'1px'}
                 borderBottom={0}

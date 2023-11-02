@@ -34,8 +34,13 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
   const {
     currentSidebarAIProvider,
     updateSidebarSettings,
+    currentSidebarConversationType,
   } = useSidebarSettings()
-  const { switchBackgroundChatSystemAIProvider } = useClientConversation()
+  const {
+    cleanConversation,
+    createConversation,
+    switchBackgroundChatSystemAIProvider,
+  } = useClientConversation()
   const isLoadingMemo = useMemo(() => {
     return chatGPTConversationLoading
   }, [chatGPTConversationLoading])
@@ -105,6 +110,9 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     : ''
                 }`}
                 onClick={async () => {
+                  if (currentSidebarAIProvider === providerOption.value) {
+                    return
+                  }
                   await updateSidebarSettings({
                     common: {
                       currentAIProvider: providerOption.value,
@@ -113,6 +121,10 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                   await switchBackgroundChatSystemAIProvider(
                     providerOption.value,
                   )
+                  if (currentSidebarConversationType === 'Chat') {
+                    await cleanConversation(true)
+                    await createConversation('Chat')
+                  }
                 }}
                 selected={providerOption.value === currentSidebarAIProvider}
                 disabled={isLoadingMemo}

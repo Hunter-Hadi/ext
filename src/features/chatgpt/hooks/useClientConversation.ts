@@ -41,6 +41,7 @@ const useClientConversation = () => {
     const conversationType =
       overwriteConversationType || currentSidebarConversationType
     if (conversationType === 'Chat') {
+      debugger
       const chatCacheConversationId = (await getChromeExtensionLocalStorage())
         .sidebarSettings?.chat?.conversationId
       // 如果chat板块已经有conversationId了

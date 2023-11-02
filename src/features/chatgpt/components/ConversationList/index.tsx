@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import Stack from '@mui/material/Stack'
 import { clientGetAllPaginationConversations } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { PaginationConversation } from '@/background/src/chatConversations'
@@ -10,6 +10,10 @@ import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/C
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import ClearChatButton from '@/features/chatgpt/components/ConversationList/ClearChatButton'
 import { useFocus } from '@/hooks/useFocus'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { IAIProviderType } from '@/background/provider/chat'
+import { IAIProviderModel } from '@/features/chatgpt/types'
+import Chip from '@mui/material/Chip'
 
 const ConversationList: FC = () => {
   const { smoothConversationLoading } = useSmoothConversationLoading()
@@ -18,6 +22,7 @@ const ConversationList: FC = () => {
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModels()
   const [paginationConversations, setPaginationConversations] = useState<
     PaginationConversation[]
   >([])
@@ -28,8 +33,8 @@ const ConversationList: FC = () => {
           const beautyConversations = conversations
             .sort((prev, next) => {
               return (
-                dayjs(next.created_at).valueOf() -
-                dayjs(prev.created_at).valueOf()
+                dayjs(next.updated_at).valueOf() -
+                dayjs(prev.updated_at).valueOf()
               )
             })
             .map((conversation) => {
@@ -59,6 +64,22 @@ const ConversationList: FC = () => {
         })
     })
   }
+  const modelLabelMap = useMemo(() => {
+    const map: {
+      [key in IAIProviderType]: {
+        [key in string]: string
+      }
+    } = {} as any
+    Object.keys(AI_PROVIDER_MODEL_MAP).forEach((aiProvider: string) => {
+      const provider = aiProvider as IAIProviderType
+      map[provider] = {}
+      const models = AI_PROVIDER_MODEL_MAP[provider]
+      models.forEach((model: IAIProviderModel) => {
+        map[provider][model.value] = model.title
+      })
+    })
+    return map
+  }, [AI_PROVIDER_MODEL_MAP])
   useEffect(() => {
     let destroy = false
     fetchPaginationConversations().then((conversations) => {
@@ -159,13 +180,32 @@ const ConversationList: FC = () => {
                   alignItems={'center'}
                   justifyContent={'space-between'}
                 >
-                  <Typography
-                    color={'text.secondary'}
-                    fontSize={'12px'}
-                    lineHeight={'16px'}
-                  >
-                    {conversation.AIModel || ''}
-                  </Typography>
+                  <Stack direction={'row'} gap={1} alignItems={'center'}>
+                    <Chip
+                      sx={{
+                        width: '64px',
+                        fontSize: '12px',
+                        padding: '0!important',
+                        height: '16px!important',
+                        '& > span': {
+                          padding: '0 6px',
+                        },
+                      }}
+                      label={conversation.type}
+                      size="small"
+                    />
+                    <Typography
+                      color={'text.secondary'}
+                      fontSize={'12px'}
+                      lineHeight={'16px'}
+                    >
+                      {modelLabelMap?.[
+                        conversation.AIProvider || 'USE_CHAT_GPT_PLUS'
+                      ]?.[conversation.AIModel || ''] ||
+                        conversation?.AIModel ||
+                        ''}
+                    </Typography>
+                  </Stack>
                   <Typography
                     color={'text.secondary'}
                     fontSize={'12px'}

@@ -9,10 +9,10 @@ import { IAIProviderModel } from '@/features/chatgpt/types'
 import Chip from '@mui/material/Chip'
 import { useTranslation } from 'react-i18next'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { usePrevious } from '@/hooks/usePrevious'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 const AIProviderModelSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])

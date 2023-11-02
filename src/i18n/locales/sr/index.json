@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Otkaži",
     "immersive_chat__delete_all_chat__title": "Obriši celu istoriju razgovora - da li ste sigurni?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potvrdi brisanje",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Otkaži"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Otkaži",
+    "immersive_chat__delete_all_chat__button__title": "Obriši sve razgovore"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

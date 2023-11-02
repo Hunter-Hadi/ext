@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Kanselahin",
     "immersive_chat__delete_all_chat__title": "Tanggalin ang buong kasaysayan ng usapan - sigurado ka ba?",
     "immersive_chat__delete_all_chat__button__delete__title": "Kumpirmahin ang pagtanggal",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Kanselahin"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Kanselahin",
+    "immersive_chat__delete_all_chat__button__title": "Burahin ang lahat ng mga chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

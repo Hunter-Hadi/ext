@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Annuller",
     "immersive_chat__delete_all_chat__title": "Ryd din samtalehistorik - er du sikker?",
     "immersive_chat__delete_all_chat__button__delete__title": "Bekræft sletning",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Annuller"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Annuller",
+    "immersive_chat__delete_all_chat__button__title": "Ryd alle chats"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

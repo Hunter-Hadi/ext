@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "రద్దు చేయి",
     "immersive_chat__delete_all_chat__title": "మీ చాట్ చర్యల చరిత్రను తొలగించాలా - ఖచ్చితంగా ఉందా?",
     "immersive_chat__delete_all_chat__button__delete__title": "తొలగించించు ధృవీకరణ",
-    "immersive_chat__delete_all_chat__button__cancel__title": "రద్దు చేయి"
+    "immersive_chat__delete_all_chat__button__cancel__title": "రద్దు చేయి",
+    "immersive_chat__delete_all_chat__button__title": "అన్ని చాట్లను తొలగించు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

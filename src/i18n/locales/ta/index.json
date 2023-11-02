@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "ரத்துசெய்",
     "immersive_chat__delete_all_chat__title": "உங்கள் உரையாடல் வரலாறை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
     "immersive_chat__delete_all_chat__button__delete__title": "நீக்குதலை உறுதிப்படுத்து",
-    "immersive_chat__delete_all_chat__button__cancel__title": "ரத்துசெய்"
+    "immersive_chat__delete_all_chat__button__cancel__title": "ரத்துசெய்",
+    "immersive_chat__delete_all_chat__button__title": "அனைத்து உரைநடவடிக்கைகளையும் நீக்கு"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

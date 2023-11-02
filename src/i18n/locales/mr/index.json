@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "रद्द करा",
     "immersive_chat__delete_all_chat__title": "तुमच्या चर्चेचा संपूर्ण इतिहास काढून टाकायला खात्री आहे - तुम्ही खात्री आहात का?",
     "immersive_chat__delete_all_chat__button__delete__title": "डिलीट करण्याची पुष्टी करा",
-    "immersive_chat__delete_all_chat__button__cancel__title": "रद्द करा"
+    "immersive_chat__delete_all_chat__button__cancel__title": "रद्द करा",
+    "immersive_chat__delete_all_chat__button__title": "सर्व चॅट काढा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

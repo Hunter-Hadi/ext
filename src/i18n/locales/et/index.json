@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Tühista",
     "immersive_chat__delete_all_chat__title": "Kas olete kindel, et soovite kustutada kogu vestluse ajaloo?",
     "immersive_chat__delete_all_chat__button__delete__title": "Kinnita kustutamine",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Tühista"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Tühista",
+    "immersive_chat__delete_all_chat__button__title": "Kustuta kõik vestlused"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

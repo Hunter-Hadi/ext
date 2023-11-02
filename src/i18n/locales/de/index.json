@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Abbrechen",
     "immersive_chat__delete_all_chat__title": "Gesprächsverlauf löschen - Sind Sie sicher?",
     "immersive_chat__delete_all_chat__button__delete__title": "Löschung bestätigen",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Abbrechen"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Abbrechen",
+    "immersive_chat__delete_all_chat__button__title": "Alle Chats löschen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

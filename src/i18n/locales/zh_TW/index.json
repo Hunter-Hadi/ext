@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "取消",
     "immersive_chat__delete_all_chat__title": "清除您的對話記錄 - 您確定嗎？",
     "immersive_chat__delete_all_chat__button__delete__title": "確認刪除",
-    "immersive_chat__delete_all_chat__button__cancel__title": "取消"
+    "immersive_chat__delete_all_chat__button__cancel__title": "取消",
+    "immersive_chat__delete_all_chat__button__title": "清除所有聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

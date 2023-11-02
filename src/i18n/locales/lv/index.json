@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Atcelt",
     "immersive_chat__delete_all_chat__title": "Notīrīt sarunas vēsturi - vai esat pārliecināts?",
     "immersive_chat__delete_all_chat__button__delete__title": "Apstiprināt dzēšanu",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Atcelt"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Atcelt",
+    "immersive_chat__delete_all_chat__button__title": "Notīrīt visus čatus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

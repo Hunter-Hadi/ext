@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Mégse",
     "immersive_chat__delete_all_chat__title": "Biztosan törli a beszélgetési előzményeket?",
     "immersive_chat__delete_all_chat__button__delete__title": "Törlés megerősítése",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Mégse"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Mégse",
+    "immersive_chat__delete_all_chat__button__title": "Összes csevegés törlése"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

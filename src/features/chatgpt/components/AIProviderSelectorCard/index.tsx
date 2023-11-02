@@ -105,13 +105,14 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     : ''
                 }`}
                 onClick={async () => {
-                  if (providerOption.value !== currentSidebarAIProvider) {
-                    await updateSidebarSettings({
-                      common: {
-                        currentAIProvider: providerOption.value,
-                      },
-                    })
+                  if (currentSidebarAIProvider === providerOption.value) {
+                    return
                   }
+                  await updateSidebarSettings({
+                    common: {
+                      currentAIProvider: providerOption.value,
+                    },
+                  })
                   await switchBackgroundChatSystemAIProvider(
                     providerOption.value,
                   )

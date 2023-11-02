@@ -38,7 +38,9 @@ const ClearAllChatButton: FC<{
             fontSize={'16px'}
             color={'text.primary'}
             lineHeight={'24px'}
-          >{`Clear all chats`}</Typography>
+          >
+            {t('client:immersive_chat__delete_all_chat__button__title')}
+          </Typography>
         </Stack>
       </Button>
       <Modal

@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Peruuta",
     "immersive_chat__delete_all_chat__title": "Tyhjennä keskusteluhistoriasi - oletko varma?",
     "immersive_chat__delete_all_chat__button__delete__title": "Vahvista poisto",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Peruuta"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Peruuta",
+    "immersive_chat__delete_all_chat__button__title": "Tyhjennä kaikki keskustelut"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

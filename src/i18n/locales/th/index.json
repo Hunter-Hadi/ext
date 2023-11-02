@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "ยกเลิก",
     "immersive_chat__delete_all_chat__title": "ล้างประวัติการสนทนาของคุณ - แน่ใจหรือไม่?",
     "immersive_chat__delete_all_chat__button__delete__title": "ยืนยันการลบ",
-    "immersive_chat__delete_all_chat__button__cancel__title": "ยกเลิก"
+    "immersive_chat__delete_all_chat__button__cancel__title": "ยกเลิก",
+    "immersive_chat__delete_all_chat__button__title": "ล้างการสนทนาทั้งหมด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

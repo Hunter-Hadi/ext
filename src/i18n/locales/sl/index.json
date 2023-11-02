@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Prekliči",
     "immersive_chat__delete_all_chat__title": "Izbriši celotno zgodovino pogovora - ste prepričani?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potrdi brisanje",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Prekliči"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Prekliči",
+    "immersive_chat__delete_all_chat__button__title": "Izbriši vse klepete"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

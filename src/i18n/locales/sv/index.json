@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Avbryt",
     "immersive_chat__delete_all_chat__title": "Rensa din konversationshistorik - är du säker?",
     "immersive_chat__delete_all_chat__button__delete__title": "Bekräfta radering",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt",
+    "immersive_chat__delete_all_chat__button__title": "Rensa alla chattar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

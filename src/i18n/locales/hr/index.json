@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Odustani",
     "immersive_chat__delete_all_chat__title": "Obriši povijest razgovora - jesi li siguran?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potvrdi brisanje",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Odustani"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Odustani",
+    "immersive_chat__delete_all_chat__button__title": "Izbriši sve razgovore"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

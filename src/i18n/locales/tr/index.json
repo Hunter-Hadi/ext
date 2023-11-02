@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "İptal",
     "immersive_chat__delete_all_chat__title": "Tüm sohbet geçmişinizi temizlemek istediğinizden emin misiniz?",
     "immersive_chat__delete_all_chat__button__delete__title": "Silme işlemini onayla",
-    "immersive_chat__delete_all_chat__button__cancel__title": "İptal"
+    "immersive_chat__delete_all_chat__button__cancel__title": "İptal",
+    "immersive_chat__delete_all_chat__button__title": "Tüm sohbetleri temizle"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

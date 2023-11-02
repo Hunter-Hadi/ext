@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Cancelar",
     "immersive_chat__delete_all_chat__title": "Limpar o histórico da conversa - tem a certeza?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmar eliminação",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Cancelar"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Cancelar",
+    "immersive_chat__delete_all_chat__button__title": "Limpar todos os chats"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

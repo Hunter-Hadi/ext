@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "रद्द करें",
     "immersive_chat__delete_all_chat__title": "क्या आप वाकई अपने बातचीत इतिहास को साफ करना चाहते हैं?",
     "immersive_chat__delete_all_chat__button__delete__title": "हटाने की पुष्टि करें",
-    "immersive_chat__delete_all_chat__button__cancel__title": "रद्द करें"
+    "immersive_chat__delete_all_chat__button__cancel__title": "रद्द करें",
+    "immersive_chat__delete_all_chat__button__title": "सभी चैट साफ़ करें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

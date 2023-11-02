@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Anulați",
     "immersive_chat__delete_all_chat__title": "Ștergeți întreaga istorie a conversațiilor - sunteți sigur?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmați ștergerea",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Anulați"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Anulați",
+    "immersive_chat__delete_all_chat__button__title": "Ștergeți toate conversațiile"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

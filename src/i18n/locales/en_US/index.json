@@ -477,6 +477,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Delete",
     "immersive_chat__delete_chat__button__cancel__title": "Cancel",
+    "immersive_chat__delete_all_chat__button__title": "Clear all chats",
     "immersive_chat__delete_all_chat__title": "Clear your conversation history - are you sure?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirm deletion",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel"

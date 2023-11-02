@@ -479,7 +479,8 @@
     "immersive_chat__delete_chat__button__cancel__title": "Отмена",
     "immersive_chat__delete_all_chat__title": "Очистить историю переписки - вы уверены?",
     "immersive_chat__delete_all_chat__button__delete__title": "Подтвердить удаление",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Отмена"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Отмена",
+    "immersive_chat__delete_all_chat__button__title": "Очистить все чаты"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

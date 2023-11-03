@@ -42,18 +42,24 @@ const App: FC = () => {
       >
         <AppInit />
         <Announcement />
-        <ChatBoxHeader />
+        <ChatBoxHeader showConversationList />
         <BrowserVersionDetector>
           <AppSuspenseLoadingLayout>
             <Stack flexDirection={'row'} flex={1} height={'calc(100vh - 48px)'}>
               <Stack
-                width={312}
-                flexShrink={0}
                 borderRight={'1px'}
                 borderBottom={0}
                 borderTop={0}
                 borderLeft={0}
                 sx={{
+                  left: 0,
+                  position: 'fixed',
+                  width: 312,
+                  transform: {
+                    xs: 'translateX(-100%)',
+                    sm: 'translateX(0)',
+                  },
+                  transition: 'transform 0.3s ease-in-out',
                   borderStyle: 'solid',
                 }}
                 height={'calc(100vh - 48px)'}
@@ -62,7 +68,17 @@ const App: FC = () => {
               >
                 <ConversationList />
               </Stack>
-              <Stack height={'100%'} maxWidth={768} width={'100vw'} mx={'auto'}>
+              <Stack
+                sx={{
+                  transition: 'width 0.3s ease-in-out',
+                  flexShrink: 0,
+                  width: {
+                    xs: 0,
+                    sm: 312,
+                  },
+                }}
+              />
+              <Stack mx={'auto'} height={'100%'} maxWidth={768} width={'100vw'}>
                 <NormalChatPage />
               </Stack>
             </Stack>

@@ -5,13 +5,13 @@ import {
   CHROME_EXTENSION_HOMEPAGE_URL,
   isEzMailApp,
 } from '@/constants'
-import { EzMailAIIcon, UseChatGptIcon } from '@/components/CustomIcon'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 import Typography from '@mui/material/Typography'
 import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import useCommands from '@/hooks/useCommands'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -21,13 +21,29 @@ import Browser from 'webextension-polyfill'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 
-const ChatBoxHeader: FC = () => {
+const ChatBoxHeader: FC<{
+  showConversationList?: boolean
+}> = (props) => {
+  const { showConversationList } = props
   const { t } = useTranslation(['common', 'client'])
   const { chatBoxShortCutKey } = useCommands()
-
   const { currentSidebarConversationType } = useSidebarSettings()
-
+  const { sidebarBreakpoints } = useSidebarSettings()
+  const theme = useCustomTheme()
+  const isDownSm = useMediaQuery(theme.customTheme.breakpoints.down('sm'))
+  const isShowConversationListMenu = useMemo(() => {
+    if (!showConversationList) {
+      return false
+    }
+    if (isMaxAIImmersiveChatPage()) {
+      return isDownSm
+    } else {
+      return sidebarBreakpoints === 'xs' || sidebarBreakpoints === 'sm'
+    }
+  }, [showConversationList, sidebarBreakpoints, isDownSm])
   return (
     <Stack
       flexDirection={'row'}
@@ -59,23 +75,35 @@ const ChatBoxHeader: FC = () => {
           }
           target={'_blank'}
         >
-          <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
-            <Stack
-              direction={'row'}
-              alignItems={'center'}
-              gap={1}
-              justifyContent={'center'}
-            >
-              {isEzMailApp ? (
-                <EzMailAIIcon sx={{ fontSize: 28, color: 'inherit' }} />
-              ) : (
-                <UseChatGptIcon
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            gap={1}
+            justifyContent={'center'}
+          >
+            {isShowConversationListMenu ? (
+              <IconButton
+                onClick={(event) => {
+                  event.stopPropagation()
+                  event.preventDefault()
+                }}
+              >
+                <ContextMenuIcon
                   sx={{
                     fontSize: 28,
-                    color: 'inherit',
                   }}
+                  icon={'Menu'}
                 />
-              )}
+              </IconButton>
+            ) : (
+              <UseChatGptIcon
+                sx={{
+                  fontSize: 28,
+                  color: 'inherit',
+                }}
+              />
+            )}
+            <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
               <Typography
                 color="text.primary"
                 component="h1"
@@ -84,8 +112,8 @@ const ChatBoxHeader: FC = () => {
               >
                 {String(process.env.APP_NAME)}
               </Typography>
-            </Stack>
-          </TextOnlyTooltip>
+            </TextOnlyTooltip>
+          </Stack>
         </Link>
         <AuthUserRoleIconDropdown />
       </Stack>

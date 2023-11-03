@@ -184,6 +184,7 @@ export const LANGUAGE_CODE_MAP = {
   he_IL: { label: 'עברית (ישראל)', en_label: 'Hebrew (Israel)' },
   hi: { label: 'हिन्दी', en_label: 'Hindi' },
   hr: { label: 'Hrvatski', en_label: 'Croatian' },
+  hy: { label: 'Հայերեն', en_label: 'Armenian' },
   hu: { label: 'Magyar', en_label: 'Hungarian' },
   in: { label: 'Bahasa Indonesia', en_label: 'Indonesian' },
   id: { label: 'Indonesia', en_label: 'Indonesian' },

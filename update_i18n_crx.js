@@ -233,6 +233,7 @@ const emptyPrompt = `
 "he":"",
 "hi":"",
 "hr":"",
+"hy":"",
 "hu":"",
 "id":"",
 "it":"",

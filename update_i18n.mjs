@@ -154,7 +154,7 @@ ${JSON.stringify(translateJson, null, 2)}
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const jsonDir = join(__dirname, 'src/i18n/locales')
 const sourceJsonPath = join(jsonDir, '/en/index.json')
-const BLACK_LIST_KEYS = ['description', 'name', 'shortName']
+const BLACK_LIST_KEYS = []
 // 从src/i18n/types/index.ts复制的
 export const LANGUAGE_CODE_MAP = {
   am: { label: 'አማርኛ', en_label: 'Amharic' },

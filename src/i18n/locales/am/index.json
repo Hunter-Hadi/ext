@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "የእርሶ የክስ ታሪክን ማስጀመሪያ - እርስዎ አልፎ ማስቀመጥ ነው?",
     "immersive_chat__delete_all_chat__button__delete__title": "ማስቀመጥ አስተካክል",
     "immersive_chat__delete_all_chat__button__cancel__title": "ይቅረት",
-    "immersive_chat__delete_all_chat__button__title": "ሁሉንም ውይይትን አጥፋ"
+    "immersive_chat__delete_all_chat__button__title": "ሁሉንም ውይይትን አጥፋ",
+    "sidebar__share__share_button__tooltip": "የኮስታንት ልጥፍ ለውጥ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

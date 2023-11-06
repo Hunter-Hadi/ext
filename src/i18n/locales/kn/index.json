@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "ನಿಮ್ಮ ಚಾಟ್ ಇತಿಹಾಸವನ್ನು ತೆಗೆದುಹಾಕಿ - ಖಚಿತವಾಗಿ?",
     "immersive_chat__delete_all_chat__button__delete__title": "ಅಳಿಸುವುದನ್ನು ದೃಢೀಕರಿಸಿ",
     "immersive_chat__delete_all_chat__button__cancel__title": "ರದ್ದುಗೊಳಿಸು",
-    "immersive_chat__delete_all_chat__button__title": "ಎಲ್ಲಾ ಚಾಟ್‌ಗಳನ್ನು ಅಳಿಸಿ"
+    "immersive_chat__delete_all_chat__button__title": "ಎಲ್ಲಾ ಚಾಟ್‌ಗಳನ್ನು ಅಳಿಸಿ",
+    "sidebar__share__share_button__tooltip": "ಚಾಟ್ ಡೌನ್ಲೋಡ್ ಮಾಡಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

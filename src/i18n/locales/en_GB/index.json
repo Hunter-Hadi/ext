@@ -467,6 +467,7 @@
     "sidebar__search_with_ai__advanced__copilot__description": "Use AI-powered smart queries for exhaustive web searches. Extract complete content from search results. Get answers to the hardest questions with comprehensive web insights.",
     "sidebar__search_with_ai__advanced__search_results__title": "Search results",
     "sidebar__search_with_ai__advanced__search_engine__title": "Search engine",
+    "sidebar__share__share_button__tooltip": "Download chat",
     "input_assistant_button__compose_new__tooltip": "Quick compose",
     "input_assistant_button__compose_reply__tooltip": "Quick reply",
     "input_assistant_button__refine_draft__tooltip": "Edit or review draft",

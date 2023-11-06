@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Xóa toàn bộ lịch sử trò chuyện của bạn - bạn có chắc chắn?",
     "immersive_chat__delete_all_chat__button__delete__title": "Xác nhận xóa",
     "immersive_chat__delete_all_chat__button__cancel__title": "Hủy",
-    "immersive_chat__delete_all_chat__button__title": "Xóa tất cả cuộc trò chuyện"
+    "immersive_chat__delete_all_chat__button__title": "Xóa tất cả cuộc trò chuyện",
+    "sidebar__share__share_button__tooltip": "Tải xuống cuộc trò chuyện"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

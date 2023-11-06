@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "هل أنت متأكد من رغبتك في مسح سجل المحادثات الخاص بك؟",
     "immersive_chat__delete_all_chat__button__delete__title": "تأكيد الحذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "إلغاء",
-    "immersive_chat__delete_all_chat__button__title": "مسح جميع المحادثات"
+    "immersive_chat__delete_all_chat__button__title": "مسح جميع المحادثات",
+    "sidebar__share__share_button__tooltip": "تحميل المحادثة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

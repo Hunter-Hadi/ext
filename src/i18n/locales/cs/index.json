@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Vymazat historii konverzace - jste si jisti?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potvrdit smazání",
     "immersive_chat__delete_all_chat__button__cancel__title": "Zrušit",
-    "immersive_chat__delete_all_chat__button__title": "Vymazat všechny chaty"
+    "immersive_chat__delete_all_chat__button__title": "Vymazat všechny chaty",
+    "sidebar__share__share_button__tooltip": "Stáhnout chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

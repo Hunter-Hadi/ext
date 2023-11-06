@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "清除您的对话历史记录 - 确定吗？",
     "immersive_chat__delete_all_chat__button__delete__title": "确认删除",
     "immersive_chat__delete_all_chat__button__cancel__title": "取消",
-    "immersive_chat__delete_all_chat__button__title": "清除所有聊天"
+    "immersive_chat__delete_all_chat__button__title": "清除所有聊天",
+    "sidebar__share__share_button__tooltip": "下载聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

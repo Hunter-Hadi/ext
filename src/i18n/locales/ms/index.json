@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Padam sejarah perbualan anda - adakah anda pasti?",
     "immersive_chat__delete_all_chat__button__delete__title": "Sahkan pemadaman",
     "immersive_chat__delete_all_chat__button__cancel__title": "Batal",
-    "immersive_chat__delete_all_chat__button__title": "Padam semua perbualan"
+    "immersive_chat__delete_all_chat__button__title": "Padam semua perbualan",
+    "sidebar__share__share_button__tooltip": "Muat turun perbualan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

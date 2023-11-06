@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Slette hele samtalehistorikken din - er du sikker?",
     "immersive_chat__delete_all_chat__button__delete__title": "Bekreft sletting",
     "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt",
-    "immersive_chat__delete_all_chat__button__title": "Slett alle samtaler"
+    "immersive_chat__delete_all_chat__button__title": "Slett alle samtaler",
+    "sidebar__share__share_button__tooltip": "Last ned chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

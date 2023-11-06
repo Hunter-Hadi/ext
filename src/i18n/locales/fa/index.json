@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "پاک کردن تاریخچه گفتگو - آیا مطمئن هستید؟",
     "immersive_chat__delete_all_chat__button__delete__title": "تأیید حذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "لغو",
-    "immersive_chat__delete_all_chat__button__title": "پاک کردن همه چت‌ها"
+    "immersive_chat__delete_all_chat__button__title": "پاک کردن همه چت‌ها",
+    "sidebar__share__share_button__tooltip": "دانلود چت"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

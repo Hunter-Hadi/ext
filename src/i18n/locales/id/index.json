@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Hapus riwayat percakapan Anda - apakah Anda yakin?",
     "immersive_chat__delete_all_chat__button__delete__title": "Konfirmasi penghapusan",
     "immersive_chat__delete_all_chat__button__cancel__title": "Batal",
-    "immersive_chat__delete_all_chat__button__title": "Hapus semua percakapan"
+    "immersive_chat__delete_all_chat__button__title": "Hapus semua percakapan",
+    "sidebar__share__share_button__tooltip": "Unduh percakapan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

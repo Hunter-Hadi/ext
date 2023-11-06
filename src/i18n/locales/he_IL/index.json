@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "נקה את ההיסטוריה של השיחה - האם אתה בטוח?",
     "immersive_chat__delete_all_chat__button__delete__title": "אשר מחיקה",
     "immersive_chat__delete_all_chat__button__cancel__title": "ביטול",
-    "immersive_chat__delete_all_chat__button__title": "נקה את כל השיחות"
+    "immersive_chat__delete_all_chat__button__title": "נקה את כל השיחות",
+    "sidebar__share__share_button__tooltip": "הורדת צ'אט"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

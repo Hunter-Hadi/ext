@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "کیا آپ اپنی بات چیت کی تاریخ صاف کرنا چاہتے ہیں؟",
     "immersive_chat__delete_all_chat__button__delete__title": "تصدیق حذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "منسوخ کریں",
-    "immersive_chat__delete_all_chat__button__title": "تمام چیٹوں کو صاف کریں"
+    "immersive_chat__delete_all_chat__button__title": "تمام چیٹوں کو صاف کریں",
+    "sidebar__share__share_button__tooltip": "چیٹ ڈاؤن لوڈ کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

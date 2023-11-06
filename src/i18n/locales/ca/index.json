@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Esborrar tot l'historial de conversa - esteu segur?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmar esborrat",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel·lar",
-    "immersive_chat__delete_all_chat__button__title": "Esborra tots els xats"
+    "immersive_chat__delete_all_chat__button__title": "Esborra tots els xats",
+    "sidebar__share__share_button__tooltip": "Descarrega el xat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

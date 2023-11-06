@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Cancella la cronologia della conversazione - sei sicuro?",
     "immersive_chat__delete_all_chat__button__delete__title": "Conferma eliminazione",
     "immersive_chat__delete_all_chat__button__cancel__title": "Annulla",
-    "immersive_chat__delete_all_chat__button__title": "Elimina tutte le chat"
+    "immersive_chat__delete_all_chat__button__title": "Elimina tutte le chat",
+    "sidebar__share__share_button__tooltip": "Scarica chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

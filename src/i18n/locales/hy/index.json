@@ -477,7 +477,8 @@
     "immersive_chat__delete_all_chat__button__title": "Մաքրել բոլոր խոսքերը",
     "immersive_chat__delete_all_chat__title": "Մաքրե՞լ ձեր խոսերի պատմությունը - հաստատված եք",
     "immersive_chat__delete_all_chat__button__delete__title": "Հաստատել ջնջումը",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Չեղարկել"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Չեղարկել",
+    "sidebar__share__share_button__tooltip": "Ներբեռնել խոսակցությունը"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

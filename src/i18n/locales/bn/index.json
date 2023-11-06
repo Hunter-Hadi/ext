@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "আপনার চ্যাট ইতিহাস মুছে ফেলবেন - আপনি কি নিশ্চিত?",
     "immersive_chat__delete_all_chat__button__delete__title": "মুছে ফেলতে নিশ্চিত করুন",
     "immersive_chat__delete_all_chat__button__cancel__title": "বাতিল করুন",
-    "immersive_chat__delete_all_chat__button__title": "সমস্ত চ্যাট মুছুন"
+    "immersive_chat__delete_all_chat__button__title": "সমস্ত চ্যাট মুছুন",
+    "sidebar__share__share_button__tooltip": "চ্যাট ডাউনলোড করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

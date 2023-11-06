@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Изчистване на историята на разговора - сигурни ли сте?",
     "immersive_chat__delete_all_chat__button__delete__title": "Потвърди изтриването",
     "immersive_chat__delete_all_chat__button__cancel__title": "Отказ",
-    "immersive_chat__delete_all_chat__button__title": "Изчисти всички чатове"
+    "immersive_chat__delete_all_chat__button__title": "Изчисти всички чатове",
+    "sidebar__share__share_button__tooltip": "Изтегли чат"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

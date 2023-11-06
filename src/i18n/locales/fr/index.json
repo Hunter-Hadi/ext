@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Effacer l'historique de conversation - êtes-vous sûr(e) ?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmer la suppression",
     "immersive_chat__delete_all_chat__button__cancel__title": "Annuler",
-    "immersive_chat__delete_all_chat__button__title": "Effacer tous les chats"
+    "immersive_chat__delete_all_chat__button__title": "Effacer tous les chats",
+    "sidebar__share__share_button__tooltip": "Télécharger le chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

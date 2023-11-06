@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "会話履歴をすべて削除しますか？",
     "immersive_chat__delete_all_chat__button__delete__title": "削除を確認",
     "immersive_chat__delete_all_chat__button__cancel__title": "キャンセル",
-    "immersive_chat__delete_all_chat__button__title": "すべてのチャットをクリア"
+    "immersive_chat__delete_all_chat__button__title": "すべてのチャットをクリア",
+    "sidebar__share__share_button__tooltip": "チャットをダウンロード"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

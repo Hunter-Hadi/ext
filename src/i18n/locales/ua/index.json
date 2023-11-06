@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Очистити історію розмов - ви впевнені?",
     "immersive_chat__delete_all_chat__button__delete__title": "Підтвердити видалення",
     "immersive_chat__delete_all_chat__button__cancel__title": "Скасувати",
-    "immersive_chat__delete_all_chat__button__title": "Очистити всі чати"
+    "immersive_chat__delete_all_chat__button__title": "Очистити всі чати",
+    "sidebar__share__share_button__tooltip": "Завантажити чат"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

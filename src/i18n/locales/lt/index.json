@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "Išvalyti pokalbių istoriją - ar tikrai?",
     "immersive_chat__delete_all_chat__button__delete__title": "Patvirtinti ištrynimą",
     "immersive_chat__delete_all_chat__button__cancel__title": "Atšaukti",
-    "immersive_chat__delete_all_chat__button__title": "Išvalyti visus pokalbius"
+    "immersive_chat__delete_all_chat__button__title": "Išvalyti visus pokalbius",
+    "sidebar__share__share_button__tooltip": "Atsisiųsti pokalbį"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

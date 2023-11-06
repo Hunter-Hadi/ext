@@ -480,7 +480,8 @@
     "immersive_chat__delete_all_chat__title": "നിങ്ങളുടെ സംഭാഷണ ചരിത്രം മായ്ക്കാൻ ഉറപ്പാണോ - ഉറപ്പാണോ?",
     "immersive_chat__delete_all_chat__button__delete__title": "മായ്ക്കൽ സ്ഥിരീകരിക്കുക",
     "immersive_chat__delete_all_chat__button__cancel__title": "റദ്ദാക്കുക",
-    "immersive_chat__delete_all_chat__button__title": "എല്ലാ ചാറ്റുകൾക്കും മായ്‌ക്കുക"
+    "immersive_chat__delete_all_chat__button__title": "എല്ലാ ചാറ്റുകൾക്കും മായ്‌ക്കുക",
+    "sidebar__share__share_button__tooltip": "ചാറ്റ് ഡൗൺലോഡ് ചെയ്യുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

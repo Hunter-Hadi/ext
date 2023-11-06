@@ -128,7 +128,9 @@ const SidebarChatBoxMessageItem: FC<{
           borderRadius: '8px',
           bgcolor: '#333',
           '& > div': {
+            width: '100%',
             maxWidth: 450,
+            mx: 'auto!important',
             bgcolor: '#333',
             padding: 0,
             '& *': {

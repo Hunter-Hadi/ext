@@ -10,29 +10,40 @@ import useFindElement from '@/hooks/useFindElement'
 const MAXAI_YOUTUBE_SUMMARY_BUTTON = 'max-ai-youtube-summary-button'
 const YouTubeSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])
-  const { element } = useFindElement('#top-row')
+  const { element } = useFindElement(
+    'ytd-watch-metadata div#title h1 yt-formatted-string',
+  )
   const [renderElement, setRenderElement] = React.useState<HTMLElement | null>(
     null,
   )
   useEffect(() => {
-    if (
-      element &&
-      !document.querySelector(`#${MAXAI_YOUTUBE_SUMMARY_BUTTON}`)
-    ) {
+    const prevButton = document.querySelector(
+      `#${MAXAI_YOUTUBE_SUMMARY_BUTTON}`,
+    )
+    if (element) {
+      if ((prevButton?.childNodes || 0) > 0) {
+        return
+      } else if (prevButton) {
+        prevButton.remove()
+      }
       // 插入到element的nextSibling
-      const nextElementSibling = element.nextElementSibling
-      if (nextElementSibling) {
-        const button = document.createElement('div')
-        button.id = MAXAI_YOUTUBE_SUMMARY_BUTTON
-        button.style.cssText = `
+      const button = document.createElement('div')
+      button.id = MAXAI_YOUTUBE_SUMMARY_BUTTON
+      button.style.cssText = `
           display: flex;
           align-items: center;
           justify-content: start;
-          padding: 16px 0 0 0;
+          margin-left: auto;
+          flex-shrink: 0;
         `
-        nextElementSibling.parentNode?.insertBefore(button, nextElementSibling)
+      setTimeout(() => {
+        const parent = element.parentNode as HTMLElement
+        if (parent) {
+          parent.style.cssText += `display: flex;align-items: center;gap: 8px;`
+          element.parentNode?.append(button)
+        }
         setRenderElement(button)
-      }
+      }, 5000)
     }
   }, [element])
   if (!renderElement) {
@@ -40,6 +51,7 @@ const YouTubeSummaryButton: FC = () => {
   }
   return (
     <DynamicComponent
+      checkVisibility={false}
       customElementName={'max-ai-youtube-summary-button'}
       rootContainer={renderElement}
     >

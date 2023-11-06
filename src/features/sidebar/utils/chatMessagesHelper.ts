@@ -75,10 +75,11 @@ export const formatThirdOrSystemMessageContent = (
 /**
  * 格式化消息到文字版历史记录
  * @param conversation
+ * @param needSystemOrThirdMessage 是否需要系统消息或第三方消息
  */
 export const formatMessagesToLiteHistory = async (
   conversation: IChatConversation,
-  needSystemOrThirdMessage: boolean = false,
+  needSystemOrThirdMessage: boolean,
 ): Promise<string> => {
   const title = conversation.title
   const messages = conversation.messages || []
@@ -109,7 +110,7 @@ export const formatMessagesToLiteHistory = async (
   //User: Hi there! How can you assist me today?
   //
   //AI: Hello! I'm an AI trained to help with a wide range of topics. Feel free to ask me anything or let me know what you need assistance with.
-  return `---------------------------------------------------------\n${title}\n---------------------------------------------------------\n\n${liteHistory.join(
+  return `---------------------------------------------------------\n${title} powered by MaxAI.me\n---------------------------------------------------------\n\n${liteHistory.join(
     '\n\n',
   )}`
 }

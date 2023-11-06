@@ -14,8 +14,14 @@ const DynamicComponent: FC<{
   rootContainer?: HTMLElement
   customElementName: string
   children: React.ReactNode
+  checkVisibility?: boolean
 }> = (props) => {
-  const { rootContainer, customElementName, children } = props
+  const {
+    rootContainer,
+    customElementName,
+    children,
+    checkVisibility = true,
+  } = props
   const [container, setContainer] = useState<HTMLElement | null>(null)
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   /**
@@ -24,7 +30,10 @@ const DynamicComponent: FC<{
    * so that we do not have to manually insert it into our HTML.
    */
   useEffect(() => {
-    if (rootContainer && elementCheckVisibility(rootContainer) && !container) {
+    if (rootContainer && !container) {
+      if (checkVisibility && !elementCheckVisibility(rootContainer)) {
+        return
+      }
       const isSupportWebComponent = 'customElements' in window
       const container = document.createElement(
         isSupportWebComponent ? customElementName : 'div',
@@ -54,7 +63,7 @@ const DynamicComponent: FC<{
       setContainer(null)
     }
     return () => {}
-  }, [rootContainer, container, customElementName])
+  }, [rootContainer, container, customElementName, checkVisibility])
   if (!container || !emotionCacheRef.current) {
     return null
   }

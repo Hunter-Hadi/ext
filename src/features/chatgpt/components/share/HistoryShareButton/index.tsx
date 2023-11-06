@@ -7,16 +7,23 @@ import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientCon
 import { formatMessagesToLiteHistory } from '@/features/sidebar/utils/chatMessagesHelper'
 import dayjs from 'dayjs'
 
-const HistoryShareButton: FC = () => {
+const HistoryShareButton: FC<{
+  needSystemOrThirdMessage?: boolean
+}> = (props) => {
+  const { needSystemOrThirdMessage = false } = props
   const { t } = useTranslation(['common', 'client'])
   const {
     currentSidebarConversationId,
     currentSidebarConversationMessages,
   } = useSidebarSettings()
-  if (
-    currentSidebarConversationMessages.length === 0 ||
-    !currentSidebarConversationId
-  ) {
+  // 有效的消息
+  const validMessage = currentSidebarConversationMessages.filter((item) => {
+    if (needSystemOrThirdMessage) {
+      return true
+    }
+    return item.type !== 'system' && item.type !== 'third'
+  })
+  if (validMessage.length === 0 || !currentSidebarConversationId) {
     return null
   }
   return (
@@ -29,6 +36,7 @@ const HistoryShareButton: FC = () => {
         if (conversation?.title) {
           const needDownloadText = await formatMessagesToLiteHistory(
             conversation,
+            needSystemOrThirdMessage,
           )
           const blob = new Blob([needDownloadText], {
             type: 'text/plain;charset=utf-8',
@@ -36,9 +44,7 @@ const HistoryShareButton: FC = () => {
           const url = URL.createObjectURL(blob)
           const a = document.createElement('a')
           a.href = url
-          a.download = `${conversation.title}_${dayjs().format(
-            'YYYY_MM_DD_HH:mm',
-          )}.txt`
+          a.download = `MaxAI_Chat_${dayjs().format('YYYY_MM_DD_HH:mm')}.txt`
           a.click()
           URL.revokeObjectURL(url)
         }

@@ -30,6 +30,7 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
           }
           // 替换 ####Title => Title:
           formatText = formatText.replace(/####\s?([^\n]+)/g, '$1:')
+          formatText += `\n\nPowered by MaxAI.me`
         }
         break
       case 'search':
@@ -46,6 +47,7 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
             }
             formatText += citations
           }
+          formatText += `\n\nPowered by MaxAI.me`
         }
         break
       default:

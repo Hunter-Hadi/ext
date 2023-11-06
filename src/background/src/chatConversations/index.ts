@@ -108,6 +108,7 @@ class ConversationDB {
    */
   public addOrUpdateConversation(
     conversation: IChatConversation,
+    needUpdateLastActiveTime = true,
   ): Promise<void> {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
@@ -115,7 +116,9 @@ class ConversationDB {
         const db = await this.openDatabase()
         const transaction = db.transaction([this.objectStoreName], 'readwrite')
         const objectStore = transaction.objectStore(this.objectStoreName)
-        conversation.updated_at = new Date().toISOString()
+        if (needUpdateLastActiveTime) {
+          conversation.updated_at = new Date().toISOString()
+        }
         objectStore.put(conversation)
         transaction.oncomplete = () => {
           resolve() // 操作成功完成，解析 Promise
@@ -288,7 +291,7 @@ export default class ConversationManager {
       defaultConversation,
       newConversation,
     ])
-    await this.conversationDB.addOrUpdateConversation(saveConversation)
+    await this.conversationDB.addOrUpdateConversation(saveConversation, false)
     // 异步清除无用的对话
     this.conversationDB.removeUnnecessaryConversations().then().catch()
     return saveConversation as IChatConversation

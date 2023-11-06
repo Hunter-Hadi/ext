@@ -14,6 +14,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
@@ -90,6 +91,7 @@ const SidebarTabs: FC = () => {
         borderBottom={'1px solid'}
         borderColor="customColor.borderColor"
         bgcolor={'background.paper'}
+        justifyContent={'space-between'}
         sx={{
           position: 'sticky',
           top: 0,
@@ -131,6 +133,9 @@ const SidebarTabs: FC = () => {
             />
           ))}
         </Tabs>
+        <Stack direction={'row'} alignItems={'center'} pr={1}>
+          <HistoryShareButton />
+        </Stack>
       </Stack>
     </>
   )

@@ -66,6 +66,8 @@ import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlin
 import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined'
 import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined'
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined'
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
 import { SxProps } from '@mui/material/styles'
 import { EzMailAIIcon } from '@/components/CustomIcon'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -143,6 +145,8 @@ export const CONTEXT_MENU_ICONS = [
   'LaptopMac',
   'Filter',
   'Tune',
+  'FileUpload',
+  'FileDownload',
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -343,6 +347,10 @@ const ContextMenuIcon: FC<{
       return <FilterAltOutlinedIcon sx={sxMemo} />
     case 'Tune':
       return <TuneOutlinedIcon sx={sxMemo} />
+    case 'FileUpload':
+      return <FileUploadOutlinedIcon sx={sxMemo} />
+    case 'FileDownload':
+      return <FileDownloadOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

@@ -23,6 +23,7 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
 
 const ChatBoxHeader: FC<{
   showConversationList?: boolean
@@ -82,19 +83,7 @@ const ChatBoxHeader: FC<{
             justifyContent={'center'}
           >
             {isShowConversationListMenu ? (
-              <IconButton
-                onClick={(event) => {
-                  event.stopPropagation()
-                  event.preventDefault()
-                }}
-              >
-                <ContextMenuIcon
-                  sx={{
-                    fontSize: 28,
-                  }}
-                  icon={'Menu'}
-                />
-              </IconButton>
+              <ConversationListDrawerButton />
             ) : (
               <UseChatGptIcon
                 sx={{

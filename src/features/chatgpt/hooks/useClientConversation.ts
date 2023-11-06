@@ -94,6 +94,7 @@ const useClientConversation = () => {
         data: {
           initConversationData: {
             type: 'Chat',
+            title: 'Ask AI anything',
             meta: {
               maxTokens,
               ...(await getAIProviderConversationMetaConfig(currentAIProvider)),

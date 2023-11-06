@@ -8,6 +8,7 @@ import { IChatConversation } from '@/background/src/chatConversations'
 import {
   getPageSummaryConversationId,
   getPageSummaryType,
+  IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import { IAIProviderType } from '@/background/provider/chat'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
@@ -114,6 +115,15 @@ const useClientConversation = () => {
       if (conversationId && (await clientGetConversation(conversationId))) {
         return conversationId
       }
+      const conversationTitleMap: {
+        [key in IPageSummaryType]: string
+      } = {
+        PAGE_SUMMARY: 'Page summary & chat',
+        DEFAULT_EMAIL_SUMMARY: 'Email summary & chat',
+        PDF_CRX_SUMMARY: 'PDF summary & chat',
+        YOUTUBE_VIDEO_SUMMARY: 'Video summary & chat',
+      }
+      const pageSummaryType = getPageSummaryType()
       // 如果没有，那么就创建一个
       await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -121,11 +131,12 @@ const useClientConversation = () => {
           initConversationData: {
             id: conversationId,
             type: 'Summary',
+            title: conversationTitleMap[pageSummaryType],
             meta: merge({
               AIProvider: 'USE_CHAT_GPT_PLUS',
               AIModel: 'gpt-3.5-turbo',
               maxTokens: 16384, // gpt-3.5-16k
-              pageSummaryType: getPageSummaryType(),
+              pageSummaryType,
               //               pageSummaryId: pageSummaryData.pageSummaryId,
               //               pageSummaryType: pageSummaryData.pageSummaryType,
               //               systemPrompt: `The following text delimited by triple backticks is the context text:
@@ -162,6 +173,7 @@ const useClientConversation = () => {
         data: {
           initConversationData: {
             type: 'Search',
+            title: 'AI-powered search',
             meta: merge({
               AIProvider: 'USE_CHAT_GPT_PLUS',
               AIModel: 'gpt-3.5-turbo',

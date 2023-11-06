@@ -31,6 +31,7 @@ const ConversationList: FC = () => {
       clientGetAllPaginationConversations()
         .then((conversations) => {
           const beautyConversations = conversations
+            .filter((conversation) => !(conversation.type === 'Summary'))
             .sort((prev, next) => {
               return (
                 dayjs(next.updated_at).valueOf() -

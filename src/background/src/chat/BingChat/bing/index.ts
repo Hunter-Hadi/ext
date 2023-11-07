@@ -11,12 +11,6 @@ import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { v4 as uuidV4 } from 'uuid'
 import { ClientProxyWebSocket } from '@/background/utils/clientProxyWebsocket/background'
 
-const styleOptionMap: Record<BingConversationStyle, string> = {
-  [BingConversationStyle.Balanced]: '',
-  [BingConversationStyle.Creative]: 'h3imaginative',
-  [BingConversationStyle.Precise]: 'h3precise',
-}
-
 const OPTIONS_SETS = [
   'nlu_direct_response_filter',
   'deepleo',
@@ -63,8 +57,17 @@ export class BingWebBot {
     imageUrl?: string,
   ) {
     const requestId = uuidV4()
-    const styleOption = styleOptionMap[conversation.conversationStyle]
-    const optionsSets = OPTIONS_SETS.concat(styleOption || [])
+    const optionsSets = [...OPTIONS_SETS]
+    let tone = 'Balanced'
+    if (conversation.conversationStyle === BingConversationStyle.Precise) {
+      optionsSets.push('h3precise')
+      tone = 'Precise'
+    } else if (
+      conversation.conversationStyle === BingConversationStyle.Creative
+    ) {
+      optionsSets.push('h3imaginative')
+      tone = 'Creative'
+    }
     return {
       arguments: [
         {
@@ -98,6 +101,7 @@ export class BingWebBot {
           conversationId: conversation.conversationId,
           conversationSignature: conversation.conversationSignature,
           participant: { id: conversation.clientId },
+          tone,
         },
       ],
       invocationId: conversation.invocationId.toString(),

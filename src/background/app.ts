@@ -46,6 +46,7 @@ import {
   resetChromeExtensionOnBoardingData,
   backgroundRestartChromeExtension,
   safeGetBrowserTab,
+  createChromeExtensionOptionsPage,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
@@ -413,5 +414,6 @@ const developmentHotReload = () => {
         })
       }
     })
+    createChromeExtensionOptionsPage('#/my-own-prompts')
   }
 }

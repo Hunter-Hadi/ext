@@ -4,7 +4,7 @@ import { ISystemVariableSelectKey } from '@/features/shortcuts/components/System
 
 export type IActionSetVariablesValueType = 'Select' | 'Text'
 
-export interface IActionSetVariables {
+export interface IActionSetVariable {
   label: string
   VariableName: string
   valueType: IActionSetVariablesValueType
@@ -13,8 +13,10 @@ export interface IActionSetVariables {
   options?: IOptionType[]
   placeholder?: string
   hidden?: boolean
+  systemVariable?: boolean
 }
-export interface IActionSetSystemVariables {
+
+export interface IActionSetSystemVariable {
   VariableName: ISystemVariableSelectKey
   defaultValue?: string
   label?: string
@@ -22,5 +24,5 @@ export interface IActionSetSystemVariables {
   hidden?: boolean
 }
 
-export type IActionSetVariablesData = IActionSetVariables[]
-export type IActionSetSystemVariablesData = IActionSetSystemVariables[]
+export type IActionSetVariablesData = Array<IActionSetVariable>
+export type IActionSetSystemVariablesData = IActionSetSystemVariable[]

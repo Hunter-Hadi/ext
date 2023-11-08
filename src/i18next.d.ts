@@ -7,6 +7,7 @@ export type I18nextKeysType =
   | `common:${keyof I18nextResources['common']}`
   | `settings:${keyof I18nextResources['settings']}`
   | `client:${keyof I18nextResources['client']}`
+  | `prompt_editor:${keyof I18nextResources['prompt_editor']}`
 
 declare module 'i18next' {
   // Extend CustomTypeOptions

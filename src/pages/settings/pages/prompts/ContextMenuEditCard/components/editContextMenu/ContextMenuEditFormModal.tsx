@@ -25,6 +25,7 @@ import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import { useTranslation } from 'react-i18next'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutActionsEditor'
 
 function replaceString(str: string, startIndex = 0) {
   const matches = templateStaticWords
@@ -288,6 +289,12 @@ const ContextMenuEditForm: FC<{
                   </Typography>
                   <TemplateTooltip />
                 </Stack>
+                <ShortcutActionsEditor
+                  placeholder={t(
+                    'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
+                  )}
+                  defaultValue={node?.data?.actions}
+                />
                 <Box
                   position={'relative'}
                   sx={{

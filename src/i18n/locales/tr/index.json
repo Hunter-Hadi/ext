@@ -1,6 +1,6 @@
 {
   "description": "ChatGPT, Claude, Bard, Bing'i çevrimiçi herhangi bir yerde kullanmanın en hızlı yolu. İhtiyacınız olan tek üretken yapay zeka destekli uzantı.",
-  "name": "MaxAI.me: ChatGPT AI'yı Her Yerde Çevrimiçi Kullan",
+  "name": "MaxAI.me: İnternet Üzerinde Her Yerde ChatGPT AI Kullanın",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Çıkış yap",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Azaltılmış ChatGPT web sayfası yenilemeleri",
     "feature_card__chatgpt_stable_mode__protips__title": "İpuçları",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT kararlı modu, ChatGPT kesintilerini ve ağ hatalarını azaltan bir özelliktir.",
-    "feature_card__perks__one_click_prompts__title": "Tek tıklamayla ipuçları",
-    "feature_card__perks__one_click_prompts__card_title": "Tek tıklamayla ipuçları",
+    "feature_card__perks__one_click_prompts__title": "1 tıklama ipuçları",
+    "feature_card__perks__one_click_prompts__card_title": "1 tıklama ipuçları",
     "feature_card__perks__one_click_prompts__card_description": "Pazarlama, satış, kopya yazma, operasyon, verimlilik ve müşteri desteği için genişleyen ipucu koleksiyonumuzu kullanarak saatler süren görevleri dakikalara dönüştürün.",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/ipuçlarına gidin",
     "feature_card__perks__rewards__title": "Ödüller",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Pro'ya Yükselt",
     "sidebar__button__retry": "Tekrar dene",
     "sidebar__button__set_up_shortcut": "Kısayolu ayarla",
-    "sidebar__speed_dial__one_click_prompts__button": "Tek tıklamayla ipuçları",
+    "sidebar__speed_dial__one_click_prompts__button": "1 tıklama ipuçları",
     "sidebar__speed_dial__restart_extension__button": "Uzantıyı yeniden başlat",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me uzantısını yeniden başlat?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Hızlı bir uzantı yeniden başlatması, mevcut hataları temizleyebilir.",

@@ -1,6 +1,6 @@
 {
   "description": "La forma más rápida de usar ChatGPT, Claude, Bard, Bing en cualquier lugar en línea. La única extensión impulsada por IA generativa que necesitas.",
-  "name": "MaxAI.me: Usa ChatGPT AI en cualquier lugar en línea",
+  "name": "MaxAI.me: Usa ChatGPT IA en cualquier lugar en línea",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Cerrar sesión",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Reducción de actualizaciones de página web de ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Consejos profesionales",
     "feature_card__chatgpt_stable_mode__protips__item1": "El modo estable de ChatGPT es una función que reduce las interrupciones y los errores de red de ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Prompts con un solo clic",
-    "feature_card__perks__one_click_prompts__card_title": "Prompts con un solo clic",
+    "feature_card__perks__one_click_prompts__title": "Prompts de un solo clic",
+    "feature_card__perks__one_click_prompts__card_title": "Prompts de un solo clic",
     "feature_card__perks__one_click_prompts__card_description": "Convierte tareas de varias horas en minutos utilizando nuestra colección en expansión de prompts para marketing, ventas, redacción, operaciones, productividad y atención al cliente.",
     "feature_card__perks__one_click_prompts__card_button_text": "Obtener MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Recompensas",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Actualizar a Pro",
     "sidebar__button__retry": "Reintentar",
     "sidebar__button__set_up_shortcut": "Configurar acceso directo",
-    "sidebar__speed_dial__one_click_prompts__button": "Prompts con un solo clic",
+    "sidebar__speed_dial__one_click_prompts__button": "Prompts de un solo clic",
     "sidebar__speed_dial__restart_extension__button": "Reiniciar extensión",
     "sidebar__speed_dial__restart_extension__tooltip__title": "¿Reiniciar la extensión MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Un reinicio rápido de la extensión puede solucionar cualquier problema existente.",

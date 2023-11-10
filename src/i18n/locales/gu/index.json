@@ -1,6 +1,6 @@
 {
   "description": "ચેટજીપીટી, ક્લોડ, બાર્ડ, બિંગ કોઈપણ ઓનલાઇન સ્થળે વપરાશ કરવાની સરળતમ રીત. તમને જોઈએ તેવું એકમાત્ર ઉત્પાદનકારી AI-પ્રાધિકારી એક્સટેન્શન.",
-  "name": "MaxAI.me: ચેટજીપીટી એઆઈને ઓનલાઇન ક્યારેય પણ ઉપયોગ કરો",
+  "name": "MaxAI.me: ઓનલાઇન કોઈપણ સ્થળે ChatGPT AI વાપરો",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "લૉગ આઉટ",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "ઘટેલી ChatGPT વેબપેજ રિફ્રેશ",
     "feature_card__chatgpt_stable_mode__protips__title": "પ્રોટિપ્સ",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT સ્થિર મોડ એ એવી વ્યવસ્થા છે જે ChatGPT વિઘટનો અને નેટવર્ક ભૂલોને ઘટાડે છે.",
-    "feature_card__perks__one_click_prompts__title": "એક-ક્લિક પ્રોમ્પ્ટ્સ",
-    "feature_card__perks__one_click_prompts__card_title": "એક-ક્લિક પ્રોમ્પ્ટ્સ",
+    "feature_card__perks__one_click_prompts__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
+    "feature_card__perks__one_click_prompts__card_title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
     "feature_card__perks__one_click_prompts__card_description": "માર્કેટિંગ, વેચાણ, કૉપીરાઇટિંગ, ઓપરેશન, પ્રોડક્ટિવિટી અને ગ્રાહક સપોર્ટ માટે આપણી વિસ્તૃત પ્રોમ્પ્ટ્સનો ઉપયોગ કરીને કેટલાક કામને મિનિટમાં પૂર્ણ કરો.",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/prompts મેળવો",
     "feature_card__perks__rewards__title": "પુરસ્કારો",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "પ્રો માટે અપગ્રેડ કરો",
     "sidebar__button__retry": "ફરીથી પ્રયાસ કરો",
     "sidebar__button__set_up_shortcut": "શૉર્ટકટ સેટ કરો",
-    "sidebar__speed_dial__one_click_prompts__button": "એક-ક્લિક પ્રોમ્પ્ટ્સ",
+    "sidebar__speed_dial__one_click_prompts__button": "1-ક્લિક પ્રોમ્પ્ટ્સ",
     "sidebar__speed_dial__restart_extension__button": "એક્સટેન્શન પુનઃઆરંભ કરો",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me એક્સટેન્શન પુનઃઆરંભ કરીશું?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "તેજીથી એક્સટેન્શન પુનઃઆરંભ કરવાથી બધી હાલની ખરાબીઓ દૂર થઈ શકે છે.",

@@ -1,6 +1,6 @@
 {
   "description": "በየትኛውም የቻትGPT, Claude, Bard, Bing በመጠቀም የተሳተፉ ኢንቴርንት እናደርጋለን። የሚከተለውን የተለያዩ AI-ተጠቃሚ እንዴት እንደሚሆን እንዲሁም የሚያስተምሩ ነው።",
-  "name": "MaxAI.me: በዓለም አይነት በግል የChatGPT AI ይጠቀሙ",
+  "name": "MaxAI.me: የChatGPT AI በመስመር የሚሆን የግል ገጽ በመጠቀም ያለው",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ውጣ",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "የChatGPT የድርጅት ገጽ አድርጓል",
     "feature_card__chatgpt_stable_mode__protips__title": "ፕሮቲፕሶች",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT የስልት አይነት የChatGPT መግቢያዎችን እና የኔትዎርክ ስህተትን አድርጓል።",
-    "feature_card__perks__one_click_prompts__title": "አንድ-ጊዜ ጥቅልልን",
-    "feature_card__perks__one_click_prompts__card_title": "አንድ-ጊዜ ጥቅልልን",
+    "feature_card__perks__one_click_prompts__title": "የ1-ጁን መልእክት",
+    "feature_card__perks__one_click_prompts__card_title": "የ1-ጁን መልእክት",
     "feature_card__perks__one_click_prompts__card_description": "በማስተላለፍያዎችዎ ላይ የሚገኙ ጥቅልሎችን በሰሌዳ በማስተላለፍ ሰሌዳዎን ለመጠቀም፣ ማስተላለፍያዎችዎን፣ ስልክዎን፣ ቡድንዎን፣ ስልክዎን፣ ስልክዎን፣ እና የደንብ ይዘት ለማግኘት የሚያስችል ነው።",
     "feature_card__perks__one_click_prompts__card_button_text": "ይህንን ጥቅልል ይጠቀሙ",
     "feature_card__perks__rewards__title": "ምርጫዎች",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "ወደ Pro እንዲሁም የተዘጋጀውን ይጫኑ",
     "sidebar__button__retry": "ድግሪ",
     "sidebar__button__set_up_shortcut": "የተጠቃሚ መቀጠል ይንከባከቡ",
-    "sidebar__speed_dial__one_click_prompts__button": "አንድ-ጊዜ ጥቅልልን",
+    "sidebar__speed_dial__one_click_prompts__button": "የ1-ጁን መልእክት",
     "sidebar__speed_dial__restart_extension__button": "የተጠቃሚውን አጽዳ",
     "sidebar__speed_dial__restart_extension__tooltip__title": "የMaxAI.me ተጠቃሚውን አጽዳ?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "በቀላሉ የሚገኙ የተለመዱ ማስተካከልዎን ይጠቀምልናል።",

@@ -37,7 +37,7 @@ export const getChromeExtensionUserInfo = async (
         cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
           ?.userData
       let isUpdated = false
-      if (!userData) {
+      if (!userData || forceUpdate) {
         userData = await fetchUserInfo()
         isUpdated = true
       }

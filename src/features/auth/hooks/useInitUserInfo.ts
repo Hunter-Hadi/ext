@@ -24,6 +24,7 @@ const userInitUserInfo = (isInit = true) => {
     currentSidebarConversationId,
   } = useSidebarSettings()
   const needPushUpgradeMessage = useRef(false)
+  const upgradeTextRef = useRef('')
   const syncUserInfo = async () => {
     try {
       setUserInfo((prevState) => {
@@ -102,6 +103,13 @@ const userInitUserInfo = (isInit = true) => {
             ) {
               // 角色发生变化
               needPushUpgradeMessage.current = true
+              if (newRole.name === 'elite') {
+                upgradeTextRef.current =
+                  'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!'
+              } else if (newRole.name === 'pro') {
+                upgradeTextRef.current =
+                  'You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!'
+              }
             }
             return {
               user: {
@@ -147,7 +155,7 @@ const userInitUserInfo = (isInit = true) => {
             messageId: uuidV4(),
             type: 'system',
             parentMessageId: undefined,
-            text: upgradeText,
+            text: upgradeTextRef.current || upgradeText,
             extra: {
               status: 'success',
             },

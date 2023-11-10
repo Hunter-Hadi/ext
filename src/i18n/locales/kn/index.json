@@ -1,6 +1,6 @@
 {
   "description": "ಚಾಟ್‌ಜಿಪಿಟಿ, ಕ್ಲೋಡ್, ಬಾರ್ಡ್, ಬಿಂಗ್ ಯಾವುದೇ ಆನ್‌ಲೈನ್ ಸ್ಥಳದಲ್ಲಿ ಬಳಸುವ ಅತ್ಯುತ್ತಮ ಮಾರ್ಗ. ನೀವು ಬೇಕಾದ ಒಂದು ಜನರೇಟಿವ್ ಎಯ್‌ಐ-ಪವರ್ಡ್ ವಿಸ್ತರಣ ಮಾತ್ರ ಹೊಂದಿದ್ದೀರಿ.",
-  "name": "MaxAI.me: ಚಾಟ್ಜಿಪಿಟಿ AI ಯನ್ನು ಯಾವುದೇ ಆನ್ಲೈನ್ ಸ್ಥಳದಲ್ಲಿಯೂ ಬಳಸಿ",
+  "name": "MaxAI.me: ಚಾಟ್‌ಜಿಪಿಟಿ ಯಾವುದೇ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಬಳಸಿ",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ಲಾಗ್ ಔಟ್",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "ChatGPT ವೆಬ್‌ಪೇಜ್ ರಿಫ್ರೆಶ್ ಮಾಡುವುದನ್ನು ಕಡಿಮೆ ಮಾಡುವುದು",
     "feature_card__chatgpt_stable_mode__protips__title": "ಪ್ರೊಟಿಪ್ಸ್",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT ಸ್ಥಿರ ಮೋಡ್ ಅಂದರೆ ChatGPT ಅಡಿಯಲ್ಲಿ ನಿಲ್ಲುವುದು ಮತ್ತು ನೆಟ್ವರ್ಕ್ ದೋಷಗಳನ್ನು ಕಡಿಮೆ ಮಾಡುವ ಒಂದು ಅನುಕೂಲ",
-    "feature_card__perks__one_click_prompts__title": "ಒಂದು ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
-    "feature_card__perks__one_click_prompts__card_title": "ಒಂದು ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
+    "feature_card__perks__one_click_prompts__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
+    "feature_card__perks__one_click_prompts__card_title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
     "feature_card__perks__one_click_prompts__card_description": "ಮಾರ್ಕೆಟಿಂಗ್, ಮಾರ್ಜಕ್, ಕಾಪಿರೈಟಿಂಗ್, ಆಪರೇಷನ್, ಉತ್ಪನ್ನಕ್ಕೆ ಸಹಾಯಕರವಾಗಿ, ಉತ್ಪನ್ನಕ್ಕೆ ಸಹಾಯಕರವಾಗಿ, ಉತ್ಪನ್ನಕ್ಕೆ ಸಹಾಯಕರವಾಗಿ ನಮ್ಮ ವಿಸ್ತರಿಸುವ ಪ್ರಾಂಪ್ಟ್‌ಗಳ ಬಳಕೆಯಿಂದ ಅನಾವಶ್ಯಕ ಸಮಯವನ್ನು ಕಡಿಮೆಗೊಳಿಸಿ.",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/prompts ಪಡೆಯಿರಿ",
     "feature_card__perks__rewards__title": "ಪ್ರತಿಫಲಗಳು",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "ಪ್ರೊ ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "sidebar__button__retry": "ಮರುಪ್ರಯತ್ನಿಸಿ",
     "sidebar__button__set_up_shortcut": "ಶಾರ್ಟ್‌ಕಟ್ ಹೊಂದಿಸಿ",
-    "sidebar__speed_dial__one_click_prompts__button": "ಒಂದು ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
+    "sidebar__speed_dial__one_click_prompts__button": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
     "sidebar__speed_dial__restart_extension__button": "ಎಕ್ಸ್ಟೆನ್ಶನ್ ಮರುಪ್ರಾರಂಭಿಸಿ",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me ಎಕ್ಸ್ಟೆನ್ಶನ್ ಮರುಪ್ರಾರಂಭಿಸುವುದೇ?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "ಎಕ್ಸ್ಟೆನ್ಶನ್ ಯಾವುದೇ ಅಡ್ಡಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲು ತ್ವರಿತ ಮರುಪ್ರಾರಂಭಣೆ ಮಾಡಬಹುದು.",

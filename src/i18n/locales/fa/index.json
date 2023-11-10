@@ -1,6 +1,6 @@
 {
   "description": "سریعترین راه برای استفاده از ChatGPT، Claude، Bard، Bing در هر جایی آنلاین. تنها افزونه قدرتمند AI تولیدی که نیاز دارید.",
-  "name": "MaxAI.me: از ChatGPT AI در هر جایی آنلاین استفاده کنید",
+  "name": "MaxAI.me: استفاده از هوش مصنوعی ChatGPT در هر جایی آنلاین",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "خروج",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "کاهش تازه‌سازی صفحه وب ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "نکات حرفه‌ای",
     "feature_card__chatgpt_stable_mode__protips__item1": "حالت پایدار ChatGPT یک ویژگی است که میزان وقفه‌ها و خطاهای شبکه ChatGPT را کاهش می‌دهد.",
-    "feature_card__perks__one_click_prompts__title": "پرومپت‌های یک کلیک",
-    "feature_card__perks__one_click_prompts__card_title": "پرومپت‌های یک کلیک",
+    "feature_card__perks__one_click_prompts__title": "پیشنهادهای 1 کلیک",
+    "feature_card__perks__one_click_prompts__card_title": "پیشنهادهای 1 کلیک",
     "feature_card__perks__one_click_prompts__card_description": "با استفاده از مجموعه‌ای گسترده از پرومپت‌ها برای بازاریابی، فروش، نوشتن متن، عملیات، بهره‌وری و پشتیبانی مشتری، وظایفی که ساعت‌ها طول می‌کشد را به چند دقیقه تبدیل کنید.",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/prompts را دریافت کنید",
     "feature_card__perks__rewards__title": "جوایز",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "ارتقا به نسخه حرفه‌ای",
     "sidebar__button__retry": "تلاش مجدد",
     "sidebar__button__set_up_shortcut": "تنظیم میان‌بر",
-    "sidebar__speed_dial__one_click_prompts__button": "پرومپت‌های یک کلیک",
+    "sidebar__speed_dial__one_click_prompts__button": "پیشنهادهای 1 کلیک",
     "sidebar__speed_dial__restart_extension__button": "راه‌اندازی مجدد افزونه",
     "sidebar__speed_dial__restart_extension__tooltip__title": "آیا می‌خواهید افزونه MaxAI.me را راه‌اندازی مجدد کنید؟",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "راه‌اندازی سریع افزونه ممکن است همه خطاهای موجود را پاک کند.",

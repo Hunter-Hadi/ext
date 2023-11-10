@@ -1,6 +1,6 @@
 {
   "description": "Det snabbaste sättet att använda ChatGPT, Claude, Bard, Bing var som helst online. Den enda generativa AI-drivna tillägg du behöver.",
-  "name": "MaxAI.me: Använd ChatGPT AI Var Som Helst Online",
+  "name": "MaxAI.me: Använd ChatGPT AI var som helst online",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logga ut",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Minskar uppdateringar av ChatGPT-webbsida",
     "feature_card__chatgpt_stable_mode__protips__title": "Pro tips",
     "feature_card__chatgpt_stable_mode__protips__item1": "Stabilt läge för ChatGPT är en funktion som minskar avbrott och nätverksfel i ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Ett klicks-promptar",
-    "feature_card__perks__one_click_prompts__card_title": "Ett klicks-promptar",
+    "feature_card__perks__one_click_prompts__title": "1-klicks-prompt",
+    "feature_card__perks__one_click_prompts__card_title": "1-klicks-prompt",
     "feature_card__perks__one_click_prompts__card_description": "Gör timmar långa uppgifter till minuter med vår växande samling av promptar för marknadsföring, försäljning, textskrivning, drift, produktivitet och kundsupport.",
     "feature_card__perks__one_click_prompts__card_button_text": "Få MaxAI.me/promptar",
     "feature_card__perks__rewards__title": "Belöningar",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Uppgradera till Pro",
     "sidebar__button__retry": "Försök igen",
     "sidebar__button__set_up_shortcut": "Konfigurera genväg",
-    "sidebar__speed_dial__one_click_prompts__button": "Ett klicks-promptar",
+    "sidebar__speed_dial__one_click_prompts__button": "1-klicks-prompt",
     "sidebar__speed_dial__restart_extension__button": "Starta om tillägg",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Starta om MaxAI.me-tillägget?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "En snabb omstart av tillägget kan rensa eventuella befintliga fel.",

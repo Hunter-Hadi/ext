@@ -1,6 +1,6 @@
 {
   "description": "Najhitrejši način uporabe ChatGPT, Claude, Bard, Bing kjerkoli na spletu. Edina razširitev z generativno umetno inteligenco, ki jo potrebujete.",
-  "name": "MaxAI.me: Uporabljajte ChatGPT AI kjerkoli na spletu",
+  "name": "MaxAI.me: Uporabite ChatGPT AI kjerkoli na spletu",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odjava",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Zmanjšano osveževanje spletne strani ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Nasveti",
     "feature_card__chatgpt_stable_mode__protips__item1": "Stabilni način ChatGPT je funkcija, ki zmanjšuje prekinitve in napake omrežja ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Enoklikovni predlogi",
-    "feature_card__perks__one_click_prompts__card_title": "Enoklikovni predlogi",
+    "feature_card__perks__one_click_prompts__title": "1-klikovna sporočila",
+    "feature_card__perks__one_click_prompts__card_title": "1-klikovna sporočila",
     "feature_card__perks__one_click_prompts__card_description": "S pomočjo naše razširjajoče se zbirke predlogov za trženje, prodajo, pisanje besedil, delovanje, produktivnost in podporo strankam lahko opravite naloge, ki bi sicer trajale ure, v nekaj minutah.",
     "feature_card__perks__one_click_prompts__card_button_text": "Pridobite MaxAI.me/predloge",
     "feature_card__perks__rewards__title": "Nagrade",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Nadgradite na Pro",
     "sidebar__button__retry": "Poskusite znova",
     "sidebar__button__set_up_shortcut": "Nastavite bližnjico",
-    "sidebar__speed_dial__one_click_prompts__button": "Enoklikovni predlogi",
+    "sidebar__speed_dial__one_click_prompts__button": "1-klikovna sporočila",
     "sidebar__speed_dial__restart_extension__button": "Ponovni zagon razširitve",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Ali želite ponovno zagnati razširitev MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Hitri ponovni zagon razširitve lahko odpravi vse obstoječe težave.",

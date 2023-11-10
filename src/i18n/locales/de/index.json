@@ -1,6 +1,6 @@
 {
   "description": "Der schnellste Weg, ChatGPT, Claude, Bard, Bing überall online zu nutzen. Die einzige generative KI-gesteuerte Erweiterung, die Sie benötigen.",
-  "name": "MaxAI.me: Nutzen Sie ChatGPT AI überall online",
+  "name": "MaxAI.me: Verwenden Sie ChatGPT KI überall online",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Abmelden",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Reduzierte Aktualisierungen der ChatGPT-Webseite",
     "feature_card__chatgpt_stable_mode__protips__title": "Protipps",
     "feature_card__chatgpt_stable_mode__protips__item1": "Der stabile ChatGPT-Modus ist eine Funktion, die Unterbrechungen und Netzwerkfehler bei der ChatGPT reduziert.",
-    "feature_card__perks__one_click_prompts__title": "Ein-Klick-Vorlagen",
-    "feature_card__perks__one_click_prompts__card_title": "Ein-Klick-Vorlagen",
+    "feature_card__perks__one_click_prompts__title": "1-Klick-Anfragen",
+    "feature_card__perks__one_click_prompts__card_title": "1-Klick-Anfragen",
     "feature_card__perks__one_click_prompts__card_description": "Verwandeln Sie stundenlange Aufgaben in Minuten mit unserer wachsenden Sammlung von Vorlagen für Marketing, Vertrieb, Texterstellung, Betrieb, Produktivität und Kundensupport.",
     "feature_card__perks__one_click_prompts__card_button_text": "Erhalten Sie MaxAI.me/Vorlagen",
     "feature_card__perks__rewards__title": "Belohnungen",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Auf Pro upgraden",
     "sidebar__button__retry": "Erneut versuchen",
     "sidebar__button__set_up_shortcut": "Verknüpfung einrichten",
-    "sidebar__speed_dial__one_click_prompts__button": "Ein-Klick-Vorlagen",
+    "sidebar__speed_dial__one_click_prompts__button": "1-Klick-Anfragen",
     "sidebar__speed_dial__restart_extension__button": "Erweiterung neu starten",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me-Erweiterung neu starten?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Ein schneller Neustart der Erweiterung kann alle vorhandenen Fehler beheben.",

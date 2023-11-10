@@ -1,6 +1,6 @@
 {
   "description": "在线使用ChatGPT、Claude、Bard、Bing的最快方式。您唯一需要的生成式AI扩展。",
-  "name": "MaxAI.me：在任何网页上使用ChatGPT AI",
+  "name": "MaxAI.me：在线使用 ChatGPT AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "退出",

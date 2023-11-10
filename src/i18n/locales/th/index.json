@@ -1,6 +1,6 @@
 {
   "description": "วิธีที่เร็วที่สุดในการใช้ ChatGPT, Claude, Bard, Bing ทุกที่ออนไลน์ เป็นส่วนขยายที่ใช้งานได้เพียงอย่างเดียวที่คุณต้องการ",
-  "name": "MaxAI.me: ใช้ ChatGPT AI ที่ไหนก็ได้ออนไลน์",
+  "name": "MaxAI.me: ใช้ ChatGPT AI ทุกที่ออนไลน์",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ออกจากระบบ",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "ลดการรีเฟรชหน้าเว็บ ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "เคล็ดลับ",
     "feature_card__chatgpt_stable_mode__protips__item1": "โหมดเสถียร ChatGPT เป็นคุณสมบัติที่ลดขัดตอนและข้อผิดพลาดในเครือข่าย ChatGPT",
-    "feature_card__perks__one_click_prompts__title": "คำให้การแบบ One-click",
-    "feature_card__perks__one_click_prompts__card_title": "คำให้การแบบ One-click",
+    "feature_card__perks__one_click_prompts__title": "คำแนะนำด้วยการคลิกเพียงครั้งเดียว",
+    "feature_card__perks__one_click_prompts__card_title": "คำแนะนำด้วยการคลิกเพียงครั้งเดียว",
     "feature_card__perks__one_click_prompts__card_description": "แปลงงานที่ใช้เวลานานเป็นเพียงไม่กี่นาทีโดยใช้คำให้การที่ขยายออกไปของเราสำหรับการตลาด การขาย การเขียนคัดลอก การดำเนินการ การผลิต และการสนับสนุนลูกค้า",
     "feature_card__perks__one_click_prompts__card_button_text": "รับ MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "รางวัล",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "อัปเกรดเป็น Pro",
     "sidebar__button__retry": "ลองใหม่",
     "sidebar__button__set_up_shortcut": "ตั้งค่าทางลัด",
-    "sidebar__speed_dial__one_click_prompts__button": "คำให้การแบบ One-click",
+    "sidebar__speed_dial__one_click_prompts__button": "คำแนะนำด้วยการคลิกเพียงครั้งเดียว",
     "sidebar__speed_dial__restart_extension__button": "รีสตาร์ทส่วนขยาย",
     "sidebar__speed_dial__restart_extension__tooltip__title": "รีสตาร์ทส่วนขยาย MaxAI.me อีกครั้ง?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "การรีสตาร์ทส่วนขยายอย่างรวดเร็วสามารถล้างข้อผิดพลาดที่มีอยู่ทั้งหมดได้",

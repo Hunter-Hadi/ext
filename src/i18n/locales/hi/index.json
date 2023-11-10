@@ -1,6 +1,6 @@
 {
   "description": "चैटजीपीटी, क्लोड, बार्ड, बिंग का उपयोग करने का सबसे तेज़ तरीका। आपकी जरूरत का एकमात्र प्रेरक ए.आई.-संचालित एक्सटेंशन।",
-  "name": "MaxAI.me: कहीं भी ऑनलाइन ChatGPT AI का उपयोग करें",
+  "name": "MaxAI.me: चैटजीपीटी एआई को ऑनलाइन कहीं भी उपयोग करें",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "कम ChatGPT वेबपेज ताजगी",
     "feature_card__chatgpt_stable_mode__protips__title": "प्रोटिप्स",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT स्थिर मोड एक सुविधा है जो ChatGPT विघटनाओं और नेटवर्क त्रुटियों को कम करती है।",
-    "feature_card__perks__one_click_prompts__title": "एक क्लिक प्रॉम्प्ट",
-    "feature_card__perks__one_click_prompts__card_title": "एक क्लिक प्रॉम्प्ट",
+    "feature_card__perks__one_click_prompts__title": "1-क्लिक प्रॉम्प्ट",
+    "feature_card__perks__one_click_prompts__card_title": "1-क्लिक प्रॉम्प्ट",
     "feature_card__perks__one_click_prompts__card_description": "मार्केटिंग, बिक्री, कॉपीराइटिंग, संचालन, उत्पादकता और ग्राहक सहायता के लिए हमारे विस्तारित प्रॉम्प्ट संग्रह का उपयोग करके घंटों के कार्य को मिनटों में बदलें।",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/prompts प्राप्त करें",
     "feature_card__perks__rewards__title": "पुरस्कार",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "प्रो में अपग्रेड करें",
     "sidebar__button__retry": "पुनः प्रयास करें",
     "sidebar__button__set_up_shortcut": "शॉर्टकट सेट करें",
-    "sidebar__speed_dial__one_click_prompts__button": "एक क्लिक प्रॉम्प्ट्स",
+    "sidebar__speed_dial__one_click_prompts__button": "1-क्लिक प्रॉम्प्ट",
     "sidebar__speed_dial__restart_extension__button": "एक्सटेंशन पुनः आरंभ करें",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me एक्सटेंशन को पुनः आरंभ करें?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "एक त्वरित एक्सटेंशन पुनः आरंभ सभी मौजूदा ग्लिच को साफ कर सकता है।",

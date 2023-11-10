@@ -1,6 +1,6 @@
 {
   "description": "Il modo più veloce per utilizzare ChatGPT, Claude, Bard, Bing ovunque online. L'unica estensione alimentata da intelligenza artificiale generativa di cui hai bisogno.",
-  "name": "MaxAI.me: Usa ChatGPT AI ovunque online",
+  "name": "MaxAI.me: Utilizza ChatGPT AI ovunque online",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Esci",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Riduzione dei ricaricamenti delle pagine di ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Consigli utili",
     "feature_card__chatgpt_stable_mode__protips__item1": "La modalità stabile di ChatGPT è una funzionalità che riduce le interruzioni e gli errori di rete di ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Prompts con un solo clic",
-    "feature_card__perks__one_click_prompts__card_title": "Prompts con un solo clic",
+    "feature_card__perks__one_click_prompts__title": "Promemoria a un clic",
+    "feature_card__perks__one_click_prompts__card_title": "Promemoria a un clic",
     "feature_card__perks__one_click_prompts__card_description": "Trasforma compiti che richiedono ore in pochi minuti utilizzando la nostra vasta collezione di prompts per marketing, vendite, copywriting, operazioni, produttività e supporto clienti.",
     "feature_card__perks__one_click_prompts__card_button_text": "Ottieni MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Ricompense",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Passa a Pro",
     "sidebar__button__retry": "Riprova",
     "sidebar__button__set_up_shortcut": "Imposta una scorciatoia",
-    "sidebar__speed_dial__one_click_prompts__button": "Prompts con un solo clic",
+    "sidebar__speed_dial__one_click_prompts__button": "Promemoria a un clic",
     "sidebar__speed_dial__restart_extension__button": "Riavvia l'estensione",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Riavviare l'estensione MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Un rapido riavvio dell'estensione può risolvere tutti i problemi esistenti.",

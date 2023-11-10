@@ -116,6 +116,9 @@ dependencies:
   react-highlight:
     specifier: ^0.15.0
     version: registry.npmmirror.com/react-highlight@0.15.0
+  react-hook-form:
+    specifier: ^7.48.2
+    version: registry.npmmirror.com/react-hook-form@7.48.2(react@18.2.0)
   react-i18next:
     specifier: ^13.0.2
     version: registry.npmmirror.com/react-i18next@13.0.2(i18next@23.3.0)(react-dom@18.2.0)(react@18.2.0)
@@ -8131,6 +8134,18 @@ packages:
     version: 0.15.0
     dependencies:
       highlight.js: registry.npmmirror.com/highlight.js@10.7.3
+    dev: false
+
+  registry.npmmirror.com/react-hook-form@7.48.2(react@18.2.0):
+    resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-hook-form/-/react-hook-form-7.48.2.tgz}
+    id: registry.npmmirror.com/react-hook-form/7.48.2
+    name: react-hook-form
+    version: 7.48.2
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: registry.npmmirror.com/react@18.2.0
     dev: false
 
   registry.npmmirror.com/react-i18next@13.0.2(i18next@23.3.0)(react-dom@18.2.0)(react@18.2.0):

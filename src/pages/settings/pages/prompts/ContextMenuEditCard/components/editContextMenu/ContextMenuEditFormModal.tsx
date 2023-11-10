@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import cloneDeep from 'lodash-es/cloneDeep'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -112,6 +112,7 @@ const isAutoAskChatGPT = (actions?: IContextMenuItem['data']['actions']) => {
     return true
   }
 }
+
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionButtonSettingKey
@@ -177,7 +178,93 @@ const ContextMenuEditForm: FC<{
     setSelectedIcon(cloneNode.data?.icon as any)
     setAutoAskChatGPT(isAutoAskChatGPT(cloneNode.data.actions))
   }, [node])
+  const dd = useRef<any>([])
+  useEffect(() => {
+    // generateSearchWithAIActions('QQQQ', [], false).then(({ actions }) => {
+    //   dd.current = actions
+    // })
+    dd.current = [
+      {
+        type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+        parameters: {},
+      },
+      {
+        type: 'SET_VARIABLES_MODAL',
+        parameters: {
+          SetVariablesModalConfig: {
+            contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+            title: 'Reply with key points',
+            modelKey: 'Sidebar',
+            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
 
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+
+Here's the text to reply to:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+---
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
+
+Do not use hashtags. Write the reply like a real person would. 
+
+Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
+{{KEY_POINTS}}`,
+            variables: [
+              {
+                label: 'Context',
+                VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT',
+                valueType: 'Text',
+                placeholder: 'Enter context',
+                defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+              },
+              {
+                label: 'Target post/comment',
+                VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
+                valueType: 'Text',
+                placeholder: 'Enter target post/comment',
+                defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+              },
+              {
+                label: 'Key points',
+                VariableName: 'KEY_POINTS',
+                valueType: 'Text',
+                placeholder: 'Enter key points',
+              },
+            ],
+            systemVariables: [
+              {
+                VariableName: 'AI_RESPONSE_LANGUAGE',
+                defaultValue: 'English',
+              },
+              {
+                VariableName: 'AI_RESPONSE_TONE',
+                defaultValue: 'Default',
+              },
+              {
+                VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                defaultValue: 'Default',
+              },
+            ],
+          },
+        },
+      },
+    ]
+  }, [])
   return (
     <Modal open={open} onClose={onCancel}>
       <Container
@@ -293,7 +380,7 @@ const ContextMenuEditForm: FC<{
                   placeholder={t(
                     'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
                   )}
-                  defaultValue={node?.data?.actions}
+                  defaultValue={dd.current || node?.data?.actions}
                 />
                 <Box
                   position={'relative'}

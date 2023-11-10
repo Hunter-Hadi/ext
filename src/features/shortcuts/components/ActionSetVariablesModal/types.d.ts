@@ -8,8 +8,9 @@ export interface IActionSetVariable {
   label: string
   VariableName: string
   valueType: IActionSetVariablesValueType
-  i18nKey?: I18nextKeysType
   defaultValue?: string
+  description?: string
+  i18nKey?: I18nextKeysType
   options?: IOptionType[]
   placeholder?: string
   hidden?: boolean
@@ -20,9 +21,10 @@ export interface IActionSetSystemVariable {
   VariableName: ISystemVariableSelectKey
   defaultValue?: string
   label?: string
+  description?: string
   placeholder?: string
   hidden?: boolean
 }
 
-export type IActionSetVariablesData = Array<IActionSetVariable>
+export type IActionSetVariablesData = IActionSetVariable[]
 export type IActionSetSystemVariablesData = IActionSetSystemVariable[]

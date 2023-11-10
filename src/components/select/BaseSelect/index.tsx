@@ -95,6 +95,9 @@ const BaseSelect: FC<IBaseSelectProps> = ({
     option: IOptionType,
     index: number,
   ) => {
+    if (!option) {
+      return null
+    }
     if (renderLabel) {
       return renderLabel(value, option || {}, index)
     }

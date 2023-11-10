@@ -1,17 +1,18 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import ContentEditable from 'react-contenteditable'
-import useShortcutEditorActionVariables, {
-  PRESET_VARIABLES_GROUP_MAP,
-  IPresetVariablesItem,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/useShortcutEditorActionVariables'
-import { promptTemplateToHtml } from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
-import Typography from '@mui/material/Typography'
-import { useTranslation } from 'react-i18next'
-import PresetVariablesTag from '@/features/shortcuts/components/ShortcutActionsEditor/PresetVariablesTag'
+import {
+  generateVariableHtmlContent,
+  promptEditorAddHtmlToFocusNode,
+} from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
+import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
+import PresetVariables from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables'
+import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
+import PromptVariableEditor from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor'
 
 const ShortcutActionsEditor: FC<{
   defaultValue?: ISetActionsType
@@ -22,12 +23,29 @@ const ShortcutActionsEditor: FC<{
   onSave?: ISetActionsType
   sx?: SxProps
 }> = (props) => {
-  const { t } = useTranslation(['common', 'prompt_editor'])
   const { defaultValue, disabled, placeholder, sx, minHeight = 240 } = props
-  const { variables } = useShortcutEditorActionVariables()
-  const [inputHtml, setInputHtml] = useState('')
-  const [plainText, setPlainText] = useState('')
+  const { setActions, editHTML, updateEditHTML } = useShortcutEditorActions()
+  const theme = useCustomTheme()
   const inputRef = useRef<HTMLDivElement>(null)
+  const lastSelectionRangeRef = useRef<Range | null>(null)
+  const addTextVariableToHTML = useCallback(
+    (variable: IActionSetVariable) => {
+      if (inputRef.current) {
+        const addHtml = `${generateVariableHtmlContent(
+          variable.VariableName,
+          variable.label,
+          theme.isDarkMode,
+        )}`
+        lastSelectionRangeRef.current = promptEditorAddHtmlToFocusNode(
+          inputRef.current,
+          addHtml,
+          lastSelectionRangeRef.current || undefined,
+        )
+        updateEditHTML(inputRef.current.innerHTML)
+      }
+    },
+    [theme.isDarkMode],
+  )
   const memoSx = useMemo<SxProps>(() => {
     return {
       pointerEvents: disabled ? 'none' : 'auto',
@@ -67,103 +85,48 @@ const ShortcutActionsEditor: FC<{
       ...sx,
     }
   }, [placeholder, minHeight, sx, disabled])
-  const [actions, setActions] = useState<ISetActionsType>([])
   useEffect(() => {
-    console.log('defaultValue', defaultValue)
-    if (defaultValue?.length && !inputHtml) {
-      const findPrompt =
-        defaultValue.find((action) => action.type === 'RENDER_TEMPLATE') ||
-        defaultValue.find((action) => action.type === 'ASK_CHATGPT') ||
-        defaultValue.find((action) => action.type === 'RENDER_CHATGPT_PROMPT')
-      if (findPrompt?.parameters.template) {
-        console.log('defaultValue', findPrompt?.parameters.template)
-        setPlainText(findPrompt.parameters.template)
-        setInputHtml(promptTemplateToHtml(findPrompt.parameters.template))
-      }
-      setActions(actions)
+    if (defaultValue) {
+      setActions(defaultValue)
     }
-  }, [defaultValue, inputHtml])
+  }, [defaultValue])
   return (
-    <Stack>
+    <Stack spacing={1}>
       <Box sx={memoSx}>
         <ContentEditable
           innerRef={inputRef}
           className={'prompt-template-input'}
           id={'prompt-template-input'}
-          html={inputHtml}
+          html={editHTML}
           // disabled={disabled}
           placeholder={placeholder}
           onChange={(event) => {
-            setInputHtml(event.target.value)
-            setPlainText(event.currentTarget.innerText)
+            updateEditHTML(event.target.value)
           }}
-          onFocus={() => {}}
+          onMouseUp={(event) => {
+            console.log('onClick', event)
+            // 保存光标位置
+            lastSelectionRangeRef.current =
+              window.getSelection()?.getRangeAt(0)?.cloneRange() || null
+          }}
+          onKeyUp={(event) => {
+            console.log('onKeyUp', event)
+            // 保存光标位置
+            lastSelectionRangeRef.current =
+              window.getSelection()?.getRangeAt(0)?.cloneRange() || null
+          }}
         />
       </Box>
-      <Stack>
-        <Stack direction={'row'} alignItems={'center'} spacing={0.5} mb={1}>
-          <Typography fontSize={'14px'}>Use preset variables</Typography>
-        </Stack>
-        <Stack
-          sx={{
-            border: '1px solid',
-            borderColor: 'customColor.borderColor',
-            bgcolor: 'customColor.paperBackground',
-            borderRadius: 1,
-            mb: 2,
-          }}
-        >
-          {Object.keys(PRESET_VARIABLES_GROUP_MAP).map(
-            (presetVariableGroupKey, index) => {
-              const presetVariableGroupName = t(presetVariableGroupKey as any)
-              const variables = PRESET_VARIABLES_GROUP_MAP[
-                presetVariableGroupKey as any
-              ] as IPresetVariablesItem[]
-              return (
-                <Stack
-                  key={presetVariableGroupKey}
-                  direction="row"
-                  borderBottom={
-                    index < Object.keys(PRESET_VARIABLES_GROUP_MAP).length - 1
-                      ? '1px solid'
-                      : 'none'
-                  }
-                  borderColor="inherit"
-                  alignItems="center"
-                >
-                  <Stack
-                    p={1}
-                    flexBasis="15%"
-                    flexDirection={'row'}
-                    alignItems="center"
-                  >
-                    <Typography variant="body2">
-                      {presetVariableGroupName}
-                    </Typography>
-                  </Stack>
-                  <Stack
-                    direction="row"
-                    p={1}
-                    spacing={1}
-                    flexWrap="wrap"
-                    alignItems="center"
-                    borderLeft="1px solid"
-                    borderColor="inherit"
-                  >
-                    {variables.map((variable) => (
-                      <PresetVariablesTag
-                        key={variable.value}
-                        presetVariable={variable}
-                        onClick={() => {}}
-                      />
-                    ))}
-                  </Stack>
-                </Stack>
-              )
-            },
-          )}
-        </Stack>
-      </Stack>
+      <PresetVariables
+        onClick={(variable) => {
+          addTextVariableToHTML(variable)
+        }}
+      />
+      <PromptVariableEditor
+        onAddTextVariable={(variable) => {
+          addTextVariableToHTML(variable)
+        }}
+      />
     </Stack>
   )
 }

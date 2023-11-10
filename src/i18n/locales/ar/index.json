@@ -1,6 +1,6 @@
 {
   "description": "أسرع طريقة لاستخدام ChatGPT، Claude، Bard، Bing في أي مكان عبر الإنترنت. الامتداد الوحيد المدعوم بالذكاء الاصطناعي الذي تحتاجه.",
-  "name": "MaxAI.me: استخدم ChatGPT AI في أي مكان عبر الإنترنت",
+  "name": "MaxAI.me: استخدم ChatGPT AI بنقرة واحدة في أي مكان",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "تسجيل الخروج",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "تقليل تحديثات صفحة ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "نصائح مهمة",
     "feature_card__chatgpt_stable_mode__protips__item1": "وضع ChatGPT المستقر هو ميزة تقلل من انقطاعات ChatGPT وأخطاء الشبكة.",
-    "feature_card__perks__one_click_prompts__title": "التلميحات بنقرة واحدة",
-    "feature_card__perks__one_click_prompts__card_title": "التلميحات بنقرة واحدة",
+    "feature_card__perks__one_click_prompts__title": "تلميحات بنقرة واحدة",
+    "feature_card__perks__one_click_prompts__card_title": "تلميحات بنقرة واحدة",
     "feature_card__perks__one_click_prompts__card_description": "قم بتحويل المهام التي تستغرق ساعات إلى دقائق باستخدام مجموعتنا المتنامية من التلميحات للتسويق والمبيعات وكتابة النصوص والعمليات والإنتاجية ودعم العملاء.",
     "feature_card__perks__one_click_prompts__card_button_text": "احصل على MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "المكافآت",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "الترقية إلى النسخة المحترفة",
     "sidebar__button__retry": "إعادة المحاولة",
     "sidebar__button__set_up_shortcut": "إعداد اختصار",
-    "sidebar__speed_dial__one_click_prompts__button": "التلميحات بنقرة واحدة",
+    "sidebar__speed_dial__one_click_prompts__button": "تلميحات بنقرة واحدة",
     "sidebar__speed_dial__restart_extension__button": "إعادة تشغيل الامتداد",
     "sidebar__speed_dial__restart_extension__tooltip__title": "هل ترغب في إعادة تشغيل امتداد MaxAI.me؟",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "يمكن لإعادة تشغيل الامتداد السريعة مسح جميع الأخطاء الحالية.",

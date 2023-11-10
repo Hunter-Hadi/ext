@@ -27,7 +27,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
     value: SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
 
     permission: {
-      allowedRoles: ['pro'],
+      allowedRoles: ['pro', 'elite'],
       sceneType: 'SEARCH_WITH_AI_CHATGPT',
     },
   },
@@ -36,7 +36,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
     value: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE,
 
     permission: {
-      allowedRoles: ['pro'],
+      allowedRoles: ['pro', 'elite'],
       sceneType: 'SEARCH_WITH_AI_CLAUDE',
     },
   },

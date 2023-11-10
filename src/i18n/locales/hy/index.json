@@ -193,8 +193,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Մանրամասն ChatGPT վեբ էջի թարմացումներ",
     "feature_card__chatgpt_stable_mode__protips__title": "Առաջադրանքներ",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT հաճախորդային ռեժիմը էլեկտրական է, որը դառնում է ChatGPT-ի դադարեցումների և ցանցային սխալների բարելավման համար:",
-    "feature_card__perks__one_click_prompts__title": "Կտակեք մեկ կտորինական հրապարակներ",
-    "feature_card__perks__one_click_prompts__card_title": "Կտակեք մեկ կտորինական հրապարակներ",
+    "feature_card__perks__one_click_prompts__title": "1-կտավորիչ հրահանգներ",
+    "feature_card__perks__one_click_prompts__card_title": "1-կտավորիչ հրահանգներ",
     "feature_card__perks__one_click_prompts__card_description": "Վերադարձեք ժամանակակից առաջադրանքները րոպեների մեկում, օգտագործելով մեր ընդլայնվող հրապարակների շարժականը, որոնք հասանելի են մարքեթինգի, վաճառքի, գրադարանային, գործառույթի, գործակալության և հաճախորդական աջակցության համար:",
     "feature_card__perks__one_click_prompts__card_button_text": "Ստանալ MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Վարձակալություններ",
@@ -249,7 +249,7 @@
     "sidebar__button__upgrade_to_pro": "Թարմացնել Pro-ին",
     "sidebar__button__retry": "Կրկին փորձել",
     "sidebar__button__set_up_shortcut": "Կազմաձևել ծանուցում",
-    "sidebar__speed_dial__one_click_prompts__button": "Մեկ կտորական հրահանգներ",
+    "sidebar__speed_dial__one_click_prompts__button": "1-կտավորիչ հրահանգներ",
     "sidebar__speed_dial__restart_extension__button": "Վերականգնել ընդլայնումը",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Վերականգնել MaxAI.me ընդլայնումը?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Արագ վերականգնումը կարող է մաքրել բոլոր առկա խնդիրները:",
@@ -660,6 +660,6 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Պատասխանել գլխավոր կետերով (թեստ)"
   },
   "description": "Արագացումը Օգտագործելու ChatGPT, Claude, Bard, Bing-ը ցանցի վերաբերյալ: Դա միակ գեներատիվ AI-ով զարգացման ընդհանուր ընդլայնությունն է, որը ձեզ պահանջում է:",
-  "name": "MaxAI.me: Օգտագործեք ChatGPT AI-ն ցանցում",
+  "name": "MaxAI.me: Օգտագործեք 1-Սեղմեք ChatGPT AI-ն Բացահայտում",
   "shortName": "MaxAI.me"
 }

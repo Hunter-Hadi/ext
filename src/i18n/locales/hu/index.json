@@ -1,6 +1,6 @@
 {
   "description": "A ChatGPT, Claude, Bard, Bing leggyorsabb módja bárhol az interneten. Az egyetlen generatív AI-alapú kiterjesztés, amire szükséged van.",
-  "name": "MaxAI.me: Használja a ChatGPT AI-t bárhol online",
+  "name": "MaxAI.me: Használja a 1 kattintásos ChatGPT mesterséges intelligenciát bárhol",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kijelentkezés",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Csökkentett ChatGPT weboldal frissítések",
     "feature_card__chatgpt_stable_mode__protips__title": "Tippek",
     "feature_card__chatgpt_stable_mode__protips__item1": "A ChatGPT stabil mód olyan funkció, amely csökkenti a ChatGPT megszakításokat és hálózati hibákat.",
-    "feature_card__perks__one_click_prompts__title": "Egykattintásos segédletek",
-    "feature_card__perks__one_click_prompts__card_title": "Egykattintásos segédletek",
+    "feature_card__perks__one_click_prompts__title": "1 kattintásos útmutatók",
+    "feature_card__perks__one_click_prompts__card_title": "1 kattintásos útmutatók",
     "feature_card__perks__one_click_prompts__card_description": "Órákig tartó feladatokat percek alatt végezhet el az egyre bővülő segédleteinkkel a marketing, értékesítés, szövegírás, működés, termelékenység és ügyféltámogatás területén.",
     "feature_card__perks__one_click_prompts__card_button_text": "Szerezze be a MaxAI.me/prompts-ot",
     "feature_card__perks__rewards__title": "Jutalmak",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Frissítés Pro változatra",
     "sidebar__button__retry": "Újra",
     "sidebar__button__set_up_shortcut": "Parancsikon beállítása",
-    "sidebar__speed_dial__one_click_prompts__button": "Egykattintásos segédletek",
+    "sidebar__speed_dial__one_click_prompts__button": "1 kattintásos útmutatók",
     "sidebar__speed_dial__restart_extension__button": "Bővítmény újraindítása",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Újraindítja a MaxAI.me bővítményt?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "A gyors bővítmény újraindítás törölheti az összes meglévő hibát.",

@@ -1,6 +1,6 @@
 {
   "description": "Найшвидший спосіб використовувати ChatGPT, Claude, Bard, Bing будь-де онлайн. Єдине розширення з генеративним штучним інтелектом, яке вам потрібно.",
-  "name": "MaxAI.me: Використовуйте ChatGPT AI Будь-де Онлайн",
+  "name": "MaxAI.me: Використовуйте 1-Click ChatGPT AI будь-де",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Вийти",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Зменшення оновлень веб-сторінки ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Поради",
     "feature_card__chatgpt_stable_mode__protips__item1": "Стабільний режим ChatGPT - це функція, яка зменшує переривання та мережеві помилки ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Одноклікові запити",
-    "feature_card__perks__one_click_prompts__card_title": "Одноклікові запити",
+    "feature_card__perks__one_click_prompts__title": "1-клік пропозиції",
+    "feature_card__perks__one_click_prompts__card_title": "1-клік пропозиції",
     "feature_card__perks__one_click_prompts__card_description": "Перетворіть години роботи на кілька хвилин за допомогою нашої зростаючої колекції запитів для маркетингу, продажу, копірайтингу, операцій, продуктивності та підтримки клієнтів.",
     "feature_card__perks__one_click_prompts__card_button_text": "Отримати MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Винагороди",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Оновити до Pro",
     "sidebar__button__retry": "Повторити спробу",
     "sidebar__button__set_up_shortcut": "Налаштувати ярлик",
-    "sidebar__speed_dial__one_click_prompts__button": "Одноклікові запити",
+    "sidebar__speed_dial__one_click_prompts__button": "1-клік пропозиції",
     "sidebar__speed_dial__restart_extension__button": "Перезапустити розширення",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Перезапустити розширення MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Швидкий перезапуск розширення може очистити всі наявні помилки.",

@@ -1,6 +1,6 @@
 {
   "description": "చాట్‌జిపిటి, క్లోడ్, బార్డ్, బింగ్ యానీవేరు ఆన్‌లైన్‌లో ఉపయోగించడానికి త్వరితమైన మార్గం. మీరు కావలసిన ఒక్కటిగా జనరేటివ్ ఎయి-పవర్డ్ ఎక్స్టెన్షన్ మాత్రమే కావాలి.",
-  "name": "MaxAI.me: ఏ ఆన్లైన్ స్థలంలో ఉపయోగించుకోండి ChatGPT AI",
+  "name": "MaxAI.me: ఎక్కువసారి చాట్‌జిపిటి యాన్‌లను ఉపయోగించడానికి 1-క్లిక్ మాతృభాష యంత్రం",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "లాగ్ అవుట్",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "ChatGPT వెబ్‌పేజీ రిఫ్రెష్ చేయడానికి తగ్గించడం",
     "feature_card__chatgpt_stable_mode__protips__title": "ప్రోటిప్స్",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT స్థిర మోడ్ ఒక లాభం అనేది, ChatGPT విఘ్నాలను మరియు నెట్వర్క్ లోపాలను తగ్గించే ఒక లక్షణం.",
-    "feature_card__perks__one_click_prompts__title": "ఒకే నొక్కి ప్రాంప్ట్‌లు",
-    "feature_card__perks__one_click_prompts__card_title": "ఒకే నొక్కి ప్రాంప్ట్‌లు",
+    "feature_card__perks__one_click_prompts__title": "ఒక నొక్కిన ప్రాంప్టులు",
+    "feature_card__perks__one_click_prompts__card_title": "ఒక నొక్కిన ప్రాంప్టులు",
     "feature_card__perks__one_click_prompts__card_description": "మా విస్తృత సంగ్రహంలో మార్కెటింగ్, అమ్మకాలు, కాపీరైటింగ్, ఆపరేషన్, ఉత్పత్తిని, మరియు గ్రాహక మద్దతికి మినట్లుగా మార్చండి.",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/prompts పొందండి",
     "feature_card__perks__rewards__title": "పురస్కారాలు",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "ప్రొ కు అప్గ్రేడ్ చేయండి",
     "sidebar__button__retry": "మళ్ళీ ప్రయత్నించండి",
     "sidebar__button__set_up_shortcut": "షార్ట్‌కట్ సెట్ అప్ చేయండి",
-    "sidebar__speed_dial__one_click_prompts__button": "ఒకే నొక్కి ప్రాంప్ట్‌లు",
+    "sidebar__speed_dial__one_click_prompts__button": "ఒక నొక్కిన ప్రాంప్టులు",
     "sidebar__speed_dial__restart_extension__button": "ఎక్స్టెన్షన్‌ను మళ్లీ ప్రారంభించండి",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me ఎక్స్టెన్షన్‌ను మళ్లీ ప్రారంభించాలా?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "అన్ని ప్రస్తుత గ్లిచ్‌లను తొలగించడానికి త్వరగా ఎక్స్టెన్షన్‌ను మళ్లీ ప్రారంభించండి.",

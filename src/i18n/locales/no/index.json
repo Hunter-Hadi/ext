@@ -1,6 +1,6 @@
 {
   "description": "Den raskeste måten å bruke ChatGPT, Claude, Bard, Bing hvor som helst på nettet. Den eneste generative AI-drevne utvidelsen du trenger.",
-  "name": "MaxAI.me: Bruk ChatGPT AI Hvor Som Helst Online",
+  "name": "MaxAI.me: Bruk 1-klikks ChatGPT AI hvor som helst",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logg ut",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Reduserte oppdateringer av ChatGPT-nettsider",
     "feature_card__chatgpt_stable_mode__protips__title": "Pro tips",
     "feature_card__chatgpt_stable_mode__protips__item1": "Stabil modus for ChatGPT er en funksjon som reduserer avbrudd og nettverksfeil i ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Ett-klikk-prompter",
-    "feature_card__perks__one_click_prompts__card_title": "Ett-klikk-prompter",
+    "feature_card__perks__one_click_prompts__title": "1-klikk-prompter",
+    "feature_card__perks__one_click_prompts__card_title": "1-klikk-prompter",
     "feature_card__perks__one_click_prompts__card_description": "Gjør timerlange oppgaver om til minutter ved å bruke vår voksende samling av prompter for markedsføring, salg, tekstforfatting, drift, produktivitet og kundestøtte.",
     "feature_card__perks__one_click_prompts__card_button_text": "Få MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Belønninger",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Oppgrader til Pro",
     "sidebar__button__retry": "Prøv igjen",
     "sidebar__button__set_up_shortcut": "Sett opp snarvei",
-    "sidebar__speed_dial__one_click_prompts__button": "Ett-klikk-prompter",
+    "sidebar__speed_dial__one_click_prompts__button": "1-klikk-prompter",
     "sidebar__speed_dial__restart_extension__button": "Start utvidelsen på nytt",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Start MaxAI.me-utvidelsen på nytt?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "En rask omstart av utvidelsen kan fjerne alle eksisterende feil.",

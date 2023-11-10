@@ -104,7 +104,10 @@ const usePageSummary = () => {
           }
         })
         // 如果是免费用户
-        if (currentUserPlan.name !== 'pro') {
+        if (
+          currentUserPlan.name !== 'pro' &&
+          currentUserPlan.name !== 'elite'
+        ) {
           // 判断lifetimes free trial是否已经用完
           const summaryLifetimesQuota =
             Number(

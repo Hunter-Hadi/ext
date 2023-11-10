@@ -1,6 +1,6 @@
 {
   "description": "הדרך המהירה ביותר להשתמש ב-ChatGPT, Claude, Bard, Bing בכל מקום באינטרנט. התוסף היחיד שאתה צריך עם הכוח של AI.",
-  "name": "MaxAI.me: השתמש ב-ChatGPT AI בכל מקום ברשת",
+  "name": "MaxAI.me: השתמש ב-1-לחיצה ChatGPT AI בכל מקום",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "התנתק",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "הפחתת רענון עמודי האינטרנט של ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "טיפים מקצועיים",
     "feature_card__chatgpt_stable_mode__protips__item1": "מצב יציב ChatGPT הוא תכונה המפחיתה הפרעות ושגיאות רשת ב-ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "פרומטים בלחיצה אחת",
-    "feature_card__perks__one_click_prompts__card_title": "פרומטים בלחיצה אחת",
+    "feature_card__perks__one_click_prompts__title": "קליק אחד",
+    "feature_card__perks__one_click_prompts__card_title": "קליק אחד",
     "feature_card__perks__one_click_prompts__card_description": "המרו משימות של שעות לדקות באמצעות האוסף המתרחב שלנו של פרומטים לשיווק, מכירות, כתיבת טקסטים, תפעול, יעילות ותמיכה לקוחות.",
     "feature_card__perks__one_click_prompts__card_button_text": "קבל MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "פרסים",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "שדרג לגרסה Pro",
     "sidebar__button__retry": "נסה שוב",
     "sidebar__button__set_up_shortcut": "הגדר קיצור דרך",
-    "sidebar__speed_dial__one_click_prompts__button": "פרומטים בלחיצה אחת",
+    "sidebar__speed_dial__one_click_prompts__button": "קליק אחד",
     "sidebar__speed_dial__restart_extension__button": "אתחל הרחבה",
     "sidebar__speed_dial__restart_extension__tooltip__title": "לאתחל את הרחבת MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "איתחול מהיר של הרחבה יכול לנקות את כל התקלות הקיימות.",

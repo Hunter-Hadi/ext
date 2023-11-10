@@ -1,6 +1,6 @@
 {
   "description": "Cara terpantas untuk menggunakan ChatGPT, Claude, Bard, Bing di mana-mana dalam talian. Satu-satunya sambungan AI generatif yang anda perlukan.",
-  "name": "MaxAI.me: Gunakan ChatGPT AI Di Mana Saja Dalam Talian",
+  "name": "MaxAI.me: Gunakan AI ChatGPT 1-Klik di Mana-mana",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log keluar",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Refresh halaman ChatGPT yang lebih sedikit",
     "feature_card__chatgpt_stable_mode__protips__title": "Protips",
     "feature_card__chatgpt_stable_mode__protips__item1": "Mode stabil ChatGPT adalah fitur yang mengurangi gangguan dan kesalahan jaringan ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Prompt satu klik",
-    "feature_card__perks__one_click_prompts__card_title": "Prompt satu klik",
+    "feature_card__perks__one_click_prompts__title": "Petunjuk 1-klik",
+    "feature_card__perks__one_click_prompts__card_title": "Petunjuk 1-klik",
     "feature_card__perks__one_click_prompts__card_description": "Ubah tugas berjam-jam menjadi menit dengan menggunakan koleksi prompt kami yang terus berkembang untuk pemasaran, penjualan, penulisan salinan, operasi, produktivitas, dan dukungan pelanggan.",
     "feature_card__perks__one_click_prompts__card_button_text": "Dapatkan MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Hadiah",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Naik taraf ke Pro",
     "sidebar__button__retry": "Cuba semula",
     "sidebar__button__set_up_shortcut": "Tetapkan pintasan",
-    "sidebar__speed_dial__one_click_prompts__button": "Prompt satu klik",
+    "sidebar__speed_dial__one_click_prompts__button": "Petunjuk 1-klik",
     "sidebar__speed_dial__restart_extension__button": "Mulakan semula sambungan",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Mulakan semula sambungan MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Mulakan semula sambungan dengan cepat boleh menyelesaikan semua masalah yang ada.",

@@ -1,6 +1,6 @@
 {
   "description": "Ang pinakamabilis na paraan upang gamitin ang ChatGPT, Claude, Bard, Bing kahit saan online. Ang tanging extension na may kapangyarihang AI na kailangan mo.",
-  "name": "MaxAI.me: Gamitin ang ChatGPT AI Kahit Saan Online",
+  "name": "MaxAI.me: Gamitin ang 1-Click ChatGPT AI Kahit Saan",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Mag-log out",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Binabawasan ang mga refresh ng pahina ng ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Mga Protips",
     "feature_card__chatgpt_stable_mode__protips__item1": "Ang stable mode ng ChatGPT ay isang tampok na nagbabawas ng mga putol na pag-login at mga error sa network ng ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "One-click prompts",
-    "feature_card__perks__one_click_prompts__card_title": "One-click prompts",
+    "feature_card__perks__one_click_prompts__title": "Mga Prompt sa 1-click",
+    "feature_card__perks__one_click_prompts__card_title": "Mga Prompt sa 1-click",
     "feature_card__perks__one_click_prompts__card_description": "Gawing ilang minuto lamang ang mga oras-na-matagal na gawain gamit ang aming lumalawak na koleksyon ng mga prompt para sa marketing, sales, copywriting, operasyon, produktibidad, at suporta sa customer.",
     "feature_card__perks__one_click_prompts__card_button_text": "Kumuha ng MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Rewards",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Mag-upgrade sa Pro",
     "sidebar__button__retry": "Subukan muli",
     "sidebar__button__set_up_shortcut": "Itakda ang shortcut",
-    "sidebar__speed_dial__one_click_prompts__button": "One-click prompts",
+    "sidebar__speed_dial__one_click_prompts__button": "Mga Prompt sa 1-click",
     "sidebar__speed_dial__restart_extension__button": "I-restart ang extension",
     "sidebar__speed_dial__restart_extension__tooltip__title": "I-restart ang MaxAI.me extension?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Ang mabilis na restart ng extension ay maaaring tanggalin ang lahat ng umiiral na glitches.",

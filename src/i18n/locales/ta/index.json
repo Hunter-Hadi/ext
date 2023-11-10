@@ -1,6 +1,6 @@
 {
   "description": "சேட் ஜிபிடி, கிளோடு, பார்டு, பிங் என்னையொருவருக்கும் ஆன்லைனில் பயன்படுத்த விரைவான வழி. நீங்கள் தேவைப்படும் ஒருவருக்கு உருவாக்கப்பட்ட ஐஏ வழங்கும் மேலும் ஒரு பயன்பாட்டையே அதிகப்படியாக பயன்படுத்துகிறது.",
-  "name": "MaxAI.me: ஆன்லைனில் எங்கேயும் ChatGPT AI ஐ பயன்படுத்துங்கள்",
+  "name": "MaxAI.me: எங்கும் ஒரு கிளிக் செய்தல் ChatGPT AI பயன்படுத்துங்கள்",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "வெளியேறு",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "ChatGPT வலைத்தள மீள்பதிவுகள் குறைக்கப்படும்",
     "feature_card__chatgpt_stable_mode__protips__title": "மன்னிப்புகள்",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT நிலையான முறை சரிவுரைப்புகளை குறைக்கும் ஒரு அம்சம்.",
-    "feature_card__perks__one_click_prompts__title": "ஒரு கிளிக் பணி வழங்கும்",
-    "feature_card__perks__one_click_prompts__card_title": "ஒரு கிளிக் பணி வழங்கும்",
+    "feature_card__perks__one_click_prompts__title": "ஒரு கிளிக் புரோம்ப்டுகள்",
+    "feature_card__perks__one_click_prompts__card_title": "ஒரு கிளிக் புரோம்ப்டுகள்",
     "feature_card__perks__one_click_prompts__card_description": "மார்க்கெட்டிங், விற்பனை, பதிவேடு, செயல்பாடு, உறுப்பினர் ஆதரவு ஆகியவற்றுக்கு எங்கள் விரிவான பணிகள் படிக்கலாம்.",
     "feature_card__perks__one_click_prompts__card_button_text": "Get MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "வெகுமதி",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "ப்ரோ க்கு மேம்படுத்து",
     "sidebar__button__retry": "மீண்டும் முயற்சி செய்",
     "sidebar__button__set_up_shortcut": "குறுக்குவழியை அமைக்கவும்",
-    "sidebar__speed_dial__one_click_prompts__button": "ஒரு கிளிக் பணி வழங்கும்",
+    "sidebar__speed_dial__one_click_prompts__button": "ஒரு கிளிக் புரோம்ப்டுகள்",
     "sidebar__speed_dial__restart_extension__button": "மீண்டும் துவக்கவும்",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me நீட்டிப்பு மீண்டும் துவக்கமாக்கலாமா?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "அனைத்து ஏற்பாடுகளையும் அழிக்க ஒரு விரைவான நீட்டிப்பு மீண்டும் துவக்கம் செய்ய முடியும்.",

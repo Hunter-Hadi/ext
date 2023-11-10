@@ -1,6 +1,6 @@
 {
   "description": "Самый быстрый способ использования ChatGPT, Claude, Bard, Bing в любом месте онлайн. Единственное расширение с генеративным искусственным интеллектом, которое вам нужно.",
-  "name": "MaxAI.me: Используйте ChatGPT AI везде онлайн",
+  "name": "MaxAI.me: Используйте ChatGPT AI везде с одним щелчком",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Выйти",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Снижение обновлений веб-страницы ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Подсказки",
     "feature_card__chatgpt_stable_mode__protips__item1": "Стабильный режим ChatGPT - это функция, которая снижает прерывания и сетевые ошибки ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Однокликовые подсказки",
-    "feature_card__perks__one_click_prompts__card_title": "Однокликовые подсказки",
+    "feature_card__perks__one_click_prompts__title": "1-клик подсказки",
+    "feature_card__perks__one_click_prompts__card_title": "1-клик подсказки",
     "feature_card__perks__one_click_prompts__card_description": "Превратите задачи, занимающие несколько часов, в минуты с помощью нашей расширяющейся коллекции подсказок для маркетинга, продаж, копирайтинга, операций, производительности и поддержки клиентов.",
     "feature_card__perks__one_click_prompts__card_button_text": "Получить MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Награды",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Обновить до Pro",
     "sidebar__button__retry": "Повторить",
     "sidebar__button__set_up_shortcut": "Настроить ярлык",
-    "sidebar__speed_dial__one_click_prompts__button": "Однокликовые подсказки",
+    "sidebar__speed_dial__one_click_prompts__button": "1-клик подсказки",
     "sidebar__speed_dial__restart_extension__button": "Перезапустить расширение",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Перезапустить расширение MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Быстрый перезапуск расширения может устранить все существующие ошибки.",

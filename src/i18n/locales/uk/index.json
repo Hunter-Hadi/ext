@@ -1,6 +1,6 @@
 {
   "description": "آن لائن کہیں بھی چیٹ جی پی ٹی، کلوڈ، بارڈ، بنگ استعمال کرنے کا سب سے تیز طریقہ. صرف ایک جنریٹو اے آئی پاورڈ توسیع ہے جو آپ کو چاہیے.",
-  "name": "MaxAI.me: Використовуйте ChatGPT AI Будь-де Онлайн",
+  "name": "MaxAI.me: کہیں بھی 1-کلک چیٹ جی پی ٹی AI استعمال کریں",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "لاگ آؤٹ کریں",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "کم ChatGPT ویب پیج تازہ کاریاں",
     "feature_card__chatgpt_stable_mode__protips__title": "پروٹپس",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT مستحکم موڈ ایک خصوصیت ہے جو ChatGPT انٹرپشنز اور نیٹ ورک خرابیوں کو کم کرتی ہے۔",
-    "feature_card__perks__one_click_prompts__title": "ایک کلک پرومپٹس",
-    "feature_card__perks__one_click_prompts__card_title": "ایک کلک پرومپٹس",
+    "feature_card__perks__one_click_prompts__title": "1-کلک پرامپٹس",
+    "feature_card__perks__one_click_prompts__card_title": "1-کلک پرامپٹس",
     "feature_card__perks__one_click_prompts__card_description": "ہماری توسیع کی مدد سے مارکیٹنگ، فروخت، کاپی رائٹنگ، آپریشن، پیداواریت اور صارفین کی حمایت کے لئے ہمارے بڑھتے ہوئے پرومپٹس کا استعمال کرتے ہوئے گھنٹوں کے کام کو منٹوں میں تبدیل کریں۔",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/prompts حاصل کریں",
     "feature_card__perks__rewards__title": "انعامات",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "پرو میں اپگریڈ کریں",
     "sidebar__button__retry": "دوبارہ کوشش کریں",
     "sidebar__button__set_up_shortcut": "شارٹکٹ تشکیل دیں",
-    "sidebar__speed_dial__one_click_prompts__button": "ایک کلک پرومپٹس",
+    "sidebar__speed_dial__one_click_prompts__button": "1-کلک پرامپٹس",
     "sidebar__speed_dial__restart_extension__button": "توسیع دوبارہ شروع کریں",
     "sidebar__speed_dial__restart_extension__tooltip__title": "کیا آپ MaxAI.me توسیع دوبارہ شروع کرنا چاہتے ہیں؟",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "تیزی سے توسیع دوبارہ شروع کرنے سے تمام موجودہ خرابیوں کو صاف کیا جا سکتا ہے۔",

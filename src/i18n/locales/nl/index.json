@@ -1,6 +1,6 @@
 {
   "description": "De snelste manier om ChatGPT, Claude, Bard, Bing overal online te gebruiken. De enige generatieve AI-aangedreven extensie die je nodig hebt.",
-  "name": "MaxAI.me: Gebruik ChatGPT AI overal online",
+  "name": "MaxAI.me: Gebruik 1-Click ChatGPT AI Overal",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Uitloggen",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Verminderde vernieuwingen van de ChatGPT-webpagina",
     "feature_card__chatgpt_stable_mode__protips__title": "Protips",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT stabiele modus is een functie die onderbrekingen en netwerkfouten bij ChatGPT vermindert.",
-    "feature_card__perks__one_click_prompts__title": "Eén-klik prompts",
-    "feature_card__perks__one_click_prompts__card_title": "Eén-klik prompts",
+    "feature_card__perks__one_click_prompts__title": "1-klik prompts",
+    "feature_card__perks__one_click_prompts__card_title": "1-klik prompts",
     "feature_card__perks__one_click_prompts__card_description": "Verander taken van uren naar minuten met behulp van onze groeiende verzameling prompts voor marketing, verkoop, tekstschrijven, bedrijfsvoering, productiviteit en klantenondersteuning.",
     "feature_card__perks__one_click_prompts__card_button_text": "Ontvang MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Beloningen",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Upgrade naar Pro",
     "sidebar__button__retry": "Opnieuw proberen",
     "sidebar__button__set_up_shortcut": "Snelkoppeling instellen",
-    "sidebar__speed_dial__one_click_prompts__button": "Eén-klik prompts",
+    "sidebar__speed_dial__one_click_prompts__button": "1-klik prompts",
     "sidebar__speed_dial__restart_extension__button": "Extensie herstarten",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me-extensie herstarten?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Een snelle herstart van de extensie kan alle bestaande problemen oplossen.",

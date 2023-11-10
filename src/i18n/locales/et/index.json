@@ -1,6 +1,6 @@
 {
   "description": "Kiireim viis ChatGPT, Claude, Bard, Bing kasutamiseks veebis. Ainuke generatiivse tehisintellektiga laiendus, mida vajate.",
-  "name": "MaxAI.me: Kasutage ChatGPT AI-d veebis kõikjal",
+  "name": "MaxAI.me: Kasuta 1-klõpsuga ChatGPT AI-d kõikjal",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logi välja",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Vähendatud ChatGPT veebilehe värskendused",
     "feature_card__chatgpt_stable_mode__protips__title": "Nõuanded",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT stabiilne režiim on funktsioon, mis vähendab ChatGPT katkestusi ja võrguvigu.",
-    "feature_card__perks__one_click_prompts__title": "Üheklõpsulised vihjed",
-    "feature_card__perks__one_click_prompts__card_title": "Üheklõpsulised vihjed",
+    "feature_card__perks__one_click_prompts__title": "1-kliki vihjed",
+    "feature_card__perks__one_click_prompts__card_title": "1-kliki vihjed",
     "feature_card__perks__one_click_prompts__card_description": "Muutke tundidepikkused ülesanded minutiteks, kasutades meie laienevat kogumit vihjeid turunduse, müügi, tekstikirjutuse, tegevuse, tootlikkuse ja klienditoe jaoks.",
     "feature_card__perks__one_click_prompts__card_button_text": "Hankige MaxAI.me/vihjed",
     "feature_card__perks__rewards__title": "Tasud",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Tõsta Pro tasemele",
     "sidebar__button__retry": "Proovi uuesti",
     "sidebar__button__set_up_shortcut": "Seadista otsetee",
-    "sidebar__speed_dial__one_click_prompts__button": "Üheklõpsulised vihjed",
+    "sidebar__speed_dial__one_click_prompts__button": "1-kliki vihjed",
     "sidebar__speed_dial__restart_extension__button": "Taaskäivita laiendus",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Kas taaskäivitada MaxAI.me laiendus?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Kiire laienduse taaskäivitamine võib kõrvaldada kõik olemasolevad tõrked.",

@@ -1,6 +1,6 @@
 {
   "description": "Greičiausias būdas naudoti ChatGPT, Claude, Bard, Bing bet kur internete. Vienintelis generatyvinės dirbtinio intelekto pagrindimas, kurio jums reikia.",
-  "name": "MaxAI.me: Naudokite ChatGPT AI bet kur internete",
+  "name": "MaxAI.me: Naudokite 1 paspaudimą ChatGPT dirbtinio intelekto bet kur",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Atsijungti",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Mažesni ChatGPT svetainės atnaujinimai",
     "feature_card__chatgpt_stable_mode__protips__title": "Patarimai",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT stabilus režimas yra funkcija, kuri mažina ChatGPT pertraukimus ir tinklo klaidas.",
-    "feature_card__perks__one_click_prompts__title": "Vieno paspaudimo užduotys",
-    "feature_card__perks__one_click_prompts__card_title": "Vieno paspaudimo užduotys",
+    "feature_card__perks__one_click_prompts__title": "Vieno paspaudimo užklausos",
+    "feature_card__perks__one_click_prompts__card_title": "Vieno paspaudimo užklausos",
     "feature_card__perks__one_click_prompts__card_description": "Valandų trukmės užduotis pavertimas minutėmis naudojant mūsų plėtojamą rinkinį užduočių rinkodarbai, pardavimams, kopijavimui, veiklai, produktyvumui ir klientų aptarnavimui.",
     "feature_card__perks__one_click_prompts__card_button_text": "Gaukite MaxAI.me/užduotys",
     "feature_card__perks__rewards__title": "Apdovanojimai",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Naujinti iki Pro",
     "sidebar__button__retry": "Bandyti dar kartą",
     "sidebar__button__set_up_shortcut": "Nustatyti spartųjį klavišą",
-    "sidebar__speed_dial__one_click_prompts__button": "Vieno paspaudimo užduotys",
+    "sidebar__speed_dial__one_click_prompts__button": "Vieno paspaudimo užklausos",
     "sidebar__speed_dial__restart_extension__button": "Perkrauti plėtinį",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Perkrauti MaxAI.me plėtinį?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Greitas plėtinio perkrovimas gali išvalyti visus esamus sutrikimus.",

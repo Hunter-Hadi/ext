@@ -1,6 +1,6 @@
 {
   "description": "Cách nhanh nhất để sử dụng ChatGPT, Claude, Bard, Bing bất cứ nơi nào trên mạng. Chỉ cần một tiện ích mở rộng được trang bị trí tuệ nhân tạo sinh sản duy nhất bạn cần.",
-  "name": "MaxAI.me: Sử dụng ChatGPT AI Ở Bất Kỳ Nơi Nào Trực Tuyến",
+  "name": "MaxAI.me: Sử dụng ChatGPT AI bằng 1-Click Mọi Nơi",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Đăng xuất",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Giảm thiểu làm mới trang web ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Mẹo hữu ích",
     "feature_card__chatgpt_stable_mode__protips__item1": "Chế độ ổn định ChatGPT là tính năng giảm thiểu gián đoạn và lỗi mạng ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Gợi ý bằng một cú nhấp chuột",
-    "feature_card__perks__one_click_prompts__card_title": "Gợi ý bằng một cú nhấp chuột",
+    "feature_card__perks__one_click_prompts__title": "Gợi ý 1 nhấp chuột",
+    "feature_card__perks__one_click_prompts__card_title": "Gợi ý 1 nhấp chuột",
     "feature_card__perks__one_click_prompts__card_description": "Biến các nhiệm vụ kéo dài hàng giờ thành vài phút sử dụng bộ sưu tập gợi ý của chúng tôi cho marketing, bán hàng, viết bài, hoạt động, năng suất và hỗ trợ khách hàng.",
     "feature_card__perks__one_click_prompts__card_button_text": "Nhận MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Phần thưởng",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Nâng cấp lên Pro",
     "sidebar__button__retry": "Thử lại",
     "sidebar__button__set_up_shortcut": "Thiết lập phím tắt",
-    "sidebar__speed_dial__one_click_prompts__button": "Gợi ý bằng một cú nhấp chuột",
+    "sidebar__speed_dial__one_click_prompts__button": "Gợi ý 1 nhấp chuột",
     "sidebar__speed_dial__restart_extension__button": "Khởi động lại tiện ích",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Khởi động lại tiện ích MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Khởi động lại nhanh tiện ích có thể xóa tất cả các lỗi hiện có.",

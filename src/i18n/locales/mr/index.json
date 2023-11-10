@@ -1,6 +1,6 @@
 {
   "description": "ऑनलाइन कुठेही वापरण्याचा सर्वात वेगवेगळा मार्ग, ChatGPT, Claude, Bard, Bing वापरण्यासाठी. आपल्याला आवश्यक असलेला एकमेकांवर आधारित AI प्रोडक्ट.",
-  "name": "MaxAI.me: कुठेही ऑनलाइन ठिकाणी ChatGPT AI वापरा",
+  "name": "MaxAI.me: कुठेही वापरा 1-क्लिक ChatGPT AI आपल्या जगात",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट करा",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "ChatGPT वेबपेज रिफ्रेश कमी",
     "feature_card__chatgpt_stable_mode__protips__title": "प्रोटिप्स",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT स्थिर मोड हे एक वैशिष्ट्य आहे ज्यामुळे ChatGPT विघटना आणि नेटवर्क त्रुटी कमी होतात.",
-    "feature_card__perks__one_click_prompts__title": "एक क्लिक प्रॉम्प्ट्स",
-    "feature_card__perks__one_click_prompts__card_title": "एक क्लिक प्रॉम्प्ट्स",
+    "feature_card__perks__one_click_prompts__title": "1-क्लिक प्रॉम्प्ट",
+    "feature_card__perks__one_click_prompts__card_title": "1-क्लिक प्रॉम्प्ट",
     "feature_card__perks__one_click_prompts__card_description": "मार्केटिंग, विक्री, कॉपीराइटिंग, संचालन, उत्पादकता आणि ग्राहक सहाय्य यांसाठी आमच्या प्रोंप्ट्सच्या विस्तारणाचा वापर करून घंटे-लंब चार्ज लागणाऱ्या कामांना मिनिटांमध्ये परिवर्तित करा.",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/prompts मिळवा",
     "feature_card__perks__rewards__title": "पुरस्कार",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "प्रोच्या वर्गात अपग्रेड करा",
     "sidebar__button__retry": "पुन्हा प्रयत्न करा",
     "sidebar__button__set_up_shortcut": "शॉर्टकट सेट करा",
-    "sidebar__speed_dial__one_click_prompts__button": "एक क्लिक प्रॉम्प्ट्स",
+    "sidebar__speed_dial__one_click_prompts__button": "1-क्लिक प्रॉम्प्ट",
     "sidebar__speed_dial__restart_extension__button": "एक्सटेंशन पुनरारंभ करा",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.me एक्सटेंशन पुनरारंभ करायचे आहे?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "एक जलद पुनरारंभ आपल्या सर्व मौजी काढू शकतो.",

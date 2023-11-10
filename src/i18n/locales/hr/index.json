@@ -1,6 +1,6 @@
 {
   "description": "Najbrži način korištenja ChatGPT, Claude, Bard, Bing bilo gdje online. Jedino proširenje s generativnom AI snagom koje vam treba.",
-  "name": "MaxAI.me: Koristite ChatGPT AI bilo gdje online",
+  "name": "MaxAI.me: Koristite 1-klik ChatGPT AI bilo gdje",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odjava",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Smanjeno osvježavanje web stranica u ChatGPT-u",
     "feature_card__chatgpt_stable_mode__protips__title": "Protips",
     "feature_card__chatgpt_stable_mode__protips__item1": "Stabilni način rada ChatGPT-a je značajka koja smanjuje prekide i mrežne greške u ChatGPT-u.",
-    "feature_card__perks__one_click_prompts__title": "Jednim klikom do poticaja",
-    "feature_card__perks__one_click_prompts__card_title": "Jednim klikom do poticaja",
+    "feature_card__perks__one_click_prompts__title": "Jednostavni prijedlozi",
+    "feature_card__perks__one_click_prompts__card_title": "Jednostavni prijedlozi",
     "feature_card__perks__one_click_prompts__card_description": "Pretvorite zadatke koji traju satima u minute koristeći našu rastuću kolekciju poticaja za marketing, prodaju, pisanje kopije, operacije, produktivnost i podršku korisnicima.",
     "feature_card__perks__one_click_prompts__card_button_text": "Dobijte MaxAI.me/poticaje",
     "feature_card__perks__rewards__title": "Nagrade",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Nadogradite na Pro",
     "sidebar__button__retry": "Pokušaj ponovno",
     "sidebar__button__set_up_shortcut": "Postavi prečac",
-    "sidebar__speed_dial__one_click_prompts__button": "Jednim klikom do poticaja",
+    "sidebar__speed_dial__one_click_prompts__button": "Jednostavni prijedlozi",
     "sidebar__speed_dial__restart_extension__button": "Ponovno pokreni ekstenziju",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Ponovno pokrenuti MaxAI.me ekstenziju?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Brzo ponovno pokretanje ekstenzije može otkloniti sve postojeće probleme.",

@@ -1,6 +1,6 @@
 {
   "description": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. The only generative AI-powered extension you need.",
-  "name": "MaxAI.me: Use ChatGPT AI Anywhere Online",
+  "name": "MaxAI.me: Use 1-Click ChatGPT AI Anywhere",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log out",
@@ -187,8 +187,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Reduced ChatGPT webpage refreshes",
     "feature_card__chatgpt_stable_mode__protips__title": "Protips",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT stable mode is a feature that reduces ChatGPT interruptions and network errors.",
-    "feature_card__perks__one_click_prompts__title": "One-click prompts",
-    "feature_card__perks__one_click_prompts__card_title": "One-click prompts",
+    "feature_card__perks__one_click_prompts__title": "1-click prompts",
+    "feature_card__perks__one_click_prompts__card_title": "1-click prompts",
     "feature_card__perks__one_click_prompts__card_description": "Turn hours-long tasks into minutes using our expanding collection of prompts for marketing, sales, copywriting, operation, productivity, and customer support.",
     "feature_card__perks__one_click_prompts__card_button_text": "Get MaxAI.me/prompts",
     "feature_card__perks__rewards__title": "Rewards",
@@ -243,7 +243,7 @@
     "sidebar__button__upgrade_to_pro": "Upgrade to Pro",
     "sidebar__button__retry": "Retry",
     "sidebar__button__set_up_shortcut": "Set up shortcut",
-    "sidebar__speed_dial__one_click_prompts__button": "One-click prompts",
+    "sidebar__speed_dial__one_click_prompts__button": "1-click prompts",
     "sidebar__speed_dial__restart_extension__button": "Restart extension",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Restart MaxAI.me extension?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "A quick extension restart can clear all existing glitches.",

@@ -1,6 +1,6 @@
 {
   "description": "Cara tercepat untuk menggunakan ChatGPT, Claude, Bard, Bing di mana saja secara online. Satu-satunya ekstensi AI generatif yang Anda butuhkan.",
-  "name": "MaxAI.me: Gunakan ChatGPT AI Di Mana Saja Online",
+  "name": "MaxAI.me: Gunakan ChatGPT AI 1-Klik di Mana Saja",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Keluar",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Mengurangi pembaruan halaman ChatGPT",
     "feature_card__chatgpt_stable_mode__protips__title": "Protips",
     "feature_card__chatgpt_stable_mode__protips__item1": "Mode stabil ChatGPT adalah fitur yang mengurangi gangguan dan kesalahan jaringan ChatGPT.",
-    "feature_card__perks__one_click_prompts__title": "Promp satu klik",
-    "feature_card__perks__one_click_prompts__card_title": "Promp satu klik",
+    "feature_card__perks__one_click_prompts__title": "Promp 1-klik",
+    "feature_card__perks__one_click_prompts__card_title": "Promp 1-klik",
     "feature_card__perks__one_click_prompts__card_description": "Ubah tugas berjam-jam menjadi menit dengan koleksi promp kami yang terus berkembang untuk pemasaran, penjualan, penulisan salinan, operasi, produktivitas, dan dukungan pelanggan.",
     "feature_card__perks__one_click_prompts__card_button_text": "Dapatkan MaxAI.me/promp",
     "feature_card__perks__rewards__title": "Hadiah",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Tingkatkan ke Pro",
     "sidebar__button__retry": "Coba lagi",
     "sidebar__button__set_up_shortcut": "Atur pintasan",
-    "sidebar__speed_dial__one_click_prompts__button": "Promp satu klik",
+    "sidebar__speed_dial__one_click_prompts__button": "Promp 1-klik",
     "sidebar__speed_dial__restart_extension__button": "Mulai ulang ekstensi",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Mulai ulang ekstensi MaxAI.me?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Mulai ulang cepat ekstensi dapat menghapus semua gangguan yang ada.",

@@ -98,10 +98,14 @@ export const SidebarAIMessage: FC<{
       sources: message.originalMessage?.metadata?.sources,
       sourcesLoading:
         message.originalMessage?.metadata?.sources?.status === 'loading',
+      sourcesHasContent: false,
       answer: message.text,
       content: message.originalMessage?.content,
       messageIsComplete: message.originalMessage?.metadata?.isComplete,
       deepDive: message.originalMessage?.metadata?.deepDive,
+    }
+    if (Object.keys(currentRenderData?.sources || {}).length > 1) {
+      currentRenderData.sourcesHasContent = true
     }
     if (message.originalMessage?.content?.text) {
       currentRenderData.answer =
@@ -149,7 +153,7 @@ export const SidebarAIMessage: FC<{
               </Stack>
             </Stack>
           )}
-          {renderData.sources && (
+          {renderData.sources && renderData.sourcesHasContent && (
             <Stack spacing={1}>
               <Stack direction={'row'} alignItems="center" spacing={1}>
                 {renderData.sourcesLoading && !renderData.messageIsComplete ? (

@@ -1,6 +1,6 @@
 {
   "description": "オンラインでどこでもChatGPT、Claude、Bard、Bingを使用する最速の方法。必要な唯一の生成AIパワード拡張機能。",
-  "name": "MaxAI.me: いつでもどこでもChatGPT AIを使用",
+  "name": "MaxAI.me：どこでも1クリックでChatGPT AIを使用",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ログアウト",
@@ -183,8 +183,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "ChatGPTのウェブページのリフレッシュを削減",
     "feature_card__chatgpt_stable_mode__protips__title": "プロのヒント",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPTの安定モードは、ChatGPTの中断とネットワークエラーを削減する機能です。",
-    "feature_card__perks__one_click_prompts__title": "ワンクリックプロンプト",
-    "feature_card__perks__one_click_prompts__card_title": "ワンクリックプロンプト",
+    "feature_card__perks__one_click_prompts__title": "1クリックプロンプト",
+    "feature_card__perks__one_click_prompts__card_title": "1クリックプロンプト",
     "feature_card__perks__one_click_prompts__card_description": "マーケティング、営業、コピーライティング、オペレーション、生産性、およびカスタマーサポート向けのプロンプトの拡充コレクションを使用して、数時間かかるタスクを数分で完了させましょう。",
     "feature_card__perks__one_click_prompts__card_button_text": "MaxAI.me/promptsを入手",
     "feature_card__perks__rewards__title": "報酬",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "プロにアップグレード",
     "sidebar__button__retry": "再試行",
     "sidebar__button__set_up_shortcut": "ショートカットの設定",
-    "sidebar__speed_dial__one_click_prompts__button": "ワンクリックプロンプト",
+    "sidebar__speed_dial__one_click_prompts__button": "1クリックプロンプト",
     "sidebar__speed_dial__restart_extension__button": "拡張機能を再起動",
     "sidebar__speed_dial__restart_extension__tooltip__title": "MaxAI.meの拡張機能を再起動しますか？",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "素早い拡張機能の再起動で、既存のすべての問題を解消できます。",

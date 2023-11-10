@@ -1,6 +1,6 @@
 {
   "description": "Nopein tapa käyttää ChatGPT, Claude, Bard, Bing missä tahansa verkossa. Ainoa generatiivinen tekoälyllä varustettu laajennus, jota tarvitset.",
-  "name": "MaxAI.me: Käytä ChatGPT AI:ta missä tahansa verkossa",
+  "name": "MaxAI.me: Käytä 1-Click ChatGPT AI:ta missä tahansa",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kirjaudu ulos",
@@ -191,8 +191,8 @@
     "feature_card__chatgpt_stable_mode__help__benefits__item4": "Vähennetyt ChatGPT-sivun päivitykset",
     "feature_card__chatgpt_stable_mode__protips__title": "Vinkit",
     "feature_card__chatgpt_stable_mode__protips__item1": "ChatGPT:n vakaa tila on ominaisuus, joka vähentää ChatGPT-katkoksia ja verkkovirheitä.",
-    "feature_card__perks__one_click_prompts__title": "Yhden klikkauksen kehotteet",
-    "feature_card__perks__one_click_prompts__card_title": "Yhden klikkauksen kehotteet",
+    "feature_card__perks__one_click_prompts__title": "1 napsautus",
+    "feature_card__perks__one_click_prompts__card_title": "1 napsautus",
     "feature_card__perks__one_click_prompts__card_description": "Muuta tuntikausien tehtävät minuuteiksi käyttämällä laajenevaa kehotekokoelmaamme markkinointiin, myyntiin, tekstinkirjoitukseen, toimintaan, tuottavuuteen ja asiakastukeen.",
     "feature_card__perks__one_click_prompts__card_button_text": "Hanki MaxAI.me/kehotteet",
     "feature_card__perks__rewards__title": "Palkinnot",
@@ -251,7 +251,7 @@
     "sidebar__button__upgrade_to_pro": "Päivitä Pro-tilaan",
     "sidebar__button__retry": "Yritä uudelleen",
     "sidebar__button__set_up_shortcut": "Määritä pikanäppäin",
-    "sidebar__speed_dial__one_click_prompts__button": "Yhden klikkauksen kehotteet",
+    "sidebar__speed_dial__one_click_prompts__button": "1 napsautus",
     "sidebar__speed_dial__restart_extension__button": "Käynnistä laajennus uudelleen",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Käynnistetäänkö MaxAI.me-laajennus uudelleen?",
     "sidebar__speed_dial__restart_extension__tooltip__description1": "Nopea laajennuksen uudelleenkäynnistys voi poistaa kaikki olemassa olevat virheet.",

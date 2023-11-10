@@ -6,7 +6,10 @@ import {
   IActionSetVariablesData,
 } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { promptTemplateToHtml } from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+import {
+  escapeHtml,
+  promptTemplateToHtml,
+} from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 const useShortcutEditorActions = () => {
@@ -48,7 +51,7 @@ const useShortcutEditorActions = () => {
         variablesMap.set(item.VariableName, item)
       })
       editHTML = promptTemplateToHtml(
-        originalTemplate,
+        escapeHtml(originalTemplate),
         variablesMap,
         isDarkMode,
       )

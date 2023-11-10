@@ -5,7 +5,7 @@ import { I18nextKeysType } from '@/i18next'
 import { useRecoilState } from 'recoil'
 import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutActionsEditor/store'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { promptTemplateToHtml } from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+import { updateHtmlWithVariables } from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
 type stringKeyOfActionParameters = Extract<keyof ActionParameters, string>
 
 export type IPresetVariablesItem = {
@@ -57,16 +57,17 @@ const useShortcutEditorActionsVariables = (filterValue?: string) => {
     return variablesToMap(shortcutActionEditor.variables)
   }, [shortcutActionEditor.variables])
 
-  const setVariables = (variables: IActionSetVariable[]) => {
+  const setVariables = (newVariables: IActionSetVariable[]) => {
     setShortcutActionEditor((prev) => {
       return {
         ...prev,
-        editHTML: promptTemplateToHtml(
+        editHTML: updateHtmlWithVariables(
           prev.editHTML,
-          variablesToMap(variables),
+          // 因为VariableName是唯一的，所以可以直接用VariableName作为key
+          variablesToMap(newVariables),
           isDarkMode,
         ),
-        variables,
+        variables: newVariables,
       }
     })
   }

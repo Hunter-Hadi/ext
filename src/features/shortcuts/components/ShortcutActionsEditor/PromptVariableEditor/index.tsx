@@ -401,7 +401,6 @@ const PromptVariableEditor: FC<{
             initialValue={editingVariable || undefined}
             type={editorType as 'add'}
             onConfirm={(editingVariable) => {
-              debugger
               if (editorType === 'add') {
                 addVariable(editingVariable)
               } else if (editorType === 'edit') {

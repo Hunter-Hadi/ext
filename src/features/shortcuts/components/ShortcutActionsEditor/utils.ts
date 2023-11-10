@@ -50,7 +50,7 @@ export const generateVariableHtmlContent = (
   darkMode?: boolean,
 ) => {
   const color = generateRandomColorWithTheme(variableName, darkMode || false)
-  return `<span contenteditable="false" style="color: ${color}" data-variable-name="{{${variableName}}}">{{${variableLabel}}}</span>`
+  return `<span contenteditable="false" style="color: ${color}" data-variable-name="${variableName}">{{${variableLabel}}}</span>`
 }
 
 export const promptTemplateToHtml = (
@@ -97,6 +97,39 @@ export const promptTemplateToHtml = (
     }
   }
   return html
+}
+
+/**
+ * 在更新变量后,基于html和新的变量更新html
+ * @param html
+ * @param variableMap
+ * @param darkMode
+ */
+export const updateHtmlWithVariables = (
+  html: string,
+  variableMap: Map<string, IActionSetVariable>,
+  darkMode?: boolean,
+) => {
+  const div = document.createElement('div')
+  div.innerHTML = html
+  const nodes = Array.from(div.childNodes)
+  nodes.forEach((node) => {
+    // 判断是不是变量
+    if ((node as HTMLSpanElement).tagName === 'SPAN') {
+      const span = node as HTMLSpanElement
+      const variableName = span.getAttribute('data-variable-name')
+      const variable = variableMap.get(variableName || '')
+      if (variable) {
+        span.innerHTML = `{{${variable.label}}}`
+        span.style.color = generateRandomColorWithTheme(
+          variableName || '',
+          darkMode || false,
+        )
+      }
+    }
+  })
+  debugger
+  return div.innerHTML
 }
 
 /**

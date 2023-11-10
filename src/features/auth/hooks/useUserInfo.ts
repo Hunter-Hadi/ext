@@ -52,6 +52,10 @@ const useUserInfo = () => {
       if (pro) {
         name = 'pro'
       }
+      const elite = userInfo.roles.find((item) => item.name === 'elite')
+      if (elite) {
+        name = 'elite'
+      }
     }
     let isNewUser = false
     if (userInfo?.chatgpt_expires_at) {

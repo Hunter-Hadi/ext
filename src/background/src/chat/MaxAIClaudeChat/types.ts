@@ -36,7 +36,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     ],
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
-      roles: ['pro'],
+      roles: ['pro', 'elite'],
     },
   },
   {
@@ -63,7 +63,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     ],
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2',
-      roles: ['pro'],
+      roles: ['pro', 'elite'],
     },
   },
 ]

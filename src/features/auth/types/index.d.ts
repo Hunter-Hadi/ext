@@ -1,8 +1,8 @@
 /**
- * 后端只有:free,pro
- * 前端通过不同的过期时间来区分: free, new_user, pro, pro_gift
+ * 后端只有:free,pro,elite
+ * 前端通过不同的过期时间来区分: free, new_user, pro, pro_gift,elite
  */
-export type IUserRoleType = 'free' | 'new_user' | 'pro' | 'pro_gift'
+export type IUserRoleType = 'free' | 'new_user' | 'pro' | 'pro_gift' | 'elite'
 
 export type IUserRole = {
   name: IUserRoleType

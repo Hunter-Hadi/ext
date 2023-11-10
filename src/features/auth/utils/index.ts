@@ -95,8 +95,13 @@ export const fetchUserSubscriptionInfo = async (): Promise<
           })
           let role =
             result.data.roles.find(
+              (role: { name: string; exp_time: number }) =>
+                role.name === 'elite',
+            ) ||
+            result.data.roles.find(
               (role: { name: string; exp_time: number }) => role.name === 'pro',
-            ) || result.data.roles[0]
+            ) ||
+            result.data.roles[0]
           if (!role) {
             role = {
               name: 'free',
@@ -118,6 +123,29 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             sendLarkBotMessage(
               '[API] error response roles',
               `Pro token [${token}]\n${JSON.stringify(result?.data)}`,
+              {
+                uuid: '6f02f533-def6-4696-b14e-1b00c2d9a4df',
+              },
+            )
+          }
+          if (role.name === 'elite' && result.data.has_reached_limit) {
+            sendLarkBotMessage(
+              `[Pricing] Elite [subscription_info] has reached the limit`,
+              `Elite token [${token}] call api has reached the limit.\n${JSON.stringify(
+                result?.data,
+              )}`,
+              {
+                uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+              },
+            )
+          }
+          if (
+            role === 'elite' &&
+            dayjs().utc().diff(dayjs(role.exp_time)) > 0
+          ) {
+            sendLarkBotMessage(
+              '[API] error response roles',
+              `Elite token [${token}]\n${JSON.stringify(result?.data)}`,
               {
                 uuid: '6f02f533-def6-4696-b14e-1b00c2d9a4df',
               },

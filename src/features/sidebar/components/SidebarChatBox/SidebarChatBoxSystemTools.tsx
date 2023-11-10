@@ -17,7 +17,10 @@ const SidebarChatBoxSystemTools: FC<{
   const { currentUserPlan, userInfo } = useUserInfo()
   const chatMessageType = message.extra.systemMessageType || 'normal'
   useEffect(() => {
-    if (chatMessageType === 'needUpgrade' && currentUserPlan.name === 'pro') {
+    if (
+      chatMessageType === 'needUpgrade' &&
+      (currentUserPlan.name === 'pro' || currentUserPlan.name === 'elite')
+    ) {
       sendLarkBotMessage(
         `[Pricing] Pro show pricing card`,
         JSON.stringify({

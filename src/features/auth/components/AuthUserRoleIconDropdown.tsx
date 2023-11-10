@@ -73,7 +73,44 @@ const AuthUserRoleIconDropdown: FC = () => {
           </Link>
         </TextOnlyTooltip>
       )}
-      {userRole !== 'pro' && (
+      {userRole === 'elite' && (
+        <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
+          <Link
+            href={`${APP_USE_CHAT_GPT_HOST}/my-plan`}
+            target={'_blank'}
+            underline={'none'}
+          >
+            <Stack
+              onMouseEnter={() => setIsHover(true)}
+              onMouseLeave={() => setIsHover(false)}
+              direction={'row'}
+              alignItems={'center'}
+              component={'div'}
+              sx={{
+                borderRadius: '4px',
+                bgcolor: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgba(178, 115, 255, 0.14)'
+                    : 'rgba(118, 1, 211, 0.16)',
+                fontSize: '12px',
+                fontWeight: 700,
+                py: '2px',
+                px: '4px',
+                color: (t) => {
+                  if (t.palette.mode === 'dark') {
+                    return isHover ? '#c17ff5' : '#7601D3'
+                  } else {
+                    return isHover ? 'primary.main' : 'text.primary'
+                  }
+                },
+              }}
+            >
+              <span>Elite</span>
+            </Stack>
+          </Link>
+        </TextOnlyTooltip>
+      )}
+      {userRole !== 'pro' && userRole !== 'elite' && (
         <Link
           href={`${APP_USE_CHAT_GPT_HOST}/rewards`}
           target={'_blank'}

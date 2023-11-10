@@ -125,7 +125,10 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
           // 说明达到限制了
           // TODO 校验身份 pro不拦截，但是发larkbot
           const userInfo = await getChromeExtensionUserInfo(false)
-          if (userInfo?.role?.name === 'pro') {
+          if (
+            userInfo?.role?.name === 'pro' ||
+            userInfo?.role?.name === 'elite'
+          ) {
             // pro用户没过期, 不拦截
             if (
               userInfo.role.exp_time &&

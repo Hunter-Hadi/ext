@@ -67,8 +67,8 @@ const APITemperatureSlider: FC<{
               sceneType={authSceneType || 'MAXAI_CHATGPT_TEMPERATURE'}
               allowedRoles={
                 authSceneType
-                  ? ['pro', 'pro_gift', 'new_user']
-                  : ['free', 'pro', 'pro_gift', 'new_user']
+                  ? ['elite', 'pro', 'pro_gift', 'new_user']
+                  : ['free', 'elite', 'pro', 'pro_gift', 'new_user']
               }
               BoxProps={{
                 sx: {

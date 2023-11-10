@@ -14,9 +14,6 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
-const upgradeText =
-  'You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!'
-
 const userInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
   const {
@@ -135,7 +132,7 @@ const userInitUserInfo = (isInit = true) => {
     }
   }
   useEffect(() => {
-    if (!needPushUpgradeMessage.current) {
+    if (!needPushUpgradeMessage.current || !upgradeTextRef.current) {
       return
     }
     // 如果是升级，需要在侧边栏显示升级消息
@@ -143,7 +140,11 @@ const userInitUserInfo = (isInit = true) => {
       currentSidebarConversationId &&
       !listReverseFind(
         currentSidebarConversationMessages,
-        (message) => message.text === upgradeText,
+        (message) =>
+          message.text ===
+            'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!' ||
+          message.text ===
+            'You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!',
       )
     ) {
       clientChatConversationModifyChatMessages(
@@ -155,7 +156,7 @@ const userInitUserInfo = (isInit = true) => {
             messageId: uuidV4(),
             type: 'system',
             parentMessageId: undefined,
-            text: upgradeTextRef.current || upgradeText,
+            text: upgradeTextRef.current,
             extra: {
               status: 'success',
             },

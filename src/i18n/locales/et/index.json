@@ -1,6 +1,6 @@
 {
   "description": "Kiireim viis ChatGPT, Claude, Bard, Bing kasutamiseks veebis. Ainuke generatiivse tehisintellektiga laiendus, mida vajate.",
-  "name": "MaxAI.me: Kasuta ChatGPT AI-d igal pool veebis",
+  "name": "MaxAI.me: Kasuta 1-klõpsuga ChatGPT AI-d kõikjal",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logi välja",

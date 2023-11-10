@@ -1,6 +1,6 @@
 {
   "description": "Nopein tapa käyttää ChatGPT, Claude, Bard, Bing missä tahansa verkossa. Ainoa generatiivinen tekoälyllä varustettu laajennus, jota tarvitset.",
-  "name": "MaxAI.me: Käytä ChatGPT-tekoälyä missä tahansa verkossa",
+  "name": "MaxAI.me: Käytä 1-Click ChatGPT AI:ta missä tahansa",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kirjaudu ulos",

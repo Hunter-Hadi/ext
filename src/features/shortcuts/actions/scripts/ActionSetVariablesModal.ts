@@ -4,7 +4,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 // import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { getAppRootElement } from '@/utils'
+import { getAppRootElement, showChatBox } from '@/utils'
 import { ActionSetVariablesConfirmData } from '@/features/shortcuts/components/ActionSetVariablesModal'
 import {
   shortcutsRenderTemplate,
@@ -34,6 +34,7 @@ export class ActionSetVariablesModal extends Action {
         return
       }
       if (config.modelKey === 'Sidebar') {
+        showChatBox()
         const root = getAppRootElement()
         root &&
           (await intervalFindHtmlElement(
@@ -47,6 +48,18 @@ export class ActionSetVariablesModal extends Action {
       const shortCutsVariables = shortCutsEngine.getVariables()
       const cloneConfig = cloneDeep(config)
       cloneConfig.variables.map((variable) => {
+        if (
+          variable.defaultValue &&
+          typeof variable.defaultValue === 'string'
+        ) {
+          variable.defaultValue =
+            shortcutsRenderTemplate(variable.defaultValue, shortCutsVariables)
+              .data || ''
+        }
+        return variable
+      })
+
+      cloneConfig.systemVariables.map((variable) => {
         if (
           variable.defaultValue &&
           typeof variable.defaultValue === 'string'

@@ -11,7 +11,6 @@ import {
   CONTEXT_MENU_ICONS,
   ContextMenuIcon,
 } from '@/components/ContextMenuIcon'
-import { TemplateTooltip } from '../../../../../components/tooltipCollection'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
@@ -190,7 +189,6 @@ const ContextMenuEditForm: FC<{
                     )} `}
                     <span style={{ color: 'red' }}>*</span>
                   </Typography>
-                  <TemplateTooltip />
                 </Stack>
                 <ShortcutActionsEditor
                   placeholder={t(

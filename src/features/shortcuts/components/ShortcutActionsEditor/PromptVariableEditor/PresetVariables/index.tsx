@@ -1,23 +1,28 @@
 import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import {
-  IPresetVariablesItem,
+import useShortcutEditorActionsVariables, {
+  IPresetVariablesGroupItem,
   PRESET_VARIABLES_GROUP_MAP,
 } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
 import PresetVariablesTag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables/PresetVariablesTag'
 import { useTranslation } from 'react-i18next'
 import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
+import { TemplateTooltip } from '@/pages/settings/components/tooltipCollection'
 
 const PresetVariables: FC<{
   onClick?: (variable: IActionSetVariable) => void
 }> = (props) => {
   const { onClick } = props
   const { t } = useTranslation(['common', 'prompt_editor'])
+  const { addVariable } = useShortcutEditorActionsVariables()
   return (
     <Stack>
       <Stack direction={'row'} alignItems={'center'} spacing={0.5} mb={1}>
-        <Typography fontSize={'14px'}>Use preset variables</Typography>
+        <Typography fontSize={'14px'}>
+          {t('prompt_editor:preset_variables__title')}
+        </Typography>
+        <TemplateTooltip />
       </Stack>
       <Stack
         sx={{
@@ -31,9 +36,9 @@ const PresetVariables: FC<{
         {Object.keys(PRESET_VARIABLES_GROUP_MAP).map(
           (presetVariableGroupKey, index) => {
             const presetVariableGroupName = t(presetVariableGroupKey as any)
-            const variables = PRESET_VARIABLES_GROUP_MAP[
+            const presetVariables = PRESET_VARIABLES_GROUP_MAP[
               presetVariableGroupKey as any
-            ] as IPresetVariablesItem[]
+            ] as IPresetVariablesGroupItem[]
             return (
               <Stack
                 key={presetVariableGroupKey}
@@ -65,11 +70,12 @@ const PresetVariables: FC<{
                   borderLeft="1px solid"
                   borderColor="inherit"
                 >
-                  {variables.map((variable) => (
+                  {presetVariables.map(({ variable }) => (
                     <PresetVariablesTag
                       key={variable.VariableName}
                       presetVariable={variable}
                       onClick={(clickVariable) => {
+                        addVariable(clickVariable)
                         onClick?.({
                           VariableName: clickVariable.VariableName,
                           label: clickVariable.VariableName,

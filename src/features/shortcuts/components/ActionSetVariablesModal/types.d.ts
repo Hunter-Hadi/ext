@@ -15,5 +15,3 @@ export interface IActionSetVariable {
   hidden?: boolean
   systemVariable?: boolean
 }
-
-export type IActionSetVariablesData = IActionSetVariable[]

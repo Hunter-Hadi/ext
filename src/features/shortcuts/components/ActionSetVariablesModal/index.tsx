@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { IActionSetVariablesData } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
+import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -29,14 +29,16 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
-  variables: IActionSetVariablesData
-  systemVariables: IActionSetVariablesData
+  variables: IActionSetVariable[]
+  systemVariables: IActionSetVariable[]
   title: string
   template?: string
   // 只是为了log记录，没其他作用
   contextMenuId: string
   // 等待用户操作
   waitForUserAction?: boolean
+  // 在Modal设置完变量后要运行的actions
+  actions?: ISetActionsType
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -54,7 +56,15 @@ interface ActionSetVariablesModalProps
 }
 
 const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
-  const { title, variables, systemVariables, modelKey, onShow, onClose } = props
+  const {
+    title,
+    variables,
+    systemVariables,
+    modelKey,
+    onShow,
+    onClose,
+    actions,
+  } = props
   const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
@@ -93,7 +103,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         return
       }
     }
-    debugger
     if (config?.waitForUserAction) {
       pendingPromises.forEach((promise) => {
         promise.resolve({
@@ -107,6 +116,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       setForm({})
       setShow(false)
       onClose?.()
+      const runActions: ISetActionsType = []
       if (config?.template) {
         let template = form?.TEMPLATE || config?.template || ''
         let systemVariablesTemplate = ''
@@ -127,21 +137,22 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
         }
         template += '\n\n---' + systemVariablesTemplate
-        const actions: ISetActionsType = []
-        actions.push({
+        runActions.push({
           type: 'SET_VARIABLE_MAP',
           parameters: {
             VariableMap: presetVariables,
           },
         })
-        actions.push({
+        // 要等modal运行完后设置完成变量再push actions
+        runActions.push(...(actions || config.actions || []))
+        runActions.push({
           type: 'RENDER_TEMPLATE',
           parameters: {
             template: template as string,
           },
         })
         if (isProduction) {
-          actions.push({
+          runActions.push({
             type: 'ASK_CHATGPT',
             parameters: {
               template: '{{LAST_ACTION_OUTPUT}}',
@@ -162,14 +173,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             },
           })
         } else {
-          actions.push({
+          runActions.push({
             type: 'ASK_CHATGPT',
             parameters: {
               template: '{{LAST_ACTION_OUTPUT}}',
             },
           })
         }
-        await setShortCuts(actions)
+        await setShortCuts(runActions)
         await runShortCuts()
       }
     }
@@ -180,8 +191,18 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const currentSystemVariables =
       systemVariables || config?.systemVariables || []
     const currentTitle = title || config?.title || ''
-    const selectTypeVariables: IActionSetVariablesData = []
-    const textTypeVariables: IActionSetVariablesData = []
+    const selectTypeVariables: IActionSetVariable[] = []
+    const textTypeVariables: IActionSetVariable[] = []
+    // 先添加系统预设的变量
+    currentSystemVariables.forEach((systemVariable) => {
+      if (systemVariable.valueType === 'Select' && !systemVariable.hidden) {
+        selectTypeVariables.push(systemVariable)
+      }
+      if (systemVariable.valueType === 'Text' && !systemVariable.hidden) {
+        textTypeVariables.push(systemVariable)
+      }
+      initialForm[systemVariable.VariableName] = systemVariable.defaultValue
+    })
     currentVariables.forEach((variable) => {
       if (variable.valueType === 'Select' && !variable.hidden) {
         selectTypeVariables.push(variable)
@@ -190,9 +211,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         textTypeVariables.push(variable)
       }
       initialForm[variable.VariableName] = variable.defaultValue
-    })
-    currentSystemVariables.forEach((systemVariable) => {
-      initialForm[systemVariable.VariableName] = systemVariable.defaultValue
     })
     // 计算当前选择框的总数
     const currentSelectTotalCount =
@@ -372,12 +390,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           gap: '16px',
         }}
       >
-        {currentModalConfig.currentSystemVariables.map(
-          (systemVariable, index) => {
-            const width = getChildrenWidth(
-              index,
-              currentModalConfig.currentSelectTotalCount,
-            )
+        {currentModalConfig.selectTypeVariables.map((systemVariable, index) => {
+          const width = getChildrenWidth(
+            index,
+            currentModalConfig.currentSelectTotalCount,
+          )
+          if (systemVariable.systemVariable) {
             return (
               <SystemVariableSelect
                 systemVariableSelectKey={systemVariable.VariableName as any}
@@ -402,8 +420,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 }}
               />
             )
-          },
-        )}
+          }
+          // TODO 等待开发
+          return null
+        })}
       </Stack>
       {/*Text*/}
       <Stack gap={2} paddingTop={1} ref={inputBoxRef}>

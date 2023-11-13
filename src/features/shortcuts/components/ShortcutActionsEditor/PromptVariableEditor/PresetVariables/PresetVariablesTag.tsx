@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import React, { FC } from 'react'
-import { IPresetVariablesItem } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { IPresetActionSetVariable } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
 import {
   generateRandomColor,
   hexChangeLightnessAndSaturation,
@@ -9,8 +9,8 @@ import {
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const PresetVariablesTag: FC<{
-  onClick?: (variable: IPresetVariablesItem) => void
-  presetVariable: IPresetVariablesItem
+  onClick?: (variable: IPresetActionSetVariable) => void
+  presetVariable: IPresetActionSetVariable
 }> = ({ onClick, presetVariable }) => {
   const theme = useCustomTheme()
 

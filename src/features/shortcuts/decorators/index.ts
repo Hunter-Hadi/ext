@@ -62,11 +62,6 @@ export function templateParserDecorator() {
       const [parameters] = args
       const actionInstance: Action = this as any
       if (actionInstance.parameters?.template) {
-        // 现在的业务场景不需要复杂的
-        // const result = await compileTemplate(
-        //   actionInstance.parameters?.template || '',
-        //   parameters,
-        // )
         const result = shortcutsRenderTemplate(
           actionInstance.parameters?.template || '',
           parameters,

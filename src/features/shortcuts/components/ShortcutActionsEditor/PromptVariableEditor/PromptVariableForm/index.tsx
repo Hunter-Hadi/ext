@@ -61,7 +61,7 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
   const handleSubmit = async () => {
     const validation = await trigger()
     const formData = getValues()
-    const label = formData.label.trim()
+    const label = (formData?.label || '').trim()
     if (variables.find((variable) => variable.label === label)) {
       setError('label', {
         type: 'custom',

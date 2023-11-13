@@ -93,15 +93,59 @@ const useShortcutEditorActionsVariables = (filterValue?: string) => {
     }
     return shortcutActionEditor.variables.filter((variable) => {
       const variableName = variable.VariableName.toLowerCase()
-      const label = variable.label.toLowerCase()
+      const label = (variable?.label || '').toLowerCase()
       const placeholder = variable.placeholder?.toLowerCase()
       return (
-        variableName.includes(searchText) ||
-        label.includes(searchText) ||
-        placeholder?.includes(searchText)
+        !variable.systemVariable &&
+        (variableName.includes(searchText) ||
+          label.includes(searchText) ||
+          placeholder?.includes(searchText))
       )
     })
   }, [shortcutActionEditor.variables, filterValue])
+  const systemSelectVisible = useMemo(() => {
+    return (
+      shortcutActionEditor.variables.filter(
+        (variable) => variable.systemVariable,
+      ).length >= 3
+    )
+  }, [shortcutActionEditor.variables])
+  const toggleSystemSelectVisible = () => {
+    if (systemSelectVisible) {
+      // 过滤掉系统变量
+      setVariables(
+        shortcutActionEditor.variables.filter(
+          (variable) => !variable.systemVariable,
+        ),
+      )
+    } else {
+      // 添加系统变量
+      const systemSelect: IActionSetVariable[] = [
+        {
+          VariableName: 'AI_RESPONSE_LANGUAGE',
+          defaultValue: 'English',
+          systemVariable: true,
+          valueType: 'Select',
+          label: 'AI Response language',
+        },
+        {
+          VariableName: 'AI_RESPONSE_TONE',
+          defaultValue: 'Default',
+          systemVariable: true,
+          valueType: 'Select',
+          label: 'Tone',
+        },
+        {
+          VariableName: 'AI_RESPONSE_WRITING_STYLE',
+          defaultValue: 'Default',
+          systemVariable: true,
+          valueType: 'Select',
+          label: 'Writing style',
+        },
+      ]
+      setVariables(shortcutActionEditor.variables.concat(systemSelect))
+    }
+  }
   return {
     addVariable,
     updateVariable,
@@ -109,6 +153,8 @@ const useShortcutEditorActionsVariables = (filterValue?: string) => {
     setVariables,
     variableMap,
     variables: shortcutActionEditor.variables,
+    systemSelectVisible,
+    toggleSystemSelectVisible,
   }
 }
 

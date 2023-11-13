@@ -23,7 +23,6 @@ import ContextMenuViewSource from '@/pages/settings/pages/prompts/ContextMenuEdi
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuActionConfirmModal'
-import { getDefaultActionWithTemplate } from '@/features/shortcuts/utils'
 import ContextMenuMockTextarea from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuMockTextarea'
 import DevContent from '@/components/DevContent'
 import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
@@ -203,21 +202,11 @@ const ContextMenuEditCard: FC<{
     })
   }
   const handleOnSave = useCallback(
-    (newNode: IContextMenuItem, template: string, autoAskChatGPT: boolean) => {
+    (newNode: IContextMenuItem) => {
       if (newNode.data.type === 'group') {
         updateMenuItem(newNode)
       } else {
-        updateMenuItem({
-          ...newNode,
-          data: {
-            ...newNode.data,
-            actions: getDefaultActionWithTemplate(
-              buttonKey,
-              template,
-              autoAskChatGPT,
-            ),
-          },
-        })
+        updateMenuItem(newNode)
       }
       setEditNode(null)
     },

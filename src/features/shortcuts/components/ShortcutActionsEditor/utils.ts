@@ -53,6 +53,25 @@ export const generateVariableHtmlContent = (
   return `<span contenteditable="false" style="color: ${color}" data-variable-name="${variableName}">{{${variableLabel}}}</span>`
 }
 
+export const htmlToTemplate = (html: string) => {
+  const div = document.createElement('div')
+  div.innerHTML = html
+  const nodes = Array.from(div.childNodes)
+  nodes.forEach((node) => {
+    // 还原变量
+    // 判断是不是变量
+    if ((node as HTMLSpanElement).tagName === 'SPAN') {
+      const span = node as HTMLSpanElement
+      const variableName = span.getAttribute('data-variable-name')
+      const variable = `{{${variableName}}}`
+      if (variable) {
+        span.innerHTML = variable
+      }
+    }
+  })
+  return div.innerText
+}
+
 export const promptTemplateToHtml = (
   template: string,
   variableMap: Map<string, IActionSetVariable>,
@@ -128,7 +147,6 @@ export const updateHtmlWithVariables = (
       }
     }
   })
-  debugger
   return div.innerHTML
 }
 

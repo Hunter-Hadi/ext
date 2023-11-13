@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import useShortcutEditorActionVariables from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
@@ -39,10 +39,19 @@ const findCanFocusEl = (
     return lis[type === 'first' ? 0 : lis.length - 1] as HTMLElement
   }
 }
+export interface IPromptVariableEditorExposeRef {
+  addVariable: (variableLabel: string) => void
+}
 
-const PromptVariableEditor: FC<{
+export interface IPromptVariableEditorProps {
   onAddTextVariable?: (variable: IActionSetVariable) => void
-}> = (props) => {
+}
+
+// eslint-disable-next-line react/display-name
+const PromptVariableEditor = React.forwardRef<
+  IPromptVariableEditorExposeRef,
+  IPromptVariableEditorProps
+>((props, ref) => {
   const { onAddTextVariable } = props
   const { isDarkMode } = useCustomTheme()
   const [inputValue, setInputValue] = useState('')
@@ -155,7 +164,6 @@ const PromptVariableEditor: FC<{
     },
     [showAddBtn, handleCreateVariable],
   )
-
   return (
     <Stack>
       <Stack direction={'row'} alignItems={'center'} spacing={0.5} mb={1}>
@@ -403,6 +411,7 @@ const PromptVariableEditor: FC<{
             onConfirm={(editingVariable) => {
               if (editorType === 'add') {
                 addVariable(editingVariable)
+                onAddTextVariable?.(editingVariable)
               } else if (editorType === 'edit') {
                 updateVariable(editingVariable)
               }
@@ -418,5 +427,6 @@ const PromptVariableEditor: FC<{
       )}
     </Stack>
   )
-}
+})
+
 export default PromptVariableEditor

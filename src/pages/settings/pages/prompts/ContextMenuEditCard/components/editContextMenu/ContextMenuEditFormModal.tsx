@@ -1,11 +1,8 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import cloneDeep from 'lodash-es/cloneDeep'
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import FormControlLabel from '@mui/material/FormControlLabel'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
-import Switch from '@mui/material/Switch'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
@@ -14,130 +11,33 @@ import {
   CONTEXT_MENU_ICONS,
   ContextMenuIcon,
 } from '@/components/ContextMenuIcon'
-import {
-  RunPromptTooltip,
-  TemplateTooltip,
-} from '../../../../../components/tooltipCollection'
-import { templateStaticWords } from '@/features/shortcuts/utils'
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import { TemplateTooltip } from '../../../../../components/tooltipCollection'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import { useTranslation } from 'react-i18next'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutActionsEditor'
-
-function replaceString(str: string, startIndex = 0) {
-  const matches = templateStaticWords
-  let offset = -1
-  let match = ''
-  for (let i = 0; i < matches.length; i++) {
-    const index = str.slice(startIndex).indexOf(matches[i])
-    if (index > -1 && (index < offset || offset === -1)) {
-      match = matches[i]
-      offset = index
-    }
-  }
-  console.log(offset)
-  if (offset === -1) {
-    return { text: str, p: startIndex, end: true }
-  }
-  let start = offset + startIndex
-  let end = start + match.length
-  while (start > startIndex && str[start - 1] === '{') {
-    start--
-  }
-  while (end < str.length && str[end] === '}') {
-    end++
-  }
-  console.log(start, end)
-  return {
-    text: str.slice(0, start) + `{{${match}}}` + str.slice(end),
-    p: end - (end - start - match.length - 4),
-  }
-}
-function processReplaceString(origin: string) {
-  let p = 0
-  let res = replaceString(origin, p)
-  while (!res.end) {
-    p = res.p
-    res = replaceString(res.text, p)
-  }
-  return res.text
-}
-const AceEditor = React.lazy(async () => {
-  const ace = await import('react-ace')
-  if (!ace) {
-    return (<></>) as any
-  }
-  await Promise.all([
-    import('ace-builds/src-noconflict/ext-language_tools'),
-    import('ace-builds/src-noconflict/mode-handlebars'),
-    import('ace-builds/src-noconflict/theme-monokai'),
-  ]).then(([langTools]) => {
-    langTools.default.setCompleters([staticWordCompleter])
-  })
-  return ace.default
-})
-
-const staticWordCompleter = {
-  getCompletions(
-    editor: any,
-    session: any,
-    pos: number,
-    prefix: string,
-    callback: any,
-  ) {
-    const wordList = templateStaticWords
-    callback(null, [
-      ...wordList.map(function (word) {
-        return {
-          caption: word,
-          value: `{{${word}}}`,
-          meta: 'variable',
-        }
-      }),
-    ])
-  },
-}
-/**
- * 用户当前的动作是否是自动运行的
- * @param actions
- */
-const isAutoAskChatGPT = (actions?: IContextMenuItem['data']['actions']) => {
-  if (actions && actions.length > 0) {
-    return actions.find((item) => item.type === 'ASK_CHATGPT') !== undefined
-  } else {
-    // 默认是自动运行的
-    return true
-  }
-}
+import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 const ContextMenuEditForm: FC<{
   iconSetting?: boolean
   settingsKey: IChromeExtensionButtonSettingKey
   node: IContextMenuItem
-  onSave?: (
-    newNode: IContextMenuItem,
-    template: string,
-    autoAskChatGPT: boolean,
-  ) => void
+  onSave?: (newNode: IContextMenuItem) => void
   onCancel?: () => void
   onDelete?: (id: string) => void
   open: boolean
 }> = ({ open, node, onSave, onCancel, onDelete, settingsKey, iconSetting }) => {
   const { t } = useTranslation(['settings', 'common'])
+  const { setActions, generateActions } = useShortcutEditorActions()
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
   )
-  const [focusEditor, setFocusEditor] = useState(false)
-  const [template, setTemplate] = useState('')
   const [selectedIcon, setSelectedIcon] = useState<IContextMenuIconKey | null>(
     null,
   )
-  const [autoAskChatGPT, setAutoAskChatGPT] = useState(() => {
-    return isAutoAskChatGPT(editNode.data.actions)
-  })
   const isDisabled = !editNode.data.editable
   const isDisabledSave = useMemo(() => {
     if (isDisabled) {
@@ -146,10 +46,10 @@ const ContextMenuEditForm: FC<{
     if (editNode.data.type === 'group') {
       return editNode.text === ''
     } else if (editNode.data.type === 'shortcuts') {
-      return editNode.text === '' || template === ''
+      return editNode.text === ''
     }
     return false
-  }, [isDisabled, template, editNode.text])
+  }, [isDisabled, editNode.text])
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {
       return isDisabled
@@ -160,7 +60,6 @@ const ContextMenuEditForm: FC<{
         ? t('settings:feature_card__prompts__read_prompt__title')
         : t('settings:feature_card__prompts__edit_prompt__title')
     }
-    return ''
   }, [isDisabled, editNode.data.type, t])
 
   useEffect(() => {
@@ -174,97 +73,14 @@ const ContextMenuEditForm: FC<{
       }
     }
     setEditNode(cloneNode)
-    setTemplate(cloneNode.data?.actions?.[0]?.parameters?.template || '')
     setSelectedIcon(cloneNode.data?.icon as any)
-    setAutoAskChatGPT(isAutoAskChatGPT(cloneNode.data.actions))
   }, [node])
-  const dd = useRef<any>([])
   useEffect(() => {
-    // generateSearchWithAIActions('QQQQ', [], false).then(({ actions }) => {
-    //   dd.current = actions
-    // })
-    dd.current = [
-      {
-        type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-        parameters: {},
-      },
-      {
-        type: 'SET_VARIABLES_MODAL',
-        parameters: {
-          SetVariablesModalConfig: {
-            contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
-            title: 'Reply with key points',
-            modelKey: 'Sidebar',
-            template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
-
-Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
-
----
-
-The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-<context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
-</context>
-
-
-Here's the text to reply to:
-\`\`\`
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
-\`\`\`
-
----
-
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
-
-Choose simple words and phrases. Avoid ones that are too hard or confusing.
-
-Do not use hashtags. Write the reply like a real person would. 
-
-Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-
-Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
-{{KEY_POINTS}}`,
-            variables: [
-              {
-                label: 'Context',
-                VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT',
-                valueType: 'Text',
-                placeholder: 'Enter context',
-                defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
-              },
-              {
-                label: 'Target post/comment',
-                VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                valueType: 'Text',
-                placeholder: 'Enter target post/comment',
-                defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
-              },
-              {
-                label: 'Key points',
-                VariableName: 'KEY_POINTS',
-                valueType: 'Text',
-                placeholder: 'Enter key points',
-              },
-            ],
-            systemVariables: [
-              {
-                VariableName: 'AI_RESPONSE_LANGUAGE',
-                defaultValue: 'English',
-              },
-              {
-                VariableName: 'AI_RESPONSE_TONE',
-                defaultValue: 'Default',
-              },
-              {
-                VariableName: 'AI_RESPONSE_WRITING_STYLE',
-                defaultValue: 'Default',
-              },
-            ],
-          },
-        },
-      },
-    ]
-  }, [])
+    if (node) {
+      console.log('[Actions]: ', '初始化actions')
+      setActions(node.data.actions || [])
+    }
+  }, [node])
   return (
     <Modal open={open} onClose={onCancel}>
       <Container
@@ -326,7 +142,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                   gap={1}
                   direction={'row'}
                   alignItems={'center'}
-                  sx={{ maxHeight: '112px', overflowY: 'scroll' }}
+                  sx={{ maxHeight: '72px', overflowY: 'scroll' }}
                 >
                   {CONTEXT_MENU_ICONS.filter((icon) => icon !== 'Empty').map(
                     (icon) => {
@@ -380,119 +196,6 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                   placeholder={t(
                     'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
                   )}
-                  defaultValue={dd.current || node?.data?.actions}
-                />
-                <Box
-                  position={'relative'}
-                  sx={{
-                    resize: 'vertical',
-                    ml: '2px!important',
-                    width: 'calc(100% - 4px)',
-                    p: 1,
-                    boxSizing: 'border-box',
-                    borderRadius: '4px',
-                    border: '1px solid',
-                    borderColor: (t) =>
-                      t.palette.mode === 'dark'
-                        ? 'rgb(97, 97, 97)'
-                        : 'rgb(208, 208, 208)',
-                    '.ace-tm .ace_comment': {
-                      color: 'rgba(0,0,0,.6)',
-                    },
-                    '& > div': {
-                      minHeight: 200,
-                      resize: 'vertical',
-                    },
-                    '&:hover': {
-                      borderColor: (t) =>
-                        t.palette.mode === 'dark' ? '#fff' : 'rgb(0, 0, 0)',
-                    },
-                    ...(focusEditor && {
-                      borderColor: 'transparent!important',
-                      outline: '2px solid',
-                      'outline-color': (t) =>
-                        t.palette.mode === 'dark'
-                          ? t.palette.customColor.main
-                          : t.palette.customColor.main,
-                    }),
-                  }}
-                >
-                  <AppSuspenseLoadingLayout>
-                    <AceEditor
-                      onFocus={() => {
-                        setFocusEditor(true)
-                      }}
-                      onBlur={() => {
-                        setFocusEditor(false)
-                      }}
-                      placeholder={t(
-                        'settings:feature_card__prompts__edit_prompt__field_template__placeholder',
-                      )}
-                      width={'100%'}
-                      height={'100%'}
-                      value={template}
-                      fontSize={14}
-                      showPrintMargin={false}
-                      showGutter={false}
-                      highlightActiveLine={false}
-                      mode={'handlebars'}
-                      theme={'textmate'}
-                      onChange={(value: string) => {
-                        setTemplate(value)
-                      }}
-                      name={'editor-with-chrome-extension'}
-                      editorProps={{
-                        $blockScrolling: true,
-                      }}
-                      setOptions={{
-                        wrap: true,
-                        enableBasicAutocompletion: true,
-                        enableLiveAutocompletion: true,
-                        enableSnippets: false,
-                        showLineNumbers: false,
-                        tabSize: 2,
-                      }}
-                      enableBasicAutocompletion
-                      enableLiveAutocompletion
-                    />
-                  </AppSuspenseLoadingLayout>
-                </Box>
-              </Stack>
-            )}
-            {editNode.data.type === 'shortcuts' && (
-              <Stack spacing={1} pb={1}>
-                <Stack direction={'row'} alignItems="center">
-                  <Typography variant={'body1'}>
-                    {t(
-                      'settings:feature_card__prompts__edit_prompt__field_execution_mode__title',
-                    )}
-                  </Typography>
-                  <RunPromptTooltip />
-                </Stack>
-                <FormControlLabel
-                  sx={{
-                    p: '4px 16px',
-                    borderRadius: '4px',
-                    justifyContent: 'space-between',
-                    flexDirection: 'row-reverse',
-                    border: `1px solid`,
-                    borderColor: 'customColor.borderColor',
-                  }}
-                  control={<Switch checked={autoAskChatGPT} />}
-                  label={
-                    <Stack direction={'row'} alignItems="center">
-                      <Typography variant={'body1'}>
-                        {t(
-                          'settings:feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__title',
-                        )}
-                      </Typography>
-                    </Stack>
-                  }
-                  value={autoAskChatGPT}
-                  disabled={isDisabled}
-                  onChange={(event: any) => {
-                    setAutoAskChatGPT(event.target.checked)
-                  }}
                 />
               </Stack>
             )}
@@ -538,12 +241,22 @@ Now, write a concise reply to the post/comment above by *writing a better versio
               disabled={isDisabledSave}
               variant={'contained'}
               onClick={() => {
-                onSave &&
-                  onSave(
+                onSave?.(
+                  mergeWithObject([
                     editNode,
-                    processReplaceString(template),
-                    autoAskChatGPT,
-                  )
+                    {
+                      data: {
+                        actions: generateActions(editNode.text),
+                      },
+                    } as IContextMenuItem,
+                  ]),
+                )
+                // onSave &&
+                //   onSave(
+                //     editNode,
+                //     processReplaceString(template),
+                //     autoAskChatGPT,
+                //   )
               }}
             >
               {t('common:save')}

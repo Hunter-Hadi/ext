@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { FC, useCallback, useMemo, useRef } from 'react'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
@@ -12,19 +12,23 @@ import { useCustomTheme } from '@/hooks/useCustomTheme'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
 import PresetVariables from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import PromptVariableEditor from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor'
+import PromptVariableEditor, {
+  IPromptVariableEditorExposeRef,
+} from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor'
 
 const ShortcutActionsEditor: FC<{
-  defaultValue?: ISetActionsType
   disabled?: boolean
   placeholder?: string
   minHeight?: number
+  maxHeight?: number
   onChange?: ISetActionsType
   onSave?: ISetActionsType
   sx?: SxProps
 }> = (props) => {
-  const { defaultValue, disabled, placeholder, sx, minHeight = 240 } = props
-  const { setActions, editHTML, updateEditHTML } = useShortcutEditorActions()
+  const { disabled, placeholder, sx, minHeight = 240, maxHeight = 450 } = props
+  // const { t } = useTranslation(['common', 'settings'])
+  const { editHTML, updateEditHTML } = useShortcutEditorActions()
+  const PromptVariableEditorRef = useRef<IPromptVariableEditorExposeRef>(null)
   const theme = useCustomTheme()
   const inputRef = useRef<HTMLDivElement>(null)
   const lastSelectionRangeRef = useRef<Range | null>(null)
@@ -33,7 +37,7 @@ const ShortcutActionsEditor: FC<{
       if (inputRef.current) {
         const addHtml = `${generateVariableHtmlContent(
           variable.VariableName,
-          variable.label,
+          variable.label || '',
           theme.isDarkMode,
         )}`
         lastSelectionRangeRef.current = promptEditorAddHtmlToFocusNode(
@@ -61,7 +65,7 @@ const ShortcutActionsEditor: FC<{
         boxSizing: 'border-box',
         width: 'calc(100% - 4px)',
         minHeight: `${minHeight}px`,
-        maxHeight: '46vh',
+        maxHeight: `${maxHeight}px`,
         overflow: 'auto',
         borderRadius: '4px',
         border: '1px solid',
@@ -85,11 +89,7 @@ const ShortcutActionsEditor: FC<{
       ...sx,
     }
   }, [placeholder, minHeight, sx, disabled])
-  useEffect(() => {
-    if (defaultValue) {
-      setActions(defaultValue)
-    }
-  }, [defaultValue])
+
   return (
     <Stack spacing={1}>
       <Box sx={memoSx}>
@@ -123,10 +123,48 @@ const ShortcutActionsEditor: FC<{
         }}
       />
       <PromptVariableEditor
+        ref={PromptVariableEditorRef}
         onAddTextVariable={(variable) => {
           addTextVariableToHTML(variable)
         }}
       />
+      {/*TODO: 先不展示给用户 2023-11-10*/}
+      {/*TODO: 我们这一版能不能做一个这样的逻辑：*/}
+      {/*TODO: 但凡这个prompt是需要用户使用的时候输入input的（比如含有variable、search等）（本质上就是使用的时候send to ai directly = false的），就默认都自动显示Output language & Tone & Writing style*/}
+      {/*<Stack spacing={1}>*/}
+      {/*  <Stack direction={'row'} alignItems="center">*/}
+      {/*    <Typography variant={'body1'}>*/}
+      {/*      {t(*/}
+      {/*        'settings:feature_card__prompts__edit_prompt__field_advance__title',*/}
+      {/*      )}*/}
+      {/*    </Typography>*/}
+      {/*    <RunPromptTooltip />*/}
+      {/*  </Stack>*/}
+      {/*  <FormControlLabel*/}
+      {/*    sx={{*/}
+      {/*      p: '4px 16px',*/}
+      {/*      borderRadius: '4px',*/}
+      {/*      justifyContent: 'space-between',*/}
+      {/*      flexDirection: 'row-reverse',*/}
+      {/*      border: `1px solid`,*/}
+      {/*      borderColor: 'customColor.borderColor',*/}
+      {/*    }}*/}
+      {/*    control={<Switch checked={systemSelectVisible} />}*/}
+      {/*    label={*/}
+      {/*      <Stack direction={'row'} alignItems="center">*/}
+      {/*        <Typography variant={'body1'}>*/}
+      {/*          {t(*/}
+      {/*            'settings:feature_card__prompts__edit_prompt__field_advance__system_select__title',*/}
+      {/*          )}*/}
+      {/*        </Typography>*/}
+      {/*      </Stack>*/}
+      {/*    }*/}
+      {/*    value={systemSelectVisible}*/}
+      {/*    onChange={(event: any) => {*/}
+      {/*      toggleSystemSelectVisible()*/}
+      {/*    }}*/}
+      {/*  />*/}
+      {/*</Stack>*/}
     </Stack>
   )
 }

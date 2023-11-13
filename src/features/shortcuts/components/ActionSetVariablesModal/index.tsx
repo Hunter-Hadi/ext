@@ -1,8 +1,5 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import {
-  IActionSetSystemVariablesData,
-  IActionSetVariablesData,
-} from '@/features/shortcuts/components/ActionSetVariablesModal/types'
+import { IActionSetVariablesData } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -33,7 +30,7 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
   variables: IActionSetVariablesData
-  systemVariables: IActionSetSystemVariablesData
+  systemVariables: IActionSetVariablesData
   title: string
   template?: string
   // 只是为了log记录，没其他作用
@@ -96,6 +93,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         return
       }
     }
+    debugger
     if (config?.waitForUserAction) {
       pendingPromises.forEach((promise) => {
         promise.resolve({
@@ -382,7 +380,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             )
             return (
               <SystemVariableSelect
-                systemVariableSelectKey={systemVariable.VariableName}
+                systemVariableSelectKey={systemVariable.VariableName as any}
                 key={systemVariable.VariableName}
                 defaultValue={
                   (form[systemVariable.VariableName] as string) || ''
@@ -414,7 +412,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             <TextField
               size={'small'}
               key={textTypeVariable.VariableName}
-              label={textTypeVariable.label}
+              label={textTypeVariable.label || 'Label'}
               value={form[textTypeVariable.VariableName] || ''}
               onChange={(event) => {
                 const value = event.target.value

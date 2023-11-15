@@ -27,6 +27,7 @@ import {
 import TooltipButton from '@/components/TooltipButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { useForm, Controller } from 'react-hook-form'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
@@ -90,18 +91,42 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       reject: (reason?: any) => void
     }>
   >([])
-  const [form, setForm] = useState<ActionSetVariablesConfirmData['data']>({})
+  const {
+    control,
+    getValues,
+    setValue,
+    register,
+    trigger,
+    reset,
+    clearErrors,
+    formState: { errors },
+  } = useForm<ActionSetVariablesConfirmData['data']>()
+  const [form, setForm] = useState<
+    {
+      [key in string]: ReturnType<typeof register>
+    }
+  >({})
   const closeModal = async (isCancel: boolean) => {
     pendingPromises.forEach((promise) => {
       promise.resolve({
-        data: cloneDeep(form),
+        data: getValues(),
         type: isCancel ? 'cancel' : 'close',
         success: false,
       } as ActionSetVariablesConfirmData)
     })
+    reset()
     setForm({})
     setShow(false)
     onClose?.()
+  }
+  const validateForm = async () => {
+    const success = await trigger()
+    if (!success) {
+      if (!show) {
+        setShow(true)
+      }
+    }
+    return success
   }
   const confirmModal = async (textAreaElementIndex?: number) => {
     if (isNumber(textAreaElementIndex)) {
@@ -114,29 +139,53 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       }
     }
     if (config?.waitForUserAction) {
+      if (!(await validateForm())) {
+        return
+      }
       pendingPromises.forEach((promise) => {
         promise.resolve({
-          data: cloneDeep(form),
+          data: getValues(),
           type: 'confirm',
           success: true,
         } as ActionSetVariablesConfirmData)
       })
     } else {
-      await runActions()
+      await runActions(false)
     }
   }
-  const runActions = async () => {
-    if (Object.keys(form).length === 0) {
+  const runActions = async (autoExecute: boolean) => {
+    const isHaveEmptyValue = !Object.values(getValues()).find(
+      (value) => String(value || '').trim() === '',
+    )
+    if (!(await validateForm())) {
+      if (autoExecute) {
+        // 当modal打开的时候会尝试自动运行, 如果进入到这一步，说明已经验证失败了
+        // 如果有空值，就清除错误提示, 因为不需要直接报错
+        // 如果没有空值，说明是其他错误，例如正则错误，就不清除错误提示
+        if (isHaveEmptyValue) {
+          clearErrors()
+        }
+      }
+      return
+    }
+    // 因为是modal打开时尝试自动运行，即使通过表单验证，如果有任何一个空值都不再自动运行
+    if (autoExecute && isHaveEmptyValue) {
+      setShow(true)
+      return
+    }
+    // 如果没有任何值，就不运行
+    if (Object.keys(getValues()).length === 0) {
       return
     }
     await createConversation('Chat')
-    const presetVariables = cloneDeep(form)
+    const presetVariables = cloneDeep(getValues())
     setForm({})
+    reset()
     setShow(false)
     onClose?.()
     const runActions: ISetActionsType = []
     if (config?.template) {
-      let template = form?.TEMPLATE || config?.template || ''
+      let template = getValues()?.TEMPLATE || config?.template || ''
       let systemVariablesTemplate = ''
       if (
         presetVariables.AI_RESPONSE_TONE !== 'Default' &&
@@ -213,7 +262,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     }
   }
   const currentModalConfig = useMemo(() => {
-    const initialForm: ActionSetVariablesConfirmData['data'] = {}
+    console.log('什么意思')
+    const reactHookFormRegisterMap: {
+      [key in string]: ReturnType<typeof register>
+    } = {}
     const currentVariables = variables || config?.variables || []
     const currentSystemVariables =
       systemVariables || config?.systemVariables || []
@@ -221,24 +273,47 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const selectTypeVariables: IActionSetVariable[] = []
     const textTypeVariables: IActionSetVariable[] = []
     // 先添加系统预设的变量
-    currentSystemVariables.forEach((systemVariable) => {
-      if (systemVariable.valueType === 'Select' && !systemVariable.hidden) {
-        selectTypeVariables.push(systemVariable)
-      }
-      if (systemVariable.valueType === 'Text' && !systemVariable.hidden) {
-        textTypeVariables.push(systemVariable)
-      }
-      initialForm[systemVariable.VariableName] = systemVariable.defaultValue
-    })
-    currentVariables.forEach((variable) => {
-      if (variable.valueType === 'Select' && !variable.hidden) {
-        selectTypeVariables.push(variable)
-      }
-      if (variable.valueType === 'Text' && !variable.hidden) {
-        textTypeVariables.push(variable)
-      }
-      initialForm[variable.VariableName] = variable.defaultValue
-    })
+    currentSystemVariables
+      // 再添加用户自定义的变量
+      .concat(currentVariables)
+      .forEach((variable) => {
+        if (variable.valueType === 'Select' && !variable.hidden) {
+          selectTypeVariables.push(variable)
+        }
+        if (variable.valueType === 'Text' && !variable.hidden) {
+          textTypeVariables.push(variable)
+        }
+        const validates = variable.validates || []
+        reactHookFormRegisterMap[variable.VariableName] = register(
+          variable.VariableName,
+          {
+            value: variable.defaultValue?.trim(),
+            validate: (value) => {
+              for (let i = 0; i < validates.length; i++) {
+                const validateItem = validates[i]
+                if (validateItem.required) {
+                  if (!value) {
+                    return (
+                      validateItem.message || `${variable.label} is required`
+                    )
+                  }
+                }
+                if (validateItem.pattern) {
+                  if (
+                    !value ||
+                    !new RegExp(validateItem.pattern).test(value.toString())
+                  ) {
+                    return (
+                      validateItem.message || `${variable.label} is invalid`
+                    )
+                  }
+                }
+              }
+              return true
+            },
+          },
+        )
+      })
     // 计算当前选择框的总数
     const currentSelectTotalCount =
       selectTypeVariables.length + currentSystemVariables.length
@@ -262,16 +337,16 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const maxTextareaMaxRows =
       Math.floor(textareaMaxHeight / 24 / textareaCount) - 1
     getSetVariablesModalSelectCache().then((cache) => {
-      const initialFormKeys = Object.keys(initialForm)
+      const initialFormKeys = Object.keys(reactHookFormRegisterMap)
       if (initialFormKeys.length === 0) {
         return
       }
       initialFormKeys.forEach((formKey) => {
         if (cache[formKey] !== undefined) {
-          initialForm[formKey] = cache[formKey]
+          setValue(formKey, cache[formKey])
         }
       })
-      setForm(initialForm)
+      setForm(reactHookFormRegisterMap)
     })
     return {
       currentTitle,
@@ -282,7 +357,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       maxTextareaMaxRows,
     }
   }, [variables, title, systemVariables, modelKey, config])
-  const autoExecuteRef = useRef(false)
   useEffectOnce(() => {
     OneShotCommunicator.receive('SetVariablesModal', (data: any) => {
       return new Promise((resolve, reject) => {
@@ -290,25 +364,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           setShow(false)
           setTimeout(() => {
             setConfig(data.config)
-            // 新增的逻辑：
-            // 如果input和select都有默认值的话，那可以直接运行
-            const isHavaNeedInputField = Array.from(
-              data.config.systemVariables || [],
-            )
-              .concat(data.config.variables || [])
-              .find((variable: any) => {
-                return !variable?.defaultValue
-              })
-            if (!isHavaNeedInputField) {
-              resolve({
-                data: cloneDeep(form),
-                type: 'confirm',
-                success: true,
-              })
-              // 这里是让上层的shortcuts结束
-              autoExecuteRef.current = true
-              return
-            }
             if (data.config.waitForUserAction) {
               setPendingPromises([
                 {
@@ -323,8 +378,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 success: true,
               })
             }
-            onShow?.()
-            setShow(true)
           }, 0)
         }
       })
@@ -338,7 +391,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     shortCutsEngineRef.current?.addListener((event, shortcutEngine) => {
       if (event === 'status') {
         if (shortcutEngine.status === 'complete') {
-          runActionsRef.current().then().catch()
+          runActionsRef.current(true).then().catch()
         }
       }
     })
@@ -457,26 +510,30 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           )
           if (systemVariable.systemVariable) {
             return (
-              <SystemVariableSelect
-                systemVariableSelectKey={systemVariable.VariableName as any}
-                key={systemVariable.VariableName}
-                defaultValue={
-                  (form[systemVariable.VariableName] as string) || ''
-                }
-                onChange={async (value) => {
-                  await setVariablesModalSelectCache(
-                    systemVariable.VariableName,
-                    value,
+              <Controller
+                control={control}
+                name={systemVariable.VariableName}
+                defaultValue={systemVariable.defaultValue}
+                render={({ field }) => {
+                  return (
+                    <SystemVariableSelect
+                      systemVariableSelectKey={
+                        systemVariable.VariableName as any
+                      }
+                      key={systemVariable.VariableName}
+                      defaultValue={field.value as any}
+                      onChange={async (value) => {
+                        await setVariablesModalSelectCache(
+                          systemVariable.VariableName,
+                          value,
+                        )
+                        field.onChange(value)
+                      }}
+                      sx={{
+                        width,
+                      }}
+                    />
                   )
-                  setForm((prevState) => {
-                    return {
-                      ...prevState,
-                      [systemVariable.VariableName]: value,
-                    }
-                  })
-                }}
-                sx={{
-                  width,
                 }}
               />
             )
@@ -488,21 +545,13 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       {/*Text*/}
       <Stack gap={2} paddingTop={1} ref={inputBoxRef}>
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
+          console.log('什么意思', errors[textTypeVariable.VariableName], errors)
           return (
             <TextField
               size={'small'}
               key={textTypeVariable.VariableName}
               label={textTypeVariable.label || 'Label'}
-              value={form[textTypeVariable.VariableName] || ''}
-              onChange={(event) => {
-                const value = event.target.value
-                setForm((prevState) => {
-                  return {
-                    ...prevState,
-                    [textTypeVariable.VariableName]: value,
-                  }
-                })
-              }}
+              {...form[textTypeVariable.VariableName]}
               onKeyDown={async (event) => {
                 if (event.key === 'Enter' && !event.shiftKey) {
                   event.stopPropagation()
@@ -516,6 +565,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 sx: {
                   fontSize: '16px',
                 },
+              }}
+              error={!!errors[textTypeVariable.VariableName]}
+              helperText={errors[textTypeVariable.VariableName]?.message || ''}
+              FormHelperTextProps={{
+                sx: { ml: 0 },
               }}
               InputLabelProps={{ shrink: true, sx: { fontSize: '16px' } }}
               multiline

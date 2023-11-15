@@ -37,6 +37,16 @@ export const PRESET_VARIABLE_MAP: {
     valueType: 'Text',
     systemVariable: true,
     defaultValue: '{{SELECTED_TEXT}}',
+    validates: [
+      {
+        required: true,
+      },
+      {
+        pattern:
+          '(https:\\/\\/www\\.|http:\\/\\/www\\.|https:\\/\\/|http:\\/\\/)?[a-zA-Z0-9]{2,}(\\.[a-zA-Z0-9]{2,})(\\.[a-zA-Z0-9]{2,})?',
+        message: 'Please enter a valid URL',
+      },
+    ],
   },
   LIVE_CRAWLING_CRAWLED_TEXT: {
     VariableName: 'LIVE_CRAWLING_CRAWLED_TEXT',
@@ -54,6 +64,11 @@ export const PRESET_VARIABLE_MAP: {
     valueType: 'Text',
     systemVariable: true,
     defaultValue: '{{SELECTED_TEXT}}',
+    validates: [
+      {
+        required: true,
+      },
+    ],
   },
   WEB_SEARCH_RESULTS: {
     VariableName: 'WEB_SEARCH_RESULTS',

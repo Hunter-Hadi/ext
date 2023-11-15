@@ -55,14 +55,20 @@ Now, write a new email, mentioning these points:
                 {
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   defaultValue: 'English',
+                  valueType: 'Select',
+                  systemVariable: true,
                 },
                 {
                   VariableName: 'AI_RESPONSE_TONE',
                   defaultValue: 'Default',
+                  valueType: 'Select',
+                  systemVariable: true,
                 },
                 {
                   VariableName: 'AI_RESPONSE_WRITING_STYLE',
                   defaultValue: 'Default',
+                  valueType: 'Select',
+                  systemVariable: true,
                 },
               ],
             },
@@ -152,14 +158,20 @@ Now, write a {{CURRENT_WEBSITE_DOMAIN}} post, mentioning these points:
                 {
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   defaultValue: 'English',
+                  valueType: 'Select',
+                  systemVariable: true,
                 },
                 {
                   VariableName: 'AI_RESPONSE_TONE',
                   defaultValue: 'Default',
+                  valueType: 'Select',
+                  systemVariable: true,
                 },
                 {
                   VariableName: 'AI_RESPONSE_WRITING_STYLE',
                   defaultValue: 'Default',
+                  valueType: 'Select',
+                  systemVariable: true,
                 },
               ],
             },

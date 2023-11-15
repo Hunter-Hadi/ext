@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Kai naudojate šiuos kintamuosius, sistema ieškos {{Tinklo paieškos užklausos}}.\nTada {{Tinklo paieškos rezultatai}} rodo šiuos paieškos rezultatus.",
     "preset_variables__help__system__title": "Kintamieji apie „Sistemą“:",
     "preset_variables__help__system__description": "{{Dabartinė sistema Data}} rodo šios dienos datą.\nVėliau gali būti pridėti daugiau „Sistemos“ kintamųjų.",
-    "preset_variables__system__title": "Sistema",
+    "preset_variables__system__title": "Kontekstas",
     "preset_variables__system__selected_text__description": "Šis šablono kintamasis bus pakeistas tekstu, kurį pasirinkote dabartiniame puslapyje.",
     "preset_variables__system__selected_text__description__example1": "parašykite geresnę versiją šio teksto: {{PASIRINKTAS_TEKSTAS}}",
     "preset_variables__system__selected_text__description__example2": "išversti šį tekstą į anglų kalbą: {{PASIRINKTAS_TEKSTAS}}",

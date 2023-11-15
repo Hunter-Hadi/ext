@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Quando você usa essas variáveis, o sistema irá pesquisar por {{Consulta de Pesquisa na Web}}.\nEntão, {{Resultados da Pesquisa na Web}} mostrará esses resultados de pesquisa.",
     "preset_variables__help__system__title": "Variáveis sobre o \"Sistema\":",
     "preset_variables__help__system__description": "{{Data Atual do Sistema}} mostrará a data de hoje.\nMais variáveis do \"Sistema\" podem ser adicionadas posteriormente.",
-    "preset_variables__system__title": "Sistema",
+    "preset_variables__system__title": "Contexto",
     "preset_variables__system__selected_text__description": "Essa variável do modelo de prompt será substituída pelo texto que você selecionou na página atual.",
     "preset_variables__system__selected_text__description__example1": "escreva uma versão melhor do seguinte texto: {{TEXTO_SELECIONADO}}",
     "preset_variables__system__selected_text__description__example2": "traduza o seguinte texto para o inglês: {{TEXTO_SELECIONADO}}",

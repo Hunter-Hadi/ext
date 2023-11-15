@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "আপনি এই চলকগুলি ব্যবহার করলে, সিস্টেমটি {{Web Search Query}} জন্য অনুসন্ধান করবে।\nতারপরে, {{Web Search Results}} এই অনুসন্ধান ফলাফলগুলি প্রদর্শন করবে।",
     "preset_variables__help__system__title": "\"সিস্টেম\" সম্পর্কে চলকগুলি:",
     "preset_variables__help__system__description": "{{System Current Date}} আজকের তারিখ প্রদর্শন করবে।\nআরও \"সিস্টেম\" চলকগুলি পরে যোগ করা হতে পারে।",
-    "preset_variables__system__title": "সিস্টেম",
+    "preset_variables__system__title": "প্রসঙ্গ",
     "preset_variables__system__selected_text__description": "এই প্রম্পট টেমপ্লেট চলকটি বর্তমান পৃষ্ঠায় আপনি নির্বাচন করা পাঠ্যের সাথে প্রতিস্থাপিত হবে।",
     "preset_variables__system__selected_text__description__example1": "নিম্নলিখিত পাঠ্যের একটি ভাল সংস্করণ লিখুন: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "নিম্নলিখিত পাঠ্যটি ইংরেজীতে অনুবাদ করুন: {{SELECTED_TEXT}}",

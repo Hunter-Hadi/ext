@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Bu değişkenleri kullandığınızda sistem {{Web Arama Sorgusu}} için arama yapacaktır.\nDaha sonra {{Web Arama Sonuçları}} bu arama sonuçlarını gösterecektir.",
     "preset_variables__help__system__title": "\"Sistem\" hakkında Değişkenler:",
     "preset_variables__help__system__description": "{{Sistem Geçerli Tarih}} bugünün tarihini gösterecektir.\nDaha fazla \"Sistem\" değişkeni daha sonra eklenebilir.",
-    "preset_variables__system__title": "Sistem",
+    "preset_variables__system__title": "Bağlam",
     "preset_variables__system__selected_text__description": "Bu prompt şablon değişkeni, mevcut sayfada seçtiğiniz metinle değiştirilecektir.",
     "preset_variables__system__selected_text__description__example1": "aşağıdaki metnin daha iyi bir sürümünü yaz: {{SEÇİLİ_METİN}}",
     "preset_variables__system__selected_text__description__example2": "aşağıdaki metni İngilizce'ye çevir: {{SEÇİLİ_METİN}}",

@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Коли ви використовуєте ці змінні, система буде шукати {{Web Search Query}}.\nПотім, {{Web Search Results}} покаже ці результати пошуку.",
     "preset_variables__help__system__title": "Змінні про \"Систему\":",
     "preset_variables__help__system__description": "{{System Current Date}} покаже сьогоднішню дату.\nБільше змінних про \"Систему\" можуть бути додані пізніше.",
-    "preset_variables__system__title": "Система",
+    "preset_variables__system__title": "Контекст",
     "preset_variables__system__selected_text__description": "Ця змінна шаблону запиту буде замінена текстом, який ви вибрали на поточній сторінці.",
     "preset_variables__system__selected_text__description__example1": "напишіть кращу версію наступного тексту: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "перекладіть наступний текст англійською: {{SELECTED_TEXT}}",

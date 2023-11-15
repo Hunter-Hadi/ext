@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Όταν χρησιμοποιείτε αυτές τις μεταβλητές, το σύστημα θα αναζητήσει το {{Web Search Query}}.\nΣτη συνέχεια, το {{Web Search Results}} θα εμφανίσει αυτά τα αποτελέσματα αναζήτησης.",
     "preset_variables__help__system__title": "Μεταβλητές για το \"Σύστημα\":",
     "preset_variables__help__system__description": "Το {{System Current Date}} θα εμφανίσει τη σημερινή ημερομηνία.\nΠερισσότερες μεταβλητές \"Συστήματος\" μπορεί να προστεθούν αργότερα.",
-    "preset_variables__system__title": "Σύστημα",
+    "preset_variables__system__title": "Πλαίσιο",
     "preset_variables__system__selected_text__description": "Αυτή η μεταβλητή προτύπου θα αντικατασταθεί με το κείμενο που επιλέξατε στην τρέχουσα σελίδα.",
     "preset_variables__system__selected_text__description__example1": "γράψτε μια καλύτερη έκδοση του παρακάτω κειμένου: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "μεταφράστε το παρακάτω κείμενο στα Αγγλικά: {{SELECTED_TEXT}}",

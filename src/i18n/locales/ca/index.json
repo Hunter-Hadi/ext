@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Quan utilitzis aquestes variables, el sistema cercarà {{Consulta de cerca web}}.\nA continuació, {{Resultats de cerca web}} mostrarà aquests resultats de cerca.",
     "preset_variables__help__system__title": "Variables sobre el \"Sistema\":",
     "preset_variables__help__system__description": "{{Data actual del sistema}} mostrarà la data d'avui.\nEs poden afegir més variables del \"Sistema\" més endavant.",
-    "preset_variables__system__title": "Sistema",
+    "preset_variables__system__title": "Contexte",
     "preset_variables__system__selected_text__description": "Aquesta variable de plantilla de prompt es reemplaçarà pel text que has seleccionat a la pàgina actual.",
     "preset_variables__system__selected_text__description__example1": "escriu una versió millor del següent text: {{TEXT_SELECCIONAT}}",
     "preset_variables__system__selected_text__description__example2": "tradueix el següent text a l'anglès: {{TEXT_SELECCIONAT}}",

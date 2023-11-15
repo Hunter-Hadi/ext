@@ -481,7 +481,7 @@
     "preset_variables__help__web_search__description": "When you use these variables, the system will search for {{Web Search Query}}.\nThen, {{Web Search Results}} will show these search results.",
     "preset_variables__help__system__title": "Variables about the \"System\":",
     "preset_variables__help__system__description": "{{System Current Date}} will show today's date.\nMore \"System\" variables might be added later.",
-    "preset_variables__system__title": "System",
+    "preset_variables__system__title": "Context",
     "preset_variables__system__selected_text__description": "This prompt template variable will be replaced with the text you selected on the current page.",
     "preset_variables__system__selected_text__description__example1": "write a better version of the follow text: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "translate the following text to English: {{SELECTED_TEXT}}",

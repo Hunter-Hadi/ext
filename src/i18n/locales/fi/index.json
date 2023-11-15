@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Kun käytät näitä muuttujia, järjestelmä hakee {{Web Search Query}}.\nSitten {{Web Search Results}} näyttää nämä hakutulokset.",
     "preset_variables__help__system__title": "Muuttujat \"Järjestelmästä\":",
     "preset_variables__help__system__description": "{{System Current Date}} näyttää tämän päivän päivämäärän.\nLisää \"Järjestelmä\"-muuttujia saatetaan lisätä myöhemmin.",
-    "preset_variables__system__title": "Järjestelmä",
+    "preset_variables__system__title": "Yhteys",
     "preset_variables__system__selected_text__description": "Tämä mallipohjamuuttuja korvataan valitsemallasi tekstillä nykyisellä sivulla.",
     "preset_variables__system__selected_text__description__example1": "kirjoita parempi versio seuraavasta tekstistä: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "käännä seuraava teksti englanniksi: {{SELECTED_TEXT}}",

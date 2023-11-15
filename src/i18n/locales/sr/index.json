@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Kada koristite ove promenljive, sistem će tražiti {{Upit web pretrage}}.\nZatim, {{Rezultati web pretrage}} će prikazati ove rezultate pretrage.",
     "preset_variables__help__system__title": "Promenljive o \"Sistemu\":",
     "preset_variables__help__system__description": "{{Trenutni datum sistema}} će prikazati današnji datum.\nViše promenljivih o \"Sistemu\" može biti dodato kasnije.",
-    "preset_variables__system__title": "Sistem",
+    "preset_variables__system__title": "Kontekst",
     "preset_variables__system__selected_text__description": "Ova promenljiva šablona će biti zamenjena tekstom koji ste selektovali na trenutnoj stranici.",
     "preset_variables__system__selected_text__description__example1": "napišite bolju verziju sledećeg teksta: {{SELEKTOVANI_TEKST}}",
     "preset_variables__system__selected_text__description__example2": "prevedite sledeći tekst na engleski: {{SELEKTOVANI_TEKST}}",

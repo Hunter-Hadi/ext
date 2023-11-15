@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Apabila anda menggunakan pembolehubah ini, sistem akan mencari {{Pertanyaan Carian Web}}.\nKemudian, {{Keputusan Carian Web}} akan menunjukkan keputusan carian ini.",
     "preset_variables__help__system__title": "Pembolehubah tentang \"Sistem\":",
     "preset_variables__help__system__description": "{{Tarikh Semasa Sistem}} akan menunjukkan tarikh hari ini.\nLebih banyak pembolehubah \"Sistem\" mungkin ditambah kemudian.",
-    "preset_variables__system__title": "Sistem",
+    "preset_variables__system__title": "Konteks",
     "preset_variables__system__selected_text__description": "Pembolehubah templat soalan ini akan digantikan dengan teks yang anda pilih pada halaman semasa.",
     "preset_variables__system__selected_text__description__example1": "tulis versi yang lebih baik daripada teks berikut: {{TEKS_DIPILIH}}",
     "preset_variables__system__selected_text__description__example2": "terjemahkan teks berikut ke Bahasa Inggeris: {{TEKS_DIPILIH}}",

@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "మీరు ఈ వేరియబుల్స్ ఉపయోగించి, వ్యవస్థ వెతకండి {{Web Search Query}}.\nఅప్పుడు, {{Web Search Results}} ఈ శోధన ఫలితాలను చూపిస్తాయి.",
     "preset_variables__help__system__title": "\"సిస్టమ్\" గురించి వేరియబుల్స్:",
     "preset_variables__help__system__description": "{{System Current Date}} ఈ రోజున తేదీని చూపిస్తుంది.\nమరింత \"సిస్టమ్\" వేరియబుల్స్ తరువాత జోడించబడవచ్చు.",
-    "preset_variables__system__title": "సిస్టమ్",
+    "preset_variables__system__title": "సందర్భం",
     "preset_variables__system__selected_text__description": "ఈ ప్రాంప్ట్ టెంప్లేట్ వేరియబుల్ మీరు పేజీలో ఎంచుకున్న టెక్స్ట్‌తో మార్పులు చేయబడుతుంది.",
     "preset_variables__system__selected_text__description__example1": "క్రింది టెక్స్ట్ యొక్క మేరకు ఒక మంచి వేర్షన్ రాయండి: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "క్రింది టెక్స్ట్ ను ఆంగ్లంలో అనువదించండి: {{SELECTED_TEXT}}",

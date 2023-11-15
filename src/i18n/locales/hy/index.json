@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Երբ օգտագործում եք այս փոփոխականները, համակարգը կփնտրի {{Վեբ որոնումի հարցումը}}:\nԱպա {{Վեբ որոնումի արդյունքները}} կցուցադրի այս որոնման արդյունքները:",
     "preset_variables__help__system__title": "«Համակարգի» փոփոխականները:",
     "preset_variables__help__system__description": "{{Ընթացիկ ամսաթիվը համարը}} կցուցադրի այսօրվա ամսաթիվը:\nԱվելին «Համակարգ» փոփոխականներ կարող են ավելացվել հետո:",
-    "preset_variables__system__title": "Համակարգ",
+    "preset_variables__system__title": "Համատեղում",
     "preset_variables__system__selected_text__description": "Այս պաշտոնական փոփոխականը կփոխարինվի ձեր ընտրացանկացած տեքստով, որը ընտրեցիք ընթացիկ էջում:",
     "preset_variables__system__selected_text__description__example1": "գրեք լավագույն տարբերակը հետևյալ տեքստին՝ {{ԸՆՏՐԵՔԹԵՔՍՏ}}",
     "preset_variables__system__selected_text__description__example2": "թարգմանեք հետևյալ տեքստը անգլերենով՝ {{ԸՆՏՐԵՔԹԵՔՍՏ}}",

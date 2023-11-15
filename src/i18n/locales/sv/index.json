@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "När du använder dessa variabler kommer systemet att söka efter {{Web Search Query}}.\nDärefter kommer {{Web Search Results}} att visa dessa sökresultat.",
     "preset_variables__help__system__title": "Variabler om \"Systemet\":",
     "preset_variables__help__system__description": "{{System Current Date}} kommer att visa dagens datum.\nFler \"System\"-variabler kan läggas till senare.",
-    "preset_variables__system__title": "System",
+    "preset_variables__system__title": "Sammanhang",
     "preset_variables__system__selected_text__description": "Denna mallvariabel kommer att ersättas med den text du markerade på den aktuella sidan.",
     "preset_variables__system__selected_text__description__example1": "skriv en bättre version av följande text: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "översätt följande text till engelska: {{SELECTED_TEXT}}",

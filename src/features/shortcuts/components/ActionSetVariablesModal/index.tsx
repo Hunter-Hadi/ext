@@ -154,9 +154,10 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     }
   }
   const runActions = async (autoExecute: boolean) => {
-    const isHaveEmptyValue = !Object.values(getValues()).find(
-      (value) => String(value || '').trim() === '',
-    )
+    const isHaveEmptyValue =
+      Object.values(getValues()).filter(
+        (value) => String(value || '').trim() === '',
+      ).length > 0
     if (!(await validateForm())) {
       if (autoExecute) {
         // 当modal打开的时候会尝试自动运行, 如果进入到这一步，说明已经验证失败了

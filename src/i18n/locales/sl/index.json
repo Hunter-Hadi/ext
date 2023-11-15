@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Ko uporabite te spremenljivke, bo sistem iskal {{Iskalni niz spletnega iskanja}}.\nNato bodo prikazani ti rezultati iskanja: {{Rezultati spletnega iskanja}}.",
     "preset_variables__help__system__title": "Spremenljivke o »Sistemu«:",
     "preset_variables__help__system__description": "{{Trenutni datum sistema}} bo prikazal današnji datum.\nVeč »sistemskih« spremenljivk bo morda dodanih pozneje.",
-    "preset_variables__system__title": "Sistem",
+    "preset_variables__system__title": "Kontekst",
     "preset_variables__system__selected_text__description": "Ta spremenljivka predloge zahtev bo zamenjana z besedilom, ki ste ga izbrali na trenutni strani.",
     "preset_variables__system__selected_text__description__example1": "Napišite boljšo različico naslednjega besedila: {{IZBRANO_BESEDILO}}",
     "preset_variables__system__selected_text__description__example2": "Prevedite naslednje besedilo v angleščino: {{IZBRANO_BESEDILO}}",

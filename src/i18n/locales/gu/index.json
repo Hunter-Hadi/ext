@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "જ્યારે તમે આ વેરીએબલ્સનો ઉપયોગ કરો છો, સિસ્ટમ શોધશે {{Web Search Query}}.\nપછી, {{Web Search Results}} આ શોધની પરિણામો બતાવશે.",
     "preset_variables__help__system__title": "\"સિસ્ટમ\" વિશેની વેરીએબલ્સ:",
     "preset_variables__help__system__description": "{{System Current Date}} આજની તારીખ બતાવશે.\nવધુ \"સિસ્ટમ\" વેરીએબલ્સ પછીથી ઉમેરવામાં આવશે.",
-    "preset_variables__system__title": "સિસ્ટમ",
+    "preset_variables__system__title": "સંદર્ભ",
     "preset_variables__system__selected_text__description": "આ પ્રોમ્પ્ટ ટેમ્પલેટ વેરીએબલ હાલના પૃષ્ઠ પર તમે પસંદ કરેલા ટેક્સ્ટ સાથે બદલાશે.",
     "preset_variables__system__selected_text__description__example1": "નીચેના ટેક્સ્ટનું સારાંશ લખો: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "નીચેના ટેક્સ્ટને અંગ્રેજીમાં અનુવાદ કરો: {{SELECTED_TEXT}}",

@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "이러한 변수를 사용하면 시스템이 {{웹 검색 쿼리}}를 검색합니다.\n그런 다음, {{웹 검색 결과}}가 이 검색 결과를 보여줍니다.",
     "preset_variables__help__system__title": "\"시스템\"에 대한 변수:",
     "preset_variables__help__system__description": "{{현재 날짜}}는 오늘의 날짜를 보여줍니다.\n추가적인 \"시스템\" 변수가 나중에 추가될 수 있습니다.",
-    "preset_variables__system__title": "시스템",
+    "preset_variables__system__title": "문맥",
     "preset_variables__system__selected_text__description": "이 프롬프트 템플릿 변수는 현재 페이지에서 선택한 텍스트로 대체됩니다.",
     "preset_variables__system__selected_text__description__example1": "다음 텍스트의 더 나은 버전을 작성하세요: {{선택된_텍스트}}",
     "preset_variables__system__selected_text__description__example2": "다음 텍스트를 영어로 번역하세요: {{선택된_텍스트}}",

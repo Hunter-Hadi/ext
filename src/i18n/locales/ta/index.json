@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "இவ்வாறு மாறிலிகளை பயன்படுத்தி, முக்கியமான தேடல் வார்த்தை {{வலைத்தள தேடல் வினாக்கள்}} தேடும்.\nபின்னர், {{வலைத்தள தேடல் முடிவுகள்}} இந்த தேடல் முடிவுகளைக் காட்டும்.",
     "preset_variables__help__system__title": "\"அமைப்பு\" பற்றிய மாறிலிகள்:",
     "preset_variables__help__system__description": "{{அமைப்பு தற்போதைய தேதி}} இன்னும் இன்னொரு அமைப்பு மாறிலிகள் பின்வரும் சேர்க்கப்படலாம்.",
-    "preset_variables__system__title": "கணினி",
+    "preset_variables__system__title": "உள்ளடக்கம்",
     "preset_variables__system__selected_text__description": "இந்த விருப்பமான மாறிலிகள் உங்கள் தற்போதைய பக்கத்தில் நீங்கள் தேர்ந்தெடுத்த உரையை மாற்றும்.",
     "preset_variables__system__selected_text__description__example1": "பின்வரும் உரையின் ஒரு சிறந்த பதிப்பை எழுதுங்கள்: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "பின்வரும் உரையை ஆங்கிலத்தில் மொழிபெயர்க்க: {{SELECTED_TEXT}}",

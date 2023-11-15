@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "ಈ ಮಾನ್ಯತೆಗಳನ್ನು ಬಳಸುವಾಗ, ವ್ಯವಸ್ಥೆ ಹುಡುಕಾಟವನ್ನು ನಡೆಸುತ್ತದೆ {{ವೆಬ್ ಶೋಧನೆ ಪ್ರಶ್ನೆ}}.\nನಂತರ, {{ವೆಬ್ ಶೋಧನೆ ಫಲಿತಾಂಶಗಳು}} ಈ ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳನ್ನು ತೋರಿಸುತ್ತವೆ.",
     "preset_variables__help__system__title": "\"ವ್ಯವಸ್ಥೆ\" ಬಗ್ಗೆ ಮಾನ್ಯತೆಗಳು:",
     "preset_variables__help__system__description": "{{ವ್ಯವಸ್ಥೆ ಪ್ರಸ್ತುತ ದಿನಾಂಕ}} ಇಂದಿನ ದಿನಾಂಕವನ್ನು ತೋರಿಸುತ್ತದೆ.\nಹೆಚ್ಚಿನ \"ವ್ಯವಸ್ಥೆ\" ಮಾನ್ಯತೆಗಳನ್ನು ನಂತರ ಸೇರಿಸಲಾಗಬಹುದು.",
-    "preset_variables__system__title": "ವ್ಯವಸ್ಥೆ",
+    "preset_variables__system__title": "ಸಂದರ್ಭ",
     "preset_variables__system__selected_text__description": "ಈ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಮಾನ್ಯತೆಯನ್ನು ನೀವು ಪ್ರಸ್ತುತ ಪುಟದಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯದಿಂದ ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ.",
     "preset_variables__system__selected_text__description__example1": "ಈ ಪಠ್ಯದ ಉತ್ತಮ ಆವೃತ್ತಿಯನ್ನು ಬರೆಯಿರಿ: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "ಈ ಪಠ್ಯವನ್ನು ಇಂಗ್ಲೀಷ್‌ಗೆ ಭಾಷಾಂತರಿಸಿ: {{SELECTED_TEXT}}",

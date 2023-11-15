@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "これらの変数を使用すると、システムは {{ウェブ検索クエリ}} を検索します。\nその後、{{ウェブ検索結果}} はこの検索結果を表示します。",
     "preset_variables__help__system__title": "「システム」に関する変数：",
     "preset_variables__help__system__description": "{{システム現在の日付}} は今日の日付を表示します。\n後で他の「システム」変数が追加されるかもしれません。",
-    "preset_variables__system__title": "システム",
+    "preset_variables__system__title": "コンテキスト",
     "preset_variables__system__selected_text__description": "このプロンプトテンプレート変数は、現在のページで選択したテキストで置き換えられます。",
     "preset_variables__system__selected_text__description__example1": "次のテキストの改善版を書いてください：{{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "以下のテキストを英語に翻訳してください：{{SELECTED_TEXT}}",

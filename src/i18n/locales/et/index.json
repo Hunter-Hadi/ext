@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Kui kasutate neid muutujaid, otsib süsteem {{Web Search Query}}.\nSeejärel näitab {{Web Search Results}} neid otsingutulemusi.",
     "preset_variables__help__system__title": "Muutujad \"Süsteemi\" kohta:",
     "preset_variables__help__system__description": "{{System Current Date}} näitab tänast kuupäeva.\nHiljem võidakse lisada veel \"Süsteemi\" muutujaid.",
-    "preset_variables__system__title": "Süsteem",
+    "preset_variables__system__title": "Kontekst",
     "preset_variables__system__selected_text__description": "See märgendite mallimuutuja asendatakse tekstiga, mille valisite praegusel lehel.",
     "preset_variables__system__selected_text__description__example1": "kirjuta parem versioon järgmisest tekstist: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "tõlgi järgmine tekst inglise keelde: {{SELECTED_TEXT}}",

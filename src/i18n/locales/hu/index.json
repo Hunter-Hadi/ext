@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Amikor ezeket a változókat használja, a rendszer keresni fog {{Webes keresés lekérdezés}}.\nEkkor pedig a(z) {{Webes keresés eredmények}} meg fogja jeleníteni ezeket a keresési eredményeket.",
     "preset_variables__help__system__title": "Változók a „Rendszer”-ről:",
     "preset_variables__help__system__description": "A(z) {{Rendszer aktuális dátum}} ma dátumot fog megjeleníteni.\nTovábbi „Rendszer” változók később hozzáadhatók.",
-    "preset_variables__system__title": "Rendszer",
+    "preset_variables__system__title": "Környezet",
     "preset_variables__system__selected_text__description": "Ez a sablonváltozó a jelenlegi oldalon kiválasztott szöveggel lesz helyettesítve.",
     "preset_variables__system__selected_text__description__example1": "írjon egy jobb verziót a következő szövegről: {{KIVÁLASZTOTT_SZÖVEG}}",
     "preset_variables__system__selected_text__description__example2": "fordítsa le az alábbi szöveget angolra: {{KIVÁLASZTOTT_SZÖVEG}}",

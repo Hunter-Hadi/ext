@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Izmantojot šos mainīgos, sistēma meklēs {{Web Search vaicājumu}}.\nTad, {{Web Search rezultāti}} parādīs šos meklēšanas rezultātus.",
     "preset_variables__help__system__title": "Mainīgie par \"Sistēmu\":",
     "preset_variables__help__system__description": "{{Sistēmas pašreizējais datums}} parādīs šodienas datumu.\nVēlāk var tikt pievienoti vairāki \"Sistēmas\" mainīgie.",
-    "preset_variables__system__title": "Sistēma",
+    "preset_variables__system__title": "Konteksts",
     "preset_variables__system__selected_text__description": "Šis veicinājuma veidnes mainīgais tiks aizstāts ar tekstu, ko atlasījāt pašreizējā lapā.",
     "preset_variables__system__selected_text__description__example1": "uzrakstiet labāku versiju no sekojošā teksta: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "tulkot sekojošo tekstu angļu valodā: {{SELECTED_TEXT}}",

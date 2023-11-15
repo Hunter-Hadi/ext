@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "เมื่อคุณใช้ตัวแปรเหล่านี้ ระบบจะค้นหา {{Web Search Query}}.\nจากนั้น {{Web Search Results}} จะแสดงผลการค้นหาเหล่านี้",
     "preset_variables__help__system__title": "ตัวแปรเกี่ยวกับ \"ระบบ\":",
     "preset_variables__help__system__description": "{{System Current Date}} จะแสดงวันที่ปัจจุบัน.\nอาจมีการเพิ่มตัวแปร \"ระบบ\" เพิ่มเติมในภายหลัง",
-    "preset_variables__system__title": "ระบบ",
+    "preset_variables__system__title": "บริบท",
     "preset_variables__system__selected_text__description": "ตัวแปรเทมเพลตนี้จะถูกแทนที่ด้วยข้อความที่คุณเลือกบนหน้าปัจจุบัน",
     "preset_variables__system__selected_text__description__example1": "เขียนเวอร์ชันที่ดีกว่าข้อความต่อไปนี้: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "แปลข้อความต่อไปนี้เป็นภาษาอังกฤษ: {{SELECTED_TEXT}}",

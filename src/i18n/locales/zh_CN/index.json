@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "当您使用这些变量时，系统将搜索{{网络搜索查询}}。\n然后，{{网络搜索结果}}将显示这些搜索结果。",
     "preset_variables__help__system__title": "关于“系统”的变量：",
     "preset_variables__help__system__description": "{{系统当前日期}}将显示今天的日期。\n以后可能会添加更多“系统”变量。",
-    "preset_variables__system__title": "系统",
+    "preset_variables__system__title": "上下文",
     "preset_variables__system__selected_text__description": "此提示模板变量将被替换为您在当前页面上选择的文本。",
     "preset_variables__system__selected_text__description__example1": "写一个更好的版本，以下是文本：{{选择的文本}}",
     "preset_variables__system__selected_text__description__example2": "将以下文本翻译成英语：{{选择的文本}}",

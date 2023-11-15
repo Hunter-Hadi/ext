@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Atunci când utilizați aceste variabile, sistemul va căuta {{Interogare Căutare pe web}}.\nApoi, {{Rezultate Căutare pe web}} vor afișa aceste rezultate de căutare.",
     "preset_variables__help__system__title": "Variabile despre \"Sistem\":",
     "preset_variables__help__system__description": "{{Data curentă a sistemului}} va afișa data de azi.\nMai multe variabile despre \"Sistem\" pot fi adăugate ulterior.",
-    "preset_variables__system__title": "Sistem",
+    "preset_variables__system__title": "Context",
     "preset_variables__system__selected_text__description": "Această variabilă a șablonului promptului va fi înlocuită cu textul selectat pe pagina curentă.",
     "preset_variables__system__selected_text__description__example1": "scrieți o versiune mai bună a textului următor: {{TEXT_SELECTAT}}",
     "preset_variables__system__selected_text__description__example2": "traduceți textul următor în engleză: {{TEXT_SELECTAT}}",

@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Khi bạn sử dụng các biến này, hệ thống sẽ tìm kiếm {{Web Search Query}}.\nSau đó, {{Web Search Results}} sẽ hiển thị kết quả tìm kiếm này.",
     "preset_variables__help__system__title": "Biến về \"Hệ thống\":",
     "preset_variables__help__system__description": "{{System Current Date}} sẽ hiển thị ngày hôm nay.\nCó thể thêm các biến \"Hệ thống\" khác sau này.",
-    "preset_variables__system__title": "Hệ thống",
+    "preset_variables__system__title": "Bối cảnh",
     "preset_variables__system__selected_text__description": "Biến mẫu nhắc này sẽ được thay thế bằng văn bản bạn đã chọn trên trang hiện tại.",
     "preset_variables__system__selected_text__description__example1": "viết phiên bản tốt hơn của văn bản sau: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "dịch văn bản sau sang tiếng Anh: {{SELECTED_TEXT}}",

@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "زمانی که از این متغیرها استفاده می‌کنید، سیستم برای {{Web Search Query}} جستجو خواهد کرد.\nسپس، {{Web Search Results}} نتایج جستجو را نشان خواهد داد.",
     "preset_variables__help__system__title": "متغیرهای دربارهٔ \"سیستم\":",
     "preset_variables__help__system__description": "{{System Current Date}} تاریخ امروز را نشان خواهد داد.\nممکن است بعدها متغیرهای بیشتری دربارهٔ \"سیستم\" اضافه شود.",
-    "preset_variables__system__title": "سیستم",
+    "preset_variables__system__title": "متن",
     "preset_variables__system__selected_text__description": "این متغیر قالب پیشنهادی با متنی که در صفحهٔ فعلی انتخاب کرده‌اید جایگزین خواهد شد.",
     "preset_variables__system__selected_text__description__example1": "نسخهٔ بهتری از متن زیر را بنویسید: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "متن زیر را به انگلیسی ترجمه کنید: {{SELECTED_TEXT}}",

@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "तुम्ही हे तत्पर वापरल्यास, प्रणाली {{वेब शोध क्वेरी}} शोधेल.\nत्यानंतर, {{वेब शोध परिणाम}} हे शोध परिणाम दर्शविणारे आहे.",
     "preset_variables__help__system__title": "\"प्रणाली\"बद्दल तत्पर:",
     "preset_variables__help__system__description": "{{प्रणाली सध्याची तारीख}} आजची तारीख दर्शविणारी आहे.\nअधिक \"प्रणाली\"तत्पर नंतर जोडले जाऊ शकतील.",
-    "preset_variables__system__title": "प्रणाली",
+    "preset_variables__system__title": "संदर्भ",
     "preset_variables__system__selected_text__description": "हा प्रॉम्प्ट टेम्पलेट तत्पर व्हेरिएबल ही तुम्ही वर्तमान पृष्ठावर निवडलेल्या पाठाने बदलणारी आहे.",
     "preset_variables__system__selected_text__description__example1": "खालील पाठाची एक चांगली संस्करण लिहा: {{निवडलेला_पाठ}}",
     "preset_variables__system__selected_text__description__example2": "खालील पाठाची इंग्रजीत भाषांतर करा: {{निवडलेला_पाठ}}",

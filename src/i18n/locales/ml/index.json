@@ -671,7 +671,7 @@
     "preset_variables__system__current_website_domain__example2": "ടെക്സ്റ്റ് {{CURRENT_WEBSITE_DOMAIN}} യിൽ നിന്നാണ്",
     "preset_variables__web_search__title": "വെബ് തിരയൽ",
     "preset_variables__live_crawling__title": "ലൈവ് ക്രോളിംഗ്",
-    "preset_variables__system__title": "സിസ്റ്റം",
+    "preset_variables__system__title": "പ്രസക്തം",
     "add_variable__title": "പുതിയ മാറ്റങ്ങൾ ചേർക്കുക",
     "add_variable__placeholder": "തിരയാൻ ടൈപ്പ് ചെയ്യുക...",
     "add_variable__add_button__title": "ചേർക്കുക",

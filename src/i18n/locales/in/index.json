@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Ketika Anda menggunakan variabel ini, sistem akan mencari {{Web Search Query}}.\nKemudian, {{Web Search Results}} akan menampilkan hasil pencarian tersebut.",
     "preset_variables__help__system__title": "Variabel tentang \"Sistem\":",
     "preset_variables__help__system__description": "{{System Current Date}} akan menampilkan tanggal hari ini.\nLebih banyak variabel \"Sistem\" mungkin ditambahkan nanti.",
-    "preset_variables__system__title": "Sistem",
+    "preset_variables__system__title": "Konteks",
     "preset_variables__system__selected_text__description": "Variabel template prompt ini akan digantikan dengan teks yang Anda pilih pada halaman saat ini.",
     "preset_variables__system__selected_text__description__example1": "tulis versi yang lebih baik dari teks berikut: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "terjemahkan teks berikut ke dalam bahasa Inggris: {{SELECTED_TEXT}}",

@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Unapotumia vipimo hivi, mfumo utatafuta {{Utafutaji wa Wavuti}}.\nKisha, {{Matokeo ya Utafutaji wa Wavuti}} yataonyesha matokeo ya utafutaji huu.",
     "preset_variables__help__system__title": "Vipimo kuhusu \"Mfumo\":",
     "preset_variables__help__system__description": "{{Tarehe ya Sasa ya Mfumo}} itaonyesha tarehe ya leo.\nVipimo zaidi vya \"Mfumo\" vinaweza kuongezwa baadaye.",
-    "preset_variables__system__title": "Mfumo",
+    "preset_variables__system__title": "Muktadha",
     "preset_variables__system__selected_text__description": "Kipimo cha templeti hii kitabadilishwa na maandishi uliyochagua kwenye ukurasa wa sasa.",
     "preset_variables__system__selected_text__description__example1": "andika toleo bora la maandishi yafuatayo: {{MAANDISHI_YALIYOCHAGULIWA}}",
     "preset_variables__system__selected_text__description__example2": "tafsiri maandishi yafuatayo kwa Kiingereza: {{MAANDISHI_YALIYOCHAGULIWA}}",

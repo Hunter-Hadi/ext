@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Pri použití týchto premenných systém vyhľadá {{Web Search Query}}.\nPotom sa zobrazia tieto výsledky vyhľadávania: {{Web Search Results}}.",
     "preset_variables__help__system__title": "Premenné o \"Systéme\":",
     "preset_variables__help__system__description": "{{System Current Date}} zobrazí dnešný dátum.\nĎalšie premenné o \"Systéme\" môžu byť pridané neskôr.",
-    "preset_variables__system__title": "Systém",
+    "preset_variables__system__title": "Kontext",
     "preset_variables__system__selected_text__description": "Táto premenná šablóny bude nahradená textom, ktorý ste vybrali na aktuálnej stránke.",
     "preset_variables__system__selected_text__description__example1": "napíšte lepšiu verziu nasledujúceho textu: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "preložte nasledujúci text do angličtiny: {{SELECTED_TEXT}}",

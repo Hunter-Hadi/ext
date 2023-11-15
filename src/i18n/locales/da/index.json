@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "Når du bruger disse variabler, vil systemet søge efter {{Web Search Query}}.\nDerefter vil {{Web Search Results}} vise disse søgeresultater.",
     "preset_variables__help__system__title": "Variabler om \"Systemet\":",
     "preset_variables__help__system__description": "{{System Current Date}} vil vise dagens dato.\nFlere \"System\" variabler kan blive tilføjet senere.",
-    "preset_variables__system__title": "System",
+    "preset_variables__system__title": "Kontekst",
     "preset_variables__system__selected_text__description": "Denne skabelonvariabel vil blive erstattet med den tekst, du har markeret på den aktuelle side.",
     "preset_variables__system__selected_text__description__example1": "skriv en bedre version af følgende tekst: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "oversæt følgende tekst til engelsk: {{SELECTED_TEXT}}",

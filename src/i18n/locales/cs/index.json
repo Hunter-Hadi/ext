@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "odpovězte na následující text na {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "všimněte si, že text je z {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Webové vyhledávání",
-    "preset_variables__live_crawling__title": "Živé prohledávání"
+    "preset_variables__live_crawling__title": "Živé prohledávání",
+    "add_variable__title": "Přidat nové proměnné",
+    "add_variable__placeholder": "Napište pro vyhledávání...",
+    "add_variable__add_button__title": "Přidat",
+    "add_variable__cancel_button__title": "Zrušit",
+    "add_variable__save_button__title": "Uložit",
+    "add_variable__variable_name__title": "Název proměnné",
+    "add_variable__variable_name__placeholder": "Zadejte název proměnné",
+    "add_variable__variable_placeholder__title": "Placeholder proměnné",
+    "add_variable__variable_placeholder__placeholder": "Zadejte placeholder proměnné",
+    "add_variable__error_message__variable_name_repeated": "Názvy proměnných nemohou být opakovány"
   }
 }

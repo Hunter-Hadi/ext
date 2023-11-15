@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "răspundeți la textul următor pe {{DOMENIU_WEBSITE_CURENT}}",
     "preset_variables__system__current_website_domain__example2": "rețineți că textul este de pe {{DOMENIU_WEBSITE_CURENT}}",
     "preset_variables__web_search__title": "Căutare pe web",
-    "preset_variables__live_crawling__title": "Căutare în timp real"
+    "preset_variables__live_crawling__title": "Căutare în timp real",
+    "add_variable__title": "Adăugați variabile noi",
+    "add_variable__placeholder": "Tastați pentru a căuta...",
+    "add_variable__add_button__title": "Adăugați",
+    "add_variable__cancel_button__title": "Anulați",
+    "add_variable__save_button__title": "Salvați",
+    "add_variable__variable_name__title": "Nume variabilă",
+    "add_variable__variable_name__placeholder": "Introduceți numele variabilei",
+    "add_variable__variable_placeholder__title": "Substituent variabil",
+    "add_variable__variable_placeholder__placeholder": "Introduceți substituentul variabilei",
+    "add_variable__error_message__variable_name_repeated": "Numele variabilelor nu pot fi repetate"
   }
 }

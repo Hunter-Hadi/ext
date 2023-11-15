@@ -15,8 +15,8 @@ import {
   IPresetVariableName,
   PRESET_VARIABLE_MAP,
 } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
-import { SMART_SEARCH_RESPONSE_DELIMITER } from '@/features/sidebar/utils/searchWithAIHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
 
 const useShortcutEditorActions = () => {
   const [shortcutActionEditor, setShortcutActionEditor] = useRecoilState(
@@ -106,6 +106,8 @@ const useShortcutEditorActions = () => {
     })
     // actions的处理
     const actions: ISetActionsType = []
+    // 是否为Summary，search那种Message
+    let isOriginalMessage = false
     const variableMap = new Map<IPresetVariableName, IActionSetVariable>()
     usedVariables.forEach((item) => {
       variableMap.set(item.VariableName as IPresetVariableName, item)
@@ -162,36 +164,119 @@ const useShortcutEditorActions = () => {
     }
     // 获取web search的内容
     if (variableMap.get('WEB_SEARCH_RESULTS')) {
-      specialActions.push({
-        type: 'GET_CONTENTS_OF_SEARCH_ENGINE',
-        parameters: {
-          URLSearchEngine: 'google',
-          URLSearchEngineParams: {
-            q: `{{WEB_SEARCH_QUERY}}`,
-            region: '',
-            limit: '6',
-            btf: '',
-            nojs: '1',
-            ei: 'UTF-8',
-            csp: '1',
-            site: '',
-            splitWith: SMART_SEARCH_RESPONSE_DELIMITER,
+      isOriginalMessage = true
+      const searchWithAIActions: ISetActionsType = [
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  shareType: 'search',
+                  title: {
+                    title: `{{WEB_SEARCH_QUERY}}`,
+                  },
+                  copilot: {
+                    title: {
+                      title: 'Quick search',
+                      titleIcon: 'Bolt',
+                      titleIconSize: 24,
+                    },
+                    steps: [
+                      {
+                        title: 'Searching web',
+                        status: 'loading',
+                        icon: 'Search',
+                      },
+                    ],
+                  },
+                },
+                include_history: false,
+              },
+            } as IAIResponseMessage,
           },
         },
-      })
-      specialActions.push({
-        type: 'WEBGPT_SEARCH_RESULTS_EXPAND',
-        parameters: {
-          SummarizeActionType: 'NO_SUMMARIZE',
-          template: '',
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
         },
-      })
-      specialActions.push({
-        type: 'SET_VARIABLE',
-        parameters: {
-          VariableName: 'WEB_SEARCH_RESULTS',
+        {
+          type: 'GET_CONTENTS_OF_SEARCH_ENGINE',
+          parameters: {
+            URLSearchEngine: 'google',
+            URLSearchEngineParams: {
+              q: `{{WEB_SEARCH_QUERY}}`,
+              region: '',
+              limit: '6',
+              btf: '',
+              nojs: '1',
+              ei: 'UTF-8',
+              site: '',
+              csp: '1',
+            },
+          },
         },
-      })
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SEARCH_SOURCES',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  copilot: {
+                    steps: [
+                      {
+                        title: 'Searching web',
+                        status: 'complete',
+                        icon: 'Search',
+                        valueType: 'tags',
+                        value: '{{WEB_SEARCH_QUERY}}',
+                      },
+                    ],
+                  },
+                  sources: {
+                    status: 'complete',
+                    links: `{{SEARCH_SOURCES}}` as any,
+                  },
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `{{SEARCH_SOURCES}}`,
+          },
+        },
+        {
+          type: 'WEBGPT_SEARCH_RESULTS_EXPAND',
+          parameters: {
+            SummarizeActionType: 'NO_SUMMARIZE',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'WEB_SEARCH_RESULTS',
+          },
+        },
+      ]
+      specialActions.push(...searchWithAIActions)
     }
     if (
       customVariables.length > 0 ||
@@ -200,33 +285,35 @@ const useShortcutEditorActions = () => {
       ).length > 0
     ) {
       // 说明需要Set Variables Model
-      // 追加默认的三个系统变量: Language\Tone\Writing style
-      if (!variableMap.get('AI_RESPONSE_LANGUAGE')) {
-        systemVariables.push({
-          VariableName: 'AI_RESPONSE_LANGUAGE',
-          defaultValue: 'English',
-          systemVariable: true,
-          valueType: 'Select',
-          label: 'AI Response language',
-        })
-      }
-      if (!variableMap.get('AI_RESPONSE_TONE')) {
-        systemVariables.push({
-          VariableName: 'AI_RESPONSE_TONE',
-          defaultValue: 'Default',
-          systemVariable: true,
-          valueType: 'Select',
-          label: 'Tone',
-        })
-      }
-      if (!variableMap.get('AI_RESPONSE_WRITING_STYLE')) {
-        systemVariables.push({
-          VariableName: 'AI_RESPONSE_WRITING_STYLE',
-          defaultValue: 'Default',
-          systemVariable: true,
-          valueType: 'Select',
-          label: 'Writing style',
-        })
+      if (customVariables.length > 0) {
+        // 追加默认的三个系统变量: Language\Tone\Writing style
+        if (!variableMap.get('AI_RESPONSE_LANGUAGE')) {
+          systemVariables.push({
+            VariableName: 'AI_RESPONSE_LANGUAGE',
+            defaultValue: 'English',
+            systemVariable: true,
+            valueType: 'Select',
+            label: 'AI Response language',
+          })
+        }
+        if (!variableMap.get('AI_RESPONSE_TONE')) {
+          systemVariables.push({
+            VariableName: 'AI_RESPONSE_TONE',
+            defaultValue: 'Default',
+            systemVariable: true,
+            valueType: 'Select',
+            label: 'Tone',
+          })
+        }
+        if (!variableMap.get('AI_RESPONSE_WRITING_STYLE')) {
+          systemVariables.push({
+            VariableName: 'AI_RESPONSE_WRITING_STYLE',
+            defaultValue: 'Default',
+            systemVariable: true,
+            valueType: 'Select',
+            label: 'Writing style',
+          })
+        }
       }
       actions.push({
         type: 'SET_VARIABLES_MODAL',
@@ -239,6 +326,9 @@ const useShortcutEditorActions = () => {
             variables: customVariables,
             systemVariables,
             actions: specialActions,
+            answerInsertMessageId: isOriginalMessage
+              ? `{{AI_RESPONSE_MESSAGE_ID}}`
+              : '',
           },
         },
       })

@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} ನ ಮೇಲೆ ಈ ಪಠ್ಯಕ್ಕೆ ಉತ್ತರಿಸಿ",
     "preset_variables__system__current_website_domain__example2": "{{CURRENT_WEBSITE_DOMAIN}} ಎಂದು ಪಠ್ಯವು ಇದೆ ಎಂದು ಗಮನಿಸಿ",
     "preset_variables__web_search__title": "ವೆಬ್ ಶೋಧನೆ",
-    "preset_variables__live_crawling__title": "ಲೈವ್ ಕ್ರಾವ್ಲಿಂಗ್"
+    "preset_variables__live_crawling__title": "ಲೈವ್ ಕ್ರಾವ್ಲಿಂಗ್",
+    "add_variable__title": "ಹೊಸ ಮಾಪಕಗಳನ್ನು ಸೇರಿಸಿ",
+    "add_variable__placeholder": "ಹುಡುಕಲು ಟೈಪ್ ಮಾಡಿ...",
+    "add_variable__add_button__title": "ಸೇರಿಸು",
+    "add_variable__cancel_button__title": "ರದ್ದುಗೊಳಿಸು",
+    "add_variable__save_button__title": "ಉಳಿಸು",
+    "add_variable__variable_name__title": "ಮಾಪಕದ ಹೆಸರು",
+    "add_variable__variable_name__placeholder": "ಮಾಪಕದ ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
+    "add_variable__variable_placeholder__title": "ಮಾಪಕದ ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್",
+    "add_variable__variable_placeholder__placeholder": "ಮಾಪಕದ ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್‌ನ್ನು ನಮೂದಿಸಿ",
+    "add_variable__error_message__variable_name_repeated": "ಮಾಡುವ ಮಾದರಿಗಳ ಹೆಸರು ಪುನರಾವರ್ತಿತವಾಗಬಾರದು"
   }
 }

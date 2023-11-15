@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "respon al següent text a {{DOMINI_LLOC_WEB_ACTUAL}}",
     "preset_variables__system__current_website_domain__example2": "nota que el text és de {{DOMINI_LLOC_WEB_ACTUAL}}",
     "preset_variables__web_search__title": "Cerca web",
-    "preset_variables__live_crawling__title": "Rastreig en viu"
+    "preset_variables__live_crawling__title": "Rastreig en viu",
+    "add_variable__title": "Afegir noves variables",
+    "add_variable__placeholder": "Escriu per cercar...",
+    "add_variable__add_button__title": "Afegir",
+    "add_variable__cancel_button__title": "Cancel·lar",
+    "add_variable__save_button__title": "Guardar",
+    "add_variable__variable_name__title": "Nom de la variable",
+    "add_variable__variable_name__placeholder": "Introduïu el nom de la variable",
+    "add_variable__variable_placeholder__title": "Marcador de posició de la variable",
+    "add_variable__variable_placeholder__placeholder": "Introduïu el marcador de posició de la variable",
+    "add_variable__error_message__variable_name_repeated": "Els noms de les variables no es poden repetir"
   }
 }

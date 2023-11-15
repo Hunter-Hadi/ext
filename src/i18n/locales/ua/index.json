@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "відповісти на наступний текст на {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "зверніть увагу, що текст з {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Пошук в Інтернеті",
-    "preset_variables__live_crawling__title": "Живе сканування"
+    "preset_variables__live_crawling__title": "Живе сканування",
+    "add_variable__title": "Додати нові змінні",
+    "add_variable__placeholder": "Введіть для пошуку...",
+    "add_variable__add_button__title": "Додати",
+    "add_variable__cancel_button__title": "Скасувати",
+    "add_variable__save_button__title": "Зберегти",
+    "add_variable__variable_name__title": "Назва змінної",
+    "add_variable__variable_name__placeholder": "Введіть назву змінної",
+    "add_variable__variable_placeholder__title": "Плейсхолдер змінної",
+    "add_variable__variable_placeholder__placeholder": "Введіть плейсхолдер змінної",
+    "add_variable__error_message__variable_name_repeated": "Імена змінних не можуть повторюватися"
   }
 }

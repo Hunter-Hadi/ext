@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "balas kepada teks berikut di {{DOMAIN_LAMAN_WEB_SEMASA}}",
     "preset_variables__system__current_website_domain__example2": "ambil perhatian bahawa teks ini dari {{DOMAIN_LAMAN_WEB_SEMASA}}",
     "preset_variables__web_search__title": "Carian web",
-    "preset_variables__live_crawling__title": "Carian Langsung"
+    "preset_variables__live_crawling__title": "Carian Langsung",
+    "add_variable__title": "Tambah pembolehubah baru",
+    "add_variable__placeholder": "Taip untuk mencari...",
+    "add_variable__add_button__title": "Tambah",
+    "add_variable__cancel_button__title": "Batal",
+    "add_variable__save_button__title": "Simpan",
+    "add_variable__variable_name__title": "Nama pembolehubah",
+    "add_variable__variable_name__placeholder": "Masukkan nama pembolehubah",
+    "add_variable__variable_placeholder__title": "Penempatan pembolehubah",
+    "add_variable__variable_placeholder__placeholder": "Masukkan penempatan pembolehubah",
+    "add_variable__error_message__variable_name_repeated": "Nama pembolehubah tidak boleh diulangi"
   }
 }

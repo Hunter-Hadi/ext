@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "השב לטקסט הבא ב-{{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "שים לב שהטקסט מתוך {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "חיפוש ברשת",
-    "preset_variables__live_crawling__title": "גילוי חי"
+    "preset_variables__live_crawling__title": "גילוי חי",
+    "add_variable__title": "הוסף משתנים חדשים",
+    "add_variable__placeholder": "הקלד לחיפוש...",
+    "add_variable__add_button__title": "הוסף",
+    "add_variable__cancel_button__title": "ביטול",
+    "add_variable__save_button__title": "שמור",
+    "add_variable__variable_name__title": "שם המשתנה",
+    "add_variable__variable_name__placeholder": "הזן שם משתנה",
+    "add_variable__variable_placeholder__title": "מציין משתנה",
+    "add_variable__variable_placeholder__placeholder": "הזן מציין משתנה",
+    "add_variable__error_message__variable_name_repeated": "שמות המשתנים אינם יכולים להיות חוזרים"
   }
 }

@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "vasta järgmisele tekstile saidil {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "märkige, et tekst on pärit saidilt {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Veebiotsing",
-    "preset_variables__live_crawling__title": "Otseveebimine"
+    "preset_variables__live_crawling__title": "Otseveebimine",
+    "add_variable__title": "Lisa uued muutujad",
+    "add_variable__placeholder": "Tippige otsimiseks...",
+    "add_variable__add_button__title": "Lisa",
+    "add_variable__cancel_button__title": "Tühista",
+    "add_variable__save_button__title": "Salvesta",
+    "add_variable__variable_name__title": "Muutuja nimi",
+    "add_variable__variable_name__placeholder": "Sisestage muutuja nimi",
+    "add_variable__variable_placeholder__title": "Muutuja asendaja",
+    "add_variable__variable_placeholder__placeholder": "Sisestage muutuja asendaja",
+    "add_variable__error_message__variable_name_repeated": "Muutujate nimed ei saa korduda"
   }
 }

@@ -81,7 +81,7 @@ export function templateParserDecorator() {
 /**
  * Action的parameters渲染的装饰器
  */
-export function parametersParserDecorator() {
+export function parametersParserDecorator(filterPath?: string[]) {
   return function (
     target: Action,
     propertyKey: string,
@@ -92,6 +92,9 @@ export function parametersParserDecorator() {
       const [parameters] = args
       const actionInstance: Action = this as any
       getAllPathsAndValues(actionInstance.parameters, (path, value) => {
+        if (filterPath?.includes(path.join('.'))) {
+          return
+        }
         if (typeof value === 'string') {
           const renderValue = shortcutsRenderTemplate(value, parameters).data
           try {

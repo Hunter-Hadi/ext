@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}}에서 다음 텍스트에 답장하세요",
     "preset_variables__system__current_website_domain__example2": "텍스트가 {{CURRENT_WEBSITE_DOMAIN}}에서 온 것임을 참고하세요",
     "preset_variables__web_search__title": "웹 검색",
-    "preset_variables__live_crawling__title": "라이브 크롤링"
+    "preset_variables__live_crawling__title": "라이브 크롤링",
+    "add_variable__title": "새 변수 추가",
+    "add_variable__placeholder": "검색하려면 입력하세요...",
+    "add_variable__add_button__title": "추가",
+    "add_variable__cancel_button__title": "취소",
+    "add_variable__save_button__title": "저장",
+    "add_variable__variable_name__title": "변수 이름",
+    "add_variable__variable_name__placeholder": "변수 이름을 입력하세요",
+    "add_variable__variable_placeholder__title": "변수 자리 표시자",
+    "add_variable__variable_placeholder__placeholder": "변수 자리 표시자를 입력하세요",
+    "add_variable__error_message__variable_name_repeated": "변수 이름은 반복될 수 없습니다"
   }
 }

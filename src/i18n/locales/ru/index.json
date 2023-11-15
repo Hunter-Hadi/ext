@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "ответьте на следующий текст на {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "обратите внимание, что текст из {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Веб-поиск",
-    "preset_variables__live_crawling__title": "Живое сканирование"
+    "preset_variables__live_crawling__title": "Живое сканирование",
+    "add_variable__title": "Добавить новые переменные",
+    "add_variable__placeholder": "Введите для поиска...",
+    "add_variable__add_button__title": "Добавить",
+    "add_variable__cancel_button__title": "Отмена",
+    "add_variable__save_button__title": "Сохранить",
+    "add_variable__variable_name__title": "Имя переменной",
+    "add_variable__variable_name__placeholder": "Введите имя переменной",
+    "add_variable__variable_placeholder__title": "Заполнитель переменной",
+    "add_variable__variable_placeholder__placeholder": "Введите заполнитель переменной",
+    "add_variable__error_message__variable_name_repeated": "Имена переменных не могут повторяться"
   }
 }

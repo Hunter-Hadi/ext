@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "به متن زیر در {{CURRENT_WEBSITE_DOMAIN}} پاسخ دهید",
     "preset_variables__system__current_website_domain__example2": "توجه کنید که متن از {{CURRENT_WEBSITE_DOMAIN}} است",
     "preset_variables__web_search__title": "جستجوی وب",
-    "preset_variables__live_crawling__title": "جستجوی زنده"
+    "preset_variables__live_crawling__title": "جستجوی زنده",
+    "add_variable__title": "نئے متغیرات شامل کریں",
+    "add_variable__placeholder": "تلاش کرنے کے لئے ٹائپ کریں...",
+    "add_variable__add_button__title": "شامل کریں",
+    "add_variable__cancel_button__title": "منسوخ کریں",
+    "add_variable__save_button__title": "محفوظ کریں",
+    "add_variable__variable_name__title": "متغیر کا نام",
+    "add_variable__variable_name__placeholder": "متغیر کا نام درج کریں",
+    "add_variable__variable_placeholder__title": "متغیر کا پلیس ہولڈر",
+    "add_variable__variable_placeholder__placeholder": "متغیر کا پلیس ہولڈر درج کریں",
+    "add_variable__error_message__variable_name_repeated": "متغیر کے ناموں کو دہرایا نہیں جا سکتا ہے"
   }
 }

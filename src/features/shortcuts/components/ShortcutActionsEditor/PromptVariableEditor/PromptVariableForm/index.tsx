@@ -13,6 +13,7 @@ import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVar
 import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import useShortcutEditorActionsVariables from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { useTranslation } from 'react-i18next'
 
 interface IPromptVariableFormProps {
   type: 'add' | 'edit' | 'view'
@@ -32,6 +33,7 @@ const formHelperTextProps = {
 }
 
 const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
+  const { t } = useTranslation(['common', 'prompt_editor'])
   const { type, initialValue, onCancel, onConfirm } = props
   const { variables } = useShortcutEditorActionsVariables()
   const inputRefs = useRef<HTMLInputElement[]>([])
@@ -65,7 +67,9 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
     if (variables.find((variable) => variable.label === label)) {
       setError('label', {
         type: 'custom',
-        message: 'Variable names cannot be repeated',
+        message: t(
+          'prompt_editor:add_variable__error_message__variable_name_repeated',
+        ),
       })
       return
     }
@@ -113,12 +117,11 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} container spacing={2}>
-        <pre>{JSON.stringify(getValues())}</pre>
         <Grid item xs={12}>
           <FormControl size="small" variant="standard" fullWidth>
             <FormLabel>
               <Typography variant="body2">
-                Variable name
+                {t('prompt_editor:add_variable__variable_name__title')}
                 <FormLabelRequiredFlag />
               </Typography>
             </FormLabel>
@@ -128,7 +131,9 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
               size="small"
               InputProps={inputProps}
               onKeyPress={(event) => handleVariableKeyPress(event)}
-              placeholder="Enter variable name"
+              placeholder={t(
+                'prompt_editor:add_variable__variable_name__placeholder',
+              )}
               error={!!errors.label}
               FormHelperTextProps={formHelperTextProps}
               inputRef={(ref) => (inputRefs.current[0] = ref)}
@@ -143,7 +148,9 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
         <Grid item xs={12}>
           <FormControl size="small" variant="standard" fullWidth>
             <FormLabel>
-              <Typography variant="body2">Variable placeholder</Typography>
+              <Typography variant="body2">
+                {t('prompt_editor:add_variable__variable_placeholder__title')}
+              </Typography>
             </FormLabel>
             <TextField
               disabled={type === 'view'}
@@ -151,17 +158,21 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
               size="small"
               InputProps={inputProps}
               inputRef={(ref) => (inputRefs.current[1] = ref)}
-              placeholder="Enter variable placeholder"
+              placeholder={t(
+                'prompt_editor:add_variable__variable_placeholder__placeholder',
+              )}
             />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <Stack direction="row" justifyContent="flex-end" spacing={1} pt={1}>
             <Button variant="secondary" onClick={onCancel}>
-              Cancel
+              {t('prompt_editor:add_variable__cancel_button__title')}
             </Button>
             <Button variant="contained" onClick={handleSubmit}>
-              {type === 'add' ? 'Add' : 'Save'}
+              {type === 'add'
+                ? t('prompt_editor:add_variable__add_button__title')
+                : t('prompt_editor:add_variable__save_button__title')}
             </Button>
           </Stack>
         </Grid>

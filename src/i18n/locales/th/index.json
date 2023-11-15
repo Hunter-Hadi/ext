@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "ตอบกลับข้อความต่อไปนี้ใน {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "โปรดทราบว่าข้อความมาจาก {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "การค้นหาบนเว็บ",
-    "preset_variables__live_crawling__title": "การค้นหาแบบสด"
+    "preset_variables__live_crawling__title": "การค้นหาแบบสด",
+    "add_variable__title": "เพิ่มตัวแปรใหม่",
+    "add_variable__placeholder": "พิมพ์เพื่อค้นหา...",
+    "add_variable__add_button__title": "เพิ่ม",
+    "add_variable__cancel_button__title": "ยกเลิก",
+    "add_variable__save_button__title": "บันทึก",
+    "add_variable__variable_name__title": "ชื่อตัวแปร",
+    "add_variable__variable_name__placeholder": "ป้อนชื่อตัวแปร",
+    "add_variable__variable_placeholder__title": "ตัวยึดตัวแปร",
+    "add_variable__variable_placeholder__placeholder": "ป้อนตัวยึดตัวแปร",
+    "add_variable__error_message__variable_name_repeated": "ชื่อตัวแปรไม่สามารถซ้ำกันได้"
   }
 }

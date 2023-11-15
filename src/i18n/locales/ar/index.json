@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "الرد على النص التالي على {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "لاحظ أن النص من {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "البحث على الويب",
-    "preset_variables__live_crawling__title": "التصفح المباشر"
+    "preset_variables__live_crawling__title": "التصفح المباشر",
+    "add_variable__title": "إضافة متغيرات جديدة",
+    "add_variable__placeholder": "اكتب للبحث...",
+    "add_variable__add_button__title": "إضافة",
+    "add_variable__cancel_button__title": "إلغاء",
+    "add_variable__save_button__title": "حفظ",
+    "add_variable__variable_name__title": "اسم المتغير",
+    "add_variable__variable_name__placeholder": "أدخل اسم المتغير",
+    "add_variable__variable_placeholder__title": "عنصر نائب للمتغير",
+    "add_variable__variable_placeholder__placeholder": "أدخل عنصر نائب للمتغير",
+    "add_variable__error_message__variable_name_repeated": "لا يمكن تكرار أسماء المتغيرات"
   }
 }

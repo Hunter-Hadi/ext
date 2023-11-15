@@ -21,6 +21,7 @@ import Chip from '@mui/material/Chip'
 import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
 import PromptVariableForm from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PromptVariableForm'
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
+import { useTranslation } from 'react-i18next'
 
 const VARIABLE_MENU_LIST_ID = 'variable-menu-list-container'
 
@@ -53,6 +54,7 @@ const PromptVariableEditor = React.forwardRef<
   IPromptVariableEditorProps
 >((props, ref) => {
   const { onAddTextVariable } = props
+  const { t } = useTranslation(['prompt_editor'])
   const { isDarkMode } = useCustomTheme()
   const [inputValue, setInputValue] = useState('')
   const {
@@ -167,7 +169,9 @@ const PromptVariableEditor = React.forwardRef<
   return (
     <Stack>
       <Stack direction={'row'} alignItems={'center'} spacing={0.5} mb={1}>
-        <Typography fontSize={'14px'}>Add new variables</Typography>
+        <Typography fontSize={'14px'}>
+          {t('prompt_editor:add_variable__title')}
+        </Typography>
       </Stack>
       {/*搜索部分*/}
       {editorType === 'search' && (
@@ -218,7 +222,7 @@ const PromptVariableEditor = React.forwardRef<
               autoComplete: 'off',
             }}
             fullWidth
-            placeholder="Type to search..."
+            placeholder={t('prompt_editor:add_variable__placeholder')}
           />
           <Stack
             id={VARIABLE_MENU_LIST_ID}
@@ -387,7 +391,7 @@ const PromptVariableEditor = React.forwardRef<
                   >
                     <AddIcon fontSize="inherit" />
                     <Typography variant="body2" fontWeight={500}>
-                      Add
+                      {t('prompt_editor:add_variable__add_button__title')}
                     </Typography>
                   </Button>
                 </Stack>

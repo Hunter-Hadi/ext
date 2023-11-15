@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "vastaa seuraavaan tekstiin sivulla {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "huomaa, että teksti on sivustolta {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Verkkohaku",
-    "preset_variables__live_crawling__title": "Live Crawling"
+    "preset_variables__live_crawling__title": "Live Crawling",
+    "add_variable__title": "Lisää uusia muuttujia",
+    "add_variable__placeholder": "Kirjoita haku...",
+    "add_variable__add_button__title": "Lisää",
+    "add_variable__cancel_button__title": "Peruuta",
+    "add_variable__save_button__title": "Tallenna",
+    "add_variable__variable_name__title": "Muuttujan nimi",
+    "add_variable__variable_name__placeholder": "Syötä muuttujan nimi",
+    "add_variable__variable_placeholder__title": "Muuttujan paikkamerkki",
+    "add_variable__variable_placeholder__placeholder": "Syötä muuttujan paikkamerkki",
+    "add_variable__error_message__variable_name_repeated": "Muuttujien nimet eivät voi toistua"
   }
 }

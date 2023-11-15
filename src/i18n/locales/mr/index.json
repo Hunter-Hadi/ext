@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} वरील पाठावर प्रतिसाद द्या",
     "preset_variables__system__current_website_domain__example2": "पाठ या {{CURRENT_WEBSITE_DOMAIN}} पासून आहे हे लक्षात घ्या",
     "preset_variables__web_search__title": "वेब शोध",
-    "preset_variables__live_crawling__title": "लाइव क्रॉलिंग"
+    "preset_variables__live_crawling__title": "लाइव क्रॉलिंग",
+    "add_variable__title": "नवीन चर जोडा",
+    "add_variable__placeholder": "शोधण्यासाठी टाइप करा...",
+    "add_variable__add_button__title": "जोडा",
+    "add_variable__cancel_button__title": "रद्द करा",
+    "add_variable__save_button__title": "सेव्ह करा",
+    "add_variable__variable_name__title": "चराचे नाव",
+    "add_variable__variable_name__placeholder": "चराचे नाव प्रविष्ट करा",
+    "add_variable__variable_placeholder__title": "चराचे स्थानधारक",
+    "add_variable__variable_placeholder__placeholder": "चराचे स्थानधारक प्रविष्ट करा",
+    "add_variable__error_message__variable_name_repeated": "चर नावे पुनरावृत्ती केली जाऊ शकत नाहीत"
   }
 }

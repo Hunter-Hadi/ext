@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} உள்ள உரையின் பதிலளிக்கும்",
     "preset_variables__system__current_website_domain__example2": "உரை என்னுடைய {{CURRENT_WEBSITE_DOMAIN}} இலிருந்து வந்தது என்று குறிப்பிடுங்கள்",
     "preset_variables__web_search__title": "வலைத்தள தேடல்",
-    "preset_variables__live_crawling__title": "நேரடி அலுவலகம்"
+    "preset_variables__live_crawling__title": "நேரடி அலுவலகம்",
+    "add_variable__title": "புதிய மாறிகளைச் சேர்க்கவும்",
+    "add_variable__placeholder": "தேடுக...",
+    "add_variable__add_button__title": "சேர்க்கவும்",
+    "add_variable__cancel_button__title": "ரத்துசெய்",
+    "add_variable__save_button__title": "சேமி",
+    "add_variable__variable_name__title": "மாறியின் பெயர்",
+    "add_variable__variable_name__placeholder": "மாறியின் பெயரை உள்ளிடவும்",
+    "add_variable__variable_placeholder__title": "மாறியின் பிளேஸ்ஹோல்டர்",
+    "add_variable__variable_placeholder__placeholder": "மாறியின் பிளேஸ்ஹோல்டரை உள்ளிடவும்",
+    "add_variable__error_message__variable_name_repeated": "மாறிய பெயர்கள் மீண்டும் மீண்டும் இருக்க முடியாது"
   }
 }

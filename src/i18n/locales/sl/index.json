@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "Odgovorite na naslednje besedilo na spletnem mestu {{TRENUTNA_DOMENA_SPLETNEGA_MESTA}}",
     "preset_variables__system__current_website_domain__example2": "Opomba: besedilo je s spletnega mesta {{TRENUTNA_DOMENA_SPLETNEGA_MESTA}}",
     "preset_variables__web_search__title": "Spletno iskanje",
-    "preset_variables__live_crawling__title": "Živo iskanje"
+    "preset_variables__live_crawling__title": "Živo iskanje",
+    "add_variable__title": "Dodaj nove spremenljivke",
+    "add_variable__placeholder": "Vnesite za iskanje...",
+    "add_variable__add_button__title": "Dodaj",
+    "add_variable__cancel_button__title": "Prekliči",
+    "add_variable__save_button__title": "Shrani",
+    "add_variable__variable_name__title": "Ime spremenljivke",
+    "add_variable__variable_name__placeholder": "Vnesite ime spremenljivke",
+    "add_variable__variable_placeholder__title": "Nadomestno besedilo spremenljivke",
+    "add_variable__variable_placeholder__placeholder": "Vnesite nadomestno besedilo spremenljivke",
+    "add_variable__error_message__variable_name_repeated": "Imena spremenljivk se ne smejo ponavljati"
   }
 }

@@ -36,7 +36,7 @@ export const PRESET_VARIABLE_MAP: {
     placeholder: 'Enter the URL you wish to extract text from',
     valueType: 'Text',
     systemVariable: true,
-    defaultValue: '',
+    defaultValue: '{{SELECTED_TEXT}}',
   },
   LIVE_CRAWLING_CRAWLED_TEXT: {
     VariableName: 'LIVE_CRAWLING_CRAWLED_TEXT',
@@ -45,6 +45,7 @@ export const PRESET_VARIABLE_MAP: {
       'This variable will be automatically updated with text extracted from the target URL',
     valueType: 'Text',
     systemVariable: true,
+    defaultValue: '{{SELECTED_TEXT}}',
   },
   WEB_SEARCH_QUERY: {
     VariableName: 'WEB_SEARCH_QUERY',

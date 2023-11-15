@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "svar på følgende tekst på {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "bemærk at teksten er fra {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Web søgning",
-    "preset_variables__live_crawling__title": "Live Crawling"
+    "preset_variables__live_crawling__title": "Live Crawling",
+    "add_variable__title": "Tilføj nye variabler",
+    "add_variable__placeholder": "Skriv for at søge...",
+    "add_variable__add_button__title": "Tilføj",
+    "add_variable__cancel_button__title": "Annuller",
+    "add_variable__save_button__title": "Gem",
+    "add_variable__variable_name__title": "Variabelnavn",
+    "add_variable__variable_name__placeholder": "Indtast variabelnavn",
+    "add_variable__variable_placeholder__title": "Variabelpladsholder",
+    "add_variable__variable_placeholder__placeholder": "Indtast variabelpladsholder",
+    "add_variable__error_message__variable_name_repeated": "Variablenavne kan ikke gentages"
   }
 }

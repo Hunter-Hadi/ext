@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "Antworten Sie auf den folgenden Text auf {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "Beachten Sie, dass der Text von {{CURRENT_WEBSITE_DOMAIN}} stammt",
     "preset_variables__web_search__title": "Web-Suche",
-    "preset_variables__live_crawling__title": "Live Crawling"
+    "preset_variables__live_crawling__title": "Live Crawling",
+    "add_variable__title": "Neue Variablen hinzufügen",
+    "add_variable__placeholder": "Tippen Sie zum Suchen...",
+    "add_variable__add_button__title": "Hinzufügen",
+    "add_variable__cancel_button__title": "Abbrechen",
+    "add_variable__save_button__title": "Speichern",
+    "add_variable__variable_name__title": "Variablenname",
+    "add_variable__variable_name__placeholder": "Variablennamen eingeben",
+    "add_variable__variable_placeholder__title": "Variablenplatzhalter",
+    "add_variable__variable_placeholder__placeholder": "Variablenplatzhalter eingeben",
+    "add_variable__error_message__variable_name_repeated": "Variablennamen dürfen nicht wiederholt werden"
   }
 }

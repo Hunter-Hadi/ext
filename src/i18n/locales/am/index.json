@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} ስለ የሚጠቀሙ ጽሑፍ መልእክት",
     "preset_variables__system__current_website_domain__example2": "ስለ የሚጠቀሙ ጽሑፍ የ{{CURRENT_WEBSITE_DOMAIN}} ድርጊት",
     "preset_variables__web_search__title": "የድረ-ገጽ ፍለጋ",
-    "preset_variables__live_crawling__title": "በለጠ ማሳያ"
+    "preset_variables__live_crawling__title": "በለጠ ማሳያ",
+    "add_variable__title": "አዲስ ተሽከርካሪዎች ጨምር",
+    "add_variable__placeholder": "ለፍለጋ ያስገቡ...",
+    "add_variable__add_button__title": "ጨምር",
+    "add_variable__cancel_button__title": "ይቅር",
+    "add_variable__save_button__title": "አስቀምጥ",
+    "add_variable__variable_name__title": "የተሽከርካሪ ስም",
+    "add_variable__variable_name__placeholder": "የተሽከርካሪ ስም ያስገቡ",
+    "add_variable__variable_placeholder__title": "የተሽከርካሪ መጠቀሚያ",
+    "add_variable__variable_placeholder__placeholder": "የተሽከርካሪ መጠቀሚያ ያስገቡ",
+    "add_variable__error_message__variable_name_repeated": "የተሳሳተ ችሎታዎት ማሳያ አልተወገደም"
   }
 }

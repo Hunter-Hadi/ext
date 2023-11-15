@@ -6,12 +6,12 @@ import {
 import { useCallback, useRef } from 'react'
 import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
-import { isShowChatBox, showChatBox } from '@/utils'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { ShortCutsState } from '@/features/shortcuts/store'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { useAuthLogin } from '@/features/auth'
+import { isShowChatBox, showChatBox } from '@/utils'
 
 const shortCutsEngine = new ShortCutsEngine()
 const port = new ContentScriptConnectionV2({

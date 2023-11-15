@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "svara på följande text på {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "observera att texten kommer från {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Webbsökning",
-    "preset_variables__live_crawling__title": "Live Crawling"
+    "preset_variables__live_crawling__title": "Live Crawling",
+    "add_variable__title": "Lägg till nya variabler",
+    "add_variable__placeholder": "Skriv för att söka...",
+    "add_variable__add_button__title": "Lägg till",
+    "add_variable__cancel_button__title": "Avbryt",
+    "add_variable__save_button__title": "Spara",
+    "add_variable__variable_name__title": "Variabelnamn",
+    "add_variable__variable_name__placeholder": "Ange variabelnamn",
+    "add_variable__variable_placeholder__title": "Variabelplatsmarkör",
+    "add_variable__variable_placeholder__placeholder": "Ange variabelplatsmarkör",
+    "add_variable__error_message__variable_name_repeated": "Variabelnamn kan inte upprepas"
   }
 }

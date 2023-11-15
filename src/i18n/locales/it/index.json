@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "rispondi al seguente testo su {{DOMINIO_SITO_WEB_CORRENTE}}",
     "preset_variables__system__current_website_domain__example2": "nota che il testo proviene da {{DOMINIO_SITO_WEB_CORRENTE}}",
     "preset_variables__web_search__title": "Ricerca Web",
-    "preset_variables__live_crawling__title": "Crawling in diretta"
+    "preset_variables__live_crawling__title": "Crawling in diretta",
+    "add_variable__title": "Aggiungi nuove variabili",
+    "add_variable__placeholder": "Digita per cercare...",
+    "add_variable__add_button__title": "Aggiungi",
+    "add_variable__cancel_button__title": "Annulla",
+    "add_variable__save_button__title": "Salva",
+    "add_variable__variable_name__title": "Nome variabile",
+    "add_variable__variable_name__placeholder": "Inserisci il nome della variabile",
+    "add_variable__variable_placeholder__title": "Segnaposto variabile",
+    "add_variable__variable_placeholder__placeholder": "Inserisci il segnaposto della variabile",
+    "add_variable__error_message__variable_name_repeated": "I nomi delle variabili non possono essere ripetuti"
   }
 }

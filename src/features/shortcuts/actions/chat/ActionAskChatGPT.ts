@@ -35,7 +35,7 @@ export class ActionAskChatGPT extends Action {
   async execute(params: ActionParameters, engine: any) {
     try {
       const askChatGPTType =
-        this.parameters.AskChatGPTActionType || 'ask_chatgpt'
+        this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       const askChatGPTProvider = this.parameters.AskChatGPTProvider
       const includeHistory = this.parameters.AskChatGPTWithHistory || false
       // 用于像search with ai持续更新的message

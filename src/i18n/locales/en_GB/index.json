@@ -492,7 +492,17 @@
     "preset_variables__system__current_website_domain__example1": "reply to the following text on {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "note that the text is from {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Web search",
-    "preset_variables__live_crawling__title": "Live Crawling"
+    "preset_variables__live_crawling__title": "Live Crawling",
+    "add_variable__title": "Add new variables",
+    "add_variable__placeholder": "Type to search...",
+    "add_variable__add_button__title": "Add",
+    "add_variable__cancel_button__title": "Cancel",
+    "add_variable__save_button__title": "Save",
+    "add_variable__variable_name__title": "Variable name",
+    "add_variable__variable_name__placeholder": "Enter variable name",
+    "add_variable__variable_placeholder__title": "Variable placeholder",
+    "add_variable__variable_placeholder__placeholder": "Enter variable placeholder",
+    "add_variable__error_message__variable_name_repeated": "Variable names cannot be repeated"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

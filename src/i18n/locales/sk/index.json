@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "odpovedzte na nasledujúci text na {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "všimnite si, že text je z {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Webové vyhľadávanie",
-    "preset_variables__live_crawling__title": "Živé vyhľadávanie"
+    "preset_variables__live_crawling__title": "Živé vyhľadávanie",
+    "add_variable__title": "Pridať nové premenné",
+    "add_variable__placeholder": "Napíšte pre vyhľadávanie...",
+    "add_variable__add_button__title": "Pridať",
+    "add_variable__cancel_button__title": "Zrušiť",
+    "add_variable__save_button__title": "Uložiť",
+    "add_variable__variable_name__title": "Názov premennej",
+    "add_variable__variable_name__placeholder": "Zadajte názov premennej",
+    "add_variable__variable_placeholder__title": "Placeholder premennej",
+    "add_variable__variable_placeholder__placeholder": "Zadajte placeholder premennej",
+    "add_variable__error_message__variable_name_repeated": "Názvy premenných nemôžu byť opakované"
   }
 }

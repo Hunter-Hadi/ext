@@ -58,7 +58,13 @@ export class ActionSetVariablesModal extends Action {
         }
         return variable
       })
-
+      if (cloneConfig.answerInsertMessageId) {
+        cloneConfig.answerInsertMessageId =
+          shortcutsRenderTemplate(
+            cloneConfig.answerInsertMessageId,
+            shortCutsVariables,
+          ).data || cloneConfig.answerInsertMessageId
+      }
       cloneConfig.systemVariables.map((variable) => {
         if (
           variable.defaultValue &&

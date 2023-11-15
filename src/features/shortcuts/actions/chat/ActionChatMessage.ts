@@ -46,7 +46,7 @@ export class ActionChatMessage extends Action {
       } else if (operationType === 'delete') {
         await chatInstance.deleteMessage(1, conversationId)
       }
-      this.output = messageConfig.messageId
+      this.output = String(messageConfig.messageId)
     } catch (e) {
       this.error = (e as any).message
     }

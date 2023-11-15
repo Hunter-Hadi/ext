@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "odpowiedz na następujący tekst na {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "zauważ, że tekst pochodzi z {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Wyszukiwanie w sieci",
-    "preset_variables__live_crawling__title": "Żywe przeszukiwanie"
+    "preset_variables__live_crawling__title": "Żywe przeszukiwanie",
+    "add_variable__title": "Dodaj nowe zmienne",
+    "add_variable__placeholder": "Wpisz, aby wyszukać...",
+    "add_variable__add_button__title": "Dodaj",
+    "add_variable__cancel_button__title": "Anuluj",
+    "add_variable__save_button__title": "Zapisz",
+    "add_variable__variable_name__title": "Nazwa zmiennej",
+    "add_variable__variable_name__placeholder": "Wprowadź nazwę zmiennej",
+    "add_variable__variable_placeholder__title": "Miejsce na zmienną",
+    "add_variable__variable_placeholder__placeholder": "Wprowadź miejsce na zmienną",
+    "add_variable__error_message__variable_name_repeated": "Nazwy zmiennych nie mogą się powtarzać"
   }
 }

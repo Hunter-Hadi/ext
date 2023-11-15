@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "trả lời văn bản sau trên {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "lưu ý rằng văn bản đến từ {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Tìm kiếm Web",
-    "preset_variables__live_crawling__title": "Thu thập trực tiếp"
+    "preset_variables__live_crawling__title": "Thu thập trực tiếp",
+    "add_variable__title": "Thêm biến mới",
+    "add_variable__placeholder": "Nhập để tìm kiếm...",
+    "add_variable__add_button__title": "Thêm",
+    "add_variable__cancel_button__title": "Hủy",
+    "add_variable__save_button__title": "Lưu",
+    "add_variable__variable_name__title": "Tên biến",
+    "add_variable__variable_name__placeholder": "Nhập tên biến",
+    "add_variable__variable_placeholder__title": "Giữ chỗ biến",
+    "add_variable__variable_placeholder__placeholder": "Nhập giữ chỗ biến",
+    "add_variable__error_message__variable_name_repeated": "Tên biến không thể lặp lại"
   }
 }

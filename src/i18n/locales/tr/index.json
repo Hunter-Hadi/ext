@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{MEVCUT_WEB_SİTESİ_ALAN_ADINA}} aşağıdaki metne yanıt ver",
     "preset_variables__system__current_website_domain__example2": "metnin {{MEVCUT_WEB_SİTESİ_ALAN_ADINDAN}} olduğunu belirtin",
     "preset_variables__web_search__title": "Web arama",
-    "preset_variables__live_crawling__title": "Canlı Tarama"
+    "preset_variables__live_crawling__title": "Canlı Tarama",
+    "add_variable__title": "Yeni değişken ekle",
+    "add_variable__placeholder": "Aramak için yazın...",
+    "add_variable__add_button__title": "Ekle",
+    "add_variable__cancel_button__title": "İptal",
+    "add_variable__save_button__title": "Kaydet",
+    "add_variable__variable_name__title": "Değişken adı",
+    "add_variable__variable_name__placeholder": "Değişken adını girin",
+    "add_variable__variable_placeholder__title": "Değişken yer tutucusu",
+    "add_variable__variable_placeholder__placeholder": "Değişken yer tutucusunu girin",
+    "add_variable__error_message__variable_name_repeated": "Değişken adları tekrarlanamaz"
   }
 }

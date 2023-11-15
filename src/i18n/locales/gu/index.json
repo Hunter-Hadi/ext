@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} પર નીચેના ટેક્સ્ટને જવાબ આપો",
     "preset_variables__system__current_website_domain__example2": "ટેક્સ્ટ આપેલી છે તેથી ધ્યાન આપો {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "વેબ શોધ",
-    "preset_variables__live_crawling__title": "લાઈવ ક્રૉલિંગ"
+    "preset_variables__live_crawling__title": "લાઈવ ક્રૉલિંગ",
+    "add_variable__title": "નવી વેરીએબલ ઉમેરો",
+    "add_variable__placeholder": "શોધવા માટે લખો...",
+    "add_variable__add_button__title": "ઉમેરો",
+    "add_variable__cancel_button__title": "રદ કરો",
+    "add_variable__save_button__title": "સાચવો",
+    "add_variable__variable_name__title": "વેરીએબલ નામ",
+    "add_variable__variable_name__placeholder": "વેરીએબલ નામ દાખલ કરો",
+    "add_variable__variable_placeholder__title": "વેરીએબલ પ્લેસહોલ્ડર",
+    "add_variable__variable_placeholder__placeholder": "વેરીએબલ પ્લેસહોલ્ડર દાખલ કરો",
+    "add_variable__error_message__variable_name_repeated": "ચલન નામો આપત્ર થઈ શકતા નથી"
   }
 }

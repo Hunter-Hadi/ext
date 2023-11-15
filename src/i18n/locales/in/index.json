@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "balas teks berikut di {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "catat bahwa teks berasal dari {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Pencarian web",
-    "preset_variables__live_crawling__title": "Crawling Langsung"
+    "preset_variables__live_crawling__title": "Crawling Langsung",
+    "add_variable__title": "Tambahkan variabel baru",
+    "add_variable__placeholder": "Ketik untuk mencari...",
+    "add_variable__add_button__title": "Tambah",
+    "add_variable__cancel_button__title": "Batal",
+    "add_variable__save_button__title": "Simpan",
+    "add_variable__variable_name__title": "Nama variabel",
+    "add_variable__variable_name__placeholder": "Masukkan nama variabel",
+    "add_variable__variable_placeholder__title": "Placeholder variabel",
+    "add_variable__variable_placeholder__placeholder": "Masukkan placeholder variabel",
+    "add_variable__error_message__variable_name_repeated": "Nama variabel tidak boleh diulang"
   }
 }

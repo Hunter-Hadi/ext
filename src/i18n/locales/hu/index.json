@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "válaszoljon a következő szövegre a(z) {{JELLENTKEZŐ_WEBHELY_DOMAIN}} webhelyen",
     "preset_variables__system__current_website_domain__example2": "jegyezze meg, hogy a szöveg a(z) {{JELLENTKEZŐ_WEBHELY_DOMAIN}} webhelyről származik",
     "preset_variables__web_search__title": "Webes keresés",
-    "preset_variables__live_crawling__title": "Élő adatgyűjtés"
+    "preset_variables__live_crawling__title": "Élő adatgyűjtés",
+    "add_variable__title": "Új változó hozzáadása",
+    "add_variable__placeholder": "Írjon ide...",
+    "add_variable__add_button__title": "Hozzáadás",
+    "add_variable__cancel_button__title": "Mégse",
+    "add_variable__save_button__title": "Mentés",
+    "add_variable__variable_name__title": "Változó neve",
+    "add_variable__variable_name__placeholder": "Adja meg a változó nevét",
+    "add_variable__variable_placeholder__title": "Változó helyőrző",
+    "add_variable__variable_placeholder__placeholder": "Adja meg a változó helyőrzőjét",
+    "add_variable__error_message__variable_name_repeated": "A változónevek nem ismétlődhetnek"
   }
 }

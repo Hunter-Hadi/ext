@@ -26,6 +26,7 @@ import {
 } from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
 import TooltipButton from '@/components/TooltipButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
@@ -39,6 +40,8 @@ export interface ActionSetVariablesModalConfig {
   waitForUserAction?: boolean
   // 在Modal设置完变量后要运行的actions
   actions?: ISetActionsType
+  // 答案插入的MessageId
+  answerInsertMessageId?: string
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -64,8 +67,15 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     onShow,
     onClose,
     actions,
+    answerInsertMessageId,
   } = props
-  const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat()
+  const { createConversation } = useClientConversation()
+  const {
+    setShortCuts,
+    runShortCuts,
+    loading,
+    shortCutsEngineRef,
+  } = useShortCutsWithMessageChat()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
@@ -112,77 +122,94 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         } as ActionSetVariablesConfirmData)
       })
     } else {
-      const presetVariables = cloneDeep(form)
-      setForm({})
-      setShow(false)
-      onClose?.()
-      const runActions: ISetActionsType = []
-      if (config?.template) {
-        let template = form?.TEMPLATE || config?.template || ''
-        let systemVariablesTemplate = ''
-        if (
-          presetVariables.AI_RESPONSE_TONE !== 'Default' &&
-          presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default'
-        ) {
-          systemVariablesTemplate =
-            '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-        } else if (presetVariables.AI_RESPONSE_TONE !== 'Default') {
-          systemVariablesTemplate =
-            '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
-        } else if (presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default') {
-          systemVariablesTemplate =
-            '\n\nPlease write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-        } else {
-          systemVariablesTemplate =
-            '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
-        }
-        template += '\n\n---' + systemVariablesTemplate
-        runActions.push({
-          type: 'SET_VARIABLE_MAP',
-          parameters: {
-            VariableMap: presetVariables,
-          },
-        })
-        // 要等modal运行完后设置完成变量再push actions
-        runActions.push(...(actions || config.actions || []))
-        runActions.push({
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template: template as string,
-          },
-        })
-        if (isProduction) {
-          runActions.push({
-            type: 'ASK_CHATGPT',
-            parameters: {
-              template: '{{LAST_ACTION_OUTPUT}}',
-              AskChatGPTActionType: 'ASK_CHAT_GPT_WITH_PREFIX',
-              AskChatGPTActionMeta: {
-                contextMenu: {
-                  id: config.contextMenuId || uuidV4(),
-                  droppable: false,
-                  parent: uuidV4(),
-                  text: config.title,
-                  data: {
-                    editable: false,
-                    type: 'shortcuts',
-                    actions: [],
-                  },
-                } as IContextMenuItem,
-              },
-            },
-          })
-        } else {
-          runActions.push({
-            type: 'ASK_CHATGPT',
-            parameters: {
-              template: '{{LAST_ACTION_OUTPUT}}',
-            },
-          })
-        }
-        await setShortCuts(runActions)
-        await runShortCuts()
+      await runActions()
+    }
+  }
+  const runActions = async () => {
+    if (Object.keys(form).length === 0) {
+      return
+    }
+    await createConversation('Chat')
+    const presetVariables = cloneDeep(form)
+    setForm({})
+    setShow(false)
+    onClose?.()
+    const runActions: ISetActionsType = []
+    if (config?.template) {
+      let template = form?.TEMPLATE || config?.template || ''
+      let systemVariablesTemplate = ''
+      if (
+        presetVariables.AI_RESPONSE_TONE !== 'Default' &&
+        presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default'
+      ) {
+        systemVariablesTemplate =
+          '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
+      } else if (presetVariables.AI_RESPONSE_TONE !== 'Default') {
+        systemVariablesTemplate =
+          '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
+      } else if (presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default') {
+        systemVariablesTemplate =
+          '\n\nPlease write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
+      } else {
+        systemVariablesTemplate =
+          '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
       }
+      template += '\n\n---' + systemVariablesTemplate
+      runActions.push({
+        type: 'SET_VARIABLE_MAP',
+        parameters: {
+          VariableMap: presetVariables,
+        },
+      })
+      // 要等modal运行完后设置完成变量再push actions
+      runActions.push(...(actions || config.actions || []))
+      runActions.push({
+        type: 'RENDER_TEMPLATE',
+        parameters: {
+          template: template as string,
+        },
+      })
+      // 用来插入答案的messageId，例如search message/summary message
+      const insertMessageId =
+        answerInsertMessageId || config.answerInsertMessageId || ''
+      if (isProduction) {
+        runActions.push({
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionType: insertMessageId
+              ? 'ASK_CHAT_GPT_HIDDEN'
+              : 'ASK_CHAT_GPT_WITH_PREFIX',
+            AskChatGPTInsertMessageId: insertMessageId,
+            AskChatGPTActionMeta: {
+              contextMenu: {
+                id: config.contextMenuId || uuidV4(),
+                droppable: false,
+                parent: uuidV4(),
+                text: config.title,
+                data: {
+                  editable: false,
+                  type: 'shortcuts',
+                  actions: [],
+                },
+              } as IContextMenuItem,
+            },
+          },
+        })
+      } else {
+        runActions.push({
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTInsertMessageId: insertMessageId,
+            AskChatGPTActionType: insertMessageId
+              ? 'ASK_CHAT_GPT_HIDDEN'
+              : 'ASK_CHAT_GPT_WITH_PREFIX',
+          },
+        })
+      }
+      await setShortCuts(runActions)
+      await runShortCuts()
     }
   }
   const currentModalConfig = useMemo(() => {
@@ -255,6 +282,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       maxTextareaMaxRows,
     }
   }, [variables, title, systemVariables, modelKey, config])
+  const autoExecuteRef = useRef(false)
   useEffectOnce(() => {
     OneShotCommunicator.receive('SetVariablesModal', (data: any) => {
       return new Promise((resolve, reject) => {
@@ -262,6 +290,25 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           setShow(false)
           setTimeout(() => {
             setConfig(data.config)
+            // 新增的逻辑：
+            // 如果input和select都有默认值的话，那可以直接运行
+            const isHavaNeedInputField = Array.from(
+              data.config.systemVariables || [],
+            )
+              .concat(data.config.variables || [])
+              .find((variable: any) => {
+                return !variable?.defaultValue
+              })
+            if (!isHavaNeedInputField) {
+              resolve({
+                data: cloneDeep(form),
+                type: 'confirm',
+                success: true,
+              })
+              // 这里是让上层的shortcuts结束
+              autoExecuteRef.current = true
+              return
+            }
             if (data.config.waitForUserAction) {
               setPendingPromises([
                 {
@@ -281,6 +328,19 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           }, 0)
         }
       })
+    })
+  })
+  const runActionsRef = useRef(runActions)
+  useEffect(() => {
+    runActionsRef.current = runActions
+  }, [runActions])
+  useEffectOnce(() => {
+    shortCutsEngineRef.current?.addListener((event, shortcutEngine) => {
+      if (event === 'status') {
+        if (shortcutEngine.status === 'complete') {
+          runActionsRef.current().then().catch()
+        }
+      }
     })
   })
   useEffect(() => {

@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "به متن زیر در {{CURRENT_WEBSITE_DOMAIN}} پاسخ دهید",
     "preset_variables__system__current_website_domain__example2": "توجه کنید که متن از {{CURRENT_WEBSITE_DOMAIN}} است",
     "preset_variables__web_search__title": "جستجوی وب",
-    "preset_variables__live_crawling__title": "جستجوی زنده"
+    "preset_variables__live_crawling__title": "جستجوی زنده",
+    "add_variable__title": "افزودن متغیر جدید",
+    "add_variable__placeholder": "برای جستجو تایپ کنید...",
+    "add_variable__add_button__title": "افزودن",
+    "add_variable__cancel_button__title": "لغو",
+    "add_variable__save_button__title": "ذخیره",
+    "add_variable__variable_name__title": "نام متغیر",
+    "add_variable__variable_name__placeholder": "نام متغیر را وارد کنید",
+    "add_variable__variable_placeholder__title": "محل قرارگیری متغیر",
+    "add_variable__variable_placeholder__placeholder": "محل قرارگیری متغیر را وارد کنید",
+    "add_variable__error_message__variable_name_repeated": "نام متغیرها نمی‌تواند تکراری باشد"
   }
 }

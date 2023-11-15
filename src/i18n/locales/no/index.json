@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "svar på følgende tekst på {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "merk at teksten er fra {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Nettsøk",
-    "preset_variables__live_crawling__title": "Live Henting"
+    "preset_variables__live_crawling__title": "Live Henting",
+    "add_variable__title": "Legg til nye variabler",
+    "add_variable__placeholder": "Skriv for å søke...",
+    "add_variable__add_button__title": "Legg til",
+    "add_variable__cancel_button__title": "Avbryt",
+    "add_variable__save_button__title": "Lagre",
+    "add_variable__variable_name__title": "Variabelnavn",
+    "add_variable__variable_name__placeholder": "Skriv inn variabelnavn",
+    "add_variable__variable_placeholder__title": "Variabelplassholder",
+    "add_variable__variable_placeholder__placeholder": "Skriv inn variabelplassholder",
+    "add_variable__error_message__variable_name_repeated": "Variabelnavn kan ikke gjentas"
   }
 }

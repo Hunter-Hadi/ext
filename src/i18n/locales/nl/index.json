@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "reageer op de volgende tekst op {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "let op dat de tekst afkomstig is van {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Web zoeken",
-    "preset_variables__live_crawling__title": "Live Crawling"
+    "preset_variables__live_crawling__title": "Live Crawling",
+    "add_variable__title": "Nieuwe variabelen toevoegen",
+    "add_variable__placeholder": "Typ om te zoeken...",
+    "add_variable__add_button__title": "Toevoegen",
+    "add_variable__cancel_button__title": "Annuleren",
+    "add_variable__save_button__title": "Opslaan",
+    "add_variable__variable_name__title": "Variabelenaam",
+    "add_variable__variable_name__placeholder": "Voer variabelenaam in",
+    "add_variable__variable_placeholder__title": "Variabele placeholder",
+    "add_variable__variable_placeholder__placeholder": "Voer variabele placeholder in",
+    "add_variable__error_message__variable_name_repeated": "Variabelnamen kunnen niet worden herhaald"
   }
 }

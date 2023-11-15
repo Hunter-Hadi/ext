@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} पर निम्नलिखित पाठ का जवाब दें",
     "preset_variables__system__current_website_domain__example2": "ध्यान दें कि पाठ {{CURRENT_WEBSITE_DOMAIN}} से है",
     "preset_variables__web_search__title": "वेब सर्च",
-    "preset_variables__live_crawling__title": "लाइव क्रॉलिंग"
+    "preset_variables__live_crawling__title": "लाइव क्रॉलिंग",
+    "add_variable__title": "नई चर प्राप्त करें",
+    "add_variable__placeholder": "खोजने के लिए टाइप करें...",
+    "add_variable__add_button__title": "जोड़ें",
+    "add_variable__cancel_button__title": "रद्द करें",
+    "add_variable__save_button__title": "सहेजें",
+    "add_variable__variable_name__title": "चर का नाम",
+    "add_variable__variable_name__placeholder": "चर का नाम दर्ज करें",
+    "add_variable__variable_placeholder__title": "चर प्लेसहोल्डर",
+    "add_variable__variable_placeholder__placeholder": "चर प्लेसहोल्डर दर्ज करें",
+    "add_variable__error_message__variable_name_repeated": "चर नाम दोहराए नहीं जा सकते हैं"
   }
 }

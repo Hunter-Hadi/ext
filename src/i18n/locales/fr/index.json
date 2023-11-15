@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "répondez au texte suivant sur {{DOMAINE_SITE_WEB_ACTUEL}}",
     "preset_variables__system__current_website_domain__example2": "notez que le texte provient de {{DOMAINE_SITE_WEB_ACTUEL}}",
     "preset_variables__web_search__title": "Recherche Web",
-    "preset_variables__live_crawling__title": "Extraction en direct"
+    "preset_variables__live_crawling__title": "Extraction en direct",
+    "add_variable__title": "Ajouter de nouvelles variables",
+    "add_variable__placeholder": "Tapez pour rechercher...",
+    "add_variable__add_button__title": "Ajouter",
+    "add_variable__cancel_button__title": "Annuler",
+    "add_variable__save_button__title": "Enregistrer",
+    "add_variable__variable_name__title": "Nom de la variable",
+    "add_variable__variable_name__placeholder": "Entrez le nom de la variable",
+    "add_variable__variable_placeholder__title": "Emplacement de la variable",
+    "add_variable__variable_placeholder__placeholder": "Entrez l'emplacement de la variable",
+    "add_variable__error_message__variable_name_repeated": "Les noms de variable ne peuvent pas être répétés"
   }
 }

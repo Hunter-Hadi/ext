@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "պատասխանեք հետևյալ տեքստին {{ԸՆՏՐԵՔԹԵՔՍՏ}} վրա՝ {{ԸՆՏՐԵՔԹԵՔՍՏ_ԿԱՅՔԻ_ԴՈՄԵՆ}}",
     "preset_variables__system__current_website_domain__example2": "նշանակեք, որ տեքստը է {{ԸՆՏՐԵՔԹԵՔՍՏ_ԿԱՅՔԻ_ԴՈՄԵՆ}}",
     "preset_variables__web_search__title": "Վեբ որոնում",
-    "preset_variables__live_crawling__title": "Կենդանի համար կայքից կառավարում"
+    "preset_variables__live_crawling__title": "Կենդանի համար կայքից կառավարում",
+    "add_variable__title": "Ավելացնել նոր փոփոխականներ",
+    "add_variable__placeholder": "Մուտքագրեք որոնման համար...",
+    "add_variable__add_button__title": "Ավելացնել",
+    "add_variable__cancel_button__title": "Չեղարկել",
+    "add_variable__save_button__title": "Պահպանել",
+    "add_variable__variable_name__title": "Փոփոխականի անուն",
+    "add_variable__variable_name__placeholder": "Մուտքագրեք փոփոխականի անունը",
+    "add_variable__variable_placeholder__title": "Փոփոխականի պլեյսհոլդեր",
+    "add_variable__variable_placeholder__placeholder": "Մուտքագրեք փոփոխականի պլեյսհոլդերը",
+    "add_variable__error_message__variable_name_repeated": "Փոփոխականի անուները չեն կրկնվում"
   }
 }

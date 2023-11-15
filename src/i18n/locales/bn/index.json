@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} উপর নিম্নলিখিত পাঠ্যে উত্তর দিন",
     "preset_variables__system__current_website_domain__example2": "লিঙ্কটি {{CURRENT_WEBSITE_DOMAIN}} থেকে পাঠ্য হয়েছে এমন দ্রষ্টব্য রাখুন",
     "preset_variables__web_search__title": "ওয়েব সার্চ",
-    "preset_variables__live_crawling__title": "লাইভ ক্রলিং"
+    "preset_variables__live_crawling__title": "লাইভ ক্রলিং",
+    "add_variable__title": "নতুন চলক যোগ করুন",
+    "add_variable__placeholder": "অনুসন্ধান করতে টাইপ করুন...",
+    "add_variable__add_button__title": "যোগ করুন",
+    "add_variable__cancel_button__title": "বাতিল করুন",
+    "add_variable__save_button__title": "সংরক্ষণ করুন",
+    "add_variable__variable_name__title": "চলকের নাম",
+    "add_variable__variable_name__placeholder": "চলকের নাম লিখুন",
+    "add_variable__variable_placeholder__title": "চলকের প্লেসহোল্ডার",
+    "add_variable__variable_placeholder__placeholder": "চলকের প্লেসহোল্ডার লিখুন",
+    "add_variable__error_message__variable_name_repeated": "ভেরিয়েবল নামগুলি পুনরাবৃত্তি করা যাবে না"
   }
 }

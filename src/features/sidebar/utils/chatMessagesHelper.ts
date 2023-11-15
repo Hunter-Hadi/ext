@@ -10,51 +10,56 @@ import { IChatConversation } from '@/background/src/chatConversations'
  * @param message
  */
 export const formatAIMessageContent = (message: IAIResponseMessage) => {
-  const originalMessage = message.originalMessage
-  if (originalMessage) {
-    const shareType = originalMessage.metadata?.shareType || 'normal'
-    let formatText = message.originalMessage?.content?.text || message.text
-    switch (shareType) {
-      case 'normal':
-        break
-      case 'summary':
-        {
-          // 添加标题和结尾
-          if (
-            originalMessage.metadata?.sourceWebpage?.title &&
-            originalMessage.metadata.sourceWebpage.url
-          ) {
-            formatText =
-              `${originalMessage.metadata.sourceWebpage.title}\n\n` + formatText
-            formatText = `${formatText}\n\nSource:\n${originalMessage.metadata.sourceWebpage.url}`
-          }
-          // 替换 ####Title => Title:
-          formatText = formatText.replace(/####\s?([^\n]+)/g, '$1:')
-          formatText += `\n\nPowered by MaxAI.me`
-        }
-        break
-      case 'search':
-        {
-          if (originalMessage?.metadata?.sources?.links) {
-            // 把长的引用链接变成短的: [[a](link)] => [a]
-            formatText = formatText.replace(/\[\[(\d+)\]\([^)]+\)\]/g, '[$1]')
-            const links = originalMessage.metadata.sources.links
-            let citations = `\n\nCitations:`
-            if (links.length > 0) {
-              links.forEach((link, index) => {
-                citations += `\n[${index + 1}] ${link.url}`
-              })
+  try {
+    const originalMessage = message.originalMessage
+    if (originalMessage) {
+      const shareType = originalMessage.metadata?.shareType || 'normal'
+      let formatText = message.originalMessage?.content?.text || message.text
+      switch (shareType) {
+        case 'normal':
+          break
+        case 'summary':
+          {
+            // 添加标题和结尾
+            if (
+              originalMessage.metadata?.sourceWebpage?.title &&
+              originalMessage.metadata.sourceWebpage.url
+            ) {
+              formatText =
+                `${originalMessage.metadata.sourceWebpage.title}\n\n` +
+                formatText
+              formatText = `${formatText}\n\nSource:\n${originalMessage.metadata.sourceWebpage.url}`
             }
-            formatText += citations
+            // 替换 ####Title => Title:
+            formatText = formatText.replace(/####\s?([^\n]+)/g, '$1:')
+            formatText += `\n\nPowered by MaxAI.me`
           }
-          formatText += `\n\nPowered by MaxAI.me`
-        }
-        break
-      default:
-        break
+          break
+        case 'search':
+          {
+            if (originalMessage?.metadata?.sources?.links) {
+              // 把长的引用链接变成短的: [[a](link)] => [a]
+              formatText = formatText.replace(/\[\[(\d+)\]\([^)]+\)\]/g, '[$1]')
+              const links = originalMessage.metadata.sources.links
+              let citations = `\n\nCitations:`
+              if (links.length > 0) {
+                links.forEach((link, index) => {
+                  citations += `\n[${index + 1}] ${link.url}`
+                })
+              }
+              formatText += citations
+            }
+            formatText += `\n\nPowered by MaxAI.me`
+          }
+          break
+        default:
+          break
+      }
+      return formatText
+    } else {
+      return message.text
     }
-    return formatText
-  } else {
+  } catch (e) {
     return message.text
   }
 }

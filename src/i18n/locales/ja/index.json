@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} 上の以下のテキストに返信してください",
     "preset_variables__system__current_website_domain__example2": "テキストが {{CURRENT_WEBSITE_DOMAIN}} からであることに注意してください",
     "preset_variables__web_search__title": "ウェブ検索",
-    "preset_variables__live_crawling__title": "ライブクローリング"
+    "preset_variables__live_crawling__title": "ライブクローリング",
+    "add_variable__title": "新しい変数を追加",
+    "add_variable__placeholder": "検索するには入力してください...",
+    "add_variable__add_button__title": "追加",
+    "add_variable__cancel_button__title": "キャンセル",
+    "add_variable__save_button__title": "保存",
+    "add_variable__variable_name__title": "変数名",
+    "add_variable__variable_name__placeholder": "変数名を入力してください",
+    "add_variable__variable_placeholder__title": "変数のプレースホルダー",
+    "add_variable__variable_placeholder__placeholder": "変数のプレースホルダーを入力してください",
+    "add_variable__error_message__variable_name_repeated": "変数名は繰り返すことはできません"
   }
 }

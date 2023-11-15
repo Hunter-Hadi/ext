@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "atsakyti į šį tekstą pagal {{DABARTINĖS_SVETAINĖS_DOMENAS}}",
     "preset_variables__system__current_website_domain__example2": "pastebėkite, kad tekstas yra iš {{DABARTINĖS_SVETAINĖS_DOMENAS}}",
     "preset_variables__web_search__title": "Tinklo paieška",
-    "preset_variables__live_crawling__title": "Tiesioginis naršymas"
+    "preset_variables__live_crawling__title": "Tiesioginis naršymas",
+    "add_variable__title": "Pridėti naujas kintamąsias",
+    "add_variable__placeholder": "Rašykite, kad ieškotumėte...",
+    "add_variable__add_button__title": "Pridėti",
+    "add_variable__cancel_button__title": "Atšaukti",
+    "add_variable__save_button__title": "Išsaugoti",
+    "add_variable__variable_name__title": "Kintamojo pavadinimas",
+    "add_variable__variable_name__placeholder": "Įveskite kintamojo pavadinimą",
+    "add_variable__variable_placeholder__title": "Kintamojo laikinasis tekstas",
+    "add_variable__variable_placeholder__placeholder": "Įveskite kintamojo laikinąjį tekstą",
+    "add_variable__error_message__variable_name_repeated": "Kintamųjų pavadinimai negali būti kartojami"
   }
 }

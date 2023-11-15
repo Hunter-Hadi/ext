@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "отговорете на следния текст на {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "отбележете, че текстът е от {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Уеб търсене",
-    "preset_variables__live_crawling__title": "Живо сканиране"
+    "preset_variables__live_crawling__title": "Живо сканиране",
+    "add_variable__title": "Добавяне на нови променливи",
+    "add_variable__placeholder": "Въведете за търсене...",
+    "add_variable__add_button__title": "Добавяне",
+    "add_variable__cancel_button__title": "Отказ",
+    "add_variable__save_button__title": "Запазване",
+    "add_variable__variable_name__title": "Име на променливата",
+    "add_variable__variable_name__placeholder": "Въведете име на променливата",
+    "add_variable__variable_placeholder__title": "Подсказка за променливата",
+    "add_variable__variable_placeholder__placeholder": "Въведете подсказка за променливата",
+    "add_variable__error_message__variable_name_repeated": "Имената на променливите не могат да се повтарят"
   }
 }

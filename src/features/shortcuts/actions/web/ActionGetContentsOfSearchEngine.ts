@@ -91,14 +91,13 @@ export class ActionGetContentsOfSearchEngine extends Action {
             const { html, status } = await backgroundFetchHTMLByUrl(
               fullSearchURL,
             )
-            // response is error
-            if (status === 301) {
+            if (status === 301 || status === 302 || status === 429) {
               // search engine 被重定向
               // 目前默认为 301，需要人机验证
-              this.error = `<a href="${fullSearchURL}" target="_blank" style="color: inherit">Click here for ${searchEngine.replace(
-                /^\w/,
-                (c) => c.toUpperCase(),
-              )}</a>. Pass security checks and keep the tab open for stable web access.`
+              this.error = `[Click here for ${searchEngine.replace(/^\w/, (c) =>
+                c.toUpperCase(),
+              )}.](${fullSearchURL}) Pass security checks and keep the tab open for stable web access.`
+              return []
             }
 
             // response is success
@@ -111,11 +110,15 @@ export class ActionGetContentsOfSearchEngine extends Action {
             return []
           }),
         )
+        if (this.error) {
+          // 有错误，不需要继续执行
+          return
+        }
         const mergedSearchResult = interleaveMerge(...searchResultArr)
         const slicedSearchResult = mergedSearchResult.slice(0, limit)
         if (slicedSearchResult.length <= 0) {
           // 根据搜索结果爬取不到 内容
-          this.output = ''
+          this.output = '[]'
           this.error =
             'No search results found. Please try again with a different search engine or search query.'
         } else {

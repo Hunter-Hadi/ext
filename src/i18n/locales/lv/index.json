@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "atbildiet uz sekojošo tekstu vietnē {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "pievērsiet uzmanību tam, ka teksts ir no vietnes {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Tīmekļa meklēšana",
-    "preset_variables__live_crawling__title": "Tiešsaistes pārlūkošana"
+    "preset_variables__live_crawling__title": "Tiešsaistes pārlūkošana",
+    "add_variable__title": "Pievienot jaunas mainīgās",
+    "add_variable__placeholder": "Ierakstiet, lai meklētu...",
+    "add_variable__add_button__title": "Pievienot",
+    "add_variable__cancel_button__title": "Atcelt",
+    "add_variable__save_button__title": "Saglabāt",
+    "add_variable__variable_name__title": "Mainīgā nosaukums",
+    "add_variable__variable_name__placeholder": "Ievadiet mainīgā nosaukumu",
+    "add_variable__variable_placeholder__title": "Mainīgā aizvietotājs",
+    "add_variable__variable_placeholder__placeholder": "Ievadiet mainīgā aizvietotāju",
+    "add_variable__error_message__variable_name_repeated": "Mainīgo nosaukumi nevar atkārtot"
   }
 }

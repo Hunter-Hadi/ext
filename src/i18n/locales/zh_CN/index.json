@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "回复以下文本在{{当前网站域名}}上",
     "preset_variables__system__current_website_domain__example2": "请注意文本来自{{当前网站域名}}",
     "preset_variables__web_search__title": "网络搜索",
-    "preset_variables__live_crawling__title": "实时抓取"
+    "preset_variables__live_crawling__title": "实时抓取",
+    "add_variable__title": "添加新变量",
+    "add_variable__placeholder": "输入以搜索...",
+    "add_variable__add_button__title": "添加",
+    "add_variable__cancel_button__title": "取消",
+    "add_variable__save_button__title": "保存",
+    "add_variable__variable_name__title": "变量名称",
+    "add_variable__variable_name__placeholder": "输入变量名称",
+    "add_variable__variable_placeholder__title": "变量占位符",
+    "add_variable__variable_placeholder__placeholder": "输入变量占位符",
+    "add_variable__error_message__variable_name_repeated": "变量名不能重复"
   }
 }

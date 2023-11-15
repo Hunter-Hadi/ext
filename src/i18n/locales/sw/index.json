@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "jibu maandishi yafuatayo kwenye {{KIUNGO_CHA_TOVUTI_YA_SASA}}",
     "preset_variables__system__current_website_domain__example2": "zingatia kuwa maandishi yanatoka kwa {{KIUNGO_CHA_TOVUTI_YA_SASA}}",
     "preset_variables__web_search__title": "Utafutaji wa Wavuti",
-    "preset_variables__live_crawling__title": "Utafutaji Moja kwa Moja"
+    "preset_variables__live_crawling__title": "Utafutaji Moja kwa Moja",
+    "add_variable__title": "Ongeza vitu vipya",
+    "add_variable__placeholder": "Andika ili kutafuta...",
+    "add_variable__add_button__title": "Ongeza",
+    "add_variable__cancel_button__title": "Ghairi",
+    "add_variable__save_button__title": "Hifadhi",
+    "add_variable__variable_name__title": "Jina la kipengee",
+    "add_variable__variable_name__placeholder": "Ingiza jina la kipengee",
+    "add_variable__variable_placeholder__title": "Nafasi ya kipengee",
+    "add_variable__variable_placeholder__placeholder": "Ingiza nafasi ya kipengee",
+    "add_variable__error_message__variable_name_repeated": "Jina la kipekee la kipengee haliruhusiwi"
   }
 }

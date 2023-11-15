@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "απάντηση στο παρακάτω κείμενο στον τομέα {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "σημειώστε ότι το κείμενο είναι από τον τομέα {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Αναζήτηση στον Ιστό",
-    "preset_variables__live_crawling__title": "Ζωντανή ανάκτηση"
+    "preset_variables__live_crawling__title": "Ζωντανή ανάκτηση",
+    "add_variable__title": "Προσθήκη νέων μεταβλητών",
+    "add_variable__placeholder": "Πληκτρολογήστε για αναζήτηση...",
+    "add_variable__add_button__title": "Προσθήκη",
+    "add_variable__cancel_button__title": "Ακύρωση",
+    "add_variable__save_button__title": "Αποθήκευση",
+    "add_variable__variable_name__title": "Όνομα μεταβλητής",
+    "add_variable__variable_name__placeholder": "Εισαγάγετε το όνομα της μεταβλητής",
+    "add_variable__variable_placeholder__title": "Πλαίσιο κειμένου μεταβλητής",
+    "add_variable__variable_placeholder__placeholder": "Εισαγάγετε το πλαίσιο κειμένου της μεταβλητής",
+    "add_variable__error_message__variable_name_repeated": "Τα ονόματα μεταβλητών δεν μπορούν να επαναλαμβάνονται"
   }
 }

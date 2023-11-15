@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "回覆以下文本在 {{當前網站域名}} 上",
     "preset_variables__system__current_website_domain__example2": "請注意文本來自 {{當前網站域名}}",
     "preset_variables__web_search__title": "網路搜索",
-    "preset_variables__live_crawling__title": "即時爬取"
+    "preset_variables__live_crawling__title": "即時爬取",
+    "add_variable__title": "新增變數",
+    "add_variable__placeholder": "輸入以搜尋...",
+    "add_variable__add_button__title": "新增",
+    "add_variable__cancel_button__title": "取消",
+    "add_variable__save_button__title": "儲存",
+    "add_variable__variable_name__title": "變數名稱",
+    "add_variable__variable_name__placeholder": "輸入變數名稱",
+    "add_variable__variable_placeholder__title": "變數占位符",
+    "add_variable__variable_placeholder__placeholder": "輸入變數占位符",
+    "add_variable__error_message__variable_name_repeated": "變數名稱不能重複"
   }
 }

@@ -670,6 +670,17 @@
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} യിൽ നിന്നുള്ള ടെക്സ്റ്റിനു പ്രതികരണം നൽകുക",
     "preset_variables__system__current_website_domain__example2": "ടെക്സ്റ്റ് {{CURRENT_WEBSITE_DOMAIN}} യിൽ നിന്നാണ്",
     "preset_variables__web_search__title": "വെബ് തിരയൽ",
-    "preset_variables__live_crawling__title": "ലൈവ് ക്രോളിംഗ്"
+    "preset_variables__live_crawling__title": "ലൈവ് ക്രോളിംഗ്",
+    "preset_variables__system__title": "സിസ്റ്റം",
+    "add_variable__title": "പുതിയ മാറ്റങ്ങൾ ചേർക്കുക",
+    "add_variable__placeholder": "തിരയാൻ ടൈപ്പ് ചെയ്യുക...",
+    "add_variable__add_button__title": "ചേർക്കുക",
+    "add_variable__cancel_button__title": "റദ്ദാക്കുക",
+    "add_variable__save_button__title": "സേവ് ചെയ്യുക",
+    "add_variable__variable_name__title": "മാറ്റത്തിന്റെ പേര്",
+    "add_variable__variable_name__placeholder": "മാറ്റത്തിന്റെ പേര് നൽകുക",
+    "add_variable__variable_placeholder__title": "മാറ്റത്തിന്റെ പ്ലേസ്ഹോൾഡർ",
+    "add_variable__variable_placeholder__placeholder": "മാറ്റത്തിന്റെ പ്ലേസ്ഹോൾഡർ നൽകുക",
+    "add_variable__error_message__variable_name_repeated": "വാരിയബിൾ പേരുകൾ ആവർത്തിച്ചുകൊണ്ടാകരുത്"
   }
 }

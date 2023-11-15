@@ -671,6 +671,16 @@
     "preset_variables__system__current_website_domain__example1": "odgovorite na sledeći tekst na {{TRENUTNI_WEB_SAJT_DOMEN}}",
     "preset_variables__system__current_website_domain__example2": "napomena da je tekst sa {{TRENUTNI_WEB_SAJT_DOMEN}}",
     "preset_variables__web_search__title": "Web pretraga",
-    "preset_variables__live_crawling__title": "Uživo pretraživanje"
+    "preset_variables__live_crawling__title": "Uživo pretraživanje",
+    "add_variable__title": "Dodaj nove promenljive",
+    "add_variable__placeholder": "Unesite za pretragu...",
+    "add_variable__add_button__title": "Dodaj",
+    "add_variable__cancel_button__title": "Otkaži",
+    "add_variable__save_button__title": "Sačuvaj",
+    "add_variable__variable_name__title": "Naziv promenljive",
+    "add_variable__variable_name__placeholder": "Unesite naziv promenljive",
+    "add_variable__variable_placeholder__title": "Mesto za promenljivu",
+    "add_variable__variable_placeholder__placeholder": "Unesite mesto za promenljivu",
+    "add_variable__error_message__variable_name_repeated": "Imena promenljivih ne mogu biti ponovljena"
   }
 }

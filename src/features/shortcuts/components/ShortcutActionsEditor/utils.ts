@@ -78,6 +78,12 @@ export const promptTemplateToHtml = (
   variableMap: Map<string, IActionSetVariable>,
   darkMode?: boolean,
 ) => {
+  const labelMap = new Map<string, IActionSetVariable>()
+  Array.from(variableMap.values()).forEach((variable) => {
+    if (variable.label) {
+      labelMap.set(variable.label, variable)
+    }
+  })
   // example: 111 {{CURRENT_TITLE}} {{APPLE}} => 111 <span>{{Current title}}</span> <span>{{Apple}}</span>
   let html = ''
   let p1: number | null = null
@@ -111,10 +117,13 @@ export const promptTemplateToHtml = (
     }
     if (p1 !== null && p2 !== null && p1 < p2) {
       // 如果找到了一对 {{}} 就生成一个 span
-      const variableName = template
+      let variableName = template
         .slice(p1, p2)
         .replace(/^{{/, '')
         .replace(/}}$/, '')
+      if (labelMap.get(variableName)) {
+        variableName = labelMap.get(variableName)?.VariableName || variableName
+      }
       if (
         variableMap.get(variableName) ||
         (PRESET_VARIABLE_MAP as any)[variableName]

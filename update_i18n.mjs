@@ -268,6 +268,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `prompt.${key}`)) {
       return `prompt.${key}`
     }
+    if (_.get(sourceJson, `prompt_editor.${key}`)) {
+      return `prompt_editor.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs

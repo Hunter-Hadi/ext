@@ -660,7 +660,7 @@
     "preset_variables__help__web_search__description": "በዚህ ተጠቃሚ የድረ-ገጽ አይነት {{የድረ-ገጽ የጥፋት}} መጠቀም ይቻላል.\nከዚህ አይነት የጥፋት ውሂብ ይጠቀሙ: {{የድረ-ገጽ የጥፋት ውሂብ}}",
     "preset_variables__help__system__title": "የ\"ስርዓት\" ባህሪዎች:",
     "preset_variables__help__system__description": "{{የስርዓት የቀን}} የዚህ ተጠቃሚ ባህሪዎች የሚጠቀሙ ቀን ይሄዳል.\nበተጨማሪ የ\"ስርዓት\" ባህሪዎች በተጠቃሚ ይጠቀሙ.",
-    "preset_variables__system__title": "ስርዓት",
+    "preset_variables__system__title": "ድርጅት",
     "preset_variables__system__selected_text__description": "ይህ ተጠቃሚ ባህሪ በሚጠቀሙ የድረ-ገጾች ጽሑፍ ቃል ይቀምሳል.",
     "preset_variables__system__selected_text__description__example1": "የእርስዎ ጽሑፍን የሚጠቀሙ ተጠቃሚ ባህሪ ይመልከቱ: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "የሚከተለውን ጽሑፍን የሚቀርብ ተጠቃሚ ባህሪ ይቀምሳል: {{SELECTED_TEXT}}",

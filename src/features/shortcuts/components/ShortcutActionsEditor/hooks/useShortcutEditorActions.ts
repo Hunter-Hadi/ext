@@ -18,6 +18,14 @@ import {
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 
+const variablesToVariableMap = (variables: IActionSetVariable[]) => {
+  const variableMap = new Map<string, IActionSetVariable>()
+  variables.forEach((item) => {
+    variableMap.set(item.VariableName, item)
+  })
+  return variableMap
+}
+
 const useShortcutEditorActions = () => {
   const [shortcutActionEditor, setShortcutActionEditor] = useRecoilState(
     ShortcutActionEditorState,
@@ -88,8 +96,14 @@ const useShortcutEditorActions = () => {
       }
     })
   }
-  const updateEditHTML = (editHTML: string) => {
+  const updateEditHTML = (prevSaveHTML: string) => {
+    const template = htmlToTemplate(prevSaveHTML)
     setShortcutActionEditor((prev) => {
+      const editHTML = promptTemplateToHtml(
+        escapeHtml(template),
+        variablesToVariableMap(prev.variables),
+        isDarkMode,
+      )
       return {
         ...prev,
         editHTML,

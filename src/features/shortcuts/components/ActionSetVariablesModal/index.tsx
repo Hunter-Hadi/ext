@@ -263,7 +263,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     }
   }
   const currentModalConfig = useMemo(() => {
-    console.log('什么意思')
     const reactHookFormRegisterMap: {
       [key in string]: ReturnType<typeof register>
     } = {}
@@ -546,7 +545,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       {/*Text*/}
       <Stack gap={2} paddingTop={1} ref={inputBoxRef}>
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
-          console.log('什么意思', errors[textTypeVariable.VariableName], errors)
           return (
             <TextField
               size={'small'}

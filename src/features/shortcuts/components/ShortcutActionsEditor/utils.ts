@@ -3,6 +3,7 @@ import sanitize from 'sanitize-html'
 import sha256 from 'crypto-js/sha256'
 import dayjs from 'dayjs'
 import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
+import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
 
 /**
  * 基于字符串生成随机颜色
@@ -85,8 +86,24 @@ export const promptTemplateToHtml = (
     const char = template[i]
     if (char === '{' && template[i + 1] === '{') {
       p1 = i
-      i += 1
-      continue
+      let isVariable = false
+      // 并且后面能够找到配对的 }}， 并且}}之间还有字符
+      for (let j = i + 2; j < template.length; j++) {
+        if (template[j] === '}' && template[j + 1] === '}') {
+          if (j - i === 2) {
+            // 如果 {{}} 之间没有字符，就当成普通字符
+            break
+          }
+          isVariable = true
+        }
+      }
+      if (isVariable) {
+        i += 1
+        continue
+      } else {
+        // 因为没有找到配对的 }} 所以把 {{ 当成普通字符
+        p1 = null
+      }
     }
     if (p1 !== null && char === '}' && template[i + 1] === '}') {
       p2 = i + 2
@@ -98,12 +115,20 @@ export const promptTemplateToHtml = (
         .slice(p1, p2)
         .replace(/^{{/, '')
         .replace(/}}$/, '')
-      const variableHtmlTag = generateVariableHtmlContent(
-        variableName,
-        variableMap.get(variableName)?.label || variableName,
-        darkMode,
-      )
-      html += variableHtmlTag
+      if (
+        variableMap.get(variableName) ||
+        (PRESET_VARIABLE_MAP as any)[variableName]
+      ) {
+        const variableHtmlTag = generateVariableHtmlContent(
+          variableName,
+          variableMap.get(variableName)?.label || variableName,
+          darkMode,
+        )
+        html += variableHtmlTag
+      } else {
+        // 如果没有找到变量就当成普通字符
+        html += template.slice(p1, p2)
+      }
       p1 = null
       p2 = null
     } else if (p1 && !/[_a-zA-Z0-9]/.test(char)) {

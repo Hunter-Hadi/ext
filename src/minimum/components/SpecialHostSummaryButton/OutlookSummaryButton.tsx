@@ -10,11 +10,17 @@ import Stack from '@mui/material/Stack'
 
 const OutlookSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])
-  const { element } = useFindElement('#ReadingPaneContainerId .Y0qxw')
+  const { element } = useFindElement(
+    '#ReadingPaneContainerId div[role="heading"]',
+    {
+      style: 'display: flex;align-items: center;gap: 8px;',
+    },
+  )
   return (
     <DynamicComponent
       rootContainer={element}
       customElementName={'max-ai-outlook-summary-button'}
+      style={'order:1'}
     >
       <Button
         sx={{

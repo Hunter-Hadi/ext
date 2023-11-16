@@ -13,6 +13,7 @@ import { elementCheckVisibility } from '@/utils/dataHelper/elementHelper'
 const DynamicComponent: FC<{
   rootContainer?: HTMLElement
   customElementName: string
+  style?: string
   children: React.ReactNode
   checkVisibility?: boolean
 }> = (props) => {
@@ -20,6 +21,7 @@ const DynamicComponent: FC<{
     rootContainer,
     customElementName,
     children,
+    style,
     checkVisibility = true,
   } = props
   const [container, setContainer] = useState<HTMLElement | null>(null)
@@ -38,6 +40,9 @@ const DynamicComponent: FC<{
       const container = document.createElement(
         isSupportWebComponent ? customElementName : 'div',
       )
+      if (style) {
+        container.style.cssText = style
+      }
       rootContainer.insertBefore(container, rootContainer.firstChild)
       const shadowContainer = container.attachShadow({ mode: 'open' })
       const emotionRoot = document.createElement('style')
@@ -63,7 +68,7 @@ const DynamicComponent: FC<{
       setContainer(null)
     }
     return () => {}
-  }, [rootContainer, container, customElementName, checkVisibility])
+  }, [rootContainer, container, customElementName, checkVisibility, style])
   if (!container || !emotionCacheRef.current) {
     return null
   }

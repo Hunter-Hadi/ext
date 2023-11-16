@@ -41,7 +41,12 @@ const TemplateTooltip = () => {
         }}
       >
         <Box maxWidth={'60vw'} maxHeight={420} overflow="auto" p={1}>
-          <Typography variant="body2">
+          <Typography
+            variant="body2"
+            sx={{
+              whiteSpace: 'pre-line',
+            }}
+          >
             {t('prompt_editor:preset_variables__help__title')}
             <br />
             <br />
@@ -50,12 +55,11 @@ const TemplateTooltip = () => {
             <br />
             <Divider sx={{ my: 1 }} />
             <br />
-            {t('prompt_editor:preset_variables__help__live_crawling__title')}
+            {t('prompt_editor:preset_variables__help__system__title')}
             <br />
             <br />
-            {t(
-              'prompt_editor:preset_variables__help__live_crawling__description',
-            )}
+            {t('prompt_editor:preset_variables__help__system__description')}
+
             <br />
             <br />
             <Divider sx={{ my: 1 }} />
@@ -68,10 +72,12 @@ const TemplateTooltip = () => {
             <br />
             <Divider sx={{ my: 1 }} />
             <br />
-            {t('prompt_editor:preset_variables__help__system__title')}
+            {t('prompt_editor:preset_variables__help__live_crawling__title')}
             <br />
             <br />
-            {t('prompt_editor:preset_variables__help__system__description')}
+            {t(
+              'prompt_editor:preset_variables__help__live_crawling__description',
+            )}
           </Typography>
         </Box>
       </Popover>

@@ -349,17 +349,10 @@ const useShortcutEditorActions = () => {
     } else {
       // 添加specialActions
       actions.push(...specialActions)
-      // 渲染Template
-      actions.push({
-        type: 'RENDER_TEMPLATE',
-        parameters: {
-          template,
-        },
-      })
       actions.push({
         type: 'ASK_CHATGPT',
         parameters: {
-          template: `{{LAST_ACTION_OUTPUT}}`,
+          template,
         },
       })
     }

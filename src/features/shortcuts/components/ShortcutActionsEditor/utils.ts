@@ -78,77 +78,37 @@ export const promptTemplateToHtml = (
   variableMap: Map<string, IActionSetVariable>,
   darkMode?: boolean,
 ) => {
+  // example: 111 {{CURRENT_TITLE}} {{APPLE}} => 111 <span>{{Current title}}</span> <span>{{Apple}}</span>
+  // 生成labelMap
   const labelMap = new Map<string, IActionSetVariable>()
   Array.from(variableMap.values()).forEach((variable) => {
     if (variable.label) {
       labelMap.set(variable.label, variable)
     }
   })
-  // example: 111 {{CURRENT_TITLE}} {{APPLE}} => 111 <span>{{Current title}}</span> <span>{{Apple}}</span>
-  let html = ''
-  let p1: number | null = null
-  let p2: number | null = null
-  for (let i = 0; i < template.length; i++) {
-    const char = template[i]
-    if (char === '{' && template[i + 1] === '{') {
-      p1 = i
-      let isVariable = false
-      // 并且后面能够找到配对的 }}， 并且}}之间还有字符
-      for (let j = i + 2; j < template.length; j++) {
-        if (template[j] === '}' && template[j + 1] === '}') {
-          if (j - i === 2) {
-            // 如果 {{}} 之间没有字符，就当成普通字符
-            break
-          }
-          isVariable = true
-        }
-      }
-      if (isVariable) {
-        i += 1
-        continue
-      } else {
-        // 因为没有找到配对的 }} 所以把 {{ 当成普通字符
-        p1 = null
-      }
+  // 正则表达式，用于匹配Handlebars变量
+  const variableRegex = /\{\{([^{}]+?)\}\}/g
+  // 使用replace()方法替换变量
+  const html = template.replace(variableRegex, (match, variable) => {
+    // 检查变量是否在映射中存在
+    const findVariable =
+      labelMap.get(variable) ||
+      variableMap.get(variable) ||
+      (PRESET_VARIABLE_MAP as any)[variable]
+    if (findVariable) {
+      const variableName = findVariable.VariableName
+      // 将匹配到的变量转换为HTML
+      const variableHtmlTag = generateVariableHtmlContent(
+        variableName,
+        findVariable.label || variableName,
+        darkMode,
+      )
+      return variableHtmlTag
+    } else {
+      // 将其他变量视为普通文本
+      return match
     }
-    if (p1 !== null && char === '}' && template[i + 1] === '}') {
-      p2 = i + 2
-      i += 1
-    }
-    if (p1 !== null && p2 !== null && p1 < p2) {
-      // 如果找到了一对 {{}} 就生成一个 span
-      let variableName = template
-        .slice(p1, p2)
-        .replace(/^{{/, '')
-        .replace(/}}$/, '')
-      if (labelMap.get(variableName)) {
-        variableName = labelMap.get(variableName)?.VariableName || variableName
-      }
-      if (
-        variableMap.get(variableName) ||
-        (PRESET_VARIABLE_MAP as any)[variableName]
-      ) {
-        const variableHtmlTag = generateVariableHtmlContent(
-          variableName,
-          variableMap.get(variableName)?.label || variableName,
-          darkMode,
-        )
-        html += variableHtmlTag
-      } else {
-        // 如果没有找到变量就当成普通字符
-        html += template.slice(p1, p2)
-      }
-      p1 = null
-      p2 = null
-    } else if (p1 && !/[_a-zA-Z0-9]/.test(char)) {
-      // 如果找到了一个 {{ 但是没有找到配对的 }} 就把 {{ 当成普通字符
-      html += template.slice(p1, i)
-      p1 = null
-    } else if (p1 === null) {
-      // 如果没有找到 {{ 就把所有的字符都当成普通字符
-      html += char
-    }
-  }
+  })
   return html
 }
 

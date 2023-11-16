@@ -12,7 +12,9 @@ import { useForm } from 'react-hook-form'
 import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
 import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import useShortcutEditorActionsVariables from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+import useShortcutEditorActionsVariables, {
+  PRESET_VARIABLE_MAP,
+} from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { useTranslation } from 'react-i18next'
 
 interface IPromptVariableFormProps {
@@ -64,7 +66,12 @@ const PromptVariableForm: FC<IPromptVariableFormProps> = (props) => {
     const validation = await trigger()
     const formData = getValues()
     const label = (formData?.label || '').trim()
-    if (variables.find((variable) => variable.label === label)) {
+    if (
+      variables.find(
+        (variable) => variable.label?.toLowerCase() === label.toLowerCase(),
+      ) ||
+      (PRESET_VARIABLE_MAP as any)[label.toUpperCase()]
+    ) {
       setError('label', {
         type: 'custom',
         message: t(

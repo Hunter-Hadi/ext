@@ -4,10 +4,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import ContentEditable from 'react-contenteditable'
-import {
-  generateVariableHtmlContent,
-  promptEditorAddHtmlToFocusNode,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
 import PresetVariables from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables'
@@ -15,6 +12,10 @@ import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVar
 import PromptVariableEditor, {
   IPromptVariableEditorExposeRef,
 } from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor'
+import {
+  generateVariableHtmlContent,
+  promptEditorAddHtmlToFocusNode,
+} from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
 
 const ShortcutActionsEditor: FC<{
   disabled?: boolean
@@ -35,17 +36,20 @@ const ShortcutActionsEditor: FC<{
   const addTextVariableToHTML = useCallback(
     (variable: IActionSetVariable) => {
       if (inputRef.current) {
-        const addHtml = `${generateVariableHtmlContent(
-          variable.VariableName,
-          variable.label || '',
-          theme.isDarkMode,
-        )}`
-        lastSelectionRangeRef.current = promptEditorAddHtmlToFocusNode(
-          inputRef.current,
-          addHtml,
-          lastSelectionRangeRef.current || undefined,
-        )
         updateEditHTML(inputRef.current.innerHTML)
+        setTimeout(() => {
+          const addHtml = `${generateVariableHtmlContent(
+            variable.VariableName,
+            variable.label || '',
+            theme.isDarkMode,
+          )}`
+          lastSelectionRangeRef.current = promptEditorAddHtmlToFocusNode(
+            inputRef.current!,
+            addHtml,
+            lastSelectionRangeRef.current || undefined,
+          )
+          updateEditHTML(inputRef.current!.innerHTML)
+        }, 0)
       }
     },
     [theme.isDarkMode],

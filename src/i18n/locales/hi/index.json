@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"संदर्भ\" के बारे में चर:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} वर्तमान पृष्ठ पर आपके द्वारा चयनित पाठ से बदल जाएगा।\n{{CURRENT_WEBSITE_DOMAIN}} वर्तमान वेबसाइट के डोमेन से बदल जाएगा।\n{{SYSTEM_CURRENT_DATE}} आज की तारीख दिखाएगा।\nअधिक \"संदर्भ\" चर बाद में जोड़े जा सकते हैं।",
     "preset_variables__system__title": "संदर्भ",
-    "preset_variables__system__selected_text__description": "यह प्रॉम्प्ट टेम्पलेट चर मौजूदा पेज पर आपके द्वारा चुने गए पाठ से बदल जाएगा।",
+    "preset_variables__system__selected_text__description": "वर्तमान पृष्ठ पर आपके द्वारा चयनित पाठ",
     "preset_variables__system__selected_text__description__example1": "निम्नलिखित पाठ का एक बेहतर संस्करण लिखें: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "निम्नलिखित पाठ को अंग्रेजी में अनुवाद करें: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "यह प्रॉम्प्ट टेम्पलेट चर \"सेटिंग्स\" पृष्ठ पर चयनित \"AI आउटपुट भाषा\" से बदल जाएगा।\nयदि \"सेटिंग्स\" पृष्ठ स्थान के बारे में अनिश्चित हो, तो साइडबार में शीर्ष पट्टी में \"सेटिंग्स\" आइकन पर क्लिक करें।",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} में जवाब दें",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} में विचारों में आप जवाब देंगे",
-    "preset_variables__system__current_website_domain__description": "यह प्रॉम्प्ट टेम्पलेट चर मौजूदा वेबसाइट के डोमेन से बदल जाएगा।",
+    "preset_variables__system__current_website_domain__description": "वर्तमान वेबसाइट का डोमेन",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} पर निम्नलिखित पाठ का जवाब दें",
     "preset_variables__system__current_website_domain__example2": "ध्यान दें कि पाठ {{CURRENT_WEBSITE_DOMAIN}} से है",
     "preset_variables__web_search__title": "वेब सर्च",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "चर का नाम दर्ज करें",
     "add_variable__variable_placeholder__title": "चर प्लेसहोल्डर",
     "add_variable__variable_placeholder__placeholder": "चर प्लेसहोल्डर दर्ज करें",
-    "add_variable__error_message__variable_name_repeated": "चर नाम दोहराए नहीं जा सकते हैं"
+    "add_variable__error_message__variable_name_repeated": "चर नाम दोहराए नहीं जा सकते हैं",
+    "preset_variables__system__system_current_date__description": "आज की तारीख (उदा: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "सिस्टम द्वारा खोजी जाने वाली चीज़ (उदा: apple 15 price)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} खोज के परिणाम",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "क्रॉल करने के लिए दिया गया वेबसाइट लिंक",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} क्रॉल करने के बाद दिखाई देने वाला टेक्स्ट",
+    "preset_variables__tooltip__variable_name_prefix": "इसके बारे में चर",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "चर प्लेसहोल्डर",
+    "preset_variables__tooltip__table__column_name__description__title": "इसके साथ बदल जाएगा"
   }
 }

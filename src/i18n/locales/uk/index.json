@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"سیاق و سباق\" کے بارے میں متغیرات:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} کو آپ نے موجودہ صفحے پر منتخب کیا ہوا ٹیکسٹ سے تبدیل کیا جائے گا۔\n{{CURRENT_WEBSITE_DOMAIN}} کو موجودہ ویب سائٹ کا ڈومین تبدیل کیا جائے گا۔\n{{SYSTEM_CURRENT_DATE}} آج کی تاریخ دکھائے گا۔\nمزید \"سیاق و سباق\" متغیرات بعد میں شامل کیے جا سکتے ہیں۔",
     "preset_variables__system__title": "سیاق",
-    "preset_variables__system__selected_text__description": "این متغیر قالب پیش فرض پاسخگویی شما را با متنی که در صفحه فعلی انتخاب کرده اید جایگزین خواهد کرد.",
+    "preset_variables__system__selected_text__description": "موجودہ صفحے پر آپ نے منتخب کیا گیا متن",
     "preset_variables__system__selected_text__description__example1": "نسخه بهتری از متن زیر را بنویسید: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "متن زیر را به انگلیسی ترجمه کنید: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "این متغیر قالب پیش فرض پاسخگویی شما را با \"زبان خروجی هوش مصنوعی\" انتخاب شده در صفحه تنظیمات جایگزین خواهد کرد.\nاگر مکان صفحه \"تنظیمات\" را نمی دانید، به سادگی بر روی آیکون \"تنظیمات\" در نوار بالایی درون نوار کناری کلیک کنید.",
     "preset_variables__system__ai_response_language__example1": "با {{AI_RESPONSE_LANGUAGE}} پاسخ دهید",
     "preset_variables__system__ai_response_language__example2": "شما با ایده ها به زبان {{AI_RESPONSE_LANGUAGE}} پاسخ خواهید داد",
-    "preset_variables__system__current_website_domain__description": "این متغیر قالب پیش فرض پاسخگویی شما را با دامنه وب سایت فعلی جایگزین خواهد کرد.",
+    "preset_variables__system__current_website_domain__description": "موجودہ ویب سائٹ کا ڈومین",
     "preset_variables__system__current_website_domain__example1": "به متن زیر در {{CURRENT_WEBSITE_DOMAIN}} پاسخ دهید",
     "preset_variables__system__current_website_domain__example2": "توجه کنید که متن از {{CURRENT_WEBSITE_DOMAIN}} است",
     "preset_variables__web_search__title": "جستجوی وب",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "متغیر کا نام درج کریں",
     "add_variable__variable_placeholder__title": "متغیر کا پلیس ہولڈر",
     "add_variable__variable_placeholder__placeholder": "متغیر کا پلیس ہولڈر درج کریں",
-    "add_variable__error_message__variable_name_repeated": "متغیر کے ناموں کو دہرایا نہیں جا سکتا ہے"
+    "add_variable__error_message__variable_name_repeated": "متغیر کے ناموں کو دہرایا نہیں جا سکتا ہے",
+    "preset_variables__system__system_current_date__description": "آج کی تاریخ (مثال: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "وہ چیز جس کی تلاش سسٹم کرے گا (مثال: ایپل 15 قیمت)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} کی تلاش کے نتائج",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "کرال کرنے کے لئے دیا گیا ویب سائٹ لنک",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} کرال کرنے کے بعد دکھایا جانے والا متن",
+    "preset_variables__tooltip__variable_name_prefix": "متغیرات کے بارے میں",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "متغیر کا پلیس ہولڈر",
+    "preset_variables__tooltip__table__column_name__description__title": "اس سے تبدیل کیا جائے گا"
   }
 }

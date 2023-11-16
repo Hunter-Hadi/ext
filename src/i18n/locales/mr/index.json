@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"संदर्भ\" बद्दलचे चरणांकित:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} तुम्ही वर्तमान पृष्ठावर निवडलेला मजकूर बदलणारा.\n{{CURRENT_WEBSITE_DOMAIN}} वर्तमान वेबसाइटचा डोमेन बदलणारा.\n{{SYSTEM_CURRENT_DATE}} आजची तारीख दर्शविली जाईल.\nअधिक \"संदर्भ\" चरणांकित नंतर जोडले जाऊ शकतील.",
     "preset_variables__system__title": "संदर्भ",
-    "preset_variables__system__selected_text__description": "हा प्रॉम्प्ट टेम्पलेट तत्पर व्हेरिएबल ही तुम्ही वर्तमान पृष्ठावर निवडलेल्या पाठाने बदलणारी आहे.",
+    "preset_variables__system__selected_text__description": "तुम्ही वर्तमान पृष्ठावर निवडलेला मजकूर",
     "preset_variables__system__selected_text__description__example1": "खालील पाठाची एक चांगली संस्करण लिहा: {{निवडलेला_पाठ}}",
     "preset_variables__system__selected_text__description__example2": "खालील पाठाची इंग्रजीत भाषांतर करा: {{निवडलेला_पाठ}}",
     "preset_variables__system__ai_response_language__description": "हा प्रॉम्प्ट टेम्पलेट तत्पर व्हेरिएबल \"सेटिंग्ज\" पृष्ठावर निवडलेली \"AI आउटपुट भाषा\" द्वारे बदलणारी आहे.\n\"सेटिंग्ज\" पृष्ठाचे स्थान अनिश्चित असल्यास, साधारणतः वरील बारमध्ये साइडबारमध्ये आपल्याला \"सेटिंग्ज\" चिन्ह दाखवायला क्लिक करा.",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} मध्ये प्रतिसाद द्या",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} मध्ये विचारे आपल्याला उत्तर द्याल",
-    "preset_variables__system__current_website_domain__description": "हा प्रॉम्प्ट टेम्पलेट तत्पर व्हेरिएबल वर्तमान वेबसाइटच्या डोमेनने बदलणारी आहे.",
+    "preset_variables__system__current_website_domain__description": "वर्तमान वेबसाइटचा डोमेन",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} वरील पाठावर प्रतिसाद द्या",
     "preset_variables__system__current_website_domain__example2": "पाठ या {{CURRENT_WEBSITE_DOMAIN}} पासून आहे हे लक्षात घ्या",
     "preset_variables__web_search__title": "वेब शोध",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "चराचे नाव प्रविष्ट करा",
     "add_variable__variable_placeholder__title": "चराचे स्थानधारक",
     "add_variable__variable_placeholder__placeholder": "चराचे स्थानधारक प्रविष्ट करा",
-    "add_variable__error_message__variable_name_repeated": "चर नावे पुनरावृत्ती केली जाऊ शकत नाहीत"
+    "add_variable__error_message__variable_name_repeated": "चर नावे पुनरावृत्ती केली जाऊ शकत नाहीत",
+    "preset_variables__system__system_current_date__description": "आजची तारीख (उदा: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "सिस्टम काय शोधेल (उदा: apple 15 price)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} शोधामुळे मिळवलेले निकाल",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "क्रॉल करण्यासाठी दिलेली वेबसाइट लिंक",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} क्रॉल केल्यानंतर दाखविलेला मजकूर",
+    "preset_variables__tooltip__variable_name_prefix": "वेरिएबल्स विषयक",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "वेरिएबल ठोसपणा",
+    "preset_variables__tooltip__table__column_name__description__title": "यांनी बदलले जाईल"
   }
 }

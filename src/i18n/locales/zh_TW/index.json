@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "關於\"上下文\"的變數：",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}}將被替換為您在當前頁面上選擇的文本。\n{{CURRENT_WEBSITE_DOMAIN}}將被替換為當前網站的域名。\n{{SYSTEM_CURRENT_DATE}}將顯示今天的日期。\n更多\"上下文\"變數可能會在以後添加。",
     "preset_variables__system__title": "上下文",
-    "preset_variables__system__selected_text__description": "此提示模板變數將被替換為您在當前頁面上選擇的文本。",
+    "preset_variables__system__selected_text__description": "您在當前頁面上選擇的文字",
     "preset_variables__system__selected_text__description__example1": "改寫以下文本的更好版本：{{選定的文本}}",
     "preset_variables__system__selected_text__description__example2": "將以下文本翻譯成英語：{{選定的文本}}",
     "preset_variables__system__ai_response_language__description": "此提示模板變數將被替換為在「設置」頁面上選擇的「AI輸出語言」。\n如果不確定「設置」頁面的位置，只需點擊側邊欄中頂部欄中的「設置」圖標即可。",
     "preset_variables__system__ai_response_language__example1": "以 {{AI回應語言}} 回答",
     "preset_variables__system__ai_response_language__example2": "您將用 {{AI回應語言}} 提供想法回覆",
-    "preset_variables__system__current_website_domain__description": "此提示模板變數將被替換為當前網站的域名。",
+    "preset_variables__system__current_website_domain__description": "當前網站的域名",
     "preset_variables__system__current_website_domain__example1": "回覆以下文本在 {{當前網站域名}} 上",
     "preset_variables__system__current_website_domain__example2": "請注意文本來自 {{當前網站域名}}",
     "preset_variables__web_search__title": "網路搜索",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "輸入變數名稱",
     "add_variable__variable_placeholder__title": "變數占位符",
     "add_variable__variable_placeholder__placeholder": "輸入變數占位符",
-    "add_variable__error_message__variable_name_repeated": "變數名稱不能重複"
+    "add_variable__error_message__variable_name_repeated": "變數名稱不能重複",
+    "preset_variables__system__system_current_date__description": "今天的日期（例如：2023-11-12）",
+    "preset_variables__web_search__web_search_query__description": "系統將搜索的內容（例如：蘋果15價格）",
+    "preset_variables__web_search__web_search_results__description": "從搜索{{WEB_SEARCH_QUERY}}得到的搜索結果",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "要爬取的網站鏈接",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "在爬取{{LIVE_CRAWLING_TARGET_URL}}後顯示的文本",
+    "preset_variables__tooltip__variable_name_prefix": "關於的變數",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "變數佔位符",
+    "preset_variables__tooltip__table__column_name__description__title": "將被替換為"
   }
 }

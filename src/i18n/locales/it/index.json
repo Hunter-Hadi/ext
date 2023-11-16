@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Variabili sul \"Contesto\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} verrà sostituito con il testo selezionato nella pagina corrente.\n{{CURRENT_WEBSITE_DOMAIN}} verrà sostituito con il dominio del sito web corrente.\n{{SYSTEM_CURRENT_DATE}} mostrerà la data odierna.\nPotrebbero essere aggiunte ulteriori variabili sul \"Contesto\" in seguito.",
     "preset_variables__system__title": "Contesto",
-    "preset_variables__system__selected_text__description": "Questa variabile del modello di prompt verrà sostituita con il testo selezionato nella pagina corrente.",
+    "preset_variables__system__selected_text__description": "il testo selezionato sulla pagina corrente",
     "preset_variables__system__selected_text__description__example1": "scrivi una versione migliore del seguente testo: {{TESTO_SELEZIONATO}}",
     "preset_variables__system__selected_text__description__example2": "traduci il seguente testo in inglese: {{TESTO_SELEZIONATO}}",
     "preset_variables__system__ai_response_language__description": "Questa variabile del modello di prompt verrà sostituita con la \"lingua di output dell'IA\" selezionata nella pagina Impostazioni.\nSe non sei sicuro della posizione della pagina \"Impostazioni\", fai semplicemente clic sull'icona \"Impostazioni\" trovata nella barra superiore all'interno della barra laterale.",
     "preset_variables__system__ai_response_language__example1": "rispondi in {{LINGUA_RISPOSTA_IA}}",
     "preset_variables__system__ai_response_language__example2": "risponderai con idee in {{LINGUA_RISPOSTA_IA}}",
-    "preset_variables__system__current_website_domain__description": "Questa variabile del modello di prompt verrà sostituita con il dominio del sito web corrente.",
+    "preset_variables__system__current_website_domain__description": "il dominio del sito web corrente",
     "preset_variables__system__current_website_domain__example1": "rispondi al seguente testo su {{DOMINIO_SITO_WEB_CORRENTE}}",
     "preset_variables__system__current_website_domain__example2": "nota che il testo proviene da {{DOMINIO_SITO_WEB_CORRENTE}}",
     "preset_variables__web_search__title": "Ricerca Web",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Inserisci il nome della variabile",
     "add_variable__variable_placeholder__title": "Segnaposto variabile",
     "add_variable__variable_placeholder__placeholder": "Inserisci il segnaposto della variabile",
-    "add_variable__error_message__variable_name_repeated": "I nomi delle variabili non possono essere ripetuti"
+    "add_variable__error_message__variable_name_repeated": "I nomi delle variabili non possono essere ripetuti",
+    "preset_variables__system__system_current_date__description": "data odierna (es:2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "cosa il sistema cercherà (es: prezzo apple 15)",
+    "preset_variables__web_search__web_search_results__description": "i risultati della ricerca di {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "il link del sito web da analizzare",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "il testo che verrà mostrato dopo l'analisi di {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Variabili relative a",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Segnaposto variabile",
+    "preset_variables__tooltip__table__column_name__description__title": "Verrà sostituito con"
   }
 }

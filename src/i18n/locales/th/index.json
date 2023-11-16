@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "ตัวแปรเกี่ยวกับ \"บริบท\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} จะถูกแทนที่ด้วยข้อความที่คุณเลือกบนหน้าปัจจุบัน\n{{CURRENT_WEBSITE_DOMAIN}} จะถูกแทนที่ด้วยโดเมนเว็บไซต์ปัจจุบัน\n{{SYSTEM_CURRENT_DATE}} จะแสดงวันที่ปัจจุบัน\nอาจมีการเพิ่มตัวแปร \"บริบท\" เพิ่มเติมในภายหลัง",
     "preset_variables__system__title": "บริบท",
-    "preset_variables__system__selected_text__description": "ตัวแปรเทมเพลตนี้จะถูกแทนที่ด้วยข้อความที่คุณเลือกบนหน้าปัจจุบัน",
+    "preset_variables__system__selected_text__description": "ข้อความที่คุณเลือกบนหน้าปัจจุบัน",
     "preset_variables__system__selected_text__description__example1": "เขียนเวอร์ชันที่ดีกว่าข้อความต่อไปนี้: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "แปลข้อความต่อไปนี้เป็นภาษาอังกฤษ: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "ตัวแปรเทมเพลตนี้จะถูกแทนที่ด้วย \"ภาษาผลลัพธ์ AI\" ที่เลือกในหน้าการตั้งค่า.\nหากไม่แน่ใจว่าหน้า \"การตั้งค่า\" อยู่ที่ไหน คลิกไอคอน \"การตั้งค่า\" ที่พบในแถบด้านบนภายในแถบด้านข้าง",
     "preset_variables__system__ai_response_language__example1": "ตอบกลับด้วย {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "คุณจะตอบกลับด้วยความคิดใน {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "ตัวแปรเทมเพลตนี้จะถูกแทนที่ด้วยโดเมนเว็บไซต์ปัจจุบัน",
+    "preset_variables__system__current_website_domain__description": "โดเมนเว็บไซต์ปัจจุบัน",
     "preset_variables__system__current_website_domain__example1": "ตอบกลับข้อความต่อไปนี้ใน {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "โปรดทราบว่าข้อความมาจาก {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "การค้นหาบนเว็บ",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "ป้อนชื่อตัวแปร",
     "add_variable__variable_placeholder__title": "ตัวยึดตัวแปร",
     "add_variable__variable_placeholder__placeholder": "ป้อนตัวยึดตัวแปร",
-    "add_variable__error_message__variable_name_repeated": "ชื่อตัวแปรไม่สามารถซ้ำกันได้"
+    "add_variable__error_message__variable_name_repeated": "ชื่อตัวแปรไม่สามารถซ้ำกันได้",
+    "preset_variables__system__system_current_date__description": "วันที่ปัจจุบัน (ตัวอย่าง: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "สิ่งที่ระบบจะค้นหา (ตัวอย่าง: ราคาแอปเปิ้ล 15)",
+    "preset_variables__web_search__web_search_results__description": "ผลการค้นหาจากการค้นหา {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "ลิงก์ของเว็บไซต์ที่ต้องการค้นหา",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "ข้อความที่จะแสดงหลังจากค้นหา {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "ตัวแปรเกี่ยวกับ",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "ตัวยึดตำแหน่งของตัวแปร",
+    "preset_variables__tooltip__table__column_name__description__title": "จะถูกแทนที่ด้วย"
   }
 }

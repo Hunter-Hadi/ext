@@ -8,7 +8,7 @@ import useShortcutEditorActionsVariables, {
 import PresetVariablesTag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables/PresetVariablesTag'
 import { useTranslation } from 'react-i18next'
 import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import { TemplateTooltip } from '@/pages/settings/components/tooltipCollection'
+import PresetVariablesTooltip from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables/PresetVariablesTooltip'
 
 const PresetVariables: FC<{
   onClick?: (variable: IActionSetVariable) => void
@@ -22,7 +22,7 @@ const PresetVariables: FC<{
         <Typography fontSize={'14px'}>
           {t('prompt_editor:preset_variables__title')}
         </Typography>
-        <TemplateTooltip />
+        <PresetVariablesTooltip />
       </Stack>
       <Stack
         sx={{

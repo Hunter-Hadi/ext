@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"ಸಂದರ್ಭ\" ಬಗ್ಗೆ ಮಾಹಿತಿಗಳು:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} ನೀವು ಪ್ರಸ್ತುತ ಪುಟದಲ್ಲಿ ಆಯ್ದ ಪಠ್ಯವನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ.\n{{CURRENT_WEBSITE_DOMAIN}} ಪ್ರಸ್ತುತ ವೆಬ್‌ಸೈಟ್ ಡೊಮೇನ್ ಬದಲಾಯಿಸುತ್ತದೆ.\n{{SYSTEM_CURRENT_DATE}} ಇಂದಿನ ದಿನಾಂಕವನ್ನು ತೋರಿಸುತ್ತದೆ.\nಹೆಚ್ಚಿನ \"ಸಂದರ್ಭ\" ಮಾಹಿತಿಗಳನ್ನು ನಂತರ ಸೇರಿಸಲಾಗಬಹುದು.",
     "preset_variables__system__title": "ಸಂದರ್ಭ",
-    "preset_variables__system__selected_text__description": "ಈ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಮಾನ್ಯತೆಯನ್ನು ನೀವು ಪ್ರಸ್ತುತ ಪುಟದಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯದಿಂದ ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ.",
+    "preset_variables__system__selected_text__description": "ನೀವು ಪ್ರಸ್ತುತ ಪುಟದಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯ",
     "preset_variables__system__selected_text__description__example1": "ಈ ಪಠ್ಯದ ಉತ್ತಮ ಆವೃತ್ತಿಯನ್ನು ಬರೆಯಿರಿ: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "ಈ ಪಠ್ಯವನ್ನು ಇಂಗ್ಲೀಷ್‌ಗೆ ಭಾಷಾಂತರಿಸಿ: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "ಈ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಮಾನ್ಯತೆಯನ್ನು, ಸೆಟ್ಟಿಂಗ್ಸ್ ಪುಟದಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡಿದ \"AI ಆಉಟ್‌ಪುಟ್ ಭಾಷೆ\" ಯಿಂದ ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ.\nಸೋಂಕಿನ ಸೈಡ್ ಬಾರ್‌ನಲ್ಲಿರುವ ಟಾಪ್ ಬಾರ್‌ನಲ್ಲಿರುವ \"ಸೆಟ್ಟಿಂಗ್ಸ್\" ಐಕಾನ್‌ಗೆ ಕ್ಲಿಕ್ ಮಾಡಿ.",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} ನಲ್ಲಿ ಪ್ರತಿಕ್ರಿಯಿಸಿ",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} ನಲ್ಲಿ ಹೊಸ ಕಲ್ಪನೆಗಳನ್ನು ಉತ್ತರಿಸುತ್ತೀರಿ",
-    "preset_variables__system__current_website_domain__description": "ಈ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಮಾನ್ಯತೆಯನ್ನು ಪ್ರಸ್ತುತ ವೆಬ್‌ಸೈಟ್‌ನ ಡೊಮೇನ್‌ನಿಂದ ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ.",
+    "preset_variables__system__current_website_domain__description": "ಪ್ರಸ್ತುತ ವೆಬ್‌ಸೈಟ್ ಡೊಮೇನ್",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} ನ ಮೇಲೆ ಈ ಪಠ್ಯಕ್ಕೆ ಉತ್ತರಿಸಿ",
     "preset_variables__system__current_website_domain__example2": "{{CURRENT_WEBSITE_DOMAIN}} ಎಂದು ಪಠ್ಯವು ಇದೆ ಎಂದು ಗಮನಿಸಿ",
     "preset_variables__web_search__title": "ವೆಬ್ ಶೋಧನೆ",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "ಮಾಪಕದ ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
     "add_variable__variable_placeholder__title": "ಮಾಪಕದ ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್",
     "add_variable__variable_placeholder__placeholder": "ಮಾಪಕದ ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್‌ನ್ನು ನಮೂದಿಸಿ",
-    "add_variable__error_message__variable_name_repeated": "ಮಾಡುವ ಮಾದರಿಗಳ ಹೆಸರು ಪುನರಾವರ್ತಿತವಾಗಬಾರದು"
+    "add_variable__error_message__variable_name_repeated": "ಮಾಡುವ ಮಾದರಿಗಳ ಹೆಸರು ಪುನರಾವರ್ತಿತವಾಗಬಾರದು",
+    "preset_variables__system__system_current_date__description": "ಇಂದಿನ ದಿನಾಂಕ (ಉದಾ: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "ವೆಬ್ ಶೋಧನೆಗೆ ವ್ಯವಸ್ಥೆ ಹುಡುಕುವುದು (ಉದಾ: ಆಪಲ್ 15 ಬೆಲೆ)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} ಹುಡುಕುವುದರ ಫಲಿತಾಂಶಗಳು",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "ಕ್ರಾವ್ ಮಾಡಲು ನೀಡಲಾದ ವೆಬ್‌ಸೈಟ್ ಲಿಂಕ್",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ಕ್ರಾವ್ ಮಾಡಲಾದ ನಂತರ ತೋರಿಸಲಾದ ಪಠ್ಯ",
+    "preset_variables__tooltip__variable_name_prefix": "ವ್ಯಾರಿಬಲ್‌ಗಳು ಕುರಿತು",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "ವ್ಯಾರಿಬಲ್ ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್",
+    "preset_variables__tooltip__table__column_name__description__title": "ಇದನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ"
   }
 }

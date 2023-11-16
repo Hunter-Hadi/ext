@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"సందర్భం\" గురించి వేరబడిన వ్యార్థలు:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} మీరు పేజీలో ఎంచుకున్న టెక్స్ట్‌తో మారుతుంది.\n{{CURRENT_WEBSITE_DOMAIN}} ప్రస్తుత వెబ్‌సైట్ యొక్క డొమైన్‌తో మారుతుంది.\n{{SYSTEM_CURRENT_DATE}} ఈ రోజున తేదీని చూపిస్తుంది.\nమరిన్ని \"సందర్భం\" వ్యార్థలు తరువాత జోడించబడవచ్చు.",
     "preset_variables__system__title": "సందర్భం",
-    "preset_variables__system__selected_text__description": "ఈ ప్రాంప్ట్ టెంప్లేట్ వేరియబుల్ మీరు పేజీలో ఎంచుకున్న టెక్స్ట్‌తో మార్పులు చేయబడుతుంది.",
+    "preset_variables__system__selected_text__description": "మీరు ప్రస్తుత పేజీలో ఎంచుకున్న వచనాన్ని",
     "preset_variables__system__selected_text__description__example1": "క్రింది టెక్స్ట్ యొక్క మేరకు ఒక మంచి వేర్షన్ రాయండి: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "క్రింది టెక్స్ట్ ను ఆంగ్లంలో అనువదించండి: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "ఈ ప్రాంప్ట్ టెంప్లేట్ వేరియబుల్ మీరు సెట్టింగ్స్ పేజీలో ఎంచుకున్న \"AI ఔట్పుట్ భాష\" తో మార్పులు చేయబడుతుంది.\nసెట్టింగ్స్ పేజీ స్థానానికి సందేహం ఉంటే, సైడ్ బార్‌లో ఉన్న టాప్ బార్‌లో ఉండే \"సెట్టింగ్స్\" ఐకాన్‌ను నొక్కండి.",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} లో సమాధానం ఇవ్వండి",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} లో ఆలోచనలను మీరు రాయగలరు",
-    "preset_variables__system__current_website_domain__description": "ఈ ప్రాంప్ట్ టెంప్లేట్ వేరియబుల్ ప్రస్తుత వెబ్‌సైట్ యొక్క డొమైన్‌తో మార్పులు చేయబడుతుంది.",
+    "preset_variables__system__current_website_domain__description": "ప్రస్తుత వెబ్‌సైట్ యొక్క డొమైన్",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} పై క్రింది టెక్స్ట్‌కు సమాధానం ఇవ్వండి",
     "preset_variables__system__current_website_domain__example2": "{{CURRENT_WEBSITE_DOMAIN}} నుండి టెక్స్ట్ ఉందని గమనించండి",
     "preset_variables__web_search__title": "వెబ్ శోధన",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "వ్యారియబుల పేరు నమోదు చేయండి",
     "add_variable__variable_placeholder__title": "వ్యారియబుల ప్లేస్‌హోల్డర్",
     "add_variable__variable_placeholder__placeholder": "వ్యారియబుల ప్లేస్‌హోల్డర్‌ను నమోదు చేయండి",
-    "add_variable__error_message__variable_name_repeated": "వ్యారబుల్ పేర్లు మళ్ళీ అనుకరించబడవు"
+    "add_variable__error_message__variable_name_repeated": "వ్యారబుల్ పేర్లు మళ్ళీ అనుకరించబడవు",
+    "preset_variables__system__system_current_date__description": "ఈ రోజున తేదీ (ఉదా: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "వ్యవస్థ ఏం శోధిస్తుంది (ఉదా: ఆపిల్ 15 ధర)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} ను శోధించిన ఫలితాలు",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "క్రావ్ చేయడానికి ఇవ్వబడిన వెబ్‌సైట్ లింక్",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} నచ్చిన టెక్స్ట్ క్రావ్ చేయబడుతుంది",
+    "preset_variables__tooltip__variable_name_prefix": "గురించి చర్యలు",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "మార్పు స్థానం",
+    "preset_variables__tooltip__table__column_name__description__title": "తో మార్పు చేయబడుతుంది"
   }
 }

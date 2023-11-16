@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"コンテキスト\" に関する変数：",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} は、現在のページで選択したテキストに置き換えられます。\n{{CURRENT_WEBSITE_DOMAIN}} は現在のウェブサイトのドメインに置き換えられます。\n{{SYSTEM_CURRENT_DATE}} は今日の日付を表示します。\n他の「コンテキスト」変数が後で追加される場合があります。",
     "preset_variables__system__title": "コンテキスト",
-    "preset_variables__system__selected_text__description": "このプロンプトテンプレート変数は、現在のページで選択したテキストで置き換えられます。",
+    "preset_variables__system__selected_text__description": "現在のページで選択したテキスト",
     "preset_variables__system__selected_text__description__example1": "次のテキストの改善版を書いてください：{{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "以下のテキストを英語に翻訳してください：{{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "このプロンプトテンプレート変数は、設定ページで選択した「AI出力言語」で置き換えられます。\n「設定」ページの場所がわからない場合は、サイドバー内の上部バーにある「設定」アイコンをクリックしてください。",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} で応答する",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} でアイデアを返信します",
-    "preset_variables__system__current_website_domain__description": "このプロンプトテンプレート変数は、現在のウェブサイトのドメインで置き換えられます。",
+    "preset_variables__system__current_website_domain__description": "現在のウェブサイトのドメイン",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} 上の以下のテキストに返信してください",
     "preset_variables__system__current_website_domain__example2": "テキストが {{CURRENT_WEBSITE_DOMAIN}} からであることに注意してください",
     "preset_variables__web_search__title": "ウェブ検索",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "変数名を入力してください",
     "add_variable__variable_placeholder__title": "変数のプレースホルダー",
     "add_variable__variable_placeholder__placeholder": "変数のプレースホルダーを入力してください",
-    "add_variable__error_message__variable_name_repeated": "変数名は繰り返すことはできません"
+    "add_variable__error_message__variable_name_repeated": "変数名は繰り返すことはできません",
+    "preset_variables__system__system_current_date__description": "今日の日付（例：2023-11-12）",
+    "preset_variables__web_search__web_search_query__description": "システムが検索する内容（例：りんご 15 価格）",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}}での検索結果",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "クロールする対象のウェブサイトリンク",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}}をクロールした後に表示されるテキスト",
+    "preset_variables__tooltip__variable_name_prefix": "に関する変数",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "変数のプレースホルダー",
+    "preset_variables__tooltip__table__column_name__description__title": "次で置き換えられます"
   }
 }

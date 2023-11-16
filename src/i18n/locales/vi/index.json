@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Các biến về \"Bối cảnh\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} sẽ được thay thế bằng văn bản bạn đã chọn trên trang hiện tại.\n{{CURRENT_WEBSITE_DOMAIN}} sẽ được thay thế bằng tên miền trang web hiện tại.\n{{SYSTEM_CURRENT_DATE}} sẽ hiển thị ngày hôm nay.\nCó thể thêm các biến \"Bối cảnh\" khác sau này.",
     "preset_variables__system__title": "Bối cảnh",
-    "preset_variables__system__selected_text__description": "Biến mẫu nhắc này sẽ được thay thế bằng văn bản bạn đã chọn trên trang hiện tại.",
+    "preset_variables__system__selected_text__description": "văn bản bạn đã chọn trên trang hiện tại",
     "preset_variables__system__selected_text__description__example1": "viết phiên bản tốt hơn của văn bản sau: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "dịch văn bản sau sang tiếng Anh: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Biến mẫu nhắc này sẽ được thay thế bằng \"Ngôn ngữ đầu ra AI\" đã chọn trên trang Cài đặt.\nNếu không chắc về vị trí trang \"Cài đặt\", chỉ cần nhấp vào biểu tượng \"Cài đặt\" được tìm thấy trong thanh trên trong thanh bên.",
     "preset_variables__system__ai_response_language__example1": "phản hồi bằng {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "bạn sẽ trả lời với ý tưởng bằng {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Biến mẫu nhắc này sẽ được thay thế bằng tên miền trang web hiện tại.",
+    "preset_variables__system__current_website_domain__description": "miền website hiện tại",
     "preset_variables__system__current_website_domain__example1": "trả lời văn bản sau trên {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "lưu ý rằng văn bản đến từ {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Tìm kiếm Web",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Nhập tên biến",
     "add_variable__variable_placeholder__title": "Giữ chỗ biến",
     "add_variable__variable_placeholder__placeholder": "Nhập giữ chỗ biến",
-    "add_variable__error_message__variable_name_repeated": "Tên biến không thể lặp lại"
+    "add_variable__error_message__variable_name_repeated": "Tên biến không thể lặp lại",
+    "preset_variables__system__system_current_date__description": "ngày hôm nay (ví dụ: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "những gì hệ thống sẽ tìm kiếm (ví dụ: giá apple 15)",
+    "preset_variables__web_search__web_search_results__description": "kết quả tìm kiếm từ việc tìm kiếm {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "liên kết trang web cần được thu thập thông tin",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "văn bản sẽ hiển thị sau khi thu thập thông tin từ {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Biến về",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Giữ chỗ biến",
+    "preset_variables__tooltip__table__column_name__description__title": "Sẽ được thay thế bằng"
   }
 }

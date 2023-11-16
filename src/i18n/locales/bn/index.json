@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"প্রসঙ্গ\" সম্পর্কিত ভেরিয়েবলগুলি:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} বর্তমান পৃষ্ঠায় আপনি নির্বাচন করা পাঠ্যের সাথে প্রতিস্থাপিত হবে।\n{{CURRENT_WEBSITE_DOMAIN}} বর্তমান ওয়েবসাইটের ডোমেইন দেখাবে।\n{{SYSTEM_CURRENT_DATE}} আজকের তারিখ প্রদর্শন করবে।\nআরও \"প্রসঙ্গ\" ভেরিয়েবলগুলি পরে যোগ করা হতে পারে।",
     "preset_variables__system__title": "প্রসঙ্গ",
-    "preset_variables__system__selected_text__description": "এই প্রম্পট টেমপ্লেট চলকটি বর্তমান পৃষ্ঠায় আপনি নির্বাচন করা পাঠ্যের সাথে প্রতিস্থাপিত হবে।",
+    "preset_variables__system__selected_text__description": "বর্তমান পৃষ্ঠায় আপনি নির্বাচন করেছেন পাঠ্য",
     "preset_variables__system__selected_text__description__example1": "নিম্নলিখিত পাঠ্যের একটি ভাল সংস্করণ লিখুন: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "নিম্নলিখিত পাঠ্যটি ইংরেজীতে অনুবাদ করুন: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "এই প্রম্পট টেমপ্লেট চলকটি \"এইচআই আউটপুট ভাষা\" দ্বারা প্রতিস্থাপিত হবে, যা সেটিংস পৃষ্ঠায় নির্বাচিত হয়েছে।\nযদি \"সেটিংস\" পৃষ্ঠার অবস্থান অনিশ্চিত হয়, তবে সাধারণত সাইডবারের শীর্ষ বারে থাকা \"সেটিংস\" আইকনটি ক্লিক করুন।",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} ভাষায় উত্তর দিন",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} ভাষায় আপনি ধারণা দিবেন",
-    "preset_variables__system__current_website_domain__description": "এই প্রম্পট টেমপ্লেট চলকটি বর্তমান ওয়েবসাইটের ডোমেইন দ্বারা প্রতিস্থাপিত হবে।",
+    "preset_variables__system__current_website_domain__description": "বর্তমান ওয়েবসাইটের ডোমেইন",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} উপর নিম্নলিখিত পাঠ্যে উত্তর দিন",
     "preset_variables__system__current_website_domain__example2": "লিঙ্কটি {{CURRENT_WEBSITE_DOMAIN}} থেকে পাঠ্য হয়েছে এমন দ্রষ্টব্য রাখুন",
     "preset_variables__web_search__title": "ওয়েব সার্চ",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "চলকের নাম লিখুন",
     "add_variable__variable_placeholder__title": "চলকের প্লেসহোল্ডার",
     "add_variable__variable_placeholder__placeholder": "চলকের প্লেসহোল্ডার লিখুন",
-    "add_variable__error_message__variable_name_repeated": "ভেরিয়েবল নামগুলি পুনরাবৃত্তি করা যাবে না"
+    "add_variable__error_message__variable_name_repeated": "ভেরিয়েবল নামগুলি পুনরাবৃত্তি করা যাবে না",
+    "preset_variables__system__system_current_date__description": "আজকের তারিখ (উদাহরণ: ২০২৩-১১-১২)",
+    "preset_variables__web_search__web_search_query__description": "সিস্টেম যা অনুসন্ধান করবে (উদাহরণ: আপেল ১৫ দাম)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} অনুসন্ধানের ফলাফল",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "ক্রল করার জন্য দেওয়া ওয়েবসাইট লিংক",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ক্রল করার পরে প্রদর্শিত টেক্সট",
+    "preset_variables__tooltip__variable_name_prefix": "বিষয়বস্তু সম্পর্কিত চলচ্চিত্র",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "চলচ্চিত্রের জায়গা",
+    "preset_variables__tooltip__table__column_name__description__title": "এর পরিবর্তে হবে"
   }
 }

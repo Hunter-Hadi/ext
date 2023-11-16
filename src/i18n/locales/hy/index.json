@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "«Կոնտեքստ»-ի մասին փոփոխականները:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}}-ը կփոխարինվի ձեր ընտրացած տեքստով, որը ընտրել եք ընթացիկ էջում։\n{{CURRENT_WEBSITE_DOMAIN}}-ը կփոխարինվի ընթացիկ կայքի դոմեյնով։\n{{SYSTEM_CURRENT_DATE}}-ը ցուցադրելու է այսօրվա ամսաթիվը։\nԱվելին «Կոնտեքստ»-ի փոփոխականներ կարող են ավելացվել հետո։",
     "preset_variables__system__title": "Համատեղում",
-    "preset_variables__system__selected_text__description": "Այս պաշտոնական փոփոխականը կփոխարինվի ձեր ընտրացանկացած տեքստով, որը ընտրեցիք ընթացիկ էջում:",
+    "preset_variables__system__selected_text__description": "ընտրված տեքստը ընտրված է ընթացիկ էջում",
     "preset_variables__system__selected_text__description__example1": "գրեք լավագույն տարբերակը հետևյալ տեքստին՝ {{ԸՆՏՐԵՔԹԵՔՍՏ}}",
     "preset_variables__system__selected_text__description__example2": "թարգմանեք հետևյալ տեքստը անգլերենով՝ {{ԸՆՏՐԵՔԹԵՔՍՏ}}",
     "preset_variables__system__ai_response_language__description": "Այս պաշտոնական փոփոխականը կփոխարինվի «Այսօրվա ամենավերջին լեզուն» ընտրվածը «Կարգավորումներ» էջում:\nԵթե դուք չեք հավանաբար գիտեք «Կարգավորումներ» էջի տեղադրմանը, պարզապես սեղմեք «Կարգավորումներ» պատկերացումը, որը գտնվում է վերևի վարժության վրա:",
     "preset_variables__system__ai_response_language__example1": "պատասխանեք {{ԱԻ_ՊԱՏՈՒՆԱԿԱՆ_ԼԵԶՈՒՆ}}",
     "preset_variables__system__ai_response_language__example2": "դուք կպատասխանեք մտքերով {{ԱԻ_ՊԱՏՈՒՆԱԿԱՆ_ԼԵԶՈՒՆ}}",
-    "preset_variables__system__current_website_domain__description": "Այս պաշտոնական փոփոխականը կփոխարինվի ընթացիկ կայքի դոմենը:",
+    "preset_variables__system__current_website_domain__description": "ընթացիկ կայքի դոմեն",
     "preset_variables__system__current_website_domain__example1": "պատասխանեք հետևյալ տեքստին {{ԸՆՏՐԵՔԹԵՔՍՏ}} վրա՝ {{ԸՆՏՐԵՔԹԵՔՍՏ_ԿԱՅՔԻ_ԴՈՄԵՆ}}",
     "preset_variables__system__current_website_domain__example2": "նշանակեք, որ տեքստը է {{ԸՆՏՐԵՔԹԵՔՍՏ_ԿԱՅՔԻ_ԴՈՄԵՆ}}",
     "preset_variables__web_search__title": "Վեբ որոնում",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Մուտքագրեք փոփոխականի անունը",
     "add_variable__variable_placeholder__title": "Փոփոխականի պլեյսհոլդեր",
     "add_variable__variable_placeholder__placeholder": "Մուտքագրեք փոփոխականի պլեյսհոլդերը",
-    "add_variable__error_message__variable_name_repeated": "Փոփոխականի անուները չեն կրկնվում"
+    "add_variable__error_message__variable_name_repeated": "Փոփոխականի անուները չեն կրկնվում",
+    "preset_variables__system__system_current_date__description": "այսօրվա ամսաթիվ (օրինակ՝ 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "այն, ինչպես որոնում է համակարգը (օրինակ՝ apple 15 գինը)",
+    "preset_variables__web_search__web_search_results__description": "որոնման արդյունքները {{WEB_SEARCH_QUERY}} որոնումից",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "տրված կայքի հղումը, որը կարող է լինել կրված",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "տեքստը, որը կցուցադրվի կրված {{LIVE_CRAWLING_TARGET_URL}}-ից",
+    "preset_variables__tooltip__variable_name_prefix": "Փոփոխականներ մասին",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Փոխարինող վերնագիր",
+    "preset_variables__tooltip__table__column_name__description__title": "Սահմանված կարգավորումով"
   }
 }

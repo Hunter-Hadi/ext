@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Zmienne dotyczące \"Kontekstu\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} zostanie zastąpione tekstem, który wybrałeś na bieżącej stronie.\n{{CURRENT_WEBSITE_DOMAIN}} zostanie zastąpione domeną bieżącej strony internetowej.\n{{SYSTEM_CURRENT_DATE}} pokaże dzisiejszą datę.\nWięcej zmiennych \"Kontekstu\" może zostać dodanych w przyszłości.",
     "preset_variables__system__title": "Kontekst",
-    "preset_variables__system__selected_text__description": "Ta zmienna szablonu promptu zostanie zastąpiona tekstem, który wybrałeś na bieżącej stronie.",
+    "preset_variables__system__selected_text__description": "tekst, który wybrałeś na bieżącej stronie",
     "preset_variables__system__selected_text__description__example1": "napisz lepszą wersję następującego tekstu: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "przetłumacz następujący tekst na angielski: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Ta zmienna szablonu promptu zostanie zastąpiona wybranym \"Językiem wyjściowym AI\" na stronie Ustawienia.\nJeśli nie jesteś pewien lokalizacji strony \"Ustawienia\", po prostu kliknij ikonę \"Ustawienia\" znajdującą się na górnym pasku w bocznym panelu.",
     "preset_variables__system__ai_response_language__example1": "odpowiedz w języku {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "odpowiesz pomysłami w języku {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Ta zmienna szablonu promptu zostanie zastąpiona domeną bieżącej witryny internetowej.",
+    "preset_variables__system__current_website_domain__description": "domena bieżącej witryny internetowej",
     "preset_variables__system__current_website_domain__example1": "odpowiedz na następujący tekst na {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "zauważ, że tekst pochodzi z {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Wyszukiwanie w sieci",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Wprowadź nazwę zmiennej",
     "add_variable__variable_placeholder__title": "Miejsce na zmienną",
     "add_variable__variable_placeholder__placeholder": "Wprowadź miejsce na zmienną",
-    "add_variable__error_message__variable_name_repeated": "Nazwy zmiennych nie mogą się powtarzać"
+    "add_variable__error_message__variable_name_repeated": "Nazwy zmiennych nie mogą się powtarzać",
+    "preset_variables__system__system_current_date__description": "dzisiejsza data (np. 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "czego system będzie szukał (np. cena jabłek 15)",
+    "preset_variables__web_search__web_search_results__description": "wyniki wyszukiwania dla {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "podany link do strony, która ma zostać przeszukana",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "tekst, który zostanie wyświetlony po przeszukaniu {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Zmienne dotyczące",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Zmienna zastępcza",
+    "preset_variables__tooltip__table__column_name__description__title": "Zostanie zastąpione przez"
   }
 }

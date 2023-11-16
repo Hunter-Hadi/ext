@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Variabelen over de \"Context\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} zal worden vervangen door de tekst die je hebt geselecteerd op de huidige pagina.\n{{CURRENT_WEBSITE_DOMAIN}} zal worden vervangen door het domein van de huidige website.\n{{SYSTEM_CURRENT_DATE}} zal vandaag's datum tonen.\nMeer \"Context\" variabelen kunnen later worden toegevoegd.",
     "preset_variables__system__title": "Context",
-    "preset_variables__system__selected_text__description": "Deze sjabloonvariabele wordt vervangen door de tekst die je hebt geselecteerd op de huidige pagina.",
+    "preset_variables__system__selected_text__description": "de tekst die je hebt geselecteerd op de huidige pagina",
     "preset_variables__system__selected_text__description__example1": "schrijf een betere versie van de volgende tekst: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "vertaal de volgende tekst naar het Engels: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Deze sjabloonvariabele wordt vervangen door de \"AI uitvoertaal\" die is geselecteerd op de Instellingen pagina.\nAls je niet zeker bent van de locatie van de \"Instellingen\" pagina, klik dan eenvoudigweg op het \"Instellingen\" icoon in de bovenste balk binnen de zijbalk.",
     "preset_variables__system__ai_response_language__example1": "reageer in {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "je zult ideeën beantwoorden in {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Deze sjabloonvariabele wordt vervangen door het domein van de huidige website.",
+    "preset_variables__system__current_website_domain__description": "het domein van de huidige website",
     "preset_variables__system__current_website_domain__example1": "reageer op de volgende tekst op {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "let op dat de tekst afkomstig is van {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Web zoeken",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Voer variabelenaam in",
     "add_variable__variable_placeholder__title": "Variabele placeholder",
     "add_variable__variable_placeholder__placeholder": "Voer variabele placeholder in",
-    "add_variable__error_message__variable_name_repeated": "Variabelnamen kunnen niet worden herhaald"
+    "add_variable__error_message__variable_name_repeated": "Variabelnamen kunnen niet worden herhaald",
+    "preset_variables__system__system_current_date__description": "datum van vandaag (bijv. 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "waar de systeem naar zal zoeken (bijv. apple 15 prijs)",
+    "preset_variables__web_search__web_search_results__description": "de zoekresultaten van het zoeken naar {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "de gegeven website link om te crawlen",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "de tekst die getoond zal worden na het crawlen van {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Variabelen over de",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Variabele placeholder",
+    "preset_variables__tooltip__table__column_name__description__title": "Zal worden vervangen door"
   }
 }

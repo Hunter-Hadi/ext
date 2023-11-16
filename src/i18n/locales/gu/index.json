@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"સંદર્ભ\" વિશેના વેરીએબલ્સ:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} તમે હાલના પૃષ્ઠ પર પસંદ કરેલ ટેક્સ્ટ થી બદલાશે.\n{{CURRENT_WEBSITE_DOMAIN}} હાલના વેબસાઇટનો ડોમેન બદલાશે.\n{{SYSTEM_CURRENT_DATE}} આજની તારીખ બતાવશે.\nવધુ \"સંદર્ભ\" વેરીએબલ્સ પછીથી ઉમેરવામાં આવશે.",
     "preset_variables__system__title": "સંદર્ભ",
-    "preset_variables__system__selected_text__description": "આ પ્રોમ્પ્ટ ટેમ્પલેટ વેરીએબલ હાલના પૃષ્ઠ પર તમે પસંદ કરેલા ટેક્સ્ટ સાથે બદલાશે.",
+    "preset_variables__system__selected_text__description": "તમે વર્તમાન પૃષ્ઠ પર પસંદ કરેલા ટેક્સ્ટ",
     "preset_variables__system__selected_text__description__example1": "નીચેના ટેક્સ્ટનું સારાંશ લખો: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "નીચેના ટેક્સ્ટને અંગ્રેજીમાં અનુવાદ કરો: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "આ પ્રોમ્પ્ટ ટેમ્પલેટ વેરીએબલ સેટિંગ્સ પૃષ્ઠ પર પસંદ કરેલી \"AI આઉટપુટ ભાષા\" સાથે બદલાશે.\nજો તમે \"સેટિંગ્સ\" પૃષ્ઠની સ્થાનિકતા અનેકડે અનિશ્ચિત હોય, તો સંપૂર્ણ બારમાં સાઇડબારમાં મળેલી \"સેટિંગ્સ\" આઇકન પર ક્લિક કરો.",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} માં જવાબ આપો",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} માં વિચારોને જવાબ આપો",
-    "preset_variables__system__current_website_domain__description": "આ પ્રોમ્પ્ટ ટેમ્પલેટ વેરીએબલ હાલની વેબસાઇટનું ડોમેન બદલાશે.",
+    "preset_variables__system__current_website_domain__description": "વર્તમાન વેબસાઇટનો ડોમેન",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} પર નીચેના ટેક્સ્ટને જવાબ આપો",
     "preset_variables__system__current_website_domain__example2": "ટેક્સ્ટ આપેલી છે તેથી ધ્યાન આપો {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "વેબ શોધ",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "વેરીએબલ નામ દાખલ કરો",
     "add_variable__variable_placeholder__title": "વેરીએબલ પ્લેસહોલ્ડર",
     "add_variable__variable_placeholder__placeholder": "વેરીએબલ પ્લેસહોલ્ડર દાખલ કરો",
-    "add_variable__error_message__variable_name_repeated": "ચલન નામો આપત્ર થઈ શકતા નથી"
+    "add_variable__error_message__variable_name_repeated": "ચલન નામો આપત્ર થઈ શકતા નથી",
+    "preset_variables__system__system_current_date__description": "આજની તારીખ (ઉદાહરણ: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "સિસ્ટમ શોધવાનું શોધે છે (ઉદાહરણ: એપલ 15 નીંબરની કિંમત)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} શોધવાથી મળેલા પરિણામો",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "ક્રાવલ કરવામાં આવેલી વેબસાઇટની લિંક",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ક્રાવલ કરવામાં આવેલો ટેક્સ્ટ",
+    "preset_variables__tooltip__variable_name_prefix": "વેરિએબલ વિશે",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "વેરિએબલ પ્લેસહોલ્ડર",
+    "preset_variables__tooltip__table__column_name__description__title": "થી બદલાઈ જશે"
   }
 }

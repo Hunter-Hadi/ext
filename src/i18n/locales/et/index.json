@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"Konteksti\" kohta käivad muutujad:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} asendatakse tekstiga, mille valisite praegusel lehel.\n{{CURRENT_WEBSITE_DOMAIN}} asendatakse praeguse veebisaidi domeeniga.\n{{SYSTEM_CURRENT_DATE}} näitab tänast kuupäeva.\nHiljem võidakse lisada veel \"Konteksti\" muutujaid.",
     "preset_variables__system__title": "Kontekst",
-    "preset_variables__system__selected_text__description": "See märgendite mallimuutuja asendatakse tekstiga, mille valisite praegusel lehel.",
+    "preset_variables__system__selected_text__description": "valitud tekst praegusel lehel",
     "preset_variables__system__selected_text__description__example1": "kirjuta parem versioon järgmisest tekstist: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "tõlgi järgmine tekst inglise keelde: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "See märgendite mallimuutuja asendatakse \"AI väljundkeele\" valikuga, mis on tehtud Seadete lehel.\nKui pole kindel, kus Seadete leht asub, klõpsake lihtsalt ülemises ribas küljeribal asuvat \"Seaded\" ikooni.",
     "preset_variables__system__ai_response_language__example1": "vasta keeles {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "vastad ideedega keeles {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "See märgendite mallimuutuja asendatakse praeguse veebisaidi domeeniga.",
+    "preset_variables__system__current_website_domain__description": "praeguse veebisaidi domeen",
     "preset_variables__system__current_website_domain__example1": "vasta järgmisele tekstile saidil {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "märkige, et tekst on pärit saidilt {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Veebiotsing",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Sisestage muutuja nimi",
     "add_variable__variable_placeholder__title": "Muutuja asendaja",
     "add_variable__variable_placeholder__placeholder": "Sisestage muutuja asendaja",
-    "add_variable__error_message__variable_name_repeated": "Muutujate nimed ei saa korduda"
+    "add_variable__error_message__variable_name_repeated": "Muutujate nimed ei saa korduda",
+    "preset_variables__system__system_current_date__description": "tänane kuupäev (nt: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "mida süsteem otsib (nt: õuna 15 hind)",
+    "preset_variables__web_search__web_search_results__description": "otsingutulemused, mis saadi otsides {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "antud veebilehe link, mida kogutakse",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "tekst, mis kuvatakse pärast lehekülje kogumist aadressilt {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Muutujad seoses",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Muutuja asendaja",
+    "preset_variables__tooltip__table__column_name__description__title": "Asendatakse"
   }
 }

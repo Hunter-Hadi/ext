@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Змінні про \"Контекст\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} буде замінено текстом, який ви вибрали на поточній сторінці.\n{{CURRENT_WEBSITE_DOMAIN}} буде замінено доменом поточного веб-сайту.\n{{SYSTEM_CURRENT_DATE}} покаже сьогоднішню дату.\nБільше змінних \"Контексту\" можуть бути додані пізніше.",
     "preset_variables__system__title": "Контекст",
-    "preset_variables__system__selected_text__description": "Ця змінна шаблону запиту буде замінена текстом, який ви вибрали на поточній сторінці.",
+    "preset_variables__system__selected_text__description": "текст, який ви виділили на поточній сторінці",
     "preset_variables__system__selected_text__description__example1": "напишіть кращу версію наступного тексту: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "перекладіть наступний текст англійською: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Ця змінна шаблону запиту буде замінена \"Мовою виводу ШІ\", вибраною на сторінці Налаштування.\nЯкщо не впевнені у місці розташування сторінки \"Налаштування\", просто натисніть іконку \"Налаштування\", що знаходиться у верхній панелі в бічній панелі.",
     "preset_variables__system__ai_response_language__example1": "відповідайте мовою {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "ви будете відповідати ідеями мовою {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Ця змінна шаблону запиту буде замінена поточним доменом веб-сайту.",
+    "preset_variables__system__current_website_domain__description": "домен поточного веб-сайту",
     "preset_variables__system__current_website_domain__example1": "відповісти на наступний текст на {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "зверніть увагу, що текст з {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Пошук в Інтернеті",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Введіть назву змінної",
     "add_variable__variable_placeholder__title": "Плейсхолдер змінної",
     "add_variable__variable_placeholder__placeholder": "Введіть плейсхолдер змінної",
-    "add_variable__error_message__variable_name_repeated": "Імена змінних не можуть повторюватися"
+    "add_variable__error_message__variable_name_repeated": "Імена змінних не можуть повторюватися",
+    "preset_variables__system__system_current_date__description": "сьогоднішня дата (наприклад: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "що система буде шукати (наприклад: ціна на яблука 15)",
+    "preset_variables__web_search__web_search_results__description": "результати пошуку за запитом {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "посилання на веб-сайт, який потрібно проіндексувати",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "текст, який буде показаний після індексації {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Змінні про",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Замінник змінної",
+    "preset_variables__tooltip__table__column_name__description__title": "Буде замінено на"
   }
 }

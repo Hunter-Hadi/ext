@@ -660,13 +660,13 @@
     "preset_variables__help__web_search__description": "ഈ ചരങ്ങൾ ഉപയോഗിച്ച്, സിസ്റ്റം {{WEB_SEARCH_QUERY}} തിരയുന്നു.\nഅതിനാൽ, {{WEB_SEARCH_RESULTS}} ഈ തിരയുന്ന ഫലങ്ങൾ കാണിക്കും.",
     "preset_variables__help__system__title": "\"സംദേശത്തിനുള്ള\" ചരങ്ങൾ:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} നിങ്ങൾ നിലവിൽ തിരഞ്ഞെടുത്ത വാചകം മാറ്റപ്പെടും.\n{{CURRENT_WEBSITE_DOMAIN}} നിലവിൽ ഉപയോഗിക്കുന്ന വെബ്‌സൈറ്റിന്റെ ഡൊമെയിൻ മാറ്റപ്പെടും.\n{{SYSTEM_CURRENT_DATE}} ഇന്നത്തെ തീയതി കാണിക്കും.\nകൂടുതൽ \"സംദേശം\" ചരങ്ങൾ പിന്നെ ചേർക്കപ്പെടും.",
-    "preset_variables__system__selected_text__description": "ഈ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് ചരം നിങ്ങൾ നിലവിലുള്ള പേജിൽ തിരഞ്ഞെടുത്ത ടെക്സ്റ്റ് പുതുക്കും.",
+    "preset_variables__system__selected_text__description": "നിങ്ങൾ നിലവിൽ തിരഞ്ഞെടുത്ത പ്രസ്താവനയിൽ നിന്ന് എഴുതിയ വാചകം",
     "preset_variables__system__selected_text__description__example1": "പിന്നോട്ട് നിലവിലുള്ള ടെക്സ്റ്റിന്റെ ഒരു മികച്ച പതിപ്പ് എഴുതുക: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "തിരയുന്ന ടെക്സ്റ്റ് ഇംഗ്ലീഷിലേക്ക് പരിവർത്തിപ്പിക്കുക: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "ഈ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് ചരം \"AI പ്രതികരണ ഭാഷ\" ആയി സജ്ജമാക്കിയിട്ടുള്ളതാണ്.\n\"സെറ്റിംഗുകൾ\" പേജിന്റെ സ്ഥലം അനിശ്ചയമായാല്, സൈഡ് ബാർന്റെ മുകളിൽ കാണാവുന്ന \"സെറ്റിംഗുകൾ\" ഐക്കൺ ക്ലിക്കുചെയ്യുക.",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} യിൽ പ്രതികരിക്കുക",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} യിൽ ആശയങ്ങൾ പറയുക",
-    "preset_variables__system__current_website_domain__description": "ഈ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് ചരം നിലവിലുള്ള വെബ്സൈറ്റിന്റെ ഡൊമെയ്ൻ പുതുക്കും.",
+    "preset_variables__system__current_website_domain__description": "നിലവിലെ വെബ്സൈറ്റിന്റെ ഡൊമെയിൻ",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} യിൽ നിന്നുള്ള ടെക്സ്റ്റിനു പ്രതികരണം നൽകുക",
     "preset_variables__system__current_website_domain__example2": "ടെക്സ്റ്റ് {{CURRENT_WEBSITE_DOMAIN}} യിൽ നിന്നാണ്",
     "preset_variables__web_search__title": "വെബ് തിരയൽ",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "മാറ്റത്തിന്റെ പേര് നൽകുക",
     "add_variable__variable_placeholder__title": "മാറ്റത്തിന്റെ പ്ലേസ്ഹോൾഡർ",
     "add_variable__variable_placeholder__placeholder": "മാറ്റത്തിന്റെ പ്ലേസ്ഹോൾഡർ നൽകുക",
-    "add_variable__error_message__variable_name_repeated": "വാരിയബിൾ പേരുകൾ ആവർത്തിച്ചുകൊണ്ടാകരുത്"
+    "add_variable__error_message__variable_name_repeated": "വാരിയബിൾ പേരുകൾ ആവർത്തിച്ചുകൊണ്ടാകരുത്",
+    "preset_variables__system__system_current_date__description": "ഇന്നത്തെ തീയതി (ഉദാ: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "സിസ്റ്റം തിരയുന്നത് (ഉദാ: ആപ്പിൾ 15 വില)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} തിരയുന്നതിന് ലഭ്യമായ ഫലങ്ങൾ",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "ക്രോൾ ചെയ്യാൻ നൽകിയ വെബ്സൈറ്റ് ലിങ്ക്",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ക്രോൾ ചെയ്യുന്നതിന് ശേഷം കാണിക്കുന്ന ടെക്സ്റ്റ്",
+    "preset_variables__tooltip__variable_name_prefix": "വിഷയത്തെ പറ്റിയുള്ള ചരങ്ങൾ",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "ചരം പ്ലേസ്ഹോൾഡർ",
+    "preset_variables__tooltip__table__column_name__description__title": "മാറ്റപ്പെടുന്നത്"
   }
 }

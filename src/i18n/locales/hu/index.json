@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Változók a \"Kontextusról\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} helyettesítve lesz a jelenlegi oldalon kiválasztott szöveggel.\n{{CURRENT_WEBSITE_DOMAIN}} helyettesíti a jelenlegi webhely domainjét.\n{{SYSTEM_CURRENT_DATE}} megjeleníti a mai dátumot.\nTovábbi \"Kontextus\" változók később hozzáadhatók.",
     "preset_variables__system__title": "Környezet",
-    "preset_variables__system__selected_text__description": "Ez a sablonváltozó a jelenlegi oldalon kiválasztott szöveggel lesz helyettesítve.",
+    "preset_variables__system__selected_text__description": "a jelenlegi oldalon kiválasztott szöveg",
     "preset_variables__system__selected_text__description__example1": "írjon egy jobb verziót a következő szövegről: {{KIVÁLASZTOTT_SZÖVEG}}",
     "preset_variables__system__selected_text__description__example2": "fordítsa le az alábbi szöveget angolra: {{KIVÁLASZTOTT_SZÖVEG}}",
     "preset_variables__system__ai_response_language__description": "Ez a sablonváltozó a Beállítások oldalon kiválasztott „AI válasznyelvvel” lesz helyettesítve.\nHa nem biztos az „Beállítások” oldal helyében, egyszerűen kattintson a felső sávban található „Beállítások” ikonra az oldalsávon belül.",
     "preset_variables__system__ai_response_language__example1": "válaszoljon {{AI_VÁLASZ_NYELV}} nyelven",
     "preset_variables__system__ai_response_language__example2": "ötletekkel fog válaszolni {{AI_VÁLASZ_NYELV}} nyelven",
-    "preset_variables__system__current_website_domain__description": "Ez a sablonváltozó a jelenlegi webhely domainjével lesz helyettesítve.",
+    "preset_variables__system__current_website_domain__description": "a jelenlegi webhely domain-je",
     "preset_variables__system__current_website_domain__example1": "válaszoljon a következő szövegre a(z) {{JELLENTKEZŐ_WEBHELY_DOMAIN}} webhelyen",
     "preset_variables__system__current_website_domain__example2": "jegyezze meg, hogy a szöveg a(z) {{JELLENTKEZŐ_WEBHELY_DOMAIN}} webhelyről származik",
     "preset_variables__web_search__title": "Webes keresés",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Adja meg a változó nevét",
     "add_variable__variable_placeholder__title": "Változó helyőrző",
     "add_variable__variable_placeholder__placeholder": "Adja meg a változó helyőrzőjét",
-    "add_variable__error_message__variable_name_repeated": "A változónevek nem ismétlődhetnek"
+    "add_variable__error_message__variable_name_repeated": "A változónevek nem ismétlődhetnek",
+    "preset_variables__system__system_current_date__description": "a mai dátum (pl.: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "amit a rendszer keresni fog (pl.: alma 15 ár)",
+    "preset_variables__web_search__web_search_results__description": "a keresési eredmények a(z) {{WEB_SEARCH_QUERY}} keresés után",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "a megadott webhely link, amelyet be kell járni",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "a szöveg, amely megjelenik a(z) {{LIVE_CRAWLING_TARGET_URL}} bejárása után",
+    "preset_variables__tooltip__variable_name_prefix": "Változók a",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Változó helykitöltő",
+    "preset_variables__tooltip__table__column_name__description__title": "Ezzel lesz kicserélve"
   }
 }

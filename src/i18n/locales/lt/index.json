@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Kintamieji apie \"Kontekstą\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} bus pakeistas jūsų pasirinktu tekstu esančiame puslapyje.\n{{CURRENT_WEBSITE_DOMAIN}} bus pakeistas dabartinės svetainės domenu.\n{{SYSTEM_CURRENT_DATE}} rodo šiandienos datą.\nDaugiau \"Konteksto\" kintamųjų gali būti pridėta vėliau.",
     "preset_variables__system__title": "Kontekstas",
-    "preset_variables__system__selected_text__description": "Šis šablono kintamasis bus pakeistas tekstu, kurį pasirinkote dabartiniame puslapyje.",
+    "preset_variables__system__selected_text__description": "tekstas, kurį pasirinkote šiame puslapyje",
     "preset_variables__system__selected_text__description__example1": "parašykite geresnę versiją šio teksto: {{PASIRINKTAS_TEKSTAS}}",
     "preset_variables__system__selected_text__description__example2": "išversti šį tekstą į anglų kalbą: {{PASIRINKTAS_TEKSTAS}}",
     "preset_variables__system__ai_response_language__description": "Šis šablono kintamasis bus pakeistas „AI išvesties kalba“, pasirinkta „Nustatymų“ puslapyje.\nJei nežinote „Nustatymų“ puslapio vietos, tiesiog spustelėkite viršutinėje juostoje esantį „Nustatymai“ piktogramą šoninėje juostoje.",
     "preset_variables__system__ai_response_language__example1": "atsakykite {{AI_ATSAKYMO_KALBA}}",
     "preset_variables__system__ai_response_language__example2": "atsakysite idėjomis {{AI_ATSAKYMO_KALBA}}",
-    "preset_variables__system__current_website_domain__description": "Šis šablono kintamasis bus pakeistas dabartinės svetainės domenu.",
+    "preset_variables__system__current_website_domain__description": "dabartinio tinklapio domenas",
     "preset_variables__system__current_website_domain__example1": "atsakyti į šį tekstą pagal {{DABARTINĖS_SVETAINĖS_DOMENAS}}",
     "preset_variables__system__current_website_domain__example2": "pastebėkite, kad tekstas yra iš {{DABARTINĖS_SVETAINĖS_DOMENAS}}",
     "preset_variables__web_search__title": "Tinklo paieška",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Įveskite kintamojo pavadinimą",
     "add_variable__variable_placeholder__title": "Kintamojo laikinasis tekstas",
     "add_variable__variable_placeholder__placeholder": "Įveskite kintamojo laikinąjį tekstą",
-    "add_variable__error_message__variable_name_repeated": "Kintamųjų pavadinimai negali būti kartojami"
+    "add_variable__error_message__variable_name_repeated": "Kintamųjų pavadinimai negali būti kartojami",
+    "preset_variables__system__system_current_date__description": "šiandienos data (pvz.: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "ką sistema ieškos (pvz.: obuoliai 15 kaina)",
+    "preset_variables__web_search__web_search_results__description": "paieškos rezultatai, gauti ieškant {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "nurodytas svetainės nuoroda, kuri bus peržvelgiama",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "tekstas, kuris bus rodomas po svetainės peržvalgos {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Kintamieji apie",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Kintamojo laikiklis",
+    "preset_variables__tooltip__table__column_name__description__title": "Bus pakeista su"
   }
 }

@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "በ\"መተግበሪያ\" ለማስገባት የተጠቀሙ ችግሮች:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} በሚገባበት ገጽ ውስጥ የተሳሳተ ጽሑፍ ይሄዳል።\n{{CURRENT_WEBSITE_DOMAIN}} በሚገባበት ድረ-ገጽ ውስጥ የተሳሳተ ድርጊት ይሄዳል።\n{{SYSTEM_CURRENT_DATE}} የዚህ ቀን ቀን ይሄዳል።\nበተጨማሪ \"መተግበሪያ\" ችግሮች ተጨማሪ የተጠቀሙ ችግሮች ይመልከቱት።",
     "preset_variables__system__title": "የስርዓት",
-    "preset_variables__system__selected_text__description": "ይህ ተጠቃሚ ባህሪ በሚጠቀሙ የድረ-ገጾች ጽሑፍ ቃል ይቀምሳል.",
+    "preset_variables__system__selected_text__description": "የቀረበው ጽሑፍ በዚህ ገጽ ላይ ያሉ",
     "preset_variables__system__selected_text__description__example1": "የእርስዎ ጽሑፍን የሚጠቀሙ ተጠቃሚ ባህሪ ይመልከቱ: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "የሚከተለውን ጽሑፍን የሚቀርብ ተጠቃሚ ባህሪ ይቀምሳል: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "ይህ ተጠቃሚ ባህሪ በ\"AI output language\" የተሰራው ቋንቋ ይቀምሳል.\nእርስዎን የ\"Settings\" ገጽ አሁንም አስተካክል መጠቀም አይቻልም.",
     "preset_variables__system__ai_response_language__example1": "በ{{AI_RESPONSE_LANGUAGE}} ይመልከቱ",
     "preset_variables__system__ai_response_language__example2": "በ{{AI_RESPONSE_LANGUAGE}} የሚመልከት እውቀት ይሄዳል",
-    "preset_variables__system__current_website_domain__description": "ይህ ተጠቃሚ ባህሪ በሚጠቀሙ የድረ-ገጽ ድርጊት ይቀምሳል.",
+    "preset_variables__system__current_website_domain__description": "የአሁኑ ድርጅት ድምር",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} ስለ የሚጠቀሙ ጽሑፍ መልእክት",
     "preset_variables__system__current_website_domain__example2": "ስለ የሚጠቀሙ ጽሑፍ የ{{CURRENT_WEBSITE_DOMAIN}} ድርጊት",
     "preset_variables__web_search__title": "የድረ-ገጽ ፍለጋ",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "የተሽከርካሪ ስም ያስገቡ",
     "add_variable__variable_placeholder__title": "የተሽከርካሪ መጠቀሚያ",
     "add_variable__variable_placeholder__placeholder": "የተሽከርካሪ መጠቀሚያ ያስገቡ",
-    "add_variable__error_message__variable_name_repeated": "የተሳሳተ ችሎታዎት ማሳያ አልተወገደም"
+    "add_variable__error_message__variable_name_repeated": "የተሳሳተ ችሎታዎት ማሳያ አልተወገደም",
+    "preset_variables__system__system_current_date__description": "የዚህ ቀን (ለምሳሌ: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "የሰርጥ መፈለጊያ ጥያቄ (ለምሳሌ: ፖስፖስ 15 የዋጋ)",
+    "preset_variables__web_search__web_search_results__description": "የ{{WEB_SEARCH_QUERY}} መፈለጊያ ውጤቶች",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "የተለያዩ ድረገጽ አስገባ",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "የተለያዩ ድረገጽ {{LIVE_CRAWLING_TARGET_URL}} ከማግኘት የተረጋገጠ ጽሑፍ",
+    "preset_variables__tooltip__variable_name_prefix": "ተግባራዊ ለ",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "ተግባራዊ መስጫ",
+    "preset_variables__tooltip__table__column_name__description__title": "በመስጫ ተግባራዊ ተግባር ይወስዳል"
   }
 }

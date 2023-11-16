@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "متغیرهای مربوط به \"زمینه\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} با متنی که در صفحه فعلی انتخاب کرده‌اید جایگزین خواهد شد.\n{{CURRENT_WEBSITE_DOMAIN}} با دامنه وبسایت فعلی جایگزین خواهد شد.\n{{SYSTEM_CURRENT_DATE}} تاریخ امروز را نشان خواهد داد.\nممکن است بعداً متغیرهای بیشتری درباره \"زمینه\" اضافه شود.",
     "preset_variables__system__title": "متن",
-    "preset_variables__system__selected_text__description": "این متغیر قالب پیشنهادی با متنی که در صفحهٔ فعلی انتخاب کرده‌اید جایگزین خواهد شد.",
+    "preset_variables__system__selected_text__description": "متنی که در صفحه فعلی انتخاب کرده‌اید",
     "preset_variables__system__selected_text__description__example1": "نسخهٔ بهتری از متن زیر را بنویسید: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "متن زیر را به انگلیسی ترجمه کنید: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "این متغیر قالب پیشنهادی با \"زبان خروجی هوش مصنوعی\" انتخاب شده در صفحهٔ تنظیمات جایگزین خواهد شد.\nاگر مکان \"تنظیمات\" را نمی‌دانید، به سادگی بر روی آیکون \"تنظیمات\" در نوار بالا در کنار نوار کناری کلیک کنید.",
     "preset_variables__system__ai_response_language__example1": "با {{AI_RESPONSE_LANGUAGE}} پاسخ دهید",
     "preset_variables__system__ai_response_language__example2": "شما با ایده‌ها به زبان {{AI_RESPONSE_LANGUAGE}} پاسخ خواهید داد",
-    "preset_variables__system__current_website_domain__description": "این متغیر قالب پیشنهادی با دامنهٔ وبسایت فعلی جایگزین خواهد شد.",
+    "preset_variables__system__current_website_domain__description": "دامنه وبسایت فعلی",
     "preset_variables__system__current_website_domain__example1": "به متن زیر در {{CURRENT_WEBSITE_DOMAIN}} پاسخ دهید",
     "preset_variables__system__current_website_domain__example2": "توجه کنید که متن از {{CURRENT_WEBSITE_DOMAIN}} است",
     "preset_variables__web_search__title": "جستجوی وب",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "نام متغیر را وارد کنید",
     "add_variable__variable_placeholder__title": "محل قرارگیری متغیر",
     "add_variable__variable_placeholder__placeholder": "محل قرارگیری متغیر را وارد کنید",
-    "add_variable__error_message__variable_name_repeated": "نام متغیرها نمی‌تواند تکراری باشد"
+    "add_variable__error_message__variable_name_repeated": "نام متغیرها نمی‌تواند تکراری باشد",
+    "preset_variables__system__system_current_date__description": "تاریخ امروز (مثال: ۲۰۲۳-۱۱-۱۲)",
+    "preset_variables__web_search__web_search_query__description": "چه چیزی را سیستم جستجو خواهد کرد (مثال: قیمت آیفون ۱۵)",
+    "preset_variables__web_search__web_search_results__description": "نتایج جستجوی {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "لینک وبسایت مورد نظر برای جمع‌آوری اطلاعات",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "متنی که پس از جمع‌آوری اطلاعات از {{LIVE_CRAWLING_TARGET_URL}} نمایش داده خواهد شد",
+    "preset_variables__tooltip__variable_name_prefix": "متغیرهای مربوط به",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "عنوان جایگزین متغیر",
+    "preset_variables__tooltip__table__column_name__description__title": "با این مقدار جایگزین خواهد شد"
   }
 }

@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Variabler om \"Kontext\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} kommer att ersättas med den text du markerade på den aktuella sidan.\n{{CURRENT_WEBSITE_DOMAIN}} kommer att ersättas med den aktuella webbplatsens domän.\n{{SYSTEM_CURRENT_DATE}} kommer att visa dagens datum.\nFler \"Kontext\"-variabler kan läggas till senare.",
     "preset_variables__system__title": "Sammanhang",
-    "preset_variables__system__selected_text__description": "Denna mallvariabel kommer att ersättas med den text du markerade på den aktuella sidan.",
+    "preset_variables__system__selected_text__description": "den text du markerade på den aktuella sidan",
     "preset_variables__system__selected_text__description__example1": "skriv en bättre version av följande text: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "översätt följande text till engelska: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Denna mallvariabel kommer att ersättas med det \"AI-utmatningsspråk\" som valts på inställningssidan.\nOm du är osäker på var inställningssidan finns, klicka helt enkelt på ikonen \"Inställningar\" som finns i toppmenyn inom sidofältet.",
     "preset_variables__system__ai_response_language__example1": "svara på {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "du kommer att svara med idéer på {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Denna mallvariabel kommer att ersättas med den aktuella webbplatsens domän.",
+    "preset_variables__system__current_website_domain__description": "den aktuella webbplatsens domän",
     "preset_variables__system__current_website_domain__example1": "svara på följande text på {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "observera att texten kommer från {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Webbsökning",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Ange variabelnamn",
     "add_variable__variable_placeholder__title": "Variabelplatsmarkör",
     "add_variable__variable_placeholder__placeholder": "Ange variabelplatsmarkör",
-    "add_variable__error_message__variable_name_repeated": "Variabelnamn kan inte upprepas"
+    "add_variable__error_message__variable_name_repeated": "Variabelnamn kan inte upprepas",
+    "preset_variables__system__system_current_date__description": "dagens datum (ex:2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "vad systemet kommer att söka efter (ex: apple 15 pris)",
+    "preset_variables__web_search__web_search_results__description": "sökresultaten från att söka {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "den angivna webbplatslänken som ska krypas",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "texten som visas efter att ha krypat {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Variabler om",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Variabelplatsmarkör",
+    "preset_variables__tooltip__table__column_name__description__title": "Kommer att ersättas med"
   }
 }

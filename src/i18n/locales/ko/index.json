@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"컨텍스트\"에 관한 변수:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}}는 현재 페이지에서 선택한 텍스트로 대체됩니다.\n{{CURRENT_WEBSITE_DOMAIN}}은 현재 웹사이트의 도메인으로 대체됩니다.\n{{SYSTEM_CURRENT_DATE}}는 오늘의 날짜를 보여줍니다.\n추가적인 \"컨텍스트\" 변수가 나중에 추가될 수도 있습니다.",
     "preset_variables__system__title": "문맥",
-    "preset_variables__system__selected_text__description": "이 프롬프트 템플릿 변수는 현재 페이지에서 선택한 텍스트로 대체됩니다.",
+    "preset_variables__system__selected_text__description": "현재 페이지에서 선택한 텍스트",
     "preset_variables__system__selected_text__description__example1": "다음 텍스트의 더 나은 버전을 작성하세요: {{선택된_텍스트}}",
     "preset_variables__system__selected_text__description__example2": "다음 텍스트를 영어로 번역하세요: {{선택된_텍스트}}",
     "preset_variables__system__ai_response_language__description": "이 프롬프트 템플릿 변수는 설정 페이지에서 선택한 \"AI 출력 언어\"로 대체됩니다.\n\"설정\" 페이지 위치를 모르는 경우, 사이드 바 내 상단 표시줄에 있는 \"설정\" 아이콘을 클릭하면 됩니다.",
     "preset_variables__system__ai_response_language__example1": "{{AI_응답_언어}}로 응답하세요",
     "preset_variables__system__ai_response_language__example2": "{{AI_응답_언어}}로 아이디어로 답변할 것입니다",
-    "preset_variables__system__current_website_domain__description": "이 프롬프트 템플릿 변수는 현재 웹 사이트의 도메인으로 대체됩니다.",
+    "preset_variables__system__current_website_domain__description": "현재 웹사이트의 도메인",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}}에서 다음 텍스트에 답장하세요",
     "preset_variables__system__current_website_domain__example2": "텍스트가 {{CURRENT_WEBSITE_DOMAIN}}에서 온 것임을 참고하세요",
     "preset_variables__web_search__title": "웹 검색",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "변수 이름을 입력하세요",
     "add_variable__variable_placeholder__title": "변수 자리 표시자",
     "add_variable__variable_placeholder__placeholder": "변수 자리 표시자를 입력하세요",
-    "add_variable__error_message__variable_name_repeated": "변수 이름은 반복될 수 없습니다"
+    "add_variable__error_message__variable_name_repeated": "변수 이름은 반복될 수 없습니다",
+    "preset_variables__system__system_current_date__description": "오늘 날짜 (예: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "시스템이 검색할 내용 (예: 애플 15 가격)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}}로 검색한 결과",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "크롤링할 웹사이트 링크",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} 크롤링 후 표시될 텍스트",
+    "preset_variables__tooltip__variable_name_prefix": "변수에 관한",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "변수 자리 표시자",
+    "preset_variables__tooltip__table__column_name__description__title": "다음으로 대체됩니다"
   }
 }

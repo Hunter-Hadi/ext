@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Променливи за \"Контекст\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} ще бъде заменено с текста, който сте избрали на текущата страница.\n{{CURRENT_WEBSITE_DOMAIN}} ще бъде заменено с домейна на текущия уебсайт.\n{{SYSTEM_CURRENT_DATE}} ще покаже днешната дата.\nПо-късно може да бъдат добавени още променливи за \"Контекст\".",
     "preset_variables__system__title": "Контекст",
-    "preset_variables__system__selected_text__description": "Тази променлива на шаблона за подсказка ще бъде заменена с текста, който сте избрали на текущата страница.",
+    "preset_variables__system__selected_text__description": "избраният от вас текст на текущата страница",
     "preset_variables__system__selected_text__description__example1": "напишете по-добра версия на следния текст: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "преведете следния текст на английски: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Тази променлива на шаблона за подсказка ще бъде заменена с \"Езикът на изхода на ИИ\", избран на страницата с настройки.\nАко не сте сигурни за местоположението на страницата \"Настройки\", просто щракнете върху иконата \"Настройки\", намираща се в горната лента в страничното меню.",
     "preset_variables__system__ai_response_language__example1": "отговорете на {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "ще отговорите с идеи на {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Тази променлива на шаблона за подсказка ще бъде заменена с домейна на текущия уебсайт.",
+    "preset_variables__system__current_website_domain__description": "домейнът на текущия уебсайт",
     "preset_variables__system__current_website_domain__example1": "отговорете на следния текст на {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "отбележете, че текстът е от {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Уеб търсене",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Въведете име на променливата",
     "add_variable__variable_placeholder__title": "Подсказка за променливата",
     "add_variable__variable_placeholder__placeholder": "Въведете подсказка за променливата",
-    "add_variable__error_message__variable_name_repeated": "Имената на променливите не могат да се повтарят"
+    "add_variable__error_message__variable_name_repeated": "Имената на променливите не могат да се повтарят",
+    "preset_variables__system__system_current_date__description": "днешната дата (пример: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "за какво ще търси системата (пример: цена на ябълки 15)",
+    "preset_variables__web_search__web_search_results__description": "резултатите от търсенето на {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "даденият уебсайт, който ще бъде обходен",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "текстът, който ще се покаже след обхождането на {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Променливи относно",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Заместваща променлива",
+    "preset_variables__tooltip__table__column_name__description__title": "Ще бъде заменено с"
   }
 }

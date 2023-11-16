@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Premenné o \"Kontexte\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} bude nahradený textom, ktorý ste vybrali na aktuálnej stránke.\n{{CURRENT_WEBSITE_DOMAIN}} bude nahradená doménou aktuálnej webovej stránky.\n{{SYSTEM_CURRENT_DATE}} zobrazí dnešný dátum.\nNeskôr môžu byť pridané ďalšie premenné o \"Kontexte\".",
     "preset_variables__system__title": "Kontext",
-    "preset_variables__system__selected_text__description": "Táto premenná šablóny bude nahradená textom, ktorý ste vybrali na aktuálnej stránke.",
+    "preset_variables__system__selected_text__description": "text, ktorý ste vybrali na aktuálnej stránke",
     "preset_variables__system__selected_text__description__example1": "napíšte lepšiu verziu nasledujúceho textu: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "preložte nasledujúci text do angličtiny: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Táto premenná šablóny bude nahradená \"Výstupným jazykom AI\", ktorý je vybraný na stránke Nastavenia.\nAk nie ste istí umiestnením stránky Nastavenia, jednoducho kliknite na ikonu \"Nastavenia\" v hornej lište v bočnom paneli.",
     "preset_variables__system__ai_response_language__example1": "odpovedajte v jazyku {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "odpoviete s nápadmi v jazyku {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Táto premenná šablóny bude nahradená aktuálnou doménou webovej stránky.",
+    "preset_variables__system__current_website_domain__description": "doména aktuálnej webovej stránky",
     "preset_variables__system__current_website_domain__example1": "odpovedzte na nasledujúci text na {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "všimnite si, že text je z {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Webové vyhľadávanie",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Zadajte názov premennej",
     "add_variable__variable_placeholder__title": "Placeholder premennej",
     "add_variable__variable_placeholder__placeholder": "Zadajte placeholder premennej",
-    "add_variable__error_message__variable_name_repeated": "Názvy premenných nemôžu byť opakované"
+    "add_variable__error_message__variable_name_repeated": "Názvy premenných nemôžu byť opakované",
+    "preset_variables__system__system_current_date__description": "dnešné dátum (napríklad: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "čo systém vyhľadáva (napríklad: cena jabĺk 15)",
+    "preset_variables__web_search__web_search_results__description": "výsledky vyhľadávania pre {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "zadaný odkaz na webovú stránku, ktorá sa má prehľadať",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "text, ktorý sa zobrazí po prehľadaní {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Premenné o",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Náhradný symbol premennej",
+    "preset_variables__tooltip__table__column_name__description__title": "Bude nahradené s"
   }
 }

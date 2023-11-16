@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Variabile despre \"Context\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} va fi înlocuit cu textul selectat pe pagina curentă.\n{{CURRENT_WEBSITE_DOMAIN}} va fi înlocuit cu domeniul website-ului curent.\n{{SYSTEM_CURRENT_DATE}} va afișa data de azi.\nMai multe variabile de \"Context\" pot fi adăugate ulterior.",
     "preset_variables__system__title": "Context",
-    "preset_variables__system__selected_text__description": "Această variabilă a șablonului promptului va fi înlocuită cu textul selectat pe pagina curentă.",
+    "preset_variables__system__selected_text__description": "textul pe care l-ai selectat pe pagina curentă",
     "preset_variables__system__selected_text__description__example1": "scrieți o versiune mai bună a textului următor: {{TEXT_SELECTAT}}",
     "preset_variables__system__selected_text__description__example2": "traduceți textul următor în engleză: {{TEXT_SELECTAT}}",
     "preset_variables__system__ai_response_language__description": "Această variabilă a șablonului promptului va fi înlocuită cu limba de ieșire a \"AI-ului\" selectată în pagina Setări.\nDacă nu sunteți sigur de locația paginii \"Setări\", faceți clic pur și simplu pe pictograma \"Setări\" găsită în bara de sus din bara laterală.",
     "preset_variables__system__ai_response_language__example1": "răspundeți în {{LIMBA_RĂSPUNS_AI}}",
     "preset_variables__system__ai_response_language__example2": "veți răspunde cu idei în {{LIMBA_RĂSPUNS_AI}}",
-    "preset_variables__system__current_website_domain__description": "Această variabilă a șablonului promptului va fi înlocuită cu domeniul site-ului web curent.",
+    "preset_variables__system__current_website_domain__description": "domeniul website-ului curent",
     "preset_variables__system__current_website_domain__example1": "răspundeți la textul următor pe {{DOMENIU_WEBSITE_CURENT}}",
     "preset_variables__system__current_website_domain__example2": "rețineți că textul este de pe {{DOMENIU_WEBSITE_CURENT}}",
     "preset_variables__web_search__title": "Căutare pe web",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Introduceți numele variabilei",
     "add_variable__variable_placeholder__title": "Substituent variabil",
     "add_variable__variable_placeholder__placeholder": "Introduceți substituentul variabilei",
-    "add_variable__error_message__variable_name_repeated": "Numele variabilelor nu pot fi repetate"
+    "add_variable__error_message__variable_name_repeated": "Numele variabilelor nu pot fi repetate",
+    "preset_variables__system__system_current_date__description": "data de azi (ex:2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "ce va căuta sistemul (ex: prețul la mere 15)",
+    "preset_variables__web_search__web_search_results__description": "rezultatele căutării pentru {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "link-ul website-ului care va fi explorat",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "textul care va fi afișat după explorarea {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Variabile despre",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Substituent variabil",
+    "preset_variables__tooltip__table__column_name__description__title": "Va fi înlocuit cu"
   }
 }

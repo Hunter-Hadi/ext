@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"சூழல்\" பற்றிய மாறிகள்:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} நீங்கள் தற்போதைய பக்கத்தில் தேர்ந்தெடுத்த உரையை மாற்றும்.\n{{CURRENT_WEBSITE_DOMAIN}} தற்போதைய இணையத்தின் டொமைனை மாற்றும்.\n{{SYSTEM_CURRENT_DATE}} இன்றைய தேதியைக் காட்டும்.\nமேலும் \"சூழல்\" மாறிகள் பின்வரும் போது சேர்க்கப்படலாம்.",
     "preset_variables__system__title": "உள்ளடக்கம்",
-    "preset_variables__system__selected_text__description": "இந்த விருப்பமான மாறிலிகள் உங்கள் தற்போதைய பக்கத்தில் நீங்கள் தேர்ந்தெடுத்த உரையை மாற்றும்.",
+    "preset_variables__system__selected_text__description": "தற்போதைய பக்கத்தில் நீங்கள் தேர்ந்தெடுத்த உரை",
     "preset_variables__system__selected_text__description__example1": "பின்வரும் உரையின் ஒரு சிறந்த பதிப்பை எழுதுங்கள்: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "பின்வரும் உரையை ஆங்கிலத்தில் மொழிபெயர்க்க: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "இந்த விருப்பமான மாறிலிகள் \"அறிவியல் வெளிப்பு மொழி\" அமைப்பை மாற்றும்.\nஅமைப்புக்கு எந்த இடத்தில் உள்ளது என்பதை நிச்சயமாக அறிய வேண்டியதாக, பட்டியலில் உள்ள \"அமைப்பு\" ஐகானை அழுத்தவும்.",
     "preset_variables__system__ai_response_language__example1": "{{AI_RESPONSE_LANGUAGE}} மொழியில் பதிலளிக்கவும்",
     "preset_variables__system__ai_response_language__example2": "{{AI_RESPONSE_LANGUAGE}} மொழியில் கருத்துகளைப் பதிலளிக்கும்",
-    "preset_variables__system__current_website_domain__description": "இந்த விருப்பமான மாறிலிகள் தற்போதைய வலைத்தளத்தின் டொமைனை மாற்றும்.",
+    "preset_variables__system__current_website_domain__description": "தற்போதைய வலைத்தளத்தின் முகவரி",
     "preset_variables__system__current_website_domain__example1": "{{CURRENT_WEBSITE_DOMAIN}} உள்ள உரையின் பதிலளிக்கும்",
     "preset_variables__system__current_website_domain__example2": "உரை என்னுடைய {{CURRENT_WEBSITE_DOMAIN}} இலிருந்து வந்தது என்று குறிப்பிடுங்கள்",
     "preset_variables__web_search__title": "வலைத்தள தேடல்",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "மாறியின் பெயரை உள்ளிடவும்",
     "add_variable__variable_placeholder__title": "மாறியின் பிளேஸ்ஹோல்டர்",
     "add_variable__variable_placeholder__placeholder": "மாறியின் பிளேஸ்ஹோல்டரை உள்ளிடவும்",
-    "add_variable__error_message__variable_name_repeated": "மாறிய பெயர்கள் மீண்டும் மீண்டும் இருக்க முடியாது"
+    "add_variable__error_message__variable_name_repeated": "மாறிய பெயர்கள் மீண்டும் மீண்டும் இருக்க முடியாது",
+    "preset_variables__system__system_current_date__description": "இன்றைய தேதி (எ.கா.2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "அமைப்பு செயல்பாடு தேடும் பொருள் (எ.கா. ஆப்பிள் 15 விலை)",
+    "preset_variables__web_search__web_search_results__description": "{{WEB_SEARCH_QUERY}} ஐ தேடி முடிவுகள்",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "கண்டிப்பாக்கப்படும் இணையதள இணைப்பு",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ஐ கண்டிப்பாக்கிய உரை",
+    "preset_variables__tooltip__variable_name_prefix": "பற்றி மாறியமைக்கப்பட்ட மாறிலின் சொந்த பெயர்",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "மாறிலின் மாறிப்பு இடைவெளி",
+    "preset_variables__tooltip__table__column_name__description__title": "மாறிலின் மாறிப்பு மாறுபடும்"
   }
 }

@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Mainīgie par \"Kontekstu\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} tiks aizstāts ar tekstu, ko atlasījāt pašreizējā lapā.\n{{CURRENT_WEBSITE_DOMAIN}} tiks aizstāts ar pašreizējās tīmekļa vietnes domēnu.\n{{SYSTEM_CURRENT_DATE}} parādīs šodienas datumu.\nVēl vairāki \"Konteksta\" mainīgie var tikt pievienoti vēlāk.",
     "preset_variables__system__title": "Konteksts",
-    "preset_variables__system__selected_text__description": "Šis veicinājuma veidnes mainīgais tiks aizstāts ar tekstu, ko atlasījāt pašreizējā lapā.",
+    "preset_variables__system__selected_text__description": "izvēlētais teksts pašreizējā lapā",
     "preset_variables__system__selected_text__description__example1": "uzrakstiet labāku versiju no sekojošā teksta: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "tulkot sekojošo tekstu angļu valodā: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Šis veicinājuma veidnes mainīgais tiks aizstāts ar \"AI izvades valodu\", kas ir atlasīta Iestatījumu lapā.\nJa neesat drošs par \"Iestatījumu\" lapas atrašanās vietu, vienkārši noklikšķiniet uz \"Iestatījumu\" ikonas, kas atrodas augšējā joslas sānjoslā.",
     "preset_variables__system__ai_response_language__example1": "atbildēt {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "jūs atbildēsiet ar idejām {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Šis veicinājuma veidnes mainīgais tiks aizstāts ar pašreizējās tīmekļa vietnes domēnu.",
+    "preset_variables__system__current_website_domain__description": "pašreizējās vietnes domēns",
     "preset_variables__system__current_website_domain__example1": "atbildiet uz sekojošo tekstu vietnē {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "pievērsiet uzmanību tam, ka teksts ir no vietnes {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Tīmekļa meklēšana",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Ievadiet mainīgā nosaukumu",
     "add_variable__variable_placeholder__title": "Mainīgā aizvietotājs",
     "add_variable__variable_placeholder__placeholder": "Ievadiet mainīgā aizvietotāju",
-    "add_variable__error_message__variable_name_repeated": "Mainīgo nosaukumi nevar atkārtot"
+    "add_variable__error_message__variable_name_repeated": "Mainīgo nosaukumi nevar atkārtot",
+    "preset_variables__system__system_current_date__description": "šodienas datums (piem.: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "par ko sistēma meklēs (piem.: ābols 15 cena)",
+    "preset_variables__web_search__web_search_results__description": "meklēšanas rezultāti, meklējot {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "dotais tīmekļa vietnes saite, kas tiks izkrauta",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "teksts, kas tiks parādīts pēc {{LIVE_CRAWLING_TARGET_URL}} izkraušanas",
+    "preset_variables__tooltip__variable_name_prefix": "Mainīgie par",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Mainīgais aizvietotājs",
+    "preset_variables__tooltip__table__column_name__description__title": "Tiks aizstāts ar"
   }
 }

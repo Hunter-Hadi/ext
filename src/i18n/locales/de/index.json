@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Variablen zum \"Kontext\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} wird durch den Text ersetzt, den Sie auf der aktuellen Seite ausgewählt haben.\n{{CURRENT_WEBSITE_DOMAIN}} wird durch die aktuelle Domain der Website ersetzt.\n{{SYSTEM_CURRENT_DATE}} zeigt das heutige Datum an.\nWeitere \"Kontext\"-Variablen können später hinzugefügt werden.",
     "preset_variables__system__title": "Kontext",
-    "preset_variables__system__selected_text__description": "Diese Vorlagenvariablen werden durch den Text ersetzt, den Sie auf der aktuellen Seite ausgewählt haben.",
+    "preset_variables__system__selected_text__description": "der Text, den Sie auf der aktuellen Seite ausgewählt haben",
     "preset_variables__system__selected_text__description__example1": "schreiben Sie eine bessere Version des folgenden Textes: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "übersetzen Sie den folgenden Text ins Englische: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Diese Vorlagenvariable wird durch die ausgewählte \"KI-Ausgabesprache\" auf der Einstellungsseite ersetzt.\nWenn Sie sich über den Standort der \"Einstellungen\"-Seite nicht sicher sind, klicken Sie einfach auf das \"Einstellungen\"-Symbol in der oberen Leiste innerhalb der Seitenleiste.",
     "preset_variables__system__ai_response_language__example1": "antworten Sie in {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "Sie werden Ideen in {{AI_RESPONSE_LANGUAGE}} beantworten",
-    "preset_variables__system__current_website_domain__description": "Diese Vorlagenvariable wird durch die aktuelle Website-Domain ersetzt.",
+    "preset_variables__system__current_website_domain__description": "die Domain der aktuellen Website",
     "preset_variables__system__current_website_domain__example1": "Antworten Sie auf den folgenden Text auf {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "Beachten Sie, dass der Text von {{CURRENT_WEBSITE_DOMAIN}} stammt",
     "preset_variables__web_search__title": "Web-Suche",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Variablennamen eingeben",
     "add_variable__variable_placeholder__title": "Variablenplatzhalter",
     "add_variable__variable_placeholder__placeholder": "Variablenplatzhalter eingeben",
-    "add_variable__error_message__variable_name_repeated": "Variablennamen dürfen nicht wiederholt werden"
+    "add_variable__error_message__variable_name_repeated": "Variablennamen dürfen nicht wiederholt werden",
+    "preset_variables__system__system_current_date__description": "heutiges Datum (z.B. 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "wonach das System suchen wird (z.B. Apple 15 Preis)",
+    "preset_variables__web_search__web_search_results__description": "die Suchergebnisse von der Suche nach {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "der angegebene Website-Link, der durchsucht werden soll",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "der Text, der nach dem Durchsuchen von {{LIVE_CRAWLING_TARGET_URL}} angezeigt wird",
+    "preset_variables__tooltip__variable_name_prefix": "Variablen über",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Platzhalter für Variable",
+    "preset_variables__tooltip__table__column_name__description__title": "Wird ersetzt durch"
   }
 }

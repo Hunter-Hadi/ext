@@ -1,89 +1,12 @@
 import IconButton from '@mui/material/IconButton'
 import Popover from '@mui/material/Popover'
 import Stack from '@mui/material/Stack'
-import Divider from '@mui/material/Divider'
 import Box from '@mui/material/Box'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import React, { useState } from 'react'
 import Typography from '@mui/material/Typography'
 import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 import { useTranslation } from 'react-i18next'
-
-const PopperId = 'tempalte-description-tooltip'
-
-const TemplateTooltip = () => {
-  const { t } = useTranslation(['prompt_editor'])
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const open = Boolean(anchorEl)
-  const id = open ? PopperId : undefined
-
-  return (
-    <Box>
-      <IconButton aria-describedby={PopperId} onClick={handleClick}>
-        <HelpOutlineIcon fontSize="small" />
-      </IconButton>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-      >
-        <Box maxWidth={'60vw'} maxHeight={420} overflow="auto" p={1}>
-          <Typography
-            variant="body2"
-            sx={{
-              whiteSpace: 'pre-line',
-            }}
-          >
-            {t('prompt_editor:preset_variables__help__title')}
-            <br />
-            <br />
-            {t('prompt_editor:preset_variables__help__description')}
-            <br />
-            <br />
-            <Divider sx={{ my: 1 }} />
-            <br />
-            {t('prompt_editor:preset_variables__help__system__title')}
-            <br />
-            <br />
-            {t('prompt_editor:preset_variables__help__system__description')}
-
-            <br />
-            <br />
-            <Divider sx={{ my: 1 }} />
-            <br />
-            {t('prompt_editor:preset_variables__help__web_search__title')}
-            <br />
-            <br />
-            {t('prompt_editor:preset_variables__help__web_search__description')}
-            <br />
-            <br />
-            <Divider sx={{ my: 1 }} />
-            <br />
-            {t('prompt_editor:preset_variables__help__live_crawling__title')}
-            <br />
-            <br />
-            {t(
-              'prompt_editor:preset_variables__help__live_crawling__description',
-            )}
-          </Typography>
-        </Box>
-      </Popover>
-    </Box>
-  )
-}
 
 const PDFTooltip = () => {
   const { t } = useTranslation(['common', 'settings'])
@@ -162,4 +85,4 @@ const PDFTooltip = () => {
   )
 }
 
-export { TemplateTooltip, PDFTooltip }
+export { PDFTooltip }

@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Mga Variables tungkol sa \"Konteksto\":",
     "preset_variables__help__system__description": "Ang {{SELECTED_TEXT}} ay papalitan ng teksto na iyong pinili sa kasalukuyang pahina.\n{{CURRENT_WEBSITE_DOMAIN}} ay papalitan ng domain ng kasalukuyang website.\n{{SYSTEM_CURRENT_DATE}} ay ipapakita ang petsa ngayon.\nMaaaring idagdag pa ang iba pang mga \"Konteksto\" variables sa hinaharap.",
     "preset_variables__system__title": "Konteksto",
-    "preset_variables__system__selected_text__description": "Ang variable na ito sa prompt template ay papalitan ng teksto na iyong pinili sa kasalukuyang pahina.",
+    "preset_variables__system__selected_text__description": "ang teksto na iyong pinili sa kasalukuyang pahina",
     "preset_variables__system__selected_text__description__example1": "sumulat ng mas magandang bersyon ng sumusunod na teksto: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "isalin ang sumusunod na teksto sa Ingles: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Ang variable na ito sa prompt template ay papalitan ng \"AI output language\" na napili sa pahina ng Mga Setting.\nKung hindi tiyak kung nasaan ang pahina ng \"Setting\", i-click lamang ang icon ng \"Settings\" na matatagpuan sa tuktok ng bar sa loob ng side bar.",
     "preset_variables__system__ai_response_language__example1": "tumugon sa {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "magbibigay ka ng mga ideya sa {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Ang variable na ito sa prompt template ay papalitan ng kasalukuyang domain ng website.",
+    "preset_variables__system__current_website_domain__description": "ang domain ng kasalukuyang website",
     "preset_variables__system__current_website_domain__example1": "tumugon sa sumusunod na teksto sa {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "tandaan na ang teksto ay mula sa {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Web search",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Ilagay ang pangalan ng variable",
     "add_variable__variable_placeholder__title": "Panghaliling variable",
     "add_variable__variable_placeholder__placeholder": "Ilagay ang panghaliling variable",
-    "add_variable__error_message__variable_name_repeated": "Hindi pwedeng magkaroon ng parehong pangalan ng variable"
+    "add_variable__error_message__variable_name_repeated": "Hindi pwedeng magkaroon ng parehong pangalan ng variable",
+    "preset_variables__system__system_current_date__description": "petsa ngayon (hal. 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "ano ang hahanapin ng sistema (hal. presyo ng apple 15)",
+    "preset_variables__web_search__web_search_results__description": "mga resulta ng paghahanap ng {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "ang ibinigay na link ng website na kukunin",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "ang teksto na ipapakita matapos kunin ang {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Mga Baryabol tungkol sa",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Panghalili ng baryabol",
+    "preset_variables__tooltip__table__column_name__description__title": "Ibabago ng"
   }
 }

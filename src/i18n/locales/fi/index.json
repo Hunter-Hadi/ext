@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "\"Kontekstiin\" liittyvät muuttujat:",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} korvataan nykyisen sivun valitulla tekstillä.\n{{CURRENT_WEBSITE_DOMAIN}} korvataan nykyisen verkkosivuston verkkotunnuksella.\n{{SYSTEM_CURRENT_DATE}} näyttää tämän päivän päivämäärän.\nLisää \"Kontekstiin\" liittyviä muuttujia saatetaan lisätä myöhemmin.",
     "preset_variables__system__title": "Yhteys",
-    "preset_variables__system__selected_text__description": "Tämä mallipohjamuuttuja korvataan valitsemallasi tekstillä nykyisellä sivulla.",
+    "preset_variables__system__selected_text__description": "nykyisen sivun valitsemasi teksti",
     "preset_variables__system__selected_text__description__example1": "kirjoita parempi versio seuraavasta tekstistä: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "käännä seuraava teksti englanniksi: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Tämä mallipohjamuuttuja korvataan \"AI-vastauskielellä\", joka on valittu Asetukset-sivulla.\nJos et ole varma \"Asetukset\"-sivun sijainnista, napsauta yksinkertaisesti yläpalkissa olevaa \"Asetukset\"-kuvaketta sivupalkin sisällä.",
     "preset_variables__system__ai_response_language__example1": "vastaa kielellä {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "vastaat ideoilla kielellä {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Tämä mallipohjamuuttuja korvataan nykyisen verkkosivuston verkkotunnuksella.",
+    "preset_variables__system__current_website_domain__description": "nykyisen verkkosivuston verkkotunnus",
     "preset_variables__system__current_website_domain__example1": "vastaa seuraavaan tekstiin sivulla {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "huomaa, että teksti on sivustolta {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Verkkohaku",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Syötä muuttujan nimi",
     "add_variable__variable_placeholder__title": "Muuttujan paikkamerkki",
     "add_variable__variable_placeholder__placeholder": "Syötä muuttujan paikkamerkki",
-    "add_variable__error_message__variable_name_repeated": "Muuttujien nimet eivät voi toistua"
+    "add_variable__error_message__variable_name_repeated": "Muuttujien nimet eivät voi toistua",
+    "preset_variables__system__system_current_date__description": "päivämäärä tänään (esim. 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "mitä järjestelmä etsii (esim. omena 15 hinta)",
+    "preset_variables__web_search__web_search_results__description": "haun tulokset hakusanalla {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "annettu verkkosivustolinkki, jota ryhdytään indeksoimaan",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "teksti, joka näytetään indeksoinnin jälkeen sivulla {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Muuttujat liittyen",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Muuttujan paikkamerkki",
+    "preset_variables__tooltip__table__column_name__description__title": "Korvataan"
   }
 }

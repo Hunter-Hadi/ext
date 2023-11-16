@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Variabel tentang \"Konteks\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} akan diganti dengan teks yang Anda pilih pada halaman saat ini.\n{{CURRENT_WEBSITE_DOMAIN}} akan diganti dengan domain situs web saat ini.\n{{SYSTEM_CURRENT_DATE}} akan menampilkan tanggal hari ini.\nLebih banyak variabel \"Konteks\" mungkin ditambahkan nanti.",
     "preset_variables__system__title": "Konteks",
-    "preset_variables__system__selected_text__description": "Variabel template prompt ini akan digantikan dengan teks yang Anda pilih pada halaman saat ini.",
+    "preset_variables__system__selected_text__description": "teks yang Anda pilih di halaman ini",
     "preset_variables__system__selected_text__description__example1": "tulis versi yang lebih baik dari teks berikut: {{SELECTED_TEXT}}",
     "preset_variables__system__selected_text__description__example2": "terjemahkan teks berikut ke dalam bahasa Inggris: {{SELECTED_TEXT}}",
     "preset_variables__system__ai_response_language__description": "Variabel template prompt ini akan digantikan dengan \"bahasa output AI\" yang dipilih di halaman Pengaturan.\nJika tidak yakin tentang lokasi halaman \"Pengaturan\", cukup klik ikon \"Pengaturan\" yang terdapat di bilah atas dalam bilah samping.",
     "preset_variables__system__ai_response_language__example1": "beri respons dalam {{AI_RESPONSE_LANGUAGE}}",
     "preset_variables__system__ai_response_language__example2": "Anda akan menjawab dengan ide dalam {{AI_RESPONSE_LANGUAGE}}",
-    "preset_variables__system__current_website_domain__description": "Variabel template prompt ini akan digantikan dengan domain situs web saat ini.",
+    "preset_variables__system__current_website_domain__description": "domain website saat ini",
     "preset_variables__system__current_website_domain__example1": "balas teks berikut di {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__system__current_website_domain__example2": "catat bahwa teks berasal dari {{CURRENT_WEBSITE_DOMAIN}}",
     "preset_variables__web_search__title": "Pencarian web",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Masukkan nama variabel",
     "add_variable__variable_placeholder__title": "Placeholder variabel",
     "add_variable__variable_placeholder__placeholder": "Masukkan placeholder variabel",
-    "add_variable__error_message__variable_name_repeated": "Nama variabel tidak boleh diulang"
+    "add_variable__error_message__variable_name_repeated": "Nama variabel tidak boleh diulang",
+    "preset_variables__system__system_current_date__description": "tanggal hari ini (contoh: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "apa yang akan dicari oleh sistem (contoh: harga apple 15)",
+    "preset_variables__web_search__web_search_results__description": "hasil pencarian dari mencari {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "tautan website yang diberikan untuk di-crawl",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "teks yang akan ditampilkan setelah melakukan crawling pada {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Variabel tentang",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Pengganti variabel",
+    "preset_variables__tooltip__table__column_name__description__title": "Akan digantikan dengan"
   }
 }

@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Variables sobre el \"Contexto\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} se reemplazará con el texto que seleccionaste en la página actual.\n{{CURRENT_WEBSITE_DOMAIN}} se reemplazará con el dominio del sitio web actual.\n{{SYSTEM_CURRENT_DATE}} mostrará la fecha de hoy.\nEs posible que se agreguen más variables de \"Contexto\" más adelante.",
     "preset_variables__system__title": "Contexto",
-    "preset_variables__system__selected_text__description": "Esta variable de plantilla de indicación se reemplazará con el texto que seleccionaste en la página actual.",
+    "preset_variables__system__selected_text__description": "el texto que seleccionaste en la página actual",
     "preset_variables__system__selected_text__description__example1": "escribe una mejor versión del siguiente texto: {{TEXTO_SELECCIONADO}}",
     "preset_variables__system__selected_text__description__example2": "traduce el siguiente texto al inglés: {{TEXTO_SELECCIONADO}}",
     "preset_variables__system__ai_response_language__description": "Esta variable de plantilla de indicación se reemplazará con el \"idioma de salida de IA\" seleccionado en la página de Configuración.\nSi no estás seguro de la ubicación de la página de \"Configuración\", simplemente haz clic en el icono de \"Configuración\" que se encuentra en la barra superior dentro de la barra lateral.",
     "preset_variables__system__ai_response_language__example1": "responde en {{IDIOMA_RESPUESTA_IA}}",
     "preset_variables__system__ai_response_language__example2": "responderás con ideas en {{IDIOMA_RESPUESTA_IA}}",
-    "preset_variables__system__current_website_domain__description": "Esta variable de plantilla de indicación se reemplazará con el dominio del sitio web actual.",
+    "preset_variables__system__current_website_domain__description": "el dominio del sitio web actual",
     "preset_variables__system__current_website_domain__example1": "responde al siguiente texto en {{DOMINIO_SITIO_WEB_ACTUAL}}",
     "preset_variables__system__current_website_domain__example2": "ten en cuenta que el texto es de {{DOMINIO_SITIO_WEB_ACTUAL}}",
     "preset_variables__web_search__title": "Búsqueda web",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Ingrese el nombre de la variable",
     "add_variable__variable_placeholder__title": "Marcador de posición de la variable",
     "add_variable__variable_placeholder__placeholder": "Ingrese el marcador de posición de la variable",
-    "add_variable__error_message__variable_name_repeated": "Los nombres de las variables no pueden repetirse"
+    "add_variable__error_message__variable_name_repeated": "Los nombres de las variables no pueden repetirse",
+    "preset_variables__system__system_current_date__description": "fecha de hoy (ej: 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "lo que el sistema buscará (ej: precio de la manzana 15)",
+    "preset_variables__web_search__web_search_results__description": "los resultados de búsqueda al buscar {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "el enlace del sitio web dado para rastrear",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "el texto que se mostrará después de rastrear {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Variables sobre",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Marcador de variable",
+    "preset_variables__tooltip__table__column_name__description__title": "Será reemplazado con"
   }
 }

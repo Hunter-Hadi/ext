@@ -661,13 +661,13 @@
     "preset_variables__help__system__title": "Spremenljivke o \"Kontekstu\":",
     "preset_variables__help__system__description": "{{SELECTED_TEXT}} bo zamenjano z besedilom, ki ste ga izbrali na trenutni strani.\n{{CURRENT_WEBSITE_DOMAIN}} bo zamenjano z domeno trenutne spletne strani.\n{{SYSTEM_CURRENT_DATE}} bo prikazal današnji datum.\nVeč \"Kontekstnih\" spremenljivk se lahko doda kasneje.",
     "preset_variables__system__title": "Kontekst",
-    "preset_variables__system__selected_text__description": "Ta spremenljivka predloge zahtev bo zamenjana z besedilom, ki ste ga izbrali na trenutni strani.",
+    "preset_variables__system__selected_text__description": "besedilo, ki ste ga izbrali na trenutni strani",
     "preset_variables__system__selected_text__description__example1": "Napišite boljšo različico naslednjega besedila: {{IZBRANO_BESEDILO}}",
     "preset_variables__system__selected_text__description__example2": "Prevedite naslednje besedilo v angleščino: {{IZBRANO_BESEDILO}}",
     "preset_variables__system__ai_response_language__description": "Ta spremenljivka predloge zahtev bo zamenjana z »jezikom AI izhodnega jezika«, izbranim na strani Nastavitve.\nČe niste prepričani o lokaciji strani »Nastavitve«, preprosto kliknite ikono »Nastavitve«, ki se nahaja v zgornji vrstici v stranskem meniju.",
     "preset_variables__system__ai_response_language__example1": "Odgovorite v jeziku {{JEZIK_ODGOVORA_AI}}",
     "preset_variables__system__ai_response_language__example2": "Odgovorili boste z idejami v jeziku {{JEZIK_ODGOVORA_AI}}",
-    "preset_variables__system__current_website_domain__description": "Ta spremenljivka predloge zahtev bo zamenjana s trenutno domeno spletnega mesta.",
+    "preset_variables__system__current_website_domain__description": "domena trenutne spletne strani",
     "preset_variables__system__current_website_domain__example1": "Odgovorite na naslednje besedilo na spletnem mestu {{TRENUTNA_DOMENA_SPLETNEGA_MESTA}}",
     "preset_variables__system__current_website_domain__example2": "Opomba: besedilo je s spletnega mesta {{TRENUTNA_DOMENA_SPLETNEGA_MESTA}}",
     "preset_variables__web_search__title": "Spletno iskanje",
@@ -681,6 +681,14 @@
     "add_variable__variable_name__placeholder": "Vnesite ime spremenljivke",
     "add_variable__variable_placeholder__title": "Nadomestno besedilo spremenljivke",
     "add_variable__variable_placeholder__placeholder": "Vnesite nadomestno besedilo spremenljivke",
-    "add_variable__error_message__variable_name_repeated": "Imena spremenljivk se ne smejo ponavljati"
+    "add_variable__error_message__variable_name_repeated": "Imena spremenljivk se ne smejo ponavljati",
+    "preset_variables__system__system_current_date__description": "današnji datum (npr. 2023-11-12)",
+    "preset_variables__web_search__web_search_query__description": "kaj bo sistem iskal (npr. cena jabolk 15)",
+    "preset_variables__web_search__web_search_results__description": "rezultati iskanja za {{WEB_SEARCH_QUERY}}",
+    "preset_variables__live_crawling__live_crawling_target_url__description": "dano spletno mesto, ki bo prebrano",
+    "preset_variables__live_crawling__live_crawling_crawled_text__description": "besedilo, ki se bo prikazalo po branju {{LIVE_CRAWLING_TARGET_URL}}",
+    "preset_variables__tooltip__variable_name_prefix": "Spremenljivke o",
+    "preset_variables__tooltip__table__column_name__placeholder__title": "Nadomestno besedilo",
+    "preset_variables__tooltip__table__column_name__description__title": "Bo zamenjano z"
   }
 }

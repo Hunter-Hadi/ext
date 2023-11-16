@@ -55,7 +55,7 @@ interface IGmailChatBoxProps {
   onStopGenerate?: () => void
   onReset?: () => void
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
-  messages: IChatMessage[] | IAIResponseMessage[]
+  messages: IChatMessage[]
   writingMessage: IChatMessage | null
   onSendMessage?: (text: string, options: IUserChatMessageExtraType) => void
   onRetry?: (messageId: string) => void
@@ -163,17 +163,19 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       // 这里的 scrollToBottom 需要兼容 search / summary 的情况
       // 当在 loading 时，如果最后一条消息是 search / summary
       // 判断 scrolledToBottomRef.current 为 true 时滚动到底部
-      const lastMessageOriginalData = (messages[
-        messages.length - 1
-      ] as IAIResponseMessage)?.originalMessage
-      if (
-        lastMessageOriginalData &&
-        (lastMessageOriginalData.metadata?.shareType === 'search' ||
-          lastMessageOriginalData.metadata?.shareType === 'summary')
-      ) {
-        const list = stackRef.current
-        if (scrolledToBottomRef.current && list) {
-          list.scrollTo(0, list.scrollHeight)
+      const lastMessage = messages[messages.length - 1]
+      if (lastMessage.type === 'ai') {
+        const lastMessageOriginalData = (lastMessage as IAIResponseMessage)
+          ?.originalMessage
+        if (
+          lastMessageOriginalData &&
+          (lastMessageOriginalData.metadata?.shareType === 'search' ||
+            lastMessageOriginalData.metadata?.shareType === 'summary')
+        ) {
+          const list = stackRef.current
+          if (scrolledToBottomRef.current && list) {
+            list.scrollTo(0, list.scrollHeight)
+          }
         }
       }
     }

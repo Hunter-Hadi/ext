@@ -68,6 +68,8 @@ const SidebarChatBoxMessageItem = React.lazy(
     ),
 )
 
+const messageListContainerId = 'message-list-container'
+
 const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
     sx,
@@ -92,10 +94,11 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const { t } = useTranslation(['common', 'client'])
   // const conversation = useRecoilValue(ChatGPTConversationState)
   const stackRef = useRef<HTMLElement | null>(null)
-  const messageListContainerList = useRef<HTMLElement | null>(null)
+  // const messageListContainerList = useRef<HTMLElement | null>(null)
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
+  // console.log(`messageListContainerList`, messageListContainerList, messages)
   const { slicedMessageList, changePageNumber } = useSliceMessageList(
-    messageListContainerList,
+    messageListContainerId,
     messages,
   )
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -144,6 +147,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     list.addEventListener('wheel', throttleHandleScroll)
     return () => list.removeEventListener('wheel', throttleHandleScroll)
   }, [])
+
   useEffect(() => {
     const list = stackRef.current
     if (scrolledToBottomRef.current && list) {
@@ -167,11 +171,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             setTimeout(() => {
               list && list.scrollTo(0, list.scrollHeight)
             }, 0)
-          } else {
-            scrolledToBottomRef.current = true
-            setTimeout(() => {
-              list && list.scrollTo(0, list.scrollHeight)
-            }, 0)
           }
           lastScrollId.current = message.messageId
           break
@@ -179,6 +178,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       }
     }
   }, [messages])
+
   useEffect(() => {
     const focusListener = () => {
       const list = stackRef.current
@@ -239,11 +239,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         }}
       >
         <SidebarTabs />
-        <Box ref={messageListContainerList}>
-          <DevContent>
-            <DevConsole />
-          </DevContent>
-          <SidebarHeader />
+        <DevContent>
+          <DevConsole />
+        </DevContent>
+        <SidebarHeader />
+        {/* 这个 Box 只能包含 message item */}
+        <Box id={messageListContainerId}>
           <AppSuspenseLoadingLayout>
             {slicedMessageList.map((message, index) => {
               return (

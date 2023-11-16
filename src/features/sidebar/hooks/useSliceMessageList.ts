@@ -1,5 +1,6 @@
 import { IChatMessage } from '@/features/chatgpt/types'
 import { getAppRootElement } from '@/utils'
+import { throttle } from 'lodash-es'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 interface ISliceMessageOptions {
@@ -10,18 +11,66 @@ interface ISliceMessageOptions {
 }
 
 const useSliceMessageList = (
-  containerListId: string,
+  scrollElementId: string,
+  messageListElementId: string,
   list: IChatMessage[],
   coverOptions?: ISliceMessageOptions,
 ) => {
   const [loaded, setLoaded] = useState(false)
   const observer = useRef<IntersectionObserver | null>(null)
+
   const currentObserverTarget = useRef<Element | null>(null)
+  // 记录 pageNum 变化前的 scrollHeight
+  const originalScrollHeight = useRef(0)
+  const scrollTop = useRef(0)
+
   const [pageNum, setPageNum] = useState(1)
   const [pageSize] = useState(coverOptions?.buffer || 10)
+  const total = useMemo(() => list.length, [list])
+
   const buffer = coverOptions?.buffer || 0
 
-  const total = useMemo(() => list.length, [list])
+  const getMessageListElement = () => {
+    const root = getAppRootElement()
+    return root?.querySelector<HTMLElement>(`#${messageListElementId}`)
+  }
+
+  const getScrollContainerElement = () => {
+    const root = getAppRootElement()
+    return root?.querySelector<HTMLElement>(`#${scrollElementId}`)
+  }
+
+  const checkContainerListIsLoaded = useCallback(async () => {
+    return new Promise((resolve) => {
+      // 轮询 containerList
+      const pollingContainerList = () => {
+        let timer: number | null = null
+        if (timer) {
+          window.clearTimeout(timer)
+        }
+        const scrollContainer = getScrollContainerElement()
+        const messageListContainer = getMessageListElement()
+        if (scrollContainer && messageListContainer) {
+          resolve(true)
+          return
+        }
+        timer = window.setTimeout(() => {
+          pollingContainerList()
+        }, 200)
+      }
+      pollingContainerList()
+    })
+  }, [])
+
+  useEffect(() => {
+    // 检查 containerList 是否已经加载
+    checkContainerListIsLoaded().then(() => {
+      // 由于 容器在加载 message list 时滚动条会在顶部，所以需要延迟等待，容器自动滚动到底部时才开始监听
+      setTimeout(() => {
+        setLoaded(true)
+      }, 1000)
+    })
+  }, [])
 
   const loadMore = useCallback(() => {
     setPageNum((prePageNum) => {
@@ -33,22 +82,22 @@ const useSliceMessageList = (
   }, [total, pageSize])
 
   const loadMoreRef = useRef(loadMore)
-  useEffect(() => (loadMoreRef.current = loadMore), [loadMore])
+  useEffect(() => (loadMoreRef.current = throttle(loadMore, 1000)), [loadMore])
+
   const startMonitor = useCallback(() => {
     if (observer.current) {
       observer.current.disconnect()
     }
 
-    const root = getAppRootElement()
-    const containerList = root?.querySelector(`#${containerListId}`)
+    const messageListContainer = getMessageListElement()
 
-    if (containerList) {
+    if (messageListContainer) {
       let timer: number | null = null
       const tryObserve = () => {
         if (timer) {
           window.clearTimeout(timer)
         }
-        const target = containerList.children[buffer]
+        const target = messageListContainer.children[buffer]
         if (target) {
           const observerCallback = (entries: IntersectionObserverEntry[]) => {
             // 因为只监听某个item 所以只有一个
@@ -72,76 +121,80 @@ const useSliceMessageList = (
     }
   }, [buffer])
 
-  const refreshMonitor = useCallback(() => {
-    const root = getAppRootElement()
-    const containerList = root?.querySelector(`#${containerListId}`)
+  const refreshMonitorTarget = useCallback(() => {
+    const messageListContainer = getMessageListElement()
 
-    if (observer.current && containerList) {
+    if (observer.current && messageListContainer) {
       if (currentObserverTarget.current) {
         observer.current.unobserve(currentObserverTarget.current)
       }
 
-      const target = containerList.children[buffer]
+      const target = messageListContainer.children[buffer]
       if (target) {
+        currentObserverTarget.current = target
         observer.current.observe(target)
       }
     }
-  }, [containerListId, buffer])
+  }, [buffer])
 
   const slicedMessageList = useMemo(() => {
     if (pageSize === -1) return list
     return list.slice(-(pageNum * pageSize))
   }, [list, pageNum, pageSize])
 
-  const checkContainerListIsLoaded = useCallback(async () => {
-    return new Promise((resolve) => {
-      // 轮询 containerList
-      const pollingContainerList = () => {
-        let timer: number | null = null
-        if (timer) {
-          window.clearTimeout(timer)
-        }
-        const root = getAppRootElement()
-        const containerList = root?.querySelector(`#${containerListId}`)
-        if (!containerList) {
-          timer = window.setTimeout(() => {
-            pollingContainerList()
-          }, 200)
-          return
-        } else {
-          resolve(true)
-        }
-      }
-      pollingContainerList()
-    })
-  }, [containerListId])
-
   useEffect(() => {
     // 当 slicedMessageList 变化时需要重新挂载 observe 的监听节点
-    refreshMonitor()
-  }, [refreshMonitor, slicedMessageList])
+    refreshMonitorTarget()
+  }, [refreshMonitorTarget, slicedMessageList])
 
   useEffect(() => {
-    const root = getAppRootElement()
-    const containerList = root?.querySelector(`#${containerListId}`)
-    if (loaded && containerList && list.length > pageSize) {
+    if (loaded && list.length > pageSize) {
       startMonitor()
     }
 
     return () => {
       observer.current && observer.current.disconnect()
     }
-  }, [loaded, startMonitor, list, pageSize, containerListId])
+  }, [loaded, startMonitor, list, pageSize])
 
   useEffect(() => {
-    checkContainerListIsLoaded().then(() => {
-      setLoaded(true)
-    })
-  }, [])
+    if (!loaded || list.length <= pageSize) {
+      return
+    }
+
+    const scrollContainer = getScrollContainerElement()
+    const recordScrollInfo = () => {
+      scrollTop.current = scrollContainer?.scrollTop || 0
+      originalScrollHeight.current = scrollContainer?.scrollHeight || 0
+    }
+
+    // 由于这里在频繁滚动的过程中，也需要及时更新 scroll info， 所以使用 throttle 而不是 debounce
+    const debounceRecordScrollInfo = throttle(recordScrollInfo, 200)
+
+    scrollContainer?.addEventListener('scroll', debounceRecordScrollInfo)
+
+    return () => {
+      scrollContainer?.removeEventListener('scroll', debounceRecordScrollInfo)
+    }
+  }, [loaded, list])
 
   useEffect(() => {
     setPageNum(1)
   }, [total])
+
+  useEffect(() => {
+    if (!loaded) {
+      return
+    }
+    // 当 slicedMessageList 变化时，代表滚动加载了
+    // 需要把滚动位置移动到 lastTimeObserverTarget.current 的位置
+    const scrollContainer = getScrollContainerElement()
+    if (scrollContainer && scrollTop.current > 0) {
+      const currentScrollHeight = scrollContainer?.scrollHeight
+      scrollContainer.scrollTop =
+        scrollTop.current + currentScrollHeight - originalScrollHeight.current
+    }
+  }, [loaded, slicedMessageList])
 
   return {
     slicedMessageList,

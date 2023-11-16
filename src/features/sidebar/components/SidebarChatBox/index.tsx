@@ -69,6 +69,7 @@ const SidebarChatBoxMessageItem = React.lazy(
 )
 
 const messageListContainerId = 'message-list-container'
+const scrollContainerId = 'scroll-message-container'
 
 const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
@@ -98,6 +99,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
   // console.log(`messageListContainerList`, messageListContainerList, messages)
   const { slicedMessageList, changePageNumber } = useSliceMessageList(
+    scrollContainerId,
     messageListContainerId,
     messages,
   )
@@ -237,6 +239,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           textAlign: 'left',
           overflowY: 'auto',
         }}
+        id={scrollContainerId}
       >
         <SidebarTabs />
         <DevContent>

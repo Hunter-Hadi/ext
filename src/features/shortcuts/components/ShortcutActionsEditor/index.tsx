@@ -109,6 +109,29 @@ const ShortcutActionsEditor: FC<{
             lastSelectionRangeRef.current =
               window.getSelection()?.getRangeAt(0)?.cloneRange() || null
           }}
+          onKeyDown={(event) => {
+            if (event.key === 'Backspace' || event.key === 'Enter') {
+              const selection = window.getSelection()
+              if (selection && selection.toString() && selection.focusNode) {
+                if (event.currentTarget.contains(selection.focusNode)) {
+                  // 删除选中的内容
+                  const range = selection.getRangeAt(0)
+                  range.deleteContents()
+                  if (event.key === 'Enter') {
+                    // 添加换行符
+                    const br = document.createElement('br')
+                    range.insertNode(br)
+                    range.setStartAfter(br)
+                    range.setEndAfter(br)
+                  }
+                  // 保存光标位置
+                  lastSelectionRangeRef.current = range.cloneRange()
+                  // 阻止默认的删除事件
+                  event.preventDefault()
+                }
+              }
+            }
+          }}
           onKeyUp={(event) => {
             console.log('onKeyUp', event)
             // 保存光标位置

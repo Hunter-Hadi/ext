@@ -122,26 +122,6 @@ export const PRESET_VARIABLE_MAP: {
 export const PRESET_VARIABLES_GROUP_MAP: {
   [key in string]: IPresetVariablesGroupItem[]
 } = {
-  'prompt_editor:preset_variables__live_crawling__title': [
-    {
-      variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_TARGET_URL,
-      examples: [],
-    },
-    {
-      variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_CRAWLED_TEXT,
-      examples: [],
-    },
-  ],
-  'prompt_editor:preset_variables__web_search__title': [
-    {
-      variable: PRESET_VARIABLE_MAP.WEB_SEARCH_QUERY,
-      examples: [],
-    },
-    {
-      variable: PRESET_VARIABLE_MAP.WEB_SEARCH_RESULTS,
-      examples: [],
-    },
-  ],
   'prompt_editor:preset_variables__system__title': [
     {
       variable: PRESET_VARIABLE_MAP.SELECTED_TEXT,
@@ -163,6 +143,26 @@ export const PRESET_VARIABLES_GROUP_MAP: {
     },
     {
       variable: PRESET_VARIABLE_MAP.SYSTEM_CURRENT_DATE,
+      examples: [],
+    },
+  ],
+  'prompt_editor:preset_variables__web_search__title': [
+    {
+      variable: PRESET_VARIABLE_MAP.WEB_SEARCH_QUERY,
+      examples: [],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.WEB_SEARCH_RESULTS,
+      examples: [],
+    },
+  ],
+  'prompt_editor:preset_variables__live_crawling__title': [
+    {
+      variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_TARGET_URL,
+      examples: [],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_CRAWLED_TEXT,
       examples: [],
     },
   ],

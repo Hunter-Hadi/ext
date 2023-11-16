@@ -16,6 +16,7 @@ import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 // import { TestAllActionsButton } from '@/features/shortcuts'
 import throttle from 'lodash-es/throttle'
 import {
+  IAIResponseMessage,
   IChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
@@ -54,7 +55,7 @@ interface IGmailChatBoxProps {
   onStopGenerate?: () => void
   onReset?: () => void
   onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
-  messages: IChatMessage[]
+  messages: IChatMessage[] | IAIResponseMessage[]
   writingMessage: IChatMessage | null
   onSendMessage?: (text: string, options: IUserChatMessageExtraType) => void
   onRetry?: (messageId: string) => void
@@ -156,6 +157,28 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       list.scrollTo(0, list.scrollHeight)
     }
   }, [writingMessage])
+
+  useEffect(() => {
+    if (loading) {
+      // 这里的 scrollToBottom 需要兼容 search / summary 的情况
+      // 当在 loading 时，如果最后一条消息是 search / summary
+      // 判断 scrolledToBottomRef.current 为 true 时滚动到底部
+      const lastMessageOriginalData = (messages[
+        messages.length - 1
+      ] as IAIResponseMessage)?.originalMessage
+      if (
+        lastMessageOriginalData &&
+        (lastMessageOriginalData.metadata?.shareType === 'search' ||
+          lastMessageOriginalData.metadata?.shareType === 'summary')
+      ) {
+        const list = stackRef.current
+        if (scrolledToBottomRef.current && list) {
+          list.scrollTo(0, list.scrollHeight)
+        }
+      }
+    }
+  }, [loading, messages])
+
   const lastScrollId = useRef('')
   useEffect(() => {
     if (messages.length > 0) {
@@ -196,6 +219,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     window.addEventListener('focus', focusListener)
     return () => window.removeEventListener('focus', focusListener)
   }, [])
+
+  console.log('scrolledToBottomRef.current', scrolledToBottomRef.current)
+
   return (
     <Stack
       position={'relative'}

@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "キーポイントで返信（テスト）"
   },
   "prompt_editor": {
-    "preset_variables__title": "プリセット変数を使用する",
+    "preset_variables__title": "機能",
     "preset_variables__help__title": "公式の使いやすい特殊変数。",
     "preset_variables__help__description": "テンプレートでこれらの使いやすい変数を全て、いくつでも使用することができます：",
     "preset_variables__help__live_crawling__title": "「ライブクローリング」用の変数：",

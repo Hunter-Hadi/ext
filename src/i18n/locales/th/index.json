@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ตอบด้วยจุดสำคัญ (ทดสอบ)"
   },
   "prompt_editor": {
-    "preset_variables__title": "ใช้ตัวแปรที่กำหนดไว้ล่วงหน้า",
+    "preset_variables__title": "ความสามารถ",
     "preset_variables__help__title": "ตัวแปรพิเศษที่พร้อมใช้งานอย่างเป็นทางการ",
     "preset_variables__help__description": "คุณสามารถใช้ตัวแปรพร้อมใช้งานเหล่านี้หรือไม่ก็ได้ในเทมเพลตของคุณ:",
     "preset_variables__help__live_crawling__title": "ตัวแปรสำหรับ \"การค้นหาแบบสด\":",

@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwort mit Schlüsselpunkten (Test)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Verwenden Sie voreingestellte Variablen",
+    "preset_variables__title": "Fähigkeiten",
     "preset_variables__help__title": "Die offiziellen fertig verwendbaren speziellen Variablen.",
     "preset_variables__help__description": "Sie können eine oder keine dieser fertig verwendbaren Variablen in Ihrer Vorlage verwenden:",
     "preset_variables__help__live_crawling__title": "Variablen für \"Live Crawling\":",

@@ -148,34 +148,34 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
     },
   ],
-  'prompt_editor:preset_variables__web_search__title': [
-    {
-      variable: PRESET_VARIABLE_MAP.WEB_SEARCH_QUERY,
-      description:
-        'prompt_editor:preset_variables__web_search__web_search_query__description',
-      examples: [],
-    },
-    {
-      variable: PRESET_VARIABLE_MAP.WEB_SEARCH_RESULTS,
-      description:
-        'prompt_editor:preset_variables__web_search__web_search_results__description',
-      examples: [],
-    },
-  ],
-  'prompt_editor:preset_variables__live_crawling__title': [
-    {
-      variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_TARGET_URL,
-      description:
-        'prompt_editor:preset_variables__live_crawling__live_crawling_target_url__description',
-      examples: [],
-    },
-    {
-      variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_CRAWLED_TEXT,
-      description:
-        'prompt_editor:preset_variables__live_crawling__live_crawling_crawled_text__description',
-      examples: [],
-    },
-  ],
+  // 'prompt_editor:preset_variables__web_search__title': [
+  //   {
+  //     variable: PRESET_VARIABLE_MAP.WEB_SEARCH_QUERY,
+  //     description:
+  //       'prompt_editor:preset_variables__web_search__web_search_query__description',
+  //     examples: [],
+  //   },
+  //   {
+  //     variable: PRESET_VARIABLE_MAP.WEB_SEARCH_RESULTS,
+  //     description:
+  //       'prompt_editor:preset_variables__web_search__web_search_results__description',
+  //     examples: [],
+  //   },
+  // ],
+  // 'prompt_editor:preset_variables__live_crawling__title': [
+  //   {
+  //     variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_TARGET_URL,
+  //     description:
+  //       'prompt_editor:preset_variables__live_crawling__live_crawling_target_url__description',
+  //     examples: [],
+  //   },
+  //   {
+  //     variable: PRESET_VARIABLE_MAP.LIVE_CRAWLING_CRAWLED_TEXT,
+  //     description:
+  //       'prompt_editor:preset_variables__live_crawling__live_crawling_crawled_text__description',
+  //     examples: [],
+  //   },
+  // ],
 }
 
 const variablesToMap = (variables: IActionSetVariable[]) => {

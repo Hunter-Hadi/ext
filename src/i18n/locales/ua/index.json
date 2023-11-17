@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Відповісти ключовими моментами (тест)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Використовуйте готові змінні",
+    "preset_variables__title": "Можливості",
     "preset_variables__help__title": "Офіційні готові спеціальні змінні.",
     "preset_variables__help__description": "Ви можете використовувати будь-яку або жодну з цих готових змінних у вашому шаблоні:",
     "preset_variables__help__live_crawling__title": "Змінні для \"Живого сканування\":",

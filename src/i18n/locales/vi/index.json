@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Trả lời với điểm chính (thử nghiệm)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Sử dụng biến được thiết lập sẵn",
+    "preset_variables__title": "Khả năng",
     "preset_variables__help__title": "Các biến đặc biệt đã sẵn sàng để sử dụng chính thức.",
     "preset_variables__help__description": "Bạn có thể sử dụng bất kỳ hoặc không sử dụng biến nào trong mẫu của bạn:",
     "preset_variables__help__live_crawling__title": "Biến cho \"Live Crawling\":",

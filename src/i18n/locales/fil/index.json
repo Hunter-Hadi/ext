@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Tugon gamit ang pangunahing puntos (test)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Gamitin ang mga preset na variable",
+    "preset_variables__title": "Kakayahan",
     "preset_variables__help__title": "Ang opisyal at handang gamitin na mga espesyal na variable.",
     "preset_variables__help__description": "Maaari mong gamitin ang anumang o wala sa mga handang gamitin na variable sa iyong template:",
     "preset_variables__help__live_crawling__title": "Variable para sa \"Live Crawling\":",

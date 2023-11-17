@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vasta põhipunktidega (test)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Kasuta eelseadistatud muutujaid",
+    "preset_variables__title": "Võimed",
     "preset_variables__help__title": "Ametlikud valmis kasutamiseks mõeldud erimärgendid.",
     "preset_variables__help__description": "Saate kasutada üht või mitte ühtegi neist valmis kasutamiseks mõeldud muutujatest oma mallis:",
     "preset_variables__help__live_crawling__title": "Muutujad \"Otseveebimine\" jaoks:",

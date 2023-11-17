@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Răspunde cu punctele cheie (test)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Utilizați variabile predefinite",
+    "preset_variables__title": "Capabilități",
     "preset_variables__help__title": "Variabile speciale gata de utilizat oficial.",
     "preset_variables__help__description": "Puteți utiliza oricare sau niciuna dintre aceste variabile gata de utilizat în șablonul dvs.:",
     "preset_variables__help__live_crawling__title": "Variabile pentru \"Căutare în timp real\":",

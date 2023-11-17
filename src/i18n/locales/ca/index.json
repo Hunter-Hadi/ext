@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Respon amb punts clau (prova)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Utilitza variables predefinides",
+    "preset_variables__title": "Funcionalitats",
     "preset_variables__help__title": "Les variables especials oficials a punt per a ser utilitzades.",
     "preset_variables__help__description": "Pots utilitzar qualsevol o cap d'aquestes variables predefinides en la teva plantilla:",
     "preset_variables__help__live_crawling__title": "Variables per a \"Rastreig en viu\":",

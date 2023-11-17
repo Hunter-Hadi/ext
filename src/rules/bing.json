@@ -18,7 +18,7 @@
       ]
     },
     "condition": {
-      "urlFilter": "bing",
+      "urlFilter": "bing.com",
       "isUrlFilterCaseSensitive": false,
       "resourceTypes": ["xmlhttprequest", "websocket"]
     }

@@ -164,7 +164,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       // 当在 loading 时，如果最后一条消息是 search / summary
       // 判断 scrolledToBottomRef.current 为 true 时滚动到底部
       const lastMessage = messages[messages.length - 1]
-      if (lastMessage.type === 'ai') {
+      if (lastMessage && lastMessage.type === 'ai') {
         const lastMessageOriginalData = (lastMessage as IAIResponseMessage)
           ?.originalMessage
         if (

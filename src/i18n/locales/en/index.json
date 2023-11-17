@@ -512,6 +512,9 @@
     "add_variable__variable_placeholder__placeholder": "Enter variable placeholder",
     "add_variable__error_message__variable_name_repeated": "Variable names cannot be repeated"
   },
+  "prompt_library": {
+    "use_prompt_library__title": "Use prompt library"
+  },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",
     "642854aa-71ce-4d67-9a08-f32c483c2626": "To-do list...",

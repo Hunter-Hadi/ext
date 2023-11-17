@@ -239,6 +239,37 @@ export const createChromeExtensionOptionsPage = async (
 }
 
 /**
+ * 创建immsersive chat页面
+ * @param query
+ * @param autoFocus
+ */
+export const createChromeExtensionImmersiveChatPage = async (
+  query = '',
+  autoFocus = true,
+) => {
+  const chromeExtensionId = Browser.runtime.id
+  // url: `chrome-extension://${chromeExtensionId}/pages/settings/index.html`,
+  const findOptionPages = (await Browser.tabs.query({})).filter((tab) => {
+    return tab.url?.startsWith(
+      `chrome-extension://${chromeExtensionId}/pages/chat/index.html`,
+    )
+  })
+  // close old pages
+  await Promise.all(
+    findOptionPages.map(async (page) => {
+      if (page.id) {
+        await Browser.tabs.remove(page.id)
+      }
+    }),
+  )
+  const tab = await Browser.tabs.create({
+    url: `chrome-extension://${chromeExtensionId}/pages/chat/index.html${query}`,
+    active: autoFocus,
+  })
+  return tab.id
+}
+
+/**
  * 登出
  */
 export const chromeExtensionLogout = async () => {

@@ -45,7 +45,7 @@ export const GrayTabs = styled(({ ...props }: TabsProps) => (
   }
 })
 
-const PromptTagSelector: FC<{
+const PromptLibraryHeader: FC<{
   onLoaded?: () => void
 }> = (props) => {
   const { onLoaded } = props
@@ -214,4 +214,4 @@ const PromptTagSelector: FC<{
     </Stack>
   )
 }
-export { PromptTagSelector }
+export default PromptLibraryHeader

@@ -1,8 +1,8 @@
 import { atom } from 'recoil'
 
 import { IOptionType } from '@/components/select/BaseSelect'
-import { DEFAULT_PROMPT_LIST_TYPE } from '@/features/prompt/constant'
-import { IPromptListType } from '@/features/prompt/types'
+import { DEFAULT_PROMPT_LIST_TYPE } from '@/features/prompt_library/constant'
+import { IPromptListType } from '@/features/prompt_library/types'
 
 export const PrompstCategoryOptions = atom<IOptionType[]>({
   key: 'PromptCategoryOptions',

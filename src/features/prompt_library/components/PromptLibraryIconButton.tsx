@@ -5,8 +5,8 @@ import { MagicBookIcon } from '@/components/CustomIcon'
 import { useTranslation } from 'react-i18next'
 import Popper from '@mui/material/Popper'
 import { Fade, PopperPlacementType } from '@mui/material'
+import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import Paper from '@mui/material/Paper'
-import Typography from '@mui/material/Typography'
 
 const PromptLibraryIconButton: FC = () => {
   const { t } = useTranslation(['prompt_library'])
@@ -41,8 +41,13 @@ const PromptLibraryIconButton: FC = () => {
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
-            <Paper>
-              <Typography sx={{ p: 2 }}>The content of the Popper.</Typography>
+            <Paper
+              elevation={0}
+              sx={{
+                minWidth: '80vw',
+              }}
+            >
+              <PromptLibrary />
             </Paper>
           </Fade>
         )}

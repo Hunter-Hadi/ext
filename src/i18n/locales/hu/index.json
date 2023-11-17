@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Válasz kulcsfontosságú pontokkal (teszt)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Használjon előre beállított változókat",
+    "preset_variables__title": "Képességek",
     "preset_variables__help__title": "A hivatalos, készen álló speciális változók.",
     "preset_variables__help__description": "Használhat bármelyiket vagy egyiket sem ezek közül a készen álló változókból a sablonjában:",
     "preset_variables__help__live_crawling__title": "Változók az „Élő adatgyűjtés”-hez:",

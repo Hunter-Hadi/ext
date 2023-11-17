@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "મુખ્ય બિંદુઓ સાથે જવાબ આપો (ટેસ્ટ)"
   },
   "prompt_editor": {
-    "preset_variables__title": "પ્રીસેટ વેરીએબલ્સ ઉપયોગ કરો",
+    "preset_variables__title": "ક્ષમતાઓ",
     "preset_variables__help__title": "આધિકારિક તૈયાર થયેલ વિશેષ વેરીએબલ્સ.",
     "preset_variables__help__description": "તમે તમારા ટેમ્પલેટમાં કોઈપણ અથવા કોઈપણ તૈયાર થયેલ વેરીએબલ્સનો ઉપયોગ કરી શકો છો:",
     "preset_variables__help__live_crawling__title": "\"લાઈવ ક્રૉલિંગ\" માટે વેરીએબલ્સ:",

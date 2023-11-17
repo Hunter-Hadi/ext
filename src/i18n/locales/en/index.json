@@ -472,7 +472,7 @@
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel"
   },
   "prompt_editor": {
-    "preset_variables__title": "Use preset variables",
+    "preset_variables__title": "Capabilities",
     "preset_variables__help__title": "The official ready-to-use special variables.",
     "preset_variables__help__description": "You can use any or none of these ready-to-use variables in your template:",
     "preset_variables__help__live_crawling__title": "Variables for \"Live Crawling\":",

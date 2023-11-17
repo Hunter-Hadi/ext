@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Απάντηση με βασικά σημεία (δοκιμή)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Χρήση προκαθορισμένων μεταβλητών",
+    "preset_variables__title": "Δυνατότητες",
     "preset_variables__help__title": "Οι επίσημες έτοιμες ειδικές μεταβλητές.",
     "preset_variables__help__description": "Μπορείτε να χρησιμοποιήσετε οποιεσδήποτε ή καμία από αυτές τις έτοιμες μεταβλητές στο πρότυπό σας:",
     "preset_variables__help__live_crawling__title": "Μεταβλητές για \"Ζωντανή ανάκτηση\":",

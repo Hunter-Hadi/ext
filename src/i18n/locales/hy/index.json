@@ -651,7 +651,7 @@
   "name": "MaxAI.me: Օգտագործեք 1-Սեղմեք ChatGPT AI-ն Բացահայտում",
   "shortName": "MaxAI.me",
   "prompt_editor": {
-    "preset_variables__title": "Օգտագործել նախապատրաստ փոփոխականները",
+    "preset_variables__title": "Հմուտ փոփոխականների վերնագիր",
     "preset_variables__help__title": "Պաշտպանված համակարգիչները պատրաստ օգտագործման համար:",
     "preset_variables__help__description": "Դուք կարող եք օգտագործել ցանկացած կամ ոչ մի պատրաստ օգտագործման փոփոխականները ձեր ձևանմուշում:",
     "preset_variables__help__live_crawling__title": "«Կենդանի համար կայքից կառավարում» փոփոխականները:",

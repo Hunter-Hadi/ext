@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vastaa avainkohtien kanssa (testi)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Käytä valmiita muuttujia",
+    "preset_variables__title": "Ominaisuudet",
     "preset_variables__help__title": "Viralliset valmiiksi käytettävät erikoismuuttujat.",
     "preset_variables__help__description": "Voit käyttää mitä tahansa tai ei yhtään näitä valmiiksi käytettäviä muuttujia mallipohjassasi:",
     "preset_variables__help__live_crawling__title": "Muuttujat \"Live Crawling\"-toiminnolle:",

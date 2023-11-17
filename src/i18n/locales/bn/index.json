@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন (পরীক্ষা)"
   },
   "prompt_editor": {
-    "preset_variables__title": "প্রিসেট চলক ব্যবহার করুন",
+    "preset_variables__title": "ক্ষমতা",
     "preset_variables__help__title": "আধিকারিক ব্যবহারের জন্য প্রস্তুত বিশেষ চলক।",
     "preset_variables__help__description": "আপনি আপনার টেমপ্লেটে এই প্রস্তুত চলকগুলির মধ্যে কোনও একটি বা কোনও একটি ব্যবহার করতে পারেন:",
     "preset_variables__help__live_crawling__title": "\"লাইভ ক্রলিং\" এর জন্য চলকগুলি:",

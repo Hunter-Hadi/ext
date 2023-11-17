@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svar med nøkkelpunkter (test)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Bruk forhåndsdefinerte variabler",
+    "preset_variables__title": "Ferdigheter",
     "preset_variables__help__title": "De offisielle klare-til-bruk spesialvariablene.",
     "preset_variables__help__description": "Du kan bruke en eller ingen av disse klare-til-bruk variablene i malen din:",
     "preset_variables__help__live_crawling__title": "Variabler for \"Live Crawling\":",

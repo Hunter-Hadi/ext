@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odgovori sa ključnim točkama (test)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Koristite unaprijed postavljene varijable",
+    "preset_variables__title": "Mogućnosti",
     "preset_variables__help__title": "Službene spremne za upotrebu posebne varijable.",
     "preset_variables__help__description": "Možete koristiti bilo koju ili nijednu od ovih spremnih za upotrebu varijabli u svojem predlošku:",
     "preset_variables__help__live_crawling__title": "Varijable za \"Live Crawling\":",

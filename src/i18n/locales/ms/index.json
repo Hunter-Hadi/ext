@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Balas dengan poin utama (ujian)"
   },
   "prompt_editor": {
-    "preset_variables__title": "Gunakan pembolehubah pra-tetap",
+    "preset_variables__title": "Kemampuan",
     "preset_variables__help__title": "Pembolehubah khas yang sedia digunakan secara rasmi.",
     "preset_variables__help__description": "Anda boleh menggunakan mana-mana atau tidak menggunakan langsung pembolehubah yang sedia digunakan ini dalam templat anda:",
     "preset_variables__help__live_crawling__title": "Pembolehubah untuk \"Carian Langsung\":",

@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ముఖ్య పాయింట్లతో సమాధానం(టెస్ట్)"
   },
   "prompt_editor": {
-    "preset_variables__title": "ప్రీసెట్ వేరియబుల్స్ ఉపయోగించండి",
+    "preset_variables__title": "సామర్థ్యాలు",
     "preset_variables__help__title": "అధికారిక సిద్ధమైన వేరియబుల్స్.",
     "preset_variables__help__description": "మీ టెంప్లేట్లో ఈ సిద్ధమైన వేరియబుల్స్ ఏదైనా ఉపయోగించవచ్చు లేదా లేదు:",
     "preset_variables__help__live_crawling__title": "\"లైవ్ క్రావ్లింగ్\" కోసం వేరియబుల్స్:",

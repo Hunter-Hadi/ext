@@ -651,7 +651,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "주요 포인트로 답장(테스트)"
   },
   "prompt_editor": {
-    "preset_variables__title": "사전 설정 변수 사용",
+    "preset_variables__title": "기능",
     "preset_variables__help__title": "공식으로 제공되는 특수 변수입니다.",
     "preset_variables__help__description": "템플릿에서 준비된 변수 중 하나 이상을 사용하거나 사용하지 않을 수 있습니다:",
     "preset_variables__help__live_crawling__title": "\"라이브 크롤링\"용 변수:",

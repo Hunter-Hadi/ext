@@ -291,7 +291,7 @@ const InputAssistantButtonGroupConfig = {
       'form[method="POST"] div > span > div[aria-label="Emoji"]',
     ],
     rootParentStyle: 'padding: 0',
-    rootPreviousElementSiblingStyle: 'right: 100px',
+    rootPreviousElementSiblingStyle: 'padding-right:100px',
     rootStyle:
       'display: flex;align-items: center;flex-direction: row;padding: 0',
     appendPosition: 0,

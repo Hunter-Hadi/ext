@@ -1,99 +1,77 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
-import { APP_VERSION } from '@/constants'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
 import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
+import useActivity from '@/features/auth/hooks/useActivity'
 
 const SidebarTopBar: FC = () => {
   const { t } = useTranslation(['client'])
-  const { currentUserPlan } = useUserInfo()
-  const [showBlackFriday2023Banner, setShowBlackFriday2023Banner] = useState(
-    false,
-  )
-  const isAbleToCloseBlackFridayBanner = useMemo(() => {
-    return dayjs().utc().diff(dayjs('2023-11-30').utc()) > 0
-  }, [])
-  useEffect(() => {
-    getChromeExtensionOnBoardingData().then((data) => {
-      if (!data.ON_BOARDING_BLACK_FRIDAY_2023_BANNER) {
-        setShowBlackFriday2023Banner(true)
-      }
-    })
-  }, [])
+  const {
+    isShowBlackFridayBanner,
+    isAbleToCloseBlackFridayBanner,
+    handleCloseBlackFriday2023Banner,
+  } = useActivity()
   return (
     <Stack>
       {/*黑五*/}
-      {showBlackFriday2023Banner &&
-        APP_VERSION === '2.4.2' &&
-        currentUserPlan.name !== 'elite' &&
-        currentUserPlan.planName !== 'ELITE_YEARLY' && (
-          <Link
-            href={`https://app.maxai.me/blackfriday2023`}
-            target={'_blank'}
-            underline={'none'}
+      {isShowBlackFridayBanner && (
+        <Link
+          href={`https://app.maxai.me/blackfriday2023`}
+          target={'_blank'}
+          underline={'none'}
+        >
+          <Stack
+            py={1}
+            alignItems={'center'}
+            justifyContent={'center'}
+            sx={{
+              height: '48px',
+              bgcolor: '#000',
+              position: 'relative',
+            }}
           >
-            <Stack
-              py={1}
-              alignItems={'center'}
-              justifyContent={'center'}
+            <Typography
               sx={{
-                height: '48px',
-                bgcolor: '#000',
-                position: 'relative',
+                fontSize: '16px',
+                background:
+                  'linear-gradient(180deg, #FFF069 20.63%, #FFF1BF 49.34%, #FFA915 81.89%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                fontWeight: 700,
+                lineHeight: '24px',
               }}
             >
-              <Typography
+              {t('client:activity__black_friday_2023__title')}
+            </Typography>
+            {isAbleToCloseBlackFridayBanner && (
+              <IconButton
                 sx={{
-                  fontSize: '16px',
-                  background:
-                    'linear-gradient(180deg, #FFF069 20.63%, #FFF1BF 49.34%, #FFA915 81.89%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontWeight: 700,
-                  lineHeight: '24px',
+                  position: 'absolute',
+                  right: '8px',
+                  top: '4px',
+                }}
+                onClick={async (event) => {
+                  event.preventDefault()
+                  event.stopPropagation()
+                  await handleCloseBlackFriday2023Banner()
                 }}
               >
-                {t('client:activity__black_friday_2023__title')}
-              </Typography>
-              {isAbleToCloseBlackFridayBanner && (
-                <IconButton
+                <ContextMenuIcon
+                  icon={'Close'}
                   sx={{
-                    position: 'absolute',
-                    right: '8px',
-                    top: '4px',
+                    color: '#FFFFFF99',
+                    fontSize: '24px',
                   }}
-                  onClick={async (event) => {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    await setChromeExtensionOnBoardingData(
-                      'ON_BOARDING_BLACK_FRIDAY_2023_BANNER',
-                      true,
-                    )
-                    setShowBlackFriday2023Banner(false)
-                  }}
-                >
-                  <ContextMenuIcon
-                    icon={'Close'}
-                    sx={{
-                      color: '#FFFFFF99',
-                      fontSize: '24px',
-                    }}
-                  />
-                </IconButton>
-              )}
-            </Stack>
-          </Link>
-        )}
+                />
+              </IconButton>
+            )}
+          </Stack>
+        </Link>
+      )}
     </Stack>
   )
 }

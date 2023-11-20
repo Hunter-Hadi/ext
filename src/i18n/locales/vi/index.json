@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Có cùng khả năng như mô hình gpt-3.5-turbo tiêu chuẩn nhưng với 4 lần ngữ cảnh.",
     "provider__openai_api__model__gpt_4__description": "Mạnh mẽ hơn bất kỳ mô hình GPT-3.5 nào, có thể thực hiện các nhiệm vụ phức tạp hơn và được tối ưu hóa cho trò chuyện. Sẽ được cập nhật với phiên bản mô hình mới nhất của OpenAI sau 2 tuần kể từ khi nó được phát hành.",
     "provider__openai_api__model__gpt_4_32k__description": "Có cùng khả năng như mô hình gpt-4 cơ bản nhưng với độ dài ngữ cảnh gấp 4 lần. Sẽ được cập nhật với phiên bản mô hình mới nhất của chúng tôi.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Phiên bản gpt-3.5-turbo từ ngày 13 tháng 6 năm 2023 với dữ liệu gọi hàm. Không giống như gpt-3.5-turbo, mô hình này sẽ không nhận các bản cập nhật và sẽ bị loại bỏ sau 3 tháng kể từ khi phiên bản mới được phát hành.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Phiên bản gpt-3.5-turbo-16k từ ngày 13 tháng 6 năm 2023. Không giống như gpt-3.5-turbo-16k, mô hình này sẽ không nhận các bản cập nhật và sẽ bị loại bỏ sau 3 tháng kể từ khi phiên bản mới được phát hành.",
     "provider__openai_api__model__gpt_4_0613__description": "Phiên bản gpt-4 từ ngày 13 tháng 6 năm 2023 với dữ liệu gọi hàm. Không giống như gpt-4, mô hình này sẽ không nhận các bản cập nhật và sẽ bị loại bỏ sau 3 tháng kể từ khi phiên bản mới được phát hành.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Phiên bản gpt-4-32 từ ngày 13 tháng 6 năm 2023. Không giống như gpt-4-32k, mô hình này sẽ không nhận các bản cập nhật và sẽ bị loại bỏ sau 3 tháng kể từ khi phiên bản mới được phát hành.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Xác nhận xóa",
     "immersive_chat__delete_all_chat__button__cancel__title": "Hủy",
     "immersive_chat__delete_all_chat__button__title": "Xóa tất cả cuộc trò chuyện",
-    "sidebar__share__share_button__tooltip": "Tải xuống cuộc trò chuyện"
+    "sidebar__share__share_button__tooltip": "Tải xuống cuộc trò chuyện",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Mô hình GPT-3.5 Turbo mới nhất với khả năng làm theo hướng dẫn cải tiến, chế độ JSON, kết quả tái tạo được, gọi hàm song song và nhiều tính năng khác. Trả về tối đa 4.096 mã thông báo đầu ra.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Mô hình GPT-4 mới nhất với khả năng làm theo hướng dẫn cải tiến, chế độ JSON, kết quả tái tạo được, gọi hàm song song và nhiều tính năng khác. Trả về tối đa 4.096 mã thông báo đầu ra. Mô hình xem trước này chưa phù hợp cho lưu lượng sản xuất.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Khả năng hiểu hình ảnh, bên cạnh tất cả các khả năng GPT-4 Turbo khác. Trả về tối đa 4.096 mã thông báo đầu ra. Đây là phiên bản mô hình xem trước và chưa phù hợp cho lưu lượng sản xuất."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

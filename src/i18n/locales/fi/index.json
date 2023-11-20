@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Sama toiminnallisuus kuin standardilla gpt-3.5-turbo-mallilla, mutta 4 kertaa suurempi konteksti.",
     "provider__openai_api__model__gpt_4__description": "Kyvykkäämpi kuin mikään GPT-3.5-malli, pystyy suorittamaan monimutkaisempia tehtäviä ja on optimoitu keskusteluun. Päivitetään OpenAI:n uusimmalla malliversiolla 2 viikkoa sen julkaisun jälkeen.",
     "provider__openai_api__model__gpt_4_32k__description": "Sama toiminnallisuus kuin perus gpt-4-mallissa, mutta 4 kertaa pidempi kontekstin pituus. Päivitetään uusimmalla malliversiollamme.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Kuva gpt-3.5-turbosta 13. kesäkuuta 2023, jossa on funktiokutsutietoja. Toisin kuin gpt-3.5-turbo, tätä mallia ei päivitetä, ja se poistetaan käytöstä 3 kuukautta uuden version julkaisun jälkeen.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Kuva gpt-3.5-turbo-16k:sta 13. kesäkuuta 2023. Toisin kuin gpt-3.5-turbo-16k, tätä mallia ei päivitetä, ja se poistetaan käytöstä 3 kuukautta uuden version julkaisun jälkeen.",
     "provider__openai_api__model__gpt_4_0613__description": "Kuva gpt-4:stä 13. kesäkuuta 2023, jossa on funktiokutsutietoja. Toisin kuin gpt-4, tätä mallia ei päivitetä, ja se poistetaan käytöstä 3 kuukautta uuden version julkaisun jälkeen.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Kuva gpt-4-32:sta 13. kesäkuuta 2023. Toisin kuin gpt-4-32k, tätä mallia ei päivitetä, ja se poistetaan käytöstä 3 kuukautta uuden version julkaisun jälkeen.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Vahvista poisto",
     "immersive_chat__delete_all_chat__button__cancel__title": "Peruuta",
     "immersive_chat__delete_all_chat__button__title": "Tyhjennä kaikki keskustelut",
-    "sidebar__share__share_button__tooltip": "Lataa keskustelu"
+    "sidebar__share__share_button__tooltip": "Lataa keskustelu",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Uusin GPT-3.5 Turbo -malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Uusin GPT-4 -malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta. Tämä esikatselumalli ei ole vielä sopiva tuotantoliikenteelle.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Kyky ymmärtää kuvia muiden GPT-4 Turbo -ominaisuuksien lisäksi. Palauttaa enintään 4 096 tulostetunnusta. Tämä on esikatselmamallin versio eikä vielä sovellu tuotantoliikenteeseen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

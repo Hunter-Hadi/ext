@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Samma möjligheter som standardmodellen gpt-3.5-turbo men med 4 gånger kontexten.",
     "provider__openai_api__model__gpt_4__description": "Mer kapabel än någon GPT-3.5-modell, kan utföra mer komplexa uppgifter och är optimerad för chatt. Kommer att uppdateras med OpenAIs senaste modelliteration 2 veckor efter att den släpps.",
     "provider__openai_api__model__gpt_4_32k__description": "Samma möjligheter som grundläggande gpt-4-läge men med 4x kontextlängden. Kommer att uppdateras med vår senaste modelliteration.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Snapshot av gpt-3.5-turbo från 13 juni 2023 med funktionsanropsdata. Till skillnad från gpt-3.5-turbo kommer denna modell inte att uppdateras och kommer att fasas ut 3 månader efter att en ny version släpps.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Snapshot av gpt-3.5-turbo-16k från 13 juni 2023. Till skillnad från gpt-3.5-turbo-16k kommer denna modell inte att uppdateras och kommer att fasas ut 3 månader efter att en ny version släpps.",
     "provider__openai_api__model__gpt_4_0613__description": "Snapshot av gpt-4 från 13 juni 2023 med funktionsanropsdata. Till skillnad från gpt-4 kommer denna modell inte att uppdateras och kommer att fasas ut 3 månader efter att en ny version släpps.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snapshot av gpt-4-32 från 13 juni 2023. Till skillnad från gpt-4-32k kommer denna modell inte att uppdateras och kommer att fasas ut 3 månader efter att en ny version släpps.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Bekräfta radering",
     "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt",
     "immersive_chat__delete_all_chat__button__title": "Rensa alla chattar",
-    "sidebar__share__share_button__tooltip": "Ladda ner chatt"
+    "sidebar__share__share_button__tooltip": "Ladda ner chatt",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Den senaste GPT-3.5 Turbo-modellen med förbättrad instruktionsföljning, JSON-läge, reproducerbara utdata, parallell funktionsanrop och mer. Returnerar maximalt 4 096 utdatatokens.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Den senaste GPT-4-modellen med förbättrad instruktionsföljning, JSON-läge, reproducerbara utdata, parallell funktionsanrop och mer. Returnerar maximalt 4 096 utdatatokens. Denna förhandsgranskningsmodell är ännu inte lämplig för produktionstrafik.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Möjlighet att förstå bilder, utöver alla andra GPT-4 Turbo-funktioner. Returnerar maximalt 4 096 utdatatokens. Detta är en förhandsgranskningsmodellversion och är ännu inte lämplig för produktionstrafik."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

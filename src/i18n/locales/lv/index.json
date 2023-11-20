@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Tādas pašas iespējas kā standarta gpt-3.5-turbo modelim, bet ar 4 reizes lielāku kontekstu.",
     "provider__openai_api__model__gpt_4__description": "Spējīgāks nekā jebkurš GPT-3.5 modelis, spēj veikt sarežģītākus uzdevumus un ir optimizēts čatam. Tiks atjaunināts ar OpenAI jaunāko modeļa iterāciju 2 nedēļas pēc tā izlaišanas.",
     "provider__openai_api__model__gpt_4_32k__description": "Tādas pašas iespējas kā pamata gpt-4 modelim, bet ar 4 reizes lielāku konteksta garumu. Tiks atjaunināts ar mūsu jaunāko modeļa iterāciju.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Gpt-3.5-turbo momentuzņēmums no 2023. gada 13. jūnija ar funkciju izsaukumu datiem. Atšķirībā no gpt-3.5-turbo šis modelis nesaņems atjauninājumus un tiks nolemts pēc 3 mēnešiem, kad tiek izlaista jauna versija.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Gpt-3.5-turbo-16k momentuzņēmums no 2023. gada 13. jūnija. Atšķirībā no gpt-3.5-turbo-16k šis modelis nesaņems atjauninājumus un tiks nolemts pēc 3 mēnešiem, kad tiek izlaista jauna versija.",
     "provider__openai_api__model__gpt_4_0613__description": "Gpt-4 momentuzņēmums no 2023. gada 13. jūnija ar funkciju izsaukumu datiem. Atšķirībā no gpt-4 šis modelis nesaņems atjauninājumus un tiks nolemts pēc 3 mēnešiem, kad tiek izlaista jauna versija.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Gpt-4-32 momentuzņēmums no 2023. gada 13. jūnija. Atšķirībā no gpt-4-32k šis modelis nesaņems atjauninājumus un tiks nolemts pēc 3 mēnešiem, kad tiek izlaista jauna versija.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Apstiprināt dzēšanu",
     "immersive_chat__delete_all_chat__button__cancel__title": "Atcelt",
     "immersive_chat__delete_all_chat__button__title": "Notīrīt visus čatus",
-    "sidebar__share__share_button__tooltip": "Lejupielādēt čatu"
+    "sidebar__share__share_button__tooltip": "Lejupielādēt čatu",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Jaunākais GPT-3.5 Turbo modelis ar uzlabotu instrukciju sekošanu, JSON režīmu, reproducējamām izvadēm, paralēlu funkciju izsaukšanu un citiem uzlabojumiem. Atgriež maksimāli 4 096 izvades žetonus.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Jaunākais GPT-4 modelis ar uzlabotu instrukciju sekošanu, JSON režīmu, reproducējamām izvadēm, paralēlu funkciju izsaukšanu un citiem uzlabojumiem. Atgriež maksimāli 4 096 izvades žetonus. Šis priekšskatījuma modelis vēl nav piemērots ražošanas datplūsmai.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Spēja saprast attēlus, kā arī visus citus GPT-4 Turbo iespējamos. Atgriež maksimāli 4 096 izvades žetonus. Šis ir priekšskatījuma modeļa versija un vēl nav piemērota ražošanas datplūsmai."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

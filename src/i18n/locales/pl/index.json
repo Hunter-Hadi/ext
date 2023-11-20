@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Takie same możliwości jak standardowy model gpt-3.5-turbo, ale z czterokrotnie większym kontekstem.",
     "provider__openai_api__model__gpt_4__description": "Bardziej zdolny niż jakikolwiek model GPT-3.5, potrafi wykonywać bardziej złożone zadania i jest zoptymalizowany do czatu. Zostanie zaktualizowany na najnowszą iterację modelu OpenAI 2 tygodnie po jej wydaniu.",
     "provider__openai_api__model__gpt_4_32k__description": "Takie same możliwości jak podstawowy model gpt-4, ale z czterokrotnie dłuższym kontekstem. Zostanie zaktualizowany na naszą najnowszą iterację modelu.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Zrzut gpt-3.5-turbo z 13 czerwca 2023 r. z danymi dotyczącymi wywoływania funkcji. W przeciwieństwie do gpt-3.5-turbo, ten model nie będzie otrzymywał aktualizacji i zostanie wycofany 3 miesiące po wydaniu nowej wersji.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Zrzut gpt-3.5-turbo-16k z 13 czerwca 2023 r. W przeciwieństwie do gpt-3.5-turbo-16k, ten model nie będzie otrzymywał aktualizacji i zostanie wycofany 3 miesiące po wydaniu nowej wersji.",
     "provider__openai_api__model__gpt_4_0613__description": "Zrzut gpt-4 z 13 czerwca 2023 r. z danymi dotyczącymi wywoływania funkcji. W przeciwieństwie do gpt-4, ten model nie będzie otrzymywał aktualizacji i zostanie wycofany 3 miesiące po wydaniu nowej wersji.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Zrzut gpt-4-32 z 13 czerwca 2023 r. W przeciwieństwie do gpt-4-32k, ten model nie będzie otrzymywał aktualizacji i zostanie wycofany 3 miesiące po wydaniu nowej wersji.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Potwierdź usunięcie",
     "immersive_chat__delete_all_chat__button__cancel__title": "Anuluj",
     "immersive_chat__delete_all_chat__button__title": "Wyczyść wszystkie rozmowy",
-    "sidebar__share__share_button__tooltip": "Pobierz czat"
+    "sidebar__share__share_button__tooltip": "Pobierz czat",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Najnowszy model GPT-3.5 Turbo z ulepszonym śledzeniem instrukcji, trybem JSON, powtarzalnymi wynikami, równoległym wywoływaniem funkcji i więcej. Zwraca maksymalnie 4 096 tokenów wyjściowych.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnowszy model GPT-4 z ulepszonym śledzeniem instrukcji, trybem JSON, powtarzalnymi wynikami, równoległym wywoływaniem funkcji i więcej. Zwraca maksymalnie 4 096 tokenów wyjściowych. Ten model w wersji podglądowej nie jest jeszcze odpowiedni do ruchu produkcyjnego.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Możliwość rozumienia obrazów, oprócz wszystkich innych możliwości GPT-4 Turbo. Zwraca maksymalnie 4 096 tokenów wyjściowych. To wersja podglądowa modelu i jeszcze nie nadaje się do ruchu produkcyjnego."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

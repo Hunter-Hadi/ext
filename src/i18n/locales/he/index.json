@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "אותן יכולות כמו הדגם התקני gpt-3.5-turbo אך עם 4 פעמים אורך ההקשר.",
     "provider__openai_api__model__gpt_4__description": "בעל יכולות גבוהות יותר מכל דגמי GPT-3.5, מסוגל לבצע משימות מורכבות יותר ומותאם לצ'אט. יעודכן עם הדגם האחרון של OpenAI 2 שבועות לאחר שהוא יושק.",
     "provider__openai_api__model__gpt_4_32k__description": "אותן יכולות כמו הדגם הבסיסי gpt-4 אך עם 4 פעמים אורך ההקשר. יעודכן עם הדגם האחרון שלנו.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "צילום מסך של gpt-3.5-turbo מ-13 ביוני 2023 עם נתוני קריאת פונקציות. לעומת gpt-3.5-turbo, הדגם הזה לא יקבל עדכונים ויבוטל 3 חודשים לאחר שישוחרר דגם חדש.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "צילום מסך של gpt-3.5-turbo-16k מ-13 ביוני 2023. לעומת gpt-3.5-turbo-16k, הדגם הזה לא יקבל עדכונים ויבוטל 3 חודשים לאחר שישוחרר דגם חדש.",
     "provider__openai_api__model__gpt_4_0613__description": "צילום מסך של gpt-4 מ-13 ביוני 2023 עם נתוני קריאת פונקציות. לעומת gpt-4, הדגם הזה לא יקבל עדכונים ויבוטל 3 חודשים לאחר שישוחרר דגם חדש.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "צילום מסך של gpt-4-32 מ-13 ביוני 2023. לעומת gpt-4-32k, הדגם הזה לא יקבל עדכונים ויבוטל 3 חודשים לאחר שישוחרר דגם חדש.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "אשר מחיקה",
     "immersive_chat__delete_all_chat__button__cancel__title": "ביטול",
     "immersive_chat__delete_all_chat__button__title": "נקה את כל השיחות",
-    "sidebar__share__share_button__tooltip": "הורדת צ'אט"
+    "sidebar__share__share_button__tooltip": "הורדת צ'אט",
+    "provider__openai_api__model__gpt_3_5_1106__description": "הדגם האחרון של GPT-3.5 Turbo עם שיפור בעקיפת הוראות, מצב JSON, פלטים ניתנים לשחזור, קריאה פרולית לפונקציות ועוד. מחזיר מקסימום 4,096 אסימונים פלט.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "הדגם האחרון של GPT-4 עם שיפור בעקיפת הוראות, מצב JSON, פלטים ניתנים לשחזור, קריאה פרולית לפונקציות ועוד. מחזיר מקסימום 4,096 אסימונים פלט. דגם זה הוא תצוגה מקדימה ואינו מתאים עדיין לתעבורת ייצור.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "יכולת להבין תמונות, בנוסף לכל היכולות של GPT-4 Turbo האחרות. מחזיר מקסימום 4,096 אסימונים פלט. זהו גרסת תצוגה מקדימה ואינה מתאימה עדיין לתעבורת ייצור."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

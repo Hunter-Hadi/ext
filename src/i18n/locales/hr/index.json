@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Iste mogućnosti kao standardni gpt-3.5-turbo model, ali s 4 puta većim kontekstom.",
     "provider__openai_api__model__gpt_4__description": "Sposobniji od bilo kojeg GPT-3.5 modela tvrtke OpenAI, može obavljati složenije zadatke i optimiziran je za chat. Bit će ažuriran s najnovijom iteracijom modela tvrtke OpenAI 2 tjedna nakon izlaska.",
     "provider__openai_api__model__gpt_4_32k__description": "Iste mogućnosti kao osnovni gpt-4 model, ali s 4 puta duljom duljinom konteksta. Bit će ažuriran s našom najnovijom iteracijom modela.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Snimka gpt-3.5-turbo modela od 13. lipnja 2023. s podacima o pozivanju funkcija. Za razliku od gpt-3.5-turbo modela, ovaj model neće primati ažuriranja i bit će zastario 3 mjeseca nakon izlaska nove verzije.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Snimka gpt-3.5-turbo-16k modela od 13. lipnja 2023. Za razliku od gpt-3.5-turbo-16k modela, ovaj model neće primati ažuriranja i bit će zastario 3 mjeseca nakon izlaska nove verzije.",
     "provider__openai_api__model__gpt_4_0613__description": "Snimka gpt-4 modela od 13. lipnja 2023. s podacima o pozivanju funkcija. Za razliku od gpt-4 modela, ovaj model neće primati ažuriranja i bit će zastario 3 mjeseca nakon izlaska nove verzije.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snimka gpt-4-32 modela od 13. lipnja 2023. Za razliku od gpt-4-32k modela, ovaj model neće primati ažuriranja i bit će zastario 3 mjeseca nakon izlaska nove verzije.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Potvrdi brisanje",
     "immersive_chat__delete_all_chat__button__cancel__title": "Odustani",
     "immersive_chat__delete_all_chat__button__title": "Izbriši sve razgovore",
-    "sidebar__share__share_button__tooltip": "Preuzmi razgovor"
+    "sidebar__share__share_button__tooltip": "Preuzmi razgovor",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Najnoviji GPT-3.5 Turbo model s poboljšanim praćenjem uputa, JSON načinom rada, reproducirajućim izlazima, paralelnim pozivima funkcija i više. Vraća maksimalno 4,096 izlaznih tokena.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnoviji GPT-4 model s poboljšanim praćenjem uputa, JSON načinom rada, reproducirajućim izlazima, paralelnim pozivima funkcija i više. Vraća maksimalno 4,096 izlaznih tokena. Ovaj pregledni model još nije prikladan za produkcijski promet.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumijevanja slika, uz sve ostale mogućnosti GPT-4 Turbo. Vraća maksimalno 4,096 izlaznih tokena. Ovo je verzija preglednog modela koja još nije prikladna za produkcijski promet."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

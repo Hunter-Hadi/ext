@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Enake zmogljivosti kot standardni model gpt-3.5-turbo, vendar s 4-krat več konteksta.",
     "provider__openai_api__model__gpt_4__description": "Bolj sposoben od katerega koli modela GPT-3.5, zmožen opravljati bolj kompleksne naloge in optimiziran za klepet. Bo posodobljen z najnovejšo iteracijo modela podjetja OpenAI 2 tedna po izdaji.",
     "provider__openai_api__model__gpt_4_32k__description": "Enake zmogljivosti kot osnovni model gpt-4, vendar s 4-krat daljšo dolžino konteksta. Bo posodobljen z najnovejšo iteracijo našega modela.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Posnetek modela gpt-3.5-turbo od 13. junija 2023 z informacijami o klicanju funkcij. Za razliko od modela gpt-3.5-turbo ta model ne bo prejemal posodobitev in bo opuščen 3 mesece po izdaji nove različice.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Posnetek modela gpt-3.5-turbo-16k od 13. junija 2023. Za razliko od modela gpt-3.5-turbo-16k ta model ne bo prejemal posodobitev in bo opuščen 3 mesece po izdaji nove različice.",
     "provider__openai_api__model__gpt_4_0613__description": "Posnetek modela gpt-4 od 13. junija 2023 z informacijami o klicanju funkcij. Za razliko od modela gpt-4 ta model ne bo prejemal posodobitev in bo opuščen 3 mesece po izdaji nove različice.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Posnetek modela gpt-4-32 od 13. junija 2023. Za razliko od modela gpt-4-32k ta model ne bo prejemal posodobitev in bo opuščen 3 mesece po izdaji nove različice.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Potrdi brisanje",
     "immersive_chat__delete_all_chat__button__cancel__title": "Prekliči",
     "immersive_chat__delete_all_chat__button__title": "Izbriši vse klepete",
-    "sidebar__share__share_button__tooltip": "Prenesi klepet"
+    "sidebar__share__share_button__tooltip": "Prenesi klepet",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Najnovejši model GPT-3.5 Turbo z izboljšanim sledenjem navodilom, načinom JSON, reproducibilnimi izhodi, vzporednim klicanjem funkcij in več. Vrne največ 4.096 izhodnih žetonov.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnovejši model GPT-4 z izboljšanim sledenjem navodilom, načinom JSON, reproducibilnimi izhodi, vzporednim klicanjem funkcij in več. Vrne največ 4.096 izhodnih žetonov. Ta predogledni model še ni primeren za promet v proizvodnji.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Zmožnost razumevanja slik poleg vseh drugih zmogljivosti modela GPT-4 Turbo. Vrne največ 4.096 izhodnih žetonov. To je predogledna različica modela in še ni primerna za promet v proizvodnji."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

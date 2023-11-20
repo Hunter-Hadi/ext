@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "표준 gpt-3.5-turbo 모델과 동일한 기능을 제공하지만 4배의 컨텍스트를 가지고 있습니다.",
     "provider__openai_api__model__gpt_4__description": "어떤 GPT-3.5 모델보다 더 능력이 있으며, 더 복잡한 작업을 수행하는 데 적합합니다. 최신 모델이 출시된 후 2주가 지난 후에 업데이트됩니다.",
     "provider__openai_api__model__gpt_4_32k__description": "기본 gpt-4 모델과 동일한 기능을 제공하지만 4배의 컨텍스트 길이를 가지고 있습니다. 최신 모델이 업데이트됩니다.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "2023년 6월 13일의 gpt-3.5-turbo 스냅샷입니다. 이 모델은 업데이트를 받지 않으며, 새 버전이 출시된 후 3개월 후에 사용 중단됩니다.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "2023년 6월 13일의 gpt-3.5-turbo-16k 스냅샷입니다. 이 모델은 업데이트를 받지 않으며, 새 버전이 출시된 후 3개월 후에 사용 중단됩니다.",
     "provider__openai_api__model__gpt_4_0613__description": "2023년 6월 13일의 gpt-4 스냅샷입니다. 이 모델은 업데이트를 받지 않으며, 새 버전이 출시된 후 3개월 후에 사용 중단됩니다.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "2023년 6월 13일의 gpt-4-32 스냅샷입니다. 이 모델은 업데이트를 받지 않으며, 새 버전이 출시된 후 3개월 후에 사용 중단됩니다.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "삭제 확인",
     "immersive_chat__delete_all_chat__button__cancel__title": "취소",
     "immersive_chat__delete_all_chat__button__title": "모든 채팅 지우기",
-    "sidebar__share__share_button__tooltip": "채팅 다운로드"
+    "sidebar__share__share_button__tooltip": "채팅 다운로드",
+    "provider__openai_api__model__gpt_3_5_1106__description": "최신 GPT-3.5 Turbo 모델로 개선된 지시문 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "최신 GPT-4 모델로 개선된 지시문 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이 미리보기 모델은 아직 제품 트래픽에 적합하지 않습니다.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "모든 다른 GPT-4 Turbo 기능과 함께 이미지를 이해하는 능력을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이는 미리보기 모델 버전으로 아직 제품 트래픽에 적합하지 않습니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

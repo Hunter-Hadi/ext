@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Uwezo sawa na mfano wa kawaida wa gpt-3.5-turbo lakini na muktadha mara 4.",
     "provider__openai_api__model__gpt_4__description": "Mwenye uwezo zaidi kuliko mfano wowote wa GPT-3.5, anaweza kufanya majukumu yenye utata zaidi, na umetengenezwa kwa mazungumzo. Itasasishwa na toleo jipya la mfano wa OpenAI baada ya wiki 2 tangu kutolewa kwake.",
     "provider__openai_api__model__gpt_4_32k__description": "Uwezo sawa na mfano wa msingi wa gpt-4 lakini na urefu wa muktadha mara 4. Itasasishwa na toleo jipya la mfano wetu.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Picha ya gpt-3.5-turbo kutoka Juni 13, 2023 na data ya wito wa kazi. Tofauti na gpt-3.5-turbo, mfano huu hautapokea sasisho na utapitwa baada ya miezi 3 tangu kutolewa kwa toleo jipya.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Picha ya gpt-3.5-turbo-16k kutoka Juni 13, 2023. Tofauti na gpt-3.5-turbo-16k, mfano huu hautapokea sasisho na utapitwa baada ya miezi 3 tangu kutolewa kwa toleo jipya.",
     "provider__openai_api__model__gpt_4_0613__description": "Picha ya gpt-4 kutoka Juni 13, 2023 na data ya wito wa kazi. Tofauti na gpt-4, mfano huu hautapokea sasisho na utapitwa baada ya miezi 3 tangu kutolewa kwa toleo jipya.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Picha ya gpt-4-32 kutoka Juni 13, 2023. Tofauti na gpt-4-32k, mfano huu hautapokea sasisho na utapitwa baada ya miezi 3 tangu kutolewa kwa toleo jipya.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Thibitisha kufuta",
     "immersive_chat__delete_all_chat__button__cancel__title": "Ghairi",
     "immersive_chat__delete_all_chat__button__title": "Futa mazungumzo yote",
-    "sidebar__share__share_button__tooltip": "Pakua mazungumzo"
+    "sidebar__share__share_button__tooltip": "Pakua mazungumzo",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Mfano wa hivi karibuni wa GPT-3.5 Turbo na uwezo bora wa kufuata maagizo, njia ya JSON, matokeo yanayoweza kurejewa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha maneno 4,096.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Mfano wa hivi karibuni wa GPT-4 na uwezo bora wa kufuata maagizo, njia ya JSON, matokeo yanayoweza kurejewa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha maneno 4,096. Mfano huu wa hakiki bado haufai kwa trafiki ya uzalishaji.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Uwezo wa kuelewa picha, pamoja na uwezo wote wa GPT-4 Turbo. Inarudisha kiwango cha juu cha maneno 4,096. Hii ni toleo la hakiki la mfano na bado halifai kwa trafiki ya uzalishaji."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

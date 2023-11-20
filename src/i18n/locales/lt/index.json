@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Toks pat pajėgumas kaip ir standartiniam gpt-3.5-turbo modeliui, bet su 4 kartais didesniu kontekstu.",
     "provider__openai_api__model__gpt_4__description": "Daugiau galimybių nei bet kuris GPT-3.5 modelis, gebantis atlikti sudėtingesnes užduotis ir optimizuotas pokalbiams. Po dviejų savaičių po naujos modelio versijos išleidimo bus atnaujintas.",
     "provider__openai_api__model__gpt_4_32k__description": "Toks pat pajėgumas kaip ir pagrindiniam gpt-4 modeliui, bet su 4 kartais didesniu konteksto ilgiu. Bus atnaujintas pagal naujausią modelio versiją.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "„Gpt-3.5-turbo“ nuotrauka nuo 2023 m. birželio 13 d. su funkcijų kvietimo duomenimis. Skirtingai nuo „gpt-3.5-turbo“, šis modelis nebus atnaujinamas ir po naujos versijos išleidimo bus nutrauktas po 3 mėnesių.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "„Gpt-3.5-turbo-16k“ nuotrauka nuo 2023 m. birželio 13 d. Skirtingai nuo „gpt-3.5-turbo-16k“, šis modelis nebus atnaujinamas ir po naujos versijos išleidimo bus nutrauktas po 3 mėnesių.",
     "provider__openai_api__model__gpt_4_0613__description": "„Gpt-4“ nuotrauka nuo 2023 m. birželio 13 d. su funkcijų kvietimo duomenimis. Skirtingai nuo „gpt-4“, šis modelis nebus atnaujinamas ir po naujos versijos išleidimo bus nutrauktas po 3 mėnesių.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "„Gpt-4-32“ nuotrauka nuo 2023 m. birželio 13 d. Skirtingai nuo „gpt-4-32k“, šis modelis nebus atnaujinamas ir po naujos versijos išleidimo bus nutrauktas po 3 mėnesių.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,10 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Patvirtinti ištrynimą",
     "immersive_chat__delete_all_chat__button__cancel__title": "Atšaukti",
     "immersive_chat__delete_all_chat__button__title": "Išvalyti visus pokalbius",
-    "sidebar__share__share_button__tooltip": "Atsisiųsti pokalbį"
+    "sidebar__share__share_button__tooltip": "Atsisiųsti pokalbį",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Naujausias GPT-3.5 Turbo modelis su patobulinta instrukcijų sekimu, JSON režimu, atkūrimo išvestimis, lygiagrečiu funkcijų kvietimu ir daugiau. Grąžina maksimaliai 4 096 išvesties ženklus.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Naujausias GPT-4 modelis su patobulinta instrukcijų sekimu, JSON režimu, atkūrimo išvestimis, lygiagrečiu funkcijų kvietimu ir daugiau. Grąžina maksimaliai 4 096 išvesties ženklus. Šis peržiūros modelis dar nėra tinkamas naudoti produkcijos srautui.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Galimybė suprasti vaizdus, be visų kitų GPT-4 Turbo galimybių. Grąžina maksimaliai 4 096 išvesties ženklus. Tai yra peržiūros modelio versija ir dar nėra tinkama naudoti produkcijos srautui."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

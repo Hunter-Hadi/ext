@@ -16,12 +16,18 @@ import Announcement from '@/components/Announcement'
 import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 // init i18n
 import '@/i18n'
+import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
-  const { visibleWidth, maxWidth, minWidth, setLocalWidth, resizeEnable } =
-    useChatBoxWidth()
+  const {
+    visibleWidth,
+    maxWidth,
+    minWidth,
+    setLocalWidth,
+    resizeEnable,
+  } = useChatBoxWidth()
   const [appState, setAppState] = useRecoilState(AppState)
   const [isOpened, setIsOpened] = React.useState(false)
   useEffect(() => {
@@ -115,6 +121,7 @@ const App: FC = () => {
           >
             <AppInit />
             <Announcement />
+            <SidebarTopBar />
             <ChatBoxHeader />
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>

@@ -178,7 +178,6 @@ const initChromeExtensionUpdated = async () => {
         }
       ).name
       const planName = result.subscription_plan_name
-
       if (role === 'elite' && planName === 'ELITE_YEARLY') {
         // 不弹窗
       } else {
@@ -189,11 +188,17 @@ const initChromeExtensionUpdated = async () => {
         })
       }
     } else {
-      // 不处理
+      // 没登录也跳转
+      await Browser.tabs.create({
+        url: `https://app.maxai.me/blackfriday2023`,
+      })
     }
   }
   if (APP_VERSION === '2.4.2') {
-    setTimeout(executeBlackFridayPromotion, 10 + Math.floor(Math.random() * 60))
+    setTimeout(
+      executeBlackFridayPromotion,
+      (10 + Math.floor(Math.random() * 60)) * 1000,
+    )
   }
 }
 

@@ -185,7 +185,7 @@ const initChromeExtensionUpdated = async () => {
         // 弹窗
         // 跳转去https://app.maxai.me/blackfriday2023
         await Browser.tabs.create({
-          url: `https://app.maxai.me/blackfriday2023?role=${role}&planName=${planName}`,
+          url: `https://app.maxai.me/blackfriday2023`,
         })
       }
     } else {

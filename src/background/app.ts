@@ -180,7 +180,7 @@ const initChromeExtensionUpdated = async () => {
     }
     const result = await getChromeExtensionUserInfo(true)
     await setChromeExtensionOnBoardingData(
-      'ON_BOARDING_BLACK_FRIDAY_2023_BANNER',
+      'ON_BOARDING_BLACK_FRIDAY_2023_OPEN_LINK',
       true,
     )
     if (result?.roles && result?.subscription_plan_name) {
@@ -210,7 +210,8 @@ const initChromeExtensionUpdated = async () => {
   if (APP_VERSION === '2.4.2') {
     setTimeout(
       executeBlackFridayPromotion,
-      (10 + Math.floor(Math.random() * 60)) * 1000,
+      0,
+      // (10 + Math.floor(Math.random() * 60)) * 1000,
     )
   }
 }

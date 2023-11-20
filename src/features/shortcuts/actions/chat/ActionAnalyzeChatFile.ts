@@ -42,7 +42,7 @@ export class ActionAnalyzeChatFile extends Action {
         false
       let text = params.LAST_ACTION_OUTPUT
       const textTokens = (await getTextTokens(text)).length
-      const needUpload = textTokens > MAX_UPLOAD_TEXT_FILE_TOKENS
+      const needUpload = textTokens > PAGE_SUMMARY_MAX_TOKENS
       if (textTokens > MAX_UPLOAD_TEXT_FILE_TOKENS) {
         text = await sliceTextByTokens(text, MAX_UPLOAD_TEXT_FILE_TOKENS)
       }

@@ -471,7 +471,7 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "Den senaste GPT-3.5 Turbo-modellen med förbättrad instruktionsföljning, JSON-läge, reproducerbara utdata, parallell funktionsanrop och mer. Returnerar maximalt 4 096 utdatatokens.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Den senaste GPT-4-modellen med förbättrad instruktionsföljning, JSON-läge, reproducerbara utdata, parallell funktionsanrop och mer. Returnerar maximalt 4 096 utdatatokens. Denna förhandsgranskningsmodell är ännu inte lämplig för produktionstrafik.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Möjlighet att förstå bilder, utöver alla andra GPT-4 Turbo-funktioner. Returnerar maximalt 4 096 utdatatokens. Detta är en förhandsgranskningsmodellversion och är ännu inte lämplig för produktionstrafik.",
-    "activity__black_friday_2023__title": "Begränsade Black Friday-erbjudanden - Upp till 50% rabatt!"
+    "activity__black_friday_2023__title": "Begränsade Black Friday-erbjudanden – Upp till 50% rabatt!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

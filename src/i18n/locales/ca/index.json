@@ -471,7 +471,7 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "El model GPT-3.5 Turbo més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "El model GPT-4 més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida. Aquest model de previsualització encara no és adequat per al trànsit de producció.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitat per comprendre imatges, a més de totes les altres capacitats del GPT-4 Turbo. Retorna un màxim de 4.096 tokens de sortida. Aquesta és una versió de previsualització del model i encara no és adequada per al trànsit de producció.",
-    "activity__black_friday_2023__title": "Ofertes limitades de Black Friday - Fins a un 50% de descompte!"
+    "activity__black_friday_2023__title": "Ofertes de Black Friday per temps limitat: fins a un 50% de descompte!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -471,7 +471,7 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "Cel mai recent model GPT-3.5 Turbo cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și altele. Returnează un maxim de 4.096 de token-uri de ieșire.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Cel mai recent model GPT-4 cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și altele. Returnează un maxim de 4.096 de token-uri de ieșire. Acest model de previzualizare nu este încă potrivit pentru traficul de producție.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitatea de a înțelege imagini, în plus față de toate celelalte capabilități ale lui GPT-4 Turbo. Returnează un maxim de 4.096 de token-uri de ieșire. Aceasta este o versiune de previzualizare a modelului și nu este încă potrivită pentru traficul de producție.",
-    "activity__black_friday_2023__title": "Oferte Limitate de Black Friday - Reduceri de până la 50%!"
+    "activity__black_friday_2023__title": "Oferte de Black Friday cu timp limitat - Până la 50% reducere!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

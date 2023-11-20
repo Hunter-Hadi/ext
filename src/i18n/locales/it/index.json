@@ -471,7 +471,7 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "Il modello GPT-3.5 Turbo più recente con un miglioramento del follow delle istruzioni, modalità JSON, output riproducibili, chiamate di funzioni parallele e altro ancora. Restituisce un massimo di 4.096 token di output.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Il modello GPT-4 più recente con un miglioramento del follow delle istruzioni, modalità JSON, output riproducibili, chiamate di funzioni parallele e altro ancora. Restituisce un massimo di 4.096 token di output. Questo modello di anteprima non è ancora adatto al traffico di produzione.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacità di comprendere le immagini, oltre a tutte le altre capacità di GPT-4 Turbo. Restituisce un massimo di 4.096 token di output. Questa è una versione di anteprima del modello e non è ancora adatta al traffico di produzione.",
-    "activity__black_friday_2023__title": "Offerte limitate del Black Friday - Fino al 50% di sconto!"
+    "activity__black_friday_2023__title": "Offerte Black Friday a tempo limitato - Fino al 50% di sconto!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

@@ -471,7 +471,7 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "A legújabb GPT-3.5 Turbo modell, amely javított utasítás követést, JSON módot, reprodukálható kimeneteket, párhuzamos függvényhívást és még sok mást tartalmaz. Legfeljebb 4 096 kimeneti token-t ad vissza.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "A legújabb GPT-4 modell, amely javított utasítás követést, JSON módot, reprodukálható kimeneteket, párhuzamos függvényhívást és még sok mást tartalmaz. Legfeljebb 4 096 kimeneti token-t ad vissza. Ez a bemutató modell még nem alkalmas a termelési forgalomra.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Képek értelmezésének képessége, az összes többi GPT-4 Turbo képesség mellett. Legfeljebb 4 096 kimeneti token-t ad vissza. Ez egy előzetes modell verzió, amely még nem alkalmas a termelési forgalomra.",
-    "activity__black_friday_2023__title": "Korlátozott Black Friday Akciók – Akár 50% kedvezmény!"
+    "activity__black_friday_2023__title": "Korlátozott idejű Fekete Pénteki Akciók – Akár 50% kedvezmény!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

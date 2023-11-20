@@ -226,6 +226,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   return (
     <Stack
+      id={'maxAISidebarChatBox'}
       position={'relative'}
       sx={{
         height: 0,

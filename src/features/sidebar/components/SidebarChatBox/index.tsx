@@ -236,29 +236,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         ...sx,
       }}
     >
-      {/*<link*/}
-      {/*  rel="stylesheet"*/}
-      {/*  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"*/}
-      {/*  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"*/}
-      {/*  crossOrigin="anonymous"*/}
-      {/*></link>*/}
-      {/*//NOTE: hide title*/}
-      {/*<Stack*/}
-      {/*  flexShrink={0}*/}
-      {/*  height={56}*/}
-      {/*  alignItems={'center'}*/}
-      {/*  justifyContent={'center'}*/}
-      {/*  sx={{*/}
-      {/*    bgcolor: 'rgb(52,54,65)',*/}
-      {/*    position: 'sticky',*/}
-      {/*    top: 0,*/}
-      {/*    zIndex: 1,*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  <Typography color={'#fff'} variant={'body1'} fontSize={24}>*/}
-      {/*    {title}*/}
-      {/*  </Typography>*/}
-      {/*</Stack>*/}
       <Box
         ref={stackRef}
         flex={1}

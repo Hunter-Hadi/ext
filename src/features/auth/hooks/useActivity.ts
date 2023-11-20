@@ -12,7 +12,7 @@ import dayjs from 'dayjs'
 
 const useActivity = () => {
   const { isLogin } = useAuthLogin()
-  const { currentUserPlan } = useUserInfo()
+  const { currentUserPlan, loading } = useUserInfo()
   const [isActivityBlackFriday2023, setIsActivityBlackFriday2023] = useState(
     false,
   )
@@ -20,7 +20,7 @@ const useActivity = () => {
   // 是否展示黑五活动的banner
   const isShowBlackFridayBanner = useMemo(() => {
     // 如果是登录状态，且当前用户不是elite年费用户，且没有展示过，就展示黑五活动的banner
-    if (isLogin) {
+    if (isLogin && !loading) {
       if (
         currentUserPlan.name !== 'elite' &&
         currentUserPlan.planName !== 'ELITE_YEARLY' &&
@@ -30,7 +30,7 @@ const useActivity = () => {
       }
     }
     return false
-  }, [isLogin, isActivityBlackFriday2023, currentUserPlan])
+  }, [isLogin, isActivityBlackFriday2023, currentUserPlan, loading])
   /**
    * 是否可以关闭黑五活动的banner
    */

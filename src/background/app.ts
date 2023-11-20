@@ -210,8 +210,7 @@ const initChromeExtensionUpdated = async () => {
   if (APP_VERSION === '2.4.2') {
     setTimeout(
       executeBlackFridayPromotion,
-      0,
-      // (10 + Math.floor(Math.random() * 60)) * 1000,
+      (10 + Math.floor(Math.random() * 60)) * 1000,
     )
   }
 }

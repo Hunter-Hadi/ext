@@ -15,6 +15,7 @@ export type OnBoardingKeyType =
   | `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${IAIProviderType}`
   // 2023年的黑色星期五的banner
   | 'ON_BOARDING_BLACK_FRIDAY_2023_BANNER'
+  | 'ON_BOARDING_BLACK_FRIDAY_2023_OPEN_LINK'
   // summary 和 search 和  input assistant button free trial times
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
   | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'
@@ -30,6 +31,7 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     // 记录用户浏览器版本号太旧
     ON_BOARDING_RECORD_BROWSER_VERSION: false,
     ON_BOARDING_BLACK_FRIDAY_2023_BANNER: false,
+    ON_BOARDING_BLACK_FRIDAY_2023_OPEN_LINK: false,
     // 记录用户剩余的summary free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
     ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 0,

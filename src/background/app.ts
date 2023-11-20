@@ -47,6 +47,8 @@ import {
   backgroundRestartChromeExtension,
   safeGetBrowserTab,
   createChromeExtensionOptionsPage,
+  setChromeExtensionOnBoardingData,
+  getChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
@@ -171,7 +173,16 @@ const initChromeExtensionUpdated = async () => {
   // @since - 2023-11-20
   // @description 黑五
   const executeBlackFridayPromotion = async () => {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    // 如果已经弹窗过了，就不再弹窗
+    if (onBoardingData.ON_BOARDING_BLACK_FRIDAY_2023_OPEN_LINK) {
+      return
+    }
     const result = await getChromeExtensionUserInfo(true)
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_BLACK_FRIDAY_2023_BANNER',
+      true,
+    )
     if (result?.roles && result?.subscription_plan_name) {
       const role = (
         result.roles.find((role) => role.name === 'elite') ||

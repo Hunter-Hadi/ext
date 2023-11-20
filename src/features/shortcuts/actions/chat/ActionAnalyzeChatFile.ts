@@ -46,6 +46,7 @@ export class ActionAnalyzeChatFile extends Action {
       if (textTokens > MAX_UPLOAD_TEXT_FILE_TOKENS) {
         text = await sliceTextByTokens(text, MAX_UPLOAD_TEXT_FILE_TOKENS)
       }
+      debugger
       /**
        * 总结用的12k system prompt
        */

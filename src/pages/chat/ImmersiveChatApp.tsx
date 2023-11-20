@@ -11,6 +11,7 @@ import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 // init i18n
 import '@/i18n'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
+import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const App: FC = () => {
@@ -42,6 +43,7 @@ const App: FC = () => {
       >
         <AppInit />
         <Announcement />
+        <SidebarTopBar />
         <ChatBoxHeader showConversationList />
         <BrowserVersionDetector>
           <AppSuspenseLoadingLayout>

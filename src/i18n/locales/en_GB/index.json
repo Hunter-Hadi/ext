@@ -470,7 +470,8 @@
     "immersive_chat__delete_all_chat__button__title": "Clear all chats",
     "immersive_chat__delete_all_chat__title": "Clear your conversation history - are you sure?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirm deletion",
-    "immersive_chat__delete_all_chat__button__cancel__title": "Cancel"
+    "immersive_chat__delete_all_chat__button__cancel__title": "Cancel",
+    "activity__black_friday_2023__title": "Limited Black Friday Deals – Up to 50% Off!"
   },
   "prompt_editor": {
     "preset_variables__title": "Capabilities",

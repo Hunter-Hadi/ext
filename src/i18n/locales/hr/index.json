@@ -470,7 +470,8 @@
     "sidebar__share__share_button__tooltip": "Preuzmi razgovor",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnoviji GPT-3.5 Turbo model s poboljšanim praćenjem uputa, JSON načinom rada, reproducirajućim izlazima, paralelnim pozivima funkcija i više. Vraća maksimalno 4,096 izlaznih tokena.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Najnoviji GPT-4 model s poboljšanim praćenjem uputa, JSON načinom rada, reproducirajućim izlazima, paralelnim pozivima funkcija i više. Vraća maksimalno 4,096 izlaznih tokena. Ovaj pregledni model još nije prikladan za produkcijski promet.",
-    "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumijevanja slika, uz sve ostale mogućnosti GPT-4 Turbo. Vraća maksimalno 4,096 izlaznih tokena. Ovo je verzija preglednog modela koja još nije prikladna za produkcijski promet."
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumijevanja slika, uz sve ostale mogućnosti GPT-4 Turbo. Vraća maksimalno 4,096 izlaznih tokena. Ovo je verzija preglednog modela koja još nije prikladna za produkcijski promet.",
+    "activity__black_friday_2023__title": "Ograničene ponude za Crni petak - Do 50% popusta!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

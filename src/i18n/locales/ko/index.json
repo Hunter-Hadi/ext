@@ -470,7 +470,8 @@
     "sidebar__share__share_button__tooltip": "채팅 다운로드",
     "provider__openai_api__model__gpt_3_5_1106__description": "최신 GPT-3.5 Turbo 모델로 개선된 지시문 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "최신 GPT-4 모델로 개선된 지시문 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이 미리보기 모델은 아직 제품 트래픽에 적합하지 않습니다.",
-    "provider__openai_api__model__gpt_4_vision_preview__description": "모든 다른 GPT-4 Turbo 기능과 함께 이미지를 이해하는 능력을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이는 미리보기 모델 버전으로 아직 제품 트래픽에 적합하지 않습니다."
+    "provider__openai_api__model__gpt_4_vision_preview__description": "모든 다른 GPT-4 Turbo 기능과 함께 이미지를 이해하는 능력을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이는 미리보기 모델 버전으로 아직 제품 트래픽에 적합하지 않습니다.",
+    "activity__black_friday_2023__title": "제한된 블랙 프라이데이 할인 - 최대 50% 할인!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

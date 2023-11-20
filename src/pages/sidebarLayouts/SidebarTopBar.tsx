@@ -11,8 +11,10 @@ import {
 import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import dayjs from 'dayjs'
+import { useTranslation } from 'react-i18next'
 
 const SidebarTopBar: FC = () => {
+  const { t } = useTranslation(['client'])
   const { currentUserPlan } = useUserInfo()
   const [showBlackFriday2023Banner, setShowBlackFriday2023Banner] = useState(
     false,
@@ -61,7 +63,7 @@ const SidebarTopBar: FC = () => {
                   lineHeight: '24px',
                 }}
               >
-                Limited Black Friday Deals – Up to 50% Off!
+                {t('client:activity__black_friday_2023__title')}
               </Typography>
               {isAbleToCloseBlackFridayBanner && (
                 <IconButton

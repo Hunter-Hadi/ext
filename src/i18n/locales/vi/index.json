@@ -470,7 +470,8 @@
     "sidebar__share__share_button__tooltip": "Tải xuống cuộc trò chuyện",
     "provider__openai_api__model__gpt_3_5_1106__description": "Mô hình GPT-3.5 Turbo mới nhất với khả năng làm theo hướng dẫn cải tiến, chế độ JSON, kết quả tái tạo được, gọi hàm song song và nhiều tính năng khác. Trả về tối đa 4.096 mã thông báo đầu ra.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Mô hình GPT-4 mới nhất với khả năng làm theo hướng dẫn cải tiến, chế độ JSON, kết quả tái tạo được, gọi hàm song song và nhiều tính năng khác. Trả về tối đa 4.096 mã thông báo đầu ra. Mô hình xem trước này chưa phù hợp cho lưu lượng sản xuất.",
-    "provider__openai_api__model__gpt_4_vision_preview__description": "Khả năng hiểu hình ảnh, bên cạnh tất cả các khả năng GPT-4 Turbo khác. Trả về tối đa 4.096 mã thông báo đầu ra. Đây là phiên bản mô hình xem trước và chưa phù hợp cho lưu lượng sản xuất."
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Khả năng hiểu hình ảnh, bên cạnh tất cả các khả năng GPT-4 Turbo khác. Trả về tối đa 4.096 mã thông báo đầu ra. Đây là phiên bản mô hình xem trước và chưa phù hợp cho lưu lượng sản xuất.",
+    "activity__black_friday_2023__title": "Ưu đãi Black Friday giới hạn - Giảm giá lên đến 50%!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

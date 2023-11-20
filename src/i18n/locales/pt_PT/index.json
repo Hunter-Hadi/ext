@@ -470,7 +470,8 @@
     "sidebar__share__share_button__tooltip": "Transferir chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "O modelo GPT-3.5 Turbo mais recente com melhorias no seguimento de instruções, modo JSON, saídas reproduzíveis, chamada de função paralela e muito mais. Retorna um máximo de 4.096 tokens de saída.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "O modelo GPT-4 mais recente com melhorias no seguimento de instruções, modo JSON, saídas reproduzíveis, chamada de função paralela e muito mais. Retorna um máximo de 4.096 tokens de saída. Este modelo de visualização ainda não é adequado para tráfego de produção.",
-    "provider__openai_api__model__gpt_4_vision_preview__description": "Capacidade de entender imagens, além de todas as outras capacidades do GPT-4 Turbo. Retorna um máximo de 4.096 tokens de saída. Esta é uma versão de visualização do modelo e ainda não é adequada para tráfego de produção."
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Capacidade de entender imagens, além de todas as outras capacidades do GPT-4 Turbo. Retorna um máximo de 4.096 tokens de saída. Esta é uma versão de visualização do modelo e ainda não é adequada para tráfego de produção.",
+    "activity__black_friday_2023__title": "Ofertas Limitadas da Black Friday - Até 50% de Desconto!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

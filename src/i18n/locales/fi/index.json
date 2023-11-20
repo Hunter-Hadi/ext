@@ -470,7 +470,8 @@
     "sidebar__share__share_button__tooltip": "Lataa keskustelu",
     "provider__openai_api__model__gpt_3_5_1106__description": "Uusin GPT-3.5 Turbo -malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Uusin GPT-4 -malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta. Tämä esikatselumalli ei ole vielä sopiva tuotantoliikenteelle.",
-    "provider__openai_api__model__gpt_4_vision_preview__description": "Kyky ymmärtää kuvia muiden GPT-4 Turbo -ominaisuuksien lisäksi. Palauttaa enintään 4 096 tulostetunnusta. Tämä on esikatselmamallin versio eikä vielä sovellu tuotantoliikenteeseen."
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Kyky ymmärtää kuvia muiden GPT-4 Turbo -ominaisuuksien lisäksi. Palauttaa enintään 4 096 tulostetunnusta. Tämä on esikatselmamallin versio eikä vielä sovellu tuotantoliikenteeseen.",
+    "activity__black_friday_2023__title": "Rajoitetut Black Friday -tarjoukset – Jopa 50% alennusta!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

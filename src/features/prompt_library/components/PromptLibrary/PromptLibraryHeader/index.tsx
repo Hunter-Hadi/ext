@@ -6,12 +6,12 @@ import {
   IconButton,
   InputAdornment,
   Stack,
-  Tab,
-  Tabs,
   TabsProps,
   TextField,
   Theme,
 } from '@mui/material'
+import Tabs, { tabsClasses } from '@mui/material/Tabs'
+import Tab, { tabClasses } from '@mui/material/Tab'
 import React, { FC, useCallback, useEffect, useRef } from 'react'
 
 import { BaseSelect } from '@/components/select/BaseSelect'
@@ -29,17 +29,17 @@ export const GrayTabs = styled(({ ...props }: TabsProps) => (
     '&': {
       // background: '#f00',
     },
-    '.MuiTab-root': {
+    [`.${tabClasses.root}`]: {
       padding: '6px 16px',
       borderBottom: '1px solid',
       borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
       minHeight: 52,
     },
-    '.MuiTab-root.Mui-selected': {
+    [`.${tabClasses.root}.Mui-selected`]: {
       background: isDark ? '#3E3F4C' : 'rgba(0, 0, 0, 0.08)',
       color: isDark ? '#fff' : 'rgba(0, 0, 0, 0.6)',
     },
-    '.MuiTabs-indicator': {
+    [`.${tabsClasses.indicator}`]: {
       backgroundColor: '#d8d8d8',
     },
   }

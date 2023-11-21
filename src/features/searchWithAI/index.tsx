@@ -99,9 +99,9 @@ const mount = async (
     // 再添加前重新获取 sidebarContainer，避免其他插件做的 DOM 操作导致的问题
     const sidebarContainerCover = siteConfig.sidebarContainerFinder()
     if (sidebarContainerCover) {
-      sidebarContainerCover.prepend(container)
+      sidebarContainerCover.prepend(shadowRoot)
     } else {
-      sidebarContainer.prepend(container)
+      sidebarContainer.prepend(shadowRoot)
     }
 
     const cache = createCache({
@@ -111,7 +111,7 @@ const mount = async (
       speedy: false,
     })
 
-    createRoot(shadowRoot).render(
+    createRoot(container).render(
       <React.StrictMode>
         <RecoilRoot>
           <CacheProvider value={cache}>
@@ -120,7 +120,7 @@ const mount = async (
                 question={question}
                 siteName={siteName}
                 isDarkMode={siteConfig.isDarkMode()}
-                rootElement={shadowRoot}
+                rootElement={container}
               />
             </AppThemeProvider>
           </CacheProvider>

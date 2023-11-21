@@ -22,7 +22,8 @@ import {
   PermissionWrapperCardType,
 } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { usePermissionCard } from '@/features/auth'
+import { useAuthLogin, usePermissionCard } from '@/features/auth'
+import { showChatBox } from '@/utils'
 
 export interface PermissionWrapperProps {
   sceneType: PermissionWrapperCardSceneType
@@ -60,6 +61,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     return permissionCard
   }, [permissionCard, modifyPermissionCard])
   const { currentUserPlan } = useUserInfo()
+  const { isLogin } = useAuthLogin()
   const [open, setOpen] = useState(false)
   const idRef = useRef(uuidV4())
   useEffect(() => {
@@ -158,22 +160,41 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
             >
               {memoizedPermissionCard.description}
             </Typography>
-            {memoizedPermissionCard.ctaButtonText && (
-              <Link
-                target={'_blank'}
-                href={memoizedPermissionCard.ctaButtonLink}
-                onClick={(event) => {
-                  event.preventDefault()
-                  window.open(memoizedPermissionCard.ctaButtonLink, '_blank')
-                  memoizedPermissionCard.ctaButtonOnClick?.(event)
+
+            {isLogin ? (
+              <>
+                {memoizedPermissionCard.ctaButtonText && (
+                  <Link
+                    target={'_blank'}
+                    href={memoizedPermissionCard.ctaButtonLink}
+                    onClick={(event) => {
+                      event.preventDefault()
+                      window.open(
+                        memoizedPermissionCard.ctaButtonLink,
+                        '_blank',
+                      )
+                      memoizedPermissionCard.ctaButtonOnClick?.(event)
+                      setOpen(false)
+                      authEmitPricingHooksLog('click', permissionCard.sceneType)
+                    }}
+                  >
+                    <Button fullWidth variant={'contained'}>
+                      {memoizedPermissionCard.ctaButtonText}
+                    </Button>
+                  </Link>
+                )}
+              </>
+            ) : (
+              <Button
+                fullWidth
+                variant={'contained'}
+                onClick={() => {
                   setOpen(false)
-                  authEmitPricingHooksLog('click', permissionCard.sceneType)
+                  showChatBox()
                 }}
               >
-                <Button fullWidth variant={'contained'}>
-                  {memoizedPermissionCard.ctaButtonText}
-                </Button>
-              </Link>
+                Please sign in to continue
+              </Button>
             )}
           </Stack>
         </ClickAwayListener>

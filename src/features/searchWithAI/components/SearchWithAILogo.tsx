@@ -4,7 +4,7 @@ import { SEARCH_WITH_AI_APP_NAME, SEARCH_WITH_AI_LOGO_ID } from '../constants'
 
 const SearchWithAILogo = () => {
   const nameMap = {
-    maxai: 'MaxAI.me',
+    maxai: 'Search with MaxAI',
     webchatgpt: 'WebChatGPT',
   }
 
@@ -21,7 +21,7 @@ const SearchWithAILogo = () => {
           color: 'primary.main',
         }}
       />
-      <Typography component="h6" fontSize={16} fontWeight={800} color="inherit">
+      <Typography component="h6" fontSize={14} fontWeight={800} color="inherit">
         {nameMap[SEARCH_WITH_AI_APP_NAME]}
       </Typography>
     </Stack>

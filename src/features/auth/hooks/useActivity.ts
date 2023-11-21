@@ -3,7 +3,7 @@
  */
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { useAuthLogin } from '@/features/auth'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
@@ -16,11 +16,13 @@ const useActivity = () => {
   const [isActivityBlackFriday2023, setIsActivityBlackFriday2023] = useState(
     false,
   )
-
+  // 是否是第一次加载，因为loading做为依赖，会闪烁
+  const firstLoadingRef = useRef(false)
   // 是否展示黑五活动的banner
   const isShowBlackFridayBanner = useMemo(() => {
     // 如果是登录状态，且当前用户不是elite年费用户，且没有展示过，就展示黑五活动的banner
-    if (isLogin && !loading) {
+    if (isLogin && (!loading || firstLoadingRef.current)) {
+      firstLoadingRef.current = true
       if (
         currentUserPlan.name !== 'elite' &&
         currentUserPlan.planName !== 'ELITE_YEARLY' &&

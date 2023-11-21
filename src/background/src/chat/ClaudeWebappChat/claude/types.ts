@@ -42,7 +42,7 @@ export const CLAUDE_MODELS: IAIProviderModel[] = [
   {
     title: 'claude-2-100k',
     titleTag: '',
-    value: 'claude-2-100k',
+    value: 'claude-2.0-magenta',
     maxTokens: 100 * 1000,
     tags: [],
     descriptions: [

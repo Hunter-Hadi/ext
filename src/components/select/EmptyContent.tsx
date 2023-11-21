@@ -3,13 +3,20 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+import { SxProps } from '@mui/material/styles'
 
 const EmptyContent: FC<{
   emptyText?: string
-}> = ({ emptyText }) => {
+  sx?: SxProps
+}> = ({ emptyText, sx }) => {
   const { t } = useTranslation(['common'])
   return (
-    <Stack alignItems={'center'}>
+    <Stack
+      alignItems={'center'}
+      sx={{
+        ...sx,
+      }}
+    >
       <Stack
         width={'56px'}
         height={'56px'}

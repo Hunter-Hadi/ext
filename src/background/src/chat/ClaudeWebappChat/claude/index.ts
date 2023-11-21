@@ -8,6 +8,7 @@ import {
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { v4 as uuidV4 } from 'uuid'
 import cloneDeep from 'lodash-es/cloneDeep'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 
 export class Claude {
   private conversation: ClaudeConversation | undefined
@@ -71,6 +72,7 @@ export class Claude {
     if (regenerate) {
       text = ''
     }
+    const claudeSettings = await getThirdProviderSettings('CLAUDE')
     await fetchSSE(apiHost, {
       signal,
       method: 'POST',
@@ -86,7 +88,7 @@ export class Claude {
         }),
         completion: {
           incremental: true,
-          model: 'claude-2',
+          model: claudeSettings?.model || 'claude-2',
           prompt: text,
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         },

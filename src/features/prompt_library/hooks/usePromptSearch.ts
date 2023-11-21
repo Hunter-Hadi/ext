@@ -10,7 +10,7 @@ import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
 import { post } from '@/utils/request'
 import usePaginatedQuery from '@/features/prompt_library/hooks/usePaginatedQuery'
 import { handleVariableTypeWithInputVariable } from '@/features/prompt_library/utils'
-import { PROMPT_API } from '@/features/prompt_library/service'
+import { PROMPT_LIBRARY_API } from '@/features/prompt_library/service'
 
 const defaultPageSize = 12
 
@@ -31,18 +31,18 @@ const usePromptSearch = () => {
   const tabActive = searchParams.tab_active || ''
   const pageSize = Number(defaultPageSize)
 
-  const [listApiUrl, setListApiUrl] = useState(PROMPT_API.SEARCH_PROMPT)
+  const [listApiUrl, setListApiUrl] = useState(PROMPT_LIBRARY_API.SEARCH_PROMPT)
 
   useEffect(() => {
-    let listurl = PROMPT_API.SEARCH_PROMPT
+    let listurl = PROMPT_LIBRARY_API.SEARCH_PROMPT
     if (tabActive === 'Favorites') {
-      listurl = PROMPT_API.GET_FAVOURITE_PROMPTS
+      listurl = PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS
     }
     if (tabActive === 'Own') {
-      listurl = PROMPT_API.GET_OWN_PROMPTS
+      listurl = PROMPT_LIBRARY_API.GET_OWN_PROMPTS
     }
     if (tabActive === 'Public') {
-      listurl = PROMPT_API.SEARCH_PROMPT
+      listurl = PROMPT_LIBRARY_API.SEARCH_PROMPT
     }
     setListApiUrl(listurl)
     setPageSize(defaultPageSize)

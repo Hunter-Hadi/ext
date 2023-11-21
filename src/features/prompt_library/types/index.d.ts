@@ -32,9 +32,10 @@ export interface IPromptDetailData {
   variables?: IPromptVariable[]
   variable_types?: IPromptVariableType[]
 }
+
 export interface IPromptCategoryApiData {
   category: string
-  use_case: string[]
+  use_cases: string[]
 }
 
 export interface IFavoritesPromptListRespeonse {
@@ -62,3 +63,13 @@ export type IPromptVariableType =
 export type IPromptActionKey = 'see' | 'delete' | 'edit' | 'favorite'
 
 export type IPromptListType = 'Favorites' | 'Public' | 'Own'
+
+export interface IPromptLibraryListParametersState {
+  enabled: boolean
+  activeTab: IPromptListType
+  query: string
+  category: string
+  use_case: string
+  page: number
+  page_size: number
+}

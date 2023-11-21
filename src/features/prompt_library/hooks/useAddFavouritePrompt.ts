@@ -6,7 +6,7 @@ import { promptActionToast as Toast } from '@/features/prompt_library/utils'
 import { post } from '@/utils/request'
 
 import { FavoritesPromptIdsAtom } from '@/features/prompt_library/store'
-import { PROMPT_API } from '@/features/prompt_library/service'
+import { PROMPT_LIBRARY_API } from '@/features/prompt_library/service'
 
 export interface IAddPromptParams {
   type: IPromptType
@@ -29,9 +29,12 @@ const useFavouriteActionsPrompt = () => {
   const addFavouritePrompt = async (id: string) => {
     try {
       setLoading(true)
-      const res = await post<{ id: string }>(PROMPT_API.ADD_FAVOURITE_PROMPT, {
-        id,
-      })
+      const res = await post<{ id: string }>(
+        PROMPT_LIBRARY_API.ADD_FAVOURITE_PROMPT,
+        {
+          id,
+        },
+      )
       if (res.status === 'OK') {
         Toast.success('Added to "Favorites" prompts list.')
         setFavoritesPromptIds((ids) => [...ids, id])
@@ -50,7 +53,7 @@ const useFavouriteActionsPrompt = () => {
     try {
       setLoading(true)
       const res = await post<{ id: string }>(
-        PROMPT_API.REMOVE_FAVOURITE_PROMPT,
+        PROMPT_LIBRARY_API.REMOVE_FAVOURITE_PROMPT,
         {
           id,
         },

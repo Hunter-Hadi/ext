@@ -12,7 +12,7 @@ import {
   IPromptCategoryApiData,
   IPromptListType,
 } from '@/features/prompt_library/types'
-import { PROMPT_API } from '@/features/prompt_library/service'
+import { PROMPT_LIBRARY_API } from '@/features/prompt_library/service'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
 import { get } from '@/utils/request'
 
@@ -49,13 +49,13 @@ const usePromptCategories = (props?: IUsePromptCategoriesProps) => {
   const [searchKeyword, setSearchKeyword] = useState<string | null>(null)
 
   const { isFetching, data } = useQuery(
-    [PROMPT_API.PROMPT_CATEGORY],
+    [PROMPT_LIBRARY_API.PROMPT_CATEGORY],
     () =>
       get<{
         status: string
         data: IPromptCategoryApiData[]
         msg: string
-      }>(PROMPT_API.PROMPT_CATEGORY),
+      }>(PROMPT_LIBRARY_API.PROMPT_CATEGORY),
     {
       enabled: autoQuery,
       refetchOnWindowFocus: false,

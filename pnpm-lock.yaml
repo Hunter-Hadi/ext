@@ -35,6 +35,9 @@ dependencies:
   '@mui/material':
     specifier: ^5.11.9
     version: registry.npmmirror.com/@mui/material@5.11.9(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.0.28)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-query':
+    specifier: ^5.8.4
+    version: registry.npmmirror.com/@tanstack/react-query@5.8.4(react-dom@18.2.0)(react@18.2.0)
   ace-builds:
     specifier: ^1.15.3
     version: registry.npmmirror.com/ace-builds@1.15.3
@@ -3331,6 +3334,32 @@ packages:
     dependencies:
       tslib: registry.npmmirror.com/tslib@2.6.2
     dev: true
+
+  registry.npmmirror.com/@tanstack/query-core@5.8.3:
+    resolution: {integrity: sha512-SWFMFtcHfttLYif6pevnnMYnBvxKf3C+MHMH7bevyYfpXpTMsLB9O6nNGBdWSoPwnZRXFNyNeVZOw25Wmdasow==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tanstack/query-core/-/query-core-5.8.3.tgz}
+    name: '@tanstack/query-core'
+    version: 5.8.3
+    dev: false
+
+  registry.npmmirror.com/@tanstack/react-query@5.8.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-CD+AkXzg8J72JrE6ocmuBEJfGzEzu/bzkD6sFXFDDB5yji9N20JofXZlN6n0+CaPJuIi+e4YLCbGsyPFKkfNQA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@tanstack/react-query/-/react-query-5.8.4.tgz}
+    id: registry.npmmirror.com/@tanstack/react-query/5.8.4
+    name: '@tanstack/react-query'
+    version: 5.8.4
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': registry.npmmirror.com/@tanstack/query-core@5.8.3
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
 
   registry.npmmirror.com/@types/cheerio@0.22.31:
     resolution: {integrity: sha512-Kt7Cdjjdi2XWSfrZ53v4Of0wG3ZcmaegFXjMmz9tfNrZSkzzo36G0AL1YqSdcIA78Etjt6E609pt5h1xnQkPUw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/cheerio/-/cheerio-0.22.31.tgz}

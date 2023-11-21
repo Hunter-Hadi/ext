@@ -2,7 +2,10 @@ import { atom } from 'recoil'
 
 import { IOptionType } from '@/components/select/BaseSelect'
 import { DEFAULT_PROMPT_LIST_TYPE } from '@/features/prompt_library/constant'
-import { IPromptListType } from '@/features/prompt_library/types'
+import {
+  IPromptLibraryListParametersState,
+  IPromptListType,
+} from '@/features/prompt_library/types'
 
 export const PrompstCategoryOptions = atom<IOptionType[]>({
   key: 'PromptCategoryOptions',
@@ -41,3 +44,18 @@ export const SelectPromptIdAtom = atom<string | null>({
   key: 'SelectPromptIdAtom',
   default: null,
 })
+
+export const PromptLibraryListParametersState = atom<IPromptLibraryListParametersState>(
+  {
+    key: 'PromptLibraryListParametersState',
+    default: {
+      enabled: false,
+      activeTab: 'Public',
+      query: '',
+      category: 'All',
+      use_case: 'All',
+      page: 0,
+      page_size: 12,
+    },
+  },
+)

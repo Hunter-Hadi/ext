@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil'
 import { FavoritesPromptIdsAtom } from '@/features/prompt_library/store'
 import { IFavoritesPromptListRespeonse } from '@/features/prompt_library/types'
 import { post } from '@/utils/request'
-import { PROMPT_API } from '@/features/prompt_library/service'
+import { PROMPT_LIBRARY_API } from '@/features/prompt_library/service'
 import usePromptLibraryAuth from '@/features/prompt_library/hooks/usePromptLibraryAuth'
 
 const useInitFavoritesPromptIds = (isInit = true) => {
@@ -18,7 +18,7 @@ const useInitFavoritesPromptIds = (isInit = true) => {
     try {
       console.log(`我触发了 updateFavoritesPromptIds`)
       const res = await post<IFavoritesPromptListRespeonse>(
-        PROMPT_API.GET_FAVOURITE_PROMPTS,
+        PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS,
         {},
       )
       if (res?.data && res?.data?.favourite_prompts) {

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { IPromptVariable } from '@/features/prompt_library/types'
 import { promptActionToast as Toast } from '@/features/prompt_library/utils'
 import { post } from '@/utils/request'
-import { PROMPT_API } from '@/features/prompt_library/service'
+import { PROMPT_LIBRARY_API } from '@/features/prompt_library/service'
 
 export interface IAddPromptParams {
   type: boolean
@@ -28,7 +28,7 @@ const usePromptActions = () => {
   const addPrompt = async (params: IAddPromptParams) => {
     try {
       setLoading(true)
-      const res = await post<{ id: string }>(PROMPT_API.ADD_PROMPT, {
+      const res = await post<{ id: string }>(PROMPT_LIBRARY_API.ADD_PROMPT, {
         ...params,
         // prompt_hint: '_',
         type: params.type ? 'public' : 'private',
@@ -61,7 +61,7 @@ const usePromptActions = () => {
   const clonePrompt = async (params: Partial<IAddPromptParams>) => {
     try {
       setLoading(true)
-      const res = await post<{ id: string }>(PROMPT_API.ADD_PROMPT, {
+      const res = await post<{ id: string }>(PROMPT_LIBRARY_API.ADD_PROMPT, {
         ...omit(params, 'id'),
         type: params.type ? 'public' : 'private',
       })
@@ -85,16 +85,19 @@ const usePromptActions = () => {
   const editPrompt = async (params: IAddPromptParams) => {
     try {
       setLoading(true)
-      const res = await post<{ id: string }>(PROMPT_API.EDIT_OWN_PROMPT, {
-        ...params,
-        type: params.type ? 'public' : 'private',
-        // 请求接口前，清理下无用的字段
-        variables: params.variables.map((variable) => ({
-          hint: variable.hint,
-          name: variable.name,
-          type: variable.type,
-        })),
-      })
+      const res = await post<{ id: string }>(
+        PROMPT_LIBRARY_API.EDIT_OWN_PROMPT,
+        {
+          ...params,
+          type: params.type ? 'public' : 'private',
+          // 请求接口前，清理下无用的字段
+          variables: params.variables.map((variable) => ({
+            hint: variable.hint,
+            name: variable.name,
+            type: variable.type,
+          })),
+        },
+      )
 
       if (res.status === 'OK') {
         Toast.success('Edit prompt success')
@@ -115,7 +118,7 @@ const usePromptActions = () => {
   const deletePrompt = async (id: string) => {
     try {
       setLoading(true)
-      const res = await post<{ id: string }>(PROMPT_API.DELETE_PROMPT, {
+      const res = await post<{ id: string }>(PROMPT_LIBRARY_API.DELETE_PROMPT, {
         id,
       })
 

@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "與標準 gpt-3.5-turbo 模型具有相同的功能，但上下文長度增加了 4 倍。",
     "provider__openai_api__model__gpt_4__description": "比任何 GPT-3.5 模型更強大，能夠執行更複雜的任務，並針對聊天進行了優化。在最新模型發布後兩週將進行更新。",
     "provider__openai_api__model__gpt_4_32k__description": "與基礎 gpt-4 模型具有相同的功能，但上下文長度增加了 4 倍。將會根據我們的最新模型進行更新。",
-    "provider__openai_api__model__gpt_3_5_0613__description": "從 2023 年 6 月 13 日的 gpt-3.5-turbo 快照中提取的數據。與 gpt-3.5-turbo 不同，此模型將不會接收更新，並在新版本發布後的 3 個月後被棄用。",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "從 2023 年 6 月 13 日的 gpt-3.5-turbo-16k 快照中提取的數據。與 gpt-3.5-turbo-16k 不同，此模型將不會接收更新，並在新版本發布後的 3 個月後被棄用。",
     "provider__openai_api__model__gpt_4_0613__description": "從 2023 年 6 月 13 日的 gpt-4 快照中提取的數據。與 gpt-4 不同，此模型將不會接收更新，並在新版本發布後的 3 個月後被棄用。",
     "provider__openai_api__model__gpt_4_0613_32k__description": "2023年6月13日的gpt-4-32快照。与gpt-4-32k不同，此模型将不会接收更新，并在发布新版本后的3个月后被弃用。",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "確認刪除",
     "immersive_chat__delete_all_chat__button__cancel__title": "取消",
     "immersive_chat__delete_all_chat__button__title": "清除所有聊天",
-    "sidebar__share__share_button__tooltip": "下載聊天"
+    "sidebar__share__share_button__tooltip": "下載聊天",
+    "provider__openai_api__model__gpt_3_5_1106__description": "具有改進的指示追蹤、JSON 模式、可重現的輸出、並行函數調用等功能的最新 GPT-3.5 Turbo 模型。返回最多 4,096 個輸出標記。",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "具有改進的指示追蹤、JSON 模式、可重現的輸出、並行函數調用等功能的最新 GPT-4 模型。返回最多 4,096 個輸出標記。此預覽模型尚不適合用於生產流量。",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "除了所有其他 GPT-4 Turbo 功能外，還能理解圖像。返回最多 4,096 個輸出標記。這是一個預覽模型版本，尚不適合用於生產流量。",
+    "activity__black_friday_2023__title": "限時黑色星期五優惠 - 高達50%折扣！"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

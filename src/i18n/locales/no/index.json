@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Samme funksjonalitet som standard gpt-3.5-turbo-modellen, men med 4 ganger så mye kontekst.",
     "provider__openai_api__model__gpt_4__description": "Mer kapabel enn noen GPT-3.5-modell, i stand til å utføre mer komplekse oppgaver og optimalisert for chat. Vil bli oppdatert med OpenAIs nyeste modelliterasjon 2 uker etter at den er utgitt.",
     "provider__openai_api__model__gpt_4_32k__description": "Samme funksjonalitet som base gpt-4-modusen, men med 4x kontekstlengde. Vil bli oppdatert med vår nyeste modelliterasjon.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Øyeblikksbilde av gpt-3.5-turbo fra 13. juni 2023 med funksjonskall-data. I motsetning til gpt-3.5-turbo vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Øyeblikksbilde av gpt-3.5-turbo-16k fra 13. juni 2023. I motsetning til gpt-3.5-turbo-16k vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
     "provider__openai_api__model__gpt_4_0613__description": "Øyeblikksbilde av gpt-4 fra 13. juni 2023 med funksjonskall-data. I motsetning til gpt-4 vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Øyeblikksbilde av gpt-4-32 fra 13. juni 2023. I motsetning til gpt-4-32k vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Bekreft sletting",
     "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt",
     "immersive_chat__delete_all_chat__button__title": "Slett alle samtaler",
-    "sidebar__share__share_button__tooltip": "Last ned chat"
+    "sidebar__share__share_button__tooltip": "Last ned chat",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Den nyeste GPT-3.5 Turbo-modellen med forbedret instruksjonsfølging, JSON-modus, gjengitte utdata, parallell funksjonskalling og mer. Returnerer maksimalt 4 096 utdatatokens.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-modellen med forbedret instruksjonsfølging, JSON-modus, gjengitte utdata, parallell funksjonskalling og mer. Returnerer maksimalt 4 096 utdatatokens. Denne forhåndsvisningsmodellen er ennå ikke egnet for produksjonstrafikk.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til å forstå bilder, i tillegg til alle andre GPT-4 Turbo-funksjoner. Returnerer maksimalt 4 096 utdatatokens. Dette er en forhåndsvisningsmodellversjon og er ennå ikke egnet for produksjonstrafikk.",
+    "activity__black_friday_2023__title": "Begrensede Black Friday-tilbud – Opptil 50% rabatt!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

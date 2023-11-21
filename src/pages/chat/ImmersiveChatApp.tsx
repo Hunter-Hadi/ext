@@ -11,9 +11,12 @@ import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 // init i18n
 import '@/i18n'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
+import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
+import useActivity from '@/features/auth/hooks/useActivity'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const App: FC = () => {
+  const { isShowBlackFridayBanner } = useActivity()
   return (
     <Box
       component={'div'}
@@ -42,10 +45,11 @@ const App: FC = () => {
       >
         <AppInit />
         <Announcement />
+        <SidebarTopBar />
         <ChatBoxHeader showConversationList />
         <BrowserVersionDetector>
           <AppSuspenseLoadingLayout>
-            <Stack flexDirection={'row'} flex={1} height={'calc(100vh - 48px)'}>
+            <Stack flexDirection={'row'} flex={1} height={0}>
               <Stack
                 borderRight={'1px'}
                 borderBottom={0}
@@ -62,7 +66,7 @@ const App: FC = () => {
                   transition: 'transform 0.3s ease-in-out',
                   borderStyle: 'solid',
                 }}
-                height={'calc(100vh - 48px)'}
+                height={`calc(100vh - ${isShowBlackFridayBanner ? 96 : 48}px)`}
                 borderColor={'customColor.borderColor'}
                 spacing={1}
               >

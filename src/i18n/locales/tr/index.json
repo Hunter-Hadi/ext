@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Standart gpt-3.5-turbo modelinin aynı yetenekleri, ancak 4 kat daha fazla bağlam ile.",
     "provider__openai_api__model__gpt_4__description": "Herhangi bir GPT-3.5 modelinden daha yetenekli, daha karmaşık görevleri yerine getirebilir ve sohbet için optimize edilmiştir. OpenAI'nin en son model iterasyonu yayınlandıktan 2 hafta sonra güncellenecektir.",
     "provider__openai_api__model__gpt_4_32k__description": "Temel gpt-4 modelinin aynı yetenekleri, ancak 4 kat daha fazla bağlam uzunluğu ile. En son model iterasyonumuzla güncellenecektir.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "13 Haziran 2023 tarihli gpt-3.5-turbo anlık görüntüsü, işlev çağırma verileri içerir. Gpt-3.5-turbo'nun aksine, bu model güncelleme almayacak ve yeni bir sürüm yayınlandıktan 3 ay sonra kullanımdan kaldırılacaktır.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "13 Haziran 2023 tarihli gpt-3.5-turbo-16k anlık görüntüsü. Gpt-3.5-turbo-16k'nın aksine, bu model güncelleme almayacak ve yeni bir sürüm yayınlandıktan 3 ay sonra kullanımdan kaldırılacaktır.",
     "provider__openai_api__model__gpt_4_0613__description": "13 Haziran 2023 tarihli gpt-4 anlık görüntüsü, işlev çağırma verileri içerir. Gpt-4'nin aksine, bu model güncelleme almayacak ve yeni bir sürüm yayınlandıktan 3 ay sonra kullanımdan kaldırılacaktır.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "13 Haziran 2023 tarihli gpt-4-32 anlık görüntüsü. Gpt-4-32k'nın aksine, bu model güncelleme almayacak ve yeni bir sürüm yayınlandıktan 3 ay sonra kullanımdan kaldırılacaktır.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Silme işlemini onayla",
     "immersive_chat__delete_all_chat__button__cancel__title": "İptal",
     "immersive_chat__delete_all_chat__button__title": "Tüm sohbetleri temizle",
-    "sidebar__share__share_button__tooltip": "Sohbeti indir"
+    "sidebar__share__share_button__tooltip": "Sohbeti indir",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Geliştirilmiş talimat takibi, JSON modu, tekrarlanabilir çıktılar, paralel işlev çağrısı ve daha fazlasıyla en son GPT-3.5 Turbo modeli. En fazla 4,096 çıktı belirteci döndürür.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Geliştirilmiş talimat takibi, JSON modu, tekrarlanabilir çıktılar, paralel işlev çağrısı ve daha fazlasıyla en son GPT-4 modeli. En fazla 4,096 çıktı belirteci döndürür. Bu önizleme modeli henüz üretim trafiği için uygun değildir.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Diğer tüm GPT-4 Turbo yeteneklerine ek olarak görüntüleri anlama yeteneği. En fazla 4,096 çıktı belirteci döndürür. Bu bir önizleme model sürümüdür ve henüz üretim trafiği için uygun değildir.",
+    "activity__black_friday_2023__title": "Sınırlı Süreli Black Friday İndirimleri - %50'ye Kadar İndirim!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

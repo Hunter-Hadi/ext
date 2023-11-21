@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "قابلیت هایی مشابه مدل استاندارد gpt-3.5-turbo دارد اما با 4 برابر طول متن.",
     "provider__openai_api__model__gpt_4__description": "قابلیت بیشتری نسبت به هر مدل GPT-3.5 دارد، قادر به انجام وظایف پیچیده تر و بهینه شده برای چت. دو هفته پس از انتشار آخرین نسخه مدل OpenAI به روز خواهد شد.",
     "provider__openai_api__model__gpt_4_32k__description": "قابلیت هایی مشابه مدل پایه gpt-4 دارد اما با 4 برابر طول متن. به روز خواهد شد با آخرین نسخه مدل ما.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "نسخه ای از gpt-3.5-turbo از تاریخ 13 ژوئن 2023 با داده های فراخوانی تابع. برخلاف gpt-3.5-turbo، این مدل به روز رسانی نخواهد شد و 3 ماه پس از انتشار نسخه جدید منسوخ خواهد شد.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "نسخه ای از gpt-3.5-turbo-16k از تاریخ 13 ژوئن 2023. برخلاف gpt-3.5-turbo-16k، این مدل به روز رسانی نخواهد شد و 3 ماه پس از انتشار نسخه جدید منسوخ خواهد شد.",
     "provider__openai_api__model__gpt_4_0613__description": "نسخه ای از gpt-4 از تاریخ 13 ژوئن 2023 با داده های فراخوانی تابع. برخلاف gpt-4، این مدل به روز رسانی نخواهد شد و 3 ماه پس از انتشار نسخه جدید منسوخ خواهد شد.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "نسخه ای از gpt-4-32 از تاریخ 13 ژوئن 2023. برخلاف gpt-4-32k، این مدل به روز رسانی نخواهد شد و 3 ماه پس از انتشار نسخه جدید منسوخ خواهد شد.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "تأیید حذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "لغو",
     "immersive_chat__delete_all_chat__button__title": "پاک کردن همه چت‌ها",
-    "sidebar__share__share_button__tooltip": "دانلود چت"
+    "sidebar__share__share_button__tooltip": "دانلود چت",
+    "provider__openai_api__model__gpt_3_5_1106__description": "مدل GPT-3.5 Turbo جدیدتر با دنبال کردن دستور بهبود یافته، حالت JSON، خروجی های قابل تکرار، فراخوانی تابع موازی و بیشتر. حداکثر 4,096 توکن خروجی را برمیگرداند.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "مدل GPT-4 جدیدتر با دنبال کردن دستور بهبود یافته، حالت JSON، خروجی های قابل تکرار، فراخوانی تابع موازی و بیشتر. حداکثر 4,096 توکن خروجی را برمیگرداند. این مدل پیش نمایش هنوز مناسب برای ترافیک تولید نیست.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "قابلیت درک تصاویر، علاوه بر تمام قابلیت های دیگر GPT-4 Turbo. حداکثر 4,096 توکن خروجی را برمیگرداند. این نسخه مدل پیش نمایش است و هنوز مناسب برای ترافیک تولید نیست.",
+    "activity__black_friday_2023__title": "پیشنهادات ویژه جمعه سیاه محدود - تا 50% تخفیف!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

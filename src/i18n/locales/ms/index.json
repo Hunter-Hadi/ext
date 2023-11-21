@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Kemampuan yang sama seperti model gpt-3.5-turbo standard tetapi dengan 4 kali ganda konteks.",
     "provider__openai_api__model__gpt_4__description": "Lebih cekap daripada mana-mana model GPT-3.5, mampu melakukan tugas yang lebih kompleks, dan dioptimumkan untuk perbualan. Akan dikemaskini dengan iterasi model terkini OpenAI 2 minggu selepas ia dikeluarkan.",
     "provider__openai_api__model__gpt_4_32k__description": "Kemampuan yang sama seperti model gpt-4 asas tetapi dengan panjang konteks 4 kali ganda. Akan dikemaskini dengan iterasi model terkini kami.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Snapshot gpt-3.5-turbo dari 13 Jun 2023 dengan data pemanggilan fungsi. Berbeza dengan gpt-3.5-turbo, model ini tidak akan menerima kemaskini, dan akan ditarik balik 3 bulan selepas versi baru dikeluarkan.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Snapshot gpt-3.5-turbo-16k dari 13 Jun 2023. Berbeza dengan gpt-3.5-turbo-16k, model ini tidak akan menerima kemaskini, dan akan ditarik balik 3 bulan selepas versi baru dikeluarkan.",
     "provider__openai_api__model__gpt_4_0613__description": "Snapshot gpt-4 dari 13 Jun 2023 dengan data pemanggilan fungsi. Berbeza dengan gpt-4, model ini tidak akan menerima kemaskini, dan akan ditarik balik 3 bulan selepas versi baru dikeluarkan.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snapshot gpt-4-32 dari 13 Jun 2023. Berbeza dengan gpt-4-32k, model ini tidak akan menerima kemaskini, dan akan ditarik balik 3 bulan selepas versi baru dikeluarkan.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Sahkan pemadaman",
     "immersive_chat__delete_all_chat__button__cancel__title": "Batal",
     "immersive_chat__delete_all_chat__button__title": "Padam semua perbualan",
-    "sidebar__share__share_button__tooltip": "Muat turun perbualan"
+    "sidebar__share__share_button__tooltip": "Muat turun perbualan",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Model GPT-3.5 Turbo terkini dengan peningkatan mengikut arahan, mod JSON, hasil boleh diulangi, pemanggilan fungsi selari, dan banyak lagi. Mengembalikan maksimum 4,096 token output.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 terkini dengan peningkatan mengikut arahan, mod JSON, hasil boleh diulangi, pemanggilan fungsi selari, dan banyak lagi. Mengembalikan maksimum 4,096 token output. Model pra-tonton ini belum sesuai untuk trafik pengeluaran.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami imej, selain daripada semua keupayaan GPT-4 Turbo yang lain. Mengembalikan maksimum 4,096 token output. Ini adalah versi model pra-tonton dan belum sesuai untuk trafik pengeluaran.",
+    "activity__black_friday_2023__title": "Tawaran Terhad Black Friday – Sehingga 50% Off!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

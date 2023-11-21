@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Aceleași capacități ca modelul standard gpt-3.5-turbo, dar cu de 4 ori mai mult context.",
     "provider__openai_api__model__gpt_4__description": "Mai capabil decât orice model GPT-3.5, capabil să efectueze sarcini mai complexe și optimizat pentru conversații. Va fi actualizat cu cea mai recentă iterație a modelului OpenAI la 2 săptămâni după lansarea acestuia.",
     "provider__openai_api__model__gpt_4_32k__description": "Aceleași capacități ca modelul de bază gpt-4, dar cu de 4 ori mai mult context. Va fi actualizat cu cea mai recentă iterație a modelului nostru.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Captură instantanee a gpt-3.5-turbo din 13 iunie 2023 cu date de apelare a funcțiilor. Spre deosebire de gpt-3.5-turbo, acest model nu va primi actualizări și va fi învechit la 3 luni după lansarea unei noi versiuni.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Captură instantanee a gpt-3.5-turbo-16k din 13 iunie 2023. Spre deosebire de gpt-3.5-turbo-16k, acest model nu va primi actualizări și va fi învechit la 3 luni după lansarea unei noi versiuni.",
     "provider__openai_api__model__gpt_4_0613__description": "Captură instantanee a gpt-4 din 13 iunie 2023 cu date de apelare a funcțiilor. Spre deosebire de gpt-4, acest model nu va primi actualizări și va fi învechit la 3 luni după lansarea unei noi versiuni.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Captură instantanee a gpt-4-32 din 13 iunie 2023. Spre deosebire de gpt-4-32k, acest model nu va primi actualizări și va fi învechit la 3 luni după lansarea unei noi versiuni.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmați ștergerea",
     "immersive_chat__delete_all_chat__button__cancel__title": "Anulați",
     "immersive_chat__delete_all_chat__button__title": "Ștergeți toate conversațiile",
-    "sidebar__share__share_button__tooltip": "Descarcă chat"
+    "sidebar__share__share_button__tooltip": "Descarcă chat",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Cel mai recent model GPT-3.5 Turbo cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și altele. Returnează un maxim de 4.096 de token-uri de ieșire.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Cel mai recent model GPT-4 cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și altele. Returnează un maxim de 4.096 de token-uri de ieșire. Acest model de previzualizare nu este încă potrivit pentru traficul de producție.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitatea de a înțelege imagini, în plus față de toate celelalte capabilități ale lui GPT-4 Turbo. Returnează un maxim de 4.096 de token-uri de ieșire. Aceasta este o versiune de previzualizare a modelului și nu este încă potrivită pentru traficul de producție.",
+    "activity__black_friday_2023__title": "Oferte de Black Friday cu timp limitat - Până la 50% reducere!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

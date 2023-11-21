@@ -17,18 +17,12 @@ const YouTubeSummaryButton: FC = () => {
     null,
   )
   useEffect(() => {
-    const prevButton = document.querySelector(
-      `#${MAXAI_YOUTUBE_SUMMARY_BUTTON}`,
-    )
+    let timer: ReturnType<typeof setTimeout> | null = null
     if (element) {
-      if ((prevButton?.childNodes || 0) > 0) {
-        return
-      } else if (prevButton) {
-        prevButton.remove()
-      }
+      console.log('useFindElement', '2222')
       // 插入到element的nextSibling
       const button = document.createElement('div')
-      button.id = MAXAI_YOUTUBE_SUMMARY_BUTTON
+      button.className = MAXAI_YOUTUBE_SUMMARY_BUTTON
       button.style.cssText = `
           display: flex;
           align-items: center;
@@ -36,14 +30,29 @@ const YouTubeSummaryButton: FC = () => {
           margin-left: auto;
           flex-shrink: 0;
         `
-      setTimeout(() => {
+      timer = setTimeout(() => {
         const parent = element.parentNode as HTMLElement
+        console.log('useFindElement', '3333')
         if (parent) {
+          console.log('useFindElement', '4444')
           parent.style.cssText += `display: flex;align-items: center;gap: 8px;`
           element.parentNode?.append(button)
         }
         setRenderElement(button)
-      }, 5000)
+      }, 3000)
+    } else {
+      const prevButtons = Array.from(
+        document.querySelectorAll(`.${MAXAI_YOUTUBE_SUMMARY_BUTTON}`),
+      ) as HTMLDivElement[]
+      prevButtons.filter((prevButton) => {
+        prevButton.remove()
+      })
+      setRenderElement(null)
+    }
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
     }
   }, [element])
   if (!renderElement) {

@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Les mêmes capacités que le modèle gpt-3.5-turbo standard mais avec 4 fois plus de contexte.",
     "provider__openai_api__model__gpt_4__description": "Plus performant que n'importe quel modèle GPT-3.5, capable d'effectuer des tâches plus complexes et optimisé pour le chat. Sera mis à jour avec la dernière itération du modèle OpenAI 2 semaines après sa sortie.",
     "provider__openai_api__model__gpt_4_32k__description": "Les mêmes capacités que le modèle gpt-4 de base mais avec une longueur de contexte 4 fois supérieure. Sera mis à jour avec notre dernière itération du modèle.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Capture instantanée de gpt-3.5-turbo du 13 juin 2023 avec des données d'appel de fonction. Contrairement à gpt-3.5-turbo, ce modèle ne recevra pas de mises à jour et sera obsolète 3 mois après la sortie d'une nouvelle version.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Capture instantanée de gpt-3.5-turbo-16k du 13 juin 2023. Contrairement à gpt-3.5-turbo-16k, ce modèle ne recevra pas de mises à jour et sera obsolète 3 mois après la sortie d'une nouvelle version.",
     "provider__openai_api__model__gpt_4_0613__description": "Capture instantanée de gpt-4 du 13 juin 2023 avec des données d'appel de fonction. Contrairement à gpt-4, ce modèle ne recevra pas de mises à jour et sera obsolète 3 mois après la sortie d'une nouvelle version.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Capture instantanée de gpt-4-32 du 13 juin 2023. Contrairement à gpt-4-32k, ce modèle ne recevra pas de mises à jour et sera obsolète 3 mois après la sortie d'une nouvelle version.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmer la suppression",
     "immersive_chat__delete_all_chat__button__cancel__title": "Annuler",
     "immersive_chat__delete_all_chat__button__title": "Effacer tous les chats",
-    "sidebar__share__share_button__tooltip": "Télécharger le chat"
+    "sidebar__share__share_button__tooltip": "Télécharger le chat",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Le dernier modèle GPT-3.5 Turbo avec une meilleure prise en compte des instructions, le mode JSON, des sorties reproductibles, l'appel de fonctions parallèles et plus encore. Renvoie un maximum de 4 096 jetons de sortie.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Le dernier modèle GPT-4 avec une meilleure prise en compte des instructions, le mode JSON, des sorties reproductibles, l'appel de fonctions parallèles et plus encore. Renvoie un maximum de 4 096 jetons de sortie. Ce modèle de prévisualisation n'est pas encore adapté au trafic de production.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Capacité à comprendre les images, en plus de toutes les autres fonctionnalités de GPT-4 Turbo. Renvoie un maximum de 4 096 jetons de sortie. Il s'agit d'une version de modèle de prévisualisation qui n'est pas encore adaptée au trafic de production.",
+    "activity__black_friday_2023__title": "Offres du Black Friday à durée limitée - Jusqu'à 50% de réduction !"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Sama võimekus nagu standardne gpt-3.5-turbo mudel, kuid 4 korda suurema kontekstiga.",
     "provider__openai_api__model__gpt_4__description": "Võimekam kui ükski GPT-3.5 mudel, suudab teha keerukamaid ülesandeid ja on optimeeritud vestluseks. Uuendatakse OpenAI uusima mudeli iteratsiooniga 2 nädalat pärast selle väljalaskmist.",
     "provider__openai_api__model__gpt_4_32k__description": "Sama võimekus nagu gpt-4 baasmudel, kuid 4x pikema kontekstiga. Uuendatakse meie uusima mudeli iteratsiooniga.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Gpt-3.5-turbo koopia 13. juunist 2023 koos funktsioonide kutsumise andmetega. Erinevalt gpt-3.5-turbo mudelist ei saa see mudel uuendusi ja see aegub 3 kuud pärast uue versiooni väljalaskmist.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Gpt-3.5-turbo-16k koopia 13. juunist 2023. Erinevalt gpt-3.5-turbo-16k mudelist ei saa see mudel uuendusi ja see aegub 3 kuud pärast uue versiooni väljalaskmist.",
     "provider__openai_api__model__gpt_4_0613__description": "Gpt-4 koopia 13. juunist 2023 koos funktsioonide kutsumise andmetega. Erinevalt gpt-4 mudelist ei saa see mudel uuendusi ja see aegub 3 kuud pärast uue versiooni väljalaskmist.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Gpt-4-32 koopia 13. juunist 2023. Erinevalt gpt-4-32k mudelist ei saa see mudel uuendusi ja see aegub 3 kuud pärast uue versiooni väljalaskmist.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Kinnita kustutamine",
     "immersive_chat__delete_all_chat__button__cancel__title": "Tühista",
     "immersive_chat__delete_all_chat__button__title": "Kustuta kõik vestlused",
-    "sidebar__share__share_button__tooltip": "Laadi vestlus alla"
+    "sidebar__share__share_button__tooltip": "Laadi vestlus alla",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Uusim GPT-3.5 Turbo mudel, millel on parem juhiste järgimine, JSON režiim, taasesitatavad väljundid, paralleelne funktsioonide kutsumine ja palju muud. Tagastab maksimaalselt 4 096 väljunditokenit.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Uusim GPT-4 mudel, millel on parem juhiste järgimine, JSON režiim, taasesitatavad väljundid, paralleelne funktsioonide kutsumine ja palju muud. Tagastab maksimaalselt 4 096 väljunditokenit. See eelvaate mudel ei sobi veel tootmisliikluseks.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Võime mõista pilte koos kõigi teiste GPT-4 Turbo võimalustega. Tagastab maksimaalselt 4 096 väljunditokenit. See on eelvaate mudeli versioon ja pole veel sobilik tootmisliikluseks.",
+    "activity__black_friday_2023__title": "Piiratud aja pakkumised musta reede ajal – kuni 50% soodsamalt!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

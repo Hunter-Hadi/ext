@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Stejné možnosti jako standardní model gpt-3.5-turbo, ale s čtyřnásobným kontextem.",
     "provider__openai_api__model__gpt_4__description": "Výkonnější než jakýkoli model GPT-3.5, schopný provádět složitější úkoly a optimalizovaný pro chat. Bude aktualizován s nejnovější iterací modelu OpenAI 2 týdny po jeho vydání.",
     "provider__openai_api__model__gpt_4_32k__description": "Stejné možnosti jako základní model gpt-4, ale s čtyřnásobnou délkou kontextu. Bude aktualizován s naší nejnovější iterací modelu.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Snímek gpt-3.5-turbo z 13. června 2023 s daty volání funkcí. Na rozdíl od gpt-3.5-turbo tento model nebude aktualizován a bude zastaralý 3 měsíce po vydání nové verze.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Snímek gpt-3.5-turbo-16k z 13. června 2023. Na rozdíl od gpt-3.5-turbo-16k tento model nebude aktualizován a bude zastaralý 3 měsíce po vydání nové verze.",
     "provider__openai_api__model__gpt_4_0613__description": "Snímek gpt-4 z 13. června 2023 s daty volání funkcí. Na rozdíl od gpt-4 tento model nebude aktualizován a bude zastaralý 3 měsíce po vydání nové verze.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snímek gpt-4-32 z 13. června 2023. Na rozdíl od gpt-4-32k tento model nebude aktualizován a bude zastaralý 3 měsíce po vydání nové verze.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Potvrdit smazání",
     "immersive_chat__delete_all_chat__button__cancel__title": "Zrušit",
     "immersive_chat__delete_all_chat__button__title": "Vymazat všechny chaty",
-    "sidebar__share__share_button__tooltip": "Stáhnout chat"
+    "sidebar__share__share_button__tooltip": "Stáhnout chat",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Nejnovější model GPT-3.5 Turbo s vylepšeným následováním instrukcí, režimem JSON, reprodukovatelnými výstupy, paralelním voláním funkcí a dalšími funkcemi. Vrací maximálně 4 096 výstupních tokenů.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Nejnovější model GPT-4 s vylepšeným následováním instrukcí, režimem JSON, reprodukovatelnými výstupy, paralelním voláním funkcí a dalšími funkcemi. Vrací maximálně 4 096 výstupních tokenů. Tento ukázkový model zatím není vhodný pro produkční provoz.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Schopnost porozumět obrázkům, kromě všech ostatních schopností modelu GPT-4 Turbo. Vrací maximálně 4 096 výstupních tokenů. Toto je ukázková verze modelu a zatím není vhodná pro produkční provoz.",
+    "activity__black_friday_2023__title": "Omezená nabídka Black Friday slev – Až 50% sleva!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

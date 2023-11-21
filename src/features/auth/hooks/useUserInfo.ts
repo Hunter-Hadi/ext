@@ -2,12 +2,13 @@ import { useRecoilValue } from 'recoil'
 import { AuthUserInfoState } from '@/features/auth/store'
 import { useMemo } from 'react'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { IUserRoleType } from '@/features/auth/types'
+import { IUserPlanNameType, IUserRoleType } from '@/features/auth/types'
 import dayjs from 'dayjs'
 
 export type IUserCurrentPlan = {
   name: IUserRoleType
   isNewUser?: boolean
+  planName?: IUserPlanNameType
 }
 
 const useUserInfo = () => {
@@ -47,6 +48,8 @@ const useUserInfo = () => {
   }, [userInfo])
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
     let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
+    const planName: IUserPlanNameType | undefined =
+      userInfo?.subscription_plan_name
     if (userInfo?.roles?.length) {
       const pro = userInfo.roles.find((item) => item.name === 'pro')
       if (pro) {
@@ -81,6 +84,7 @@ const useUserInfo = () => {
       console.log('created account days', diffDays)
     }
     return {
+      planName,
       name,
       isNewUser,
     }

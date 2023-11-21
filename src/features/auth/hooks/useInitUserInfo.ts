@@ -105,7 +105,7 @@ const userInitUserInfo = (isInit = true) => {
                   'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!'
               } else if (newRole.name === 'pro') {
                 upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!'
+                  'You have successfully upgraded to MaxAI Pro. Enjoy enhanced productivity!'
               }
             }
             return {
@@ -144,7 +144,7 @@ const userInitUserInfo = (isInit = true) => {
           message.text ===
             'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!' ||
           message.text ===
-            'You have successfully upgraded to MaxAI Pro. Enjoy unlimited usage!',
+            'You have successfully upgraded to MaxAI Pro. Enjoy enhanced productivity!',
       )
     ) {
       clientChatConversationModifyChatMessages(

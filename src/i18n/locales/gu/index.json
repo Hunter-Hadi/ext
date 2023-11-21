@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "સ્ટાન્ડર્ડ gpt-3.5-turbo મોડેલ જેવું કામ કરે છે, પરંતુ 4 ગણતરી સાથે સંદર્ભ.",
     "provider__openai_api__model__gpt_4__description": "કોઈપણ GPT-3.5 મોડેલથી સક્ષમ અને વધુ જટિલ કાર્યો માટે સારું. તે જ્યારે તે જાહેર થાય ત્યારે 2 અઠવાડિયામાં અપડેટ થશે.",
     "provider__openai_api__model__gpt_4_32k__description": "બેઝ gpt-4 મોડેલ જેવું કામ કરે છે, પરંતુ 4x સંદર્ભ લંબાઈ. તે જ્યારે તેની નવી મોડેલ આવે ત્યારે અપડેટ થશે.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "જૂન 13, 2023 ની gpt-3.5-turbo ની સ્નેપશોટ જેમાં કાર્ય બુલાવવાના ડેટા છે. gpt-3.5-turbo ની જેમ આ મોડેલને અપડેટ મળતા નથી અને તે નવી વર્ઝન જાહેર થાય પછી 3 મહિનામાં અપડેટ થઈ જશે.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "જૂન 13, 2023 ની gpt-3.5-turbo-16k ની સ્નેપશોટ. gpt-3.5-turbo-16k ની જેમ આ મોડેલને અપડેટ મળતા નથી અને તે નવી વર્ઝન જાહેર થાય પછી 3 મહિનામાં અપડેટ થઈ જશે.",
     "provider__openai_api__model__gpt_4_0613__description": "જૂન 13, 2023 ની gpt-4 ની સ્નેપશોટ જેમાં કાર્ય બુલાવવાના ડેટા છે. gpt-4 ની જેમ આ મોડેલને અપડેટ મળતા નથી અને તે નવી વર્ઝન જાહેર થાય પછી 3 મહિનામાં અપડેટ થઈ જશે.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "જૂન 13, 2023 ની gpt-4-32 ની સ્નેપશોટ. gpt-4-32k ની જેમ આ મોડેલને અપડેટ મળતા નથી અને તે નવી વર્ઝન જાહેર થાય પછી 3 મહિનામાં અપડેટ થઈ જશે.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__title": "બધા ચેટ કાઢો",
     "immersive_chat__delete_all_chat__title": "તમારી ચેટ હિસ્ટરી ક્લિયર કરો - શું તમે ખરેખર ખાતરી કરો છો?",
     "immersive_chat__delete_all_chat__button__delete__title": "કાઢવાની પુષ્ટિ કરો",
-    "immersive_chat__delete_all_chat__button__cancel__title": "રદ કરો"
+    "immersive_chat__delete_all_chat__button__cancel__title": "રદ કરો",
+    "provider__openai_api__model__gpt_3_5_1106__description": "સુધારેલ નિર્દેશન અનુસરવા, JSON મોડ, પુનરુત્પાદન આઉટપુટ, સમાંતર કાર્ય બુલાવવા અને વધુ સાથે છેલ્લી GPT-3.5 ટર્બો મોડલ. 4,096 આઉટપુટ ટોકન્સ મહત્તમ પ્રદાન કરે છે.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "સુધારેલ નિર્દેશન અનુસરવા, JSON મોડ, પુનરુત્પાદન આઉટપુટ, સમાંતર કાર્ય બુલાવવા અને વધુ સાથે છેલ્લી GPT-4 મોડલ. 4,096 આઉટપુટ ટોકન્સ મહત્તમ પ્રદાન કરે છે. આ પ્રિવ્યૂ મોડલ હજી પણ ઉત્પાદન ટ્રેફિક માટે યોગ્ય નથી.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "છબિઓને સમજવાની ક્ષમતા, બીજા બધા GPT-4 ટર્બો ક્ષમતાઓ સાથે જોડાયેલી. 4,096 આઉટપુટ ટોકન્સ મહત્તમ પ્રદાન કરે છે. આ એક પ્રિવ્યૂ મોડલ આવતી ઉત્પાદન ટ્રેફિક માટે હજી પણ યોગ્ય નથી.",
+    "activity__black_friday_2023__title": "સીમિત સમયમાં કાળજી વાળી બ્લેક ફ્રાઈડે ડીલ્સ - 50% સુધી છૂટ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

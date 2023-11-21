@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Les mateixes capacitats que el model estàndard gpt-3.5-turbo però amb 4 vegades més context.",
     "provider__openai_api__model__gpt_4__description": "Més capaç que qualsevol model GPT-3.5, capaç de realitzar tasques més complexes i optimitzat per a xats. S'actualitzarà amb la darrera iteració del model d'OpenAI 2 setmanes després que es llanci.",
     "provider__openai_api__model__gpt_4_32k__description": "Les mateixes capacitats que el model base gpt-4 però amb una longitud de context 4 vegades més gran. S'actualitzarà amb la nostra darrera iteració del model.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Instantània de gpt-3.5-turbo del 13 de juny de 2023 amb dades de crida de funcions. A diferència de gpt-3.5-turbo, aquest model no rebrà actualitzacions i serà obsolet 3 mesos després que es llanci una nova versió.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Instantània de gpt-3.5-turbo-16k del 13 de juny de 2023. A diferència de gpt-3.5-turbo-16k, aquest model no rebrà actualitzacions i serà obsolet 3 mesos després que es llanci una nova versió.",
     "provider__openai_api__model__gpt_4_0613__description": "Instantània de gpt-4 del 13 de juny de 2023 amb dades de crida de funcions. A diferència de gpt-4, aquest model no rebrà actualitzacions i serà obsolet 3 mesos després que es llanci una nova versió.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Instantània de gpt-4-32 del 13 de juny de 2023. A diferència de gpt-4-32k, aquest model no rebrà actualitzacions i serà obsolet 3 mesos després que es llanci una nova versió.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmar esborrat",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel·lar",
     "immersive_chat__delete_all_chat__button__title": "Esborra tots els xats",
-    "sidebar__share__share_button__tooltip": "Descarrega el xat"
+    "sidebar__share__share_button__tooltip": "Descarrega el xat",
+    "provider__openai_api__model__gpt_3_5_1106__description": "El model GPT-3.5 Turbo més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "El model GPT-4 més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida. Aquest model de previsualització encara no és adequat per al trànsit de producció.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitat per comprendre imatges, a més de totes les altres capacitats del GPT-4 Turbo. Retorna un màxim de 4.096 tokens de sortida. Aquesta és una versió de previsualització del model i encara no és adequada per al trànsit de producció.",
+    "activity__black_friday_2023__title": "Ofertes de Black Friday per temps limitat: fins a un 50% de descompte!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

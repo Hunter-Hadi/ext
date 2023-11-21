@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Gleiche Fähigkeiten wie das Standardmodell gpt-3.5-turbo, jedoch mit 4-fachem Kontext.",
     "provider__openai_api__model__gpt_4__description": "Leistungsfähiger als jedes GPT-3.5-Modell, kann komplexere Aufgaben erledigen und ist optimiert für den Chat. Wird 2 Wochen nach Veröffentlichung der neuesten Modelliteration von OpenAI aktualisiert.",
     "provider__openai_api__model__gpt_4_32k__description": "Gleiche Fähigkeiten wie das Basismodell gpt-4, jedoch mit 4-facher Kontextlänge. Wird mit unserer neuesten Modelliteration aktualisiert.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Momentaufnahme von gpt-3.5-turbo vom 13. Juni 2023 mit Funktionsaufrufdaten. Im Gegensatz zu gpt-3.5-turbo wird dieses Modell keine Updates erhalten und 3 Monate nach Veröffentlichung einer neuen Version veraltet sein.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Momentaufnahme von gpt-3.5-turbo-16k vom 13. Juni 2023. Im Gegensatz zu gpt-3.5-turbo-16k wird dieses Modell keine Updates erhalten und 3 Monate nach Veröffentlichung einer neuen Version veraltet sein.",
     "provider__openai_api__model__gpt_4_0613__description": "Momentaufnahme von gpt-4 vom 13. Juni 2023 mit Funktionsaufrufdaten. Im Gegensatz zu gpt-4 wird dieses Modell keine Updates erhalten und 3 Monate nach Veröffentlichung einer neuen Version veraltet sein.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Momentaufnahme von gpt-4-32 vom 13. Juni 2023. Im Gegensatz zu gpt-4-32k wird dieses Modell keine Updates erhalten und 3 Monate nach Veröffentlichung einer neuen Version veraltet sein.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Löschung bestätigen",
     "immersive_chat__delete_all_chat__button__cancel__title": "Abbrechen",
     "immersive_chat__delete_all_chat__button__title": "Alle Chats löschen",
-    "sidebar__share__share_button__tooltip": "Chat herunterladen"
+    "sidebar__share__share_button__tooltip": "Chat herunterladen",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Das neueste GPT-3.5 Turbo-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Das neueste GPT-4-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück. Dieses Vorschau-Modell ist noch nicht für den Produktionsverkehr geeignet.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Fähigkeit, Bilder zu verstehen, zusätzlich zu allen anderen GPT-4 Turbo-Funktionen. Gibt maximal 4.096 Ausgabetoken zurück. Dies ist eine Vorschauversion des Modells und noch nicht für den Produktionsverkehr geeignet.",
+    "activity__black_friday_2023__title": "Begrenzte Black Friday Angebote – Bis zu 50% Rabatt!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

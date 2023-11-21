@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "Zelfde mogelijkheden als het standaard gpt-3.5-turbo-model, maar met 4 keer de context.",
     "provider__openai_api__model__gpt_4__description": "Capabeler dan elk GPT-3.5-model, kan complexere taken uitvoeren en is geoptimaliseerd voor chat. Wordt bijgewerkt met de nieuwste modeliteratie van OpenAI 2 weken nadat deze is uitgebracht.",
     "provider__openai_api__model__gpt_4_32k__description": "Zelfde mogelijkheden als het basis gpt-4-model, maar met 4x de contextlengte. Wordt bijgewerkt met onze nieuwste modeliteratie.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "Momentopname van gpt-3.5-turbo vanaf 13 juni 2023 met functieoproepgegevens. In tegenstelling tot gpt-3.5-turbo ontvangt dit model geen updates en wordt het 3 maanden na de release van een nieuwe versie stopgezet.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "Momentopname van gpt-3.5-turbo-16k vanaf 13 juni 2023. In tegenstelling tot gpt-3.5-turbo-16k ontvangt dit model geen updates en wordt het 3 maanden na de release van een nieuwe versie stopgezet.",
     "provider__openai_api__model__gpt_4_0613__description": "Momentopname van gpt-4 vanaf 13 juni 2023 met functieoproepgegevens. In tegenstelling tot gpt-4 ontvangt dit model geen updates en wordt het 3 maanden na de release van een nieuwe versie stopgezet.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Momentopname van gpt-4-32 vanaf 13 juni 2023. In tegenstelling tot gpt-4-32k ontvangt dit model geen updates en wordt het 3 maanden na de release van een nieuwe versie stopgezet.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "Bevestig verwijdering",
     "immersive_chat__delete_all_chat__button__cancel__title": "Annuleren",
     "immersive_chat__delete_all_chat__button__title": "Alle chats wissen",
-    "sidebar__share__share_button__tooltip": "Chat downloaden"
+    "sidebar__share__share_button__tooltip": "Chat downloaden",
+    "provider__openai_api__model__gpt_3_5_1106__description": "Het nieuwste GPT-3.5 Turbo-model met verbeterde instructieopvolging, JSON-modus, reproduceerbare uitvoer, parallelle functieoproep en meer. Geeft maximaal 4.096 uitvoertokens terug.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Het nieuwste GPT-4-model met verbeterde instructieopvolging, JSON-modus, reproduceerbare uitvoer, parallelle functieoproep en meer. Geeft maximaal 4.096 uitvoertokens terug. Dit voorbeeldmodel is nog niet geschikt voor productieverkeer.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "Mogelijkheid om afbeeldingen te begrijpen, naast alle andere mogelijkheden van GPT-4 Turbo. Geeft maximaal 4.096 uitvoertokens terug. Dit is een voorbeeldmodelversie en nog niet geschikt voor productieverkeer.",
+    "activity__black_friday_2023__title": "Beperkte Black Friday-aanbiedingen - Tot 50% korting!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

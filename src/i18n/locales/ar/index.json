@@ -334,8 +334,6 @@
     "provider__openai_api__model__gpt_3_5_16k__description": "نفس قدرات نموذج gpt-3.5-turbo القياسي ولكن مع زيادة في حجم السياق بمقدار 4 أضعاف.",
     "provider__openai_api__model__gpt_4__description": "أكثر نموذج قادر من أي نموذج GPT-3.5، قادر على القيام بمهام أكثر تعقيدًا ومُحسّن للدردشة. سيتم تحديثه بآخر نسخة من النموذج الأحدث من OpenAI بعد أسبوعين من إصداره.",
     "provider__openai_api__model__gpt_4_32k__description": "نفس قدرات نموذج gpt-4 الأساسي ولكن مع زيادة في طول السياق بمقدار 4 أضعاف. سيتم تحديثه بآخر نسخة من النموذج الأحدث لدينا.",
-    "provider__openai_api__model__gpt_3_5_0613__description": "لقطة لـ gpt-3.5-turbo من تاريخ 13 يونيو 2023 مع بيانات استدعاء الوظائف. على عكس gpt-3.5-turbo، لن يتم تحديث هذا النموذج وسيتم إيقافه بعد 3 أشهر من إصدار نسخة جديدة.",
-    "provider__openai_api__model__gpt_3_5_0613_16k__description": "لقطة لـ gpt-3.5-turbo-16k من تاريخ 13 يونيو 2023. على عكس gpt-3.5-turbo-16k، لن يتم تحديث هذا النموذج وسيتم إيقافه بعد 3 أشهر من إصدار نسخة جديدة.",
     "provider__openai_api__model__gpt_4_0613__description": "لقطة لـ gpt-4 من تاريخ 13 يونيو 2023 مع بيانات استدعاء الوظائف. على عكس gpt-4، لن يتم تحديث هذا النموذج وسيتم إيقافه بعد 3 أشهر من إصدار نسخة جديدة.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "لقطة لـ gpt-4-32 من تاريخ 13 يونيو 2023. على عكس gpt-4-32k، لن يتم تحديث هذا النموذج وسيتم إيقافه بعد 3 أشهر من إصدار نسخة جديدة.",
     "provider__chatgpt__title": "ChatGPT",
@@ -469,7 +467,11 @@
     "immersive_chat__delete_all_chat__button__delete__title": "تأكيد الحذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "إلغاء",
     "immersive_chat__delete_all_chat__button__title": "مسح جميع المحادثات",
-    "sidebar__share__share_button__tooltip": "تحميل المحادثة"
+    "sidebar__share__share_button__tooltip": "تحميل المحادثة",
+    "provider__openai_api__model__gpt_3_5_1106__description": "أحدث نموذج GPT-3.5 Turbo مع تحسين متابعة التعليمات، وضع JSON، النتائج المستنسخة، استدعاء الوظائف المتوازية، والمزيد. يُرجع حد أقصى من 4,096 رمز إخراج.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "أحدث نموذج GPT-4 مع تحسين متابعة التعليمات، وضع JSON، النتائج المستنسخة، استدعاء الوظائف المتوازية، والمزيد. يُرجع حد أقصى من 4,096 رمز إخراج. هذا النموذج المعاينة غير مناسب بعد لحركة المرور الإنتاجية.",
+    "provider__openai_api__model__gpt_4_vision_preview__description": "القدرة على فهم الصور، بالإضافة إلى جميع قدرات GPT-4 Turbo الأخرى. يُرجع حد أقصى من 4,096 رمز إخراج. هذا إصدار نموذج معاينة وغير مناسب بعد لحركة المرور الإنتاجية.",
+    "activity__black_friday_2023__title": "صفقات الجمعة السوداء لفترة محدودة - تصل إلى 50% خصم!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

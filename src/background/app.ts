@@ -46,6 +46,9 @@ import {
   resetChromeExtensionOnBoardingData,
   backgroundRestartChromeExtension,
   safeGetBrowserTab,
+  createChromeExtensionOptionsPage,
+  setChromeExtensionOnBoardingData,
+  getChromeExtensionOnBoardingData,
   createChromeExtensionImmersiveChatPage,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
@@ -58,8 +61,7 @@ import {
 import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
-import WebsiteContextManager from '@/features/websiteContext/background'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { getChromeExtensionUserInfo } from '@/features/auth/utils'
 
 /**
  * background.js 入口
@@ -86,6 +88,8 @@ export const startChromeExtensionBackground = () => {
     pdfSnifferStartListener().then().catch()
     // hot reload
     developmentHotReload()
+
+    initExternalMessageListener()
   } catch (e) {
     //
   }
@@ -104,40 +108,42 @@ const initChromeExtensionInstalled = () => {
         url: CHROME_EXTENSION_DOC_URL + '/get-started',
       })
     } else {
+      // @deprecated - 2023-11-20 应该不会再用了
       // NOTE: 在2.2.3版本更新的时候，弹出https://app.maxai.me/celebrationV2 - 2023-10-24
-      if (APP_VERSION === '2.2.3') {
-        await Browser.tabs.create({
-          url: 'https://app.maxai.me/celebrationV2',
-        })
-      }
+      // if (APP_VERSION === '2.2.3') {
+      //   await Browser.tabs.create({
+      //     url: 'https://app.maxai.me/celebrationV2',
+      //   })
+      // }
       // NOTE: 更新的时候统计一下当前占用的内存
-      if (APP_VERSION === '2.2.6') {
-        WebsiteContextManager.computeWebsiteContextStorageSize()
-          .then((size) => {
-            if (size > 0) {
-              setTimeout(() => {
-                // 发送到larkbot
-                sendLarkBotMessage(
-                  '[Memory] storage size',
-                  JSON.stringify(
-                    {
-                      size,
-                      version: APP_VERSION,
-                    },
-                    null,
-                    4,
-                  ),
-                  {
-                    uuid: '247cb207-4b00-4cd3-be74-bdb9ade6f8f4',
-                  },
-                )
-                  .then()
-                  .catch()
-              }, (Math.random() * 60 + 10) * 1000) // 延迟10-70s发送,降低发送频率
-            }
-          })
-          .catch()
-      }
+      // if (APP_VERSION === '2.2.6') {
+      //   WebsiteContextManager.computeWebsiteContextStorageSize()
+      //     .then((size) => {
+      //       if (size > 0) {
+      //         setTimeout(() => {
+      //           // 发送到larkbot
+      //           sendLarkBotMessage(
+      //             '[Memory] storage size',
+      //             JSON.stringify(
+      //               {
+      //                 size,
+      //                 version: APP_VERSION,
+      //               },
+      //               null,
+      //               4,
+      //             ),
+      //             {
+      //               uuid: '247cb207-4b00-4cd3-be74-bdb9ade6f8f4',
+      //             },
+      //           )
+      //             .then()
+      //             .catch()
+      //         }, (Math.random() * 60 + 10) * 1000) // 延迟10-70s发送,降低发送频率
+      //       }
+      //     })
+      //     .catch()
+      // }
+      await initChromeExtensionUpdated()
       // 保存本地快照
       await setChromeExtensionDBStorageSnapshot()
       // 更新插件
@@ -159,6 +165,55 @@ const initChromeExtensionInstalled = () => {
       contexts: ['all'],
     })
   })
+}
+
+/**
+ * 更新时触发的行为
+ */
+const initChromeExtensionUpdated = async () => {
+  // @since - 2023-11-20
+  // @description 黑五
+  const executeBlackFridayPromotion = async () => {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    // 如果已经弹窗过了，就不再弹窗
+    if (onBoardingData.ON_BOARDING_BLACK_FRIDAY_2023_OPEN_LINK) {
+      return
+    }
+    const result = await getChromeExtensionUserInfo(true)
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_BLACK_FRIDAY_2023_OPEN_LINK',
+      true,
+    )
+    if (result?.roles && result?.subscription_plan_name) {
+      const role = (
+        result.roles.find((role) => role.name === 'elite') ||
+        result.roles.find((role) => role.name === 'pro') || {
+          name: 'free',
+        }
+      ).name
+      const planName = result.subscription_plan_name
+      if (role === 'elite' && planName === 'ELITE_YEARLY') {
+        // 不弹窗
+      } else {
+        // 弹窗
+        // 跳转去https://app.maxai.me/blackfriday2023
+        await Browser.tabs.create({
+          url: `https://app.maxai.me/blackfriday2023`,
+        })
+      }
+    } else {
+      // 没登录也跳转
+      await Browser.tabs.create({
+        url: `https://app.maxai.me/blackfriday2023`,
+      })
+    }
+  }
+  if (APP_VERSION === '2.4.2') {
+    setTimeout(
+      executeBlackFridayPromotion,
+      (10 + Math.floor(Math.random() * 60)) * 1000,
+    )
+  }
 }
 
 /**
@@ -417,4 +472,32 @@ const developmentHotReload = () => {
     // createChromeExtensionOptionsPage('#/my-own-prompts')
     createChromeExtensionImmersiveChatPage('')
   }
+}
+
+const initExternalMessageListener = () => {
+  // 可接收外部消息的插件id
+  const extensionWhiteList = [
+    // webchatgpt
+    'lpfemeioodjbpieminkklglpmhlngfcn',
+
+    // modHeader
+    'idgpnmonknjnojddfkpgkljpfnnfcklj',
+  ]
+
+  Browser.runtime.onMessageExternal.addListener(async function (
+    message,
+    sender,
+  ) {
+    // 测试环境跳过 插件白名单 检测
+    if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
+      if (message.event === 'GET_MAXAI_USERINFO') {
+        const userinfo = await getChromeExtensionUserInfo(false)
+        return {
+          isLogin: !!userinfo,
+          success: true,
+        }
+      }
+    }
+    return undefined
+  })
 }

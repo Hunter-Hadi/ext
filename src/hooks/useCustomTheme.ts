@@ -204,7 +204,7 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
             },
             styleOverrides: {
               root: {
-                zIndex: '`2147483620`',
+                zIndex: '2147483620',
               },
             },
           },

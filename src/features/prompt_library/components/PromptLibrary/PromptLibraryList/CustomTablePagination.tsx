@@ -1,10 +1,10 @@
-import {
-  Stack,
-  SxProps,
-  TablePagination,
+import { Stack, SxProps } from '@mui/material'
+import TablePagination, {
   TablePaginationProps,
-} from '@mui/material'
+  tablePaginationClasses,
+} from '@mui/material/TablePagination'
 import React, { FC } from 'react'
+import { getPromptLibraryPortalContainerRoot } from '@/features/prompt_library/utils'
 
 interface ICustomTablePaginationProps {
   /**
@@ -78,11 +78,11 @@ const CustomTablePagination: FC<ICustomTablePaginationProps> = ({
           <TablePagination
             component={'div'}
             sx={{
-              '& > .MuiTablePagination-toolbar': {
+              [`& > .${tablePaginationClasses.toolbar}`]: {
                 pl: 0,
                 boxSizing: 'border-box',
               },
-              '.MuiTablePagination-select': {
+              [`& .${tablePaginationClasses.select}`]: {
                 fontSize: 16,
               },
             }}
@@ -93,7 +93,8 @@ const CustomTablePagination: FC<ICustomTablePaginationProps> = ({
             onRowsPerPageChange={handleChangeRowsPerPage}
             SelectProps={{
               MenuProps: {
-                disablePortal: true,
+                container: getPromptLibraryPortalContainerRoot(),
+                // disablePortal: true,
               },
             }}
             {...paginationProps}

@@ -2,6 +2,14 @@ import Toast from '@/utils/globalSnackbar'
 import { OptionsObject, SnackbarMessage } from 'notistack'
 import { IPromptVariable } from '@/features/prompt_library/types'
 import { DEFAULT_PROMPT_VARIABLE } from '@/features/prompt_library/constant'
+import { getAppRootElement } from '@/utils'
+
+/**
+ * 渲染需要portal container的地方的根级容器
+ */
+export const getPromptLibraryPortalContainerRoot = () => {
+  return getAppRootElement()
+}
 export const promptActionToast = {
   success: (msg: SnackbarMessage, options: OptionsObject = {}) =>
     Toast.success(msg, {

@@ -1,18 +1,20 @@
 import { Grid, Stack } from '@mui/material'
-import React, { FC, useCallback, useMemo, useState } from 'react'
+import React, { FC, useCallback, useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import CustomTablePagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/CustomTablePagination'
 import EmptyContent from '@/components/select/EmptyContent'
-import { PromptCard } from '@/features/prompt/components/PromptCard'
-import { usePromptSearch } from '@/features/prompt/hooks/usePromptSearch'
-import AddOwnPromptCard from '@/features/prompt/components/AddOwnPromptCard'
-import PromptFormModal from '@/features/prompt/components/PromptFormModal'
-import { PromptSearchParamsStore } from '@/features/prompt/store'
-import { IPromptActionKey, IPromptCardData } from '@/features/prompt/types'
-import AppLoadingLayout from '@/layouts/AppLoadingLayout'
-import { hasData } from '@/utils/utils'
-import useSelectPromptController from '@/features/prompt/hooks/useSelectPromptController'
+import PromptLibraryCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard'
+import usePromptSearch from '@/features/prompt_library/hooks/usePromptSearch'
+import AddOwnPromptCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/AddOwnPromptCard'
+import { PromptSearchParamsStore } from '@/features/prompt_library/store'
+import {
+  IPromptActionKey,
+  IPromptCardData,
+} from '@/features/prompt_library/types'
+import AppLoadingLayout from '@/components/AppLoadingLayout'
+import { hasData } from '@/utils'
+import useSelectPromptController from '@/features/prompt_library/hooks/useSelectPromptController'
 // import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 // import { FREE_PLAN_LIMIT_OWN_COUNT } from '@/features/auth/constant'
 
@@ -29,9 +31,6 @@ const PromptLibraryList: FC = () => {
     refetch,
   } = usePromptSearch()
 
-  const [modalType, setModalType] = useState<'add' | 'edit'>('add')
-  const [modalDefaultData, setModalDefaultData] = useState<IPromptCardData>()
-  const [addModalShow, setAddModalShow] = useState(false)
   const searchParamsStore = useRecoilValue(PromptSearchParamsStore)
   const tabActive = searchParamsStore.tab_active
 
@@ -96,7 +95,7 @@ const PromptLibraryList: FC = () => {
         {data.map((prompt) => (
           <Grid key={prompt.id} item xs={12} md={6} xl={3}>
             {tabActive === 'Own' ? (
-              <PromptCard
+              <PromptLibraryCard
                 onRefresh={handleRefresh}
                 actionButton={actionButton}
                 active={selectPromptId === prompt.id}
@@ -105,15 +104,10 @@ const PromptLibraryList: FC = () => {
                 onPromptClearSelected={handleClearSelected}
                 onOpenEditModal={(prompt) => {
                   updateSelectPromptId(null)
-                  setModalDefaultData(prompt)
-                  setModalType('edit')
-                  // init variables
-                  // batchAddVariable(prompt?.variables ?? [], true);
-                  setAddModalShow(true)
                 }}
               />
             ) : (
-              <PromptCard
+              <PromptLibraryCard
                 onRefresh={handleRefresh}
                 actionButton={actionButton}
                 active={selectPromptId === prompt.id}
@@ -126,15 +120,7 @@ const PromptLibraryList: FC = () => {
         ))}
         {tabActive === 'Own' && (
           <Grid item xs={12} md={6} xl={3}>
-            <AddOwnPromptCard
-              onClick={() => {
-                updateSelectPromptId(null)
-                setModalDefaultData(undefined)
-                setModalType('add')
-                // initReservedVariable();
-                setAddModalShow(true)
-              }}
-            />
+            <AddOwnPromptCard onClick={() => {}} />
           </Grid>
         )}
       </>
@@ -168,19 +154,6 @@ const PromptLibraryList: FC = () => {
           paginationProps={paginationProps}
           onChange={handlePageChange}
           onPageSizeChange={handlePageSizeChange}
-        />
-      )}
-      {addModalShow && (
-        <PromptFormModal
-          dataLength={data.length}
-          defaultData={modalDefaultData}
-          type={modalType}
-          show={addModalShow}
-          onClose={() => setAddModalShow(false)}
-          onConfirm={() => {
-            setAddModalShow(false)
-            handleRefresh()
-          }}
         />
       )}
     </Stack>

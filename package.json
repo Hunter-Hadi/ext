@@ -17,6 +17,7 @@
     "@minoru/react-dnd-treeview": "^3.4.1",
     "@mozilla/readability": "^0.4.4",
     "@mui/icons-material": "^5.11.9",
+    "@mui/lab": "5.0.0-alpha.153",
     "@mui/material": "^5.11.9",
     "ace-builds": "^1.15.3",
     "browser-image-compression": "^2.0.2",

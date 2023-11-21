@@ -29,10 +29,10 @@ const PromptLibraryIconButton: FC = () => {
       getBoundingClientRect: () => {
         const virtualRect = {
           x: containerRect.x + containerRect.width / 2,
-          y: rect.y,
+          y: rect.y - 8,
           width: 1,
           height: 1,
-          top: rect.top,
+          top: rect.top - 8,
           left: containerRect.x + containerRect.width / 2,
           bottom: rect.top + 1,
           right: containerRect.x + containerRect.width / 2 + 1,
@@ -80,6 +80,7 @@ const PromptLibraryIconButton: FC = () => {
                 width: isMaxAIImmersiveChatPage()
                   ? 'calc(100vw - 312px - 64px)'
                   : `calc(100% - 16px)`,
+                p: 2,
               }}
             >
               <PromptLibrary />

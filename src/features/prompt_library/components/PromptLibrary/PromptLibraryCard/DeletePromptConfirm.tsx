@@ -3,7 +3,7 @@ import { Button, Stack, Typography } from '@mui/material'
 import React, { FC } from 'react'
 
 import CustomModal from '@/components/CustomModal'
-import AppPaperCardLayout from '@/layouts/AppPaperCardLayout'
+import Paper from '@mui/material/Paper'
 
 interface IProps {
   show: boolean
@@ -31,11 +31,12 @@ const DeletePromptConfirm: FC<IProps> = ({
         my: '40vh',
       }}
     >
-      <AppPaperCardLayout
+      <Paper
         sx={{
-          height: 'max-content',
           p: 2,
+          height: 'max-content',
         }}
+        elevation={0}
       >
         <Stack spacing={2}>
           <Typography>
@@ -54,7 +55,7 @@ const DeletePromptConfirm: FC<IProps> = ({
             </Button>
           </Stack>
         </Stack>
-      </AppPaperCardLayout>
+      </Paper>
     </CustomModal>
   )
 }

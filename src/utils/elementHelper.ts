@@ -15,8 +15,8 @@ export function getPossibleElementByQuerySelector<T extends HTMLElement>(
 interface ICreateShadowRootProps {
   containerId?: string
   presetContainerElement?: (container: HTMLElement) => void
-  shadowContainerId?: string
-  presetShadowContainerElement?: (shadowContainer: HTMLElement) => void
+  shadowRootId?: string
+  presetShadowRootElement?: (shadowRoot: HTMLElement) => void
   // 使用 web component 的方式创建 shadow root
   webComponent?: boolean
 }
@@ -24,56 +24,56 @@ interface ICreateShadowRootProps {
  * @name createShadowRoot
  *
  * @param ICreateShadowRootProps
- * @returns
- *  container: HTMLElement, shadow root 的容器
- *  shadowContainer: HTMLElement, shadow root里的 root div, 一般作为 react render root
+ * @returns {
+ *  shadowRoot: HTMLElement, shadow root 的容器
+ *  container: HTMLElement, shadow root里的 root div, 一般作为 react render root
  *  emotionRoot: HTMLElement
- *
+ * }
  */
 export const createShadowRoot = (props: ICreateShadowRootProps) => {
   const {
     containerId,
     presetContainerElement,
-    shadowContainerId,
-    presetShadowContainerElement,
+    shadowRootId,
+    presetShadowRootElement,
     webComponent = true,
   } = props
   const isSupportWebComponent = 'customElements' in window
-  const container = document.createElement(
+  const shadowRoot = document.createElement(
     isSupportWebComponent && webComponent
-      ? `maxai-custom-element-${uuidV4()}`
+      ? `webchatgpt-custom-element-${uuidV4()}`
       : 'div',
   )
-  if (containerId) {
-    container.id = containerId
+  if (shadowRootId) {
+    shadowRoot.id = shadowRootId
   }
 
-  if (presetContainerElement) {
-    presetContainerElement(container)
+  if (presetShadowRootElement) {
+    presetShadowRootElement(shadowRoot)
   }
 
-  const shadowContainerWindow = container.attachShadow({ mode: 'open' })
+  const shadowContainerWindow = shadowRoot.attachShadow({ mode: 'open' })
 
   const emotionRoot = document.createElement('style')
   if (containerId) {
     emotionRoot.id = `${containerId}-emotion-style`
   }
 
-  const shadowContainer = document.createElement('div')
-  if (shadowContainerId) {
-    shadowContainer.id = shadowContainerId
+  const container = document.createElement('div')
+  if (containerId) {
+    container.id = containerId
   }
 
-  if (presetShadowContainerElement) {
-    presetShadowContainerElement(shadowContainer)
+  if (presetContainerElement) {
+    presetContainerElement(shadowRoot)
   }
 
   shadowContainerWindow.appendChild(emotionRoot)
-  shadowContainerWindow.appendChild(shadowContainer)
+  shadowContainerWindow.appendChild(container)
 
   return {
     container,
-    shadowContainer,
+    shadowRoot,
     emotionRoot,
   }
 }

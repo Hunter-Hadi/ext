@@ -46,7 +46,6 @@ import {
   resetChromeExtensionOnBoardingData,
   backgroundRestartChromeExtension,
   safeGetBrowserTab,
-  createChromeExtensionOptionsPage,
   setChromeExtensionOnBoardingData,
   getChromeExtensionOnBoardingData,
   createChromeExtensionImmersiveChatPage,
@@ -83,13 +82,12 @@ export const startChromeExtensionBackground = () => {
     initChromeExtensionContextMenu()
     initChromeExtensionDisabled()
     initChromeExtensionUninstalled()
+    initExternalMessageListener()
     // feature
     // pdf feature
     pdfSnifferStartListener().then().catch()
     // hot reload
     developmentHotReload()
-
-    initExternalMessageListener()
   } catch (e) {
     //
   }

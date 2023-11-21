@@ -39,6 +39,7 @@ import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useHideInHost from '@/minimum/hooks/useHideInHost'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 
 const log = new Log('AppInit')
 
@@ -389,6 +390,7 @@ const AppInit = () => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()
     }
+    renderGlobalSnackbar()
     ShortcutMessageClientInit()
     clientGetBrowserInfo().then().catch()
     initClientProxyWebsocket()

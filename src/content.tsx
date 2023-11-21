@@ -17,7 +17,6 @@ import {
   getCurrentDomainHost,
   isMaxAIImmersiveChatPage,
 } from '@/utils/dataHelper/websiteHelper'
-import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 // import createCache from '@emotion/cache'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
@@ -72,7 +71,6 @@ a.chatgpt-ad {
     )
   })
 }
-renderGlobalSnackbar()
 
 const App = React.lazy(() => import('./pages/App'))
 const ImmersiveChatApp = React.lazy(

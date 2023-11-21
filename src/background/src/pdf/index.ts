@@ -33,20 +33,49 @@ import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionS
 // }
 const log = new Log('PDF')
 export const pdfSnifferStartListener = async () => {
+  const fetchingMap = new Map<string, 'fetching' | 'validPDF' | 'invalidPDF'>()
+  const openPDFViewer = async (tabId: number, url: string) => {
+    const settings = await getLiteChromeExtensionDBStorage()
+    if (settings.userSettings?.pdf?.enabled) {
+      const redirectUrl = Browser.runtime.getURL(
+        `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,
+      )
+      log.info('pdfSnifferStartListener success', url, redirectUrl)
+      await Browser.tabs.update(tabId, {
+        url: redirectUrl,
+      })
+    }
+  }
   Browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (tab.active) {
       const url = tab.url || tab.pendingUrl
+      // 如果是本地文件,并且是.pdf，直接打开
       if (url?.startsWith('file://') || url?.startsWith('ftp://')) {
         if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
-          const settings = await getLiteChromeExtensionDBStorage()
-          if (settings.userSettings?.pdf?.enabled) {
-            const redirectUrl = Browser.runtime.getURL(
-              `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,
-            )
-            log.info('pdfSnifferStartListener success', url, redirectUrl)
-            await Browser.tabs.update(tabId, {
-              url: redirectUrl,
-            })
+          await openPDFViewer(tabId, url)
+        }
+      }
+      // 如果是网络文件，检测是否是pdf
+      if (url?.endsWith('.pdf') || url?.endsWith('.PDF')) {
+        if (url?.startsWith('http://') || url?.startsWith('https://')) {
+          if (!fetchingMap.has(url)) {
+            fetchingMap.set(url, 'fetching')
+            // 获取文件类型
+            fetch(url, { method: 'HEAD' })
+              .then(function (response) {
+                const contentType = response.headers.get('content-type')
+                if (contentType === 'application/pdf') {
+                  fetchingMap.set(url, 'validPDF')
+                  openPDFViewer(tabId, url)
+                } else {
+                  fetchingMap.set(url, 'invalidPDF')
+                }
+              })
+              .catch(function (error) {
+                fetchingMap.delete(url)
+              })
+          } else if (fetchingMap.get(url) === 'validPDF') {
+            await openPDFViewer(tabId, url)
           }
         }
       }

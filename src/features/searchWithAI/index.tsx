@@ -44,26 +44,26 @@ const mount = async (
 
     const isDarkMode = siteConfig.isDarkMode()
 
-    const { shadowContainer, emotionRoot, container } = createShadowRoot({
-      containerId: SEARCH_WITH_AI_ROOT_ID,
-      presetContainerElement(container) {
-        container.style.order = '-1'
+    const { shadowRoot, emotionRoot, container } = createShadowRoot({
+      shadowRootId: SEARCH_WITH_AI_ROOT_ID,
+      presetShadowRootElement(shadowRoot) {
+        shadowRoot.style.order = '-1'
       },
-      shadowContainerId: SEARCH_WITH_AI_SHADOW_CONTAINER_ID,
-      presetShadowContainerElement(shadowContainer) {
-        shadowContainer.style.maxWidth = '370px'
-        shadowContainer.style.marginBottom = '20px'
-        shadowContainer.style.fontFamily =
+      containerId: SEARCH_WITH_AI_SHADOW_CONTAINER_ID,
+      presetContainerElement(container) {
+        container.style.maxWidth = '370px'
+        container.style.marginBottom = '20px'
+        container.style.fontFamily =
           'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'
 
-        isDarkMode && shadowContainer.classList.add('dark')
+        isDarkMode && container.classList.add('dark')
 
         // set custom style
         const customStyle = siteConfig.customStyle
         if (customStyle) {
           // 遍历 customStyle
           Object.keys(customStyle).forEach((key) => {
-            shadowContainer.style.setProperty(key, customStyle[key])
+            container.style.setProperty(key, customStyle[key])
           })
         }
       },
@@ -111,7 +111,7 @@ const mount = async (
       speedy: false,
     })
 
-    createRoot(shadowContainer).render(
+    createRoot(shadowRoot).render(
       <React.StrictMode>
         <RecoilRoot>
           <CacheProvider value={cache}>
@@ -120,7 +120,7 @@ const mount = async (
                 question={question}
                 siteName={siteName}
                 isDarkMode={siteConfig.isDarkMode()}
-                rootElement={shadowContainer}
+                rootElement={shadowRoot}
               />
             </AppThemeProvider>
           </CacheProvider>

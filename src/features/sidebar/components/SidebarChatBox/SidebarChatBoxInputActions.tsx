@@ -15,7 +15,7 @@ import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxToken
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
-import PromptLibraryIconButton from '@/features/prompt_library/components/PromptLibraryIconButton'
+import PromptLibraryIconButton from '@/features/prompt_library/layout/PromptLibraryIconButton'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void

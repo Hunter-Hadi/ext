@@ -38,14 +38,9 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
  * @constructor
  */
 const PromptLibraryTabs: FC = () => {
-  const {
-    promptLibraryListParametersState,
-    activeTab,
-    updateActiveTab,
-  } = usePromptLibraryParameters()
+  const { activeTab, updateActiveTab } = usePromptLibraryParameters()
   return (
     <Box flex={1} flexBasis={'100%'}>
-      <pre>{JSON.stringify(promptLibraryListParametersState, null, 2)}</pre>
       <CustomTabs
         value={activeTab}
         variant="fullWidth"

@@ -9,10 +9,17 @@ import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import Paper from '@mui/material/Paper'
 import { getAppRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import Box from '@mui/material/Box'
+import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
+
 const PromptLibraryIconButton: FC = () => {
   const { t } = useTranslation(['prompt_library'])
+  const {
+    promptLibraryOpen,
+    openPromptLibrary,
+    closePromptLibrary,
+  } = usePromptLibrary()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const [open, setOpen] = React.useState(false)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const handleClick = (newPlacement: PopperPlacementType) => (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -27,15 +34,18 @@ const PromptLibraryIconButton: FC = () => {
     const containerRect = containerElement.getBoundingClientRect()
     setAnchorEl({
       getBoundingClientRect: () => {
+        const left = isMaxAIImmersiveChatPage()
+          ? document.body.offsetWidth / 2 + 8
+          : containerRect.x + containerRect.width / 2
         const virtualRect = {
-          x: containerRect.x + containerRect.width / 2,
+          x: left,
           y: rect.y - 8,
           width: 1,
           height: 1,
           top: rect.top - 8,
-          left: containerRect.x + containerRect.width / 2,
+          left: left,
           bottom: rect.top + 1,
-          right: containerRect.x + containerRect.width / 2 + 1,
+          right: left + 1,
         } as DOMRect
         // draw
         // const div = document.createElement('div')
@@ -50,7 +60,7 @@ const PromptLibraryIconButton: FC = () => {
         return virtualRect
       },
     } as any)
-    setOpen((prev) => placement !== newPlacement || !prev)
+    openPromptLibrary()
     setPlacement(newPlacement)
   }
 
@@ -66,25 +76,54 @@ const PromptLibraryIconButton: FC = () => {
             p: '5px',
             minWidth: 'unset',
           }}
-          variant={'outlined'}
+          variant={promptLibraryOpen ? 'contained' : 'outlined'}
         >
-          <MagicBookIcon sx={{ fontSize: '20px', color: 'primary.main' }} />
+          <MagicBookIcon
+            sx={{
+              fontSize: '20px',
+            }}
+          />
         </Button>
       </TextOnlyTooltip>
-      <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
+      {promptLibraryOpen && (
+        <Box
+          onClick={() => {
+            closePromptLibrary()
+          }}
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 1000,
+            bgcolor: 'rgba(0,0,0,0.5)',
+          }}
+        />
+      )}
+      <Popper
+        open={promptLibraryOpen}
+        anchorEl={anchorEl}
+        placement={placement}
+        transition
+      >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
-            <Paper
-              elevation={1}
-              sx={{
-                width: isMaxAIImmersiveChatPage()
-                  ? 'calc(100vw - 312px - 64px)'
-                  : `calc(100% - 16px)`,
-                p: 2,
-              }}
-            >
-              <PromptLibrary />
-            </Paper>
+            <div>
+              <Paper
+                elevation={4}
+                sx={{
+                  width: isMaxAIImmersiveChatPage()
+                    ? 'calc(100vw - 128px)'
+                    : `calc(100% - 16px)`,
+                  height: 'calc(100vh - 140px)',
+                  maxHeight: '1030px',
+                  p: 2,
+                }}
+              >
+                <PromptLibrary />
+              </Paper>
+            </div>
           </Fade>
         )}
       </Popper>

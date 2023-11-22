@@ -1,19 +1,17 @@
 export type IPromptType = 'private' | 'public'
 
-export interface IPromptCardData {
+export interface IPromptLibraryCardData {
   id: string
   use_case: string
   category: string
   prompt_hint: string
   prompt_title: string
   teaser: string
-
   author_url?: string
   author?: string
   prompt_template?: string
   type?: IPromptType
   update_time?: string
-
   // api response types
   variables?: IPromptVariable[]
   variable_types?: IPromptVariableType[]
@@ -38,12 +36,11 @@ export interface IPromptCategoryApiData {
   use_cases: string[]
 }
 
-export interface IFavoritesPromptListRespeonse {
-  favourite_prompts: IPromptCardData[]
-  own_prompts: IPromptCardData[]
-  page_number: number
-  page_size: number
-  total_prompts_cnt: number
+export interface IFavoritePromptListResponse {
+  favourite_prompts: IPromptLibraryCardData[]
+}
+export interface IOwnPromptListResponse {
+  own_prompts: IPromptLibraryCardData[]
 }
 
 export interface IPromptVariable {
@@ -64,6 +61,12 @@ export type IPromptActionKey = 'see' | 'delete' | 'edit' | 'favorite'
 
 export type IPromptListType = 'Favorites' | 'Public' | 'Own'
 
+export interface IPromptLibraryState {
+  open: boolean
+  selectedPromptId: string
+  onClickPrompt: () => Promise<void>
+}
+
 export interface IPromptLibraryListParametersState {
   enabled: boolean
   activeTab: IPromptListType
@@ -72,4 +75,5 @@ export interface IPromptLibraryListParametersState {
   use_case: string
   page: number
   page_size: number
+  total: number
 }

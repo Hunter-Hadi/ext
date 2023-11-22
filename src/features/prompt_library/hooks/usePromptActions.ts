@@ -4,7 +4,10 @@ import { useState } from 'react'
 import { IPromptVariable } from '@/features/prompt_library/types'
 import { promptActionToast as Toast } from '@/features/prompt_library/utils'
 import { post } from '@/utils/request'
-import { PROMPT_LIBRARY_API } from '@/features/prompt_library/service'
+import PromptLibraryService, {
+  PROMPT_LIBRARY_API,
+} from '@/features/prompt_library/service'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 export interface IAddPromptParams {
   type: boolean
@@ -24,7 +27,23 @@ export interface IAddPromptParams {
 
 const usePromptActions = () => {
   const [loading, setLoading] = useState(false)
-
+  const queryClient = useQueryClient()
+  const addFavoritePromptMutation = useMutation({
+    mutationFn: PromptLibraryService.addFavoritePrompt,
+    onSuccess: async () => {
+      await queryClient.refetchQueries({
+        queryKey: [PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS],
+      })
+    },
+  })
+  const removeFavoritePromptMutation = useMutation({
+    mutationFn: PromptLibraryService.removeFavoritePrompt,
+    onSuccess: async () => {
+      await queryClient.refetchQueries({
+        queryKey: [PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS],
+      })
+    },
+  })
   const addPrompt = async (params: IAddPromptParams) => {
     try {
       setLoading(true)
@@ -140,6 +159,8 @@ const usePromptActions = () => {
   }
 
   return {
+    addFavoritePromptMutation,
+    removeFavoritePromptMutation,
     addPrompt,
     clonePrompt,
     editPrompt,

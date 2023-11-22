@@ -15,16 +15,14 @@ import {
   DEFAULT_PROMPT_AUTHOR,
   DEFAULT_PROMPT_AUTHOR_LINK,
 } from '@/features/prompt_library/constant'
-import useFavouriteActionsPrompt from '@/features/prompt_library/hooks/useAddFavouritePrompt'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 import {
   IPromptActionKey,
-  IPromptCardData,
+  IPromptLibraryCardData,
 } from '@/features/prompt_library/types'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import EllipsisTextWithTooltip from '@/components/EllipsisTextWithTooltip'
-import usePromptLibraryAuth from '@/features/prompt_library/hooks/usePromptLibraryAuth'
 import DeletePromptConfirm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/DeletePromptConfirm'
 import PromptTypeList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptTypeList'
 dayjs.extend(relativeTime)
@@ -33,9 +31,9 @@ dayjs.extend(utc)
 const PromptLibraryCard: FC<{
   actionButton?: IPromptActionKey[]
   active?: boolean
-  prompt: IPromptCardData
-  onClick?: (prompt: IPromptCardData) => void
-  onOpenEditModal?: (prompt: IPromptCardData) => void
+  prompt: IPromptLibraryCardData
+  onClick?: (prompt: IPromptLibraryCardData) => void
+  onOpenEditModal?: (prompt: IPromptLibraryCardData) => void
   onPromptClearSelected?: () => void
   onRefresh?: () => void
 }> = ({
@@ -48,13 +46,6 @@ const PromptLibraryCard: FC<{
 }) => {
   const [deleteConfirmShow, setDeleteConfirmShow] = useState(false)
 
-  const {
-    addFavouritePrompt,
-    removeFavouritePrompt,
-    loading: favoritesLoading,
-  } = useFavouriteActionsPrompt()
-  const { checkAuthAsync } = usePromptLibraryAuth()
-
   const { deletePrompt, loading: actionLoading } = usePromptActions()
 
   const detailLink = useMemo(() => {
@@ -62,16 +53,6 @@ const PromptLibraryCard: FC<{
       ? `${APP_USE_CHAT_GPT_HOST}/prompts/own/${prompt.id}`
       : `${APP_USE_CHAT_GPT_HOST}/prompts/${prompt.id}`
   }, [prompt])
-
-  const handleFavoriteIcon = async () => {
-    await addFavouritePrompt(prompt.id)
-  }
-  const handleRemoveFavoriteIcon = async () => {
-    const status = await removeFavouritePrompt(prompt.id)
-    if (status) {
-      onRefresh && onRefresh()
-    }
-  }
 
   const handleDeleteConfirm = async () => {
     const status = await deletePrompt(prompt.id)
@@ -107,22 +88,7 @@ const PromptLibraryCard: FC<{
       )
     }
     if (actionButton.includes('favorite')) {
-      btnList.push(
-        <FavoriteIconButton
-          key="favorite"
-          id={prompt.id}
-          onClick={async (isFavorite) => {
-            if (await checkAuthAsync()) {
-              if (isFavorite) {
-                handleRemoveFavoriteIcon()
-              } else {
-                handleFavoriteIcon()
-              }
-            }
-          }}
-          loading={favoritesLoading}
-        />,
-      )
+      btnList.push(<FavoriteIconButton key="favorite" promptId={prompt.id} />)
     }
 
     return btnList
@@ -175,18 +141,22 @@ const PromptLibraryCard: FC<{
         }}
       >
         <Stack direction="row" spacing={1.5} justifyContent="space-between">
-          <Typography
-            variant={'body1'}
+          <EllipsisTextWithTooltip
+            tip={prompt.prompt_title}
+            color={'text.secondary'}
+            fontSize={16}
             sx={{
               fontSize: '20px',
               lineHeight: '24px',
               whiteSpace: 'normal',
               wordBreak: 'break-word',
               fontWeight: 700,
+              minHeight: '72px',
             }}
           >
             {prompt.prompt_title}
-          </Typography>
+          </EllipsisTextWithTooltip>
+          <Typography variant={'body1'} sx={{}}></Typography>
           <Stack direction="row" fontSize={16} height="max-content">
             {actionBtnList()}
           </Stack>
@@ -246,9 +216,10 @@ const PromptLibraryCard: FC<{
           color={'text.secondary'}
           fontSize={16}
           sx={{
+            lineHeight: '20px',
             whiteSpace: 'normal',
             wordBreak: 'break-word',
-            // minHeight: 78,
+            minHeight: 60,
           }}
         >
           <PromptTypeList

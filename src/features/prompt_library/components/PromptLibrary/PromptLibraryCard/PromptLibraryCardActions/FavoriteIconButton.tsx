@@ -1,22 +1,25 @@
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined'
-import React, { FC, useMemo, useState } from 'react'
-import useInitFavoritesPromptIds from '@/features/prompt_library/hooks/useInitFavoritesPromptIds'
+import React, { FC, useMemo } from 'react'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import CircularProgress from '@mui/material/CircularProgress'
+import useFavoritePrompts from '@/features/prompt_library/hooks/useFavoritePrompts'
+import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 export const FavoriteIconButton: FC<{
-  id: string
-  onClick: (isFavorite: boolean) => void
-  loading: boolean
-}> = ({ id, loading, onClick }) => {
-  const [buttonLoading] = useState(false)
-
-  const { favoritesPromptIds } = useInitFavoritesPromptIds(false)
-
-  const isFavorite = useMemo(() => favoritesPromptIds.includes(id), [
-    favoritesPromptIds,
-    id,
+  promptId: string
+}> = ({ promptId }) => {
+  const {
+    addFavoritePromptMutation,
+    removeFavoritePromptMutation,
+  } = usePromptActions()
+  const { data } = useFavoritePrompts()
+  const favouritePromptIds = useMemo(() => {
+    return (data || []).map((prompt) => prompt.id)
+  }, [data])
+  const isFavorite = useMemo(() => favouritePromptIds.includes(promptId), [
+    favouritePromptIds,
+    promptId,
   ])
 
   const iconSx = useMemo(
@@ -44,12 +47,17 @@ export const FavoriteIconButton: FC<{
   const buttonCom = (
     <IconButton
       size="small"
-      onClick={(event) => {
+      onClick={async (event) => {
         event.stopPropagation()
-        onClick && onClick(isFavorite)
+        if (isFavorite) {
+          removeFavoritePromptMutation.mutate(promptId)
+        } else {
+          addFavoritePromptMutation.mutate(promptId)
+        }
       }}
     >
-      {loading || buttonLoading ? (
+      {addFavoritePromptMutation.isPending ||
+      removeFavoritePromptMutation.isPending ? (
         <CircularProgress size={16} />
       ) : (
         <Tooltip title={tooltipTitle}>{Icon}</Tooltip>

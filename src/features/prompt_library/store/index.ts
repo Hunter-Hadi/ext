@@ -4,6 +4,7 @@ import { IOptionType } from '@/components/select/BaseSelect'
 import { DEFAULT_PROMPT_LIST_TYPE } from '@/features/prompt_library/constant'
 import {
   IPromptLibraryListParametersState,
+  IPromptLibraryState,
   IPromptListType,
 } from '@/features/prompt_library/types'
 
@@ -45,6 +46,15 @@ export const SelectPromptIdAtom = atom<string | null>({
   default: null,
 })
 
+export const PromptLibraryState = atom<IPromptLibraryState>({
+  key: 'PromptLibraryState',
+  default: {
+    open: false,
+    selectedPromptId: '',
+    onClickPrompt: async () => {},
+  },
+})
+
 export const PromptLibraryListParametersState = atom<IPromptLibraryListParametersState>(
   {
     key: 'PromptLibraryListParametersState',
@@ -56,6 +66,7 @@ export const PromptLibraryListParametersState = atom<IPromptLibraryListParameter
       use_case: 'All',
       page: 0,
       page_size: 12,
+      total: 0,
     },
   },
 )

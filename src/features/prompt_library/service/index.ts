@@ -1,6 +1,13 @@
-import { get } from '@/utils/request'
-import { IPromptCategoryApiData } from '@/features/prompt_library/types'
+import { get, post } from '@/utils/request'
+import {
+  IPromptLibraryCardData,
+  IPromptCategoryApiData,
+  IPromptLibraryListParametersState,
+  IFavoritePromptListResponse,
+  IOwnPromptListResponse,
+} from '@/features/prompt_library/types'
 import uniq from 'lodash-es/uniq'
+import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
 
 export const PROMPT_LIBRARY_API = {
   GET_FAVOURITE_PROMPTS: '/prompt/get_favourite_prompts',
@@ -14,6 +21,15 @@ export const PROMPT_LIBRARY_API = {
   REMOVE_FAVOURITE_PROMPT: '/prompt/remove_favourite_prompt',
   DELETE_PROMPT: '/prompt/remove_own_prompt',
   EDIT_OWN_PROMPT: '/prompt/update_own_prompt',
+}
+
+interface PaginatedData<T> {
+  data: T[]
+  current_page_size: number
+  total: number
+  current_page: number
+  msg: string
+  status: string
 }
 
 export default class PromptLibraryService {
@@ -45,5 +61,76 @@ export default class PromptLibraryService {
       return Array.from(categoryMap.values())
     }
     return []
+  }
+
+  /**
+   * 获取公共prompt列表
+   * @param params
+   */
+  static async getPublicPrompts(params: IPromptLibraryListParametersState) {
+    const response = await post(
+      PROMPT_LIBRARY_API.SEARCH_PROMPT,
+      objectFilterEmpty({
+        page: params.page,
+        page_size: params.page_size,
+        category: params.category === 'All' ? '' : params.category,
+        use_case: params.use_case === 'All' ? '' : params.use_case,
+        keyword: params.query,
+      }),
+    )
+    if (response.status === 'OK') {
+      return response as PaginatedData<IPromptLibraryCardData>
+    }
+    return undefined
+  }
+
+  /**
+   * 获取Favorite prompt列表
+   */
+  static async getFavouritePrompts() {
+    const res = await post<IFavoritePromptListResponse>(
+      PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS,
+      {},
+    )
+    return (res.data?.favourite_prompts || []) as IPromptLibraryCardData[]
+  }
+
+  /**
+   * 添加Favorite prompt
+   * @param id
+   */
+  static async addFavoritePrompt(id: string) {
+    const response = await post<{ id: string }>(
+      PROMPT_LIBRARY_API.ADD_FAVOURITE_PROMPT,
+      {
+        id,
+      },
+    )
+    return response.status === 'OK'
+  }
+
+  /**
+   * 删除Favorite prompt
+   * @param id
+   */
+  static async removeFavoritePrompt(id: string) {
+    const res = await post<{ id: string }>(
+      PROMPT_LIBRARY_API.REMOVE_FAVOURITE_PROMPT,
+      {
+        id,
+      },
+    )
+    return res.status === 'OK'
+  }
+
+  /**
+   * 获取自定义的prompt列表
+   */
+  static async getOwnPrompts() {
+    const res = await post<IOwnPromptListResponse>(
+      PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS,
+      {},
+    )
+    return (res.data?.own_prompts || []) as IPromptLibraryCardData[]
   }
 }

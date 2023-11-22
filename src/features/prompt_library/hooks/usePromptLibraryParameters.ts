@@ -8,7 +8,7 @@ import { IPromptListType } from '@/features/prompt_library/types'
  */
 const usePromptLibraryParameters = () => {
   const [
-    promptLibraryListParametersState,
+    promptLibraryListParameters,
     setPromptLibraryListParameters,
   ] = useRecoilState(PromptLibraryListParametersState)
   /**
@@ -16,7 +16,7 @@ const usePromptLibraryParameters = () => {
    * @param newParameters
    */
   const updatePromptLibraryListParameters = (
-    newParameters: Partial<typeof promptLibraryListParametersState>,
+    newParameters: Partial<typeof promptLibraryListParameters>,
   ) => {
     setPromptLibraryListParameters((preValue) => ({
       ...preValue,
@@ -33,10 +33,11 @@ const usePromptLibraryParameters = () => {
   const updateSearchQuery = (searchQuery: string) => {
     updatePromptLibraryListParameters({ query: searchQuery })
   }
+
   return {
-    promptLibraryListParametersState,
-    activeTab: promptLibraryListParametersState.activeTab,
-    searchQuery: promptLibraryListParametersState.query,
+    promptLibraryListParameters,
+    activeTab: promptLibraryListParameters.activeTab,
+    searchQuery: promptLibraryListParameters.query,
     updatePromptLibraryListParameters,
     updateActiveTab,
     updateSearchQuery,

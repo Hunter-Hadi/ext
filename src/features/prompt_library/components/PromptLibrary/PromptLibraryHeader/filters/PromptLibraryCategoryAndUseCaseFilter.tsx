@@ -11,7 +11,7 @@ import orderBy from 'lodash-es/orderBy'
 
 const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
   const {
-    promptLibraryListParametersState,
+    promptLibraryListParameters,
     updatePromptLibraryListParameters,
   } = usePromptLibraryParameters()
   const { isLoading, data } = useQuery<IPromptCategoryApiData[]>({
@@ -38,7 +38,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
     return []
   }, [data])
   const memoUseCaseOptions = useMemo(() => {
-    const category = promptLibraryListParametersState.category
+    const category = promptLibraryListParameters.category
     const categoryData = memoCategoryOptions.find(
       (item) => item.value === category,
     )
@@ -50,7 +50,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
       )
     }
     return []
-  }, [memoCategoryOptions, promptLibraryListParametersState.category])
+  }, [memoCategoryOptions, promptLibraryListParameters.category])
   return (
     <>
       <BaseSelect
@@ -58,7 +58,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
         sx={{ height: 44 }}
         label={'Category'}
         options={memoCategoryOptions}
-        value={promptLibraryListParametersState.category}
+        value={promptLibraryListParameters.category}
         MenuProps={{
           sx: {
             maxHeight: '550px',
@@ -68,6 +68,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
           updatePromptLibraryListParameters({
             category: value as string,
             use_case: 'All',
+            page: 0,
           })
         }}
       />
@@ -75,7 +76,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
         sx={{ height: 44 }}
         label={'Use case'}
         options={memoUseCaseOptions}
-        value={promptLibraryListParametersState.use_case}
+        value={promptLibraryListParameters.use_case}
         MenuProps={{
           sx: {
             maxHeight: '550px',
@@ -84,6 +85,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
         onChange={async (value, option) => {
           updatePromptLibraryListParameters({
             use_case: value as string,
+            page: 0,
           })
         }}
       />

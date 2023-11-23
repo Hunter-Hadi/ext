@@ -25,9 +25,10 @@ const getTweetDetail = (tweetElement: HTMLElement): ISocialMediaPost => {
       .filter((textContent) => textContent && textContent !== '·'),
   )
   const date = tweetElement.querySelector('time')?.dateTime || ''
-  const tweetText = (tweetElement.querySelector(
-    'div[data-testid="tweetText"]',
-  ) as HTMLDivElement).innerText
+  const tweetText =
+    (tweetElement.querySelector(
+      'div[data-testid="tweetText"]',
+    ) as HTMLDivElement)?.innerText || ''
   return {
     author: `${nickName}(${userName})`,
     date,

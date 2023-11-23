@@ -15,7 +15,6 @@ const isInIframe = () => {
 
 window.onload = () => {
   if (window.location.origin === 'https://chat.openai.com' && isInIframe()) {
-    alert('contentArkoseTokenIframe')
     // 1. 注入windowArkoseTokenIFrame
     const script = document.createElement('script')
     script.src = Browser.runtime.getURL(

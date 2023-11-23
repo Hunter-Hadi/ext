@@ -24,12 +24,13 @@ const useActivity = () => {
     if (isLogin && (!loading || firstLoadingRef.current)) {
       firstLoadingRef.current = true
       if (
-        currentUserPlan.name !== 'elite' &&
-        currentUserPlan.planName !== 'ELITE_YEARLY' &&
-        !isActivityBlackFriday2023
+        (currentUserPlan.planName === 'ELITE_YEARLY' &&
+          currentUserPlan.name === 'elite') ||
+        isActivityBlackFriday2023
       ) {
-        return true
+        return false
       }
+      return true
     }
     return false
   }, [isLogin, isActivityBlackFriday2023, currentUserPlan, loading])

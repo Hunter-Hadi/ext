@@ -8,6 +8,7 @@ import isNumber from 'lodash-es/isNumber'
 import { v4 as uuidV4 } from 'uuid'
 import getInputAssistantButtonGroupWithHost from '@/features/contextMenu/components/InputAssistantButton/getInputAssistantButtonGroupWithHost'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import { mergeElementCssText } from '@/features/contextMenu/utils'
 
 const log = new Log('ContextMenu/InputAssistantButtonManager')
 
@@ -65,7 +66,7 @@ class InputAssistantButtonManager {
             rootElement = rootElement.parentElement as HTMLElement
           }
           if (rootSelectorStyle) {
-            origin.style.cssText = rootSelectorStyle
+            mergeElementCssText(origin, rootSelectorStyle)
           }
           const newObserverData = this.attachInputAssistantButton(
             rootElement as HTMLElement,
@@ -103,12 +104,15 @@ class InputAssistantButtonManager {
         rootElement.previousElementSibling
       ) {
         const previousElementSibling = rootElement.previousElementSibling as HTMLElement
-        previousElementSibling.style.cssText = rootPreviousElementSiblingStyle
+        mergeElementCssText(
+          previousElementSibling,
+          rootPreviousElementSiblingStyle,
+        )
       }
       rootElement.style.cssText = rootStyle
       if (rootNextElementSiblingStyle && rootElement.nextElementSibling) {
         const nextElementSibling = rootElement.nextElementSibling as HTMLElement
-        nextElementSibling.style.cssText = rootNextElementSiblingStyle
+        mergeElementCssText(nextElementSibling, rootNextElementSiblingStyle)
       }
     }
     if (rootParentStyle) {
@@ -119,7 +123,7 @@ class InputAssistantButtonManager {
         parentElement = parentElement?.parentElement as HTMLElement
       }
       if (parentElement) {
-        parentElement.style.cssText = rootParentStyle
+        mergeElementCssText(parentElement, rootParentStyle)
       }
     }
     const id = uuidV4()
@@ -127,7 +131,7 @@ class InputAssistantButtonManager {
     const isSupportWebComponent = 'customElements' in window
     const rootWrapperElement = document.createElement(rootWrapperTagName)
     if (rootWrapperStyle) {
-      rootWrapperElement.style.cssText = rootWrapperStyle
+      mergeElementCssText(rootWrapperElement, rootWrapperStyle)
     }
     const webComponentRoot = document.createElement(
       isSupportWebComponent ? 'maxai-input-assistant-button' : 'div',

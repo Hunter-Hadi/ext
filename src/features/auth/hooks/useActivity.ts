@@ -24,12 +24,13 @@ const useActivity = () => {
     if (isLogin && (!loading || firstLoadingRef.current)) {
       firstLoadingRef.current = true
       if (
-        currentUserPlan.name !== 'elite' &&
-        currentUserPlan.planName !== 'ELITE_YEARLY' &&
-        !isActivityBlackFriday2023
+        (currentUserPlan.planName === 'ELITE_YEARLY' &&
+          currentUserPlan.name === 'elite') ||
+        isActivityBlackFriday2023
       ) {
-        return true
+        return false
       }
+      return true
     }
     return false
   }, [isLogin, isActivityBlackFriday2023, currentUserPlan, loading])
@@ -37,7 +38,7 @@ const useActivity = () => {
    * 是否可以关闭黑五活动的banner
    */
   const isAbleToCloseBlackFridayBanner = useMemo(() => {
-    return dayjs().utc().diff(dayjs('2023-11-30').utc()) > 0
+    return dayjs().utc().diff(dayjs('2023-12-01').utc()) > 0
   }, [])
   /**
    * 关闭黑五活动的banner

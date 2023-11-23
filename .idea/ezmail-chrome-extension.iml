@@ -11,6 +11,9 @@
       <excludeFolder url="file://$MODULE_DIR$/src/i18n/locales" />
       <excludeFolder url="file://$MODULE_DIR$/src/lib/@postlight" />
       <excludeFolder url="file://$MODULE_DIR$/src/lib/pdf" />
+      <excludeFolder url="file://$MODULE_DIR$/test/openai/v2/3D86FBBA-9D22-402A-B512-3420086BA6CC" />
+      <excludeFolder url="file://$MODULE_DIR$/test/openai/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147" />
+      <excludeFolder url="file://$MODULE_DIR$/src/lib/openai/js/v2" />
     </content>
     <content url="file://$MODULE_DIR$/src/i18n/locales/en" />
     <orderEntry type="inheritedJdk" />

@@ -83,7 +83,9 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
       }
       return undefined
     },
-    isDarkMode: () => !!document.querySelector('meta[content=dark]'),
+    isDarkMode: () =>
+      !!document.querySelector('meta[content=dark]') ||
+      !!document.querySelector('*[data-darkmode=true]'),
   },
   bing: {
     ref: 'bing',

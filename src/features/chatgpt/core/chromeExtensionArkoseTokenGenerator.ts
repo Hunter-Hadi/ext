@@ -1,8 +1,10 @@
-import Browser from 'webextension-polyfill'
-import { getAppRootElement } from '@/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
 import Log from '@/utils/Log'
-import { ARKOSE_TOKEN_GENERATOR_POST_MESSAGE_ID } from '@/assets/openai/arkoseTokenIframeId'
+import {
+  ARKOSE_TOKEN_GENERATOR_POST_MESSAGE_ID,
+  ArkoseTokenModelType,
+} from '@/assets/openai/arkoseTokenIframeId'
+import { getAppRootElement } from '@/utils'
 
 const log = new Log('ArkoseIframeGenerator')
 
@@ -10,9 +12,9 @@ class ChromeExtensionArkoseTokenGenerator {
   static iframeId = 'maxai-arkose-token-generate-iframe'
   iframeInstance: HTMLIFrameElement | null = null
   constructor() {}
-  async injectIframe() {
+  async injectIframe(model: ArkoseTokenModelType) {
     // 先ping一次
-    const isPingSuccess = await this.ping()
+    const isPingSuccess = await this.ping(model)
     // 如果ping成功，说明已经注入过了
     if (isPingSuccess) {
       return true
@@ -30,14 +32,14 @@ class ChromeExtensionArkoseTokenGenerator {
     log.info('inject iframe fail')
     return false
   }
-  async generateToken() {
+  async generateToken(model: ArkoseTokenModelType) {
     // 第一步 注入iframe
-    if (!(await this.injectIframe())) {
+    if (!(await this.injectIframe(model))) {
       return ''
     }
     // 第二步 获取arkoseToken和超时处理
     const token = await promiseTimeout(
-      this.postMessageGenerateToken(),
+      this.postMessageGenerateToken(model),
       10 * 1000,
       '',
     )
@@ -51,7 +53,7 @@ class ChromeExtensionArkoseTokenGenerator {
   private getRootContainer(): HTMLElement | undefined {
     return getAppRootElement()
   }
-  private async ping() {
+  private async ping(model: ArkoseTokenModelType) {
     log.info('ping')
     if (this.iframeInstance) {
       // 因为是ping 所以2秒超时
@@ -75,7 +77,9 @@ class ChromeExtensionArkoseTokenGenerator {
             {
               id: ARKOSE_TOKEN_GENERATOR_POST_MESSAGE_ID,
               type: 'ping',
-              data: {},
+              data: {
+                model,
+              },
             },
             '*',
           )
@@ -109,7 +113,7 @@ class ChromeExtensionArkoseTokenGenerator {
       window.addEventListener('message', once)
       const iframe = document.createElement('iframe')
       iframe.id = ChromeExtensionArkoseTokenGenerator.iframeId
-      iframe.src = Browser.runtime.getURL('/assets/openai/arkoseToken.html')
+      iframe.src = 'https://chat.openai.com/404'
       iframe.style.cssText = `
       position: absolute !important;
       opacity: 0 !important;
@@ -134,7 +138,7 @@ class ChromeExtensionArkoseTokenGenerator {
       iframe.remove()
     }
   }
-  private async postMessageGenerateToken() {
+  private async postMessageGenerateToken(model: ArkoseTokenModelType) {
     return new Promise<string>((resolve) => {
       const once = (event: any) => {
         if (
@@ -153,7 +157,9 @@ class ChromeExtensionArkoseTokenGenerator {
         {
           id: ARKOSE_TOKEN_GENERATOR_POST_MESSAGE_ID,
           type: 'get_token',
-          data: {},
+          data: {
+            model,
+          },
         },
         '*',
       )

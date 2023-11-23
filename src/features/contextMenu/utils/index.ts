@@ -293,9 +293,11 @@ export const fuzzySearchContextMenuList = (
   const groupByParent = groupBy(uniqBy(filterResult, 'id'), 'parent')
   console.log(groupByParent)
   Object.keys(groupByParent).forEach((parent) => {
-    const children = (
-      groupByParent[parent] as IContextMenuItemWithChildren[]
-    ).filter((item) => item.data.type !== 'group')
+    const children = (groupByParent[
+      parent
+    ] as IContextMenuItemWithChildren[]).filter(
+      (item) => item.data.type !== 'group',
+    )
     if (children.length > 0) {
       if (parent === 'root') {
         results.push(...children)
@@ -515,4 +517,48 @@ export const floatingContextMenuSaveDraftToChatBox = () => {
   setTimeout(() => {
     clearInterval(timer)
   }, maxTime)
+}
+/**
+ * 合并元素的 cssText
+ * @param element
+ * @param newCssText
+ */
+export const mergeElementCssText = (
+  element: HTMLElement,
+  newCssText: string,
+) => {
+  // 解析原始的 cssText
+  const style = element.style
+  const originalCssText = style.cssText
+  const originalProperties = originalCssText.split(';')
+
+  // 解析新的 cssText
+  const newProperties = newCssText.split(';')
+
+  // 创建一个用于存储合并后属性的对象
+  const mergedProperties: Record<string, string> = {}
+
+  // 将原始属性添加到合并属性对象
+  originalProperties.forEach((property) => {
+    const [name, value] = property.split(':')
+    if (name && value) {
+      mergedProperties[name.trim()] = value.trim()
+    }
+  })
+
+  // 将新属性添加或替换合并属性对象中的属性
+  newProperties.forEach((property) => {
+    const [name, value] = property.split(':')
+    if (name && value) {
+      mergedProperties[name.trim()] = value.trim()
+    }
+  })
+
+  // 根据合并属性对象生成新的 cssText
+  const mergedCssText = Object.keys(mergedProperties)
+    .map((name) => `${name}:${mergedProperties[name]}`)
+    .join(';')
+
+  // 更新元素的 cssText
+  style.cssText = mergedCssText
 }

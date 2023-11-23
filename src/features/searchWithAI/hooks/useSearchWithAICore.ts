@@ -166,7 +166,9 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       })
     }
     if (searchWithAISettings.aiProvider === 'OPENAI') {
-      const arkoseToken = await chromeExtensionArkoseTokenGenerator.generateToken()
+      const arkoseToken = await chromeExtensionArkoseTokenGenerator.generateToken(
+        'gpt_3_5',
+      )
       await setSearchWithAISettings({
         arkoseToken,
       })

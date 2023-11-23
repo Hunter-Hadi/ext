@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Title</title>
+  <script src="https://tcr9i.chat.openai.com/v2/3D86FBBA-9D22-402A-B512-3420086BA6CC/api.js" async="" defer="" data-status="loading" data-callback="useArkoseSetupEnforcementgpt35"></script>
+  <script src="https://tcr9i.chat.openai.com/v2/3D86FBBA-9D22-402A-B512-3420086BA6CC/api.js" async="" defer="" data-status="loading" data-callback="useArkoseSetupEnforcementgpt35"></script>
+  <script src="https://tcr9i.chat.openai.com/v2/35536E1E-65B4-4D96-9D97-6ADB7EFF8147/api.js" async="" defer="" data-status="loading" data-callback="useArkoseSetupEnforcementgpt4"></script>
+</head>
+<body>
+<script>
+  window.useArkoseSetupEnforcementgpt35 = (enforcement) => {
+    console.debug('GPT 3_5 enforcement.init')
+    enforcement.setConfig({
+      onCompleted: (r) => {
+        console.debug('GPT 3_5 enforcement.onCompleted', r)
+      },
+      onReady: () => {
+        console.debug('GPT 3_5 enforcement.onReady')
+        enforcement.run()
+      },
+      onError: (r) => {
+        console.debug('GPT 3_5 enforcement.onError', r)
+      },
+      onFailed: (r) => {
+        console.debug('GPT 3_5 enforcement.onFailed', r)
+      },
+    })
+  }
+  window.useArkoseSetupEnforcementgpt4 = (enforcement) => {
+    console.debug('GPT-4 enforcement.init')
+    enforcement.setConfig({
+      onCompleted: (r) => {
+        console.debug('GPT-4 enforcement.onCompleted', r)
+      },
+      onReady: () => {
+        console.debug('GPT-4 enforcement.onReady')
+        enforcement.run()
+      },
+      onError: (r) => {
+        console.debug('GPT-4 enforcement.onError', r)
+      },
+      onFailed: (r) => {
+        console.debug('GPT-4 enforcement.onFailed', r)
+      },
+    })
+  }
+</script>
+</body>
+</html>

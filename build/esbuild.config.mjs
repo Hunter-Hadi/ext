@@ -42,7 +42,8 @@ async function esbuildConfig() {
   const result = await esbuild.build({
     platform: 'browser',
     entryPoints: [
-      'src/assets/openai/arkoseTokenIframe.ts',
+      'src/contentArkoseTokenIframe.ts',
+      'src/assets/openai/windowArkoseTokenIframe.ts',
       'src/content.tsx',
       'src/minimum.tsx',
       'src/content_style.ts',

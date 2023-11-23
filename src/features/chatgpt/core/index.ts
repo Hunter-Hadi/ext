@@ -262,7 +262,9 @@ export const generateArkoseToken = async (model: string) => {
     'gpt-4-mobile',
   ].includes(model)
   if (needWaitArkoseToken) {
-    const token = await chromeExtensionArkoseTokenGenerator.generateToken()
+    const token = await chromeExtensionArkoseTokenGenerator.generateToken(
+      model.startsWith('gpt-4') ? 'gpt_4' : 'gpt_3_5',
+    )
     if (!token) {
       throw Error(
         'Something went wrong, please try again. If this issue persists, contact us via email.',

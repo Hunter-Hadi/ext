@@ -33,6 +33,13 @@
       "run_at": "document_end"
     },
     {
+      "matches": ["https://chat.openai.com/404"],
+      "match_about_blank": true,
+      "all_frames": true,
+      "js": ["contentArkoseTokenIframe.js"],
+      "run_at": "document_start"
+    },
+    {
       "matches": ["<all_urls>"],
       "js": ["searchWithAI.js"],
       "run_at": "document_end"

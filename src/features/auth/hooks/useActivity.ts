@@ -37,7 +37,7 @@ const useActivity = () => {
    * 是否可以关闭黑五活动的banner
    */
   const isAbleToCloseBlackFridayBanner = useMemo(() => {
-    return dayjs().utc().diff(dayjs('2023-11-30').utc()) > 0
+    return dayjs().utc().diff(dayjs('2023-12-01').utc()) > 0
   }, [])
   /**
    * 关闭黑五活动的banner

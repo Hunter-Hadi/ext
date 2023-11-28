@@ -28,6 +28,7 @@ import TooltipButton from '@/components/TooltipButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useForm, Controller } from 'react-hook-form'
+import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
@@ -81,6 +82,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
   const [hide, setHide] = useState(false)
+  const currentBreakpoint = useCurrentBreakpoint()
   const [config, setConfig] = useState<ActionSetVariablesModalConfig | null>(
     null,
   )
@@ -467,6 +469,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     >
       {/*Header*/}
       <Stack
+        flexShrink={0}
         height={36}
         direction={'row'}
         alignItems={'start'}
@@ -497,6 +500,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       </Stack>
       {/*Select*/}
       <Stack
+        flexShrink={0}
         flexWrap={'wrap'}
         direction={'row'}
         sx={{
@@ -543,10 +547,27 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         })}
       </Stack>
       {/*Text*/}
-      <Stack gap={2} paddingTop={1} ref={inputBoxRef}>
+      <Stack
+        direction={'row'}
+        flexWrap={'wrap'}
+        gap={2}
+        paddingTop={1}
+        ref={inputBoxRef}
+        flex={1}
+        height={0}
+        sx={{
+          overflowY: 'auto',
+        }}
+      >
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
+          const width =
+            (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') &&
+            currentModalConfig.textTypeVariables.length > 1
+              ? 'calc(50% - 8px)'
+              : '100%'
           return (
             <TextField
+              sx={{ width }}
               size={'small'}
               key={textTypeVariable.VariableName}
               label={textTypeVariable.label || 'Label'}
@@ -585,6 +606,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         alignItems={'center'}
         justifyContent={'end'}
         gap={1}
+        flexShrink={0}
       >
         <Button
           sx={{

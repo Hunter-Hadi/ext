@@ -1,16 +1,14 @@
 import { useTheme } from '@mui/material/styles'
 import { useEffect, useMemo, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { AppLocalStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
+import { getAppRootElement } from '@/utils'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
-const useCurrentBreakpoint = () => {
+const useCurrentBreakpoint = (sidebarDefaultWidth = 450) => {
   const theme = useTheme()
   const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('xl')
-  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
+  const [sidebarWidth, setSidebarWidth] = useState(sidebarDefaultWidth)
   useEffect(() => {
     const handleResize = () => {
       const breakpoints = theme.breakpoints.values
@@ -26,6 +24,8 @@ const useCurrentBreakpoint = () => {
         breakpoint = 'lg'
       }
       setCurrentBreakpoint(breakpoint)
+      const sidebarWidth = getAppRootElement()?.offsetWidth || 450
+      setSidebarWidth(sidebarWidth)
     }
     handleResize()
     window.addEventListener('resize', handleResize)
@@ -34,22 +34,19 @@ const useCurrentBreakpoint = () => {
     }
   }, [theme.breakpoints.values])
   const sidebarBreakpoints = useMemo<Breakpoint>(() => {
-    const chatBoxWidth =
-      appLocalStorage.sidebarSettings?.common?.chatBoxWidth ||
-      CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
-    if (chatBoxWidth <= CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH) {
+    if (sidebarWidth <= 450) {
       return 'xs'
-    } else if (chatBoxWidth <= 600) {
+    } else if (sidebarWidth <= 600) {
       return 'sm'
-    } else if (chatBoxWidth <= 960) {
+    } else if (sidebarWidth <= 960) {
       return 'md'
-    } else if (chatBoxWidth <= 1280) {
+    } else if (sidebarWidth <= 1280) {
       return 'lg'
-    } else if (chatBoxWidth <= 1920) {
+    } else if (sidebarWidth <= 1920) {
       return 'xl'
     }
     return 'xs'
-  }, [appLocalStorage.sidebarSettings?.common?.chatBoxWidth])
+  }, [sidebarWidth, sidebarDefaultWidth])
 
   return isMaxAIImmersiveChatPage() ? currentBreakpoint : sidebarBreakpoints
 }

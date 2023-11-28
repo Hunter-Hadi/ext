@@ -24,6 +24,7 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
+import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 
 const ChatBoxHeader: FC<{
   showConversationList?: boolean
@@ -32,7 +33,7 @@ const ChatBoxHeader: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { chatBoxShortCutKey } = useCommands()
   const { currentSidebarConversationType } = useSidebarSettings()
-  const { sidebarBreakpoints } = useSidebarSettings()
+  const currentBreakpoint = useCurrentBreakpoint()
   const theme = useCustomTheme()
   const isDownSm = useMediaQuery(theme.customTheme.breakpoints.down('sm'))
   const isShowConversationListMenu = useMemo(() => {
@@ -42,9 +43,9 @@ const ChatBoxHeader: FC<{
     if (isMaxAIImmersiveChatPage()) {
       return isDownSm
     } else {
-      return sidebarBreakpoints === 'xs' || sidebarBreakpoints === 'sm'
+      return currentBreakpoint === 'xs' || currentBreakpoint === 'sm'
     }
-  }, [showConversationList, sidebarBreakpoints, isDownSm])
+  }, [showConversationList, currentBreakpoint, isDownSm])
   return (
     <Stack
       flexDirection={'row'}

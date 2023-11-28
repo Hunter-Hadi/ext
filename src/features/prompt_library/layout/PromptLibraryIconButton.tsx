@@ -32,6 +32,7 @@ const PromptLibraryIconButton: FC = () => {
   } = usePromptLibrary()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
+  const isImmersiveChatPage = isMaxAIImmersiveChatPage()
   const handleClick = (newPlacement: PopperPlacementType) => (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
@@ -45,7 +46,7 @@ const PromptLibraryIconButton: FC = () => {
     const containerRect = containerElement.getBoundingClientRect()
     setAnchorEl({
       getBoundingClientRect: () => {
-        const left = isMaxAIImmersiveChatPage()
+        const left = isImmersiveChatPage
           ? document.body.offsetWidth / 2 + 8
           : containerRect.x + containerRect.width / 2
         const virtualRect = {
@@ -138,11 +139,12 @@ const PromptLibraryIconButton: FC = () => {
               <Paper
                 elevation={4}
                 sx={{
-                  width: isMaxAIImmersiveChatPage()
+                  width: isImmersiveChatPage
                     ? 'calc(100vw - 128px)'
-                    : `calc(100% - 16px)`,
+                    : `calc(100% - 48px)`,
                   height: 'calc(100vh - 140px)',
                   maxHeight: '1030px',
+                  ml: isImmersiveChatPage ? 0 : 1,
                   p: 2,
                 }}
               >

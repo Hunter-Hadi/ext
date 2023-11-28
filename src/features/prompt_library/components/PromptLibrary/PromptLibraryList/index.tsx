@@ -10,6 +10,7 @@ import PromptLibraryCard from '@/features/prompt_library/components/PromptLibrar
 import PromptLibraryCardSkeleton from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardSkeleton'
 import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
 import AddOwnPromptCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/AddOwnPromptCard'
+import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 
 const PromptLibraryList: FC<{
   onClick?: (promptLibraryCard?: IPromptLibraryCardData) => void
@@ -20,6 +21,19 @@ const PromptLibraryList: FC<{
     activeTab,
     promptLibraryListParameters,
   } = usePromptLibraryParameters()
+  const currentBreakpoint = useCurrentBreakpoint()
+  const itemWidth = useMemo(() => {
+    if (currentBreakpoint === 'xs') {
+      return 12
+    } else if (currentBreakpoint === 'sm') {
+      return 6
+    } else if (currentBreakpoint === 'md') {
+      return 4
+    } else if (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') {
+      return 3
+    }
+    return 6
+  }, [currentBreakpoint])
   const actionButton = useMemo<IPromptActionKey[]>(() => {
     if (activeTab === 'Own') {
       return ['see', 'delete', 'edit', 'favorite']
@@ -36,7 +50,7 @@ const PromptLibraryList: FC<{
         .fill(1)
         .map((_, index) => {
           return (
-            <Grid key={index} item xs={12} md={6} xl={3}>
+            <Grid key={index} item xs={itemWidth}>
               <PromptLibraryCardSkeleton actionKeys={actionButton} />
             </Grid>
           )
@@ -48,7 +62,7 @@ const PromptLibraryList: FC<{
     return (
       <>
         {data.map((prompt) => (
-          <Grid key={prompt.id} item xs={12} md={6} xl={3}>
+          <Grid key={prompt.id} item xs={itemWidth}>
             <PromptLibraryCard
               actionButton={actionButton}
               prompt={prompt}
@@ -65,6 +79,7 @@ const PromptLibraryList: FC<{
     actionButton,
     promptLibraryListParameters.page_size,
     onClick,
+    itemWidth,
   ])
   return (
     <Stack

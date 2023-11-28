@@ -13,7 +13,6 @@ import {
 } from '@/features/sidebar/store'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { IChatConversation } from '@/background/src/chatConversations'
-import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 
 const useSidebarSettings = () => {
   const [appLocalStorage, setAppLocalStorage] = useRecoilState(
@@ -105,23 +104,6 @@ const useSidebarSettings = () => {
       }
     })
   }
-  const sidebarBreakpoints = useMemo<'xs' | 'sm' | 'md' | 'lg' | 'xl'>(() => {
-    const chatBoxWidth =
-      appLocalStorage.sidebarSettings?.common?.chatBoxWidth ||
-      CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
-    if (chatBoxWidth <= CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH) {
-      return 'xs'
-    } else if (chatBoxWidth <= 600) {
-      return 'sm'
-    } else if (chatBoxWidth <= 960) {
-      return 'md'
-    } else if (chatBoxWidth <= 1280) {
-      return 'lg'
-    } else if (chatBoxWidth <= 1920) {
-      return 'xl'
-    }
-    return 'xs'
-  }, [appLocalStorage.sidebarSettings?.common?.chatBoxWidth])
   return {
     sidebarSettings: appLocalStorage.sidebarSettings,
     currentSidebarConversationType,
@@ -132,7 +114,6 @@ const useSidebarSettings = () => {
     sidebarConversationTypeMessageMap,
     updateSidebarSettings,
     updateSidebarConversationType,
-    sidebarBreakpoints,
   }
 }
 export default useSidebarSettings

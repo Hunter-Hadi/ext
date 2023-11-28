@@ -3,6 +3,7 @@ import { BaseSelect } from '@/components/select'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 
 import usePromptLibraryCategory from '@/features/prompt_library/hooks/usePromptLibraryCategory'
+import Stack from '@mui/material/Stack'
 
 const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
   const {
@@ -14,7 +15,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
   )
 
   return (
-    <>
+    <Stack direction={'row'} flexWrap={'wrap'} alignItems={'center'} gap={2}>
       <BaseSelect
         loading={loading}
         sx={{ height: 44 }}
@@ -52,7 +53,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
           })
         }}
       />
-    </>
+    </Stack>
   )
 }
 export default PromptLibraryCategoryAndUseCaseFilter

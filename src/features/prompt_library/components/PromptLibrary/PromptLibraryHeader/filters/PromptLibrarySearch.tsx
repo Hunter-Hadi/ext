@@ -48,10 +48,6 @@ const PromptLibrarySearch: FC = () => {
       size="small"
       sx={{
         width: 220,
-        ml: {
-          xs: 'unset',
-          sm: 'auto',
-        },
       }}
       onChange={(event: any) => {
         const value = event.target.value

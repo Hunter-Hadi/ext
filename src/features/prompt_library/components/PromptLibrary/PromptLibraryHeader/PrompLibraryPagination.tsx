@@ -23,7 +23,7 @@ const PromptLibraryPagination: FC = () => {
       total={promptLibraryListParameters.total}
       current={promptLibraryListParameters.page}
       pageSize={promptLibraryListParameters.page_size}
-      sx={{ justifyContent: 'flex-end', pt: 0 }}
+      sx={{ justifyContent: 'flex-end', pt: 0, px: 0 }}
       paginationProps={paginationProps}
       onChange={(event, value) => {
         updatePromptLibraryListParameters({

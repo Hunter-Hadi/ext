@@ -23,6 +23,7 @@ const PromptLibraryHeader: FC = () => {
             direction={'row'}
             gap={2}
             justifyContent={'space-between'}
+            flexWrap={'wrap'}
           >
             <PromptLibraryCategoryAndUseCaseFilter />
             <PromptLibrarySearch />

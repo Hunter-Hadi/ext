@@ -4,13 +4,13 @@ import Stack from '@mui/material/Stack'
 import { Box, Card, Grid, Link, Skeleton } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT } from '@/features/searchWithAI/constants'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 
 const SidebarAIMessageCopilotStep: FC<{
   loading?: boolean
   sourceLinks: IAIResponseOriginalMessageSourceLink[]
 }> = (props) => {
-  const { sidebarBreakpoints } = useSidebarSettings()
+  const currentBreakpoint = useCurrentBreakpoint()
   const { sourceLinks, loading } = props
   const [expandAll, setExpandAll] = useState(false)
   const currentRenderSourceLinks = useMemo(() => {
@@ -31,15 +31,15 @@ const SidebarAIMessageCopilotStep: FC<{
       : []
   }, [expandAll, sourceLinks])
   const itemWidth = useMemo(() => {
-    if (sidebarBreakpoints === 'xs' || sidebarBreakpoints === 'sm') {
+    if (currentBreakpoint === 'xs' || currentBreakpoint === 'sm') {
       return 6
-    } else if (sidebarBreakpoints === 'md') {
+    } else if (currentBreakpoint === 'md') {
       return 4
-    } else if (sidebarBreakpoints === 'lg' || sidebarBreakpoints === 'xl') {
+    } else if (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') {
       return 3
     }
     return 6
-  }, [sidebarBreakpoints])
+  }, [currentBreakpoint])
   return (
     <Grid
       container

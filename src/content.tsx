@@ -17,6 +17,7 @@ import {
   getCurrentDomainHost,
   isMaxAIImmersiveChatPage,
 } from '@/utils/dataHelper/websiteHelper'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import createCache from '@emotion/cache'
 const AppNameToClassName = String(process.env.APP_ENV || '')
   .toLowerCase()
@@ -127,16 +128,20 @@ const cache = createCache({
   prepend: true,
   container: emotionRoot,
 })
+const queryClient = new QueryClient()
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 createRoot(shadowRootElement).render(
   <React.StrictMode>
     <RecoilRoot>
-      <CacheProvider value={cache}>
-        <AppThemeProvider shadowRootElement={shadowRootElement}>
-          {isMaxAIImmersiveChatPage() ? <ImmersiveChatApp /> : <App />}
-        </AppThemeProvider>
-      </CacheProvider>
+      <QueryClientProvider client={queryClient}>
+        <CacheProvider value={cache}>
+          <AppThemeProvider shadowRootElement={shadowRootElement}>
+            {isMaxAIImmersiveChatPage() ? <ImmersiveChatApp /> : <App />}
+          </AppThemeProvider>
+        </CacheProvider>
+      </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,
 )

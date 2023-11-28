@@ -37,7 +37,8 @@
     "paste": "ஒட்டு",
     "loading": "ஏற்றுகின்றது...",
     "no_options": "விருப்பங்கள் இல்லை",
-    "auto": "ஆட்டோ"
+    "auto": "ஆட்டோ",
+    "confirm": "உறுதிப்படுத்து"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ஐ கண்டிப்பாக்கிய உரை",
     "preset_variables__tooltip__variable_name_prefix": "பற்றி மாறியமைக்கப்பட்ட மாறிலின் சொந்த பெயர்",
     "preset_variables__tooltip__table__column_name__placeholder__title": "மாறிலின் மாறிப்பு இடைவெளி",
-    "preset_variables__tooltip__table__column_name__description__title": "மாறிலின் மாறிப்பு மாறுபடும்"
+    "preset_variables__tooltip__table__column_name__description__title": "மாறிலின் மாறிப்பு மாறுபடும்",
+    "template__error__title": "வார்ப்புரு தேவைப்படுகின்றது"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "வழங்கும் வழங்கு நூலகம்",
+    "edit_prompt__template__placeholder": "உங்கள் உண்மையான வழக்கு வார்ப்புருவை உருவாக்க இந்த புலத்தைப் பயன்படுத்தவும்.\n\nவார்ப்புரு வார்ப்புகளாக மாறுபடும் மாறுபட்ட உரைப்பலகைகளைச் சேர்க்கலாம். உங்கள் வழக்கு வார்ப்புருவில் ஒருவரையும் பயன்படுத்தலாம். வழக்குகள் பயன்படுத்தப்படும்போது, உரைப்பலகைகள் தானாகவே உள்ளீட்டில் உள்ள உரையாக மாறப்படும்."
   }
 }

@@ -9,15 +9,17 @@ import { useCustomTheme } from '@/hooks/useCustomTheme'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
 import PresetVariables from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import PromptVariableEditor, {
-  IPromptVariableEditorExposeRef,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor'
+import PromptVariableEditor from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor'
 import {
   generateVariableHtmlContent,
   promptEditorAddHtmlToFocusNode,
 } from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+import Typography from '@mui/material/Typography'
+import { useTranslation } from 'react-i18next'
 
 const ShortcutActionsEditor: FC<{
+  error?: boolean
+  errorText?: string
   disabled?: boolean
   placeholder?: string
   minHeight?: number
@@ -26,10 +28,17 @@ const ShortcutActionsEditor: FC<{
   onSave?: ISetActionsType
   sx?: SxProps
 }> = (props) => {
-  const { disabled, placeholder, sx, minHeight = 240, maxHeight = 450 } = props
-  // const { t } = useTranslation(['common', 'settings'])
+  const {
+    error,
+    errorText,
+    disabled,
+    placeholder,
+    sx,
+    minHeight = 240,
+    maxHeight = 450,
+  } = props
+  const { t } = useTranslation(['prompt_editor'])
   const { editHTML, updateEditHTML } = useShortcutEditorActions()
-  const PromptVariableEditorRef = useRef<IPromptVariableEditorExposeRef>(null)
   const theme = useCustomTheme()
   const inputRef = useRef<HTMLDivElement>(null)
   const lastSelectionRangeRef = useRef<Range | null>(null)
@@ -57,8 +66,9 @@ const ShortcutActionsEditor: FC<{
   const memoSx = useMemo<SxProps>(() => {
     return {
       pointerEvents: disabled ? 'none' : 'auto',
+
       '.prompt-template-input[contenteditable=true]:empty:before': {
-        content: `"${placeholder}"`,
+        content: 'attr(data-placeholder)',
         display: 'block',
         color: '#aaa',
       },
@@ -91,8 +101,16 @@ const ShortcutActionsEditor: FC<{
         },
       },
       ...sx,
+      ...(error
+        ? {
+            '& .prompt-template-input': {
+              '--borderColor': (t: Theme) =>
+                `${t.palette.error.main}!important`,
+            },
+          }
+        : {}),
     }
-  }, [placeholder, minHeight, sx, disabled])
+  }, [placeholder, minHeight, sx, disabled, error])
 
   return (
     <Stack spacing={1}>
@@ -103,7 +121,7 @@ const ShortcutActionsEditor: FC<{
           id={'prompt-template-input'}
           html={editHTML}
           // disabled={disabled}
-          placeholder={placeholder}
+          data-placeholder={placeholder}
           onChange={(event) => {
             updateEditHTML(event.target.value)
           }}
@@ -144,13 +162,17 @@ const ShortcutActionsEditor: FC<{
           }}
         />
       </Box>
+      {error && (
+        <Typography fontSize={'12px'} color={'error.main'}>
+          {errorText || t('prompt_editor:template__error__title')}
+        </Typography>
+      )}
       <PresetVariables
         onClick={(variable) => {
           addTextVariableToHTML(variable)
         }}
       />
       <PromptVariableEditor
-        ref={PromptVariableEditorRef}
         onAddTextVariable={(variable) => {
           addTextVariableToHTML(variable)
         }}

@@ -585,7 +585,7 @@ async function main() {
   ]
   const retryLanguageCodes = [
   ]
-  await updateKeys(keys, false, retryLanguageCodes)
+  await updateKeys(keys, keys.length > 0, retryLanguageCodes)
 }
 
 main().then().catch()

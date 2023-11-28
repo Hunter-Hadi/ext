@@ -37,7 +37,8 @@
     "paste": "Coller",
     "loading": "Chargement...",
     "no_options": "Aucune option",
-    "auto": "Automatique"
+    "auto": "Automatique",
+    "confirm": "Confirmer"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "le texte qui sera affiché après avoir crawlé {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variables concernant le",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Espace réservé de variable",
-    "preset_variables__tooltip__table__column_name__description__title": "Sera remplacé par"
+    "preset_variables__tooltip__table__column_name__description__title": "Sera remplacé par",
+    "template__error__title": "Le modèle est requis"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Utiliser la bibliothèque de prompts",
+    "edit_prompt__template__placeholder": "Utilisez ce champ pour créer votre modèle de prompt réel.\n\nVous pouvez ajouter des variables qui se transformeront en champs de texte remplissables dans le modèle de prompt. Essayez de taper {{ sur votre prompt et commencez à créer des variables pour votre modèle de prompt. Vous pouvez utiliser les variables plusieurs fois dans votre modèle de prompt. Lorsque le prompt est utilisé, les variables seront automatiquement remplacées par le texte saisi correspondant."
   }
 }

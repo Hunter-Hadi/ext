@@ -37,7 +37,8 @@
     "paste": "Wklej",
     "loading": "Ładowanie...",
     "no_options": "Brak opcji",
-    "auto": "Samochód"
+    "auto": "Samochód",
+    "confirm": "Potwierdź"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "tekst, który zostanie wyświetlony po przeszukaniu {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Zmienne dotyczące",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Zmienna zastępcza",
-    "preset_variables__tooltip__table__column_name__description__title": "Zostanie zastąpione przez"
+    "preset_variables__tooltip__table__column_name__description__title": "Zostanie zastąpione przez",
+    "template__error__title": "Wymagany jest szablon"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Użyj biblioteki promptów",
+    "edit_prompt__template__placeholder": "Użyj tego pola, aby utworzyć swój rzeczywisty szablon promptu.\n\nMożesz dodawać zmienne, które zamienią się w pola tekstowe do wypełnienia w szablonie promptu. Spróbuj wpisać {{ w swoim prompt i zacznij tworzyć zmienne dla swojego szablonu promptu. Możesz używać zmiennych więcej niż raz w szablonie promptu. Gdy prompt zostanie użyty, zmienne zostaną automatycznie zastąpione odpowiednim wprowadzonym tekstem."
   }
 }

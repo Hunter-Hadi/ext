@@ -37,7 +37,8 @@
     "paste": "Επικόλληση",
     "loading": "Φόρτωση...",
     "no_options": "Χωρίς επιλογές",
-    "auto": "Αυτόματο"
+    "auto": "Αυτόματο",
+    "confirm": "Επιβεβαίωση"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -691,6 +692,12 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "ο κείμενος που θα εμφανιστεί μετά το crawling του {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Μεταβλητές σχετικά με το",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Προσωρινή τιμή μεταβλητής",
-    "preset_variables__tooltip__table__column_name__description__title": "Θα αντικατασταθεί με"
-  }
+    "preset_variables__tooltip__table__column_name__description__title": "Θα αντικατασταθεί με",
+    "template__error__title": "Απαιτείται πρότυπο"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Χρήση βιβλιοθήκης προτύπων",
+    "edit_prompt__template__placeholder": "Χρησιμοποιήστε αυτό το πεδίο για να δημιουργήσετε το πραγματικό πρότυπο της ερώτησής σας.\n\nΜπορείτε να προσθέσετε μεταβλητές που θα μετατραπούν σε πεδία κειμένου που μπορούν να συμπληρωθούν στο πρότυπο της ερώτησης. Δοκιμάστε να πληκτρολογήσετε {{ στην ερώτησή σας και αρχίστε να δημιουργείτε μεταβλητές για το πρότυπο της ερώτησής σας. Μπορείτε να χρησιμοποιήσετε μεταβλητές περισσότερες από μία φορές στο πρότυπο της ερώτησής σας. Όταν χρησιμοποιείται η ερώτηση, οι μεταβλητές θα αντικατασταθούν αυτόματα από το αντίστοιχο κείμενο που εισάγετε."
+  },
+  "": ""
 }

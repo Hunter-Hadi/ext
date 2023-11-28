@@ -37,7 +37,8 @@
     "paste": "Pegar",
     "loading": "Cargando...",
     "no_options": "Sin opciones",
-    "auto": "Automóvil"
+    "auto": "Automóvil",
+    "confirm": "Confirmar"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "el texto que se mostrará después de rastrear {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variables sobre",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Marcador de variable",
-    "preset_variables__tooltip__table__column_name__description__title": "Será reemplazado con"
+    "preset_variables__tooltip__table__column_name__description__title": "Será reemplazado con",
+    "template__error__title": "Se requiere una plantilla"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Usar biblioteca de indicaciones",
+    "edit_prompt__template__placeholder": "Utilice este campo para crear su plantilla de indicaciones real.\n\nPuede agregar variables que se convertirán en campos de texto rellenables en la plantilla de indicaciones. Intente escribir {{ en su indicación y comience a crear variables para su plantilla de indicaciones. Puede usar variables más de una vez en su plantilla de indicaciones. Cuando se use la indicación, las variables se reemplazarán automáticamente por el texto ingresado correspondiente."
   }
 }

@@ -37,7 +37,8 @@
     "paste": "Вставити",
     "loading": "Завантаження...",
     "no_options": "Немає варіантів",
-    "auto": "Авто"
+    "auto": "Авто",
+    "confirm": "Підтвердити"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "текст, який буде показаний після індексації {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Змінні про",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Замінник змінної",
-    "preset_variables__tooltip__table__column_name__description__title": "Буде замінено на"
+    "preset_variables__tooltip__table__column_name__description__title": "Буде замінено на",
+    "template__error__title": "Необхідний шаблон"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Використовувати бібліотеку запитань",
+    "edit_prompt__template__placeholder": "Використовуйте це поле для створення вашого фактичного шаблону запитання.\n\nВи можете додавати змінні, які перетворяться на поля для введення тексту у шаблоні запитання. Спробуйте набрати {{ у своєму запитанні та почніть створювати змінні для вашого шаблону запитання. Ви можете використовувати змінні більше одного разу у шаблоні запитання. Коли запитання використовується, змінні будуть автоматично замінені введеним текстом."
   }
 }

@@ -37,7 +37,8 @@
     "paste": "Colar",
     "loading": "A carregar...",
     "no_options": "Sem opções",
-    "auto": "Automático"
+    "auto": "Automático",
+    "confirm": "Confirmar"
   },
   "settings": {
     "left_menu__me": "Eu e o MaxAI",
@@ -691,6 +692,12 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "o texto que será exibido após rastrear {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variáveis sobre o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Marcador de variável",
-    "preset_variables__tooltip__table__column_name__description__title": "Será substituído por"
-  }
+    "preset_variables__tooltip__table__column_name__description__title": "Será substituído por",
+    "template__error__title": "O modelo é obrigatório"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Utilizar biblioteca de prompts",
+    "edit_prompt__template__placeholder": "Utilize este campo para criar o seu modelo de prompt real.\n\nPode adicionar variáveis que se transformarão em campos de texto preenchíveis no modelo de prompt. Experimente digitar {{ no seu prompt e começar a criar variáveis para o seu modelo de prompt. Pode usar as variáveis mais do que uma vez no modelo de prompt. Quando o prompt for utilizado, as variáveis serão substituídas automaticamente pelo texto inserido correspondente."
+  },
+  "": ""
 }

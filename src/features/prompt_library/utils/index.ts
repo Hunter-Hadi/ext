@@ -1,6 +1,6 @@
 import Toast from '@/utils/globalSnackbar'
 import { OptionsObject, SnackbarMessage } from 'notistack'
-import { IPromptVariable } from '@/features/prompt_library/types'
+import { IPromptLibraryCardDetailVariable } from '@/features/prompt_library/types'
 import { DEFAULT_PROMPT_VARIABLE } from '@/features/prompt_library/constant'
 import { getAppRootElement } from '@/utils'
 
@@ -44,7 +44,9 @@ export const promptActionToast = {
       ...options,
     }),
 }
-export const isLiveCrawling = (variables?: IPromptVariable[]) => {
+export const isLiveCrawling = (
+  variables?: IPromptLibraryCardDetailVariable[],
+) => {
   if (!variables) {
     return false
   }
@@ -57,14 +59,14 @@ const variableTypeWithInputVariable: Record<string, string[]> = {
 }
 // 1. 如果 variable_types 包含了系统预设变量的类型，但是又没有该变量类型的 input variable（比如url、query），则需要添加一个
 export const handleVariableTypeWithInputVariable = (
-  variables: IPromptVariable[],
+  variables: IPromptLibraryCardDetailVariable[],
   variableTypes: string[],
 ) => {
   if (variableTypes.length > 0 && variables) {
     const withInputVariableTypes = Object.keys(variableTypeWithInputVariable)
     variableTypes.forEach((type) => {
       if (withInputVariableTypes.includes(type)) {
-        const currentTypeInputVariables: IPromptVariable[] = []
+        const currentTypeInputVariables: IPromptLibraryCardDetailVariable[] = []
         variableTypeWithInputVariable[type].forEach((withTypeVariable) => {
           const inputVariable = DEFAULT_PROMPT_VARIABLE.find(
             (item) => item.name === withTypeVariable,

@@ -37,7 +37,8 @@
     "paste": "Beillesztés",
     "loading": "Betöltés...",
     "no_options": "Nincsenek lehetőségek",
-    "auto": "Autó"
+    "auto": "Autó",
+    "confirm": "Megerősítés"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "a szöveg, amely megjelenik a(z) {{LIVE_CRAWLING_TARGET_URL}} bejárása után",
     "preset_variables__tooltip__variable_name_prefix": "Változók a",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Változó helykitöltő",
-    "preset_variables__tooltip__table__column_name__description__title": "Ezzel lesz kicserélve"
+    "preset_variables__tooltip__table__column_name__description__title": "Ezzel lesz kicserélve",
+    "template__error__title": "A sablon kötelező"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Használja a prompt könyvtárat",
+    "edit_prompt__template__placeholder": "Használja ezt a mezőt az aktuális prompt sablon létrehozásához.\n\nHozzáadhat változókat, amelyek kitölthető szövegmezőkké válnak a prompt sablonban. Próbálja meg beírni a {{ karaktert a promptjába, és kezdjen el változókat létrehozni a prompt sablonjához. A változókat többször is használhatja a prompt sablonjában. Amikor a promptot használja, a változók automatikusan helyettesítésre kerülnek a megfelelően bevitt szöveggel."
   }
 }

@@ -37,7 +37,8 @@
     "paste": "วาง",
     "loading": "กำลังโหลด...",
     "no_options": "ไม่มีตัวเลือก",
-    "auto": "อัตโนมัติ"
+    "auto": "อัตโนมัติ",
+    "confirm": "ยืนยัน"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "ข้อความที่จะแสดงหลังจากค้นหา {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "ตัวแปรเกี่ยวกับ",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ตัวยึดตำแหน่งของตัวแปร",
-    "preset_variables__tooltip__table__column_name__description__title": "จะถูกแทนที่ด้วย"
+    "preset_variables__tooltip__table__column_name__description__title": "จะถูกแทนที่ด้วย",
+    "template__error__title": "ต้องระบุเทมเพลต"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "ใช้ห้องสมุดข้อความ",
+    "edit_prompt__template__placeholder": "ใช้ฟิลด์นี้เพื่อสร้างเทมเพลตโปรมป์จริงของคุณ\n\nคุณสามารถเพิ่มตัวแปรที่จะกลายเป็นฟิลด์ข้อความที่สามารถกรอกได้ในเทมเพลตโปรมป์ ลองพิมพ์ {{ ในโปรมป์ของคุณและเริ่มสร้างตัวแปรสำหรับเทมเพลตโปรมป์ของคุณ คุณสามารถใช้ตัวแปรได้หลายครั้งในเทมเพลตโปรมป์ของคุณ เมื่อใช้โปรมป์แล้ว ตัวแปรจะถูกแทนที่ด้วยข้อความที่ป้อนเข้ามาโดยอัตโนมัติ"
   }
 }

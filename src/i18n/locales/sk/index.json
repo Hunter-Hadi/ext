@@ -37,7 +37,8 @@
     "paste": "Vložiť",
     "loading": "Načítava sa...",
     "no_options": "Žiadne možnosti",
-    "auto": "Auto"
+    "auto": "Auto",
+    "confirm": "Potvrdiť"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "text, ktorý sa zobrazí po prehľadaní {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Premenné o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Náhradný symbol premennej",
-    "preset_variables__tooltip__table__column_name__description__title": "Bude nahradené s"
+    "preset_variables__tooltip__table__column_name__description__title": "Bude nahradené s",
+    "template__error__title": "Šablóna je povinná"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Použiť knižnicu promptov",
+    "edit_prompt__template__placeholder": "Použite toto pole na vytvorenie skutočnej šablóny promptu.\n\nMôžete pridať premenné, ktoré sa stanú vyplniteľnými textovými poliami vo vašej šablóne promptu. Skúste napísať {{ vo svojom prompte a začnite vytvárať premenné pre vašu šablónu promptu. Premenné môžete použiť viac ako raz vo vašej šablóne promptu. Pri použití promptu budú premenné automaticky nahradené zadaným textom."
   }
 }

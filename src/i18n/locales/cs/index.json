@@ -37,7 +37,8 @@
     "paste": "Vložit",
     "loading": "Načítání...",
     "no_options": "Žádné možnosti",
-    "auto": "Auto"
+    "auto": "Auto",
+    "confirm": "Potvrdit"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "text, který se zobrazí po procházení {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Proměnné o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Náhrada proměnné",
-    "preset_variables__tooltip__table__column_name__description__title": "Bude nahrazeno"
+    "preset_variables__tooltip__table__column_name__description__title": "Bude nahrazeno",
+    "template__error__title": "Šablona je povinná"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Použít knihovnu promptů",
+    "edit_prompt__template__placeholder": "Použijte toto pole k vytvoření skutečné šablony promptu.\n\nMůžete přidat proměnné, které se stanou vyplnitelnými textovými poli ve šabloně promptu. Zkuste napsat {{ ve svém promptu a začněte vytvářet proměnné pro vaši šablonu promptu. Proměnné můžete použít více než jednou ve šabloně promptu. Při použití promptu budou proměnné automaticky nahrazeny odpovídajícím zadaným textem."
   }
 }

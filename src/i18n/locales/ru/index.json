@@ -37,7 +37,8 @@
     "paste": "Вставить",
     "loading": "Загрузка...",
     "no_options": "Нет вариантов",
-    "auto": "Авто"
+    "auto": "Авто",
+    "confirm": "Подтвердить"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "текст, который будет показан после обхода {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Переменные о",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Заменяемая переменная",
-    "preset_variables__tooltip__table__column_name__description__title": "Будет заменено на"
+    "preset_variables__tooltip__table__column_name__description__title": "Будет заменено на",
+    "template__error__title": "Требуется шаблон"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Использовать библиотеку подсказок",
+    "edit_prompt__template__placeholder": "Используйте это поле для создания фактического шаблона подсказки.\n\nВы можете добавлять переменные, которые превратятся в поля для заполнения в шаблоне подсказки. Попробуйте набрать {{ в своей подсказке и начните создавать переменные для вашего шаблона подсказки. Вы можете использовать переменные несколько раз в шаблоне подсказки. Когда подсказка используется, переменные будут автоматически заменены соответствующим введенным текстом."
   }
 }

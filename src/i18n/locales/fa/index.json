@@ -37,7 +37,8 @@
     "paste": "چسباندن",
     "loading": "در حال بارگذاری...",
     "no_options": "گزینه‌ای وجود ندارد",
-    "auto": "خودکار"
+    "auto": "خودکار",
+    "confirm": "تأیید"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -691,6 +692,12 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "متنی که پس از جمع‌آوری اطلاعات از {{LIVE_CRAWLING_TARGET_URL}} نمایش داده خواهد شد",
     "preset_variables__tooltip__variable_name_prefix": "متغیرهای مربوط به",
     "preset_variables__tooltip__table__column_name__placeholder__title": "عنوان جایگزین متغیر",
-    "preset_variables__tooltip__table__column_name__description__title": "با این مقدار جایگزین خواهد شد"
-  }
+    "preset_variables__tooltip__table__column_name__description__title": "با این مقدار جایگزین خواهد شد",
+    "template__error__title": "قالب الزامی است"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "استفاده از کتابخانه پیشنهاد",
+    "edit_prompt__template__placeholder": "از این فیلد برای ایجاد قالب واقعی پیشنهاد خود استفاده کنید.\n\nمی توانید متغیرهایی را اضافه کنید که به فیلدهای متن قابل پر کردن در قالب پیشنهاد تبدیل می شوند. سعی کنید {{ را در پیشنهاد خود تایپ کنید و متغیرهایی برای قالب پیشنهاد خود ایجاد کنید. می توانید متغیرها را بیش از یک بار در قالب پیشنهاد خود استفاده کنید. هنگام استفاده از پیشنهاد، متغیرها به طور خودکار با متن ورودی مربوطه جایگزین می شوند."
+  },
+  "": ""
 }

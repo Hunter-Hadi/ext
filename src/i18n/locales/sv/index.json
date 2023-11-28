@@ -37,7 +37,8 @@
     "paste": "Klistra in",
     "loading": "Laddar...",
     "no_options": "Inga alternativ",
-    "auto": "Automatisk"
+    "auto": "Automatisk",
+    "confirm": "Bekräfta"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -691,6 +692,12 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "texten som visas efter att ha krypat {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variabler om",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabelplatsmarkör",
-    "preset_variables__tooltip__table__column_name__description__title": "Kommer att ersättas med"
-  }
+    "preset_variables__tooltip__table__column_name__description__title": "Kommer att ersättas med",
+    "template__error__title": "Mall krävs"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Använd promptbibliotek",
+    "edit_prompt__template__placeholder": "Använd detta fält för att skapa din faktiska promptmall.\n\nDu kan lägga till variabler som kommer att bli ifyllningsbara textfält i promptmallen. Prova att skriva {{ i din prompt och börja skapa variabler för din promptmall. Du kan använda variabler mer än en gång i din promptmall. När prompten används kommer variablerna automatiskt att ersättas med motsvarande inmatad text."
+  },
+  "": ""
 }

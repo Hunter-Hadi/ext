@@ -1,5 +1,22 @@
-export type IPromptType = 'private' | 'public'
+export type IPromptLibraryCardType = 'private' | 'public'
 
+export interface IAddPromptLibraryCardParams {
+  type: IPromptLibraryCardType
+  prompt_hint: string
+  prompt_template: string
+  prompt_title: string
+  teaser: string
+  category: string
+  use_case: string
+  user_input?: string
+  optional_prompt_template?: string
+  author?: string
+  author_url?: string
+}
+
+/**
+ * 这是列表接口的数据，很多字段会被删除
+ */
 export interface IPromptLibraryCardData {
   id: string
   use_case: string
@@ -10,25 +27,36 @@ export interface IPromptLibraryCardData {
   author_url?: string
   author?: string
   prompt_template?: string
-  type?: IPromptType
+  type?: IPromptLibraryCardType
   update_time?: string
   // api response types
-  variables?: IPromptVariable[]
-  variable_types?: IPromptVariableType[]
+  variables?: IPromptLibraryCardDetailVariable[]
+  variable_types?: IPromptLibraryCardDetailVariableType[]
+  favourite_cnt?: number
+  views?: number
+  optional_prompt_template?: string
+  user_input?: string
 }
-export interface IPromptDetailData {
+
+export interface IPromptLibraryCardDetailData {
   id: string
   use_case: string
   category: string
-  optional_prompt_template: string
   prompt_hint: string
   prompt_title: string
-  prompt_template: string
   teaser: string
-  user_input: string
-
-  variables?: IPromptVariable[]
-  variable_types?: IPromptVariableType[]
+  author_url?: string
+  author?: string
+  prompt_template?: string
+  type?: IPromptLibraryCardType
+  update_time?: string
+  // api response types
+  variables?: IPromptLibraryCardDetailVariable[]
+  variable_types?: IPromptLibraryCardDetailVariableType[]
+  favourite_cnt?: number
+  views?: number
+  optional_prompt_template?: string
+  user_input?: string
 }
 
 export interface IPromptCategoryApiData {
@@ -43,15 +71,15 @@ export interface IOwnPromptListResponse {
   own_prompts: IPromptLibraryCardData[]
 }
 
-export interface IPromptVariable {
+export interface IPromptLibraryCardDetailVariable {
   name: string
   hint?: string
   color?: string
   isSystemVariable?: boolean
-  type: IPromptVariableType
+  type: IPromptLibraryCardDetailVariableType
 }
 
-export type IPromptVariableType =
+export type IPromptLibraryCardDetailVariableType =
   | 'livecrawling'
   | 'websearch'
   | 'system'
@@ -63,8 +91,8 @@ export type IPromptListType = 'Favorites' | 'Public' | 'Own'
 
 export interface IPromptLibraryState {
   open: boolean
-  selectedPromptId: string
-  onClickPrompt: () => Promise<void>
+  editPromptId: string
+  selectedPromptLibraryCard: IPromptLibraryCardData | null
 }
 
 export interface IPromptLibraryListParametersState {

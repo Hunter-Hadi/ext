@@ -81,6 +81,7 @@ export const PRESET_VARIABLE_MAP: {
   SELECTED_TEXT: {
     VariableName: 'SELECTED_TEXT',
     label: 'SELECTED_TEXT',
+    defaultValue: '{{SELECTED_TEXT}}',
     valueType: 'Text',
     systemVariable: true,
   },

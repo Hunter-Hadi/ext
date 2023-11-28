@@ -37,7 +37,8 @@
     "paste": "Ielīmēt",
     "loading": "Ielādē...",
     "no_options": "Nav variantu",
-    "auto": "Automobilis"
+    "auto": "Automobilis",
+    "confirm": "Apstiprināt"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "teksts, kas tiks parādīts pēc {{LIVE_CRAWLING_TARGET_URL}} izkraušanas",
     "preset_variables__tooltip__variable_name_prefix": "Mainīgie par",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Mainīgais aizvietotājs",
-    "preset_variables__tooltip__table__column_name__description__title": "Tiks aizstāts ar"
+    "preset_variables__tooltip__table__column_name__description__title": "Tiks aizstāts ar",
+    "template__error__title": "Nepieciešams veidne"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Izmantot jautājumu bibliotēku",
+    "edit_prompt__template__placeholder": "Izmantojiet šo lauku, lai izveidotu faktisko jautājuma veidni.\n\nJūs varat pievienot mainīgos, kas pārvērtīsies par aizpildāmiem teksta laukiem jautājuma veidnē. Mēģiniet ierakstīt {{ savā jautājumā un sāciet izveidot mainīgos savai jautājuma veidnei. Jūs varat izmantot mainīgos vairākas reizes savā jautājuma veidnē. Kad tiek izmantots jautājums, mainīgie tiks aizstāti ar atbilstoši ievadīto tekstu automātiski."
   }
 }

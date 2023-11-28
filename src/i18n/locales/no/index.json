@@ -37,7 +37,8 @@
     "paste": "Lim inn",
     "loading": "Laster...",
     "no_options": "Ingen alternativer",
-    "auto": "Automatisk"
+    "auto": "Automatisk",
+    "confirm": "Bekreft"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "teksten som vil vises etter å ha crawlet {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variabler om",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabel plassholder",
-    "preset_variables__tooltip__table__column_name__description__title": "Vil bli erstattet med"
+    "preset_variables__tooltip__table__column_name__description__title": "Vil bli erstattet med",
+    "template__error__title": "Mal er påkrevd"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Bruk promptbibliotek",
+    "edit_prompt__template__placeholder": "Bruk dette feltet til å opprette malen for din faktiske prompt.\n\nDu kan legge til variabler som vil bli omgjort til utfyllbare tekstfelt i promptmalen. Prøv å skrive {{ i prompten din og begynn å opprette variabler for promptmalen din. Du kan bruke variabler flere ganger i promptmalen din. Når prompten brukes, vil variablene automatisk bli erstattet med den tilsvarende innskrivne teksten."
   }
 }

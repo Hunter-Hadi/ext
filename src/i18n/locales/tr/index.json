@@ -37,7 +37,8 @@
     "paste": "Yapıştır",
     "loading": "Yükleniyor...",
     "no_options": "Seçenek yok",
-    "auto": "Otomatik"
+    "auto": "Otomatik",
+    "confirm": "Onayla"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} taramasından sonra gösterilecek metin",
     "preset_variables__tooltip__variable_name_prefix": "Hakkında değişkenler",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Değişken yer tutucusu",
-    "preset_variables__tooltip__table__column_name__description__title": "İle değiştirilecek"
+    "preset_variables__tooltip__table__column_name__description__title": "İle değiştirilecek",
+    "template__error__title": "Şablon gereklidir"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Prompt kütüphanesini kullan",
+    "edit_prompt__template__placeholder": "Gerçek prompt şablonunuzu oluşturmak için bu alanı kullanın.\n\nPrompt şablonunda doldurulabilir metin alanlarına dönüşecek değişkenler ekleyebilirsiniz. Prompt'unuzda değişkenleri birden fazla kez kullanabilirsiniz. Prompt kullanıldığında, değişkenler otomatik olarak ilgili girilen metinle değiştirilecektir."
   }
 }

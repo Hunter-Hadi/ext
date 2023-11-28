@@ -37,7 +37,8 @@
     "paste": "Liitä",
     "loading": "Ladataan...",
     "no_options": "Ei vaihtoehtoja",
-    "auto": "Automaattinen"
+    "auto": "Automaattinen",
+    "confirm": "Vahvista"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "teksti, joka näytetään indeksoinnin jälkeen sivulla {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Muuttujat liittyen",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Muuttujan paikkamerkki",
-    "preset_variables__tooltip__table__column_name__description__title": "Korvataan"
+    "preset_variables__tooltip__table__column_name__description__title": "Korvataan",
+    "template__error__title": "Malli vaaditaan"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Käytä kyselykirjastoa",
+    "edit_prompt__template__placeholder": "Käytä tätä kenttää luodaksesi varsinaisen kyselymallisi.\n\nVoit lisätä muuttujia, jotka muuttuvat täytettäviksi tekstikentiksi kyselymallissa. Kokeile kirjoittaa {{ kyselyysi ja aloita muuttujien luominen kyselymalliasi varten. Voit käyttää muuttujia useammin kuin kerran kyselymallissasi. Kun kyselyä käytetään, muuttujat korvataan automaattisesti vastaavalla syötetyllä tekstillä."
   }
 }

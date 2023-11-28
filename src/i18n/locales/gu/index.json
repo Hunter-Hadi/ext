@@ -37,7 +37,8 @@
     "paste": "પેસ્ટ કરો",
     "loading": "લોડ થઈ રહ્યું છે...",
     "no_options": "કોઈ વિકલ્પો નથી",
-    "auto": "આપો"
+    "auto": "આપો",
+    "confirm": "પુષ્ટિ કરો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ક્રાવલ કરવામાં આવેલો ટેક્સ્ટ",
     "preset_variables__tooltip__variable_name_prefix": "વેરિએબલ વિશે",
     "preset_variables__tooltip__table__column_name__placeholder__title": "વેરિએબલ પ્લેસહોલ્ડર",
-    "preset_variables__tooltip__table__column_name__description__title": "થી બદલાઈ જશે"
+    "preset_variables__tooltip__table__column_name__description__title": "થી બદલાઈ જશે",
+    "template__error__title": "ટેમ્પલેટ જરૂરી છે"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "પ્રોમ્પ્ટ લાઇબ્રેરીનો ઉપયોગ કરો",
+    "edit_prompt__template__placeholder": "આ ફિલ્ડનો ઉપયોગ કરો તમારી વાસ્તવિક પ્રોમ્પ્ટ ટેમ્પલેટ બનાવવા માટે.\n\nતમે પ્રોમ્પ્ટ ટેમ્પલેટમાં ભરાયેલા ટેક્સ્ટ ફીલ્ડ્સ બનાવી શકો છો. તમારા પ્રોમ્પ્ટ અને તમારા પ્રોમ્પ્ટ ટેમ્પલેટ માટે વેરીએબલ્સ બનાવવા માટે {{ ટાઈપ કરો અને શરૂ કરો. તમે તમારા પ્રોમ્પ્ટ ટેમ્પલેટમાં વેરીએબલ્સનો અનેક વખત ઉપયોગ કરી શકો છો. પ્રોમ્પ્ટનો ઉપયોગ થતાં, વેરીએબલ્સને આપેલ ટેક્સ્ટથી આપેલ ટેક્સ્ટ દ્વારા બદલાઈ જશે."
   }
 }

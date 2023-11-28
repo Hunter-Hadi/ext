@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
 import { MagicBookIcon } from '@/components/CustomIcon'
@@ -11,13 +11,24 @@ import { getAppRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import Box from '@mui/material/Box'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
+import useEffectOnce from '@/hooks/useEffectOnce'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import { promptLibraryCardDetailDataToActions } from '@/features/prompt_library/utils/promptInterpreter'
 
 const PromptLibraryIconButton: FC = () => {
+  const {
+    setShortCuts,
+    runShortCuts,
+    shortCutsEngineRef,
+  } = useShortCutsWithMessageChat()
   const { t } = useTranslation(['prompt_library'])
   const {
     promptLibraryOpen,
     openPromptLibrary,
     closePromptLibrary,
+    initPromptLibrary,
+    selectedPromptLibraryCard,
+    cancelSelectPromptLibraryCard,
   } = usePromptLibrary()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
@@ -63,7 +74,21 @@ const PromptLibraryIconButton: FC = () => {
     openPromptLibrary()
     setPlacement(newPlacement)
   }
-
+  useEffectOnce(() => {
+    initPromptLibrary({})
+  })
+  useEffect(() => {
+    if (selectedPromptLibraryCard) {
+      const actions = promptLibraryCardDetailDataToActions(
+        selectedPromptLibraryCard,
+      )
+      if (actions && shortCutsEngineRef.current?.status === 'idle') {
+        cancelSelectPromptLibraryCard()
+        setShortCuts(actions)
+        runShortCuts().then().catch()
+      }
+    }
+  }, [selectedPromptLibraryCard])
   return (
     <>
       <TextOnlyTooltip

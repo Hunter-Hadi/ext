@@ -1,16 +1,16 @@
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 import { Stack, Typography } from '@mui/material'
 import React, { FC } from 'react'
+import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 
-const AddOwnPromptCard: FC<{
-  onClick?: () => void
-}> = ({ onClick }) => {
+const AddOwnPromptCard: FC = () => {
+  const { openPromptLibraryEditForm } = usePromptActions()
   return (
     <Stack
       p={2}
       spacing={2}
       onClick={() => {
-        onClick && onClick()
+        openPromptLibraryEditForm('NEW_PROMPT')
       }}
       sx={(t) => {
         const isDark = t.palette.mode === 'dark'

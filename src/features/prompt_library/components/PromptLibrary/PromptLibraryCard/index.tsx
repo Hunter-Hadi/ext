@@ -3,7 +3,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { Box, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useMemo } from 'react'
 import ProLink from '@/components/ProLink'
 import {
   DeleteIconButton,
@@ -23,44 +23,28 @@ import {
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import EllipsisTextWithTooltip from '@/components/EllipsisTextWithTooltip'
-import DeletePromptConfirm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/DeletePromptConfirm'
 import PromptTypeList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptTypeList'
+import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 dayjs.extend(relativeTime)
 dayjs.extend(utc)
 
 const PromptLibraryCard: FC<{
   actionButton?: IPromptActionKey[]
-  active?: boolean
   prompt: IPromptLibraryCardData
-  onClick?: (prompt: IPromptLibraryCardData) => void
-  onOpenEditModal?: (prompt: IPromptLibraryCardData) => void
-  onPromptClearSelected?: () => void
-  onRefresh?: () => void
-}> = ({
-  active,
-  prompt,
-  actionButton = ['see', 'favorite'],
-  onClick,
-  onRefresh,
-  onOpenEditModal,
-}) => {
-  const [deleteConfirmShow, setDeleteConfirmShow] = useState(false)
-
-  const { deletePrompt, loading: actionLoading } = usePromptActions()
-
+  onClick?: (promptData?: IPromptLibraryCardData) => void
+}> = ({ prompt, actionButton = ['see', 'favorite'], onClick }) => {
+  const { openPromptLibraryEditForm } = usePromptActions()
+  const {
+    selectedPromptLibraryCard,
+    selectPromptLibraryCard,
+    cancelSelectPromptLibraryCard,
+  } = usePromptLibrary()
+  const isActive = selectedPromptLibraryCard?.id === prompt.id
   const detailLink = useMemo(() => {
     return prompt.type === 'private'
       ? `${APP_USE_CHAT_GPT_HOST}/prompts/own/${prompt.id}`
       : `${APP_USE_CHAT_GPT_HOST}/prompts/${prompt.id}`
   }, [prompt])
-
-  const handleDeleteConfirm = async () => {
-    const status = await deletePrompt(prompt.id)
-    if (status) {
-      onRefresh && onRefresh()
-      setDeleteConfirmShow(false)
-    }
-  }
 
   const actionBtnList = () => {
     const btnList = []
@@ -71,9 +55,8 @@ const PromptLibraryCard: FC<{
       btnList.push(
         <DeleteIconButton
           key="delete"
-          onClick={() => {
-            setDeleteConfirmShow(true)
-          }}
+          promptId={prompt.id}
+          promptTitle={prompt.prompt_title}
         />,
       )
     }
@@ -82,7 +65,7 @@ const PromptLibraryCard: FC<{
         <EditIconButton
           key="edit"
           onClick={() => {
-            onOpenEditModal && onOpenEditModal(prompt)
+            openPromptLibraryEditForm(prompt.id)
           }}
         />,
       )
@@ -106,141 +89,134 @@ const PromptLibraryCard: FC<{
   }, [prompt?.author, authorLink])
 
   return (
-    <>
-      <Stack
-        p={2}
-        spacing={1.5}
-        onClick={() => {
-          onClick && onClick(prompt)
-        }}
-        sx={(t) => {
-          const isDark = t.palette.mode === 'dark'
+    <Stack
+      p={2}
+      spacing={1.5}
+      onClick={() => {
+        if (isActive) {
+          cancelSelectPromptLibraryCard()
+          onClick?.()
+        } else {
+          selectPromptLibraryCard(prompt)
+          onClick?.(prompt)
+        }
+      }}
+      sx={(t) => {
+        const isDark = t.palette.mode === 'dark'
 
-          const normalBgcolor = isDark ? '#3E3F4C' : '#fff'
-          const activeBgcolor = isDark ? '#202123' : 'rgba(0, 0, 0, 0.04)'
-          const shadowColor = isDark
+        const normalBgcolor = isDark ? '#3E3F4C' : '#fff'
+        const activeBgcolor = isDark ? '#202123' : 'rgba(0, 0, 0, 0.04)'
+        const shadowColor = isDark
+          ? 'rgba(255, 255, 255, 0.08)'
+          : 'rgba(0, 0, 0, 0.16)'
+
+        return {
+          position: 'relative',
+          color: 'text.primary',
+          border: '1px solid',
+          cursor: 'pointer',
+          borderRadius: '4px',
+          transition: 'all 0.2s ease-in-out',
+          height: 'calc(100% - 16px - 16px)',
+          borderColor: isDark
             ? 'rgba(255, 255, 255, 0.08)'
-            : 'rgba(0, 0, 0, 0.16)'
-
-          return {
-            position: 'relative',
-            color: 'text.primary',
-            border: '1px solid',
-            cursor: 'pointer',
-            borderRadius: '4px',
-            transition: 'all 0.2s ease-in-out',
-            height: 'calc(100% - 16px - 16px)',
-            borderColor: isDark
-              ? 'rgba(255, 255, 255, 0.08)'
-              : 'rgba(0, 0, 0, 0.08)',
-            bgcolor: active ? activeBgcolor : normalBgcolor,
-            '&:hover': {
-              boxShadow: `0px 4px 8px ${shadowColor}`,
-            },
-          }
-        }}
-      >
-        <Stack direction="row" spacing={1.5} justifyContent="space-between">
-          <EllipsisTextWithTooltip
-            tip={prompt.prompt_title}
-            color={'text.secondary'}
-            fontSize={16}
-            sx={{
-              fontSize: '20px',
-              lineHeight: '24px',
-              whiteSpace: 'normal',
-              wordBreak: 'break-word',
-              fontWeight: 700,
-              minHeight: '72px',
-            }}
-          >
-            {prompt.prompt_title}
-          </EllipsisTextWithTooltip>
-          <Typography variant={'body1'} sx={{}}></Typography>
-          <Stack direction="row" fontSize={16} height="max-content">
-            {actionBtnList()}
-          </Stack>
-        </Stack>
-        <Stack direction={'row'} alignItems={'center'} spacing={1}>
-          <PromptCardTag
-            tag={`${prompt.category}${
-              prompt.use_case ? ` / ${prompt.use_case}` : ''
-            }`}
-          />
-        </Stack>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-          spacing={0.5}
-          sx={(t) => {
-            const isDark = t.palette.mode === 'dark'
-            return {
-              fontSize: 12,
-              color: isDark ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
-            }
-          }}
-        >
-          {prompt?.type === 'private' ? (
-            <LockOutlinedIcon fontSize="inherit" />
-          ) : (
-            <LanguageOutlinedIcon fontSize="inherit" />
-          )}
-          <Typography variant="caption" fontSize={12}>
-            ·
-          </Typography>
-          <ProLink
-            href={authorLink}
-            underline="always"
-            sx={{
-              color: 'inherit',
-            }}
-            onClick={(event) => {
-              event.stopPropagation()
-            }}
-          >
-            {author}
-          </ProLink>
-          {prompt.update_time && (
-            <span>
-              <Typography variant="caption" fontSize={12}>
-                ·
-              </Typography>
-              <Typography variant="caption" fontSize={12}>
-                {dayjs.utc(prompt.update_time).fromNow()}
-              </Typography>
-            </span>
-          )}
-        </Stack>
+            : 'rgba(0, 0, 0, 0.08)',
+          bgcolor: isActive ? activeBgcolor : normalBgcolor,
+          '&:hover': {
+            boxShadow: `0px 4px 8px ${shadowColor}`,
+          },
+        }
+      }}
+    >
+      <Stack direction="row" spacing={1.5} justifyContent="space-between">
         <EllipsisTextWithTooltip
-          tip={prompt.teaser}
+          tip={prompt.prompt_title}
           color={'text.secondary'}
           fontSize={16}
           sx={{
-            lineHeight: '20px',
+            fontSize: '20px',
+            lineHeight: '24px',
             whiteSpace: 'normal',
             wordBreak: 'break-word',
-            minHeight: 60,
+            fontWeight: 700,
+            minHeight: '72px',
           }}
         >
-          <PromptTypeList
-            typeList={prompt.variable_types}
-            variables={prompt.variables}
-          />
-          {prompt.teaser}
+          {prompt.prompt_title}
         </EllipsisTextWithTooltip>
+        <Typography variant={'body1'} sx={{}}></Typography>
+        <Stack direction="row" fontSize={16} height="max-content">
+          {actionBtnList()}
+        </Stack>
       </Stack>
-      {actionButton?.includes('delete') && (
-        <DeletePromptConfirm
-          promptTitle={prompt.prompt_title}
-          loading={actionLoading}
-          show={deleteConfirmShow}
-          onConfirm={handleDeleteConfirm}
-          onCancel={() => {
-            setDeleteConfirmShow(false)
-          }}
+      <Stack direction={'row'} alignItems={'center'} spacing={1}>
+        <PromptCardTag
+          tag={`${prompt.category}${
+            prompt.use_case ? ` / ${prompt.use_case}` : ''
+          }`}
         />
-      )}
-    </>
+      </Stack>
+      <Stack
+        direction={'row'}
+        alignItems={'center'}
+        spacing={0.5}
+        sx={(t) => {
+          const isDark = t.palette.mode === 'dark'
+          return {
+            fontSize: 12,
+            color: isDark ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
+          }
+        }}
+      >
+        {prompt?.type === 'private' ? (
+          <LockOutlinedIcon fontSize="inherit" />
+        ) : (
+          <LanguageOutlinedIcon fontSize="inherit" />
+        )}
+        <Typography variant="caption" fontSize={12}>
+          ·
+        </Typography>
+        <ProLink
+          href={authorLink}
+          underline="always"
+          sx={{
+            color: 'inherit',
+          }}
+          onClick={(event) => {
+            event.stopPropagation()
+          }}
+        >
+          {author}
+        </ProLink>
+        {prompt.update_time && (
+          <span>
+            <Typography variant="caption" fontSize={12}>
+              ·
+            </Typography>
+            <Typography variant="caption" fontSize={12}>
+              {dayjs.utc(prompt.update_time).fromNow()}
+            </Typography>
+          </span>
+        )}
+      </Stack>
+      <EllipsisTextWithTooltip
+        tip={prompt.teaser}
+        color={'text.secondary'}
+        fontSize={16}
+        sx={{
+          lineHeight: '20px',
+          whiteSpace: 'normal',
+          wordBreak: 'break-word',
+          minHeight: 60,
+        }}
+      >
+        <PromptTypeList
+          typeList={prompt.variable_types}
+          variables={prompt.variables}
+        />
+        {prompt.teaser}
+      </EllipsisTextWithTooltip>
+    </Stack>
   )
 }
 

@@ -1,17 +1,18 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import PromptLibraryHeader from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader'
 import Stack from '@mui/material/Stack'
 import PromptLibraryList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import PromptLibraryListProgress from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/PromptLibraryListProgress'
-const queryClient = new QueryClient()
+import PromptLibraryCardEditForm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCardEditForm'
 
-const PromptLibraryApp: FC = () => {
-  const { initPromptLibrary } = usePromptLibrary()
-  useEffect(() => {
-    initPromptLibrary({})
-  }, [])
+export interface IPromptLibraryAppProps {
+  closeOnSelect?: boolean
+}
+
+const PromptLibrary: FC<IPromptLibraryAppProps> = (props) => {
+  const { closeOnSelect = true } = props
+  const { closePromptLibrary } = usePromptLibrary()
   return (
     <Stack height={'100%'} position={'relative'} gap={2}>
       <PromptLibraryListProgress
@@ -22,16 +23,15 @@ const PromptLibraryApp: FC = () => {
         }}
       />
       <PromptLibraryHeader />
-      <PromptLibraryList />
+      <PromptLibraryList
+        onClick={(promptLibraryCard) => {
+          if (promptLibraryCard && closeOnSelect) {
+            closePromptLibrary()
+          }
+        }}
+      />
+      <PromptLibraryCardEditForm />
     </Stack>
-  )
-}
-
-const PromptLibrary: FC = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <PromptLibraryApp />
-    </QueryClientProvider>
   )
 }
 

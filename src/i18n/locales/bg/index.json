@@ -37,7 +37,8 @@
     "paste": "Постави",
     "loading": "Зареждане...",
     "no_options": "Няма налични опции",
-    "auto": "Автоматично"
+    "auto": "Автоматично",
+    "confirm": "Потвърди"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "текстът, който ще се покаже след обхождането на {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Променливи относно",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Заместваща променлива",
-    "preset_variables__tooltip__table__column_name__description__title": "Ще бъде заменено с"
+    "preset_variables__tooltip__table__column_name__description__title": "Ще бъде заменено с",
+    "template__error__title": "Изисква се шаблон"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Използвай библиотеката с промпти",
+    "edit_prompt__template__placeholder": "Използвайте това поле, за да създадете вашата актуална шаблонна промпт.\n\nМожете да добавите променливи, които ще се превърнат в полета за попълване в шаблона на промпта. Опитайте да напишете {{ във вашия промпт и започнете да създавате променливи за вашия шаблон на промпта. Можете да използвате променливи повече от веднъж в шаблона на промпта. Когато се използва промпта, променливите ще бъдат заменени автоматично със съответния въведен текст."
   }
 }

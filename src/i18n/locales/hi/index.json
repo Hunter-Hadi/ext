@@ -37,7 +37,8 @@
     "paste": "पेस्ट करें",
     "loading": "लोड हो रहा है...",
     "no_options": "कोई विकल्प नहीं",
-    "auto": "ऑटो"
+    "auto": "ऑटो",
+    "confirm": "पुष्टि करें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} क्रॉल करने के बाद दिखाई देने वाला टेक्स्ट",
     "preset_variables__tooltip__variable_name_prefix": "इसके बारे में चर",
     "preset_variables__tooltip__table__column_name__placeholder__title": "चर प्लेसहोल्डर",
-    "preset_variables__tooltip__table__column_name__description__title": "इसके साथ बदल जाएगा"
+    "preset_variables__tooltip__table__column_name__description__title": "इसके साथ बदल जाएगा",
+    "template__error__title": "टेम्पलेट आवश्यक है"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "प्रॉम्प्ट पुस्तकालय का उपयोग करें",
+    "edit_prompt__template__placeholder": "अपने वास्तविक प्रॉम्प्ट टेम्पलेट बनाने के लिए इस फ़ील्ड का उपयोग करें।\n\nआप प्रॉम्प्ट टेम्पलेट में भरने योग्य पाठ फ़ील्ड बनाने के लिए चर जोड़ सकते हैं। अपने प्रॉम्प्ट पर {{ टाइप करके और अपने प्रॉम्प्ट टेम्पलेट के लिए चर बनाना शुरू करें। आप अपने प्रॉम्प्ट टेम्पलेट में चर को एक से अधिक बार उपयोग कर सकते हैं। प्रॉम्प्ट का उपयोग किया जाता है, तो चर स्वचालित रूप से संबंधित इनपुट किया गया पाठ द्वारा बदल दिया जाएगा।"
   }
 }

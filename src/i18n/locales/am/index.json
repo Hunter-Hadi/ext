@@ -37,7 +37,8 @@
     "paste": "ጽሁፍ",
     "loading": "በመጫን ላይ...",
     "no_options": "ምንም አማራጭ የለም",
-    "auto": "ራስዎ"
+    "auto": "ራስዎ",
+    "confirm": "አረጋግጥ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "የተለያዩ ድረገጽ {{LIVE_CRAWLING_TARGET_URL}} ከማግኘት የተረጋገጠ ጽሑፍ",
     "preset_variables__tooltip__variable_name_prefix": "ተግባራዊ ለ",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ተግባራዊ መስጫ",
-    "preset_variables__tooltip__table__column_name__description__title": "በመስጫ ተግባራዊ ተግባር ይወስዳል"
+    "preset_variables__tooltip__table__column_name__description__title": "በመስጫ ተግባራዊ ተግባር ይወስዳል",
+    "template__error__title": "ትርጉም ያስፈልጋል"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "የመረጃ ቤት ይጠቀሙ",
+    "edit_prompt__template__placeholder": "ይህ መረጃ ባለቤት ይጠቀሙ።\n\nየመረጃ ባለቤት ውስጥ የሚሰጡ ቃላት የሚሆኑትን ጽሁፎች ይጨምሩ። የመረጃ ባለቤት ውስጥ በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ።"
   }
 }

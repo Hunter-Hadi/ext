@@ -37,7 +37,8 @@
     "paste": "পেস্ট করুন",
     "loading": "লোড হচ্ছে...",
     "no_options": "কোন অপশন নেই",
-    "auto": "স্বয়ংক্রিয়"
+    "auto": "স্বয়ংক্রিয়",
+    "confirm": "নিশ্চিত করুন"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ক্রল করার পরে প্রদর্শিত টেক্সট",
     "preset_variables__tooltip__variable_name_prefix": "বিষয়বস্তু সম্পর্কিত চলচ্চিত্র",
     "preset_variables__tooltip__table__column_name__placeholder__title": "চলচ্চিত্রের জায়গা",
-    "preset_variables__tooltip__table__column_name__description__title": "এর পরিবর্তে হবে"
+    "preset_variables__tooltip__table__column_name__description__title": "এর পরিবর্তে হবে",
+    "template__error__title": "টেমপ্লেট প্রয়োজন"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "প্রম্পট লাইব্রেরি ব্যবহার করুন",
+    "edit_prompt__template__placeholder": "আপনার প্রকৃত প্রম্পট টেমপ্লেট তৈরি করতে এই ক্ষেত্রটি ব্যবহার করুন।\n\nপ্রম্পট টেমপ্লেটে পূর্ণকরণযোগ্য পাঠ্য ক্ষেত্র হিসাবে পরিণত হবে ভেরিয়েবল যুক্ত করতে পারেন। আপনি আপনার প্রম্পট টেমপ্লেটে একাধিকবার ভেরিয়েবল ব্যবহার করতে পারেন। প্রম্পটটি ব্যবহৃত হলে, ভেরিয়েবলগুলি স্বয়ংক্রিয়ভাবে সংযোজন করা হবে প্রবেশ করানো পাঠ্যের দ্বারা।"
   }
 }

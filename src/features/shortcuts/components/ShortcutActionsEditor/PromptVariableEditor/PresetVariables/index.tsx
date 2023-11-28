@@ -64,7 +64,7 @@ const PresetVariables: FC<{
                 <Stack
                   direction="row"
                   p={1}
-                  spacing={1}
+                  gap={1}
                   flexWrap="wrap"
                   alignItems="center"
                   borderLeft="1px solid"

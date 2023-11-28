@@ -1,7 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+import DeletePromptConfirm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/DeletePromptConfirm'
+import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
+import CircularProgress from '@mui/material/CircularProgress'
+import useFavoritePrompts from '@/features/prompt_library/hooks/useFavoritePrompts'
 
 const DeleteIcon: FC<SvgIconProps> = (props) => {
   return (
@@ -16,21 +20,63 @@ const DeleteIcon: FC<SvgIconProps> = (props) => {
   )
 }
 
-export const DeleteIconButton: FC<{ onClick: () => void }> = ({ onClick }) => (
-  <Tooltip title="Delete Prompt">
-    <IconButton
-      size="small"
-      onClick={(event) => {
-        event.stopPropagation()
-        onClick && onClick()
-      }}
-    >
-      <DeleteIcon
-        sx={{
-          // color: 'rgba(0, 0, 0, 0.54)',
-          fontSize: 16,
+export const DeleteIconButton: FC<{
+  promptId: string
+  promptTitle: string
+}> = ({ promptId, promptTitle }) => {
+  const {
+    deletePromptLibraryCardMutation,
+    removeFavoritePromptMutation,
+  } = usePromptActions()
+  const [deleteConfirmShow, setDeleteConfirmShow] = useState(false)
+  const { data } = useFavoritePrompts()
+  const favouritePromptIds = useMemo(() => {
+    return (data || []).map((prompt) => prompt.id)
+  }, [data])
+  const isFavorite = useMemo(() => favouritePromptIds.includes(promptId), [
+    favouritePromptIds,
+    promptId,
+  ])
+
+  const handleDeleteConfirm = async () => {
+    deletePromptLibraryCardMutation.mutate(promptId)
+    if (isFavorite) {
+      removeFavoritePromptMutation.mutate(promptId)
+    }
+    setDeleteConfirmShow(false)
+  }
+  return (
+    <>
+      <Tooltip title="Delete Prompt">
+        <IconButton
+          size="small"
+          onClick={(event) => {
+            event.stopPropagation()
+            setDeleteConfirmShow(true)
+          }}
+        >
+          {deletePromptLibraryCardMutation.isPending ||
+          removeFavoritePromptMutation.isPending ? (
+            <CircularProgress size={16} sx={{ m: '0 auto' }} />
+          ) : (
+            <DeleteIcon
+              sx={{
+                // color: 'rgba(0, 0, 0, 0.54)',
+                fontSize: 16,
+              }}
+            />
+          )}
+        </IconButton>
+      </Tooltip>
+      <DeletePromptConfirm
+        promptTitle={promptTitle}
+        loading={deletePromptLibraryCardMutation.isPending}
+        show={deleteConfirmShow}
+        onConfirm={handleDeleteConfirm}
+        onCancel={() => {
+          setDeleteConfirmShow(false)
         }}
       />
-    </IconButton>
-  </Tooltip>
-)
+    </>
+  )
+}

@@ -37,7 +37,8 @@
     "paste": "പേസ്റ്റ് ചെയ്യുക",
     "loading": "ലോഡുചെയ്യുന്നു...",
     "no_options": "ഓപ്ഷനുകൾ ഇല്ല",
-    "auto": "ഓട്ടോ"
+    "auto": "ഓട്ടോ",
+    "confirm": "സ്ഥിരീകരിക്കുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ക്രോൾ ചെയ്യുന്നതിന് ശേഷം കാണിക്കുന്ന ടെക്സ്റ്റ്",
     "preset_variables__tooltip__variable_name_prefix": "വിഷയത്തെ പറ്റിയുള്ള ചരങ്ങൾ",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ചരം പ്ലേസ്ഹോൾഡർ",
-    "preset_variables__tooltip__table__column_name__description__title": "മാറ്റപ്പെടുന്നത്"
+    "preset_variables__tooltip__table__column_name__description__title": "മാറ്റപ്പെടുന്നത്",
+    "template__error__title": "ടെംപ്ലേറ്റ് ആവശ്യമാണ്"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "പ്രോംപ്റ്റ് ലൈബ്രറി ഉപയോഗിക്കുക",
+    "edit_prompt__template__placeholder": "നിങ്ങളുടെ അതിജീവനം പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ ഈ ഫീൽഡ് ഉപയോഗിക്കുക.\n\nപ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് പൂർണ്ണമായ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ നിങ്ങൾ വാരംബോളം ചേര്‍ക്കാം. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രത്യേകിച്ച് എഴുതാന്‍ ശ്രമിക്കുക. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ ഒരേ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് അനുവദിക്കുന്നു. പ്രോംപ്റ്റ് ഉപയോഗിക്കപ്പെടുമ്പോള്‍, പ്രമ്പികള്‍ സ്വയംഭാവവേദ്യമായ ഉള്ളടക്കം പ്രത്യാപിക്കുന്നതാണ്."
   }
 }

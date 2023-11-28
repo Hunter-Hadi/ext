@@ -37,7 +37,8 @@
     "paste": "Plakken",
     "loading": "Laden...",
     "no_options": "Geen opties",
-    "auto": "Auto"
+    "auto": "Auto",
+    "confirm": "Bevestigen"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "de tekst die getoond zal worden na het crawlen van {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variabelen over de",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabele placeholder",
-    "preset_variables__tooltip__table__column_name__description__title": "Zal worden vervangen door"
+    "preset_variables__tooltip__table__column_name__description__title": "Zal worden vervangen door",
+    "template__error__title": "Sjabloon is verplicht"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Gebruik prompt bibliotheek",
+    "edit_prompt__template__placeholder": "Gebruik dit veld om uw daadwerkelijke sjabloon te maken.\n\nU kunt variabelen toevoegen die in het sjabloon worden omgezet in invulbare tekstvelden. Probeer {{ op uw prompt te typen en begin variabelen te maken voor uw sjabloon. U kunt variabelen meerdere keren gebruiken in uw sjabloon. Wanneer de prompt wordt gebruikt, worden de variabelen automatisch vervangen door de bijbehorende ingevoerde tekst."
   }
 }

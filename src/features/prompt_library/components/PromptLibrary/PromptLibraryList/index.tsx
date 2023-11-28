@@ -2,13 +2,19 @@ import { Grid, Stack } from '@mui/material'
 import React, { FC, useMemo } from 'react'
 import usePromptLibraryList from '@/features/prompt_library/hooks/usePromptLibraryList'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
-import { IPromptActionKey } from '@/features/prompt_library/types'
+import {
+  IPromptActionKey,
+  IPromptLibraryCardData,
+} from '@/features/prompt_library/types'
 import PromptLibraryCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard'
 import PromptLibraryCardSkeleton from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardSkeleton'
 import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
 import AddOwnPromptCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/AddOwnPromptCard'
 
-const PromptLibraryList: FC = () => {
+const PromptLibraryList: FC<{
+  onClick?: (promptLibraryCard?: IPromptLibraryCardData) => void
+}> = (props) => {
+  const { onClick } = props
   const { data, isLoading } = usePromptLibraryList()
   const {
     activeTab,
@@ -44,12 +50,9 @@ const PromptLibraryList: FC = () => {
         {data.map((prompt) => (
           <Grid key={prompt.id} item xs={12} md={6} xl={3}>
             <PromptLibraryCard
-              onRefresh={() => {}}
               actionButton={actionButton}
-              active={false}
-              onPromptClearSelected={() => {}}
               prompt={prompt}
-              onClick={() => {}}
+              onClick={onClick}
             />
           </Grid>
         ))}
@@ -61,6 +64,7 @@ const PromptLibraryList: FC = () => {
     activeTab,
     actionButton,
     promptLibraryListParameters.page_size,
+    onClick,
   ])
   return (
     <Stack

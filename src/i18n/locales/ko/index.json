@@ -37,7 +37,8 @@
     "paste": "붙여넣기",
     "loading": "로딩 중...",
     "no_options": "옵션이 없음",
-    "auto": "자동"
+    "auto": "자동",
+    "confirm": "확인"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} 크롤링 후 표시될 텍스트",
     "preset_variables__tooltip__variable_name_prefix": "변수에 관한",
     "preset_variables__tooltip__table__column_name__placeholder__title": "변수 자리 표시자",
-    "preset_variables__tooltip__table__column_name__description__title": "다음으로 대체됩니다"
+    "preset_variables__tooltip__table__column_name__description__title": "다음으로 대체됩니다",
+    "template__error__title": "템플릿이 필요합니다"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "프롬프트 라이브러리 사용",
+    "edit_prompt__template__placeholder": "실제 프롬프트 템플릿을 생성하는 데 이 필드를 사용하세요.\n\n프롬프트 템플릿에서 채워질 수 있는 텍스트 필드로 변환될 변수를 추가할 수 있습니다. 프롬프트에 {{를 입력하고 프롬프트 템플릿의 변수를 생성해보세요. 프롬프트 템플릿에서 변수를 여러 번 사용할 수 있습니다. 프롬프트가 사용될 때, 변수는 자동으로 해당 입력된 텍스트로 대체됩니다."
   }
 }

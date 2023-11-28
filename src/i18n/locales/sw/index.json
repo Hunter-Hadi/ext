@@ -37,7 +37,8 @@
     "paste": "Bandika",
     "loading": "Inapakia...",
     "no_options": "Hakuna chaguo",
-    "auto": "Gari"
+    "auto": "Gari",
+    "confirm": "Thibitisha"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "maandishi yatakayotolewa baada ya kuchimba {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Vipengele kuhusu",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Nafasi ya kigezo",
-    "preset_variables__tooltip__table__column_name__description__title": "Itabadilishwa na"
+    "preset_variables__tooltip__table__column_name__description__title": "Itabadilishwa na",
+    "template__error__title": "Kigezo ni lazima"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Tumia maktaba ya maelekezo",
+    "edit_prompt__template__placeholder": "Tumia uga huu kuunda kigezo chako halisi cha maelekezo.\n\nUnaweza kuongeza vipengele ambavyo vitageuka kuwa sehemu za maandishi yanayoweza kujazwa katika kigezo cha maelekezo. Jaribu kubonyeza {{ kwenye maelekezo yako na anza kuunda vipengele kwa kigezo chako cha maelekezo. Unaweza kutumia vipengele mara nyingi katika kigezo chako cha maelekezo. Wakati maelekezo yanapotumiwa, vipengele vitabadilishwa na maandishi yaliyoingizwa kiotomatiki."
   }
 }

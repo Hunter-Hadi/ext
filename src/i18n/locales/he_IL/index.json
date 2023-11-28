@@ -37,7 +37,8 @@
     "paste": "הדבק",
     "loading": "טוען...",
     "no_options": "אין אפשרויות",
-    "auto": "אוטומטי"
+    "auto": "אוטומטי",
+    "confirm": "אישור"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "הטקסט שיתצג לאחר הגלישה ב-{{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "משתנים על",
     "preset_variables__tooltip__table__column_name__placeholder__title": "מציין משתנה",
-    "preset_variables__tooltip__table__column_name__description__title": "יחליף ב"
+    "preset_variables__tooltip__table__column_name__description__title": "יחליף ב",
+    "template__error__title": "נדרש תבנית"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "השתמש בספריית הצעות",
+    "edit_prompt__template__placeholder": "השתמש בשדה זה כדי ליצור את תבנית ההצעה הממשית שלך.\n\nניתן להוסיף משתנים שיתהפכו לשדות טקסט ניתנים למילוי בתבנית ההצעה. נסה להקליד {{ בהצעתך ולהתחיל ליצור משתנים עבור תבנית ההצעה שלך. ניתן להשתמש במשתנים יותר מפעם אחת בתבנית ההצעה שלך. כאשר ההצעה משתמשת, המשתנים יוחלפו בטקסט המילוי המתאים באופן אוטומטי."
   }
 }

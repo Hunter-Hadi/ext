@@ -37,7 +37,8 @@
     "paste": "Kleebi",
     "loading": "Laadimine...",
     "no_options": "Valikuid pole",
-    "auto": "Auto"
+    "auto": "Auto",
+    "confirm": "Kinnita"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "tekst, mis kuvatakse pärast lehekülje kogumist aadressilt {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Muutujad seoses",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Muutuja asendaja",
-    "preset_variables__tooltip__table__column_name__description__title": "Asendatakse"
+    "preset_variables__tooltip__table__column_name__description__title": "Asendatakse",
+    "template__error__title": "Mall on kohustuslik"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Kasuta küsimuste raamatukogu",
+    "edit_prompt__template__placeholder": "Kasuta seda välja, et luua oma tegeliku küsimuse mall.\n\nSaate lisada muutujaid, mis muutuvad täidetavateks tekstiväljadeks küsimuse mallis. Proovige tippida {{ oma küsimuses ja alustage muutujate loomist oma küsimuse malli jaoks. Saate muutujaid kasutada mitu korda oma küsimuse mallis. Kui küsimust kasutatakse, asendatakse muutujad automaatselt vastava sisestatud tekstiga."
   }
 }

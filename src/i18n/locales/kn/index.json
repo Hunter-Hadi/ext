@@ -37,7 +37,8 @@
     "paste": "ಹಾಕಿ",
     "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
     "no_options": "ಯಾವುದೇ ಆಯ್ಕೆಗಳಿಲ್ಲ",
-    "auto": "ಸ್ವಯಂಚಾಲಿತ"
+    "auto": "ಸ್ವಯಂಚಾಲಿತ",
+    "confirm": "ದೃಢೀಕರಿಸಿ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} ಕ್ರಾವ್ ಮಾಡಲಾದ ನಂತರ ತೋರಿಸಲಾದ ಪಠ್ಯ",
     "preset_variables__tooltip__variable_name_prefix": "ವ್ಯಾರಿಬಲ್‌ಗಳು ಕುರಿತು",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ವ್ಯಾರಿಬಲ್ ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್",
-    "preset_variables__tooltip__table__column_name__description__title": "ಇದನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ"
+    "preset_variables__tooltip__table__column_name__description__title": "ಇದನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ",
+    "template__error__title": "ಟೆಂಪ್ಲೇಟ್ ಅಗತ್ಯವಿದೆ"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "ಪ್ರಾಂಪ್ಟ್ ಲೈಬ್ರರಿಯನ್ನು ಬಳಸಿ",
+    "edit_prompt__template__placeholder": "ನಿಮ್ಮ ನಿಜವಾದ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ರಚಿಸಲು ಈ ಕ್ಷೇತ್ರವನ್ನು ಬಳಸಿ.\n\nಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ನಲ್ಲಿ ಭರ್ತಿಯಾಗಬೇಕಾದ ಪದಗಳನ್ನು ಸೇರಿಸಬಹುದು. ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ನಲ್ಲಿ {{ ಅನ್ನು ಟೈಪ್ ಮಾಡಿ ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಗಾಗಿ ಪದಗಳನ್ನು ರಚಿಸಿ. ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ನಲ್ಲಿ ಪದಗಳನ್ನು ಹೆಚ್ಚು ಒಬ್ಬರು ಬಾರಿ ಬಳಸಬಹುದು. ಪ್ರಾಂಪ್ಟ್ ಬಳಸಲಾಗುವಾಗ, ಪದಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಂಬಂಧಿತ ನಮೂದಿಸಲ್ಪಡುವುವು."
   }
 }

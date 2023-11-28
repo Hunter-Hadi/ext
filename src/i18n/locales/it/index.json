@@ -37,7 +37,8 @@
     "paste": "Incolla",
     "loading": "Caricamento...",
     "no_options": "Nessuna opzione",
-    "auto": "Automobile"
+    "auto": "Automobile",
+    "confirm": "Conferma"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "il testo che verrà mostrato dopo l'analisi di {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variabili relative a",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Segnaposto variabile",
-    "preset_variables__tooltip__table__column_name__description__title": "Verrà sostituito con"
+    "preset_variables__tooltip__table__column_name__description__title": "Verrà sostituito con",
+    "template__error__title": "Il modello è obbligatorio"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Usa la libreria di prompt",
+    "edit_prompt__template__placeholder": "Utilizza questo campo per creare il tuo modello effettivo di prompt.\n\nPuoi aggiungere variabili che si trasformeranno in campi di testo compilabili nel modello di prompt. Prova a digitare {{ sul tuo prompt e inizia a creare variabili per il tuo modello di prompt. Puoi utilizzare le variabili più di una volta nel modello di prompt. Quando viene utilizzato il prompt, le variabili verranno automaticamente sostituite dal testo inserito corrispondente."
   }
 }

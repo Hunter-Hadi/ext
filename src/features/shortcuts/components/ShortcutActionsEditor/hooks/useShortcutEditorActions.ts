@@ -131,6 +131,9 @@ const useShortcutEditorActions = () => {
     )
     const systemVariables: IActionSetVariable[] = []
     // 因为有些变量是内置的，有些是通过Action产生的，所以这里先粗暴的统一处理
+    if (variableMap.get('SELECTED_TEXT')) {
+      systemVariables.push(PRESET_VARIABLE_MAP.SELECTED_TEXT)
+    }
     if (
       variableMap.get('LIVE_CRAWLING_TARGET_URL') ||
       variableMap.get('LIVE_CRAWLING_CRAWLED_TEXT')

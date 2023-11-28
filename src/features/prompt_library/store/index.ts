@@ -50,8 +50,8 @@ export const PromptLibraryState = atom<IPromptLibraryState>({
   key: 'PromptLibraryState',
   default: {
     open: false,
-    selectedPromptId: '',
-    onClickPrompt: async () => {},
+    editPromptId: '',
+    selectedPromptLibraryCard: null,
   },
 })
 

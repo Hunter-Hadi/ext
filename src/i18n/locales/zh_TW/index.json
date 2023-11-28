@@ -37,7 +37,8 @@
     "paste": "貼上",
     "loading": "載入中...",
     "no_options": "無選項",
-    "auto": "自動"
+    "auto": "自動",
+    "confirm": "確認"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "在爬取{{LIVE_CRAWLING_TARGET_URL}}後顯示的文本",
     "preset_variables__tooltip__variable_name_prefix": "關於的變數",
     "preset_variables__tooltip__table__column_name__placeholder__title": "變數佔位符",
-    "preset_variables__tooltip__table__column_name__description__title": "將被替換為"
+    "preset_variables__tooltip__table__column_name__description__title": "將被替換為",
+    "template__error__title": "需要模板"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "使用提示庫",
+    "edit_prompt__template__placeholder": "使用此欄位來建立您的實際提示模板。\n\n您可以添加變數，這些變數將在提示模板中變成可填寫的文本字段。嘗試在提示上輸入{{並開始為提示模板創建變數。您可以在提示模板中多次使用變數。當使用提示時，變數將自動替換為相應的輸入文本。"
   }
 }

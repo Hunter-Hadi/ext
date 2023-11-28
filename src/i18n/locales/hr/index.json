@@ -37,7 +37,8 @@
     "paste": "Zalijepi",
     "loading": "Učitavanje...",
     "no_options": "Nema opcija",
-    "auto": "Automatski"
+    "auto": "Automatski",
+    "confirm": "Potvrdi"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "tekst koji će se prikazati nakon pretraživanja {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Varijable o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Mjesto za varijablu",
-    "preset_variables__tooltip__table__column_name__description__title": "Bit će zamijenjen s"
+    "preset_variables__tooltip__table__column_name__description__title": "Bit će zamijenjen s",
+    "template__error__title": "Predložak je obavezan"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Koristi biblioteku uputa",
+    "edit_prompt__template__placeholder": "Koristite ovo polje za stvaranje vašeg stvarnog predloška upute.\n\nMožete dodati varijable koje će postati polja za unos teksta u predlošku upute. Pokušajte tipkati {{ na vašoj uputi i započnite stvarati varijable za vaš predložak upute. Možete koristiti varijable više puta u predlošku upute. Kada se uputa koristi, varijable će automatski biti zamijenjene odgovarajućim unesenim tekstom."
   }
 }

@@ -37,7 +37,8 @@
     "paste": "Lipire",
     "loading": "Se încarcă...",
     "no_options": "Nicio opțiune",
-    "auto": "Automat"
+    "auto": "Automat",
+    "confirm": "Confirmă"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "textul care va fi afișat după explorarea {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Variabile despre",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Substituent variabil",
-    "preset_variables__tooltip__table__column_name__description__title": "Va fi înlocuit cu"
+    "preset_variables__tooltip__table__column_name__description__title": "Va fi înlocuit cu",
+    "template__error__title": "Este necesar un șablon"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Utilizați biblioteca de prompt-uri",
+    "edit_prompt__template__placeholder": "Utilizați acest câmp pentru a crea șablonul real al promptului.\n\nPuteți adăuga variabile care vor deveni câmpuri de text completabile în șablonul promptului. Încercați să tastați {{ în promptul dvs. și începeți să creați variabile pentru șablonul promptului. Puteți utiliza variabile de mai multe ori în șablonul promptului. Când promptul este utilizat, variabilele vor fi înlocuite automat cu textul introdus corespunzător."
   }
 }

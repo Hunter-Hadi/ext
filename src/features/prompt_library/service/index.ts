@@ -5,6 +5,7 @@ import {
   IPromptLibraryListParametersState,
   IFavoritePromptListResponse,
   IOwnPromptListResponse,
+  IPromptLibraryCardDetailData,
 } from '@/features/prompt_library/types'
 import uniq from 'lodash-es/uniq'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
@@ -128,9 +129,77 @@ export default class PromptLibraryService {
    */
   static async getOwnPrompts() {
     const res = await post<IOwnPromptListResponse>(
-      PROMPT_LIBRARY_API.GET_FAVOURITE_PROMPTS,
+      PROMPT_LIBRARY_API.GET_OWN_PROMPTS,
       {},
     )
     return (res.data?.own_prompts || []) as IPromptLibraryCardData[]
+  }
+
+  /**
+   * 获取公共Prompt详情
+   * @param id
+   */
+  static async getPublicPromptDetail(id: string) {
+    const result = await post<IPromptLibraryCardDetailData>(
+      PROMPT_LIBRARY_API.GET_PROMPT_DETAIL,
+      {
+        id,
+      },
+    )
+    return result.data
+  }
+
+  /**
+   * 获取私有Prompt详情
+   * @param id
+   */
+  static async getPrivatePromptDetail(id: string) {
+    const result = await post<IPromptLibraryCardDetailData>(
+      PROMPT_LIBRARY_API.GET_PRIVATE_PROMPT_DETAIL,
+      {
+        id,
+      },
+    )
+    return result.data
+  }
+  /**
+   * 添加私有Prompt
+   * @param promptData
+   */
+  static async addPrivatePrompt(promptData: IPromptLibraryCardDetailData) {
+    const result = await post<{ id: string }>(PROMPT_LIBRARY_API.ADD_PROMPT, {
+      ...promptData,
+      prompt_hint: '_',
+      id: '',
+    })
+    return result.data
+  }
+  /**
+   * 编辑私有Prompt
+   * @param promptData
+   */
+  static async editPrivatePrompt(promptData: IPromptLibraryCardDetailData) {
+    const result = await post<{ id: string }>(
+      PROMPT_LIBRARY_API.EDIT_OWN_PROMPT,
+      {
+        ...promptData,
+        prompt_hint: promptData.prompt_hint || '_',
+      },
+    )
+    return result.data
+  }
+
+  /**
+   * 删除私有Prompt
+   * @param id
+   */
+  static async deletePrivatePrompt(id: string) {
+    const result = await post<{ id: string }>(
+      PROMPT_LIBRARY_API.DELETE_PROMPT,
+      {
+        id,
+      },
+    )
+    return result.status === 'OK'
   }
 }

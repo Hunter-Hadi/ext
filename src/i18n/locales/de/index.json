@@ -37,7 +37,8 @@
     "paste": "Einfügen",
     "loading": "Wird geladen...",
     "no_options": "Keine Optionen",
-    "auto": "Auto"
+    "auto": "Auto",
+    "confirm": "Bestätigen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "der Text, der nach dem Durchsuchen von {{LIVE_CRAWLING_TARGET_URL}} angezeigt wird",
     "preset_variables__tooltip__variable_name_prefix": "Variablen über",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Platzhalter für Variable",
-    "preset_variables__tooltip__table__column_name__description__title": "Wird ersetzt durch"
+    "preset_variables__tooltip__table__column_name__description__title": "Wird ersetzt durch",
+    "template__error__title": "Vorlage ist erforderlich"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Prompt-Bibliothek verwenden",
+    "edit_prompt__template__placeholder": "Verwenden Sie dieses Feld, um Ihre eigentliche Prompt-Vorlage zu erstellen.\n\nSie können Variablen hinzufügen, die in der Prompt-Vorlage zu ausfüllbaren Textfeldern werden. Versuchen Sie, {{ in Ihrer Prompt einzugeben und Variablen für Ihre Prompt-Vorlage zu erstellen. Sie können Variablen mehrmals in Ihrer Prompt-Vorlage verwenden. Wenn die Prompt verwendet wird, werden die Variablen automatisch durch den entsprechenden eingegebenen Text ersetzt."
   }
 }

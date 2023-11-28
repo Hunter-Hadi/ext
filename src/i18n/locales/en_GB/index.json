@@ -37,7 +37,8 @@
     "copied": "Copied",
     "paste": "Paste",
     "loading": "Loading...",
-    "no_options": "No options"
+    "no_options": "No options",
+    "confirm": "Confirm"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -474,6 +475,7 @@
     "activity__black_friday_2023__title": "Limited-Time Black Friday Deals – Up to 50% Off!"
   },
   "prompt_editor": {
+    "template__error__title": "Template is required",
     "preset_variables__title": "Capabilities",
     "preset_variables__help__title": "The official ready-to-use special variables.",
     "preset_variables__help__description": "You can use any or none of these ready-to-use variables in your template:",
@@ -513,6 +515,10 @@
     "add_variable__variable_placeholder__title": "Variable placeholder",
     "add_variable__variable_placeholder__placeholder": "Enter variable placeholder",
     "add_variable__error_message__variable_name_repeated": "Variable names cannot be repeated"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Use prompt library",
+    "edit_prompt__template__placeholder": "The prompt template for ChatGPT.\nThe template can include any number of the following variables:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

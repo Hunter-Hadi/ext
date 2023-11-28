@@ -37,7 +37,8 @@
     "paste": "Prilepi",
     "loading": "Nalaganje...",
     "no_options": "Ni možnosti",
-    "auto": "Avtomatsko"
+    "auto": "Avtomatsko",
+    "confirm": "Potrdi"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "besedilo, ki se bo prikazalo po branju {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Spremenljivke o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Nadomestno besedilo",
-    "preset_variables__tooltip__table__column_name__description__title": "Bo zamenjano z"
+    "preset_variables__tooltip__table__column_name__description__title": "Bo zamenjano z",
+    "template__error__title": "Predloga je obvezna"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Uporabi knjižnico predlog",
+    "edit_prompt__template__placeholder": "Uporabite to polje za ustvarjanje dejanske predloge za vašo spodbudo.\n\nLahko dodate spremenljivke, ki se bodo pretvorile v polja za izpolnitev besedila v predlogi spodbude. Poskusite vnesti {{ v svojo spodbudo in začnite ustvarjati spremenljivke za predlogo spodbude. Spremenljivke lahko uporabite večkrat v predlogi spodbude. Ko se uporablja spodbuda, se bodo spremenljivke samodejno zamenjale z ustreznim vnesenim besedilom."
   }
 }

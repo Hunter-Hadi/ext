@@ -37,7 +37,8 @@
     "paste": "Nalepi",
     "loading": "Učitavanje...",
     "no_options": "Nema opcija",
-    "auto": "Automobil"
+    "auto": "Automobil",
+    "confirm": "Potvrdi"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "tekst koji će biti prikazan nakon pretrage {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Promenljive o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Mesto za promenljivu",
-    "preset_variables__tooltip__table__column_name__description__title": "Biće zamenjeno sa"
+    "preset_variables__tooltip__table__column_name__description__title": "Biće zamenjeno sa",
+    "template__error__title": "Šablon je obavezan"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Koristi biblioteku upita",
+    "edit_prompt__template__placeholder": "Koristite ovo polje da biste kreirali stvarni šablon upita.\n\nMožete dodati promenljive koje će se pretvoriti u polja za unos teksta u šablonu upita. Pokušajte da kucate {{ u svom upitu i počnite da kreirate promenljive za svoj šablon upita. Možete koristiti promenljive više puta u šablonu upita. Kada se upit koristi, promenljive će automatski biti zamenjene odgovarajućim unetim tekstom."
   }
 }

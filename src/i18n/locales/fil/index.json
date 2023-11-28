@@ -37,7 +37,8 @@
     "paste": "I-paste",
     "loading": "Naglo-load...",
     "no_options": "Walang mga opsyon",
-    "auto": "Awto"
+    "auto": "Awto",
+    "confirm": "Kumpirmahin"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "ang teksto na ipapakita matapos kunin ang {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Mga Baryabol tungkol sa",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Panghalili ng baryabol",
-    "preset_variables__tooltip__table__column_name__description__title": "Ibabago ng"
+    "preset_variables__tooltip__table__column_name__description__title": "Ibabago ng",
+    "template__error__title": "Kinakailangan ang Template"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Gamitin ang aklatan ng prompt",
+    "edit_prompt__template__placeholder": "Gamitin ang patlang na ito upang lumikha ng iyong aktuwal na template ng prompt.\n\nMaaari kang magdagdag ng mga variable na magiging fillable text fields sa template ng prompt. Subukan ang pag-type ng {{ sa iyong prompt at simulan ang paglikha ng mga variable para sa iyong template ng prompt. Maaari mong gamitin ang mga variable nang higit sa isang beses sa iyong template ng prompt. Kapag ginamit ang prompt, ang mga variable ay papalitan ng kaukulang inputted text nang awtomatiko."
   }
 }

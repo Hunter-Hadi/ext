@@ -1,22 +1,26 @@
 import { Theme, Typography } from '@mui/material'
 import React, { FC, useMemo } from 'react'
 import {
-  IPromptVariable,
-  IPromptVariableType,
+  IPromptLibraryCardDetailVariable,
+  IPromptLibraryCardDetailVariableType,
 } from '@/features/prompt_library/types'
 import { isLiveCrawling } from '@/features/prompt_library/utils'
 
 interface IProps {
-  typeList?: IPromptVariableType[]
-  variables?: IPromptVariable[]
+  typeList?: IPromptLibraryCardDetailVariableType[]
+  variables?: IPromptLibraryCardDetailVariable[]
 }
 
-const variableTypesNameMap: { [key in IPromptVariableType]?: string } = {
+const variableTypesNameMap: {
+  [key in IPromptLibraryCardDetailVariableType]?: string
+} = {
   websearch: 'Web Search',
   livecrawling: 'Live Crawling',
 }
 
-const variableTypesSxMap: { [key in IPromptVariableType]?: any } = {
+const variableTypesSxMap: {
+  [key in IPromptLibraryCardDetailVariableType]?: any
+} = {
   websearch: {
     bgcolor: (t: Theme) =>
       t.palette.mode === 'dark'
@@ -51,7 +55,6 @@ const PromptTypeList: FC<IProps> = ({ typeList, variables }) => {
           <Typography
             key={type}
             component={'span'}
-            variant={'custom'}
             sx={(t) => {
               const isDark = t.palette.mode === 'dark'
               return {

@@ -37,7 +37,8 @@
     "paste": "Tampal",
     "loading": "Memuatkan...",
     "no_options": "Tiada pilihan",
-    "auto": "Auto"
+    "auto": "Auto",
+    "confirm": "Sahkan"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "teks yang akan ditunjukkan selepas crawl {{LIVE_CRAWLING_TARGET_URL}}",
     "preset_variables__tooltip__variable_name_prefix": "Perkara mengenai",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Penanda ganti pembolehubah",
-    "preset_variables__tooltip__table__column_name__description__title": "Akan digantikan dengan"
+    "preset_variables__tooltip__table__column_name__description__title": "Akan digantikan dengan",
+    "template__error__title": "Template diperlukan"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "Guna perpustakaan prompt",
+    "edit_prompt__template__placeholder": "Gunakan medan ini untuk membuat templat prompt sebenar anda.\n\nAnda boleh menambah pemboleh ubah yang akan menjadi medan teks yang boleh diisi dalam templat prompt. Cuba taip {{ pada prompt anda dan mulakan membuat pemboleh ubah untuk templat prompt anda. Anda boleh menggunakan pemboleh ubah lebih daripada sekali dalam templat prompt anda. Apabila prompt digunakan, pemboleh ubah akan digantikan dengan teks yang dimasukkan secara automatik."
   }
 }

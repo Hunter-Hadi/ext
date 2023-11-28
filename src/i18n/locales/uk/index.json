@@ -37,7 +37,8 @@
     "paste": "پیسٹ کریں",
     "loading": "لوڈ ہو رہا ہے...",
     "no_options": "کوئی اختیارات نہیں",
-    "auto": "خودکار"
+    "auto": "خودکار",
+    "confirm": "تصدیق کریں"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -691,6 +692,11 @@
     "preset_variables__live_crawling__live_crawling_crawled_text__description": "{{LIVE_CRAWLING_TARGET_URL}} کرال کرنے کے بعد دکھایا جانے والا متن",
     "preset_variables__tooltip__variable_name_prefix": "متغیرات کے بارے میں",
     "preset_variables__tooltip__table__column_name__placeholder__title": "متغیر کا پلیس ہولڈر",
-    "preset_variables__tooltip__table__column_name__description__title": "اس سے تبدیل کیا جائے گا"
+    "preset_variables__tooltip__table__column_name__description__title": "اس سے تبدیل کیا جائے گا",
+    "template__error__title": "ٹیمپلیٹ ضروری ہے"
+  },
+  "prompt_library": {
+    "use_prompt_library__title": "پرومپٹ لائبریری استعمال کریں",
+    "edit_prompt__template__placeholder": "اپنے حقیقی پرومپٹ ٹیمپلیٹ بنانے کے لئے اس فیلڈ کا استعمال کریں۔\n\nآپ وہ متغیرات شامل کرسکتے ہیں جو پرومپٹ ٹیمپلیٹ میں قابل بھرنے والے ٹیکسٹ فیلڈز میں تبدیل ہوجائیں گی۔ اپنے پرومپٹ ٹیمپلیٹ کے لئے متغیرات بنانے کے لئے {{ ٹائپ کریں اور شروع کریں۔ آپ اپنے پرومپٹ ٹیمپلیٹ میں متغیرات کو بار بار استعمال کرسکتے ہیں۔ جب پرومپٹ استعمال ہوتا ہے تو متغیرات خود بخود مطابقتی درج کردہ ٹیکسٹ سے تبدیل ہوجائیں گی۔"
   }
 }

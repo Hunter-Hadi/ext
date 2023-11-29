@@ -241,6 +241,7 @@
     "sidebar__button__upgrade_to_pro": "Upgrade to Pro",
     "sidebar__button__retry": "Retry",
     "sidebar__button__set_up_shortcut": "Set up shortcut",
+    "sidebar__speed_dial__chat_history__button": "Chat history",
     "sidebar__speed_dial__one_click_prompts__button": "1-click prompts",
     "sidebar__speed_dial__restart_extension__button": "Restart extension",
     "sidebar__speed_dial__restart_extension__tooltip__title": "Restart MaxAI.me extension?",

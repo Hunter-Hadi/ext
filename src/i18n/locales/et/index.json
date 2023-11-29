@@ -472,7 +472,8 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "Uusim GPT-3.5 Turbo mudel, millel on parem juhiste järgimine, JSON režiim, taasesitatavad väljundid, paralleelne funktsioonide kutsumine ja palju muud. Tagastab maksimaalselt 4 096 väljunditokenit.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Uusim GPT-4 mudel, millel on parem juhiste järgimine, JSON režiim, taasesitatavad väljundid, paralleelne funktsioonide kutsumine ja palju muud. Tagastab maksimaalselt 4 096 väljunditokenit. See eelvaate mudel ei sobi veel tootmisliikluseks.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Võime mõista pilte koos kõigi teiste GPT-4 Turbo võimalustega. Tagastab maksimaalselt 4 096 väljunditokenit. See on eelvaate mudeli versioon ja pole veel sobilik tootmisliikluseks.",
-    "activity__black_friday_2023__title": "Piiratud aja pakkumised musta reede ajal – kuni 50% soodsamalt!"
+    "activity__black_friday_2023__title": "Piiratud aja pakkumised musta reede ajal – kuni 50% soodsamalt!",
+    "sidebar__speed_dial__chat_history__button": "Vestluse ajalugu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

@@ -472,7 +472,8 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "Geliştirilmiş talimat takibi, JSON modu, tekrarlanabilir çıktılar, paralel işlev çağrısı ve daha fazlasıyla en son GPT-3.5 Turbo modeli. En fazla 4,096 çıktı belirteci döndürür.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Geliştirilmiş talimat takibi, JSON modu, tekrarlanabilir çıktılar, paralel işlev çağrısı ve daha fazlasıyla en son GPT-4 modeli. En fazla 4,096 çıktı belirteci döndürür. Bu önizleme modeli henüz üretim trafiği için uygun değildir.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Diğer tüm GPT-4 Turbo yeteneklerine ek olarak görüntüleri anlama yeteneği. En fazla 4,096 çıktı belirteci döndürür. Bu bir önizleme model sürümüdür ve henüz üretim trafiği için uygun değildir.",
-    "activity__black_friday_2023__title": "Sınırlı Süreli Black Friday İndirimleri - %50'ye Kadar İndirim!"
+    "activity__black_friday_2023__title": "Sınırlı Süreli Black Friday İndirimleri - %50'ye Kadar İndirim!",
+    "sidebar__speed_dial__chat_history__button": "Sohbet geçmişi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

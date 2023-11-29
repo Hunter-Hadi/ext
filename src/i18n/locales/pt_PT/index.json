@@ -472,7 +472,8 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "O modelo GPT-3.5 Turbo mais recente com melhorias no seguimento de instruções, modo JSON, saídas reproduzíveis, chamada de função paralela e muito mais. Retorna um máximo de 4.096 tokens de saída.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "O modelo GPT-4 mais recente com melhorias no seguimento de instruções, modo JSON, saídas reproduzíveis, chamada de função paralela e muito mais. Retorna um máximo de 4.096 tokens de saída. Este modelo de visualização ainda não é adequado para tráfego de produção.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacidade de entender imagens, além de todas as outras capacidades do GPT-4 Turbo. Retorna um máximo de 4.096 tokens de saída. Esta é uma versão de visualização do modelo e ainda não é adequada para tráfego de produção.",
-    "activity__black_friday_2023__title": "Ofertas de Black Friday por Tempo Limitado - Até 50% de Desconto!"
+    "activity__black_friday_2023__title": "Ofertas de Black Friday por Tempo Limitado - Até 50% de Desconto!",
+    "sidebar__speed_dial__chat_history__button": "Histórico de chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -698,6 +699,5 @@
   "prompt_library": {
     "use_prompt_library__title": "Utilizar biblioteca de prompts",
     "edit_prompt__template__placeholder": "Utilize este campo para criar o seu modelo de prompt real.\n\nPode adicionar variáveis que se transformarão em campos de texto preenchíveis no modelo de prompt. Experimente digitar {{ no seu prompt e começar a criar variáveis para o seu modelo de prompt. Pode usar as variáveis mais do que uma vez no modelo de prompt. Quando o prompt for utilizado, as variáveis serão substituídas automaticamente pelo texto inserido correspondente."
-  },
-  "": ""
+  }
 }

@@ -1,4 +1,11 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 // import CircularProgress from '@mui/material/CircularProgress'
@@ -105,18 +112,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     messages,
   )
   const { currentSidebarConversationType } = useSidebarSettings()
-  // const [inputValue, setInputValue] = useState('')
-  // 为了在消息更新前计算滚动高度
-  // const currentMaxInputLength = useMemo(() => {
-  //   // NOTE: GPT-4 最大输入长度为 80000，GPT-3 最大输入长度为 10000, 我们后端最多6000，所以这里写死4000
-  //   return 4000
-  //   return conversation.model === 'gpt-4'
-  //     ? MAX_GPT4_INPUT_LENGTH
-  //     : MAX_NORMAL_INPUT_LENGTH
-  // }, [conversation.model])
-  // const isGmailChatBoxError = useMemo(() => {
-  //   return inputValue.length > currentMaxInputLength
-  // }, [inputValue, currentMaxInputLength])
   const scrolledToBottomRef = useRef(true)
 
   const handleSendMessage = useCallback(
@@ -223,7 +218,21 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [])
 
   console.log('scrolledToBottomRef.current', scrolledToBottomRef.current)
-
+  const tempIsShowRegenerate = useMemo(() => {
+    if (
+      currentSidebarConversationType === 'Chat' &&
+      slicedMessageList.length > 0
+    ) {
+      const lastMessage = slicedMessageList[messages.length - 1]
+      if (lastMessage && lastMessage.type === 'ai') {
+        const AIMessage = lastMessage as IAIResponseMessage
+        if (AIMessage?.originalMessage?.metadata?.shareType === 'search') {
+          return false
+        }
+      }
+    }
+    return true
+  }, [slicedMessageList, currentSidebarConversationType])
   return (
     <Stack
       id={'maxAISidebarChatBox'}
@@ -347,7 +356,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 right: 0,
               }}
             />
-            {!loading && slicedMessageList.length > 0 && (
+            {!loading && slicedMessageList.length > 0 && tempIsShowRegenerate && (
               <>
                 {reGenerateAble && (
                   <Button

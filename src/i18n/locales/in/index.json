@@ -472,7 +472,8 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "Model GPT-3.5 Turbo terbaru dengan peningkatan dalam mengikuti instruksi, mode JSON, output yang dapat direproduksi, pemanggilan fungsi paralel, dan lainnya. Mengembalikan maksimal 4.096 token output.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 terbaru dengan peningkatan dalam mengikuti instruksi, mode JSON, output yang dapat direproduksi, pemanggilan fungsi paralel, dan lainnya. Mengembalikan maksimal 4.096 token output. Model pratinjau ini belum cocok untuk lalu lintas produksi.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami gambar, selain semua kemampuan GPT-4 Turbo lainnya. Mengembalikan maksimal 4.096 token output. Ini adalah versi model pratinjau dan belum cocok untuk lalu lintas produksi.",
-    "activity__black_friday_2023__title": "Penawaran Black Friday Terbatas - Diskon Hingga 50%!"
+    "activity__black_friday_2023__title": "Penawaran Black Friday Terbatas - Diskon Hingga 50%!",
+    "sidebar__speed_dial__chat_history__button": "Riwayat Chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

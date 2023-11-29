@@ -16,6 +16,8 @@ import Link from '@mui/material/Link'
 import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 import { useTranslation } from 'react-i18next'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { chromeExtensionClientOpenPage } from '@/utils'
+import Browser from 'webextension-polyfill'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const SidebarChatBoxChatSpeedDial: FC<{
@@ -94,6 +96,33 @@ const SidebarChatBoxChatSpeedDial: FC<{
           </Box>
         }
       >
+        <SpeedDialAction
+          icon={
+            <Box
+              component={'div'}
+              onClick={() => {
+                chromeExtensionClientOpenPage({
+                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                })
+              }}
+            >
+              <TextOnlyTooltip
+                placement={'left'}
+                title={t('client:sidebar__speed_dial__chat_history__button')}
+              >
+                <Stack
+                  p={1}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  component={'div'}
+                >
+                  <ContextMenuIcon icon={'History'} sx={{ fontSize: '24px' }} />
+                </Stack>
+              </TextOnlyTooltip>
+            </Box>
+          }
+          tooltipTitle={''}
+        />
         <SpeedDialAction
           icon={
             <Link

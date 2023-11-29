@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Fade from '@mui/material/Fade'
 import IconButton from '@mui/material/IconButton'
 import Paper from '@mui/material/Paper'
-import { SxProps } from '@mui/material/styles'
+import { SxProps, lighten } from '@mui/material/styles'
 import Modal, { ModalProps } from '@mui/material/Modal'
 import React, { FC } from 'react'
 

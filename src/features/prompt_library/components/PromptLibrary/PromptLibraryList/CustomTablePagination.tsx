@@ -3,6 +3,7 @@ import TablePagination, {
   TablePaginationProps,
   tablePaginationClasses,
 } from '@mui/material/TablePagination'
+import { svgIconClasses } from '@mui/material/SvgIcon'
 import React, { FC } from 'react'
 import { getPromptLibraryPortalContainerRoot } from '@/features/prompt_library/utils'
 
@@ -83,7 +84,21 @@ const CustomTablePagination: FC<ICustomTablePaginationProps> = ({
                 boxSizing: 'border-box',
               },
               [`& .${tablePaginationClasses.select}`]: {
-                fontSize: 16,
+                height: '24px',
+                lineHeight: '24px',
+                fontSize: '16px',
+              },
+              [`& .${tablePaginationClasses.selectLabel}`]: {
+                fontSize: '14px',
+              },
+              [`& .${tablePaginationClasses.actions}`]: {
+                display: 'flex',
+              },
+              [`& .${tablePaginationClasses.displayedRows}`]: {
+                fontSize: '14px',
+              },
+              [`& .${svgIconClasses.root}`]: {
+                fontSize: '24px',
               },
             }}
             count={numTotal}

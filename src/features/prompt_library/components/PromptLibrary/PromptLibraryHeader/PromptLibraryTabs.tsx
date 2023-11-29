@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { Box, TabsProps, Theme } from '@mui/material'
 import Tabs, { tabsClasses } from '@mui/material/Tabs'
 import Tab, { tabClasses } from '@mui/material/Tab'
+import { buttonBaseClasses } from '@mui/material/ButtonBase'
 import React, { FC } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
@@ -29,6 +30,9 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
       [`.${tabsClasses.indicator}`]: {
         backgroundColor: '#d8d8d8',
       },
+      [`.${buttonBaseClasses.root}`]: {
+        fontSize: '16px',
+      },
     }
   },
 )
@@ -49,7 +53,13 @@ const PromptLibraryTabs: FC = () => {
         }}
       >
         <Tab
-          icon={<FavoriteIcon />}
+          icon={
+            <FavoriteIcon
+              sx={{
+                fontSize: '24px',
+              }}
+            />
+          }
           iconPosition="start"
           value={'Favorites'}
           label="Favorites"

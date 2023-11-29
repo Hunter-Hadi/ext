@@ -27,6 +27,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import CustomConfirm from '@/components/CustomConfirm'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
+import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 
 const inputProps = {
   sx: {
@@ -53,6 +54,7 @@ const PromptLibraryCardEditForm: FC = () => {
     // getValues,
     formState: { errors },
   } = useForm<IPromptLibraryCardDetailData>()
+  const currentBreakpoint = useCurrentBreakpoint()
   const { setActions, generateActions } = useShortcutEditorActions()
   const [cancelConfirmShow, setCancelConfirmShow] = useState(false)
   const { activeTab } = usePromptLibraryParameters()
@@ -131,15 +133,21 @@ const PromptLibraryCardEditForm: FC = () => {
       setActions(promptLibraryCardDetailDataToActions(data))
     }
   }, [data, isFetching])
+  const itemWidth = useMemo(() => {
+    if (currentBreakpoint === 'xs' || currentBreakpoint === 'sm') {
+      return 12
+    }
+    return 6
+  }, [currentBreakpoint])
   return (
     <CustomModal
       width={800}
       height={'unset'}
       sx={{
-        maxWidth: {
-          xs: '90%',
-          sm: 800,
-        },
+        maxWidth:
+          currentBreakpoint === 'xs' || currentBreakpoint === 'sm'
+            ? '90%'
+            : '800',
       }}
       show={isOpenPromptLibraryEditForm}
       onClose={handleModalOnClose}
@@ -147,6 +155,7 @@ const PromptLibraryCardEditForm: FC = () => {
       <Paper
         id="prompt-form-modal"
         sx={{
+          textAlign: 'left',
           height: '74vh',
           maxHeight: '74vh',
           overflowY: 'auto',
@@ -247,7 +256,7 @@ const PromptLibraryCardEditForm: FC = () => {
                 />
               </FormControl>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={itemWidth}>
               <ReactHookFormSelect
                 control={control}
                 FormControlProps={{
@@ -269,7 +278,7 @@ const PromptLibraryCardEditForm: FC = () => {
                 name={'category'}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={itemWidth}>
               <ReactHookFormSelect
                 FormControlProps={{
                   size: 'small',
@@ -287,7 +296,7 @@ const PromptLibraryCardEditForm: FC = () => {
                 name={'use_case'}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={itemWidth}>
               <FormControl size="small" variant="standard" fullWidth>
                 <FormLabel>
                   <Typography variant="body1">Author name</Typography>
@@ -301,7 +310,7 @@ const PromptLibraryCardEditForm: FC = () => {
                 />
               </FormControl>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={itemWidth}>
               <FormControl size="small" variant="standard" fullWidth>
                 <FormLabel>
                   <Typography variant="body1">Author URL</Typography>

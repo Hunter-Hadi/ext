@@ -1,10 +1,13 @@
-import React, { FC, useCallback, useRef } from 'react'
+import React, { FC, useCallback, useMemo, useRef } from 'react'
 import TextField from '@mui/material/TextField'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
 import snackNotifications from '@/utils/globalSnackbar'
+import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
+import { SxProps } from '@mui/material/styles'
+import { formControlClasses } from '@mui/material/FormControl'
 
 const PromptLibrarySearch: FC = () => {
   const { searchQuery, updateSearchQuery } = usePromptLibraryParameters()
@@ -40,15 +43,27 @@ const PromptLibrarySearch: FC = () => {
       }
     }, 600)
   }, [handleDoSearch])
+  const currentBreakpoint = useCurrentBreakpoint()
+  const memoSx = useMemo(() => {
+    const computedSx: SxProps = {
+      [`&.${formControlClasses.root}`]: {
+        width:
+          currentBreakpoint === 'xs'
+            ? '100%'
+            : currentBreakpoint === 'sm' || currentBreakpoint === 'md'
+            ? 'calc(50% - 8px)'
+            : '220px',
+      },
+    }
+    return computedSx
+  }, [currentBreakpoint])
   return (
     <TextField
       defaultValue={searchQuery}
       label="Search..."
       variant="outlined"
       size="small"
-      sx={{
-        width: 220,
-      }}
+      sx={memoSx}
       onChange={(event: any) => {
         const value = event.target.value
         searchValue.current = value
@@ -63,7 +78,7 @@ const PromptLibrarySearch: FC = () => {
       }}
       onBlur={handleDoSearch}
       InputProps={{
-        sx: { height: 44 },
+        sx: { height: 44, fontSize: '16px' },
         endAdornment: (
           <InputAdornment position="end">
             <IconButton onClick={handleDoSearch} edge="end">

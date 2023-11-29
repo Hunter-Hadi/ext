@@ -93,12 +93,12 @@ const PromptLibraryList: FC<{
       }}
     >
       <Grid container spacing={2}>
-        {CardList}
         {activeTab === 'Own' && (
-          <Grid item xs={12} md={6} xl={3}>
+          <Grid item xs={itemWidth}>
             <AddOwnPromptCard />
           </Grid>
         )}
+        {CardList}
         <Grid item xs={12}>
           <PromptLibraryPagination />
         </Grid>

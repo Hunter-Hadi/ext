@@ -111,6 +111,7 @@ const PromptLibraryCard: FC<{
           : 'rgba(0, 0, 0, 0.16)'
 
         return {
+          textAlign: 'left',
           position: 'relative',
           color: 'text.primary',
           border: '1px solid',

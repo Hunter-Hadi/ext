@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "השתמש בספריית הצעות",
-    "edit_prompt__template__placeholder": "השתמש בשדה זה כדי ליצור את תבנית ההצעה הממשית שלך.\n\nניתן להוסיף משתנים שיתהפכו לשדות טקסט ניתנים למילוי בתבנית ההצעה. נסה להקליד {{ בהצעתך ולהתחיל ליצור משתנים עבור תבנית ההצעה שלך. ניתן להשתמש במשתנים יותר מפעם אחת בתבנית ההצעה שלך. כאשר ההצעה משתמשת, המשתנים יוחלפו בטקסט המילוי המתאים באופן אוטומטי."
+    "edit_prompt__template__placeholder": "השתמש בשדה זה כדי ליצור את תבנית ההצעה הממשית שלך.\n\nניתן להוסיף משתנים שיתהפכו לשדות טקסט ניתנים למילוי בתבנית ההצעה. נסה להקליד {{ בהצעתך ולהתחיל ליצור משתנים עבור תבנית ההצעה שלך. ניתן להשתמש במשתנים יותר מפעם אחת בתבנית ההצעה שלך. כאשר ההצעה משתמשת, המשתנים יוחלפו בטקסט המילוי המתאים באופן אוטומטי.",
+    "tab__favorites__title": "מועדפים",
+    "tab__public__title": "ציבורי",
+    "tab__own__title": "שלי",
+    "filters__category__label": "קטגוריה",
+    "filters__use_case__label": "שימוש",
+    "filters__query__placeholder": "חיפוש...",
+    "pagination__label_rows_per_page__title": "תבניות לעמוד:",
+    "add_new_prompt_card__cta__title": "הוסף תבנית חדשה",
+    "edit_prompt_modal__title": "תבנית הזמנה",
+    "edit_prompt_modal__field__title__label": "כותרת",
+    "edit_prompt_modal__field__title__placeholder": "כותרת ברורה ומועילה מושכת יותר משתמשים לתבנית הזמנה שלך.",
+    "edit_prompt_modal__field__description__label": "תיאור",
+    "edit_prompt_modal__field__description__placeholder": "ספק תיאור קצר ומתומצת של תבנית הזמנה שלך ותוצאות פוטנציאליות שמשתמשים יכולים לצפות.",
+    "edit_prompt_modal__field__category__label": "קטגוריה",
+    "edit_prompt_modal__field__use_case__label": "שימוש",
+    "edit_prompt_modal__field__author_name__label": "שם המחבר",
+    "edit_prompt_modal__field__author_name__placeholder": "שם המחבר",
+    "edit_prompt_modal__field__author_url__label": "כתובת האינטרנט של המחבר",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "שמור תבנית",
+    "edit_prompt_modal__action__clone__title": "שכפל",
+    "edit_prompt_modal__action__cancel__title": "ביטול",
+    "edit_prompt_modal__field__template__label": "תבנית"
   }
 }

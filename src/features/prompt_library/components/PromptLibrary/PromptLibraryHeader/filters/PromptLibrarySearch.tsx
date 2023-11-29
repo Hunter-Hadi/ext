@@ -8,8 +8,10 @@ import snackNotifications from '@/utils/globalSnackbar'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import { SxProps } from '@mui/material/styles'
 import { formControlClasses } from '@mui/material/FormControl'
+import { useTranslation } from 'react-i18next'
 
 const PromptLibrarySearch: FC = () => {
+  const { t } = useTranslation(['prompt_library'])
   const { searchQuery, updateSearchQuery } = usePromptLibraryParameters()
   const inputTimer = useRef<number | null>(null)
   const searchValue = useRef<string | null>(null)
@@ -60,7 +62,7 @@ const PromptLibrarySearch: FC = () => {
   return (
     <TextField
       defaultValue={searchQuery}
-      label="Search..."
+      label={t('prompt_library:filters__query__placeholder')}
       variant="outlined"
       size="small"
       sx={memoSx}

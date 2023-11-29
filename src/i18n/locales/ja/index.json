@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "プロンプトライブラリを使用する",
-    "edit_prompt__template__placeholder": "実際のプロンプトテンプレートを作成するためにこのフィールドを使用してください。\n\nプロンプトテンプレート内で入力可能なテキストフィールドに変換される変数を追加できます。プロンプトで{{を入力し、プロンプトテンプレートの変数を作成してみてください。プロンプトテンプレート内で変数を複数回使用することができます。プロンプトが使用されると、変数は自動的に対応する入力テキストで置き換えられます。"
+    "edit_prompt__template__placeholder": "実際のプロンプトテンプレートを作成するためにこのフィールドを使用してください。\n\nプロンプトテンプレート内で入力可能なテキストフィールドに変換される変数を追加できます。プロンプトで{{を入力し、プロンプトテンプレートの変数を作成してみてください。プロンプトテンプレート内で変数を複数回使用することができます。プロンプトが使用されると、変数は自動的に対応する入力テキストで置き換えられます。",
+    "tab__favorites__title": "お気に入り",
+    "tab__public__title": "公開",
+    "tab__own__title": "自分の",
+    "filters__category__label": "カテゴリー",
+    "filters__use_case__label": "用途",
+    "filters__query__placeholder": "検索...",
+    "pagination__label_rows_per_page__title": "ページごとのプロンプト数：",
+    "add_new_prompt_card__cta__title": "新しいプロンプトテンプレートを追加",
+    "edit_prompt_modal__title": "プロンプトテンプレート",
+    "edit_prompt_modal__field__title__label": "タイトル",
+    "edit_prompt_modal__field__title__placeholder": "明確で分かりやすいタイトルは、より多くのユーザーを引き付けます。",
+    "edit_prompt_modal__field__description__label": "説明",
+    "edit_prompt_modal__field__description__placeholder": "プロンプトテンプレートとユーザーが期待できる結果の簡潔な説明を提供してください。",
+    "edit_prompt_modal__field__category__label": "カテゴリー",
+    "edit_prompt_modal__field__use_case__label": "用途",
+    "edit_prompt_modal__field__author_name__label": "著者名",
+    "edit_prompt_modal__field__author_name__placeholder": "著者名",
+    "edit_prompt_modal__field__author_url__label": "著者のURL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "プロンプトを保存",
+    "edit_prompt_modal__action__clone__title": "複製",
+    "edit_prompt_modal__action__cancel__title": "キャンセル",
+    "edit_prompt_modal__field__template__label": "テンプレート"
   }
 }

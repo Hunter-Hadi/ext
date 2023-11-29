@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Използвай библиотеката с промпти",
-    "edit_prompt__template__placeholder": "Използвайте това поле, за да създадете вашата актуална шаблонна промпт.\n\nМожете да добавите променливи, които ще се превърнат в полета за попълване в шаблона на промпта. Опитайте да напишете {{ във вашия промпт и започнете да създавате променливи за вашия шаблон на промпта. Можете да използвате променливи повече от веднъж в шаблона на промпта. Когато се използва промпта, променливите ще бъдат заменени автоматично със съответния въведен текст."
+    "edit_prompt__template__placeholder": "Използвайте това поле, за да създадете вашата актуална шаблонна промпт.\n\nМожете да добавите променливи, които ще се превърнат в полета за попълване в шаблона на промпта. Опитайте да напишете {{ във вашия промпт и започнете да създавате променливи за вашия шаблон на промпта. Можете да използвате променливи повече от веднъж в шаблона на промпта. Когато се използва промпта, променливите ще бъдат заменени автоматично със съответния въведен текст.",
+    "tab__favorites__title": "Избрани",
+    "tab__public__title": "Публични",
+    "tab__own__title": "Собствени",
+    "filters__category__label": "Категория",
+    "filters__use_case__label": "Употреба",
+    "filters__query__placeholder": "Търсене...",
+    "pagination__label_rows_per_page__title": "Промпти на страница:",
+    "add_new_prompt_card__cta__title": "Добави нов шаблон за промпт",
+    "edit_prompt_modal__title": "Шаблон за промпт",
+    "edit_prompt_modal__field__title__label": "Заглавие",
+    "edit_prompt_modal__field__title__placeholder": "Ясно и информативно заглавие, което привлича повече потребители към вашия шаблон за промпт.",
+    "edit_prompt_modal__field__description__label": "Описание",
+    "edit_prompt_modal__field__description__placeholder": "Предоставете кратко описание на вашия шаблон за промпт и потенциалните резултати, които потребителите могат да очакват.",
+    "edit_prompt_modal__field__category__label": "Категория",
+    "edit_prompt_modal__field__use_case__label": "Употреба",
+    "edit_prompt_modal__field__author_name__label": "Име на автора",
+    "edit_prompt_modal__field__author_name__placeholder": "Име на автора",
+    "edit_prompt_modal__field__author_url__label": "URL на автора",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Запази промпт",
+    "edit_prompt_modal__action__clone__title": "Клониране",
+    "edit_prompt_modal__action__cancel__title": "Отказ",
+    "edit_prompt_modal__field__template__label": "Шаблон"
   }
 }

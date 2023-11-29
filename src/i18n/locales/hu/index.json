@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Használja a prompt könyvtárat",
-    "edit_prompt__template__placeholder": "Használja ezt a mezőt az aktuális prompt sablon létrehozásához.\n\nHozzáadhat változókat, amelyek kitölthető szövegmezőkké válnak a prompt sablonban. Próbálja meg beírni a {{ karaktert a promptjába, és kezdjen el változókat létrehozni a prompt sablonjához. A változókat többször is használhatja a prompt sablonjában. Amikor a promptot használja, a változók automatikusan helyettesítésre kerülnek a megfelelően bevitt szöveggel."
+    "edit_prompt__template__placeholder": "Használja ezt a mezőt az aktuális prompt sablon létrehozásához.\n\nHozzáadhat változókat, amelyek kitölthető szövegmezőkké válnak a prompt sablonban. Próbálja meg beírni a {{ karaktert a promptjába, és kezdjen el változókat létrehozni a prompt sablonjához. A változókat többször is használhatja a prompt sablonjában. Amikor a promptot használja, a változók automatikusan helyettesítésre kerülnek a megfelelően bevitt szöveggel.",
+    "tab__favorites__title": "Kedvencek",
+    "tab__public__title": "Nyilvános",
+    "tab__own__title": "Saját",
+    "filters__category__label": "Kategória",
+    "filters__use_case__label": "Használati eset",
+    "filters__query__placeholder": "Keresés...",
+    "pagination__label_rows_per_page__title": "Elemek oldalanként:",
+    "add_new_prompt_card__cta__title": "Új prompt sablon hozzáadása",
+    "edit_prompt_modal__title": "Prompt sablon",
+    "edit_prompt_modal__field__title__label": "Cím",
+    "edit_prompt_modal__field__title__placeholder": "Egyértelmű és tájékoztató cím több felhasználót vonz a prompt sablonhoz.",
+    "edit_prompt_modal__field__description__label": "Leírás",
+    "edit_prompt_modal__field__description__placeholder": "Adj meg egy tömör leírást a prompt sablonodról és az elvárható eredményekről.",
+    "edit_prompt_modal__field__category__label": "Kategória",
+    "edit_prompt_modal__field__use_case__label": "Használati eset",
+    "edit_prompt_modal__field__author_name__label": "Szerző neve",
+    "edit_prompt_modal__field__author_name__placeholder": "Szerző neve",
+    "edit_prompt_modal__field__author_url__label": "Szerző URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Prompt mentése",
+    "edit_prompt_modal__action__clone__title": "Klónozás",
+    "edit_prompt_modal__action__cancel__title": "Mégse",
+    "edit_prompt_modal__field__template__label": "Sablon"
   }
 }

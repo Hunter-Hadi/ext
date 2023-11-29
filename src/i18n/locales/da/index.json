@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Brug prompt bibliotek",
-    "edit_prompt__template__placeholder": "Brug dette felt til at oprette din faktiske prompt skabelon.\n\nDu kan tilføje variabler, der vil blive til udfyldelige tekstfelter i prompt skabelonen. Prøv at skrive {{ i din prompt og begynd at oprette variabler til din prompt skabelon. Du kan bruge variabler mere end én gang i din prompt skabelon. Når prompten bruges, vil variablerne automatisk blive erstattet af den tilsvarende indtastede tekst."
+    "edit_prompt__template__placeholder": "Brug dette felt til at oprette din faktiske prompt skabelon.\n\nDu kan tilføje variabler, der vil blive til udfyldelige tekstfelter i prompt skabelonen. Prøv at skrive {{ i din prompt og begynd at oprette variabler til din prompt skabelon. Du kan bruge variabler mere end én gang i din prompt skabelon. Når prompten bruges, vil variablerne automatisk blive erstattet af den tilsvarende indtastede tekst.",
+    "tab__favorites__title": "Favoritter",
+    "tab__public__title": "Offentlig",
+    "tab__own__title": "Egen",
+    "filters__category__label": "Kategori",
+    "filters__use_case__label": "Anvendelse",
+    "filters__query__placeholder": "Søg...",
+    "pagination__label_rows_per_page__title": "Prompts pr. side:",
+    "add_new_prompt_card__cta__title": "Tilføj ny prompt skabelon",
+    "edit_prompt_modal__title": "Prompt skabelon",
+    "edit_prompt_modal__field__title__label": "Titel",
+    "edit_prompt_modal__field__title__placeholder": "En klar og informativ titel tiltrækker flere brugere til din prompt skabelon.",
+    "edit_prompt_modal__field__description__label": "Beskrivelse",
+    "edit_prompt_modal__field__description__placeholder": "Giv en kort beskrivelse af din prompt skabelon og de potentielle resultater, brugerne kan forvente.",
+    "edit_prompt_modal__field__category__label": "Kategori",
+    "edit_prompt_modal__field__use_case__label": "Anvendelse",
+    "edit_prompt_modal__field__author_name__label": "Forfatternavn",
+    "edit_prompt_modal__field__author_name__placeholder": "Forfatternavn",
+    "edit_prompt_modal__field__author_url__label": "Forfatter-URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Gem prompt",
+    "edit_prompt_modal__action__clone__title": "Klon",
+    "edit_prompt_modal__action__cancel__title": "Annuller",
+    "edit_prompt_modal__field__template__label": "Skabelon"
   }
 }

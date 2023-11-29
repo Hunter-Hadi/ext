@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "வழங்கும் வழங்கு நூலகம்",
-    "edit_prompt__template__placeholder": "உங்கள் உண்மையான வழக்கு வார்ப்புருவை உருவாக்க இந்த புலத்தைப் பயன்படுத்தவும்.\n\nவார்ப்புரு வார்ப்புகளாக மாறுபடும் மாறுபட்ட உரைப்பலகைகளைச் சேர்க்கலாம். உங்கள் வழக்கு வார்ப்புருவில் ஒருவரையும் பயன்படுத்தலாம். வழக்குகள் பயன்படுத்தப்படும்போது, உரைப்பலகைகள் தானாகவே உள்ளீட்டில் உள்ள உரையாக மாறப்படும்."
+    "edit_prompt__template__placeholder": "உங்கள் உண்மையான வழக்கு வார்ப்புருவை உருவாக்க இந்த புலத்தைப் பயன்படுத்தவும்.\n\nவார்ப்புரு வார்ப்புகளாக மாறுபடும் மாறுபட்ட உரைப்பலகைகளைச் சேர்க்கலாம். உங்கள் வழக்கு வார்ப்புருவில் ஒருவரையும் பயன்படுத்தலாம். வழக்குகள் பயன்படுத்தப்படும்போது, உரைப்பலகைகள் தானாகவே உள்ளீட்டில் உள்ள உரையாக மாறப்படும்.",
+    "tab__favorites__title": "பிடித்தவை",
+    "tab__public__title": "பொது",
+    "tab__own__title": "சொந்தமானது",
+    "filters__category__label": "வகை",
+    "filters__use_case__label": "பயன்பாடு",
+    "filters__query__placeholder": "தேடு...",
+    "pagination__label_rows_per_page__title": "ஒரு பக்கத்தில் உள்ள உதவிகள்:",
+    "add_new_prompt_card__cta__title": "புதிய உதவி வார்ப்புருவைச் சேர்க்கவும்",
+    "edit_prompt_modal__title": "உதவி வார்ப்புரு",
+    "edit_prompt_modal__field__title__label": "தலைப்பு",
+    "edit_prompt_modal__field__title__placeholder": "ஒரு தெளிவான மற்றும் தகவல் அழகான தலைப்பு உங்கள் உதவி வார்ப்புக்கு மேல் பயனாளர்களை ஆக்குகிறது.",
+    "edit_prompt_modal__field__description__label": "விளக்கம்",
+    "edit_prompt_modal__field__description__placeholder": "உங்கள் உதவி வார்ப்புக்கும் அதன் முடிவுகளுக்கும் எவ்வாறு பயனாளர்கள் எதிர்பார்க்கலாம் என்பதை ஒரு சுருக்கமான விளக்கத்தொடர் வழங்குக.",
+    "edit_prompt_modal__field__category__label": "வகை",
+    "edit_prompt_modal__field__use_case__label": "பயன்பாடு",
+    "edit_prompt_modal__field__author_name__label": "ஆசிரியர் பெயர்",
+    "edit_prompt_modal__field__author_name__placeholder": "ஆசிரியர் பெயர்",
+    "edit_prompt_modal__field__author_url__label": "ஆசிரியர் URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "உதவி சேமிக்கவும்",
+    "edit_prompt_modal__action__clone__title": "நகலெடு",
+    "edit_prompt_modal__action__cancel__title": "ரத்து செய்",
+    "edit_prompt_modal__field__template__label": "வார்ப்புரு"
   }
 }

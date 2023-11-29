@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Usa la libreria di prompt",
-    "edit_prompt__template__placeholder": "Utilizza questo campo per creare il tuo modello effettivo di prompt.\n\nPuoi aggiungere variabili che si trasformeranno in campi di testo compilabili nel modello di prompt. Prova a digitare {{ sul tuo prompt e inizia a creare variabili per il tuo modello di prompt. Puoi utilizzare le variabili più di una volta nel modello di prompt. Quando viene utilizzato il prompt, le variabili verranno automaticamente sostituite dal testo inserito corrispondente."
+    "edit_prompt__template__placeholder": "Utilizza questo campo per creare il tuo modello effettivo di prompt.\n\nPuoi aggiungere variabili che si trasformeranno in campi di testo compilabili nel modello di prompt. Prova a digitare {{ sul tuo prompt e inizia a creare variabili per il tuo modello di prompt. Puoi utilizzare le variabili più di una volta nel modello di prompt. Quando viene utilizzato il prompt, le variabili verranno automaticamente sostituite dal testo inserito corrispondente.",
+    "tab__favorites__title": "Preferiti",
+    "tab__public__title": "Pubblico",
+    "tab__own__title": "Proprio",
+    "filters__category__label": "Categoria",
+    "filters__use_case__label": "Caso d'uso",
+    "filters__query__placeholder": "Cerca...",
+    "pagination__label_rows_per_page__title": "Promemoria per pagina:",
+    "add_new_prompt_card__cta__title": "Aggiungi nuovo modello di promemoria",
+    "edit_prompt_modal__title": "Modello di promemoria",
+    "edit_prompt_modal__field__title__label": "Titolo",
+    "edit_prompt_modal__field__title__placeholder": "Un titolo chiaro e informativo attira più utenti al tuo modello di promemoria.",
+    "edit_prompt_modal__field__description__label": "Descrizione",
+    "edit_prompt_modal__field__description__placeholder": "Fornisci una descrizione concisa del tuo modello di promemoria e dei risultati potenziali che gli utenti possono aspettarsi.",
+    "edit_prompt_modal__field__category__label": "Categoria",
+    "edit_prompt_modal__field__use_case__label": "Caso d'uso",
+    "edit_prompt_modal__field__author_name__label": "Nome autore",
+    "edit_prompt_modal__field__author_name__placeholder": "Nome autore",
+    "edit_prompt_modal__field__author_url__label": "URL autore",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.esempio.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Salva promemoria",
+    "edit_prompt_modal__action__clone__title": "Clona",
+    "edit_prompt_modal__action__cancel__title": "Annulla",
+    "edit_prompt_modal__field__template__label": "Modello"
   }
 }

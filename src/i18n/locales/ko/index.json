@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "프롬프트 라이브러리 사용",
-    "edit_prompt__template__placeholder": "실제 프롬프트 템플릿을 생성하는 데 이 필드를 사용하세요.\n\n프롬프트 템플릿에서 채워질 수 있는 텍스트 필드로 변환될 변수를 추가할 수 있습니다. 프롬프트에 {{를 입력하고 프롬프트 템플릿의 변수를 생성해보세요. 프롬프트 템플릿에서 변수를 여러 번 사용할 수 있습니다. 프롬프트가 사용될 때, 변수는 자동으로 해당 입력된 텍스트로 대체됩니다."
+    "edit_prompt__template__placeholder": "실제 프롬프트 템플릿을 생성하는 데 이 필드를 사용하세요.\n\n프롬프트 템플릿에서 채워질 수 있는 텍스트 필드로 변환될 변수를 추가할 수 있습니다. 프롬프트에 {{를 입력하고 프롬프트 템플릿의 변수를 생성해보세요. 프롬프트 템플릿에서 변수를 여러 번 사용할 수 있습니다. 프롬프트가 사용될 때, 변수는 자동으로 해당 입력된 텍스트로 대체됩니다.",
+    "tab__favorites__title": "즐겨찾기",
+    "tab__public__title": "공개",
+    "tab__own__title": "내 것",
+    "filters__category__label": "카테고리",
+    "filters__use_case__label": "용도",
+    "filters__query__placeholder": "검색...",
+    "pagination__label_rows_per_page__title": "페이지당 프롬프트:",
+    "add_new_prompt_card__cta__title": "새로운 프롬프트 템플릿 추가",
+    "edit_prompt_modal__title": "프롬프트 템플릿",
+    "edit_prompt_modal__field__title__label": "제목",
+    "edit_prompt_modal__field__title__placeholder": "명확하고 정보를 제공하는 제목은 더 많은 사용자를 유치합니다.",
+    "edit_prompt_modal__field__description__label": "설명",
+    "edit_prompt_modal__field__description__placeholder": "프롬프트 템플릿과 예상 결과에 대한 간결한 설명을 제공하세요.",
+    "edit_prompt_modal__field__category__label": "카테고리",
+    "edit_prompt_modal__field__use_case__label": "용도",
+    "edit_prompt_modal__field__author_name__label": "작성자 이름",
+    "edit_prompt_modal__field__author_name__placeholder": "작성자 이름",
+    "edit_prompt_modal__field__author_url__label": "작성자 URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "프롬프트 저장",
+    "edit_prompt_modal__action__clone__title": "복제",
+    "edit_prompt_modal__action__cancel__title": "취소",
+    "edit_prompt_modal__field__template__label": "템플릿"
   }
 }

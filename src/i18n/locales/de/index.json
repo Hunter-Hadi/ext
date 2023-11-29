@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompt-Bibliothek verwenden",
-    "edit_prompt__template__placeholder": "Verwenden Sie dieses Feld, um Ihre eigentliche Prompt-Vorlage zu erstellen.\n\nSie können Variablen hinzufügen, die in der Prompt-Vorlage zu ausfüllbaren Textfeldern werden. Versuchen Sie, {{ in Ihrer Prompt einzugeben und Variablen für Ihre Prompt-Vorlage zu erstellen. Sie können Variablen mehrmals in Ihrer Prompt-Vorlage verwenden. Wenn die Prompt verwendet wird, werden die Variablen automatisch durch den entsprechenden eingegebenen Text ersetzt."
+    "edit_prompt__template__placeholder": "Verwenden Sie dieses Feld, um Ihre eigentliche Prompt-Vorlage zu erstellen.\n\nSie können Variablen hinzufügen, die in der Prompt-Vorlage zu ausfüllbaren Textfeldern werden. Versuchen Sie, {{ in Ihrer Prompt einzugeben und Variablen für Ihre Prompt-Vorlage zu erstellen. Sie können Variablen mehrmals in Ihrer Prompt-Vorlage verwenden. Wenn die Prompt verwendet wird, werden die Variablen automatisch durch den entsprechenden eingegebenen Text ersetzt.",
+    "tab__favorites__title": "Favoriten",
+    "tab__public__title": "Öffentlich",
+    "tab__own__title": "Eigenes",
+    "filters__category__label": "Kategorie",
+    "filters__use_case__label": "Anwendungsbereich",
+    "filters__query__placeholder": "Suche...",
+    "pagination__label_rows_per_page__title": "Prompts pro Seite:",
+    "add_new_prompt_card__cta__title": "Neue Prompt-Vorlage hinzufügen",
+    "edit_prompt_modal__title": "Prompt-Vorlage bearbeiten",
+    "edit_prompt_modal__field__title__label": "Titel",
+    "edit_prompt_modal__field__title__placeholder": "Ein klarer und informativer Titel zieht mehr Benutzer zu Ihrer Prompt-Vorlage an.",
+    "edit_prompt_modal__field__description__label": "Beschreibung",
+    "edit_prompt_modal__field__description__placeholder": "Geben Sie eine prägnante Beschreibung Ihrer Prompt-Vorlage und der möglichen Ergebnisse an, die Benutzer erwarten können.",
+    "edit_prompt_modal__field__category__label": "Kategorie",
+    "edit_prompt_modal__field__use_case__label": "Anwendungsbereich",
+    "edit_prompt_modal__field__author_name__label": "Name des Autors",
+    "edit_prompt_modal__field__author_name__placeholder": "Name des Autors",
+    "edit_prompt_modal__field__author_url__label": "URL des Autors",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.beispiel.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Prompt speichern",
+    "edit_prompt_modal__action__clone__title": "Klonen",
+    "edit_prompt_modal__action__cancel__title": "Abbrechen",
+    "edit_prompt_modal__field__template__label": "Vorlage"
   }
 }

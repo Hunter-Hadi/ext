@@ -6,6 +6,7 @@ import { buttonBaseClasses } from '@mui/material/ButtonBase'
 import React, { FC } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import { useTranslation } from 'react-i18next'
 
 const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
   ({ theme }) => {
@@ -42,6 +43,7 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
  * @constructor
  */
 const PromptLibraryTabs: FC = () => {
+  const { t } = useTranslation(['prompt_library'])
   const { activeTab, updateActiveTab } = usePromptLibraryParameters()
   return (
     <Box flex={1} flexBasis={'100%'}>
@@ -62,10 +64,10 @@ const PromptLibraryTabs: FC = () => {
           }
           iconPosition="start"
           value={'Favorites'}
-          label="Favorites"
+          label={t('prompt_library:tab__favorites__title')}
         />
-        <Tab value={'Public'} label="Public" />
-        <Tab value={'Own'} label="Own" />
+        <Tab value={'Public'} label={t('prompt_library:tab__public__title')} />
+        <Tab value={'Own'} label={t('prompt_library:tab__own__title')} />
       </CustomTabs>
     </Box>
   )

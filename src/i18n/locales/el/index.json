@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Χρήση βιβλιοθήκης προτύπων",
-    "edit_prompt__template__placeholder": "Χρησιμοποιήστε αυτό το πεδίο για να δημιουργήσετε το πραγματικό πρότυπο της ερώτησής σας.\n\nΜπορείτε να προσθέσετε μεταβλητές που θα μετατραπούν σε πεδία κειμένου που μπορούν να συμπληρωθούν στο πρότυπο της ερώτησης. Δοκιμάστε να πληκτρολογήσετε {{ στην ερώτησή σας και αρχίστε να δημιουργείτε μεταβλητές για το πρότυπο της ερώτησής σας. Μπορείτε να χρησιμοποιήσετε μεταβλητές περισσότερες από μία φορές στο πρότυπο της ερώτησής σας. Όταν χρησιμοποιείται η ερώτηση, οι μεταβλητές θα αντικατασταθούν αυτόματα από το αντίστοιχο κείμενο που εισάγετε."
+    "edit_prompt__template__placeholder": "Χρησιμοποιήστε αυτό το πεδίο για να δημιουργήσετε το πραγματικό πρότυπο της ερώτησής σας.\n\nΜπορείτε να προσθέσετε μεταβλητές που θα μετατραπούν σε πεδία κειμένου που μπορούν να συμπληρωθούν στο πρότυπο της ερώτησης. Δοκιμάστε να πληκτρολογήσετε {{ στην ερώτησή σας και αρχίστε να δημιουργείτε μεταβλητές για το πρότυπο της ερώτησής σας. Μπορείτε να χρησιμοποιήσετε μεταβλητές περισσότερες από μία φορές στο πρότυπο της ερώτησής σας. Όταν χρησιμοποιείται η ερώτηση, οι μεταβλητές θα αντικατασταθούν αυτόματα από το αντίστοιχο κείμενο που εισάγετε.",
+    "tab__favorites__title": "Αγαπημένα",
+    "tab__public__title": "Δημόσια",
+    "tab__own__title": "Ιδιόκτητα",
+    "filters__category__label": "Κατηγορία",
+    "filters__use_case__label": "Χρήση",
+    "filters__query__placeholder": "Αναζήτηση...",
+    "pagination__label_rows_per_page__title": "Προτάσεις ανά σελίδα:",
+    "add_new_prompt_card__cta__title": "Προσθήκη νέου προτύπου πρότασης",
+    "edit_prompt_modal__title": "Πρότυπο πρότασης",
+    "edit_prompt_modal__field__title__label": "Τίτλος",
+    "edit_prompt_modal__field__title__placeholder": "Ένας καθαρός και ενημερωτικός τίτλος προσελκύει περισσότερους χρήστες στο πρότυπο πρότασής σας.",
+    "edit_prompt_modal__field__description__label": "Περιγραφή",
+    "edit_prompt_modal__field__description__placeholder": "Παρέχετε μια συνοπτική περιγραφή του προτύπου πρότασής σας και των δυνητικών αποτελεσμάτων που μπορούν να αναμένουν οι χρήστες.",
+    "edit_prompt_modal__field__category__label": "Κατηγορία",
+    "edit_prompt_modal__field__use_case__label": "Χρήση",
+    "edit_prompt_modal__field__author_name__label": "Όνομα συγγραφέα",
+    "edit_prompt_modal__field__author_name__placeholder": "Όνομα συγγραφέα",
+    "edit_prompt_modal__field__author_url__label": "URL συγγραφέα",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Αποθήκευση πρότασης",
+    "edit_prompt_modal__action__clone__title": "Κλωνοποίηση",
+    "edit_prompt_modal__action__cancel__title": "Ακύρωση",
+    "edit_prompt_modal__field__template__label": "Πρότυπο"
   }
 }

@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Guna perpustakaan prompt",
-    "edit_prompt__template__placeholder": "Gunakan medan ini untuk membuat templat prompt sebenar anda.\n\nAnda boleh menambah pemboleh ubah yang akan menjadi medan teks yang boleh diisi dalam templat prompt. Cuba taip {{ pada prompt anda dan mulakan membuat pemboleh ubah untuk templat prompt anda. Anda boleh menggunakan pemboleh ubah lebih daripada sekali dalam templat prompt anda. Apabila prompt digunakan, pemboleh ubah akan digantikan dengan teks yang dimasukkan secara automatik."
+    "edit_prompt__template__placeholder": "Gunakan medan ini untuk membuat templat prompt sebenar anda.\n\nAnda boleh menambah pemboleh ubah yang akan menjadi medan teks yang boleh diisi dalam templat prompt. Cuba taip {{ pada prompt anda dan mulakan membuat pemboleh ubah untuk templat prompt anda. Anda boleh menggunakan pemboleh ubah lebih daripada sekali dalam templat prompt anda. Apabila prompt digunakan, pemboleh ubah akan digantikan dengan teks yang dimasukkan secara automatik.",
+    "tab__favorites__title": "Kegemaran",
+    "tab__public__title": "Awam",
+    "tab__own__title": "Sendiri",
+    "filters__category__label": "Kategori",
+    "filters__use_case__label": "Kegunaan",
+    "filters__query__placeholder": "Cari...",
+    "pagination__label_rows_per_page__title": "Promp setiap halaman:",
+    "add_new_prompt_card__cta__title": "Tambah templat promp baru",
+    "edit_prompt_modal__title": "Tema promp",
+    "edit_prompt_modal__field__title__label": "Tajuk",
+    "edit_prompt_modal__field__title__placeholder": "Tajuk yang jelas dan informatif akan menarik lebih ramai pengguna ke templat promp anda.",
+    "edit_prompt_modal__field__description__label": "Penerangan",
+    "edit_prompt_modal__field__description__placeholder": "Berikan penerangan ringkas mengenai templat promp anda dan hasil yang dijangka oleh pengguna.",
+    "edit_prompt_modal__field__category__label": "Kategori",
+    "edit_prompt_modal__field__use_case__label": "Kegunaan",
+    "edit_prompt_modal__field__author_name__label": "Nama pengarang",
+    "edit_prompt_modal__field__author_name__placeholder": "Nama pengarang",
+    "edit_prompt_modal__field__author_url__label": "URL pengarang",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Simpan promp",
+    "edit_prompt_modal__action__clone__title": "Salin",
+    "edit_prompt_modal__action__cancel__title": "Batal",
+    "edit_prompt_modal__field__template__label": "Templat"
   }
 }

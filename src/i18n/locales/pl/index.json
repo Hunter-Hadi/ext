@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Użyj biblioteki promptów",
-    "edit_prompt__template__placeholder": "Użyj tego pola, aby utworzyć swój rzeczywisty szablon promptu.\n\nMożesz dodawać zmienne, które zamienią się w pola tekstowe do wypełnienia w szablonie promptu. Spróbuj wpisać {{ w swoim prompt i zacznij tworzyć zmienne dla swojego szablonu promptu. Możesz używać zmiennych więcej niż raz w szablonie promptu. Gdy prompt zostanie użyty, zmienne zostaną automatycznie zastąpione odpowiednim wprowadzonym tekstem."
+    "edit_prompt__template__placeholder": "Użyj tego pola, aby utworzyć swój rzeczywisty szablon promptu.\n\nMożesz dodawać zmienne, które zamienią się w pola tekstowe do wypełnienia w szablonie promptu. Spróbuj wpisać {{ w swoim prompt i zacznij tworzyć zmienne dla swojego szablonu promptu. Możesz używać zmiennych więcej niż raz w szablonie promptu. Gdy prompt zostanie użyty, zmienne zostaną automatycznie zastąpione odpowiednim wprowadzonym tekstem.",
+    "tab__favorites__title": "Ulubione",
+    "tab__public__title": "Publiczne",
+    "tab__own__title": "Własne",
+    "filters__category__label": "Kategoria",
+    "filters__use_case__label": "Przypadek użycia",
+    "filters__query__placeholder": "Szukaj...",
+    "pagination__label_rows_per_page__title": "Prompty na stronę:",
+    "add_new_prompt_card__cta__title": "Dodaj nowy szablon promptu",
+    "edit_prompt_modal__title": "Szablon promptu",
+    "edit_prompt_modal__field__title__label": "Tytuł",
+    "edit_prompt_modal__field__title__placeholder": "Jasny i informacyjny tytuł przyciąga więcej użytkowników do Twojego szablonu promptu.",
+    "edit_prompt_modal__field__description__label": "Opis",
+    "edit_prompt_modal__field__description__placeholder": "Podaj zwięzły opis swojego szablonu promptu i potencjalnych wyników, jakie mogą oczekiwać użytkownicy.",
+    "edit_prompt_modal__field__category__label": "Kategoria",
+    "edit_prompt_modal__field__use_case__label": "Przypadek użycia",
+    "edit_prompt_modal__field__author_name__label": "Nazwa autora",
+    "edit_prompt_modal__field__author_name__placeholder": "Nazwa autora",
+    "edit_prompt_modal__field__author_url__label": "Adres URL autora",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Zapisz prompt",
+    "edit_prompt_modal__action__clone__title": "Klonuj",
+    "edit_prompt_modal__action__cancel__title": "Anuluj",
+    "edit_prompt_modal__field__template__label": "Szablon"
   }
 }

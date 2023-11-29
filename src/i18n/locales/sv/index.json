@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Använd promptbibliotek",
-    "edit_prompt__template__placeholder": "Använd detta fält för att skapa din faktiska promptmall.\n\nDu kan lägga till variabler som kommer att bli ifyllningsbara textfält i promptmallen. Prova att skriva {{ i din prompt och börja skapa variabler för din promptmall. Du kan använda variabler mer än en gång i din promptmall. När prompten används kommer variablerna automatiskt att ersättas med motsvarande inmatad text."
+    "edit_prompt__template__placeholder": "Använd detta fält för att skapa din faktiska promptmall.\n\nDu kan lägga till variabler som kommer att bli ifyllningsbara textfält i promptmallen. Prova att skriva {{ i din prompt och börja skapa variabler för din promptmall. Du kan använda variabler mer än en gång i din promptmall. När prompten används kommer variablerna automatiskt att ersättas med motsvarande inmatad text.",
+    "tab__favorites__title": "Favoriter",
+    "tab__public__title": "Offentlig",
+    "tab__own__title": "Egen",
+    "filters__category__label": "Kategori",
+    "filters__use_case__label": "Användningsfall",
+    "filters__query__placeholder": "Sök...",
+    "pagination__label_rows_per_page__title": "Antal promptar per sida:",
+    "add_new_prompt_card__cta__title": "Lägg till ny promptmall",
+    "edit_prompt_modal__title": "Promptmall",
+    "edit_prompt_modal__field__title__label": "Titel",
+    "edit_prompt_modal__field__title__placeholder": "En tydlig och informativ titel lockar fler användare till din promptmall.",
+    "edit_prompt_modal__field__description__label": "Beskrivning",
+    "edit_prompt_modal__field__description__placeholder": "Ge en kortfattad beskrivning av din promptmall och de potentiella resultat som användarna kan förvänta sig.",
+    "edit_prompt_modal__field__category__label": "Kategori",
+    "edit_prompt_modal__field__use_case__label": "Användningsfall",
+    "edit_prompt_modal__field__author_name__label": "Författarnamn",
+    "edit_prompt_modal__field__author_name__placeholder": "Författarnamn",
+    "edit_prompt_modal__field__author_url__label": "Författar-URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Spara prompt",
+    "edit_prompt_modal__action__clone__title": "Klona",
+    "edit_prompt_modal__action__cancel__title": "Avbryt",
+    "edit_prompt_modal__field__template__label": "Mall"
   }
 }

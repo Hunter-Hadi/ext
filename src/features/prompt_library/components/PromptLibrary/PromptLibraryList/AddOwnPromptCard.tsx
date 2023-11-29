@@ -2,8 +2,10 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 import { Stack, Typography } from '@mui/material'
 import React, { FC } from 'react'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
+import { useTranslation } from 'react-i18next'
 
 const AddOwnPromptCard: FC = () => {
+  const { t } = useTranslation(['prompt_library'])
   const { openPromptLibraryEditForm } = usePromptActions()
   return (
     <Stack
@@ -45,7 +47,9 @@ const AddOwnPromptCard: FC = () => {
             fontSize: 20,
           }}
         />
-        <Typography fontSize={16}>Add new prompt template</Typography>
+        <Typography fontSize={16}>
+          {t('prompt_library:add_new_prompt_card__cta__title')}
+        </Typography>
       </Stack>
     </Stack>
   )

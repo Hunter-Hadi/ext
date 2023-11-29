@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Uporabi knjižnico predlog",
-    "edit_prompt__template__placeholder": "Uporabite to polje za ustvarjanje dejanske predloge za vašo spodbudo.\n\nLahko dodate spremenljivke, ki se bodo pretvorile v polja za izpolnitev besedila v predlogi spodbude. Poskusite vnesti {{ v svojo spodbudo in začnite ustvarjati spremenljivke za predlogo spodbude. Spremenljivke lahko uporabite večkrat v predlogi spodbude. Ko se uporablja spodbuda, se bodo spremenljivke samodejno zamenjale z ustreznim vnesenim besedilom."
+    "edit_prompt__template__placeholder": "Uporabite to polje za ustvarjanje dejanske predloge za vašo spodbudo.\n\nLahko dodate spremenljivke, ki se bodo pretvorile v polja za izpolnitev besedila v predlogi spodbude. Poskusite vnesti {{ v svojo spodbudo in začnite ustvarjati spremenljivke za predlogo spodbude. Spremenljivke lahko uporabite večkrat v predlogi spodbude. Ko se uporablja spodbuda, se bodo spremenljivke samodejno zamenjale z ustreznim vnesenim besedilom.",
+    "tab__favorites__title": "Priljubljeno",
+    "tab__public__title": "Javno",
+    "tab__own__title": "Lastno",
+    "filters__category__label": "Kategorija",
+    "filters__use_case__label": "Uporaba",
+    "filters__query__placeholder": "Iskanje...",
+    "pagination__label_rows_per_page__title": "Vprašanj na stran:",
+    "add_new_prompt_card__cta__title": "Dodaj nov predlog vzorca",
+    "edit_prompt_modal__title": "Predlog vzorca",
+    "edit_prompt_modal__field__title__label": "Naslov",
+    "edit_prompt_modal__field__title__placeholder": "Jasen in informativen naslov pritegne več uporabnikov k vašemu predlogu vzorca.",
+    "edit_prompt_modal__field__description__label": "Opis",
+    "edit_prompt_modal__field__description__placeholder": "Podajte jedrnat opis vašega predloga vzorca in potencialne rezultate, ki jih lahko uporabniki pričakujejo.",
+    "edit_prompt_modal__field__category__label": "Kategorija",
+    "edit_prompt_modal__field__use_case__label": "Uporaba",
+    "edit_prompt_modal__field__author_name__label": "Ime avtorja",
+    "edit_prompt_modal__field__author_name__placeholder": "Ime avtorja",
+    "edit_prompt_modal__field__author_url__label": "URL avtorja",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Shrani predlog",
+    "edit_prompt_modal__action__clone__title": "Kopiraj",
+    "edit_prompt_modal__action__cancel__title": "Prekliči",
+    "edit_prompt_modal__field__template__label": "Predloga"
   }
 }

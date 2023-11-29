@@ -177,7 +177,7 @@ const PromptLibraryCardEditForm: FC = () => {
               flexShrink: 0,
             }}
           >
-            Prompt template
+            {t('prompt_library:edit_prompt_modal__title')}
           </Typography>
           <Grid
             container
@@ -192,7 +192,9 @@ const PromptLibraryCardEditForm: FC = () => {
               <FormControl size="small" variant="standard" fullWidth>
                 <FormLabel>
                   <Typography variant="body1">
-                    Template
+                    {t(
+                      'prompt_library:edit_prompt_modal__field__template__label',
+                    )}
                     <FormLabelRequiredFlag />
                   </Typography>
                 </FormLabel>
@@ -217,7 +219,7 @@ const PromptLibraryCardEditForm: FC = () => {
               <FormControl size="small" variant="standard" fullWidth>
                 <FormLabel>
                   <Typography variant="body1">
-                    Title
+                    {t('prompt_library:edit_prompt_modal__field__title__label')}
                     <FormLabelRequiredFlag />
                   </Typography>
                 </FormLabel>
@@ -226,7 +228,9 @@ const PromptLibraryCardEditForm: FC = () => {
                   InputProps={inputProps}
                   disabled={formDisabled}
                   {...register('prompt_title', { required: true })}
-                  placeholder="A clear and informative title attracts more users to your prompt template."
+                  placeholder={t(
+                    'prompt_library:edit_prompt_modal__field__title__placeholder',
+                  )}
                   error={!!errors.prompt_title}
                   FormHelperTextProps={{ sx: { ml: 0 } }}
                   helperText={errors.prompt_title ? 'Title is required' : ''}
@@ -237,7 +241,9 @@ const PromptLibraryCardEditForm: FC = () => {
               <FormControl size="small" variant="standard" fullWidth>
                 <FormLabel>
                   <Typography variant="body1">
-                    Description
+                    {t(
+                      'prompt_library:edit_prompt_modal__field__description__label',
+                    )}
                     <FormLabelRequiredFlag />
                   </Typography>
                 </FormLabel>
@@ -247,7 +253,9 @@ const PromptLibraryCardEditForm: FC = () => {
                   disabled={formDisabled}
                   multiline
                   {...register('teaser', { required: true })}
-                  placeholder="Provide a concise description of your prompt template and potential results users can expect."
+                  placeholder={t(
+                    'prompt_library:edit_prompt_modal__field__description__placeholder',
+                  )}
                   error={!!errors.teaser}
                   FormHelperTextProps={{ sx: { ml: 0 } }}
                   helperText={
@@ -273,7 +281,9 @@ const PromptLibraryCardEditForm: FC = () => {
                   },
                 }}
                 defaultValue={'All'}
-                label={'Category'}
+                label={t(
+                  'prompt_library:edit_prompt_modal__field__category__label',
+                )}
                 options={categoryOptions}
                 name={'category'}
               />
@@ -291,7 +301,9 @@ const PromptLibraryCardEditForm: FC = () => {
                 }}
                 defaultValue={'All'}
                 control={control}
-                label={'Use case'}
+                label={t(
+                  'prompt_library:edit_prompt_modal__field__use_case__label',
+                )}
                 options={useCaseOptions}
                 name={'use_case'}
               />
@@ -299,21 +311,31 @@ const PromptLibraryCardEditForm: FC = () => {
             <Grid item xs={itemWidth}>
               <FormControl size="small" variant="standard" fullWidth>
                 <FormLabel>
-                  <Typography variant="body1">Author name</Typography>
+                  <Typography variant="body1">
+                    {t(
+                      'prompt_library:edit_prompt_modal__field__author_name__label',
+                    )}
+                  </Typography>
                 </FormLabel>
                 <TextField
                   size="small"
                   InputProps={inputProps}
                   disabled={formDisabled}
                   {...register('author')}
-                  placeholder="Author name"
+                  placeholder={t(
+                    'prompt_library:edit_prompt_modal__field__author_name__placeholder',
+                  )}
                 />
               </FormControl>
             </Grid>
             <Grid item xs={itemWidth}>
               <FormControl size="small" variant="standard" fullWidth>
                 <FormLabel>
-                  <Typography variant="body1">Author URL</Typography>
+                  <Typography variant="body1">
+                    {t(
+                      'prompt_library:edit_prompt_modal__field__author_url__label',
+                    )}
+                  </Typography>
                 </FormLabel>
                 <TextField
                   size="small"
@@ -336,7 +358,9 @@ const PromptLibraryCardEditForm: FC = () => {
                       return flag
                     },
                   })}
-                  placeholder="https://www.example.com/"
+                  placeholder={t(
+                    'prompt_library:edit_prompt_modal__field__author_url__placeholder',
+                  )}
                   FormHelperTextProps={{ sx: { ml: 0 } }}
                   error={!!errors.author_url}
                   helperText={
@@ -361,7 +385,7 @@ const PromptLibraryCardEditForm: FC = () => {
                 closePromptLibraryEditForm()
               }}
             >
-              Cancel
+              {t('prompt_library:edit_prompt_modal__action__cancel__title')}
             </Button>
             {!isAddNewPrompt && (
               <LoadingButton
@@ -369,7 +393,7 @@ const PromptLibraryCardEditForm: FC = () => {
                 loading={loading}
                 onClick={handleClone}
               >
-                Clone
+                {t('prompt_library:edit_prompt_modal__action__clone__title')}
               </LoadingButton>
             )}
             <LoadingButton
@@ -377,7 +401,9 @@ const PromptLibraryCardEditForm: FC = () => {
               onClick={handleSubmit}
               loading={loading}
             >
-              Save prompt
+              {t(
+                'prompt_library:edit_prompt_modal__action__save_prompt__title',
+              )}
             </LoadingButton>
           </Stack>
         </AppLoadingLayout>

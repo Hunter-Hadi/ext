@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "የመረጃ ቤት ይጠቀሙ",
-    "edit_prompt__template__placeholder": "ይህ መረጃ ባለቤት ይጠቀሙ።\n\nየመረጃ ባለቤት ውስጥ የሚሰጡ ቃላት የሚሆኑትን ጽሁፎች ይጨምሩ። የመረጃ ባለቤት ውስጥ በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ።"
+    "edit_prompt__template__placeholder": "ይህ መረጃ ባለቤት ይጠቀሙ።\n\nየመረጃ ባለቤት ውስጥ የሚሰጡ ቃላት የሚሆኑትን ጽሁፎች ይጨምሩ። የመረጃ ባለቤት ውስጥ በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ።",
+    "tab__favorites__title": "የሚወዳደር",
+    "tab__public__title": "የህዝብ",
+    "tab__own__title": "የእርስዎ",
+    "filters__category__label": "ምድብ",
+    "filters__use_case__label": "የግል መጠቀሚያ",
+    "filters__query__placeholder": "ፈልግ...",
+    "pagination__label_rows_per_page__title": "የፕሮማት በየቦታ የሚወዳደር:",
+    "add_new_prompt_card__cta__title": "አዲስ ፕሮማት ቅጽ ጨምር",
+    "edit_prompt_modal__title": "ፕሮማት ቅጽ",
+    "edit_prompt_modal__field__title__label": "ርዕስ",
+    "edit_prompt_modal__field__title__placeholder": "የፕሮማትዎን ርዕስ በቀላሉ የሚያገኙ ተጠቃሚዎች እንዴት መስጠት ይችላል.",
+    "edit_prompt_modal__field__description__label": "መግለጫ",
+    "edit_prompt_modal__field__description__placeholder": "የፕሮማትዎን መግለጫ በቀላሉ የሚገኙ ተጠቃሚዎችን የሚያገኙ ዝርዝር ያስገቡ።",
+    "edit_prompt_modal__field__category__label": "ምድብ",
+    "edit_prompt_modal__field__use_case__label": "የግል መጠቀሚያ",
+    "edit_prompt_modal__field__author_name__label": "የሰሌዳ ስም",
+    "edit_prompt_modal__field__author_name__placeholder": "የሰሌዳ ስም",
+    "edit_prompt_modal__field__author_url__label": "የሰሌዳ URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "ፕሮማት አስቀምጥ",
+    "edit_prompt_modal__action__clone__title": "ደንቅ",
+    "edit_prompt_modal__action__cancel__title": "ተው",
+    "edit_prompt_modal__field__template__label": "ትርጉም"
   }
 }

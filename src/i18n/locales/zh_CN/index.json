@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "使用提示库",
-    "edit_prompt__template__placeholder": "使用此字段创建您的实际提示模板。\n\n您可以添加变量，这些变量将在提示模板中转换为可填写的文本字段。尝试在提示上键入{{并开始为提示模板创建变量。您可以在提示模板中多次使用变量。当使用提示时，变量将自动替换为相应的输入文本。"
+    "edit_prompt__template__placeholder": "使用此字段创建您的实际提示模板。\n\n您可以添加变量，这些变量将在提示模板中转换为可填写的文本字段。尝试在提示上键入{{并开始为提示模板创建变量。您可以在提示模板中多次使用变量。当使用提示时，变量将自动替换为相应的输入文本。",
+    "tab__favorites__title": "收藏夹",
+    "tab__public__title": "公开",
+    "tab__own__title": "自己的",
+    "filters__category__label": "类别",
+    "filters__use_case__label": "用例",
+    "filters__query__placeholder": "搜索...",
+    "pagination__label_rows_per_page__title": "每页提示数：",
+    "add_new_prompt_card__cta__title": "添加新的提示模板",
+    "edit_prompt_modal__title": "提示模板",
+    "edit_prompt_modal__field__title__label": "标题",
+    "edit_prompt_modal__field__title__placeholder": "清晰且信息丰富的标题能吸引更多用户使用您的提示模板。",
+    "edit_prompt_modal__field__description__label": "描述",
+    "edit_prompt_modal__field__description__placeholder": "提供一个简洁的描述，介绍您的提示模板和用户可以期待的结果。",
+    "edit_prompt_modal__field__category__label": "类别",
+    "edit_prompt_modal__field__use_case__label": "用例",
+    "edit_prompt_modal__field__author_name__label": "作者姓名",
+    "edit_prompt_modal__field__author_name__placeholder": "作者姓名",
+    "edit_prompt_modal__field__author_url__label": "作者网址",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "保存提示",
+    "edit_prompt_modal__action__clone__title": "克隆",
+    "edit_prompt_modal__action__cancel__title": "取消",
+    "edit_prompt_modal__field__template__label": "模板"
   }
 }

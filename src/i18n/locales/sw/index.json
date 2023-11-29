@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Tumia maktaba ya maelekezo",
-    "edit_prompt__template__placeholder": "Tumia uga huu kuunda kigezo chako halisi cha maelekezo.\n\nUnaweza kuongeza vipengele ambavyo vitageuka kuwa sehemu za maandishi yanayoweza kujazwa katika kigezo cha maelekezo. Jaribu kubonyeza {{ kwenye maelekezo yako na anza kuunda vipengele kwa kigezo chako cha maelekezo. Unaweza kutumia vipengele mara nyingi katika kigezo chako cha maelekezo. Wakati maelekezo yanapotumiwa, vipengele vitabadilishwa na maandishi yaliyoingizwa kiotomatiki."
+    "edit_prompt__template__placeholder": "Tumia uga huu kuunda kigezo chako halisi cha maelekezo.\n\nUnaweza kuongeza vipengele ambavyo vitageuka kuwa sehemu za maandishi yanayoweza kujazwa katika kigezo cha maelekezo. Jaribu kubonyeza {{ kwenye maelekezo yako na anza kuunda vipengele kwa kigezo chako cha maelekezo. Unaweza kutumia vipengele mara nyingi katika kigezo chako cha maelekezo. Wakati maelekezo yanapotumiwa, vipengele vitabadilishwa na maandishi yaliyoingizwa kiotomatiki.",
+    "tab__favorites__title": "Vipendwa",
+    "tab__public__title": "Umma",
+    "tab__own__title": "Yangu",
+    "filters__category__label": "Jamii",
+    "filters__use_case__label": "Matumizi",
+    "filters__query__placeholder": "Tafuta...",
+    "pagination__label_rows_per_page__title": "Vidokezo kwa ukurasa:",
+    "add_new_prompt_card__cta__title": "Ongeza kigezo cha kidokezo kipya",
+    "edit_prompt_modal__title": "Kigezo cha Kidokezo",
+    "edit_prompt_modal__field__title__label": "Kichwa",
+    "edit_prompt_modal__field__title__placeholder": "Kichwa wazi na chenye habari kinavutia watumiaji zaidi kwenye kigezo chako cha kidokezo.",
+    "edit_prompt_modal__field__description__label": "Maelezo",
+    "edit_prompt_modal__field__description__placeholder": "Toa maelezo mafupi ya kigezo chako cha kidokezo na matokeo yanayotarajiwa kutoka kwa watumiaji.",
+    "edit_prompt_modal__field__category__label": "Jamii",
+    "edit_prompt_modal__field__use_case__label": "Matumizi",
+    "edit_prompt_modal__field__author_name__label": "Jina la Mwandishi",
+    "edit_prompt_modal__field__author_name__placeholder": "Jina la Mwandishi",
+    "edit_prompt_modal__field__author_url__label": "URL ya Mwandishi",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Hifadhi kidokezo",
+    "edit_prompt_modal__action__clone__title": "Nakili",
+    "edit_prompt_modal__action__cancel__title": "Ghairi",
+    "edit_prompt_modal__field__template__label": "Kiolezo"
   }
 }

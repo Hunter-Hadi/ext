@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Gamitin ang aklatan ng prompt",
-    "edit_prompt__template__placeholder": "Gamitin ang patlang na ito upang lumikha ng iyong aktuwal na template ng prompt.\n\nMaaari kang magdagdag ng mga variable na magiging fillable text fields sa template ng prompt. Subukan ang pag-type ng {{ sa iyong prompt at simulan ang paglikha ng mga variable para sa iyong template ng prompt. Maaari mong gamitin ang mga variable nang higit sa isang beses sa iyong template ng prompt. Kapag ginamit ang prompt, ang mga variable ay papalitan ng kaukulang inputted text nang awtomatiko."
+    "edit_prompt__template__placeholder": "Gamitin ang patlang na ito upang lumikha ng iyong aktuwal na template ng prompt.\n\nMaaari kang magdagdag ng mga variable na magiging fillable text fields sa template ng prompt. Subukan ang pag-type ng {{ sa iyong prompt at simulan ang paglikha ng mga variable para sa iyong template ng prompt. Maaari mong gamitin ang mga variable nang higit sa isang beses sa iyong template ng prompt. Kapag ginamit ang prompt, ang mga variable ay papalitan ng kaukulang inputted text nang awtomatiko.",
+    "tab__favorites__title": "Mga Paborito",
+    "tab__public__title": "Pampubliko",
+    "tab__own__title": "Sarili",
+    "filters__category__label": "Kategorya",
+    "filters__use_case__label": "Paggamit",
+    "filters__query__placeholder": "Maghanap...",
+    "pagination__label_rows_per_page__title": "Mga Prompt kada pahina:",
+    "add_new_prompt_card__cta__title": "Magdagdag ng bagong template ng prompt",
+    "edit_prompt_modal__title": "Template ng Prompt",
+    "edit_prompt_modal__field__title__label": "Pamagat",
+    "edit_prompt_modal__field__title__placeholder": "Ang malinaw at impormatibong pamagat ay nakakaakit ng mas maraming mga gumagamit sa iyong template ng prompt.",
+    "edit_prompt_modal__field__description__label": "Paglalarawan",
+    "edit_prompt_modal__field__description__placeholder": "Magbigay ng maikling paglalarawan ng iyong template ng prompt at mga posibleng resulta na inaasahan ng mga gumagamit.",
+    "edit_prompt_modal__field__category__label": "Kategorya",
+    "edit_prompt_modal__field__use_case__label": "Paggamit",
+    "edit_prompt_modal__field__author_name__label": "Pangalan ng May-akda",
+    "edit_prompt_modal__field__author_name__placeholder": "Pangalan ng May-akda",
+    "edit_prompt_modal__field__author_url__label": "URL ng May-akda",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "I-save ang prompt",
+    "edit_prompt_modal__action__clone__title": "Kopyahin",
+    "edit_prompt_modal__action__cancel__title": "Kanselahin",
+    "edit_prompt_modal__field__template__label": "Padron"
   }
 }

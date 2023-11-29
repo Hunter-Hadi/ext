@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Koristi biblioteku upita",
-    "edit_prompt__template__placeholder": "Koristite ovo polje da biste kreirali stvarni šablon upita.\n\nMožete dodati promenljive koje će se pretvoriti u polja za unos teksta u šablonu upita. Pokušajte da kucate {{ u svom upitu i počnite da kreirate promenljive za svoj šablon upita. Možete koristiti promenljive više puta u šablonu upita. Kada se upit koristi, promenljive će automatski biti zamenjene odgovarajućim unetim tekstom."
+    "edit_prompt__template__placeholder": "Koristite ovo polje da biste kreirali stvarni šablon upita.\n\nMožete dodati promenljive koje će se pretvoriti u polja za unos teksta u šablonu upita. Pokušajte da kucate {{ u svom upitu i počnite da kreirate promenljive za svoj šablon upita. Možete koristiti promenljive više puta u šablonu upita. Kada se upit koristi, promenljive će automatski biti zamenjene odgovarajućim unetim tekstom.",
+    "tab__favorites__title": "Omiljeno",
+    "tab__public__title": "Javno",
+    "tab__own__title": "Svoje",
+    "filters__category__label": "Kategorija",
+    "filters__use_case__label": "Upotreba",
+    "filters__query__placeholder": "Pretraga...",
+    "pagination__label_rows_per_page__title": "Broj predloga po stranici:",
+    "add_new_prompt_card__cta__title": "Dodaj novi predložak",
+    "edit_prompt_modal__title": "Predložak za upit",
+    "edit_prompt_modal__field__title__label": "Naslov",
+    "edit_prompt_modal__field__title__placeholder": "Jasan i informativan naslov privlači više korisnika na vaš predložak.",
+    "edit_prompt_modal__field__description__label": "Opis",
+    "edit_prompt_modal__field__description__placeholder": "Obezbedite kratak opis svog predloška za upit i potencijalne rezultate koje korisnici mogu očekivati.",
+    "edit_prompt_modal__field__category__label": "Kategorija",
+    "edit_prompt_modal__field__use_case__label": "Upotreba",
+    "edit_prompt_modal__field__author_name__label": "Ime autora",
+    "edit_prompt_modal__field__author_name__placeholder": "Ime autora",
+    "edit_prompt_modal__field__author_url__label": "URL autora",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Sačuvaj predložak",
+    "edit_prompt_modal__action__clone__title": "Kloniraj",
+    "edit_prompt_modal__action__cancel__title": "Otkaži",
+    "edit_prompt_modal__field__template__label": "Šablon"
   }
 }

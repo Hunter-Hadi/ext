@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "പ്രോംപ്റ്റ് ലൈബ്രറി ഉപയോഗിക്കുക",
-    "edit_prompt__template__placeholder": "നിങ്ങളുടെ അതിജീവനം പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ ഈ ഫീൽഡ് ഉപയോഗിക്കുക.\n\nപ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് പൂർണ്ണമായ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ നിങ്ങൾ വാരംബോളം ചേര്‍ക്കാം. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രത്യേകിച്ച് എഴുതാന്‍ ശ്രമിക്കുക. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ ഒരേ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് അനുവദിക്കുന്നു. പ്രോംപ്റ്റ് ഉപയോഗിക്കപ്പെടുമ്പോള്‍, പ്രമ്പികള്‍ സ്വയംഭാവവേദ്യമായ ഉള്ളടക്കം പ്രത്യാപിക്കുന്നതാണ്."
+    "edit_prompt__template__placeholder": "നിങ്ങളുടെ അതിജീവനം പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ ഈ ഫീൽഡ് ഉപയോഗിക്കുക.\n\nപ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് പൂർണ്ണമായ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ നിങ്ങൾ വാരംബോളം ചേര്‍ക്കാം. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രത്യേകിച്ച് എഴുതാന്‍ ശ്രമിക്കുക. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ ഒരേ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് അനുവദിക്കുന്നു. പ്രോംപ്റ്റ് ഉപയോഗിക്കപ്പെടുമ്പോള്‍, പ്രമ്പികള്‍ സ്വയംഭാവവേദ്യമായ ഉള്ളടക്കം പ്രത്യാപിക്കുന്നതാണ്.",
+    "tab__favorites__title": "പ്രിയങ്കരമായത്",
+    "tab__public__title": "പൊതുവായത്",
+    "tab__own__title": "ഞങ്ങളുടെ",
+    "filters__category__label": "വിഭാഗം",
+    "filters__use_case__label": "ഉപയോഗ കേസ്",
+    "filters__query__placeholder": "തിരയൽ...",
+    "pagination__label_rows_per_page__title": "പ്രോംപ്റ്റുകൾ പ്രതി പേജിൽ:",
+    "add_new_prompt_card__cta__title": "പുതിയ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് ചേർക്കുക",
+    "edit_prompt_modal__title": "പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്",
+    "edit_prompt_modal__field__title__label": "ശീർഷകം",
+    "edit_prompt_modal__field__title__placeholder": "ഒരു ശുദ്ധമായ അറിവും അറിയാത്തവർക്ക് കൂടുതൽ ഉപയോക്താക്കൾ ആകുന്ന ഒരു ശീർഷകം.",
+    "edit_prompt_modal__field__description__label": "വിവരണം",
+    "edit_prompt_modal__field__description__placeholder": "നിങ്ങളുടെ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിന്റെ ഒരു സംക്ഷിപ്തമായ വിവരണവും ഉപയോക്താക്കൾക്ക് എന്തെങ്കിലും ഫലങ്ങൾ എത്താൻ കഴിയും.",
+    "edit_prompt_modal__field__category__label": "വിഭാഗം",
+    "edit_prompt_modal__field__use_case__label": "ഉപയോഗ കേസ്",
+    "edit_prompt_modal__field__author_name__label": "ആകൊരു പേര്",
+    "edit_prompt_modal__field__author_name__placeholder": "ആകൊരു പേര്",
+    "edit_prompt_modal__field__author_url__label": "ആകൊരു URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "പ്രോംപ്റ്റ് സേവ് ചെയ്യുക",
+    "edit_prompt_modal__action__clone__title": "ക്ലോൺ ചെയ്യുക",
+    "edit_prompt_modal__action__cancel__title": "റദ്ദാക്കുക",
+    "edit_prompt_modal__field__template__label": "ടെംപ്ലേറ്റ്"
   }
 }

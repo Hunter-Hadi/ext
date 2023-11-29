@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Sử dụng thư viện gợi ý",
-    "edit_prompt__template__placeholder": "Sử dụng trường này để tạo mẫu gợi ý thực tế của bạn.\n\nBạn có thể thêm biến sẽ trở thành các trường văn bản có thể điền vào trong mẫu gợi ý. Hãy thử gõ {{ trong gợi ý của bạn và bắt đầu tạo biến cho mẫu gợi ý của bạn. Bạn có thể sử dụng biến nhiều lần trong mẫu gợi ý của bạn. Khi gợi ý được sử dụng, các biến sẽ được thay thế bằng văn bản đã nhập tương ứng tự động."
+    "edit_prompt__template__placeholder": "Sử dụng trường này để tạo mẫu gợi ý thực tế của bạn.\n\nBạn có thể thêm biến sẽ trở thành các trường văn bản có thể điền vào trong mẫu gợi ý. Hãy thử gõ {{ trong gợi ý của bạn và bắt đầu tạo biến cho mẫu gợi ý của bạn. Bạn có thể sử dụng biến nhiều lần trong mẫu gợi ý của bạn. Khi gợi ý được sử dụng, các biến sẽ được thay thế bằng văn bản đã nhập tương ứng tự động.",
+    "tab__favorites__title": "Yêu thích",
+    "tab__public__title": "Công khai",
+    "tab__own__title": "Của tôi",
+    "filters__category__label": "Danh mục",
+    "filters__use_case__label": "Trường hợp sử dụng",
+    "filters__query__placeholder": "Tìm kiếm...",
+    "pagination__label_rows_per_page__title": "Gợi ý trên mỗi trang:",
+    "add_new_prompt_card__cta__title": "Thêm mẫu gợi ý mới",
+    "edit_prompt_modal__title": "Mẫu gợi ý",
+    "edit_prompt_modal__field__title__label": "Tiêu đề",
+    "edit_prompt_modal__field__title__placeholder": "Một tiêu đề rõ ràng và thông tin thu hút nhiều người dùng hơn cho mẫu gợi ý của bạn.",
+    "edit_prompt_modal__field__description__label": "Mô tả",
+    "edit_prompt_modal__field__description__placeholder": "Cung cấp một mô tả ngắn gọn về mẫu gợi ý của bạn và kết quả tiềm năng mà người dùng có thể mong đợi.",
+    "edit_prompt_modal__field__category__label": "Danh mục",
+    "edit_prompt_modal__field__use_case__label": "Trường hợp sử dụng",
+    "edit_prompt_modal__field__author_name__label": "Tên tác giả",
+    "edit_prompt_modal__field__author_name__placeholder": "Tên tác giả",
+    "edit_prompt_modal__field__author_url__label": "URL tác giả",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Lưu gợi ý",
+    "edit_prompt_modal__action__clone__title": "Sao chép",
+    "edit_prompt_modal__action__cancel__title": "Hủy",
+    "edit_prompt_modal__field__template__label": "Mẫu"
   }
 }

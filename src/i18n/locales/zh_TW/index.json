@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "使用提示庫",
-    "edit_prompt__template__placeholder": "使用此欄位來建立您的實際提示模板。\n\n您可以添加變數，這些變數將在提示模板中變成可填寫的文本字段。嘗試在提示上輸入{{並開始為提示模板創建變數。您可以在提示模板中多次使用變數。當使用提示時，變數將自動替換為相應的輸入文本。"
+    "edit_prompt__template__placeholder": "使用此欄位來建立您的實際提示模板。\n\n您可以添加變數，這些變數將在提示模板中變成可填寫的文本字段。嘗試在提示上輸入{{並開始為提示模板創建變數。您可以在提示模板中多次使用變數。當使用提示時，變數將自動替換為相應的輸入文本。",
+    "tab__favorites__title": "收藏",
+    "tab__public__title": "公開",
+    "tab__own__title": "自己的",
+    "filters__category__label": "類別",
+    "filters__use_case__label": "使用案例",
+    "filters__query__placeholder": "搜尋...",
+    "pagination__label_rows_per_page__title": "每頁提示數量：",
+    "add_new_prompt_card__cta__title": "新增提示範本",
+    "edit_prompt_modal__title": "提示範本",
+    "edit_prompt_modal__field__title__label": "標題",
+    "edit_prompt_modal__field__title__placeholder": "清晰且資訊豐富的標題能吸引更多使用者使用您的提示範本。",
+    "edit_prompt_modal__field__description__label": "描述",
+    "edit_prompt_modal__field__description__placeholder": "提供簡明扼要的提示範本描述以及使用者可以期待的結果。",
+    "edit_prompt_modal__field__category__label": "類別",
+    "edit_prompt_modal__field__use_case__label": "使用案例",
+    "edit_prompt_modal__field__author_name__label": "作者名稱",
+    "edit_prompt_modal__field__author_name__placeholder": "作者名稱",
+    "edit_prompt_modal__field__author_url__label": "作者網址",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "儲存提示",
+    "edit_prompt_modal__action__clone__title": "複製",
+    "edit_prompt_modal__action__cancel__title": "取消",
+    "edit_prompt_modal__field__template__label": "範本"
   }
 }

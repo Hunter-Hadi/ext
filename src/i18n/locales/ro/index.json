@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Utilizați biblioteca de prompt-uri",
-    "edit_prompt__template__placeholder": "Utilizați acest câmp pentru a crea șablonul real al promptului.\n\nPuteți adăuga variabile care vor deveni câmpuri de text completabile în șablonul promptului. Încercați să tastați {{ în promptul dvs. și începeți să creați variabile pentru șablonul promptului. Puteți utiliza variabile de mai multe ori în șablonul promptului. Când promptul este utilizat, variabilele vor fi înlocuite automat cu textul introdus corespunzător."
+    "edit_prompt__template__placeholder": "Utilizați acest câmp pentru a crea șablonul real al promptului.\n\nPuteți adăuga variabile care vor deveni câmpuri de text completabile în șablonul promptului. Încercați să tastați {{ în promptul dvs. și începeți să creați variabile pentru șablonul promptului. Puteți utiliza variabile de mai multe ori în șablonul promptului. Când promptul este utilizat, variabilele vor fi înlocuite automat cu textul introdus corespunzător.",
+    "tab__favorites__title": "Favorite",
+    "tab__public__title": "Public",
+    "tab__own__title": "Propriu",
+    "filters__category__label": "Categorie",
+    "filters__use_case__label": "Scenariu de utilizare",
+    "filters__query__placeholder": "Caută...",
+    "pagination__label_rows_per_page__title": "Prompts pe pagină:",
+    "add_new_prompt_card__cta__title": "Adaugă un nou șablon de prompt",
+    "edit_prompt_modal__title": "Șablon de prompt",
+    "edit_prompt_modal__field__title__label": "Titlu",
+    "edit_prompt_modal__field__title__placeholder": "Un titlu clar și informativ atrage mai mulți utilizatori la șablonul tău de prompt.",
+    "edit_prompt_modal__field__description__label": "Descriere",
+    "edit_prompt_modal__field__description__placeholder": "Oferă o descriere concisă a șablonului tău de prompt și a rezultatelor potențiale pe care utilizatorii le pot obține.",
+    "edit_prompt_modal__field__category__label": "Categorie",
+    "edit_prompt_modal__field__use_case__label": "Scenariu de utilizare",
+    "edit_prompt_modal__field__author_name__label": "Nume autor",
+    "edit_prompt_modal__field__author_name__placeholder": "Nume autor",
+    "edit_prompt_modal__field__author_url__label": "URL autor",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Salvează promptul",
+    "edit_prompt_modal__action__clone__title": "Clonează",
+    "edit_prompt_modal__action__cancel__title": "Anulează",
+    "edit_prompt_modal__field__template__label": "Șablon"
   }
 }

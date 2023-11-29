@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Naudoti užduoties biblioteką",
-    "edit_prompt__template__placeholder": "Naudokite šį lauką, kad sukurtumėte savo tikrąjį užduoties šabloną.\n\nGalite pridėti kintamuosius, kurie taps užpildomais teksto laukais užduoties šablone. Bandykite įvesti {{ savo užduotyje ir pradėkite kurti kintamuosius savo užduoties šablonui. Kintamuosius galite naudoti daugiau nei vieną kartą savo užduoties šablone. Kai naudojamas užduotis, kintamieji automatiškai bus pakeisti atitinkamu įvestu tekstu."
+    "edit_prompt__template__placeholder": "Naudokite šį lauką, kad sukurtumėte savo tikrąjį užduoties šabloną.\n\nGalite pridėti kintamuosius, kurie taps užpildomais teksto laukais užduoties šablone. Bandykite įvesti {{ savo užduotyje ir pradėkite kurti kintamuosius savo užduoties šablonui. Kintamuosius galite naudoti daugiau nei vieną kartą savo užduoties šablone. Kai naudojamas užduotis, kintamieji automatiškai bus pakeisti atitinkamu įvestu tekstu.",
+    "tab__favorites__title": "Mėgstamiausi",
+    "tab__public__title": "Vieši",
+    "tab__own__title": "Savas",
+    "filters__category__label": "Kategorija",
+    "filters__use_case__label": "Panaudojimas",
+    "filters__query__placeholder": "Ieškoti...",
+    "pagination__label_rows_per_page__title": "Įrašų puslapyje:",
+    "add_new_prompt_card__cta__title": "Pridėti naują šabloną",
+    "edit_prompt_modal__title": "Šablono redagavimas",
+    "edit_prompt_modal__field__title__label": "Pavadinimas",
+    "edit_prompt_modal__field__title__placeholder": "Aiškus ir informatyvus pavadinimas pritraukia daugiau vartotojų į jūsų šablono naudojimą.",
+    "edit_prompt_modal__field__description__label": "Aprašymas",
+    "edit_prompt_modal__field__description__placeholder": "Pateikite trumpą šablono aprašymą ir galimus rezultatus, kuriuos vartotojai gali tikėtis.",
+    "edit_prompt_modal__field__category__label": "Kategorija",
+    "edit_prompt_modal__field__use_case__label": "Panaudojimas",
+    "edit_prompt_modal__field__author_name__label": "Autoriaus vardas",
+    "edit_prompt_modal__field__author_name__placeholder": "Autoriaus vardas",
+    "edit_prompt_modal__field__author_url__label": "Autoriaus URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.pavyzdys.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Išsaugoti šabloną",
+    "edit_prompt_modal__action__clone__title": "Klonuoti",
+    "edit_prompt_modal__action__cancel__title": "Atšaukti",
+    "edit_prompt_modal__field__template__label": "Šablonas"
   }
 }

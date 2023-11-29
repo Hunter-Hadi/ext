@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "پرومپٹ لائبریری استعمال کریں",
-    "edit_prompt__template__placeholder": "اپنے حقیقی پرومپٹ ٹیمپلیٹ بنانے کے لئے اس فیلڈ کا استعمال کریں۔\n\nآپ وہ متغیرات شامل کرسکتے ہیں جو پرومپٹ ٹیمپلیٹ میں قابل بھرنے والے ٹیکسٹ فیلڈز میں تبدیل ہوجائیں گی۔ اپنے پرومپٹ ٹیمپلیٹ کے لئے متغیرات بنانے کے لئے {{ ٹائپ کریں اور شروع کریں۔ آپ اپنے پرومپٹ ٹیمپلیٹ میں متغیرات کو بار بار استعمال کرسکتے ہیں۔ جب پرومپٹ استعمال ہوتا ہے تو متغیرات خود بخود مطابقتی درج کردہ ٹیکسٹ سے تبدیل ہوجائیں گی۔"
+    "edit_prompt__template__placeholder": "اپنے حقیقی پرومپٹ ٹیمپلیٹ بنانے کے لئے اس فیلڈ کا استعمال کریں۔\n\nآپ وہ متغیرات شامل کرسکتے ہیں جو پرومپٹ ٹیمپلیٹ میں قابل بھرنے والے ٹیکسٹ فیلڈز میں تبدیل ہوجائیں گی۔ اپنے پرومپٹ ٹیمپلیٹ کے لئے متغیرات بنانے کے لئے {{ ٹائپ کریں اور شروع کریں۔ آپ اپنے پرومپٹ ٹیمپلیٹ میں متغیرات کو بار بار استعمال کرسکتے ہیں۔ جب پرومپٹ استعمال ہوتا ہے تو متغیرات خود بخود مطابقتی درج کردہ ٹیکسٹ سے تبدیل ہوجائیں گی۔",
+    "tab__favorites__title": "پسندیدہ",
+    "tab__public__title": "عوامی",
+    "tab__own__title": "اپنا",
+    "filters__category__label": "زمرہ",
+    "filters__use_case__label": "استعمال کا مقصد",
+    "filters__query__placeholder": "تلاش کریں...",
+    "pagination__label_rows_per_page__title": "ہر صفحے پر پرومپٹس:",
+    "add_new_prompt_card__cta__title": "نیا پرومپٹ ٹیمپلیٹ شامل کریں",
+    "edit_prompt_modal__title": "پرومپٹ ٹیمپلیٹ",
+    "edit_prompt_modal__field__title__label": "عنوان",
+    "edit_prompt_modal__field__title__placeholder": "ایک واضح اور معلوماتی عنوان زیادہ سے زیادہ صارفین کو آپ کے پرومپٹ ٹیمپلیٹ کی طرف رجوع کرتا ہے۔",
+    "edit_prompt_modal__field__description__label": "تفصیل",
+    "edit_prompt_modal__field__description__placeholder": "اپنے پرومپٹ ٹیمپلیٹ کی ایک مختصر تفصیل فراہم کریں اور صارفین کو متوقع نتائج بتائیں۔",
+    "edit_prompt_modal__field__category__label": "زمرہ",
+    "edit_prompt_modal__field__use_case__label": "استعمال کا مقصد",
+    "edit_prompt_modal__field__author_name__label": "مصنف کا نام",
+    "edit_prompt_modal__field__author_name__placeholder": "مصنف کا نام",
+    "edit_prompt_modal__field__author_url__label": "مصنف کا URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "پرومپٹ محفوظ کریں",
+    "edit_prompt_modal__action__clone__title": "کلون کریں",
+    "edit_prompt_modal__action__cancel__title": "منسوخ کریں",
+    "edit_prompt_modal__field__template__label": "سانچہ"
   }
 }

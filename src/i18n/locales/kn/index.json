@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "ಪ್ರಾಂಪ್ಟ್ ಲೈಬ್ರರಿಯನ್ನು ಬಳಸಿ",
-    "edit_prompt__template__placeholder": "ನಿಮ್ಮ ನಿಜವಾದ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ರಚಿಸಲು ಈ ಕ್ಷೇತ್ರವನ್ನು ಬಳಸಿ.\n\nಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ನಲ್ಲಿ ಭರ್ತಿಯಾಗಬೇಕಾದ ಪದಗಳನ್ನು ಸೇರಿಸಬಹುದು. ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ನಲ್ಲಿ {{ ಅನ್ನು ಟೈಪ್ ಮಾಡಿ ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಗಾಗಿ ಪದಗಳನ್ನು ರಚಿಸಿ. ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ನಲ್ಲಿ ಪದಗಳನ್ನು ಹೆಚ್ಚು ಒಬ್ಬರು ಬಾರಿ ಬಳಸಬಹುದು. ಪ್ರಾಂಪ್ಟ್ ಬಳಸಲಾಗುವಾಗ, ಪದಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಂಬಂಧಿತ ನಮೂದಿಸಲ್ಪಡುವುವು."
+    "edit_prompt__template__placeholder": "ನಿಮ್ಮ ನಿಜವಾದ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ರಚಿಸಲು ಈ ಕ್ಷೇತ್ರವನ್ನು ಬಳಸಿ.\n\nಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ನಲ್ಲಿ ಭರ್ತಿಯಾಗಬೇಕಾದ ಪದಗಳನ್ನು ಸೇರಿಸಬಹುದು. ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ನಲ್ಲಿ {{ ಅನ್ನು ಟೈಪ್ ಮಾಡಿ ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಗಾಗಿ ಪದಗಳನ್ನು ರಚಿಸಿ. ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ನಲ್ಲಿ ಪದಗಳನ್ನು ಹೆಚ್ಚು ಒಬ್ಬರು ಬಾರಿ ಬಳಸಬಹುದು. ಪ್ರಾಂಪ್ಟ್ ಬಳಸಲಾಗುವಾಗ, ಪದಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಂಬಂಧಿತ ನಮೂದಿಸಲ್ಪಡುವುವು.",
+    "tab__favorites__title": "ಮೆಚ್ಚುಗೆಯ ಪುಟ",
+    "tab__public__title": "ಸಾರ್ವಜನಿಕ",
+    "tab__own__title": "ನನ್ನದು",
+    "filters__category__label": "ವರ್ಗ",
+    "filters__use_case__label": "ಬಳಕೆ ಉದಾಹರಣೆ",
+    "filters__query__placeholder": "ಹುಡುಕು...",
+    "pagination__label_rows_per_page__title": "ಪುಟಗಳು ಪ್ರತಿ ಪುಟ:",
+    "add_new_prompt_card__cta__title": "ಹೊಸ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಸೇರಿಸಿ",
+    "edit_prompt_modal__title": "ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್",
+    "edit_prompt_modal__field__title__label": "ಶೀರ್ಷಿಕೆ",
+    "edit_prompt_modal__field__title__placeholder": "ಒಂದು ಸ್ಪಷ್ಟ ಮತ್ತು ಸೂಕ್ಷ್ಮ ಶೀರ್ಷಿಕೆ ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಗೆ ಹೆಚ್ಚು ಬಳಕೆದಾರರನ್ನು ಆಕರ್ಷಿಸುತ್ತದೆ.",
+    "edit_prompt_modal__field__description__label": "ವಿವರಣೆ",
+    "edit_prompt_modal__field__description__placeholder": "ನಿಮ್ಮ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಮತ್ತು ಸಾಧ್ಯತೆಗಳ ಬಗ್ಗೆ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ ಒದಗಿಸಿ.",
+    "edit_prompt_modal__field__category__label": "ವರ್ಗ",
+    "edit_prompt_modal__field__use_case__label": "ಬಳಕೆ ಉದಾಹರಣೆ",
+    "edit_prompt_modal__field__author_name__label": "ಲೇಖಕ ಹೆಸರು",
+    "edit_prompt_modal__field__author_name__placeholder": "ಲೇಖಕ ಹೆಸರು",
+    "edit_prompt_modal__field__author_url__label": "ಲೇಖಕ URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "ಪ್ರಾಂಪ್ಟ್ ಉಳಿಸಿ",
+    "edit_prompt_modal__action__clone__title": "ಕ್ಲೋನ್ ಮಾಡಿ",
+    "edit_prompt_modal__action__cancel__title": "ರದ್ದುಗೊಳಿಸು",
+    "edit_prompt_modal__field__template__label": "ಟೆಂಪ್ಲೇಟ್"
   }
 }

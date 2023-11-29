@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Օգտագործել հարցման գրադարանը",
-    "edit_prompt__template__placeholder": "Օգտագործեք այս դաշտը ձեր իրական հարցման ձևաչափը ստեղծելու համար:\n\nԴուք կարող եք ավելացնել փոփոխականներ, որոնք կդառնան լրացվելու տեքստային դաշտեր՝ հարցման ձևաչափում: Փորձեք գրել {{ ձեր հարցմանում և սկսեք ստեղծել փոփոխականներ ձեր հարցման ձևաչափի համար: Դուք կարող եք օգտագործել փոփոխականները մեկից ավելի անգամ ձեր հարցման ձևաչափում: Երբ հարցմանը օգտագործվում է, փոփոխականները կփոխարինվեն համապատասխան մուտքագրված տեքստով:"
+    "edit_prompt__template__placeholder": "Օգտագործեք այս դաշտը ձեր իրական հարցման ձևաչափը ստեղծելու համար:\n\nԴուք կարող եք ավելացնել փոփոխականներ, որոնք կդառնան լրացվելու տեքստային դաշտեր՝ հարցման ձևաչափում: Փորձեք գրել {{ ձեր հարցմանում և սկսեք ստեղծել փոփոխականներ ձեր հարցման ձևաչափի համար: Դուք կարող եք օգտագործել փոփոխականները մեկից ավելի անգամ ձեր հարցման ձևաչափում: Երբ հարցմանը օգտագործվում է, փոփոխականները կփոխարինվեն համապատասխան մուտքագրված տեքստով:",
+    "tab__favorites__title": "Նախընտրելիներ",
+    "tab__public__title": "Հանրային",
+    "tab__own__title": "Իմ սեփականը",
+    "filters__category__label": "Կատեգորիա",
+    "filters__use_case__label": "Օգտագործման դեպք",
+    "filters__query__placeholder": "Որոնել...",
+    "pagination__label_rows_per_page__title": "Տողեր էջում:",
+    "add_new_prompt_card__cta__title": "Ավելացնել նոր հուշաթերթ ձևաչափ",
+    "edit_prompt_modal__title": "Հուշաթերթ ձևաչափ",
+    "edit_prompt_modal__field__title__label": "Վերնագիր",
+    "edit_prompt_modal__field__title__placeholder": "Ամբողջական և տեղեկատվական վերնագիրը հեշտությամբ կպատճենի ավելի շատ օգտատերերին ձևաչափին.",
+    "edit_prompt_modal__field__description__label": "Նկարագրություն",
+    "edit_prompt_modal__field__description__placeholder": "Տաքացված նկարագրություն ձևաչափին և հնարավոր արդյունքներին, որոնք օգտատերերը կարող են սպասել.",
+    "edit_prompt_modal__field__category__label": "Կատեգորիա",
+    "edit_prompt_modal__field__use_case__label": "Օգտագործման դեպք",
+    "edit_prompt_modal__field__author_name__label": "Հեղինակի անունը",
+    "edit_prompt_modal__field__author_name__placeholder": "Հեղինակի անունը",
+    "edit_prompt_modal__field__author_url__label": "Հեղինակի URL-ն",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Պահպանել հուշաթերթը",
+    "edit_prompt_modal__action__clone__title": "Պատճենել",
+    "edit_prompt_modal__action__cancel__title": "Չեղարկել",
+    "edit_prompt_modal__field__template__label": "Կաղապար"
   }
 }

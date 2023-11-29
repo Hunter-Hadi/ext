@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Käytä kyselykirjastoa",
-    "edit_prompt__template__placeholder": "Käytä tätä kenttää luodaksesi varsinaisen kyselymallisi.\n\nVoit lisätä muuttujia, jotka muuttuvat täytettäviksi tekstikentiksi kyselymallissa. Kokeile kirjoittaa {{ kyselyysi ja aloita muuttujien luominen kyselymalliasi varten. Voit käyttää muuttujia useammin kuin kerran kyselymallissasi. Kun kyselyä käytetään, muuttujat korvataan automaattisesti vastaavalla syötetyllä tekstillä."
+    "edit_prompt__template__placeholder": "Käytä tätä kenttää luodaksesi varsinaisen kyselymallisi.\n\nVoit lisätä muuttujia, jotka muuttuvat täytettäviksi tekstikentiksi kyselymallissa. Kokeile kirjoittaa {{ kyselyysi ja aloita muuttujien luominen kyselymalliasi varten. Voit käyttää muuttujia useammin kuin kerran kyselymallissasi. Kun kyselyä käytetään, muuttujat korvataan automaattisesti vastaavalla syötetyllä tekstillä.",
+    "tab__favorites__title": "Suosikit",
+    "tab__public__title": "Julkinen",
+    "tab__own__title": "Oma",
+    "filters__category__label": "Kategoria",
+    "filters__use_case__label": "Käyttötarkoitus",
+    "filters__query__placeholder": "Hae...",
+    "pagination__label_rows_per_page__title": "Näytettävät kysymykset sivulla:",
+    "add_new_prompt_card__cta__title": "Lisää uusi kysymyspohja",
+    "edit_prompt_modal__title": "Kysymyspohja",
+    "edit_prompt_modal__field__title__label": "Otsikko",
+    "edit_prompt_modal__field__title__placeholder": "Selkeä ja informatiivinen otsikko houkuttelee enemmän käyttäjiä kysymyspohjaasi.",
+    "edit_prompt_modal__field__description__label": "Kuvaus",
+    "edit_prompt_modal__field__description__placeholder": "Anna tiivis kuvaus kysymyspohjastasi ja mahdollisista tuloksista, joita käyttäjät voivat odottaa.",
+    "edit_prompt_modal__field__category__label": "Kategoria",
+    "edit_prompt_modal__field__use_case__label": "Käyttötarkoitus",
+    "edit_prompt_modal__field__author_name__label": "Tekijän nimi",
+    "edit_prompt_modal__field__author_name__placeholder": "Tekijän nimi",
+    "edit_prompt_modal__field__author_url__label": "Tekijän URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.esimerkki.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Tallenna kysymyspohja",
+    "edit_prompt_modal__action__clone__title": "Kloonaa",
+    "edit_prompt_modal__action__cancel__title": "Peruuta",
+    "edit_prompt_modal__field__template__label": "Malli"
   }
 }

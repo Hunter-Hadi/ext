@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "استخدم مكتبة الإشعارات",
-    "edit_prompt__template__placeholder": "استخدم هذا الحقل لإنشاء قالب الإشعار الفعلي.\n\nيمكنك إضافة متغيرات ستتحول إلى حقول نصية يمكن ملؤها في قالب الإشعار. جرب كتابة {{ في إشعارك وابدأ في إنشاء المتغيرات لقالب الإشعار الخاص بك. يمكنك استخدام المتغيرات أكثر من مرة في قالب الإشعار الخاص بك. عند استخدام الإشعار ، سيتم استبدال المتغيرات بالنص المدخل المقابل تلقائيًا."
+    "edit_prompt__template__placeholder": "استخدم هذا الحقل لإنشاء قالب الإشعار الفعلي.\n\nيمكنك إضافة متغيرات ستتحول إلى حقول نصية يمكن ملؤها في قالب الإشعار. جرب كتابة {{ في إشعارك وابدأ في إنشاء المتغيرات لقالب الإشعار الخاص بك. يمكنك استخدام المتغيرات أكثر من مرة في قالب الإشعار الخاص بك. عند استخدام الإشعار ، سيتم استبدال المتغيرات بالنص المدخل المقابل تلقائيًا.",
+    "tab__favorites__title": "المفضلة",
+    "tab__public__title": "عامة",
+    "tab__own__title": "خاصة",
+    "filters__category__label": "الفئة",
+    "filters__use_case__label": "حالة الاستخدام",
+    "filters__query__placeholder": "البحث...",
+    "pagination__label_rows_per_page__title": "التعليمات في الصفحة:",
+    "add_new_prompt_card__cta__title": "إضافة قالب تعليمة جديد",
+    "edit_prompt_modal__title": "قالب التعليمة",
+    "edit_prompt_modal__field__title__label": "العنوان",
+    "edit_prompt_modal__field__title__placeholder": "يجذب العنوان الواضح والمعلوماتي المزيد من المستخدمين لقالب التعليمة الخاص بك.",
+    "edit_prompt_modal__field__description__label": "الوصف",
+    "edit_prompt_modal__field__description__placeholder": "قدم وصفًا موجزًا لقالب التعليمة الخاص بك والنتائج المحتملة التي يمكن أن يتوقعها المستخدمون.",
+    "edit_prompt_modal__field__category__label": "الفئة",
+    "edit_prompt_modal__field__use_case__label": "حالة الاستخدام",
+    "edit_prompt_modal__field__author_name__label": "اسم المؤلف",
+    "edit_prompt_modal__field__author_name__placeholder": "اسم المؤلف",
+    "edit_prompt_modal__field__author_url__label": "رابط المؤلف",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "حفظ التعليمة",
+    "edit_prompt_modal__action__clone__title": "استنساخ",
+    "edit_prompt_modal__action__cancel__title": "إلغاء",
+    "edit_prompt_modal__field__template__label": "القالب"
   }
 }

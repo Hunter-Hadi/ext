@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Použiť knižnicu promptov",
-    "edit_prompt__template__placeholder": "Použite toto pole na vytvorenie skutočnej šablóny promptu.\n\nMôžete pridať premenné, ktoré sa stanú vyplniteľnými textovými poliami vo vašej šablóne promptu. Skúste napísať {{ vo svojom prompte a začnite vytvárať premenné pre vašu šablónu promptu. Premenné môžete použiť viac ako raz vo vašej šablóne promptu. Pri použití promptu budú premenné automaticky nahradené zadaným textom."
+    "edit_prompt__template__placeholder": "Použite toto pole na vytvorenie skutočnej šablóny promptu.\n\nMôžete pridať premenné, ktoré sa stanú vyplniteľnými textovými poliami vo vašej šablóne promptu. Skúste napísať {{ vo svojom prompte a začnite vytvárať premenné pre vašu šablónu promptu. Premenné môžete použiť viac ako raz vo vašej šablóne promptu. Pri použití promptu budú premenné automaticky nahradené zadaným textom.",
+    "tab__favorites__title": "Obľúbené",
+    "tab__public__title": "Verejné",
+    "tab__own__title": "Vlastné",
+    "filters__category__label": "Kategória",
+    "filters__use_case__label": "Použitie",
+    "filters__query__placeholder": "Hľadať...",
+    "pagination__label_rows_per_page__title": "Počet promptov na stránku:",
+    "add_new_prompt_card__cta__title": "Pridať nový vzor promptu",
+    "edit_prompt_modal__title": "Vzor promptu",
+    "edit_prompt_modal__field__title__label": "Názov",
+    "edit_prompt_modal__field__title__placeholder": "Jasný a informatívny názov priláka viac používateľov k vášmu vzoru promptu.",
+    "edit_prompt_modal__field__description__label": "Popis",
+    "edit_prompt_modal__field__description__placeholder": "Poskytnite stručný popis vášho vzoru promptu a očakávané výsledky, ktoré môžu používatelia očakávať.",
+    "edit_prompt_modal__field__category__label": "Kategória",
+    "edit_prompt_modal__field__use_case__label": "Použitie",
+    "edit_prompt_modal__field__author_name__label": "Meno autora",
+    "edit_prompt_modal__field__author_name__placeholder": "Meno autora",
+    "edit_prompt_modal__field__author_url__label": "URL autora",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Uložiť prompt",
+    "edit_prompt_modal__action__clone__title": "Klonovať",
+    "edit_prompt_modal__action__cancel__title": "Zrušiť",
+    "edit_prompt_modal__field__template__label": "Šablóna"
   }
 }

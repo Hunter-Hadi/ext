@@ -1,8 +1,10 @@
 import React, { FC, useMemo } from 'react'
 import CustomTablePagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/CustomTablePagination'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import { useTranslation } from 'react-i18next'
 
 const PromptLibraryPagination: FC = () => {
+  const { t } = useTranslation(['prompt_library'])
   const {
     activeTab,
     promptLibraryListParameters,
@@ -10,10 +12,12 @@ const PromptLibraryPagination: FC = () => {
   } = usePromptLibraryParameters()
   const paginationProps = useMemo(
     () => ({
-      labelRowsPerPage: 'Prompts per page:',
+      labelRowsPerPage: t(
+        'prompt_library:pagination__label_rows_per_page__title',
+      ),
       rowsPerPageOptions: [8, 12, 16, 20],
     }),
-    [],
+    [t],
   )
   if (activeTab !== 'Public') {
     return null

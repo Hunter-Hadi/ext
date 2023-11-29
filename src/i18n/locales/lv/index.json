@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Izmantot jautājumu bibliotēku",
-    "edit_prompt__template__placeholder": "Izmantojiet šo lauku, lai izveidotu faktisko jautājuma veidni.\n\nJūs varat pievienot mainīgos, kas pārvērtīsies par aizpildāmiem teksta laukiem jautājuma veidnē. Mēģiniet ierakstīt {{ savā jautājumā un sāciet izveidot mainīgos savai jautājuma veidnei. Jūs varat izmantot mainīgos vairākas reizes savā jautājuma veidnē. Kad tiek izmantots jautājums, mainīgie tiks aizstāti ar atbilstoši ievadīto tekstu automātiski."
+    "edit_prompt__template__placeholder": "Izmantojiet šo lauku, lai izveidotu faktisko jautājuma veidni.\n\nJūs varat pievienot mainīgos, kas pārvērtīsies par aizpildāmiem teksta laukiem jautājuma veidnē. Mēģiniet ierakstīt {{ savā jautājumā un sāciet izveidot mainīgos savai jautājuma veidnei. Jūs varat izmantot mainīgos vairākas reizes savā jautājuma veidnē. Kad tiek izmantots jautājums, mainīgie tiks aizstāti ar atbilstoši ievadīto tekstu automātiski.",
+    "tab__favorites__title": "Iecienītie",
+    "tab__public__title": "Publiskie",
+    "tab__own__title": "Paša",
+    "filters__category__label": "Kategorija",
+    "filters__use_case__label": "Lietojums",
+    "filters__query__placeholder": "Meklēt...",
+    "pagination__label_rows_per_page__title": "Ierosinājumi lapā:",
+    "add_new_prompt_card__cta__title": "Pievienot jaunu ierosinājuma veidni",
+    "edit_prompt_modal__title": "Ierosinājuma veidne",
+    "edit_prompt_modal__field__title__label": "Nosaukums",
+    "edit_prompt_modal__field__title__placeholder": "Skaidrs un informatīvs nosaukums piesaista vairāk lietotāju jūsu ierosinājuma veidnei.",
+    "edit_prompt_modal__field__description__label": "Apraksts",
+    "edit_prompt_modal__field__description__placeholder": "Nodrošiniet īsu aprakstu par savu ierosinājuma veidni un potenciālajiem rezultātiem, ko lietotāji var sagaidīt.",
+    "edit_prompt_modal__field__category__label": "Kategorija",
+    "edit_prompt_modal__field__use_case__label": "Lietojums",
+    "edit_prompt_modal__field__author_name__label": "Autora vārds",
+    "edit_prompt_modal__field__author_name__placeholder": "Autora vārds",
+    "edit_prompt_modal__field__author_url__label": "Autora URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Saglabāt ierosinājumu",
+    "edit_prompt_modal__action__clone__title": "Klonēt",
+    "edit_prompt_modal__action__cancel__title": "Atcelt",
+    "edit_prompt_modal__field__template__label": "Veidne"
   }
 }

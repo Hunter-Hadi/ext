@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Gebruik prompt bibliotheek",
-    "edit_prompt__template__placeholder": "Gebruik dit veld om uw daadwerkelijke sjabloon te maken.\n\nU kunt variabelen toevoegen die in het sjabloon worden omgezet in invulbare tekstvelden. Probeer {{ op uw prompt te typen en begin variabelen te maken voor uw sjabloon. U kunt variabelen meerdere keren gebruiken in uw sjabloon. Wanneer de prompt wordt gebruikt, worden de variabelen automatisch vervangen door de bijbehorende ingevoerde tekst."
+    "edit_prompt__template__placeholder": "Gebruik dit veld om uw daadwerkelijke sjabloon te maken.\n\nU kunt variabelen toevoegen die in het sjabloon worden omgezet in invulbare tekstvelden. Probeer {{ op uw prompt te typen en begin variabelen te maken voor uw sjabloon. U kunt variabelen meerdere keren gebruiken in uw sjabloon. Wanneer de prompt wordt gebruikt, worden de variabelen automatisch vervangen door de bijbehorende ingevoerde tekst.",
+    "tab__favorites__title": "Favorieten",
+    "tab__public__title": "Openbaar",
+    "tab__own__title": "Eigen",
+    "filters__category__label": "Categorie",
+    "filters__use_case__label": "Gebruikssituatie",
+    "filters__query__placeholder": "Zoeken...",
+    "pagination__label_rows_per_page__title": "Prompts per pagina:",
+    "add_new_prompt_card__cta__title": "Nieuwe prompt template toevoegen",
+    "edit_prompt_modal__title": "Prompt template",
+    "edit_prompt_modal__field__title__label": "Titel",
+    "edit_prompt_modal__field__title__placeholder": "Een duidelijke en informatieve titel trekt meer gebruikers aan voor uw prompt template.",
+    "edit_prompt_modal__field__description__label": "Beschrijving",
+    "edit_prompt_modal__field__description__placeholder": "Geef een beknopte beschrijving van uw prompt template en de mogelijke resultaten die gebruikers kunnen verwachten.",
+    "edit_prompt_modal__field__category__label": "Categorie",
+    "edit_prompt_modal__field__use_case__label": "Gebruikssituatie",
+    "edit_prompt_modal__field__author_name__label": "Naam auteur",
+    "edit_prompt_modal__field__author_name__placeholder": "Naam auteur",
+    "edit_prompt_modal__field__author_url__label": "URL auteur",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Prompt opslaan",
+    "edit_prompt_modal__action__clone__title": "Klonen",
+    "edit_prompt_modal__action__cancel__title": "Annuleren",
+    "edit_prompt_modal__field__template__label": "Sjabloon"
   }
 }

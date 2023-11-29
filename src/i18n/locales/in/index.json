@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Gunakan perpustakaan prompt",
-    "edit_prompt__template__placeholder": "Gunakan kolom ini untuk membuat template prompt sebenarnya.\n\nAnda dapat menambahkan variabel yang akan berubah menjadi kolom teks yang dapat diisi dalam template prompt. Coba ketik {{ pada prompt Anda dan mulai membuat variabel untuk template prompt Anda. Anda dapat menggunakan variabel lebih dari sekali dalam template prompt Anda. Ketika prompt digunakan, variabel akan digantikan oleh teks yang diinput secara otomatis."
+    "edit_prompt__template__placeholder": "Gunakan kolom ini untuk membuat template prompt sebenarnya.\n\nAnda dapat menambahkan variabel yang akan berubah menjadi kolom teks yang dapat diisi dalam template prompt. Coba ketik {{ pada prompt Anda dan mulai membuat variabel untuk template prompt Anda. Anda dapat menggunakan variabel lebih dari sekali dalam template prompt Anda. Ketika prompt digunakan, variabel akan digantikan oleh teks yang diinput secara otomatis.",
+    "tab__favorites__title": "Favorit",
+    "tab__public__title": "Publik",
+    "tab__own__title": "Milik Sendiri",
+    "filters__category__label": "Kategori",
+    "filters__use_case__label": "Penggunaan",
+    "filters__query__placeholder": "Cari...",
+    "pagination__label_rows_per_page__title": "Prompts per halaman:",
+    "add_new_prompt_card__cta__title": "Tambahkan template prompt baru",
+    "edit_prompt_modal__title": "Template Prompt",
+    "edit_prompt_modal__field__title__label": "Judul",
+    "edit_prompt_modal__field__title__placeholder": "Judul yang jelas dan informatif akan menarik lebih banyak pengguna ke template prompt Anda.",
+    "edit_prompt_modal__field__description__label": "Deskripsi",
+    "edit_prompt_modal__field__description__placeholder": "Berikan deskripsi singkat tentang template prompt Anda dan hasil yang mungkin diharapkan oleh pengguna.",
+    "edit_prompt_modal__field__category__label": "Kategori",
+    "edit_prompt_modal__field__use_case__label": "Penggunaan",
+    "edit_prompt_modal__field__author_name__label": "Nama Penulis",
+    "edit_prompt_modal__field__author_name__placeholder": "Nama Penulis",
+    "edit_prompt_modal__field__author_url__label": "URL Penulis",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Simpan prompt",
+    "edit_prompt_modal__action__clone__title": "Duplikat",
+    "edit_prompt_modal__action__cancel__title": "Batal",
+    "edit_prompt_modal__field__template__label": "Templat"
   }
 }

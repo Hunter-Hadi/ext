@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Bruk promptbibliotek",
-    "edit_prompt__template__placeholder": "Bruk dette feltet til å opprette malen for din faktiske prompt.\n\nDu kan legge til variabler som vil bli omgjort til utfyllbare tekstfelt i promptmalen. Prøv å skrive {{ i prompten din og begynn å opprette variabler for promptmalen din. Du kan bruke variabler flere ganger i promptmalen din. Når prompten brukes, vil variablene automatisk bli erstattet med den tilsvarende innskrivne teksten."
+    "edit_prompt__template__placeholder": "Bruk dette feltet til å opprette malen for din faktiske prompt.\n\nDu kan legge til variabler som vil bli omgjort til utfyllbare tekstfelt i promptmalen. Prøv å skrive {{ i prompten din og begynn å opprette variabler for promptmalen din. Du kan bruke variabler flere ganger i promptmalen din. Når prompten brukes, vil variablene automatisk bli erstattet med den tilsvarende innskrivne teksten.",
+    "tab__favorites__title": "Favoritter",
+    "tab__public__title": "Offentlig",
+    "tab__own__title": "Egen",
+    "filters__category__label": "Kategori",
+    "filters__use_case__label": "Bruksområde",
+    "filters__query__placeholder": "Søk...",
+    "pagination__label_rows_per_page__title": "Prompts per side:",
+    "add_new_prompt_card__cta__title": "Legg til ny promptmal",
+    "edit_prompt_modal__title": "Promptmal",
+    "edit_prompt_modal__field__title__label": "Tittel",
+    "edit_prompt_modal__field__title__placeholder": "En tydelig og informativ tittel tiltrekker flere brukere til din promptmal.",
+    "edit_prompt_modal__field__description__label": "Beskrivelse",
+    "edit_prompt_modal__field__description__placeholder": "Gi en kortfattet beskrivelse av din promptmal og potensielle resultater brukerne kan forvente.",
+    "edit_prompt_modal__field__category__label": "Kategori",
+    "edit_prompt_modal__field__use_case__label": "Bruksområde",
+    "edit_prompt_modal__field__author_name__label": "Forfatternavn",
+    "edit_prompt_modal__field__author_name__placeholder": "Forfatternavn",
+    "edit_prompt_modal__field__author_url__label": "Forfatter-URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Lagre prompt",
+    "edit_prompt_modal__action__clone__title": "Kopier",
+    "edit_prompt_modal__action__cancel__title": "Avbryt",
+    "edit_prompt_modal__field__template__label": "Mal"
   }
 }

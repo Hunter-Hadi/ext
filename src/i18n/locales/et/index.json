@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Kasuta küsimuste raamatukogu",
-    "edit_prompt__template__placeholder": "Kasuta seda välja, et luua oma tegeliku küsimuse mall.\n\nSaate lisada muutujaid, mis muutuvad täidetavateks tekstiväljadeks küsimuse mallis. Proovige tippida {{ oma küsimuses ja alustage muutujate loomist oma küsimuse malli jaoks. Saate muutujaid kasutada mitu korda oma küsimuse mallis. Kui küsimust kasutatakse, asendatakse muutujad automaatselt vastava sisestatud tekstiga."
+    "edit_prompt__template__placeholder": "Kasuta seda välja, et luua oma tegeliku küsimuse mall.\n\nSaate lisada muutujaid, mis muutuvad täidetavateks tekstiväljadeks küsimuse mallis. Proovige tippida {{ oma küsimuses ja alustage muutujate loomist oma küsimuse malli jaoks. Saate muutujaid kasutada mitu korda oma küsimuse mallis. Kui küsimust kasutatakse, asendatakse muutujad automaatselt vastava sisestatud tekstiga.",
+    "tab__favorites__title": "Lemmikud",
+    "tab__public__title": "Avalik",
+    "tab__own__title": "Oma",
+    "filters__category__label": "Kategooria",
+    "filters__use_case__label": "Kasutusjuht",
+    "filters__query__placeholder": "Otsi...",
+    "pagination__label_rows_per_page__title": "Prompts lehekülje kohta:",
+    "add_new_prompt_card__cta__title": "Lisa uus prompti mall",
+    "edit_prompt_modal__title": "Prompti mall",
+    "edit_prompt_modal__field__title__label": "Pealkiri",
+    "edit_prompt_modal__field__title__placeholder": "Selge ja informatiivne pealkiri meelitab rohkem kasutajaid sinu prompti malli juurde.",
+    "edit_prompt_modal__field__description__label": "Kirjeldus",
+    "edit_prompt_modal__field__description__placeholder": "Anna lühike kirjeldus oma prompti mallile ja potentsiaalsetele tulemustele, mida kasutajad võivad oodata.",
+    "edit_prompt_modal__field__category__label": "Kategooria",
+    "edit_prompt_modal__field__use_case__label": "Kasutusjuht",
+    "edit_prompt_modal__field__author_name__label": "Autori nimi",
+    "edit_prompt_modal__field__author_name__placeholder": "Autori nimi",
+    "edit_prompt_modal__field__author_url__label": "Autori URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Salvesta prompt",
+    "edit_prompt_modal__action__clone__title": "Kloon",
+    "edit_prompt_modal__action__cancel__title": "Tühista",
+    "edit_prompt_modal__field__template__label": "Mall"
   }
 }

@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Utilitza la biblioteca de promps",
-    "edit_prompt__template__placeholder": "Utilitza aquest camp per crear la teva plantilla de prompt real.\n\nPots afegir variables que es convertiran en camps de text omplibles a la plantilla de prompt. Prova d'escriure {{ al teu prompt i comença a crear variables per a la teva plantilla de prompt. Pots utilitzar les variables més d'una vegada a la plantilla de prompt. Quan s'utilitzi el prompt, les variables seran reemplaçades automàticament pel text introduït corresponent."
+    "edit_prompt__template__placeholder": "Utilitza aquest camp per crear la teva plantilla de prompt real.\n\nPots afegir variables que es convertiran en camps de text omplibles a la plantilla de prompt. Prova d'escriure {{ al teu prompt i comença a crear variables per a la teva plantilla de prompt. Pots utilitzar les variables més d'una vegada a la plantilla de prompt. Quan s'utilitzi el prompt, les variables seran reemplaçades automàticament pel text introduït corresponent.",
+    "tab__favorites__title": "Preferits",
+    "tab__public__title": "Públic",
+    "tab__own__title": "Propi",
+    "filters__category__label": "Categoria",
+    "filters__use_case__label": "Cas d'ús",
+    "filters__query__placeholder": "Cerca...",
+    "pagination__label_rows_per_page__title": "Prompts per pàgina:",
+    "add_new_prompt_card__cta__title": "Afegir nova plantilla de prompt",
+    "edit_prompt_modal__title": "Plantilla de prompt",
+    "edit_prompt_modal__field__title__label": "Títol",
+    "edit_prompt_modal__field__title__placeholder": "Un títol clar i informatiu atreu més usuaris a la teva plantilla de prompt.",
+    "edit_prompt_modal__field__description__label": "Descripció",
+    "edit_prompt_modal__field__description__placeholder": "Proporciona una descripció concisa de la teva plantilla de prompt i els resultats potencials que els usuaris poden esperar.",
+    "edit_prompt_modal__field__category__label": "Categoria",
+    "edit_prompt_modal__field__use_case__label": "Cas d'ús",
+    "edit_prompt_modal__field__author_name__label": "Nom de l'autor",
+    "edit_prompt_modal__field__author_name__placeholder": "Nom de l'autor",
+    "edit_prompt_modal__field__author_url__label": "URL de l'autor",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Desa el prompt",
+    "edit_prompt_modal__action__clone__title": "Clona",
+    "edit_prompt_modal__action__cancel__title": "Cancel·la",
+    "edit_prompt_modal__field__template__label": "Plantilla"
   }
 }

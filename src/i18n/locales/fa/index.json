@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "استفاده از کتابخانه پیشنهاد",
-    "edit_prompt__template__placeholder": "از این فیلد برای ایجاد قالب واقعی پیشنهاد خود استفاده کنید.\n\nمی توانید متغیرهایی را اضافه کنید که به فیلدهای متن قابل پر کردن در قالب پیشنهاد تبدیل می شوند. سعی کنید {{ را در پیشنهاد خود تایپ کنید و متغیرهایی برای قالب پیشنهاد خود ایجاد کنید. می توانید متغیرها را بیش از یک بار در قالب پیشنهاد خود استفاده کنید. هنگام استفاده از پیشنهاد، متغیرها به طور خودکار با متن ورودی مربوطه جایگزین می شوند."
+    "edit_prompt__template__placeholder": "از این فیلد برای ایجاد قالب واقعی پیشنهاد خود استفاده کنید.\n\nمی توانید متغیرهایی را اضافه کنید که به فیلدهای متن قابل پر کردن در قالب پیشنهاد تبدیل می شوند. سعی کنید {{ را در پیشنهاد خود تایپ کنید و متغیرهایی برای قالب پیشنهاد خود ایجاد کنید. می توانید متغیرها را بیش از یک بار در قالب پیشنهاد خود استفاده کنید. هنگام استفاده از پیشنهاد، متغیرها به طور خودکار با متن ورودی مربوطه جایگزین می شوند.",
+    "tab__favorites__title": "مورد علاقه",
+    "tab__public__title": "عمومی",
+    "tab__own__title": "خودمانی",
+    "filters__category__label": "دسته بندی",
+    "filters__use_case__label": "کاربرد",
+    "filters__query__placeholder": "جستجو...",
+    "pagination__label_rows_per_page__title": "تعداد الگوها در هر صفحه:",
+    "add_new_prompt_card__cta__title": "افزودن الگوی جدید",
+    "edit_prompt_modal__title": "الگوی جدید",
+    "edit_prompt_modal__field__title__label": "عنوان",
+    "edit_prompt_modal__field__title__placeholder": "عنوان واضح و اطلاعاتی، تعداد کاربران بیشتری را به الگوی شما جذب می‌کند.",
+    "edit_prompt_modal__field__description__label": "توضیحات",
+    "edit_prompt_modal__field__description__placeholder": "توضیحات مختصری از الگوی شما و نتایج ممکنی که کاربران می‌توانند انتظار داشته باشند، ارائه دهید.",
+    "edit_prompt_modal__field__category__label": "دسته بندی",
+    "edit_prompt_modal__field__use_case__label": "کاربرد",
+    "edit_prompt_modal__field__author_name__label": "نام نویسنده",
+    "edit_prompt_modal__field__author_name__placeholder": "نام نویسنده",
+    "edit_prompt_modal__field__author_url__label": "آدرس نویسنده",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "ذخیره الگو",
+    "edit_prompt_modal__action__clone__title": "کپی",
+    "edit_prompt_modal__action__cancel__title": "لغو",
+    "edit_prompt_modal__field__template__label": "الگو"
   }
 }

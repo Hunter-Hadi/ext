@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Koristi biblioteku uputa",
-    "edit_prompt__template__placeholder": "Koristite ovo polje za stvaranje vašeg stvarnog predloška upute.\n\nMožete dodati varijable koje će postati polja za unos teksta u predlošku upute. Pokušajte tipkati {{ na vašoj uputi i započnite stvarati varijable za vaš predložak upute. Možete koristiti varijable više puta u predlošku upute. Kada se uputa koristi, varijable će automatski biti zamijenjene odgovarajućim unesenim tekstom."
+    "edit_prompt__template__placeholder": "Koristite ovo polje za stvaranje vašeg stvarnog predloška upute.\n\nMožete dodati varijable koje će postati polja za unos teksta u predlošku upute. Pokušajte tipkati {{ na vašoj uputi i započnite stvarati varijable za vaš predložak upute. Možete koristiti varijable više puta u predlošku upute. Kada se uputa koristi, varijable će automatski biti zamijenjene odgovarajućim unesenim tekstom.",
+    "tab__favorites__title": "Favoriti",
+    "tab__public__title": "Javno",
+    "tab__own__title": "Vlastito",
+    "filters__category__label": "Kategorija",
+    "filters__use_case__label": "Upotreba",
+    "filters__query__placeholder": "Pretraži...",
+    "pagination__label_rows_per_page__title": "Broj uputa po stranici:",
+    "add_new_prompt_card__cta__title": "Dodaj novu predlošku uputa",
+    "edit_prompt_modal__title": "Predložak uputa",
+    "edit_prompt_modal__field__title__label": "Naslov",
+    "edit_prompt_modal__field__title__placeholder": "Jasan i informativan naslov privlači više korisnika na vaš predložak uputa.",
+    "edit_prompt_modal__field__description__label": "Opis",
+    "edit_prompt_modal__field__description__placeholder": "Dajte sažeti opis svog predloška uputa i potencijalne rezultate koje korisnici mogu očekivati.",
+    "edit_prompt_modal__field__category__label": "Kategorija",
+    "edit_prompt_modal__field__use_case__label": "Upotreba",
+    "edit_prompt_modal__field__author_name__label": "Ime autora",
+    "edit_prompt_modal__field__author_name__placeholder": "Ime autora",
+    "edit_prompt_modal__field__author_url__label": "URL autora",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.primjer.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Spremi uput",
+    "edit_prompt_modal__action__clone__title": "Kloniraj",
+    "edit_prompt_modal__action__cancel__title": "Odustani",
+    "edit_prompt_modal__field__template__label": "Predložak"
   }
 }

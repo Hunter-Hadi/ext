@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "प्रॉम्प्ट पुस्तकालय का उपयोग करें",
-    "edit_prompt__template__placeholder": "अपने वास्तविक प्रॉम्प्ट टेम्पलेट बनाने के लिए इस फ़ील्ड का उपयोग करें।\n\nआप प्रॉम्प्ट टेम्पलेट में भरने योग्य पाठ फ़ील्ड बनाने के लिए चर जोड़ सकते हैं। अपने प्रॉम्प्ट पर {{ टाइप करके और अपने प्रॉम्प्ट टेम्पलेट के लिए चर बनाना शुरू करें। आप अपने प्रॉम्प्ट टेम्पलेट में चर को एक से अधिक बार उपयोग कर सकते हैं। प्रॉम्प्ट का उपयोग किया जाता है, तो चर स्वचालित रूप से संबंधित इनपुट किया गया पाठ द्वारा बदल दिया जाएगा।"
+    "edit_prompt__template__placeholder": "अपने वास्तविक प्रॉम्प्ट टेम्पलेट बनाने के लिए इस फ़ील्ड का उपयोग करें।\n\nआप प्रॉम्प्ट टेम्पलेट में भरने योग्य पाठ फ़ील्ड बनाने के लिए चर जोड़ सकते हैं। अपने प्रॉम्प्ट पर {{ टाइप करके और अपने प्रॉम्प्ट टेम्पलेट के लिए चर बनाना शुरू करें। आप अपने प्रॉम्प्ट टेम्पलेट में चर को एक से अधिक बार उपयोग कर सकते हैं। प्रॉम्प्ट का उपयोग किया जाता है, तो चर स्वचालित रूप से संबंधित इनपुट किया गया पाठ द्वारा बदल दिया जाएगा।",
+    "tab__favorites__title": "पसंदीदा",
+    "tab__public__title": "सार्वजनिक",
+    "tab__own__title": "अपना",
+    "filters__category__label": "श्रेणी",
+    "filters__use_case__label": "उपयोग केस",
+    "filters__query__placeholder": "खोजें...",
+    "pagination__label_rows_per_page__title": "प्रति पृष्ठ प्रोम्प्ट:",
+    "add_new_prompt_card__cta__title": "नया प्रोम्प्ट टेम्पलेट जोड़ें",
+    "edit_prompt_modal__title": "प्रोम्प्ट टेम्पलेट",
+    "edit_prompt_modal__field__title__label": "शीर्षक",
+    "edit_prompt_modal__field__title__placeholder": "एक स्पष्ट और सूचनात्मक शीर्षक आपके प्रोम्प्ट टेम्पलेट को अधिक उपयोगकर्ताओं के लिए आकर्षित करता है।",
+    "edit_prompt_modal__field__description__label": "विवरण",
+    "edit_prompt_modal__field__description__placeholder": "अपने प्रोम्प्ट टेम्पलेट का संक्षिप्त विवरण और संभावित परिणाम उपयोगकर्ताओं की उम्मीद कर सकते हैं।",
+    "edit_prompt_modal__field__category__label": "श्रेणी",
+    "edit_prompt_modal__field__use_case__label": "उपयोग केस",
+    "edit_prompt_modal__field__author_name__label": "लेखक का नाम",
+    "edit_prompt_modal__field__author_name__placeholder": "लेखक का नाम",
+    "edit_prompt_modal__field__author_url__label": "लेखक URL",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "प्रोम्प्ट सहेजें",
+    "edit_prompt_modal__action__clone__title": "क्लोन करें",
+    "edit_prompt_modal__action__cancel__title": "रद्द करें",
+    "edit_prompt_modal__field__template__label": "टेम्पलेट"
   }
 }

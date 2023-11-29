@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompt kütüphanesini kullan",
-    "edit_prompt__template__placeholder": "Gerçek prompt şablonunuzu oluşturmak için bu alanı kullanın.\n\nPrompt şablonunda doldurulabilir metin alanlarına dönüşecek değişkenler ekleyebilirsiniz. Prompt'unuzda değişkenleri birden fazla kez kullanabilirsiniz. Prompt kullanıldığında, değişkenler otomatik olarak ilgili girilen metinle değiştirilecektir."
+    "edit_prompt__template__placeholder": "Gerçek prompt şablonunuzu oluşturmak için bu alanı kullanın.\n\nPrompt şablonunda doldurulabilir metin alanlarına dönüşecek değişkenler ekleyebilirsiniz. Prompt'unuzda değişkenleri birden fazla kez kullanabilirsiniz. Prompt kullanıldığında, değişkenler otomatik olarak ilgili girilen metinle değiştirilecektir.",
+    "tab__favorites__title": "Favoriler",
+    "tab__public__title": "Herkese Açık",
+    "tab__own__title": "Kendi",
+    "filters__category__label": "Kategori",
+    "filters__use_case__label": "Kullanım Alanı",
+    "filters__query__placeholder": "Ara...",
+    "pagination__label_rows_per_page__title": "Sayfa başına öneri sayısı:",
+    "add_new_prompt_card__cta__title": "Yeni öneri şablonu ekle",
+    "edit_prompt_modal__title": "Öneri şablonu",
+    "edit_prompt_modal__field__title__label": "Başlık",
+    "edit_prompt_modal__field__title__placeholder": "Net ve bilgilendirici bir başlık, öneri şablonunuza daha fazla kullanıcı çeker.",
+    "edit_prompt_modal__field__description__label": "Açıklama",
+    "edit_prompt_modal__field__description__placeholder": "Öneri şablonunuzun ve potansiyel sonuçların kısa bir açıklamasını verin.",
+    "edit_prompt_modal__field__category__label": "Kategori",
+    "edit_prompt_modal__field__use_case__label": "Kullanım Alanı",
+    "edit_prompt_modal__field__author_name__label": "Yazar adı",
+    "edit_prompt_modal__field__author_name__placeholder": "Yazar adı",
+    "edit_prompt_modal__field__author_url__label": "Yazar URL'si",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Öneriyi Kaydet",
+    "edit_prompt_modal__action__clone__title": "Kopyala",
+    "edit_prompt_modal__action__cancel__title": "İptal",
+    "edit_prompt_modal__field__template__label": "Şablon"
   }
 }

@@ -19,7 +19,6 @@ import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutAct
 export const promptLibraryCardDetailDataToActions = (
   promptLibraryCard: IPromptLibraryCardData,
 ): ISetActionsType => {
-  debugger
   const actions: ISetActionsType = []
   let template = promptLibraryCard.prompt_template || ''
   const variableMap = new Map<string, IActionSetVariable>()
@@ -282,7 +281,6 @@ export const promptLibraryCardDetailDataToActions = (
     })
   }
   console.log(template)
-  debugger
   return actions
 }
 
@@ -290,7 +288,6 @@ export const actionsToPromptLibraryCardDetailData = (
   actions: ISetActionsType,
   promptLibraryCardDetailData?: IPromptLibraryCardDetailData,
 ): IPromptLibraryCardDetailData => {
-  debugger
   // 因为这个版本只有一个prompt template，所以html的内容一定在RENDER_TEMPLATE/ASK_CHATGPT/RENDER_CHATGPT_PROMPT/SET_VARIABLES_MODAL
   let prompt_template = ''
   const templateAction: ActionIdentifier[] = [

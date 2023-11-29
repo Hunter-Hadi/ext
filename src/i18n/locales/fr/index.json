@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Utiliser la bibliothèque de prompts",
-    "edit_prompt__template__placeholder": "Utilisez ce champ pour créer votre modèle de prompt réel.\n\nVous pouvez ajouter des variables qui se transformeront en champs de texte remplissables dans le modèle de prompt. Essayez de taper {{ sur votre prompt et commencez à créer des variables pour votre modèle de prompt. Vous pouvez utiliser les variables plusieurs fois dans votre modèle de prompt. Lorsque le prompt est utilisé, les variables seront automatiquement remplacées par le texte saisi correspondant."
+    "edit_prompt__template__placeholder": "Utilisez ce champ pour créer votre modèle de prompt réel.\n\nVous pouvez ajouter des variables qui se transformeront en champs de texte remplissables dans le modèle de prompt. Essayez de taper {{ sur votre prompt et commencez à créer des variables pour votre modèle de prompt. Vous pouvez utiliser les variables plusieurs fois dans votre modèle de prompt. Lorsque le prompt est utilisé, les variables seront automatiquement remplacées par le texte saisi correspondant.",
+    "tab__favorites__title": "Favoris",
+    "tab__public__title": "Public",
+    "tab__own__title": "Propre",
+    "filters__category__label": "Catégorie",
+    "filters__use_case__label": "Cas d'utilisation",
+    "filters__query__placeholder": "Rechercher...",
+    "pagination__label_rows_per_page__title": "Prompts par page:",
+    "add_new_prompt_card__cta__title": "Ajouter un nouveau modèle de prompt",
+    "edit_prompt_modal__title": "Modèle de prompt",
+    "edit_prompt_modal__field__title__label": "Titre",
+    "edit_prompt_modal__field__title__placeholder": "Un titre clair et informatif attire plus d'utilisateurs vers votre modèle de prompt.",
+    "edit_prompt_modal__field__description__label": "Description",
+    "edit_prompt_modal__field__description__placeholder": "Fournissez une description concise de votre modèle de prompt et des résultats potentiels auxquels les utilisateurs peuvent s'attendre.",
+    "edit_prompt_modal__field__category__label": "Catégorie",
+    "edit_prompt_modal__field__use_case__label": "Cas d'utilisation",
+    "edit_prompt_modal__field__author_name__label": "Nom de l'auteur",
+    "edit_prompt_modal__field__author_name__placeholder": "Nom de l'auteur",
+    "edit_prompt_modal__field__author_url__label": "URL de l'auteur",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Enregistrer le prompt",
+    "edit_prompt_modal__action__clone__title": "Cloner",
+    "edit_prompt_modal__action__cancel__title": "Annuler",
+    "edit_prompt_modal__field__template__label": "Modèle"
   }
 }

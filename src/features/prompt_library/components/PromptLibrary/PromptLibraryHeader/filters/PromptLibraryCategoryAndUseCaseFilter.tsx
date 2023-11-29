@@ -8,8 +8,10 @@ import { inputBaseClasses } from '@mui/material/InputBase'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import { SxProps } from '@mui/material/styles'
 import { formControlClasses } from '@mui/material/FormControl'
+import { useTranslation } from 'react-i18next'
 
 const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
+  const { t } = useTranslation(['prompt_library'])
   const {
     promptLibraryListParameters,
     updatePromptLibraryListParameters,
@@ -57,7 +59,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
       <BaseSelect
         loading={loading}
         sx={{ height: 44 }}
-        label={'Category'}
+        label={t('prompt_library:filters__category__label')}
         options={categoryOptions}
         value={promptLibraryListParameters.category}
         MenuProps={{
@@ -76,7 +78,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
       <BaseSelect
         loading={loading}
         sx={{ height: 44 }}
-        label={'Use case'}
+        label={t('prompt_library:filters__use_case__label')}
         options={useCaseOptions}
         value={promptLibraryListParameters.use_case}
         MenuProps={{

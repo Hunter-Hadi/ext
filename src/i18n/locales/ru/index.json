@@ -698,6 +698,29 @@
   },
   "prompt_library": {
     "use_prompt_library__title": "Использовать библиотеку подсказок",
-    "edit_prompt__template__placeholder": "Используйте это поле для создания фактического шаблона подсказки.\n\nВы можете добавлять переменные, которые превратятся в поля для заполнения в шаблоне подсказки. Попробуйте набрать {{ в своей подсказке и начните создавать переменные для вашего шаблона подсказки. Вы можете использовать переменные несколько раз в шаблоне подсказки. Когда подсказка используется, переменные будут автоматически заменены соответствующим введенным текстом."
+    "edit_prompt__template__placeholder": "Используйте это поле для создания фактического шаблона подсказки.\n\nВы можете добавлять переменные, которые превратятся в поля для заполнения в шаблоне подсказки. Попробуйте набрать {{ в своей подсказке и начните создавать переменные для вашего шаблона подсказки. Вы можете использовать переменные несколько раз в шаблоне подсказки. Когда подсказка используется, переменные будут автоматически заменены соответствующим введенным текстом.",
+    "tab__favorites__title": "Избранное",
+    "tab__public__title": "Общедоступное",
+    "tab__own__title": "Собственное",
+    "filters__category__label": "Категория",
+    "filters__use_case__label": "Вариант использования",
+    "filters__query__placeholder": "Поиск...",
+    "pagination__label_rows_per_page__title": "Промпты на странице:",
+    "add_new_prompt_card__cta__title": "Добавить новый шаблон промпта",
+    "edit_prompt_modal__title": "Шаблон промпта",
+    "edit_prompt_modal__field__title__label": "Заголовок",
+    "edit_prompt_modal__field__title__placeholder": "Ясный и информативный заголовок привлекает больше пользователей к вашему шаблону промпта.",
+    "edit_prompt_modal__field__description__label": "Описание",
+    "edit_prompt_modal__field__description__placeholder": "Предоставьте краткое описание вашего шаблона промпта и потенциальных результатов, которые пользователи могут ожидать.",
+    "edit_prompt_modal__field__category__label": "Категория",
+    "edit_prompt_modal__field__use_case__label": "Вариант использования",
+    "edit_prompt_modal__field__author_name__label": "Имя автора",
+    "edit_prompt_modal__field__author_name__placeholder": "Имя автора",
+    "edit_prompt_modal__field__author_url__label": "URL автора",
+    "edit_prompt_modal__field__author_url__placeholder": "https://www.example.com/",
+    "edit_prompt_modal__action__save_prompt__title": "Сохранить промпт",
+    "edit_prompt_modal__action__clone__title": "Клонировать",
+    "edit_prompt_modal__action__cancel__title": "Отмена",
+    "edit_prompt_modal__field__template__label": "Шаблон"
   }
 }

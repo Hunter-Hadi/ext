@@ -64,7 +64,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
           info_object.prompt_id.slice(FAVORITE_CONTEXT_MENU_GROUP_ID.length + 8)
         info_object.prompt_name = `[Suggested] ${info_object.prompt_name}`
       }
-      console.log('logApiAndConfirmIsLimited', info_object)
+      console.log('[CALL_API] logApiAndConfirmIsLimited', info_object)
       const accessToken = await getAccessToken()
       const fingerprint = await getFingerPrint()
       const text = AES.encrypt(JSON.stringify(info_object), 'MaxAI').toString()

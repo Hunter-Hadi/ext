@@ -68,6 +68,21 @@ export const domain2Favicon = (domain: string) => {
 
 export const getCurrentDomainHost = () => {
   try {
+    if (
+      typeof window !== undefined &&
+      window.location.href.includes(Browser.runtime.id)
+    ) {
+      const crxPageUrl = window.location.origin + window.location.pathname
+      // crx page - immersive chat
+      if (crxPageUrl === Browser.runtime.getURL('/pages/chat/index.html')) {
+        return Browser.runtime.getURL('/pages/chat/index.html')
+      } else if (
+        // crx page - pdf viewer
+        crxPageUrl === Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+      ) {
+        return Browser.runtime.getURL('/pages/pdf/web/viewer.html')
+      }
+    }
     const host = (window.location.host || location.host)
       .replace(/^www\./, '')
       .replace(/:\d+$/, '')
@@ -87,10 +102,8 @@ export const getCurrentDomainHost = () => {
 export const isMaxAIImmersiveChatPage = () => {
   try {
     return (
-      typeof window !== undefined &&
-      window.location.href.includes(Browser.runtime.id) &&
-      Browser.runtime.getURL('/pages/chat/index.html') ===
-        window.location.origin + window.location.pathname
+      getCurrentDomainHost() ===
+      Browser.runtime.getURL('/pages/chat/index.html')
     )
   } catch (e) {
     return false
@@ -103,10 +116,8 @@ export const isMaxAIImmersiveChatPage = () => {
 export const isMaxAIPDFPage = () => {
   try {
     return (
-      typeof window !== undefined &&
-      window.location.href.includes(Browser.runtime.id) &&
-      Browser.runtime.getURL('/pages/pdf/web/viewer.html') ===
-        window.location.origin + window.location.pathname
+      getCurrentDomainHost() ===
+      Browser.runtime.getURL('/pages/pdf/web/viewer.html')
     )
   } catch (e) {
     return false

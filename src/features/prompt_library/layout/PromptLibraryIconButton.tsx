@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
 import { MagicBookIcon } from '@/components/CustomIcon'
@@ -14,6 +14,8 @@ import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { promptLibraryCardDetailDataToActions } from '@/features/prompt_library/utils/promptInterpreter'
+import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const PromptLibraryIconButton: FC = () => {
   const {
@@ -30,9 +32,12 @@ const PromptLibraryIconButton: FC = () => {
     selectedPromptLibraryCard,
     cancelSelectPromptLibraryCard,
   } = usePromptLibrary()
+  const { updateSidebarConversationType } = useSidebarSettings()
+  const { isOpenPromptLibraryEditForm } = usePromptActions()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const isImmersiveChatPage = isMaxAIImmersiveChatPage()
+  const paperRef = useRef<HTMLDivElement>()
   const handleClick = (newPlacement: PopperPlacementType) => (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
@@ -72,6 +77,9 @@ const PromptLibraryIconButton: FC = () => {
         return virtualRect
       },
     } as any)
+    setTimeout(() => {
+      paperRef.current?.focus()
+    }, 100)
     openPromptLibrary()
     setPlacement(newPlacement)
   }
@@ -84,12 +92,21 @@ const PromptLibraryIconButton: FC = () => {
         selectedPromptLibraryCard,
       )
       if (actions && shortCutsEngineRef.current?.status === 'idle') {
+        updateSidebarConversationType('Chat')
         cancelSelectPromptLibraryCard()
         setShortCuts(actions)
         runShortCuts().then().catch()
       }
     }
   }, [selectedPromptLibraryCard])
+  useEffect(() => {
+    if (!isOpenPromptLibraryEditForm && promptLibraryOpen) {
+      // 为了方便esc
+      setTimeout(() => {
+        paperRef.current?.focus()
+      }, 100)
+    }
+  }, [isOpenPromptLibraryEditForm, promptLibraryOpen])
   return (
     <>
       <TextOnlyTooltip
@@ -132,11 +149,23 @@ const PromptLibraryIconButton: FC = () => {
         anchorEl={anchorEl}
         placement={placement}
         transition
+        keepMounted
       >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <div>
               <Paper
+                tabIndex={-1}
+                onKeyDown={(event) => {
+                  if (promptLibraryOpen && event.key === 'Escape') {
+                    closePromptLibrary()
+                  }
+                }}
+                ref={(ref) => {
+                  if (ref) {
+                    paperRef.current = ref
+                  }
+                }}
                 elevation={4}
                 sx={{
                   width: isImmersiveChatPage

@@ -474,8 +474,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         direction={'row'}
         alignItems={'start'}
         justifyContent={'space-between'}
+        width={'100%'}
       >
         <Box
+          width={0}
+          flex={1}
           component={'div'}
           sx={{
             borderRadius: '4px',
@@ -483,13 +486,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             bgcolor: 'rgba(0, 0, 0, 0.87)',
           }}
         >
-          <Typography fontSize={'14px'} color={'#fff'} fontWeight={600}>
+          <Typography fontSize={'14px'} color={'#fff'} fontWeight={600} noWrap>
             {currentModalConfig.currentTitle}
           </Typography>
         </Box>
         <IconButton
           onClick={async () => await closeModal(true)}
           sx={{
+            flexShrink: 0,
             position: 'relative',
             top: '-8px',
             right: '-8px',

@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next'
 import CustomConfirm from '@/components/CustomConfirm'
 import AppLoadingLayout from '@/components/AppLoadingLayout'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
+import { getAppRootElement } from '@/utils'
 
 const inputProps = {
   sx: {
@@ -139,6 +140,18 @@ const PromptLibraryCardEditForm: FC = () => {
     }
     return 6
   }, [currentBreakpoint])
+  useEffect(() => {
+    if (isOpenPromptLibraryEditForm) {
+      setTimeout(() => {
+        const input = getAppRootElement()?.querySelector(
+          '#prompt-template-input',
+        ) as HTMLDivElement
+        if (input) {
+          input.focus()
+        }
+      }, 100)
+    }
+  }, [isOpenPromptLibraryEditForm])
   return (
     <CustomModal
       width={800}
@@ -153,6 +166,7 @@ const PromptLibraryCardEditForm: FC = () => {
       onClose={handleModalOnClose}
     >
       <Paper
+        tabIndex={-1}
         id="prompt-form-modal"
         sx={{
           textAlign: 'left',

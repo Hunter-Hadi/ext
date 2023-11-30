@@ -10,7 +10,10 @@ import { IChatUploadFile } from '@/features/chatgpt/types'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
-import { IMaxAIChatGPTMessageType } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  IMaxAIChatGPTBackendAPIType,
+  IMaxAIChatGPTMessageType,
+} from '@/background/src/chat/UseChatGPTChat/types'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -79,11 +82,18 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       // 2023-09-21 @xiang.xu
       chat_history.splice(0, 2)
     }
+    let backendAPI: IMaxAIChatGPTBackendAPIType = 'get_chatgpt_response'
+    if (docId) {
+      backendAPI = 'chat_with_document'
+    }
+    if (conversationDetail?.type === 'Summary') {
+      backendAPI = 'get_summarize_response'
+    }
     await this.useChatGPTPlusChat.askChatGPT(
       question.question,
       {
         doc_id: docId,
-        backendAPI: docId ? 'chat_with_document' : 'get_chatgpt_response',
+        backendAPI,
         taskId: question.messageId,
         chat_history,
         meta: options.meta,

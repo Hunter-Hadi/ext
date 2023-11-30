@@ -17,6 +17,7 @@ import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
+  IMaxAIChatGPTBackendAPIType,
   IMaxAIChatGPTMessageType,
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
@@ -85,7 +86,7 @@ class UseChatGPTPlusChat extends BaseChat {
       doc_id?: string
       streaming?: boolean
       chat_history?: IMaxAIChatGPTMessageType[]
-      backendAPI?: 'chat_with_document' | 'get_chatgpt_response'
+      backendAPI?: IMaxAIChatGPTBackendAPIType
       meta?: IChatMessageExtraMetaType
     },
     onMessage?: (message: {
@@ -160,6 +161,9 @@ class UseChatGPTPlusChat extends BaseChat {
     // 当前只有大文件聊天用到这个model
     if (backendAPI === 'chat_with_document') {
       postBody.model_name = 'gpt-3.5-turbo-16k'
+    }
+    if (backendAPI === 'get_summarize_response') {
+      postBody.model_name = 'claude-2'
     }
     const controller = new AbortController()
     const signal = controller.signal

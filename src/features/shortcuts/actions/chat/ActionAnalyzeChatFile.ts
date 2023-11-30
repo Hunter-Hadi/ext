@@ -17,6 +17,7 @@ import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 /**
  * @since 2023-09-11
  * @description 当用户聊天的内容超过12k的时候生成md5上传成docId, 并且切割12k给聊天的summary
+ * @update 2023-11-30 当用户聊天的内容超过120k的时候生成md5上传成docId, 并且切割120k给聊天的summary
  */
 export class ActionAnalyzeChatFile extends Action {
   static type: ActionIdentifier = 'ANALYZE_CHAT_FILE'
@@ -47,7 +48,7 @@ export class ActionAnalyzeChatFile extends Action {
         text = await sliceTextByTokens(text, MAX_UPLOAD_TEXT_FILE_TOKENS)
       }
       /**
-       * 总结用的12k system prompt
+       * 总结用的120k system prompt
        */
       const pageSummaryContent = await sliceTextByTokens(
         text,

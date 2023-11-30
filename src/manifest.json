@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -33,7 +33,7 @@
       "run_at": "document_end"
     },
     {
-      "matches": ["https://chat.openai.com/404"],
+      "matches": ["https://chat.openai.com/robots.txt"],
       "match_about_blank": true,
       "all_frames": true,
       "js": ["contentArkoseTokenIframe.js"],

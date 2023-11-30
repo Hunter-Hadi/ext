@@ -113,7 +113,7 @@ class ChromeExtensionArkoseTokenGenerator {
       window.addEventListener('message', once)
       const iframe = document.createElement('iframe')
       iframe.id = ChromeExtensionArkoseTokenGenerator.iframeId
-      iframe.src = 'https://chat.openai.com/404'
+      iframe.src = 'https://chat.openai.com/robots.txt'
       iframe.style.cssText = `
       position: absolute !important;
       opacity: 0 !important;

@@ -157,7 +157,11 @@ const PromptLibraryIconButton: FC = () => {
               <Paper
                 tabIndex={-1}
                 onKeyDown={(event) => {
-                  if (promptLibraryOpen && event.key === 'Escape') {
+                  if (
+                    promptLibraryOpen &&
+                    !isOpenPromptLibraryEditForm &&
+                    event.key === 'Escape'
+                  ) {
                     closePromptLibrary()
                   }
                 }}

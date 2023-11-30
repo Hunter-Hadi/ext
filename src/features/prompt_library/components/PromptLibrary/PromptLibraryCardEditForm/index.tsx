@@ -42,6 +42,26 @@ const BaseSelectOptionItemProps = {
   },
 }
 
+const placeCaretAtEnd = (el: HTMLElement): void => {
+  el.focus()
+  if (
+    typeof window.getSelection !== 'undefined' &&
+    typeof document.createRange !== 'undefined'
+  ) {
+    const range = document.createRange()
+    range.selectNodeContents(el)
+    range.collapse(false)
+    const sel = window.getSelection()
+    sel?.removeAllRanges()
+    sel?.addRange(range)
+  } else if (typeof (document.body as any).createTextRange !== 'undefined') {
+    const textRange = (document.body as any).createTextRange()
+    textRange.moveToElementText(el)
+    textRange.collapse(false)
+    textRange.select()
+  }
+}
+
 const PromptLibraryCardEditForm: FC = () => {
   const { t } = useTranslation(['prompt_library'])
   const {
@@ -132,6 +152,15 @@ const PromptLibraryCardEditForm: FC = () => {
     if (!isFetching && data) {
       reset(data)
       setActions(promptLibraryCardDetailDataToActions(data))
+      setTimeout(() => {
+        // focus input可以在加载完成的时候输入
+        const editableDiv = getAppRootElement()?.querySelector(
+          '#prompt-template-input',
+        ) as HTMLDivElement
+        if (editableDiv) {
+          placeCaretAtEnd(editableDiv)
+        }
+      }, 100)
     }
   }, [data, isFetching])
   const itemWidth = useMemo(() => {
@@ -143,11 +172,12 @@ const PromptLibraryCardEditForm: FC = () => {
   useEffect(() => {
     if (isOpenPromptLibraryEditForm) {
       setTimeout(() => {
-        const input = getAppRootElement()?.querySelector(
-          '#prompt-template-input',
+        // focus box可以在未加载完成的时候esc
+        const div = getAppRootElement()?.querySelector(
+          '#prompt-form-modal',
         ) as HTMLDivElement
-        if (input) {
-          input.focus()
+        if (div) {
+          div.focus()
         }
       }, 100)
     }

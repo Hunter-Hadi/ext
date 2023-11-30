@@ -96,33 +96,38 @@ const SidebarChatBoxChatSpeedDial: FC<{
           </Box>
         }
       >
-        <SpeedDialAction
-          icon={
-            <Box
-              component={'div'}
-              onClick={() => {
-                chromeExtensionClientOpenPage({
-                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
-                })
-              }}
-            >
-              <TextOnlyTooltip
-                placement={'left'}
-                title={t('client:sidebar__speed_dial__chat_history__button')}
+        {currentSidebarConversationType !== 'Summary' && (
+          <SpeedDialAction
+            icon={
+              <Box
+                component={'div'}
+                onClick={() => {
+                  chromeExtensionClientOpenPage({
+                    url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                  })
+                }}
               >
-                <Stack
-                  p={1}
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                  component={'div'}
+                <TextOnlyTooltip
+                  placement={'left'}
+                  title={t('client:sidebar__speed_dial__chat_history__button')}
                 >
-                  <ContextMenuIcon icon={'History'} sx={{ fontSize: '24px' }} />
-                </Stack>
-              </TextOnlyTooltip>
-            </Box>
-          }
-          tooltipTitle={''}
-        />
+                  <Stack
+                    p={1}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    component={'div'}
+                  >
+                    <ContextMenuIcon
+                      icon={'History'}
+                      sx={{ fontSize: '24px' }}
+                    />
+                  </Stack>
+                </TextOnlyTooltip>
+              </Box>
+            }
+            tooltipTitle={''}
+          />
+        )}
         <SpeedDialAction
           icon={
             <Link

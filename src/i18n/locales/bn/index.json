@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "প্রম্পট সংরক্ষণ করুন",
     "edit_prompt_modal__action__clone__title": "ক্লোন করুন",
     "edit_prompt_modal__action__cancel__title": "বাতিল করুন",
-    "edit_prompt_modal__field__template__label": "টেমপ্লেট"
+    "edit_prompt_modal__field__template__label": "টেমপ্লেট",
+    "delete_prompt__title": "আপনি কি নিশ্চিত যে আপনি এই প্রম্পট টেমপ্লেটটি মুছে ফেলতে চান?",
+    "delete_prompt__action__confirm__title": "মুছে ফেলুন",
+    "delete_prompt__cancel__confirm__title": "বাতিল করুন"
   }
 }

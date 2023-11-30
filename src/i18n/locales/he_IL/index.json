@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "שמור תבנית",
     "edit_prompt_modal__action__clone__title": "שכפל",
     "edit_prompt_modal__action__cancel__title": "ביטול",
-    "edit_prompt_modal__field__template__label": "תבנית"
+    "edit_prompt_modal__field__template__label": "תבנית",
+    "delete_prompt__title": "האם אתה בטוח שברצונך למחוק תבנית ההוראות הזו?",
+    "delete_prompt__action__confirm__title": "מחק",
+    "delete_prompt__cancel__confirm__title": "ביטול"
   }
 }

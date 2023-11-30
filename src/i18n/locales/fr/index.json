@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Enregistrer le prompt",
     "edit_prompt_modal__action__clone__title": "Cloner",
     "edit_prompt_modal__action__cancel__title": "Annuler",
-    "edit_prompt_modal__field__template__label": "Modèle"
+    "edit_prompt_modal__field__template__label": "Modèle",
+    "delete_prompt__title": "Êtes-vous sûr de vouloir supprimer ce modèle de prompt ?",
+    "delete_prompt__action__confirm__title": "Supprimer",
+    "delete_prompt__cancel__confirm__title": "Annuler"
   }
 }

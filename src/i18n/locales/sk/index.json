@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Uložiť prompt",
     "edit_prompt_modal__action__clone__title": "Klonovať",
     "edit_prompt_modal__action__cancel__title": "Zrušiť",
-    "edit_prompt_modal__field__template__label": "Šablóna"
+    "edit_prompt_modal__field__template__label": "Šablóna",
+    "delete_prompt__title": "Ste si istý, že chcete vymazať tento vzor promptu?",
+    "delete_prompt__action__confirm__title": "Vymazať",
+    "delete_prompt__cancel__confirm__title": "Zrušiť"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "ప్రమ్ప్ట్ సేవ్ చేయండి",
     "edit_prompt_modal__action__clone__title": "క్లోన్ చేయండి",
     "edit_prompt_modal__action__cancel__title": "రద్దు చేయండి",
-    "edit_prompt_modal__field__template__label": "టెంప్లేట్"
+    "edit_prompt_modal__field__template__label": "టెంప్లేట్",
+    "delete_prompt__title": "ఈ ప్రాంప్ట్ టెంప్లేట్‌ను తొలగించాలని మీరు ఖచ్చితంగా ఉందా?",
+    "delete_prompt__action__confirm__title": "తొలగించు",
+    "delete_prompt__cancel__confirm__title": "రద్దు చేయండి"
   }
 }

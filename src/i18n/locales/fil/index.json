@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "I-save ang prompt",
     "edit_prompt_modal__action__clone__title": "Kopyahin",
     "edit_prompt_modal__action__cancel__title": "Kanselahin",
-    "edit_prompt_modal__field__template__label": "Padron"
+    "edit_prompt_modal__field__template__label": "Padron",
+    "delete_prompt__title": "Sigurado ka bang gusto mong tanggalin ang template ng prompt na ito?",
+    "delete_prompt__action__confirm__title": "Tanggalin",
+    "delete_prompt__cancel__confirm__title": "Kanselahin"
   }
 }

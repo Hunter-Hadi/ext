@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Lưu gợi ý",
     "edit_prompt_modal__action__clone__title": "Sao chép",
     "edit_prompt_modal__action__cancel__title": "Hủy",
-    "edit_prompt_modal__field__template__label": "Mẫu"
+    "edit_prompt_modal__field__template__label": "Mẫu",
+    "delete_prompt__title": "Bạn có chắc chắn muốn xóa mẫu lời nhắc này không?",
+    "delete_prompt__action__confirm__title": "Xóa",
+    "delete_prompt__cancel__confirm__title": "Hủy"
   }
 }

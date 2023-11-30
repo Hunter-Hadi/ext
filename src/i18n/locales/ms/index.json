@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Simpan promp",
     "edit_prompt_modal__action__clone__title": "Salin",
     "edit_prompt_modal__action__cancel__title": "Batal",
-    "edit_prompt_modal__field__template__label": "Templat"
+    "edit_prompt_modal__field__template__label": "Templat",
+    "delete_prompt__title": "Adakah anda pasti ingin memadamkan templat prompt ini?",
+    "delete_prompt__action__confirm__title": "Padam",
+    "delete_prompt__cancel__confirm__title": "Batal"
   }
 }

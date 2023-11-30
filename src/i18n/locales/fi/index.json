@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Tallenna kysymyspohja",
     "edit_prompt_modal__action__clone__title": "Kloonaa",
     "edit_prompt_modal__action__cancel__title": "Peruuta",
-    "edit_prompt_modal__field__template__label": "Malli"
+    "edit_prompt_modal__field__template__label": "Malli",
+    "delete_prompt__title": "Haluatko varmasti poistaa tämän ohjepohjan?",
+    "delete_prompt__action__confirm__title": "Poista",
+    "delete_prompt__cancel__confirm__title": "Peruuta"
   }
 }

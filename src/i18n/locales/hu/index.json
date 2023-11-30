@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Prompt mentése",
     "edit_prompt_modal__action__clone__title": "Klónozás",
     "edit_prompt_modal__action__cancel__title": "Mégse",
-    "edit_prompt_modal__field__template__label": "Sablon"
+    "edit_prompt_modal__field__template__label": "Sablon",
+    "delete_prompt__title": "Biztosan törölni szeretné ezt a prompt sablont?",
+    "delete_prompt__action__confirm__title": "Törlés",
+    "delete_prompt__cancel__confirm__title": "Mégse"
   }
 }

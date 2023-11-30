@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Simpan prompt",
     "edit_prompt_modal__action__clone__title": "Duplikat",
     "edit_prompt_modal__action__cancel__title": "Batal",
-    "edit_prompt_modal__field__template__label": "Templat"
+    "edit_prompt_modal__field__template__label": "Templat",
+    "delete_prompt__title": "Apakah Anda yakin ingin menghapus template prompt ini?",
+    "delete_prompt__action__confirm__title": "Hapus",
+    "delete_prompt__cancel__confirm__title": "Batal"
   }
 }

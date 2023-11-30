@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "บันทึกแม่แบบโปรโมท",
     "edit_prompt_modal__action__clone__title": "คัดลอก",
     "edit_prompt_modal__action__cancel__title": "ยกเลิก",
-    "edit_prompt_modal__field__template__label": "แม่แบบ"
+    "edit_prompt_modal__field__template__label": "แม่แบบ",
+    "delete_prompt__title": "คุณแน่ใจหรือว่าต้องการลบเทมเพลตโปรโมตนี้?",
+    "delete_prompt__action__confirm__title": "ลบ",
+    "delete_prompt__cancel__confirm__title": "ยกเลิก"
   }
 }

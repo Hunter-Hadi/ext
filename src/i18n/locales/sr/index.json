@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Sačuvaj predložak",
     "edit_prompt_modal__action__clone__title": "Kloniraj",
     "edit_prompt_modal__action__cancel__title": "Otkaži",
-    "edit_prompt_modal__field__template__label": "Šablon"
+    "edit_prompt_modal__field__template__label": "Šablon",
+    "delete_prompt__title": "Da li ste sigurni da želite da obrišete ovaj šablon upita?",
+    "delete_prompt__action__confirm__title": "Obriši",
+    "delete_prompt__cancel__confirm__title": "Otkaži"
   }
 }

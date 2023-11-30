@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Salvesta prompt",
     "edit_prompt_modal__action__clone__title": "Kloon",
     "edit_prompt_modal__action__cancel__title": "Tühista",
-    "edit_prompt_modal__field__template__label": "Mall"
+    "edit_prompt_modal__field__template__label": "Mall",
+    "delete_prompt__title": "Kas olete kindel, et soovite selle märguande malli kustutada?",
+    "delete_prompt__action__confirm__title": "Kustuta",
+    "delete_prompt__cancel__confirm__title": "Tühista"
   }
 }

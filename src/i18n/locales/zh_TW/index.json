@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "儲存提示",
     "edit_prompt_modal__action__clone__title": "複製",
     "edit_prompt_modal__action__cancel__title": "取消",
-    "edit_prompt_modal__field__template__label": "範本"
+    "edit_prompt_modal__field__template__label": "範本",
+    "delete_prompt__title": "您確定要刪除此提示範本嗎？",
+    "delete_prompt__action__confirm__title": "刪除",
+    "delete_prompt__cancel__confirm__title": "取消"
   }
 }

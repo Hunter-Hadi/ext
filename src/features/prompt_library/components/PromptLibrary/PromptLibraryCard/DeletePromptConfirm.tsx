@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 
 import CustomModal from '@/components/CustomModal'
 import Paper from '@mui/material/Paper'
+import { useTranslation } from 'react-i18next'
 
 interface IProps {
   show: boolean
@@ -20,6 +21,7 @@ const DeletePromptConfirm: FC<IProps> = ({
   onCancel,
   onConfirm,
 }) => {
+  const { t } = useTranslation(['prompt_library'])
   return (
     <CustomModal
       show={show}
@@ -39,19 +41,29 @@ const DeletePromptConfirm: FC<IProps> = ({
         elevation={0}
       >
         <Stack spacing={2}>
-          <Typography>
-            Are you sure you want to delete this prompt template?
-          </Typography>
+          <Typography>{t('prompt_library:delete_prompt__title')}</Typography>
           <Stack direction="row" spacing={1} justifyContent="flex-end">
             <LoadingButton
               loading={loading}
               variant="secondary"
-              onClick={onConfirm}
+              onClick={(event) => {
+                event.stopPropagation()
+                event.preventDefault()
+                onConfirm?.()
+              }}
             >
-              Delete
+              {t('prompt_library:delete_prompt__action__confirm__title')}
             </LoadingButton>
-            <Button variant="contained" type="submit" onClick={onCancel}>
-              Cancel
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={(event) => {
+                event.stopPropagation()
+                event.preventDefault()
+                onCancel?.()
+              }}
+            >
+              {t('prompt_library:delete_prompt__cancel__confirm__title')}
             </Button>
           </Stack>
         </Stack>

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Salva promemoria",
     "edit_prompt_modal__action__clone__title": "Clona",
     "edit_prompt_modal__action__cancel__title": "Annulla",
-    "edit_prompt_modal__field__template__label": "Modello"
+    "edit_prompt_modal__field__template__label": "Modello",
+    "delete_prompt__title": "Sei sicuro di voler eliminare questo modello di prompt?",
+    "delete_prompt__action__confirm__title": "Elimina",
+    "delete_prompt__cancel__confirm__title": "Annulla"
   }
 }

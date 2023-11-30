@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Prompt opslaan",
     "edit_prompt_modal__action__clone__title": "Klonen",
     "edit_prompt_modal__action__cancel__title": "Annuleren",
-    "edit_prompt_modal__field__template__label": "Sjabloon"
+    "edit_prompt_modal__field__template__label": "Sjabloon",
+    "delete_prompt__title": "Weet je zeker dat je deze prompt sjabloon wilt verwijderen?",
+    "delete_prompt__action__confirm__title": "Verwijderen",
+    "delete_prompt__cancel__confirm__title": "Annuleren"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "प्रम्पट साठवा",
     "edit_prompt_modal__action__clone__title": "क्लोन करा",
     "edit_prompt_modal__action__cancel__title": "रद्द करा",
-    "edit_prompt_modal__field__template__label": "टेम्पलेट"
+    "edit_prompt_modal__field__template__label": "टेम्पलेट",
+    "delete_prompt__title": "तुम्हाला खात्री आहे की तुम्ही हे प्रॉम्प्ट टेम्पलेट हटवायला इच्छिता?",
+    "delete_prompt__action__confirm__title": "हटवा",
+    "delete_prompt__cancel__confirm__title": "रद्द करा"
   }
 }

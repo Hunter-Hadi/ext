@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "프롬프트 저장",
     "edit_prompt_modal__action__clone__title": "복제",
     "edit_prompt_modal__action__cancel__title": "취소",
-    "edit_prompt_modal__field__template__label": "템플릿"
+    "edit_prompt_modal__field__template__label": "템플릿",
+    "delete_prompt__title": "이 프롬프트 템플릿을 삭제하시겠습니까?",
+    "delete_prompt__action__confirm__title": "삭제",
+    "delete_prompt__cancel__confirm__title": "취소"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Shrani predlog",
     "edit_prompt_modal__action__clone__title": "Kopiraj",
     "edit_prompt_modal__action__cancel__title": "Prekliči",
-    "edit_prompt_modal__field__template__label": "Predloga"
+    "edit_prompt_modal__field__template__label": "Predloga",
+    "delete_prompt__title": "Ste prepričani, da želite izbrisati to predlogo za spodbudo?",
+    "delete_prompt__action__confirm__title": "Izbriši",
+    "delete_prompt__cancel__confirm__title": "Prekliči"
   }
 }

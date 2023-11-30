@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "உதவி சேமிக்கவும்",
     "edit_prompt_modal__action__clone__title": "நகலெடு",
     "edit_prompt_modal__action__cancel__title": "ரத்து செய்",
-    "edit_prompt_modal__field__template__label": "வார்ப்புரு"
+    "edit_prompt_modal__field__template__label": "வார்ப்புரு",
+    "delete_prompt__title": "இந்த புரம்பு வார்ப்புருவை நீக்க உறுதியாக விரும்புகிறீர்களா?",
+    "delete_prompt__action__confirm__title": "நீக்கு",
+    "delete_prompt__cancel__confirm__title": "ரத்துசெய்"
   }
 }

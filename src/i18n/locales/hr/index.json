@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Spremi uput",
     "edit_prompt_modal__action__clone__title": "Kloniraj",
     "edit_prompt_modal__action__cancel__title": "Odustani",
-    "edit_prompt_modal__field__template__label": "Predložak"
+    "edit_prompt_modal__field__template__label": "Predložak",
+    "delete_prompt__title": "Jeste li sigurni da želite izbrisati ovaj predložak upita?",
+    "delete_prompt__action__confirm__title": "Izbriši",
+    "delete_prompt__cancel__confirm__title": "Odustani"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Išsaugoti šabloną",
     "edit_prompt_modal__action__clone__title": "Klonuoti",
     "edit_prompt_modal__action__cancel__title": "Atšaukti",
-    "edit_prompt_modal__field__template__label": "Šablonas"
+    "edit_prompt_modal__field__template__label": "Šablonas",
+    "delete_prompt__title": "Ar tikrai norite ištrinti šį šablono pranešimą?",
+    "delete_prompt__action__confirm__title": "Ištrinti",
+    "delete_prompt__cancel__confirm__title": "Atšaukti"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Saglabāt ierosinājumu",
     "edit_prompt_modal__action__clone__title": "Klonēt",
     "edit_prompt_modal__action__cancel__title": "Atcelt",
-    "edit_prompt_modal__field__template__label": "Veidne"
+    "edit_prompt_modal__field__template__label": "Veidne",
+    "delete_prompt__title": "Vai tiešām vēlaties dzēst šo veidņu?",
+    "delete_prompt__action__confirm__title": "Dzēst",
+    "delete_prompt__cancel__confirm__title": "Atcelt"
   }
 }

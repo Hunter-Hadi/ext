@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "プロンプトを保存",
     "edit_prompt_modal__action__clone__title": "複製",
     "edit_prompt_modal__action__cancel__title": "キャンセル",
-    "edit_prompt_modal__field__template__label": "テンプレート"
+    "edit_prompt_modal__field__template__label": "テンプレート",
+    "delete_prompt__title": "このプロンプトテンプレートを削除してもよろしいですか？",
+    "delete_prompt__action__confirm__title": "削除",
+    "delete_prompt__cancel__confirm__title": "キャンセル"
   }
 }

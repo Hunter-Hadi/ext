@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Hifadhi kidokezo",
     "edit_prompt_modal__action__clone__title": "Nakili",
     "edit_prompt_modal__action__cancel__title": "Ghairi",
-    "edit_prompt_modal__field__template__label": "Kiolezo"
+    "edit_prompt_modal__field__template__label": "Kiolezo",
+    "delete_prompt__title": "Je, una uhakika unataka kufuta kigezo hiki cha onyo?",
+    "delete_prompt__action__confirm__title": "Futa",
+    "delete_prompt__cancel__confirm__title": "Ghairi"
   }
 }

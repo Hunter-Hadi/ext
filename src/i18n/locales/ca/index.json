@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Desa el prompt",
     "edit_prompt_modal__action__clone__title": "Clona",
     "edit_prompt_modal__action__cancel__title": "Cancel·la",
-    "edit_prompt_modal__field__template__label": "Plantilla"
+    "edit_prompt_modal__field__template__label": "Plantilla",
+    "delete_prompt__title": "Esteu segur que voleu eliminar aquesta plantilla de prompt?",
+    "delete_prompt__action__confirm__title": "Eliminar",
+    "delete_prompt__cancel__confirm__title": "Cancel·lar"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Salvează promptul",
     "edit_prompt_modal__action__clone__title": "Clonează",
     "edit_prompt_modal__action__cancel__title": "Anulează",
-    "edit_prompt_modal__field__template__label": "Șablon"
+    "edit_prompt_modal__field__template__label": "Șablon",
+    "delete_prompt__title": "Sunteți sigur că doriți să ștergeți acest șablon de prompt?",
+    "delete_prompt__action__confirm__title": "Șterge",
+    "delete_prompt__cancel__confirm__title": "Anulează"
   }
 }

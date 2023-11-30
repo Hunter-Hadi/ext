@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "ಪ್ರಾಂಪ್ಟ್ ಉಳಿಸಿ",
     "edit_prompt_modal__action__clone__title": "ಕ್ಲೋನ್ ಮಾಡಿ",
     "edit_prompt_modal__action__cancel__title": "ರದ್ದುಗೊಳಿಸು",
-    "edit_prompt_modal__field__template__label": "ಟೆಂಪ್ಲೇಟ್"
+    "edit_prompt_modal__field__template__label": "ಟೆಂಪ್ಲೇಟ್",
+    "delete_prompt__title": "ನೀವು ಈ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಅನ್ನು ಖಾಲಿ ಮಾಡಲು ಖಚಿತವಾಗಿದ್ದೀರಿಯಾ?",
+    "delete_prompt__action__confirm__title": "ಅಳಿಸಿ",
+    "delete_prompt__cancel__confirm__title": "ರದ್ದುಗೊಳಿಸಿ"
   }
 }

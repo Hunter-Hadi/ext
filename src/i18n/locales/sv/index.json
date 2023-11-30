@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Spara prompt",
     "edit_prompt_modal__action__clone__title": "Klona",
     "edit_prompt_modal__action__cancel__title": "Avbryt",
-    "edit_prompt_modal__field__template__label": "Mall"
+    "edit_prompt_modal__field__template__label": "Mall",
+    "delete_prompt__title": "Är du säker på att du vill ta bort denna promptmall?",
+    "delete_prompt__action__confirm__title": "Ta bort",
+    "delete_prompt__cancel__confirm__title": "Avbryt"
   }
 }

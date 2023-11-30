@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Зберегти промпт",
     "edit_prompt_modal__action__clone__title": "Клонувати",
     "edit_prompt_modal__action__cancel__title": "Скасувати",
-    "edit_prompt_modal__field__template__label": "Шаблон"
+    "edit_prompt_modal__field__template__label": "Шаблон",
+    "delete_prompt__title": "Ви впевнені, що хочете видалити цей шаблон промпта?",
+    "delete_prompt__action__confirm__title": "Видалити",
+    "delete_prompt__cancel__confirm__title": "Скасувати"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Αποθήκευση πρότασης",
     "edit_prompt_modal__action__clone__title": "Κλωνοποίηση",
     "edit_prompt_modal__action__cancel__title": "Ακύρωση",
-    "edit_prompt_modal__field__template__label": "Πρότυπο"
+    "edit_prompt_modal__field__template__label": "Πρότυπο",
+    "delete_prompt__title": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το πρότυπο προτροπής;",
+    "delete_prompt__action__confirm__title": "Διαγραφή",
+    "delete_prompt__cancel__confirm__title": "Ακύρωση"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "保存提示",
     "edit_prompt_modal__action__clone__title": "克隆",
     "edit_prompt_modal__action__cancel__title": "取消",
-    "edit_prompt_modal__field__template__label": "模板"
+    "edit_prompt_modal__field__template__label": "模板",
+    "delete_prompt__title": "您确定要删除此提示模板吗？",
+    "delete_prompt__action__confirm__title": "删除",
+    "delete_prompt__cancel__confirm__title": "取消"
   }
 }

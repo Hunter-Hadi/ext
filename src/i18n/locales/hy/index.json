@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Պահպանել հուշաթերթը",
     "edit_prompt_modal__action__clone__title": "Պատճենել",
     "edit_prompt_modal__action__cancel__title": "Չեղարկել",
-    "edit_prompt_modal__field__template__label": "Կաղապար"
+    "edit_prompt_modal__field__template__label": "Կաղապար",
+    "delete_prompt__title": "Արդյունքները ջնջելուց համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս խորհուրդի ձևաչափը:",
+    "delete_prompt__action__confirm__title": "Ջնջել",
+    "delete_prompt__cancel__confirm__title": "Չեղարկել"
   }
 }

@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Guardar prompt",
     "edit_prompt_modal__action__clone__title": "Clonar",
     "edit_prompt_modal__action__cancel__title": "Cancelar",
-    "edit_prompt_modal__field__template__label": "Plantilla"
+    "edit_prompt_modal__field__template__label": "Plantilla",
+    "delete_prompt__title": "¿Estás seguro de que quieres eliminar esta plantilla de indicaciones?",
+    "delete_prompt__action__confirm__title": "Eliminar",
+    "delete_prompt__cancel__confirm__title": "Cancelar"
   }
 }

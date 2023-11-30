@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Öneriyi Kaydet",
     "edit_prompt_modal__action__clone__title": "Kopyala",
     "edit_prompt_modal__action__cancel__title": "İptal",
-    "edit_prompt_modal__field__template__label": "Şablon"
+    "edit_prompt_modal__field__template__label": "Şablon",
+    "delete_prompt__title": "Bu ipucu şablonunu silmek istediğinizden emin misiniz?",
+    "delete_prompt__action__confirm__title": "Sil",
+    "delete_prompt__cancel__confirm__title": "İptal"
   }
 }

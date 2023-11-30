@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "ፕሮማት አስቀምጥ",
     "edit_prompt_modal__action__clone__title": "ደንቅ",
     "edit_prompt_modal__action__cancel__title": "ተው",
-    "edit_prompt_modal__field__template__label": "ትርጉም"
+    "edit_prompt_modal__field__template__label": "ትርጉም",
+    "delete_prompt__title": "ይህ ፕሮምፕት ትርጉምን ለመሰረዝ እርግጠኛ ነህ?",
+    "delete_prompt__action__confirm__title": "ሰርዝ",
+    "delete_prompt__cancel__confirm__title": "ይቅር"
   }
 }

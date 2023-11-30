@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Gem prompt",
     "edit_prompt_modal__action__clone__title": "Klon",
     "edit_prompt_modal__action__cancel__title": "Annuller",
-    "edit_prompt_modal__field__template__label": "Skabelon"
+    "edit_prompt_modal__field__template__label": "Skabelon",
+    "delete_prompt__title": "Er du sikker på, at du vil slette denne promptskabelon?",
+    "delete_prompt__action__confirm__title": "Slet",
+    "delete_prompt__cancel__confirm__title": "Annuller"
   }
 }

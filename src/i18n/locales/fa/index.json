@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "ذخیره الگو",
     "edit_prompt_modal__action__clone__title": "کپی",
     "edit_prompt_modal__action__cancel__title": "لغو",
-    "edit_prompt_modal__field__template__label": "الگو"
+    "edit_prompt_modal__field__template__label": "الگو",
+    "delete_prompt__title": "آیا از حذف این الگوی پیام مطمئن هستید؟",
+    "delete_prompt__action__confirm__title": "حذف",
+    "delete_prompt__cancel__confirm__title": "لغو"
   }
 }

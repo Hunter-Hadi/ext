@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Zapisz prompt",
     "edit_prompt_modal__action__clone__title": "Klonuj",
     "edit_prompt_modal__action__cancel__title": "Anuluj",
-    "edit_prompt_modal__field__template__label": "Szablon"
+    "edit_prompt_modal__field__template__label": "Szablon",
+    "delete_prompt__title": "Czy na pewno chcesz usunąć ten szablon promptu?",
+    "delete_prompt__action__confirm__title": "Usuń",
+    "delete_prompt__cancel__confirm__title": "Anuluj"
   }
 }

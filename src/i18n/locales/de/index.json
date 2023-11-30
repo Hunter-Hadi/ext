@@ -721,6 +721,9 @@
     "edit_prompt_modal__action__save_prompt__title": "Prompt speichern",
     "edit_prompt_modal__action__clone__title": "Klonen",
     "edit_prompt_modal__action__cancel__title": "Abbrechen",
-    "edit_prompt_modal__field__template__label": "Vorlage"
+    "edit_prompt_modal__field__template__label": "Vorlage",
+    "delete_prompt__title": "Sind Sie sicher, dass Sie diese Vorlagen-Prompts löschen möchten?",
+    "delete_prompt__action__confirm__title": "Löschen",
+    "delete_prompt__cancel__confirm__title": "Abbrechen"
   }
 }

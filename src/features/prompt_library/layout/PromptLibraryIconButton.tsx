@@ -34,6 +34,8 @@ const PromptLibraryIconButton: FC = () => {
   } = usePromptLibrary()
   const { updateSidebarConversationType } = useSidebarSettings()
   const { isOpenPromptLibraryEditForm } = usePromptActions()
+  // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
+  const [isClickOpenOnce, setIsClickOpenOnce] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const isImmersiveChatPage = isMaxAIImmersiveChatPage()
@@ -80,6 +82,7 @@ const PromptLibraryIconButton: FC = () => {
     setTimeout(() => {
       paperRef.current?.focus()
     }, 100)
+    setIsClickOpenOnce(true)
     openPromptLibrary()
     setPlacement(newPlacement)
   }
@@ -181,7 +184,7 @@ const PromptLibraryIconButton: FC = () => {
                   p: 2,
                 }}
               >
-                <PromptLibrary />
+                {isClickOpenOnce && <PromptLibrary />}
               </Paper>
             </div>
           </Fade>

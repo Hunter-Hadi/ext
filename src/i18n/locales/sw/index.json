@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Picha ya gpt-4 kutoka Juni 13, 2023 na data ya wito wa kazi. Tofauti na gpt-4, mfano huu hautapokea sasisho na utapitwa baada ya miezi 3 tangu kutolewa kwa toleo jipya.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Picha ya gpt-4-32 kutoka Juni 13, 2023. Tofauti na gpt-4-32k, mfano huu hautapokea sasisho na utapitwa baada ya miezi 3 tangu kutolewa kwa toleo jipya.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Haraka kama ChatGPT Plus. GPT-3.5-turbo, GPT-4, na GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Haraka kama ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo, na GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Tumia ChatGPT kuwezesha upanuzi.",
     "provider__chatgpt__auth_button_text": "Endelea na ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Mfano wa haraka zaidi wa OpenAI, mzuri kwa majukumu ya kila siku.",

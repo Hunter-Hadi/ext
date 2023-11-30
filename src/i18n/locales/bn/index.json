@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "13 জুন 2023 এর গুগল থেকে স্ন্যাপশট গ্রহণ করা gpt-4 মডেল। gpt-4 এর মতো, এই মডেলটি আপডেট পাবে না, এবং নতুন সংস্করণ প্রকাশিত হওয়ার 3 মাস পরে বাতিল হবে।",
     "provider__openai_api__model__gpt_4_0613_32k__description": "13 জুন 2023 এর গুগল থেকে স্ন্যাপশট গ্রহণ করা gpt-4-32। gpt-4-32k এর মতো, এই মডেলটি আপডেট পাবে না, এবং নতুন সংস্করণ প্রকাশিত হওয়ার 3 মাস পরে বাতিল হবে।",
     "provider__chatgpt__title": "চ্যাটজিপিটি",
-    "provider__chatgpt__short_description": "চ্যাটজিপিটি প্লাসের মতো দ্রুত। GPT-3.5-টার্বো, GPT-4 এবং GPT-3.5-টার্বো-16k।",
+    "provider__chatgpt__short_description": "চ্যাটজিপিটি প্লাসের মতো দ্রুত। GPT-3.5-টার্বো, GPT-4-টার্বো এবং GPT-3.5-টার্বো-16k।",
     "provider__chatgpt__auth_description": "এক্সটেনশন চালাতে চ্যাটজিপিটি ব্যবহার করুন।",
     "provider__chatgpt__auth_button_text": "চ্যাটজিপিটি চালিয়ে যান",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI এর সর্বাধিক দ্রুত মডেল, সাধারণ দৈনন্দিন কাজের জন্য অত্যন্ত ভাল।",

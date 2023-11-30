@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "نسخه ای از gpt-4 از تاریخ 13 ژوئن 2023 با داده های فراخوانی تابع. برخلاف gpt-4، این مدل به روز رسانی نخواهد شد و 3 ماه پس از انتشار نسخه جدید منسوخ خواهد شد.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "نسخه ای از gpt-4-32 از تاریخ 13 ژوئن 2023. برخلاف gpt-4-32k، این مدل به روز رسانی نخواهد شد و 3 ماه پس از انتشار نسخه جدید منسوخ خواهد شد.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "همانند ChatGPT Plus. GPT-3.5-turbo، GPT-4 و GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "همانند ChatGPT Plus. GPT-3.5-turbo، GPT-4-turbo و GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "از ChatGPT برای قدرت دادن به افزونه استفاده کنید.",
     "provider__chatgpt__auth_button_text": "ادامه با ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "سریعترین مدل OpenAI، عالی برای بیشتر وظایف روزمره.",

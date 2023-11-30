@@ -336,7 +336,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Հուշարձան gpt-4-ից, 2023 թվականի հունիսի 13-ից, ֆունկցիայի կանչման տվյալներով: Այս մոդելը չի ստանալու թարմացումներ և կանգառվի 3 ամիս հետո նոր տարբերակի թողարկման։",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Հուշարձան gpt-4-32-ից, 2023 թվականի հունիսի 13-ից: Այս մոդելը չի ստանալու թարմացումներ և կանգառվի 3 ամիս հետո նոր տարբերակի թողարկման։",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Հարմար է ChatGPT Plus-ից: GPT-3.5-turbo, GPT-4 և GPT-3.5-turbo-16k:",
+    "provider__chatgpt__short_description": "Արագությամբ ChatGPT Plus-ից: GPT-3.5-turbo, GPT-4-turbo և GPT-3.5-turbo-16k։",
     "provider__chatgpt__auth_description": "Օգտագործեք ChatGPT-ը ընդլայնելու համար:",
     "provider__chatgpt__auth_button_text": "Շարունակեք ChatGPT-ով",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI-ի արագաբանական մոդելը, համակարգչային աշխատանքների համար հզորացումների համար լավ է:",

@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Momentopname van gpt-4 vanaf 13 juni 2023 met functieoproepgegevens. In tegenstelling tot gpt-4 ontvangt dit model geen updates en wordt het 3 maanden na de release van een nieuwe versie stopgezet.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Momentopname van gpt-4-32 vanaf 13 juni 2023. In tegenstelling tot gpt-4-32k ontvangt dit model geen updates en wordt het 3 maanden na de release van een nieuwe versie stopgezet.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Net zo snel als ChatGPT Plus. GPT-3.5-turbo, GPT-4 en GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Net zo snel als ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo en GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Gebruik ChatGPT om de extensie te activeren.",
     "provider__chatgpt__auth_button_text": "Doorgaan met ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Het snelste model van OpenAI, ideaal voor de meeste dagelijkse taken.",

@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "જૂન 13, 2023 ની gpt-4 ની સ્નેપશોટ જેમાં કાર્ય બુલાવવાના ડેટા છે. gpt-4 ની જેમ આ મોડેલને અપડેટ મળતા નથી અને તે નવી વર્ઝન જાહેર થાય પછી 3 મહિનામાં અપડેટ થઈ જશે.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "જૂન 13, 2023 ની gpt-4-32 ની સ્નેપશોટ. gpt-4-32k ની જેમ આ મોડેલને અપડેટ મળતા નથી અને તે નવી વર્ઝન જાહેર થાય પછી 3 મહિનામાં અપડેટ થઈ જશે.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "ચેટજીપીટી પ્લસ જેવું ઝડપી છે. GPT-3.5-ટર્બો, GPT-4 અને GPT-3.5-ટર્બો-16k.",
+    "provider__chatgpt__short_description": "ચેટજીપીટી પ્લસ જેવું ઝડપીથી. GPT-3.5-ટર્બો, GPT-4-ટર્બો અને GPT-3.5-ટર્બો-16k.",
     "provider__chatgpt__auth_description": "એક્સ્ટેન્શનને ચાલાવવા માટે ChatGPT નો ઉપયોગ કરો.",
     "provider__chatgpt__auth_button_text": "ChatGPT સાથે ચાલુ રાખો",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI નું સર્વાધિક ઝડપી મોડેલ, મહત્વપૂર્ણ દૈનિક કાર્યો માટે મહાન.",

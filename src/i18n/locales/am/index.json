@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "በ June 13th 2023 የ gpt-4 የሚስተካከዩ ማሳወቂያውን የሚጠቀሙ በማስተካከያው የሚስተካከዩ ለመጠቀም ይጠቀሙ። ይህንን ሞዴል ከ gpt-4 ጋር የሚጠቀሙ ማሳወቂያዎች የሚሆኑ ለመጠቀም ይጠቀሙ። ይህንን ሞዴል በማስተካከያው የሚጠቀሙ የሆነ ለ 3 ወርም በማስተካከያው የሚጠቀሙ ይጠቀሙ።",
     "provider__openai_api__model__gpt_4_0613_32k__description": "በ June 13th 2023 የ gpt-4-32 የሚስተካከዩ ማሳወቂያውን የሚጠቀሙ በማስተካከያው የሚስተካከዩ ለመጠቀም ይጠቀሙ። ይህንን ሞዴል ከ gpt-4-32k ጋር የሚጠቀሙ ማሳወቂያዎች የሚሆኑ ለመጠቀም ይጠቀሙ። ይህንን ሞዴል በማስተካከያው የሚጠቀሙ የሆነ ለ 3 ወርም በማስተካከያው የሚጠቀሙ ይጠቀሙ።",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "በChatGPT Plus ግራጭ በትንሽ የሚገኝ ፣ GPT-3.5-turbo, GPT-4, እና GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "በChatGPT Plus ግብዣ በትንሽ የሚገኝ ፣ GPT-3.5-turbo, GPT-4-turbo, እና GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "እርስዎን የሚሞቱትን ChatGPT በመጠቀም ይጠቀሙ።",
     "provider__chatgpt__auth_button_text": "በ ChatGPT የሚሞቱትን ይቀጥሉ",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI የተሰጠው ብልህናም, በተጠቀምነው የባለቤት ለመጠቀም የሚሆኑትን ይጠቀሙ።",

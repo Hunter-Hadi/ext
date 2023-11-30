@@ -343,7 +343,7 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "The latest GPT-4 model with improved instruction following, JSON mode, reproducible outputs, parallel function calling, and more. Returns a maximum of 4,096 output tokens. This preview model is not yet suited for production traffic.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Ability to understand images, in addition to all other GPT-4 Turbo capabilties. Returns a maximum of 4,096 output tokens. This is a preview model version and not suited yet for production traffic.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "As fast as ChatGPT Plus. GPT-3.5-turbo, GPT-4, and GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "As fast as ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo, and GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Use ChatGPT to power the extension.",
     "provider__chatgpt__auth_button_text": "Continue with ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI's fastest model, great for most everyday tasks.",

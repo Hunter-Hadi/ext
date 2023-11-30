@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Сніпет gpt-4 від 13 червня 2023 року з даними про виклик функцій. На відміну від gpt-4, ця модель не отримуватиме оновлення і буде застарівати через 3 місяці після випуску нової версії.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Сніпет gpt-4-32 від 13 червня 2023 року. На відміну від gpt-4-32k, ця модель не отримуватиме оновлення і буде застарівати через 3 місяці після випуску нової версії.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Так само швидко, як ChatGPT Plus. GPT-3.5-turbo, GPT-4 та GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Так само швидко, як ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo та GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Використовуйте ChatGPT для розширення.",
     "provider__chatgpt__auth_button_text": "Продовжити з ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Найшвидша модель OpenAI, відмінно підходить для більшості повсякденних завдань.",

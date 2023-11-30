@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "13 जून 2023 के gpt-4 की स्नैपशॉट जिसमें फ़ंक्शन कॉलिंग डेटा है। gpt-4 के विपरीत, इस मॉडल को अपडेट नहीं किया जाएगा, और इसे नई संस्करण जारी होने के 3 महीने बाद छोड़ दिया जाएगा।",
     "provider__openai_api__model__gpt_4_0613_32k__description": "13 जून 2023 के gpt-4-32 की स्नैपशॉट। gpt-4-32k के विपरीत, इस मॉडल को अपडेट नहीं किया जाएगा, और इसे नई संस्करण जारी होने के 3 महीने बाद छोड़ दिया जाएगा।",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "चैटजीपीटी प्लस के बराबर तेज। जीपीटी-3.5-टर्बो, जीपीटी-4, और जीपीटी-3.5-टर्बो-16k।",
+    "provider__chatgpt__short_description": "चैटजीपीटी प्लस के बराबर तेज। जीपीटी-3.5-टर्बो, जीपीटी-4-टर्बो, और जीपीटी-3.5-टर्बो-16k।",
     "provider__chatgpt__auth_description": "एक्सटेंशन को संचालित करने के लिए ChatGPT का उपयोग करें।",
     "provider__chatgpt__auth_button_text": "ChatGPT के साथ जारी रखें",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI का सबसे तेज़ मॉडल, आम दिन के कार्यों के लिए उत्कृष्ट।",

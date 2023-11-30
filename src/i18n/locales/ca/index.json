@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Instantània de gpt-4 del 13 de juny de 2023 amb dades de crida de funcions. A diferència de gpt-4, aquest model no rebrà actualitzacions i serà obsolet 3 mesos després que es llanci una nova versió.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Instantània de gpt-4-32 del 13 de juny de 2023. A diferència de gpt-4-32k, aquest model no rebrà actualitzacions i serà obsolet 3 mesos després que es llanci una nova versió.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Tan ràpid com ChatGPT Plus. GPT-3.5-turbo, GPT-4 i GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Tan ràpid com ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo i GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Utilitza ChatGPT per alimentar l'extensió.",
     "provider__chatgpt__auth_button_text": "Continua amb ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "El model més ràpid d'OpenAI, ideal per a la majoria de tasques quotidianes.",

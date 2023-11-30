@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "צילום מסך של gpt-4 מ-13 ביוני 2023 עם נתוני קריאת פונקציות. לעומת gpt-4, הדגם הזה לא יקבל עדכונים ויבוטל 3 חודשים לאחר שישוק גרסה חדשה.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "צילום מסך של gpt-4-32 מ-13 ביוני 2023. לעומת gpt-4-32k, הדגם הזה לא יקבל עדכונים ויבוטל 3 חודשים לאחר שישוק גרסה חדשה.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "כמה שזה מהיר כמו ChatGPT Plus. GPT-3.5-turbo, GPT-4, ו-GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "כמהיר כמו ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo, ו-GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "השתמש ב-ChatGPT כדי להפעיל את ההרחבה.",
     "provider__chatgpt__auth_button_text": "המשך עם ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "הדגם המהיר ביותר של OpenAI, מתאים מאוד למשימות היומיומיות הרבות.",

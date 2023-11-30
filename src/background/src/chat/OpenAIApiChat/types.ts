@@ -238,7 +238,7 @@ export const OPENAI_API_MODELS: IAIProviderModel[] = [
     maxTokens: 32768,
   },
   {
-    title: 'gpt-4-1106-preview',
+    title: 'gpt-4-turbo',
     value: 'gpt-4-1106-preview',
     titleTag: 'New',
     tags: ['New'],

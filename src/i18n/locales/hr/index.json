@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Snimka gpt-4 modela od 13. lipnja 2023. s podacima o pozivanju funkcija. Za razliku od gpt-4 modela, ovaj model neće primati ažuriranja i bit će zastario 3 mjeseca nakon izlaska nove verzije.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snimka gpt-4-32 modela od 13. lipnja 2023. Za razliku od gpt-4-32k modela, ovaj model neće primati ažuriranja i bit će zastario 3 mjeseca nakon izlaska nove verzije.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Toliko brzo kao ChatGPT Plus. GPT-3.5-turbo, GPT-4 i GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Brzo kao ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo i GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Koristite ChatGPT za napajanje proširenja.",
     "provider__chatgpt__auth_button_text": "Nastavite s ChatGPT-om",
     "provider__chatgpt__model__gpt_3_5__description": "Najbrži model tvrtke OpenAI, odličan za većinu svakodnevnih zadataka.",

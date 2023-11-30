@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Снимка на gpt-4 от 13 юни 2023 г. с данни за извикване на функции. За разлика от gpt-4, този модел няма да получава актуализации и ще бъде прекратен 3 месеца след пускането на нова версия.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Снимка на gpt-4-32 от 13 юни 2023 г. За разлика от gpt-4-32k, този модел няма да получава актуализации и ще бъде прекратен 3 месеца след пускането на нова версия.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Толкова бързо, колкото ChatGPT Plus. GPT-3.5-turbo, GPT-4 и GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Толкова бързо, колкото ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo и GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Използвайте ChatGPT, за да задействате разширението.",
     "provider__chatgpt__auth_button_text": "Продължете с ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Най-бързият модел на OpenAI, подходящ за повечето ежедневни задачи.",

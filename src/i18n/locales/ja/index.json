@@ -327,7 +327,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "2023年6月13日のgpt-4のスナップショットで、関数呼び出しデータを含みます。gpt-4とは異なり、このモデルは更新を受け取らず、新しいバージョンがリリースされてから3ヶ月後に廃止されます。",
     "provider__openai_api__model__gpt_4_0613_32k__description": "2023年6月13日のgpt-4-32のスナップショット。gpt-4-32kとは異なり、このモデルは更新を受け取らず、新しいバージョンがリリースされてから3ヶ月後に廃止されます。",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "ChatGPT Plusと同じくらい速いです。GPT-3.5-turbo、GPT-4、およびGPT-3.5-turbo-16k。",
+    "provider__chatgpt__short_description": "ChatGPT Plusと同じく速いです。GPT-3.5-turbo、GPT-4-turbo、およびGPT-3.5-turbo-16k。",
     "provider__chatgpt__auth_description": "拡張機能のパワーとしてChatGPTを使用します。",
     "provider__chatgpt__auth_button_text": "ChatGPTで続行",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAIの最速モデルで、ほとんどの日常的なタスクに適しています。",

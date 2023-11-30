@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "從 2023 年 6 月 13 日的 gpt-4 快照中提取的數據。與 gpt-4 不同，此模型將不會接收更新，並在新版本發布後的 3 個月後被棄用。",
     "provider__openai_api__model__gpt_4_0613_32k__description": "2023年6月13日的gpt-4-32快照。与gpt-4-32k不同，此模型将不会接收更新，并在发布新版本后的3个月后被弃用。",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "和ChatGPT Plus一樣快。GPT-3.5-turbo、GPT-4和GPT-3.5-turbo-16k。",
+    "provider__chatgpt__short_description": "像ChatGPT Plus一樣快速。GPT-3.5-turbo、GPT-4-turbo和GPT-3.5-turbo-16k。",
     "provider__chatgpt__auth_description": "使用ChatGPT来提供扩展功能。",
     "provider__chatgpt__auth_button_text": "继续使用ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI最快的模型，非常适合大多数日常任务。",

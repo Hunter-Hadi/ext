@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Snímek gpt-4 z 13. června 2023 s daty volání funkcí. Na rozdíl od gpt-4 tento model nebude aktualizován a bude zastaralý 3 měsíce po vydání nové verze.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snímek gpt-4-32 z 13. června 2023. Na rozdíl od gpt-4-32k tento model nebude aktualizován a bude zastaralý 3 měsíce po vydání nové verze.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Stejně rychlé jako ChatGPT Plus. GPT-3.5-turbo, GPT-4 a GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Stejně rychlé jako ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo a GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Použijte ChatGPT k napájení rozšíření.",
     "provider__chatgpt__auth_button_text": "Pokračovat s ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Nejrychlejší model od OpenAI, skvělý pro většinu běžných úkolů.",

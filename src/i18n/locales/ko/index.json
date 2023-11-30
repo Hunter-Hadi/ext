@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "2023년 6월 13일의 gpt-4 스냅샷입니다. 이 모델은 업데이트를 받지 않으며, 새 버전이 출시된 후 3개월 후에 사용 중단됩니다.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "2023년 6월 13일의 gpt-4-32 스냅샷입니다. 이 모델은 업데이트를 받지 않으며, 새 버전이 출시된 후 3개월 후에 사용 중단됩니다.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "ChatGPT Plus만큼 빠릅니다. GPT-3.5-turbo, GPT-4 및 GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "ChatGPT Plus만큼 빠릅니다. GPT-3.5-turbo, GPT-4-turbo 및 GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "확장 기능을 사용하려면 ChatGPT를 사용하세요.",
     "provider__chatgpt__auth_button_text": "ChatGPT로 계속하기",
     "provider__chatgpt__model__gpt_3_5__description": "대부분의 일상적인 작업에 적합한 OpenAI의 가장 빠른 모델입니다.",

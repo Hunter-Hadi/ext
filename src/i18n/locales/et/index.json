@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Gpt-4 koopia 13. juunist 2023 koos funktsioonide kutsumise andmetega. Erinevalt gpt-4 mudelist ei saa see mudel uuendusi ja see aegub 3 kuud pärast uue versiooni väljalaskmist.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Gpt-4-32 koopia 13. juunist 2023. Erinevalt gpt-4-32k mudelist ei saa see mudel uuendusi ja see aegub 3 kuud pärast uue versiooni väljalaskmist.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Nii kiire kui ChatGPT Plus. GPT-3.5-turbo, GPT-4 ja GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Nii kiire kui ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo ja GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Kasuta laienduse toiteks ChatGPT-d.",
     "provider__chatgpt__auth_button_text": "Jätka ChatGPT-ga",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI kõige kiirem mudel, suurepärane igapäevaste ülesannete jaoks.",

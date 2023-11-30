@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Momentaufnahme von gpt-4 vom 13. Juni 2023 mit Funktionsaufrufdaten. Im Gegensatz zu gpt-4 wird dieses Modell keine Updates erhalten und 3 Monate nach Veröffentlichung einer neuen Version veraltet sein.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Momentaufnahme von gpt-4-32 vom 13. Juni 2023. Im Gegensatz zu gpt-4-32k wird dieses Modell keine Updates erhalten und 3 Monate nach Veröffentlichung einer neuen Version veraltet sein.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "So schnell wie ChatGPT Plus. GPT-3.5-turbo, GPT-4 und GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "So schnell wie ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo und GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Verwenden Sie ChatGPT, um die Erweiterung zu aktivieren.",
     "provider__chatgpt__auth_button_text": "Mit ChatGPT fortfahren",
     "provider__chatgpt__model__gpt_3_5__description": "Das schnellste Modell von OpenAI, ideal für die meisten alltäglichen Aufgaben.",

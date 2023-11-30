@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Øyeblikksbilde av gpt-4 fra 13. juni 2023 med funksjonskall-data. I motsetning til gpt-4 vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Øyeblikksbilde av gpt-4-32 fra 13. juni 2023. I motsetning til gpt-4-32k vil denne modellen ikke motta oppdateringer og vil bli faset ut 3 måneder etter at en ny versjon er utgitt.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Like ChatGPT Plus. GPT-3.5-turbo, GPT-4, and GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Like ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo, and GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Bruk ChatGPT til å drive utvidelsen.",
     "provider__chatgpt__auth_button_text": "Fortsett med ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAIs raskeste modell, flott for de fleste daglige oppgaver.",

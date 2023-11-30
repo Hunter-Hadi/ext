@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "13 جون 2023 کی gpt-4 کی سنیپ شاٹ جو فنکشن کالنگ ڈیٹا کے ساتھ ہے۔ gpt-4 کے برعکس، اس ماڈل کو اپ ڈیٹس نہیں ملیں گیں، اور اس کو جاری رکھنے کے 3 مہینے بعد منسوخ کر دیا جائے گا۔",
     "provider__openai_api__model__gpt_4_0613_32k__description": "13 جون 2023 کی gpt-4-32 کی سنیپ شاٹ۔ gpt-4-32k کے برعکس، اس ماڈل کو اپ ڈیٹس نہیں ملیں گیں، اور اس کو جاری رکھنے کے 3 مہینے بعد منسوخ کر دیا جائے گا۔",
     "provider__chatgpt__title": "چیٹ جی پی ٹی",
-    "provider__chatgpt__short_description": "ChatGPT Plus کی طرح تیز۔ GPT-3.5-turbo، GPT-4، اور GPT-3.5-turbo-16k۔",
+    "provider__chatgpt__short_description": "ChatGPT Plus کی طرح تیز۔ GPT-3.5-turbo، GPT-4-turbo، اور GPT-3.5-turbo-16k۔",
     "provider__chatgpt__auth_description": "ایکسٹینشن کو چلانے کے لئے چیٹ جی پی ٹی استعمال کریں۔",
     "provider__chatgpt__auth_button_text": "چیٹ جی پی ٹی کے ساتھ جاری رکھیں",
     "provider__chatgpt__model__gpt_3_5__description": "OpenAI کا سب سے تیز ماڈل، عام دن کے کاموں کے لئے بہترین ہے۔",

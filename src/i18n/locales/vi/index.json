@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Phiên bản gpt-4 từ ngày 13 tháng 6 năm 2023 với dữ liệu gọi hàm. Không giống như gpt-4, mô hình này sẽ không nhận các bản cập nhật và sẽ bị loại bỏ sau 3 tháng kể từ khi phiên bản mới được phát hành.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Phiên bản gpt-4-32 từ ngày 13 tháng 6 năm 2023. Không giống như gpt-4-32k, mô hình này sẽ không nhận các bản cập nhật và sẽ bị loại bỏ sau 3 tháng kể từ khi phiên bản mới được phát hành.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Nhanh như ChatGPT Plus. GPT-3.5-turbo, GPT-4 và GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Nhanh như ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo và GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Sử dụng ChatGPT để cung cấp sức mạnh cho tiện ích.",
     "provider__chatgpt__auth_button_text": "Tiếp tục với ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Mô hình nhanh nhất của OpenAI, phù hợp cho hầu hết các nhiệm vụ hàng ngày.",

@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Στιγμιότυπο του gpt-4 από τις 13 Ιουνίου 2023 με δεδομένα κλήσης συνάρτησης. Αντίθετα με το gpt-4, αυτό το μοντέλο δεν θα λαμβάνει ενημερώσεις και θα καταργηθεί 3 μήνες μετά την κυκλοφορία νέας έκδοσης.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Στιγμιότυπο του gpt-4-32 από τις 13 Ιουνίου 2023. Αντίθετα με το gpt-4-32k, αυτό το μοντέλο δεν θα λαμβάνει ενημερώσεις και θα καταργηθεί 3 μήνες μετά την κυκλοφορία νέας έκδοσης.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "Τόσο γρήγορο όσο το ChatGPT Plus. GPT-3.5-turbo, GPT-4 και GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "Τόσο γρήγορο όσο το ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo και GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Χρησιμοποιήστε το ChatGPT για να ενεργοποιήσετε την επέκταση.",
     "provider__chatgpt__auth_button_text": "Συνέχεια με το ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Το γρηγορότερο μοντέλο της OpenAI, ιδανικό για τις περισσότερες καθημερινές εργασίες.",

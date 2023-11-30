@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Captură instantanee a gpt-4 din 13 iunie 2023 cu date de apelare a funcțiilor. Spre deosebire de gpt-4, acest model nu va primi actualizări și va fi învechit la 3 luni după lansarea unei noi versiuni.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Captură instantanee a gpt-4-32 din 13 iunie 2023. Spre deosebire de gpt-4-32k, acest model nu va primi actualizări și va fi învechit la 3 luni după lansarea unei noi versiuni.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "La fel de rapid ca ChatGPT Plus. GPT-3.5-turbo, GPT-4 și GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "La fel de rapid ca ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo și GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "Utilizați ChatGPT pentru a alimenta extensia.",
     "provider__chatgpt__auth_button_text": "Continuați cu ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Cel mai rapid model OpenAI, excelent pentru majoritatea sarcinilor de zi cu zi.",

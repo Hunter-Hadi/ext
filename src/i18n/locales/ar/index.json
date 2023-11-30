@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "لقطة لـ gpt-4 من تاريخ 13 يونيو 2023 مع بيانات استدعاء الوظائف. على عكس gpt-4، لن يتم تحديث هذا النموذج وسيتم إيقافه بعد 3 أشهر من إصدار نسخة جديدة.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "لقطة لـ gpt-4-32 من تاريخ 13 يونيو 2023. على عكس gpt-4-32k، لن يتم تحديث هذا النموذج وسيتم إيقافه بعد 3 أشهر من إصدار نسخة جديدة.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "بسرعة ChatGPT Plus. GPT-3.5-turbo، GPT-4، و GPT-3.5-turbo-16k.",
+    "provider__chatgpt__short_description": "بسرعة ChatGPT Plus. GPT-3.5-turbo، GPT-4-turbo، و GPT-3.5-turbo-16k.",
     "provider__chatgpt__auth_description": "استخدم ChatGPT لتشغيل الامتداد.",
     "provider__chatgpt__auth_button_text": "المتابعة مع ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "أسرع نموذج لدى OpenAI، رائع لمعظم المهام اليومية.",

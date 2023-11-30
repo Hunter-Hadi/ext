@@ -338,7 +338,7 @@
     "provider__openai_api__model__gpt_4_0613__description": "Snapshot gpt-4 dari 13 Jun 2023 dengan data panggilan fungsi. Berbeza dengan gpt-4, model ini tidak akan menerima kemas kini, dan akan ditarik balik 3 bulan selepas versi baru dikeluarkan.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snapshot gpt-4-32 dari 13 Jun 2023. Berbeza dengan gpt-4-32k, model ini tidak akan menerima kemas kini, dan akan ditarik balik 3 bulan selepas versi baru dikeluarkan.",
     "provider__chatgpt__title": "ChatGPT",
-    "provider__chatgpt__short_description": "ചാറ്റ്‌ജിപിടി പ്ലസിനേക്കാർക്ക് വേഗത്തിൽ. ജിപിടി-3.5-ടർബോ, ജിപിടി-4, അല്ലെങ്കിൽ ജിപിടി-3.5-ടർബോ-16k.",
+    "provider__chatgpt__short_description": "ചാറ്റ്‌ജിപിടി പ്ലസിനേക്കുള്ളതും വേഗത്തിൽ. ജിപിടി-3.5-ടർബോ, ജിപിടി-4-ടർബോ, എന്നിവയും ജിപിടി-3.5-ടർബോ-16k.",
     "provider__chatgpt__auth_description": "Gunakan ChatGPT untuk memperkuat sambungan ini.",
     "provider__chatgpt__auth_button_text": "Teruskan dengan ChatGPT",
     "provider__chatgpt__model__gpt_3_5__description": "Model terpantas OpenAI, hebat untuk kebanyakan tugas harian.",

@@ -7,7 +7,6 @@ import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import Announcement from '@/components/Announcement'
-import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 // init i18n
 import '@/i18n'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
@@ -86,7 +85,6 @@ const App: FC = () => {
                 <NormalChatPage />
               </Stack>
             </Stack>
-            <GAPageLoader />
           </AppSuspenseLoadingLayout>
         </BrowserVersionDetector>
       </Stack>

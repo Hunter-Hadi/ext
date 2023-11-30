@@ -13,7 +13,6 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { getEnv } from '@/utils/AppEnv'
 import Announcement from '@/components/Announcement'
-import GAPageLoader from '@/pages/sidebarLayouts/GAPageLoader'
 // init i18n
 import '@/i18n'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
@@ -130,7 +129,6 @@ const App: FC = () => {
                     <NormalChatPage />
                   </Stack>
                 )}
-                <GAPageLoader />
               </AppSuspenseLoadingLayout>
             </BrowserVersionDetector>
           </Stack>

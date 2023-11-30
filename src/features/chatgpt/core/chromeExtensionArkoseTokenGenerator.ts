@@ -19,13 +19,18 @@ class ChromeExtensionArkoseTokenGenerator {
     if (isPingSuccess) {
       return true
     }
-    // 最大3次
-    for (let i = 0; i < 3; i++) {
-      const success = await this.injectIframeOnce()
+    // 最大1次
+    for (let i = 0; i < 1; i++) {
+      const success = await promiseTimeout(
+        this.injectIframeOnce(),
+        10 * 1000,
+        false,
+      )
       if (success) {
         log.info('inject iframe success')
         return true
       } else {
+        log.info('inject iframe fail', 'retry times', i + 1)
         this.removeIframe()
       }
     }
@@ -97,7 +102,7 @@ class ChromeExtensionArkoseTokenGenerator {
     return false
   }
   private injectIframeOnce() {
-    return new Promise((resolve) => {
+    return new Promise<boolean>((resolve) => {
       const once = (event: any) => {
         if (
           event.data &&

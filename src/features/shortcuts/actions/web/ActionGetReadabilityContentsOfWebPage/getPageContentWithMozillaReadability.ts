@@ -1,9 +1,15 @@
 import { Readability } from '@mozilla/readability'
 import TurndownService from 'turndown'
+import { HTMLDocument } from 'linkedom/types/html/document'
 
-const getPageContentWithMozillaReadability = async () => {
+const getPageContentWithMozillaReadability = async (
+  replaceBody?: HTMLElement,
+) => {
   try {
-    const clonedDocument = document.cloneNode(true)
+    const clonedDocument = (document.cloneNode(true) as any) as HTMLDocument
+    if (clonedDocument && replaceBody) {
+      clonedDocument.body.innerHTML = replaceBody.innerHTML
+    }
     const reader = new Readability(clonedDocument as any)
     const readabilityArticle = reader.parse()
     if (!readabilityArticle || !readabilityArticle?.content) {

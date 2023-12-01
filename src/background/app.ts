@@ -48,7 +48,6 @@ import {
   safeGetBrowserTab,
   setChromeExtensionOnBoardingData,
   getChromeExtensionOnBoardingData,
-  createChromeExtensionImmersiveChatPage,
 } from '@/background/utils'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
@@ -468,7 +467,7 @@ const developmentHotReload = () => {
       }
     })
     // createChromeExtensionOptionsPage('#/my-own-prompts')
-    createChromeExtensionImmersiveChatPage('')
+    // createChromeExtensionImmersiveChatPage('')
   }
 }
 

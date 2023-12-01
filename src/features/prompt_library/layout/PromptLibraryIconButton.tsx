@@ -180,6 +180,7 @@ const PromptLibraryIconButton: FC = () => {
                     : `calc(100% - 48px)`,
                   height: 'calc(100vh - 140px)',
                   maxHeight: '1030px',
+                  minWidth: 402,
                   ml: isImmersiveChatPage ? 0 : 1,
                   p: 2,
                 }}

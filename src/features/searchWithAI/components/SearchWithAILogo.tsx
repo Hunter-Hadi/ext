@@ -21,7 +21,12 @@ const SearchWithAILogo = () => {
           color: 'primary.main',
         }}
       />
-      <Typography component="h6" fontSize={14} fontWeight={800} color="inherit">
+      <Typography
+        component="h6"
+        fontSize={'13px'}
+        fontWeight={800}
+        color="inherit"
+      >
         {nameMap[SEARCH_WITH_AI_APP_NAME]}
       </Typography>
     </Stack>

@@ -48,6 +48,7 @@ const useActivity = () => {
       'ON_BOARDING_BLACK_FRIDAY_2023_BANNER',
       true,
     )
+    setIsActivityBlackFriday2023(true)
   }
   // 获取是否已经展示过黑五活动的banner
   useEffect(() => {

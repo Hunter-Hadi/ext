@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "ป้อนชื่อ",
     "feature_card__prompts__edit_prompt__field_icon__title": "ไอคอน",
     "feature_card__prompts__edit_prompt__field_template__title": "แม่แบบข้อความเริ่มต้น",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "แม่แบบข้อความเริ่มต้นสำหรับ ChatGPT\nแม่แบบสามารถรวมตัวแปรต่อไปนี้ได้ทุกจำนวน:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "เทมเพลตข้อความสำหรับ ChatGPT\nเทมเพลตสามารถรวมตัวแปรต่อไปนี้ได้ทุกจำนวน:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "เมื่อเปิดใช้งาน",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ข้อความเริ่มต้นจะถูกส่งโดยตรงไปยัง AI ซึ่งเป็น \"พฤติกรรมปกติ\" เริ่มต้นทุกแม่แบบจะมีตัวเลือกนี้เปิดใช้งานโดยค่าเริ่มต้น",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "เมื่อปิดใช้งาน",

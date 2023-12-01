@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "ಹೆಸರನ್ನು ನಮೂದಿಸಿ",
     "feature_card__prompts__edit_prompt__field_icon__title": "ಐಕಾನ್",
     "feature_card__prompts__edit_prompt__field_template__title": "ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT ಗೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್‌ನಲ್ಲಿ ಕೆಳಗಿನ ಚಿಹ್ನೆಗಳಲ್ಲಿನ ಯಾವುದೇ ಸಂಖ್ಯೆಯ ಮೊತ್ತವನ್ನು ಸೇರಿಸಬಹುದು:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT ಗೆ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್.\nಟೆಂಪ್ಲೇಟ್ ಯಲ್ಲಿ ಈ ಕೆಳಗಿನ ವ್ಯಾರಿಯಬಲ್‌ಗಳಲ್ಲಿ ಯಾವುದೇ ಸಂಖ್ಯೆಯನ್ನು ಹೊಂದಿರಬಹುದು:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "ಸಕ್ರಿಯಗೊಳ್ಳುವಾಗ",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ಪ್ರಾಂಪ್ಟ್ ನೇರವಾಗಿ AI ಗೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ, ಇದು ಡಿಫಾಲ್ಟ್ \"ಸಾಮಾನ್ಯ ನಡವಳಿಕೆ\". ಎಲ್ಲ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್‌ಗಳಲ್ಲಿ ಈ ಆಯ್ಕೆ ಡಿಫಾಲ್ಟ್ ಆಗಿರುತ್ತದೆ.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "ನಿಷ್ಕ್ರಿಯಗೊಳ್ಳುವಾಗ",

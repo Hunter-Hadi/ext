@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "이름 입력",
     "feature_card__prompts__edit_prompt__field_icon__title": "아이콘",
     "feature_card__prompts__edit_prompt__field_template__title": "프롬프트 템플릿",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT용 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT의 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "활성화된 경우",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "프롬프트가 직접 AI로 전송됩니다. 이것이 기본 \"일반 동작\"입니다. 모든 프롬프트 템플릿은 기본적으로 이 옵션이 활성화됩니다.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "비활성화된 경우",

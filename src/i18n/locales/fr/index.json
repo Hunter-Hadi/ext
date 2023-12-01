@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Saisissez un nom",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icône",
     "feature_card__prompts__edit_prompt__field_template__title": "Modèle de suggestion",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Le modèle de suggestion pour ChatGPT.\nLe modèle peut inclure un nombre quelconque des variables suivantes :\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Le modèle de prompt pour ChatGPT.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Lorsqu'il est activé",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "La suggestion sera directement envoyée à l'IA, ce qui est le comportement \"normal\" par défaut. Tous les modèles de suggestions auront cette option activée par défaut.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Lorsqu'il est désactivé",

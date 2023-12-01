@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Vnesite ime",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Predloga namiga",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Predloga namiga za ChatGPT.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Predloga za spodbudo za ChatGPT.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Ko je omogočeno",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Namig bo neposredno poslan k umetni inteligenci, kar je privzeto »normalno obnašanje«. Vsi predlogi namigov bodo privzeto imeli to možnost omogočeno.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Ko je onemogočeno",

@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Unesite naziv",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Šablon podsticaja",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablon podsticaja za ChatGPT.\nŠablon može sadržati bilo koji broj sledećih promenljivih:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон упитника за ЧатГПТ.\nШаблон може садржавати било који број следећих променљивих:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kada je omogućeno",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Podsticaj će biti direktno poslat AI, što je podrazumevano \"normalno ponašanje\". Svi šabloni podsticaja će imati ovu opciju podrazumevano omogućenu.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kada je onemogućeno",

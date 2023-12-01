@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "نام را وارد کنید",
     "feature_card__prompts__edit_prompt__field_icon__title": "آیکون",
     "feature_card__prompts__edit_prompt__field_template__title": "قالب پرسش",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "قالب پرسش برای ChatGPT.\nقالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "قالب پیشنهاد برای ChatGPT.\nاین قالب می‌تواند شامل هر تعدادی از متغیرهای زیر باشد:\n{{متن_انتخابی}}\n{{دامنه_وب_فعلی}}\n{{تاریخ_سیستم_فعلی}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "وقتی فعال است",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "پرسش به صورت مستقیم به هوش مصنوعی ارسال می‌شود که «رفتار عادی» پیش‌فرض است. تمام قالب‌های پرسش به طور پیش‌فرض این گزینه را فعال دارند.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "وقتی غیرفعال است",

@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "नाम दर्ज करें",
     "feature_card__prompts__edit_prompt__field_icon__title": "आइकन",
     "feature_card__prompts__edit_prompt__field_template__title": "प्रॉम्प्ट टेम्पलेट",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT के लिए प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से किसी भी संख्या का उपयोग किया जा सकता है:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT के लिए प्रॉम्प्ट टेम्पलेट।\nटेम्पलेट में निम्नलिखित चरों में से कोई भी संख्या शामिल हो सकती है:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "जब सक्षम हो",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "प्रॉम्प्ट को सीधे AI को भेजा जाएगा, जो डिफ़ॉल्ट \"सामान्य व्यवहार\" है। सभी प्रॉम्प्ट टेम्पलेट्स को डिफ़ॉल्ट रूप से इस विकल्प को सक्षम किया जाएगा।",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "जब अक्षम हो",

@@ -697,8 +697,8 @@
     "template__error__title": "テンプレートが必要です"
   },
   "prompt_library": {
-    "use_prompt_library__title": "プロンプトライブラリを使用する",
-    "edit_prompt__template__placeholder": "実際のプロンプトテンプレートを作成するためにこのフィールドを使用してください。\n\nプロンプトテンプレート内で入力可能なテキストフィールドに変換される変数を追加できます。プロンプトで{{を入力し、プロンプトテンプレートの変数を作成してみてください。プロンプトテンプレート内で変数を複数回使用することができます。プロンプトが使用されると、変数は自動的に対応する入力テキストで置き換えられます。",
+    "use_prompt_library__title": "1クリックのプロンプト",
+    "edit_prompt__template__placeholder": "ChatGPT用のプロンプトテンプレート。\nテンプレートには以下の変数を任意の数含めることができます:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "お気に入り",
     "tab__public__title": "公開",
     "tab__own__title": "自分の",
@@ -725,6 +725,5 @@
     "delete_prompt__title": "このプロンプトテンプレートを削除してもよろしいですか？",
     "delete_prompt__action__confirm__title": "削除",
     "delete_prompt__cancel__confirm__title": "キャンセル"
-  },
-  "": ""
+  }
 }

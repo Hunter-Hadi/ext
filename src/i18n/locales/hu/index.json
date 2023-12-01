@@ -697,8 +697,8 @@
     "template__error__title": "A sablon kötelező"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Használja a prompt könyvtárat",
-    "edit_prompt__template__placeholder": "Használja ezt a mezőt az aktuális prompt sablon létrehozásához.\n\nHozzáadhat változókat, amelyek kitölthető szövegmezőkké válnak a prompt sablonban. Próbálja meg beírni a {{ karaktert a promptjába, és kezdjen el változókat létrehozni a prompt sablonjához. A változókat többször is használhatja a prompt sablonjában. Amikor a promptot használja, a változók automatikusan helyettesítésre kerülnek a megfelelően bevitt szöveggel.",
+    "use_prompt_library__title": "1 kattintásos segédletek",
+    "edit_prompt__template__placeholder": "A ChatGPT-hez tartozó segédlet sablon.\nA sablon tartalmazhatja a következő változókat:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Kedvencek",
     "tab__public__title": "Nyilvános",
     "tab__own__title": "Saját",

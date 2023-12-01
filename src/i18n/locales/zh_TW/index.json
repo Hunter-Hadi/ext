@@ -697,8 +697,8 @@
     "template__error__title": "需要模板"
   },
   "prompt_library": {
-    "use_prompt_library__title": "使用提示庫",
-    "edit_prompt__template__placeholder": "使用此欄位來建立您的實際提示模板。\n\n您可以添加變數，這些變數將在提示模板中變成可填寫的文本字段。嘗試在提示上輸入{{並開始為提示模板創建變數。您可以在提示模板中多次使用變數。當使用提示時，變數將自動替換為相應的輸入文本。",
+    "use_prompt_library__title": "1點擊提示",
+    "edit_prompt__template__placeholder": "ChatGPT的提示模板。\n模板可以包含以下任意數量的變數：\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "收藏",
     "tab__public__title": "公開",
     "tab__own__title": "自己的",

@@ -697,8 +697,8 @@
     "template__error__title": "Šablona je povinná"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Použít knihovnu promptů",
-    "edit_prompt__template__placeholder": "Použijte toto pole k vytvoření skutečné šablony promptu.\n\nMůžete přidat proměnné, které se stanou vyplnitelnými textovými poli ve šabloně promptu. Zkuste napsat {{ ve svém promptu a začněte vytvářet proměnné pro vaši šablonu promptu. Proměnné můžete použít více než jednou ve šabloně promptu. Při použití promptu budou proměnné automaticky nahrazeny odpovídajícím zadaným textem.",
+    "use_prompt_library__title": "1-kliknutí na podněty",
+    "edit_prompt__template__placeholder": "Šablona podnětu pro ChatGPT.\nŠablona může obsahovat libovolné množství následujících proměnných:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Oblíbené",
     "tab__public__title": "Veřejné",
     "tab__own__title": "Vlastní",

@@ -697,8 +697,8 @@
     "template__error__title": "Template diperlukan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Guna perpustakaan prompt",
-    "edit_prompt__template__placeholder": "Gunakan medan ini untuk membuat templat prompt sebenar anda.\n\nAnda boleh menambah pemboleh ubah yang akan menjadi medan teks yang boleh diisi dalam templat prompt. Cuba taip {{ pada prompt anda dan mulakan membuat pemboleh ubah untuk templat prompt anda. Anda boleh menggunakan pemboleh ubah lebih daripada sekali dalam templat prompt anda. Apabila prompt digunakan, pemboleh ubah akan digantikan dengan teks yang dimasukkan secara automatik.",
+    "use_prompt_library__title": "1-klik promp",
+    "edit_prompt__template__placeholder": "Templat promp untuk ChatGPT.\nTemplat boleh mengandungi sebarang nombor pembolehubah berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Kegemaran",
     "tab__public__title": "Awam",
     "tab__own__title": "Sendiri",

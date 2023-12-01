@@ -697,8 +697,8 @@
     "template__error__title": "Mall krävs"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Använd promptbibliotek",
-    "edit_prompt__template__placeholder": "Använd detta fält för att skapa din faktiska promptmall.\n\nDu kan lägga till variabler som kommer att bli ifyllningsbara textfält i promptmallen. Prova att skriva {{ i din prompt och börja skapa variabler för din promptmall. Du kan använda variabler mer än en gång i din promptmall. När prompten används kommer variablerna automatiskt att ersättas med motsvarande inmatad text.",
+    "use_prompt_library__title": "1-klicka-promptar",
+    "edit_prompt__template__placeholder": "Mallen för prompten för ChatGPT.\nMallen kan inkludera vilket antal av följande variabler som helst:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",
@@ -725,6 +725,5 @@
     "delete_prompt__title": "Är du säker på att du vill ta bort denna promptmall?",
     "delete_prompt__action__confirm__title": "Ta bort",
     "delete_prompt__cancel__confirm__title": "Avbryt"
-  },
-  "": ""
+  }
 }

@@ -697,8 +697,8 @@
     "template__error__title": "Nepieciešams veidne"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Izmantot jautājumu bibliotēku",
-    "edit_prompt__template__placeholder": "Izmantojiet šo lauku, lai izveidotu faktisko jautājuma veidni.\n\nJūs varat pievienot mainīgos, kas pārvērtīsies par aizpildāmiem teksta laukiem jautājuma veidnē. Mēģiniet ierakstīt {{ savā jautājumā un sāciet izveidot mainīgos savai jautājuma veidnei. Jūs varat izmantot mainīgos vairākas reizes savā jautājuma veidnē. Kad tiek izmantots jautājums, mainīgie tiks aizstāti ar atbilstoši ievadīto tekstu automātiski.",
+    "use_prompt_library__title": "1-klikšķa pamudinājumi",
+    "edit_prompt__template__placeholder": "Pamudinājuma veidne ChatGPT.\nVeidnē var iekļaut jebkuru skaitu no šādām mainīgajām:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Iecienītie",
     "tab__public__title": "Publiskie",
     "tab__own__title": "Paša",

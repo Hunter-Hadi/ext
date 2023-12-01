@@ -271,6 +271,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `prompt_editor.${key}`)) {
       return `prompt_editor.${key}`
     }
+    if (_.get(sourceJson, `prompt_library.${key}`)) {
+      return `prompt_library.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs
@@ -582,6 +585,8 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = [
+    'use_prompt_library__title',
+    'edit_prompt__template__placeholder'
   ]
   const retryLanguageCodes = [
   ]

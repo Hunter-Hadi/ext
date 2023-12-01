@@ -697,8 +697,8 @@
     "template__error__title": "Es requereix una plantilla"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Utilitza la biblioteca de promps",
-    "edit_prompt__template__placeholder": "Utilitza aquest camp per crear la teva plantilla de prompt real.\n\nPots afegir variables que es convertiran en camps de text omplibles a la plantilla de prompt. Prova d'escriure {{ al teu prompt i comença a crear variables per a la teva plantilla de prompt. Pots utilitzar les variables més d'una vegada a la plantilla de prompt. Quan s'utilitzi el prompt, les variables seran reemplaçades automàticament pel text introduït corresponent.",
+    "use_prompt_library__title": "Prompts de 1 clic",
+    "edit_prompt__template__placeholder": "La plantilla de prompt per a ChatGPT.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Preferits",
     "tab__public__title": "Públic",
     "tab__own__title": "Propi",

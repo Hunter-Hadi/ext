@@ -697,8 +697,8 @@
     "template__error__title": "Skabelon er påkrævet"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Brug prompt bibliotek",
-    "edit_prompt__template__placeholder": "Brug dette felt til at oprette din faktiske prompt skabelon.\n\nDu kan tilføje variabler, der vil blive til udfyldelige tekstfelter i prompt skabelonen. Prøv at skrive {{ i din prompt og begynd at oprette variabler til din prompt skabelon. Du kan bruge variabler mere end én gang i din prompt skabelon. Når prompten bruges, vil variablerne automatisk blive erstattet af den tilsvarende indtastede tekst.",
+    "use_prompt_library__title": "1-klik prompts",
+    "edit_prompt__template__placeholder": "Promptskabelonen til ChatGPT.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoritter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",

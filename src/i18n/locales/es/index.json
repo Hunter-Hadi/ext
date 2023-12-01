@@ -697,8 +697,8 @@
     "template__error__title": "Se requiere una plantilla"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Usar biblioteca de indicaciones",
-    "edit_prompt__template__placeholder": "Utilice este campo para crear su plantilla de indicaciones actual.\n\nPuede agregar variables que se convertirán en campos de texto rellenables en la plantilla de indicaciones. Intente escribir {{ en su indicación y comience a crear variables para su plantilla de indicaciones. Puede usar variables más de una vez en su plantilla de indicaciones. Cuando se utiliza la indicación, las variables se reemplazarán automáticamente por el texto ingresado correspondiente.",
+    "use_prompt_library__title": "Prompts de 1 clic",
+    "edit_prompt__template__placeholder": "La plantilla de prompt para ChatGPT.\nLa plantilla puede incluir cualquier número de las siguientes variables:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoritos",
     "tab__public__title": "Público",
     "tab__own__title": "Propio",

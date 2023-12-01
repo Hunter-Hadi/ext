@@ -697,8 +697,8 @@
     "template__error__title": "Kinakailangan ang Template"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Gamitin ang aklatan ng prompt",
-    "edit_prompt__template__placeholder": "Gamitin ang patlang na ito upang lumikha ng iyong aktuwal na template ng prompt.\n\nMaaari kang magdagdag ng mga variable na magiging fillable text fields sa template ng prompt. Subukan ang pag-type ng {{ sa iyong prompt at simulan ang paglikha ng mga variable para sa iyong template ng prompt. Maaari mong gamitin ang mga variable nang higit sa isang beses sa iyong template ng prompt. Kapag ginamit ang prompt, ang mga variable ay papalitan ng kaukulang inputted text nang awtomatiko.",
+    "use_prompt_library__title": "1-click mga prompt",
+    "edit_prompt__template__placeholder": "Ang template ng prompt para sa ChatGPT.\nAng template ay maaaring maglaman ng anumang bilang ng sumusunod na mga variable:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Mga Paborito",
     "tab__public__title": "Pampubliko",
     "tab__own__title": "Sarili",

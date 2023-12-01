@@ -697,8 +697,8 @@
     "template__error__title": "Mall on kohustuslik"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Kasuta küsimuste raamatukogu",
-    "edit_prompt__template__placeholder": "Kasuta seda välja, et luua oma tegeliku küsimuse mall.\n\nSaate lisada muutujaid, mis muutuvad täidetavateks tekstiväljadeks küsimuse mallis. Proovige tippida {{ oma küsimuses ja alustage muutujate loomist oma küsimuse malli jaoks. Saate muutujaid kasutada mitu korda oma küsimuse mallis. Kui küsimust kasutatakse, asendatakse muutujad automaatselt vastava sisestatud tekstiga.",
+    "use_prompt_library__title": "1-klõpsuga vihjed",
+    "edit_prompt__template__placeholder": "Vihje mall ChatGPT jaoks.\nMall võib sisaldada järgmisi muutujaid:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Lemmikud",
     "tab__public__title": "Avalik",
     "tab__own__title": "Oma",

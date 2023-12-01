@@ -697,8 +697,8 @@
     "template__error__title": "Le modèle est requis"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Utiliser la bibliothèque de prompts",
-    "edit_prompt__template__placeholder": "Utilisez ce champ pour créer votre modèle de prompt réel.\n\nVous pouvez ajouter des variables qui se transformeront en champs de texte remplissables dans le modèle de prompt. Essayez de taper {{ sur votre prompt et commencez à créer des variables pour votre modèle de prompt. Vous pouvez utiliser les variables plusieurs fois dans votre modèle de prompt. Lorsque le prompt est utilisé, les variables seront automatiquement remplacées par le texte saisi correspondant.",
+    "use_prompt_library__title": "Prompts en 1 clic",
+    "edit_prompt__template__placeholder": "Le modèle de prompt pour ChatGPT.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoris",
     "tab__public__title": "Public",
     "tab__own__title": "Propre",
@@ -725,6 +725,5 @@
     "delete_prompt__title": "Êtes-vous sûr de vouloir supprimer ce modèle de prompt ?",
     "delete_prompt__action__confirm__title": "Supprimer",
     "delete_prompt__cancel__confirm__title": "Annuler"
-  },
-  "": ""
+  }
 }

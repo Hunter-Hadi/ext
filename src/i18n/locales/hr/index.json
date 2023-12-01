@@ -697,8 +697,8 @@
     "template__error__title": "Predložak je obavezan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Koristi biblioteku uputa",
-    "edit_prompt__template__placeholder": "Koristite ovo polje za stvaranje vašeg stvarnog predloška upute.\n\nMožete dodati varijable koje će postati polja za unos teksta u predlošku upute. Pokušajte tipkati {{ na vašoj uputi i započnite stvarati varijable za vaš predložak upute. Možete koristiti varijable više puta u predlošku upute. Kada se uputa koristi, varijable će automatski biti zamijenjene odgovarajućim unesenim tekstom.",
+    "use_prompt_library__title": "1-klik upute",
+    "edit_prompt__template__placeholder": "Predložak uputa za ChatGPT.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriti",
     "tab__public__title": "Javno",
     "tab__own__title": "Vlastito",

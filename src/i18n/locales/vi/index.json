@@ -697,8 +697,8 @@
     "template__error__title": "Yêu cầu mẫu"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Sử dụng thư viện gợi ý",
-    "edit_prompt__template__placeholder": "Sử dụng trường này để tạo mẫu gợi ý thực tế của bạn.\n\nBạn có thể thêm biến sẽ trở thành các trường văn bản có thể điền vào trong mẫu gợi ý. Hãy thử gõ {{ trong gợi ý của bạn và bắt đầu tạo biến cho mẫu gợi ý của bạn. Bạn có thể sử dụng biến nhiều lần trong mẫu gợi ý của bạn. Khi gợi ý được sử dụng, các biến sẽ được thay thế bằng văn bản đã nhập tương ứng tự động.",
+    "use_prompt_library__title": "Gợi ý 1-click",
+    "edit_prompt__template__placeholder": "Mẫu gợi ý cho ChatGPT.\nMẫu có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Yêu thích",
     "tab__public__title": "Công khai",
     "tab__own__title": "Của tôi",

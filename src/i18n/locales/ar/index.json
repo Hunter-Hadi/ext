@@ -697,8 +697,8 @@
     "template__error__title": "القالب مطلوب"
   },
   "prompt_library": {
-    "use_prompt_library__title": "استخدم مكتبة الإشعارات",
-    "edit_prompt__template__placeholder": "استخدم هذا الحقل لإنشاء قالب الإشعار الفعلي.\n\nيمكنك إضافة متغيرات ستتحول إلى حقول نصية يمكن ملؤها في قالب الإشعار. جرب كتابة {{ في إشعارك وابدأ في إنشاء المتغيرات لقالب الإشعار الخاص بك. يمكنك استخدام المتغيرات أكثر من مرة في قالب الإشعار الخاص بك. عند استخدام الإشعار ، سيتم استبدال المتغيرات بالنص المدخل المقابل تلقائيًا.",
+    "use_prompt_library__title": "التعليمات بنقرة واحدة",
+    "edit_prompt__template__placeholder": "نموذج التعليمة لـ ChatGPT.\nيمكن أن يتضمن النموذج أي عدد من المتغيرات التالية:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "المفضلة",
     "tab__public__title": "عامة",
     "tab__own__title": "خاصة",

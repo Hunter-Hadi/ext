@@ -697,8 +697,8 @@
     "template__error__title": "Sjabloon is verplicht"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Gebruik prompt bibliotheek",
-    "edit_prompt__template__placeholder": "Gebruik dit veld om uw daadwerkelijke sjabloon te maken.\n\nU kunt variabelen toevoegen die in het sjabloon worden omgezet in invulbare tekstvelden. Probeer {{ op uw prompt te typen en begin variabelen te maken voor uw sjabloon. U kunt variabelen meerdere keren gebruiken in uw sjabloon. Wanneer de prompt wordt gebruikt, worden de variabelen automatisch vervangen door de bijbehorende ingevoerde tekst.",
+    "use_prompt_library__title": "1-klik prompts",
+    "edit_prompt__template__placeholder": "De prompt sjabloon voor ChatGPT.\nHet sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{GEMARKEERDE_TEKST}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
     "tab__favorites__title": "Favorieten",
     "tab__public__title": "Openbaar",
     "tab__own__title": "Eigen",

@@ -697,8 +697,8 @@
     "template__error__title": "Il modello è obbligatorio"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Usa la libreria di prompt",
-    "edit_prompt__template__placeholder": "Utilizza questo campo per creare il tuo modello effettivo di prompt.\n\nPuoi aggiungere variabili che si trasformeranno in campi di testo compilabili nel modello di prompt. Prova a digitare {{ sul tuo prompt e inizia a creare variabili per il tuo modello di prompt. Puoi utilizzare le variabili più di una volta nel modello di prompt. Quando viene utilizzato il prompt, le variabili verranno automaticamente sostituite dal testo inserito corrispondente.",
+    "use_prompt_library__title": "Prompt in un clic",
+    "edit_prompt__template__placeholder": "Il modello di prompt per ChatGPT.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Preferiti",
     "tab__public__title": "Pubblico",
     "tab__own__title": "Proprio",

@@ -697,8 +697,8 @@
     "template__error__title": "Template diperlukan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Gunakan perpustakaan prompt",
-    "edit_prompt__template__placeholder": "Gunakan kolom ini untuk membuat template prompt sebenarnya.\n\nAnda dapat menambahkan variabel yang akan berubah menjadi kolom teks yang dapat diisi dalam template prompt. Coba ketik {{ pada prompt Anda dan mulai membuat variabel untuk template prompt Anda. Anda dapat menggunakan variabel lebih dari sekali dalam template prompt Anda. Ketika prompt digunakan, variabel akan digantikan oleh teks yang diinput secara otomatis.",
+    "use_prompt_library__title": "1-klik prompt",
+    "edit_prompt__template__placeholder": "Template prompt untuk ChatGPT.\nTemplate dapat mencakup sejumlah variabel berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favorit",
     "tab__public__title": "Publik",
     "tab__own__title": "Milik Sendiri",

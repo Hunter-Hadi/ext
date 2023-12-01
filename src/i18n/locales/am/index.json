@@ -697,8 +697,8 @@
     "template__error__title": "ትርጉም ያስፈልጋል"
   },
   "prompt_library": {
-    "use_prompt_library__title": "የመረጃ ቤት ይጠቀሙ",
-    "edit_prompt__template__placeholder": "ይህ መረጃ ባለቤት ይጠቀሙ።\n\nየመረጃ ባለቤት ውስጥ የሚሰጡ ቃላት የሚሆኑትን ጽሁፎች ይጨምሩ። የመረጃ ባለቤት ውስጥ በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ። በመረጃ ባለቤት ውስጥ በተጠቀምነው ጽሁፎች የሚሰጡ ቃላት በመጠቀም የሚሰጡ ቃላትን ከመረጃ ባለቤት ውስጥ የሚጠቀሙ አይነት ጽሁፎች ይጨምሩ።",
+    "use_prompt_library__title": "1-click መልእክት",
+    "edit_prompt__template__placeholder": "የ ChatGPT ስህተት ማስገባትን የሚፈልጉ መልእክቶች።\nየ ስህተት ቅጥር የሚለውን ስህተት ያስገቡት መሳሪያዎች ይህንን በተጨማሪ ቁጥሮች ይመልከቱ:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "የሚወዳደር",
     "tab__public__title": "የህዝብ",
     "tab__own__title": "የእርስዎ",

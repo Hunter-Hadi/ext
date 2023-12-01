@@ -697,8 +697,8 @@
     "template__error__title": "Şablon gereklidir"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Prompt kütüphanesini kullan",
-    "edit_prompt__template__placeholder": "Gerçek prompt şablonunuzu oluşturmak için bu alanı kullanın.\n\nPrompt şablonunda doldurulabilir metin alanlarına dönüşecek değişkenler ekleyebilirsiniz. Prompt'unuzda değişkenleri birden fazla kez kullanabilirsiniz. Prompt kullanıldığında, değişkenler otomatik olarak ilgili girilen metinle değiştirilecektir.",
+    "use_prompt_library__title": "1 tıklamayla ipuçları",
+    "edit_prompt__template__placeholder": "ChatGPT için ipucu şablonu.\nŞablon, aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriler",
     "tab__public__title": "Herkese Açık",
     "tab__own__title": "Kendi",

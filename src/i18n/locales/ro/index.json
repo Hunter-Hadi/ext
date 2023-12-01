@@ -697,8 +697,8 @@
     "template__error__title": "Este necesar un șablon"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Utilizați biblioteca de prompt-uri",
-    "edit_prompt__template__placeholder": "Utilizați acest câmp pentru a crea șablonul real al promptului.\n\nPuteți adăuga variabile care vor deveni câmpuri de text completabile în șablonul promptului. Încercați să tastați {{ în promptul dvs. și începeți să creați variabile pentru șablonul promptului. Puteți utiliza variabile de mai multe ori în șablonul promptului. Când promptul este utilizat, variabilele vor fi înlocuite automat cu textul introdus corespunzător.",
+    "use_prompt_library__title": "Prompturi cu un singur clic",
+    "edit_prompt__template__placeholder": "Șablonul de prompt pentru ChatGPT.\nȘablonul poate include oricâte variabile următoarele:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favorite",
     "tab__public__title": "Public",
     "tab__own__title": "Propriu",

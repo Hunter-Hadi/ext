@@ -697,8 +697,8 @@
     "template__error__title": "Mal er påkrevd"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Bruk promptbibliotek",
-    "edit_prompt__template__placeholder": "Bruk dette feltet til å opprette malen for din faktiske prompt.\n\nDu kan legge til variabler som vil bli omgjort til utfyllbare tekstfelt i promptmalen. Prøv å skrive {{ i prompten din og begynn å opprette variabler for promptmalen din. Du kan bruke variabler flere ganger i promptmalen din. Når prompten brukes, vil variablene automatisk bli erstattet med den tilsvarende innskrivne teksten.",
+    "use_prompt_library__title": "1-klikk-prompts",
+    "edit_prompt__template__placeholder": "Promptmalen for ChatGPT.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{VALGT_TEKST}}\n{{GJELDENDE_NETTSTEDSOMRÅDE}}\n{{SYSTEM_GJELDENDE_DATO}}",
     "tab__favorites__title": "Favoritter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",
@@ -725,6 +725,5 @@
     "delete_prompt__title": "Er du sikker på at du vil slette denne promptmalen?",
     "delete_prompt__action__confirm__title": "Slett",
     "delete_prompt__cancel__confirm__title": "Avbryt"
-  },
-  "": ""
+  }
 }

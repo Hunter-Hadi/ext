@@ -697,8 +697,8 @@
     "template__error__title": "टेम्पलेट आवश्यक आहे"
   },
   "prompt_library": {
-    "use_prompt_library__title": "प्रॉम्प्ट पुस्तकाचा वापर करा",
-    "edit_prompt__template__placeholder": "तुमच्या वास्तविक प्रॉम्प्ट टेम्पलेट तयार करण्यासाठी हे क्षेत्र वापरा.\n\nतुम्ही प्रॉम्प्ट टेम्पलेटमध्ये भरण्यासाठी चर जोडू शकता. तुमच्या प्रॉम्प्ट टेम्पलेटमध्ये चर एकाच वेळेस अनेकदा वापरू शकता. प्रॉम्प्ट वापरल्यानंतर, चरांची स्थानिक टेक्स्टमध्ये स्वतःप्रमाणे बदल केली जाईल.",
+    "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",
+    "edit_prompt__template__placeholder": "ChatGPT साठी प्रॉम्प्ट टेम्पलेट.\nटेम्पलेटमध्ये खालील चरांची कोणतीही संख्या असू शकते:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "आवडते",
     "tab__public__title": "सार्वजनिक",
     "tab__own__title": "आपले",

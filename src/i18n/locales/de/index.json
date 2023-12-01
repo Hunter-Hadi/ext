@@ -697,8 +697,8 @@
     "template__error__title": "Vorlage ist erforderlich"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Prompt-Bibliothek verwenden",
-    "edit_prompt__template__placeholder": "Verwenden Sie dieses Feld, um Ihre eigentliche Prompt-Vorlage zu erstellen.\n\nSie können Variablen hinzufügen, die in der Prompt-Vorlage zu ausfüllbaren Textfeldern werden. Versuchen Sie, {{ in Ihrer Prompt einzugeben und Variablen für Ihre Prompt-Vorlage zu erstellen. Sie können Variablen mehrmals in Ihrer Prompt-Vorlage verwenden. Wenn die Prompt verwendet wird, werden die Variablen automatisch durch den entsprechenden eingegebenen Text ersetzt.",
+    "use_prompt_library__title": "1-Klick-Prompts",
+    "edit_prompt__template__placeholder": "Die Vorlagenvorlage für ChatGPT.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriten",
     "tab__public__title": "Öffentlich",
     "tab__own__title": "Eigenes",

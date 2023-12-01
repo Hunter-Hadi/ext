@@ -697,8 +697,8 @@
     "template__error__title": "Predloga je obvezna"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Uporabi knjižnico predlog",
-    "edit_prompt__template__placeholder": "Uporabite to polje za ustvarjanje dejanske predloge za vašo spodbudo.\n\nLahko dodate spremenljivke, ki se bodo pretvorile v polja za izpolnitev besedila v predlogi spodbude. Poskusite vnesti {{ v svojo spodbudo in začnite ustvarjati spremenljivke za predlogo spodbude. Spremenljivke lahko uporabite večkrat v predlogi spodbude. Ko se uporablja spodbuda, se bodo spremenljivke samodejno zamenjale z ustreznim vnesenim besedilom.",
+    "use_prompt_library__title": "1-klikni spodbude",
+    "edit_prompt__template__placeholder": "Predloga spodbude za ChatGPT.\nPredloga lahko vključuje poljubno število naslednjih spremenljivk:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Priljubljeno",
     "tab__public__title": "Javno",
     "tab__own__title": "Lastno",

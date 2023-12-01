@@ -697,8 +697,8 @@
     "template__error__title": "נדרש תבנית"
   },
   "prompt_library": {
-    "use_prompt_library__title": "השתמש בספריית הצעות",
-    "edit_prompt__template__placeholder": "השתמש בשדה זה כדי ליצור את תבנית ההצעה הממשית שלך.\n\nניתן להוסיף משתנים שיתהפכו לשדות טקסט ניתנים למילוי בתבנית ההצעה. נסה להקליד {{ בהצעתך ולהתחיל ליצור משתנים עבור תבנית ההצעה שלך. ניתן להשתמש במשתנים יותר מפעם אחת בתבנית ההצעה שלך. כאשר ההצעה משתמשת, המשתנים יוחלפו בטקסט המילוי המתאים באופן אוטומטי.",
+    "use_prompt_library__title": "פרומטים בלחיצה אחת",
+    "edit_prompt__template__placeholder": "תבנית הפרומט עבור ChatGPT.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "מועדפים",
     "tab__public__title": "ציבורי",
     "tab__own__title": "שלי",

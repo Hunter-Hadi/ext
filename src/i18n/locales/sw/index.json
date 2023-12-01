@@ -697,8 +697,8 @@
     "template__error__title": "Kigezo ni lazima"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Tumia maktaba ya maelekezo",
-    "edit_prompt__template__placeholder": "Tumia uga huu kuunda kigezo chako halisi cha maelekezo.\n\nUnaweza kuongeza vipengele ambavyo vitageuka kuwa sehemu za maandishi yanayoweza kujazwa katika kigezo cha maelekezo. Jaribu kubonyeza {{ kwenye maelekezo yako na anza kuunda vipengele kwa kigezo chako cha maelekezo. Unaweza kutumia vipengele mara nyingi katika kigezo chako cha maelekezo. Wakati maelekezo yanapotumiwa, vipengele vitabadilishwa na maandishi yaliyoingizwa kiotomatiki.",
+    "use_prompt_library__title": "Vidhibiti vya 1-click",
+    "edit_prompt__template__placeholder": "Kigezo cha vidhibiti kwa ChatGPT.\nKigezo kinaweza kuwa na idadi yoyote ya mabadiliko yafuatayo:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Vipendwa",
     "tab__public__title": "Umma",
     "tab__own__title": "Yangu",

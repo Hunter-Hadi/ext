@@ -697,8 +697,8 @@
     "template__error__title": "Wymagany jest szablon"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Użyj biblioteki promptów",
-    "edit_prompt__template__placeholder": "Użyj tego pola, aby utworzyć swój rzeczywisty szablon promptu.\n\nMożesz dodawać zmienne, które zamienią się w pola tekstowe do wypełnienia w szablonie promptu. Spróbuj wpisać {{ w swoim prompt i zacznij tworzyć zmienne dla swojego szablonu promptu. Możesz używać zmiennych więcej niż raz w szablonie promptu. Gdy prompt zostanie użyty, zmienne zostaną automatycznie zastąpione odpowiednim wprowadzonym tekstem.",
+    "use_prompt_library__title": "1-kliknięcie na podpowiedzi",
+    "edit_prompt__template__placeholder": "Szablon podpowiedzi dla ChatGPT.\nSzablon może zawierać dowolną liczbę zmiennych:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Ulubione",
     "tab__public__title": "Publiczne",
     "tab__own__title": "Własne",

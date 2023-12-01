@@ -697,8 +697,8 @@
     "template__error__title": "Šablon je obavezan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Koristi biblioteku upita",
-    "edit_prompt__template__placeholder": "Koristite ovo polje da biste kreirali stvarni šablon upita.\n\nMožete dodati promenljive koje će se pretvoriti u polja za unos teksta u šablonu upita. Pokušajte da kucate {{ u svom upitu i počnite da kreirate promenljive za svoj šablon upita. Možete koristiti promenljive više puta u šablonu upita. Kada se upit koristi, promenljive će automatski biti zamenjene odgovarajućim unetim tekstom.",
+    "use_prompt_library__title": "1-klik podsticaji",
+    "edit_prompt__template__placeholder": "Šablon podsticaja za ChatGPT.\nŠablon može sadržati bilo koji broj sledećih promenljivih:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Omiljeno",
     "tab__public__title": "Javno",
     "tab__own__title": "Svoje",

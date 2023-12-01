@@ -725,5 +725,6 @@
     "delete_prompt__title": "このプロンプトテンプレートを削除してもよろしいですか？",
     "delete_prompt__action__confirm__title": "削除",
     "delete_prompt__cancel__confirm__title": "キャンセル"
-  }
+  },
+  "": ""
 }

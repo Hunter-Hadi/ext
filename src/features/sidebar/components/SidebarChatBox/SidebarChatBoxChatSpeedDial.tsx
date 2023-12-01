@@ -119,7 +119,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
                   >
                     <ContextMenuIcon
                       icon={'History'}
-                      sx={{ fontSize: '24px' }}
+                      sx={{ fontSize: '24px', color: 'primary.main' }}
                     />
                   </Stack>
                 </TextOnlyTooltip>

@@ -725,5 +725,6 @@
     "delete_prompt__title": "Är du säker på att du vill ta bort denna promptmall?",
     "delete_prompt__action__confirm__title": "Ta bort",
     "delete_prompt__cancel__confirm__title": "Avbryt"
-  }
+  },
+  "": ""
 }

@@ -725,5 +725,6 @@
     "delete_prompt__title": "Êtes-vous sûr de vouloir supprimer ce modèle de prompt ?",
     "delete_prompt__action__confirm__title": "Supprimer",
     "delete_prompt__cancel__confirm__title": "Annuler"
-  }
+  },
+  "": ""
 }

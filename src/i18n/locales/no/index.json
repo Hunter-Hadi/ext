@@ -725,5 +725,6 @@
     "delete_prompt__title": "Er du sikker på at du vil slette denne promptmalen?",
     "delete_prompt__action__confirm__title": "Slett",
     "delete_prompt__cancel__confirm__title": "Avbryt"
-  }
+  },
+  "": ""
 }

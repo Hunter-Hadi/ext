@@ -725,5 +725,6 @@
     "delete_prompt__title": "Tem certeza de que deseja excluir este modelo de prompt?",
     "delete_prompt__action__confirm__title": "Excluir",
     "delete_prompt__cancel__confirm__title": "Cancelar"
-  }
+  },
+  "": ""
 }

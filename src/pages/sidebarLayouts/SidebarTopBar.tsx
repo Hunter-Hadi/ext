@@ -17,7 +17,8 @@ const SidebarTopBar: FC = () => {
   return (
     <Stack>
       {/*黑五*/}
-      {isShowBlackFridayBanner && (
+      {/*deprecated*/}
+      {isShowBlackFridayBanner && false && (
         <Link
           href={`https://app.maxai.me/blackfriday2023`}
           target={'_blank'}

@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Kiolezo",
     "delete_prompt__title": "Je, una uhakika unataka kufuta kigezo hiki cha onyo?",
     "delete_prompt__action__confirm__title": "Futa",
-    "delete_prompt__cancel__confirm__title": "Ghairi"
+    "delete_prompt__cancel__confirm__title": "Ghairi",
+    "use_prompt_library__title__tooltip": "Vidokezo vya 1-click"
   }
 }

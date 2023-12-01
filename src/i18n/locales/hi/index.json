@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "टेम्पलेट",
     "delete_prompt__title": "क्या आप वाकई इस प्रोम्प्ट टेम्पलेट को हटाना चाहते हैं?",
     "delete_prompt__action__confirm__title": "हटाएं",
-    "delete_prompt__cancel__confirm__title": "रद्द करें"
+    "delete_prompt__cancel__confirm__title": "रद्द करें",
+    "use_prompt_library__title__tooltip": "1-क्लिक प्रॉम्प्ट"
   }
 }

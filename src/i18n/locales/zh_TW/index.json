@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "範本",
     "delete_prompt__title": "您確定要刪除此提示範本嗎？",
     "delete_prompt__action__confirm__title": "刪除",
-    "delete_prompt__cancel__confirm__title": "取消"
+    "delete_prompt__cancel__confirm__title": "取消",
+    "use_prompt_library__title__tooltip": "1-點提示"
   }
 }

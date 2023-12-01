@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Plantilla",
     "delete_prompt__title": "¿Estás seguro de que quieres eliminar esta plantilla de indicaciones?",
     "delete_prompt__action__confirm__title": "Eliminar",
-    "delete_prompt__cancel__confirm__title": "Cancelar"
+    "delete_prompt__cancel__confirm__title": "Cancelar",
+    "use_prompt_library__title__tooltip": "Prompts de 1 clic"
   }
 }

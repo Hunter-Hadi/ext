@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "ಟೆಂಪ್ಲೇಟ್",
     "delete_prompt__title": "ನೀವು ಈ ಪ್ರಾಂಪ್ಟ್ ಟೆಂಪ್ಲೇಟ್ ಅನ್ನು ಖಾಲಿ ಮಾಡಲು ಖಚಿತವಾಗಿದ್ದೀರಿಯಾ?",
     "delete_prompt__action__confirm__title": "ಅಳಿಸಿ",
-    "delete_prompt__cancel__confirm__title": "ರದ್ದುಗೊಳಿಸಿ"
+    "delete_prompt__cancel__confirm__title": "ರದ್ದುಗೊಳಿಸಿ",
+    "use_prompt_library__title__tooltip": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು"
   }
 }

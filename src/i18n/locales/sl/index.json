@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Predloga",
     "delete_prompt__title": "Ste prepričani, da želite izbrisati to predlogo za spodbudo?",
     "delete_prompt__action__confirm__title": "Izbriši",
-    "delete_prompt__cancel__confirm__title": "Prekliči"
+    "delete_prompt__cancel__confirm__title": "Prekliči",
+    "use_prompt_library__title__tooltip": "1-klik vprašanja"
   }
 }

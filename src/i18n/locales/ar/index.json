@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "القالب",
     "delete_prompt__title": "هل أنت متأكد أنك تريد حذف قالب الاستدعاء هذا؟",
     "delete_prompt__action__confirm__title": "حذف",
-    "delete_prompt__cancel__confirm__title": "إلغاء"
+    "delete_prompt__cancel__confirm__title": "إلغاء",
+    "use_prompt_library__title__tooltip": "تلميحات بنقرة واحدة"
   }
 }

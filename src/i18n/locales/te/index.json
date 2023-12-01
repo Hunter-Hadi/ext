@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "టెంప్లేట్",
     "delete_prompt__title": "ఈ ప్రాంప్ట్ టెంప్లేట్‌ను తొలగించాలని మీరు ఖచ్చితంగా ఉందా?",
     "delete_prompt__action__confirm__title": "తొలగించు",
-    "delete_prompt__cancel__confirm__title": "రద్దు చేయండి"
+    "delete_prompt__cancel__confirm__title": "రద్దు చేయండి",
+    "use_prompt_library__title__tooltip": "1-క్లిక్ ప్రాంప్టులు"
   }
 }

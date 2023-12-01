@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Šablóna",
     "delete_prompt__title": "Ste si istý, že chcete vymazať tento vzor promptu?",
     "delete_prompt__action__confirm__title": "Vymazať",
-    "delete_prompt__cancel__confirm__title": "Zrušiť"
+    "delete_prompt__cancel__confirm__title": "Zrušiť",
+    "use_prompt_library__title__tooltip": "1-klikové podnety"
   }
 }

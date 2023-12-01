@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Padron",
     "delete_prompt__title": "Sigurado ka bang gusto mong tanggalin ang template ng prompt na ito?",
     "delete_prompt__action__confirm__title": "Tanggalin",
-    "delete_prompt__cancel__confirm__title": "Kanselahin"
+    "delete_prompt__cancel__confirm__title": "Kanselahin",
+    "use_prompt_library__title__tooltip": "Mga prompt sa 1-click"
   }
 }

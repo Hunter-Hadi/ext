@@ -518,7 +518,8 @@
     "add_variable__error_message__variable_name_repeated": "Variable names cannot be repeated"
   },
   "prompt_library": {
-    "use_prompt_library__title": "1-click prompts",
+    "use_prompt_library__title": "1-Click Prompts",
+    "use_prompt_library__title__tooltip": "1-click prompts",
     "tab__favorites__title": "Favorites",
     "tab__public__title": "Public",
     "tab__own__title": "Own",

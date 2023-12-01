@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "ትርጉም",
     "delete_prompt__title": "ይህ ፕሮምፕት ትርጉምን ለመሰረዝ እርግጠኛ ነህ?",
     "delete_prompt__action__confirm__title": "ሰርዝ",
-    "delete_prompt__cancel__confirm__title": "ይቅር"
+    "delete_prompt__cancel__confirm__title": "ይቅር",
+    "use_prompt_library__title__tooltip": "የ1-ጁልት መልእክት"
   }
 }

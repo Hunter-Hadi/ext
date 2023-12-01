@@ -30,9 +30,9 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
           : 'unset',
       [`& .${formControlClasses.root}`]: {
         width:
-          currentBreakpoint === 'xs'
-            ? '100%'
-            : currentBreakpoint === 'sm' || currentBreakpoint === 'md'
+          currentBreakpoint === 'xs' ||
+          currentBreakpoint === 'sm' ||
+          currentBreakpoint === 'md'
             ? 'calc(50% - 8px)'
             : 'unset',
       },

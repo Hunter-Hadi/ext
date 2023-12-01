@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Malli",
     "delete_prompt__title": "Haluatko varmasti poistaa tämän ohjepohjan?",
     "delete_prompt__action__confirm__title": "Poista",
-    "delete_prompt__cancel__confirm__title": "Peruuta"
+    "delete_prompt__cancel__confirm__title": "Peruuta",
+    "use_prompt_library__title__tooltip": "1-napin vihjeet"
   }
 }

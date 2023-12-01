@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "תבנית",
     "delete_prompt__title": "האם אתה בטוח שברצונך למחוק תבנית ההוראות הזו?",
     "delete_prompt__action__confirm__title": "מחק",
-    "delete_prompt__cancel__confirm__title": "ביטול"
+    "delete_prompt__cancel__confirm__title": "ביטול",
+    "use_prompt_library__title__tooltip": "קליק אחד להצעות"
   }
 }

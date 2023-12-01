@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "ટેમ્પલેટ",
     "delete_prompt__title": "શું તમે ખરેખર આ પ્રોમ્પ્ટ ટેમ્પલેટ કાઢવા માંગો છો?",
     "delete_prompt__action__confirm__title": "કાઢી નાંખો",
-    "delete_prompt__cancel__confirm__title": "રદ કરો"
+    "delete_prompt__cancel__confirm__title": "રદ કરો",
+    "use_prompt_library__title__tooltip": "1-ક્લિક પ્રોમ્પ્ટ્સ"
   }
 }

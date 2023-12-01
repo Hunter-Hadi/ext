@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Šablonas",
     "delete_prompt__title": "Ar tikrai norite ištrinti šį šablono pranešimą?",
     "delete_prompt__action__confirm__title": "Ištrinti",
-    "delete_prompt__cancel__confirm__title": "Atšaukti"
+    "delete_prompt__cancel__confirm__title": "Atšaukti",
+    "use_prompt_library__title__tooltip": "Vieno paspaudimo užklausos"
   }
 }

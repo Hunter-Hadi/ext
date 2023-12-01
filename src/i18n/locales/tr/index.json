@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Şablon",
     "delete_prompt__title": "Bu ipucu şablonunu silmek istediğinizden emin misiniz?",
     "delete_prompt__action__confirm__title": "Sil",
-    "delete_prompt__cancel__confirm__title": "İptal"
+    "delete_prompt__cancel__confirm__title": "İptal",
+    "use_prompt_library__title__tooltip": "1 tıklama ile ipuçları"
   }
 }

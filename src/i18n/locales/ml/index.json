@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "ടെംപ്ലേറ്റ്",
     "delete_prompt__title": "ഈ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് ഇല്ലാതാക്കാൻ നിങ്ങൾ ഉറപ്പാണോ?",
     "delete_prompt__action__confirm__title": "ഇല്ലാതാക്കുക",
-    "delete_prompt__cancel__confirm__title": "റദ്ദാക്കുക"
+    "delete_prompt__cancel__confirm__title": "റദ്ദാക്കുക",
+    "use_prompt_library__title__tooltip": "ഒരു ക്ലിക്ക് പ്രോംപ്റ്റ്"
   }
 }

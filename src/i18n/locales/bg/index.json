@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Шаблон",
     "delete_prompt__title": "Сигурни ли сте, че искате да изтриете този шаблон за подсказка?",
     "delete_prompt__action__confirm__title": "Изтриване",
-    "delete_prompt__cancel__confirm__title": "Отказ"
+    "delete_prompt__cancel__confirm__title": "Отказ",
+    "use_prompt_library__title__tooltip": "1-клик промптове"
   }
 }

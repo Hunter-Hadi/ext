@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Predložak",
     "delete_prompt__title": "Jeste li sigurni da želite izbrisati ovaj predložak upita?",
     "delete_prompt__action__confirm__title": "Izbriši",
-    "delete_prompt__cancel__confirm__title": "Odustani"
+    "delete_prompt__cancel__confirm__title": "Odustani",
+    "use_prompt_library__title__tooltip": "1-klik upute"
   }
 }

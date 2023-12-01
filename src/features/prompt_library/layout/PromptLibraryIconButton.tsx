@@ -114,9 +114,10 @@ const PromptLibraryIconButton: FC = () => {
     <>
       <TextOnlyTooltip
         placement={'top'}
-        title={t('prompt_library:use_prompt_library__title')}
+        title={t('prompt_library:use_prompt_library__title__tooltip')}
       >
         <Button
+          data-testid={'maxai-prompt-library-button'}
           onClick={handleClick('top')}
           sx={{
             p: '5px',
@@ -179,7 +180,7 @@ const PromptLibraryIconButton: FC = () => {
                     ? 'calc(100vw - 128px)'
                     : `calc(100% - 48px)`,
                   height: 'calc(100vh - 140px)',
-                  maxHeight: '1030px',
+                  maxHeight: '1067px',
                   minWidth: 402,
                   ml: isImmersiveChatPage ? 0 : 1,
                   p: 2,

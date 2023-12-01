@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Mall",
     "delete_prompt__title": "Är du säker på att du vill ta bort denna promptmall?",
     "delete_prompt__action__confirm__title": "Ta bort",
-    "delete_prompt__cancel__confirm__title": "Avbryt"
+    "delete_prompt__cancel__confirm__title": "Avbryt",
+    "use_prompt_library__title__tooltip": "1-klicka på uppmaningar"
   }
 }

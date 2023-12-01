@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Կաղապար",
     "delete_prompt__title": "Արդյունքները ջնջելուց համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս խորհուրդի ձևաչափը:",
     "delete_prompt__action__confirm__title": "Ջնջել",
-    "delete_prompt__cancel__confirm__title": "Չեղարկել"
+    "delete_prompt__cancel__confirm__title": "Չեղարկել",
+    "use_prompt_library__title__tooltip": "1-կտավորիչ հարցեր"
   }
 }

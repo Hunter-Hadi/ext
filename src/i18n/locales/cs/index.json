@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Šablona",
     "delete_prompt__title": "Jste si jisti, že chcete smazat tento šablonu dotazu?",
     "delete_prompt__action__confirm__title": "Smazat",
-    "delete_prompt__cancel__confirm__title": "Zrušit"
+    "delete_prompt__cancel__confirm__title": "Zrušit",
+    "use_prompt_library__title__tooltip": "1-kliknutí na podněty"
   }
 }

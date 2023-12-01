@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Шаблон",
     "delete_prompt__title": "Ви впевнені, що хочете видалити цей шаблон промпта?",
     "delete_prompt__action__confirm__title": "Видалити",
-    "delete_prompt__cancel__confirm__title": "Скасувати"
+    "delete_prompt__cancel__confirm__title": "Скасувати",
+    "use_prompt_library__title__tooltip": "1-клік промпти"
   }
 }

@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Plantilla",
     "delete_prompt__title": "Esteu segur que voleu eliminar aquesta plantilla de prompt?",
     "delete_prompt__action__confirm__title": "Eliminar",
-    "delete_prompt__cancel__confirm__title": "Cancel·lar"
+    "delete_prompt__cancel__confirm__title": "Cancel·lar",
+    "use_prompt_library__title__tooltip": "Prompts de 1 clic"
   }
 }

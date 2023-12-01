@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "سانچہ",
     "delete_prompt__title": "کیا آپ واقعی اس پرامپ ٹیمپلیٹ کو حذف کرنا چاہتے ہیں؟",
     "delete_prompt__action__confirm__title": "حذف کریں",
-    "delete_prompt__cancel__confirm__title": "منسوخ کریں"
+    "delete_prompt__cancel__confirm__title": "منسوخ کریں",
+    "use_prompt_library__title__tooltip": "1-کلک پرامپٹس"
   }
 }

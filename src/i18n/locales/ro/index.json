@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Șablon",
     "delete_prompt__title": "Sunteți sigur că doriți să ștergeți acest șablon de prompt?",
     "delete_prompt__action__confirm__title": "Șterge",
-    "delete_prompt__cancel__confirm__title": "Anulează"
+    "delete_prompt__cancel__confirm__title": "Anulează",
+    "use_prompt_library__title__tooltip": "Prompturi cu un singur clic"
   }
 }

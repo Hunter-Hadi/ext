@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Veidne",
     "delete_prompt__title": "Vai tiešām vēlaties dzēst šo veidņu?",
     "delete_prompt__action__confirm__title": "Dzēst",
-    "delete_prompt__cancel__confirm__title": "Atcelt"
+    "delete_prompt__cancel__confirm__title": "Atcelt",
+    "use_prompt_library__title__tooltip": "1-klikšķa pamudinājumi"
   }
 }

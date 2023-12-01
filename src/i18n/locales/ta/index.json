@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "வார்ப்புரு",
     "delete_prompt__title": "இந்த புரம்பு வார்ப்புருவை நீக்க உறுதியாக விரும்புகிறீர்களா?",
     "delete_prompt__action__confirm__title": "நீக்கு",
-    "delete_prompt__cancel__confirm__title": "ரத்துசெய்"
+    "delete_prompt__cancel__confirm__title": "ரத்துசெய்",
+    "use_prompt_library__title__tooltip": "1-கிளிக் புரட்சிகள்"
   }
 }

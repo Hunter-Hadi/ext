@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Templat",
     "delete_prompt__title": "Apakah Anda yakin ingin menghapus template prompt ini?",
     "delete_prompt__action__confirm__title": "Hapus",
-    "delete_prompt__cancel__confirm__title": "Batal"
+    "delete_prompt__cancel__confirm__title": "Batal",
+    "use_prompt_library__title__tooltip": "Prompt 1-klik"
   }
 }

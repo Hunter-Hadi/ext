@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Sjabloon",
     "delete_prompt__title": "Weet je zeker dat je deze prompt sjabloon wilt verwijderen?",
     "delete_prompt__action__confirm__title": "Verwijderen",
-    "delete_prompt__cancel__confirm__title": "Annuleren"
+    "delete_prompt__cancel__confirm__title": "Annuleren",
+    "use_prompt_library__title__tooltip": "1-klik prompts"
   }
 }

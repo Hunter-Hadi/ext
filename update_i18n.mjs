@@ -585,8 +585,6 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = [
-    'use_prompt_library__title',
-    'edit_prompt__template__placeholder'
   ]
   const retryLanguageCodes = [
   ]

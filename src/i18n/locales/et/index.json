@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Mall",
     "delete_prompt__title": "Kas olete kindel, et soovite selle märguande malli kustutada?",
     "delete_prompt__action__confirm__title": "Kustuta",
-    "delete_prompt__cancel__confirm__title": "Tühista"
+    "delete_prompt__cancel__confirm__title": "Tühista",
+    "use_prompt_library__title__tooltip": "1-kliki vihjed"
   }
 }

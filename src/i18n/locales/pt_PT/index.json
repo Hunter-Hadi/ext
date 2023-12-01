@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Modelo",
     "delete_prompt__title": "Tem a certeza de que pretende eliminar este modelo de prompt?",
     "delete_prompt__action__confirm__title": "Eliminar",
-    "delete_prompt__cancel__confirm__title": "Cancelar"
+    "delete_prompt__cancel__confirm__title": "Cancelar",
+    "use_prompt_library__title__tooltip": "Prompts de 1 clique"
   }
 }

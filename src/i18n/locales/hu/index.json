@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Sablon",
     "delete_prompt__title": "Biztosan törölni szeretné ezt a prompt sablont?",
     "delete_prompt__action__confirm__title": "Törlés",
-    "delete_prompt__cancel__confirm__title": "Mégse"
+    "delete_prompt__cancel__confirm__title": "Mégse",
+    "use_prompt_library__title__tooltip": "1 kattintásos segédletek"
   }
 }

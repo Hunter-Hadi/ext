@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "แม่แบบ",
     "delete_prompt__title": "คุณแน่ใจหรือว่าต้องการลบเทมเพลตโปรโมตนี้?",
     "delete_prompt__action__confirm__title": "ลบ",
-    "delete_prompt__cancel__confirm__title": "ยกเลิก"
+    "delete_prompt__cancel__confirm__title": "ยกเลิก",
+    "use_prompt_library__title__tooltip": "คำใบ้ด้วยการคลิก 1 ครั้ง"
   }
 }

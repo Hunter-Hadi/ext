@@ -163,7 +163,8 @@ class UseChatGPTPlusChat extends BaseChat {
       postBody.model_name = 'gpt-3.5-turbo-16k'
     }
     if (backendAPI === 'get_summarize_response') {
-      postBody.model_name = 'claude-2'
+      // 后端会自动调整model
+      delete (postBody as any).model_name
     }
     const controller = new AbortController()
     const signal = controller.signal

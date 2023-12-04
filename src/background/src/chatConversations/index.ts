@@ -1,13 +1,10 @@
 import { v4 as uuidV4 } from 'uuid'
-import {
-  IAIResponseMessage,
-  IChatMessage,
-  IUserChatMessage,
-} from '@/features/chatgpt/types'
+import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import { IAIProviderType } from '@/background/provider/chat'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 export interface IChatConversation {
   id: string // 对话ID
@@ -339,11 +336,8 @@ export default class ConversationManager {
             break
           }
           const message = conversation.messages[i]
-          if (message.type === 'ai') {
-            const aiMessage = message as IAIResponseMessage
-            if (aiMessage?.originalMessage?.metadata?.title) {
-              title = aiMessage.originalMessage.metadata.title.title
-            }
+          if (isAIMessage(message)) {
+            title = message.originalMessage?.metadata?.title?.title || title
           }
         }
         return {

@@ -1,6 +1,6 @@
 import {
-  IOpenAIChatSendEvent,
   IChromeExtensionClientSendEvent,
+  IOpenAIChatSendEvent,
 } from '@/background/eventType'
 import Browser from 'webextension-polyfill'
 import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'

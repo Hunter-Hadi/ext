@@ -26,7 +26,6 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
   @withLoadingDecorators()
   async execute(params: ActionParameters, engine: any) {
     try {
-      debugger
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
         (await getPageContentWithMozillaReadability())

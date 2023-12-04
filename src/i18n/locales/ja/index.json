@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "名前を入力してください",
     "feature_card__prompts__edit_prompt__field_icon__title": "アイコン",
     "feature_card__prompts__edit_prompt__field_template__title": "プロンプトテンプレート",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPTのプロンプトテンプレート。\nテンプレートには次の変数を任意の数含めることができます:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPTのプロンプトテンプレート。\nテンプレートには以下の変数を含めることができます:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "有効になっている場合",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "プロンプトは直接AIに送信され、これがデフォルトの「通常の動作」です。すべてのプロンプトテンプレートはデフォルトでこのオプションが有効になっています。",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "無効になっている場合",
@@ -697,8 +697,8 @@
     "template__error__title": "テンプレートが必要です"
   },
   "prompt_library": {
-    "use_prompt_library__title": "プロンプトライブラリを使用する",
-    "edit_prompt__template__placeholder": "実際のプロンプトテンプレートを作成するためにこのフィールドを使用してください。\n\nプロンプトテンプレート内で入力可能なテキストフィールドに変換される変数を追加できます。プロンプトで{{を入力し、プロンプトテンプレートの変数を作成してみてください。プロンプトテンプレート内で変数を複数回使用することができます。プロンプトが使用されると、変数は自動的に対応する入力テキストで置き換えられます。",
+    "use_prompt_library__title": "1クリックのプロンプト",
+    "edit_prompt__template__placeholder": "ChatGPT用のプロンプトテンプレート。\nテンプレートには以下の変数を任意の数含めることができます:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "お気に入り",
     "tab__public__title": "公開",
     "tab__own__title": "自分の",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "テンプレート",
     "delete_prompt__title": "このプロンプトテンプレートを削除してもよろしいですか？",
     "delete_prompt__action__confirm__title": "削除",
-    "delete_prompt__cancel__confirm__title": "キャンセル"
+    "delete_prompt__cancel__confirm__title": "キャンセル",
+    "use_prompt_library__title__tooltip": "1クリックのプロンプト"
   }
 }

@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Namen eingeben",
     "feature_card__prompts__edit_prompt__field_icon__title": "Symbol",
     "feature_card__prompts__edit_prompt__field_template__title": "Vorgabenvorlage",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Die Vorgabenvorlage für ChatGPT.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Die Vorlagen für die Aufforderungen in ChatGPT.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{AUSGEWÄHLTER_TEXT}}\n{{AKTUELLE_WEBSITE_DOMAIN}}\n{{SYSTEMAKTUELLER_DATUM}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Wenn aktiviert",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Die Vorgabe wird direkt an die KI gesendet, was das standardmäßige \"normale Verhalten\" ist. Alle Vorgabenvorlagen haben diese Option standardmäßig aktiviert.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Wenn deaktiviert",
@@ -697,8 +697,8 @@
     "template__error__title": "Vorlage ist erforderlich"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Prompt-Bibliothek verwenden",
-    "edit_prompt__template__placeholder": "Verwenden Sie dieses Feld, um Ihre eigentliche Prompt-Vorlage zu erstellen.\n\nSie können Variablen hinzufügen, die in der Prompt-Vorlage zu ausfüllbaren Textfeldern werden. Versuchen Sie, {{ in Ihrer Prompt einzugeben und Variablen für Ihre Prompt-Vorlage zu erstellen. Sie können Variablen mehrmals in Ihrer Prompt-Vorlage verwenden. Wenn die Prompt verwendet wird, werden die Variablen automatisch durch den entsprechenden eingegebenen Text ersetzt.",
+    "use_prompt_library__title": "1-Klick-Prompts",
+    "edit_prompt__template__placeholder": "Die Vorlagenvorlage für ChatGPT.\nDie Vorlage kann eine beliebige Anzahl der folgenden Variablen enthalten:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriten",
     "tab__public__title": "Öffentlich",
     "tab__own__title": "Eigenes",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Vorlage",
     "delete_prompt__title": "Sind Sie sicher, dass Sie diese Vorlagen-Prompts löschen möchten?",
     "delete_prompt__action__confirm__title": "Löschen",
-    "delete_prompt__cancel__confirm__title": "Abbrechen"
+    "delete_prompt__cancel__confirm__title": "Abbrechen",
+    "use_prompt_library__title__tooltip": "1-Klick-Prompts"
   }
 }

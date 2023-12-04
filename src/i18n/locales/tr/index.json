@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Adı girin",
     "feature_card__prompts__edit_prompt__field_icon__title": "Simge",
     "feature_card__prompts__edit_prompt__field_template__title": "İpucu şablonu",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT için ipucu şablonu.\nŞablon, aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT için ipucu şablonu.\nŞablon, aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Etkin olduğunda",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "İpucu doğrudan AI'ya gönderilecek, bu varsayılan \"normal davranıştır\". Tüm ipucu şablonları varsayılan olarak bu seçeneği etkinleştirir.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Devre dışı olduğunda",
@@ -697,8 +697,8 @@
     "template__error__title": "Şablon gereklidir"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Prompt kütüphanesini kullan",
-    "edit_prompt__template__placeholder": "Gerçek prompt şablonunuzu oluşturmak için bu alanı kullanın.\n\nPrompt şablonunda doldurulabilir metin alanlarına dönüşecek değişkenler ekleyebilirsiniz. Prompt'unuzda değişkenleri birden fazla kez kullanabilirsiniz. Prompt kullanıldığında, değişkenler otomatik olarak ilgili girilen metinle değiştirilecektir.",
+    "use_prompt_library__title": "1 tıklamayla ipuçları",
+    "edit_prompt__template__placeholder": "ChatGPT için ipucu şablonu.\nŞablon, aşağıdaki değişkenlerden herhangi bir sayıda içerebilir:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriler",
     "tab__public__title": "Herkese Açık",
     "tab__own__title": "Kendi",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Şablon",
     "delete_prompt__title": "Bu ipucu şablonunu silmek istediğinizden emin misiniz?",
     "delete_prompt__action__confirm__title": "Sil",
-    "delete_prompt__cancel__confirm__title": "İptal"
+    "delete_prompt__cancel__confirm__title": "İptal",
+    "use_prompt_library__title__tooltip": "1 tıklama ile ipuçları"
   }
 }

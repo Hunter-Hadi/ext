@@ -7,8 +7,11 @@ import PromptLibraryCategoryAndUseCaseFilter from '@/features/prompt_library/com
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import PromptLibrarySearch from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/filters/PromptLibrarySearch'
 import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
+import Typography from '@mui/material/Typography'
+import { useTranslation } from 'react-i18next'
 
 const PromptLibraryHeader: FC = () => {
+  const { t } = useTranslation(['prompt_library'])
   const {
     activeTab,
     promptLibraryListParameters,
@@ -16,6 +19,15 @@ const PromptLibraryHeader: FC = () => {
   return (
     <Stack width={'100%'} gap={2} position={'sticky'} top={0}>
       <AppLoadingLayout loading={!promptLibraryListParameters.enabled}>
+        <Typography
+          fontSize={'24px'}
+          lineHeight={'28px'}
+          fontWeight={800}
+          color={'text.primary'}
+          textAlign={'center'}
+        >
+          {t('prompt_library:use_prompt_library__title')}
+        </Typography>
         <PromptLibraryTabs />
         {activeTab === 'Public' && (
           <Stack

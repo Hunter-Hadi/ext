@@ -12,11 +12,9 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import Link from '@mui/material/Link'
-import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 import { useTranslation } from 'react-i18next'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { chromeExtensionClientOpenPage } from '@/utils'
+import { chromeExtensionClientOpenPage, getAppRootElement } from '@/utils'
 import Browser from 'webextension-polyfill'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
@@ -119,7 +117,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
                   >
                     <ContextMenuIcon
                       icon={'History'}
-                      sx={{ fontSize: '24px' }}
+                      sx={{ fontSize: '24px', color: 'primary.main' }}
                     />
                   </Stack>
                 </TextOnlyTooltip>
@@ -130,36 +128,37 @@ const SidebarChatBoxChatSpeedDial: FC<{
         )}
         <SpeedDialAction
           icon={
-            <Link
-              href={CHROME_EXTENSION_HOMEPAGE_URL + '/prompts'}
-              target={'_blank'}
-              color={'text.secondary'}
+            <Box
+              component={'div'}
+              onClick={(event: any) => {
+                event.stopPropagation()
+                //  data-testid={'maxai-prompt-library-button'}
+                const button = getAppRootElement()?.querySelector(
+                  '[data-testid="maxai-prompt-library-button"]',
+                ) as HTMLButtonElement
+                if (button) {
+                  button.click()
+                }
+              }}
             >
-              <Box
-                component={'div'}
-                onClick={(event: any) => {
-                  event.stopPropagation()
-                }}
+              <TextOnlyTooltip
+                placement={'left'}
+                title={t(
+                  'client:sidebar__speed_dial__one_click_prompts__button',
+                )}
               >
-                <TextOnlyTooltip
-                  placement={'left'}
-                  title={t(
-                    'client:sidebar__speed_dial__one_click_prompts__button',
-                  )}
+                <Stack
+                  p={1}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  component={'div'}
                 >
-                  <Stack
-                    p={1}
-                    alignItems={'center'}
-                    justifyContent={'center'}
-                    component={'div'}
-                  >
-                    <MagicBookIcon
-                      sx={{ fontSize: '24px', color: 'primary.main' }}
-                    />
-                  </Stack>
-                </TextOnlyTooltip>
-              </Box>
-            </Link>
+                  <MagicBookIcon
+                    sx={{ fontSize: '24px', color: 'primary.main' }}
+                  />
+                </Stack>
+              </TextOnlyTooltip>
+            </Box>
           }
           tooltipTitle={''}
         />

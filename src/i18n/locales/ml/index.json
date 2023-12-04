@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "പേര് നൽകുക",
     "feature_card__prompts__edit_prompt__field_icon__title": "ഐക്കൺ",
     "feature_card__prompts__edit_prompt__field_template__title": "പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT പ്രോംപ്റ്റിന് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റില്‍ ഏതെങ്കിലും എണ്ണം വാരിയബിളുക്കളെ ഉൾപ്പെടുത്താവുന്നു:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ചാറ്റ്‌ജിപിടിയിലെ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ്.\nടെംപ്ലേറ്റില്‍ പലതരം വാരിയബിള്‍ ഉണ്ടാക്കാവുന്നു:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "പ്രവർത്തനക്ഷമമാക്കപ്പെട്ടാല്‍",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "പ്രോംപ്റ്റ് നിയന്ത്രണങ്ങൾ സ്ഥാനത്തേക്ക് AI-യിലേക്ക് അയയ്ക്കുന്നു, ഇത് ഡിഫോൾട്ട് \"സാധാരണ പ്രവർത്തനം\" ആണ്.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "പ്രവർത്തനക്ഷമമല്ലാത്താക്കപ്പെട്ടാല്‍",
@@ -697,8 +697,8 @@
     "template__error__title": "ടെംപ്ലേറ്റ് ആവശ്യമാണ്"
   },
   "prompt_library": {
-    "use_prompt_library__title": "പ്രോംപ്റ്റ് ലൈബ്രറി ഉപയോഗിക്കുക",
-    "edit_prompt__template__placeholder": "നിങ്ങളുടെ അതിജീവനം പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ ഈ ഫീൽഡ് ഉപയോഗിക്കുക.\n\nപ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് പൂർണ്ണമായ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് സൃഷ്ടിക്കാൻ നിങ്ങൾ വാരംബോളം ചേര്‍ക്കാം. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രത്യേകിച്ച് എഴുതാന്‍ ശ്രമിക്കുക. പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലെ പ്രമ്പികള്‍ ഒരേ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റിലേക്ക് അനുവദിക്കുന്നു. പ്രോംപ്റ്റ് ഉപയോഗിക്കപ്പെടുമ്പോള്‍, പ്രമ്പികള്‍ സ്വയംഭാവവേദ്യമായ ഉള്ളടക്കം പ്രത്യാപിക്കുന്നതാണ്.",
+    "use_prompt_library__title": "1-klik prompt",
+    "edit_prompt__template__placeholder": "Template prompt untuk ChatGPT.\nTemplate ini boleh mengandungi sebarang nombor pembolehubah berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "പ്രിയങ്കരമായത്",
     "tab__public__title": "പൊതുവായത്",
     "tab__own__title": "ഞങ്ങളുടെ",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "ടെംപ്ലേറ്റ്",
     "delete_prompt__title": "ഈ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് ഇല്ലാതാക്കാൻ നിങ്ങൾ ഉറപ്പാണോ?",
     "delete_prompt__action__confirm__title": "ഇല്ലാതാക്കുക",
-    "delete_prompt__cancel__confirm__title": "റദ്ദാക്കുക"
+    "delete_prompt__cancel__confirm__title": "റദ്ദാക്കുക",
+    "use_prompt_library__title__tooltip": "ഒരു ക്ലിക്ക് പ്രോംപ്റ്റ്"
   }
 }

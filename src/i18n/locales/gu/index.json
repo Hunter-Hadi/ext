@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "નામ દાખલ કરો",
     "feature_card__prompts__edit_prompt__field_icon__title": "આઈકોન",
     "feature_card__prompts__edit_prompt__field_template__title": "પ્રોમ્પ્ટ ટેમ્પલેટ",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT માટે પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના કોઈપણ વેરિએબલ્સની કોઈપણ સંખ્યા શામેલ કરી શકાય, અથવા કોઈપણ વેરિએબલ્સની કોઈપણ સંખ્યા શામેલ ન કરી શકાય:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ચેટજીપીટી માટે પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં આપતી વેરિએબલ્સની કોઈપણ સંખ્યા શામેલ કરી શકે છે:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "જ્યારે સક્ષમ હોય",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "પ્રોમ્પ્ટ સીધે AI માં મોકલવામાં આવશે, જે ડિફોલ્ટ \"સામાન્ય વર્તન\" છે. બધા પ્રોમ્પ્ટ ટેમ્પલેટ્સમાં આ વિકલ્પ ડિફોલ્ટ રીતે સક્ષમ હશે.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "જ્યારે અક્ષમ હોય",
@@ -697,8 +697,8 @@
     "template__error__title": "ટેમ્પલેટ જરૂરી છે"
   },
   "prompt_library": {
-    "use_prompt_library__title": "પ્રોમ્પ્ટ લાઇબ્રેરીનો ઉપયોગ કરો",
-    "edit_prompt__template__placeholder": "આ ફિલ્ડનો ઉપયોગ કરો તમારી વાસ્તવિક પ્રોમ્પ્ટ ટેમ્પલેટ બનાવવા માટે.\n\nતમે પ્રોમ્પ્ટ ટેમ્પલેટમાં ભરાયેલા ટેક્સ્ટ ફીલ્ડ્સ બનાવી શકો છો. તમારા પ્રોમ્પ્ટ અને તમારા પ્રોમ્પ્ટ ટેમ્પલેટ માટે વેરીએબલ્સ બનાવવા માટે {{ ટાઈપ કરો અને શરૂ કરો. તમે તમારા પ્રોમ્પ્ટ ટેમ્પલેટમાં વેરીએબલ્સનો અનેક વખત ઉપયોગ કરી શકો છો. પ્રોમ્પ્ટનો ઉપયોગ થતાં, વેરીએબલ્સને આપેલ ટેક્સ્ટથી આપેલ ટેક્સ્ટ દ્વારા બદલાઈ જશે.",
+    "use_prompt_library__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
+    "edit_prompt__template__placeholder": "ChatGPT માટે પ્રોમ્પ્ટ ટેમ્પલેટ.\nટેમ્પલેટમાં નીચેના વેરિએબલ્સમાંથી કોઈપણ નંબર શામેલ કરી શકે છે:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "મનપસંદ",
     "tab__public__title": "સાર્વજનિક",
     "tab__own__title": "આપનું",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "ટેમ્પલેટ",
     "delete_prompt__title": "શું તમે ખરેખર આ પ્રોમ્પ્ટ ટેમ્પલેટ કાઢવા માંગો છો?",
     "delete_prompt__action__confirm__title": "કાઢી નાંખો",
-    "delete_prompt__cancel__confirm__title": "રદ કરો"
+    "delete_prompt__cancel__confirm__title": "રદ કરો",
+    "use_prompt_library__title__tooltip": "1-ક્લિક પ્રોમ્પ્ટ્સ"
   }
 }

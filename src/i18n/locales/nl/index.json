@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Voer naam in",
     "feature_card__prompts__edit_prompt__field_icon__title": "Pictogram",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt-sjabloon",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Het prompt-sjabloon voor ChatGPT.\nHet sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "De prompt sjabloon voor ChatGPT.\nHet sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{Geselecteerde_tekst}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Indien ingeschakeld",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "De prompt wordt rechtstreeks naar AI gestuurd, wat de standaard \"normaal gedrag\" is. Alle prompt-sjablonen hebben deze optie standaard ingeschakeld.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Indien uitgeschakeld",
@@ -697,8 +697,8 @@
     "template__error__title": "Sjabloon is verplicht"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Gebruik prompt bibliotheek",
-    "edit_prompt__template__placeholder": "Gebruik dit veld om uw daadwerkelijke sjabloon te maken.\n\nU kunt variabelen toevoegen die in het sjabloon worden omgezet in invulbare tekstvelden. Probeer {{ op uw prompt te typen en begin variabelen te maken voor uw sjabloon. U kunt variabelen meerdere keren gebruiken in uw sjabloon. Wanneer de prompt wordt gebruikt, worden de variabelen automatisch vervangen door de bijbehorende ingevoerde tekst.",
+    "use_prompt_library__title": "1-klik prompts",
+    "edit_prompt__template__placeholder": "De prompt sjabloon voor ChatGPT.\nHet sjabloon kan een willekeurig aantal van de volgende variabelen bevatten:\n{{GEMARKEERDE_TEKST}}\n{{HUIDIG_WEBSITE_DOMEIN}}\n{{SYSTEEM_HUIDIGE_DATUM}}",
     "tab__favorites__title": "Favorieten",
     "tab__public__title": "Openbaar",
     "tab__own__title": "Eigen",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Sjabloon",
     "delete_prompt__title": "Weet je zeker dat je deze prompt sjabloon wilt verwijderen?",
     "delete_prompt__action__confirm__title": "Verwijderen",
-    "delete_prompt__cancel__confirm__title": "Annuleren"
+    "delete_prompt__cancel__confirm__title": "Annuleren",
+    "use_prompt_library__title__tooltip": "1-klik prompts"
   }
 }

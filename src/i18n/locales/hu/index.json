@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Adja meg a nevet",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt sablon",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "A ChatGPT-hez tartozó prompt sablon.\nA sablon tartalmazhat bármennyi a következő változóból:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "A ChatGPT felkérés sablonja.\nA sablon tartalmazhatja a következő változókat:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Amikor engedélyezve van",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "A promptot közvetlenül elküldi az AI-nak, ami az alapértelmezett „normál viselkedés”. Az összes prompt sablon alapértelmezetten engedélyezett lesz.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Amikor letiltva van",
@@ -697,8 +697,8 @@
     "template__error__title": "A sablon kötelező"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Használja a prompt könyvtárat",
-    "edit_prompt__template__placeholder": "Használja ezt a mezőt az aktuális prompt sablon létrehozásához.\n\nHozzáadhat változókat, amelyek kitölthető szövegmezőkké válnak a prompt sablonban. Próbálja meg beírni a {{ karaktert a promptjába, és kezdjen el változókat létrehozni a prompt sablonjához. A változókat többször is használhatja a prompt sablonjában. Amikor a promptot használja, a változók automatikusan helyettesítésre kerülnek a megfelelően bevitt szöveggel.",
+    "use_prompt_library__title": "1 kattintásos segédletek",
+    "edit_prompt__template__placeholder": "A ChatGPT-hez tartozó segédlet sablon.\nA sablon tartalmazhatja a következő változókat:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Kedvencek",
     "tab__public__title": "Nyilvános",
     "tab__own__title": "Saját",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Sablon",
     "delete_prompt__title": "Biztosan törölni szeretné ezt a prompt sablont?",
     "delete_prompt__action__confirm__title": "Törlés",
-    "delete_prompt__cancel__confirm__title": "Mégse"
+    "delete_prompt__cancel__confirm__title": "Mégse",
+    "use_prompt_library__title__tooltip": "1 kattintásos segédletek"
   }
 }

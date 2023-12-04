@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Įveskite pavadinimą",
     "feature_card__prompts__edit_prompt__field_icon__title": "Piktograma",
     "feature_card__prompts__edit_prompt__field_template__title": "Užduoties šablonas",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Užduoties šablonas „ChatGPT“.\nŠablonas gali apimti bet kokį šių kintamųjų skaičių:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablonas užklausai ChatGPT.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Jei įjungta",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Užduotis bus tiesiogiai išsiųsta į dirbtinį intelektą, tai yra numatytoji „normalaus elgesio“ būsena. Visi užduočių šablonai pagal nutylėjimą turės šią parinktį įjungtą.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Jei išjungta",
@@ -697,8 +697,8 @@
     "template__error__title": "Reikalingas šablonas"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Naudoti užduoties biblioteką",
-    "edit_prompt__template__placeholder": "Naudokite šį lauką, kad sukurtumėte savo tikrąjį užduoties šabloną.\n\nGalite pridėti kintamuosius, kurie taps užpildomais teksto laukais užduoties šablone. Bandykite įvesti {{ savo užduotyje ir pradėkite kurti kintamuosius savo užduoties šablonui. Kintamuosius galite naudoti daugiau nei vieną kartą savo užduoties šablone. Kai naudojamas užduotis, kintamieji automatiškai bus pakeisti atitinkamu įvestu tekstu.",
+    "use_prompt_library__title": "Vieno paspaudimo užklausos",
+    "edit_prompt__template__placeholder": "Užklausos šablonas „ChatGPT“.\nŠablonas gali apimti bet kokį kintamąjį iš šių:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Mėgstamiausi",
     "tab__public__title": "Vieši",
     "tab__own__title": "Savas",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Šablonas",
     "delete_prompt__title": "Ar tikrai norite ištrinti šį šablono pranešimą?",
     "delete_prompt__action__confirm__title": "Ištrinti",
-    "delete_prompt__cancel__confirm__title": "Atšaukti"
+    "delete_prompt__cancel__confirm__title": "Atšaukti",
+    "use_prompt_library__title__tooltip": "Vieno paspaudimo užklausos"
   }
 }

@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "নাম লিখুন",
     "feature_card__prompts__edit_prompt__field_icon__title": "আইকন",
     "feature_card__prompts__edit_prompt__field_template__title": "প্রম্পট টেমপ্লেট",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT এর জন্য প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত যেকোনো সংখ্যক চরগুলি থাকতে পারে:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "চ্যাটজিপিটির জন্য প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির মধ্যে যেকোনো সংখ্যক অংশ থাকতে পারে:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "যখন সক্ষম",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "প্রম্পটটি সরাসরি AI-এ পাঠানো হবে, যা ডিফল্ট \"সাধারণ আচরণ\"। সব প্রম্পট টেমপ্লেটগুলি ডিফল্টভাবে এই অপশনটি সক্ষম থাকবে।",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "যখন অক্ষম",
@@ -697,8 +697,8 @@
     "template__error__title": "টেমপ্লেট প্রয়োজন"
   },
   "prompt_library": {
-    "use_prompt_library__title": "প্রম্পট লাইব্রেরি ব্যবহার করুন",
-    "edit_prompt__template__placeholder": "আপনার প্রকৃত প্রম্পট টেমপ্লেট তৈরি করতে এই ক্ষেত্রটি ব্যবহার করুন।\n\nপ্রম্পট টেমপ্লেটে পূর্ণকরণযোগ্য পাঠ্য ক্ষেত্র হিসাবে পরিণত হবে ভেরিয়েবল যুক্ত করতে পারেন। আপনি আপনার প্রম্পট টেমপ্লেটে একাধিকবার ভেরিয়েবল ব্যবহার করতে পারেন। প্রম্পটটি ব্যবহৃত হলে, ভেরিয়েবলগুলি স্বয়ংক্রিয়ভাবে সংযোজন করা হবে প্রবেশ করানো পাঠ্যের দ্বারা।",
+    "use_prompt_library__title": "1-ক্লিক প্রম্পট",
+    "edit_prompt__template__placeholder": "ChatGPT এর জন্য প্রম্পট টেমপ্লেট।\nটেমপ্লেটে নিম্নোক্ত ভেরিয়েবলগুলির যে কোনও সংখ্যক ব্যবহার করা যেতে পারে:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "প্রিয়",
     "tab__public__title": "পাবলিক",
     "tab__own__title": "নিজের",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "টেমপ্লেট",
     "delete_prompt__title": "আপনি কি নিশ্চিত যে আপনি এই প্রম্পট টেমপ্লেটটি মুছে ফেলতে চান?",
     "delete_prompt__action__confirm__title": "মুছে ফেলুন",
-    "delete_prompt__cancel__confirm__title": "বাতিল করুন"
+    "delete_prompt__cancel__confirm__title": "বাতিল করুন",
+    "use_prompt_library__title__tooltip": "এক ক্লিকে প্রম্পট"
   }
 }

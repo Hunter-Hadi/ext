@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Въведете име",
     "feature_card__prompts__edit_prompt__field_icon__title": "Икона",
     "feature_card__prompts__edit_prompt__field_template__title": "Шаблон за подсказка",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблонът за подсказка за ChatGPT.\nШаблонът може да включва произволен брой от следните променливи:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблонът на подсказката за ChatGPT.\nШаблонът може да включва произволен брой от следните променливи:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Когато е активирано",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Подсказката ще бъде изпратена директно към AI, което е \"нормалното поведение\" по подразбиране. Всички шаблони за подсказки ще имат тази опция активирана по подразбиране.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Когато е деактивирано",
@@ -697,8 +697,8 @@
     "template__error__title": "Изисква се шаблон"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Използвай библиотеката с промпти",
-    "edit_prompt__template__placeholder": "Използвайте това поле, за да създадете вашата актуална шаблонна промпт.\n\nМожете да добавите променливи, които ще се превърнат в полета за попълване в шаблона на промпта. Опитайте да напишете {{ във вашия промпт и започнете да създавате променливи за вашия шаблон на промпта. Можете да използвате променливи повече от веднъж в шаблона на промпта. Когато се използва промпта, променливите ще бъдат заменени автоматично със съответния въведен текст.",
+    "use_prompt_library__title": "1-клик промптове",
+    "edit_prompt__template__placeholder": "Шаблонът на промпта за ChatGPT.\nШаблонът може да включва произволен брой от следните променливи:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Избрани",
     "tab__public__title": "Публични",
     "tab__own__title": "Собствени",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Шаблон",
     "delete_prompt__title": "Сигурни ли сте, че искате да изтриете този шаблон за подсказка?",
     "delete_prompt__action__confirm__title": "Изтриване",
-    "delete_prompt__cancel__confirm__title": "Отказ"
+    "delete_prompt__cancel__confirm__title": "Отказ",
+    "use_prompt_library__title__tooltip": "1-клик промптове"
   }
 }

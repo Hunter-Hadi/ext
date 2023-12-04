@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Unesite naziv",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Predložak upita",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Predložak upita za ChatGPT.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Predložak uputa za ChatGPT.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kada je omogućeno",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Upit će biti izravno poslan AI-u, što je zadano \"normalno ponašanje\". Svi predlošci upita imat će ovu opciju zadano omogućenu.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kada je onemogućeno",
@@ -697,8 +697,8 @@
     "template__error__title": "Predložak je obavezan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Koristi biblioteku uputa",
-    "edit_prompt__template__placeholder": "Koristite ovo polje za stvaranje vašeg stvarnog predloška upute.\n\nMožete dodati varijable koje će postati polja za unos teksta u predlošku upute. Pokušajte tipkati {{ na vašoj uputi i započnite stvarati varijable za vaš predložak upute. Možete koristiti varijable više puta u predlošku upute. Kada se uputa koristi, varijable će automatski biti zamijenjene odgovarajućim unesenim tekstom.",
+    "use_prompt_library__title": "1-klik upute",
+    "edit_prompt__template__placeholder": "Predložak uputa za ChatGPT.\nPredložak može sadržavati bilo koji broj sljedećih varijabli:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriti",
     "tab__public__title": "Javno",
     "tab__own__title": "Vlastito",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Predložak",
     "delete_prompt__title": "Jeste li sigurni da želite izbrisati ovaj predložak upita?",
     "delete_prompt__action__confirm__title": "Izbriši",
-    "delete_prompt__cancel__confirm__title": "Odustani"
+    "delete_prompt__cancel__confirm__title": "Odustani",
+    "use_prompt_library__title__tooltip": "1-klik upute"
   }
 }

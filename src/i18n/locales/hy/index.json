@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Մուտքագրեք անունը",
     "feature_card__prompts__edit_prompt__field_icon__title": "Նկար",
     "feature_card__prompts__edit_prompt__field_template__title": "Հուշումի ձևաչափը",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT-ի համար հուշումի ձևաչափը:\nԱյս ձևաչափում կարելի է ներառել հետևյալ փոփոխականներից որևէ քանակ՝\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Հրահանգի ձևաչափը ChatGPT-ի համար:\nԱյս ձևաչափում կարող եք նշել հետևյալ փոփոխականներից ցանկացած քանակության՝\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Թույլատրված դեպքում",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Հուշումը կուղարկվի անմիջապես AI-ին, որը էլեմենտար վիճակն է \"սովորական վայրկյանի\" հիմանական վայրկյանի: Բոլոր հուշումների ձևաչափները կունենան այս տարբերակը թույլատրված:",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Արգելափակված դեպքում",
@@ -697,8 +697,8 @@
     "template__error__title": "Կարգավորումը պարտադիր է"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Օգտագործել հարցման գրադարանը",
-    "edit_prompt__template__placeholder": "Օգտագործեք այս դաշտը ձեր իրական հարցման ձևաչափը ստեղծելու համար:\n\nԴուք կարող եք ավելացնել փոփոխականներ, որոնք կդառնան լրացվելու տեքստային դաշտեր՝ հարցման ձևաչափում: Փորձեք գրել {{ ձեր հարցմանում և սկսեք ստեղծել փոփոխականներ ձեր հարցման ձևաչափի համար: Դուք կարող եք օգտագործել փոփոխականները մեկից ավելի անգամ ձեր հարցման ձևաչափում: Երբ հարցմանը օգտագործվում է, փոփոխականները կփոխարինվեն համապատասխան մուտքագրված տեքստով:",
+    "use_prompt_library__title": "1-կլիք հարցեր",
+    "edit_prompt__template__placeholder": "Հարցման ձևաչափը ChatGPT-ի համար:\nԱյս ձևաչափում կարող եք նշել հետևյալ փոփոխականներից ցանկացած քանակության՝\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Նախընտրելիներ",
     "tab__public__title": "Հանրային",
     "tab__own__title": "Իմ սեփականը",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Կաղապար",
     "delete_prompt__title": "Արդյունքները ջնջելուց համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս խորհուրդի ձևաչափը:",
     "delete_prompt__action__confirm__title": "Ջնջել",
-    "delete_prompt__cancel__confirm__title": "Չեղարկել"
+    "delete_prompt__cancel__confirm__title": "Չեղարկել",
+    "use_prompt_library__title__tooltip": "1-կտավորիչ հարցեր"
   }
 }

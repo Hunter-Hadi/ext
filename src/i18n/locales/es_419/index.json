@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Ingresa un nombre",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ícono",
     "feature_card__prompts__edit_prompt__field_template__title": "Plantilla de sugerencia",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "La plantilla de sugerencia para ChatGPT.\nLa plantilla puede incluir cualquier número de las siguientes variables:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "La plantilla de indicaciones para ChatGPT.\nLa plantilla puede incluir cualquier número de las siguientes variables:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Cuando está habilitado",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "La sugerencia se enviará directamente a la IA, que es el \"comportamiento normal\" predeterminado. Todas las plantillas de sugerencias tendrán esta opción habilitada de forma predeterminada.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Cuando está deshabilitado",
@@ -697,8 +697,8 @@
     "template__error__title": "Se requiere una plantilla"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Usar biblioteca de indicaciones",
-    "edit_prompt__template__placeholder": "Utilice este campo para crear su plantilla de indicaciones real.\n\nPuede agregar variables que se convertirán en campos de texto rellenables en la plantilla de indicaciones. Intente escribir {{ en su indicación y comience a crear variables para su plantilla de indicaciones. Puede usar variables más de una vez en su plantilla de indicaciones. Cuando se use la indicación, las variables se reemplazarán automáticamente por el texto ingresado correspondiente.",
+    "use_prompt_library__title": "Prompts de 1 clic",
+    "edit_prompt__template__placeholder": "La plantilla de prompt para ChatGPT.\nLa plantilla puede incluir cualquier número de las siguientes variables:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoritos",
     "tab__public__title": "Público",
     "tab__own__title": "Propio",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Plantilla",
     "delete_prompt__title": "¿Estás seguro de que quieres eliminar esta plantilla de indicaciones?",
     "delete_prompt__action__confirm__title": "Eliminar",
-    "delete_prompt__cancel__confirm__title": "Cancelar"
+    "delete_prompt__cancel__confirm__title": "Cancelar",
+    "use_prompt_library__title__tooltip": "Prompts de 1 clic"
   }
 }

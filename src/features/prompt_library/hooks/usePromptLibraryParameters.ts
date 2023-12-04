@@ -31,7 +31,7 @@ const usePromptLibraryParameters = () => {
     updatePromptLibraryListParameters({ activeTab })
   }
   const updateSearchQuery = (searchQuery: string) => {
-    updatePromptLibraryListParameters({ query: searchQuery })
+    updatePromptLibraryListParameters({ query: searchQuery, page: 0 })
   }
 
   return {

@@ -87,7 +87,15 @@ const AIResponseError: FC<IProps> = ({
       setErrorStatus('UNAUTHORIZED')
       return 'Something went wrong. Please try again.'
     }
-
+    if (
+      text.startsWith('403') &&
+      provider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI
+    ) {
+      if (providerOption.label === 'ChatGPT web app') {
+        return `Please log into [Chat.openai.com](https://chat.openai.com) and try again.`
+      }
+      return `Please log into ${providerOption.label} and try again.`
+    }
     return text
   }, [text, provider])
 

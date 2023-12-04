@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "పేరు నమోదు చేయండి",
     "feature_card__prompts__edit_prompt__field_icon__title": "చిహ్నం",
     "feature_card__prompts__edit_prompt__field_template__title": "ప్రాంప్ట్ టెంప్లేట్",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT కోసం ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యనుంచి ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT కోసం ప్రాంప్ట్ టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యనుంచి ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "ఏమిటియని అనుకుంటే",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ప్రాంప్ట్ ను నేను AI కు సిద్ధంగా పంపేస్తాను, ఇది డిఫాల్ట్ \"సాధారణ వర్తన\". అన్ని ప్రాంప్ట్ టెంప్లేట్‌లు డిఫాల్ట్‌గా ఈ ఎంపికను ప్రారంభం చేస్తాయి.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "ఏమిటియని అనుకుంటే",
@@ -697,8 +697,8 @@
     "template__error__title": "టెంప్లేటు అవసరం"
   },
   "prompt_library": {
-    "use_prompt_library__title": "ప్రాంప్ట్ లైబ్రరీని ఉపయోగించండి",
-    "edit_prompt__template__placeholder": "మీ నిజమైన ప్రాంప్ట్ టెంప్లేట్‌ను సృష్టించడానికి ఈ ఫీల్డ్‌ను ఉపయోగించండి.\n\nమీరు ప్రాంప్ట్ టెంప్లేట్‌లో భరించబడిన వ్యారియబుల్స్‌ను జోడించవచ్చు. మీ ప్రాంప్ట్ టెంప్లేట్‌లో వ్యారియబుల్స్‌ను ఒకసారి కనుగొనండి. ప్రాంప్ట్ ఉపయోగించబడినప్పుడు, వ్యారియబుల్స్‌ను స్వయంచాలకంగా ప్రవేశించిన పఠనంతో మారవలసిన పఠనంతో మారవచ్చు.",
+    "use_prompt_library__title": "1-క్లిక్ ప్రాంప్టులు",
+    "edit_prompt__template__placeholder": "ChatGPT కోసం ప్రాంప్టు టెంప్లేట్.\nటెంప్లేట్‌లో ఈ వేరియబుల్‌లను ఏ సంఖ్యలో ఉంచవచ్చు:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "ఇష్టమైనవి",
     "tab__public__title": "పబ్లిక్",
     "tab__own__title": "స్వంతం",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "టెంప్లేట్",
     "delete_prompt__title": "ఈ ప్రాంప్ట్ టెంప్లేట్‌ను తొలగించాలని మీరు ఖచ్చితంగా ఉందా?",
     "delete_prompt__action__confirm__title": "తొలగించు",
-    "delete_prompt__cancel__confirm__title": "రద్దు చేయండి"
+    "delete_prompt__cancel__confirm__title": "రద్దు చేయండి",
+    "use_prompt_library__title__tooltip": "1-క్లిక్ ప్రాంప్టులు"
   }
 }

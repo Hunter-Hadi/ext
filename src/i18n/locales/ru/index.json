@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Введите имя",
     "feature_card__prompts__edit_prompt__field_icon__title": "Иконка",
     "feature_card__prompts__edit_prompt__field_template__title": "Шаблон подсказки",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон подсказки для ChatGPT.\nШаблон может содержать любое количество следующих переменных:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон подсказки для ChatGPT.\nШаблон может включать любое количество следующих переменных:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "При включении",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Подсказка будет напрямую отправлена в ИИ, что является \"нормальным поведением\" по умолчанию. Все шаблоны подсказок будут иметь эту опцию включенной по умолчанию.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "При отключении",
@@ -697,8 +697,8 @@
     "template__error__title": "Требуется шаблон"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Использовать библиотеку подсказок",
-    "edit_prompt__template__placeholder": "Используйте это поле для создания фактического шаблона подсказки.\n\nВы можете добавлять переменные, которые превратятся в поля для заполнения в шаблоне подсказки. Попробуйте набрать {{ в своей подсказке и начните создавать переменные для вашего шаблона подсказки. Вы можете использовать переменные несколько раз в шаблоне подсказки. Когда подсказка используется, переменные будут автоматически заменены соответствующим введенным текстом.",
+    "use_prompt_library__title": "1-клик подсказки",
+    "edit_prompt__template__placeholder": "Шаблон подсказки для ChatGPT.\nШаблон может включать любое количество следующих переменных:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Избранное",
     "tab__public__title": "Общедоступное",
     "tab__own__title": "Собственное",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Шаблон",
     "delete_prompt__title": "Вы уверены, что хотите удалить этот шаблон подсказки?",
     "delete_prompt__action__confirm__title": "Удалить",
-    "delete_prompt__cancel__confirm__title": "Отмена"
+    "delete_prompt__cancel__confirm__title": "Отмена",
+    "use_prompt_library__title__tooltip": "Подсказки в один клик"
   }
 }

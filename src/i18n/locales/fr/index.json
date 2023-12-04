@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Saisissez un nom",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icône",
     "feature_card__prompts__edit_prompt__field_template__title": "Modèle de suggestion",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Le modèle de suggestion pour ChatGPT.\nLe modèle peut inclure un nombre quelconque des variables suivantes :\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Le modèle de prompt pour ChatGPT.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Lorsqu'il est activé",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "La suggestion sera directement envoyée à l'IA, ce qui est le comportement \"normal\" par défaut. Tous les modèles de suggestions auront cette option activée par défaut.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Lorsqu'il est désactivé",
@@ -697,8 +697,8 @@
     "template__error__title": "Le modèle est requis"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Utiliser la bibliothèque de prompts",
-    "edit_prompt__template__placeholder": "Utilisez ce champ pour créer votre modèle de prompt réel.\n\nVous pouvez ajouter des variables qui se transformeront en champs de texte remplissables dans le modèle de prompt. Essayez de taper {{ sur votre prompt et commencez à créer des variables pour votre modèle de prompt. Vous pouvez utiliser les variables plusieurs fois dans votre modèle de prompt. Lorsque le prompt est utilisé, les variables seront automatiquement remplacées par le texte saisi correspondant.",
+    "use_prompt_library__title": "Prompts en 1 clic",
+    "edit_prompt__template__placeholder": "Le modèle de prompt pour ChatGPT.\nLe modèle peut inclure n'importe quel nombre des variables suivantes:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoris",
     "tab__public__title": "Public",
     "tab__own__title": "Propre",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Modèle",
     "delete_prompt__title": "Êtes-vous sûr de vouloir supprimer ce modèle de prompt ?",
     "delete_prompt__action__confirm__title": "Supprimer",
-    "delete_prompt__cancel__confirm__title": "Annuler"
+    "delete_prompt__cancel__confirm__title": "Annuler",
+    "use_prompt_library__title__tooltip": "Prompts en 1 clic"
   }
 }

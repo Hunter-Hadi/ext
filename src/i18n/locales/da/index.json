@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Indtast navn",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Prompt-skabelon",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Prompt-skabelonen for ChatGPT.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Promptskabelonen til ChatGPT.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Når aktiveret",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Prompten sendes direkte til AI, hvilket er standard \"normal adfærd\". Alle prompt-skabeloner vil have denne indstilling aktiveret som standard.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Når deaktiveret",
@@ -697,8 +697,8 @@
     "template__error__title": "Skabelon er påkrævet"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Brug prompt bibliotek",
-    "edit_prompt__template__placeholder": "Brug dette felt til at oprette din faktiske prompt skabelon.\n\nDu kan tilføje variabler, der vil blive til udfyldelige tekstfelter i prompt skabelonen. Prøv at skrive {{ i din prompt og begynd at oprette variabler til din prompt skabelon. Du kan bruge variabler mere end én gang i din prompt skabelon. Når prompten bruges, vil variablerne automatisk blive erstattet af den tilsvarende indtastede tekst.",
+    "use_prompt_library__title": "1-klik prompts",
+    "edit_prompt__template__placeholder": "Promptskabelonen til ChatGPT.\nSkabelonen kan indeholde et hvilket som helst antal af følgende variabler:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoritter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Skabelon",
     "delete_prompt__title": "Er du sikker på, at du vil slette denne promptskabelon?",
     "delete_prompt__action__confirm__title": "Slet",
-    "delete_prompt__cancel__confirm__title": "Annuller"
+    "delete_prompt__cancel__confirm__title": "Annuller",
+    "use_prompt_library__title__tooltip": "1-klik prompts"
   }
 }

@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Inserisci nome",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icona",
     "feature_card__prompts__edit_prompt__field_template__title": "Modello di promemoria",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Il modello di promemoria per ChatGPT.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Il modello di prompt per ChatGPT.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Quando abilitato",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Il promemoria verrà inviato direttamente all'IA, che è il \"comportamento normale\" predefinito. Tutti i modelli di promemoria avranno questa opzione abilitata per impostazione predefinita.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Quando disabilitato",
@@ -697,8 +697,8 @@
     "template__error__title": "Il modello è obbligatorio"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Usa la libreria di prompt",
-    "edit_prompt__template__placeholder": "Utilizza questo campo per creare il tuo modello effettivo di prompt.\n\nPuoi aggiungere variabili che si trasformeranno in campi di testo compilabili nel modello di prompt. Prova a digitare {{ sul tuo prompt e inizia a creare variabili per il tuo modello di prompt. Puoi utilizzare le variabili più di una volta nel modello di prompt. Quando viene utilizzato il prompt, le variabili verranno automaticamente sostituite dal testo inserito corrispondente.",
+    "use_prompt_library__title": "Prompt in un clic",
+    "edit_prompt__template__placeholder": "Il modello di prompt per ChatGPT.\nIl modello può includere qualsiasi numero delle seguenti variabili:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Preferiti",
     "tab__public__title": "Pubblico",
     "tab__own__title": "Proprio",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Modello",
     "delete_prompt__title": "Sei sicuro di voler eliminare questo modello di prompt?",
     "delete_prompt__action__confirm__title": "Elimina",
-    "delete_prompt__cancel__confirm__title": "Annulla"
+    "delete_prompt__cancel__confirm__title": "Annulla",
+    "use_prompt_library__title__tooltip": "Promemoria a 1 clic"
   }
 }

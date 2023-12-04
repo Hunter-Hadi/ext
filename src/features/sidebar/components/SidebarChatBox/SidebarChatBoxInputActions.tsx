@@ -6,7 +6,7 @@ import { getInputMediator } from '@/store/InputMediator'
 import { getAppRootElement, numberWithCommas } from '@/utils'
 import CircularProgress from '@mui/material/CircularProgress'
 import SendIcon from '@mui/icons-material/Send'
-import { isEzMailApp, ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
+import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import TooltipButton from '@/components/TooltipButton'
@@ -86,20 +86,22 @@ const SidebarChatBoxInputActions: FC<{
         {/*<DevContent>*/}
         {/*  <TestAllActionsButton />*/}
         {/*</DevContent>*/}
-        {!smoothConversationLoading && <PromptLibraryIconButton />}
-        {!isEzMailApp && !smoothConversationLoading && (
-          <FloatingInputButton
-            onBeforeShowContextMenu={() => {
-              return {
-                template: inputValue || ' ',
-                target:
-                  getAppRootElement()?.querySelector(
-                    `#${ROOT_CHAT_BOX_INPUT_ID}`,
-                  )?.parentElement || (ref.current as HTMLElement),
-              }
-            }}
-          />
-        )}
+        {currentSidebarConversationType === 'Chat' &&
+          !smoothConversationLoading && <PromptLibraryIconButton />}
+        {currentSidebarConversationType === 'Chat' &&
+          !smoothConversationLoading && (
+            <FloatingInputButton
+              onBeforeShowContextMenu={() => {
+                return {
+                  template: inputValue || ' ',
+                  target:
+                    getAppRootElement()?.querySelector(
+                      `#${ROOT_CHAT_BOX_INPUT_ID}`,
+                    )?.parentElement || (ref.current as HTMLElement),
+                }
+              }}
+            />
+          )}
         <TooltipButton
           title={t(`client:sidebar__button__send_to_ai`)}
           TooltipProps={{

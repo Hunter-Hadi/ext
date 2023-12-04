@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Skriv inn navn",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Forespørselstekstmal",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Forespørselstekstmal for ChatGPT.\nMalen kan inneholde et hvilket som helst antall av følgende variabler:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Malen for oppfordringen til ChatGPT.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{VALGT_TEKST}}\n{{GJELDENDE_NETTSTEDSOMRÅDE}}\n{{SYSTEM_GJELDENDE_DATO}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Når aktivert",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Forespørselen blir sendt direkte til AI, som er standard \"normal oppførsel\". Alle forespørselstekster har denne opsjonen aktivert som standard.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Når deaktivert",
@@ -697,8 +697,8 @@
     "template__error__title": "Mal er påkrevd"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Bruk promptbibliotek",
-    "edit_prompt__template__placeholder": "Bruk dette feltet til å opprette malen for din faktiske prompt.\n\nDu kan legge til variabler som vil bli omgjort til utfyllbare tekstfelt i promptmalen. Prøv å skrive {{ i prompten din og begynn å opprette variabler for promptmalen din. Du kan bruke variabler flere ganger i promptmalen din. Når prompten brukes, vil variablene automatisk bli erstattet med den tilsvarende innskrivne teksten.",
+    "use_prompt_library__title": "1-klikk-prompts",
+    "edit_prompt__template__placeholder": "Promptmalen for ChatGPT.\nMalen kan inkludere et hvilket som helst antall av følgende variabler:\n{{VALGT_TEKST}}\n{{GJELDENDE_NETTSTEDSOMRÅDE}}\n{{SYSTEM_GJELDENDE_DATO}}",
     "tab__favorites__title": "Favoritter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Mal",
     "delete_prompt__title": "Er du sikker på at du vil slette denne promptmalen?",
     "delete_prompt__action__confirm__title": "Slett",
-    "delete_prompt__cancel__confirm__title": "Avbryt"
+    "delete_prompt__cancel__confirm__title": "Avbryt",
+    "use_prompt_library__title__tooltip": "1-klikk-prompter"
   }
 }

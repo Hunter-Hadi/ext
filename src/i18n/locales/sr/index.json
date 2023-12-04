@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Unesite naziv",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Šablon podsticaja",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Šablon podsticaja za ChatGPT.\nŠablon može sadržati bilo koji broj sledećih promenljivih:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Шаблон упитника за ЧатГПТ.\nШаблон може садржавати било који број следећих променљивих:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kada je omogućeno",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Podsticaj će biti direktno poslat AI, što je podrazumevano \"normalno ponašanje\". Svi šabloni podsticaja će imati ovu opciju podrazumevano omogućenu.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kada je onemogućeno",
@@ -697,8 +697,8 @@
     "template__error__title": "Šablon je obavezan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Koristi biblioteku upita",
-    "edit_prompt__template__placeholder": "Koristite ovo polje da biste kreirali stvarni šablon upita.\n\nMožete dodati promenljive koje će se pretvoriti u polja za unos teksta u šablonu upita. Pokušajte da kucate {{ u svom upitu i počnite da kreirate promenljive za svoj šablon upita. Možete koristiti promenljive više puta u šablonu upita. Kada se upit koristi, promenljive će automatski biti zamenjene odgovarajućim unetim tekstom.",
+    "use_prompt_library__title": "1-klik podsticaji",
+    "edit_prompt__template__placeholder": "Šablon podsticaja za ChatGPT.\nŠablon može sadržati bilo koji broj sledećih promenljivih:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Omiljeno",
     "tab__public__title": "Javno",
     "tab__own__title": "Svoje",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Šablon",
     "delete_prompt__title": "Da li ste sigurni da želite da obrišete ovaj šablon upita?",
     "delete_prompt__action__confirm__title": "Obriši",
-    "delete_prompt__cancel__confirm__title": "Otkaži"
+    "delete_prompt__cancel__confirm__title": "Otkaži",
+    "use_prompt_library__title__tooltip": "1-klik upitnici"
   }
 }

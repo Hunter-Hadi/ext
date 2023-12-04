@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Ievadiet nosaukumu",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Ierosinājuma veidne",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Ierosinājuma veidne ChatGPT.\nVeidnē var iekļaut jebkuru skaitu sekojošo mainīgo:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Veidne ar ieteikumu ChatGPT.\nVeidnē var iekļaut jebkuru šādu mainīgo:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Ja iespējots",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Ierosinājums tiks tieši nosūtīts AI, kas ir noklusējuma \"normālais uzvedības veids\". Visas ierosinājumu veidnes pēc noklusējuma būs ar šo opciju iespējotu.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Ja atspējots",
@@ -697,8 +697,8 @@
     "template__error__title": "Nepieciešams veidne"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Izmantot jautājumu bibliotēku",
-    "edit_prompt__template__placeholder": "Izmantojiet šo lauku, lai izveidotu faktisko jautājuma veidni.\n\nJūs varat pievienot mainīgos, kas pārvērtīsies par aizpildāmiem teksta laukiem jautājuma veidnē. Mēģiniet ierakstīt {{ savā jautājumā un sāciet izveidot mainīgos savai jautājuma veidnei. Jūs varat izmantot mainīgos vairākas reizes savā jautājuma veidnē. Kad tiek izmantots jautājums, mainīgie tiks aizstāti ar atbilstoši ievadīto tekstu automātiski.",
+    "use_prompt_library__title": "1-klikšķa pamudinājumi",
+    "edit_prompt__template__placeholder": "Pamudinājuma veidne ChatGPT.\nVeidnē var iekļaut jebkuru skaitu no šādām mainīgajām:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Iecienītie",
     "tab__public__title": "Publiskie",
     "tab__own__title": "Paša",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Veidne",
     "delete_prompt__title": "Vai tiešām vēlaties dzēst šo veidņu?",
     "delete_prompt__action__confirm__title": "Dzēst",
-    "delete_prompt__cancel__confirm__title": "Atcelt"
+    "delete_prompt__cancel__confirm__title": "Atcelt",
+    "use_prompt_library__title__tooltip": "1-klikšķa pamudinājumi"
   }
 }

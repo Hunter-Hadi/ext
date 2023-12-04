@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Wprowadź nazwę",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikona",
     "feature_card__prompts__edit_prompt__field_template__title": "Szablon podpowiedzi",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Szablon podpowiedzi dla ChatGPT.\nSzablon może zawierać dowolną liczbę następujących zmiennych:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Szablon podpowiedzi dla ChatGPT.\nSzablon może zawierać dowolną liczbę zmiennych:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Po włączeniu",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Podpowiedź zostanie bezpośrednio wysłana do AI, co jest domyślnym „normalnym zachowaniem”. Wszystkie szablony podpowiedzi będą miały tę opcję domyślnie włączoną.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Po wyłączeniu",
@@ -697,8 +697,8 @@
     "template__error__title": "Wymagany jest szablon"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Użyj biblioteki promptów",
-    "edit_prompt__template__placeholder": "Użyj tego pola, aby utworzyć swój rzeczywisty szablon promptu.\n\nMożesz dodawać zmienne, które zamienią się w pola tekstowe do wypełnienia w szablonie promptu. Spróbuj wpisać {{ w swoim prompt i zacznij tworzyć zmienne dla swojego szablonu promptu. Możesz używać zmiennych więcej niż raz w szablonie promptu. Gdy prompt zostanie użyty, zmienne zostaną automatycznie zastąpione odpowiednim wprowadzonym tekstem.",
+    "use_prompt_library__title": "1-kliknięcie na podpowiedzi",
+    "edit_prompt__template__placeholder": "Szablon podpowiedzi dla ChatGPT.\nSzablon może zawierać dowolną liczbę zmiennych:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Ulubione",
     "tab__public__title": "Publiczne",
     "tab__own__title": "Własne",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Szablon",
     "delete_prompt__title": "Czy na pewno chcesz usunąć ten szablon promptu?",
     "delete_prompt__action__confirm__title": "Usuń",
-    "delete_prompt__cancel__confirm__title": "Anuluj"
+    "delete_prompt__cancel__confirm__title": "Anuluj",
+    "use_prompt_library__title__tooltip": "Podpowiedzi w jednym kliknięciu"
   }
 }

@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Introdueix el nom",
     "feature_card__prompts__edit_prompt__field_icon__title": "Icona",
     "feature_card__prompts__edit_prompt__field_template__title": "Plantilla de l'indicació",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "La plantilla de l'indicació per a ChatGPT.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "La plantilla de suggeriment per a ChatGPT.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Quan està activat",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "L'indicació s'enviarà directament a l'IA, que és el \"comportament normal\" per defecte. Totes les plantilles d'indicacions tindran aquesta opció activada per defecte.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Quan està desactivat",
@@ -697,8 +697,8 @@
     "template__error__title": "Es requereix una plantilla"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Utilitza la biblioteca de promps",
-    "edit_prompt__template__placeholder": "Utilitza aquest camp per crear la teva plantilla de prompt real.\n\nPots afegir variables que es convertiran en camps de text omplibles a la plantilla de prompt. Prova d'escriure {{ al teu prompt i comença a crear variables per a la teva plantilla de prompt. Pots utilitzar les variables més d'una vegada a la plantilla de prompt. Quan s'utilitzi el prompt, les variables seran reemplaçades automàticament pel text introduït corresponent.",
+    "use_prompt_library__title": "Prompts de 1 clic",
+    "edit_prompt__template__placeholder": "La plantilla de prompt per a ChatGPT.\nLa plantilla pot incloure qualsevol nombre de les variables següents:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Preferits",
     "tab__public__title": "Públic",
     "tab__own__title": "Propi",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Plantilla",
     "delete_prompt__title": "Esteu segur que voleu eliminar aquesta plantilla de prompt?",
     "delete_prompt__action__confirm__title": "Eliminar",
-    "delete_prompt__cancel__confirm__title": "Cancel·lar"
+    "delete_prompt__cancel__confirm__title": "Cancel·lar",
+    "use_prompt_library__title__tooltip": "Prompts de 1 clic"
   }
 }

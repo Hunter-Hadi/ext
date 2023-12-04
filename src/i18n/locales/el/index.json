@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Εισαγάγετε όνομα",
     "feature_card__prompts__edit_prompt__field_icon__title": "Εικονίδιο",
     "feature_card__prompts__edit_prompt__field_template__title": "Πρότυπο υποδείξεων",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Το πρότυπο υποδείξεων για το ChatGPT.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιονδήποτε αριθμό από τις ακόλουθες μεταβλητές:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Το πρότυπο παρακίνησης για το ChatGPT.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις παρακάτω μεταβλητές:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Όταν είναι ενεργοποιημένο",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Η υπόδειξη θα αποστέλλεται απευθείας στο AI, που είναι η προεπιλεγμένη \"φυσιολογική συμπεριφορά\". Όλα τα πρότυπα υποδείξεων θα έχουν αυτήν την επιλογή ενεργοποιημένη από προεπιλογή.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Όταν είναι απενεργοποιημένο",
@@ -697,8 +697,8 @@
     "template__error__title": "Απαιτείται πρότυπο"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Χρήση βιβλιοθήκης προτύπων",
-    "edit_prompt__template__placeholder": "Χρησιμοποιήστε αυτό το πεδίο για να δημιουργήσετε το πραγματικό πρότυπο της ερώτησής σας.\n\nΜπορείτε να προσθέσετε μεταβλητές που θα μετατραπούν σε πεδία κειμένου που μπορούν να συμπληρωθούν στο πρότυπο της ερώτησης. Δοκιμάστε να πληκτρολογήσετε {{ στην ερώτησή σας και αρχίστε να δημιουργείτε μεταβλητές για το πρότυπο της ερώτησής σας. Μπορείτε να χρησιμοποιήσετε μεταβλητές περισσότερες από μία φορές στο πρότυπο της ερώτησής σας. Όταν χρησιμοποιείται η ερώτηση, οι μεταβλητές θα αντικατασταθούν αυτόματα από το αντίστοιχο κείμενο που εισάγετε.",
+    "use_prompt_library__title": "1-κλικ προτροπές",
+    "edit_prompt__template__placeholder": "Το πρότυπο προτροπής για το ChatGPT.\nΤο πρότυπο μπορεί να περιλαμβάνει οποιοδήποτε αριθμό από τις ακόλουθες μεταβλητές:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Αγαπημένα",
     "tab__public__title": "Δημόσια",
     "tab__own__title": "Ιδιόκτητα",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Πρότυπο",
     "delete_prompt__title": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το πρότυπο προτροπής;",
     "delete_prompt__action__confirm__title": "Διαγραφή",
-    "delete_prompt__cancel__confirm__title": "Ακύρωση"
+    "delete_prompt__cancel__confirm__title": "Ακύρωση",
+    "use_prompt_library__title__tooltip": "1-κλικ προτροπές"
   }
 }

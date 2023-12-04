@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Ange namn",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Förslagsmall",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Förslagsmallen för ChatGPT.\nMallen kan innehålla ett valfritt antal av följande variabler:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Mallen för uppmaningen för ChatGPT.\nMallen kan inkludera vilket antal av följande variabler som helst:\n{{VALD_TEXT}}\n{{NUVARANDE_WEBBPLATS_DOMÄN}}\n{{SYSTEM_NUVARANDE_DATUM}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "När det är aktiverat",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Förslaget kommer att skickas direkt till AI, vilket är det standardmässiga \"normala beteendet\". Alla förslagsmallar har detta alternativ aktiverat som standard.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "När det är inaktiverat",
@@ -697,8 +697,8 @@
     "template__error__title": "Mall krävs"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Använd promptbibliotek",
-    "edit_prompt__template__placeholder": "Använd detta fält för att skapa din faktiska promptmall.\n\nDu kan lägga till variabler som kommer att bli ifyllningsbara textfält i promptmallen. Prova att skriva {{ i din prompt och börja skapa variabler för din promptmall. Du kan använda variabler mer än en gång i din promptmall. När prompten används kommer variablerna automatiskt att ersättas med motsvarande inmatad text.",
+    "use_prompt_library__title": "1-klicka-promptar",
+    "edit_prompt__template__placeholder": "Mallen för prompten för ChatGPT.\nMallen kan inkludera vilket antal av följande variabler som helst:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favoriter",
     "tab__public__title": "Offentlig",
     "tab__own__title": "Egen",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Mall",
     "delete_prompt__title": "Är du säker på att du vill ta bort denna promptmall?",
     "delete_prompt__action__confirm__title": "Ta bort",
-    "delete_prompt__cancel__confirm__title": "Avbryt"
+    "delete_prompt__cancel__confirm__title": "Avbryt",
+    "use_prompt_library__title__tooltip": "1-klicka på uppmaningar"
   }
 }

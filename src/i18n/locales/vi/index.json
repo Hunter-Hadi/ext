@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Nhập tên",
     "feature_card__prompts__edit_prompt__field_icon__title": "Biểu tượng",
     "feature_card__prompts__edit_prompt__field_template__title": "Mẫu câu nhắc",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Mẫu câu nhắc cho ChatGPT.\nMẫu có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Mẫu lời nhắc cho ChatGPT.\nMẫu có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Khi được bật",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Câu nhắc sẽ được gửi trực tiếp đến AI, đây là \"hành vi bình thường\" mặc định. Tất cả các mẫu câu nhắc sẽ có tùy chọn này được bật theo mặc định.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Khi được tắt",
@@ -697,8 +697,8 @@
     "template__error__title": "Yêu cầu mẫu"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Sử dụng thư viện gợi ý",
-    "edit_prompt__template__placeholder": "Sử dụng trường này để tạo mẫu gợi ý thực tế của bạn.\n\nBạn có thể thêm biến sẽ trở thành các trường văn bản có thể điền vào trong mẫu gợi ý. Hãy thử gõ {{ trong gợi ý của bạn và bắt đầu tạo biến cho mẫu gợi ý của bạn. Bạn có thể sử dụng biến nhiều lần trong mẫu gợi ý của bạn. Khi gợi ý được sử dụng, các biến sẽ được thay thế bằng văn bản đã nhập tương ứng tự động.",
+    "use_prompt_library__title": "Gợi ý 1-click",
+    "edit_prompt__template__placeholder": "Mẫu gợi ý cho ChatGPT.\nMẫu có thể bao gồm bất kỳ số lượng biến sau đây:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Yêu thích",
     "tab__public__title": "Công khai",
     "tab__own__title": "Của tôi",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Mẫu",
     "delete_prompt__title": "Bạn có chắc chắn muốn xóa mẫu lời nhắc này không?",
     "delete_prompt__action__confirm__title": "Xóa",
-    "delete_prompt__cancel__confirm__title": "Hủy"
+    "delete_prompt__cancel__confirm__title": "Hủy",
+    "use_prompt_library__title__tooltip": "Gợi ý bằng 1 cú nhấp chuột"
   }
 }

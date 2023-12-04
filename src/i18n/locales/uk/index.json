@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "نام درج کریں",
     "feature_card__prompts__edit_prompt__field_icon__title": "آئکن",
     "feature_card__prompts__edit_prompt__field_template__title": "پرامپٹ ٹیمپلیٹ",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT کے لئے پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں مندرجہ ذیل متغیرات کی کوئی بھی تعداد شامل کی جاسکتی ہے:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT کے لئے پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں منتخب متن کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "جب فعال ہو",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "پرامپٹ کو سیدھے AI کو بھیجا جائے گا، جو کہ \"عام رویہ\" ہے۔ تمام پرامپٹ ٹیمپلیٹس کو پہلے سے ہی اس آپشن کو فعال کیا جائے گا۔",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "جب غیر فعال ہو",
@@ -697,8 +697,8 @@
     "template__error__title": "ٹیمپلیٹ ضروری ہے"
   },
   "prompt_library": {
-    "use_prompt_library__title": "پرومپٹ لائبریری استعمال کریں",
-    "edit_prompt__template__placeholder": "اپنے حقیقی پرومپٹ ٹیمپلیٹ بنانے کے لئے اس فیلڈ کا استعمال کریں۔\n\nآپ وہ متغیرات شامل کرسکتے ہیں جو پرومپٹ ٹیمپلیٹ میں قابل بھرنے والے ٹیکسٹ فیلڈز میں تبدیل ہوجائیں گی۔ اپنے پرومپٹ ٹیمپلیٹ کے لئے متغیرات بنانے کے لئے {{ ٹائپ کریں اور شروع کریں۔ آپ اپنے پرومپٹ ٹیمپلیٹ میں متغیرات کو بار بار استعمال کرسکتے ہیں۔ جب پرومپٹ استعمال ہوتا ہے تو متغیرات خود بخود مطابقتی درج کردہ ٹیکسٹ سے تبدیل ہوجائیں گی۔",
+    "use_prompt_library__title": "1-کلک پرامپٹس",
+    "edit_prompt__template__placeholder": "چیٹ جی پی ٹی کے لئے پرامپٹ ٹیمپلیٹ۔\nٹیمپلیٹ میں منتخب کردہ متن کی کوئی بھی تعداد شامل کی جا سکتی ہے:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "پسندیدہ",
     "tab__public__title": "عوامی",
     "tab__own__title": "اپنا",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "سانچہ",
     "delete_prompt__title": "کیا آپ واقعی اس پرامپ ٹیمپلیٹ کو حذف کرنا چاہتے ہیں؟",
     "delete_prompt__action__confirm__title": "حذف کریں",
-    "delete_prompt__cancel__confirm__title": "منسوخ کریں"
+    "delete_prompt__cancel__confirm__title": "منسوخ کریں",
+    "use_prompt_library__title__tooltip": "1-کلک پرامپٹس"
   }
 }

@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Syötä nimi",
     "feature_card__prompts__edit_prompt__field_icon__title": "Kuvake",
     "feature_card__prompts__edit_prompt__field_template__title": "Kehotteen malli",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Kehotteen malli ChatGPT:lle.\nMalli voi sisältää seuraavat muuttujat:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT:n kysymyspohja.\nPohjassa voi olla mitä tahansa seuraavista muuttujista:\n{{VALITTU_TEKSTI}}\n{{NYKYINEN_VERKKOSIVUSTON_VERKKOTUNNUS}}\n{{JÄRJESTELMÄN_NYKYINEN_PÄIVÄMÄÄRÄ}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Kun käytössä",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Kehote lähetetään suoraan tekoälylle, mikä on oletusarvoinen \"normaali käyttäytyminen\". Kaikissa kehote malleissa tämä vaihtoehto on oletuksena käytössä.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Kun ei käytössä",
@@ -697,8 +697,8 @@
     "template__error__title": "Malli vaaditaan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Käytä kyselykirjastoa",
-    "edit_prompt__template__placeholder": "Käytä tätä kenttää luodaksesi varsinaisen kyselymallisi.\n\nVoit lisätä muuttujia, jotka muuttuvat täytettäviksi tekstikentiksi kyselymallissa. Kokeile kirjoittaa {{ kyselyysi ja aloita muuttujien luominen kyselymalliasi varten. Voit käyttää muuttujia useammin kuin kerran kyselymallissasi. Kun kyselyä käytetään, muuttujat korvataan automaattisesti vastaavalla syötetyllä tekstillä.",
+    "use_prompt_library__title": "1-klikkaus vihjeet",
+    "edit_prompt__template__placeholder": "Vihjeen mallipohja ChatGPT:lle.\nMallipohja voi sisältää mitä tahansa seuraavista muuttujista:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Suosikit",
     "tab__public__title": "Julkinen",
     "tab__own__title": "Oma",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Malli",
     "delete_prompt__title": "Haluatko varmasti poistaa tämän ohjepohjan?",
     "delete_prompt__action__confirm__title": "Poista",
-    "delete_prompt__cancel__confirm__title": "Peruuta"
+    "delete_prompt__cancel__confirm__title": "Peruuta",
+    "use_prompt_library__title__tooltip": "1-napin vihjeet"
   }
 }

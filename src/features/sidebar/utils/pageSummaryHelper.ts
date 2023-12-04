@@ -11,6 +11,7 @@ import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYou
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
+import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -806,7 +807,7 @@ export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
 
 const isNeedGetSpecialHostPageContent = () => {
   const host = getCurrentDomainHost()
-  return ['docs.google.com'].find((item) => item === host)
+  return ['docs.google.com', 'cnbc.com'].find((item) => item === host)
 }
 const getSpecialHostPageContent = async () => {
   const host = getCurrentDomainHost()
@@ -840,6 +841,14 @@ const getSpecialHostPageContent = async () => {
         resolve('')
       }, 10000)
     })
+  } else if (host === 'cnbc.com') {
+    const mainContainer = document.querySelector(
+      '#MainContentContainer',
+    ) as HTMLDivElement
+    if (mainContainer) {
+      return getPageContentWithMozillaReadability(mainContainer)
+    }
+    return ''
   }
   return ''
 }

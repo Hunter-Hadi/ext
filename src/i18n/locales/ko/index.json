@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "이름 입력",
     "feature_card__prompts__edit_prompt__field_icon__title": "아이콘",
     "feature_card__prompts__edit_prompt__field_template__title": "프롬프트 템플릿",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT용 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT의 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "활성화된 경우",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "프롬프트가 직접 AI로 전송됩니다. 이것이 기본 \"일반 동작\"입니다. 모든 프롬프트 템플릿은 기본적으로 이 옵션이 활성화됩니다.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "비활성화된 경우",
@@ -697,8 +697,8 @@
     "template__error__title": "템플릿이 필요합니다"
   },
   "prompt_library": {
-    "use_prompt_library__title": "프롬프트 라이브러리 사용",
-    "edit_prompt__template__placeholder": "실제 프롬프트 템플릿을 생성하는 데 이 필드를 사용하세요.\n\n프롬프트 템플릿에서 채워질 수 있는 텍스트 필드로 변환될 변수를 추가할 수 있습니다. 프롬프트에 {{를 입력하고 프롬프트 템플릿의 변수를 생성해보세요. 프롬프트 템플릿에서 변수를 여러 번 사용할 수 있습니다. 프롬프트가 사용될 때, 변수는 자동으로 해당 입력된 텍스트로 대체됩니다.",
+    "use_prompt_library__title": "1-클릭 프롬프트",
+    "edit_prompt__template__placeholder": "ChatGPT를 위한 프롬프트 템플릿입니다.\n템플릿에는 다음 변수 중 하나 이상을 포함할 수 있습니다:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "즐겨찾기",
     "tab__public__title": "공개",
     "tab__own__title": "내 것",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "템플릿",
     "delete_prompt__title": "이 프롬프트 템플릿을 삭제하시겠습니까?",
     "delete_prompt__action__confirm__title": "삭제",
-    "delete_prompt__cancel__confirm__title": "취소"
+    "delete_prompt__cancel__confirm__title": "취소",
+    "use_prompt_library__title__tooltip": "1-클릭 프롬프트"
   }
 }

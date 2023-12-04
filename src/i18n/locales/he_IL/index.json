@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "הזן שם",
     "feature_card__prompts__edit_prompt__field_icon__title": "סמל",
     "feature_card__prompts__edit_prompt__field_template__title": "תבנית הצעה",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "תבנית הצעה עבור ChatGPT.\nהתבנית יכולה לכלול מספר כלשהו של המשתנים הבאים:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "תבנית הפרומט ל-ChatGPT.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "כאשר מופעל",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "ההצעה תישלח ישירות ל-AI, שהיא \"התנהגות רגילה\" ברירת המחדל. כל תבניות ההצעות יהיו מופעלות כברירת מחדל.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "כאשר מנוטרל",
@@ -697,8 +697,8 @@
     "template__error__title": "נדרש תבנית"
   },
   "prompt_library": {
-    "use_prompt_library__title": "השתמש בספריית הצעות",
-    "edit_prompt__template__placeholder": "השתמש בשדה זה כדי ליצור את תבנית ההצעה הממשית שלך.\n\nניתן להוסיף משתנים שיתהפכו לשדות טקסט ניתנים למילוי בתבנית ההצעה. נסה להקליד {{ בהצעתך ולהתחיל ליצור משתנים עבור תבנית ההצעה שלך. ניתן להשתמש במשתנים יותר מפעם אחת בתבנית ההצעה שלך. כאשר ההצעה משתמשת, המשתנים יוחלפו בטקסט המילוי המתאים באופן אוטומטי.",
+    "use_prompt_library__title": "פרומטים בלחיצה אחת",
+    "edit_prompt__template__placeholder": "תבנית הפרומט עבור ChatGPT.\nהתבנית יכולה לכלול כל מספר מהמשתנים הבאים:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "מועדפים",
     "tab__public__title": "ציבורי",
     "tab__own__title": "שלי",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "תבנית",
     "delete_prompt__title": "האם אתה בטוח שברצונך למחוק תבנית ההוראות הזו?",
     "delete_prompt__action__confirm__title": "מחק",
-    "delete_prompt__cancel__confirm__title": "ביטול"
+    "delete_prompt__cancel__confirm__title": "ביטול",
+    "use_prompt_library__title__tooltip": "קליק אחד להצעות"
   }
 }

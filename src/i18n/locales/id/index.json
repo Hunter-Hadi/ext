@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Masukkan nama",
     "feature_card__prompts__edit_prompt__field_icon__title": "Ikon",
     "feature_card__prompts__edit_prompt__field_template__title": "Template promp",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Template promp untuk ChatGPT.\nTemplate dapat mencakup beberapa variabel berikut:\n{{SELECTED_TEXT}}\n{{AI_RESPONSE_LANGUAGE}}\n{{CURRENT_WEBSITE_DOMAIN}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Template prompt untuk ChatGPT.\nTemplate dapat mencakup sejumlah variabel berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Ketika diaktifkan",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Promp akan langsung dikirim ke AI, yang merupakan \"perilaku normal\" default. Semua template promp akan memiliki opsi ini diaktifkan secara default.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Ketika dinonaktifkan",
@@ -697,8 +697,8 @@
     "template__error__title": "Template diperlukan"
   },
   "prompt_library": {
-    "use_prompt_library__title": "Gunakan perpustakaan prompt",
-    "edit_prompt__template__placeholder": "Gunakan kolom ini untuk membuat template prompt sebenarnya.\n\nAnda dapat menambahkan variabel yang akan berubah menjadi kolom teks yang dapat diisi dalam template prompt. Coba ketik {{ pada prompt Anda dan mulai membuat variabel untuk template prompt Anda. Anda dapat menggunakan variabel lebih dari sekali dalam template prompt Anda. Ketika prompt digunakan, variabel akan digantikan oleh teks yang diinput secara otomatis.",
+    "use_prompt_library__title": "1-klik prompt",
+    "edit_prompt__template__placeholder": "Template prompt untuk ChatGPT.\nTemplate dapat mencakup sejumlah variabel berikut:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "tab__favorites__title": "Favorit",
     "tab__public__title": "Publik",
     "tab__own__title": "Milik Sendiri",
@@ -724,6 +724,7 @@
     "edit_prompt_modal__field__template__label": "Templat",
     "delete_prompt__title": "Apakah Anda yakin ingin menghapus template prompt ini?",
     "delete_prompt__action__confirm__title": "Hapus",
-    "delete_prompt__cancel__confirm__title": "Batal"
+    "delete_prompt__cancel__confirm__title": "Batal",
+    "use_prompt_library__title__tooltip": "Prompt 1-klik"
   }
 }

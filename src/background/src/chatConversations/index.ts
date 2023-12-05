@@ -395,7 +395,8 @@ export default class ConversationManager {
     const conversation = await this.conversationDB.getConversationById(
       conversationId,
     )
-    if (conversation) {
+    // 此处不能简写，因为老数据没有这个字段，所以写法是 !== true
+    if (conversation && conversation.isDelete !== true) {
       // 更新最后访问时间
       // conversation.updated_at = new Date().toISOString()
       // await this.conversationDB.addOrUpdateConversation(conversation)

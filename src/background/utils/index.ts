@@ -15,6 +15,7 @@ import utc from 'dayjs/plugin/utc'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -282,6 +283,23 @@ export const chromeExtensionLogout = async () => {
   await removeAllChromeExtensionSettingsSnapshot()
   // 清空本地i18n language
   await clearContextMenuSearchTextStore()
+  // 清空chat
+  await setChromeExtensionLocalStorage({
+    sidebarSettings: {
+      chat: {
+        conversationId: '',
+      },
+      search: {
+        conversationId: '',
+      },
+      summary: {
+        conversationId: '',
+      },
+      common: {
+        currentAIProvider: 'OPENAI',
+      },
+    },
+  })
 }
 
 /**

@@ -222,6 +222,15 @@ class ConversationDB {
             conversations.map(async (conversation) => {
               if (!conversation.authorId && userId && conversation.id) {
                 conversation.authorId = userId
+                // 顺便更新新字段
+                if (
+                  !Object.prototype.hasOwnProperty.call(
+                    conversation,
+                    'isDelete',
+                  )
+                ) {
+                  conversation.isDelete = false
+                }
                 await this.addOrUpdateConversation(conversation)
               }
               return conversation

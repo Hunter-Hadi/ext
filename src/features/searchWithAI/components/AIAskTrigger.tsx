@@ -94,7 +94,7 @@ const AIAskTrigger: FC<IProps> = ({
           Ask AI for this query
         </Button>
         <Divider> OR </Divider>
-        <Typography variant="body2">
+        <Typography variant="body2" fontSize={14}>
           End your search with a question mark to get an AI response
           automatically.
         </Typography>

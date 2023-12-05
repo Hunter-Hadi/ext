@@ -70,7 +70,7 @@ export const getChromeExtensionUserId = async (): Promise<string> => {
   )
   if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
     return cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
-      ?.userId as string
+      ?.userInfo?.subject?.user_id as string
   }
   return ''
 }

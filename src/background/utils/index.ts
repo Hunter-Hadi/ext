@@ -15,7 +15,6 @@ import utc from 'dayjs/plugin/utc'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
-import ConversationManager from '@/background/src/chatConversations'
 
 export {
   resetChromeExtensionOnBoardingData,
@@ -279,8 +278,6 @@ export const chromeExtensionLogout = async () => {
   )
   // 清空用户设置
   await Browser.storage.local.remove(CHROME_EXTENSION_DB_STORAGE_SAVE_KEY)
-  // 清空用户indexedDB
-  await ConversationManager.conversationDB.clearAllConversations()
   // 清空本地own prompts快照
   await removeAllChromeExtensionSettingsSnapshot()
   // 清空本地i18n language

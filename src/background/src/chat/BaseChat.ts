@@ -42,9 +42,7 @@ class BaseChat {
           this.conversation.id,
           '因为是Summary',
         )
-        await ConversationManager.conversationDB.deleteConversation(
-          this.conversation.id,
-        )
+        await ConversationManager.removeConversation(this.conversation.id)
       } else if (this.conversation.type === 'Chat') {
         console.log(
           '新版Conversation',

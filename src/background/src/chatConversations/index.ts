@@ -361,6 +361,9 @@ export default class ConversationManager {
   static async getAllPaginationConversations(): Promise<
     PaginationConversation[]
   > {
+    if (!(await getChromeExtensionUserId())) {
+      return []
+    }
     const conversations = await this.conversationDB.getAllConversations()
     const paginationConversations = conversations
       .filter((conversation) => conversation.isDelete !== true) // 因为老数据没有这个字段，所以写法是 !== true

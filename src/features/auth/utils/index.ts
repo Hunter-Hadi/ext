@@ -61,6 +61,19 @@ export const getChromeExtensionUserInfo = async (
     return undefined
   }
 }
+/**
+ * 获取用户id
+ */
+export const getChromeExtensionUserId = async (): Promise<string> => {
+  const cache = await Browser.storage.local.get(
+    CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  )
+  if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+    return cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+      ?.userId as string
+  }
+  return ''
+}
 
 export const fetchUserSubscriptionInfo = async (): Promise<
   IUserRole | undefined

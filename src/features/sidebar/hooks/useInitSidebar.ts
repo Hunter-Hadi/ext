@@ -5,13 +5,13 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { usePrevious } from '@/hooks/usePrevious'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 import { useFocus } from '@/hooks/useFocus'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import { useSetRecoilState } from 'recoil'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat

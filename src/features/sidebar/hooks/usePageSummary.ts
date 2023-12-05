@@ -160,12 +160,12 @@ const usePageSummary = () => {
     ) {
       isFetchingRef.current = true
       if (setShortCuts(runActions)) {
+        setRunActions([])
         runShortCuts()
           .then()
           .catch()
           .finally(() => {
             isFetchingRef.current = false
-            setRunActions([])
             const conversationId = getPageSummaryConversationId()
             if (conversationId && lastMessageIdRef.current) {
               // 因为整个过程不一定是成功的

@@ -7,6 +7,7 @@ import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMe
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 export interface IChatConversation {
+  authorId: string // 作者ID
   id: string // 对话ID
   title: string // 对话标题
   created_at: string // 创建时间
@@ -276,6 +277,7 @@ export default class ConversationManager {
   )
   static async createConversation(newConversation: Partial<IChatConversation>) {
     const defaultConversation: IChatConversation = {
+      authorId: '',
       id: uuidV4(),
       title: 'Chat',
       type: 'Chat',

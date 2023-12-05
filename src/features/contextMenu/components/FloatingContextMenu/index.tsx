@@ -690,6 +690,7 @@ const FloatingContextMenu: FC<{
                     </>
                   ) : (
                     <AutoHeightTextarea
+                      stopPropagation
                       expandNode={
                         floatingDropdownMenu.open && (
                           <ChatIconFileUpload

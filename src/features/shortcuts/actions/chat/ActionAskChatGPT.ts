@@ -135,6 +135,7 @@ export class ActionAskChatGPT extends Action {
                           message,
                           {
                             originalMessage: {
+                              status: 'complete',
                               metadata: {
                                 isComplete: true,
                               },

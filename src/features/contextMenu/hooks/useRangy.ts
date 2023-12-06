@@ -44,10 +44,12 @@ const useRangy = () => {
   }
 
   const saveCurrentSelection = async (selection: ISelection) => {
-    selection.selectionText = await sliceTextByTokens(
-      selection.selectionText || '',
-      PAGE_SUMMARY_MAX_TOKENS,
-    )
+    selection.selectionText = (
+      await sliceTextByTokens(
+        selection.selectionText || '',
+        PAGE_SUMMARY_MAX_TOKENS,
+      )
+    ).text
     setRangy((prevState) => {
       return {
         ...prevState,

@@ -238,6 +238,7 @@ const useSearchWithAI = () => {
                   {
                     messageId: lastMessageIdRef.current,
                     originalMessage: {
+                      status: 'complete',
                       metadata: {
                         sources: {
                           status: 'complete',

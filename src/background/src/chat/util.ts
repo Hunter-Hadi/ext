@@ -343,7 +343,7 @@ export const processAskAIParameters = async (
     // NOTE: 因为有middle out, 设置默认的maxHistoryCount上限为100
     let maxHistoryCount = (conversation.meta.maxHistoryCount || 100) - 1
     // 如果有systemPrompt, maxHistoryCount - 1
-    if (systemPromptTokens.length > 0) {
+    if (systemPromptTokens > 0) {
       maxHistoryCount -= 1
     }
     // 如果传入了maxHistoryMessageCnt，那么取最小值

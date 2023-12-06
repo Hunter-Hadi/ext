@@ -107,7 +107,7 @@ export class YoutubeTranscript {
         return `${transcript.start} ${transcript.text}\n`
       })
       .join('')}`
-    return await sliceTextByTokens(transcriptText, sliceTokens)
+    return (await sliceTextByTokens(transcriptText, sliceTokens)).text
   }
   /**
    * Retrieve video id from url or string

@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Le dernier modèle GPT-4 avec une meilleure prise en compte des instructions, le mode JSON, des sorties reproductibles, l'appel de fonctions parallèles et plus encore. Renvoie un maximum de 4 096 jetons de sortie. Ce modèle de prévisualisation n'est pas encore adapté au trafic de production.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacité à comprendre les images, en plus de toutes les autres fonctionnalités de GPT-4 Turbo. Renvoie un maximum de 4 096 jetons de sortie. Il s'agit d'une version de modèle de prévisualisation qui n'est pas encore adaptée au trafic de production.",
     "activity__black_friday_2023__title": "Offres du Black Friday à durée limitée - Jusqu'à 50% de réduction !",
-    "sidebar__speed_dial__chat_history__button": "Historique du chat"
+    "sidebar__speed_dial__chat_history__button": "Historique du chat",
+    "activity__christmas_2023__title": "CADEAUX DE NOËL ! - Jusqu'à 50% de réduction !"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "El último modelo GPT-4 con mejor seguimiento de instrucciones, modo JSON, salidas reproducibles, llamadas de función paralelas y más. Devuelve un máximo de 4.096 tokens de salida. Este modelo de vista previa aún no es adecuado para el tráfico de producción.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacidad para comprender imágenes, además de todas las demás capacidades de GPT-4 Turbo. Devuelve un máximo de 4.096 tokens de salida. Esta es una versión de modelo de vista previa y aún no es adecuada para el tráfico de producción.",
     "activity__black_friday_2023__title": "¡Ofertas de Viernes Negro por Tiempo Limitado - ¡Hasta un 50% de Descuento!",
-    "sidebar__speed_dial__chat_history__button": "Historial de chat"
+    "sidebar__speed_dial__chat_history__button": "Historial de chat",
+    "activity__christmas_2023__title": "¡REGALOS DE NAVIDAD! - ¡Hasta un 50% DE DESCUENTO!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

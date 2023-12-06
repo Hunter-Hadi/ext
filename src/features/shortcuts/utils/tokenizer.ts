@@ -89,9 +89,12 @@ export const getTextTokens = (text: string) => {
  * @param text
  * @param thread
  */
-export const getTextTokensWithThread = async (text: string, thread = 4) => {
+export const getTextTokensWithThread = async (text: string, thread: number) => {
   // NOTE: 太高会内存溢出
   const maxThread = Math.min(Math.max(thread, 1), 10)
+  if (thread === 1) {
+    return await getTextTokens(text)
+  }
   const textOfChunks = []
   const chunkLength = Math.ceil(text.length / maxThread)
   for (let i = 0; i < maxThread; i++) {
@@ -123,7 +126,7 @@ export const sliceTextByTokens = async (
   },
 ) => {
   const {
-    thread = 4,
+    thread = 1,
     bufferTokens = 0,
     startSliceRate = 1,
     endSliceRate = 1,
@@ -131,8 +134,8 @@ export const sliceTextByTokens = async (
     startSlicePosition = 'end',
   } = options || {}
   if (
-    (await getTextTokensWithThread(text.slice(0, partOfTextLength), 4)).length >
-    tokenLimit
+    (await getTextTokensWithThread(text.slice(0, partOfTextLength), thread))
+      .length > tokenLimit
   ) {
     console.log('sliceTextByTokens 切割文本片段太大')
     // 如果片段的token数量大于限制的token数量, 则直接返回片段
@@ -150,26 +153,54 @@ export const sliceTextByTokens = async (
   // 基于 [startSliceRate] * [partOfTextLength] 和 [endSliceRate] * [partOfTextLength] 填充textChunks
   const fillTextChunks = () => {
     // 从头部开始
-    let startSliceLength = startSliceRate * partOfTextLength
+    const startSliceChunkSize = startSliceRate * partOfTextLength
     // 从尾部开始
-    let endSliceLength = endSliceRate * partOfTextLength
-    let startSliceText = ''
-    let endSliceText = ''
-    let textLength = text.length
-    while (textLength > 0) {
-      if (textLength < startSliceLength) {
-        startSliceLength = textLength
+    const endSliceChunkSize = endSliceRate * partOfTextLength
+    let startSlicePosition = 0
+    let endSlicePosition = text.length
+    const startChunks = []
+    const endChunks = []
+    while (startSlicePosition < endSlicePosition) {
+      if (startSliceChunkSize + startSlicePosition > endSlicePosition) {
+        // 如果剩余的长度不够一个chunk
+        startChunks.push(
+          text.slice(
+            startSlicePosition,
+            startSlicePosition + endSlicePosition - startSlicePosition,
+          ),
+        )
+        startSlicePosition += endSlicePosition - startSlicePosition
+      } else {
+        // 如果剩余的长度够一个chunk
+        startChunks.push(
+          text.slice(
+            startSlicePosition,
+            startSlicePosition + startSliceChunkSize,
+          ),
+        )
+        startSlicePosition += startSliceChunkSize
       }
-      if (textLength < endSliceLength) {
-        endSliceLength = textLength
+      if (startSlicePosition >= endSlicePosition) {
+        break
       }
-      startSliceText = text.slice(0, startSliceLength)
-      endSliceText = text.slice(-endSliceLength)
-      textChunks.push(startSliceText)
-      textChunks.push(endSliceText)
-      text = text.slice(startSliceLength, -endSliceLength)
-      textLength = text.length
+      if (endSlicePosition - endSliceChunkSize < startSlicePosition) {
+        // 如果剩余的长度不够一个chunk
+        endChunks.unshift(
+          text.slice(
+            endSlicePosition - (endSlicePosition - startSlicePosition),
+            endSlicePosition,
+          ),
+        )
+        endSlicePosition -= endSlicePosition - startSlicePosition
+      } else {
+        // 如果剩余的长度够一个chunk
+        endChunks.unshift(
+          text.slice(endSlicePosition - endSliceChunkSize, endSlicePosition),
+        )
+        endSlicePosition -= endSliceChunkSize
+      }
     }
+    textChunks.push(...startChunks, ...endChunks)
   }
   fillTextChunks()
   const totalChunks = textChunks.length

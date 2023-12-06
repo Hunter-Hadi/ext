@@ -206,9 +206,54 @@ const initChromeExtensionUpdated = async () => {
       })
     }
   }
+  /**
+   * @since 2023-12-06
+   * @description 2023圣诞节
+   */
+  const executeChristmasPromotion = async () => {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    // 如果已经弹窗过了，就不再弹窗
+    if (onBoardingData.ON_BOARDING_CHRISTMAS_2023_OPEN_LINK) {
+      return
+    }
+    const result = await getChromeExtensionUserInfo(true)
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_CHRISTMAS_2023_OPEN_LINK',
+      true,
+    )
+    if (result?.roles && result?.subscription_plan_name) {
+      const role = (
+        result.roles.find((role) => role.name === 'elite') ||
+        result.roles.find((role) => role.name === 'pro') || {
+          name: 'free',
+        }
+      ).name
+      const planName = result.subscription_plan_name
+      if (role === 'elite' && planName === 'ELITE_YEARLY') {
+        // 不弹窗
+      } else {
+        // 弹窗
+        // 跳转去https://app.maxai.me/holiday2023
+        await Browser.tabs.create({
+          url: `https://app.maxai.me/holiday2023`,
+        })
+      }
+    } else {
+      // 没登录也跳转
+      await Browser.tabs.create({
+        url: `https://app.maxai.me/holiday2023`,
+      })
+    }
+  }
   if (APP_VERSION === '2.4.3') {
     setTimeout(
       executeBlackFridayPromotion,
+      (1 + Math.floor(Math.random() * 9)) * 1000,
+    )
+  }
+  if (APP_VERSION === '2.4.5') {
+    setTimeout(
+      executeChristmasPromotion,
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }

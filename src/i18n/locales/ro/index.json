@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "Introduceți nume",
     "feature_card__prompts__edit_prompt__field_icon__title": "Pictogramă",
     "feature_card__prompts__edit_prompt__field_template__title": "Șablon prompt",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "Șablonul de prompt pentru ChatGPT.\nȘablonul poate include orice număr de variabile următoare:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "Șablonul de prompt pentru ChatGPT.\nȘablonul poate include orice număr de următoarele variabile:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "Când este activat",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "Prompt-ul va fi trimis direct la AI, care este „comportamentul normal” implicit. Toate șabloanele de prompt vor avea această opțiune activată în mod implicit.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "Când este dezactivat",
@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Cel mai recent model GPT-4 cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și altele. Returnează un maxim de 4.096 de token-uri de ieșire. Acest model de previzualizare nu este încă potrivit pentru traficul de producție.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitatea de a înțelege imagini, în plus față de toate celelalte capabilități ale lui GPT-4 Turbo. Returnează un maxim de 4.096 de token-uri de ieșire. Aceasta este o versiune de previzualizare a modelului și nu este încă potrivită pentru traficul de producție.",
     "activity__black_friday_2023__title": "Oferte de Black Friday cu timp limitat - Până la 50% reducere!",
-    "sidebar__speed_dial__chat_history__button": "Istoric chat"
+    "sidebar__speed_dial__chat_history__button": "Istoric chat",
+    "activity__christmas_2023__title": "OFERTE DE CRĂCIUN! - Până la 50% REDUCERE!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

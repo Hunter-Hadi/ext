@@ -43,6 +43,7 @@ export class ActionAnalyzeChatFile extends Action {
         isLimit,
         text: pageSummarySystemPrompt,
       } = await sliceTextByTokens(text, PAGE_SUMMARY_MAX_TOKENS, {
+        thread: 4,
         partOfTextLength: 80 * 1000,
       })
       // 如果触发了limit，就截取其中400k上传作为docId
@@ -52,6 +53,7 @@ export class ActionAnalyzeChatFile extends Action {
             text,
             MAX_UPLOAD_TEXT_FILE_TOKENS,
             {
+              thread: 4,
               partOfTextLength: 80 * 1000,
             },
           )

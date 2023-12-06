@@ -6,19 +6,20 @@ import IconButton from '@mui/material/IconButton'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { useTranslation } from 'react-i18next'
 import useActivity from '@/features/auth/hooks/useActivity'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const SidebarTopBar: FC = () => {
   const { t } = useTranslation(['client'])
   const {
-    isShowBlackFridayBanner,
-    isAbleToCloseBlackFridayBanner,
-    handleCloseBlackFriday2023Banner,
+    isShowActivityBanner,
+    isAbleToCloseActivityBanner,
+    handleCloseActivityBanner,
   } = useActivity()
   return (
     <Stack>
       {/*黑五*/}
       {/*deprecated*/}
-      {isShowBlackFridayBanner && false && (
+      {isShowActivityBanner && false && (
         <Link
           href={`https://app.maxai.me/blackfriday2023`}
           target={'_blank'}
@@ -48,7 +49,7 @@ const SidebarTopBar: FC = () => {
             >
               {t('client:activity__black_friday_2023__title')}
             </Typography>
-            {isAbleToCloseBlackFridayBanner && (
+            {isAbleToCloseActivityBanner && (
               <IconButton
                 sx={{
                   position: 'absolute',
@@ -58,7 +59,64 @@ const SidebarTopBar: FC = () => {
                 onClick={async (event) => {
                   event.preventDefault()
                   event.stopPropagation()
-                  await handleCloseBlackFriday2023Banner()
+                  await handleCloseActivityBanner()
+                }}
+              >
+                <ContextMenuIcon
+                  icon={'Close'}
+                  sx={{
+                    color: '#FFFFFF99',
+                    fontSize: '24px',
+                  }}
+                />
+              </IconButton>
+            )}
+          </Stack>
+        </Link>
+      )}
+      {isShowActivityBanner && (
+        <Link
+          href={`https://app.maxai.me/holiday2023`}
+          target={'_blank'}
+          underline={'none'}
+        >
+          <Stack
+            py={1}
+            alignItems={'center'}
+            justifyContent={'center'}
+            sx={{
+              height: '48px',
+              bgcolor: '#000',
+              position: 'relative',
+              backgroundColor: 'rgb(1, 82, 47)',
+              backgroundImage: `url(${getChromeExtensionAssetsURL(
+                '/images/activity/christmas-background.png',
+              )})`,
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: '16px',
+                color: '#fff',
+                fontWeight: 700,
+                lineHeight: '24px',
+              }}
+            >
+              {t('client:activity__christmas_2023__title')}
+            </Typography>
+            {isAbleToCloseActivityBanner && (
+              <IconButton
+                sx={{
+                  position: 'absolute',
+                  right: '8px',
+                  top: '4px',
+                }}
+                onClick={async (event) => {
+                  event.preventDefault()
+                  event.stopPropagation()
+                  await handleCloseActivityBanner()
                 }}
               >
                 <ContextMenuIcon

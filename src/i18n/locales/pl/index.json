@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Najnowszy model GPT-4 z ulepszonym śledzeniem instrukcji, trybem JSON, powtarzalnymi wynikami, równoległym wywoływaniem funkcji i więcej. Zwraca maksymalnie 4 096 tokenów wyjściowych. Ten model w wersji podglądowej nie jest jeszcze odpowiedni do ruchu produkcyjnego.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Możliwość rozumienia obrazów, oprócz wszystkich innych możliwości GPT-4 Turbo. Zwraca maksymalnie 4 096 tokenów wyjściowych. To wersja podglądowa modelu i jeszcze nie nadaje się do ruchu produkcyjnego.",
     "activity__black_friday_2023__title": "Ograniczone Czasowo Oferty Black Friday – Do 50% Zniżki!",
-    "sidebar__speed_dial__chat_history__button": "Historia czatu"
+    "sidebar__speed_dial__chat_history__button": "Historia czatu",
+    "activity__christmas_2023__title": "ROZDANIE NA ŚWIĘTA! - Do 50% ZNIŻKI!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

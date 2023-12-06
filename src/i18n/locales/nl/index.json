@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Het nieuwste GPT-4-model met verbeterde instructieopvolging, JSON-modus, reproduceerbare uitvoer, parallelle functieoproep en meer. Geeft maximaal 4.096 uitvoertokens terug. Dit voorbeeldmodel is nog niet geschikt voor productieverkeer.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogelijkheid om afbeeldingen te begrijpen, naast alle andere mogelijkheden van GPT-4 Turbo. Geeft maximaal 4.096 uitvoertokens terug. Dit is een voorbeeldmodelversie en nog niet geschikt voor productieverkeer.",
     "activity__black_friday_2023__title": "Beperkte Black Friday-aanbiedingen - Tot 50% korting!",
-    "sidebar__speed_dial__chat_history__button": "Chatgeschiedenis"
+    "sidebar__speed_dial__chat_history__button": "Chatgeschiedenis",
+    "activity__christmas_2023__title": "KERSTACTIES! - Tot 50% KORTING!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

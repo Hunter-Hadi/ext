@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Mfano wa hivi karibuni wa GPT-4 na uwezo bora wa kufuata maagizo, njia ya JSON, matokeo yanayoweza kurejewa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha maneno 4,096. Mfano huu wa hakiki bado haufai kwa trafiki ya uzalishaji.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Uwezo wa kuelewa picha, pamoja na uwezo wote wa GPT-4 Turbo. Inarudisha kiwango cha juu cha maneno 4,096. Hii ni toleo la hakiki la mfano na bado halifai kwa trafiki ya uzalishaji.",
     "activity__black_friday_2023__title": "Ofa za Black Friday kwa Muda Mchache - Hadi 50% Punguzo!",
-    "sidebar__speed_dial__chat_history__button": "Historia ya mazungumzo"
+    "sidebar__speed_dial__chat_history__button": "Historia ya mazungumzo",
+    "activity__christmas_2023__title": "ZAWADI ZA KRISMASI! - Hadi 50% PUNGUZO!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Najnovejši model GPT-4 z izboljšanim sledenjem navodilom, načinom JSON, reproducibilnimi izhodi, vzporednim klicanjem funkcij in več. Vrne največ 4.096 izhodnih žetonov. Ta predogledni model še ni primeren za promet v proizvodnji.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Zmožnost razumevanja slik poleg vseh drugih zmogljivosti modela GPT-4 Turbo. Vrne največ 4.096 izhodnih žetonov. To je predogledna različica modela in še ni primerna za promet v proizvodnji.",
     "activity__black_friday_2023__title": "Omejeni čas - Črni petek ponudbe do 50% popusta!",
-    "sidebar__speed_dial__chat_history__button": "Zgodovina klepetov"
+    "sidebar__speed_dial__chat_history__button": "Zgodovina klepetov",
+    "activity__christmas_2023__title": "BOŽIČNI NAGRADNI IZDELKI! - Do 50% POPUSTA!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

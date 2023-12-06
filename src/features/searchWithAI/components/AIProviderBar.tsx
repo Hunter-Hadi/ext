@@ -70,8 +70,8 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
         }}
         disabled={loading || disabled}
         onClick={async () => {
-          await onProviderChange()
-          updateChatGPTProvider(provider.value)
+          await updateChatGPTProvider(provider.value)
+          onProviderChange && onProviderChange()
         }}
       >
         <SearchWIthAIProviderIcon

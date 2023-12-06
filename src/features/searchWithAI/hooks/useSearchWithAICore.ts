@@ -1,4 +1,7 @@
-import { crawlingSearchResults } from '@/features/shortcuts/utils/searchEngineCrawling'
+import {
+  crawlingSearchResults,
+  ICrawlingSearchResult,
+} from '@/features/shortcuts/utils/searchEngineCrawling'
 import dayjs from 'dayjs'
 import random from 'lodash-es/random'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -24,6 +27,8 @@ import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWit
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
+import useSearchWithAICache from './useSearchWithAICache'
+
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -58,6 +63,14 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
   const taskId = useRef('')
   const timer = useRef(0)
+
+  // 是否使用了缓存
+  const [isUseCache, setIsUseCache] = useState(false)
+
+  const {
+    getSearchWithAICacheData,
+    setSearchWithAICacheData,
+  } = useSearchWithAICache()
 
   const { searchWithAISettings } = useSearchWithAISettings()
 
@@ -107,17 +120,45 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     setStatus('waitingAnswer')
     loadingRef.current = true
 
+    const cacheData = await getSearchWithAICacheData(
+      siteName,
+      searchWithAISettings.aiProvider,
+      question,
+      webAccessPrompt,
+    )
+
+    if (cacheData) {
+      setStatus('success')
+      updateConversation({
+        loading: false,
+        completedMessage: cacheData.completedMessage,
+        writingMessage: '',
+      })
+      setSources(cacheData.sources)
+      loadingRef.current = false
+      setIsUseCache(true)
+      return
+    } else {
+      setIsUseCache(false)
+    }
+
     // 1. GET_CONTENTS_OF_HTML
+    let sources: ICrawlingSearchResult[] = []
     if (webAccessPrompt) {
       // 开启 webAccessPrompt 时才获取 sources
       startSourcesLoading()
-      const results = await crawlingSearchResults({
+      const results = crawlingSearchResults({
         html: document.body.innerHTML,
         searchEngine: siteName,
       })
+
+      // search with ai 中 source 只取6个
+      const slicedResults = results.slice(0, 6)
+
       // 由于获取 sources 的过程都比较快，所以这里 模拟一个 800ms ~ 500ms 的loading
       setTimeout(() => {
-        setSources(results.slice(0, 6))
+        setSources(slicedResults)
+        sources = slicedResults
       }, random(500, 800))
 
       // 2. SEARCH_RESULTS_EXPAND
@@ -265,6 +306,15 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
           completedMessage: message,
           writingMessage: '',
         })
+
+        setSearchWithAICacheData({
+          searchPage: siteName,
+          aiProvider: searchWithAISettings.aiProvider,
+          query: question,
+          completedMessage: message,
+          sources,
+          webAccess: webAccessPrompt,
+        })
       }
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -337,6 +387,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     isAnswering,
     loading: conversation.loading,
     conversation,
+    isUseCache,
     handleResetStatus,
     handleAskQuestion,
     handleStopGenerate,

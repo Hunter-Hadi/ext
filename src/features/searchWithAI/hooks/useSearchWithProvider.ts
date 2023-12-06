@@ -24,14 +24,14 @@ const useSearchWithProvider = () => {
   const switchProvider = useCallback(
     async (provider: ISearchWithAIProviderType) => {
       setLoading(true)
+      setSearchWithAISettings({
+        aiProvider: provider,
+      })
       await port.postMessage({
         event: 'SWAI_switchAIProvider',
         data: {
           provider,
         },
-      })
-      setSearchWithAISettings({
-        aiProvider: provider,
       })
       setLoading(false)
     },

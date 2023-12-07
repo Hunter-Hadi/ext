@@ -11,7 +11,6 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
-import { AppLocalStorageState } from '@/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 
 const DevConsole: FC = () => {
@@ -20,9 +19,7 @@ const DevConsole: FC = () => {
     currentSidebarConversationId,
     currentSidebarConversationType,
     currentSidebarConversation,
-    sidebarSettings,
   } = useSidebarSettings()
-  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const chatGPTConversation = useRecoilValue(ChatGPTConversationState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
@@ -58,6 +55,7 @@ const DevConsole: FC = () => {
         <Button
           variant={'contained'}
           sx={{
+            zIndex: 11,
             width: 32,
             height: 32,
             minWidth: 'unset',
@@ -74,6 +72,7 @@ const DevConsole: FC = () => {
         <Button
           variant={'contained'}
           sx={{
+            zIndex: 11,
             width: 32,
             height: 32,
             minWidth: 'unset',
@@ -87,10 +86,13 @@ const DevConsole: FC = () => {
           <UnfoldMoreIcon />
         </Button>
       )}
-      <Stack width={'100%'} flexDirection={'row'}>
-        <Stack width={200} flexShrink={0}>
-          <DevShortcutsLog />
-        </Stack>
+      <Stack
+        width={'100%'}
+        flexDirection={'row'}
+        sx={{
+          visibility: showDevContent ? 'visible' : 'hidden',
+        }}
+      >
         <Stack
           sx={{
             width: 0,
@@ -124,6 +126,9 @@ const DevConsole: FC = () => {
           {/*<pre>*/}
           {/*  {JSON.stringify(appLocalStorage.thirdProviderSettings, null, 2)}*/}
           {/*</pre>*/}
+        </Stack>
+        <Stack width={200} flexShrink={0}>
+          <DevShortcutsLog />
         </Stack>
       </Stack>
     </Stack>

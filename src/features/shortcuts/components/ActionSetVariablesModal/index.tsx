@@ -501,6 +501,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           if (systemVariable.systemVariable) {
             return (
               <Controller
+                key={systemVariable.VariableName}
                 control={control}
                 name={systemVariable.VariableName}
                 defaultValue={systemVariable.defaultValue}

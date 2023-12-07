@@ -12,6 +12,7 @@ import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getCont
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
@@ -172,27 +173,53 @@ export class ActionAskChatGPT extends Action {
     },
   ) {
     let systemVariablesTemplate = ''
-    if (
-      params.AI_RESPONSE_TONE !== 'Default' &&
-      params.AI_RESPONSE_WRITING_STYLE !== 'Default'
-    ) {
-      systemVariablesTemplate =
-        '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-    } else if (params.AI_RESPONSE_TONE !== 'Default') {
-      systemVariablesTemplate =
-        '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
-    } else if (params.AI_RESPONSE_WRITING_STYLE !== 'Default') {
-      systemVariablesTemplate =
-        '\n\nPlease write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
+    // 根据SELECTED_TEXT和 是否为Auto会有四个场景:
+    //  - Auto, 有SELECTED_TEXT -> 回复和SELECTED_TEXT相同的语言加在最后面
+    //  - Auto, 没有SELECTED_TEXT -> 不处理
+    //  - 非Auto, 有SELECTED_TEXT -> Respond in "用户选择的"
+    //  - 非Auto,没有SELECTED_TEXT -> 不处理
+    const isAuto =
+      params.AI_RESPONSE_LANGUAGE === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    // 如果是Auto，且有SELECTED_TEXT，那么就回复和SELECTED_TEXT相同的语言
+    if (isAuto) {
+      if (params.SELECTED_TEXT) {
+        const partOfSelectedText =
+          params.SELECTED_TEXT.slice(0, 80)
+            .match(/[^\s\t\n\d"]/g)
+            ?.join('') || params.SELECTED_TEXT.slice(0, 80)
+        systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
+      }
+      // 没有SELECTED_TEXT, 不处理
     } else {
-      systemVariablesTemplate =
-        '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
+      if (
+        params.AI_RESPONSE_WRITING_STYLE &&
+        params.AI_RESPONSE_TONE &&
+        params.AI_RESPONSE_TONE !== 'Default' &&
+        params.AI_RESPONSE_WRITING_STYLE !== 'Default'
+      ) {
+        systemVariablesTemplate =
+          'Please write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
+      } else if (
+        params.AI_RESPONSE_TONE &&
+        params.AI_RESPONSE_TONE !== 'Default'
+      ) {
+        systemVariablesTemplate =
+          'Please write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
+      } else if (
+        params.AI_RESPONSE_WRITING_STYLE &&
+        params.AI_RESPONSE_WRITING_STYLE !== 'Default'
+      ) {
+        systemVariablesTemplate =
+          'Please write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
+      } else {
+        systemVariablesTemplate = `Please write using {{AI_RESPONSE_LANGUAGE}}`
+      }
     }
     const result = await this.parseTemplate(systemVariablesTemplate, params)
     if (result.error || !systemVariablesTemplate) {
       return ''
     }
-    return '\n\n---' + result.data
+    return '\n\n---\n\n' + result.data
   }
   reset() {
     console.log('reset')

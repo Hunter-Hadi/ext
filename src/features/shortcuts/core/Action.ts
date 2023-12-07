@@ -5,6 +5,8 @@ import { IChatMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 import { IChatConversation } from '@/background/src/chatConversations'
+import Log from '@/utils/Log'
+import { shortcutsRenderTemplate } from '@/features/shortcuts'
 
 class Action implements IAction {
   id: string
@@ -14,6 +16,7 @@ class Action implements IAction {
   output?: any
   parameters: ActionParameters
   autoExecute: boolean
+  log: Log
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -25,6 +28,7 @@ class Action implements IAction {
     this.status = 'idle'
     this.parameters = Object.assign({}, parameters) || {}
     this.autoExecute = autoExecute
+    this.log = new Log(`Action/${type}`)
   }
 
   async execute(params: any, engine: any) {
@@ -83,6 +87,9 @@ class Action implements IAction {
   ) {
     const conversationId = this.getCurrentConversationId(engine)
     await clientChatConversationUpdate(conversationId, updateConversationData)
+  }
+  async parseTemplate(template: string, params: ActionParameters) {
+    return shortcutsRenderTemplate(template, params)
   }
 }
 export default Action

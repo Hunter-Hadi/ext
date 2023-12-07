@@ -188,25 +188,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     onClose?.()
     const runActions: ISetActionsType = []
     if (config?.template) {
-      let template = getValues()?.TEMPLATE || config?.template || ''
-      let systemVariablesTemplate = ''
-      if (
-        presetVariables.AI_RESPONSE_TONE !== 'Default' &&
-        presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default'
-      ) {
-        systemVariablesTemplate =
-          '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-      } else if (presetVariables.AI_RESPONSE_TONE !== 'Default') {
-        systemVariablesTemplate =
-          '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
-      } else if (presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default') {
-        systemVariablesTemplate =
-          '\n\nPlease write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-      } else {
-        systemVariablesTemplate =
-          '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
-      }
-      template += '\n\n---' + systemVariablesTemplate
+      const template = getValues()?.TEMPLATE || config?.template || ''
       runActions.push({
         type: 'SET_VARIABLE_MAP',
         parameters: {

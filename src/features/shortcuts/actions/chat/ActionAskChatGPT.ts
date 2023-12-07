@@ -59,6 +59,8 @@ export class ActionAskChatGPT extends Action {
       }
       this.question =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT
+      this.question += await this.generateAdditionalText(params)
+      this.log.info('question', this.question)
       const {
         success,
         answer,
@@ -162,6 +164,35 @@ export class ActionAskChatGPT extends Action {
     } catch (e) {
       this.error = chatGPTCommonErrorInterceptor((e as any).toString())
     }
+  }
+  async generateAdditionalText(
+    params: ActionParameters & {
+      AI_RESPONSE_TONE?: string
+      AI_RESPONSE_WRITING_STYLE?: string
+    },
+  ) {
+    let systemVariablesTemplate = ''
+    if (
+      params.AI_RESPONSE_TONE !== 'Default' &&
+      params.AI_RESPONSE_WRITING_STYLE !== 'Default'
+    ) {
+      systemVariablesTemplate =
+        '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
+    } else if (params.AI_RESPONSE_TONE !== 'Default') {
+      systemVariablesTemplate =
+        '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
+    } else if (params.AI_RESPONSE_WRITING_STYLE !== 'Default') {
+      systemVariablesTemplate =
+        '\n\nPlease write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
+    } else {
+      systemVariablesTemplate =
+        '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
+    }
+    const result = await this.parseTemplate(systemVariablesTemplate, params)
+    if (result.error || !systemVariablesTemplate) {
+      return ''
+    }
+    return '\n\n---' + result.data
   }
   reset() {
     console.log('reset')

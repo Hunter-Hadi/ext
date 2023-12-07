@@ -81,7 +81,7 @@
     "feature_card__prompts__edit_prompt__field_name__placeholder": "नाव प्रविष्ट करा",
     "feature_card__prompts__edit_prompt__field_icon__title": "चिन्ह",
     "feature_card__prompts__edit_prompt__field_template__title": "प्रॉम्प्ट टेम्पलेट",
-    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT साठी प्रॉम्प्ट टेम्पलेट.\nटेम्पलेटमध्ये खालील चरांचा कोणताही संख्येने समाविष्ट केला जाऊ शकतो:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
+    "feature_card__prompts__edit_prompt__field_template__placeholder": "ChatGPT साठी प्रॉम्प्ट टेम्पलेट.\nटेम्पलेटमध्ये खालील चरणांची कोणतीही संख्या समाविष्ट केली जाऊ शकते:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__title": "सक्षम केल्यास",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_enabled__description": "प्रॉम्प्ट सीधे AIला पाठवला जाईल, जो \"सामान्य व्यवहार\" आहे. सर्व प्रॉम्प्ट टेम्पलेटसाठी हे पर्याय डिफॉल्टप्रमाणे सक्षम केले जाईल.",
     "feature_card__prompts__edit_prompt__field_execution_mode__send_to_ai_directly__tooltip_disabled__title": "अक्षम केल्यास",
@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "अद्याप आलेला GPT-4 मॉडेल, सुधारित निर्देशांवर अनुसरण करणे, JSON मोड, पुनरावृत्तीय आउटपुट, समानांतर कार्यक्षमता व इतर गोष्टी. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते. हा प्रीव्ह्यू मॉडेल अद्याप संचालनिक ट्रॅफिकसाठी उपयुक्त नाही.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "सर्व इतर GPT-4 Turbo क्षमतांच्या वापरासाठी छायाचित्रे समजण्याची क्षमता. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते. हा प्रीव्ह्यू मॉडेल अद्याप संचालनिक ट्रॅफिकसाठी उपयुक्त नाही.",
     "activity__black_friday_2023__title": "सीमित कालावधीचे ब्लॅक शुक्रवार ऑफर - 50% पर्यंत कमी!",
-    "sidebar__speed_dial__chat_history__button": "चॅट इतिहास"
+    "sidebar__speed_dial__chat_history__button": "चॅट इतिहास",
+    "activity__christmas_2023__title": "क्रिसमस गिवअवेज! - 50% सुवर्णात्मक!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

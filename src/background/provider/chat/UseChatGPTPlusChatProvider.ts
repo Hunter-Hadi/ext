@@ -10,7 +10,11 @@ import { IChatUploadFile } from '@/features/chatgpt/types'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
-import { IMaxAIChatGPTMessageType } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  IMaxAIChatGPTBackendAPIType,
+  IMaxAIChatGPTMessageType,
+} from '@/background/src/chat/UseChatGPTChat/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -50,15 +54,38 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     const conversationDetail = await ConversationManager.conversationDB.getConversationById(
       question.conversationId,
     )
-    // 大文件聊天之前上传的上下文的documentId
+    let backendAPI: IMaxAIChatGPTBackendAPIType = 'get_chatgpt_response'
     const docId = conversationDetail?.meta?.docId
-    if (this.useChatGPTPlusChat.conversation) {
-      // 有docId的情况下，不需要发送系统提示
-      if (!docId && this.useChatGPTPlusChat.conversation.meta.systemPrompt) {
+    if (conversationDetail) {
+      // 查看最后一条消息是不是待完成的aiMessage
+      let isUnFinishAIMessage = false // 其实这里的意思是summary的message有没有完成
+      const lastMessage =
+        conversationDetail.messages.length &&
+        conversationDetail.messages[conversationDetail.messages.length - 1]
+      if (lastMessage && isAIMessage(lastMessage)) {
+        // 有originalMessage说明是增强型的AI message
+        if (
+          lastMessage.originalMessage &&
+          !lastMessage.originalMessage?.metadata?.isComplete
+        ) {
+          isUnFinishAIMessage = true
+        }
+      }
+      // 大文件聊天之前上传的上下文的documentId
+      if (docId && !isUnFinishAIMessage) {
+        backendAPI = 'chat_with_document'
+      } else if (conversationDetail?.type === 'Summary') {
+        backendAPI = 'get_summarize_response'
+      }
+      // 没有docId或者isUnFinishAIMessage的情况下，需要发送系统提示
+      if (
+        (!docId || isUnFinishAIMessage) &&
+        conversationDetail.meta.systemPrompt
+      ) {
         chat_history.push({
           type: 'system',
           data: {
-            content: this.useChatGPTPlusChat.conversation.meta.systemPrompt,
+            content: conversationDetail.meta.systemPrompt,
             additional_kwargs: {},
           },
         })
@@ -72,18 +99,18 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
           },
         })
       })
-    }
-    if (docId && chat_history?.[0]?.type === 'human') {
-      // summary里面的chat history不包括页面的自动summary对话
-      // 这个自动总结的对话会影响后续用户真正问的问题，我们在chat_with_document传chat hisotry的时候把这两条去掉吧
-      // 2023-09-21 @xiang.xu
-      chat_history.splice(0, 2)
+      if (docId && chat_history?.[0]?.type === 'ai') {
+        // summary里面的chat history不包括页面的自动summary对话
+        // 这个自动总结的对话会影响后续用户真正问的问题，我们在chat_with_document传chat hisotry的时候把这两条去掉吧
+        // 2023-09-21 @xiang.xu
+        chat_history.splice(0, 1)
+      }
     }
     await this.useChatGPTPlusChat.askChatGPT(
       question.question,
       {
         doc_id: docId,
-        backendAPI: docId ? 'chat_with_document' : 'get_chatgpt_response',
+        backendAPI,
         taskId: question.messageId,
         chat_history,
         meta: options.meta,

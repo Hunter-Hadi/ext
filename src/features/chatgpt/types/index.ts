@@ -126,7 +126,7 @@ export interface IAIResponseOriginalMessage {
     related?: string[]
   }
   include_history?: boolean
-  status?: string
+  status?: 'loading' | 'complete'
 }
 // AI返回的消息
 export interface IAIResponseMessage extends IChatMessage {

@@ -110,10 +110,9 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                     noSummaryTag: true,
                   })
                   // 确保总结后的长度不会超过每次总结的长度
-                  body = await sliceTextByTokens(
-                    body,
-                    partOfPageSummaryTokensLimit,
-                  )
+                  body = (
+                    await sliceTextByTokens(body, partOfPageSummaryTokensLimit)
+                  ).text
                 }
               }
               searchResult.title = title

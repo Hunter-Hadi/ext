@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Nejnovější model GPT-4 s vylepšeným následováním instrukcí, režimem JSON, reprodukovatelnými výstupy, paralelním voláním funkcí a dalšími funkcemi. Vrací maximálně 4 096 výstupních tokenů. Tento ukázkový model zatím není vhodný pro produkční provoz.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Schopnost porozumět obrázkům, kromě všech ostatních schopností modelu GPT-4 Turbo. Vrací maximálně 4 096 výstupních tokenů. Toto je ukázková verze modelu a zatím není vhodná pro produkční provoz.",
     "activity__black_friday_2023__title": "Omezená nabídka Black Friday slev – Až 50% sleva!",
-    "sidebar__speed_dial__chat_history__button": "Historie chatu"
+    "sidebar__speed_dial__chat_history__button": "Historie chatu",
+    "activity__christmas_2023__title": "VÁNOČNÍ DÁRKY! - Až 50% SLEVA!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

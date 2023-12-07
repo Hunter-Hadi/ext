@@ -123,8 +123,8 @@ if (gpt35ScriptLink && gpt4ScriptLink) {
     'gpt_4',
     gpt4ScriptLink,
   )
-  // 判断是否Ready - 5s
-  for (let i = 0; i < 5; i++) {
+  // 判断是否Ready - 7s
+  for (let i = 0; i < 7; i++) {
     if (
       GPT35ArkoseTokenIframeGenerator.isReady ||
       GPT4ArkoseTokenIframeGenerator.isReady
@@ -133,9 +133,6 @@ if (gpt35ScriptLink && gpt4ScriptLink) {
     }
     await new Promise((resolve) => setTimeout(resolve, 1000))
   }
-  GPT35ArkoseTokenIframeGenerator.generate()
-  GPT4ArkoseTokenIframeGenerator.generate()
-  await new Promise((resolve) => setTimeout(resolve, 2000))
   if (
     GPT35ArkoseTokenIframeGenerator.isReady ||
     GPT4ArkoseTokenIframeGenerator.isReady
@@ -177,7 +174,10 @@ if (gpt35ScriptLink && gpt4ScriptLink) {
             model === 'gpt_3_5'
               ? GPT35ArkoseTokenIframeGenerator
               : GPT4ArkoseTokenIframeGenerator
-          const token = await arkoseGenerator.generate()
+          const token = await Promise.race([
+            GPT4ArkoseTokenIframeGenerator.generate(),
+            GPT35ArkoseTokenIframeGenerator.generate(),
+          ])
           console.debug(`[${arkoseGenerator.model}] enforcement.result`, token)
           event.source.postMessage(
             {

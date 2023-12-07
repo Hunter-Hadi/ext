@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "具有改進的指示追蹤、JSON 模式、可重現的輸出、並行函數調用等功能的最新 GPT-4 模型。返回最多 4,096 個輸出標記。此預覽模型尚不適合用於生產流量。",
     "provider__openai_api__model__gpt_4_vision_preview__description": "除了所有其他 GPT-4 Turbo 功能外，還能理解圖像。返回最多 4,096 個輸出標記。這是一個預覽模型版本，尚不適合用於生產流量。",
     "activity__black_friday_2023__title": "限時黑色星期五優惠 - 高達50%折扣！",
-    "sidebar__speed_dial__chat_history__button": "聊天記錄"
+    "sidebar__speed_dial__chat_history__button": "聊天記錄",
+    "activity__christmas_2023__title": "聖誕節贈品！- 高達50％折扣！"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

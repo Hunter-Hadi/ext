@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Naujausias GPT-4 modelis su patobulinta instrukcijų sekimu, JSON režimu, atkūrimo išvestimis, lygiagrečiu funkcijų kvietimu ir daugiau. Grąžina maksimaliai 4 096 išvesties ženklus. Šis peržiūros modelis dar nėra tinkamas naudoti produkcijos srautui.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Galimybė suprasti vaizdus, be visų kitų GPT-4 Turbo galimybių. Grąžina maksimaliai 4 096 išvesties ženklus. Tai yra peržiūros modelio versija ir dar nėra tinkama naudoti produkcijos srautui.",
     "activity__black_friday_2023__title": "Riboto laiko Juodųjų Penktadienių pasiūlymai – Iki 50% nuolaida!",
-    "sidebar__speed_dial__chat_history__button": "Pokalbių istorija"
+    "sidebar__speed_dial__chat_history__button": "Pokalbių istorija",
+    "activity__christmas_2023__title": "KALĖDŲ DOVANOS! - Iki 50% NUOLAIDA!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

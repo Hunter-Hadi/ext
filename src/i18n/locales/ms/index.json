@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 terkini dengan peningkatan mengikut arahan, mod JSON, hasil boleh diulangi, pemanggilan fungsi selari, dan banyak lagi. Mengembalikan maksimum 4,096 token output. Model pra-tonton ini belum sesuai untuk trafik pengeluaran.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami imej, selain daripada semua keupayaan GPT-4 Turbo yang lain. Mengembalikan maksimum 4,096 token output. Ini adalah versi model pra-tonton dan belum sesuai untuk trafik pengeluaran.",
     "activity__black_friday_2023__title": "Tawaran Terhad Black Friday – Sehingga 50% Off!",
-    "sidebar__speed_dial__chat_history__button": "Sejarah Chat"
+    "sidebar__speed_dial__chat_history__button": "Sejarah Chat",
+    "activity__christmas_2023__title": "PERCUMA NATAL! - Sehingga 50% DISKAUN!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

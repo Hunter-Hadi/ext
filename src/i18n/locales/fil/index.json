@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Ang pinakabagong GPT-4 model na may pinahusay na pagsunod sa mga tagubilin, JSON mode, reproducible outputs, parallel function calling, at higit pa. Nagbabalik ng maximum na 4,096 output tokens. Ang preview model na ito ay hindi pa angkop para sa production traffic.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kakayahang maunawaan ang mga imahe, bukod sa lahat ng iba pang kakayahan ng GPT-4 Turbo. Nagbabalik ng maximum na 4,096 output tokens. Ito ay isang preview model version at hindi pa angkop para sa production traffic.",
     "activity__black_friday_2023__title": "Mga Limitadong Oras na Black Friday Deals - Hanggang 50% Off!",
-    "sidebar__speed_dial__chat_history__button": "Kasaysayan ng Chat"
+    "sidebar__speed_dial__chat_history__button": "Kasaysayan ng Chat",
+    "activity__christmas_2023__title": "CHRISTMAS GIVEAWAYS! - Hanggang 50% OFF!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

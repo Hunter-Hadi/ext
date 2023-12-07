@@ -5,6 +5,11 @@ import dayjs from 'dayjs'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import dayjs from 'dayjs'
 
+export type IMaxAIChatGPTBackendAPIType =
+  | 'chat_with_document'
+  | 'get_chatgpt_response'
+  | 'get_summarize_response'
+
 export type IMaxAIChatGPTMessageType = {
   type: 'human' | 'ai' | 'generic' | 'system' | 'function'
   data: {

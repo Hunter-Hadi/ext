@@ -11,6 +11,7 @@ import chokidar from 'chokidar'
 import path from 'path'
 import archiver from 'archiver'
 import dayjs from 'dayjs'
+
 // import eslint from 'esbuild-plugin-eslint';
 import resolve from 'esbuild-plugin-resolve'
 
@@ -39,6 +40,29 @@ async function cleanBuildDir() {
 }
 
 async function esbuildConfig() {
+  await esbuild.build({
+    platform: 'browser',
+    entryPoints: [
+      'src/worker.ts',
+    ],
+    format: 'esm',
+    drop: isProduction ? ['console', 'debugger'] : [],
+    bundle: true,
+    minify: isProduction,
+    treeShaking: true,
+    splitting: false,
+    metafile: false,
+    define: replaceEnv,
+    loader: {
+      '.woff': 'dataurl',
+      '.woff2': 'dataurl',
+      '.eot': 'dataurl',
+      '.ttf': 'dataurl',
+      '.graphql': 'text',
+    },
+    plugins: [],
+    outdir: buildDir,
+  })
   const result = await esbuild.build({
     platform: 'browser',
     entryPoints: [

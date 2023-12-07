@@ -123,3 +123,24 @@ export const setChromeExtensionLocalStorage = async (
     return false
   }
 }
+/**
+ * 重置chrome extension的local storage
+ */
+export const resetChromeExtensionLocalStorage = async (): Promise<boolean> => {
+  try {
+    const oldSettings = await getChromeExtensionLocalStorage()
+    const openAIAPIKey = oldSettings.thirdProviderSettings?.OPENAI_API?.apiKey
+    const openAIAPIHost = oldSettings.thirdProviderSettings?.OPENAI_API?.apiHost
+    const defaultConfig = defaultChromeExtensionLocalStorage()
+    if (openAIAPIKey && defaultConfig.thirdProviderSettings?.OPENAI_API) {
+      defaultConfig.thirdProviderSettings.OPENAI_API.apiKey = openAIAPIKey
+      defaultConfig.thirdProviderSettings.OPENAI_API.apiHost = openAIAPIHost
+    }
+    await Browser.storage.local.set({
+      [CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY]: JSON.stringify(defaultConfig),
+    })
+    return true
+  } catch (e) {
+    return false
+  }
+}

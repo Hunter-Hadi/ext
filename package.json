@@ -27,7 +27,7 @@
     "dayjs": "^1.11.7",
     "eventsource-parser": "^0.1.0",
     "expiry-map": "^2.0.0",
-    "gpt-3-encoder-browser": "^1.0.0",
+    "gpt-tokenizer": "^2.1.2",
     "i18next": "^23.3.0",
     "katex": "^0.16.8",
     "langchain": "^0.0.82",

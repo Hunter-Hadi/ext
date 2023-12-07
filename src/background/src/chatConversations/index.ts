@@ -1,15 +1,14 @@
 import { v4 as uuidV4 } from 'uuid'
-import {
-  IAIResponseMessage,
-  IChatMessage,
-  IUserChatMessage,
-} from '@/features/chatgpt/types'
+import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import { IAIProviderType } from '@/background/provider/chat'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { getChromeExtensionUserId } from '@/features/auth/utils'
 
 export interface IChatConversation {
+  authorId: string // 作者ID
   id: string // 对话ID
   title: string // 对话标题
   created_at: string // 创建时间
@@ -17,6 +16,7 @@ export interface IChatConversation {
   messages: IChatMessage[] // 对话中的消息列表
   type: ISidebarConversationType // 对话类型
   meta: IChatConversationMeta // 对话元数据
+  isDelete: boolean // 软删除
 }
 
 // 元数据
@@ -206,6 +206,7 @@ class ConversationDB {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
+        const userId = await getChromeExtensionUserId()
         const db = await this.openDatabase()
 
         const transaction = db.transaction([this.objectStoreName], 'readonly')
@@ -213,9 +214,34 @@ class ConversationDB {
 
         const request = objectStore.getAll()
 
-        request.onsuccess = (event) => {
-          const conversations = ((event.target as any)?.result ||
+        request.onsuccess = async (event) => {
+          let conversations = ((event.target as any)?.result ||
             []) as IChatConversation[]
+          // 给没有authorId的对话添加authorId
+          conversations = await Promise.all(
+            conversations.map(async (conversation) => {
+              if (!conversation.authorId && userId && conversation.id) {
+                conversation.authorId = userId
+                // 顺便更新新字段
+                if (
+                  !Object.prototype.hasOwnProperty.call(
+                    conversation,
+                    'isDelete',
+                  )
+                ) {
+                  conversation.isDelete = false
+                }
+                await this.addOrUpdateConversation(conversation)
+              }
+              return conversation
+            }),
+          )
+          // 过滤掉非当前用户的对话
+          if (userId) {
+            conversations = conversations.filter(
+              (conversation) => conversation.authorId === userId,
+            )
+          }
           resolve(conversations) // 解析 Promise 为包含所有对话的数组
         }
 
@@ -229,6 +255,7 @@ class ConversationDB {
   }
 
   /**
+   * @deprecated - 2023-12-05
    * 删除所有不必要的对话。
    */
   public async removeUnnecessaryConversations(): Promise<void> {
@@ -261,14 +288,6 @@ class ConversationDB {
       ),
     )
   }
-  public async clearAllConversations() {
-    const allConversations = await this.getAllConversations()
-    await Promise.all(
-      allConversations.map((conversation) =>
-        this.deleteConversation(conversation.id),
-      ),
-    )
-  }
 }
 
 export default class ConversationManager {
@@ -279,6 +298,7 @@ export default class ConversationManager {
   )
   static async createConversation(newConversation: Partial<IChatConversation>) {
     const defaultConversation: IChatConversation = {
+      authorId: await getChromeExtensionUserId(),
       id: uuidV4(),
       title: 'Chat',
       type: 'Chat',
@@ -286,6 +306,7 @@ export default class ConversationManager {
       updated_at: new Date().toISOString(),
       messages: [],
       meta: {},
+      isDelete: false,
     }
     const saveConversation = mergeWithObject([
       defaultConversation,
@@ -293,7 +314,7 @@ export default class ConversationManager {
     ])
     await this.conversationDB.addOrUpdateConversation(saveConversation, false)
     // 异步清除无用的对话
-    this.conversationDB.removeUnnecessaryConversations().then().catch()
+    // this.conversationDB.removeUnnecessaryConversations().then().catch()
     return saveConversation as IChatConversation
   }
   static async getAllConversation() {
@@ -301,6 +322,27 @@ export default class ConversationManager {
     console.log('新版Conversation getAllConversation', conversations)
     return conversations
   }
+
+  /**
+   * 软删除对话
+   * @param conversationId
+   */
+  static async softDeleteConversation(conversationId: string) {
+    const conversation = await this.conversationDB.getConversationById(
+      conversationId,
+    )
+    if (!conversation) {
+      return false
+    }
+    conversation.isDelete = true
+    await this.conversationDB.addOrUpdateConversation(conversation)
+    return true
+  }
+
+  /**
+   * 彻底删除对话
+   * @param conversationId
+   */
   static async removeConversation(conversationId: string) {
     try {
       if (
@@ -319,8 +361,12 @@ export default class ConversationManager {
   static async getAllPaginationConversations(): Promise<
     PaginationConversation[]
   > {
+    if (!(await getChromeExtensionUserId())) {
+      return []
+    }
     const conversations = await this.conversationDB.getAllConversations()
     const paginationConversations = conversations
+      .filter((conversation) => conversation.isDelete !== true) // 因为老数据没有这个字段，所以写法是 !== true
       .map((conversation) => {
         let lastMessage: any = undefined
         for (let i = conversation.messages.length - 1; i >= 0; i--) {
@@ -339,11 +385,8 @@ export default class ConversationManager {
             break
           }
           const message = conversation.messages[i]
-          if (message.type === 'ai') {
-            const aiMessage = message as IAIResponseMessage
-            if (aiMessage?.originalMessage?.metadata?.title) {
-              title = aiMessage.originalMessage.metadata.title.title
-            }
+          if (isAIMessage(message)) {
+            title = message.originalMessage?.metadata?.title?.title || title
           }
         }
         return {
@@ -364,7 +407,8 @@ export default class ConversationManager {
     const conversation = await this.conversationDB.getConversationById(
       conversationId,
     )
-    if (conversation) {
+    // 此处不能简写，因为老数据没有这个字段，所以写法是 !== true
+    if (conversation && conversation.isDelete !== true) {
       // 更新最后访问时间
       // conversation.updated_at = new Date().toISOString()
       // await this.conversationDB.addOrUpdateConversation(conversation)
@@ -443,9 +487,19 @@ export default class ConversationManager {
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true
   }
+  /**
+   * 清除所有对话 - 软删除
+   */
   static async clearAllConversations() {
     try {
-      await this.conversationDB.clearAllConversations()
+      const conversations = await this.conversationDB.getAllConversations()
+      await Promise.all(
+        conversations.map(async (conversation) => {
+          if (conversation.id) {
+            await this.softDeleteConversation(conversation.id)
+          }
+        }),
+      )
       return true
     } catch (e) {
       console.error(e)

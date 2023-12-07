@@ -26,6 +26,7 @@ import {
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 const usePageSummary = () => {
   const {
@@ -71,10 +72,13 @@ const usePageSummary = () => {
             conversationId: pageSummaryConversationId,
           },
         })
+        const aiMessage = pageSummaryConversation.messages?.find((message) =>
+          isAIMessage(message),
+        ) as IAIResponseMessage
         if (
-          pageSummaryConversation.messages?.find(
-            (message) => message.type === 'ai',
-          )
+          aiMessage &&
+          aiMessage?.originalMessage &&
+          aiMessage?.originalMessage.metadata?.isComplete
         ) {
           updateConversation((prevState) => {
             return {
@@ -160,12 +164,12 @@ const usePageSummary = () => {
     ) {
       isFetchingRef.current = true
       if (setShortCuts(runActions)) {
+        setRunActions([])
         runShortCuts()
           .then()
           .catch()
           .finally(() => {
             isFetchingRef.current = false
-            setRunActions([])
             const conversationId = getPageSummaryConversationId()
             if (conversationId && lastMessageIdRef.current) {
               // 因为整个过程不一定是成功的
@@ -178,6 +182,7 @@ const usePageSummary = () => {
                   {
                     messageId: lastMessageIdRef.current,
                     originalMessage: {
+                      status: 'complete',
                       metadata: {
                         sources: {
                           status: 'complete',

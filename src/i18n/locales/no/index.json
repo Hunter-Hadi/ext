@@ -473,7 +473,8 @@
     "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-modellen med forbedret instruksjonsfølging, JSON-modus, gjengitte utdata, parallell funksjonskalling og mer. Returnerer maksimalt 4 096 utdatatokens. Denne forhåndsvisningsmodellen er ennå ikke egnet for produksjonstrafikk.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til å forstå bilder, i tillegg til alle andre GPT-4 Turbo-funksjoner. Returnerer maksimalt 4 096 utdatatokens. Dette er en forhåndsvisningsmodellversjon og er ennå ikke egnet for produksjonstrafikk.",
     "activity__black_friday_2023__title": "Begrensede Black Friday-tilbud – Opptil 50% rabatt!",
-    "sidebar__speed_dial__chat_history__button": "Chatlogg"
+    "sidebar__speed_dial__chat_history__button": "Chatlogg",
+    "activity__christmas_2023__title": "JULEGAVE! - Opptil 50% AVSLAG!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

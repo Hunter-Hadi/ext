@@ -192,7 +192,7 @@ class ChatSystem implements ChatSystemInterface {
           case 'Client_removeChatGPTConversation': {
             const { conversationId, isForceRemove = false } = data
             if (isForceRemove && conversationId) {
-              const success = await ConversationManager.removeConversation(
+              const success = await ConversationManager.softDeleteConversation(
                 conversationId,
               )
               return {
@@ -427,9 +427,7 @@ class ChatSystem implements ChatSystemInterface {
       await currentProvider?.createConversation(conversationDetail)
       await currentProvider?.removeConversation(conversationId)
     } else {
-      await ConversationManager.conversationDB.deleteConversation(
-        conversationId,
-      )
+      await ConversationManager.softDeleteConversation(conversationId)
     }
     return true
   }

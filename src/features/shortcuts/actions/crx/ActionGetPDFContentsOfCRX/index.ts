@@ -6,8 +6,6 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
-import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
-import { MAX_UPLOAD_TEXT_FILE_TOKENS } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 export class ActionGetPDFContentsOfCRX extends Action {
   static type: ActionIdentifier = 'GET_PDF_CONTENTS_OF_CRX'
   constructor(
@@ -27,17 +25,15 @@ export class ActionGetPDFContentsOfCRX extends Action {
     try {
       if (
         typeof window !== 'undefined' &&
-        (window as any).pdfjsLib &&
-        (window as any)?.PDFViewerApplication?.url
+        (window as any)?.PDFViewerApplication?.pdfDocument
       ) {
-        const pdfLib = (window as any).pdfjsLib
-        let useTokens = 0
         const fetchPageContents = async () => {
           try {
-            const pdfInstance = await pdfLib.getDocument(
-              (window as any)?.PDFViewerApplication?.url,
-            ).promise
-            const totalPages = pdfInstance.numPages
+            console.log('ActionGetPDFContentsOfCRX start fetchPageContents')
+            const pdfInstance = (window as any)?.PDFViewerApplication
+              .pdfDocument
+            const totalPages = pdfInstance?.numPages
+            console.log(`ActionGetPDFContentsOfCRX totalPages: \t`, totalPages)
             const getPDFPageContents = async (pageNum: number) => {
               try {
                 const pageInstance = await pdfInstance.getPage(pageNum)
@@ -51,43 +47,16 @@ export class ActionGetPDFContentsOfCRX extends Action {
                 return ''
               }
             }
-            let startPDFContent = ''
-            let endPDFContent = ''
-            let loadPageCount = 0
+            let PDFContent = ''
             for (let i = 0; i < totalPages; i++) {
-              let partOfPDFContents = ''
-              let isSliceEnd = false
-              // 先从尾部获取
-              if (i % 2 === 0) {
-                isSliceEnd = true
-                partOfPDFContents = await getPDFPageContents(totalPages - i)
-              } else {
-                partOfPDFContents = await getPDFPageContents(i)
-              }
-              const partOfPDFContentsToken = (
-                await getTextTokens(partOfPDFContents)
-              ).length
-              if (
-                partOfPDFContentsToken + useTokens >
-                MAX_UPLOAD_TEXT_FILE_TOKENS
-              ) {
-                // 自2023-09-08之后，太长的PDF内容用上传文件的最大tokens来middle out
-                break
-              }
-              loadPageCount += 1
-              useTokens += partOfPDFContentsToken
-              if (isSliceEnd) {
-                endPDFContent = partOfPDFContents + endPDFContent
-              } else {
-                startPDFContent = startPDFContent + partOfPDFContents
-              }
+              PDFContent += await getPDFPageContents(i + 1)
+              // computed tokens
+              const process = ((i + 1) / totalPages) * 100
+              console.log(
+                `ActionGetPDFContentsOfCRX process [${process}], page [${i}]`,
+              )
             }
-            console.log(
-              `ActionGetPDFContentsOfCRX using [${useTokens}] tokens, loaded [${loadPageCount}] page. result: \n`,
-              startPDFContent,
-              endPDFContent,
-            )
-            return startPDFContent + endPDFContent
+            return PDFContent
           } catch (e) {
             console.error(`ActionGetPDFContentsOfCRX error: \t`, e)
             return ''

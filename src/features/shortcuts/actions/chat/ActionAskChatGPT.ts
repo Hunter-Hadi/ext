@@ -11,6 +11,7 @@ import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
@@ -86,16 +87,13 @@ export class ActionAskChatGPT extends Action {
           onProcess: async (message: IChatMessage) => {
             if (insertMessageId && conversationId) {
               message.messageId = insertMessageId
-              if (message.type === 'ai') {
-                const aiMessage = message as IAIResponseMessage
-                if (aiMessage.originalMessage) {
-                  if (!aiMessage.originalMessage.content) {
-                    aiMessage.originalMessage.content = {
+              if (isAIMessage(message)) {
+                if (message.originalMessage) {
+                  if (!message.originalMessage.content) {
+                    message.originalMessage.content = {
                       text: message.text,
                       contentType: 'text',
                     }
-                  } else {
-                    aiMessage.text = message.text
                   }
                 }
               }
@@ -103,7 +101,7 @@ export class ActionAskChatGPT extends Action {
                 'update',
                 conversationId,
                 0,
-                message.type === 'ai'
+                isAIMessage(message)
                   ? [
                       mergeWithObject([
                         message,
@@ -111,8 +109,8 @@ export class ActionAskChatGPT extends Action {
                           originalMessage: {
                             content: {
                               contentType:
-                                (message as IAIResponseMessage).originalMessage
-                                  ?.content?.contentType || 'text',
+                                message?.originalMessage?.content
+                                  ?.contentType || 'text',
                               text: message.text,
                             },
                           },
@@ -132,11 +130,12 @@ export class ActionAskChatGPT extends Action {
                   conversationId,
                   0,
                   [
-                    message.type === 'ai'
+                    isAIMessage(message)
                       ? mergeWithObject([
                           message,
                           {
                             originalMessage: {
+                              status: 'complete',
                               metadata: {
                                 isComplete: true,
                               },

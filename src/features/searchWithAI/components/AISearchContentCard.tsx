@@ -74,6 +74,7 @@ const AISearchContentCard: FC<IProps> = ({
             text: completedAnswer,
             contentType: 'text',
           },
+          status: 'complete',
           metadata: {
             shareType: 'search',
             sourceWebpage: {

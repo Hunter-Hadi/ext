@@ -507,7 +507,10 @@ const AutoHeightTextarea: FC<{
                 event.key === 'ArrowRight' ||
                 event.key === 'Escape'
               ) {
-                return
+                // 因为会影响float context menu
+                if (InputId === ROOT_FLOATING_INPUT_ID) {
+                  return
+                }
               }
               event.stopPropagation()
             }

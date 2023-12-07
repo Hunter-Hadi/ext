@@ -15,7 +15,7 @@ import useActivity from '@/features/auth/hooks/useActivity'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const App: FC = () => {
-  const { isShowBlackFridayBanner } = useActivity()
+  const { isShowActivityBanner } = useActivity()
   return (
     <Box
       component={'div'}
@@ -65,7 +65,7 @@ const App: FC = () => {
                   transition: 'transform 0.3s ease-in-out',
                   borderStyle: 'solid',
                 }}
-                height={`calc(100vh - ${isShowBlackFridayBanner ? 96 : 48}px)`}
+                height={`calc(100vh - ${isShowActivityBanner ? 96 : 48}px)`}
                 borderColor={'customColor.borderColor'}
                 spacing={1}
               >

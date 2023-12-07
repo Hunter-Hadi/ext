@@ -31,10 +31,12 @@ export class ActionSliceOfText extends Action {
         this.parameters.SliceTextActionType === 'TOKENS' ||
         this.parameters.SliceTextActionTokens
       ) {
-        this.output = await sliceTextByTokens(
-          needSplitText,
-          this.parameters.SliceTextActionTokens || 4096,
-        )
+        this.output = (
+          await sliceTextByTokens(
+            needSplitText,
+            this.parameters.SliceTextActionTokens || 4096,
+          )
+        ).text
       } else {
         const sliceLength =
           this.parameters.SliceTextActionLength || SLICE_MAX_CHARACTERS

@@ -13,55 +13,53 @@ import dayjs from 'dayjs'
 const useActivity = () => {
   const { isLogin } = useAuthLogin()
   const { currentUserPlan, loading } = useUserInfo()
-  const [isActivityBlackFriday2023, setIsActivityBlackFriday2023] = useState(
-    false,
-  )
+  const [isActivityChristmas2023, setIsActivityChristmas2023] = useState(false)
   // 是否是第一次加载，因为loading做为依赖，会闪烁
   const firstLoadingRef = useRef(false)
-  // 是否展示黑五活动的banner
-  const isShowBlackFridayBanner = useMemo(() => {
+  // 是否展示活动的banner
+  const isShowActivityBanner = useMemo(() => {
     // 如果是登录状态，且当前用户不是elite年费用户，且没有展示过，就展示黑五活动的banner
     if (isLogin && (!loading || firstLoadingRef.current)) {
       firstLoadingRef.current = true
       if (
         (currentUserPlan.planName === 'ELITE_YEARLY' &&
           currentUserPlan.name === 'elite') ||
-        isActivityBlackFriday2023
+        isActivityChristmas2023
       ) {
         return false
       }
       return true
     }
     return false
-  }, [isLogin, isActivityBlackFriday2023, currentUserPlan, loading])
+  }, [isLogin, isActivityChristmas2023, currentUserPlan, loading])
   /**
-   * 是否可以关闭黑五活动的banner
+   * 是否可以关闭活动的banner
    */
-  const isAbleToCloseBlackFridayBanner = useMemo(() => {
-    return dayjs().utc().diff(dayjs('2023-12-01').utc()) > 0
+  const isAbleToCloseActivityBanner = useMemo(() => {
+    return dayjs().utc().diff(dayjs('2023-12-31').utc()) > 0
   }, [])
   /**
-   * 关闭黑五活动的banner
+   * 关闭活动的banner
    */
-  const handleCloseBlackFriday2023Banner = async () => {
+  const handleCloseActivityBanner = async () => {
     await setChromeExtensionOnBoardingData(
-      'ON_BOARDING_BLACK_FRIDAY_2023_BANNER',
+      'ON_BOARDING_CHRISTMAS_2023_BANNER',
       true,
     )
-    setIsActivityBlackFriday2023(true)
+    setIsActivityChristmas2023(true)
   }
-  // 获取是否已经展示过黑五活动的banner
+  // 获取是否已经展示过活动的banner
   useEffect(() => {
     getChromeExtensionOnBoardingData().then((data) => {
-      setIsActivityBlackFriday2023(
-        data.ON_BOARDING_BLACK_FRIDAY_2023_BANNER as boolean,
+      setIsActivityChristmas2023(
+        data.ON_BOARDING_CHRISTMAS_2023_BANNER as boolean,
       )
     })
   }, [])
   return {
-    isShowBlackFridayBanner,
-    isAbleToCloseBlackFridayBanner,
-    handleCloseBlackFriday2023Banner,
+    isShowActivityBanner,
+    isAbleToCloseActivityBanner,
+    handleCloseActivityBanner,
   }
 }
 export default useActivity

@@ -7,6 +7,7 @@ import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -60,17 +61,31 @@ const NormalChatPage = () => {
         onRetry={retryMessage}
         onReGenerate={async () => {
           if (currentSidebarConversationType === 'Summary') {
-            if (currentSidebarConversationMessages.length === 1) {
-              // 只有一个消息，说明是总结的那一条消息，这个时候就可以重置conversation了
-              await resetConversation()
-              return
+            // 查看最后一条消息是否为总结的那一条消息
+            for (
+              let i = currentSidebarConversationMessages.length - 1;
+              i >= 0;
+              i--
+            ) {
+              const message = currentSidebarConversationMessages[i]
+              // 查看最后一条AI消息是不是总结的那条消息
+              if (isAIMessage(message)) {
+                if (
+                  message.originalMessage?.metadata?.shareType === 'summary'
+                ) {
+                  await resetConversation()
+                  return
+                }
+                // 如果不是总结的那条消息，就不用再往前找了
+                break
+              }
             }
           }
           if (currentSidebarConversationType === 'Search') {
             await regenerateSearchWithAI()
-          } else {
-            await reGenerate()
+            return
           }
+          await reGenerate()
         }}
         onStopGenerate={stopGenerateMessage}
         onReset={resetConversation}

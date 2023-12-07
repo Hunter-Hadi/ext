@@ -123,3 +123,14 @@ export const isMaxAIPDFPage = () => {
     return false
   }
 }
+
+/**
+ * 判断是否是MaxAI的页面
+ */
+export const isMaxAIPage = () => {
+  try {
+    return Browser.runtime.getURL('').startsWith(getCurrentDomainHost())
+  } catch (e) {
+    return false
+  }
+}

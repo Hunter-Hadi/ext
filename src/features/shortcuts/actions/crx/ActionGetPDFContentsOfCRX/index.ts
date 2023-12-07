@@ -25,16 +25,13 @@ export class ActionGetPDFContentsOfCRX extends Action {
     try {
       if (
         typeof window !== 'undefined' &&
-        (window as any).pdfjsLib &&
-        (window as any)?.PDFViewerApplication?.url
+        (window as any)?.PDFViewerApplication?.pdfDocument
       ) {
-        const pdfLib = (window as any).pdfjsLib
         const fetchPageContents = async () => {
           try {
             console.log('ActionGetPDFContentsOfCRX start fetchPageContents')
-            const pdfInstance = await pdfLib?.getDocument(
-              (window as any)?.PDFViewerApplication?.url,
-            )?.promise
+            const pdfInstance = (window as any)?.PDFViewerApplication
+              .pdfDocument
             const totalPages = pdfInstance?.numPages
             console.log(`ActionGetPDFContentsOfCRX totalPages: \t`, totalPages)
             const getPDFPageContents = async (pageNum: number) => {

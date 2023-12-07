@@ -2,6 +2,15 @@ import { Readability } from '@mozilla/readability'
 import TurndownService from 'turndown'
 import { HTMLDocument } from 'linkedom/types/html/document'
 
+function removeImagesFromMarkdown(markdownText: string): string {
+  const lines: string[] = markdownText.split('\n')
+  const filteredLines: string[] = lines.filter(
+    (line: string) => !line.startsWith('!['),
+  )
+  const cleanedText: string = filteredLines.join('\n')
+  return cleanedText
+}
+
 const getPageContentWithMozillaReadability = async (
   replaceBody?: HTMLElement,
 ) => {
@@ -21,7 +30,7 @@ const getPageContentWithMozillaReadability = async (
     )
     const readabilityResult = `# ${readabilityArticle?.title}\n\n${readabilityMarkdown}\n`
     console.log('Parser vs [Readability] parse result: \n', readabilityResult)
-    return readabilityResult
+    return removeImagesFromMarkdown(readabilityResult)
   } catch (e) {
     console.log(e)
     return ''

@@ -98,7 +98,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "worker.ts",
+        "worker.js",
         "i18n/locales/*",
         "pages/pdf/*",
         "content.css",

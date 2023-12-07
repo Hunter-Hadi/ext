@@ -1,6 +1,7 @@
 // 基于 chatgpt 3.5 的 token 限制
 import cl100k_base from 'gpt-tokenizer/esm/encoding/cl100k_base'
 import { executeWebWorkerTask } from '@/utils/webWorkerClient'
+import { isMaxAIPage } from '@/utils/dataHelper/websiteHelper'
 
 export const MAX_CHARACTERS_TOKENS = 4096
 
@@ -92,7 +93,7 @@ export const getTextTokens = (text: string) => {
 export const getTextTokensWithThread = async (text: string, thread: number) => {
   // NOTE: 太高会内存溢出
   const maxThread = Math.min(Math.max(thread, 1), 10)
-  if (thread === 1) {
+  if (thread === 1 || !isMaxAIPage()) {
     return await getTextTokens(text)
   }
   const textOfChunks = []

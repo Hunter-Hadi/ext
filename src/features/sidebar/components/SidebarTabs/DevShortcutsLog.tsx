@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import Typography from '@mui/material/Typography'
 import debounce from 'lodash-es/debounce'
-
+import SouthIcon from '@mui/icons-material/South'
 const DevShortcutsLog: FC = () => {
   const boxRef = useRef<HTMLDivElement>(null)
   const [runningActions, setRunningActions] = useState<IAction[]>([])
@@ -82,7 +82,7 @@ const DevShortcutsLog: FC = () => {
           color = 'success.main'
         }
         return (
-          <React.Fragment key={action.type + index}>
+          <Stack key={action.type + index} sx={{ px: 1, alignItems: 'center' }}>
             <TextOnlyTooltip
               placement={'right'}
               title={`[${action.type}]`}
@@ -97,7 +97,7 @@ const DevShortcutsLog: FC = () => {
                     : ''
                 }
                 sx={{
-                  mx: 1,
+                  width: '100%',
                   border: '1px solid',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -148,7 +148,15 @@ const DevShortcutsLog: FC = () => {
                 </Stack>
               </Stack>
             </TextOnlyTooltip>
-          </React.Fragment>
+            {index + 1 !== runningActions.length && (
+              <SouthIcon
+                sx={{
+                  fontSize: '11px',
+                  mt: 0.5,
+                }}
+              />
+            )}
+          </Stack>
         )
       })}
       <Stack width={'100%'} height={8} flexShrink={0}></Stack>

@@ -47,7 +47,7 @@ const PromptLibraryCard: FC<{
   }, [prompt])
 
   const actionBtnList = () => {
-    const btnList = []
+    const btnList: React.ReactNode[] = []
     if (actionButton.includes('see')) {
       btnList.push(<SeeIconButton key="see" detailLink={detailLink} />)
     }

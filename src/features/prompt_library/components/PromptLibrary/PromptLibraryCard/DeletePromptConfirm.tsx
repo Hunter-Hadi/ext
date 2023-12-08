@@ -45,7 +45,6 @@ const DeletePromptConfirm: FC<IProps> = ({
           <Stack direction="row" spacing={1} justifyContent="flex-end">
             <LoadingButton
               loading={loading}
-              variant="secondary"
               onClick={(event) => {
                 event.stopPropagation()
                 event.preventDefault()

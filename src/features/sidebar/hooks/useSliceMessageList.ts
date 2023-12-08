@@ -1,7 +1,8 @@
-import { IChatMessage } from '@/features/chatgpt/types'
-import { getAppRootElement } from '@/utils'
 import { throttle } from 'lodash-es'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+
+import { IChatMessage } from '@/features/chatgpt/types'
+import { getAppRootElement } from '@/features/common/utils'
 
 interface ISliceMessageOptions {
   // 每页大小

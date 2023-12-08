@@ -1,8 +1,15 @@
+import size from 'lodash-es/size'
 import { useEffect, useState } from 'react'
+
+import {
+  IBackgroundRunCommandFunctionKey,
+  IBackgroundRunCommandFunctionParams,
+  IBackgroundRunCommandFunctionReturn,
+  IBackgroundRunCommandKey,
+} from '@/background/src/client/backgroundCommandHandler'
 import {
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
   ROOT_CONTAINER_ID,
-  ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
   ROOT_CONTEXT_MENU_PORTAL_ID,
   ROOT_MINIMIZE_CONTAINER_ID,
@@ -11,13 +18,6 @@ import {
   ContentScriptConnectionV2,
   pingDaemonProcess,
 } from '@/features/chatgpt/utils'
-import size from 'lodash-es/size'
-import {
-  IBackgroundRunCommandFunctionKey,
-  IBackgroundRunCommandFunctionParams,
-  IBackgroundRunCommandFunctionReturn,
-  IBackgroundRunCommandKey,
-} from '@/background/src/client/backgroundCommandHandler'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const numberWithCommas = (number: number, digits = 2) => {
@@ -37,11 +37,6 @@ export const getFloatingContextMenuActiveElement = (): HTMLElement | null => {
     ?.activeElement as HTMLDivElement
   if (element === undefined) return null
   return element
-}
-export const getAppRootElement = (): HTMLElement | undefined => {
-  return document
-    .querySelector(`#${ROOT_CONTAINER_ID}`)
-    ?.shadowRoot?.querySelector(`#${ROOT_CONTAINER_WRAPPER_ID}`) as HTMLElement
 }
 export const getAppContextMenuRootElement = (): HTMLDivElement | null => {
   const portals =

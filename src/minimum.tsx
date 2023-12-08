@@ -1,12 +1,17 @@
-import { APP_VERSION, ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
 import createCache from '@emotion/cache'
-import { createRoot } from 'react-dom/client'
-import React from 'react'
-import { RecoilRoot } from 'recoil'
 import { CacheProvider } from '@emotion/react'
-import AppThemeProvider from '@/components/AppTheme'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { RecoilRoot } from 'recoil'
 
-const AppNameToClassName = String(process.env.APP_ENV || '')
+import AppThemeProvider from '@/components/AppTheme'
+import {
+  APP_VERSION,
+  MAXAI_CHROME_EXTENSION_ID,
+  ROOT_MINIMIZE_CONTAINER_ID,
+} from '@/constants'
+
+const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
 

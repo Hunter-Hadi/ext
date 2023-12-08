@@ -1,8 +1,8 @@
-import { AppDBStorageState } from '@/store'
 import { createTheme, responsiveFontSizes, Theme } from '@mui/material/styles'
 import React, { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
-import { APP_ENV } from '@/constants'
+
+import { AppDBStorageState } from '@/store'
 // import { useTernaryDarkMode } from 'usehooks-ts';
 
 type CustomColor = {
@@ -13,8 +13,8 @@ type CustomColor = {
 }
 
 export const customColor = {
-  main: APP_ENV === 'EZ_MAIL_AI' ? '#DB4437' : '#7601D3',
-  darkMain: APP_ENV === 'EZ_MAIL_AI' ? '#DB4437' : '#B273FF',
+  main: '#7601D3',
+  darkMain: '#B273FF',
   // borderColor: getIsDarkMode()
   //   ? 'rgba(255, 255, 255, 0.12)'
   //   : 'rgb(237,237,236)',

@@ -1,11 +1,13 @@
-import React, { FC, useEffect } from 'react'
 import Button from '@mui/material/Button'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import { getAppRootElement, showChatBox } from '@/utils'
-import { ISidebarConversationType } from '@/features/sidebar/store'
 import DynamicComponent from '@/components/DynamicComponent'
+import { getAppRootElement } from '@/features/common/utils'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 import useFindElement from '@/hooks/useFindElement'
+import { showChatBox } from '@/utils'
 
 const MAXAI_YOUTUBE_SUMMARY_BUTTON = 'max-ai-youtube-summary-button'
 const YouTubeSummaryButton: FC = () => {

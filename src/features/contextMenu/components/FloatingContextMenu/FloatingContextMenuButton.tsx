@@ -1,20 +1,20 @@
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import React, { FC, useCallback, useEffect, useMemo } from 'react'
 import { atom, useRecoilState } from 'recoil'
+import { v4 as uuidV4 } from 'uuid'
+
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import TooltipIconButton from '@/components/TooltipIconButton'
+import { getAppRootElement } from '@/features/common/utils'
+import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import { v4 as uuidV4 } from 'uuid'
-
-import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
-import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { getAppRootElement } from '@/utils'
-import Button from '@mui/material/Button'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import TooltipIconButton from '@/components/TooltipIconButton'
-import Box from '@mui/material/Box'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const CurrentFloatingContextMenuButtonState = atom({

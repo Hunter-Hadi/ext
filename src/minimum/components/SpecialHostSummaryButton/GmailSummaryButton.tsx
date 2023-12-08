@@ -1,12 +1,14 @@
-import React, { FC } from 'react'
-import DynamicComponent from '@/components/DynamicComponent'
-import Button from '@mui/material/Button'
-import useFindElement from '@/hooks/useFindElement'
 import Box from '@mui/material/Box'
-import { UseChatGptIcon } from '@/components/CustomIcon'
+import Button from '@mui/material/Button'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getAppRootElement, showChatBox } from '@/utils'
+
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import DynamicComponent from '@/components/DynamicComponent'
+import { getAppRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
+import useFindElement from '@/hooks/useFindElement'
+import { showChatBox } from '@/utils'
 
 const GmailSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])

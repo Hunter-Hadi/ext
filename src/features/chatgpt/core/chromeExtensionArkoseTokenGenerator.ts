@@ -1,10 +1,10 @@
-import { promiseTimeout } from '@/utils/promiseUtils'
-import Log from '@/utils/Log'
 import {
   ARKOSE_TOKEN_GENERATOR_POST_MESSAGE_ID,
   ArkoseTokenModelType,
 } from '@/assets/openai/arkoseTokenIframeId'
-import { getAppRootElement } from '@/utils'
+import { getAppRootElement } from '@/features/common/utils'
+import Log from '@/utils/Log'
+import { promiseTimeout } from '@/utils/promiseUtils'
 
 const log = new Log('ArkoseIframeGenerator')
 

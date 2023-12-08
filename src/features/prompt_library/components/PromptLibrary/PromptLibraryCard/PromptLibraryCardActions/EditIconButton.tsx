@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
 import IconButton from '@mui/material/IconButton'
-import Tooltip from '@mui/material/Tooltip'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+import Tooltip from '@mui/material/Tooltip'
+import React, { FC } from 'react'
 
 const EditIcon: FC<SvgIconProps> = (props) => {
   return (

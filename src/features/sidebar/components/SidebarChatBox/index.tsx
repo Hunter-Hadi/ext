@@ -1,3 +1,14 @@
+import CachedIcon from '@mui/icons-material/Cached'
+// import SendIcon from '@mui/icons-material/Send'
+import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+// import CircularProgress from '@mui/material/CircularProgress'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+// import DevContent from '@/components/DevContent'
+// import { TestAllActionsButton } from '@/features/shortcuts'
+import throttle from 'lodash-es/throttle'
 import React, {
   FC,
   useCallback,
@@ -6,44 +17,36 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-// import CircularProgress from '@mui/material/CircularProgress'
-import Stack from '@mui/material/Stack'
-import { SxProps } from '@mui/material/styles'
-import CachedIcon from '@mui/icons-material/Cached'
+import { useTranslation } from 'react-i18next'
+
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-// import SendIcon from '@mui/icons-material/Send'
-import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import DevContent from '@/components/DevContent'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
-// import DevContent from '@/components/DevContent'
-// import { TestAllActionsButton } from '@/features/shortcuts'
-import throttle from 'lodash-es/throttle'
+import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
+import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import {
   IAIResponseMessage,
   IChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import useSliceMessageList from '../../hooks/useSliceMessageList'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
-import { clientRestartChromeExtension, getAppRootElement } from '@/utils'
-import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
-import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
-import { useTranslation } from 'react-i18next'
-import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
+import { getAppRootElement } from '@/features/common/utils'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
-import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIAdvanced'
+import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
+import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
+import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
-import DevContent from '@/components/DevContent'
+import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { clientRestartChromeExtension } from '@/utils'
+
+import useSliceMessageList from '../../hooks/useSliceMessageList'
 // import { getMediator } from '@/store/mediator'
 
 // const MAX_NORMAL_INPUT_LENGTH = 10000

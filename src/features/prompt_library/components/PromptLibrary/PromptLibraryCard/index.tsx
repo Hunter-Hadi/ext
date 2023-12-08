@@ -2,29 +2,30 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { Box, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import utc from 'dayjs/plugin/utc'
 import React, { FC, useMemo } from 'react'
-import ProLink from '@/components/ProLink'
+
+import EllipsisTextWithTooltip from '@/features/common/components/EllipsisTextWithTooltip'
+import ProLink from '@/features/common/components/ProLink'
 import {
   DeleteIconButton,
   EditIconButton,
   FavoriteIconButton,
   SeeIconButton,
 } from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardActions'
+import PromptTypeList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptTypeList'
 import {
   DEFAULT_PROMPT_AUTHOR,
   DEFAULT_PROMPT_AUTHOR_LINK,
+  PROMPT_LIBRARY_HOST,
 } from '@/features/prompt_library/constant'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
+import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 import {
   IPromptActionKey,
   IPromptLibraryCardData,
 } from '@/features/prompt_library/types'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import EllipsisTextWithTooltip from '@/components/EllipsisTextWithTooltip'
-import PromptTypeList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptTypeList'
-import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 dayjs.extend(relativeTime)
 dayjs.extend(utc)
 
@@ -42,8 +43,8 @@ const PromptLibraryCard: FC<{
   const isActive = selectedPromptLibraryCard?.id === prompt.id
   const detailLink = useMemo(() => {
     return prompt.type === 'private'
-      ? `${APP_USE_CHAT_GPT_HOST}/prompts/own/${prompt.id}`
-      : `${APP_USE_CHAT_GPT_HOST}/prompts/${prompt.id}`
+      ? `${PROMPT_LIBRARY_HOST}/prompts/own/${prompt.id}`
+      : `${PROMPT_LIBRARY_HOST}/prompts/${prompt.id}`
   }, [prompt])
 
   const actionBtnList = () => {

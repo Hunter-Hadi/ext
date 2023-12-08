@@ -1,24 +1,25 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import Alert from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 
-import SidebarChatBoxUserTools from './SidebarChatBoxUserTools'
-import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
-import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import DevContent from '@/components/DevContent'
 import { ROOT_CONTAINER_ID } from '@/constants'
+import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import {
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
-import DevContent from '@/components/DevContent'
-import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
 import SidebarAIMessage from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
+
+import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
+import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
+import SidebarChatBoxUserTools from './SidebarChatBoxUserTools'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const getMessageRenderText = (message: IChatMessage) => {
@@ -97,9 +98,6 @@ const SidebarChatBoxMessageItem: FC<{
         flexDirection: 'row',
         justifyContent: 'flex-start',
         bgcolor: () => {
-          if (String(process.env.APP_ENV) === 'EZ_MAIL_AI') {
-            return '#FEE6E1 !important'
-          }
           if (isDarkMode) {
             return '#6B23C259 !important'
           } else {

@@ -1,7 +1,8 @@
-import React, { FC, useMemo, useRef, useState } from 'react'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import { getAppRootElement } from '@/utils'
+import React, { FC, useMemo, useRef, useState } from 'react'
+
+import { getAppRootElement } from '../features/common/utils'
 
 const IconDropdown: FC<{
   children: React.ReactNode

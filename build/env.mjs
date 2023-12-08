@@ -37,12 +37,10 @@ const APP_USE_CHAT_GPT_API_HOST = isProduction
   : 'https://dev.maxai.me'
 
 const APP_NAME = 'MaxAI.me'
-const APP_ENV = 'USE_CHAT_GPT_AI'
 const NODE_ENV = isProduction ? 'production' : 'development'
 
 const env = {
   NODE_ENV,
-  APP_ENV,
   APP_USE_CHAT_GPT_HOST,
   APP_USE_CHAT_GPT_API_HOST,
   APP_NAME,

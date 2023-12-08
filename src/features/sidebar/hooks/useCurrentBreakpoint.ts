@@ -1,7 +1,8 @@
 import { useTheme } from '@mui/material/styles'
 import { useEffect, useMemo, useState } from 'react'
+
+import { getAppRootElement } from '@/features/common/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import { getAppRootElement } from '@/utils'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 

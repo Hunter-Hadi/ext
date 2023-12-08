@@ -1,25 +1,27 @@
+import createCache from '@emotion/cache'
+import { CacheProvider } from '@emotion/react'
+import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/className'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
-import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/className'
-import createCache from '@emotion/cache'
-import { CacheProvider } from '@emotion/react'
+import Browser from 'webextension-polyfill'
+
+import AppThemeProvider from '@/components/AppTheme'
 import {
   APP_VERSION,
+  MAXAI_CHROME_EXTENSION_ID,
   ROOT_CONTAINER_ID,
   ROOT_CONTAINER_WRAPPER_ID,
   ROOT_CONTEXT_MENU_ID,
   ROOT_DAEMON_PROCESS_ID,
 } from '@/constants'
-import AppThemeProvider from '@/components/AppTheme'
-import Browser from 'webextension-polyfill'
 import {
   getCurrentDomainHost,
   isMaxAIImmersiveChatPage,
 } from '@/utils/dataHelper/websiteHelper'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // import createCache from '@emotion/cache'
-const AppNameToClassName = String(process.env.APP_ENV || '')
+const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
 ClassNameGenerator.configure(

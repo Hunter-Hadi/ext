@@ -1,11 +1,13 @@
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined'
-import React, { FC, useMemo } from 'react'
+import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
-import CircularProgress from '@mui/material/CircularProgress'
+import React, { FC, useMemo } from 'react'
+
 import useFavoritePrompts from '@/features/prompt_library/hooks/useFavoritePrompts'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
+
 export const FavoriteIconButton: FC<{
   promptId: string
 }> = ({ promptId }) => {

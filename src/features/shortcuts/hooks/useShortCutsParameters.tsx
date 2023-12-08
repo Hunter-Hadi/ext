@@ -1,18 +1,18 @@
-import { useRecoilValue } from 'recoil'
 import { useCallback } from 'react'
-import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
+import { useRecoilValue } from 'recoil'
 
-import { getAppRootElement } from '@/utils'
-import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import {
   DEFAULT_AI_OUTPUT_LANGUAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
   ROOT_CHAT_BOX_INPUT_ID,
 } from '@/constants'
+import { getAppRootElement } from '@/features/common/utils'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
+import { useRangy } from '@/features/contextMenu/hooks/useRangy'
+import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppDBStorageState, AppState } from '@/store'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
-import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)

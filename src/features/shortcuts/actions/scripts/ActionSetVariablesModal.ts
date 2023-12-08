@@ -1,16 +1,18 @@
-import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-// import { pushOutputToChat } from '@/features/shortcuts/decorators'
-import OneShotCommunicator from '@/utils/OneShotCommunicator'
+import cloneDeep from 'lodash-es/cloneDeep'
+
+import { getAppRootElement } from '@/features/common/utils'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { getAppRootElement, showChatBox } from '@/utils'
-import { ActionSetVariablesConfirmData } from '@/features/shortcuts/components/ActionSetVariablesModal'
 import {
   shortcutsRenderTemplate,
   templateParserDecorator,
 } from '@/features/shortcuts'
-import cloneDeep from 'lodash-es/cloneDeep'
+import { ActionSetVariablesConfirmData } from '@/features/shortcuts/components/ActionSetVariablesModal'
+import Action from '@/features/shortcuts/core/Action'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { showChatBox } from '@/utils'
+// import { pushOutputToChat } from '@/features/shortcuts/decorators'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export class ActionSetVariablesModal extends Action {
   static type: ActionIdentifier = 'SET_VARIABLES_MODAL'

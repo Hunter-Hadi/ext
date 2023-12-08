@@ -1,19 +1,16 @@
+import { autoFocusWithAllWebsite } from '@/components/AutoHeightTextarea'
+import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
+import { getAppRootElement } from '@/features/common/utils'
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
-import { getInputMediator } from '@/store/InputMediator'
-import {
-  getAppContextMenuRootElement,
-  getAppRootElement,
-  promiseRetry,
-} from '@/utils'
-import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
-import { autoFocusWithAllWebsite } from '@/components/AutoHeightTextarea'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { getInputMediator } from '@/store/InputMediator'
+import { getAppContextMenuRootElement, promiseRetry } from '@/utils'
 
 export class ActionInsertUserInput extends Action {
   static type: ActionIdentifier = 'INSERT_USER_INPUT'

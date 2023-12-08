@@ -1,14 +1,18 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/constants'
-import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Browser from 'webextension-polyfill'
 
-const AppNameToClassName = String(process.env.APP_ENV || '')
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import {
+  MAXAI_CHROME_EXTENSION_ID,
+  ROOT_CONTEXT_MENU_PORTAL_ID,
+} from '@/constants'
+import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
+
+const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
 const Portal: FC<{

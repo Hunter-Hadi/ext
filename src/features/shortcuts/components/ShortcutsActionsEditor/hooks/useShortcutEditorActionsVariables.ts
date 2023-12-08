@@ -1,10 +1,11 @@
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
 import { useMemo } from 'react'
-import { I18nextKeysType } from '@/i18next'
 import { useRecoilState } from 'recoil'
-import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutActionsEditor/store'
+
+import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutsActionsEditor/store'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
+import { updateHtmlWithVariables } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { updateHtmlWithVariables } from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+import { I18nextKeysType } from '@/i18next'
 
 export type IPresetVariableName =
   | 'LIVE_CRAWLING_TARGET_URL'

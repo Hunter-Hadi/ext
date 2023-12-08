@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 import { MagicBookIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
@@ -118,6 +119,7 @@ const PromptLibraryIconButton: FC = () => {
         title={t('prompt_library:use_prompt_library__title__tooltip')}
       >
         <Button
+          id={MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID}
           data-testid={'maxai-prompt-library-button'}
           onClick={handleClick('top')}
           sx={{
@@ -187,7 +189,11 @@ const PromptLibraryIconButton: FC = () => {
                   p: 2,
                 }}
               >
-                {isClickOpenOnce && <PromptLibrary />}
+                {isClickOpenOnce && (
+                  <PromptLibrary
+                    runtime={isImmersiveChatPage ? 'Page' : 'Sidebar'}
+                  />
+                )}
               </Paper>
             </div>
           </Fade>

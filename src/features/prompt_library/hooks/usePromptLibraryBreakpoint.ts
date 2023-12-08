@@ -1,16 +1,15 @@
 import { useTheme } from '@mui/material/styles'
-import { useEffect, useMemo, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 
-import { MAXAI_PROMPT_LIBRARY_ROOT_ID } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 const usePromptLibraryBreakpoint = (sidebarDefaultWidth = 450) => {
   const theme = useTheme()
-  const [promptLibraryRuntime, setPromptLibraryRuntime] = useState<
-    'page' | 'sidebar'
-  >('page')
+  const { runtime } = useContext(PromptLibraryRuntimeContext)!
+
   const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('xl')
   const [sidebarWidth, setSidebarWidth] = useState(sidebarDefaultWidth)
   useEffect(() => {
@@ -51,21 +50,7 @@ const usePromptLibraryBreakpoint = (sidebarDefaultWidth = 450) => {
     }
     return 'xs'
   }, [sidebarWidth, sidebarDefaultWidth])
-  useEffect(() => {
-    if (
-      getMaxAISidebarRootElement()?.querySelector(
-        `#${MAXAI_PROMPT_LIBRARY_ROOT_ID}`,
-      )
-    ) {
-      setPromptLibraryRuntime('sidebar')
-    } else if (document.querySelector(`#${MAXAI_PROMPT_LIBRARY_ROOT_ID}`)) {
-      setPromptLibraryRuntime('page')
-    }
-    setPromptLibraryRuntime('page')
-  }, [])
 
-  return promptLibraryRuntime === 'page'
-    ? currentBreakpoint
-    : sidebarBreakpoints
+  return runtime === 'Page' ? currentBreakpoint : sidebarBreakpoints
 }
 export default usePromptLibraryBreakpoint

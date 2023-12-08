@@ -1,22 +1,22 @@
 import { useRecoilState } from 'recoil'
-import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutActionsEditor/store'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import { v4 as uuidV4 } from 'uuid'
 
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import {
+  IPresetVariableName,
+  PRESET_VARIABLE_MAP,
+} from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutsActionsEditor/store'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import {
   escapeHtml,
   htmlToTemplate,
   promptTemplateToHtml,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+} from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import {
-  IPresetVariableName,
-  PRESET_VARIABLE_MAP,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 
 const variablesToVariableMap = (variables: IActionSetVariable[]) => {
   const variableMap = new Map<string, IActionSetVariable>()

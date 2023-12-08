@@ -1,21 +1,22 @@
-import React, { FC, useState } from 'react'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Popover from '@mui/material/Popover'
 import Stack from '@mui/material/Stack'
-import Box from '@mui/material/Box'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
-import Typography from '@mui/material/Typography'
-import { useTranslation } from 'react-i18next'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
+import Typography from '@mui/material/Typography'
+import React, { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import {
   IPresetVariablesGroupItem,
   PRESET_VARIABLES_GROUP_MAP,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
-import Divider from '@mui/material/Divider'
+} from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 
 const PresetVariablesTable: FC<{
   tableData: IPresetVariablesGroupItem[]

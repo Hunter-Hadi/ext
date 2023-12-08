@@ -22,7 +22,7 @@ import {
   getSetVariablesModalSelectCache,
   setVariablesModalSelectCache,
 } from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'

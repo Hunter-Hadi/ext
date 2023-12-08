@@ -1,23 +1,24 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
-import cloneDeep from 'lodash-es/cloneDeep'
 import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
+import cloneDeep from 'lodash-es/cloneDeep'
+import React, { FC, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import {
-  IContextMenuIconKey,
   CONTEXT_MENU_ICONS,
   ContextMenuIcon,
+  IContextMenuIconKey,
 } from '@/components/ContextMenuIcon'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutsActionsEditor'
+import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
-import { useTranslation } from 'react-i18next'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
-import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutActionsEditor'
-import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 const ContextMenuEditForm: FC<{

@@ -1,21 +1,21 @@
-import React, { FC, useCallback, useMemo, useRef } from 'react'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import React, { FC, useCallback, useMemo, useRef } from 'react'
 import ContentEditable from 'react-contenteditable'
+import { useTranslation } from 'react-i18next'
 
-import { useCustomTheme } from '@/hooks/useCustomTheme'
-import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
-import PresetVariables from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import PromptVariableEditor from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor'
+import PromptVariableEditor from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor'
+import PresetVariables from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PresetVariables'
+import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import {
   generateVariableHtmlContent,
   promptEditorAddHtmlToFocusNode,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
-import Typography from '@mui/material/Typography'
-import { useTranslation } from 'react-i18next'
+} from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const ShortcutActionsEditor: FC<{
   error?: boolean

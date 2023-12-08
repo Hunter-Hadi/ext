@@ -10,47 +10,55 @@ import PromptLibraryHeader from '@/features/prompt_library/components/PromptLibr
 import PromptLibraryList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList'
 import PromptLibraryListProgress from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/PromptLibraryListProgress'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
+import {
+  PromptLibraryRuntimeContext,
+  PromptLibraryRuntimeType,
+} from '@/features/prompt_library/store'
+
 export interface IPromptLibraryAppProps {
   closeOnSelect?: boolean
+  runtime: PromptLibraryRuntimeType
 }
 
 const PromptLibrary: FC<IPromptLibraryAppProps> = (props) => {
-  const { closeOnSelect = true } = props
+  const { closeOnSelect = true, runtime } = props
   const { closePromptLibrary } = usePromptLibrary()
   return (
-    <Stack
-      id={MAXAI_PROMPT_LIBRARY_ROOT_ID}
-      height={'100%'}
-      position={'relative'}
-      gap={2}
-      sx={{
-        [`.${formLabelClasses.root}`]: {
-          fontSize: '16px',
-        },
-        [`.${inputBaseClasses.root}`]: {
-          [`.${svgIconClasses.root}`]: {
-            fontSize: '24px',
-          },
-        },
-      }}
-    >
-      <PromptLibraryListProgress
+    <PromptLibraryRuntimeContext.Provider value={{ runtime }}>
+      <Stack
+        id={MAXAI_PROMPT_LIBRARY_ROOT_ID}
+        height={'100%'}
+        position={'relative'}
+        gap={2}
         sx={{
-          width: 'calc(100% + 32px)',
-          left: -16,
-          top: -16,
+          [`.${formLabelClasses.root}`]: {
+            fontSize: '16px',
+          },
+          [`.${inputBaseClasses.root}`]: {
+            [`.${svgIconClasses.root}`]: {
+              fontSize: '24px',
+            },
+          },
         }}
-      />
-      <PromptLibraryHeader />
-      <PromptLibraryList
-        onClick={(promptLibraryCard) => {
-          if (promptLibraryCard && closeOnSelect) {
-            closePromptLibrary()
-          }
-        }}
-      />
-      <PromptLibraryCardEditForm />
-    </Stack>
+      >
+        <PromptLibraryListProgress
+          sx={{
+            width: 'calc(100% + 32px)',
+            left: -16,
+            top: -16,
+          }}
+        />
+        <PromptLibraryHeader />
+        <PromptLibraryList
+          onClick={(promptLibraryCard) => {
+            if (promptLibraryCard && closeOnSelect) {
+              closePromptLibrary()
+            }
+          }}
+        />
+        <PromptLibraryCardEditForm />
+      </Stack>
+    </PromptLibraryRuntimeContext.Provider>
   )
 }
 

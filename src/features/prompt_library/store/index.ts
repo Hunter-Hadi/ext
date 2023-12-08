@@ -1,3 +1,4 @@
+import { createContext } from 'react'
 import { atom } from 'recoil'
 
 import {
@@ -29,3 +30,10 @@ export const PromptLibraryListParametersState = atom<IPromptLibraryListParameter
     },
   },
 )
+export type PromptLibraryRuntimeType = 'Page' | 'Sidebar'
+export type PromptLibraryRuntimeContextType = {
+  runtime: PromptLibraryRuntimeType
+}
+export const PromptLibraryRuntimeContext = createContext<
+  PromptLibraryRuntimeContextType | undefined
+>(undefined)

@@ -1,6 +1,7 @@
 import { atom } from 'recoil'
+
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
 
 export const ShortcutActionEditorState = atom<{
   actions: ISetActionsType

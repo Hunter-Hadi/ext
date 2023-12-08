@@ -7,8 +7,8 @@ import {
   IPromptLibraryCardDetailVariable,
   IPromptLibraryCardDetailVariableType,
 } from '@/features/prompt_library/types'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'

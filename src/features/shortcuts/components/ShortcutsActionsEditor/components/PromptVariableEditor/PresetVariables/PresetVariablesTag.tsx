@@ -1,11 +1,12 @@
 import { Typography } from '@mui/material'
 import React, { FC } from 'react'
-import { IPresetActionSetVariable } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+
+import { IPresetActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import {
   generateRandomColor,
   hexChangeLightnessAndSaturation,
   setOpacity,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/utils'
+} from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const PresetVariablesTag: FC<{

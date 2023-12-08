@@ -1,9 +1,10 @@
-import sanitizeHtml from 'sanitize-html'
-import sanitize from 'sanitize-html'
 import sha256 from 'crypto-js/sha256'
 import dayjs from 'dayjs'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+import sanitizeHtml from 'sanitize-html'
+import sanitize from 'sanitize-html'
+
+import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 
 /**
  * 基于字符串生成随机颜色

@@ -22,9 +22,9 @@ import usePromptLibraryCardDetail from '@/features/prompt_library/hooks/usePromp
 import usePromptLibraryCategory from '@/features/prompt_library/hooks/usePromptLibraryCategory'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import { IPromptLibraryCardDetailData } from '@/features/prompt_library/types'
-import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutActionsEditor'
-import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
-import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
+import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutsActionsEditor'
+import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
+import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
 import {
   actionsToPromptLibraryCardDetailData,
   promptLibraryCardDetailDataToActions,

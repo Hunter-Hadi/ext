@@ -9,13 +9,14 @@ import {
 } from '@mui/material'
 import React, { FC, useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
-import useEffectOnce from '@/hooks/useEffectOnce'
+import { useTranslation } from 'react-i18next'
+
+import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
 import useShortcutEditorActionsVariables, {
   PRESET_VARIABLE_MAP,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
-import { useTranslation } from 'react-i18next'
+} from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
+import useEffectOnce from '@/hooks/useEffectOnce'
 
 interface IPromptVariableFormProps {
   type: 'add' | 'edit' | 'view'

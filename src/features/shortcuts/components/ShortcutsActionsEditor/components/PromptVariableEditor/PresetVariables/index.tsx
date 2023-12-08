@@ -1,14 +1,15 @@
-import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import PresetVariablesTag from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PresetVariables/PresetVariablesTag'
+import PresetVariablesTooltip from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PresetVariables/PresetVariablesTooltip'
 import useShortcutEditorActionsVariables, {
   IPresetVariablesGroupItem,
   PRESET_VARIABLES_GROUP_MAP,
-} from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
-import PresetVariablesTag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables/PresetVariablesTag'
-import { useTranslation } from 'react-i18next'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import PresetVariablesTooltip from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PresetVariables/PresetVariablesTooltip'
+} from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 
 const PresetVariables: FC<{
   onClick?: (variable: IActionSetVariable) => void

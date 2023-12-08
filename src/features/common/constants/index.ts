@@ -15,3 +15,4 @@ export const MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID = `${MAXAI_APP_ROOT_ID}_Floati
 export const MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID = `${MAXAI_APP_ROOT_ID}_Floating_Reference_Element`
 // MaxAI Prompt library
 export const MAXAI_PROMPT_LIBRARY_ROOT_ID = `${MAXAI_APP_ROOT_ID}_Prompt_Library`
+export const MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID = `${MAXAI_APP_ROOT_ID}_Prompt_Library_Icon_Button`

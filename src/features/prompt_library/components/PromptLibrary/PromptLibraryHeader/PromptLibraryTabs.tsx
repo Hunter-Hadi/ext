@@ -5,10 +5,11 @@ import { buttonBaseClasses } from '@mui/material/ButtonBase'
 import { Theme } from '@mui/material/styles'
 import Tab, { tabClasses } from '@mui/material/Tab'
 import Tabs, { tabsClasses, TabsProps } from '@mui/material/Tabs'
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
 
 const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
   ({ theme }) => {
@@ -47,12 +48,17 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
 const PromptLibraryTabs: FC = () => {
   const { t } = useTranslation(['prompt_library'])
   const { activeTab, updateActiveTab } = usePromptLibraryParameters()
+  const { promptLibraryRuntime } = useContext(PromptLibraryRuntimeContext)!
   return (
     <Box flex={1} flexBasis={'100%'}>
       <CustomTabs
         value={activeTab}
         variant="fullWidth"
         onChange={(event, newValue) => {
+          if (newValue !== 'Public' && promptLibraryRuntime === 'WebPage') {
+            // 跳转去ImmersiveChat
+            debugger
+          }
           updateActiveTab(newValue)
         }}
       >

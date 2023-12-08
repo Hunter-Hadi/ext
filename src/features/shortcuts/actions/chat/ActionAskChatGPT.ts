@@ -1,3 +1,7 @@
+import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
@@ -6,13 +10,9 @@ import {
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
@@ -187,7 +187,9 @@ export class ActionAskChatGPT extends Action {
           params.SELECTED_TEXT.slice(0, 80)
             .match(/[^\s\t\n\d"]/g)
             ?.join('') || params.SELECTED_TEXT.slice(0, 80)
-        systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
+        // the same language variety or dialect of the text
+        // systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
+        systemVariablesTemplate = `Please write in the same language variety or dialect of the text: "${partOfSelectedText}".`
       }
       // 没有SELECTED_TEXT, 不处理
     } else {
@@ -212,7 +214,7 @@ export class ActionAskChatGPT extends Action {
         systemVariablesTemplate =
           'Please write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
       } else {
-        systemVariablesTemplate = `Please write using {{AI_RESPONSE_LANGUAGE}}`
+        systemVariablesTemplate = `Please write in {{AI_RESPONSE_LANGUAGE}}`
       }
     }
     const result = await this.parseTemplate(systemVariablesTemplate, params)

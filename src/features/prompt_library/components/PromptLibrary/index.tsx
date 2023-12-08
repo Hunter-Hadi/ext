@@ -5,10 +5,10 @@ import { svgIconClasses } from '@mui/material/SvgIcon'
 import React, { FC } from 'react'
 
 import { MAXAI_PROMPT_LIBRARY_ROOT_ID } from '@/features/common/constants'
-import PromptLibraryCardEditForm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCardEditForm'
 import PromptLibraryHeader from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader'
 import PromptLibraryList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList'
 import PromptLibraryListProgress from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/PromptLibraryListProgress'
+import PromptLibraryCardEditForm from '@/features/prompt_library/extension_components/PromptLibraryCardEditForm'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 import {
   PromptLibraryRuntimeContext,
@@ -24,7 +24,9 @@ const PromptLibrary: FC<IPromptLibraryAppProps> = (props) => {
   const { closeOnSelect = true, runtime } = props
   const { closePromptLibrary } = usePromptLibrary()
   return (
-    <PromptLibraryRuntimeContext.Provider value={{ runtime }}>
+    <PromptLibraryRuntimeContext.Provider
+      value={{ promptLibraryRuntime: runtime }}
+    >
       <Stack
         id={MAXAI_PROMPT_LIBRARY_ROOT_ID}
         height={'100%'}

@@ -30,10 +30,12 @@ export const PromptLibraryListParametersState = atom<IPromptLibraryListParameter
     },
   },
 )
-export type PromptLibraryRuntimeType = 'Page' | 'Sidebar'
+export type PromptLibraryRuntimeType = 'CRXPage' | 'CRXSidebar' | 'WebPage'
+
 export type PromptLibraryRuntimeContextType = {
-  runtime: PromptLibraryRuntimeType
+  promptLibraryRuntime: PromptLibraryRuntimeType
 }
+
 export const PromptLibraryRuntimeContext = createContext<
   PromptLibraryRuntimeContextType | undefined
 >(undefined)

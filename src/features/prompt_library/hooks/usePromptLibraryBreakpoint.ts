@@ -8,7 +8,7 @@ type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 const usePromptLibraryBreakpoint = (sidebarDefaultWidth = 450) => {
   const theme = useTheme()
-  const { runtime } = useContext(PromptLibraryRuntimeContext)!
+  const { promptLibraryRuntime } = useContext(PromptLibraryRuntimeContext)!
 
   const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('xl')
   const [sidebarWidth, setSidebarWidth] = useState(sidebarDefaultWidth)
@@ -51,6 +51,8 @@ const usePromptLibraryBreakpoint = (sidebarDefaultWidth = 450) => {
     return 'xs'
   }, [sidebarWidth, sidebarDefaultWidth])
 
-  return runtime === 'Page' ? currentBreakpoint : sidebarBreakpoints
+  return promptLibraryRuntime === 'CRXPage'
+    ? currentBreakpoint
+    : sidebarBreakpoints
 }
 export default usePromptLibraryBreakpoint

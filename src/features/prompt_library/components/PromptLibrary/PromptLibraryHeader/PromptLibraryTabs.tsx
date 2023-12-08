@@ -1,12 +1,14 @@
 import styled from '@emotion/styled'
-import { Box, TabsProps, Theme } from '@mui/material'
-import Tabs, { tabsClasses } from '@mui/material/Tabs'
-import Tab, { tabClasses } from '@mui/material/Tab'
-import { buttonBaseClasses } from '@mui/material/ButtonBase'
-import React, { FC } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import Box from '@mui/material/Box'
+import { buttonBaseClasses } from '@mui/material/ButtonBase'
+import { Theme } from '@mui/material/styles'
+import Tab, { tabClasses } from '@mui/material/Tab'
+import Tabs, { tabsClasses, TabsProps } from '@mui/material/Tabs'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 
 const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
   ({ theme }) => {

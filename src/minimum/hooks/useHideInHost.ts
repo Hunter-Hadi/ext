@@ -1,6 +1,10 @@
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { APP_ROOT_ID, ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
 import debounce from 'lodash-es/debounce'
+
+import {
+  MAXAI_APP_ROOT_ID,
+  MAXAI_MINIMIZE_CONTAINER_ID,
+} from '@/features/common/constants'
+import useEffectOnce from '@/hooks/useEffectOnce'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const startHideInHostHandle = debounce(() => {
@@ -11,12 +15,12 @@ const startHideInHostHandle = debounce(() => {
     if (document.documentElement.style.position === 'relative') {
       document.documentElement.style.position = 'unset'
       document
-        .querySelector(`#${APP_ROOT_ID}`)
+        .querySelector(`#${MAXAI_APP_ROOT_ID}`)
         ?.classList.replace('open', 'close')
     }
     // quick access
     const minimizeApp = document.querySelector(
-      `#${ROOT_MINIMIZE_CONTAINER_ID}`,
+      `#${MAXAI_MINIMIZE_CONTAINER_ID}`,
     ) as HTMLDivElement
     if (minimizeApp) {
       minimizeApp.style.display = 'none'
@@ -32,12 +36,12 @@ const stopHideInHostHandle = debounce(() => {
       if (document.documentElement.style.position === 'unset') {
         document.documentElement.style.position = 'relative'
         document
-          .querySelector(`#${APP_ROOT_ID}`)
+          .querySelector(`#${MAXAI_APP_ROOT_ID}`)
           ?.classList.replace('close', 'open')
       }
       // quick access
       const minimizeApp = document.querySelector(
-        `#${ROOT_MINIMIZE_CONTAINER_ID}`,
+        `#${MAXAI_MINIMIZE_CONTAINER_ID}`,
       ) as HTMLDivElement
       if (minimizeApp) {
         minimizeApp.style.display = ''

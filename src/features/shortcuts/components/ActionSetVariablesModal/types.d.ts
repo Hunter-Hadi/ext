@@ -1,5 +1,5 @@
-import { I18nextKeysType } from '@/i18next'
 import { IOptionType } from '@/components/select/BaseSelect'
+import { I18nextKeysType } from '@/i18next'
 
 export type IActionSetVariablesValueType = 'Select' | 'Text'
 

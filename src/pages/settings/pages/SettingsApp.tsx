@@ -1,19 +1,20 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import Stack from '@mui/material/Stack'
-import OptionsToolbarLogo from '@/pages/settings/components/toolbar/OptionsToolbarLogo'
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import React, { FC, useEffect, useRef, useState } from 'react'
+
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import { useAuthLogin } from '@/features/auth'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
+import PageHelp from '@/pages/settings/components/pageHelp'
+import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
+import OptionsToolbarLogo from '@/pages/settings/components/toolbar/OptionsToolbarLogo'
 import {
   getLocationHashRoute,
-  SettingsPageRouteContext,
-  setLocationHashRoute,
   ISettingsRouteType,
+  setLocationHashRoute,
+  SettingsPageRouteContext,
 } from '@/pages/settings/context'
-import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
-import { useAuthLogin } from '@/features/auth'
-import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
-import PageHelp from '@/pages/settings/components/pageHelp'
 import SettingsLoginPage from '@/pages/settings/pages/login'
 
 export const SETTINGS_PAGE_MENU_WIDTH = {

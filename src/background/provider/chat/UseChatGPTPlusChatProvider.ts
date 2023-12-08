@@ -1,19 +1,20 @@
+import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
+
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { UseChatGPTPlusChat } from '@/background/src/chat'
-import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { v4 as uuidV4 } from 'uuid'
-import { IChatUploadFile } from '@/features/chatgpt/types'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
 import {
   IMaxAIChatGPTBackendAPIType,
   IMaxAIChatGPTMessageType,
 } from '@/background/src/chat/UseChatGPTChat/types'
+import ConversationManager, {
+  IChatConversation,
+} from '@/background/src/chatConversations'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
@@ -140,7 +141,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   }
   private async sendResponseToClient(tabId: number, data: any) {
     await Browser.tabs.sendMessage(tabId, {
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })

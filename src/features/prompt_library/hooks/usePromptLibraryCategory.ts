@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
-import { IPromptCategoryApiData } from '@/features/prompt_library/types'
+import orderBy from 'lodash-es/orderBy'
+import { useMemo } from 'react'
+
 import PromptLibraryService, {
   PROMPT_LIBRARY_API,
 } from '@/features/prompt_library/service'
-import { useMemo } from 'react'
-import orderBy from 'lodash-es/orderBy'
+import { IPromptCategoryApiData } from '@/features/prompt_library/types'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
 
 const usePromptLibraryCategory = (selectedCategory?: string) => {
@@ -45,4 +46,5 @@ const usePromptLibraryCategory = (selectedCategory?: string) => {
   }, [categoryOptions, selectedCategory])
   return { useCaseOptions, categoryOptions, loading: isLoading }
 }
+
 export default usePromptLibraryCategory

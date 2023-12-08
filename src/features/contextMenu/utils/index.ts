@@ -5,10 +5,10 @@ import groupBy from 'lodash-es/groupBy'
 import uniqBy from 'lodash-es/uniqBy'
 
 import {
-  ROOT_CHAT_BOX_INPUT_ID,
-  ROOT_FLOATING_REFERENCE_ELEMENT_ID,
-} from '@/constants'
-import { getAppRootElement } from '@/features/common/utils'
+  MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
+  MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
+} from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   CONTEXT_MENU_DRAFT_LIST,
   CONTEXT_MENU_DRAFT_TYPES,
@@ -457,7 +457,7 @@ export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
 
 export const isFloatingContextMenuVisible = () => {
   const floatingMenu = getAppContextMenuRootElement()?.querySelector(
-    `#${ROOT_FLOATING_REFERENCE_ELEMENT_ID}`,
+    `#${MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}`,
   )
   return floatingMenu && floatingMenu.getAttribute('aria-hidden') === 'false'
 }
@@ -502,9 +502,9 @@ export const floatingContextMenuSaveDraftToChatBox = () => {
   }
   const maxTime = 3 * 1000
   const timer = setInterval(() => {
-    const appRootElement = getAppRootElement()
+    const appRootElement = getMaxAISidebarRootElement()
     const chatBoxInput = appRootElement?.querySelector(
-      `#${ROOT_CHAT_BOX_INPUT_ID}`,
+      `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
     ) as HTMLInputElement
     if (chatBoxInput) {
       clearInterval(timer)

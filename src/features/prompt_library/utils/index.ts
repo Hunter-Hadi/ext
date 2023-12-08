@@ -1,6 +1,6 @@
 import { OptionsObject, SnackbarMessage } from 'notistack'
 
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { DEFAULT_PROMPT_VARIABLE } from '@/features/prompt_library/constant'
 import { IPromptLibraryCardDetailVariable } from '@/features/prompt_library/types'
 import Toast from '@/utils/globalSnackbar'
@@ -9,7 +9,7 @@ import Toast from '@/utils/globalSnackbar'
  * 渲染需要portal container的地方的根级容器
  */
 export const getPromptLibraryPortalContainerRoot = () => {
-  return getAppRootElement()
+  return getMaxAISidebarRootElement()
 }
 export const promptActionToast = {
   success: (msg: SnackbarMessage, options: OptionsObject = {}) =>

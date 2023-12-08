@@ -1,5 +1,15 @@
-import { v4 as uuidV4 } from 'uuid'
 import isNumber from 'lodash-es/isNumber'
+import sum from 'lodash-es/sum'
+import { useEffect } from 'react'
+import { useRecoilValue } from 'recoil'
+import TurnDownService from 'turndown'
+import { v4 as uuidV4 } from 'uuid'
+
+import {
+  MAXAI_CLIPBOARD_ID,
+  MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
+  MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
+} from '@/features/common/constants'
 import {
   ContextMenuDraftType,
   IRangyRect,
@@ -7,19 +17,10 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
-import sum from 'lodash-es/sum'
-import TurnDownService from 'turndown'
-import {
-  ROOT_CHAT_BOX_INPUT_ID,
-  ROOT_CLIPBOARD_ID,
-  ROOT_FLOATING_INPUT_ID,
-} from '@/constants'
-import { useEffect } from 'react'
+import { findParentEqualSelector } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
-import { useRecoilValue } from 'recoil'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { findParentEqualSelector } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
 
@@ -1273,8 +1274,8 @@ export const isElementCanEditable = (element: HTMLElement) => {
       return false
     }
     if (
-      element.id === ROOT_CHAT_BOX_INPUT_ID ||
-      element.id === ROOT_FLOATING_INPUT_ID
+      element.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID ||
+      element.id === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID
     ) {
       return false
     }
@@ -1303,7 +1304,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
   const restoreRange: Range | null = range.cloneRange()
   const doc =
     (range.startContainer || range.endContainer)?.ownerDocument || document
-  if (!doc || doc.getElementById(ROOT_CLIPBOARD_ID)) {
+  if (!doc || doc.getElementById(MAXAI_CLIPBOARD_ID)) {
     return
   }
   try {
@@ -1311,7 +1312,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
     let pastedText = value
     // save rich text from clipboard
     const div = doc.createElement('div')
-    div.id = ROOT_CLIPBOARD_ID
+    div.id = MAXAI_CLIPBOARD_ID
     div.setAttribute('contenteditable', 'true')
     div.style.cssText =
       'width: 1px;height: 1px;position: fixed;top: 0px;left:0px;overflow: hidden; z-index: -1;'

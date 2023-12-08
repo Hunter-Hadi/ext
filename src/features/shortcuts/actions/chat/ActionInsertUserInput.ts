@@ -1,6 +1,9 @@
 import { autoFocusWithAllWebsite } from '@/components/AutoHeightTextarea'
-import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
-import { getAppRootElement } from '@/features/common/utils'
+import {
+  MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
+  MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
+} from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import Action from '@/features/shortcuts/core/Action'
 import {
@@ -35,11 +38,11 @@ export class ActionInsertUserInput extends Action {
           let input: HTMLTextAreaElement | null = null
           if (isInsertToFloatingMenuInput) {
             input = getAppContextMenuRootElement()?.querySelector(
-              `#${ROOT_FLOATING_INPUT_ID}`,
+              `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
             ) as HTMLTextAreaElement
           } else {
-            input = getAppRootElement()?.querySelector(
-              `#${ROOT_CHAT_BOX_INPUT_ID}`,
+            input = getMaxAISidebarRootElement()?.querySelector(
+              `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
             ) as HTMLTextAreaElement
           }
           if (input) {

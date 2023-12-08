@@ -5,11 +5,11 @@ import { createRoot } from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 
 import AppThemeProvider from '@/components/AppTheme'
+import { APP_VERSION } from '@/constants'
 import {
-  APP_VERSION,
   MAXAI_CHROME_EXTENSION_ID,
-  ROOT_MINIMIZE_CONTAINER_ID,
-} from '@/constants'
+  MAXAI_MINIMIZE_CONTAINER_ID,
+} from '@/features/common/constants'
 
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
@@ -21,7 +21,7 @@ import('@/minimum/MinimumApp').then((module) => {
   const minimumAppRoot = document.createElement(
     isSupportWebComponent ? 'max-ai-minimum-app' : 'div',
   )
-  minimumAppRoot.id = ROOT_MINIMIZE_CONTAINER_ID
+  minimumAppRoot.id = MAXAI_MINIMIZE_CONTAINER_ID
   minimumAppRoot.setAttribute('data-version', APP_VERSION)
   document.body.appendChild(minimumAppRoot)
   const shadowContainer = minimumAppRoot.attachShadow({ mode: 'open' })

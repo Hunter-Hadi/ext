@@ -4,9 +4,9 @@ import { useRecoilValue } from 'recoil'
 import {
   DEFAULT_AI_OUTPUT_LANGUAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-  ROOT_CHAT_BOX_INPUT_ID,
 } from '@/constants'
-import { getAppRootElement } from '@/features/common/utils'
+import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
@@ -55,8 +55,8 @@ const useShortCutsParameters = () => {
       SELECTED_HTML,
       SELECTED_TEXT,
       USER_INPUT:
-        getAppRootElement()?.querySelector<HTMLTextAreaElement>(
-          `#${ROOT_CHAT_BOX_INPUT_ID}`,
+        getMaxAISidebarRootElement()?.querySelector<HTMLTextAreaElement>(
+          `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
         )?.value || '',
       LAST_AI_OUTPUT:
         listReverseFind(

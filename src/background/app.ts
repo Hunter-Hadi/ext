@@ -53,8 +53,8 @@ import {
   APP_VERSION,
   CHROME_EXTENSION_DOC_URL,
   CHROME_EXTENSION_HOMEPAGE_URL,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
   isProduction,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import { getChromeExtensionUserInfo } from '@/features/auth/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
@@ -268,7 +268,10 @@ const initChromeExtensionMessage = () => {
   ShortcutMessageBackgroundInit()
   Browser.runtime.onMessage.addListener(
     (message, sender, sendResponse: any) => {
-      if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+      if (
+        message?.id &&
+        message.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID
+      ) {
         return
       }
       if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
@@ -468,7 +471,7 @@ const initChromeExtensionContextMenu = () => {
       tab.id
     ) {
       await Browser.tabs.sendMessage(tab.id, {
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
         event: 'Client_listenOpenChatMessageBox',
         data: {},
       })

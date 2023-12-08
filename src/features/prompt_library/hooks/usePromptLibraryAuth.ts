@@ -1,4 +1,5 @@
 import { atom, useRecoilState } from 'recoil'
+
 import { useAuthLogin } from '@/features/auth'
 
 const PromptLibraryAuthHandlerState = atom<() => Promise<void>>({

@@ -11,24 +11,24 @@ import React, { FC, useEffect, useMemo, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import AppLoadingLayout from '@/components/AppLoadingLayout'
 import CustomConfirm from '@/components/CustomConfirm'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import CustomModal from '@/features/common/components/CustomModal'
-import { getAppRootElement } from '@/features/common/utils'
-import ReactHookFormSelect from '@/features/prompt_library/components/ReactHookFormSelect'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import ReactHookFormSelect from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCardEditForm/ReactHookFormSelect'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
+import usePromptLibraryBreakpoint from '@/features/prompt_library/hooks/usePromptLibraryBreakpoint'
 import usePromptLibraryCardDetail from '@/features/prompt_library/hooks/usePromptLibraryCardDetail'
 import usePromptLibraryCategory from '@/features/prompt_library/hooks/usePromptLibraryCategory'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import { IPromptLibraryCardDetailData } from '@/features/prompt_library/types'
-import {
-  actionsToPromptLibraryCardDetailData,
-  promptLibraryCardDetailDataToActions,
-} from '@/features/prompt_library/utils/promptInterpreter'
 import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutActionsEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActions'
 import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutActionsEditor/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
-import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
+import {
+  actionsToPromptLibraryCardDetailData,
+  promptLibraryCardDetailDataToActions,
+} from '@/features/shortcuts/utils/promptInterpreter'
 
 const inputProps = {
   sx: {
@@ -75,7 +75,7 @@ const PromptLibraryCardEditForm: FC = () => {
     // getValues,
     formState: { errors },
   } = useForm<IPromptLibraryCardDetailData>()
-  const currentBreakpoint = useCurrentBreakpoint()
+  const currentBreakpoint = usePromptLibraryBreakpoint()
   const { setActions, generateActions } = useShortcutEditorActions()
   const [cancelConfirmShow, setCancelConfirmShow] = useState(false)
   const { activeTab } = usePromptLibraryParameters()
@@ -154,7 +154,7 @@ const PromptLibraryCardEditForm: FC = () => {
       setActions(promptLibraryCardDetailDataToActions(data))
       setTimeout(() => {
         // focus input可以在加载完成的时候输入
-        const editableDiv = getAppRootElement()?.querySelector(
+        const editableDiv = getMaxAISidebarRootElement()?.querySelector(
           '#prompt-template-input',
         ) as HTMLDivElement
         if (editableDiv) {
@@ -173,7 +173,7 @@ const PromptLibraryCardEditForm: FC = () => {
     if (isOpenPromptLibraryEditForm) {
       setTimeout(() => {
         // focus box可以在未加载完成的时候esc
-        const div = getAppRootElement()?.querySelector(
+        const div = getMaxAISidebarRootElement()?.querySelector(
           '#prompt-form-modal',
         ) as HTMLDivElement
         if (div) {

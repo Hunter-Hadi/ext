@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useRef, useState } from 'react'
 
-import { getAppRootElement } from '../features/common/utils'
+import { getMaxAISidebarRootElement } from '../features/common/utils'
 
 const IconDropdown: FC<{
   children: React.ReactNode
@@ -15,7 +15,7 @@ const IconDropdown: FC<{
   const [isHover, setIsHover] = useState(false)
   const iconRef = useRef<HTMLElement>(null)
   const DropdownWidth = useMemo(() => {
-    const defaultWidth = getAppRootElement()?.offsetWidth
+    const defaultWidth = getMaxAISidebarRootElement()?.offsetWidth
     return dropdownWidth || defaultWidth || 440
   }, [dropdownWidth, isHover])
   const dropDownPosition = useMemo(() => {
@@ -24,7 +24,8 @@ const IconDropdown: FC<{
     // 计算基于icon位置的dropdown位置的中心点
     const iconEl = iconRef.current
     if (!iconEl) return
-    const rootElementX = getAppRootElement()?.getBoundingClientRect()?.x
+    const rootElementX = getMaxAISidebarRootElement()?.getBoundingClientRect()
+      ?.x
     const iconElementX = iconEl?.getBoundingClientRect()?.x
     if (rootElementX && iconElementX) {
       left = -(iconElementX - rootElementX)

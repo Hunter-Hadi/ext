@@ -1,27 +1,13 @@
 // s3
+import { MAXAI_CHROME_EXTENSION_ID } from '@/features/common/constants'
+
 export const RESOURCES_URL = 'https://resources.usechatgpt.ai'
 // env
 export const APP_VERSION = String(process.env.APP_VERSION)
 export const isProduction = String(process.env.NODE_ENV) === 'production'
-// ID
-export const MAXAI_CHROME_EXTENSION_ID = 'USE_CHAT_GPT_AI'
-export const APP_ROOT_ID = `${MAXAI_CHROME_EXTENSION_ID}_ROOT`
-export const ROOT_CONTAINER_ID = `${APP_ROOT_ID}`
-export const ROOT_DAEMON_PROCESS_ID = `${APP_ROOT_ID}_DaemonProcess`
-export const ROOT_CONTAINER_WRAPPER_ID = `${APP_ROOT_ID}_Wrapper`
-export const ROOT_CHAT_BOX_INPUT_ID = `${APP_ROOT_ID}_ChatBox_Input`
-export const ROOT_FLOATING_INPUT_ID = `${APP_ROOT_ID}_Floating_Input`
-export const ROOT_FLOATING_REFERENCE_ELEMENT_ID = `${APP_ROOT_ID}_Floating_Reference_Element`
-export const ROOT_CLIPBOARD_ID = `${APP_ROOT_ID}_Clipboard`
-export const ROOT_MINIMIZE_CONTAINER_ID = `${APP_ROOT_ID}_Minimize_Container`
-
-// context menu
-export const ROOT_CONTEXT_MENU_ID = `${APP_ROOT_ID}_Context_Menu`
-export const ROOT_CONTEXT_MENU_PORTAL_ID = `${APP_ROOT_ID}_Context_Menu_Portal`
-export const ROOT_CONTEXT_MENU_CONTAINER_ID = `${APP_ROOT_ID}_Context_Menu_Container_ID`
 
 // chrome extension
-export const CHROME_EXTENSION_POST_MESSAGE_ID = `CHROME_EXTENSION_${MAXAI_CHROME_EXTENSION_ID}_ID`
+export const MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID = `CHROME_EXTENSION_${MAXAI_CHROME_EXTENSION_ID}_ID`
 /**
  * @description - 不能改CHROME_EXTENSION_DB_STORAGE_SAVE_KEY的值，否则数据不同步了
  */

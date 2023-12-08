@@ -1,14 +1,15 @@
-import React, { FC, useCallback, useMemo, useRef } from 'react'
-import TextField from '@mui/material/TextField'
-import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
-import InputAdornment from '@mui/material/InputAdornment'
-import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
-import snackNotifications from '@/utils/globalSnackbar'
-import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
-import { SxProps } from '@mui/material/styles'
 import { formControlClasses } from '@mui/material/FormControl'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import { SxProps } from '@mui/material/styles'
+import TextField from '@mui/material/TextField'
+import React, { FC, useCallback, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import usePromptLibraryBreakpoint from '@/features/prompt_library/hooks/usePromptLibraryBreakpoint'
+import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import snackNotifications from '@/utils/globalSnackbar'
 
 const PromptLibrarySearch: FC = () => {
   const { t } = useTranslation(['prompt_library'])
@@ -45,7 +46,7 @@ const PromptLibrarySearch: FC = () => {
       }
     }, 600)
   }, [handleDoSearch])
-  const currentBreakpoint = useCurrentBreakpoint()
+  const currentBreakpoint = usePromptLibraryBreakpoint()
   const memoSx = useMemo(() => {
     const computedSx: SxProps = {
       [`&.${formControlClasses.root}`]: {

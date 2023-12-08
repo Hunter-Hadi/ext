@@ -1,16 +1,17 @@
-import {
-  IPromptLibraryCardDetailData,
-  IPromptLibraryCardData,
-  IPromptLibraryCardDetailVariableType,
-  IPromptLibraryCardDetailVariable,
-} from '@/features/prompt_library/types'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { v4 as uuidV4 } from 'uuid'
+
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import {
+  IPromptLibraryCardData,
+  IPromptLibraryCardDetailData,
+  IPromptLibraryCardDetailVariable,
+  IPromptLibraryCardDetailVariableType,
+} from '@/features/prompt_library/types'
+import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
+import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { PRESET_VARIABLE_MAP } from '@/features/shortcuts/components/ShortcutActionsEditor/hooks/useShortcutEditorActionsVariables'
 
 /**
  * 把prompt library card detail的数据转换成Actions

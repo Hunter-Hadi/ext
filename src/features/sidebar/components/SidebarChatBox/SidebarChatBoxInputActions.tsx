@@ -8,10 +8,10 @@ import { useTranslation } from 'react-i18next'
 
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
 import TooltipButton from '@/components/TooltipButton'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
-import { getAppRootElement } from '@/features/common/utils'
+import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
@@ -97,8 +97,8 @@ const SidebarChatBoxInputActions: FC<{
                 return {
                   template: inputValue || ' ',
                   target:
-                    getAppRootElement()?.querySelector(
-                      `#${ROOT_CHAT_BOX_INPUT_ID}`,
+                    getMaxAISidebarRootElement()?.querySelector(
+                      `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
                     )?.parentElement || (ref.current as HTMLElement),
                 }
               }}

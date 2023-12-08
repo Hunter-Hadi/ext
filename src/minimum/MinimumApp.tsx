@@ -1,12 +1,13 @@
 import React, { FC, useState } from 'react'
-import FloatingMenuButton from '@/minimum/components/FloatingMenuButton'
 import { useRecoilValue } from 'recoil'
-import { AppDBStorageState } from '@/store'
+
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import useEffectOnce from '@/hooks/useEffectOnce'
-import { ROOT_CONTAINER_ID } from '@/constants'
-import MinimumAppInit from '@/minimum/MinimumAppInit'
+import FloatingMenuButton from '@/minimum/components/FloatingMenuButton'
 import SpecialHostSummaryButton from '@/minimum/components/SpecialHostSummaryButton'
+import MinimumAppInit from '@/minimum/MinimumAppInit'
+import { AppDBStorageState } from '@/store'
 
 const MinimumApp: FC = () => {
   const appDBStorage = useRecoilValue(AppDBStorageState)
@@ -14,7 +15,7 @@ const MinimumApp: FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   useEffectOnce(() => {
     const timer: ReturnType<typeof setInterval> = setInterval(() => {
-      const root = document.querySelector(`#${ROOT_CONTAINER_ID}`)
+      const root = document.querySelector(`#${MAXAI_SIDEBAR_ID}`)
       // watch attribute change
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {

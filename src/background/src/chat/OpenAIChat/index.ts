@@ -1,25 +1,26 @@
 import Browser from 'webextension-polyfill'
+
+import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
+import { ChatStatus } from '@/background/provider/chat'
+import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
+import BaseChat from '@/background/src/chat/BaseChat'
+import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 import {
   checkChatGPTProxyInstance,
   createDaemonProcessTab,
   getThirdProviderSettings,
 } from '@/background/src/chat/util'
-import Log from '@/utils/Log'
-import { ChatStatus } from '@/background/provider/chat'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import ConversationManager, {
+  IChatConversation,
+} from '@/background/src/chatConversations'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
   safeGetBrowserTab,
 } from '@/background/utils'
-import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
-import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
-import BaseChat from '@/background/src/chat/BaseChat'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import Log from '@/utils/Log'
 
 const log = new Log('ChatGPT/OpenAIChat')
 
@@ -97,7 +98,7 @@ class OpenAIChat extends BaseChat {
                 if (tab && tab.id) {
                   this.currentTaskId = taskId
                   await Browser.tabs.sendMessage(tab.id, {
-                    id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                    id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                     event: 'Client_askChatGPTQuestionResponse',
                     data: {
                       taskId,
@@ -175,7 +176,7 @@ class OpenAIChat extends BaseChat {
         cacheLastTimeTab?.url?.startsWith('https://chat.openai.com')
       ) {
         const result = await Browser.tabs.sendMessage(cacheLastTimeTab.id, {
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'OpenAIDaemonProcess_ping',
         })
         if (result && result.success) {
@@ -364,7 +365,7 @@ class OpenAIChat extends BaseChat {
         const result = await Browser.tabs.sendMessage(
           this.chatGPTProxyInstance.id,
           {
-            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
             event,
             data,
           },
@@ -397,7 +398,7 @@ class OpenAIChat extends BaseChat {
       ) {
         log.info('keepAliveDaemonProcess')
         Browser.tabs.sendMessage(this.chatGPTProxyInstance.id, {
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'OpenAIDaemonProcess_ping',
         })
       }
@@ -420,7 +421,7 @@ class OpenAIChat extends BaseChat {
         const { tab } = this.questionSender
         if (tab && tab.id && this.currentTaskId) {
           await Browser.tabs.sendMessage(tab.id, {
-            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
             event: 'Client_askChatGPTQuestionResponse',
             data: {
               taskId: this.currentTaskId,
@@ -489,7 +490,7 @@ class OpenAIChat extends BaseChat {
         }
         Browser.tabs
           .sendMessage(this.chatGPTProxyInstance.id, {
-            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
             event: 'OpenAIDaemonProcess_ping',
           })
           .then((result) => {

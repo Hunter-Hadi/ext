@@ -1,14 +1,14 @@
-import React, { FC, useMemo } from 'react'
-import { BaseSelect } from '@/components/select'
-import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
-
-import usePromptLibraryCategory from '@/features/prompt_library/hooks/usePromptLibraryCategory'
-import Stack from '@mui/material/Stack'
-import { inputBaseClasses } from '@mui/material/InputBase'
-import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
-import { SxProps } from '@mui/material/styles'
 import { formControlClasses } from '@mui/material/FormControl'
+import { inputBaseClasses } from '@mui/material/InputBase'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import BaseSelect from '@/features/common/components/select/BaseSelect'
+import usePromptLibraryBreakpoint from '@/features/prompt_library/hooks/usePromptLibraryBreakpoint'
+import usePromptLibraryCategory from '@/features/prompt_library/hooks/usePromptLibraryCategory'
+import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 
 const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
   const { t } = useTranslation(['prompt_library'])
@@ -19,7 +19,7 @@ const PromptLibraryCategoryAndUseCaseFilter: FC = () => {
   const { categoryOptions, useCaseOptions, loading } = usePromptLibraryCategory(
     promptLibraryListParameters.category,
   )
-  const currentBreakpoint = useCurrentBreakpoint()
+  const currentBreakpoint = usePromptLibraryBreakpoint()
   const memoSx = useMemo(() => {
     const computedSx: SxProps = {
       width:

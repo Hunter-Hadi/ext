@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import {
   shortcutsRenderTemplate,
@@ -37,7 +37,7 @@ export class ActionSetVariablesModal extends Action {
       }
       if (config.modelKey === 'Sidebar') {
         showChatBox()
-        const root = getAppRootElement()
+        const root = getMaxAISidebarRootElement()
         root &&
           (await intervalFindHtmlElement(
             root,

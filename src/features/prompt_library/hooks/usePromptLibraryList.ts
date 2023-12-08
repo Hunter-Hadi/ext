@@ -1,9 +1,9 @@
-import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import { useMemo } from 'react'
 
 import useFavoritePrompts from '@/features/prompt_library/hooks/useFavoritePrompts'
-import usePublicPrompts from '@/features/prompt_library/hooks/usePublicPrompts'
-import { useMemo } from 'react'
 import useOwnPrompts from '@/features/prompt_library/hooks/useOwnPrompts'
+import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import usePublicPrompts from '@/features/prompt_library/hooks/usePublicPrompts'
 
 const usePromptLibraryList = () => {
   const { activeTab } = usePromptLibraryParameters()
@@ -20,4 +20,5 @@ const usePromptLibraryList = () => {
     return publicPrompts
   }, [activeTab, publicPrompts, favoritesPrompts])
 }
+
 export default usePromptLibraryList

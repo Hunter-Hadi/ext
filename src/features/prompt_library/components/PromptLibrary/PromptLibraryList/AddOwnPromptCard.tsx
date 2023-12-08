@@ -1,8 +1,10 @@
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
-import { Stack, Typography } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
-import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 import { useTranslation } from 'react-i18next'
+
+import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 
 const AddOwnPromptCard: FC = () => {
   const { t } = useTranslation(['prompt_library'])

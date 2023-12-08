@@ -1,4 +1,5 @@
 import { useRecoilState } from 'recoil'
+
 import { PromptLibraryListParametersState } from '@/features/prompt_library/store'
 import { IPromptListType } from '@/features/prompt_library/types'
 
@@ -43,4 +44,5 @@ const usePromptLibraryParameters = () => {
     updateSearchQuery,
   }
 }
+
 export default usePromptLibraryParameters

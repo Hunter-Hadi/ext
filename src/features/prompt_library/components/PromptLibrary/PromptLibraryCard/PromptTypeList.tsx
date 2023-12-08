@@ -1,5 +1,6 @@
 import { Theme, Typography } from '@mui/material'
 import React, { FC, useMemo } from 'react'
+
 import {
   IPromptLibraryCardDetailVariable,
   IPromptLibraryCardDetailVariableType,

@@ -15,7 +15,7 @@ import Browser from 'webextension-polyfill'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { CleanChatBoxIcon, MagicBookIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
@@ -135,7 +135,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
               onClick={(event: any) => {
                 event.stopPropagation()
                 //  data-testid={'maxai-prompt-library-button'}
-                const button = getAppRootElement()?.querySelector(
+                const button = getMaxAISidebarRootElement()?.querySelector(
                   '[data-testid="maxai-prompt-library-button"]',
                 ) as HTMLButtonElement
                 if (button) {

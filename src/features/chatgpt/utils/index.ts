@@ -1,13 +1,14 @@
+import cloneDeep from 'lodash-es/cloneDeep'
+import Browser from 'webextension-polyfill'
+
 import {
   IChromeExtensionClientSendEvent,
   IOpenAIChatSendEvent,
 } from '@/background/eventType'
-import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import cloneDeep from 'lodash-es/cloneDeep'
 import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 
 export const pingDaemonProcess = async () => {
   const port = new ContentScriptConnectionV2()
@@ -74,7 +75,7 @@ export class ContentScriptConnectionV2 {
   }> {
     try {
       return await Browser.runtime.sendMessage({
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
         event: msg.event,
         data: {
           ...msg.data,

@@ -27,17 +27,17 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import {
-  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  ROOT_FLOATING_INPUT_ID,
-  ROOT_FLOATING_REFERENCE_ELEMENT_ID,
-} from '@/constants'
+import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { getAppRootElement } from '@/features/common/utils'
+import {
+  MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
+  MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
+} from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   FloatingContextMenuOpenSidebarButton,
   FloatingContextMenuPopupSettingButton,
@@ -115,7 +115,9 @@ const FloatingContextMenu: FC<{
     const activeElement =
       currentSelectionRef.current?.activeElement ||
       currentSelectionRef.current?.selectionElement?.target
-    return activeElement && getAppRootElement()?.contains(activeElement)
+    return (
+      activeElement && getMaxAISidebarRootElement()?.contains(activeElement)
+    )
   }, [])
   // 是否有上下文，决定contextMenu展示的内容
   const haveContext = useMemo(
@@ -300,7 +302,7 @@ const FloatingContextMenu: FC<{
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
       const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${ROOT_FLOATING_INPUT_ID}`,
+        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
       ) as HTMLTextAreaElement
       if (textareaEl) {
         setTimeout(() => {
@@ -313,7 +315,7 @@ const FloatingContextMenu: FC<{
       })
     } else {
       const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${ROOT_FLOATING_INPUT_ID}`,
+        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
       ) as HTMLTextAreaElement
       const userInputDraft = textareaEl?.value
       if (userInputDraft) {
@@ -328,7 +330,7 @@ const FloatingContextMenu: FC<{
     if (!conversation.loading) {
       if (isFloatingContextMenuVisible()) {
         const textareaEl = getAppContextMenuRootElement()?.querySelector(
-          `#${ROOT_FLOATING_INPUT_ID}`,
+          `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
         ) as HTMLTextAreaElement
         if (textareaEl) {
           setTimeout(() => {
@@ -621,7 +623,7 @@ const FloatingContextMenu: FC<{
         onKeyUp={(event) => {
           event.stopPropagation()
         }}
-        id={ROOT_FLOATING_REFERENCE_ELEMENT_ID}
+        id={MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
       >
         <FloatingContextMenuList
@@ -709,7 +711,7 @@ const FloatingContextMenu: FC<{
                           ? t('client:floating_menu__input__placeholder')
                           : ''
                       }
-                      InputId={ROOT_FLOATING_INPUT_ID}
+                      InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
                       sx={{
                         border: 'none',
                         '& > div': {

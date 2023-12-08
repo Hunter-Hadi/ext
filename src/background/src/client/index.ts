@@ -24,7 +24,7 @@ import {
 } from '@/background/utils/syncSettings'
 import {
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import {
   getChromeExtensionAccessToken,
@@ -188,7 +188,7 @@ export const ClientMessageInit = () => {
           {
             if (sender.tab?.id) {
               await Browser.tabs.sendMessage(sender.tab.id, {
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 event: 'Client_listenOpenChatMessageBox',
                 data: {},
               })
@@ -283,7 +283,7 @@ export const ClientMessageInit = () => {
               await Browser.tabs.sendMessage(sender.tab.id, {
                 event: 'Client_listenUpdateIframeInput',
                 data,
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
               })
             }
             return {
@@ -473,7 +473,7 @@ export const ClientMessageInit = () => {
               sender.tab?.id &&
                 (await Browser.tabs.sendMessage(sender.tab.id, {
                   event: 'Client_listenUpdateConversationMessages',
-                  id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                  id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                   data: {
                     conversation: newConversationData,
                     conversationId,
@@ -532,7 +532,7 @@ export const ClientMessageInit = () => {
             sender.tab?.id &&
               (await Browser.tabs.sendMessage(sender.tab.id, {
                 event: 'Client_listenUpdateConversationMessages',
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
                   conversation: await ConversationManager.getClientConversation(
                     conversationId,
@@ -573,7 +573,7 @@ export const ClientMessageInit = () => {
               // send to tab
               await Browser.tabs.sendMessage(sender.tab.id, {
                 event: 'Iframe_ListenGetPageContent' as IChromeExtensionClientSendEvent,
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
                   taskId,
                   originPageUrl: sender.tab.url || sender.url,
@@ -599,7 +599,7 @@ export const ClientMessageInit = () => {
             // send to tab
             await Browser.tabs.sendMessage(sender.tab.id, {
               event: 'Client_ListenGetIframePageContentResponse' as IChromeExtensionClientSendEvent,
-              id: CHROME_EXTENSION_POST_MESSAGE_ID,
+              id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
               data: {
                 taskId,
                 pageContent,

@@ -1,10 +1,11 @@
 import { Stack, SxProps } from '@mui/material'
-import TablePagination, {
-  TablePaginationProps,
-  tablePaginationClasses,
-} from '@mui/material/TablePagination'
 import { svgIconClasses } from '@mui/material/SvgIcon'
+import TablePagination, {
+  tablePaginationClasses,
+  TablePaginationProps,
+} from '@mui/material/TablePagination'
 import React, { FC } from 'react'
+
 import { getPromptLibraryPortalContainerRoot } from '@/features/prompt_library/utils'
 
 interface ICustomTablePaginationProps {

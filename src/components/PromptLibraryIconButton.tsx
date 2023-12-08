@@ -8,12 +8,12 @@ import { useTranslation } from 'react-i18next'
 
 import { MagicBookIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
-import { promptLibraryCardDetailDataToActions } from '@/features/prompt_library/utils/promptInterpreter'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import { promptLibraryCardDetailDataToActions } from '@/features/shortcuts/utils/promptInterpreter'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useEffectOnce from '@/hooks/useEffectOnce'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -44,7 +44,7 @@ const PromptLibraryIconButton: FC = () => {
   const handleClick = (newPlacement: PopperPlacementType) => (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
-    const containerElement = (getAppRootElement()?.querySelector(
+    const containerElement = (getMaxAISidebarRootElement()?.querySelector(
       '#maxAISidebarChatBox',
     ) || document.body) as HTMLDivElement
     const targetElement = event.currentTarget as HTMLButtonElement

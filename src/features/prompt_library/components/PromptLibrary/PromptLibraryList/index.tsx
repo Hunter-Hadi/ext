@@ -1,16 +1,17 @@
 import { Grid, Stack } from '@mui/material'
 import React, { FC, useMemo } from 'react'
+
+import PromptLibraryCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard'
+import PromptLibraryCardSkeleton from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardSkeleton'
+import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
+import AddOwnPromptCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/AddOwnPromptCard'
+import usePromptLibraryBreakpoint from '@/features/prompt_library/hooks/usePromptLibraryBreakpoint'
 import usePromptLibraryList from '@/features/prompt_library/hooks/usePromptLibraryList'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import {
   IPromptActionKey,
   IPromptLibraryCardData,
 } from '@/features/prompt_library/types'
-import PromptLibraryCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard'
-import PromptLibraryCardSkeleton from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardSkeleton'
-import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
-import AddOwnPromptCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/AddOwnPromptCard'
-import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 
 const PromptLibraryList: FC<{
   onClick?: (promptLibraryCard?: IPromptLibraryCardData) => void
@@ -21,7 +22,7 @@ const PromptLibraryList: FC<{
     activeTab,
     promptLibraryListParameters,
   } = usePromptLibraryParameters()
-  const currentBreakpoint = useCurrentBreakpoint()
+  const currentBreakpoint = usePromptLibraryBreakpoint()
   const itemWidth = useMemo(() => {
     if (currentBreakpoint === 'xs') {
       return 12

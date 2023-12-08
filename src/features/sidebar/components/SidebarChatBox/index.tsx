@@ -26,7 +26,6 @@ import DevContent from '@/components/DevContent'
 // import { numberWithCommas } from '@/utils'
 // import { useRecoilValue } from 'recoil'
 // import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
 import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import {
@@ -34,7 +33,8 @@ import {
   IChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import { getAppRootElement } from '@/features/common/utils'
+import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIAdvanced'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
@@ -334,8 +334,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               disabledMainButton={loading}
               onClick={async (type) => {
                 if (type === 'focus') {
-                  const chatInput = getAppRootElement()?.querySelector(
-                    `#${ROOT_CHAT_BOX_INPUT_ID}`,
+                  const chatInput = getMaxAISidebarRootElement()?.querySelector(
+                    `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
                   ) as HTMLTextAreaElement
                   chatInput && chatInput.focus()
                 } else if (type === 'new') {

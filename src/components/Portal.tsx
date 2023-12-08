@@ -4,12 +4,12 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Browser from 'webextension-polyfill'
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import {
   MAXAI_CHROME_EXTENSION_ID,
-  ROOT_CONTEXT_MENU_PORTAL_ID,
-} from '@/constants'
+  MAXAI_CONTEXT_MENU_PORTAL_ID,
+} from '@/features/common/constants'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
 
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
@@ -32,7 +32,7 @@ const Portal: FC<{
     const modalRoot = document.getElementById(containerId)
     if (modalRoot) {
       const shadowRootElement = document.createElement('div')
-      shadowRootElement.id = ROOT_CONTEXT_MENU_PORTAL_ID
+      shadowRootElement.id = MAXAI_CONTEXT_MENU_PORTAL_ID
       const emotionRoot = document.createElement('style')
       const contentStyle = document.createElement('link')
       contentStyle.rel = 'stylesheet'

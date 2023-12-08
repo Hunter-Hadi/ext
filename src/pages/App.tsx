@@ -11,7 +11,7 @@ import Announcement from '@/components/Announcement'
 import AppInit from '@/components/AppInit'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
-import { ROOT_CONTAINER_ID } from '@/constants'
+import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
@@ -45,7 +45,7 @@ const App: FC = () => {
         })
       })
     })
-    const rootEl = document.getElementById(ROOT_CONTAINER_ID)
+    const rootEl = document.getElementById(MAXAI_SIDEBAR_ID)
     if (rootEl) {
       attrObserver.observe(rootEl, {
         attributes: true,

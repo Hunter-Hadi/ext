@@ -16,9 +16,8 @@ import CloseAlert from '@/components/CloseAlert'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import {
   CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
   OPENAI_IFRAME_ID,
-  ROOT_DAEMON_PROCESS_ID,
 } from '@/constants'
 import {
   ChatGPTDaemonProcess,
@@ -26,6 +25,7 @@ import {
   IChatGPTDaemonProcess,
 } from '@/features/chatgpt'
 import useDaemonBrokenListener from '@/features/chatgpt/hooks/useDaemonBrokenListener'
+import { MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID } from '@/features/common/constants'
 import useInterval from '@/hooks/useInterval'
 import {
   listenChatGPTFileUploadChange,
@@ -209,7 +209,9 @@ const useDaemonProcess = () => {
           } else {
             // 有守护进程实例
             log.info('close listen')
-            document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
+            document
+              .getElementById(MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID)
+              ?.remove()
           }
         })
       const stopFileUploadListen = listenChatGPTFileUploadChange((files) => {
@@ -223,7 +225,7 @@ const useDaemonProcess = () => {
       })
       const listener = async (msg: any) => {
         const { event, data } = msg
-        if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+        if (msg?.id && msg.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
           return
         }
         return new Promise((resolve) => {

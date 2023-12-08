@@ -5,7 +5,6 @@ import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevContent from '@/components/DevContent'
-import { ROOT_CONTAINER_ID } from '@/constants'
 import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import {
   IAIResponseMessage,
@@ -13,6 +12,7 @@ import {
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
+import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
 import SidebarAIMessage from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
@@ -276,7 +276,7 @@ const SidebarChatBoxMessageItem: FC<{
           ) : (
             <Stack
               className={'chat-message--text'}
-              id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
+              id={`${MAXAI_SIDEBAR_ID}_chat_message_${message.messageId}`}
               contentEditable={isEdit}
               whiteSpace={'pre-wrap'}
               sx={{
@@ -313,7 +313,7 @@ const SidebarChatBoxMessageItem: FC<{
             onSave={() => {
               setIsEdit(false)
               const messageTextElement = document.getElementById(
-                `${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`,
+                `${MAXAI_SIDEBAR_ID}_chat_message_${message.messageId}`,
               )
               onSave &&
                 onSave(messageTextElement?.innerText || message.text || '')
@@ -322,7 +322,7 @@ const SidebarChatBoxMessageItem: FC<{
               setIsEdit(true)
               setTimeout(() => {
                 const editElement = document.getElementById(
-                  `${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`,
+                  `${MAXAI_SIDEBAR_ID}_chat_message_${message.messageId}`,
                 )
                 if (editElement) {
                   editElement.focus()

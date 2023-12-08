@@ -1,19 +1,20 @@
-import React, { FC, useEffect, useState } from 'react'
-import {
-  chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
-} from '@/utils'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
+import React, { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import {
   DropdownMenu,
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import Box from '@mui/material/Box'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
-import { useTranslation } from 'react-i18next'
+import {
+  chromeExtensionClientOpenPage,
+  getAppContextMenuRootElement,
+} from '@/utils'
 
 const FloatingContextMenuPopupSettingButton: FC<{
   sx?: SxProps

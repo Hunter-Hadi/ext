@@ -2,7 +2,7 @@ import Skeleton from '@mui/material/Skeleton'
 import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { getSearchWithAIRootElement } from '@/features/searchWithAI/utils'
 import { getAppContextMenuRootElement } from '@/utils'
 
@@ -37,7 +37,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = ({ src, alt, height }) => {
     })
     const lazyImageId = `#lazy-image-${lazyImageIdRef.current}`
     const target =
-      getAppRootElement()?.querySelector(lazyImageId) ||
+      getMaxAISidebarRootElement()?.querySelector(lazyImageId) ||
       getAppContextMenuRootElement()?.querySelector(lazyImageId) ||
       getSearchWithAIRootElement()?.querySelector(lazyImageId) ||
       document.querySelector(lazyImageId)

@@ -3,7 +3,7 @@ import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   getAppContextMenuRootElement,
   getAppMinimizeContainerElement,
@@ -32,7 +32,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   } else {
     container = floatingMenuTooltip
       ? getAppContextMenuRootElement()
-      : getAppRootElement()
+      : getMaxAISidebarRootElement()
   }
   if (props.PopperProps?.container) {
     container = props.PopperProps.container

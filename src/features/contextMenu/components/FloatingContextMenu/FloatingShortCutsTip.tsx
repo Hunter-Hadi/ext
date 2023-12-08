@@ -1,20 +1,25 @@
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useState } from 'react'
-import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
 import { useRecoilValue } from 'recoil'
-import { ROOT_CONTAINER_ID } from '@/constants'
-import useCommands from '@/hooks/useCommands'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import { ContextMenuSettingsState } from '@/features/contextMenu/store'
+
 import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import { useFloatingContextMenu } from '@/features/contextMenu/hooks'
+import { ContextMenuSettingsState } from '@/features/contextMenu/store'
+import useCommands from '@/hooks/useCommands'
 const FloatingShortCutsTip: FC = () => {
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
-  const { haveSelection, showFloatingContextMenu, floatingDropdownMenuOpen } =
-    useFloatingContextMenu()
-  const textSelectPopupButtonSettings =
-    useChromeExtensionButtonSettingsWithVisibility('textSelectPopupButton')
+  const {
+    haveSelection,
+    showFloatingContextMenu,
+    floatingDropdownMenuOpen,
+  } = useFloatingContextMenu()
+  const textSelectPopupButtonSettings = useChromeExtensionButtonSettingsWithVisibility(
+    'textSelectPopupButton',
+  )
   const [chatBoxWidth, setChatBoxWidth] = useState(16)
   const [buttonShow, setButtonShow] = useState(3)
   const { chatBoxShortCutKey } = useCommands()
@@ -23,7 +28,7 @@ const FloatingShortCutsTip: FC = () => {
       return
     }
     if (haveSelection) {
-      const appRootElement = document.querySelector(`#${ROOT_CONTAINER_ID}`)
+      const appRootElement = document.querySelector(`#${MAXAI_SIDEBAR_ID}`)
       if (appRootElement && appRootElement.classList.contains('open')) {
         setChatBoxWidth(
           (appRootElement.getBoundingClientRect().width || 0) + 16,

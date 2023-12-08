@@ -4,16 +4,15 @@ import ListItemText from '@mui/material/ListItemText'
 import MenuItem from '@mui/material/MenuItem'
 import Select, { SelectProps } from '@mui/material/Select'
 import { SxProps } from '@mui/material/styles'
-
+import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
-import EmptyContent from '@/components/select/EmptyContent'
-import { hasData } from '@/utils'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
-import Typography from '@mui/material/Typography'
+import EmptyContent from '@/components/select/BaseSelect/EmptyContent'
 import PermissionWrapper, {
   PermissionWrapperProps,
 } from '@/features/auth/components/PermissionWrapper'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import { hasData } from '@/features/common/utils'
 
 type IOptionValueType = string | number
 export type IOptionType = {

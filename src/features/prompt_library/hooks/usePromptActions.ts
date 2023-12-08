@@ -1,11 +1,12 @@
-import { promptActionToast as Toast } from '@/features/prompt_library/utils'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useRecoilState } from 'recoil'
+import { v4 as uuidV4 } from 'uuid'
+
 import PromptLibraryService, {
   PROMPT_LIBRARY_API,
 } from '@/features/prompt_library/service'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useRecoilState } from 'recoil'
 import { PromptLibraryState } from '@/features/prompt_library/store'
-import { v4 as uuidV4 } from 'uuid'
+import { promptActionToast as Toast } from '@/features/prompt_library/utils'
 
 const usePromptActions = () => {
   const [promptLibrary, setPromptLibrary] = useRecoilState(PromptLibraryState)
@@ -42,6 +43,7 @@ const usePromptActions = () => {
       })
     },
   })
+
   const addPromptLibraryCardMutation = useMutation({
     mutationFn: PromptLibraryService.addPrivatePrompt,
     onSuccess: () => {

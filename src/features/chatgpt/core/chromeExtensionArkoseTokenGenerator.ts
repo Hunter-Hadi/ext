@@ -2,7 +2,7 @@ import {
   ARKOSE_TOKEN_GENERATOR_POST_MESSAGE_ID,
   ArkoseTokenModelType,
 } from '@/assets/openai/arkoseTokenIframeId'
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import Log from '@/utils/Log'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
@@ -56,7 +56,7 @@ class ChromeExtensionArkoseTokenGenerator {
     return token
   }
   private getRootContainer(): HTMLElement | undefined {
-    return getAppRootElement()
+    return getMaxAISidebarRootElement()
   }
   private async ping(model: ArkoseTokenModelType) {
     log.info('ping')

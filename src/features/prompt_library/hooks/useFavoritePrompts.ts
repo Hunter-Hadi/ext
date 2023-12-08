@@ -1,7 +1,8 @@
+import { useQuery } from '@tanstack/react-query'
+
 import PromptLibraryService, {
   PROMPT_LIBRARY_API,
 } from '@/features/prompt_library/service'
-import { useQuery } from '@tanstack/react-query'
 // [uuid, ...deps]
 const useFavoritePrompts = () => {
   return useQuery({

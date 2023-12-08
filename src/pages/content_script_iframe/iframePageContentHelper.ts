@@ -1,9 +1,10 @@
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
+
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { createClientMessageListener } from '@/background/utils'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 /**
  * 判断是否需要获取iframe中的内容，在特殊的网站中，iframe中的内容才是我们需要的，例如：
@@ -107,7 +108,7 @@ export const getIframePageContent = () => {
     let isResolve = false
     const listener = (msg: any) => {
       if (
-        msg.id === CHROME_EXTENSION_POST_MESSAGE_ID &&
+        msg.id === MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID &&
         msg.event ===
           ('Client_ListenGetIframePageContentResponse' as IChromeExtensionClientListenEvent) &&
         msg.data.taskId === taskId

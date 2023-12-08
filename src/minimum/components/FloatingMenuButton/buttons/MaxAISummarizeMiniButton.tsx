@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { showChatBox } from '@/utils'
@@ -62,7 +62,7 @@ const MaxAISummarizeMiniButton = () => {
             showChatBox()
             const timer = setInterval(() => {
               if (
-                getAppRootElement()?.querySelector(
+                getMaxAISidebarRootElement()?.querySelector(
                   'p[data-testid="max-ai__summary-tab"]',
                 )
               ) {

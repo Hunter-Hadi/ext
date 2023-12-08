@@ -6,7 +6,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useContextMenuList } from '@/features/contextMenu/hooks/useContextMenuList'
 import {
@@ -68,7 +68,7 @@ const FloatingContextMenuButton: FC<{
   templateText?: string
   iconButton?: boolean
 }> = ({ buttonText, templateText, iconButton, preLoading }) => {
-  const root = getAppRootElement()
+  const root = getMaxAISidebarRootElement()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [
     currentFloatingContextMenuButton,

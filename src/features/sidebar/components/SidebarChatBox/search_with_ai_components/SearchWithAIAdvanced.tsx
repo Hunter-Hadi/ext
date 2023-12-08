@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilValue } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import SearchWithAIMaxSearchResultsSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIMaxSearchResultsSelector'
 import SearchWithAISearchEngineSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAISearchEngineSelector'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -114,7 +114,7 @@ const SearchWithAIAdvanced: FC<{
         >
           <ClickAwayListener
             onClickAway={(event) => {
-              const maxaiSearchWithAIAdvancedCard = getAppRootElement()?.querySelector(
+              const maxaiSearchWithAIAdvancedCard = getMaxAISidebarRootElement()?.querySelector(
                 '#maxaiSearchWithAIAdvancedCard',
               ) as HTMLElement
               if (maxaiSearchWithAIAdvancedCard) {

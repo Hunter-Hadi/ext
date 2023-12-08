@@ -7,7 +7,7 @@ import { useRecoilValue } from 'recoil'
 
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
-import { getAppRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppLocalStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -102,7 +102,7 @@ const AIProviderSelectorFloatingButton: FC<{
         >
           <ClickAwayListener
             onClickAway={(event) => {
-              const aiProviderCard = getAppRootElement()?.querySelector(
+              const aiProviderCard = getMaxAISidebarRootElement()?.querySelector(
                 '#MaxAIProviderSelectorCard',
               ) as HTMLElement
               if (aiProviderCard) {

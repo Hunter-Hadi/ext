@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Niet leuk",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Antwoord met kernpunten",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Snelle reactie",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwoord met kernpunten (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwoord met kernpunten (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Noors"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogelijkheden",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabelen over de",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabele placeholder",
     "preset_variables__tooltip__table__column_name__description__title": "Zal worden vervangen door",
-    "template__error__title": "Sjabloon is verplicht"
+    "template__error__title": "Sjabloon is verplicht",
+    "ai_response_language__title": "Taal van AI-reactie",
+    "ai_response_language__settings__label_1": "Gebruik",
+    "ai_response_language__settings__label_2": "taalinstelling"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",

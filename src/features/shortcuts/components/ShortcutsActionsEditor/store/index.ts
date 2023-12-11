@@ -7,11 +7,13 @@ export const ShortcutActionEditorState = atom<{
   actions: ISetActionsType
   variables: IActionSetVariable[]
   editHTML: string
+  enabledAIResponseLanguage: boolean
 }>({
   key: 'ShortcutActionEditorState',
   default: {
     actions: [],
     variables: [],
     editHTML: '',
+    enabledAIResponseLanguage: true,
   },
 })

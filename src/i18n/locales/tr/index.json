@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Beğenme",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Anahtar noktalarıyla yanıtla",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Hızlı yanıt",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Anahtar noktalarıyla yanıtla(test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Anahtar noktalarıyla yanıtla(test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norveççe"
   },
   "prompt_editor": {
     "preset_variables__title": "Yetenekler",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Hakkında değişkenler",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Değişken yer tutucusu",
     "preset_variables__tooltip__table__column_name__description__title": "İle değiştirilecek",
-    "template__error__title": "Şablon gereklidir"
+    "template__error__title": "Şablon gereklidir",
+    "ai_response_language__title": "AI yanıt dili",
+    "ai_response_language__settings__label_1": "Kullan",
+    "ai_response_language__settings__label_2": "dil ayarı"
   },
   "prompt_library": {
     "use_prompt_library__title": "1 tıklamayla ipuçları",

@@ -1281,6 +1281,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1318,6 +1319,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1350,6 +1352,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1392,6 +1395,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1429,6 +1433,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1466,6 +1471,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1503,6 +1509,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1540,6 +1547,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1577,6 +1585,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1614,6 +1623,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1651,6 +1661,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1683,6 +1694,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1725,6 +1737,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1762,6 +1775,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1794,6 +1808,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1831,6 +1846,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1868,6 +1884,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1910,6 +1927,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1942,6 +1960,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -1979,6 +1998,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
@@ -2021,10 +2041,49 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
           },
         },
       ],
       searchText: 'translate filipino',
+    },
+  },
+  {
+    id: '2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6',
+    parent: '4d226b15-9e21-42ba-8af8-57d6fbae5a3d',
+    droppable: true,
+    text: 'Norwegian',
+    data: {
+      editable: false,
+      visibility: {
+        isWhitelistMode: false,
+        whitelist: [],
+        blacklist: [],
+      },
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Norwegian.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTWithAIResponseLanguage: false,
+          },
+        },
+      ],
+      searchText: 'translate norwegian',
     },
   },
   {

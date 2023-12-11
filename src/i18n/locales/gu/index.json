@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "નાપસંદ",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "મુખ્ય બિંદુઓ સાથે જવાબ આપો",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "ઝડપી જવાબ",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "મુખ્ય બિંદુઓ સાથે જવાબ આપો (ટેસ્ટ)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "મુખ્ય બિંદુઓ સાથે જવાબ આપો (ટેસ્ટ)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "નોર્વેજિયન"
   },
   "prompt_editor": {
     "preset_variables__title": "ક્ષમતાઓ",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "વેરિએબલ વિશે",
     "preset_variables__tooltip__table__column_name__placeholder__title": "વેરિએબલ પ્લેસહોલ્ડર",
     "preset_variables__tooltip__table__column_name__description__title": "થી બદલાઈ જશે",
-    "template__error__title": "ટેમ્પલેટ જરૂરી છે"
+    "template__error__title": "ટેમ્પલેટ જરૂરી છે",
+    "ai_response_language__title": "એઆઈ પ્રતિસાદ ભાષા",
+    "ai_response_language__settings__label_1": "વપરો",
+    "ai_response_language__settings__label_2": "ભાષા સેટિંગ"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",

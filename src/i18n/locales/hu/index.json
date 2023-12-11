@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nem tetszik",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Válasz kulcsfontosságú pontokkal",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Gyors válasz",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Válasz kulcsfontosságú pontokkal (teszt)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Válasz kulcsfontosságú pontokkal (teszt)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvég"
   },
   "prompt_editor": {
     "preset_variables__title": "Képességek",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Változók a",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Változó helykitöltő",
     "preset_variables__tooltip__table__column_name__description__title": "Ezzel lesz kicserélve",
-    "template__error__title": "A sablon kötelező"
+    "template__error__title": "A sablon kötelező",
+    "ai_response_language__title": "AI válasz nyelve",
+    "ai_response_language__settings__label_1": "Használat",
+    "ai_response_language__settings__label_2": "nyelvi beállítás"
   },
   "prompt_library": {
     "use_prompt_library__title": "1 kattintásos segédletek",

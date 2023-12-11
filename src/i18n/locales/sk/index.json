@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nepáči sa mi",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odpovedať kľúčovými bodmi",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Rýchla odpoveď",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpovedať kľúčovými bodmi (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpovedať kľúčovými bodmi (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Nórsky"
   },
   "prompt_editor": {
     "preset_variables__title": "Schopnosti",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Premenné o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Náhradný symbol premennej",
     "preset_variables__tooltip__table__column_name__description__title": "Bude nahradené s",
-    "template__error__title": "Šablóna je povinná"
+    "template__error__title": "Šablóna je povinná",
+    "ai_response_language__title": "Jazyk odpovede AI",
+    "ai_response_language__settings__label_1": "Použiť",
+    "ai_response_language__settings__label_2": "nastavenie jazyka"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikové podnety",

@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "అసంతృప్తి",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "ముఖ్య పాయింట్లతో సమాధానం ఇవ్వండి",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "త్వరలో సమాధానం",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ముఖ్య పాయింట్లతో సమాధానం(టెస్ట్)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ముఖ్య పాయింట్లతో సమాధానం(టెస్ట్)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "నార్వేజియన్"
   },
   "prompt_editor": {
     "preset_variables__title": "సామర్థ్యాలు",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "గురించి చర్యలు",
     "preset_variables__tooltip__table__column_name__placeholder__title": "మార్పు స్థానం",
     "preset_variables__tooltip__table__column_name__description__title": "తో మార్పు చేయబడుతుంది",
-    "template__error__title": "టెంప్లేటు అవసరం"
+    "template__error__title": "టెంప్లేటు అవసరం",
+    "ai_response_language__title": "AI సమాధాన భాష",
+    "ai_response_language__settings__label_1": "ఉపయోగించు",
+    "ai_response_language__settings__label_2": "భాషా సెట్టింగ్"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-క్లిక్ ప్రాంప్టులు",

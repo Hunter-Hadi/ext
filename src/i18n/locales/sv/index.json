@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Ogilla",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Svara med nyckelpunkter",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Snabbt svar",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svara med nyckelpunkter (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svara med nyckelpunkter (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norska"
   },
   "prompt_editor": {
     "preset_variables__title": "Färdigheter",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabler om",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabelplatsmarkör",
     "preset_variables__tooltip__table__column_name__description__title": "Kommer att ersättas med",
-    "template__error__title": "Mall krävs"
+    "template__error__title": "Mall krävs",
+    "ai_response_language__title": "AI svarspråk",
+    "ai_response_language__settings__label_1": "Använd",
+    "ai_response_language__settings__label_2": "språkinställning"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klicka-promptar",

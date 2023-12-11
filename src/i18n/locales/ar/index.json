@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "لا يعجبني",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "الرد بنقاط رئيسية",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "رد سريع",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "الرد بنقاط رئيسية (اختبار)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "الرد بنقاط رئيسية (اختبار)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "النرويجية"
   },
   "prompt_editor": {
     "preset_variables__title": "القدرات",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "المتغيرات حول",
     "preset_variables__tooltip__table__column_name__placeholder__title": "عنصر بديل للمتغير",
     "preset_variables__tooltip__table__column_name__description__title": "سيتم استبداله بـ",
-    "template__error__title": "القالب مطلوب"
+    "template__error__title": "القالب مطلوب",
+    "ai_response_language__title": "لغة استجابة الذكاء الاصطناعي",
+    "ai_response_language__settings__label_1": "استخدم",
+    "ai_response_language__settings__label_2": "إعداد اللغة"
   },
   "prompt_library": {
     "use_prompt_library__title": "التعليمات بنقرة واحدة",

@@ -38,6 +38,9 @@ export class ActionAskChatGPT extends Action {
     try {
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
+      const isOpenAIResponseLanguage =
+        this.parameters.AskChatGPTWithAIResponseLanguage !== false
+      debugger
       const askChatGPTProvider = this.parameters.AskChatGPTProvider
       const includeHistory = this.parameters.AskChatGPTWithHistory || false
       // 用于像search with ai持续更新的message
@@ -60,7 +63,9 @@ export class ActionAskChatGPT extends Action {
       }
       this.question =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT
-      this.question += await this.generateAdditionalText(params)
+      if (isOpenAIResponseLanguage) {
+        this.question += await this.generateAdditionalText(params)
+      }
       this.log.info('question', this.question)
       const {
         success,
@@ -170,23 +175,30 @@ export class ActionAskChatGPT extends Action {
     params: ActionParameters & {
       AI_RESPONSE_TONE?: string
       AI_RESPONSE_WRITING_STYLE?: string
+      WEB_SEARCH_RESULTS?: string
+      READABILITY_CONTENTS?: string
     },
   ) {
     let systemVariablesTemplate = ''
-    // 根据SELECTED_TEXT和 是否为Auto会有四个场景:
-    //  - Auto, 有SELECTED_TEXT -> 回复和SELECTED_TEXT相同的语言加在最后面
-    //  - Auto, 没有SELECTED_TEXT -> 不处理
-    //  - 非Auto, 有SELECTED_TEXT -> Respond in "用户选择的"
-    //  - 非Auto,没有SELECTED_TEXT -> 不处理
+    // 根据CONTEXT和 是否为Auto会有四个场景:
+    //  - Auto, 有CONTEXT -> 回复和CONTEXT相同的语言加在最后面
+    //  - Auto, 没有CONTEXT -> 不处理
+    //  - 非Auto, 有CONTEXT -> Respond in "用户选择的"
+    //  - 非Auto,没有CONTEXT -> 不处理
     const isAuto =
       params.AI_RESPONSE_LANGUAGE === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
-    // 如果是Auto，且有SELECTED_TEXT，那么就回复和SELECTED_TEXT相同的语言
+    const CONTEXT =
+      params.SELECTED_TEXT || // 选中的内容
+      params.READABILITY_CONTENTS || //总结的上下文
+      params.WEB_SEARCH_RESULTS || // 搜索的上下文
+      ''
+    // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
     if (isAuto) {
-      if (params.SELECTED_TEXT) {
+      if (CONTEXT) {
         const partOfSelectedText =
-          params.SELECTED_TEXT.slice(0, 80)
+          CONTEXT.slice(0, 80)
             .match(/[^\s\t\n\d"]/g)
-            ?.join('') || params.SELECTED_TEXT.slice(0, 80)
+            ?.join('') || CONTEXT.slice(0, 80)
         // the same language variety or dialect of the text
         // systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
         systemVariablesTemplate = `Please write in the same language variety or dialect of the text: "${partOfSelectedText}".`

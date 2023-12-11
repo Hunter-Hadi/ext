@@ -27,6 +27,7 @@ import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsAct
 import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
@@ -45,6 +46,8 @@ export interface ActionSetVariablesModalConfig {
   actions?: ISetActionsType
   // 答案插入的MessageId
   answerInsertMessageId?: string
+  // askAI时额外的字段
+  askChatGPTActionParameters?: ActionParameters
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -71,6 +74,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     onClose,
     actions,
     answerInsertMessageId,
+    askChatGPTActionParameters,
   } = props
   const { createConversation } = useClientConversation()
   const {
@@ -207,6 +211,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       // 用来插入答案的messageId，例如search message/summary message
       const insertMessageId =
         answerInsertMessageId || config.answerInsertMessageId || ''
+      const currentParameters =
+        askChatGPTActionParameters || config.askChatGPTActionParameters || {}
       if (isProduction) {
         runActions.push({
           type: 'ASK_CHATGPT',
@@ -229,6 +235,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 },
               } as IContextMenuItem,
             },
+            ...currentParameters,
           },
         })
       } else {
@@ -240,6 +247,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             AskChatGPTActionType: insertMessageId
               ? 'ASK_CHAT_GPT_HIDDEN'
               : 'ASK_CHAT_GPT_WITH_PREFIX',
+            ...currentParameters,
           },
         })
       }

@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "অপছন্দ",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "দ্রুত উত্তর",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন (পরীক্ষা)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন (পরীক্ষা)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "নরওয়েজীয়"
   },
   "prompt_editor": {
     "preset_variables__title": "ক্ষমতা",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "বিষয়বস্তু সম্পর্কিত চলচ্চিত্র",
     "preset_variables__tooltip__table__column_name__placeholder__title": "চলচ্চিত্রের জায়গা",
     "preset_variables__tooltip__table__column_name__description__title": "এর পরিবর্তে হবে",
-    "template__error__title": "টেমপ্লেট প্রয়োজন"
+    "template__error__title": "টেমপ্লেট প্রয়োজন",
+    "ai_response_language__title": "এইআই প্রতিক্রিয়ার ভাষা",
+    "ai_response_language__settings__label_1": "ব্যবহার করুন",
+    "ai_response_language__settings__label_2": "ভাষা সেটিং"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ক্লিক প্রম্পট",

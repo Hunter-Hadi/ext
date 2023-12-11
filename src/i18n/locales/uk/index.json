@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "ناپسندیدگی",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "مضامین کے مختصر جواب دیں",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "تیز جواب",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "مضامین کے مختصر جواب دیں (ٹیسٹ)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "مضامین کے مختصر جواب دیں (ٹیسٹ)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "نارویجین"
   },
   "prompt_editor": {
     "preset_variables__title": "صلاحیتوں",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "متغیرات کے بارے میں",
     "preset_variables__tooltip__table__column_name__placeholder__title": "متغیر کا پلیس ہولڈر",
     "preset_variables__tooltip__table__column_name__description__title": "اس سے تبدیل کیا جائے گا",
-    "template__error__title": "ٹیمپلیٹ ضروری ہے"
+    "template__error__title": "ٹیمپلیٹ ضروری ہے",
+    "ai_response_language__title": "AI رد عمل کی زبان",
+    "ai_response_language__settings__label_1": "استعمال کریں",
+    "ai_response_language__settings__label_2": "زبان ترتیب"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-کلک پرامپٹس",

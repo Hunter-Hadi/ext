@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "ಅಸಂತೃಪ್ತಿ",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಉತ್ತರಿಸಿ",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "ತ್ವರಿತ ಉತ್ತರ",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಉತ್ತರಿಸಿ (ಪರೀಕ್ಷೆ)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಉತ್ತರಿಸಿ (ಪರೀಕ್ಷೆ)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "ನಾರ್ವೇಜಿಯನ್"
   },
   "prompt_editor": {
     "preset_variables__title": "ಸಾಮರ್ಥ್ಯಗಳು",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "ವ್ಯಾರಿಬಲ್‌ಗಳು ಕುರಿತು",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ವ್ಯಾರಿಬಲ್ ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್",
     "preset_variables__tooltip__table__column_name__description__title": "ಇದನ್ನು ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ",
-    "template__error__title": "ಟೆಂಪ್ಲೇಟ್ ಅಗತ್ಯವಿದೆ"
+    "template__error__title": "ಟೆಂಪ್ಲೇಟ್ ಅಗತ್ಯವಿದೆ",
+    "ai_response_language__title": "ಏನು ಮಾಡಲಿ ಪ್ರತಿಕ್ರಿಯೆ ಭಾಷೆ",
+    "ai_response_language__settings__label_1": "ಬಳಕೆ",
+    "ai_response_language__settings__label_2": "ಭಾಷಾ ಸೆಟ್ಟಿಂಗ್"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",

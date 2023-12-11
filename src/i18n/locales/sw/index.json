@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Siipendi",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Jibu na pointi muhimu",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Jibu haraka",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Jibu na pointi muhimu (jaribio)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Jibu na pointi muhimu (jaribio)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Kina"
   },
   "prompt_editor": {
     "preset_variables__title": "Uwezo",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Vipengele kuhusu",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Nafasi ya kigezo",
     "preset_variables__tooltip__table__column_name__description__title": "Itabadilishwa na",
-    "template__error__title": "Kigezo ni lazima"
+    "template__error__title": "Kigezo ni lazima",
+    "ai_response_language__title": "Lugha ya majibu ya AI",
+    "ai_response_language__settings__label_1": "Tumia",
+    "ai_response_language__settings__label_2": "mpangilio wa lugha"
   },
   "prompt_library": {
     "use_prompt_library__title": "Vidhibiti vya 1-click",

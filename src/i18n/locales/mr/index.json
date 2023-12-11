@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "असंतोष",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "जलद प्रतिसाद",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या (परीक्षण)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या (परीक्षण)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "नॉर्वेजियन"
   },
   "prompt_editor": {
     "preset_variables__title": "क्षमता",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "वेरिएबल्स विषयक",
     "preset_variables__tooltip__table__column_name__placeholder__title": "वेरिएबल ठोसपणा",
     "preset_variables__tooltip__table__column_name__description__title": "यांनी बदलले जाईल",
-    "template__error__title": "टेम्पलेट आवश्यक आहे"
+    "template__error__title": "टेम्पलेट आवश्यक आहे",
+    "ai_response_language__title": "AI प्रतिसाद भाषा",
+    "ai_response_language__settings__label_1": "वापरा",
+    "ai_response_language__settings__label_2": "भाषा सेटिंग"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",

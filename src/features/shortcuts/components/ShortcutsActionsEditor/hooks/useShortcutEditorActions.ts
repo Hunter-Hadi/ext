@@ -30,11 +30,13 @@ const useShortcutEditorActions = () => {
   const [shortcutActionEditor, setShortcutActionEditor] = useRecoilState(
     ShortcutActionEditorState,
   )
+
   const { isDarkMode } = useCustomTheme()
   const initActions = (actions: ISetActionsType) => {
     let editHTML = ''
     // 因为这个版本只有一个prompt template，所以html的内容一定在RENDER_TEMPLATE/ASK_CHATGPT/RENDER_CHATGPT_PROMPT/SET_VARIABLES_MODAL
     let originalTemplate = ''
+    let enabledAIResponseLanguage = true
     const templateAction: ActionIdentifier[] = [
       'RENDER_TEMPLATE',
       'ASK_CHATGPT',
@@ -49,6 +51,18 @@ const useShortcutEditorActions = () => {
           originalTemplate = action.parameters.template
         } else if (action.parameters.SetVariablesModalConfig?.template) {
           originalTemplate = action.parameters.SetVariablesModalConfig.template
+        }
+        if (
+          action.type === 'ASK_CHATGPT' &&
+          action.parameters.AskChatGPTWithAIResponseLanguage === false
+        ) {
+          enabledAIResponseLanguage = false
+        } else if (
+          action.type === 'SET_VARIABLES_MODAL' &&
+          action.parameters.SetVariablesModalConfig?.askChatGPTActionParameters
+            ?.AskChatGPTWithAIResponseLanguage === false
+        ) {
+          enabledAIResponseLanguage = false
         }
       }
     }
@@ -90,6 +104,7 @@ const useShortcutEditorActions = () => {
     setShortcutActionEditor((prev) => {
       return {
         ...prev,
+        enabledAIResponseLanguage,
         actions,
         editHTML,
         variables,
@@ -346,6 +361,10 @@ const useShortcutEditorActions = () => {
             answerInsertMessageId: isOriginalMessage
               ? `{{AI_RESPONSE_MESSAGE_ID}}`
               : '',
+            askChatGPTActionParameters: {
+              AskChatGPTWithAIResponseLanguage:
+                shortcutActionEditor.enabledAIResponseLanguage,
+            },
           },
         },
       })
@@ -356,10 +375,27 @@ const useShortcutEditorActions = () => {
         type: 'ASK_CHATGPT',
         parameters: {
           template,
+          AskChatGPTWithAIResponseLanguage:
+            shortcutActionEditor.enabledAIResponseLanguage,
         },
       })
     }
     return actions
+  }
+  const toggleAIResponseLanguage = () => {
+    setShortcutActionEditor((prev) => {
+      const newValue = !prev.enabledAIResponseLanguage
+      return {
+        ...prev,
+        actions: prev.actions.map((action) => {
+          if (action.type === 'ASK_CHATGPT') {
+            action.parameters.AskChatGPTWithAIResponseLanguage = newValue
+          }
+          return action
+        }),
+        enabledAIResponseLanguage: newValue,
+      }
+    })
   }
   return {
     generateActions,
@@ -367,6 +403,9 @@ const useShortcutEditorActions = () => {
     setActions: initActions,
     editHTML: shortcutActionEditor.editHTML,
     updateEditHTML,
+    variables: shortcutActionEditor.variables,
+    enabledAIResponseLanguage: shortcutActionEditor.enabledAIResponseLanguage,
+    toggleAIResponseLanguage,
   }
 }
 

@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "അസന്തുഷ്ടനാണ്",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "പ്രധാന പോയന്റുകൾക്ക് ഉത്തരം നൽകുക",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "വേഗത്തിൽ ഉത്തരം നൽകുക",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "പ്രധാന പോയന്റുകൾക്ക് ഉത്തരം നൽകുക (ടെസ്റ്റ്)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "പ്രധാന പോയന്റുകൾക്ക് ഉത്തരം നൽകുക (ടെസ്റ്റ്)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "നോർവീജിയൻ"
   },
   "prompt_editor": {
     "preset_variables__title": "സാധ്യതകൾ",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "വിഷയത്തെ പറ്റിയുള്ള ചരങ്ങൾ",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ചരം പ്ലേസ്ഹോൾഡർ",
     "preset_variables__tooltip__table__column_name__description__title": "മാറ്റപ്പെടുന്നത്",
-    "template__error__title": "ടെംപ്ലേറ്റ് ആവശ്യമാണ്"
+    "template__error__title": "ടെംപ്ലേറ്റ് ആവശ്യമാണ്",
+    "ai_response_language__title": "എന്റെ പ്രതികരണ ഭാഷ",
+    "ai_response_language__settings__label_1": "ഉപയോഗിക്കുക",
+    "ai_response_language__settings__label_2": "ഭാഷ ക്രമീകരണം"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",

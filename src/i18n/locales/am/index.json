@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "አልሰራም",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "በመልካም መልዕክት መመለስ",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "በቀጣይ መልዕክት መመለስ",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "በመልካም መልዕክት መመለስ (ማለት)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "በመልካም መልዕክት መመለስ (ማለት)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "ኖርዌጂያን"
   },
   "prompt_editor": {
     "preset_variables__title": "እውቀት",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "ተግባራዊ ለ",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ተግባራዊ መስጫ",
     "preset_variables__tooltip__table__column_name__description__title": "በመስጫ ተግባራዊ ተግባር ይወስዳል",
-    "template__error__title": "ትርጉም ያስፈልጋል"
+    "template__error__title": "ትርጉም ያስፈልጋል",
+    "ai_response_language__title": "የማስተርጓሚ ቋንቋ መርጃ",
+    "ai_response_language__settings__label_1": "ይጠቀማል",
+    "ai_response_language__settings__label_2": "ቋንቋ ማሰራጨት"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click መልእክት",

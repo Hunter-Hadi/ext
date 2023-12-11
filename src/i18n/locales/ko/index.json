@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "싫어요",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "주요 포인트로 답장",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "빠른 답장",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "주요 포인트로 답장(테스트)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "주요 포인트로 답장(테스트)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "노르웨이어"
   },
   "prompt_editor": {
     "preset_variables__title": "기능",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "변수에 관한",
     "preset_variables__tooltip__table__column_name__placeholder__title": "변수 자리 표시자",
     "preset_variables__tooltip__table__column_name__description__title": "다음으로 대체됩니다",
-    "template__error__title": "템플릿이 필요합니다"
+    "template__error__title": "템플릿이 필요합니다",
+    "ai_response_language__title": "AI 응답 언어",
+    "ai_response_language__settings__label_1": "사용",
+    "ai_response_language__settings__label_2": "언어 설정"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-클릭 프롬프트",

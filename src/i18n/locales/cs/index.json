@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nelíbí se mi",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odpověď s klíčovými body",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Rychlá odpověď",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpověď s klíčovými body (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpověď s klíčovými body (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norština"
   },
   "prompt_editor": {
     "preset_variables__title": "Schopnosti",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Proměnné o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Náhrada proměnné",
     "preset_variables__tooltip__table__column_name__description__title": "Bude nahrazeno",
-    "template__error__title": "Šablona je povinná"
+    "template__error__title": "Šablona je povinná",
+    "ai_response_language__title": "Jazyk odpovědi AI",
+    "ai_response_language__settings__label_1": "Použít",
+    "ai_response_language__settings__label_2": "nastavení jazyka"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-kliknutí na podněty",

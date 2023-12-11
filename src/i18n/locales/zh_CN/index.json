@@ -653,7 +653,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "不喜欢",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "回复关键点",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "快速回复",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回复关键点（测试）"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回复关键点（测试）",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "挪威语"
   },
   "prompt_editor": {
     "preset_variables__title": "功能",
@@ -695,7 +696,10 @@
     "preset_variables__tooltip__variable_name_prefix": "关于",
     "preset_variables__tooltip__table__column_name__placeholder__title": "变量占位符",
     "preset_variables__tooltip__table__column_name__description__title": "将被替换为",
-    "template__error__title": "模板是必需的"
+    "template__error__title": "模板是必需的",
+    "ai_response_language__title": "AI响应语言",
+    "ai_response_language__settings__label_1": "使用",
+    "ai_response_language__settings__label_2": "语言设置"
   },
   "prompt_library": {
     "use_prompt_library__title": "1键提示",

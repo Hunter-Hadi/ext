@@ -1,3 +1,18 @@
+import { IAIProviderType } from '@/background/provider/chat'
+import {
+  IChatMessage,
+  IChatMessageExtraMetaType,
+} from '@/features/chatgpt/types'
+import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
+import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
+import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
+import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
+import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import { ITextHandlerParameters } from '@/features/shortcuts/utils/textHelper'
+import { IWebsiteContext } from '@/features/websiteContext/background'
+
 import AssertionType from './IOS_WF/AssertionType'
 import FaceTimeType from './IOS_WF/FaceTimeType'
 import WFArchiveFormat from './IOS_WF/WFArchiveFormat'
@@ -29,20 +44,6 @@ import WFStatisticsOperation from './IOS_WF/WFStatisticsOperation'
 import WFTimeFormatStyle from './IOS_WF/WFTimeFormatStyle'
 import WFTimeUntilReferenceDate from './IOS_WF/WFTimeUntilReferenceDate'
 import WFTimeUntilUnit from './IOS_WF/WFTimeUntilUnit'
-import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
-import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
-import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
-import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
-import {
-  IChatMessage,
-  IChatMessageExtraMetaType,
-} from '@/features/chatgpt/types'
-import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
-import { IWebsiteContext } from '@/features/websiteContext/background'
-import { IAIProviderType } from '@/background/provider/chat'
-import { ITextHandlerParameters } from '@/features/shortcuts/utils/textHelper'
 
 interface ActionParameters {
   // TODO 即将废弃
@@ -190,6 +191,8 @@ interface ActionParameters {
     provider: IAIProviderType
     model: string
   }
+  // 是否受到用户设置的AI response language的影响
+  AskChatGPTWithAIResponseLanguage?: boolean
   // Operation Element
   OperationElementElementSelector?: string
   OperationElementTabID?: number

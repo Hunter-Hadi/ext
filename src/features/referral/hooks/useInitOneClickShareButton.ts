@@ -1,9 +1,10 @@
-import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
+import { useEffect, useRef } from 'react'
+
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookReferral'
 import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinReferral'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { useEffect, useRef } from 'react'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
 
 /**
  * 初始化one-click referral, https://app.maxai.me/referral
@@ -34,8 +35,9 @@ const useInitOneClickShareButton = () => {
         const oneClickShareButtonContainer = document.querySelector(
           '#appMaxAIReferralShareOneClickContainer',
         ) as HTMLDivElement
-        const oneClickShareButton: HTMLButtonElement | null =
-          document.querySelector('#appMaxAIReferralShareOneClickButton')
+        const oneClickShareButton: HTMLButtonElement | null = document.querySelector(
+          '#appMaxAIReferralShareOneClickButton',
+        )
         console.log(
           'useInitOneClickShareButton oneClickShareButtonContainer',
           oneClickShareButtonContainer,
@@ -56,8 +58,9 @@ const useInitOneClickShareButton = () => {
             for (let i = 0; i < needReferralSocialMediaElements.length; i++) {
               const needReferralSocialMediaElement =
                 needReferralSocialMediaElements[i]
-              const socialMediaName =
-                needReferralSocialMediaElement.getAttribute('data-name')
+              const socialMediaName = needReferralSocialMediaElement.getAttribute(
+                'data-name',
+              )
               const runFn =
                 ReferralActionsRef.current?.[socialMediaName as 'twitter']
               if (runFn) {

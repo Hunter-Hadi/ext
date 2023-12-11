@@ -19,7 +19,7 @@ import {
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
-import useEffectOnce from '@/hooks/useEffectOnce'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 
 const ChatGPTApiSettings: FC = () => {
   const { t } = useTranslation(['settings'])

@@ -1,14 +1,15 @@
+import cloneDeep from 'lodash-es/cloneDeep'
+import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useFocus } from '@/features/common/hooks/useFocus'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
-import { useMemo, useState } from 'react'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
-import { useFocus } from '@/hooks/useFocus'
-import cloneDeep from 'lodash-es/cloneDeep'
-import { useTranslation } from 'react-i18next'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 export const FAVORITE_CONTEXT_MENU_GROUP_ID = 'SUGGESTE'
 

@@ -26,7 +26,7 @@ import {
 } from '@/features/chatgpt'
 import useDaemonBrokenListener from '@/features/chatgpt/hooks/useDaemonBrokenListener'
 import { MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID } from '@/features/common/constants'
-import useInterval from '@/hooks/useInterval'
+import useInterval from '@/features/common/hooks/useInterval'
 import {
   listenChatGPTFileUploadChange,
   pingChatGPTFileUploadServer,

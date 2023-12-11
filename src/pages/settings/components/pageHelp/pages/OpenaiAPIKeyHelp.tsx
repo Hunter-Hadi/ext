@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
-import Stack from '@mui/material/Stack'
-import PageHelpCard from '@/pages/settings/components/pageHelp/PageHelpCard'
-import { useTranslation } from 'react-i18next'
 import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
-import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL } from '@/features/common/constants'
+import PageHelpCard from '@/pages/settings/components/pageHelp/PageHelpCard'
 
 const OpenaiAPIKeyHelp: FC<{
   defaultOpen?: boolean
@@ -56,7 +57,7 @@ const OpenaiAPIKeyHelp: FC<{
                   }}
                 >
                   <img
-                    src={`${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/open-key-create.png`}
+                    src={`${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/assets/chrome-extension/open-key-create.png`}
                     alt={'open-key-create'}
                     width={'460'}
                     height={'auto'}
@@ -113,7 +114,7 @@ const OpenaiAPIKeyHelp: FC<{
                   }}
                 >
                   <img
-                    src={`${CHROME_EXTENSION_HOMEPAGE_URL}/assets/chrome-extension/openai-api-chat-playground.png`}
+                    src={`${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/assets/chrome-extension/openai-api-chat-playground.png`}
                     alt={'open-key-create'}
                     width={'460'}
                     height={'auto'}

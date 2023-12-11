@@ -4,15 +4,16 @@
 import { Box } from '@mui/material'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
-import useWindowSize from '@/hooks/useWindowSize'
-import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
-import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
-import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
 import Browser from 'webextension-polyfill'
-import useEffectOnce from '@/hooks/useEffectOnce'
+
 // import MaxAIHideMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import useWindowSize from '@/features/common/hooks/useWindowSize'
+import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
+import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
+import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
 const actionsCount = 3

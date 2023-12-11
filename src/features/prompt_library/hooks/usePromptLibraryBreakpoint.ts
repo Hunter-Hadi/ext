@@ -51,8 +51,8 @@ const usePromptLibraryBreakpoint = (sidebarDefaultWidth = 450) => {
     return 'xs'
   }, [sidebarWidth, sidebarDefaultWidth])
 
-  return promptLibraryRuntime === 'CRXPage'
-    ? currentBreakpoint
-    : sidebarBreakpoints
+  return promptLibraryRuntime === 'CRXSidebar'
+    ? sidebarBreakpoints
+    : currentBreakpoint
 }
 export default usePromptLibraryBreakpoint

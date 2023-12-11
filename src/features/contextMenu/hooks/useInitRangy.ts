@@ -12,6 +12,7 @@ import {
   MAXAI_CONTEXT_MENU_ID,
   MAXAI_SIDEBAR_ID,
 } from '@/features/common/constants'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import {
   FloatingContextMenuDraftState,
   FloatingDropdownMenuLastFocusRangeState,
@@ -37,7 +38,6 @@ import {
 } from '@/features/contextMenu/utils/selectionHelper'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useCommands from '@/hooks/useCommands'
-import useEffectOnce from '@/hooks/useEffectOnce'
 import { listenIframeMessage } from '@/iframe'
 import rangyLib from '@/lib/rangy/rangy-core'
 import initRangyPosition from '@/lib/rangy/rangy-position'

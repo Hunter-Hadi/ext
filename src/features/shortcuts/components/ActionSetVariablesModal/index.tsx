@@ -17,6 +17,7 @@ import { v4 as uuidV4 } from 'uuid'
 import TooltipButton from '@/components/TooltipButton'
 import { isProduction } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import {
   getSetVariablesModalSelectCache,
@@ -28,7 +29,6 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import useEffectOnce from '@/hooks/useEffectOnce'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export interface ActionSetVariablesModalConfig {

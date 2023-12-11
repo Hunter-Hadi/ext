@@ -1,10 +1,25 @@
 import { atom, useRecoilState } from 'recoil'
 
-import { useAuthLogin } from '@/features/auth'
+import { MAXAI_APP_ROOT_ID } from '@/features/common/constants'
 
-const PromptLibraryAuthHandlerState = atom<() => Promise<void>>({
+const PromptLibraryHandlerState = atom<{
+  authHandler: () => Promise<void>
+  maxAIChromeExtensionInstallHandler: () => Promise<boolean>
+}>({
   key: 'PromptLibraryAuthHandlerState',
-  default: () => Promise.resolve(),
+  default: {
+    authHandler: () => Promise.resolve(),
+    maxAIChromeExtensionInstallHandler: () => {
+      // 检测逻辑
+      const chromeExtensionInstalled = document.getElementById(
+        MAXAI_APP_ROOT_ID,
+      )
+      if (chromeExtensionInstalled) {
+        return Promise.resolve(true)
+      }
+      return Promise.resolve(false)
+    },
+  },
 })
 
 /**
@@ -14,25 +29,44 @@ const usePromptLibraryAuth = () => {
   const [
     promptLibraryAuthHandler,
     setPromptLibraryAuthHandler,
-  ] = useRecoilState(PromptLibraryAuthHandlerState)
-  const authState = useAuthLogin()
-  const isLogin = authState.isLogin
+  ] = useRecoilState(PromptLibraryHandlerState)
+  const isLogin = false
   const checkAuthAsync = async () => {
     if (!isLogin) {
-      await promptLibraryAuthHandler()
+      await promptLibraryAuthHandler.authHandler()
     }
     return isLogin
   }
   const checkAuthSync = () => {
     if (!isLogin) {
-      promptLibraryAuthHandler().then().catch()
+      promptLibraryAuthHandler.authHandler().then().catch()
     }
     return isLogin
   }
   const setAuthHandler = (handler: () => Promise<void>) => {
-    setPromptLibraryAuthHandler(() => handler)
+    setPromptLibraryAuthHandler((prev) => {
+      return {
+        ...prev,
+        authHandler: handler,
+      }
+    })
+  }
+  const setMaxAIChromeExtensionInstallHandler = (
+    handler: () => Promise<boolean>,
+  ) => {
+    setPromptLibraryAuthHandler((prev) => {
+      return {
+        ...prev,
+        maxAIChromeExtensionInstallHandler: handler,
+      }
+    })
+  }
+  const checkMaxAIChromeExtensionInstall = async () => {
+    return await promptLibraryAuthHandler.maxAIChromeExtensionInstallHandler()
   }
   return {
+    setMaxAIChromeExtensionInstallHandler,
+    checkMaxAIChromeExtensionInstall,
     checkAuthAsync,
     checkAuthSync,
     setAuthHandler,

@@ -19,3 +19,5 @@ export const MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID = `${MAXAI_APP_ROOT_ID}_Pr
 
 //  MaxAI 和网页通信的ID
 export const MAXAI_POST_MESSAGE_WITH_WEB_PAGE_ID = `${MAXAI_APP_ROOT_ID}_Post_Message_With_Web_Page`
+export const MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL = 'https://app.maxai.me'
+export const MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL = 'https://www.maxai.me'

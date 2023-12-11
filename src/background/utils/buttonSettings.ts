@@ -25,31 +25,33 @@
  *   }
  * }
  */
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import useEffectOnce from '../../hooks/useEffectOnce'
-import { default as lodashSet } from 'lodash-es/set'
-import debounce from 'lodash-es/debounce'
-import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useRecoilState } from 'recoil'
-import { AppDBStorageState } from '@/store'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
-import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
-import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
-import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
+import debounce from 'lodash-es/debounce'
 import isEqual from 'lodash-es/isEqual'
+import { default as lodashSet } from 'lodash-es/set'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useRecoilState } from 'recoil'
+
+import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
+import defaultEditAssistantReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
+import defaultInputAssistantDraftNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
+import defaultInputAssistantEditContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
 import {
   getChromeExtensionDBStorage,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 import {
   IChromeExtensionButtonSetting,
   IChromeExtensionButtonSettingKey,
   IVisibilitySetting,
 } from '@/background/utils/chromeExtensionStorage/type'
-import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
+import { AppDBStorageState } from '@/store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+
+import useEffectOnce from '../../features/common/hooks/useEffectOnce'
 
 export const useChromeExtensionButtonSettings = () => {
   const [appDBStorage, setAppDBStorage] = useRecoilState(AppDBStorageState)

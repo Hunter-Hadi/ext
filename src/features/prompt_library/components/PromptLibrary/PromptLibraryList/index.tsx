@@ -21,7 +21,7 @@ const PromptLibraryList: FC<{
 }> = (props) => {
   const { onClick } = props
   const { promptLibraryRuntime } = useContext(PromptLibraryRuntimeContext)!
-  const { data, isLoading } = usePromptLibraryList()
+  const { data, isLoading, isFetching } = usePromptLibraryList()
   const {
     activeTab,
     promptLibraryListParameters,
@@ -50,7 +50,8 @@ const PromptLibraryList: FC<{
   }, [activeTab])
   useEffect(() => {}, [promptLibraryRuntime])
   const CardList = useMemo(() => {
-    if (isLoading) {
+    // 因为在 WebPage 中，没有line progress
+    if (isLoading || (promptLibraryRuntime === 'WebPage' && isFetching)) {
       return new Array(promptLibraryListParameters.page_size)
         .fill(1)
         .map((_, index) => {
@@ -87,6 +88,8 @@ const PromptLibraryList: FC<{
       </>
     )
   }, [
+    promptLibraryRuntime,
+    isFetching,
     isLoading,
     data,
     activeTab,

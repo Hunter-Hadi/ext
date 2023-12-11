@@ -55,6 +55,7 @@ const PromptTypeList: FC<IProps> = ({ typeList, variables }) => {
         return (
           <Typography
             key={type}
+            variant={'custom'}
             component={'span'}
             sx={(t) => {
               const isDark = t.palette.mode === 'dark'

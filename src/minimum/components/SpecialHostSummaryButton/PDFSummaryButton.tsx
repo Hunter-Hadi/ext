@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
+import useFindElement from '@/features/common/hooks/useFindElement'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
-import useFindElement from '@/hooks/useFindElement'
 import { showChatBox } from '@/utils'
 
 const PDFSummaryButton: FC = () => {

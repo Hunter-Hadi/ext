@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
-import useEffectOnce from '@/hooks/useEffectOnce'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import FloatingMenuButton from '@/minimum/components/FloatingMenuButton'
 import SpecialHostSummaryButton from '@/minimum/components/SpecialHostSummaryButton'
 import MinimumAppInit from '@/minimum/MinimumAppInit'

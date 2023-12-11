@@ -25,6 +25,7 @@ const PromptLibraryHeader: FC = () => {
           fontWeight={800}
           color={'text.primary'}
           textAlign={'center'}
+          className={'maxai__prompt_library__title'}
         >
           {t('prompt_library:use_prompt_library__title')}
         </Typography>

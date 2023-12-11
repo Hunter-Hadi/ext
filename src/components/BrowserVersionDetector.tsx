@@ -1,17 +1,18 @@
-import React, { useState, FC, useMemo } from 'react'
-import { UAParser } from 'ua-parser-js'
-import { sendLarkBotMessage } from '@/utils/larkBot'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
-import useEffectOnce from '@/hooks/useEffectOnce'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React, { FC, useMemo, useState } from 'react'
+import { UAParser } from 'ua-parser-js'
+
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { BrowserIcon } from '@/components/CustomIcon'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 const { getBrowser } = new UAParser()
 

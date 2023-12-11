@@ -17,12 +17,12 @@ import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
 } from '@/features/common/constants'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { throttle } from '@/hooks/useThrottle'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {

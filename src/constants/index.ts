@@ -22,8 +22,6 @@ export const CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB = `CHROME_EXTENSIO
 
 // doc
 export const CHROME_EXTENSION_MAIL_TO = `https://www.maxai.me/contact-us`
-export const CHROME_EXTENSION_DOC_URL = 'https://app.maxai.me'
-export const CHROME_EXTENSION_HOMEPAGE_URL = 'https://www.maxai.me'
 
 /**
  * MARK: 设计问题，历史遗留

@@ -51,12 +51,14 @@ import {
 import {
   AI_PROVIDER_MAP,
   APP_VERSION,
-  CHROME_EXTENSION_DOC_URL,
-  CHROME_EXTENSION_HOMEPAGE_URL,
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import { getChromeExtensionUserInfo } from '@/features/auth/utils'
+import {
+  MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
+  MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
+} from '@/features/common/constants'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
@@ -102,7 +104,7 @@ const initChromeExtensionInstalled = () => {
       // 重置插件引导数据
       await resetChromeExtensionOnBoardingData()
       await Browser.tabs.create({
-        url: CHROME_EXTENSION_DOC_URL + '/get-started',
+        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/get-started',
       })
     } else {
       // @deprecated - 2023-11-20 应该不会再用了
@@ -331,7 +333,7 @@ const initChromeExtensionMessage = () => {
  */
 const initChromeExtensionUninstalled = () => {
   Browser.runtime.setUninstallURL(
-    `${CHROME_EXTENSION_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
+    `${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
   )
 }
 

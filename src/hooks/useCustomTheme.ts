@@ -39,6 +39,19 @@ declare module '@mui/material/styles' {
     customColor: CustomColor
     neutral: PaletteOptions['primary']
   }
+  interface TypographyVariants {
+    custom: React.CSSProperties
+  }
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    custom?: React.CSSProperties
+  }
+}
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    custom: true
+  }
 }
 declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {

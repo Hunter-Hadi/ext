@@ -1,13 +1,14 @@
-import React, { FC, useMemo, useState } from 'react'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { GiftIcon } from '@/components/CustomIcon'
-import Stack from '@mui/material/Stack'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import Link from '@mui/material/Link'
-import LoginLayout from '@/features/auth/components/LoginLayout'
+import Stack from '@mui/material/Stack'
+import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { GiftIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import LoginLayout from '@/features/auth/components/LoginLayout'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const AuthUserRoleIconDropdown: FC = () => {

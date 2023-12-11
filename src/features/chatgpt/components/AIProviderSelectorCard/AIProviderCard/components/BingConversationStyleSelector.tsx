@@ -1,5 +1,4 @@
-import React, { FC, useState } from 'react'
-import { useRecoilValue } from 'recoil'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -7,21 +6,22 @@ import Select from '@mui/material/Select'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
+import React, { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
 
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   BING_CONVERSATION_STYLES,
   BingConversationStyle,
 } from '@/background/src/chat/BingChat/bing/types'
-import useEffectOnce from '@/hooks/useEffectOnce'
 import {
   getThirdProviderSettings,
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
-import { useFocus } from '@/hooks/useFocus'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { useTranslation } from 'react-i18next'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useFocus } from '@/features/common/hooks/useFocus'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 const ArrowDropDownIconCustom = () => {
   return (

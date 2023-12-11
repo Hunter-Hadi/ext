@@ -11,12 +11,12 @@ import React, { FC, useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import FormLabelRequiredFlag from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PromptVariableForm/FormLabelRequiredFlag'
 import useShortcutEditorActionsVariables, {
   PRESET_VARIABLE_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
-import useEffectOnce from '@/hooks/useEffectOnce'
 
 interface IPromptVariableFormProps {
   type: 'add' | 'edit' | 'view'

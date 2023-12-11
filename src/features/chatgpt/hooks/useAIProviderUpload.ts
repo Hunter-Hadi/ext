@@ -1,21 +1,22 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { useFocus } from '@/hooks/useFocus'
-import isArray from 'lodash-es/isArray'
-import { useCreateClientMessageListener } from '@/background/utils'
-import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import cloneDeep from 'lodash-es/cloneDeep'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import isArray from 'lodash-es/isArray'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+
+import { IChromeExtensionClientListenEvent } from '@/background/eventType'
+import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
+import { useCreateClientMessageListener } from '@/background/utils'
 import {
   checkFileTypeIsImage,
   serializeUploadFile,
 } from '@/background/utils/uplpadFileProcessHelper'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
-import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 /**
  * AI Provider的上传文件处理

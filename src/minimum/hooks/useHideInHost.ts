@@ -4,7 +4,7 @@ import {
   MAXAI_APP_ROOT_ID,
   MAXAI_MINIMIZE_CONTAINER_ID,
 } from '@/features/common/constants'
-import useEffectOnce from '@/hooks/useEffectOnce'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const startHideInHostHandle = debounce(() => {

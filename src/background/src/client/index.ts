@@ -173,6 +173,12 @@ export const ClientMessageInit = () => {
                   active,
                 })
                 tabId = tab.id
+              } else if (key === 'immersive_chat') {
+                const tab = await Browser.tabs.create({
+                  url: Browser.runtime.getURL(`/pages/chat/index.html`) + query,
+                  active,
+                })
+                tabId = tab.id
               }
               return {
                 data: {

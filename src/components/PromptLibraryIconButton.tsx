@@ -191,7 +191,7 @@ const PromptLibraryIconButton: FC = () => {
               >
                 {isClickOpenOnce && (
                   <PromptLibrary
-                    runtime={isImmersiveChatPage ? 'WebPage' : 'CRXSidebar'}
+                    runtime={isImmersiveChatPage ? 'CRXPage' : 'CRXSidebar'}
                   />
                 )}
               </Paper>

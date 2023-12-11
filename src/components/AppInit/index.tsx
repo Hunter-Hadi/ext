@@ -1,45 +1,47 @@
-import { useSetRecoilState } from 'recoil'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo } from 'react'
+import { render } from 'react-dom'
+import { useTranslation } from 'react-i18next'
+import { useSetRecoilState } from 'recoil'
+import Browser from 'webextension-polyfill'
+
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
+import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
+import CloseAlert from '@/components/CloseAlert'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import { useAuthLogin } from '@/features/auth'
+import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { useInitChatGPTClient } from '@/features/chatgpt'
+import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
+import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
+import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
+import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
+import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
+import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
+import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
+import useEffectOnce from '@/hooks/useEffectOnce'
+import useInterval from '@/hooks/useInterval'
+import { useInitI18n } from '@/i18n/hooks'
+import useHideInHost from '@/minimum/hooks/useHideInHost'
+import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import {
   chromeExtensionClientOpenPage,
   getAppContextMenuRootElement,
   showChatBox,
 } from '@/utils'
-import { AppDBStorageState, AppLocalStorageState } from '@/store'
-import { useInitChatGPTClient } from '@/features/chatgpt'
-import Button from '@mui/material/Button'
-import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
-import Log from '@/utils/Log'
-import { useAuthLogin } from '@/features/auth'
-import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
-import CloseAlert from '@/components/CloseAlert'
-import Stack from '@mui/material/Stack'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import { render } from 'react-dom'
-import Link from '@mui/material/Link'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
-import useInterval from '@/hooks/useInterval'
-import Divider from '@mui/material/Divider'
-import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { useInitI18n } from '@/i18n/hooks'
-import { useTranslation } from 'react-i18next'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
-import Browser from 'webextension-polyfill'
-import { clientGetBrowserInfo } from '@/utils/larkBot'
-import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
-import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
-import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
-import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import useHideInHost from '@/minimum/hooks/useHideInHost'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+import { clientGetBrowserInfo } from '@/utils/larkBot'
+import Log from '@/utils/Log'
 
 const log = new Log('AppInit')
 
@@ -383,6 +385,7 @@ const AppInit = () => {
   userInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
+  useInitWebPageMessageChannel()
   useInitClientConversationMap()
   useHandlePDFViewerError()
   useInitSidebar()

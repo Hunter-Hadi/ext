@@ -8,6 +8,7 @@ import Tabs, { tabsClasses, TabsProps } from '@mui/material/Tabs'
 import React, { FC, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { webPageOpenMaxAIImmersiveChat } from '@/features/common/utils/postMessageToCRX'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
 
@@ -57,7 +58,8 @@ const PromptLibraryTabs: FC = () => {
         onChange={(event, newValue) => {
           if (newValue !== 'Public' && promptLibraryRuntime === 'WebPage') {
             // 跳转去ImmersiveChat
-            debugger
+            webPageOpenMaxAIImmersiveChat()
+            return
           }
           updateActiveTab(newValue)
         }}

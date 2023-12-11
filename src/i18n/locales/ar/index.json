@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "مسح جميع المحادثات",
     "sidebar__share__share_button__tooltip": "تحميل المحادثة",
     "provider__openai_api__model__gpt_3_5_1106__description": "أحدث نموذج GPT-3.5 Turbo مع تحسين متابعة التعليمات، وضع JSON، النتائج المستنسخة، استدعاء الوظائف المتوازية، والمزيد. يُرجع حد أقصى من 4,096 رمز إخراج.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "أحدث نموذج GPT-4 مع تحسين متابعة التعليمات، وضع JSON، النتائج المستنسخة، استدعاء الوظائف المتوازية، والمزيد. يُرجع حد أقصى من 4,096 رمز إخراج. هذا النموذج المعاينة غير مناسب بعد لحركة المرور الإنتاجية.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "أحدث نموذج GPT-4 مع تحسين متابعة التعليمات، وضع JSON، النتائج المتكررة، استدعاء الوظائف المتوازية، والمزيد. يُرجع حد أقصى من 4,096 رمز إخراج.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "القدرة على فهم الصور، بالإضافة إلى جميع قدرات GPT-4 Turbo الأخرى. يُرجع حد أقصى من 4,096 رمز إخراج. هذا إصدار نموذج معاينة وغير مناسب بعد لحركة المرور الإنتاجية.",
     "activity__black_friday_2023__title": "صفقات الجمعة السوداء لفترة محدودة - تصل إلى 50% خصم!",
     "sidebar__speed_dial__chat_history__button": "سجل الدردشة",

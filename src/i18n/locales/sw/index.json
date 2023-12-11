@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Futa mazungumzo yote",
     "sidebar__share__share_button__tooltip": "Pakua mazungumzo",
     "provider__openai_api__model__gpt_3_5_1106__description": "Mfano wa hivi karibuni wa GPT-3.5 Turbo na uwezo bora wa kufuata maagizo, njia ya JSON, matokeo yanayoweza kurejewa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha maneno 4,096.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Mfano wa hivi karibuni wa GPT-4 na uwezo bora wa kufuata maagizo, njia ya JSON, matokeo yanayoweza kurejewa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha maneno 4,096. Mfano huu wa hakiki bado haufai kwa trafiki ya uzalishaji.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Mfano wa GPT-4 wa hivi karibuni na ufuatiliaji bora wa maagizo, hali ya JSON, matokeo yanayoweza kurejeshwa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha herufi 4,096 za matokeo.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Uwezo wa kuelewa picha, pamoja na uwezo wote wa GPT-4 Turbo. Inarudisha kiwango cha juu cha maneno 4,096. Hii ni toleo la hakiki la mfano na bado halifai kwa trafiki ya uzalishaji.",
     "activity__black_friday_2023__title": "Ofa za Black Friday kwa Muda Mchache - Hadi 50% Punguzo!",
     "sidebar__speed_dial__chat_history__button": "Historia ya mazungumzo",

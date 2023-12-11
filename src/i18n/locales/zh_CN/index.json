@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "清除所有聊天",
     "sidebar__share__share_button__tooltip": "下载聊天",
     "provider__openai_api__model__gpt_3_5_1106__description": "具有改进的指令跟随、JSON模式、可复现输出、并行函数调用等功能的最新GPT-3.5 Turbo模型。返回最多4,096个输出标记。",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "具有改进的指令跟随、JSON模式、可复现输出、并行函数调用等功能的最新GPT-4模型。返回最多4,096个输出标记。此预览模型尚不适用于生产流量。",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "具有改进的指令跟随、JSON模式、可复现输出、并行函数调用等功能的最新GPT-4模型。返回最多4,096个输出标记。",
     "provider__openai_api__model__gpt_4_vision_preview__description": "除了所有其他GPT-4 Turbo功能外，还能理解图像。返回最多4,096个输出标记。这是一个预览模型版本，尚不适用于生产流量。",
     "activity__black_friday_2023__title": "限时黑色星期五特惠 - 高达50%折扣！",
     "sidebar__speed_dial__chat_history__button": "聊天记录",

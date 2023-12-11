@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Alle Chats löschen",
     "sidebar__share__share_button__tooltip": "Chat herunterladen",
     "provider__openai_api__model__gpt_3_5_1106__description": "Das neueste GPT-3.5 Turbo-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Das neueste GPT-4-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück. Dieses Vorschau-Modell ist noch nicht für den Produktionsverkehr geeignet.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Das neueste GPT-4-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Fähigkeit, Bilder zu verstehen, zusätzlich zu allen anderen GPT-4 Turbo-Funktionen. Gibt maximal 4.096 Ausgabetoken zurück. Dies ist eine Vorschauversion des Modells und noch nicht für den Produktionsverkehr geeignet.",
     "activity__black_friday_2023__title": "Begrenzte Black Friday Angebote – Bis zu 50% Rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chatverlauf",

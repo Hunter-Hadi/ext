@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Notīrīt visus čatus",
     "sidebar__share__share_button__tooltip": "Lejupielādēt čatu",
     "provider__openai_api__model__gpt_3_5_1106__description": "Jaunākais GPT-3.5 Turbo modelis ar uzlabotu instrukciju sekošanu, JSON režīmu, reproducējamām izvadēm, paralēlu funkciju izsaukšanu un citiem uzlabojumiem. Atgriež maksimāli 4 096 izvades žetonus.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Jaunākais GPT-4 modelis ar uzlabotu instrukciju sekošanu, JSON režīmu, reproducējamām izvadēm, paralēlu funkciju izsaukšanu un citiem uzlabojumiem. Atgriež maksimāli 4 096 izvades žetonus. Šis priekšskatījuma modelis vēl nav piemērots ražošanas datplūsmai.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Jaunākais GPT-4 modelis ar uzlabotu instrukciju sekošanu, JSON režīmu, reproducējamām izvadēm, paralēlu funkciju izsaukšanu un citiem uzlabojumiem. Atgriež maksimāli 4 096 izvades žetonus.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Spēja saprast attēlus, kā arī visus citus GPT-4 Turbo iespējamos. Atgriež maksimāli 4 096 izvades žetonus. Šis ir priekšskatījuma modeļa versija un vēl nav piemērota ražošanas datplūsmai.",
     "activity__black_friday_2023__title": "Ierobežots laiks Melnā Piektdiena piedāvājumi – Līdz 50% atlaidēm!",
     "sidebar__speed_dial__chat_history__button": "Čata vēsture",

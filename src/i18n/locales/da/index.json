@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Ryd alle chats",
     "sidebar__share__share_button__tooltip": "Hent chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Den nyeste GPT-3.5 Turbo-model med forbedret instruktionsfølgelse, JSON-tilstand, reproducerbare resultater, parallel funktionopkald og mere. Returnerer maksimalt 4.096 output tokens.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-model med forbedret instruktionsfølgelse, JSON-tilstand, reproducerbare resultater, parallel funktionopkald og mere. Returnerer maksimalt 4.096 output tokens. Denne preview-model er endnu ikke egnet til produktionstrafik.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-model med forbedret instruktionsfølgelse, JSON-tilstand, reproducerbare resultater, parallel funktionopkald og mere. Returnerer maksimalt 4.096 output tokens.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til at forstå billeder udover alle andre GPT-4 Turbo-funktioner. Returnerer maksimalt 4.096 output tokens. Dette er en preview-modelversion og er endnu ikke egnet til produktionstrafik.",
     "activity__black_friday_2023__title": "Begrænsede Black Friday-tilbud – Op til 50% rabat!",
     "sidebar__speed_dial__chat_history__button": "Chat historik",

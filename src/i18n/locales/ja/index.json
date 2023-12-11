@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "すべてのチャットをクリア",
     "sidebar__share__share_button__tooltip": "チャットをダウンロード",
     "provider__openai_api__model__gpt_3_5_1106__description": "改良された指示の追跡、JSONモード、再現可能な出力、並列関数呼び出しなどを備えた最新のGPT-3.5 Turboモデル。最大4,096の出力トークンを返します。",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "改良された指示の追跡、JSONモード、再現可能な出力、並列関数呼び出しなどを備えた最新のGPT-4モデル。最大4,096の出力トークンを返します。このプレビューモデルはまだ本番トラフィックには適していません。",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "改善された指示の追跡、JSONモード、再現可能な出力、並列関数呼び出しなどを備えた最新のGPT-4モデル。最大4,096の出力トークンを返します。",
     "provider__openai_api__model__gpt_4_vision_preview__description": "他のすべてのGPT-4 Turboの機能に加えて、画像を理解する能力を持っています。最大4,096の出力トークンを返します。これはプレビューモデルバージョンであり、まだ本番トラフィックには適していません。",
     "activity__black_friday_2023__title": "期間限定のブラックフライデーセール！最大50％オフ！",
     "sidebar__speed_dial__chat_history__button": "チャット履歴",

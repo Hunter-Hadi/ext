@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Vymazať všetky chaty",
     "sidebar__share__share_button__tooltip": "Stiahnuť chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnovší model GPT-3.5 Turbo s vylepšeným nasledovaním inštrukcií, režimom JSON, reprodukovateľnými výstupmi, paralelným volaním funkcií a ďalším. Vráti maximálne 4 096 výstupných tokenov.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnovší model GPT-4 s vylepšeným nasledovaním inštrukcií, režimom JSON, reprodukovateľnými výstupmi, paralelným volaním funkcií a ďalším. Vráti maximálne 4 096 výstupných tokenov. Tento ukážkový model ešte nie je vhodný pre produkčnú prevádzku.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnovší model GPT-4 s vylepšeným nasledovaním inštrukcií, režimom JSON, reprodukovateľnými výstupmi, paralelným volaním funkcií a ďalším. Vráti maximálne 4 096 výstupných tokenov.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Schopnosť rozumieť obrázkom, okrem všetkých ostatných schopností modelu GPT-4 Turbo. Vráti maximálne 4 096 výstupných tokenov. Toto je ukážková verzia modelu a zatiaľ nie je vhodná pre produkčnú prevádzku.",
     "activity__black_friday_2023__title": "Obmedzený čas - Black Friday zľavy až do 50%!",
     "sidebar__speed_dial__chat_history__button": "História chatu",

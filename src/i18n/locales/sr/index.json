@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Obriši sve razgovore",
     "sidebar__share__share_button__tooltip": "Preuzmi čet",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnoviji GPT-3.5 Turbo model sa poboljšanim praćenjem instrukcija, JSON režimom, reproduktivnim izlazima, paralelnim pozivanjem funkcija i još mnogo toga. Vraća maksimalno 4.096 izlaznih tokena.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnoviji GPT-4 model sa poboljšanim praćenjem instrukcija, JSON režimom, reproduktivnim izlazima, paralelnim pozivanjem funkcija i još mnogo toga. Vraća maksimalno 4.096 izlaznih tokena. Ovaj model u pregledu još nije pogodan za proizvodni saobraćaj.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnoviji GPT-4 model sa poboljšanim praćenjem instrukcija, JSON režimom, reprodukovanim izlazima, paralelnim pozivanjem funkcija i još mnogo toga. Vraća maksimalno 4.096 izlaznih tokena.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumevanja slika, pored svih ostalih mogućnosti GPT-4 Turbo. Vraća maksimalno 4.096 izlaznih tokena. Ovo je verzija modela u pregledu i još uvek nije pogodna za proizvodni saobraćaj.",
     "activity__black_friday_2023__title": "Ograničeni vremenski ponude za Crni petak - Do 50% popusta!",
     "sidebar__speed_dial__chat_history__button": "Istorija čata",

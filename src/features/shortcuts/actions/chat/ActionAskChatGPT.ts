@@ -40,7 +40,6 @@ export class ActionAskChatGPT extends Action {
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       const isOpenAIResponseLanguage =
         this.parameters.AskChatGPTWithAIResponseLanguage !== false
-      debugger
       const askChatGPTProvider = this.parameters.AskChatGPTProvider
       const includeHistory = this.parameters.AskChatGPTWithHistory || false
       // 用于像search with ai持续更新的message
@@ -63,6 +62,8 @@ export class ActionAskChatGPT extends Action {
       }
       this.question =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT
+      // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏，所以要设置messageVisibleText
+      const originQuestion = this.question
       if (isOpenAIResponseLanguage) {
         this.question += await this.generateAdditionalText(params)
       }
@@ -83,6 +84,7 @@ export class ActionAskChatGPT extends Action {
           regenerate: false,
           meta: {
             ...this.parameters.AskChatGPTActionMeta,
+            messageVisibleText: originQuestion,
           },
           aiMessageVisible:
             askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
@@ -196,9 +198,8 @@ export class ActionAskChatGPT extends Action {
     if (isAuto) {
       if (CONTEXT) {
         const partOfSelectedText =
+          CONTEXT.slice(0, 80).replace(/\n/g, '').replace(/"/g, '') ||
           CONTEXT.slice(0, 80)
-            .match(/[^\s\t\n\d"]/g)
-            ?.join('') || CONTEXT.slice(0, 80)
         // the same language variety or dialect of the text
         // systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
         systemVariablesTemplate = `Please write in the same language variety or dialect of the text: "${partOfSelectedText}".`

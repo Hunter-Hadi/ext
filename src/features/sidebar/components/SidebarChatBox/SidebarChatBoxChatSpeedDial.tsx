@@ -128,7 +128,8 @@ const SidebarChatBoxChatSpeedDial: FC<{
             tooltipTitle={''}
           />
         )}
-        <SpeedDialAction
+        {currentSidebarConversationType === 'Chat' && (
+          &&<SpeedDialAction
           icon={
             <Box
               component={'div'}
@@ -163,7 +164,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
             </Box>
           }
           tooltipTitle={''}
-        />
+        />}
         <SpeedDialAction
           icon={
             <Box

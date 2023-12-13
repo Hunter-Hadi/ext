@@ -12,6 +12,7 @@ import AppInit from '@/components/AppInit'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
@@ -126,11 +127,13 @@ const App: FC = () => {
             <ChatBoxHeader />
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>
-                {isOpened && (
-                  <Stack flex={1} height={0}>
-                    <NormalChatPage />
-                  </Stack>
-                )}
+                <Stack flex={1} height={0}>
+                  {isOpened && <NormalChatPage />}
+                  {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}
+                  {!isOpened && (
+                    <ActionSetVariablesModal modelKey={'Sidebar'} />
+                  )}
+                </Stack>
               </AppSuspenseLoadingLayout>
             </BrowserVersionDetector>
           </Stack>

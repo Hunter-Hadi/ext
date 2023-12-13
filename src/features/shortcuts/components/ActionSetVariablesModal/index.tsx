@@ -30,6 +30,7 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { showChatBox } from '@/utils'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export interface ActionSetVariablesModalConfig {
@@ -252,7 +253,16 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         })
       }
       await setShortCuts(runActions)
-      await runShortCuts()
+      runShortCuts()
+        .then(() => {
+          // done
+          const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
+          if (error) {
+            // 如果出错了，则打开聊天框
+            showChatBox()
+          }
+        })
+        .catch()
     }
   }
   const currentModalConfig = useMemo(() => {

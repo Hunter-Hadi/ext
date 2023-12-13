@@ -6,7 +6,10 @@ import {
   shortcutsRenderTemplate,
   templateParserDecorator,
 } from '@/features/shortcuts'
-import { ActionSetVariablesConfirmData } from '@/features/shortcuts/components/ActionSetVariablesModal'
+import {
+  ActionSetVariablesConfirmData,
+  ActionSetVariablesModalConfig,
+} from '@/features/shortcuts/components/ActionSetVariablesModal'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -35,20 +38,11 @@ export class ActionSetVariablesModal extends Action {
         this.error = 'No config!'
         return
       }
-      if (config.modelKey === 'Sidebar') {
-        showChatBox()
-        const root = getMaxAISidebarRootElement()
-        root &&
-          (await intervalFindHtmlElement(
-            root,
-            '#max-ai__ai-provider-floating-button',
-            100,
-            5000,
-          ))
-      }
+      // 是否需要用户输入内容，如果需要的话，那就需要打开sidebar
+      let needUserInput = false
       const shortCutsEngine = engine.getShortCutsEngine()
       const shortCutsVariables = shortCutsEngine.getVariables()
-      const cloneConfig = cloneDeep(config)
+      const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
       cloneConfig.variables.map((variable) => {
         if (
           variable.defaultValue &&
@@ -57,6 +51,13 @@ export class ActionSetVariablesModal extends Action {
           variable.defaultValue =
             shortcutsRenderTemplate(variable.defaultValue, shortCutsVariables)
               .data || ''
+        }
+        if (
+          variable.valueType === 'Text' &&
+          !variable.defaultValue &&
+          !variable.hidden
+        ) {
+          needUserInput = true
         }
         return variable
       })
@@ -76,8 +77,26 @@ export class ActionSetVariablesModal extends Action {
             shortcutsRenderTemplate(variable.defaultValue, shortCutsVariables)
               .data || ''
         }
+        if (
+          variable.valueType === 'Text' &&
+          !variable.defaultValue &&
+          !variable.hidden
+        ) {
+          needUserInput = true
+        }
         return variable
       })
+      if (config.modelKey === 'Sidebar' && needUserInput) {
+        showChatBox()
+        const root = getMaxAISidebarRootElement()
+        root &&
+          (await intervalFindHtmlElement(
+            root,
+            '#max-ai__ai-provider-floating-button',
+            100,
+            5000,
+          ))
+      }
       cloneConfig.template =
         config.template || this.parameters?.compliedTemplate || ''
       const result: ActionSetVariablesConfirmData = await OneShotCommunicator.send(

@@ -418,8 +418,8 @@ export default class ConversationManager {
         if (message.type === 'user') {
           const userMessage = message as IUserChatMessage
           if (userMessage.extra.meta?.contextMenu) {
-            userMessage.text = (
-              userMessage.extra.meta.contextMenu.text || userMessage.text
+            userMessage.text = String(
+              userMessage.extra.meta.contextMenu.text || userMessage.text,
             ).replace(ContextMenuNamePrefixRegex, '')
             userMessage.extra.meta.contextMenu.data = undefined as any
           }

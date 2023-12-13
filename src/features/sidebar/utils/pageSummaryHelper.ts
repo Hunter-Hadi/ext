@@ -144,10 +144,7 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
@@ -324,10 +321,7 @@ Use the following format:
 
 #### Action Items
 <list of action items>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
@@ -500,10 +494,7 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
@@ -688,10 +679,7 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },

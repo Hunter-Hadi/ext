@@ -15,6 +15,7 @@ import ConversationManager, {
 } from '@/background/src/chatConversations'
 import {
   backgroundSendAllClientMessage,
+  backgroundSendClientMessage,
   createBackgroundMessageListener,
   safeGetBrowserTab,
 } from '@/background/utils'
@@ -74,6 +75,11 @@ class OpenAIChat extends BaseChat {
               await this.updateClientStatus()
               this.listenDaemonProcessTab()
               if (this.lastActiveTabId && this.lastActiveTabId > 0) {
+                await backgroundSendClientMessage(
+                  this.lastActiveTabId,
+                  'Client_updateAppSettings',
+                  {},
+                )
                 // active
                 await Browser.tabs.update(this.lastActiveTabId, {
                   active: true,

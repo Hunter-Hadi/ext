@@ -252,7 +252,7 @@ const initChromeExtensionUpdated = async () => {
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }
-  if (APP_VERSION === '2.4.5') {
+  if (APP_VERSION === '2.4.6') {
     setTimeout(
       executeChristmasPromotion,
       (1 + Math.floor(Math.random() * 9)) * 1000,

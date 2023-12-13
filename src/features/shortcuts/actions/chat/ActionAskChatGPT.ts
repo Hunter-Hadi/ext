@@ -52,20 +52,23 @@ export class ActionAskChatGPT extends Action {
         // TODO
       }
       const conversationId = this.getCurrentConversationId(engine)
+      this.question =
+        this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT
+      // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏，所以要设置messageVisibleText
+      let messageVisibleText = this.question
+      if (isOpenAIResponseLanguage) {
+        this.question += await this.generateAdditionalText(params)
+      }
+      // 如果用的是contextMenu，则直接使用contextMenu的名字
       if (
         askChatGPTType === 'ASK_CHAT_GPT_WITH_PREFIX' &&
         this.parameters.AskChatGPTActionMeta?.contextMenu
       ) {
-        this.parameters.AskChatGPTActionMeta.contextMenu.text =
+        const contextMenuNameWithPrefix =
           getContextMenuNamePrefixWithHost() +
           this.parameters.AskChatGPTActionMeta.contextMenu.text
-      }
-      this.question =
-        this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT
-      // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏，所以要设置messageVisibleText
-      const originQuestion = this.question
-      if (isOpenAIResponseLanguage) {
-        this.question += await this.generateAdditionalText(params)
+        this.parameters.AskChatGPTActionMeta.contextMenu.text = contextMenuNameWithPrefix
+        messageVisibleText = contextMenuNameWithPrefix
       }
       this.log.info('question', this.question)
       const {
@@ -84,7 +87,7 @@ export class ActionAskChatGPT extends Action {
           regenerate: false,
           meta: {
             ...this.parameters.AskChatGPTActionMeta,
-            messageVisibleText: originQuestion,
+            messageVisibleText,
           },
           aiMessageVisible:
             askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&

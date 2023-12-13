@@ -5,6 +5,8 @@ export type MaxAIPostMessageWithWebPageType =
   | 'PING'
   | 'RUN_SHORTCUTS'
   | 'OPEN_URL'
+  | 'OPEN_SIDEBAR'
+  | 'CLOSE_SIDEBAR'
 
 const postMessageToCRX = async <T>(
   win: Window,
@@ -52,6 +54,7 @@ export const webPageOpenMaxAIImmersiveChat = () => {
     '*',
   )
 }
+
 export const webPageRunMaxAIShortcuts = (actions: ISetActionsType) => {
   return postMessageToCRX(
     window,
@@ -61,4 +64,8 @@ export const webPageRunMaxAIShortcuts = (actions: ISetActionsType) => {
     },
     '*',
   )
+}
+
+export const webPageCloseSidebar = () => {
+  return postMessageToCRX(window, 'CLOSE_SIDEBAR', {}, '*')
 }

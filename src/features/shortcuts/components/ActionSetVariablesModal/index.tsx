@@ -440,6 +440,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   }
   return (
     <Stack
+      className={'max-ai__action__set_variables_modal'}
       borderRadius={'8px'}
       border={`1px solid`}
       borderColor={'customColor.borderColor'}
@@ -492,6 +493,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           </Typography>
         </Box>
         <IconButton
+          data-test-id={`close-modal-button`}
           onClick={async () => await closeModal(true)}
           sx={{
             flexShrink: 0,

@@ -1,7 +1,10 @@
 import { Grid, Stack } from '@mui/material'
 import React, { FC, useContext, useEffect, useMemo } from 'react'
 
-import { webPageRunMaxAIShortcuts } from '@/features/common/utils/postMessageToCRX'
+import {
+  webPageCloseSidebar,
+  webPageRunMaxAIShortcuts,
+} from '@/features/common/utils/postMessageToCRX'
 import PromptLibraryCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard'
 import PromptLibraryCardSkeleton from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardSkeleton'
 import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
@@ -77,6 +80,8 @@ const PromptLibraryList: FC<{
                   webPageRunMaxAIShortcuts(
                     promptLibraryCardDetailDataToActions(promptData),
                   )
+                } else {
+                  webPageCloseSidebar()
                 }
                 if (onClick) {
                   onClick(promptData)

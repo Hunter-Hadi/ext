@@ -5,7 +5,12 @@ import { MaxAIPostMessageWithWebPageType } from '@/features/common/utils/postMes
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { chromeExtensionClientOpenPage } from '@/utils'
+import {
+  chromeExtensionClientOpenPage,
+  getAppContextMenuRootElement,
+  hideChatBox,
+  showChatBox,
+} from '@/utils'
 
 /**
  * 初始化和网页的通信，用来运行网页发送的shortcuts或者打开特定的网页
@@ -139,6 +144,19 @@ const useInitWebPageMessageChannel = () => {
               actions: data.actions || [],
             })
             return
+          }
+          case 'CLOSE_SIDEBAR': {
+            const closeModalButton = getAppContextMenuRootElement()?.querySelector(
+              '.max-ai__action__set_variables_modal button[data-test-id="close-modal-button"]',
+            ) as HTMLButtonElement
+            if (closeModalButton) {
+              closeModalButton.click()
+            }
+            hideChatBox()
+            return
+          }
+          case 'OPEN_SIDEBAR': {
+            showChatBox()
           }
         }
       }

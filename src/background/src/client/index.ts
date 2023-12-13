@@ -174,6 +174,32 @@ export const ClientMessageInit = () => {
                 })
                 tabId = tab.id
               } else if (key === 'immersive_chat') {
+                const allTabs = await Browser.tabs.query({
+                  currentWindow: true,
+                })
+                for (let i = 0; i < allTabs.length; i++) {
+                  const tab = allTabs[i]
+                  if (
+                    tab.url &&
+                    tab.url.startsWith(
+                      Browser.runtime.getURL(`/pages/chat/index.html`),
+                    )
+                  ) {
+                    await Browser.tabs.update(tab.id, {
+                      url:
+                        Browser.runtime.getURL(`/pages/chat/index.html`) +
+                        query,
+                      active,
+                    })
+                    return {
+                      data: {
+                        tabId: tab.id,
+                      },
+                      success: true,
+                      message: 'ok',
+                    }
+                  }
+                }
                 const tab = await Browser.tabs.create({
                   url: Browser.runtime.getURL(`/pages/chat/index.html`) + query,
                   active,

@@ -129,42 +129,43 @@ const SidebarChatBoxChatSpeedDial: FC<{
           />
         )}
         {currentSidebarConversationType === 'Chat' && (
-          &&<SpeedDialAction
-          icon={
-            <Box
-              component={'div'}
-              onClick={(event: any) => {
-                event.stopPropagation()
-                //  data-testid={'maxai-prompt-library-button'}
-                const button = getMaxAISidebarRootElement()?.querySelector(
-                  '[data-testid="maxai-prompt-library-button"]',
-                ) as HTMLButtonElement
-                if (button) {
-                  button.click()
-                }
-              }}
-            >
-              <TextOnlyTooltip
-                placement={'left'}
-                title={t(
-                  'client:sidebar__speed_dial__one_click_prompts__button',
-                )}
+          <SpeedDialAction
+            icon={
+              <Box
+                component={'div'}
+                onClick={(event: any) => {
+                  event.stopPropagation()
+                  //  data-testid={'maxai-prompt-library-button'}
+                  const button = getMaxAISidebarRootElement()?.querySelector(
+                    '[data-testid="maxai-prompt-library-button"]',
+                  ) as HTMLButtonElement
+                  if (button) {
+                    button.click()
+                  }
+                }}
               >
-                <Stack
-                  p={1}
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                  component={'div'}
+                <TextOnlyTooltip
+                  placement={'left'}
+                  title={t(
+                    'client:sidebar__speed_dial__one_click_prompts__button',
+                  )}
                 >
-                  <MagicBookIcon
-                    sx={{ fontSize: '24px', color: 'primary.main' }}
-                  />
-                </Stack>
-              </TextOnlyTooltip>
-            </Box>
-          }
-          tooltipTitle={''}
-        />}
+                  <Stack
+                    p={1}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    component={'div'}
+                  >
+                    <MagicBookIcon
+                      sx={{ fontSize: '24px', color: 'primary.main' }}
+                    />
+                  </Stack>
+                </TextOnlyTooltip>
+              </Box>
+            }
+            tooltipTitle={''}
+          />
+        )}
         <SpeedDialAction
           icon={
             <Box

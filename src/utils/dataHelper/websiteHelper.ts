@@ -66,13 +66,14 @@ export const domain2Favicon = (domain: string) => {
   return `https://www.google.com/s2/favicons?domain=${domain}`
 }
 
-export const getCurrentDomainHost = () => {
+export const getCurrentDomainHost = (fromUrl?: string) => {
   try {
+    const urlObj = fromUrl ? new URL(fromUrl) : window?.location || location
     if (
       typeof window !== undefined &&
-      window.location.href.includes(Browser.runtime.id)
+      urlObj.href.includes(Browser.runtime.id)
     ) {
-      const crxPageUrl = window.location.origin + window.location.pathname
+      const crxPageUrl = urlObj.origin + urlObj.pathname
       // crx page - immersive chat
       if (crxPageUrl === Browser.runtime.getURL('/pages/chat/index.html')) {
         return Browser.runtime.getURL('/pages/chat/index.html')
@@ -83,9 +84,13 @@ export const getCurrentDomainHost = () => {
         return Browser.runtime.getURL('/pages/pdf/web/viewer.html')
       }
     }
-    const host = (window.location.host || location.host)
-      .replace(/^www\./, '')
-      .replace(/:\d+$/, '')
+
+    if (urlObj.host === '' && urlObj.origin === 'file://') {
+      // 本地文件 (暂定本地文件返回 origin + pathname)
+      return urlObj.origin + urlObj.pathname
+    }
+
+    const host = urlObj.host.replace(/^www\./, '').replace(/:\d+$/, '')
     // lark doc的子域名是动态的，所以需要特殊处理
     if (host.includes('larksuite.com')) {
       return 'larksuite.com'

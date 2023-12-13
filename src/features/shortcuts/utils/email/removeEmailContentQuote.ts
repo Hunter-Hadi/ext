@@ -69,5 +69,18 @@ export const removeEmailContentQuote = (
       console.error(e)
     }
   })
-  return cloneElement.innerText
+  // inject to body
+  const root = document.createElement('div')
+  root.style.position = 'absolute'
+  root.style.top = '-9999px'
+  root.style.left = '-9999px'
+  root.style.zIndex = '-9999'
+  root.style.width = '1px'
+  root.style.height = '1px'
+  root.style.overflow = 'hidden'
+  root.appendChild(cloneElement)
+  document.body.appendChild(root)
+  const innerText = root.innerText
+  root.remove()
+  return innerText
 }

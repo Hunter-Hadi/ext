@@ -1,7 +1,8 @@
 // 基于 chatgpt 3.5 的 token 限制
 import cl100k_base from 'gpt-tokenizer/esm/encoding/cl100k_base'
-import { executeWebWorkerTask } from '@/utils/webWorkerClient'
+
 import { isMaxAIPage } from '@/utils/dataHelper/websiteHelper'
+import { executeWebWorkerTask } from '@/utils/webWorkerClient'
 
 export const MAX_CHARACTERS_TOKENS = 4096
 
@@ -205,6 +206,7 @@ export const sliceTextByTokens = async (
   }
   fillTextChunks()
   const totalChunks = textChunks.length
+  let currentDirection = startSlicePosition === 'end' ? 'end' : 'start'
   // 基于 [thread] 从头尾获取本次计算的 chunks
   const getChunksByThead = () => {
     const result: Array<{
@@ -217,7 +219,7 @@ export const sliceTextByTokens = async (
         break
       }
       // 如果是从尾部开始
-      if (startSlicePosition === 'end') {
+      if (currentDirection === 'end') {
         // 如果是偶数
         if (count % 2 === 0) {
           // 从尾部获取
@@ -232,6 +234,7 @@ export const sliceTextByTokens = async (
             text: textChunks.shift() || '',
           })
         }
+        currentDirection = 'start'
       } else {
         // 如果是从头部开始
         // 如果是偶数
@@ -248,6 +251,7 @@ export const sliceTextByTokens = async (
             text: textChunks.pop() || '',
           })
         }
+        currentDirection = 'end'
       }
       count++
     }
@@ -293,7 +297,10 @@ export const sliceTextByTokens = async (
       }
     }
   }
-  console.log(`sliceTextByTokens result usage [${usage}]`)
+  console.log(
+    `sliceTextByTokens result usage [${usage}]`,
+    results.join('') === text,
+  )
   return {
     isLimit: false,
     text: results.join(''),

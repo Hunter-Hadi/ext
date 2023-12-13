@@ -54,7 +54,6 @@ const useInitWebPageMessageChannel = () => {
       currentSidebarConversationType === 'Chat' &&
       !isRunningActionsRef.current
     ) {
-      debugger
       isRunningActionsRef.current = true
       setShortCuts(waitRunActionsConfig.actions)
       runShortCuts()

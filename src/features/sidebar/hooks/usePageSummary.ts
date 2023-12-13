@@ -3,30 +3,31 @@
  * @since - 2023-08-15
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
+import { useEffect, useRef, useState } from 'react'
+import { useSetRecoilState } from 'recoil'
+
+import {
+  getChromeExtensionOnBoardingData,
+  setChromeExtensionOnBoardingData,
+} from '@/background/utils'
+import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import {
   getContextMenuActionsByPageSummaryType,
   getPageSummaryConversationId,
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { useSetRecoilState } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { useEffect, useRef, useState } from 'react'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 const usePageSummary = () => {
   const {

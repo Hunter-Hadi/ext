@@ -1,17 +1,18 @@
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import cloneDeep from 'lodash-es/cloneDeep'
-import Browser from 'webextension-polyfill'
 import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
+
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import {
   getIframePageContent,
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
-import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
+import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'

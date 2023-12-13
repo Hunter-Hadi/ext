@@ -1,18 +1,20 @@
+import { useMemo } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { AppLocalStorageState } from '@/store'
-import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
+
+import { IChatConversation } from '@/background/src/chatConversations'
 import {
   getChromeExtensionLocalStorage,
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { useMemo } from 'react'
+import { IChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/type'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
+import { IChatMessage } from '@/features/chatgpt/types'
 import {
   ISidebarConversationType,
   SidebarPageState,
 } from '@/features/sidebar/store'
-import { IChatMessage } from '@/features/chatgpt/types'
-import { IChatConversation } from '@/background/src/chatConversations'
+import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
+import { AppLocalStorageState } from '@/store'
 
 const useSidebarSettings = () => {
   const [appLocalStorage, setAppLocalStorage] = useRecoilState(
@@ -55,9 +57,7 @@ const useSidebarSettings = () => {
           appLocalStorage.sidebarSettings?.search?.conversationId || ''
         ]?.messages || [],
       Summary:
-        clientConversationMap[
-          appLocalStorage.sidebarSettings?.summary?.conversationId || ''
-        ]?.messages || [],
+        clientConversationMap[getPageSummaryConversationId()]?.messages || [],
     } as {
       [key in ISidebarConversationType]: IChatMessage[]
     }

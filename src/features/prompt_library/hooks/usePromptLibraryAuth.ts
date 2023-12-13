@@ -1,5 +1,6 @@
 import { atom, useRecoilState } from 'recoil'
 
+import { useAuthLogin } from '@/features/auth'
 import { MAXAI_APP_ROOT_ID } from '@/features/common/constants'
 
 const PromptLibraryHandlerState = atom<{
@@ -30,7 +31,8 @@ const usePromptLibraryAuth = () => {
     promptLibraryAuthHandler,
     setPromptLibraryAuthHandler,
   ] = useRecoilState(PromptLibraryHandlerState)
-  const isLogin = false
+  const authState = useAuthLogin()
+  const isLogin = authState.isLogin
   const checkAuthAsync = async () => {
     if (!isLogin) {
       await promptLibraryAuthHandler.authHandler()

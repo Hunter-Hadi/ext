@@ -9,6 +9,7 @@ import { MAXAI_PROMPT_LIBRARY_ROOT_ID } from '@/features/common/constants'
 import PromptLibraryHeader from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader'
 import PromptLibraryList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList'
 import PromptLibraryListProgress from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/PromptLibraryListProgress'
+import PromptLibraryCardEditForm from '@/features/prompt_library/extension_components/PromptLibraryCardEditForm'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 import {
   PromptLibraryRuntimeContext,
@@ -63,6 +64,7 @@ const PromptLibrary: FC<IPromptLibraryAppProps> = (props) => {
           }}
         />
       </Stack>
+      <PromptLibraryCardEditForm />
     </PromptLibraryRuntimeContext.Provider>
   )
 }

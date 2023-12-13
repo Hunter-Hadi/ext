@@ -76,12 +76,14 @@ const PromptLibraryList: FC<{
               actionButton={actionButton}
               prompt={prompt}
               onClick={(promptData) => {
-                if (promptData && promptLibraryRuntime === 'WebPage') {
-                  webPageRunMaxAIShortcuts(
-                    promptLibraryCardDetailDataToActions(promptData),
-                  )
-                } else {
-                  webPageCloseSidebar()
+                if (promptLibraryRuntime === 'WebPage') {
+                  if (promptData) {
+                    webPageRunMaxAIShortcuts(
+                      promptLibraryCardDetailDataToActions(promptData),
+                    )
+                  } else {
+                    webPageCloseSidebar()
+                  }
                 }
                 if (onClick) {
                   onClick(promptData)

@@ -238,11 +238,14 @@ export class ActionAskChatGPT extends Action {
     // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
     if (isAuto) {
       if (CONTEXT) {
-        const partOfSelectedText =
-          CONTEXT.slice(0, 120)
-            .replace(/[*#\n]/g, '')
-            .replace(/"/g, '')
-            .trim() || CONTEXT.slice(0, 120)
+        const sliceOfText = CONTEXT.slice(300)
+          // remove links
+          .replace(/https?:\/\/[^\s]+/g, '')
+          .replace(/[*#\n]/g, '')
+          .replace(/"/g, '')
+          .trim()
+          .slice(0, 120)
+        const partOfSelectedText = sliceOfText || CONTEXT.slice(0, 120)
         // the same language variety or dialect of the text
         // systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
         // systemVariablesTemplate = `Please respond in the same language of the text: "${partOfSelectedText}".`

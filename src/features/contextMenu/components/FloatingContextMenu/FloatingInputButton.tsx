@@ -1,14 +1,14 @@
-import React, { FC } from 'react'
-
 import Button from '@mui/material/Button'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import { UseChatGptIcon } from '@/components/CustomIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { useFloatingContextMenu } from '@/features/contextMenu'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { useTranslation } from 'react-i18next'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-const NO_SUPPORT_HOST = ['teams.live.com', 'notion.so']
+const NO_SUPPORT_HOST = []
 
 /**
  * 输入框呼出按钮

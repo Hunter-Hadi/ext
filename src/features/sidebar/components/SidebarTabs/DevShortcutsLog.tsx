@@ -82,13 +82,74 @@ const DevShortcutsLog: FC = () => {
           borderColor = 'success.main'
           color = 'success.main'
         }
+        const isAskChatGPT = action.type === 'ASK_CHATGPT'
+        const AskChatGPTQuestion = isAskChatGPT ? (action as any).question : ''
+        const isSuccess = action.status === 'complete'
+        const output = isSuccess ? action.output : action.error
         return (
           <Stack key={action.type + index} sx={{ px: 1, alignItems: 'center' }}>
             <TextOnlyTooltip
               placement={'right'}
               title={`[${action.type}]`}
               description={
-                action.status === 'complete' ? action.output : action.error
+                <Stack
+                  sx={{
+                    maxHeight: 500,
+                    overflowY: 'auto',
+                    gap: 1,
+                  }}
+                >
+                  {isAskChatGPT && (
+                    <Stack>
+                      <Typography
+                        fontSize={'12px'}
+                        display={'flex'}
+                        alignItems={'center'}
+                        gap={1}
+                      >
+                        [Question]
+                        <CopyTooltipIconButton
+                          copyText={AskChatGPTQuestion}
+                          sx={{
+                            color: 'text.primary',
+                            height: '12px',
+                          }}
+                        />
+                      </Typography>
+                      <Typography
+                        sx={{
+                          whiteSpace: 'pre-wrap',
+                        }}
+                        fontSize={'12px'}
+                      >
+                        {AskChatGPTQuestion}
+                      </Typography>
+                    </Stack>
+                  )}
+                  <Typography
+                    fontSize={'12px'}
+                    display={'flex'}
+                    alignItems={'center'}
+                    gap={1}
+                  >
+                    {isSuccess ? `[Answer]` : `[Error]`}
+                    <CopyTooltipIconButton
+                      copyText={output}
+                      sx={{
+                        color: 'text.primary',
+                        height: '12px',
+                      }}
+                    />
+                  </Typography>
+                  <Typography
+                    sx={{
+                      whiteSpace: 'pre-wrap',
+                    }}
+                    fontSize={'12px'}
+                  >
+                    {output}
+                  </Typography>
+                </Stack>
               }
             >
               <Stack

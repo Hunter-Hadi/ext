@@ -65,15 +65,17 @@ export class ActionAskChatGPT extends Action {
         )
       }
       // 如果用的是contextMenu，则直接使用contextMenu的名字
-      if (
-        askChatGPTType === 'ASK_CHAT_GPT_WITH_PREFIX' &&
-        this.parameters.AskChatGPTActionMeta?.contextMenu
-      ) {
-        const contextMenuNameWithPrefix =
-          getContextMenuNamePrefixWithHost() +
-          this.parameters.AskChatGPTActionMeta.contextMenu.text
-        this.parameters.AskChatGPTActionMeta.contextMenu.text = contextMenuNameWithPrefix
-        messageVisibleText = contextMenuNameWithPrefix
+      if (this.parameters.AskChatGPTActionMeta?.contextMenu?.text) {
+        if (askChatGPTType === 'ASK_CHAT_GPT_WITH_PREFIX') {
+          const contextMenuNameWithPrefix =
+            getContextMenuNamePrefixWithHost() +
+            this.parameters.AskChatGPTActionMeta.contextMenu.text
+          this.parameters.AskChatGPTActionMeta.contextMenu.text = contextMenuNameWithPrefix
+          messageVisibleText = contextMenuNameWithPrefix
+        } else {
+          messageVisibleText = this.parameters.AskChatGPTActionMeta.contextMenu
+            .text
+        }
       }
       this.log.info('question', this.question)
       const {

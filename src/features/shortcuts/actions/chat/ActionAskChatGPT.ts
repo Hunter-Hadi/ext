@@ -195,6 +195,7 @@ export class ActionAskChatGPT extends Action {
       SOCIAL_MEDIA_TARGET_POST_OR_COMMENT?: string
       SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT?: string
       EMAIL_DRAFT?: string
+      POST_DRAFT?: string
     },
   ) {
     let systemVariablesTemplate = ''
@@ -212,6 +213,7 @@ export class ActionAskChatGPT extends Action {
       params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // quick reply的上下文
       params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT ||
       params.EMAIL_DRAFT ||
+      params.POST_DRAFT ||
       ''
     // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
     if (isAuto) {

@@ -41,7 +41,7 @@ export const createShadowRoot = (props: ICreateShadowRootProps) => {
   const isSupportWebComponent = 'customElements' in window
   const shadowRoot = document.createElement(
     isSupportWebComponent && webComponent
-      ? `webchatgpt-custom-element-${uuidV4()}`
+      ? `maxai-custom-element-${uuidV4()}`
       : 'div',
   )
   if (shadowRootId) {

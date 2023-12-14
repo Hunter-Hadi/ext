@@ -31,7 +31,11 @@ const DevMessageSourceData: FC<{
             </Stack>
           }
         >
-          <CodeIcon />
+          <CodeIcon
+            sx={{
+              fontSize: 24,
+            }}
+          />
         </Tooltip>
       </Box>
     </DevContent>

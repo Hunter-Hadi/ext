@@ -4,18 +4,12 @@ import {
   IChromeExtensionButtonSettingKey,
   IChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/type'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const getLiteChromeExtensionDBStorage = async (
   fromUrl?: string,
 ): Promise<IChromeExtensionDBStorage> => {
-  let host =
-    new URL(fromUrl || 'https://a').host
-      ?.replace(/^www\./, '')
-      ?.replace(/:\d+$/, '') || ''
-  // lark doc的子域名是动态的，所以需要特殊处理
-  if (host.includes('larksuite.com')) {
-    host = 'larksuite.com'
-  }
+  const host = getCurrentDomainHost(fromUrl)
   const settings = await getChromeExtensionDBStorage()
   if (host && settings.buttonSettings) {
     for (const key in settings.buttonSettings) {

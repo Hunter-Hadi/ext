@@ -4,13 +4,19 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
+import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_ID,
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+} from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
+import { ActionAskChatGPT } from '@/features/shortcuts/actions'
 import {
   crawlingSearchResults,
   ICrawlingSearchResult,
 } from '@/features/shortcuts/utils/searchEngineCrawling'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 import {
@@ -141,6 +147,14 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     } else {
       setIsUseCache(false)
     }
+    // 0.确认语言
+    let userSelectedLanguage =
+      (await clientGetLiteChromeExtensionDBStorage()).userSettings?.language ||
+      DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    // NOTE: 历史遗留问题
+    if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
+      userSelectedLanguage = DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    }
 
     // 1. GET_CONTENTS_OF_HTML
     let sources: ICrawlingSearchResult[] = []
@@ -172,6 +186,27 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       }
 
       template = await generatePromptTemplate(question, expandContent)
+      debugger
+      const additionalText = await ActionAskChatGPT.generateAdditionalText({
+        PAGE_CONTENT: expandContent,
+        AI_RESPONSE_LANGUAGE: userSelectedLanguage,
+      })
+      if (additionalText.addPosition === 'end') {
+        template += additionalText.data + '\n\n'
+      } else {
+        template = additionalText.data + '\n\n' + template
+      }
+    } else {
+      debugger
+      const additionalText = await ActionAskChatGPT.generateAdditionalText({
+        PAGE_CONTENT: question,
+        AI_RESPONSE_LANGUAGE: userSelectedLanguage,
+      })
+      if (additionalText.addPosition === 'end') {
+        template += additionalText.data + '\n\n'
+      } else {
+        template = additionalText.data + '\n\n' + template
+      }
     }
 
     // 3. ASK_CHATGPT

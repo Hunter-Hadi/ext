@@ -1,33 +1,33 @@
+import dayjs from 'dayjs'
+import random from 'lodash-es/random'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { v4 as uuidV4 } from 'uuid'
+
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
 import {
   crawlingSearchResults,
   ICrawlingSearchResult,
 } from '@/features/shortcuts/utils/searchEngineCrawling'
-import dayjs from 'dayjs'
-import random from 'lodash-es/random'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_APP_NAME,
   // SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT,
   SEARCH_WITH_AI_PROMPT,
 } from '../constants'
-import { searchWithAIAskQuestion, ISearchPageKey } from '../utils'
-import useSearchWithAISettings from './useSearchWithAISettings'
-import useSearchWithAISources from './useSearchWithAISources'
-import { v4 as uuidV4 } from 'uuid'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { useRecoilState, useSetRecoilState } from 'recoil'
 import {
   AutoTriggerAskEnableAtom,
   ISearchWithAIConversationType,
   SearchWithAIConversationAtom,
 } from '../store'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
-import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
-import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
+import { ISearchPageKey, searchWithAIAskQuestion } from '../utils'
 import useSearchWithAICache from './useSearchWithAICache'
+import useSearchWithAISettings from './useSearchWithAISettings'
+import useSearchWithAISources from './useSearchWithAISources'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -396,16 +396,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
 const generatePromptTemplate = async (query: string, content: string) => {
   let promptTemplate = SEARCH_WITH_AI_PROMPT
-  const userSelectedLanguage = (await clientGetLiteChromeExtensionDBStorage())
-    ?.userSettings?.language
-  if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
-    // 不需要操作
-  } else {
-    promptTemplate += `\nRespond in ${userSelectedLanguage}.`
-  }
-
   const date = dayjs().format('YYYY-MM-DD HH:mm:ss')
-
   promptTemplate = promptTemplate.replace(/{query}/g, query)
   promptTemplate = promptTemplate.replace(/{web_results}/g, content)
   promptTemplate = promptTemplate.replace(/{current_date}/g, date)

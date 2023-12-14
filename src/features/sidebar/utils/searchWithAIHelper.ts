@@ -7,7 +7,6 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
-import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
 export const SMART_SEARCH_PROMPT_OUTPUT_MULTIPLE = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
@@ -88,11 +87,6 @@ const generatePromptTemplate = async (query: string) => {
     '{current_date}',
     '{{CURRENT_DATE}}',
   )
-  const userConfig = await clientGetLiteChromeExtensionDBStorage()
-  if (userConfig.userSettings?.language) {
-    promptTemplate =
-      promptTemplate + `\nRespond in ${userConfig.userSettings?.language}`
-  }
   return promptTemplate
 }
 

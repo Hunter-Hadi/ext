@@ -57,7 +57,12 @@ export class ActionAskChatGPT extends Action {
       // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏，所以要设置messageVisibleText
       let messageVisibleText = this.question
       if (isOpenAIResponseLanguage) {
-        this.question += await this.generateAdditionalText(params)
+        // this.question += await this.generateAdditionalText(params)
+        this.question = this.question?.replace(
+          'Ignore all previous instructions. ',
+          'Ignore all previous instructions.\n' +
+            (await this.generateAdditionalText(params)),
+        )
       }
       // 如果用的是contextMenu，则直接使用contextMenu的名字
       if (
@@ -180,8 +185,14 @@ export class ActionAskChatGPT extends Action {
     params: ActionParameters & {
       AI_RESPONSE_TONE?: string
       AI_RESPONSE_WRITING_STYLE?: string
+      // web search的上下文
       WEB_SEARCH_RESULTS?: string
+      // summary的上下文
       READABILITY_CONTENTS?: string
+      // quick reply的上下文
+      SOCIAL_MEDIA_TARGET_POST_OR_COMMENT?: string
+      SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT?: string
+      EMAIL_DRAFT?: string
     },
   ) {
     let systemVariablesTemplate = ''
@@ -196,16 +207,26 @@ export class ActionAskChatGPT extends Action {
       params.SELECTED_TEXT || // 选中的内容
       params.READABILITY_CONTENTS || //总结的上下文
       params.WEB_SEARCH_RESULTS || // 搜索的上下文
+      params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // quick reply的上下文
+      params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT ||
+      params.EMAIL_DRAFT ||
       ''
     // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
     if (isAuto) {
       if (CONTEXT) {
         const partOfSelectedText =
-          CONTEXT.slice(0, 80).replace(/\n/g, '').replace(/"/g, '') ||
-          CONTEXT.slice(0, 80)
+          CONTEXT.slice(0, 120)
+            .replace(/[*#\n]/g, '')
+            .replace(/"/g, '')
+            .trim() || CONTEXT.slice(0, 120)
         // the same language variety or dialect of the text
         // systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
-        systemVariablesTemplate = `Please write in the same language variety or dialect of the text: "${partOfSelectedText}".`
+        // systemVariablesTemplate = `Please respond in the same language of the text: "${partOfSelectedText}".`
+        systemVariablesTemplate = `System: Follow these four instructions below in all your responses:
+System: 1. Set [TARGET_LANGUAGE] = the language variety or dialect of the text: "${partOfSelectedText}".
+System: 2. Use [TARGET_LANGUAGE] language only;
+System: 3. Do not use English except in programming languages if any;
+System: 4. Translate any other language to the [TARGET_LANGUAGE] language whenever possible.\n\n`
       }
       // 没有SELECTED_TEXT, 不处理
     } else {
@@ -237,7 +258,7 @@ export class ActionAskChatGPT extends Action {
     if (result.error || !systemVariablesTemplate) {
       return ''
     }
-    return '\n\n---\n\n' + result.data
+    return result.data
   }
   reset() {
     console.log('reset')

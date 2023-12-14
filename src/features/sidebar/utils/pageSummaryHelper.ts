@@ -599,13 +599,28 @@ Use the following format:
           },
         },
         {
-          type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
-          parameters: {},
+          type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+          parameters: {
+            OperationElementElementSelector: 'ytd-watch-metadata #title',
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: '{{SOCIAL_MEDIA_PAGE_CONTENT}}',
+          },
+        },
+        {
+          type: 'ANALYZE_CHAT_FILE',
+          parameters: {
+            AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+            AnalyzeChatFileImmediateUpdateConversation: false,
+          },
         },
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'YOUTUBE_TRANSCRIPT',
+            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -639,25 +654,6 @@ Use the following format:
                 include_history: false,
               },
             } as IAIResponseMessage,
-          },
-        },
-        {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template: `{{YOUTUBE_TRANSCRIPT}}`,
-          },
-        },
-        {
-          type: 'ANALYZE_CHAT_FILE',
-          parameters: {
-            AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
-            AnalyzeChatFileImmediateUpdateConversation: false,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {

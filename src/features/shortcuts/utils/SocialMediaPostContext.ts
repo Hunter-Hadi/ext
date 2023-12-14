@@ -52,6 +52,8 @@ export interface ISocialMediaPostContextData {
   SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: string
   // 社交媒体要回复的Post或者Comment用到的上下文
   SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT: string
+  // 社交媒体页面内容
+  SOCIAL_MEDIA_PAGE_CONTENT: string
 }
 
 export default class SocialMediaPostContext {
@@ -90,6 +92,7 @@ export default class SocialMediaPostContext {
     return {
       SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT: '',
       SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: '',
+      SOCIAL_MEDIA_PAGE_CONTENT: '',
       postText: '',
     }
   }
@@ -105,8 +108,13 @@ export default class SocialMediaPostContext {
     postText += `\n**Post author:** ${author || 'N/A'}`
     postText += `\n**Post title:** ${title || 'N/A'}`
     postText += `\n**${this.config.postContentTagName}:**\n${content || 'N/A'}`
+    let pageContent = ''
+    pageContent += `[Page title]: ${title || 'N/A'}`
+    pageContent += `\n[Page author]: ${author || 'N/A'}`
+    pageContent += `\n[Page content]:\n${content || 'N/A'}`
     Object.keys(this.config.meta || {}).forEach((metaKey) => {
       postText += `\n**${metaKey}:**\n${this.config.meta?.[metaKey] || 'N/A'}`
+      pageContent += `\n[${metaKey}]:\n${this.config.meta?.[metaKey] || 'N/A'}`
     })
     if (commentsData?.lastText) {
       return {
@@ -126,6 +134,7 @@ ${commentsData.lastText}`,
         replyComment: commentsData.last.data,
         previousComments: this.commentList?.[0] || [],
         previousCommentsText: commentsData.previousText,
+        SOCIAL_MEDIA_PAGE_CONTENT: pageContent,
       }
     } else {
       return {
@@ -135,6 +144,7 @@ ${commentsData.lastText}`,
         postText,
         previousComments: this.commentList?.[0] || [],
         previousCommentsText: commentsData?.previousText,
+        SOCIAL_MEDIA_PAGE_CONTENT: pageContent,
       }
     }
   }

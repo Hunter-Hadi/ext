@@ -105,6 +105,8 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                     searchResult,
                     summarizePrompt,
                     partOfPageSummaryTokensLimit,
+                    params.AI_RESPONSE_LANGUAGE ||
+                      DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
                   )
                   searchResult.body = textHandler(summarizeResult.data, {
                     trim: true,
@@ -155,6 +157,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
     pageContent: ICrawlingSearchResult,
     prompt: string,
     maxTokens: number,
+    aiResponseLanguage: string,
   ) {
     let messageContent = prompt
       .replaceAll('{{SMART_QUERY}}', pageContent.searchQuery || '')
@@ -164,7 +167,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
     // 基于AI的智能补充
     const additionalText = await ActionAskChatGPT.generateAdditionalText({
       PAGE_CONTENT: pageContent.body,
-      AI_RESPONSE_LANGUAGE: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+      AI_RESPONSE_LANGUAGE: aiResponseLanguage,
     })
     if (additionalText.addPosition === 'end') {
       messageContent += additionalText.data + '\n\n'
@@ -172,8 +175,8 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       messageContent = additionalText.data + '\n\n' + messageContent
     }
     return await clientAskMaxAIChatProvider(
-      'MAXAI_CLAUDE',
-      'claude-instant-v1',
+      'USE_CHAT_GPT_PLUS',
+      'gpt-3.5-turbo-16k',
       {
         message_content: messageContent,
         prompt_id: 'cae761b7-3703-4ff9-83ab-527b7a24e53b',

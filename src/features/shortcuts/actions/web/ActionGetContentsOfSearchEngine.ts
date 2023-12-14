@@ -1,18 +1,19 @@
+import isNumber from 'lodash-es/isNumber'
+
 import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   parametersParserDecorator,
   pushOutputToChat,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import {
   backgroundFetchHTMLByUrl,
   crawlingSearchResults,
 } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { interleaveMerge } from '@/utils/dataHelper/arrayHelper'
-import isNumber from 'lodash-es/isNumber'
 
 export interface SearchResponse {
   status: number
@@ -105,6 +106,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
               return crawlingSearchResults({
                 html,
                 searchEngine,
+                searchQuery: itemQuery,
               })
             }
             return []

@@ -761,8 +761,17 @@ const getCurrentPageUrl = () => {
   return pageUrl
 }
 
+const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
+  [key in string]: string
+} = {}
 export const getPageSummaryConversationId = () => {
-  return md5TextEncrypt(getCurrentPageUrl())
+  const pageUrl = getCurrentPageUrl()
+  if (!PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]) {
+    PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(
+      getCurrentPageUrl(),
+    )
+  }
+  return PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]
 }
 export const getPageSummaryType = (): IPageSummaryType => {
   if (getCurrentDomainHost() === 'youtube.com') {

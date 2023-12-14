@@ -1,20 +1,22 @@
+import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
+import { ActionAskChatGPT } from '@/features/shortcuts/actions'
 import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
-import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
+import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import {
   getTextTokens,
   MAX_CHARACTERS_TOKENS,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-import { textHandler } from '@/features/shortcuts/utils/textHelper'
 
 // import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
 
@@ -87,17 +89,16 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 },
               })
               // 2. 获取页面内容成功时，用页面内容替换 body、title
-              let body = searchResult.body || ''
-              let title = searchResult.title || ''
               if (response.data.success) {
+                searchResult.body = response.data.body || searchResult.body
+                searchResult.title = response.data.title || searchResult.title
                 // 3. 获取页面内容成功时，才会进行异步总结
                 // 根据 MAX_CHARACTERS_TOKENS ，计算出每次总结结果的长度
                 const partOfPageSummaryTokensLimit = Math.floor(
                   MAX_CHARACTERS_TOKENS / searchResults.length,
                 )
-                body = response?.data?.body || body
-                title = response?.data?.title || title
-                const bodyTokens = (await getTextTokens(body)).length
+                const bodyTokens = (await getTextTokens(searchResult.body))
+                  .length
                 if (bodyTokens > partOfPageSummaryTokensLimit) {
                   // 网页内容的长度超过了每次总结的长度，需要进行总结
                   const summarizeResult = await this.createWebpageSummary(
@@ -105,18 +106,19 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                     summarizePrompt,
                     partOfPageSummaryTokensLimit,
                   )
-                  body = textHandler(summarizeResult.data, {
+                  searchResult.body = textHandler(summarizeResult.data, {
                     trim: true,
                     noSummaryTag: true,
                   })
                   // 确保总结后的长度不会超过每次总结的长度
-                  body = (
-                    await sliceTextByTokens(body, partOfPageSummaryTokensLimit)
+                  searchResult.body = (
+                    await sliceTextByTokens(
+                      searchResult.body,
+                      partOfPageSummaryTokensLimit,
+                    )
                   ).text
                 }
               }
-              searchResult.title = title
-              searchResult.body = body
               return searchResult
             } catch (e) {
               console.error(e)
@@ -154,14 +156,26 @@ export class ActionWebGPTSearchResultsExpand extends Action {
     prompt: string,
     maxTokens: number,
   ) {
+    let messageContent = prompt
+      .replaceAll('{{SMART_QUERY}}', pageContent.searchQuery || '')
+      .replaceAll('{{WEBPAGE_URL}}', pageContent.url)
+      .replaceAll('{{NUMBER_OF_WORDS}}', `${maxTokens}`)
+      .replaceAll('{{WEBPAGE_CONTENT}}', `${pageContent.body}`)
+    // 基于AI的智能补充
+    const additionalText = await ActionAskChatGPT.generateAdditionalText({
+      PAGE_CONTENT: pageContent.body,
+      AI_RESPONSE_LANGUAGE: DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+    })
+    if (additionalText.addPosition === 'end') {
+      messageContent += additionalText.data + '\n\n'
+    } else {
+      messageContent = additionalText.data + '\n\n' + messageContent
+    }
     return await clientAskMaxAIChatProvider(
       'MAXAI_CLAUDE',
       'claude-instant-v1',
       {
-        message_content: prompt
-          .replaceAll('{{WEBPAGE_URL}}', pageContent.url)
-          .replaceAll('{{NUMBER_OF_WORDS}}', `${maxTokens}`)
-          .replaceAll('{{WEBPAGE_CONTENT}}', `${pageContent.body}`),
+        message_content: messageContent,
         prompt_id: 'cae761b7-3703-4ff9-83ab-527b7a24e53b',
         prompt_name: '[Search] smart page',
       },

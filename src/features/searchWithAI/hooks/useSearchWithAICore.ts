@@ -150,6 +150,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       const results = crawlingSearchResults({
         html: document.body.innerHTML,
         searchEngine: siteName,
+        searchQuery: question,
       })
 
       // search with ai 中 source 只取6个

@@ -172,6 +172,15 @@ export const generateSearchWithAIActions = async (
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
       },
     },
+    // 为了触发askChatGPT的ai response language detection
+    {
+      type: 'SET_VARIABLE_MAP',
+      parameters: {
+        VariableMap: {
+          SELECTED_TEXT: currentQuestion,
+        },
+      },
+    },
     {
       type: 'ASK_CHATGPT',
       parameters: {
@@ -331,7 +340,7 @@ export const generateSearchWithAIActions = async (
 
 Question:
 <question>
-${currentQuestion}
+{{SMART_QUERY}}
 </question>
 
 Text:

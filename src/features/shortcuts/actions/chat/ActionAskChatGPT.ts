@@ -6,6 +6,7 @@ import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
   parametersParserDecorator,
+  shortcutsRenderTemplate,
   templateParserDecorator,
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -58,11 +59,27 @@ export class ActionAskChatGPT extends Action {
       let messageVisibleText = this.question
       if (isOpenAIResponseLanguage) {
         // this.question += await this.generateAdditionalText(params)
-        this.question = this.question?.replace(
-          'Ignore all previous instructions. ',
-          'Ignore all previous instructions.\n' +
-            (await this.generateAdditionalText(params)),
-        )
+        const {
+          data: additionalText,
+          addPosition,
+        } = await ActionAskChatGPT.generateAdditionalText(params)
+        if (additionalText) {
+          if (
+            this.question?.startsWith('Ignore all previous instructions. ') &&
+            addPosition === 'start'
+          ) {
+            this.question = this.question.replace(
+              'Ignore all previous instructions. ',
+              'Ignore all previous instructions.\n' + additionalText + '\n\n',
+            )
+          } else {
+            if (addPosition === 'start') {
+              this.question = additionalText + '\n\n' + this.question
+            } else {
+              this.question += '\n\n' + additionalText
+            }
+          }
+        }
       }
       // 如果用的是contextMenu，则直接使用contextMenu的名字
       if (this.parameters.AskChatGPTActionMeta?.contextMenu?.text) {
@@ -183,12 +200,13 @@ export class ActionAskChatGPT extends Action {
       this.error = chatGPTCommonErrorInterceptor((e as any).toString())
     }
   }
-  async generateAdditionalText(
+  static async generateAdditionalText(
     params: ActionParameters & {
       AI_RESPONSE_TONE?: string
       AI_RESPONSE_WRITING_STYLE?: string
       // web search的上下文
       WEB_SEARCH_RESULTS?: string
+      PAGE_CONTENT?: string
       // summary的上下文
       READABILITY_CONTENTS?: string
       // quick reply的上下文
@@ -198,6 +216,7 @@ export class ActionAskChatGPT extends Action {
       POST_DRAFT?: string
     },
   ) {
+    let addPosition = 'end'
     let systemVariablesTemplate = ''
     // 根据CONTEXT和 是否为Auto会有四个场景:
     //  - Auto, 有CONTEXT -> 回复和CONTEXT相同的语言加在最后面
@@ -209,6 +228,7 @@ export class ActionAskChatGPT extends Action {
     const CONTEXT =
       params.READABILITY_CONTENTS || //总结的上下文
       params.WEB_SEARCH_RESULTS || // 搜索的上下文
+      params.PAGE_CONTENT || // 搜索的上下文
       params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // quick reply的上下文
       params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT || // quick reply的上下文
       params.EMAIL_DRAFT || // quick reply的上下文
@@ -230,7 +250,8 @@ export class ActionAskChatGPT extends Action {
 System: 1. Set [TARGET_LANGUAGE] = the language variety or dialect of the text: "${partOfSelectedText}".
 System: 2. Use [TARGET_LANGUAGE] language only;
 System: 3. Do not use English except in programming languages if any;
-System: 4. Translate any other language to the [TARGET_LANGUAGE] language whenever possible.\n\n`
+System: 4. Translate any other language to the [TARGET_LANGUAGE] language whenever possible.`
+        addPosition = 'start'
       }
       // 没有SELECTED_TEXT, 不处理
     } else {
@@ -258,11 +279,17 @@ System: 4. Translate any other language to the [TARGET_LANGUAGE] language whenev
         systemVariablesTemplate = `Please write in {{AI_RESPONSE_LANGUAGE}}`
       }
     }
-    const result = await this.parseTemplate(systemVariablesTemplate, params)
+    const result = shortcutsRenderTemplate(systemVariablesTemplate, params)
     if (result.error || !systemVariablesTemplate) {
-      return ''
+      return {
+        data: '',
+        addPosition,
+      }
     }
-    return result.data
+    return {
+      data: result.data,
+      addPosition,
+    }
   }
   reset() {
     console.log('reset')

@@ -207,13 +207,13 @@ export class ActionAskChatGPT extends Action {
     const isAuto =
       params.AI_RESPONSE_LANGUAGE === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
     const CONTEXT =
-      params.SELECTED_TEXT || // 选中的内容
       params.READABILITY_CONTENTS || //总结的上下文
       params.WEB_SEARCH_RESULTS || // 搜索的上下文
       params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // quick reply的上下文
-      params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT ||
-      params.EMAIL_DRAFT ||
-      params.POST_DRAFT ||
+      params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT || // quick reply的上下文
+      params.EMAIL_DRAFT || // quick reply的上下文
+      params.POST_DRAFT || // quick reply的上下文
+      params.SELECTED_TEXT || // 选中的内容
       ''
     // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
     if (isAuto) {

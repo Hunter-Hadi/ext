@@ -95,6 +95,10 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
           element.style.maxWidth = '95%'
         })
     }
+
+    if (host === 'mail.qq.com') {
+      htmlElement.style.width = '100%'
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {

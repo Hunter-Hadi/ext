@@ -220,7 +220,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     return () => window.removeEventListener('focus', focusListener)
   }, [])
 
-  console.log('scrolledToBottomRef.current', scrolledToBottomRef.current)
+  // console.log('scrolledToBottomRef.current', scrolledToBottomRef.current)
   const tempIsShowRegenerate = useMemo(() => {
     if (
       currentSidebarConversationType === 'Chat' &&

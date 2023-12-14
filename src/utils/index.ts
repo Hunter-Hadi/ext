@@ -104,6 +104,10 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
   if (document.querySelector('embed[type="application/pdf"]')) {
     document.body.style.height = '100vh'
   }
+
+  if (host === 'greylock.com') {
+    document.body.style.overflow = 'unset'
+  }
 }
 
 /**
@@ -147,6 +151,11 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
     document.body.style.height = ''
+  }
+
+  if (host === 'greylock.com') {
+    // 关闭 chat box 的时候 清楚设定的值
+    document.body.style.overflow = ''
   }
 }
 

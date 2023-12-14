@@ -249,7 +249,7 @@ export class ActionAskChatGPT extends Action {
         // the same language variety or dialect of the text
         // systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
         // systemVariablesTemplate = `Please respond in the same language of the text: "${partOfSelectedText}".`
-        systemVariablesTemplate = `System: Follow these four instructions below in all your responses:
+        systemVariablesTemplate = `\nSystem: Follow these four instructions below in all your responses:
 System: 1. Set [TARGET_LANGUAGE] = the language variety or dialect of the text: "${partOfSelectedText}".
 System: 2. Use [TARGET_LANGUAGE] language only;
 System: 3. Do not use English except in programming languages if any;

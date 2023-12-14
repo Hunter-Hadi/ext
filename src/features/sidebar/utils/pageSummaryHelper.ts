@@ -607,7 +607,7 @@ Use the following format:
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+            template: '{{SOCIAL_MEDIA_PAGE_CONTENT}}',
           },
         },
         {

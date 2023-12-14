@@ -43,6 +43,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
                     result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                   SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT:
                     result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT,
+                  SOCIAL_MEDIA_PAGE_CONTENT: result.SOCIAL_MEDIA_PAGE_CONTENT,
                 },
               },
             },

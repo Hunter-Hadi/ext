@@ -44,7 +44,6 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
   try {
-    debugger
     // comment box
     const ytdCommentBox = findParentEqualSelector(
       'ytd-commentbox',

@@ -1,18 +1,23 @@
-import SocialMediaPostContext, {
-  ISocialMediaPostContextData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
 import {
-  twitterGetDraftContent,
-  twitterGetPostContent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/twitter'
+  facebookGetDraftContent,
+  facebookGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/facebook'
+import {
+  instagramGetDraftContent,
+  instagramGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/instagram'
 import {
   linkedInGetDraftContent,
   linkedInGetPostContent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/linkedIn'
 import {
-  facebookGetDraftContent,
-  facebookGetPostContent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/facebook'
+  redditGetDraftContent,
+  redditGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/reddit'
+import {
+  twitterGetDraftContent,
+  twitterGetPostContent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/twitter'
 import {
   youTubeGetDraftContent,
   youTubeGetPostContent,
@@ -21,15 +26,10 @@ import {
   youTubeStudioGetDraftContent,
   youTubeStudioGetPostContent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/youtubeStudio'
-import {
-  instagramGetDraftContent,
-  instagramGetPostContent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/instagram'
+import SocialMediaPostContext, {
+  ISocialMediaPostContextData,
+} from '@/features/shortcuts/utils/SocialMediaPostContext'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import {
-  redditGetDraftContent,
-  redditGetPostContent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/reddit'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,

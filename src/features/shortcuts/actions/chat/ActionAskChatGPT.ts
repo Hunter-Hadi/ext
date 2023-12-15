@@ -2,6 +2,7 @@ import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { textGetLanguageName } from '@/features/common/utils/nlp'
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
@@ -216,7 +217,7 @@ export class ActionAskChatGPT extends Action {
       POST_DRAFT?: string
     },
   ) {
-    let addPosition = 'end'
+    const addPosition = 'end'
     let systemVariablesTemplate = ''
     // 根据CONTEXT和 是否为Auto会有四个场景:
     //  - Auto, 有CONTEXT -> 回复和CONTEXT相同的语言加在最后面
@@ -238,23 +239,8 @@ export class ActionAskChatGPT extends Action {
     // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
     if (isAuto) {
       if (CONTEXT) {
-        const sliceOfText = CONTEXT.slice(300)
-          // remove links
-          .replace(/https?:\/\/[^\s]+/g, '')
-          .replace(/[*#\n]/g, '')
-          .replace(/"/g, '')
-          .trim()
-          .slice(0, 120)
-        const partOfSelectedText = sliceOfText || CONTEXT.slice(0, 120)
-        // the same language variety or dialect of the text
-        // systemVariablesTemplate = `Please write using the same language as "${partOfSelectedText}".`
-        // systemVariablesTemplate = `Please respond in the same language of the text: "${partOfSelectedText}".`
-        systemVariablesTemplate = `\nSystem: Follow these four instructions below in all your responses:
-System: 1. Set [TARGET_LANGUAGE] = the language variety or dialect of the text: "${partOfSelectedText}".
-System: 2. Use [TARGET_LANGUAGE] language only;
-System: 3. Do not use English except in programming languages if any;
-System: 4. Translate any other language to the [TARGET_LANGUAGE] language whenever possible.`
-        addPosition = 'start'
+        const language = textGetLanguageName(CONTEXT)
+        systemVariablesTemplate = `Please write in ${language}`
       }
       // 没有SELECTED_TEXT, 不处理
     } else {

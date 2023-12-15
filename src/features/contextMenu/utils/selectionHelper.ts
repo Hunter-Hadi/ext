@@ -1424,7 +1424,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           doc.execCommand('Delete', false, '')
         } else {
           if (currentHost === 'evernote.com') {
-            // 如果在 evernote.com 上，如果你的 range 时最后一位，并且没有内容，它就会控制 光标（range）到文档的最后
+            // 如果在 evernote.com 上，如果你的 range 是最后一位，并且没有内容，它就会控制 光标（range）到文档的最后
             // 所以这里需要 insert 一个 空格
             doc.execCommand('insertText', false, ' ')
           }

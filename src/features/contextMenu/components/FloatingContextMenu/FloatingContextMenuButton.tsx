@@ -24,7 +24,7 @@ const CurrentFloatingContextMenuButtonState = atom({
   },
 })
 
-const NO_SUPPORT_HOST = ['teams.live.com', 'notion.so']
+const NO_SUPPORT_HOST = []
 
 /**
  * @description 空的contextMenuList 用于loading, 初次渲染的时候不占用太多资源

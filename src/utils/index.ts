@@ -105,7 +105,13 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
     document.body.style.height = '100vh'
   }
 
-  if (host === 'greylock.com') {
+  if (
+    host === 'greylock.com' ||
+    host === 'notion.so' ||
+    host === 'teams.live.com'
+  ) {
+    // 打开 chat box 的时候，设置为 hidden
+    // 为了解决 context menu 渲染在 body 宽度以外的地方时，样式错误的问题
     document.body.style.overflow = 'unset'
   }
 }
@@ -153,7 +159,11 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
     document.body.style.height = ''
   }
 
-  if (host === 'greylock.com') {
+  if (
+    host === 'greylock.com' ||
+    host === 'notion.so' ||
+    host === 'teams.live.com'
+  ) {
     // 关闭 chat box 的时候 清楚设定的值
     document.body.style.overflow = ''
   }

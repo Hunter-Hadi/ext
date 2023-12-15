@@ -1212,7 +1212,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: 3000,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {

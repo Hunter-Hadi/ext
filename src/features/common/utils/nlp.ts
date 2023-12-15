@@ -28,7 +28,7 @@ function removeMarkdownImageAndLinks(markdownText: string): string {
   cleanedText = cleanedText.replace(urlRegex, '')
   const chunks = cleanedText.split('\n').map((chunk) => {
     // 去掉markdown的格式, #, ##, -, *, >, `
-    const regex = /^(?:\s*[-*]\s+|#+\s+|>\s+|`)/g
+    const regex = /^(?:\s*[-*]\s+|#+\s+|>\s+|`|\*\*.*\*\*|\[[^\]]+])/g
     return chunk.replace(regex, '')
   })
   return chunks.join('\n')
@@ -46,13 +46,18 @@ export const textGetLanguageName = (
   fallbackLanguageName = 'English',
 ) => {
   const startTime = Date.now()
-  let sliceOfText = removeMarkdownImageAndLinks(text.slice(0, sliceLength))
-  // 移除多余的空格
-  sliceOfText = sliceOfText.replace(/\s{2,}/g, ' ')
-  if (sliceOfText.length < 20) {
-    // 字数太短的话, franc可能判断不了, 重复多几次
-    sliceOfText = new Array(5).fill(sliceOfText).join('\n')
+  // 截取的内容
+  let sliceOfText = ''
+  // 截取的内容的isoCode
+  let fullSliceOfTextIsoCode = ''
+  if (text.length > sliceLength) {
+    // 从中间截取0-1000个字符
+    const start = Math.floor((text.length - sliceLength) / 2)
+    sliceOfText = text.slice(start, start + sliceLength)
+  } else {
+    sliceOfText = text.slice(0, sliceLength)
   }
+  sliceOfText = removeMarkdownImageAndLinks(sliceOfText)
   if (
     sliceOfText.startsWith(
       'The following text delimited by triple backticks is the context text:',
@@ -66,26 +71,71 @@ export const textGetLanguageName = (
   }
   // 截断\n
   const isoCodes = sliceOfText
-    .split('\n')
-    .map((text) => {
-      if (text.trim()) {
-        const isCode = franc(text)
-        console.log('textGetLanguageName: [isCode]', isCode, text)
+    .split(/\n|\\n/)
+    .map((sliceOfTextChunk) => {
+      sliceOfTextChunk = sliceOfTextChunk.trim()
+      if (sliceOfTextChunk) {
+        sliceOfTextChunk = sliceOfTextChunk.replace(/\s+/g, ' ')
+        if (sliceOfTextChunk.length < 20) {
+          // 字数太短的话, franc可能判断不了, 重复多几次
+          sliceOfTextChunk = new Array(5).fill(sliceOfTextChunk).join(' ')
+        }
+        const isCode = franc(sliceOfTextChunk)
+        console.log(
+          `textGetLanguageName isCode [${isCode}], text -> ` + sliceOfTextChunk,
+        )
         return isCode
       }
       return 'und'
     })
     .filter((isoCode) => isoCode !== 'und')
-  // 找出出现次数最多的isoCode
-  const isoCodeCount = countBy(isoCodes)
-  // 使用countBy函数计算每个值的出现次数
-  const maxIsoCode = maxBy(
-    Object.keys(isoCodeCount),
-    (isoCode) => isoCodeCount[isoCode],
-  )
-  if (maxIsoCode) {
-    const languageName = iso6393.find((item) => item.iso6393 === maxIsoCode)
-      ?.name
+  if (isoCodes.length > 0) {
+    // 找出出现次数最多的isoCode
+    const isoCodeCount = countBy(isoCodes)
+    console.log(
+      'textGetLanguageName isoCodeCount \n',
+      JSON.stringify(isoCodeCount, null, 2),
+    )
+    // 使用countBy函数计算每个值的出现次数
+    const maxIsoCode = maxBy(
+      Object.keys(isoCodeCount),
+      (isoCode) => isoCodeCount[isoCode],
+    )
+    if (maxIsoCode) {
+      const languageName = iso6393.find((item) => item.iso6393 === maxIsoCode)
+        ?.name
+      if (maxIsoCode === 'fra') {
+        // 如果是法语, 再次判断, 避免franc判断错误
+        const fullTextIsoCode = franc(sliceOfText)
+        if (fullTextIsoCode === 'fra') {
+          console.log(
+            `textGetLanguageName: [success] [${languageName}] ${
+              Date.now() - startTime
+            }ms, ${sliceOfText.length} characters`,
+          )
+          return languageName || fallbackLanguageName
+        }
+        // 如果不是法语, 则返回其他语言
+      } else {
+        // 其他语言, 直接返回
+        console.log(
+          `textGetLanguageName: [success] [${languageName}] ${
+            Date.now() - startTime
+          }ms, ${sliceOfText.length} characters`,
+        )
+        return languageName || fallbackLanguageName
+      }
+    }
+  }
+  // 如果前面没有找到, 则再次判断全文
+  if (!fullSliceOfTextIsoCode) {
+    // 如果没有找到, 匹配全文
+    fullSliceOfTextIsoCode = franc(sliceOfText)
+  }
+  if (fullSliceOfTextIsoCode !== 'und') {
+    const languageName = iso6393.find(
+      (item) => item.iso6393 === fullSliceOfTextIsoCode,
+    )?.name
     console.log(
       `textGetLanguageName: [success] [${languageName}] ${
         Date.now() - startTime

@@ -1,5 +1,4 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 
 const socialMediaPrompts = [
   {
@@ -23,7 +22,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -77,7 +76,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -131,7 +130,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -185,7 +184,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -239,7 +238,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -293,7 +292,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -348,7 +347,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -403,7 +402,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -458,7 +457,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -531,7 +530,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -585,7 +584,7 @@ const socialMediaPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -668,7 +667,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -722,7 +721,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -776,7 +775,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -830,7 +829,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -884,7 +883,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -938,7 +937,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -993,7 +992,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -1048,7 +1047,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -1103,7 +1102,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -1176,7 +1175,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -1230,7 +1229,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {

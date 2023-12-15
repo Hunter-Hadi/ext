@@ -1,5 +1,4 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 
 const socialMediaPrompts = [
   // 社交媒体
@@ -695,7 +694,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -749,7 +748,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -803,7 +802,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -857,7 +856,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -911,7 +910,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -965,7 +964,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -1019,7 +1018,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {
@@ -1074,7 +1073,7 @@ const emailPrompts = [
         {
           type: 'SLICE_OF_TEXT',
           parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
+            SliceTextActionType: 'TOKENS',
           },
         },
         {

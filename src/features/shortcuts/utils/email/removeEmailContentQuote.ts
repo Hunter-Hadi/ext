@@ -69,6 +69,11 @@ export const removeEmailContentQuote = (
       console.error(e)
     }
   })
+  cloneElement.style.whiteSpace = 'pre-wrap'
+  // replace br element to /n
+  Array.from(cloneElement.querySelectorAll('br')).forEach((br) => {
+    br.replaceWith('\n')
+  })
   // inject to body
   const root = document.createElement('div')
   root.style.position = 'absolute'

@@ -1,12 +1,12 @@
-import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
+import Action from '@/features/shortcuts/core/Action'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export class ActionGetReadabilityContentsOfWebPage extends Action {

@@ -186,7 +186,6 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       }
 
       template = await generatePromptTemplate(question, expandContent)
-      debugger
       const additionalText = await ActionAskChatGPT.generateAdditionalText({
         PAGE_CONTENT: expandContent,
         AI_RESPONSE_LANGUAGE: userSelectedLanguage,
@@ -197,7 +196,6 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         template = additionalText.data + '\n\n' + template
       }
     } else {
-      debugger
       const additionalText = await ActionAskChatGPT.generateAdditionalText({
         PAGE_CONTENT: question,
         AI_RESPONSE_LANGUAGE: userSelectedLanguage,

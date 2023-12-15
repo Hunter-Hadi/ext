@@ -761,7 +761,7 @@ export const replaceMarkerContent = async (
         cloneRange.setEnd(cacheRange.startContainer, cacheRange.startOffset)
       }
       await replaceWithClipboard(cloneRange, value)
-      console.log('paste editableElementSelectionText', value)
+      console.log('paste editableElementSelectionText', value, type)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
     }
@@ -1335,6 +1335,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       true,
     )
     if (await getClipboardPermission()) {
+      div.focus() // focus 一次让 Document 处于 focused 状态，避免 navigator.clipboard.writeText api 报错
       await navigator.clipboard.writeText(value)
       div.focus() // 将光标定位到div中
       const divRange = doc.createRange()
@@ -1400,7 +1401,13 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
         new Promise((resolve) => setTimeout(resolve, ms))
       selection?.removeAllRanges()
       selection?.addRange(restoreRange)
-      await delay(0)
+      if (currentHost === 'evernote.com') {
+        // 如果在 evernote.com 上，则不需要 delay
+        // nothing
+      } else {
+        await delay(0)
+      }
+
       if (
         [
           'evernote.com',
@@ -1415,8 +1422,24 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
         // 有内容才Delete
         if (selection?.toString().trim()) {
           doc.execCommand('Delete', false, '')
+        } else {
+          if (currentHost === 'evernote.com') {
+            // 如果在 evernote.com 上，如果你的 range 时最后一位，并且没有内容，它就会控制 光标（range）到文档的最后
+            // 所以这里需要 insert 一个 空格
+            doc.execCommand('insertText', false, ' ')
+          }
         }
-        doc.execCommand('insertText', false, pastedText)
+
+        if (currentHost === 'evernote.com') {
+          // 如果在 evernote.com 上，则不需要我们主动执行 insertText 就好
+          // 虽然不知道为什么, 但是能实现效果
+          // 猜测的原因是 因为 evernote.com 的富文本编辑器是自己实现的，他们也会控制 光标、Selection、Range，大概率是跟我们的代码中冲突了
+          //
+          // do nothing
+        } else {
+          doc.execCommand('insertText', false, pastedText)
+        }
+
         console.log(
           'replaceWithClipboard insertText',
           pastedText,

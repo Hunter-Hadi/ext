@@ -116,6 +116,7 @@ export const textGetLanguageName = (
           return languageName || fallbackLanguageName
         }
         // 如果不是法语, 则返回其他语言
+        console.log(`textGetLanguageName retry cause [${maxIsoCode}]`)
       } else {
         // 其他语言, 直接返回
         console.log(

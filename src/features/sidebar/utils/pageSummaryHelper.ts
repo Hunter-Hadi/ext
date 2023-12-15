@@ -661,7 +661,7 @@ Use the following format:
           parameters: {
             template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
 
-The context text is the transcript of a video from {{CURRENT_WEBPAGE_URL}}.
+The context text is the information and/or transcript of a video from {{CURRENT_WEBPAGE_URL}}.
 
 Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.

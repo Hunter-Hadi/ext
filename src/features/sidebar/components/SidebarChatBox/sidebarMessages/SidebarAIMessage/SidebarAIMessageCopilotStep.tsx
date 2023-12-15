@@ -19,14 +19,16 @@ const SidebarAIMessageCopilotStep: FC<{
       case 'text': {
         return (
           <Card variant="outlined" sx={{ px: 1 }}>
-            <Typography
-              fontSize={14}
-              color={'text.primary'}
-              noWrap
-              maxWidth={256}
-            >
-              {String(value)}
-            </Typography>
+            <TextOnlyTooltip title={String(value)}>
+              <Typography
+                fontSize={14}
+                color={'text.primary'}
+                noWrap
+                maxWidth={256}
+              >
+                {String(value)}
+              </Typography>
+            </TextOnlyTooltip>
           </Card>
         )
       }

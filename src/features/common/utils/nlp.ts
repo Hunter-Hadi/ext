@@ -31,7 +31,11 @@ export const textGetLanguageName = (
   fallbackLanguageName = 'English',
 ) => {
   const startTime = Date.now()
-  const sliceOfText = removeMarkdownImageAndLinks(text.slice(0, sliceLength))
+  let sliceOfText = removeMarkdownImageAndLinks(text.slice(0, sliceLength))
+  if (sliceOfText.length < 20) {
+    // 字数太短的话, franc可能判断不了, 重复多几次
+    sliceOfText = new Array(5).fill(sliceOfText).join('\n')
+  }
   const isoCode = franc(sliceOfText)
   if (isoCode === 'und') {
     // 截断\n

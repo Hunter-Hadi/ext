@@ -1,17 +1,17 @@
-import Browser from 'webextension-polyfill'
-import {
-  CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
-  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
-} from '@/constants'
-
 import cloneDeep from 'lodash-es/cloneDeep'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import Browser from 'webextension-polyfill'
+
 import {
   IChromeExtensionButtonSettingKey,
   IChromeExtensionDBStorage,
   IChromeExtensionDBStorageUpdateFunction,
 } from '@/background/utils'
 import { IChromeExtensionButtonSetting } from '@/background/utils/chromeExtensionStorage/type'
+import {
+  CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+} from '@/constants'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export const defaultChromeExtensionDBStorage = (): IChromeExtensionDBStorage => {
   return {

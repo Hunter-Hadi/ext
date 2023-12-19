@@ -134,6 +134,92 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
         }
         return socialMediaPostContext.data
       }
+    } else if (findSelectorParent('.comments-comment-box', linkedInReplyBox)) {
+      // linkedin button所在的地方的文章的评论根容器
+      const linkedInSearchPostCommentRootContainer = findSelectorParent(
+        '.comments-comment-box',
+        linkedInReplyBox,
+      )
+      const articleRoot = findSelectorParent(
+        '.entity-result__content-container',
+        linkedInSearchPostCommentRootContainer,
+      )
+      if (articleRoot) {
+        const seeMoreButton =
+          (articleRoot?.querySelector(
+            '.entity-result__summary button[type="button"]',
+          ) as HTMLButtonElement) ||
+          (articleRoot?.querySelector(
+            '.entity-result__content-summary button[type="button"]',
+          ) as HTMLButtonElement)
+        if (seeMoreButton) {
+          seeMoreButton.click()
+          await delayAndScrollToInputAssistantButton(100, inputAssistantButton)
+        }
+        const account =
+          articleRoot?.querySelector(
+            '.app-aware-link > span > span:not(.visually-hidden)',
+          )?.textContent || ''
+        const articleContentText =
+          (articleRoot?.querySelector(
+            '.entity-result__summary',
+          ) as HTMLParagraphElement)?.innerText ||
+          (articleRoot?.querySelector(
+            '.entity-result__content-summary',
+          ) as HTMLParagraphElement)?.innerText ||
+          ''
+        // ml4 mt2 text-body-xsmall
+        const date = (
+          (articleRoot?.querySelector(
+            'div.ml4.mt2.text-body-xsmall',
+          ) as HTMLDivElement)?.innerText || ''
+        ).split('•')?.[0]
+        const socialMediaPostContext = new SocialMediaPostContext({
+          author: account,
+          content: articleContentText,
+          title: '',
+          date,
+        })
+        // 如果replyBox中有评论的容器，那么就是回复评论/回复评论的评论
+        // 文章底下的评论
+        if (
+          linkedInReplyBox.parentElement?.classList.contains(
+            'comments-comment-item__nested-items',
+          )
+        ) {
+          const linkedInPostComments: ICommentData[] = []
+          const linkedInFirstComment = findParentEqualSelector(
+            'article.comments-comment-item',
+            inputAssistantButton,
+          ) as HTMLDivElement
+          const inputRoot = linkedInFirstComment?.querySelector(
+            'div.editor-content div[contenteditable="true"]',
+          ) as HTMLDivElement
+          const inputValue = inputRoot?.innerText || ''
+          linkedInPostComments.push(
+            await getLinkedInCommentDetail(linkedInFirstComment),
+          )
+          if (inputValue) {
+            // 可能要回复评论的评论
+            const nestedArticles = Array.from(
+              linkedInFirstComment.querySelectorAll('article'),
+            ) as HTMLDivElement[]
+            for (let i = 0; i < nestedArticles.length; i++) {
+              const nestedArticle = nestedArticles[i]
+              const nestedCommentDetail = await getLinkedInCommentDetail(
+                nestedArticle,
+              )
+              if (inputValue.startsWith(nestedCommentDetail.author)) {
+                linkedInPostComments.push(nestedCommentDetail)
+                break
+              }
+            }
+          }
+          await delayAndScrollToInputAssistantButton(0, inputAssistantButton)
+          socialMediaPostContext.addCommentList(linkedInPostComments)
+        }
+        return socialMediaPostContext.data
+      }
     }
   }
   return SocialMediaPostContext.emptyData

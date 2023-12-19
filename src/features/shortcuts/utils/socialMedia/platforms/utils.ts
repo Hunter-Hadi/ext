@@ -32,11 +32,11 @@ export const findSelectorParent = (
 ) => {
   let parent: HTMLElement = startElement
   let deep = 0
-  while (deep < maxDeep && !parent.querySelector(selector)) {
+  while (deep < maxDeep && !parent?.querySelector(selector)) {
     parent = parent?.parentElement as HTMLElement
     deep++
   }
-  return (parent.querySelector(selector) as HTMLElement) || null
+  return (parent?.querySelector(selector) as HTMLElement) || null
 }
 /**
  * 寻找父级元素是selector元素

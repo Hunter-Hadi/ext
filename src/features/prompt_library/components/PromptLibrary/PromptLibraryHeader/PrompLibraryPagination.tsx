@@ -1,7 +1,8 @@
 import React, { FC, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import CustomTablePagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/CustomTablePagination'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
-import { useTranslation } from 'react-i18next'
 
 const PromptLibraryPagination: FC = () => {
   const { t } = useTranslation(['prompt_library'])

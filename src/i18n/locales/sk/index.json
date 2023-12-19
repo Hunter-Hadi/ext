@@ -1,6 +1,6 @@
 {
-  "description": "Najrýchlejší spôsob, ako používať ChatGPT, Claude, Bard, Bing kdekoľvek online. Jedinečné rozšírenie poháňané generatívnou AI, ktoré potrebujete.",
-  "name": "MaxAI.me: Použite 1-klikový ChatGPT AI kdekoľvek",
+  "description": "Najrýchlejší spôsob, ako používať AI poháňanú ChatGPT, Claude, Bard, Bing AI kdekoľvek online. Jedinečné rozšírenie generatívnej AI, ktoré potrebujete.",
+  "name": "MaxAI.me: Použite 1-klikovú AI kdekoľvek",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odhlásiť sa",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Vymazať všetky chaty",
     "sidebar__share__share_button__tooltip": "Stiahnuť chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnovší model GPT-3.5 Turbo s vylepšeným nasledovaním inštrukcií, režimom JSON, reprodukovateľnými výstupmi, paralelným volaním funkcií a ďalším. Vráti maximálne 4 096 výstupných tokenov.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnovší model GPT-4 s vylepšeným nasledovaním inštrukcií, režimom JSON, reprodukovateľnými výstupmi, paralelným volaním funkcií a ďalším. Vráti maximálne 4 096 výstupných tokenov. Tento ukážkový model ešte nie je vhodný pre produkčnú prevádzku.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnovší model GPT-4 s vylepšeným nasledovaním inštrukcií, režimom JSON, reprodukovateľnými výstupmi, paralelným volaním funkcií a ďalším. Vráti maximálne 4 096 výstupných tokenov.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Schopnosť rozumieť obrázkom, okrem všetkých ostatných schopností modelu GPT-4 Turbo. Vráti maximálne 4 096 výstupných tokenov. Toto je ukážková verzia modelu a zatiaľ nie je vhodná pre produkčnú prevádzku.",
     "activity__black_friday_2023__title": "Obmedzený čas - Black Friday zľavy až do 50%!",
     "sidebar__speed_dial__chat_history__button": "História chatu",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Zistený problém s integráciou",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} momentálne má problémy s pripojením k MaxAI kvôli svojim nedávnym aktualizáciám. Náš tím aktívne pracuje na vyriešení tejto záležitosti a vážime si vaše pochopenie. Medzitým zvážte použitie alternatívneho poskytovateľa a skontrolujte neskôr.",
     "provider__label__hide": "Skryť",
-    "provider__label__view_solutions": "Zobraziť riešenia"
+    "provider__label__view_solutions": "Zobraziť riešenia",
+    "sidebar__input__tokens_limited__title": "maximálne tokeny"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nepáči sa mi",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odpovedať kľúčovými bodmi",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Rýchla odpoveď",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpovedať kľúčovými bodmi (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpovedať kľúčovými bodmi (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Nórsky"
   },
   "prompt_editor": {
     "preset_variables__title": "Schopnosti",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Premenné o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Náhradný symbol premennej",
     "preset_variables__tooltip__table__column_name__description__title": "Bude nahradené s",
-    "template__error__title": "Šablóna je povinná"
+    "template__error__title": "Šablóna je povinná",
+    "ai_response_language__title": "Jazyk odpovede AI",
+    "ai_response_language__settings__label_1": "Použiť",
+    "ai_response_language__settings__label_2": "nastavenie jazyka"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikové podnety",

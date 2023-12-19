@@ -1,12 +1,12 @@
 import dayjs from 'dayjs'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { v4 as uuidV4 } from 'uuid'
+
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
-import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 export const SMART_SEARCH_PROMPT_OUTPUT_MULTIPLE = `You are a research expert who is good at coming up with the perfect search query to help find answers to any question. Your task is to think of the most effective search query for the following question delimited by <question></question>:
 
@@ -87,11 +87,6 @@ const generatePromptTemplate = async (query: string) => {
     '{current_date}',
     '{{CURRENT_DATE}}',
   )
-  const userConfig = await clientGetLiteChromeExtensionDBStorage()
-  if (userConfig.userSettings?.language) {
-    promptTemplate =
-      promptTemplate + `\nRespond in ${userConfig.userSettings?.language}`
-  }
   return promptTemplate
 }
 
@@ -175,6 +170,15 @@ export const generateSearchWithAIActions = async (
       type: 'SET_VARIABLE',
       parameters: {
         VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    // 为了触发askChatGPT的ai response language detection
+    {
+      type: 'SET_VARIABLE_MAP',
+      parameters: {
+        VariableMap: {
+          SELECTED_TEXT: currentQuestion,
+        },
       },
     },
     {
@@ -336,7 +340,7 @@ export const generateSearchWithAIActions = async (
 
 Question:
 <question>
-${currentQuestion}
+{{SMART_QUERY}}
 </question>
 
 Text:
@@ -358,8 +362,7 @@ The summary of the text
 If there's no information related to question, delimited by <question></question>, in the text, delimited by <text></text>, simply reply N/A.
 
 The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
-
-Respond in the same language variety or dialect of the text.`,
+`,
       },
     },
     {

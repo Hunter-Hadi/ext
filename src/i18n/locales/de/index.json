@@ -1,6 +1,6 @@
 {
-  "description": "Der schnellste Weg, ChatGPT, Claude, Bard, Bing überall online zu nutzen. Die einzige generative KI-gesteuerte Erweiterung, die Sie benötigen.",
-  "name": "MaxAI.me: Verwenden Sie 1-Klick ChatGPT KI überall",
+  "description": "Der schnellste Weg, KI zu nutzen, die von ChatGPT, Claude, Bard und Bing AI angetrieben wird - überall online. Die einzige generative KI-Erweiterung, die Sie benötigen.",
+  "name": "MaxAI.me: Verwenden Sie KI mit nur einem Klick überall",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Abmelden",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Alle Chats löschen",
     "sidebar__share__share_button__tooltip": "Chat herunterladen",
     "provider__openai_api__model__gpt_3_5_1106__description": "Das neueste GPT-3.5 Turbo-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Das neueste GPT-4-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück. Dieses Vorschau-Modell ist noch nicht für den Produktionsverkehr geeignet.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Das neueste GPT-4-Modell mit verbesserter Anweisungsverfolgung, JSON-Modus, reproduzierbaren Ausgaben, parallelem Funktionsaufruf und mehr. Gibt maximal 4.096 Ausgabetoken zurück.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Fähigkeit, Bilder zu verstehen, zusätzlich zu allen anderen GPT-4 Turbo-Funktionen. Gibt maximal 4.096 Ausgabetoken zurück. Dies ist eine Vorschauversion des Modells und noch nicht für den Produktionsverkehr geeignet.",
     "activity__black_friday_2023__title": "Begrenzte Black Friday Angebote – Bis zu 50% Rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chatverlauf",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Integrationsproblem erkannt",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} hat derzeit Verbindungsprobleme mit MaxAI aufgrund seiner kürzlichen Updates. Unser Team arbeitet aktiv daran, dieses Problem zu lösen, und wir danken Ihnen für Ihr Verständnis. In der Zwischenzeit sollten Sie in Betracht ziehen, einen alternativen Anbieter zu verwenden und später wieder vorbeizuschauen.",
     "provider__label__hide": "Ausblenden",
-    "provider__label__view_solutions": "Lösungen anzeigen"
+    "provider__label__view_solutions": "Lösungen anzeigen",
+    "sidebar__input__tokens_limited__title": "max. Tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Gefällt mir nicht",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Antwort mit Schlüsselpunkten",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Schnelle Antwort",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwort mit Schlüsselpunkten (Test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwort mit Schlüsselpunkten (Test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegisch"
   },
   "prompt_editor": {
     "preset_variables__title": "Fähigkeiten",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variablen über",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Platzhalter für Variable",
     "preset_variables__tooltip__table__column_name__description__title": "Wird ersetzt durch",
-    "template__error__title": "Vorlage ist erforderlich"
+    "template__error__title": "Vorlage ist erforderlich",
+    "ai_response_language__title": "AI-Antwortsprache",
+    "ai_response_language__settings__label_1": "Verwenden",
+    "ai_response_language__settings__label_2": "Spracheinstellung"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-Klick-Prompts",

@@ -2,29 +2,33 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { Box, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import utc from 'dayjs/plugin/utc'
 import React, { FC, useMemo } from 'react'
-import ProLink from '@/components/ProLink'
+
+import EllipsisTextWithTooltip from '@/features/common/components/EllipsisTextWithTooltip'
+import ProLink from '@/features/common/components/ProLink'
+import {
+  MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
+  MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
+} from '@/features/common/constants'
 import {
   DeleteIconButton,
   EditIconButton,
   FavoriteIconButton,
   SeeIconButton,
 } from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardActions'
+import PromptTypeList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptTypeList'
 import {
   DEFAULT_PROMPT_AUTHOR,
   DEFAULT_PROMPT_AUTHOR_LINK,
 } from '@/features/prompt_library/constant'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
+import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 import {
   IPromptActionKey,
   IPromptLibraryCardData,
 } from '@/features/prompt_library/types'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import EllipsisTextWithTooltip from '@/components/EllipsisTextWithTooltip'
-import PromptTypeList from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptTypeList'
-import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 dayjs.extend(relativeTime)
 dayjs.extend(utc)
 
@@ -41,13 +45,21 @@ const PromptLibraryCard: FC<{
   } = usePromptLibrary()
   const isActive = selectedPromptLibraryCard?.id === prompt.id
   const detailLink = useMemo(() => {
+    const pageHost = (window.location.host || location.host)
+      .replace(/^www\./, '')
+      .replace(/:\d+$/, '')
+    const currentHost = MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL.includes(
+      pageHost,
+    )
+      ? MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL
+      : MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL
     return prompt.type === 'private'
-      ? `${APP_USE_CHAT_GPT_HOST}/prompts/own/${prompt.id}`
-      : `${APP_USE_CHAT_GPT_HOST}/prompts/${prompt.id}`
+      ? `${currentHost}/prompts/own/${prompt.id}`
+      : `${currentHost}/prompts/${prompt.id}`
   }, [prompt])
 
   const actionBtnList = () => {
-    const btnList = []
+    const btnList: React.ReactNode[] = []
     if (actionButton.includes('see')) {
       btnList.push(<SeeIconButton key="see" detailLink={detailLink} />)
     }
@@ -133,7 +145,6 @@ const PromptLibraryCard: FC<{
         <EllipsisTextWithTooltip
           tip={prompt.prompt_title}
           color={'text.secondary'}
-          fontSize={16}
           sx={{
             fontSize: '20px',
             lineHeight: '24px',
@@ -146,7 +157,7 @@ const PromptLibraryCard: FC<{
           {prompt.prompt_title}
         </EllipsisTextWithTooltip>
         <Typography variant={'body1'} sx={{}}></Typography>
-        <Stack direction="row" fontSize={16} height="max-content">
+        <Stack direction="row" fontSize={'16px'} height="max-content">
           {actionBtnList()}
         </Stack>
       </Stack>
@@ -164,7 +175,7 @@ const PromptLibraryCard: FC<{
         sx={(t) => {
           const isDark = t.palette.mode === 'dark'
           return {
-            fontSize: 12,
+            fontSize: '12px',
             color: isDark ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
           }
         }}
@@ -174,7 +185,7 @@ const PromptLibraryCard: FC<{
         ) : (
           <LanguageOutlinedIcon fontSize="inherit" />
         )}
-        <Typography variant="caption" fontSize={12}>
+        <Typography variant="caption" fontSize={'12px'}>
           ·
         </Typography>
         <ProLink
@@ -191,20 +202,21 @@ const PromptLibraryCard: FC<{
         </ProLink>
         {prompt.update_time && (
           <span>
-            <Typography variant="caption" fontSize={12}>
+            <Typography variant="caption" fontSize={'12px'}>
               ·
             </Typography>
-            <Typography variant="caption" fontSize={12}>
+            <Typography variant="caption" fontSize={'12px'}>
               {dayjs.utc(prompt.update_time).fromNow()}
             </Typography>
           </span>
         )}
       </Stack>
       <EllipsisTextWithTooltip
+        variant={'custom'}
         tip={prompt.teaser}
         color={'text.secondary'}
-        fontSize={16}
         sx={{
+          fontSize: '16px',
           lineHeight: '20px',
           whiteSpace: 'normal',
           wordBreak: 'break-word',
@@ -226,6 +238,7 @@ const PromptCardTag: FC<{ tag: string }> = (props) => {
   return (
     <Box>
       <Typography
+        variant={'custom'}
         sx={(t) => {
           const isDark = t.palette.mode === 'dark'
           return {

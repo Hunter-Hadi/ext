@@ -1,6 +1,6 @@
 {
-  "description": "Den raskeste måten å bruke ChatGPT, Claude, Bard, Bing hvor som helst på nettet. Den eneste generative AI-drevne utvidelsen du trenger.",
-  "name": "MaxAI.me: Bruk 1-klikks ChatGPT AI hvor som helst",
+  "description": "Den raskeste måten å bruke AI drevet av ChatGPT, Claude, Bard, Bing AI hvor som helst på nettet. Den eneste generative AI-utvidelsen du trenger.",
+  "name": "MaxAI.me: Bruk 1-klikks AI hvor som helst",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logg ut",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Slett alle samtaler",
     "sidebar__share__share_button__tooltip": "Last ned chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Den nyeste GPT-3.5 Turbo-modellen med forbedret instruksjonsfølging, JSON-modus, gjengitte utdata, parallell funksjonskalling og mer. Returnerer maksimalt 4 096 utdatatokens.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-modellen med forbedret instruksjonsfølging, JSON-modus, gjengitte utdata, parallell funksjonskalling og mer. Returnerer maksimalt 4 096 utdatatokens. Denne forhåndsvisningsmodellen er ennå ikke egnet for produksjonstrafikk.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-modellen med forbedret instruksjonsfølging, JSON-modus, gjengitte utdata, parallell funksjonskalling og mer. Returnerer maksimalt 4 096 utdatatokens.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til å forstå bilder, i tillegg til alle andre GPT-4 Turbo-funksjoner. Returnerer maksimalt 4 096 utdatatokens. Dette er en forhåndsvisningsmodellversjon og er ennå ikke egnet for produksjonstrafikk.",
     "activity__black_friday_2023__title": "Begrensede Black Friday-tilbud – Opptil 50% rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chatlogg",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Detektert integrasjonsproblem",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} opplever for øyeblikket tilkoblingsproblemer med MaxAI på grunn av nylige oppdateringer. Vårt team jobber aktivt med å løse dette, og vi setter pris på din forståelse. I mellomtiden kan du vurdere å bruke en alternativ leverandør og sjekke tilbake senere.",
     "provider__label__hide": "Skjul",
-    "provider__label__view_solutions": "Vis løsninger"
+    "provider__label__view_solutions": "Vis løsninger",
+    "sidebar__input__tokens_limited__title": "maksimalt antall tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Misliker",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Svar med nøkkelpunkter",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Raskt svar",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svar med nøkkelpunkter (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svar med nøkkelpunkter (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norsk"
   },
   "prompt_editor": {
     "preset_variables__title": "Ferdigheter",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabler om",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabel plassholder",
     "preset_variables__tooltip__table__column_name__description__title": "Vil bli erstattet med",
-    "template__error__title": "Mal er påkrevd"
+    "template__error__title": "Mal er påkrevd",
+    "ai_response_language__title": "Språk for AI-respons",
+    "ai_response_language__settings__label_1": "Bruk",
+    "ai_response_language__settings__label_2": "språkinnstilling"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikk-prompts",

@@ -1,10 +1,11 @@
 // 基础的聊天消息类型
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import { TFunction } from 'i18next'
 import React from 'react'
+
+import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { IUserRoleType } from '@/features/auth/types'
-import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'

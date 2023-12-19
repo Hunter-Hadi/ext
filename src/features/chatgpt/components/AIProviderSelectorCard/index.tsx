@@ -1,28 +1,29 @@
-import React, { FC, useMemo } from 'react'
 import Box from '@mui/material/Box'
-import { SxProps } from '@mui/material/styles'
-import Stack from '@mui/material/Stack'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
+import React, { FC, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
+import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
+import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+import AIProviderMainPartIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderMainPartIcon'
 import AIProviderOptions, {
   AIProviderOptionType,
 } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
-import Typography from '@mui/material/Typography'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   ChatGPTClientState,
   ThirdPartAIProviderConfirmDialogState,
 } from '@/features/chatgpt/store'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
-import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
-import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
-import { useTranslation } from 'react-i18next'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import AIProviderMainPartIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderMainPartIcon'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 interface AIProviderSelectorCardProps {
   sx?: SxProps

@@ -1,7 +1,12 @@
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useEffect, useRef, useState } from 'react'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+
+/**
+ * @deprecated - 被useInitWebPageMessageChannel代替
+ */
 const useInjectShortCutsRunTime = () => {
   const {
     updateSidebarConversationType,

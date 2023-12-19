@@ -1,6 +1,6 @@
 {
-  "description": "سریعترین راه برای استفاده از ChatGPT، Claude، Bard، Bing در هر جایی آنلاین. تنها افزونه قدرتمند AI تولیدی که نیاز دارید.",
-  "name": "MaxAI.me: استفاده از چت‌بات AI با یک کلیک در هر جایی",
+  "description": "سریعترین راه برای استفاده از هوش مصنوعی قدرتمند توسط ChatGPT، Claude، Bard، Bing AI در هر جایی آنلاین. تنها افزونه هوش مصنوعی تولیدی که نیاز دارید.",
+  "name": "MaxAI.me: استفاده از هوش مصنوعی با 1 کلیک در هر جایی",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "خروج",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "پاک کردن همه چت‌ها",
     "sidebar__share__share_button__tooltip": "دانلود چت",
     "provider__openai_api__model__gpt_3_5_1106__description": "مدل GPT-3.5 Turbo جدیدتر با دنبال کردن دستور بهبود یافته، حالت JSON، خروجی های قابل تکرار، فراخوانی تابع موازی و بیشتر. حداکثر 4,096 توکن خروجی را برمیگرداند.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "مدل GPT-4 جدیدتر با دنبال کردن دستور بهبود یافته، حالت JSON، خروجی های قابل تکرار، فراخوانی تابع موازی و بیشتر. حداکثر 4,096 توکن خروجی را برمیگرداند. این مدل پیش نمایش هنوز مناسب برای ترافیک تولید نیست.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "مدل GPT-4 جدیدترین مدل با دنبال کردن دستور بهبود یافته، حالت JSON، خروجی های قابل تکرار، فراخوانی تابع موازی و بیشتر است. حداکثر ۴،۰۹۶ توکن خروجی را برمیگرداند.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "قابلیت درک تصاویر، علاوه بر تمام قابلیت های دیگر GPT-4 Turbo. حداکثر 4,096 توکن خروجی را برمیگرداند. این نسخه مدل پیش نمایش است و هنوز مناسب برای ترافیک تولید نیست.",
     "activity__black_friday_2023__title": "پیشنهادات ویژه جمعه سیاه محدود - تا 50% تخفیف!",
     "sidebar__speed_dial__chat_history__button": "تاریخچه چت",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "مشکل ادغام تشخیص داده شد",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} در حال حاضر با مشکلات اتصال به MaxAI در نتیجه به روزرسانی های اخیر خود روبرو است. تیم ما در حال فعالیت برای حل این مسئله است و قدردانی می کنیم. در این مدت، لطفاً در نظر داشته باشید که از یک ارائه دهنده جایگزین استفاده کنید و بعداً با ما تماس بگیرید.",
     "provider__label__hide": "مخفی کردن",
-    "provider__label__view_solutions": "مشاهده راه حل‌ها"
+    "provider__label__view_solutions": "مشاهده راه حل‌ها",
+    "sidebar__input__tokens_limited__title": "حداکثر توکن‌ها"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "نپسندیدم",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "پاسخ با نکات کلیدی",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "پاسخ سریع",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "پاسخ با نکات کلیدی (تست)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "پاسخ با نکات کلیدی (تست)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "نروژی"
   },
   "prompt_editor": {
     "preset_variables__title": "قابلیت‌ها",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "متغیرهای مربوط به",
     "preset_variables__tooltip__table__column_name__placeholder__title": "عنوان جایگزین متغیر",
     "preset_variables__tooltip__table__column_name__description__title": "با این مقدار جایگزین خواهد شد",
-    "template__error__title": "قالب الزامی است"
+    "template__error__title": "قالب الزامی است",
+    "ai_response_language__title": "زبان پاسخ هوش مصنوعی",
+    "ai_response_language__settings__label_1": "استفاده",
+    "ai_response_language__settings__label_2": "تنظیمات زبان"
   },
   "prompt_library": {
     "use_prompt_library__title": "پیشنهادهای 1 کلیک",

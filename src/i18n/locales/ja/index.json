@@ -1,6 +1,6 @@
 {
-  "description": "オンラインでどこでもChatGPT、Claude、Bard、Bingを使用する最速の方法。必要な唯一の生成AIパワード拡張機能。",
-  "name": "MaxAI.me：どこでも1クリックでChatGPT AIを使用",
+  "description": "ChatGPT、Claude、Bard、Bing AIによって強化されたAIをオンラインのどこでも最速で利用する方法。必要なのはこの生成型AI拡張機能だけです。",
+  "name": "MaxAI.me：どこでも1クリックでAIを利用",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ログアウト",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "すべてのチャットをクリア",
     "sidebar__share__share_button__tooltip": "チャットをダウンロード",
     "provider__openai_api__model__gpt_3_5_1106__description": "改良された指示の追跡、JSONモード、再現可能な出力、並列関数呼び出しなどを備えた最新のGPT-3.5 Turboモデル。最大4,096の出力トークンを返します。",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "改良された指示の追跡、JSONモード、再現可能な出力、並列関数呼び出しなどを備えた最新のGPT-4モデル。最大4,096の出力トークンを返します。このプレビューモデルはまだ本番トラフィックには適していません。",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "改善された指示の追跡、JSONモード、再現可能な出力、並列関数呼び出しなどを備えた最新のGPT-4モデル。最大4,096の出力トークンを返します。",
     "provider__openai_api__model__gpt_4_vision_preview__description": "他のすべてのGPT-4 Turboの機能に加えて、画像を理解する能力を持っています。最大4,096の出力トークンを返します。これはプレビューモデルバージョンであり、まだ本番トラフィックには適していません。",
     "activity__black_friday_2023__title": "期間限定のブラックフライデーセール！最大50％オフ！",
     "sidebar__speed_dial__chat_history__button": "チャット履歴",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "統合の問題が検出されました",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}}は最近の更新によりMaxAIとの接続に問題が発生しています。私たちのチームはこの問題の解決に取り組んでおり、ご理解いただけると幸いです。その間、代替プロバイダを使用し、後で再度確認してください。",
     "provider__label__hide": "非表示",
-    "provider__label__view_solutions": "ソリューションを表示"
+    "provider__label__view_solutions": "ソリューションを表示",
+    "sidebar__input__tokens_limited__title": "最大トークン数"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "嫌い",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "キーポイントで返信",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "クイック返信",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "キーポイントで返信（テスト）"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "キーポイントで返信（テスト）",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "ノルウェー語"
   },
   "prompt_editor": {
     "preset_variables__title": "機能",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "に関する変数",
     "preset_variables__tooltip__table__column_name__placeholder__title": "変数のプレースホルダー",
     "preset_variables__tooltip__table__column_name__description__title": "次で置き換えられます",
-    "template__error__title": "テンプレートが必要です"
+    "template__error__title": "テンプレートが必要です",
+    "ai_response_language__title": "AIの応答言語",
+    "ai_response_language__settings__label_1": "使用する",
+    "ai_response_language__settings__label_2": "言語設定"
   },
   "prompt_library": {
     "use_prompt_library__title": "1クリックのプロンプト",

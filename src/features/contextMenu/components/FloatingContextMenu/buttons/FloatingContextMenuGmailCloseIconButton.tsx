@@ -1,17 +1,18 @@
-import React, { FC, useEffect, useState } from 'react'
-import {
-  chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
-} from '@/utils'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
+import React, { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import {
   DropdownMenu,
   LiteDropdownMenuItem,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { useTranslation } from 'react-i18next'
+import {
+  chromeExtensionClientOpenPage,
+  getAppContextMenuRootElement,
+} from '@/utils'
 
 const FloatingContextMenuGmailCloseIconButton: FC<{
   sx?: SxProps

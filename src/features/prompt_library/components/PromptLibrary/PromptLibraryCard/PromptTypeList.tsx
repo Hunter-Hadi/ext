@@ -1,5 +1,6 @@
 import { Theme, Typography } from '@mui/material'
 import React, { FC, useMemo } from 'react'
+
 import {
   IPromptLibraryCardDetailVariable,
   IPromptLibraryCardDetailVariableType,
@@ -54,6 +55,7 @@ const PromptTypeList: FC<IProps> = ({ typeList, variables }) => {
         return (
           <Typography
             key={type}
+            variant={'custom'}
             component={'span'}
             sx={(t) => {
               const isDark = t.palette.mode === 'dark'

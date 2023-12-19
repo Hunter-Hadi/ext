@@ -1,7 +1,8 @@
 import { useTheme } from '@mui/material/styles'
 import { useEffect, useMemo, useState } from 'react'
+
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import { getAppRootElement } from '@/utils'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -24,7 +25,7 @@ const useCurrentBreakpoint = (sidebarDefaultWidth = 450) => {
         breakpoint = 'lg'
       }
       setCurrentBreakpoint(breakpoint)
-      const sidebarWidth = getAppRootElement()?.offsetWidth || 450
+      const sidebarWidth = getMaxAISidebarRootElement()?.offsetWidth || 450
       setSidebarWidth(sidebarWidth)
     }
     handleResize()

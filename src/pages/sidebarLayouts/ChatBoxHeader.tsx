@@ -1,30 +1,27 @@
-import Stack from '@mui/material/Stack'
-import Link from '@mui/material/Link'
-import {
-  APP_USE_CHAT_GPT_HOST,
-  CHROME_EXTENSION_HOMEPAGE_URL,
-  isEzMailApp,
-} from '@/constants'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import Typography from '@mui/material/Typography'
-import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
-import React, { FC, useMemo } from 'react'
-import useCommands from '@/hooks/useCommands'
-import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { useTranslation } from 'react-i18next'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import Button from '@mui/material/Button'
-import Browser from 'webextension-polyfill'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
+import React, { FC, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import Browser from 'webextension-polyfill'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import useCommands from '@/hooks/useCommands'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const ChatBoxHeader: FC<{
   showConversationList?: boolean
@@ -70,11 +67,7 @@ const ChatBoxHeader: FC<{
           sx={{
             textDecoration: 'none!important',
           }}
-          href={
-            isEzMailApp
-              ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
-              : APP_USE_CHAT_GPT_HOST
-          }
+          href={APP_USE_CHAT_GPT_HOST}
           target={'_blank'}
         >
           <Stack
@@ -156,7 +149,7 @@ const ChatBoxHeader: FC<{
             <SettingsOutlinedIcon sx={{ fontSize: '20px' }} />
           </IconButton>
         </TextOnlyTooltip>
-        {!isEzMailApp && !chatBoxShortCutKey && (
+        {!chatBoxShortCutKey && (
           <Typography fontSize={12}>
             <Link
               color={'text.primary'}

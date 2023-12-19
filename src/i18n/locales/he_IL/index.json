@@ -1,6 +1,6 @@
 {
-  "description": "הדרך המהירה ביותר להשתמש ב-ChatGPT, Claude, Bard, Bing בכל מקום באינטרנט. התוסף היחיד שאתה צריך עם הכוח של AI.",
-  "name": "MaxAI.me: השתמש ב-1-לחיצה על ChatGPT AI בכל מקום",
+  "description": "הדרך המהירה ביותר להשתמש באינטיליגנציה מופעלת על ידי ChatGPT, Claude, Bard, Bing AI בכל מקום באינטרנט. התוסף היחיד שאתה צריך.",
+  "name": "MaxAI.me: השתמש באינטיליגנציה מלאה בלחיצה אחת",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "התנתק",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "נקה את כל השיחות",
     "sidebar__share__share_button__tooltip": "הורדת צ'אט",
     "provider__openai_api__model__gpt_3_5_1106__description": "הדגם האחרון של GPT-3.5 Turbo עם שיפור בעקיפת הוראות, מצב JSON, פלטים ניתנים לשחזור, קריאה פרולית לפונקציות ועוד. מחזיר מקסימום 4,096 אסימונים פלט.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "הדגם האחרון של GPT-4 עם שיפור בעקיפת הוראות, מצב JSON, פלטים ניתנים לשחזור, קריאה פרולית לפונקציות ועוד. מחזיר מקסימום 4,096 אסימונים פלט. דגם זה הוא תצוגה מקדימה ואינו מתאים עדיין לתעבורת ייצור.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "הדגם האחרון של GPT-4 עם שיפור בעקיפת הוראות, מצב JSON, פלטים ניתנים לשכפול, קריאה מקבוצה פונקציות ועוד. מחזיר מקסימום 4,096 אסימונים בפלט.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "יכולת להבין תמונות, בנוסף לכל היכולות של GPT-4 Turbo האחרות. מחזיר מקסימום 4,096 אסימונים פלט. זהו גרסת תצוגה מקדימה ואינה מתאימה עדיין לתעבורת ייצור.",
     "activity__black_friday_2023__title": "דילים בלעדיים ליום שישי השחור – עד 50% הנחה!",
     "sidebar__speed_dial__chat_history__button": "היסטוריית צ'אט",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "זוהתה בעיה באינטגרציה",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} כרגע חווה בעיות חיבור עם MaxAI עקב עדכונים אחרונים. הצוות שלנו פועל כרגע לפתור את הבעיה ואנחנו מעריכים את ההבנה שלך. בינתיים, שקול להשתמש בספק אחר ולבדוק שוב איתנו מאוחר יותר.",
     "provider__label__hide": "הסתר",
-    "provider__label__view_solutions": "צפה בפתרונות"
+    "provider__label__view_solutions": "צפה בפתרונות",
+    "sidebar__input__tokens_limited__title": "מקסימום טוקנים"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "לא אהבתי",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "השב עם נקודות מרכזיות",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "תשובה מהירה",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "השב עם נקודות מרכזיות (בדיקה)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "השב עם נקודות מרכזיות (בדיקה)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "נורבגית"
   },
   "prompt_editor": {
     "preset_variables__title": "יכולות",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "משתנים על",
     "preset_variables__tooltip__table__column_name__placeholder__title": "מציין משתנה",
     "preset_variables__tooltip__table__column_name__description__title": "יחליף ב",
-    "template__error__title": "נדרש תבנית"
+    "template__error__title": "נדרש תבנית",
+    "ai_response_language__title": "שפת תגובת AI",
+    "ai_response_language__settings__label_1": "השתמש",
+    "ai_response_language__settings__label_2": "הגדרות שפה"
   },
   "prompt_library": {
     "use_prompt_library__title": "פרומטים בלחיצה אחת",

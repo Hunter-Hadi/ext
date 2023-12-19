@@ -1,20 +1,21 @@
-import React, { FC, useMemo, useRef } from 'react'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { SxProps } from '@mui/material/styles'
-import { useRecoilValue } from 'recoil'
-import { AppLocalStorageState } from '@/store'
 import Box from '@mui/material/Box'
-import Popover from '@mui/material/Popover'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
-import { getAppRootElement } from '@/utils'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import Stack from '@mui/material/Stack'
 import IconButton from '@mui/material/IconButton'
-import SearchWithAISearchEngineSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAISearchEngineSelector'
-import SearchWithAIMaxSearchResultsSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIMaxSearchResultsSelector'
+import Popover from '@mui/material/Popover'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
+import React, { FC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import SearchWithAIMaxSearchResultsSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIMaxSearchResultsSelector'
+import SearchWithAISearchEngineSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAISearchEngineSelector'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { AppLocalStorageState } from '@/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * 搜索页的AI设置
@@ -113,7 +114,7 @@ const SearchWithAIAdvanced: FC<{
         >
           <ClickAwayListener
             onClickAway={(event) => {
-              const maxaiSearchWithAIAdvancedCard = getAppRootElement()?.querySelector(
+              const maxaiSearchWithAIAdvancedCard = getMaxAISidebarRootElement()?.querySelector(
                 '#maxaiSearchWithAIAdvancedCard',
               ) as HTMLElement
               if (maxaiSearchWithAIAdvancedCard) {

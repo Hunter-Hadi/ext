@@ -1,33 +1,34 @@
-import React, { FC, useEffect, useState } from 'react'
-import {
-  chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
-} from '@/utils'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
-import Button from '@mui/material/Button'
-import { SxProps } from '@mui/material/styles'
-import {
-  DropdownMenu,
-  LiteDropdownMenuItem,
-} from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import Box from '@mui/material/Box'
-import PopperWrapper from '@/components/PopperWrapper'
+import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import HowToFindSettings from '@/pages/settings/components/HowToFindSettings'
+import React, { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+
+import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import PopperWrapper from '@/components/PopperWrapper'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import {
   ContextMenuSettingsState,
   FloatingDropdownMenuState,
   useRangy,
 } from '@/features/contextMenu'
-import { useRecoilState, useSetRecoilState } from 'recoil'
 import { FloatingContextMenuTemporaryIconButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuTemporaryIconButton'
-import { TooltipProps } from '@mui/material/Tooltip'
+import {
+  DropdownMenu,
+  LiteDropdownMenuItem,
+} from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
-import { useTranslation } from 'react-i18next'
+import HowToFindSettings from '@/pages/settings/components/HowToFindSettings'
+import {
+  chromeExtensionClientOpenPage,
+  getAppContextMenuRootElement,
+} from '@/utils'
 
 const FloatingContextMenuMiniMenuMoreButton: FC<{
   placement?: TooltipProps['placement']
@@ -37,8 +38,10 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
   const { t } = useTranslation(['common', 'client'])
   const [loading, setLoading] = useState(true)
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
-  const { updateButtonSettingsWithDomain, toggleButtonSettings } =
-    useChromeExtensionButtonSettings()
+  const {
+    updateButtonSettingsWithDomain,
+    toggleButtonSettings,
+  } = useChromeExtensionButtonSettings()
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)

@@ -1,6 +1,6 @@
 {
-  "description": "De snelste manier om ChatGPT, Claude, Bard, Bing overal online te gebruiken. De enige generatieve AI-aangedreven extensie die je nodig hebt.",
-  "name": "MaxAI.me: Gebruik 1-Click ChatGPT AI Overal",
+  "description": "De snelste manier om AI te gebruiken, aangedreven door ChatGPT, Claude, Bard, Bing AI, overal online. De enige generatieve AI-extensie die je nodig hebt.",
+  "name": "MaxAI.me: Gebruik AI met 1 klik overal",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Uitloggen",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Alle chats wissen",
     "sidebar__share__share_button__tooltip": "Chat downloaden",
     "provider__openai_api__model__gpt_3_5_1106__description": "Het nieuwste GPT-3.5 Turbo-model met verbeterde instructieopvolging, JSON-modus, reproduceerbare uitvoer, parallelle functieoproep en meer. Geeft maximaal 4.096 uitvoertokens terug.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Het nieuwste GPT-4-model met verbeterde instructieopvolging, JSON-modus, reproduceerbare uitvoer, parallelle functieoproep en meer. Geeft maximaal 4.096 uitvoertokens terug. Dit voorbeeldmodel is nog niet geschikt voor productieverkeer.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Het nieuwste GPT-4-model met verbeterde instructieopvolging, JSON-modus, reproduceerbare uitvoer, parallelle functieoproep en meer. Geeft maximaal 4.096 uitvoertokens terug.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogelijkheid om afbeeldingen te begrijpen, naast alle andere mogelijkheden van GPT-4 Turbo. Geeft maximaal 4.096 uitvoertokens terug. Dit is een voorbeeldmodelversie en nog niet geschikt voor productieverkeer.",
     "activity__black_friday_2023__title": "Beperkte Black Friday-aanbiedingen - Tot 50% korting!",
     "sidebar__speed_dial__chat_history__button": "Chatgeschiedenis",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Probleem met integratie gedetecteerd",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} ondervindt momenteel verbindingsproblemen met MaxAI als gevolg van recente updates. Ons team werkt actief aan het oplossen van dit probleem en we waarderen uw begrip. Overweeg in de tussentijd om een alternatieve provider te gebruiken en later bij ons terug te komen.",
     "provider__label__hide": "Verbergen",
-    "provider__label__view_solutions": "Bekijk oplossingen"
+    "provider__label__view_solutions": "Bekijk oplossingen",
+    "sidebar__input__tokens_limited__title": "max tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Niet leuk",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Antwoord met kernpunten",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Snelle reactie",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwoord met kernpunten (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwoord met kernpunten (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Noors"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogelijkheden",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabelen over de",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabele placeholder",
     "preset_variables__tooltip__table__column_name__description__title": "Zal worden vervangen door",
-    "template__error__title": "Sjabloon is verplicht"
+    "template__error__title": "Sjabloon is verplicht",
+    "ai_response_language__title": "Taal van AI-reactie",
+    "ai_response_language__settings__label_1": "Gebruik",
+    "ai_response_language__settings__label_2": "taalinstelling"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",

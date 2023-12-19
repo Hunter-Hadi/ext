@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const RESIZE_ENABLE = {
   top: false,

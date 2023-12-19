@@ -1,27 +1,35 @@
 import { Grid, Stack } from '@mui/material'
-import React, { FC, useMemo } from 'react'
-import usePromptLibraryList from '@/features/prompt_library/hooks/usePromptLibraryList'
-import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import React, { FC, useContext, useEffect, useMemo } from 'react'
+
 import {
-  IPromptActionKey,
-  IPromptLibraryCardData,
-} from '@/features/prompt_library/types'
+  webPageCloseSidebar,
+  webPageRunMaxAIShortcuts,
+} from '@/features/common/utils/postMessageToCRX'
 import PromptLibraryCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard'
 import PromptLibraryCardSkeleton from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/PromptLibraryCardSkeleton'
 import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
 import AddOwnPromptCard from '@/features/prompt_library/components/PromptLibrary/PromptLibraryList/AddOwnPromptCard'
-import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
+import usePromptLibraryBreakpoint from '@/features/prompt_library/hooks/usePromptLibraryBreakpoint'
+import usePromptLibraryList from '@/features/prompt_library/hooks/usePromptLibraryList'
+import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
+import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
+import {
+  IPromptActionKey,
+  IPromptLibraryCardData,
+} from '@/features/prompt_library/types'
+import { promptLibraryCardDetailDataToActions } from '@/features/shortcuts/utils/promptInterpreter'
 
 const PromptLibraryList: FC<{
   onClick?: (promptLibraryCard?: IPromptLibraryCardData) => void
 }> = (props) => {
   const { onClick } = props
-  const { data, isLoading } = usePromptLibraryList()
+  const { promptLibraryRuntime } = useContext(PromptLibraryRuntimeContext)!
+  const { data, isLoading, isFetching } = usePromptLibraryList()
   const {
     activeTab,
     promptLibraryListParameters,
   } = usePromptLibraryParameters()
-  const currentBreakpoint = useCurrentBreakpoint()
+  const currentBreakpoint = usePromptLibraryBreakpoint()
   const itemWidth = useMemo(() => {
     if (currentBreakpoint === 'xs') {
       return 12
@@ -43,9 +51,10 @@ const PromptLibraryList: FC<{
     }
     return ['see', 'favorite']
   }, [activeTab])
-
+  useEffect(() => {}, [promptLibraryRuntime])
   const CardList = useMemo(() => {
-    if (isLoading) {
+    // 因为在 WebPage 中，没有line progress
+    if (isLoading || (promptLibraryRuntime === 'WebPage' && isFetching)) {
       return new Array(promptLibraryListParameters.page_size)
         .fill(1)
         .map((_, index) => {
@@ -66,13 +75,28 @@ const PromptLibraryList: FC<{
             <PromptLibraryCard
               actionButton={actionButton}
               prompt={prompt}
-              onClick={onClick}
+              onClick={(promptData) => {
+                if (promptLibraryRuntime === 'WebPage') {
+                  if (promptData) {
+                    webPageRunMaxAIShortcuts(
+                      promptLibraryCardDetailDataToActions(promptData),
+                    )
+                  } else {
+                    webPageCloseSidebar()
+                  }
+                }
+                if (onClick) {
+                  onClick(promptData)
+                }
+              }}
             />
           </Grid>
         ))}
       </>
     )
   }, [
+    promptLibraryRuntime,
+    isFetching,
     isLoading,
     data,
     activeTab,

@@ -3,32 +3,12 @@
 // To make this function work, set "action" property to {} in manifest
 import Browser from 'webextension-polyfill'
 export type {
-  IChromeExtensionClientSendEvent,
-  IOpenAIChatSendEvent,
   IChromeExtensionClientListenEvent,
+  IChromeExtensionClientSendEvent,
   IChromeExtensionListenEvent,
   IOpenAIChatListenTaskEvent,
+  IOpenAIChatSendEvent,
 } from './eventType'
-import {
-  APP_VERSION,
-  AI_PROVIDER_MAP,
-  CHROME_EXTENSION_DOC_URL,
-  CHROME_EXTENSION_HOMEPAGE_URL,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
-  isEzMailApp,
-  isProduction,
-} from '@/constants'
-import {
-  BardChat,
-  BingChat,
-  ChatSystem,
-  ClaudeWebappChat,
-  MaxAIClaudeChat,
-  OpenAiApiChat,
-  OpenAIChat,
-  PoeChat,
-  UseChatGPTPlusChat,
-} from '@/background/src/chat'
 import {
   BardChatProvider,
   BingChatProvider,
@@ -40,27 +20,48 @@ import {
   PoeChatProvider,
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
-import { ClientMessageInit } from '@/background/src/client'
 import {
-  backgroundSendClientMessage,
-  resetChromeExtensionOnBoardingData,
+  BardChat,
+  BingChat,
+  ChatSystem,
+  ClaudeWebappChat,
+  MaxAIClaudeChat,
+  OpenAiApiChat,
+  OpenAIChat,
+  PoeChat,
+  UseChatGPTPlusChat,
+} from '@/background/src/chat'
+import ConversationManager from '@/background/src/chatConversations'
+import { ClientMessageInit } from '@/background/src/client'
+import { pdfSnifferStartListener } from '@/background/src/pdf'
+import {
   backgroundRestartChromeExtension,
+  backgroundSendClientMessage,
+  getChromeExtensionOnBoardingData,
+  resetChromeExtensionOnBoardingData,
   safeGetBrowserTab,
   setChromeExtensionOnBoardingData,
-  getChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import { pdfSnifferStartListener } from '@/background/src/pdf'
-import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
+import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
-import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
-import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
-import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
+import {
+  AI_PROVIDER_MAP,
+  APP_VERSION,
+  isProduction,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/constants'
 import { getChromeExtensionUserInfo } from '@/features/auth/utils'
-import ConversationManager from '@/background/src/chatConversations'
+import {
+  MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
+  MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
+} from '@/features/common/constants'
+import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
+import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
+import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 
 /**
  * background.js 入口
@@ -103,7 +104,7 @@ const initChromeExtensionInstalled = () => {
       // 重置插件引导数据
       await resetChromeExtensionOnBoardingData()
       await Browser.tabs.create({
-        url: CHROME_EXTENSION_DOC_URL + '/get-started',
+        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/get-started',
       })
     } else {
       // @deprecated - 2023-11-20 应该不会再用了
@@ -251,7 +252,7 @@ const initChromeExtensionUpdated = async () => {
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }
-  if (APP_VERSION === '2.4.5') {
+  if (APP_VERSION === '2.4.6') {
     setTimeout(
       executeChristmasPromotion,
       (1 + Math.floor(Math.random() * 9)) * 1000,
@@ -269,7 +270,10 @@ const initChromeExtensionMessage = () => {
   ShortcutMessageBackgroundInit()
   Browser.runtime.onMessage.addListener(
     (message, sender, sendResponse: any) => {
-      if (message?.id && message.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+      if (
+        message?.id &&
+        message.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID
+      ) {
         return
       }
       if (message.type === 'inboxsdk__injectPageWorld' && sender.tab) {
@@ -328,175 +332,153 @@ const initChromeExtensionMessage = () => {
  * 插件卸载
  */
 const initChromeExtensionUninstalled = () => {
-  if (!isEzMailApp) {
-    Browser.runtime.setUninstallURL(
-      `${CHROME_EXTENSION_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
-    )
-  }
+  Browser.runtime.setUninstallURL(
+    `${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}`,
+  )
 }
 
 /**
  * 插件快捷键初始化
  */
 const initChromeExtensionCommands = () => {
-  if (!isEzMailApp) {
-    Browser.commands.onCommand.addListener(async (command) => {
-      if (command == '_execute_action') {
-        const currentTab = await Browser.tabs.query({
-          active: true,
-          currentWindow: true,
-        })
-        const tab = currentTab[0]
-        if (tab && tab.id) {
-          await backgroundSendClientMessage(
-            tab.id,
-            'Client_listenOpenChatMessageBox',
-            {
-              type: 'shortcut',
-              command,
-            },
-          )
-        }
-      } else if (command === 'show-floating-menu') {
-        const currentTab = await Browser.tabs.query({
-          active: true,
-          currentWindow: true,
-        })
-        const tab = currentTab[0]
-        if (tab && tab.id) {
-          await backgroundSendClientMessage(
-            tab.id,
-            'Client_listenOpenChatMessageBox',
-            {
-              type: 'shortcut',
-              command,
-            },
-          )
-        }
+  Browser.commands.onCommand.addListener(async (command) => {
+    if (command == '_execute_action') {
+      const currentTab = await Browser.tabs.query({
+        active: true,
+        currentWindow: true,
+      })
+      const tab = currentTab[0]
+      if (tab && tab.id) {
+        await backgroundSendClientMessage(
+          tab.id,
+          'Client_listenOpenChatMessageBox',
+          {
+            type: 'shortcut',
+            command,
+          },
+        )
       }
-    })
-  }
+    } else if (command === 'show-floating-menu') {
+      const currentTab = await Browser.tabs.query({
+        active: true,
+        currentWindow: true,
+      })
+      const tab = currentTab[0]
+      if (tab && tab.id) {
+        await backgroundSendClientMessage(
+          tab.id,
+          'Client_listenOpenChatMessageBox',
+          {
+            type: 'shortcut',
+            command,
+          },
+        )
+      }
+    }
+  })
 }
 
 /**
  * 插件图标点击初始化
  */
 const initChromeExtensionAction = () => {
-  if (isEzMailApp) {
-    Browser.action.onClicked.addListener(async (tab) => {
-      if (tab && tab.id && tab.active) {
-        await Browser.tabs.create({
-          url: CHROME_EXTENSION_DOC_URL,
-        })
-      }
-    })
-  } else {
-    // HACK: 在任何页面onActivated的时候都会试图通信，如果通信成功触发关闭Popup，强制进入onClicked事件，monica应该也是这种写法，我看交互一模一样
-    // NOTE: 之所以这么写是因为当popup.html存在的时候，是无法进入action.onClicked的监听事件
-    const checkTabStatus = async (tab: Browser.Tabs.Tab) => {
-      try {
-        const currentTab = tab
-        const currentTabUrl = currentTab?.url || ''
-        let popup = ''
-        // chrome相关的页面展示popup
-        if (
-          currentTab?.url?.startsWith('chrome') ||
-          currentTab?.url?.startsWith('https://chrome.google.com/webstore') ||
-          currentTab?.url?.startsWith('https://chat.openai.com')
-        ) {
-          // NOTE: extensions shortcuts的设置页面不应该弹出来阻止用户设置快捷键
-          if (!currentTabUrl.startsWith('chrome://extensions/shortcuts')) {
-            popup = 'pages/popup/index.html'
-          }
-        } else if (currentTab && currentTab.id) {
-          await Browser.tabs.sendMessage(currentTab.id, {})
-          // 能和网页通信, 阻止默认的popup
-          popup = ''
+  // HACK: 在任何页面onActivated的时候都会试图通信，如果通信成功触发关闭Popup，强制进入onClicked事件，monica应该也是这种写法，我看交互一模一样
+  // NOTE: 之所以这么写是因为当popup.html存在的时候，是无法进入action.onClicked的监听事件
+  const checkTabStatus = async (tab: Browser.Tabs.Tab) => {
+    try {
+      const currentTab = tab
+      const currentTabUrl = currentTab?.url || ''
+      let popup = ''
+      // chrome相关的页面展示popup
+      if (
+        currentTab?.url?.startsWith('chrome') ||
+        currentTab?.url?.startsWith('https://chrome.google.com/webstore') ||
+        currentTab?.url?.startsWith('https://chat.openai.com')
+      ) {
+        // NOTE: extensions shortcuts的设置页面不应该弹出来阻止用户设置快捷键
+        if (!currentTabUrl.startsWith('chrome://extensions/shortcuts')) {
+          popup = 'pages/popup/index.html'
         }
-        await Browser.action.setPopup({
-          popup,
-        })
-      } catch (e) {
-        console.error(e)
+      } else if (currentTab && currentTab.id) {
+        await Browser.tabs.sendMessage(currentTab.id, {})
+        // 能和网页通信, 阻止默认的popup
+        popup = ''
+      }
+      await Browser.action.setPopup({
+        popup,
+      })
+    } catch (e) {
+      console.error(e)
+      await Browser.action.setPopup({
+        popup: 'pages/popup/index.html',
+      })
+    }
+  }
+  Browser.tabs.onActivated.addListener(async ({ tabId }) => {
+    const tab = await safeGetBrowserTab(tabId)
+    tab && (await checkTabStatus(tab))
+  })
+  Browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+    // tab loaded
+    if (changeInfo.status === 'complete') {
+      if (tab.active) {
+        // TODO: check is new tab， theme的需求，暂时不做
+        // if (tab.url === 'chrome://newtab/' || tab.url === 'edge://newtab/') {
+        //   // redirect to /pages/chat/index.html
+        //   await Browser.tabs.update(tabId, {
+        //     url: Browser.runtime.getURL('/pages/chat/index.html'),
+        //   })
+        // }
+        await checkTabStatus(tab)
+      }
+    }
+  })
+  Browser.action.onClicked.addListener(async (tab) => {
+    if (tab && tab.id && tab.active) {
+      if (tab.url === 'chrome://extensions/shortcuts') {
+        return
+      }
+      const result = await backgroundSendClientMessage(
+        tab.id,
+        'Client_listenOpenChatMessageBox',
+        {
+          type: 'shortcut',
+        },
+      )
+      if (!result) {
         await Browser.action.setPopup({
           popup: 'pages/popup/index.html',
         })
       }
     }
-    Browser.tabs.onActivated.addListener(async ({ tabId }) => {
-      const tab = await safeGetBrowserTab(tabId)
-      tab && (await checkTabStatus(tab))
-    })
-    Browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-      // tab loaded
-      if (changeInfo.status === 'complete') {
-        if (tab.active) {
-          // TODO: check is new tab， theme的需求，暂时不做
-          // if (tab.url === 'chrome://newtab/' || tab.url === 'edge://newtab/') {
-          //   // redirect to /pages/chat/index.html
-          //   await Browser.tabs.update(tabId, {
-          //     url: Browser.runtime.getURL('/pages/chat/index.html'),
-          //   })
-          // }
-          await checkTabStatus(tab)
-        }
-      }
-    })
-    Browser.action.onClicked.addListener(async (tab) => {
-      if (tab && tab.id && tab.active) {
-        if (tab.url === 'chrome://extensions/shortcuts') {
-          return
-        }
-        const result = await backgroundSendClientMessage(
-          tab.id,
-          'Client_listenOpenChatMessageBox',
-          {
-            type: 'shortcut',
-          },
-        )
-        if (!result) {
-          await Browser.action.setPopup({
-            popup: 'pages/popup/index.html',
-          })
-        }
-      }
-    })
-  }
+  })
 }
 
 const initChromeExtensionDisabled = () => {
-  if (isEzMailApp) {
-    // no popup
-  } else {
-    Browser.management?.onDisabled?.addListener(function (extensionInfo) {
-      if (extensionInfo.id === Browser.runtime.id) {
-        console.log('Extension disabled')
-        Browser.action.setPopup({
-          popup: 'pages/popup/index.html',
-        })
-      }
-    })
-  }
+  Browser.management?.onDisabled?.addListener(function (extensionInfo) {
+    if (extensionInfo.id === Browser.runtime.id) {
+      console.log('Extension disabled')
+      Browser.action.setPopup({
+        popup: 'pages/popup/index.html',
+      })
+    }
+  })
 }
 
 const initChromeExtensionContextMenu = () => {
-  if (isEzMailApp) {
-    // no context menu
-  } else {
-    Browser.contextMenus.onClicked.addListener(async (info, tab) => {
-      if (
-        info.menuItemId === 'use-chatgpt-ai-context-menu-button' &&
-        tab &&
-        tab.id
-      ) {
-        await Browser.tabs.sendMessage(tab.id, {
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
-          event: 'Client_listenOpenChatMessageBox',
-          data: {},
-        })
-      }
-    })
-  }
+  Browser.contextMenus.onClicked.addListener(async (info, tab) => {
+    if (
+      info.menuItemId === 'use-chatgpt-ai-context-menu-button' &&
+      tab &&
+      tab.id
+    ) {
+      await Browser.tabs.sendMessage(tab.id, {
+        id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'Client_listenOpenChatMessageBox',
+        data: {},
+      })
+    }
+  })
 }
 
 const developmentHotReload = () => {

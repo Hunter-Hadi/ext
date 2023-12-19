@@ -1,6 +1,6 @@
 {
-  "description": "Najszybszy sposób na korzystanie z ChatGPT, Claude, Bard, Bing w dowolnym miejscu online. Jedyny rozszerzenie z generatywnym AI, którego potrzebujesz.",
-  "name": "MaxAI.me: Użyj sztucznej inteligencji ChatGPT w jednym kliknięciu gdziekolwiek",
+  "description": "Najszybszy sposób na korzystanie z AI opartego na ChatGPT, Claude, Bard, Bing AI w dowolnym miejscu online. Jedyny rozszerzenie generatywne AI, którego potrzebujesz.",
+  "name": "MaxAI.me: Użyj sztucznej inteligencji w jednym kliknięciu wszędzie",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Wyloguj",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Wyczyść wszystkie rozmowy",
     "sidebar__share__share_button__tooltip": "Pobierz czat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnowszy model GPT-3.5 Turbo z ulepszonym śledzeniem instrukcji, trybem JSON, powtarzalnymi wynikami, równoległym wywoływaniem funkcji i więcej. Zwraca maksymalnie 4 096 tokenów wyjściowych.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnowszy model GPT-4 z ulepszonym śledzeniem instrukcji, trybem JSON, powtarzalnymi wynikami, równoległym wywoływaniem funkcji i więcej. Zwraca maksymalnie 4 096 tokenów wyjściowych. Ten model w wersji podglądowej nie jest jeszcze odpowiedni do ruchu produkcyjnego.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnowszy model GPT-4 z ulepszonym śledzeniem instrukcji, trybem JSON, powtarzalnymi wynikami, równoległym wywoływaniem funkcji i więcej. Zwraca maksymalnie 4 096 tokenów wyjściowych.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Możliwość rozumienia obrazów, oprócz wszystkich innych możliwości GPT-4 Turbo. Zwraca maksymalnie 4 096 tokenów wyjściowych. To wersja podglądowa modelu i jeszcze nie nadaje się do ruchu produkcyjnego.",
     "activity__black_friday_2023__title": "Ograniczone Czasowo Oferty Black Friday – Do 50% Zniżki!",
     "sidebar__speed_dial__chat_history__button": "Historia czatu",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Wykryto problem z integracją",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} obecnie ma problemy z połączeniem z MaxAI ze względu na ostatnie aktualizacje. Nasz zespół aktywnie pracuje nad rozwiązaniem tego problemu i doceniamy Twoje zrozumienie. W międzyczasie rozważ skorzystanie z alternatywnego dostawcy i sprawdź ponownie później.",
     "provider__label__hide": "Ukryj",
-    "provider__label__view_solutions": "Zobacz rozwiązania"
+    "provider__label__view_solutions": "Zobacz rozwiązania",
+    "sidebar__input__tokens_limited__title": "maks. tokenów"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nie lubię",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odpowiedz kluczowymi punktami",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Szybka odpowiedź",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpowiedz kluczowymi punktami (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpowiedz kluczowymi punktami (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norweski"
   },
   "prompt_editor": {
     "preset_variables__title": "Możliwości",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Zmienne dotyczące",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Zmienna zastępcza",
     "preset_variables__tooltip__table__column_name__description__title": "Zostanie zastąpione przez",
-    "template__error__title": "Wymagany jest szablon"
+    "template__error__title": "Wymagany jest szablon",
+    "ai_response_language__title": "Język odpowiedzi AI",
+    "ai_response_language__settings__label_1": "Użyj",
+    "ai_response_language__settings__label_2": "ustawienia języka"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-kliknięcie na podpowiedzi",

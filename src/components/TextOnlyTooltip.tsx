@@ -1,12 +1,13 @@
-import React, { FC } from 'react'
+import Stack from '@mui/material/Stack'
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
+
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   getAppContextMenuRootElement,
   getAppMinimizeContainerElement,
-  getAppRootElement,
 } from '@/utils'
-import Typography from '@mui/material/Typography'
-import Stack from '@mui/material/Stack'
 
 export interface TextOnlyTooltipProps extends TooltipProps {
   description?: React.ReactNode
@@ -31,7 +32,7 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
   } else {
     container = floatingMenuTooltip
       ? getAppContextMenuRootElement()
-      : getAppRootElement()
+      : getMaxAISidebarRootElement()
   }
   if (props.PopperProps?.container) {
     container = props.PopperProps.container

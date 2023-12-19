@@ -1,5 +1,4 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 
 export default [
   {
@@ -12,22 +11,6 @@ export default [
       editable: false,
       type: 'shortcuts',
       actions: [
-        {
-          type: 'GET_EMAIL_DRAFT_OF_WEBPAGE',
-          parameters: {},
-        },
-        {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'EMAIL_DRAFT',
-          },
-        },
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
@@ -115,22 +98,6 @@ Now, write a new email, mentioning these points:
       editable: false,
       type: 'shortcuts',
       actions: [
-        {
-          type: 'GET_EMAIL_DRAFT_OF_WEBPAGE',
-          parameters: {},
-        },
-        {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionTokens: PAGE_SUMMARY_MAX_TOKENS,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'EMAIL_DRAFT',
-          },
-        },
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {

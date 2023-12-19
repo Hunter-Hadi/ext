@@ -1,6 +1,6 @@
 {
-  "description": "Njia ya haraka zaidi ya kutumia ChatGPT, Claude, Bard, Bing popote mtandaoni. Kifaa pekee cha kuongeza nguvu ya AI inayozalisha unayohitaji.",
-  "name": "MaxAI.me: Tumia AI ya ChatGPT kwa Bofya 1 Mahali Popote",
+  "description": "Njia ya haraka zaidi ya kutumia AI inayotumiwa na ChatGPT, Claude, Bard, Bing AI popote mtandaoni. Kifaa pekee cha AI kinachohitajika.",
+  "name": "MaxAI.me: Tumia AI kwa Bofya Moja Popote",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Toka",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Futa mazungumzo yote",
     "sidebar__share__share_button__tooltip": "Pakua mazungumzo",
     "provider__openai_api__model__gpt_3_5_1106__description": "Mfano wa hivi karibuni wa GPT-3.5 Turbo na uwezo bora wa kufuata maagizo, njia ya JSON, matokeo yanayoweza kurejewa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha maneno 4,096.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Mfano wa hivi karibuni wa GPT-4 na uwezo bora wa kufuata maagizo, njia ya JSON, matokeo yanayoweza kurejewa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha maneno 4,096. Mfano huu wa hakiki bado haufai kwa trafiki ya uzalishaji.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Mfano wa GPT-4 wa hivi karibuni na ufuatiliaji bora wa maagizo, hali ya JSON, matokeo yanayoweza kurejeshwa, wito wa kazi za mara kwa mara, na zaidi. Inarudisha kiwango cha juu cha herufi 4,096 za matokeo.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Uwezo wa kuelewa picha, pamoja na uwezo wote wa GPT-4 Turbo. Inarudisha kiwango cha juu cha maneno 4,096. Hii ni toleo la hakiki la mfano na bado halifai kwa trafiki ya uzalishaji.",
     "activity__black_friday_2023__title": "Ofa za Black Friday kwa Muda Mchache - Hadi 50% Punguzo!",
     "sidebar__speed_dial__chat_history__button": "Historia ya mazungumzo",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Tatizo la ushirikiano limegunduliwa",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} kwa sasa inakabiliwa na matatizo ya uunganisho na MaxAI kutokana na sasisho zake za hivi karibuni. Timu yetu inafanya kazi kwa bidii kutatua suala hili, na tunathamini uelewa wako. Kwa sasa, tafadhali fikiria kutumia mtoa huduma mbadala na rudisha tena baadaye.",
     "provider__label__hide": "Ficha",
-    "provider__label__view_solutions": "Angalia suluhisho"
+    "provider__label__view_solutions": "Angalia suluhisho",
+    "sidebar__input__tokens_limited__title": "kiwango cha juu cha alama"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Siipendi",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Jibu na pointi muhimu",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Jibu haraka",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Jibu na pointi muhimu (jaribio)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Jibu na pointi muhimu (jaribio)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Kina"
   },
   "prompt_editor": {
     "preset_variables__title": "Uwezo",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Vipengele kuhusu",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Nafasi ya kigezo",
     "preset_variables__tooltip__table__column_name__description__title": "Itabadilishwa na",
-    "template__error__title": "Kigezo ni lazima"
+    "template__error__title": "Kigezo ni lazima",
+    "ai_response_language__title": "Lugha ya majibu ya AI",
+    "ai_response_language__settings__label_1": "Tumia",
+    "ai_response_language__settings__label_2": "mpangilio wa lugha"
   },
   "prompt_library": {
     "use_prompt_library__title": "Vidhibiti vya 1-click",

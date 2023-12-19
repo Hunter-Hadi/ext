@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { useTranslation } from 'react-i18next'
+
+import { MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL } from '@/features/common/constants'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import PerkCard from '@/pages/settings/pages/perks/PerkCard'
-import { CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const FeatureOneClickPromptsCard: FC = () => {
@@ -23,7 +24,7 @@ const FeatureOneClickPromptsCard: FC = () => {
         imageLink={getChromeExtensionAssetsURL(
           '/images/settings/perks/one-click-prompts.png',
         )}
-        buttonLink={`${CHROME_EXTENSION_HOMEPAGE_URL}/prompts`}
+        buttonLink={`${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/prompts`}
       />
     </SettingsFeatureCardLayout>
   )

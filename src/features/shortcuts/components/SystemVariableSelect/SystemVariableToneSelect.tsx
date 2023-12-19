@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField'
 import { SxProps } from '@mui/material/styles'
 
 const TONE_OPTIONS = [
-  { label: `Default`, value: `` },
+  { label: `Default`, value: `Default` },
   { label: `Authoritative`, value: `Authoritative` },
   { label: 'Casual', value: 'Casual' },
   { label: `Clinical`, value: `Clinical` },
@@ -50,7 +50,7 @@ function filterOptions(options: any[], { inputValue }: any) {
 const SystemVariableToneSelect: FC<toneSelectProps> = (props) => {
   const {
     label = 'Tone',
-    defaultValue = '',
+    defaultValue = 'Default',
     onChange = (value: string) => {
       console.log(value)
     },

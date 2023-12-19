@@ -1,6 +1,6 @@
 {
-  "description": "آن لائن کہیں بھی چیٹ جی پی ٹی، کلوڈ، بارڈ، بنگ استعمال کرنے کا سب سے تیز طریقہ. صرف ایک جنریٹو اے آئی پاورڈ توسیع ہے جو آپ کو چاہیے.",
-  "name": "MaxAI.me: کہیں بھی 1-کلک چیٹ جی پی ٹی AI استعمال کریں",
+  "description": "آن لائن کسی بھی جگہ ChatGPT، Claude، Bard، Bing AI کی طاقتور ترین طریقہ استعمال کرنے کا سب سے تیز طریقہ. صرف ایک generative AI توسیع جو آپ کو چاہیے.",
+  "name": "MaxAI.me: کہیں بھی 1-کلک AI استعمال کریں",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "لاگ آؤٹ کریں",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "تمام چیٹوں کو صاف کریں",
     "sidebar__share__share_button__tooltip": "چیٹ ڈاؤن لوڈ کریں",
     "provider__openai_api__model__gpt_3_5_1106__description": "تازہ ترین GPT-3.5 ٹربو ماڈل جس میں بہتر ہدایات کی پیروی، JSON موڈ، قابل دوبارہ پیدا ہونے والے نتائج، متوازی فنکشن کالنگ، اور مزید خصوصیات شامل ہیں۔ زیادہ سے زیادہ 4,096 خروجی ٹوکنز واپس کرتا ہے۔",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "تازہ ترین GPT-4 ماڈل جس میں بہتر ہدایات کی پیروی، JSON موڈ، قابل دوبارہ پیدا ہونے والے نتائج، متوازی فنکشن کالنگ، اور مزید خصوصیات شامل ہیں۔ زیادہ سے زیادہ 4,096 خروجی ٹوکنز واپس کرتا ہے۔ یہ پیش نظارہ ماڈل ابھی تک پیداواری ٹریفک کے لئے مناسب نہیں ہے۔",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "تازہ ترین GPT-4 ماڈل جس میں بہتر ہدایات کی پیروی، JSON موڈ، قابل دوبارہ پیداوار خروجات، متوازی فنکشن کالنگ، اور مزید شامل ہیں۔ زیادہ سے زیادہ 4,096 خروجی ٹوکن واپس کرتا ہے۔",
     "provider__openai_api__model__gpt_4_vision_preview__description": "تصاویر کو سمجھنے کی صلاحیت، بقایا GPT-4 ٹربو خصوصیات کے علاوہ۔ زیادہ سے زیادہ 4,096 خروجی ٹوکنز واپس کرتا ہے۔ یہ ایک پیش نظارہ ماڈل ورژن ہے اور ابھی تک پیداواری ٹریفک کے لئے مناسب نہیں ہے۔",
     "activity__black_friday_2023__title": "محدود وقت کے بلیک جمعہ سودے - تازہ ترین 50٪ تک کمیشن!",
     "sidebar__speed_dial__chat_history__button": "چیٹ کی تاریخ",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "انٹیگریشن مسئلہ دریافت کیا گیا",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} میکس AI کے حالیہ اپ ڈیٹس کی وجہ سے رابطہ مسائل کا سامنا کر رہا ہے۔ ہماری ٹیم فوری طور پر اس مسئلے کو حل کرنے کے لئے کام کر رہی ہے اور ہم آپ کی تفہیم کی قدر کرتے ہیں۔ اس دوران، براہ کرم کسی دوسرے فراہم کنندہ کا استعمال کرنے کو مد نظر رکھیں اور بعد میں ہمارے ساتھ دوبارہ چیک کریں۔",
     "provider__label__hide": "چھپائیں",
-    "provider__label__view_solutions": "حل دیکھیں"
+    "provider__label__view_solutions": "حل دیکھیں",
+    "sidebar__input__tokens_limited__title": "زیادہ سے زیادہ ٹوکن"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "ناپسندیدگی",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "مضامین کے مختصر جواب دیں",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "تیز جواب",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "مضامین کے مختصر جواب دیں (ٹیسٹ)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "مضامین کے مختصر جواب دیں (ٹیسٹ)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "نارویجین"
   },
   "prompt_editor": {
     "preset_variables__title": "صلاحیتوں",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "متغیرات کے بارے میں",
     "preset_variables__tooltip__table__column_name__placeholder__title": "متغیر کا پلیس ہولڈر",
     "preset_variables__tooltip__table__column_name__description__title": "اس سے تبدیل کیا جائے گا",
-    "template__error__title": "ٹیمپلیٹ ضروری ہے"
+    "template__error__title": "ٹیمپلیٹ ضروری ہے",
+    "ai_response_language__title": "AI رد عمل کی زبان",
+    "ai_response_language__settings__label_1": "استعمال کریں",
+    "ai_response_language__settings__label_2": "زبان ترتیب"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-کلک پرامپٹس",

@@ -1,21 +1,21 @@
-import React, { FC, useEffect, useState, useRef } from 'react'
+import SendIcon from '@mui/icons-material/Send'
+import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import { getInputMediator } from '@/store/InputMediator'
-import { getAppRootElement, numberWithCommas } from '@/utils'
-import CircularProgress from '@mui/material/CircularProgress'
-import SendIcon from '@mui/icons-material/Send'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
-import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
-import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
-import TooltipButton from '@/components/TooltipButton'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
+
+import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
+import TooltipButton from '@/components/TooltipButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
-import PromptLibraryIconButton from '@/features/prompt_library/layout/PromptLibraryIconButton'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getInputMediator } from '@/store/InputMediator'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
@@ -23,9 +23,6 @@ const SidebarChatBoxInputActions: FC<{
   const { onSendMessage } = props
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
-  const { currentMaxInputLength, isError } = useChatInputMaxTokens(
-    'chatBoxInputMediator',
-  )
   const [inputValue, setInputValue] = useState('')
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const ref = React.useRef<HTMLElement>(null)
@@ -64,13 +61,14 @@ const SidebarChatBoxInputActions: FC<{
     >
       <Typography
         component={'span'}
-        color={isError ? 'rgb(239, 83, 80)' : 'text.secondary'}
+        color={'text.secondary'}
         fontSize={12}
         // 用等宽字体，不然会左右闪烁宽度
         fontFamily={'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'}
       >
-        {smoothConversationLoading ? 0 : numberWithCommas(inputValue.length, 0)}
-        /{numberWithCommas(currentMaxInputLength, 0)}
+        {/* TODO: AI provider迁移到这个地方选择*/}
+        {/*{Math.floor(currentMaxInputLength / 1000) + 'k '}*/}
+        {/*{t('client:sidebar__input__tokens_limited__title')}*/}
       </Typography>
       <Box
         component={'div'}
@@ -95,8 +93,8 @@ const SidebarChatBoxInputActions: FC<{
                 return {
                   template: inputValue || ' ',
                   target:
-                    getAppRootElement()?.querySelector(
-                      `#${ROOT_CHAT_BOX_INPUT_ID}`,
+                    getMaxAISidebarRootElement()?.querySelector(
+                      `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
                     )?.parentElement || (ref.current as HTMLElement),
                 }
               }}

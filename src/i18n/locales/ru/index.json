@@ -1,6 +1,6 @@
 {
-  "description": "Самый быстрый способ использования ChatGPT, Claude, Bard, Bing в любом месте онлайн. Единственное расширение с генеративным искусственным интеллектом, которое вам нужно.",
-  "name": "MaxAI.me: Используйте ChatGPT AI везде с одним щелчком",
+  "description": "Самый быстрый способ использовать искусственный интеллект, работающий на основе ChatGPT, Claude, Bard, Bing AI в любом месте онлайн. Единственное расширение генеративного искусственного интеллекта, которое вам нужно.",
+  "name": "MaxAI.me: Используйте искусственный интеллект в один клик где угодно",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Выйти",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Очистить все чаты",
     "sidebar__share__share_button__tooltip": "Скачать чат",
     "provider__openai_api__model__gpt_3_5_1106__description": "Последняя модель GPT-3.5 Turbo с улучшенной инструкцией, режимом JSON, воспроизводимыми результатами, параллельным вызовом функций и другими возможностями. Возвращает максимум 4 096 токенов вывода.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Последняя модель GPT-4 с улучшенной инструкцией, режимом JSON, воспроизводимыми результатами, параллельным вызовом функций и другими возможностями. Возвращает максимум 4 096 токенов вывода. Эта предварительная модель еще не подходит для производственного трафика.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Последняя модель GPT-4 с улучшенной инструкцией, режимом JSON, воспроизводимыми результатами, параллельным вызовом функций и многим другим. Возвращает максимум 4 096 токенов вывода.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Возможность понимать изображения, в дополнение ко всем остальным возможностям GPT-4 Turbo. Возвращает максимум 4 096 токенов вывода. Это предварительная версия модели и еще не подходит для производственного трафика.",
     "activity__black_friday_2023__title": "Ограниченное время Черная пятница Скидки – до 50%!",
     "sidebar__speed_dial__chat_history__button": "История чата",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Обнаружена проблема интеграции",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} в настоящее время испытывает проблемы соединения с MaxAI из-за своих последних обновлений. Наша команда активно работает над решением этой проблемы, и мы благодарим вас за понимание. В то же время, рассмотрите возможность использования альтернативного поставщика и проверьте обратно позже.",
     "provider__label__hide": "Скрыть",
-    "provider__label__view_solutions": "Просмотреть решения"
+    "provider__label__view_solutions": "Просмотреть решения",
+    "sidebar__input__tokens_limited__title": "макс. токены"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Не нравится",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Ответить ключевыми моментами",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Быстрый ответ",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Ответить ключевыми моментами (тест)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Ответить ключевыми моментами (тест)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Норвежский"
   },
   "prompt_editor": {
     "preset_variables__title": "Возможности",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Переменные о",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Заменяемая переменная",
     "preset_variables__tooltip__table__column_name__description__title": "Будет заменено на",
-    "template__error__title": "Требуется шаблон"
+    "template__error__title": "Требуется шаблон",
+    "ai_response_language__title": "Язык ответа ИИ",
+    "ai_response_language__settings__label_1": "Использовать",
+    "ai_response_language__settings__label_2": "настройку языка"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клик подсказки",

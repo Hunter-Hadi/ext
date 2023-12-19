@@ -1,6 +1,6 @@
 {
-  "description": "Cel mai rapid mod de a utiliza ChatGPT, Claude, Bard, Bing oriunde online. Singura extensie cu inteligență artificială generativă de care ai nevoie.",
-  "name": "MaxAI.me: Utilizați AI ChatGPT cu un singur clic oriunde",
+  "description": "Cel mai rapid mod de a utiliza AI alimentat de ChatGPT, Claude, Bard, Bing AI oriunde online. Singura extensie AI generativă de care aveți nevoie.",
+  "name": "MaxAI.me: Utilizați AI cu un singur clic oriunde",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Deconectare",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Ștergeți toate conversațiile",
     "sidebar__share__share_button__tooltip": "Descarcă chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Cel mai recent model GPT-3.5 Turbo cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și altele. Returnează un maxim de 4.096 de token-uri de ieșire.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Cel mai recent model GPT-4 cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și altele. Returnează un maxim de 4.096 de token-uri de ieșire. Acest model de previzualizare nu este încă potrivit pentru traficul de producție.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Cel mai recent model GPT-4 cu îmbunătățiri în urmarea instrucțiunilor, modul JSON, rezultate reproductibile, apeluri de funcții paralele și multe altele. Returnează un maxim de 4.096 de token-uri de ieșire.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitatea de a înțelege imagini, în plus față de toate celelalte capabilități ale lui GPT-4 Turbo. Returnează un maxim de 4.096 de token-uri de ieșire. Aceasta este o versiune de previzualizare a modelului și nu este încă potrivită pentru traficul de producție.",
     "activity__black_friday_2023__title": "Oferte de Black Friday cu timp limitat - Până la 50% reducere!",
     "sidebar__speed_dial__chat_history__button": "Istoric chat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "S-a detectat o problemă de integrare",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} întâmpină în prezent probleme de conexiune cu MaxAI din cauza actualizărilor recente. Echipa noastră lucrează activ pentru a rezolva această problemă și apreciem înțelegerea dumneavoastră. Între timp, vă rugăm să luați în considerare utilizarea unui furnizor alternativ și reveniți mai târziu.",
     "provider__label__hide": "Ascunde",
-    "provider__label__view_solutions": "Vezi soluții"
+    "provider__label__view_solutions": "Vezi soluții",
+    "sidebar__input__tokens_limited__title": "maxim de tokeni"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nu îmi place",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Răspunde cu punctele cheie",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Răspuns rapid",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Răspunde cu punctele cheie (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Răspunde cu punctele cheie (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvegiană"
   },
   "prompt_editor": {
     "preset_variables__title": "Capabilități",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabile despre",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Substituent variabil",
     "preset_variables__tooltip__table__column_name__description__title": "Va fi înlocuit cu",
-    "template__error__title": "Este necesar un șablon"
+    "template__error__title": "Este necesar un șablon",
+    "ai_response_language__title": "Limba de răspuns AI",
+    "ai_response_language__settings__label_1": "Utilizați",
+    "ai_response_language__settings__label_2": "setarea limbii"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompturi cu un singur clic",

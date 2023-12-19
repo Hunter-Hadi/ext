@@ -1,10 +1,10 @@
 import { LoadingButton } from '@mui/lab'
 import { Button, Stack, Typography } from '@mui/material'
-import React, { FC } from 'react'
-
-import CustomModal from '@/components/CustomModal'
 import Paper from '@mui/material/Paper'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import CustomModal from '@/features/common/components/CustomModal'
 
 interface IProps {
   show: boolean
@@ -45,7 +45,6 @@ const DeletePromptConfirm: FC<IProps> = ({
           <Stack direction="row" spacing={1} justifyContent="flex-end">
             <LoadingButton
               loading={loading}
-              variant="secondary"
               onClick={(event) => {
                 event.stopPropagation()
                 event.preventDefault()

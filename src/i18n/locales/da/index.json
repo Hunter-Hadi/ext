@@ -1,6 +1,6 @@
 {
-  "description": "Den hurtigste måde at bruge ChatGPT, Claude, Bard, Bing hvor som helst online. Den eneste generative AI-drevne udvidelse, du har brug for.",
-  "name": "MaxAI.me: Brug 1-klik ChatGPT AI Overalt",
+  "description": "Den hurtigste måde at bruge AI, der er drevet af ChatGPT, Claude, Bard, Bing AI hvor som helst online. Den eneste generative AI-udvidelse, du har brug for.",
+  "name": "MaxAI.me: Brug 1-klik AI Overalt",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log ud",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Ryd alle chats",
     "sidebar__share__share_button__tooltip": "Hent chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Den nyeste GPT-3.5 Turbo-model med forbedret instruktionsfølgelse, JSON-tilstand, reproducerbare resultater, parallel funktionopkald og mere. Returnerer maksimalt 4.096 output tokens.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-model med forbedret instruktionsfølgelse, JSON-tilstand, reproducerbare resultater, parallel funktionopkald og mere. Returnerer maksimalt 4.096 output tokens. Denne preview-model er endnu ikke egnet til produktionstrafik.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4-model med forbedret instruktionsfølgelse, JSON-tilstand, reproducerbare resultater, parallel funktionopkald og mere. Returnerer maksimalt 4.096 output tokens.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til at forstå billeder udover alle andre GPT-4 Turbo-funktioner. Returnerer maksimalt 4.096 output tokens. Dette er en preview-modelversion og er endnu ikke egnet til produktionstrafik.",
     "activity__black_friday_2023__title": "Begrænsede Black Friday-tilbud – Op til 50% rabat!",
     "sidebar__speed_dial__chat_history__button": "Chat historik",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Der er fundet en integrationsfejl",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} oplever i øjeblikket forbindelsesproblemer med MaxAI på grund af deres seneste opdateringer. Vores team arbejder aktivt på at løse dette problem, og vi sætter pris på din forståelse. I mellemtiden kan du overveje at bruge en alternativ udbyder og tjekke tilbage senere.",
     "provider__label__hide": "Skjul",
-    "provider__label__view_solutions": "Se løsninger"
+    "provider__label__view_solutions": "Se løsninger",
+    "sidebar__input__tokens_limited__title": "maksimalt antal tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Misliker",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Svar med nøglepunkter",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Hurtigt svar",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svar med nøglepunkter (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svar med nøglepunkter (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norsk"
   },
   "prompt_editor": {
     "preset_variables__title": "Funktioner",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabler om",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Variabelpladsholder",
     "preset_variables__tooltip__table__column_name__description__title": "Vil blive erstattet med",
-    "template__error__title": "Skabelon er påkrævet"
+    "template__error__title": "Skabelon er påkrævet",
+    "ai_response_language__title": "Sprog til AI-svar",
+    "ai_response_language__settings__label_1": "Brug",
+    "ai_response_language__settings__label_2": "sprogindstilling"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",

@@ -1,6 +1,7 @@
+import dayjs from 'dayjs'
+
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
-import dayjs from 'dayjs'
 
 export interface IOpenAIApiChatMessage {
   role: 'system' | 'assistant' | 'user'
@@ -14,7 +15,7 @@ export type IOpenAIApiSettingsType = {
 }
 const currentDate = new Date().toISOString().split('T')[0]
 
-export const OPENAI_API_SYSTEM_MESSAGE = `You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible.\nKnowledge cutoff: 2021-09-01\nCurrent date: ${currentDate}`
+export const OPENAI_API_SYSTEM_MESSAGE = `You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2021-09-01\nCurrent date: ${currentDate}`
 
 // @docs - https://platform.openai.com/docs/models/gpt-4
 export const OPENAI_API_MODELS: IAIProviderModel[] = [

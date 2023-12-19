@@ -1,6 +1,6 @@
 {
-  "description": "Kiireim viis ChatGPT, Claude, Bard, Bing kasutamiseks veebis. Ainuke generatiivse tehisintellektiga laiendus, mida vajate.",
-  "name": "MaxAI.me: Kasuta 1-klõpsuga ChatGPT AI-d kõikjal",
+  "description": "Kõige kiirem viis kasutada ChatGPT, Claude, Bard, Bing AI-d kõikjal veebis. Ainuke generatiivne AI laiendus, mida vajate.",
+  "name": "MaxAI.me: Kasuta 1-klõpsuga AI-d kõikjal",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logi välja",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Kustuta kõik vestlused",
     "sidebar__share__share_button__tooltip": "Laadi vestlus alla",
     "provider__openai_api__model__gpt_3_5_1106__description": "Uusim GPT-3.5 Turbo mudel, millel on parem juhiste järgimine, JSON režiim, taasesitatavad väljundid, paralleelne funktsioonide kutsumine ja palju muud. Tagastab maksimaalselt 4 096 väljunditokenit.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Uusim GPT-4 mudel, millel on parem juhiste järgimine, JSON režiim, taasesitatavad väljundid, paralleelne funktsioonide kutsumine ja palju muud. Tagastab maksimaalselt 4 096 väljunditokenit. See eelvaate mudel ei sobi veel tootmisliikluseks.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Uusim GPT-4 mudel, millel on parendatud juhiste järgimine, JSON režiim, taasesitatavad väljundid, paralleelne funktsioonide kutsumine ja palju muud. Tagastab maksimaalselt 4 096 väljunditokenit.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Võime mõista pilte koos kõigi teiste GPT-4 Turbo võimalustega. Tagastab maksimaalselt 4 096 väljunditokenit. See on eelvaate mudeli versioon ja pole veel sobilik tootmisliikluseks.",
     "activity__black_friday_2023__title": "Piiratud aja pakkumised musta reede ajal – kuni 50% soodsamalt!",
     "sidebar__speed_dial__chat_history__button": "Vestluse ajalugu",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Avastati integreerimisprobleem",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} kogeb praegu ühendusprobleeme MaxAI-ga seoses hiljutiste uuendustega. Meie meeskond töötab aktiivselt selle probleemi lahendamise nimel ja hindame teie mõistvat suhtumist. Seniks kaaluge alternatiivse pakkujaga töötamist ja kontrollige hiljem uuesti.",
     "provider__label__hide": "Peida",
-    "provider__label__view_solutions": "Vaata lahendusi"
+    "provider__label__view_solutions": "Vaata lahendusi",
+    "sidebar__input__tokens_limited__title": "maksimaalsed märgid"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Ei meeldi",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Vasta põhipunktidega",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Kiire vastus",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vasta põhipunktidega (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vasta põhipunktidega (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norra"
   },
   "prompt_editor": {
     "preset_variables__title": "Võimed",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Muutujad seoses",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Muutuja asendaja",
     "preset_variables__tooltip__table__column_name__description__title": "Asendatakse",
-    "template__error__title": "Mall on kohustuslik"
+    "template__error__title": "Mall on kohustuslik",
+    "ai_response_language__title": "AI vastuse keel",
+    "ai_response_language__settings__label_1": "Kasuta",
+    "ai_response_language__settings__label_2": "keele seadistust"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klõpsuga vihjed",

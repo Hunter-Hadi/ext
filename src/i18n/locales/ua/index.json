@@ -1,6 +1,6 @@
 {
-  "description": "Найшвидший спосіб використовувати ChatGPT, Claude, Bard, Bing будь-де онлайн. Єдине розширення з генеративним штучним інтелектом, яке вам потрібно.",
-  "name": "MaxAI.me: Використовуйте 1-Click ChatGPT AI будь-де",
+  "description": "Найшвидший спосіб використовувати штучний інтелект, що працює на основі ChatGPT, Claude, Bard, Bing AI будь-де в Інтернеті. Єдине розширення генеративного штучного інтелекту, яке вам потрібно.",
+  "name": "MaxAI.me: Використовуйте штучний інтелект з одним кліком будь-де",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Вийти",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Очистити всі чати",
     "sidebar__share__share_button__tooltip": "Завантажити чат",
     "provider__openai_api__model__gpt_3_5_1106__description": "Остання модель GPT-3.5 Turbo з покращеною слідуванням інструкціям, режимом JSON, відтворюваними результатами, паралельним викликом функцій та багато іншого. Повертає максимум 4 096 токенів виводу.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Остання модель GPT-4 з покращеною слідуванням інструкціям, режимом JSON, відтворюваними результатами, паралельним викликом функцій та багато іншого. Повертає максимум 4 096 токенів виводу. Ця прев'ю-модель ще не придатна для продуктивного трафіку.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Остання модель GPT-4 з покращеним слідуванням інструкціям, режимом JSON, відтворюваними виводами, паралельним викликом функцій та багато іншого. Повертає максимум 4 096 токенів виводу.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Можливість розуміння зображень, на додаток до всіх інших можливостей GPT-4 Turbo. Повертає максимум 4 096 токенів виводу. Це прев'ю-версія моделі, яка ще не придатна для продуктивного трафіку.",
     "activity__black_friday_2023__title": "Обмежений час Чорної п'ятниці – Знижки до 50%!",
     "sidebar__speed_dial__chat_history__button": "Історія чату",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Виявлено проблему інтеграції",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} в даний час має проблеми з підключенням до MaxAI через свої останні оновлення. Наша команда активно працює над вирішенням цього питання, і ми цінуємо ваше розуміння. Тим часом, розгляньте використання альтернативного постачальника та повертайтеся до нас пізніше.",
     "provider__label__hide": "Приховати",
-    "provider__label__view_solutions": "Переглянути рішення"
+    "provider__label__view_solutions": "Переглянути рішення",
+    "sidebar__input__tokens_limited__title": "макс. токени"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Не подобається",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Відповісти ключовими моментами",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Швидка відповідь",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Відповісти ключовими моментами (тест)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Відповісти ключовими моментами (тест)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Норвезька"
   },
   "prompt_editor": {
     "preset_variables__title": "Можливості",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Змінні про",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Замінник змінної",
     "preset_variables__tooltip__table__column_name__description__title": "Буде замінено на",
-    "template__error__title": "Необхідний шаблон"
+    "template__error__title": "Необхідний шаблон",
+    "ai_response_language__title": "Мова відповіді ШІ",
+    "ai_response_language__settings__label_1": "Використовуйте",
+    "ai_response_language__settings__label_2": "налаштування мови"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клік промпти",

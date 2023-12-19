@@ -1,6 +1,6 @@
 {
-  "description": "La forma más rápida de usar ChatGPT, Claude, Bard, Bing en cualquier lugar en línea. La única extensión impulsada por IA generativa que necesitas.",
-  "name": "MaxAI.me: Usa IA ChatGPT con 1 clic en cualquier lugar",
+  "description": "La forma más rápida de usar IA impulsada por ChatGPT, Claude, Bard, Bing AI en cualquier lugar en línea. La única extensión de IA generativa que necesitas.",
+  "name": "MaxAI.me: Usa IA en cualquier lugar con un solo clic",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Cerrar sesión",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Borrar todos los chats",
     "sidebar__share__share_button__tooltip": "Descargar chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "El último modelo GPT-3.5 Turbo con mejor seguimiento de instrucciones, modo JSON, salidas reproducibles, llamadas de función paralelas y más. Devuelve un máximo de 4,096 tokens de salida.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "El último modelo GPT-4 con mejor seguimiento de instrucciones, modo JSON, salidas reproducibles, llamadas de función paralelas y más. Devuelve un máximo de 4,096 tokens de salida. Este modelo de vista previa aún no es adecuado para el tráfico de producción.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "El último modelo GPT-4 con mejor seguimiento de instrucciones, modo JSON, salidas reproducibles, llamadas de función paralelas y más. Devuelve un máximo de 4,096 tokens de salida.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacidad para comprender imágenes, además de todas las demás capacidades de GPT-4 Turbo. Devuelve un máximo de 4,096 tokens de salida. Esta es una versión de modelo de vista previa y aún no es adecuada para el tráfico de producción.",
     "activity__black_friday_2023__title": "¡Ofertas de Viernes Negro por Tiempo Limitado - ¡Hasta 50% de Descuento!",
     "sidebar__speed_dial__chat_history__button": "Historial de chat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Se detectó un problema de integración",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} está experimentando actualmente problemas de conexión con MaxAI debido a sus actualizaciones recientes. Nuestro equipo está trabajando activamente para resolver este problema y agradecemos tu comprensión. Mientras tanto, considera utilizar un proveedor alternativo y vuelve a consultar más tarde.",
     "provider__label__hide": "Ocultar",
-    "provider__label__view_solutions": "Ver soluciones"
+    "provider__label__view_solutions": "Ver soluciones",
+    "sidebar__input__tokens_limited__title": "máximo de tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "No me gusta",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Responder con puntos clave",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Respuesta rápida",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Responder con puntos clave (prueba)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Responder con puntos clave (prueba)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Noruego"
   },
   "prompt_editor": {
     "preset_variables__title": "Funcionalidades",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variables sobre",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Marcador de variable",
     "preset_variables__tooltip__table__column_name__description__title": "Será reemplazado con",
-    "template__error__title": "Se requiere una plantilla"
+    "template__error__title": "Se requiere una plantilla",
+    "ai_response_language__title": "Idioma de respuesta de IA",
+    "ai_response_language__settings__label_1": "Utilizar",
+    "ai_response_language__settings__label_2": "configuración de idioma"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clic",

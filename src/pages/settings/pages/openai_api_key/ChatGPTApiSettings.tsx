@@ -1,25 +1,25 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
-import Stack from '@mui/material/Stack'
-import TextField from '@mui/material/TextField'
-import InputAdornment from '@mui/material/InputAdornment'
-import IconButton from '@mui/material/IconButton'
-
-import { IOpenAIApiSettingsType } from '@/background/src/chat/OpenAIApiChat/types'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
+import { OpenInNewOutlined } from '@mui/icons-material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
-import { useSnackbar } from 'notistack'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import Stack from '@mui/material/Stack'
+import TextField from '@mui/material/TextField'
+import { isEqual } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
 import debounce from 'lodash-es/debounce'
+import { useSnackbar } from 'notistack'
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { IOpenAIApiSettingsType } from '@/background/src/chat/OpenAIApiChat/types'
 import {
   getThirdProviderSettings,
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
-import { useTranslation } from 'react-i18next'
-import Button from '@mui/material/Button'
-import { OpenInNewOutlined } from '@mui/icons-material'
-import { isEqual } from 'lodash-es'
-import cloneDeep from 'lodash-es/cloneDeep'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 
 const ChatGPTApiSettings: FC = () => {
   const { t } = useTranslation(['settings'])

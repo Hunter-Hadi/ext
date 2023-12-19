@@ -1,6 +1,6 @@
 {
-  "description": "चैटजीपीटी, क्लोड, बार्ड, बिंग का उपयोग करने का सबसे तेज़ तरीका। आपकी जरूरत का एकमात्र प्रेरक ए.आई.-संचालित एक्सटेंशन।",
-  "name": "MaxAI.me: कहीं भी 1-क्लिक चैटजीपीटी एआई का उपयोग करें",
+  "description": "चैटजीपीटी, क्लोड, बार्ड, बिंग AI द्वारा संचालित AI का सबसे तेज़ तरीका, ऑनलाइन कहीं भी। आपकी आवश्यकता के लिए केवल एक उत्पन्न AI एक्सटेंशन।",
+  "name": "MaxAI.me: कहीं भी 1-क्लिक AI का उपयोग करें",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "सभी चैट साफ़ करें",
     "sidebar__share__share_button__tooltip": "चैट डाउनलोड करें",
     "provider__openai_api__model__gpt_3_5_1106__description": "नवीनतम GPT-3.5 टर्बो मॉडल जिसमें सुधारित निर्देशिका का पालन, JSON मोड, पुनरावृत्ति योग्य आउटपुट, समानांतर कार्य को बुलाने और अधिक है। अधिकतम 4,096 आउटपुट टोकन वापस करता है।",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "नवीनतम GPT-4 मॉडल जिसमें सुधारित निर्देशिका का पालन, JSON मोड, पुनरावृत्ति योग्य आउटपुट, समानांतर कार्य को बुलाने और अधिक है। अधिकतम 4,096 आउटपुट टोकन वापस करता है। यह पूर्वावलोकन मॉडल अभी तक उत्पादन यात्रा के लिए उपयुक्त नहीं है।",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "नवीनतम GPT-4 मॉडल जिसमें सुधारित निर्देशों का पालन, JSON मोड, पुनरावृत्ति उत्पाद, समानांतर कार्य कोलिंग और अधिक शामिल है। 4,096 आउटपुट टोकन की अधिकतम वापसी करता है।",
     "provider__openai_api__model__gpt_4_vision_preview__description": "सभी अन्य GPT-4 टर्बो क्षमताओं के अतिरिक्त छवियों को समझने की क्षमता। अधिकतम 4,096 आउटपुट टोकन वापस करता है। यह एक पूर्वावलोकन मॉडल संस्करण है और अभी तक उत्पादन यात्रा के लिए उपयुक्त नहीं है।",
     "activity__black_friday_2023__title": "सीमित समय के लिए ब्लैक फ्राइडे डील्स - 50% तक की छूट!",
     "sidebar__speed_dial__chat_history__button": "चैट इतिहास",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "संयोजन समस्या का पता चला",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} वर्तमान में MaxAI के साथ कनेक्शन समस्याएं अनुभव कर रहा है इसके हाल के अपडेट के कारण। हमारी टीम सक्रिय रूप से इस मामले को हल करने के लिए काम कर रही है, और हम आपकी समझ की कद्र करते हैं। इस बीच, कृपया एक वैकल्पिक प्रदाता का उपयोग करने और हमारे साथ बाद में जांच करने का विचार करें।",
     "provider__label__hide": "छिपाएँ",
-    "provider__label__view_solutions": "समाधान देखें"
+    "provider__label__view_solutions": "समाधान देखें",
+    "sidebar__input__tokens_limited__title": "अधिकतम टोकन"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "अच्छा नहीं",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "मुख्य बिंदुओं के साथ जवाब दें",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "त्वरित जवाब",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "मुख्य बिंदुओं के साथ जवाब दें (परीक्षण)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "मुख्य बिंदुओं के साथ जवाब दें (परीक्षण)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "नॉर्वेजियन"
   },
   "prompt_editor": {
     "preset_variables__title": "क्षमताएँ",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "इसके बारे में चर",
     "preset_variables__tooltip__table__column_name__placeholder__title": "चर प्लेसहोल्डर",
     "preset_variables__tooltip__table__column_name__description__title": "इसके साथ बदल जाएगा",
-    "template__error__title": "टेम्पलेट आवश्यक है"
+    "template__error__title": "टेम्पलेट आवश्यक है",
+    "ai_response_language__title": "एआई प्रतिक्रिया भाषा",
+    "ai_response_language__settings__label_1": "उपयोग करें",
+    "ai_response_language__settings__label_2": "भाषा सेटिंग"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",

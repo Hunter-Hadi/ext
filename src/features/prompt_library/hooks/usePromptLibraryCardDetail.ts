@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
+
 import PromptLibraryService, {
   PROMPT_LIBRARY_API,
 } from '@/features/prompt_library/service'
-
 import {
   IPromptLibraryCardDetailData,
   IPromptLibraryCardType,
@@ -38,4 +38,5 @@ const usePromptLibraryCardDetail = (
     enabled: promptCardId !== '',
   })
 }
+
 export default usePromptLibraryCardDetail

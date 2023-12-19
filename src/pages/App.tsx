@@ -1,21 +1,24 @@
-import React, { FC, useEffect } from 'react'
+// init i18n
+import '@/i18n'
+
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { Resizable } from 're-resizable'
+import React, { FC, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
-import { isEzMailApp, ROOT_CONTAINER_ID } from '@/constants'
-import { AppState } from '@/store'
+
+import Announcement from '@/components/Announcement'
 import AppInit from '@/components/AppInit'
-import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
-import useChatBoxWidth from '@/hooks/useChatBoxWidth'
-import { isShowChatBox } from '@/utils'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
-import { getEnv } from '@/utils/AppEnv'
-import Announcement from '@/components/Announcement'
-// init i18n
-import '@/i18n'
+import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
+import useChatBoxWidth from '@/hooks/useChatBoxWidth'
+import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
+import { AppState } from '@/store'
+import { isShowChatBox } from '@/utils'
+import { getEnv } from '@/utils/AppEnv'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const App: FC = () => {
@@ -43,7 +46,7 @@ const App: FC = () => {
         })
       })
     })
-    const rootEl = document.getElementById(ROOT_CONTAINER_ID)
+    const rootEl = document.getElementById(MAXAI_SIDEBAR_ID)
     if (rootEl) {
       attrObserver.observe(rootEl, {
         attributes: true,
@@ -90,7 +93,7 @@ const App: FC = () => {
       >
         <Box
           component={'div'}
-          className={isEzMailApp ? 'ezmail-ai-app' : 'use-chat-gpt-ai-app'}
+          className={'use-chat-gpt-ai-app'}
           ref={appRef}
           sx={{
             // pointerEvents: 'auto',
@@ -124,11 +127,13 @@ const App: FC = () => {
             <ChatBoxHeader />
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>
-                {isOpened && (
-                  <Stack flex={1} height={0}>
-                    <NormalChatPage />
-                  </Stack>
-                )}
+                <Stack flex={1} height={0}>
+                  {isOpened && <NormalChatPage />}
+                  {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}
+                  {!isOpened && (
+                    <ActionSetVariablesModal modelKey={'Sidebar'} />
+                  )}
+                </Stack>
               </AppSuspenseLoadingLayout>
             </BrowserVersionDetector>
           </Stack>

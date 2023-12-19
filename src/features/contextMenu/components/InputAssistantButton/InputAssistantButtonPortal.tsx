@@ -1,12 +1,13 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useRecoilValue } from 'recoil'
+
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { IInputAssistantButtonGroupConfig } from '@/features/contextMenu/components/InputAssistantButton/config'
 import InputAssistantButton from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
 import InputAssistantButtonManager, {
   IInputAssistantButtonObserverData,
 } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { IInputAssistantButtonGroupConfig } from '@/features/contextMenu/components/InputAssistantButton/config'
-import { useRecoilValue } from 'recoil'
 import { AppDBStorageState } from '@/store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 const InputAssistantPortal: FC = () => {

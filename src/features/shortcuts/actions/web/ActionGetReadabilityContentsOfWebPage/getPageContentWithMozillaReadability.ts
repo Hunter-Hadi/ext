@@ -1,11 +1,11 @@
 import { Readability } from '@mozilla/readability'
-import TurndownService from 'turndown'
 import { HTMLDocument } from 'linkedom/types/html/document'
+import TurndownService from 'turndown'
 
 function removeImagesFromMarkdown(markdownText: string): string {
   const lines: string[] = markdownText.split('\n')
   const filteredLines: string[] = lines.filter(
-    (line: string) => !line.startsWith('!['),
+    (line: string) => !line.startsWith('![') && !line.startsWith('**!['),
   )
   const cleanedText: string = filteredLines.join('\n')
   return cleanedText

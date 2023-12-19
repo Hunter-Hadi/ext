@@ -1,13 +1,18 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import rangyLib from '@/lib/rangy/rangy-core'
-import { useCallback, useEffect, useRef } from 'react'
-
-import initRangyPosition from '@/lib/rangy/rangy-position'
-import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
-import { useRangy } from './useRangy'
 import debounce from 'lodash-es/debounce'
-import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
+import { useCallback, useEffect, useRef } from 'react'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+
+import { IChromeExtensionClientListenEvent } from '@/background/eventType'
+import { useCreateClientMessageListener } from '@/background/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import {
+  MAXAI_CLIPBOARD_ID,
+  MAXAI_CONTEXT_MENU_ID,
+  MAXAI_SIDEBAR_ID,
+} from '@/features/common/constants'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import {
   FloatingContextMenuDraftState,
   FloatingDropdownMenuLastFocusRangeState,
@@ -15,19 +20,13 @@ import {
   FloatingDropdownMenuSystemItemsState,
   useFloatingContextMenu,
 } from '@/features/contextMenu'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { listenIframeMessage } from '@/iframe'
-import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { useCreateClientMessageListener } from '@/background/utils'
-import { IChromeExtensionClientListenEvent } from '@/background/eventType'
-import Log from '@/utils/Log'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   ContextMenuDraftType,
   ISelectionElement,
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
+import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
+import runEmbedShortCuts from '@/features/contextMenu/utils/runEmbedShortCuts'
 import {
   createSandboxIframeClickAndKeydownEvent,
   createSelectionElement,
@@ -37,14 +36,16 @@ import {
   removeAllSelectionMarker,
   useBindRichTextEditorLineTextPlaceholder,
 } from '@/features/contextMenu/utils/selectionHelper'
-import {
-  ROOT_CLIPBOARD_ID,
-  ROOT_CONTAINER_ID,
-  ROOT_CONTEXT_MENU_ID,
-} from '@/constants'
-import useCommands from '@/hooks/useCommands'
-import { AppDBStorageState } from '@/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import useCommands from '@/hooks/useCommands'
+import { listenIframeMessage } from '@/iframe'
+import rangyLib from '@/lib/rangy/rangy-core'
+import initRangyPosition from '@/lib/rangy/rangy-position'
+import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'
+import { AppDBStorageState } from '@/store'
+import Log from '@/utils/Log'
+
+import { useRangy } from './useRangy'
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -150,9 +151,9 @@ const useInitRangy = () => {
         if (activeElement) {
           if (
             activeElement &&
-            (activeElement.id === ROOT_CONTAINER_ID ||
-              activeElement.id === ROOT_CONTEXT_MENU_ID ||
-              activeElement.id === ROOT_CLIPBOARD_ID)
+            (activeElement.id === MAXAI_SIDEBAR_ID ||
+              activeElement.id === MAXAI_CONTEXT_MENU_ID ||
+              activeElement.id === MAXAI_CLIPBOARD_ID)
           ) {
             return
           }

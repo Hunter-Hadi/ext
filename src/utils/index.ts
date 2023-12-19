@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react'
-import {
-  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  ROOT_CONTAINER_ID,
-  ROOT_CONTAINER_WRAPPER_ID,
-  ROOT_CONTEXT_MENU_ID,
-  ROOT_CONTEXT_MENU_PORTAL_ID,
-  ROOT_MINIMIZE_CONTAINER_ID,
-} from '@/constants'
-import {
-  ContentScriptConnectionV2,
-  pingDaemonProcess,
-} from '@/features/chatgpt/utils'
 import size from 'lodash-es/size'
+import { useEffect, useState } from 'react'
+
 import {
   IBackgroundRunCommandFunctionKey,
   IBackgroundRunCommandFunctionParams,
   IBackgroundRunCommandFunctionReturn,
   IBackgroundRunCommandKey,
 } from '@/background/src/client/backgroundCommandHandler'
+import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
+import {
+  ContentScriptConnectionV2,
+  pingDaemonProcess,
+} from '@/features/chatgpt/utils'
+import {
+  MAXAI_CONTEXT_MENU_ID,
+  MAXAI_CONTEXT_MENU_PORTAL_ID,
+  MAXAI_MINIMIZE_CONTAINER_ID,
+  MAXAI_SIDEBAR_ID,
+} from '@/features/common/constants'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const numberWithCommas = (number: number, digits = 2) => {
@@ -26,35 +26,30 @@ export const numberWithCommas = (number: number, digits = 2) => {
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 export const getAppActiveElement = (): HTMLElement | null => {
-  const element = document.querySelector(`#${ROOT_CONTAINER_ID}`)?.shadowRoot
+  const element = document.querySelector(`#${MAXAI_SIDEBAR_ID}`)?.shadowRoot
     ?.activeElement as HTMLDivElement
   if (element === undefined) return null
   return element
 }
 
 export const getFloatingContextMenuActiveElement = (): HTMLElement | null => {
-  const element = document.querySelector(`#${ROOT_CONTEXT_MENU_ID}`)?.shadowRoot
-    ?.activeElement as HTMLDivElement
+  const element = document.querySelector(`#${MAXAI_CONTEXT_MENU_ID}`)
+    ?.shadowRoot?.activeElement as HTMLDivElement
   if (element === undefined) return null
   return element
-}
-export const getAppRootElement = (): HTMLElement | undefined => {
-  return document
-    .querySelector(`#${ROOT_CONTAINER_ID}`)
-    ?.shadowRoot?.querySelector(`#${ROOT_CONTAINER_WRAPPER_ID}`) as HTMLElement
 }
 export const getAppContextMenuRootElement = (): HTMLDivElement | null => {
   const portals =
     document
-      .querySelector(`#${ROOT_CONTEXT_MENU_ID}`)
-      ?.shadowRoot?.querySelectorAll(`#${ROOT_CONTEXT_MENU_PORTAL_ID}`) || []
+      .querySelector(`#${MAXAI_CONTEXT_MENU_ID}`)
+      ?.shadowRoot?.querySelectorAll(`#${MAXAI_CONTEXT_MENU_PORTAL_ID}`) || []
   const portal = Array.from(portals).find((portal) => portal.innerHTML !== '')
   return portal as HTMLDivElement
 }
 
 export const getAppMinimizeContainerElement = (): HTMLDivElement | null => {
   return document
-    .querySelector(`#${ROOT_MINIMIZE_CONTAINER_ID}`)
+    .querySelector(`#${MAXAI_MINIMIZE_CONTAINER_ID}`)
     ?.shadowRoot?.querySelector('div') as HTMLDivElement
 }
 
@@ -63,7 +58,7 @@ export const getAppMinimizeContainerElement = (): HTMLDivElement | null => {
  */
 const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
   const htmlElement = document.body.parentElement
-  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
   const host = getCurrentDomainHost()
   if (htmlElement && chatBoxElement) {
     const chatBoxElementWidth =
@@ -100,10 +95,24 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
           element.style.maxWidth = '95%'
         })
     }
+
+    if (host === 'mail.qq.com') {
+      htmlElement.style.width = '100%'
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
     document.body.style.height = '100vh'
+  }
+
+  if (
+    host === 'greylock.com' ||
+    host === 'notion.so' ||
+    host === 'teams.live.com'
+  ) {
+    // 打开 chat box 的时候，设置为 hidden
+    // 为了解决 context menu 渲染在 body 宽度以外的地方时，样式错误的问题
+    document.body.style.overflow = 'unset'
   }
 }
 
@@ -149,11 +158,20 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
   if (document.querySelector('embed[type="application/pdf"]')) {
     document.body.style.height = ''
   }
+
+  if (
+    host === 'greylock.com' ||
+    host === 'notion.so' ||
+    host === 'teams.live.com'
+  ) {
+    // 关闭 chat box 的时候 清楚设定的值
+    document.body.style.overflow = ''
+  }
 }
 
 export const showChatBox = () => {
   const htmlElement = document.body.parentElement
-  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
   if (htmlElement && chatBoxElement) {
     const chatBoxElementWidth =
       chatBoxElement.offsetWidth ||
@@ -178,7 +196,7 @@ export const showChatBox = () => {
 
 export const hideChatBox = () => {
   const htmlElement = document.body.parentElement
-  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
   if (htmlElement && chatBoxElement) {
     htmlElement.style.transition = 'width .1s ease-inout'
     htmlElement.style.width = '100%'
@@ -192,7 +210,7 @@ export const hideChatBox = () => {
   }
 }
 export const isShowChatBox = () => {
-  const chatBoxElement = document.getElementById(ROOT_CONTAINER_ID)
+  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
   return chatBoxElement?.classList.contains('open') || false
 }
 

@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. The only generative AI-powered extension you need.",
-  "name": "MaxAI.me: Use 1-Click ChatGPT AI Anywhere",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Bard, Bing AI anywhere online. The only generative AI extension you need.",
+  "name": "MaxAI.me: Use 1-Click AI Anywhere",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log out",
@@ -252,6 +252,7 @@
     "sidebar__refresh_page__description": "Refresh this page to activate the extension on this page.",
     "sidebar__refresh_page__button": "Refresh this page",
     "sidebar__input__placeholder": "Ask AI...",
+    "sidebar__input__tokens_limited__title": "tokens max",
     "floating_menu__button__cta__tooltip": "Ask AI to edit, summarize, explain, or generate text",
     "floating_menu__button__hide_menu": "Hide menu",
     "floating_menu__button__hide_menu__until_next_visit": "Hide menu until next visit",
@@ -340,7 +341,7 @@
     "provider__openai_api__model__gpt_3_5_1106__description": "The latest GPT-3.5 Turbo model with improved instruction following, JSON mode, reproducible outputs, parallel function calling, and more. Returns a maximum of 4,096 output tokens.",
     "provider__openai_api__model__gpt_4_0613__description": "Snapshot of gpt-4 from June 13th 2023 with function calling data. Unlike gpt-4, this model will not receive updates, and will be deprecated 3 months after a new version is released.",
     "provider__openai_api__model__gpt_4_0613_32k__description": "Snapshot of gpt-4-32 from June 13th 2023. Unlike gpt-4-32k, this model will not receive updates, and will be deprecated 3 months after a new version is released.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "The latest GPT-4 model with improved instruction following, JSON mode, reproducible outputs, parallel function calling, and more. Returns a maximum of 4,096 output tokens. This preview model is not yet suited for production traffic.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "The latest GPT-4 model with improved instruction following, JSON mode, reproducible outputs, parallel function calling, and more. Returns a maximum of 4,096 output tokens.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Ability to understand images, in addition to all other GPT-4 Turbo capabilties. Returns a maximum of 4,096 output tokens. This is a preview model version and not suited yet for production traffic.",
     "provider__chatgpt__title": "ChatGPT",
     "provider__chatgpt__short_description": "As fast as ChatGPT Plus. GPT-3.5-turbo, GPT-4-turbo, and GPT-3.5-turbo-16k.",
@@ -531,7 +532,10 @@
     "add_variable__variable_name__placeholder": "Enter variable name",
     "add_variable__variable_placeholder__title": "Variable placeholder",
     "add_variable__variable_placeholder__placeholder": "Enter variable placeholder",
-    "add_variable__error_message__variable_name_repeated": "Variable names cannot be repeated"
+    "add_variable__error_message__variable_name_repeated": "Variable names cannot be repeated",
+    "ai_response_language__title": "AI response language",
+    "ai_response_language__settings__label_1": "Use",
+    "ai_response_language__settings__label_2": "language setting"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-Click Prompts",
@@ -741,6 +745,7 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Dislike",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Reply with key points",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Quick reply",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Reply with key points(test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Reply with key points(test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian"
   }
 }

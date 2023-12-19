@@ -1,15 +1,15 @@
+import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   MAX_UPLOAD_TEXT_FILE_TOKENS,
   stringConvertTxtUpload,
 } from '@/features/shortcuts/utils/stringConvertTxtUpload'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 /**
  * @since 2023-09-11
@@ -119,10 +119,7 @@ export class ActionAnalyzeChatFile extends Action {
       }
       await this.updateConversation(engine, {
         meta: {
-          systemPrompt: `The following text delimited by triple backticks is the context text:
-            \`\`\`
-            ${pageSummarySystemPrompt}
-            \`\`\``,
+          systemPrompt: `The following text delimited by triple backticks is the context text:\n\`\`\`\n${pageSummarySystemPrompt}\n\`\`\``,
         },
       })
       this.output = pageSummarySystemPrompt

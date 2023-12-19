@@ -1,12 +1,14 @@
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
-import { getAppRootElement, showChatBox } from '@/utils'
-import React from 'react'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { useTranslation } from 'react-i18next'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Stack from '@mui/material/Stack'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import { showChatBox } from '@/utils'
 
 const tooltipKey = () => {
   const summaryType = getPageSummaryType()
@@ -60,7 +62,7 @@ const MaxAISummarizeMiniButton = () => {
             showChatBox()
             const timer = setInterval(() => {
               if (
-                getAppRootElement()?.querySelector(
+                getMaxAISidebarRootElement()?.querySelector(
                   'p[data-testid="max-ai__summary-tab"]',
                 )
               ) {

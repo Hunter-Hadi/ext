@@ -7,6 +7,13 @@ import {
   useFloating,
   useInteractions,
 } from '@floating-ui/react'
+import SendIcon from '@mui/icons-material/Send'
+import CircularProgress from '@mui/material/CircularProgress'
+import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
+import { useTheme } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
+import cloneDeep from 'lodash-es/cloneDeep'
 import React, {
   FC,
   useCallback,
@@ -15,12 +22,49 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+
+import AutoHeightTextarea from '@/components/AutoHeightTextarea'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
+import { useAuthLogin } from '@/features/auth'
+import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
+import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
+import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
+import {
+  MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
+  MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
+} from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import {
+  FloatingContextMenuOpenSidebarButton,
+  FloatingContextMenuPopupSettingButton,
+  FloatingContextMenuShortcutButtonGroup,
+} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import {
+  useContextMenuList,
+  useDraftContextMenuList,
+  useRangy,
+} from '@/features/contextMenu/hooks'
+import {
+  contextMenuIsFavoriteContextMenu,
+  contextMenuToFavoriteContextMenu,
+  FAVORITE_CONTEXT_MENU_GROUP_ID,
+} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
+import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu/types'
 import {
   checkIsDraftContextMenuId,
   cloneRect,
@@ -30,60 +74,14 @@ import {
   getDraftContextMenuTypeById,
   isFloatingContextMenuVisible,
 } from '@/features/contextMenu/utils'
-import AutoHeightTextarea from '@/components/AutoHeightTextarea'
-import CircularProgress from '@mui/material/CircularProgress'
-import IconButton from '@mui/material/IconButton'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import {
-  CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
-  ROOT_FLOATING_INPUT_ID,
-  ROOT_FLOATING_REFERENCE_ELEMENT_ID,
-} from '@/constants'
-import {
-  getAppContextMenuRootElement,
-  getAppRootElement,
-  showChatBox,
-} from '@/utils'
-import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { useTheme } from '@mui/material/styles'
-import {
-  FloatingContextMenuOpenSidebarButton,
-  FloatingContextMenuPopupSettingButton,
-  FloatingContextMenuShortcutButtonGroup,
-} from '@/features/contextMenu/components/FloatingContextMenu/buttons'
-import { getInputMediator } from '@/store/InputMediator'
-import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
-import {
-  IContextMenuItem,
-  IContextMenuItemWithChildren,
-} from '@/features/contextMenu/types'
-import {
-  useRangy,
-  useContextMenuList,
-  useDraftContextMenuList,
-} from '@/features/contextMenu/hooks'
-import { useAuthLogin } from '@/features/auth'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import cloneDeep from 'lodash-es/cloneDeep'
-import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
-import {
-  contextMenuIsFavoriteContextMenu,
-  contextMenuToFavoriteContextMenu,
-  FAVORITE_CONTEXT_MENU_GROUP_ID,
-} from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
-import SendIcon from '@mui/icons-material/Send'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
-import { AppDBStorageState } from '@/store'
-import { useTranslation } from 'react-i18next'
-import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { AppDBStorageState } from '@/store'
+import { getInputMediator } from '@/store/InputMediator'
+import { getAppContextMenuRootElement, showChatBox } from '@/utils'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -117,7 +115,9 @@ const FloatingContextMenu: FC<{
     const activeElement =
       currentSelectionRef.current?.activeElement ||
       currentSelectionRef.current?.selectionElement?.target
-    return activeElement && getAppRootElement()?.contains(activeElement)
+    return (
+      activeElement && getMaxAISidebarRootElement()?.contains(activeElement)
+    )
   }, [])
   // 是否有上下文，决定contextMenu展示的内容
   const haveContext = useMemo(
@@ -302,7 +302,7 @@ const FloatingContextMenu: FC<{
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
       const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${ROOT_FLOATING_INPUT_ID}`,
+        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
       ) as HTMLTextAreaElement
       if (textareaEl) {
         setTimeout(() => {
@@ -315,7 +315,7 @@ const FloatingContextMenu: FC<{
       })
     } else {
       const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${ROOT_FLOATING_INPUT_ID}`,
+        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
       ) as HTMLTextAreaElement
       const userInputDraft = textareaEl?.value
       if (userInputDraft) {
@@ -330,7 +330,7 @@ const FloatingContextMenu: FC<{
     if (!conversation.loading) {
       if (isFloatingContextMenuVisible()) {
         const textareaEl = getAppContextMenuRootElement()?.querySelector(
-          `#${ROOT_FLOATING_INPUT_ID}`,
+          `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
         ) as HTMLTextAreaElement
         if (textareaEl) {
           setTimeout(() => {
@@ -623,7 +623,7 @@ const FloatingContextMenu: FC<{
         onKeyUp={(event) => {
           event.stopPropagation()
         }}
-        id={ROOT_FLOATING_REFERENCE_ELEMENT_ID}
+        id={MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}
       >
         <FloatingContextMenuList
@@ -711,7 +711,7 @@ const FloatingContextMenu: FC<{
                           ? t('client:floating_menu__input__placeholder')
                           : ''
                       }
-                      InputId={ROOT_FLOATING_INPUT_ID}
+                      InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
                       sx={{
                         border: 'none',
                         '& > div': {

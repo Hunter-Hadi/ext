@@ -1,26 +1,27 @@
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import { useEffect } from 'react'
 import Browser from 'webextension-polyfill'
-import {
-  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-  CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
-} from '@/constants'
+
 import {
   IChromeExtensionListenEvent,
   IChromeExtensionSendEvent,
 } from '@/background/eventType'
-import { useEffect } from 'react'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { removeAllChromeExtensionSettingsSnapshot } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
-import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import { resetChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  CHROME_EXTENSION_DB_STORAGE_SAVE_KEY,
+  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/constants'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
+import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 
 export {
+  getChromeExtensionOnBoardingData,
   resetChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
-  getChromeExtensionOnBoardingData,
 } from './chromeExtensionStorage/chromeExtensionOnboardingStorage'
 
 dayjs.extend(utc)
@@ -37,7 +38,7 @@ export const backgroundSendAllClientMessage = async (
       if (tab.id) {
         try {
           await Browser.tabs.sendMessage(tab.id, {
-            id: CHROME_EXTENSION_POST_MESSAGE_ID,
+            id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
             event,
             data,
           })
@@ -63,7 +64,7 @@ export const backgroundSendClientMessage = async (
   if (currentTab && currentTab.id) {
     try {
       const result = await Browser.tabs.sendMessage(currentTab.id, {
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
+        id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
         event,
         data,
       })
@@ -99,7 +100,7 @@ export const createBackgroundMessageListener = (
       event,
       id,
     } = message
-    if (id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+    if (id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
       return
     }
     return new Promise((resolve) => {
@@ -132,7 +133,7 @@ export const createClientMessageListener = (
     sender: Browser.Runtime.MessageSender,
   ) => {
     const { data, event, id } = message
-    if (id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+    if (id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
       return
     }
     return new Promise((resolve) => {
@@ -165,7 +166,7 @@ export const useCreateClientMessageListener = (
       sender: Browser.Runtime.MessageSender,
     ) => {
       const { data, event, id } = message
-      if (id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+      if (id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
         return
       }
       return new Promise((resolve) => {

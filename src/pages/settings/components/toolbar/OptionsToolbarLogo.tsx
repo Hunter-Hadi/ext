@@ -1,41 +1,39 @@
-import React, { FC, useState } from 'react'
-import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import Drawer from '@mui/material/Drawer'
-import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
-import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
-import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { useTranslation } from 'react-i18next'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
-import {
-  APP_USE_CHAT_GPT_HOST,
-  CHROME_EXTENSION_HOMEPAGE_URL,
-  isEzMailApp,
-} from '@/constants'
+import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import React, { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
+import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
+import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
 
 const OptionsToolbarLogo: FC = () => {
   const { t } = useTranslation(['settings', 'common', 'client'])
   const [drawerOpen, setDrawerOpen] = useState(false)
   const theme = useCustomTheme()
   const isDownMd = useMediaQuery(theme.customTheme.breakpoints.down('md'))
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return
-      }
-      setDrawerOpen(open)
+  const toggleDrawer = (open: boolean) => (
+    event: React.KeyboardEvent | React.MouseEvent,
+  ) => {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' ||
+        (event as React.KeyboardEvent).key === 'Shift')
+    ) {
+      return
     }
+    setDrawerOpen(open)
+  }
   return (
     <React.Fragment>
       <Stack direction={'row'} alignItems={'center'} spacing={1}>
@@ -44,11 +42,7 @@ const OptionsToolbarLogo: FC = () => {
             sx={{
               textDecoration: 'none!important',
             }}
-            href={
-              isEzMailApp
-                ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
-                : APP_USE_CHAT_GPT_HOST
-            }
+            href={APP_USE_CHAT_GPT_HOST}
             target={'_blank'}
           >
             <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
@@ -92,11 +86,7 @@ const OptionsToolbarLogo: FC = () => {
               sx={{
                 textDecoration: 'none!important',
               }}
-              href={
-                isEzMailApp
-                  ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
-                  : APP_USE_CHAT_GPT_HOST
-              }
+              href={APP_USE_CHAT_GPT_HOST}
               target={'_blank'}
             >
               <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>
@@ -140,11 +130,7 @@ const OptionsToolbarLogo: FC = () => {
                 sx={{
                   textDecoration: 'none!important',
                 }}
-                href={
-                  isEzMailApp
-                    ? CHROME_EXTENSION_HOMEPAGE_URL + '?invite=CHROME_EXTENSION'
-                    : APP_USE_CHAT_GPT_HOST
-                }
+                href={APP_USE_CHAT_GPT_HOST}
                 target={'_blank'}
               >
                 <TextOnlyTooltip title={t('client:sidebar__button__my_plan')}>

@@ -1,6 +1,6 @@
 {
-  "description": "Ang pinakamabilis na paraan upang gamitin ang ChatGPT, Claude, Bard, Bing kahit saan online. Ang tanging extension na may kapangyarihang AI na kailangan mo.",
-  "name": "MaxAI.me: Gamitin ang 1-Click ChatGPT AI Kahit Saan",
+  "description": "Ang pinakamabilis na paraan upang gamitin ang AI na pinapagana ng ChatGPT, Claude, Bard, Bing AI kahit saan online. Ang tanging generative AI extension na kailangan mo.",
+  "name": "MaxAI.me: Gamitin ang AI sa Isang Click Kahit Saan",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Mag-log out",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Burahin ang lahat ng mga chat",
     "sidebar__share__share_button__tooltip": "I-download ang chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Ang pinakabagong GPT-3.5 Turbo model na may pinahusay na pagsunod sa mga tagubilin, JSON mode, reproducible outputs, parallel function calling, at higit pa. Nagbabalik ng maximum na 4,096 output tokens.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Ang pinakabagong GPT-4 model na may pinahusay na pagsunod sa mga tagubilin, JSON mode, reproducible outputs, parallel function calling, at higit pa. Nagbabalik ng maximum na 4,096 output tokens. Ang preview model na ito ay hindi pa angkop para sa production traffic.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Ang pinakabagong modelo ng GPT-4 na may pinabuting pagsunod sa mga tagubilin, JSON mode, reproducible outputs, parallel function calling, at higit pa. Nagbabalik ng maximum na 4,096 output tokens.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kakayahang maunawaan ang mga imahe, bukod sa lahat ng iba pang kakayahan ng GPT-4 Turbo. Nagbabalik ng maximum na 4,096 output tokens. Ito ay isang preview model version at hindi pa angkop para sa production traffic.",
     "activity__black_friday_2023__title": "Mga Limitadong Oras na Black Friday Deals - Hanggang 50% Off!",
     "sidebar__speed_dial__chat_history__button": "Kasaysayan ng Chat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Natuklasan ang isyung pang-integrasyon",
     "provider__confirm_dialog__integration_issue_detected__desc": "Ang {{label}} ay kasalukuyang may mga problema sa koneksyon sa MaxAI dahil sa mga kamakailang update nito. Kami ay aktibong gumagawa upang malutas ang problemang ito, at pinahahalagahan namin ang iyong pang-unawa. Samantala, mangyaring isaalang-alang ang paggamit ng ibang provider at bumalik sa amin mamaya.",
     "provider__label__hide": "Itago",
-    "provider__label__view_solutions": "Tingnan ang mga solusyon"
+    "provider__label__view_solutions": "Tingnan ang mga solusyon",
+    "sidebar__input__tokens_limited__title": "maksimum na mga token"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Hindi gusto",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Tugon gamit ang pangunahing puntos",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Mabilis na tugon",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Tugon gamit ang pangunahing puntos (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Tugon gamit ang pangunahing puntos (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian"
   },
   "prompt_editor": {
     "preset_variables__title": "Kakayahan",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Mga Baryabol tungkol sa",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Panghalili ng baryabol",
     "preset_variables__tooltip__table__column_name__description__title": "Ibabago ng",
-    "template__error__title": "Kinakailangan ang Template"
+    "template__error__title": "Kinakailangan ang Template",
+    "ai_response_language__title": "Wika ng tugon ng AI",
+    "ai_response_language__settings__label_1": "Gamitin",
+    "ai_response_language__settings__label_2": "setting ng wika"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click mga prompt",

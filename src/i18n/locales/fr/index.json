@@ -1,6 +1,6 @@
 {
-  "description": "La façon la plus rapide d'utiliser ChatGPT, Claude, Bard, Bing n'importe où en ligne. La seule extension alimentée par l'IA générative dont vous avez besoin.",
-  "name": "MaxAI.me: Utilisez l'IA ChatGPT en un clic partout",
+  "description": "La façon la plus rapide d'utiliser l'IA alimentée par ChatGPT, Claude, Bard, Bing AI n'importe où en ligne. La seule extension d'IA générative dont vous avez besoin.",
+  "name": "MaxAI.me: Utilisez l'IA en un clic partout",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Déconnexion",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Effacer tous les chats",
     "sidebar__share__share_button__tooltip": "Télécharger le chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Le dernier modèle GPT-3.5 Turbo avec une meilleure prise en compte des instructions, le mode JSON, des sorties reproductibles, l'appel de fonctions parallèles et plus encore. Renvoie un maximum de 4 096 jetons de sortie.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Le dernier modèle GPT-4 avec une meilleure prise en compte des instructions, le mode JSON, des sorties reproductibles, l'appel de fonctions parallèles et plus encore. Renvoie un maximum de 4 096 jetons de sortie. Ce modèle de prévisualisation n'est pas encore adapté au trafic de production.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Le dernier modèle GPT-4 avec une meilleure prise en compte des instructions, le mode JSON, des sorties reproductibles, l'appel de fonctions parallèles et plus encore. Renvoie un maximum de 4 096 jetons de sortie.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacité à comprendre les images, en plus de toutes les autres fonctionnalités de GPT-4 Turbo. Renvoie un maximum de 4 096 jetons de sortie. Il s'agit d'une version de modèle de prévisualisation qui n'est pas encore adaptée au trafic de production.",
     "activity__black_friday_2023__title": "Offres du Black Friday à durée limitée - Jusqu'à 50% de réduction !",
     "sidebar__speed_dial__chat_history__button": "Historique du chat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Problème d'intégration détecté",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} rencontre actuellement des problèmes de connexion avec MaxAI en raison de ses mises à jour récentes. Notre équipe travaille activement à résoudre ce problème et nous vous remercions de votre compréhension. En attendant, veuillez envisager d'utiliser un fournisseur alternatif et revenir vers nous ultérieurement.",
     "provider__label__hide": "Cacher",
-    "provider__label__view_solutions": "Voir les solutions"
+    "provider__label__view_solutions": "Voir les solutions",
+    "sidebar__input__tokens_limited__title": "maximum de jetons"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Je n'aime pas",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Répondre avec les points clés",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Réponse rapide",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Répondre avec les points clés (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Répondre avec les points clés (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvégien"
   },
   "prompt_editor": {
     "preset_variables__title": "Fonctionnalités",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variables concernant le",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Espace réservé de variable",
     "preset_variables__tooltip__table__column_name__description__title": "Sera remplacé par",
-    "template__error__title": "Le modèle est requis"
+    "template__error__title": "Le modèle est requis",
+    "ai_response_language__title": "Langue de réponse de l'IA",
+    "ai_response_language__settings__label_1": "Utiliser",
+    "ai_response_language__settings__label_2": "paramètre de langue"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts en 1 clic",

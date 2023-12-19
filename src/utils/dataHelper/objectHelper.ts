@@ -1,5 +1,5 @@
-import { mergeWith } from 'lodash-es'
 import isArray from 'lodash-es/isArray'
+import mergeWith from 'lodash-es/mergeWith'
 
 export const objectFilterEmpty = (obj: any, filterEmptyString = true) => {
   const result: any = {}

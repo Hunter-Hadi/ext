@@ -10,6 +10,7 @@
   transition: all 0.1s ease-in-out;
   z-index: -2147483600;
   visibility: hidden;
+  width: unset;
 }
 #USE_CHAT_GPT_AI_ROOT_Minimize_Container{
   z-index: 2147483647;

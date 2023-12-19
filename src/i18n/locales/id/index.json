@@ -1,6 +1,6 @@
 {
-  "description": "Cara tercepat untuk menggunakan ChatGPT, Claude, Bard, Bing di mana saja secara online. Satu-satunya ekstensi AI generatif yang Anda butuhkan.",
-  "name": "MaxAI.me: Gunakan ChatGPT AI 1-Klik di Mana Saja",
+  "description": "Cara tercepat untuk menggunakan AI yang didukung oleh ChatGPT, Claude, Bard, Bing AI di mana saja secara online. Satu-satunya ekstensi AI generatif yang Anda butuhkan.",
+  "name": "MaxAI.me: Gunakan AI 1-Klik di Mana Saja",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Keluar",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Hapus semua percakapan",
     "sidebar__share__share_button__tooltip": "Unduh percakapan",
     "provider__openai_api__model__gpt_3_5_1106__description": "Model GPT-3.5 Turbo terbaru dengan peningkatan dalam mengikuti instruksi, mode JSON, output yang dapat direproduksi, pemanggilan fungsi paralel, dan lainnya. Mengembalikan maksimal 4.096 token output.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 terbaru dengan peningkatan dalam mengikuti instruksi, mode JSON, output yang dapat direproduksi, pemanggilan fungsi paralel, dan lainnya. Mengembalikan maksimal 4.096 token output. Model pratinjau ini belum cocok untuk lalu lintas produksi.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 terbaru dengan peningkatan mengikuti instruksi, mode JSON, output yang dapat direproduksi, pemanggilan fungsi paralel, dan lainnya. Mengembalikan maksimal 4.096 token output.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami gambar, selain semua kemampuan GPT-4 Turbo lainnya. Mengembalikan maksimal 4.096 token output. Ini adalah versi model pratinjau dan belum cocok untuk lalu lintas produksi.",
     "activity__black_friday_2023__title": "Penawaran Terbatas Black Friday – Diskon Hingga 50%!",
     "sidebar__speed_dial__chat_history__button": "Riwayat Chat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Masalah integrasi terdeteksi",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} saat ini mengalami masalah koneksi dengan MaxAI karena pembaruan terbaru. Tim kami sedang aktif bekerja untuk menyelesaikan masalah ini, dan kami menghargai pemahaman Anda. Sementara itu, pertimbangkan menggunakan penyedia alternatif dan cek kembali dengan kami nanti.",
     "provider__label__hide": "Sembunyikan",
-    "provider__label__view_solutions": "Lihat solusi"
+    "provider__label__view_solutions": "Lihat solusi",
+    "sidebar__input__tokens_limited__title": "maksimum token"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Tidak suka",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Balas dengan poin kunci",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Balasan cepat",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Balas dengan poin kunci (uji)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Balas dengan poin kunci (uji)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegia"
   },
   "prompt_editor": {
     "preset_variables__title": "Kemampuan",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabel tentang",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Pengganti variabel",
     "preset_variables__tooltip__table__column_name__description__title": "Akan digantikan dengan",
-    "template__error__title": "Template diperlukan"
+    "template__error__title": "Template diperlukan",
+    "ai_response_language__title": "Bahasa respons AI",
+    "ai_response_language__settings__label_1": "Gunakan",
+    "ai_response_language__settings__label_2": "pengaturan bahasa"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",

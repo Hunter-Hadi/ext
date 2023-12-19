@@ -5,6 +5,8 @@ export const DEFAULT_PROMPT_LIST_TYPE: IPromptListType = 'Public'
 export const DEFAULT_PROMPT_AUTHOR = 'MaxAI.me'
 export const DEFAULT_PROMPT_AUTHOR_LINK =
   'https://api.maxai.me/app/maxai-web?ref=webchatgpt'
+export const PROMPT_LIBRARY_HOST = 'https://app.maxai.me'
+
 export const DEFAULT_PROMPT_VARIABLE: any[] = [
   // type livecrawling
   {

@@ -1,6 +1,6 @@
 {
-  "description": "ऑनलाइन कुठेही वापरण्याचा सर्वात वेगवेगळा मार्ग, ChatGPT, Claude, Bard, Bing वापरण्यासाठी. आपल्याला आवश्यक असलेला एकमेकांवर आधारित AI प्रोडक्ट.",
-  "name": "MaxAI.me: कुठेही वापरा 1-क्लिक ChatGPT AI आपल्या जगात",
+  "description": "चॅटजीपीटी, क्लोड, बार्ड, बिंग ए.आय. वापरण्यासाठी ऑनलाइन कुठेही ए.आय. प्रदान करणारा सर्वात वेगवेगळा ए.आय. विस्तार आहे.",
+  "name": "MaxAI.me: आव्हाने 1-क्लिक ए.आय. कुठेही वापरा",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट करा",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "सर्व चॅट काढा",
     "sidebar__share__share_button__tooltip": "चॅट डाउनलोड करा",
     "provider__openai_api__model__gpt_3_5_1106__description": "अद्याप आलेला GPT-3.5 Turbo मॉडेल, सुधारित निर्देशांवर अनुसरण करणे, JSON मोड, पुनरावृत्तीय आउटपुट, समानांतर कार्यक्षमता व इतर गोष्टी. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "अद्याप आलेला GPT-4 मॉडेल, सुधारित निर्देशांवर अनुसरण करणे, JSON मोड, पुनरावृत्तीय आउटपुट, समानांतर कार्यक्षमता व इतर गोष्टी. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते. हा प्रीव्ह्यू मॉडेल अद्याप संचालनिक ट्रॅफिकसाठी उपयुक्त नाही.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "सुधारित मार्गनिर्देशन अनुसरण, JSON मोड, पुनरावृत्ति उत्पादन, समानांतर कार्य कोलींग, आणि अधिकसाठी नवीनतम GPT-4 मॉडेल. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "सर्व इतर GPT-4 Turbo क्षमतांच्या वापरासाठी छायाचित्रे समजण्याची क्षमता. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते. हा प्रीव्ह्यू मॉडेल अद्याप संचालनिक ट्रॅफिकसाठी उपयुक्त नाही.",
     "activity__black_friday_2023__title": "सीमित कालावधीचे ब्लॅक शुक्रवार ऑफर - 50% पर्यंत कमी!",
     "sidebar__speed_dial__chat_history__button": "चॅट इतिहास",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "संयोजन समस्या ओळखली",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} ही MaxAI सोडवण्यासाठी अद्यतनांकरिता कनेक्शन समस्या आढळली आहे. आमची टीम या प्रश्नांचे निराकरण करण्यासाठी सक्रियपणे कार्यरत आहे आणि आम्ही आपल्या समजावणीचे मूल्यमापन करतो. तब्बल, कृपया एक वैकल्पिक प्रदात्याचा वापर करण्याची विचार करा आणि नंतर आपल्याशी पुन्हा तपासा.",
     "provider__label__hide": "लपवा",
-    "provider__label__view_solutions": "समाधान पहा"
+    "provider__label__view_solutions": "समाधान पहा",
+    "sidebar__input__tokens_limited__title": "टोकन्स महाप्रमाण"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "असंतोष",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "जलद प्रतिसाद",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या (परीक्षण)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "महत्त्वाच्या की पॉइंटसह प्रतिसाद द्या (परीक्षण)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "नॉर्वेजियन"
   },
   "prompt_editor": {
     "preset_variables__title": "क्षमता",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "वेरिएबल्स विषयक",
     "preset_variables__tooltip__table__column_name__placeholder__title": "वेरिएबल ठोसपणा",
     "preset_variables__tooltip__table__column_name__description__title": "यांनी बदलले जाईल",
-    "template__error__title": "टेम्पलेट आवश्यक आहे"
+    "template__error__title": "टेम्पलेट आवश्यक आहे",
+    "ai_response_language__title": "AI प्रतिसाद भाषा",
+    "ai_response_language__settings__label_1": "वापरा",
+    "ai_response_language__settings__label_2": "भाषा सेटिंग"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",

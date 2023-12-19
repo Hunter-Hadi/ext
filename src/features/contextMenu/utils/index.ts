@@ -1,25 +1,27 @@
-import forEach from 'lodash-es/forEach'
-import groupBy from 'lodash-es/groupBy'
 import { flip, offset, shift, size } from '@floating-ui/react'
 import cloneDeep from 'lodash-es/cloneDeep'
+import forEach from 'lodash-es/forEach'
+import groupBy from 'lodash-es/groupBy'
+import uniqBy from 'lodash-es/uniqBy'
+
 import {
-  ROOT_CHAT_BOX_INPUT_ID,
-  ROOT_FLOATING_REFERENCE_ELEMENT_ID,
-} from '@/constants'
+  MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
+  MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
+} from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import {
+  CONTEXT_MENU_DRAFT_LIST,
+  CONTEXT_MENU_DRAFT_TYPES,
+} from '@/features/contextMenu/constants'
 import {
   ContextMenuDraftType,
   IContextMenuItem,
   IContextMenuItemWithChildren,
   IRangyRect,
 } from '@/features/contextMenu/types'
-import {
-  CONTEXT_MENU_DRAFT_LIST,
-  CONTEXT_MENU_DRAFT_TYPES,
-} from '@/features/contextMenu/constants'
-import { getAppContextMenuRootElement, getAppRootElement } from '@/utils'
-import { getInputMediator } from '@/store/InputMediator'
 import { ContextMenuSearchTextStoreI18nStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
-import uniqBy from 'lodash-es/uniqBy'
+import { getInputMediator } from '@/store/InputMediator'
+import { getAppContextMenuRootElement } from '@/utils'
 
 export const groupByContextMenuItem = (
   items: IContextMenuItem[],
@@ -455,7 +457,7 @@ export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
 
 export const isFloatingContextMenuVisible = () => {
   const floatingMenu = getAppContextMenuRootElement()?.querySelector(
-    `#${ROOT_FLOATING_REFERENCE_ELEMENT_ID}`,
+    `#${MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}`,
   )
   return floatingMenu && floatingMenu.getAttribute('aria-hidden') === 'false'
 }
@@ -500,9 +502,9 @@ export const floatingContextMenuSaveDraftToChatBox = () => {
   }
   const maxTime = 3 * 1000
   const timer = setInterval(() => {
-    const appRootElement = getAppRootElement()
+    const appRootElement = getMaxAISidebarRootElement()
     const chatBoxInput = appRootElement?.querySelector(
-      `#${ROOT_CHAT_BOX_INPUT_ID}`,
+      `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,
     ) as HTMLInputElement
     if (chatBoxInput) {
       clearInterval(timer)

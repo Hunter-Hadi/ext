@@ -1,6 +1,6 @@
 {
-  "description": "চ্যাটজিপিটি, ক্লোড, বার্ড, বিং এর সবচেয়ে দ্রুততম উপায় অনলাইনে ব্যবহার করার। আপনি যেকোনো জানার প্রয়োজন নেই, শুধুমাত্র জেনারেটিভ এআই-পাওয়ারড এক্সটেনশন আপনার প্রয়োজন।",
-  "name": "MaxAI.me: যেখানেই আপনি চান, 1-ক্লিক ChatGPT AI ব্যবহার করুন",
+  "description": "চ্যাটজিপিটি, ক্লোড, বার্ড, বিং এইআই দ্বারা সশক্তিশালীভাবে প্রযুক্ত এইআই ব্যবহার করার সবচেয়ে দ্রুত উপায় অনলাইনে কোথাও। আপনার প্রয়োজন মাত্র একটি সৃষ্টিশীল এইআই এক্সটেনশন।",
+  "name": "MaxAI.me: কোথাও এখানে 1-ক্লিক এইআই ব্যবহার করুন",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "লগ আউট",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "সমস্ত চ্যাট মুছুন",
     "sidebar__share__share_button__tooltip": "চ্যাট ডাউনলোড করুন",
     "provider__openai_api__model__gpt_3_5_1106__description": "সর্বশেষ GPT-3.5 টার্বো মডেল যা উন্নত নির্দেশিকা অনুসরণ, JSON মোড, পুনরায় উত্পাদনযোগ্য আউটপুট, সমতল ফাংশন কলিং এবং আরও সুবিধা সহ। সর্বাধিক 4,096 আউটপুট টোকেন প্রদান করে।",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "সর্বশেষ GPT-4 মডেল যা উন্নত নির্দেশিকা অনুসরণ, JSON মোড, পুনরায় উত্পাদনযোগ্য আউটপুট, সমতল ফাংশন কলিং এবং আরও সুবিধা সহ। সর্বাধিক 4,096 আউটপুট টোকেন প্রদান করে। এই প্রিভিউ মডেলটি এখনও প্রোডাকশন ট্রাফিকের জন্য উপযুক্ত নয়।",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "সর্বশেষ GPT-4 মডেল যা উন্নত নির্দেশ অনুসরণ, JSON মোড, পুনরায়ক্রমিক আউটপুট, সমতল ফাংশন কলিং এবং আরও সুবিধা সহ। সর্বাধিক 4,096 আউটপুট টোকেন প্রদান করে।",
     "provider__openai_api__model__gpt_4_vision_preview__description": "ছবি বুঝতে সক্ষমতা, অন্যান্য GPT-4 টার্বো সুবিধাগুলির পাশাপাশি। সর্বাধিক 4,096 আউটপুট টোকেন প্রদান করে। এটি প্রিভিউ মডেল সংস্করণ এবং এখনও প্রোডাকশন ট্রাফিকের জন্য উপযুক্ত নয়।",
     "activity__black_friday_2023__title": "সীমিত সময়ের কালো শুক্রবার অফার - ৫০% পর্যন্ত ছাড়!",
     "sidebar__speed_dial__chat_history__button": "চ্যাট ইতিহাস",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "সংযোগ সমস্যা চেষ্টা পাওয়া গেছে",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} বর্তমানে MaxAI-র সাথে সংযোগ সমস্যা অনুভব করছে তার সাম্প্রতিক আপডেটের কারণে। আমাদের দল এই সমস্যাটি সমাধান করতে কাজ করছে এবং আমরা আপনার বোঝার মান দানের জন্য আপনার সহযোগিতা মূল্যবান। এই সময়ে, একটি বিকল্প প্রদানকারী ব্যবহার করার বিবেচনা করুন এবং পরে আমাদের সাথে ফিরে চেক করুন।",
     "provider__label__hide": "লুকান",
-    "provider__label__view_solutions": "সমাধান দেখুন"
+    "provider__label__view_solutions": "সমাধান দেখুন",
+    "sidebar__input__tokens_limited__title": "সর্বাধিক টোকেন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "অপছন্দ",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "দ্রুত উত্তর",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন (পরীক্ষা)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন (পরীক্ষা)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "নরওয়েজীয়"
   },
   "prompt_editor": {
     "preset_variables__title": "ক্ষমতা",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "বিষয়বস্তু সম্পর্কিত চলচ্চিত্র",
     "preset_variables__tooltip__table__column_name__placeholder__title": "চলচ্চিত্রের জায়গা",
     "preset_variables__tooltip__table__column_name__description__title": "এর পরিবর্তে হবে",
-    "template__error__title": "টেমপ্লেট প্রয়োজন"
+    "template__error__title": "টেমপ্লেট প্রয়োজন",
+    "ai_response_language__title": "এইআই প্রতিক্রিয়ার ভাষা",
+    "ai_response_language__settings__label_1": "ব্যবহার করুন",
+    "ai_response_language__settings__label_2": "ভাষা সেটিং"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ক্লিক প্রম্পট",

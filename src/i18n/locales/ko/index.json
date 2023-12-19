@@ -1,6 +1,6 @@
 {
-  "description": "온라인 어디서든 ChatGPT, Claude, Bard, Bing을 사용하는 가장 빠른 방법. 필요한 유일한 생성적 AI 기반 확장 프로그램.",
-  "name": "MaxAI.me: 어디에서나 1-클릭 ChatGPT AI 사용",
+  "description": "ChatGPT, Claude, Bard, Bing AI가 제공하는 AI를 온라인 어디서든 빠르게 사용할 수 있는 가장 빠른 방법. 필요한 유일한 생성형 AI 확장 프로그램.",
+  "name": "MaxAI.me: 어디서든 1-클릭 AI 사용",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "로그아웃",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "모든 채팅 지우기",
     "sidebar__share__share_button__tooltip": "채팅 다운로드",
     "provider__openai_api__model__gpt_3_5_1106__description": "최신 GPT-3.5 Turbo 모델로 개선된 지시문 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "최신 GPT-4 모델로 개선된 지시문 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이 미리보기 모델은 아직 제품 트래픽에 적합하지 않습니다.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "최신 GPT-4 모델로 개선된 지시 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "모든 다른 GPT-4 Turbo 기능과 함께 이미지를 이해하는 능력을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이는 미리보기 모델 버전으로 아직 제품 트래픽에 적합하지 않습니다.",
     "activity__black_friday_2023__title": "제한 시간 동안 블랙 프라이데이 할인 - 최대 50% 할인!",
     "sidebar__speed_dial__chat_history__button": "채팅 기록",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "통합 문제가 감지되었습니다",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}}은 최근 업데이트로 인해 MaxAI와의 연결 문제가 발생하고 있습니다. 저희 팀은 이 문제를 해결하기 위해 노력하고 있으며, 여러분의 이해를 감사히 생각합니다. 그 동안 대체 공급자를 사용하고 나중에 다시 확인해주세요.",
     "provider__label__hide": "숨기기",
-    "provider__label__view_solutions": "솔루션 보기"
+    "provider__label__view_solutions": "솔루션 보기",
+    "sidebar__input__tokens_limited__title": "최대 토큰"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "싫어요",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "주요 포인트로 답장",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "빠른 답장",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "주요 포인트로 답장(테스트)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "주요 포인트로 답장(테스트)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "노르웨이어"
   },
   "prompt_editor": {
     "preset_variables__title": "기능",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "변수에 관한",
     "preset_variables__tooltip__table__column_name__placeholder__title": "변수 자리 표시자",
     "preset_variables__tooltip__table__column_name__description__title": "다음으로 대체됩니다",
-    "template__error__title": "템플릿이 필요합니다"
+    "template__error__title": "템플릿이 필요합니다",
+    "ai_response_language__title": "AI 응답 언어",
+    "ai_response_language__settings__label_1": "사용",
+    "ai_response_language__settings__label_2": "언어 설정"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-클릭 프롬프트",

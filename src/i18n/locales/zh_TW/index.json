@@ -1,6 +1,6 @@
 {
-  "description": "在線上使用ChatGPT、Claude、Bard、Bing的最快方式。您唯一需要的生成式AI擴展。",
-  "name": "MaxAI.me：隨處使用1-Click ChatGPT AI",
+  "description": "在線上的任何地方，使用由ChatGPT、Claude、Bard和Bing AI提供支援的AI，這是最快的方式。這是您唯一需要的生成式AI擴展。",
+  "name": "MaxAI.me：隨處使用1-Click AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "登出",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "清除所有聊天",
     "sidebar__share__share_button__tooltip": "下載聊天",
     "provider__openai_api__model__gpt_3_5_1106__description": "具有改進的指示追蹤、JSON 模式、可重現的輸出、並行函數調用等功能的最新 GPT-3.5 Turbo 模型。返回最多 4,096 個輸出標記。",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "具有改進的指示追蹤、JSON 模式、可重現的輸出、並行函數調用等功能的最新 GPT-4 模型。返回最多 4,096 個輸出標記。此預覽模型尚不適合用於生產流量。",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "具有改進的指示追蹤、JSON 模式、可重現的輸出、並行函數呼叫等功能的最新 GPT-4 模型。返回最多 4,096 個輸出標記。",
     "provider__openai_api__model__gpt_4_vision_preview__description": "除了所有其他 GPT-4 Turbo 功能外，還能理解圖像。返回最多 4,096 個輸出標記。這是一個預覽模型版本，尚不適合用於生產流量。",
     "activity__black_friday_2023__title": "限時黑色星期五優惠 - 高達50%折扣！",
     "sidebar__speed_dial__chat_history__button": "聊天記錄",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "檢測到整合問題",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} 目前與 MaxAI 之間存在連接問題，原因是其最近的更新。我們的團隊正在積極解決此問題，並感謝您的理解。在此期間，請考慮使用其他提供者，稍後再回來查看。",
     "provider__label__hide": "隱藏",
-    "provider__label__view_solutions": "查看解決方案"
+    "provider__label__view_solutions": "查看解決方案",
+    "sidebar__input__tokens_limited__title": "最多令牌"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "不喜歡",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "回覆關鍵點",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "快速回覆",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回覆關鍵點（測試）"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回覆關鍵點（測試）",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "挪威語"
   },
   "prompt_editor": {
     "preset_variables__title": "功能",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "關於的變數",
     "preset_variables__tooltip__table__column_name__placeholder__title": "變數佔位符",
     "preset_variables__tooltip__table__column_name__description__title": "將被替換為",
-    "template__error__title": "需要模板"
+    "template__error__title": "需要模板",
+    "ai_response_language__title": "AI 回應語言",
+    "ai_response_language__settings__label_1": "使用",
+    "ai_response_language__settings__label_2": "語言設定"
   },
   "prompt_library": {
     "use_prompt_library__title": "1點擊提示",

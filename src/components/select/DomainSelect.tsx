@@ -1,11 +1,11 @@
-import React, { FC, useMemo } from 'react'
 import Autocomplete from '@mui/material/Autocomplete'
-import TextField from '@mui/material/TextField'
 import { SxProps } from '@mui/material/styles'
-
-import { TOP_DOMAINS } from '@/utils/staticData'
+import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import React, { FC, useMemo } from 'react'
+
 import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
+import { TOP_DOMAINS } from '@/utils/staticData'
 
 interface DomainSelectProps {
   label?: string
@@ -14,6 +14,7 @@ interface DomainSelectProps {
   disabled?: boolean
   onChange?: (value: string) => void
   sx?: SxProps
+  popperIndex?: number
 }
 
 function filterOptions(options: any[], { inputValue }: any) {
@@ -61,6 +62,7 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       console.log(value)
     },
     disabled,
+    popperIndex = 2147483620,
     sx,
   } = props
   const [open, setOpen] = React.useState(false)
@@ -99,6 +101,13 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
         } else {
           setOpen(true)
         }
+      }}
+      slotProps={{
+        popper: {
+          sx: {
+            zIndex: popperIndex,
+          },
+        },
       }}
       value={memoValue}
       onClose={() => setOpen(false)}

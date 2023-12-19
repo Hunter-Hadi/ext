@@ -1,6 +1,6 @@
 {
-  "description": "చాట్‌జిపిటి, క్లోడ్, బార్డ్, బింగ్ యానీవేరు ఆన్‌లైన్‌లో ఉపయోగించడానికి త్వరితమైన మార్గం. మీరు కావలసిన ఒక్కటిగా జనరేటివ్ ఎయి-పవర్డ్ ఎక్స్టెన్షన్ మాత్రమే కావాలి.",
-  "name": "MaxAI.me: ఎక్కువసారి చాట్‌జిపిటి యాన్‌లను ఉపయోగించడానికి 1-క్లిక్ మాతృభాష యంత్రం",
+  "description": "ChatGPT, Claude, Bard, Bing AI ద్వారా ప్రాధాన్యత కలుగుతున్న AI ఎక్స్టెన్షన్. మీరు అవసరం ఉన్న ఒక్కటి.",
+  "name": "MaxAI.me: యాక్సెస్ చేయడం కోసం 1-క్లిక్ AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "లాగ్ అవుట్",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "అన్ని చాట్లను తొలగించు",
     "sidebar__share__share_button__tooltip": "చాట్ డౌన్లోడ్ చేయండి",
     "provider__openai_api__model__gpt_3_5_1106__description": "పెరిగిన GPT-3.5 టర్బో మోడల్, మెరుగుపరచిన మార్గదర్శనకు అనుసరించి, JSON మోడ్, మరియు మరీ మరిన్ని. మించిన 4,096 ఔట్పుట్ టోకన్‌లను తరిమికొట్టేది.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "పెరిగిన GPT-4 మోడల్, మెరుగుపరచిన మార్గదర్శనకు అనుసరించి, JSON మోడ్, మరియు మరీ మరిన్ని. మించిన 4,096 ఔట్పుట్ టోకన్‌లను తరిమికొట్టేది. ఈ ప్రివ్యూ మోడల్ ఇప్పటికే ఉత్పత్తి ట్రాఫిక్‌కు అనుకూలం కాదు.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "పెరుగుతున్న GPT-4 మోడల్‌తో మెరుగుపరచిన నిర్దేశాల అనుసరించడం, JSON మోడ్, మరియు మరీ కనబడిన ఔట్‌పుట్‌లు, పరాలెల్ ఫంక్షన్ కాలింగ్ మరియు మరియు మరీ. మరియు మరియు మరీ. 4,096 ఔట్‌పుట్ టోకన్‌లను తరిమికొట్టేది.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "ఇమేజెస్‌ను అర్థం చేయడం కోసం GPT-4 టర్బో కష్టాలను కలిగి ఉంచడం కాపాడుతుంది. మించిన 4,096 ఔట్పుట్ టోకన్‌లను తరిమికొట్టేది. ఈ ప్రివ్యూ మోడల్ వెర్షన్ ఇప్పటికే ఉత్పత్తి ట్రాఫిక్‌కు అనుకూలం కాదు.",
     "activity__black_friday_2023__title": "పరిమితం సమయం బ్లాక్ ఫ్రైడే ఆఫర్లు - 50% తగ్గింపు!",
     "sidebar__speed_dial__chat_history__button": "చాట్ చరిత్ర",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "ఇంటిగ్రేషన్ సమస్య గుర్తుబాటులోంది",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} ప్రస్తుతం మాక్స్‌ఐతో కనెక్షన్ సమస్యలు ఉన్నాయి మరియు మా టీమ్ ఈ సమస్యను పరిష్కరించడానికి ప్రయత్నిస్తోంది. మీరు అల్టర్నేటివ్ ప్రొవైడర్‌ని ఉపయోగించి, మరియు మాకు తిరిగి తనిఖీ చేయండి.",
     "provider__label__hide": "దాచు",
-    "provider__label__view_solutions": "పరిష్కరణలను చూడండి"
+    "provider__label__view_solutions": "పరిష్కరణలను చూడండి",
+    "sidebar__input__tokens_limited__title": "టోకెన్ల గరిష్ఠం"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "అసంతృప్తి",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "ముఖ్య పాయింట్లతో సమాధానం ఇవ్వండి",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "త్వరలో సమాధానం",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ముఖ్య పాయింట్లతో సమాధానం(టెస్ట్)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ముఖ్య పాయింట్లతో సమాధానం(టెస్ట్)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "నార్వేజియన్"
   },
   "prompt_editor": {
     "preset_variables__title": "సామర్థ్యాలు",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "గురించి చర్యలు",
     "preset_variables__tooltip__table__column_name__placeholder__title": "మార్పు స్థానం",
     "preset_variables__tooltip__table__column_name__description__title": "తో మార్పు చేయబడుతుంది",
-    "template__error__title": "టెంప్లేటు అవసరం"
+    "template__error__title": "టెంప్లేటు అవసరం",
+    "ai_response_language__title": "AI సమాధాన భాష",
+    "ai_response_language__settings__label_1": "ఉపయోగించు",
+    "ai_response_language__settings__label_2": "భాషా సెట్టింగ్"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-క్లిక్ ప్రాంప్టులు",

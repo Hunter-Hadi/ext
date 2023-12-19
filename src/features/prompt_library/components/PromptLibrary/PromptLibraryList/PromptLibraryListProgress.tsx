@@ -1,10 +1,12 @@
-import React, { FC, useEffect, useState } from 'react'
-import usePromptLibraryList from '@/features/prompt_library/hooks/usePromptLibraryList'
 import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
+import React, { FC, useEffect, useState } from 'react'
+
+import usePromptLibraryList from '@/features/prompt_library/hooks/usePromptLibraryList'
+
 const useProgress = (isActive: boolean): number => {
   const [progress, setProgress] = useState<number>(0)
   useEffect(() => {
@@ -27,6 +29,7 @@ const useProgress = (isActive: boolean): number => {
 
   return progress
 }
+
 const PromptLibraryListProgress: FC<{
   sx: SxProps
 }> = (props) => {

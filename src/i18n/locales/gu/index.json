@@ -1,6 +1,6 @@
 {
-  "description": "ચેટજીપીટી, ક્લોડ, બાર્ડ, બિંગ કોઈપણ ઓનલાઇન સ્થળે વપરાશ કરવાની સરળતમ રીત. તમને જોઈએ તેવું એકમાત્ર ઉત્પાદનકારી AI-પ્રાધિકારી એક્સટેન્શન.",
-  "name": "MaxAI.me: ક્લિક કરો અને ક્યારેય પણ ચેટજીપીટી એઆઈ વપરો",
+  "description": "ChatGPT, Claude, Bard, Bing AI દ્વારા સશક્ત થતી AI કોઈપણ ઓનલાઇન જગ્યાએ ઉપયોગ કરવાની સરળતમ રીત. તમારી જરૂર પડતી એકમાત્ર જેનરેટિવ AI એક્સ્ટેન્શન.",
+  "name": "MaxAI.me: ક્લિક વડે એનીવેર્યેર માટે AI ઉપયોગ કરો",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "લૉગ આઉટ",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__delete__title": "કાઢવાની પુષ્ટિ કરો",
     "immersive_chat__delete_all_chat__button__cancel__title": "રદ કરો",
     "provider__openai_api__model__gpt_3_5_1106__description": "સુધારેલ નિર્દેશન અનુસરવા, JSON મોડ, પુનરુત્પાદન આઉટપુટ, સમાંતર કાર્ય બુલાવવા અને વધુ સાથે છેલ્લી GPT-3.5 ટર્બો મોડલ. 4,096 આઉટપુટ ટોકન્સ મહત્તમ પ્રદાન કરે છે.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "સુધારેલ નિર્દેશન અનુસરવા, JSON મોડ, પુનરુત્પાદન આઉટપુટ, સમાંતર કાર્ય બુલાવવા અને વધુ સાથે છેલ્લી GPT-4 મોડલ. 4,096 આઉટપુટ ટોકન્સ મહત્તમ પ્રદાન કરે છે. આ પ્રિવ્યૂ મોડલ હજી પણ ઉત્પાદન ટ્રેફિક માટે યોગ્ય નથી.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "સુધારેલ નિર્દેશન અનુસરવું, JSON મોડ, પુનરુત્પાદન આઉટપુટ, સમાંતર કાર્ય બુલાવવું અને વધુ સાથે સુધારેલ GPT-4 મોડલ. મહત્તમ 4,096 આઉટપુટ ટોકન્સ પ્રદાન કરે છે.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "છબિઓને સમજવાની ક્ષમતા, બીજા બધા GPT-4 ટર્બો ક્ષમતાઓ સાથે જોડાયેલી. 4,096 આઉટપુટ ટોકન્સ મહત્તમ પ્રદાન કરે છે. આ એક પ્રિવ્યૂ મોડલ આવતી ઉત્પાદન ટ્રેફિક માટે હજી પણ યોગ્ય નથી.",
     "activity__black_friday_2023__title": "સીમિત સમયમાં કાળજી વાળી બ્લેક ફ્રાઈડે ડીલ્સ - 50% સુધી છૂટ!",
     "sidebar__speed_dial__chat_history__button": "ચેટ ઇતિહાસ",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "એકત્રીકરણ સમસ્યા શોધી",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} હાલમાં મેક્સએઆઈ સાથે જોડાણ સમસ્યાઓ અનુભવી રહ્યો છે તેથી અમારી ટીમ આ મુદ્દેને સુધારવા માટે સક્રિય રીતે કામ કરી રહી છે અને અમારી સમજ આપનો આભાર જણાવે છે. તાંતિયામાં, કૃપા કરીને એક વૈકલ્પિક પ્રોવાઇડરનો ઉપયોગ કરવા અને પછી અમારી સાથે ચેક કરવા વિચારો.",
     "provider__label__hide": "છુપાવો",
-    "provider__label__view_solutions": "સમાધાનો જુઓ"
+    "provider__label__view_solutions": "સમાધાનો જુઓ",
+    "sidebar__input__tokens_limited__title": "ટોકન્સ મેક્સ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "નાપસંદ",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "મુખ્ય બિંદુઓ સાથે જવાબ આપો",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "ઝડપી જવાબ",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "મુખ્ય બિંદુઓ સાથે જવાબ આપો (ટેસ્ટ)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "મુખ્ય બિંદુઓ સાથે જવાબ આપો (ટેસ્ટ)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "નોર્વેજિયન"
   },
   "prompt_editor": {
     "preset_variables__title": "ક્ષમતાઓ",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "વેરિએબલ વિશે",
     "preset_variables__tooltip__table__column_name__placeholder__title": "વેરિએબલ પ્લેસહોલ્ડર",
     "preset_variables__tooltip__table__column_name__description__title": "થી બદલાઈ જશે",
-    "template__error__title": "ટેમ્પલેટ જરૂરી છે"
+    "template__error__title": "ટેમ્પલેટ જરૂરી છે",
+    "ai_response_language__title": "એઆઈ પ્રતિસાદ ભાષા",
+    "ai_response_language__settings__label_1": "વપરો",
+    "ai_response_language__settings__label_2": "ભાષા સેટિંગ"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",

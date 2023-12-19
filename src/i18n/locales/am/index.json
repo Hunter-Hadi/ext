@@ -1,6 +1,6 @@
 {
-  "description": "በየትኛውም የቻትGPT, Claude, Bard, Bing በመጠቀም የተሳተፉ ኢንቴርንት እናደርጋለን። የሚከተለውን የተለያዩ AI-ተጠቃሚ እንዴት እንደሚሆን እንዲሁም የሚያስተምሩ ነው።",
-  "name": "MaxAI.me: የ1-ጁንት ChatGPT AI በመጠቀም ያግኙ",
+  "description": "AI አጠቃላይ በማንኛውም አይነት በ ChatGPT, Claude, Bard, Bing AI በመጠቀም የተሻለ የሚሆን አጠቃላይ አይነት አገልግሎት ነው።",
+  "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም አይነት እንዴት ለመጠቀም 1-Click",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ውጣ",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "ሁሉንም ውይይትን አጥፋ",
     "sidebar__share__share_button__tooltip": "የኮስታንት ልጥፍ ለውጥ",
     "provider__openai_api__model__gpt_3_5_1106__description": "የቅርብ GPT-3.5 Turbo ሞዴል በማስተላለፊያ የሚገኙት የተለመደው የማስታወቂያ እናትን እና JSON ሞዴ, የማስተላለፊያ ዝርዝርዎን የሚያስቀምጡ, የማስተላለፊያ የማስታወቂያ ውሂብ ሰውነታችንን እና ተጨማሪ እርምጃዎችን ይመልከቱ። የሚገኘው የማስተላለፊያ ሞዴ 4,096 የገቡበት የጽሑፍ ቶክን ይመልከቱ።",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "የቅርብ GPT-4 ሞዴል በማስተላለፊያ የሚገኙት የተለመደው የማስታወቂያ እናትን እና JSON ሞዴ, የማስተላለፊያ ዝርዝርዎን የሚያስቀምጡ, የማስተላለፊያ የማስታወቂያ ውሂብ ሰውነታችንን እና ተጨማሪ እርምጃዎችን ይመልከቱ። የሚገኘው የማስተላለፊያ ሞዴ 4,096 የገቡበት የጽሑፍ ቶክን ይመልከቱ። ይህ ማስተላለፊያ ሞዴ እናይሆን ለባለቤት አይደለም።",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "የቅንጅቶች ማስታወቂያን እናውቃለን GPT-4 ሞዴል በርቀት የተሻለ, JSON ሞዴ, የተሸጠረ የማስታወቂያ ውሂብ, የማስታወቂያ ማጣሪያ መጠቀም እና በተለያዩ ማስታወቂያዎች የሚገኙ ማስታወቂያዎች ይመልከቱ. የሚገኘው የማስታወቂያ ቶከን የ4,096 የሚያስቀምጥ ውሂብ ይመልከቱ.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "የምስልን ስፍራ ያለውን የGPT-4 Turbo እናትን እና ሁለት ሌሎች GPT-4 በማስተላለፊያ የሚገኙት የማስታወቂያ እናትን እና JSON ሞዴ, የማስተላለፊያ ዝርዝርዎን የሚያስቀምጡ, የማስተላለፊያ የማስታወቂያ ውሂብ ሰውነታችንን እና ተጨማሪ እርምጃዎችን ይመልከቱ። ይህ ማስተላለፊያ ሞዴ እናይሆን ለባለቤት አይደለም።",
     "activity__black_friday_2023__title": "የተጠቀሱ እናደርሳለን - በአንድ ሰዓት የሚሰራ የቅንጅት 50% በቀላል!",
     "sidebar__speed_dial__chat_history__button": "የውጤት ማሰሻ",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "የማስተላለፉት ውስጥ የሚያስቀምጡ ደንቆሮ ተጠቃሚ ነው",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} በመሆኑ የMaxAI እናት በሚያስቀምጡ ውስጥ የሚያስተላልፉት ውጤት ይገኛል. እኛን የሚያስተላልፉትን የሚያስችል እናደርጋለን. በዚህ ጊዜ እናመሰግናለን እናመሰግናለን.",
     "provider__label__hide": "ደብቅ",
-    "provider__label__view_solutions": "ማሳያያት ይመልከቱ"
+    "provider__label__view_solutions": "ማሳያያት ይመልከቱ",
+    "sidebar__input__tokens_limited__title": "የቶኪንስ ብቻ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "አልሰራም",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "በመልካም መልዕክት መመለስ",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "በቀጣይ መልዕክት መመለስ",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "በመልካም መልዕክት መመለስ (ማለት)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "በመልካም መልዕክት መመለስ (ማለት)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "ኖርዌጂያን"
   },
   "prompt_editor": {
     "preset_variables__title": "እውቀት",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "ተግባራዊ ለ",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ተግባራዊ መስጫ",
     "preset_variables__tooltip__table__column_name__description__title": "በመስጫ ተግባራዊ ተግባር ይወስዳል",
-    "template__error__title": "ትርጉም ያስፈልጋል"
+    "template__error__title": "ትርጉም ያስፈልጋል",
+    "ai_response_language__title": "የማስተርጓሚ ቋንቋ መርጃ",
+    "ai_response_language__settings__label_1": "ይጠቀማል",
+    "ai_response_language__settings__label_2": "ቋንቋ ማሰራጨት"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click መልእክት",

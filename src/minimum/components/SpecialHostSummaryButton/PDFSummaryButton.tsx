@@ -1,12 +1,14 @@
-import React, { FC } from 'react'
-import DynamicComponent from '@/components/DynamicComponent'
 import Button from '@mui/material/Button'
-import useFindElement from '@/hooks/useFindElement'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import { useTranslation } from 'react-i18next'
-import { getAppRootElement, showChatBox } from '@/utils'
-import { ISidebarConversationType } from '@/features/sidebar/store'
 import Stack from '@mui/material/Stack'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import DynamicComponent from '@/components/DynamicComponent'
+import useFindElement from '@/features/common/hooks/useFindElement'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { ISidebarConversationType } from '@/features/sidebar/store'
+import { showChatBox } from '@/utils'
 
 const PDFSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])
@@ -29,7 +31,7 @@ const PDFSummaryButton: FC = () => {
           showChatBox()
           const timer = setInterval(() => {
             if (
-              getAppRootElement()?.querySelector(
+              getMaxAISidebarRootElement()?.querySelector(
                 'p[data-testid="max-ai__summary-tab"]',
               )
             ) {

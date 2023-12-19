@@ -1,14 +1,18 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { ROOT_CONTEXT_MENU_PORTAL_ID } from '@/constants'
-import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import Browser from 'webextension-polyfill'
 
-const AppNameToClassName = String(process.env.APP_ENV || '')
+import {
+  MAXAI_CHROME_EXTENSION_ID,
+  MAXAI_CONTEXT_MENU_PORTAL_ID,
+} from '@/features/common/constants'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
+
+const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
 const Portal: FC<{
@@ -28,7 +32,7 @@ const Portal: FC<{
     const modalRoot = document.getElementById(containerId)
     if (modalRoot) {
       const shadowRootElement = document.createElement('div')
-      shadowRootElement.id = ROOT_CONTEXT_MENU_PORTAL_ID
+      shadowRootElement.id = MAXAI_CONTEXT_MENU_PORTAL_ID
       const emotionRoot = document.createElement('style')
       const contentStyle = document.createElement('link')
       contentStyle.rel = 'stylesheet'

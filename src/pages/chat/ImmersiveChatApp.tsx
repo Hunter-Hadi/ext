@@ -1,17 +1,18 @@
-import React, { FC } from 'react'
-import Box from '@mui/material/Box'
-import Stack from '@mui/material/Stack'
-import { isEzMailApp } from '@/constants'
-import AppInit from '@/components/AppInit'
-import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import BrowserVersionDetector from '@/components/BrowserVersionDetector'
-import Announcement from '@/components/Announcement'
 // init i18n
 import '@/i18n'
-import ConversationList from '@/features/chatgpt/components/ConversationList'
-import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
+
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import React, { FC } from 'react'
+
+import Announcement from '@/components/Announcement'
+import AppInit from '@/components/AppInit'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
+import ConversationList from '@/features/chatgpt/components/ConversationList'
+import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
+import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
 const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
 const App: FC = () => {
@@ -19,7 +20,7 @@ const App: FC = () => {
   return (
     <Box
       component={'div'}
-      className={isEzMailApp ? 'ezmail-ai-app' : 'use-chat-gpt-ai-app'}
+      className={'use-chat-gpt-ai-app'}
       sx={{
         // pointerEvents: 'auto',
         flex: 1,

@@ -1,6 +1,6 @@
 {
-  "description": "Il modo più veloce per utilizzare ChatGPT, Claude, Bard, Bing ovunque online. L'unica estensione alimentata da intelligenza artificiale generativa di cui hai bisogno.",
-  "name": "MaxAI.me: Utilizza l'IA ChatGPT con un solo clic ovunque",
+  "description": "Il modo più veloce per utilizzare l'IA alimentata da ChatGPT, Claude, Bard, Bing AI ovunque online. L'unica estensione di IA generativa di cui hai bisogno.",
+  "name": "MaxAI.me: Utilizza l'IA con un solo clic ovunque",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Esci",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Elimina tutte le chat",
     "sidebar__share__share_button__tooltip": "Scarica chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Il modello GPT-3.5 Turbo più recente con un miglioramento del follow delle istruzioni, modalità JSON, output riproducibili, chiamate di funzioni parallele e altro ancora. Restituisce un massimo di 4.096 token di output.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Il modello GPT-4 più recente con un miglioramento del follow delle istruzioni, modalità JSON, output riproducibili, chiamate di funzioni parallele e altro ancora. Restituisce un massimo di 4.096 token di output. Questo modello di anteprima non è ancora adatto al traffico di produzione.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Il modello GPT-4 più recente con un miglioramento del follow delle istruzioni, modalità JSON, output riproducibili, chiamate di funzioni parallele e altro ancora. Restituisce un massimo di 4.096 token di output.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacità di comprendere le immagini, oltre a tutte le altre capacità di GPT-4 Turbo. Restituisce un massimo di 4.096 token di output. Questa è una versione di anteprima del modello e non è ancora adatta al traffico di produzione.",
     "activity__black_friday_2023__title": "Offerte Black Friday a tempo limitato - Fino al 50% di sconto!",
     "sidebar__speed_dial__chat_history__button": "Cronologia chat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Rilevato problema di integrazione",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} sta attualmente riscontrando problemi di connessione con MaxAI a causa dei suoi aggiornamenti recenti. Il nostro team sta lavorando attivamente per risolvere questa questione e apprezziamo la tua comprensione. Nel frattempo, considera l'uso di un fornitore alternativo e controlla nuovamente con noi più tardi.",
     "provider__label__hide": "Nascondi",
-    "provider__label__view_solutions": "Visualizza soluzioni"
+    "provider__label__view_solutions": "Visualizza soluzioni",
+    "sidebar__input__tokens_limited__title": "massimo token"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Non mi piace",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Rispondi con punti chiave",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Risposta rapida",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Rispondi con punti chiave (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Rispondi con punti chiave (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvegese"
   },
   "prompt_editor": {
     "preset_variables__title": "Funzionalità",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variabili relative a",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Segnaposto variabile",
     "preset_variables__tooltip__table__column_name__description__title": "Verrà sostituito con",
-    "template__error__title": "Il modello è obbligatorio"
+    "template__error__title": "Il modello è obbligatorio",
+    "ai_response_language__title": "Lingua di risposta dell'IA",
+    "ai_response_language__settings__label_1": "Utilizza",
+    "ai_response_language__settings__label_2": "impostazione della lingua"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompt in un clic",

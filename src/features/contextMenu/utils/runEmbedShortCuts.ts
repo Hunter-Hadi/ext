@@ -1,4 +1,4 @@
-import { ROOT_CONTEXT_MENU_ID } from '@/constants'
+import { MAXAI_CONTEXT_MENU_ID } from '@/features/common/constants'
 
 export const intervalFindHtmlElement = (
   root: HTMLElement | ShadowRoot,
@@ -77,7 +77,7 @@ const runEmbedShortCuts = () => {
     }
     try {
       // set selection
-      const shadowRoot = document.getElementById(ROOT_CONTEXT_MENU_ID)
+      const shadowRoot = document.getElementById(MAXAI_CONTEXT_MENU_ID)
         ?.shadowRoot
       // find contextMenu click button in 2000ms
       if (shadowRoot) {

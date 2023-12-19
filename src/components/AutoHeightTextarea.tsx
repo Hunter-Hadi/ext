@@ -1,3 +1,7 @@
+import Box from '@mui/material/Box'
+import Skeleton from '@mui/material/Skeleton'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import React, {
   FC,
   useCallback,
@@ -6,25 +10,24 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import Box from '@mui/material/Box'
-import Skeleton from '@mui/material/Skeleton'
-import { SxProps } from '@mui/material/styles'
-import { throttle } from '@/hooks/useThrottle'
 import { useRecoilValue } from 'recoil'
+
+import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+import {
+  MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
+  MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
+} from '@/features/common/constants'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { throttle } from '@/features/common/hooks/useThrottle'
+import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { AppState } from '@/store'
+import { getInputMediator } from '@/store/InputMediator'
 import {
   getAppActiveElement,
   getFloatingContextMenuActiveElement,
 } from '@/utils'
-import { AppState } from '@/store'
-import { ROOT_CHAT_BOX_INPUT_ID, ROOT_FLOATING_INPUT_ID } from '@/constants'
-import { getInputMediator } from '@/store/InputMediator'
-import Stack from '@mui/material/Stack'
-import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
-import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
-import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import useEffectOnce from '@/hooks/useEffectOnce'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const MAX_LINE = () => {
@@ -170,17 +173,12 @@ const AutoHeightTextarea: FC<{
     loading,
     children,
     error = false,
-    InputId = ROOT_CHAT_BOX_INPUT_ID,
+    InputId = MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
     stopPropagation = true,
     placeholder = 'Ask AI...',
     expandNode,
     sx,
   } = props
-  const { isError } = useChatInputMaxTokens(
-    ROOT_FLOATING_INPUT_ID === InputId
-      ? 'floatingMenuInputMediator'
-      : 'chatBoxInputMediator',
-  )
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const onCompositionRef = useRef(false)
   const nextMessageIsActionRef = useRef(false)
@@ -207,9 +205,9 @@ const AutoHeightTextarea: FC<{
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       const value = e.target.value
-      if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
+      if (InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID) {
         getInputMediator('chatBoxInputMediator').updateInputValue(value)
-      } else if (InputId === ROOT_FLOATING_INPUT_ID) {
+      } else if (InputId === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID) {
         getInputMediator('floatingMenuInputMediator').updateInputValue(value)
       } else {
         setInputValue(value)
@@ -224,7 +222,7 @@ const AutoHeightTextarea: FC<{
   )
   const metaDataRef = useRef<any>({})
   useEffect(() => {
-    if (InputId === ROOT_CHAT_BOX_INPUT_ID) {
+    if (InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID) {
       const handleInputUpdate = (newInputValue: string, metaData: any) => {
         console.log(metaData)
         if (metaData) {
@@ -241,7 +239,7 @@ const AutoHeightTextarea: FC<{
         getInputMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
       }
     }
-    if (InputId === ROOT_FLOATING_INPUT_ID) {
+    if (InputId === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID) {
       const handleInputUpdate = (newInputValue: string) => {
         if (newInputValue.startsWith('``NO_HISTORY_&#``\n')) {
           newInputValue = newInputValue.replace('``NO_HISTORY_&#``\n', '')
@@ -325,7 +323,7 @@ const AutoHeightTextarea: FC<{
     if (
       floatingDropdownMenu.open &&
       textareaRef.current &&
-      InputId === ROOT_FLOATING_INPUT_ID
+      InputId === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID
     ) {
       console.log('focusTextareaAndAutoSize 浮动dropdown chat input', InputId)
       autoFocusWithAllWebsite(
@@ -339,7 +337,7 @@ const AutoHeightTextarea: FC<{
     if (
       appState.open &&
       textareaRef.current &&
-      InputId === ROOT_CHAT_BOX_INPUT_ID &&
+      InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&
       !isFloatingContextMenuVisible()
     ) {
       console.log('focusTextareaAndAutoSize 侧边栏chat input', InputId)
@@ -350,7 +348,10 @@ const AutoHeightTextarea: FC<{
     }
   }, [appState.open, loading])
   useEffectOnce(() => {
-    if (InputId === ROOT_CHAT_BOX_INPUT_ID && isMaxAIImmersiveChatPage()) {
+    if (
+      InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&
+      isMaxAIImmersiveChatPage()
+    ) {
       setTimeout(() => {
         autoFocusWithAllWebsite(
           textareaRef.current!,
@@ -365,9 +366,7 @@ const AutoHeightTextarea: FC<{
       className={loading ? 'chat-box__input--loading' : ''}
       borderRadius={'8px'}
       border={`1px solid`}
-      borderColor={`${
-        isError || error ? 'rgb(239, 83, 80)' : 'customColor.borderColor'
-      }`}
+      borderColor={`${error ? 'rgb(239, 83, 80)' : 'customColor.borderColor'}`}
       width={'100%'}
       minHeight={34}
       sx={{
@@ -508,7 +507,7 @@ const AutoHeightTextarea: FC<{
                 event.key === 'Escape'
               ) {
                 // 因为会影响float context menu
-                if (InputId === ROOT_FLOATING_INPUT_ID) {
+                if (InputId === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID) {
                   return
                 }
               }

@@ -1,14 +1,14 @@
-import { Stack } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
-import AppLoadingLayout from '@/components/AppLoadingLayout'
-import PromptLibraryTabs from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PromptLibraryTabs'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import PromptLibraryCategoryAndUseCaseFilter from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/filters/PromptLibraryCategoryAndUseCaseFilter'
-import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import PromptLibrarySearch from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/filters/PromptLibrarySearch'
 import PromptLibraryPagination from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PrompLibraryPagination'
-import Typography from '@mui/material/Typography'
-import { useTranslation } from 'react-i18next'
+import PromptLibraryTabs from '@/features/prompt_library/components/PromptLibrary/PromptLibraryHeader/PromptLibraryTabs'
+import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 
 const PromptLibraryHeader: FC = () => {
   const { t } = useTranslation(['prompt_library'])
@@ -25,6 +25,7 @@ const PromptLibraryHeader: FC = () => {
           fontWeight={800}
           color={'text.primary'}
           textAlign={'center'}
+          className={'maxai__prompt_library__title'}
         >
           {t('prompt_library:use_prompt_library__title')}
         </Typography>

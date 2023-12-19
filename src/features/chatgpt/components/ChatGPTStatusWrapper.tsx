@@ -1,31 +1,30 @@
-import { FC, useEffect, useState } from 'react'
-
 import Box from '@mui/material/Box'
-import Stack from '@mui/material/Stack'
-import Paper from '@mui/material/Paper'
-import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
 import Link from '@mui/material/Link'
-
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { FC, useEffect, useState } from 'react'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { GoogleIcon, UseChatGptIcon } from '@/components/CustomIcon'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { AuthState } from '@/features/auth/store'
+import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
+import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog'
+import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
 import {
   ChatGPTClientState,
   ThirdPartAIProviderConfirmDialogState,
 } from '@/features/chatgpt/store'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
-import { GoogleIcon, UseChatGptIcon } from '@/components/CustomIcon'
-import { AuthState } from '@/features/auth/store'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import { AppDBStorageState } from '@/store'
-import { useFocus } from '@/hooks/useFocus'
-import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
-import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
-import Divider from '@mui/material/Divider'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
-import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
-import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {

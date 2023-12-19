@@ -1,17 +1,19 @@
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import cloneDeep from 'lodash-es/cloneDeep'
-import Browser from 'webextension-polyfill'
 import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
+
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { clientFetchAPI } from '@/features/shortcuts/utils'
+import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import {
   getIframePageContent,
   isNeedGetIframePageContent,
 } from '@/pages/content_script_iframe/iframePageContentHelper'
-import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
+import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -143,10 +145,7 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
@@ -323,10 +322,7 @@ Use the following format:
 
 #### Action Items
 <list of action items>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
@@ -499,10 +495,7 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
@@ -607,13 +600,28 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
         },
         {
-          type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
-          parameters: {},
+          type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+          parameters: {
+            OperationElementElementSelector: 'ytd-watch-metadata #title',
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: '{{SOCIAL_MEDIA_PAGE_CONTENT}}',
+          },
+        },
+        {
+          type: 'ANALYZE_CHAT_FILE',
+          parameters: {
+            AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+            AnalyzeChatFileImmediateUpdateConversation: false,
+          },
         },
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'YOUTUBE_TRANSCRIPT',
+            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -650,30 +658,11 @@ Respond in {{AI_RESPONSE_LANGUAGE}}.`,
           },
         },
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template: `{{YOUTUBE_TRANSCRIPT}}`,
-          },
-        },
-        {
-          type: 'ANALYZE_CHAT_FILE',
-          parameters: {
-            AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
-            AnalyzeChatFileImmediateUpdateConversation: false,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
             template: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
 
-The context text is the transcript of a video from {{CURRENT_WEBPAGE_URL}}.
+The context text is the information and/or transcript of a video from {{CURRENT_WEBPAGE_URL}}.
 
 Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.
@@ -687,10 +676,7 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>
-
----
-
-Respond in {{AI_RESPONSE_LANGUAGE}}.`,
+`,
             AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
           },
@@ -772,8 +758,17 @@ const getCurrentPageUrl = () => {
   return pageUrl
 }
 
+const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
+  [key in string]: string
+} = {}
 export const getPageSummaryConversationId = () => {
-  return md5TextEncrypt(getCurrentPageUrl())
+  const pageUrl = getCurrentPageUrl()
+  if (!PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]) {
+    PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(
+      getCurrentPageUrl(),
+    )
+  }
+  return PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]
 }
 export const getPageSummaryType = (): IPageSummaryType => {
   if (getCurrentDomainHost() === 'youtube.com') {
@@ -807,7 +802,9 @@ export const getIframeOrSpecialHostPageContent = async (): Promise<string> => {
 
 const isNeedGetSpecialHostPageContent = () => {
   const host = getCurrentDomainHost()
-  return ['docs.google.com', 'cnbc.com'].find((item) => item === host)
+  return ['docs.google.com', 'cnbc.com', 'github.com'].find(
+    (item) => item === host,
+  )
 }
 const getSpecialHostPageContent = async () => {
   const host = getCurrentDomainHost()
@@ -849,6 +846,134 @@ const getSpecialHostPageContent = async () => {
       return getPageContentWithMozillaReadability(mainContainer)
     }
     return ''
+  } else if (host === 'github.com') {
+    const githubPageUrl = new URL(location.href)
+    const githubPagePathName = githubPageUrl.pathname
+    const repoAuthor = githubPagePathName.split('/')[1]
+    const repoName = githubPagePathName.split('/')[2]
+    // 判断是不是代码页面
+    if (document.querySelector('#copilot-button-positioner')) {
+      // ## File Information
+      //   - Repository Name: [Repository Name](Repository Link)
+      //   - File Name: File Name
+      //   - File Path: File Path
+      //   - File Source link: File Source link
+      // ## File Content
+      //   ```
+      //   ```
+      const fileName = githubPagePathName.split('/').pop()
+      let pageContent = ``
+      pageContent += `## File Information\n`
+      pageContent += `- Repository Name: [${repoName}](${githubPageUrl.origin}/${repoAuthor}/${repoName})\n`
+      pageContent += `- File Name: ${fileName}\n`
+      pageContent += `- File Path: ${githubPagePathName}\n`
+      pageContent += `- File Source link: ${githubPageUrl.href}\n`
+      pageContent += `## File Content\n`
+      let code = 'N/A'
+      const rawLink = document.querySelector(
+        'a[data-testid="raw-button"]',
+      ) as HTMLAnchorElement
+      if (rawLink) {
+        const response = await clientFetchAPI(rawLink.href, {
+          parse: 'text',
+        })
+        if (response.success) {
+          code = response.data
+        }
+      }
+      pageContent += `\`\`\`\n${code}\n\`\`\`\n`
+      return pageContent
+    } else if (/issues\/\d+/.test(githubPagePathName)) {
+      // 判断是不是issue页面
+      // ## GitHub issue title
+      //   - Repository Name: [Repository Name](Repository Link)
+      //   - Repository issue link: [Repository Name](Repository Link)
+      // ### Comments
+      // #### Comment 1
+      //   Author: [@username](link-to-user-profile)
+      //   Date: [timestamp]
+      //   Comment content.
+      //   Metadata: Commenters/Collaborator/Author
+      // #### Comment 2
+      //   Author: [@username](link-to-user-profile)
+      //   Date: [timestamp]
+      //   Metadata: Commenters/Collaborator/Author
+      //   Comment content.
+      // ...
+      const parseGithubIssueItem = (githubIssueComment: HTMLDivElement) => {
+        if (!githubIssueComment) {
+          return {
+            author: '',
+            date: '',
+            content: '',
+            metadata: '',
+          }
+        }
+        const author = githubIssueComment.querySelector(
+          'a.author',
+        ) as HTMLAnchorElement
+        const date = githubIssueComment.querySelector(
+          'relative-time',
+        ) as HTMLTimeElement
+        const content =
+          (githubIssueComment.querySelector(
+            '.user-select-contain',
+          ) as HTMLDivElement) ||
+          (githubIssueComment.querySelector('table') as HTMLTableElement)
+        const metadata = githubIssueComment.querySelector(
+          '.timeline-comment-header div > span > span',
+        ) as HTMLSpanElement
+        return {
+          author: author?.innerText || '',
+          date: date?.getAttribute('datetime') || date?.title || '',
+          content:
+            content?.innerText
+              .replace(/\n\s+/g, '\n')
+              .replace(/\n{2,}/g, '\n\n')
+              .trim() || 'N/A',
+          metadata: metadata?.innerText || 'Commenters',
+        }
+      }
+      const issueTitle = document.querySelector(
+        '.js-issue-title',
+      ) as HTMLAnchorElement
+      const FirstComment = document.querySelector(
+        '.js-discussion > div',
+      ) as HTMLDivElement
+      if (FirstComment) {
+        const comments = [parseGithubIssueItem(FirstComment)]
+        const otherCommentsUrl = new URL(window.location.href)
+        otherCommentsUrl.pathname =
+          otherCommentsUrl.pathname + `/partials/load_more`
+        const result = await clientFetchAPI(otherCommentsUrl.href, {
+          parse: 'text',
+        })
+        if (result.success) {
+          // parse dom
+          const dom = new DOMParser().parseFromString(result.data, 'text/html')
+          const othorComments = dom.querySelectorAll(
+            '.js-timeline-item',
+          ) as NodeListOf<HTMLDivElement>
+          othorComments.forEach((item) => {
+            comments.push(parseGithubIssueItem(item))
+          })
+        }
+        let pageContent = ``
+        pageContent += `## ${issueTitle?.innerText}\n`
+        pageContent += `- Repository Name: [${repoName}](${githubPageUrl.origin}/${repoAuthor}/${repoName})\n`
+        pageContent += `- Repository issue link: ${githubPageUrl.href}\n`
+        comments.forEach((item, index) => {
+          pageContent += `### Comment ${index + 1}\n`
+          // NOTE: 浪费tokens
+          // pageContent += `- Author: [${item.author}](${githubPageUrl.origin}/${item.author})\n`
+          pageContent += `- Author: ${item.author}\n`
+          pageContent += `- Date: ${item.date}\n`
+          pageContent += `- Metadata: ${item.metadata}\n`
+          pageContent += `${item.content}\n`
+        })
+        return pageContent
+      }
+    }
   }
   return ''
 }

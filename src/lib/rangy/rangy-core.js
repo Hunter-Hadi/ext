@@ -538,7 +538,9 @@ console.log('[ContextMenu Module] IS_BLACK_LIST_ORIGIN', IS_BLACK_LIST_ORIGIN)
         }
       }
     })
-    modules[name] = newModule
+
+    // modules[name] = newModule
+    modules = { ...modules, [name]: newModule }
     return newModule
   }
 

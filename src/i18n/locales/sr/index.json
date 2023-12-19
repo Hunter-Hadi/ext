@@ -1,6 +1,6 @@
 {
-  "description": "Najbrži način da koristite ChatGPT, Claude, Bard, Bing bilo gde online. Jedino producirajuće AI-pokretano proširenje koje vam je potrebno.",
-  "name": "MaxAI.me: Koristite 1-klik ChatGPT AI bilo gde",
+  "description": "Najbrži način da koristite AI pokretan od strane ChatGPT, Claude, Bard, Bing AI bilo gde online. Jedino producirajuće AI proširenje koje vam je potrebno.",
+  "name": "MaxAI.me: Koristite 1-klik AI bilo gde",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odjava",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Obriši sve razgovore",
     "sidebar__share__share_button__tooltip": "Preuzmi čet",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnoviji GPT-3.5 Turbo model sa poboljšanim praćenjem instrukcija, JSON režimom, reproduktivnim izlazima, paralelnim pozivanjem funkcija i još mnogo toga. Vraća maksimalno 4.096 izlaznih tokena.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnoviji GPT-4 model sa poboljšanim praćenjem instrukcija, JSON režimom, reproduktivnim izlazima, paralelnim pozivanjem funkcija i još mnogo toga. Vraća maksimalno 4.096 izlaznih tokena. Ovaj model u pregledu još nije pogodan za proizvodni saobraćaj.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Najnoviji GPT-4 model sa poboljšanim praćenjem instrukcija, JSON režimom, reprodukovanim izlazima, paralelnim pozivanjem funkcija i još mnogo toga. Vraća maksimalno 4.096 izlaznih tokena.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumevanja slika, pored svih ostalih mogućnosti GPT-4 Turbo. Vraća maksimalno 4.096 izlaznih tokena. Ovo je verzija modela u pregledu i još uvek nije pogodna za proizvodni saobraćaj.",
     "activity__black_friday_2023__title": "Ograničeni vremenski ponude za Crni petak - Do 50% popusta!",
     "sidebar__speed_dial__chat_history__button": "Istorija čata",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Otkriven problem sa integracijom",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} trenutno ima problema sa konekcijom sa MaxAI-jem zbog njegovih nedavnih ažuriranja. Naš tim aktivno radi na rešavanju ovog problema i cenimo vaše razumevanje. U međuvremenu, molimo vas da razmislite o korišćenju alternativnog provajdera i ponovo nas posetite kasnije.",
     "provider__label__hide": "Sakrij",
-    "provider__label__view_solutions": "Pogledaj rešenja"
+    "provider__label__view_solutions": "Pogledaj rešenja",
+    "sidebar__input__tokens_limited__title": "maksimalno tokena"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Ne sviđa mi se",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odgovori sa ključnim tačkama",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Brzi odgovor",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odgovori sa ključnim tačkama (test)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odgovori sa ključnim tačkama (test)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norveški"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogućnosti",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Promenljive o",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Mesto za promenljivu",
     "preset_variables__tooltip__table__column_name__description__title": "Biće zamenjeno sa",
-    "template__error__title": "Šablon je obavezan"
+    "template__error__title": "Šablon je obavezan",
+    "ai_response_language__title": "Jezik odgovora veštačke inteligencije",
+    "ai_response_language__settings__label_1": "Koristi",
+    "ai_response_language__settings__label_2": "podešavanje jezika"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik podsticaji",

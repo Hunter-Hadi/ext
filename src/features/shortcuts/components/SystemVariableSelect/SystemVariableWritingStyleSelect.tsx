@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { SystemVariableSelectProps } from '@/features/shortcuts/components/SystemVariableSelect/types'
 
 const WRITING_STYLES_OPTIONS = [
-  { label: `Default`, value: `` },
+  { label: `Default`, value: `Default` },
   { value: `Academic`, label: `Academic` },
   { value: `Analytical`, label: `Analytical` },
   { value: `Argumentative`, label: `Argumentative` },
@@ -39,7 +39,7 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
 ) => {
   const {
     label = 'Writing style',
-    defaultValue = '',
+    defaultValue = 'Default',
     onChange = (value: string) => {
       console.log(value)
     },

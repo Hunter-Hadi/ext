@@ -1,30 +1,32 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined'
+import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined'
 import Alert, { alertClasses } from '@mui/material/Alert'
+import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import SidebarChatBoxUserTools from './SidebarChatBoxUserTools'
-import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
-import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
-import { ROOT_CONTAINER_ID } from '@/constants'
+import Typography from '@mui/material/Typography'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import DevContent from '@/components/DevContent'
+import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
+import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import {
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import DevMessageSourceData from '@/features/sidebar/components/SidebarChatBox/DevMessageSourceData'
-import DevContent from '@/components/DevContent'
-import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
 import SidebarAIMessage from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined'
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined'
-import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
-import { useTranslation } from 'react-i18next'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
+
+import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
+import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
+import SidebarChatBoxUserTools from './SidebarChatBoxUserTools'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const getMessageRenderText = (message: IChatMessage) => {
@@ -104,9 +106,6 @@ const SidebarChatBoxMessageItem: FC<{
         flexDirection: 'row',
         justifyContent: 'flex-start',
         bgcolor: () => {
-          if (String(process.env.APP_ENV) === 'EZ_MAIL_AI') {
-            return '#FEE6E1 !important'
-          }
           if (isDarkMode) {
             return '#6B23C259 !important'
           } else {
@@ -333,7 +332,7 @@ const SidebarChatBoxMessageItem: FC<{
           ) : (
             <Stack
               className={'chat-message--text'}
-              id={`${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`}
+              id={`${MAXAI_SIDEBAR_ID}_chat_message_${message.messageId}`}
               contentEditable={isEdit}
               whiteSpace={'pre-wrap'}
               sx={{
@@ -370,7 +369,7 @@ const SidebarChatBoxMessageItem: FC<{
             onSave={() => {
               setIsEdit(false)
               const messageTextElement = document.getElementById(
-                `${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`,
+                `${MAXAI_SIDEBAR_ID}_chat_message_${message.messageId}`,
               )
               onSave &&
                 onSave(messageTextElement?.innerText || message.text || '')
@@ -379,7 +378,7 @@ const SidebarChatBoxMessageItem: FC<{
               setIsEdit(true)
               setTimeout(() => {
                 const editElement = document.getElementById(
-                  `${ROOT_CONTAINER_ID}_chat_message_${message.messageId}`,
+                  `${MAXAI_SIDEBAR_ID}_chat_message_${message.messageId}`,
                 )
                 if (editElement) {
                   editElement.focus()

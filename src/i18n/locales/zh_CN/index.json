@@ -1,6 +1,6 @@
 {
-  "description": "在线使用ChatGPT、Claude、Bard、Bing的最快方式。您唯一需要的生成式AI扩展。",
-  "name": "MaxAI.me：随时随地使用1-Click ChatGPT AI",
+  "description": "通过ChatGPT、Claude、Bard、Bing AI提供的AI技术，这是在线使用AI的最快方式。您唯一需要的生成式AI扩展。",
+  "name": "MaxAI.me：随时随地使用1-Click AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "退出",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "清除所有聊天",
     "sidebar__share__share_button__tooltip": "下载聊天",
     "provider__openai_api__model__gpt_3_5_1106__description": "具有改进的指令跟随、JSON模式、可复现输出、并行函数调用等功能的最新GPT-3.5 Turbo模型。返回最多4,096个输出标记。",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "具有改进的指令跟随、JSON模式、可复现输出、并行函数调用等功能的最新GPT-4模型。返回最多4,096个输出标记。此预览模型尚不适用于生产流量。",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "具有改进的指令跟随、JSON模式、可复现输出、并行函数调用等功能的最新GPT-4模型。返回最多4,096个输出标记。",
     "provider__openai_api__model__gpt_4_vision_preview__description": "除了所有其他GPT-4 Turbo功能外，还能理解图像。返回最多4,096个输出标记。这是一个预览模型版本，尚不适用于生产流量。",
     "activity__black_friday_2023__title": "限时黑色星期五特惠 - 高达50%折扣！",
     "sidebar__speed_dial__chat_history__button": "聊天记录",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "检测到集成问题",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} 目前与MaxAI存在连接问题，这是由于其最近的更新引起的。我们的团队正在积极解决此问题，并感谢您的理解。同时，请考虑使用其他提供商，并稍后再来查看。",
     "provider__label__hide": "隐藏",
-    "provider__label__view_solutions": "查看解决方案"
+    "provider__label__view_solutions": "查看解决方案",
+    "sidebar__input__tokens_limited__title": "最多令牌"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "不喜欢",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "回复关键点",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "快速回复",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回复关键点（测试）"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回复关键点（测试）",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "挪威语"
   },
   "prompt_editor": {
     "preset_variables__title": "功能",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "关于",
     "preset_variables__tooltip__table__column_name__placeholder__title": "变量占位符",
     "preset_variables__tooltip__table__column_name__description__title": "将被替换为",
-    "template__error__title": "模板是必需的"
+    "template__error__title": "模板是必需的",
+    "ai_response_language__title": "AI响应语言",
+    "ai_response_language__settings__label_1": "使用",
+    "ai_response_language__settings__label_2": "语言设置"
   },
   "prompt_library": {
     "use_prompt_library__title": "1键提示",

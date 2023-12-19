@@ -1,34 +1,37 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { IActionSetVariable } from '@/features/shortcuts/components/ActionSetVariablesModal/types'
-import Stack from '@mui/material/Stack'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import OneShotCommunicator from '@/utils/OneShotCommunicator'
-import Button from '@mui/material/Button'
-import { useTranslation } from 'react-i18next'
 import SendIcon from '@mui/icons-material/Send'
-import cloneDeep from 'lodash-es/cloneDeep'
-import TextField from '@mui/material/TextField'
-import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { v4 as uuidV4 } from 'uuid'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import { isProduction } from '@/constants'
+import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
+import cloneDeep from 'lodash-es/cloneDeep'
 import isNumber from 'lodash-es/isNumber'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
+import { v4 as uuidV4 } from 'uuid'
+
+import TooltipButton from '@/components/TooltipButton'
+import { isProduction } from '@/constants'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import {
   getSetVariablesModalSelectCache,
   setVariablesModalSelectCache,
 } from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
-import TooltipButton from '@/components/TooltipButton'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { useForm, Controller } from 'react-hook-form'
+import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
+import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { showChatBox } from '@/utils'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export interface ActionSetVariablesModalConfig {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
@@ -44,6 +47,8 @@ export interface ActionSetVariablesModalConfig {
   actions?: ISetActionsType
   // 答案插入的MessageId
   answerInsertMessageId?: string
+  // askAI时额外的字段
+  askChatGPTActionParameters?: ActionParameters
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -70,6 +75,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     onClose,
     actions,
     answerInsertMessageId,
+    askChatGPTActionParameters,
   } = props
   const { createConversation } = useClientConversation()
   const {
@@ -188,25 +194,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     onClose?.()
     const runActions: ISetActionsType = []
     if (config?.template) {
-      let template = getValues()?.TEMPLATE || config?.template || ''
-      let systemVariablesTemplate = ''
-      if (
-        presetVariables.AI_RESPONSE_TONE !== 'Default' &&
-        presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default'
-      ) {
-        systemVariablesTemplate =
-          '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-      } else if (presetVariables.AI_RESPONSE_TONE !== 'Default') {
-        systemVariablesTemplate =
-          '\n\nPlease write in {{AI_RESPONSE_TONE}} tone, using {{AI_RESPONSE_LANGUAGE}}.'
-      } else if (presetVariables.AI_RESPONSE_WRITING_STYLE !== 'Default') {
-        systemVariablesTemplate =
-          '\n\nPlease write in {{AI_RESPONSE_WRITING_STYLE}} writing style, using {{AI_RESPONSE_LANGUAGE}}.'
-      } else {
-        systemVariablesTemplate =
-          '\n\nPlease write using {{AI_RESPONSE_LANGUAGE}}.'
-      }
-      template += '\n\n---' + systemVariablesTemplate
+      const template = getValues()?.TEMPLATE || config?.template || ''
       runActions.push({
         type: 'SET_VARIABLE_MAP',
         parameters: {
@@ -224,6 +212,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       // 用来插入答案的messageId，例如search message/summary message
       const insertMessageId =
         answerInsertMessageId || config.answerInsertMessageId || ''
+      const currentParameters =
+        askChatGPTActionParameters || config.askChatGPTActionParameters || {}
       if (isProduction) {
         runActions.push({
           type: 'ASK_CHATGPT',
@@ -246,6 +236,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 },
               } as IContextMenuItem,
             },
+            ...currentParameters,
           },
         })
       } else {
@@ -257,11 +248,21 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             AskChatGPTActionType: insertMessageId
               ? 'ASK_CHAT_GPT_HIDDEN'
               : 'ASK_CHAT_GPT_WITH_PREFIX',
+            ...currentParameters,
           },
         })
       }
       await setShortCuts(runActions)
-      await runShortCuts()
+      runShortCuts()
+        .then(() => {
+          // done
+          const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
+          if (error) {
+            // 如果出错了，则打开聊天框
+            showChatBox()
+          }
+        })
+        .catch()
     }
   }
   const currentModalConfig = useMemo(() => {
@@ -439,6 +440,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   }
   return (
     <Stack
+      className={'max-ai__action__set_variables_modal'}
       borderRadius={'8px'}
       border={`1px solid`}
       borderColor={'customColor.borderColor'}
@@ -491,6 +493,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           </Typography>
         </Box>
         <IconButton
+          data-test-id={`close-modal-button`}
           onClick={async () => await closeModal(true)}
           sx={{
             flexShrink: 0,
@@ -519,6 +522,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           if (systemVariable.systemVariable) {
             return (
               <Controller
+                key={systemVariable.VariableName}
                 control={control}
                 name={systemVariable.VariableName}
                 defaultValue={systemVariable.defaultValue}

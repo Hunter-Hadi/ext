@@ -1,33 +1,39 @@
+import dayjs from 'dayjs'
+import random from 'lodash-es/random'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { v4 as uuidV4 } from 'uuid'
+
+import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_ID,
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+} from '@/constants'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
+import { ActionAskChatGPT } from '@/features/shortcuts/actions'
 import {
   crawlingSearchResults,
   ICrawlingSearchResult,
 } from '@/features/shortcuts/utils/searchEngineCrawling'
-import dayjs from 'dayjs'
-import random from 'lodash-es/random'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_APP_NAME,
   // SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT,
   SEARCH_WITH_AI_PROMPT,
 } from '../constants'
-import { searchWithAIAskQuestion, ISearchPageKey } from '../utils'
-import useSearchWithAISettings from './useSearchWithAISettings'
-import useSearchWithAISources from './useSearchWithAISources'
-import { v4 as uuidV4 } from 'uuid'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { useRecoilState, useSetRecoilState } from 'recoil'
 import {
   AutoTriggerAskEnableAtom,
   ISearchWithAIConversationType,
   SearchWithAIConversationAtom,
 } from '../store'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
-import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
-import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
+import { ISearchPageKey, searchWithAIAskQuestion } from '../utils'
 import useSearchWithAICache from './useSearchWithAICache'
+import useSearchWithAISettings from './useSearchWithAISettings'
+import useSearchWithAISources from './useSearchWithAISources'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -141,6 +147,14 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     } else {
       setIsUseCache(false)
     }
+    // 0.确认语言
+    let userSelectedLanguage =
+      (await clientGetLiteChromeExtensionDBStorage()).userSettings?.language ||
+      DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    // NOTE: 历史遗留问题
+    if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
+      userSelectedLanguage = DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    }
 
     // 1. GET_CONTENTS_OF_HTML
     let sources: ICrawlingSearchResult[] = []
@@ -150,6 +164,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       const results = crawlingSearchResults({
         html: document.body.innerHTML,
         searchEngine: siteName,
+        searchQuery: question,
       })
 
       // search with ai 中 source 只取6个
@@ -171,6 +186,25 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       }
 
       template = await generatePromptTemplate(question, expandContent)
+      const additionalText = await ActionAskChatGPT.generateAdditionalText({
+        PAGE_CONTENT: expandContent,
+        AI_RESPONSE_LANGUAGE: userSelectedLanguage,
+      })
+      if (additionalText.addPosition === 'end') {
+        template += additionalText.data + '\n\n'
+      } else {
+        template = additionalText.data + '\n\n' + template
+      }
+    } else {
+      const additionalText = await ActionAskChatGPT.generateAdditionalText({
+        PAGE_CONTENT: question,
+        AI_RESPONSE_LANGUAGE: userSelectedLanguage,
+      })
+      if (additionalText.addPosition === 'end') {
+        template += additionalText.data + '\n\n'
+      } else {
+        template = additionalText.data + '\n\n' + template
+      }
     }
 
     // 3. ASK_CHATGPT
@@ -396,16 +430,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
 const generatePromptTemplate = async (query: string, content: string) => {
   let promptTemplate = SEARCH_WITH_AI_PROMPT
-  const userSelectedLanguage = (await clientGetLiteChromeExtensionDBStorage())
-    ?.userSettings?.language
-  if (userSelectedLanguage === DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
-    // 不需要操作
-  } else {
-    promptTemplate += `\nRespond in ${userSelectedLanguage}.`
-  }
-
   const date = dayjs().format('YYYY-MM-DD HH:mm:ss')
-
   promptTemplate = promptTemplate.replace(/{query}/g, query)
   promptTemplate = promptTemplate.replace(/{web_results}/g, content)
   promptTemplate = promptTemplate.replace(/{current_date}/g, date)

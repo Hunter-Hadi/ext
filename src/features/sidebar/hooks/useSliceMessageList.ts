@@ -1,7 +1,8 @@
-import { IChatMessage } from '@/features/chatgpt/types'
-import { getAppRootElement } from '@/utils'
 import { throttle } from 'lodash-es'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+
+import { IChatMessage } from '@/features/chatgpt/types'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 
 interface ISliceMessageOptions {
   // 每页大小
@@ -31,12 +32,12 @@ const useSliceMessageList = (
   const buffer = coverOptions?.buffer || 0
 
   const getMessageListElement = () => {
-    const root = getAppRootElement()
+    const root = getMaxAISidebarRootElement()
     return root?.querySelector<HTMLElement>(`#${messageListElementId}`)
   }
 
   const getScrollContainerElement = () => {
-    const root = getAppRootElement()
+    const root = getMaxAISidebarRootElement()
     return root?.querySelector<HTMLElement>(`#${scrollElementId}`)
   }
 

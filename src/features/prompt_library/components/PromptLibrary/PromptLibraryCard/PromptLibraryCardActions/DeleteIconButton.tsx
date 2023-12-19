@@ -1,11 +1,12 @@
-import React, { FC, useMemo, useState } from 'react'
-import IconButton from '@mui/material/IconButton'
-import Tooltip from '@mui/material/Tooltip'
-import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
-import DeletePromptConfirm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/DeletePromptConfirm'
-import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 import CircularProgress from '@mui/material/CircularProgress'
+import IconButton from '@mui/material/IconButton'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+import Tooltip from '@mui/material/Tooltip'
+import React, { FC, useMemo, useState } from 'react'
+
+import DeletePromptConfirm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/DeletePromptConfirm'
 import useFavoritePrompts from '@/features/prompt_library/hooks/useFavoritePrompts'
+import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 
 const DeleteIcon: FC<SvgIconProps> = (props) => {
   return (

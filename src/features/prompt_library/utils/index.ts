@@ -1,14 +1,15 @@
-import Toast from '@/utils/globalSnackbar'
 import { OptionsObject, SnackbarMessage } from 'notistack'
-import { IPromptLibraryCardDetailVariable } from '@/features/prompt_library/types'
+
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { DEFAULT_PROMPT_VARIABLE } from '@/features/prompt_library/constant'
-import { getAppRootElement } from '@/utils'
+import { IPromptLibraryCardDetailVariable } from '@/features/prompt_library/types'
+import Toast from '@/utils/globalSnackbar'
 
 /**
  * 渲染需要portal container的地方的根级容器
  */
 export const getPromptLibraryPortalContainerRoot = () => {
-  return getAppRootElement()
+  return getMaxAISidebarRootElement()
 }
 export const promptActionToast = {
   success: (msg: SnackbarMessage, options: OptionsObject = {}) =>

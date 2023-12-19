@@ -1,9 +1,11 @@
-import React, { FC, useMemo } from 'react'
-import { IAIResponseOriginalMessageCopilotStep } from '@/features/chatgpt/types'
-import Stack from '@mui/material/Stack'
 import { Card, CircularProgress } from '@mui/material'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import React, { FC, useMemo } from 'react'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { IAIResponseOriginalMessageCopilotStep } from '@/features/chatgpt/types'
 
 const SidebarAIMessageCopilotStep: FC<{
   messageIsComplete?: boolean
@@ -17,14 +19,16 @@ const SidebarAIMessageCopilotStep: FC<{
       case 'text': {
         return (
           <Card variant="outlined" sx={{ px: 1 }}>
-            <Typography
-              fontSize={14}
-              color={'text.primary'}
-              noWrap
-              maxWidth={256}
-            >
-              {String(value)}
-            </Typography>
+            <TextOnlyTooltip title={String(value)}>
+              <Typography
+                fontSize={14}
+                color={'text.primary'}
+                noWrap
+                maxWidth={256}
+              >
+                {String(value)}
+              </Typography>
+            </TextOnlyTooltip>
           </Card>
         )
       }
@@ -44,14 +48,16 @@ const SidebarAIMessageCopilotStep: FC<{
           >
             {tags.map((tag, index) => (
               <Card key={tag} variant="outlined" sx={{ px: 1 }}>
-                <Typography
-                  noWrap
-                  maxWidth={160}
-                  fontSize={14}
-                  color={'text.primary'}
-                >
-                  {tag}
-                </Typography>
+                <TextOnlyTooltip title={tag}>
+                  <Typography
+                    noWrap
+                    maxWidth={160}
+                    fontSize={14}
+                    color={'text.primary'}
+                  >
+                    {tag}
+                  </Typography>
+                </TextOnlyTooltip>
               </Card>
             ))}
           </Stack>

@@ -1,22 +1,21 @@
-import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
-import React, { FC, useCallback, useContext, useRef, useState } from 'react'
-
 import Alert from '@mui/material/Alert'
 import Backdrop from '@mui/material/Backdrop'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { chromeExtensionClientOpenPage } from '@/utils'
-import { useFocus } from '@/hooks/useFocus'
-import AppLoadingLayout from '@/components/AppLoadingLayout'
-import { SettingsPageRouteContext } from '@/pages/settings/context'
+import React, { FC, useCallback, useContext, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
-import { AppDBStorageState } from '@/store'
+
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useFocus } from '@/features/common/hooks/useFocus'
+import { SettingsPageRouteContext } from '@/pages/settings/context'
+import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
+import { AppDBStorageState } from '@/store'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 const SyncSettingCheckerWrapper: FC<{
   children: React.ReactNode

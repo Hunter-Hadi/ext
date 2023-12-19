@@ -1,6 +1,6 @@
 {
-  "description": "Greičiausias būdas naudoti ChatGPT, Claude, Bard, Bing bet kur internete. Vienintelis generatyvinės dirbtinio intelekto pagrindimas, kurio jums reikia.",
-  "name": "MaxAI.me: Naudokite 1 paspaudimą ChatGPT dirbtinio intelekto bet kur",
+  "description": "Greičiausias būdas naudoti AI, kurį varo ChatGPT, Claude, Bard, Bing AI bet kurioje interneto svetainėje. Vienintelis generatyvinis AI plėtinys, kurio jums reikia.",
+  "name": "MaxAI.me: Naudokite 1 paspaudimą AI bet kur",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Atsijungti",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Išvalyti visus pokalbius",
     "sidebar__share__share_button__tooltip": "Atsisiųsti pokalbį",
     "provider__openai_api__model__gpt_3_5_1106__description": "Naujausias GPT-3.5 Turbo modelis su patobulinta instrukcijų sekimu, JSON režimu, atkūrimo išvestimis, lygiagrečiu funkcijų kvietimu ir daugiau. Grąžina maksimaliai 4 096 išvesties ženklus.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Naujausias GPT-4 modelis su patobulinta instrukcijų sekimu, JSON režimu, atkūrimo išvestimis, lygiagrečiu funkcijų kvietimu ir daugiau. Grąžina maksimaliai 4 096 išvesties ženklus. Šis peržiūros modelis dar nėra tinkamas naudoti produkcijos srautui.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Naujausias GPT-4 modelis su patobulinta instrukcijų sekimu, JSON režimu, atkūrimais, lygiagrečiu funkcijų kvietimu ir daugiau. Grąžina iki 4 096 išvesties ženklų.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Galimybė suprasti vaizdus, be visų kitų GPT-4 Turbo galimybių. Grąžina maksimaliai 4 096 išvesties ženklus. Tai yra peržiūros modelio versija ir dar nėra tinkama naudoti produkcijos srautui.",
     "activity__black_friday_2023__title": "Riboto laiko Juodųjų Penktadienių pasiūlymai – Iki 50% nuolaida!",
     "sidebar__speed_dial__chat_history__button": "Pokalbių istorija",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Nustatyta integracijos problema",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} šiuo metu patiria ryšio problemas su MaxAI dėl naujausių atnaujinimų. Mūsų komanda aktyviai dirba siekdama išspręsti šią situaciją ir vertiname jūsų supratimą. Tuo tarpu, apsvarstykite alternatyvų tiekėją ir vėliau susisiekite su mumis.",
     "provider__label__hide": "Slėpti",
-    "provider__label__view_solutions": "Peržiūrėti sprendimus"
+    "provider__label__view_solutions": "Peržiūrėti sprendimus",
+    "sidebar__input__tokens_limited__title": "maksimalus žetonai"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Nepatinka",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Atsakyti su pagrindiniais taškais",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Greitas atsakymas",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Atsakyti su pagrindiniais taškais (testas)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Atsakyti su pagrindiniais taškais (testas)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvegų"
   },
   "prompt_editor": {
     "preset_variables__title": "Galiai",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Kintamieji apie",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Kintamojo laikiklis",
     "preset_variables__tooltip__table__column_name__description__title": "Bus pakeista su",
-    "template__error__title": "Reikalingas šablonas"
+    "template__error__title": "Reikalingas šablonas",
+    "ai_response_language__title": "AI atsakymo kalba",
+    "ai_response_language__settings__label_1": "Naudoti",
+    "ai_response_language__settings__label_2": "kalbos nustatymą"
   },
   "prompt_library": {
     "use_prompt_library__title": "Vieno paspaudimo užklausos",

@@ -1,16 +1,17 @@
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import Log from '@/utils/Log'
+import cloneDeep from 'lodash-es/cloneDeep'
+import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
-import cloneDeep from 'lodash-es/cloneDeep'
+
 import { AuthUserInfoState } from '@/features/auth/store'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { useFocus } from '@/hooks/useFocus'
-import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import { useEffect, useRef } from 'react'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
+import Log from '@/utils/Log'
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 

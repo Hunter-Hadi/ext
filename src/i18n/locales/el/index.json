@@ -1,6 +1,6 @@
 {
-  "description": "Ο γρηγορότερος τρόπος να χρησιμοποιήσετε το ChatGPT, Claude, Bard, Bing οπουδήποτε online. Η μόνη επέκταση με γεννητική νοημοσύνη που χρειάζεστε.",
-  "name": "MaxAI.me: Χρησιμοποιήστε το AI ChatGPT με ένα κλικ οπουδήποτε",
+  "description": "Ο γρηγορότερος τρόπος για να χρησιμοποιήσετε την τεχνητή νοημοσύνη που τροφοδοτείται από το ChatGPT, Claude, Bard, Bing AI οπουδήποτε online. Η μόνη επέκταση γεννητικής τεχνητής νοημοσύνης που χρειάζεστε.",
+  "name": "MaxAI.me: Χρησιμοποιήστε την τεχνητή νοημοσύνη με ένα κλικ οπουδήποτε",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Αποσύνδεση",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Καθαρισμός όλων των συνομιλιών",
     "sidebar__share__share_button__tooltip": "Λήψη συνομιλίας",
     "provider__openai_api__model__gpt_3_5_1106__description": "Το πιο πρόσφατο μοντέλο GPT-3.5 Turbo με βελτιωμένη ακολουθία οδηγιών, λειτουργία JSON, αναπαράσταση αποτελεσμάτων, παράλληλη κλήση συναρτήσεων και πολλά άλλα. Επιστρέφει ένα μέγιστο αριθμό 4.096 διατάξεων εξόδου.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Το πιο πρόσφατο μοντέλο GPT-4 με βελτιωμένη ακολουθία οδηγιών, λειτουργία JSON, αναπαράσταση αποτελεσμάτων, παράλληλη κλήση συναρτήσεων και πολλά άλλα. Επιστρέφει ένα μέγιστο αριθμό 4.096 διατάξεων εξόδου. Αυτό το προεπισκόπησης μοντέλο δεν είναι ακόμα κατάλληλο για παραγωγική κίνηση.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Το πιο πρόσφατο μοντέλο GPT-4 με βελτιωμένη ακολούθηση οδηγιών, λειτουργία JSON, αναπαράσταση αποτελεσμάτων, παράλληλη κλήση συναρτήσεων και πολλά άλλα. Επιστρέφει ένα μέγιστο αριθμό 4.096 διακριτών τεμαχίων εξόδου.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Δυνατότητα κατανόησης εικόνων, εκτός από όλες τις άλλες δυνατότητες του GPT-4 Turbo. Επιστρέφει ένα μέγιστο αριθμό 4.096 διατάξεων εξόδου. Αυτή είναι μια προεπισκόπησης έκδοση μοντέλου και δεν είναι ακόμα κατάλληλη για παραγωγική κίνηση.",
     "activity__black_friday_2023__title": "Περιορισμένες Προσφορές Black Friday - Έως και 50% Έκπτωση!",
     "sidebar__speed_dial__chat_history__button": "Ιστορικό συνομιλίας",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Εντοπίστηκε πρόβλημα ενσωμάτωσης",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} αντιμετωπίζει αυτήν τη στιγμή προβλήματα σύνδεσης με το MaxAI λόγω των πρόσφατων ενημερώσεών του. Η ομάδα μας εργάζεται ενεργά για να επιλύσει αυτό το θέμα και εκτιμούμε την κατανόησή σας. Προς το παρόν, σκεφτείτε να χρησιμοποιήσετε έναν εναλλακτικό πάροχο και ελέγξτε ξανά αργότερα.",
     "provider__label__hide": "Απόκρυψη",
-    "provider__label__view_solutions": "Προβολή λύσεων"
+    "provider__label__view_solutions": "Προβολή λύσεων",
+    "sidebar__input__tokens_limited__title": "μέγιστα tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Δεν μου αρέσει",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Απάντηση με βασικά σημεία",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Γρήγορη απάντηση",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Απάντηση με βασικά σημεία (δοκιμή)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Απάντηση με βασικά σημεία (δοκιμή)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Νορβηγικά"
   },
   "prompt_editor": {
     "preset_variables__title": "Δυνατότητες",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Μεταβλητές σχετικά με το",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Προσωρινή τιμή μεταβλητής",
     "preset_variables__tooltip__table__column_name__description__title": "Θα αντικατασταθεί με",
-    "template__error__title": "Απαιτείται πρότυπο"
+    "template__error__title": "Απαιτείται πρότυπο",
+    "ai_response_language__title": "Γλώσσα απάντησης AI",
+    "ai_response_language__settings__label_1": "Χρήση",
+    "ai_response_language__settings__label_2": "ρύθμιση γλώσσας"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-κλικ προτροπές",

@@ -1,5 +1,15 @@
-import { v4 as uuidV4 } from 'uuid'
 import isNumber from 'lodash-es/isNumber'
+import sum from 'lodash-es/sum'
+import { useEffect } from 'react'
+import { useRecoilValue } from 'recoil'
+import TurnDownService from 'turndown'
+import { v4 as uuidV4 } from 'uuid'
+
+import {
+  MAXAI_CLIPBOARD_ID,
+  MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
+  MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
+} from '@/features/common/constants'
 import {
   ContextMenuDraftType,
   IRangyRect,
@@ -7,19 +17,10 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
-import sum from 'lodash-es/sum'
-import TurnDownService from 'turndown'
-import {
-  ROOT_CHAT_BOX_INPUT_ID,
-  ROOT_CLIPBOARD_ID,
-  ROOT_FLOATING_INPUT_ID,
-} from '@/constants'
-import { useEffect } from 'react'
+import { findParentEqualSelector } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
-import { useRecoilValue } from 'recoil'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { findParentEqualSelector } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
 
@@ -760,7 +761,7 @@ export const replaceMarkerContent = async (
         cloneRange.setEnd(cacheRange.startContainer, cacheRange.startOffset)
       }
       await replaceWithClipboard(cloneRange, value)
-      console.log('paste editableElementSelectionText', value)
+      console.log('paste editableElementSelectionText', value, type)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
     }
@@ -1273,8 +1274,8 @@ export const isElementCanEditable = (element: HTMLElement) => {
       return false
     }
     if (
-      element.id === ROOT_CHAT_BOX_INPUT_ID ||
-      element.id === ROOT_FLOATING_INPUT_ID
+      element.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID ||
+      element.id === MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID
     ) {
       return false
     }
@@ -1303,7 +1304,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
   const restoreRange: Range | null = range.cloneRange()
   const doc =
     (range.startContainer || range.endContainer)?.ownerDocument || document
-  if (!doc || doc.getElementById(ROOT_CLIPBOARD_ID)) {
+  if (!doc || doc.getElementById(MAXAI_CLIPBOARD_ID)) {
     return
   }
   try {
@@ -1311,7 +1312,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
     let pastedText = value
     // save rich text from clipboard
     const div = doc.createElement('div')
-    div.id = ROOT_CLIPBOARD_ID
+    div.id = MAXAI_CLIPBOARD_ID
     div.setAttribute('contenteditable', 'true')
     div.style.cssText =
       'width: 1px;height: 1px;position: fixed;top: 0px;left:0px;overflow: hidden; z-index: -1;'
@@ -1334,6 +1335,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       true,
     )
     if (await getClipboardPermission()) {
+      div.focus() // focus 一次让 Document 处于 focused 状态，避免 navigator.clipboard.writeText api 报错
       await navigator.clipboard.writeText(value)
       div.focus() // 将光标定位到div中
       const divRange = doc.createRange()
@@ -1399,13 +1401,20 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
         new Promise((resolve) => setTimeout(resolve, ms))
       selection?.removeAllRanges()
       selection?.addRange(restoreRange)
-      await delay(0)
+      if (currentHost === 'evernote.com') {
+        // 如果在 evernote.com 上，则不需要 delay
+        // nothing
+      } else {
+        await delay(0)
+      }
+
       if (
         [
           'evernote.com',
           'web.whatsapp.com',
           'outlook.live.com',
           'outlook.office.com',
+          'docs.google.com',
         ].includes(currentHost) ||
         // YouTube的shorts会粘贴富文本 会出问题
         window.location.href.startsWith('https://www.youtube.com/shorts')
@@ -1413,8 +1422,24 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
         // 有内容才Delete
         if (selection?.toString().trim()) {
           doc.execCommand('Delete', false, '')
+        } else {
+          if (currentHost === 'evernote.com') {
+            // 如果在 evernote.com 上，如果你的 range 是最后一位，并且没有内容，它就会控制 光标（range）到文档的最后
+            // 所以这里需要 insert 一个 空格
+            doc.execCommand('insertText', false, ' ')
+          }
         }
-        doc.execCommand('insertText', false, pastedText)
+
+        if (currentHost === 'evernote.com') {
+          // 如果在 evernote.com 上，则不需要我们主动执行 insertText 就好
+          // 虽然不知道为什么, 但是能实现效果
+          // 猜测的原因是 因为 evernote.com 的富文本编辑器是自己实现的，他们也会控制 光标、Selection、Range，大概率是跟我们的代码中冲突了
+          //
+          // do nothing
+        } else {
+          doc.execCommand('insertText', false, pastedText)
+        }
+
         console.log(
           'replaceWithClipboard insertText',
           pastedText,

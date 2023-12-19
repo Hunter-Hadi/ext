@@ -1,6 +1,6 @@
 {
-  "description": "La manera més ràpida d'utilitzar ChatGPT, Claude, Bard, Bing en qualsevol lloc en línia. L'única extensió amb IA generativa que necessites.",
-  "name": "MaxAI.me: Utilitza l'IA ChatGPT amb un sol clic a qualsevol lloc",
+  "description": "La manera més ràpida d'utilitzar l'IA impulsada per ChatGPT, Claude, Bard, Bing AI en línia. L'única extensió d'IA generativa que necessites.",
+  "name": "MaxAI.me: Utilitza l'IA amb un sol clic en qualsevol lloc",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Tanca la sessió",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Esborra tots els xats",
     "sidebar__share__share_button__tooltip": "Descarrega el xat",
     "provider__openai_api__model__gpt_3_5_1106__description": "El model GPT-3.5 Turbo més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "El model GPT-4 més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida. Aquest model de previsualització encara no és adequat per al trànsit de producció.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "El model GPT-4 més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitat per comprendre imatges, a més de totes les altres capacitats del GPT-4 Turbo. Retorna un màxim de 4.096 tokens de sortida. Aquesta és una versió de previsualització del model i encara no és adequada per al trànsit de producció.",
     "activity__black_friday_2023__title": "Ofertes de Black Friday per temps limitat: fins a un 50% de descompte!",
     "sidebar__speed_dial__chat_history__button": "Historial de xat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "S'ha detectat un problema d'integració",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} està experimentant actualment problemes de connexió amb MaxAI a causa de les seves actualitzacions recents. El nostre equip està treballant activament per resoldre aquesta qüestió i agraïm la teva comprensió. Mentrestant, si us plau, considera utilitzar un proveïdor alternatiu i torna a consultar-nos més tard.",
     "provider__label__hide": "Amaga",
-    "provider__label__view_solutions": "Veure solucions"
+    "provider__label__view_solutions": "Veure solucions",
+    "sidebar__input__tokens_limited__title": "màxim de tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "No m'agrada",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Respon amb punts clau",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Resposta ràpida",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Respon amb punts clau (prova)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Respon amb punts clau (prova)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Noruec"
   },
   "prompt_editor": {
     "preset_variables__title": "Funcionalitats",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Variables sobre",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Marcador de variable",
     "preset_variables__tooltip__table__column_name__description__title": "Serà reemplaçat amb",
-    "template__error__title": "Es requereix una plantilla"
+    "template__error__title": "Es requereix una plantilla",
+    "ai_response_language__title": "Idioma de resposta de l'IA",
+    "ai_response_language__settings__label_1": "Utilitza",
+    "ai_response_language__settings__label_2": "configuració de l'idioma"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clic",

@@ -1,18 +1,19 @@
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
+import Stack from '@mui/material/Stack'
+import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Stack from '@mui/material/Stack'
-import RadioCardGroup from '@/pages/settings/components/RadioCardGroup'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+import { useRecoilValue } from 'recoil'
+
 import {
   getChromeExtensionButtonSettings,
   useChromeExtensionButtonSettings,
 } from '@/background/utils/buttonSettings'
 import VisibilitySettingCard from '@/components/VisibilitySettingCard'
-import cloneDeep from 'lodash-es/cloneDeep'
-import { useFocus } from '@/hooks/useFocus'
+import { useFocus } from '@/features/common/hooks/useFocus'
+import RadioCardGroup from '@/pages/settings/components/RadioCardGroup'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { AppDBStorageState } from '@/store'
-import { useRecoilValue } from 'recoil'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const SettingsMiniMenuPage: FC = () => {
   const appDBStorage = useRecoilValue(AppDBStorageState)

@@ -1,35 +1,36 @@
+import Browser from 'webextension-polyfill'
+
 import {
   ChatAdapter,
   ChatAdapterInterface,
-  ChatSystemInterface,
   ChatStatus,
+  ChatSystemInterface,
   IAIProviderType,
 } from '@/background/provider/chat'
+import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
+import {
+  getThirdProviderSettings,
+  processAskAIParameters,
+  setThirdProviderSettings,
+} from '@/background/src/chat/util'
+import ConversationManager, {
+  IChatConversation,
+} from '@/background/src/chatConversations'
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import Log from '@/utils/Log'
-import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
-import Browser from 'webextension-polyfill'
-import { APP_VERSION, CHROME_EXTENSION_HOMEPAGE_URL } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
-import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
-import {
-  getThirdProviderSettings,
-  processAskAIParameters,
-  setThirdProviderSettings,
-} from '@/background/src/chat/util'
-
 import {
   getChromeExtensionLocalStorage,
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
+import { APP_VERSION } from '@/constants'
+import { IChatUploadFile } from '@/features/chatgpt/types'
+import { MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL } from '@/features/common/constants'
+import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/ChatSystem')
 
@@ -339,7 +340,7 @@ class ChatSystem implements ChatSystemInterface {
     await this.preAuth()
     try {
       Browser.runtime.setUninstallURL(
-        `${CHROME_EXTENSION_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}&provider=${provider}`,
+        `${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/survey/uninstall?version=${APP_VERSION}&provider=${provider}`,
       )
     } catch (e) {
       log.error('switchAdapter', 'setUninstallURL', e)

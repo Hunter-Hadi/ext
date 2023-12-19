@@ -1,13 +1,14 @@
-import React, { FC, useEffect } from 'react'
+import SendIcon from '@mui/icons-material/Send'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
-import SendIcon from '@mui/icons-material/Send'
-import { getAppRootElement } from '@/utils'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { ROOT_CHAT_BOX_INPUT_ID } from '@/constants'
-import { IContextMenuItem } from '@/features/contextMenu/types'
+import React, { FC, useEffect } from 'react'
+
 import { getChromeExtensionDBStorageButtonContextMenu } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 
 const TestAllActionsButton: FC = () => {
   const [loading, setLoading] = React.useState(false)
@@ -33,8 +34,8 @@ const TestAllActionsButton: FC = () => {
           return
         }
         const inputText =
-          (getAppRootElement()?.querySelector(
-            '#' + ROOT_CHAT_BOX_INPUT_ID,
+          (getMaxAISidebarRootElement()?.querySelector(
+            '#' + MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
           ) as HTMLInputElement)?.value || ''
         if (!inputText) return
         try {

@@ -1,6 +1,6 @@
 {
-  "description": "Cách nhanh nhất để sử dụng ChatGPT, Claude, Bard, Bing bất cứ nơi nào trên mạng. Chỉ cần một tiện ích mở rộng được trang bị trí tuệ nhân tạo sinh sản duy nhất bạn cần.",
-  "name": "MaxAI.me: Sử dụng ChatGPT AI bằng 1-Click Mọi Nơi",
+  "description": "Cách nhanh nhất để sử dụng Trí tuệ Nhân tạo được cung cấp bởi ChatGPT, Claude, Bard, Bing AI mọi nơi trực tuyến. Phần mở rộng Trí tuệ Nhân tạo duy nhất bạn cần.",
+  "name": "MaxAI.me: Sử dụng Trí tuệ Nhân tạo bằng 1-Click Mọi nơi",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Đăng xuất",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Xóa tất cả cuộc trò chuyện",
     "sidebar__share__share_button__tooltip": "Tải xuống cuộc trò chuyện",
     "provider__openai_api__model__gpt_3_5_1106__description": "Mô hình GPT-3.5 Turbo mới nhất với khả năng làm theo hướng dẫn cải tiến, chế độ JSON, kết quả tái tạo được, gọi hàm song song và nhiều tính năng khác. Trả về tối đa 4.096 mã thông báo đầu ra.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Mô hình GPT-4 mới nhất với khả năng làm theo hướng dẫn cải tiến, chế độ JSON, kết quả tái tạo được, gọi hàm song song và nhiều tính năng khác. Trả về tối đa 4.096 mã thông báo đầu ra. Mô hình xem trước này chưa phù hợp cho lưu lượng sản xuất.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Mô hình GPT-4 mới nhất với khả năng làm theo hướng dẫn cải tiến, chế độ JSON, kết quả tái tạo được, gọi hàm song song và nhiều tính năng khác. Trả về tối đa 4.096 mã thông tin đầu ra.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Khả năng hiểu hình ảnh, bên cạnh tất cả các khả năng GPT-4 Turbo khác. Trả về tối đa 4.096 mã thông báo đầu ra. Đây là phiên bản mô hình xem trước và chưa phù hợp cho lưu lượng sản xuất.",
     "activity__black_friday_2023__title": "Ưu đãi Black Friday giới hạn thời gian - Giảm giá lên đến 50%!",
     "sidebar__speed_dial__chat_history__button": "Lịch sử trò chuyện",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Phát hiện vấn đề tích hợp",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} hiện đang gặp vấn đề kết nối với MaxAI do các cập nhật gần đây. Nhóm của chúng tôi đang tích cực làm việc để giải quyết vấn đề này và chúng tôi đánh giá cao sự thông cảm của bạn. Trong thời gian chờ đợi, hãy xem xét sử dụng một nhà cung cấp thay thế và kiểm tra lại với chúng tôi sau.",
     "provider__label__hide": "Ẩn",
-    "provider__label__view_solutions": "Xem giải pháp"
+    "provider__label__view_solutions": "Xem giải pháp",
+    "sidebar__input__tokens_limited__title": "số lượng tối đa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Không thích",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Trả lời với điểm chính",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Trả lời nhanh",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Trả lời với điểm chính (thử nghiệm)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Trả lời với điểm chính (thử nghiệm)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Tiếng Na Uy"
   },
   "prompt_editor": {
     "preset_variables__title": "Khả năng",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Biến về",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Giữ chỗ biến",
     "preset_variables__tooltip__table__column_name__description__title": "Sẽ được thay thế bằng",
-    "template__error__title": "Yêu cầu mẫu"
+    "template__error__title": "Yêu cầu mẫu",
+    "ai_response_language__title": "Ngôn ngữ phản hồi của AI",
+    "ai_response_language__settings__label_1": "Sử dụng",
+    "ai_response_language__settings__label_2": "cài đặt ngôn ngữ"
   },
   "prompt_library": {
     "use_prompt_library__title": "Gợi ý 1-click",

@@ -4,10 +4,11 @@ import { CacheProvider, ThemeProvider } from '@emotion/react'
 import { IconButton } from '@mui/material'
 import {
   OptionsObject,
+  ProviderContext as SnackbarProviderContext,
   SnackbarMessage,
   SnackbarProvider,
   useSnackbar,
-  WithSnackbarProps,
+  // WithSnackbarProps,
 } from 'notistack'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
@@ -15,11 +16,11 @@ import CloseIcon from '@mui/icons-material/Close'
 import { RecoilRoot } from 'recoil'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
-export const NAXAI_SNACKBAR_SHADOW_ROOT_ID = 'maxai-snackbar'
+export const MAXAI_SNACKBAR_SHADOW_ROOT_ID = 'MAXAI_SNACKBAR_ROOT'
 
-const MAXAI_SNACKBAR_SHADOW_CONTAINER_ID = 'maxai-snackbar-container'
+const MAXAI_SNACKBAR_SHADOW_CONTAINER_ID = 'MAXAI_SNACKBAR_CONTAINER'
 
-let snackbarRef: WithSnackbarProps
+let snackbarRef: SnackbarProviderContext
 const SnackbarUtilsConfigurator: React.FC = () => {
   snackbarRef = useSnackbar()
   return null
@@ -35,7 +36,7 @@ export const closeAllSnackbar = () => {
 
 export const getWebChatGPTSnackbarDocument = () => {
   return document
-    .getElementById(NAXAI_SNACKBAR_SHADOW_ROOT_ID)
+    .getElementById(MAXAI_SNACKBAR_SHADOW_ROOT_ID)
     ?.shadowRoot?.getElementById(
       MAXAI_SNACKBAR_SHADOW_CONTAINER_ID,
     ) as HTMLElement
@@ -76,7 +77,7 @@ export const renderGlobalSnackbar = () => {
   // 在chatgpt 网页渲染一个 Snackbar components 用于显示提示信息
   const { container, shadowRoot, emotionRoot } = createShadowRoot({
     containerId: MAXAI_SNACKBAR_SHADOW_CONTAINER_ID,
-    shadowRootId: NAXAI_SNACKBAR_SHADOW_ROOT_ID,
+    shadowRootId: MAXAI_SNACKBAR_SHADOW_ROOT_ID,
     presetContainerElement(shadowContainer) {
       shadowContainer.style.color = '#fff'
     },

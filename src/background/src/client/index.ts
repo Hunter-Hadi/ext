@@ -1,41 +1,41 @@
-import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import Browser from 'webextension-polyfill'
-import {
-  createBackgroundMessageListener,
-  createChromeExtensionOptionsPage,
-  backgroundRestartChromeExtension,
-  chromeExtensionLogout,
-  safeGetBrowserTab,
-} from '@/background/utils'
+
+import { backendApiReportPricingHooks } from '@/background/api'
+import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
   createDaemonProcessTab,
   getWindowIdOfChatGPTTab,
 } from '@/background/src/chat/util'
-import {
-  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
-  CHROME_EXTENSION_POST_MESSAGE_ID,
-  isEzMailApp,
-} from '@/constants'
-import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
-import Log from '@/utils/Log'
-import {
-  getChromeExtensionAccessToken,
-  getChromeExtensionUserInfo,
-} from '@/features/auth/utils'
-import { backendApiReportPricingHooks } from '@/background/api'
-import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
-import { getContextMenuActions } from '@/background/utils/buttonSettings'
 import ConversationManager from '@/background/src/chatConversations'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
+import {
+  backgroundRestartChromeExtension,
+  chromeExtensionLogout,
+  createBackgroundMessageListener,
+  createChromeExtensionOptionsPage,
+  safeGetBrowserTab,
+} from '@/background/utils'
+import { getContextMenuActions } from '@/background/utils/buttonSettings'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
+import {
+  CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/constants'
+import {
+  getChromeExtensionAccessToken,
+  getChromeExtensionUserInfo,
+} from '@/features/auth/utils'
+import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
-import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import Log from '@/utils/Log'
 
 const log = new Log('Background/Client')
 export const ClientMessageInit = () => {
@@ -173,6 +173,38 @@ export const ClientMessageInit = () => {
                   active,
                 })
                 tabId = tab.id
+              } else if (key === 'immersive_chat') {
+                const allTabs = await Browser.tabs.query({
+                  currentWindow: true,
+                })
+                for (let i = 0; i < allTabs.length; i++) {
+                  const tab = allTabs[i]
+                  if (
+                    tab.url &&
+                    tab.url.startsWith(
+                      Browser.runtime.getURL(`/pages/chat/index.html`),
+                    )
+                  ) {
+                    await Browser.tabs.update(tab.id, {
+                      url:
+                        Browser.runtime.getURL(`/pages/chat/index.html`) +
+                        query,
+                      active,
+                    })
+                    return {
+                      data: {
+                        tabId: tab.id,
+                      },
+                      success: true,
+                      message: 'ok',
+                    }
+                  }
+                }
+                const tab = await Browser.tabs.create({
+                  url: Browser.runtime.getURL(`/pages/chat/index.html`) + query,
+                  active,
+                })
+                tabId = tab.id
               }
               return {
                 data: {
@@ -188,7 +220,7 @@ export const ClientMessageInit = () => {
           {
             if (sender.tab?.id) {
               await Browser.tabs.sendMessage(sender.tab.id, {
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 event: 'Client_listenOpenChatMessageBox',
                 data: {},
               })
@@ -199,39 +231,31 @@ export const ClientMessageInit = () => {
           {
             const { mode } = data
             console.log('Client_updateIcon', mode)
-            if (isEzMailApp) {
-              // don't need to update icon
-              return {
-                data: false,
-                success: false,
-                message: 'ok',
-              }
+
+            if (mode === 'dark') {
+              await Browser.action.setIcon({
+                path: {
+                  16: 'assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png',
+                  32: 'assets/USE_CHAT_GPT_AI/icons/maxai_32_normal.png',
+                  48: 'assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png',
+                  128: 'assets/USE_CHAT_GPT_AI/icons/maxai_128_normal.png',
+                },
+              })
             } else {
-              if (mode === 'dark') {
-                await Browser.action.setIcon({
-                  path: {
-                    16: 'assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png',
-                    32: 'assets/USE_CHAT_GPT_AI/icons/maxai_32_normal.png',
-                    48: 'assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png',
-                    128: 'assets/USE_CHAT_GPT_AI/icons/maxai_128_normal.png',
-                  },
-                })
-              } else {
-                // NOTE: 因为有些浏览器主题看不清， 所以暂时不用白色的icon
-                await Browser.action.setIcon({
-                  path: {
-                    16: 'assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png',
-                    32: 'assets/USE_CHAT_GPT_AI/icons/maxai_32_normal.png',
-                    48: 'assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png',
-                    128: 'assets/USE_CHAT_GPT_AI/icons/maxai_128_normal.png',
-                  },
-                })
-              }
-              return {
-                data: true,
-                success: true,
-                message: 'ok',
-              }
+              // NOTE: 因为有些浏览器主题看不清， 所以暂时不用白色的icon
+              await Browser.action.setIcon({
+                path: {
+                  16: 'assets/USE_CHAT_GPT_AI/icons/maxai_16_normal.png',
+                  32: 'assets/USE_CHAT_GPT_AI/icons/maxai_32_normal.png',
+                  48: 'assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png',
+                  128: 'assets/USE_CHAT_GPT_AI/icons/maxai_128_normal.png',
+                },
+              })
+            }
+            return {
+              data: true,
+              success: true,
+              message: 'ok',
             }
           }
           break
@@ -291,7 +315,7 @@ export const ClientMessageInit = () => {
               await Browser.tabs.sendMessage(sender.tab.id, {
                 event: 'Client_listenUpdateIframeInput',
                 data,
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
               })
             }
             return {
@@ -481,7 +505,7 @@ export const ClientMessageInit = () => {
               sender.tab?.id &&
                 (await Browser.tabs.sendMessage(sender.tab.id, {
                   event: 'Client_listenUpdateConversationMessages',
-                  id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                  id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                   data: {
                     conversation: newConversationData,
                     conversationId,
@@ -540,7 +564,7 @@ export const ClientMessageInit = () => {
             sender.tab?.id &&
               (await Browser.tabs.sendMessage(sender.tab.id, {
                 event: 'Client_listenUpdateConversationMessages',
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
                   conversation: await ConversationManager.getClientConversation(
                     conversationId,
@@ -581,7 +605,7 @@ export const ClientMessageInit = () => {
               // send to tab
               await Browser.tabs.sendMessage(sender.tab.id, {
                 event: 'Iframe_ListenGetPageContent' as IChromeExtensionClientSendEvent,
-                id: CHROME_EXTENSION_POST_MESSAGE_ID,
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
                   taskId,
                   originPageUrl: sender.tab.url || sender.url,
@@ -607,7 +631,7 @@ export const ClientMessageInit = () => {
             // send to tab
             await Browser.tabs.sendMessage(sender.tab.id, {
               event: 'Client_ListenGetIframePageContentResponse' as IChromeExtensionClientSendEvent,
-              id: CHROME_EXTENSION_POST_MESSAGE_ID,
+              id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
               data: {
                 taskId,
                 pageContent,

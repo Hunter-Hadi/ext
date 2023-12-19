@@ -11,7 +11,7 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import cloneDeep from 'lodash-es/cloneDeep'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
-import { AppLocalStorageState } from '@/store'
+import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 
 const DevConsole: FC = () => {
   const {
@@ -19,9 +19,7 @@ const DevConsole: FC = () => {
     currentSidebarConversationId,
     currentSidebarConversationType,
     currentSidebarConversation,
-    sidebarSettings,
   } = useSidebarSettings()
-  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const chatGPTConversation = useRecoilValue(ChatGPTConversationState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
@@ -34,13 +32,14 @@ const DevConsole: FC = () => {
     }
     return clonedConversation
   }, [currentSidebarConversation])
+
   return (
     <Stack
       sx={{
         position: 'absolute',
         top: '0',
-        maxWidth: showDevContent ? '400px' : '32px',
-        maxHeight: showDevContent ? '500px' : '32px',
+        width: showDevContent ? '500px' : '32px',
+        height: showDevContent ? '500px' : '32px',
         overflowX: 'auto',
         overflowY: 'auto',
         zIndex: 1,
@@ -50,17 +49,13 @@ const DevConsole: FC = () => {
         border: '1px solid',
         borderColor: 'customColor.borderColor',
         borderRadius: '4px',
-        '& > pre, & > p': {
-          p: 0,
-          m: 0,
-          fontSize: '12px',
-        },
       }}
     >
       {showDevContent ? (
         <Button
           variant={'contained'}
           sx={{
+            zIndex: 11,
             width: 32,
             height: 32,
             minWidth: 'unset',
@@ -69,7 +64,7 @@ const DevConsole: FC = () => {
             right: 0,
             p: 1,
           }}
-          onClick={() => setShowDevContent(false)}
+          onClick={() => setShowDevContent(!showDevContent)}
         >
           <UnfoldLessIcon />
         </Button>
@@ -77,6 +72,7 @@ const DevConsole: FC = () => {
         <Button
           variant={'contained'}
           sx={{
+            zIndex: 11,
             width: 32,
             height: 32,
             minWidth: 'unset',
@@ -90,25 +86,51 @@ const DevConsole: FC = () => {
           <UnfoldMoreIcon />
         </Button>
       )}
-      <Stack direction={'row'} spacing={1}>
-        <Button
-          onClick={async (event) => {
-            await resetChromeExtensionOnBoardingData()
+      <Stack
+        width={'100%'}
+        flexDirection={'row'}
+        sx={{
+          visibility: showDevContent ? 'visible' : 'hidden',
+        }}
+      >
+        <Stack
+          sx={{
+            width: 0,
+            flex: 1,
+            overflow: 'auto',
+            '& > pre, & > p': {
+              p: 0,
+              m: 0,
+              fontSize: '12px',
+            },
           }}
         >
-          Reset OnBoarding
-        </Button>
+          <Stack direction={'row'} spacing={1}>
+            <Button
+              onClick={async (event) => {
+                await resetChromeExtensionOnBoardingData()
+              }}
+            >
+              Reset OnBoarding
+            </Button>
+          </Stack>
+          <p>authStatus: {chatGPTClientState.status}</p>
+          <p>loading: {chatGPTConversation.loading ? 'loading' : 'done'}</p>
+          <p>
+            currentSidebarConversationType: {currentSidebarConversationType}
+          </p>
+          <p>currentSidebarAIProvider: {currentSidebarAIProvider}</p>
+          <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
+          <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
+          {/*<pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>*/}
+          {/*<pre>*/}
+          {/*  {JSON.stringify(appLocalStorage.thirdProviderSettings, null, 2)}*/}
+          {/*</pre>*/}
+        </Stack>
+        <Stack width={200} flexShrink={0}>
+          <DevShortcutsLog />
+        </Stack>
       </Stack>
-      <p>authStatus: {chatGPTClientState.status}</p>
-      <p>loading: {chatGPTConversation.loading ? 'loading' : 'done'}</p>
-      <p>currentSidebarConversationType: {currentSidebarConversationType}</p>
-      <p>currentSidebarAIProvider: {currentSidebarAIProvider}</p>
-      <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
-      <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
-      <pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>
-      <pre>
-        {JSON.stringify(appLocalStorage.thirdProviderSettings, null, 2)}
-      </pre>
     </Stack>
   )
 }

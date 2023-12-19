@@ -1,11 +1,12 @@
-import React, { FC } from 'react'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
-import { useTranslation } from 'react-i18next'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
-import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import LanguageCodeSelect from '@/components/select/LanguageCodeSelect'
+import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 
 const FeaturePreferredLanguageCard: FC = () => {
@@ -15,7 +16,7 @@ const FeaturePreferredLanguageCard: FC = () => {
   return (
     <SettingsFeatureCardLayout
       title={t('settings:feature_card__preferred_language__title')}
-      id={'ai-response-language'}
+      id={'ai-preferred-language'}
     >
       <List
         sx={{

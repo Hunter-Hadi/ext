@@ -1,11 +1,12 @@
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+
 import { IChromeExtensionSendEvent } from '@/background/eventType'
 import {
   createBackgroundMessageListener,
   safeGetBrowserTab,
 } from '@/background/utils'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 interface IClientProxyWebSocketOptions {
   createWebSocket?: (url: string) => WebSocket
   packMessage?: (data: any) => string | ArrayBuffer | Blob
@@ -153,7 +154,7 @@ export class ClientProxyWebSocket {
     if (this.clientTabId) {
       try {
         const result = await Browser.tabs.sendMessage(this.clientTabId, {
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
           data: {
             taskId: this.id,
             type,

@@ -1,22 +1,23 @@
+import cloneDeep from 'lodash-es/cloneDeep'
+import { useCallback, useMemo } from 'react'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
+import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
+import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
 import {
   cloneRect,
   computedRectPosition,
   floatingContextMenuSaveDraftToChatBox,
   isFloatingContextMenuVisible,
 } from '@/features/contextMenu/utils'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
-import { useCallback, useMemo } from 'react'
-import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
 import {
   createSelectionMarker,
   getEditableElementSelectionTextOnSpecialHost,
 } from '@/features/contextMenu/utils/selectionHelper'
-import cloneDeep from 'lodash-es/cloneDeep'
+import { AppState } from '@/store'
 import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
 import Log from '@/utils/Log'
-import { AppState } from '@/store'
 
 const log = new Log('ContextMenu/useFloatingContextMenu')
 
@@ -46,8 +47,9 @@ const useFloatingContextMenu = () => {
       overwriteSelectionElement?: Partial<IVirtualIframeSelectionElement>,
       isCommandInsert?: boolean,
     ) => {
-      let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
-        element
+      let virtualSelectionElement:
+        | IVirtualIframeSelectionElement
+        | undefined = element
       /**
        * floating menu 展开逻辑:
        * 1. 如果当前在editable element中，展开
@@ -82,10 +84,9 @@ const useFloatingContextMenu = () => {
             !saveSelectionData.editableElementSelectionText &&
             !saveSelectionData.selectionText
           ) {
-            const specialHostSelectionData =
-              getEditableElementSelectionTextOnSpecialHost(
-                virtualSelectionElement.target,
-              )
+            const specialHostSelectionData = getEditableElementSelectionTextOnSpecialHost(
+              virtualSelectionElement.target,
+            )
             selectionMarkerData.selectionText =
               specialHostSelectionData.selectionText
             selectionMarkerData.editableElementSelectionText =

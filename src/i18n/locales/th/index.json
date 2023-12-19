@@ -1,6 +1,6 @@
 {
-  "description": "วิธีที่เร็วที่สุดในการใช้ ChatGPT, Claude, Bard, Bing ทุกที่ออนไลน์ เป็นส่วนขยายที่ใช้งานได้เพียงอย่างเดียวที่คุณต้องการ",
-  "name": "MaxAI.me: ใช้ ChatGPT AI ด้วยการคลิกเพียงครั้งเดียวที่ทุกที่",
+  "description": "วิธีที่รวดเร็วที่สุดในการใช้งาน AI ที่มีพลังจาก ChatGPT, Claude, Bard, Bing AI ทุกที่ออนไลน์ เป็นส่วนขยาย AI ที่คุณต้องการเท่านั้น",
+  "name": "MaxAI.me: ใช้ AI ด้วยคลิกเดียวทุกที่",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ออกจากระบบ",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "ล้างการสนทนาทั้งหมด",
     "sidebar__share__share_button__tooltip": "ดาวน์โหลดแชท",
     "provider__openai_api__model__gpt_3_5_1106__description": "โมเดล GPT-3.5 Turbo ล่าสุดที่มีการปรับปรุงในการติดตามคำแนะนำ, โหมด JSON, ผลลัพธ์ที่สามารถทำซ้ำได้, การเรียกใช้ฟังก์ชันแบบพร้อมกัน, และอื่น ๆ ส่งคืนจำนวนสูงสุด 4,096 โทเค็นผลลัพธ์",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "โมเดล GPT-4 ล่าสุดที่มีการปรับปรุงในการติดตามคำแนะนำ, โหมด JSON, ผลลัพธ์ที่สามารถทำซ้ำได้, การเรียกใช้ฟังก์ชันแบบพร้อมกัน, และอื่น ๆ ส่งคืนจำนวนสูงสุด 4,096 โทเค็นผลลัพธ์ โมเดลตัวอย่างนี้ยังไม่เหมาะสำหรับการใช้งานจริง",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "โมเดล GPT-4 ล่าสุดที่มีการปฏิบัติตามคำแนะนำที่ดีขึ้น, โหมด JSON, ผลลัพธ์ที่สามารถทำซ้ำได้, การเรียกใช้ฟังก์ชันแบบพร้อมกัน, และอื่น ๆ ส่งคืนจำนวนสูงสุด 4,096 โทเค็นผลลัพธ์",
     "provider__openai_api__model__gpt_4_vision_preview__description": "สามารถเข้าใจภาพเพิ่มเติมได้ นอกเหนือจากความสามารถ GPT-4 Turbo ทั้งหมดอื่น ๆ ส่งคืนจำนวนสูงสุด 4,096 โทเค็นผลลัพธ์ นี่เป็นรุ่นตัวอย่างของโมเดลและยังไม่เหมาะสำหรับการใช้งานจริง",
     "activity__black_friday_2023__title": "ดีลวันศุกร์ดำจำกัดเวลา - สูงสุด 50% ลด!",
     "sidebar__speed_dial__chat_history__button": "ประวัติการแชท",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "ตรวจพบปัญหาการผสานรวม",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} กำลังประสบปัญหาการเชื่อมต่อกับ MaxAI เนื่องจากการอัปเดตล่าสุด ทีมของเรากำลังทำงานอย่างหนักเพื่อแก้ไขปัญหานี้และเราขอขอบคุณสำหรับความกรุณาของคุณ ในระหว่างนี้โปรดพิจารณาใช้ผู้ให้บริการทางเลือกและตรวจสอบกลับมาใหม่ในภายหลัง",
     "provider__label__hide": "ซ่อน",
-    "provider__label__view_solutions": "ดูวิธีแก้ปัญหา"
+    "provider__label__view_solutions": "ดูวิธีแก้ปัญหา",
+    "sidebar__input__tokens_limited__title": "จำนวนสูงสุดของโทเค็น"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "ไม่ชอบ",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "ตอบด้วยจุดสำคัญ",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "ตอบด่วน",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ตอบด้วยจุดสำคัญ (ทดสอบ)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ตอบด้วยจุดสำคัญ (ทดสอบ)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "นอร์เวย์"
   },
   "prompt_editor": {
     "preset_variables__title": "ความสามารถ",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "ตัวแปรเกี่ยวกับ",
     "preset_variables__tooltip__table__column_name__placeholder__title": "ตัวยึดตำแหน่งของตัวแปร",
     "preset_variables__tooltip__table__column_name__description__title": "จะถูกแทนที่ด้วย",
-    "template__error__title": "ต้องระบุเทมเพลต"
+    "template__error__title": "ต้องระบุเทมเพลต",
+    "ai_response_language__title": "ภาษาการตอบกลับของ AI",
+    "ai_response_language__settings__label_1": "ใช้",
+    "ai_response_language__settings__label_2": "การตั้งค่าภาษา"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-คลิกเพื่อใช้คำพูด",

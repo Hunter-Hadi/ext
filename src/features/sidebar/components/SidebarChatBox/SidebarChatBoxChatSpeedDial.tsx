@@ -1,21 +1,23 @@
-import SpeedDial from '@mui/material/SpeedDial'
-import React, { FC, useState } from 'react'
-import SpeedDialAction from '@mui/material/SpeedDialAction'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
-import DialogTitle from '@mui/material/DialogTitle'
+import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
-import DialogActions from '@mui/material/DialogActions'
-import { CleanChatBoxIcon, MagicBookIcon } from '@/components/CustomIcon'
-import Box from '@mui/material/Box'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import Button from '@mui/material/Button'
+import DialogTitle from '@mui/material/DialogTitle'
+import SpeedDial from '@mui/material/SpeedDial'
+import SpeedDialAction from '@mui/material/SpeedDialAction'
 import Stack from '@mui/material/Stack'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { chromeExtensionClientOpenPage, getAppRootElement } from '@/utils'
 import Browser from 'webextension-polyfill'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { CleanChatBoxIcon, MagicBookIcon } from '@/components/CustomIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const SidebarChatBoxChatSpeedDial: FC<{
@@ -134,7 +136,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
                 onClick={(event: any) => {
                   event.stopPropagation()
                   //  data-testid={'maxai-prompt-library-button'}
-                  const button = getAppRootElement()?.querySelector(
+                  const button = getMaxAISidebarRootElement()?.querySelector(
                     '[data-testid="maxai-prompt-library-button"]',
                   ) as HTMLButtonElement
                   if (button) {

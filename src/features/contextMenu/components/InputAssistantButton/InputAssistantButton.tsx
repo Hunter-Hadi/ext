@@ -1,23 +1,25 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import createCache, { EmotionCache } from '@emotion/cache'
+import { CacheProvider } from '@emotion/react'
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import { UseChatGptIcon } from '@/components/CustomIcon'
+import CircularProgress from '@mui/material/CircularProgress'
 import { SxProps } from '@mui/material/styles'
+import cloneDeep from 'lodash-es/cloneDeep'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
+
 import {
   ContextMenuIcon,
   IContextMenuIconKey,
 } from '@/components/ContextMenuIcon'
-import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
-import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import CircularProgress from '@mui/material/CircularProgress'
-import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { useTranslation } from 'react-i18next'
-import createCache, { EmotionCache } from '@emotion/cache'
-import { CacheProvider } from '@emotion/react'
-import cloneDeep from 'lodash-es/cloneDeep'
-import { isProduction, ROOT_MINIMIZE_CONTAINER_ID } from '@/constants'
-import Box from '@mui/material/Box'
+import { isProduction } from '@/constants'
+import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
+import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
+import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -206,7 +208,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   useEffect(() => {
     setContextMenuContainer(
       document
-        .querySelector(`#${ROOT_MINIMIZE_CONTAINER_ID}`)
+        .querySelector(`#${MAXAI_MINIMIZE_CONTAINER_ID}`)
         ?.shadowRoot?.querySelector('div') as HTMLElement,
     )
   }, [])

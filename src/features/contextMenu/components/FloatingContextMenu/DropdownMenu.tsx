@@ -1,59 +1,59 @@
 /**
  * @description menu只能触发左右，不能触发上下，menuitem可以触发上下
  */
-import * as React from 'react'
 import {
-  useFloating,
-  offset,
+  autoUpdate,
   flip,
+  FloatingFocusManager,
+  FloatingNode,
+  FloatingPortal,
+  FloatingTree,
+  offset,
+  Placement,
+  safePolygon,
   shift,
-  useListNavigation,
-  useHover,
-  useTypeahead,
-  useInteractions,
-  useRole,
   useClick,
   useDismiss,
-  safePolygon,
-  FloatingPortal,
-  useFloatingTree,
+  useFloating,
   useFloatingNodeId,
   useFloatingParentNodeId,
+  useFloatingTree,
+  useHover,
+  useInteractions,
+  useListNavigation,
   useMergeRefs,
-  FloatingNode,
-  FloatingTree,
-  FloatingFocusManager,
-  autoUpdate,
-  Placement,
+  useRole,
+  useTypeahead,
 } from '@floating-ui/react'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-
+import Typography from '@mui/material/Typography'
+import * as React from 'react'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilState, useRecoilValue } from 'recoil'
+
+import {
+  ContextMenuIcon,
+  IContextMenuIconKey,
+} from '@/components/ContextMenuIcon'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import { MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID } from '@/features/common/constants'
+import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import {
   FloatingDropdownMenuItemsSelector,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
 import {
-  ContextMenuIcon,
-  IContextMenuIconKey,
-} from '@/components/ContextMenuIcon'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
-import { useRecoilValue, useRecoilState } from 'recoil'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
-import Stack from '@mui/material/Stack'
-import { useTranslation } from 'react-i18next'
-import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { getAppContextMenuRootElement } from '@/utils'
-import { ROOT_FLOATING_INPUT_ID } from '@/constants'
 
 interface LiteDropdownMenuItemProps {
   label?: string
@@ -460,7 +460,7 @@ export const MenuComponent = React.forwardRef<
       onNavigate(index) {
         const focusTextarea = () => {
           const textareaEl = getAppContextMenuRootElement()?.querySelector(
-            `#${ROOT_FLOATING_INPUT_ID}`,
+            `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
           ) as HTMLTextAreaElement
           if (textareaEl) {
             textareaEl?.focus()
@@ -907,7 +907,7 @@ export const MenuComponent = React.forwardRef<
                     return
                   }
                   const textareaEl = getAppContextMenuRootElement()?.querySelector(
-                    `#${ROOT_FLOATING_INPUT_ID}`,
+                    `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
                   ) as HTMLTextAreaElement
                   textareaEl?.focus()
                   // console.log(

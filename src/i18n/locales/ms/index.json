@@ -1,6 +1,6 @@
 {
-  "description": "Cara terpantas untuk menggunakan ChatGPT, Claude, Bard, Bing di mana-mana dalam talian. Satu-satunya sambungan AI generatif yang anda perlukan.",
-  "name": "MaxAI.me: Gunakan AI ChatGPT 1-Klik di Mana-mana",
+  "description": "Cara terpantas untuk menggunakan AI yang dikuasakan oleh ChatGPT, Claude, Bard, Bing AI di mana-mana dalam talian. Satu-satunya sambungan AI generatif yang anda perlukan.",
+  "name": "MaxAI.me: Gunakan AI 1-Klik Di Mana-mana",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log keluar",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Padam semua perbualan",
     "sidebar__share__share_button__tooltip": "Muat turun perbualan",
     "provider__openai_api__model__gpt_3_5_1106__description": "Model GPT-3.5 Turbo terkini dengan peningkatan mengikut arahan, mod JSON, hasil boleh diulangi, pemanggilan fungsi selari, dan banyak lagi. Mengembalikan maksimum 4,096 token output.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 terkini dengan peningkatan mengikut arahan, mod JSON, hasil boleh diulangi, pemanggilan fungsi selari, dan banyak lagi. Mengembalikan maksimum 4,096 token output. Model pra-tonton ini belum sesuai untuk trafik pengeluaran.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 terkini dengan peningkatan mengikut arahan, mod JSON, hasil boleh diulangi, pemanggilan fungsi selari, dan banyak lagi. Mengembalikan maksimum 4,096 token output.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami imej, selain daripada semua keupayaan GPT-4 Turbo yang lain. Mengembalikan maksimum 4,096 token output. Ini adalah versi model pra-tonton dan belum sesuai untuk trafik pengeluaran.",
     "activity__black_friday_2023__title": "Tawaran Terhad Black Friday – Sehingga 50% Off!",
     "sidebar__speed_dial__chat_history__button": "Sejarah Chat",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Masalah integrasi dikesan",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} sedang mengalami masalah sambungan dengan MaxAI disebabkan oleh kemas kini terkini. Pasukan kami sedang berusaha untuk menyelesaikan perkara ini, dan kami menghargai pemahaman anda. Sementara itu, pertimbangkan menggunakan penyedia alternatif dan semak semula dengan kami kemudian.",
     "provider__label__hide": "Sembunyikan",
-    "provider__label__view_solutions": "Lihat penyelesaian"
+    "provider__label__view_solutions": "Lihat penyelesaian",
+    "sidebar__input__tokens_limited__title": "maksimum token"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Tidak suka",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Balas dengan poin utama",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Balasan cepat",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Balas dengan poin utama (ujian)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Balas dengan poin utama (ujian)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian"
   },
   "prompt_editor": {
     "preset_variables__title": "Kemampuan",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Perkara mengenai",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Penanda ganti pembolehubah",
     "preset_variables__tooltip__table__column_name__description__title": "Akan digantikan dengan",
-    "template__error__title": "Template diperlukan"
+    "template__error__title": "Template diperlukan",
+    "ai_response_language__title": "Bahasa Balasan AI",
+    "ai_response_language__settings__label_1": "Guna",
+    "ai_response_language__settings__label_2": "tetapan bahasa"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik promp",

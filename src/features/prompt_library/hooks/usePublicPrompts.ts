@@ -1,8 +1,9 @@
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+
+import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import PromptLibraryService, {
   PROMPT_LIBRARY_API,
 } from '@/features/prompt_library/service'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 
 const usePublicPrompts = () => {
   const {

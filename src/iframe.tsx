@@ -1,6 +1,16 @@
-import Log from '@/utils/Log'
-import { CHROME_EXTENSION_POST_MESSAGE_ID, isProduction } from '@/constants'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import { v4 } from 'uuid'
+import Browser from 'webextension-polyfill'
 
+import {
+  isProduction,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+} from '@/constants'
+import {
+  IRangyRect,
+  IVirtualIframeSelectionElement,
+} from '@/features/contextMenu/types'
 import {
   computedSelectionString,
   createSelectionMarker,
@@ -8,15 +18,8 @@ import {
   getEditableElement,
   replaceMarkerContent,
 } from '@/features/contextMenu/utils/selectionHelper'
-import Browser from 'webextension-polyfill'
-import { v4 } from 'uuid'
-import {
-  IRangyRect,
-  IVirtualIframeSelectionElement,
-} from '@/features/contextMenu/types'
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
 import { iframePageContentHelper } from '@/pages/content_script_iframe/iframePageContentHelper'
+import Log from '@/utils/Log'
 dayjs.extend(utc)
 
 const iframeId = v4()
@@ -192,7 +195,7 @@ const initIframe = async () => {
       // 发送iframeId和markerId给父级
       window.parent.postMessage(
         {
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
           type: 'iframeSelection',
           data: {
             virtual: true,
@@ -277,7 +280,7 @@ type IframeMessageType = (event: IVirtualIframeSelectionElement) => void
 export const listenIframeMessage = (onMessage?: IframeMessageType) => {
   const listener = (event: MessageEvent) => {
     const { id, type, data } = event.data
-    if (id === CHROME_EXTENSION_POST_MESSAGE_ID) {
+    if (id === MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
       if (type === 'iframeSelection') {
         const {
           selectionText,

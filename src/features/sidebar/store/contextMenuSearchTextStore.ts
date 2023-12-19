@@ -1,10 +1,11 @@
-import { CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY } from '@/constants'
-import Browser from 'webextension-polyfill'
-import { useRecoilValue } from 'recoil'
-import { AppDBStorageState } from '@/store'
 import { useMemo, useState } from 'react'
-import { useFocus } from '@/hooks/useFocus'
-import useEffectOnce from '@/hooks/useEffectOnce'
+import { useRecoilValue } from 'recoil'
+import Browser from 'webextension-polyfill'
+
+import { CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY } from '@/constants'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useFocus } from '@/features/common/hooks/useFocus'
+import { AppDBStorageState } from '@/store'
 
 export interface ContextMenuSearchTextStoreI18nStore {
   [key: string]: string

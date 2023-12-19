@@ -1,13 +1,14 @@
-import React, { FC, useEffect, useState } from 'react'
-import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
-import SidebarChatBoxReleaseLog from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxReleaseLog'
 import Stack from '@mui/material/Stack'
-import { useTranslation } from 'react-i18next'
-import useWindowSize from '@/hooks/useWindowSize'
+import Typography from '@mui/material/Typography'
 import isNumber from 'lodash-es/isNumber'
+import React, { FC, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { UAParser } from 'ua-parser-js'
+
+import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
+import useWindowSize from '@/features/common/hooks/useWindowSize'
+import SidebarChatBoxReleaseLog from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxReleaseLog'
 const { getOS } = new UAParser()
 const SidebarChatBoxFooter: FC = () => {
   const { width, scrollWidth } = useWindowSize()

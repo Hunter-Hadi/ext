@@ -1,12 +1,14 @@
+import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
+
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { v4 as uuidV4 } from 'uuid'
-import Browser from 'webextension-polyfill'
-import { OpenAIChat } from '../chat/OpenAiChat'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+
+import { OpenAIChat } from '../chat/OpenAiChat'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat
@@ -80,7 +82,7 @@ class OpenAIChatProvider implements ChatAdapterInterface {
   }
   private async sendResponseToClient(tabId: number, data: any) {
     await Browser.tabs.sendMessage(tabId, {
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })

@@ -1,19 +1,5 @@
 export type IPromptLibraryCardType = 'private' | 'public'
 
-export interface IAddPromptLibraryCardParams {
-  type: IPromptLibraryCardType
-  prompt_hint: string
-  prompt_template: string
-  prompt_title: string
-  teaser: string
-  category: string
-  use_case: string
-  user_input?: string
-  optional_prompt_template?: string
-  author?: string
-  author_url?: string
-}
-
 /**
  * 这是列表接口的数据，很多字段会被删除
  */

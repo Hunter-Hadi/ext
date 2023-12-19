@@ -1,14 +1,15 @@
-import React, { FC, useMemo, useRef } from 'react'
 import Box from '@mui/material/Box'
-import { useRecoilValue } from 'recoil'
-import { AppLocalStorageState } from '@/store'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
-import { SxProps } from '@mui/material/styles'
-import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
-import Popover from '@mui/material/Popover'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
-import { getAppRootElement } from '@/utils'
+import Popover from '@mui/material/Popover'
+import { SxProps } from '@mui/material/styles'
+import React, { FC, useMemo, useRef } from 'react'
+import { useRecoilValue } from 'recoil'
+
+import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { AppLocalStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const AIProviderSelectorFloatingButton: FC<{
@@ -101,7 +102,7 @@ const AIProviderSelectorFloatingButton: FC<{
         >
           <ClickAwayListener
             onClickAway={(event) => {
-              const aiProviderCard = getAppRootElement()?.querySelector(
+              const aiProviderCard = getMaxAISidebarRootElement()?.querySelector(
                 '#MaxAIProviderSelectorCard',
               ) as HTMLElement
               if (aiProviderCard) {

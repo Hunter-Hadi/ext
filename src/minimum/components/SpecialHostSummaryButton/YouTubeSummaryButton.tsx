@@ -1,11 +1,13 @@
-import React, { FC, useEffect } from 'react'
 import Button from '@mui/material/Button'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { UseChatGptIcon } from '@/components/CustomIcon'
-import { getAppRootElement, showChatBox } from '@/utils'
-import { ISidebarConversationType } from '@/features/sidebar/store'
 import DynamicComponent from '@/components/DynamicComponent'
-import useFindElement from '@/hooks/useFindElement'
+import useFindElement from '@/features/common/hooks/useFindElement'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { ISidebarConversationType } from '@/features/sidebar/store'
+import { showChatBox } from '@/utils'
 
 const MAXAI_YOUTUBE_SUMMARY_BUTTON = 'max-ai-youtube-summary-button'
 const YouTubeSummaryButton: FC = () => {
@@ -72,7 +74,7 @@ const YouTubeSummaryButton: FC = () => {
           showChatBox()
           const timer = setInterval(() => {
             if (
-              getAppRootElement()?.querySelector(
+              getMaxAISidebarRootElement()?.querySelector(
                 'p[data-testid="max-ai__summary-tab"]',
               )
             ) {

@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box'
-import React, { FC, useMemo, useState } from 'react'
-import useEffectOnce from '@/hooks/useEffectOnce'
-import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { SxProps } from '@mui/material/styles'
+import React, { FC, useMemo, useState } from 'react'
+
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { clientFetchAPI } from '@/features/shortcuts/utils'
 
 interface YoutubePlayerBoxProps {
   youtubeLink: string

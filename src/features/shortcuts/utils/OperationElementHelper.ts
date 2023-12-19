@@ -1,9 +1,10 @@
-import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
+import concat from 'lodash-es/concat'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+
 import { IChromeExtensionSendEvent } from '@/background/eventType'
-import concat from 'lodash-es/concat'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
+import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 
 export interface IExecuteOperationResult {
   success: boolean
@@ -38,7 +39,7 @@ export const backgroundSendClientToExecuteOperationElement = (
       }
       try {
         await Browser.tabs.sendMessage(tabId, {
-          id: CHROME_EXTENSION_POST_MESSAGE_ID,
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
           event: 'Client_pong' as IChromeExtensionSendEvent,
         })
         console.log('OperationElement errorListener pong')
@@ -65,9 +66,8 @@ export const backgroundSendClientToExecuteOperationElement = (
       }
       Browser.runtime.onMessage.addListener(onceListener)
       await Browser.tabs.sendMessage(tabId, {
-        id: CHROME_EXTENSION_POST_MESSAGE_ID,
-        event:
-          'ShortCuts_ClientExecuteOperationPageElement' as IChromeExtensionSendEvent,
+        id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+        event: 'ShortCuts_ClientExecuteOperationPageElement' as IChromeExtensionSendEvent,
         data: {
           taskId,
           OperationElementConfig,

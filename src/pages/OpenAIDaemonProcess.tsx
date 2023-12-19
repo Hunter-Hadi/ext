@@ -1,38 +1,39 @@
+import CloseIcon from '@mui/icons-material/Close'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import dayjs from 'dayjs'
+import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import Browser from 'webextension-polyfill'
+
+import { IOpenAIChatListenTaskEvent } from '@/background/app'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import CloseAlert from '@/components/CloseAlert'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import {
+  CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
+  MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+  OPENAI_IFRAME_ID,
+} from '@/constants'
 import {
   ChatGPTDaemonProcess,
   ContentScriptConnectionV2,
   IChatGPTDaemonProcess,
 } from '@/features/chatgpt'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import Stack from '@mui/material/Stack'
-import { IOpenAIChatListenTaskEvent } from '@/background/app'
-import {
-  CHROME_EXTENSION_POST_MESSAGE_ID,
-  CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY,
-  ROOT_DAEMON_PROCESS_ID,
-  OPENAI_IFRAME_ID,
-} from '@/constants'
-import CloseIcon from '@mui/icons-material/Close'
-import Log from '@/utils/Log'
-import dayjs from 'dayjs'
-import CloseAlert from '@/components/CloseAlert'
-import { chromeExtensionClientOpenPage } from '@/utils'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import useInterval from '@/hooks/useInterval'
 import useDaemonBrokenListener from '@/features/chatgpt/hooks/useDaemonBrokenListener'
+import { MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID } from '@/features/common/constants'
+import useInterval from '@/features/common/hooks/useInterval'
 import {
   listenChatGPTFileUploadChange,
   pingChatGPTFileUploadServer,
   startMockChatGPTUploadFile,
 } from '@/pages/chatgpt/fileUploadContentScriptHelper'
-import cloneDeep from 'lodash-es/cloneDeep'
-import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { chromeExtensionClientOpenPage } from '@/utils'
+import Log from '@/utils/Log'
 
 const APP_NAME = String(process.env.APP_NAME)
 
@@ -208,7 +209,9 @@ const useDaemonProcess = () => {
           } else {
             // 有守护进程实例
             log.info('close listen')
-            document.getElementById(ROOT_DAEMON_PROCESS_ID)?.remove()
+            document
+              .getElementById(MAXAI_CHATGPT_WEBAPP_DAEMON_PROCESS_ID)
+              ?.remove()
           }
         })
       const stopFileUploadListen = listenChatGPTFileUploadChange((files) => {
@@ -222,7 +225,7 @@ const useDaemonProcess = () => {
       })
       const listener = async (msg: any) => {
         const { event, data } = msg
-        if (msg?.id && msg.id !== CHROME_EXTENSION_POST_MESSAGE_ID) {
+        if (msg?.id && msg.id !== MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
           return
         }
         return new Promise((resolve) => {
@@ -495,11 +498,8 @@ const OpenAIDaemonProcess: FC = () => {
           position: 'absolute',
           height: 40,
           width: '100%',
-          bgcolor:
-            String(process.env.APP_ENV) === 'EZ_MAIL_AI'
-              ? '#1D56D7'
-              : '#7601D3',
-          zIndex: String(process.env.APP_ENV) === 'EZ_MAIL_AI' ? 999 : 1000,
+          bgcolor: '#7601D3',
+          zIndex: 1000,
           color: '#fff',
         }}
         spacing={1}

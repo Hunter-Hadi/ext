@@ -1,13 +1,14 @@
-import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import cheerio from 'cheerio'
+
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { SearchResponse } from '@/features/shortcuts/actions/web/ActionGetContentsOfSearchEngine'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
+import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import {
   checkIsDomain,
   domain2HttpsDomain,
   string2DomainFaviconUrl,
 } from '@/utils/dataHelper/stringHelper'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
-import { SearchResponse } from '@/features/shortcuts/actions/web/ActionGetContentsOfSearchEngine'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 export interface ICrawlingSearchResult {
   title: string // 标题
@@ -15,6 +16,7 @@ export interface ICrawlingSearchResult {
   url: string // 地址
   from?: string // 内容来源
   favicon?: string // 内容来源的品牌图片地址
+  searchQuery?: string // 搜索的关键词
 }
 
 const isFileUrl = (url: string) => {
@@ -34,15 +36,22 @@ const isFileUrl = (url: string) => {
 export function crawlingSearchResults({
   html,
   searchEngine,
+  searchQuery,
 }: {
   html: string
   searchEngine: URLSearchEngine | string
+  searchQuery: string
 }) {
   try {
     const results: ICrawlingSearchResult[] = CrawlingResultsWithEngine(
       html,
       searchEngine,
-    )
+    ).map((result) => {
+      if (!result.searchQuery) {
+        result.searchQuery = searchQuery
+      }
+      return result
+    })
     /**
      * Empty filter
      *

@@ -1,11 +1,12 @@
+import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
+
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { PoeChat } from '@/background/src/chat'
-import Browser from 'webextension-polyfill'
-import { CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
-import { v4 as uuidV4 } from 'uuid'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
 /**
@@ -77,7 +78,7 @@ class PoeChatProvider implements ChatAdapterInterface {
   }
   private async sendResponseToClient(tabId: number, data: any) {
     await Browser.tabs.sendMessage(tabId, {
-      id: CHROME_EXTENSION_POST_MESSAGE_ID,
+      id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
       event: 'Client_askChatGPTQuestionResponse',
       data,
     })

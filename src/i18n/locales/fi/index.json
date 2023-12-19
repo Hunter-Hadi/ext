@@ -1,6 +1,6 @@
 {
-  "description": "Nopein tapa käyttää ChatGPT, Claude, Bard, Bing missä tahansa verkossa. Ainoa generatiivinen tekoälyllä varustettu laajennus, jota tarvitset.",
-  "name": "MaxAI.me: Käytä 1-Click ChatGPT AI:ta missä tahansa",
+  "description": "Nopein tapa käyttää ChatGPT:n, Clauden, Bardin ja Bing AI:n voimaa missä tahansa verkossa. Ainoa generatiivinen AI-laajennus, jota tarvitset.",
+  "name": "MaxAI.me: Käytä 1-Click AI missä tahansa",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kirjaudu ulos",
@@ -470,7 +470,7 @@
     "immersive_chat__delete_all_chat__button__title": "Tyhjennä kaikki keskustelut",
     "sidebar__share__share_button__tooltip": "Lataa keskustelu",
     "provider__openai_api__model__gpt_3_5_1106__description": "Uusin GPT-3.5 Turbo -malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta.",
-    "provider__openai_api__model__gpt_4_1106_preview__description": "Uusin GPT-4 -malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta. Tämä esikatselumalli ei ole vielä sopiva tuotantoliikenteelle.",
+    "provider__openai_api__model__gpt_4_1106_preview__description": "Uusin GPT-4-malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta.",
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kyky ymmärtää kuvia muiden GPT-4 Turbo -ominaisuuksien lisäksi. Palauttaa enintään 4 096 tulostetunnusta. Tämä on esikatselmamallin versio eikä vielä sovellu tuotantoliikenteeseen.",
     "activity__black_friday_2023__title": "Rajoitetun ajan Black Friday -tarjoukset – Jopa 50% alennusta!",
     "sidebar__speed_dial__chat_history__button": "Keskusteluhistoria",
@@ -489,7 +489,8 @@
     "provider__confirm_dialog__integration_issue_detected": "Integraatio-ongelma havaittu",
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} kokee tällä hetkellä yhteyden ongelmia MaxAI:n kanssa sen viimeaikaisten päivitysten vuoksi. Tiimimme työskentelee aktiivisesti tämän asian ratkaisemiseksi ja arvostamme ymmärrystäsi. Sillä välin harkitse vaihtoehtoisen tarjoajan käyttämistä ja tarkista myöhemmin uudelleen.",
     "provider__label__hide": "Piilota",
-    "provider__label__view_solutions": "Näytä ratkaisut"
+    "provider__label__view_solutions": "Näytä ratkaisut",
+    "sidebar__input__tokens_limited__title": "enintään merkit"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -668,7 +669,8 @@
     "730b1b2d-809b-428b-9967-9c3b53154bbf": "Ei tykkää",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Vastaa avainkohtien kanssa",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Pikavastaus",
-    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vastaa avainkohtien kanssa (testi)"
+    "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vastaa avainkohtien kanssa (testi)",
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norja"
   },
   "prompt_editor": {
     "preset_variables__title": "Ominaisuudet",
@@ -710,7 +712,10 @@
     "preset_variables__tooltip__variable_name_prefix": "Muuttujat liittyen",
     "preset_variables__tooltip__table__column_name__placeholder__title": "Muuttujan paikkamerkki",
     "preset_variables__tooltip__table__column_name__description__title": "Korvataan",
-    "template__error__title": "Malli vaaditaan"
+    "template__error__title": "Malli vaaditaan",
+    "ai_response_language__title": "AI-vastauksen kieli",
+    "ai_response_language__settings__label_1": "Käytä",
+    "ai_response_language__settings__label_2": "kielen asetusta"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikkaus vihjeet",

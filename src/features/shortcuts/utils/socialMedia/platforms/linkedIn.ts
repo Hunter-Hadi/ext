@@ -2,14 +2,14 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import SocialMediaPostContext, {
-  ICommentData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
 import {
   delayAndScrollToInputAssistantButton,
   findParentEqualSelector,
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import SocialMediaPostContext, {
+  ICommentData,
+} from '@/features/shortcuts/utils/SocialMediaPostContext'
 
 // 获取linkedin评论的作者，日期，内容
 const getLinkedInCommentDetail = async (
@@ -52,10 +52,12 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
     inputAssistantButton,
   )
   // linkedin button所在的地方的文章的评论根容器
-  const linkedInPostCommentRootContainer = findSelectorParent(
-    '.social-details-social-activity',
-    linkedInReplyBox,
-  )
+  const linkedInPostCommentRootContainer =
+    findSelectorParent('.social-details-social-activity', linkedInReplyBox) ||
+    findSelectorParent(
+      '.feed-shared-update-v2__comments-container',
+      linkedInReplyBox,
+    )
   if (linkedInReplyBox) {
     // 获取文章本身的内容
     if (linkedInPostCommentRootContainer) {

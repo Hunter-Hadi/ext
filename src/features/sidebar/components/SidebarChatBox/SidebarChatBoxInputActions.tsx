@@ -14,6 +14,7 @@ import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
+import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
 
@@ -23,6 +24,9 @@ const SidebarChatBoxInputActions: FC<{
   const { onSendMessage } = props
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
+  const { currentMaxInputLength } = useChatInputMaxTokens(
+    'chatBoxInputMediator',
+  )
   const [inputValue, setInputValue] = useState('')
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const ref = React.useRef<HTMLElement>(null)
@@ -66,7 +70,7 @@ const SidebarChatBoxInputActions: FC<{
         // 用等宽字体，不然会左右闪烁宽度
         fontFamily={'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'}
       >
-        {'128k '}
+        {Math.floor(currentMaxInputLength / 1000) + 'k '}
         {t('client:sidebar__input__tokens_limited__title')}
       </Typography>
       <Box

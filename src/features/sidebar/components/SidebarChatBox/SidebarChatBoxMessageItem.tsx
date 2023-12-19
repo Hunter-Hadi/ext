@@ -1,8 +1,7 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import Alert from '@mui/material/Alert'
+import Alert, { alertClasses } from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-
 import SidebarChatBoxUserTools from './SidebarChatBoxUserTools'
 import SidebarChatBoxAiTools from './SidebarChatBoxAiTools'
 import SidebarChatBoxSystemTools from './SidebarChatBoxSystemTools'
@@ -19,6 +18,12 @@ import DevContent from '@/components/DevContent'
 import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import SidebarAIMessage from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined'
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined'
+import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const getMessageRenderText = (message: IChatMessage) => {
@@ -155,6 +160,9 @@ const SidebarChatBoxMessageItem: FC<{
       }
     }
   }, [message.type, isHover, isDarkMode])
+
+  const { currentAIProviderDetail } = useAIProviderModels()
+
   useEffect(() => {
     setDefaultText(getMessageRenderText(message))
   }, [message.text])
@@ -168,6 +176,9 @@ const SidebarChatBoxMessageItem: FC<{
     }
     return []
   }, [message])
+
+  const [solutionsShow, setSolutionsShow] = useState(false)
+
   return (
     <Stack
       className={className}
@@ -251,8 +262,9 @@ const SidebarChatBoxMessageItem: FC<{
               severity={message?.extra?.status || 'info'}
               sx={{
                 p: 1,
-                '& .MuiAlert-message': {
+                [`& .${alertClasses.message}`]: {
                   p: 0,
+                  width: '100%',
                 },
                 '& > div:first-child': {
                   display: 'none',
@@ -265,15 +277,50 @@ const SidebarChatBoxMessageItem: FC<{
               }}
               icon={<></>}
             >
-              <div
-                className={`markdown-body ${
-                  isDarkMode ? 'markdown-body-dark' : ''
-                }`}
-              >
-                <CustomMarkdown>
-                  {defaultText.replace(/^\s+/, '')}
-                </CustomMarkdown>
-              </div>
+              <Box>
+                <Stack
+                  direction={'row'}
+                  alignItems="flex-start"
+                  spacing={1.5}
+                  mb={2}
+                >
+                  <div
+                    className={`markdown-body ${
+                      isDarkMode ? 'markdown-body-dark' : ''
+                    }`}
+                  >
+                    <CustomMarkdown>
+                      {defaultText.replace(/^\s+/, '')}
+                    </CustomMarkdown>
+                  </div>
+
+                  {currentAIProviderDetail?.isThirdParty && (
+                    <Stack
+                      direction={'row'}
+                      alignItems="center"
+                      spacing={0.5}
+                      sx={{
+                        ml: 'auto',
+                        mb: '0.22em',
+                        cursor: 'pointer',
+                        flexShrink: 0,
+                      }}
+                      onClick={() => setSolutionsShow((pre) => !pre)}
+                    >
+                      <Typography fontSize={16} lineHeight={1.5}>
+                        {solutionsShow ? 'Hide' : 'View solutions'}
+                      </Typography>
+                      {solutionsShow ? (
+                        <KeyboardArrowUpOutlinedIcon />
+                      ) : (
+                        <KeyboardArrowDownOutlinedIcon />
+                      )}
+                    </Stack>
+                  )}
+                </Stack>
+
+                {solutionsShow && <ThirdPartAIProviderErrorSolution />}
+              </Box>
             </Alert>
           ) : (
             <Stack

@@ -4,11 +4,16 @@ import { SxProps } from '@mui/material/styles'
 import Stack from '@mui/material/Stack'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
-import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import AIProviderOptions, {
+  AIProviderOptionType,
+} from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import Typography from '@mui/material/Typography'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
+import {
+  ChatGPTClientState,
+  ThirdPartAIProviderConfirmDialogState,
+} from '@/features/chatgpt/store'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
 import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
@@ -17,6 +22,7 @@ import AppLoadingLayout from '@/components/AppLoadingLayout'
 import { useTranslation } from 'react-i18next'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import AIProviderMainPartIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderMainPartIcon'
 
 interface AIProviderSelectorCardProps {
   sx?: SxProps
@@ -41,6 +47,11 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
     createConversation,
     switchBackgroundChatSystemAIProvider,
   } = useClientConversation()
+
+  const setProviderConfirmDialogState = useSetRecoilState(
+    ThirdPartAIProviderConfirmDialogState,
+  )
+
   const isLoadingMemo = useMemo(() => {
     return chatGPTConversationLoading
   }, [chatGPTConversationLoading])
@@ -68,7 +79,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
       <Stack
         sx={{
           p: 1,
-          width: 248,
+          width: 228,
           flexShrink: 0,
           borderRight: '1px solid #EBEBEB',
           alignItems: 'stretch',
@@ -83,7 +94,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
           }
           loading={isLoadingMemo}
           size={24}
-          sx={{ width: 248 }}
+          sx={{ width: 228 }}
         >
           {currentProviderOption && clientState.status !== 'success' && (
             <AIProviderAuthCard aiProviderOption={currentProviderOption} />
@@ -113,22 +124,43 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                   if (currentSidebarAIProvider === providerOption.value) {
                     return
                   }
-                  await updateSidebarSettings({
-                    common: {
-                      currentAIProvider: providerOption.value,
-                    },
-                  })
-                  await switchBackgroundChatSystemAIProvider(
-                    providerOption.value,
-                  )
-                  if (currentSidebarConversationType === 'Chat') {
-                    await cleanConversation(true)
-                    await createConversation('Chat')
+
+                  const changeProviderFn = async (
+                    providerOption: AIProviderOptionType,
+                  ) => {
+                    await updateSidebarSettings({
+                      common: {
+                        currentAIProvider: providerOption.value,
+                      },
+                    })
+                    await switchBackgroundChatSystemAIProvider(
+                      providerOption.value,
+                    )
+                    if (currentSidebarConversationType === 'Chat') {
+                      await cleanConversation(true)
+                      await createConversation('Chat')
+                    }
                   }
+
+                  if (providerOption.isThirdParty) {
+                    // 如果是第三方需要弹出 confirm dialog
+                    setProviderConfirmDialogState({
+                      open: true,
+                      confirmProviderValue: providerOption.value,
+                      confirmFn: changeProviderFn,
+                    })
+                    return
+                  }
+
+                  changeProviderFn(providerOption)
                 }}
                 selected={providerOption.value === currentSidebarAIProvider}
                 disabled={isLoadingMemo}
                 key={providerOption.value}
+                sx={{
+                  pl: 1.5,
+                  pr: 1,
+                }}
               >
                 <Stack spacing={1} alignItems={'center'} direction={'row'}>
                   <AIProviderIcon
@@ -144,6 +176,30 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                   >
                     {t(providerOption.label as any)}
                   </Typography>
+                  {providerOption.isThirdParty ? (
+                    <Typography
+                      component={'span'}
+                      fontSize={'8px'}
+                      fontWeight={500}
+                      color={'text.primary'}
+                      textAlign={'left'}
+                      letterSpacing={'-0.16px'}
+                      px={0.25}
+                      borderRadius={1}
+                      lineHeight={1.4}
+                      ml={'4px !important'}
+                      bgcolor={(t) =>
+                        t.palette.mode === 'dark'
+                          ? 'rgba(255, 255, 255, 0.08)'
+                          : 'rgba(0, 0, 0, 0.08)'
+                      }
+                      whiteSpace={'nowrap'}
+                    >
+                      {t('client:provider__label__third_part' as any)}
+                    </Typography>
+                  ) : (
+                    <AIProviderMainPartIcon />
+                  )}
                 </Stack>
               </ListItemButton>
             )
@@ -172,4 +228,5 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
     </Box>
   )
 }
+
 export default AIProviderSelectorCard

@@ -10,8 +10,11 @@ import Link from '@mui/material/Link'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import Stack from '@mui/material/Stack'
 import TooltipButton from '@/components/TooltipButton'
-import { useRecoilValue } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import {
+  ChatGPTClientState,
+  ThirdPartAIProviderConfirmDialogState,
+} from '@/features/chatgpt/store'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useTranslation } from 'react-i18next'
 
@@ -24,6 +27,33 @@ const AIProviderAuthCard: FC<{
   const { t } = useTranslation(['common', 'client'])
   const chatGPTClientState = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
+
+  const setDialogState = useSetRecoilState(
+    ThirdPartAIProviderConfirmDialogState,
+  )
+
+  const handleAuthProvider = async (aiProviderOption: AIProviderOptionType) => {
+    const authProvider = async () => {
+      await port.postMessage({
+        event: 'Client_authChatGPTProvider',
+        data: {
+          provider: aiProviderOption.value,
+        },
+      })
+    }
+
+    // if (aiProviderOption.isThirdParty) {
+    //   // 如果是第三方需要弹出 confirm dialog
+    //   setDialogState({
+    //     open: true,
+    //     confirmProviderValue: aiProviderOption.value,
+    //   })
+    //   return
+    // }
+
+    await authProvider()
+  }
+
   useEffect(() => {
     let timer: any | null = null
     if (
@@ -196,12 +226,7 @@ const AIProviderAuthCard: FC<{
               )
             }
             onClick={async () => {
-              await port.postMessage({
-                event: 'Client_authChatGPTProvider',
-                data: {
-                  provider: aiProviderOption.value,
-                },
-              })
+              await handleAuthProvider(aiProviderOption)
             }}
             variant={'contained'}
             disableElevation

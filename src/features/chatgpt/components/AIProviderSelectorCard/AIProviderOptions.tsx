@@ -14,6 +14,7 @@ export type AIProviderOptionType = {
   authDescription: I18nextKeysType
   authButtonText: I18nextKeysType
   authOpenInNew: boolean
+  isThirdParty: boolean
 }
 const AIProviderOptions: AIProviderOptionType[] = [
   // {
@@ -36,6 +37,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__bing_web_app__short_description`),
     authButtonText: `client:provider__bing_web_app__auth_button_text`,
     authOpenInNew: false,
+    isThirdParty: true,
   },
   {
     beta: false,
@@ -47,6 +49,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__bard_web_app__short_description`),
     authButtonText: `client:provider__bard_web_app__auth_button_text`,
     authOpenInNew: false,
+    isThirdParty: true,
   },
   {
     beta: false,
@@ -58,6 +61,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__claude_web_app__short_description`),
     authButtonText: `client:provider__claude_web_app__auth_button_text`,
     authOpenInNew: true,
+    isThirdParty: true,
   },
   {
     beta: false,
@@ -69,6 +73,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__chatgpt_web_app__short_description`),
     authButtonText: `client:provider__chatgpt_web_app__auth_button_text`,
     authOpenInNew: true,
+    isThirdParty: true,
   },
   {
     beta: false,
@@ -106,6 +111,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     ),
     authButtonText: `client:provider__openai_api__auth_button_text`,
     authOpenInNew: true,
+    isThirdParty: true,
   },
   {
     beta: false,
@@ -116,6 +122,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     shortDescription: (t) => t(`client:provider__claude__short_description`),
     authButtonText: `client:provider__claude__auth_button_text`,
     authOpenInNew: false,
+    isThirdParty: false,
   },
   {
     beta: false,
@@ -126,6 +133,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     shortDescription: (t) => t(`client:provider__chatgpt__short_description`),
     authButtonText: `client:provider__chatgpt__auth_button_text`,
     authOpenInNew: false,
+    isThirdParty: false,
   },
 ]
 export default AIProviderOptions

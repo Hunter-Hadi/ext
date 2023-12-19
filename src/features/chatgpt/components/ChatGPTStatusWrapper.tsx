@@ -8,8 +8,11 @@ import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
 
 import React from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import {
+  ChatGPTClientState,
+  ThirdPartAIProviderConfirmDialogState,
+} from '@/features/chatgpt/store'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import { GoogleIcon, UseChatGptIcon } from '@/components/CustomIcon'
@@ -22,6 +25,7 @@ import Divider from '@mui/material/Divider'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
@@ -32,6 +36,11 @@ const ChatGPTStatusWrapper: FC = () => {
   )
   const { status } = chatGPTClientState
   const [prevStatus, setPrevStatus] = useState(status)
+
+  const { open: providerConfirmDialogOpen } = useRecoilValue(
+    ThirdPartAIProviderConfirmDialogState,
+  )
+
   useEffect(() => {
     if (prevStatus !== status && status === 'success') {
       // get latest settings
@@ -292,7 +301,9 @@ const ChatGPTStatusWrapper: FC = () => {
       </Box>
     )
   }
-  if (status === 'success') {
+
+  // 即使 success 了 providerConfirmDialogOpen 为 true 时需要显示
+  if (status === 'success' && !providerConfirmDialogOpen) {
     return null
   }
 
@@ -321,9 +332,24 @@ const ChatGPTStatusWrapper: FC = () => {
           bgcolor: 'background.paper',
           display: 'flex',
           flexDirection: 'column',
+          filter: `blur(${providerConfirmDialogOpen ? 5 : 0}px)`,
         }}
       >
         <AIProviderSelector />
+      </Paper>
+
+      <Paper
+        sx={{
+          position: 'absolute',
+          right: 8,
+          top: 100,
+          bgcolor: 'background.paper',
+          display: 'flex',
+          flexDirection: 'column',
+          userSelect: 'auto',
+        }}
+      >
+        <ThirdPartAIProviderConfirmDialog />
       </Paper>
     </Box>
   )

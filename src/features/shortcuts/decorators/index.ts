@@ -1,10 +1,11 @@
 // import { compileTemplate } from '../utils'
+import lodashSet from 'lodash-es/set'
+import { v4 as uuidV4 } from 'uuid'
+
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import Action from '@/features/shortcuts/core/Action'
 import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
-import { v4 as uuidV4 } from 'uuid'
-import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { getAllPathsAndValues } from '@/utils/dataHelper/arrayHelper'
-import lodashSet from 'lodash-es/set'
 
 /**
  * 渲染template
